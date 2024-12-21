@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-spdx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,25 +20,26 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.0.3
+Version:        1.1
 Release:        0
 Summary:        SPDX license expression language, Extras
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-Cabal-prof
+BuildRequires:  ghc-Cabal-syntax-devel
+BuildRequires:  ghc-Cabal-syntax-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-puresat-devel
+BuildRequires:  ghc-puresat-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-base-compat-devel
-BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
@@ -76,9 +77,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver base '<4.17' '< 5'
-cabal-tweak-dep-ver Cabal '^>=3.6.0.0' '< 4'
-cabal-tweak-dep-ver transformers '<0.6' '< 1'
+cabal-tweak-dep-ver Cabal-syntax '^>=3.12.1.0' '< 4'
 
 %build
 %ghc_lib_build

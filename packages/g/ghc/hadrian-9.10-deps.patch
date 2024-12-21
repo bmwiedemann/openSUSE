@@ -1,0 +1,74 @@
+--- ghc-9.10.0.20240313/hadrian/hadrian.cabal.orig	2024-03-13 21:23:13.000000000 +0800
++++ ghc-9.10.0.20240313/hadrian/hadrian.cabal	2024-03-14 21:53:00.180444498 +0800
+@@ -36,6 +36,8 @@
+     main-is:             Main.hs
+     hs-source-dirs:      .
+                        , src
++                       , ../libraries/ghc-platform/src
++                       , ../utils/ghc-toolchain/src
+     other-modules:       Base
+                        , Builder
+                        , CommandLine
+@@ -152,6 +154,7 @@
+                        , directory            >= 1.3.1.0 && < 1.4
+                        , extra                >= 1.4.7
+                        , filepath
++                       , process
+                        , time
+                        , mtl                  >= 2.2     && < 2.4
+                        , parsec               >= 3.1     && < 3.2
+@@ -168,8 +171,6 @@
+                        , text                 >= 1.2     && < 3
+                        , cryptohash-sha256    >= 0.11    && < 0.12
+                        , base16-bytestring    >= 0.1.1 && < 1.1.0.0
+-                       , ghc-platform
+-                       , ghc-toolchain
+     ghc-options:       -Wall
+                        -Wincomplete-record-updates
+                        -Wredundant-constraints
+--- ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Program.hs.orig	2024-03-13 21:23:14.000000000 +0800
++++ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Program.hs	2024-03-14 22:06:00.298622371 +0800
+@@ -1,3 +1,5 @@
++{-# LANGUAGE NoImplicitPrelude #-}
++
+ module GHC.Toolchain.Program
+     ( Program(..)
+     , shProgram
+--- ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Cc.hs~	2024-03-13 21:23:14.000000000 +0800
++++ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Cc.hs	2024-03-14 22:06:23.356740644 +0800
+@@ -1,3 +1,4 @@
++{-# LANGUAGE NoImplicitPrelude #-}
+ {-# LANGUAGE NamedFieldPuns #-}
+ {-# LANGUAGE ViewPatterns #-}
+ 
+diff -up ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Ar.hs~ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Ar.hs
+--- ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Ar.hs~	2024-03-13 21:23:14.000000000 +0800
++++ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Ar.hs	2024-03-14 22:09:48.872794751 +0800
+@@ -1,3 +1,4 @@
++{-# LANGUAGE NoImplicitPrelude #-}
+ {-# LANGUAGE NamedFieldPuns #-}
+ {-# LANGUAGE RecordWildCards #-}
+ 
+diff -up ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Cpp.hs~ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Cpp.hs
+--- ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Cpp.hs~	2024-03-13 21:23:14.000000000 +0800
++++ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Cpp.hs	2024-03-14 22:10:18.872948622 +0800
+@@ -1,3 +1,4 @@
++{-# LANGUAGE NoImplicitPrelude #-}
+ {-# LANGUAGE NamedFieldPuns #-}
+ 
+ module GHC.Toolchain.Tools.Cpp (HsCpp(..), findHsCpp, Cpp(..), findCpp) where
+diff -up ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Link.hs~ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Link.hs
+--- ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Link.hs~	2024-03-13 21:23:14.000000000 +0800
++++ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/Link.hs	2024-03-14 22:10:12.954918270 +0800
+@@ -1,3 +1,4 @@
++{-# LANGUAGE NoImplicitPrelude #-}
+ {-# OPTIONS_GHC -Wno-name-shadowing #-}
+ {-# LANGUAGE NamedFieldPuns #-}
+ {-# LANGUAGE RecordWildCards #-}
+--- ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/MergeObjs.hs~	2024-03-13 21:23:14.000000000 +0800
++++ ghc-9.10.0.20240313/utils/ghc-toolchain/src/GHC/Toolchain/Tools/MergeObjs.hs	2024-03-14 22:13:08.399807784 +0800
+@@ -1,3 +1,4 @@
++{-# LANGUAGE NoImplicitPrelude #-}
+ {-# LANGUAGE NamedFieldPuns #-}
+ {-# LANGUAGE CPP #-}
+ 

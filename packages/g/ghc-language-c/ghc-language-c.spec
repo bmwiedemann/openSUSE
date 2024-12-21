@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.4
+Version:        0.10.0
 Release:        0
 Summary:        Analysis and generation of C code
 License:        BSD-3-Clause
@@ -53,7 +53,7 @@ BuildRequires:  happy
 ExcludeArch:    %{ix86}
 
 %description
-Language C is a haskell library for the analysis and generation of C code.
+Language C is a Haskell library for the analysis and generation of C code.
 It features a complete, well tested parser and pretty printer for all of C99
 and a large set of C11 and clang/GNU extensions.
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 24 20:23:06 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update vector-algorithms to version 0.9.0.3.
+  ## Version 0.9.0.3 (2024-11-25)
+
+  - Fix an off-by-one error Heap.partialSort functions.
+  - Support latest ghcs.
+
+-------------------------------------------------------------------
 Mon May 27 02:16:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update vector-algorithms to version 0.9.0.2 revision 1.

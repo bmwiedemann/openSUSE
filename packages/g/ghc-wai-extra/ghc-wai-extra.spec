@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.15
+Version:        3.1.16
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
@@ -47,8 +47,8 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-cookie-devel
 BuildRequires:  ghc-cookie-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-fast-logger-devel

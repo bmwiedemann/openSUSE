@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 12:13:25 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update th-compat to version 0.1.6.
+  ### 0.1.6 [2024.12.05]
+  * Drop support for pre-8.0 versions of GHC.
+
+-------------------------------------------------------------------
 Tue Apr 30 15:47:24 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update th-compat to version 0.1.5 revision 2.

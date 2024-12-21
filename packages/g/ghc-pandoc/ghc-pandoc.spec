@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -103,6 +103,8 @@ BuildRequires:  ghc-ipynb-devel
 BuildRequires:  ghc-ipynb-prof
 BuildRequires:  ghc-jira-wiki-markup-devel
 BuildRequires:  ghc-jira-wiki-markup-prof
+BuildRequires:  ghc-libyaml-devel
+BuildRequires:  ghc-libyaml-prof
 BuildRequires:  ghc-mime-types-devel
 BuildRequires:  ghc-mime-types-prof
 BuildRequires:  ghc-mtl-devel
@@ -420,7 +422,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.typst
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.xwiki
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.zimwiki
-%{_datadir}/%{pkg_name}-%{version}/data/templates/definitions.typst
+%{_datadir}/%{pkg_name}-%{version}/data/templates/font-settings.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/fonts.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/hypersetup.latex
 %{_datadir}/%{pkg_name}-%{version}/data/templates/passoptions.latex

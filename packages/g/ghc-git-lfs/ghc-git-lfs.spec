@@ -78,6 +78,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver containers '< 0.7' '< 1'
 
 %build
 %ghc_lib_build

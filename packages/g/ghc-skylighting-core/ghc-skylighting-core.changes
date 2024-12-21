@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  8 00:01:18 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.14.4.
+  ## 0.14.4
+
+    * Add `gdscript`, `typst`, `tlaplus` syntax (#184, #199).
+
+-------------------------------------------------------------------
 Tue Sep 10 03:17:27 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-core to version 0.14.3.

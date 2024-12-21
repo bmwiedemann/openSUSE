@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.40
+Version:        1.41
 Release:        0
 Summary:        A library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -43,6 +43,8 @@ BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-blaze-html-devel
+BuildRequires:  ghc-blaze-html-prof
 BuildRequires:  ghc-blaze-markup-devel
 BuildRequires:  ghc-blaze-markup-prof
 BuildRequires:  ghc-bytestring-devel
@@ -85,12 +87,12 @@ BuildRequires:  ghc-microlens-th-devel
 BuildRequires:  ghc-microlens-th-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-pager-devel
-BuildRequires:  ghc-pager-prof
 BuildRequires:  ghc-parser-combinators-devel
 BuildRequires:  ghc-parser-combinators-prof
 BuildRequires:  ghc-pretty-simple-devel
 BuildRequires:  ghc-pretty-simple-prof
+BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-regex-tdfa-prof
 BuildRequires:  ghc-rpm-macros
@@ -106,8 +108,6 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-terminal-size-devel
 BuildRequires:  ghc-terminal-size-prof
-BuildRequires:  ghc-text-ansi-devel
-BuildRequires:  ghc-text-ansi-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel

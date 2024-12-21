@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 07:56:03 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Jailbreak version constraint on hashable to fix the build.
+
+-------------------------------------------------------------------
 Sun Jan 28 04:28:15 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update microlens-platform to version 0.4.3.5.

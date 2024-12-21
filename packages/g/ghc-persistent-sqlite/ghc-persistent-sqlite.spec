@@ -61,7 +61,7 @@ BuildRequires:  ghc-unliftio-core-prof
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-unordered-containers-prof
 BuildRequires:  glibc-devel
-BuildRequires:  sqlite3-devel
+BuildRequires:  sqlite-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
@@ -95,7 +95,6 @@ Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires:       glibc-devel
-Requires:       sqlite3-devel
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
@@ -123,7 +122,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %autosetup -n %{pkg_name}-%{version}
 
 %build
-%define cabal_configure_options -fsystemlib
+%define cabal_configure_options -f+systemlib
 %ghc_lib_build
 
 %install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 07:55:18 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Jailbreak version constraint on base to fix the build.
+
+-------------------------------------------------------------------
 Sun Aug  6 18:57:33 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update ilist to version 0.4.0.1 revision 3.

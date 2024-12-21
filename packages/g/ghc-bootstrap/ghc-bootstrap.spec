@@ -16,7 +16,7 @@
 #
 
 
-%global llvm_major 14
+%global llvm_major 15
 %ifarch ppc64le
 %define longarch powerpc64le
 # something weird on ghc arch detection
@@ -44,16 +44,18 @@
 %define sysname unknown
 %endif
 Name:           ghc-bootstrap
+Version:        9.8.2
+Release:        0
 Summary:        Binary distributions of The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Source1:        README.openSUSE
 Source2:        LICENSE
-Source13:       ghc-9.4.4-powerpc64le-unknown-linux.tar.xz
-Source14:       ghc-9.4.4-x86_64-unknown-linux.tar.xz
-Source16:       ghc-9.4.4-s390x-ibm-linux.tar.xz
-Source17:       ghc-9.4.4-aarch64-unknown-linux.tar.xz
-Source19:       ghc-9.4.4-riscv64-unknown-linux.tar.xz
+Source13:       ghc-%{version}-powerpc64le-unknown-linux.tar.xz
+Source14:       ghc-%{version}-x86_64-unknown-linux.tar.xz
+Source16:       ghc-%{version}-s390x-ibm-linux.tar.xz
+Source17:       ghc-%{version}-aarch64-unknown-linux.tar.xz
+Source19:       ghc-%{version}-riscv64-unknown-linux.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-PIE
@@ -74,8 +76,6 @@ Requires:       pkgconfig(libffi)
 Provides:       ghc-bootstrap-devel
 ExclusiveArch:  ppc64le x86_64 s390x aarch64 riscv64
 AutoReq:        off
-Version:        9.4.4
-Release:        0
 %ifnarch s390x
 BuildRequires:  libnuma-devel
 %endif

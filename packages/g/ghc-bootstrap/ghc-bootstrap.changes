@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 15:11:19 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update bootstrap compiler to ghc-9.8.2 
+
+-------------------------------------------------------------------
 Mon Nov 13 12:17:42 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Reduce memory constraints for riscv64

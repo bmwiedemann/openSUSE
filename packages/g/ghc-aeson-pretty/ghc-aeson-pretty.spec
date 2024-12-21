@@ -25,15 +25,22 @@ Summary:        JSON pretty-printing library and command-line tool
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-attoparsec-aeson-devel
+BuildRequires:  ghc-attoparsec-aeson-prof
+BuildRequires:  ghc-attoparsec-devel
+BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-cmdargs-devel
+BuildRequires:  ghc-cmdargs-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-scientific-prof
@@ -90,11 +97,12 @@ This package provides the Haskell %{pkg_name} profiling library.
 %autosetup -n %{pkg_name}-%{version}
 
 %build
-%define cabal_configure_options -flib-only
+%define cabal_configure_options -f+lib-only
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+%ghc_fix_rpath %{pkg_name}-%{version}
 
 %post devel
 %ghc_pkg_recache

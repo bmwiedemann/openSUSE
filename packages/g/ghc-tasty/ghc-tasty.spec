@@ -19,17 +19,12 @@
 %global pkg_name tasty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.5
+Version:        1.5.2
 Release:        0
 Summary:        Modern and extensible testing framework
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
-# https://github.com/UnkindPartition/tasty/pull/371 (riscv64)
-# https://github.com/UnkindPartition/tasty/pull/422 (s390x, merged upstream)
-# https://github.com/UnkindPartition/tasty/pull/423 (ppc64, merged upstream)
-Patch0:         riscv64-unbounded-delays.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-ansi-terminal-prof
@@ -82,9 +77,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-tr -d '\r' <%{SOURCE1} >%{pkg_name}.cabal
-%autopatch -p0
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build

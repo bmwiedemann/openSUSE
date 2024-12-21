@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.24.2
+Version:        0.24.3
 Release:        0
 Summary:        Amazon Web Services (AWS) for Haskell
 License:        BSD-3-Clause
@@ -161,6 +161,8 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver data-default '< 0.8' ' < 1'
+cabal-tweak-dep-ver filepath '< 1.5' ' < 2'
 
 %build
 %ghc_lib_build

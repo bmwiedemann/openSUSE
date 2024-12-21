@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-Diff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.1
+Version:        1.0.2
 Release:        0
-Summary:        O(ND) diff algorithm in haskell
+Summary:        Diff algorithm in pure Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
@@ -49,8 +49,10 @@ BuildRequires:  ghc-test-framework-quickcheck2-prof
 %endif
 
 %description
-Implementation of the standard diff algorithm, and utilities for pretty
-printing.
+Implementation of the standard diff algorithm in Haskell.
+
+Time complexity is O(ND) (input length * number of differences). Space
+complexity is O(D^2). Includes utilities for pretty printing.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -100,6 +102,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Syntax highlighting library
 License:        BSD-3-Clause

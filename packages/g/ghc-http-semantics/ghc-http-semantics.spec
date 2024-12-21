@@ -19,7 +19,7 @@
 %global pkg_name http-semantics
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        HTTP senmatics libarry
 License:        BSD-3-Clause

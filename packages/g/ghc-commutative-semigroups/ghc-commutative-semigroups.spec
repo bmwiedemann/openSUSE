@@ -19,7 +19,7 @@
 %global pkg_name commutative-semigroups
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.0
+Version:        0.2.0.1
 Release:        0
 Summary:        Commutative semigroups
 License:        BSD-3-Clause

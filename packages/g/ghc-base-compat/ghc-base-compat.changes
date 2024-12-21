@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Dec  6 12:21:27 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update base-compat to version 0.14.1.
+  ## Changes in 0.14.1 [2024.12.06]
+   - Sync with `base-4.21`/GHC 9.12
+   - Backport `compareLength` to `Data.List.Compat` and
+     `Data.List.NonEmpty.Compat`
+   - Backport `inits1` and `tails1` to `Data.List.Compat`
+   - Backport `firstA` and `secondA` to `Data.Bitraversable.Compat`
+   - Drop support for pre-8.0 versions of GHC.
+
+-------------------------------------------------------------------
+Tue Apr 30 15:40:49 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update base-compat to version 0.14.0.
+  ## Changes in 0.14.0 [2024.04.30]
+   - Sync with `base-4.20`/GHC 9.10
+   - Backport `foldl'` to `Prelude.Compat`
+   - Backport `List` to `Data.List.Compat` (when building with GHC 9.6 or later)
+   - Backport `append`, `appendList`, `prependList`, `permutations`,
+     `permutations1`, and `sortOn` to `Data.List.NonEmpty.Compat` (when building
+     with GHC 8.0 or later)
+
+-------------------------------------------------------------------
 Wed Oct 11 11:37:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update base-compat to version 0.13.1.

@@ -19,22 +19,17 @@
 %global pkg_name skylighting
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Syntax highlighting library
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-binary-prof
-BuildRequires:  ghc-blaze-html-devel
-BuildRequires:  ghc-blaze-html-prof
-BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-pretty-show-devel
@@ -50,8 +45,6 @@ BuildRequires:  ghc-skylighting-format-context-devel
 BuildRequires:  ghc-skylighting-format-context-prof
 BuildRequires:  ghc-skylighting-format-latex-devel
 BuildRequires:  ghc-skylighting-format-latex-prof
-BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
 
 %description
@@ -93,12 +86,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %autosetup -n %{pkg_name}-%{version}
 
 %build
-%define cabal_configure_options -fexecutable
+%define cabal_configure_options -f+executable
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
 
 %post devel
 %ghc_pkg_recache
@@ -108,7 +100,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 %license LICENSE
-%{_bindir}/%{pkg_name}
+%{_bindir}/skylighting
 
 %files devel -f %{name}-devel.files
 %doc README.md changelog.md

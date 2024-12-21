@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:05:58 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update witherable to version 0.5 revision 1.
+  0.5
+  ---
+
+  * `FilterableWithIndex` is a superclass of `WitherableWithIndex`.
+  * Remove deprecated `Data.Witherable` module. Use `Witherable` module.
+  * Relax `FilterableWithIndex` composition law so list-like instances are lawful.
+  * Add `drain :: f a -> f b` method (with default implementation `drain = mapMaybe (Const Nothing)`) to the `Filterable`.
+
+-------------------------------------------------------------------
 Thu May 16 22:45:35 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update witherable to version 0.4.2 revision 5.

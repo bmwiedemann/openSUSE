@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.6
+Version:        2.1.5
 Release:        0
 Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
@@ -31,8 +31,6 @@ BuildRequires:  ghc-asn1-encoding-devel
 BuildRequires:  ghc-asn1-encoding-prof
 BuildRequires:  ghc-asn1-types-devel
 BuildRequires:  ghc-asn1-types-prof
-BuildRequires:  ghc-async-devel
-BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base16-bytestring-devel
@@ -49,8 +47,8 @@ BuildRequires:  ghc-crypton-x509-store-devel
 BuildRequires:  ghc-crypton-x509-store-prof
 BuildRequires:  ghc-crypton-x509-validation-devel
 BuildRequires:  ghc-crypton-x509-validation-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-mtl-devel
@@ -68,6 +66,8 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-async-devel
+BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-hourglass-devel
 BuildRequires:  ghc-hourglass-prof
 BuildRequires:  ghc-hspec-devel

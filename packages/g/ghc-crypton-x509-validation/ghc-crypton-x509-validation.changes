@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  6 06:50:36 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-validation to version 1.6.13.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Tue Jun  6 04:29:24 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Add crypton-x509-validation at version 1.6.12.

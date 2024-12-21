@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 12:05:19 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update reflection to version 2.1.9.
+  # 2.1.9 [2024.12.04]
+  * Drop support for pre-8.0 versions of GHC.
+
+-------------------------------------------------------------------
 Sat May  4 15:32:13 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update reflection to version 2.1.8.

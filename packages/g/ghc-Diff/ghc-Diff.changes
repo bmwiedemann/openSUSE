@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 17:54:12 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update Diff to version 1.0.2.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:36 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

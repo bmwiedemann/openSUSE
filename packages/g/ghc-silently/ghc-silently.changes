@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 23 09:52:01 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update silently to version 1.2.5.4.
+  # 1.2.5.4 November 2024
+
+  * Bump `cabal-version` to 1.18.
+  * README: alert of malfunction in multi-threaded settings.
+  * Tested with GHC 8.0 - 9.12.0.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:15 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

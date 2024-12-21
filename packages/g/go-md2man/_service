@@ -1,8 +1,0 @@
-<services>
-  <service name="download_files" mode="manual" />
-  <service name="set_version" mode="manual">
-    <param name="basename">go-md2man</param>
-  </service>
-  <service name="go_modules" mode="manual">
-  </service>
-</services>

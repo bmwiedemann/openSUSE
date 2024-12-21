@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.3.4
+Version:        5.3.9
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause
@@ -58,8 +58,6 @@ BuildRequires:  ghc-time-manager-devel
 BuildRequires:  ghc-time-manager-prof
 BuildRequires:  ghc-unix-time-devel
 BuildRequires:  ghc-unix-time-prof
-BuildRequires:  ghc-unliftio-devel
-BuildRequires:  ghc-unliftio-prof
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-utf8-string-prof
 ExcludeArch:    %{ix86}

@@ -140,7 +140,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 cabal-tweak-dep-ver ansi-terminal "^>=1.1" "< 2"
 
 %build
-%define cabal_configure_options -fexe
+%define cabal_configure_options -f+exe
 %ghc_lib_build
 
 %install

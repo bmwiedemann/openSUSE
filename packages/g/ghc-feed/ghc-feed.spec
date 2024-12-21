@@ -111,7 +111,8 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver base-compat '< 0.13' '< 1'
+cabal-tweak-dep-ver base '< 4.20' '< 5'
+cabal-tweak-dep-ver base-compat '< 0.14' '< 1'
 
 %build
 %ghc_lib_build

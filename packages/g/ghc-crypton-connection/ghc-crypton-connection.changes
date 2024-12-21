@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec  6 05:38:35 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton-connection to version 0.4.3.
+  ## Version 0.4.3
+
+  * Creating the `Internal` module and export the `ConnectionContext` constructor.
+    [#7](https://github.com/kazu-yamamoto/crypton-connection/pull/7)
+
+-------------------------------------------------------------------
+Wed Nov  6 07:45:44 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton-connection to version 0.4.2.
+  # CHANGELOG
+
+  ## Version 0.4.2
+
+  * Using data-default.
+
+  ## Version 0.4.1
+
+  * Preparing for tls v2.1
+
+  ## Version 0.4.0
+
+  * Add support for overriding the TLS clientSupported member in TLSSettingsSimple
+    [#3](https://github.com/kazu-yamamoto/crypton-connection/pull/3)
+
+-------------------------------------------------------------------
 Sat Jun 29 21:31:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update crypton-connection to version 0.3.2 revision 1.

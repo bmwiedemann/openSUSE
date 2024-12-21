@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.10.3.0
+Version:        3.12.1.0
 Release:        0
 Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-Cabal-syntax-devel
@@ -39,12 +38,16 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-edit-distance-devel
 BuildRequires:  ghc-edit-distance-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-network-uri-devel
+BuildRequires:  ghc-network-uri-prof
 BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-pretty-prof
 BuildRequires:  ghc-rpm-macros
@@ -94,7 +97,8 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+cabal-tweak-dep-ver Cabal '^>=3.12.1.0' '< 4'
+cabal-tweak-dep-ver Cabal-syntax '^>=3.12.1.0' '< 4'
 
 %build
 %ghc_lib_build

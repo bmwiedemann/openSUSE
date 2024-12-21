@@ -1,14 +1,18 @@
-Index: ghc-9.2.0.20210331/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
+Index: ghc-9.10.1/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
 ===================================================================
---- ghc-9.2.0.20210331.orig/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
-+++ ghc-9.2.0.20210331/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
-@@ -206,8 +206,7 @@ copyComponent verbosity pkg_descr lbi (C
-                       ++ " in " ++ binPref)
-     inPath <- isInSearchPath binPref
-     when (not inPath) $
--      warn verbosity ("The directory " ++ binPref
--                      ++ " is not in the system search path.")
-+      warn verbosity ("Executable installed in " ++ binPref)
-     case compilerFlavor (compiler lbi) of
-       GHC   -> GHC.installExe   verbosity lbi binPref buildPref progFix pkg_descr exe
-       GHCJS -> GHCJS.installExe verbosity lbi binPref buildPref progFix pkg_descr exe
+--- ghc-9.10.1.orig/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
++++ ghc-9.10.1/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
+@@ -261,12 +261,7 @@ copyComponent verbosity pkg_descr lbi (C
+     )
+   inPath <- isInSearchPath binPref
+   when (not inPath) $
+-    warn
+-      verbosity
+-      ( "The directory "
+-          ++ binPref
+-          ++ " is not in the system search path."
+-      )
++    warn verbosity ("Executable installed in " ++ binPref)
+   case compilerFlavor (compiler lbi) of
+     GHC -> GHC.installExe verbosity lbi binPref buildPref progFix pkg_descr exe
+     GHCJS -> GHCJS.installExe verbosity lbi binPref buildPref progFix pkg_descr exe

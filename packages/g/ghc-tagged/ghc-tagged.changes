@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  3 12:15:57 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update tagged to version 0.8.9.
+  0.8.9 [2024.12.03]
+  ------------------
+  * Allow building with GHC 9.12.
+  * Drop support for GHC 7.10 and earlier.
+
+-------------------------------------------------------------------
 Sat Mar 16 15:19:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update tagged to version 0.8.8 revision 1.

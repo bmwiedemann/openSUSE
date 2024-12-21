@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:37:14 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20241202.
+  git-annex (10.20241202) upstream; urgency=medium
+
+    * add: Consistently treat files in a dotdir as dotfiles, even
+      when ran inside that dotdir.
+    * add: When adding a dotfile as a non-large file, mention that it's a
+      dotfile.
+    * p2phttp: Added --directory option which serves multiple git-annex
+      repositories located inside a directory.
+    * When remote.name.annexUrl is an annex+http(s) url, that
+      uses the same hostname as remote.name.url, which is itself a http(s)
+      url, they are assumed to share a username and password. This avoids
+      unnecessary duplicate password prompts.
+    * git-remote-annex: Fix a reversion introduced in version 10.20241031
+      that broke cloning from a special remote.
+    * git-remote-annex: Fix cloning from a special remote on a crippled
+      filesystem.
+    * git-remote-annex: Fix buggy behavior when annex.stalldetection is
+      configured.
+    * git-remote-annex: Require git version 2.31 or newer, since old
+      ones had a buggy git bundle command.
+    * S3: Support versioning=yes with a readonly bucket.
+      (Needs aws-0.24.3)
+    * S3: Send git-annex or other configured User-Agent.
+      (Needs aws-0.24.3)
+    * S3: Fix infinite loop and memory blowup when importing from an
+      unversioned S3 bucket that is large enough to need pagination.
+    * S3: Use significantly less memory when importing from a
+      versioned S3 bucket.
+    * vpop: Only update state after successful checkout.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 02 Dec 2024 12:31:08 -0400
+
+-------------------------------------------------------------------
 Thu Oct 31 21:20:43 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20241031.

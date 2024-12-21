@@ -75,7 +75,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %autosetup -n %{pkg_name}-%{version}
 
 %build
-%define cabal_configure_options -fsystem-libyaml
+%define cabal_configure_options -f+system-libyaml
 %ghc_lib_build
 
 %install

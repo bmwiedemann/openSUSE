@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 23 02:29:38 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update deriving-aeson to version 0.2.10.
+  ## 0.2.10
+
+  * Added `StripSuffix`
+
+-------------------------------------------------------------------
 Mon Aug  7 07:25:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update deriving-aeson to version 0.2.9 revision 1.

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pretty-simple
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %global pkg_name pretty-simple
 %global pkgver %{pkg_name}-%{version}
-%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.1.2.0
+Version:        4.1.3.0
 Release:        0
 Summary:        Pretty printer for data types with a 'Show' instance
 License:        BSD-3-Clause
@@ -28,11 +27,8 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-cabal-doctest-devel
-BuildRequires:  ghc-cabal-doctest-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-mtl-devel
@@ -49,16 +45,6 @@ BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-Glob-devel
-BuildRequires:  ghc-Glob-prof
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-doctest-prof
-BuildRequires:  ghc-template-haskell-devel
-BuildRequires:  ghc-template-haskell-prof
-%endif
 
 %description
 Pretty printer for data types with a 'Show' instance.
@@ -98,9 +84,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %install
 %ghc_lib_install
 %ghc_fix_rpath %{pkg_name}-%{version}
-
-%check
-%cabal_test
 
 %post devel
 %ghc_pkg_recache

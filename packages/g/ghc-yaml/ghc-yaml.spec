@@ -27,6 +27,7 @@ License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
@@ -48,6 +49,10 @@ BuildRequires:  ghc-libyaml-devel
 BuildRequires:  ghc-libyaml-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-optparse-applicative-devel
+BuildRequires:  ghc-optparse-applicative-prof
+BuildRequires:  ghc-raw-strings-qq-devel
+BuildRequires:  ghc-raw-strings-qq-prof
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-resourcet-prof
 BuildRequires:  ghc-rpm-macros
@@ -73,8 +78,6 @@ BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-mockery-devel
 BuildRequires:  ghc-mockery-prof
-BuildRequires:  ghc-raw-strings-qq-devel
-BuildRequires:  ghc-raw-strings-qq-prof
 BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-temporary-prof
 %endif
@@ -114,10 +117,12 @@ This package provides the Haskell %{pkg_name} profiling library.
 cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
+%define cabal_configure_options -f-no-examples -f-no-exe
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+%ghc_fix_rpath %{pkg_name}-%{version}
 
 %check
 %cabal_test
@@ -130,6 +135,9 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %files -f %{name}.files
 %license LICENSE
+%{_bindir}/examples
+%{_bindir}/json2yaml
+%{_bindir}/yaml2json
 
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md README.md

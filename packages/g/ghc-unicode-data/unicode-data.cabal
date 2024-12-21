@@ -1,7 +1,7 @@
 cabal-version:       2.2
 name:                unicode-data
-version:             0.4.0.1
-x-revision: 3
+version:             0.6.0
+x-revision: 2
 synopsis:            Access Unicode Character Database (UCD)
 description:
   @unicode-data@ provides Haskell APIs to efficiently access the
@@ -10,7 +10,7 @@ description:
   .
   The Haskell data structures are generated programmatically from the UCD files.
   The latest Unicode version supported by this library is
-  @<https://www.unicode.org/versions/Unicode15.0.0/ 15.0.0>@.
+  @<https://www.unicode.org/versions/Unicode15.1.0/ 15.1.0>@.
 homepage:            http://github.com/composewell/unicode-data
 bug-reports:         https://github.com/composewell/unicode-data/issues
 license:             Apache-2.0
@@ -27,12 +27,14 @@ tested-with:         GHC==8.0.2
                    , GHC==8.6.5
                    , GHC==8.8.4
                    , GHC==8.10.7
-                   , GHC==9.0.1
-                   , GHC==9.2.1
-                   , GHC==9.4.2
-                   , GHC==9.6.0
+                   , GHC==9.0.2
+                   , GHC==9.2.8
+                   , GHC==9.4.8
+                   , GHC==9.6.5
+                   , GHC==9.8.2
+                   , GHC==9.10.1
 
-extra-source-files:
+extra-doc-files:
     Changelog.md
     README.md
     NOTICE
@@ -40,11 +42,6 @@ extra-source-files:
 source-repository head
   type: git
   location: https://github.com/composewell/unicode-data
-
-flag ucd2haskell
-  description: Build the ucd2haskell executable
-  manual: True
-  default: False
 
 common default-extensions
   default-extensions:
@@ -55,10 +52,9 @@ common default-extensions
       ScopedTypeVariables
       TupleSections
       FlexibleContexts
+      LambdaCase
 
       -- Experimental, may lead to issues
-      DeriveAnyClass
-      TemplateHaskell
       UnboxedTuples
 
 common compile-options
@@ -69,9 +65,14 @@ common compile-options
                -fwarn-tabs
   default-language: Haskell2010
 
+flag dev-has-icu
+  description:
+    Use ICU for test and benchmark. Intended for development on the repository.
+  manual: True
+  default: False
+
 library
   import: default-extensions, compile-options
-  default-language: Haskell2010
   exposed-modules:
       Unicode.Char
       -- The module structure is derived from
@@ -113,30 +114,15 @@ library
       Unicode.Internal.Char.UnicodeData.SimpleLowerCaseMapping
       Unicode.Internal.Char.UnicodeData.SimpleTitleCaseMapping
       Unicode.Internal.Char.UnicodeData.SimpleUpperCaseMapping
+      Unicode.Internal.Char.Version
 
   hs-source-dirs: lib
   ghc-options: -O2
   build-depends:
-      base >=4.7 && <4.21
-
-executable ucd2haskell
-  import: default-extensions, compile-options
-  default-language: Haskell2010
-  ghc-options: -O2
-  hs-source-dirs: exe
-  main-is: UCD2Haskell.hs
-  other-modules: Parser.Text
-  if flag(ucd2haskell)
-    buildable: True
-    build-depends:
-        base             >= 4.7   && < 4.20
-      , containers       >= 0.5   && < 0.7
-      , directory        >= 1.3.6 && < 1.3.9
-      , filepath         >= 1.4.100 && < 1.5
-      , getopt-generics  >= 0.13  && < 0.14
-      , streamly         >= 0.8.0 && < 0.8.1
-  else
-    buildable: False
+      base >=4.7 && < 4.22
+  if impl(ghc < 9.0)
+    -- Required for unpackCString#
+    build-depends: ghc-prim
 
 test-suite test
   import: default-extensions, compile-options
@@ -147,24 +133,43 @@ test-suite test
   other-modules:
       Unicode.CharSpec
   build-depends:
-      base             >= 4.7   && < 4.20
+      base             >= 4.7   && < 4.22
     , hspec            >= 2.0   && < 2.12
     , unicode-data
-  -- We need to match a GHC version with the same Unicode version.
-  -- See: test/Unicode/CharSpec.hs for compatibility table.
-  if impl(ghc >= 9.5.1)
-    cpp-options: -DCOMPATIBLE_GHC_UNICODE
-  default-language: Haskell2010
+  if flag(dev-has-icu)
+    cpp-options: -DHAS_ICU
+    other-modules:
+        ICU.CharSpec
+    build-depends:
+        icu
 
 benchmark bench
   import: default-extensions, compile-options
   type: exitcode-stdio-1.0
   hs-source-dirs: bench
   main-is: Main.hs
+  other-modules:
+    Unicode.Char.Bench
+    Unicode.Char.CaseBench
+    Unicode.Char.Case.CompatBench
+    Unicode.Char.GeneralBench
+    Unicode.Char.General.BlocksBench
+    Unicode.Char.General.CompatBench
+    Unicode.Char.IdentifiersBench
+    Unicode.Char.NormalizationBench
+    Unicode.Char.NumericBench
+    Unicode.Char.Numeric.CompatBench
   build-depends:
-    base        >= 4.7   && < 4.20,
+    base        >= 4.7   && < 4.22,
     deepseq     >= 1.1   && < 1.6,
-    tasty-bench >= 0.2.5 && < 0.4,
-    tasty       >= 1.4.1,
+    tasty-bench >= 0.2.5 && < 0.5,
+    tasty       >= 1.4.1 && < 1.6,
     unicode-data
-  ghc-options: -O2 -fdicts-strict -rtsopts
+  if impl(ghc < 9.0)
+    -- Required for noinline
+    build-depends: ghc-prim
+  -- [NOTE] Recommendation of tasty-bench to reduce garbage collection noisiness
+  ghc-options: -O2 -fdicts-strict -rtsopts -with-rtsopts=-A32m
+  -- [NOTE] Recommendation of tasty-bench for comparison against baseline
+  if impl(ghc >= 8.6)
+    ghc-options: -fproc-alignment=64

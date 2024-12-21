@@ -20,13 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.0.1
+Version:        0.6.0
 Release:        0
 Summary:        Access Unicode Character Database (UCD)
 License:        Apache-2.0
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -44,7 +44,7 @@ Performance is the primary goal in the design of this package.
 
 The Haskell data structures are generated programmatically from the UCD files.
 The latest Unicode version supported by this library is
-'<https://www.unicode.org/versions/Unicode15.0.0/ 15.0.0>'.
+'<https://www.unicode.org/versions/Unicode15.1.0/ 15.1.0>'.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

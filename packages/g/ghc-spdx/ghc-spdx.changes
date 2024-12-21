@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 18 16:26:35 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update spdx to version 1.1.
+  1.1
+
+  - Support GHC-9.6.5...9.10.1
+  - Use better algorithm for expression equivalence and preorder
+    (It's still very slow compared to the state of the art SAT solvers:
+     but it can solve the sudoku example in reasonable time)
+  - Remove "Distribution.SPDX.Extra.Internal" module
+
+-------------------------------------------------------------------
 Thu Nov 16 13:29:24 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Relax over-specified constraints to fix the build with ghc-9.6.x.

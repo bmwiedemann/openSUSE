@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        3.10.3.0
+Version:        3.12.1.0
 Release:        0
 Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
@@ -72,6 +71,8 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-network-uri-prof
+BuildRequires:  ghc-open-browser-devel
+BuildRequires:  ghc-open-browser-prof
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-pretty-devel
@@ -89,6 +90,8 @@ BuildRequires:  ghc-resolv-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-exceptions-devel
 BuildRequires:  ghc-safe-exceptions-prof
+BuildRequires:  ghc-semaphore-compat-devel
+BuildRequires:  ghc-semaphore-compat-prof
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-tar-devel
@@ -107,6 +110,8 @@ BuildRequires:  ghc-Cabal-QuickCheck-devel
 BuildRequires:  ghc-Cabal-QuickCheck-prof
 BuildRequires:  ghc-Cabal-described-devel
 BuildRequires:  ghc-Cabal-described-prof
+BuildRequires:  ghc-Cabal-tests-devel
+BuildRequires:  ghc-Cabal-tests-prof
 BuildRequires:  ghc-Cabal-tree-diff-devel
 BuildRequires:  ghc-Cabal-tree-diff-prof
 BuildRequires:  ghc-QuickCheck-devel
@@ -168,7 +173,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
+cabal-tweak-dep-ver Cabal '^>=3.12.1.0' '< 4'
+cabal-tweak-dep-ver Cabal-syntax '^>=3.12.1.0' '< 4'
+cabal-tweak-dep-ver hashable '< 1.5' '< 2'
 
 %build
 %ghc_lib_build

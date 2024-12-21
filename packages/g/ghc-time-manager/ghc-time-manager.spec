@@ -19,7 +19,7 @@
 %global pkg_name time-manager
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.0
+Version:        0.2.1
 Release:        0
 Summary:        Scalable timer
 License:        MIT
@@ -30,13 +30,16 @@ BuildRequires:  ghc-auto-update-devel
 BuildRequires:  ghc-auto-update-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-unliftio-devel
-BuildRequires:  ghc-unliftio-prof
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 ExcludeArch:    %{ix86}
 
 %description
-Scalable timer functions provided by a timer manager.
+Scalable timer functions provided by a timer manager and thread management
+functions to prevent thread leak by a thread manager.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

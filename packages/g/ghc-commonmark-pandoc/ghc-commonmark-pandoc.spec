@@ -19,7 +19,7 @@
 %global pkg_name commonmark-pandoc
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.2.2.2
+Version:        0.2.2.3
 Release:        0
 Summary:        Bridge between commonmark and pandoc AST
 License:        BSD-3-Clause

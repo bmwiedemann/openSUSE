@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-QuickCheck
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.14.3
+Version:        2.15.0.1
 Release:        0
 Summary:        Automatic testing of Haskell programs
 License:        BSD-3-Clause

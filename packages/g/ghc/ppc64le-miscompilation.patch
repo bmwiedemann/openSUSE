@@ -1,0 +1,25 @@
+From 3f128c7d6c145985e3e12fda173e7e9a5a9c03f7 Mon Sep 17 00:00:00 2001
+From: Peter Trommler <ptrommler@acm.org>
+Date: Sat, 15 Jun 2024 08:55:30 +0200
+Subject: [PATCH 4/4] PPC NCG: Fix sign hints in C calls
+
+---
+ compiler/GHC/CmmToAsm/PPC/CodeGen.hs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/compiler/GHC/CmmToAsm/PPC/CodeGen.hs b/compiler/GHC/CmmToAsm/PPC/CodeGen.hs
+index cca47f7bac2..060bd7159eb 100644
+--- a/compiler/GHC/CmmToAsm/PPC/CodeGen.hs
++++ b/compiler/GHC/CmmToAsm/PPC/CodeGen.hs
+@@ -1770,7 +1770,7 @@ genCCall' config gcp target dest_regs args
+                                 _ -> panic "genCall': unknown calling conv."
+ 
+         argReps = map (cmmExprType platform) args
+-        (argHints, _) = foreignTargetHints target
++        (_, argHints) = foreignTargetHints target
+ 
+         roundTo a x | x `mod` a == 0 = x
+                     | otherwise = x + a - (x `mod` a)
+-- 
+GitLab
+

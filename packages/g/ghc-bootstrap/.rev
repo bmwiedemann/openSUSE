@@ -293,4 +293,12 @@ Add support for ppc64le.</comment>
 - Update bootsrap compiler to ghc-9.4.4</comment>
     <requestid>1126686</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3c31435c5077eea18cce1d78c55b06c6</srcmd5>
+    <version>9.8.2</version>
+    <time>1734732610</time>
+    <user>dimstar_suse</user>
+    <comment>version update for ghc-9.10.1</comment>
+    <requestid>1231423</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %global pkg_name warp-tls
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        3.4.7
+Version:        3.4.12
 Release:        0
 Summary:        HTTP over TLS support for Warp via the TLS package
 License:        MIT
@@ -30,8 +30,6 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-recv-devel
@@ -43,8 +41,6 @@ BuildRequires:  ghc-tls-devel
 BuildRequires:  ghc-tls-prof
 BuildRequires:  ghc-tls-session-manager-devel
 BuildRequires:  ghc-tls-session-manager-prof
-BuildRequires:  ghc-unliftio-devel
-BuildRequires:  ghc-unliftio-prof
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-prof
 BuildRequires:  ghc-warp-devel

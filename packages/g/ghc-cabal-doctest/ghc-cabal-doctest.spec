@@ -19,7 +19,7 @@
 %global pkg_name cabal-doctest
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        A Setup.hs helper for running doctests
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
 %description
-As of now (end of 2021), there isn't 'cabal doctest' command. Yet, to properly
+As of now (end of 2024), there isn't 'cabal doctest' command. Yet, to properly
 work, 'doctest' needs plenty of configuration. This library provides the common
 bits for writing a custom 'Setup.hs'.
 

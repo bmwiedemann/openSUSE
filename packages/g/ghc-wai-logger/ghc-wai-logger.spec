@@ -19,7 +19,7 @@
 %global pkg_name wai-logger
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        A logging system for WAI
 License:        MIT

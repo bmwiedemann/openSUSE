@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 22 23:53:42 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update http-semantics to version 0.3.0.
+  ## 0.3.0
+
+  * Breaking change: fillFileBodyGetNext takes Sentinel instead of
+    IO () to close files on time.
+
+-------------------------------------------------------------------
 Thu Aug 29 21:43:42 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Add http-semantics at version 0.2.1.

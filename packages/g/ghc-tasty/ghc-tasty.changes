@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Nov  3 00:34:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update tasty to version 1.5.2.
+  Version 1.5.2
+  --------------
+
+  _2024-11-03_
+
+  * Partially revert [#393](https://github.com/UnkindPartition/tasty/pull/393)
+    to fix progress reporting outside of Emacs.
+  * Do not depend on `unbounded-delays` on `ppc64`, `s390x` and `riscv64`
+    ([#371](https://github.com/UnkindPartition/tasty/pull/371),
+     [#422](https://github.com/UnkindPartition/tasty/pull/422),
+     [#423](https://github.com/UnkindPartition/tasty/pull/423)).
+
+  Version 1.5.1
+  --------------
+
+  _2024-06-22_
+
+  * Performance improvements
+    ([#389](https://github.com/UnkindPartition/tasty/pull/389),
+     [#390](https://github.com/UnkindPartition/tasty/pull/390)).
+  * Progress reporting in Emacs: use `\r` instead of ANSI escape sequences
+    ([#393](https://github.com/UnkindPartition/tasty/pull/393)).
+  * Console reporter: fix unintended change to `foldHeading`
+    ([#396](https://github.com/UnkindPartition/tasty/pull/396)).
+  * Prune empty test subtrees from `TestTree`
+    ([#403](https://github.com/UnkindPartition/tasty/pull/403)).
+  * Add `instance Eq Timeout` and `instance Ord Timeout`
+    ([#415](https://github.com/UnkindPartition/tasty/pull/415)).
+  * Add ability to supply options for launchers and reporters at the top-level of test tree
+    ([#417](https://github.com/UnkindPartition/tasty/pull/417)).
+
+- "riscv64-unbounded-delays.patch" is now obsolete.
+
+-------------------------------------------------------------------
 Fri Jul 19 19:57:20 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - extend riscv64-unbounded-delays.patch to not depend on

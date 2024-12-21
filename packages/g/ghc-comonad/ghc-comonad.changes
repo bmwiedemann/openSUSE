@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  4 12:50:42 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update comonad to version 5.0.9.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/comonad-5.0.9/src/CHANGELOG.markdown
+
+-------------------------------------------------------------------
 Sat Sep 30 12:22:30 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update comonad to version 5.0.8 revision 2.

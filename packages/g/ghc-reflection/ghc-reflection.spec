@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.8
+Version:        2.1.9
 Release:        0
 Summary:        Reifies arbitrary terms into types that can be reflected back into terms
 License:        BSD-3-Clause

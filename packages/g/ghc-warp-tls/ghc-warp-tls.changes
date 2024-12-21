@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 19 21:07:10 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.4.12.
+  ## 3.4.12
+
+  * Rethrowing asynchronous exceptions
+    [#1013](https://github.com/yesodweb/wai/pull/1013)
+
+-------------------------------------------------------------------
+Thu Nov  7 01:55:24 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.4.11.
+  ## 3.4.11
+
+  * Removing `unliftio`.
+
+  ## 3.4.10
+
+  * Removed `data-default` dependency entirely. Does now require `>= tls-2.1.3`.
+    [#1011](https://github.com/yesodweb/wai/pull/1011)
+
+  ## 3.4.9
+
+  * Using `timeout` for `handshake` to prevent thread leaks.
+
+  ## 3.4.8
+
+  * Substituted `data-default-class` for `data-default` [#1010](https://github.com/yesodweb/wai/pull/1010)
+
+-------------------------------------------------------------------
 Wed Sep 25 02:47:49 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update warp-tls to version 3.4.7.

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-crypton-x509-validation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.12
+Version:        1.6.13
 Release:        0
 Summary:        X.509 Certificate and CRL validation
 License:        BSD-3-Clause
@@ -43,8 +43,8 @@ BuildRequires:  ghc-crypton-x509-devel
 BuildRequires:  ghc-crypton-x509-prof
 BuildRequires:  ghc-crypton-x509-store-devel
 BuildRequires:  ghc-crypton-x509-store-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-hourglass-devel
 BuildRequires:  ghc-hourglass-prof
 BuildRequires:  ghc-memory-devel

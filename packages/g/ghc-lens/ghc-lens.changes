@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jul  5 15:12:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.3.2 revision 2.
+  5.3.2 [2024.05.12]
+  ------------------
+  * Define the following lenses that perform an operation and result the old
+    result:
+    * `(<<<>:~)` (prepend to the front via `(<>)` and return the old result)
+    * `(<<<|~)` (prepend to the front via `(<|)` and return the old result)
+    * `(<<|>~)` (append to the back via `(|>)` and return the old result)
+
+    Each of these also has a variant that end with `=` instead of `~` (e.g.,
+    `(<<<>:=)`) for working in a `MonadState` setting.
+  * Re-export `(<>:~)`, `(<<>:~)`, `(<|~)`, `(<<|~)`, `(|>~)`, and `(<|>~)` (as
+    well as their variants which end with `=` instead of `~`, and their variants
+    which return the old result) from `Control.Lens.Operators`.
+
+  5.3.1 [2024.05.05]
+  ------------------
+  * Add a `Magnify` instance for the CPS variant of `RWST` when building with
+    `mtl-2.3` or later.
+
+  5.3 [2024.05.04]
+  ----------------
+  * Allow building with GHC 9.10.
+  * Update the `Prism`s in `Language.Haskell.TH.Lens` to reflect additions to
+    `template-haskell-2.22.0.0`:
+    * The `_InfixD` `Prism` now focuses on `(Fixity, NamespaceSpecifier, Name)`
+      when building with `template-haskell-2.22.0.0` or later.
+    * Add `Prism`s for the newly introduced `NamespaceSpecifier` data type.
+    * Add `_TypeP` and `_InvisP` `Prism`s for the `Pat` data type.
+    * Add a `_TypeE` `Prism` for the `Exp` data type.
+    * Add a `_SCCP` `Prism` for the `Pragma` data type.
+  * Add the following `Setter`s for prepending and appending elements:
+    * `(<>:~)`: prepend an element to the front via `(<>)`.
+    * `(<<>:~)`: prepend an element to the front via `(<>)` and return the result.
+    * `(<|~)`: cons an element to the front via `(<|)`.
+    * `(<<|~)`: cons an element to the front via `(<|)` and return the result.
+    * `(|>~)`: snoc an element to the back via `(|>)`.
+    * `(<|>~)`: snoc an element to the back via `(|>)` and return the result.
+
+    Each of these also has a variant that end with `=` instead of `~` (e.g.,
+    `(<>:=)`) for working in a `MonadState` setting.
+
+-------------------------------------------------------------------
 Tue Apr 30 16:00:18 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update lens to version 5.2.3 revision 5.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 07:53:32 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Re-generate spec file with a recent versions of Cabal.
+
+-------------------------------------------------------------------
 Sat Jul  1 07:33:14 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update aeson-pretty to version 0.8.10.

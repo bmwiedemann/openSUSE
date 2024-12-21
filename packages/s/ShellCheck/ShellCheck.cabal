@@ -1,0 +1,147 @@
+Name:             ShellCheck
+Version:          0.10.0
+x-revision: 1
+Synopsis:         Shell script analysis tool
+License:          GPL-3
+License-file:     LICENSE
+Category:         Static Analysis
+Author:           Vidar Holen
+Maintainer:       vidar@vidarholen.net
+Homepage:         https://www.shellcheck.net/
+Build-Type:       Simple
+Cabal-Version:    1.18
+Bug-reports:      https://github.com/koalaman/shellcheck/issues
+Description:
+  The goals of ShellCheck are:
+  .
+  * To point out and clarify typical beginner's syntax issues,
+    that causes a shell to give cryptic error messages.
+  .
+  * To point out and clarify typical intermediate level semantic problems,
+    that causes a shell to behave strangely and counter-intuitively.
+  .
+  * To point out subtle caveats, corner cases and pitfalls, that may cause an
+    advanced user's otherwise working script to fail under future circumstances.
+
+Extra-Doc-Files:
+    README.md
+    CHANGELOG.md
+Extra-Source-Files:
+    -- documentation
+    shellcheck.1.md
+    -- A script to build the man page using pandoc
+    manpage
+    -- convenience script for stripping tests
+    striptests
+    -- tests
+    test/shellcheck.hs
+
+source-repository head
+    type: git
+    location: git://github.com/koalaman/shellcheck.git
+
+library
+    hs-source-dirs: src
+    if impl(ghc < 8.0)
+      build-depends:
+        semigroups
+    build-depends:
+      -- The lower bounds are based on GHC 7.10.3
+      -- The upper bounds are based on GHC 9.8.1
+      aeson                >= 1.4.0 && < 2.3,
+      array                >= 0.5.1 && < 0.6,
+      base                 >= 4.8.0.0 && < 5,
+      bytestring           >= 0.10.6 && < 0.13,
+      containers           >= 0.5.6 && < 0.8,
+      deepseq              >= 1.4.1 && < 1.6,
+      Diff                 >= 0.4.0 && < 1.1,
+      fgl                  (>= 5.7.0 && < 5.8.1.0) || (>= 5.8.1.1 && < 5.9),
+      filepath             >= 1.4.0 && < 1.6,
+      mtl                  >= 2.2.2 && < 2.4,
+      parsec               >= 3.1.14 && < 3.2,
+      QuickCheck           >= 2.14.2 && < 2.16,
+      regex-tdfa           >= 1.2.0 && < 1.4,
+      transformers         >= 0.4.2 && < 0.7,
+
+      -- getXdgDirectory from 1.2.3.0
+      directory            >= 1.2.3 && < 1.4,
+
+      -- When cabal supports it, move this to setup-depends:
+      process
+    exposed-modules:
+      ShellCheck.AST
+      ShellCheck.ASTLib
+      ShellCheck.Analytics
+      ShellCheck.Analyzer
+      ShellCheck.AnalyzerLib
+      ShellCheck.CFG
+      ShellCheck.CFGAnalysis
+      ShellCheck.Checker
+      ShellCheck.Checks.Commands
+      ShellCheck.Checks.ControlFlow
+      ShellCheck.Checks.Custom
+      ShellCheck.Checks.ShellSupport
+      ShellCheck.Data
+      ShellCheck.Debug
+      ShellCheck.Fixer
+      ShellCheck.Formatter.Format
+      ShellCheck.Formatter.CheckStyle
+      ShellCheck.Formatter.Diff
+      ShellCheck.Formatter.GCC
+      ShellCheck.Formatter.JSON
+      ShellCheck.Formatter.JSON1
+      ShellCheck.Formatter.TTY
+      ShellCheck.Formatter.Quiet
+      ShellCheck.Interface
+      ShellCheck.Parser
+      ShellCheck.Prelude
+      ShellCheck.Regex
+    other-modules:
+      Paths_ShellCheck
+    default-language: Haskell98
+
+executable shellcheck
+    if impl(ghc < 8.0)
+      build-depends:
+        semigroups
+    build-depends:
+      aeson,
+      array,
+      base,
+      bytestring,
+      containers,
+      deepseq,
+      Diff,
+      directory,
+      fgl,
+      mtl,
+      filepath,
+      parsec,
+      QuickCheck,
+      regex-tdfa,
+      transformers,
+      ShellCheck
+    default-language: Haskell98
+    main-is: shellcheck.hs
+
+test-suite test-shellcheck
+    type: exitcode-stdio-1.0
+    build-depends:
+      aeson,
+      array,
+      base,
+      bytestring,
+      containers,
+      deepseq,
+      Diff,
+      directory,
+      fgl,
+      filepath,
+      mtl,
+      parsec,
+      QuickCheck,
+      regex-tdfa,
+      transformers,
+      ShellCheck
+    default-language: Haskell98
+    main-is: test/shellcheck.hs

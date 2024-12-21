@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hashtables
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Summary:        Mutable hash tables in the ST monad
 License:        BSD-3-Clause
@@ -38,18 +38,16 @@ BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-mwc-random-devel
 BuildRequires:  ghc-mwc-random-prof
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-hunit-devel
-BuildRequires:  ghc-test-framework-hunit-prof
-BuildRequires:  ghc-test-framework-prof
-BuildRequires:  ghc-test-framework-quickcheck2-devel
-BuildRequires:  ghc-test-framework-quickcheck2-prof
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
+BuildRequires:  ghc-tasty-prof
+BuildRequires:  ghc-tasty-quickcheck-devel
+BuildRequires:  ghc-tasty-quickcheck-prof
 %endif
 
 %description

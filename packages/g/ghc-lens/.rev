@@ -223,4 +223,12 @@
     <comment>version update</comment>
     <requestid>1171792</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>83214a395d11a191d6e87c3b480ffbce</srcmd5>
+    <version>5.3.2</version>
+    <time>1734732643</time>
+    <user>dimstar_suse</user>
+    <comment>version update for ghc-9.10.1</comment>
+    <requestid>1231455</requestid>
+  </revision>
 </revisionlist>

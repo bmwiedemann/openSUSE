@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 17 23:09:27 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.10.0.
+  ## 0.10.0
+
+  - Support for half-precision floating point `__fp16`, `_Float16`, and `_Float16x`.
+  - Support for bfloat16 `__bf16`.
+  - Support alignment specifier `_Alignas` in struct declatations.
+
+-------------------------------------------------------------------
 Fri Oct 18 23:11:01 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update language-c to version 0.9.4.

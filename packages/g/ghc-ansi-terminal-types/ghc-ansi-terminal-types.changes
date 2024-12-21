@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  7 00:33:11 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal-types to version 1.1.
+  Version 1.1
+  --------------
+
+  * Add `Underlining` constructor to type `ConsoleLayer`.
+  * Add `CurlyUnderline`, `DottedUnderline`, and `DashedUnderline` constructors to
+    type `Underlining`.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

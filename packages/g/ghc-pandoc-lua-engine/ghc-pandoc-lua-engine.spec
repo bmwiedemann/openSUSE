@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.3
+Version:        0.4
 Release:        0
 Summary:        Lua engine to power custom pandoc conversions
 License:        GPL-2.0-or-later

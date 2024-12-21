@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct 26 18:30:11 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update unicode-data to version 0.6.0 revision 2.
+  ## 0.6.0 (July 2024)
+
+  - Updated to [Unicode 15.1.0](https://www.unicode.org/versions/Unicode15.1.0/).
+  - Added `showCodePoint` to `Unicode.Char`.
+  - Added `intToDigiT` to `Unicode.Char.Numeric`.
+
+  ### Removed
+
+  - Removed deprecated `isLetter` and `isSpace` from `Unicode.Char.General`.
+    Use the corresponding functions from `Unicode.Char.General.Compat` instead.
+  - Remove deprecated `isLower` and `isUpper` from `Unicode.Char.Case`.
+    Use the corresponding functions from `Unicode.Char.Case.Compat` instead.
+  - Removed deprecated `Unicode.Char.Numeric.isNumber`.
+    Use `Unicode.Char.Numeric.Compat.isNumber` instead.
+
+  ### Deprecations
+
+  - `Unicode.Char.General.isAlphaNum`.
+    Use `Unicode.Char.General.Compat.isAlphaNum` instead.
+
+  ## 0.5.0 (July 2024)
+
+  - Fix the inlining of `Addr#` literals and reduce their size. This results in
+    a sensible decrease of the executable size.
+  - Changed `integerValue` from `Char -> Maybe Int` to `(Integral a) => Char -> Maybe a`.
+
+-------------------------------------------------------------------
 Sun Jun 23 13:36:34 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update unicode-data to version 0.4.0.1 revision 3.

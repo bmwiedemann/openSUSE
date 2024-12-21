@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-xml-conduit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.1.3
+Version:        1.9.1.4
 Release:        0
 Summary:        Pure-Haskell utilities for dealing with XML with the conduit package
 License:        MIT
@@ -46,8 +46,8 @@ BuildRequires:  ghc-conduit-extra-prof
 BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-resourcet-devel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  8 12:54:27 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pretty-simple to version 4.1.3.0.
+  ## 4.1.3.0
+
+  *   Remove custom setup. This makes cross-compiling `pretty-simple` a lot more
+      straightforward. No functionality has been lost from the library, since the
+      custom setup was only used for generating tests.
+      [#107](https://github.com/cdepillabout/pretty-simple/pull/107)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:57 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

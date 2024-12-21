@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 07:49:15 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Use prettier Cabal flag specification; no functional change.
+
+-------------------------------------------------------------------
 Sat Jun  8 16:15:36 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update cabal-plan to version 0.7.4.0.

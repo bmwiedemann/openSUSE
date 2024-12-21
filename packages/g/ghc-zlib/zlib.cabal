@@ -1,7 +1,7 @@
 cabal-version:   >= 1.10
 name:            zlib
-version:         0.6.3.0
-x-revision:      5
+version:         0.7.1.0
+x-revision: 2
 
 copyright:       (c) 2006-2016 Duncan Coutts
 license:         BSD3
@@ -23,13 +23,7 @@ description:     This package provides a pure interface for compressing and
                  provides access to the full zlib feature set.
 build-type:      Simple
 
-tested-with:     GHC == 7.0.4
-               , GHC == 7.2.2
-               , GHC == 7.4.2
-               , GHC == 7.6.3
-               , GHC == 7.8.4
-               , GHC == 7.10.3
-               , GHC == 8.0.2
+tested-with:     GHC == 8.0.2
                , GHC == 8.2.2
                , GHC == 8.4.4
                , GHC == 8.6.5
@@ -37,16 +31,15 @@ tested-with:     GHC == 7.0.4
                , GHC == 8.10.7
                , GHC == 9.0.2
                , GHC == 9.2.8
-               , GHC == 9.4.7
-               , GHC == 9.6.3
-               , GHC == 9.8.1
+               , GHC == 9.4.8
+               , GHC == 9.6.5
+               , GHC == 9.8.2
+               , GHC == 9.10.1
 
-extra-source-files: changelog
+extra-source-files: changelog.md
                     README.md
-                    -- zlib C sources (for Windows)
-                    cbits/crc32.h cbits/inffast.h cbits/inflate.h
-                    cbits/trees.h cbits/deflate.h cbits/inffixed.h
-                    cbits/inftrees.h cbits/zutil.h cbits/gzguts.h
+                    -- extra headers
+                    cbits-extra/hs-zlib.h
                     -- test data files
                     test/data/bad-crc.gz test/data/custom-dict.zlib
                     test/data/custom-dict.zlib-dict test/data/hello.gz
@@ -59,23 +52,23 @@ source-repository head
   location: https://github.com/haskell/zlib.git
 
 flag non-blocking-ffi
-  default:     False
+  default:     True
   manual:      True
   description: The (de)compression calls can sometimes take a long time, which
                prevents other Haskell threads running. Enabling this flag
                avoids this unfairness, but with greater overall cost.
 
 flag pkg-config
-  default:     False
-  manual:      True
-  description: Use @pkg-config(1)@ to locate foreign @zlib@ library.
+  default:     True
+  manual:      False
+  description: Use @pkg-config@ executable to locate foreign @zlib@ library.
 
 flag bundled-c-zlib
   default:     False
   manual:      True
-  description: Use the bundled zlib C sources. Requires pkg-config to be False.
-               For windows, this is the default.
-
+  description: Use @zlib-clib@ package with C sources instead of a system library.
+               C sources are used for GHCJS and WASM unconditionally
+               and on Windows unless @pkg-config@ flag is on.
 
 library
   exposed-modules: Codec.Compression.GZip,
@@ -85,45 +78,46 @@ library
   other-modules:   Codec.Compression.Zlib.Stream,
                    Codec.Compression.Zlib.ByteStringCompat
 
-  if impl(ghc < 7)
-    default-language: Haskell98
-    default-extensions: PatternGuards
-  else
-    default-language: Haskell2010
+  default-language: Haskell2010
 
   other-extensions: CPP, ForeignFunctionInterface, RankNTypes, BangPatterns,
                     DeriveDataTypeable
-  if impl(ghc >= 7.2)
-    other-extensions: DeriveGeneric
-  if impl(ghc >= 7.6)
-    other-extensions: CApiFFI
+  other-extensions: DeriveGeneric
+  other-extensions: CApiFFI
 
-  build-depends:   base >= 4 && < 4.21,
+  build-depends:   base >= 4.9 && < 4.22,
                    bytestring >= 0.9 && < 0.13
-  if impl(ghc >= 7.0 && < 8.0.3)
-    build-depends: ghc-prim
 
-  includes:        zlib.h
+  build-tools:     hsc2hs >= 0.67 && < 0.69
+  if os(windows) && impl(ghc < 8.4)
+    build-tools:     hsc2hs < 0.68.5
+    -- GHC 7 ships hsc2hs-0.67
+
+  -- use `includes:` to include them when compiling
+  includes:        zlib.h hs-zlib.h
+  include-dirs:    cbits-extra
+  c-sources:       cbits-extra/hs-zlib.c
   ghc-options:     -Wall -fwarn-tabs
   if flag(non-blocking-ffi)
     cpp-options:   -DNON_BLOCKING_FFI
-  if flag(pkg-config) && !impl(ghcjs) && !os(ghcjs)
-    -- NB: pkg-config is available on windows as well when using msys2
-    pkgconfig-depends: zlib
+
+  -- Cross-platform builds (such as JS and WASM) must have access
+  -- to C sources, so using zlib-clib unconditionally.
+  --
+  -- On Windows, zlib is shipped as part of GHC's mingw/lib directory,
+  -- which GHC always includes in its linker search path. However,
+  -- there is no guarantee that zlib1.dll (the corresponding shared library)
+  -- will be available on the user's PATH at runtime, making it risky to depend upon
+  -- (see https://github.com/haskell/zlib/issues/65 for what can go wrong).
+  -- Thus, we resort to zlib-clib unless pkg-config is available.
+  if flag(bundled-c-zlib) || impl(ghcjs) || os(ghcjs) || arch(wasm32) || (!flag(pkg-config) && os(windows))
+    build-depends: zlib-clib < 2
   else
-    -- don't use pkg-config
-    if !os(windows) && !flag(bundled-c-zlib) && !impl(ghcjs) && !os(ghcjs)
-      -- Normally we use the the standard system zlib.
-      extra-libraries: z
+    if flag(pkg-config)
+      -- NB: pkg-config is available on windows as well when using msys2
+      pkgconfig-depends: zlib
     else
-      -- However for the benefit of users of Windows (which does not have zlib
-      -- by default) we bundle a complete copy of the C sources of zlib-1.2.11
-      c-sources:   cbits/adler32.c cbits/compress.c cbits/crc32.c
-                   cbits/deflate.c cbits/infback.c
-                   cbits/inffast.c cbits/inflate.c cbits/inftrees.c
-                   cbits/trees.c cbits/uncompr.c cbits/zutil.c
-      include-dirs:  cbits
-      install-includes: zlib.h zconf.h
+      extra-libraries: z
 
 test-suite tests
   type: exitcode-stdio-1.0
@@ -136,5 +130,5 @@ test-suite tests
   build-depends:   base, bytestring, zlib,
                    QuickCheck       == 2.*,
                    tasty            >= 0.8 && < 1.6,
-                   tasty-quickcheck >= 0.8 && < 0.12
+                   tasty-quickcheck >= 0.8 && < 1
   ghc-options:     -Wall

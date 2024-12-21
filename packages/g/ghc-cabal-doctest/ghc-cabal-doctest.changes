@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 22 14:59:16 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update cabal-doctest to version 1.0.11.
+  # 1.0.11 -- 2024-11-22
+
+  * Support Cabal 3.14.0.0. [cabal-doctest#85][].
+  * Motivate the package in README [cabal-doctest#43][].
+  * Fix `stack test` of examples, add CI integration.
+
+  [cabal-doctest#43]: https://github.com/ulidtko/cabal-doctest/issues/43
+  [cabal-doctest#85]: https://github.com/ulidtko/cabal-doctest/issues/85
+
+-------------------------------------------------------------------
 Wed Jun 26 21:59:54 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update cabal-doctest to version 1.0.10.

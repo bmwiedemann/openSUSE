@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar  4 08:52:49 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update cookie to version 0.5.0.
+  ## 0.5.0
+
+  * Remove surrounding double quotes from cookie values when parsing [#31](https://github.com/snoyberg/cookie/pull/31)
+
+    This is a breaking change, as it changes the behavior of `parseCookies` and `parseSetCookie` to no
+    longer include the surrounding double quotes in the cookie value. This is the correct behavior
+    according to the RFC.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:21 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 14 17:27:03 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update aws to version 0.24.3.
+  -   0.24.3
+      - [breaking change] Added s3UserAgent constructor to S3Configuration
+      - S3: Add GetBucketVersioning command
+
+-------------------------------------------------------------------
 Thu Feb  1 16:08:46 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update aws to version 0.24.2.

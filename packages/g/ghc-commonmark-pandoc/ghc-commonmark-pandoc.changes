@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  8 00:18:50 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-pandoc to version 0.2.2.3.
+  ## 0.2.2.3
+
+  - Avoid adding spurious extra data-pos attribute to wrapper
+    Div (#159).
+
+-------------------------------------------------------------------
 Sat Oct  5 05:49:08 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update commonmark-pandoc to version 0.2.2.2.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  3 02:05:37 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update tls-session-manager to version 0.0.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Oct 30 03:42:08 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update tls-session-manager to version 0.0.7.

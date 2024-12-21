@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  3 02:30:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update ShellCheck to version 0.10.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Mar  8 02:49:11 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update ShellCheck to version 0.10.0.
@@ -22,17 +28,6 @@ Fri Mar  8 02:49:11 UTC 2024 - Peter Simons <psimons@suse.com>
   ### Fixed
   - source statements with here docs now work correctly
   - "(Array.!): undefined array element" error should no longer occur
-
--------------------------------------------------------------------
-Wed Dec  6 17:05:35 UTC 2023 - Peter Simons <psimons@suse.com>
-
-- Update ShellCheck to version 0.9.0 revision 2.
-  Upstream has revised the Cabal build instructions on Hackage.
-
--------------------------------------------------------------------
-Thu Nov 16 13:11:57 UTC 2023 - Peter Simons <psimons@suse.com>
-
-- Relax over-specified constraints to fix the build with ghc-9.6.x.
 
 -------------------------------------------------------------------
 Thu Mar 30 17:09:20 UTC 2023 - Peter Simons <psimons@suse.com>

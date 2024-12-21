@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Dec  5 11:48:06 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update th-abstraction to version 0.7.1.0.
+  ## 0.7.1.0 -- 2024.12.05
+  * Drop support for pre-8.0 versions of GHC.
+
+-------------------------------------------------------------------
+Sun Mar 17 15:30:04 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update th-abstraction to version 0.7.0.0.
+  ## 0.7.0.0 -- 2024.03.17
+  * `DatatypeInfo` now has an additional `datatypeReturnKind` field. Most of the
+    time, this will be `StarT`, but this can also be more exotic kinds such as
+    `ConT ''UnliftedType` if dealing with primitive types, `UnliftedDatatypes`,
+    or `UnliftedNewtypes`.
+  * `reifyDatatype` and related functions now support primitive types such as
+    `Int#`. These will be reified as `DatatypeInfo`s with no `ConstructorInfo`s
+    and with `Datatype` as the `datatypeVariant`.
+  * `normalizeCon` now takes a `Kind` argument representing the return kind of
+    the parent data type. (This is sometimes necessary to determine which type
+    variables in the data constructor are universal or existential, depending
+    on if the variables appear in the return kind.)
+  * Fix a couple of bugs in which `normalizeDec` would return incorrect results
+    for GADTs that use `forall`s in their return kind.
+
+-------------------------------------------------------------------
 Sun Mar 17 15:24:51 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update th-abstraction to version 0.6.0.0 revision 2.

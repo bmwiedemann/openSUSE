@@ -1,0 +1,25 @@
+From bafe87d871399b58ce4a50592b980c990a3eac39 Mon Sep 17 00:00:00 2001
+From: Bodigrim <andrew.lelechenko@gmail.com>
+Date: Thu, 9 May 2024 01:02:44 +0100
+Subject: [PATCH] Fix compilation on big-endian arches
+
+---
+ libraries/os-string/System/OsString/Data/ByteString/Short/Internal.hs | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libraries/os-string/System/OsString/Data/ByteString/Short/Internal.hs b/libraries/os-string/System/OsString/Data/ByteString/Short/Internal.hs
+index fedc199..f7ddcd8 100644
+--- a/libraries/os-string/System/OsString/Data/ByteString/Short/Internal.hs
++++ b/libraries/os-string/System/OsString/Data/ByteString/Short/Internal.hs
+@@ -311,7 +311,11 @@ word16ToLE#, word16FromLE# :: Word16# -> Word16#
+ word16ToLE#, word16FromLE# :: Word# -> Word#
+ #endif
+ #ifdef WORDS_BIGENDIAN
++#if MIN_VERSION_base(4,16,0)
++word16ToLE# w = wordToWord16# (byteSwap16# (word16ToWord# w))
++#else
+ word16ToLE# = byteSwap16#
++#endif
+ #else
+ word16ToLE# w# = w#
+ #endif

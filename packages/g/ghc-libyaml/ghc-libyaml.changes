@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 07:55:41 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Use prettier Cabal flag specification; no functional change.
+
+-------------------------------------------------------------------
 Fri Mar 15 04:39:42 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update libyaml to version 0.1.4.

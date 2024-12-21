@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.7.0
+Version:        1.5.0.0
 Release:        0
 Summary:        A class for types that can be converted to a hash value
 License:        BSD-3-Clause

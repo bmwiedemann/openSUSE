@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:58:13 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update auto-update to version 0.2.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/auto-update-0.2.4/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Tue Oct 29 05:50:49 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update auto-update to version 0.2.2.

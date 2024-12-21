@@ -1,6 +1,0 @@
-<package name="go-md2man" project="openSUSE:Factory">
-  <title>Utility to create manpages from markdown</title>
-  <description>Utility to create manpages from markdown.</description>
-  <devel project="utilities" package="go-md2man"/>
-  <url>https://github.com/cpuguy83/</url>
-</package>

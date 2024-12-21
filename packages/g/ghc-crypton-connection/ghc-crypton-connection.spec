@@ -19,13 +19,12 @@
 %global pkg_name crypton-connection
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.3.2
+Version:        0.4.3
 Release:        0
-Summary:        Simple and easy network connections API
+Summary:        Simple and easy network connection API
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -43,8 +42,8 @@ BuildRequires:  ghc-crypton-x509-system-devel
 BuildRequires:  ghc-crypton-x509-system-prof
 BuildRequires:  ghc-crypton-x509-validation-devel
 BuildRequires:  ghc-crypton-x509-validation-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-rpm-macros
@@ -55,7 +54,7 @@ BuildRequires:  ghc-tls-prof
 ExcludeArch:    %{ix86}
 
 %description
-Simple network library for all your connection need.
+Simple network library for all your connection needs.
 
 Features: Really simple to use, SSL/TLS, SOCKS.
 
@@ -91,7 +90,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

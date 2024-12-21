@@ -29,6 +29,8 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
+BuildRequires:  ghc-aeson-pretty-devel
+BuildRequires:  ghc-aeson-pretty-prof
 BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
@@ -54,6 +56,8 @@ BuildRequires:  ghc-safe-prof
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-scientific-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-icu-devel
+BuildRequires:  ghc-text-icu-prof
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
@@ -115,6 +119,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
+%define cabal_configure_options -f+executable
 %ghc_lib_build
 
 %install
@@ -131,6 +136,7 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %files -f %{name}.files
 %license LICENSE
+%{_bindir}/citeproc
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md README.md

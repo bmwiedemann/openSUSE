@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.4.3
+Version:        3.4.7
 Release:        0
 Summary:        A fast, light-weight web server for WAI applications
 License:        MIT
@@ -29,6 +29,8 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-async-devel
+BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-auto-update-devel
 BuildRequires:  ghc-auto-update-prof
 BuildRequires:  ghc-base-devel
@@ -70,8 +72,6 @@ BuildRequires:  ghc-time-manager-devel
 BuildRequires:  ghc-time-manager-prof
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
-BuildRequires:  ghc-unliftio-devel
-BuildRequires:  ghc-unliftio-prof
 BuildRequires:  ghc-vault-devel
 BuildRequires:  ghc-vault-prof
 BuildRequires:  ghc-wai-devel

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.40
+Version:        1.41
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -68,6 +68,8 @@ BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-megaparsec-prof
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-prof
+BuildRequires:  ghc-modern-uri-devel
+BuildRequires:  ghc-modern-uri-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-process-devel

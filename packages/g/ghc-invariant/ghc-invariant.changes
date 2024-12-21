@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 13:17:53 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.6.4.
+  # 0.6.4 [2024.12.05]
+  * Drop support for pre-8.0 versions of GHC.
+
+-------------------------------------------------------------------
 Tue Mar 19 11:01:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update invariant to version 0.6.3.

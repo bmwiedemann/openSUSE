@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Backward- (and forward-)compatible Quote and Code types
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -35,8 +34,6 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-base-compat-devel
-BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-mtl-devel
@@ -80,7 +77,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

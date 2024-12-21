@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 28 18:09:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update cabal-install-solver to version 3.12.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/cabal-install-solver-3.12.1.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Thu Mar 28 17:54:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update cabal-install-solver to version 3.10.3.0 revision 1.

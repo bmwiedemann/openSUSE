@@ -1,6 +1,6 @@
 Name:           vector-stream
 Version:        0.1.0.1
-x-revision: 2
+x-revision: 3
 -- don't forget to update the changelog file!
 License:        BSD3
 License-File:   LICENSE
@@ -51,7 +51,7 @@ Library
         src
 
   Build-Depends: base >= 4.9 && < 4.22
-               , ghc-prim >= 0.2 && < 0.12
+               , ghc-prim >= 0.2 && < 0.14
 
 source-repository head
   type:     git

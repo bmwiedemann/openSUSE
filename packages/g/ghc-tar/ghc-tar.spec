@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.1.1
+Version:        0.6.3.0
 Release:        0
 Summary:        Reading, writing and manipulating ".tar" archive files
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/10.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -42,19 +42,25 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-os-string-devel
+BuildRequires:  ghc-os-string-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-bytestring-handle-devel
-BuildRequires:  ghc-bytestring-handle-prof
+BuildRequires:  ghc-file-embed-devel
+BuildRequires:  ghc-file-embed-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
+BuildRequires:  ghc-temporary-devel
+BuildRequires:  ghc-temporary-prof
 %endif
 
 %description
@@ -117,7 +123,7 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc changelog.md
+%doc README.md changelog.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

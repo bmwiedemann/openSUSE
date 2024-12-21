@@ -19,7 +19,7 @@
 %global pkg_name pandoc-server
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.9
+Version:        0.1.0.10
 Release:        0
 Summary:        Pandoc document conversion as an HTTP servant-server
 License:        GPL-2.0-or-later
