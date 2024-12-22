@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:57:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.25:
+  * Command-line interface: solved a crash that occurred when a
+    menu command was not available.
+- Changes from version 6.4.24:
+  * FormantPath: fixed bug with sampling frequency.
+  * Formant measurements: fixed bugs in ”autocorrelation” and
+    “robust” methods.
+  * Manual: better support for screens taller than 15 inches.
+  * Scripting: support for subtraction and unary minus for
+    tensors.
+  * Scripting: removed sendsocket.
+- Changes from version 6.4.23:
+  * Audio output: higher-quality playback of sounds with unusual
+    sampling frequencies.
+  * Scripting: better error messages on Save commands.
+  * Better HTML output from manuals (e.g. italicized or bolded
+    backslash sequences).
+- Changes from version 6.4.22:
+  * More robustness against trying to run a binary file as a
+    script.
+
+-------------------------------------------------------------------
 Sun Sep 29 00:34:17 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.21:
