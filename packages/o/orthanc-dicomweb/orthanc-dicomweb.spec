@@ -21,13 +21,13 @@ Name:           orthanc-dicomweb
 Summary:        WebViewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.17
+Version:        1.18
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancDicomWeb-%{version}.tar.gz
 Source1:        cornerstone.css
 Source2:        cornerstone.min.js
-Source3:        bootstrap-4.3.1.zip
+Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/bootstrap-5.3.3.zip
 Source4:        Font-Awesome-4.7.0.tar.gz
 Source5:        axios-0.19.0.tar.gz
 Source6:        vuejs-2.6.10.tar.gz

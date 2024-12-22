@@ -131,4 +131,12 @@
     <comment></comment>
     <requestid>1179492</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0b0c3649924a44d10bbd103f9abee6d2</srcmd5>
+    <version>1.18</version>
+    <time>1734887102</time>
+    <user>anag+factory</user>
+    <comment>bugix version (forwarded request 1233003 from DocB)</comment>
+    <requestid>1233005</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 21 15:25:11 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.8
+  * Added a "Server" entry in the DICOMweb job content
+  * Fixed parsing of numerical values in QIDO-RS response that prevented, among other,
+    the retrieval of "NumberOfStudyRelatedInstances", "NumberOfStudyRelatedSeries",...
+  * Fixed non-Latin "PatientName" values that were empty in some QIDO-RS responses
+  * Optimized the retrieval of single frame in WADO-RS when no transcoding is required,
+    which greatly improves the download time of multi-frame images in OHIF
+  * Optimization when running with an Orthanc that supports the "ExtendedFind" primitive
+  * Added support for Orthanc running in "ReadOnly" mode
+  * Fix handling of revisions for cached data
+  * Removed dependency on bootstrap-vue
+  * Upgraded to Bootstrap 5.3.3
+
+-------------------------------------------------------------------
 Fri Jun  7 06:15:44 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.7
