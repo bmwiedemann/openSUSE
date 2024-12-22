@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 19 08:24:18 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.8:
+  * fix isLikelyNotMountPointStatx relative path issue
+  * Bump images, dependencies and versions to go 1.22.9 and distroless iptables
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.30.8/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Thu Nov 28 08:39:58 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.7:

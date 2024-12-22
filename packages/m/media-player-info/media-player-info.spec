@@ -1,7 +1,7 @@
 #
 # spec file for package media-player-info
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 Name:           media-player-info
-Version:        24
+Version:        26
 Release:        0
 Summary:        Media Player Information
 # Note on license: some files in the tools subdirectories are GPL-2.0+ (or
@@ -27,7 +27,8 @@ Summary:        Media Player Information
 License:        BSD-3-Clause
 Group:          System/GUI/Other
 URL:            https://www.freedesktop.org/wiki/Software/media-player-info/
-Source:         https://www.freedesktop.org/software/media-player-info/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.zst
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(systemd)
@@ -46,6 +47,7 @@ of the big HALectomy.
 %autosetup
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure
 %make_build
 
@@ -69,5 +71,6 @@ fi
 %{_datadir}/media-player-info/*.mpi
 %{_udevhwdbdir}/20-usb-media-players.hwdb
 %{_udevrulesdir}/40-usb-media-players.rules
+%{_datadir}/metainfo/org.freedesktop.media_player_info.metainfo.xml
 
 %changelog

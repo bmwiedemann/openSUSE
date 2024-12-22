@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:17:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.22.0:
+  * replace std library regex engine with go-re2 (#1669)
+
+-------------------------------------------------------------------
+Sat Dec 21 14:14:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.21.4:
+  * Update golang version to 1.23 (#1672)
+  * bump go in dockerfile
+  * log bytes (#1670)
+
+-------------------------------------------------------------------
 Fri Dec 20 06:06:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add completion subpackages

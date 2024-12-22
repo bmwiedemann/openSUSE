@@ -1013,4 +1013,25 @@
   * Etcd (etcdversionminus2) - 3.5.16</comment>
     <requestid>1227099</requestid>
   </revision>
+  <revision rev="109" vrev="49">
+    <srcmd5>f66ab8f7eeabc8eab28073a3eac78cef</srcmd5>
+    <version>unknown</version>
+    <time>1734886971</time>
+    <user>anag+factory</user>
+    <comment>Bump meta package versions:
+  * kubernetes (baseversion) - 1.32
+  * kubernetes (version) - 1.32.0
+  * kubernetes (baseversionminus1) - 1.31
+  * kubernetes (versionminus1) - 1.31.4
+  * kubernetes (baseversionminus2) - 1.30
+  * kubernetes (versionminus2) - 1.30.8
+  * kubernetes (baseversionminus3) - 1.29
+  * kubernetes (versionminus3) - 1.29.12
+  * Etcd (etcdversion) - 3.5.16
+  * Etcd (etcdversionminus2) - 3.5.15
+  * Etcd (etcdversionminus3) - 3.5.16
+  * CoreDNS (corednsversionminus2) - 1.11.3
+  * CoreDNS (corednsversionminus2) - 1.11.1</comment>
+    <requestid>1232559</requestid>
+  </revision>
 </revisionlist>

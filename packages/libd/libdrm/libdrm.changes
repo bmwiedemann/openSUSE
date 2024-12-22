@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 22:25:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted patches
+  * n_libdrm-drop-valgrind-dep-generic.patch 
+  * n_libdrm-drop-valgrind-dep-intel.patch
+
+-------------------------------------------------------------------
 Thu Dec  5 02:41:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.4.124

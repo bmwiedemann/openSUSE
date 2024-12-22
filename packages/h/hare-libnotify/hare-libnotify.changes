@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sat Dec 21 05:06:27 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove the binary. The binary will be moved out as a separate package.
+
+-------------------------------------------------------------------
+Sat Dec 21 05:01:54 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Revert back to fix specfile.
+
+-------------------------------------------------------------------
+Tue Dec 17 02:26:09 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Rename binary
+
+-------------------------------------------------------------------
+Sat Dec  7 22:42:03 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Do workaround where setting noarch for main package
+  causes subpackage to inherit it.
+  * The workaround is to switch which is the main package.
+
+-------------------------------------------------------------------
+Fri Dec  6 13:13:35 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Small spec cleanup and update.
+- Add ./hare-libnotify-rpmlintrc.
+
+-------------------------------------------------------------------
+Sun Oct 27 06:13:12 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.0.0:
+  * no changes. this version bump just indicates that this software
+    has been stable for a long while due to its simplicity.
+
+-------------------------------------------------------------------
+Mon Jun 10 10:29:01 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Remove noarch as BuildArch
+
+-------------------------------------------------------------------
+Sun Dec 24 10:19:09 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Rename subpackage to -tools
+
+-------------------------------------------------------------------
+Thu Dec 21 06:20:06 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Initial package for hare-libnotify 0.1.0

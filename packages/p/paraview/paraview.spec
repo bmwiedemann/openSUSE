@@ -56,6 +56,8 @@ Source1:        %{name}-rpmlintrc
 Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.0.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch0:         paraview-desktop-entry-fix.patch
+# PATCH-FIX-UPSTREAM  https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11609 --- Fixes CVE-2024-50602
+Patch1:         fix-CVE-2024-50602.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
 Patch2:         fix-libharu-missing-m.patch
 # We need to change the default soname for vtk modules.

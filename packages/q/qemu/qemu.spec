@@ -69,6 +69,12 @@
 %bcond_without daxctl
 %endif
 
+%ifarch x86_64
+%bcond_without qatzip
+%endif
+
+%global have_libcbor 1
+
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward
 # the following need to be > 64K
 %define supported_nics_large {e1000 rtl8139}
@@ -82,7 +88,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.1.2
+Version:        9.2.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -145,6 +151,12 @@ BuildRequires:  pkgconfig(liburing) >= %liburing_min_version
 %endif
 %if 0%{with xdp}
 BuildRequires:  libxdp-devel
+%endif
+%if 0%{with qatzip}
+BuildRequires:  qatzip-devel
+%endif
+%if %{have_libcbor}
+BuildRequires:  libcbor-devel
 %endif
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3-Sphinx
@@ -419,7 +431,7 @@ meson subprojects packagefiles --apply berkeley-softfloat-3
 %define ppc_extra_firmware {skiboot.lid slof.bin}
 %define riscv64_default_firmware %{nil}
 %define riscv64_extra_firmware {opensbi-riscv64-generic-fw_dynamic.bin}
-%define s390x_default_firmware {s390-ccw.img s390-netboot.img}
+%define s390x_default_firmware {s390-ccw.img}
 %define s390x_extra_firmware %{nil}
 %define x86_default_firmware {linuxboot.bin linuxboot_dma.bin multiboot.bin \
 multiboot_dma.bin kvmvapic.bin pvh.bin}
@@ -581,6 +593,9 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %if 0%{with rbd}
 	--enable-rbd \
 %endif
+%if 0%{with qatzip}
+	--enable-qatzip \
+%endif
 %if 0%{has_rutabaga_gfx}
 	--enable-rutabaga-gfx \
 %endif
@@ -612,6 +627,9 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-iconv \
 	--enable-jack \
 	--enable-l2tpv3 \
+%if %{have_libcbor}
+	--enable-libcbor \
+%endif
 	--enable-libiscsi \
 	--enable-libkeyutils \
 	--enable-libnfs \
@@ -835,6 +853,7 @@ unlink %{buildroot}%_datadir/%name/firmware/60-edk2-aarch64.json
 unlink %{buildroot}%_datadir/%name/firmware/60-edk2-arm.json
 unlink %{buildroot}%_datadir/%name/firmware/60-edk2-i386.json
 unlink %{buildroot}%_datadir/%name/firmware/60-edk2-x86_64.json
+unlink %{buildroot}%_datadir/%name/firmware/60-edk2-loongarch64.json
 unlink %{buildroot}%_datadir/%name/edk2-aarch64-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-arm-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-arm-vars.fd
@@ -845,6 +864,8 @@ unlink %{buildroot}%_datadir/%name/edk2-x86_64-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-x86_64-secure-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-riscv-code.fd
 unlink %{buildroot}%_datadir/%name/edk2-riscv-vars.fd
+unlink %{buildroot}%_datadir/%name/edk2-loongarch64-code.fd
+unlink %{buildroot}%_datadir/%name/edk2-loongarch64-vars.fd
 
 # this was never meant for customer consumption - delete even though installed
 unlink %{buildroot}%_bindir/elf2dmp
@@ -1137,7 +1158,6 @@ This package provides s390x emulation.
 %files s390x
 %_bindir/qemu-system-s390x
 %_datadir/%name/s390-ccw.img
-%_datadir/%name/s390-netboot.img
 %doc %_docdir/qemu-s390x
 
 %package arm
@@ -1178,7 +1198,6 @@ popular QEMU packages which are dedicated to a single architecture.)
 %files extra
 %_bindir/qemu-system-alpha
 %_bindir/qemu-system-avr
-%_bindir/qemu-system-cris
 %_bindir/qemu-system-hppa
 %_bindir/qemu-system-loongarch64
 %_bindir/qemu-system-m68k
@@ -1619,8 +1638,6 @@ a virtfs helper, ivshmem, disk utilities and scripts for various purposes.
 %_bindir/vmstate-static-checker.py
 %_bindir/vmxcap
 %verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
-%_libexecdir/virtfs-proxy-helper
-%_mandir/man1/virtfs-proxy-helper.1.gz
 %dir %_sysconfdir/%name
 %config(noreplace) %_sysconfdir/%name/bridge.conf
 
@@ -1749,7 +1766,6 @@ This package provides QTest accelerator for testing QEMU.
 %_libdir/%name/accel-qtest-alpha.so
 %_libdir/%name/accel-qtest-arm.so
 %_libdir/%name/accel-qtest-avr.so
-%_libdir/%name/accel-qtest-cris.so
 %_libdir/%name/accel-qtest-hppa.so
 %_libdir/%name/accel-qtest-i386.so
 %_libdir/%name/accel-qtest-loongarch64.so
@@ -1854,7 +1870,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        9.1.2%{sbver}
+Version:        9.2.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1875,7 +1891,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        9.1.2%{sbver}
+Version:        9.2.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1901,7 +1917,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        9.1.2
+Version:        9.2.0
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

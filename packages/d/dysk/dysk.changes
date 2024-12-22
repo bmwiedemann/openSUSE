@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:14:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  * update CHANGELOG
+  * add uuid & partuuid in web's columns list
+  * version 2.10 with UUID and PARTUUID
+  * fix colors of search dialog in website
+
+-------------------------------------------------------------------
 Sat Sep 14 11:05:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.1:

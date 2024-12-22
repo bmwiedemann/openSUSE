@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 12 20:06:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- require llvm19/clang19 on sle15 >= sp6
+
+-------------------------------------------------------------------
 Mon Dec  9 12:49:53 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - use clang19-devel, llvm19-devel for sle15-sp7 

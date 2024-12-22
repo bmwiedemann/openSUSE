@@ -1,6 +1,6 @@
 %define _buildshell /bin/bash
 
-%define sbver   1.16.3_3_gc13ff2cd
+%define sbver   1.16.3_3_g3d33c746
 
 %define srcdir %{_builddir}/%buildsubdir
 %define blddir %srcdir/build
@@ -110,6 +110,7 @@ virtualization.
  --audio-drv-list=		\\\
  --disable-af-xdp		\\\
  --disable-alsa			\\\
+ --disable-asan			\\\
  --disable-attr			\\\
  --disable-auth-pam		\\\
  --disable-avx2			\\\
@@ -161,6 +162,7 @@ virtualization.
  --disable-jack			\\\
  --disable-kvm			\\\
  --disable-l2tpv3		\\\
+ --disable-libcbor		\\\
  --disable-libdaxctl		\\\
  --disable-libdw		\\\
  --disable-libiscsi		\\\
@@ -205,9 +207,9 @@ virtualization.
  --disable-relocatable		\\\
  --disable-replication		\\\
  --disable-rng-none		\\\
+ --disable-rust			\\\
  --disable-rutabaga-gfx		\\\
  --disable-safe-stack		\\\
- --disable-sanitizers		\\\
  --disable-sdl			\\\
  --disable-sdl-image		\\\
  --disable-seccomp		\\\
@@ -220,6 +222,7 @@ virtualization.
  --disable-sparse		\\\
  --disable-spice		\\\
  --disable-spice-protocol	\\\
+ --disable-strict-rust-lints	\\\
  --disable-strip		\\\
  --disable-system		\\\
  --disable-tcg			\\\
@@ -229,6 +232,7 @@ virtualization.
  --disable-tsan			\\\
  --disable-u2f			\\\
  --disable-uadk			\\\
+ --disable-ubsan		\\\
  --disable-usb-redir		\\\
  --disable-user			\\\
  --disable-vde			\\\

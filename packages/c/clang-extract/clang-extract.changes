@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 20 20:42:18 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20241220.8344124:
+  * Add support to llvm-19
+
+-------------------------------------------------------------------
+Fri Dec 20 20:41:01 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20241002.ec46efd:
+  * Allow clang-extract to ignore errors pointed by clang
+  * SymbolExternalizer: Make sure we pass a valid location when searching identifiers
+  * SymbolExternalizer: Add ! to TOKEN_VECTOR
+  * libcextract: Passes: Adjust KLP_RELOC_SYMBOL_POS format
+  * testsuite: inline: inlined-into-1: Fix noinline and implicit-int
+  * Add option to pass two debuginfos
+  * Fix symbol visibility
+  * Disable const propagation on externalized vars
+  * libcextract: ArgvParser: Use basename instead of std::filename
+
+-------------------------------------------------------------------
 Mon Oct 07 12:56:24 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20241002.ec46efd:

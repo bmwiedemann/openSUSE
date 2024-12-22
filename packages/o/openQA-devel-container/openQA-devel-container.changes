@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 20 15:39:17 UTC 2024 - okurz@suse.de
+
+- Update to version 4.6.1734664906.658e18370:
+  * Update to latest openQA version
+
+
+Request: https://api.opensuse.org/source/openSUSE:Factory/openQA-devel-container?rev=latest&expand=1
+Headers:
+Date: Fri, 20 Dec 2024 15:38:56 GMT
+Server: Apache/2.4.58 (Linux/SUSE)
+Strict-Transport-Security: max-age=31536000
+cache-control: no-cache, no-store, must-revalidate
+content-length: 189
+status: 503 Service Unavailable
+content-type: text/html; charset=UTF-8
+Connection: close
+-------------------------------------------------------------------
 Sun Nov 10 03:30:41 UTC 2024 - okurz@suse.de
 
 - Update to version 4.6.1731074977.2c4a23450:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:31:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.1:
+  * update preferred repo list (#352)
+  * upgrade modules and docker base image (#351)
+
+-------------------------------------------------------------------
 Wed Oct 02 05:50:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11:

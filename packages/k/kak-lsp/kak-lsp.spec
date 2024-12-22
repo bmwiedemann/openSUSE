@@ -17,7 +17,7 @@
 
 
 Name:           kak-lsp
-Version:        18.1.0
+Version:        18.1.1
 Release:        0
 Summary:        Language Server Protocol client for Kakoune
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR MPL-2.0) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND MIT AND Zlib AND Unlicense
@@ -26,6 +26,7 @@ Source0:        kakoune-lsp-%{version}.tar.zst
 Source1:        registry.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  openssl-devel
 BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}
 Provides:       kakoune-lsp = %{version}

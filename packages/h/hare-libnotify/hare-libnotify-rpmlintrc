@@ -1,0 +1,4 @@
+# The ghost comes from pretrans
+addFilter("filelist-forbidden-fhs23")
+# The workaround to avoid this buildarch noarch causes this minor issue
+addFilter("invalid-spec-name")

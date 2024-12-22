@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Dec 20 08:03:35 UTC 2024 - dfaggioli@suse.com
+
+- Update to latest upstream release, 9.2.0:
+  The full list of changes are available at:
+   https://wiki.qemu.org/ChangeLog/9.2
+  Highlights include:
+   * virtio-gpu: support for 3D acceleration of Vulkan applications via
+     Venus Vulkan driver in the guest and virglrenderer host library
+   * crypto: GLib crypto backend now supports SHA-384 hashes
+   * migration: QATzip-accelerated compression support while using multiple
+     migration streams
+   * Rust: experimental support for device models written in Rust (for
+     development use only)
+   * ARM: emulation support for FEAT_EBF16, FEAT_CMOW architecture features
+   * ARM: support for two-stage SMMU translation for sbsa-ref and virt boards
+   * ARM: support for CPU Security Extensions for xilinx-zynq-a9 board
+   * ARM: 64GB+ memory support when using HVF acceleration on newer Macs
+   * HPPA: SeaBIOS-hppa v17 firmware with various fixes and enhancements
+   * RISC-V: IOMMU support for virt machine
+   * RISC-V: support for control flow integrity and Svvptc extensions, and
+     support for Bit-Manipulation extension on OpenTitan boards
+   * RISC-V: improved performance for vector unit-stride/whole register
+     ld/st instructions
+   * s390x: support for booting from other devices if the previous ones fail
+   * x86: support for new nitro-enclave machine type that can emulate
+   * AWS Nitro Enclave and can boot from Enclave Image Format files.
+   * x86: KVM support for enabling AVX10, as well as enabling specific
+     AVX10 versions via command-line
+   * and lots more...
+- Other changes:
+   * Removed deprecated 'cris' support
+   * Removed deprecated virtfs-proxy-helper
+   * (`--enable-rust` not addressed yet)
+
+-------------------------------------------------------------------
 Tue Dec 10 17:36:14 UTC 2024 - dfaggioli@suse.com
 
 - Fix bsc#1232712. The problem must be addressed upstream. This is

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 17:19:01 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace wxWidgets-3_0-nostl-devel with wxWidgets-devel
+  BuildRequires.
+
+-------------------------------------------------------------------
 Fri Nov 22 09:16:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 0ad-link-icu-76.patch: Fix build against ICU 76.x.

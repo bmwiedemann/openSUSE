@@ -36,10 +36,10 @@ r2: add filesystem trawl to set up name alias index
 r1: initial revision
 
 
-Index: php-8.3.11/ext/date/config0.m4
+Index: php-8.3.15/ext/date/config0.m4
 ===================================================================
---- php-8.3.11.orig/ext/date/config0.m4
-+++ php-8.3.11/ext/date/config0.m4
+--- php-8.3.15.orig/ext/date/config0.m4
++++ php-8.3.15/ext/date/config0.m4
 @@ -4,6 +4,19 @@ AC_CHECK_HEADERS([io.h])
  dnl Check for strtoll, atoll
  AC_CHECK_FUNCS(strtoll atoll)
@@ -60,10 +60,10 @@ Index: php-8.3.11/ext/date/config0.m4
  AX_CHECK_COMPILE_FLAG([-Wno-implicit-fallthrough],
    [PHP_DATE_CFLAGS="$PHP_DATE_CFLAGS -Wno-implicit-fallthrough"],,
    [-Werror])
-Index: php-8.3.11/ext/date/lib/parse_tz.c
+Index: php-8.3.15/ext/date/lib/parse_tz.c
 ===================================================================
---- php-8.3.11.orig/ext/date/lib/parse_tz.c
-+++ php-8.3.11/ext/date/lib/parse_tz.c
+--- php-8.3.15.orig/ext/date/lib/parse_tz.c
++++ php-8.3.15/ext/date/lib/parse_tz.c
 @@ -26,9 +26,33 @@
  #include "timelib.h"
  #include "timelib_private.h"
@@ -728,11 +728,11 @@ Index: php-8.3.11/ext/date/lib/parse_tz.c
  	} else {
  		*error_code = TIMELIB_ERROR_NO_SUCH_TIMEZONE;
  		tmp = NULL;
-Index: php-8.3.11/ext/date/php_date.c
+Index: php-8.3.15/ext/date/php_date.c
 ===================================================================
---- php-8.3.11.orig/ext/date/php_date.c
-+++ php-8.3.11/ext/date/php_date.c
-@@ -490,7 +490,11 @@ PHP_MINFO_FUNCTION(date)
+--- php-8.3.15.orig/ext/date/php_date.c
++++ php-8.3.15/ext/date/php_date.c
+@@ -491,7 +491,11 @@ PHP_MINFO_FUNCTION(date)
  	php_info_print_table_row(2, "date/time support", "enabled");
  	php_info_print_table_row(2, "timelib version", TIMELIB_ASCII_VERSION);
  	php_info_print_table_row(2, "\"Olson\" Timezone Database Version", tzdb->version);

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 20 23:43:12 UTC 2024 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
+
+- Update to the latest upstream stable version - 0.4
+ * Minor & Major of both visual and under-the-hood changes/improvements
+ * General improvements, changes to formatting and overall visual adjustments
+ * Featuring: Refactor plugins; updated plugins, paths & more
+ * Changed/Removed unnecessities
+ * Added option to run Bash scripts at Light/Dark theme shift
+
+-------------------------------------------------------------------
 Thu Jun 27 16:14:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.3.1

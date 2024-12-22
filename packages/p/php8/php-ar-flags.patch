@@ -1,8 +1,8 @@
-Index: php-8.3.8/configure.ac
+Index: php-8.3.15/configure.ac
 ===================================================================
---- php-8.3.8.orig/configure.ac
-+++ php-8.3.8/configure.ac
-@@ -1660,7 +1660,7 @@ PHP_CONFIGURE_PART(Configuring libtool)
+--- php-8.3.15.orig/configure.ac
++++ php-8.3.15/configure.ac
+@@ -1668,7 +1668,7 @@ PHP_CONFIGURE_PART(Configuring libtool)
  
  dnl Silence warning: `ar: 'u' modifier ignored since 'D' is the default`
  dnl See https://github.com/php/php-src/pull/3017

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:30:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.71.1:
+  * feat: Adding `log-disable-error-summary` flag (#3687)
+
+-------------------------------------------------------------------
+Sat Dec 21 14:18:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.71.0:
+  * feat: Adding logging docs (#3688)
+  * fix: Split stdout and stderr streams even when using custom
+    logging (#3686)
+
+-------------------------------------------------------------------
 Thu Dec 19 07:49:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.70.4:

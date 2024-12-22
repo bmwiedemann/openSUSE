@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 21 15:04:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.2:
+  * [release-1.9] 🌱 Reconcile topology only when necessary
+    (#11606)
+  * [release-1.9] 🌱 Improve KCP scale up when using failure
+    domains (#11604)
+  * [release-1.9] 🌱 add TypedAll, ResourceIsUnchanged and
+    TypedResourceIsUnchanged predicates (#11603)
+  * Cache DiscoveryVariables calls
+
+-------------------------------------------------------------------
 Wed Dec 18 06:41:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.1:

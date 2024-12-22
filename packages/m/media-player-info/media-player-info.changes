@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:50:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 26:
+  + Fix and validate generated AppStream metainfo file
+- Changes from version 25:
+  + Generate AppStream metainfo file
+  + Fix incorrect USB DeviceMatch=
+- Switch to source service git checkout. Following this, add
+  libtool BuildRequires, and bootstrap build.
+
+-------------------------------------------------------------------
 Tue Jun 16 06:52:16 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 24:

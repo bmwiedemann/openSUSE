@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Dec 19 18:56:10 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add Conflicts: for sddm, sddm-greeter-{qt5,qt6} these packages
+  will never be co-installable.
+
+-------------------------------------------------------------------
+Thu Oct 31 01:37:21 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Intial commit as sddm-kalpa
+
+-------------------------------------------------------------------
+Thu Mar 21 00:02:00 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added Requires: group(sddm)
+
+-------------------------------------------------------------------
+Wed Mar 20 23:23:14 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Ported over pam configs from o:F/sddm
+
+-------------------------------------------------------------------
+Fri Mar  8 12:45:26 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 0.21.0
+  + Sync changes from Fedora
+
+-------------------------------------------------------------------
+Wed Feb 21 01:33:51 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed:
+  * sddm.sysconfig
+  * sddm-0.18.0-environment_file.patch
+- Neither are needed for openSUSE
+
+-------------------------------------------------------------------
+Fri Feb 16 21:17:01 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Specfile cleanup for openSUSE
+
+-------------------------------------------------------------------
+Sat Jan 27 01:38:33 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Initial package forked from Fedora

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 19 08:16:44 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.4:
+  * fix isLikelyNotMountPointStatx relative path issue
+  * Bump images, dependencies and versions to go 1.22.9 and distroless iptables
+  * Ensure that a node's CIDR isn't released until the node is deleted
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.4/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Thu Nov 28 08:32:35 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.3:

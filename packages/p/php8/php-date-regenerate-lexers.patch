@@ -1,8 +1,8 @@
-Index: php-8.2.7/ext/date/config0.m4
+Index: php-8.3.15/ext/date/config0.m4
 ===================================================================
---- php-8.2.7.orig/ext/date/config0.m4
-+++ php-8.2.7/ext/date/config0.m4
-@@ -23,6 +23,8 @@ timelib_sources="lib/astro.c lib/dow.c l
+--- php-8.3.15.orig/ext/date/config0.m4
++++ php-8.3.15/ext/date/config0.m4
+@@ -27,6 +27,8 @@ timelib_sources="lib/astro.c lib/dow.c l
  
  PHP_NEW_EXTENSION(date, php_date.c $timelib_sources, no,, $PHP_DATE_CFLAGS)
  
@@ -11,10 +11,10 @@ Index: php-8.2.7/ext/date/config0.m4
  PHP_ADD_BUILD_DIR([$ext_builddir/lib], 1)
  PHP_ADD_INCLUDE([$ext_builddir/lib])
  PHP_ADD_INCLUDE([$ext_srcdir/lib])
-Index: php-8.2.7/ext/date/Makefile.frag
+Index: php-8.3.15/ext/date/Makefile.frag
 ===================================================================
 --- /dev/null
-+++ php-8.2.7/ext/date/Makefile.frag
++++ php-8.3.15/ext/date/Makefile.frag
 @@ -0,0 +1,6 @@
 +$(srcdir)/lib/parse_date.c: $(srcdir)/lib/parse_date.re
 +	@(cd $(top_srcdir); $(RE2C) $(RE2C_FLAGS) -b --no-generation-date -o ext/date/lib/parse_date.c ext/date/lib/parse_date.re)

@@ -252,4 +252,12 @@
     <comment>- use clang19-devel, llvm19-devel for sle15-sp7</comment>
     <requestid>1229390</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>5d66fae4253c36c79f8c681123abf214</srcmd5>
+    <version>0.2.0+llvm19.1.0</version>
+    <time>1734886726</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1232707</requestid>
+  </revision>
 </revisionlist>

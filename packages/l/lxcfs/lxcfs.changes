@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 20 05:52:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.3 LTS:
+  The LXCFS team is pleased to announce the release of LXCFS 6.0.3!
+  This is the third bugfix release for LXCFS 6.0 which is supported
+  until June 2029.
+  * Changes
+    - Better detection of swap accounting support
+    - Reworked testsuite including support for 64-bit Arm
+  * Detailed changelog
+    - lxcfs_read: Added LXCFS_TYPE macro to all FUSE filesystem
+      calls
+    - lxcfs: fix readdir for procfs subtree
+    - tests: add proc readdir test
+    - cgroups/cgfsng: improve swap accounting support detection
+    - github: Bump Ubuntu version
+    - github: Simplify tests workflow
+    - github: Add arm64 tests
+    - tests: Make sure to enable cpuset controller
+    - github: Use shared logic
+    - github: Update coverity workflow
+    - github: Simplify build action
+    - github: Update checkout to v4
+    - github: Cleanup testsuite action
+    - github: Improve progress reporting
+
+-------------------------------------------------------------------
 Sat Sep 21 16:20:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.2 LTS:

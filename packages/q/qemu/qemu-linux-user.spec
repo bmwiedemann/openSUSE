@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.1.2
+Version:        9.2.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -74,7 +74,6 @@ syscall layer occurs on the native hardware and operating system.
 %_bindir/qemu-alpha
 %_bindir/qemu-arm
 %_bindir/qemu-armeb
-%_bindir/qemu-cris
 %_bindir/qemu-hexagon
 %_bindir/qemu-hppa
 %_bindir/qemu-i386

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 11:46:32 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add mtl-ofi-fix-missing-definition-of-container_of.patch to fix
+ compilation with libfabric >= 2.0 (jsc#PED-9661, jsc#PED-10668)
+
+-------------------------------------------------------------------
 Tue Nov 26 07:12:00 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 4.1.7 (jsc#PED-11355):

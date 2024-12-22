@@ -228,4 +228,12 @@
   - Fix issue that would prevent using Libfabric 2.x releases.</comment>
     <requestid>1227160</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>afd9f5a455d0ce161533d4281f564172</srcmd5>
+    <version>4.1.7</version>
+    <time>1734886738</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1232847</requestid>
+  </revision>
 </revisionlist>

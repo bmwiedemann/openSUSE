@@ -112,4 +112,14 @@
 </comment>
     <requestid>1225916</requestid>
   </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>5633588764ac6ad2ba13514b9ac9acd7</srcmd5>
+    <version>0.0.26</version>
+    <time>1734887007</time>
+    <user>anag+factory</user>
+    <comment>- Replace wxWidgets-3_0-nostl-devel with wxWidgets-devel
+  BuildRequires.
+</comment>
+    <requestid>1232902</requestid>
+  </revision>
 </revisionlist>

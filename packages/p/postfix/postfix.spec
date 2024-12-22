@@ -46,7 +46,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
@@ -525,8 +525,8 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/sasl_passwd
 %config(noreplace) %{_sysconfdir}/%{name}/sender_canonical
 %config(noreplace) %{_sysconfdir}/%{name}/virtual
-%ghost %{_sysconfdir}/%{name}/*.lmdb
-%ghost %{_sysconfdir}/aliases.lmdb
+%ghost %attr(0644,root,root) %{_sysconfdir}/%{name}/*.lmdb
+%ghost %attr(0644,root,root) %{_sysconfdir}/aliases.lmdb
 %dir %{_sysconfdir}/sasl2
 %config(noreplace) %{_sysconfdir}/sasl2/smtpd.conf
 %exclude %{_sysconfdir}/%{name}/LICENSE

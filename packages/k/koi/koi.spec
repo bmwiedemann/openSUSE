@@ -1,7 +1,7 @@
 #
 # spec file for package koi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           koi
-Version:        0.3.1
+Version:        0.4
 Release:        0
 Summary:        Theme scheduling for the KDE Plasma Desktop
 License:        LGPL-3.0-only

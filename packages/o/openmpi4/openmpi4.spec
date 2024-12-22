@@ -148,6 +148,7 @@ Patch1:         orted-mpir-add-version-to-shared-library.patch
 Patch2:         btl-openib-Add-VF-support-for-ConnectX-4-5-and-6.patch
 Patch3:         openmpi4-C99.diff
 Patch4:         test-datatype-partial.c-fix-compiler-warnings.patch
+Patch5:         mtl-ofi-fix-missing-definition-of-container_of.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf

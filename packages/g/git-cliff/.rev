@@ -188,4 +188,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1202696</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>483c94bfaa35d77530fc33ecec096ce4</srcmd5>
+    <version>2.7.0</version>
+    <time>1734887020</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.7.0:
+  * refactor(clippy): apply clippy suggestions
+  * chore(deps): bump dependencies
+  * chore(integration): remove experimental feature disclaimer
+  * feat(config): allow overriding the remote API URL via config
+  * docs(git): improve docs for commit_preprocessors and commit_parsers
+  * feat(jujutsu): add jujustu support
+  * perf(test): don't create regex inside a loop
+  * chore(log): add trace log about which command is being run
+  * fix(remote): preserve first time contributors
+  * test(git): find upstream remote when using ssh
+  * docs(readme): add blog post about git-cliff
+  * chore(config): add the 'other' parser to the default config
+  * fix(changelog): fix missing commit fields in context
+  * refactor(clippy): apply clippy suggestions
+  * test(repo): expand unit tests of the repo module
+  * fix(changelog): include the root commit when `--latest` is used with one tag
+  * chore(deps): bump clap from 4.5.18 to 4.5.19
+  * feat(args): add color to the help text
+  * chore(release): prepare for v2.6.1
+  * refactor(clippy): apply doc_markdown and ignored_unit_patterns lint
+  * chore(fixtures): build binaries using dev profile
+  * refactor(clippy): apply if_not_else lint
+  * fix(remote): avoid setting multiple remotes
+  * chore(deps): bump thiserror from 1.0.63 to 1.0.64
+  * refactor(clippy): apply assigning_clones lint
+  * refactor(clippy): apply single_match_else lint
+  * refactor(clippy): apply needless_pass_by_value lint
+  * chore(release): prepare for v2.6.0
+  * feat(config): add changelog.render_always option</comment>
+    <requestid>1232908</requestid>
+  </revision>
 </revisionlist>

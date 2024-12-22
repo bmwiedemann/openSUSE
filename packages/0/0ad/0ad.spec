@@ -64,7 +64,7 @@ BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-nostl-devel
+BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(IL)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gloox)

@@ -38,14 +38,9 @@ BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 %else
- %if 0%{?sle_version} >= 150700
+ %if 0%{?sle_version} >= 150600
 BuildRequires:  clang19-devel
 BuildRequires:  llvm19-devel
- %else
-  %if 0%{?sle_version} >= 150500
-BuildRequires:  clang18-devel
-BuildRequires:  llvm18-devel
-  %endif
  %endif
 %endif
 BuildRequires:  python3-base

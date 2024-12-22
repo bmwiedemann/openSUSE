@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 10:26:41 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Always filter out from installation parameters "root=" as it
+  needs to be always changed to installed system (bsc#1234678)
+- 5.0.13
+
+-------------------------------------------------------------------
 Tue Nov  5 09:57:58 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Sync warning text from s390 secure boot to be identical in

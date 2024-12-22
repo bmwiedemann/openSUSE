@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Dec  5 19:05:33 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.9.1
+  * The mail_version configuration parameter did not have a three-number
+    value (3.9 instead of 3.9.0; it still had the two-number version
+    from the development releases postfix-3.9-yyyymmdd). This broke
+    pathnames derived from the mail_version value, such as
+    shlib_directory.
+  * Bugfix (defect introduced: Postfix 2.9, date 20111218): with
+    "smtpd_sasl_auth_enable = no", the permit_sasl_authenticated feature
+    ignored information that was received with the XCLIENT LOGIN
+    command, so that the client was treated as unauthenticated. This was
+    fixed by removing an unnecessary test.
+  * Bugfix (defect introduced: postfix 3.0): the default master.cf
+    syslog_name setting for the relay service did not preserve
+    multi-instance information, which complicated logfile analysis.
+  * Bugfix (defect introduced: Postfix 2.3, date 20051222): file
+    descriptor leak after failure to connect to a Dovecot auth server.
+    The impact is limited because Dovecot auth failures are rare, there
+    are limits on the number of retries (one), on the number of errors
+    per SMTP session (smtpd_hard_error_limit), on the number of sessions
+    per SMTP server process (max_use), and on the number of file handles
+    per process (managed with sysctl).
+  * Bugfix (defect introduced: Postfix 3.4, date 20190121): the
+    postsuper command failed with "open logfile '/path/to/file':
+    Permission denied" when the maillog_file parameter specified a
+    filename and Postfix was not running. This was fixed by opening the
+    maillog_file before dropping root privileges.
+  * Bugfix (defect introduced Postfix 3.0). No autodetection of UTF8
+    text when missing message headers were automatically added by
+    Postfix (for example, a From: header with UTF8 full name information
+    from the password file). This caused Postfix to send UTF8 in message
+    headers without using the SMTPUTF8 protocol.
+
+-------------------------------------------------------------------
 Tue Sep 24 08:29:19 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - Missing posttls-finger in postfix though changes mention it

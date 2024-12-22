@@ -23,6 +23,8 @@ Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 Source:         %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM -- https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/merge_requests/189
+Patch0:         xdg-desktop-portal-gnome-gtk_init.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig

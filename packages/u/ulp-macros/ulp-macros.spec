@@ -24,6 +24,7 @@ URL:            https://github.com/SUSE/libpulp
 License:        LGPL-2.1-or-later
 Group:          Development
 Source1:        ulp.macros
+Source2:        LICENSE
 BuildArch:      noarch
 
 %description
@@ -35,9 +36,11 @@ This package contain macros for enabling Userspace Live Patching into packages
 
 %install
 install -D -m 0644 %{S:1}   %{buildroot}%{_rpmmacrodir}/macros.ulp
+install -D -m 0644 %{S:2}   %{buildroot}/usr/share/licenses/ulp-macros/LICENSE
 
 %files
 %{_rpmmacrodir}/macros.ulp
+%license LICENSE
 
 %check
 

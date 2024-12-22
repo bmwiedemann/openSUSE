@@ -1,0 +1,12 @@
+Index: libmp4tag-2.0.0/CMakeLists.txt
+===================================================================
+--- libmp4tag-2.0.0.orig/CMakeLists.txt
++++ libmp4tag-2.0.0/CMakeLists.txt
+@@ -129,7 +129,6 @@ endif()
+ 
+ if (NOT WIN32)
+   if (NOT APPLE)
+-    SET (CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR} "\${ORIGIN}")
+   endif()
+   if (APPLE)
+     SET (CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR} "@loader_path")

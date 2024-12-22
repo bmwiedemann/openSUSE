@@ -318,7 +318,7 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{?suse_version} >= 1550
 BuildRequires:  llvm-devel >= 15
 %else
-%if 0%{?sle_version} >= 150700
+%if 0%{?sle_version} >= 150600
 BuildRequires:  llvm19-devel
 %endif
 %endif
@@ -328,7 +328,7 @@ BuildRequires:  llvm19-devel
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
 %else
-%if 0%{?sle_version} >= 150700
+%if 0%{?sle_version} >= 150600
 BuildRequires:  clang19-devel
 %endif
 %endif

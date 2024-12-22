@@ -233,4 +233,71 @@
 </comment>
     <requestid>1226766</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8ab296d614c0d37993b5e664f7956d25</srcmd5>
+    <version>18.1.1</version>
+    <time>1734887011</time>
+    <user>anag+factory</user>
+    <comment>- Build now requires openssl because the dependency graph now has
+  openssl-sys.
+- Update to version 18.1.1:
+  * Make crash reporting optional for now
+  * Touch up installation instructions in readme
+  * Make force-exit code paths safer
+  * Extract function
+  * Rework &quot;Prevent buffer content logic from reading to much&quot;
+  * Don't send debug log about excessive progress reports to editor
+  * Make test/clangd-invalid-utf8.sh compatible with older clangd
+  * Fix crash when legacy &quot;language&quot; config option uses language IDs
+  * Set LAST_CLIENT earlier
+  * test/clangd-invalid-utf8.sh: fix for modern clang
+  * Add biome to CSS and GraphQL
+  * On crash, disable LSP hooks in current buffer
+  * Simplify sentry integration
+  * Work around crash on unsaved files after server restart
+  * Add context to crash report message
+  * Include formatted panic info and backtrace in crash report
+  * Crash reporting via sentry.io
+  * Make the default panic message a little less intimidating
+  * Generalize option change hook parsing code
+  * Back out &quot;Fix fake textDocument/didOpen for unsaved files&quot;
+  * Back out &quot;Make sure to call textDocument/didOpen when lsp_servers is set after BufCreate&quot;
+  * Prevent buffer content logic from reading to much
+  * Fix crash on &lt;c-c&gt; during -sync command
+  * Make sure to call textDocument/didOpen when lsp_servers is set after BufCreate
+  * Add commented config for tailwindcss-language-server
+  * Fix fake textDocument/didOpen for unsaved files
+  * Stop logging the lsp-show-error call
+  * Fix garbage languageId being sent on lsp-workspace-symbol
+  * Clean up editor command dispatch code
+  * Rename command sender type
+  * Fix corruption applying text edits to non-buffer, non-ASCII files
+  * Separate out function for applying text edits to in-memory data structure
+  * Apply clippy lints
+  * Update unit tests
+  * Consolidate error reporting
+  * Work around missing error on missing code lens after server restart
+  * Type for client name
+  * Rework editor-command sending
+  * Remove most uses of EditorMeta::session
+  * Remove vestiges of multi-session code
+  * Bravely remove obsolete command_fifo, make response_fifo handling more robust
+  * Fix flaky test/gopls-goto-definition.sh
+  * Remove unused function
+  * Add more details to fifo log
+  * Remove unused parameter
+  * Use a separate field for requests pending initialization resp. textDocument/didChange
+  * Fix hang when sync request is used in hook when LSP is disabled
+  * Fix lsp-did-change not being sent for lsp-code-actions-sync
+  * Fix lingering sync state when lsp is disabled
+  * Remove unused lsp-with-option command
+  * Stop printing panic backtrace twice
+  * Add badges for latest release and chat networks
+  * Fix stacktrace being printed on EPIPE, remove redundant error output
+  * Call out feedback/support channels a bit more
+  * Stop linking to the Wiki page for installing servers
+  * Only set javascriptreact/typescriptreact language ID for jsx/tsx files
+</comment>
+    <requestid>1232905</requestid>
+  </revision>
 </revisionlist>

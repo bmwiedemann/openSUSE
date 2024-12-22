@@ -1,0 +1,40 @@
+From 7f3fb0afc219cc6d26fd093cb0e7aeb958e32d90 Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Thu, 7 Nov 2024 12:25:51 -0800
+Subject: [PATCH] externalwindow: Call gtk_init before opening a display
+
+See https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/7836#note_2254328
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ src/externalwindow-wayland.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/src/externalwindow-wayland.c b/src/externalwindow-wayland.c
+index 4ed62c7..953ff84 100644
+--- a/src/externalwindow-wayland.c
++++ b/src/externalwindow-wayland.c
+@@ -287,10 +287,15 @@ init_external_window_wayland_display (GError **error)
+ 
+   g_setenv ("WAYLAND_SOCKET", fd_str, TRUE);
+   gdk_set_allowed_backends ("wayland");
+-  display = gdk_display_open (NULL);
+-  g_assert (display);
++  if (gtk_init_check ())
++    {
++      display = gdk_display_get_default ();
++      g_assert (display);
+ 
+-  init_x11_interop (display);
++      init_x11_interop (display);
+ 
+-  return display;
++      return display;
++    }
++  else
++    return NULL;
+ }
+-- 
+2.47.0
+
+

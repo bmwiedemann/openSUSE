@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Dec 20 07:42:37 UTC 2024 - pgajdos@suse.com
+
+- version update to 8.3.15
+    Calendar:
+        Fixed jdtogregorian overflow.
+        Fixed cal_to_jd julian_days argument overflow.
+    COM:
+        Fixed bug GH-16991 (Getting typeinfo of non DISPATCH variant segfaults).
+    Core:
+        Fail early in *nix configuration build script.
+        Fixed bug GH-16727 (Opcache bad signal 139 crash in ZTS bookworm (frankenphp)).
+        Fixed bug GH-16799 (Assertion failure at Zend/zend_vm_execute.h:7469).
+        Fixed bug GH-16630 (UAF in lexer with encoding translation and heredocs).
+        Fix is_zend_ptr() huge block comparison.
+        Fixed potential OOB read in zend_dirname() on Windows.
+    Curl:
+        Fixed bug GH-16802 (open_basedir bypass using curl extension).
+        Fix various memory leaks in curl mime handling.
+    DOM:
+        Fixed bug GH-16777 (Calling the constructor again on a DOM object after it is in a document causes UAF).
+        Fixed bug GH-16906 (Reloading document can cause UAF in iterator).
+    FPM:
+        Fixed GH-16432 (PHP-FPM 8.2 SIGSEGV in fpm_get_status).
+    GD:
+        Fixed GH-16776 (imagecreatefromstring overflow).
+    GMP:
+        Fixed bug GH-16890 (array_sum() with GMP can loose precision (LLP64)).
+    Hash:
+        Fixed GH-16711: Segfault in mhash().
+    Opcache:
+        Fixed bug GH-16770 (Tracing JIT type mismatch when returning UNDEF).
+        Fixed bug GH-16851 (JIT_G(enabled) not set correctly on other threads).
+        Fixed bug GH-16902 (Set of opcache tests fail zts+aarch64).
+    OpenSSL:
+        Prevent unexpected array entry conversion when reading key.
+        Fix various memory leaks related to openssl exports.
+        Fix memory leak in php_openssl_pkey_from_zval().
+    PDO:
+        Fixed memory leak of `setFetchMode()`.
+    Phar:
+        Fixed bug GH-16695 (phar:// tar parser and zero-length file header blocks).
+    PHPDBG:
+        Fixed bug GH-15208 (Segfault with breakpoint map and phpdbg_clear()).
+    SAPI:
+        Fixed bug GH-16998 (UBSAN warning in rfc1867).
+    SimpleXML:
+        Fixed bug GH-16808 (Segmentation fault in RecursiveIteratorIterator ->current() with a xml element input).
+    SOAP:
+        Fix make check being invoked in ext/soap.
+    Standard:
+        Fixed bug GH-16905 (Internal iterator functions can't handle UNDEF properties).
+        Fixed bug GH-16957 (Assertion failure in array_shift with self-referencing array).
+    Streams:
+        Fixed network connect poll interuption handling.
+    Windows:
+        Fixed bug GH-16849 (Error dialog causes process to hang).
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-date-regenerate-lexers.patch (refreshed)
+  % php-systzdata-v24.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Nov 21 07:15:54 UTC 2024 - pgajdos@suse.com
 
 - version update to 8.3.14 [bsc#1233644] [bsc#1233651] [bsc#1233703] [bsc#1233702] [bsc#1233705]

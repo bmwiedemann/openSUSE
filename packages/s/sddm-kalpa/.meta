@@ -1,0 +1,5 @@
+<package name="sddm-kalpa" project="openSUSE:Factory">
+  <title>sddm-kalpa</title>
+  <description>sddm-kalpa provides a stripped down version of sddm, that removes the X11 support, and is only intended for use with Kalpa</description>
+  <devel project="devel:microos:kalpa" package="sddm-kalpa"/>
+</package>

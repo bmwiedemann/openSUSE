@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec 20 05:52:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.3:
+  The LXC team is pleased to announce the release of LXC 6.0.3!
+  This is the third bugfix release for LXC 6.0 which is supported
+  until June 2029.
+  As usual this bugfix releases focus on stability and hardening.
+  * Changes
+    - Added support for PuzzleFS images in lxc-oci
+    - SIGHUP is now propagated through lxc.init
+    - Reworked testsuite including support for 64-bit Arm
+  * Detailed changelog
+    - meson.build: add -ffat-lto-objects
+    - meson.build: drop suggest-attribute=noreturn build option
+    - Add suppport for PuzzleFS images in the oci template
+    - create_run_template: don't use txtuid and txtguid out of
+      scope
+    - Avoid null pointer dereference when using shared rootfs.
+      rootfs->storage not set by lxc_storage_prepare when using a
+      shared rootfs.
+    - meson: fix minor typo
+    - lxc-net: Replace random IPv6 subnet
+    - fix return code of recursive all of cgroup_tree_prune
+    - lxccontainer: fix enter_net_ns helper to work when netns is
+      inherited
+    - lxc.init: Switch to sigaction
+    - lxc.init: Ignore user signals coming from inside the
+      contianer
+    - lxc.init: Allow SIGHUP from outside the container
+    - github: Update coverity workflow
+    - github: Introduce shared build logic
+    - github: Introduce shared testsuite logic
+    - github: Rework test workflow
+    - github: Cleanup OSS-fuzz
+    - github: Improve progress reporting
+
+-------------------------------------------------------------------
 Sat Sep 21 16:20:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.2:

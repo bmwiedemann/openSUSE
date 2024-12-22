@@ -36,13 +36,13 @@
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream%{?pkg_suffix}
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
 URL:            https://www.freedesktop.org/software/appstream/docs/
-Source0:        http://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz
-Source1:        http://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz.asc
+Source0:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz
+Source1:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz.asc
 Source2:        AppStream.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         support-meson0.59.patch

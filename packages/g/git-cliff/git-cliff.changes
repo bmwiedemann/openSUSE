@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Dec 21 01:45:02 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.7.0:
+  * refactor(clippy): apply clippy suggestions
+  * chore(deps): bump dependencies
+  * chore(integration): remove experimental feature disclaimer
+  * feat(config): allow overriding the remote API URL via config
+  * docs(git): improve docs for commit_preprocessors and commit_parsers
+  * feat(jujutsu): add jujustu support
+  * perf(test): don't create regex inside a loop
+  * chore(log): add trace log about which command is being run
+  * fix(remote): preserve first time contributors
+  * test(git): find upstream remote when using ssh
+  * docs(readme): add blog post about git-cliff
+  * chore(config): add the 'other' parser to the default config
+  * fix(changelog): fix missing commit fields in context
+  * refactor(clippy): apply clippy suggestions
+  * test(repo): expand unit tests of the repo module
+  * fix(changelog): include the root commit when `--latest` is used with one tag
+  * chore(deps): bump clap from 4.5.18 to 4.5.19
+  * feat(args): add color to the help text
+  * chore(release): prepare for v2.6.1
+  * refactor(clippy): apply doc_markdown and ignored_unit_patterns lint
+  * chore(fixtures): build binaries using dev profile
+  * refactor(clippy): apply if_not_else lint
+  * fix(remote): avoid setting multiple remotes
+  * chore(deps): bump thiserror from 1.0.63 to 1.0.64
+  * refactor(clippy): apply assigning_clones lint
+  * refactor(clippy): apply single_match_else lint
+  * refactor(clippy): apply needless_pass_by_value lint
+  * chore(release): prepare for v2.6.0
+  * feat(config): add changelog.render_always option
+  * chore(deps): bump dependencies
+  * fix(changelog): do not change the tag date if tag already exists
+  * feat(config): allow configuring output file from config
+  * docs(args): fix copy-paste mistake where gitea mentioned gitlab
+  * fix(commit): trim the trailing newline for git2 commits
+  * fix(bump): suppress template warning when `--bumped-version` is used
+  * refactor(clippy): apply explicit_iter_loop lint
+  * refactor(clippy): apply manual_is_variant_and lint
+  * chore(deps): bump clap_complete from 4.5.23 to 4.5.28
+  * chore(deps-dev): bump typescript from 5.5.4 to 5.6.2 in /website in the minor group
+  * chore(deps): bump pretty_assertions from 1.4.0 to 1.4.1
+  * fix(changelog): correctly set the tag message for the latest release
+  * refactor(clippy): apply case_sensitive_file_extension_comparisons lint
+  * refactor(clippy): apply clippy suggestions
+  * refactor(clippy): apply option_as_ref_cloned lint
+  * refactor(template)!: add name parameter to the constructor
+  * fix(core): avoid the unnecessary loop when no remote feature is activated
+  * feat(core): add `remote` to commit and deprecate fields
+  * refactor(clippy): apply semicolon_if_nothing_returned clippy lint
+  * refactor(clippy): apply unnested_or_patterns clippy lint
+  * docs(contributing): mention fetching the tags for running tests successfully
+  * fix(args): support using use_branch_tags from both config and args
+  * feat(changelog): support generating changelog for different branches
+  * chore(examples): improve example templates
+  * chore(lib): fix typos in code comments
+  * chore(deps): bump prism-react-renderer from 2.3.1 to 2.4.0 in /website in the minor group
+  * fix(template): resolve parsing issues with `raw`/`endraw` in Jinja
+  * fix(changelog): don't change the context when provided via `--from-context`
+
+-------------------------------------------------------------------
 Mon Sep 16 14:31:26 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - update to version 2.5.0:

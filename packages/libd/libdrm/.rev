@@ -1881,4 +1881,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * build: simplify Linux system check</comment>
     <requestid>1228410</requestid>
   </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>b5987d0680ed86a2ca7d72be63728eb0</srcmd5>
+    <version>2.4.124</version>
+    <time>1734886728</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1232708</requestid>
+  </revision>
 </revisionlist>

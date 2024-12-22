@@ -1,0 +1,8 @@
+<package name="libmp4tag" project="openSUSE:Factory">
+  <title>MP4 tagging library</title>
+  <description>An MP4 tagging library where all tags can be accessed and modified. Any tags,
+unknown tags or custom tags are never lost when the audio file is updated. A
+list of known tags is only used when new tags are added.</description>
+  <devel project="multimedia:libs" package="libmp4tag"/>
+  <url>https://libmp4tag.sourceforge.io/</url>
+</package>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 19 08:29:32 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.29.12:
+  * Bump images, dependencies and versions to go 1.22.9 and distroless iptables
+  * skip TestCreateBlobDisk test
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.29.12/build/dependencies.yaml#L119-L121
+
+-------------------------------------------------------------------
 Thu Nov 28 08:44:44 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.29.11:

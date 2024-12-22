@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 12:52:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add xdg-desktop-portal-gnome-gtk_init.patch: Call gtk_init before
+  opening a display.
+
+-------------------------------------------------------------------
 Thu Sep 19 13:30:57 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:31:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.21.0:
+  * Prepare release v4.21.0
+  * chore: update dependencies (#2383)
+  * Add DNS provider for ManageEngine CloudDNS (#2365)
+  * chore: update dependencies (#2381)
+  * netcup: increase default propagation values (#2379)
+  * fix(cli): use retryable client for ACME server calls (#2368)
+  * chore: shared deref and pointer functions (#2376)
+  * bunny: fix zone detection (#2375)
+  * inwx: delete only the TXT record related to the DNS challenge
+    (#2373)
+  * fix(cli): create client only when needed (#2372)
+  * infomaniak: increase default propagation timeout (#2371)
+  * fix(cli): clone the transport with tls-skip-verify (#2369)
+  * docs: add note about --dns.resolvers (#2364)
+  * otc: use default transport (#2363)
+  * dnsmadeeasy: use default transport (#2362)
+  * feat: add --force-cert-domains flag to renew (#2355)
+  * chore: fix AUR configuration
+  * Add DNS provider for West.cn/西部数码 (#2318)
+  * Add DNS provider for Rainyun/雨云 (#2354)
+  * Detach v4.20.4
+
+-------------------------------------------------------------------
 Fri Nov 22 09:43:29 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.20.4:

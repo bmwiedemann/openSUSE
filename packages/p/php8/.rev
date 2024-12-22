@@ -1008,4 +1008,41 @@
     <comment>- version update to 8.3.14 [bsc#1233644] [bsc#1233651] [bsc#1233703] [bsc#1233702] [bsc#1233705]</comment>
     <requestid>1226875</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7378ae67d5100293d56ff3a0e49e9a1c</srcmd5>
+    <version>8.3.15</version>
+    <time>1734886733</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.3.15
+    Calendar:
+        Fixed jdtogregorian overflow.
+        Fixed cal_to_jd julian_days argument overflow.
+    COM:
+        Fixed bug GH-16991 (Getting typeinfo of non DISPATCH variant segfaults).
+    Core:
+        Fail early in *nix configuration build script.
+        Fixed bug GH-16727 (Opcache bad signal 139 crash in ZTS bookworm (frankenphp)).
+        Fixed bug GH-16799 (Assertion failure at Zend/zend_vm_execute.h:7469).
+        Fixed bug GH-16630 (UAF in lexer with encoding translation and heredocs).
+        Fix is_zend_ptr() huge block comparison.
+        Fixed potential OOB read in zend_dirname() on Windows.
+    Curl:
+        Fixed bug GH-16802 (open_basedir bypass using curl extension).
+        Fix various memory leaks in curl mime handling.
+    DOM:
+        Fixed bug GH-16777 (Calling the constructor again on a DOM object after it is in a document causes UAF).
+        Fixed bug GH-16906 (Reloading document can cause UAF in iterator).
+    FPM:
+        Fixed GH-16432 (PHP-FPM 8.2 SIGSEGV in fpm_get_status).
+    GD:
+        Fixed GH-16776 (imagecreatefromstring overflow).
+    GMP:
+        Fixed bug GH-16890 (array_sum() with GMP can loose precision (LLP64)).
+    Hash:
+        Fixed GH-16711: Segfault in mhash().
+    Opcache:
+        Fixed bug GH-16770 (Tracing JIT type mismatch when returning UNDEF).
+        Fixed bug GH-16851 (JIT_G(enabled) not set correctly on other threads).</comment>
+    <requestid>1232801</requestid>
+  </revision>
 </revisionlist>
