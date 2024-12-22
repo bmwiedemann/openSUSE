@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:51:53 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 24.11.0:
+  * Resolved a crash when inverting the worksheet
+    (gh#wxMaxima-developers/wxmaxima#1951)
+  * Do not strip Lisp comments before sending the input to Maxima
+    (gh#wxMaxima-developers/wxmaxima#1953)
+  * Correctly copy superscript when CopyAsMathML
+    (gh#wxMaxima-developers/wxmaxima#1945)
+  * Copy as MathML: Use a centered dot instead of *, if configured
+    (gh#wxMaxima-developers/wxmaxima#1956)
+  * Fix superfluous quote marks in text copied by "Copy as MathML"
+    (gh#wxMaxima-developers/wxmaxima#1946)
+  * Fix copy as MathML for boxes.
+  * Correct display/handling of minf.
+  * WxMaxima was not responsive in the 1st minute.
+  * Fix display of subscripts.
+    (gh#wxMaxima-developers/wxmaxima#1584,
+    gh#wxMaxima-developers/wxmaxima#1807)
+  * Allow Maxima strings with newlines.
+    (gh#wxMaxima-developers/wxmaxima#76)
+  * Support Maxima which uses ABCL.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct  7 18:07:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 24.08.0:
