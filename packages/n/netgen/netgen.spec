@@ -19,8 +19,12 @@
 %bcond_with openmpi
 %bcond_without ffmpeg
 %bcond_without opencascade
+%if 0%{?suse_version} > 1500
+%bcond_without pytest
+%else
 # pytest-check is not available
-%bcond_with pytest
+%bcond_with    pytest
+%endif
 
 Name:           netgen
 Version:        6.2.2404
@@ -50,6 +54,8 @@ Patch12:        0002-Add-missing-includes-for-std-string-std-cerr-fix-nam.patch
 Patch13:        0001-Do-not-EXPORT-python-modules-as-CMake-targets.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/NGSolve/netgen/issues/201
 Patch14:        0001-Fix-static-initialization-order-for-UserFormatRegist.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/NGSolve/netgen/issues/203
+Patch15:        0001-Fix-invalid-string-access-in-BoundaryLayerTool.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
@@ -213,11 +219,19 @@ find %{buildroot}%{python3_sitearch} -iname \*.pyi -exec sed -i -e '/^_[^_].*=/ 
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}/%{name}
-export PYTHONDONTWRITEBYTECODE=1
-%ctest %{!?with_pytest: --exclude-regex pytest}
-
 # Test if the binary actually works
 %{buildroot}/%{_bindir}/netgen -batchmode || true
+%ctest --exclude-regex pytest
+
+%if %{with pytest}
+# run manually, to see progress/failures
+# tolerance failures on aarch64 and ppc64le, see https://github.com/NGSolve/netgen/issues/167
+%ifarch %{arm64} %{ppc64}
+export PYTEST_ADDOPTS='-k "not (boxcyl.geo-mp11-5 or cylsphere.geo-mp58-4 or hinge.stl-mp93-5 or part1.stl-mp123-1 or part1.stl-mp126-4 or sculpture.geo-mp143-4 or sphereincube.geo-mp162-5 or twobricks.geo-mp195-2 or twocubes.geo-mp201-2)"'
+%endif
+export COLUMNS=120
+(cd tests/pytest; %{python3_pytest_arch})
+%endif
 
 %files
 %license LICENSE

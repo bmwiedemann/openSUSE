@@ -1,0 +1,28 @@
+From cd9a7c5dd2e0a195f521bf316641b2e8b189b153 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 20 Dec 2024 14:29:28 +0100
+Subject: [PATCH] Fix invalid string access in BoundaryLayerTool
+
+When AddFaceDescriptor reallocates the array the fd reference becomes
+dangling.
+---
+ libsrc/meshing/boundarylayer.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libsrc/meshing/boundarylayer.cpp b/libsrc/meshing/boundarylayer.cpp
+index 9db4601..bcfc8c2 100644
+--- a/libsrc/meshing/boundarylayer.cpp
++++ b/libsrc/meshing/boundarylayer.cpp
+@@ -722,7 +722,8 @@ namespace netgen
+             new_fd.SetBCProperty(new_si);
+             mesh.AddFaceDescriptor(new_fd);
+             si_map[facei] = new_si;
+-            mesh.SetBCName(new_si-1, fd.GetBCName());
++            // AddFaceDescriptor may reallocate, fd is invalidated
++            mesh.SetBCName(new_si-1, mesh.GetFaceDescriptor(facei).GetBCName());
+             face_done.SetBit(facei);
+           }
+       }
+-- 
+2.47.1
+
