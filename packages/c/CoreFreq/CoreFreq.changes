@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Dec 22 10:32:14 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.98.8
+  * [Build]
+    - [x86_64] AlmaLinux 9.5 (Teal Serval) compilation fix
+    - [UI] Fix System Registers window for a 3 digits CPU id number
+  * [Doc]
+    - SSH how to run the UI
+  * [AArch64]
+    - Checking specification of Memory Model Feature Registers
+    - Aggregate and display ISA features of ID_AA64ISAR3_EL1
+    - Instruction Set Attribute Register 3 ID_AA64ISAR3_EL1
+    - Processor Feature Register 2 AA64PFR2_EL1
+    - Display FP and SIMD bits from MVFR
+    - Added remaining CLRBHB and PCDPHINT of ISAR2
+    - Display the Streaming Vector Control Register SVCR
+    - Query and export the Media and VFP Feature Registers MVFR
+    - Display, export Floating-point Control Register FPCR
+    - Architectural Feature Access Control Register CPACR
+    - Display the Hypervisor Configuration Register HCR_EL2 based on CurrentEL
+  * [AMD]
+    - [VERMEER] Adding Ryzen 5 5600XT and 5600T processors
+    - [Zen 5c] Fixed EPYC Turin-Dense series
+ 
+-------------------------------------------------------------------
 Fri Nov 22 09:42:29 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.98.7
