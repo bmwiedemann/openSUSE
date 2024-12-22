@@ -2,6 +2,7 @@
 # spec file for package ack
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +17,8 @@
 #
 
 
-%define	run_tests 0%{?suse_version} > 1500
-%if 0%{?suse_version} >= 1100 || 0%{?fedora} >= 13
-%define with_pod 1
-%else
-%define with_pod 0
-%endif
-%{!?perl_make_install:  %global perl_make_install make DESTDIR=%{buildroot} install_vendor}
 Name:           ack
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
@@ -36,17 +30,13 @@ Patch3:         ack-add_spec.patch
 BuildRequires:  make
 BuildRequires:  perl >= 5.10.1
 BuildRequires:  perl(File::Next) >= 1.18
+BuildRequires:  perl(File::Temp) >= 0.19
+BuildRequires:  perl(IO::Pty)
+BuildRequires:  perl(Test::Pod) >= 1.14
 Requires:       perl >= 5.10.1
 Requires:       perl-App-Ack = %{version}-%{release}
 Requires:       perl-base = %{perl_version}
 BuildArch:      noarch
-%if %{run_tests}
-BuildRequires:  perl(File::Temp) >= 0.19
-BuildRequires:  perl(IO::Pty)
-%endif
-%if %{with_pod}
-BuildRequires:  perl(Test::Pod) >= 1.14
-%endif
 
 %description
 ack is a grep-like tool tailored to working with large trees of source code.
@@ -70,24 +60,16 @@ perl Makefile.PL
 
 %install
 %perl_make_install
-
-%if 0%{?perl_process_packlist:1}
 %perl_process_packlist
-%else
-rm "%{buildroot}%{perl_archlib}/perllocal.pod"
-%endif
-
 # remove .packlist file
 rm -rf "%{buildroot}%{perl_vendorarch}/auto/ack"
-
 rm -f "%{buildroot}%{_localstatedir}/adm/perl-modules/ack"
 
 %check
-%if %{run_tests}
 %make_build test
-%endif
 
 %files
+%license LICENSE.md
 %{_bindir}/ack
 %{_mandir}/man1/ack.1%{?ext_man}
 
