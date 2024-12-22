@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 21 17:30:46 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to 4.4.2
+  New features and improvements
+  * Trim whitespace in URL opener
+  Bugs fixed
+  * Parse font names containing digits correctly
+  * Avoid overly large info popup on secondary screen
+  * Hide info area text containing emoji properly
+  Other changes
+  * Fix deprecation warnings from Qt and libsidplayfp
+  * Update translations
+
+-------------------------------------------------------------------
 Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
 
 - Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
