@@ -5378,4 +5378,14 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   - More formats supported in D3DX9.</comment>
     <requestid>1231349</requestid>
   </revision>
+  <revision rev="454" vrev="1">
+    <srcmd5>a6c2874fa5ea1498bfaded0d649c0d87</srcmd5>
+    <version>10.0~rc3</version>
+    <time>1734887329</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.0-rc3 release:
+  - Bug fixes only, we are in code freeze.
+- update staging to 10.0-rc3 release</comment>
+    <requestid>1233035</requestid>
+  </revision>
 </revisionlist>
