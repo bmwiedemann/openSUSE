@@ -47,6 +47,8 @@ Source:         https://software.igwn.org/sources/source/lalsuite/lal-%{version}
 Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalsuite_fix_swig_4_3_0_compat.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         https://git.ligo.org/lscsoft/lalsuite/-/commit/e12d57e893882c1603778018139ed9060579c8a7.patch#/lalsuite_fix_swig_4_3_0_compat_2.patch
+# PATCH-FIX-UPSTREAM lal-disable-erroneous-test.patch badshah400@gmail.com -- Disable a test that gives 'SystemError: error return without exception set'
+Patch2:         lal-disable-erroneous-test.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -59,6 +61,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(zlib)
+# Section Patch2 requirements
+BuildRequires:  libtool
+# /Section
 Requires:       python-freezegun
 Requires:       python-numpy
 Requires:       python-python-dateutil
@@ -144,9 +149,14 @@ gravitational wave data analysis routines written in C following the ISO/IEC
 This package provides the octave module for lal.
 
 %prep
-%autosetup -p2 -n lal-%{version}
+# Upstream patches are -p2, non-upstreamed patch is -p1
+%autosetup -N -n lal-%{version}
+%patch -P0 -p2
+%patch -P1 -p2
+%patch -P2 -p1
 
 %build
+autoreconf -fvi
 %{python_expand # Necessary to run configure with all python flavors
 export PYTHON=$python
 mkdir ../${PYTHON}_build
