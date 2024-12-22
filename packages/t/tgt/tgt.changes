@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 03:27:04 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version v1.0.94 (from 1.0.92):
+  * chap: Use proper entropy source
+  * Fix returning data from virtual tape when the output is bigger
+    than the tape block
+
+-------------------------------------------------------------------
 Wed Aug 28 14:30:59 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version v1.0.92 (from 1.0.89):
