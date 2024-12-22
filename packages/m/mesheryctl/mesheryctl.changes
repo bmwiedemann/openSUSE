@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:53:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.172:
+  * General
+    - Fix and enhance Deployment enrichment @aabidsofi19 (#12918)
+    - bump meshkit @aabidsofi19 (#12917)
+  * Meshery CLI
+    - replace pattern and catalog endpoint trim params with the populate params
+      @amitamrutiya (#12914)
+- update to 0.7.171:
+  * no CLI-related changes in this release
+- update to 0.7.170:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Sun Dec 15 10:39:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.169:
