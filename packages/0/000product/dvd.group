@@ -2616,6 +2616,8 @@
     <package name="libqaccessibilityclient-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqaccessibilityclient-qt6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqalculate23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libqat4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="libqatzip3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libqca-qt5-2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libqca-qt6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqgpgmeqt6-15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2871,6 +2873,7 @@
     <package name="libusbmuxd-2_0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirhost1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libusdm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libutempter0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libutf8_range-28_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libutf8proc3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

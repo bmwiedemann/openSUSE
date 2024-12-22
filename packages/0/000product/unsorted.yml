@@ -8526,6 +8526,7 @@ unsorted:
   - hardinfo 
   - hardinfo2 
   - hare 
+  - hare-libnotify 
   - harec 
   - harfbuzz-devel 
   - harfbuzz-tools 
@@ -10766,6 +10767,17 @@ unsorted:
   - kubernetes1.31-kubelet-common 
   - kubernetes1.31-proxy 
   - kubernetes1.31-scheduler 
+  - kubernetes1.32-apiserver 
+  - kubernetes1.32-client 
+  - kubernetes1.32-client-bash-completion 
+  - kubernetes1.32-client-common 
+  - kubernetes1.32-client-fish-completion 
+  - kubernetes1.32-controller-manager 
+  - kubernetes1.32-kubeadm 
+  - kubernetes1.32-kubelet 
+  - kubernetes1.32-kubelet-common 
+  - kubernetes1.32-proxy 
+  - kubernetes1.32-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -12748,8 +12760,6 @@ unsorted:
   - libcryptsetup12-32bit 
   - libcryptui-devel 
   - libcscreensaver-0_0_0 
-  - libcsirocsa0 
-  - libcsironn0 
   - libcsnd6-6_0 
   - libcsound64-6_0 
   - libcsplit-devel 
@@ -14786,6 +14796,9 @@ unsorted:
   - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
+  - libmp4tag-devel 
+  - libmp4tag-tools 
+  - libmp4tag2_0_0 
   - libmpc3-32bit 
   - libmpcdec-devel 
   - libmpcdec5 
@@ -15458,11 +15471,6 @@ unsorted:
   - libplist-2_0-devel 
   - libplot2 
   - libplotter2 
-  - libplplot17 
-  - libplplotcxx15 
-  - libplplotfortran0 
-  - libplplotqt2 
-  - libplplotwxwidgets1 
   - libply-boot-client5 
   - libpmem-devel 
   - libpmem2-1 
@@ -15676,8 +15684,6 @@ unsorted:
   - libqaccessibilityclient-qt5-devel 
   - libqaccessibilityclient-qt6-devel 
   - libqalculate-devel 
-  - libqat4 
-  - libqatzip3 
   - libqb-devel 
   - libqb-devel-32bit 
   - libqb-tests 
@@ -15720,7 +15726,6 @@ unsorted:
   - libqrtr-glib-devel 
   - libqrtr-glib-devel-doc 
   - libqrupdate1 
-  - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
   - libqt5-dwaylandplugin 
@@ -16891,7 +16896,6 @@ unsorted:
   - libusbmuxd-2_0-6-32bit 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
-  - libusdm0 
   - libusrp-devel 
   - libusrp1 
   - libusrsctp2 
@@ -23228,26 +23232,6 @@ unsorted:
   - plowshare 
   - plplay 
   - plplay5 
-  - plplot-common 
-  - plplot-devel 
-  - plplot-doc 
-  - plplot-driver-cairo 
-  - plplot-driver-ntk 
-  - plplot-driver-pdf 
-  - plplot-driver-ps 
-  - plplot-driver-psttf 
-  - plplot-driver-svg 
-  - plplot-driver-xfig 
-  - plplot-driver-xwin 
-  - plplot-java 
-  - plplot-lua 
-  - plplot-tcltk-devel 
-  - plplot-tcltk-libs 
-  - plplot-wxwidgets 
-  - plplotcxx-devel 
-  - plplotfortran-devel 
-  - plplotqt-devel 
-  - plplotwxwidgets-devel 
   - pluma 
   - pluma-devel 
   - pluma-lang 
@@ -26698,8 +26682,6 @@ unsorted:
   - python310-plette 
   - python310-plotly 
   - python310-plotly-jupyter 
-  - python310-plplot 
-  - python310-plplot-pyqt5 
   - python310-pluggy 
   - python310-pluginbase 
   - python310-plumbum 
@@ -30297,7 +30279,6 @@ unsorted:
   - python311-plette 
   - python311-plotly 
   - python311-plotly-jupyter 
-  - python311-plplot 
   - python311-pluggy 
   - python311-pluginbase 
   - python311-plumbum 
@@ -40735,6 +40716,10 @@ unsorted:
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
+  - sddm-kalpa 
+  - sddm-kalpa-lang 
+  - sddm-kalpa-themes 
+  - sddm-kalpa-wayland-generic 
   - sdl-asylum 
   - sdl-ball 
   - sdl12_compat-devel 
