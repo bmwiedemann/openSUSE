@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 21 15:36:00 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.0
+  * Minimum SDK version: 1.7.0
+  * On-the-fly creation of pyramids from frames of DICOM instances
+
+-------------------------------------------------------------------
 Sat Oct 19 06:53:37 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - Version 2.1 

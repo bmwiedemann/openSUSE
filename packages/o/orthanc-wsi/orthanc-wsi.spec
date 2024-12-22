@@ -21,7 +21,7 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        2.1
+Version:        3.0
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWSI-%{version}.tar.gz
