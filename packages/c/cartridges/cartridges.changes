@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 21 21:29:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.11
+  * Added the option to import games automatically
+  * Increased the number of games per row on wide screens
+  * Fixed an issue where animated covers would not play
+  * Fixed an issue where the import dialog would stay open
+
+-------------------------------------------------------------------
 Fri Oct 11 18:43:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.10.1
