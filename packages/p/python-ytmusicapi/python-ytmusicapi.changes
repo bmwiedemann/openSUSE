@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec 21 16:00:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.9.0
+  Features:
+  * updated OAuth setup CLI implementation to require client ID
+    and secret via YouTube Data API. Please check the updated
+    documentation for usage and instructions to create the
+    credentials.
+  * added optional parameters for OAuth client ID and secret to
+    setup
+  * remove_search_suggestions: added new function to remove
+    search suggestion
+  * added option to get_lyrics to retrieve timestamped lyrics
+    instead
+  Fixes:
+  * fixed duration parsing for very long videos
+  * fixed get_history crash due to server-side update
+  * get_playlist: join multiple title runs
+  * fix "get_album doesn't fetch audioPlaylistId for some albums"
+
+-------------------------------------------------------------------
 Fri Nov 15 09:45:33 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Update to 1.8.2
