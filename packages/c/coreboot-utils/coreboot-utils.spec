@@ -1,7 +1,7 @@
 #
 # spec file for package coreboot-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           coreboot-utils
-Version:        4.22.01
+Version:        24.08
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
@@ -42,10 +42,6 @@ used to develop and configure systems with coreboot.
 
 %prep
 %autosetup -p1 -n coreboot-%{version}
-
-# Upstream messed the timespamps in the tarball
-# Fix these for the 4.19 tarball
-find . | xargs touch
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}" -C util/ectool

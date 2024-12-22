@@ -243,4 +243,17 @@ No indication of aggregation (forwarded request 158839 from babelworx)</comment>
     <comment></comment>
     <requestid>1151260</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>23b7c425ffc7ed3d3e88a1fa0264458f</srcmd5>
+    <version>24.08</version>
+    <time>1734887331</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.08
+  * https://coreboot.org/releases/coreboot-24.08-relnotes.txt
+- Update to version 24.05
+  * https://coreboot.org/releases/coreboot-24.05-relnotes.txt
+- Update to version 24.02.01
+  * https://coreboot.org/releases/coreboot-24.02.01-relnotes.txt (forwarded request 1233041 from mnhauke)</comment>
+    <requestid>1233042</requestid>
+  </revision>
 </revisionlist>

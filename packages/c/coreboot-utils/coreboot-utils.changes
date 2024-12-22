@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 22 13:22:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 24.08
+  * https://coreboot.org/releases/coreboot-24.08-relnotes.txt
+- Update to version 24.05
+  * https://coreboot.org/releases/coreboot-24.05-relnotes.txt
+- Update to version 24.02.01
+  * https://coreboot.org/releases/coreboot-24.02.01-relnotes.txt
+
+-------------------------------------------------------------------
 Mon Feb 26 11:35:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
