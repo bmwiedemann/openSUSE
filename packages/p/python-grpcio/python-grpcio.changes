@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:13:30 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.68.1:
+  * No Python specific changes.
+- Changes from version 1.68.0:
+  * Add templating and support for Python 3.13
+    (gh#grpc/grpc#37643).
+
+-------------------------------------------------------------------
 Mon Nov 11 14:35:18 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 1.67.1:
