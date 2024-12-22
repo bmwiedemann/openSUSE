@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 
 Name:           sngrep
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Ncurses SIP Messages flow viewer
 License:        GPL-3.0-or-later
@@ -26,7 +27,6 @@ Group:          Productivity/Telephony/Utilities
 URL:            https://github.com/irontec/sngrep
 #Git-Clone:     https://github.com/irontec/sngrep.git
 Source:         https://github.com/irontec/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         sngrep-1.8.1-CVE-2024-35434.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libpcap-devel
@@ -48,7 +48,7 @@ delivered in one packet).
 %autosetup -p1
 
 %build
-autoreconf -fi
+autoreconf -fiv
 export CFLAGS="%{optflags} $(pkg-config --cflags ncursesw)"
 %configure \
     --enable-unicode \

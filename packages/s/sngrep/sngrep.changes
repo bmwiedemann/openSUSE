@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 21 20:44:37 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8.2:
+  * This release contains the the upstream fix for a possible
+    buffer overflow while processing RTP payload, it was previsouly
+    patched in via sngrep-1.8.1-CVE-2024-35434.patch, now dropped
+
+-------------------------------------------------------------------
 Thu May 30 20:02:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - CVE-2024-35434: heap buffer overflow in rtp_check_packet 
