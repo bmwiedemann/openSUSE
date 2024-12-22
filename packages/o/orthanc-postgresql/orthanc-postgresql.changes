@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:18:09 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0
+  * support for the ExtendedFind extension 
+  * new DB schema revision (automatic conversion) 
+
+-------------------------------------------------------------------
+Thu Mar 28 20:16:50 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.2
+  * DB schema revision: 2
+  * Minimum plugin SDK: 1.12.3
+  * Minimum Orthanc runtime: 1.12.3
+  * Fix check of Orthanc runtime version
+
+-------------------------------------------------------------------
 Tue Mar 19 11:55:04 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - use gcc13 for Leap > 15.2
