@@ -17,7 +17,7 @@
 
 
 Name:           bluetui
-Version:        0.5.1
+Version:        0.6
 Release:        0
 Summary:        TUI for managing bluetooth devices
 License:        GPL-3.0-or-later

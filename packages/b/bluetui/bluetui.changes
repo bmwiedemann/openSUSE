@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 21 21:10:04 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.6
+  * Updated the layout has been reorgonized to show paired devices
+    section on the top
+  * Fix fg color is fixed for light mode
+- Removed cargo_audit from _service due that contains vendor now
+
+-------------------------------------------------------------------
 Mon Jul 29 20:23:45 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.5.1
