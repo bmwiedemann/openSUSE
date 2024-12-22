@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 21 17:30:46 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to version 4.4.2
+  New features and improvements
+  * Trim whitespace in URL opener
+  Bugs fixed:
+  * Parse font names containing digits correctly
+  * Avoid overly large info popup on secondary screen
+  * Hide info area text containing emoji properly
+
+-------------------------------------------------------------------
 Sat Oct 12 08:12:19 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Update to version 4.4.1

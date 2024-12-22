@@ -29,7 +29,7 @@
 %endif
 
 Name:           audacious
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
