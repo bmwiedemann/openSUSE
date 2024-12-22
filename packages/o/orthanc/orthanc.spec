@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.4
+Version:        1.12.5
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -39,9 +39,9 @@ Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/jqu
 Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
 
 Patch0:         dcmtk.diff
-Patch1:         toolbox.patch
-Patch2:         boost.patch
-Patch3:         sha.patch
+## Patch1:         toolbox.patch
+#  Patch2:         boost.patch
+## Patch3:         sha.patch
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
@@ -195,19 +195,19 @@ mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}
 mkdir -p -m 755 %{buildroot}/usr/src/%{name}
 # Copy sources
 tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
+
 #Apply dcmtk patch
 patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
 
 #Apply remaining patches to source tree
-patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
-patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:2}
-patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:3}
+## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
+## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:2}
+## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:3}
 
 # Do not mark Python scripts as executable
 find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +
 #...and delete dot files
-rm %{buildroot}/usr/src/%{name}/.hg*
-rm %{buildroot}/usr/src/%{name}/.travis*
+rm %{buildroot}/usr/src/%{name}/.[!.]*
 
 # and patched files
 find %{buildroot}/usr/src/%{name} -iname *.orig -type f -print | xargs /bin/rm -f

@@ -603,4 +603,12 @@
 </comment>
     <requestid>1207936</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>19b85e702b0a2cb57bad8755fe06f4bc</srcmd5>
+    <version>1.12.5</version>
+    <time>1734887100</time>
+    <user>anag+factory</user>
+    <comment>bugix version (forwarded request 1233002 from DocB)</comment>
+    <requestid>1233004</requestid>
+  </revision>
 </revisionlist>

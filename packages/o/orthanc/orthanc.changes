@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 17:20:24 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.12.5
+  * patches toolbox.patch  boost.patch sha.patch removed (in sourcecode)
+  * for details, see NEWS file
+
+-------------------------------------------------------------------
 Mon Oct 14 11:53:47 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - applied patches to source tree (for plugins)
