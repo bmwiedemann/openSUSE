@@ -26,13 +26,14 @@
 %bcond_with test
 %endif
 Name:           python-folium%{psuffix}
-Version:        0.17.0
+Version:        0.19.2
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
 License:        MIT
 URL:            https://github.com/python-visualization/folium
 # PyPI does not have an sdist, plus we need the tests from GitHub.
 Source0:        https://github.com/python-visualization/folium/archive/v%{version}.tar.gz#/folium-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base > 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:48:28 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.19.2:
+  * Remove empty values from the options
+    (gh#python-visualization/folium#2049).
+- Changes from version 0.19.1:
+  * TileLayer: max_native_zoom cannot be null
+    (gh#python-visualization/folium#2044).
+- Changes from version 0.19.0:
+  * Actually drop python 3.8
+    (gh#python-visualization/folium#2031).
+  * Add py.typed file for Mypy
+    (gh#python-visualization/folium#2030).
+  * Allow jscode in **kwargs throughout Folium
+    (gh#python-visualization/folium#2029).
+  * Implement the once method on Evented
+    (gh#python-visualization/folium#2023).
+  * Add OverlappingMarkerSpiderfier Plugin
+    (gh#python-visualization/folium#2033).
+- Add BuildRequires: python-base > 3.8 to make builds
+  unresolvable, rather than failing, for Leap 15.X.
+
+-------------------------------------------------------------------
 Wed Jul 17 20:24:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert numpy < 2 pin. It's supported since 0.17
