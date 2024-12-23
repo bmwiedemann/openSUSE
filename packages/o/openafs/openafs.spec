@@ -61,7 +61,7 @@
 
 Name:           openafs
 
-Version:        1.8.13.g20241112
+Version:        1.8.13.g20241116
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
