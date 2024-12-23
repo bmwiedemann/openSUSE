@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Thu Dec 19 04:20:00 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Build with Qt6
+- Update to 5.4.0
+  * Apply dual approximation/fraction to calculate as you type 
+    result, as regular result but with length restriction
+  * Add option to add/edit comment to history context menu, and save 
+    comments in result on exit
+  * Add "Search by Date" (also shows the date of the expression) to 
+    history context menu
+  * Option to automatically group digits in input
+  * Option, in menu, to open settings folder(s)
+  * Improve decision to automatically convert unchanged quantity 
+    with unit
+  * Fix equals sign for calculate as you type result
+  * Fix segfault with calculate as you type of "-(300K" and similar
+  * Fix saving of two's complement input settings
+  * Fix erroneous HTML output after format of result with 
+    error/warning has been updated
+  * Updated French translation
+  * New functions: tripleProduct(), multilimit() (libqalculate)
+  * Fix case conversion of µ to M and similar (libqalculate)
+  * Fix segfault with very large integer raised by very large 
+    integer (libqalculate)
+  * Minor bug fixes and feature enhancements
+- Update to 5.3.0
+  * Show language menu in preferences on all platforms
+  * Change "Hide number pad" to "Always show number pad", and add 
+    separate number pad when the option is not enabled
+  * Improve initial value and clear all other fields when edited 
+    field is empty, in number bases and floating point conversion 
+    dialogs
+  * Allow unit expressions for insert unit action, for custom 
+    shortcuts and buttons
+  * Set minimum characters to two for all completion with "Limited 
+    full completion"
+  * Support x without backslash for custom function argument 
+    condition
+  * Update parsed expression and calculate-as-you-type result if 
+    variable, function, or unit in expression has changed
+  * Improve support for small displays with low resolution/high 
+    scaling
+  * Update chain mode to match behaviour in Gtk UI
+  * Update calendar and floating point conversion dialogs after 
+    expression calculation
+  * Delay creation of keypads, completion list, and functions, 
+    units, and variables toolbar menus until shown
+  * Portuguese (pt_PT) translation
+  * Fixes for overwrite input mode
+  * Fix unresponsive expression field in some cases after smart 
+    parentheses has been applied
+  * Fix completion with both custom app font and custom expression 
+    font set
+  * Fix input of max value for number argument
+  * Fix shift + "^°" key press (input °) with German keyboard layout
+  * Fix memory leaks (libqalculate)
+  * Fix segfault with recursive (self-referencing) function 
+    (libqalculate)
+  * Fix input of negative exponent in scientific e notation with RPN 
+    syntax (libqalculate)
+  * Fix parsing of 1°2'3" as 1°+2'+3" (libqalculate)
+  * Improve handling of "where" expressions with inequalities 
+    (libqalculate)
+  * Fix definite integral for 1/sqrt(1-x^2), with limits 
+    higher/lower than or equal to -1 and 1 (libqalculate)
+  * Fix crash with empty vector in plot function, e.g. plot([]) 
+    (libqalculate)
+  * Fix "did you mean..." warning for two implicitly multiplicated 
+    functions without space between (e.g. "atan2(a,b)atan2(c,d)") 
+    (libqalculate)
+  * Fix inability to abort randpoisson() with very high rate value 
+    (libqalculate)
+  * Minor bug fixes and feature enhancements
+- Update to 5.2.0
+  * Option (enabled by default) to show expression status (parsed 
+    expression and calculated value) as you type in history list, 
+    instead of in tooltip (Qt)
+  * Option to hide toolbar (Qt)
+  * Option to preserve height of history list when keypad or number 
+    bases are shown/hidden (Qt)
+  * Headers for keyboard shortcuts and actions lists to allow custom 
+    sorting (Qt)
+  * Option to show/hide hidden units (hidden by default) in units 
+    window (Qt)
+  * Option to change the max number of history lines saved (GTK, Qt)
+  * Reduced minimum height (one line) of expression field (Qt)
+  * Fix subsequent tab completions after completion of unit with 
+    prefix (GTK, Qt)
+  * Fix convert button text, when toolbar style is not icon only 
+    (Qt)
+  * Fix history list not cleared before reload if there are exactly 
+    one item (Qt)
+  * Physical constants updated with CODATA 2022 values 
+    (libqalculate)
+  * New function: allroots() (libqalculate)
+  * New units: therm, thermie, IUNS calorie, rpm (libqalculate)
+  * Additional names/symbols for turn unit (libqalculate)
+  * Use symbol "cal" for thermochemical (instead of international 
+    table) calorie (libqalculate)
+  * Change title and names/symbols of weak mixing angle (prepend 
+    "sin2" to theta variants) (libqalculate)
+  * Return exact negative integers in log10() (libqalculate)
+  * More conservative handling of infinity in equations 
+    (libqalculate)
+  * Remove n from equation solution if possible using assumptions of 
+    x (libqalculate)
+  * Fix unnecessary parenthesis, with wrong color for closing 
+    bracket, around unit with exponent in HTML output (libqalculate)
+  * Fix input of scientific E-notation using lowercase e in numbers 
+    using concise interval notation, in expressions (libqalculate)
+  * Fix "bit width" and "signed integer" arguments in setbits() 
+    (libqalculate)
+  * Fix a^(f(x))=a^(b*g(x)) where b=2 or b=3 (libqalculate)
+  * Fix auto/dual approximation with "where" expression 
+    (libqalculate)
+  * Fix "where" expressions with multiple inequality statements for 
+    a single variable, e.g. "where x>0 and x<10" (libqalculate)
+  * Fix crash when a variable name/symbol with more than 20 
+    characters is used in "where" expression (libqalculate)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Mon Jul  1 07:17:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.1.0.

@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-qt
-Version:        5.1.0
+Version:        5.4.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -26,19 +26,21 @@ URL:            https://qalculate.github.io
 Source0:        https://github.com/Qalculate/qalculate-qt/releases/download/v%{version}/qalculate-qt-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libnghttp2-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 # compilation fails on 5.12.x
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15.0
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  qt6-base-common-devel
+BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-tools-linguist
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(libqalculate) >= %{version}
 BuildRequires:  pkgconfig(libxml-2.0)
+Requires:       libqalculate23 >= %{version}
 
 %description
 Qalculate! is a multi-purpose cross-platform desktop calculator. It is
@@ -54,11 +56,11 @@ user-friendly interface (QT, GTK+ and CLI).
 %autosetup -p1
 
 %build
-%qmake5 PREFIX=%{_prefix}
+%qmake6 PREFIX=%{_prefix}
 make %{?_smp_mflags}
 
 %install
-%qmake5_install
+%qmake6_install
 
 %files
 %license COPYING
@@ -92,6 +94,7 @@ make %{?_smp_mflags}
 %{_datadir}/qalculate-qt/translations/qalculate-qt_fr.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_nl.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_pt_BR.qm
+%{_datadir}/qalculate-qt/translations/qalculate-qt_pt_PT.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_ru.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_sl.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_sv.qm

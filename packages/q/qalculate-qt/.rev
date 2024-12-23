@@ -39,4 +39,13 @@
     <comment>Update to 5.x, sync-up with qalculate</comment>
     <requestid>1192804</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a7b9cd5ad32ba8a252467a839c79d16</srcmd5>
+    <version>5.4.0</version>
+    <time>1734969261</time>
+    <user>anag+factory</user>
+    <comment>- Build with Qt6
+- Update to 5.4.0</comment>
+    <requestid>1233134</requestid>
+  </revision>
 </revisionlist>
