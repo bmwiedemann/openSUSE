@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 22 08:28:20 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.0:
+  * Long list of changes, see
+    <https://www.darktable.org/2024/12/darktable-5.0.0-released/>.
+- Drop use of deprecated %suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
 Fri Aug  2 09:13:53 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.8.1:

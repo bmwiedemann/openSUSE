@@ -119,7 +119,7 @@
 %endif
 
 Name:           darktable
-Version:        4.8.1
+Version:        5.0.0
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
@@ -154,9 +154,6 @@ BuildRequires:  intltool
 BuildRequires:  libxslt
 %if %{with translated_manpages}
 BuildRequires:  po4a
-%endif
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
@@ -359,9 +356,6 @@ make %{_smp_mflags} VERBOSE=1
 %if %{with cmake_macros}
 %cmake_install
 
-%if 0%{?suse_version}
-%suse_update_desktop_file %{desktop_filename}
-%endif
 #/ cmake macros branch
 %else
 # fedora branch
