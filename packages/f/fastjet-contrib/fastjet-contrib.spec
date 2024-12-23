@@ -18,14 +18,13 @@
 
 %define shlib libfastjetcontribfragile
 Name:           fastjet-contrib
-Version:        1.053
+Version:        1.054
 Release:        0
 Summary:        A library of 3rd-party add-ons to FastJet
 License:        GPL-2.0-only
 URL:            https://fastjet.hepforge.org/contrib/
 Source:         https://fastjet.hepforge.org/contrib/downloads/fjcontrib-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - https://github.com/alisw/fastjet/pull/6
-Patch0:         reproducible.patch
 BuildRequires:  fastjet-devel
 BuildRequires:  gcc-c++
 
