@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700
 # Go source packages are horribly broken on Leap (mismatching versions between libraries and compiler)
 %bcond_with vendor
 %else
@@ -28,16 +28,17 @@
 %global tag   v%{version}
 %global extractdir0 esbuild-%{version}
 Name:           esbuild
-Version:        0.23.0
+Version:        0.24.2
 Release:        0
 Summary:        A JavaScript bundler written for speed
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://esbuild.github.io
 Source0:        https://github.com/evanw/esbuild/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Patch0:         remove-version-check.patch
 BuildRequires:  util-linux
+BuildRequires:  zstd
 %if 0%{?fedora}
 BuildRequires:  go-rpm-macros
 BuildRequires:  golang

@@ -159,4 +159,30 @@
 </comment>
     <requestid>1185902</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2dff1267e947df7fd51ebcfde19baca6</srcmd5>
+    <version>0.24.2</version>
+    <time>1734969220</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.24.2:
+  * Fix regression with --define and import.meta (#4010, #4012, #4013)
+- includes 0.24.1:
+  * Allow es2024 as a target in tsconfig.json (#4004)
+  * Allow automatic semicolon insertion after get/set
+  * Allow quoted property names in --define and --pure (#4008)
+  * Minify empty try/catch/finally blocks (#4003)
+  * Include entryPoint metadata for the copy loader (#3985)
+  * Source mappings may now contain null entries (#3310, #3878)
+  * Avoid using the parent directory name for determinism (#3998)
+  * Experimental support for esbuild on NetBSD (#3974)
+- use zstd to compress vendor tarball
+- update to 0.24.0:
+  * Drop support for older platforms (#3902)
+  * Fix class field decorators in TypeScript if useDefineForClassFields is false (#3913)
+  * Avoid incorrect cycle warning with tsconfig.json multiple inheritance (#3898)
+  * Handle Yarn Plug'n'Play stack overflow with tsconfig.json (#3915)
+  * Work around more issues with Deno 1.31+ (#3917)
+</comment>
+    <requestid>1233066</requestid>
+  </revision>
 </revisionlist>
