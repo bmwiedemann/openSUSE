@@ -18,7 +18,7 @@
 
 # Note: We only want to build for the default python3
 Name:           conan
-Version:        2.8.0
+Version:        2.11.0
 Release:        0
 Summary:        A C/C++ package manager
 License:        MIT
