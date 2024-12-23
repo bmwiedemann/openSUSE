@@ -92,7 +92,7 @@ ExclusiveArch:  do_not_build
 %define shlib_sunnonlin libsundials_sunnonlin4%{?my_suffix}
 
 Name:           %{package_name}
-Version:        7.1.1
+Version:        7.2.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.

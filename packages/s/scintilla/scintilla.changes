@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec 21 11:26:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.4:
+  * Update to Unicode 15.1. Issue #285.
+  * Improve performance of SCI_BRACEMATCH. Feature #1533.
+  * Improve performance of DBCS text. Feature #1535.
+  * Fix wrapping removed lines. Bug #2456.
+  * Fix moving line down to empty final line and moving empty
+    final line up. Bug #2457.
+  * On GTK, allow middle click to insert multiple times within a
+    document. Geany Issue #2629. 
+
+-------------------------------------------------------------------
 Fri Nov  1 16:39:24 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.5.3:

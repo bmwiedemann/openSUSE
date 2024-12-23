@@ -17,19 +17,19 @@
 
 
 Name:           curtail
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
 URL:            https://github.com/Huluti/curtail
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk4-tools
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 # Note: Needs libadwaita's AboutWindow which is only available from version 1.2
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
@@ -53,8 +53,6 @@ modes with an option to whether keep or not metadata of images.
 %build
 %meson
 %meson_build
-
-%suse_update_desktop_file com.github.huluti.Curtail RasterGraphics
 
 %install
 %meson_install

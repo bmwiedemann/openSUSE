@@ -822,4 +822,26 @@
     <comment></comment>
     <requestid>1198030</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0296e2feab3a504434ef1b3b4a40eec4</srcmd5>
+    <version>2.72</version>
+    <time>1734968944</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 2.72 state of Mozilla SSL root CAs (bsc#1234798)
+  Removed:
+  - SecureSign RootCA11
+  - Security Communication RootCA3
+  Added:
+  - TWCA CYBER Root CA
+  - TWCA Global Root CA G2
+  - SecureSign Root CA12
+  - SecureSign Root CA14
+  - SecureSign Root CA15
+
+- fix mozila typo in installed files
+  intermediate root chains now with openssl 1.0.2 and also gnutls 3.5
+- split out the CA root certificates from the openssl certs
+  subpackage into a package of its own.</comment>
+    <requestid>1233132</requestid>
+  </revision>
 </revisionlist>

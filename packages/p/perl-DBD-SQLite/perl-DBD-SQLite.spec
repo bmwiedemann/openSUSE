@@ -18,9 +18,10 @@
 
 %define cpan_name DBD-SQLite
 Name:           perl-DBD-SQLite
-Version:        1.740.0
+Version:        1.760.0
 Release:        0
-%define cpan_version 1.74
+# 1.76 -> normalize -> 1.760.0
+%define cpan_version 1.76
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Self Contained SQLite RDBMS in a DBI Driver
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,10 +35,10 @@ BuildRequires:  perl(DBI) >= 1.57
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.48
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(DBI) >= 1.57
-Provides:       perl(DBD::SQLite) = 1.740.0
+Provides:       perl(DBD::SQLite) = %{version}
 Provides:       perl(DBD::SQLite::Constants)
 Provides:       perl(DBD::SQLite::GetInfo)
-Provides:       perl(DBD::SQLite::VirtualTable) = 1.740.0
+Provides:       perl(DBD::SQLite::VirtualTable) = %{version}
 Provides:       perl(DBD::SQLite::VirtualTable::Cursor)
 Provides:       perl(DBD::SQLite::VirtualTable::FileContent)
 Provides:       perl(DBD::SQLite::VirtualTable::FileContent::Cursor)

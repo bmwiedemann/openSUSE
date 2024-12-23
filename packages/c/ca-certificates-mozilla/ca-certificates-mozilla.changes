@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 15 21:07:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Updated to 2.72 state of Mozilla SSL root CAs (bsc#1234798)
+  Removed:
+  - SecureSign RootCA11
+  - Security Communication RootCA3
+  Added:
+  - TWCA CYBER Root CA
+  - TWCA Global Root CA G2
+  - SecureSign Root CA12
+  - SecureSign Root CA14
+  - SecureSign Root CA15
+
+-------------------------------------------------------------------
 Mon Jul  8 15:19:02 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.68 state of Mozilla SSL root CAs (bsc#1227525)
@@ -158,7 +172,7 @@ Mon May  2 11:35:33 UTC 2022 - Marcus Meissner <meissner@suse.com>
   - GTS Root R2
   - GTS Root R3
   - GTS Root R4
- 
+
 -------------------------------------------------------------------
 Sat Oct  2 07:33:52 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
@@ -203,7 +217,7 @@ Mon Jul  5 12:16:33 UTC 2021 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Sun Jul  4 09:14:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- fix mozila typo in installed files 
+- fix mozila typo in installed files
 
 -------------------------------------------------------------------
 Tue Feb  9 13:11:37 UTC 2021 - Marcus Meissner <meissner@suse.com>
@@ -479,7 +493,7 @@ Tue Jan 24 12:46:29 UTC 2017 - meissner@suse.com
     emailProtection
 
 - diff-from-upstream-2.7.patch: removed as we should be able to do
-  intermediate root chains now with openssl 1.0.2 and also gnutls 3.5 
+  intermediate root chains now with openssl 1.0.2 and also gnutls 3.5
   is able to do so.
 
 -------------------------------------------------------------------
@@ -902,7 +916,7 @@ Wed Sep 30 13:17:45 UTC 2009 - lnussel@suse.de
 Tue Dec  2 11:29:03 CET 2008 - cfarrell@suse.de
 
 - Add openssl-certs.COPYING to fix bnc#441356
- 
+
 
 -------------------------------------------------------------------
 Thu Oct  9 17:49:57 CEST 2008 - lnussel@suse.de
@@ -912,6 +926,6 @@ Thu Oct  9 17:49:57 CEST 2008 - lnussel@suse.de
 -------------------------------------------------------------------
 Wed Jul  9 15:15:38 CEST 2008 - mkoenig@suse.de
 
-- split out the CA root certificates from the openssl certs 
-  subpackage into a package of its own. 
+- split out the CA root certificates from the openssl certs
+  subpackage into a package of its own.
 

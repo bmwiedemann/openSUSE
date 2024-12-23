@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Dec 21 07:57:16 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.4.5~git0.a7fabde:
+  * Release 1.4.5
+  * nss/pam resolver should reauth faster (#3309)
+  * Further SCIM sync testing, minor fixes (#3305)
+  * Automatically trigger passkeys on login view (#3307)
+  * Re-add enrol another device flow
+  * Improved Cookie Removal
+  * Allow reseting account policy values to defaults (#3306)
+  * Incorrect member name in groups (#3302)
+  * SCIM Sync Missing Annotation (#3300)
+  * Ignore system users for UPG synthesiseation (#3297)
+  * Limit OAuth2 resumption to session (#3296)
+  * Use specific errors for intent token revoked (#3291)
+  * Autocomplete password during reauth with TOTP (#3290)
+  * Add CORS headers to jwks and userinfo (#3283)
+
+-------------------------------------------------------------------
+Wed Dec 11 03:12:47 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Require system-user-nobody to prevent install ordering issue with
+  invalid rpc/statd users
+
+-------------------------------------------------------------------
 Tue Dec 03 05:55:52 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.4.4~git0.c3dbf83:

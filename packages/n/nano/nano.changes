@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 21 20:57:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 8.3:
+  * Fix a build failure with gcc-15
+  * Update several translations
+
+-------------------------------------------------------------------
 Fri Oct  4 13:02:30 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
 
 - GNU nano 8.2:

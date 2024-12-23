@@ -17,8 +17,8 @@
 
 
 %define so_ver 5.5
-%define _ver %{so_ver}.3
-%define tar_ver 553
+%define _ver %{so_ver}.4
+%define tar_ver 554
 %define libname libscintilla5
 Name:           scintilla
 Version:        %{_ver}

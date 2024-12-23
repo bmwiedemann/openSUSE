@@ -1,0 +1,8 @@
+<package name="GeoLite2" project="openSUSE:Factory">
+  <title>GeoLite2 Free Geolocation Data</title>
+  <description>
+This package includes GeoLite2 data created by MaxMind, available from
+https://www.maxmind.com</description>
+  <devel project="Application:Geo" package="GeoLite2"/>
+  <url>https://github.com/P3TERX/GeoLite.mmdb</url>
+</package>

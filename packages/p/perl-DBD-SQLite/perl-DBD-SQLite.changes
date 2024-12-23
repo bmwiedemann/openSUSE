@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 19 05:31:06 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.760.0 (1.76)
+   see /usr/share/doc/packages/perl-DBD-SQLite/Changes
+
+  1.76 2024-10-19
+      - Switched to a production version
+
+  1.75_01 2024-09-17
+      - Upgraded SQLite to 3.46.1
+      - Fix for Windows quadmath builds (GH#115, sisyphus++)
+      - Omit load_extension if static build
+
+-------------------------------------------------------------------
 Fri Mar  8 22:15:18 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

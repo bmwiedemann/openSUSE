@@ -482,4 +482,12 @@
     <comment>Update to v5.5.3</comment>
     <requestid>1223090</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2d6abda436fdd216f755fcffca343bd4</srcmd5>
+    <version>5.5.4</version>
+    <time>1734968955</time>
+    <user>anag+factory</user>
+    <comment>Remove old source package.</comment>
+    <requestid>1233048</requestid>
+  </revision>
 </revisionlist>
