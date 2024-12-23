@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun Dec 22 20:29:42 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 284:
+ - Simplify tests_quines.py::test_{differences,differences_deb} to use
+   assert_diff and not mangle the expected test output.
+ - Update some tests to support file(1) version 5.46.
+   (Closes: reproducible-builds/diffoscope#395)
+- update test skips, remove test_diff, add test_obj_identification
+
+-------------------------------------------------------------------
+Mon Dec  2 21:08:30 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 283:
+ - Fix crash when objdump is missing when checking .EFI files.
+- update to version 282:
+ - Ignore errors when listing .ar archives. (Closes: #1085257)
+ - Update copyright years.
+- update to version 281:
+ - Don't try and test with systemd-ukify within Debian stable.
+ - Add support for UKI files.
+- update to version 280:
+ - Drop Depends on deprecated python3-pkg-resources. (Closes: #1083362)
+- update to version 279:
+ - Drop removal of calculated basename from readelf output.
+   (Closes: reproducible-builds/diffoscope#394)
+- update to version 278:
+ - Temporarily remove procyon-decompiler from Build-Depends as it was removed
+   from testing (#1057532). (Closes: #1082636)
+ - Add a helpful contextual message to the output if comparing Debian .orig
+   tarballs within .dsc files without the ability to "fuzzy-match" away the
+   leading directory. (Closes: reproducible-builds/diffoscope#386)
+ - Correctly invert "X% similar" value and do not emit "100% similar".
+   (Closes: reproducible-builds/diffoscope#391)
+ - Update copyright years.
+- update to version 277:
+ - Don't crash when attempting to hashing symlinks with targets that point to
+   a directory.
+- update to version 276:
+ - Also catch RuntimeError when importing PyPDF so that PyPDF or, crucially,
+   its transitive dependencies do not cause diffoscope to traceback at runtime
+   and build time. (Closes: #1078944, reproducible-builds/diffoscope#389)
+ - Factor out a method for stripping ANSI escapes.
+ - Strip ANSI escapes from the output of Procyon. Thanks, Aman Sharma!
+ - Update copyright years.
+- update to version 275:
+ - Update the test_zip.py text fixtures and definitions to support new changes
+   to IO::Compress. (Closes: #1078050)
+ - Do not call marshal.loads(...) of precompiled Python bytecode as it is
+   inherently unsafe. Replace, at least for now, with a brief summary of the
+   code section of .pyc files. (Re: reproducible-builds/diffoscope#371)
+ - Don't bother to check the Python version number in test_python.py: the
+   fixture for this test is deterministic/fixed.
+ - Update copyright years.
+- update to version 274:
+ - Add support for IO::Compress::Zip >= 2.212. (Closes: #1078050)
+ - Don't include debug output when calling dumppdf(1).
+ - Append output from dumppdf(1) in more cases.
+   (Closes: reproducible-builds/diffoscope#387)
+ - Update copyright years.
+ - Update the available architectures for test dependencies.
+- update to version 273:
+ - Factor out version detection in test_jpeg_image. (Re:
+   reproducible-builds/diffoscope#384)
+ - Ensure that 'convert' is from Imagemagick 6.x; we will need to update a
+   few things with IM7. (Closes: reproducible-builds/diffoscope#384)
+ - Correct import of identify_version after refactoring change in 037bdcbb0.
+ - tests:
+   + Add OpenSSH key test with a ed25519 key.
+   + Skip the OpenSSH test with DSA key if openssh is >> 9.7
+   + Support ffmpeg >= 7 that adds some extra context to the diff
+ - Do not ignore testing in gitlab-ci.
+
+-------------------------------------------------------------------
 Tue Jul  9 13:21:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 272:
