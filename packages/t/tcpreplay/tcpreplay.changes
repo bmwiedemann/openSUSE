@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:26:51 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.1:
+  * AF_XDP socket support - if you have a newer Linux kernel, you will be able to transmit at line rates without having to install 3rd party kernel modules (e.g. netmap, PF_RING)
+  * -w tcpreplay option - this overrides the -i option, and allows you to write to a PCAP file rather than an interface
+  * --include and --exclude tcpreplay options - allows replay of a list of specific packet numbers to replay. This may slow things down, so consider using in combination with -w.
+  * --fixhdrlen tcpreplay option - added to control action on packet length changes
+  * -W tcpreplay option - suppress warnings when replaying
+  * SLL2( Linux "cooked" capture encapsulation v2)
+  * Haiku support
+
+-------------------------------------------------------------------
 Tue Jul 11 16:31:05 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 4.4.4:
