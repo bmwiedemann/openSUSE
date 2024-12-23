@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:30:58 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Modernize packaging
+- Fix build (wrong permissions for doc files) 
+
+-------------------------------------------------------------------
 Fri Apr  8 19:48:09 UTC 2011 - coolo@novell.com
 
 - initial package 0.08

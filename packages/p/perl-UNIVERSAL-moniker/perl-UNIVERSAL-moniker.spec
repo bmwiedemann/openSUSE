@@ -1,7 +1,7 @@
 #
 # spec file for package perl-UNIVERSAL-moniker
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
+%define cpan_name UNIVERSAL-moniker
 Name:           perl-UNIVERSAL-moniker
 Version:        0.08
-Release:        1
-License:        GPL-1.0+ or Artistic-1.0
-%define cpan_name UNIVERSAL-moniker
+Release:        0
 Summary:        UNIVERAL::moniker
-Url:            http://search.cpan.org/dist/UNIVERSAL-moniker/
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-#Source:         http://www.cpan.org/authors/id/K/KA/KASEI/UNIVERSAL-moniker-%{version}.tar.gz
+URL:            https://metacpan.org/dist/UNIVERSAL-moniker
 Source:         %{cpan_name}-%{version}.tar.gz
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -48,22 +45,19 @@ This module will add a 'moniker' (and 'plural_moniker') method to
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+%make_build test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc %attr(644,-,-) Changes README
+%doc Changes README
 
 %changelog
