@@ -15,21 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-pyrage
-Version:        1.1.2
+Version:        1.2.3
 Release:        0
 Summary:        Python bindings for rage (age in Rust)
 License:        MIT
 URL:            https://github.com/woodruffw/pyrage
 Source0:        https://files.pythonhosted.org/packages/source/p/pyrage/pyrage-%{version}.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  cargo-packaging
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module maturin >= 0.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description

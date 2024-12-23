@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">pyrage-1.1.2.tar.gz</param>
+    <param name="srctar">pyrage-1.2.3.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
     <param name="i-accept-the-risk">RUSTSEC-2023-0071</param>
