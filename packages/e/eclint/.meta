@@ -1,0 +1,5 @@
+<package name="eclint" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors" package="eclint"/>
+</package>
