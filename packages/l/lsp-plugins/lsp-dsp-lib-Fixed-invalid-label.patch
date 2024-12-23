@@ -1,0 +1,22 @@
+From bf4a8bed7bb0943cbc84779424c428b58eea8a6a Mon Sep 17 00:00:00 2001
+From: sadko4u <sadko4u@gmail.com>
+Date: Mon, 23 Dec 2024 08:41:26 +0300
+Subject: [PATCH] Fixed invalid label
+
+---
+ include/private/dsp/arch/x86/avx/search/minmax.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/private/dsp/arch/x86/avx/search/minmax.h b/include/private/dsp/arch/x86/avx/search/minmax.h
+index 8f7f669c..6ae5efad 100644
+--- a/include/private/dsp/arch/x86/avx/search/minmax.h
++++ b/include/private/dsp/arch/x86/avx/search/minmax.h
+@@ -441,7 +441,7 @@ namespace lsp
+     #define SMINMAX_CORE(OP) \
+         __ASM_EMIT("vxorps          %%ymm0, %%ymm0, %%ymm0")            /* ymm0 = 0 */ \
+         __ASM_EMIT("test            %[count], %[count]") \
+-        __ASM_EMIT("jz              10f") \
++        __ASM_EMIT("jz              8f") \
+         __ASM_EMIT("vbroadcastss    0x00(%[src]), %%ymm0")              /* ymm0 = result */ \
+         __ASM_EMIT("vmovaps         %[CC], %%ymm7")                     /* ymm7 = mask */ \
+         __ASM_EMIT("vandps          %%ymm7, %%ymm0, %%ymm1")            /* ymm1 = abs(result) */ \
