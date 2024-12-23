@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 23 06:59:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.2:
+  * update apko to 0.22.4
+  * build(deps): bump cloud.google.com/go/storage from 1.48.0 to
+    1.49.0
+  * build(deps): bump google.golang.org/api from 0.211.0 to 0.214.0
+  * build(deps): bump the gomod group with 2 updates
+  * Fix numpy-test to work across python 3.12 to 3.13 transition.
+    (#1715)
+  * fix(qemu): remove redundant check
+  * bump: double-quote bumped version strings, avoid trailing
+    newline
+  * build(deps): bump actions/setup-go in the actions group
+  * build(deps): bump the gomod group with 2 updates
+  * fix linting
+  * respect ctx error
+  * fix(qemu): improve logging, make connection  check less spammy
+
+-------------------------------------------------------------------
 Mon Dec 16 06:21:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.1:
