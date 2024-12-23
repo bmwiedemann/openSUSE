@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 18 17:34:42 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.72
+  * Set sample volume to max ($40/64) if pasting sample data into
+    an empty sample.
+  * Bug fix: Redraw metronome channel text (Edit Op. #2) if
+    pressing ALT+SHIFT+M
+  * Also check for config files in ~/.config/protracker/
+
+-------------------------------------------------------------------
 Tue Nov 26 18:58:56 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to vaersion 1.71
