@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 09 08:32:02 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Update to version 0.10.2:
+  * src/idoscalemenuitem.c: Make page increment same as step increment.
+  * src/idoscalemenuitem.c: Add new functionality via the digits and
+    marks parameters.
+
+-------------------------------------------------------------------
+Sat Nov 18 23:01:12 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Update to version 0.10.1:
+  * src/idoalarmmenuitem.c: Do not free non memory-allocated variable
+  * Fix possible memory leaks.
+  * Do not hardcode icon sizes.
+  * cmake: Install library as library.
+  * Update/add COPYING files, ship COPYING files for all licensed used.
+- Update to version 0.10.0:
+  * Add level menu item.
+  * CMakeLists.txt: Add threads fix for old CMake.
+  * src/idoprogressmenuitem.c: Rewrite to use icon, progress property and
+    activation.
+  * Revert "cmake: Enable building tests by default".
+- Update to version 0.9.3:
+  * cmake: Enable building tests by default.
+  * tests: Fix building against modern GTest.
+  * src/idobasicmenuitem.c: Set secondary text and count with lozenge from
+    menu model.
+
+-------------------------------------------------------------------
 Wed Jun 03 21:50:15 UTC 2022 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - Update to version 0.9.2:

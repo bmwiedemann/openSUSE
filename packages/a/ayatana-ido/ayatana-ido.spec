@@ -1,7 +1,7 @@
 #
 # spec file for package ayatana-ido
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021-2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define sover   0
 %define typelib typelib-1_0-AyatanaIdo3-0_4
 Name:           ayatana-ido
-Version:        0.9.2
+Version:        0.10.2
 Release:        0
 Summary:        Ayatana Indicator Display Objects
 License:        GPL-3.0-only AND LGPL-3.0-only AND LGPL-2.1-only
