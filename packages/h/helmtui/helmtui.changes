@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Mon Dec 23 12:26:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.1:
+  * fix: streamline navigation and remove useless cleanup function
+  * fix: fix Readme
+  * fix: install script for helm plugin
+  * fix: Repo and product to name to match helm plugin command
+
+-------------------------------------------------------------------
+Sun Dec 22 08:52:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.0:
+  * feat: add goreleaser and helm plugin yaml file (#17)
+
+-------------------------------------------------------------------
+Sun Dec 22 08:47:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.0:
+  * feat: add confirmation window to delete release
+  * feat: add plugins management (#16)
+  * fix: change structure of file and folders (#15)
+  * fix: Use JSON output from helm commands (#14)
+  * feat: allow lookup of default value of repositories view (#12)
+  * Child focus state not managed by parents  (#11)
+  * fix: also run CI on main
+  * feat: add CI (#10)
+  * Feat/makefile and tests (#7)
+  * fix: keymaps and placeholders
+  * feat: Add hub search to add repo and look for values
+  * fix: repo panel navigation fix
+  * feat: add suggestions for installing charts
+
+-------------------------------------------------------------------
+Fri Dec 20 06:13:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.0:
+  * feat: add cleanup function + add install from release tab
+  * feat: use ~/.helmtui folder to store values and not delete them
+  * fix: fix cleanup value files
+  * feat: add demos
+  * feat: add repo update
+  * feat: add repository
+  * feat: install and upgrade with default and last values
+  * feat: install package with value file
+  * fix: Add license
+  * feat: Add Readme
+
+-------------------------------------------------------------------
+Fri Dec 20 06:12:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package helmtui: a simple terminal UI for Helm
