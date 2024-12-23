@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 22 21:17:02 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.15.1:
+  * pnpm remove should not link dependencies from the workspace,
+    when link-workspace-packages is set to false #7674
+  * Installation with hoisted node_modules should not fail, when
+    a dependency has itself in its own peer dependencies #8854
+
+-------------------------------------------------------------------
 Sat Dec  7 19:23:19 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.15.0:

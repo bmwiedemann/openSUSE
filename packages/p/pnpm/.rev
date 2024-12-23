@@ -247,4 +247,17 @@
 </comment>
     <requestid>1229063</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c4206c9e033ba231df17012a3ce4a093</srcmd5>
+    <version>9.15.1</version>
+    <time>1734969221</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.15.1:
+  * pnpm remove should not link dependencies from the workspace,
+    when link-workspace-packages is set to false #7674
+  * Installation with hoisted node_modules should not fail, when
+    a dependency has itself in its own peer dependencies #8854
+</comment>
+    <requestid>1233065</requestid>
+  </revision>
 </revisionlist>
