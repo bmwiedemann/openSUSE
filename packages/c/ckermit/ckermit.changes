@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:36:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * gcc14.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Feb 26 10:56:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

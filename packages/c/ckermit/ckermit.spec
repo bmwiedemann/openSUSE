@@ -1,7 +1,7 @@
 #
 # spec file for package ckermit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,14 @@ Release:        0
 Summary:        A Combined Serial and Network Communication Software Package
 License:        BSD-3-Clause
 Group:          Hardware/Modem
-URL:            http://www.kermitproject.org/
+URL:            https://www.kermitproject.org/
 Source0:        ftp://ftp.kermitproject.org/kermit/archives/cku302.tar.gz
 Patch0:         decl-definition-conflict.patch
 # PATCH-FIX-UPSTREAM time_and_file_failure.patch
 Patch1:         time_and_file_failure.patch
+Patch2:         gcc14.patch
 BuildRequires:  ncurses-devel
 Provides:       kermit
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?fedora_version} || 0%{?rhel_version}
-BuildRequires:  zsh
-%endif
 
 %description
 C-Kermit is a combined serial and network communication software
@@ -48,7 +45,7 @@ BuildArch:      noarch
 %endif
 
 %description doc
-This package contains the documentation and manual pages for ckermit
+This package contains the documentation and manual pages for ckermit.
 
 %prep
 %autosetup -p1 -c
@@ -56,7 +53,7 @@ This package contains the documentation and manual pages for ckermit
 %build
 export CFLAGS="%{optflags}"
 export CXXFLAGS="$CFLAGS"
-make %{?_smp_mflags} linux
+%make_build linux
 
 %install
 install -d -m 755 %{buildroot}%{_bindir}
@@ -67,13 +64,12 @@ cd %{buildroot}%{_mandir}/man1
 ln -s kermit.1 ckermit.1
 
 %files
-%defattr(-,root,root)
-%doc COPYING.TXT
-%{_mandir}/man1/*
-%{_bindir}/*
+%license COPYING.TXT
+%{_bindir}/kermit
+%{_mandir}/man1/ckermit.1%{?ext_man}
+%{_mandir}/man1/kermit.1%{?ext_man}
 
 %files doc
-%defattr(-,root,root)
 %doc *.txt
 
 %changelog

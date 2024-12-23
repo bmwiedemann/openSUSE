@@ -1,0 +1,52 @@
+diff --git a/ckupty.c b/ckupty.c
+index 9906555..f90af5b 100644
+--- a/ckupty.c
++++ b/ckupty.c
+@@ -57,6 +57,8 @@ char *ckptyv = "Pseudoterminal support, 9.0.101, 13 Jun 2011";
+ #include "ckcsym.h"
+ #include "ckcdeb.h"			/* To pick up NETPTY definition */
+ 
++#include <pty.h>
++
+ #ifndef NETPTY				/* Selector for PTY support */
+ 
+ char * ptyver = "No PTY support";
+diff --git a/ckutio.c b/ckutio.c
+index 05564de..545fc43 100644
+--- a/ckutio.c
++++ b/ckutio.c
+@@ -42,6 +42,8 @@ extern int duplex;
+ #include "ckcsym.h"			/* This must go first   */
+ #include "ckcdeb.h"			/* This must go second  */
+ 
++#include <pty.h>
++
+ #ifdef OSF13
+ #ifdef CK_ANSIC
+ #ifdef _NO_PROTO
+diff --git a/ckuusx.c b/ckuusx.c
+index d332bed..14af0b6 100644
+--- a/ckuusx.c
++++ b/ckuusx.c
+@@ -29,6 +29,8 @@
+ #include "ckuusr.h"
+ #include "ckcxla.h"
+ 
++#include "term.h"
++
+ #ifndef NOHTERMCAP
+ #ifdef NOTERMCAP
+ #define NOHTERMCAP
+diff --git a/makefile b/makefile
+index 9efe262..a3b1f4b 100644
+--- a/makefile
++++ b/makefile
+@@ -6053,7 +6053,7 @@ linuxa:
+ 	@echo 'makefile if you have trouble.'
+ 	$(MAKE) xermit KTARGET=$${KTARGET:-$(@)} "CC = gcc" "CC2 = gcc" \
+ 	"CFLAGS = -O -DLINUX -pipe -funsigned-char -DFNFLOAT -DCK_POSIX_SIG \
+-	-DCK_NEWTERM -DTCPSOCKET -DLINUXFSSTND -DNOCOTFMC -DPOSIX \
++	-DCK_NEWTERM -DTCPSOCKET -DLINUXFSSTND -DNOCOTFMC -DPOSIX -DMAINTYPE=int \
+ 	-DUSE_STRERROR $(KFLAGS)" "LNKFLAGS = $(LNKFLAGS)" \
+ 	"LIBS = $(LIBS) -lm"
+ 
