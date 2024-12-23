@@ -1457,4 +1457,12 @@ FIXES (LSP):
     <comment>- now that s390x has tree-sitter, we can remove make-tree-sitter-optional.patch (forwarded request 1230959 from rrahl0)</comment>
     <requestid>1230960</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>03c04648f21520e58dffe39e48d20795</srcmd5>
+    <version>0.10.3</version>
+    <time>1734969273</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233145</requestid>
+  </revision>
 </revisionlist>

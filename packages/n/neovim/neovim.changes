@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Dec 23 13:31:15 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to 0.10.3
+- Features
+  * main: Expand file ~\ or ~/ prefix on Windows
+- Bug Fixes
+ * api: Make nvim_set_hl() respect all cterm attributes (#31390)
+ * completion: Avoid deleting text when completion leader changes #31448
+ * coverity/510275: Linematch out of bounds access (#30687)
+ * defaults: Don't replace keycodes in Visual search mappings (#31460)
+ * events: Don't expand args.file for Lua callback (#31473)
+ * extmark: Builtin completion can still affect nearby extmarks #31387
+ * filetype: Make filetype detection work with :doautocmd (#31470)
+ * inccommand: Ensure cursor is where it belongs
+ * inspect: Show priority for treesitter highlights
+ * inspect: Always show priority
+ * lsp: Str_byteindex_enc bounds checking #30747
+ * lsp: Retrigger diagnostics request on server cancellation (#31345) (#31427)
+ * lsp: Cancel pending requests before refreshing (#31500)
+ * marks: Skip right_gravity marks when deleting text
+ * startup: Report --startuptime error to stderr (#31131)
+ * treesitter: Show proper node name error messages
+ * tui: Avoid flushing buffer halfway an OSC 2 sequence (#30793)
+ * uri: Uri_encode encodes brackets incorrectly for RFC2732 #31284
+ * vim.system: Invalid MAX_TIMEOUT for 32-bit systems #31638
+- Documentation
+ * Misc (#29410)
+ * lua: "vim.bo" is always equivalent to :setlocal (#30733)
+ * lua: Clarify when on_key "typed" will be empty (#30774)
+- Refactor
+ * Fix incorrect use of enum (#30924)
+ * Sort various Lua tables in src/ alphabetically (#30978)
+
+-------------------------------------------------------------------
 Sat Dec 14 03:15:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - now that s390x has tree-sitter, we can remove make-tree-sitter-optional.patch
