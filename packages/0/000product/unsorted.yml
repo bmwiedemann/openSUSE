@@ -71,6 +71,9 @@ unsorted:
   - Fragments-lang 
   - FreeCAD 
   - FreeFileSync 
+  - GeoLite2-ASN 
+  - GeoLite2-City 
+  - GeoLite2-Country 
   - GraphicsMagick 
   - GraphicsMagick-devel 
   - HepMC-devel 
@@ -1275,11 +1278,8 @@ unsorted:
   - axel 
   - axis 
   - axis-manual 
-  - ayatana-appindicator-sharp 
-  - ayatana-appindicator-sharp-devel 
-  - ayatana-appindicator3-sharp 
-  - ayatana-appindicator3-sharp-devel 
   - ayatana-ido-devel 
+  - ayatana-indicator7-common 
   - aytests-tests 
   - azote 
   - azove 
@@ -2597,8 +2597,6 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.28 
-  - coredns-for-k8s1.28-extras 
   - coredns-for-k8s1.29 
   - coredns-for-k8s1.29-extras 
   - coredns-for-k8s1.30 
@@ -3670,6 +3668,7 @@ unsorted:
   - ecj 
   - ecl 
   - ecl-devel 
+  - eclint 
   - eclipse-anyedit 
   - eclipse-anyedit-javadoc 
   - eclipse-collections 
@@ -3932,7 +3931,6 @@ unsorted:
   - espeakedit 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.28 
   - etcd-for-k8s1.29 
   - etcd-for-k8s1.30 
   - etcd-for-k8s1.31 
@@ -8657,6 +8655,7 @@ unsorted:
   - helmfile-fish-completion 
   - helmfile-zsh-completion 
   - helmify 
+  - helmtui 
   - help2man 
   - help2man-lang 
   - helvum 

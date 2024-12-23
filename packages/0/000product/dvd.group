@@ -158,6 +158,7 @@
     <package name="avahi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="avahi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="awesfx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="ayatana-indicator3-7-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="b43-fwcutter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="babeltrace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo-widgets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
