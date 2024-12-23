@@ -1781,4 +1781,24 @@
   * Added pattern unit tests for detectors starting with the letters r through s (#3752) (forwarded request 1232102 from ph03nix)</comment>
     <requestid>1232671</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c5df42f9ce19767a4970d030e6ca2fd6</srcmd5>
+    <version>3.88.0</version>
+    <time>1734969238</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.0:
+  * Implement verification cache (#3801)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.14.1 (#3805)
+  * fix(deps): update module google.golang.org/api to v0.214.0 (#3806)
+  * [Fix] detector's integration tests starting with alphabet 'm' (#3807)
+  * Disabled blocknative detector (#3804)
+  * fixed website pulse detector integration tests (#3776)
+  * fixed netlify detector integration tests (#3797)
+  * fixed integration test for neutrinoapi detector (#3796)
+  * fixed integration test for opsgenie detector (#3795)
+  * fixed plivo detector integration test (#3794)
+  * Update docs from --only-verified with --results (#3798)
+  * Added new detector for Twilio APIKey (#3803) (forwarded request 1233100 from ph03nix)</comment>
+    <requestid>1233105</requestid>
+  </revision>
 </revisionlist>

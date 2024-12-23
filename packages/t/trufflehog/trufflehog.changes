@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 23 06:44:33 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.88.0:
+  * Implement verification cache (#3801)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.14.1 (#3805)
+  * fix(deps): update module google.golang.org/api to v0.214.0 (#3806)
+  * [Fix] detector's integration tests starting with alphabet 'm' (#3807)
+  * Disabled blocknative detector (#3804)
+  * fixed website pulse detector integration tests (#3776)
+  * fixed netlify detector integration tests (#3797)
+  * fixed integration test for neutrinoapi detector (#3796)
+  * fixed integration test for opsgenie detector (#3795)
+  * fixed plivo detector integration test (#3794)
+  * Update docs from --only-verified with --results (#3798)
+  * Added new detector for Twilio APIKey (#3803)
+
+-------------------------------------------------------------------
 Thu Dec 19 09:54:15 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.87.2:
