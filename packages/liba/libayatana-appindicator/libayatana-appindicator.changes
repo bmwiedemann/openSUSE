@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 08:03:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change to bcond_with mono: disable the mono bindings. The gtk
+  sharp bindings for one are no longer maintained and broken. There
+  seems to be no consumer left of the mono bindings.
+
+-------------------------------------------------------------------
 Wed Mar 20 06:48:03 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.5.93

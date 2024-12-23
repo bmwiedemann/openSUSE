@@ -21,7 +21,7 @@
 %global psuffix 3
 %endif
 %define sover 1
-%bcond_without mono
+%bcond_with mono
 Name:           libayatana-appindicator
 Version:        0.5.93
 Release:        0
