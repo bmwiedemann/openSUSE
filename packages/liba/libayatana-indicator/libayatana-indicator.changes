@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct 13 14:15:09 UTC 2023 - Mihai Moldovan <ionic@ionic.de>
+
+- Update to new upstream version 0.9.4:
+  * cmake: Install library as library.
+
+-------------------------------------------------------------------
+Thu Oct 27 06:05:17 UTC 2022 - Mihai Moldovan <ionic@ionic.de>
+
+- Update to version 0.9.3:
+  * Add tooltip support.
+  * src/indicator-service.c: Make failure to connect to the
+    session DBus fatal.
+  * src/indicator-ng.c: Do not show tooltip on labels while the
+    menu is open.
+- Add rpmlint override file to sources list.
+
+-------------------------------------------------------------------
+Fri Jun 03 01:11:44 UTC 2022 - Mihai Moldovan <ionic@ionic.de>
+
+- Update to version 0.9.1:
+  * src/{CMakeLists.txt,indicator.symbols}: Don't export private
+    symbols. Immitate symbol exports as previously done with
+    libtool.
+- Provide an empty, but owned directory within %{_libdir} for
+  actual indicator "plugins".
+- Switch to packaging NEWS instead of ChangeLog (much smaller),
+  package INSTALL.md and NEWS.Canonical as documentation files.
+- Fix library without executable permission.
+- Split package up into lib packages and a -common package.
+- Add language support, but comment out for now, since upstream
+  does not provide translations yet.
+- Move datadir files into common package.
+- Add *SuSE 15.2 support, need to define CMAKE_INSTALL_LIBEXECDIR,
+  since the default does not fit and the cmake package doesn't
+  provide the argument by default on older systems.
+- Add rpmlint filters for warnings and errors that do not really
+  concern us.
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.9.0 (changes since 0.6.2):

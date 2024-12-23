@@ -1,0 +1,11 @@
+# Devel packages are usually architecture-depend, since they ship
+# architecture-dependent files. While rpmlint is correct in noticing that the
+# package does not contain binaries, its content is still  very much
+# architecture-dependent, mostly because the provided symlink uses %{_libdir}.
+addFilter("libayatana-indicator.?-devel\..*: E: no-binary")
+
+# Fixed dependencies might be a bad thing, but we're "only" depending on the
+# "common" package here. The library package would be useless without it (or
+# at least less useful in this case) and mismatching versions would cause
+# trouble.
+addFilter("libayatana-indicator.?-?7\..*: (W|E): shlib-fixed-dependency .*")
