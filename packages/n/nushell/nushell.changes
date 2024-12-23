@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Dec 23 04:57:13 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.101.0:
+  * Changes:
+    + Additions:
+      - `path self`.
+      - `chunk-by`.
+      - `term query`.
+      - `merge deep`.
+      - `utouch`.
+      - WASM support.
+      - `sys net` columns.
+      - Raw string pattern matching.
+      - Duration/Date Arithmetic.
+      - `explore` keybinds.
+      - Version in Startup banner.
+      - `input --default`.
+      - New introspection tools.
+    + Breaking changes:
+      - `++` operator.
+      - Stricter command signature parsing.
+      - `group-by`.
+      - `timeit`.
+      - `sys cpu`.
+      - `from csv` and `from tsv`.
+      - `std/iter scan`.
+      - Completion sorting.
+      - Import module naming.
+      - `table` formatting and the `display_output` hook.
+      - `du` flag changes.
+      - Code specific environment variables updated during `source`.
+    + Deprecations:
+      - `split-by`.
+      - `date to-record` and `date to-table`.
+      - `do --ignore-shell-errors` and `--ignore-program-errors`.
+    + Removals:
+      - `NU_DISABLE_IR`.
+    + Bug fixes and other changes:
+      - `ls`.
+      - `SHLVL`.
+      - `from` commands.
+      - Completions on custom commands.
+      - `seq char`.
+      - `http` multipart.
+      - `scope variables`.
+      - `help` system.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2024-12-24-nushell_0_101_0.html.
+
+-------------------------------------------------------------------
 Wed Nov 13 09:48:03 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.100.0:

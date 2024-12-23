@@ -17,7 +17,7 @@
 
 
 Name:           nushell
-Version:        0.100.0
+Version:        0.101.0
 Release:        0
 Summary:        A new type of shell
 License:        MIT
@@ -44,7 +44,6 @@ A modern shell written in Rust.
 %install
 %{cargo_install}
 install -d %{buildroot}/%{_datadir}/%{name}
-cp -r crates/nu-utils/src/sample_config %{buildroot}/%{_datadir}/%{name}
 
 %files
 %license LICENSE
