@@ -4731,4 +4731,12 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   boo#1234438</comment>
     <requestid>1230648</requestid>
   </revision>
+  <revision rev="410" vrev="3">
+    <srcmd5>a20249b4d03c81c6cb61190b43e65797</srcmd5>
+    <version>10.10.0</version>
+    <time>1735053953</time>
+    <user>anag+factory</user>
+    <comment>Fix recent changelog entries containing improper jir references</comment>
+    <requestid>1233161</requestid>
+  </revision>
 </revisionlist>

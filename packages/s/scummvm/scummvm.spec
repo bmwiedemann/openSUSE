@@ -20,7 +20,7 @@
 %bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later
@@ -34,7 +34,11 @@ BuildRequires:  hicolor-icon-theme
 %if 0%{?suse_version} > 1500
 BuildRequires:  libieee1284-devel
 %endif
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(libopenmpt) >= 0.7
+%endif
 BuildRequires:  libjpeg-devel
+BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa) >= 0.9
 BuildRequires:  pkgconfig(flac) >= 1.0.1
@@ -43,9 +47,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libmikmod)
 BuildRequires:  pkgconfig(libpng) >= 1.2.8
 BuildRequires:  pkgconfig(ogg)
-%if 0%{?suse_version} > 1500 || ( 0%{?sle_version} > 150500 && 0%{?is_opensuse} )
 BuildRequires:  pkgconfig(sonivox)
-%endif
 BuildRequires:  pkgconfig(theoradec) >= 1.0
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 20 01:28:01 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.83:
+  * General:
+    - Support for intel ifx compiler.
+    - Proper detection of python versions 3.10 and above.
+  * C++:
+    - bug fix in query_polygon where pixels might be missing in
+      some situations where polygon edges were parallel to the
+      equator (gh#healpy/healpy#904).
+    - bug fix in query_disc_inclusive where pixels could be
+      missing at locations exactly azimuthally opposite to the
+      disc center (gh#healpy/healpy#968).
+- Update c++ shlib name to keep with so version update (3 -> 4).
+
+-------------------------------------------------------------------
 Mon Oct  9 14:34:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Recompress to xz during buildtime to reduce src.rpm size.

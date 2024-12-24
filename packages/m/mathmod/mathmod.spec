@@ -1,7 +1,7 @@
 #
 # spec file for package mathmod
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %define binname MathMod
 Name:           mathmod
-Version:        11.1
+Version:        12.0
 Release:        0
 Summary:        Mathematical modelling to visualise implicit and parametric surfaces
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://sourceforge.net/projects/mathmod/
 Source0:        http://sourceforge.net/projects/mathmod/files/MathMod-%{version}/%{name}-%{version}-source.zip
+Source1:        %{name}.desktop
 BuildRequires:  ImageMagick
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
@@ -77,7 +77,8 @@ done
 convert -monitor images/icon/catenoid_mini_64x64.ico %{buildroot}%{_datadir}/pixmaps/%{name}.xpm
 # Remove spurious icon file
 rm %{buildroot}%{_datadir}/icons/hicolor/apps/mathmod.png
-%suse_update_desktop_file -c %{name} %{name} "Mathematical modeling" %{name} %{name} Education Science Math
+
+install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %license Licence.txt

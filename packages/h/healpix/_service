@@ -1,16 +1,17 @@
 <services>
 	<service name="obs_scm" mode="manual">
 		<param name="scm">svn</param>
-		<param name="url">https://svn.code.sf.net/p/healpix/code/branches/branch_v382r1223</param>
-		<param name="version">3.82</param>
+		<param name="url">https://svn.code.sf.net/p/healpix/code/trunk</param>
+		<param name="revision">r1259</param>
+		<param name="version">3.83</param>
 		<!-- Licensing problems with idl source codes -->
 		<param name="exclude">src/idl*</param>
 		<param name="filename">healpix</param>
 	</service>
-	<service name="set_version" mode="buildtime"/>
 	<service name="tar" mode="buildtime" />
 	<service name="recompress" mode="buildtime">
 		<param name="compression">xz</param>
 		<param name="file">*.tar</param>
 	</service>
+	<service name="set_version" mode="buildtime"/>
 </services>

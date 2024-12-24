@@ -1,6 +1,0 @@
-<package name="gokart" project="openSUSE:Factory">
-  <title>gokart</title>
-  <description>A static analysis tool for securing Go code</description>
-  <devel project="devel:languages:go" package="gokart"/>
-  <url>https://github.com/praetorian-inc/gokart</url>
-</package>

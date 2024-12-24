@@ -1,7 +1,7 @@
 #
 # spec file for package healpix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define cpkg chealpix
 %define clib lib%{cpkg}0
 %define cxxpkg healpix_cxx
-%define cxxlib lib%{cxxpkg}3
+%define cxxlib lib%{cxxpkg}4
 Name:           healpix
-Version:        3.82
+Version:        3.83
 Release:        0
 Summary:        Data Analysis, Simulations and Visualization on the Sphere
 License:        GPL-2.0-or-later

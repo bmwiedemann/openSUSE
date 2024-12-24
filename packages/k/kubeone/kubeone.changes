@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 23 14:36:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.1:
+  * Update changelog for 1.9.1 (#3515) (#3518)
+  * [release/v1.9] Update Go to 1.23.4, /x/net to v0.33.0, and
+    /x/crypto to v0.31.0 (#3513)
+  * [release/v1.9] Support the deployment of KubeVirt CSI driver
+    (#3512)
+  * Determine OS for Docker repo programmatically (#3511)
+  * Remove Docker GPG key before dearmor-ing it (#3506)
+  * add support for KubeVirt namespaced mode in Kubeone (#3503)
+  * update changelog for v1.9.1 (#3501)
+  * Change release date for v1.9.1 (#3497)
+  * Add changelog for v1.9.1 (#3493)
+  * chores(ccm): update openstack version for 1.30 and 1.31 (#3489)
+  * Use dedicated keyring for docker packages (#3485)
+  * return empty list instead of nil to not break the ui (#3480)
+  * [release/v1.9] Synchronize OWNERS_ALIASES file with Github
+    teams (#3475)
+
+-------------------------------------------------------------------
 Fri Nov 22 15:09:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.0:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 12:47:07 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Remove bash-4.3-winch.dif as this is the (current) default
+
+-------------------------------------------------------------------
 Wed Sep 25 06:33:29 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches

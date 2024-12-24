@@ -951,4 +951,12 @@ fix a jira reference in the changelog.
   - jsc#PED-8909, jsc#PED-9543, jsc#9854, jsc#9855</comment>
     <requestid>1228125</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>06897ff32bf49fc06b753b303ebf3a54</srcmd5>
+    <version>10.10.0</version>
+    <time>1735053955</time>
+    <user>anag+factory</user>
+    <comment>Fix recent changelog entries containing improper jir references</comment>
+    <requestid>1233162</requestid>
+  </revision>
 </revisionlist>

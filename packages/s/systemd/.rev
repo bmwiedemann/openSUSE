@@ -7403,4 +7403,14 @@ handle manual pages that consist only of a .so directive such as
     - commit 3b2e7dc5a285edbbb1bf6aed2d88b889d801613f (bsc#1234015)</comment>
     <requestid>1231884</requestid>
   </revision>
+  <revision rev="435" vrev="1">
+    <srcmd5>fe1eade5a5534e24a0a861cea5d30e9c</srcmd5>
+    <version>256.10</version>
+    <time>1735053932</time>
+    <user>anag+factory</user>
+    <comment>- Import commit f962392e1e0d5683a2adebf09698b5fda02f9cfc (merge of v256.10)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/290170c8550bf2de4b5085ecdf7f056769944444...f962392e1e0d5683a2adebf09698b5fda02f9cfc</comment>
+    <requestid>1233116</requestid>
+  </revision>
 </revisionlist>

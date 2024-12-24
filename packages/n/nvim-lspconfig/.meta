@@ -1,0 +1,5 @@
+<package name="nvim-lspconfig" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors" package="nvim-lspconfig"/>
+</package>

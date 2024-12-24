@@ -9,7 +9,7 @@ Thu Dec 12 18:00:38 UTC 2024 - James Fehlig <jfehlig@suse.com>
 Mon Dec  2 18:48:20 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.10.0
-  - jsc#PED-8909, jsc#PED-9543, jsc#9854, jsc#9855
+  - jsc#PED-8909, jsc#PED-9543, jsc#PED-9854, jsc#PED-9855
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v10-10-0-2024-12-02
 
@@ -24,7 +24,7 @@ Mon Nov  4 21:00:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
 Fri Nov  1 19:52:45 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.9.0
-  - jsc#PED-8909, jsc#9854, jsc#9855
+  - jsc#PED-8909, jsc#PED-9854, jsc#PED-9855
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v10-9-0-2024-11-01
 

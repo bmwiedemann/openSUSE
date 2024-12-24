@@ -58,7 +58,7 @@ Etebase is an end-to-end encrypted backend as a service. Think Firebase, but enc
 
 Etebase makes it easy to build end-to-end encrypted applications by taking care of the encryption and its related challenges. It is fully open-source (clients and server) so anyone can review, audit or contribute to its development!
 
-%install -n libetebase%{sover}
+%install
 # Install manually. libetebase's install directive does not use lib64 etc paths automatically
 # Need to fix .so naming manually
 # see https://github.com/etesync/libetebase/issues/4

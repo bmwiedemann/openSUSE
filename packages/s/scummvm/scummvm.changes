@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 23 13:06:00 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to 2.9.0
+  * see https://downloads.scummvm.org/frs/scummvm/2.9.0/ReleaseNotes.html for notes
+
+-------------------------------------------------------------------
 Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
 
 - Convert BuildRequires from libfaad-devel to pkgconfig(faad2)

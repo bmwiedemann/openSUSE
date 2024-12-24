@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 23 14:08:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.3:
+  * Bump to golang.org/x/net v0.23.0
+  * Export runtime.Client interface and cache package
+
+-------------------------------------------------------------------
 Sat Dec 21 15:04:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.2:

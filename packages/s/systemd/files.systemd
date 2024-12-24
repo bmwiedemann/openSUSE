@@ -154,6 +154,7 @@
 %{_datadir}/bash-completion/completions/systemd-cgls
 %{_datadir}/bash-completion/completions/systemd-cgtop
 %{_datadir}/bash-completion/completions/systemd-confext
+%{_datadir}/bash-completion/completions/systemd-creds
 %{_datadir}/bash-completion/completions/systemd-delta
 %{_datadir}/bash-completion/completions/systemd-detect-virt
 %{_datadir}/bash-completion/completions/systemd-dissect

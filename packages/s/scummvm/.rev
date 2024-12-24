@@ -320,4 +320,14 @@ SPDX format - plus it appears as though only one license relevant binary is crea
     <comment></comment>
     <requestid>1226033</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>21dc938831e05b55ace30d99b1878508</srcmd5>
+    <version>2.9.0</version>
+    <time>1735053960</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.9.0
+  * see https://downloads.scummvm.org/frs/scummvm/2.9.0/ReleaseNotes.html for notes
+</comment>
+    <requestid>1233155</requestid>
+  </revision>
 </revisionlist>

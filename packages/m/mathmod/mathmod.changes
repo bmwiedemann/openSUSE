@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 20 07:55:13 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 12.0:
+  * GUI improvement to support small screen formats
+    - Merged MathMod's two main windows into one
+    - Added touch gestures support
+    - Multi cores calculations optimization for embedded systems
+  * Mandelbrot and Julia fractal functions support
+  * New scripts: "Noids", "k_Noids", "Riemann_Minimal_Surface",
+    "MandelBulb", "MandelTemple", "JuliaFractal",
+    "MandelbrotTorus", "MandelbrotIsoSpheres", "MandelbrotSphere",
+    "Mandelbrot", "Spherical_Harmonics"
+  * Bug-fixes, code optimization and documentation update.
+- Drop use of deprecated %suse_update_desktop_files macro.
+- Add mathmod.desktop file as additional source in lieu of the
+  dropped %suse_update_desktop_files macro.
+
+-------------------------------------------------------------------
 Tue Feb  8 18:22:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 11.1:

@@ -75,8 +75,6 @@ Patch13:        bash-4.2-nscdunmap.dif
 Patch14:        bash-4.3-sigrestart.patch
 # PATCH-FIX-UPSTREAM bnc#382214 -- disabled due bnc#806628 by -DBNC382214=0
 Patch16:        bash-4.0-setlocale.dif
-# PATCH-EXTEND-SUSE bnc#828877 -- xterm resizing does not pass to all sub clients
-Patch18:        bash-4.3-winch.dif
 Patch40:        bash-4.1-bash.bashrc.dif
 # PATCH-FIX-SUSE For bsc#1065158 add support for broken Japanese locale Shift JIS
 Patch42:        bash-4.3-SJIS.patch
@@ -240,7 +238,12 @@ Legacy usrmove helper files for the build system. Do not install.
 %if %{with sjis}
 %{warn:Shift JIS support is enabled}
 %else
-%{echo:Shift JIS support disabled}
+%{echo:Shift JIS support is DISABLED}
+%endif
+%if %{with alternatives}
+%{echo:alternatives is enabled}
+%else
+%{echo:alternatives is DISABLED}
 %endif
 %setup -q -n bash-%{bversion}%{bextend} -b1
 typeset -i level
@@ -272,7 +275,6 @@ set -x
 %patch -P13  -b .nscdunmap
 %patch -P14  -b .sigrestart
 %patch -P16  -b .setlocale
-#%patch -P18 -p0 -b .winch
 %patch -P40  -b .bashrc
 %if %{with sjis}
 %patch -P42  -b .sjis

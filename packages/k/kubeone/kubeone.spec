@@ -21,7 +21,7 @@
 %define KUBERNETES_STABLE_VERSION v1.31.3
 
 Name:           kubeone
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        CLI for the kubeone cluster automation
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source:         kubeone-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23.4
 BuildRequires:  zsh
 
 %description

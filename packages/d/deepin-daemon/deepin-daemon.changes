@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 09:57:39 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make tarball creation reproducible (boo#1218191)
+
+-------------------------------------------------------------------
 Thu Jan 12 18:05:58 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.

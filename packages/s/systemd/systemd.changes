@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 22 17:31:07 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit f962392e1e0d5683a2adebf09698b5fda02f9cfc (merge of v256.10)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/290170c8550bf2de4b5085ecdf7f056769944444...f962392e1e0d5683a2adebf09698b5fda02f9cfc
+
+-------------------------------------------------------------------
 Mon Dec 16 18:11:24 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add 5006-tpm2-util-Also-retry-unsealing-after-policy_pcr-retu.patch

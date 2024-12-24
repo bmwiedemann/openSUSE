@@ -2039,4 +2039,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
 - Port patch bash-3.2-printf.patch to fit change in bash52-033</comment>
     <requestid>1203319</requestid>
   </revision>
+  <revision rev="194" vrev="15">
+    <srcmd5>da8adf1c7198781e6f2b4a03d867d3eb</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1735053928</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233142</requestid>
+  </revision>
 </revisionlist>

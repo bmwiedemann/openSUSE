@@ -1,4 +1,231 @@
 -------------------------------------------------------------------
+Mon Dec 23 14:07:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.24.2:
+  * Version tag to 1.24.2 (#6441)
+  * fix(docs): spellcheck
+  * docs: Release notes for 1.24.2 and 1.23.6 (#6438)
+  * chore: remove PluginConfigurationList type (#6431)
+  * fix(deps): update module github.com/jackc/pgx/v5 to v5.7.2
+    (release-1.24) (#6419)
+  * docs: fix genref config (#6422)
+  * feat: check the number of spec.schedule fields (#5396)
+  * chore(deps): update dependency kubernetes-csi/external-attacher
+    to v4.8.0 (release-1.24) (#6407)
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.22.1
+    (release-1.24) (#6406)
+  * chore(deps): update operator framework (release-1.24) (#6399)
+  * fix(deps): update module
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    to v0.79.2 (release-1.24) (#6388)
+  * chore: add missing labels in container images (#6377)
+  * fix(roles): properly quote inRoles in SQL statements (#6346)
+  * fix(deps): update kubernetes packages to v0.32.0 (release-1.24)
+    (#6383)
+  * fix(deps): update github.com/cloudnative-pg/machinery digest to
+    2807bc8 (release-1.24) (#6376)
+  * chore(deps): update helm/kind-action action to v1.11.0
+    (release-1.24) (#6373)
+  * chore(deps): update kindest/node docker tag to v1.32.0
+    (release-1.24) (#6369)
+  * feat: Public Cloud K8S versions update (#6316)
+  * fix(deps): update github.com/cloudnative-pg/cnpg-i digest to
+    cbc4287 (release-1.24) (#6356)
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.26.0
+    (release-1.24) (#6360)
+  * refactor: align with api structure in main
+  * fix: use optimistic locking when updating conditions (#6328)
+  * fix: key collision in structured logs (#6324)
+  * chore(deps): update kubernetes csi (release-1.24) (#6353)
+  * fix(deps): update github.com/cloudnative-pg/barman-cloud digest
+    to 134c7de (release-1.24) (#6348)
+  * chore(deps): update agilepathway/pull-request-label-checker
+    docker tag to v1.6.60 (release-1.24) (#6342)
+  * fix(deps): update all non-major go dependencies (release-1.24)
+    (#6336)
+  * fix(deps): update kubernetes patches (release-1.24) (#6250)
+  * chore(refactor): isolate plugin loading function (#6312)
+  * fix: deadlock when a plugin is used multiple times (#6309)
+  * fix: panic recovering from an external server with no backup
+    configuration (#6300)
+  * chore: update the release script to better handle RC releases
+    (#6301)
+  * docs: heading level in (#3806)
+  * docs: clarify behavior of primaryUpdateStrategy for
+    single-instance clusters (#5001)
+  * test: make sure we test port correctness for services (#4934)
+  * feat: Public Cloud K8S versions update (#6263)
+  * feat(plugin): set `User-Agent` in HTTP requests (#6153)
+  * test(e2e): AssertConnection must retry before failing (#6293)
+  * feat: add `cnpg.io/userType` label to generated secrets (#4392)
+  * fix(deps): update github.com/cloudnative-pg/barman-cloud digest
+    to 711113b (release-1.24) (#6288)
+  * chore(e2e): Separate forward connection from psql connection
+    (#5898)
+  * chore(plugin): improve getting instance status from pod error
+    message (#6092)
+  * docs: define RPO and RTO (#6239)
+  * chore(lint): spellcheck word list (#6290)
+  * fix(plugin): avoid displaying physical backups block when empty
+    (#5998)
+  * docs: add a sample file for Scaleway object storage (#6143)
+  * fix(bootstrap): clean up the WAL volume before initializing a
+    cluster (#6265)
+  * feat(probes): enable customization of startup, liveness, and
+    readiness probes (#6266)
+  * fix(plugin): pass context in `psql` command (#6257)
+  * fix: eliminate redundant Cluster status updates with image
+    catalog (#6277)
+  * fix: correct path for partial wal archiver (#6255)
+  * fix: ensure orphan services are reconciled after restoring a
+    cluster (#5379)
+  * chore: improve `TryInvokeQuitEndpoint` logging (#5355)
+  * docs(plugin): standardize the `CLUSTER` argument in plugin
+    commands (#6253)
+  * fix(pooler): set libpq environment variables in PgBouncer pods
+    (#6247)
+  * chore: make cnpg plugin commands compatible with OLM (#6213)
+  * fix(docs): add default rule for PgBouncer in `pg_hba` (#6175)
+  * chore: remove unknown fields and improve CSV specs (#6107)
+  * doc: clarify usage of endpointCA field with object store
+    (#5537)
+  * fix: add `PhaseUnrecoverable` when no PVCs exist (#6170)
+  * chore: add `lint-fix` to the Makefile commands (#6226)
+  * fix(initdb): ensure `primary_slot_name` is empty on a primary
+    (#6219)
+  * chore(docs): template for release notes for a new minor (#6229)
+  * fix: ensure former primary WALs are flushed before resyncing
+    (#6141)
+  * docs: update join slack link (#6217)
+  * fix(deps): update kubernetes patches (release-1.24) (#6209)
+  * docs: clarify support for PostgreSQL 17 (#6202)
+  * chore(deps): update dependency golangci/golangci-lint to
+    v1.62.2 (release-1.24) (#6197)
+  * fix(linter): prepare code for golangci-lint 1.62.2 (#6198)
+  * chore(deps): update xt0rted/pull-request-comment-branch action
+    to v3 (release-1.24) (#6193)
+  * chore(deps): update operator framework to v1.38.0
+    (release-1.24) (#6189)
+  * chore(deps): update dependency rook/rook to v1.15.6
+    (release-1.24) (#6185)
+  * chore(deps): update cloudnative-pg/ciclops action to v1.3.1
+    (release-1.24) (#6180)
+  * fix(deps): update all non-major go dependencies (release-1.24)
+    (#6166)
+  * docs: add Obmondo to `ADOPTERS.md` (#6162)
+  * docs: add Docaposte to ADOPTERS.md (#6145)
+  * feat: update default PostgreSQL version to 17.2 (#6018)
+  * feat: Public Cloud K8S versions update (#6129)
+  * docs: add Novo Nordisk as a CloudNativePG adopter (#6142)
+  * docs: add Akamai Technologies as an adopter (#6140)
+  * chore(perf): Use controller-runtime pprof server (#6000)
+  * chore: simplify tablespaces interfaces for testing (#5635)
+  * chore(deps): update all non-major go dependencies
+    (release-1.24) (#6128)
+  * chore(deps): update dependency
+    vmware-tanzu/velero-plugin-for-aws to v1.11.0 (release-1.24)
+    (#6124)
+  * fix(tests): update the way we check the EKS versions (#6101)
+  * chore(deps): update dependency vmware-tanzu/velero to v1.15.0
+    (release-1.24) (#6105)
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.25.0
+    (release-1.24) (#6098)
+  * chore(deps): update rajatjindal/krew-release-bot action to
+    v0.0.47 (release-1.24) (#6085)
+  * chore(deps): update kindest/node docker tag to v1.31.2
+    (release-1.24) (#6078)
+  * chore(security): improve Snyk scan (#6059)
+  * chore(deps): update dependency rook/rook to v1.15.5
+    (release-1.24) (#6073)
+  * chore(deps): update dependency go to v1.23.3 (release-1.24)
+    (#6053)
+  * fix: correct transaction code and resolve non deterministic
+    role apply (#6064)
+  * fix(test): avoid checking permissions in cloud services (#6062)
+  * chore(deps): update spellcheck to v0.45.0 (release-1.24)
+    (#6042)
+  * refactor: simplify replication slots code, clarify tests
+    (#6003)
+  * docs(kubectl-plugin): update formatting and version (#6026)
+  * refactor: bring role reconciler Postgres functions in line with
+    other reconcilers (#5958)
+  * fix(deps): update kubernetes patches (release-1.24) (#6037)
+  * chore(deps): update module github.com/goreleaser/goreleaser to
+    v2.4.4 (release-1.24) (#6022)
+  * fix(plugin): check for empty pod list in "cnpg psql" (#6023)
+  * chore: ensure the proper version of OLM tools is being executed
+    (#5361)
+  * fix(docs): minor doc change about snapshot images (#5357)
+  * fix(pooler): ensure SA and RBAC are reconciled before
+    deployment (#5344)
+  * feat: Public Cloud K8S versions update (#5938)
+  * fix(deps): update module
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    to v0.78.0 (release-1.24) (#6013)
+  * fix(deps): update all non-major go dependencies (release-1.24)
+    (#6008)
+  * chore(deps): update module sigs.k8s.io/controller-tools to
+    v0.16.5 (release-1.24) (#5993)
+  * fix(webhook): validate the number of `synchronous` replicas
+    (#5985)
+  * fix(docs): properly indent a block in logging page (#5970)
+  * chore(deps): update spellcheck to v0.44.0 (release-1.24)
+    (#5990)
+  * chore(config): migrate renovate config (#5986)
+  * docs: add permissions required by kubectl CNPG plugin (#5829)
+  * chore(deps): update dependency
+    operator-framework/operator-registry to v1.48.0 (release-1.24)
+    (#5981)
+  * fix(deps): update module sigs.k8s.io/controller-runtime to
+    v0.19.1 (release-1.24) (#5962)
+  * fix(plugin): improve plugin errors (#5836)
+  * fix(metrics): handle FIRST keyword in synchronousStandbyNames
+    parsing (#5955)
+  * docs: add Walkbase to `ADOPTERS.md` (#5951)
+  * docs: fix minor issues (#5903)
+  * test: improve unit tests and add race condition detection
+    (#5936)
+  * fix(deps): update kubernetes patches to v0.31.2 (release-1.24)
+    (#5935)
+  * fix(plugin): handle multiple containers in `kubectl cnpg logs`
+    (#5931)
+  * test: Updated Postgres versions used in E2E tests (#5863)
+  * test: remove redundant log capture in tablespace tests (#5781)
+  * feat: Public Cloud K8S versions update (#5918)
+  * chore(tests): Refactored backup and restore tests by separating
+    backend-specific logic (#5735)
+  * fix(deps): update module
+    github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+    to v0.77.2 (release-1.24) (#5925)
+  * fix(deps): update github.com/cloudnative-pg/cnpg-i digest to
+    8d61352 (release-1.24) (#5916)
+  * fix(deps): update github.com/cloudnative-pg/barman-cloud digest
+    to 44f56f7 (release-1.24) (#5915)
+  * test: replace temp directory handling with GinkgoT().TempDir()
+    (#5914)
+  * chore(deps): update jonasbn/github-action-spellcheck docker tag
+    to v0.43.1 (release-1.24) (#5911)
+  * test: improve handling of release directory in unit tests
+    (#5901)
+  * test(e2e): refactor assertions to create, insert and validate
+    data (#5759)
+  * ci: properly quote options in bug issue templates (#5897)
+  * chore(deps): update dependency rook/rook to v1.15.4
+    (release-1.24) (#5896)
+  * chore(deps): update rojopolis/spellcheck-github-actions action
+    to v0.43.1 (release-1.24) (#5889)
+  * ci: collect apiserver audit logs (#5879)
+  * test(e2e): prevent namespace deletion timeout (#5854)
+  * chore(deps): update module sigs.k8s.io/kustomize/kustomize/v5
+    to v5.5.0 (release-1.24) (#5872)
+  * chore(deps): update dependency
+    redhat-openshift-ecosystem/openshift-preflight to v1.10.2
+    (release-1.24) (#5869)
+  * fix(deps): update all non-major go dependencies (release-1.24)
+    (#5740)
+  * fix(docs): update header for 1.24 upgrade procedure (#5862)
+
+-------------------------------------------------------------------
 Wed Oct 16 17:09:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.24.1:

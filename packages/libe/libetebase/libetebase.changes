@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 23 16:48:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix syntax: install section does not have -n parameters.
+
+-------------------------------------------------------------------
 Fri Sep 29 12:03:02 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Adjust license according to legaldb review
