@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec 16 23:31:16 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.7:
+  * Port to gtk3.
+  * Add some babylon dictionaries.
+  * Add some BigDict dictionaries.
+  * Add some PowerWord dictionaries.
+  * Stardict_client add md5 salt feature and RSA encrypt feature.
+  * Add fortune and cal plugins.
+  * Add info plugin.
+  * Add flite TTS plugin.
+  * Add YouDao.com netdict plugin.
+  * Add multi-cmd plugin.
+  * Many small changes.
+  * Updated translations.
+- Rebase patches to apply cleanly and with -p1:
+  * stardict-3.0.3-fix-path-for-sounds.patch
+  * stardict-3.0.3-improve-desktop-file.patch
+- Drop stardict-3.0.5-enable-gtk3.patch incorporated upstream.
+- Add stardict-drop-autotools-gconf.patch: Drop an obsolete gconf2
+  macro from autotools scripts.
+- Miscellaneous specfile cleanups (spec-cleaner).
+- Hack: Build with `-fpermissive` CFLAGS to avoid innumerable
+  `const char *` to `char *` casts due to ongoing transition to
+  gtk3.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:30:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,11 +1,12 @@
-Index: dict/data/stardict.desktop.in
+Index: a/dict/data/stardict.desktop.in
 ===================================================================
---- dict/data/stardict.desktop.in.orig
-+++ dict/data/stardict.desktop.in
-@@ -1,5 +1,6 @@
+--- a/dict/data/stardict.desktop.in.orig
++++ b/dict/data/stardict.desktop.in
+@@ -1,6 +1,6 @@
  [Desktop Entry]
  _Name=StarDict
+-_GenericName=Lookup words
 +_GenericName=Dictionary
- _Comment=Lookup words
+ _Comment=StarDict is an international dictionary for GNOME.
  Exec=stardict
  Terminal=false

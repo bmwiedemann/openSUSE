@@ -1,8 +1,8 @@
-Index: dict/src/conf.cpp
+Index: stardict-3.0.7/dict/src/conf.cpp
 ===================================================================
---- dict/src/conf.cpp.orig
-+++ dict/src/conf.cpp
-@@ -210,8 +210,8 @@ AppConf::AppConf() :
+--- stardict-3.0.7.orig/dict/src/conf.cpp
++++ stardict-3.0.7/dict/src/conf.cpp
+@@ -224,8 +224,8 @@ AppConf::AppConf() :
  		// stores absolute and relative paths
  		add_entry("/apps/stardict/preferences/dictionary/tts_path", pathlist);
  #else
