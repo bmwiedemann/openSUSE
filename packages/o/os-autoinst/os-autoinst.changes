@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 24 06:26:33 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1734961973.9cefddf:
+  * Add more subtests for distribution.pm
+  * Replace print with bmwqemu::diag in autotest.pm
+  * Add subtest for autotest.pm
+  * Add test for the old net ssh2 error
+  * Remove subs on vnc_base that are already declared on base
+  * Skip 28-signalblocker test in qemu emulation
+
+-------------------------------------------------------------------
 Thu Dec 19 21:18:33 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1734613653.b57c68a:

@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1734613653.b57c68a
+Version:        4.6.1734961973.9cefddf
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -250,6 +250,10 @@ rm t/27-consoles-vmware.t
 # exclude tests requiring OCR dependencies when those are disabled
 %if %{without ocr}
 rm t/02-test_ocr.t
+%endif
+%if 0%{?qemu_user_space_build}
+# qemu emulation always starts a separate thread
+rm t/28-signalblocker.t
 %endif
 
 %build
