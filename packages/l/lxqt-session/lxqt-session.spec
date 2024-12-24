@@ -2,6 +2,7 @@
 # spec file for package lxqt-session
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           lxqt-session
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -46,7 +47,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 BuildRequires:  pkgconfig(x11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Requires:       %{name}-branding = %{version}-%{release}
 Requires:       qtxdg-tools
 Recommends:     %{name}-lang = %{version}-%{release}
@@ -92,6 +93,9 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %find_lang %{name} --with-qt --all-name
 
+%check
+%ctest
+
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/lxqt.desktop 20
@@ -119,7 +123,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 # for default-xsession
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
-%ghost %{_sysconfdir}/alternatives/default.desktop
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/default.desktop
 %{_datadir}/xsessions/default.desktop
 
 %files branding-upstream
