@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.1.2
+Version:        1.2.1.3
 Release:        0
 Summary:        Pseudo-random number generation
 License:        BSD-3-Clause
@@ -42,8 +42,6 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-doctest-prof
 BuildRequires:  ghc-smallcheck-devel
 BuildRequires:  ghc-smallcheck-prof
 BuildRequires:  ghc-stm-devel
