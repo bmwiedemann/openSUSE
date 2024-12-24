@@ -1,7 +1,7 @@
 #
 # spec file for package vocal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,12 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
-%else
-BuildRequires:  rsvg-view
-%endif
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(clutter-gst-3.0)
 BuildRequires:  pkgconfig(clutter-gtk-1.0)
@@ -55,7 +50,6 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
-Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
 %description
@@ -71,10 +65,10 @@ skip intervals, and more.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
-%cmake_install %{?_smp_mflags}
+%cmake_install
 %find_lang %{name} %{?no_lang_C}
 
 # CONVERT SVG ICONS INSTALLED INTO NON-SCALABLE DIR TO PNG ONES
@@ -85,19 +79,18 @@ do
   rm %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/com.github.needleandthread.vocal.svg
 done
 
-%suse_update_desktop_file com.github.needleandthread.vocal Player
 %fdupes %{buildroot}%{_datadir}/locale/
 
 %files
 %license COPYING
-%doc %attr(0644,root,root) AUTHORS README.md
+%doc AUTHORS README.md
 %{_bindir}/com.github.needleandthread.vocal
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/applications/com.github.needleandthread.vocal.desktop
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/%{name}
+%{_datadir}/%{name}/
 
 %files lang -f %{name}.lang
 

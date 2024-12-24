@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 16 06:14:27 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Some miscellaneous cleanups for specfile:
+  * Drop use of deprecated suse_update_desktop_file macro.
+  * Do not recommend lang package, this is more accurately handled
+    by the lan-package macros already.
+  * Drop conditionals supporting EOL distro versions.
+  * Use cmake macros for build and install.
+
+-------------------------------------------------------------------
 Tue Nov  7 10:12:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer
