@@ -1,5 +1,5 @@
 [Unit]
-Description=Montly pgbackrest full backup (1st sun)
+Description=Monthly pgbackrest full backup (1st sun)
 Documentation=https://pgbackrest.org/configuration.html
 Documentation=man:pgbackrest(1) man:pgbackrest.conf(5)
 PartOf=pgbackrest.target

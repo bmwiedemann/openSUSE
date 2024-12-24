@@ -1,5 +1,5 @@
 [Unit]
-Description=Weekly pgbackrest diff backup (sun)
+Description=Weekly pgbackrest diff backup (wed)
 Documentation=https://pgbackrest.org/configuration.html
 Documentation=man:pgbackrest(1) man:pgbackrest.conf(5)
 PartOf=pgbackrest.target

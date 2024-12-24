@@ -19,7 +19,7 @@
 
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
 Name:           pgbackrest
-Version:        2.54.0
+Version:        2.54.1
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT
@@ -40,7 +40,9 @@ Source98:       README.SUSE
 Source99:       series
 Patch0:         libpq-fe.h_localisation.patch
 Patch1:         use-run-pgbackrest.patch
+%if ! (0%{?suse_version} > 0 && 0%{?suse_version} < 1600 && 0%{?sle_version})
 BuildRequires:  libbacktrace-devel
+%endif
 BuildRequires:  libyaml-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
