@@ -20,7 +20,7 @@
 
 %bcond_with split_out_client
 
-%if 0%{?suse_version} > 1230 || 0%{?rhel_version} > 600 || 0%{?centos_version} > 600 || 0%{?fedora_version} >= 20 || 0%{?el7}%{?fc20}%{?fc21}%{?fc22}%{?fc23}%{?fc24}%{?fc25}
+%if 0%{?suse_version} > 1315 || 0%{?rhel_version} > 600 || 0%{?centos_version} > 600 || 0%{?fedora_version} >= 20 || 0%{?el7}%{?fc20}%{?fc21}%{?fc22}%{?fc23}%{?fc24}%{?fc25}
 %bcond_without systemd
 %else
 %bcond_with    systemd
@@ -60,7 +60,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.10.2
+Version:        3.11.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -257,6 +257,8 @@ make %{?_smp_mflags}
 
 %install
 %cmake_install
+perl -p -i -e 's|/usr/bin/env perl|/usr/bin/perl|g' %{buildroot}%{_bindir}/rspamd_stats
+
 mkdir -p                                   \
   %{buildroot}%{_sbindir}                  \
   %{buildroot}%{_localstatedir}/lib/rspamd \
@@ -374,6 +376,10 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/worker-controller.inc
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/worker-normal.inc
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/worker-proxy.inc
+%config(noreplace) %{_sysconfdir}/rspamd/local.d/module.conf.example
+
+%dir %{_sysconfdir}/rspamd/lua.local.d/
+%config(noreplace) %{_sysconfdir}/rspamd/lua.local.d/module.lua.example
 
 %dir %{_sysconfdir}/rspamd/scores.d
 %config(noreplace) %{_sysconfdir}/rspamd/scores.d/content_group.conf
@@ -454,15 +460,14 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/whitelist.conf
 
 %dir %{_sysconfdir}/rspamd/override.d
+%config(noreplace) %{_sysconfdir}/rspamd/override.d/module.conf.example
+
+%dir %{_sysconfdir}/rspamd/modules.local.d/
+%config(noreplace) %{_sysconfdir}/rspamd/modules.local.d/module.conf.example
 
 %dir %{_datadir}/rspamd
 
 %{_datadir}/rspamd/effective_tld_names.dat
-
-
-%dir %{_datadir}/rspamd/elastic
-%{_datadir}/rspamd/elastic/kibana.json
-%{_datadir}/rspamd/elastic/rspamd_template.json
 
 %dir %{_datadir}/rspamd/languages
 %{_datadir}/rspamd/languages/*
@@ -624,6 +629,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/dkim_keygen.lua
 %{_datadir}/rspamd/lualib/rspamadm/fuzzy_ping.lua
 %{_datadir}/rspamd/lualib/rspamadm/secretbox.lua
+%{_datadir}/rspamd/lualib/rspamadm/ratelimit.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua

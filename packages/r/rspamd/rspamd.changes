@@ -1,8 +1,55 @@
 -------------------------------------------------------------------
+Mon Dec 16 16:15:46 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.11.0
+  - Breaking Changes
+    - Elasticsearch/OpenSearch Plugin: Major rework with breaking
+      changes:
+    - Added support for Elasticsearch 8 & OpenSearch 2
+    - Added index policy with logs retention
+    - Updated configuration format
+  - Major Features
+    - Added LRU cache for last filled ratelimit buckets
+    - Added utilities to manage ratelimit buckets
+    - Added include/exclude logic for headers processing
+    - Improved address rotation algorithm for upstream selection
+    - Added rspamadm mime strip command for attachments removal
+    - Added new message anonymization capabilities
+    - Replaced fastutf with simdutf for better architecture support
+      and performance
+    - Added more ways to extend Rspamd configuration, including
+      lua.local.d folder
+  - Important Fixes
+    - Fixed ARC-Seal signing issues
+    - Fixed RFC 2047 header encoding
+    - Fixed issues with dynamic keys in fuzzy storage
+    - Fixed TCP connection handling with cumulative timeouts
+    - Improved handling of DNS limits in SPF module
+    - Fixed multiple phishing detection false positives
+    - Fixed DMARC structured headers encoding
+  - WebUI Improvements
+    - Reworked symbol description display on hover
+    - Improved keyboard accessibility
+    - Enhanced symbol rendering
+  - Other Changes
+    - Skip extra RBL checks when Received IP matches From IP
+    - Multimap now uses only distinct text parts for content
+      matching
+    - Improved GPT module JSON parsing
+    - Various configuration and logging improvements
+    - Multiple performance optimizations
+
+  The release includes significant improvements in configuration
+  flexibility, security features, and overall stability. Users
+  should pay special attention to the breaking changes in the
+  Elasticsearch/OpenSearch plugin when upgrading.
+
+-------------------------------------------------------------------
 Fri Oct 25 08:36:33 UTC 2024 - Jacob Tilman Sievert <sievert@b1-systems.de>
 
 - Update to 3.10.3
-  - [Fix] move PluginDir to correct location to prevent recursive load of non plugins
+  - [Fix] move PluginDir to correct location to prevent recursive
+    load of non plugins
 
 -------------------------------------------------------------------
 Mon Oct 21 09:05:39 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
