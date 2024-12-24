@@ -16,4 +16,24 @@
 The reason why overriding alias is needed can be found here from upstream author https://github.com/atar-axis/xpadneo/issues/467</comment>
     <requestid>1187374</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db9be3affcc62508116474f5e7213a08</srcmd5>
+    <version>0.9.7</version>
+    <time>1735053969</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.7
+  * core, quirks: Add GameSir T4 Nova Lite support
+  * core, quirks: Add GuliKit KK3 MAX quirks
+  * core, quirks: Add heuristics to detect GameSir Nova controllers
+  * hid-xpadneo: Actually allow building with kernel 6.12
+  * hid-xpadneo: Allow building with kernel 6.12
+  * xpadneo, core: Add configuration for disabling Xbox logo shift-mode
+  * xpadneo, core: Fix coding style
+  * xpadneo, hidraw: Fixup previous commit to properly work with DKMS
+  * xpadneo, hidraw: Work around other software messing with our udev rules
+  * xpadneo, quirks: Let another Microsoft OUI bypass heuristics
+  * xpadneo, quirks: Prevent applying heuristics for some known vendors
+</comment>
+    <requestid>1233158</requestid>
+  </revision>
 </revisionlist>

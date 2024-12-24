@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 23 16:07:05 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to version 0.9.7
+  * core, quirks: Add GameSir T4 Nova Lite support
+  * core, quirks: Add GuliKit KK3 MAX quirks
+  * core, quirks: Add heuristics to detect GameSir Nova controllers
+  * hid-xpadneo: Actually allow building with kernel 6.12
+  * hid-xpadneo: Allow building with kernel 6.12
+  * xpadneo, core: Add configuration for disabling Xbox logo shift-mode
+  * xpadneo, core: Fix coding style
+  * xpadneo, hidraw: Fixup previous commit to properly work with DKMS
+  * xpadneo, hidraw: Work around other software messing with our udev rules
+  * xpadneo, quirks: Let another Microsoft OUI bypass heuristics
+  * xpadneo, quirks: Prevent applying heuristics for some known vendors
+
+-------------------------------------------------------------------
 Sat Mar 16 02:16:01 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
 
 - Added modprobe alias and udev rules

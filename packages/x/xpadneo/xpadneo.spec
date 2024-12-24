@@ -18,7 +18,7 @@
 
 
 Name:           xpadneo
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Driver for Xbox Wireless Controller
 License:        GPL-3.0-only
@@ -67,7 +67,7 @@ install -Dm0644 -t "%{buildroot}/usr/lib/udev/rules.d" source/etc-udev-rules.d/*
 
 %files
 /usr/lib/modprobe.d/xpadneo.conf
-/usr/lib/udev/rules.d/50-xpadneo-fixup-steamlink.rules
 /usr/lib/udev/rules.d/60-xpadneo.rules
+/usr/lib/udev/rules.d/70-xpadneo-disable-hidraw.rules
 
 %changelog
