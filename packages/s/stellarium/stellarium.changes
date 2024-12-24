@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 23 20:57:31 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 24.4
+  * Changed in DSO rendering
+  * Improvements in Core
+  * Improvements in Telescope Control plugin
+  * Updates in sky cultures
+- Add libindi2.patch: fix broken location of libindi header files
+- Remove indi2_support.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Sep 23 19:56:36 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 24.3

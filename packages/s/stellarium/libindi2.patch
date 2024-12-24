@@ -1,0 +1,82 @@
+diff --git a/src/external/CMakeLists.txt b/src/external/CMakeLists.txt
+index 2d08b79..f26d569 100644
+--- a/src/external/CMakeLists.txt
++++ b/src/external/CMakeLists.txt
+@@ -89,6 +89,14 @@ IF(USE_BUNDLED_QTCOMPRESS)
+ ENDIF()
+ 
+ ################################# INDI ################################
++if(1)
++	IF(USE_PLUGIN_TELESCOPECONTROL AND ENABLE_INDI)
++		find_package(PkgConfig REQUIRED)
++		pkg_check_modules(INDI REQUIRED IMPORTED_TARGET libindi>=2.0)
++		# Alias for compatibility with the code below
++		add_library(indiclient ALIAS PkgConfig::INDI)
++	endif()
++else()
+ IF(USE_PLUGIN_TELESCOPECONTROL AND ENABLE_INDI)
+     SET(PREFER_SYSTEM_INDILIB 1 CACHE BOOL "Use system-provided INDI instead of the bundled version")
+     find_library(INDICLIENT_LIB indiclient)
+@@ -204,3 +213,4 @@ IF(USE_PLUGIN_TELESCOPECONTROL AND ENABLE_INDI)
+         target_link_libraries(indiclient ${ZLIB_LIBRARIES})
+     endif()
+ ENDIF()
++endif()
+diff --git a/plugins/TelescopeControl/src/INDI/INDIConnection.cpp b/plugins/TelescopeControl/src/INDI/INDIConnection.cpp
+index afcaa43..6a11c7d 100644
+--- a/plugins/TelescopeControl/src/INDI/INDIConnection.cpp
++++ b/plugins/TelescopeControl/src/INDI/INDIConnection.cpp
+@@ -25,9 +25,9 @@
+ #include <limits>
+ #include <cmath>
+ 
+-#include <libs/indiclient/baseclient.h>
+-#include <libs/indidevice/basedevice.h>
+-#include <libs/indibase/inditelescope.h>
++#include <libindi/baseclient.h>
++#include <libindi/basedevice.h>
++#include <libindi/inditelescope.h>
+ 
+ const int INDIConnection::SLEW_STOP = INDI::Telescope::SLEW_GUIDE - 1;
+ 
+diff --git a/plugins/TelescopeControl/src/INDI/INDIConnection.hpp b/plugins/TelescopeControl/src/INDI/INDIConnection.hpp
+index e511f20..54ced19 100644
+--- a/plugins/TelescopeControl/src/INDI/INDIConnection.hpp
++++ b/plugins/TelescopeControl/src/INDI/INDIConnection.hpp
+@@ -20,8 +20,8 @@
+ #define INDICONNECTION_HPP
+ 
+ #include <QObject>
+-#include <libs/indiclient/baseclient.h>
+-#include <libs/indidevice/basedevice.h>
++#include <libindi/baseclient.h>
++#include <libindi/basedevice.h>
+ 
+ #include <mutex>
+ #include <QStringList>
+diff --git a/plugins/TelescopeControl/src/INDI/TelescopeClientINDI.cpp b/plugins/TelescopeControl/src/INDI/TelescopeClientINDI.cpp
+index 967bf12..97e3721 100644
+--- a/plugins/TelescopeControl/src/INDI/TelescopeClientINDI.cpp
++++ b/plugins/TelescopeControl/src/INDI/TelescopeClientINDI.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include "StelCore.hpp"
+ #include "StelUtils.hpp"
+-#include <libs/indibase/inditelescope.h>
++#include <libindi/inditelescope.h>
+ #include "INDIControlWidget.hpp"
+ 
+ TelescopeClientINDI::TelescopeClientINDI(const QString &name, const QString &params):
+diff --git a/plugins/TelescopeControl/src/INDI/test/testINDIConnection.cpp b/plugins/TelescopeControl/src/INDI/test/testINDIConnection.cpp
+index e946652..f1cc240 100644
+--- a/plugins/TelescopeControl/src/INDI/test/testINDIConnection.cpp
++++ b/plugins/TelescopeControl/src/INDI/test/testINDIConnection.cpp
+@@ -23,7 +23,7 @@
+ #include <string>
+ 
+ #include "INDIConnection.hpp"
+-#include <libs/indidevice/basedevice.h>
++#include <libindi/basedevice.h>
+ 
+ void TestINDIConnection::deafultCoordinates()
+ {
