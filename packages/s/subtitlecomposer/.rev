@@ -152,4 +152,12 @@
     <comment>Add build fixes for newer ffmpeg</comment>
     <requestid>1194837</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>7af1e8130abfe42cb5e270df8d3555f9</srcmd5>
+    <version>0.8.1</version>
+    <time>1735054030</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233254</requestid>
+  </revision>
 </revisionlist>

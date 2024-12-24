@@ -1,0 +1,120 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Use the pocketsphinx 5.0.0 api
+
+This uses the new pocketsphinx 5.0.0 api and stops using the vad_* parameters
+that don't seem to be available in pocketsphinx anymore. Thus, I also removed
+the section to set those parameters in the config dialog.
+
+Index: subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/pocketsphinxplugin.cpp
+===================================================================
+--- subtitlecomposer-0.8.1.orig/src/speechplugins/pocketsphinx/pocketsphinxplugin.cpp
++++ subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/pocketsphinxplugin.cpp
+@@ -40,6 +40,12 @@ PocketSphinxPlugin::waveFormat() const
+ /*virtual*/ bool
+ PocketSphinxPlugin::init()
+ {
++#ifdef HAS_POCKETSPHINX_5_0_0
++	m_psConfig = ps_config_init(ps_args());
++	ps_config_set_str(m_psConfig, "hmm", QUrl(PocketSphinxConfig::acousticModelPath()).toLocalFile().toUtf8().constData());
++	ps_config_set_str(m_psConfig, "lm", QUrl(PocketSphinxConfig::trigramModelFile()).toLocalFile().toUtf8().constData());
++	ps_config_set_str(m_psConfig, "dict", QUrl(PocketSphinxConfig::lexiconFile()).toLocalFile().toUtf8().constData());
++#else
+ 	m_psConfig = cmd_ln_init(nullptr, ps_args(), true,
+ 				 "-hmm", QUrl(PocketSphinxConfig::acousticModelPath()).toLocalFile().toUtf8().constData(),
+ 				 "-lm", QUrl(PocketSphinxConfig::trigramModelFile()).toLocalFile().toUtf8().constData(),
+@@ -55,6 +61,7 @@ PocketSphinxPlugin::init()
+ 				 // Log-ratio between signal level and noise level. (pocketsphinx default: 2.0)
+ 				 "-vad_threshold", QByteArray::number(PocketSphinxConfig::vadTreshold()).constData(),
+ 				 nullptr);
++#endif
+ 	if(m_psConfig == nullptr) {
+ 		qWarning() << "Failed to create PocketSphinx config object";
+ 		return false;
+@@ -66,7 +73,12 @@ PocketSphinxPlugin::init()
+ 		return false;
+ 	}
+ 
++
++#ifdef HAS_POCKETSPHINX_5_0_0
++	m_psFrameRate = ps_config_int(m_psConfig, "frate");
++#else
+ 	m_psFrameRate = cmd_ln_int32_r(m_psConfig, "-frate");
++#endif
+ 
+ 	m_lineText.clear();
+ 	m_lineIn = m_lineOut = 0;
+@@ -85,7 +97,11 @@ PocketSphinxPlugin::cleanup()
+ 		m_psDecoder = nullptr;
+ 	}
+ 	if(m_psConfig != nullptr) {
++#ifdef HAS_POCKETSPHINX_5_0_0
++		ps_config_free(m_psConfig);
++#else
+ 		cmd_ln_free_r(m_psConfig);
++#endif
+ 		m_psConfig = nullptr;
+ 	}
+ }
+Index: subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/CMakeLists.txt
+===================================================================
+--- subtitlecomposer-0.8.1.orig/src/speechplugins/pocketsphinx/CMakeLists.txt
++++ subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/CMakeLists.txt
+@@ -8,8 +8,9 @@ set(CMAKE_REQUIRED_INCLUDES ${POCKETSPHI
+ set(CMAKE_REQUIRED_LIBRARIES ${POCKETSPHINX_LIBRARIES})
+ check_cxx_source_compiles("#include <pocketsphinx.h>\nint main(){ ps_seg_iter(nullptr); return 0; }" PocketSphinx_NEW_ps_seg_iter)
+ check_cxx_source_compiles("#include <pocketsphinx.h>\nint main(){ cmd_ln_free_r(nullptr); return 0; }" PocketSphinx_OK_prealpha5)
++check_cxx_source_compiles("#include <pocketsphinx.h>\nint main(){ ps_config_init(nullptr); return 0; }" PocketSphinx_5_0_0_api)
+ 
+-if(NOT PocketSphinx_OK_prealpha5)
++if(NOT PocketSphinx_OK_prealpha5 AND NOT PocketSphinx_5_0_0_api)
+ 	message(STATUS "Have found BROKEN PocketSphinx 5 - Speech plugin will not be built")
+ 	return()
+ endif()
+@@ -47,3 +48,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DI
+ if(PocketSphinx_NEW_ps_seg_iter)
+ 	target_compile_definitions(pocketsphinxasr PRIVATE HAS_NEW_PS_SEG_ITER=1)
+ endif()
++
++if(PocketSphinx_5_0_0_api)
++	target_compile_definitions(pocketsphinxasr PRIVATE HAS_POCKETSPHINX_5_0_0=1)
++endif()
+Index: subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/pocketsphinxconfigwidget.cpp
+===================================================================
+--- subtitlecomposer-0.8.1.orig/src/speechplugins/pocketsphinx/pocketsphinxconfigwidget.cpp
++++ subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/pocketsphinxconfigwidget.cpp
+@@ -28,6 +28,9 @@ PocketSphinxConfigWidget::PocketSphinxCo
+ 	kcfg_lexiconFile->setFilter(QLatin1String("*.dict *.dic|") + i18n("Sphinx Dictionaries") + QLatin1String("\n*|") + i18n("All Files"));
+ 	kcfg_trigramModelFile->setFilter(QStringLiteral("*.lm.bin *.lm|") + i18n("Trigram Models") + QLatin1String("\n*|") + i18n("All Files"));
+ #endif
++#if HAS_POCKETSPHINX_5_0_0
++	grpVAD->hide();
++#endif
+ }
+ 
+ PocketSphinxConfigWidget::~PocketSphinxConfigWidget()
+Index: subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/pocketsphinxplugin.h
+===================================================================
+--- subtitlecomposer-0.8.1.orig/src/speechplugins/pocketsphinx/pocketsphinxplugin.h
++++ subtitlecomposer-0.8.1/src/speechplugins/pocketsphinx/pocketsphinxplugin.h
+@@ -11,6 +11,9 @@
+ 
+ typedef struct ps_decoder_s ps_decoder_t;
+ typedef struct cmd_ln_s cmd_ln_t;
++#ifdef HAS_POCKETSPHINX_5_0_0
++typedef struct cmd_ln_s ps_config_t;
++#endif
+ typedef struct SpeexPreprocessState_ SpeexPreprocessState;
+ 
+ namespace SubtitleComposer {
+@@ -40,7 +43,11 @@ private:
+ 	void processUtterance();
+ 
+ private:
++#ifdef HAS_POCKETSPHINX_5_0_0
++	ps_config_t *m_psConfig;
++#else
+ 	cmd_ln_t *m_psConfig;
++#endif
+ 	ps_decoder_t *m_psDecoder;
+ 	qint32 m_psFrameRate;
+ 

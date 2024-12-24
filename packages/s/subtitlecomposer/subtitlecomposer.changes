@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 18 18:57:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix build with pocketsphinx 5.0.3 in TW since
+  the API changed in the 5.0.0 release. Also, removed some
+  parameters that don't seem to be configurable by pocketsphinx
+  anymore:
+  * use-pocketsphinx-5.0.0-api.patch
+
+-------------------------------------------------------------------
 Tue Aug 20 07:14:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:

@@ -37,6 +37,8 @@ Patch6:         0007-VideoPlayer-check-return-of-swr_alloc_set_opts2.patch
 Patch7:         0008-StreamProcessor-stop-using-pkt_duration.patch
 Patch8:         0009-StreamProcessor-stop-using-AVFrame-duration.patch
 Patch9:         0010-Require-FFmpeg-5.1.5.patch
+# PATCH-FIX-UPSTREAM https://invent.kde.org/multimedia/subtitlecomposer/-/merge_requests/48
+Patch10:        use-pocketsphinx-5.0.0-api.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel
