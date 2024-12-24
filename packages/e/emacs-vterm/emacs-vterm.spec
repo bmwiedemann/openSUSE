@@ -21,7 +21,7 @@
 %global _upstream_name emacs-libvterm
 
 Name:           emacs-%{_name}
-Version:        698.ae4ae1a
+Version:        708.99c1f5e
 Release:        0
 Summary:        An experimental module for libvterm bindings to Emacs
 License:        GPL-3.0-or-later

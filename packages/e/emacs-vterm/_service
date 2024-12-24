@@ -1,6 +1,6 @@
 <!-- -*- xml -*- !-->
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="parent-tag">0e3163109795b459c110ac9f9b772d8cb6900695</param>
 	<param name="versionformat">@TAG_OFFSET@.%h</param>
 	<param name="url">https://github.com/akermu/emacs-libvterm.git</param>
@@ -10,10 +10,10 @@
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">Björn Bidar &#60;bjorn.bidar@thaodan.de&#62;</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="set_version"/>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
 </services>

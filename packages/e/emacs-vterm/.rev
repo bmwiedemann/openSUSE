@@ -17,4 +17,19 @@
   * Fix typo: postion -&gt; position</comment>
     <requestid>1161545</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bac0fcdfbb127bbd9f2faa7152e88a9f</srcmd5>
+    <version>708.99c1f5e</version>
+    <time>1735053994</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 708.99c1f5e:
+  * Try running the login shell by default for &quot;ssh&quot; and &quot;scp&quot; Tramp methods
+  * Add option to specify one shell for all Tramp methods
+  * Add option to try using the login shell for Tramp Methods
+  * Fix display errors when using text-scale mode with ncurses. Fixes gh#akermu/emacs-libvterm#731
+  * Detect vterm-mode correctly when using derived modes
+  * Don't garble partial multi-byte character after control sequence
+  * Support overriding the maximum scrollback at compile-time</comment>
+    <requestid>1233200</requestid>
+  </revision>
 </revisionlist>
