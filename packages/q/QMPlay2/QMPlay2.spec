@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1733505608
-%define _commit 797bfde
+%define _mtime 1734977814
+%define _commit 5bf25e0
 
 Name:           QMPlay2
-Version:        24.12.06
+Version:        24.12.23
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -32,8 +32,6 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM 0001-fix-log-message.patch -- Fix excessive error log messages
-Patch2:         0001-fix-log-message.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  llvm-gold
@@ -112,7 +110,6 @@ It's a development package for %{name}.
 %autosetup -p1 -n %{name}-%{version}.%{_mtime}.%{_commit}
 # %setup -q -n %{name}-%{version}.%{_mtime}.%{_commit}
 # %patch1 -p1
-# %patch2 -p1
 
 %build
 # Build options
