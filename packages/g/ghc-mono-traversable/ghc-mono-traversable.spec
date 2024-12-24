@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.20.0
+Version:        1.0.21.0
 Release:        0
 Summary:        Type classes for mapping, folding, and traversing monomorphic containers
 License:        MIT

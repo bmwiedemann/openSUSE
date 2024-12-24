@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 13 16:53:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update mono-traversable to version 1.0.21.0.
+  ## 1.0.21.0
+
+  * Support for vector 0.13.2.0, adding instances for [`Data.Vector.Strict`](https://hackage.haskell.org/package/vector-0.13.2.0/docs/Data-Vector-Strict.html) data structure.
+    [#244](https://github.com/snoyberg/mono-traversable/issues/244)
+
+-------------------------------------------------------------------
 Fri Sep 13 07:56:38 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update mono-traversable to version 1.0.20.0.
