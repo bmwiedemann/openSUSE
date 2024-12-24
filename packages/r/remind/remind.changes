@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Dec 17 09:46:42 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.2 Patch 1 - 2024-12-16
+
+- BUG FIX: remind: Fix a logic error that only showed itself on big-endian
+  architectures.  Found thanks to Debian testing and a notification from
+  Jochen Sprickerhof. 
+
+-------------------------------------------------------------------
+Mon Dec 16 14:54:52 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.2 Patch 0 - 2024-12-16
+
+- MAJOR NEW FEATURE: remind: Add the TRANSLATE command, the _()
+  built-in function and the %(...) substitution sequence.  These allow
+  you to localize your reminder files more easily.  The translation table
+  is also made available to back-ends like rem2pdf and tkremind,
+  which they can use as they see fit.
+
+- MINOR FEATURE: tkremind, rem2html: Localize the names of the moon
+  phases.
+
+- MAJOR CHANGE: remind: Remind used to support compile-time localization
+  into different languages (French, English, etc.)  That compile-time
+  support has been removed and all localization is now done at run-time.
+
+- NEW FEATURE: remind: In JSON daemon mode (-zj), the front-end can
+  request translation table entries from the Remind daemon, allowing the
+  front-end to localize messages.
+
+- UPDATE: Update national holidays following update to upstream Python
+  library.
+
+- MINOR FEATURE: Add standard include/sun.rem file for sunrise/sunset.
+
+- MINOR FEATURE:  The SYSINCLUDE command has been added.  The command:
+
+      SYSINCLUDE foo/bar.rem
+
+  is equivalent to:
+
+      INCLUDE [$SysInclude]/foo/bar.rem
+
+- MINOR IMPROVEMENT: Allow INCLUDE, DO and SYSINCLUDE to include files with
+  spaces in their names; in this case, you have to put the filename inside
+  double-quotes.
+
+- IMPROVEMENT: remind: Refuse to open subdirectories named "*.rem"
+  under a top-level directory rather than trying and failing with a
+  confusing error.
+
+- IMPROVEMENT: contrib/remind-conf-mode: Fix a few bugs and choose colors
+  that are easier on the eyes.
+
+- IMPROVEMENT: remind: Remind used to have three completely separate
+  hash table implementations.  They have all been replaced with a single
+  implementation; this new implementation adapts the hash table size based
+  on the number of entries and is dramatically faster than the old code
+  when there are a large number of entries.
+
+- MINOR FIXES: remind: Fix typos in comments; use memcpy to copy OMIT
+  contexts internally.
+
+- BUG FIX: remind: Actually allow the documented 9 levels of INCLUDE
+  rather than 8.
+
+- BUG FIX: remind: If an INCLUDE statement failed inside an IF statement,
+  Remind would print spurious errors about unmatched IF/ENDIF.  This has
+  been fixed.
+
+-------------------------------------------------------------------
 Fri Nov 22 08:44:53 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.1 Patch 1 - 2024-11-18
