@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 23 20:47:49 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- update to release version 1.7.3
+- remove patch 1165-fix-some-wayland-problems.patch
+  * users reported problems with this patch
+  * will not be merged upstream
+
+-------------------------------------------------------------------
 Mon Nov 18 14:08:50 UTC 2024 - Martin Winter <me@letsfindaway.de>
 
 - update to release version 1.7.2

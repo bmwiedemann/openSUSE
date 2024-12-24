@@ -19,7 +19,7 @@
 %define         namelc openboard
 %define         fqname ch.%{namelc}.%{name}
 Name:           OpenBoard
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Interactive whiteboard for schools and universities
 License:        GPL-3.0-or-later
@@ -28,8 +28,6 @@ URL:            https://openboard.ch
 Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://github.com/OpenBoard-org/OpenBoard/pull/955
 Patch955:       0955-shortcut-configuration.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/1165
-Patch1165:      1165-fix-some-wayland-problems.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
 BuildRequires:  desktop-file-utils
