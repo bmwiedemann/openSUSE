@@ -7164,8 +7164,6 @@ unsorted:
   - gio-qt-devel 
   - gio-sharp 
   - gio-sharp-devel 
-  - gio-sharp3 
-  - gio-sharp3-devel 
   - girara-devel 
   - git-absorb 
   - git-absorb-bash-completion 
@@ -7339,7 +7337,6 @@ unsorted:
   - gli-doc 
   - glib-networking-32bit 
   - glib-sharp2 
-  - glib-sharp3 
   - glib2-devel 
   - glib2-devel-32bit 
   - glib2-devel-static 
@@ -7691,7 +7688,6 @@ unsorted:
   - goffice-lang 
   - goipp 
   - gojq 
-  - gokart 
   - golang-github-QubitProducts-exporter_exporter 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
@@ -8270,12 +8266,6 @@ unsorted:
   - gtk-sharp2-complete 
   - gtk-sharp2-doc 
   - gtk-sharp2-gapi 
-  - gtk-sharp3 
-  - gtk-sharp3-complete 
-  - gtk-sharp3-devel 
-  - gtk-sharp3-doc 
-  - gtk-sharp3-gapi 
-  - gtk-sharp3-gapi-devel 
   - gtk-vnc-devel 
   - gtk-vnc-tools 
   - gtk2-branding-upstream 
@@ -13994,7 +13984,7 @@ unsorted:
   - libhdf5hl_fortran_1_12_3-gnu-openmpi5-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
-  - libhealpix_cxx3 
+  - libhealpix_cxx4 
   - libheatshrink0_4_1 
   - libheatshrink_dynalloc0_4_1 
   - libheif-devel 
@@ -14773,8 +14763,6 @@ unsorted:
   - libmodulemd-devel 
   - libmono-2_0-1 
   - libmono-2_0-devel 
-  - libmono-profiler-gui-thread-check0 
-  - libmono-profiler-gui-thread-check0-devel 
   - libmonoboehm-2_0-1 
   - libmonoboehm-2_0-devel 
   - libmonosgen-2_0-1 
@@ -20124,6 +20112,9 @@ unsorted:
   - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-settings 
   - nvidia-texture-tools 
+  - nvim-lspconfig 
+  - nvim-lspconfig-doc 
+  - nvim-treesitter 
   - nvimpager 
   - nvimpager-zsh-completion 
   - nvme-cli-regress-script 
