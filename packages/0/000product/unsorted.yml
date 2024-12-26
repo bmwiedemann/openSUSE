@@ -3718,6 +3718,7 @@ unsorted:
   - edict 
   - edid-decode 
   - editorconfig 
+  - editorconfig-checker 
   - editres 
   - edk2-Shell 
   - ee4j 
@@ -5690,18 +5691,6 @@ unsorted:
   - ghc-data-default-class-prof 
   - ghc-data-default-devel 
   - ghc-data-default-doc 
-  - ghc-data-default-instances-containers 
-  - ghc-data-default-instances-containers-devel 
-  - ghc-data-default-instances-containers-doc 
-  - ghc-data-default-instances-containers-prof 
-  - ghc-data-default-instances-dlist 
-  - ghc-data-default-instances-dlist-devel 
-  - ghc-data-default-instances-dlist-doc 
-  - ghc-data-default-instances-dlist-prof 
-  - ghc-data-default-instances-old-locale 
-  - ghc-data-default-instances-old-locale-devel 
-  - ghc-data-default-instances-old-locale-doc 
-  - ghc-data-default-instances-old-locale-prof 
   - ghc-data-default-prof 
   - ghc-data-fix 
   - ghc-data-fix-devel 
@@ -8828,6 +8817,7 @@ unsorted:
   - hyprland-devel 
   - hyprland-fish-completion 
   - hyprland-protocols-devel 
+  - hyprland-qtutils 
   - hyprland-wallpapers 
   - hyprland-zsh-completion 
   - hyprlang-devel 
@@ -10712,17 +10702,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.28-apiserver 
-  - kubernetes1.28-client 
-  - kubernetes1.28-client-bash-completion 
-  - kubernetes1.28-client-common 
-  - kubernetes1.28-client-fish-completion 
-  - kubernetes1.28-controller-manager 
-  - kubernetes1.28-kubeadm 
-  - kubernetes1.28-kubelet 
-  - kubernetes1.28-kubelet-common 
-  - kubernetes1.28-proxy 
-  - kubernetes1.28-scheduler 
   - kubernetes1.29-apiserver 
   - kubernetes1.29-client 
   - kubernetes1.29-client-bash-completion 
@@ -11747,7 +11726,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_3_296 
+  - libVulkanLayerSettings-1_4_304 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -12049,7 +12028,6 @@ unsorted:
   - libasan8-gcc13-32bit 
   - libasm-devel 
   - libasm1-32bit 
-  - libasn1-8 
   - libasn1c-devel 
   - libasn1c1 
   - libasound2-32bit 
@@ -12483,11 +12461,11 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
-  - libcamera-base0_3-32bit 
+  - libcamera-base0_4-32bit 
   - libcamera-cam 
   - libcamera-devel 
   - libcamera-tools 
-  - libcamera0_3-32bit 
+  - libcamera0_4-32bit 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk0-32bit 
@@ -12869,9 +12847,9 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_6_0 
-  - libdeal_II9_6_0-openmpi4 
-  - libdeal_II9_6_0-openmpi5 
+  - libdeal_II9_6_1 
+  - libdeal_II9_6_1-openmpi4 
+  - libdeal_II9_6_1-openmpi5 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -13752,7 +13730,6 @@ unsorted:
   - libgsm1-32bit 
   - libgsmsd8 
   - libgsoap-2_8_135 
-  - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -13896,8 +13873,6 @@ unsorted:
   - libharu-devel 
   - libhashcat6_2_6 
   - libhavege2 
-  - libhcrypto4 
-  - libhdb9 
   - libhdf5-200 
   - libhdf5-200-mvapich2 
   - libhdf5-200-openmpi4 
@@ -13989,10 +13964,6 @@ unsorted:
   - libheatshrink_dynalloc0_4_1 
   - libheif-devel 
   - libheif1-32bit 
-  - libheimbase1 
-  - libheimdal-devel 
-  - libheimedit0 
-  - libheimntlm0 
   - libhfst55 
   - libhfstospell11 
   - libhfstospell11-32bit 
@@ -14030,7 +14001,6 @@ unsorted:
   - libhwasan0-gcc13 
   - libhwloc15 
   - libhwy1-32bit 
-  - libhx509-5 
   - libhydrogen-core-1_2_4 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
@@ -14241,9 +14211,6 @@ unsorted:
   - libjxrglue0 
   - libkColorPicker-Qt5-0 
   - libkImageAnnotator-Qt5-0 
-  - libkadm5clnt7 
-  - libkadm5srv8 
-  - libkafs0 
   - libkasten-lang 
   - libkate-devel 
   - libkate-tools 
@@ -14255,7 +14222,6 @@ unsorted:
   - libkcddb-lang 
   - libkcddb-qt6-devel 
   - libkcompactdisc-qt6-devel 
-  - libkdc2 
   - libkdcraw 
   - libkdcraw-devel 
   - libkdcraw-qt6-devel 
@@ -14349,7 +14315,6 @@ unsorted:
   - libkomparediff2-devel 
   - libkonkretcmpi0 
   - libkpathsea6 
-  - libkrb5-26 
   - libkrun-devel 
   - libkrun-sev-devel 
   - libkrun-sev1 
@@ -15196,10 +15161,6 @@ unsorted:
   - libopenssl1_1 
   - libopenssl1_1-32bit 
   - libopentracing-cpp1 
-  - libopenvas_wincmd-devel 
-  - libopenvas_wincmd1 
-  - libopenvas_wmiclient-devel 
-  - libopenvas_wmiclient1 
   - libopenvdb11_0 
   - libopenvino2440 
   - libopenvino_c2440 
@@ -15314,7 +15275,6 @@ unsorted:
   - libostree-grub2 
   - libotf 
   - libotf-devel 
-  - libotp0 
   - libotr-devel 
   - libotr-tools 
   - libotr5 
@@ -15496,8 +15456,7 @@ unsorted:
   - libpng16-devel-x86-64-v3 
   - libpng16-tools 
   - libpnglite0 
-  - libpocketsphinx1 
-  - libpocketsphinx3 
+  - libpocketsphinx5 
   - libpocl2 
   - libpodofo-devel 
   - libpodofo2 
@@ -16143,7 +16102,6 @@ unsorted:
   - librnp0 
   - librocksdb9 
   - librocsgraphtheory0 
-  - libroken18 
   - librpma0 
   - librrd8 
   - librsb-devel 
@@ -16331,7 +16289,6 @@ unsorted:
   - libsixel1 
   - libskk-devel 
   - libskk0 
-  - libsl0 
   - libslang2-32bit 
   - libslirp-devel 
   - libslopy7_6 
@@ -16424,9 +16381,6 @@ unsorted:
   - libspf2-devel 
   - libspf2-tools 
   - libspglib_f08-2 
-  - libsphinxad0 
-  - libsphinxbase1 
-  - libsphinxbase3 
   - libsphinxclient-0_0_1 
   - libsphinxclient-devel 
   - libspice-server-devel 
@@ -17031,7 +16985,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_3_296 
+  - libvolk-1_4_304 
   - libvolk3_1 
   - libvomsapi1 
   - libvorbis-devel 
@@ -17134,7 +17088,6 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
-  - libwind0 
   - libwinpr2-2 
   - libwireshark18 
   - libwiretap15 
@@ -20808,7 +20761,6 @@ unsorted:
   - openttd-opensfx 
   - opentyrian 
   - openucx-tools 
-  - openvas-smb 
   - openvdb-devel 
   - openvdb-tools 
   - openvino-auto-batch-plugin 
@@ -23302,8 +23254,6 @@ unsorted:
   - po4a-lang 
   - pocketsphinx 
   - pocketsphinx-devel 
-  - pocketsphinx5 
-  - pocketsphinx5-devel 
   - pocl 
   - pocl-devel 
   - poco-cpspc 
@@ -24230,7 +24180,6 @@ unsorted:
   - python3-pcp 
   - python3-plist 
   - python3-pocketsphinx 
-  - python3-pocketsphinx5 
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
@@ -24267,8 +24216,6 @@ unsorted:
   - python3-senlinclient 
   - python3-smbus 
   - python3-spglib 
-  - python3-sphinxbase 
-  - python3-sphinxbase5 
   - python3-splinter 
   - python3-spyder-notebook 
   - python3-sss-murmur 
@@ -41124,10 +41071,6 @@ unsorted:
   - spglib-devel 
   - spglib_f08-devel 
   - sphinx 
-  - sphinxbase 
-  - sphinxbase-devel 
-  - sphinxbase5 
-  - sphinxbase5-devel 
   - spi-tools 
   - spice-gtk 
   - spice-gtk-devel 
