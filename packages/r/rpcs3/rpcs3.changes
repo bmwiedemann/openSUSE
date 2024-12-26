@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Dec 23 18:06:15 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20241223:
+  * Fix fs::file log formatting
+  * Qt: allow to skip further automatic update notifications for a single version
+  * IDM: Implement lock-free smart pointers (#16403)
+  * SPU LLVM: Recognize ROTYQBYI and ROTQBI rotation pattern (#16409)
+
+-------------------------------------------------------------------
+Sat Dec 21 05:23:10 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20241221:
+  * ps move: ignore second half frame in ZCM1
+  * cellGem: add magnetometer support
+  * cellGem: request orientation reset during calibration
+  * cellGem: fix some data types
+  * cellGem: invalidate hue and tracking in cellGemInvalidateCalibration
+  * cellGem: split status_flags into calibration flags and runtime flags
+  * cellGem: implement cellGemSetRumble
+  * cellGem: add setting to let the game actually set the device hues
+  * cellGem: set sphere RGB when a hue is set and vice versa
+  * cellGem: add debug setting for painting spheres into the live image
+  * cellGem: fix some data types
+  * Fix some warnings
+  * cellPhotoDecode: allow dev_bdvd paths
+  * cellGem: Split horizontal and vertical mouse rotation cone setting
+  * Qt: fix settings_dialog opening on wrong tab
+  * Qt: fix flow_layout segfault
+  * cellAdec implementation part 2: LPCM decoder (#16381)
+  * cellGem: expose rotation cone to settings
+  * cellCamera: try to fix internal state on stop
+  * Update SDL to 2.30.10
+  * Update curl to 8.11.1
+  * Update 7zip to 24.09
+  * Update OpenAL to 1.24.1
+  * Update FAudio to 24.12
+  * Fix some static analysis warnings
+  * Fix warning
+
+-------------------------------------------------------------------
+Tue Dec 17 14:58:59 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20241217:
+  * Fix unused p2p socket closing
+  * rsx: Improve MM synchronization
+  * rsx: Revert bounds optimization on RO texture load
+  * rsx: Improve performance even more when async MM is active
+  * rsx: Restore previous (incorrect) low-precision format handling
+  * rsx/qt: Add option to disable async host MM to GUI
+  * Fix linux build
+  * rsx: Fix texture renormalization flag and fix windows build
+  * rsx: Fix OpenGL deadlock
+  * rsx: Make the deferred mm flush option usable with OpenGL
+  * rsx/vk: Implement asynchronous host memory management.
+  * Fixup Intel macOS builds
+  * Revert Qt to 6.7.3 for macOS
+
+-------------------------------------------------------------------
 Fri Dec 13 15:01:32 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.34~git20241213:

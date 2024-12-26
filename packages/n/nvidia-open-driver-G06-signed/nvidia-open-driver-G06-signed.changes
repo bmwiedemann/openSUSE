@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 17 11:55:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- for SLE Micro 6.x use 
+  '%if 0%{?suse_version} == 1600 && !0%{?is_opensuse}'; SLE16
+  doesn't set %sle_version and SLE Micro 6.x is already SLE16!
+
+-------------------------------------------------------------------
 Wed Dec 11 00:07:03 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Do not set %{?linux_make_arch} for running make modules/modules-install

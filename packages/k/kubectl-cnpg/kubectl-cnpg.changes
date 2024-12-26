@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 23 15:47:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.25.0:
+  * Version tag to 1.25.0 (#6443)
+  * docs: upgrade info to 1.25.0 (#6442)
+  * docs: Release notes for 1.24.2 and 1.23.6 (#6438)
+  * docs: Release notes for 1.25.0, 1.24.2, 1.23.6 (#6424)
+  * chore: remove PluginConfigurationList type (#6431)
+  * chore: remove ExternalClusterList type (#6426)
+  * ci: stop testing Postgres 12 (#6425)
+  * fix(deps): update module github.com/jackc/pgx/v5 to v5.7.2
+    (main) (#6416)
+  * docs: fix genref config (#6422)
+  * feat: check the number of spec.schedule fields (#5396)
+
+-------------------------------------------------------------------
 Mon Dec 23 14:07:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.24.2:

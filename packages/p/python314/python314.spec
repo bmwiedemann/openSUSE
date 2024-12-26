@@ -149,8 +149,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~a2
-%define         tarversion 3.14.0a2
+Version:        3.14.0~a3
+%define         tarversion 3.14.0a3
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -1110,6 +1110,8 @@ fi
 %{sitedir}/_pyrepl
 %{sitedir}/__phello__
 %{sitedir}/__pycache__
+# sysconfig converted to JSON (gh#python/cpython#127178)
+%{sitedir}/_sysconfig_vars_*.json
 # import-failed hooks
 %{sitedir}/_import_failed
 %{sitedir}/site-packages/zzzz-import-failed-hooks.pth

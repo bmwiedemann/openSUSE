@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 18 07:48:21 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.38.1:
+  * fix --use-on-cd failing with newly released default of --resolve-engines when engines key didn't exist
+- Changes since 1.38.0:
+  * enable --resolve-engines by default. out of experimental phase. to disable it,
+    add a --resolve-engines=false flag, and make sure to open an issue describing
+    why. It might feel like a breaking change but .nvmrc and .node-version have
+    precedence so it should not.
+  * better error handling for malformed json
+  * Having install and uninstall aliases
+
+-------------------------------------------------------------------
 Mon Oct  7 12:49:47 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - update to version 1.37.2:

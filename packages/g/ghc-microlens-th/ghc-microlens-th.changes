@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 17 04:33:25 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.16.
+  # 0.4.3.16
+
+  * [#182](https://github.com/stevenfontanella/microlens/pull/182) Support GHC 9.12.
+
+-------------------------------------------------------------------
 Fri Apr 19 05:38:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update microlens-th to version 0.4.3.15.

@@ -1,0 +1,29 @@
+* Changed fuzzy jedi completion
+  gh#python-lsp/python-lsp-server#602
+* Disable DEBUG logging for tests
+  gh#python-lsp/python-lsp-server#605
+
+diff -ur python_lsp_server-1.12.0.orig/test/conftest.py python_lsp_server-1.12.0/test/conftest.py
+--- python_lsp_server-1.12.0.orig/test/conftest.py	2024-12-25 11:04:59.271951606 +0100
++++ python_lsp_server-1.12.0/test/conftest.py	2024-12-25 11:05:15.935801063 +0100
+@@ -7,7 +7,7 @@
+ 
+ from pylsp.__main__ import LOG_FORMAT
+ 
+-logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT)
++logging.basicConfig(level=logging.WARN, format=LOG_FORMAT)
+ 
+ 
+ pytest_plugins = ["test.fixtures"]
+diff -ur python_lsp_server-1.12.0.orig/test/plugins/test_completion.py python_lsp_server-1.12.0/test/plugins/test_completion.py
+--- python_lsp_server-1.12.0.orig/test/plugins/test_completion.py	2024-12-25 11:04:59.271951606 +0100
++++ python_lsp_server-1.12.0/test/plugins/test_completion.py	2024-12-25 11:12:34.059344572 +0100
+@@ -182,6 +182,8 @@
+     expected = "commonprefix(m)"
+     if JEDI_VERSION == "0.18.0":
+         expected = "commonprefix(list)"
++    if tuple([int(i) for i in  JEDI_VERSION.split(".")]) >= (0,19,2):
++        expected = "isabs(s)"
+     assert items[0]["label"] == expected
+ 
+     # Test we don't throw with big character

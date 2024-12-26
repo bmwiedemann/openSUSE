@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Dec 17 14:46:11 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.12 → 3.1.13
+
+-------------------------------------------------------------------
+Tue Dec 17 10:19:53 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow env placeholders for the podman pilot
+
+  The podman runtime arguments allows to set environment
+  variable placeholders starting with '%' and followed by
+  the name of the environment variable. For example %HOME
+  will be replaced to the value of $HOME of the calling user.
+  If the given placeholder cannot be translated into an
+  existing environment variable it will be turned into the
+  variable name, $HOME in the above example.
+
+-------------------------------------------------------------------
+Mon Dec 16 14:40:06 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.11 → 3.1.12
+
+-------------------------------------------------------------------
+Mon Dec 16 12:51:34 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Automatically detect terminal mode
+
+-------------------------------------------------------------------
+Mon Dec 16 12:41:09 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop superfluous comment
+
+-------------------------------------------------------------------
+Mon Dec 16 12:37:42 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.10 → 3.1.11
+
+-------------------------------------------------------------------
+Mon Dec 16 12:36:37 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update system files provisioning
+
+  Expect systemfiles to be a callable that produces the
+  list of host files to sync
+
+-------------------------------------------------------------------
+Fri Dec 13 10:47:06 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.9 → 3.1.10
+
+-------------------------------------------------------------------
+Fri Dec 13 10:28:40 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Include systemfiles.libs for host provisioning
+
+  Only use copy-links for the files mentioned in
+  systemfiles.libs. The other systemfiles are synced in the
+  usual way.
+
+-------------------------------------------------------------------
+Thu Dec 12 15:39:51 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure interactive processes can run
+
+-------------------------------------------------------------------
+Thu Dec 12 15:22:37 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed podman call dead lock
+
+  When calling the flake and stdout/stderr gets redirected into
+  a pipe like `flake | grep ... | cut ...` the pilot binary runs
+  in a dead lock because there is no reader/writer to feed the
+  pipe from the child process (podman) executed via the pilot.
+  This commit fixes it by making sure all data from the child
+  gets read first and then passed along to stdout/stderr of the
+  caller.
+
+-------------------------------------------------------------------
+Thu Dec 12 11:01:36 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.8 → 3.1.9
+
+-------------------------------------------------------------------
+Tue Dec 10 18:46:14 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Copy symlinks for host dependencies
+
+  For provisioning of host dependencies copy symlinks such
+  that they appear under their name as a file and not as a
+  symlink. We use this logic for the host dependency sync
+  only to be less strict on versioned library syncing
+
+-------------------------------------------------------------------
+Wed Dec 04 15:01:53 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Clippy fix
+
+  elide the lifetimes for User instances
+
+-------------------------------------------------------------------
 Wed Dec 04 14:16:53 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.7 → 3.1.8

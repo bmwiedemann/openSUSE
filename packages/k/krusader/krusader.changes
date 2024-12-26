@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 25 10:19:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Use xdg-su for the krusader 'root' mode. Relying on the
+  X-KDE-Username won't work with plasma 6 (boo#1222490)
+
+-------------------------------------------------------------------
 Wed Nov 20 17:14:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

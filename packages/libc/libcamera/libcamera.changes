@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec 23 21:51:19 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 0.4.0
+  * The abi-compliance-checker reports that there is both ABI and
+    API breakage in this release.
+  * The majority of the ABI breakages are around the public API for
+    Control handling and definitions, which have caused underlying
+    identifiers to be changed, and the reuqired storage for
+    controls has increased.
+  * This release brings in 253 commits, with substantial
+    development on image control and tuning features for IPA and
+    Pipeline handlers supporting libipa, as well as integrating
+    libipa support for IPA handling on the ARM Mali-C55 ISP.
+  * A new 'Virtual Pipeline Handler' has been introduced to support
+    more testing in CI and virtual environments.
+  * Gstreamer has had some interesting development to rework
+    expressing the full control set from libcamera using auto
+    generation from the full control descriptors.
+  * A key and notable change in this release too is that the
+    softISP is now moving towards utilising the libipa
+    implementaitons which will enable future tuning and image
+    control capabilities, and should also support future
+    development on a GPU-ISP implementation for GPU-accelerated
+    handling. I do believe this work may have introduced an
+    oscillation regression in the AEGC which will need to be
+    investigated and fixed in the near future, but I don't want to
+    hold up progressing the ABI updates at this stage.
+  * The i.MX8MP can now make full use of the DW100 Dewarp Engine
+    for full rotation and digital zoom capabilities.
+  * Raspberry Pi systems now have improved support for the OV7251,
+    IMX462, and IMX327 Sensors, and libipa platforms can now make
+    use of the GalaxyCore gc05a2 and gc08a3 Image sensors.
+  * For a full list of changes, please see:
+    https://git.libcamera.org/libcamera/libcamera.git/commit/?id=35ed4b91291d9f3d08e4b51acfb51163e65df8f8
+
+-------------------------------------------------------------------
 Sat Oct 19 17:05:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3.2

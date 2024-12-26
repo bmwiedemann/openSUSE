@@ -1,7 +1,7 @@
 #
 # spec file for package molsketch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,37 +18,35 @@
 
 %if 0%{?suse_version} < 1599
 %define gcc_ver 9
+%define qt_ver 5
+%else
+%define qt_ver 6
 %endif
 %define srcname Molsketch
 %define sover 1
 %define soname %{sover}
 Name:           molsketch
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://molsketch.sourceforge.net
 Source0:        https://downloads.sourceforge.net/molsketch/Molsketch-%{version}-src.tar.gz
-# PATCH-FIX-UPSTREAM molsketch-cmake-qt5-add-translation.patch badshah400@gmail.com -- Use qt5_add_translation instead of qt_add_translation with cmake
-Patch0:         molsketch-cmake-qt5-add-translation.patch
-# PATCH-FIX-UPSTREAM molsketch-include-numeric-header.patch badshah400@gmail.com -- Include numeric header for transform_reduce
-Patch1:         molsketch-include-numeric-header.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  rsvg-convert
-BuildRequires:  update-desktop-files
 BuildRequires:  (pkgconfig(openbabel-2.0) or pkgconfig(openbabel-3))
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt%{qt_ver}LinguistTools)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Core)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Gui)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Network)
+BuildRequires:  pkgconfig(Qt%{qt_ver}PrintSupport)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Svg)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Test)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Widgets)
 
 %description
 The purpose of this editor to help drawing molecules.
@@ -89,6 +87,9 @@ Help documentation for %{name}.
 %if 0%{?gcc_ver}
   -DCMAKE_CXX_COMPILER:STRING=g++-%{gcc_ver} \
 %endif
+%if %{qt_ver} >= 6
+  -DMSK_QT6:BOOL=ON \
+%endif
   -DMSK_INSTALL_DOCS:PATH="/share/doc/packages/%{name}" \
 %{nil}
 
@@ -103,8 +104,6 @@ do
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps
   install -m0644 %{name}-${sz}.png %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps/%{name}.png
 done
-
-%suse_update_desktop_file -c %{name} %{name} "2D molecular structures editor" %{name} Education Chemistry
 
 %fdupes -s %{buildroot}%{_datadir}
 

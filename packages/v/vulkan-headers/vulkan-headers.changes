@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 22 01:11:34 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 1.4.304
+  * Added VK_EXT_present_mode_fifo_latest_ready,
+    VK_NV_cooperative_matrix2, VK_HUAWEI_hdr_vivid,
+    VK_EXT_vertex_attribute_robustness, VK_KHR_video_encode_av1,
+    VK_KHR_video_encode_quantization_map, VK_NV_display_stereo
+  * Streaming Transfers: Vulkan 1.4 imposes new implementation
+    requirements to ensure portable, cross-platform applications
+    can stream large quantities of data to a device while
+    simultaneously rendering at full performance.
+  * Previously optional extensions and features critical to
+    emerging high-performance applications are now mandatory in
+    Vulkan 1.4, ensuring their reliable availability across
+    multiple platforms. These include push descriptors, dynamic
+    rendering local reads, and scalar block layouts.
+  * 8K rendering with up to eight separate render targets is now
+    guaranteed to be supported, along with several other limit
+    increases.
+
+-------------------------------------------------------------------
 Tue Oct  8 16:34:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.296

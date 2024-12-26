@@ -207,4 +207,12 @@ Similar to SR#785407 in kdb, but I decided to omit the %if completely as 15.1 is
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226955</requestid>
   </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>9b3c3cd6f762d584e240649be153afbc</srcmd5>
+    <version>3.2.0</version>
+    <time>1735212259</time>
+    <user>anag+factory</user>
+    <comment>- Stop using the optional marble dependency</comment>
+    <requestid>1233310</requestid>
+  </revision>
 </revisionlist>

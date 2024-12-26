@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 22 11:14:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.5:
+  * Fixed regressions when exporting to PDF.
+  * Fixed crash when importing some SVG files.
+  * Have geometry tools appear in the middle of the view.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 25 06:40:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.4:

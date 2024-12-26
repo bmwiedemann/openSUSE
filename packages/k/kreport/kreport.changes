@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 25 10:26:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Stop using the optional marble dependency
+
+-------------------------------------------------------------------
 Wed Feb  7 16:18:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Build using python3 rather than python2

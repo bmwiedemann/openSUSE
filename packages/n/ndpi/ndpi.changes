@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 20 16:18:54 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.12
+  * https://github.com/ntop/nDPI/releases/tag/4.12
+  * https://github.com/ntop/nDPI/releases/tag/4.10
+  * https://github.com/ntop/nDPI/releases/tag/4.8
+  * https://github.com/ntop/nDPI/releases/tag/4.6
+  * https://github.com/ntop/nDPI/releases/tag/4.4
+  * https://github.com/ntop/nDPI/releases/tag/4.2
+- Drop not longer needed patches
+  * 0001-Added-ability-to-report-whether-a-protocol-is-encryp.patch
+  * 0002-Report-whether-a-protocol-is-encrypted.patch
+  * 0003-Firs-crash-on-ARM-during-steam-protocol-dissection.patch
+- Add patch:
+  * fix-makefile.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 13:56:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

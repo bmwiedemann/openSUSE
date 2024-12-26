@@ -109,4 +109,41 @@
 </comment>
     <requestid>1136034</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fdc5dda3bdfcdf808ce6c0b32ebc8b5e</srcmd5>
+    <version>3.12</version>
+    <time>1735212238</time>
+    <user>anag+factory</user>
+    <comment>- Add checks for SUSE Version
+- Switch suggestion from spotifyd to librespot
+- Move to QT6
+- Update to version 3.12
+  Fixes
+  * Fixed show/hide for &quot;Added&quot; column not being properly saved (#219, #267).
+  * Fixed some crashes related to starting Spotify client (#251, #252).
+  * Fixed search not loading results properly (#268).
+  * Fixed showing &quot;0 tracks&quot; in album context menu for non-cached albums until loaded.
+  * Fixed showing empty invalid playlists in the list of playlists.
+  * Fixed layout breaking on long status messages.
+  * Fixed sometimes showing a failed status for successful actions.
+  
+  Changes
+  * Track and artist can now be clicked in now playing preview (#253).
+  * Added option to like albums from context menu (#255).
+  * Improved performance when loading artist albums.
+  * Added support for setting custom window and tray icon titles.
+  * Reworked &quot;New Releases&quot; to fetch everything as albums.
+  * Improved performance when loading album tracks.
+  * Removed support for saving passwords, as it's no longer supported.
+  * Removed optional keychain dependency.
+  * Added support for new OAuth authentication.
+  * Now requires librespot v0.5.0 or newer.
+  * Removed deprecated &quot;Audio features&quot;.
+  * Improved performance when loading playlists.
+  * Now shows &quot;Open/Close&quot; in tray icon when &quot;Close to tray&quot; is enabled.
+  * Improved error messages from Spotify client.
+  * No longer shows &quot;Related&quot; artists when not available.
+</comment>
+    <requestid>1233272</requestid>
+  </revision>
 </revisionlist>

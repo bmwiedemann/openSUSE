@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 20 07:49:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.51.0:
+  * feat(ci): add more flags to filter ci list output
+  * refactor: Moving and adding some test helpers for `stack
+    reorder`
+  * feat(list): add project list filter for all non-archived
+    projects
+  * chore(deps): update module k8s.io/client-go to v0.32.0
+  * chore(deps): migrate go-gitlab to
+    gitlab.com/gitlab-org/api/client-go
+  * chore(deps): update module k8s.io/apimachinery to v0.32.0
+  * chore(deps): update module golang.org/x/crypto to v0.31.0
+  * fix(variable): add quotes to export-commands
+  * refactor: Refactor some functions and add some stack helpers
+  * feat: add --active flag to glab token list
+  * fix(agent bootstrap): panic when cfg exists but no user access
+    defined
+  * chore(deps): update module golang.org/x/term to v0.27.0
+  * chore(deps): update module golang.org/x/text to v0.21.0
+  * chore(deps): update dependency danger-review to v2
+  * chore(deps): update dependency axios to ^1.7.9
+  * feat: added mr list filtering flag --not-draft
+
+-------------------------------------------------------------------
 Mon Dec  9 02:06:17 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Add glab-disable_update_check.patch to disable the update check by default

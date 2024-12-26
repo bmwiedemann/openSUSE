@@ -19,7 +19,7 @@
 %global pkg_name time-manager
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Scalable timer
 License:        MIT

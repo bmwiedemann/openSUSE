@@ -84,4 +84,12 @@
   * 0001-Find-also-Python3-with-find_package-PythonInterp.patch</comment>
     <requestid>1144972</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>863e49a0713b491fd6813a66e31e0d7f</srcmd5>
+    <version>3.2.0</version>
+    <time>1735212257</time>
+    <user>anag+factory</user>
+    <comment>- Stop using the optional marble dependency</comment>
+    <requestid>1233309</requestid>
+  </revision>
 </revisionlist>

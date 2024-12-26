@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:56:21 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.88
+  ## ✨ Features
+
+  * Allow trusted Element Call widget to send and receive media encryption key to-device messages (https://github.com/element-hq/element-web/pull/28316). Contributed by @hughns.
+  * increase ringing timeout from 10 seconds to 90 seconds (https://github.com/element-hq/element-web/pull/28630). Contributed by @fkwp.
+  * Add `Close` tooltip to dialog (https://github.com/element-hq/element-web/pull/28617). Contributed by @florianduros.
+  * New UX for Share dialog (https://github.com/element-hq/element-web/pull/28598). Contributed by @florianduros.
+  * Improve performance of RoomContext in RoomHeader (https://github.com/element-hq/element-web/pull/28574). Contributed by @t3chguy.
+  * Remove `Features.RustCrypto` flag (https://github.com/element-hq/element-web/pull/28582). Contributed by @florianduros.
+  * Add Modernizr warning when running in non-secure context (https://github.com/element-hq/element-web/pull/28581). Contributed by @t3chguy.
+
+  ## 🐛 Bug Fixes
+
+  * Fix secret storage not being used due to bad import (https://github.com/element-hq/element-desktop/pull/2029). Contributed by @t3chguy.
+  * Fix inability to click on non-logged-in modals on macOS (https://github.com/element-hq/element-desktop/pull/2025). Contributed by @t3chguy.
+  * Fix jumpy timeline when the pinned message banner is displayed (https://github.com/element-hq/element-web/pull/28654). Contributed by @florianduros.
+  * Fix font \& spaces in settings subsection (https://github.com/element-hq/element-web/pull/28631). Contributed by @florianduros.
+  * Remove manual device verification which is not supported by the new cryptography stack (https://github.com/element-hq/element-web/pull/28588). Contributed by @florianduros.
+  * Fix code block highlighting not working reliably with many code blocks (https://github.com/element-hq/element-web/pull/28613). Contributed by @t3chguy.
+  * Remove remaining reply fallbacks code (https://github.com/element-hq/element-web/pull/28610). Contributed by @t3chguy.
+  * Provide a way to activate GIFs via the keyboard for a11y (https://github.com/element-hq/element-web/pull/28611). Contributed by @t3chguy.
+  * Fix format bar position (https://github.com/element-hq/element-web/pull/28591). Contributed by @florianduros.
+  * Fix room taking long time to load (https://github.com/element-hq/element-web/pull/28579). Contributed by @florianduros.
+  * Show the correct shield status in tooltip for more conditions (https://github.com/element-hq/element-web/pull/28476). Contributed by @uhoreg.
+
+-------------------------------------------------------------------
 Tue Dec  3 13:49:58 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.87

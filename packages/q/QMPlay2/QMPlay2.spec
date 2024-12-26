@@ -32,6 +32,8 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
+# PATCH-FIX-UPSTREAM 0001-fix-zoom-reset-crash.patch -- Fix zoom reset crash
+Patch2:         0001-fix-zoom-reset-crash.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  llvm-gold
@@ -110,6 +112,7 @@ It's a development package for %{name}.
 %autosetup -p1 -n %{name}-%{version}.%{_mtime}.%{_commit}
 # %setup -q -n %{name}-%{version}.%{_mtime}.%{_commit}
 # %patch1 -p1
+# %patch2 -p1
 
 %build
 # Build options

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 24 02:31:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 1.4.304
+  * gpuav: Handle VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT
+  * layers: Add multisampledRenderToSingleSampled check
+  * layers: Add Shader Debug Info into core validation
+  * layers: Added present fences to thread safety checks
+  * layers: Fix present fence not retiring present semaphores
+  * gpuav: Handle VK_PIPELINE_COMPILE_REQUIRED
+  * layers: Add Queue Support for Shader Object
+  * gpu: Add atomics for BDA checks
+
+-------------------------------------------------------------------
 Tue Oct  8 18:22:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.296

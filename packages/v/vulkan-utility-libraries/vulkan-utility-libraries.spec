@@ -16,15 +16,15 @@
 #
 
 
-%define lname libVulkanLayerSettings-1_3_296
+%define lname libVulkanLayerSettings-1_4_304
 Name:           vulkan-utility-libraries
-Version:        1.3.296
+Version:        1.4.304
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Utility-Libraries
-Source:         https://github.com/KhronosGroup/Vulkan-Utility-Libraries/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Utility-Libraries/archive/v%version.tar.gz
 Patch1:         shared.diff
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
@@ -65,13 +65,13 @@ configuration code for various SDK layer deliverables.
 This package contains the headers and build system integration.
 
 %prep
-%autosetup -p1 -n Vulkan-Utility-Libraries-vulkan-sdk-%version.0
+%autosetup -p1 -n Vulkan-Utility-Libraries-%version
 find . -type f -name CMakeLists.txt -exec perl -i -lpe 's{\@PACKAGE_VERSION\@}{%version}g' {} +
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
 # Need something that knows <filesystem>
-export CC=gcc-11 CXX=g++-11
+export CC=gcc-12 CXX=g++-12
 %endif
 %cmake
 %cmake_build

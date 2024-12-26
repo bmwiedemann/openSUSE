@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 18 04:18:36 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update time-manager to version 0.2.2.
+  ## 0.2.2
+
+  * `initialize` with non positive integer creates a time manager
+    which does not maintain timeout.
+    [#1017](https://github.com/yesodweb/wai/pull/1017)
+
+-------------------------------------------------------------------
 Fri Dec  6 05:11:19 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update time-manager to version 0.2.1.

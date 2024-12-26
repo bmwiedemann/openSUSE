@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 25 09:59:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add pylsp-issues-602-605.patch
+  * Changed fuzzy jedi completion
+    gh#python-lsp/python-lsp-server#602
+  * Disable DEBUG logging for tests
+    gh#python-lsp/python-lsp-server#605
+
+-------------------------------------------------------------------
 Tue Nov 19 10:52:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add unpin-autopep8.patch

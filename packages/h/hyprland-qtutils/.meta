@@ -1,0 +1,5 @@
+<package name="hyprland-qtutils" project="openSUSE:Factory">
+  <title>hyprland-qtutils</title>
+  <description></description>
+  <devel project="X11:Wayland" package="hyprland-qtutils"/>
+</package>

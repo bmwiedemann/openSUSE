@@ -503,4 +503,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226958</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>d40e19fef798fa569be4a56117d3baa7</srcmd5>
+    <version>2.8.1</version>
+    <time>1735212256</time>
+    <user>anag+factory</user>
+    <comment>- Use xdg-su for the krusader 'root' mode. Relying on the
+  X-KDE-Username won't work with plasma 6 (boo#1222490)</comment>
+    <requestid>1233308</requestid>
+  </revision>
 </revisionlist>

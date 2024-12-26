@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="manual">
 		<param name="scm">git</param>
 		<param name="url">https://git.libcamera.org/libcamera/libcamera.git</param>
-		<param name="revision">refs/tags/v0.3.2</param>
+		<param name="revision">refs/tags/v0.4.0</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v([0-9\.]*)</param>
 	</service>

@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           fnm
-Version:        1.37.2
+Version:        1.38.1
 Release:        0
 Summary:        Fast and simple Node.js version manager in Rust
 License:        GPL-3.0-only

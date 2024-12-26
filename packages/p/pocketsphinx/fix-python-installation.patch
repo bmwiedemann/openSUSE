@@ -1,0 +1,15 @@
+Index: pocketsphinx-5~git20241211.69167fb/cython/CMakeLists.txt
+===================================================================
+--- pocketsphinx-5~git20241211.69167fb.orig/cython/CMakeLists.txt
++++ pocketsphinx-5~git20241211.69167fb/cython/CMakeLists.txt
+@@ -23,7 +23,8 @@ target_include_directories(
+   _pocketsphinx INTERFACE ${CMAKE_SOURCE_DIR}/include
+   _pocketsphinx INTERFACE ${CMAKE_BINARY_DIR}/include
+   )
+-install(TARGETS _pocketsphinx LIBRARY DESTINATION pocketsphinx)
++install(DIRECTORY pocketsphinx DESTINATION ${Python_STDLIB}/site-packages)
++install(TARGETS _pocketsphinx LIBRARY DESTINATION ${Python_STDLIB}/site-packages/pocketsphinx)
+ if(NOT USE_INSTALLED_POCKETSPHINX)
+-  install(DIRECTORY ${PROJECT_SOURCE_DIR}/model DESTINATION pocketsphinx)
++	install(DIRECTORY ${PROJECT_SOURCE_DIR}/model DESTINATION ${Python_STDLIB}/site-packages/pocketsphinx)
+ endif()

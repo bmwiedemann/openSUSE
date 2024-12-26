@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.1.3
+Version:        0.8.0.0
 Release:        0
 Summary:        A class for types with a default value
 License:        BSD-3-Clause
@@ -29,23 +29,13 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
-BuildRequires:  ghc-data-default-instances-containers-devel
-BuildRequires:  ghc-data-default-instances-containers-prof
-BuildRequires:  ghc-data-default-instances-dlist-devel
-BuildRequires:  ghc-data-default-instances-dlist-prof
-BuildRequires:  ghc-data-default-instances-old-locale-devel
-BuildRequires:  ghc-data-default-instances-old-locale-prof
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-old-locale-devel
-BuildRequires:  ghc-old-locale-prof
 %endif
 
 %description

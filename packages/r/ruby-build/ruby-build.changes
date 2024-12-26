@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 26 00:12:43 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20241225.2.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20241225.2
+  * Fixed 3.4.1 checksum by @hsbt in #2481
+  * Added 3.4-dev and 3.5-dev by @hsbt in #2482
+- Changes from version 20241225.1:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20241225.1
+  * Added Ruby 3.4.1
+- Changes from version 20241225:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20241225
+  * Removed unofficial releases by @hsbt in #2479
+  * Add Ruby 3.4.0 by @hsbt in #2480
+
+-------------------------------------------------------------------
 Sat Dec 14 13:45:02 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20241213.

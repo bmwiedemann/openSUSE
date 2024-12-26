@@ -1,8 +1,8 @@
 #
 # spec file for package ndpi
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2017-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 #
 
 
+%define sover 4
 %ifarch %{ix86} x86_64
 %bcond_without hyperscan
 %endif
-
-%define sover 4
 Name:           ndpi
-Version:        4.0
+Version:        4.12
 Release:        0
 Summary:        Extensible deep packet inspection library
 # wireshark/ndpi.lua is GPL-3.0-or-later
@@ -31,12 +30,7 @@ License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/ntop/nDPI
 Source:         https://github.com/ntop/nDPI/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Added-ability-to-report-whether-a-protocol-is-encryp.patch # ntopng 5.0 needs this from the ndpi 4.0-stable branch
-Patch0:         0001-Added-ability-to-report-whether-a-protocol-is-encryp.patch
-# PATCH-FIX-UPSTREAM 0002-Report-whether-a-protocol-is-encrypted.patch # ntopng 5.0 needs this from the ndpi 4.0-stable branch
-Patch1:         0002-Report-whether-a-protocol-is-encrypted.patch
-# PATCH-FIX-UPSTREAM 0003-Firs-crash-on-ARM-during-steam-protocol-dissection.patch
-Patch2:         0003-Firs-crash-on-ARM-during-steam-protocol-dissection.patch
+Patch0:         fix-makefile.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -110,18 +104,17 @@ This package contains common files used by nDPI.
 %autosetup -p1 -n nDPI-%{version}
 
 %build
-sh autogen.sh
+autoreconf -fiv
 %configure \
 %if 0%{with hyperscan}
     --with-hyperscan \
 %endif
-    --prefix="%{_prefix}"
-make %{?_smp_mflags}
+    %{nil}
+%make_build
 
 %install
-%make_install PREFIX=%{_prefix} prefix=%{_prefix} libdir=%{_libdir}
-rm -f %{buildroot}/%{_libdir}/libndpi.a
-rm -f %{buildroot}/%{_sbindir}/ndpi
+%make_install
+rm %{buildroot}/%{_libdir}/libndpi.a
 
 %post   -n libndpi%{sover} -p /sbin/ldconfig
 %postun -n libndpi%{sover} -p /sbin/ldconfig
@@ -140,8 +133,8 @@ rm -f %{buildroot}/%{_sbindir}/ndpi
 
 %files -n ndpi-common
 %license COPYING
-%doc CHANGELOG.md README.md README.nDPI README.protocols
-%doc doc/nDPI_QuickStartGuide.pdf
+%doc CHANGELOG.md README.md
+%doc doc/guide/nDPI_QuickStartGuide.pdf
 %{_datadir}/%{name}
 
 %changelog

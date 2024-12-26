@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 20 06:07:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.5.0:
+  * Conversion of CFITSIO configure/build files to better conform
+    with automake and libtool.
+  * Bug fix for case of bit column output in string format on
+    clang compilers with high optimization.
+  * Added compiler macro support to improve builds on loongarch64
+    and on Gnu/Hurd kernels. 
+  * Bug fix to fitsverify utility.
+- Drop upstreamed patches:
+  * cfitsio-cmake-allow-user-specified-incdir.patch
+  * cfitsio-cmake-lowercase-util-names.patch
+  * cfitsio-cmake-match-autotools-soversion.patch
+
+-------------------------------------------------------------------
 Thu Jun 13 09:33:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.4.0:

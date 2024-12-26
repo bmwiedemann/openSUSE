@@ -1,0 +1,29 @@
+diff --git a/src/lib/Makefile.in b/src/lib/Makefile.in
+index b446ba2..e5d0ea4 100644
+--- a/src/lib/Makefile.in
++++ b/src/lib/Makefile.in
+@@ -11,7 +11,6 @@ RANLIB = @RANLIB@
+ #
+ # Installation directories
+ #
+-PREFIX     = @prefix@
+ libdir     = @libdir@
+ includedir = @includedir@/ndpi
+ ifneq ($(OS),Windows_NT)
+@@ -96,10 +95,10 @@ cppcheck:
+ 	cppcheck --template='{file}:{line}:{severity}:{message}' --quiet --enable=all --force -I ../include *.c protocols/*.c
+ 
+ install: $(NDPI_LIBS)
+-	mkdir -p $(DESTDIR)$(PREFIX)$(libdir)
+-	cp $(NDPI_LIBS) $(DESTDIR)$(PREFIX)$(libdir)/
+-	cp -P $(NDPI_LIB_SHARED_BASE) $(DESTDIR)$(PREFIX)$(libdir)/
+-	cp -P $(NDPI_LIB_SHARED_BASE).$(NDPI_VERSION_MAJOR) $(DESTDIR)$(PREFIX)$(libdir)/
+-	mkdir -p $(DESTDIR)$(PREFIX)$(includedir)
++	mkdir -p $(DESTDIR)$(libdir)
++	cp $(NDPI_LIBS) $(DESTDIR)$(libdir)/
++	cp -P $(NDPI_LIB_SHARED_BASE) $(DESTDIR)$(libdir)/
++	cp -P $(NDPI_LIB_SHARED_BASE).$(NDPI_VERSION_MAJOR) $(DESTDIR)$(libdir)/
++	mkdir -p $(DESTDIR)$(includedir)
+ 	#Avoid installing private header
+-	find ../include/*.h ! -name ndpi_private.h -exec cp "{}" $(DESTDIR)$(PREFIX)$(includedir)/ \;
++	find ../include/*.h ! -name ndpi_private.h -exec cp "{}" $(DESTDIR)$(includedir)/ \;

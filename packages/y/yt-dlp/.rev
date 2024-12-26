@@ -438,4 +438,12 @@
     <comment>- Update to release 2024.12.23</comment>
     <requestid>1233203</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>72ecbb2b401da1d53ae17df515c26534</srcmd5>
+    <version>2024.12.23</version>
+    <time>1735212263</time>
+    <user>anag+factory</user>
+    <comment>- Fix 15.6 build</comment>
+    <requestid>1233307</requestid>
+  </revision>
 </revisionlist>

@@ -19,14 +19,14 @@
  
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
 +    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
+     @support.skip_emscripten_stack_overflow()
      def test_extended_arg(self):
          repeat = int(get_c_recursion_limit() * 0.9)
-         longexpr = 'x = x or ' + '-x' * repeat
-@@ -709,6 +713,7 @@ class TestSpecifics(unittest.TestCase):
+@@ -710,6 +714,7 @@ class TestSpecifics(unittest.TestCase):
  
      @support.cpython_only
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
 +    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
+     @support.skip_emscripten_stack_overflow()
      def test_compiler_recursion_limit(self):
          # Expected limit is Py_C_RECURSION_LIMIT
-         limit = get_c_recursion_limit()

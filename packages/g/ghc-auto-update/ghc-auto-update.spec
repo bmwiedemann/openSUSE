@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        Efficiently run periodic, on-demand actions
 License:        MIT
@@ -30,6 +30,8 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel

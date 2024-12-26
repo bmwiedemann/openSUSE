@@ -17,13 +17,13 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.3.296
+Version:        1.4.304
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
-Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/v%version.tar.gz
 Patch2:         xxhash.diff
 BuildRequires:  cmake >= 3.7.12
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
@@ -31,12 +31,12 @@ BuildRequires:  gcc12-c++
 %else
 BuildRequires:  c++_compiler
 %endif
-BuildRequires:  glslang-devel >= 14.3
+BuildRequires:  glslang-devel >= 15.1
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk296
-BuildRequires:  spirv-tools-devel >= 2024.3
+BuildRequires:  spirv-headers >= 1.6.4+sdk303
+BuildRequires:  spirv-tools-devel >= 2024.4~rc2
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  vulkan-utility-libraries-devel >= %version
 BuildRequires:  xxhash-devel
@@ -52,7 +52,7 @@ Vulkan is a 3D graphics and compute API.
 This package contains the Khronos official Vulkan validation layers.
 
 %prep
-%autosetup -n Vulkan-ValidationLayers-vulkan-sdk-%version.0 -p1
+%autosetup -n Vulkan-ValidationLayers-%version -p1
 perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt */CMakeLists.txt
 
 %build

@@ -19,7 +19,7 @@
 
 
 Name:           gnunet
-Version:        0.23.0
+Version:        0.23.1
 Release:        0
 Summary:        Security focused Peer-to-Peer Framework
 License:        AGPL-3.0-or-later
@@ -28,7 +28,8 @@ URL:            https://www.gnunet.org/
 Source0:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/gnunet/%{name}-%{version}.tar.gz.sig
 # https://gnunet.org/~schanzen/3D11063C10F98D14BD24D1470B0998EF86F59B6A
-Source2:        %{name}.keyring
+# also https://grothoff.org/christian/
+Source2:        https://grothoff.org/christian/grothoff.asc#/%{name}.keyring
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig >= 0.9.0

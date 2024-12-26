@@ -26,6 +26,8 @@ License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
 Patch1:         unpin-autopep8.patch
+# PATCH-FIX-UPSTREAM pylsp-issues-602-605.patch gh#python-lsp/python-lsp-server#602 gh#python-lsp/python-lsp-server#605
+Patch2:         pylsp-issues-602-605.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}

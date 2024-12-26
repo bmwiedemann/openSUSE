@@ -372,4 +372,16 @@
     <comment>- add unpin-autopep8.patch</comment>
     <requestid>1225060</requestid>
   </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>f80422617957fe2766a25d4f69da82f0</srcmd5>
+    <version>1.12.0</version>
+    <time>1735212267</time>
+    <user>anag+factory</user>
+    <comment>- Add pylsp-issues-602-605.patch
+  * Changed fuzzy jedi completion
+    gh#python-lsp/python-lsp-server#602
+  * Disable DEBUG logging for tests
+    gh#python-lsp/python-lsp-server#605</comment>
+    <requestid>1233320</requestid>
+  </revision>
 </revisionlist>

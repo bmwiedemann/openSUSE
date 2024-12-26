@@ -19,27 +19,21 @@
 %global pkg_name data-default-class
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.2.2
+Version:        0.2.0.0
 Release:        0
-Summary:        A class for types with a default value
+Summary:        A class for types with a default value (compatibility shim)
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
 %description
-This module defines a class for types with a default value. It also defines
-'Default' instances for the types 'Int', 'Int8', 'Int16', 'Int32', 'Int64',
-'Word', 'Word8', 'Word16', 'Word32', 'Word64', 'Integer', 'Float', 'Double',
-'Ratio', 'Complex', 'CShort', 'CUShort', 'CInt', 'CUInt', 'CLong', 'CULong',
-'CLLong', 'CULLong', 'CPtrdiff', 'CSize', 'CSigAtomic', 'CIntPtr', 'CUIntPtr',
-'CIntMax', 'CUIntMax', 'CClock', 'CTime', 'CUSeconds', 'CSUSeconds', 'CFloat',
-'CDouble', '(->)', 'IO', 'Maybe', '()', '[]', 'Ordering', 'Any', 'All', 'Last',
-'First', 'Sum', 'Product', 'Endo', 'Dual', and tuples.
+This module re-exports the 'Default' class from "Data.Default", for
+compatibility with older code.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

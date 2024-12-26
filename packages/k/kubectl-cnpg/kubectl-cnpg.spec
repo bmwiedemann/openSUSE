@@ -16,19 +16,18 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
-%define directory_name cloudnative-pg
-
 Name:           kubectl-cnpg
-Version:        1.24.2
+Version:        1.25.0
 Release:        0
 Summary:        Manage PostgreSQL clusters built using CloudNativePG
 License:        Apache-2.0
 URL:            https://github.com/cloudnative-pg/cloudnative-pg
-Source:         %{directory_name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
 CloudNativePG provides a plugin for kubectl to manage a cluster in Kubernetes.
@@ -68,11 +67,11 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p 1 -a 1 -n %{directory_name}-%{version}
+%autosetup -p 1 -a 1 -n %{name}-%{version}
 
 %build
 # hash will be shortened by COMMIT_HASH:0:8 later
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{directory_name}.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
@@ -99,8 +98,8 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
 
@@ -110,17 +109,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

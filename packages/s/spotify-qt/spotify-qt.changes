@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Dec 20 13:48:28 UTC 2024 - Jens K. <karatekhd@opensuse.org>
+
+- Add checks for SUSE Version
+- Switch suggestion from spotifyd to librespot
+
+-------------------------------------------------------------------
+Sat Dec 14 22:54:05 UTC 2024 - Jens K. <karatekhd@opensuse.org>
+
+- Move to QT6
+
+-------------------------------------------------------------------
+Sat Dec 14 22:23:44 UTC 2024 - Jens K. <karatekhd@opensuse.org>
+
+- Update to version 3.12
+  Fixes
+  * Fixed show/hide for "Added" column not being properly saved (#219, #267).
+  * Fixed some crashes related to starting Spotify client (#251, #252).
+  * Fixed search not loading results properly (#268).
+  * Fixed showing "0 tracks" in album context menu for non-cached albums until loaded.
+  * Fixed showing empty invalid playlists in the list of playlists.
+  * Fixed layout breaking on long status messages.
+  * Fixed sometimes showing a failed status for successful actions.
+  
+  Changes
+  * Track and artist can now be clicked in now playing preview (#253).
+  * Added option to like albums from context menu (#255).
+  * Improved performance when loading artist albums.
+  * Added support for setting custom window and tray icon titles.
+  * Reworked "New Releases" to fetch everything as albums.
+  * Improved performance when loading album tracks.
+  * Removed support for saving passwords, as it's no longer supported.
+  * Removed optional keychain dependency.
+  * Added support for new OAuth authentication.
+  * Now requires librespot v0.5.0 or newer.
+  * Removed deprecated "Audio features".
+  * Improved performance when loading playlists.
+  * Now shows "Open/Close" in tray icon when "Close to tray" is enabled.
+  * Improved error messages from Spotify client.
+  * No longer shows "Related" artists when not available.
+
+-------------------------------------------------------------------
 Mon Jan  1 23:42:13 UTC 2024 - Jens K. <karatekhd@opensuse.org>
 
 - Update to version 3.11

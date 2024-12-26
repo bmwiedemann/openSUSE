@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Dec 26 00:53:43 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.4.0:
+  * Bump version.
+  * Document template literals.
+  * Handle delimiters in literal strings.
+  * Literal strings in --template.
+  * Add more regressions.
+  * Make --template escaperoff() escape initial delim.
+  * On-going version notes.
+  * Add more possible contributions nobody will do.
+  * Simplify and cohere -tterm images and links.
+  * Document RELLINKS in library manpage.
+  * Rehyphenate some command-line arguments.
+  * Tidy up options-parsing area.
+  * Hook up --term-no-rellinks.
+  * Add -tterm ignoring of relative links.
+  * Remove unused styles.
+  * Have -tterm footnote block header be an hrule.
+  * Use -tterm unicode lines for blocks/tables.
+  * Use horizontal UTF-8 sequence for hrule.
+  * Horizontal rule gets full vertical space.
+  * Have CI use -fsanitize during build.
+  * Don't pass NULL to strndup.
+  * Fix UB found by -fsanitize.
+  * Process --version, -h, --help.
+  * Document --term-hmargin=auto.
+  * Document consumer of lowdown_opts_term.
+  * Document new lowdown_opts_term.
+  * Document hpadding/hmargin.
+  * Refactor padding, margin, width, columns.
+  * Specify padding/margin for -tterm.
+  * Fix off-by-one when outputting -tterm words.
+  * Add --template debugging.
+  * Rename "--nroff-xxx" arguments as "--roff-xxx".
+  * Bumping version.
+  * Document escapegemini*.
+  * Document --template accepted by -tgemini.
+  * Add --template to -tgemini.
+  * Remove stray space.
+  * Specify Gemtext.
+  * Update to proper Gemini version used.
+  * Move -tgemini escape into its own file.
+  * Add --template to -tman, -tms.
+  * Add templating abilities to -tman, -tms.
+  * Running version documentation.
+  * Document new template features.
+  * Add not(), "--$", and clarify empty for/ifdef.
+  * Move nroff escape to its own file.
+  * Simplify template literals and add eoln statement.
+
+-------------------------------------------------------------------
 Fri Dec 06 15:58:50 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.3.1:

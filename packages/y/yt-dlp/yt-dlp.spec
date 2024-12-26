@@ -19,7 +19,10 @@
 %define skip_python2 1
 %define skip_python36 1
 %define skip_python37 1
-%{?sle15_python_module_pythons}
+%if 0%{?sle_version} == 150600
+%global pythons python312
+%endif
+
 Name:           yt-dlp
 Version:        2024.12.23
 Release:        0

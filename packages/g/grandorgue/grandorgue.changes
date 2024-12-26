@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 26 00:13:55 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.15.4.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.15.4-1
+  - Eliminated a MacOs debug alert when opening a settings dialog https://github.com/GrandOrgue/grandorgue/issues/2003
+  - Fixed not releasing a pipe after fast switching between vave-based tremulant samples and regular pipe samples https://github.com/GrandOrgue/grandorgue/issues/2004
+  - Removed support of MacOs 12
+  - Fixed hang if there were lots of unused ODF entries https://github.com/GrandOrgue/grandorgue/issues/1918
+
+-------------------------------------------------------------------
 Tue Nov 26 12:30:44 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.15.3.

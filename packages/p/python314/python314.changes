@@ -1,4 +1,336 @@
 -------------------------------------------------------------------
+Wed Dec 18 00:31:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the third development version of 3.14.0:
+  - Tools/Demos
+    - gh-126700: Add support for multi-argument gettext functions
+      in pygettext.py.
+  - Tests
+    - gh-127906: Test the limited C API in test_cppext. Patch by
+      Victor Stinner.
+    - gh-127637: Add tests for the dis command-line
+      interface. Patch by Bénédikt Tran.
+    - gh-126925: iOS test results are now streamed during test
+      execution, and the deprecated xcresulttool is no longer
+      used.
+    - gh-127076: Disable strace based system call tests when
+      LD_PRELOAD is set.
+    - gh-127076: Filter out memory-related mmap, munmap, and
+      mprotect calls from file-related ones when testing io
+      behavior using strace.
+  - Security
+    - gh-127655: Fixed the
+      asyncio.selector_events._SelectorSocketTransport
+      transport not pausing writes for the protocol when
+      the buffer reaches the high water mark when using
+      asyncio.WriteTransport.writelines().
+  - Library
+    - gh-126907: Fix crash when using atexit concurrently on the
+      free-threaded build.
+    - gh-127870: Detect recursive calls in ctypes _as_parameter_
+      handling. Patch by Victor Stinner.
+    - gh-127732: The platform module now correctly detects
+      Windows Server 2025.
+    - gh-126789: Fixed sysconfig.get_config_vars(),
+      sysconfig.get_paths(), and siblings, returning outdated
+      cached data if the value of sys.prefix or sys.exec_prefix
+      changes. Overwriting sys.prefix or sys.exec_prefix still is
+      discouraged, as that might break other parts of the code.
+    - gh-127718: Add colour to test.regrtest output. Patch by
+      Hugo van Kemenade.
+    - gh-127610: Added validation for more than one
+      var-positional or var-keyword parameters in
+      inspect.Signature. Patch by Maxim Ageev.
+    - gh-127627: Added posix._emscripten_debugger() to help with
+      debugging the test suite on the Emscripten target.
+    - gh-126821: macOS and iOS apps can now choose to redirect
+      stdout and stderr to the system log during interpreter
+      configuration.
+    - gh-93312: Include <sys/pidfd.h> to get os.PIDFD_NONBLOCK
+      constant. Patch by Victor Stinner.
+    - gh-127481: Add the EPOLLWAKEUP constant to the select
+      module.
+    - gh-127065: Make operator.methodcaller() thread-safe and
+      re-entrant safe.
+    - gh-127321: pdb.set_trace() will not stop at an opcode that
+      does not have an associated line number anymore.
+    - gh-127429: Fixed bug where, on cross-builds, the sysconfig
+      POSIX data was being generated with the host Python’s
+      Makefile. The data is now generated from current build’s
+      Makefile.
+    - gh-127413: Add the dis --specialized command-line option to
+      show specialized bytecode. Patch by Bénédikt Tran.
+    - gh-125413: Revert addition of pathlib.Path.scandir(). This
+      method was added in 3.14.0a2. The optimizations remain for
+      file system paths, but other subclasses should only have to
+      implement pathlib.Path.iterdir().
+    - gh-127257: In ssl, system call failures that OpenSSL
+      reports using ERR_LIB_SYS are now raised as OSError.
+    - gh-59705: On Linux, threading.Thread now sets the thread
+      name to the operating system. Patch by Victor Stinner.
+    - gh-127303: Publicly expose EXACT_TOKEN_TYPES in
+      token.__all__.
+    - gh-127331: ssl can show descriptions for errors added in
+      OpenSSL 3.4.
+    - gh-123967: Fix faulthandler for trampoline frames. If the
+      top-most frame is a trampoline frame, skip it. Patch by
+      Victor Stinner.
+    - gh-127178: A _sysconfig_vars_(...).json file is now shipped
+      in the standard library directory. It contains the output
+      of sysconfig.get_config_vars() on the default environment
+      encoded as JSON data. This is an implementation detail, and
+      may change at any time.
+    - gh-127072: Remove outdated socket.NETLINK_* constants not
+      present in Linux kernels beyond 2.6.17.
+    - gh-127255: The CopyComPointer() function is now
+      public. Previously, this was private and only available in
+      _ctypes.
+    - gh-127182: Fix io.StringIO.__setstate__() crash, when None
+      was passed as the first value.
+    - gh-127217: Fix urllib.request.pathname2url() for paths
+      starting with multiple slashes on Posix.
+    - gh-125866: urllib.request.pathname2url() now adds an empty
+      authority when generating a URL for a path that begins with
+      exactly one slash. For example, the path /etc/hosts is
+      converted to the scheme-less URL ///etc/hosts. As a result
+      of this change, URLs without authorities are only generated
+      for relative paths.
+    - gh-127221: Add colour to unittest output. Patch by Hugo van
+      Kemenade.
+    - gh-127035: Fix shutil.which on Windows. Now it looks at
+      direct match if and only if the command ends with a PATHEXT
+      extension or X_OK is not in mode. Support extensionless
+      files if “.” is in PATHEXT. Support PATHEXT extensions that
+      end with a dot.
+    - gh-122273: Support PyREPL history on Windows. Patch by
+      devdanzin and Victor Stinner.
+    - gh-125866: urllib.request.pathname2url() and url2pathname()
+      no longer convert Windows drive letters to uppercase.
+    - gh-127078: Fix issue where urllib.request.url2pathname()
+      failed to discard an extra slash before a UNC drive in the
+      URL path on Windows.
+    - gh-126766: Fix issue where urllib.request.url2pathname()
+      failed to discard any ‘localhost’ authority present in the
+      URL.
+    - gh-127065: Fix crash when calling a operator.methodcaller()
+      instance from multiple threads in the free threading build.
+    - gh-127090: Fix value of urllib.response.addinfourl.url
+      for file: URLs that express relative paths and
+      absolute Windows paths. The canonical URL generated by
+      urllib.request.pathname2url() is now used.
+    - gh-126992: Fix LONG and INT opcodes to only use base 10 for
+      string to integer conversion in pickle.
+    - gh-126997: Fix support of STRING and GLOBAL opcodes with
+      non-ASCII arguments in pickletools. pickletools.dis()
+      now outputs non-ASCII bytes in STRING, BINSTRING and
+      SHORT_BINSTRING arguments as escaped (\xXX).
+    - gh-126316: grp: Make grp.getgrall() thread-safe by adding a
+      mutex. Patch by Victor Stinner.
+    - gh-126618: Fix the representation of itertools.count
+      objects when the count value is sys.maxsize.
+    - gh-126615: The COMError exception is now
+      public. Previously, this was private and only available in
+      _ctypes.
+    - gh-126985: When running under a virtual environment with
+      the site disabled (see -S), sys.prefix and sys.base_prefix
+      will now point to the virtual environment, instead of the
+      base installation.
+    - gh-112192: In the trace module, increase the coverage
+      precision (cov%) to one decimal.
+    - gh-118761: Improve import time of mimetypes by around 11-16
+      times. Patch by Hugo van Kemenade.
+    - gh-126947: Raise TypeError in
+      _pydatetime.timedelta.__new__() if the passed arguments are
+      not int or float, so that the Python implementation is in
+      line with the C implementation.
+    - gh-126946: Improve the GetoptError error message when a
+      long option prefix matches multiple accepted options in
+      getopt.getopt() and getopt.gnu_getopt().
+    - gh-126899: Make tkinter widget methods after() and
+      after_idle() accept arguments passed by keyword.
+    - gh-85168: Fix issue where urllib.request.url2pathname() and
+      pathname2url() always used UTF-8 when quoting and unquoting
+      file URIs. They now use the filesystem encoding and error
+      handler.
+    - gh-126780: Fix os.path.normpath() for drive-relative paths
+      on Windows.
+    - gh-126775: Make linecache.checkcache() thread safe and GC
+      re-entrancy safe.
+    - gh-126601: Fix issue where urllib.request.pathname2url()
+      raised OSError when given a Windows path containing a colon
+      character not following a drive letter, such as before an
+      NTFS alternate data stream.
+    - gh-126727: locale.nl_langinfo(locale.ERA) now returns
+      multiple era description segments separated by
+      semicolons. Previously it only returned the first segment
+      on platforms with Glibc.
+    - gh-85046: Add EHWPOISON error code to errno.
+    - gh-118201: Fixed intermittent failures of os.confstr,
+      os.pathconf and os.sysconf on iOS and Android.
+    - gh-86463: The usage parameter of argparse.ArgumentParser no
+      longer affects the default value of the prog parameter in
+      subparsers.
+    - gh-124008: Fix possible crash (in debug build), incorrect
+      output or returning incorrect value from raw binary write()
+      when writing to console on Windows.
+    - gh-123401: The http.cookies module now supports parsing
+      obsolete RFC 850 date formats, in accordance with RFC 9110
+      requirements. Patch by Nano Zheng.
+    - gh-122431: readline.append_history_file() now raises a
+      ValueError when given a negative value.
+    - gh-122356: Guarantee that the position of a file-like
+      object passed to zipfile.is_zipfile() is left untouched
+      after the call. Patch by Bénédikt Tran.
+    - gh-122288: Improve the performances of fnmatch.translate()
+      by a factor 1.7. Patch by Bénédikt Tran.
+    - gh-88110: Fixed multiprocessing.Process reporting a
+      .exitcode of 1 even on success when using the "fork" start
+      method while using a concurrent.futures.ThreadPoolExecutor.
+    - gh-97514: Authentication was added to the multiprocessing
+      forkserver start method control socket so that only
+      processes with the authentication key generated by the
+      process that spawned the forkserver can control it. This is
+      an enhancement over the other gh-97514 fixes so that access
+      is no longer limited only by filesystem permissions.
+    The file descriptor exchange of control pipes with the forked
+    worker process now requires an explicit acknowledgement byte to
+    be sent over the socket after the exchange on all forkserver
+    supporting platforms. That makes testing the above much easier.
+  - Documentation
+    - gh-127347: Publicly expose traceback.print_list() in
+      traceback.__all__.
+  - Core and Builtins
+    - gh-127740: Fix error message in bytes.fromhex() when given
+      an odd number of digits to properly indicate that an even
+      number of hexadecimal digits is required.
+    - gh-127058: PySequence_Tuple now creates the resulting
+      tuple atomically, preventing partially created tuples
+      being visible to the garbage collector or through
+      gc.get_referrers()
+    - gh-127599: Fix statistics for increments of object
+      reference counts (in particular, when a reference count was
+      increased by more than 1 in a single operation).
+    - gh-127651: When raising ImportError for missing symbols
+      in from imports, use __file__ in the error message if
+      __spec__.origin is not a location
+    - gh-127582: Fix non-thread-safe object resurrection when
+      calling finalizers and watcher callbacks in the free
+      threading build.
+    - gh-127434: The iOS compiler shims can now accept arguments
+      with spaces.
+    - gh-127536: Add missing locks around some list assignment
+      operations in the free threading build.
+    - gh-127085: Fix race when exporting a buffer from a
+      memoryview object on the free-threaded build.
+    - gh-127238: Correct error message for
+      sys.set_int_max_str_digits().
+    - gh-113841: Fix possible undefined behavior division by zero
+      in complex’s _Py_c_pow().
+    - gh-127133: Calling
+      argparse.ArgumentParser.add_argument_group()
+      on an argument group, and calling
+      argparse.ArgumentParser.add_argument_group() or
+      argparse.ArgumentParser.add_mutually_exclusive_group() on a
+      mutually exclusive group now raise exceptions. This nesting
+      was never supported, often failed to work correctly, and
+      was unintentionally exposed through inheritance. This
+      functionality has been deprecated since Python 3.11.
+    - gh-126491: Add a marking phase to the GC. All objects that
+      can be transitively reached from builtin modules or the
+      stacks are marked as reachable before cycle detection. This
+      reduces the amount of work done by the GC by approximately
+      half.
+    - gh-127020: Fix a crash in the free threading build
+      when PyCode_GetCode(), PyCode_GetVarnames(),
+      PyCode_GetCellvars(), or PyCode_GetFreevars() were called
+      from multiple threads at the same time.
+    - gh-127010: Simplify GC tracking of dictionaries. All
+      dictionaries are tracked when created, rather than being
+      lazily tracked when a trackable object was added to
+      them. This simplifies the code considerably and results in
+      a slight speedup.
+    - gh-126980: Fix __buffer__() of bytearray crashing when READ
+      or WRITE are passed as flags.
+    - gh-126937: Fix TypeError when a ctypes.Structure
+      has a field size that doesn’t fit into an unsigned
+      16-bit integer. Instead, the maximum number of bits is
+      sys.maxsize.
+    - gh-126868: Increase performance of int by adding a freelist
+      for compact ints.
+    - gh-126881: Fix crash in finalization of dtoa state. Patch
+      by Kumar Aditya.
+    - gh-126892: Require cold or invalidated code to “warm up”
+      before being JIT compiled again.
+    - gh-126091: Ensure stack traces are complete when throwing
+      into a generator chain that ends in a custom generator.
+    - gh-126024: Optimize decoding of short UTF-8 sequences
+      containing non-ASCII characters by approximately 15%.
+    - gh-125420: Add memoryview.index() to memoryview
+      objects. Patch by Bénédikt Tran.
+    - gh-125420: Add memoryview.count() to memoryview
+      objects. Patch by Bénédikt Tran.
+    - gh-124470: Fix crash in free-threaded builds when replacing
+      object dictionary while reading attribute on another thread
+    - gh-69639: Implement mixed-mode arithmetic rules combining
+      real and complex numbers as specified by C standards since
+      C99. Patch by Sergey B Kirpichev.
+    - gh-120010: Correct invalid corner cases which resulted
+      in (nan+nanj) output in complex multiplication,
+      e.g., (1e300+1j)*(nan+infj). Patch by Sergey B Kirpichev.
+    - gh-109746: If _thread.start_new_thread() fails to start a
+      new thread, it deletes its state from interpreter and thus
+      avoids its repeated cleanup on finalization.
+  - C API
+    - gh-127896: The previously undocumented function
+      PySequence_In() is soft deprecated. Use
+      PySequence_Contains() instead.
+    - gh-127791: Fix loss of callbacks after more than one call
+      to PyUnstable_AtExit().
+    - gh-127691: The Unicode Exception Objects C API now raises a
+      TypeError if its exception argument is not a UnicodeError
+      object. Patch by Bénédikt Tran.
+    - gh-123378: Ensure that the value of UnicodeEncodeError.end
+      retrieved by PyUnicodeEncodeError_GetEnd() lies in [min(1,
+      objlen), max(min(1, objlen), objlen)] where objlen is the
+      length of UnicodeEncodeError.object. Similar arguments
+      apply to UnicodeDecodeError and UnicodeTranslateError and
+      their corresponding C interface. Patch by Bénédikt Tran.
+    - gh-127314: Improve error message when calling the C API
+      without an active thread state on the free-threaded build.
+    - gh-123378: Ensure that the value of
+      UnicodeEncodeError.start retrieved by
+      PyUnicodeEncodeError_GetStart() lies in [0,
+      max(0, objlen - 1)] where objlen is the length of
+      UnicodeEncodeError.object. Similar arguments apply to
+      UnicodeDecodeError and UnicodeTranslateError and their
+      corresponding C interface. Patch by Bénédikt Tran.
+    - gh-109523: Reading text from a non-blocking stream with
+      read may now raise a BlockingIOError if the operation
+      cannot immediately return bytes.
+    - gh-102471: Add a new import and export API for Python int
+      objects (PEP 757):
+        PyLong_GetNativeLayout();
+        PyLong_Export();
+        PyLong_FreeExport();
+        PyLongWriter_Create();
+        PyLongWriter_Finish();
+        PyLongWriter_Discard().
+      Patch by Victor Stinner.
+    - gh-121058: PyThreadState_Clear() now warns (and calls
+      sys.excepthook) if the thread state still has an active
+      exception.
+  - Build
+    - gh-127865: Fix build failure on systems without
+      thread-locals support.
+    - gh-127629: Emscripten builds now include ctypes support.
+    - gh-127111: Updated the Emscripten web example to use ES6
+      modules and be built into a distinct web_example subfolder.
+    - gh-115869: Make jit_stencils.h (which is produced during
+      JIT builds) reproducible.
+    - gh-126898: The Emscripten build of Python is now based on
+      ES6 modules.
+
+-------------------------------------------------------------------
 Tue Nov 19 22:08:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the second development version of 3.14.0a2.

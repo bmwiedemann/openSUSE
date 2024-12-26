@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec 21 14:32:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.8.1:
+  * Fix color of newly inserted atoms and bonds.
+  * Fix color of radical electrons.
+  * Fix color of lone pairs.
+- Drop no longer needed patches:
+  * molsketch-cmake-qt5-add-translation.patch
+  * molsketch-include-numeric-header.patch
+- Switch to Qt6 for builds on openSUSE Tumbleweed.
+- Drop use of deprecated %suse_update_desktop_files.
+
+-------------------------------------------------------------------
 Tue Jul 11 10:16:01 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.8.0:

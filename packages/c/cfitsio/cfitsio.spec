@@ -19,20 +19,14 @@
 %define so_ver 10
 %define __builder ninja
 Name:           cfitsio
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        NASA-1.3
 URL:            https://heasarc.gsfc.nasa.gov/fitsio/
 Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM cfitsio-cmake-allow-user-specified-incdir.patch badshah400@gmail.com -- Allow user-specified include dir
-Patch0:         cfitsio-cmake-allow-user-specified-incdir.patch
 # PATCH-FIX-UPSTREAM cfitsio-cmake-devel-scripts-destination.patch badshah400@gmail.com -- Fix installation dir for pkgconfig and cmake scripts
 Patch1:         cfitsio-cmake-devel-scripts-destination.patch
-# PATCH-FIX-UPSTREAM cfitsio-cmake-lowercase-util-names.patch badshah400@gmail.com -- Use lowercase name for utility binaries when building using cmake (same as autotools)
-Patch2:         cfitsio-cmake-lowercase-util-names.patch
-# PATCH-FIX-UPSTREAM cfitsio-cmake-match-autotools-soversion.patch badshah400@gmail.com -- Use same so version when building with cmake as when done using autotools
-Patch3:         cfitsio-cmake-match-autotools-soversion.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -113,14 +107,14 @@ in FITS files.
 
 %files
 %doc README.md docs/{changes.txt,fpackguide.pdf}
-%license licenses/NASA_Open_Source_Agreement_1.3.txt
+%license licenses/License.txt
 %{_bindir}/fitscopy
 %{_bindir}/fitsverify
 %{_bindir}/fpack
 %{_bindir}/funpack
 
 %files devel
-%license licenses/NASA_Open_Source_Agreement_1.3.txt
+%license licenses/License.txt
 %{_includedir}/%{name}/
 %{_libdir}/libcfitsio.so
 %{_libdir}/pkgconfig/cfitsio.pc
@@ -131,7 +125,8 @@ in FITS files.
 %doc docs/{cfitsio.ps,cfortran.doc,fitsio.doc,fitsio.ps,quick.ps}
 
 %files -n libcfitsio%{so_ver}
-%license licenses/NASA_Open_Source_Agreement_1.3.txt
+%license licenses/License.txt
 %{_libdir}/libcfitsio.so.%{so_ver}*
+%{_libdir}/libcfitsio.so.%{version}
 
 %changelog

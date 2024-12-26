@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt6
 License:        GPL-3.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  python3-PyQt6-sip
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-beautifulsoup4
 BuildRequires:  python3-cheroot
-BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python3-devel >= 3.9
 BuildRequires:  python3-hypothesis
 BuildRequires:  python3-importlib-resources
 BuildRequires:  python3-opengl
@@ -54,7 +54,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-tk
 BuildRequires:  python3-tldextract
 BuildRequires:  qt6-sql-sqlite
-BuildRequires:  python(abi) >= 3.8
+BuildRequires:  python(abi) >= 3.9
 Requires:       python3-Jinja2
 Requires:       python3-MarkupSafe
 Requires:       python3-PyQt6-WebEngine

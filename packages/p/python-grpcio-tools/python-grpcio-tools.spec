@@ -21,7 +21,7 @@
 %define         modname grpcio_tools
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-tools
-Version:        1.67.1
+Version:        1.68.1
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0

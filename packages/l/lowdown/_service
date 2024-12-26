@@ -2,7 +2,6 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/kristapsdz/lowdown</param>
     <param name="scm">git</param>
-    <param name="revision">VERSION_1_3_1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <!-- If we ever have to package a snapshot, use this format pattern:
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>

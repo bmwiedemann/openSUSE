@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Wed Dec 18 06:55:04 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.0.3:
+  * This release mainly fixes building for Python 3.12, but also
+    fixes a serious bug in the NGramModel wrapper class along the
+    way. Note that Python 3.6 and 3.7 are no longer supported.
+  * Switch to scikit-build-core and tox to fix many issues.
+
+- Update to 5.0.2:
+    Removed unnecessary shinxbase in package config
+    Do not attempt to align phones to impossibly short durations (fixes #339)
+    Require specific setuptools version to fix editable install (fixes: #353)
+
+- Update to 5.0.1:
+    Include examples of live recognition on various platforms
+    Add missing close brace for C++
+    Use a separate search for ps_set_align_text()
+    Fix regression tests and -phone_align in main program
+    Use trailing slash with include directory
+    Removed unnecessary libpthread in package config
+    fix: fix a stray #if WORDS_BIGENDIAN (fixes: #343)
+
+- Update to 5.0.0. Includes among other these notable changes:
+  * pocketsphinx_continuous is gone, replaced by plain old
+    pocketsphinx, which is documented in the README file.
+  * The configuration interface is now quite different. It is not a
+    "command-line parser" anymore and the configuration parameters
+    have lost their leading dashes.
+  * All of the SphinxBase "utility" headers have also been made
+    internal and their symbols will no longer be exported on
+    Windows. Conversely, the JSGF and N-Gram language model API has
+    been included in <pocketsphinx/model.h>.
+  * The sphinx_fe and sphinx_cepview utilities have been moved to
+    SphinxTrain.
+  * The audio interface (<sphinxbase/ad.h>) has been removed.
+  * The -remove_noise option is now controlled by the acoustic
+    model as it needs to match the training.
+  * The -remove_silence option has been removed as it is a Bad Idea
+    and Considered Harmful for batch mode recognition. Please use
+    the endpointer API as detailed in <pocketsphinx/endpointer.h>
+    and examples/live.c or examples/live.py.
+  * The -cmninit option is not controlled by the default acoustic
+    model anymore. This may cause some problems for live
+    recognition as the defaults may not match the feature
+    extraction parameters.
+  * The SWIG wrappers have been removed. Only Python 3 is directly
+    supported as a dynamic language binding. Node.js may be
+    supported in the near future. The C API is specifically
+    designed to be easily supported through FFI, so you can do
+    that.
+  * Python support is much improved, fully documented, and builds a
+    proper module directly from the (top level of the) source tree
+    with pip or build.
+  * Android support is gone but may come back (contributions
+    welcome, I don't have time to support anything other than Linux
+    on x86_64 and s390x)
+  * Other changes:
+  * Change the <pocketsphinx/search.h> API to be slightly more
+    intuitive
+  * New force-alignment API and two-pass alignment to get
+    phone/state durations
+  * Uniformize API and test fixed-point mode properly
+  * Fix float-to-int underflows (#199, #252)
+  * Disallow multiple search types in config or command-line
+  * Revert incorrect optimizations to JSGF compiler (fixes #53)
+  * Make seg_iter and hyp behave as expected in kws search
+    (fixes #122)
+  * feat: add -config and config to parse and save JSON
+  * Resurrect GStreamer support
+  * Remove sphinxbase and modernize configuration API
+  * Add support for input files to pocketsphinx command line
+  * Add compatibility with pocketsphinx-python 0.1.5
+  * Rename pocketsphinx5 to pocketsphinx
+  * Updated the en-us dict
+  * Fix memory leak in allphone_search.c
+  * Forward declare allphone_clear_segments in allphone_search.c
+  * Make force alignment accessible from pocketsphinx_batch and
+    the ps_decoder API
+  * Improve linking for internal headers
+  * Fix memory leak in bin_mdef_read_text
+  * Large build system and small API modernizations
+  * Fix windows build
+  * Fix endianness issues in binary trie LM code
+  * Build a proper Python package
+  * Update -cmninit parameter when CMN is updated
+  * Switch back to Cython and use scikit-build for Python module
+  * Document Python module better and build ReadTheDocs with
+    (the other) Sphinx
+  * Fix install command for Mac and iOS builds
+  * Incoporate WebRTC VAD code
+  * Reorganize header files
+  * Remove thread library
+  * Add a proper API for cepstral mean normalization
+  * Make -samprate an int after all these years
+
+- Obsoletes the pocketsphinx5/sphinxbase/sphinxbase5 packages and
+  remove the use of update-alternatives since it's not needed
+  anymore.
+- Add _service file.
+- Add _multibuild to build the python package.
+- Drop patches that don't seem to be needed anymore:
+  * pocketsphinx-doxygen.patch
+  * pocketsphinx-largefile.patch
+  * pocketsphinx-long-utterance.patch
+  * use-python3.patch
+- Add patch to fix installation directory of python module:
+  * fix-python-installation.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:35:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

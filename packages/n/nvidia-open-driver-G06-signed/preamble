@@ -13,7 +13,8 @@ Provides: nvidia-open-driver-G06-signed-kmp-%1 = %{-v*}
 Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp-%1 <= 560.35.03
 Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp <= 560.35.03
 %endif
-%if 0%{?sle_version:1} && %{with cuda}
+# SLE16 doesn't set %sle_version; SLE Micro 6.x is already SLE16 !!!
+%if (0%{?sle_version:1} || (0%{?suse_version} == 1600 && !0%{?is_opensuse})) && %{with cuda}
 Requires: kernel-firmware-nvidia-gspx-G06-cuda = %{-v*}
 %else
 Requires: (kernel-firmware-nvidia-gspx-G06 = %{-v*} if nvidia-compute-utils-G06 = %{-v*})

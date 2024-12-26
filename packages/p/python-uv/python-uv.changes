@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Dec 18 10:24:50 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.5.10:
+  * Improve backtracking behavior when packages conflict repeatedly
+  * Patch Python sysconfig values such as AR at ar install time
+  * Patch Python sysconfig values such as clang to cc at install time
+  * Skip --native-tls in pip compile header
+  * Add resolver error hint for no-binary and no-build failures
+  * Improve build error messages
+  * Reduce redundant Python version incompatibilities in resolver error message
+  * Reduce redundant enumeration of all package versions in some resolver errors
+  * Improve display of ranges when pre-releases are not allowed
+  * Improve error messages for uv remove
+  * Improve phrasing for single term incompatibilities
+  * Improve styling of uv remove dependency hints
+  * Omit trailing zeros on Python requirements inferred from versions
+  * Show a concise error message for missing version field
+  * Use the build options value to improve hints for no wheel / source distribution errors
+  * Allow multiple disjoint URLs in overrides
+  * Include explicit indexes in publish index choice
+  * Fix Python interpreter detection for 32-bit operating systems on 64-bit hosts
+  * Fix typo "operation system"
+  * Clarify uninstallation docs
+  * Add a note to say that dependencies between workspace members are editable
+  * Correctly document default value of fork-strategy setting
+  * Use double quotes for Windows support in examples
+  * Remove pypy from top-level pin example
+  * Update references to python-build-standalone to reflect the transferred project
+  * Use a different Ruff version in documentation
+  * Change example so it works as-is on powershell and cmd.exe
+  * Clarify best practice for Python matrix strategy in GitHub Actions
+  * Add documentation for uv-lock and uv-export pre-commit hooks
+  * Build backend: Fix pre-PEP 639 license files
+
+-------------------------------------------------------------------
 Tue Dec 17 00:47:44 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.5.9:

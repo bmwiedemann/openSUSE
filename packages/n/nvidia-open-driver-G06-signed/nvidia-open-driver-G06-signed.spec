@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package nvidia-open-driver-G06-signed
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -160,7 +160,8 @@ BuildArch:      noarch
 This package fetches the versioned kernel firmware file "gsp.bin" for
 the OpenSource NVIDIA kernel module driver G06 once it's available.
 
-%if 0%{?sle_version:1} && %{with cuda}
+# SLE16 doesn't set %sle_version; SLE Micro 6.x is already SLE16 !!!
+%if (0%{?sle_version:1} || (0%{?suse_version} == 1600 && !0%{?is_opensuse})) && %{with cuda}
 %files -n kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
 %endif
 

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Dec 23 07:44:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.3:
+  * chore(release): v3.0.3
+  * ci: publish docker image (#355)
+  * Revert "fix: check if multiple newlines are at EOF (#350)" (#354)
+  * chore(release): v3.0.2
+  * build: remove openbsd/mips64
+  * fix: check if multiple newlines are at EOF (#350)
+  * ci: run docker login and publish on main and on tags creation (#344)
+  * ci: remove changelog gen (#352)
+  * chore(deps): bump docker/build-push-action from 5 to 6 (#349)
+
+-------------------------------------------------------------------
+Mon Dec 23 07:43:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package editorconfig-checker: a tool to verify that your
+  files are in harmony with your .editorconfig

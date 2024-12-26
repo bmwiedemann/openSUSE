@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 22 01:18:28 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 1.4.304
+  * Emulate VK_EXT_surface_maintenance1 if not supported by a driver
+  * Add handle checking to test instance & device creation
+  * Add settings test for layer control OFF & VK_INSTANCE_LAYERS
+  * Make Settings file "ON" take priority over disable env-var
+  * Log what caused each layer to be enabled
+  * Log when Filter Env-Vars act when settings file is active
+  * Add more logging when the settings file has invalid members
+
+-------------------------------------------------------------------
 Tue Oct  8 16:41:01 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.296

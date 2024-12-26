@@ -17,7 +17,7 @@
 
 
 Name:           spotify-qt
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        Lightweight Spotify client using Qt
 License:        GPL-3.0-only
@@ -25,11 +25,24 @@ URL:            https://github.com/kraxarn/spotify-qt
 Source:         https://github.com/kraxarn/spotify-qt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Group:          Productivity/Multimedia/Sound/Players
 BuildRequires:  gcc-c++
+BuildRequires:  libsecret
 BuildRequires:  make
+%if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
+BuildRequires:  kf6-kcrash-devel
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Svg)
+%else
 BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
-Suggests:       spotifyd
+%endif
+Suggests:       libsecret
+%if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
+Suggests:       librespot
+%endif
 
 %description
 An unofficial Spotify client using Qt as a simpler, lighter alternative to the official client, inspired by spotify-tui. Much like spotify-tui, you need an actual Spotify client running, for example spotifyd, which can be configured from within the app. Also like other clients, controlling music playback requires Spotify Premium.

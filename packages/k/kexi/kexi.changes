@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 25 10:29:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Stop using the optional marble dependency
+
+-------------------------------------------------------------------
 Wed Nov 20 17:29:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro
