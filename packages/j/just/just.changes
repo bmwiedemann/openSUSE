@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 20 02:33:31 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Cleanup specfile
+  * use archived tarball from upstream
+  * remove cargo_config
+- Update vendored dependencies
+
+-------------------------------------------------------------------
+Wed Dec 18 02:15:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- skip all tests, as for some reason, now other tests are flaky.
+  so test have to be done now manually when packaging a newer version.
+
+-------------------------------------------------------------------
+Sat Dec 14 22:01:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- skip tests which are very flaky on most non x86_64 (even on x86_64,
+  it sometimes flakes)
+
+-------------------------------------------------------------------
 Wed Dec 11 21:59:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.38.0:

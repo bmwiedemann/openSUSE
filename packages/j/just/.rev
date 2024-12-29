@@ -293,4 +293,12 @@
 - switch to tar_scm, so we can actually offer the correct package-meta (forwarded request 1230204 from rrahl0)</comment>
     <requestid>1230205</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e2c488a6da2b4a3c04a1ad2b6486fd0a</srcmd5>
+    <version>1.38.0</version>
+    <time>1735469800</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233478</requestid>
+  </revision>
 </revisionlist>
