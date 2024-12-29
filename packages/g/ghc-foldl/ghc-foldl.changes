@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 20 05:14:50 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update foldl to version 1.4.18.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/foldl-1.4.18/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Thu Aug 29 16:00:20 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update foldl to version 1.4.17.
