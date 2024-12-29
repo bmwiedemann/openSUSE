@@ -17,7 +17,7 @@
 
 
 Name:           rtorrent
-Version:        0.10.0
+Version:        0.15.0
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -37,7 +37,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
 BuildRequires:  pkgconfig(libcurl) >= 7.15.4
-BuildRequires:  pkgconfig(libtorrent) >= 0.14.0
+BuildRequires:  pkgconfig(libtorrent) >= 0.15.0
 BuildRequires:  pkgconfig(xmlrpc)
 BuildRequires:  sysuser-tools
 %sysusers_requires
