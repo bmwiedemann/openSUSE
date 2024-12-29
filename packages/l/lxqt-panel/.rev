@@ -1279,4 +1279,15 @@
     <comment></comment>
     <requestid>1226429</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6bba4d901ce32e3ecb9476cd89df9343</srcmd5>
+    <version>2.1.3</version>
+    <time>1735469781</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.3:
+ * Taken into account an empty shortcut in Fancy/Main Menu.
+   This also fixes searching with non-Latin keyboard layouts under Wayland.
+ * Fixed bugs about multi-screen setups on Wayland. (forwarded request 1233097 from AndnoVember)</comment>
+    <requestid>1233459</requestid>
+  </revision>
 </revisionlist>
