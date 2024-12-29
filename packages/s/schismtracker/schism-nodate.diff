@@ -11,12 +11,12 @@ be happening.
  schism/version.c |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: schismtracker-20240529/schism/version.c
+Index: schismtracker-20241226/schism/version.c
 ===================================================================
---- schismtracker-20240529.orig/schism/version.c
-+++ schismtracker-20240529/schism/version.c
-@@ -52,7 +52,7 @@ static const char* top_banner_normal =
- #if !defined(EMPTY_VERSION)
+--- schismtracker-20241226.orig/schism/version.c
++++ schismtracker-20241226/schism/version.c
+@@ -53,7 +53,7 @@ static const char* top_banner_normal =
+ #ifndef EMPTY_VERSION
  	"Schism Tracker " VERSION
  #else
 -	"Schism Tracker built " __DATE__ " " __TIME__

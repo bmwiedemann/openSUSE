@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 27 00:17:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20241226
+  * Implement Time Information page (accessible via
+    LShift-LAlt-RAlt-RCtrl-Pause, or the more sane keybind
+    Ctrl-Alt-T)
+  * Implement OpenMPT-style loop wrap-around buffer (addresses
+    playback issues with sample loops + interpolation)
+  * Much more accurate VU meters in the info page
+  * Fix handling of Lxx effects
+  * Fix handling of S7B/S7C effects
+  * Add support for 32-bit audio output
+  * Add primitive info reader of EdLib Tracker EDL and D00 files
+    (loading of the song data is not currently implemented)
+  * Fix some AIFF and WAV files not being loaded properly
+  * The default audio sample rate is now 48kHz instead of 44.1kHz
+  * Instruments Page: Keyjazz now works like Impulse Tracker did
+  * S3M: Import edit timers from Impulse Tracker and OpenMPT
+  * S3M: Save Impulse Tracker-style edit timers
+- Delete 0001-build-resolve-Wreturn-type-warnings.patch (merged)
+
+-------------------------------------------------------------------
 Mon Oct 21 12:55:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20241021
