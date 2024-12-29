@@ -1,0 +1,18 @@
+Index: luvcview-20070512/v4l2uvc.h
+===================================================================
+--- luvcview-20070512.orig/v4l2uvc.h
++++ luvcview-20070512/v4l2uvc.h
+@@ -30,6 +30,7 @@
+ #include <sys/mman.h>
+ #include <sys/select.h>
+ #include <libv4l1-videodev.h>
++#include <SDL/SDL_timer.h>
+ #include <linux/videodev2.h>
+ #include "avilib.h"
+ 
+@@ -104,4 +105,4 @@ int v4l2SetLightFrequencyFilter(struct v
+ int enum_frame_intervals(int dev, __u32 pixfmt, __u32 width, __u32 height);
+ int enum_frame_sizes(int dev, __u32 pixfmt);
+ int enum_frame_formats(int dev);
+-
++int check_videoIn(struct vdIn *vd, char *device);

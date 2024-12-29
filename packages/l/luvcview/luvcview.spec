@@ -31,6 +31,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Patch1:         luvcview-add-COPYING.patch
 Patch2:         luvcview-memory-leaks.patch
 Patch3:         luvcview-v4l-2.6.38.patch
+Patch4:         luvcview-fix-implicit.patch
 
 %description
 luvcview is a simple V4L2 application using sdl
@@ -47,6 +48,7 @@ Authors:
 %patch -P 1 -p1
 %patch -P 2
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 make

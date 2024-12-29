@@ -129,4 +129,12 @@
 - Remove old 0%{?suse_version} &gt;= 1210 condition</comment>
     <requestid>1149006</requestid>
   </revision>
+  <revision rev="19" vrev="29">
+    <srcmd5>381870546da6a83a0e08e216c5654a2c</srcmd5>
+    <version>20070512</version>
+    <time>1735469811</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233576</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 15:21:17 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- luvcview-fix-implicit.patch: fixed implicits
+
+-------------------------------------------------------------------
 Thu Feb 22 07:39:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
