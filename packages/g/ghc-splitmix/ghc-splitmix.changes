@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:34:52 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update splitmix to version 0.1.1.
+  # 0.1.1
+
+  - Drop support for GHCs prior 8.6.5
+  - Support GHC-9.12
+
+-------------------------------------------------------------------
 Tue Apr  2 18:43:40 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update splitmix to version 0.1.0.5 revision 1.
