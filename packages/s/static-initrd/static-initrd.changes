@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:28:09 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove the needsrootforbuild not needed anymore
+
+-------------------------------------------------------------------
+Thu Dec 19 10:26:29 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make initrd creation deterministic for reproducible builds (boo#1234709)
+
+-------------------------------------------------------------------
 Wed Dec 18 16:10:14 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Omit modules following architectures. Use a variable in the dracut cmd.

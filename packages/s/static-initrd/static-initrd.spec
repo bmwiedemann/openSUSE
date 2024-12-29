@@ -13,9 +13,6 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-# needsrootforbuild
-
 
 %define build_signed %{?signed_override}%{!?signed_override:0}
 
@@ -224,8 +221,10 @@ omit_modules="$omit_modules rngd"
 %endif
 
 # Build the initramfs
+mkdir ~/dracut.tmp
 dracut \
-    --confdir $(mktemp -d) \
+    --confdir ~/dracut.tmp \
+    --reproducible \
     --kernel-image /boot/%{ker_name} \
     --kver %{uname} \
     --kmoddir /lib/modules/%{uname} \
@@ -241,6 +240,7 @@ dracut \
     --add-drivers="fat vfat" \
     --filesystems="vfat ext4 xfs btrfs overlay" \
     ./initrd-%{uname}
+rm -rf ~/dracut.tmp
 
 %install
 mkdir %{buildroot}/boot

@@ -7,4 +7,12 @@
     <comment>New Package. It provides a pre-build static initrd where the Unified Kernel Image project will need it. static-initrd builds a generic initrd but also some dedicated ones according the list of modules provided in BuildRequires. It uses dracut as initramfs generator.</comment>
     <requestid>1231959</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f6aba74e26633a4f955c6aa54935467d</srcmd5>
+    <version>0.1.0_kMACRO</version>
+    <time>1735469779</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233455</requestid>
+  </revision>
 </revisionlist>
