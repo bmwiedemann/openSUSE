@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 23 19:32:33 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 10.13:
+  * NEW: Snippets: Allow multiple line numbers or line number
+    blocks separated by ,.
+  * NEW: Snippets: Allow using a negative index for number start
+    indexes and end indexes. Negative indexes are converted to
+    positive indexes based on the number of lines in the snippet.
+  * FIX: Snippets: Properly capture empty newline at end of file.
+  * FIX: Snippets: Fix issue where when non sections of files are
+    included, section labels are not stripped.
+  * FIX: BetterEm: Fixes for complex cases.
+  * FIX: Blocks: More consistent handling of empty newlines in
+    block processor extensions
+
+-------------------------------------------------------------------
 Sun Nov  3 02:33:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 10.12:
