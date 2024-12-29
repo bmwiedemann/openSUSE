@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-notificationd
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        LXQt Notification daemon
 License:        LGPL-2.1-or-later

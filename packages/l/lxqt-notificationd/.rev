@@ -378,4 +378,13 @@
   * Updated *.ts files (#395) (forwarded request 1221993 from AndnoVember)</comment>
     <requestid>1223235</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>97c1dd057ea80ea81ddb6a2c83372d81</srcmd5>
+    <version>2.1.1</version>
+    <time>1735469780</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.1:
+  * Fixed transparent notifications with System theme on Wayland. (forwarded request 1233096 from AndnoVember)</comment>
+    <requestid>1233458</requestid>
+  </revision>
 </revisionlist>
