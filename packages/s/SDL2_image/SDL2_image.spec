@@ -18,7 +18,7 @@
 
 Name:           SDL2_image
 %define lname	libSDL2_image-2_0-0
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Simple DirectMedia Layer 2 image loading library
 License:        Zlib

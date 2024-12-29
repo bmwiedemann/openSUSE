@@ -173,4 +173,12 @@
     <comment>- Update to release 2.8.3</comment>
     <requestid>1231770</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cbc49a36cd3268fbfb9dcdd522d4f306</srcmd5>
+    <version>2.8.4</version>
+    <time>1735469797</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.8.4</comment>
+    <requestid>1233473</requestid>
+  </revision>
 </revisionlist>
