@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Dec 11 02:35:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
+
+- Update DRBD version from 9.1.22 to 9.1.23 (boo#1234849)
+
+  * Changelog from Linbit:
+
+    9.1.23 (api:genl2/proto:86-101,118-121/transport:18)
+    --------
+     * Fix a corner case that can happen when DRBD establishes multiple
+       connections in parallel, which could lead one connection to end up in
+       an inconsistent replication state of WFBitMapT/Established
+     * Fix a corner case in which a reconciliation resync ends up in
+       WFBitMapT/Established
+     * Restrict protocol compatibility to the most recent 8.4 and 9.0 releases
+     * Fix a corner case causing a module ref leak on drbd_transport_tcp;
+       if it hits, you can not rmmod it
+     * rate-limit resync progress while resync is paused
+     * resync-target inherits history UUIDs when resync finishes,
+       this can prevent unexpected "unrelared data" events later
+     * Updated compatibility code for Linux 6.11 and 6.12
+
+  * remove patches which already included in the new version:
+     0001-drbd-properly-rate-limit-resync-progress-reports.patch
+     0002-drbd-inherit-history-UUIDs-from-sync-source-when-res.patch
+     0003-build-compat-fix-line-offset-in-annotation-pragmas-p.patch
+     0004-drbd-fix-exposed_uuid-going-backward.patch
+     0005-drbd-Proper-locking-around-new_current_uuid-on-a-dis.patch
+     0006-build-CycloneDX-fix-bom-ref-add-purl.patch
+     0007-build-Another-update-to-the-spdx-files.patch
+     0008-build-generate-spdx.json-not-tag-value-format.patch
+     0009-compat-fix-gen_patch_names-for-bdev_file_open_by_pat.patch
+     0010-compat-fix-nla_nest_start_noflag-test.patch
+     0011-compat-fix-blk_alloc_disk-rule.patch
+     0012-drbd-remove-const-from-function-return-type.patch
+     0013-drbd-don-t-set-max_write_zeroes_sectors-in-decide_on.patch
+     0014-drbd-split-out-a-drbd_discard_supported-helper.patch
+     0015-drbd-atomically-update-queue-limits-in-drbd_reconsid.patch
+     0016-compat-test-and-patch-for-queue_limits_start_update.patch
+     0017-compat-specify-which-essential-change-was-not-made.patch
+     0018-gen_patch_names-reorder-blk_mode_t.patch
+     0019-compat-fix-blk_queue_update_readahead-patch.patch
+     0020-compat-test-and-patch-for-que_limits-max_hw_discard_.patch
+     0021-compat-fixup-write_zeroes__no_capable.patch
+     0022-compat-fixup-queue_flag_discard__yes_present.patch
+     0023-drbd-move-flags-to-queue_limits.patch
+     0024-compat-test-and-patch-for-queue_limits.features.patch
+     0025-drbd-Annotate-struct-fifo_buffer-with-__counted_by.patch
+     0026-compat-test-and-patch-for-__counted_by.patch
+     0027-drbd-fix-function-cast-warnings-in-state-machine.patch
+     0028-Add-missing-documentation-of-peer_device-parameter-t.patch
+     0030-drbd-kref_put-path-when-kernel_accept-fails.patch
+     0031-build-fix-typo-in-Makefile.spatch.patch
+     0032-drbd-open-do-not-delay-open-if-already-Primary.patch
+
+  * removed patch which is not needed anymore:
+     boo1231290_fix_drbd_build_error_against_kernel_v6.11.0.patch
+     boo1233222_fix_drbd_build_error_against_kernel_v6.11.6.patch
+
+  * update:
+     drbd_git_revision
+     drbd.spec
+
+  * add upstream patches to align commit d64ebe7eb7df:
+     0001-drbd-Fix-memory-leak.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 12:23:17 UTC 2024 - Glass Su <glass.su@suse.com>
 
 - drbd: fix build error against kernel v6.11.6 (boo#1233222)

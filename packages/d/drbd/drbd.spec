@@ -24,7 +24,7 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.1.22
+Version:        9.1.23
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
@@ -36,44 +36,11 @@ Source3:        drbd_git_revision
 
 ########################
 # upstream patch
-Patch0001:  0001-drbd-properly-rate-limit-resync-progress-reports.patch
-Patch0002:  0002-drbd-inherit-history-UUIDs-from-sync-source-when-res.patch
-Patch0003:  0003-build-compat-fix-line-offset-in-annotation-pragmas-p.patch
-Patch0004:  0004-drbd-fix-exposed_uuid-going-backward.patch
-Patch0005:  0005-drbd-Proper-locking-around-new_current_uuid-on-a-dis.patch
-Patch0006:  0006-build-CycloneDX-fix-bom-ref-add-purl.patch
-Patch0007:  0007-build-Another-update-to-the-spdx-files.patch
-Patch0008:  0008-build-generate-spdx.json-not-tag-value-format.patch
-Patch0009:  0009-compat-fix-gen_patch_names-for-bdev_file_open_by_pat.patch
-Patch0010:  0010-compat-fix-nla_nest_start_noflag-test.patch
-Patch0011:  0011-compat-fix-blk_alloc_disk-rule.patch
-Patch0012:  0012-drbd-remove-const-from-function-return-type.patch
-Patch0013:  0013-drbd-don-t-set-max_write_zeroes_sectors-in-decide_on.patch
-Patch0014:  0014-drbd-split-out-a-drbd_discard_supported-helper.patch
-Patch0015:  0015-drbd-atomically-update-queue-limits-in-drbd_reconsid.patch
-Patch0016:  0016-compat-test-and-patch-for-queue_limits_start_update.patch
-Patch0017:  0017-compat-specify-which-essential-change-was-not-made.patch
-Patch0018:  0018-gen_patch_names-reorder-blk_mode_t.patch
-Patch0019:  0019-compat-fix-blk_queue_update_readahead-patch.patch
-Patch0020:  0020-compat-test-and-patch-for-que_limits-max_hw_discard_.patch
-Patch0021:  0021-compat-fixup-write_zeroes__no_capable.patch
-Patch0022:  0022-compat-fixup-queue_flag_discard__yes_present.patch
-Patch0023:  0023-drbd-move-flags-to-queue_limits.patch
-Patch0024:  0024-compat-test-and-patch-for-queue_limits.features.patch
-Patch0025:  0025-drbd-Annotate-struct-fifo_buffer-with-__counted_by.patch
-Patch0026:  0026-compat-test-and-patch-for-__counted_by.patch
-Patch0027:  0027-drbd-fix-function-cast-warnings-in-state-machine.patch
-Patch0028:  0028-Add-missing-documentation-of-peer_device-parameter-t.patch
-#  0029-ci-update-build-helpers.patch is fedora special, we ignore it.
-Patch0029:  0030-drbd-kref_put-path-when-kernel_accept-fails.patch
-Patch0030:  0031-build-fix-typo-in-Makefile.spatch.patch
-Patch0031:  0032-drbd-open-do-not-delay-open-if-already-Primary.patch
+Patch0001:  0001-drbd-Fix-memory-leak.patch
 
 # suse special patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
-Patch1003:  boo1231290_fix_drbd_build_error_against_kernel_v6.11.0.patch
-Patch1004:  boo1233222_fix_drbd_build_error_against_kernel_v6.11.6.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
