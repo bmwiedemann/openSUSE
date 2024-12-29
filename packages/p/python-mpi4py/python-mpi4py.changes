@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 22 17:21:34 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix packaging of header files, breaking VTK openmpi builds.
+  E.g. mpi4py.h requires the MPI_api.h in a specific relative
+  location.
+
+-------------------------------------------------------------------
 Fri Nov 22 20:47:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.1

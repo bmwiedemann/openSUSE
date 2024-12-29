@@ -117,11 +117,15 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 %pyproject_install
 
-mkdir -p %{buildroot}/%{_includedir}
 %{python_expand # De-duplicate includes and also put them in a more generally-accessible location.
-cp -r %{buildroot}%{$python_sitearch}/mpi4py/include/mpi4py %{buildroot}/%{_includedir}/
-rm -r %{buildroot}%{$python_sitearch}/mpi4py/include/mpi4py
-ln -s %{_includedir}/mpi4py %{buildroot}%{$python_sitearch}/mpi4py/include/mpi4py
+rm -Rf %{buildroot}/%{_includedir}/mpi4py/include
+rm -Rf %{buildroot}/%{_includedir}/mpi4py/*.h
+mkdir -p -m 755 %{buildroot}/%{_includedir}/mpi4py/include
+# Keep directory structure intact, e.g. mpi4py.h includes "../../MPI_api.h"
+mv %{buildroot}%{$python_sitearch}/mpi4py/include/mpi4py %{buildroot}/%{_includedir}/mpi4py/include/mpi4py
+mv %{buildroot}%{$python_sitearch}/mpi4py/*.h %{buildroot}/%{_includedir}/mpi4py/
+ln -s %{_includedir}/mpi4py/include/mpi4py %{buildroot}%{$python_sitearch}/mpi4py/include/mpi4py
+for f in %{_includedir}/mpi4py/{MPI,MPI_api}.h; do ln -s ${f} %{buildroot}%{$python_sitearch}/mpi4py/; done
 %fdupes %{buildroot}%{$python_sitearch}
 }
 %fdupes %{buildroot}/%{_includedir}
