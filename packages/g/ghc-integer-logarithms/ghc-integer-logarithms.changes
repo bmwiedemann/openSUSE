@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 20 17:13:43 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update integer-logarithms to version 1.0.4.
+  1.0.4
+  -----
+
+  - Drop support for GHCs prior 8.6.5
+  - GHC-9.12 support
+
+-------------------------------------------------------------------
 Tue Apr  2 19:11:06 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update integer-logarithms to version 1.0.3.1 revision 6.
