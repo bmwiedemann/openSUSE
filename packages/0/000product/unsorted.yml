@@ -8504,6 +8504,7 @@ unsorted:
   - hardinfo2 
   - hare 
   - hare-libnotify 
+  - hare-libnotify-tools 
   - harec 
   - harfbuzz-devel 
   - harfbuzz-tools 
@@ -14243,7 +14244,7 @@ unsorted:
   - libkdstatemachineeditor_debuginterfacesource-static 
   - libkdstatemachineeditor_view1 
   - libkdumpfile-devel 
-  - libkdumpfile10 
+  - libkdumpfile12 
   - libkea-asiodns48 
   - libkea-asiolink71 
   - libkea-cc68 
@@ -16676,7 +16677,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent22 
+  - libtorrent23 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm_unseal1 
