@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.32.1
+Version:        2.33.0
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
@@ -105,7 +105,7 @@ Zsh command-line completion support for %{name}.
 %autosetup
 
 %build
-%cmake
+%cmake -DBUILD_FLASHFETCH:BOOL=FALSE
 %cmake_build
 
 %install
@@ -114,7 +114,6 @@ Zsh command-line completion support for %{name}.
 %files
 %license LICENSE
 %doc README.md CHANGELOG.md
-%{_bindir}/flashfetch
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/%{name}/
