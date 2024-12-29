@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sat Dec 21 05:08:52 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Initial package for hare-libnotify-tools. Moved as a separate package because
+  of rpmlint errors.
+

@@ -528,4 +528,12 @@
     <comment>- Update to release 11.0.2</comment>
     <requestid>1188816</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>24f37d5b682ffee4a910520d96be90f0</srcmd5>
+    <version>11.1.1</version>
+    <time>1735469743</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 11.1.1</comment>
+    <requestid>1233628</requestid>
+  </revision>
 </revisionlist>

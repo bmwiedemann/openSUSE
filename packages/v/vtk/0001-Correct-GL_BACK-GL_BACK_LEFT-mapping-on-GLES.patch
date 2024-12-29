@@ -1,4 +1,4 @@
-From 2b930f694c2275b892772857002724b9fdcae6c5 Mon Sep 17 00:00:00 2001
+From c048ec987bf06d76ca19a292af2b5d6641cf4587 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Thu, 16 Jul 2020 03:52:23 +0200
 Subject: [PATCH 1/2] Correct GL_BACK/GL_BACK_LEFT mapping on GLES
@@ -8,26 +8,43 @@ just GL_BACK, so there is no need to remap it. Desktop GL may have
 LEFT and RIGHT attached at the simultaneously, so one of the buffers
 has to be selected when querying the attributes.
 ---
- Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx | 5 +++++
- 1 file changed, 5 insertions(+)
+ Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx b/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
-index 9bbbc2ba54..4bda9330b6 100644
+index 514e960b..394128b0 100644
 --- a/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
 +++ b/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
-@@ -849,6 +849,10 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
+@@ -890,6 +890,11 @@ bool vtkOpenGLRenderWindow::GetUsingSRGBColorSpace()
+   {
+     this->MakeCurrent();
+ 
++#ifdef GL_ES_VERSION_3_0
++    // GLES only has the GL_BACK color
++    // attachment for the default framebuffer
++    return this->UseSRGBColorSpace;
++#else
+     GLint attachment = GL_BACK_LEFT;
+ #ifdef GL_DRAW_BUFFER
+     glGetIntegerv(GL_DRAW_BUFFER, &attachment);
+@@ -923,6 +928,7 @@ bool vtkOpenGLRenderWindow::GetUsingSRGBColorSpace()
+     }
+     vtkDebugMacro(<< "Error getting color encoding!");
+     return false;
++#endif
+   }
+ 
+   vtkDebugMacro(<< "OpenGL is not initialized yet!");
+@@ -950,6 +956,7 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
  #ifdef GL_DRAW_BUFFER
      glGetIntegerv(GL_DRAW_BUFFER, &attachment);
  #endif
 +#ifdef GL_ES_VERSION_3_0
-+    // GLES only has the GL_BACK color
-+    // attachment for the default framebuffer
-+#else
      // GL seems odd with its handling of left/right.
      // if it says we are using GL_FRONT or GL_BACK
      // then convert those to GL_FRONT_LEFT and
-@@ -861,6 +865,7 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
-     {
+@@ -971,6 +978,7 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
+       // before querying the color buffer sizes.
        attachment = GL_BACK_LEFT;
      }
 +#endif
@@ -35,5 +52,5 @@ index 9bbbc2ba54..4bda9330b6 100644
      // make sure we clear any errors before we start
      // otherwise we may get incorrect results
 -- 
-2.27.0
+2.47.1
 

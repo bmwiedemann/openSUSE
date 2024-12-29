@@ -1,0 +1,50 @@
+From c549088f6ff350b76eeefebfe7730555ee75e4a8 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 26 Dec 2024 13:11:51 +0100
+Subject: [PATCH] Build system: remove libxml2 compilation test
+
+Chromium doesn't need LIBXML_ICU_ENABLED to be defined to build.
+
+Change-Id: I5788bfca058a7b65f1b2e80e9ad740b04b3dc7c6
+---
+ configure.cmake | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
+
+diff --git a/configure.cmake b/configure.cmake
+index c4acca20c..404895c84 100644
+--- a/configure.cmake
++++ b/configure.cmake
+@@ -170,21 +170,6 @@ int main() {
+ }"
+ )
+ 
+-qt_config_compile_test(libxml2
+-    LABEL "compatible libxml2 and libxslt"
+-    LIBRARIES
+-        PkgConfig::LIBXML2
+-    CODE
+-"
+-#include \"libxml/xmlversion.h\"
+-#if !defined(LIBXML_ICU_ENABLED)
+-#error libxml icu not enabled
+-#endif
+-int main() {
+-    return 0;
+-}"
+-)
+-
+ qt_config_compile_test(jpeg
+     LABEL "compatible libjpeg"
+     LIBRARIES
+@@ -645,7 +630,7 @@ qt_feature("webengine-system-libevent" PRIVATE
+ )
+ qt_feature("webengine-system-libxml" PRIVATE
+     LABEL "libxml2 and libxslt"
+-    CONDITION UNIX AND TEST_libxml2
++    CONDITION UNIX AND LIBXML2_FOUND
+ )
+ qt_feature("webengine-system-lcms2" PRIVATE
+     LABEL "lcms2"
+-- 
+2.47.1
+

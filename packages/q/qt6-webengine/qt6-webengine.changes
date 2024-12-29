@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 26 12:14:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to avoid CVE-2024-40896 (boo#1234820)
+  * 0001-Build-system-remove-libxml2-compilation-test.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 13:02:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.1:

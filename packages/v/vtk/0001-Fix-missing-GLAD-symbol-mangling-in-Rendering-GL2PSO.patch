@@ -1,0 +1,26 @@
+From 0d9be7530127da2a42644a3c5b78faaaaec5c354 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 12 Dec 2024 23:19:22 +0100
+Subject: [PATCH] Fix missing GLAD symbol mangling in Rendering/GL2PSOpenGL2
+
+The library links to and uses symbols from the GLAD GL wrapper library,
+thus it must use the wrapped GL library calls.
+---
+ Rendering/GL2PSOpenGL2/vtkOpenGLGL2PSHelperImpl.cxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Rendering/GL2PSOpenGL2/vtkOpenGLGL2PSHelperImpl.cxx b/Rendering/GL2PSOpenGL2/vtkOpenGLGL2PSHelperImpl.cxx
+index eece0354..91a22275 100644
+--- a/Rendering/GL2PSOpenGL2/vtkOpenGLGL2PSHelperImpl.cxx
++++ b/Rendering/GL2PSOpenGL2/vtkOpenGLGL2PSHelperImpl.cxx
+@@ -2,6 +2,7 @@
+ // SPDX-License-Identifier: BSD-3-Clause
+ 
+ #include "vtkOpenGLGL2PSHelperImpl.h"
++#include "vtk_glad.h"
+ 
+ #include "vtkActor.h"
+ #include "vtkCamera.h"
+-- 
+2.47.1
+

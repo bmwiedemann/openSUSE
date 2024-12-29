@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 25 07:22:12 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.93
+  * .S3M loader bug fix: The Axx (Set Speed) effect broke in v1.89.
+  * .IT loader: Fixed behavior for overflowing sample offset
+    effect, and illegal portamento slides (still somewhat wrong, buu
+    better than before). Not that you should use the FT2 clone for
+    playing .IT files!
+
+-------------------------------------------------------------------
+Sat Dec 21 06:34:50 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.92
+  * Further improvement to the tracker scope interpolation.
+  * Added a config option in Config->Miscellaneous for enabling
+    the original FT2 about screen (feeling nostalgic?)
+  * Did some very minor edits to the FT2 help text
+- Update to version 1.91
+  * Critical fix: Fixed a position/playback problem with
+    voices/channels running at volume zero.
+    This bug appeared in v1.87 (03.11.2024).
+
+-------------------------------------------------------------------
 Mon Dec  9 16:20:23 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.90

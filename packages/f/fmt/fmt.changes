@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec 28 03:00:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.1.1
+  * Restore ABI compat with 11.0.2
+
+-------------------------------------------------------------------
+Wed Dec 25 19:15:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.1
+  * Reduced debug (unoptimized) binary code size and the number of
+    template instantiations when passing formatting arguments
+  * Added an experimental fmt::writer API that can be used for
+    writing to different destinations such as files or strings
+  * Made std::expected<void, E> formattable
+  * Made fmt::is_formattable<void> SFINAE-friendly
+  * Added the n specifier for tuples and pairs
+  * Added support for tuple-like types to ``fmt::join``
+  * Added a formatter for ``std::reference_wrapper``
+  * Added experimental padding support (glibc ``strftime``
+    extension) to ``%m``, ``%j`` and ``%Y``
+  * Made ``fmt::appender`` satisfy the ``std::output_iterator`` concept
+  * Added support for UTF-32 code units greater than 0xFFFF in fill
+
+-------------------------------------------------------------------
 Sat Jul 20 14:51:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.0.2

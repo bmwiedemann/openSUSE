@@ -1,7 +1,7 @@
 #
 # spec file for package libkdumpfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 # End compatibility cruft
 
 Name:           libkdumpfile
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 %if "%name" == "libkdumpfile"
 Summary:        Kernel dump file access library
@@ -68,17 +68,17 @@ to physical translation, Xen mappings and more.
 Summary:        Include files and libraries for libkdumpfile development
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libkdumpfile10 = %{version}
+Requires:       libkdumpfile12 = %{version}
 
 %description -n %{name}-devel
 This package contains all necessary include files and libraries needed
 to develop applications that require libkdumpfile.
 
-%package -n libkdumpfile10
+%package -n libkdumpfile12
 Summary:        Kernel dump file access library
 Group:          System/Libraries
 
-%description -n libkdumpfile10
+%description -n libkdumpfile12
 A library that provides an abstraction layer for reading kernel dump
 core files.  It supports different kernel dump core formats, virtual
 to physical translation, Xen mappings and more.
@@ -105,6 +105,16 @@ Requires:       libaddrxlat3 = %{version}
 This package contains all necessary include files and libraries needed
 to develop applications that require libaddrxlat.
 
+%package -n kdumpid
+Version:        1.7
+Summary:        Utility to extract information from vmcores
+License:        GPL-2.0-or-later
+Group:          System/Kernel
+
+%description -n kdumpid
+Kdumpid extracts information such as type of dump, architecture
+and kernel version from raw vmcores (Kernel memory dumps).
+
 %prep
 %setup -q
 %autopatch -p1
@@ -126,15 +136,15 @@ rm -v %{?buildroot}%{_bindir}/showxlat
 rm -v %{?buildroot}%{_libdir}/libkdumpfile.la
 rm -v %{?buildroot}%{_libdir}/libaddrxlat.la
 
-%post -n libkdumpfile10 -p /sbin/ldconfig
+%post -n libkdumpfile12 -p /sbin/ldconfig
 
 %post -n libaddrxlat3 -p /sbin/ldconfig
 
-%postun -n libkdumpfile10 -p /sbin/ldconfig
+%postun -n libkdumpfile12 -p /sbin/ldconfig
 
 %postun -n libaddrxlat3 -p /sbin/ldconfig
 
-%files -n libkdumpfile10
+%files -n libkdumpfile12
 %defattr(-,root,root)
 %{_libdir}/libkdumpfile.so.*
 %license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
@@ -158,5 +168,10 @@ rm -v %{?buildroot}%{_libdir}/libaddrxlat.la
 %{_includedir}/libkdumpfile/addrxlat.h
 %{_libdir}/libaddrxlat.so
 %{_libdir}/pkgconfig/libaddrxlat.pc
+
+%files -n kdumpid
+%defattr(-,root,root)
+%{_bindir}/kdumpid
+%{_mandir}/man1/kdumpid.*
 
 %changelog

@@ -27,6 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz
 Source99:       baselibs.conf
+Patch1:         0001-fix-update-to_string_view-function-for-fmt-11.1-3301.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 13
@@ -100,9 +101,7 @@ v="$PWD/spdlog.sym"
 export LD_LIBRARY_PATH="$PWD/build"
 %ctest
 
-%post -n %{lname} -p /sbin/ldconfig
-
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files devel
 %license LICENSE

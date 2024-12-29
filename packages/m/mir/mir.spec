@@ -157,6 +157,8 @@ Component library of the Mir compositing stack
 %package -n libmirserver%{mirserversover}
 Summary:        Mir server library
 License:        GPL-2.0-only OR GPL-3.0-only
+Requires:       libmirevdev%{mirevdevsover} = %{version}
+Requires:       libmirserverplatform%{mirserverplatformsover} = %{version}
 Conflicts:      libmirserver61 <= %{version}
 Obsoletes:      libmirserver61 <= %{version}
 

@@ -1,7 +1,7 @@
-From 068773541005f8d8f027b373a01c821788439c8b Mon Sep 17 00:00:00 2001
+From 59ad85c74a850736ad4fcdcb9dd00779a7fff0ed Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Sun, 21 Nov 2021 22:51:36 +0100
-Subject: [PATCH] Use GL_DRAW_BUFFER0 instead of GL_DRAW_BUFFER for GLES
+Subject: [PATCH 2/2] Use GL_DRAW_BUFFER0 instead of GL_DRAW_BUFFER for GLES
  compatibility
 
 ARB_draw_buffers is part of GL 2.0, so GL_DRAW_BUFFERS0 is always
@@ -14,18 +14,18 @@ glDrawBuffer.
 At least with MESA, GL_DRAW_BUFFER and GL_DRAW_BUFFER0 always return the
 same value. GL_DRAW_BUFFERn is also used in several places already.
 ---
- .../ContextOpenGL2/vtkOpenGLContextBufferId.cxx      |  2 +-
- .../ContextOpenGL2/vtkOpenGLContextDevice2DPrivate.h |  2 +-
+ .../ContextOpenGL2/vtkOpenGLContextBufferId.cxx      |  4 ++--
+ .../ContextOpenGL2/vtkOpenGLContextDevice2DPrivate.h |  4 ++--
  Rendering/External/vtkExternalOpenGLRenderWindow.cxx |  2 +-
  Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx          |  8 ++++----
  Rendering/OpenGL2/vtkOpenGLState.cxx                 | 12 ++++++------
- 5 files changed, 13 insertions(+), 13 deletions(-)
+ 5 files changed, 15 insertions(+), 15 deletions(-)
 
 diff --git a/Rendering/ContextOpenGL2/vtkOpenGLContextBufferId.cxx b/Rendering/ContextOpenGL2/vtkOpenGLContextBufferId.cxx
-index c0e0f8909f..dd6a93bde3 100644
+index 9b6c16d4..af9d5a11 100644
 --- a/Rendering/ContextOpenGL2/vtkOpenGLContextBufferId.cxx
 +++ b/Rendering/ContextOpenGL2/vtkOpenGLContextBufferId.cxx
-@@ -130,8 +130,8 @@ vtkIdType vtkOpenGLContextBufferId::GetPickedItem(int x, int y)
+@@ -129,8 +129,8 @@ vtkIdType vtkOpenGLContextBufferId::GetPickedItem(int x, int y)
        // pixel x,y (instead of pixel 0,0 to work around pixel ownership test).
        GLint savedDrawBuffer = GL_BACK_LEFT;
  
@@ -37,7 +37,7 @@ index c0e0f8909f..dd6a93bde3 100644
  
        vtkOpenGLState::ScopedglEnableDisable dsaver(ostate, GL_DEPTH_TEST);
 diff --git a/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2DPrivate.h b/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2DPrivate.h
-index 29e5f47671..7acb87e25f 100644
+index 0bd7332f..6ac52956 100644
 --- a/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2DPrivate.h
 +++ b/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2DPrivate.h
 @@ -306,8 +306,8 @@ public:
@@ -52,10 +52,10 @@ index 29e5f47671..7acb87e25f 100644
        this->SavedDrawBuffer = GL_BACK_LEFT;
  #endif
 diff --git a/Rendering/External/vtkExternalOpenGLRenderWindow.cxx b/Rendering/External/vtkExternalOpenGLRenderWindow.cxx
-index 445bfce802..5e1f2f4b24 100644
+index 265c7338..9ad4640b 100644
 --- a/Rendering/External/vtkExternalOpenGLRenderWindow.cxx
 +++ b/Rendering/External/vtkExternalOpenGLRenderWindow.cxx
-@@ -58,7 +58,7 @@ void vtkExternalOpenGLRenderWindow::Start()
+@@ -47,7 +47,7 @@ void vtkExternalOpenGLRenderWindow::Start()
  
    // For stereo, render the correct eye based on the OpenGL buffer mode
    GLint bufferType;
@@ -65,12 +65,12 @@ index 445bfce802..5e1f2f4b24 100644
    vtkRenderer* renderer;
    for (this->GetRenderers()->InitTraversal(sit);
 diff --git a/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx b/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
-index 25b521bd0d..426aa69f08 100644
+index 394128b0..17d2004c 100644
 --- a/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
 +++ b/Rendering/OpenGL2/vtkOpenGLRenderWindow.cxx
-@@ -794,8 +794,8 @@ bool vtkOpenGLRenderWindow::GetUsingSRGBColorSpace()
-     this->MakeCurrent();
- 
+@@ -896,8 +896,8 @@ bool vtkOpenGLRenderWindow::GetUsingSRGBColorSpace()
+     return this->UseSRGBColorSpace;
+ #else
      GLint attachment = GL_BACK_LEFT;
 -#ifdef GL_DRAW_BUFFER
 -    glGetIntegerv(GL_DRAW_BUFFER, &attachment);
@@ -79,7 +79,7 @@ index 25b521bd0d..426aa69f08 100644
  #endif
      // GL seems odd with its handling of left/right.
      // if it says we are using GL_FRONT or GL_BACK
-@@ -854,8 +854,8 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
+@@ -953,8 +953,8 @@ int vtkOpenGLRenderWindow::GetColorBufferSizes(int* rgba)
    {
      this->MakeCurrent();
      GLint attachment = GL_BACK_LEFT;
@@ -89,12 +89,12 @@ index 25b521bd0d..426aa69f08 100644
 +    glGetIntegerv(GL_DRAW_BUFFER0, &attachment);
  #endif
  #ifdef GL_ES_VERSION_3_0
-     // GLES only has the GL_BACK color
+     // GL seems odd with its handling of left/right.
 diff --git a/Rendering/OpenGL2/vtkOpenGLState.cxx b/Rendering/OpenGL2/vtkOpenGLState.cxx
-index 24f23a5c44..aca4e4f247 100644
+index bdafa26e..ecef68dd 100644
 --- a/Rendering/OpenGL2/vtkOpenGLState.cxx
 +++ b/Rendering/OpenGL2/vtkOpenGLState.cxx
-@@ -217,8 +217,8 @@ void vtkOpenGLState::CheckState()
+@@ -206,8 +206,8 @@ void vtkOpenGLState::CheckState()
      error = true;
    }
    unsigned int sval;
@@ -105,7 +105,7 @@ index 24f23a5c44..aca4e4f247 100644
    sval = cs.DrawBinding.GetDrawBuffer(0);
    if (sval == GL_BACK_LEFT)
    {
-@@ -504,8 +504,8 @@ void vtkOpenGLState::vtkglBindFramebuffer(unsigned int target, unsigned int val)
+@@ -495,8 +495,8 @@ void vtkOpenGLState::vtkglBindFramebuffer(unsigned int target, unsigned int val)
      {
        cs.DrawBinding.Binding = val;
        ::glBindFramebuffer(GL_DRAW_FRAMEBUFFER, val);
@@ -116,7 +116,7 @@ index 24f23a5c44..aca4e4f247 100644
  #endif
      }
    }
-@@ -1626,8 +1626,8 @@ void vtkOpenGLState::ResetFramebufferBindings()
+@@ -1625,8 +1625,8 @@ void vtkOpenGLState::ResetFramebufferBindings()
  {
    auto& cs = this->Stack.top();
    ::glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, (int*)&cs.DrawBinding.Binding);
@@ -128,5 +128,5 @@ index 24f23a5c44..aca4e4f247 100644
  
    ::glGetIntegerv(GL_READ_FRAMEBUFFER_BINDING, (int*)&cs.ReadBinding.Binding);
 -- 
-2.33.1
+2.47.1
 

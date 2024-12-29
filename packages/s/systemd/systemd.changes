@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec 26 11:15:21 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- systemd-update-helper: backport commit 2d0af8bc354f4a1429ce
+
+  Since user@.service has `Type=notify-reload` (making the reloading process
+  synchronous) and reloading implies reexecuting with `ReloadSignal=RTMIN+25`,
+  reexecuting user managers synchronously can be achieved with `systemctl reload
+  user@*.service" now.
+
+-------------------------------------------------------------------
+Thu Dec 26 10:07:33 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v257.1 (commit 47eea9ee9f46537bc18d6a64fa21fd9c50538e13)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v257/NEWS for details.
+
+  - This upgrade includes the following bug fixes:
+
+    - commit 9258e27f4a1ddf2834d0cadd66770ad65e55e066 (boo#1233752, bsc#1234313)
+    - commit 423de11f046cc2c9b6904e4eff71d6a48cd661c9 (boo#1233752, bsc#1234313)
+
+- Drop 5006-tpm2-util-Also-retry-unsealing-after-policy_pcr-retu.patch and
+  5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
+
+  These two patches have bee merged upstream and are included in v257.1, see
+  above.
+
+- Our testsuite sub-package has been broken by upstream after they decided to
+  remove the bash test runner, see https://github.com/systemd/systemd/pull/34271
+  for details. For running the testsuite, the systemd git repository has to be
+  cloned for now. We'll try to adapt the testsuite sub-package these changes.
+
+-------------------------------------------------------------------
 Sun Dec 22 17:31:07 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit f962392e1e0d5683a2adebf09698b5fda02f9cfc (merge of v256.10)

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package vtk
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -39,16 +39,16 @@
 %bcond_with    fmt
 %bcond_with    haru
 %if 0%{?sle_version} <= 150400
-%bcond_without pegtl
+%bcond_without system_pegtl
 %else
-%bcond_with    pegtl
+%bcond_with    system_pegtl
 %endif
 %bcond_with    pugixml
 %else
 %bcond_without fast_float
 %bcond_without fmt
 %bcond_without haru
-%bcond_with    pegtl
+%bcond_with    system_pegtl
 %bcond_without pugixml
 %endif
 
@@ -92,9 +92,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.3.1
+Version:        9.4.0
 Release:        0
-%define series  9.3
+%define series  9.4
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -114,14 +114,16 @@ Patch7:         0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
 Patch8:         0001-Correct-GL_BACK-GL_BACK_LEFT-mapping-on-GLES.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
 Patch9:         0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
-# PATCH-FIX-OPENSUSE -- Fix building with Qt GLES builds
-Patch10:        Do-not-request-CUBE_MAP_SEAMLESS-on-GLES.patch
 # PATCH-FIX-UPSTREAM -- Always create python package metadata (egg-info)
 Patch17:        0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch
 # PATCH-FIX-UPSTREAM -- Copy generated metadata to the right directory
 Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
-# PATCH-FIX-UPSTREAM -- Update fmt includes in ioss thirdparty package
-Patch19:        0001-ioss-update-fmt-includes.patch
+# PATCH-FIX-UPSTREAM
+Patch19:        0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
+# PATCH-FIX-OPENSUSE
+Patch20:        0001-Fix-fmt-includes-again.patch
+# PATCH-FIX-OPENSUSE
+Patch21:        0001-Fix-missing-GLAD-symbol-mangling-in-Rendering-GL2PSO.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
@@ -198,7 +200,7 @@ BuildRequires:  cmake(FastFloat)
 %if %{with pugixml}
 BuildRequires:  pkgconfig(pugixml) >= 1.11
 %endif
-%if %{with pegtl}
+%if %{with system_pegtl}
 BuildRequires:  (pegtl-devel >= 2.0.0 with pegtl-devel < 3.0)
 %endif
 %if %{with testing}
@@ -399,14 +401,9 @@ languages.
 %setup -n VTK-%{version}
 %patch -P 1 -p1
 %if %{with gles}
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
+%autopatch -m 7 -M 10 -p1
 %endif
-%patch -P 17 -p1
-%patch -P 18 -p1
-%patch -P 19 -p1
+%autopatch -m 17 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
@@ -420,6 +417,9 @@ sed -i -e '/set(vtk_enable_tests "OFF")/ s/.*/#\0/' CMakeLists.txt
 
 # Allow other versions for fast_float
 sed -i -e '/VERSION .*/ d' ThirdParty/fast_float/CMakeLists.txt
+
+# Keep LD_LIBRARY_PATH intact from mpivars
+sed -i -e '/LD_LIBRARY_PATH/ s/"$/:$ENV{LD_LIBRARY_PATH}"/' GUISupport/QtQuick/qml/CMakeLists.txt
 
 %build
 %if %{with mpi}
@@ -485,9 +485,11 @@ export CXXFLAGS="%{optflags}"
     -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=%{?with_system_pegtl:YES}%{!?with_system_pegtl:NO} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
     -DVTK_MODULE_ENABLE_VTK_ioss:BOOL=%{!?with_mpi:WANT}%{?with_mpi:NO} \
-    -DVTK_MODULE_ENABLE_VTK_pegtl=%{?with_pegtl:YES}%{!?with_pegtl:NO} \
+    -DVTK_MODULE_ENABLE_VTK_pegtl:BOOL=YES \
     -DVTK_MODULE_ENABLE_VTK_zfp:BOOL=NO \
     %{nil}
 
@@ -611,6 +613,7 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %{my_bindir}/%{pkgname}ParseJava
 %{my_bindir}/%{pkgname}WrapPython
 %{my_bindir}/%{pkgname}WrapPythonInit
+%{my_bindir}/%{pkgname}WrapSerDes
 %{my_libdir}/*.so
 %{my_libdir}/vtk-%{series}
 %{?with_mpi: %dir %{my_libdir}/cmake/}

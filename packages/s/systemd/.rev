@@ -7413,4 +7413,30 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/290170c8550bf2de4b5085ecdf7f056769944444...f962392e1e0d5683a2adebf09698b5fda02f9cfc</comment>
     <requestid>1233116</requestid>
   </revision>
+  <revision rev="436" vrev="1">
+    <srcmd5>c68765cbd470b26a210957f7118c7f69</srcmd5>
+    <version>257.1</version>
+    <time>1735469745</time>
+    <user>anag+factory</user>
+    <comment>- systemd-update-helper: backport commit 2d0af8bc354f4a1429ce
+  Since user@.service has `Type=notify-reload` (making the reloading process
+  synchronous) and reloading implies reexecuting with `ReloadSignal=RTMIN+25`,
+  reexecuting user managers synchronously can be achieved with `systemctl reload
+  user@*.service&quot; now.
+
+- Upgrade to v257.1 (commit 47eea9ee9f46537bc18d6a64fa21fd9c50538e13)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v257/NEWS for details.
+  - This upgrade includes the following bug fixes:
+    - commit 9258e27f4a1ddf2834d0cadd66770ad65e55e066 (boo#1233752, bsc#1234313)
+    - commit 423de11f046cc2c9b6904e4eff71d6a48cd661c9 (boo#1233752, bsc#1234313)
+- Drop 5006-tpm2-util-Also-retry-unsealing-after-policy_pcr-retu.patch and
+  5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
+  These two patches have bee merged upstream and are included in v257.1, see
+  above.
+- Our testsuite sub-package has been broken by upstream after they decided to
+  remove the bash test runner, see https://github.com/systemd/systemd/pull/34271
+  for details. For running the testsuite, the systemd git repository has to be
+  cloned for now. We'll try to adapt the testsuite sub-package these changes.</comment>
+    <requestid>1233450</requestid>
+  </revision>
 </revisionlist>

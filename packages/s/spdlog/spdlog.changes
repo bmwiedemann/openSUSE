@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 27 00:33:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-fix-update-to_string_view-function-for-fmt-11.1-3301.patch
+  to cope with fmt 11.1
+
+-------------------------------------------------------------------
 Thu Nov 21 19:49:23 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
 
 - Updated spdlog to 1.15.0

@@ -1,0 +1,39 @@
+From ecc8a1c8695560df108d6adc00b3d7b1ba15df9f Mon Sep 17 00:00:00 2001
+From: tyler92 <tyler92@inbox.ru>
+Date: Tue, 17 Dec 2024 19:57:54 +0200
+Subject: [PATCH] Fix buffer overflow in MD5Parser::SkipSpacesAndLineEnd
+ (#5921)
+
+Co-authored-by: Kim Kulling <kimkulling@users.noreply.github.com>
+---
+ code/AssetLib/MD5/MD5Parser.cpp | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/code/AssetLib/MD5/MD5Parser.cpp b/code/AssetLib/MD5/MD5Parser.cpp
+index 2de8d5033c..c5f108586e 100644
+--- a/code/AssetLib/MD5/MD5Parser.cpp
++++ b/code/AssetLib/MD5/MD5Parser.cpp
+@@ -115,14 +115,18 @@ void MD5Parser::ParseHeader() {
+         ReportError("MD5 version tag is unknown (10 is expected)");
+     }
+     SkipLine();
+-    if (buffer == bufferEnd) {
+-        return;
+-    }
+ 
+     // print the command line options to the console
+-    // FIX: can break the log length limit, so we need to be careful
+     char *sz = buffer;
+-    while (!IsLineEnd(*buffer++));
++    while (buffer < bufferEnd) {
++        if (IsLineEnd(*buffer++)) {
++            break;
++        }
++    }
++
++    if (buffer == bufferEnd) {
++        return;
++    }
+     
+     ASSIMP_LOG_INFO(std::string(sz, std::min((uintptr_t)MAX_LOG_MESSAGE_LENGTH, (uintptr_t)(buffer - sz))));
+     SkipSpacesAndLineEnd();

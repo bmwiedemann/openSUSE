@@ -31,4 +31,13 @@ Will be a requirement for forthcoming miriway submission</comment>
   * v2.19.1 was burned/skipped</comment>
     <requestid>1232879</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>80f5690c4566b26001fb1818e063e38d</srcmd5>
+    <version>2.19.2</version>
+    <time>1735469764</time>
+    <user>anag+factory</user>
+    <comment>- Added Requires: for libmirserver, without them, you end up with
+  a non-functional Mir after install.</comment>
+    <requestid>1233391</requestid>
+  </revision>
 </revisionlist>

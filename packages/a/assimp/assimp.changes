@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 27 08:05:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Fix-leak-5762.patch
+  * CVE-2024-48423.patch (boo#1232322, CVE-2024-48423)
+  * CVE-2024-48424.patch (boo#1232323, CVE-2024-48424)
+  * CVE-2024-53425.patch (boo#1233633, CVE-2024-53425)
+
+-------------------------------------------------------------------
+Wed Oct 30 09:42:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (boo#1232324, CVE-2024-48425)
+  * 0001-SplitLargeMeshes-Fix-crash-5799.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 07:32:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.4.3

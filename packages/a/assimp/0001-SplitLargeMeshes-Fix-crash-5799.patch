@@ -1,0 +1,29 @@
+From ecdf8d24b85367b22ba353b4f82299d4af7f1f97 Mon Sep 17 00:00:00 2001
+From: Kim Kulling <kimkulling@users.noreply.github.com>
+Date: Mon, 7 Oct 2024 10:30:45 +0200
+Subject: [PATCH] SplitLargeMeshes: Fix crash (#5799)
+
+- Fix nullptr access when rootnode of the scene is a nullptr. This can happen even if the scene stores any kind of meshes. closes https://github.com/assimp/assimp/issues/5791
+---
+ code/PostProcessing/SplitLargeMeshes.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/code/PostProcessing/SplitLargeMeshes.cpp b/code/PostProcessing/SplitLargeMeshes.cpp
+index 3bee28521..cb9727651 100644
+--- a/code/PostProcessing/SplitLargeMeshes.cpp
++++ b/code/PostProcessing/SplitLargeMeshes.cpp
+@@ -100,6 +100,11 @@ void SplitLargeMeshesProcess_Triangle::SetupProperties( const Importer* pImp) {
+ // ------------------------------------------------------------------------------------------------
+ // Update a node after some meshes have been split
+ void SplitLargeMeshesProcess_Triangle::UpdateNode(aiNode* pcNode, const std::vector<std::pair<aiMesh*, unsigned int> >& avList) {
++    if (pcNode == nullptr) {
++        ASSIMP_LOG_WARN("UpdateNode skipped, nullptr detected.");
++        return; 
++    }
++    
+     // for every index in out list build a new entry
+     std::vector<unsigned int> aiEntries;
+     aiEntries.reserve(pcNode->mNumMeshes + 1);
+-- 
+2.47.0
+

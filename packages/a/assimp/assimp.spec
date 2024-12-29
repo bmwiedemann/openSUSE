@@ -22,9 +22,17 @@ Version:        5.4.3
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/assimp/assimp
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-SplitLargeMeshes-Fix-crash-5799.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-leak-5762.patch
+Patch2:         CVE-2024-48423.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         CVE-2024-48424.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         CVE-2024-53425.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -42,7 +50,6 @@ engine-specific format for easy and fast every-day-loading.
 
 %package -n libassimp%{sover}
 Summary:        Library to load and process 3D scenes from various data formats
-Group:          System/Libraries
 
 %description -n libassimp%{sover}
 Assimp is a library to load and process geometric scenes from various data formats.
@@ -53,7 +60,6 @@ engine-specific format for easy and fast every-day-loading.
 
 %package devel
 Summary:        Headers, docs and command-line utility for assimp
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libassimp%{sover} = %{version}
 Requires:       libstdc++-devel

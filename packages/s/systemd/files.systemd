@@ -2,6 +2,7 @@
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
 
+
 %dir %{_binfmtdir}
 %if %{without bootstrap}
 %dir %{_datadir}/bash-completion
@@ -229,6 +230,9 @@
 %{_datadir}/zsh/site-functions/_systemd-tmpfiles
 %{_datadir}/zsh/site-functions/_timedatectl
 %{_datadir}/zsh/site-functions/_varlinkctl
+%endif
+%{_distconfdir}/profile.d/70-systemd-shell-extra.sh
+%if %{without bootstrap}
 %{_journalcatalogdir}/systemd.catalog
 %{_libdir}/libnss_myhostname.so.2
 %{_libdir}/libnss_systemd.so.2

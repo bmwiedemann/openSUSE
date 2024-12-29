@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 25 18:44:49 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added Requires: for libmirserver, without them, you end up with
+  a non-functional Mir after install.
+
+-------------------------------------------------------------------
 Thu Dec 19 21:38:02 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Created libmirserverplatform22 and libmirevdev10 subpackages to

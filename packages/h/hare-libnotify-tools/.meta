@@ -1,0 +1,5 @@
+<package name="hare-libnotify-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:hare" package="hare-libnotify-tools"/>
+</package>

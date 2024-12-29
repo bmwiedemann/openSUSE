@@ -268,4 +268,19 @@
     <comment></comment>
     <requestid>1201736</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>970e38da679a0d1c036517b186a43f12</srcmd5>
+    <version>5.4.3</version>
+    <time>1735469759</time>
+    <user>anag+factory</user>
+    <comment>- Add patches:
+  * 0001-Fix-leak-5762.patch
+  * CVE-2024-48423.patch (boo#1232322, CVE-2024-48423)
+  * CVE-2024-48424.patch (boo#1232323, CVE-2024-48424)
+  * CVE-2024-53425.patch (boo#1233633, CVE-2024-53425)
+
+- Add upstream change (boo#1232324, CVE-2024-48425)
+  * 0001-SplitLargeMeshes-Fix-crash-5799.patch</comment>
+    <requestid>1233500</requestid>
+  </revision>
 </revisionlist>

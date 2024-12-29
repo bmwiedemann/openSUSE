@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 26 20:20:14 UTC 2024 - Petr Vanek <petr@yarpen.cz>
+
+- new Qt keychain dependency to re-enable SQL plugin build
+
+-------------------------------------------------------------------
 Sun Dec  8 09:27:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

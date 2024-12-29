@@ -51,6 +51,7 @@ BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain)
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}

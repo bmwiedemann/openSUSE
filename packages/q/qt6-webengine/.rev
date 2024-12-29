@@ -303,4 +303,13 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228217</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>d439def2b2feb7d5c63de0865faf7462</srcmd5>
+    <version>6.8.1</version>
+    <time>1735469747</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to avoid CVE-2024-40896 (boo#1234820)
+  * 0001-Build-system-remove-libxml2-compilation-test.patch</comment>
+    <requestid>1233456</requestid>
+  </revision>
 </revisionlist>

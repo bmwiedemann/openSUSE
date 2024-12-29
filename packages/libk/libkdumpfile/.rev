@@ -254,4 +254,27 @@
 </comment>
     <requestid>1127551</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d6a69070a46de009303c88ee41b04d10</srcmd5>
+    <version>unknown</version>
+    <time>1735469767</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to libkdumpfile version 0.5.5
+  * Incompatible API changes:
+    - kdump_get_typed_attr(): call signature and type mismatch
+      handling
+    - kdump_attr_ref_get(): result must be discarded
+  * Support flattened ELF dump files.
+  * Support partially rearranged makedumpfile split files.
+  * Parse QEMU CPU state ELF notes.
+  * Use kernel page tables when initializing X86-64 Linux with PTI
+    from CR3 register value.
+  * Include the kdumpid utility.
+  * Fix direct mapping if LDT PTI remapping is used in Linux on
+    X86-64.
+  * Minor cache improvements and a NULL-pointer dereference fix.
+  * Fix test suite for 32-bit architectures.
+</comment>
+    <requestid>1233434</requestid>
+  </revision>
 </revisionlist>

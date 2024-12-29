@@ -587,4 +587,12 @@
     <comment>Update to version 9.3.1.</comment>
     <requestid>1206407</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>24872a94b8145acd3492875568b94b66</srcmd5>
+    <version>9.4.0</version>
+    <time>1735469769</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233274</requestid>
+  </revision>
 </revisionlist>

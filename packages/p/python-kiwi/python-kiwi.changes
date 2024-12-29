@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Dec 19 10:35:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.4 → 10.2.5
+
+-------------------------------------------------------------------
+Mon Dec 16 10:19:37 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Changed systemfiles provider
+
+  Instead of providing a static list of filenames, provide a list
+  of package names. It is expected that the pilot of flake-pilot
+  resolves this list against the local package database to build
+  up the filelist for provisioning
+
+-------------------------------------------------------------------
+Sat Dec 14 20:59:03 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.3 → 10.2.4
+
+-------------------------------------------------------------------
+Wed Dec 11 20:40:19 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update system files setup for containers
+
+  The attribute provide_system_files creates a meta file in the
+  root tree named 'systemfiles'. The contents of this file were
+  produced by just a dump of the package database so far. For
+  a more generic use of this data some adaptions were needed.
+  First we allow to skip packages matching a pattern from being
+  part of the system files. Next we do not put ghost and doc
+  files into account. And last we handle library files in a different
+  file named 'systemfiles.libs' where we do not add symlink targets
+  if the target path is also part of the package. The consumer
+  of this information is flake-pilot which syncs that library system
+  files from the host via --copy-links. This allows a more generic
+  use with regards to versioned libraries e.g. libc
+
+-------------------------------------------------------------------
+Tue Dec 10 19:14:52 CET 2024 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- Drop /dev/pts from bind mount locations
+
+  This has created havoc in the Fedora build environments by
+  fully unmounting /dev/pts and breaking the builders for
+  subsquent tasks.
+
+  This is a partial revert of commit daf1323c5ded7e4e7783205f5e30457b40eb322f.
+
+-------------------------------------------------------------------
+Sun Dec 08 20:35:42 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't take ghost files into account
+
+  When creating the system files information do not
+  take ghost files and artifact files into account
+
+-------------------------------------------------------------------
 Tue Dec 03 14:58:40 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.2 → 10.2.3
@@ -35,6 +92,40 @@ Mon Dec 02 09:48:50 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   /dev/pts was not needed so far but seems to be a good addition
   to the list to make tools like sudo to work properly when called
   e.g. from a config.sh script. This Fixes #2686
+
+-------------------------------------------------------------------
+Fri Nov 29 20:12:38 CET 2024 - Adam Williamson <awilliam@redhat.com>
+
+- xorriso: respect efiparttable and gpt_hybrid_mbr
+
+  This should make the xorriso-based ISO build path respect the
+  'efiparttable' and 'gpt_hybrid_mbr' settings when building a
+  UEFI-compatible image, making it write a GPT disk label by default
+  instead of an MBR (msdos) one. If it's building an image that is not
+  UEFI-compatible it will always write an MBR label, regardless of
+  this setting.
+
+  If 'gpt_hybrid_mbr' is set, xorriso will write an Ubuntu-style
+  MBR/GPT hybrid partition table, where the MBR partition table
+  includes a partition with type 00 and the bootable flag, as well
+  as the partition with type ee required by the UEFI spec. This
+  mildly violates the UEFI spec but may make the image bootable on
+  native BIOS or CSM firmwares which refuse to boot from a disk with
+  no partition marked 'bootable' in the MBR. If 'gpt_hybrid_mbr' is
+  not set, xorriso will write a strictly UEFI-spec compliant label,
+  with just the 'protective MBR' required by the UEFI spec (no
+  bootable partition) and the correct GPT partition table. Note
+  this is somewhat different from what gpt_hybrid_mbr does for
+  disk images.
+
+  Also, we now pass -compliance no_emul_toc when building ISOs, as
+  recommended by upstream in
+  https://lists.gnu.org/archive/html/bug-xorriso/2024-11/msg00012.html
+  This tool is generally always going to be building ISOs intended
+  for write-once use, not multi-session use (and which are rarely,
+  these days, written to physical discs at all anyway).
+
+  Signed-off-by: Adam Williamson <awilliam@redhat.com>
 
 -------------------------------------------------------------------
 Wed Nov 27 15:59:32 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

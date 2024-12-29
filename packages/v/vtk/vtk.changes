@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec 22 03:31:28 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix broken LD_LIBRARY_PATH mangling for openmpi builds
+- Rebase GLES patches:
+  * 0001-Correct-GL_BACK-GL_BACK_LEFT-mapping-on-GLES.patch
+  * 0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
+- Drop obsolete patch:
+  * Do-not-request-CUBE_MAP_SEAMLESS-on-GLES.patch
+
+-------------------------------------------------------------------
+Thu Dec 12 16:28:03 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- - Update to version 9.4.0, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.4.md
+- Drop upstream patches:
+  * 0001-ioss-update-fmt-includes.patch
+- Add patches:
+  * 0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
+  * 0001-Fix-fmt-includes-again.patch
+  * 0001-Fix-missing-GLAD-symbol-mangling-in-Rendering-GL2PSO.patch
+
+-------------------------------------------------------------------
 Fri Jun 29 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
 
 - Update to version 9.3.1, see:

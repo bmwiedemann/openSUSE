@@ -1,7 +1,8 @@
-From 745ab2ac0f5424b0c04d9c38234bb9babcbd90ef Mon Sep 17 00:00:00 2001
+From b090866bc0e9192224acaeeec875ef4c8846b829 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 10 Jun 2016 15:19:57 +0200
-Subject: [PATCH] pid1: handle console specificities/weirdness for s390 arch
+Subject: [PATCH 1/1] pid1: handle console specificities/weirdness for s390
+ arch
 
 The 3270 console on S/390 can do color but not the 3215 console.
 
@@ -29,13 +30,13 @@ whose $subject is "[PATCH] support conmode setting on command line".
  1 file changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/src/basic/terminal-util.c b/src/basic/terminal-util.c
-index 3355b749cc..e96b053217 100644
+index 878c1ec06a..355ecdc45f 100644
 --- a/src/basic/terminal-util.c
 +++ b/src/basic/terminal-util.c
-@@ -784,7 +784,20 @@ bool tty_is_vc_resolve(const char *tty) {
+@@ -923,7 +923,20 @@ bool tty_is_vc_resolve(const char *tty) {
  }
  
- const char *default_term_for_tty(const char *tty) {
+ const char* default_term_for_tty(const char *tty) {
 -        return tty && tty_is_vc_resolve(tty) ? "linux" : "vt220";
 +        if (tty && tty_is_vc_resolve(tty))
 +                return "linux";
@@ -55,5 +56,5 @@ index 3355b749cc..e96b053217 100644
  
  int fd_columns(int fd) {
 -- 
-2.35.3
+2.43.0
 
