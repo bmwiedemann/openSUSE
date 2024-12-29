@@ -318,4 +318,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>version update for ghc-9.10.1</comment>
     <requestid>1231445</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>b3b37cd682a54b648cce038284c65aa4</srcmd5>
+    <version>1.5.0.0</version>
+    <time>1735469784</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233468</requestid>
+  </revision>
 </revisionlist>
