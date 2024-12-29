@@ -186,4 +186,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1220493</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7ab20bc8a3664d538786bb1c696d1595</srcmd5>
+    <version>9.9.3</version>
+    <time>1735469805</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233493</requestid>
+  </revision>
 </revisionlist>
