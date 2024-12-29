@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.com/rastersoft/desktop-icons-ng.git</param>
-    <param name="revision">2fb4d852</param>
+    <param name="revision">b66fc5e83dac8906e7113ae631891332e8298e36</param>
     <param name="filename">ding</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
@@ -13,7 +13,7 @@
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
   <service name="set_version" mode="manual" />
 </services>

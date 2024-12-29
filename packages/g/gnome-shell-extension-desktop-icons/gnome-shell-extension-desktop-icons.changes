@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 23 03:07:53 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update to version 47.0.12+3:
+  * Add support for GNOME 47
+  * Use meson to install the apparmor file
+  * Add apparmor rules for Ubuntu
+  * Updated documentation and fixed bug
+  * update ru.po
+  * Add 'open with' for folders
+  * Fix GFileInfo errors
+  * Update HISTORY.md
+  * Update Turkish translation
+  * Update Ukrainian translation
+  * Fix using arrow keys in rename
+  * Fix error when opening preferences
+  * Update ding.pot
+  * The HISTORY.md file is wrong
+
+-------------------------------------------------------------------
 Tue Mar 19 01:30:39 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Bring gnome-shell-extension-desktop-icons package back

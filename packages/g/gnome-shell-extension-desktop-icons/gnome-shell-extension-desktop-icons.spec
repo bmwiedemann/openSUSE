@@ -17,15 +17,15 @@
 
 
 Name:           gnome-shell-extension-desktop-icons
-Version:        47.0.8+10
+Version:        47.0.12+3
 Release:        0
 Summary:        Desktop icon support for GNOME Shell
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.com/rastersoft/desktop-icons-ng
 # Source url disabled as we are using a git checkout via source service
-#Source:         https://gitlab.com/rastersoft/desktop-icons-ng/uploads/eaa0b5e8e61258bd108897fc2fbd2da2/ding-%{version}.tar.xz
-Source:         ding-%{version}.tar.xz
+#Source:         https://gitlab.com/rastersoft/desktop-icons-ng/uploads/eaa0b5e8e61258bd108897fc2fbd2da2/ding-%{version}.tar.rst
+Source:         ding-%{version}.tar.zst
 
 # Needed for directory ownership
 BuildRequires:  gnome-shell >= 45
@@ -54,5 +54,7 @@ supported.
 %files
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.ding.gschema.xml
 %{_datadir}/gnome-shell/extensions/ding@rastersoft.com/
+%dir %{_sysconfdir}/apparmor.d/
+%config %{_sysconfdir}/apparmor.d/desktop-icons-ng
 
 %changelog
