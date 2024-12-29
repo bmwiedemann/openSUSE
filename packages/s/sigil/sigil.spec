@@ -145,7 +145,7 @@ find . -type f -exec sed -i -e 's|#!\/usr\/bin\/env python3|#!\/usr\/bin\/python
 find . -type f -exec sed -i -e 's|#!\/usr\/bin\/env python|#!\/usr\/bin\/python3|g' {} +
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif

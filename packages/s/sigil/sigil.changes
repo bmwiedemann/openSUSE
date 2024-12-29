@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 26 11:54:38 UTC 2024 - Max Lin <mlin@suse.com>
+
+- Use the same condition of gcc version for CC and CXX flags as same
+  as the BuildRequires defined
+
+-------------------------------------------------------------------
 Sun Nov 17 14:24:42 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add sigil-gt6.8-qchar-778.patch to fix build error under
