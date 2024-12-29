@@ -32,4 +32,17 @@
 </comment>
     <requestid>1229391</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a32e7813cfd380500924213b37ccb03d</srcmd5>
+    <version>1.3.0</version>
+    <time>1735469807</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.0:
+  - Add support for Python 3.13
+  - Turn missing config file into a warning instead of an error
+  - Add support for __pyp_before__ configuration for permanent
+    before code
+</comment>
+    <requestid>1233502</requestid>
+  </revision>
 </revisionlist>
