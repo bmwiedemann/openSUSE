@@ -1,7 +1,7 @@
 --- upplay.pro.orig	2023-12-23 16:19:22.118527266 +0100
 +++ upplay.pro	2023-12-23 16:22:28.482697656 +0100
 @@ -5,23 +5,9 @@
- VERSION = 1.7.8
+ VERSION = 1.8.0
  COPYRDATES = 2011-2024
  
 -greaterThan(QT_MAJOR_VERSION, 5) {

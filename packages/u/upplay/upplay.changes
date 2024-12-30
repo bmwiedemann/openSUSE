@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 27 17:41:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.8.0:
+  * Browser: allow ^C to copy text from the browser area to the clipboard
+  * Browser: display album header before tracks even in albumAsCovers mode
+  * Added per-renderer preference for choosing the best resource or just
+    using the first (check track format against renderer capabilities)
+  * Fix possible crash by ensuring subscriptions are inactivated before we
+    delete objects
+  * Improve openhome source management
+
+-------------------------------------------------------------------
+Fri Dec 20 15:16:05 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.7.9:
+  * Browser: fix deadlock when clicking a link while reading was active
+
+-------------------------------------------------------------------
 Sat Nov 16 09:22:15 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.7.8:

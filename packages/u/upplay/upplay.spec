@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.7.8
+Version:        1.8.0
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(jsoncpp)
