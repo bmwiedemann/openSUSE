@@ -1,0 +1,11 @@
+--- a/src/core/sipe-xml.c
++++ b/src/core/sipe-xml.c
+@@ -154,7 +154,7 @@ static void callback_error(void *user_da
+ 	g_free(errmsg);
+ }
+ 
+-static void callback_serror(void *user_data, xmlErrorPtr error)
++static void callback_serror(void *user_data, const xmlError *error)
+ {
+ 	struct _parser_data *pd = user_data;
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin-sipe
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,14 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://sipe.sourceforge.io/
 Source:         http://downloads.sf.net/sipe/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE 0001-Fix-test-failures-with-appstream-1.0.patch christophe@krop.fr -- Fix test failures with appstream 1.0.
 Patch0:         0001-Fix-test-failures-with-appstream-1.0.patch
+# PATCH-FIX-OPENSUSE pidgin-sipe-fix-pointer-types.patch -- Fix pointer types.
+Patch1:         pidgin-sipe-fix-pointer-types.patch
 BuildRequires:  AppStream
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  pidgin
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(farstream-0.2)
 BuildRequires:  pkgconfig(freerdp-shadow2)
@@ -109,8 +112,8 @@ used by various products:
 
 %package -n telepathy-sipe
 Summary:        MS Skype for Business connection manager for Telepathy
-# telepathy-plugin-sipe was last used in openSUSE Leap 42.2.
 Group:          Productivity/Networking/Instant Messenger
+# telepathy-plugin-sipe was last used in openSUSE Leap 42.2.
 Provides:       telepathy-plugin-sipe = %{version}
 Obsoletes:      telepathy-plugin-sipe < %{version}
 

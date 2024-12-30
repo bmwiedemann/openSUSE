@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 28 18:26:44 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add pidgin-sipe-fix-pointer-types.patch: Fix pointer types.
+- Add pidgin as a build requirement to fix "%requires_ge pidgin".
+
+-------------------------------------------------------------------
 Wed Nov 22 11:36:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch (boo#1217047):
