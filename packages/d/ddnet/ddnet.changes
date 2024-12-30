@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Dec 16 17:22:58 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.8:
+  * [Client] Android support
+  * [Client] Add cl_hook_coll_size_other & +hookcoll button in UI
+  * [Client] Overhaul console design: replace background, improve
+    contrast
+  * [Client] Fix cursor drifting when using smooth dyncam and zoom
+  * [Client] Remove self from spectator menu unless in demo
+  * [Client] Visual changes to friends and server tab
+  * [Client] Auto rcon auth both main and dummy
+  * [Client] Send password on reconnect
+  * [Client] Change default q bind to /spec
+  * [Client] Fix alignment of dropdown popup menu
+  * [Client] Fix player info being resent too fast/slow depending
+    on FPS
+  * [Client] More efficient glyph uploading, fix crash with very
+    large glyphs and font sizes
+  * [Client] Improve map sound/image validation and performance
+  * [Client] Fix incorrect rendering of menu and entities
+    background maps
+  * [Client] Use quad container for race flag in finish
+    infomessages
+  * [Client] Make the client able to have tee's without weapons
+  * [Client] Echo colors persist
+  * [Client] Fix client hanging when rendering text with small
+    maximum width
+  * [Client] Fix damage indicators being stuck after connecting
+    dummy
+  * [Client] Fix gametime debug graph when dummy is connected
+  * [Client] Allow decimal value for demo_speed command
+  * [Client] Allow float zoom levels
+  * [Client] Fix clipboard not being sanitized when pasting
+    multiple lines
+  * [Editor] Replace background texture with noise texture
+  * [Editor] Show size of images in editor images list and
+    file browser
+  * [Editor] Fix Save As confirmation, prevent opening empty
+    filename
+  * [Editor] Fix envelope point popup
+  * [Server] Implement bans_find command
+  * [Server] Fix crashes with whisper command
+  * [Server] Fix incomplete Teehistorian chunks being written
+  * [Server] Add dbg_sql config to hide non-error SQL logs
+  * [Server] Fix jetpack strength always being set to 0
+  * [Server] Allow empty map settings
+  * [Masterserver] Allow 128 players
+  * [Build] Fix FindMySQL not finding mysql under NixOS
+
+-------------------------------------------------------------------
 Tue Nov 19 16:37:14 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.7:
