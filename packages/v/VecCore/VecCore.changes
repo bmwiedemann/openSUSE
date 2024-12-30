@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 28 14:44:08 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.8.2:
+  * Adapt to CMake policy CMP0146, FindCUDA.cmake removed (#25)
+  * Disable std::simd backend when compiling with libc++ since their implementation is incomplete (#27)
+  * Switch to C++17 as baseline C++ standard
+  * Require CMake 3.16 or later, mark up to 3.30 as supported
+  * Add support for Nvidia HPC Toolkit Compiler, GCC 15, and Clang 19
+  * Drop math functions benchark compiled with -ffast-math
+  * Fix memory leak in Julia set benchmark
+  * Update builtin version of Vc to 1.4.5
+  * Update bundled version of GoogleTest to 1.15.2 and Google benchmark to 1.9.0
+  * Update scripts to build/test VecCore with CTest
+  * Fix various compiler warnings from newer compiler versions
+
+-------------------------------------------------------------------
 Thu Apr 25 08:48:55 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pass CMAKE_CXX_STANDARD=14 to cmake to allow building tests

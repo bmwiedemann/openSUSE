@@ -17,7 +17,7 @@
 
 
 Name:           VecCore
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        C++ Library for Portable SIMD Vectorization
 License:        Apache-2.0
