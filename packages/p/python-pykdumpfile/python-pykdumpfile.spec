@@ -19,7 +19,7 @@
 %define skip_python2 1
 
 Name:           python-pykdumpfile
-Version:        0.5.4
+Version:        0.5.5.1
 Release:        0
 Summary:        Python bindings to libkdumpfile
 License:        GPL-2.0-or-later

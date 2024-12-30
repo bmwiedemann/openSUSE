@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 30 08:00:35 UTC 2024 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to 0.5.5.1
+  * Bug-fix release
+  * Drop Fix-use-after-free-in-Buffer-objects.patch
+
+-------------------------------------------------------------------
+Sun Dec 29 18:58:42 UTC 2024 - Petr Tesařík <petr@tesarici.cz>
+
+- Fix-use-after-free-in-Buffer-objects.patch: Fix a potential UAF
+  in addrxlat Buffer objects.
+
+-------------------------------------------------------------------
+Sat Dec 28 21:29:50 UTC 2024 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to 0.5.5
+  * Reflect incompatible changes in kdumpfile-0.5.5.
+  * Add forgotten tests for RISC-V PTE formats.
+
+-------------------------------------------------------------------
 Fri Nov  8 16:42:01 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
 
 - Set minimum python-cffi version to 1.8.

@@ -33,4 +33,20 @@ Version obsolete has been solved with a new upstream release, as long as this SR
 </comment>
     <requestid>1222873</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e0eeb1a2e9e83822c8250ae00c00a27</srcmd5>
+    <version>0.5.5.1</version>
+    <time>1735559534</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.5.1
+  * Bug-fix release
+  * Drop Fix-use-after-free-in-Buffer-objects.patch
+- Fix-use-after-free-in-Buffer-objects.patch: Fix a potential UAF
+  in addrxlat Buffer objects.
+- Update to 0.5.5
+  * Reflect incompatible changes in kdumpfile-0.5.5.
+  * Add forgotten tests for RISC-V PTE formats.
+</comment>
+    <requestid>1233874</requestid>
+  </revision>
 </revisionlist>
