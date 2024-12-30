@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 20:45:05 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 2.16.2
+  * Fix syntax error for function pointer array with @
+
+-------------------------------------------------------------------
 Sun Dec  1 21:03:58 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 2.16.1
