@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec 30 03:27:38 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241230.aae750fc:
+  * Dev: doc: Update crm.8.adoc
+  * Dev: ui_configure: Print all properties if no property is specified
+  * Dev: help: Support '--help' option for cluster properties (jsc#PED-11860)
+
+-------------------------------------------------------------------
+Wed Dec 25 01:04:40 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241225.66a75d1d:
+  * Dev: unittests: Add unit test for previous commit
+  * Dev: report: Support crm report to collect GFS2 information
+  * Dev: behave: Add functional test for GFS2
+  * Dev: bootstrap: add gfs2 stage functionality (Technical Preview) (jsc#PED-11709)
+  * Dev: Rename ocfs2.py as cluster_fs.py
+  * Revert "Dev: ocfs2: Drop support for configuring ocfs2 (jsc#PED-11038)"
+  * Revert "Dev: behave: Adjust functional tests for previous commit"
+  * Revert "Dev: report: Remove unused function dump_D_process"
+
+-------------------------------------------------------------------
+Tue Dec 17 09:43:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241217.562ce848:
+  * Dev: utils: Change `get_dc` function as the behavior of `crmadmin -D` changed
+  * Dev: doc: Add examples for the 'failcount' command
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: ui_resource: Refine 'do_failcount' function
+
+-------------------------------------------------------------------
 Mon Dec 09 11:26:08 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20241209.20981523:
