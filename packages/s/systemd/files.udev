@@ -79,7 +79,6 @@
 %{_mandir}/man5/integritytab.5.gz
 %{_mandir}/man5/iocost.conf.5.gz
 %{_mandir}/man5/modules-load.d.5.gz
-%{_mandir}/man5/org.freedesktop.timesync1.5.gz
 %{_mandir}/man5/pstore.conf.5.gz
 %{_mandir}/man5/pstore.conf.d.5.gz
 %{_mandir}/man5/repart.d.5.gz
@@ -168,7 +167,7 @@
 %endif
 %{_prefix}/lib/udev/ata_id
 %{_prefix}/lib/udev/cdrom_id
-%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips riscv64
+%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
 # dmi_memory_id is only relevant on arches with DMI
 %{_prefix}/lib/udev/dmi_memory_id
 %endif
@@ -293,7 +292,7 @@
 %{_udevrulesdir}/64-btrfs.rules
 %{_udevrulesdir}/70-camera.rules
 %{_udevrulesdir}/70-joystick.rules
-%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips riscv64
+%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
 %{_udevrulesdir}/70-memory.rules
 %endif
 %{_udevrulesdir}/70-mouse.rules

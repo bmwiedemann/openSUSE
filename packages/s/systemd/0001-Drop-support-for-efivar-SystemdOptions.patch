@@ -1,4 +1,4 @@
-From 91fa48c2d1aac250728379a0c0430f9f7a3c8351 Mon Sep 17 00:00:00 2001
+From 72d766c5a17fc31902b367e949c4d90193f823b9 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 22 Mar 2024 12:07:34 +0100
 Subject: [PATCH 1/1] Drop support for efivar SystemdOptions
@@ -11,15 +11,15 @@ disabled.
 
 [fbui: fixes bsc#1220338]
 ---
- src/basic/efivars.c                       | 27 +++++------------------
- src/bootctl/bootctl-systemd-efi-options.c |  4 ++++
+ src/basic/efivars.c                    | 27 ++++++--------------------
+ src/boot/bootctl-systemd-efi-options.c |  4 ++++
  2 files changed, 10 insertions(+), 21 deletions(-)
 
 diff --git a/src/basic/efivars.c b/src/basic/efivars.c
-index 5e04c32212..78bdd28263 100644
+index 9011ae29a3..01ab7e5092 100644
 --- a/src/basic/efivars.c
 +++ b/src/basic/efivars.c
-@@ -368,29 +368,14 @@ SecureBootMode efi_get_secure_boot_mode(void) {
+@@ -351,29 +351,14 @@ SecureBootMode efi_get_secure_boot_mode(void) {
  }
  
  static int read_efi_options_variable(char **ret) {
@@ -36,7 +36,7 @@ index 5e04c32212..78bdd28263 100644
 -                /* Let's be helpful with the returned error and check if the variable exists at all. If it
 -                 * does, let's return a recognizable error (EPERM), and if not ENODATA. */
 -
--                if (access(EFIVAR_PATH(EFI_SYSTEMD_VARIABLE_STR("SystemdOptions")), F_OK) < 0)
+-                if (access(EFIVAR_PATH(EFI_SYSTEMD_VARIABLE(SystemdOptions)), F_OK) < 0)
 -                        return errno == ENOENT ? -ENODATA : -errno;
 -
 -                return -EPERM;
@@ -44,21 +44,21 @@ index 5e04c32212..78bdd28263 100644
 +        /* For SUSE distros, support for SystemdOptions has already been dropped as it might be a security
 +         * concern for systems with unattended disk unlock and with disabled secure boot. */
  
--        r = efi_get_variable_string(EFI_SYSTEMD_VARIABLE_STR("SystemdOptions"), ret);
+-        r = efi_get_variable_string(EFI_SYSTEMD_VARIABLE(SystemdOptions), ret);
 -        if (r == -ENOENT)
 -                return -ENODATA;
 -        return r;
-+        if (access(EFIVAR_PATH(EFI_SYSTEMD_VARIABLE_STR("SystemdOptions")), F_OK) < 0)
++        if (access(EFIVAR_PATH(EFI_SYSTEMD_VARIABLE(SystemdOptions)), F_OK) < 0)
 +                return errno == ENOENT ? -ENODATA : -errno;
 +
 +        return log_warning_errno(SYNTHETIC_ERRNO(EPERM), "Boot options passed via SystemdOptions EFI variable is no more supported, ignoring: %m");
  }
  
  int cache_efi_options_variable(void) {
-diff --git a/src/bootctl/bootctl-systemd-efi-options.c b/src/bootctl/bootctl-systemd-efi-options.c
-index d626d87abc..32b79bd1e1 100644
---- a/src/bootctl/bootctl-systemd-efi-options.c
-+++ b/src/bootctl/bootctl-systemd-efi-options.c
+diff --git a/src/boot/bootctl-systemd-efi-options.c b/src/boot/bootctl-systemd-efi-options.c
+index 7f8308fc3d..216b99546f 100644
+--- a/src/boot/bootctl-systemd-efi-options.c
++++ b/src/boot/bootctl-systemd-efi-options.c
 @@ -6,6 +6,7 @@
  #include "efi-loader.h"
  
@@ -76,5 +76,5 @@ index d626d87abc..32b79bd1e1 100644
 +#endif
  }
 -- 
-2.43.0
+2.35.3
 

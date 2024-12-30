@@ -7439,4 +7439,11 @@ handle manual pages that consist only of a .so directive such as
   cloned for now. We'll try to adapt the testsuite sub-package these changes.</comment>
     <requestid>1233450</requestid>
   </revision>
+  <revision rev="437" vrev="2">
+    <srcmd5>fe1eade5a5534e24a0a861cea5d30e9c</srcmd5>
+    <version>256.10</version>
+    <time>1735557795</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1234904</comment>
+  </revision>
 </revisionlist>

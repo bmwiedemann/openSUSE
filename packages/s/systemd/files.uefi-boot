@@ -23,7 +23,6 @@
 %{_systemd_util_dir}/boot/efi/systemd-boot*.efi
 %{_systemd_util_dir}/systemd-bless-boot
 %{_systemdgeneratordir}/systemd-bless-boot-generator
-%{_tmpfilesdir}/20-systemd-stub.conf
 %{_unitdir}/sysinit.target.wants/systemd-boot-random-seed.service
 %{_unitdir}/systemd-bless-boot.service
 %{_unitdir}/systemd-boot-random-seed.service

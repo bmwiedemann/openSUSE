@@ -1,5 +1,4 @@
-From 88d0e79a7e4de9df6460ed4af694f15caedc3014 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
+From: Michal Koutný <mkoutny@suse.com>
 Date: Wed, 24 Jul 2024 14:20:17 +0200
 Subject: Disable session freeze
 
@@ -10,55 +9,22 @@ task upon suspend) since the benefit of user.slice freezing does not outweight
 the breakage caused by cgroup freezing implementation.
 
 [1] https://github.com/systemd/systemd/issues/33083
-
-[fbui: rebased on top of v257]
 ---
- src/home/homework.c | 7 ++++---
- src/sleep/sleep.c   | 8 +++++---
+ src/home/homework.c |    7 ++++---
+ src/sleep/sleep.c   |    8 +++++---
  2 files changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/src/home/homework.c b/src/home/homework.c
-index 00e74894b3..d1de98e7b6 100644
---- a/src/home/homework.c
-+++ b/src/home/homework.c
-@@ -1880,7 +1880,7 @@ static int user_session_freezer_new(uid_t uid, UnitFreezer **ret) {
-         r = getenv_bool("SYSTEMD_HOME_LOCK_FREEZE_SESSION");
-         if (r < 0 && r != -ENXIO)
-                 log_warning_errno(r, "Cannot parse value of $SYSTEMD_HOME_LOCK_FREEZE_SESSION, ignoring: %m");
--        else if (r == 0) {
-+        else if (r == 0 || r == -ENXIO) { /* Do not freeze by default unless requested */
-                 *ret = NULL;
-                 return 0;
-         }
-@@ -1922,8 +1922,9 @@ static int home_lock(UserRecord *h) {
-                 if (r < 0)
-                         return r;
-         } else
--                log_notice("Session remains unfrozen on explicit request ($SYSTEMD_HOME_LOCK_FREEZE_SESSION=0).\n"
--                           "This is not recommended, and might result in unexpected behavior including data loss!");
-+                log_notice("Session remains unfrozen (add $SYSTEMD_HOME_LOCK_FREEZE_SESSION=1 to override).\n"
-+                           "This is a temporary downstream workaround for https://github.com/systemd/systemd/issues/33083.\n"
-+                           "Home locking is thus experimental and might result in unexpected behavior including data loss!");
- 
-         r = home_lock_luks(h, &setup);
-         if (r < 0) {
-diff --git a/src/sleep/sleep.c b/src/sleep/sleep.c
-index 181bb4ccef..0181bcabc9 100644
 --- a/src/sleep/sleep.c
 +++ b/src/sleep/sleep.c
-@@ -612,6 +612,8 @@ static int run(int argc, char *argv[]) {
+@@ -603,12 +603,14 @@ static int run(int argc, char *argv[]) {
          r = getenv_bool("SYSTEMD_SLEEP_FREEZE_USER_SESSIONS");
          if (r < 0 && r != -ENXIO)
-                 log_warning_errno(r, "Cannot parse value of $SYSTEMD_SLEEP_FREEZE_USER_SESSIONS, ignoring: %m");
+                 log_warning_errno(r, "Cannot parse value of $SYSTEMD_SLEEP_FREEZE_USER_SESSIONS, ignoring.");
 +        if (r == -ENXIO)
 +                r = 0; /* Do not freeze by default unless requested */
-         if (r != 0) {
-                 r = unit_freezer_new(SPECIAL_USER_SLICE, &user_slice_freezer);
-                 if (r < 0)
-@@ -619,9 +621,9 @@ static int run(int argc, char *argv[]) {
- 
-                 (void) unit_freezer_freeze(user_slice_freezer);
-         } else
+         if (r != 0)
+                 (void) unit_freezer_new_freeze(SPECIAL_USER_SLICE, &user_slice_freezer);
+         else
 -                log_notice("User sessions remain unfrozen on explicit request ($SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=0).\n"
 -                           "This is not recommended, and might result in unexpected behavior, particularly\n"
 -                           "in suspend-then-hibernate operations or setups with encrypted home directories.");
@@ -68,6 +34,20 @@ index 181bb4ccef..0181bcabc9 100644
  
          switch (arg_operation) {
  
--- 
-2.43.0
-
+--- a/src/home/homework.c
++++ b/src/home/homework.c
+@@ -1879,10 +1879,11 @@ static int user_session_freezer(uid_t ui
+         r = getenv_bool("SYSTEMD_HOME_LOCK_FREEZE_SESSION");
+         if (r < 0 && r != -ENXIO)
+                 log_warning_errno(r, "Cannot parse value of $SYSTEMD_HOME_LOCK_FREEZE_SESSION, ignoring: %m");
+-        else if (r == 0) {
++        else if (r == 0 || r == -ENXIO) { /* Do not freeze by default unless requested */
+                 if (freeze_now)
+-                        log_notice("Session remains unfrozen on explicit request ($SYSTEMD_HOME_LOCK_FREEZE_SESSION=0).\n"
+-                                   "This is not recommended, and might result in unexpected behavior including data loss!");
++                        log_notice("Session remains unfrozen (add $SYSTEMD_HOME_LOCK_FREEZE_SESSION=1 to override).\n"
++                                   "This is a temporary downstream workaround for https://github.com/systemd/systemd/issues/33083.\n"
++                                   "Home locking is thus experimental and might result in unexpected behavior including data loss!");
+ 
+                 *ret = NULL;
+                 return 0;

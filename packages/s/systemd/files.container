@@ -5,7 +5,9 @@
 %{_bindir}/systemd-nspawn
 %if %{without bootstrap}
 %{_datadir}/bash-completion/completions/systemd-nspawn
+%endif
 %{_datadir}/polkit-1/actions/io.systemd.mount-file-system.policy
+%if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_systemd-nspawn
 %{_mandir}/man1/systemd-nspawn.1.gz
 %{_mandir}/man5/systemd.nspawn.5.gz
@@ -79,16 +81,12 @@
 %{_mandir}/man5/org.freedesktop.import1.5.gz
 %{_mandir}/man8/systemd-importd.8.gz
 %{_mandir}/man8/systemd-importd.service.8.gz
-%{_mandir}/man8/systemd-import-generator.8.gz
 %{_systemd_util_dir}/import-pubring.gpg
 %{_systemd_util_dir}/systemd-export
 %{_systemd_util_dir}/systemd-import
 %{_systemd_util_dir}/systemd-import-fs
 %{_systemd_util_dir}/systemd-importd
 %{_systemd_util_dir}/systemd-pull
-%{_systemdgeneratordir}/systemd-import-generator
 %{_unitdir}/dbus-org.freedesktop.import1.service
-%{_unitdir}/sockets.target.wants/systemd-importd.socket
 %{_unitdir}/systemd-importd.service
-%{_unitdir}/systemd-importd.socket
 %endif

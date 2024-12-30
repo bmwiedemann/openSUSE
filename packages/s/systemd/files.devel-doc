@@ -120,9 +120,7 @@
 %{_mandir}/man3/sd-hwdb.3.gz
 %{_mandir}/man3/sd-id128.3.gz
 %{_mandir}/man3/sd-journal.3.gz
-%{_mandir}/man3/sd-json.3.gz
 %{_mandir}/man3/sd-login.3.gz
-%{_mandir}/man3/sd-varlink.3.gz
 %{_mandir}/man3/sd_booted.3.gz
 %{_mandir}/man3/sd_bus_add_fallback.3.gz
 %{_mandir}/man3/sd_bus_add_fallback_vtable.3.gz
@@ -359,7 +357,6 @@
 %{_mandir}/man3/sd_bus_path_decode_many.3.gz
 %{_mandir}/man3/sd_bus_path_encode.3.gz
 %{_mandir}/man3/sd_bus_path_encode_many.3.gz
-%{_mandir}/man3/sd_bus_pending_method_calls.3.gz
 %{_mandir}/man3/sd_bus_process.3.gz
 %{_mandir}/man3/sd_bus_query_sender_creds.3.gz
 %{_mandir}/man3/sd_bus_query_sender_privilege.3.gz
@@ -437,14 +434,12 @@
 %{_mandir}/man3/sd_bus_unref.3.gz
 %{_mandir}/man3/sd_bus_unrefp.3.gz
 %{_mandir}/man3/sd_bus_wait.3.gz
-%{_mandir}/man3/sd_device_get_device_id.3.gz
 %{_mandir}/man3/sd_device_get_devname.3.gz
 %{_mandir}/man3/sd_device_get_devnum.3.gz
 %{_mandir}/man3/sd_device_get_devpath.3.gz
 %{_mandir}/man3/sd_device_get_devtype.3.gz
 %{_mandir}/man3/sd_device_get_diskseq.3.gz
 %{_mandir}/man3/sd_device_get_driver.3.gz
-%{_mandir}/man3/sd_device_get_driver_subsystem.3.gz
 %{_mandir}/man3/sd_device_get_ifindex.3.gz
 %{_mandir}/man3/sd_device_get_subsystem.3.gz
 %{_mandir}/man3/sd_device_get_sysname.3.gz
