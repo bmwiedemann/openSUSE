@@ -16,10 +16,9 @@
 #
 
 
-%define         system_dir %{_prefix}/lib/%{name}/
-%define         profile_dir %{system_dir}profiles/
+%define         profile_dir %{_prefix}/lib/%{name}
 Name:           tuned
-Version:        2.24.1.0+git.90c24ee
+Version:        2.22.1.2+git.86ac977
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -34,11 +33,9 @@ BuildRequires:  bash-completion
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  python3-dbus-python
-# needed by check section
-BuildRequires:  python3-pyudev
 BuildRequires:  pkgconfig(systemd)
 # need perf_bias now
+Requires:       cpupower >= 4.19
 Requires:       ethtool
 Requires:       gawk
 Requires:       hdparm
@@ -46,13 +43,11 @@ Requires:       polkit
 Requires:       python3-configobj
 Requires:       python3-dbus-python
 Requires:       python3-decorator
+Requires:       python3-gobject
 Requires:       python3-linux-procfs
 Requires:       python3-pyudev
 Requires:       util-linux
 Requires:       virt-what
-Conflicts:      laptop-mode-tools
-Conflicts:      power-profiles-daemon
-Conflicts:      tlp
 BuildArch:      noarch
 %{?systemd_requires}
 
@@ -91,7 +86,6 @@ Summary:        Disk and net statistic monitoring systemtap scripts - GTK GUI
 Group:          System/Base
 Requires:       %{name} = %{version}
 Requires:       powertop
-Requires:       python3-gobject
 
 %description gtk
 GTK GUI that can control tuned and provide simple profile editor.
@@ -172,30 +166,18 @@ Requires:       %{name} = %{version}
 %description profiles-spectrumscale
 Additional tuned profile(s) optimized for IBM Spectrum Scale.
 
-%package ppd
-Summary:        PPD compatibility daemon
-Requires:       %{name} = %{version}
-Conflicts:      ppd-service
-# The compatibility daemon is swappable for power-profiles-daemon
-Provides:       ppd-service
-
-%description ppd
-An API translation daemon that allows applications to easily transition
-to TuneD from power-profiles-daemon (PPD).
-
 %prep
 %autosetup -p1
 
 %build
 # The tuned daemon is written in pure Python. Nothing requires to be built.
 # Just a hack to avoid installation in a wrong directory
-sed -i 's|usr/libexec/tuned|%{system_dir}|' Makefile
+sed -i 's|usr/libexec/tuned|%{profile_dir}|' Makefile
 sed -i 's|$(SYSCONFDIR)/modprobe.d|%{_modprobedir}|' Makefile
 sed -i 's|$(SYSCONFDIR)/dbus-1/system.d|%{_datadir}/dbus-1/system.d|' Makefile
 
 %install
-%make_install TUNED_PROFILES_DIR=%{profile_dir}
-make install-ppd DESTDIR=%{buildroot} TUNED_PROFILES_DIR=%{profile_dir}
+%make_install TUNED_PROFILESDIR=%{profile_dir}
 # we do not have the python perf module (see bsc #1217758)
 rm %{buildroot}/%{python3_sitelib}/tuned/plugins/plugin_{scheduler,irqbalance}.py
 %py3_compile %{buildroot}/%{python3_sitelib}
@@ -206,37 +188,21 @@ rm %{buildroot}%{_mandir}/man7/tuned-profiles-compat.7
 ln -sf service %{buildroot}%{_sbindir}/rctuned
 
 %if 0%{?sle_version} && %{?suse_version} < 1599
-rm -r %{buildroot}%{profile_dir}/sap-netweaver
-rm -r %{buildroot}%{profile_dir}/sap-hana
+rm -r %{buildroot}%{_prefix}/lib/tuned/sap-netweaver
+rm -r %{buildroot}%{_prefix}/lib/tuned/sap-hana
 rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap.7
 rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap-hana.7
 %endif
 
-%check
-make test PYTHON=python3
-
 %post
-%tmpfiles_create %{name}.conf
-%systemd_post %{name}.service
-
-# migrate all user-defined profiles from /etc/tuned/ to /etc/tuned/profiles/
-for f in %{_sysconfdir}/tuned/*; do
-  if [ -e "$f/tuned.conf" ]; then
-    mv -n "$f" %{_sysconfdir}/tuned/profiles/
-  fi
-done
-
-%post ppd
-%systemd_post %{name}-ppd.service
+%service_add_post %{name}.service
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %pre
-%systemd_pre %{name}.service
+%service_add_pre %{name}.service
 # Avoid restoring outdated stuff in posttrans
 [ ! -f "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave" ] || \
   mv -f "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave" "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave.old" || :
-
-%pre ppd
-%systemd_pre %{name}-ppd.service
 
 %posttrans
 # Migration of modprobe.conf files to _modprobedir
@@ -246,14 +212,8 @@ done
 %preun
 %service_del_preun %{name}.service
 
-%preun ppd
-%service_del_preun %{name}-ppd.service
-
 %postun
 %service_del_postun %{name}.service
-
-%postun ppd
-%service_del_postun %{name}-ppd.service
 
 %files
 %license COPYING
@@ -264,30 +224,28 @@ done
 %{_sbindir}/tuned
 %{_sbindir}/tuned-adm
 %{_sbindir}/rctuned
-%dir %{system_dir}
-%dir %{system_dir}/recommend.d
+%dir %{profile_dir}
+%dir %{profile_dir}/recommend.d
 %exclude %{python3_sitelib}/tuned/gtk
 
 # General files
-%{system_dir}/pmqos-static.py
-%{system_dir}/functions
-%{system_dir}/recommend.d/50-tuned.conf
-%{system_dir}/defirqaffinity.py
+%{profile_dir}/pmqos-static.py
+%{profile_dir}/functions
+%{profile_dir}/recommend.d/50-tuned.conf
+%{profile_dir}/defirqaffinity.py
 
 %if 0%{?sle_version} && %{?suse_version} < 1599
-%exclude %{profile_dir}/sap-netweaver
-%exclude %{profile_dir}/sap-hana
-%exclude %{profile_dir}/sap-hana-kvm-guest
+%exclude %{_prefix}/lib/tuned/sap-netweaver
+%exclude %{_prefix}/lib/tuned/sap-hana
+%exclude %{_prefix}/lib/tuned/sap-hana-kvm-guest
 %exclude %{_mandir}/man7/tuned-profiles-sap.7%{?ext_man}
 %exclude %{_mandir}/man7/tuned-profiles-sap-hana.7%{?ext_man}
 %endif
 
 # Profiles included in main package - alphabetically sorted
-%dir %{profile_dir}
 %{profile_dir}/accelerator-performance
 %{profile_dir}/aws
 %{profile_dir}/balanced
-%{profile_dir}/balanced-battery
 %{profile_dir}/cpu-partitioning
 %{profile_dir}/cpu-partitioning-powersave
 %{profile_dir}/desktop
@@ -310,11 +268,10 @@ done
 %config(noreplace) %{_sysconfdir}/tuned/cpu-partitioning-powersave-variables.conf
 %config(noreplace) %{_sysconfdir}/tuned/tuned-main.conf
 %config(noreplace) %{_sysconfdir}/tuned/profile_mode
-%config(noreplace) %{_sysconfdir}/tuned/profiles
 %config(noreplace) %{_sysconfdir}/tuned/post_loaded_profile
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/bootcmdline
-%config %{_sysconfdir}/grub.d
-%{_tmpfilesdir}/%{name}.conf
+%{_sysconfdir}/grub.d
+%{_tmpfilesdir}/tuned.conf
 %{_unitdir}/tuned.service
 %{_modprobedir}/tuned.conf
 %{_datadir}/dbus-1/system.d/com.redhat.tuned.conf
@@ -375,12 +332,12 @@ done
 
 %files profiles-postgresql
 %defattr(-,root,root,-)
-%{profile_dir}/postgresql
+%{_prefix}/lib/tuned/postgresql
 %{_mandir}/man7/tuned-profiles-postgresql.7*
 
 %files profiles-spectrumscale
 %defattr(-,root,root,-)
-%{profile_dir}/spectrumscale-ece
+%{_prefix}/lib/tuned/spectrumscale-ece
 %{_mandir}/man7/tuned-profiles-spectrumscale-ece.7*
 
 %files profiles-openshift
@@ -405,13 +362,5 @@ done
 %{_mandir}/man8/netdevstat.*
 %{_mandir}/man8/diskdevstat.*
 %{_mandir}/man8/scomes.*
-
-%files ppd
-%{_sbindir}/tuned-ppd
-%{_unitdir}/tuned-ppd.service
-%{_datadir}/dbus-1/system-services/net.hadess.PowerProfiles.service
-%{_datadir}/dbus-1/system.d/net.hadess.PowerProfiles.conf
-%{_datadir}/polkit-1/actions/net.hadess.PowerProfiles.policy
-%config(noreplace) %{_sysconfdir}/tuned/ppd.conf
 
 %changelog

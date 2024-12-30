@@ -360,4 +360,11 @@ A tuned_differ_x86_and_other_archs_in_cpu_plugin.patch
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1233846</requestid>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>d61b91f896a72facea2086c2d58f1dfe</srcmd5>
+    <version>2.22.1.2+git.86ac977</version>
+    <time>1735585384</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1234938 and https://bugzilla.opensuse.org/show_bug.cgi?id=1234754</comment>
+  </revision>
 </revisionlist>
