@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Dec 27 19:49:55 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version  89.0
+  New features and enhancements:
+  * mkvmerge: AC-3 writer: mkvmerge will now use the codec ID
+   `A_AC3` even for streams with bitstream IDs 9 or 10 instead
+    of the deprecated codec IDs `A_AC3/BSID9` & `A_AC3/BSID10`.
+  * MKVToolNix GUI: multiplexer: the mechanism for setting track
+    languages to specific values upon adding a file has gotten a
+    new option to always set the language, no matter whether or
+    not the source container provided a track language or what it
+    was set to.
+  * all command-line tools: implemented an escape mechanism for
+    when you want to use the `@` sign as the first character in
+    an argument to an option such as `--title`. To escape it
+    the `@` sign has to be doubled as in `--title @@midnight`.
+  Bug fixes:
+  * mkvmerge, mkvpropedit, MKVToolNix GUI's multiplexer & header
+    editor: the MIME type for TrueType & OpenType fonts will be
+    set properly to either the current MIME types `font/ttf` &
+    `font/otf` or to the legacy MIME types
+    `application/x-truetype-font` & `application/vnd.ms-opentype`
+    depending on whether the "use legacy font MIME types" option
+    is disabled or enabled, even if the MIME database used by Qt
+    returns the wrong one or even other MIME types such as
+    `application/x-font-ttf` & `application/x-font-otf`.
+  * MKVToolNix GUI's multiplexer & header editor: ensured that
+    both the legacy & the current font MIME types are always
+    present in the MIME type combo boxes of attachments, no
+    matter what Qt's MIME type database contains.
+  * MKVToolNix GUI: the "disable tooltips" option in the
+    preference will now disable the tooltip for the status bar,
+    too.
+
+-------------------------------------------------------------------
 Thu Nov 14 09:07:53 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 88.0
