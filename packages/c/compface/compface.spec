@@ -1,7 +1,7 @@
 #
 # spec file for package compface
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,13 @@ Release:        0
 Summary:        Library and tools for handling X-Face data
 License:        MIT
 Group:          Productivity/Graphics/Convertors
-Url:            http://www.xemacs.org/Download/optLibs.html
+URL:            http://www.xemacs.org/Download/optLibs.html
 Source:         http://ftp.xemacs.org/pub/xemacs/aux/compface-%{version}.tar.gz
 Source1:        xbm2face
 Source2:        compface-test.xbm
-Patch0:         http://ftp.debian.org/debian/pool/main/libc/libcompface/libcompface_1.5.2-5.diff.gz
-Patch1:         compface-1.5.2.diff
-Patch2:         compface-1.5.2-destdir.diff
+Patch0:         config.patch
+Patch1:         debian.patch
+Patch2:         Makefile.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -54,8 +54,8 @@ library.
 %prep
 %setup -q
 %patch -P 0 -p1
-%patch -P 1
-%patch -P 2
+%patch -P 1 -p1
+%patch -P 2 -p1
 
 # do not strip
 sed -i "/strip/d" Makefile.in

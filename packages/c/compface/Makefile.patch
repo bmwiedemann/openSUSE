@@ -2,8 +2,8 @@ o Build shared library, link tools against it
 o Make it possible to prevent stripping
 o Add DESTDIR support
 
---- Makefile.in~	2005-10-04 15:59:49.000000000 +0300
-+++ Makefile.in	2006-08-02 22:23:07.000000000 +0300
+--- compface-1.5.2/Makefile.in.orig	2024-12-27 14:50:46.540723529 +0100
++++ compface-1.5.2/Makefile.in	2024-12-27 15:47:57.403241428 +0100
 @@ -15,6 +15,7 @@
  INSTALL_PROGRAM = @INSTALL_PROGRAM@
  INSTALL_DATA    = @INSTALL_DATA@
@@ -12,14 +12,14 @@ o Add DESTDIR support
  
  NAME		= compface
  UNNAME		= uncompface
-@@ -25,6 +26,7 @@
+@@ -24,6 +25,7 @@
+ EXECUTABLE	= $(BINDIR)/$(NAMEEXE)
  UNEXECUTABLE	= $(BINDIR)/$(UNNAMEEXE)
  LIBNAME		= lib$(NAME).a
- LIBRARY		= $(LIBDIR)/$(LIBNAME)
 +SHLIBNAME	= lib$(NAME).so
+ LIBRARY		= $(LIBDIR)/$(LIBNAME)
  MAN1DIR		= $(MANDIR)/man1
  MAN3DIR		= $(MANDIR)/man3
- OBJECTS		= arith.o file.o compress.o gen.o uncompface.o
 @@ -45,11 +47,11 @@
  
  all:		$(NAMEEXE) $(UNNAMEEXE)
@@ -36,11 +36,10 @@ o Add DESTDIR support
  
  $(LIBNAME) :	$(OBJECTS)
  		ar rc $(LIBNAME) $(OBJECTS)
-@@ -73,25 +75,28 @@
- 		tar chzf `cat .fname`.tar.gz `cat .fname`
+@@ -74,24 +76,27 @@
  		$(RM) -rf `cat .fname` .fname
  
--install: 	$(NAMEEXE) $(UNNAMEEXE) $(LIBNAME)
+ install: 	$(NAMEEXE) $(UNNAMEEXE) $(LIBNAME)
 -		$(INSTALL_PROGRAM) -d $(BINDIR) $(LIBDIR) $(MAN1DIR) $(MAN3DIR) $(INCLUDEDIR)
 -		$(INSTALL_PROGRAM) $(srcdir)/$(NAMEEXE) $(EXECUTABLE) 
 -		-chmod 0755 $(EXECUTABLE)
@@ -54,9 +53,8 @@ o Add DESTDIR support
 -		cd $(MAN3DIR) && $(RM) ./$(UNNAME).3 && $(LN_S) $(NAME).3 $(UNNAME).3
 -		for hdr in $(INSTALLHEADERS); do $(INSTALL_DATA) $(srcdir)/$${hdr} $(INCLUDEDIR)/$${hdr}; done
 -		$(INSTALL_DATA) $(srcdir)/$(LIBNAME) $(LIBRARY)
-+install: 	$(NAMEEXE) $(UNNAMEEXE) $(SHLIBNAME)
 +		$(INSTALL_PROGRAM) -d $(DESTDIR)$(BINDIR) $(DESTDIR)$(LIBDIR) $(DESTDIR)$(MAN1DIR) $(DESTDIR)$(MAN3DIR) $(DESTDIR)$(INCLUDEDIR)
-+		$(INSTALL_PROGRAM) $(srcdir)/$(NAMEEXE) $(DESTDIR)$(EXECUTABLE) 
++		$(INSTALL_PROGRAM) $(srcdir)/$(NAMEEXE) $(DESTDIR)$(EXECUTABLE)
 +		-$(STRIP) $(DESTDIR)$(EXECUTABLE)
 +		$(INSTALL_PROGRAM) $(srcdir)/$(UNNAMEEXE) $(DESTDIR)$(UNEXECUTABLE)
 +		-$(STRIP) $(DESTDIR)$(UNEXECUTABLE)
@@ -74,7 +72,7 @@ o Add DESTDIR support
  		compress $(NAME).sh
  
 +$(SHLIBNAME): $(OBJECTS)
-+	$(CC) -shared -Wl,-soname,$(SHLIBNAME).1 $(LDFLAGS) -o $(SHLIBNAME) $(OBJECTS)
++		$(CC) -shared -Wl,-soname,$(SHLIBNAME).1 $(LDFLAGS) -o $(SHLIBNAME) $(OBJECTS)
 +
  .c.o:
  	$(CC) -c $(CPPFLAGS) $(DEFS) $(CFLAGS) $<

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 27 11:23:56 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to use Debian patches directly, add debian.patch
+- Rename compface-1.5.2-destdir.diff to Makefile.patch
+- Fix build with GCC 14, add patch config.patch and remove
+  compface-1.5.2.diff
+
+-------------------------------------------------------------------
 Mon Feb 26 10:49:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

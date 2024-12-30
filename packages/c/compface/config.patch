@@ -1,0 +1,12 @@
+diff --git a/config.h b/config.h
+index 57fce54..633c79b 100644
+--- a/config.h
++++ b/config.h
+@@ -1,6 +1,7 @@
+ #ifdef	STDC_HEADERS
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #else	/* Not STDC_HEADERS */
+ #ifdef HAVE_STRINGS_H
+ #include <strings.h>
