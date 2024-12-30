@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Dec 28 19:04:53 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0
+  New features:
+  * Decode 'broadcaster use' data in Slow labeling codes
+    (variant 6).
+  * Decode 'decoder identification' bits in Group 15B.
+  * Workaround buggy encoders that show 1 extra character in
+    RT+ fields.
+  Bug fixes:
+  * Fix a crash when the input file has a very high sample rate.
+  * Fix a crash from uncaught iconv exceptions from corrupted
+    utf8/ucs2 data.
+  * Fix the CSVReader (used in the TMC decoder) ignoring the last
+    line of any file.
+  * Remove extra trailing space in transparent data channels
+    hexdump.
+  * Make raw libsndfile errors user-friendlier (instead of
+    saying 'System error').
+  Build system fixes:
+  * Set default installation prefix to /usr/local.
+  * Reduce compiler workload somewhat with forward declarations.
+
+-------------------------------------------------------------------
+Sat Jul 20 06:15:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.1
+  Fixes:
+  * Fix a crash (uncaught json exception) when attempting to
+    serialize a string that's invalid UTF-8, e.g. if long PS gets
+    corrupted.
+  * Fix build when the installed version of nlohmann-json is too
+    old.
+  * Fix a couple of integer overflows, one affecting the
+    subcarrier reset functionality (of #94) after 3.5 hours of
+    runtime and another one causing a potential sync glitch after
+    41 days of constant data.
+
+-------------------------------------------------------------------
 Thu Jun 27 19:53:59 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.0
