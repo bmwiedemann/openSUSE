@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Dec 25 01:10:39 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to version 3.1.0+89:
+  * Add missing i915_drm.h structs/definitions.
+  * Fix AMDGPU free memory calculation.
+  * Include xe_drm.h until it mades it into libdrm.
+  * Apply suggestions from code review.
+  * Display total memory if available.
+  * Add gtt to memory usage.
+  * Add i915 compute and fix xe compute + edit readme.
+  * Add xe encode/decode support.
+  * Split fdinfo and implement GPU utilisation.
+  * Split i915 & xe, implement xe ioctls and memory usage.
+  * Add support for using i915 ioctls & implement memory usage
+    using this.
+  * Use bool, not NCURSES bool.
+  * Display fan RPM when max is not available.
+  * Avoid deref udev null device on unref.
+  * v3d: migrate to standardised fdinfo info and add per-process
+    gpu memory support.
+  * Calculate power consumption for Xe driver.
+  * Calculate power consumption based on energy usage.
+  * Include libdrm for builds with panfrost and panthor support.
+  * Remove Intel GPU warning.
+  * i915 has drm-total-local0 (now?) for memory Also fix a logic
+    error.
+  * Fix process list randomly hiding in builds.
+  * Add Intel temp support Currently being worked on in Intel's
+    kernel branch: https://patchwork.freedesktop.org/series/137874.
+  * Add Intel fan support Now present in kernel 6.12
+    https://patchwork.freedesktop.org/patch/610458.
+  * Update CMakeLists.txt
+  * Add the necessary source file device_discovery_linux.c for
+    V3D_SUPPORT in CMakeLists.txt.
+  * Update README.
+  * Convert tid to pgid to match the process's pid.
+  * Fix some typos.
+  * Add the videocore support documentation.
+  * Fix strncat warning.
+  * Print some debug messages.
+  * Add decode info for h264 decode.
+  * Move info read functions to utils and add some info from vcio
+    device.
+  * Add process gpu usage support for raspberrypi.
+  * Add basic support for raspberrypi gpu.
+- Add nvtop-fix-non-void-function.patch: Fix control reaches end of
+  non-void function error, (gh#Syllo/nvtop#350).
+
+-------------------------------------------------------------------
 Thu Oct 24 00:18:09 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to version 3.1.0+38:

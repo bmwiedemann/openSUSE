@@ -2,7 +2,7 @@
 # spec file for package nvtop
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2020-2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 
 Name:           nvtop
-Version:        3.1.0+38
+Version:        3.1.0+89
 Release:        0
 Summary:        A (h)top like task monitor for NVIDIA and AMD GPUs
 License:        GPL-3.0-or-later
 URL:            https://github.com/Syllo/nvtop
 Source0:        %{name}-%{version}.tar.xz
+#PATCH-FIX-UPSTREAM nvtop-fix-non-void-function.patch (gh#Syllo/nvtop#350) malcolmlewis@opensuse.org -- Fix control reaches end of non-void function error
+Patch0:         nvtop-fix-non-void-function.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -42,7 +44,7 @@ It can handle multiple GPUs and print information about them in a htop familiar
 way.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
@@ -51,7 +53,6 @@ way.
 
 %install
 %cmake_install
-%suse_update_desktop_file %{name}
 
 %files
 %license LICENSE
