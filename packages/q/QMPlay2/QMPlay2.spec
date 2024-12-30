@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1734977814
-%define _commit 5bf25e0
+%define _mtime 1735406257
+%define _commit eb5b805
 
 Name:           QMPlay2
-Version:        24.12.23
+Version:        24.12.28
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -32,8 +32,6 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM 0001-fix-zoom-reset-crash.patch -- Fix zoom reset crash
-Patch2:         0001-fix-zoom-reset-crash.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  llvm-gold
@@ -64,6 +62,9 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libavcodec) >= 58.18.100
 BuildRequires:  pkgconfig(libavdevice)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libavfilter) >= 8.44.100
+%endif
 BuildRequires:  pkgconfig(libavformat) >= 58.12.100
 BuildRequires:  pkgconfig(libavutil) >= 56.14.100
 BuildRequires:  pkgconfig(libcddb)
@@ -112,7 +113,6 @@ It's a development package for %{name}.
 %autosetup -p1 -n %{name}-%{version}.%{_mtime}.%{_commit}
 # %setup -q -n %{name}-%{version}.%{_mtime}.%{_commit}
 # %patch1 -p1
-# %patch2 -p1
 
 %build
 # Build options
@@ -125,6 +125,11 @@ It's a development package for %{name}.
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
   -DUSE_PCH=ON \
+%if 0%{?suse_version} >= 1550
+  -DUSE_AUDIOFILTERS=ON \
+%else
+  -DUSE_AUDIOFILTERS=OFF \
+%endif
   -DUSE_GIT_VERSION=OFF \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DCMAKE_INSTALL_LIBDIR=%{_libdir} \

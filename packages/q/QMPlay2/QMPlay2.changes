@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 29 13:17:19 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.12.28:
+  * add option to maintain panels size when resizing main window,
+  * add input dialog for zoom and add precise zoom control,
+  * live update when changing values in input dialogs,
+  * add FFmpeg audio filters,
+  * teletext improvements,
+  * fix various crashes,
+  * other minor fixes.
+- Drop 0001-fix-zoom-reset-crash.patch as it is merged upstream
+- Disable AudioFilters on openSUSE Leap 15.X as it requires FFmpeg
+  5 or higher now.
+
+-------------------------------------------------------------------
 Tue Dec 24 15:37:18 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add 0001-fix-zoom-reset-crash.patch to fix a crash on zoom reset
