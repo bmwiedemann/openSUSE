@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 27 16:09:52 UTC 2024 - Michael Calmer <mc@suse.com>
+
+- Update to version 5.4.6
+  * Print complaints about lockfile on stderr
+  * The translatelegacyreferences command creates a new
+    references.db file with the DUP flag in place of DUPSORT. It
+    then copies the content of the old references.db file into the
+    new one.
+  * When an attempt is made to open the references.db file,
+    reprepro checks if the DUPSORT flag is set. If this is so, the
+    database needs to be upgraded, so reprepro exits with an error
+    asking the user to call the new 'translatelegacyreferences'
+    command.
+
+-------------------------------------------------------------------
 Mon Jan 29 08:05:25 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 5.4.3

@@ -47,4 +47,12 @@
     <comment>- Update to version 5.4.3 (forwarded request 1142179 from jgwang)</comment>
     <requestid>1142216</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8e216bf4adfb7f927a234335661902f1</srcmd5>
+    <version>5.4.6</version>
+    <time>1735565201</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.4.6</comment>
+    <requestid>1233626</requestid>
+  </revision>
 </revisionlist>
