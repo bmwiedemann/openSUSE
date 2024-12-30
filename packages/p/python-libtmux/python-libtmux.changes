@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:20:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.40.1:
+  * Bug fixes
+    - Fix passing both window command and environment by
+      @ppentchev in #553
+
+-------------------------------------------------------------------
 Sat Dec 21 14:58:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.40.0:
