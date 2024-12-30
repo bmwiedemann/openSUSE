@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 20 11:03:51 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- This package requires libgpgme
+
+-------------------------------------------------------------------
 Sat Dec 14 13:28:10 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Add patch 0001-Revert-accounts-cancel-any-previous-mailbox-fetches.patch

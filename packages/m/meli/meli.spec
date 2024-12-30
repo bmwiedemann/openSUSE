@@ -29,6 +29,7 @@ Patch0:         release-profile.patch
 Patch1:         0001-Revert-accounts-cancel-any-previous-mailbox-fetches.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  dbus-1-glib-devel
+BuildRequires:  libgpgme-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  mandoc-bin
 BuildRequires:  sqlite3-devel
