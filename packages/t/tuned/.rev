@@ -352,4 +352,12 @@ A tuned_differ_x86_and_other_archs_in_cpu_plugin.patch
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1234754</comment>
     <requestid>1232840</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>742c23d76b19f1a2e700d3e7e7689502</srcmd5>
+    <version>2.24.1.0+git.90c24ee</version>
+    <time>1735567104</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233846</requestid>
+  </revision>
 </revisionlist>
