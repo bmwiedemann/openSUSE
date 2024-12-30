@@ -5,15 +5,110 @@
 * Set standard colors and use a more legilible font size.
 
 ---
- settings.c               |   49 +++++++++++++++++++++++++++++++----------------
- unix/platform.h          |    6 -----
- windows/utils/defaults.c |    2 -
- 3 files changed, 35 insertions(+), 22 deletions(-)
+ conf.h                   |   20 ++++++++++----------
+ settings.c               |   29 +++++++++++++++++++++++------
+ unix/platform.h          |    6 +-----
+ windows/utils/defaults.c |    2 +-
+ 4 files changed, 35 insertions(+), 22 deletions(-)
 
-Index: putty-0.78/settings.c
+Index: putty-0.82/conf.h
 ===================================================================
---- putty-0.78.orig/settings.c
-+++ putty-0.78/settings.c
+--- putty-0.82.orig/conf.h
++++ putty-0.82/conf.h
+@@ -408,7 +408,7 @@ CONF_OPTION(ssh_nc_port, /* port to conn
+ /* Telnet options */
+ CONF_OPTION(termtype,
+     VALUE_TYPE(STR),
+-    DEFAULT_STR("xterm"),
++    DEFAULT_STR("linux"),
+     SAVE_KEYWORD("TerminalType"),
+ )
+ CONF_OPTION(termspeed,
+@@ -539,7 +539,7 @@ CONF_OPTION(rxvt_homeend,
+ )
+ CONF_OPTION(funky_type,
+     VALUE_TYPE(INT),
+-    DEFAULT_INT(FUNKY_TILDE),
++    DEFAULT_INT(FUNKY_LINUX),
+     SAVE_KEYWORD("LinuxFunctionKeys"),
+     STORAGE_ENUM(funky_type),
+ )
+@@ -561,7 +561,7 @@ CONF_OPTION(no_applic_k, /* totally disa
+ )
+ CONF_OPTION(no_mouse_rep, /* totally disable mouse reporting */
+     VALUE_TYPE(BOOL),
+-    DEFAULT_BOOL(false),
++    DEFAULT_BOOL(true),
+     SAVE_KEYWORD("NoMouseReporting"),
+ )
+ CONF_OPTION(no_remote_resize, /* disable remote resizing */
+@@ -633,7 +633,7 @@ CONF_OPTION(alt_f4, /* is it special? */
+ )
+ CONF_OPTION(alt_space, /* is it special? */
+     VALUE_TYPE(BOOL),
+-    DEFAULT_BOOL(false),
++    DEFAULT_BOOL(true),
+     SAVE_KEYWORD("AltSpace"),
+ )
+ CONF_OPTION(alt_only, /* is it special? */
+@@ -660,7 +660,7 @@ CONF_OPTION(alwaysontop,
+ )
+ CONF_OPTION(fullscreenonaltenter,
+     VALUE_TYPE(BOOL),
+-    DEFAULT_BOOL(false),
++    DEFAULT_BOOL(true),
+     SAVE_KEYWORD("FullScreenOnAltEnter"),
+ )
+ CONF_OPTION(scroll_on_key,
+@@ -680,7 +680,7 @@ CONF_OPTION(erase_to_scrollback,
+ )
+ CONF_OPTION(compose_key,
+     VALUE_TYPE(BOOL),
+-    DEFAULT_BOOL(false),
++    DEFAULT_BOOL(true),
+     SAVE_KEYWORD("ComposeKey"),
+ )
+ CONF_OPTION(ctrlaltkeys,
+@@ -724,7 +724,7 @@ CONF_OPTION(lfhascr,
+ )
+ CONF_OPTION(cursor_type,
+     VALUE_TYPE(INT),
+-    DEFAULT_INT(0),
++    DEFAULT_INT(1),
+     SAVE_KEYWORD("CurType"),
+     STORAGE_ENUM(cursor_type),
+ )
+@@ -809,7 +809,7 @@ CONF_OPTION(blinktext,
+ )
+ CONF_OPTION(win_name_always,
+     VALUE_TYPE(BOOL),
+-    DEFAULT_BOOL(true),
++    DEFAULT_BOOL(false),
+     SAVE_KEYWORD("WinNameAlways"),
+ )
+ CONF_OPTION(width,
+@@ -819,7 +819,7 @@ CONF_OPTION(width,
+ )
+ CONF_OPTION(height,
+     VALUE_TYPE(INT),
+-    DEFAULT_INT(24),
++    DEFAULT_INT(25),
+     SAVE_KEYWORD("TermHeight"),
+ )
+ CONF_OPTION(font,
+@@ -1071,7 +1071,7 @@ CONF_OPTION(vtmode,
+ )
+ CONF_OPTION(line_codepage,
+     VALUE_TYPE(STR),
+-    DEFAULT_STR(""),
++    DEFAULT_STR("UTF-8"),
+     SAVE_KEYWORD("LineCodePage"),
+ )
+ CONF_OPTION(cjk_ambig_wide,
+Index: putty-0.82/settings.c
+===================================================================
+--- putty-0.82.orig/settings.c
++++ putty-0.82/settings.c
 @@ -18,8 +18,8 @@ static const struct keyvalwhere cipherna
      { "aes",        CIPHER_AES,             -1, -1 },
      { "chacha20",   CIPHER_CHACHA20,        CIPHER_AES, +1 },
@@ -24,71 +119,7 @@ Index: putty-0.78/settings.c
      { "des",        CIPHER_DES,             -1, -1 },
      { "blowfish",   CIPHER_BLOWFISH,        -1, -1 },
      { "arcfour",    CIPHER_ARCFOUR,         -1, -1 },
-@@ -878,7 +878,7 @@ void load_open_settings(settings_r *sess
-     }
-     gppb(sesskey, "TCPNoDelay", true, conf, CONF_tcp_nodelay);
-     gppb(sesskey, "TCPKeepalives", false, conf, CONF_tcp_keepalives);
--    gpps(sesskey, "TerminalType", "xterm", conf, CONF_termtype);
-+    gpps(sesskey, "TerminalType", "linux", conf, CONF_termtype);
-     gpps(sesskey, "TerminalSpeed", "38400,38400", conf, CONF_termspeed);
-     if (gppmap(sesskey, "TerminalModes", conf, CONF_ttymodes)) {
-         /*
-@@ -1064,12 +1064,12 @@ void load_open_settings(settings_r *sess
-     gppb(sesskey, "PassiveTelnet", false, conf, CONF_passive_telnet);
-     gppb(sesskey, "BackspaceIsDelete", true, conf, CONF_bksp_is_delete);
-     gppb(sesskey, "RXVTHomeEnd", false, conf, CONF_rxvt_homeend);
--    gppi(sesskey, "LinuxFunctionKeys", 0, conf, CONF_funky_type);
-+    gppi(sesskey, "LinuxFunctionKeys", true, conf, CONF_funky_type);
-     gppi(sesskey, "ShiftedArrowKeys", SHARROW_APPLICATION, conf,
-          CONF_sharrow_type);
-     gppb(sesskey, "NoApplicationKeys", false, conf, CONF_no_applic_k);
-     gppb(sesskey, "NoApplicationCursors", false, conf, CONF_no_applic_c);
--    gppb(sesskey, "NoMouseReporting", false, conf, CONF_no_mouse_rep);
-+    gppb(sesskey, "NoMouseReporting", true, conf, CONF_no_mouse_rep);
-     gppb(sesskey, "NoRemoteResize", false, conf, CONF_no_remote_resize);
-     gppb(sesskey, "NoAltScreen", false, conf, CONF_no_alt_screen);
-     gppb(sesskey, "NoRemoteWinTitle", false, conf, CONF_no_remote_wintitle);
-@@ -1091,9 +1091,9 @@ void load_open_settings(settings_r *sess
-     gppb(sesskey, "ApplicationKeypad", false, conf, CONF_app_keypad);
-     gppb(sesskey, "NetHackKeypad", false, conf, CONF_nethack_keypad);
-     gppb(sesskey, "AltF4", true, conf, CONF_alt_f4);
--    gppb(sesskey, "AltSpace", false, conf, CONF_alt_space);
-+    gppb(sesskey, "AltSpace", true, conf, CONF_alt_space);
-     gppb(sesskey, "AltOnly", false, conf, CONF_alt_only);
--    gppb(sesskey, "ComposeKey", false, conf, CONF_compose_key);
-+    gppb(sesskey, "ComposeKey", true, conf, CONF_compose_key);
-     gppb(sesskey, "CtrlAltKeys", true, conf, CONF_ctrlaltkeys);
- #ifdef OSX_META_KEY_CONFIG
-     gppb(sesskey, "OSXOptionMeta", true, conf, CONF_osx_option_meta);
-@@ -1105,12 +1105,12 @@ void load_open_settings(settings_r *sess
-     gppi(sesskey, "LocalEdit", AUTO, conf, CONF_localedit);
-     gpps(sesskey, "Answerback", "PuTTY", conf, CONF_answerback);
-     gppb(sesskey, "AlwaysOnTop", false, conf, CONF_alwaysontop);
--    gppb(sesskey, "FullScreenOnAltEnter", false,
-+    gppb(sesskey, "FullScreenOnAltEnter", true,
-          conf, CONF_fullscreenonaltenter);
-     gppb(sesskey, "HideMousePtr", false, conf, CONF_hide_mouseptr);
-     gppb(sesskey, "SunkenEdge", false, conf, CONF_sunken_edge);
-     gppi(sesskey, "WindowBorder", 1, conf, CONF_window_border);
--    gppi(sesskey, "CurType", 0, conf, CONF_cursor_type);
-+    gppi(sesskey, "CurType", 1, conf, CONF_cursor_type);
-     gppb(sesskey, "BlinkCur", false, conf, CONF_blink_cur);
-     /* pedantic compiler tells me I can't use conf, CONF_beep as an int * :-) */
-     gppi(sesskey, "Beep", 1, conf, CONF_beep);
-@@ -1145,10 +1145,10 @@ void load_open_settings(settings_r *sess
-     gppb(sesskey, "CRImpliesLF", false, conf, CONF_crhaslf);
-     gppb(sesskey, "DisableArabicShaping", false, conf, CONF_no_arabicshaping);
-     gppb(sesskey, "DisableBidi", false, conf, CONF_no_bidi);
--    gppb(sesskey, "WinNameAlways", true, conf, CONF_win_name_always);
-+    gppb(sesskey, "WinNameAlways", false, conf, CONF_win_name_always);
-     gpps(sesskey, "WinTitle", "", conf, CONF_wintitle);
-     gppi(sesskey, "TermWidth", 80, conf, CONF_width);
--    gppi(sesskey, "TermHeight", 24, conf, CONF_height);
-+    gppi(sesskey, "TermHeight", 25, conf, CONF_height);
-     gppfont(sesskey, "Font", conf, CONF_font);
-     gppi(sesskey, "FontQuality", FQ_DEFAULT, conf, CONF_font_quality);
-     gppi(sesskey, "FontVTMode", VT_UNICODE, conf, CONF_vtmode);
-@@ -1161,11 +1161,28 @@ void load_open_settings(settings_r *sess
+@@ -982,11 +982,28 @@ void load_open_settings(settings_r *sess
  
      for (i = 0; i < 22; i++) {
          static const char *const defaults[] = {
@@ -122,20 +153,11 @@ Index: putty-0.78/settings.c
          };
          char buf[20], *buf2;
          int c0, c1, c2;
-@@ -1223,7 +1240,7 @@ void load_open_settings(settings_r *sess
-      * The empty default for LineCodePage will be converted later
-      * into a plausible default for the locale.
-      */
--    gpps(sesskey, "LineCodePage", "", conf, CONF_line_codepage);
-+    gpps(sesskey, "LineCodePage", "UTF-8", conf, CONF_line_codepage);
-     gppb(sesskey, "CJKAmbigWide", false, conf, CONF_cjk_ambig_wide);
-     gppb(sesskey, "UTF8Override", true, conf, CONF_utf8_override);
-     gpps(sesskey, "Printer", "", conf, CONF_printer);
-Index: putty-0.78/unix/platform.h
+Index: putty-0.82/unix/platform.h
 ===================================================================
---- putty-0.78.orig/unix/platform.h
-+++ putty-0.78/unix/platform.h
-@@ -394,11 +394,7 @@ void fd_socket_set_psb_prefix(Socket *s,
+--- putty-0.82.orig/unix/platform.h
++++ putty-0.82/unix/platform.h
+@@ -400,11 +400,7 @@ void fd_socket_set_psb_prefix(Socket *s,
  /*
   * Default font setting, which can vary depending on NOT_X_WINDOWS.
   */
@@ -148,10 +170,10 @@ Index: putty-0.78/unix/platform.h
  
  /*
   * pty.c.
-Index: putty-0.78/windows/utils/defaults.c
+Index: putty-0.82/windows/utils/defaults.c
 ===================================================================
---- putty-0.78.orig/windows/utils/defaults.c
-+++ putty-0.78/windows/utils/defaults.c
+--- putty-0.82.orig/windows/utils/defaults.c
++++ putty-0.82/windows/utils/defaults.c
 @@ -9,7 +9,7 @@
  FontSpec *platform_default_fontspec(const char *name)
  {
@@ -159,5 +181,5 @@ Index: putty-0.78/windows/utils/defaults.c
 -        return fontspec_new("Courier New", false, 10, ANSI_CHARSET);
 +        return fontspec_new("Consolas", false, 16, ANSI_CHARSET);
      else
-         return fontspec_new("", false, 0, 0);
+         return fontspec_new_default();
  }

@@ -260,4 +260,12 @@
     <comment>- Update to release 0.81</comment>
     <requestid>1167888</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>801be026ee195e014798df9820c80a31</srcmd5>
+    <version>0.82</version>
+    <time>1735567106</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233847</requestid>
+  </revision>
 </revisionlist>
