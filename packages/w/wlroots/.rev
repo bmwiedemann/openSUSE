@@ -511,4 +511,26 @@
 </comment>
     <requestid>1202330</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8744922d08a669e69c585b70e47c07fb</srcmd5>
+    <version>0.18.2</version>
+    <time>1735559525</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.18.2:
+  * dnd: ensure internal dnd handlers are unlinked on xwm_destroy()
+  * xwayland: fix xdg-&gt;xwayland drag-and-drop
+  * backend/headless: actually perform output test
+  * backend/wayland: Account for shm buffer offset
+  * backend/drm: check whether clipped damage is empty
+  * output-management-v1: only create custom mode object for enabled heads
+  * backend/drm: check buffer format for multi-GPU
+  * backend/drm: fix drmModePageFlip() when disabling CRTC on legacy uAPI
+  * render/vulkan: fix crash on OOM
+  * xwayland: listen to drag focus destroy signal
+  * xwayland: remove loop to find drag focus surface
+  * data-device: reset focused surface when destroyed
+  * build: bump version to 0.18.2
+  * wlr_keyboard: don't emit key event for duplicated keycodes</comment>
+    <requestid>1233717</requestid>
+  </revision>
 </revisionlist>

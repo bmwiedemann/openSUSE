@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Dec 29 01:31:19 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.18.2:
+  * dnd: ensure internal dnd handlers are unlinked on xwm_destroy()
+  * xwayland: fix xdg->xwayland drag-and-drop
+  * backend/headless: actually perform output test
+  * backend/wayland: Account for shm buffer offset
+  * backend/drm: check whether clipped damage is empty
+  * output-management-v1: only create custom mode object for enabled heads
+  * backend/drm: check buffer format for multi-GPU
+  * backend/drm: fix drmModePageFlip() when disabling CRTC on legacy uAPI
+  * render/vulkan: fix crash on OOM
+  * xwayland: listen to drag focus destroy signal
+  * xwayland: remove loop to find drag focus surface
+  * data-device: reset focused surface when destroyed
+  * build: bump version to 0.18.2
+  * wlr_keyboard: don't emit key event for duplicated keycodes
+
+-------------------------------------------------------------------
 Sat Sep 21 12:58:00 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.18.1:

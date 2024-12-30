@@ -18,6 +18,7 @@
 
 %global ver_suffix 0.18
 %global sover      0_18
+%global patch_ver  2
 %global libname libwlroots-%{sover}
 %bcond_without  drm_backend
 %bcond_without  libinput_backend
@@ -26,7 +27,7 @@
 %bcond_without  xcb_errors
 
 Name:           wlroots
-Version:        %{ver_suffix}.1
+Version:        %{ver_suffix}.%{patch_ver}
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
