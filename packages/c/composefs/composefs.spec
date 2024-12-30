@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         sover 1
 Name:           composefs
 Version:        1.0.7
 Release:        0
 Summary:        The reliability of disk images, the flexibility of files
-License:        GPL-2.0-or-later OR Apache-2.0
+License:        Apache-2.0 OR GPL-2.0-or-later
 URL:            https://github.com/containers/composefs
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig(openssl) >= 3.0.0
-BuildRequires:  pkgconfig(fuse3) >= 3.10.0
-BuildRequires:  meson
 BuildRequires:  go-md2man
+BuildRequires:  meson
+BuildRequires:  pkgconfig(fuse3) >= 3.10.0
+BuildRequires:  pkgconfig(openssl) >= 3.0.0
 
 %description
 Tools to handle creating and mounting composefs images. The composefs
@@ -42,11 +43,12 @@ Library files for %{name}.
 
 %package        devel
 Summary:        Devel files for %{name}
+Requires:       %{name} = %{version}
 Requires:       lib%{name}%{sover} = %{version}
 
 %description devel
 Devel files for %{name}.
- 
+
 %prep
 %autosetup
 
@@ -79,8 +81,8 @@ rm -rf %{buildroot}%{_libdir}/libcomposefs.{a,la}
 %{_includedir}/lib%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
- 
+
 %files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}.so.%{sover}*
- 
+
 %changelog

@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1231012</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627256056add38ab13e7ebbf2d785ae9</srcmd5>
+    <version>1.0.7</version>
+    <time>1735559536</time>
+    <user>anag+factory</user>
+    <comment>- require the main package for the devel package (forwarded request 1233826 from rrahl0)</comment>
+    <requestid>1233827</requestid>
+  </revision>
 </revisionlist>
