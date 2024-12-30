@@ -40273,6 +40273,7 @@ unsorted:
   - ruby3.3-rubygem-redis 
   - ruby3.3-rubygem-redis-client 
   - ruby3.3-rubygem-regexp_parser 
+  - ruby3.3-rubygem-reline 
   - ruby3.3-rubygem-reverse_markdown 
   - ruby3.3-rubygem-ronn-ng 
   - ruby3.3-rubygem-rouge 
@@ -40301,6 +40302,7 @@ unsorted:
   - ruby3.3-rubygem-sass-rails-5.1 
   - ruby3.3-rubygem-sassc 
   - ruby3.3-rubygem-sassc-rails 
+  - ruby3.3-rubygem-securerandom 
   - ruby3.3-rubygem-semantic_range 
   - ruby3.3-rubygem-serverengine 
   - ruby3.3-rubygem-sexp_processor 
@@ -40329,6 +40331,7 @@ unsorted:
   - ruby3.3-rubygem-thor 
   - ruby3.3-rubygem-thread_safe 
   - ruby3.3-rubygem-tilt 
+  - ruby3.3-rubygem-timeout 
   - ruby3.3-rubygem-tomlrb 
   - ruby3.3-rubygem-turbo-rails 
   - ruby3.3-rubygem-turbolinks 
@@ -51388,6 +51391,7 @@ unsorted:
   - tumbleweed-cli 
   - tunctl 
   - tuned-gtk 
+  - tuned-ppd 
   - tuned-profiles-atomic 
   - tuned-profiles-nfv 
   - tuned-profiles-openshift 
@@ -51914,7 +51918,6 @@ unsorted:
   - usbsdmux-udev 
   - usbtop 
   - usbview 
-  - usnic_tools 
   - usrp-firmware 
   - usrp-tools 
   - usrsctp-devel 
@@ -52627,6 +52630,7 @@ unsorted:
   - xdbedizzy 
   - xdg-desktop-portal-cosmic 
   - xdg-desktop-portal-devel 
+  - xdg-desktop-portal-devel-docs 
   - xdg-desktop-portal-hyprland 
   - xdg-desktop-portal-lxqt 
   - xdg-desktop-portal-pantheon 
