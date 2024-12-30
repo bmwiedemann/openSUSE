@@ -1,6 +1,7 @@
 #
 # spec file for package sddm-kalpa
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Neal Gompa
 # Copyright (c) 2024 Shawn W Dunn
 #
@@ -16,7 +17,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Disable X11
+
 %bcond x11 0
 
 %define _name sddm
@@ -56,10 +57,10 @@ Patch4:         sddm-0.21.0-qt6greeter.patch
 
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  docutils
+BuildRequires:  fdupes
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  fdupes
 
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -68,7 +69,7 @@ BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickTest)
-BuildRequires:  cmake(Qt6Test)  
+BuildRequires:  cmake(Qt6Test)
 
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pam)
@@ -76,9 +77,9 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-xkb)
 
+Requires:       sddm-greeter-displayserver
 Requires:       systemd
 Requires:       group(sddm)
-Requires:       sddm-greeter-displayserver
 %if %{with x11}
 Requires:       xinit
 %endif
@@ -103,8 +104,8 @@ designer the ability to create smooth, animated user interfaces.
 Summary:        Generic Wayland SDDM greeter configuration
 Provides:       sddm-greeter-displayserver
 Conflicts:      sddm-greeter-displayserver
-Requires:       weston
 Requires:       %{name} = %{version}
+Requires:       weston
 BuildArch:      noarch
 
 %description wayland-generic
@@ -118,8 +119,8 @@ This is the generic default Wayland configuration provided by SDDM.
 Summary:        X11 SDDM greeter configuration
 Provides:       sddm-greeter-displayserver
 Conflicts:      sddm-greeter-displayserver
-Requires:       xorg-x11-server
 Requires:       %{name} = %{version}
+Requires:       xorg-x11-server
 Recommends:     libQt6VirtualKeyboard6
 BuildArch:      noarch
 
@@ -148,34 +149,36 @@ LOGIN_DEFS_PATH="%{_sysconfdir}/login.defs"
 %cmake -DBUILD_WITH_QT6:BOOL=ON \
        -DBUILD_MAN_PAGES:BOOL=ON \
        -DCMAKE_BUILD_TYPE:STRING="Release" \
-       -DCMAKE_INSTALL_SYSCONFDIR=%{_distconfdir} \
        -DENABLE_JOURNALD:BOOL=ON \
        -DPID_FILE="/run/sddm.pid" \
        -DLOGIN_DEFS_PATH:PATH="${LOGIN_DEFS_PATH}" \
-       -DSESSION_COMMAND:PATH=/etc/X11/xdm/Xsession \
-       -DWAYLAND_SESSION_COMMAND:PATH=/etc/sddm/wayland-session
+       -DSESSION_COMMAND:PATH=%{_sysconfdir}/X11/xdm/Xsession \
+       -DWAYLAND_SESSION_COMMAND:PATH=%{_sysconfdir}/sddm/wayland-session \
+       -DINSTALL_PAM_CONFIGURATION:BOOL=OFF
 
 %cmake_build
 
 %install
 %cmake_install
 
-mkdir -p %{buildroot}%{_distconfdir}/sddm.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/sddm.conf.d
 mkdir -p %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d
-mkdir -p %{buildroot}%{_distconfdir}/pam.d
-%dnl mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_distconfdir}/pam.d
-install -Dpm 644 %{SOURCE1} %{buildroot}%{_distconfdir}/pam.d/sddm
-install -Dpm 644 %{SOURCE2} %{buildroot}%{_distconfdir}/pam.d/sddm-autologin
-install -Dpm 644 %{SOURCE7} %{buildroot}%{_distconfdir}/pam.d/sddm-greeter
-install -Dpm 644 %{SOURCE3} %{buildroot}%{_distconfdir}/sddm.conf
+mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+# Install PAM Configuration
+pam_dest="%{?_pam_vendordir}%{!?_pam_vendordir:%{_sysconfdir}/pam.d}"
+install -Dm 0644 %{SOURCE1} %{buildroot}${pam_dest}/sddm
+install -Dm 0644 %{SOURCE2} %{buildroot}${pam_dest}/sddm-autologin
+install -Dm 0644 %{SOURCE7} %{buildroot}${pam_dest}/sddm-greeter
+
+install -Dpm 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/sddm.conf
 install -Dpm 644 %{SOURCE4} %{buildroot}%{_datadir}/sddm/scripts/README.scripts
 %if %{with x11}
 install -Dpm 644 %{SOURCE5} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/x11.conf
 %endif
 mkdir -p %{buildroot}/run/sddm
 mkdir -p %{buildroot}%{_localstatedir}/lib/sddm
-mkdir -p %{buildroot}%{_distconfdir}/sddm/
-cp -a %{buildroot}%{_datadir}/sddm/scripts/* %{buildroot}%{_distconfdir}/sddm/
+mkdir -p %{buildroot}%{_sysconfdir}/sddm/
+cp -a %{buildroot}%{_datadir}/sddm/scripts/* %{buildroot}%{_sysconfdir}/sddm/
 # We're using /etc/X11/xinit/Xsession (by default) instead
 rm -fv %{buildroot}%{_sysconfdir}/sddm/Xsession
 
@@ -211,18 +214,17 @@ ln -sr %{buildroot}%{_bindir}/sddm-greeter-qt6 %{buildroot}%{_bindir}/sddm-greet
 %files
 %license LICENSE
 %doc README.md CONTRIBUTORS
-%dir %{_distconfdir}/pam.d
-%dir %{_distconfdir}/sddm/
-%dir %{_distconfdir}/sddm.conf.d
+%dir %{_sysconfdir}/sddm/
+%dir %{_sysconfdir}/sddm.conf.d
 %dir %{_prefix}/lib/sddm
 %dir %{_prefix}/lib/sddm/sddm.conf.d
 %dir %{_datadir}/sddm
 %dir %{_datadir}/sddm/themes
-%{_distconfdir}/sddm/*
-%{_distconfdir}/sddm.conf
-%{_distconfdir}/pam.d/sddm
-%{_distconfdir}/pam.d/sddm-autologin
-%{_distconfdir}/pam.d/sddm-greeter
+%config %{_sysconfdir}/sddm/*
+%config %{_sysconfdir}/sddm.conf
+%{_pam_vendordir}/sddm
+%{_pam_vendordir}/sddm-autologin
+%{_pam_vendordir}/sddm-greeter
 %{_datadir}/dbus-1/system.d/org.freedesktop.DisplayManager-sddm.conf
 %{_bindir}/sddm
 %{_bindir}/sddm-greeter*
@@ -257,4 +259,3 @@ ln -sr %{buildroot}%{_bindir}/sddm-greeter-qt6 %{buildroot}%{_bindir}/sddm-greet
 %dir %{_datadir}/sddm/translations-qt6
 
 %changelog
-

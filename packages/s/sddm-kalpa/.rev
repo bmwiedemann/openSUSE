@@ -7,4 +7,13 @@
     <comment>Supercede to add Conflicts to the spec</comment>
     <requestid>1232670</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>559ac33ad2ce88ef314bedaf50721c53</srcmd5>
+    <version>0.21.0</version>
+    <time>1735565791</time>
+    <user>anag+factory</user>
+    <comment>- Lifted pam configuration installation from default sddm package,
+  fixes pam failures</comment>
+    <requestid>1233709</requestid>
+  </revision>
 </revisionlist>
