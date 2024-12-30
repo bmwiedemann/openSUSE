@@ -1,7 +1,0 @@
-<package name="kdumpid" project="openSUSE:Factory">
-  <title>Kernel Dump Identification</title>
-  <description>This small utility can read an unknown kernel core file and determine the kernel version from it.
-
-  </description>
-  <devel project="Kernel:kdump" package="kdumpid"/>
-</package>
