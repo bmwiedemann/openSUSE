@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 30 07:23:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.3:
+  * build(deps): bump actions/upload-artifact in the actions group
+
+-------------------------------------------------------------------
 Mon Dec 23 06:59:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.2:
