@@ -1,7 +1,7 @@
 #
 # spec file for package pocl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,32 +19,25 @@
 
 %define sover  2
 Name:           pocl
-Version:        3.1
+Version:        6.0
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
 # except include/utlist.h which is under BSD (and unbundled)
 License:        MIT
 Group:          Development/Tools/Other
-URL:            http://portablecl.org/
+URL:            https://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
-Patch0:         link_against_libclang-cpp_so.patch
-# PATCH-FIX-UPSTREAM - pocl-llvm16.patch - enables support for LLVM 16
-# https://github.com/pocl/pocl/commit/20d1bfa9bfd301964f7b2fc6d7f4589dd04e1b5c
-# https://github.com/pocl/pocl/commit/bf50f0052e4248cd1acfaaa8da95c5e4ca52f815
-Patch1:         pocl-llvm16.patch
+# Version 6.0: Supports LLVM versions 14.0 to 18.0
+BuildRequires:  ((clang-devel >= 14 with clang-devel < 19) or clang18-devel)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libLLVMSPIRVLib-devel
 BuildRequires:  ninja
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} > 150500
-BuildRequires:  ((clang-devel >= 6.0.0 with clang-devel < 17) or clang15-devel)
-%else
-BuildRequires:  ((clang-devel >= 6.0.0 with clang-devel < 17) or clang16-devel)
-%endif
 BuildRequires:  pkgconfig(hwloc)
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
@@ -95,7 +88,8 @@ This subpackage provides the development files needed for pocl.
 %build
 %define __builder ninja
 %cmake \
-  -DENABLE_CUDA=0 \
+  -DENABLE_CUDA=OFF \
+  -DENABLE_SPIRV=ON \
   -DENABLE_ICD=ON \
   -DPOCL_INSTALL_ICD_VENDORDIR=%{_datadir}/OpenCL/vendors \
 %ifarch %{ix86} x86_64

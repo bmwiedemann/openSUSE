@@ -1094,4 +1094,40 @@
     <comment></comment>
     <requestid>1193090</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>342776d4df9d47fe93a2abf00c2365c6</srcmd5>
+    <version>4.17.0</version>
+    <time>1735559427</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.17.0:
+  * Fix the lower part of the domain of csrand_uniform()
+  * Fix use of volatile pointer
+  * Use 'dist-hook' to clean up &lt;tests/unit/Makefile&gt;
+  * Use str2[u]l() instead of atoi(3)
+  * Use a2i() in various places
+  * Fix const correctness
+  * Use uid_t for holding UIDs (and GIDs)
+  * Move all sprintf(3)-like APIs to a subdirectory
+  * Move all copying APIs to a subdirectory
+  * Fix forever loop on ENOMEM
+  * Fix REALLOC() nmemb calculation
+  * Remove id(1)
+  * Remove groups(1)
+  * Use local time for human-readable dates
+  * Use %F instead of %Y-%m-%d with strftime(3)
+  * is_valid{user,group}_name(): Set errno to distinguish the reasons
+  * Recommend --badname only if it is useful
+  * Add fmkomstemp() to fix mode of &lt;/etc/default/useradd&gt;
+  * Fix use-after-free bug in sgetgrent()
+  * Update Catalan translation
+  * Remove references to cppw, cpgr
+  * groupadd, groupmod: Update gshadow file with -U
+  * Added option -a for listing active users only, optimized using if aflg,return
+  * Added information in lastlog man page for new option '-a'
+  * Plenty of code cleanup and clarifications
+
+- Update to 4.17.0 RC1:
+  Pre-release without changelog</comment>
+    <requestid>1233577</requestid>
+  </revision>
 </revisionlist>

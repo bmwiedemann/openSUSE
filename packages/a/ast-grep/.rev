@@ -674,4 +674,26 @@
   * feat: Add support for range matcher 4fb2c52</comment>
     <requestid>1231386</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>451d5bd2b6c8bbf2f1a40765c3b25bbc</srcmd5>
+    <version>0.32.2</version>
+    <time>1735559475</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.32.2:
+  * fix: linting 10f3e74
+  * feat: distinguish manual type annotation 4558c48
+  * feat: add ChildTypes helper 0d477e9
+
+- Update to 0.32.1:
+  * fix(deps): update rust crate clap_complete to v4.5.39 6ad3c7b
+  * fix: add npmignore to suppress gitignore 11bb8e4
+
+- Update to 0.32.0:
+  * feat: Add fieldChildren method to napi's SgNode and pyo3's PyNode #1655
+  * Breaking change: fix: rename range rule's row to line #1663
+  * fix: add biome formatting 5a41f13
+  * feat(napi): Typed SgNode and SgRoot 55e65f3
+  * fix: Use ts-node and versioned node-types URLs instead of heads dcb7916</comment>
+    <requestid>1233583</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -157,11 +157,6 @@ install -Dm644 %{SOURCE5} %{buildroot}%{_unitdir}/shadow.timer
 # add empty /etc/sub{u,g}id files
 touch %{buildroot}/%{_sysconfdir}/subuid
 touch %{buildroot}/%{_sysconfdir}/subgid
-
-# Remove binaries we don't use.
-rm %{buildroot}/%{_bindir}/groups
-rm %{buildroot}/%{_mandir}/man1/groups.*
-rm %{buildroot}/%{_mandir}/*/man1/groups.*
 
 rm %{buildroot}/%{_sbindir}/grpconv
 rm %{buildroot}/%{_mandir}/man8/grpconv.*

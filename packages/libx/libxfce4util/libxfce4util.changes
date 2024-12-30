@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Dec 15 10:39:58 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 16:07:16 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.5 [development release]
+  * Bump Xfce overall version to 4.20pre2
+  * I18n: Update po/LINGUAS list
+  * Call xfce_kiosk's parent finalizer to prevent leaks
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 13:46:10 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.4 [development release]
+  * bump Xfce overall version to 4.20pre1
+  * Remove local ABI check
+  * Add meson build
+  * Migrate to xdt-gen-visibility and xdt-check-abi
+  * I18n: Update po/LINGUAS list
+  * build: Bump requirements for Xfce 4.20
+  * Apply .clang-format file
+  * Add missing includes of libxfce4util-alias.h
+  * clang-format: Add file
+  * xfce-rc: Fix support for the LANGUAGE environment variable
+  * scan-build: Add false positive file
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * session-management: Try to create D-BUS proxy synchronously
+  * session-management: Always set an error when returning FALSE
+  * fileutils: Fix MD5 hash in xfce_create_shared_thumbnail_path()
+  * Translation Updates
+- Add BuildRequire: pkgconfig(gtk-doc)
+
+-------------------------------------------------------------------
+Tue Apr  2 06:05:04 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.3 
+
+-------------------------------------------------------------------
 Mon Feb  5 19:04:23 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.2

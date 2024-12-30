@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 08:13:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Set %_buildshell because of bashisms in build recipe
+- Replace over-the-top `find -exec rm` by just -delete
+
+-------------------------------------------------------------------
 Thu Oct 10 08:13:54 UTC 2024 - Rahul Jain <rahul.jain@suse.com>
 
 - Fix multiple exit notifications from authenticated clients will

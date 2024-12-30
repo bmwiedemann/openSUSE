@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 27 13:08:43 UTC 2024 - munix9@googlemail.com
+
+- update to 0.62.0:
+  * Improved handling of multiline strings, which could cause a
+    crash if they occurred at the end of the file. This was
+    particularly noticeable with YAML.
+  * Improved language detection when one argument is a named pipe.
+  * Updated to the latest tree-sitter parser for Bash, C, C++, C#,
+    CSS, Go, Haskell, HTML, Java, JavaScript, JSON, Julia, Lua,
+    Objective-C, OCaml, PHP, Python, Ruby, Scala, TOML, TypeScript
+    and XML.
+  * Improved syntax highlighting, particularly for keywords.
+
+- update to 0.61.0:
+  * Side-by-side display is now smarter on very wide terminals
+    when the content is narrow.
+  * Fixed a crash (introduced in 0.60) when the final line in a
+    file does not have a trailing newline and occurs more than
+    once in the file.
+
+-------------------------------------------------------------------
 Sat Aug 31 07:29:20 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Packaging changes:

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 28 00:52:21 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.4.52:
+  - Core:
+    - Fix regression cubic interpolation - it was quadratic rather
+      than cubic, this improves all uses of cubic interpolation.
+      Use g_spawn_sync rather than system() for launching graphviz'
+      dot.
+  - Ops:
+    - invert-gamma: operate on perceptual encoding.
+    - newsprint: do processing with perceptual encoding.
+    - denoise-dct, mantiuk06: pass-through for too small input
+      buffers.
+
+-------------------------------------------------------------------
 Fri Dec  6 07:39:33 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Disable luajit on LoongArch64

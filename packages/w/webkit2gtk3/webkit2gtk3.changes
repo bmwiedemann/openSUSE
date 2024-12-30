@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 27 16:35:15 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.46.5 (boo#1234851):
+  + Fix the build with GBM and release logs disabled.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2024-54479, CVE-2024-54502, CVE-2024-54505,
+    CVE-2024-54508.
+
+-------------------------------------------------------------------
 Wed Nov 27 21:34:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.46.4:
@@ -98,7 +107,8 @@ Tue Sep 17 19:04:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
     acceleration (enabled by default).
   + Undeprecate console messages API and make it available in 6.0
     API.
-  + Security fixes: CVE-2024-40866, CVE-2024-44187, CVE-2044-44185.
+  + Security fixes: CVE-2024-40866, CVE-2024-44187, CVE-2044-44185,
+    CVE-2024-54508, CVE-2024-54534.
 
 -------------------------------------------------------------------
 Wed Sep 11 16:53:03 UTC 2024 - Michael Gorse <mgorse@suse.com>

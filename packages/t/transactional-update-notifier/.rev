@@ -25,4 +25,12 @@
   go 1.22 on i586 without breaking the other builds. (forwarded request 1191077 from dimstar)</comment>
     <requestid>1193831</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc8be84874ad141ddbf163def33b0f3f</srcmd5>
+    <version>1.1.1</version>
+    <time>1735559445</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233748</requestid>
+  </revision>
 </revisionlist>

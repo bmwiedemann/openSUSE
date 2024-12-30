@@ -20,12 +20,12 @@
 
 Name:           chezscheme
 Summary:        A superset of the R6RS Scheme language
-Version:        10.0.0
+Version:        10.1.0
 Release:        0
 License:        Apache-2.0 AND BSD-2-Clause AND GPL-2.0-only AND Zlib AND SUSE-GPL-2.0-with-linking-exception
 Group:          Development/Languages/Scheme
 Source0:        %{chezscheme}-%{version}.tar.gz
-Source1:        lz4-d44371841a2f1728a3f36839fd4b7e872d0927d3.zip
+Source1:        lz4-5ff839680134437dbf4678f3d0c7b371d84f4964.zip
 Source2:        nanopass-framework-scheme-68990d02573faa555ee42919d5809de03f1268a0.zip
 Source3:        stex-5e4f0ca67bac448e19a24c09f12fc16d24cd6b6d.zip
 Source4:        zlib-51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf.zip

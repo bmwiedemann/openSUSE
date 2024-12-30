@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,18 +17,41 @@
 #
 
 
-Name:           xdg-desktop-portal
-Version:        1.18.4
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "docs"
+%bcond_without  docs
+%define psuffix -devel-docs
+%else
+%bcond_with     docs
+%endif
+
+%define oname xdg-desktop-portal
+
+Name:           %{oname}%{?psuffix}
+Version:        1.19.0
 Release:        0
+%if "%{flavor}" == ""
 Summary:        A portal frontend service for Flatpak
-License:        LGPL-2.1-or-later
 Group:          System/Libraries
+%else
+Summary:        Development documentation for xdg-desktop-portal
+Group:          Documentation/HTML
+Supplements:    (%{oname}-devel and patterns-base-documentation)
+%endif
+License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/xdg-desktop-portal
-Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{url}/releases/download/%{version}/%{oname}-%{version}.tar.xz
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
+
+%if %{with docs}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-furo
+BuildRequires:  python3-sphinxcontrib-copybutton
+BuildRequires:  python3-sphinxext-opengraph
+%endif
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(flatpak)
@@ -44,10 +67,11 @@ BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libsystemd)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
-# xdg-dfesktop-portal calls out to fusermount3 (in $PATH) (boo#1197567)
+# xdg-desktop-portal calls out to fusermount3 (in $PATH) (boo#1197567)
 # document-portal/document-portal-fuse.c: char *umount_argv[] = { "fusermount3", "-u", "-z", (char *) path, NULL };
 Requires:       %{_bindir}/fusermount3
 
+%if "%{flavor}" == ""
 %description
 A portal frontend service for Flatpak and possibly other desktop containment frameworks.
 
@@ -69,13 +93,24 @@ a well-known name (org.freedesktop.portal.Desktop) and object path (/org/freedes
 
 This package contains convenience files for developers.
 
+%else
+
+%description
+A portal frontend service for Flatpak and possibly other desktop containment frameworks.
+
+xdg-desktop-portal works by exposing a series of D-Bus interfaces known as portals under
+a well-known name (org.freedesktop.portal.Desktop) and object path (/org/freedesktop/portal/desktop).
+
+This package contains convenience documentation for developers.
+%endif
+
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{oname}-%{version}
 
 %build
-%meson \
+%meson %{!?with_docs:-Ddocumentation=disabled} \
 	-Dpytest=disabled \
 	%{nil}
 %meson_build
@@ -85,9 +120,13 @@ This package contains convenience files for developers.
 
 # own the packaging directories
 install -d %{buildroot}%{_datadir}/xdg-desktop-portal/portals
+%if %{with docs}
+rm -fr %{buildroot}/%{_datadir}/{dbus-1,%{oname},locale,pkgconfig} %buildroot%{_userunitdir} %{buildroot}%{_mandir} %{buildroot}/%{_libdir} %{buildroot}/%{_libexecdir}
+%else
+%find_lang %{oname} %{?no_lang_C}
+%endif
 
-%find_lang %{name} %{?no_lang_C}
-
+%if "%{flavor}" == ""
 %post
 %systemd_user_post %{name}.service xdg-document-portal.service xdg-permission-store.service
 
@@ -118,7 +157,6 @@ install -d %{buildroot}%{_datadir}/xdg-desktop-portal/portals
 
 %files devel
 %license COPYING
-%doc %{_datadir}/doc/%{name}/
 %if %{pkg_vcmp meson < 0.62.0 }
 %{_libdir}/pkgconfig/%{name}.pc
 %else
@@ -127,5 +165,11 @@ install -d %{buildroot}%{_datadir}/xdg-desktop-portal/portals
 
 %files lang -f %{name}.lang
 %license COPYING
+
+%else
+
+%files
+%doc %{_vpath_builddir}/doc/html
+%endif
 
 %changelog

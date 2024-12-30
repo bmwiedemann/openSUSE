@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 16 21:44:39 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to v1.1.1
+  * feat: env variable to set notification urgency
+
+-------------------------------------------------------------------
 Fri Aug  2 05:51:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - export CGOFLAGS="CGO_ENABLED=1" before building: fixes build with

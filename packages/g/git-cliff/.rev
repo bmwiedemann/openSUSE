@@ -225,4 +225,12 @@
   * feat(config): add changelog.render_always option</comment>
     <requestid>1232908</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3dc1fd6283761a378950f37640cfebc5</srcmd5>
+    <version>2.7.0</version>
+    <time>1735559486</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233631</requestid>
+  </revision>
 </revisionlist>

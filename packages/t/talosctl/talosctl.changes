@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:12:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.9.1:
+  https://github.com/siderolabs/talos/releases/tag/v1.9.1
+  * 73c25ee8d fix: talosctl support and race tests
+  * 7908c9382 fix: make talosctl time work with PTP time sync
+
+-------------------------------------------------------------------
 Wed Dec 18 06:26:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.9.0:

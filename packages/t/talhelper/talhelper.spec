@@ -17,7 +17,7 @@
 
 
 Name:           talhelper
-Version:        3.0.13
+Version:        3.0.14
 Release:        0
 Summary:        Tool to help creating Talos kubernetes cluster
 License:        BSD-3-Clause

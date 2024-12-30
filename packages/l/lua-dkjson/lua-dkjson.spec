@@ -1,7 +1,7 @@
 #
 # spec file for package lua-dkjson
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name dkjson
-%define uptag    release_2_5
-Version:        2.5.2
+%define uptag    2.8
+Version:        2.8.0
 Release:        0
 Summary:        David Kolf's JSON module for Lua
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            http://dkjson.org/
-Source:         http://dkolf.de/src/dkjson-lua.fsl/tarball/%{uptag}/dkjson.tar.gz
+Source:         http://dkolf.de/dkjson-lua/dkjson-%{uptag}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 Requires:       %{flavor}
@@ -50,7 +50,7 @@ dkjson is written in Lua without any dependencies, but
 when LPeg is available dkjson can use it to speed up decoding.
 
 %prep
-%setup -q -n %{uptag}/%{mod_name}
+%autosetup -p1 -n dkjson-%{uptag}
 
 %build
 /bin/true

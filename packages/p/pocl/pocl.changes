@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec 28 01:52:48 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use _service file to create tarball from git
+- Enable SPIR-V support
+
+- Remove pocl-llvm16.patch
+- Remove link_against_libclang-cpp_so.patch
+
+- Update to version 6.0:
+  * New CPU driver which uses Threading Building Blocks for
+    task scheduling
+  * Experimental cl_ext_buffer_device_address prototype
+  * Multi-device command buffer infrastructure
+  * Command queue priority/throttle hints
+  * Support for using OpenMP for task scheduling in the
+    "cpu" driver
+  * Improvements to the Remote driver
+  * Improvements to the Level Zero driver
+  * Improvements to the CUDA driver
+
+- Update to version 5.0:
+  * New backend: Remote
+  * CUDA driver: More OpenCL 3.0 features and extensions
+    implemented
+  * RISC-V CPU support improved
+  * Other CPU improvements
+  * Experimental built-in-kernel library based FPGA backend
+
+- Update to version 4.0:
+  * Support for Clang/LLVM 16.0
+  * CPU driver improvements
+  * New Level Zero driver
+
+-------------------------------------------------------------------
 Thu Feb 29 14:57:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -21,7 +55,7 @@ Wed Nov  8 16:12:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 Sat May 13 05:43:35 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add pocl-llvm16.patch, enables support for LLVM 16
-- Use BuildRequires ocl-icd-devel instead pkgconfig(OpenCL), fix 
+- Use BuildRequires ocl-icd-devel instead pkgconfig(OpenCL), fix
   have choice for pkgconfig(OpenCL) for SLE
 
 -------------------------------------------------------------------
@@ -113,20 +147,20 @@ Fri Dec 25 14:30:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Fri Oct 23 22:46:28 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- remove broken installation workaround 
+- remove broken installation workaround
 
 -------------------------------------------------------------------
 Fri Jun 26 11:05:12 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- moved pocl.icd to /usr/share/OpenCL/vendors for real ... 
+- moved pocl.icd to /usr/share/OpenCL/vendors for real ...
 
 -------------------------------------------------------------------
 Thu Jun 25 09:53:25 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.5
-  * Added support for LLVM/Clang 10.0 
+  * Added support for LLVM/Clang 10.0
 - adjusted link_against_libclang-cpp_so.patch
-- move pocl.icd from /usr/etc/OpenCL/vendors to 
+- move pocl.icd from /usr/etc/OpenCL/vendors to
   /usr/share/OpenCL/vendors (boo#1173005)
 
 -------------------------------------------------------------------
@@ -202,7 +236,7 @@ Thu Apr  4 19:21:26 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 -------------------------------------------------------------------
 Wed Oct 31 12:13:35 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
 
-- Add reproducible.patch to make build result independent of 
+- Add reproducible.patch to make build result independent of
   build system CPU (boo#1110722)
 
 -------------------------------------------------------------------
@@ -212,7 +246,7 @@ Tue Sep 25 10:30:51 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
   * Support for LLVM/Clang 7.0 and 6.0
   * HWLOC 2.0 support
 - build kernels with distro support - detect and load cpu
-    optimized code on runtime 
+    optimized code on runtime
 
 -------------------------------------------------------------------
 Mon Jul 30 04:53:06 UTC 2018 - bwiedemann@suse.com
@@ -234,7 +268,7 @@ Fri Mar  9 17:17:10 UTC 2018 - mardnh@gmx.de
   * Improved kernel compilation speed
 - Several tests have problems on some OBS workers while the same
   tests run perfectly fine in a local chroot.
-  Disable tests for now. 
+  Disable tests for now.
 
 -------------------------------------------------------------------
 Mon Mar  5 19:34:47 UTC 2018 - mardnh@gmx.de
@@ -326,7 +360,7 @@ Mon Jul  3 21:23:21 UTC 2017 - mardnh@gmx.de
 -------------------------------------------------------------------
 Fri May 19 08:49:22 UTC 2017 - idonmez@suse.com
 
-- Update library name for uthash -> libut2 
+- Update library name for uthash -> libut2
 
 -------------------------------------------------------------------
 Tue May 16 18:59:30 UTC 2017 - mardnh@gmx.de
@@ -398,7 +432,7 @@ Mon Oct 26 20:02:35 UTC 2015 - mardnh@gmx.de
     kernels with #includes.
   * Support for LLVM/Clang 3.7.
   * Little endian MIPS32 now passes almost all pocl testsuite tests.
-  
+
   OpenCL Runtime/Platform API support
   * Transferred buffer read/write/copy offset calculation to device driver side.
     - these driver api functions have changed; got offset as a new argument.
@@ -406,15 +440,15 @@ Mon Oct 26 20:02:35 UTC 2015 - mardnh@gmx.de
   * Maximum image dimensions grow to fit maximum allocation.
   * clGetDeviceInfo() reports better information about CPU vendor and cache.
   * experimental clCreateSubDevices() for pthread CPU device.
-  
+
   OpenCL C Builtin Function Implementations
   * Implemented get_image_dim().
-  
+
   Bugfixes
   * Avoid infinite loops when users recycle an event waiting list.
   * Correctly report the base address alignment.
   * Lots of others.
-  
+
   Misc
   * Tests now using new cl2.hpp, removing dependency on OpenGL headers
 
@@ -445,4 +479,3 @@ Tue Oct  7 19:16:42 UTC 2014 - mardnh@gmx.de
 
 - initial stable package, version 0.10
   based on home:mnhauke:opencl:testing/pocl
-

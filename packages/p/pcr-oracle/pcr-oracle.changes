@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 26 05:57:07 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fix-event-reshash-for-cryptouuid.patch to detect the crypto
+  device with the 'cryptouuid' prefix
+
+-------------------------------------------------------------------
 Mon Aug  5 06:11:52 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add support-ecc-srk.patch to support ECC SRK

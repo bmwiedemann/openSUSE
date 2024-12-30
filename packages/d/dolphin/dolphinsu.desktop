@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=File Manager - Super User Mode
-Exec=/usr/bin/xdg-su -c dolphin
+Exec=/usr/bin/xdg-su -c "dolphin %U"
 Icon=system-file-manager
 Type=Application
 X-DocPath=dolphin/index.html

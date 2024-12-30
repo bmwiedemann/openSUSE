@@ -19,36 +19,43 @@
 %bcond_with git
 
 Name:           libxfce4ui
-Version:        4.18.6
+Version:        4.20.0
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.18/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.20/%{name}-%{version}.tar.bz2
 # needed until all applications have been ported to xfce_dialog_show_help() or
 # an alternative mechanism
 Source1:        xfhelp4.sh
+# PATCH-FIX-OPENSUSE 0001-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
+Patch1:         0001-relax-x11-version.patch
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  fdupes
-BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.10
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.5.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(gudev-1.0) >= 232
+BuildRequires:  pkgconfig(ice) >= 1.0.9
 BuildRequires:  pkgconfig(libgtop-2.0) >= 2.24.0
-BuildRequires:  pkgconfig(libstartup-notification-1.0)
+BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.4
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(sm) >= 1.2.2
 BuildRequires:  pkgconfig(vapigen)
-BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(wayland-client) >= 1.20
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
+BuildRequires:  pkgconfig(wayland-scanner) >= 1.20
+BuildRequires:  pkgconfig(x11) >= 1.6.5
 %if %{with git}
 BuildRequires:  gtk-doc
 BuildRequires:  xfce4-dev-tools

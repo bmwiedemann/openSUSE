@@ -1,7 +1,7 @@
 #
 # spec file for package xfconf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,28 +24,28 @@
 %define libname libxfconf-0-3
 
 Name:           xfconf
-Version:        4.18.3
+Version:        4.20.0
 Release:        0
 Summary:        Simple Configuration Storage for Xfce
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfconf/start
-Source0:        https://archive.xfce.org/src/xfce/xfconf/4.18/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfconf/4.20/%{name}-%{version}.tar.bz2
 Source1:        xfconf-query.1
 Source100:      %{name}-rpmlintrc
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  perl(ExtUtils::Depends)
 BuildRequires:  perl(ExtUtils::PkgConfig)
 BuildRequires:  perl(Glib)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.3
 BuildRequires:  pkgconfig(vapigen)
@@ -131,7 +131,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS NEWS TODO README.md
+%doc AUTHORS NEWS README.md
 %license COPYING
 %{_bindir}/xfconf-query
 %dir %{_sysconfdir}/xdg/xfce4
@@ -140,6 +140,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %dir %{_libexecdir}/xfce4
 %dir %{_libexecdir}/xfce4/xfconf
 %{_libexecdir}/xfce4/xfconf/xfconfd
+%{_userunitdir}/xfconfd.service
 %{_datadir}/dbus-1/services/org.xfce.Xfconf.service
 %{_datadir}/bash-completion/completions/xfconf-query
 %doc %{_mandir}/man1/xfconf-query.1*

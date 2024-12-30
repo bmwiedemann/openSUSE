@@ -691,4 +691,12 @@
   of any perl reference in that library. (forwarded request 1176006 from dimstar)</comment>
     <requestid>1177464</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5b3802f8fd5e7746671a818735884caf</srcmd5>
+    <version>4.20.0</version>
+    <time>1735559429</time>
+    <user>anag+factory</user>
+    <comment>New Xfce version 4.20</comment>
+    <requestid>1233514</requestid>
+  </revision>
 </revisionlist>

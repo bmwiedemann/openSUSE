@@ -1,8 +1,45 @@
 -------------------------------------------------------------------
-Thu May 23 07:45:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+Sun Dec 15 10:25:26 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Drop dependency from libexo to perl-URI: there is no indication
-  of any perl reference in that library.
+- Updated to version 4.20.0
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 12:10:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.19.2
+  * I18n: Update po/LINGUAS list
+  * exo-die: Fix string leak in exo_die_g_key_file_set_locale_value
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Nov  1 09:28:34 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.19.1
+  * exo-tree-view: Add Ctrl+Shift+Click functionality (#116)
+  * exo-icon-chooser-dialog: Fix icon leaks
+  * Add option to exo-desktop-item-edit to print the filename
+  * build: Bump requirements for Xfce 4.20
+  * exo-icon-view: layout as well for empty view (Issue #118)
+  * exo-open: Fix GError leak
+  * exo-open: Fix GOptionContext memory leak
+  * build: clang: Use gpointer cast to silence -Wcast-align
+  * build: clang: Silence -Wcast-align
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * build: Fix GLIB_VERSION_MIN_REQUIRED redefined
+  * exo-icon-view: Use GSequence instead of GList to improve performance
+  * exo: Explicitly add GIO_UNIX_CFLAGS
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Add missing GETTEXT_PACKAGE definition
+  * Fix deprecation (libxfce4ui#94)
+  * Fix non X11 build (Fixes #111)
+  * build: Check for bind_textdomain_codeset
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:06:54 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Updated to version 4.19.0 
 
 -------------------------------------------------------------------
 Sat Dec 17 13:23:03 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>

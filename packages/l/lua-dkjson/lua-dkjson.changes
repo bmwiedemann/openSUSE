@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Dec 28 00:26:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.8:
+  - Fix handling of decoding errors when Lua is compiled with
+    LUA_NOCVTN2S.
+- Update to 2.7:
+  - Enable working with newer versions of LPeg where the
+    "version" field is no longer a function.
+  - Fix error messages when an encoding error happens in an
+    ordered dictionary.
+- Update to 2.6:
+  - The decode function is no longer automatically replaced by
+    the version implemented using LPeg, but an LPeg-enabled
+    copy of the module has to be requested explicitly with
+    the function use_lpeg. This was changed to improve the
+    predictability of the code and make audits more reliable.
+  - The LPeg-version of the decode function now reports
+    unterminated strings, arrays and objects with the position
+    where they started rather than where parsing failed which was
+    usually at the end of the input string. This was already the
+    behavior of the pure-Lua-implementation.
+  - Fixed a bug where entries in a dictionary were not put in the
+    desired order when their value was the boolean false.
+
+-------------------------------------------------------------------
 Wed Nov 23 10:17:15 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix missing dependency on lua-macros (boo#1205612)

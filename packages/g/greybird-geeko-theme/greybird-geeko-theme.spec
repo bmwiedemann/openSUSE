@@ -1,7 +1,7 @@
 #
 # spec file for package greybird-geeko-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,19 @@
 %define _name Greybird-Geeko
 
 Name:           greybird-geeko-theme
-Version:        3.23.1+git1.77c0887
+Version:        3.23.4+git0.c1d46c3
 Release:        0
 URL:            https://github.com/shimmerproject/Greybird-Geeko
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
 License:        (CC-BY-SA-3.0 AND GPL-3.0-or-later) OR GPL-2.0-or-later
 Group:          System/GUI/GNOME
-Source:         %{_name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE disable-unity_v3.23.1.patch maurizio.galli@gmail.com -- remove unity desktop
 Patch0:         disable-unity_v3.23.1.patch
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
 # PATCH-FIX-OPENSUSE link-selected-is-optional.patch manfred.h@gmx.net -- work around too old gtk4 libs on Leap 15.4 and 15.5
 Patch1:         link-selected-is-optional.patch
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -39,6 +41,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  meson
 BuildRequires:  sassc
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  zstd
 BuildArch:      noarch
 
 %description
@@ -90,10 +93,7 @@ This package provides the GTK+ 4 support of Greybird-geeko.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch -P 0 -p1
-%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-%patch -P 1
-%endif
+%autopatch -p1
 
 %build
 %meson

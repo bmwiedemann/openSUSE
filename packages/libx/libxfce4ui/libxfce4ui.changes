@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Dec 15 12:45:54 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0
+  * Update active contributors for 4.20
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 16:41:05 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.7 [development release]
+  * xfce4-about: Don't show mail addresses
+  * xfce4-about: Init glibtop before using it
+  * Avoid undefined behavior with NULL msgid strings and dgettext
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Oct 25 07:37:54 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.6 [development release]
+  * Add "overlap groups" to the shortcut editor (#115)
+  * build: Bump requirements for Xfce 4.20
+  * shortcuts: Fix xfconf_channel_get_properties leak
+  * Fix AtkRelationSet leak in xfce_gtk_label_set_a11y_relation
+  * Apply .clang-format file
+  * Add missing includes of libxfce4ui-alias.h
+  * clipboard-manager: Add missing include guard
+  * Remove forced icon from XfceTitledWindow cliend side decorations
+  * clipboard-manager: Use GtkClipboard iff image-only format is
+    available
+  * xfce4-about: Show info about windowing system
+  * dialogs: Also wrap primary label to limit dialog size
+  * gcc-analyzer: Fix -Wanalyzer-null-dereference
+  * gcc-analyzer: Add false positive file
+  * scan-build: Add false positive file
+  * build: clang: Fix -Wcast-align
+  * Revert "Add new CI builds to build without X11 and Wayland"
+  * | is a GNU sed extension; use a portable construct instead
+  * clipboard-manager: Get images from GtkClipoard
+  * Translation Updates
+- Add 0001-relax-x11-version.patch to allow build for Leap with its
+  ancient but sufficient X11 packages.
+
+-------------------------------------------------------------------
+Tue Apr  2 06:02:00 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.5
+
+-------------------------------------------------------------------
 Fri Mar  8 09:45:53 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.6

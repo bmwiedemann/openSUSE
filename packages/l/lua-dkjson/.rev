@@ -43,4 +43,33 @@
 - Fix missing dependency on lua-macros (boo#1205612)</comment>
     <requestid>1037587</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0df259e6cf32b5d7f9319c55b68665e6</srcmd5>
+    <version>2.8.0</version>
+    <time>1735559485</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.8:
+  - Fix handling of decoding errors when Lua is compiled with
+    LUA_NOCVTN2S.
+- Update to 2.7:
+  - Enable working with newer versions of LPeg where the
+    &quot;version&quot; field is no longer a function.
+  - Fix error messages when an encoding error happens in an
+    ordered dictionary.
+- Update to 2.6:
+  - The decode function is no longer automatically replaced by
+    the version implemented using LPeg, but an LPeg-enabled
+    copy of the module has to be requested explicitly with
+    the function use_lpeg. This was changed to improve the
+    predictability of the code and make audits more reliable.
+  - The LPeg-version of the decode function now reports
+    unterminated strings, arrays and objects with the position
+    where they started rather than where parsing failed which was
+    usually at the end of the input string. This was already the
+    behavior of the pure-Lua-implementation.
+  - Fixed a bug where entries in a dictionary were not put in the
+    desired order when their value was the boolean false.
+</comment>
+    <requestid>1233621</requestid>
+  </revision>
 </revisionlist>

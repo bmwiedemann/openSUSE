@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Dec 27 16:06:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.17.0:
+  * Fix the lower part of the domain of csrand_uniform()
+  * Fix use of volatile pointer
+  * Use 'dist-hook' to clean up <tests/unit/Makefile>
+  * Use str2[u]l() instead of atoi(3)
+  * Use a2i() in various places
+  * Fix const correctness
+  * Use uid_t for holding UIDs (and GIDs)
+  * Move all sprintf(3)-like APIs to a subdirectory
+  * Move all copying APIs to a subdirectory
+  * Fix forever loop on ENOMEM
+  * Fix REALLOC() nmemb calculation
+  * Remove id(1)
+  * Remove groups(1)
+  * Use local time for human-readable dates
+  * Use %F instead of %Y-%m-%d with strftime(3)
+  * is_valid{user,group}_name(): Set errno to distinguish the reasons
+  * Recommend --badname only if it is useful
+  * Add fmkomstemp() to fix mode of </etc/default/useradd>
+  * Fix use-after-free bug in sgetgrent()
+  * Update Catalan translation
+  * Remove references to cppw, cpgr
+  * groupadd, groupmod: Update gshadow file with -U
+  * Added option -a for listing active users only, optimized using if aflg,return
+  * Added information in lastlog man page for new option '-a'
+  * Plenty of code cleanup and clarifications
+
+-------------------------------------------------------------------
+Fri Dec  6 08:56:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.17.0 RC1:
+  Pre-release without changelog
+
+-------------------------------------------------------------------
 Mon Jul  8 11:13:17 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - Disable flushing sssd caches. The sssd's files provider is no

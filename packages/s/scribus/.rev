@@ -719,4 +719,12 @@
   * 0001-Fix-build-with-poppler-24.10.0.patch</comment>
     <requestid>1218617</requestid>
   </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>db9ad482f2e40d6b890991aee44f1f2a</srcmd5>
+    <version>1.6.2</version>
+    <time>1735559439</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233597</requestid>
+  </revision>
 </revisionlist>

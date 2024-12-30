@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Nov  4 17:23:31 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.5.10:
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.5.10 -->
+
+## What's Changed
+### ✨ Enhancements
+* Implement re-read-init-file by @ima1zumi in https://github.com/ruby/reline/pull/740
+### 🐛 Bug Fixes
+* Fix vi_yank or vi_delete_meta copies nil bug by @tompng in https://github.com/ruby/reline/pull/726
+* Rerender and enter raw mode again by SIGCONT by @tompng in https://github.com/ruby/reline/pull/727
+* Fix rendering bug of nomultiline prompt by @tompng in https://github.com/ruby/reline/pull/730
+* [HELP WANTED] Try to fix windows and external command bug by @tompng in https://github.com/ruby/reline/pull/734
+* Fix redisplay/insert_text called from pre_input_hook by @tompng in https://github.com/ruby/reline/pull/742
+### 🛠 Other Changes
+* Fix memory leak in setupterm by @peterzhu2118 in https://github.com/ruby/reline/pull/733
+* Accept colon-style hash in test assertion by @tompng in https://github.com/ruby/reline/pull/732
+* Typofix by @hsbt in https://github.com/ruby/reline/pull/737
+* Remove unused variables by @ima1zumi in https://github.com/ruby/reline/pull/739
+* Improve performance of `Reline::Unicode.get_mbchar_width` by @tompng in https://github.com/ruby/reline/pull/632
+* Add test for reset_variables in Reline::Config by @ima1zumi in https://github.com/ruby/reline/pull/741
+* Split render_differential to rendering logic and differential rendering algorithm part by @tompng in https://github.com/ruby/reline/pull/731
+* Prevent a warning for `warning: literal string will be frozen in the … by @ima1zumi in https://github.com/ruby/reline/pull/744
+* Bump version to 0.5.10 by @ima1zumi in https://github.com/ruby/reline/pull/745
+
+
+**Full Changelog**: https://github.com/ruby/reline/compare/v0.5.9...v0.5.10
+
+
+
+-------------------------------------------------------------------
+Fri Jun 21 10:34:14 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 0.5.9, no changelog found
+
+-------------------------------------------------------------------
+Mon Jan 29 14:28:13 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 0.4.2, no changelog found
+
+-------------------------------------------------------------------
+Tue Nov 14 15:30:52 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 0.4.0, no changelog found
+
+-------------------------------------------------------------------
+Thu Mar 10 16:41:54 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- initialize package

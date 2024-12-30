@@ -18,12 +18,11 @@
 
 
 Name:           transactional-update-notifier
-Version:        1.1.0.2
+Version:        1.1.1
 Release:        0
 Summary:        A notifier for systems using transactional updates
 License:        GPL-3.0-only
-Group:          System/Base
-URL:            https://github.com/89luca89/transactional-update-notifier
+URL:            https://github.com/openSUSE/transactional-update-notifier
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source9:        %{name}.rpmlintrc

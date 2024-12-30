@@ -18,7 +18,7 @@
 
 
 Name:           difftastic
-Version:        0.60.0
+Version:        0.62.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
@@ -33,7 +33,7 @@ BuildRequires:  libstdc++6-devel-gcc13
 %if 0%{?suse_version} >= 1600
 BuildRequires:  mdbook
 %endif
-BuildRequires:  rust >= 1.65
+BuildRequires:  rust >= 1.74.1
 BuildRequires:  shared-mime-info
 Requires:       shared-mime-info
 %if 0%{?suse_version} >= 1600

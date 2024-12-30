@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.91.0:
+  * feat: add version filter regex-semver (#3347)
+  * feat(autodiscovery): support kubernetes cronjob (#3346)
+  * deps: bump updatecli version to v0.90.0 (#3338)
+
+-------------------------------------------------------------------
 Fri Dec 20 12:04:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.90.0:

@@ -17,7 +17,7 @@
 
 
 Name:           updatecli
-Version:        0.90.0
+Version:        0.91.0
 Release:        0
 Summary:        A Declarative Dependency Management tool
 License:        Apache-2.0

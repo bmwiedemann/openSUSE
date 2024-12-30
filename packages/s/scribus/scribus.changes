@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 17:14:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add poppler 24.10 compatibility patch:
+  * Add fix_build_with_poppler_24.12.0.patch
+  * Drop 0001-Fix-build-with-poppler-24.10.0.patch
+
+-------------------------------------------------------------------
 Fri Oct 25 14:39:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add poppler 24.10 compatibility patch:

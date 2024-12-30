@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 26 00:55:26 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.22.7.
+  * Fix serializing of commits with empty commit messages. (Castedo Ellerman, #1429)
+
+-------------------------------------------------------------------
 Sat Nov 23 17:57:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.6:

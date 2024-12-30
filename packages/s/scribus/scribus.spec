@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,7 @@ Source2:        scribus.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
 # PATCH-FIX-UPSTREAM poppler...
-Patch1:         0001-Fix-build-with-poppler-24.10.0.patch
+Patch1:         fix_build_with_poppler_24.12.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
@@ -68,7 +68,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(GraphicsMagick)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -77,6 +76,7 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(poppler) > 21.03.0

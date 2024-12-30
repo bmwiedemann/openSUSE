@@ -38,6 +38,8 @@ Patch3:         fix_grub_bls_cmdline.patch
 Patch4:         support-ecc-srk.patch
 # PATCH-FIX-UPSTREAM fix-testcase-empty-efi-variables.patch gh#okirch/pcr-oracle!58
 Patch5:         fix-testcase-empty-efi-variables.patch
+# PATCH-FIX-UPSTREAM fix-event-reshash-for-cryptouuid.patch gh#okirch/pcr-oracle!60
+Patch6:         fix-event-reshash-for-cryptouuid.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0

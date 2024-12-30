@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 27 09:56:57 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to 0.57.0:
+  * You can now resize the preview window by dragging the border
+  * Built-in walker improvements 
+    - `--walker-root` can take multiple directory arguments. e.g. 
+      `--walker-root include src lib`
+    - `--walker-skip` can handle multi-component patterns. e.g. 
+      `--walker-skip target/build`
+  * Removed long processing delay when displaying images in the 
+    preview window
+  * `FZF_PREVIEW_*` environment variables are exported to all child
+    processes (gh#junegunn/fzf#4098)
+  * Bug fixes in fish scripts
+
+-------------------------------------------------------------------
 Fri Nov 15 02:36:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.56.3:

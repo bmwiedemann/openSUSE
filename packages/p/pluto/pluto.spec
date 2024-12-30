@@ -16,17 +16,18 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           pluto
-Version:        5.20.3
+Version:        5.21.0
 Release:        0
 Summary:        A cli tool to help discover deprecated apiVersions in Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/FairwindsOps/pluto
 Source:         pluto-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
 Pluto is a utility to help users find deprecated Kubernetes apiVersions in
@@ -75,11 +76,11 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 ./bin/%{name} %{buildroot}/%{_bindir}/%{name}
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
@@ -89,19 +90,12 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{_bindir}/%{name}
 
 %files bash-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files fish-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog

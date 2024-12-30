@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 21 09:33:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.9.0:
+  + Features: Introduce support for the Notification v2 portal
+    version.
+  + Bug fixes:
+    - Fix a file descriptor leak in the Mail portal code
+    - Fix some minor memory leaks
+
+-------------------------------------------------------------------
 Wed Sep  4 15:31:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.1:

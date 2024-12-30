@@ -16,7 +16,7 @@
 #
 
 
-%define git_commit df7809662a68583151438ba2cb5ac5a0d73a0fc9
+%define git_commit 71b7e2928fd21f1632de68094dbe402b74aa9193
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,10 +25,10 @@ Name:           kernel-syms-longterm
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        6.6.67
+Version:        6.6.68
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gdf78096
+Release:        <RELEASE>.g71b7e29
 %else
 Release:        0
 %endif

@@ -1,0 +1,5 @@
+<package name="rubygem-reline" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-reline"/>
+</package>

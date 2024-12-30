@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sun Dec 15 10:32:41 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0
+  * This release is part of the Xfce 4.20 platform release.
+  * No changes since 4.19.4
+
+-------------------------------------------------------------------
+Sat Nov  2 14:06:56 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.4 [development branch]
+  * xfce-do-release: Do not warn when using main instead of master
+  * Add libgspell-1-dev to CI build
+  * Add more details to the meson template and its README
+  * Work around parallel 'make distcheck' bug in gettext
+  * Don't quote the filename args passed to 'git diff'
+  * ci: Parallelize autotools builds
+
+-------------------------------------------------------------------
+Thu Oct  3 13:10:52 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add BuildRequires: meson
+
+- Update to version 4.19.3 (development branch)
+  * xfce-do-release: fix quoting for xfce-build command
+  * Add a couple more compiler flags to the meson template
+  * Bump glib dependency in meson template
+  * Add gobject-introspection example check to meson template
+  * build: Bump requirements for Xfce 4.20
+  * Disable ABI_CHECK for no-x11 and no-wayland builds
+
+- Update to version 4.19.2 (development branch)
+  * Add optional ABI check to the CI build stage
+  * Add GNU visibility generation and ABI check script
+  * Enhance/fix xfce-revision.h
+  * Add a project template for meson
+  * Add meson support to xfce-do-release
+  * Add meson support to GitLab CI template
+  * Allow the container build to build dependencies using meson
+  * Plug leak stemming from g_path_get_basename
+  * Add libyaml-dev to the build container
+  * Add libdisplay-info-dev to build container
+  * Add meson to CI build
+  * ci: Do not store clang-format-diff output
+  * ci: Enable on maintenance branches
+  * ci: Only run static analysis jobs on default branch
+  * ci: Make false-positive patterns match a single warning
+  * ci: Explicitly specify C++ compilers
+  * ci: Ensure scan-build uses clang as compiler
+  * ci: Add static analysis jobs
+  * ci: Rename .make hidden job to .configure
+  * ci: Add clang build
+  * ci: Build with --disable-debug in distcheck stage
+  * ci: Only run a stage if previous didn't failed
+  * ci: Avoid clang-format job failure if diff is empty
+  * Add libdbus-glib-1-dev to CI build
+
+-------------------------------------------------------------------
+Thu Jun  6 06:00:50 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.1 (development branch)
+  * ci: Add no-x11 and no-wayland builds
+  * ci: Make build stage fail on any compiler warning
+  * ci: Make jobs running in merge requests interruptible
+  * ci: Add clang  *format check
+  * Bump CI container to Ubuntu 24.04
+  * xdt-autogen: Fix aclocal macro search path
+  * Add libjson-c-dev to CI build
+  * Clone submodules for current repo in CI template
+  * Clone submodules when cloning repo for CI container build
+  * xfce-do-release: Skip appdata if file does not exist in right format
+  * xfce-do-release: Warn about unmodified configure.ac.in
+  * xfce-do-release: Use available proc units for make
+  * Add libayatana-indicator3-dev to CI build
+  * Remove -Wdeclaration-after-statement from list of enabled warnings
+  * Add polkitd to CI build
+
+-------------------------------------------------------------------
+Tue Apr  2 06:24:10 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.0 (development branch) 
+
+-------------------------------------------------------------------
 Wed Oct 18 10:08:54 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.1

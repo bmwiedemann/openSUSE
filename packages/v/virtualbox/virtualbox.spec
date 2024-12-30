@@ -17,38 +17,41 @@
 
 
 %if "@BUILD_FLAVOR@" == "kmp"
-### macros for virtualbox-kmp ###
-%define main_package 0
-%define kmp_package 1
-%if 0%{?suse_version} > 1600
-%define kmp_longterm 1
-%endif
-%define name_suffix kmp
-%define dash -
-%define package_summary Kernel modules for VirtualBox
-%if %{undefined kernel_module_directory}
-%define kernel_module_directory /lib/modules
-%endif
+	# macros for virtualbox-kmp
+	%define main_package 0
+	%define kmp_package 1
+	%if 0%{?suse_version} > 1600
+		%define kmp_longterm 1
+	%endif
+	%define name_suffix kmp
+	%define dash -
+	%define package_summary Kernel modules for VirtualBox
+	%if %{undefined kernel_module_directory}
+		%define kernel_module_directory /lib/modules
+	%endif
 %else
-### macros for virtualbox main package ###
-%define main_package 1
-%define kmp_package 0
-%define package_summary VirtualBox is an Emulator
-%define qt5ver %(rpm -q --queryformat %%{version} libQt5Core5|perl -ne '/(\\d+)\\.(\\d+)\\.(\\d+)?/&&printf "%%d%%02d%%02d\\n",$1,$2,$3')
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
-%if ! %{defined _distconfdir}
-%define _distconfdir %{_sysconfdir}
-%endif
-# Do not provide libGL.so symbols - they are owned by Mesa already and this could potentially confuse rpm/zypp
-%global __provides_exclude ^libE?GL.so.1.*$
-# With 32-bit builds, the job limit cannot be larger than 2, otherwise the build runs out of memory.
-# For 64-bit builds, no memory limit is reached when more jobs are run, but the builds crash with strange errors.
-# For the above reasons, limit the number of jobs to 2.
-%define _vbox_instdir %{_prefix}/lib/virtualbox
-%define _udevrulesdir %{_prefix}/lib/udev/rules.d
+	# macros for virtualbox main package ###
+	%define main_package 1
+	%define kmp_package 0
+	%define package_summary VirtualBox is an Emulator
+	%define qt5ver %(rpm -q --queryformat %%{version} libQt5Core5|perl -ne '/(\\d+)\\.(\\d+)\\.(\\d+)?/&&printf "%%d%%02d%%02d\\n",$1,$2,$3')
+	# Compat macro for new _fillupdir macro introduced in Nov 2017
+	%if !%{defined _fillupdir}
+		%define _fillupdir %{_localstatedir}/adm/fillup-templates
+	%endif
+	%if ! %{defined _distconfdir}
+		%define _distconfdir %{_sysconfdir}
+	%endif
+	# Do not provide libGL.so symbols - they are owned by Mesa already and
+	# this could potentially confuse rpm/zypp
+	%global __provides_exclude ^libE?GL.so.1.*$
+	# With 32-bit builds, the job limit cannot be larger than 2, otherwise
+	# the build runs out of memory.
+	# For 64-bit builds, no memory limit is reached when more jobs are run,
+	# but the builds crash with strange errors.
+	# For the above reasons, limit the number of jobs to 2.
+	%define _vbox_instdir %{_prefix}/lib/virtualbox
+	%define _udevrulesdir %{_prefix}/lib/udev/rules.d
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
@@ -400,11 +403,9 @@ Requires:       %{name} = %{version}
 Virtual Network Computing (VNC) is a graphical desktop sharing system that uses the Remote Frame Buffer
 protocol (RFB) to remotely control another computer. When this optional feature is desired, it is installed
 as an "extpack" for VirtualBox. The implementation is licensed under GPL.
-###########################################
 # main_package
 %endif
 
-### Description of virtualbox-kmp ###
 %if %{kmp_package}
 %description
 This package contains the kernel-modules that VirtualBox uses to create or run virtual machines.
@@ -496,34 +497,32 @@ EOF
 %sysusers_generate_pre vbox-guest-tools.conf vbox-guest-tools vbox-guest-tools.conf
 
 %install
-#################################
 echo "create directory structure"
-#################################
-install -d -m 755 %{buildroot}%{_sbindir}
-install -d -m 755 %{buildroot}%{_prefix}/lib
-install -d -m 755 %{buildroot}%{_bindir}
-install -d -m 755 %{buildroot}%{_sbindir}
-install -d -m 755 %{buildroot}%{_datadir}/virtualbox/nls
-install -d -m 755 %{buildroot}%{_datadir}/virtualbox/UnattendedTemplates
-install -d -m 755 %{buildroot}%{_datadir}/pixmaps
-install -d -m 755 %{buildroot}%{_datadir}/applications
-install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
-install -d -m 755 %{buildroot}%{_vbox_instdir}/components
-install -d -m 755 %{buildroot}%{_libdir}/dri
-install -d -m 755 %{buildroot}%{_libdir}/xorg/modules/drivers
-install -d -m 755 %{buildroot}%{_libdir}/xorg/modules/input
-install -d -m 755 %{buildroot}%{_sysconfdir}/default
-install -d -m 755 %{buildroot}%{_sysconfdir}/init.d
-install -d %{buildroot}%{_unitdir}
-install -d %{buildroot}%{_unitdir}/multi-user.target.wants
-install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
-install -d -m 755 %{buildroot}%{_sysconfdir}/vbox/autostart.d
-install -d -m 755 %{buildroot}%{_udevrulesdir}
-install -d -m 755 %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d
+mkdir -p \
+	%{buildroot}%{_sbindir} \
+	%{buildroot}%{_prefix}/lib \
+	%{buildroot}%{_bindir} \
+	%{buildroot}%{_sbindir} \
+	%{buildroot}%{_datadir}/virtualbox/nls \
+	%{buildroot}%{_datadir}/virtualbox/UnattendedTemplates \
+	%{buildroot}%{_datadir}/pixmaps \
+	%{buildroot}%{_datadir}/applications \
+	%{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom \
+	%{buildroot}%{_vbox_instdir}/components \
+	%{buildroot}%{_libdir}/dri \
+	%{buildroot}%{_libdir}/xorg/modules/drivers \
+	%{buildroot}%{_libdir}/xorg/modules/input \
+	%{buildroot}%{_sysconfdir}/default \
+	%{buildroot}%{_sysconfdir}/init.d \
+	%{buildroot}%{_unitdir} \
+	%{buildroot}%{_unitdir}/multi-user.target.wants \
+	%{buildroot}%{_sysconfdir}/vbox \
+	%{buildroot}%{_sysconfdir}/vbox/autostart.d \
+	%{buildroot}%{_udevrulesdir} \
+	%{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d \
+	%{buildroot}%{_modprobedir}
 
-###########################################
 echo "entering guest-tools install section"
-###########################################
 install -m 755 out/linux.*/release/bin/additions/VBoxControl %{buildroot}%{_bindir}
 install -m 755 out/linux.*/release/bin/additions/VBoxService %{buildroot}%{_sbindir}/VBoxService
 install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}%{_sbindir}/mount.vboxsf
@@ -545,62 +544,52 @@ install -m 644 %{SOURCE25} %{buildroot}%{_sysconfdir}/xdg/autostart/vboxclient.d
 install -d -m 755 %{buildroot}/media
 %endif
 
-###########################################
 echo "entering VNC extension install section"
-###########################################
 pushd out/linux.*/release/packages/
 mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
 install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
 popd
 
-##############################################
 echo "entering virtualbox(-qt) install section"
-##############################################
 # copy the main files to %%{_vbox_instdir}
 pushd out/linux.*/release/bin
-install -m 755 VBoxManage 			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxHeadless 			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxSDL 				%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxNetNAT			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxAutostart			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxVolInfo			%{buildroot}%{_vbox_instdir}
-install -m 755 vboxshell.py			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxBalloonCtrl			%{buildroot}%{_vbox_instdir}
-install -m 755 webtest				%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxDTrace			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxDbg.so			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxDbg.so			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxDxVk.so			%{buildroot}%{_vbox_instdir}
-install -m 755 UICommon.so			%{buildroot}%{_vbox_instdir}
-install -m 755 vboximg-mount			%{buildroot}%{_vbox_instdir}
+cp -a VBoxManage VBoxHeadless VBoxSDL VBoxNetNAT VBoxAutostart VBoxVolInfo \
+	vboxshell.py VBoxBalloonCtrl webtest VBoxDTrace VBoxDbg.so \
+	VBoxDxVk.so UICommon.so vboximg-mount %{buildroot}%{_vbox_instdir}
+ls -al VBoxManage VBoxHeadless VBoxSDL VBoxNetNAT VBoxAutostart VBoxVolInfo \
+	vboxshell.py VBoxBalloonCtrl webtest VBoxDTrace VBoxDbg.so \
+	VBoxDxVk.so UICommon.so vboximg-mount 0755 || :
 # create links to vbox tools in PATH - they could be usefull for controlling vbox from command line
 ln -s %{_vbox_instdir}/VBoxManage		%{buildroot}%{_bindir}/VBoxManage
 ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
 ln -s %{_vbox_instdir}/VBoxSDL			%{buildroot}%{_bindir}/VBoxSDL
 ln -s %{_vbox_instdir}/vboximg-mount		%{buildroot}%{_bindir}/vboximg-mount
-install -m 755 VBoxSVC 				%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxExtPackHelperApp		%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxPermissionMessage		%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxSUIDMessage			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxUSB_DevRules			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxNetDHCP			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxNetAdpCtl			%{buildroot}%{_vbox_instdir}
+cp -a VBoxSVC VBoxExtPackHelperApp VBoxPermissionMessage VBoxSUIDMessage \
+	VBoxUSB_DevRules VBoxNetDHCP VBoxNetAdpCtl VirtualBoxVM \
+	%{buildroot}%{_vbox_instdir}/
+ls -al VBoxSVC VBoxExtPackHelperApp VBoxPermissionMessage VBoxSUIDMessage \
+	VBoxUSB_DevRules VBoxNetDHCP VBoxNetAdpCtl VirtualBoxVM 0755 || :
 install -m 755 VirtualBox			%{buildroot}%{_vbox_instdir}/VirtualBoxQt
-install -m 755 VirtualBoxVM			%{buildroot}%{_vbox_instdir}
 # compatibility symlink in order to keep old desktop links functional
 ln -s %{_vbox_instdir}/VirtualBoxVM		%{buildroot}%{_vbox_instdir}/VirtualBox
-install -m 755 VBoxEFI*.fd			%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxSysInfo.sh			%{buildroot}%{_vbox_instdir}
+cp -a VBoxEFI*.fd VBoxSysInfo.sh %{buildroot}%{_vbox_instdir}/
+ls -al VBoxEFI*.fd VBoxSysInfo.sh 0755 || :
 install -m 644 *.so		 		%{buildroot}%{_vbox_instdir}
 install -m 644 *.r0 				%{buildroot}%{_vbox_instdir}
 install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 # install languages
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
 install -m 644 UnattendedTemplates/*		%{buildroot}%{_datadir}/virtualbox/UnattendedTemplates/
+
+# Workaround kvm.ko usurping VMX.
+# (Linux kernel commit b4886fab6fb620b96ad7eeefb9801c42dfa91741 is the culprit.
+# See also https://lore.kernel.org/kvm/ZwQjUSOle6sWARsr@google.com/T/ )
+echo options kvm enable_virt_at_load=0 >"%buildroot/%_modprobedir/50-virtualbox.conf"
+
 # install kmp src
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/additions
-tar jcf %{buildroot}%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2 additions/src
+tar -jcf %{buildroot}%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2 additions/src
 cp -a src %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 install -m 644 %{SOURCE11}			%{buildroot}%{_udevrulesdir}/60-vboxdrv.rules
 popd
@@ -655,9 +644,7 @@ allow = true
 EOF
 # install udev helper script for creating usb devices
 install -m 0755 -D src/VBox/Installer/linux/VBoxCreateUSBNode.sh %{buildroot}%{_vbox_instdir}/VBoxCreateUSBNode.sh
-######################################################
 echo "entering python-virtualbox install section"
-######################################################
 pushd out/linux.*/release/bin/sdk/installer/python
 VBOX_INSTALL_PATH=%{_vbox_instdir} python3 vboxapisetup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
@@ -665,9 +652,7 @@ install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 cp -r out/linux.*/release/bin/sdk/bindings/xpcom/python %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 %py3_compile %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom/python
 
-######################################################
 echo "entering virtualbox-devel install section"
-######################################################
 cp -r out/linux.*/release/bin/sdk/bindings/auth %{buildroot}%{_vbox_instdir}/sdk/bindings
 
 pushd out/linux.*/release/bin/sdk/bindings/xpcom
@@ -678,19 +663,14 @@ popd
 
 cp out/linux.*/release/bin/sdk/bindings/VirtualBox.xidl %{buildroot}%{_vbox_instdir}/sdk/bindings
 
-######################################################
 echo "entering virtualbox-websrv install section"
-######################################################
 pushd out/linux.*/release/bin
 install -m 755 vboxwebsrv %{buildroot}%{_vbox_instdir}
 install -m 755 webtest %{buildroot}%{_vbox_instdir}
 popd
 ln -sf %{_unitdir}/vboxweb-service.service %{buildroot}%{_unitdir}/multi-user.target.wants/vboxweb-service.service
 
-#
-######################################################
 echo "entering virtualbox-guest-desktop-icons install section"
-######################################################
 install -d -m 755	%{buildroot}%{_datadir}/pixmaps/virtualbox
 
 pushd src/VBox/Frontends/VirtualBox/images
@@ -698,41 +678,21 @@ for icon in os_*.png; do
   install -m 644 "$icon" %{buildroot}%{_datadir}/pixmaps/virtualbox/"$icon";
 done
 popd
-#
-######################################################
-# system users and groups
 
 install -Dm0644 vbox.conf %{buildroot}%{_sysusersdir}/vbox.conf
 install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-tools.conf
-######################################################
-# run fdupes
-######################################################
-#run fdupes because we lost link for virtualbox/components directory
 %fdupes %{buildroot}/%{_vbox_instdir}
-#also some translation files are duplicated
 %fdupes %{buildroot}/%{_datadir}/virtualbox/nls
-#also some icon files are duplicated
 %fdupes %{buildroot}/%{_datadir}/pixmaps/virtualbox
 
-#
-#
-######################################################
-# scriptlets - pre
-######################################################
-
 %pre -f vbox.pre
-%service_add_pre vboxdrv.service
-%service_add_pre vboxautostart-service.service
+%service_add_pre vboxdrv.service vboxautostart-service.service
 
 %pre guest-tools -f vbox-guest-tools.pre
 %service_add_pre vboxadd-service.service
 
 %pre websrv
 %service_add_pre vboxweb-service.service
-
-#######################################################
-# scriptlets - post
-#######################################################
 
 %post
 /sbin/ldconfig
@@ -741,8 +701,7 @@ install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-too
 %set_permissions %{_vbox_instdir}/VBoxNetDHCP
 %set_permissions %{_vbox_instdir}/VBoxNetAdpCtl
 %set_permissions %{_vbox_instdir}/VBoxHeadless
-%service_add_post vboxdrv.service
-%service_add_post vboxautostart-service.service
+%service_add_post vboxdrv.service vboxautostart-service.service
 # add new autostart stuff to the existing default config, if missing
 grep -q VBOXAUTOSTART %{_sysconfdir}/default/virtualbox || {
     cat >> %{_sysconfdir}/default/virtualbox << EOF
@@ -777,9 +736,7 @@ done
 %verify_permissions -e %{_vbox_instdir}/VBoxSDL
 
 %post guest-tools
-%service_add_post vboxadd-service.service
-%service_add_post vboxclient.service
-%service_add_post vboxservice.service
+%service_add_post vboxadd-service.service vboxclient.service vboxservice.service
 
 %post websrv
 %service_add_post vboxweb-service.service
@@ -789,60 +746,33 @@ EXTPACK="%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
 ACCEPT="$(tar --to-stdout -xf "${EXTPACK}" ./ExtPack-license.txt | sha256sum | head --bytes=64)"
 VBoxManage extpack install --replace "${EXTPACK}" --accept-license="${ACCEPT}" > /dev/null
 
-#######################################################
-# scriptlets preun
-#######################################################
-
 %preun
-%stop_on_removal vboxautostart-service
-%stop_on_removal vboxdrv
-%service_del_preun vboxautostart-service.service
-%service_del_preun vboxdrv.service
-exit 0
+%service_del_preun vboxautostart-service.service vboxdrv.service
 
 %preun guest-tools
-%stop_on_removal vboxadd-service
 %stop_on_removal vboxadd
 %service_del_preun vboxadd-service.service
-%systemd_preun vboxclient.service
-%systemd_preun vboxservice.service
-exit 0
+%systemd_preun vboxclient.service vboxservice.service
 
 %preun websrv
 %stop_on_removal vboxweb-service
 %service_del_preun vboxweb-service.service
-exit 0
-
-#######################################################
-# scriptlets postun
-#######################################################
 
 %postun
 /sbin/ldconfig
-%restart_on_update vboxdrv
-%restart_on_update vboxautostart-service
 # immediately restarting virtualbox may not work. As such wait for the next reboot to restart
 %if ! %{defined service_del_postun_without_restart}
 export DISABLE_RESTART_ON_UPDATE=yes
-%service_del_postun vboxautostart-service.service
-%service_del_postun vboxdrv.service
+%service_del_postun vboxautostart-service.service vboxdrv.service
 %else
-%service_del_postun_without_restart vboxautostart-service.service
-%service_del_postun_without_restart vboxdrv.service
+%service_del_postun_without_restart vboxautostart-service.service vboxdrv.service
 %endif
 
 %postun guest-tools
-%restart_on_update vboxadd
-%restart_on_update vboxadd-service
-%service_del_postun vboxadd-service.service
-%service_del_postun vboxclient.service
-%service_del_postun vboxservice.service
+%service_del_postun vboxadd-service.service vboxclient.service vboxservice.service
 
 %postun websrv
-%restart_on_update vboxweb-service
 %service_del_postun vboxweb-service.service
-#
-#######################################################
 
 %files
 %doc README.autostart UserManual.pdf README.build
@@ -899,6 +829,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_unitdir}/multi-user.target.wants
 %{_prefix}/lib/virtualbox/vboxdrv.sh
 %{_prefix}/lib/virtualbox/vboxautostart-service.sh
+%{_modprobedir}/
 %{_unitdir}/vboxdrv.service
 %{_unitdir}/vboxautostart-service.service
 %{_unitdir}/multi-user.target.wants/vboxweb-service.service

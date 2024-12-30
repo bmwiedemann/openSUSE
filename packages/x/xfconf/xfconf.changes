@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Dec 15 14:40:36 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0:
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 16:53:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.5 [development branch]
+  * Fix FakeGdkRGBA and FakeGdkColor leaks
+  * tests: Fix D-Bus error reporting when xfconfd is not auto-started
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 14:00:38 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.4 [development branch]
+  * xfconf-query: print array property values when -lv
+
+-------------------------------------------------------------------
+Fri Oct 18 07:18:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.3 [development branch]
+  * Safer/better way to find GdkColor/GdkRGBA GTypes in the unified
+    API
+  * Mark xfconf_g_property_bind_gdkcolor/gdkrgba() as deprecated
+  * Allow calling xfconf_g_property_bind() with GdkColor or GdkRGBA
+    types
+  * Clean up how GdkColor/GdkRGBA GTypes are initialized
+  * build: Bump requirements for Xfce 4.20
+  * tests: Report D-Bus error when xfconfd is not auto-started
+  * tests: Fix xfconf_channel_get_string leak
+  * cache: Fix leaks in xfconf_cache_handle_property_changed
+  * ci: Update references for autotools/meson split
+  * Apply .clang-format file
+  * Preliminary cleanup
+  * Sort includes
+  * clang-format: Add file
+  * Clarify xfconf_channel_set_string() API docs
+  * channel: Fix get_string() return value
+  * cache: Fix leak in xfconf_cache_prefetch
+  * xfconf-query: Fix GOptionContext memory leak
+  * Add a systemd user unit corresponding to the D-Bus session
+    service
+  * gcc-analyzer: Fix -Wanalyzer-null-dereference
+  * scan-build: Add false positive file
+  * ci: Fix jobs extending .distcheck
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * channel: Fix get_properties()
+  * channel: Warn if queried type does not match property type
+  * Add missing GIR annotations
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:15:32 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.2 (Development branch)
+
+-------------------------------------------------------------------
 Thu Nov  2 15:22:31 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Fix usage of %%lang_package

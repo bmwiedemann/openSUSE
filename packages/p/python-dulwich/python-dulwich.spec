@@ -25,7 +25,7 @@
 %{?sle15_python_module_pythons}
 %define oldpython python
 Name:           python-dulwich
-Version:        0.22.6
+Version:        0.22.7
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later

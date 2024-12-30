@@ -2672,4 +2672,12 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment>rectify a bug reference</comment>
     <requestid>1225165</requestid>
   </revision>
+  <revision rev="284" vrev="4">
+    <srcmd5>92ac11091dc615d134c894b1d790b370</srcmd5>
+    <version>7.1.4</version>
+    <time>1735559451</time>
+    <user>anag+factory</user>
+    <comment>- Set kvm.enable_virt_at_load=0 via a modprobe file</comment>
+    <requestid>1233843</requestid>
+  </revision>
 </revisionlist>

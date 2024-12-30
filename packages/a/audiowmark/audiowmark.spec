@@ -17,7 +17,7 @@
 
 
 Name:           audiowmark
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Audio watermarking
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  pkgconfig(fftw3f)
 BuildRequires:  pkgconfig(libgcrypt) >= 1.2.0
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libswresample)
-BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(sndfile) >= 1.1.0
 
 %description
 audiowmark is an open source solution for watermarking audio files. It is is
@@ -42,7 +42,9 @@ for most users.
 %autosetup -p1
 
 %build
-%configure
+%configure \
+	--with-ffmpeg \
+	%{nil}
 %make_build
 
 %install

@@ -1037,4 +1037,12 @@
 - Fix Desktopfile to start in super user mode as dbus-launch is no longer part of the basesystem (boo#1234692)</comment>
     <requestid>1232641</requestid>
   </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>e572f43d7b948ea1b260604691333b1a</srcmd5>
+    <version>24.12.0</version>
+    <time>1735559449</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1233825</requestid>
+  </revision>
 </revisionlist>

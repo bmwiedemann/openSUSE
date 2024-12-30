@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 27 18:11:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.6.3
+  * update HLS support to build with ffmpeg-7 API
+  * preserve wav subformat
+  * improved RawConverter
+  * add format wav-pipe for very long input/output streams on
+    stdin/stdout
+  * performance optimizations for SFOutputStream
+
+-------------------------------------------------------------------
 Fri Feb 23 20:28:40 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version

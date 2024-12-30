@@ -23,14 +23,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Jinja2
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
 URL:            https://jinja.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/jinja2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - gh/pallets/jinja#1960 and gh/pallets/jinja#1977 - Fix FTBFS with Python 3.13
-Patch1:         https://src.fedoraproject.org/rpms/python-jinja2/raw/rawhide/f/python3.13.patch#/fix-ftbfs-with-python313.patch
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
@@ -55,8 +53,7 @@ inspired non-XML syntax but supports inline expressions and an optional
 sandboxed environment.
 
 %prep
-%setup -q -n jinja2-%{version}
-%patch -P 1 -p1
+%autosetup -p1 -n jinja2-%{version}
 
 %build
 %pyproject_wheel

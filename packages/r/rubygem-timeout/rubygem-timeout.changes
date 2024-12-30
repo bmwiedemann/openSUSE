@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Nov 14 18:41:48 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.4.1:
+
+## What's Changed
+* require ruby version in gemspec by @jjb in https://github.com/ruby/timeout/pull/35
+* test that work is done in the same thread/fiber as the caller by @jjb in https://github.com/ruby/timeout/pull/34
+* Require Ruby >= 2.6 for the timeout gem by @eregon in https://github.com/ruby/timeout/pull/37
+* nested exception tests for discussion by @jjb in https://github.com/ruby/timeout/pull/39
+* tests for blank seconds by @jjb in https://github.com/ruby/timeout/pull/40
+
+
+**Full Changelog**: https://github.com/ruby/timeout/compare/v0.4.0...v0.4.1
+
+0.4.0:
+
+## What's Changed
+* Update test libraries from ruby/ruby 2023-03-24 by @hsbt in https://github.com/ruby/timeout/pull/29
+* Use released version of test-unit-ruby-core by @nobu in https://github.com/ruby/timeout/pull/31
+* Raise exception instead of throw/catch for timeouts by @jeremyevans in https://github.com/ruby/timeout/pull/30
+
+
+**Full Changelog**: https://github.com/ruby/timeout/compare/v0.3.2...v0.4.0
+
+0.3.2:
+
+## What's Changed
+* Add Ruby 3.2 to CI matrix by @tricknotes in https://github.com/ruby/timeout/pull/23
+* Don't move the timer_thread when it's enclosed #24 by @gamecreature in https://github.com/ruby/timeout/pull/25
+* Improve actions by @hsbt in https://github.com/ruby/timeout/pull/26
+
+## New Contributors
+* @tricknotes made their first contribution in https://github.com/ruby/timeout/pull/23
+* @gamecreature made their first contribution in https://github.com/ruby/timeout/pull/25
+
+**Full Changelog**: https://github.com/ruby/timeout/compare/v0.3.1...v0.3.2
+
+
+
+-------------------------------------------------------------------
+Wed Dec  7 11:38:00 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.3.1
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Jun 13 18:42:06 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.3.0
+
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Mar 10 17:44:18 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- initialize package

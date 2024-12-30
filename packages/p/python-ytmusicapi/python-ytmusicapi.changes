@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 27 19:39:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.9.1
+  * fix(setup): Use resolve() before invoking as_uri()
+  * search: exclude "Single"/"EP" text from album artist list
+  * add_history_item: update doc and check for authentication
+  * doc: restructure reference
+
+-------------------------------------------------------------------
 Sat Dec 21 16:00:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.9.0

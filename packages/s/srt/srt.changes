@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Dec 20 14:30:42 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- version update to 1.5.4
+  * API/ABI:
+    - PR #2967: SRTO_VERSION socket option is read-only. Removed the ability to
+      set a value (srt_setopt(..)).
+    - PR #2849: Removed the possibility to use optlen=-1 in srt_setsockopt.
+    - PR #2683:❗Changed conditions for setting caller and listen callbacks.
+    - PR #2804: Fixed NULL characters handling inside of strings.
+    - PRs #2887, #2918, #2912: Fixed getting some socket options from a group.
+  * Known Issues
+    - #3072: Getting SRTO_STREAMID on an accepted group connection does not
+      return a value (listener side).
+  * New Features and Improvements
+    - PR #2700: Added support for Botan cryptography library.
+    - PR #2940: Added support for building SRT on visionOS.
+  * Thread Safety fixes:
+    - PR #3047: Fixed static variable usage in the crypto module.
+    - PR #3038: Improved mutex protection of the TSBPD.
+    - PR #2998: Fixed a data race on the listener's config.
+    - PR #2990: Fixed a potential data race around m_bGCStatus variable.
+    - PR #2972: Fixed TSBPD thread create/join protection.
+    - PR #2893: Fixed data races and multithreading issues.
+    - PR #2723: Fixed lacking mutex protection of some ACK-related fields.
+    - PR #1884: Fixed a possible socket leak in srt_accept failure.
+    - PR #1824: Fixed some lock-order-inversion and data race problems.
+  * Logging improvements
+  * Encryption
+    - PR #2962: Improved AES GCM encryption, changed GCM IV length to 12 bytes.
+    - PR #2921: Drop unencrypted packets if the receiving KM state is "secured".
+    - PR #2905: Fixed HaiCrypt_Clone() by properly setting up the RX crypto context.
+    - PR #2880: Fixed the PacketFilter (FEC) configuration not counting the
+      AEAD AUTH tag length.
+  * Fixes related to SRT Socket groups.
+  * Statistics fixes
+  * Sample Applications fixes
+    - PR #3002: Fixed verbose log linkage difference.
+    - PR #2848: Added simplified support for RTP input in srt-live-transmit.
+    - PR #2015, #3041: Added URL percent decoding to the URL query string keys and
+      values.
+  * Documentation
+    - PR #2762: Added Rejection Reasons document.
+    - PR #2921: Update the SRT_KM_S_SECURED description. 
+      Updated pktRcvUndecrypted description.
+    - PR #2875: Updated the documentation about latency and transmission type.
+    - PR #2820: More explicit description of grpdata_size updates.
+
+-------------------------------------------------------------------
 Mon Oct  2 08:10:49 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.5.3

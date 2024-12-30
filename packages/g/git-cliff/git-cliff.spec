@@ -69,7 +69,7 @@ Bash command-line completion support for %{name}.
 
 %build
 # We don't need to check an update. github feature is nice to have though
-%{cargo_build} --no-default-features -F github
+%{cargo_build} --ignore-rust-version --no-default-features -F github
 mkdir -p target/completions/
 mkdir -p target/man/
 OUT_DIR=target/completions/ ./target/release/%{name}-completions

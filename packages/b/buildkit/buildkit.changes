@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 23 07:45:52 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.18.2:
+  * update archutil
+  * solver: protect against nil dereference on uninitialized vertex
+  * migrate to github.com/moby/sys/reexec
+  * hack: remove loong64 validation in archutil
+  * archutil: regenerate to fix loong64
+  * fix: wcow: add powershell.exe dir to default PATH
+  * dockerfile: fix named context replacement for child stages
+  * dockerfile: fix onbuild propagation for child stages
+  * build(deps): bump softprops/action-gh-release from 2.1.0 to 2.2.0
+  * dockerfile: add regression test for parallel cache mounts
+  * Dockerfile: update runc binary to v1.2.3
+  * update Alpine to v3.21
+  * update xx to v1.6.1
+  * vendor: github.com/docker/cli v27.4.0
+  * vendor: github.com/docker/docker v27.4.0
+  * tests: client: enable a batch of integration tests for wcow
+  * llb: avoid concurrent map write on parallel marshal
+  * tests: client: enable a batch of integration tests for wcow
+  * dockerfile: add test for step names stability
+
+-------------------------------------------------------------------
 Tue Dec 10 07:21:58 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.18.1:

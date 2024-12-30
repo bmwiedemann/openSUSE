@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:05:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.14:
+  * fix(go): update go builder version for image-factory
+  * fix(deps): update module github.com/siderolabs/image-factory to
+  * v0.6.5
+  * docs: update CLI reference documentation (#776)
+  * chore(deps): update dependency siderolabs/talos to v1.9.1
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+  * to v1.9.1
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module
+  * github.com/siderolabs/talos/pkg/machinery to v1.10.0-alpha.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#772)
+  * chore(github-action): update renovatebot/github-action action
+  * to v41.0.7
+  * fix(deps): update module github.com/gookit/validate to v1.5.4
+  * chore(schema): update talos-extensions.yaml JSON schema (#768)
+  * chore(schema): update talos-extensions.yaml JSON schema (#767)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+  * v3.0.13
+  * feat: update Scoop for talhelper version v3.0.13
+  * feat: update flake (#764)
+
+-------------------------------------------------------------------
 Wed Dec 18 06:26:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.13:

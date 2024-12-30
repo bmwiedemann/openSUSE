@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 29 22:25:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Set kvm.enable_virt_at_load=0 via a modprobe file when virtualbox
+  is installed, to workaround kvm.ko stealing VMX mode.
+  <https://lore.kernel.org/kvm/ZwQjUSOle6sWARsr@google.com/T/ >
+
+-------------------------------------------------------------------
 Thu Nov 14 16:03:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Use distro-default INSTALL_MOD_DIR for both kmp

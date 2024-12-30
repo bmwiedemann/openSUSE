@@ -19,21 +19,22 @@
 %bcond_with git
 %define libname libxfce4util7
 Name:           libxfce4util
-Version:        4.18.2
+Version:        4.20.0
 Release:        0
 Summary:        Utility Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/libxfce4util/4.18/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/libxfce4util/4.20/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
+BuildRequires:  pkgconfig(gtk-doc) >= 1.20
 BuildRequires:  pkgconfig(vapigen)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
@@ -123,7 +124,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,ur_PK,tl_PH}
 %files lang -f %{name}.lang
 
 %files -n %{libname}
-%doc AUTHORS NEWS TODO README.Kiosk README.md
+%doc AUTHORS NEWS README.md
 %license COPYING
 %{_libdir}/libxfce4util.so.*
 

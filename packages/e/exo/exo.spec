@@ -18,26 +18,26 @@
 
 %bcond_with git
 Name:           exo
-Version:        4.18.0
+Version:        4.20.0
 Release:        0
 Summary:        Application Development Library for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://docs.xfce.org/xfce/exo/start
-Source0:        https://archive.xfce.org/src/xfce/exo/4.18/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/exo/4.20/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.1
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 # Prevent dependency cycle exo -> libxfce4ui-devel -> libxfce4ui-1-0 -> exo-tools
 #!BuildIgnore:  exo-tools
@@ -69,6 +69,7 @@ This package provides the helpers data for exo.
 Summary:        Application Development Library for Xfce
 Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
+Requires:       perl-URI
 Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-tools
 Obsoletes:      libexo-1-0
@@ -156,3 +157,4 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_datadir}/gtk-doc/html/exo-2/
 
 %changelog
+

@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libportal
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        A GIO-style async API for most Flatpak portals
 License:        LGPL-3.0-or-later
@@ -29,8 +29,8 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.46.0
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)

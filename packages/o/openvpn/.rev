@@ -995,4 +995,13 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>1218829</requestid>
   </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>53c50600a466f51491d3e0f08efeece1</srcmd5>
+    <version>2.6.10</version>
+    <time>1735559453</time>
+    <user>anag+factory</user>
+    <comment>- Set %_buildshell because of bashisms in build recipe ([[ and =~)
+- Replace over-the-top `find -exec rm` by just -delete (forwarded request 1232791 from jengelh)</comment>
+    <requestid>1233845</requestid>
+  </revision>
 </revisionlist>

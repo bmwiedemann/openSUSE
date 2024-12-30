@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:21:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.8:
+  * prepare branch for v1.8.8 release (#2314)
+  * [BACKPORT v1.8] bump golang.org/x/net from 0.25 to 0.33 (#2311)
+    (#2313)
+  * Backport[v1.8]: Bump golang.org/x/crypto from 0.21.0 to 0.31.0
+    (#2288)
+  * [BACKPORT] add simulated state serialization between tofu test
+    runs (#2274) (#2276)
+
+-------------------------------------------------------------------
 Fri Dec 06 06:27:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.7:

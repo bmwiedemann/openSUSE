@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec 27 09:16:40 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.1.5:
+  * The sandboxed environment handles indirect calls to str.format, 
+    such as by passing a stored reference to a filter that calls 
+    its argument. GHSA-q2x7-8rv6-6q7h
+  * Escape template name before formatting it into error messages, 
+    to avoid issues with names that contain f-string syntax. #1792, 
+    GHSA-gmj6-6f8f-6699
+  * Sandbox does not allow clear and pop on known mutable sequence 
+    types. #2032
+  * Calling sync render for an async template uses asyncio.run. #1952
+  * Avoid unclosed auto_aiter warnings. #1960
+  * Return an aclose-able AsyncGenerator from 
+    Template.generate_async. #1960
+  * Avoid leaving root_render_func() unclosed in 
+    Template.generate_async. #1960
+  * Avoid leaving async generators unclosed in blocks, includes and 
+    extends. #1960
+  * The runtime uses the correct concat function for the current 
+    environment when calling block references. #1701
+  * Make |unique async-aware, allowing it to be used after another 
+    async-aware filter. #1781
+  * |int filter handles OverflowError from scientific notation. #1921
+  * Make compiling deterministic for tuple unpacking in a {% set ... %} 
+    call. #2021
+  * Fix dunder protocol (copy/pickle/etc) interaction with Undefined 
+    objects. #2025
+  * Fix copy/pickle support for the internal missing object. #2027
+  * Environment.overlay(enable_async) is applied correctly. #2061
+  * The error message from FileSystemLoader includes the paths that 
+    were searched. #1661
+  * PackageLoader shows a clearer error message when the package does 
+    not contain the templates directory. #1705
+  * Improve annotations for methods returning copies. #1880
+  * urlize does not add mailto: to values like @a@b. #1870
+  * Tests decorated with @pass_context can be used with the 
+    |select filter. #1624
+  * Using set for multiple assignment (a, b = 1, 2) does not fail when 
+    the target is a namespace attribute. #1413
+  * Using set in all branches of {% if %}{% elif %}{% else %} blocks does 
+    not cause the variable to be considered initially undefined. #1253
+- drop fix-ftbfs-with-python313.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Sep 24 12:48:03 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error under Leap.

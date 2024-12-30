@@ -16,6 +16,7 @@
 #
 
 
+%define _buildshell /bin/bash
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
@@ -37,7 +38,7 @@ Source9:        %{name}.target
 Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
-Patch2:		openvpn-CVE-2024-28882.patch
+Patch2:         openvpn-CVE-2024-28882.patch
 BuildRequires:  iproute2
 BuildRequires:  libcap-ng-devel
 BuildRequires:  liblz4-devel
@@ -120,7 +121,6 @@ This package provides the header file to build external plugins.
 
 %prep
 %autosetup -p0
- 
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c
@@ -159,7 +159,7 @@ fi
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -print -exec rm -f {} +
+find %{buildroot} -type f -name "*.la" -print -delete
 mkdir -p %{buildroot}/%{_sysconfdir}/openvpn
 mkdir -p %{buildroot}/%{_rundir}/openvpn
 mkdir -p %{buildroot}/%{_datadir}/openvpn
@@ -179,7 +179,7 @@ install -m 755 %{SOURCE5} sample/sample-scripts/client-netconfig.down
 
 # we install docs via spec into _defaultdocdir/name/management-notes.txt
 rm -rf %{buildroot}%{_datadir}/doc/{OpenVPN,%{name}}
-find sample -name .gitignore -exec rm -f {} +
+find sample -name .gitignore -delete
 
 %pre
 %service_add_pre %{name}.target

@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-dev-tools
 #
-# Copyright (c) 2020-2023 SUSE LLC
+# Copyright (c) 2020-2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %bcond_with git
 Name:           xfce4-dev-tools
-Version:        4.18.1
+Version:        4.20.0
 Release:        0
 Summary:        Xfce Development Tools
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.18/%{name}-%{version}.tar.bz2
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+Source0:        https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.20/%{name}-%{version}.tar.bz2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  meson
 BuildRequires:  xsltproc
 Requires:       autoconf
 Requires:       automake
@@ -57,7 +58,7 @@ NOCONFIGURE=1 ./autogen.sh
 %files
 %doc AUTHORS ChangeLog HACKING NEWS README.md
 %license COPYING
-%{_bindir}/xdt-autogen
+%{_bindir}/xdt-*
 %{_bindir}/xfce-build
 %{_bindir}/xdt-csource
 %{_bindir}/xfce-do-release

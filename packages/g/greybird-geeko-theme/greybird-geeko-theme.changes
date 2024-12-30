@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 19 05:10:30 UTC 2024 - maurizio.galli@gmail.com
+
+- Update to version 3.23.4+git0.c1d46c3:
+  * Sync with Greybird up to commit 7e4507d7713b2aaf41f8cfef2a1a9e214a4d8b6f
+  * Fix label styles for xfdesktop 4.19
+  * Stop forcing icon style for sidebars
+  * Style hover/active undecorated buttons same as normal
+  * Handle toolbar CSS class
+  * Style item menubar nodes
+  * xfwm4: Fix "Hide frame when maximized" ignoring top frame
+  * xfwm4: Improve tabwin contrast
+  * xfwm4: Bump tabwin preview to 128px
+  * xfwm4: Remove dark line below titlebar
+  * Decrease Gnome Software's headerbar height
+
+- Patches removed as no longer needed: 
+  * git7e4507d7713b2aaf41f8cfef2a1a9e214a4d8b6f-fix-label-styles-for-xfdesktop-4.19.patch
+-------------------------------------------------------------------
+Wed Dec 18 18:04:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add new patch
+  git7e4507d7713b2aaf41f8cfef2a1a9e214a4d8b6f-fix-label-styles-for-xfdesktop-4.19.patch
+- Refresh link-selected-is-optional.patch
+
+-------------------------------------------------------------------
 Tue Feb 27 11:18:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
