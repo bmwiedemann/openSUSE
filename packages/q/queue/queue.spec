@@ -17,23 +17,23 @@
 
 
 Name:           queue
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Tool for queuing shell commands
 License:        GPL-3.0-or-later
 URL:            https://github.com/asdil12/%{name}
 Source0:        https://github.com/asdil12/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python3-base >= 3.6
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-base >= 3.6
+BuildRequires:  python3-pip
 BuildRequires:  python3-psutil
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-termcolor
 BuildRequires:  python3-tomlkit
+BuildRequires:  python3-wheel
 Requires:       python3-psutil
 Requires:       python3-termcolor
 Requires:       python3-tomlkit

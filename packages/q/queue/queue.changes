@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 28 20:52:59 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.2.0
+- Only use dark_grey if available
+- Do osc sr in release.sh
+
+-------------------------------------------------------------------
+Sat Dec 28 17:02:00 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.1.0
+- Color scheduled and running entries differently
+- Enable multi column limiting
+- Add hint about config location
+
+-------------------------------------------------------------------
 Mon Dec 16 15:56:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %python3_pyproject_wheel instead of all-python-flavors
