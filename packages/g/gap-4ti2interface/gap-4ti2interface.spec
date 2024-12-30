@@ -17,8 +17,8 @@
 
 
 Name:           gap-4ti2interface
-Version:        2023.02.04
-%define sillyversion 2023.02-04
+Version:        2024.11.01
+%define sillyversion 2024.11-01
 Release:        0
 Summary:        GAP: Interface to 4ti2
 License:        GPL-2.0-only
@@ -31,7 +31,6 @@ BuildRequires:  gap-rpm-devel
 Requires:       4ti2
 Requires:       gap-core >= 4.12.1
 Requires:       gap-io >= 4.2
-Suggests:       gap-autodoc >= 2013.08.22
 
 %description
 This package provides a GAP module to interface with 4ti2,
