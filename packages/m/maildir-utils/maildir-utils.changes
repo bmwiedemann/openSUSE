@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 27 16:46:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.8:
+  * documentation improvements
+  * removal of the old threading option and cleanup
+  * 'lazy' indexing is even lazier (faster)
+  * make references (the References:/In-reply-to: headers) searchable
+    (with "references:" or "ref:"
+  * add new combination-field "related:" to search by msgid: or
+    references:
+  In mu4e (see docstrings for details):
+  * new command 'mu4e-view-jump-to-mime-part', to jump to some mime part
+    by number.
+  * new variable mu4e-trash-without-flag, if set to non-nil, "trashing" a
+    message will not add the "T" flag.
+
+-------------------------------------------------------------------
 Mon Oct 28 07:51:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.7:

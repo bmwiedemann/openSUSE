@@ -836,4 +836,24 @@
     look into when I have some more time and not in the 1.12.x series.</comment>
     <requestid>1218735</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>327b90013f07e74ef2cb287ec9cb21f1</srcmd5>
+    <version>1.12.8</version>
+    <time>1735565195</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.8:
+  * documentation improvements
+  * removal of the old threading option and cleanup
+  * 'lazy' indexing is even lazier (faster)
+  * make references (the References:/In-reply-to: headers) searchable
+    (with &quot;references:&quot; or &quot;ref:&quot;
+  * add new combination-field &quot;related:&quot; to search by msgid: or
+    references:
+  In mu4e (see docstrings for details):
+  * new command 'mu4e-view-jump-to-mime-part', to jump to some mime part
+    by number.
+  * new variable mu4e-trash-without-flag, if set to non-nil, &quot;trashing&quot; a
+    message will not add the &quot;T&quot; flag.</comment>
+    <requestid>1233581</requestid>
+  </revision>
 </revisionlist>
