@@ -1,7 +1,7 @@
 #
 # spec file for package xfwm4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,38 +18,41 @@
 
 %bcond_with git
 Name:           xfwm4
-Version:        4.18.0
+Version:        4.20.0
 Release:        0
 Summary:        Default Window Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfwm4/start
-Source0:        https://archive.xfce.org/src/xfce/xfwm4/4.18/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfwm4/4.20/%{name}-%{version}.tar.bz2
 Source1:        xfwm4.xml
-Patch1228524:   ce9f6e1187867c4fbb7935e08a9ab4d9d8dea8c3.patch
+# PATCH-FIX-OPENSUSE 0001-add-missing-include.patch -- add missing prototype detected by building with gcc-14 on Tumbleweed.
+Patch01:        0001-add-missing-include.patch
 BuildRequires:  exo-tools
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  intltool
+BuildRequires:  libXRes1
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(ice)
-BuildRequires:  pkgconfig(libstartup-notification-1.0)
+BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.5
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.14
-BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.18.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
+BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0)
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.18.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.0
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xcomposite) >= 0.2
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xpresent)
+BuildRequires:  pkgconfig(xpresent) >= 1.0
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 Recommends:     %{name}-lang = %{version}

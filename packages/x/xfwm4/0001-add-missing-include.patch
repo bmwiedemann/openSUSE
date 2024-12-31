@@ -1,0 +1,11 @@
+diff -rup a/settings-dialogs/xfwm4-settings.c b/settings-dialogs/xfwm4-settings.c
+--- a/settings-dialogs/xfwm4-settings.c	2022-12-01 11:47:40.000000000 +0100
++++ b/settings-dialogs/xfwm4-settings.c	2024-10-25 11:49:11.590884120 +0200
+@@ -42,6 +42,7 @@
+ #include <libxfce4util/libxfce4util.h>
+ #include <libxfce4ui/libxfce4ui.h>
+ #include <xfconf/xfconf.h>
++#include <libxfce4kbd-private/xfce-shortcuts.h>
+ #include <libxfce4kbd-private/xfce-shortcut-dialog.h>
+ #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
+ #include <libxfce4kbd-private/xfce-shortcuts-xfwm4.h>
