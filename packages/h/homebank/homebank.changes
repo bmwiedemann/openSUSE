@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec 28 08:09:11 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.8.6:
+  * bugfix: fix crash when print your accounts
+  * bugfix: ledger similar marked txn were persisted after close
+  * bugfix: ledger similair marked txn now display their group
+  * bugfix: repbalance first column title was not set to interval
+  * bugfix: lp#2091004 statistics time report totals line with
+    exact 0 is not displayed
+  * bugfix: lp#2090668 close after start wizard not not let choose
+    filename to save
+  * bugfix: lp#2090183 the export CSV functionality does not take
+    into account the frac digits property of the currency
+  * bugfix: lp#2089407 trendtime/balance report clear filter don't
+    clear properly
+  * bugfix: lp#2087750 save indicator (*) not showing after
+    editing multiple transfert
+  * bugfix: lp#2085376 future/remind main window bottom list
+    column not updated
+  * bugfix: lp#2083127 inherit operations should not preserve
+    colour flags
+  * bugfix: lp#2079801 alert about budget usage when move/delete
+    a category
+  * bugfix: lp#2060159 window width and height size is reset to a
+    small size after demaximizing on startup
+  * wish  : lp#2086475 add menu keyboard shortcut to import files
+
+-------------------------------------------------------------------
 Tue Oct  8 16:21:18 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.8.5:
