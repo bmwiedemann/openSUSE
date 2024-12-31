@@ -3004,6 +3004,9 @@
     <package name="libxfce4ui-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4util-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4util7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libxfce4windowing-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libxfce4windowing-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libxfce4windowingui-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfconf-0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxkbcommon-x11-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxkbcommon0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

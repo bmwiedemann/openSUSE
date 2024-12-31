@@ -192,7 +192,6 @@ unsorted:
   - NsCDE-doc 
   - NsCDE-lang 
   - NumCpp-devel 
-  - OOKiedokie 
   - OpenBoard 
   - OpenCSD 
   - OpenCSD-devel 
@@ -298,9 +297,6 @@ unsorted:
   - RBTools 
   - Radicale 
   - RealtimeSync 
-  - Regina-REXX 
-  - Regina-REXX-devel 
-  - Regina-REXX-doc 
   - RemoteBox 
   - RigelEngine 
   - Rivet-data 
@@ -3594,7 +3590,6 @@ unsorted:
   - dumb-devel-doc 
   - dummy-release 
   - dump 
-  - dump1090-fa 
   - dumpvdl2 
   - dumpzilla 
   - dumpzilla-bash-completion 
@@ -15923,7 +15918,6 @@ unsorted:
   - libregf-devel 
   - libregf-tools 
   - libregf1 
-  - libregina3 
   - libregraphapi-devel 
   - librelp-devel 
   - librelp0 
@@ -17309,11 +17303,8 @@ unsorted:
   - libxfce4ui-doc 
   - libxfce4util-devel 
   - libxfce4util-tools 
-  - libxfce4windowing-0-0 
   - libxfce4windowing-devel 
   - libxfce4windowing-devel-doc 
-  - libxfce4windowing-lang 
-  - libxfce4windowingui-0-0 
   - libxfconf-devel 
   - libxfdashboard0 
   - libxine-devel 
@@ -52698,6 +52689,7 @@ unsorted:
   - xfce4-power-manager-branding-upstream 
   - xfce4-sensors-plugin-devel 
   - xfce4-session-branding-upstream 
+  - xfce4-session-wayland-experimental 
   - xfce4-settings-branding-upstream 
   - xfce4-time-out-plugin 
   - xfce4-time-out-plugin-lang 
