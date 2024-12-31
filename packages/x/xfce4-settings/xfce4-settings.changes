@@ -1,24 +1,110 @@
 -------------------------------------------------------------------
-Tue Jun 11 14:21:22 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Dec 15 14:28:19 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Update to version 4.18.6
-  * Revert "x11: displays: Disable new outputs if /Notify is set to
-    "Do nothing""
+- Update to version 4.20.0:
+  * xfsettingsd: Fix ushort and ulong types on FreeBSD
+  * Translation Updates
 
 -------------------------------------------------------------------
-Sun Jun  9 07:49:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Dec  1 16:14:32 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Update to version 4.18.5
-  * keyboard-settings: Escape markup characters in command tooltips
-  * xfce-randr: Take RR_DoubleScan and RR_Interlace flags into account
-  * Update copyright year
-  * display-settings: Better fit with the way GApplication works
-  * display-settings: Fix xfconf warning
-  * display-settings: Fix cairo surface management
-  * Fix memory leaks around display_settings_get_profiles()
-  * x11: displays: Fix use of deprecation macros
-  * x11: displays: Disable new outputs if /Notify is set to "Do nothing"
+- Update to version 4.19.4 [development release]
+  * I18n: Update po/LINGUAS list
+  * mime: Fix xfce_mime_helper_category_to_string leak
+  * mime: Fix argument string leaks
+  * reinstate sys/wait.h inclusion, needed for WEXITSTATUS at least
+    on OpenBSD
+  * mime: Fix error message for missing helper definition
   * Translation Updates
+- Refresh 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
+Sat Nov  2 15:52:12 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.3 [development release]
+  * Added Keywords/Categories fields to .desktop files
+  * display-settings: Fix InputRegion leak
+  * x11: displays: Refactor screen_on_event()
+  * x11: displays: Delay RRScreenChangeNotify handling
+  * wayland: common: Properly initialize output modes
+  * color-settings: Add missing translation
+  * build: Adjust Wayland requirements for Xfce 4.20
+  * build: Bump requirements for Xfce 4.20
+  * xfsettingsd: Fix GVariant leak
+  * Use a toggle button for the MIME chooser dropdown buttons
+  * Revert "mime: Fix UMRs with GdkEvent"
+  * mime: Fix UMRs with GdkEvent
+  * mime: Fix string leak
+  * display-settings: Fix XfceMode leak
+  * mime: Fix GOptionContext leak
+  * mouse: Fix XGetExtensionVersion leaks
+  * mime: Fix leak in xfce_mime_window_row_activated
+  * mime: Fix GList leak in xfce_mime_helper_chooser_pressed
+  * mime: Fix xfce_mime_helper_category_to_string leak
+  * mime: Fix xfce_str_replace leak
+  * mime: Fix icon leaks
+  * mime: Fix g_option_context_get_help leak
+  * mime: Fix AtkRelationSet leak
+  * build: Fix build with libxfce4ui master
+  * xfsettingsd: pointers: Allow changing the size of device property 
+    array
+  * display-settings: Add missing translation
+  * Enumerate/load icon themes off of the UI thread
+  * appearance-settings: Fix memory leak
+  * Fix gtk-layer-shell includes
+  * appearance-settings: Fix scrolling via arrow keys in gtk theme list
+  * display-settings: Update primary monitor status on setting change
+  * display-settings: Fix primary monitor status for xfce4-notifyd
+  * display-settings: Fix primary monitor status for xfce4-panel
+  * xfsettingsd: Fix client side decoration layout
+  * x11: displays: Really honor /Notify is set to "Do nothing"
+  * Revert "x11: displays: Disable new outputs if /Notify is set to "Do 
+    nothing""
+  * mime-settings: Override GtkDialog::response()
+  * settings-manager: Add xfce4-about
+  * settings-manager: Remove xscreensaver
+  * scan-build: Fix unix.Malloc
+  * scan-build: Fix deadcode.DeadStores
+  * scan-build: Add false positive file
+  * gcc-analyzer: Add false positive file
+  * build: clang: Fix -Wimplicit-const-int-float-conversion
+  * build: clang: Fix -Wcast-align
+  * build: clang: Fix -Wignored-attributes
+  * keyboard-settings: Escape markup characters in command tooltips
+  * build: Fix build with --enable-sound-settings
+  * wayland: appearance-settings: Hide Xft settings
+  * mouse-settings: Fixes reverse horizontal scrolling
+  * display-settings: Listen to output change for minimal dialog too
+  * display-settings: Avoid weird interact between main and minimal 
+    dialogs
+  * xfsettingsd: Use default display profile when several profiles match
+  * Revert "Add new CI builds to build without X11 and Wayland"
+  * Apply .clang-format file
+  * Remove unnecessary dirname in local includes
+  * clang-format: Use IncludeBlocks::Regroup
+  * Apply .clang-format file
+  * Preliminary cleanup
+  * Bump required versions and remove dead code
+  * Clean up and sort includes
+  * clang-format: Add file
+  * xfce-randr: Take RR_DoubleScan and RR_Interlace flags into account
+  * appearance-settings: Show warnings for incomplete icon themes
+  * build: Fix x11 detection by defining the right m4 macro
+  * Translation Updates
+- Add 0001-relax-x11-version.patch to allow build for Leap with its
+  ancient but sufficient X11 packages.
+- Remove obsolete patch 0001-add-missing-include.patch
+
+-------------------------------------------------------------------
+Fri Oct 25 10:01:08 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add 0001-add-missing-include.patch to add missing prototype detected
+  by building with gcc-14 on Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Apr  2 06:30:43 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Updated to version 4.19.2 (development branch) 
 
 -------------------------------------------------------------------
 Thu Nov 30 17:20:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
