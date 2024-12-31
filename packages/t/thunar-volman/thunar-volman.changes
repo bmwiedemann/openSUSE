@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Dec 15 13:46:18 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0:
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 13:02:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.1 [development release]:
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 19:48:37 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.0 [development release]:
+  * build: Fix deprecation warning
+  * build: Bump requirements for Xfce 4.20
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * README: correct documentation URL
+  * settings: make `option_entries` NULL-terminated
+  * tvm-input-device: Avoid criticals when ID_MODEL missing (#25)
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Add icons at missing sizes, clean up SVG metadata
+  * Declare use of function (fixes #24)
+  * settings: Fix critical warning when closing embedded dialog
+  * Update bug report address
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Dec 21 12:37:22 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.0:
