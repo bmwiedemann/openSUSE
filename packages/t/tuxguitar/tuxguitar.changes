@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 28 15:14:50 UTC 2024 - guiv42 <guiv42@tuta.io>
+
+- Updated to new upstream release 1.6.6
+  * Add zoom control for Print/Export to pdf
+  * Improve GP and tef v2 import
+  * Save/restore player mode when switching tabs
+  * Export only audible tracks to MIDI and audio files
+  * Restore scrollbars during playback 
+  * Minor improvements, cleanups, bug fixes
+
+-------------------------------------------------------------------
 Sun Aug 25 12:52:03 UTC 2024 - guiv42 <guiv42@tuta.io>
 
 - Updated to new upstream release 1.6.4
-  * The Windows packages include OpenJDK from portableapps.com.
-  * The MacOS package includes OpenJDK from brew.sh.
+  * Updated translations
+  * Reworked duration and division menus
+  * More small improvements and cleanups
 - Removed patch:
   * 0013-desktop.patch
     + deleted, no more needed

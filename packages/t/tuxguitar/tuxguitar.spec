@@ -17,7 +17,7 @@
 
 
 Name:           tuxguitar
-Version:        1.6.4
+Version:        1.6.6
 Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
