@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define mname dbus_fast
@@ -31,7 +32,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           %{pname}%{?psuffix}
-Version:        2.22.1
+Version:        2.24.4
 Release:        0
 Summary:        Python library for DBus
 License:        MIT
@@ -51,6 +52,9 @@ BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  dbus-1
+%if 0%{?suse_version} && 0%{?suse_version} > 1500
+BuildRequires:  dbus-1-daemon
+%endif
 %endif
 
 BuildRequires:  fdupes

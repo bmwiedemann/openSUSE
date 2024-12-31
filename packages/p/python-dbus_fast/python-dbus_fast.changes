@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Dec 30 17:38:26 UTC 2024 - marec <marec@detebe.org>
+
+- fix build for Factory
+
+-------------------------------------------------------------------
+Sat Nov 16 13:15:55 UTC 2024 - marec@detebe.org
+
+- Update to version 2.24.4:
+  * 2.24.4
+  * fix: exclude .c files from being shipped (#331)
+  * chore(deps): bump sphinx-rtd-theme from 3.0.0 to 3.0.1 (#326)
+  * chore(deps-dev): bump setuptools from 75.2.0 to 75.3.0 (#328)
+  * chore(pre-commit.ci): pre-commit autoupdate (#327)
+  * Remove FUNDING.yml (#325)
+  * chore(deps): bump sphinx-rtd-theme from 2.0.0 to 3.0.1 (#322)
+  * chore(deps-dev): bump setuptools from 75.1.0 to 75.2.0 (#324)
+  * chore(pre-commit.ci): pre-commit autoupdate (#323)
+  * chore(deps): bump sphinx-rtd-theme from 2.0.0 to 3.0.0 (#319)
+  * chore(pre-commit.ci): pre-commit autoupdate (#320)
+
+-------------------------------------------------------------------
+Thu Oct 24 17:30:21 UTC 2024 - marec@detebe.org
+
+- Update to version 2.24.3:
+  * 2.24.3
+  * fix: remove deprecated no_type_check_decorator (#316)
+  * chore(pre-commit.ci): pre-commit autoupdate (#317)
+  * chore(deps): bump sphinx from 5.2.3 to 7.1.2 (#312)
+  * chore(deps-dev): bump setuptools from 74.1.2 to 75.1.0 (#314)
+  * 2.24.2
+  * fix: ensure build uses cython3 (#311)
+  * 2.24.1
+  * fix: add missing cython version pin to the build system (#310)
+  * chore(deps): bump sphinx from 5.2.3 to 7.1.2 (#307)
+  * chore(deps-dev): bump setuptools from 73.0.1 to 74.0.0 (#308)
+  * chore(deps): bump myst-parser from 1.0.0 to 3.0.1 (#306)
+  * 2.24.0
+  * feat: use dbus-run-session to drop X11 dependency (#299)
+  * chore(deps-dev): bump pytest-cov from 3.0.0 to 5.0.0 (#301)
+  * chore(deps): bump myst-parser from 1.0.0 to 3.0.1 (#305)
+  * chore(deps): bump myst-parser from 0.18.1 to 1.0.0 (#304)
+  * chore(deps): bump sphinx-rtd-theme from 1.0.0 to 2.0.0 (#302)
+  * chore(deps): bump sphinx from 5.2.3 to 6.2.1 (#300)
+  * chore(deps): bump sphinx-rtd-theme from 1.0.0 to 2.0.0 (#293)
+  * chore(deps): bump myst-parser from 0.18.1 to 1.0.0 (#296)
+  * 2.23.0
+  * feat: python 3.13 support (#291)
+  * chore(deps-dev): bump certifi from 2024.6.2 to 2024.7.4 in the pip group across 1 directory (#298)
+  * chore(deps-dev): bump setuptools from 65.7.0 to 73.0.1 (#295)
+  * chore(deps-dev): bump pytest-asyncio from 0.19.0 to 0.23.8 (#294)
+  * chore(deps-dev): bump cython from 0.29.37 to 3.0.11 (#292)
+  * Create dependabot.yml
+  * chore(pre-commit.ci): pre-commit autoupdate (#290)
+  * chore(pre-commit.ci): pre-commit autoupdate (#289)
+  * chore(pre-commit.ci): pre-commit autoupdate (#288)
+  * chore(pre-commit.ci): pre-commit autoupdate (#287)
+  * chore(pre-commit.ci): pre-commit autoupdate (#286)
+
+-------------------------------------------------------------------
 Mon Jul 29 18:41:48 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - once again-multibuild
