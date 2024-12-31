@@ -1392,4 +1392,12 @@
     <comment>- Added symlinks for wallpapers in Leap 15.6 (forwarded request 1222653 from mauriziogalli)</comment>
     <requestid>1222657</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>095cb99172b08c6b12cbc72cd152120c</srcmd5>
+    <version>4.20.0+git0.2e4d938</version>
+    <time>1735639955</time>
+    <user>anag+factory</user>
+    <comment>New Xfce version 4.20</comment>
+    <requestid>1233526</requestid>
+  </revision>
 </revisionlist>

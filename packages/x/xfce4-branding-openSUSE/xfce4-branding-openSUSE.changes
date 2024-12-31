@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:37:03 UTC 2024 - maurizio.galli@suse.com
+
+- Update to version 4.20.0+git0.2e4d938:
+  * Removed no longer used wallpapers symlinks
+  * Sync with upstream version of Xfce 4.20
+
+-------------------------------------------------------------------
+Mon Dec 16 08:09:51 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Simplified way symlinks to default wallpapers are created and handled
+  across different distributions
+
+-------------------------------------------------------------------
 Fri Nov 08 07:14:05 UTC 2024 - maurizio.galli@suse.com
 
 - Update to version 4.18.0+git6.02f3c99:

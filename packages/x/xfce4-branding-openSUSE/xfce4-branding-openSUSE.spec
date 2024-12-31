@@ -32,7 +32,7 @@
 %define thunar_volman_version   %(rpm -q --queryformat '%%{VERSION}' thunar-volman)
 
 Name:           xfce4-branding-openSUSE
-Version:        4.18.0+git6.02f3c99
+Version:        4.20.0+git0.2e4d938
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
@@ -251,15 +251,16 @@ for dir in base "${overlay_version}"; do
 done
 
 # Installing default wallpapers symlinks
-mkdir -p %{buildroot}%{_datadir}/wallpapers
-%if 0%{?suse_version} > 1600
-cp -r ./wallpapers/tumbleweed %{buildroot}%{_datadir}/wallpapers/xfce
-%endif
-%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
-cp -r ./wallpapers/leap-15.6 %{buildroot}%{_datadir}/wallpapers/xfce
-%endif
+mkdir -p %{buildroot}%{_datadir}/wallpapers/xfce/
+
+for i in $(ls /usr/share/wallpapers/openSUSEdefault/contents/images/); do 
+    ln -s %{_datadir}/wallpapers/openSUSEdefault/contents/images/$i %{buildroot}%{_datadir}/wallpapers/xfce/
+done
+
 %if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
-cp -r ./wallpapers/leap-15.5 %{buildroot}%{_datadir}/wallpapers/xfce
+ln -s %{_datadir}/wallpapers/openSUSEdefault/contents/images/1920x1200.jpg %{buildroot}%{_datadir}/wallpapers/xfce/default.wallpaper
+%else
+ln -s %{_datadir}/wallpapers/openSUSEdefault/contents/images/1920x1200.png %{buildroot}%{_datadir}/wallpapers/xfce/default.wallpaper
 %endif
 
 %files -n xfce4-panel-branding-openSUSE
