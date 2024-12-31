@@ -1,7 +1,7 @@
 diff -rub a/scripts/startxfce4.in b/scripts/startxfce4.in
---- a/scripts/startxfce4.in	2016-05-03 05:02:14.000000000 +0800
-+++ b/scripts/startxfce4.in	2019-05-20 18:52:01.014092674 +0800
-@@ -76,6 +76,10 @@
+--- a/scripts/startxfce4.in	2024-03-31 17:51:38.000000000 +0800
++++ b/scripts/startxfce4.in	2024-04-02 15:01:59.917577714 +0800
+@@ -96,6 +96,10 @@
  then
    XDG_DATA_DIRS="$XDG_DATA_DIRS:@_datadir_@"
  fi
@@ -13,9 +13,9 @@ diff -rub a/scripts/startxfce4.in b/scripts/startxfce4.in
  
  if test "x$XDG_CONFIG_DIRS" = "x"
 diff -rub a/scripts/xinitrc.in.in b/scripts/xinitrc.in.in
---- a/scripts/xinitrc.in.in	2019-05-11 04:05:58.000000000 +0800
-+++ b/scripts/xinitrc.in.in	2019-05-20 18:55:49.566603360 +0800
-@@ -44,12 +44,6 @@
+--- a/scripts/xinitrc.in.in	2024-03-31 17:51:38.000000000 +0800
++++ b/scripts/xinitrc.in.in	2024-04-02 15:04:34.326572166 +0800
+@@ -46,12 +46,6 @@
  fi
  [ -d "$XDG_CACHE_HOME" ] || mkdir "$XDG_CACHE_HOME"
  
@@ -25,10 +25,10 @@ diff -rub a/scripts/xinitrc.in.in b/scripts/xinitrc.in.in
 -    xdg-user-dirs-update
 -fi
 -
- # For now, start with an empty list
- XRESOURCES=""
- 
-@@ -81,14 +75,11 @@
+ if test "x$XFCE4_SESSION_COMPOSITOR" = "x"
+ then
+   # For now, start with an empty list
+@@ -115,14 +109,11 @@
  # check if we start xfce4-session with ck-launch-session. this is only
  # required for starting from a console, not a login manager
  if test "x$XFCE4_SESSION_WITH_CK" = "x1"; then

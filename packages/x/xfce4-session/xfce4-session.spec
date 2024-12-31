@@ -18,13 +18,13 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.18.4
+Version:        4.20.0
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-session/start
-Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.18/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.20/%{name}-%{version}.tar.bz2
 Source1:        xfce-portals.conf
 Source2:        xdg-current-desktop-xfce.desktop
 %if %{with git}
@@ -34,29 +34,35 @@ Patch0:         xfce4-session-adapt-session-scripts-git.patch
 # PATCH-FIX-OPENSUSE xfce4-session-adapt-session-scripts.patch bnc#789057 gber@opensuse.org -- Adapt upstream sessions script to openSUSE.
 Patch1:         xfce4-session-adapt-session-scripts.patch
 %endif
+# PATCH-FIX-OPENSUSE 0002-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
+Patch2:         0002-relax-x11-version.patch
 BuildRequires:  fdupes
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  iceauth
-BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
+BuildRequires:  pkgconfig(ice) >= 1.0.9
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.10
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.2
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.4
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.19.2
+BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
-BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(sm) >= 1.2.2
+BuildRequires:  pkgconfig(x11) >= 1.6.5
 Requires:       %{name}-branding
 Requires:       systemd
 Requires:       xfce4-settings
@@ -94,6 +100,17 @@ BuildArch:      noarch
 
 %description branding-upstream
 This package provides the upstream look and feel for the Xfce Session Manager.
+
+%package wayland-experimental
+Summary:        Xfce Session Manager for Wayland
+Group:          System/GUI/XFCE
+Requires:       %{name} = %{version}
+Requires:       labwc
+Requires:       xwayland
+
+%description wayland-experimental
+xfce4-wayland-experimental-session is the Wayland session manager
+for the Xfce desktop environment.
 
 %lang_package
 
@@ -143,9 +160,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-# remove xscreensaver desktop file. We use xfce4-screensaver instead.
-rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
-
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/xfce.desktop 20
@@ -156,7 +170,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 
 %files
 %license COPYING
-%doc AUTHORS BUGS NEWS README.md TODO
+%doc AUTHORS NEWS README.md
 %config %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
 %config %{_sysconfdir}/xdg/autostart/xdg-current-desktop-xfce.desktop
@@ -179,5 +193,9 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 
 %files branding-upstream
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+
+%files wayland-experimental
+%dir %{_datadir}/wayland-sessions
+%{_datadir}/wayland-sessions/xfce-wayland.desktop
 
 %changelog

@@ -1,0 +1,350 @@
+diff -rup a/configure.ac b/configure.ac
+--- a/configure.ac	2024-12-15 10:25:08.000000000 +0100
++++ b/configure.ac	2024-12-15 15:21:11.133488999 +0100
+@@ -16,10 +16,10 @@ m4_define([libxfce4ui_min_version], [4.1
+ m4_define([xfconf_min_version], [4.12.0])
+ m4_define([libxfce4windowing_min_version], [4.19.2])
+ 
+-m4_define([libx11_min_version], [1.6.7])
++m4_define([libx11_min_version], [1.6.5])
+ m4_define([libwnck_min_version], [3.10.0])
+-m4_define([libice_min_version], [1.0.10])
+-m4_define([libsm_min_version], [1.2.3])
++m4_define([libice_min_version], [1.0.9])
++m4_define([libsm_min_version], [1.2.2])
+ 
+ m4_define([gtk_layer_shell_min_version], [0.7.0])
+ 
+diff -rup a/configure b/configure
+--- a/configure	2024-12-15 10:26:08.000000000 +0100
++++ b/configure	2024-12-15 15:22:51.370125178 +0100
+@@ -19095,11 +19095,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "x11 >= 1.6.7" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "x11 >= 1.6.5" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="x11 >= 1.6.7"
++        xdt_feature_deps_missing="x11 >= 1.6.5"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.7"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.5"
+       fi
+     fi
+   else
+@@ -19253,9 +19253,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.7" >&5
+-printf %s "checking for x11 >= 1.6.7... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.6.7" "x11" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.5" >&5
++printf %s "checking for x11 >= 1.6.5... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.6.5" "x11" >/dev/null 2>&1; then
+     LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
+ printf "%s\n" "$LIBX11_VERSION" >&6; }
+@@ -19272,7 +19272,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
+ printf "%s\n" "$LIBX11_LIBS" >&6; }
+ 
+-    LIBX11_REQUIRED_VERSION=1.6.7
++    LIBX11_REQUIRED_VERSION=1.6.5
+ 
+ 
+ 
+@@ -19301,7 +19301,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package x11 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade x11 to atleast version 1.6.7, or adjust"
++      echo "*** Please upgrade x11 to atleast version 1.6.5, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -19313,7 +19313,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package x11 was not found on your system."
+-      echo "*** Please install x11 (atleast version 1.6.7) or adjust"
++      echo "*** Please install x11 (atleast version 1.6.5) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -19559,11 +19559,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "ice >= 1.0.10" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "ice >= 1.0.9" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="ice >= 1.0.10"
++        xdt_feature_deps_missing="ice >= 1.0.9"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, ice >= 1.0.10"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, ice >= 1.0.9"
+       fi
+     fi
+   else
+@@ -19717,9 +19717,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for ice >= 1.0.10" >&5
+-printf %s "checking for ice >= 1.0.10... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.0.10" "ice" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for ice >= 1.0.9" >&5
++printf %s "checking for ice >= 1.0.9... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.0.9" "ice" >/dev/null 2>&1; then
+     LIBICE_VERSION=`$PKG_CONFIG --modversion "ice"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_VERSION" >&5
+ printf "%s\n" "$LIBICE_VERSION" >&6; }
+@@ -19736,7 +19736,7 @@ printf %s "checking LIBICE_LIBS... " >&6
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_LIBS" >&5
+ printf "%s\n" "$LIBICE_LIBS" >&6; }
+ 
+-    LIBICE_REQUIRED_VERSION=1.0.10
++    LIBICE_REQUIRED_VERSION=1.0.9
+ 
+ 
+ 
+@@ -19765,7 +19765,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package ice was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade ice to atleast version 1.0.10, or adjust"
++      echo "*** Please upgrade ice to atleast version 1.0.9, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -19777,7 +19777,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package ice was not found on your system."
+-      echo "*** Please install ice (atleast version 1.0.10) or adjust"
++      echo "*** Please install ice (atleast version 1.0.9) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -19791,11 +19791,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "sm >= 1.2.3" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "sm >= 1.2.2" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="sm >= 1.2.3"
++        xdt_feature_deps_missing="sm >= 1.2.2"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, sm >= 1.2.3"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, sm >= 1.2.2"
+       fi
+     fi
+   else
+@@ -19949,9 +19949,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for sm >= 1.2.3" >&5
+-printf %s "checking for sm >= 1.2.3... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.2.3" "sm" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for sm >= 1.2.2" >&5
++printf %s "checking for sm >= 1.2.2... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.2.2" "sm" >/dev/null 2>&1; then
+     LIBSM_VERSION=`$PKG_CONFIG --modversion "sm"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_VERSION" >&5
+ printf "%s\n" "$LIBSM_VERSION" >&6; }
+@@ -19968,7 +19968,7 @@ printf %s "checking LIBSM_LIBS... " >&6;
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_LIBS" >&5
+ printf "%s\n" "$LIBSM_LIBS" >&6; }
+ 
+-    LIBSM_REQUIRED_VERSION=1.2.3
++    LIBSM_REQUIRED_VERSION=1.2.2
+ 
+ 
+ 
+@@ -19997,7 +19997,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package sm was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade sm to atleast version 1.2.3, or adjust"
++      echo "*** Please upgrade sm to atleast version 1.2.2, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -20009,7 +20009,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package sm was not found on your system."
+-      echo "*** Please install sm (atleast version 1.2.3) or adjust"
++      echo "*** Please install sm (atleast version 1.2.2) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -20259,11 +20259,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "x11 >= 1.6.7" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "x11 >= 1.6.5" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="x11 >= 1.6.7"
++        xdt_feature_deps_missing="x11 >= 1.6.5"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.7"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.5"
+       fi
+     fi
+   else
+@@ -20417,9 +20417,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.7" >&5
+-printf %s "checking for x11 >= 1.6.7... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.6.7" "x11" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.5" >&5
++printf %s "checking for x11 >= 1.6.5... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.6.5" "x11" >/dev/null 2>&1; then
+     LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
+ printf "%s\n" "$LIBX11_VERSION" >&6; }
+@@ -20436,7 +20436,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
+ printf "%s\n" "$LIBX11_LIBS" >&6; }
+ 
+-    LIBX11_REQUIRED_VERSION=1.6.7
++    LIBX11_REQUIRED_VERSION=1.6.5
+ 
+ 
+ 
+@@ -20465,7 +20465,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package x11 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade x11 to atleast version 1.6.7, or adjust"
++      echo "*** Please upgrade x11 to atleast version 1.6.5, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -20477,7 +20477,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package x11 was not found on your system."
+-      echo "*** Please install x11 (atleast version 1.6.7) or adjust"
++      echo "*** Please install x11 (atleast version 1.6.5) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -20723,11 +20723,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "ice >= 1.0.10" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "ice >= 1.0.9" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="ice >= 1.0.10"
++        xdt_feature_deps_missing="ice >= 1.0.9"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, ice >= 1.0.10"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, ice >= 1.0.9"
+       fi
+     fi
+   else
+@@ -20881,9 +20881,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for ice >= 1.0.10" >&5
+-printf %s "checking for ice >= 1.0.10... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.0.10" "ice" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for ice >= 1.0.9" >&5
++printf %s "checking for ice >= 1.0.9... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.0.9" "ice" >/dev/null 2>&1; then
+     LIBICE_VERSION=`$PKG_CONFIG --modversion "ice"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_VERSION" >&5
+ printf "%s\n" "$LIBICE_VERSION" >&6; }
+@@ -20900,7 +20900,7 @@ printf %s "checking LIBICE_LIBS... " >&6
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_LIBS" >&5
+ printf "%s\n" "$LIBICE_LIBS" >&6; }
+ 
+-    LIBICE_REQUIRED_VERSION=1.0.10
++    LIBICE_REQUIRED_VERSION=1.0.9
+ 
+ 
+ 
+@@ -20929,7 +20929,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package ice was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade ice to atleast version 1.0.10, or adjust"
++      echo "*** Please upgrade ice to atleast version 1.0.9, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -20941,7 +20941,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package ice was not found on your system."
+-      echo "*** Please install ice (atleast version 1.0.10) or adjust"
++      echo "*** Please install ice (atleast version 1.0.9) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -20955,11 +20955,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "sm >= 1.2.3" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "sm >= 1.2.2" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="sm >= 1.2.3"
++        xdt_feature_deps_missing="sm >= 1.2.2"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, sm >= 1.2.3"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, sm >= 1.2.2"
+       fi
+     fi
+   else
+@@ -21113,9 +21113,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for sm >= 1.2.3" >&5
+-printf %s "checking for sm >= 1.2.3... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.2.3" "sm" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for sm >= 1.2.2" >&5
++printf %s "checking for sm >= 1.2.2... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.2.2" "sm" >/dev/null 2>&1; then
+     LIBSM_VERSION=`$PKG_CONFIG --modversion "sm"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_VERSION" >&5
+ printf "%s\n" "$LIBSM_VERSION" >&6; }
+@@ -21132,7 +21132,7 @@ printf %s "checking LIBSM_LIBS... " >&6;
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_LIBS" >&5
+ printf "%s\n" "$LIBSM_LIBS" >&6; }
+ 
+-    LIBSM_REQUIRED_VERSION=1.2.3
++    LIBSM_REQUIRED_VERSION=1.2.2
+ 
+ 
+ 
+@@ -21161,7 +21161,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package sm was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade sm to atleast version 1.2.3, or adjust"
++      echo "*** Please upgrade sm to atleast version 1.2.2, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -21173,7 +21173,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package sm was not found on your system."
+-      echo "*** Please install sm (atleast version 1.2.3) or adjust"
++      echo "*** Please install sm (atleast version 1.2.2) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
