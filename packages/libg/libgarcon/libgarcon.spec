@@ -18,21 +18,21 @@
 
 %define libname libgarcon-1-0
 Name:           libgarcon
-Version:        4.18.2
+Version:        4.20.0
 Release:        0
 Summary:        Library Implementing the freedesktop.org Desktop Menu Specification
 License:        GFDL-1.1-only AND LGPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.xfce.org/dev/garcon
-Source:         https://archive.xfce.org/src/xfce/garcon/4.18/garcon-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/garcon/4.20/garcon-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE libgarcon-x-suse-unimportant-support.patch gber@opensuse.org -- Hide desktop files marked with X-SuSE-Unimportant
 Patch0:         libgarcon-x-suse-unimportant-support.patch
 BuildRequires:  fdupes
-BuildRequires:  intltool
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  gettext >= 0.19.8
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.7

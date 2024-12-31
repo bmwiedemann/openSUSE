@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Dec 15 11:55:31 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 08:11:52 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.3 [development release]
+  * menu-item: Ensure UTF-8 strings
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 13:13:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.2 [development release]
+  * Fix doc annotation
+  * build: Bump requirements for Xfce 4.20
+  * Apply .clang-format file
+  * Sort includes
+  * clang-format: Add file
+  * gcc-analyzer: Add false positive file
+  * scan-build: Add false positive file
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * menu-item: Honor TryExec again
+  * menu-item: Let glib check for absolute path to executable
+  * Use Exec instead of TryExec for menu item visibility (#22)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:09:25 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.1 
+
+-------------------------------------------------------------------
 Mon Feb  5 18:34:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.2
