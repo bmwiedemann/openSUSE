@@ -1,4 +1,161 @@
 -------------------------------------------------------------------
+Sun Dec 15 12:18:18 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0
+  * Translation Updates
+- Refresh 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
+Sun Dec  1 08:44:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.7 [development branch]
+  * I18n: Update po/LINGUAS list
+  * migrate: Update default config
+  * tasklist: Ensure group buttons have non empty label
+  * Translation Updates
+- Refresh 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
+Sat Nov  2 13:26:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.6 [development branch]
+  * systray: Handle general container orientation on Wayland too
+  * systray: Fix GSList element leak
+  * migrate/default.xml.in: Remove unused plugin id
+  * Added "show inactive" prop to lcd clock (repurposed from binary
+    clock)
+  * Reworked sizing mechanism in clock plugin and its widgets
+  * Reduce minimum button size to improve layout at very small panel 
+    sizes.
+  * Use width_for_height when plugin requests it
+  * LCD and digital clock layout fixes
+  * systray: Fix leak in sn_plugin_init
+  * Added a missing property bind for 24hr analogue clock
+  * Added XFCE_PANEL_PLUGIN_ICON_PADDING (API change)
+  * tasklist: Keep icon sizes as specified by the user
+  * Revert "wayland: tasklist: Fix icon size in multirow mode"
+  * systray: Add missing translation
+  * clock: Added 24h clock mode to the analog clock
+  * Translation Updates
+- Add 0001-relax-x11-version.patch to allow build for Leap with its
+  ancient but sufficient X11 packages.
+
+-------------------------------------------------------------------
+Mon Oct  7 12:25:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.5 [development branch]
+  * Use new xfw_window_activate() signature in libwindowing 4.19.6
+  * build: Adjust Wayland requirements for Xfce 4.20
+  * build: Bump requirements for Xfce 4.20
+  * wayland: tasklist: Fix monitor detection when panel is remapped
+  * x11: tasklist: Properly check for libxext
+  * wayland: autohide: Do not block when panel has input focus
+  * Revert "panel: Fix panel flickering during autohide on Wayland"
+  * wayland: autohide: Show/hide panel instead of moving it offscreen
+  * autohide: Show/hide autohide window instead of moving it offscreen
+  * wayland: Avoid allocation loop when the panel is anchored to an edge
+  * Revert "wayland: Avoid allocation loop when the panel is anchored to
+    an edge"
+  * wayland: Avoid allocation loop when the panel is anchored to an edge
+  * Fix gtk-layer-shell includes
+  * Switch to XfwMonitor
+  * wayland: wrapper: Prevent plugin allocation blocking
+  * tasklist: Connect to XfwWindow::notify::monitors
+  * panel: Fix panel flickering during autohide on Wayland
+  * Always set gtk_layer_shell monitor on change
+  * Add debug key for PANEL_DEBUG_ACTIONS
+  * tasklist: Fix Wayland window drag and drop
+  * panel: Do not remove plugin when disregarding restart dialog
+  * panel: Replace remaining gtk_message_dialog_new with
+    xfce_message_dialog_new
+  * common: Introduce panel_utils_gtk_dialog_find_label_by_text
+  * tasklist: Use xfce_dialog_show_error when starting new instance fails
+  * actions: Use xfce_message_dialog_new in confirmation dialogs
+  * panel, libxfce4panel: Use xfce_dialog_confirm in plugin removal
+    confirmation
+  * gcc-analyzer: Add false positive file
+  * scan-build: Add false positive file
+  * scan-build: tasklist: Fix core.NullDereference
+  * Revert "Add new CI builds to build without X11 and Wayland"
+  * Apply .clang-format file
+  * Remove unnecessary dirname in local includes
+  * clang-format: Use IncludeBlocks::Regroup
+  * build: Add missing CFLAGS and LIBS from gio-unix-2.0
+  * build: Add missing math.h includes
+  * build: Silence -Wstring-plus-int from clang
+  * fix build on OpenBSD after 0c56766b
+  * Translation Updates
+
+- Update to version 4.18.4 [development branch]
+  * clang-format: Break after assignment operator
+  * Add missing glade file to POTFILES.in
+  * showdesktop: Add the ability to show the desktop on mouse hover
+  * prefs-dialog: Improve launcher display in item list
+  * systray: Avoid GTK warning about pixbuf not loadable
+  * panel: Leave a harmless xfconf warning
+  * clang-format: Insert a newline at end of file if missing
+  * libxfce4panel: Add line break in generate code for clang-format
+  * prefs-dialog: Bind Del key to remove button
+  * prefs-dialog: Scroll to selection when item view is reloaded
+  * prefs-dialog: Allow several items to be removed at once
+  * prefs-dialog: Update widgets on GdkDisplay::monitor-(added|removed)
+  * systray: Always scale icons
+  * systray: Reduce icon size in prefs dialog
+  * systray: Improve app data search in prefs dialog
+  * systray: Avoid duplicate code around legacy items
+  * systray: Use panel_properties_bind()
+  * panel: Save settings in finalize()
+  * tasklist: Fix min button length before overflow menu
+  * tasklist: Fix default button length
+  * build: Add missing math.h include
+  * Apply .clang-format file
+  * Clean up and sort includes
+  * Various preliminary cleanup
+  * clang-format: Add file
+  * windowmenu: Remove a duplicate check
+  * Remove dead code
+  * tasklist: Sanitize XfwApplication management
+  * Minor spelling/grammar corrections in comments
+  * POTFILES.in: Remove untranslated file
+  * panel: Define constants common to window and itembar
+  * windowmenu: Clamp style properties
+  * tasklist: Allow -1 for menu-max-width-chars
+  * panel: Restrict admissible values of style properties
+  * tasklist: Fix use of min-button-length
+  * tasklist: Fix use of max-button-length
+  * tasklist: Clamp style properties
+  * actions: Add some fallback methods if there is no session proxy
+  * actions: Ask xfce4-session to switch user if possible
+  * actions: Fix wrong parameter allow_save for Shutdown and Restart
+  * actions: Let xfce4-session manage its settings internally
+  * actions: Rework D-Bus proxy management
+  * Reintroduce panel_properties_get_channel()
+  * Ask user what to do in case of plugin loading failure
+  * Check for xfconf init in main.c and exit on failure
+  * Fix wrong string comparison
+  * prefs-dialog: Do not close when opening panel-profiles
+  * Revert "prefs-dialog: Launch xfce4-panel-profiles with '--from-panel'"
+  * Try to derive plugin dirs from XDG_DATA_DIRS
+  * Remove NDEBUG compiler switchs
+  * launcher: Delete unprotected X11 code at runtime
+  * actions: Populate plugin earlier
+  * systray: Avoid floating point exception
+  * panel: Use gdk_cursor_new_from_name() to be more cross-platform
+  * wayland: pager: Add missing runtime check
+  * panel: Implement per window CSS customization
+  * panel: Add border width option
+  * itembar: Let GtkContainer handle border width
+  * panel: Fix -Wmaybe-uninitialized warning
+  * panel: Return silently when n_monitors == 0
+  * tasklist: Do not call xfw_window_x11_get_xid() on Wayland
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:25:35 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.3 (development branch) 
+
+-------------------------------------------------------------------
 Thu Feb 29 14:13:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.6
