@@ -1806,4 +1806,16 @@
     <comment></comment>
     <requestid>1190840</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>57e065d82ae9fe32c5ecdad892a49836</srcmd5>
+    <version>4.20.0</version>
+    <time>1735639963</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.20.0
+  * Translation Updates
+- Remove obsolete patches:
+  * differentiate_zoom_levels_between_view_modes.patch
+  * switch_pane_shortcut.patch</comment>
+    <requestid>1233539</requestid>
+  </revision>
 </revisionlist>

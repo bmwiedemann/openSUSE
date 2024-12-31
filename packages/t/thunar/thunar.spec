@@ -19,35 +19,31 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        4.18.11
+Version:        4.20.0
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/xfce/thunar/start
-Source:         https://archive.xfce.org/src/xfce/thunar/4.18/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/thunar/4.20/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM: Add a shortcut for switching panes in split view mode
-Patch0:         switch_pane_shortcut.patch
-# PATCH-FIX-UPSTREAM: Differentiate between list and icon view in terms of zooming
-Patch1:         differentiate_zoom_levels_between_view_modes.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfconf
-BuildRequires:  pkgconfig(exo-2) >= 4.17.0
+BuildRequires:  pkgconfig(exo-2) >= 4.19.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(gtk-doc) >= 1.9
 BuildRequires:  pkgconfig(gudev-1.0) >= 145
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libexif)
@@ -110,7 +106,7 @@ This package provides the GObject Introspection bindings for the Thunar extensio
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %if %{with git}

@@ -1,21 +1,273 @@
 -------------------------------------------------------------------
-Tue Jul 30 17:39:57 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Dec 15 13:40:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Update to 4.18.11:
-  * Use parent windows for undo/redo dialog (#1393)
-  * Fix for misc_open_new_windows_in_split_view (#889)
-  * Dont add directories to recent:/// (#1372)
-  * build: clang: Fix -Wmissing-noreturn
-  * build: clang: Fix -Wsingle-bit-bitfield-constant-conversion
-  * Focus split view pane on DnD events (#1243)
-  * Dont reload folder when "draw_frames" is set (#1337)
-  * Allow submenu UCAs in toolbar (#780)
-  * Fix shortcuts for ucas in subfolders (#1043)
-  * Dont show 'open location' on recent icon(#1297)
-  * Fix for image preview visibility (#1285)
-  * Prevent focus stealing of file transfer dialog (#643)
-  * Dont update "last-view" when searching (#1278)
+- Update to 4.20.0
   * Translation Updates
+- Remove obsolete patches:
+  * differentiate_zoom_levels_between_view_modes.patch
+  * switch_pane_shortcut.patch
+
+-------------------------------------------------------------------
+Sun Dec  1 12:16:07 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.19.5 [development release]:
+  * Bump year in about dialog
+  * I18n: Update po/LINGUAS list (#939)
+  * I18n: I18n translation ru (#939)
+  * Attempt to fully read into buffer during file compare (#1495)
+  * File operation dialog: always show "apply to all" box
+  * Fix string leak in thunar_thumbnailer_file_is_supported
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 19:34:50 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.19.4 [development release]:
+  * Add missing return statements (#1480)
+  * Verify copied destination file using direct I/O (#1471)
+  * Drop optional POLKIT dependency (#1403)
+  * Fix GCancellable leaks in trash applet
+  * Add emblem and type description to mount points (#1388)
+  * Show "Properties" menu entry for unmounted devices
+  * Support second shortcut for tab switch (#1472)
+  * Verify by compare instead of checksum (#1471)
+  * Fix path entry DnD code (#1470)
+  * Apply .clang-format to all *.c and *.h files
+  * Use G_VALUE_INIT over custom initializer
+  * adding .clang-format file
+  * Fix accel map loading (#1047)
+  * build: Bump requirements for Xfce 4.20
+  * Fix use-after-free in thunar_dialogs_show_job_ask_replace (#1466)
+  * Regression: Fix "middle click open" (#1455)
+  * Dont change selection on activate
+  * Fix selection changed throttle (#1429)
+  * Increase location button max with (#1430)
+  * Rework handling of location buttons (#951)
+  * Fix string leak in thunar_io_jobs_load_statusbar_text_for_folder
+  * Fix color string leaks in properties dialog
+  * Fix color leak in thunar_util_clip_view_background
+  * Fix string leak in thunar_history_error_not_found
+  * Fix GFile leak in thunar_job_operation_restore_from_trash
+  * Fix string leak in thunar_emblem_chooser_file_changed
+  * Fix GFile leak in thunar_transfer_job_move_file_with_rename
+  * Fix GFileInfo leak in thunar_job_operation_restore_from_trash
+  * Fix GAppInfo leaks in thunar_g_app_info_launch
+  * Fix string leak in thunar_job_operation_restore_from_trash
+  * Add NULL check before folder usage
+  * Fix g_hash_table_get_keys leak
+  * Fix ThunarRenamerPair leak when using bulk renamer
+  * Fix string leak in thunar_uca_editor_load
+  * Show name of parent folder in replace dialog (#62)
+  * Fix crash when connecting via gvfs (#1450)
+  * Fix GHashTable leak in thunar_tree_view_model_file_count_callback
+  * Fix string leak in thunar_io_jobs_util_next_renamed_file
+  * Add check that widget is a window as expected (#1454)
+  * Fix GFile leak when using intermediate file on copy setting
+  * Fix string leak in thunar_dialogs_show_job_ask_replace
+  * Fix string leak in thunar_uca_model_remove
+  * Avoid critical when thumbnailer_proxy is NULL
+  * Fix leaks in thunar_apr_image_page_file_changed
+  * Fix AtkRelationSet leaks in bulk renamer dialog
+  * Fix AtkRelationSet leaks in apr plug-in
+  * Fix leak in thunar_details_view_button_press_event
+  * Fix leak in thunar_window_open_files_in_location
+  * Call ThunarStatusbar's parent finalizer to prevent leaks
+  * Fix leak in thunar_details_view_button_press_event
+  * Fix leak when middle-clicking on directory row
+  * Fix leaks when using Open Item Location menu item
+  * Fix leak in _thunar_search_folder
+  * Fix leak of search_query string
+  * Fix leaks in thunar_application_command_line
+  * Fix leak in thunar-gtk-extensions (#1451)
+  * Fix leak in thunar_application_accel_map_init
+  * Fix typo in status bar text for Edit > Preferences menu item
+  * Fix g_object_get leak in thunar_window_init
+  * Fix two leaks in _thunar_search_folder
+  * Fix g_object_get leaks in status bar code
+  * Wrap single-word filenames in delete dialog (#1412)
+  * Add command line option to force new window
+  * Change width calculation of rename dialog (#1392)
+  * Make location "admin:///" work again
+  * Rework padding in replace dialog
+  * Improve handling of long filenames in replace dialog
+  * Statusbar: Count "backup" files as hidden files
+  * Fix criticals about unset GIO attributes (#1063)
+  * Show full context menu during search (#837)
+  * Prevent double free for hidden files (#1438)
+  * Fix icon-name leaks in thunar_window_view_switcher_update
+  * Fix minor memory leak in uca provider
+  * twp: Prevent crash in wayland (#1437)
+  * Transfer files dialog use less buttons (#58)
+  * Remove filter model in toolbar editor code
+  * Revert "Increase max location selector button size (#1430)"
+  * Increase max location selector button size (#1430)
+  * List view: Empty size column for directories (#543)
+  * Add tooltip to special columns in column editor
+  * Fix handling of special columns in list view
+  * Revert "Remove 'Date Deleted' from 'Configure Column' List (#750)"
+  * Fix overlapping UCA editor dialog widgets (startup notification)
+  * Revert signal handler setup for RadioToolButtons (#1426)
+  * Use unique enum names for alternative shortcuts (#1421)
+  * Use initial widget variables when calling unref
+  * Tweak header bar margins
+  * Add View Switcher item to toolbar
+  * UCA - improve shortcuts handling (#1410)
+  * Reduce events monitored by UCA file monitor
+  * Fix Toolbar bug when CSD is used (#1414)
+  * I18n: Update po/LINGUAS list
+  * Fix CSD label text
+  * Option to use client side decorations (CSD)
+  * Use top-window as fallback for dialogs (#1398)
+  * Support copy/link within a folder via CTRL+drag (#63)
+  * Rework the "Show Menubar" toolbar button (#936)
+  * Optionally show hidden files count in statusbar (#1387)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Thu Aug  1 03:04:28 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to 4.19.3 (development branch)
+  * Allow type ahead search the treeview sidepane
+  * Added a hidden setting to toggle tree-lines
+  * Pass toplevel window to emblem chooser error dialog (#1393)
+  * Use parent windows for undo/redo dialog (#1393)
+  * Simplify reload after rename (#1395)
+  * Dont destroy ThunarFiles on request (#1357)
+  * Always re-add files to cache on reload (#1357)
+  * Rework event handling for toolbar context menu
+  * Don't work with ThunarFolder in separate jobs
+  * Do not request thumbnails unconditionally (#1385)
+  * Add default bindings for special keys (#1386)
+  * Prevent preleminary destruction of ThunarFiles
+  * Only add successfully opened files to Recent
+  * Add files opened via the location entry to Recent (#1349)
+  * Improve behavior of split view separator (#1107)
+  * Option to disable ctrl+scroll to zoom (#1379)
+  * Hide single tab in split view
+  * Immediately focus split view pane on DnD events
+  * Re-enable toolbar overflow menu (#1240)
+  * Adding an default issue template
+  * Reduce width of the toolbar editor
+  * Hide OpenItemLocation/Restore menu entry in tree view
+  * Fix leaking ThunarFile (#573)
+  * Add preferences settings for usage of symbolic icons
+  * Do not enter folder when DnD menu is shown
+  * Fix for "misc_open_new_windows_in_split_view" (#889)
+  * thunar-uca: Use regular icons in editor
+  * thunar-uca: Update info text in chooser dialog
+  * Optionally use symbolic icons in location bar
+  * Show warn on selecting too many emblems (#1368)
+  * Dont add directories to recent:/// (#1372)
+  * Update the sidepane/toolbar when toggling symbolic icons
+  * Make symbolic icons in sidepane theme-color aware
+  * Rework toolbar configuration storage (#1028)
+  * Always render up to 4 emblems (#1368)
+  * Prevent icon emblems from overlapping (#1368)
+  * Prevent double-restore (#1369)
+  * Fix ThunarxMenuItem sensitive property
+  * clang build Fixes
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * Fix workaround for icon "inode-directory"
+  * Add missing top border to tree pane
+  * Prevent g_malloc_n build warnings (#1362)
+  * Add "symbolic" value to cached icons (#1363)
+  * Enter folders automatically while dragging files (#5)
+  * Focus split view pane on DnD events (#1243)
+  * Shorten symbolic xfconf property names
+  * Optionally use symbolic icons in the sidepane (#252)
+  * Usage of window-close-symbolic (#960)
+  * Use symbolic insons only for the toolbar
+  * Fix several out of sync bugs (#1326)
+  * Rework focus indicator for split view (#730)
+  * Improve various aspects of the Image Preview pane (#932)
+  * prefs-dialog: Change order of RECURSIVE_SEARCH options
+  * prefs-dialog: Improve PARALLEL_COPY_MODE strings
+  * Move TRASH_DELETE keyboard shortcuts to MOVE_TO_TRASH section
+  * Always show "Paste" entry in Edit menu
+  * Reveal keyboard shortcut for "Open with Application" menu entry
+  * Add keyboard shortcut for "Invert Selection"
+  * Add "Remove from Recent" to Edit menu
+  * Improve "Open Item Location" menu entry
+  * Show "Open With Default Applications" entry only for multiple files
+  * Move "Edit Launcher" menu entry into "Open" section
+  * Fix location of "Create" menu section in Location Bar / Side Pane
+  * Fix location of "Restore" menu section
+  * Fix Regression: Tabs order on restore (#1341)
+  * Clear current selection when requesting a new one (#1338)
+  * Refactor "select after reload" mechanics (#1338)
+  * Resolve conflicting mnemonics and add missing ones
+  * Statusbar: re-add last-modified time for folders (#1348)
+  * Fix regression during device eject (#1347)
+  * Use GHashTable to store files (#1337)
+  * Restore tabs when launched with uri arg. (#1233)
+  * Dont reload folder when "draw_frames" is set (#1337)
+  * Add New Tab and New Window icons to toolbar (#1263)
+  * Fix icon view regression (#1315)
+  * Improve icon view performance (#1315)
+  * Performance improvements (#1315)
+  * tree-view-model: Fix gettext warning about empty string
+  * build: Optional require polkit for l10n xml files
+  * build: Get rid of intltool
+  * po/sl.po: Fix unmatched format specifier
+  * build: fix automake non standard library name
+  * Fix leak during search
+  * Fix a leak in statusbar code
+  * Fix parentheses-equality warning
+  * Allow sumenu UCAs in toolbar (#780)
+  * Fix shortcuts for ucas in subfolders (#1043)
+  * Display cached thumbnails as themselves (#1331)
+  * Load statusbar text in separate job (#1315)
+  * Move statusbar text method to thunar-util
+  * Improve statusbar performance (#1315)
+  * Fix possible NULL pointer dereference (#1330)
+  * Consider display_name=NULL cases (#1329)
+  * re-enable file monitor for search files (#1320)
+  * Fix possible deadlock during search (#1321)
+  * Initialize variable in thunar_details_view_button_press_event
+  * Prevent use after free (#1325)
+  * Initialize variable in thunar_tree_view_model_dir_files_changed
+  * Fix leaks during file duplication (#1322)
+  * Use xfce_dialog_show_error (#1320)
+  * Disconnect ShortcutModel on finalize (#1314)
+  * Prevent crash on open non-readable folder
+  * Prevent warning in tree-view
+  * Dont save bookmarks on trash change (#141)
+  * Fix support for bookmark reloading
+  * Fix bulk renamer crash on close (#1307)
+  * Prevent CRITICAL when leaving search
+  * Fix regression: Missing window icon
+  * No view-switch while searching (#1293)
+  * Fix mem leak in action-manager (#573)
+  * Fix memory leak in thunar-history (#573)
+  * Various Refactorings in "ThunarWindow"
+  * Show complete file paths in tooltips (#1213)
+  * Fix bug in file_watch (#1300)
+  * Prevent double-free for ThunarJob (#1299)
+  * Fix memory leak in statusbar (#573)
+  * Fix various memory leaks on ThunarJobs
+  * Fix possible double-free on thunar job (#1299)
+  * Improve handling of "loading" property (#1296)
+  * Dont show 'open location' on recent icon(#1297)
+  * Simplify ThunarFile destruction in shortcut-model
+  * Prevent re-creation of shortcut model on exit
+  * Minor simplification for tree-view pane
+  * Properly release job when finished (#1192)
+  * Fix "files-changed" handling for tree-pane (#1292)
+  * Properly remove timeout source (#1077)
+  * Throttle selection changed (#1077)
+  * Refactored "thunar_folder_monitor"
+  * move file-monitoring into thunar-folder
+  * Fix for image preview visibility (#1285)
+  * Dont raise progress dialog for short jobs (#35)
+  * Prevent focus stealing of file transfer dialog (#643)
+  * Add text to toolbar config dialog (#1282)
+  * Dont update "last-view" when searching (#1278)
+  * Translation Updates 
+
+-------------------------------------------------------------------
+Tue Apr  2 06:18:54 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to 4.19.2 (development branch) 
 
 -------------------------------------------------------------------
 Sun Dec 31 09:25:13 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
