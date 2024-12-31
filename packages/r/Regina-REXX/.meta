@@ -1,6 +1,0 @@
-<package name="Regina-REXX" project="openSUSE:Factory">
-  <title>The Regina REXX Interpreter</title>
-  <description>Mark Hessling's implementation of the REXX language.
-</description>
-  <devel project="devel:languages:misc" package="Regina-REXX"/>
-</package>
