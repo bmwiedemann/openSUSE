@@ -18,7 +18,7 @@
 
 Name:           openSUSE-Addon-NonOss-release
 %define         product openSUSE-Addon-NonOss
-Version:        20241230
+Version:        20241231
 #!BcntSyncTag: openSUSE-Addon-NonOss
 Release:        0
 Summary:        openSUSE NonOSS Addon 
@@ -26,9 +26,9 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       %name-%version
 Provides:       product() = openSUSE%2DAddon%2DNonOss
-Provides:       product(openSUSE-Addon-NonOss) = 20241230-0
+Provides:       product(openSUSE-Addon-NonOss) = 20241231-0
 Provides:       product-label() = non%20oss%20addon
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnonoss%3A20241230
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnonoss%3A20241231
 
 
 
@@ -48,10 +48,10 @@ cat >%{buildroot}%{_sysconfdir}/products.d/openSUSE-Addon-NonOss.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>openSUSE-Addon-NonOss</name>
-  <version>20241230</version>
+  <version>20241231</version>
   <release>0</release>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse-addon-nonoss:20241230</cpeid>
+  <cpeid>cpe:/o:opensuse:opensuse-addon-nonoss:20241231</cpeid>
   <register>
     <pool>
     </pool>
