@@ -20,6 +20,9 @@ picture-uri-dark='file:///usr/share/wallpapers/aeonwallpaper.png'
 use-system-font=false
 custom-font='Monospace 12'
 
+[org.gnome.settings-daemon.plugins.media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+
 [org.gnome.settings-daemon.plugins.media-keys.custom-keybindings.custom0]
 binding='<Super>Return'
 command='kgx -e distrobox enter'

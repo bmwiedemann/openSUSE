@@ -43,11 +43,11 @@ TRUE app.devsuite.Ptyxis "Ptyxis" "Advanced Terminal Emulator" \
 FALSE com.mattjakeman.ExtensionManager "Extension Manager" "Shell Extensions Manager" \
 FALSE com.github.tchx84.Flatseal "Flatseal" "Application Permissions Manager" \
 FALSE com.valvesoftware.Steam "Steam" "Steam Games Launcher" \
-FALSE org.gnome.Evince "Document Viewer" "Document & PDF Viewer" \
+FALSE org.gnome.Papers "Papers" "Document & PDF Viewer" \
 FALSE org.gnome.Loupe "Image Viewer" "Basic Image Viewer" \
 FALSE org.gnome.gThumb "gThumb" "Advanced Image Viewer" \
-FALSE io.github.celluloid_player.Celluloid "Celluloid" "Basic Video Player" \
-FALSE org.videolan.VLC "VLC" "Advanced Video Player" \
+FALSE org.gnome.Showtime "Showtime" "Basic Video Player" \
+FALSE io.github.celluloid_player.Celluloid "Celluloid" "Advanced Video Player" \
 FALSE org.telegram.desktop "Telegram Desktop" "Telegram Messaging Client" \
 FALSE org.libreoffice.LibreOffice "LibreOffice" "LibreOffice Office Suite" \
 FALSE org.gimp.GIMP "GNU Image Manipulation Program" "Image Editor" \

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 29 16:33:56 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Correctly populate custom-keybindings gschema structure 
+
+-------------------------------------------------------------------
+Mon Dec  9 17:57:50 UTC 2024 - Di Lorenzo <lauro@dilorenzo.one>
+
+- A more modern choice of applications in aeon-firstboot - evince -> papers; celluloid -> showtime; vlc -> celluloid
+
+-------------------------------------------------------------------
 Wed Oct 23 08:56:36 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Change default recommended flatpaks, install Ptyxis, offer a PDF

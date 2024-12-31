@@ -74,4 +74,14 @@
   viewer</comment>
     <requestid>1217260</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>4009a2bb4b29ec79bab84c0d9a843bd6</srcmd5>
+    <version>20231005</version>
+    <time>1735639968</time>
+    <user>anag+factory</user>
+    <comment>- Correctly populate custom-keybindings gschema structure 
+
+- A more modern choice of applications in aeon-firstboot - evince -&gt; papers; celluloid -&gt; showtime; vlc -&gt; celluloid</comment>
+    <requestid>1233798</requestid>
+  </revision>
 </revisionlist>
