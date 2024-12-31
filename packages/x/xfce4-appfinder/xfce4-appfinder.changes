@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Dec 15 13:56:09 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0:
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 14:36:55 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.4 [development branch]:
+  * Fix buffer overflow and leaks (#92)
+  * I18n: Update po/LINGUAS list
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 13:04:54 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.3 [development branch]:
+  * Add support to application actions (#86)
+  * Update copyright year
+  * build: Bump requirements for Xfce 4.20
+  * Fix segfaults
+  * Translation Updates
+
+-------------------------------------------------------------------
+Thu Jun  6 05:46:32 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.2 (development branch):
+  - Add new preference to close window when focus is lost (!41)
+  - Immediately execute command on ctrl+enter (#56)
+  - Store command to history even if it appears as a garcon menu item (#73)
+  - Remove migration function
+  - appdata: Fix `appstreamcli validate` issues (!44)
+  - I18n: Update po/LINGUAS list
+  - Switch to gettext instead of intltool (!24)
+  - Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:22:28 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.1 (development branch) 
+
+-------------------------------------------------------------------
 Sun Dec 18 15:21:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.18.0:

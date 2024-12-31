@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-appfinder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,25 @@
 
 %bcond_with git
 Name:           xfce4-appfinder
-Version:        4.18.0
+Version:        4.20.0
 Release:        0
 Summary:        Application Finder for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-appfinder/start
-Source:         https://archive.xfce.org/src/xfce/%{name}/4.18/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/%{name}/4.20/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
-BuildRequires:  pkgconfig(garcon-1) >= 0.3.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.10.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.2
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
+BuildRequires:  pkgconfig(garcon-1) >= 4.18.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.18.0
 # uses exo-open
 Requires:       exo-tools
 Recommends:     %{name}-lang = %{version}
