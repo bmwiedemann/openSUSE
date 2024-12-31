@@ -1,0 +1,125 @@
+diff -rup a/configure.ac b/configure.ac
+--- a/configure.ac	2024-12-15 10:50:18.000000000 +0100
++++ b/configure.ac	2024-12-15 15:56:25.752846942 +0100
+@@ -18,7 +18,7 @@ m4_define([thunar_minimum_version], [4.1
+ m4_define([xfconf_minimum_version], [4.19.3])
+ m4_define([cairo_minimum_version], [1.16])
+ m4_define([gtk_layer_shell_minimum_version], [0.7.0])
+-m4_define([libyaml_minimum_version], [0.2.5])
++m4_define([libyaml_minimum_version], [0.1.7])
+ 
+ dnl version info
+ XDT_VERSION_INIT([4.20.0])
+diff -rup a/configure b/configure
+--- a/configure	2024-12-15 10:51:59.000000000 +0100
++++ b/configure	2024-12-15 15:56:53.046173644 +0100
+@@ -22152,11 +22152,11 @@ fi
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "yaml-0.1 >= 0.2.5" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "yaml-0.1 >= 0.1.7" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="yaml-0.1 >= 0.2.5"
++        xdt_feature_deps_missing="yaml-0.1 >= 0.1.7"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, yaml-0.1 >= 0.2.5"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, yaml-0.1 >= 0.1.7"
+       fi
+     fi
+   else
+@@ -22310,9 +22310,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for yaml-0.1 >= 0.2.5" >&5
+-printf %s "checking for yaml-0.1 >= 0.2.5... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=0.2.5" "yaml-0.1" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for yaml-0.1 >= 0.1.7" >&5
++printf %s "checking for yaml-0.1 >= 0.1.7... " >&6; }
++  if $PKG_CONFIG "--atleast-version=0.1.7" "yaml-0.1" >/dev/null 2>&1; then
+     LIBYAML_VERSION=`$PKG_CONFIG --modversion "yaml-0.1"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBYAML_VERSION" >&5
+ printf "%s\n" "$LIBYAML_VERSION" >&6; }
+@@ -22329,7 +22329,7 @@ printf %s "checking LIBYAML_LIBS... " >&
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBYAML_LIBS" >&5
+ printf "%s\n" "$LIBYAML_LIBS" >&6; }
+ 
+-    LIBYAML_REQUIRED_VERSION=0.2.5
++    LIBYAML_REQUIRED_VERSION=0.1.7
+ 
+ 
+ 
+@@ -22358,7 +22358,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package yaml-0.1 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade yaml-0.1 to atleast version 0.2.5, or adjust"
++      echo "*** Please upgrade yaml-0.1 to atleast version 0.1.7, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -22370,7 +22370,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package yaml-0.1 was not found on your system."
+-      echo "*** Please install yaml-0.1 (atleast version 0.2.5) or adjust"
++      echo "*** Please install yaml-0.1 (atleast version 0.1.7) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -22388,11 +22388,11 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+   if test x"$xdt_feature_deps_check_only" = x"yes"; then
+-    if ! $PKG_CONFIG --exists "yaml-0.1 >= 0.2.5" >/dev/null 2>&1; then
++    if ! $PKG_CONFIG --exists "yaml-0.1 >= 0.1.7" >/dev/null 2>&1; then
+       if test x"$xdt_feature_deps_missing" = x""; then
+-        xdt_feature_deps_missing="yaml-0.1 >= 0.2.5"
++        xdt_feature_deps_missing="yaml-0.1 >= 0.1.7"
+       else
+-        xdt_feature_deps_missing="$xdt_feature_deps_missing, yaml-0.1 >= 0.2.5"
++        xdt_feature_deps_missing="$xdt_feature_deps_missing, yaml-0.1 >= 0.1.7"
+       fi
+     fi
+   else
+@@ -22546,9 +22546,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for yaml-0.1 >= 0.2.5" >&5
+-printf %s "checking for yaml-0.1 >= 0.2.5... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=0.2.5" "yaml-0.1" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for yaml-0.1 >= 0.1.7" >&5
++printf %s "checking for yaml-0.1 >= 0.1.7... " >&6; }
++  if $PKG_CONFIG "--atleast-version=0.1.7" "yaml-0.1" >/dev/null 2>&1; then
+     LIBYAML_VERSION=`$PKG_CONFIG --modversion "yaml-0.1"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBYAML_VERSION" >&5
+ printf "%s\n" "$LIBYAML_VERSION" >&6; }
+@@ -22565,7 +22565,7 @@ printf %s "checking LIBYAML_LIBS... " >&
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBYAML_LIBS" >&5
+ printf "%s\n" "$LIBYAML_LIBS" >&6; }
+ 
+-    LIBYAML_REQUIRED_VERSION=0.2.5
++    LIBYAML_REQUIRED_VERSION=0.1.7
+ 
+ 
+ 
+@@ -22594,7 +22594,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package yaml-0.1 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade yaml-0.1 to atleast version 0.2.5, or adjust"
++      echo "*** Please upgrade yaml-0.1 to atleast version 0.1.7, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -22606,7 +22606,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package yaml-0.1 was not found on your system."
+-      echo "*** Please install yaml-0.1 (atleast version 0.2.5) or adjust"
++      echo "*** Please install yaml-0.1 (atleast version 0.1.7) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."

@@ -475,4 +475,12 @@
     <comment> (forwarded request 1060153 from tux93)</comment>
     <requestid>1060158</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c855be43a5c97ae30fdfae05877326d4</srcmd5>
+    <version>4.20.0</version>
+    <time>1735639961</time>
+    <user>anag+factory</user>
+    <comment>New Xfce version 4.20</comment>
+    <requestid>1233534</requestid>
+  </revision>
 </revisionlist>
