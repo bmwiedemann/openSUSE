@@ -15,4 +15,12 @@
     <comment>libxfce4windowing 4.19.3 for Budgie 10.9.1</comment>
     <requestid>1167024</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91ef2153548f6cd03b6748d8fcf7a474</srcmd5>
+    <version>4.20.0</version>
+    <time>1735639951</time>
+    <user>anag+factory</user>
+    <comment>New Xfce version 4.20</comment>
+    <requestid>1233520</requestid>
+  </revision>
 </revisionlist>

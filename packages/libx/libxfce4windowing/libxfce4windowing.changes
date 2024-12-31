@@ -1,17 +1,167 @@
 -------------------------------------------------------------------
-Wed Apr 10 15:37:53 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+Sun Dec 15 10:52:07 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Update to 4.19.3:
+- Update to version 4.20.0
+  * Translation Updates
+- Refresh 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
+Sun Dec  1 08:03:30 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.10 [development release]
+  * I18n: Update po/LINGUAS list
+  * Fix XfwMonitor leak in steal_monitor_by_connector
+  * Translation Updates
+- Refresh 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
+Sat Nov  2 12:45:33 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.9 [development release]
+  * Fix leak of seats GList
+- Add 0001-relax-x11-version.patch to allow build for Leap with its
+  ancient but sufficient X11 packages.
+  Regenerate the various autoconf/automake files.
+
+-------------------------------------------------------------------
+Wed Oct 23 07:31:55 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.8 [development release]
+  * Clean up xsettings client & work around GDK swallowing events
+  * Remove private sources from the public sources list
+
+-------------------------------------------------------------------
+Wed Oct  9 19:17:18 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.7 [development release]
+  * Fix missing parent instance in XfwSeatWayland
+  * Add XfwWindowListMenu widget
+  * Remove the "(constructor)" annotation on xfw_screen_get_default()
+  * Fix crash on workspace add/remove after XfwWindowActionMenu destroyed
+  * Make XfwWindowAction menu struct private
+
+-------------------------------------------------------------------
+Mon Oct  7 12:12:30 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.6 [development release]
+  NB
+  NB: There is an API/ABI break in this release.
+  NB: The xfw_window_activate() function now takes four arguments rather than
+  NB: the previous three. The second argument is now a XfwSeat instance (or NULL).
+  NB
+  * Actually export xfw_screen_get_seats from the library
+  * Add XfwSeat abstraction
+  * build: Adjust Wayland requirements for Xfce 4.20
+
+-------------------------------------------------------------------
+Thu Oct  3 13:24:16 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add BuildRequires: meson
+
+- Update to version 4.19.5 [development release]
+  * Add more compiler flags to the meson build
+  * Use physical geometry when comparing X11 window geometry to monitor
+  * build: Bump requirements for Xfce 4.20
+  * Include meson build files in autotools dist tarball
+  * Set up GNU symbol visibility
+  * Ditch maintainer mode
+  * Suppress spurious uninitialized var warning
+  * Make window listener struct static
+  * Update meson build
+  * Bump C std from gnu99 to gnu11
+  * meson: fix missing checks for x11 and wayland feature detection
+  * Fix physical monitor height not getting set on X11
+  * Ensure private symbols don't end up in the introspection file
+  * autotools: don't build tests by default
+  * Print monitor ID in xfw-enum-monitors test app
+  * Try to make monitor IDs stable between X11 and Wayland
+  * Move xrandr event base into XfwMonitorManagerX11
+  * Fetch X11 scale factor from XSETTINGS, not GDK
+  * Fix monitor workarea setting when monitors appear
+
+- Update to version 4.19.4 [development release]
+  * Add tests/Makefile.am
+  * x11: refresh monitors in an idle function
+  * I18n: Update po/LINGUAS list
+  * Add a couple small test programs
+  * Defer binding to the toplevel manager until after we have the outputs
+  * Add debug logging to toplevel output_enter/leave
+  * Add debugging when finalizing output properties
+  * Add a few more display synchronization points in the wayland code
+  * Reset XfwMonitorWayland output_done/xdg_output_done count on finalize
+  * Add XfwMonitor:fractional-scale
+  * Add primary monitor fallback guessing to X11 too
+  * Remove extra wl_registry for the wayland monitor management
+  * Remove extra wl_registry for the wayland workspace manager
+  * Fix missing wl_output & xdg_output assignment in XfwMonitorWayland
+  * Add workarea info and tracking to XfwMonitor
+  * Use XfwMonitor instead of GdkMonitor throughout
+  * Add XfwScreen::monitor-added and XfwScreen::monitor-removed
+  * Fix 'Since' doc tag typos
+  * Don't g_warning() if xrandr returns no monitors
+  * Add xfw_monitor_get_gdk_monitor()
+  * Fix bad doc comment for XfwMonitor:is-primary
+  * Add primary monitor concept to XfwMonitor
+  * Use system-relative include paths in public headers
+  * Fix bad property name (from a stray search-and-replace)
+  * Move monitors list into XfwScreen
+  * Make XfwScreen an abstract class instead of an interface
+  * wayland: Fix monitor ownership
+  * XfwMonitor: add object properties
+  * Add XfwMonitor
+  * Apply .clang-format file
+  * clang-format: Add file
+  * build: Complete use of XDT_VERSION_INIT
+  * Fix warnings about typedef redeclaration
+  * use -no-undefined so that libtool consumes it
+  * scan-build: Add false positive file
+  * build: clang: Fix -Wcast-align
+  * I18n: Update po/LINGUAS list
+  * Revert "Add new CI builds to build without X11 and Wayland"
+  * I18n: Update po/LINGUAS list
+  * Don't toggle show-desktop whenever wnck tells us it changed
+  * make sure bash is found non non-linux
+  * Add meson build files
+  * Add layout-row and layout-column properties to XfwWorkspace
+  * Implement workspace layout row/column for Wayland
+  * I18n: Update po/LINGUAS list
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:11:29 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.3
+  * Update copyright year
+  * Ensure workspace/group state is correct on X11 before emitting signals
   * Set initial workspace's group properly on X11
   * Add XfwClientType to doc sections
   * Add xfw_set_client_type() to doc sections
   * Add xfw_set_client_type()
   * Add an X11-specific header and xfw_window_get_xid()
   * Remove xfw_(window|application)_get_id()
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
   * Expose class ids in XfwWindow and XfwApplication
   * Update ext-workspace protocol spec to current version
   * XfwWindowX11: Improve monitor list management
   * XfwWindowX11: Fix monitor management
+  * build: Search for bind_textdomain_codeset in libintl too
+  * build: Test if wlr-protocols dir is empty at configure time
+  * Use system wlr-protocols defs if avail, fall back to submodule if not
+  * Reduce verbosity
+  * Add missing G_END_DECLS
+  * I18n: Update po/LINGUAS list
+  * window-wayland: Set app_id only if it changes
+  * application: Fix window memory management (V2)
+  * I18n: Update po/LINGUAS list
+  * window-wayland: Ensure app always exists (Fixes #14)
+  * Add monitor-added and monitor-removed signals to XfwWorkspaceWayland
+  * Minor cleanup to wayland group monitor code
+  * Remove unused code from XfwWorkspaceGroupWayland
+  * Fix missing monitors-changed signal emission on x11/dummy
+  * x11: use workspace number as ID
+  * Use G_N_ELEMENTS()
+  * XfwApplication: Fix window memory management
+  * Translation Updates 
 
 -------------------------------------------------------------------
 Wed Jan 31 14:29:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>

@@ -26,25 +26,35 @@
 
 Name:           libxfce4windowing
 Summary:        Windowing concept abstraction library for X11 and Wayland
-Version:        4.19.3
+Version:        4.20.0
 Release:        0
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gitlab.xfce.org/xfce/libxfce4windowing
-Source0:        https://archive.xfce.org/src/xfce/libxfce4windowing/4.19/libxfce4windowing-%{version}.tar.bz2
-BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.68.0
+Source0:        https://archive.xfce.org/src/xfce/libxfce4windowing/4.20/libxfce4windowing-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE 0001-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
+Patch1:         0001-relax-x11-version.patch
+BuildRequires:  automake
+BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson
+BuildRequires:  xfce4-dev-tools >= 4.19.3
+BuildRequires:  pkgconfig(libdisplay-info) >= 0.1.1
+BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.10
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.42.8
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.10
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.10
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.10
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.14
-BuildRequires:  pkgconfig(wayland-client) >= 1.15
-BuildRequires:  pkgconfig(wayland-scanner) >= 1.15
+BuildRequires:  pkgconfig(wayland-client) >= 1.20
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
+BuildRequires:  pkgconfig(wayland-scanner) >= 1.20
 BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 
 %description
 Libxfce4windowing is an abstraction library that attempts to present windowing
@@ -124,6 +134,8 @@ windowing-system-independent manner.
 
 %prep
 %autosetup -p1
+aclocal
+automake
 
 %build
 %configure \
@@ -160,7 +172,8 @@ find %{buildroot} -name "*.la" -print -delete
 %dir %{_includedir}/xfce4/
 %{_includedir}/xfce4/libxfce4windowing{,ui}/
 %{_libdir}/libxfce4windowing{,ui}-%{api}.so
-%{_libdir}/pkgconfig/libxfce4windowing{,-x11,ui}-%{api}.pc
+%{_libdir}/pkgconfig/libxfce4windowing{,ui}-%{api}.pc
+%{_libdir}/pkgconfig/libxfce4windowing-x11-%{api}.pc
 %{_datadir}/gir-1.0/Libxfce4windowing-%{api}.%{major}.gir
 %{_datadir}/gir-1.0/Libxfce4windowingui-%{api}.%{major}.gir
 
