@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec  6 06:34:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.4.9
+  * I18n: Update po/LINGUAS list
+  * Fix numerous pa_operation leaks
+  * Fix leaks from the plug-in constructor
+  * Fix leaks in pulseaudio_volume_connect
+  * Fix leak with notify_get_server_caps
+  * build: Require libxfce4windowing 4.19.6
+  * Use new xfw_window_activate() signature in libwindowing 4.19.6
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * I18n: Update po/LINGUAS list
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * desktop: Generate from desktop.in instead desktop.in.in
+  * Unconditionally require gio-2.0, gio-unix-2.0
+  * Properly guard X11 code paths and fix X11 requirements
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Oct  1 16:41:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.4.8
