@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 17 16:53:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 3.23.4+git0.7e4507d:
+  * Fix label styles for xfdesktop 4.19 (#338)
+  * Stop forcing icon style for sidebars
+  * Style hover/active undecorated buttons same as normal
+  * Handle toolbar CSS class
+  * Style item menubar nodes (#328)
+
+-------------------------------------------------------------------
 Tue Feb 27 11:12:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
