@@ -470,4 +470,12 @@
   * Add icon at 64px, clean up SVG metadata (forwarded request 1130085 from manfred-h)</comment>
     <requestid>1133769</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d3a834a1fc05decfaab5a9e5acdc02d7</srcmd5>
+    <version>4.20.0</version>
+    <time>1735639954</time>
+    <user>anag+factory</user>
+    <comment>New Xfce version 4.20</comment>
+    <requestid>1233524</requestid>
+  </revision>
 </revisionlist>

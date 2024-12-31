@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Dec 15 13:50:55 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0:
+  * This release is part of the Xfce 4.20 platform release.
+  * No changes since 4.19.3
+
+-------------------------------------------------------------------
+Sun Dec  1 08:37:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.3 [development release]:
+  * xdg-cache: Fix string leak in xdg_cache_cache_cleanup
+  * tumblerd: Fix string leaks in tumbler_manager_directory_changed
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 19:57:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.2 [development release]:
+  * build: Bump requirements for Xfce 4.20
+  * Apply .clang-format file
+  * Sort includes
+  * tumbler: Add missing include guards
+  * clang-format: Add file
+  * plugins: Do not use g_file_is_native() to check for a valid path
+  * gepub-thumbnailer: Emit error signal if file location is
+    unsupported
+  * gepub-thumbnailer: Fix create_from_mime()
+  * gcc-analyzer: Fix -Wanalyzer-fd-leak
+  * scan-build: Add false positive file
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * xdg-cache: Fix and optimize xdg_cache_cache_is_thumbnail()
+  * Do not use g_log_set_always_fatal()
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:20:54 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.1 
+
+-------------------------------------------------------------------
 Thu Nov 30 17:11:56 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.2
