@@ -16,41 +16,47 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        4.18.4
+Version:        4.20.0
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-power-manager/start
-Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.18/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.20/%{name}-%{version}.tar.bz2
 Source1:        xfce4-power-manager.xml
+# PATCH-FIX-OPENSUSE 0001-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
+Patch1:         0001-relax-x11-version.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  libxslt-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.66
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
-BuildRequires:  pkgconfig(libnotify) >= 0.4.1
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.72.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(libnotify) >= 0.7.8
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.4
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.19.4
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
-BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.100
-BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xrandr) >= 1.2.0
+BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
+BuildRequires:  pkgconfig(upower-glib) >= 0.99.10
+BuildRequires:  pkgconfig(wayland-client) >= 1.20
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
+BuildRequires:  pkgconfig(wayland-scanner) >= 1.20
+BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(xext) >= 1.0.0
+BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -104,27 +110,7 @@ This package provides the openSUSE look and feel for the Xfce Power Manager.
 %lang_package
 
 %prep
-%autosetup -p1
-
-# xfce4-pm-helper is only needed on non-systemd systems
-xsltproc --nonet - ./src/org.xfce.power.policy.in2 <<'EOF' \
-    > ./src/org.xfce.power.policy.in2.new && \
-    mv ./src/org.xfce.power.policy.in2.new ./src/org.xfce.power.policy.in2
-<?xml version="1.0"?>
-<xsl:stylesheet
-  version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output
-  doctype-public="-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
-  doctype-system="http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd"/>
-  <xsl:template match="action[@id='org.xfce.power.xfce4-pm-helper']" />
-  <xsl:template match="@*|node()">
-    <xsl:copy>
-      <xsl:apply-templates select="@*|node()"/>
-    </xsl:copy>
-  </xsl:template>
-</xsl:stylesheet>
-EOF
+%autosetup
 
 %build
 %if %{with git}

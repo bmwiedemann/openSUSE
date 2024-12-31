@@ -1,21 +1,128 @@
 -------------------------------------------------------------------
-Sun Jun  9 18:24:42 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Dec 15 14:09:53 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Update to version 4.18.4
+- Update to version 4.20.0:
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Dec  1 16:47:28 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.5 [development branch]:
+  * Remove all lingering Inhibitors when DBus connection is lost
+  * build: Bump libxfce4util version to 4.19.4
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  2 11:14:42 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.19.4 [development branch]:
+  * button: Fix tooltip leak
+  * button: Fix string leak
+  * settings: Hide critical action warning if upower action == Ignore
+  * Fix string leak in get_device_icon_name
+  * Fix string leak in helper_get_value
+  * build: Adjust Wayland requirements for Xfce 4.20
+  * build: Bump requirements for Xfce 4.20
+  * Don't show time to empty calculation for large hours
+  * Remove redundant condition check for fully charged state in battery 
+    label visibility logic. Now the label only hides if the state is 
+    unknown or if it is a desktop system.
+  * button: Also listen to brightness-exponential change
+  * settings: Replace app if dialog should be embedded
+  * settings: Unref app before exiting
+  * systray-icon: Make setting a boolean
+  * scan-build: Add false positive file
+  * manager: Remove extra check for multi-monitor setup
+  * x11: common: Fix multi-monitor setup detection
+  * Translation Updates
+- Add 0001-relax-x11-version.patch to allow build for Leap with its
+  ancient but sufficient X11 packages.
+
+-------------------------------------------------------------------
+Thu Jun  6 05:53:02 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.19.3 (development branch):
   * Update copyright year
+  * x11: idle: Fix -Wanalyzer-null-dereference
+  * Revert "Add new CI builds to build without X11 and Wayland"
+  * Apply .clang-format file
+  * clang-format: Use IncludeBlocks::Regroup
+  * settings: Rework starting xfpm if not already running
+  * manager: Rework startup
+  * manager: Use D-Bus proxy instead of SMClient to call SessionManager
+  * settings: Warn about upower acting before xfpm on critical battery
   * power: Fix overall charge state calculation
+  * critical-power: Avoid unintentional user action in critical dialog
+  * critical-power: Use xfpm own methods to notify user
+  * manager: Honor lid settings when the system transition to battery
+  * power: Expose lid_is_closed property
+  * power: save new battery state *before* emitting signal
+  * settings: Add tooltip about actions on lid closed
+  * manager: Turn off internal screen when locked on lid closed
+  * manager: Be consistent when lid is closed in multi-monitor setup
+  * Properly check for multi-monitor setup
+  * settings: Switch to correct stack child when opening dialog
+  * wayland: dpms: Ensure user activity always turns on outputs
+  * settings: Add option to shutdown on lid closed
+  * settings: Reduce inactivity times to reasonable values
+  * backlight: Remove dead code
   * systray-icon: Handle scroll events
   * Only show desktop files in Xfce
   * main: Add missing newline in version info
-  * Remove outdated references to xfce-goodies
+  * settings: Drop light-locker integration
   * pm-helper: Add missing GError initialization
+  * Remove outdated references to xfce-goodies
+  * power: Rename is_in_presentation_mode to is_inhibited
+  * manager: Let power handle inhibition
+  * power: Inhibit non forced sleep requests in presentation mode too
+  * manager: Add missing hybrid sleep case
+  * settings: Change default sleep mode on battery to suspend
+  * wayland: dpms: Add missing filter on alarm id
+  * ppd: Add missing profile initialization
+  * x11: dpms: Fix broken DPMSForceLevel
+  * manager: Ensure proper conversion between enum types
+  * clang-format: AllowShortCaseLabelsOnASingleLine
+  * Add hybrid sleep support
+  * settings: Properly hide critical power widgets if no battery
+  * settings: Avoid duplicate code for adding button combos
   * settings: Fix debug log
+  * build: Put standard headers back in where there's non-linux code
+  * settings: Fix garbage value in string
   * settings: Fix inconsistent ref values between ui and gobject
+  * settings: Group light-locker code and move shared code up
+  * settings: Make last non-light-locker callback static
+  * settings: Sync other widgets with xfconf
+  * settings: Avoid more duplicate code between on_ac and on_battery
+  * settings: Sync on-battery widgets with xfconf
+  * settings: Sync on-ac widgets with xfconf
+  * settings: Use generic callback for GtkComboBox::changed
+  * settings: Move code so that splitting into functions makes sense
+  * settings: Use defines for default values
+  * settings: Be consistent in naming defines
+  * settings: Disconnect upower signals when list view is destroyed
+  * clang-format: Break after assignment operator
+  * settings: Add a button to open xfce4-screensaver-preferences
+  * settings: Make DPMS tooltip text generic
+  * Apply .clang-format file
+  * Bump required versions and remove dead code
+  * Fix xfpm-main.c
+  * Simplify some code
+  * clang-format: Add file
+  * settings: Sync first tab with xfconf
+  * Fix xgettext warning about plural form
+  * Add missing sanity checks
+  * Handle keyboard backlight toggle keys.
   * Fix initial state of "Handle brightness keys" switch in settings UI
   * Ungrab brightness keys when not handling them
-  * Revert "Fix system-sleep-inactivity min value"
+  * Add new CI builds to build without X11 and Wayland
   * Fix system-sleep-inactivity min value
+  * Always add sm-client option group
   * Translation Updates
+
+-------------------------------------------------------------------
+Tue Apr  2 06:27:15 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Updated to version 4.19.2
 
 -------------------------------------------------------------------
 Thu Nov 30 17:16:07 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
@@ -272,8 +379,8 @@ Fri May 17 16:30:26 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
   * settings: Improve devices tab visually by adding frame 
   * Translation updates
 - Dropped obsolete patches:
-  - xfce4-power-manager-1.6.1-fix-no-return-in-nonvoid.diff
-  - xfce4-power-manager-1.6.1-no-show-in-lxqt.diff
+  * xfce4-power-manager-1.6.1-fix-no-return-in-nonvoid.diff
+  * xfce4-power-manager-1.6.1-no-show-in-lxqt.diff
 - Added bcond to build with sources from git master branch
 - Switched to %autosetup for simpler maintenance
 - Switch urls to https://
@@ -289,7 +396,7 @@ Tue Dec 19 19:55:02 UTC 2017 - seife+obs@b1-systems.com
 
 - update to version 1.6.1:
   New stable release of xfce4-power-manager.
-  - plugin:
+  * plugin:
     - Use libxfce4panel function to obtain desired icon size
     - Fix menu leak, attach menu to button (bxo#13466)
     - Hide label in unknown state (bxo#12851)
