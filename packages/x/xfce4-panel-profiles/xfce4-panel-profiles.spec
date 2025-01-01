@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-panel-profiles
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-panel-profiles
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        Simple application to manage Xfce panel layouts
 License:        GPL-3.0-only
@@ -30,7 +30,6 @@ Patch0:         Libxfce4ui.patch
 BuildRequires:  appstream-glib
 BuildRequires:  findutils
 BuildRequires:  gobject-introspection
-BuildRequires:  intltool
 BuildRequires:  python3
 BuildRequires:  python3-base
 BuildRequires:  python3-gobject

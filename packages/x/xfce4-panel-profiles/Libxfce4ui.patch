@@ -1,7 +1,7 @@
-diff -ru a/xfce4-panel-profiles/xfce4-panel-profiles.py b/xfce4-panel-profiles/xfce4-panel-profiles.py
---- a/xfce4-panel-profiles/xfce4-panel-profiles.py	2023-06-05 09:01:02.000000000 +0200
-+++ b/xfce4-panel-profiles/xfce4-panel-profiles.py	2023-06-06 16:45:15.455490456 +0200
-@@ -28,16 +28,9 @@
+diff -rup a/xfce4-panel-profiles/xfce4-panel-profiles.py b/xfce4-panel-profiles/xfce4-panel-profiles.py
+--- a/xfce4-panel-profiles/xfce4-panel-profiles.py	2024-12-25 17:02:15.000000000 +0100
++++ b/xfce4-panel-profiles/xfce4-panel-profiles.py	2024-12-30 11:39:16.085670283 +0100
+@@ -29,16 +29,9 @@ import textwrap
  
  import gi
  gi.require_version('Gtk', '3.0')

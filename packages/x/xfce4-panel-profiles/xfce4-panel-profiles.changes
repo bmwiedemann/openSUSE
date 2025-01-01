@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 30 10:40:07 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.0.15
+  * export: Warn when the file already exists
+  * filedlg: Remove dead code
+  * export: Make filename extension obvious
+  * xfce4-panel-profiles.glade: Remove unused save_dialog
+  * Fix translated string
+  * ci: Update references for autotools/meson split
+  * Install Unity layout
+  * I18n: Update po/LINGUAS list
+  * Improve CLI help messages
+  * Update bug report address in manpage
+  * build: Get rid of intltool
+  * Revert "Open xfce4-panel on close button (bug #16505)"
+  * Revert "Fix typos in comments."
+  * data/metadata: Refresh appstream metainfo
+  * Remove generated xfce4-panel-profiles.pot
+  * Update application menu name in layout configs
+  * Translation Updates
+- Refresh Libxfce4ui.patch
+
+-------------------------------------------------------------------
 Tue Jun  6 14:46:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Refresh Libxfce4ui.patch again to ensure we require both
