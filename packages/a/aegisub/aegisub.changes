@@ -1,0 +1,463 @@
+-------------------------------------------------------------------
+Sat Dec  7 12:37:00 UTC 2024 - zero mind <zeromind@gmx.com>
+
+- Switch from autotools to cmake for building
+  * Fix detection of Boost with ICU support
+  * require Boost Container
+  * require libicu-devel to build against libicu used by Boost
+  * bump requirement for PulseAudio to 0.9.9 as required by cmake
+  * use custom build dir as "build" is already used in the source
+- Drop patch: aegisub-buildfix_autotools.patch to fix build with cmake
+
+-------------------------------------------------------------------
+Wed Feb  8 07:41:42 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Add aegisub-3.3.3-fix-boost-181-build.patch copied from mageia 
+  to fix build against boost-1.81
+
+-------------------------------------------------------------------
+Thu Dec 29 22:16:54 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 3.3.3
+  * Pass storage size to libass to fix rendering
+  * This changes how subtitle is rendered in certain cases when using
+    libass as subtitle renderer. The behavior now matches
+	ffmpeg>=5.0.1 and VLC nightly (not included in VLC=3.0.17.4 yet)
+  * Added CoreAudio player for macOS, which supports multi channel output
+  * Allow choosing between wxStyledTextCtrl and wxTextCtrl for subtitle 
+    edit box
+  * wxSTC provides syntax highlighting
+  * wxTextCtrl is the native text editor provided by system, and may 
+    have better support for IME, right-to-left languages, etc.
+  * Shift + right-click gives native context menu when using wxTextCtrl
+  * Support for negative margin (@petzku)
+  * Fix timestamp issue when loading subtitle from MKS
+  * Fix support for embedded font in ass (@Kienyew)
+  * Fix build issues with boost>=1.76, M1 Mac, etc.
+- Add patch: aegisub-buildfix_autotools.patch to fix build with autotools
+- Drop patch: ax_boost-files.patch which is fixed upstream
+- Drop aegisub-rpmlintrc not needed anymore
+
+-------------------------------------------------------------------
+Sun Jun 26 11:31:45 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Disable s390x build, unsupported target architecture.
+
+-------------------------------------------------------------------
+Thu Jul 29 14:18:57 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Disable 32 bit build, causes gcc bug.
+
+-------------------------------------------------------------------
+Tue Apr 13 19:13:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Upstream orphaned (or at least inactive), use active wangqr fork
+- Updated to fork version 3.3.2
+  * Show a notice when reaching 32bit memory limit instead of crash
+  * Fix OpenGL color depth issue with some GPU drivers
+  * Fix eyedropper not working
+  * Fix alt-drag behavior in audio window
+  * Fix saving audio clip with float samples
+  * Added support for AviSynth+ on linux
+  * Fix video rendering performance issue with visual tools
+  * Added the "align to hardsub in video" function
+  * Allow user change color for visual typesetting tool
+  * Bug fixes about HiDPI display issues
+  * Bug fixes about timing calculation for video frame and audio FFT
+- Added ax_boost-files.patch for fix build with boost >= 1.70
+- Dropped outdated patches Makefile.inc.in.patch,
+  remove-vendor-luajit-dependency.patch, aegisub-no-optimize.patch,
+  luaL_Reg-not-luaL_reg.patch, aegisub-fix_build_with_make4.3.patch
+
+-------------------------------------------------------------------
+Mon Aug 10 06:38:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use wxGTK3 instead of wxWidgets (GTK2), for better HiDPI and
+  Wayland support.
+
+-------------------------------------------------------------------
+Thu Apr 30 12:49:32 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Replaced luabins.patch with luaL_Reg-not-luaL_reg.patch sent 
+  upstream via https://github.com/Aegisub/Aegisub/issues/182
+- Removed spec file generated git_version.h, it's not needed when
+  git metadata is present.
+
+-------------------------------------------------------------------
+Wed Apr 29 10:48:36 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to current git version (3.2.2+git20191006)
+- Add _service file
+- Update changelog.txt
+- Drop aegisub-DataBlockCache-Fix-crash-in-cache-invalidation.patch
+  (fixed upstream)
+- Drop aegisub-boost169.patch (merged upstream)
+- Dropped aegisub-git-version.patch (handle things from the spec
+  file)
+- Added aegisub-fix_build_with_make4.3.patch see:
+  https://github.com/Aegisub/Aegisub/issues/171
+- Require wxWidgets 3.2
+- Added aegisub-rpmlintrc
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Mar 29 13:25:07 UTC 2019 - plater <davejplater@gmail.com>
+
+- Fix boo#1130889 by fixing aegisub's build against boost 1.69 with
+  aegisub-boost169.patch, reported upstream with patch in issue:
+  https://github.com/Aegisub/Aegisub/issues/93
+
+-------------------------------------------------------------------
+Thu Feb 14 16:09:23 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Add aegisub-DataBlockCache-Fix-crash-in-cache-invalidation.patch
+  Fixes undefined behavior e.g. when scrolling the audio view in
+  spectrogram mode.
+
+-------------------------------------------------------------------
+Fri Aug 31 11:55:30 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit description: trim other OS mentions, trim redundant
+  licensing info, trim future visions/goals.
+
+-------------------------------------------------------------------
+Thu Aug 30 10:26:57 UTC 2018 - davejplater@gmail.com
+
+- Update to current git rev 524c6114a82157b143567240884de3a6d030b091
+  named version 3.2.2+git20180710 which builds against boost
+  version 1.68, fixes boo#1105217
+- Added aegisub-git-version.patch for git.
+- Removed the following patches that are fixed upstream:
+  aegisub.build-compare.patch, icu59.patch and aegisub-icu.patch.
+- Rebased Makefile.inc.in.patch, aegisub-no-optimize.patch and
+  remove-vendor-luajit-dependency.patch.
+- Exclude i586 from build due to unexplainable missing library.
+- For upstream changes see:
+  /usr/share/doc/packages/aegisub/changelog.txt
+
+-------------------------------------------------------------------
+Fri Jun  8 07:40:37 UTC 2018 - davejplater@gmail.com
+
+- Use portable namespace in aegisub-icu.patch.
+
+-------------------------------------------------------------------
+Sat May 19 13:07:22 UTC 2018 - davejplater@gmail.com
+
+- Created aegisub-icu.patch to fix build failure against icu4c-61_1
+
+-------------------------------------------------------------------
+Fri Sep 29 12:15:01 UTC 2017 - olaf@aepfle.de
+
+- Remove conditionals for ffms2 and boost
+
+-------------------------------------------------------------------
+Mon Jun 19 10:43:28 UTC 2017 - rpm@fthiessen.de
+
+- Added luabins.patch to fix build with lua 5.2 / 5.3.
+
+-------------------------------------------------------------------
+Mon Jun  5 07:47:20 UTC 2017 - tchvatal@suse.com
+
+- Add constraints file to allow paralel build
+- Add changelog to files list to ensure plain rpmbuild to work
+- Do not bundle luajit remove-vendor-luajit-dependency.patch
+- Disable the version checking, calling home in desktop apps is
+  really bad idea, esp since upstream is semi-dead
+- Add patch to fix build with icu59 icu59.patch
+- Add patch to not put O3 to the cflags aegisub-no-optimize.patch
+
+-------------------------------------------------------------------
+Tue Mar 21 07:10:37 UTC 2017 - olaf@aepfle.de
+
+- Sort list of sources with aegisub.build-compare.patch
+
+-------------------------------------------------------------------
+Tue Feb 21 08:20:44 UTC 2017 - olaf@aepfle.de
+
+- Require wxWidgets 3+ unconditional
+  remove obsolete aegisub-old_wc.patch
+
+-------------------------------------------------------------------
+Wed Feb  1 09:52:26 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Thu Aug 13 08:56:28 UTC 2015 - dvaleev@suse.com
+
+- Disable build on Power, there is no luajit yet 
+
+-------------------------------------------------------------------
+Mon Jun 29 14:49:33 UTC 2015 - tjcw@physics.org
+
+- Fix build break by adding -pthread to LDFLAGS
+  * Makefile.inc.in.patch 
+
+-------------------------------------------------------------------
+Tue Feb 10 19:58:33 UTC 2015 - benoit.monin@gmx.fr
+
+- Updated to 3.2.2
+  * Update Spanish, Ukrainian, Hungarian and Finnish translations
+  * Skip writing the Aegisub project stuff when exporting to ASS
+  * Fix some ugliness in the OS X icon
+  * Update the selection and scroll position after opening
+    subtitles from video
+  * Fix crash on a certain kind of malformed shift times history
+    file
+  * Don't set the YCbCr header field to "None" when resampling
+    resolution without changing colors
+
+-------------------------------------------------------------------
+Mon Sep 22 20:24:24 UTC 2014 - sfalken@opensuse.org
+
+- Updated to 3.2.1
+  * Actually register the SSA file handler so that SSA files can be opened and exported
+  * Deduplicate Extradata entries created by Automation scripts
+  * Fix loading subtitles from Matroska files which have [Aegisub Extradata] sections
+  * Handle parsing errors when loading Shift Times history
+  * Add Ukrainian UI translation
+- Added:
+  * aegisub-3.2.1.tar.xz
+- Removed:
+  * aegisub-3.2.0.tar.xz
+
+-------------------------------------------------------------------
+Mon Sep  8 13:03:42 UTC 2014 - coolo@suse.com
+
+- remove conflict with lua 5.2, seems outdated
+
+-------------------------------------------------------------------
+Fri Aug 15 16:05:03 UTC 2014 - jengelh@inai.de
+
+- Switch from wxWidgets 2.9 to stable-3.0 for openSUSE 13.2
+
+-------------------------------------------------------------------
+Thu Aug  7 22:19:31 UTC 2014 - sfalken@opensuse.org
+
+- Removed old tarball aegisub-3.1.3.tar.xz 
+
+-------------------------------------------------------------------
+Thu Aug  7 22:04:59 UTC 2014 - sfalken@opensuse.org
+
+- Updated to 3.2.0
+  * Audio caching is now done in the background rather than popping up a modal progress dialog 
+  * The audio display is automatically scrolled to the active line when audio is first opened (if that option is enabled)
+  * Drag all selected lines when Alt is held down when dragging in the audio display
+  * Automation now uses LuaJIT in Lua 5.2 mode rather than Lua 5.1
+  * Text controls are "infinite" length rather than limited to 30k bytes
+  * subs.delete can be passed a table of row numbers to delete
+  * Add the luabins and lfs libraries to the automation environment
+  * Filter out redundant progress updates so that they don't make everything incredibly slow
+  * Add support for submenus in the automation menu (insert / in the macro name)
+  * Add unicode case conversion functions to the automation module (unicode.to_upper_case, unicode.to_lower_case, unicode.to_fold_case)
+  * Only process selected lines in the Select Overlaps macro if more than one line is selected
+  * Add aegisub.project_properties() to get a table with stuff that used to be in the script info section of the file (but unlike the old script info entries, it's actually always up to date)
+  * Fix loading automation scripts when Aegisub is installed to a path with non-ascii characters in it
+  * Lua functions which take a path have been patched to support UTF-8 on Windows   
+  * Add a warning when a script using a bold or italic variant of a font that doesn't actually exist, as emboldening done by the renderer may not match what is seen in Aegisub
+  * Make the installer translatable and use the language selected in the installer for Aegisub's UI language
+  * Fix locale issues that could lead to find/replace stripping all non-ascii characters from a file
+  * Use localized names for languages everywhere they're displayed rather than the English names
+  * Make fontconfig indexing about four times as fast
+  * Significantly speed up passing subtitles to the subtitle renderer (as much as 10x faster), making the video display less laggy with large files
+  * Speed up indexing Matroska files
+  * Significantly speed up reading subtitles from Matroska files
+  * Cut idle CPU usage when Aegisub is in the background by about 90%
+  * Cut down the disk space used a bit
+  * Resample \be and \blur tags
+  * Add support for converting between YCbCr matricies
+  * Make the handling for AR-changing resampling a bit smarter
+  * Use prettier string formatting for resampled numbers
+  * Fix resampling drawings with AR changes
+  * List the files which will be opened or closed in the Load/Unload files dialog
+  * Support loading keyframes and timecodes files via drag-and-drop (#1749)
+  * The edit box buttons (bold, italic, colors, etc.) try to do the right thing when multiple lines are selected, rather than just setting all of the lines to the active line's text
+  * The subtitles grid has gained as Characters Per Second column, with customizable warning and error thresholds (#609)
+  * Undo now restores the selected lines and cursor position that were active when the change being undone occured
+  * Double-clicking on a word which is right next to a \N no longer selects the \N along with the word
+  * Make default subtitle styles customizable: when creating a new file or importing from a format without style information, the styles from a catalog of your choice are automatically imported into the script (#962)
+  * Add a button to open directly open the style editor for the current line's style (#1746)
+  * Add Comment to the files which can be pasted over
+  * Insert \N on shift-enter in the edit box
+  * Fix incorrect cursor positions when using non-BMP unicode characters
+  * The edit box's background color is now customizable
+  * Fix crash when trying to open compressed tracks from Matroska
+  * Add support for opening subtitle tracks with utterly insane CodecPrivate sections
+  * Fix rounding error in the framerate calculations for CFR formats that sometimes lead to significantly wrong timestamps for long files
+  * Add support for uncompressed RGB(A) files
+  * Fix some of the issues with open-gop h264 files
+  * Fix infinite loop when opening indexless matroska files (such as files written by x264 and not remuxed)
+  * Fix some issues with interlaced h264
+  * Add support for HEVC
+  * Add option to resample the script rather than just changing the script resolution when opening a video with different resolution (1382)
+  * Several of the tools have been somewhat restyled to make them less obstructive
+  * Hide drag handles for commented lines
+  * Don't automatically select all control handle in the vector clip tool when switching to it, as there's now box selection of handles
+  * Update all selected lines when the origin is dragged in the rotate tools
+
+
+-------------------------------------------------------------------
+Mon May 12 13:40:19 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 3.1.3
+  * Return a rgba string for coloralpha lua controls (rather than just rgb)
+  * Update to moonscript 0.2.5
+  * Fix memory leaks when automation errors occur
+  * Add an error check for trying to interact with an expired subtitles object rather than just crashing
+  * Fix a crash when deleting lines with audio open
+  * Sort the actor and effect dropdown lists (#1715)
+  * Fix crash on startup when the config file can't be written
+  * Fix some performance issues with very large selections
+  * Fix some cases where the taskbar progress indicator would get stuck at nearly complete
+  * Speed up passing subtitles to libass a bit
+  * Fontconfig reads installed fonts from the registry on Windows, adding support for fonts installed via font managers to the fonts collector
+
+-------------------------------------------------------------------
+Fri Mar  7 13:39:15 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 3.1.2
+  * Make subs.deleterange(start, end) not do totally incorrect things
+  * Fix some cases where the row to extend shift-click selections in the grid was not updated correctly
+  * Fix assertion failure when built with boost 1.52
+  * New/updated translations
+
+-------------------------------------------------------------------
+Tue Mar  4 18:51:25 UTC 2014 - coolo@suse.com
+
+- disable parallel make - it takes too much memory and OBS swaps
+
+-------------------------------------------------------------------
+Thu Jan 23 14:43:50 UTC 2014 - reddwarf@opensuse.org
+
+- Update to 3.1.1
+  * New features and bug fixes. See http://www.aegisub.org/changelog/3.1.0/
+    and http://www.aegisub.org/changelog/3.1.1/
+- Add aegisub-old_wc.patch
+
+-------------------------------------------------------------------
+Sun Jul  7 08:50:55 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 3.0.4
+  * Update Basque translation
+
+-------------------------------------------------------------------
+Mon Jul  1 19:39:17 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 3.0.3
+  * Fix crash when playing audio before time 0
+  * Round syllable durations to centiseconds when splitting syllables
+  * Save the horizontal zoom correctly
+  * Fix bug where FloatEdit controls would sometimes not report the selected value
+  * Actually select the correct things in the Select Overlaps macro
+  * Give temporary files proper extensions to make it easier to open them when something goes wrong
+  * Show an error message when writing a file fails
+  * Fix reading subtitles from Matroska
+  * Fix a case where unicode characters would result in inconsistent and baffling errors when loading Lua scripts
+  * Fix loading non-ascii actor names from plain-text files
+  * Obey the option for setting the number of recently opened subtitle files to remember
+  * Use Lua 5.1 when both it and 5.2 are available
+  * Commit pending audio changes on Enter in the edit box
+  * Add Dutch translation
+  * Update Finnish translation
+  * Update Arabic translation
+  * Fix some cases where the detached video dialog would get set to bogus sizes
+  * Add .m4v to the list of video file extensions
+  * Fix loading y4m files
+  * Release mouse capture from the visual tools when the zoom is changed
+
+-------------------------------------------------------------------
+Tue Oct 23 16:07:15 UTC 2012 - reddwarf@opensuse.org
+
+- Removed aegisub-3.0.0-docdir.patch and aegisub-3.0.0-no_glu.patch,
+  they have been applied upstream
+- Update to 3.0.2
+  * Allow framerate transform to/from variable without external timecodes loaded (#1530)
+  * Honor the configured limits for the find/replace history (#1528)
+  * Fix occassional non-error dialog when running multiple copies of Aegisub
+  * Fix bug that sometimes resulted in later karaoke syllables moving when early ones were modified
+  * Truncate overly long syllables rather than adjusting all of the other syllables to make them fit
+  * Play right-clicked syllables
+  * Fix splitting lines by karaoke (#1541)
+  * Remove dependency on glu
+  * Honor docdir and localedir configuration variables
+  * Make it possible to type style names again
+  * Break undo grouping after 30 seconds of inactivity rather than 10
+  * Switch the Duration field back to time mode when video is closed
+  * Save a single wav containing all selected lines rather than a separate wav for each line with "Create audio clip"
+  * Make pasting lines not horrible slow (#1534)
+  * Make the correct row visible when selecting rows with shift + arrow keys in the grid (#1533)
+  * Fix a few errors in the German translation (#1523)
+  * Update Czech translation
+  * Update Indonesian translation
+  * Update Hungarian translation
+  * Add partial Arabic translation (#1532)
+
+-------------------------------------------------------------------
+Mon Oct  8 22:19:57 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 3.0.1
+  * Updated Russian translation
+  * Updated Greek translation
+  * Partially update Finnish translation
+  * Fixed some errors in the Portuguese translation
+  * Fix packaging issues with the Serbian translation
+  * Update the size of the karaoke syllable bar when the window is resized
+  * Add scroll arrows to the karaoke syllable bar when the contents are too wide to fit
+  * Change the color of the karaoke syllable split cursor to indicate whether it'll add or remove a split
+  * Increase the hit area for removing karaoke splits a little
+  * Remove the correct split when clicking to the left of a split line
+  * Re-add the "Play current line" button to the audio toolbar
+  * Stop video playback when the stop button is clicked in the audio toolbar as 2.1.9 did
+  * Scroll the audio display after a click near an edge when auto-scrolling is enabled
+  * Recenter the audio display if a newly selected line is very close to an edge in addition to if it's not fully onscreen, as 2.1 did
+  * Fix subtitle timing issues after loading a timecodes file
+  * Fix rounding error that resulted in 30000/1001 FPS video being treated as 30001/1001 FPS
+
+-------------------------------------------------------------------
+Sun Oct  7 22:16:05 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 3.0.0
+  * The audio display and related things such as the karaoke
+    syllable splitting interface have been rewritten from scratch.
+    The spectograph rendering is now much higher quality and
+    faster, and many new features have been added.
+  * Changes made in the main edit box and surrounding controls no
+    longer have to be committed. Instead, changes are made to the
+    file as you type, with the video display updating in real time.
+  * See http://www.aegisub.org/changelog/3.0.0/ for details
+- Remove aegisub-2.1.9-system_libs.patch, aegisub-2.1.8.99.rev5789-ld.patch
+  and aegisub-2.1.9-underlinking.patch. Fixed upstream.
+- Update aegisub-2.1.9-no_glu.patch to aegisub-3.0.0-no_glu.patch
+- Add aegisub-3.0.0-docdir.patch
+- Build only the two relevant audio output backends: ALSA and PulseAudio
+- The scripting system no longer supports Perl and Ruby, remove BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 21 10:20:14 UTC 2012 - reddwarf@opensuse.org
+
+- Add aegisub-2.1.9-no_glu.patch
+- Remove explicit glu dependency.
+  wxWidgets-devel is the one that should have it
+- Remove explicit xfixes,xdamage and xxf86vm dependencies.
+  Mesa-libGL-devel is the one that should be fixed (probably removing the .la file)
+
+-------------------------------------------------------------------
+Fri Sep 21 08:27:11 UTC 2012 - idonmez@suse.com
+
+- Add explicit glu,xfixes,xdagame and xxf86vm dependency
+
+-------------------------------------------------------------------
+Fri Feb 10 16:19:57 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 2.1.9
+
+-------------------------------------------------------------------
+Sat Oct 29 16:04:47 UTC 2011 - reddwarf@opensuse.org
+
+- Update to 2.1.9 rev5789
+
+-------------------------------------------------------------------
+Sun Jul  5 23:43:39 CEST 2009 - reddwarf@opensuse.org
+
+- First package
+
