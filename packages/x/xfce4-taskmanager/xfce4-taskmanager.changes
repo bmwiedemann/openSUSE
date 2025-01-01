@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec 30 10:52:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.8
+  * Add Darwin support
+  * I18n: Update po/LINGUAS list
+  * Added missing Keywords entry to .desktop file
+  * Fix leak when copying command line string
+  * Fix core.UndefinedBinaryOperatorResult warning from scan-build
+  * clang-format: Use IncludeBlocks::Regroup
+  * Apply .clang-format file
+  * Clean up and sort includes
+  * clang-format: Add file
+  * Aggregate children memory and cpu
+  * process-tree-view: Reset /columns/positions at startup if invalid
+  * Fix xfconf memory management
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Fix search filter memory leaks
+  * Translation Updates
+- Refresh xfce4-taskmanager-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 18:09:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.7

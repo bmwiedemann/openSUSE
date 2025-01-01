@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.5.7
+Version:        1.5.8
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            https://docs.xfce.org/apps/xfce4-taskmanager
 Source:         https://archive.xfce.org/src/apps/%{name}/1.5/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE xfce4-taskmanager-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
 Patch0:         xfce4-taskmanager-relax-x11-version.patch
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.5.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.2
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.14
+BuildRequires:  pkgconfig(x11) >= 1.6.5
 BuildRequires:  pkgconfig(xmu) >= 1.1.2
 # uses exo-open
 Requires:       exo-tools
