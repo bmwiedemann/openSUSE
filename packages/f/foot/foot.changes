@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  1 09:04:11 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.20.0:
+  * foot.ini options:
+    * Added security.osc52 to partially or fully disable clipboard access
+      via the OSC-52 escape sequence. Defaults to enabling clipboard access.
+    * Various keybindings for search mode that were implemented previously but
+      not documented have now been documented in the manpages.
+  * Runtime changes to the window title and app ID now require the value
+    to only contain printable characters.
+  * Added new themes: rose-pine-dawn, rose-pine-moon.
+  * Fixed various crashes.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.20.0 for more details.
+
+-------------------------------------------------------------------
 Wed Oct 23 15:35:04 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.19.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package foot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           foot
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT

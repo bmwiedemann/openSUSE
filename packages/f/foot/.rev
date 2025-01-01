@@ -663,4 +663,22 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.19.0 for more details.</comment>
     <requestid>1217387</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>98de7f50e2f22bf90e82acec1b7cea7c</srcmd5>
+    <version>1.20.0</version>
+    <time>1735769324</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.20.0:
+  * foot.ini options:
+    * Added security.osc52 to partially or fully disable clipboard access
+      via the OSC-52 escape sequence. Defaults to enabling clipboard access.
+    * Various keybindings for search mode that were implemented previously but
+      not documented have now been documented in the manpages.
+  * Runtime changes to the window title and app ID now require the value
+    to only contain printable characters.
+  * Added new themes: rose-pine-dawn, rose-pine-moon.
+  * Fixed various crashes.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.20.0 for more details.</comment>
+    <requestid>1234272</requestid>
+  </revision>
 </revisionlist>
