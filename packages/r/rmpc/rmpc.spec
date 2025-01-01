@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           rmpc
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Rusty Music Player Client for MPD
 License:        BSD-3-Clause
