@@ -1,8 +1,8 @@
-diff --git a/Makefile b/Makefile
-index b8f5cca..017180c 100644
---- a/Makefile
-+++ b/Makefile
-@@ -198,8 +198,6 @@ install:
+Index: yadm-3.3.0/Makefile
+===================================================================
+--- yadm-3.3.0.orig/Makefile
++++ yadm-3.3.0/Makefile
+@@ -199,8 +199,6 @@ install:
  		install -d "$$bin" "$$doc" "$$man"                   ;\
  		install -m 0755 yadm "$$bin"                         ;\
  		install -m 0644 yadm.1 "$$man"                       ;\

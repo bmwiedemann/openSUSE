@@ -1,52 +1,52 @@
-diff --git a/contrib/commands/yadm-untracked b/contrib/commands/yadm-untracked
-index 0374247..edabe09 100755
---- a/contrib/commands/yadm-untracked
-+++ b/contrib/commands/yadm-untracked
+Index: yadm-3.3.0/contrib/commands/yadm-untracked
+===================================================================
+--- yadm-3.3.0.orig/contrib/commands/yadm-untracked
++++ yadm-3.3.0/contrib/commands/yadm-untracked
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/usr/bin/bash
  
  # To run: `yadm-untracked <config-file>`
  #
-diff --git a/contrib/hooks/encrypt_with_checksums/post_encrypt b/contrib/hooks/encrypt_with_checksums/post_encrypt
-index 5bb7cde..93f4798 100755
---- a/contrib/hooks/encrypt_with_checksums/post_encrypt
-+++ b/contrib/hooks/encrypt_with_checksums/post_encrypt
+Index: yadm-3.3.0/contrib/hooks/encrypt_with_checksums/post_encrypt
+===================================================================
+--- yadm-3.3.0.orig/contrib/hooks/encrypt_with_checksums/post_encrypt
++++ yadm-3.3.0/contrib/hooks/encrypt_with_checksums/post_encrypt
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/usr/bin/bash
  
  # yadm - Yet Another Dotfiles Manager
  # Copyright (C) 2015-2021 Tim Byrne and Martin Zuther
-diff --git a/contrib/hooks/encrypt_with_checksums/post_list b/contrib/hooks/encrypt_with_checksums/post_list
-index e4c57df..6b7478d 100755
---- a/contrib/hooks/encrypt_with_checksums/post_list
-+++ b/contrib/hooks/encrypt_with_checksums/post_list
+Index: yadm-3.3.0/contrib/hooks/encrypt_with_checksums/post_list
+===================================================================
+--- yadm-3.3.0.orig/contrib/hooks/encrypt_with_checksums/post_list
++++ yadm-3.3.0/contrib/hooks/encrypt_with_checksums/post_list
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/usr/bin/bash
  
  # yadm - Yet Another Dotfiles Manager
  # Copyright (C) 2015-2021 Tim Byrne and Martin Zuther
-diff --git a/contrib/hooks/encrypt_with_checksums/post_status b/contrib/hooks/encrypt_with_checksums/post_status
-index d8778c1..5bbfafa 100755
---- a/contrib/hooks/encrypt_with_checksums/post_status
-+++ b/contrib/hooks/encrypt_with_checksums/post_status
+Index: yadm-3.3.0/contrib/hooks/encrypt_with_checksums/post_status
+===================================================================
+--- yadm-3.3.0.orig/contrib/hooks/encrypt_with_checksums/post_status
++++ yadm-3.3.0/contrib/hooks/encrypt_with_checksums/post_status
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/usr/bin/bash
  
  # yadm - Yet Another Dotfiles Manager
  # Copyright (C) 2015-2021 Tim Byrne and Martin Zuther
-diff --git a/yadm b/yadm
-index 003d954..34d5a30 100755
---- a/yadm
-+++ b/yadm
+Index: yadm-3.3.0/yadm
+===================================================================
+--- yadm-3.3.0.orig/yadm
++++ yadm-3.3.0/yadm
 @@ -1,4 +1,4 @@
 -#!/bin/sh
 +#!/usr/bin/bash
  # yadm - Yet Another Dotfiles Manager
- # Copyright (C) 2015-2023 Tim Byrne
+ # Copyright (C) 2015-2024 Tim Byrne
  
 @@ -17,9 +17,9 @@
  
@@ -59,8 +59,5 @@ index 003d954..34d5a30 100755
 +#  [ "$YADM_TEST" != 1 ] && exec bash "$0" "$@"
 +#fi
  
- VERSION=3.2.2
+ VERSION=3.3.0
  
--- 
-2.40.1
-
