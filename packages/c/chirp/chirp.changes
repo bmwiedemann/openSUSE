@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  1 11:13:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20241226:
+  * Add basic support for Baofeng W31D and BF-T20D
+  * Add driver for Kenwood TK690, TK790, and TK890.
+  * Translations updates, UI fixes
+  * Add legal power limits for US FRS and GMRS, replacing chirp's
+    auto-populated 50W on all channels
+  * Add MaxTalker P15
+  * Add Subpport for BF-F8HP-PRO firmware v0.33
+
+-------------------------------------------------------------------
 Sat Dec  7 16:54:08 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20241206:

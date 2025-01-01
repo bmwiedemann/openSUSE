@@ -2,7 +2,7 @@
 # spec file for package chirp
 #
 # Copyright (c) 2023 Wojciech Kazubski <wk@ire.pw.edu.pl>
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define pythons python3
 Name:           chirp
-Version:        20241206
+Version:        20241226
 Release:        0
 Summary:        Tool for programming amateur radio sets
 License:        GPL-3.0-only
