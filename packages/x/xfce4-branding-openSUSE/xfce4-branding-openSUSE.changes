@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 01 13:31:37 UTC 2025 - maurizio.galli@suse.com
+
+- Update to version 4.20.0+git1.d2555b3:
+  * statusnotifier was merged with systray upstream
+  * Removed obsolete 0001-cleanup-panel-config.patch as fixed upstream
+
+-------------------------------------------------------------------
+Wed Jan  1 13:11:49 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add 0001-cleanup-panel-config.patch to remove an additional start
+  of plugin statusnotifier in a new session; its name is systray now
+  and it gets always started, no need to start it manually.
+
+-------------------------------------------------------------------
 Mon Dec 16 09:37:03 UTC 2024 - maurizio.galli@suse.com
 
 - Update to version 4.20.0+git0.2e4d938:

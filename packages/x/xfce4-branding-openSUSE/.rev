@@ -1400,4 +1400,12 @@
     <comment>New Xfce version 4.20</comment>
     <requestid>1233526</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>6bb7d995d2b9a97bc4da16de99a65fed</srcmd5>
+    <version>4.20.0+git1.d2555b3</version>
+    <time>1735769355</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1234334</requestid>
+  </revision>
 </revisionlist>
