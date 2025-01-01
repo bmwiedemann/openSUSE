@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 29 09:10:17 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.9
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * I18n: Update po/LINGUAS list
+  * scan-build: Fix false positive file
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * scan-build: Add false positive file
+  * build: clang: Fix -Wfortify-source
+  * scan-build: Fix unix.Malloc
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Fix previous commit
+  * Update copyright year
+  * Remove deprecated project files
+  * build: Add GLib requirement
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Dec 23 19:02:14 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.2.8

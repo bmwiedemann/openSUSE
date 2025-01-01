@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package xfce4-cpufreq-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin cpufreq
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        CPU Frequency Scaling Monitor Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -29,10 +29,10 @@ URL:            https://docs.xfce.org/panel-plugins/xfce4-cpufreq-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.2/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.20.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
