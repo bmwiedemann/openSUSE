@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Dec 29 09:00:47 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.6.7
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * Make history window a main app window
+  * Apply .clang-format file
+  * Preliminary cleanup
+  * Clean up and sort includes
+  * clang-format: Add file
+  * cleanup: Remove clipboard-manager/daemon.h
+  * scan-build: Fix unix.Malloc
+  * gcc-analyzer: Add false positive file
+  * history: Fix image cycling when max-images > 1
+  * Compare images using GBytes API
+  * plugin: Restore image position in history at startup
+  * plugin: Walk the cache directory to load images
+  * plugin: Save images only once
+  * plugin: Refactor save()
+  * plugin: Distinguish clear() and save()
+  * Fix memory management of main objects
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Translation Updates
+- Re-generate xfce4-clipman-plugin-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 18:14:19 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.6.6

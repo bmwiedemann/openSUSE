@@ -1,19 +1,19 @@
 diff -rup a/configure.ac b/configure.ac
---- a/configure.ac	2024-02-29 15:44:44.000000000 +0100
-+++ b/configure.ac	2024-03-01 19:24:06.357387075 +0100
-@@ -28,7 +28,7 @@ m4_define([libxfce4ui_min_version], [4.1
- m4_define([libxfce4util_min_version], [4.14.0])
- m4_define([libxfce4panel_min_version], [4.14.0])
- m4_define([xfconf_minimum_version], [4.14.0])
+--- a/configure.ac	2024-12-24 11:40:02.000000000 +0100
++++ b/configure.ac	2024-12-29 10:04:31.028508599 +0100
+@@ -18,7 +18,7 @@ m4_define([libxfce4ui_min_version], [4.1
+ m4_define([libxfce4util_min_version], [4.16.0])
+ m4_define([libxfce4panel_min_version], [4.16.0])
+ m4_define([xfconf_minimum_version], [4.16.0])
 -m4_define([libx11_min_version], [1.6.7])
 +m4_define([libx11_min_version], [1.6.5])
  m4_define([libxproto_min_version], [7.0.0])
  m4_define([libxtst_min_version], [1.0.0])
  m4_define([wayland_min_version], [1.15.0])
 diff -rup a/configure b/configure
---- a/configure	2024-02-29 15:45:33.000000000 +0100
-+++ b/configure	2024-03-01 19:24:33.067368811 +0100
-@@ -16434,11 +16434,11 @@ fi
+--- a/configure	2024-12-24 11:41:19.000000000 +0100
++++ b/configure	2024-12-29 10:05:18.251853225 +0100
+@@ -16680,11 +16680,11 @@ fi
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -28,7 +28,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -16594,9 +16594,9 @@ fi
+@@ -16843,9 +16843,9 @@ fi
  
  
  
@@ -41,7 +41,7 @@ diff -rup a/configure b/configure
      LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
  printf "%s\n" "$LIBX11_VERSION" >&6; }
-@@ -16613,7 +16613,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+@@ -16862,7 +16862,7 @@ printf %s "checking LIBX11_LIBS... " >&6
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
  printf "%s\n" "$LIBX11_LIBS" >&6; }
  
@@ -50,7 +50,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -16642,7 +16642,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -16891,7 +16891,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package x11 was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -59,7 +59,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -16654,7 +16654,7 @@ printf "%s\n" "not found" >&6; }
+@@ -16903,7 +16903,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package x11 was not found on your system."
@@ -68,7 +68,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you"
        echo "*** installed the package in a nonstandard prefix so that"
        echo "*** pkg-config is able to find it."
-@@ -17140,11 +17140,11 @@ printf "%s\n" "not found" >&6; }
+@@ -17395,11 +17395,11 @@ printf "%s\n" "not found" >&6; }
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -83,7 +83,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -17300,9 +17300,9 @@ fi
+@@ -17558,9 +17558,9 @@ fi
  
  
  
@@ -96,7 +96,7 @@ diff -rup a/configure b/configure
      LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
  printf "%s\n" "$LIBX11_VERSION" >&6; }
-@@ -17319,7 +17319,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+@@ -17577,7 +17577,7 @@ printf %s "checking LIBX11_LIBS... " >&6
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
  printf "%s\n" "$LIBX11_LIBS" >&6; }
  
@@ -105,7 +105,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -17348,7 +17348,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -17606,7 +17606,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package x11 was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -114,7 +114,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -17360,7 +17360,7 @@ printf "%s\n" "not found" >&6; }
+@@ -17618,7 +17618,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package x11 was not found on your system."

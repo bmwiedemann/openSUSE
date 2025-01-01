@@ -16,11 +16,11 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.16.0
 %define plugin clipman
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.6.6
+Version:        1.6.7
 Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.6/%{name}-%
 Patch0:         xfce4-clipman-plugin-relax-x11-version.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.22.29
@@ -41,9 +41,9 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.60.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.29
 BuildRequires:  pkgconfig(libqrencode) >= 3.3.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfconf-0) >= %{panel_version}
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.15.0
 BuildRequires:  pkgconfig(x11) >= 1.6.5
