@@ -1,7 +1,7 @@
 #
-# spec file for xfce4-docklike-plugin
+# spec file for package xfce4-docklike-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,38 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.16.0
 %define plugin docklike
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Docklike Taskbar
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-docklike-plugin/start
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.4/%{name}-%{version}.tar.bz2
+Patch0:         relax-x11-version.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.30.0
-BuildRequires:  pkgconfig(x11) >= 1.6
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.4
+BuildRequires:  pkgconfig(libxfce4windowingui-0) >= 4.19.4
+BuildRequires:  pkgconfig(x11) >= 1.6.5
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -68,7 +74,7 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if %{with git}
