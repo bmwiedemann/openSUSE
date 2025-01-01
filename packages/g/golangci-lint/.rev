@@ -499,4 +499,41 @@
   * docs: update GitHub Action assets (#5123) (forwarded request 1226312 from jfkw)</comment>
     <requestid>1226314</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>104c9fcf6f7ca3a6d1c1333d3f8976c9</srcmd5>
+    <version>1.63.0</version>
+    <time>1735769357</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.63.0:
+  * feat: format fixed files with the same formatters as the issues related to formatting (#5267)
+  * build(deps): bump the linter-testdata group across 3 directories with 6 updates (#5268)
+  * build(deps): bump github.com/ldez/usetesting from 0.4.0 to 0.4.1 (#5266)
+  * Add exptostd linter (#5259)
+  * dev: clarifies and homogenizes formatter descriptions (#5265)
+  * build(deps): bump github.com/ldez/usetesting from 0.3.0 to 0.4.0 (#5264)
+  * build(deps): bump github.com/sashamelentyev/usestdlibvars from 1.27.0 to 1.28.0 (#5263)
+  * build(deps): bump github.com/ldez/usetesting from 0.2.2 to 0.3.0 (#5261)
+  * build(deps): bump github.com/bombsimon/wsl/v4 from 4.4.1 to 4.5.0 (#5262)
+  * docs: update &quot;Contributing FAQ&quot; (#5260)
+  * feat: apply formatters after the suggested fixes (#5246)
+  * fix: enable paths with junction inside windows (#5245)
+  * Add nilnesserr linter (#5240)
+  * build(deps): bump github.com/raeperd/recvcheck from 0.1.2 to 0.2.0 (#5258)
+  * build(deps): bump github.com/julz/importas from 0.1.1-0.20241016092914-b26b8fc96f8a to 0.2.0 (#5256)
+  * dev: use bool pointer on deprecated bool options (#5254)
+  * build(deps): bump github.com/4meepo/tagalign from 1.3.4 to 1.4.1 (#5255)
+  * fix: move uniq-by-line field from output to issues (#5253)
+  * dev: improve --presets and --out-format flags help (#5251)
+  * feat: disable timeout if timeout &lt;= 0 (#5250)
+  * build(deps): bump github.com/tetafro/godot from 1.4.18 to 1.4.20 (#5247)
+  * build(deps): bump github.com/ldez/grignotin from 0.6.0 to 0.7.0 (#5248)
+  * feat: improve formatter messages (#5243)
+  * build(deps): bump github.com/ultraware/whitespace from 0.1.1 to 0.2.0 (#5244)
+  * dev: publish AUR from sources (#5241)
+  * fix: remove decoder, sloglint, tagalin from 'format' preset (#5242)
+  * docs: update social network handles
+  * docs: update completion guide (#5239)
+  * goheader: fix invalid position (#5238) (forwarded request 1234398 from jfkw)</comment>
+    <requestid>1234399</requestid>
+  </revision>
 </revisionlist>
