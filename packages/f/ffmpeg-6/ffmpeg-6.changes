@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  1 11:13:35 UTC 2025 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 6.1.2 and fix Factory build.
+- Remove incorporated patches:
+  0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch,
+  ffmpeg-6-CVE-2024-7055.patch and ffmpeg-6-CVE-2024-32230.patch
+  Upstream changes:
+  See /usr/shar/doc/packages/ffmpeg-6/Changelog
+
+-------------------------------------------------------------------
 Mon Sep 30 12:34:56 UTC 2024 - olaf@aepfle.de
 
 - Fix assertion due to missing priv_data cleanup on failed VAAPI

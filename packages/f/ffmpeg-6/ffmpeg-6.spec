@@ -16,6 +16,7 @@
 #
 
 
+%define vers 6.1.2
 %define flavor @BUILD_FLAVOR@%nil
 %if "%flavor" != "ffmpeg-6-mini"
 
@@ -83,7 +84,7 @@
 %define _major_expected 7
 
 Name:           ffmpeg-6
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -107,7 +108,6 @@ Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
-Patch6:         0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
 Patch7:         0001-avfilter-asrc_afirsrc-fix-by-one-smaller-allocation-.patch
 Patch8:         0001-avfilter-bwdif-account-for-chroma-sub-sampling-in-mi.patch
 Patch9:         0001-avfilter-af_dialoguenhance-fix-overreads.patch
@@ -123,9 +123,7 @@ Patch92:        ffmpeg-CVE-2023-50007.patch
 Patch93:        ffmpeg-CVE-2023-50008.patch
 Patch94:        ffmpeg-6-CVE-2024-32228-shim-1535d338.patch
 Patch95:        ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch
-Patch96:        ffmpeg-6-CVE-2024-32230.patch
 Patch97:        ffmpeg-c99.patch
-Patch98:        ffmpeg-6-CVE-2024-7055.patch
 #
 # preamble is present twice, watch out
 #
@@ -817,7 +815,7 @@ done
 %else
 %define _name ffmpeg
 Name:           ffmpeg-6-mini
-Version:        6.1.1
+Version:        %{vers}
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -831,7 +829,6 @@ Patch1:         ffmpeg-arm6l.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
-Patch6:         0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
 Patch7:         0001-avfilter-asrc_afirsrc-fix-by-one-smaller-allocation-.patch
 Patch8:         0001-avfilter-bwdif-account-for-chroma-sub-sampling-in-mi.patch
 Patch9:         0001-avfilter-af_dialoguenhance-fix-overreads.patch
@@ -847,7 +844,6 @@ Patch92:        ffmpeg-CVE-2023-50007.patch
 Patch93:        ffmpeg-CVE-2023-50008.patch
 Patch94:        ffmpeg-6-CVE-2024-32228-shim-1535d338.patch
 Patch95:        ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch
-Patch96:        ffmpeg-6-CVE-2024-32230.patch
 Patch97:        ffmpeg-c99.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
