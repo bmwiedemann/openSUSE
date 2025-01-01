@@ -17,7 +17,7 @@
 
 
 Name:           xfmpc
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        MPD Client for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -28,11 +28,10 @@ Source1:        xfmpc.png
 %if 0%{?suse_version} >= 1699
 BuildRequires:  gcc13
 %endif
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  sed
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libmpd) >= 0.15.0

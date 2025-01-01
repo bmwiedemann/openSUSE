@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 29 18:25:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.3.2
+  * Update copyright year
+  * I18n: Update po/LINGUAS list
+  * build: Remove check for libx11
+  * scan-build: Add false positive file
+  * build: clang: Silence -Wunused-function
+  * build: Fix -Werror=unused-function
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 30 10:31:18 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Vala does not properly work with gcc-14; lets stick with gcc-13
