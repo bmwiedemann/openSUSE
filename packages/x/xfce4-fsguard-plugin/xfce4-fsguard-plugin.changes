@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 29 11:14:52 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.4
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Be less verbose
+  * build: Add AC_PREREQ
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Apr 20 08:06:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.3
