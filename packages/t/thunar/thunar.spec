@@ -19,7 +19,7 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfconf
 BuildRequires:  pkgconfig(exo-2) >= 4.19.0
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.42.8
 BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0

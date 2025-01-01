@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 31 09:04:27 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.20.1
+  * Fix wrong selection after rename (#1415)
+  * Do not save view settings when searching (#1502)
+  * Prevent crash when removing location button (#1507)
+  * Fix throttling of selection updates (#1508) (#1515)
+  * Make toolbar inside header-bar transparent (#1514)
+  * Fix appstream metainfo (#1512)
+  * Prevent crash when loading mount point emblem (#1511)
+  * remove superflous spaces in strings (#1501)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec 15 13:40:59 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.20.0
