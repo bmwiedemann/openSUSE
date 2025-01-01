@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec 29 09:28:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.7.1
+  * Update copyright year
+  * Add Darwin support
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * I18n: Update po/LINGUAS list
+  * Fix diskperf.desktop file translation
+  * Fix previous commit
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * scan-build: Fix deadcode.DeadStores
+  * I18n: Update po/LINGUAS list
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Update copyright year
+  * build: Fix autotools warnings
+  * build: Add GLib requirement
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * Fix intltool lock file bug in make distcheck
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Sat Mar  5 14:18:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.7.0
