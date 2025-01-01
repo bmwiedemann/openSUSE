@@ -1,10 +1,9 @@
-Index: ristretto-0.3.5/org.xfce.ristretto.desktop.in
-===================================================================
---- ristretto-0.3.5.orig/org.xfce.ristretto.desktop.in
-+++ ristretto-0.3.5/org.xfce.ristretto.desktop.in
-@@ -10,4 +10,4 @@ Type=Application
- X-MultipleArgs=false
+diff -rup a/org.xfce.ristretto.desktop.in b/org.xfce.ristretto.desktop.in
+--- a/org.xfce.ristretto.desktop.in	2024-12-25 16:26:34.000000000 +0100
++++ b/org.xfce.ristretto.desktop.in	2024-12-30 09:49:33.054607941 +0100
+@@ -11,4 +11,4 @@ X-MultipleArgs=false
  Categories=GTK;Graphics;Viewer;
+ Keywords=image;photo;picture;viewer;graphics;
  StartupNotify=true
--MimeType=image/png;image/gif;image/jpeg;image/bmp;image/x-pixmap;image/tiff;image/svg+xml;image/x-xpixmap;
-+MimeType=image/png;image/gif;image/jpeg;image/bmp;image/tiff;image/svg+xml;image/x-xpixmap;image/x-xpm;image/x-cmu-raster;image/x-ico;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-sun-raster;image/x-tga;image/x-win-bitmap;image/x-xbitmap;
+-MimeType=image/png;image/gif;image/jpeg;image/bmp;image/x-pixmap;image/tiff;image/svg+xml;image/x-xpixmap;image/webp;
++MimeType=image/png;image/gif;image/jpeg;image/bmp;image/x-pixmap;image/tiff;image/svg+xml;image/x-xpixmap;image/webp;image/x-xpm;image/x-cmu-raster;image/x-ico;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-sun-raster;image/x-tga;image/x-win-bitmap;image/x-xbitmap;

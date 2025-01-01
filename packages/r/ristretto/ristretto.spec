@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           ristretto
-Version:        0.13.2
+Version:        0.13.3
 Release:        0lib
 Summary:        Image viewer for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -33,18 +33,16 @@ BuildRequires:  file-devel
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
-BuildRequires:  pkgconfig(exo-2)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libexif) >= 0.6.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.1
+BuildRequires:  pkgconfig(x11) >= 1.6.5
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
