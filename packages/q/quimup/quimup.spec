@@ -1,7 +1,7 @@
 #
 # spec file for package quimup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 Packman team: http://packman.links2linux.org/
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define _mainv  2.1
+%define _mainv  2.1.1
 Name:           quimup
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A client for the music player daemon (MPD)
 # was http://www.coonsden.com
