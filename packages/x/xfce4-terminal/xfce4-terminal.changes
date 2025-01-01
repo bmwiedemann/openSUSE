@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Dec 29 18:35:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.4
+  * window: Ensure tabs_menu != NULL when updating
+  * screen: Ensure working dir is not NULL
+  * Do not resize the window on zoom
+  * docs: added documentation and cli parsing for --class option
+  * Use TerminalWindow's screen to test for windowing system
+  * Use dropdown's display rather than default display
+  * Avoid warning when widget display is not the default display
+  * Fix segfault when there are both Wayland and X11 displays
+  * screen: Avoid type check on released variable
+  * preferences: Initialize GdkRGBA variable
+  * screen: Cancel async spawn of child in finalize()
+  * Improve error message for empty custom command
+  * Check for screen pointers equality before destroying last screen
+  * screen: Fix gtk_container_get_children leaks
+  * screen: Fix string leak in terminal_screen_paste_unsafe_text
+  * window: Fix leak in terminal_window_get_working_directory
+  * window: Fix leak in terminal_window_menu_add_section
+  * main: Fix string array leak
+  * terminal: Fix spelling error
+  * prefs-dialog: Fix AtkRelationSet leak
+  * Fix gtk-layer-shell includes
+  * preferences: Add missing sanity check
+  * Preferences: maximize new windows
+  * Fix running a command as a login shell
+  * scan-build: Fix core.NullDereference and core.CallAndMessage
+  * build: clang: Silence -Wcast-align
+  * Update `.gitignore`
+  * Rename theme file to desktop for gettext detection
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Cancel by default in unsafe past dialog
+  * Restore "Text blinks" tooltip
+  * Revert "fix typo"
+  * Translation Updates
+- Remove obsolote gxo-282.patch
+- Rename xfce4-terminal-relax-x11-version.patch to
+  relax-x11-version.patch and refresh it.
+
+-------------------------------------------------------------------
 Fri Mar  1 17:59:41 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.3

@@ -19,25 +19,26 @@
 
 %bcond_with git
 Name:           xfce4-terminal
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://docs.xfce.org/apps/terminal/start
 Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE: backport fix for crash on window close
-Patch0:         gxo-282.patch
-# PATCH-FIX-OPENSUSE xfce4-terminal-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
-Patch1:         xfce4-terminal-relax-x11-version.patch
-BuildRequires:  intltool
+# PATCH-FIX-OPENSUSE relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
+Patch1:         relax-x11-version.patch
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.16.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.5
