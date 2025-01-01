@@ -1,7 +1,7 @@
 #
 # spec file for package xfdesktop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,17 +49,17 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.72.0
-BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
 BuildRequires:  pkgconfig(libnotify) >= 0.4.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.14
-BuildRequires:  pkgconfig(yaml-0.1) >= 0.1.7
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.13.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.19.3
 BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.8
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.19.3
 BuildRequires:  pkgconfig(thunarx-3) >= 4.17.10
 BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(yaml-0.1) >= 0.1.7
 Provides:       xfce4-desktop = %{version}
 Obsoletes:      xfce4-desktop < %{version}
 Requires:       %{name}-branding = %{version}
@@ -103,10 +103,11 @@ export CC=gcc-13
 NOCONFIGURE=1 ./autogen.sh
 %configure \
     --enable-maintainer-mode
-    --with-default-backdrop-filename=${datadir}/wallpapers/xfce/default.wallpaper
+    --with-default-backdrop-filename=%{_datadir}/wallpapers/xfce/default.wallpaper
 %else
 xdt-autogen
-%configure
+%configure \
+    --with-default-backdrop-filename=%{_datadir}/wallpapers/xfce/default.wallpaper
 %endif
 %make_build
 
