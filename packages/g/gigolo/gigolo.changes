@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 30 08:57:19 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.5.4
+  * Update copyright year
+  * I18n: Update po/LINGUAS list
+  * Added missing Keywords entry to .desktop file
+  * build: Use XDT_VERSION_INIT
+  * build: Switch from intltool to gettext
+  * build: Add #ifdef around bind_textdomain_codeset
+  * build: Define our own windowing macro instead of extending GDK's
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Sep 29 15:46:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.5.3

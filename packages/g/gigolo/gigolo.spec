@@ -1,7 +1,7 @@
 #
 # spec file for package gigolo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           gigolo
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Frontend to Manage Connections to Remote Filesystems
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://git.xfce.org/apps/gigolo/
 Source0:        https://archive.xfce.org/src/apps/gigolo/0.5/%{name}-%{version}.tar.bz2
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 # uses xdg-open
 Requires:       xdg-utils
 Recommends:     %{name}-lang = %{version}
