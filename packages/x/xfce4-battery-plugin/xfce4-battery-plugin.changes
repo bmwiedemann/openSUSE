@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 29 08:50:22 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.6
+  * Update copyright year
+  * Introduce Darwin support
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * gcc-analyzer: Fix -Wanalyzer-null-dereference
+  * scan-build: Fix deadcode.DeadStores
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Add initial envsys support for NetBSD
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Apr 20 07:53:15 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.5
