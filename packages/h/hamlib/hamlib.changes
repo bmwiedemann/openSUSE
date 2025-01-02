@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Sat Dec 28 22:31:12 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.6 (2024-12-24)
+  * send_raw can now take hex digits as colon-separated -- e.g.
+    send _raw icom xfe:xfe:x94:xe0:03:xfd
+  * Add IC7760
+  * IC7300 Mode filter can now be set by # (i.e. 1,2,3) 
+  * Fixed AF6SA WRC rotor controller
+  * Added Rhode&Schwarz XK852
+  * Added Xiegu X6200
+  * Added Commradio CTX-10
+  * Added Guoehe PMR-171
+  * Added csntechnoligies.net S.A.T Satellite rotor control
+  * Added PSTRotator control
+  * Added Flex SmartSDR slices A-H
+  * Added Motorola Micom M2/M3
+  * Added SDR Radio SDRConsole -- TS-2000 is now hardware flow
+    control so need separate entry
+  * Added --set-conf=filter_usb, filter_usbd, and filter_cw to
+    allow Icom rigs set mode to set filter number too
+  * Added macros for applications to obtain pointers to Hamlib
+    structures(issues #1445, #1420, #487). Internal conversion is
+    still a WIP, but use of these macros will make the final cutover
+    transparent to applications. 
+  * Added Guohe Q900 entry 
+  * Unify behavior of all rigctl split commands
+  * Make the set_split_* commands modify the state of the specified
+    split VFO -- the current or targeted VFO do not have any effect
+  * Make the set_split_* commands enable split automatically if not
+    enabled
+  * Make the get_split_* commands return frequency of 0 Hz, mode
+    NONE and filter of 0 Hz if split is not enabled
+  * Allow all split commands to avoid VFO swapping if supported by
+    the rig model
+  * Improve Icom backend to set/get frequency, mode and filter
+    without VFO swapping if supported by the rig model
+  * Improve Yaesu newcat backend split handling
+  * Expose "Targetable features" (RIG_TARGETABLE_*) in dump_caps
+    output to allow clients to determine which commands can be
+    executed  without VFO swapping
+  * Added RIG_FUNC_SYNC for FTDX101D/MP
+  * Added Barrett 4100
+  * Added DL2MAN (tr)uSDX -- needs refinement
+  * Added Thetis entry -- derived from FlexRadio/Apache PowerSDR
+  * Added VOICE/CW memory capability to many rigs -- thanks to David
+    Balharrie M0DGB/G8FKH
+  * Add -# --skip_init option to rigctl to skip rig initialization --
+    useful for executing commands quickly
+  * rig_caps is no longer constant -- this may break some 3rd party
+    relying on the "const" declaration.
+  * IC7610 now has IPP, DPP, and TX_INHIBIT functions set/get
+  * Hamlib now starts a multicast server that sends out rig
+    information. Does not receive commands yet. See README.multicast
+  * rigctld has new -b/bind-all option to try all interfaces
+    -- restores original behavior. This was done to fix duplicate
+    rigctld instances on Windows
+  * Yaesu rigs can now use send_morse to send keyer message 1-5
+    or a CW message up to 50 chars (which will use memory 1)
+  * rig set level METER can now take SWR,COMP,ALC,IC/ID,DB,PO,
+    VDD,TEMP arguments to set which meter to display
+  * reg get level displays meter number=name now
+  * Added parm BANDSELECT for Yaesu rigs
+    'p BANDSELECT' returns current band of VFOA
+    'P BANDSELECT BAND160M' example selects the 160M band
+    'P BANDSELECT ?' shows  bands available for the rig
+  * Added rig_cm108_get/set_bit to API and get/set_gpio to
+    rigctl(d) for GPIO1,2,3,4 access on CM108
+  * Added BG2FX FX4/C/CR/L
+  * Fixed IC7610 to use new 0x25 0x26 command added in latest
+    firmware
+  * Fix W command in rigctld to work properly -- can take
+    terminating char or # of bytes to expect
+  * Add rig_set_debug_filename so Python can redirect debug stream
+  * Fix Yaesu LBL_NR to use proper values
+  * Add IC-905
+  * Add Anytone D578UVIII -- should work on any D558 model and
+    perhaps others too
+  * Add saebrtrack rotor
+    https://sites.google.com/site/marklhammond/saebrtrack
+  * Add offset_vfoa and offset_vfob applying to rig_set_freq
+  * Fix K4 to put it in K40 mode when requesting ID
+  * Fixes for M2 Rotors
+  * Add rigctlsync utility to synchronize frequency from a rig
+    to SDR# (or others)
+  * Add SDR# rig for use with SDR#'s gpredict plugin -- can only
+    get/set freq 
+  * Add Apex Shared Loop rotator -- unidirectional only so far
+  * Add client_version to rigctld so client can report it's
+    version for future use/compatibility/alternatives
+  * Add --set-conf=tuner_control_pathname=hamlib_tuner_control
+    (default). If file exists then it will be called with 0/1
+    (Off/On) argument with 'U TUNER 0' or 'U TUNER 1". Default
+    path is for current directory
+  * Add MDS 4710/9710 rigs
+  * Add FLIR PTU-D48, E46, D100, D300 rotors
+  * Fix FTDX3000 rig split
+  * Fix rigctld/rigctltcp information
+  * Fix FT817 get/set_vfo
+- remove patch hamlib-add-stdlib-header.patch (applied upstream)
+
+-------------------------------------------------------------------
 Thu Sep 26 22:51:51 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - add patch hamlib-add-stdlib-header.patch to fix the build for

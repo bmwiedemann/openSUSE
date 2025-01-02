@@ -18,7 +18,7 @@
 
 %define         _name c
 Name:           tree-sitter-c
-Version:        0.23.2
+Version:        0.23.4
 Release:        0
 Summary:        C grammar for tree-sitter
 License:        MIT

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 22 05:31:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.310.0 (10.31)
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.31 2024-09-21
+    - Restore old repair behavior for job dependencies without performance loss. (HEM42)
+
+-------------------------------------------------------------------
 Sun Jun 23 16:31:15 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 10.300.0 (10.30)

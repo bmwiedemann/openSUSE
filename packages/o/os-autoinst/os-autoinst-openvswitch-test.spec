@@ -1,7 +1,7 @@
 #
 # spec file for package os-autoinst-openvswitch-test
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst-openvswitch
 Name:           %{short_name}%{?name_ext}
-Version:        4.6.1734961973.9cefddf
+Version:        4.6.1735636267.be6a5a9
 Release:        0
 Summary:        test package for %{short_name}
 License:        GPL-2.0-or-later

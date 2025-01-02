@@ -17,7 +17,7 @@
 
 
 Name:           gap-atlasrep
-Version:        2.1.8
+Version:        2.1.9
 Release:        0
 Summary:        GAP: Interface to the Atlas of Group Representations
 License:        GPL-3.0-or-later

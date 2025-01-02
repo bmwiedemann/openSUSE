@@ -27,4 +27,20 @@
     <comment></comment>
     <requestid>1229554</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e22632b037223ad6bd4a5035e1cda0c8</srcmd5>
+    <version>0.23.6</version>
+    <time>1735769269</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.5:
+  * build(npm): update deps
+- update to 0.23.6:
+  * feat(highlights): highlight decorator names as a function
+  * feat: add left and right fields to type_alias_statement
+  * feat: allow type in generic types 
+  * feat: add fields in except_clause 
+  * build(npm): bump deps 
+  * chore: regenerate (forwarded request 1234121 from rrahl0)</comment>
+    <requestid>1234122</requestid>
+  </revision>
 </revisionlist>

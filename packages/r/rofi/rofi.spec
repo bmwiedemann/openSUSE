@@ -17,7 +17,7 @@
 
 
 Name:           rofi
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
@@ -29,6 +29,7 @@ Patch0:         xdg-terminal.patch
 BuildRequires:  bison
 BuildRequires:  cairo-devel
 BuildRequires:  flex >= 2.5.39
+BuildRequires:  glib2-devel >= 2.36
 BuildRequires:  libjpeg8-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  libxkbcommon-devel
@@ -38,6 +39,7 @@ BuildRequires:  pango-devel
 BuildRequires:  startup-notification-devel
 BuildRequires:  xcb-util-cursor-devel
 BuildRequires:  xcb-util-devel
+BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xcb-util-xrm-devel
 Requires:       xdg-utils
@@ -82,8 +84,9 @@ sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
 %{_datadir}/applications/rofi-theme-selector.desktop
 %{_datadir}/applications/rofi.desktop
 %dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/apps
-%{_datadir}/icons/hicolor/apps/rofi.svg
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/scalable/apps/rofi.svg
 %{_mandir}/man1/rofi.1%{?ext_man}
 %{_mandir}/man1/rofi-sensible-terminal.1%{?ext_man}
 %{_mandir}/man1/rofi-theme-selector.1%{?ext_man}
@@ -92,6 +95,7 @@ sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
 %{_mandir}/man5/rofi-dmenu.5%{?ext_man}
 %{_mandir}/man5/rofi-keys.5%{?ext_man}
 %{_mandir}/man5/rofi-debugging.5%{?ext_man}
+%{_mandir}/man5/rofi-thumbnails.5%{?ext_man}
 
 %files devel
 %{_includedir}/rofi/

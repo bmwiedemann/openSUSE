@@ -17,8 +17,8 @@
 
 
 Name:           gap-ringsforhomalg
-Version:        2023.11.02
-%define sillyver 2023.11-02
+Version:        2024.11.02
+%define sillyver 2024.11-02
 Release:        0
 Summary:        GAP: Dictionaries of External Rings
 License:        GPL-2.0-only
@@ -32,7 +32,7 @@ Requires:       gap-core >= 4.12.1
 Requires:       gap-gapdoc >= 1.0
 Requires:       gap-gaussforhomalg >= 2023.08.01
 Requires:       gap-homalgtocas >= 2023.08.01
-Requires:       gap-matricesforhomalg >= 2023.08.01
+Requires:       gap-matricesforhomalg >= 2024.11.02
 
 %description
 The RingsForHomalg package provides small dictionaries for homalg to

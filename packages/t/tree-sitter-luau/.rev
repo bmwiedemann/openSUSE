@@ -7,4 +7,27 @@
     <comment></comment>
     <requestid>1229605</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>56da28b82facf7dd22673d6879a5a235</srcmd5>
+    <version>1.2.0</version>
+    <time>1735769272</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * fix(grammar): adapt to upstream regex change
+  * feat: support floor division update operator
+  * feat: support variadic types and variadic generic parameters
+  * feat: add compound floor division operator highlight
+  * feat: allow empty object types and add intersection type to types
+  * build: update bindings
+  * fix: allow other types in gneric type
+  * fix: support variadic type in generic arguments
+  * feat: use binding list in for_generic_clause
+  * chore: generate with 0.24.5
+  * fix: mark the lua grammar as a dependency
+  * fix(rust): correct include
+- remove fix-grammar.js.patch, as upstream includes now the fix
+- add require-correct-lua.patch, as they depend on the older upstream name
+  of the lua package (forwarded request 1234170 from rrahl0)</comment>
+    <requestid>1234171</requestid>
+  </revision>
 </revisionlist>

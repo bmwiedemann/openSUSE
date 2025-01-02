@@ -1,9 +1,9 @@
-Index: rofi-1.7.4/config/config.c
+Index: rofi-1.7.6/config/config.c
 ===================================================================
---- rofi-1.7.4.orig/config/config.c
-+++ rofi-1.7.4/config/config.c
-@@ -47,16 +47,16 @@ Settings config = {
-     .show_icons = FALSE,
+--- rofi-1.7.6.orig/config/config.c
++++ rofi-1.7.6/config/config.c
+@@ -50,16 +50,16 @@ Settings config = {
+     .preview_cmd = NULL,
  
      /** Terminal to use. (for ssh and open in terminal) */
 -    .terminal_emulator = "rofi-sensible-terminal",

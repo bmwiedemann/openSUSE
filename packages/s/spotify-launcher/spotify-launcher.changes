@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 31 11:39:54 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 0.6.1:
+  * Release v0.6.1
+  * Update release key to B420FD3777CCE3A7F0076B55C85668DF69375001
+  * Update dependencies
+
+-------------------------------------------------------------------
 Mon Dec  9 17:21:37 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update vendor file: fixes RUSTSEC-2024-0399 and RUSTSEC-2024-0421

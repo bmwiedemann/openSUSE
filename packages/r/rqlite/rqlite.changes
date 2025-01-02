@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 29 18:59:28 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.3:
+  * Add version information to `/nodes` output
+  * Extension paths as string command-line type
+  * Updates of go dependencies and developer visible changes
+- build with system sqlite
+
+-------------------------------------------------------------------
 Thu Dec 19 14:07:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.36.1:

@@ -1,0 +1,29 @@
+From b22dfc2e091c9055fc1b7b14ff51db1b45e34701 Mon Sep 17 00:00:00 2001
+From: izmyname <135810812+izmyname@users.noreply.github.com>
+Date: Wed, 23 Oct 2024 00:33:58 +0500
+Subject: [PATCH] systemd: Add [install] section to hyprpolkitagent.service
+ (#3)
+
+* Update hyprpolkitagent-service.in
+
+Add Install - Wantedby strings, so the service could be enabled
+
+* Update hyprpolkitagent-service.in
+---
+ assets/hyprpolkitagent-service.in | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/assets/hyprpolkitagent-service.in b/assets/hyprpolkitagent-service.in
+index b731f73..92db3cc 100644
+--- a/assets/hyprpolkitagent-service.in
++++ b/assets/hyprpolkitagent-service.in
+@@ -8,4 +8,7 @@ ConditionEnvironment=WAYLAND_DISPLAY
+ ExecStart=@LIBEXECDIR@/hyprpolkitagent
+ Slice=session.slice
+ TimeoutStopSec=5sec
+-Restart=on-failure
+\ No newline at end of file
++Restart=on-failure
++
++[Install]
++WantedBy=graphical-session.target

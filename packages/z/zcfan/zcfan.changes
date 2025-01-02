@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 31 08:30:07 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.4.0:
+  * Mark zcfan.service as conflicting with thinkfan.service
+  * Make fan levels configurable in config
+  * On watchdog timeout, write to watchdog to avoid spinup on some models
+  * Detect suspend and handle fan level reset
+
+- mark as conflicts with thinkfan package
+
+-------------------------------------------------------------------
 Thu Feb 29 07:05:54 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.3.0:

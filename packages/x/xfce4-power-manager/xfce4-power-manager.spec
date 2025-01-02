@@ -29,6 +29,8 @@ Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.20/%{nam
 Source1:        xfce4-power-manager.xml
 # PATCH-FIX-OPENSUSE 0001-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
 Patch1:         0001-relax-x11-version.patch
+# PATCH-FIX-OPENSUSE 0002-remove-pm-helper-policy.patch -- Remove pm-helper from the polkit policy - see comment about its usage below.
+Patch2:         0002-remove-pm-helper-policy.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
@@ -110,7 +112,7 @@ This package provides the openSUSE look and feel for the Xfce Power Manager.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if %{with git}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:50:59 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Run unit tests for all available python versions 
+
+-------------------------------------------------------------------
 Mon May 27 17:29:38 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - cxx-flags.patch: Remove unsupported compiler flag

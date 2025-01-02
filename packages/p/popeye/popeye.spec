@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           popeye
-Version:        0.21.5
+Version:        0.21.6
 Release:        0
 Summary:        A Kubernetes cluster resource sanitizer
 License:        Apache-2.0
@@ -29,13 +29,22 @@ Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.17
 
 %description
-Pluto is a utility to help users find deprecated Kubernetes apiVersions in their code repositories and their helm releases.
-peye is a utility that scans live Kubernetes cluster and reports potential issues with deployed resources and configurations. It sanitizes your cluster based on what's deployed and not what's sitting on disk. By scanning your cluster, it detects misconfigurations and helps you to ensure that best practices are in place, thus preventing future headaches. It aims at reducing the cognitive overload one faces when operating a Kubernetes cluster in the wild. Furthermore, if your cluster employs a metric-server, it reports potential resources over/under allocations and attempts to warn you should your cluster run out of capacity.
-Popeye is a readonly tool, it does not alter any of your Kubernetes resources in any way!
+Pluto is a utility to help users find deprecated Kubernetes apiVersions in
+their code repositories and their helm releases.
+Popeye is a utility that scans live Kubernetes cluster and reports potential
+issues with deployed resources and configurations. It sanitizes your cluster
+based on what's deployed and not what's sitting on disk. By scanning your
+cluster, it detects misconfigurations and helps you to ensure that best
+practices are in place, thus preventing future headaches. It aims at reducing
+the cognitive overload one faces when operating a Kubernetes cluster in the
+wild. Furthermore, if your cluster employs a metric-server, it reports
+potential resources over/under allocations and attempts to warn you should your
+cluster run out of capacity.
+Popeye is a readonly tool, it does not alter any of your Kubernetes resources
+in any way!
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
@@ -44,7 +53,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 
 %files
 %doc README.md

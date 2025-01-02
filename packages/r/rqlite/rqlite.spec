@@ -17,7 +17,7 @@
 
 
 Name:           rqlite
-Version:        8.36.1
+Version:        8.36.3
 Release:        0
 Summary:        Distributed relational database built on SQLite
 License:        MIT
@@ -26,6 +26,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  go >= 1.22.0
 BuildRequires:  golang-packaging
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sqlite3)
 
 %description
 rqlite is a relational database which combines SQLite's simplicity with the
@@ -37,6 +39,7 @@ operator-centric solution for multiple platforms.
 %autosetup -p1 -a1
 
 %build
+export GOFLAGS="$GOFLAGS -tags=libsqlite3"
 go build -mod=vendor -buildmode=pie ./cmd/rqlite
 go build -mod=vendor -buildmode=pie ./cmd/rqlited
 go build -mod=vendor -buildmode=pie ./cmd/rqbench

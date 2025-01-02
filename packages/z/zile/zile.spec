@@ -1,7 +1,7 @@
 #
 # spec file for package zile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,15 +30,15 @@ Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=20805#/%{nam
 Source3:        zile.desktop
 Source4:        zile.png
 BuildRequires:  help2man >= 1.29
-BuildRequires:  ncurses-devel
 BuildRequires:  perl >= 5.5
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(ncurses)
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 Provides:       %{name}-base = %{version}
@@ -55,6 +55,7 @@ as possible to Emacs; every Emacs user should feel at home with Zile.
 %autosetup
 
 %build
+export CFLAGS="%{optflags} -Wno-incompatible-pointer-types"
 %configure \
   --disable-debug \
   --disable-silent-rules \
@@ -68,7 +69,6 @@ install -Dpm 0644 %{SOURCE3} \
   %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -Dpm 0644 %{SOURCE4} \
   %{buildroot}%{_datadir}/pixmaps/%{name}.png
-%suse_update_desktop_file "%{name}" Utility TextEditor
 
 %files
 %doc ChangeLog README THANKS AUTHORS FAQ NEWS dotzile.sample
@@ -76,6 +76,6 @@ install -Dpm 0644 %{SOURCE4} \
 %{_bindir}/zile
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{_mandir}/man1/zile.1%{?ext_man}
+%{_mandir}/man?/zile.?%{?ext_man}
 
 %changelog

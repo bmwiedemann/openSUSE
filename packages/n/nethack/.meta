@@ -1,0 +1,10 @@
+<package name="nethack" project="openSUSE:Factory">
+  <title>Character Based RPG</title>
+  <description>This RPG is somewhat cryptic with its character based output. But a
+true fan knows and appreciates its complexity and possibilities.
+
+This package contains the text interface.
+</description>
+  <devel project="games" package="nethack"/>
+  <url>http://www.nethack.org/</url>
+</package>

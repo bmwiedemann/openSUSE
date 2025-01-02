@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Dec 31 10:27:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.1:
+  * chore: version++
+  * fix: Decrease verbosity
+  * fix: Make it work again
+
+-------------------------------------------------------------------
+Tue Dec 31 10:25:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  * chore: version++
+  * feat: Support ref in patternProperties
+  * feat: Add dont-add-global flag
+  * fix(deps): update module github.com/stretchr/testify to v1.10.0
+
+-------------------------------------------------------------------
+Sun Dec 22 19:36:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * chore: version++
+  * fix: Split validation in smaller ones
+  * docs: Add comments
+  * feat: Add tests for errs.go
+  * feat: Add tests for worker file
+  * fix: Fix some bugs, add comments
+  * chore(deps): update actions/upload-artifact digest to 6f51ac0
+  * chore(deps): bump golang.org/x/crypto from 0.21.0 to 0.31.0
+  * feat: Add dependency filter functionality
+  * chore(deps): update actions/setup-go digest to 3041bf5
+  * docs: Adjust helm plugin install comand
+
+-------------------------------------------------------------------
+Fri Dec 20 09:12:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package helm-schema: generate jsonschemas from helm charts

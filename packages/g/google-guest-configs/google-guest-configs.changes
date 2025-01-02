@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 12 14:55:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20241205.00 (bsc#1234254, bsc#1234255)
+  * Update google_set_multiqueue to configure
+    vCPU ranges based on VM platform (#90)
+- from version 20241204.00
+  * Restore google_set_multiqueue changes for A3Ultra (#93)
+  * Depend on networkd-dispatcher in Ubuntu (#94)
+- Include components to set hostname and /etc/hosts entries (bsc#1234289, bsc#1234293)
+  * Add sysconfig and sysconfig-network to BuildRequires
+  * Install google_set_hostname into %{_bindir}
+  * Install google_up.sh into %{_sysconfdir}/sysconfig/network/scripts/
+  * Add code to add and remove POST_UP_SCRIPT="compat:suse:google_up.sh"
+    to /etc/sysconfig/network/ifcfg-eth0 in %post and %postun sections
+
+-------------------------------------------------------------------
 Tue Dec  3 13:05:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20241121.00 (bsc#1233625, bsc#1233626)

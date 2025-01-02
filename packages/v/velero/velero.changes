@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:05:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.15.1:
+  * Skip the deprecation message for the dry-run install CLI JSON
+  * output.
+  * Bug fix: increase the WaitGroup counter before start the
+  * goroutine
+  * Pin the version of Golang and base image for v1.15.1
+  * Modify the Init logic to fix the migration case error.
+  * hide restic deprecation warning for install with crd-only
+  * Refactor the migration cases.
+  * Modify the schedule cases.
+  * Modify the StorageClass install and delete code.
+  * 1.15.1 change-log
+  * Modify upgrade and migration cases.
+  * Modify other cases to support VKS environment.
+  * E2E supports VKS data mover environment.
+  * Make change to support VKS environment.
+  * Bump the golang.org/x/crypto for Restic to fix CVE-2024-45337.
+  * Bump the golang.org/x/net for Velero and Restic to fix
+  * CVE-2024-45338.
+  * Bump golang.org/x/crypto to v0.31.0 to fix CVEs.
+  * Fix backup post hook issue
+  * add diagnostic for data mover exposer
+  * add diagnostic for data mover exposer
+  * add diagnostic for data mover exposer
+  * Set hinting region to use for GetBucketRegion() in
+  * pkg/repository/config/aws.go
+  * check existence of the same label from node-agent
+  * issue 8433: add ask label to data mover pods
+  * fix prepare timeout issue
+  * Add SecurityContext to restore-helper
+  * Reduces go.mod minimum go to patch 1.22.0
+  * Add nil check for updating DataUpload VolumeInfo in finalizing
+  * phase.
+  * issue 8391: check ErrCancelled from suffix
+  * issue 8394: move closeDataPath outside callbacks
+
+-------------------------------------------------------------------
 Tue Nov 12 06:24:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.15.0:

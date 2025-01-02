@@ -38,6 +38,7 @@ BuildRequires:  dbus-1-daemon
 BuildRequires:  clang-devel
 BuildRequires:  pkgconfig(pam)
 # required by autoinstallation
+BuildRequires:  jsonnet
 Requires:       jsonnet
 Requires:       lshw
 # required by "agama logs store"

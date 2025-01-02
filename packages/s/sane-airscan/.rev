@@ -60,4 +60,21 @@
     <comment>- do not replace config (as configured scanners are saved to that file) (forwarded request 1225793 from rrahl0)</comment>
     <requestid>1225794</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>124c628a340f384115449f311e17e68a</srcmd5>
+    <version>0.99.31</version>
+    <time>1735769247</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.99.31:
+  * eSCL: rollback of the previous change (quirk_adf_max_pages)
+  * eSCL: added quirk_adf_max_pages
+  * Cosmetic (fixed typo in a commend)
+  * HTTP timeout for &quot;short&quot; requests extended from 5s to 20s
+  * The &quot;sane-intent&quot; option cannot be SANE_CAP_INACTIVE
+  * WSD: workaround for ADF Duplex on Brother MFC-9370CDW
+  * WSD: cosmetic
+  * eSCL: delay between subsequent loads made Brother-specific
+  * Update README.md: updated Gentoo support status (forwarded request 1233963 from rrahl0)</comment>
+    <requestid>1233966</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:34:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.2:
+  * Updating x/net library to v0.33.0
+  * build(deps): bump buildpacks/github-actions from 5.8.3 to 5.8.4
+  * build(deps): bump the go-dependencies group with 2 updates
+
+-------------------------------------------------------------------
 Wed Dec 18 06:50:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.1:

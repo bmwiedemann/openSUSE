@@ -16,7 +16,7 @@
 #
 
 
-%define so_ver        109
+%define so_ver        110
 %define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
@@ -59,7 +59,7 @@
 %endif
 
 Name:           ldc
-Version:        1.39.0
+Version:        1.40.0
 Release:        0
 Summary:        The LLVM D Compiler
 License:        Artistic-1.0 AND BSD-3-Clause

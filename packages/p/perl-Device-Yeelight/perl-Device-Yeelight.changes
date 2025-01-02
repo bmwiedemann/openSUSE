@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 12 05:31:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.140.0 (0.14)
+   see /usr/share/doc/packages/perl-Device-Yeelight/Changes
+
+  0.14    2024/09/11
+  - fixed break from while loop
+
+-------------------------------------------------------------------
 Fri Aug  6 03:08:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.13

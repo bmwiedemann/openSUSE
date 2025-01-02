@@ -1,7 +1,7 @@
 #
 # spec file for package perl-String-Util
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,20 @@
 
 %define cpan_name String-Util
 Name:           perl-String-Util
-Version:        1.34
+Version:        1.350.0
 Release:        0
-License:        Artistic-1.0 OR GPL-1.0-or-later
+# 1.35 -> normalize -> 1.350.0
+%define cpan_version 1.35
+License:        MIT
 Summary:        String processing utility functions
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BA/BAKERSCOT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BA/BAKERSCOT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
-BuildRequires:  perl(Test::More) >= 0.88
+Provides:       perl(String::Util) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -37,21 +39,22 @@ BuildRequires:  perl(Test::More) >= 0.88
 processing strings in various ways.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL --installdirs=vendor
-./Build build --flags=%{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-./Build test
+make test
 
 %install
-./Build install --destdir=%{buildroot} --create_packlist=0
+%perl_make_install
+%perl_process_packlist
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes docs README
+%doc Changes README.md
 %license LICENSE
 
 %changelog

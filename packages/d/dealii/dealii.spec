@@ -90,6 +90,8 @@ License:        LGPL-2.1-or-later
 URL:            https://www.dealii.org/
 Source:         https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
 # NOTE: serial arpack-ng even if parpack is available (see gh#dealii/dealii#10197)
+# PATCH-FEATURE-OPENSUSE dealii-disable-parallel-doc-build.patch badshah400@gmail.com -- Disable parallel doc build for reproducibility; upstream doxygen issue https://github.com/doxygen/doxygen/issues/11138
+Patch:          dealii-disable-parallel-doc-build.patch
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
 BuildRequires:  cmake

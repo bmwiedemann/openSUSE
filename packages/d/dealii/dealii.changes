@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 27 05:24:56 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add dealii-disable-parallel-doc-build.patch: Disable parallel
+  doc build for reproducibility; upstream doxygen issue
+  (gh#doxygen/doxygen#11138).
+
+-------------------------------------------------------------------
 Sat Dec 21 15:09:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.6.1:

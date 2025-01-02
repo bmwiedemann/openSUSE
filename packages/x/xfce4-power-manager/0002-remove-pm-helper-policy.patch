@@ -1,0 +1,23 @@
+diff -rup a/src/org.xfce.power.policy.in.in b/src/org.xfce.power.policy.in.in
+--- a/src/org.xfce.power.policy.in.in	2024-11-21 07:26:21.000000000 +0100
++++ b/src/org.xfce.power.policy.in.in	2024-12-31 12:07:41.787361622 +0100
+@@ -28,19 +28,4 @@
+     <annotate key="org.freedesktop.policykit.exec.path">@sbindir@/xfpm-power-backlight-helper</annotate>
+   </action>
+ 
+-  <action id="org.xfce.power.xfce4-pm-helper">
+-    <!-- SECURITY:
+-          - A normal active user on the local machine does not need permission
+-            to suspend or hibernate their system.
+-     -->
+-    <description>Suspend or hibernate the system</description>
+-    <message>Authentication is required to place the system in suspend or hibernate mode</message>
+-    <defaults>
+-      <allow_any>auth_admin</allow_any>
+-      <allow_inactive>auth_admin</allow_inactive>
+-      <allow_active>yes</allow_active>
+-    </defaults>
+-    <annotate key="org.freedesktop.policykit.exec.path">@sbindir@/xfce4-pm-helper</annotate>
+-  </action>
+-
+ </policyconfig>

@@ -7,4 +7,29 @@
     <comment></comment>
     <requestid>1229644</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05bf6acfb07525d826da2f3d2f198701</srcmd5>
+    <version>1.1.0</version>
+    <time>1735769269</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * fix: support as in import with statements
+  * feat: add using statements
+  * feat: add user defined functions
+  * feat: add test blocks
+  * feat: add assert statements
+  * refactor: move asterisk fields and multiline string contents
+  * refactor: rework types
+  * chore: update tests
+  * chore: update queries
+  * chore: update script and known failures
+  * chore: generate
+  * fix: update build manifests
+  * chore: update queries
+  * fix(grammar): adapt to upstream regex change
+  * build: update bindings
+  * chore: generate
+- remove fix-regex.patch, as upstream included the fix (forwarded request 1234123 from rrahl0)</comment>
+    <requestid>1234124</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 30 22:32:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.9.1:
+  * Chuckya support to the bubble timelines
+  * Decreased new posts queue prepend scroll threshold
+  * Enabled muting threads when the active user is mentioned instead of only
+    when they are the author
+  * Some filter rows being invisible due to markup
+  * Default FediWrapped style being TRANSPARENT instead of WINDOW
+  * Reschedule calendar month not being set correctly
+  * Opening URIs on scripted exits not working due to making these functions async
+  * Visual glitches and performance issues caused by the clamp and styling in
+    timelines by switching to breakpoints
+
+-------------------------------------------------------------------
 Tue Dec 17 23:31:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.9.0:

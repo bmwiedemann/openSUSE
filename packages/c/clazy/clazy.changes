@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 30 08:32:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.13
+  * New Checks: used-qunused-variable
+  * qstring-arg check provides a fix-it
+  * Fixed unused-non-trivial-variable to not warn when
+    [[maybe_unused]] set
+  * Fixed qstring-arg for upcoming Qt 6.9
+  * Fixed fully-qualified-moc-types false positive for const
+    modifiers of generic arguments
+  * Silence false positive non-pod-global-static warning for QML
+    module initialization
+  * Fix function-args-by-value false positive that would cause
+    compile error in copy constructors, assignment operators
+    and equal checks
+  * False positives for `Q_EMIT(someSignal())` are now fixed
+
+-------------------------------------------------------------------
 Tue Nov 19 23:19:36 UTC 2024 - christophe@krop.fr
 
 - Update to version 1.13git.20241119T221149~560bdc1:

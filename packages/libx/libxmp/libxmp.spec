@@ -1,7 +1,7 @@
 #
 # spec file for package libxmp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 Name:           libxmp
 %define lname	libxmp4
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
-License:        LGPL-2.1-only
+License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://xmp.sf.net/
 
@@ -81,12 +81,11 @@ chmod a+x "$b/%_libdir"/libxmp.so*
 %check
 %make_build check
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libxmp.so.4*
-%license docs/COPYING.LIB
+%license docs/COPYING
 
 %files devel
 %_includedir/xmp.h

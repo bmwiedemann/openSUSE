@@ -1,7 +1,7 @@
 #
 # spec file for package hamlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   4
 Name:           hamlib
-Version:        4.5.5
+Version:        4.6
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
@@ -29,7 +29,6 @@ Source2:        https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{
 # taken from debian
 Source3:        %{name}.keyring
 Patch0:         hamlib-3.0-perl_install.patch
-Patch1:         hamlib-add-stdlib-header.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -149,9 +148,14 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %doc AUTHORS NEWS
 %{_bindir}/rigctl
 %{_bindir}/rigctld
+%{_bindir}/rigctlsync
+%{_bindir}/rigctltcp
+%{_bindir}/rigfreqwalk
 %{_bindir}/rigmem
 %{_bindir}/rigsmtr
 %{_bindir}/rigswr
+%{_bindir}/rigtestmcast
+%{_bindir}/rigtestmcastrx
 %{_bindir}/rotctl
 %{_bindir}/rotctld
 %{_bindir}/ampctl
@@ -160,6 +164,7 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_bindir}/rigtestlibusb
 %{_mandir}/man1/rigctl.1%{?ext_man}
 %{_mandir}/man1/rigctld.1%{?ext_man}
+%{_mandir}/man1/rigctlsync.1%{?ext_man}
 %{_mandir}/man1/rigmem.1%{?ext_man}
 %{_mandir}/man1/rigsmtr.1%{?ext_man}
 %{_mandir}/man1/rigswr.1%{?ext_man}

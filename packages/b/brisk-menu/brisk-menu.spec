@@ -1,7 +1,7 @@
 #
 # spec file for package brisk-menu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,17 @@ Name:           brisk-menu
 Version:        0.6.2
 Release:        0
 Summary:        Modern, efficient menu for MATE
-License:        GPL-2.0-or-later AND CC-BY-SA-4.0
+License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
 URL:            https://github.com/getsolus/brisk-menu
 Source:         https://github.com/getsolus/brisk-menu/releases/download/v%{version}/%{name}-v%{version}.tar.xz
 Source1:        https://github.com/getsolus/brisk-menu/releases/download/v%{version}/%{name}-v%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM brisk-menu-gsettings-icon-properties.patch ionic@ionic.de -- Add icon properties to the gsettings schema for runtime configuration.
+Patch0:         %{name}-gsettings-icon-properties.patch
+# PATCH-FIX-UPSTREAM brisk-menu-runtime-icon-updates.patch ionic@ionic.de -- Add support for runtime icon configuration.
+Patch1:         %{name}-runtime-icon-updates.patch
+# PATCH-FIX-UPSTREAM brisk-menu-fix-crash-on-desktop-file-changes-5f0be5741b5b37221fc8911c11f394ec498cd53d.patch anton.fadeev@red-soft.ru -- Fix crash in some random cases when .desktop files are changed.
+Patch2:         %{name}-fix-crash-on-desktop-file-changes-5f0be5741b5b37221fc8911c11f394ec498cd53d.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -42,7 +48,7 @@ Recommends:     %{name}-lang
 Modern, efficient menu for the MATE Desktop Environment.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %lang_package
 

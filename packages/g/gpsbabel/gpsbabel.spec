@@ -1,7 +1,7 @@
 #
 # spec file for package gpsbabel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,40 @@
 #
 
 
-%global translationdir %{_datadir}/qt5/translations
+%global translationdir %{_datadir}/qt6/translations
 Name:           gpsbabel
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Converts GPS waypoint, route and track data from one format type to another
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.gpsbabel.org/
-Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_9_0.tar.gz
+Source:         https://github.com/GPSBabel/gpsbabel/archive/refs/tags/%{name}_1_10_0.tar.gz
 Source1:        http://www.gpsbabel.org/htmldoc-%{version}/%{name}-%{version}.pdf
 Source2:        %{name}.png
 Source21:       style3.css
 # No automatic phone home by default (RHBZ 668865)
 Patch4:         0004-gpsbabel-1.4.3-nosolicitation.patch
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%endif
 BuildRequires:  cmake
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qttranslations
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5SerialPort)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5WebChannel)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Core5Compat) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Designer) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Help) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6SerialPort) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6UiTools) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.2.0
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(shapelib)
@@ -70,13 +78,13 @@ Summary:        Qt GUI interface for GPSBabel
 Group:          Hardware/Other
 Requires:       %{name} = %{version}-%{release}
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 
 %description gui
 Qt GUI interface for GPSBabel
 
 %prep
-%autosetup -p1 -n gpsbabel-gpsbabel_1_9_0
+%autosetup -p1 -n gpsbabel-gpsbabel_1_10_0
 # Use system shapelib instead of bundled partial shapelib
 rm -rf shapelib
 
@@ -92,6 +100,10 @@ sed -i \
 
 %build
 %cmake \
+%if 0%{?suse_version} < 1550
+  -DCMAKE_C_COMPILER=gcc-12 \
+  -DCMAKE_CXX_COMPILER=g++-12 \
+%endif
   -DGPSBABEL_WITH_LIBUSB=system \
   -DGPSBABEL_WITH_ZLIB=pkgconfig \
   -DGPSBABEL_WITH_SHAPELIB=pkgconfig
@@ -136,6 +148,7 @@ popd
 %{_datadir}/applications/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
+%dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256/
 %dir %{_datadir}/icons/hicolor/256x256/apps/
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png

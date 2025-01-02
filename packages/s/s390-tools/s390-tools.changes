@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 31 09:59:27 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches (jsc#PED-9591, jsc#PED-10303)
+  * s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch 
+  * s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch 
+
+-------------------------------------------------------------------
 Mon Dec  9 09:49:52 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.36 (jsc#PED-10303, jsc#PED-9591)

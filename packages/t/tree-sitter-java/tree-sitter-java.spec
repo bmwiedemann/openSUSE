@@ -18,7 +18,7 @@
 
 %define         _name java
 Name:           tree-sitter-java
-Version:        0.23.4
+Version:        0.23.5
 Release:        0
 Summary:        Java grammar for tree-sitter
 License:        MIT

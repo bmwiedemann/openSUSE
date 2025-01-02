@@ -42,4 +42,18 @@
 - enable devel package</comment>
     <requestid>1229616</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8abbbc180be5345f47658770feb8a38</srcmd5>
+    <version>0.23.5</version>
+    <time>1735769269</time>
+    <user>anag+factory</user>
+    <comment>- udate to 0.23.5:
+  * feat(highlights): add more keywords
+  * fix: give yield in _reserved_identifier a precedence of 0
+  * fix: allow annotations after the ellipsis in a spread parameter
+  * fix: correct floating point literal parsing
+  * feat: allow reserved identifiers in element_value_pair
+  * chore: generate (forwarded request 1234163 from rrahl0)</comment>
+    <requestid>1234164</requestid>
+  </revision>
 </revisionlist>

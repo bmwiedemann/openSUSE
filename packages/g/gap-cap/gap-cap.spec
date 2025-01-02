@@ -17,8 +17,8 @@
 
 
 Name:           gap-cap
-Version:        2024.09.08
-%define sillyver 2024.09-08
+Version:        2024.11.02
+%define sillyver 2024.11-02
 Release:        0
 Summary:        GAP: Categories, Algorithms and Programming
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source:         https://github.com/homalg-project/CAP_project/releases/download/
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
 BuildArch:      noarch
-Requires:       gap-core >= 4.12.1
+Requires:       gap-core >= 4.13.0
 Requires:       gap-io
 Requires:       gap-toolsforhomalg >= 2023.11.01
 Suggests:       gap-browse >= 1.5

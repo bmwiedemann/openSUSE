@@ -1,0 +1,24 @@
+From 072d4c7740589f667812808c200b48b568402512 Mon Sep 17 00:00:00 2001
+From: Michal Hrusecky <michal@hrusecky.net>
+Date: Wed, 25 Dec 2024 20:24:51 +0100
+Subject: [PATCH] core: Require KDE only when running in KDE
+
+KDE style might not be available everywhere. Better to depend on default
+style and allow users to override it with style settings.
+---
+ src/core/Agent.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: hyprpolkitagent-0.1.1/src/core/Agent.cpp
+===================================================================
+--- hyprpolkitagent-0.1.1.orig/src/core/Agent.cpp
++++ hyprpolkitagent-0.1.1/src/core/Agent.cpp
+@@ -59,7 +59,7 @@ void CAgent::initAuthPrompt() {
+ 
+     authState.qmlIntegration = new CQMLIntegration();
+ 
+-    if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE"))
++    if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE") && !qEnvironmentVariableIsEmpty("KDE_FULL_SESSION"))
+         QQuickStyle::setStyle("org.kde.desktop");
+ 
+     authState.qmlEngine = new QQmlApplicationEngine();

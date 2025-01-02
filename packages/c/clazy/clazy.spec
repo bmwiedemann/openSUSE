@@ -16,16 +16,20 @@
 #
 
 
+%define release_ver 1.13
 Name:           clazy
-Version:        1.13git.20241119T221149~560bdc1
+Version:        1.13.0
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 URL:            https://apps.kde.org/clazy/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/clazy/%{release_ver}/src/%{name}-%{release_ver}.tar.xz
+Source1:        https://download.kde.org/stable/clazy/%{release_ver}/src/%{name}-%{release_ver}.tar.xz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/alex@key1.asc?ref_type=heads
+Source2:        clazy.keyring
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 11.0
-BuildRequires:  cmake >= 3.8
+BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
@@ -42,7 +46,7 @@ You get more than 50 Qt related compiler warnings, ranging from unneeded memory
 allocations to misusage of API, including fix-its for automatic refactoring.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{release_ver}
 
 # When exporting CXX=clazy, the executable matching libraries used to build clazy must be used
 # NOTE: 'readlink -f' can't be used, or the result won't be 'clang++-xx' but 'clang-xx', which will cause linker errors

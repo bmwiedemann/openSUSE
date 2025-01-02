@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Device-Yeelight
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Device-Yeelight
 Name:           perl-Device-Yeelight
-Version:        0.13
+Version:        0.140.0
 Release:        0
-Summary:        Controller for Yeelight smart devices
+# 0.14 -> normalize -> 0.140.0
+%define cpan_version 0.14
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Controller for Yeelight smart devices
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/J/JB/JBAIER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/J/JB/JBAIER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,13 +36,16 @@ BuildRequires:  perl(JSON) >= 2.97
 Requires:       perl(IO) >= 1.38
 Requires:       perl(IO::Socket::Multicast) >= 1.12
 Requires:       perl(JSON) >= 2.97
+Provides:       perl(Device::Yeelight) = %{version}
+Provides:       perl(Device::Yeelight::Light)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 Controller for Yeelight smart devices
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

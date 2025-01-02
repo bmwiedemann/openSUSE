@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 28 08:47:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.01.11:
+  * use off64_t for fdmem seeks, check for -ve offsets
+
+-------------------------------------------------------------------
 Mon Jan  2 20:09:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.01.09:

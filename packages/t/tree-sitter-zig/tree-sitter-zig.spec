@@ -18,7 +18,7 @@
 
 %define         _name zig
 Name:           tree-sitter-zig
-Version:        1.0.2
+Version:        1.1.2
 Release:        0
 Summary:        Zig grammar for tree-sitter
 License:        MIT
@@ -56,4 +56,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-

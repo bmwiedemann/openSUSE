@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 31 13:37:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.1.2:
+  * same as 1.1.1
+- update to 1.1.1:
+  * fix: correct npm manifest file
+- update to 1.1.0:
+  * chore: generate with 0.24.5
+  * fix: correct field names when a container field doesn't have a type
+  * feat: support labeled switch statements
+  * fix: restrict _reserved_identifier a bit more
+  * build: update bindings
+
+-------------------------------------------------------------------
 Thu Dec  5 00:58:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

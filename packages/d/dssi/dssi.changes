@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 28 13:53:23 UTC 2024 - munix9@googlemail.com
+
+- Add dssi-add-missing-include.patch:
+  Fix for "error: unknown type name ‘size_t’"
+
+-------------------------------------------------------------------
 Fri Aug 16 11:57:20 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added dssi-C99.diff which fixed a callback prototype so that the

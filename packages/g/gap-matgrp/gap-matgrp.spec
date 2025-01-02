@@ -17,7 +17,7 @@
 
 
 Name:           gap-matgrp
-Version:        0.70
+Version:        0.71
 Release:        0
 Summary:        GAP: Matric group interface routines
 License:        GPL-2.0-only OR GPL-3.0-only

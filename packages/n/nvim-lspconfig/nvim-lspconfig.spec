@@ -17,14 +17,14 @@
 
 
 Name:           nvim-lspconfig
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Quickstart configs for Nvim LSP
 License:        Apache-2.0
 URL:            https://github.com/neovim/nvim-lspconfig
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  neovim
 BuildRequires:  fdupes
+BuildRequires:  neovim
 Requires:       neovim
 BuildArch:      noarch
 
@@ -47,7 +47,6 @@ nvim -u NONE -i NONE -e --headless -c "helptags doc" -c quit
 %install
 install -d %{buildroot}%{_datadir}/nvim/runtime/
 cp -r lua plugin %{buildroot}%{_datadir}/nvim/runtime/
-
 
 %files
 %license LICENSE.md

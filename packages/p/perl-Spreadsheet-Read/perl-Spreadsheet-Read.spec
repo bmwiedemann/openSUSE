@@ -18,9 +18,10 @@
 
 %define cpan_name Spreadsheet-Read
 Name:           perl-Spreadsheet-Read
-Version:        0.900.0
+Version:        0.910.0
 Release:        0
-%define cpan_version 0.90
+# 0.91 -> normalize -> 0.910.0
+%define cpan_version 0.91
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Meta-Wrapper for reading spreadsheet data
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -43,7 +44,7 @@ Provides:       perl(Spreadsheet::Read) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(Data::Dumper) >= 2.183
 Recommends:     perl(Data::Peek) >= 0.52
-Recommends:     perl(Encode) >= 3.200.0
+Recommends:     perl(Encode) >= 3.21
 Recommends:     perl(File::Temp) >= 0.2311
 Recommends:     perl(IO::Scalar)
 %{perl_requires}

@@ -21,4 +21,12 @@
   yield a nicer representation than had been shown before. (forwarded request 1142077 from dirkmueller)</comment>
     <requestid>1142078</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac8ed24570a391d2ee80ed757193ae1b</srcmd5>
+    <version>2.1.9</version>
+    <time>1735769319</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.1.9</comment>
+    <requestid>1234181</requestid>
+  </revision>
 </revisionlist>

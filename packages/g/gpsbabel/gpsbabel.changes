@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 28 14:03:16 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 1.10.0
+  * no changelog available
+- Change build system to use Qt6 instead of Qt5
+- Adjust 0004-gpsbabel-1.4.3-nosolicitation.patch to make it work
+  with gpsbabel 1.10.0+
+
+-------------------------------------------------------------------
 Sun Dec  3 01:56:28 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to 1.9.0

@@ -7,4 +7,20 @@
     <comment></comment>
     <requestid>1233160</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>76f822b9d83eb1a5063bb31f0fefc55c</srcmd5>
+    <version>1.2.0</version>
+    <time>1735769245</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * refactor: deprecate util.find_package_json_ancestor
+  * Fix for vim.fs.find regression not returning parent directory
+  * refactor: deprecate util.find_git_ancestor
+  * refactor!: remove util.path.escape_wildcards
+  * refactor!: remove util.path.is_absolute
+  * fix ruff and ruff_lsp returning a function from root pattern
+  * feat(msbuild): config instruction for filetypes
+  * refactor: fix luals warnings (forwarded request 1233962 from rrahl0)</comment>
+    <requestid>1233965</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jan  1 08:52:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.3:
+  * Meshery CLI
+    - refactor(mesheryctl): Promote environment command @lekaf974
+      (#13033)
+  * Documentation
+    - refactor(mesheryctl): Promote environment command @lekaf974
+      (#13033)
+
+-------------------------------------------------------------------
+Tue Dec 31 10:35:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.2:
+  * General
+    - Update Go toolchain to version 1.23.4 @devhindo (#13062)
+    - Update meshkit to v0.8.0 @devhindo (#13061)
+    - Eval documentation @aabidsofi19 (#13051)
+    - remove design configuration prettification logic @aabidsofi19
+      (#13049)
+    - bump meshkit @aabidsofi19 (#13048)
+    - add support for filtering by labels @aabidsofi19 (#13012)
+  * Meshery CLI
+    - fix(mesheryctl): Error code workflow is failing @lekaf974
+      (#13037)
+    - Remove the word "successfully" @weilirs (#12932)
+
+-------------------------------------------------------------------
+Fri Dec 27 12:32:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.1:
+  * Meshery CLI
+    - [RESOLVED] system config error @Tanishq1604 (#12650)
+
+-------------------------------------------------------------------
 Sun Dec 22 16:22:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.0:

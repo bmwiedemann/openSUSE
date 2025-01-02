@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 31 09:48:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.3.0:
+  * fix: delete parser.o
+  * feat(odin): don't mark identifiers of a function call as @type
+  * fix: properly handle do in alternative blocks
+  * fix: do not scan block comments in strings
+  * fix: allow do {statement} in when statements
+  * build: update bindings
+  * feat: support build tags
+  * feat: support underlying types in enums and bit_sets
+  * fix: correct a few issues with parameters
+  * feat: allow any expression in maps
+  * fix: allow any expression to be assigned in an attribute
+  * fix: allow variables in imports
+  * fix(scanner): avoid crash with isdigit
+  * chore: generate with 0.24.5
+- update to 1.2.0:
+  * feat: support the bit_field type
+  * feat: improve indents
+  * feat: update bindings and versions
+- remove fix-regex.patch as upstream integrated the fix
+
+
+-------------------------------------------------------------------
 Thu Dec  5 00:56:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

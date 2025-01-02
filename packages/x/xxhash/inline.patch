@@ -17,16 +17,16 @@ In function 'void XXH3_hashLong_internal_loop(xxh_u64*, const xxh_u8*, size_t, c
  xxhash.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: xxHash-0.8.2/xxhash.h
+Index: xxHash-0.8.3/xxhash.h
 ===================================================================
---- xxHash-0.8.2.orig/xxhash.h
-+++ xxHash-0.8.2/xxhash.h
-@@ -2107,7 +2107,7 @@ static void* XXH_memcpy(void* dest, cons
+--- xxHash-0.8.3.orig/xxhash.h
++++ xxHash-0.8.3/xxhash.h
+@@ -2421,7 +2421,7 @@ static void* XXH_memcpy(void* dest, cons
  #  define XXH_NO_INLINE static
  /* enable inlining hints */
  #elif defined(__GNUC__) || defined(__clang__)
--#  define XXH_FORCE_INLINE static __inline__ __attribute__((always_inline, unused))
-+#  define XXH_FORCE_INLINE static __inline__ __attribute__((unused))
- #  define XXH_NO_INLINE static __attribute__((noinline))
+-#  define XXH_FORCE_INLINE static __inline__ __attribute__((__always_inline__, __unused__))
++#  define XXH_FORCE_INLINE static __inline__ __attribute__((__unused__))
+ #  define XXH_NO_INLINE static __attribute__((__noinline__))
  #elif defined(_MSC_VER)  /* Visual Studio */
  #  define XXH_FORCE_INLINE static __forceinline

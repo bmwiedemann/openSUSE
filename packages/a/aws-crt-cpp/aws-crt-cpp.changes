@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  9 11:17:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.29.7
+  * Switch CI to using roles by @DmitriyMusatkin in (#688)
+  * Bump crt deps by @DmitriyMusatkin in (#689)
+
+-------------------------------------------------------------------
 Wed Dec  4 10:22:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.29.6

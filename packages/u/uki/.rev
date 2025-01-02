@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>caf080426d7e14b23e74715de9e571f3</srcmd5>
+    <version>MACRO_MACRO_kMACRO</version>
+    <time>1735769083</time>
+    <user>anag+factory</user>
+    <comment>New Package. It builds and sign an Unified Kernel Image, based on the latest Kernel version and the static-initrd package (previously added, see request 1231959). For now, it only build with the default kernel flavor, and the list of flavors may grow depending on the flavor we would like to follow from the Kernel. Using uki-tool, it installs automatically the UKI according the bootloader and create a new menu entry with it.</comment>
+    <requestid>1234159</requestid>
+  </revision>
+</revisionlist>

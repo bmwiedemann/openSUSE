@@ -1,0 +1,78 @@
+--- include/system.h
++++ include/system.h
+@@ -87,14 +87,18 @@
+ #  endif
+ # endif
+ #else
++# ifndef __GLIBC__
+ E long lrand48();
+ E void srand48();
++# endif
+ #endif /* BSD || ULTRIX || RANDOM */
+ 
+ #if !defined(BSD) || defined(ultrix)
+ 			/* real BSD wants all these to return int */
+ # ifndef MICRO
++#  ifndef __GLIBC__
+ E void FDECL(exit, (int));
++#  endif
+ # endif /* MICRO */
+ /* compensate for some CSet/2 bogosities */
+ # if defined(OS2_CSET2) && defined(OS2_CSET2_VER_2)
+@@ -113,7 +117,9 @@
+ # if defined(__STDC__) || !defined(FLEX_SCANNER)
+ #  ifndef OS2_CSET2
+ #   ifndef MONITOR_HEAP
++#    ifndef __GLIBC__
+ E void FDECL(free, (genericptr_t));
++#    endif
+ #   endif
+ #  endif
+ # endif
+@@ -346,26 +352,34 @@
+ E void sleep();
+ #endif
+ #if defined(ULTRIX) || defined(SYSV)
++# ifndef __GLIBC__
+ E unsigned sleep();
++# endif
+ #endif
+ #if defined(HPUX)
+ E unsigned int FDECL(sleep, (unsigned int));
+ #endif
+ #ifdef VMS
++# ifndef __GLIBC__
+ E int FDECL(sleep, (unsigned));
++# endif
+ #endif
+ 
++#ifndef __GLIBC__
+ E char *FDECL(getenv, (const char *));
+ E char *getlogin();
++#endif
+ #if defined(HPUX) && !defined(_POSIX_SOURCE)
+ E long NDECL(getuid);
+ E long NDECL(getgid);
+ E long NDECL(getpid);
+ #else
+ # ifdef POSIX_TYPES
++#  ifndef __GLIBC__
+ E pid_t NDECL(getpid);
+ E uid_t NDECL(getuid);
+ E gid_t NDECL(getgid);
++#  endif
+ #  ifdef VMS
+ E pid_t NDECL(getppid);
+ #  endif
+@@ -476,9 +490,11 @@
+ #  if !defined(SVR4) && !defined(apollo)
+ #   if !(defined(ULTRIX_PROTO) && defined(__GNUC__))
+ #    if !(defined(SUNOS4) && defined(__STDC__)) /* Solaris unbundled cc (acc) */
++/*
+ E int FDECL(vsprintf, (char *, const char *, va_list));
+ E int FDECL(vfprintf, (FILE *, const char *, va_list));
+ E int FDECL(vprintf, (const char *, va_list));
++*/
+ #    endif
+ #   endif
+ #  endif

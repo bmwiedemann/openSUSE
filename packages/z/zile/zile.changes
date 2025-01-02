@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 31 13:31:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by addin -Wno-incompatible-pointer-types
+- remove update-desktop-files as a BR
+
+-------------------------------------------------------------------
 Wed May  5 11:08:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 2.6.1:
+- update to 2.6.2:
   * fix null pointer deeference when visiting a file that contained
     no line endings
 

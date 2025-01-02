@@ -1,7 +1,7 @@
 #
 # spec file for package mesheryctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           mesheryctl
-Version:        0.8.0
+Version:        0.8.3
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0
@@ -28,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.22
+BuildRequires:  go1.23
 BuildRequires:  zsh
 
 %description

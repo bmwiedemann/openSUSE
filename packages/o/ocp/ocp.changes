@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 30 07:23:50 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.1
+  * [adplug] Update to latest master
+    + This adds support for "Palladix" files.
+    + HERAD files were not working as expected.
+  * [sidplay] Update libsidplayfp to latest git version.
+  * [modland.com] If waitpid() returns a fatal error, give up
+    waiting.
+  * [HVL] multiple updates:
+    * files with size below 4096 were not able to be detected on
+      modland.com virtual drive.
+    * instrument-viewer must fetch the instruments from
+      index 1, not 0.
+    * track-viewer must fetch global commands from the actual
+      number of channels in use.
+    * reset the channel-information-cache on file-load, else we
+      might try to dereference pointers from the previous song
+      played.
+  * [MDL] In loader, the calculation of two buffer-sizes were
+    missing parentheses, causing incorrect calculation.
+
+-------------------------------------------------------------------
 Tue Dec 24 06:50:17 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0

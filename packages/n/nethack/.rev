@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e09846110d30f36d5f75731b9e0e0f6a</srcmd5>
+    <version>3.4.3</version>
+    <time>1735769071</time>
+    <user>anag+factory</user>
+    <comment>NetHack is one of the classic games on Unix. I updated the orphaned package games:nethack to build again and it cleaned up overall. I'd like to have it added to openSUSE:Factory to make it available in our distributions. Devel project will be games:nethack.</comment>
+    <requestid>1233796</requestid>
+  </revision>
+</revisionlist>

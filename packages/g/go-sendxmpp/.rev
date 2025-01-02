@@ -313,4 +313,22 @@
   * Don't automatically try other auth mechanisms if FAST authentication fails.</comment>
     <requestid>1231375</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6e98d4208ae72fa1136ce1d7caef6248</srcmd5>
+    <version>0.14.0</version>
+    <time>1735769086</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.0:
+  Added:
+  * Add --fast-invalidate to allow invalidating the FAST token.
+  Changed:
+  * Don't create legacy Ox private key directory in ~/.local/share/go-sendxmpp/oxprivkeys.
+  * Delete legacy Ox private key directory if it's empty.
+  * Show proper error if saved FAST mechanism isn't usable with current TLS version (requires go-xmpp &gt;= 0.2.9).
+  * Print debug output to stdout, not stderr (requires go-xmpp &gt;= 0.2.9).
+  * Show RECV: and SEND: prefix for debug output (requires go-xmpp &gt;= 0.2.9).
+  * Delete stored fast token if --fast-invalidate and --fast-off are set.
+  * Show error when FAST creds are stored but non-FAST mechanism is requested.</comment>
+    <requestid>1233909</requestid>
+  </revision>
 </revisionlist>

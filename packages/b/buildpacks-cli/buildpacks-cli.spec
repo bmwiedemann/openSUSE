@@ -19,7 +19,7 @@
 %define executable_name pack
 
 Name:           buildpacks-cli
-Version:        0.36.1
+Version:        0.36.2
 Release:        0
 Summary:        CLI for building apps using Cloud Native Buildpacks
 License:        Apache-2.0

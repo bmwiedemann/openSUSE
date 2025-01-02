@@ -17,7 +17,7 @@
 
 
 Name:           go-sendxmpp
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        A little tool to send messages to an XMPP contact or MUC
 License:        BSD-2-Clause

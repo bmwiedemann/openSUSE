@@ -884,4 +884,29 @@
   * Bump libc from 0.2.165 to 0.2.167</comment>
     <requestid>1231373</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4ffcbe9289eac4cf0aaae24b0cdfd843</srcmd5>
+    <version>0.20.14</version>
+    <time>1735769057</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.14:
+  Bug Fixes:
+  * ...those pesky workflow targets
+  * Remove separate bsd tests
+  * Remove audit workflow
+  Features:
+  * Audit checks in main CI
+  Styling:
+  * Format workflows
+  * Ci checks formatted
+
+- Update to 0.20.13:
+  Bug Fixes:
+  * Pre-commit-hooks.nix trying to be too clever
+  * Remove stray description (originally from --decay-mode)
+  Build:
+  * Update crate deps Mon Dec 16
+  * Update flake deps Mon Dec 16</comment>
+    <requestid>1233580</requestid>
+  </revision>
 </revisionlist>

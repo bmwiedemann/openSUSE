@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 31 10:22:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.22.1:
+  * Entropy trace (#1659)
+  * build: add 'toolchain' to go.mod (#1682)
+  * refactor(detect): create readUntilSafeBoundary + add tests
+    (#1676)
+  * twitter really does suck ass now
+  * chore(tests): test cases for generate.go (#1623)
+  * fix: only use non-empty secret groups (#1632)
+  * build: upgrade sprig v2->v3 (#1674)
+  * fix: generate report file even if no findings (#1673)
+
+-------------------------------------------------------------------
 Sat Dec 21 14:17:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.22.0:

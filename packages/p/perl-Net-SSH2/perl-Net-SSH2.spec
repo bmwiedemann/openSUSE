@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-SSH2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,27 @@
 
 %define cpan_name Net-SSH2
 Name:           perl-Net-SSH2
-Version:        0.73
+Version:        0.740.0
 Release:        0
+# 0.74 -> normalize -> 0.740.0
+%define cpan_version 0.74
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Support for the SSH 2 protocol via libssh2
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RK/RKITOVER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RK/RKITOVER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
+Provides:       perl(Net::SSH2) = %{version}
+Provides:       perl(Net::SSH2::Channel)
+Provides:       perl(Net::SSH2::Dir)
+Provides:       perl(Net::SSH2::File)
+Provides:       perl(Net::SSH2::KnownHosts)
+Provides:       perl(Net::SSH2::Listener)
+Provides:       perl(Net::SSH2::PublicKey)
+Provides:       perl(Net::SSH2::SFTP)
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libgcrypt-devel
@@ -45,7 +56,8 @@ the library, nothing below 1.5.0 should really be used (older versions were
 quite buggy and unreliable) and version 1.7.0 or later is recommended.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END

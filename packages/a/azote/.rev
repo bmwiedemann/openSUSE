@@ -316,4 +316,13 @@
   * Fixed displays detection on X11 #203 #202.</comment>
     <requestid>1231383</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a666567592c5048e5413649fde7bd8bb</srcmd5>
+    <version>1.14.1</version>
+    <time>1735769084</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14.1:
+  * Added support for libayatana-appindicator3 #206.</comment>
+    <requestid>1233908</requestid>
+  </revision>
 </revisionlist>

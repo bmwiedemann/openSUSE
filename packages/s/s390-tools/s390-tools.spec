@@ -156,6 +156,9 @@ Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 Patch914:       s390-tools-01-zipl_helper.device-mapper-add-missed-step-in-logical.patch
 Patch915:       s390-tools-02-zipl-src-fix-imprecise-check-that-file-is-on-specifi.patch
 ###
+Patch916:       s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch
+Patch917:       s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch
+###
 Patch920:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
 

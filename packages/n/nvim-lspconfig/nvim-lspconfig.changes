@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 30 22:37:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.2.0:
+  * refactor: deprecate util.find_package_json_ancestor
+  * Fix for vim.fs.find regression not returning parent directory
+  * refactor: deprecate util.find_git_ancestor
+  * refactor!: remove util.path.escape_wildcards
+  * refactor!: remove util.path.is_absolute
+  * fix ruff and ruff_lsp returning a function from root pattern
+  * feat(msbuild): config instruction for filetypes
+  * refactor: fix luals warnings
+
+-------------------------------------------------------------------
 Sat Dec 14 04:14:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

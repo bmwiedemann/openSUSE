@@ -1,7 +1,7 @@
 #
 # spec file for package sops
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           sops
-Version:        3.9.2
+Version:        3.9.3
 Release:        0
 Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0

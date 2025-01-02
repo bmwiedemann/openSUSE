@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  1 05:33:13 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.910.0 (0.91)
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.91	- 27 Aug 2024, H.Merijn Brand
+      * Exclude OLE::Storage_Lite-0.21
+      * xlscat --head[=10], --tail[=10], --first=C
+      * Make (re)defining ->get_active_sheet safer
+      * Tested with perl-5.40
+      * xlscat --no-empty to skip empty columns too
+      * Spreadsheet::ParseExcel::FmtDefault might not be available
+
+-------------------------------------------------------------------
 Fri Mar  8 23:04:26 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

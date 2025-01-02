@@ -1,0 +1,129 @@
+From cf5560a100b5552e2eeeaac9c60a88ae77233530 Mon Sep 17 00:00:00 2001
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+Date: Mon, 9 Dec 2024 15:08:03 +0100
+Subject: [PATCH] libzpci: opticsmon: Refactor on_link_change() using new
+ zpci_find_by_netdev()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Finding a PCI device given the name of a netdev seems generally useful
+so pull this out into a new zpci_find_by_netdev() function in libzpci
+and use this to simplify on_link_change() removing the need for
+backwards goto.
+
+Reviewed-by: Halil Pasic <pasic@linux.ibm.com>
+Reviewed-by: Jan Höppner <hoeppner@linux.ibm.com>
+Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ include/lib/pci_list.h |  3 +++
+ libzpci/pci_list.c     | 31 +++++++++++++++++++++++++++++++
+ opticsmon/opticsmon.c  | 27 +++++++++++----------------
+ 3 files changed, 45 insertions(+), 16 deletions(-)
+
+diff --git a/include/lib/pci_list.h b/include/lib/pci_list.h
+index 829ec244..5b2918bc 100644
+--- a/include/lib/pci_list.h
++++ b/include/lib/pci_list.h
+@@ -93,4 +93,7 @@ const char *zpci_pft_str(struct zpci_dev *zdev);
+ const char *zpci_operstate_str(operstate_t state);
+ operstate_t zpci_operstate_from_str(const char *oper_str);
+ 
++struct zpci_dev *zpci_find_by_netdev(struct util_list *zpci_list, char *netdev_name,
++				     struct zpci_netdev **netdev);
++
+ #endif /* LIB_ZPCI_PCI_LIST_H */
+diff --git a/libzpci/pci_list.c b/libzpci/pci_list.c
+index 10f64e89..e0d56e44 100644
+--- a/libzpci/pci_list.c
++++ b/libzpci/pci_list.c
+@@ -356,3 +356,34 @@ void zpci_free_dev_list(struct util_list *zpci_list)
+ 	}
+ 	util_list_free(zpci_list);
+ }
++
++/**
++ * Find a PCI device given the name of a netdev
++ *
++ * This function allows finding a PCI device when only the name of one
++ * of its netdevs is known.
++ *
++ * @param[in]	zpci_list	The device list to search
++ * @param[in]	netdev_name	The name of the netdev
++ * @param[out]	netdev		Pointer to store the netdev or NULL if
++ *				only the PCI device is needed
++ *
++ * @return The PCI device if one is found NULL otherwise
++ */
++struct zpci_dev *zpci_find_by_netdev(struct util_list *zpci_list, char *netdev_name,
++				     struct zpci_netdev **netdev)
++{
++	struct zpci_dev *zdev = NULL;
++	int i;
++
++	util_list_iterate(zpci_list, zdev) {
++		for (i = 0; i < zdev->num_netdevs; i++) {
++			if (!strcmp(zdev->netdevs[i].name, netdev_name)) {
++				if (netdev)
++					*netdev = &zdev->netdevs[i];
++				return zdev;
++			}
++		}
++	}
++	return NULL;
++}
+diff --git a/opticsmon/opticsmon.c b/opticsmon/opticsmon.c
+index 50dd8d7f..7ecaa125 100644
+--- a/opticsmon/opticsmon.c
++++ b/opticsmon/opticsmon.c
+@@ -274,38 +274,33 @@ static int oneshot_mode(struct opticsmon_ctx *ctx)
+ void on_link_change(struct zpci_netdev *netdev, void *arg)
+ {
+ 	struct opticsmon_ctx *ctx = arg;
+-	struct zpci_dev *zdev;
+-	int i, reloads = 1;
+-
+-	if (!ctx->zpci_list || util_list_is_empty(ctx->zpci_list))
+-		zpci_list_reload(&ctx->zpci_list);
++	struct zpci_netdev *found_netdev;
++	struct zpci_dev *zdev = NULL;
++	int reloads = 1;
+ 
+-find:
+-	util_list_iterate(ctx->zpci_list, zdev) {
+-		for (i = 0; i < zdev->num_netdevs; i++) {
+-			if (!strcmp(zdev->netdevs[i].name, netdev->name)) {
++	do {
++		if (ctx->zpci_list) {
++			zdev = zpci_find_by_netdev(ctx->zpci_list, netdev->name, &found_netdev);
++			if (zdev) {
+ 				/* Skip data collection if operational state is
+ 				 * unchanged
+ 				 */
+-				if (zdev->netdevs[i].operstate == netdev->operstate)
++				if (found_netdev->operstate == netdev->operstate)
+ 					return;
+ 				/* Update operation state for VFs even though
+ 				 * they are skipped just for a consistent view
+ 				 */
+-				zdev->netdevs[i].operstate = netdev->operstate;
++				found_netdev->operstate = netdev->operstate;
+ 				/* Only collect optics data for PFs */
+ 				if (!zpci_is_vf(zdev))
+ 					dump_adapter_data(ctx, zdev);
+ 				return;
+ 			}
+ 		}
+-	}
+-	/* Might be a new device, reload list of devices and retry */
+-	if (reloads > 0) {
++		/* Could be uninitalized list or a new device, retry after reload  */
+ 		zpci_list_reload(&ctx->zpci_list);
+ 		reloads--;
+-		goto find;
+-	}
++	} while (reloads > 0);
+ }
+ 
+ #define MAX_EVENTS 8

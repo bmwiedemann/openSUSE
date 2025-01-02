@@ -17,7 +17,7 @@
 
 
 Name:           zcfan
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Zero-configuration fan control daemon for ThinkPads
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  gcc11
 BuildRequires:  gcc >= 11
 %endif
 BuildRequires:  make
+Conflicts:      thinkfan
 
 %description
 Zero-configuration fan control daemon for ThinkPads with watchdog

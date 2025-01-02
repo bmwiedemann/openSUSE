@@ -417,4 +417,20 @@
   %patchN.</comment>
     <requestid>1148495</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c9b54a4e6f29d71de592946a1c7cf4be</srcmd5>
+    <version>1.7.6</version>
+    <time>1735769055</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.75:
+  * Recursive file browser
+  * Copy to clipboard support
+  * Entry box history
+  * Fix calc
+  * Text and cursor outline
+  * Other smaller changes
+  * For details see:
+    https://github.com/davatorium/rofi/releases/tag/1.7.6</comment>
+    <requestid>1233579</requestid>
+  </revision>
 </revisionlist>

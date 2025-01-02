@@ -21,13 +21,15 @@
 %{?!python_module:%define python_module() python3-%{**}}
 
 Name:           python-drgn
-Version:        0.0.29
+Version:        0.0.30
 Release:        0
 Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/osandov/drgn
 Source:         https://github.com/osandov/drgn/archive/refs/tags/v%{version}.tar.gz#/drgn-%{version}.tar.gz
+Patch1:         libdrgn-kdump-simplify-getting-the-PRSTATUS-attribut.patch
+Patch2:         libdrgn-kdump-prepare-for-incompatible-changes-in-li.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
@@ -50,6 +52,7 @@ for easy, expressive scripting in Python.
 
 %prep
 %setup -q -n drgn-%{version}
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"

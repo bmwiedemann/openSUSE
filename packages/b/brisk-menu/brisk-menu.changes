@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 27 07:31:00 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Add patches: brisk-menu-gsettings-icon-properties.patch and 
+  brisk-menu-runtime-icon-updates.patch. Add support for runtime icon
+  configuration.
+- Add a patch: brisk-menu-fix-crash-on-desktop-file-changes-5f0be5741b5b37221fc8911c11f394ec498cd53d.patch. 
+  Backport upstream patch to fix crashes in odd cases when .desktop files are
+  changed.
+- Use %autosetup macro to apply patches.
+
+-------------------------------------------------------------------
 Mon Aug 31 13:43:30 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - update version to 0.6.2

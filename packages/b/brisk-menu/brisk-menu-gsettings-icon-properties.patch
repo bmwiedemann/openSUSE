@@ -1,0 +1,32 @@
+commit 0e175ab7243e8cffc5cd7acda7c9494dae6592f3
+Author: Mihai Moldovan <ionic@ionic.de>
+Date:   Tue Jun 28 02:13:58 2022 +0200
+
+    gsettings schema: add properties icon-name and icon-symbolic.
+    
+    We will use them later.
+    
+    The icon-name property shall select the icon used in the menu button,
+    while the icon-symbolic property determines whether the icon will be
+    used in its symbolic or default variant.
+
+diff --git a/data/com.solus-project.brisk-menu.gschema.xml b/data/com.solus-project.brisk-menu.gschema.xml
+index d9806a6..40a1aea 100644
+--- a/data/com.solus-project.brisk-menu.gschema.xml
++++ b/data/com.solus-project.brisk-menu.gschema.xml
+@@ -56,5 +56,15 @@
+       <summary>Button label visibility</summary>
+       <description>Control the visibility of the main button label</description>
+     </key>
++    <key type="s" name="icon-name">
++      <default>'start-here'</default>
++      <summary>Icon to show in menu button</summary>
++      <description>Set the theme icon name to use in menu button.</description>
++    </key>
++    <key type="b" name="icon-symbolic">
++      <default>true</default>
++      <summary>Menu button uses symbolic icon</summary>
++      <description>Use a symbolic, i.e., low-color, icon variant in menu button.</description>
++    </key>
+   </schema>
+ </schemalist>

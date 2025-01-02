@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 01 15:14:32 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1735636267.be6a5a9:
+  * Remove redundant newline in "GOT GO" message
+  * autotest: Simplify with post-if
+  * Add unit test for 'ensure_installed' to improve code coverage
+  * Add more subtests for distribution.pm
+  * Add test for the old net ssh2 error
+  * Skip 28-signalblocker test in qemu emulation
+
+-------------------------------------------------------------------
 Tue Dec 24 06:26:33 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1734961973.9cefddf:

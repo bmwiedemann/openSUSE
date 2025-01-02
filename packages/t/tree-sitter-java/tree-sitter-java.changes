@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 31 16:27:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- udate to 0.23.5:
+  * feat(highlights): add more keywords
+  * fix: give yield in _reserved_identifier a precedence of 0
+  * fix: allow annotations after the ellipsis in a spread parameter
+  * fix: correct floating point literal parsing
+  * feat: allow reserved identifiers in element_value_pair
+  * chore: generate
+
+-------------------------------------------------------------------
 Wed Dec  4 22:49:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.23.4:

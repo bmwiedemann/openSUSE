@@ -3232,6 +3232,7 @@ BuildFlags: onlybuild:thin-provisioning-tools
 BuildFlags: onlybuild:tidy
 BuildFlags: onlybuild:tidyp
 BuildFlags: onlybuild:tiff
+BuildFlags: onlybuild:time
 BuildFlags: onlybuild:timezone
 BuildFlags: onlybuild:tinysparql
 BuildFlags: onlybuild:tix

@@ -107,4 +107,12 @@
     <comment>- Add inline.patch to resolve FTBFS on gcc-14 + -Og.</comment>
     <requestid>1198762</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d1a7efe7c0ce8212e49008eabc4a18ce</srcmd5>
+    <version>0.8.3</version>
+    <time>1735769048</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.8.3</comment>
+    <requestid>1233943</requestid>
+  </revision>
 </revisionlist>

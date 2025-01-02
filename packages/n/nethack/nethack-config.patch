@@ -1,0 +1,199 @@
+Index: include/unixconf.h
+===================================================================
+--- include/unixconf.h.orig
++++ include/unixconf.h
+@@ -32,12 +32,12 @@
+ 
+ 
+ /* define any of the following that are appropriate */
+-#define SVR4		/* use in addition to SYSV for System V Release 4 */
++/* #define SVR4	*/	/* use in addition to SYSV for System V Release 4 */
+ 			/* including Solaris 2+ */
+ #define NETWORK		/* if running on a networked system */
+ 			/* e.g. Suns sharing a playground through NFS */
+ /* #define SUNOS4 */	/* SunOS 4.x */
+-/* #define LINUX */	/* Another Unix clone */
++#define LINUX	/* Another Unix clone */
+ /* #define CYGWIN32 */	/* Unix on Win32 -- use with case sensitive defines */
+ /* #define GENIX */	/* Yet Another Unix Clone */
+ /* #define HISX */	/* Bull Unix for XPS Machines */
+@@ -102,7 +102,7 @@
+  * If you want the static parts of your playground on a read-only file
+  * system, define VAR_PLAYGROUND to be where the variable parts are kept.
+  */
+-/* #define VAR_PLAYGROUND "/var/lib/games/nethack" */
++#define VAR_PLAYGROUND "/var/games/nethack"
+ 
+ 
+ /*
+@@ -132,7 +132,7 @@
+  * "extra output" method is used, but not all systems provide access to
+  * a fine-grained timer.
+  */
+-/* #define TIMED_DELAY */	/* usleep() */
++#define TIMED_DELAY	/* usleep() */
+ #endif
+ 
+ /*
+@@ -166,7 +166,7 @@
+ 
+ /* #define NO_MAILREADER */	/* have mail daemon just tell player of mail */
+ 
+-#ifdef	MAIL
++#ifdef MAIL
+ # if defined(BSD) || defined(ULTRIX)
+ #  ifdef AMS
+ #define AMS_MAILBOX	"/Mailbox"
+@@ -189,7 +189,8 @@
+ #   endif
+ #  endif
+ # else
+-#define DEF_MAILREADER	"/bin/mail"
++/* SuSE mail reader is /usr/bin/mail, not /bin/mail */
++#define DEF_MAILREADER	"/usr/bin/mail"
+ # endif
+ #endif
+ 
+Index: sys/unix/Makefile.top
+===================================================================
+--- sys/unix/Makefile.top.orig
++++ sys/unix/Makefile.top
+@@ -35,8 +35,8 @@ DIRPERM  = 0755
+ # therefore there should not be anything in GAMEDIR that you want to keep
+ # (if there is, you'll have to do the installation by hand or modify the
+ # instructions)
+-GAMEDIR  = $(PREFIX)/games/lib/$(GAME)dir
+-VARDIR  = $(GAMEDIR)
++GAMEDIR  = /usr/lib/nethack
++VARDIR  = /var/games/nethack
+ SHELLDIR = $(PREFIX)/games
+ 
+ # per discussion in Install.X11 and Install.Qt
+@@ -48,7 +48,7 @@ VARDATND =
+ # for BeOS
+ # VARDATND = beostiles
+ # for Gnome
+-# VARDATND = x11tiles pet_mark.xbm rip.xpm mapbg.xpm
++VARDATND = x11tiles pet_mark.xbm rip.xpm mapbg.xpm
+ 
+ VARDATD = data oracles options quest.dat rumors
+ VARDAT = $(VARDATD) $(VARDATND)
+Index: include/config.h
+===================================================================
+--- include/config.h.orig
++++ include/config.h
+@@ -143,16 +143,16 @@
+ 
+ #ifndef WIZARD		/* allow for compile-time or Makefile changes */
+ # ifndef KR1ED
+-#  define WIZARD  "wizard" /* the person allowed to use the -D option */
++#  define WIZARD  "root" /* the person allowed to use the -D option */
+ # else
+ #  define WIZARD
+-#  define WIZARD_NAME "wizard"
++#  define WIZARD_NAME "root"
+ # endif
+ #endif
+ 
+ #define LOGFILE "logfile"	/* larger file for debugging purposes */
+ #define NEWS "news"		/* the file containing the latest hack news */
+-#define PANICLOG "paniclog"	/* log of panic and impossible events */
++/* #define PANICLOG "paniclog" */	/* log of panic and impossible events */
+ 
+ /*
+  *	If COMPRESS is defined, it should contain the full path name of your
+@@ -185,7 +185,7 @@
+  *	a tar-like file, thus making a neater installation.  See *conf.h
+  *	for detailed configuration.
+  */
+-/* #define DLB */	/* not supported on all platforms */
++#define DLB	/* not supported on all platforms */
+ 
+ /*
+  *	Defining INSURANCE slows down level changes, but allows games that
+@@ -204,7 +204,7 @@
+  * otherwise it will be the current directory.
+  */
+ # ifndef HACKDIR
+-#  define HACKDIR "/usr/games/lib/nethackdir"
++#  define HACKDIR "/usr/share/games/nethack"
+ # endif
+ 
+ /*
+@@ -214,7 +214,7 @@
+  * since the user might create files in a directory of his choice.
+  * Of course SECURE is meaningful only if HACKDIR is defined.
+  */
+-/* #define SECURE */	/* do setuid(getuid()) after chdir() */
++#define SECURE	/* do setuid(getuid()) after chdir() */
+ 
+ /*
+  * If it is desirable to limit the number of people that can play Hack
+Index: sys/unix/Makefile.doc
+===================================================================
+--- sys/unix/Makefile.doc.orig
++++ sys/unix/Makefile.doc
+@@ -4,8 +4,8 @@
+ # for Atari
+ # SHELL=E:/GEMINI2/MUPFEL.TTP
+ 
+-GUIDEBOOK = Guidebook		# regular ASCII file
+-#GUIDEBOOK = Guidebook.ps	# PostScript file
++#GUIDEBOOK = Guidebook		# regular ASCII file
++GUIDEBOOK = Guidebook.ps	# PostScript file
+ #GUIDEBOOK = Guidebook.dvi	# TeX device-independent file
+ 
+ # Some versions of col need -x to keep them from converting spaces to tabs;
+Index: sys/unix/Makefile.src
+===================================================================
+--- sys/unix/Makefile.src.orig
++++ sys/unix/Makefile.src
+@@ -124,8 +124,8 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
+ 
+ # flags for Linux
+ #   compile normally
+-# CFLAGS = -O2 -fomit-frame-pointer -I../include
+-# LFLAGS = -L/usr/X11R6/lib
++CFLAGS = -O2 -fomit-frame-pointer -I../include
++LFLAGS = -L/usr/X11R6/lib
+ #   OR compile backwards compatible a.out format
+ # CFLAGS = -O2 -b i486-linuxaout -fomit-frame-pointer -I../include
+ # LFLAGS = -b i486-linuxaout -L/usr/X11R6/lib
+@@ -151,8 +151,8 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/
+ # flags for debugging:
+ # CFLAGS = -g -I../include
+ 
+-CFLAGS = -O -I../include
+-LFLAGS = 
++# CFLAGS = -O -I../include
++# LFLAGS = 
+ 
+ # The Qt and Be window systems are written in C++, while the rest of
+ # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
+@@ -230,8 +230,8 @@ WINOBJ = $(WINTTYOBJ)
+ # WINTTYLIB = -ltermcap
+ # WINTTYLIB = -lcurses
+ # WINTTYLIB = -lcurses16
+-# WINTTYLIB = -lncurses
+-WINTTYLIB = -ltermlib
++WINTTYLIB = -lncurses
++# WINTTYLIB = -ltermlib
+ #
+ # libraries for X11
+ # If USE_XPM is defined in config.h, you will also need -lXpm here.
+Index: sys/unix/nethack.sh
+===================================================================
+--- sys/unix/nethack.sh.orig
++++ sys/unix/nethack.sh
+@@ -1,9 +1,9 @@
+ #!/bin/sh
+ #	SCCS Id: @(#)nethack.sh	3.4	1990/02/26
+ 
+-HACKDIR=/usr/games/lib/nethackdir
++HACKDIR=/usr/share/games/nethack
+ export HACKDIR
+-HACK=$HACKDIR/nethack
++HACK=/usr/lib/nethack/nethack
+ MAXNROFPLAYERS=4
+ 
+ # Since Nethack.ad is installed in HACKDIR, add it to XUSERFILESEARCHPATH

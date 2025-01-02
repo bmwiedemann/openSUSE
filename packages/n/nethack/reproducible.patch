@@ -1,0 +1,35 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date; 2019-08-08
+
+Do not add build date into binary
+to make package build reproducible
+
+https://bugzilla.opensuse.org/show_bug.cgi?id=1047218 
+
+It might be possible to upstream a variant of this patch.
+
+Without this patch, we got such a diff:
+
+ /usr/lib/nethack/nethack.tty differs in ELF section .rodata
+   178a20 556e6978 204e6574 4861636b 20566572  Unix NetHack Ver
+   178a30 73696f6e 20332e34 2e33202d 206c6173  sion 3.4.3 - las
+ - 178a40 74206275 696c6420 54687520 41756720  t build Thu Aug
+ - 178a50 20382030 373a3133 3a323520 32303139   8 07:13:25 2019
+ + 178a40 74206275 696c6420 53617420 53657020  t build Sat Sep
+ + 178a50 20392032 303a3239 3a343120 32303334   9 20:29:41 2034
+   178a60 1b293000 1b285500 1b284200 243c3530  .)0..(U..(B.$<50
+
+
+Index: nethack-3.4.3/util/makedefs.c
+===================================================================
+--- nethack-3.4.3.orig/util/makedefs.c
++++ nethack-3.4.3/util/makedefs.c
+@@ -563,7 +563,7 @@ do_date()
+ 	(void) time(&clocktim);
+ 	Strcpy(cbuf, ctime(&clocktim));
+ #else
+-	(void) time((time_t *)&clocktim);
++	//(void) time((time_t *)&clocktim);
+ 	Strcpy(cbuf, ctime((time_t *)&clocktim));
+ #endif
+ 	for (c = cbuf; *c; c++) if (*c == '\n') break;

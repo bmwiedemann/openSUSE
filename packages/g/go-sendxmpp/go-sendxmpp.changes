@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 30 11:04:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  Added:
+  * Add --fast-invalidate to allow invalidating the FAST token.
+  Changed:
+  * Don't create legacy Ox private key directory in ~/.local/share/go-sendxmpp/oxprivkeys.
+  * Delete legacy Ox private key directory if it's empty.
+  * Show proper error if saved FAST mechanism isn't usable with current TLS version (requires go-xmpp >= 0.2.9).
+  * Print debug output to stdout, not stderr (requires go-xmpp >= 0.2.9).
+  * Show RECV: and SEND: prefix for debug output (requires go-xmpp >= 0.2.9).
+  * Delete stored fast token if --fast-invalidate and --fast-off are set.
+  * Show error when FAST creds are stored but non-FAST mechanism is requested.
+
+-------------------------------------------------------------------
 Mon Dec 16 10:58:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:

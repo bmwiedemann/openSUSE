@@ -17,17 +17,18 @@
 
 
 Name:           xxhash
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Non-cryptographic hash algorithm
 License:        BSD-2-Clause AND GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://github.com/Cyan4973/xxHash
-Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz#/xxHash-%{version}.tar.gz
+Source:         https://github.com/Cyan4973/xxHash/archive/v%version.tar.gz
 Patch1:         test-tools-do-not-override-cflags.patch
 Patch2:         inline.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+BuildRequires:  time
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -49,36 +50,36 @@ Hashes are identical on all platforms.
 Summary:        Headers for xxHash, a non-cryptographic hash algorithm
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-Requires:       libxxhash0 = %{version}
+Requires:       %name = %version
+Requires:       libxxhash0 = %version
 
 %description devel
 Headers and other development files for xxHash.
 
 %prep
-%autosetup -p1 -n xxHash-%{version}
+%autosetup -p1 -n xxHash-%version
 
 %build
 # ALLOW_AVX just means "we guarantee we policed our %%optflags".
-export CFLAGS="%{optflags} -DXXH_X86DISPATCH_ALLOW_AVX=1"
+export CFLAGS="%optflags -DXXH_X86DISPATCH_ALLOW_AVX=1"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="%{?build_ldflags}"
 # DISPATCH=1 if you want AVX2/AVX512. But it does not seem to perform any
 # better than the lowest-denomimation code on at least the 1135G7 and 5950X
 # CPUs, and for both LP64 as well as ILP32 — it seems to be all within margin
 # of error.
-%make_build prefix=%{_prefix} libdir=%{_libdir}
+%make_build prefix=%_prefix libdir=%_libdir
 
 %install
-export CFLAGS="%{optflags} -DXXH_X86DISPATCH_ALLOW_AVX=1"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%optflags -DXXH_X86DISPATCH_ALLOW_AVX=1"
+export CXXFLAGS="%optflags"
 export LDFLAGS="%{?build_ldflags}"
-%make_install prefix=%{_prefix} libdir=%{_libdir}
-rm -rf %{buildroot}%{_libdir}/libxxhash.a
+%make_install prefix=%_prefix libdir=%_libdir
+rm -rf %buildroot%_libdir/libxxhash.a
 
 %check
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+export CFLAGS="%optflags"
+export CXXFLAGS="%optflags"
 export LDFLAGS="%{?build_ldflags}"
 # not safe for parallel execution as it removes xxhash.o and recreates it with different flags
 # the list is taken from test-all with non-working/irrelevant ones (such as ones that change the toolchain) removed
@@ -89,22 +90,15 @@ export LDFLAGS="%{?build_ldflags}"
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/xxhsum
-%{_bindir}/xxh32sum
-%{_bindir}/xxh64sum
-%{_bindir}/xxh128sum
-%{_mandir}/man1/xxh32sum.*
-%{_mandir}/man1/xxh64sum.*
-%{_mandir}/man1/xxh128sum.*
-%{_mandir}/man1/xxhsum.*
+%_bindir/xxh*
+%_mandir/man1/xxh*
 
 %files -n libxxhash0
-%{_libdir}/libxxhash.so.*
+%_libdir/libxxhash.so.*
 
 %files devel
-%{_includedir}/xxhash.h
-%{_includedir}/xxh3.h
-%{_libdir}/pkgconfig/libxxhash.pc
-%{_libdir}/libxxhash.so
+%_includedir/*.h
+%_libdir/pkgconfig/*.pc
+%_libdir/libxxhash.so
 
 %changelog

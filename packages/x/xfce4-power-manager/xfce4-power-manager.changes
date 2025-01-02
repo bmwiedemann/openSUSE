@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 31 11:08:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add 0002-remove-pm-helper-policy.patch to remove the pm-helper
+  bits from org.xfce.power.policy.in.in; the program is not needed
+  on systems using systemd.
+
+-------------------------------------------------------------------
 Sun Dec 15 14:09:53 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.0:

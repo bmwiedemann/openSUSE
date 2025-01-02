@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Mon Dec 30 15:23:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.81:
+  * add a header for summary comment (#1865)
+
+-------------------------------------------------------------------
+Mon Dec 30 15:03:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.80:
+  * publish ai summaries (#1864)
+  * refactor codegen parts (#1863)
+  * Create curl_bootstrap.sh
+  * restructure docs to have no columns (#1862)
+  * Update setup-opentofu to fix issues with 1.6.x downloads (#1861)
+  * fix: incorrect comment in backend/migrations (#1860)
+  * wip generation of terraform code from application code (#1855)
+  * fix/recover from webhook goroutines (#1858)
+  * handle crashes in goroutine events (#1857)
+  * Update action.yml (#1856)
+- Update to version 0.6.79:
+  * generation of terraform code from application code by @motatoes
+    in #1855
+- Update to version 0.6.78:
+  * fix/recover from webhook goroutines by @motatoes in #1858
+- Update to version 0.6.77:
+  * handle crashes in goroutine events by @motatoes in #1857
+- Update to version 0.6.76:
+  * Update action.yml by @motatoes in #1856
+- Update to version 0.6.75:
+  * improve efficiency in terragrunt generation (#1854)
+  * revert includeparentblocks flag (#1852)
+  * add flag to ignore all external directories per project (#1851)
+  * suport ignore include blocks for terragrunt (#1849)
+  * docs/private runners (#1847)
+- Update to version 0.6.74:
+  * revert includeparentblocks flag by @motatoes in #1852
+- Update to version 0.6.73:
+  * add flag to ignore all external directories per project by
+    @motatoes in #1851
+- Update to version 0.6.72:
+  * suport ignore include blocks for terragrunt by @motatoes in
+    #1849
+- Update to version 0.6.71:
+  * add flag to limit by number of projects to number of changed
+    files (#1846)
+  * fix npe in webhook that was accidental (#1845)
+- Update to version 0.6.70:
+  * make the max number of projects configurable (#1844)
+  * Fix drift check logic for no chnages (#1843)
+- Update to version 0.6.69:
+  * use workflow from project setting (#1841)
+  * feat/next config workflows (#1840)
+  * regen db following column type change (#1839)
+  * use summaryID not job ID (#1838)
+- Update to version 0.6.68:
+  * fix the nil substitution in %s (#1837)
+- Update to version 0.6.67:
+  * ee plan policy in mgmt repo (#1835)
+  * upd query name
+  * add autoapproval support
+- Update to version 0.6.66:
+  * handle summary updating when message is too long (#1833)
+- Update to version 0.6.65:
+  * fix npe on drift-detection for manual job (#1832)
+- Update to version 0.6.64:
+  * feat/blocks include patterns (#1830)
+- Update to version 0.6.63:
+  * use hostname in both github and caching (#1831)
+- Update to version 0.6.62:
+  * added docs about caching
+  * add the ability to ignore certain events (#1829)
+  * implement caching layer for digger config (#1825)
+- Update to version 0.6.61:
+  * Removed () (#1827)
+  * Need to chech to make sure the StateEnvProvider is set before
+    using. (#1826)
+- Update to version 0.6.60:
+  * no changes
+- Update to version 0.6.59:
+  * fix conditionals
+  * fix conditional
+  * fix env variable name
+- Update to version 0.6.58:
+  * goroutine for issuecomment as well (#1821)
+- Update to version 0.6.57:
+  * respond immediately to github webhook (#1819)
+  * add tests for next (#1818)
+- Update to version 0.6.56:
+  * Add github connections to EE (#1803)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#1551)
+  * fix(deps): update github.com/diggerhq/digger/backend digest to
+    9a40639 (#1807)
+  * fix(deps): update github.com/diggerhq/digger/next digest to
+    5834969 (#1808)
+  * fix(deps): update module golang.org/x/oauth2 to v0.24.0 (#1562)
+  * Update docker/login-action digest to 7ca3450 (#1806)
+  * Update github.com/diggerhq/digger/backend digest to 90aa7b8
+    (#1565)
+  * Update module github.com/hashicorp/go-getter to v2 (#1553)
+  * fix(deps): update module cloud.google.com/go/storage to v1.46.0
+    (#1552)
+  * Update module github.com/spf13/viper to v1.19.0 (#1550)
+  * Update module ariga.io/atlas-provider-gorm to v0.5.0 (#1520)
+  * add docs for cognito identity token (#1805)
+  * Feature:  Adds AWS  Cognito OIDC Support (#1762)
+  * fix next deploy (#1804)
+  * Update Dockerfile_next (#1773)
+
+-------------------------------------------------------------------
 Tue Nov 12 08:26:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.55:

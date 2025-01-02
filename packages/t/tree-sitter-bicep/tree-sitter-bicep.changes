@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 31 09:43:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.1.0:
+  * fix: support as in import with statements
+  * feat: add using statements
+  * feat: add user defined functions
+  * feat: add test blocks
+  * feat: add assert statements
+  * refactor: move asterisk fields and multiline string contents
+  * refactor: rework types
+  * chore: update tests
+  * chore: update queries
+  * chore: update script and known failures
+  * chore: generate
+  * fix: update build manifests
+  * chore: update queries
+  * fix(grammar): adapt to upstream regex change
+  * build: update bindings
+  * chore: generate
+- remove fix-regex.patch, as upstream included the fix
+
+-------------------------------------------------------------------
 Thu Dec  5 00:54:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

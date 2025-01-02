@@ -1,16 +1,22 @@
 From: Bruno Pitrus <brunopitrus@hotmail.com>
 Date: 2024-05-05 19:35:03+0000
 
---- xxHash-0.8.2/Makefile.old	2023-07-21 12:01:35.000000000 +0200
-+++ xxHash-0.8.2/Makefile	2024-05-05 21:19:32.265851133 +0200
-@@ -450,8 +450,8 @@ test-all: test test32 test-unicode clang
+---
+ Makefile |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: xxHash-0.8.3/Makefile
+===================================================================
+--- xxHash-0.8.3.orig/Makefile
++++ xxHash-0.8.3/Makefile
+@@ -483,8 +483,8 @@ test-all: test test32 test-unicode clang
  
  .PHONY: test-tools
  test-tools:
 -	CFLAGS=-Werror $(MAKE) -C tests/bench
--	CFLAGS=-Werror $(MAKE) -C tests/collisions
+-	CFLAGS=-Werror $(MAKE) -C tests/collisions check
 +	$(MAKE) -C tests/bench
-+	$(MAKE) -C tests/collisions
++	$(MAKE) -C tests/collisions check
  
  .PHONY: test-xxh-nnn-sums
  test-xxh-nnn-sums: xxhsum_and_links

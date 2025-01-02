@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  3 05:32:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0021
+   see /usr/share/doc/packages/perl-Protocol-Redis/Changes
+
+  1.0021  03.09.2024 00:00:00
+           - Test unknown version excaption implementation
+
+  1.0020  03.09.2024 00:00:00
+           - Protocol::Redis implementation should fail on instantiating with unknown version (Grinnz)
+
+-------------------------------------------------------------------
 Thu Dec 26 03:12:25 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.0011

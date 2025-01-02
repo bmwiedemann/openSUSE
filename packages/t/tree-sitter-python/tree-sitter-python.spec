@@ -18,7 +18,7 @@
 
 %define         _name python
 Name:           tree-sitter-python
-Version:        0.23.4
+Version:        0.23.6
 Release:        0
 Summary:        Python grammar for tree-sitter
 License:        MIT

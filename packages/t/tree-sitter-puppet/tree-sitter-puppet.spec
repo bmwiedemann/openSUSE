@@ -18,13 +18,12 @@
 
 %define         _name puppet
 Name:           tree-sitter-puppet
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Puppet grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-puppet
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-regex.patch
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -32,7 +31,7 @@ BuildRequires:  tree-sitter
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -57,4 +56,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-

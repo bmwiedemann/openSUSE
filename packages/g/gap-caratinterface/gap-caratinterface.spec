@@ -1,7 +1,7 @@
 #
 # spec file for package gap-caratinterface
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           gap-caratinterface
-Version:        2.3.6
+Version:        2.3.7
 Release:        0
 Summary:        GAP: Interface to CARAT, a crystallographic groups package
-License:        GPL-2.0+ AND GPL-3.0+
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/gap-packages/CaratInterface
 

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec 31 19:49:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.9
+  * Prescribing a ring in AllAtlasGeneratingSetInfos (3.5-7) and
+    related functions now automatically prescribes its
+    characteristic. Up to now, one had to specify also the
+    characteristic, otherwise characteristic zero was erroneously
+    assumed.
+  * Up to now, AllAtlasGeneratingSetInfos (3.5-7) and related
+    functions, when called only with a prescribed ring in positive
+    characteristic, could erroneously return also entries about
+    representations in characteristic zero.
+  * The default for the user preference "AtlasRepDataDirectory"
+    (see Section 4.2-2) has been improved in the situation where
+    the package directory is not writable and the GAP session runs
+    inside a Julia session; if this is the case, then a Julia
+    scratchspace is used as the default.
+  * The star ``*`` that may appear in some lines of the output of
+    DisplayAtlasInfo (3.5-1) is now documented.
+
+-------------------------------------------------------------------
 Sun Jan 28 10:26:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.8:

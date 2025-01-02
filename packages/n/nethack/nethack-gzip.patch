@@ -1,0 +1,19 @@
+diff -ru nethack-3.4.0.orig/include/config.h nethack-3.4.0/include/config.h
+--- include/config.h	2002-03-21 00:42:43.000000000 +0100
++++ include/config.h	2003-02-27 15:38:23.000000000 +0100
+@@ -163,11 +163,11 @@
+ 
+ #ifdef UNIX
+ /* path and file name extension for compression program */
+-#define COMPRESS "/usr/bin/compress"	/* Lempel-Ziv compression */
+-#define COMPRESS_EXTENSION ".Z"		/* compress's extension */
++/* #define COMPRESS "/usr/bin/compress" */	/* Lempel-Ziv compression */
++/* #define COMPRESS_EXTENSION ".Z" */		/* compress's extension */
+ /* An example of one alternative you might want to use: */
+-/* #define COMPRESS "/usr/local/bin/gzip" */	/* FSF gzip compression */
+-/* #define COMPRESS_EXTENSION ".gz" */		/* normal gzip extension */
++#define COMPRESS "/bin/gzip"			/* FSF gzip compression */
++#define COMPRESS_EXTENSION ".gz"		/* normal gzip extension */
+ #endif
+ 
+ #ifndef COMPRESS

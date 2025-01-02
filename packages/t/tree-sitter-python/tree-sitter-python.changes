@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 31 09:40:40 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.5:
+  * build(npm): update deps
+- update to 0.23.6:
+  * feat(highlights): highlight decorator names as a function
+  * feat: add left and right fields to type_alias_statement
+  * feat: allow type in generic types 
+  * feat: add fields in except_clause 
+  * build(npm): bump deps 
+  * chore: regenerate
+
+-------------------------------------------------------------------
 Wed Dec  4 23:18:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.23.4:

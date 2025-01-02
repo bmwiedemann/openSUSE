@@ -1,7 +1,7 @@
 #
 # spec file for package perl-autobox
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-autobox
-Version:        3.0.1
-Release:        0
 %define cpan_name autobox
-Summary:        Call Methods On Native Types
+Name:           perl-autobox
+Version:        3.0.2
+Release:        0
+# v3.0.2 -> normalize -> 3.0.2
+%define cpan_version v3.0.2
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/autobox/
-Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHOCOLATE/%{cpan_name}-v%{version}.tar.gz
+Summary:        Call methods on native types
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHOCOLATE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(IPC::System::Simple) >= 1.25
+BuildRequires:  perl(IPC::System::Simple) >= 1.30
 BuildRequires:  perl(Scope::Guard) >= 0.21
-BuildRequires:  perl(Test::Fatal) >= 0.014
+BuildRequires:  perl(Test::Fatal) >= 0.017
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(Scope::Guard) >= 0.21
 Requires:       perl(version) >= 0.77
@@ -52,14 +52,16 @@ to be defined in a class whose name corresponds to the 'ref()' type of that
 value - or SCALAR if the value is a non-reference.
 
 %prep
-%setup -q -n %{cpan_name}-v%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -67,7 +69,6 @@ value - or SCALAR if the value is a non-reference.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE.md
 

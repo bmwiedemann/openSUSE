@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cddinterface
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-cddinterface
-Version:        2022.11.01
+Version:        2024.09.02
 Release:        0
 Summary:        GAP: Interface to cddlib
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Source:         https://github.com/homalg-project/CddInterface/releases/download
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
 BuildRequires:  pkgconfig(cddlib)
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.5
 
 %description

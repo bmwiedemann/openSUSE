@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 
 Name:           pagein
-Version:        0.01.09
+Version:        0.01.11
 Release:        0
 Summary:        A tool to force swapped out pages back into memory
 License:        GPL-2.0-only
@@ -43,7 +44,7 @@ BuildArch:      noarch
 Bash completion script for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -58,6 +59,7 @@ export CFLAGS="%{optflags}"
 %{_mandir}/man1/pagein.1%{?ext_man}
 
 %files bash-completion
+%license COPYING
 %{_datadir}/bash-completion/completions/%{name}
 
 %changelog

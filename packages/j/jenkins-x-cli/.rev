@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb64d590e8f71b1dd7a8e5fc78cf7d3a</srcmd5>
+    <version>3.11.2</version>
+    <time>1735769282</time>
+    <user>anag+factory</user>
+    <comment>new package jenkins-x-cli: CLI for Jenkins-X. Jenkins X provides automated CI+CD for Kubernetes with Preview Environments on Pull Requests using Cloud Native pipelines from Tekton</comment>
+    <requestid>1234135</requestid>
+  </revision>
+</revisionlist>

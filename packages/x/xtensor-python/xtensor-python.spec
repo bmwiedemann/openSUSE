@@ -25,15 +25,17 @@ URL:            https://github.com/xtensor-stack/xtensor-python
 Source0:        https://github.com/xtensor-stack/xtensor-python/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Patch0:         0001-Install-as-arch-independent.patch
 Patch1:         cxx-flags.patch
+BuildRequires:  %{python_module breathe}
+BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{pythons}
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtest
 BuildRequires:  make
-BuildRequires:  python3
-BuildRequires:  python3-breathe
-BuildRequires:  python3-numpy-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  xtensor-devel >= 0.25.0
 BuildRequires:  cmake(pybind11) >= 2.6.1
 Group:          Development/Libraries/C and C++
@@ -79,22 +81,38 @@ enables seamless interoperability between C++ and Python.
 %autosetup -p1
 
 %build
-%cmake -DBUILD_TESTS:BOOL=ON
+%define __builddir build
+
+%cmake
 %cmake_build
 
-#build documentation
-cd %{_builddir}/%{name}-%{version}/docs
-make html
+# build documentation
+make -C %{_builddir}/%{buildsubdir}/docs html
+
+# build unit tests for each available python version
+%{python_expand #
+  cd %{_builddir}/%{buildsubdir}
+  %define __builddir build.$python
+  %cmake -DBUILD_TESTS:BOOL=ON -DPYTHON_EXECUTABLE=%{_bindir}/$python
+  %cmake_build
+}
 
 %install
+%define __builddir build
+
 %cmake_install
 
-#install documentation
+# install documentation
 mkdir -p %{buildroot}/%{_docdir}/%{name}
-cp -r %{_builddir}/%{name}-%{version}/docs/build/html/* %{buildroot}/%{_docdir}/%{name}
+cp -r %{_builddir}/%{buildsubdir}/docs/build/html/* %{buildroot}/%{_docdir}/%{name}
+
+%fdupes -s %{buildroot}/%{_docdir}
 
 %check
-%cmake_build -C %{__builddir} xtest
+# run unit tests
+%{python_expand #
+  %cmake_build -C %{_builddir}/%{buildsubdir}/build.$python xtest
+}
 
 %files doc
 %doc %{_docdir}/%{name}

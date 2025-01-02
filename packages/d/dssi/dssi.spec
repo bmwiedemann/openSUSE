@@ -30,6 +30,8 @@ Patch0:         dssi-add-missing-closedir.diff
 Patch1:         dssi-linking.patch
 # PATCH-FIX-UPSTREAM -- Make the package build with GCC 14
 Patch2:         dssi-C99.diff
+# PATCH-FIX-OPENSUSE -- Fix for "error: unknown type name ‘size_t’"
+Patch3:         dssi-add-missing-include.patch
 BuildRequires:  alsa-devel
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel
@@ -38,7 +40,6 @@ BuildRequires:  liblo-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Disposable Soft Synth Interface (DSSI, pronounced "dizzy") is a
@@ -63,6 +64,7 @@ This package contains files to be needed for building DSSI plugins.
 %patch -P 0 -p1
 %patch -P 1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 mkdir m4
@@ -78,7 +80,6 @@ rm -rf examples/.deps
 rm -f examples/.cvsignore
 
 %files
-%defattr(-,root,root)
 %doc COPYING README
 %doc examples
 %dir %{_libdir}/dssi
@@ -87,7 +88,6 @@ rm -f examples/.cvsignore
 %{_libdir}/dssi
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/dssi.h
 %{_libdir}/pkgconfig/*.pc
 

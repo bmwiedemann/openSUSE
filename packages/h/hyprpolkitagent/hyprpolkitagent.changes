@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Dec 25 23:24:18 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Replace explicit BuildRequires with pkgconfig alternatives
+
+-------------------------------------------------------------------
+Wed Dec 25 19:32:14 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Add patches to make it working more reliably
+  * no-kde-dependency.patch
+  * Add_install_section.patch
+
+-------------------------------------------------------------------
+Wed Dec 25 17:32:24 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- New package - version 0.1.1

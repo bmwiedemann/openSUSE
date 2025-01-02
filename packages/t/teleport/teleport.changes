@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 31 10:34:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.1.2:
+  * Fixed a bug in the WebUI that could cause an access denied
+    error when accessing application. #50611
+  * Improve session playback initial delay caused by an additional
+    events query. #50592
+  * Fix a bug in the tbot Helm chart causing invalid configuration
+    when both default and custom outputs were used. #50526
+  * Restore the ability to play session recordings in the web UI
+    without specifying the session duration in the URL. #50459
+  * Fix regression in tbot on Linux causing the Kubernetes
+    credential helper to fail. #50413
+
+-------------------------------------------------------------------
 Sat Dec 21 14:52:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.1.1:

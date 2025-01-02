@@ -17,7 +17,7 @@
 
 
 Name:           spotify-launcher
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Client for spotify's apt repository written in Rust
 License:        Apache-2.0 OR MIT
@@ -53,7 +53,7 @@ Client for spotify's apt repository written in Rust
 %install
 %{cargo_install}
 
-install -Dm644 %{_builddir}/%{name}-%{version}/data/pubkey_6224F9941A8AA6D1.gpg %{buildroot}%{_datadir}/%{name}/keyring.pgp
+install -Dm644 %{_builddir}/%{name}-%{version}/data/pubkey_C85668DF69375001.gpg %{buildroot}%{_datadir}/%{name}/keyring.pgp
 
 install -Dm644 %{_builddir}/%{name}-%{version}/contrib/%{name}.desktop -t %{buildroot}%{_datadir}/applications
 install -Dm644 %{_builddir}/%{name}-%{version}/contrib/icons/spotify-linux-512.png %{buildroot}%{_datadir}/pixmaps/%{name}.png

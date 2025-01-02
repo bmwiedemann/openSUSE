@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  3 05:32:29 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.740.0 (0.74)
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.74  2024-09-02
+  	- Add a cast to fix an error on some compilations.
+  	- Update README.pod.
+
+-------------------------------------------------------------------
 Thu Aug  4 03:07:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.73

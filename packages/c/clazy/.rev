@@ -270,4 +270,12 @@
   clang executable matching libraries used to build clazy.</comment>
     <requestid>1225180</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8bb177f3631075b68e325e89c7de463a</srcmd5>
+    <version>1.13.0</version>
+    <time>1735769076</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.13</comment>
+    <requestid>1233875</requestid>
+  </revision>
 </revisionlist>

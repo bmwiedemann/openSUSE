@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 30 13:01:09 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to drgn-0.0.30:
+  * Linux 6.13 support
+  * Support for symbols without debuginfo
+  * Use Python 3.13 enhanced REPL when available
+  * Add a 'stat' subcommand to contrib/cgroup.py
+  * Many bug fixes
+- API compatibility with libkdumpfile-0.5.5:
+  * libdrgn-kdump-prepare-for-incompatible-changes-in-li.patch
+  * libdrgn-kdump-simplify-getting-the-PRSTATUS-attribut.patch
+
+-------------------------------------------------------------------
 Wed Oct  9 06:46:34 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to drgn-0.0.29:

@@ -18,7 +18,7 @@
 
 %define         _name kconfig
 Name:           tree-sitter-kconfig
-Version:        1.1.1
+Version:        1.3.0
 Release:        0
 Summary:        Kconfig grammar for tree-sitter
 License:        MIT
@@ -56,4 +56,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-

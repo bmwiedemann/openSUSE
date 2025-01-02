@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jan  1 07:23:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.6.1
+  * Add stereo sample loading support for IT, S3M, XM, MED, LIQ,
+    and Digital Tracker (partial).
+  * Add sample preamplification to filter mixers for high sample
+    rates.
+  * Add support for Ultra Tracker tempo commands.
+  * Load Ultra Tracker comments instead of skipping them.
+  * Implement support for Protracker instrument swapping.
+  * Implement retrigger effects for MED, OctaMED, and Liquid
+    Tracker where only one retrigger occurs. Liquid Tracker (new
+    format) and Digital Symphony now allow retrigger values larger
+    than 15.
+  * Fix loop detection edge cases broken by S3M/IT marker scan
+    bugs.
+  * Add fix for IT break to module scan.
+  * Fix restart position for >64k sample and Digital Tracker MODs.
+  * Reset Invert Loop position when a new instrument is
+    encountered.
+  * MOD: make presence of invert loop override tracker ID guesses.
+  * M.K. modules within Amiga limits which use EFx invert loop are
+    now IDed as Protracker.
+  * Support for loading Digital Tracker 2.03 DTMs (MOD patterns).
+  * Support for loading Digital Tracker 1.9 DTMs (VERS/SV19).
+  * Allow patterns up to 396 rows in Digital Home Studio DTMs.
+  * Support for Digital Tracker 1.9 "MIDI note" transpose.
+  * Simulate Digital Tracker effects bugs where possible.
+  * A bunch of Liquid Tracker (.liq files) bug fixes
+  * Fix out-of-bounds reads in His Master's Noise Mupp instruments.
+  * Add compatibility for non-standard Pattern Loop
+    implementations: Scream Tracker 3.01b; Scream Tracker 3.03b+;
+    Impulse Tracker 1.00; Impulse Tracker 1.04 to 2.09; Modplug
+    Tracker 1.16; Digital Tracker <=2.04; Digital Tracker 1.9;
+    Octalyser; Imago Orpheus; Liquid Tracker; Poly Tracker. (MOD,
+    FT2, and IT 2.10+ were already supported.)
+  * S3M: Detect PlayerPRO, Velvet Studio and old MPT versions.
+
+-------------------------------------------------------------------
 Sat Jun 17 11:33:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.6.0

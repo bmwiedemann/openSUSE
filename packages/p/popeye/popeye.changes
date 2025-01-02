@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Dec 31 10:28:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.6:
+  * deps
+  * deps
+  * update deps
+  * rel v0.21.6
+  * fix #267,#200,#168
+  * fix #370,#356,#337,#301
+  * clean up
+  * clean up cilium netpols
+  * update deps
+  * Bump k8s.io/cli-runtime from 0.31.1 to 0.32.0
+  * Bump k8s.io/metrics from 0.31.1 to 0.32.0
+  * Bump k8s.io/cli-runtime from 0.31.1 to 0.32.0
+  * Bump k8s.io/metrics from 0.31.1 to 0.32.0
+  * Bump k8s.io/client-go from 0.31.1 to 0.32.0
+  * Bump github.com/cilium/cilium from 1.16.3 to 1.16.5
+  * Bump actions/setup-go from 5.1.0 to 5.2.0
+  * Bump alpine from 3.20.3 to 3.21.0
+  * Bump golangci/golangci-lint-action
+  * Bump sigs.k8s.io/gateway-api from 1.1.0 to 1.2.0
+  * Bump github.com/prometheus/client_golang from 1.20.0 to 1.20.5
+  * Bump github.com/prometheus/common from 0.59.1 to 0.60.1
+  * Bump actions/checkout from 4.1.7 to 4.2.2
+  * Bump rajatjindal/krew-release-bot from 0.0.46 to 0.0.47
+  * Bump golangci/golangci-lint-action
+  * Bump golang.org/x/net from 0.28.0 to 0.31.0
+  * Add detection of projected secrets & config maps
+  * Bump actions/setup-go from 5.0.2 to 5.1.0
+  * fix linter service port check for native sidecars
+  * fix path to copyright file for nfpms
+  * Bump github.com/cilium/cilium from 1.16.1 to 1.16.3
+  * feat: Add the MIME content type to s3 uploads
+
+-------------------------------------------------------------------
 Sun Sep 15 05:40:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.21.5:

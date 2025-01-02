@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 27 16:34:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.14:
+  Bug Fixes:
+  * ...those pesky workflow targets
+  * Remove separate bsd tests
+  * Remove audit workflow
+  Features:
+  * Audit checks in main CI
+  Styling:
+  * Format workflows
+  * Ci checks formatted
+
+-------------------------------------------------------------------
+Fri Dec 27 16:33:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.13:
+  Bug Fixes:
+  * Pre-commit-hooks.nix trying to be too clever
+  * Remove stray description (originally from --decay-mode)
+  Build:
+  * Update crate deps Mon Dec 16
+  * Update flake deps Mon Dec 16
+
+-------------------------------------------------------------------
 Mon Dec 16 10:51:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.12:

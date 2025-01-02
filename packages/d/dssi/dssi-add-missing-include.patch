@@ -1,0 +1,10 @@
+--- a/dssi/dssi.h	2009-01-09 23:41:41.000000000 +0100
++++ b/dssi/dssi.h	2024-12-28 14:45:17.639348744 +0100
+@@ -24,6 +24,7 @@
+ #ifndef DSSI_INCLUDED
+ #define DSSI_INCLUDED
+ 
++#include <stddef.h>
+ #include <ladspa.h>
+ #include <alsa/seq_event.h>
+ 

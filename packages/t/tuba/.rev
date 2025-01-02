@@ -80,4 +80,22 @@
   * Account suggestions for new fediverse users (forwarded request 1231768 from rrahl0)</comment>
     <requestid>1231769</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea5cd46b08d22434376fb5e1ba83ccfc</srcmd5>
+    <version>0.9.1</version>
+    <time>1735769248</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1:
+  * Chuckya support to the bubble timelines
+  * Decreased new posts queue prepend scroll threshold
+  * Enabled muting threads when the active user is mentioned instead of only
+    when they are the author
+  * Some filter rows being invisible due to markup
+  * Default FediWrapped style being TRANSPARENT instead of WINDOW
+  * Reschedule calendar month not being set correctly
+  * Opening URIs on scripted exits not working due to making these functions async
+  * Visual glitches and performance issues caused by the clamp and styling in
+    timelines by switching to breakpoints (forwarded request 1233964 from rrahl0)</comment>
+    <requestid>1233967</requestid>
+  </revision>
 </revisionlist>

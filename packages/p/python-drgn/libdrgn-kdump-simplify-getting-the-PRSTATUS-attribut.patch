@@ -1,0 +1,86 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Mon, 2 Dec 2024 17:38:24 +0100
+Subject: libdrgn: kdump: simplify getting the PRSTATUS attributes
+Upstream: merged
+Git-commit: 885a3209f3603593fb89327c1072f94e5862ffbb
+
+Since libkdumpfile commit 5b044292abe9 ("Clarify and fix attribute data
+lifetime") changes the lifetime of attribute values retrieved with
+kdump_attr_ref_get(), the extra reference would keep the PRSTATUS blob
+around even after kdump_free().
+
+However, the attribute hierarchy cannot change while iterating over the
+PRSTATUS attributes, so it is not necessary to take an attribute reference
+and we can use kdump_get_typed_attr().
+
+The attribute blob itself should not change either, but it is a good idea
+to keep its data pinned, because a raw pointer to it is stored in the
+drgn_thread_set hash table. If some code tries to modify the PRSTATUS
+attribute data, the attempt will fail with KDUMP_ERR_BUSY rather than leave
+a dangling pointer in the hash table and possibly cause a UAF bug later.
+
+The blob pin does not prevent freeing the blob when the blob reference
+count reaches zero.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ libdrgn/kdump.c | 28 ++++++++++------------------
+ 1 file changed, 10 insertions(+), 18 deletions(-)
+
+diff --git a/libdrgn/kdump.c b/libdrgn/kdump.c
+index 09efd965..0bb594d1 100644
+--- a/libdrgn/kdump.c
++++ b/libdrgn/kdump.c
+@@ -299,39 +299,31 @@ struct drgn_error *drgn_program_cache_kdump_threads(struct drgn_program *prog)
+ 	}
+ 
+ 	/*
+-	 * Note that in the following loop we never call kdump_attr_unref() on
+-	 * prstatus_ref, nor kdump_blob_unpin() on the prstatus blob that we get
+-	 * from libkdumpfile. Since drgn is completely read-only as a consumer
+-	 * of that library, we "leak" both the attribute reference and blob pin
+-	 * until kdump_free() is called which will clean up everything for us.
++	 * Note that in the following loop we never call kdump_blob_unpin() on
++	 * the prstatus blob that we get from libkdumpfile. Since drgn never
++	 * modifies the PRSTATUS attributes (neither directly nor indirectly),
++	 * we "leak" the blob pin until kdump_free() is called, which will
++	 * clean up everything for us.
+ 	 */
+ 	for (i = 0; i < ncpus; i++) {
+-		/* Enough for the longest possible PRSTATUS attribute name. */
+-		kdump_attr_ref_t prstatus_ref;
+ 		kdump_attr_t prstatus_attr;
+ 		void *prstatus_data;
+ 		size_t prstatus_size;
+ 
+ #define FORMAT "cpu.%" PRIuFAST64 ".PRSTATUS"
++		/* Enough for the longest possible PRSTATUS attribute name. */
+ 		char attr_name[sizeof(FORMAT)
+ 			       - sizeof("%" PRIuFAST64)
+ 			       + max_decimal_length(uint_fast64_t)
+ 			       + 1];
+ 		snprintf(attr_name, sizeof(attr_name), FORMAT, i);
+ #undef FORMAT
+-		ks = kdump_attr_ref(prog->kdump_ctx, attr_name, &prstatus_ref);
+-		if (ks != KDUMP_OK) {
+-			return drgn_error_format(DRGN_ERROR_OTHER,
+-						 "kdump_attr_ref(%s): %s",
+-						 attr_name,
+-						 kdump_get_err(prog->kdump_ctx));
+-		}
+-
+-		ks = kdump_attr_ref_get(prog->kdump_ctx, &prstatus_ref,
+-					&prstatus_attr);
++		prstatus_attr.type = KDUMP_BLOB;
++		ks = kdump_get_typed_attr(prog->kdump_ctx, attr_name,
++					  &prstatus_attr);
+ 		if (ks != KDUMP_OK) {
+ 			return drgn_error_format(DRGN_ERROR_OTHER,
+-						 "kdump_attr_ref_get(%s): %s",
++						 "kdump_get_typed_attr(%s): %s",
+ 						 attr_name,
+ 						 kdump_get_err(prog->kdump_ctx));
+ 		}
+-- 
+2.47.1
+

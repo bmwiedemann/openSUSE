@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 27 16:27:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.75:
+  * Recursive file browser
+  * Copy to clipboard support
+  * Entry box history
+  * Fix calc
+  * Text and cursor outline
+  * Other smaller changes
+  * For details see:
+    https://github.com/davatorium/rofi/releases/tag/1.7.6
+
+-------------------------------------------------------------------
 Wed Feb 21 09:46:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

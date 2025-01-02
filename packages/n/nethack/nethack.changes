@@ -1,0 +1,499 @@
+-------------------------------------------------------------------
+Thu Dec 26 20:25:08 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Drop global config directory. NetHack does not read the global RC
+  file any longer. Remove the rsp directory, usually /etc/nethack, from
+  the package.
+
+-------------------------------------------------------------------
+Thu Dec 19 20:30:43 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Remove %{_datadir}/games from files section. The directory is owned
+  by the filesystem package and should not be packaged by nethack. Rpm
+  will now install nethack without the --force option.
+
+-------------------------------------------------------------------
+Thu Dec 19 20:22:56 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Install nethack launch script in %{_bindir}, so that users can run
+  it from the commnd line. Also resolves an error were nethack package
+  owned the standard directory /usr/games (E: standard-dir-owned-by-package).
+
+-------------------------------------------------------------------
+Thu Dec 19 20:05:04 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Remove nethackrc: Nethack's global rc file was a product of openSUSE's
+  custom start script. With the removal of the script, nethack reads the
+  .nethackrc in the user's home directory. This is standard behavior on
+  Unix systems.
+
+-------------------------------------------------------------------
+Thu Dec 19 16:37:06 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Remove SuSE.tar.bz2: The files in the archive are outdated and no
+  longer used for building NetHack.
+
+-------------------------------------------------------------------
+Thu Dec 19 14:37:50 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config.patch: Adapt sys/unix/nethack.sh to SUSE
+  filesystem hierarchy. The script assumes that the NetHack binary is
+  in the data directory. disstinuish between the two.
+
+- Remove all remaining files from SuSE.tar.bz2 from the package. Use
+  the up-to-date files that come with the release and patch them if
+  necessary.
+
+-------------------------------------------------------------------
+Thu Dec 19 08:36:42 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Drop options.tty in favor of standard options files. As there is
+  only ever one options file, drop the extension.
+
+-------------------------------------------------------------------
+Thu Dec 19 08:21:32 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- List games user and group as PreReq
+
+-------------------------------------------------------------------
+Wed Dec 18 21:15:26 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Remove graphical features, such as tiles, XPM files and X11 utils
+  from the package. The TTY build does not use them.
+
+-------------------------------------------------------------------
+Wed Dec 18 21:04:50 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Mark license file with %fdupes. The file serves as data file for
+  the NetHack binary, but is also installed via %license. %fdupes does
+  not actually support de-duplicating if %license is involved. But at
+  least it is listed correctly. (W: files-duplicate)
+
+-------------------------------------------------------------------
+Wed Dec 18 17:07:31 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Drop 'recover-helper' as it is a trivial helper around the recover
+  utility.
+
+-------------------------------------------------------------------
+Tue Dec 17 16:52:46 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Copy nethackrc.tty from SuSE.tar.bz2 to source directory and
+  list is as Source2. Rename to nethackrc.
+
+- Reduce nethackrc to non-default options. Drop 'number_pad' to make
+  the game playable on notebooks, which often don't have numpads.
+
+-------------------------------------------------------------------
+Tue Dec 17 13:56:51 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Remove TeXLive from BuildRequires. It's not needed as we don't
+  build the Guidebook DVI.
+
+-------------------------------------------------------------------
+Tue Dec 17 12:38:14 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Do not pack fixes (i.e., change logs) files in a tar archive when
+  installing them. It has been a long time since packing up change
+  logs was necessary for saving disk space.
+
+-------------------------------------------------------------------
+Fri Dec  6 16:19:21 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config.patch: Add Guidebook.ps to the package. We
+  generate this document from the doc/ folder. There's still
+  Guidebook.txt as before for users without PostScript reader.
+
+- Drop Guidebook.tex from package. The tex file is an input file for
+  documentation. Don't add it to the package.
+
+-------------------------------------------------------------------
+Fri Dec  6 16:05:51 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Drop README.SuSE from package. The README is completely outdated,
+  thus remove it from the package. Also resolves a warning about the
+  incorrect capitalization in 'SuSE.' (E: wrong-suse-capitalisation)
+
+-------------------------------------------------------------------
+Fri Dec  6 16:00:00 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Add groff to build requirements. Fixes a build warning where tbl and
+  nroff are not available.
+
+-------------------------------------------------------------------
+Fri Dec  6 13:32:13 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Remove CFLAGS from invocations of make. We patch the Makefiles with
+  appropriate compile flags and sed-in any %{optflags}. No need to
+  pass additional flags while invoking make. Also drop _GNU_SOURCE
+  while at it; it's not required for the build.
+
+-------------------------------------------------------------------
+Fri Dec  6 13:17:52 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config.patch: Integrate SuSE/tty/Makefile.src into
+  this patch instead of copying it. Reduce the changes to the minimum.
+  Only rename nethack to nethack.tty and set compiler and linker flags.
+  As SuSE/tty/Makefile.src was for an older version of nethack, it
+  did not list all source dependencies correctly, hence leading to
+  sporadic compile errors. Patching the actual Makefile fixes this.
+
+- Copy Makefiles from sys/unix/ to their places instead of symlinking
+  them; then run sed to add optimization flags. Fixes another problem
+  with the outdated Makefile from SuSE/tty/.
+
+------------------------------------------------------------------
+Tue Dec  3 15:10:22 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config.patch: Update the config file strictly to the
+  upstream state plus changes for the SUSE TTY build. The config file
+  coming from SuSE.tar.bz2 refered to an older upstream release.
+
+-------------------------------------------------------------------
+Tue Dec  3 14:24:44 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config.patch: Integrate SuSE/tty/config.h into this
+  patch instead of copying it; except for the COMPRESS settings, which
+  nethack-gzip.patch still updates. We never build anything else than
+  the TTY variant of nethack, so there's no point in keeping these
+  config changes in various places.
+
+-------------------------------------------------------------------
+Tue Dec  3 14:13:09 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Drop references to /usr/X11R6/ from build flags. We're not building
+  for X11 any longer and that directory has been gone for years anyway.
+
+-------------------------------------------------------------------
+Sun Dec  1 12:58:29 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Don't make configuration files in /etc/nethack executable.
+  (E: script-without-shebang)
+
+-------------------------------------------------------------------
+Sun Dec  1 09:46:13 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Don't make game-state files in /var/games/nethack executable.
+  (W: script-without-shebang)
+
+-------------------------------------------------------------------
+Sat Nov 30 17:13:14 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-misc.patch: Refresh to fix patch offsets.
+
+-------------------------------------------------------------------
+Sat Nov 30 16:59:32 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Replace deprecated %patchN macros with %patch -PN
+  (E: patch-macro-old-format)
+
+-------------------------------------------------------------------
+Sat Aug 10 18:15:37 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Create fixes.tar.bz2 in a reproducible way
+- Add reproducible.patch to not add build date into binary
+  to make package build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Jul 16 13:17:39 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Own installed directories and thus fix building
+- Fix license
+
+-------------------------------------------------------------------
+Mon Mar 25 08:07:22 UTC 2013 - joop.boonen@opensuse.org
+
+- Corrected the License
+
+-------------------------------------------------------------------
+Thu Jan 24 08:02:19 UTC 2013 - joop.boonen@opensuse.org
+
+- run_permissions was replaced by set_permissions
+  http://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#.25set_permissions
+
+-------------------------------------------------------------------
+Thu Jan 17 08:13:36 UTC 2013 - joop.boonen@opensuse.org
+
+- run_permissions is obsolete, not supported in openSUSE > 12.2
+- cleaned the spec file up
+
+-------------------------------------------------------------------
+Sat Mar 24 03:24:17 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant spec sections
+
+-------------------------------------------------------------------
+Mon Jan 16 15:56:47 UTC 2012 - pgajdos@suse.com
+
+- improved start script [bnc#741605]
+
+-------------------------------------------------------------------
+Mon Aug  3 22:42:28 CEST 2009 - gerberb@zenez.com
+
+- Second attempt at a fix.
+
+-------------------------------------------------------------------
+Mon Aug  3 22:08:24 CEST 2009 - gerberb@zenez.com
+
+- Attempt to get things working once things were moved from games:roleplaying to
+  just games but had the wrong nethack.changes file.
+
+-------------------------------------------------------------------
+Wed Sep 13 16:01:26 CEST 2006 - gerberb@zenez.com
+
+- setup and fixed to build on OBS
+
+-------------------------------------------------------------------
+Thu May 25 18:55:26 CEST 2006 - gerberb@zenez.com
+
+- fixed spec file
+
+-------------------------------------------------------------------
+Tue Feb 14 14:36:26 CET 2006 - mmarek@suse.cz
+
+- use /usr/lib/nethack instead of /usr/%%_lib/nethack, because we
+  don't install any libraries there and /etc/permissions* contains
+  /usr/lib/nethack
+  [#140336]
+- build as user
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri May  6 15:45:42 CEST 2005 - sbrabec@suse.cz
+
+- Fixed duplicated declarations.
+- Build with correct CFLAGS.
+
+-------------------------------------------------------------------
+Thu Jan 20 14:00:06 CET 2005 - ro@suse.de
+
+- drop nethack-qt, gnomehack, xnethack
+- re-unite nethack and nethack-common
+
+-------------------------------------------------------------------
+Wed Nov 10 18:48:58 CET 2004 - ro@suse.de
+
+- reduced neededforbuild
+
+-------------------------------------------------------------------
+Thu Sep 30 14:17:15 CEST 2004 - sbrabec@suse.cz
+
+- Biarch path fix (#31938).
+
+-------------------------------------------------------------------
+Mon Feb 09 14:34:18 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 3.4.3.
+
+-------------------------------------------------------------------
+Wed Nov  5 12:47:34 CET 2003 - ro@suse.de
+
+- package according to permissions.secure and add run_permissions
+
+-------------------------------------------------------------------
+Mon Sep 01 18:31:05 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 3.4.2 (bug #29803).
+
+-------------------------------------------------------------------
+Thu Jun 12 09:01:58 CEST 2003 - coolo@suse.de
+
+- fiddle with %_docdir
+
+-------------------------------------------------------------------
+Sat Jun  7 15:22:31 CEST 2003 - coolo@suse.de
+
+- compile with latest Qt
+- remove buildroot before installing
+- package /usr/games/nethack (as installed explicitly)
+
+-------------------------------------------------------------------
+Thu Feb 27 15:41:06 CET 2003 - sbrabec@suse.cz
+
+- Use gzip instead of compress for compression (bug #22454).
+
+-------------------------------------------------------------------
+Wed Feb 26 14:19:16 CET 2003 - sbrabec@suse.cz
+
+- Security fix (local buffer overflow).
+
+-------------------------------------------------------------------
+Mon Feb 17 12:59:15 CET 2003 - sbrabec@suse.cz
+
+- Removed -mminimal-toc from spec file for PPC, since it is now RPM
+  default (bug #23266).
+
+-------------------------------------------------------------------
+Wed Oct 23 14:09:48 CEST 2002 - mcihar@suse.cz
+
+- enabled data librarian
+- added X11 version
+- Qt version renamed to nethack-qt (from xnethack) and built against qt3
+  (qt-mt)
+- different styles (tty/Qt/Gnome/X11) do not conflict
+- new lanching script nethack, ui can be chosen by environment variable
+  HACKSTYLE=x11/qt/gnome/tty
+- cleaned neededforbuild
+- included some tools into nethack-common (was nethack_data)
+
+-------------------------------------------------------------------
+Fri Sep 27 14:36:06 CEST 2002 - ro@suse.de
+
+- Added alsa alsa-devel to neededforbuild (esound)
+
+-------------------------------------------------------------------
+Thu Sep 12 11:14:17 CEST 2002 - kukuk@suse.de
+
+- Add missing obsolete from package rename
+
+-------------------------------------------------------------------
+Wed Aug 21 15:13:55 MEST 2002 - mcihar@suse.cz
+
+- added PreReqs
+
+-------------------------------------------------------------------
+Sun Jul 28 17:51:21 CEST 2002 - kukuk@suse.de
+
+- change group game to games
+
+-------------------------------------------------------------------
+Tue Jul 16 15:08:42 CEST 2002 - mcihar@suse.cz
+
+- nh_data renamed to nethack_data
+- nh_binary renamed to nethack_binary
+- updated nethack_data description to mention gnomehack also
+
+-------------------------------------------------------------------
+Mon Jul  1 14:37:16 CEST 2002 - olh@suse.de
+
+- build with -mminimal-toc on ppc64
+
+-------------------------------------------------------------------
+Thu Jun  6 14:54:09 CEST 2002 - prehak@suse.de
+
+- fixed for ia64
+  - using of macro _syscall3 replaced with ordinary system call
+  - kernel header linux/unistd.h replaced with unistd.h
+
+-------------------------------------------------------------------
+Fri May 31 17:11:19 CEST 2002 - prehak@suse.de
+
+- fixed to build on x86_64 and s390x
+
+-------------------------------------------------------------------
+Thu May 16 15:10:52 CEST 2002 - prehak@suse.cz
+
+- updated to new version 3.4.0
+
+-------------------------------------------------------------------
+Mon Jan 21 21:48:55 CET 2002 - tcrhak@suse.cz
+
+- fixed include dir path for gnome
+
+-------------------------------------------------------------------
+Mon Jan 14 21:38:10 CET 2002 - tcrhak@suse.cz
+
+- moved static data to /usr/share/games/nethack
+- and executables to /usr/lib/nethack (FHS 2.2)
+
+-------------------------------------------------------------------
+Fri Nov  9 02:02:42 CET 2001 - ro@suse.de
+
+- use qt-devel-packages in neededforbuild
+
+-------------------------------------------------------------------
+Mon Sep  3 13:15:39 CEST 2001 - schwab@suse.de
+
+- Fix conflicting declaration.
+
+-------------------------------------------------------------------
+Sun Mar 18 23:24:19 CET 2001 - ro@suse.de
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Thu Mar  8 14:15:42 CET 2001 - uli@suse.de
+
+- added xf86 to neededforbuild
+- replaced static GTK include paths with "gtk-config --cflags"
+
+-------------------------------------------------------------------
+Thu Jan 25 19:11:33 CET 2001 - vinil@suse.cz
+
+- upgraded to 3.3.1
+- difs split and cleanup
+- gnome version included
+
+-------------------------------------------------------------------
+Tue Jan 23 17:26:46 CET 2001 - schwab@suse.de
+
+- Fix conflicting declarations.
+
+-------------------------------------------------------------------
+Thu Nov 30 08:38:10 CET 2000 - ro@suse.de
+
+- neededforbuild += liblcms
+
+-------------------------------------------------------------------
+Fri Nov 17 14:57:54 CET 2000 - ro@suse.de
+
+- fixed neededforbuild: += libmng-devel
+
+-------------------------------------------------------------------
+Sun Nov  5 15:24:17 CET 2000 - kukuk@suse.de
+
+- adjust neededforbuild
+
+-------------------------------------------------------------------
+Fri Oct 20 09:29:53 CEST 2000 - ro@suse.de
+
+- added libmng to neededforbuild
+
+-------------------------------------------------------------------
+Tue Aug 22 16:04:29 CEST 2000 - vinil@suse.cz
+
+- mesa, mesasoft added to neededforbuild
+
+-------------------------------------------------------------------
+Tue Jul 18 14:41:57 CEST 2000 - vinil@suse.cz
+
+- Alt (Meta) key should work now in tty version, too
+  (are there any problems with it?)
+
+-------------------------------------------------------------------
+Fri Jun 23 11:20:15 CEST 2000 - vinil@suse.cz
+
+- doc files relocated
+
+-------------------------------------------------------------------
+Tue Jun 20 10:52:36 CEST 2000 - vinil@suse.cz
+
+- major file relocation
+- nethackrc demofile added
+
+-------------------------------------------------------------------
+Tue Jun 13 16:31:39 CEST 2000 - vinil@suse.cz
+
+- nethack and xnethack are two frontends now
+- nh_data is needed for both
+
+-------------------------------------------------------------------
+Sat Feb 19 14:27:26 CET 2000 - kasal@suse.cz
+
+- upgraded to 3.3.0
+- added BuildRoot
+- moved manpages to /usr/share/man
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Wed Jun 11 13:58:25 CEST 1997 - rj@suse.de
+
+	- new version 3.2.2

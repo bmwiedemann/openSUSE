@@ -1,0 +1,17 @@
+---
+ doc/doxygen/CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: dealii-9.6.1/doc/doxygen/CMakeLists.txt
+===================================================================
+--- dealii-9.6.1.orig/doc/doxygen/CMakeLists.txt
++++ dealii-9.6.1/doc/doxygen/CMakeLists.txt
+@@ -287,7 +287,7 @@ file(APPEND "${CMAKE_CURRENT_BINARY_DIR}
+ if(NOT (${DOXYGEN_VERSION} VERSION_LESS 1.9))
+   file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/options.dox"
+     "
+-    NUM_PROC_THREADS       = 0
++    NUM_PROC_THREADS       = 1
+     DOT_NUM_THREADS        = 0
+     "
+     )

@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Tue Dec 31 15:31:46 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Do not sign uki for local build. Remove local certificate. 
+
+-------------------------------------------------------------------
+Thu Dec 19 15:56:37 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- scriptlets: install and remove all ukis
+  * Need to use version 1.4.1 of uki-tool
+- Get the kernel version from the package installed
+- name_suffix defined only if flavor is defined
+
+-------------------------------------------------------------------
+Mon Sep 30 09:26:24 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- BuildRequires:
+  * Add update-bootloader to resolve the choice with perl-bootloader
+  * Reorder
+- Remove the kernel spec macro file
+  * Add macros in the specfile
+
+-------------------------------------------------------------------
+Mon Sep  2 17:23:27 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Provides certs and extra uki dir
+- Summary fix
+- Use static initrd release into version
+- scriptlets:
+  - use efi_dir when adding/removing uki in boot part
+  - install the entry in posttrans instead of post
+    Allow during the update to be install after the removal of previous entry 
+  - Do not fail if no entry added/removed
+
+
+-------------------------------------------------------------------
+Thu Aug  1 08:36:44 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Follow uki-tool changes
+  - binary name has been changed
+  - sdboot/grub2 parameters has been changed
+
+-------------------------------------------------------------------
+Wed Jul 17 09:53:40 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use of needsbinariesforbuild instead of needsrootforbuild to get the static
+  initrd file to build the uki  without the need of the root user.
+- certification file should follow the uki name
+
+-------------------------------------------------------------------
+Thu Jul 11 14:53:20 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add the kernel command line
+- update condition in scriptel to guess the bootloader
+- Use multibuild and build for different kernel flavors
+
+-------------------------------------------------------------------
+Mon Jul  8 14:13:17 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add extra directory as specify into uapi group site
+  * See: https://uapi-group.org/specifications/specs/unified_kernel_image/#locations-and-naming-for-uki-auxiliary-resources 
+
+-------------------------------------------------------------------
+Mon Jul  8 07:59:45 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Build requires changes from ukit to uki-tool 
+
+-------------------------------------------------------------------
+Wed Jul  3 15:33:24 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Switch from initrd-dracut-generic to static-initrd-generic
+
+-------------------------------------------------------------------
+Thu Mar  7 15:01:20 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- post: Print mokutil command for both bootloaders
+  * Print the cert file path and name.
+- swith from %postun to %preun
+
+-------------------------------------------------------------------
+Mon Mar  4 13:09:45 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Get Kernel Version from uname variable
+- Use ukit create to build the UKI. 
+
+-------------------------------------------------------------------
+Thu Feb 29 10:29:08 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- post: add entry to sdbooot bootloader.
+
+-------------------------------------------------------------------
+Fri Dec 29 17:10:47 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Rename the installed binary by "uki" without kernel version
+  Binary will be installed in the corresponding kernel version tree 
+
+-------------------------------------------------------------------
+Mon Dec 11 11:09:55 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add a requires to the kernel used to build the UKI
+- Update the initrd version 
+
+-------------------------------------------------------------------
+Fri Dec  1 11:05:10 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update the version format 
+
+-------------------------------------------------------------------
+Fri Nov 24 09:44:57 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Get the version of the pre-install static initrd
+- Change version format to %{kernel_version}_%{initrd_version}
+
+-------------------------------------------------------------------
+Fri Oct 27 08:23:30 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove the grub2 mkconfig already deal by ukit 
+
+-------------------------------------------------------------------
+Thu Sep 28 16:00:56 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add dependency for systemd-pcrphase to wotk at boot 
+
+-------------------------------------------------------------------
+Wed Sep 27 19:29:59 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use UKIFY to generate keys for secure boot and PCR.
+  - Stop using nedssslcertforbuild
+  - Remove openSUSE certificate
+- Update the UKIFY build command
+  - Integrate all pcr keys in the UKI sections
+  - Sign it                                                
+
+-------------------------------------------------------------------
+Mon Sep 25 09:32:55 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- specfile %postun: remove correctly grub2 menu entry 
+
+-------------------------------------------------------------------
+Fri Sep 22 15:49:16 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Create the generic signed unified kernel image

@@ -18,13 +18,13 @@
 
 %define         _name luau
 Name:           tree-sitter-luau
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Luau grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-luau
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-grammar.js.patch
+Patch0:         require-correct-lua.patch
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-lua)
 %treesitter_grammars %{_name}
@@ -58,4 +58,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-

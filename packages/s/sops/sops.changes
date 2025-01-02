@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 01 08:49:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.9.3:
+  * Add changelog for 3.9.3.
+  * Bump version to 3.9.3.
+  * build(deps): Bump the rust group in /functional-tests with 2
+    updates
+  * Run 'make vendor'.
+  * Update all dependencies with 'go get -t -u ./...'.
+  * Fix input-type CLI flag being ignored for updatekeys
+    subcommand.
+  * Use container images from
+    https://github.com/getsops/ci-container-images.
+  * Document using subkeys with GnuPG.
+  * Correctly handle trailing "!" when passing shortened
+    fingerprints to GnuPG.
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump serde_json in /functional-tests in the rust
+    group
+  * build(deps): Bump the go group across 1 directory with 13
+    updates
+  * Bump golang.org/x/net to 0.33.0 to address CVE-2024-45338.
+  * build(deps): Bump filippo.io/age from 1.2.0 to 1.2.1
+  * Add 'persist-credentials: false' to checkout actions.
+  * build(deps): Bump the rust group in /functional-tests with 2
+    updates
+  * build(deps): Bump the ci group with 4 updates
+  * build(deps): Bump golang.org/x/crypto from 0.30.0 to 0.31.0
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 10 updates
+
+-------------------------------------------------------------------
 Tue Dec 03 05:45:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.9.2:

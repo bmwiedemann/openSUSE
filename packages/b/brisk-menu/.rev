@@ -59,4 +59,15 @@
   * Update translations. (forwarded request 830834 from hillwood)</comment>
     <requestid>830835</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c1c051fbc88feebf1df9a6acf31b93c5</srcmd5>
+    <version>0.6.2</version>
+    <time>1735769264</time>
+    <user>anag+factory</user>
+    <comment>- Add patches: brisk-menu-gsettings-icon-properties.patch and 
+- Add a patch: brisk-menu-fix-crash-on-desktop-file-changes-5f0be5741b5b37221fc8911c11f394ec498cd53d.patch. 
+  Backport upstream patch to fix crashes in odd cases when .desktop files are
+  changed. (forwarded request 1234106 from hillwood)</comment>
+    <requestid>1234107</requestid>
+  </revision>
 </revisionlist>

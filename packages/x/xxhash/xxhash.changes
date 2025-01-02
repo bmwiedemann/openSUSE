@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 30 19:52:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.3
+  * Corrects an edge case in ``XXH3_128bits_withSecretandSeed``
+    that could generate invalid results.
+  * xxhash now knows command-line arguments ``--filelist``,
+    ``--files-from``.
+
+-------------------------------------------------------------------
 Tue Sep  3 02:11:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add inline.patch to resolve FTBFS on gcc-14 + -Og.

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 31 10:44:31 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libica to version 4.4.0 (jsc#PED-3277, jsc#PED-10289)
+  * Updates for FIPS 140-3 certification 2024
+  * Various bug fixes and housekeeping 
+- Removed obsolete patches
+  * libica-01-fips-update-remove-sigVer-from-fips-ECDSA-kat.patch
+  * libica-02-fips-update-Change-service-indicator-implementation.patch
+  * libica-03-fips-update-Dynamically-update-service-indicator-based-on-IV-usage.patch
+  * libica-04-fips-update-provide-test-for-dynamic-service-indicator.patch
+
+-------------------------------------------------------------------
 Wed Dec  4 07:05:18 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1234117, bsc#1231999)

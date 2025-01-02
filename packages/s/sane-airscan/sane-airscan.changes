@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 30 22:28:33 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 0.99.31:
+  * eSCL: rollback of the previous change (quirk_adf_max_pages)
+  * eSCL: added quirk_adf_max_pages
+  * Cosmetic (fixed typo in a commend)
+  * HTTP timeout for "short" requests extended from 5s to 20s
+  * The "sane-intent" option cannot be SANE_CAP_INACTIVE
+  * WSD: workaround for ADF Duplex on Brother MFC-9370CDW
+  * WSD: cosmetic
+  * eSCL: delay between subsequent loads made Brother-specific
+  * Update README.md: updated Gentoo support status
+
+-------------------------------------------------------------------
 Fri Nov 22 10:26:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - do not replace config (as configured scanners are saved to that file)

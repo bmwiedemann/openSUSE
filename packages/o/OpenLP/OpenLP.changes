@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 27 22:08:22 UTC 2024 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.1.5: there has been a number of releases, details
+  can be found at:
+  https://openlp.org/blog/
+- Add fix-version.patch to set the version at 3.1.5 instead of
+  3.1.4
+
+-------------------------------------------------------------------
 Sat Mar  2 21:18:57 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 3.1.0: See all the details at
