@@ -4221,4 +4221,13 @@
   * sysctl: Fixup of not setting kernel.pid_max on 32b archs (bsc#1227117)</comment>
     <requestid>1199142</requestid>
   </revision>
+  <revision rev="506" vrev="1">
+    <srcmd5>542237a8361a5fc215f62ae1972a5c37</srcmd5>
+    <version>84.87+git20250102.c08e614</version>
+    <time>1735910256</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20250102.c08e614:
+  * Load distrobox_profile.sh</comment>
+    <requestid>1234578</requestid>
+  </revision>
 </revisionlist>
