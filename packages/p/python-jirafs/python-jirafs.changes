@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  2 15:13:16 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Skip Python 3.13 because ipdb is not compatible
+
+-------------------------------------------------------------------
 Thu Mar 14 16:49:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing Requires python-Pillow (bsc#1221433).

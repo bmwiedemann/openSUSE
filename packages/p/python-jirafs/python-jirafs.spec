@@ -1,7 +1,7 @@
 #
 # spec file for package python-jirafs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 # missing ipdb
-%global skip_python39 1
+%global skip_python313 1
 %{?sle15_python_module_pythons}
 Name:           python-jirafs
 Version:        2.3.1
