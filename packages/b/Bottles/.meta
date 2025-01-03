@@ -1,6 +1,0 @@
-<package name="Bottles" project="openSUSE:Factory">
-  <title></title>
-  <description>Easily manage wineprefix using environments</description>
-  <devel project="games:tools" package="Bottles"/>
-  <url>https://usebottles.com/</url>
-</package>
