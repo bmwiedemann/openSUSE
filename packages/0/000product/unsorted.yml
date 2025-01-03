@@ -28,8 +28,6 @@ unsorted:
   - Bear 
   - Botan 
   - Botan-doc 
-  - Bottles 
-  - Bottles-lang 
   - CSXCAD-devel 
   - CSXCAD-matlab 
   - Cadence 
@@ -475,6 +473,7 @@ unsorted:
   - adwaita-icon-theme-legacy 
   - adwaita-qt5 
   - adwaita-qt6 
+  - aegisub 
   - aelfred 
   - aelfred-javadoc 
   - aeon-check 
@@ -8624,6 +8623,7 @@ unsorted:
   - helm-bash-completion 
   - helm-docs 
   - helm-fish-completion 
+  - helm-schema 
   - helm-zsh-completion 
   - helmfile 
   - helmfile-bash-completion 
@@ -8820,6 +8820,7 @@ unsorted:
   - hyprlock 
   - hyprpaper 
   - hyprpicker 
+  - hyprpolkitagent 
   - hyprshot 
   - hyprutils-devel 
   - hyprwayland-scanner 
@@ -9509,6 +9510,10 @@ unsorted:
   - jemalloc-devel 
   - jemmy 
   - jemmy-javadoc 
+  - jenkins-x-cli 
+  - jenkins-x-cli-bash-completion 
+  - jenkins-x-cli-fish-completion 
+  - jenkins-x-cli-zsh-completion 
   - jeromq 
   - jeromq-javadoc 
   - jersey 
@@ -12941,7 +12946,7 @@ unsorted:
   - libdrumstick-rt2-plugins 
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
-  - libdruntime-ldc109 
+  - libdruntime-ldc110 
   - libdrvproxy2 
   - libdspy-1-1 
   - libdtkcore5 
@@ -15303,6 +15308,7 @@ unsorted:
   - libpano-devel 
   - libpano-utils 
   - libpano13-3 
+  - libpantheon-wayland1 
   - libpaper-devel 
   - libpapi 
   - libpapi-hpc 
@@ -15387,7 +15393,7 @@ unsorted:
   - libphdi-tools 
   - libphdi1 
   - libphobos2-0_109 
-  - libphobos2-ldc109 
+  - libphobos2-ldc110 
   - libphonenumber-devel 
   - libphysfs-devel 
   - libphysfs1 
@@ -15473,7 +15479,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler139-32bit 
+  - libpoppler144-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -16789,7 +16795,7 @@ unsorted:
   - libunicap2 
   - libunicode-devel 
   - libunicode-tools 
-  - libunicode0_4 
+  - libunicode0_6 
   - libuninameslist-devel 
   - libuninameslist1 
   - libunistring-devel 
@@ -17520,6 +17526,8 @@ unsorted:
   - lightdm-deepin-greeter 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
+  - lightdm-pantheon-greeter 
+  - lightdm-pantheon-greeter-lang 
   - lightdm-qt5-devel 
   - lightdm-slick-greeter 
   - lightdm-slick-greeter-branding-openSUSE 
@@ -19841,6 +19849,7 @@ unsorted:
   - netgen-examples 
   - netgen-gui-libs 
   - netgen-libs 
+  - nethack 
   - nethogs 
   - netlabel-tools 
   - netperfmeter 
@@ -21086,6 +21095,7 @@ unsorted:
   - pantheon-videos 
   - pantheon-videos-lang 
   - pantheon-wallpapers 
+  - pantheon-wayland-devel 
   - paper-icon-theme 
   - paperclips 
   - paperclips-javadoc 
@@ -25608,6 +25618,7 @@ unsorted:
   - python310-flake8-docstrings 
   - python310-flake8-import-order 
   - python310-flake8-isort 
+  - python310-flake8-noqa 
   - python310-flake8-pep3101 
   - python310-flake8-polyfill 
   - python310-flake8-pyi 
@@ -26416,7 +26427,6 @@ unsorted:
   - python310-o2sclpy 
   - python310-oauthlib 
   - python310-objgraph 
-  - python310-objsize 
   - python310-oci-sdk 
   - python310-octave-kernel 
   - python310-odfpy 
@@ -27308,7 +27318,6 @@ unsorted:
   - python310-ruamel.yaml.clib 
   - python310-ruamel.yaml.convert 
   - python310-ruff 
-  - python310-ruffus 
   - python310-runthis-sphinxext 
   - python310-s3transfer 
   - python310-sadisplay 
@@ -29251,6 +29260,7 @@ unsorted:
   - python311-flake8-docstrings 
   - python311-flake8-import-order 
   - python311-flake8-isort 
+  - python311-flake8-noqa 
   - python311-flake8-pep3101 
   - python311-flake8-polyfill 
   - python311-flake8-pyi 
@@ -30018,7 +30028,6 @@ unsorted:
   - python311-nwdiag 
   - python311-o2sclpy 
   - python311-objgraph 
-  - python311-objsize 
   - python311-oci-sdk 
   - python311-octave-kernel 
   - python311-odfpy 
@@ -30882,7 +30891,6 @@ unsorted:
   - python311-ruamel.yaml.clib 
   - python311-ruamel.yaml.convert 
   - python311-ruff 
-  - python311-ruffus 
   - python311-runthis-sphinxext 
   - python311-s3transfer 
   - python311-sadisplay 
@@ -32853,6 +32861,7 @@ unsorted:
   - python312-flake8-docstrings 
   - python312-flake8-import-order 
   - python312-flake8-isort 
+  - python312-flake8-noqa 
   - python312-flake8-pep3101 
   - python312-flake8-polyfill 
   - python312-flake8-pyi 
@@ -33660,7 +33669,6 @@ unsorted:
   - python312-o2sclpy 
   - python312-oauthlib 
   - python312-objgraph 
-  - python312-objsize 
   - python312-oci-sdk 
   - python312-octave-kernel 
   - python312-odfpy 
@@ -34555,7 +34563,6 @@ unsorted:
   - python312-ruamel.yaml.clib 
   - python312-ruamel.yaml.convert 
   - python312-ruff 
-  - python312-ruffus 
   - python312-runthis-sphinxext 
   - python312-s3transfer 
   - python312-sadisplay 
@@ -35255,6 +35262,7 @@ unsorted:
   - python313-IMAPClient 
   - python313-JPype1 
   - python313-Jinja2 
+  - python313-Js2Py 
   - python313-JsonWeb 
   - python313-Kajiki 
   - python313-LHAPDF 
@@ -35960,6 +35968,7 @@ unsorted:
   - python313-base58 
   - python313-bashate 
   - python313-bcrypt 
+  - python313-beartype 
   - python313-beautifulsoup4 
   - python313-before-after 
   - python313-behave 
@@ -36007,6 +36016,7 @@ unsorted:
   - python313-botocore 
   - python313-bottle 
   - python313-bowler 
+  - python313-bpython 
   - python313-bracex 
   - python313-branca 
   - python313-breathe 
@@ -36112,6 +36122,7 @@ unsorted:
   - python313-cloud-init-seed 
   - python313-cloudflare 
   - python313-cloudpickle 
+  - python313-cloudscraper 
   - python313-cloup 
   - python313-cluster 
   - python313-cma 
@@ -36496,6 +36507,7 @@ unsorted:
   - python313-fake-useragent 
   - python313-fakeredis 
   - python313-falcon 
+  - python313-fanficfare 
   - python313-fangfrisch 
   - python313-fann2 
   - python313-fastapi 
@@ -36537,6 +36549,7 @@ unsorted:
   - python313-flake8-docstrings 
   - python313-flake8-import-order 
   - python313-flake8-isort 
+  - python313-flake8-noqa 
   - python313-flake8-pep3101 
   - python313-flake8-polyfill 
   - python313-flake8-pyi 
@@ -37088,6 +37101,7 @@ unsorted:
   - python313-ligo-lw 
   - python313-ligo-segments 
   - python313-ligotimegps 
+  - python313-limnoria 
   - python313-line_profiler 
   - python313-linetable 
   - python313-lineup-widget 
@@ -39844,8 +39858,6 @@ unsorted:
   - rkdeveloptool 
   - rke 
   - rke2 
-  - rke2-1.27 
-  - rke2-1.28 
   - rke2-1.29 
   - rke2-1.30 
   - rke2-selinux 
@@ -40815,7 +40827,6 @@ unsorted:
   - simutrans 
   - simutrans-makeobj 
   - singular 
-  - singularity-ce 
   - sioyek 
   - sipcalc 
   - sipp 
@@ -51644,6 +51655,7 @@ unsorted:
   - typelib-1_0-OSTree-1_0 
   - typelib-1_0-OsmGpsMap-1_0 
   - typelib-1_0-Panel-1 
+  - typelib-1_0-PantheonWayland-1_0 
   - typelib-1_0-PapersDocument-4_0 
   - typelib-1_0-PapersView-4_0 
   - typelib-1_0-Peas-2 
@@ -51779,6 +51791,7 @@ unsorted:
   - uimaj 
   - uimaj-javadoc 
   - uisp 
+  - uki-default 
   - uki-tool 
   - uki-tool-doc 
   - ulfius-devel 
