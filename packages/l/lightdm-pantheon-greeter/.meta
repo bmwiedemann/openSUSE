@@ -1,0 +1,5 @@
+<package name="lightdm-pantheon-greeter" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Pantheon" package="lightdm-pantheon-greeter"/>
+</package>

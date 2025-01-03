@@ -1,0 +1,316 @@
+-------------------------------------------------------------------
+Wed Nov 20 08:21:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch support-limutter15.patch, so we can support mutter47
+
+-------------------------------------------------------------------
+Fri Nov  1 23:20:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to lightdm-pantheon-greeter
+- fix build for Leap 15.6
+- fix CFLAGS
+
+-------------------------------------------------------------------
+Tue Sep 17 00:07:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Add blurred wallpaper as background
+  * Make Date and Time larger and bolder with softer shadows
+  * Updated translations
+
+-------------------------------------------------------------------
+Sun Aug 11 06:58:17 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.0.0:
+  * switch to libmutter-10
+  * require mutter 42
+  * add support for mutter 44
+  * meson: install lightdm config
+  * Compositor: Implement PointerLocator
+  * preperations for gtk4
+  * Use user's interface settings
+  * Use user's night light settings
+- update to 6.1.1:
+  * Updated translations
+- update to 6.1.0:
+  * Provide panel background color interface
+  * Updated translations
+- update to 6.0.2:
+  * Fix a random issue where Greeter does not load correctly on boot
+  * Updated translations
+- update to 6.0.1:
+  * Hide clock during initial setup
+  * Use selected accent color for logged in checkmark
+  * Updated translations
+- update to 6.0.0:
+  * Add multitouch finger tracking
+  * Add keyboard layout support
+  * New colorful avatar fallbacks
+  * Fix clock when resuming from sleep
+  * Updated translations
+- update to 5.0.4:
+  * Updated translations
+- update to 5.0.3:
+  * Updated translations
+  * Fixed an issue with media keys
+- update to 5.0.2:
+  * Ensure that manual login is available when users are hidden
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+- remove patch 0001-port-to-mutter330.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 14:39:27 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0.1:
+  * Add Release to Actions
+  * Clear password entry on error (#369)
+  * README: Fix weblate badge
+  * Launch GSD Sound (#350)
+  * MainWindow: Throw an error dialog on failed login (#335)
+  * Respect numlock setting (#340)
+  * run installation in CI (#367)
+  * Add Lint to CI (#365)
+  * Fix code style issues (#366)
+  * Delete CODE_OF_CONDUCT.md
+  * Compositor: lint the remaining compositor files with
+    vala-lint (#362)
+  * Utils: Lint file using vala-lint (#361)
+  * Delete FUNDING.yml
+  * Handle all background aspect ratios (#339)
+  * Save last user on attempted login (#338)
+
+-------------------------------------------------------------------
+Mon Sep  2 14:17:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0:
+  * Appdata: Add screenshot
+  * Add screenshot (#327)
+  * show greeter on the monitor where the mouse pointer is (#322)
+  * Remove password entry placeholder (#320)
+  * Update AccountsService rdnn (#317)
+  * Remove AccountsService extension (#310)
+  * Focus password after keyboard navigation (#284)
+  * Rename state_dir (#312)
+  * Get primary monitor to fix multi-display size (#307)
+  * Merge branch 'origin/master' into Weblate.
+  * Fix merge conflict in nb.po
+  * Fix conflicts with Weblate
+  * Delete AUTHORS
+  * Always select the first session and use the latest session
+    from the user (#290)
+  * Add mouse scroll navigation (#285)
+  * Use the correct python shebang
+  * Ensure that the directory exists before creating the symlink
+  * Create FUNDING.yml
+  * Use Python 3 syntax (#283)
+  * Use the current selected user time format (#279)
+  * Focus password after wrong credentials entered (#278)
+  * Mention libaccountsservice-dev in README
+- Drop 0000-lightdm-elementary-greeter-gnome-3.24.patch
+- Fix script-without-shebang
+- Change options when building: -Dubuntu-patched-gsd -Dgsd-dir
+
+-------------------------------------------------------------------
+Thu Aug 15 17:00:16 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Switch to recommended dependencies: gnome-settings-daemon
+  wingpanel wingpanel-indicator-a11y wingpanel-indicator-keyboard
+  wingpanel-indicator-session
+  
+-------------------------------------------------------------------
+Fri Nov 30 08:19:24 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Build with libmutter <= 3.28.3
+
+-------------------------------------------------------------------
+Wed Nov 21 18:59:23 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add path to GSD-components
+
+-------------------------------------------------------------------
+Wed Nov 21 18:14:20 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.3.1:
+  * Add conditional compilation for Ubuntu's GSD modifications 
+    (#182)
+  * Fix Vala being more strict with DBus errors
+  * Meson: correct sbin install_path (#167)
+
+-------------------------------------------------------------------
+Tue Oct 30 00:41:02 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add 0001-port-to-mutter330.patch
+
+-------------------------------------------------------------------
+Mon Oct  8 12:52:43 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.3.0:
+  * Set WindowTypeHint to DESKTOP (#154)
+  * Fix incorrect compositor build_rpath (#145)
+  * Update README to with meson (#136)
+  * Ignore delete signals (#125)
+  * Use wingpanel instead of custom panel (#127)
+  * fullscreen greeter (#123)
+  * Merge remote-tracking branch 'origin/master'
+  * Add simple compositor (#116)
+  * Reorganize the sources (#115)
+  * Remove useless svg extension
+  * Bundle icons with GResource (#113)
+  * Switch from CMake to Meson (#105)
+  * Rename files and folders to follow RDNN (#97)
+  * Add editorconfig file
+
+-------------------------------------------------------------------
+Tue May 15 20:39:28 UTC 2018 - avvissu@yandex.by
+
+- Rename to lightdm-elementary-greetery
+- Switch to meson
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed May  9 01:58:40 UTC 2018 - avvissu@yandex.by
+
+- Update patch:
+  * lightdm-pantheon-greeter-gnome-3.24-cleanup.patch -> 
+  lightdm-pantheon-greeter-gnome-3.24.patch
+
+-------------------------------------------------------------------
+Fri Apr 27 15:30:00 UTC 2018 - avvissu@yandex.by
+
+- Rename to lightdm-pantheon-greeter 
+
+-------------------------------------------------------------------
+Tue Apr  3 19:23:13 UTC 2018 - avvissu@yandex.by
+
+- Update pantheon-greeter-gnome-3.24-cleanup.patch:
+  * use the default settings from GSettings/dconf instead of 
+    settings.ini
+
+-------------------------------------------------------------------
+Fri Mar 30 10:39:48 UTC 2018 - avvissu@yandex.by
+
+- Add numlockx as required dependency
+- Add suggested dependencies: gnome-settings-daemon, wingpanel, 
+  wingpanel-indicator-a11y, wingpanel-indicator-keyboard, 
+  wingpanel-indicator-session, onboard
+
+-------------------------------------------------------------------
+Fri Mar 30 01:49:21 UTC 2018 - avvissu@yandex.by
+
+- Set the default wallpaper
+
+-------------------------------------------------------------------
+Thu Mar 22 20:38:10 UTC 2018 - avvissu@yandex.by
+
+- Add Suggests: gtk3-branding-elementary
+- Add info about setting up
+
+-------------------------------------------------------------------
+Sun Mar 18 20:32:03 UTC 2018 - avvissu@yandex.by
+
+- Rename the package: branding-upstream -> branding-elementary
+- Move the *.whitelist file to pantheon-greeter-branding
+
+-------------------------------------------------------------------
+Thu Nov 16 04:18:44 UTC 2017 - avvissu@yandex.by
+
+- Use elementary-wallpapers only for the upstream package
+
+-------------------------------------------------------------------
+Tue Sep 12 16:56:28 UTC 2017 - avvissu@yandex.by
+
+- Update to 3.2.0:
+  * Fix showing wrong user wallpaper during login (#60)
+  * Fix wallpaper sizing glitch during greeter startup. (#59)
+  * PantheonGreeter.vala: remove noisy messages, simplify containers
+  * Combine Avatar.vala with LoginBox.vala (#45)
+  * Create CODE_OF_CONDUCT.md (#47)
+  * Avatar.vala: only use one class (#44)
+  * Credentials interface (#43)
+  * CredentialsArea.vala: set width on grid, use reveal_child 
+  * move all CSS to a gresource (#41)
+  * IndicatorBar.vala: No clutter, GObject-style (#34)
+- Change the sourceurl to git
+
+-------------------------------------------------------------------
+Wed May 24 19:47:55 UTC 2017 - avvissu@yandex.by
+
+- Add pantheon-greeter.whitelist
+- Cleanup code (compatibility with Gnome >= 3.24):
+  * add pantheon-greeter-gnome-3.24-cleanup.patch
+- Drop pantheon-greeter-3.0_user-get-uid.patch
+
+-------------------------------------------------------------------
+Thu Mar  2 12:22:45 UTC 2017 - avvissu@yandex.by
+
+- Update to 3.1.1:
+  * Fix tiled wallpaper with HiDPI
+
+-------------------------------------------------------------------
+Thu Feb  2 05:47:49 UTC 2017 - avvissu@yandex.by
+
+- Update to 3.1.0:
+  * Launchpad automatic translations update.
+  * Add 2017 to license copyright and app years.
+  * Use widgets instead of pixbufs
+  * Avatar.vala:
+  * Rename SelectableAvatar to just Avatar
+  * Use GObject-style construction
+  * Update copyright header
+  * LoginBox.vala:
+  * whitespace
+  * Move properties to the top
+  * Don't have methods just to have methods
+  * Be explicit about scope
+  * FingerprintIndicatorArea.vala
+  * Replace fingerprint.png with fingerprint.svg
+  * Move fingerprint related enums here
+  * Add styles here instead of in the system stylesheet
+  * Use Gtk.Image instead of manual cairo drawing
+  * Set margins and column spacing on the grid instead of each 
+    widget
+  * Use Switch case, not else if/else if/else if
+  * Use Gtk style constants
+  * Remove obvious comments
+  * PasswordArea.vala
+  * Use built-in construct method
+  * order password properties alphabetically
+  * Use built-in activate instead of listening for keys manually
+  * Split CredentialsArea.vala into separate files
+  * Split PantheonUser.vala into one file per class
+  * Rename PantheonUser.vala to its class name: LoginOption.vala
+  * Split up Authenticator.vala into individual files
+  * rename Authenticator.vala to LoginMask.vala
+  * Group Gateways into a folder
+  * Improve PAM message handling for fprintd and parental controls
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Sep 20 16:28:00 UTC 2016 - avvissu@yandex.by
+
+- Add Recommends: pantheon-greeter-lang
+
+-------------------------------------------------------------------
+Sun Sep 18 21:10:43 UTC 2016 - avvissu@yandex.by
+
+- Update to 3.0
+- Fix build with get_uid (pantheon-greeter-3.0_user-get-uid.patch)
+- Fix crash user list (pantheon-greeter-3.0_user-list.patch)
+- Build with wingpanel instead of indicator
+- Add Requires: light-locker, elementary-wallpapers
+
+-------------------------------------------------------------------
+Thu Sep  3 17:57:20 UTC 2015 - and.november@opensuse.org
+
+- update to version 2.0.2
+
+-------------------------------------------------------------------
+Sat May 16 18:02:02 UTC 2015 - mailaender@opensuse.org
+
+- update to version 2.0.0
+
+-------------------------------------------------------------------
+Sat Sep 13 07:36:00 UTC 2014 - mailaender@opensuse.org
+
+- initial packaging (version 1.0.1) for build.opensuse.org
