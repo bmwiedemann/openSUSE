@@ -1,6 +1,0 @@
-<package name="rke2-1.27" project="openSUSE:Factory">
-  <title>Rancher rke2</title>
-  <description>RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution.</description>
-  <devel project="devel:kubic" package="rke2-1.27"/>
-  <url>https://github.com/rancher/rke2</url>
-</package>
