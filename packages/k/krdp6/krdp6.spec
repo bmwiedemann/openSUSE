@@ -27,7 +27,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krdp6
-Version:        6.2.4
+Version:        6.2.5
 Release:        0
 Summary:        RDP Server for Plasma
 License:        LGPL-2.1-or-later
