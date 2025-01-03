@@ -45,4 +45,12 @@
   * Drop support for Python 2.7, 3.5, 3.6, 3.7.</comment>
     <requestid>1223953</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bc918e78b442404c84b0ee829e15f4ce</srcmd5>
+    <version>5.0</version>
+    <time>1735910288</time>
+    <user>anag+factory</user>
+    <comment>- Add missing runtime dependency on zodbpickle</comment>
+    <requestid>1234714</requestid>
+  </revision>
 </revisionlist>
