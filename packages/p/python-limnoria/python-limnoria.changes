@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Jan  2 15:40:59 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix dist-info versioning by exporting the correct
+  SOURCE_DATE_EPOCH before building.
+- Revert changes from previous commit in lieu of current, better
+  fix.
+
+-------------------------------------------------------------------
+Thu Jan  2 13:25:56 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Account for the dist-info version differing from tarball version
+  in file lists.
+
+-------------------------------------------------------------------
+Tue Dec 10 03:52:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2024.10.19:
+  * Add IrcState.nicksToAccount
+  * core & Channel: Add option --account to kban and iban
+  * Add support for 'account' in supybot.protocols.irc.banmask
+  * Replace makeExtBanmask with makeExtBanmasks
+  * makeExtBanmasks: Log invalid options
+  * requirements.txt: add ddate as an optional dependency for Time.ddate
+  * Socket: Fix hanging while TLS socket buffer is non-empty
+  * Debug: Remove useless shebang
+  * httpserver: Fix incorrect path joining
+  * RSS: Add support for $content/$summary_detail/$title_detail
+  * RSS: Copy $summary to $description on Atom feeds
+  * Fix recursive loop in limnoria_reset_password
+  * Geography: Add support for OSM node ids
+  * Web: Fix crash on trailing ';' in Content-Type
+  * Web: Fix crash on socket.timeout on snarfed URLs
+  * Fediverse: Catch URLErrors raised when checking webfinger support
+  * Services: Improve error on missing password or NickServ nick
+  * Changed whois provider domain to whois.iana.org
+  * RSS: Update link to feedparser
+  * ircdb.checkIgnored: return False for messages from servers
+  * RSS: Don't log tracebacks for HTTP errors
+  * Create temporary files in a temporary directory
+  * Channel: Fix error in when channel is configured but not joined
+  * Web: Need to download even more Javascript from Youtube
+  * Admin: Fix leftover state change in testPart
+  * Admin: Actually clean up test channel from configuration
+  * Fix SyntaxWarning on Python 3.12
+  * httpserver: Rewrite without the cgi module
+  * Internet: Use socket directly instead of telnetlib
+  * Unix: Disable 'crypt' command on Python >= 3.13
+  * RSS: Fix error when re-creating a feed with a different name
+  * Add per-network 'vhost' and 'vhostv6' config variables
+  * Misc: update version fetching to the new branches
+  * safeEval: Fix support for Python 3.14
+  * GPG: Import documentation removed from the Getting Started guide
+  * Cowardly refuse to ban oneself with an account extban
+  * Fall back to banning host instead of exact mask
+  * Add test the bot won't account-extban itself
+  * Added russian locale to limnoria
+  * Use cProfile instead of profile
+  * Web: Add youtu.be to Youtube's domain list
+  * plugin-doc: Prevent hyphenation of -- in command syntax
+  * Add config value supybot.reply.mores.instant.whenPrivate
+  * Fix NormalizedString serialization splitting within escape sequences.
+  * Updated russian translation based on updated messages.pot
+  * Factoids: Fix search results when single key matched
+  * Unix: Fix IPv6 formating of ping command
+  * Web: Add workaround for minified Reddit URLs
+- Switch back to PyPi tarball.
+- Switch to autosetup and pyproject macros.
+- Add patch skip-fediverse-profile-tests.patch:
+  * Skip some misbehaving tests.
+
+-------------------------------------------------------------------
 Fri Oct 20 13:53:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2023.09.24.2:

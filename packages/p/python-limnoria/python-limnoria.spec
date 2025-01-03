@@ -1,7 +1,7 @@
 #
 # spec file for package python-limnoria
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define skip_python2 1
-%define appname limnoria
-%define srcver 2023-09-24-2
 Name:           python-limnoria
-Version:        2023.09.24.2
+Version:        2024.10.19
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ProgVal/Limnoria
-Source:         https://github.com/ProgVal/Limnoria/archive/master-%{srcver}.tar.gz#/%{appname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/l/limnoria/limnoria-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Skip Fediverse webfinger tests that don't seem to mock correctly
+Patch0:         skip-fediverse-profile-tests.patch
 # full python for sqlite3 module
 BuildRequires:  %pythons
 BuildRequires:  %{python_module PySocks}
@@ -36,11 +34,12 @@ BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-gnupg}
-BuildRequires:  %{python_module pytz if %python-base < 3.9}
 BuildRequires:  %{python_module pytzdata}
 # pyxmpp2-scram not available, the code actually covers the non-availability
 #BuildRequires:  %%{python_module pyxmpp2-scram}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  coreutils-systemd
 BuildRequires:  fdupes
 BuildRequires:  procps
@@ -56,11 +55,8 @@ Requires:       python-python-dateutil
 Requires:       python-python-gnupg
 Requires:       python-pytzdata
 #Requires:       python-pyxmpp2-scram
-%if 0%{?python_version_nodots} < 39
-Requires:       python-pytz
-%endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       Supybot = %{version}
 Obsoletes:      Supybot < 1.0
 BuildArch:      noarch
@@ -72,18 +68,19 @@ an ACL system for specifying user permissions with per-command
 granularity. Numerous plugins are included.
 
 %prep
-%setup -q -n Limnoria-master-%{srcver}
+%autosetup -p1 -n limnoria-%{version}
 sed -i "1,4{/\/usr\/bin\/python/d}" plugins/Debug/plugin.py
 sed -i "1,4{/\/usr\/bin\/env/d}" plugins/SedRegex/constants.py
-chmod -x supybot/plugins/*/locales/fi.po
 
 sed -Ei "1{\@^#!/usr/bin/env python3@d}" src/scripts/limnoria_*.py
 
 %build
-%python_build
+# Get SOURCE_DATE_EPOCH corresponding to pyproject.toml in sources
+export SOURCE_DATE_EPOCH=`date -r pyproject.toml +"%s"`
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/supybot/
 for ex in supybot limnoria
 do
@@ -129,7 +126,7 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 %{python_uninstall_alternative supybot limnoria}
 
 %files %{python_files}
-%doc README.md CONTRIBUTING.md
+%doc README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/limnoria
 %python_alternative %{_bindir}/limnoria-adduser
@@ -164,6 +161,6 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 %python_alternative %{_mandir}/man1/supybot-test.1
 %python_alternative %{_mandir}/man1/supybot-wizard.1
 %{python_sitelib}/supybot/
-%{python_sitelib}/limnoria-*.egg-info
+%{python_sitelib}/limnoria-%{version}*.*-info
 
 %changelog
