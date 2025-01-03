@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.desktop.agent-polkit
 Name:           pantheon-agent-polkit
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Polkit authorization designed for Pantheon
 License:        LGPL-2.1-or-later
@@ -27,13 +27,13 @@ Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite-7)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(pantheon-wayland-1)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 
@@ -51,10 +51,8 @@ An agent for Polkit authorization designed for Pantheon desktop environment.
 
 %install
 %meson_install
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{appid}.desktop
-%suse_update_desktop_file %{buildroot}%{_sysconfdir}/xdg/autostart/%{appid}.desktop
 %find_lang %{appid}
-%fdupes %{buildroot}/%{_datadir}
+%fdupes -s %{buildroot}%{_datadir}
 
 %if %{?suse_version} >= 1600
 # move the xdg autostart file into /usr/etc

@@ -7,4 +7,15 @@
     <comment>enable leap</comment>
     <requestid>1193556</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>856f3d26978d894108f8a5b542a9d58c</srcmd5>
+    <version>8.0.1</version>
+    <time>1735910279</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.1:
+  * Always on top and centered
+  * Updated translations
+</comment>
+    <requestid>1234464</requestid>
+  </revision>
 </revisionlist>
