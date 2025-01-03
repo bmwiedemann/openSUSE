@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  2 16:18:30 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Add fix-python313-tests.patch to fix tests under Python 3.13 
+
+-------------------------------------------------------------------
 Wed Jul 26 06:58:24 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop sphinx doctrees for reproducible builds

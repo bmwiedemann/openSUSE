@@ -138,4 +138,12 @@
 Drop sphinx doctrees for reproducible builds</comment>
     <requestid>1100877</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>efad5adf9850e5e946a6e4f48ca4b91b</srcmd5>
+    <version>0.24</version>
+    <time>1735910290</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1234716</requestid>
+  </revision>
 </revisionlist>

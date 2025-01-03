@@ -1,7 +1,7 @@
 #
 # spec file for package python-bpython
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
 URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-python313-tests.patch from commits: gh#bbdff64 and gh#45f4117
+Patch0:         fix-python313-tests.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
@@ -40,7 +42,7 @@ Requires:       python-pygments
 Requires:       python-pyxdg
 Requires:       python-requests
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-cwcwidth
 Recommends:     python-jedi
 Recommends:     python-ndg-httpsclient
