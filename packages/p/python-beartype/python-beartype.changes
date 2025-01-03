@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  2 17:09:42 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.19.0:
+  * see upstream release announcement: 
+    https://github.com/beartype/beartype/releases/tag/v0.19.0
+- Add fix-python313.patch to fix tests under Python 3.13
+
+-------------------------------------------------------------------
 Sat Apr 27 08:59:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.18.5:

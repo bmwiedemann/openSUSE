@@ -1,7 +1,7 @@
 #
 # spec file for package python-beartype
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,15 @@
 
 
 Name:           python-beartype
-Version:        0.18.5
+Version:        0.19.0
 Release:        0
 Summary:        Unbearably fast runtime type checking in pure Python
 License:        MIT
 URL:            https://github.com/beartype/beartype
 Source:         https://files.pythonhosted.org/packages/source/b/beartype/beartype-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-python313.patch from commit: gh#a565eb2
+Patch0:         fix-python313.patch
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -30,11 +33,15 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mypy >= 0.800}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module numba}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest >= 4.0.0}
+BuildRequires:  %{python_module torch}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes
+Suggests:       python-torch
+Suggests:       python-numba
 Suggests:       python-typing_extensions >= 3.10.0.0
 Suggests:       python-coverage >= 5.5
 Suggests:       python-sphinx

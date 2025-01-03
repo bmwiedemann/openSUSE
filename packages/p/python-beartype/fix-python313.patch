@@ -1,0 +1,335 @@
+From a565eb2d0589d187dc367b794e1f2afd9e765a2e Mon Sep 17 00:00:00 2001
+From: leycec <leycec@gmail.com>
+Date: Wed, 20 Nov 2024 18:09:46 -0400
+Subject: [PATCH] Python 3.13.0 release party.
+
+This commit celebrates the official stable release of **Python 3.13.0.**
+Specifically, this commit:
+
+* Resolves testing-specific issues with Python 3.13.0.
+* Enables GitHub Actions-based continuous integration (CI) testing
+  workflows for Python 3.13.0.
+
+(*Marked down on downy malarkey, turnkey turkey!*)
+---
+ beartype/_check/code/codecls.py               | 104 ++++++++++--------
+ beartype/_util/cls/utilclstest.py             |   8 +-
+ .../door/_fixture/_doorfix_is_subhint.py      |  60 ++++++----
+ 5 files changed, 150 insertions(+), 116 deletions(-)
+
+Index: beartype-0.19.0/beartype/_check/code/codecls.py
+===================================================================
+--- beartype-0.19.0.orig/beartype/_check/code/codecls.py
++++ beartype-0.19.0/beartype/_check/code/codecls.py
+@@ -34,6 +34,7 @@ from beartype._check.code.snip.codesnips
+     CODE_HINT_CHILD_PLACEHOLDER_PREFIX,
+     CODE_HINT_CHILD_PLACEHOLDER_SUFFIX,
+ )
++from beartype._data.hint.datahintpep import Hint
+ from beartype._util.cache.pool.utilcachepoollistfixed import (
+     FIXED_LIST_SIZE_MEDIUM,
+     FixedList,
+@@ -52,7 +53,7 @@ class HintMeta(object):
+ 
+     Attributes
+     ----------
+-    hint : object
++    hint : Hint
+         Type hint currently visited by this BFS.
+     hint_placeholder : str
+         **Type-checking placeholder substring** to be globally replaced in the
+@@ -162,24 +163,24 @@ class HintMeta(object):
+     __slots__ = (
+         'hint',
+         'hint_placeholder',
++        'indent_level',
+         'pith_expr',
+         'pith_var_name_index',
+-        'indent_level',
+     )
+ 
+     # Squelch false negatives from mypy. This is absurd. This is mypy. See:
+     #     https://github.com/python/mypy/issues/5941
+     if TYPE_CHECKING:
+-        hint: object
++        hint: Hint
+         hint_placeholder: str
++        indent_level: int
+         pith_expr: str
+         pith_var_name_index: int
+-        indent_level: int
+ 
+     # ..................{ INITIALIZERS                       }..................
+     def __init__(self, pith_var_name_index: int) -> None:
+         '''
+-        Initialize this type-checking metadata dataclass.
++        Initialize this type-checking metadata.
+ 
+         Parameters
+         ----------
+@@ -203,9 +204,43 @@ class HintMeta(object):
+         )
+ 
+         # Nullify all remaining parameters for safety.
+-        self.hint = SENTINEL
+-        self.pith_expr = SENTINEL  # type: ignore[assignment]
++        self.hint = SENTINEL  # type: ignore[assignment]
+         self.indent_level = SENTINEL  # type: ignore[assignment]
++        self.pith_expr = SENTINEL  # type: ignore[assignment]
++
++
++    def reinit(
++        self,
++        hint: Hint,
++        indent_level: int,
++        pith_expr: str,
++    ) -> None:
++        '''
++        Reinitialize this type-checking metadata with the passed metadata.
++
++        Parameters
++        ----------
++        hint : Hint
++            Currently iterated child type hint subscripting the currently
++            visited type hint.
++        indent_level : int
++            1-based indentation level describing the current level of
++            indentation appropriate for the currently iterated child hint.
++        pith_expr : str
++            Python code snippet evaluating to the child pith to be type-checked
++            against the currently iterated child type hint.
++        '''
++        assert isinstance(indent_level, int), (
++            f'{repr(indent_level)} not integer.')
++        assert isinstance(pith_expr, str), (
++            f'{repr(pith_expr)} not string.')
++        assert indent_level > 1, f'{repr(indent_level)} <= 1.'
++        assert pith_expr, f'{repr(pith_expr)} empty.'
++
++        # Classify all passed parameters.
++        self.hint = hint
++        self.indent_level = indent_level
++        self.pith_expr = pith_expr
+ 
+ # ....................{ SUBCLASSES                         }....................
+ #FIXME: Unit test us up, please.
+@@ -311,7 +346,7 @@ class HintsMeta(FixedList):
+         assert 0 <= index <= len(self), f'{index} not in [0, {len(self)}].'
+ 
+         # Type hint type-checking metadata at this index.
+-        hint_meta = FixedList.__getitem__(index)  # type: ignore[call-overload]
++        hint_meta = super().__getitem__(index)  # type: ignore[call-overload]
+ 
+         # If this metadata has yet to be instantiated...
+         if hint_meta is None:
+@@ -324,29 +359,18 @@ class HintsMeta(FixedList):
+         return hint_meta
+ 
+     # ..................{ METHODS                            }..................
+-    def enqueue_hint_child(
+-        self,
+-        hint: object,
+-        pith_expr: str,
+-        indent_level: int,
+-    ) -> str:
++    def enqueue_hint_child(self, *args, **kwargs) -> str:
+         '''
+-        **Enqueue** (i.e., append) a new tuple of metadata describing the
+-        currently iterated child type hint to the end of the this queue,
+-        enabling this hint to be visited by the ongoing breadth-first search
+-        (BFS) traversing over this queue.
++        **Enqueue** (i.e., append) to the end of the this queue new
++        **type-checking metadata** (i.e., a :class:`.HintMeta` object)
++        describing the currently iterated child type hint with the passed
++        metadata, enabling this hint to be visited by the ongoing breadth-first
++        search (BFS) traversing over this queue.
+ 
+         Parameters
+         ----------
+-        hint : object
+-            Currently iterated child type hint subscripting the currently
+-            visited type hint.
+-        pith_expr : str
+-            Python code snippet evaluating to the child pith to be type-checked
+-            against the currently iterated child type hint.
+-        indent_level : int
+-            1-based indentation level describing the current level of
+-            indentation appropriate for the currently iterated child hint.
++        All parameters are passed as is to the lower-level
++        :meth:`HintMeta.reinit` method.
+ 
+         Returns
+         -------
+@@ -354,12 +378,6 @@ class HintsMeta(FixedList):
+             Placeholder string to be subsequently replaced by code type-checking
+             this child pith against this child type hint.
+         '''
+-        assert isinstance(pith_expr, str), (
+-            f'{repr(pith_expr)} not string.')
+-        assert isinstance(indent_level, int), (
+-            f'{repr(indent_level)} not integer.')
+-        assert pith_expr, f'{repr(pith_expr)} empty.'
+-        assert indent_level > 1, f'{repr(indent_level)} <= 1.'
+ 
+         # Increment the 0-based index of metadata describing the last visitable
+         # hint in this list (which also serves as the unique identifier of the
+@@ -375,9 +393,7 @@ class HintsMeta(FixedList):
+         hint_meta = self.__getitem__(self.index_last)
+ 
+         # Replace prior fields of this metadata with the passed fields.
+-        hint_meta.hint = hint
+-        hint_meta.pith_expr = pith_expr
+-        hint_meta.indent_level = indent_level
++        hint_meta.reinit(*args, **kwargs)
+ 
+         # Return the placeholder substring associated with this type hint.
+         return hint_meta.hint_placeholder
+Index: beartype-0.19.0/beartype/_util/cls/utilclstest.py
+===================================================================
+--- beartype-0.19.0.orig/beartype/_util/cls/utilclstest.py
++++ beartype-0.19.0/beartype/_util/cls/utilclstest.py
+@@ -285,7 +285,7 @@ def is_type_subclass(
+     lower-level** :func:`issubclass` **builtin,** which raises an undescriptive
+     exception when the first passed parameter is *not* a class: e.g.,
+ 
+-    .. code-block:: python
++    .. code-block:: pycon
+ 
+        >>> issubclass(object(), type)
+        TypeError: issubclass() arg 1 must be a class
+@@ -327,10 +327,10 @@ def is_type_subclass(
+ def is_type_subclass_proper(
+     cls: object, base_classes: TypeOrTupleTypes) -> bool:
+     '''
+-    ``True`` only if the passed object is a proper subclass of the passed
++    :data:`True` only if the passed object is a proper subclass of the passed
+     superclass(es).
+ 
+-    Specifically, this tester returns ``True`` only if either:
++    Specifically, this tester returns :data:`True` only if either:
+ 
+     * If ``base_classes`` is a single superclass, the passed class is a subclass
+       of that superclass (but *not* that superclass itself).
+@@ -352,7 +352,7 @@ def is_type_subclass_proper(
+     Returns
+     -------
+     bool
+-        ``True`` only if this object is a proper subclass of these
++        :data:`True` only if this object is a proper subclass of these
+         superclass(es).
+     '''
+     assert isinstance(base_classes, TestableTypesTuple), (
+Index: beartype-0.19.0/beartype_test/a00_unit/a40_api/door/_fixture/_doorfix_is_subhint.py
+===================================================================
+--- beartype-0.19.0.orig/beartype_test/a00_unit/a40_api/door/_fixture/_doorfix_is_subhint.py
++++ beartype-0.19.0/beartype_test/a00_unit/a40_api/door/_fixture/_doorfix_is_subhint.py
+@@ -50,8 +50,10 @@ def door_cases_is_subhint() -> 'Iterable
+     import collections.abc
+     import typing
+     from beartype._data.hint.datahinttyping import S, T
++    from beartype._util.cls.utilclstest import is_type_subclass_proper
+     from beartype._util.hint.pep.utilpepget import get_hint_pep_typevars
+     from beartype._util.py.utilpyversion import IS_PYTHON_AT_LEAST_3_9
++    from abc import ABCMeta
+     from collections.abc import (
+         Collection as CollectionABC,
+         Sequence as SequenceABC,
+@@ -361,18 +363,26 @@ def door_cases_is_subhint() -> 'Iterable
+ 
+     # ..................{ LISTS ~ typing                     }..................
+     # List of the unqualified basenames of all standard ABCs published by
+-    # the standard "collections.abc" module, defined as...
+-    COLLECTIONS_ABC_BASENAMES = [
+-        # For the unqualified basename of each attribute defined by the standard
+-        # "collections.abc" module...
+-        COLLECTIONS_ABC_BASENAME
+-        for COLLECTIONS_ABC_BASENAME in dir(collections.abc)
+-        # If this basename is *NOT* prefixed by an underscore, this attribute is
+-        # public and thus an actual ABC. In this case, include this ABC.
+-        if not COLLECTIONS_ABC_BASENAME.startswith('_')
+-        # Else, this is an unrelated private attribute. In this case, silently
+-        # ignore this attribute and continue to the next.
+-    ]
++    # the standard "collections.abc" module, initialized to the empty list.
++    COLLECTIONS_ABC_BASENAMES = []
++
++    # For the unqualified basename of each attribute and that attribute defined
++    # by the standard "collections.abc" submodule...
++    for collections_abc_basename, collections_abc in (
++        collections.abc.__dict__.items()):
++        # If this attribute is a public ABC, include this ABC, where public ABCs
++        # are detected as...
++        if (
++            # The unqualified basename of this attribute is not prefixed by an
++            # underscore (and is thus public) *AND*...
++            not collections_abc_basename.startswith('_') and
++            # This attribute is an ABC but *NOT* the semantically meaningless
++            # "abc.ABCMeta" superclass itself.
++            is_type_subclass_proper(collections_abc, ABCMeta)
++        ):
++            COLLECTIONS_ABC_BASENAMES.append(collections_abc_basename)
++        # Else, this is an unrelated attribute. In this case, silently ignore
++        # this attribute and continue to the next.
+ 
+     # List of the unqualified basenames of all standard abstract base classes
+     # (ABCs) supported by the standard "typing" module, defined as the
+@@ -386,6 +396,7 @@ def door_cases_is_subhint() -> 'Iterable
+         # supported by the standard "typing" module.
+         ['Deque']
+     )
++    print(f'TYPING_ABC_BASENAMES: {TYPING_ABC_BASENAMES}')
+ 
+     # ..................{ HINTS ~ abcs                       }..................
+     # For the unqualified basename of each standard ABCs supported by the
+@@ -399,40 +410,41 @@ def door_cases_is_subhint() -> 'Iterable
+         # Type hint factory published by the "typing" module corresponding to
+         # this ABC if any *OR* "None" otherwise (i.e., if "typing" publishes
+         # *NO* such type hint factory).
+-        TypingABC = getattr(typing, TYPING_ABC_BASENAME, None)
++        typing_abc = getattr(typing, TYPING_ABC_BASENAME, None)
+ 
+         # If "typing" publishes *NO* such type hint factory, silently ignore
+         # this ABC and continue to the next.
+-        if TypingABC is None:
++        if typing_abc is None:
+             continue
+         # Else, "typing" publishes this type hint factory.
+ 
+         # Number of type variables parametrizing this ABC, defined as either...
+-        TYPING_ABC_TYPEVARS_LEN = (
++        typing_abc_typevars_len = (
+             # If the active Python interpreter targets Python >= 3.9, a private
+             # instance variable of this type hint factory yielding this
+             # metadata. Under Python >= 3.9, unsubscripted type hint factories
+             # are *NOT* parametrized by type variables.
+-            TypingABC._nparams
++            typing_abc._nparams
++            # getattr(typing_abc, '_nparams', 0)
+             if IS_PYTHON_AT_LEAST_3_9 else
+             # Else, the active Python interpreter targets Python < 3.9. In this
+             # case, the number of type variables directly parametrizing this
+             # ABC.
+-            len(get_hint_pep_typevars(TypingABC))
++            len(get_hint_pep_typevars(typing_abc))
+         )
+ 
+         # If this ABC is parametrized by one or more type variables, exercise
+         # that this ABC subscripted by one or more arbitrary concrete types is a
+         # non-trivial subhint of this same ABC subscripted by one or more
+         # arbitrary different ABCs of those concrete types.
+-        if TYPING_ABC_TYPEVARS_LEN:
+-            subhint =   TypingABC[(list,)     * TYPING_ABC_TYPEVARS_LEN]
+-            superhint = TypingABC[(Sequence,) * TYPING_ABC_TYPEVARS_LEN]
++        if typing_abc_typevars_len:
++            subhint =   typing_abc[(list,)     * typing_abc_typevars_len]
++            superhint = typing_abc[(Sequence,) * typing_abc_typevars_len]
+         # Else, this ABC is parametrized by *NO* type variables. In this case,
+         # fallback to exercising that this ABC is a trivial subhint of itself.
+         else:
+-            subhint =   TypingABC
+-            superhint = TypingABC
++            subhint =   typing_abc
++            superhint = typing_abc
+ 
+         # Append a new hint subhint case exercising that this subhint is
+         # actually a subhint of this superhint.
