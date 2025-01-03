@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.onboarding
 Name:           pantheon-onboarding
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Setting General Preferences
 License:        GPL-3.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(granite-7)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(pantheon-wayland-1)
 Provides:       elementary-onboarding = %{version}
 Obsoletes:      elementary-onboarding < %{version}
 
