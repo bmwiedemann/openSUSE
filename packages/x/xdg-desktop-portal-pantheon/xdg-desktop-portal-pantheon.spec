@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.portals
 Name:           xdg-desktop-portal-pantheon
-Version:        7.2.0
+Version:        8.0.0
 Release:        0
 Summary:        Pantheon Backend Portal
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(granite-7)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk4-wayland)
 BuildRequires:  pkgconfig(gtk4-x11)
+BuildRequires:  pkgconfig(pantheon-wayland-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vte-2.91-gtk4)
 BuildRequires:  pkgconfig(x11)

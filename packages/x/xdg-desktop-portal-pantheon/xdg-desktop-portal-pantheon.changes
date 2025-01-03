@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 19 22:11:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Access/Dialog: Center and keep above on wayland
+  * updated translations
+
+-------------------------------------------------------------------
 Tue Nov  5 02:24:37 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix CFLAGS (accidently removed all optflags)
