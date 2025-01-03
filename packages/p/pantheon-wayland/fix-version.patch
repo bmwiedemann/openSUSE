@@ -1,0 +1,23 @@
+diff -rub pantheon-wayland-1.0.0/meson.build pantheon-wayland-1.0.0-patched/meson.build
+--- pantheon-wayland-1.0.0/meson.build	2024-08-22 18:11:02.000000000 +0200
++++ pantheon-wayland-1.0.0-patched/meson.build	2025-01-02 01:01:16.031934877 +0100
+@@ -1,5 +1,7 @@
+ project('pantheon-wayland', ['c', 'vala'], version: '1.0.0')
+ 
++pantheon_major = '1'
++
+ pkgconfig = import('pkgconfig')
+ gnome = import('gnome')
+ 
+diff -rub pantheon-wayland-1.0.0/src/meson.build pantheon-wayland-1.0.0-patched/src/meson.build
+--- pantheon-wayland-1.0.0/src/meson.build	2024-08-22 18:11:02.000000000 +0200
++++ pantheon-wayland-1.0.0-patched/src/meson.build	2025-01-02 01:00:57.008580979 +0100
+@@ -21,7 +21,7 @@
+     vala_vapi: pkg_config_name + '.vapi',
+     vala_gir: pantheon_wayland_gir,
+ 
+-    version: meson.project_version(),
++    version: pantheon_major,
+     install: true,
+     install_dir: [true, include_dir, true, true],
+ )

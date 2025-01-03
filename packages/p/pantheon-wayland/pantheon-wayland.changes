@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Jan  2 00:02:17 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add fix-version.patch to fix version which typelib requires
+
+-------------------------------------------------------------------
+Tue Nov 19 08:10:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix what typelib provides, until upstream fixes it
+
+-------------------------------------------------------------------
+Thu Aug 22 21:09:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
