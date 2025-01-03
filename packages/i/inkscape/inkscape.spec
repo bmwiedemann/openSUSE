@@ -16,21 +16,17 @@
 #
 
 
-%define _version 1.4_2024-10-09_e7c3feb100
-
 Name:           inkscape
-Version:        1.4
+Version:        1.4+39
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
 
-Source:         https://inkscape.org/gallery/item/44615/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
+Source:         inkscape-%{version}.tar.zst
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
-Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
-Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -154,7 +150,7 @@ Inkscape is a vector graphics editor.
 %lang_package
 
 %prep
-%autosetup -n %{name}-%{_version} -p1
+%autosetup -p1
 
 %build
 %ifarch %{arm}
@@ -182,6 +178,8 @@ rm %{buildroot}%{_datadir}/inkscape/extensions/LICENSE.txt
 rm -rf %{buildroot}%{_datadir}/inkscape/extensions/.pytest_cache
 # extensions/doc
 rm -rf %{buildroot}%{_datadir}/inkscape/extensions/docs
+# extensions/.coveragerc
+rm -rf %{buildroot}%{_datadir}/inkscape/extensions/.coveragerc
 
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/inkscape/palettes/
 

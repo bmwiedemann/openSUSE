@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 31 09:03:21 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Delete unreproducible Sphinx doctrees (boo#1234334)
+
+-------------------------------------------------------------------
 Thu Dec 19 16:43:17 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Create a doc flavor for building developer documentation.

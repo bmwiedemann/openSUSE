@@ -10,13 +10,6 @@ The OpenJDK development image is intended to be used as a build environment. For
 
 ## Usage
 
-The default command for the image is the Java Shell tool (JShell).
-
-```ShellSession
-$ podman run -it --rm registry.opensuse.org/opensuse/bci/openjdk-devel:23
-jshell> /help
-```
-
 To compile and deploy an application, copy the sources and build the binary:
 
 ```Dockerfile

@@ -1,7 +1,7 @@
 #
 # spec file for package jujutsu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
-URL:            https://github.com/martinvonz/jj
+URL:            https://github.com/jj-vcs/jj
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.76

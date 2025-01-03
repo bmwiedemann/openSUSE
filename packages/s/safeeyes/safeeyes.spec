@@ -1,7 +1,7 @@
 #
 # spec file for package safeeyes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2020 opensuse.lietuviu.kalba@gmail.com
 #
@@ -19,7 +19,7 @@
 
 
 Name:           safeeyes
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Tool for reminding the user to take breaks
 License:        GPL-3.0-only
@@ -27,10 +27,6 @@ Group:          Productivity/Graphics/Visualization/Other
 URL:            https://github.com/slgobinath/SafeEyes
 Source0:        %{name}-%{version}.tar.xz
 Source99:       safeeyes-rpmlintrc
-%if 0%{?suse_version} == 1500
-#PATCH-FIX-OPENSUSE SafeEyes-Python3.6-support.patch opensuse.lietuviu.kalba@gmail.com -- SafeEyes needs Python 3.10+, fix to use in Python 3.6
-Patch0:         SafeEyes-Python3.6-compatibility.patch
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Babel

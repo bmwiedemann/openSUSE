@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-#     Copyright (c) 2024 SUSE LLC
+#     Copyright (c) 2025 SUSE LLC
 
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,5 +47,4 @@ ENV JAVA_HOME="/usr/lib64/jvm/java-21-openjdk-21"
 ENV JAVA_ROOT="/usr/lib64/jvm/java-21-openjdk-21"
 ENV JAVA_VERSION="21"
 
-CMD ["/usr/bin/jshell"]
 RUN set -euo pipefail; [ -d $JAVA_HOME ]; [ -d $JAVA_BINDIR ]; [ -f "$JAVA_BINDIR/java" ] && [ -x "$JAVA_BINDIR/java" ]

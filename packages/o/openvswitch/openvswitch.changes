@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 15:15:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add proper dependency on /usr/sbin/ipsec on openvswitch-ipsec:
+  without the binary present, the service crashes on startup
+  (boo#1234617).
+
+-------------------------------------------------------------------
 Wed Aug 28 05:18:36 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Update openvswitch to 3.3.1. For a list of changes, check

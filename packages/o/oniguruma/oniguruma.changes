@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  1 13:30:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.9.10
+  - Update Unicode version 16.0
+  - Add new operator (*SKIP)
+  - Fixed: ONIG_SYN_CONTEXT_INDEP_REPEAT_OPS not working for ^*
+    pattern (Issue #292)
+
+-------------------------------------------------------------------
 Tue Oct 17 20:44:33 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 6.9.9

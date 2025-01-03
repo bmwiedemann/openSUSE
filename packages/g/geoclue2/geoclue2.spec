@@ -29,8 +29,13 @@ Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
 Source99:       geoclue2-rpmlintrc
 
+# Compliance with BeaconDB
+Patch0:         0001-ichnaea-include-ssid.patch
+Patch1:         0002-ichnaea-replace-user-agent.patch
+Patch2:         0003-user-agent-os-info.patch
+
 BuildRequires:  intltool >= 0.40.0
-BuildRequires:  meson >= 0.47.2
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
@@ -38,8 +43,8 @@ BuildRequires:  vala
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(avahi-client) >= 0.6.10
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6.10
-BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.74.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14
@@ -95,6 +100,8 @@ communication mechanism to provide location information
 	-Dgtk-doc=false \
 	-Ddbus-srv-user=srvGeoClue \
 	-Ddbus-sys-dir=%{_datadir}/dbus-1/system.d \
+        -Ddefault-wifi-url="https://api.beacondb.net/v1/geolocate" \
+        -Ddefault-wifi-submit-url="https://api.beacondb.net/v2/geosubmit" \
 	%{nil}
 %meson_build
 %sysusers_generate_pre %{SOURCE1} srvGeoClue system-user-srvGeoClue.conf

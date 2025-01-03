@@ -1,7 +1,7 @@
 #
 # spec file for package python-bibtexparser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-bibtexparser
-Version:        1.4.1
+Version:        1.4.3
 Release:        0
 Summary:        Bibtex parser for python
 License:        BSD-3-Clause OR LGPL-3.0-only

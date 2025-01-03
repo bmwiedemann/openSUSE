@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  1 07:42:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.3
+  * fix encodeURI into template
+
+-------------------------------------------------------------------
 Wed Jul 26 09:41:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.2

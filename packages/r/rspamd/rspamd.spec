@@ -29,7 +29,7 @@
 %global lua_abi_version 51
 
 %ifarch %{ix86} x86_64
-  %if 0%{?suse_version} > 1500
+  %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
     %bcond_without hyperscan
   %endif
   %if 0%{?suse_version} >= 1500
@@ -71,6 +71,8 @@ Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
 Patch2:         fix_missing_return.patch
+# remove with next version update
+Patch3:         ccb45df90df60fae36b9438cfb2b0088e590306b.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan

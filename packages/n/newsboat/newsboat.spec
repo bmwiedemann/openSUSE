@@ -1,7 +1,7 @@
 #
 # spec file for package newsboat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.37
+Version:        2.38
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -30,6 +30,7 @@ Source3:        vendor.tar.xz
 # pbleser: introduce OPTFLAGS make variable, instead of hard-coded -ggdb
 Patch0:         newsbeuter-makefile.patch
 BuildRequires:  cargo
+BuildRequires:  expected-lite-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
@@ -39,16 +40,15 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libstfl-devel >= 0.21
 BuildRequires:  libxml2-devel
+# Replacements of vendored C++ libraries
+BuildRequires:  nlohmann_json-devel
+#BuildRequires:  libboost_program_options-devel
+BuildRequires:  optional-lite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.68.2
 BuildRequires:  sqlite3-devel >= 3.5
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
-# Replacements of vendored C++ libraries
-BuildRequires:  nlohmann_json-devel
-BuildRequires:  expected-lite-devel
-#BuildRequires:  libboost_program_options-devel
-BuildRequires:  optional-lite-devel
 Recommends:     %{name}-lang
 Recommends:     web_browser
 Provides:       newsbeuter = %{version}
@@ -91,6 +91,9 @@ export CARGO_HOME=`pwd`/cargo-home/
 for l in zh; do
     rm -rf "%{buildroot}%{_datadir}/locale/${l}"
 done
+
+rm %{buildroot}%{_datadir}/fish/vendor_completions.d/newsboat.fish
+rm %{buildroot}%{_datadir}/zsh/site-functions/_newsboat
 
 %find_lang %{name}
 

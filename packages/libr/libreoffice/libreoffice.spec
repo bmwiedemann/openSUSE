@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,7 +85,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.8.3.2
+Version:        24.8.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -141,6 +141,8 @@ Patch991:       libreoffice-no-destdircheck.patch
 Patch992:       python34-no-f-strings.patch
 # PATCH-FIX-OPENSUSE override date in clucene files (boo#1047218)
 Patch995:       reproducible-clucene.patch
+# PATCH-FIX-UPSTREAM Fix build with poppler 24.12
+Patch1000:      poppler_24.10-2.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1066,7 +1068,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l te -n Telugu -m te_IN -X
 %langpack -l tg -n Tajik -T -X
 %langpack -l th -n Thai -s ctl -c ctlseqcheck_th -m th_TH -X
-%langpack -l tl -n Tagalog -X
+%langpack -l tl -n Tagalog -X -T
 %langpack -l tn -n Tswana -X
 %langpack -l tr -n Turkish -X -T -m tr_TR
 %langpack -l ts -n Tsonga -X
@@ -1131,6 +1133,12 @@ sed -i -e /CppunitTest_sc_statistical_functions_test/d sc/Module_sc.mk
 if grep -q setSegmentInfoStartVersion /usr/include/CLucene/index/IndexWriter.h ; then
 %patch -P 995 -p1
 fi
+
+%if 0%{?suse_version} >= 1550
+%if %{pkg_vcmp libpoppler-devel >= 24.12}
+%patch -P 1000 -p1
+%endif
+%endif
 
 # Do not generate doxygen timestamp
 echo "HTML_TIMESTAMP = NO" >> odk/docs/cpp/Doxyfile

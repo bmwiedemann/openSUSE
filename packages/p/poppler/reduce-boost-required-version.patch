@@ -1,13 +1,13 @@
-Index: poppler-23.10.0/CMakeLists.txt
+Index: poppler-24.12.0/CMakeLists.txt
 ===================================================================
---- poppler-23.10.0.orig/CMakeLists.txt
-+++ poppler-23.10.0/CMakeLists.txt
-@@ -225,7 +225,7 @@ find_soft_mandatory_package(ENABLE_QT6 Q
+--- poppler-24.12.0.orig/CMakeLists.txt
++++ poppler-24.12.0/CMakeLists.txt
+@@ -227,7 +227,7 @@ find_soft_mandatory_package(ENABLE_QT6 Q
  # Check for Cairo rendering backend
  macro_optional_find_package(Cairo ${CAIRO_VERSION})
  
--find_package(Boost 1.74.0)
-+find_package(Boost 1.66.0)
+-find_package(Boost 1.74.0 CONFIG)
++find_package(Boost 1.66.0 CONFIG)
  if(Boost_FOUND)
    set(USE_BOOST_HEADERS ON)
  elseif(ENABLE_BOOST)

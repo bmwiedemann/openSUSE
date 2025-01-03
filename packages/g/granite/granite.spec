@@ -1,7 +1,7 @@
 #
 # spec file for package granite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 %define         sover 7
+%define         soname 7_6_0
 %define         appid io.elementary.granite-%{sover}
 Name:           granite
-Version:        7.5.0
+Version:        7.6.0
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later
 URL:            https://github.com/elementary/granite
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fix-version.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.57.0
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.48.0
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50
@@ -48,11 +49,6 @@ search bars, and more found in Pantheon applications.
 Summary:        Granite is a development library
 Requires:       %{name}-common
 Provides:       %{name} = %{version}
-%ifarch %ix86 ppc armv6l armv7l
-Provides:       lib%{name}-%{sover}.so.%{version}
-%else
-Provides:       lib%{name}-%{sover}.so.%{version}()(64bit)
-%endif
 
 %description -n lib%{name}-%{sover}-%{sover}
 This package ships the library parts of %{name}.
@@ -89,7 +85,7 @@ This package contains the development files for libgranite.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \
@@ -102,13 +98,8 @@ This package contains the development files for libgranite.
 %meson_install
 %find_lang %{name}-%{sover}
 %fdupes -s %{buildroot}%{_datadir}
-%suse_update_desktop_file %{appid}.demo
 
-%post   -n lib%{name}-%{sover}-%{sover}
-%ldconfig
-
-%postun -n lib%{name}-%{sover}-%{sover}
-%ldconfig
+%ldconfig_scriptlets -n lib%{name}-%{sover}-%{sover}
 
 %files -n lib%{name}-%{sover}-%{sover}
 %{_libdir}/lib%{name}-%{sover}.so.*

@@ -407,4 +407,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1233165</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>fba35e081e904fe414c7ede0bd9514d1</srcmd5>
+    <version>3.11.0</version>
+    <time>1735842154</time>
+    <user>anag+factory</user>
+    <comment>we can enable hyperscan also on newer SLE 15 service packs
+
+added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e590306b.patch
+  To fix building without hyperscan</comment>
+    <requestid>1234471</requestid>
+  </revision>
 </revisionlist>

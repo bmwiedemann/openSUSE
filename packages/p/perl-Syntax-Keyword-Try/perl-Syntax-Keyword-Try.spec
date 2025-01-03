@@ -18,10 +18,10 @@
 
 %define cpan_name Syntax-Keyword-Try
 Name:           perl-Syntax-Keyword-Try
-Version:        0.290.0
+Version:        0.300.0
 Release:        0
-%define cpan_version 0.29
-Provides:       perl(Syntax::Keyword::Try) = 0.290.0
+# 0.30 -> normalize -> 0.300.0
+%define cpan_version 0.30
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Try/catch/finally syntax for perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,12 +30,13 @@ Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(Module::Build) >= 0.400400
+BuildRequires:  perl(Module::Build) >= 0.4004
 BuildRequires:  perl(Test2::V0)
-BuildRequires:  perl(XS::Parse::Keyword) >= 0.06
-BuildRequires:  perl(XS::Parse::Keyword::Builder) >= 0.06
-Requires:       perl(XS::Parse::Keyword) >= 0.06
-Provides:       perl(Syntax::Keyword::Try::Deparse) = 0.290.0
+BuildRequires:  perl(XS::Parse::Keyword) >= 0.350
+BuildRequires:  perl(XS::Parse::Keyword::Builder) >= 0.350
+Requires:       perl(XS::Parse::Keyword) >= 0.350
+Provides:       perl(Syntax::Keyword::Try) = %{version}
+Provides:       perl(Syntax::Keyword::Try::Deparse) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

@@ -3998,4 +3998,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * revert map changes breaking ABI in #7768 (forwarded request 1224644 from adkorte)</comment>
     <requestid>1224778</requestid>
   </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>fdb04a2bc8fbf692cb127982f972fd66</srcmd5>
+    <version>7.1.1.43</version>
+    <time>1735841958</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1233931</requestid>
+  </revision>
 </revisionlist>

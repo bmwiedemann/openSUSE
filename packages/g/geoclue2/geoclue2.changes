@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 21 16:11:01 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Use BeaconDB as a drop-in replacement for defunct MLS WiFi
+  geolocation, and contribute to coverage
+  (<https://codeberg.org/beacondb/beacondb/issues/5#issuecomment-2504311>)
+- Add 0001-ichnaea-include-ssid.patch:
+  * MLS/Ichnaea: Include SSID for geolocate and submission requests
+- Add 0002-ichnaea-replace-user-agent.patch:
+  * MLS/Ichnaea: Replace rather than append User-Agent
+- Add 0003-user-agent-os-info.patch:
+  * Set User-Agent on Soup Session Construction
+  * Add OS Info to user-agent
+
+-------------------------------------------------------------------
 Fri Dec 13 06:34:35 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 2.7.2:

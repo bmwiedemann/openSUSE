@@ -2,6 +2,7 @@
 # spec file for package dico
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +20,17 @@
 %define         sover 2
 %define         lib_name lib%{name}%{sover}
 Name:           dico
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Flexible modular implementation of DICT server (RFC 2229)
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Dictionary
 URL:            https://www.gnu.org/software/dico/
 Source0:        https://ftp.gnu.org/gnu/dico/dico-%{version}.tar.xz
-Source1:        https://ftp.gnu.org/gnu/dico/dico-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+# not updated on savannah
+# Source1:        https://ftp.gnu.org/gnu/dico/dico-%%{version}.tar.xz.sig
+# https://www.gnu.org.ua/software/dico/download.html
+# Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=311#/%%{name}.keyring
 BuildRequires:  groff
 BuildRequires:  guile-devel
 BuildRequires:  libtool
@@ -38,13 +41,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  wordnet-devel
 BuildRequires:  pkgconfig(libgsasl)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(zlib)
 Requires:       m4
-Requires(post): info
-Requires(preun): info
 Recommends:     %{name}-modules
 %lang_package
 
@@ -90,7 +91,7 @@ database format. GNU Dico handles database accesses using loadable modules.
 This package contains extensions and modules for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
@@ -107,13 +108,7 @@ export CFLAGS="%{optflags} -fcommon"
 find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 %find_lang %{name}
 
-%post -n %{lib_name} -p /sbin/ldconfig
-%postun -n %{lib_name} -p /sbin/ldconfig
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
+%ldconfig_scriptlets -n %{lib_name}
 
 %files
 %license COPYING
@@ -133,16 +128,20 @@ find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 %{_mandir}/man8/dicod.8%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %files -n %{lib_name}
+%license COPYING
 %{_libdir}/libdico.so.%{sover}*
 
 %files devel
+%license COPYING
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*.h
 %{_libdir}/libdico.so
 
 %files modules
+%license COPYING
 %{_libdir}/%{name}/*.so
 
 %changelog

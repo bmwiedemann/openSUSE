@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 31 23:01:19 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 24.8.4.2 (24.8.4 final)
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/24.8.4/RC1
+    https://wiki.documentfoundation.org/Releases/24.8.4/RC2
+- Enable HTML help files for the Tagalog translation.
+
+-------------------------------------------------------------------
+Sun Dec 29 09:56:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add poppler_24.10-2.patch and apply conditionally: Fix build with
+  poppler 24.12
+
+-------------------------------------------------------------------
 Wed Dec 11 14:14:16 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Don't use system abseil-cpp on versions lower than Tumbleweed or SLE16.

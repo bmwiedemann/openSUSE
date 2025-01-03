@@ -1,7 +1,7 @@
 #
 # spec file for package python-duckduckgo-search
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-duckduckgo-search
-Version:        6.2.13
+Version:        7.1.1
 Release:        0
 Summary:        Search using the DuckDuckGo.com search engine
 License:        MIT

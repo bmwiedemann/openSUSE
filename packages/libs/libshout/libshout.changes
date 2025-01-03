@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 29 22:05:10 UTC 2024 - Edgar Aichinger <edogawa@aon.at>
+
+- Build with openssl support enabled
+
+-------------------------------------------------------------------
 Wed Mar  6 09:10:38 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Fix build errors with gcc14 (bsc#1220975):

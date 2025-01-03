@@ -3621,4 +3621,19 @@ Petr</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1231913</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>19f3cfb2b5ea4544685f598e5ce49276</srcmd5>
+    <version>24.8.4.2</version>
+    <time>1735910238</time>
+    <user>anag+factory</user>
+    <comment>- Update to 24.8.4.2 (24.8.4 final)
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/24.8.4/RC1
+    https://wiki.documentfoundation.org/Releases/24.8.4/RC2
+- Enable HTML help files for the Tagalog translation.
+
+- Add poppler_24.10-2.patch and apply conditionally: Fix build with
+  poppler 24.12</comment>
+    <requestid>1234469</requestid>
+  </revision>
 </revisionlist>

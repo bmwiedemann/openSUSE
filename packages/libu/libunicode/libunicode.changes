@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  1 13:22:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 0.6.0
+  * Supported Unicode version 16.0.0
+  * Use std::format() API instead of fmtlib
+  * Improvement for better SIMD config
+
+-------------------------------------------------------------------
 Mon Sep 16 20:42:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.5.0

@@ -232,4 +232,16 @@
   - Fixed: ONIG_OPTION_FIND_LONGEST behavior</comment>
     <requestid>1118373</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0b3722892eed5f77d515c17de98383db</srcmd5>
+    <version>6.9.10</version>
+    <time>1735841983</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.9.10
+  - Update Unicode version 16.0
+  - Add new operator (*SKIP)
+  - Fixed: ONIG_SYN_CONTEXT_INDEP_REPEAT_OPS not working for ^*
+    pattern (Issue #292)</comment>
+    <requestid>1234315</requestid>
+  </revision>
 </revisionlist>

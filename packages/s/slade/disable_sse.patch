@@ -12,11 +12,11 @@ the test needs to happen at runtime.
  thirdparty/dumb/helpers/resampler.c |    2 +-
  2 files changed, 1 insertion(+), 6 deletions(-)
 
-Index: SLADE-3.2.6/cmake/unix.cmake
+Index: SLADE-3.2.7/cmake/unix.cmake
 ===================================================================
---- SLADE-3.2.6.orig/cmake/unix.cmake
-+++ SLADE-3.2.6/cmake/unix.cmake
-@@ -150,11 +150,6 @@ endif(APPLE)
+--- SLADE-3.2.7.orig/cmake/unix.cmake
++++ SLADE-3.2.7/cmake/unix.cmake
+@@ -133,11 +133,6 @@ endif(APPLE)
  
  # Enable SSE instructions for dumb library
  include(CheckCCompilerFlag)
@@ -26,12 +26,12 @@ Index: SLADE-3.2.6/cmake/unix.cmake
 -	add_definitions(-D_USE_SSE)
 -endif()
  
- # Enable debug symbols for glib (so gdb debugging works properly with strings etc.)
- set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG")
-Index: SLADE-3.2.6/thirdparty/dumb/helpers/resampler.c
+ # Define a SLADE_DEBUG macro
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DSLADE_DEBUG")
+Index: SLADE-3.2.7/thirdparty/dumb/helpers/resampler.c
 ===================================================================
---- SLADE-3.2.6.orig/thirdparty/dumb/helpers/resampler.c
-+++ SLADE-3.2.6/thirdparty/dumb/helpers/resampler.c
+--- SLADE-3.2.7.orig/thirdparty/dumb/helpers/resampler.c
++++ SLADE-3.2.7/thirdparty/dumb/helpers/resampler.c
 @@ -2,7 +2,7 @@
  #include <string.h>
  #define _USE_MATH_DEFINES

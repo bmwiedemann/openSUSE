@@ -87,4 +87,13 @@
 </comment>
     <requestid>1184231</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>b1d575ec72ad6b6e130c0bc9413b0007</srcmd5>
+    <version>0.74</version>
+    <time>1735842197</time>
+    <user>anag+factory</user>
+    <comment>- Add 313-compatibility.patch (gh#PiotrDabkowski/Js2Py#334)
+</comment>
+    <requestid>1234488</requestid>
+  </revision>
 </revisionlist>

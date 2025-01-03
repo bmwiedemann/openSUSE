@@ -30,7 +30,7 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.2.4
+Version:        6.2.5
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)

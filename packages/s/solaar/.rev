@@ -988,4 +988,152 @@
 </comment>
     <requestid>1177024</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2d3641796826ac634b9bb316848c2341</srcmd5>
+    <version>1.1.14</version>
+    <time>1735842137</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.14:
+  * release 1.1.14
+  * i18n: Swedish translations in .desktop files
+  * release 1.1.14rc4
+  * cli: handle fake feature enums in show
+  * Update Polish translation
+  * release 1.1.14rc3
+  * Fix battery entry in device
+  * release 1.1.14rc2
+  * release 1.1.14rc1
+  * i18n: Swedish translations in .desktop files
+  * Update Swedish translation
+  * i18n: Swedish translations in .desktop files
+  * po: Add translator to list (#2687)
+  * po: Update tr.po (#2683)
+  * settings: Add ratchet setting for smart shift enhanced devices (#2681)
+  * receiver: fix BoltReceiver, Ex100Receiver __init__ (#2661)
+  * po: Update Swedish translation (#2671)
+  * po: Update Swedish translation (#2670)
+  * hidpp20_constants: Refactor Gesture into enum
+  * refactor: replace ERROR NamedInts by IntEnum (#2645)
+  * Refactor: hidpp20  to use enum (#2647)
+  * i18n: Updated Norwegian Nynorsk (nn) (#2655)
+  * i18n: Updated Norwegian Bokmål (nb)
+  * i18n: Updated Norwegian Bokmål (nb)
+  * refactor: use IntEnum for firmware and cidgroup constances
+  * change pairing error values to intenums
+  * ui: fix initialization bug for PackedRangeControl
+  * notifications: Introduce unit tests
+  * Refactor: Introduce Feature enum
+  * Test Feature class
+  * Test and refactor process_notification
+  * Test key_is_down
+  * settings: check all bits for extended report rate
+  * Fix copy-paste error while refactoring notifications.py
+  * RuleComponentUI: Type hints methods
+  * diversion_rules: Add type hints
+  * Fix signature of show
+  * Action menu: Move context menu into own class
+  * Fix rule saving command
+  * diversion: Add type hints
+  * Remove obsolete pytest fixture
+  * base: Remove hard dependency on gi
+  * base: Add more unit tests
+  * Introduce HIDAPI protocol
+  * Fix warnings from automatic code inspections
+  * ui/common: Introduce tests
+  * settings: Add tests
+  * settings_template: Introduce State enum
+  * Replace action strings with constants
+  * Remove factory wrapper classes
+  * receiver: Remove hard dependency on base
+  * device: Remove hard dependency on base
+  * base: Add test for filter_products_of_interest
+  * Add type hints and clean up
+  * base: Add find_paired_node functions
+  * base: Add find_paired_node functions
+  * Fix about dialog
+  * base_usb: Add external interface
+  * ui/about: Use Model-View-Presenter pattern for testability
+  * hidapi: Explicitly load hidapi/udev implementation
+  * receiver: Remove hard dependency on hidapi
+  * device: Remove hard dependency on hidapi
+  * Test coverage: Fix keysyms to be visible (#9)
+  * keysyms: Introduce tests for this package
+  * keysymdef: Rename key symbols
+  * Upload test coverage reports solely after merging
+  * ui: augment pairing message for devices with multiple channels
+  * solaar: Add type hints
+  * base: Add type hints
+  * Replace global sw_id with function call
+  * base: Simplify receiver info retrieval
+  * settings_template: Prepare removal of desktop_notifications dependency
+  * Make ui/desktop_notifications testable
+  * Rename ui/notify module to desktop notifications
+  * Make lr/desktop_notifications testable
+  * Rename lr/notify module to desktop_notifications
+  * Add code coverage badge
+  * Setup reports and upload codecov
+  * Introduce test coverage threshold
+  * Fix test coverage reporting
+  * Simplify setup with pathlib
+  * Clarify that fake hidpp is used
+  * hidapi: Completely remove dependency on gi
+  * Introduce hid_parser tests
+  * logitech_receiver: Remove GDK dependency
+  * Refactor: Remove all GDK dependencies from hidapi package
+  * Refactor: Distinguish module from package
+  * settings: allow unkonwn keys in Key rule conditions
+  * docs: improve documentation for cli actions
+  * device: cycle sw_id to better guard against duplication of messages
+  * device: handle error return on root feature
+  * Remove incomplete developer docs
+  * Publish GitHub pages only on push to master
+  * docs: add information about Onboard Profiles overriding some settings
+  * doc: add wording to README.md that Solaar is not a device driver
+  * i18n: Chinese translations in .desktop files (#2554)
+  * Clean up imports (#2537)
+  * device: handle unknown device kinds
+  * docs: fix broken links to Solaar logo
+  * po: Update zh_CN translation (#2541)
+  * docs: Use mkdocs for public documentation (#2527)
+  * Clean up setup.py (#2536)
+  * docs: dead links in the AppStream file (#2539)
+  * docs: Update about.py (#2535)
+  * settings: finish change to new constants
+  * hidapi: remove check on driver
+  * cli: finish change to show.py for new constants
+  * Introduce Enum BusID
+  * Introduce constant for Logitech vendor ID
+  * Introduce Enum for notification types
+  * Improve base module
+  * Remove unnecessary receiver info 'hid_driver'
+  * Convert HIDPPNotification to dataclass
+  * device: be defensive when converting battery status to string
+  * Automatically detect packages in /lib
+  * hid: Convert definition of HID registers to enum
+  * Use double quotes for module level docstrings
+  * Remove empty comment lines
+  * solaar: clean up locale code
+  * docs: update built-in rules
+  * docs: Improve rules documentation
+  * refactor: Creation of devices (#2493)
+  * docs: Add headings to structure rules.md
+  * Unify imports in logitech package
+  * device: don't ping device when getting name or codename
+  * Refactor: Use dataclasses and enums
+  * Introduce Device protocol and type hints
+  * Add typing_extensions dependency
+  * hidpp10: Move independent functions to module level
+  * Refactor: Use dataclasses and enums
+  * Fix macOS compatibility and reenable CI tests
+  * docs: Update README.md
+  * docs: Add high-level graph of components
+  * hidapi: Unify imports in hidapi package (#2487)
+  * docs: Move screenshots into dedicated folder
+  * po: Update French translation (for release 1.1.13)
+  * Drop support for end-of-life Python 3.7
+- Run pytest
+- Some spec cleanup
+</comment>
+    <requestid>1234407</requestid>
+  </revision>
 </revisionlist>

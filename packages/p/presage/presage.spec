@@ -220,7 +220,7 @@ This package contains the libpresage API Documentation in HTML format.
 %prep
 %autosetup -p1 -n %{sname}-%{version}
 
-find . -type f -exec sed -i  's/\r//g' "{}" \;
+find . -type f \( \! -name '*.png' -a \! -name 'presage_python_demo.1' \) -exec sed -i  's/\r//g' "{}" \;
 echo "[D-BUS Service]" > apps/dbus/org.gnome.presage.service.in
 echo "Name=org.gnome.presage.beta" >> apps/dbus/org.gnome.presage.service.in
 echo "Exec={bindir}/presage_dbus_service --start" >> apps/dbus/org.gnome.presage.service.in

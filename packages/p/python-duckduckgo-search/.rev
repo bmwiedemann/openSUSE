@@ -24,4 +24,41 @@
   * CLI: _download_file - set impersonate=chrome_128</comment>
     <requestid>1204396</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9d3b427deae4dbf1692f7bfc1974498f</srcmd5>
+    <version>7.1.1</version>
+    <time>1735842231</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.1.1:
+  * DDGS.text: deprecate backend='api'
+- update to 7.1.0:
+  * add backend=&quot;ecosia&quot;
+  * DDGS._impersonates: delete okhttp*
+  * DDGS.text: reduce pagination
+- update to 7.0.2:
+  * Bump primp to v0.9.2
+- update to 7.0.1:
+  * [simplify]: remove AsyncDDGS, remove `answers`, `maps`,
+    `suggestions`, `translate`; [text]: remove multithreading
+  * [DDGS.text]: add backend=&quot;auto&quot;, [DDGS.images|news|videos]:
+    remove multithreading
+- update to 6.4.2:
+  * use env var DDGS_PROXY
+  * utils: _text_extract_json() bugfix
+- update to 6.3.7:
+  * added armv7 compatibility: Bump primp to v0.8.1
+- update to 6.3.6:
+  * Bump primp version to v0.8.0
+  * DDGS._impersonates: add &quot;chrome_131&quot;
+  * CLI: _download_file: impersonate=&quot;chrome_131&quot;
+  * CLI: --max_results=None by default; remove default=None
+- update to 6.3.5:
+  * CLI: 1)`-dd` to specify custom download directory, 2) `-o`
+    can now set full filename
+  * CLI: text() max_results=10 default
+  * text(): update pagination logic (0, 10, 25, 40, ...)
+  * text(): max(max_results)=190
+  * videos(): max(max_results)=200</comment>
+    <requestid>1234566</requestid>
+  </revision>
 </revisionlist>

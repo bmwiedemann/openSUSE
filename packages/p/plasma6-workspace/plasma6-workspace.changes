@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 31 20:50:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.5
+- Changes since 6.2.4:
+  * update version for new release
+  * components/dbus: fix invalid variant type since Qt 6.8.1
+  * applets/systemtray: fix busy indicator position for hidden items (kde#496910)
+  * libtaskmanager: use QDateTime instead of QTime for lastActivated (kde#493724)
+  * appmenu: Avoid repositioning the menu on wayland (kde#495787)
+  * libtaskmanager: Fix transient losing needs attention state
+  * notifications: Expose copied file through desktop portal
+  * Fix DelegateChoice import with Qt 6.9 (kde#496900)
+  * krunner: Clear faded completion text when prior search exists
+  * systray: Clean up leaking systrays
+  * applets/appmenu: Workaround global menu getting dismissed unexpectedly (kde#494635)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov 26 15:47:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.4:

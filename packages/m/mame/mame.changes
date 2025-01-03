@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  2 08:57:34 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Used gcc13 for Leap 15.6.
+- Updated to 0.273
+  * Removed file fix_lua_misspelling.patch (upstreamed).
+  * Added file mame-0273-only-fix.patch (patch from master).
+  * /usr/share/doc/packages/mame/whatsnew-0.273.txt
+
+-------------------------------------------------------------------
 Sat Nov 30 11:19:38 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Used gcc14 for Leap 15.6.

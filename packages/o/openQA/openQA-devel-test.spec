@@ -1,7 +1,7 @@
 #
 # spec file for package openQA-devel-test
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         short_name openQA-devel
 Name:           %{short_name}-test
-Version:        4.6.1735016693.f411acbd
+Version:        4.6.1735794217.a28ab50d
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later

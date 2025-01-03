@@ -18,7 +18,7 @@
 
 # Temporarily bump version to aid package split
 Name:           kexec-tools
-Version:        2.0.29
+Version:        2.0.30
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later

@@ -222,4 +222,12 @@
 </comment>
     <requestid>1193779</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8e7a4d7f52e8ffa84bfe68baffa051dd</srcmd5>
+    <version>7.6.0</version>
+    <time>1735842184</time>
+    <user>anag+factory</user>
+    <comment>- add fix-version.patch to fix version which typelib requires (forwarded request 1234493 from rrahl0)</comment>
+    <requestid>1234496</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package f3d
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib   libf3d2
 Name:           f3d
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause
@@ -160,19 +160,7 @@ install -Dm644 plugins/occt/configs/config.d/10_occt.json %{buildroot}%{_sysconf
 %dir %{_sysconfdir}/f3d
 %dir %{_sysconfdir}/f3d/config.d
 %config %{_sysconfdir}/f3d/config.d/*.json
-
-%dir %{_includedir}/f3d
-%{_includedir}/f3d/vtkF3DFaceVaryingPointDispatcher.h
-%{_includedir}/f3d/vtkextModule.h
-%dir %{_libdir}/cmake/f3d_vtkext
-%{_libdir}/cmake/f3d_vtkext/f3d_vtkext-targets-relwithdebinfo.cmake
-%{_libdir}/cmake/f3d_vtkext/f3d_vtkext-targets.cmake
-%{_libdir}/cmake/f3d_vtkext/f3d_vtkext-vtk-module-properties.cmake
 %{_libdir}/libvtkext.so
-%dir %{_libdir}/vtk/
-%dir %{_libdir}/vtk/hierarchy
-%dir %{_libdir}/vtk/hierarchy/f3d_vtkext
-%{_libdir}/vtk/hierarchy/f3d_vtkext/vtkext-hierarchy.txt
 
 %files devel
 %doc README.md

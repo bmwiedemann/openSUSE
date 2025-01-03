@@ -1,7 +1,7 @@
 #
 # spec file for package granite6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define         sover 6
+%define         soname 6_2_0
 %define         appid io.elementary.granite
 Name:           granite6
 Version:        6.2.0
@@ -25,6 +26,7 @@ Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later
 URL:            https://github.com/elementary/granite
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fix-version.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  meson >= 0.48.2
@@ -48,11 +50,8 @@ search bars, and more found in Pantheon applications.
 Summary:        Granite is a development library
 Requires:       %{name}-common
 Provides:       %{name} = %{version}
-%ifarch %ix86 ppc armv6l armv7l
-Provides:       libgranite.so.%{version}
-%else
-Provides:       libgranite.so.%{version}()(64bit)
-%endif
+Provides:       granite = %{version}
+Obsoletes:      granite < %{version}
 
 %description -n libgranite%{sover}
 This package provides the library files for %{name}
@@ -87,13 +86,10 @@ This package contains the development files for lib%{name}.
 %lang_package
 
 %prep
-%autosetup -n granite-%{version}
+%autosetup -p1 -n granite-%{version}
 
 %build
-export CFLAGS="$optflags -Wno-error"
-export CXXFLAGS="$optflags -Wno-error"
-#export CFLAGS="-O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection %{?_lto_cflags}"
-#export CXXFLAGS="-O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection %{?_lto_cflags}"
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson \
   -Ddocumentation=false \
   -Dintrospection=true
@@ -104,11 +100,7 @@ export CXXFLAGS="$optflags -Wno-error"
 %find_lang granite
 %fdupes %{buildroot}%{_datadir}
 
-%post   -n libgranite%{sover}
-%ldconfig
-
-%postun -n libgranite%{sover}
-%ldconfig
+%ldconfig_scriptlets -n libgranite%{sover}
 
 %files -n libgranite%{sover}
 %{_libdir}/libgranite.so.%{sover}*

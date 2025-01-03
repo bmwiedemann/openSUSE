@@ -84,4 +84,26 @@
     <comment>- add python3-setuptools requirements (needed for python 3.13+)</comment>
     <requestid>1228531</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6db61a7ab1d9c4a4cbd4ff595d38ca83</srcmd5>
+    <version>22.12.0</version>
+    <time>1735910210</time>
+    <user>anag+factory</user>
+    <comment>- test/report/test-report-exclude-network.js - removed unit tests that fail in staging
+
+- fix_ci_tests.patch: skip wpt/test-webcrypto on s390x as it has
+  unexpected differences between z13 and z15
+- external sqlite support only on TW and SLFO
+
+- Update to 22.12.0:
+  * require(esm) is now enabled by default
+  * Added resizable ArrayBuffer support in Buffer
+- CVE-2024-21538.patch: fixes regular expression denial of service
+  (bsc#1233856, CVE-2024-21538)
+- icu76.1.patch: upstreamed, dropped
+- linker_lto_jobs.patch, nodejs-libpath.patch, fix_ci_tests.patch: refreshed
+- nodejs.keyring: updated with upstream releaser list
+- old_cares.patch: fix with older c-ares</comment>
+    <requestid>1233976</requestid>
+  </revision>
 </revisionlist>

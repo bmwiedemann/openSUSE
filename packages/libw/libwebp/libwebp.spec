@@ -1,7 +1,7 @@
 #
 # spec file for package libwebp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libwebp
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
@@ -147,18 +147,12 @@ images more efficiently.
 %cmake_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n libwebp7 -p /sbin/ldconfig
-%postun -n libwebp7 -p /sbin/ldconfig
-%post   -n libwebpdemux2 -p /sbin/ldconfig
-%postun -n libwebpdemux2 -p /sbin/ldconfig
-%post   -n libwebpmux3 -p /sbin/ldconfig
-%postun -n libwebpmux3 -p /sbin/ldconfig
-%post   -n libwebpdecoder3 -p /sbin/ldconfig
-%postun -n libwebpdecoder3 -p /sbin/ldconfig
-%post   -n libsharpyuv0 -p /sbin/ldconfig
-%postun -n libsharpyuv0 -p /sbin/ldconfig
-%post   -n libwebpextras0 -p /sbin/ldconfig
-%postun -n libwebpextras0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libwebp7
+%ldconfig_scriptlets -n libwebpdemux2
+%ldconfig_scriptlets -n libwebpmux3
+%ldconfig_scriptlets -n libwebpdecoder3
+%ldconfig_scriptlets -n libsharpyuv0
+%ldconfig_scriptlets -n libwebpextras0
 
 %files -n libwebp-tools
 %_bindir/*

@@ -116,4 +116,22 @@
     <comment></comment>
     <requestid>1208976</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aaeee995684dcfb641d73611be219f93</srcmd5>
+    <version>2.2.3</version>
+    <time>1735842170</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.3:
+  * Translations
+  * Make config and stylesheet files non-executable
+  * Retry loading trayicon plugin to fix races on startup
+  * Fix &quot;Show next break time in tray icon&quot; for desktops support tray icons
+    with labels
+  * Fix next break time in tray icon when disabling SafeEyes
+  * Make SafeEyes compatible with Python 3.6 again
+  * Add 'hyprland' to the list of recognized desktop sessions
+  * Remove hard dependency on X11
+- Drop SafeEyes-Python3.6-compatibility.patch</comment>
+    <requestid>1234491</requestid>
+  </revision>
 </revisionlist>

@@ -29,6 +29,7 @@ Source1:        baselibs.conf
 Patch1:         0001-icy-include-stdlib-h-and-stdio-h.patch
 Patch2:         0002-legacy-include-stdlib-h.patch
 BuildRequires:  libtool
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(vorbis)
@@ -62,7 +63,7 @@ applications that want to use libshout.
 
 %build
 autoreconf --force --install
-%configure --disable-static
+%configure --disable-static --with-openssl
 %make_build
 
 %install

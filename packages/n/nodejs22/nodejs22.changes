@@ -1,7 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 30 22:17:20 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- test/report/test-report-exclude-network.js - removed unit tests that fail in staging
+
+-------------------------------------------------------------------
+Fri Dec 20 12:56:09 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- fix_ci_tests.patch: skip wpt/test-webcrypto on s390x as it has
+  unexpected differences between z13 and z15
+- external sqlite support only on TW and SLFO
+
+-------------------------------------------------------------------
 Thu Dec  5 13:53:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - add python3-setuptools requirements (needed for python 3.13+)
+
+-------------------------------------------------------------------
+Wed Dec  4 16:59:08 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.12.0:
+  * require(esm) is now enabled by default
+  * Added resizable ArrayBuffer support in Buffer
+
+- CVE-2024-21538.patch: fixes regular expression denial of service
+  (bsc#1233856, CVE-2024-21538)
+- icu76.1.patch: upstreamed, dropped
+- linker_lto_jobs.patch, nodejs-libpath.patch, fix_ci_tests.patch: refreshed
+- nodejs.keyring: updated with upstream releaser list
+- old_cares.patch: fix with older c-ares
 
 -------------------------------------------------------------------
 Wed Nov 20 10:04:23 UTC 2024 - Adam Majer <adam.majer@suse.de>

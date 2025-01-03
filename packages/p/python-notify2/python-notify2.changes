@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 30 10:52:21 UTC 2024 - Torsten Gruner <simmphonie@opensuse.org>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Fri Dec 11 16:00:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix Requires of dbus-python so that the macros can work out the

@@ -1,0 +1,24 @@
+diff -rub granite-6.2.0/lib/meson.build granite-6.2.0-patched/lib/meson.build
+--- granite-6.2.0/lib/meson.build	2021-11-23 22:36:35.000000000 +0100
++++ granite-6.2.0-patched/lib/meson.build	2025-01-02 00:13:07.796682650 +0100
+@@ -93,7 +93,7 @@
+     vala_vapi: 'granite.vapi',
+     vala_gir: granite_gir,
+ 
+-    version: meson.project_version(),
++    version: granite_major,
+     install: true,
+     install_dir: [true, include_dir, true, true],
+ )
+diff -rub granite-6.2.0/meson.build granite-6.2.0-patched/meson.build
+--- granite-6.2.0/meson.build	2021-11-23 22:36:35.000000000 +0100
++++ granite-6.2.0-patched/meson.build	2025-01-02 00:10:27.749869084 +0100
+@@ -5,6 +5,8 @@
+     version: '6.2.0'
+ )
+ 
++granite_major = '6'
++
+ if meson.get_compiler('vala').version().version_compare('<0.48.0')
+     error('vala compiler version 0.48.0 or newer is required.')
+ endif

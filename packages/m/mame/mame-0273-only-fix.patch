@@ -1,0 +1,47 @@
+From 5d0897d3418d59bc0f9dc3fcc8483074748986f5 Mon Sep 17 00:00:00 2001
+From: Jason Flatt <jflatt@cox.net>
+Date: Tue, 31 Dec 2024 04:50:15 -0800
+Subject: [PATCH] Don't escape strings in genie make
+
+---
+ 3rdparty/genie/src/actions/make/_make.lua | 7 ++++---
+ 3rdparty/genie/src/host/scripts.c         | 8 ++++----
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/3rdparty/genie/src/actions/make/_make.lua b/3rdparty/genie/src/actions/make/_make.lua
+index 0f1a4b605191e..63741e982cb84 100644
+--- a/3rdparty/genie/src/actions/make/_make.lua
++++ b/3rdparty/genie/src/actions/make/_make.lua
+@@ -47,9 +47,10 @@
+ 			return result
+ 		else
+ 			-- handle simple replacements
+-			result = value:gsub(" ", "\\ ")
+-			result = result:gsub("\"", "\\\"")
+-			return result
++			--result = value:gsub(" ", "\\ ")
++			--result = result:gsub("\"", "\\\"")
++			--return result
++			return value
+ 		end
+ 	end
+ 
+diff --git a/3rdparty/genie/src/host/scripts.c b/3rdparty/genie/src/host/scripts.c
+index d052a1418f49c..c44466895e639 100644
+--- a/3rdparty/genie/src/host/scripts.c
++++ b/3rdparty/genie/src/host/scripts.c
+@@ -222,10 +222,10 @@ const char* builtin_scripts[] = {
+ 	"c(cfg.buildtarget.basename), libdirs, cmake.list(cfg.linkoptions), cmake.list(cc.getldflags(cfg)), cmake.list(premake.esc(premake.getlinks(cfg, \"siblings\", \"basename\"))), cmake.list(cc.getlinkflags(cfg)))\n            -- Install\n            _p(1, 'install(TARGETS %s RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})', premake.esc(cfg.buildtarget.basename))\n        end\n        _p('endif()')\n        _p('')\n    end\nend",
+ 
+ 	/* actions/make/_make.lua */
+-	"_MAKE = { }\npremake.make = { }\nlocal make = premake.make\nfunction _MAKE.esc(value)\nlocal result\nif (type(value) == \"table\") then\nresult = { }\nfor _,v in ipairs(value) do\ntable.insert(result, _MAKE.esc(v))\nend\nreturn result\nelse\nresult = value:gsub(\"\\\\\", \"\\\\\\\\\")\nresult = result:gsub(\" \", \"\\\\ \")\nresult = result:gsub(\"%%(\", \"\\\\%(\")\nresult = result:gsub(\"%%)\", \"\\\\%)\")\nresult = result:gsub(\"$\\\\%((.-)\\\\%)\", \"$%(%1%)\")\nreturn result\nend\nend\nfunction _MAKE.escquote(value)\nlocal result\nif (type(value) == \"table\") then\nresult = { }\nfor _,v in ipairs(value) do\ntable.insert(result, _MAKE.escquote(v))\nend\nreturn result\nelse\nresult = value:gsub(\" \", \"\\\\ \")\nresult = result:gsub(\"\\\"\", \"\\\\\\\"\")\nreturn result\nend\nend\nfunction premake.make_copyrule(source, target)\n_p('%s: %s', target, source)\n_p('\\t@echo Copying $(notdir %s)', target)\n_p('\\t-$(call COPY,%s,%s)', source, target)\nend\nfunction premake.make_mkdirrule(var)\n_p('\\t@echo Cr"
+-	"eating %s', var)\n_p('\\t-$(call MKDIR,%s)', var)\n_p('')\nend\nfunction make.list(value)\nif #value > 0 then\nreturn \" \" .. table.concat(value, \" \")\nelse\nreturn \"\"\nend\nend\nfunction _MAKE.getmakefilename(this, searchprjs)\nlocal count = 0\nfor sln in premake.solution.each() do\nif (sln.location == this.location) then count = count + 1 end\nif (searchprjs) then\nfor _,prj in ipairs(sln.projects) do\nif (prj.location == this.location) then count = count + 1 end\nend\nend\nend\nif (count == 1) then\nreturn \"Makefile\"\nelse\nreturn this.name .. \".make\"\nend\nend\nfunction _MAKE.getnames(tbl)\nlocal result = table.extract(tbl, \"name\")\nfor k,v in pairs(result) do\nresult[k] = _MAKE.esc(v)\nend\nreturn result\nend\nfunction make.settings(cfg, cc)\nif #cfg.makesettings > 0 then\nfor _, value in ipairs(cfg.makesettings) do\n_p(value)\nend\nend\nlocal toolsettings = cc.platforms[cfg.platform].cfgsettings\nif toolsettings then\n_p(toolsettings)\nend\nend\nnewaction {\ntrigger         = \"gmake\",\nshort"
+-	"name       = \"GNU Make\",\ndescription     = \"Generate GNU makefiles for POSIX, MinGW, and Cygwin\",\nvalid_kinds     = { \"ConsoleApp\", \"WindowedApp\", \"StaticLib\", \"SharedLib\", \"Bundle\" },\nvalid_languages = { \"C\", \"C++\", \"C#\", \"Vala\", \"Swift\" },\nvalid_tools     = {\ncc     = { \"gcc\", \"ghs\" },\ndotnet = { \"mono\", \"msnet\", \"pnet\" },\nvalac  = { \"valac\" },\nswift  = { \"swift\" },\n},\nonsolution = function(sln)\npremake.generate(sln, _MAKE.getmakefilename(sln, false), premake.make_solution)\nend,\nonproject = function(prj)\nlocal makefile = _MAKE.getmakefilename(prj, true)\nif premake.isdotnetproject(prj) then\npremake.generate(prj, makefile, premake.make_csharp)\nelseif premake.iscppproject(prj) then\npremake.generate(prj, makefile, premake.make_cpp)\nelseif premake.isswiftproject(prj) then\npremake.generate(prj, makefile, premake.make_swift)\nelse\npremake.generate(prj, makefile, premake.make_vala)\nend\nend,\noncleansolution = function(sln)\npremake.clean.file(sln, _MAKE.ge"
+-	"tmakefilename(sln, false))\nend,\noncleanproject = function(prj)\npremake.clean.file(prj, _MAKE.getmakefilename(prj, true))\nend,\ngmake = {}\n}\n",
++	"_MAKE = { }\npremake.make = { }\nlocal make = premake.make\nfunction _MAKE.esc(value)\nlocal result\nif (type(value) == \"table\") then\nresult = { }\nfor _,v in ipairs(value) do\ntable.insert(result, _MAKE.esc(v))\nend\nreturn result\nelse\nresult = value:gsub(\"\\\\\", \"\\\\\\\\\")\nresult = result:gsub(\" \", \"\\\\ \")\nresult = result:gsub(\"%%(\", \"\\\\%(\")\nresult = result:gsub(\"%%)\", \"\\\\%)\")\nresult = result:gsub(\"$\\\\%((.-)\\\\%)\", \"$%(%1%)\")\nreturn result\nend\nend\nfunction _MAKE.escquote(value)\nlocal result\nif (type(value) == \"table\") then\nresult = { }\nfor _,v in ipairs(value) do\ntable.insert(result, _MAKE.escquote(v))\nend\nreturn result\nelse\nreturn value\nend\nend\nfunction premake.make_copyrule(source, target)\n_p('%s: %s', target, source)\n_p('\\t@echo Copying $(notdir %s)', target)\n_p('\\t-$(call COPY,%s,%s)', source, target)\nend\nfunction premake.make_mkdirrule(var)\n_p('\\t@echo Creating %s', var)\n_p('\\t-$(call MKDIR,%s)', var)\n_p('')\nend\nfunction make.list(val"
++	"ue)\nif #value > 0 then\nreturn \" \" .. table.concat(value, \" \")\nelse\nreturn \"\"\nend\nend\nfunction _MAKE.getmakefilename(this, searchprjs)\nlocal count = 0\nfor sln in premake.solution.each() do\nif (sln.location == this.location) then count = count + 1 end\nif (searchprjs) then\nfor _,prj in ipairs(sln.projects) do\nif (prj.location == this.location) then count = count + 1 end\nend\nend\nend\nif (count == 1) then\nreturn \"Makefile\"\nelse\nreturn this.name .. \".make\"\nend\nend\nfunction _MAKE.getnames(tbl)\nlocal result = table.extract(tbl, \"name\")\nfor k,v in pairs(result) do\nresult[k] = _MAKE.esc(v)\nend\nreturn result\nend\nfunction make.settings(cfg, cc)\nif #cfg.makesettings > 0 then\nfor _, value in ipairs(cfg.makesettings) do\n_p(value)\nend\nend\nlocal toolsettings = cc.platforms[cfg.platform].cfgsettings\nif toolsettings then\n_p(toolsettings)\nend\nend\nnewaction {\ntrigger         = \"gmake\",\nshortname       = \"GNU Make\",\ndescription     = \"Generate GNU makefiles for POSIX, MinG"
++	"W, and Cygwin\",\nvalid_kinds     = { \"ConsoleApp\", \"WindowedApp\", \"StaticLib\", \"SharedLib\", \"Bundle\" },\nvalid_languages = { \"C\", \"C++\", \"C#\", \"Vala\", \"Swift\" },\nvalid_tools     = {\ncc     = { \"gcc\", \"ghs\" },\ndotnet = { \"mono\", \"msnet\", \"pnet\" },\nvalac  = { \"valac\" },\nswift  = { \"swift\" },\n},\nonsolution = function(sln)\npremake.generate(sln, _MAKE.getmakefilename(sln, false), premake.make_solution)\nend,\nonproject = function(prj)\nlocal makefile = _MAKE.getmakefilename(prj, true)\nif premake.isdotnetproject(prj) then\npremake.generate(prj, makefile, premake.make_csharp)\nelseif premake.iscppproject(prj) then\npremake.generate(prj, makefile, premake.make_cpp)\nelseif premake.isswiftproject(prj) then\npremake.generate(prj, makefile, premake.make_swift)\nelse\npremake.generate(prj, makefile, premake.make_vala)\nend\nend,\noncleansolution = function(sln)\npremake.clean.file(sln, _MAKE.getmakefilename(sln, false))\nend,\noncleanproject = function(prj)\npremake.clean.file(p"
++	"rj, _MAKE.getmakefilename(prj, true))\nend,\ngmake = {}\n}\n",
+ 
+ 	/* actions/make/make_solution.lua */
+ 	"function premake.make_solution(sln)\nlocal cc = premake[_OPTIONS.cc]\nlocal platforms = premake.filterplatforms(sln, cc.platforms, \"Native\")\n_p('# %s solution makefile autogenerated by GENie', premake.action.current().shortname)\n_p('# Type \"make help\" for usage help')\n_p('')\n_p('ifndef config')\n_p('  config=%s', _MAKE.esc(premake.getconfigname(sln.configurations[1], platforms[1], true)))\n_p('endif')\n_p('export config')\n_p('')\nlocal projects = table.extract(sln.projects, \"name\")\ntable.sort(projects)\n_p('PROJECTS := %s', table.concat(_MAKE.esc(projects), \" \"))\n_p('')\n_p('.PHONY: all clean help $(PROJECTS)')\n_p('')\n_p('all: $(PROJECTS)')\n_p('')\nfor _, prj in ipairs(sln.projects) do\n_p('%s: %s', _MAKE.esc(prj.name), table.concat(_MAKE.esc(table.extract(premake.getdependencies(prj), \"name\")), \" \"))\nif (not sln.messageskip) or (not table.contains(sln.messageskip, \"SkipBuildingMessage\")) then\n_p('\\t@echo \"==== Building %s ($(config)) ====\"', prj.name)\nend\n_p('\\t@${MAKE} --no-pr"

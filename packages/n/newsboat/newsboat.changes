@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan  2 06:57:43 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.38:
+  Added:
+  * Shell completions for ZSH
+  * Keymap hint for "Clear filter" when filter is active
+  * Better logs when Miniflux authentication fails with something other than
+    401 Unauthorized
+  * Support for enclosures with Miniflux
+  Changed:
+  * Shell completions are now installed into directories where shells are looking
+    for them. Previously, completions were installed into doc/contrib
+  * Updated translations: Chinese, Dutch, German, Italian, Polish,
+    Russian and Ukrainian, Spanish, Swedish, Turkish
+  * Bumped minimum supported Rust version to 1.79.0
+  Fixed:
+  * MKDIR not being used in all the relevant places of the Makefile
+  * Dates far in the past or the future not being stored correctly (#2871)
+  * cookie-cache having not effect on reload-all (bound to R by default,
+    also activated by auto-reload) (#2935) 
+
+-------------------------------------------------------------------
 Tue Sep 24 19:17:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.37:

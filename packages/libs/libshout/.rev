@@ -205,4 +205,12 @@
     <comment></comment>
     <requestid>1155475</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>143a7ff06b8dd7e47eec7c6a16713678</srcmd5>
+    <version>2.4.6</version>
+    <time>1735841978</time>
+    <user>anag+factory</user>
+    <comment>- Build with openssl support enabled</comment>
+    <requestid>1234158</requestid>
+  </revision>
 </revisionlist>

@@ -8,19 +8,19 @@ lzma-sdk-dev too, but, upon checking, do not do so (anymore) as of 2024-11-27.]
  thirdparty/CMakeLists.txt |    3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Index: SLADE-3.2.6/thirdparty/CMakeLists.txt
+Index: SLADE-3.2.7/thirdparty/CMakeLists.txt
 ===================================================================
---- SLADE-3.2.6.orig/thirdparty/CMakeLists.txt
-+++ SLADE-3.2.6/thirdparty/CMakeLists.txt
+--- SLADE-3.2.7.orig/thirdparty/CMakeLists.txt
++++ SLADE-3.2.7/thirdparty/CMakeLists.txt
 @@ -17,7 +17,6 @@ endif()
  set(EXTERNAL_SOURCES
  )
  file(GLOB_RECURSE EXTERNAL_SOURCES
 -	lzma/C/LzmaDec.c
- 	mus2mid/mus2mid.cpp
- 	zreaders/*.cpp
  	glad/src/*.c
-@@ -43,7 +42,7 @@ add_subdirectory(lunasvg/3rdparty/softwa
+ 	${DUMB_SOURCES}
+ 	${SLADE_HEADERS}
+@@ -41,7 +40,7 @@ add_subdirectory(lunasvg/3rdparty/softwa
  add_subdirectory(lunasvg/3rdparty/plutovg)
  
  add_library(external STATIC ${EXTERNAL_SOURCES})

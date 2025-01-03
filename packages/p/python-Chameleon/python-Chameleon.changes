@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  2 14:13:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * Improve startup time when no template is used.
+  * Fix ast deprecation warnings up to Python 3.13.
+  * Fix load_module deprecation warnings for Python >= 3.10.
+
+-------------------------------------------------------------------
 Sat Apr 20 13:30:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.4:

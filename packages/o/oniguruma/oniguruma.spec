@@ -1,7 +1,7 @@
 #
 # spec file for package oniguruma
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define lib_name libonig5
-%define short_version 6.9.9
+%define short_version 6.9.10
 Name:           oniguruma
-Version:        6.9.9
+Version:        6.9.10
 Release:        0
 Summary:        Regex Library Supporting Different Character Encodings
 License:        BSD-2-Clause

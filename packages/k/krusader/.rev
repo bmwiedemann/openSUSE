@@ -512,4 +512,12 @@
   X-KDE-Username won't work with plasma 6 (boo#1222490)</comment>
     <requestid>1233308</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f6f998f2694e458f9e0c5429c0f20732</srcmd5>
+    <version>2.9.0</version>
+    <time>1735842158</time>
+    <user>anag+factory</user>
+    <comment>Update to 2.9.0</comment>
+    <requestid>1234427</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -142,8 +142,10 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -a AUTHORS ChangeLog COPYING HELP NEWS README README.SUSE SECURITY %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}/usr/share/doc/%{name}/* %{buildroot}%{_docdir}/%{name}
 rm -d %{buildroot}/usr/share/doc/%{name}
+mkdir -p %{buildroot}%{_sysconfdir}/default
 # Remove useless la files
 find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.a" -delete -print
 install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %python3_fix_shebang
 
@@ -184,6 +186,7 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_sbindir}/*
 %dir %{_sysconfdir}/reader.conf.d
 %config(noreplace) %{_sysconfdir}/reader.conf.d/reader.conf
+%{_sysconfdir}/default/pcscd
 %{ifddir}
 %{_unitdir}/pcsc*
 %{_sysusersdir}/%{PKG_USER}.conf

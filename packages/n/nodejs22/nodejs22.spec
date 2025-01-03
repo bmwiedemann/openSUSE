@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs22
-Version:        22.11.0
+Version:        22.12.0
 Release:        0
 
 # Double DWZ memory limits
@@ -147,6 +147,7 @@ Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
 
 
+Patch82:        CVE-2024-21538.patch
 
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
@@ -172,7 +173,7 @@ Patch200:       versioned.patch
 Patch305:       qemu_timeouts_arches.patch
 Patch307:       v8-i586.patch
 Patch309:       gcc13.patch
-Patch311:       icu76.1.patch
+Patch311:       old_cares.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -312,23 +313,23 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.33.1
+Provides:       bundled(libcares2) = 1.34.3
 %endif
 
-%if %node_version_number >= 22
+%if %node_version_number >= 22 && 0%{?suse_version} > 1500
 BuildRequires:  sqlite3-devel
 %endif
 
 %if ! 0%{with intree_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
 %else
-Provides:       bundled(icu) = 75.1
+Provides:       bundled(icu) = 76.1
 %endif
 
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.63.0
+Provides:       bundled(nghttp2) = 1.64.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -378,7 +379,7 @@ ExclusiveArch:  not_buildable
 %endif
 
 Provides:       bundled(uvwasi) = 0.0.21
-Provides:       bundled(libuv) = 1.48.0
+Provides:       bundled(libuv) = 1.49.1
 Provides:       bundled(v8) = 12.4.254.21
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.1.0
@@ -390,18 +391,18 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(llhttp) = 9.2.1
 Provides:       bundled(ngtcp2) = 1.3.0
 
-Provides:       bundled(simdutf) = 5.5.0
+Provides:       bundled(simdutf) = 5.6.1
 Provides:       bundled(simdjson) = 3.10.0
 # bundled url-ada parser, not ada
-Provides:       bundled(ada) = 2.9.0
+Provides:       bundled(ada) = 2.9.2
 
-Provides:       bundled(node-acorn) = 8.12.1
+Provides:       bundled(node-acorn) = 8.14.0
 Provides:       bundled(node-acorn-walk) = 8.3.4
-Provides:       bundled(node-amaro) = 0.1.8
+Provides:       bundled(node-amaro) = 0.2.0
 Provides:       bundled(node-cjs-module-lexer) = 1.4.1
 Provides:       bundled(node-corepack) = 0.29.4
 Provides:       bundled(node-minimatch) = 10.0.1
-Provides:       bundled(node-undici) = 6.20.0
+Provides:       bundled(node-undici) = 6.21.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -691,6 +692,7 @@ popd
 %if 0%{with valgrind_tests}
 %endif
 %patch -P 13 -p1
+%patch -P 82 -p1
 %patch -P 100 -p1
 %patch -P 101 -p1
 %if 0%{?suse_version} >= 1500 || 0%{?suse_version} == 0
@@ -711,7 +713,6 @@ popd
 %patch -P 307 -p1
 %patch -P 309 -p1
 %patch -P 311 -p1
-
 
 %if %{node_version_number} == 12
 # minimist security update - patch50
@@ -810,7 +811,7 @@ EOF
 %if %{node_version_number} < 19
     --without-dtrace \
 %endif
-%if %{node_version_number} >= 22
+%if %{node_version_number} >= 22 && 0%{?suse_version} > 1500
     --shared-sqlite \
 %endif
 %if %{node_version_number} >= 16 && (0%{?suse_version} > 1550 || 0%{?sle_version} >= 150400)
@@ -968,6 +969,8 @@ rm test/parallel/test-dns-cancel-reverse-lookup.js \
    test/parallel/test-dns-resolveany.js
 # multicast test fail since no socket?
 rm test/parallel/test-dgram-membership.js
+# ::1 not defined in OBS on TW - https://github.com/openSUSE/obs-build/issues/848
+rm test/report/test-report-exclude-network.js
 
 %if %{node_version_number} >= 18
 # OBS broken /etc/hosts -- https://github.com/openSUSE/open-build-service/issues/13104

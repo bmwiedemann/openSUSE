@@ -247,4 +247,15 @@ New dependency of python-Pyramid</comment>
     a translation name.</comment>
     <requestid>1169357</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f3c766552d103893b0ab36819c99c7ba</srcmd5>
+    <version>4.6.0</version>
+    <time>1735842237</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.0:
+  * Improve startup time when no template is used.
+  * Fix ast deprecation warnings up to Python 3.13.
+  * Fix load_module deprecation warnings for Python &gt;= 3.10.</comment>
+    <requestid>1234569</requestid>
+  </revision>
 </revisionlist>

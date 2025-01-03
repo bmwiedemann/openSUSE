@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 31 19:41:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.17.1:
+  * Fix `su -` regression #1163
+
+-------------------------------------------------------------------
 Fri Dec 27 16:06:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.17.0:

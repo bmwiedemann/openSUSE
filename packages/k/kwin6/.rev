@@ -159,4 +159,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1228348</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>73d26e2c26f9979e142a30356e2c680e</srcmd5>
+    <version>6.2.5</version>
+    <time>1735910179</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.2.5 (forwarded request 1234189 from Vogtinator)</comment>
+    <requestid>1234214</requestid>
+  </revision>
 </revisionlist>

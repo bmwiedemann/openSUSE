@@ -1,7 +1,7 @@
 #
 # spec file for package python-Js2Py
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,9 @@ Patch0:         remove-python-six.patch
 Patch1:         python312.patch
 # PATCH-FIX-UPSTREAM CVE-2024-28397.patch gh#PiotrDabkowski/Js2Py#323
 Patch2:         CVE-2024-28397.patch
+# PATCH-FIX-UPSTREAM 313-compatibility.patch gh#PiotrDabkowski/Js2Py#334 mcepl@suse.com
+# Compatibility with Python 3.13
+Patch3:         313-compatibility.patch
 BuildRequires:  %{python_module pyjsparser}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

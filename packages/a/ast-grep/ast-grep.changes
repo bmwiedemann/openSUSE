@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  2 07:11:38 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.32.3:
+  * feat: print fixed rules count #1708
+  * fix: move unused suppressions to config crate #1624
+  * fix: allow malformed pattern to be dumped as tree #804
+  * fix: fix files not recognize in lsp #1691
+  * fix: fix crash when internal node has no child #1688
+  * feat: use mutable self in Printer trait 5e3835a
+  * feat: reduce binary size by remove Printer polymorphism 8b735cf
+  * feat: resolve rule id for ScanResult 9a7f3cc
+
+-------------------------------------------------------------------
 Fri Dec 27 16:48:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.32.2:

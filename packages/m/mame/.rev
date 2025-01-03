@@ -217,4 +217,16 @@
   * /usr/share/doc/packages/mame/whatsnew-0.272.txt</comment>
     <requestid>1227551</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>18b2b898340401e2cd223539ea27f0a7</srcmd5>
+    <version>0.273</version>
+    <time>1735842223</time>
+    <user>anag+factory</user>
+    <comment>- Used gcc13 for Leap 15.6.
+- Updated to 0.273
+  * Removed file fix_lua_misspelling.patch (upstreamed).
+  * Added file mame-0273-only-fix.patch (patch from master).
+  * /usr/share/doc/packages/mame/whatsnew-0.273.txt</comment>
+    <requestid>1234558</requestid>
+  </revision>
 </revisionlist>

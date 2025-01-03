@@ -1,7 +1,7 @@
 #
 # spec file for package mame
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver     272
+%define ver     273
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -32,11 +32,10 @@ Source3:        %{name}.ini.in
 Patch0:         use_thin_archives.patch
 # PATCH-FIX-UPSTREAM fix-922619.patch -- https://github.com/mamedev/mame/issues/3157
 Patch1:         fix-922619.patch
-# PATCH-FIX-OPENSUSE fix_lua_misspelling.patch -- introduced in mame 0.238
-Patch2:         fix_lua_misspelling.patch
-Patch3:         %{name}-fortify.patch
-Patch4:         %{name}-bgfx.patch
-Patch5:         reproducible.patch
+Patch2:         %{name}-fortify.patch
+Patch3:         %{name}-bgfx.patch
+Patch4:         reproducible.patch
+Patch5:         %{name}-0273-only-fix.patch
 BuildRequires:  asio-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -69,8 +68,8 @@ Requires:       %{name}-data = %{version}
 Suggests:       %{name}-tools = %{version}
 ExcludeArch:    i586 armv6hl armv7hl ppc
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-BuildRequires:  gcc14
-BuildRequires:  gcc14-c++
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
 %endif
 
 %description
@@ -130,8 +129,8 @@ sed -i "s@-s -rdynamic@$MY_LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/
     SDL_INI_PATH="%{_sysconfdir}/%{name};" \
     TOOLS=1 \
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-    CC="gcc-14" \
-    CXX="g++-14" \
+    CC="gcc-13" \
+    CXX="g++-13" \
 %endif
     OPT_FLAGS="$MY_OPT_FLAGS"
 

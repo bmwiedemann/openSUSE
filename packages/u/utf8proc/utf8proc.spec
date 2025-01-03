@@ -2,7 +2,7 @@
 # spec file for package utf8proc
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define lib_ver 3
 Name:           utf8proc
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Library for processing UTF-8 encoded Unicode strings
 License:        MIT
@@ -79,15 +79,15 @@ that use utf8proc.
 %cmake_install
 find %{buildroot}/%{_libdir} -type f -name "*.a" -print -delete
 
+%check
+%ctest
+
 %ldconfig_scriptlets -n lib%{name}%{lib_ver}
 
 %files -n lib%{name}%{lib_ver}
 %license LICENSE.md
 %doc lump.md NEWS.md README.md
 %{_libdir}/libutf8proc.so.*
-
-%check
-%ctest
 
 %files devel
 %license LICENSE.md

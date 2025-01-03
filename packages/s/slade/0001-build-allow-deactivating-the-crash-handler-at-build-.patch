@@ -15,13 +15,13 @@ SLADE's own crash handler has two problems:
 Fixes: #1166
 ---
  src/Application/SLADEWxApp.cpp |    2 +-
- src/CMakeLists.txt             |    4 ++++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ src/CMakeLists.txt             |    3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-Index: SLADE-3.2.6/src/Application/SLADEWxApp.cpp
+Index: SLADE-3.2.7/src/Application/SLADEWxApp.cpp
 ===================================================================
---- SLADE-3.2.6.orig/src/Application/SLADEWxApp.cpp
-+++ SLADE-3.2.6/src/Application/SLADEWxApp.cpp
+--- SLADE-3.2.7.orig/src/Application/SLADEWxApp.cpp
++++ SLADE-3.2.7/src/Application/SLADEWxApp.cpp
 @@ -449,7 +449,7 @@ bool SLADEWxApp::OnInit()
  #endif
  
@@ -31,15 +31,14 @@ Index: SLADE-3.2.6/src/Application/SLADEWxApp.cpp
  	wxHandleFatalExceptions(true);
  #endif
  
-Index: SLADE-3.2.6/src/CMakeLists.txt
+Index: SLADE-3.2.7/src/CMakeLists.txt
 ===================================================================
---- SLADE-3.2.6.orig/src/CMakeLists.txt
-+++ SLADE-3.2.6/src/CMakeLists.txt
-@@ -41,3 +41,7 @@ if (WIN32 AND MSVC)
- else ()
- 	include("unix")     # Linux or MacOS
- endif ()
+--- SLADE-3.2.7.orig/src/CMakeLists.txt
++++ SLADE-3.2.7/src/CMakeLists.txt
+@@ -41,3 +41,6 @@ if(WIN32 AND MSVC)
+ else()
+ 	include("unix") # Linux or MacOS
+ endif()
 +if (NOT NO_CRASHHANDLER)
 +	add_definitions(-DUSE_CRASHHANDLER)
 +endif ()
-+

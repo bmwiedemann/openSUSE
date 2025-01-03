@@ -6,7 +6,7 @@
     <param name="exclude">.git</param>
     <param name="filename">suse-hpc</param>
     <param name="versionformat">0.5.%cd.%h</param>
-    <param name="revision">a16bd5ecc15e1a0ec8904b78102c7b444ce18df5</param>
+    <param name="revision">dbdcd3e375b3afe3da803cd5038b68950348ae56</param>
 	<param name="extract">general/dlinfo.c</param>
 	<param name="extract">general/macros.hpc</param>
 	<param name="extract">general/hpc_elf.pl</param>

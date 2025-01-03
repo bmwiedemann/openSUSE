@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 31 23:56:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * API changes: `cross_color_transform_bits` added to WebPAuxStats
+  * Minor lossless encoder speed and compression improvements
+  * Lossless encoding does not use floats anymore
+  * Additional ARM optimizations for lossy & lossless + general
+    code generation improvements
+  * Tool updates:
+  * gif2webp: added -sharp_yuv & -near_lossless
+  * img2webp: added -exact & -noexact
+  * Exit codes normalized; running an example program with no
+    arguments will output its help and exit with an error.
+
+-------------------------------------------------------------------
 Sat Nov  9 20:45:59 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - switch to cmake based build as other packages now require the

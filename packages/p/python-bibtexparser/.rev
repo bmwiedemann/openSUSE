@@ -86,4 +86,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1117164</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5d9896a9e1ca3a334c1776237f63550f</srcmd5>
+    <version>1.4.3</version>
+    <time>1735842235</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.3:
+  * Bugfix: Use raw strings to fix invalid escape</comment>
+    <requestid>1234567</requestid>
+  </revision>
 </revisionlist>

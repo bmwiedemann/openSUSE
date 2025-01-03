@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-#     Copyright (c) 2024 SUSE LLC
+#     Copyright (c) 2025 SUSE LLC
 
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bci/kiwi:10.2.3-%RELEASE%
-#!BuildTag: opensuse/bci/kiwi:10.2.3
+#!BuildTag: opensuse/bci/kiwi:10.2.5-%RELEASE%
+#!BuildTag: opensuse/bci/kiwi:10.2.5
 #!BuildTag: opensuse/bci/kiwi:10.2
 #!BuildTag: opensuse/bci/kiwi:10
 #!BuildTag: opensuse/bci/kiwi:latest
@@ -32,13 +32,13 @@ RUN set -euo pipefail; \
 # labelprefix=org.opensuse.bci.kiwi
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI KIWI Appliance Builder (kiwi)"
 LABEL org.opencontainers.image.description="KIWI Appliance Builder (kiwi) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported in privileged mode."
-LABEL org.opencontainers.image.version="10.2.3"
+LABEL org.opencontainers.image.version="10.2.5"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="10.2.3-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/kiwi:10.2.3-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="10.2.5-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/kiwi:10.2.5-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

@@ -3,11 +3,11 @@ is run serially over these binaries instead of in parallel.
 OBS workers run out of memory as each executable seems to require
 upward of 5G RAM
 
-Index: node-v22.10.0/node.gyp
+Index: node-v22.12.0/node.gyp
 ===================================================================
---- node-v22.10.0.orig/node.gyp
-+++ node-v22.10.0/node.gyp
-@@ -1193,6 +1193,7 @@
+--- node-v22.12.0.orig/node.gyp
++++ node-v22.12.0/node.gyp
+@@ -1186,6 +1186,7 @@
          'deps/simdutf/simdutf.gyp:simdutf',
          'deps/ada/ada.gyp:ada',
          'deps/nbytes/nbytes.gyp:nbytes',
@@ -15,8 +15,8 @@ Index: node-v22.10.0/node.gyp
        ],
  
        'includes': [
-@@ -1273,6 +1274,7 @@
-         'deps/sqlite/sqlite.gyp:sqlite',
+@@ -1264,6 +1265,7 @@
+         'deps/histogram/histogram.gyp:histogram',
          'deps/ada/ada.gyp:ada',
          'deps/nbytes/nbytes.gyp:nbytes',
 +		'cctest'

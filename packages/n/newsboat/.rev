@@ -1107,4 +1107,29 @@ run -osc service localrun format_spec_file to fix copyright
   * Fixed clickjacking vulnerability on newsboat.org</comment>
     <requestid>1203054</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>77fbe06ea7ef9dc2e3b82fae5facfa66</srcmd5>
+    <version>2.38</version>
+    <time>1735842177</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.38:
+  Added:
+  * Shell completions for ZSH
+  * Keymap hint for &quot;Clear filter&quot; when filter is active
+  * Better logs when Miniflux authentication fails with something other than
+    401 Unauthorized
+  * Support for enclosures with Miniflux
+  Changed:
+  * Shell completions are now installed into directories where shells are looking
+    for them. Previously, completions were installed into doc/contrib
+  * Updated translations: Chinese, Dutch, German, Italian, Polish,
+    Russian and Ukrainian, Spanish, Swedish, Turkish
+  * Bumped minimum supported Rust version to 1.79.0
+  Fixed:
+  * MKDIR not being used in all the relevant places of the Makefile
+  * Dates far in the past or the future not being stored correctly (#2871)
+  * cookie-cache having not effect on reload-all (bound to R by default,
+    also activated by auto-reload) (#2935)</comment>
+    <requestid>1234485</requestid>
+  </revision>
 </revisionlist>

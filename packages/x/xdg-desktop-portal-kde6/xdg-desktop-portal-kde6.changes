@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 31 20:52:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.5
+- Changes since 6.2.4:
+  * update version for new release
+  * [FileChooser] Don't ignore current_filter parameter with multiple name patterns
+  * ScreenShot: Don't access the result of a cancelled future
+  * Notification: Allow dbus-activating applications that are not running
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov 26 15:48:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.4:

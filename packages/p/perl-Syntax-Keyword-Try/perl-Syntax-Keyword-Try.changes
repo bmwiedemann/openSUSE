@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  1 05:33:34 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.300.0 (0.30)
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.30    2024-08-29
+          [CHANGES]
+           * Updates for XS::Parse::Keyword v0.35: new container macro names
+           * Updated to latest hax/ support files: avoids SAVEt_LONG, now
+             removed in perl 5.41.3
+
+-------------------------------------------------------------------
 Fri Mar  8 23:04:48 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

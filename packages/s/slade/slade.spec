@@ -17,7 +17,7 @@
 
 
 Name:           slade
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later
@@ -65,9 +65,11 @@ from/to other generic formats such as PNG.
 
 %build
 %define _lto_cflags %nil
+export CFLAGS="%optflags -O0 -ggdb3 -fsanitize=address,undefined"
+export CXXFLAGS="%optflags -O0 -ggdb3 -fsanitize=address,undefined"
 %cmake -DNO_WEBVIEW=ON -DWX_GTK3=OFF -DNO_CRASHHANDLER=ON \
-	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
-	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
+	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$CFLAGS" \
+	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$CFLAGS" \
 %if 0%{?suse_version} >= 1600
 	-DUSE_SYSTEM_FMT:BOOL=ON \
 %endif

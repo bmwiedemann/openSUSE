@@ -1,8 +1,8 @@
-Index: poppler-23.10.0/CMakeLists.txt
+Index: poppler-24.12.0/CMakeLists.txt
 ===================================================================
---- poppler-23.10.0.orig/CMakeLists.txt
-+++ poppler-23.10.0/CMakeLists.txt
-@@ -166,7 +166,7 @@ endmacro()
+--- poppler-24.12.0.orig/CMakeLists.txt
++++ poppler-24.12.0/CMakeLists.txt
+@@ -168,7 +168,7 @@ endmacro()
  
  find_soft_mandatory_package(ENABLE_NSS3 NSS3 3.68)
  find_soft_mandatory_package(ENABLE_GPGME Gpgmepp 1.19)

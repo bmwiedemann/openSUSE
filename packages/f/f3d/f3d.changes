@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  2 07:18:33 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.1:
+  * Fix build compatibility with vtk v9.4.0
+
+-------------------------------------------------------------------
 Tue Jul  2 13:03:49 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.0:

@@ -41,7 +41,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2021.12.0
+Version:        2022.0.0
 Release:        0
 Summary:        oneAPI Threading Building Blocks (oneTBB)
 License:        Apache-2.0
@@ -52,7 +52,6 @@ Source99:       tbb-rpmlintrc
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
 Patch2:         cmake-remove-include-path.patch
 Patch4:         add-cmake-check-for-libatomic-requirement-when-build.patch
-Patch5:         use-FORTIFY_SOURCE-from-distribution.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -82,9 +81,10 @@ oneTBB provides you with functions, interfaces, and classes to parallelize and
 scale the code.
 
 %package -n libtbb%{so_ver}
-Summary:        Threading Building Blocks (TBB)
+Summary:        Core library for oneAPI Threading Building Blocks
 Group:          System/Libraries
 Provides:       %{name} = %{version}
+Provides:       onetbb = %{version}
 Obsoletes:      %{name} < %{version}
 
 %description -n libtbb%{so_ver}
@@ -97,7 +97,7 @@ scale the code.
 This package provides the core shared library corresponding to oneTBB.
 
 %package -n libtbbmalloc%{so_ver_malloc}
-Summary:        Threading Building Blocks (TBB)
+Summary:        Memory allocator library for oneAPI Threading Building Blocks
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
@@ -112,7 +112,7 @@ scale the code.
 This package provides the oneTBB memory allocator shared library.
 
 %package -n libirml%{so_ver_irml}
-Summary:        Threading Building Blocks (TBB) - IPC Library
+Summary:        IPC library for oneAPI Threading Building Blocks
 Group:          System/Libraries
 
 %description -n libirml%{so_ver_irml}
@@ -126,7 +126,7 @@ This subpackage provides the library required in order to enable inter-process
 (IPC) coordination between oneTBB schedulers for the oneTBB python module.
 
 %package -n libtbbbind%{tbbbind_suffix}-%{so_ver_bind}
-Summary:        NUMA support library for oneAPI Threading Building Blocks (oneTBB)
+Summary:        NUMA support library for oneAPI Threading Building Blocks
 Group:          System/Libraries
 
 %description -n libtbbbind%{tbbbind_suffix}-%{so_ver_bind}
@@ -140,7 +140,7 @@ The NUMA support library for oneTBB.
 
 %if 0%{?python_subpackage_only}
 %package -n python-%{name}
-Summary:        Python %{python_version} support for oneAPI Threading Building Blocks (oneTBB)
+Summary:        Python bindings for oneAPI Threading Building Blocks
 Group:          Development/Languages/Python
 Requires:       libirml%{so_ver_irml}
 
@@ -156,7 +156,7 @@ This package contains python %{python_version} bindings for oneTBB.
 %else
 
 %package -n python3-%{name}
-Summary:        Python 3 support for oneAPI Threading Building Blocks (oneTBB)
+Summary:        Python 3 bindings for oneAPI Threading Building Blocks
 Group:          Development/Languages/Python
 Requires:       libirml%{so_ver_irml}
 

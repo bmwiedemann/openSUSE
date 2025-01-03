@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamale
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yamale
-Version:        5.2.1
+Version:        5.3.0
 Release:        0
 Summary:        A schema and validator for YAML
 License:        MIT

@@ -1,7 +1,7 @@
 #
 # spec file for package solaar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           solaar
-Version:        1.1.13
+Version:        1.1.14
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -40,6 +40,8 @@ BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module hid-parser}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
@@ -49,24 +51,22 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  typelib-1_0-Gtk-3_0
-BuildRequires:  update-desktop-files
+#
 Requires:       python3-PyYAML
-%if 0%{?suse_version} <= 1500
-Requires:       python3-dataclasses
-%endif
 Requires:       python3-dbus-python
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-hid-parser
 Requires:       python3-psutil
-Requires:       python3-python-xlib
 Requires:       python3-pyudev
 Requires:       python3-typing_extensions
 #
 Requires:       solaar-udev >= %{version}
 Requires:       typelib(AyatanaAppIndicator3)
 Requires:       typelib(Gtk) >= 3.0
+#
+Recommends:     python3-python-xlib
 #
 Obsoletes:      solaar-cli < %{version}
 Provides:       solaar-cli = %{version}
@@ -114,9 +114,9 @@ sed -i 's#%{_bindir}/env python##' lib/solaar/gtk.py lib/solaar/tasks.py
 
 %install
 %python_install
-%fdupes %{buildroot}%{python3_sitelib}
+
+%fdupes %{buildroot}%{python_sitelib}
 %fdupes -s %{buildroot}%{_datadir}
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 install -d 0755 %{buildroot}%{_udevrulesdir}
 install -m 0644 rules.d/42-logitech-unify-permissions.rules %{buildroot}%{_udevrulesdir}/42-logitech-unify-permissions.rules
@@ -125,6 +125,12 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 
 # We use the system package
 rm -rf %{buildroot}%{python3_sitelib}/hid_parser
+# We do not need generate keysymdef.py
+rm -f %{buildroot}%{python3_sitelib}/keysyms/__pycache__/generate*.pyc
+rm -f %{buildroot}%{python3_sitelib}/keysyms/generate.py
+
+%check
+%pytest
 
 %posttrans udev
 # This is needed to apply permissions to existing devices when the package is

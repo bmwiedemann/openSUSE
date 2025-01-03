@@ -288,4 +288,13 @@
   versions affected by this. (forwarded request 1143793 from eeich)</comment>
     <requestid>1143794</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f2d553a39de729428d1b32d1121ae3b5</srcmd5>
+    <version>0.5.20250102.dbdcd3e</version>
+    <time>1735842199</time>
+    <user>anag+factory</user>
+    <comment>- Stop storing mtime in gzip headers to make build reproducible.
+  Fixed by Bernhard M. Wiedemann &lt;bwiedemann@suse.de&gt; (forwarded request 1234521 from eeich)</comment>
+    <requestid>1234523</requestid>
+  </revision>
 </revisionlist>

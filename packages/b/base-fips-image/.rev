@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of base-fips-image</comment>
     <requestid>1227180</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>87dc25602cad47dfd10cb53939954f2b</srcmd5>
+    <version>unknown</version>
+    <time>1735841992</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1234338</requestid>
+  </revision>
 </revisionlist>

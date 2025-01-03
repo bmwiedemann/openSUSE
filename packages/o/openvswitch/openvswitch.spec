@@ -80,8 +80,8 @@ Patch4:         install-ovsdb-tools.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
-BuildRequires:  autoconf
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  graphviz
@@ -238,6 +238,7 @@ Summary:        Open vSwitch IPsec tunneling support
 License:        Apache-2.0
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}
+Requires:       /usr/sbin/ipsec
 Requires:       python3-ovs = %{version}
 Requires:       strongswan
 

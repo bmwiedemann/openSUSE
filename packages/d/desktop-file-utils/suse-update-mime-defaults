@@ -110,6 +110,43 @@ function _qsorti(dest, l, u,    val, i, j) {
     _qsorti(dest, j + 1, u)
 }
 
+# read a desktop-specifig configuration file
+function read_conf_file(filename,   lineno, arr) {
+    lineno = 0
+    while ((getline < filename) > 0) {
+        lineno++
+        if (NF == 0 || $1 ~ /^#/) {
+            # skip comments and empty lines
+            continue
+        } else if (NF != 1) {
+            err(1, "syntax error in " filename " line " lineno)
+        } else if (split($1, arr, /=/) == 2) {
+            if ($1 ~ /-/) {
+                # handle removal of previously set MIME type defaults
+                delete mimetype_default_apps[substr(arr[1], 2)]
+            } else {
+                # handle MIME type defaults
+                mimetype_default_apps[arr[1]] = arr[2]
+            }
+        } else if ($1 ~ /^-!.+\.desktop$/) {
+            # handle removal of previously set preferred default applications
+            delete preferred_default_apps[substr($1, 3)]
+        } else if ($1 ~ /^!.+\.desktop$/) {
+            # handle preferred default applications
+            preferred_default_apps[substr($1, 2)] = substr($1, 2)
+        } else if ($1 ~ /^-.+\.desktop$/) {
+            # handle removal previously set regular default applications
+            delete default_apps[substr($1, 2)]
+        } else if ($1 ~ /^.+\.desktop$/) {
+            # handle regular default applications
+            default_apps[$1] = $1
+        } else {
+            err(1, "syntax error in " filename ", line " lineno)
+        }
+    }
+    close(filename)
+}
+
 BEGIN {
     desktop = desktop != "" ? desktop : "gnome"
     if (desktop == "gnome") {
@@ -130,28 +167,14 @@ BEGIN {
     defaults_conf = root "/etc/" desktop "_defaults.conf"
 
     # parse desktop defaults preferences
-    lineno = 0
-    while ((getline < defaults_conf) > 0) {
-        lineno++
-        if (NF == 0 || $1 ~ /^#/) {
-            # skip comments and empty lines
-            continue
-        } else if (NF != 1) {
-            err(1, "syntax error in " defaults_conf " line " lineno)
-        } else if (split($1, arr, /=/) == 2) {
-            # handle MIME type defaults
-            mimetype_default_apps[arr[1]] = arr[2]
-        } else if ($1 ~ /^!.+\.desktop$/) {
-            # handle preferred default applications
-            preferred_default_apps[substr($1, 2)] = substr($1, 2)
-        } else if ($1 ~ /^.+\.desktop$/) {
-            # handle regular default applications
-            default_apps[$1] = $1
-        } else {
-            err(1, "syntax error in " defaults_conf ", line " lineno)
-        }
+    read_conf_file(defaults_conf)
+
+    # find and parse desktop defaults override files
+    cmd = "test -d " defaults_conf ".d/ && find " defaults_conf ".d/ -type f ! -name \"*[![:alnum:]._-]*\" | sort"
+    while ((cmd | getline defaults_override) > 0) {
+        read_conf_file(defaults_override)
     }
-    close(defaults_conf)
+    close(cmd)
 
     # find all desktop files
     for (i = split("XDG_DATA_DIRS" in ENVIRON ? ENVIRON["XDG_DATA_DIRS"] : \

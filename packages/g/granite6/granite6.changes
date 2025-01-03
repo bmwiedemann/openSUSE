@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  1 23:15:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add fix-version.patch to fix version which typelib requires
+
+-------------------------------------------------------------------
+Fri Nov 22 07:27:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix soname
+
+-------------------------------------------------------------------
+Mon Nov  4 20:18:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- actual fix CFLAGS
+- expose correct name for the library
+- use ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Sat Aug 10 04:43:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix packaging with adding make dependencies and adding

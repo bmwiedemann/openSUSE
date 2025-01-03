@@ -1,11 +1,11 @@
-Index: Solaar/share/applications/solaar.desktop
+Index: Solaar-1.1.14/share/applications/solaar.desktop
 ===================================================================
---- Solaar.orig/share/applications/solaar.desktop	2022-12-18 11:35:32.347266752 +0100
-+++ Solaar/share/applications/solaar.desktop	2022-12-18 11:45:33.961457949 +0100
-@@ -5,12 +5,11 @@ Comment[fr]=Gestionnaire de périphériq
- Comment[hr]=Upravitelj Logitechovih uređaja povezanih putem Unifying i Nano prijemnika
- Comment[ru]=Управление приёмником Logitech Unifying Receiver
- Comment[es]=Administrador de periféricos de Logitech Receptor Unifying
+--- Solaar-1.1.14.orig/share/applications/solaar.desktop	2025-01-01 15:42:39.000000000 +0100
++++ Solaar-1.1.14/share/applications/solaar.desktop	2025-01-01 17:38:35.626454625 +0100
+@@ -11,12 +11,11 @@ Comment[sv]=Kringutrustningshanterare f�
+ Comment[zh_CN]=罗技优联设备管理器
+ Comment[zh_TW]=羅技Unifying 裝置管理器
+ Comment[zh_HK]=羅技Unifying 裝置管理器
 -Exec=solaar
 +Exec=solaar --window hide
  Icon=solaar
@@ -15,5 +15,5 @@ Index: Solaar/share/applications/solaar.desktop
  Keywords=logitech;unifying;receiver;mouse;keyboard;
 -Categories=Utility;GTK;
 -#Categories=Utility;GTK;Settings;HardwareSettings;
-+Categories=Utility;DesktopUtility;
++Categories=Utility;X-SUSE-DesktopUtility;
  X-GNOME-UsesNotifications=true

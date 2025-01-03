@@ -745,7 +745,7 @@ sys.exit(0)" %{1}
        for i in $(ls %{buildroot}%{hpc_mandir}/man${j}/*.${j}* | grep -v ".*\.gz$"); \
        do \
          test -L $i && continue \
-	 gzip $i \
+	 gzip -n $i \
        done; \
      done
 

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec  6 09:09:04 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update shipped /etc/samba/smb.conf to point to smb.conf
+  man page;(bsc#1233880).
+
+-------------------------------------------------------------------
+Mon Nov 25 17:35:43 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Update to 4.21.2
+  * smbd fails to correctly check sharemode against OVERWRITE
+    dispositions; (bso#15732).
+  * Panic in close_directory; (bso#15754).
+  * winexe no longer works with samba 4.21; (bso#15752).
+  * protocol error - Unclear debug message "pad length mismatch"
+    for invalid bind packet; (bso#14356).
+  * NetrGetLogonCapabilities QueryLevel 2 needs to be
+    implemented; (bso#15425).
+  * gss_accept_sec_context() from Heimdal does not imply
+    GSS_C_MUTUAL_FLAG with GSS_C_DCE_STYLE; (bso#15740).
+  * winbindd should call process_set_title() for locator child;
+    (bso#15749).
+  * Update CTDB to track all TCP connections to public IP
+    addresses; (bso#15320).
+
+-------------------------------------------------------------------
 Thu Oct 31 13:20:25 UTC 2024 - Noel Power <nopower@suse.com>
 
 - Add placeholder changelog for sle15-sp7; (jsc#PED-11210).

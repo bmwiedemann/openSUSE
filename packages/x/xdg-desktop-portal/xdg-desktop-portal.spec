@@ -121,7 +121,7 @@ This package contains convenience documentation for developers.
 # own the packaging directories
 install -d %{buildroot}%{_datadir}/xdg-desktop-portal/portals
 %if %{with docs}
-rm -fr %{buildroot}/%{_datadir}/{dbus-1,%{oname},locale,pkgconfig} %buildroot%{_userunitdir} %{buildroot}%{_mandir} %{buildroot}/%{_libdir} %{buildroot}/%{_libexecdir}
+rm -fr %{buildroot}/%{_datadir}/{dbus-1,%{oname},locale,pkgconfig} %buildroot%{_userunitdir} %{buildroot}%{_mandir} %{buildroot}/%{_libdir} %{buildroot}/%{_libexecdir} %{_vpath_builddir}/doc/html/.doctrees
 %else
 %find_lang %{oname} %{?no_lang_C}
 %endif

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 27 21:55:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.8.13
+  * Conflux related client circuit building performance bugfix
+  * Fix minor memory leaks
+  * Add STATUS TYPE=version handler for Pluggable Transport
+
+-------------------------------------------------------------------
 Tue Jun 11 10:05:46 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.8.12

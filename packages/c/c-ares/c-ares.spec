@@ -26,7 +26,7 @@
 %endif
 
 Name:           c-ares%pkg_suffix
-Version:        1.30.0
+Version:        1.34.4
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -35,6 +35,9 @@ Source0:        https://github.com/c-ares/c-ares/releases/download/v%{version}/c
 Source1:        https://github.com/c-ares/c-ares/releases/download/v%{version}/c-ares-%{version}.tar.gz.asc
 Source3:        c-ares.keyring
 Source4:        baselibs.conf
+Source5:        series
+# forwarded: https://github.com/c-ares/c-ares/issues/953
+Patch1:         skip-test.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 # Needed for getservbyport_r function to work properly.
@@ -91,7 +94,7 @@ to build packages that depend on c-ares.
 %endif
 
 %prep
-%autosetup -n c-ares-%{version}
+%autosetup -n c-ares-%{version} -p1
 
 %build
 %cmake \

@@ -364,4 +364,12 @@ required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#ope
   cmake finders</comment>
     <requestid>1223102</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eb83bc4d6418e99aeb98ac8a785bef47</srcmd5>
+    <version>1.5.0</version>
+    <time>1735841980</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.5.0</comment>
+    <requestid>1234190</requestid>
+  </revision>
 </revisionlist>

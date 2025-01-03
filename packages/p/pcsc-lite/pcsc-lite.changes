@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 26 09:13:55 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.3.1
+  * Install a default /etc/default/pcscd file
+  * auth.c: implement polkit support for FreeBSD
+  * meson:
+    . also build static version of libpcsclite
+    . add options to disable polkit and libsystemd
+    . add "filter_names" in features when needed
+  * Doxygen: document dwCurrentState use for "\\?PnP?\Notification"
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Sun Aug  4 05:00:35 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.3.0

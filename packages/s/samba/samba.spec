@@ -169,7 +169,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.21.1+git.372.cb50f2d0a68
+Version:        4.21.2+git.382.df546a2d31b
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -798,9 +798,6 @@ make %{?_smp_mflags} install \
 # debug symbols are created and installed if the files are excluded only
 %if ! %{with_dc}
 rm \
-	%{buildroot}/%{_libdir}/libsamba-policy.so* \
-	%{buildroot}/%{_libdir}/pkgconfig/samba-policy.pc \
-	%{buildroot}/%{_libdir}/samba/libsamba-net-private-samba.so \
 	%{buildroot}/%{_mandir}/man8/samba.8* \
 	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8* \
 	%{buildroot}/%{_unitdir}/samba-ad-dc.service
@@ -828,9 +825,8 @@ for i in $scripts; do
 done
 # configuration files
 pushd packaging/SuSE/
-echo "# smb.conf is the main Samba configuration file. You find a full commented" >config/smb.conf
-echo "# version at %{DOCDIR}/examples/smb.conf.%{VENDOR} if the" >>config/smb.conf
-echo "# samba-doc package is installed." >>config/smb.conf
+echo "# smb.conf is the main Samba configuration file. see man smb.conf " >config/smb.conf
+echo "# for full details." >>config/smb.conf
 grep -v "\(^#\|^;\|^$\)" config/smb.conf.vendor >>config/smb.conf
 install -p -m 0644 config/smb.conf.vendor ../../examples/smb.conf.%{VENDOR}
 for file in smb.conf lmhosts smbusers smbpasswd smbusers; do
@@ -1438,13 +1434,13 @@ exit 0
 %{_libdir}/pkgconfig/netapi.pc
 %{_libdir}/libsmbclient.so
 %{_libdir}/pkgconfig/smbclient.pc
+%{_libdir}/libsamba-policy.so
+%{_libdir}/pkgconfig/samba-policy.pc
 %{_mandir}/man7/libsmbclient.7.*
 %if %{with_dc}
 %{_includedir}/samba-4.0/dcerpc_server.h
 %{_libdir}/libdcerpc-server.so
 %{_libdir}/pkgconfig/dcerpc_server.pc
-%{_libdir}/libsamba-policy.so
-%{_libdir}/pkgconfig/samba-policy.pc
 %endif
 
 %files client-libs
@@ -1575,6 +1571,8 @@ exit 0
 %{_libdir}/samba/libRPC-SERVER-LOOP-private-samba.so
 %{_libdir}/samba/libRPC-WORKER-private-samba.so
 %{_libdir}/samba/libdsdb-module-private-samba.so
+%{_libdir}/samba/libsamba-net-private-samba.so
+%{_libdir}/libsamba-policy.so.*
 %if ! %{with_mitkrb5}
 %{_libdir}/samba/libasn1-private-samba.so
 %{_libdir}/samba/libcom-err-private-samba.so
@@ -1950,8 +1948,6 @@ exit 0
 %{_libdir}/samba/service/winbindd.so
 %{_libdir}/samba/service/wrepl.so
 %{_libdir}/libdcerpc-server.so.*
-%{_libdir}/libsamba-policy.so.*
-%{_libdir}/samba/libsamba-net-private-samba.so
 %{_libdir}/samba/pdb/samba_dsdb.so
 %if %{with_mit_dc}
 %{_libdir}/krb5/plugins/kdb/samba.so

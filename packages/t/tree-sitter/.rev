@@ -181,4 +181,13 @@
     <comment></comment>
     <requestid>1230679</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5d3e85d88b4e50cecde1a560bf8dd45d</srcmd5>
+    <version>0.24.6</version>
+    <time>1735841969</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.24.6:
+  * playground: backport new playground (forwarded request 1234117 from rrahl0)</comment>
+    <requestid>1234118</requestid>
+  </revision>
 </revisionlist>

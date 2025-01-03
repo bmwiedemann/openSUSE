@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 27 14:21:08 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 1.4+39:
+  * Fix <solidcolor solid-color="..." />
+  * Fix boolop fill-rule as attribute
+  * Fix crash on pasting mesh gradient
+  * Test URI rebasing for clones
+  * Fix copying clone referencing other document
+  * Fix Linux snap package build (1.4.x)
+  * Fix building with Poppler 24.11
+  * Future-proof against poppler 24.10 changes
+  * Fix crash with rebasing invalid URL
+  * Fix saving crash with unspecified exception
+  * Fix PDF text import for text with character and word spacing.
+  * Update libcroco
+  * Fix LAB decoding in Adobe ASE swatch file
+  * Fix building with poppler 24.12.0
+- Switch to source service git checkout. Make future version
+  updates and pulling fixes from upstream stable branch easy.
+
+-------------------------------------------------------------------
 Sun Nov 17 18:19:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete and unused pkgconfig(gdl-3.0) BuildRequires.

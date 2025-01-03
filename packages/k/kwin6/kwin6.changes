@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 31 20:49:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.5
+- Changes since 6.2.4:
+  * update version for new release
+  * plugins/krunnner-integration: don't trust inputs from the dbus call
+  * CMake: do not expand variables beforehand
+  * plugins/krunner-integration: Fix crash
+  * plugins/screencast: take scaling into account for window sources (kde#497571)
+  * opengl: Fix cached size check in GLTexture::render()
+  * plugins/shakecursor: don't trigger for warp events
+  * backends/drm: fix the incorrect use of std::optional
+  * Do not call ScreenLocker::KSldApp::unlocked when it unlocked in the meantime
+  * backends/x11: Fix a crash in KWin::X11WindowedEglPrimaryLayer::present()
+  * autotests/integration: add a color management test
+  * wayland/xx color management: fix max > lum luminance checks
+  * wayland: Fix XdgToplevelWindow::moveResizeInternal() committing geometry with fractional client size
+  * wayland: Fix sending wl_pointer.leave event to Xwayland during dnd
+  * opengl/eglnativefence: fix file descriptor leak
+  * effects/overview: Animate if the thumbnail is dropped in an heap (kde#496646)
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Nov 27 16:57:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix the pipewire BuildRequires condition for Leap 15.6

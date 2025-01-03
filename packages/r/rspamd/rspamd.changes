@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 25 20:29:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- we can enable hyperscan also on newer SLE 15 service packs
+
+-------------------------------------------------------------------
+Wed Dec 25 20:25:54 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e590306b.patch
+  To fix building without hyperscan
+
+-------------------------------------------------------------------
 Mon Dec 16 16:15:46 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.11.0

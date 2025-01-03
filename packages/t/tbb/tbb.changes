@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec 31 13:57:21 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove use-FORTIFY_SOURCE-from-distribution.patch, as it is now
+  upstreamed
+
+- Use _service to download the source tarball
+
+- Update to version 2022.0.0:
+  * Extended the Flow Graph receiving nodes with a new 
+    try_put_and_wait API that submits a message to the graph and 
+    waits for its completion.
+  * Fixed the missed signal for thread request for enqueue 
+    operation
+  * Significantly improved scalability of task_group, flow_graph, 
+    and parallel_for_each
+  * Removed usage of std::aligned_storage deprecated in C++23
+  * Fixed the issue where oneapi::tbb::info interfaces might 
+    interfere with the process affinity mask on the Windows* OS 
+    systems with multiple processor groups.
+
+-------------------------------------------------------------------
 Fri Apr 19 03:16:09 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to version 2021.11.0:

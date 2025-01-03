@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 30 14:17:03 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
+
+- update to 2.0.30:
+  * arm64: Support UKI image format
+  * bug fixes
+
+-------------------------------------------------------------------
 Fri Sep 13 13:13:13 UTC 2024 - olaf@aepfle.de
 
 - To create rckexec-reload, the service binary is required at

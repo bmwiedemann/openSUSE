@@ -7,4 +7,12 @@
     <comment>hopefully now</comment>
     <requestid>1193780</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>82df64243977116183a203915d50a304</srcmd5>
+    <version>6.2.0</version>
+    <time>1735842186</time>
+    <user>anag+factory</user>
+    <comment>- add fix-version.patch to fix version which typelib requires (forwarded request 1234494 from rrahl0)</comment>
+    <requestid>1234497</requestid>
+  </revision>
 </revisionlist>

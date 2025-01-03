@@ -206,4 +206,13 @@
   * Add support for redefining OK and Cancel labels in CLI Mode</comment>
     <requestid>1227510</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9f416a369eaf4880df2d1747dd0f4bd4</srcmd5>
+    <version>1.3.4</version>
+    <time>1735842216</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.4:
+  * Recovery Keys no longer written to logs</comment>
+    <requestid>1234554</requestid>
+  </revision>
 </revisionlist>

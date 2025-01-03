@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 25 19:22:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.7
+  * Added support for DECOHack
+  * Added Blasphemer palette
+  * Added support for versions 0x200 and 0x300 of
+    Blood RFF archives
+  * Map editor:
+  * Added ability to filter the action specials list by name
+
+-------------------------------------------------------------------
 Wed Nov 27 12:15:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.6:

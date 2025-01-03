@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 <!--
-    Copyright (c) 2024 SUSE LLC
+    Copyright (c) 2025 SUSE LLC
 
 All modifications and additions to the file contributed by third parties
 remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
         </expose>
       </containerconfig>
     </type>
-    <version>2024</version>
+    <version>2025</version>
     <packagemanager>zypper</packagemanager>
     <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>true</rpm-excludedocs>

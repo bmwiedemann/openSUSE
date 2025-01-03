@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Jan  2 14:10:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.1:
+  * DDGS.text: deprecate backend='api'
+- update to 7.1.0:
+  * add backend="ecosia"
+  * DDGS._impersonates: delete okhttp*
+  * DDGS.text: reduce pagination
+- update to 7.0.2:
+  * Bump primp to v0.9.2
+- update to 7.0.1:
+  * [simplify]: remove AsyncDDGS, remove `answers`, `maps`,
+    `suggestions`, `translate`; [text]: remove multithreading
+  * [DDGS.text]: add backend="auto", [DDGS.images|news|videos]:
+    remove multithreading
+- update to 6.4.2:
+  * use env var DDGS_PROXY
+  * utils: _text_extract_json() bugfix
+- update to 6.3.7:
+  * added armv7 compatibility: Bump primp to v0.8.1
+- update to 6.3.6:
+  * Bump primp version to v0.8.0
+  * DDGS._impersonates: add "chrome_131"
+  * CLI: _download_file: impersonate="chrome_131"
+  * CLI: --max_results=None by default; remove default=None
+- update to 6.3.5:
+  * CLI: 1)`-dd` to specify custom download directory, 2) `-o`
+    can now set full filename
+  * CLI: text() max_results=10 default
+  * text(): update pagination logic (0, 10, 25, 40, ...)
+  * text(): max(max_results)=190
+  * videos(): max(max_results)=200
+  * tests: text() max_results=20
+  * README: update examples, remove httpx version info
+- update to 6.3.4:
+  * CLI: images license parameter - add ShareCommercially
+  * CLI: _download_file: impersonate="chrome_130"
+- update to 6.3.3:
+  * Bump primp version to >=0.6.5
+  * DDGS._impersonates: add "chrome_130"
+- update to 6.3.2:
+  * Add `verify` parameter to skip SSL verification when making
+    the requests
+- update to 6.3.1:
+  * DDGS._impersonates: updated
+  * primp.Client: verify=True
+  * primp: bump version to v0.6.4
+- update to 6.3.0:
+  * DDGS._get_vqd(): use "GET" request
+  * update tests
+  * cli._download_file(): use impersonate="chrome_129"
+
+-------------------------------------------------------------------
 Sat Sep 28 19:22:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.13:

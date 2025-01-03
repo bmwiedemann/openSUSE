@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 30 09:54:07 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid corrupted .png files and fix reproducible builds (boo#1234897)
+
+-------------------------------------------------------------------
 Fri Dec  6 07:54:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add presage-setuptools.patch: Fix installation of python bindings

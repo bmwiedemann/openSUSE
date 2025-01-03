@@ -89,4 +89,13 @@
   vtk &gt;= 9.3</comment>
     <requestid>1184964</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f14083f203718030b854a84d011b7f2</srcmd5>
+    <version>2.5.1</version>
+    <time>1735842174</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.5.1:
+  * Fix build compatibility with vtk v9.4.0</comment>
+    <requestid>1234490</requestid>
+  </revision>
 </revisionlist>

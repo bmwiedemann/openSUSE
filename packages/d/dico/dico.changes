@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  1 21:56:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.12
+  * gcide module bug fixes
+  * gcide: New option: "watch"
+  * gcide: HTML output using the "html" module option
+  * Input conversions: The argument to DEFINE or MATCH command can
+    optionally be modified before being used in actual search
+  * New module "greek_kbd" for Greek transliteration.
+  * bug fixes
+- switch to pcre2
+
+-------------------------------------------------------------------
 Tue Jun  8 10:36:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.11

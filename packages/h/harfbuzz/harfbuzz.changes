@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 31 19:05:26 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add harfbuzz-CVE-2024-56732.patch: guard
+  hb_cairo_glyphs_from_buffer() against bad UTF-8 (CVE-2024-56732).
+
+-------------------------------------------------------------------
 Tue Nov  5 08:44:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 10.1.0:

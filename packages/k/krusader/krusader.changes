@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  1 21:36:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.9.0:
+  * Port to Qt 6
+  * Bug fixes and minor improvements
+- Allow running krusader with elevated privileges from Dolphin
+  context menu
+
+-------------------------------------------------------------------
 Wed Dec 25 10:19:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Use xdg-su for the krusader 'root' mode. Relying on the

@@ -23,4 +23,17 @@
     <comment> (forwarded request 1201885 from rrahl0)</comment>
     <requestid>1201886</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b63324c573bd75233e448a1bdd5b3ba0</srcmd5>
+    <version>0.23.0</version>
+    <time>1735842191</time>
+    <user>anag+factory</user>
+    <comment>- Fix the system integration
+  - actually build and use the sysuser pre snippet so that the user
+    is created before tmpfiles.d tries to create files
+- no longer break debugsymbols for the binary (remove -s -w)
+- use systemd macros for paths
+- ensure proper requires/ordering for sysuser/systemd (forwarded request 1234482 from darix)</comment>
+    <requestid>1234499</requestid>
+  </revision>
 </revisionlist>
