@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 31 20:50:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.5
+- Changes since 6.2.4:
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Dec  4 09:34:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add missing layer-shell-qt6 build and runtime dependencies

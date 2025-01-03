@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.2.4
+Version:        6.2.5
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
