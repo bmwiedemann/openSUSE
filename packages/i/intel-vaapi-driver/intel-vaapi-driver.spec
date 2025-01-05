@@ -20,7 +20,7 @@ Name:           intel-vaapi-driver
 Version:        2.4.1
 Release:        0
 Summary:        Intel Driver for Video Acceleration (VA) API for Linux
-License:        MIT AND EPL-1.0
+License:        EPL-1.0 AND MIT
 Group:          System/Libraries
 URL:            https://github.com/intel/%{name}/
 Source0:        %{name}-%{version}.tar.bz2
@@ -46,8 +46,6 @@ ExclusiveArch:  %ix86 x86_64
 # due to pkg rename vaapi-intel-driver > intel-vaapi-driver
 Provides:       vaapi-intel-driver = %{version}
 Obsoletes:      vaapi-intel-driver < %{version}
-# cause of no default install of xf86-video-intel and is recommended by this package
-Supplements:    modalias(xorg-x11-server:pci:v00008086d*sv*sd*bc03sc*i*)
 
 %description
 Intel Driver for Libva is a library providing the VA API video acceleration API.

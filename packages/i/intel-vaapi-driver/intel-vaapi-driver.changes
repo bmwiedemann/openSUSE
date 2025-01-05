@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 13:41:58 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable Supplements, as package is no longer supported upstream.
+  Hence we should not install it automatically. Further, the
+  intel-media-driver have surplanted this one for current hardware.
+
+-------------------------------------------------------------------
 Fri Aug  9 17:11:09 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - add 566.patch: fixed VAAPI Wayland on libva v2.22.0
