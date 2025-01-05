@@ -1,7 +1,7 @@
 #
 # spec file for package realmd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.freedesktop.org/software/realmd/
 Source:         https://gitlab.freedesktop.org/realmd/realmd/-/archive/%{version}/realmd-%{version}.tar.bz2
+Patch1:         0001-Create-parent-directory-for-sssd.conf-if-not-exists.patch
+Patch2:         0002-Update-OpenSUSE-configuration.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-tools
@@ -56,7 +58,7 @@ authentication and user account lookups.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 sh ./autogen.sh

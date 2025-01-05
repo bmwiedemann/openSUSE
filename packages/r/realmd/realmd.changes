@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:29:32 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- UsrEtc fixes, create parent directory for sssd.conf; (bsc#1232921);
+  Add 0001-Create-parent-directory-for-sssd.conf-if-not-exists.patch
+- Require sssd-ad and copy nsswitch.conf from /usr/etc prior
+  modification; (bsc#1232931); Add
+  0002-Update-OpenSUSE-configuration.patch
+
+-------------------------------------------------------------------
 Fri Apr 14 21:36:23 UTC 2023 - FroggyFlox <flox2b@gmail.com>
 
 - Adjust BuildRequires to enable detection of samba-cli version

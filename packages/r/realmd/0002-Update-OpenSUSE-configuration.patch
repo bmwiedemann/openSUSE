@@ -1,0 +1,38 @@
+From 51bcd3a51d9f591439e775ec1baafd36cc7ae585 Mon Sep 17 00:00:00 2001
+From: Samuel Cabrero <scabrero@suse.de>
+Date: Thu, 7 Nov 2024 13:24:05 +0100
+Subject: [PATCH 2/2] Update OpenSUSE configuration
+
+* Require sssd-ad package
+* If /etc/nsswitch.conf does not exists copy it from /usr/etc
+  before modifying
+
+Signed-off-by: Samuel Cabrero <scabrero@suse.de>
+---
+ service/realmd-suse.conf | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/service/realmd-suse.conf b/service/realmd-suse.conf
+index 68da049..306902a 100644
+--- a/service/realmd-suse.conf
++++ b/service/realmd-suse.conf
+@@ -11,6 +11,7 @@ samba-winbind = /usr/sbin/winbindd
+ 
+ [sssd-packages]
+ sssd = /usr/sbin/sssd
++sssd-ad = /usr/libexec/sssd/sssd_pac
+ sssd-tools = /usr/sbin/sss_cache
+ 
+ [adcli-packages]
+@@ -30,7 +31,7 @@ winbind-stop-service = /usr/bin/systemctl stop winbind.service
+ 
+ 
+ # add pam via pam-config and nssswitch.conf via sed, since there is no cli handling nsswitch (sed add idempotently word sss to nsswitch.conf)
+-sssd-enable-logins = /bin/sh -c "/usr/sbin/pam-config --add --sss --mkhomedir && sed -E 's/(passwd:.*) sss/\1/; s/(passwd:.*)/\1 sss/; s/(group:.*) sss/\1/; s/(group:.*)/\1 sss/; s/(shadow:.*) sss/\1/; s/(shadow:.*)/\1 sss/;' -i /etc/nsswitch.conf"
++sssd-enable-logins = /bin/sh -c "/usr/sbin/pam-config --add --sss --mkhomedir && if [ ! -f /etc/nsswitch.conf ]; then cp /usr/etc/nsswitch.conf /etc/nsswitch.conf; fi && sed -E 's/(passwd:.*) sss/\1/; s/(passwd:.*)/\1 sss/; s/(group:.*) sss/\1/; s/(group:.*)/\1 sss/; s/(shadow:.*) sss/\1/; s/(shadow:.*)/\1 sss/;' -i /etc/nsswitch.conf"
+ # remove pam via pam-config and nssswitch.conf via sed, since there is no cli handling nsswitch (sed remove sss word from passwd/group/shadow lines)
+ sssd-disable-logins = /usr/bin/sh -c "/usr/sbin/pam-config --delete --sss && sed -E 's/(passwd:.*) sss/\1/; s/(group:.*) sss/\1/; s/(shadow:.*) sss/\1/;' -i /etc/nsswitch.conf"
+ sssd-enable-service = /usr/bin/systemctl enable sssd.service
+-- 
+2.47.1
+
