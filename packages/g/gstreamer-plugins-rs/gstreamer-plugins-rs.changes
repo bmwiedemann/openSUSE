@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan  2 21:55:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.13.4:
+  + Fixed:
+    - cea608overlay: Fix rendering when roll-up base row is at the
+      top.
+    - cea708mux:
+      . Handle CEA608 data correctly and output padding by default.
+      . Clear leftover pending codes correctly.
+    - cea708overlay:
+      . Produce better CEA608 layouts.
+      . Fix background/foreground types and enable black background
+        by default.
+      . Clear correctly on caption timeout.
+    - mpegtslivesrc: Various fixes related to stream
+      discontinuities.
+    - tttocea708: Fix various conformance issues.
+    - togglerecord: Fix various deadlocks and simplify mutexes.
+    - webrtcsink:
+      . Fix various deadlocks.
+      . Set caps-change-mode=delayed on encoder capsfilter.
+      . Ignore more fields on caps changes.
+  + Added:
+    - awss3putobjectsink: Add next-file support.
+    - tracers: Add signal to force writing log file to queue-levels
+      and buffer-lateness tracers.
+    - webrtc: Handle some more Janus events.
+    - webrtcsink: Add support for openh264enc and nvh265enc.
+    - webrtcsrc: Add connect-to-first-producer property.
+
+-------------------------------------------------------------------
 Mon Dec  9 11:12:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.13.3:
