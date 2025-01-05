@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 18 12:27:01 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 22.5.5:
+  * Add new media compression mode to fix assertion (#224)
+  * Adjust BaseWidth for RGB24 format (#64)
+  * Enable IsCpuCacheable in Linux (#214)
+  * PAT MOCS Programming for test (#223)
+  * Make R10G10B10_XR_BIAS_A2_UNORM as presentable (#222)
+  * Add new DG2 Device ID (#221)
+  * Update reserved PATIndex (#220)
+
+-------------------------------------------------------------------
 Thu Sep 12 09:54:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 22.5.2 - changes since 22.3.20 (jira#PED-10205)
