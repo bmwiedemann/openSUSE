@@ -1,7 +1,8 @@
 #
 # spec file for package sddm-conf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +19,14 @@
 
 %define  _name  sddm_conf
 Name:           sddm-conf
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        SDDM configuration editor
 License:        MIT
 URL:            https://github.com/qtilities/sddm-conf
-Source0:        https://github.com/qtilities/sddm-conf/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  extra-cmake-modules >= 6.0
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  cmake >= 3.15
+BuildRequires:  extra-cmake-modules >= 6.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  qtilitools
@@ -53,6 +54,9 @@ C++.
 %suse_update_desktop_file -r -G "Display Manager Configuration" -N "SDDM Configuration" %{_name} Qt Settings System
 
 %find_lang %{name} --with-qt
+
+%check
+%ctest
 
 %files
 %license COPYING
