@@ -1,0 +1,6 @@
+<package name="labwc-tweaks" project="openSUSE:Factory">
+  <title>labwc-tweaks</title>
+  <description>This is a GUI 'Settings' application for labwc.</description>
+  <devel project="X11:Wayland" package="labwc-tweaks"/>
+  <url>https://github.com/labwc/labwc-tweaks</url>
+</package>

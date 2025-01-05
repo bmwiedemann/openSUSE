@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat Jan  4 16:14:21 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added missing BSD-3-Clause license to %doc
+
+-------------------------------------------------------------------
+Sat Jan  4 16:04:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- formatting
+- use hicolor-icon-theme in comparison to owning the dirs
+
+-------------------------------------------------------------------
+Fri Jan 03 22:12:30 UTC 2025 - sfalken@opensuse.org
+
+- Update to version 0~git.20241209.b4fcde7:
+  * theme: minor simplification
+  * Weblate commits
+  * theme: start openbox/cursor themes with empty entries
+  * Add Cascade to placement policy
+
+-------------------------------------------------------------------
+Sat Jul  1 20:20:59 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- First Build/Commit
