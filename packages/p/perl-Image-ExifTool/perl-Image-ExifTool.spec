@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Image-ExifTool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Image-ExifTool
 Name:           perl-Image-ExifTool
-Version:        13.00
+Version:        13.11
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Read and write meta information
