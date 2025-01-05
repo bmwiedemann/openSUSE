@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 18 12:08:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 24.4.4:
+  * [Decode] Fix a decode coding style issue
+  * [VP] Fix 3DLut/HVS kernel copy overflow
+  * [Media Common] [VP] [MCPY] Avoid double free when init MCPY fails
+  * Revert "[VP] Fix 3DLut/HVS kernel copy overflow"
+  * [VP] Fix 3DLut/HVS kernel copy overflow
+- Update supplements.
+
+-------------------------------------------------------------------
 Fri Oct 18 11:55:25 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 24.4.0:
