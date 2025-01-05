@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  5 05:14:43 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove obsolete netcdf build dependency, netcdf bindings were
+  removed with version 9.3.3.
+- Minor spec file cleanups.
+
+-------------------------------------------------------------------
 Fri Dec 27 05:24:56 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add dealii-disable-parallel-doc-build.patch: Disable parallel

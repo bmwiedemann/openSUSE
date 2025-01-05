@@ -106,15 +106,12 @@ BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  libnetcdf_c++-devel
 BuildRequires:  memory-constraints
 BuildRequires:  metis-devel
 BuildRequires:  muparser-devel
-BuildRequires:  netcdf-devel
 BuildRequires:  ninja
-BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  suitesparse-devel
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(bzip2)
