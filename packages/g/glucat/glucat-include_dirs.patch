@@ -1,0 +1,44 @@
+Index: glucat-0.12.0/pyclical/Makefile.am
+===================================================================
+--- glucat-0.12.0.orig/pyclical/Makefile.am
++++ glucat-0.12.0/pyclical/Makefile.am
+@@ -37,7 +37,7 @@ all: $(pyexec_DATA)
+ $(pyexec_DATA): $(SETUP_SOURCE_LIST) $(SETUP).py setup_ext.py
+ 	ext_name="$(ext_name)" $(SETUP_SOURCE_PARAM) \
+ 	CXX="$(CXX)" CXXVERSION="$(CXXVERSION)" CFLAGS="" CXXFLAGS="$(EXTCXXFLAGS)" AM_CPPFLAGS="$(EXTAM_CPPFLAGS)" \
+-	LDFLAGS="$(USER_LDFLAGS)" LIBRARIES="$(LIBS)" \
++	all_includes="$(all_includes)" LDFLAGS="$(USER_LDFLAGS)" LIBRARIES="$(LIBS)" \
+ 	$(PYTHON) $(SETUP).py build_ext --inplace
+ 
+ if use_cython
+Index: glucat-0.12.0/pyclical/Makefile.in
+===================================================================
+--- glucat-0.12.0.orig/pyclical/Makefile.in
++++ glucat-0.12.0/pyclical/Makefile.in
+@@ -533,7 +533,7 @@
+ @make_pyclical_TRUE@$(pyexec_DATA): $(SETUP_SOURCE_LIST) $(SETUP).py setup_ext.py
+ @make_pyclical_TRUE@	ext_name="$(ext_name)" $(SETUP_SOURCE_PARAM) \
+ @make_pyclical_TRUE@	CXX="$(CXX)" CXXVERSION="$(CXXVERSION)" CFLAGS="" CXXFLAGS="$(EXTCXXFLAGS)" AM_CPPFLAGS="$(EXTAM_CPPFLAGS)" \
+-@make_pyclical_TRUE@	LDFLAGS="$(USER_LDFLAGS)" LIBRARIES="$(LIBS)" \
++@make_pyclical_TRUE@	all_includes="$(all_includes)" LDFLAGS="$(USER_LDFLAGS)" LIBRARIES="$(LIBS)" \
+ @make_pyclical_TRUE@	$(PYTHON) $(SETUP).py build_ext --inplace
+ 
+ @make_pyclical_TRUE@@use_cython_TRUE@$(ext_name).cpp: $(pyexec_DATA)
+Index: glucat-0.12.0/pyclical/setup_ext.py
+===================================================================
+--- glucat-0.12.0.orig/pyclical/setup_ext.py
++++ glucat-0.12.0/pyclical/setup_ext.py
+@@ -29,9 +29,11 @@ libraries = os.environ["LIBRARIES"].repl
+ 
+ 
+ def setup_ext(ext_name, source):
++    all_includes_list = os.environ["all_includes"].replace("-I", "").split()
+     ext = Extension(
+-        ext_name,        # name of extension
+-        sources=[source] # filename of our Cython source
++        ext_name,         # name of extension
++        sources=[source], # filename of our Cython source
++        include_dirs=all_includes_list
+     )
+     return ext
+ 

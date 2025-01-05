@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 27 22:59:26 UTC 2024 - Paul Leopardi <paul.leopardi@gmail.com>
+
+- In setup_ext.py, in the call to Extension, Set include_dirs to 
+  a list obtained from all_includes.
+- Add glucat-include_dirs.patch: upstream fix from
+  https://github.com/penguian/glucat/pull/53 
+
+-------------------------------------------------------------------
 Thu Mar 16 02:23:31 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add changepage.sty dependency, reenable PDF generation on TW

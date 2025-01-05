@@ -251,4 +251,16 @@
     <comment></comment>
     <requestid>1072711</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>6625fcd919cc3971cef7748d7d04c7a8</srcmd5>
+    <version>0.12.0</version>
+    <time>1736087513</time>
+    <user>anag+factory</user>
+    <comment>- In setup_ext.py, in the call to Extension, Set include_dirs to 
+  a list obtained from all_includes.
+- Add glucat-include_dirs.patch: upstream fix from
+  https://github.com/penguian/glucat/pull/53 
+</comment>
+    <requestid>1234925</requestid>
+  </revision>
 </revisionlist>

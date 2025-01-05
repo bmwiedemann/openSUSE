@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package glucat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ URL:            http://glucat.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE glucat-disable-doxygen-html-timestamp.patch badshah400@gmail.com -- Disable timestamps from html footer to make build reproducible
 Patch0:         glucat-disable-doxygen-html-timestamp.patch
+# PATCH-FIX-UPSTREAM glucat-include_dirs.patch paul.leopardi@anu.edu.au -- Add include_dirs to ext creation as per https://github.com/penguian/glucat/pull/53/files
+Patch1:         glucat-include_dirs.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
