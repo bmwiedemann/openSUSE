@@ -1,7 +1,0 @@
-<package name="sgrep" project="openSUSE:Factory">
-  <title>Searching for Structured Patterns</title>
-  <description>Sgrep is like &quot;grep&quot; but it will also work for structured patterns. You
-can use the program to extract fragments from SGML/XML or any other
-well formed text files (including UTF-8 encoded files).</description>
-  <devel project="Publishing" package="sgrep"/>
-</package>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 23 01:14:37 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update auto-update to version 0.2.6.
+  ## 0.2.6
+
+  * Using the thread version of AutoUpdate for non-threaded RTS.
+    [#1020](https://github.com/yesodweb/wai/pull/1020)
+
+-------------------------------------------------------------------
 Wed Dec 18 03:42:02 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update auto-update to version 0.2.5.

@@ -1,7 +1,7 @@
 #
 # spec file for package genders
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,8 +38,6 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  lua-devel
-BuildRequires:  luajit2-devel
 BuildRequires:  patchelf
 BuildRequires:  python3-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)

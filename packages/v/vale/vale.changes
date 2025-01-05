@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 02 04:04:08 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.9.3:
+  * refactor: ensure JSON errors always include the same keys
+  * feat: allow escaping "|" in substitution rules
+
+-------------------------------------------------------------------
+Thu Jan 02 03:49:08 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.9.2:
+  * fix: handle regex-based replacements
+  * refactor: only fetch library when needed
+  * chore: update ruby dependencies (#937)
+  * docs: fix demo image
+  * refactor: fix golangci
+  * fix: check `qErr != nil` but return a nil value error `err` (#935)
+  * refactor: support JSON in `ls-dirs`
+  * fix: don't hide `minAlertLevel`
+  * fix: show all alerts by default
+  * refactor: fix golangci
+  * refactor: support storing filters in `config`
+
+-------------------------------------------------------------------
 Mon Nov 18 12:30:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.9.1:

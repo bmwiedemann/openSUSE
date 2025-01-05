@@ -40,4 +40,12 @@
   * Drop support for Python 2.7, 3.5, 3.6.</comment>
     <requestid>1133868</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>68a2b12a205fd23654f3f728b950abf5</srcmd5>
+    <version>5.0</version>
+    <time>1736087423</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1234724</requestid>
+  </revision>
 </revisionlist>

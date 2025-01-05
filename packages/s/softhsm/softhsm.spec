@@ -62,7 +62,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       mozilla-nss-tools
 Requires:       p11-kit
 Requires(pre):  shadow
-# %%sysusers_requires
+%sysusers_requires
 
 %description
 OpenDNSSEC is providing a software implementation of a generic

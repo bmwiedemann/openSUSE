@@ -1,7 +1,7 @@
 #
 # spec file for package gpu-screen-recorder
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           gpu-screen-recorder
-Version:        20241208
+Version:        20250102
 Release:        0
 Summary:        An extremely fast hardware-accelerated screen recorder
 License:        GPL-3.0-only

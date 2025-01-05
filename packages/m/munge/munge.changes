@@ -3,7 +3,10 @@ Sun May 26 11:03:40 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 0.5.16
   * Fixed connect failure retry for full socket listen queue.
-  * Added --listen-backlog cmdline opt. (#139) 
+  * Added `--listen-backlog` cmdline opt.
+  This release is backwards-compatible to 0.5; however, credentials
+  encoded with the current default of `MUNGE_MAC_SHA256` cannot be
+  decoded by releases prior to 0.5.5.
 
 -------------------------------------------------------------------
 Wed Jul  6 09:29:47 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
@@ -48,7 +51,7 @@ Fri Jun 19 05:00:01 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Use 'mungekey' to generate munge key,
   Change permission of 'mungekey' from 0400 to 0600
-- Remove munge key on uninstall  
+- Remove munge key on uninstall
 - Add a bit of QA by running 'make check'
 - Consolidate 'rundir'-handling:
   * fixed the location using %_rundir

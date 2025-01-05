@@ -43,4 +43,12 @@
 - enable devel package</comment>
     <requestid>1230241</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c7c3bddbd9fc62483cd2ddaef64baee3</srcmd5>
+    <version>0.2.0</version>
+    <time>1736087464</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1234826 from rrahl0)</comment>
+    <requestid>1234827</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jan  2 15:46:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.12:
+  * zshrc: use $HOST instead of forking to uname -n
+  * zshenv: stop setting HOSTNAME
+  * zshrc: remove grml_maintain_name
+  * zshrc: stop setting CLICOLOR
+  * zshrc: use path_helper on macOS
+  * zshrc: remove fink init on macOS
+  * zshrc: remove zurl function
+  * zshrc: drop aterm workaround
+  * zshrc: drop mrxvt workaround
+  * zshrc: drop centericq workaround
+  * zshrc: remove fink init on macOS
+  * zshrc: remove 855resolution function
+  * zshrc: remove cdrecord function
+  * doc: remove old version info
+  * zshrc: require zsh version 5.1
+  * zshrc: remove add-zsh-hook from grml_prompt_setup
+  * zshrc: remove copy of add-zsh-hook
+  * Drop DISTCC_HOSTS variable
+
+-------------------------------------------------------------------
+Thu Jan  2 15:46:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.11:
+  * zshrc: set HISTSIZE + SAVEHIST only if not yet set or being set
+    to zsh upstream default #160 #169
+
+-------------------------------------------------------------------
+Thu Jan  2 15:44:46 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.10:
+  * Revert "zshrc: increase HISTSIZE + SAVEHIST to our defaults
+    also for live system" #169 #160
+  * Revert "fix(zshrc): keep existing history restrictions" #169 #160
+
+-------------------------------------------------------------------
 Mon Dec 16 11:55:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.9:

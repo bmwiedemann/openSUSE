@@ -1475,4 +1475,29 @@ Another attempt to upgrade Python-fanficfare, but I have my doubts.
 (🤖: Submission of python-fanficfare via https://src.opensuse.org/pool/python-fanficfare/pulls/4 by mcepl)</comment>
     <requestid>1221255</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0d4f751f11f9858453603d378e364e0c</srcmd5>
+    <version>4.41.0</version>
+    <time>1736087299</time>
+    <user>anag+factory</user>
+    <comment>Update To 4.41.0
+
+- Update to 4.41.0:
+  - Update Translations
+  - New Site: superlove.sayitditto.net (#1136) Thanks xxwhirlpool
+  - New Site: www.cfaarchive.org (#1136) Thanks xxwhirlpool
+  - XenForo lazyload: use data-src first if data-url also
+    present. QQ proxy in data-src caches/bypasses some issues
+  - adapter_inkbunnynet: Implemented always_login, thanks dbhmw
+  - Small fixes for Wattpad. (#1137), thanks dbhmw
+  - adapter_fimfictionnet: Implement always_login. Remove unused
+    fail_on_password &amp; do_update_hook settings. #1135
+  - Call Calibre's safe_open_url for open_pages_in_browser
+  - Add subject_tags to -m/j CLI output
+  - Fix for double replace_metadata when non-list metadata called
+    by getList().
+
+(🤖: Submission of python-fanficfare via https://src.opensuse.org/pool/python-fanficfare/pulls/5 by mcepl)</comment>
+    <requestid>1234432</requestid>
+  </revision>
 </revisionlist>

@@ -95,4 +95,16 @@
     <comment></comment>
     <requestid>1229159</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e362fcf5ce2d36e239c4fb8c66a5fcb6</srcmd5>
+    <version>20250102</version>
+    <time>1736087362</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250102:
+  * Better compatibility and performance on some older AMD GPUs
+  * Better handle application audio nodes, fixing possible issue
+    with application audio not working
+</comment>
+    <requestid>1234648</requestid>
+  </revision>
 </revisionlist>

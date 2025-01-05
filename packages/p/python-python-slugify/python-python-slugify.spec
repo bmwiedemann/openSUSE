@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-python-slugify
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define short_name python-slugify
 Name:           python-%{short_name}
-Version:        8.0.1
+Version:        8.0.4
 Release:        0
 Summary:        Slugify application that handles Unicode
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-text-unidecode >= 1.3
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-Unidecode >= 1.1.1
 Conflicts:      python-awesome-slugify
 BuildArch:      noarch

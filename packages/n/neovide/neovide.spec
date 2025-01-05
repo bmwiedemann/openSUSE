@@ -1,7 +1,7 @@
 #
 # spec file for package neovide
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define skia_version m126-0.74.2
+%define skia_version m131-0.79.1
 %define wuffs_commit e3f919ccfe3ef542cfc983a82146070258fb57f8
 
 Name:           neovide
-Version:        0.13.3
+Version:        0.14.0
 Release:        0
 Summary:        Simple Neovim GUI
 License:        MIT

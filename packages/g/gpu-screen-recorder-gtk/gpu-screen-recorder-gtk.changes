@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 03 04:11:10 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250102:
+  * Fix regression: incorrect window resulting in incorrect game
+    name for video, and background for uncomposited x11
+  * Fix unable to properly add program to system startup on
+    immutable distros
+  * Fix streaming not working in the new UI
+  * Open the running new UI when trying to launch it again instead
+    of showing an error, to allow switching back to the old UI in
+    case of errors
+  * Add a new experimental UI, a ShadowPlay-like fullscreen
+    overlay UI with support for global hotkeys on any Wayland
+    compositor
+
+-------------------------------------------------------------------
 Tue Dec 03 00:08:23 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20241124:

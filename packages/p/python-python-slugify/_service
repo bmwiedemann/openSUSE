@@ -2,8 +2,8 @@
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/un33k/python-slugify.git</param>
     <param name="scm">git</param>
-    <param name="revision">v8.0.1</param>
-    <param name="versionformat">v8.0.1</param>
+    <param name="revision">v8.0.4</param>
+    <param name="versionformat">v8.0.4</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

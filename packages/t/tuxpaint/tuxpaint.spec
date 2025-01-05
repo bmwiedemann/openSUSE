@@ -18,7 +18,7 @@
 
 %define sdlver 2
 Name:           tuxpaint
-Version:        0.9.33
+Version:        0.9.34
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ Patch1:         tuxpaint-makefile.patch
 # PATCH-FIX-UPSTREAM tuxpaint-pango-cflags.patch -- Include cflags from pango's pkgconfig file, needed only for sdl2 flavour
 Patch2:         tuxpaint-pango-cflags.patch
 BuildRequires:  ImageMagick
+BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(sdl%{?sdlver})
 BuildRequires:  pkgconfig(SDL%{?sdlver}_Pango)
 BuildRequires:  pkgconfig(SDL%{?sdlver}_image)
@@ -52,7 +53,6 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig(SDL%{?sdlver}_gfx)
 BuildRequires:  pkgconfig(librsvg-2.0)
-BuildRequires:  update-desktop-files
 Requires:       gnu-free-fonts
 Requires:       netpbm
 Recommends:     tuxpaint-config
@@ -62,7 +62,6 @@ Recommends:     tuxpaint-stamps
 # Fedora
 #
 %if 0%{?fedora_version}
-BuildRequires:  desktop-file-utils
 BuildRequires:  freetype-devel >= 2.0
 BuildRequires:  gettext
 BuildRequires:  librsvg2-devel
@@ -144,16 +143,13 @@ find %{buildroot} -type d -exec chmod 0755 {} +
 # Delete hidden thumbnail files
 find %{buildroot}%{_datadir}/%{name} -name ".thumbs" -print -exec rm -fr {} +
 
+desktop-file-install --dir %{buildroot}/%{_datadir}/applications \
+    --delete-original \
+    ./src/tuxpaint.desktop
+
 %if 0%{?suse_version}
-find %{buildroot} -name "*.desktop" -print -delete
-%suse_update_desktop_file -i %{name} Game KidsGame
 %fdupes -s %{buildroot}
 %else
-desktop-file-install --dir %{buildroot}/%{_datadir}/applications \
-    --vendor %{vendor} \
-    --add-category KidsGame \
-    --delete-original \
-    %{buildroot}/%{_datadir}/applications/tuxpaint.desktop
 rm -rf %{buildroot}/%{_docdir}/%{name}
 %endif
 

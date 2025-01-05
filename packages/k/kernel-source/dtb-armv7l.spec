@@ -1,7 +1,7 @@
 #
 # spec file for package dtb-armv7l
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.6
+%define patchversion 6.12.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        6.12.6
+Version:        6.12.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfb072de
+Release:        <RELEASE>.gab2dfe6
 %else
 Release:        0
 %endif

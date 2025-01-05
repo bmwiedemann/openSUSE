@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 03 04:41:48 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250103.44145ae9:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: bootstrap: Improve sync_files_to_disk function (bsc#1219537)
+
+-------------------------------------------------------------------
+Thu Jan 02 10:51:14 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250102.150f4c85:
+  * Fix: unittest: rename TestPrinter to UnitTestPrinter
+
+-------------------------------------------------------------------
+Thu Jan 02 08:17:29 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250102.24021985:
+  * Dev: unittests: Rewrite test_findln_by_timestamp by using fixed date
+
+-------------------------------------------------------------------
+Mon Dec 30 12:48:14 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241230.14da5227:
+  * Dev: ra: Drop legacy code to get metadata of the pacemaker daemons
+
+-------------------------------------------------------------------
 Mon Dec 30 03:27:38 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20241230.aae750fc:

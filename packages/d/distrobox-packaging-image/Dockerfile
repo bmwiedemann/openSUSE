@@ -25,6 +25,7 @@ RUN zypper --non-interactive install --no-recommends git \
     vim \
     vim-data \
     scout-command-not-found \
+    cargo-vendor-filterer \
     obs-service-download_files \
     obs-service-tar \
     obs-service-tar_scm \
@@ -32,6 +33,7 @@ RUN zypper --non-interactive install --no-recommends git \
     obs-service-set_version \
     obs-service-recompress \
     obs-service-go_modules \
+    obs-service-cargo \
     obs-service-product_converter \
     obs-service-format_spec_file \
     osc-plugin-cycle \

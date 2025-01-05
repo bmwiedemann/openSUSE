@@ -1,7 +1,7 @@
 #
 # spec file for package trippy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           trippy
-Version:        0.12.0
+Version:        0.12.2
 Release:        0
 Summary:        A network diagnostic tool
 License:        Apache-2.0

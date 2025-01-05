@@ -1,7 +1,7 @@
 #
 # spec file for package ripcalc
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ripcalc
-Version:        0.1.12
+Version:        0.1.13
 Release:        0
 Summary:        Tool for network addresses
 License:        GPL-3.0-or-later
@@ -35,6 +35,9 @@ file formats for network information lists.
 
 %prep
 %autosetup -p1 -a1
+%if 0%{?suse_version} < 1600
+find Cargo.lock vendor/ -type f -name Cargo.lock -exec sed -Ei 's/^version = 4$/version = 3/g' {} \;
+%endif
 
 %build
 %{cargo_build}

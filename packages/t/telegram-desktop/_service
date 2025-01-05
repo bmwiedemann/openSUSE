@@ -1,0 +1,35 @@
+<services>
+
+<service name="obs_scm" mode="manual">
+  <param name="scm">git</param>
+  <param name="url">https://github.com/telegramdesktop/tdesktop</param>
+  <param name="filename">tdesktop</param>
+  <param name="revision">v5.10.0</param>
+  <param name="versionformat">@PARENT_TAG@</param>
+  <param name="versionrewrite-pattern">v(.*)</param>
+  <param name="versionrewrite-replacement">\1</param>
+</service>
+
+<service name="obs_scm" mode="manual">
+  <param name="scm">git</param>
+  <param name="url">https://github.com/ada-url/ada</param>
+  <param name="filename">ada</param>
+  <param name="revision">v2.9.0</param>
+  <param name="version">_none_</param>
+</service>
+
+<service name="obs_scm" mode="manual">
+  <param name="scm">git</param>
+  <param name="url">https://github.com/xuzhao9/tg_owt</param>
+  <param name="filename">tg_owt</param>
+  <param name="revision">8198c4d8b91e22d68eb5c7327fd408e3b6abcc79</param>
+  <param name="version">_none_</param>
+</service>
+
+<service name="tar" mode="manual" />
+<service name="recompress" mode="manual">
+  <param name="compression">zstd</param>
+  <param name="file">*.tar</param>
+</service>
+
+</services>

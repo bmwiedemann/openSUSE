@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 30 18:53:44 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.4.1, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.4.md
+
+-------------------------------------------------------------------
 Sun Dec 22 03:31:28 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix broken LD_LIBRARY_PATH mangling for openmpi builds

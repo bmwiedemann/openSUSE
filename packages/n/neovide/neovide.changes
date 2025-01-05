@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Jan 04 05:48:59 UTC 2025 - lujianhua000@gmail.com
+
+- Update to version 0.14.0:
+  * chore: release 0.14.0 (#2920)
+  * refactor: refactor macos window transparency handling (#2917)
+  * feat: add normal opacity (#2780)
+  * fix: Neovide transparency works for floating windows again (#2916)
+  * Fix crash when flushed before win_pos (#2913)
+  * Another attempt to fix the window size (#2912)
+  * Fix the calculation of the window size (#2908)
+  * Fix setting of lines/columns on Wayland (#2907)
+  * Handle font changes during frame prepare (#2909)
+  * feat: backtraces file path config (#2717)
+  * Initialize the window when viewport margins is received (#2904)
+  * Fix the formatting (#2903)
+  * fix: pasting ^M symbols from clipboard (#2869)
+  * chore: Update dependencies (#2902)
+  * feat: add title bar colours for windows (#2827)
+  * refactor: simplify lifetime specifiers
+  * chore: update funding to `open_collective` (#2880)
+  * docs: improve installation instructions and build steps for macOS (#2875)
+  * feat: add support of Metal renderer on macOS. (#2461)
+  * chore: update `skia-safe` version to `0.80.0` (#2873)
+  * feat: create apple code signing and notarization (#2814)
+  * fix: rounded corners rendering (#2857)
+  * fix: --wayland_app_id doesn't work (#2847)
+  * fix: ci build errors (#2851)
+  * Rounded floating windows (#1993) (#2743)
+  * internal: Use macOS-latest runners and bump MACOSX_DEPLOYMENT_TARGET to 10.11 (#2844)
+  * bug: make sure to load and set the app icon for any context (#2832)
+  * feat: add mouse cursor icon option (#2834)
+  * chore: format and add stylua.toml (#2823)
+  * Remove `lazy_static`
+  * Windows app icon to display in old alt+tab on Windows. (#2816)
+  * fix: error if trying to specify font style overrides without a family (#2812)
+  * on macOS, activate when launched
+  * Update syn to 2.x to reduce package repetition in the binary (#2811)
+  * Add faq entry for disabling all animations (#2810)
+  * Swap link to point at aarch64 build for mac (#2808)
+  * Update winit to 0.30.5 (#2806)
+  * Fix mouse scrolling with no multigrid
+  * fmt: fmt imports in macos.rs files
+  * disable AppKit's command line processing
+  * fix: drag and drop files on application icon in Dock to open not work. (#2782)
+  * chore: update objc2 and remove icrate. also some refactor. (#2768)
+  * Force Neovide to exit, even if the IO streams are not closed (#2765)
+  * chore: update create-dmg package installation (#2756)
+  * docs: consolidate macOS build instructions and scripts (#2716)
+  * chore: Update to winit 0.30.3 (#2698)
+  * chore: Switch to glamour instead of euclid (#2708)
+
+-------------------------------------------------------------------
 Thu Oct 24 12:10:11 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
 
 - fix build on Leap 16.0

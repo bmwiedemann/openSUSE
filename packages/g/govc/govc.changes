@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jan 03 08:45:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.47.0:
+  * chore: Update version.go for v0.47.0
+  * govc: Update govc usage doc
+  * api: Fix OVF param to use interface
+  * api: Generate bindings for 9.0.0.0.rc1
+  * api: Generate API with Broadcom header
+  * api: Specify ruby bundler for api gen
+  * api: Update gen/gen.sh for 9.0.0.0.rc1
+  * api: Support podman for building api
+  * api: Build api with Go 1.23.2
+  * govc: add datastore.download -json support
+  * chore: update copyright header
+  * vcsim: create cls vmdk descriptor and backing files
+  * vcsim: Improve sim for pub/sub content libs
+  * govc: add -b flag to volume.ls
+  * cns: add json tags
+  * api: Support returning DS info when resolving lib stor
+  * api: Support DC for ResolveLibItemStor
+  * govc: add disk.ls '-a' flag
+  * api: Support encode/decode OVF to JSON
+  * govc: add datastore.ls -H option
+  * fix: govc fix field.info name (-n flag) validation
+  * fix: SOAP vcSessionCookie value must be from vim25.Client
+  * api: Fix object.VirtualDiskManager::Copy
+  * vcsim: make QueryVirtualDiskUuid() result stable
+  * vcsim: add VirtualDiskManager.QueryVirtualDiskInfo
+  * vcsim: fix object.save when run directly against ESX
+  * vcsim: LicenseManager enhancements
+  * api: Update OVF ToConfigSpec to handled unknown types
+  * api: A generic copy function for vim25/types
+  * govc: remove minimum API version check
+  * api: add override mechanism for SOAP Header.Cookie
+  * api: OVF to ConfigSpec
+  * Deprecate haproxy with vSphere 9.0
+  * fix: toolbox: add freebsd stub for fileExtendedInfoFormat
+  * build(deps): bump golang.org/x/text from 0.18.0 to 0.21.0
+  * fix: vcsim: swap order of xsi type attribute
+  * api: Support OVF ResourceType enum
+  * api: Update OVF parser to conform to spec
+  * vcsim: add UpdateAssignedLicense method
+  * fix: assert Entity interface in mo.Value()
+  * api: move cli/host/esxcli.Command to cli/esx package
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0
+  * vcsim: add esxcli support
+  * fix: Property Collector updates should be triggered on the
+    empty FilterSet
+  * fix: vcsim: output signed byte in ByteSlice.MarshalXML
+  * govc: Move govc commands into cli pkg
+  * fix: govc: wire up flags for namespace service create
+  * vcsim: Lock alpine image tag to non-latest tag
+  * fix: vcsim: avoid possible panic when applying PropertyFilter
+  * chore: Minimum version selection
+  * cns: Support encryption/re-encryption of volumes
+
+-------------------------------------------------------------------
 Fri Dec 13 06:06:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.46.3:

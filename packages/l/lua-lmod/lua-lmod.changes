@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Fri Jan  3 12:10:22 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Update to version 8.7.55:
+  * Version 8.7.38
+    + Issue #697: Add warning if doing `module use --help`
+    + Make `LMOD_IGNORE_CACHE` use "yes/no" env variable setting
+      system.
+    + Make `module --terse show <module>` do the same as
+      `module --loc show <module>`, namely print the location of the
+      module.
+    + Support for `module --terse spider phdf5/1.12.2` that just
+      prints the module in the hierarchy.
+    + Move almost almost all `cosmic:value()` calls to inside
+      function not at routine top-level.
+    + Report build time in UTC when `$SOURCE_DATE_EPOCH` is set.
+    + Support for downstream conflicts has been added.
+    + Support for dynamic `LMOD_MODULERC` has been added.
+   (8.7.39) * Fix busted test for ModuleA.
+  * Version 8.7.40
+    + Bug fix for prepend/append path when trying to add an empty string.
+    + Bug fix for `serializeTbl`: handle empty or single blank
+      string as key.
+  * Version 8.7.41
+    + Added new function `depends_on_any()`.
+    + If `$MODULES_AUTO_HANDLING` is set then
+      `prereq() -> depends_on()`; prereq_any() -> depends_on_any()`
+    + Generate a perl pod format for manpage for `module.1`
+    + `ModuleTable` modification: Changes to `$MODULEPATH` are
+      stored in an entry.
+  * Version 8.7.42
+    + Fix setting of `$FPATH` when running bash or ksh shell
+      and executing `zsh -l`.
+  * Version 8.7.43
+    + Support for ksh flag not needed anymore.
+  * Version 8.7.44
+    + `path2pathA()` keep double delims, Reduce triple delims to double.
+  * Version 8.7.45
+    + Changing `MName.src`: `l_find_highest_by_key()` to loop over
+      all `fileA` entries. Now stoping at first one found rather than
+      just looking at `fileA[1]`.
+    + Adding `=encoding UTF-8` to pod generation.
+  * Version 8.7.46
+    + Must only add `KSH_SUPPORT` to zsh when both `$orig_zsh_version`
+      and `$zsh_fpath` have non-null values.
+  * Version 8.7.47
+    + Use correct shell syntax in bash init script.
+  * Version 8.7.48
+    + Keep previous `varT` when restoring a collection.
+      Otherwise the previous modules env vars are lost and therefore
+      not purged.
+    + Use `__build_FPATH_for_zsh_ksh` to build `FPATH` for both shells.
+    + Support for `terse avail` extensions.
+  * Version 8.7.49
+    + Add support for zsh to handle a non-exported `FPATH` in bash
+      init script.
+    + Change `MF_Base:processVars` to use `oldT` to know which paths
+      from `newA` to prepend or append.
+    + Add support for `LMOD_FILE_IGNORE_PATTERNS` in `src/DirTree.lua`.
+      This is to ignore files like `.version.1.3` or `.modulerc-1.3.lua`
+      etc.
+  * Version 8.7.50
+    + Emacs lisp integration updated.
+    + Use `command -v` instead of checking status `$?`.
+    + Change `--hidden_load` to `--hidden-loaded` for TCL change
+      `hidden_load` to `hidden_loaded` in Lua.
+    + Report `dofile()` usage as an error.
+    + Updated `FPATH` support: bash, ksh just add path
+      (`init/ksh_funcs`) to `FPATH`.
+    + zsh: if `autoload` and `compinit` fail then set `__zsh_fpath`
+      with sub-shell.
+    + Improve `addto` to not include duplicates in path like
+      variables (`PATH`, `FPATH`, .. )
+    + Add support for `--dumpname` in `lmod` and `ml`; Update tab
+      completions files.
+    + Do not reset `BASH_ENV` if already set for `cshrc.in`.
+    + Do not reset `BASH_ENV` if already set for profile.in.
+    + Support for the functions `hide{}` and `forbid{}`.
+  * Version 8.7.51
+    + Fix bug in load test.
+  * Version 8.7.52
+    + Add `MName:isVisible()` so that load hooks can figure out if
+      a loaded module is is visible or not.
+  * Version 8.7.53
+    + Updating docs to include link to `165_debugging_lmod.rst`.
+  * Version 8.7.54
+    + Remove all `v.file` tests in dealing with `ModuleA`.
+    + Use `self.__mpathT[mpath].hiddenT` and `self.__hiddenT` instead
+      of merged table for hidden status.
+    + Added `mrc:set_display_mode()` before commands.
+    + Build reverse maps for `mod2versionT` and `full2aliasesT`
+      dynamically
+    + Added `MRC:pairsForMRC_aliases` iterator.
+    + Removed `MRC:__marged_hiddenT`, `MRC:__marged_forbiddenT`
+      and `MRC:__mergedAlias2modT`.
+    + Add support for environment variable `LMOD_SHOW_HIDDEN`.
+    + Make TCL files have `spider` as mode matching when Lmod is
+      in spider mode.
+  * Version 8.7.55
+    + Add a better test for spaces in front of `#`.
+- Replace
+  Messages-Remove-message-about-creating-a-consulting-ticket.patch
+  by `sed` command.
+- Remove Doc-Ugly-workaround-for-bug-in-Sphinx.patch
+  as it is relevant pre SLE-15 products only.
+
+-------------------------------------------------------------------
 Sat Aug 24 14:40:19 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 8.7.48:

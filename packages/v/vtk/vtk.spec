@@ -92,7 +92,7 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.4.0
+Version:        9.4.1
 Release:        0
 %define series  9.4
 Summary:        The Visualization Toolkit - A high level 3D visualization library

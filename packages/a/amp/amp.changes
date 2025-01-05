@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Fri Jan  3 22:03:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.7.1:
+  * Add .envrc for [nix-]direnv support
+  * Render buffer content without a background
+  * Prevent search/select entries from wrapping
+  * Remove vi mode shell hook
+  * Use non-flake based direnv shell
+  * Update Preferences type to allow fetching format_tool configuration
+  * Add buffer::format command and run_on_save implementation
+  * Add format tool docs
+  * Address clippy lints
+  * Apply and enforce rustfmt
+  * Enforce clippy lints
+  * Allow specifying multiple values for line_length_guide in config
+  * Document new multiple line length guides configuration
+  * Fix tree-wide clippy lints
+  * Fix various lints
+  * Retain trailing newline during justification
+  * Switch to normal mode following text reflow
+  * update time
+  * Remove lint workflow job
+  * Persistent modes
+  * Add build revision to splash screen
+  * Rename and simplify test action
+- update the spec file, so runtime dependencies can be found automatically
+- require zlib make dependency
+- require package-meta, as we need git for building the software
+- remove some unnecessary commands (like removing empty dirs)
+
+-------------------------------------------------------------------
+Thu Feb 29 13:31:03 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 0.7.0:
+  * Improvements to syntax highlighting, as well as:
+    + replaced Oniguruma regex dependency with Rust-based fancy-regex
+    + better error handling
+  * Improved terminal renderer error handling
+  * Cursor types now change based on mode
+  * Added Wayland clipboard support
+  * Updated to build using Rust 2021 edition
+  * Added ability to reflow text based on line length guide
+  * Improved unicode support when adding trailing newline
+  * Added ability to configure syntax overrides based on file extension
+  * Added ability to comment out a selection of text
+  * Improved handling of very small terminal sizes
+  * Updated to correctly restore terminal contents after quitting
+
+-------------------------------------------------------------------
+Mon Mar  8 17:53:37 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- initial package @ 1485e4b25757df22f53af8109c39b6197c61de5a- 

@@ -1,7 +1,7 @@
 #
 # spec file for package spack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ ExclusiveArch:  do_not_build
 %define mypython python%{?mypyver}
 
 Name:           spack
-Version:        0.22.2
+Version:        0.23.0
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -81,7 +81,6 @@ Source6:        spack_get_libs.sh
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
 Patch4:         added-target-and-os-calls-to-output-of-spack-spec-co.patch
 Patch5:         Make-spack-paths-compliant-to-distro-installation.patch
-Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
 Patch9:         Add-support-for-container-building-using-a-SLE-base-container.patch
@@ -127,7 +126,7 @@ BuildRequires:  makeinfo
 # Hardcode this - there is no python2 version of this around any more.
 BuildRequires:  %{mypython}-Sphinx >= 3.4
 BuildRequires:  %{mypython}-sphinxcontrib-programoutput
-BuildRequires:  spack
+BuildRequires:  spack = %version
 # html
 BuildRequires:  graphviz
 # info

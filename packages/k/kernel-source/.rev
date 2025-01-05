@@ -6840,4 +6840,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.12.6 with lockdown fixed -- we should be ready to go \o/; bugs: boo#1212947 bsc#1012628 bsc#1218644 bsc#1224150 bsc#1231416 bsc#1231836 bsc#1232727 bsc#1233298 bsc#1233752 bsc#1234454 bsc#1234646</comment>
     <requestid>1232651</requestid>
   </revision>
+  <revision rev="761" vrev="1">
+    <srcmd5>5fc2b4f93eb44d1fb42961e3071196e6</srcmd5>
+    <version>6.12.8</version>
+    <time>1736087225</time>
+    <user>anag+factory</user>
+    <comment>6.12.8 &amp; 6.12.7 &amp; other fixes; bugs: bsc#1012628 bsc#1180749 bsc#1190358 bsc#1190428 bsc#1234782</comment>
+    <requestid>1234560</requestid>
+  </revision>
 </revisionlist>

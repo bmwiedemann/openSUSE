@@ -1,7 +1,7 @@
 #
 # spec file for package gap-orb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-orb
-Version:        4.9.1
+Version:        4.9.2
 Release:        0
 Summary:        GAP: Methods to enumerate Orbits
 License:        GPL-3.0-or-later

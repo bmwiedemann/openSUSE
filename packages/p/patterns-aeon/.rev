@@ -145,4 +145,14 @@
 - Install pytxis as new default terminal, remove gnome-terminal</comment>
     <requestid>1208126</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>6174febfd8ccd74016d2dc4d6d6aafe0</srcmd5>
+    <version>5.0</version>
+    <time>1736087436</time>
+    <user>anag+factory</user>
+    <comment>- Add libmbim (boo#1230006) 
+
+- Add printer-driver-brlaser (boo#1234618)</comment>
+    <requestid>1234743</requestid>
+  </revision>
 </revisionlist>

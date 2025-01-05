@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lmod
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,13 +43,13 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules used in HPC
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        8.7.48
+Version:        8.7.55
 Release:        0
 URL:            https://github.com/TACC/Lmod
 Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch1:         Messages-Remove-message-about-creating-a-consulting-ticket.patch
-Patch2:         Doc-Ugly-workaround-for-bug-in-Sphinx.patch
+#Patch1:         Messages-Remove-message-about-creating-a-consulting-ticket.patch
+#Patch2:         Doc-Ugly-workaround-for-bug-in-Sphinx.patch
 
 BuildRequires:  %{lua_pref} >= %{lmod_min_lua_version}
 BuildRequires:  %{lua_pref}-devel >= %{lmod_min_lua_version}
@@ -146,10 +146,9 @@ Profile for shell source scripts for lua-lmod
 
 %prep
 %setup -q -n Lmod-%{version}
-%patch -P 1 -p1
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150000
-%patch -P 2 -p1
-%endif
+%autopatch -p1
+# Remove message about creating a consulting ticket
+sed -i -e '/[T,t]icket/d' messageDir/*.lua
 
 %build
 %if 0%{!?build_pdf:1}

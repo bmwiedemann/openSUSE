@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_company
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 
 %define majorver 6.0
 Name:           trytond_company
-Version:        %{majorver}.7
+Version:        %{majorver}.8
 Release:        0
 Summary:        The "company" module for the Tryton ERP system
 License:        GPL-3.0-only

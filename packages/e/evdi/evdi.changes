@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 02 13:10:04 UTC 2025 - joan.torres@suse.com
+
+- Update to version 1.14.8:
+  * Set version to 1.14.8
+  * Fetch checkpatch script from linux kernel mirror
+  * Check github/main branch against linux master branch
+  * Test only main branch against linux kernel master
+  * Add libevdi{abi} conflicting packages for evdi deb package
+  * Validate build with CONFIG_FB define
+  * Fix check for available git mirror with 5 sec timeout
+  * Workaround Gnome/mutter issue where it is not waiting for primary gpu
+  * change preinst part to runtime and refactor preinst
+  * auto uninstall existing dlm
+
+-------------------------------------------------------------------
 Fri Oct 04 11:15:59 UTC 2024 - joan.torres@suse.com
 
 - Update to version 1.14.7:

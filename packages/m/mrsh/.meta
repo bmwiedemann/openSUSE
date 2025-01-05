@@ -1,7 +1,0 @@
-<package name="mrsh" project="openSUSE:Factory">
-  <title>Remote shell program that uses munge authentication</title>
-  <description>Remote shell programs that use munge authentication rather than                                  
-reserved ports for security.</description>
-  <devel project="network:cluster" package="mrsh"/>
-  <url>https://github.com/chaos/mrsh</url>
-</package>

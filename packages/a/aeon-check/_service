@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
   <param name="url">https://github.com/AeonDesktop/aeon-check.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.0.2</param>
+    <param name="revision">v1.0.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

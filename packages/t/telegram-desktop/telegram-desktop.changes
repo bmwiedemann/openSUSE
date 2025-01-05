@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  3 19:54:03 UTC 2025 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 5.10.0
+  * Collectible Gifts.
+  * Reactions for Service Messages.
+- Download and compress tarballs with obs service
+  * Remove ada-packager.sh
+  * Remove tg_owt-packager.sh
+
+-------------------------------------------------------------------
 Sun Nov 17 09:24:53 UTC 2024 - Xu Zhao <i@xuzhao.net>
 
 - Update to version 5.9.0

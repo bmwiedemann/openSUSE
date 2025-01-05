@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 26 20:34:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.3
+  * Fix style record size check on big-endian systems
+  * Fix header include in C++ mode
+  * Fix buffer overflows when parsing style records
+  * Fix infinite loop with self-referencing sectors
+- Delete 0001-Fixes-94-possible-null-ptr-deref.patch (merged)
+
+-------------------------------------------------------------------
 Mon May 16 20:51:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Fixes-94-possible-null-ptr-deref.patch

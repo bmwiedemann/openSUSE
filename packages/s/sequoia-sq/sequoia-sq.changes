@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jan 03 11:00:32 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 1.1.0:
+  * Release 1.1.0.
+  * Relax subplot dependency.
+  * Relax rusqlite dependency.
+  * Update Cargo.lock.
+  * Fix output.
+  * Add a lint for uncertified user IDs.
+  * Show certificates without user IDs with --gossip.
+  * Improve sq cert list's documentation.
+  * Improve help text lints.
+  * Fix long help generation for cert designators.
+  * Update NEWS file.
+  * Add option --unusable to sq cert list, etc.
+  * Show hints about unusable bindings when --gossip is provided.
+  * Change how we refer to unusable bindings in sq cert list.
+  * Change sq cert list to not show warnings if --quiet is given.
+  * Distinguish unauthenticated and invalid bindings in sq cert list.
+  * Improve linting for sq cert list.
+  * Don't list revoke user IDs.
+  * Fix listing certificates by fingerprint or key ID.
+  * Remove duplicate code.
+  * Rework sq cert list's human readable output.
+  * Improve UserIDDesignator::argument_value.
+  * Fix UserIDDesignator::argument_value.
+  * Add some helper functions.
+  * tests: Add tests for sq cert list.
+  * Fix sq cert list --gossip.
+  * Fix output.
+
+-------------------------------------------------------------------
 Thu Dec 19 10:47:17 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 1.0.0:

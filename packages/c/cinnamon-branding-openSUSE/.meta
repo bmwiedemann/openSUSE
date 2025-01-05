@@ -1,5 +1,0 @@
-<package name="cinnamon-branding-openSUSE" project="openSUSE:Factory">
-  <title>openSUSE Branding of the Cinnamon Desktop Environment</title>
-  <description>This package provides the openSUSE look and feel for the Cinnamon desktop environment.</description>
-  <devel project="X11:Cinnamon:Factory" package="cinnamon-branding-openSUSE"/>
-</package>

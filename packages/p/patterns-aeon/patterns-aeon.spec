@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-aeon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,8 @@ Suggests:       busybox-hostname
 Requires:       NetworkManager
 Requires:       NetworkManager-bluetooth
 Requires:       NetworkManager-wifi
+# boo1230006
+Requires:       libmbim
 Requires:       iproute2
 Requires:       lastlog2
 Requires:       libnss_usrfiles2
@@ -171,6 +173,7 @@ Requires:       cups-pk-helper
 Requires:       epson-inkjet-printer-escpr
 Requires:       ghostscript
 Requires:       hplip-hpijs
+Requires:       printer-driver-brlaser
 Requires:       system-config-printer-common
 Requires:       system-config-printer-dbus-service
 Requires:       udev-configure-printer

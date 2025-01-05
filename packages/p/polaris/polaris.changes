@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 02 17:12:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.6.1:
+  * INSIGHTS-593 Fix Polaris vulerabilities (#1094)
+  * update supporting libs and bump alpine to 3.21 (#1093)
+  * Bump k8s.io/client-go from 0.31.2 to 0.31.3 (#1084)
+  * Bump k8s.io/api from 0.31.2 to 0.31.3 (#1083)
+  * Bump sigs.k8s.io/controller-runtime from 0.19.1 to 0.19.2
+    (#1086)
+  * Bump k8s.io/apimachinery from 0.31.2 to 0.31.3 (#1087)
+
+-------------------------------------------------------------------
 Wed Nov 13 14:38:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 9.6.0:

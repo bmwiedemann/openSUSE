@@ -323,4 +323,12 @@
     (CVE-2024-3727, bsc#1224114).</comment>
     <requestid>1173668</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5ff1e549aeb7828c8c4d38869e179929</srcmd5>
+    <version>1.3.6</version>
+    <time>1736087450</time>
+    <user>anag+factory</user>
+    <comment>- Add Apptainer definition template for SLE15-SP7. (forwarded request 1234921 from eeich)</comment>
+    <requestid>1234922</requestid>
+  </revision>
 </revisionlist>

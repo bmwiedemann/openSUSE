@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 03 20:14:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.3:
+  * Bump version to 2.13.3 (#21359)
+  * fix: Change applicationset generate HTTP method to avoid route
+    conflicts (#20758) (#21300)
+  * fix(ui): add optional check to avoid undefined reference in
+    project detail (#20044) (#21263)
+  * fix(appset): Fix appset generate in --core mode for cluster gen
+    (#21170) (#21236)
+  * fix(api): send to closed channel in mergeLogStreams (#7006)
+    (#21178) (#21187)
+  * fix: Populate destination name when destination server is
+    specified (#21063) (cherry-pick 2.13) (#21176)
+
+-------------------------------------------------------------------
 Thu Dec 12 06:13:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.2:

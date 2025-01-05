@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  2 16:39:15 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 1.25.2:
+  * Add support to spot invisible text in structured text.
+  * Fix sanitisation of clipping paths.
+  * Fix leak in C++ wrappers.
+
+- Update to 1.25.1:
+  * Fix bug in structured text to html conversion concerning color.
+
+- For changes in 1.25.0 and older see https://mupdf.com/releases/history
+
+-------------------------------------------------------------------
 Mon Oct 28 16:51:41 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.24.10:

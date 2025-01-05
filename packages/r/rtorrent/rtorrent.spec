@@ -1,7 +1,7 @@
 #
 # spec file for package rtorrent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rtorrent
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -38,8 +38,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
 BuildRequires:  pkgconfig(libcurl) >= 7.15.4
 BuildRequires:  pkgconfig(libtorrent) >= 0.15.0
-BuildRequires:  pkgconfig(xmlrpc)
 BuildRequires:  sysuser-tools
+Provides:       bundled(tinyxml2) = 10.0.0
 %sysusers_requires
 
 %description
@@ -57,9 +57,7 @@ export CFLAGS="%optflags -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 export CXXFLAGS="$CXXFLAGS -std=gnu++14"
 autoreconf -fiv
-%configure \
-	--with-xmlrpc-c="%_bindir/xmlrpc-c-config" \
-	--enable-ipv6
+%configure --with-xmlrpc-tinyxml2 --enable-ipv6
 %make_build
 
 %install

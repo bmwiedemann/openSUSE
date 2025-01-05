@@ -1,7 +1,7 @@
 #
 # spec file for package evdi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 Name:           evdi
 Release:        0
-Version:        1.14.7
+Version:        1.14.8
 Summary:        Extensible Virtual Display Interface (EVDI) is a Linux Kernel Module
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Kernel

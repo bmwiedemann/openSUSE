@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp-socks
-Version:        0.9.1
+Version:        0.10.1
 Release:        0
 Summary:        SOCKS proxy connector for aiohttp
 License:        Apache-2.0

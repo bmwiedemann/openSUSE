@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  1 22:58:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.41.0:
+  - Update Translations
+  - New Site: superlove.sayitditto.net (#1136) Thanks xxwhirlpool
+  - New Site: www.cfaarchive.org (#1136) Thanks xxwhirlpool
+  - XenForo lazyload: use data-src first if data-url also
+    present. QQ proxy in data-src caches/bypasses some issues
+  - adapter_inkbunnynet: Implemented always_login, thanks dbhmw
+  - Small fixes for Wattpad. (#1137), thanks dbhmw
+  - adapter_fimfictionnet: Implement always_login. Remove unused
+    fail_on_password & do_update_hook settings. #1135
+  - Call Calibre's safe_open_url for open_pages_in_browser
+  - Add subject_tags to -m/j CLI output
+  - Fix for double replace_metadata when non-list metadata called
+    by getList().
+
+-------------------------------------------------------------------
 Fri Nov  1 15:27:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.40.0:

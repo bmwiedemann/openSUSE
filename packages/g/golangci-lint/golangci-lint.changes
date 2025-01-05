@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan 03 20:30:25 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.63.4:
+  * fix: filter Go filenames (#5291)
+  * docs: update GitHub Action assets (#5288)
+
+-------------------------------------------------------------------
+Thu Jan 02 23:12:03 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.63.3:
+  * fix: invalid from position (#5287)
+  * goheader: skip issues with invalid positions (#5286)
+  * build(deps): bump github.com/ldez/exptostd from 0.3.0 to 0.3.1 (#5283)
+  * build(deps): bump github.com/ldez/usetesting from 0.4.1 to 0.4.2 (#5282)
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.24.11 to 4.24.12 (#5281)
+  * docs: update GitHub Action assets (#5280)
+
+-------------------------------------------------------------------
+Thu Jan 02 14:28:27 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.63.2:
+  * fix: invalid position when missing EOL (#5279)
+  * docs: update documentation assets (#5277)
+  * docs: update GitHub Action assets (#5276)
+
+-------------------------------------------------------------------
+Wed Jan 01 21:49:36 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.63.1:
+  * dev: fix aur sources (#5275)
+  * gci: fix cgo (#5274)
+  * fix: filter files (#5272)
+  * docs: update documentation assets (#5269)
+  * docs: update GitHub Action assets (#5270)
+
+-------------------------------------------------------------------
 Wed Jan 01 15:22:42 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.63.0:

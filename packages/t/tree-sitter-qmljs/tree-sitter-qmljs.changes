@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  2 05:35:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.2.0:
+  * merge with dev
+  * regenerate
+  * accept multiple pragma values
+  * add make rule to review parser changes in qtdeclarative repo
+  * allow string literal in pragma values
+  * define our set of reserved identifiers to get around "new {}" conflicts
+  * add test of multi-line string literal
+  * include tree_sitter/parser.h as local header
+  * remove queries from rust binding
+  * feat: migrate to tree-sitter.json
+
+-------------------------------------------------------------------
 Wed Dec 11 23:21:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - disable devel package (for now)

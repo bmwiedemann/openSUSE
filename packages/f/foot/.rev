@@ -681,4 +681,18 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.20.0 for more details.</comment>
     <requestid>1234272</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7a3d524f8f8b976d16a13f5ab4e349c1</srcmd5>
+    <version>1.20.1</version>
+    <time>1736087388</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.20.1:
+  * foot.ini options:
+    * colors.flash-alpha can no longer be set to 1.0 (fully opaque).
+  * App ID set using OSC 176 is now limited to 2048 characters.
+  * Fixed a crash from printing certain Unicode characters.
+  * Added new themes: iterm.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.20.1 for more details.</comment>
+    <requestid>1234700</requestid>
+  </revision>
 </revisionlist>

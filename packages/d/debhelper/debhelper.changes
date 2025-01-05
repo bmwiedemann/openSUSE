@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jan  3 09:36:46 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 13.23:
+  * makefile.pm: Preserve return value from `sub install`
+  * Bring back the python-distutils build-system. It is clearly
+    used given removing it caused 200+ FTBFS bugs. Hoever, it is
+    also clearly not used (becuase using it would cause FTBFS
+    bugs). Instead packages seem to just override all the
+    `dh_auto_*` commands and what breaks with the full removal
+    is that `dh` cannot find the build system.
+    (Reopens: #1089715)
+  * dh_installlog{check,rotate}: Re-added `named` `pkgfile`s in
+    compat 14+
+  * Dh_Lib.pm: Recognize `!=` substvars.
+    Thanks to Guillem Jover <guillem@debian.org>
+  * Revert "dh_installsysusers: Temporarily add opensysusers
+    alternative". The work around is no longer needed. Thanks
+    to Samuel Thibault <sthibault@debian.org>.
+  * Fix some typos and formatting issues in man pages.
+    Thanks to Christoph Brinkhaus <c.brinkhaus@t-online.de>
+    (Closes: #1083170)
+  * Fix typo of `dh_gencontrol` in man page
+  * Remove the defunct python-distutils build-system retroactively.
+    Thanks to Colin Watson <cjwatson@debian.org> (Closes: #1089715)
+  * dh_fixperms: Remove `exec` bit from files in `/usr/share/themes`
+  * Replace `dh-buildinfo` without the `dh_buildinfo` to ease transition.
+    As requested in #1068809, `debhelper` will temporarily provide
+    `dh-buildinfo` with relevant `Conflicts` and `Replaces` to ensure
+    apt can find a solution. The provides is only on a metadata level,
+    since most packages no longer use `dh_buildinfo` directly or cope
+    gracefully with its removal. A few packages are expected to break,
+    which will be cleaned up by people who volunteered in #1068809.
+    If your package starts to FTBFS as a consequence of this change,
+    please remove the call to `dh_buildinfo`.
+    See: #1068809
+  * dh_auto_install: Ensure sane minimum mode in destdir [c14]
+    (Closes: #1082724)
+  * Update German translation of man pages (Closes: #1083169)
+
+-------------------------------------------------------------------
 Mon Aug 26 08:15:05 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - update to 13.20:

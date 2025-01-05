@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-zope.location
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -71,6 +70,8 @@ rm -rf src/zope.location.egg-info
 
 %if %{with test}
 %check
+# https://github.com/zopefoundation/zope.location/issues/12
+rm src/zope/location/tests/test_configure.py
 %python_expand PYTHONPATH=src %{_bindir}/zope-testrunner-%{$python_bin_suffix} -vvv --test-path src
 %endif
 

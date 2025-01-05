@@ -7,4 +7,12 @@
     <comment>NetHack is one of the classic games on Unix. I updated the orphaned package games:nethack to build again and it cleaned up overall. I'd like to have it added to openSUSE:Factory to make it available in our distributions. Devel project will be games:nethack.</comment>
     <requestid>1233796</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>199d88790fe6256f68f0df065de9923a</srcmd5>
+    <version>3.4.3</version>
+    <time>1736087380</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1234671</requestid>
+  </revision>
 </revisionlist>

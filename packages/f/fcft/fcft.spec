@@ -1,7 +1,7 @@
 #
 # spec file for package fcft
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libfcft4
 Name:           fcft
-Version:        3.1.9
+Version:        3.1.10
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT
@@ -85,6 +85,9 @@ export CC=gcc-11
 %install
 %meson_install
 rm -r %{buildroot}/%{_datadir}/doc/%{name}/
+
+%check
+%meson_test
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

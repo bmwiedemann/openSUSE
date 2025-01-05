@@ -352,6 +352,8 @@ BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macro
 BuildRequires:  fdupes
 BuildRequires:  libopenblas-%{compiler_family}%{?c_f_ver}-hpc >=  %{openblas_vers}
 BuildRequires:  libscalapack2-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_ver}-hpc-devel
+# Workaround for https://bugzilla.suse.com/show_bug.cgi?id=1234007
+BuildRequires:  libscalapack2-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_ver}-hpc
 BuildRequires:  suse-hpc
 %endif # hpc
 

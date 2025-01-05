@@ -215,4 +215,13 @@
   * Recovery Keys no longer written to logs</comment>
     <requestid>1234554</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>537870b800bcc999c22722007a9740f4</srcmd5>
+    <version>1.3.5</version>
+    <time>1736087440</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.5:
+  * boo#1234234 - correct PCR list for Aeon FDE</comment>
+    <requestid>1234759</requestid>
+  </revision>
 </revisionlist>

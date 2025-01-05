@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        Efficiently run periodic, on-demand actions
 License:        MIT

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jan  3 07:27:58 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Implement parallel builds for all target. The Makefiles do not
+  handle target dependencies correctly and parallel building does
+  not work reliably by default. Hence we run several rules explicitly
+  before 'all', which then uses the results. Guidebook.ps still has
+  to be build separately.
+
+- Build object files for makedefs first. Fixes possible linker errors
+  on parallel builds. The Makefiles do not track the dependencies correctly.
+  An example error is shown below.
+
+  [    3s] cc  -o makedefs makedefs.o ../src/monst.o ../src/objects.o
+  [    3s] ld: /tmp/cckee6qh.debug.temp.o: bad reloc symbol index (0x74727473 >= 0x8) for offset 0x6261747274732e00 in section `.debug_line'
+  [    3s] ld: /tmp/cckee6qh.debug.temp.o: error adding symbols: bad value
+  [    3s] collect2: error: ld returned 1 exit status
+
+  (boo#1102408)
+
+- Remove the unnecessary invocation of 'make clean'.
+
+-------------------------------------------------------------------
+Fri Jan  3 05:02:08 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build nethack/monst.o in a more reproducible way (boo#1102408)
+
+-------------------------------------------------------------------
 Thu Dec 26 20:25:08 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Drop global config directory. NetHack does not read the global RC

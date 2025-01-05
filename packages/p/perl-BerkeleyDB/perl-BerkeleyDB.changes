@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 15 05:32:12 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.660.0 (0.66)
+   see /usr/share/doc/packages/perl-BerkeleyDB/Changes
+
+  0.66  14 October  2024
+          * Bundled Test::More fails with perl 5.41.x
+            https://github.com/pmqs/BerkeleyDB/issues/12
+            89238d726d9faf88810820433a5373c4aaa9be6a
+            0f3c102c99deb65550dac8f3c78d58ab24fd1342
+          * Possible precedence problem between ! and string eq
+            https://github.com/pmqs/BerkeleyDB/issues/13
+            99cd013dd228894743fe5a4ccbd2f02cb4fb4e8d
+          * Silence clang warnings
+            https://github.com/pmqs/BerkeleyDB/issues/10
+            12ac0e42556e026f9cd48c2da5fcfd30e125820e
+
+-------------------------------------------------------------------
 Sat May 14 03:06:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.65

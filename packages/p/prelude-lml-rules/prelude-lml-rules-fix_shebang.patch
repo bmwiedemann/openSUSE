@@ -1,8 +1,0 @@
---- ./src/prelude-lml-rules-check	2019-09-16 00:12:03.000000000 +0200
-+++ ./src/prelude-lml-rules-check	2019-10-26 23:43:45.541389236 +0200
-@@ -1,4 +1,4 @@
--#!/usr/bin/env perl
-+#!/usr/bin/perl
- 
- #####
- #

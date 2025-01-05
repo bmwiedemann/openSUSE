@@ -1,7 +1,7 @@
 #
 # spec file for package telegram-desktop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,30 +36,26 @@
 %define _dwz_max_die_limit     200000000
 
 %define qt_major_version 6
+%define srcext           tar.zst
 
 Name:           telegram-desktop
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
-Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
-# Use tg_owt-packager.sh to prepare tg_owt-master.zip
-# Usage: bash tg_owt-packager.sh
-Source1:        tg_owt-packager.sh
-Source2:        tg_owt-master.zip
-Source3:        ada-v2.9.0.zip
-# Usage: bash ads-packager.sh
-Source4:        ada-packager.sh
-Source5:        tg_owt-dlopen-headers.tar.gz
+Source0:        tdesktop-%{version}.%{srcext}
+Source1:        tg_owt.%{srcext}
+Source2:        ada.%{srcext}
+Source3:        tg_owt-dlopen-headers.tar.gz
 %if %{with use_system_rnnoise}
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-webrtc.patch
 %else
-Source6:        rnnoise-git20210122.tar.gz
+Source4:        rnnoise-git20210122.tar.gz
 # PATCH-FIX-OPENSUSE
-Patch1:         0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+Patch2:         0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
 %endif
 # PATCH-FIX-OPENSUSE
 Patch3:         0003-revert-webrtc-cmake-target-file.patch
@@ -187,6 +183,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 %endif
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vpx)
@@ -226,27 +223,30 @@ always immediately published, whereas its server-side code is closed-source and 
 The service also provides APIs to independent developers.
 
 %prep
-%setup -q -n tdesktop-%{version}-full
+%setup -q -n tdesktop-%{version}
 %autopatch -p1 -M 6
 
 cd %{_builddir}
 mkdir -p %{_builddir}/Libraries
-unzip -q %{S:3}
-mv ada-v2.9.0 %{_builddir}/Libraries/ada
-
+# -q: quiet mode
+# -T: do not perform default archive unpacking
+# -D: do not delete tdesktop-%{version} directory
+# -b <n>: unpack nth sources before changing the directory
+%setup -q -T -D -b 1 -n tdesktop-%{version}
+mv ../tg_owt %{_builddir}/Libraries
+%setup -q -T -D -b 2 -n tdesktop-%{version}
+mv ../ada %{_builddir}/Libraries
+%setup -q -T -D -b 3 -n tdesktop-%{version}
 mkdir -p %{_builddir}/Libraries/openh264/include
-tar xzf %{S:5}
-mv wels %{_builddir}/Libraries/openh264/include/
+mv ../wels %{_builddir}/Libraries/openh264/include
 
 # If not TW, unpack rnnoise source
 %if %{without use_system_rnnoise}
-%setup -q -T -D -b 6 -n tdesktop-%{version}-full
+%setup -q -T -D -b 4 -n tdesktop-%{version}
 mv ../rnnoise-git20210122 ../Libraries/rnnoise
 %endif
 
-unzip -q %{SOURCE2}
-mv tg_owt-master Libraries/tg_owt
-pushd Libraries/tg_owt
+pushd %{_builddir}/Libraries/tg_owt
 %autopatch -p1 7
 popd
 
@@ -299,7 +299,7 @@ cmake -G Ninja \
 sed -i 's,gnu++2a,gnu++17,g' build.ninja
 ninja
 
-cd %{_builddir}/tdesktop-%{version}-full
+cd %{_builddir}/tdesktop-%{version}
 # Use the official API key that telegram uses for their snap builds:
 # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
 # Thanks to @primeos on Github.

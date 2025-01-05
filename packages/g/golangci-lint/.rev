@@ -536,4 +536,14 @@
   * goheader: fix invalid position (#5238) (forwarded request 1234398 from jfkw)</comment>
     <requestid>1234399</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>985dde9e7b9912a3e7f7045bd79e7516</srcmd5>
+    <version>1.63.4</version>
+    <time>1736087300</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.63.4:
+  * fix: filter Go filenames (#5291)
+  * docs: update GitHub Action assets (#5288) (forwarded request 1234798 from jfkw)</comment>
+    <requestid>1234829</requestid>
+  </revision>
 </revisionlist>

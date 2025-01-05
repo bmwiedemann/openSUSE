@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan  3 08:10:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.3.0
+  * New Feature
+    + MRRESOURCES-154: Allow to require project properties by bundle
+    + MRRESOURCES-155: Allow to override bundle resources by project
+  * Improvement
+    + MRRESOURCES-150: Ensure reproducible order in bundle goal
+      output META-INF/maven/remote-resources.xml
+    + MRRESOURCES-152: Add property for resourceBundles and
+      outputDirectory
+  * Task
+    + MRRESOURCES-151: Deprecate includeProjectProperties parameter
+  * Dependency upgrade
+    + MRRESOURCES-146: Upgrade Parent to 43
+    + MRRESOURCES-147: Bump org.apache.maven.shared:maven-filtering
+      from 3.3.2 to 3.4.0
+    + MRRESOURCES-148: Bump org.apache.velocity:velocity-engine-core
+      from 2.3 to 2.4.1
+    + MRRESOURCES-149: Bump org.eclipse.sisu:org.eclipse.sisu.plexus
+      from 0.9.0.M2 to 0.9.0.M3
+    + MRRESOURCES-153: Bump maven-archiver from 3.6.1 to 3.6.3
+
+-------------------------------------------------------------------
 Tue Apr  2 09:10:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.2.0

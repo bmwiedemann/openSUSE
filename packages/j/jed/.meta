@@ -1,0 +1,6 @@
+<package name="jed" project="openSUSE:Factory">
+  <title>The JED Editor, a fast, compact editor based on the slang library</title>
+  <description>Jed is a fast, compact editor based on the slang screen library. Jed features include emulation of the Emacs, EDT, WordStar and Brief editors, support for extensive customization with slang macros, colors, keybindings, etc, and a variety of programming modes with syntax highlighting.</description>
+  <devel project="editors" package="jed"/>
+  <url>http://www.jedsoft.org/jed/</url>
+</package>

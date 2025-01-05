@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>1191039</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce9ae74b8e3116e45135b6d7d9e6e71b</srcmd5>
+    <version>1.19.0</version>
+    <time>1736087308</time>
+    <user>anag+factory</user>
+    <comment>- Fix build for 15.6
+- Update version to 1.19.0:
+  * Add support GCP cloud endpoints
+  * Add support punycode names
+  * Fix ipv6 usage
+</comment>
+    <requestid>1234577</requestid>
+  </revision>
 </revisionlist>

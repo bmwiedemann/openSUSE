@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 30 10:21:59 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.6
+  * Fix OpenSSL 3.x deprecated APIs.
+  * Fix cross compilation.
+  * uacme: Add environment variables.
+  * uacme: Add support for ACME Renewal Information (ARI).
+  * uacme: Try obtaining new Reply-Nonce if server doesn't supply
+    one.
+  * uacme: Add hook environment variables.
+  * uacme: Allow matching alternative chain by Authority Key Id.
+
+-------------------------------------------------------------------
 Tue Feb 20 15:40:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

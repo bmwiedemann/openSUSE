@@ -22,3 +22,6 @@ addFilter("spack-recipes.noarch: .* non-executable-script")
 # 3rd party modules - not used stand-alone
 addFilter(".* non-executable-script /usr/lib/spack/external/_vendoring")
 addFilter(".* non-executable-script /usr/share/spack/gitlab/cloud_pipelines/scripts/common/aggregate_package_logs.spack.py")
+# We need to test doc builds for SLE in OBS which depend in spack being built:
+# for this, we need to defeat the 'backport policy'.
+addFilter(".* E: SUSE_Backports_policy-SLE_conflict .*")

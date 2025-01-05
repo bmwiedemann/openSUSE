@@ -1,7 +1,7 @@
 #
 # spec file for package aeon-check
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aeon-check
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Aeon Check and Repair Tool
 License:        MIT

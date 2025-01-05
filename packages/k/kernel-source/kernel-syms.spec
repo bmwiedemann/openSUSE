@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-syms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define git_commit fb072de4a85c526a0cdd2ea92aaf6185dedecc20
+%define git_commit ab2dfe60ff3604409438ab68a1e4e19c9f9a8376
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms
-Version:        6.12.6
+Version:        6.12.8
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfb072de
+Release:        <RELEASE>.gab2dfe6
 %else
 Release:        0
 %endif

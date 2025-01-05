@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  2 20:08:16 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.1.13
+  * don't require input to be one IP per line
+  * show subnets within network in format
+  * limit how much an encapsulating network can grow with --group
+
+-------------------------------------------------------------------
 Wed Jul 31 20:08:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version 0.1.12

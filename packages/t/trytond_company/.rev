@@ -120,4 +120,12 @@
     <comment>security update Tryton issue #13142</comment>
     <requestid>1172367</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5d5848060401aca714cf45f7dcb70d98</srcmd5>
+    <version>6.0.8</version>
+    <time>1736087319</time>
+    <user>anag+factory</user>
+    <comment>bugfx version</comment>
+    <requestid>1234604</requestid>
+  </revision>
 </revisionlist>

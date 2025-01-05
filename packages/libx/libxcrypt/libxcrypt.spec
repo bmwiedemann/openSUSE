@@ -1,7 +1,7 @@
 #
 # spec file for package libxcrypt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libxcrypt
-Version:        4.4.36
+Version:        4.4.37
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
@@ -25,8 +25,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/besser82/libxcrypt
 Source0:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
-Source2:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/libxcrypt-gpgkey.gpg#/%{name}.keyring
+Source2:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/libxcrypt-gpgkey.asc#/%{name}.keyring
 Source3:        baselibs.conf
+BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 
 # Enable support for livepatching.
@@ -140,6 +141,7 @@ cp %{tar_package_name} %{_topdir}/OTHER
 
 %make_install
 rm -v %{buildroot}%{_libdir}/*.la
+%fdupes -s %{buildroot}%{_mandir}
 
 %check
 %make_build check || \

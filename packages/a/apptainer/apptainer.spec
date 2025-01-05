@@ -1,7 +1,7 @@
 #
 # spec file for package apptainer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL AND OpenSSL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.3.0
+Version:        1.3.6
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -38,11 +38,10 @@ Source1:        README.SUSE
 Source2:        SUSE.def
 Source3:        SLE-15SP5.def
 Source4:        SLE-15SP6.def
-Source5:        Leap.def
+Source5:        SLE-15SP7.def
+Source10:       Leap.def
 Source20:       %{name}-rpmlintrc
 Source21:       vendor.tar.gz
-Patch1:         Remove-signatures-from-Docker-images.patch
-Patch100:       Bump-github.com-containers-image-v5-from-5.30.0-to-5.30.1.patch
 BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -60,9 +59,10 @@ Requires:       squashfs
 Requires:       squashfuse
 Recommends:     fuse2fs
 Recommends:     gocryptfs
-Requires:       (apptainer-leap = %version if product(Leap) = 15.5)
+Requires:       (apptainer-leap = %version if product(Leap) >= 15.5)
 Requires:       (apptainer-sle15_5 = %version if product(SUSE_SLE) = 15.5)
 Requires:       (apptainer-sle15_6 = %version if product(SUSE_SLE) = 15.6)
+Requires:       (apptainer-sle15_7 = %version if product(SUSE_SLE) = 15.7)
 
 # Needed for container decryption in userspace, upstream rpms include this
 # but factory should have this seperately
@@ -93,6 +93,15 @@ Requires:       apptainer = %version
 %description sle15_6
 The package provides a definition file template for Apptainer containers
 based on SUSE Linux Enterprise 15 SP6.
+
+%package   sle15_7
+Summary:        Apptainer Definition File Templates for SLE 15 SP7
+BuildArch:      noarch
+Requires:       apptainer = %version
+
+%description sle15_7
+The package provides a definition file template for Apptainer containers
+based on SUSE Linux Enterprise 15 SP7.
 
 %package leap
 Summary:        Apptainer Definition File Templates for current openSUSE Leap
@@ -142,7 +151,7 @@ export PATH=$GOPATH/bin:$PATH
 
 %make_install -C builddir V=
 install -d -m 0755 %{buildroot}/%{_datarootdir}/apptainer/templates
-install -m 0644 %{S:2} %{S:3} %{S:4} %{S:5} %{buildroot}/%{_datarootdir}/apptainer/templates
+install -m 0644 %{S:2} %{S:3} %{S:4} %{S:5} %{S:10} %{buildroot}/%{_datarootdir}/apptainer/templates
 
 %fdupes apptainer/examples
 %fdupes -s %buildroot
@@ -192,7 +201,10 @@ install -m 0644 %{S:2} %{S:3} %{S:4} %{S:5} %{buildroot}/%{_datarootdir}/apptain
 %files sle15_6
 %{_datarootdir}/apptainer/templates/%{basename:%{S:4}}
 
-%files leap
+%files sle15_7
 %{_datarootdir}/apptainer/templates/%{basename:%{S:5}}
+
+%files leap
+%{_datarootdir}/apptainer/templates/%{basename:%{S:10}}
 
 %changelog

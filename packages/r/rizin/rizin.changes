@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sat Jan  4 03:13:12 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- add cmake to BuildRequires
+
+-------------------------------------------------------------------
+Sun Dec 29 16:34:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Use ldconfig_scriptlets macro.
+- Package directories for plugins and bindings.
+
+-------------------------------------------------------------------
+Sun Dec 29 11:43:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.4
+  * Fix CVE-2022-1207
+  * Fix out of bound read in GNU CRIS analysis plugin
+  * Fix out of bound read in ObjC analysis
+  * Harden string limits check in coresymbolication
+  * Always check for NULL after allocating memory during the
+    parsing of dyldcache.
+
+-------------------------------------------------------------------
+Sun Sep  8 01:46:29 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
+
+- new package

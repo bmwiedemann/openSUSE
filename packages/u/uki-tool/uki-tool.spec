@@ -1,7 +1,7 @@
 #
 # spec file for package uki-tool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Summary:        Tool for the UKI and static-initrd project
 License:        MIT
 URL:            https://github.com/keentux/unified-kernel-image-tool.git
 Source:         %{archive_name}-%{version}.tar.xz
+#PATCH-FIXED-UPSTREAM
+Patch:          create-pcrkeys-arg.patch
 BuildArch:      noarch
 BuildRequires:  ShellCheck
 BuildRequires:  bash-sh
@@ -58,7 +60,7 @@ BuildArch:      noarch
 This package contains the documentation for the uki-tool.
 
 %prep
-%autosetup -n %{archive_name}-%{version}
+%autosetup -p1 -n %{archive_name}-%{version}
 
 %build
 sh ./build.sh

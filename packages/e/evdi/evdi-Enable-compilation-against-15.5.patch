@@ -9,7 +9,7 @@ Signed-off-by: Joan Torres <joan.torres@suse.com>
  2 files changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/module/evdi_drm_drv.h b/module/evdi_drm_drv.h
-index 5eea878..cd69cbf 100644
+index ebadc2b..757ef06 100644
 --- a/module/evdi_drm_drv.h
 +++ b/module/evdi_drm_drv.h
 @@ -26,7 +26,7 @@
@@ -22,7 +22,7 @@ index 5eea878..cd69cbf 100644
  #else
  #include <drm/drm_irq.h>
 diff --git a/module/evdi_gem.c b/module/evdi_gem.c
-index 06a032c..5c60bbf 100644
+index 8d82206..e3c4ad4 100644
 --- a/module/evdi_gem.c
 +++ b/module/evdi_gem.c
 @@ -11,6 +11,7 @@
@@ -33,16 +33,16 @@ index 06a032c..5c60bbf 100644
  #elif KERNEL_VERSION(5, 11, 0) <= LINUX_VERSION_CODE
  #include <linux/dma-buf-map.h>
  #endif
-@@ -28,7 +29,7 @@
- #include <drm/drm_cache.h>
- #include <linux/vmalloc.h>
+@@ -31,7 +32,7 @@
  
--#if KERNEL_VERSION(5, 16, 0) <= LINUX_VERSION_CODE || defined(EL9)
-+#if KERNEL_VERSION(5, 14, 0) <= LINUX_VERSION_CODE || defined(EL9)
+ #if KERNEL_VERSION(6, 13, 0) <= LINUX_VERSION_CODE
+ MODULE_IMPORT_NS("DMA_BUF");
+-#elif KERNEL_VERSION(5, 16, 0) <= LINUX_VERSION_CODE || defined(EL9)
++#elif KERNEL_VERSION(5, 14, 0) <= LINUX_VERSION_CODE || defined(EL9)
  MODULE_IMPORT_NS(DMA_BUF);
  #endif
  
-@@ -293,7 +294,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
+@@ -296,7 +297,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
  	int ret;
  
  	if (evdi_drm_gem_object_use_import_attach(&obj->base)) {
@@ -51,7 +51,7 @@ index 06a032c..5c60bbf 100644
  		struct iosys_map map = IOSYS_MAP_INIT_VADDR(NULL);
  #elif KERNEL_VERSION(5, 11, 0) <= LINUX_VERSION_CODE
  		struct dma_buf_map map = DMA_BUF_MAP_INIT_VADDR(NULL);
-@@ -326,7 +327,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
+@@ -329,7 +330,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
  void evdi_gem_vunmap(struct evdi_gem_object *obj)
  {
  	if (evdi_drm_gem_object_use_import_attach(&obj->base)) {
@@ -60,6 +60,3 @@ index 06a032c..5c60bbf 100644
  		struct iosys_map map = IOSYS_MAP_INIT_VADDR(NULL);
  
  		if (obj->vmap_is_iomem)
--- 
-2.45.2
-

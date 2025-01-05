@@ -1,7 +1,7 @@
 #
 # spec file for package nethack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,13 +64,25 @@ This package contains the text interface.
 # copy Makefiles and add optimization flags
 sh sys/unix/setup.sh
 sed -i "s/^CFLAGS.*/& %{optflags}/" Makefile dat/Makefile doc/Makefile src/Makefile util/Makefile
-# tty
-make clean
-make %{?_smp_mflags} nethack
-# doc, data, recover... this part is not safe for parallel making
-make -j1 data oracles options quest.dat rumors dungeon spec_levs check-dlb
-make -j1 -C doc Guidebook.ps
-make -C util recover
+
+# The Makefiles do not track dependencies correctly, which can result
+# in link errors on parallel builds. Prevent this by building the object
+# files for makedefs first.
+%make_build -C src monst.o
+%make_build -C src objects.o
+
+# Build the game binary, then some data files. Finally build all
+# remaining default targets. Although 'all' covers the first three
+# make calls as well, we have to resort to sequential building
+# to make it work.
+%make_build nethack
+%make_build dungeon
+%make_build spec_levs
+%make_build all
+
+# We also package a nicely formatted manual in PostScript format. It
+# is not covered by 'all', so build it here.
+%make_build -C doc Guidebook.ps
 
 %install
 # directories

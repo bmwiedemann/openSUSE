@@ -909,4 +909,15 @@
   * Update flake deps Mon Dec 16</comment>
     <requestid>1233580</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>60eebd8bfab73d416e33f281842fc5c3</srcmd5>
+    <version>0.20.15</version>
+    <time>1736087311</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.15:
+  * Add icons from nerd fonts 3.3.0 release &amp; more
+  * Add new icons, extensive list
+  * We switch to our own fork of natord</comment>
+    <requestid>1234582</requestid>
+  </revision>
 </revisionlist>

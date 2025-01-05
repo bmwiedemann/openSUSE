@@ -1,0 +1,5 @@
+<package name="amp" project="openSUSE:Factory">
+  <title>amp</title>
+  <description>A modal text editor for the terminal.</description>
+  <devel project="editors" package="amp"/>
+</package>

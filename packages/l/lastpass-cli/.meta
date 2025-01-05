@@ -1,5 +1,0 @@
-<package name="lastpass-cli" project="openSUSE:Factory">
-  <title>LastPass command line interface tool</title>
-  <description>LastPass is a freemium password management service which stores encrypted passwords in the cloud. This package provided it's command line interface tool.</description>
-  <devel project="security" package="lastpass-cli"/>
-</package>

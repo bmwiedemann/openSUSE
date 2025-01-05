@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  2 19:28:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.3.0:
+  * refactor(scanner): drop unnecessary struct
+  * feat: update to tree-sitter 0.24
+  * fix(grammar): allow multiple spaces
+  * fix(grammar): make default substitutions optional
+
+-------------------------------------------------------------------
 Thu Dec  5 00:57:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

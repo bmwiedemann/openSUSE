@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-vanilla
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.6
-%define git_commit fb072de4a85c526a0cdd2ea92aaf6185dedecc20
+%define patchversion 6.12.8
+%define git_commit ab2dfe60ff3604409438ab68a1e4e19c9f9a8376
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -37,9 +37,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-vanilla
-Version:        6.12.6
+Version:        6.12.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfb072de
+Release:        <RELEASE>.gab2dfe6
 %else
 Release:        0
 %endif

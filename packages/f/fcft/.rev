@@ -242,4 +242,15 @@
   * Now built against distribution nanosvg.</comment>
     <requestid>1217386</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>570f13498ddf6a8d43efc2db43c94652</srcmd5>
+    <version>3.1.10</version>
+    <time>1736087325</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.10:
+  * Unicode data files updated to 16.0
+  * Character (terminal) width is now evaluated using utf8proc_charwidth
+    instead of wcwdith.</comment>
+    <requestid>1234597</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,5 @@
+<package name="rizin" project="openSUSE:Factory">
+  <title>UNIX-like reverse engineering framework and command-line tool-set</title>
+  <description>Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness.</description>
+  <devel project="devel:tools" package="rizin"/>
+</package>

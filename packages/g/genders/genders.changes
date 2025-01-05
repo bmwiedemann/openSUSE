@@ -1,26 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan  3 11:38:50 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Drop all Lua BuildRequires as the Lua bindings are gone and
+  `clustduct` is no longer provided.
+
+-------------------------------------------------------------------
 Tue Dec 17 15:40:54 UTC 2024 - Christian Goll <cgoll@suse.com>
 
-- removed lua_bindings.patch as the autoconf tolls don't work any 
-  more
+- removed lua_bindings.patch as the autoconf tolls don't work any
+  more.
 
 -------------------------------------------------------------------
 Wed Oct  9 12:58:01 UTC 2024 - Christian Goll <cgoll@suse.com>
 
-- update to 1.29.1 which increased the internal buffer in nodeattr for large
-  cluster hostranges
+- update to 1.29.1 which increased the internal buffer in nodeattr
+  for large cluster hostranges.
 - removed also-check-for-python3.patch
 
 -------------------------------------------------------------------
 Tue Dec  6 12:14:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28.1:
-  * Build Bindings for *both* python2 and python3 
+  * Build Bindings for *both* python2 and python3  with sample
+    sepc file. Irrelevant for openSUSE/SUSE builds.
 
 -------------------------------------------------------------------
 Tue Dec  6 03:46:15 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Do not Provides/Obsoletes Python 2 packages with Python 3 ones. 
+- Do not Provides/Obsoletes Python 2 packages with Python 3 ones.
 
 -------------------------------------------------------------------
 Thu Dec  1 02:13:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
@@ -32,7 +39,7 @@ Thu Dec  1 02:13:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Mon Jul 25 12:25:49 UTC 2022 - Christian Goll <cgoll@suse.com>
 
-- remove the hard coded rpath explicitly 
+- remove the hard coded rpath explicitly
 
 -------------------------------------------------------------------
 Thu Dec 19 14:19:10 UTC 2019 - Christian Goll <cgoll@suse.com>

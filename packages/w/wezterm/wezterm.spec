@@ -1,7 +1,7 @@
 #
 # spec file for package wezterm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # %%global _dashed_version 20230712-072601-f4abf8fd
 
 Name:           wezterm
-Version:        20240203.110809.5046fc22+git404
+Version:        20240203.110809.5046fc22+git421
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm

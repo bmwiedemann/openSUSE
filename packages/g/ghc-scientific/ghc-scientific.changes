@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 26 13:50:23 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update scientific to version 0.3.8.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jul  4 20:39:28 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update scientific to version 0.3.8.0 revision 1.

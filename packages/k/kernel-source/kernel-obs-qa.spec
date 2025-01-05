@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-obs-qa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 # needsrootforbuild
 
 
-%define patchversion 6.12.6
+%define patchversion 6.12.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-obs-qa
-Version:        6.12.6
+Version:        6.12.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfb072de
+Release:        <RELEASE>.gab2dfe6
 %else
 Release:        0
 %endif

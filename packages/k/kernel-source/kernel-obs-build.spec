@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-obs-build
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.12.6
+%define patchversion 6.12.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,16 +38,16 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-fb072de4a85c526a0cdd2ea92aaf6185dedecc20
+%global kernel_package kernel%kernel_flavor-srchash-ab2dfe60ff3604409438ab68a1e4e19c9f9a8376
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        6.12.6
+Version:        6.12.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfb072de
+Release:        <RELEASE>.gab2dfe6
 %else
 Release:        0
 %endif

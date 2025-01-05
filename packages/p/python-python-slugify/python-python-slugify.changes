@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jan 03 09:19:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.0.4:
+  * Uppercase handling of special chars (#149)
+  * format
+  * up version
+  * fix uppercase pre-translations (#148)
+  * UpVersion
+  * Remove compatibility with unsupported Python versions (#146)
+  * more test
+  * format fix
+  * upversion node support
+  * pre normalize
+
+-------------------------------------------------------------------
+Fri Jan 03 09:13:38 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.0.3:
+  * Drop compatibility for unsupported Python Version (#147)
+
+-------------------------------------------------------------------
+Fri Jan 03 09:11:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.0.2:
+  * Ci - Normalize accented text twice. (#143)
+  * Add Python 3.12 to test matrix and add classifier to the setup
+    (#139)
+  * Add typing and expose py.typed (#137)
+  * Revert "Replace flake8 and pycodestyle with ruff (#131)" (#136)
+  * Replace flake8 and pycodestyle with ruff (#131)
+  * unidecode (advanced) hyperlink
+
+-------------------------------------------------------------------
 Fri Dec 29 16:06:08 UTC 2023 - egotthold@suse.com
 
 - Update to version v8.0.1:

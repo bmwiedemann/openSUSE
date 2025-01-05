@@ -16,4 +16,13 @@
   * Use mktemp (boo#1228861)</comment>
     <requestid>1220515</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>071cbbb71f8a8abccef8417137e190e2</srcmd5>
+    <version>1.0.3</version>
+    <time>1736087442</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.3:
+  * boo#1234234 - correct PCR list for Aeon FDE</comment>
+    <requestid>1234760</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,235 @@
 -------------------------------------------------------------------
+Fri Jan  3 13:40:08 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Update to version v0.23.0. This is a major release.
+  * Features in this Release
+    + Spec splicing
+      To make binary installation more seamless in Spack, `v0.23`
+      introduces "splicing", which allows users to deploy binaries
+      using local, optimized versions of a binary interface, even
+      if they were not built with that interface. For example, this
+      would allow you to build binaries in the cloud using `mpich`
+      and install them on a system using a local, optimized version
+      of `mvapich2` *without rebuilding*. Spack preserves full
+      provenance for the installed packages and knows that they
+      were built one way but deployed another.
+      The intent is to leverage this across many key HPC binary
+      packages, e.g. MPI, CUDA, ROCm, and libfabric.
+      Fundamentally, splicing allows Spack to redeploy an existing
+      spec with different dependencies than how it was built. There
+      are two interfaces to splicing.
+      a. Explicit Splicing
+         In the concretizer config, you can specify a target spec
+	 and a replacement by hash.
+         ```yaml
+         concretizer:
+           splice:
+             explicit:
+             - target: mpi
+               replacement: mpich/abcdef
+         ```
+         Here, every installation that would normally use the target
+	 spec will instead use its replacement. Above, any spec using
+	 *any* `mpi` will be spliced to depend on the specific `mpich`
+	 installation requested. This *can* go wrong if you try to
+	 replace something built with, e.g., `openmpi` with `mpich`,
+	 and it is on the user to ensure ABI compatibility between
+	 target and replacement specs. This currently requires some
+	 expertise to use, but it will allow users to reuse the
+         binaries they create across more machines and environments.
+      b. Automatic Splicing (experimental)
+         In the concretizer config, enable automatic splicing:
+	 ```yaml
+         concretizer:
+           splice:
+             automatic: true
+      	  ```
+         or run:
+         ```console
+         spack config add concretizer:splice:automatic:true
+         ```
+         The concretizer will select splices for ABI compatibility
+	 to maximize package reuse. Packages can denote ABI
+	 compatibility using the `can_splice` directive. No packages
+	 in Spack yet use this directive, so if you want to use this
+	 feature you will need to add `can_splice` annotations to
+	 your packages. We are working on ways to add more ABI
+         compatibility information to the Spack package repository,
+	 and this directive may change in the future.
+	 Further documentation:
+         * https://spack.readthedocs.io/en/latest/build_settings.html#splicing
+         * https://spack.readthedocs.io/en/latest/packaging_guide.html#specifying-abi-compatibility
+    + Broader variant propagation
+      You can specify propagated variants like
+      `hdf5 build_type==RelWithDebInfo` or `trilinos ++openmp` to
+      propagate a variant to all dependencies for which it is
+      relevant. This is valid *even* if the variant does not exist
+      on the package or its dependencies.
+      See https://spack.readthedocs.io/en/latest/basic_usage.html#variants.
+    + Query specs by namespace
+      Allow a package's namespace (indicating the repository it came
+      from) to be treated like a variant. You can request packages
+      from particular repos like this:
+      ```console
+      spack find zlib namespace=builtin
+      spack find zlib namespace=myrepo
+      ```
+      Previously, the spec syntax only allowed namespaces to be prefixes of spec
+      names, e.g. `builtin.zlib`. The previous syntax still works.
+    + `spack spec` respects environment settings and `unify:true`
+      `spack spec` did not previously respect environment lockfiles
+      or unification settings, which made it difficult to see
+      exactly how a spec would concretize within an environment.
+      Now it does, so the output you get with `spack spec` will
+      be *the same* as what your environment will concretize to
+      when you run `spack concretize`. Similarly, if you provide
+      multiple specs on the command line with `spack spec`, it will
+      concretize them together if `unify:true` is set.
+    + Less noisy `spack spec` output
+      `spack spec` previously showed output like this:
+      ```console
+      > spack spec /v5fn6xo
+      Input spec
+      --------------------------------
+       -   /v5fn6xo
+
+       Concretized
+      --------------------------------
+      [+]  openssl@3.3.1%apple-clang@16.0.0~docs+shared arch=darwin-sequoia-m1
+      ...
+      ```
+      But the input spec is redundant, and we know we run
+      `spack spec` to concretize the input spec. `spack spec` now
+      *only* shows the concretized spec. See #47574.
+    + Better output for `spack find -c`
+      In an environment, `spack find -c` lets you search the
+      concretized, but not yet installed, specs, just as you would
+      the installed ones. As with `spack spec`, this should make
+      it easier for you to see what *will* be built before building
+      and installing it.
+    + `spack -C <env>`: use an environment's configuration without activation
+      Spack environments allow you to associate:
+      1. a set of (possibly concretized) specs, and
+      2. configuration
+      When you activate an environment, you're using both of these.
+      Previously, we supported:
+      * `spack -e <env>` to run spack in the context of a specific
+      	environment, and
+      * `spack -C <directory>` to run spack using a directory with
+      	configuration files.
+    You can now also pass an environment to `spack -C` to use
+    *only* the environment's configuration, but not the specs or
+    lockfile.
+  * New commands, options, and directives
+    + The new `spack env track` command (#41897) takes a non-managed
+      Spack environment and adds a symlink to Spack's
+      `$environments_root` directory, so that it will be included
+      for reference counting for commands like `spack uninstall`
+      and `spack gc`. If you use free-standing directory environments,
+      this is useful for preventing Spack from removing things
+      required by your environments. You can undo this tracking
+      with the `spack env untrack` command.
+    + Add `-t` short option for `spack --backtrace`
+      `spack -d / --debug` enables backtraces on error, but it
+      can be very verbose, and sometimes you just want the
+      backtrace. `spack -t / --backtrace` provides that option.
+    + `gc`: restrict to specific specs (#46790)
+      If you only want to garbage-collect specific packages, you can
+      now provide them on the command line. This gives users finer-grained
+      control over what is uninstalled.
+    +  oci buildcaches now support `--only=package`. You can now push
+       *just* a package and not its dependencies to an OCI registry.
+       This allows dependents of non-redistributable specs to be
+       stored in OCI registries without an error.
+  * Notable refactors
+  * Highlighted bugfixes
+    + Externals no longer override the preferred provider.
+      External definitions could interfere with package preferences.
+      Now, if `openmpi` is the preferred `mpi`, and an external
+      `mpich` is defined, a new `openmpi` *will* be built if
+      building it is possible. Previously we would prefer `mpich`
+      despite the preference.
+    + Composable `cflags`.
+      This release fixes a longstanding bug that concretization
+      would fail if there were different `cflags` specified in
+      `packages.yaml`, `compilers.yaml`, or on `the` CLI. Flags
+      and their ordering are now tracked in the concretizer and
+      flags from multiple sources will be merged.
+    + Fix concretizer Unification for included environments.
+  * Deprecations, removals, and syntax changes
+    + The old concretizer has been removed from Spack, along with
+      the `config:concretizer` config option. Spack will emit a
+      warning if the option is present in user configuration,
+      since it now has no effect. Spack now uses a simpler
+      bootstrapping mechanism, where a JSON prototype is tweaked
+      slightly to get an initial concrete spec to download.
+    + Best-effort expansion of spec matrices has been removed.
+      This feature did not work with the "new" ASP-based concretizer,
+      and did not work with `unify: True` or `unify: when_possible`.
+      Use the
+      [exclude key](https://spack.readthedocs.io/en/latest/environments.html#spec-matrices)
+      for the environment to exclude invalid components, or use
+      multiple spec matrices to combine the list of specs for
+      which the constraint is valid and the list of specs for
+      which it is not.
+    + The old Cray `platform` (based on Cray PE modules) has been
+      removed, and `platform=cray` is no longer supported. Since
+      `v0.19`, Spack has handled Cray machines like Linux clusters
+      with extra packages, and we have encouraged using this option
+      to support Cray. The new approach allows us to correctly handle
+      Cray machines with non-SLES operating systems, and it is much
+      more reliable than making assumptions about Cray modules. See
+      the `v0.19` release notes and #43796 for more details.
+    + The `config:install_missing_compilers` config option has been
+      deprecated, and it is a no-op when set in `v0.23`. Our new
+      compiler dependency model will replace it with a much more
+      reliable and robust mechanism in `v1.0`.
+    + Config options that deprecated in `v0.21` have been removed
+      in `v0.23`. You can now only specify preferences for
+      `compilers`, `targets`, and `providers` globally via the
+      `packages:all:` section. Similarly, you can only specify
+      `versions:` locally for a specific package.
+    + Spack's old test interface has been removed (#45752), having
+      been deprecated in `v0.22.0` (#34236). All `builtin` packages
+      have been updated to use the new interface. See the
+      [stand-alone test documentation](
+      https://spack.readthedocs.io/en/latest/packaging_guide.html#stand-alone-tests)
+    + The `spack versions --safe-only` option, deprecated since
+      `v0.21.0`, has been removed.
+    + The `--dependencies` and `--optimize` arguments to `spack ci`
+      have been deprecated.
+  - Binary caches
+    + Public binary caches now include an ML stack for Linux/aarch64.
+      We now build an ML stack for Linux/aarch64 for all pull
+      requests and on develop. The ML stack includes both CPU-only
+      and CUDA builds for Horovod, Hugging Face, JAX, Keras, PyTorch,
+      scikit-learn, TensorBoard, and TensorFlow, and related packages.
+      The CPU-only stack also includes XGBoost.
+      See https://cache.spack.io/tag/develop/?stack=ml-linux-aarch64-cuda.
+  - Architecture support
+    * archspec has been updated to `v0.2.5`, with support for
+      `zen5`.
+    * Spack's CUDA package now supports the Grace Hopper `9.0a`
+      compute capability.
+  - Other notable changes
+    + Bugfix: `spack find -x` in environments.
+    + Spec splices are now robust to duplicate nodes with the
+      same name in a spec.
+    + Cache per-compiler libc calculations for performance.
+    + Fixed a bug in external detection for openmpi.
+    + Mirror configuration allows username/password as environment
+      variables.
+    + Default library search caps maximum depth/
+    + Unify interface for `spack spec` and `spack solve` commands.
+    + Spack no longer RPATHs directories in the default library
+      search path.
+    + Improved performance of Spack database.
+    + Enable package reuse for packages with versions from git refs.
+    + Improved tracking of task queueing/requeueing in the installer.
+- Deleted: Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+  Patch no longer required for target versions.
+
+-------------------------------------------------------------------
 Fri Nov  1 06:32:35 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 0.22.2

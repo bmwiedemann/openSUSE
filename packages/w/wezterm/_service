@@ -4,7 +4,7 @@
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <!-- param name="versionformat">@PARENT_TAG@</param -->
     <param name="scm">git</param>
-    <param name="revision">51c794ac500a2033b9dc570c71810518bfa667a9</param>
+    <param name="revision">be54403e4d297ccc2fb4c7b212e2a83b13a89948</param>
     <param name="versionrewrite-pattern">(\d+)-(\d+)-(\w+)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>

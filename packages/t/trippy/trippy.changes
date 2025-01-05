@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  4 07:12:01 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.12.2:
+  Fixed
+  * Tracer panic when --first-ttl is greater than 1
+  * IP --addr-family not respected for --dns-resolve-method resolv
+  * Incorrect cli help text for --addr-family
+- Updates from version 0.12.1:
+  Changed
+  * Replace use of yaml with toml dependency
+
+-------------------------------------------------------------------
 Fri Dec  6 08:39:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.12.0:

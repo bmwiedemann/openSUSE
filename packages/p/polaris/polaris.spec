@@ -1,7 +1,7 @@
 #
 # spec file for package polaris
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           polaris
-Version:        9.6.0
+Version:        9.6.1
 Release:        0
 Summary:        Validation of best practices in your Kubernetes clusters
 License:        Apache-2.0

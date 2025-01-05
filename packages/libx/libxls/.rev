@@ -47,4 +47,12 @@
     <comment>- Add 0001-Fixes-94-possible-null-ptr-deref.patch [boo#1192323] [CVE-2021-27836]</comment>
     <requestid>977612</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>109540d75240b47ae5628f0d7089502b</srcmd5>
+    <version>1.6.3</version>
+    <time>1736087339</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1234626</requestid>
+  </revision>
 </revisionlist>

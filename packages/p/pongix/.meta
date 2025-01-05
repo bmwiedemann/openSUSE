@@ -1,6 +1,0 @@
-<package name="pongix" project="openSUSE:Factory">
-  <title>Free Pong-like game</title>
-  <description>Pongix is a free game based on the classical Pong game with
-support for net game.</description>
-  <devel project="games" package="pongix"/>
-</package>

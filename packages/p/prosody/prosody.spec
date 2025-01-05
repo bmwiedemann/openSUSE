@@ -1,7 +1,7 @@
 #
 # spec file for package prosody
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _piddir /run
 Name:           prosody
-Version:        0.12.4
+Version:        0.12.5
 Release:        0
 Summary:        Communications server for Jabber/XMPP
 License:        MIT
@@ -47,8 +47,8 @@ Requires:       lua54-luasocket
 Requires:       lua54-readline
 Requires(pre):  permissions
 Requires(pre):  shadow
-Provides:       user(%{name})
 Provides:       group(%{name})
+Provides:       user(%{name})
 Recommends:     lua54-luadbi
 Recommends:     lua54-luaevent
 Recommends:     lua54-luaunbound

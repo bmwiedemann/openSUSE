@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -146,13 +146,20 @@ Patch65:        openssl-3-fix-sha3-squeeze-ppc64.patch
 Patch66:        openssl-3-fix-quic_multistream_test.patch
 
 BuildRequires:  pkgconfig
-%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
+
+# ulp-macros is available according to SUSE version.
+%ifarch x86_64
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540
 BuildRequires:  ulp-macros
-%else
-# Define ulp-macros macros as empty
-%define cflags_livepatching ""
-%define pack_ipa_dumps      echo "Livepatching is disabled in this build"
 %endif
+%endif
+%ifarch ppc64le
+%if 0%{?sle_version} >= 150700 || 0%{?suse_version} >= 1570
+BuildRequires:  gcc13
+BuildRequires:  ulp-macros
+%endif
+%endif
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
@@ -246,6 +253,14 @@ export MACHINE=armv5el
 export MACHINE=armv6l
 %endif
 
+# In ppc64le we need gcc-13 for userspace livepatching until we have the
+# required -fpatchable-functions-entry patch merged into the mainline
+%ifarch ppc64le
+%if 0%{?sle_version} >= 150700 || 0%{?suse_version} >= 1570
+export CC=gcc-13
+export CXX=g++-13
+%endif
+%endif
 ./Configure \
     enable-camellia \
 %ifarch x86_64 aarch64 ppc64le
@@ -264,7 +279,7 @@ export MACHINE=armv6l
     --libdir=%{_lib} \
     --openssldir=%{ssletcdir} \
     %{optflags} \
-    %{cflags_livepatching} \
+    %{?cflags_livepatching} \
     -Wa,--noexecstack \
     -Wl,-z,relro,-z,now \
     -fno-common \
@@ -324,7 +339,7 @@ gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{build
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ./showciphers
 
 %install
-%{pack_ipa_dumps}
+%{?pack_ipa_dumps}
 %make_install %{?_smp_mflags} MANSUFFIX=%{man_suffix}
 
 rename so.%{sover} so.%{version} %{buildroot}%{_libdir}/*.so.%{sover}

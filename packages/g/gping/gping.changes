@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  2 09:58:18 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Fix build for 15.6
+
+-------------------------------------------------------------------
+Mon Dec 23 20:43:24 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update version to 1.19.0:
+  * Add support GCP cloud endpoints
+  * Add support punycode names
+  * Fix ipv6 usage
+
+-------------------------------------------------------------------
 Sun Jul 28 00:31:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests and install manpage

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 27 07:02:43 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 0.10.1
+  * fix ProxyConnector port type hint: str -> int
+  * Update README.md
+  * Refactoring
+  * Make host and port arguments required
+  * Fix compatibility with Python 3.8
+  * minimal typing changes
+
+-------------------------------------------------------------------
 Mon Nov 25 08:32:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.1

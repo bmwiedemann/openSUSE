@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 26 13:31:38 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update time-compat to version 1.9.8.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Jul  4 20:56:02 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update time-compat to version 1.9.7 revision 2.

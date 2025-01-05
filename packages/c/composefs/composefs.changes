@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  3 18:16:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.8:
+  * Add Containers Code of Conduct
+  * rust: drop all Rust code from this repository
+  * lib: Add lcfs_fd_measure_fsverity
+  * Do not enable man page generation when it is disabled.
+  * writer: Reject empty xattr names
+  * writer: Fix return value of lcfs_node_unset_xattr
+  * mount: Support EROFS file-backed mounts
+  * mkcomposefs: Fix error message
+
+-------------------------------------------------------------------
 Sun Dec 29 21:27:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - require the main package for the devel package

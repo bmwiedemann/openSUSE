@@ -758,4 +758,27 @@
   * chore: bump Go version (forwarded request 1224859 from jfkw)</comment>
     <requestid>1224861</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e24e423bde34b21af96539162d5ff495</srcmd5>
+    <version>3.9.3</version>
+    <time>1736087303</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.9.3:
+  * refactor: ensure JSON errors always include the same keys
+  * feat: allow escaping &quot;|&quot; in substitution rules
+
+- Update to version 3.9.2:
+  * fix: handle regex-based replacements
+  * refactor: only fetch library when needed
+  * chore: update ruby dependencies (#937)
+  * docs: fix demo image
+  * refactor: fix golangci
+  * fix: check `qErr != nil` but return a nil value error `err` (#935)
+  * refactor: support JSON in `ls-dirs`
+  * fix: don't hide `minAlertLevel`
+  * fix: show all alerts by default
+  * refactor: fix golangci
+  * refactor: support storing filters in `config` (forwarded request 1234475 from jfkw)</comment>
+    <requestid>1234573</requestid>
+  </revision>
 </revisionlist>

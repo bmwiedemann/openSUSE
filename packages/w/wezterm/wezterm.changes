@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan  2 22:55:13 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 20240203.110809.5046fc22+git421:
+  * deps: libpng -> 1.6.44
+  * deps: update to zlib 1.3.1
+  * wezterm-ssh: update pty version
+  * docs: changelog for serial bits
+  * pty: bump semver because serial2 changes public API
+  * Use serial2 crate instead of serial (#6411)
+  * chore: remove redundant words in comment
+  * fix some warnings with rust 1.83
+  * wayland: reimplement maximize and restore
+  * Disable libpng VSX_OPT flag for PowerPC 64
+  * cargo update
+  * docs: changelog for #6186
+  * Region scrolling tests and a fix
+  * Region scrolling tests
+  * fix warning
+  * Fixed minor typo in the example from `get_default_colors.md
+
+-------------------------------------------------------------------
 Fri Nov  8 06:08:50 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update _service file

@@ -520,4 +520,41 @@
     <comment></comment>
     <requestid>1198756</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3a21aa83ed81840aec1cb9b214f314dc</srcmd5>
+    <version>8.7.55</version>
+    <time>1736087429</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.7.55:
+  * Version 8.7.38
+    + Issue #697: Add warning if doing `module use --help`
+    + Make `LMOD_IGNORE_CACHE` use &quot;yes/no&quot; env variable setting
+      system.
+    + Make `module --terse show &lt;module&gt;` do the same as
+      `module --loc show &lt;module&gt;`, namely print the location of the
+      module.
+    + Support for `module --terse spider phdf5/1.12.2` that just
+      prints the module in the hierarchy.
+    + Move almost almost all `cosmic:value()` calls to inside
+      function not at routine top-level.
+    + Report build time in UTC when `$SOURCE_DATE_EPOCH` is set.
+    + Support for downstream conflicts has been added.
+    + Support for dynamic `LMOD_MODULERC` has been added.
+   (8.7.39) * Fix busted test for ModuleA.
+  * Version 8.7.40
+    + Bug fix for prepend/append path when trying to add an empty string.
+    + Bug fix for `serializeTbl`: handle empty or single blank
+      string as key.
+  * Version 8.7.41
+    + Added new function `depends_on_any()`.
+    + If `$MODULES_AUTO_HANDLING` is set then
+      `prereq() -&gt; depends_on()`; prereq_any() -&gt; depends_on_any()`
+    + Generate a perl pod format for manpage for `module.1`
+    + `ModuleTable` modification: Changes to `$MODULEPATH` are
+      stored in an entry.
+  * Version 8.7.42
+    + Fix setting of `$FPATH` when running bash or ksh shell
+      and executing `zsh -l`. (forwarded request 1234730 from eeich)</comment>
+    <requestid>1234733</requestid>
+  </revision>
 </revisionlist>

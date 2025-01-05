@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 30 22:47:14 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix hpc builds, add workaround for bsc#1234007.
+
+-------------------------------------------------------------------
 Thu Feb 22 12:29:34 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

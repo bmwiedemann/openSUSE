@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yamale
-Version:        5.3.0
+Version:        6.0.0
 Release:        0
 Summary:        A schema and validator for YAML
 License:        MIT

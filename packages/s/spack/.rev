@@ -582,4 +582,12 @@
     - `chapel` major update/ (forwarded request 1220058 from eeich)</comment>
     <requestid>1220059</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>83f8badcfa6ef3a20838cd3d2089d2cc</srcmd5>
+    <version>0.23.0</version>
+    <time>1736087448</time>
+    <user>anag+factory</user>
+    <comment>- Fix version of spack package to build documentation with (forwarded request 1234923 from eeich)</comment>
+    <requestid>1234924</requestid>
+  </revision>
 </revisionlist>

@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.7
+Version:        1.9.8
 Release:        0
 Summary:        Compatibility package for time
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-orphans-devel
@@ -37,6 +36,8 @@ BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
 ExcludeArch:    %{ix86}
@@ -45,6 +46,8 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-tasty-devel
@@ -94,7 +97,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

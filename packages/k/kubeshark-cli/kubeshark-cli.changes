@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jan 04 08:09:40 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.94 (52.3.93 was yanked):
+  * :sparkles: Update the Helm chart
+  * :bookmark: Bump the Helm chart version to 52.3.93
+  * extended the https macro to include http2 in addition to http
+  * added https as a default macro (#1680)
+  * Add `CUSTOM_MACROS` to `ConfigMap` (#1674)
+  * Revert "Revert "Initialize kubeshark pinned eBPF resources
+    inside init container (#1665)" (#1676)" (#1678)
+  * Add save/activate/delete role scripting permissions (#1675)
+  * Revert "Initialize kubeshark pinned eBPF resources inside init
+    container (#1665)" (#1676)
+  * Added security capabilities, especially IPC_LOCK (#1671)
+  * Revert "Add `CUSTOM_MACROS` to `ConfigMap`"
+  * Add `CUSTOM_MACROS` to `ConfigMap`
+  * Initialize kubeshark pinned eBPF resources inside init
+    container (#1665)
+  * Replace sniffer 30001 port with 48999 (#1670)
+  * Add hub metrics port (#1666)
+  * removed the loglevel flag (#1669)
+  * Create save/activate/delete role scripting permissions
+    (#1667)
+  * Add --time param to pcapdump (#1664)
+  * from debug to logLevel (#1668)
+
+-------------------------------------------------------------------
 Tue Dec 10 08:46:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.92:

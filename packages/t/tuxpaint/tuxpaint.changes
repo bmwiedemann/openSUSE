@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan  3 13:38:19 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix `desktop-file-install` usage:
+  * Drop `-add-category=KidsGame` as the category is already
+    included in source .desktop file.
+  * Drop use of `--vendor` option: unnecessary and causes build
+    failures in Staging project (where %vendor is undefined).
+
+-------------------------------------------------------------------
+Sat Dec 21 11:59:02 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.9.34:
+  * Promote the "Fill" tool, previously found under the "Magic"
+    section of Tux Paint, to the main toolbar.
+  * Some performance improvements during start-up and when
+    bringing up the "New" drawing dialog.
+  * The solid background colors can also be placed at the end of
+    start-up dialog, allowing emphasis of template images.
+  * Allow disabling stereo sound.
+  * For a full list of changes, see
+    /usr/share/doc/packages/tuxpaint/CHANGES.txt.
+- Drop use of deprecated %suse_update_desktop_file macro; use
+  desktop-file-utils instead.
+
+-------------------------------------------------------------------
 Fri Aug  2 06:18:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.9.33:

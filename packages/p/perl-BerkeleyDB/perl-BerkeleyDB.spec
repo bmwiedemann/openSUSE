@@ -1,7 +1,7 @@
 #
 # spec file for package perl-BerkeleyDB
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,34 @@
 
 %define cpan_name BerkeleyDB
 Name:           perl-BerkeleyDB
-Version:        0.65
+Version:        0.660.0
 Release:        0
+# 0.66 -> normalize -> 0.660.0
+%define cpan_version 0.66
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for Berkeley DB version 2, 3, 4, 5 or 6
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(BerkeleyDB) = %{version}
+Provides:       perl(BerkeleyDB::Btree)
+Provides:       perl(BerkeleyDB::CDS::Lock)
+Provides:       perl(BerkeleyDB::Common)
+Provides:       perl(BerkeleyDB::Cursor)
+Provides:       perl(BerkeleyDB::Env)
+Provides:       perl(BerkeleyDB::Hash)
+Provides:       perl(BerkeleyDB::Heap)
+Provides:       perl(BerkeleyDB::Queue)
+Provides:       perl(BerkeleyDB::Recno)
+Provides:       perl(BerkeleyDB::Term)
+Provides:       perl(BerkeleyDB::Txn)
+Provides:       perl(BerkeleyDB::TxnMgr)
+Provides:       perl(BerkeleyDB::Unknown)
+Provides:       perl(BerkeleyDB::_tiedArray)
+Provides:       perl(BerkeleyDB::_tiedHash)
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  db-devel
@@ -53,8 +72,9 @@ particularly relevant.
 The interface to Berkeley DB is implemented with a number of Perl classes.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jan  3 08:46:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.0.0:
+  * Add support for Nobara detection.
+  * Fix current_os() to always return a single platform. Closes
+    #158.
+  * Add new current_platforms() method to return all platforms
+    matching the current environment.
+  * Generate a pair of Pytest @skip_<id>/@unless_<id> decorators
+    for each platform and group.
+  * Change all group membership check utilities to be functions
+    instead of variables. You now have to call is_<group_id>()
+    instead of is_<group_id>.
+  * Cache the result of is_<group_id>() group membership check
+    utilities.
+  * Do not call all detection heuristics on module import. Instead,
+    call them lazily when needed.
+  * Make URLs required on all platforms.
+  * Invite users in error messages and logs to contribute back
+    edge-cases to improve detection heuristics.
+  * Upload test results to coverage.
+
+-------------------------------------------------------------------
 Tue Dec  3 08:39:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.7.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  4 07:16:15 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.24.5:
+  * CTL scripts: allow translating also tooltips
+  * thumbnail: ensure return value of Thumbnail::getColorLabel() is
+    valid
+
+-------------------------------------------------------------------
 Fri Dec 20 06:30:32 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.24.3:

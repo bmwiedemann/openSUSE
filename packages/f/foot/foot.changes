@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  3 08:58:48 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.20.1:
+  * foot.ini options:
+    * colors.flash-alpha can no longer be set to 1.0 (fully opaque).
+  * App ID set using OSC 176 is now limited to 2048 characters.
+  * Fixed a crash from printing certain Unicode characters.
+  * Added new themes: iterm.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.20.1 for more details.
+
+-------------------------------------------------------------------
 Wed Jan  1 09:04:11 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.20.0:

@@ -1,4 +1,181 @@
 -------------------------------------------------------------------
+Sat Jan  4 06:58:23 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 25.01:
+  Features:
+  * Big refactor for Pickers
+  * Use a table layout and allow filtering by column
+  * Reimplement global_search to allow changing the query
+    dynamically
+  * Add an alternative "inline" display for LSP diagnostics
+  * Support defining keybindings as macros
+  * Continue line comments in o/O and on <ret> in insert mode
+  * Allow configuring and switching clipboard providers at runtime
+  * Add support for path completion
+  * Support bindings with the Super (Cmd/Win/Meta) modifier
+  * Support rendering and jumping between tabstops in snippet
+    completions
+  * Allow theming directory completions
+  Commands:
+  * Add commands to move within snake_case or camelCase words
+  * Add search_selection_detect_word_boundaries - This command
+    takes the * key in normal and select mode, replacing
+    search_selection which was moved to A-*.
+  Usability:
+  * Add :edit and :e aliases for :open
+  * Trim trailing newline from pipe command outputs when the input
+    doesn't have a trailing newline
+  * Add :mv alias for :move
+  * Return document display name instead of absolute path from the
+    % special register
+  * Track view position on a per-view instead of per-document basis
+  * Improve scrolloff calculation to leave a gap in the middle
+  * Show a popup for stderr printed by failed :sh commands
+  * Add statusline errors when nothing is selected with s, K, A-K
+  * Add .svn as a workspace root marker
+  * Trim the end of :sh outputs
+  * Show LSP window/showMessage messages in the statusline
+  * Support finding workspace directories via .jj directories
+  * Join single-line comments with join_selections (J)
+  * Show anonymous syntax tree nodes in :tree-sitter-subtree
+  * Save an undo checkpoint before paste in insert mode
+  * Only break on ASCII spaces in :reflow
+  * Add a default-yank-register config option
+  * Show a statusline error for :format when a formatter is not
+    available
+  * Change to the home directory with :cd with no arguments
+  * Change default comment token to # for unrecognized files
+  * Trim all trailing whitespace on insert_newline
+  * Change to the prior directory with :cd -
+  * Allow parsing - (with no modifiers) as a keybinding
+  * Improve opening statusline and error messages when opening
+    duplicate files or directories
+  * Trim trailing colons in paths passed on the argv
+  * Show tree-sitter parser availability in hx --health <lang>
+  * Show a preview block for colors in the LSP completion menu
+  * Add infobox help for surround_add, surround_replace and
+    surround_delete
+  Fixes:
+  * Respect document indentation settings in format_selections (=)
+  * Avoid switching the current document to normal mode during an
+    LSP workspace/applyEdit operation
+  * Fix off-by-one in LSP find_completion_range
+  * Prefer file-system mtime to local system time for detecting
+    external modifications
+  * Fix writing of hardlinks
+  * Prevent language servers from being automatically restarted
+    when stopped with :lsp-stop
+  * Stable-sort LSP text edits
+  * Fix determination of current language layer in documents with
+    nested language injections
+  * Fix a panic from :moveing a file to a new extension which
+    starts a language server
+  * Fix a panic from duplicating the diff gutter
+  * Keep cursor position when exactly replacing text
+  * Fix a panic from jump_backward on a newly opened split
+  * Fix a panic from language servers sending an unknown diagnostic
+    severity
+  * Fix a panic when drawing at the edge of the screen
+  * Fix git repo detection on symlinks
+  * Fix a panic from a language server sending an out-of-range
+    active signature index in textDocument/signatureHelp
+  * Fix a panic from using C-k in a prompt ending in a multi-byte
+    character
+  * Expand tildes in paths passed to :read
+  * Respect per-language workspace-lsp-roots configuration when
+    opening new documents
+  * Consistently replace line-endings in paste/replace commands
+  * Fix formatting in error statusline messages when inspecting
+    variables in DAP
+  * Fix invisible printing of headers in --health output on light
+    terminals
+  * Accept integers serialized as floats in the JSONRPC id field
+  Themes:
+  * Add new themes:
+    adwaita-light, ao, carbonfox, eiffel,
+    seoul256, sunset, vintage, yo
+  * Update themes:
+    bogster, dark_plus, snazzy, everforest,
+    gruvbox, hex, modus, voxed
+  Languages:
+  * Added new languages:
+    jjdescription, i3wm and Sway configs, TypeSpec, jq, Thrift,
+    Gherkin, Circom, Dune, Snakemake, Cylc, textproto, Spade,
+    NestedText, Quint, Amber-lang, Vento, Teal, Koto, NGINX
+  * Add comment injections for Hare
+  * Improve highlights for blade.php files
+  * Update tree-sitter-slint
+  * Recognize just files as Just
+  * Recognize mdx as Markdown
+  * Update Just grammar and queries
+  * Recognize tclsh as TCL
+  * Update Godot grammar and queries
+  * Update Gleam grammar and queries
+  * Add mesonlsp for Meson
+  * Update HTML highlights
+  * Add comment textobjects for Verilog
+  * Switch tree-sitter-just grammar
+  * Update tree-sitter-fsharp
+  * Add nixd for Nix
+  * Highlight types and enum members from the Rust prelude
+  * Improve textobjects for HCL, Nix
+  * Add textobjects queries for docker-compose, dockerfile, env,
+    git-config, hcl, hocon, prisma, SQL and YAML
+  * Recognize cshtml files as HTML
+  * Set a memory limit for the Lean language server
+  * Add configurations for jedi and ruff language servers
+  * Update Vue highlights
+  * Switch tree-sitter-hcl grammar
+  * Fix odinfmt formatter configuration
+  * Recognize rbs files as Ruby
+  * Update tree-sitter-nickel
+  * Recognize ldtk and ldtkl files as JSON
+  * Fix highlights for builtin functions in Fish
+  * Add superhtml for HTML
+  * Add a configuration for the Vale language server
+  * Add Erlang Language Platform
+  * Update Odin highlights
+  * Remove auto-pairs for single quotes in SML
+  * Add glsl_analyzer for GLSL
+  * Recognize .prettierrc as YAML
+  * Fix swift-format formatter configuration
+  * Add package.json and tsconfig.json as JS/TS workspace roots
+  * Add "INVARIANT" to comment error highlights
+  * Update Rescript grammar and queries
+  * Update tree-sitter-nasm
+  * Update LLVM grammars
+  * Update Perl and Pod grammars
+  * Add Nim injections in Nix
+  * Recognize livemd as Markdown
+  * Update Unison grammar and queries
+  * Turn off Swift auto-format by default
+  * Recognize .swift-format as JSON
+  * Recognize .clangd and .clang-format as YAML
+  * Recognize ssh_config.d/*.conf as sshclientconfig
+  * Update comment token configs for Zig
+  * Update tree-sitter-bicep
+  * Add hyperls for Hyperlang
+  * Add highlight queries for Solidity
+  * Recognize WORKSPACE.bzlmod as Starlark
+  * Update Ada grammar and queries
+  * Restrict Hocon file-types glob patterns
+  * Update Mojo language server to Magic
+  * Switch tree-sitter-v grammar
+  * Add "COMPLIANCE" to comment error highlights
+  * Add a language server configuration for ltex-ls-plus
+  * Update tree-sitter-dockerfile
+  * Add ] to PHP outdents
+  * Add textobjects for Odin
+  * Update tree-sitter-heex and queries
+  * Update protobuf highlights
+  * Switch tree-sitter-query
+  * Add block comment configurations for jinja and nunjucks
+  * Add uv shebang for python
+  * Update tree-sitter-vento
+  * Switch Protobuf tree-sitter grammar
+  * Recognize hypr/*.conf as Hyprland
+
+-------------------------------------------------------------------
 Wed Sep 11 08:15:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove rpmlintrc as using fdupes works as intended

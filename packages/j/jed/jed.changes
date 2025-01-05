@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Jan  3 21:47:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- adapt spec file for newer Tumbleweed:
+  * use autosetup
+  * adapt license
+  * use macros
+
+-------------------------------------------------------------------
+Wed Feb 22 17:24:18 UTC 2012 - kkaempf@suse.com
+
+- Require slang-slsh
+
+-------------------------------------------------------------------
+Tue Feb  9 13:01:16 UTC 2010 - kkaempf@novell.com
+
+- Update to 0.99-19
+  Over 200 changes since 0.99-18
+    see ftp://space.mit.edu/pub/davis/jed/v0.99/changes.txt
+
+-------------------------------------------------------------------
+Thu Aug 30 10:29:44 CEST 2007 - kkaempf@suse.de
+
+- Initial version 0.99-18
+

@@ -1,7 +1,7 @@
 #
 # spec file for package gpu-screen-recorder-gtk
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with test
 %define appid   com.dec05eba.gpu_screen_recorder
 Name:           gpu-screen-recorder-gtk
-Version:        20241124
+Version:        20250102
 Release:        0
 Summary:        GTK frontend for GPU Screen Recorder
 License:        GPL-3.0-only

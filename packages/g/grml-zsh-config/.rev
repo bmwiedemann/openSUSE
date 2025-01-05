@@ -56,4 +56,39 @@
   * zshrc: increase HISTSIZE + SAVEHIST to our defaults also for live system</comment>
     <requestid>1231389</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>812a5b5fd6d7d351796643de01107cd4</srcmd5>
+    <version>0.19.12</version>
+    <time>1736087315</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.12:
+  * zshrc: use $HOST instead of forking to uname -n
+  * zshenv: stop setting HOSTNAME
+  * zshrc: remove grml_maintain_name
+  * zshrc: stop setting CLICOLOR
+  * zshrc: use path_helper on macOS
+  * zshrc: remove fink init on macOS
+  * zshrc: remove zurl function
+  * zshrc: drop aterm workaround
+  * zshrc: drop mrxvt workaround
+  * zshrc: drop centericq workaround
+  * zshrc: remove fink init on macOS
+  * zshrc: remove 855resolution function
+  * zshrc: remove cdrecord function
+  * doc: remove old version info
+  * zshrc: require zsh version 5.1
+  * zshrc: remove add-zsh-hook from grml_prompt_setup
+  * zshrc: remove copy of add-zsh-hook
+  * Drop DISTCC_HOSTS variable
+
+- Update to 0.19.11:
+  * zshrc: set HISTSIZE + SAVEHIST only if not yet set or being set
+    to zsh upstream default #160 #169
+
+- Update to 0.19.10:
+  * Revert &quot;zshrc: increase HISTSIZE + SAVEHIST to our defaults
+    also for live system&quot; #169 #160
+  * Revert &quot;fix(zshrc): keep existing history restrictions&quot; #169 #160</comment>
+    <requestid>1234584</requestid>
+  </revision>
 </revisionlist>

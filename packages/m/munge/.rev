@@ -188,4 +188,17 @@ Hope, the changelog is correct now.</comment>
     <comment></comment>
     <requestid>1177023</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d0298b7ea363a06134e2ea69a530dd6b</srcmd5>
+    <version>0.5.16</version>
+    <time>1736087418</time>
+    <user>anag+factory</user>
+    <comment>Changelog formatting changes:
+  * Added `--listen-backlog` cmdline opt.
+  This release is backwards-compatible to 0.5; however, credentials
+  encoded with the current default of `MUNGE_MAC_SHA256` cannot be
+  decoded by releases prior to 0.5.5.
+- Remove munge key on uninstall (forwarded request 1234711 from eeich)</comment>
+    <requestid>1234712</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 23 12:19:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add cargo-vendor-filterer and obs-service-cargo
+
+-------------------------------------------------------------------
 Tue Dec 05 18:47:30 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Removed ca-certificates-suse and related repository, it was 

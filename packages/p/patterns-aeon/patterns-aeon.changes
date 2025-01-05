@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  3 14:07:29 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Add libmbim (boo#1230006) 
+
+-------------------------------------------------------------------
+Fri Jan  3 13:56:18 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Add printer-driver-brlaser (boo#1234618) 
+
+-------------------------------------------------------------------
 Tue Oct 15 11:29:13 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove pytxis, set gnome-console as new default terminal 

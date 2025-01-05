@@ -1,7 +1,7 @@
 #
 # spec file for package gping
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gping
-Version:        1.17.3
+Version:        1.19.0
 Release:        0
 Summary:        Ping, but with a graph
 License:        MIT
 URL:            https://github.com/orf/gping
-Source:         %{url}/archive/%{name}-v%{version}.tar.gz
+Source:         https://github.com/orf/gping/archive/refs/tags/gping-v%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 
@@ -35,18 +35,21 @@ Comes with the following super-powers:
 
 %prep
 %autosetup -p1 -a1 -n gping-gping-v%{version}
+%if 0%{?suse_version} <= 1560
+sed -i 's/version = 4/version = 3/' Cargo.lock
+%endif
 
 %build
 cd gping
-%cargo_build
+%{cargo_build}
 
 %check
 cd gping
-%cargo_test
+%{cargo_test}
 
 %install
 cd gping
-%cargo_install
+%{cargo_install}
 install -Dpm644 ../gping.1 %{buildroot}%{_mandir}/man1/gping.1%{?ext_man}
 
 %files

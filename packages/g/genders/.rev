@@ -115,4 +115,22 @@
   more</comment>
     <requestid>1231724</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9cc02e9daea4e2c418cf95ece74f7135</srcmd5>
+    <version>1.29.1</version>
+    <time>1736087422</time>
+    <user>anag+factory</user>
+    <comment>- Drop all Lua BuildRequires as the Lua bindings are gone and
+  `clustduct` is no longer provided.
+
+- removed lua_bindings.patch as the autoconf tolls don't work any
+  more.
+- update to 1.29.1 which increased the internal buffer in nodeattr
+  for large cluster hostranges.
+  * Build Bindings for *both* python2 and python3  with sample
+    sepc file. Irrelevant for openSUSE/SUSE builds.
+- Do not Provides/Obsoletes Python 2 packages with Python 3 ones.
+- remove the hard coded rpath explicitly (forwarded request 1234721 from eeich)</comment>
+    <requestid>1234722</requestid>
+  </revision>
 </revisionlist>

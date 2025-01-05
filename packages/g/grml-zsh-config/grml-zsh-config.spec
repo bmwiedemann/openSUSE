@@ -1,7 +1,7 @@
 #
 # spec file for package grml-zsh-config
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           grml-zsh-config
-Version:        0.19.9
+Version:        0.19.12
 Release:        0
-Summary:        Zsh config used by grml
+Summary:        Zsh config ujed by grml
 License:        GPL-2.0-only
 URL:            https://grml.org/zsh/
 Source:         https://github.com/grml/grml-etc-core/archive/refs/tags/v%{version}.tar.gz
@@ -27,7 +27,7 @@ BuildRequires:  python3-txt2tags
 Requires:       grep
 Requires:       procps
 Requires:       sed
-Requires:       zsh
+Requires:       zsh >= 5.1
 BuildArch:      noarch
 
 %description

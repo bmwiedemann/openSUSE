@@ -1,7 +1,7 @@
 #
 # spec file for package composefs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 1
 Name:           composefs
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        The reliability of disk images, the flexibility of files
 License:        Apache-2.0 OR GPL-2.0-or-later

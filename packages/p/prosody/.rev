@@ -682,4 +682,39 @@
     <comment></comment>
     <requestid>1144916</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4eed2756312a850fa21f6753c2b5ac41</srcmd5>
+    <version>0.12.5</version>
+    <time>1736087317</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.5:
+  Fixes and improvements:
+  * mod_blocklist: Drop blocked messages without error, option to restore compliant behavior
+  Minor changes:
+  * core.certmanager: Validate that ‘tls_profile’ is one of the valid values
+  * net.http: Throw error if missing TLS context for HTTPS request
+  * net.http.parser: Reject overlarge header section earlier
+  * net.http.files: Validate argument to setup function
+  * MUC: optimizations for broadcast of visitor presence (thanks Jitsi team)
+  * net.server_event: Add ‘wrapserver’ API
+  * scansion: Enable blocklist compat during tests to fix CI
+  * prosodyctl check: Warn about invalid domain names in the config file
+  * util.prosodyctl.check: Correct modern replacement for ‘disallow_s2s’
+  * util.prosodyctl.cert: Ensure old cert is moved out of the way
+  * util.prosodyctl.check: Improve error handling of UDP socket setup (for #1803)
+  * mod_smacks: Destroy timed out session in async context (fixes #1884:
+    ASYNC-01 in mod_smacks hibernation timeout)
+  * mod_invites: Fix traceback when token_info isn’t set
+  * mod_admin_shell: Allow matching on host or bare JID in c2s:show
+  * mod_admin_adhoc: Fix log messages for reloading modules.
+  * core.moduleapi: Default labels to empty list to fix error if omitted
+  * mod_muc_mam: Improve wording of enable setting
+  * mod_bookmarks: Suppress error publishing empty legacy bookmarks w/ no PEP node
+  * mod_bookmarks: Clarify log messages on failure to sync to modern PEP bookmarks
+  * mod_invites_adhoc: Fix result form type (thanks betarays)
+  * mod_disco: Advertise disco#info and #items on bare JIDs to fix
+    #1664: mod_disco on account doesn’t return disco#info feature
+  * util.xtemplate: Fix error on applying each() to zero stanzas</comment>
+    <requestid>1234586</requestid>
+  </revision>
 </revisionlist>

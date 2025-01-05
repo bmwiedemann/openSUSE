@@ -18,14 +18,14 @@
 
 Name:           libtorrent
 %define lname	libtorrent23
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception
 Group:          Productivity/Networking/File-Sharing
 URL:            https://github.com/rakshasa/libtorrent
 
-Source:         https://github.com/rakshasa/libtorrent/archive/refs/tags/v%version.tar.gz
+Source:         https://github.com/rakshasa/rtorrent/releases/download/v%version/libtorrent-%version.tar.gz
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 29 21:55:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- readd %sysusers_requires, as otherwise the %pre script fails to install
+
+-------------------------------------------------------------------
 Fri Nov 29 13:56:56 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 2.6.1+git.1732869438.f7883c2:

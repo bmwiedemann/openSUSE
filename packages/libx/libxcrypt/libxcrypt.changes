@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  2 14:28:53 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 4.4.37
+  * Several fixes to the manpages (issue #185).
+  * Only test the needed makecontext signature during configure (issue #178).
+  * Fix -Werror=strict-overflow in lib/crypt-bcrypt.c, which is seen by GCC
+    4.8.5 (issue #197).
+- Symlink duplicated manpages
+
+-------------------------------------------------------------------
 Mon Jul 17 10:51:58 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update to 4.4.36
