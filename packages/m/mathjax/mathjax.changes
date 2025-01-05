@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 19 12:52:26 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.2.2
+  * Prevent lazy typesetting from re-typeset expressions unnecessarily, which
+    can cause duplicate-label error messages in the output, and degrade
+    performance.
+  * Improve method for obtaining the <math> element from mml3 conversion, 
+    allowing it to work better in an XHTML setting.
+  * Make version.ts use a constant and create the file during the build process
+    rather than dynamically determining the version. This allows easier
+    packaging of MathJax into other applications.
+
+-------------------------------------------------------------------
+Wed Dec 18 12:08:15 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.7.9
+  This release updates the Speech-Rule Engine (SRE) that underlies MathJax's 
+  accessibility features to version 3.1 and updates the a11y extensions to
+  version 1.6.0 to take advantage of the new SRE version. The upgrade includes
+  new languages (German and French), and access to the Clearspeak rules via
+  the accessibility menu, as well as bug fixes in SRE, and faster conversion
+  of expressions to speech.
+
+-------------------------------------------------------------------
 Mon Jul 26 16:50:13 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define _fontsdir for building on systems that don't have it

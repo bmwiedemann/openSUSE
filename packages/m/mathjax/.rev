@@ -23,4 +23,12 @@
     <comment>fix build on systems that have no %%_fontsdir macro</comment>
     <requestid>908511</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c39110c2ecf92fcd15bd0c879d9589ab</srcmd5>
+    <version>3.2.2</version>
+    <time>1736087524</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1234955</requestid>
+  </revision>
 </revisionlist>

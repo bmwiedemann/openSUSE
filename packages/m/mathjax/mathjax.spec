@@ -1,7 +1,7 @@
 #
 # spec file for package mathjax
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,18 @@
 
 %{!?_fontsdir:%global _fontsdir %{_datadir}/fonts}
 Name:           mathjax
-Version:        2.6.0
+Version:        3.2.2
 Release:        0
 Summary:        JavaScript library to render math in the browser
-Group:          Development/Libraries/Java
 License:        Apache-2.0
-URL:            http://mathjax.org
-Source0:        https://github.com/mathjax/MathJax/archive/%{version}.tar.gz
+Group:          Development/Libraries/Java
+URL:            https://mathjax.org
+Source0:        https://github.com/mathjax/MathJax/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fontpackages-devel
+BuildRequires:  nodejs
+BuildRequires:  nodejs-packaging
 Requires:       %{name}-ams-fonts
-Requires:       %{name}-caligraphic-fonts
+Requires:       %{name}-calligraphic-fonts
 Requires:       %{name}-fraktur-fonts
 Requires:       %{name}-main-fonts
 Requires:       %{name}-math-fonts
@@ -38,9 +40,10 @@ Requires:       %{name}-size2-fonts
 Requires:       %{name}-size3-fonts
 Requires:       %{name}-size4-fonts
 Requires:       %{name}-typewriter-fonts
-Requires:       %{name}-winchrome-fonts
-Requires:       %{name}-winie6-fonts
+Requires:       %{name}-vector-fonts
+Requires:       %{name}-zero-fonts
 BuildArch:      noarch
+%{?nodejs_requires}
 
 %description
 MathJax is an open-source JavaScript display engine for LaTeX, MathML,
@@ -52,6 +55,7 @@ naturally and easily. Supports LaTeX, MathML, and AsciiMath notation
 in HTML pages.
 
 %global fontsummary Fonts used by MathJax to display math in the browser
+License:        Apache-2.0
 
 %package ams-fonts
 Summary:        %{fontsummary}
@@ -61,12 +65,12 @@ Group:          System/X11/Fonts
 %description ams-fonts
 %{fontsummary}.
 
-%package caligraphic-fonts
+%package calligraphic-fonts
 Summary:        %{fontsummary}
 License:        OFL-1.1
 Group:          System/X11/Fonts
 
-%description caligraphic-fonts
+%description calligraphic-fonts
 %{fontsummary}.
 
 %package fraktur-fonts
@@ -149,120 +153,78 @@ Group:          System/X11/Fonts
 %description size4-fonts
 %{fontsummary}.
 
-%package winie6-fonts
+%package       vector-fonts
 Summary:        %{fontsummary}
 License:        OFL-1.1
 Group:          System/X11/Fonts
 
-%description winie6-fonts
+%description   vector-fonts
 %{fontsummary}.
 
-%package winchrome-fonts
+%package       zero-fonts
 Summary:        %{fontsummary}
 License:        OFL-1.1
 Group:          System/X11/Fonts
 
-%description winchrome-fonts
+%description   zero-fonts
 %{fontsummary}.
 
 %prep
 %setup -q -n MathJax-%{version}
-# Remove bundled fonts
-rm -rf MathJax-2.4.0/jax/output
-rm -rf MathJax-2.4.0/fonts/HTML-CSS/{Asana-Math,Gyre-Pagella,Gyre-Termes,Latin-Modern,Neo-Euler,STIX-Web}
-
-# Remove minified javascript.
-for i in $(find . -type f -path '*unpacked*'); do \
-  mv $i ${i//unpacked/}; done
-find . -depth -type d -path '*unpacked*' -delete
-for i in MathJax.js jax/output/HTML-CSS/jax.js jax/output/HTML-CSS/imageFonts.js; do \
-    sed -r 's#(MathJax|BASE)[.]isPacked#1#' <$i >$i.tmp; \
-    touch -r $i $i.tmp; \
-    mv $i.tmp $i; \
-done
 
 %build
-# minification should be performed here at some point
 
 %install
-mkdir -p %{buildroot}%{_datadir}/javascript/mathjax
-cp -pr MathJax.js config/ extensions/ jax/ localization/ test/ \
-    %{buildroot}%{_datadir}/javascript/mathjax/
-
-mkdir -p %{buildroot}%{_datadir}/javascript/mathjax/fonts/HTML-CSS/TeX/
-cp -pr fonts/HTML-CSS/TeX/png %{buildroot}%{_datadir}/javascript/mathjax/fonts/HTML-CSS/TeX/
-
-mkdir -p %{buildroot}%{_fontsdir}
-cp -pr fonts/HTML-CSS/TeX/*/MathJax_$i*.{eot,otf,svg} %{buildroot}%{_fontsdir}
-
-for t in eot otf svg; do \
-    mkdir -p %{buildroot}%{_datadir}/javascript/mathjax/fonts/HTML-CSS/TeX/$t; \
-    for i in fonts/HTML-CSS/TeX/$t/MathJax_*.$t; do \
-        ln -s %{_fontsdir}/$(basename $i) \
-            %{buildroot}%{_datadir}/javascript/mathjax/fonts/HTML-CSS/TeX/$t/; \
-    done \
-done
+%nodejs_install
+install -d %{buildroot}%{_fontsdir}
+cp es5/output/chtml/fonts/woff-v2/*.woff %{buildroot}%{_fontsdir}
 
 %files
-%defattr(-,root,root)
-%dir %{_datadir}/javascript
-%{_datadir}/javascript/mathjax
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
+%dir %{nodejs_modulesdir}
+%{nodejs_modulesdir}/%{name}
 
 %files ams-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_AMS-Regular.*
 
-%files caligraphic-fonts
-%defattr(-,root,root)
-%{_fontsdir}/MathJax_Caligraphic-*.*
+%files calligraphic-fonts
+%{_fontsdir}/MathJax_Calligraphic-*.*
 
 %files fraktur-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Fraktur-*.*
 
 %files main-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Main-*.*
 
 %files math-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Math-*.*
 
 %files sansserif-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_SansSerif-*.*
 
 %files script-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Script-*.*
 
 %files typewriter-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Typewriter-*.*
 
 %files size1-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Size1-*.*
 
 %files size2-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Size2-*.*
 
 %files size3-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Size3-*.*
 
 %files size4-fonts
-%defattr(-,root,root)
 %{_fontsdir}/MathJax_Size4-*.*
 
-%files winie6-fonts
-%defattr(-,root,root)
-%{_fontsdir}/MathJax_WinIE6-*.*
+%files vector-fonts
+%{_fontsdir}/MathJax_Vector-*.*
 
-%files winchrome-fonts
-%defattr(-,root,root)
-%{_fontsdir}/MathJax_WinChrome-*.*
+%files zero-fonts
+%{_fontsdir}/MathJax_Zero.*
 
 %changelog
