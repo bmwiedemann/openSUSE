@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  4 08:42:32 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.1743
+  * [YouTube] Fix extraction
+  * Fix: Restore functionality of -o parameter for Miaopai
+    downloads
+  * remove imported but unsed module
+
+-------------------------------------------------------------------
 Mon Aug 19 20:18:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.1730

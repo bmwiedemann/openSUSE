@@ -489,4 +489,17 @@
     <comment></comment>
     <requestid>1194773</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8d0bfb4948e2c49ec562900a89ca4e76</srcmd5>
+    <version>0.4.1743</version>
+    <time>1736087491</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.1743
+  * [YouTube] Fix extraction
+  * Fix: Restore functionality of -o parameter for Miaopai
+    downloads
+  * remove imported but unsed module
+</comment>
+    <requestid>1234889</requestid>
+  </revision>
 </revisionlist>
