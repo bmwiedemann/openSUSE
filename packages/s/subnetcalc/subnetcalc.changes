@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  4 17:55:43 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.6.1:
+  * Improved address type handling for special cases
+  * Bugfix: Print correct hostname when nocolor mode is on
+  * Added option to print program version
+
+- added bash completion and translation packages
+
+-------------------------------------------------------------------
 Thu Feb 22 06:28:06 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.4.1:

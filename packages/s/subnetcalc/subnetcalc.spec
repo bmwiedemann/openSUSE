@@ -1,7 +1,7 @@
 #
 # spec file for package subnetcalc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           subnetcalc
-Version:        2.5.1
+Version:        2.6.1
 Release:        0
 Summary:        IPv4/IPv6 Subnet Calculator
 License:        GPL-3.0-or-later
@@ -34,6 +34,18 @@ address, maximum number of hosts and host address range. It also prints the
 addresses in binary format for better understandability. Furthermore, it
 prints information on specific address types (e.g. type, scope,
 interface ID, etc.).
+
+%lang_package
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+Supplements:    (%{name} and bash)
+BuildArch:      noarch
+
+%description bash-completion
+The bash completion script for %{name}, generated during the build.
 
 %package doc
 Summary:        Documentation for %{name}
@@ -55,6 +67,8 @@ This packages provides documentation and help files for subnetcalc.
 %install
 %cmake_install
 
+%find_lang %{name}
+
 %check
 %{buildroot}%{_bindir}/%{name} 192.168.1.0/255.255.0.0
 
@@ -62,6 +76,13 @@ This packages provides documentation and help files for subnetcalc.
 %license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion
+
+%files lang -f %{name}.lang
+%{_datadir}/locale/de/LC_MESSAGES/subnetcalc*
+%{_datadir}/locale/nb/LC_MESSAGES/subnetcalc*
 
 %files doc
 %doc AUTHORS ChangeLog README.md
