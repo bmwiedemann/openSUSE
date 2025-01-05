@@ -1,7 +1,7 @@
 #
 # spec file for package winetricks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           winetricks
-Version:        20240105
+Version:        20250102
 Release:        0
 Summary:        A way to work around problems in WINE
 License:        LGPL-2.1-or-later
@@ -62,7 +62,8 @@ BuildArch:      noarch
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/metainfo/%{name}.appdata.xml
+#{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/io.github.winetricks.Winetricks.metainfo.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files bash-completion

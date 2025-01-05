@@ -167,4 +167,13 @@
 - don't try to build the software, as nothing is getting built</comment>
     <requestid>1208672</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cae2598ed71fc2c20ee98d81aa935d96</srcmd5>
+    <version>20250102</version>
+    <time>1736087512</time>
+    <user>anag+factory</user>
+    <comment>- updated to 20250102
+  - year of fixes, no changes entry</comment>
+    <requestid>1234920</requestid>
+  </revision>
 </revisionlist>
