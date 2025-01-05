@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  4 02:25:47 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Added _service to download files
+- Renamed tarball to match convention %{name}-%{version}.tar.gz
+- Use ninja as cmake builder instead of Make
+
+- Updated to version 1.19.2
+  * API Headers, Loader, & Validation Layer based on oneAPI
+    Level Zero Specification v1.11.8
+
+-------------------------------------------------------------------
 Tue Oct  1 03:05:38 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - update to 1.17.45:
@@ -12,15 +23,15 @@ Tue Oct  1 03:05:38 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     retrieved (#192)
   * Proper installation rules
   * Enable testing with ctest
-  * Fix reading updated state of the driver_t for checking 
+  * Fix reading updated state of the driver_t for checking
     initStatus (#188)
-  * Avoid DDI table reinit if 
+  * Avoid DDI table reinit if
     ZE_ENABLE_LOADER_INTERCEPT=1 (#187)
   * Update spdlog headers (#186)
   * Fix handle translation when ddi table fallback (#185)
-  * Split Ze and Zes Drivers and only release 
+  * Split Ze and Zes Drivers and only release
     drivers at close (#184)
-  * Fix issues with intercept layer and zesInit/zeInit 
+  * Fix issues with intercept layer and zesInit/zeInit
     given fallback to passthrough (#183)
   * Fix global teardown of loader handles and check driver
     status in init_driver (#182)

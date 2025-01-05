@@ -1,7 +1,7 @@
 #
 # spec file for package level-zero
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Alessandro de Oliveira Faria (A.K.A CABELO) <cabelo@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,16 @@
 
 
 Name:           level-zero
-Version:        1.17.45
+Version:        1.19.2
 Release:        0
 Summary:        oneAPI Level Zero Specification Headers and Loader
 License:        MIT
 URL:            https://github.com/oneapi-src/level-zero
-Source0:        %{url}/archive/v%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  make
+BuildRequires:  ninja
 BuildRequires:  opencl-headers
-ExclusiveArch:  x86_64
 
 %description
 The objective of the oneAPI Level-Zero Application Programming Interface (API)
@@ -49,6 +48,7 @@ applications that use %{name}.
 %autosetup -n level-zero-%{version}
 
 %build
+%define __builder ninja
 %cmake
 %cmake_build
 
