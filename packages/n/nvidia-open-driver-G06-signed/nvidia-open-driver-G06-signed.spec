@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-open-driver-G06-signed
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 550.135
+%define gfx_version 550.142
 %define cuda_version 565.57.01
 
 %global flavor @BUILD_FLAVOR@%{?nil}
@@ -87,6 +87,9 @@ Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Patch0:         persistent-nvidia-id-string.patch
+%if %{with cuda}
+Patch1:         set-FOP_UNSIGNED_OFFSET-for-nv_drm_fops.fop_flags.patch
+%endif
 %if "%{flavor}" != "cuda"
 %ifarch aarch64
 %if 0%{?suse_version} >= 1600

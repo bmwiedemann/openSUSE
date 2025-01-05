@@ -587,4 +587,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1233258</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>757b42a29fcb3d995c096f4c3f410c5f</srcmd5>
+    <version>550.142</version>
+    <time>1736087493</time>
+    <user>anag+factory</user>
+    <comment>- set-FOP_UNSIGNED_OFFSET-for-nv_drm_fops.fop_flags.patch
+  * needed for Kernel 6.12 for 565.57.01 driver; already fixed
+    for 550.142 
+    --&gt; https://forums.developer.nvidia.com/t/patch-for-565-57-01-linux-kernel-6-12/313260 
+
+- Update to 550.142 (boo#1234675)</comment>
+    <requestid>1234916</requestid>
+  </revision>
 </revisionlist>

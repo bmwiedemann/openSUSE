@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan  4 12:42:00 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- set-FOP_UNSIGNED_OFFSET-for-nv_drm_fops.fop_flags.patch
+  * needed for Kernel 6.12 for 565.57.01 driver; already fixed
+    for 550.142 
+    --> https://forums.developer.nvidia.com/t/patch-for-565-57-01-linux-kernel-6-12/313260 
+
+-------------------------------------------------------------------
+Tue Dec 17 23:51:04 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 550.142 (boo#1234675)
+
+-------------------------------------------------------------------
 Tue Dec 17 11:55:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - for SLE Micro 6.x use 
