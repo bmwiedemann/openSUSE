@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 28 16:38:55 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.3.3.
+  5.3.3 [2024.12.28]
+  ------------------
+  * Add `makeFieldsId`, which generates overloaded field accessors using the
+    same names as the underlying fields. This is intended for use with the
+    `NoFieldSelectors` and `DuplicateRecordFields` language extensions.
+
+    Also add `classIdFields :: LensRules` and `classIdNamer :: FieldNamer`, both
+    of which use the same naming rules as `makeFieldsId`.
+  * Update the `Prism`s in `Language.Haskell.TH.Lens` to reflect additions to
+    `template-haskell-2.23.0.0`:
+    * Add an `_OrP` `Prism` for the `Pat` data type.
+    * Add `_ForallE`, `_ForallVisE`, and `_ConstrainedE` `Prism`s for the `Exp`
+      data type.
+
+-------------------------------------------------------------------
 Fri Jul  5 15:12:02 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update lens to version 5.3.2 revision 2.

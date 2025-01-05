@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.3.2
+Version:        5.3.3
 Release:        0
 Summary:        Lenses, Folds and Traversals
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -127,8 +126,8 @@ An overview, with a large number of examples can be found in the
 
 An introductory video on the style of code used in this library by Simon Peyton
 Jones is available from
-<http://skillsmatter.com/podcast/scala/lenses-compositional-data-access-and-manipulation
-Skills Matter>.
+<https://archive.org/details/lenses-compositional-data-access-and-manipulation-simon-peyton-jones-at-haskell-
+Internet Archive>.
 
 A video on how to use lenses and how they are constructed is available on
 <http://youtu.be/cefnmjtAolY?hd=1 youtube>.
@@ -226,7 +225,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
