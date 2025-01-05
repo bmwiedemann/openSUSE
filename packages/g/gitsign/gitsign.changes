@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jan 04 08:08:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.12.0:
+  * attest: force https for rekor client (#610)
+  * Bump the gomod group with 2 updates (#608)
+  * Bump google.golang.org/protobuf from 1.35.2 to 1.36.0 (#607)
+  * Bump github.com/sigstore/sigstore in the gomod group across 1
+    directory (#606)
+  * Bump the actions group with 3 updates (#603)
+  * Bump github.com/secure-systems-lab/go-securesystemslib (#605)
+  * fix zizmor issues (#602)
+  * Bump actions/cache from 4.1.2 to 4.2.0 in the actions group
+    (#599)
+  * Bump actions/attest-build-provenance from 1.4.4 to 2.0.1 (#600)
+  * Bump golang.org/x/crypto from 0.29.0 to 0.30.0 (#601)
+  * README: add warning about internet access (#596)
+  * Bump the gomod group with 2 updates (#598)
+  * Bump anchore/sbom-action from 0.17.7 to 0.17.8 in the actions
+    group (#597)
+  * Bump google.golang.org/protobuf from 1.35.1 to 1.35.2 in the
+    gomod group (#595)
+  * Bump golang.org/x/oauth2 from 0.23.0 to 0.24.0 (#593)
+  * Bump the actions group with 3 updates (#592)
+  * Bump golang.org/x/crypto from 0.28.0 to 0.29.0 (#594)
+  * Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 (#591)
+  * Bump anchore/sbom-action from 0.17.5 to 0.17.6 in the actions
+    group (#590)
+  * Bump github.com/go-git/go-billy/v5 from 5.5.0 to 5.6.0 (#587)
+  * Bump the actions group with 4 updates (#588)
+  * Update release.yml - add attestations:write (#586)
+
+-------------------------------------------------------------------
 Thu Oct 24 08:17:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.0:
