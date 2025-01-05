@@ -1,0 +1,10 @@
+diff --git a/source/common/CMakeLists.txt b/source/common/CMakeLists.txt
+index b5fb64cf..3caa499b 100644
+--- a/source/common/CMakeLists.txt
++++ b/source/common/CMakeLists.txt
+@@ -119,5 +119,4 @@ add_library(${PROJECT_NAME}::umf ALIAS ur_umf)
+ target_link_libraries(ur_umf INTERFACE
+     umf::umf
+     umf::headers
+-    umf::disjoint_pool
+ )
