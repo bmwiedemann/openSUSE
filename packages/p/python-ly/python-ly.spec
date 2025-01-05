@@ -1,7 +1,7 @@
 #
 # spec file for package python-ly
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ly
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        Tool and library for manipulating LilyPond files
 License:        GPL-2.0-or-later
 URL:            https://github.com/frescobaldi/python-ly
 Source:         https://github.com/frescobaldi/python-ly/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-ly-pkginfo-name.patch gh#frescobaldi/python-ly#167
-Patch0:         https://github.com/frescobaldi/python-ly/commit/233de7e253086c3eaad21c5b5223169832b36282.patch#/python-ly-pkginfo-name.patch
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 #BuildRequires:  %%{python_module pytest}
@@ -35,7 +34,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

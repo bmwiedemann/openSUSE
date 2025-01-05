@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>1144007</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c8df4523dc5e29b691e0d242974c5ba</srcmd5>
+    <version>0.9.9</version>
+    <time>1736087510</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.9:
+  * LilyPond syntax updates
+  * Use hatchling as build backend
+  * Fixed: Never use MUP as format guess.
+    Fixes frescobaldi/frescobaldi#1635
+  * Fix tests
+- Removed upstreamed python-ly-pkginfo-name.patch
+- Added BuildRequires: %{python_module hatchling}</comment>
+    <requestid>1234917</requestid>
+  </revision>
 </revisionlist>
