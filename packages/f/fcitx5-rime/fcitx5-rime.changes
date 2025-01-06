@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan  5 06:46:10 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.9
+  * Add additional behaviors in the switch input method configuration
+  * partially implement BulkCursor
+  * Update the message and the logic for block message
+  * add hotkey configuration for deploy and synchronize
+  * Use option label from action instead of get_state_label to
+    support older librime
+  * Use new show custom input method information to display option
+    change
+  * Set program name to client_app property
+  * implement candidate action: forget_candidate
+- changes in 5.1.8
+  * hotfix
+- changes in 5.1.7
+  * Add compose support
+  * Fix a bug with combo pinyin with certain preedit mode
+
+-------------------------------------------------------------------
 Thu May 23 07:54:38 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.6
