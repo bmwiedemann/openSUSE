@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-kkc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           %{pname}
-Version:        5.1.3
+Version:        5.1.5
 Release:        0
 Summary:        Libkkc input method support for Fcitx5
 License:        GPL-3.0-or-later
@@ -69,6 +69,11 @@ This package provides libkkc input method support for Fcitx5.
 %cmake -DUSE_QT6=OFF
 %endif
 %if "%{flavor}" == "qt6"
+# leap 15.5 qt6/QtCore/qfile.h include <filesystem> which was in experimental in gcc12
+%if 0%{?suse_version} == 1500
+export CFLAGS="-I%{_includedir}/c++/12/experimental"
+export CXXFLAGS="-I%{_includedir}/c++/12/experimental"
+%endif
 %cmake
 %endif
 %make_build
@@ -93,8 +98,8 @@ This package provides libkkc input method support for Fcitx5.
 %{_datadir}/fcitx5/inputmethod/kkc.conf
 %{_datadir}/fcitx5/kkc/dictionary_list
 %{_datadir}/fcitx5/kkc/rule
-%{_datadir}/icons/hicolor/*/apps/fcitx-kkc.png
-%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-kkc.png
+%{_datadir}/icons/hicolor/*/apps/fcitx_kkc.png
+%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx_kkc.png
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Kkc.metainfo.xml
 
 %changelog
