@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  5 22:20:51 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.10.0
+  * This release raises the minimum supported Xserver version from
+    xorg-server-1.12 (released March 2012) to xorg-server-1.18 (Nov. 2015).
+  * For those building on Linux, it also drops support for building on kernel
+    versions earlier than 2.6.31 (Sept. 2009).
+
+-------------------------------------------------------------------
 Mon Feb 26 12:09:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -395,4 +395,16 @@
     <comment></comment>
     <requestid>1151666</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c499fdebe9707f22d24a5cbe2fb71dfa</srcmd5>
+    <version>1.10.0</version>
+    <time>1736175934</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.10.0
+  * This release raises the minimum supported Xserver version from
+    xorg-server-1.12 (released March 2012) to xorg-server-1.18 (Nov. 2015).
+  * For those building on Linux, it also drops support for building on kernel
+    versions earlier than 2.6.31 (Sept. 2009).</comment>
+    <requestid>1235080</requestid>
+  </revision>
 </revisionlist>

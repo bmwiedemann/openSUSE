@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-synaptics
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xf86-input-synaptics
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        Synaptics touchpad input driver for the Xorg X server
 License:        MIT
