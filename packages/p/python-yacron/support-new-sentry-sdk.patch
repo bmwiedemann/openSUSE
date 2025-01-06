@@ -1,0 +1,22 @@
+Index: yacron-0.19.0/tests/test_job.py
+===================================================================
+--- yacron-0.19.0.orig/tests/test_job.py
++++ yacron-0.19.0/tests/test_job.py
+@@ -376,7 +376,7 @@ async def test_report_sentry(
+             self.kwargs = kwargs
+             self.messages_sent = []
+ 
+-        def capture_event(self, event_opt):
++        def capture_envelope(self, event_opt):
+             self.messages_sent.append(event_opt)
+ 
+         def kill(self):
+@@ -402,7 +402,7 @@ async def test_report_sentry(
+     ]
+ 
+     assert len(messages_sent) == 1
+-    msg = messages_sent[0]
++    msg = messages_sent[0].get_event()
+     msg1 = {
+         key: msg[key] for key in {"message", "level", "fingerprint", "extra"}
+     }

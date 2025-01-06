@@ -83,4 +83,15 @@
     <comment>- skip python 3.9 due to missing dependencies</comment>
     <requestid>1157919</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>f4259d72526a73bb892b3b5a9636138b</srcmd5>
+    <version>0.19.0</version>
+    <time>1736175940</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-new-sentry-sdk.patch:
+  * Support new Sentry SDK changes.
+- Switch to autosetup and pyproject macros. 
+- No more greedy globs in %files.</comment>
+    <requestid>1235090</requestid>
+  </revision>
 </revisionlist>

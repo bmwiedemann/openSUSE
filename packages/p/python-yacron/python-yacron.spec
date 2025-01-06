@@ -1,7 +1,7 @@
 #
 # spec file for package python-yacron
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 %{?sle15_python_module_pythons}
-# missing sentry-sdk due to missing ipdb for 39
-%global skip_python39 1
 Name:           python-yacron
 Version:        0.19.0
 Release:        0
 Summary:        Docker-friendly Cron replacement
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/gjcarneiro/yacron
 Source:         https://files.pythonhosted.org/packages/source/y/yacron/yacron-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support Sentry SDK changes
+Patch0:         support-new-sentry-sdk.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -60,21 +61,18 @@ BuildRequires:  %{python_module strictyaml >= 0.7.2}
 A modern Cron replacement that is Docker-friendly.
 
 %prep
-%setup -q -n yacron-%{version}
+%autosetup -p1 -n yacron-%{version}
 sed -i 's/pytest-runner//;/pytest-cov/d' setup.py
 
 %build
-export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
-export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/yacron
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
 %pytest
 
 %post
@@ -87,6 +85,7 @@ export LANG=en_US.UTF-8
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/yacron
-%{python_sitelib}/*
+%{python_sitelib}/yacron
+%{python_sitelib}/yacron-%{version}.dist-info
 
 %changelog

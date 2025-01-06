@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  6 03:04:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-sentry-sdk.patch:
+  * Support new Sentry SDK changes.
+- Switch to autosetup and pyproject macros. 
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Mar 14 09:52:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.9 due to missing dependencies
