@@ -409,4 +409,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1220050 from glaubitz)</comment>
     <requestid>1220063</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3421f5ad87f375b4514d4111ce932444</srcmd5>
+    <version>28.1.0</version>
+    <time>1736175944</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 28.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1235134 from glaubitz)</comment>
+    <requestid>1235170</requestid>
+  </revision>
 </revisionlist>
