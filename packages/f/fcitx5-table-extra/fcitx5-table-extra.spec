@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-table-extra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-table-extra
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        Extra Chinese table input methods for Fcitx5
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
@@ -99,8 +99,8 @@ fcitx-table-extra provides extra table for Fcitx, including Boshiamy, Zhengma, C
 %files
 %license LICENSES/GPL-3.0-or-later.txt
 %doc README
-%{_datadir}/icons/hicolor/*/apps/fcitx-*
-%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-*
+%{_datadir}/icons/hicolor/*/apps/fcitx_*
+%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx_*
 %{_fcitx5_imconfdir}/*.conf
 %{_fcitx5_datadir}/table
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.TableExtra.metainfo.xml
