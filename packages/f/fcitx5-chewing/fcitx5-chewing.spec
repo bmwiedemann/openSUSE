@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-chewing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-chewing
-Version:        5.1.3
+Version:        5.1.6
 Release:        0
 Summary:        Chewing Wrapper for Fcitx5
 License:        GPL-2.0-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  5 05:51:29 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.6
+  * Fix compiling error with new libchewing
+- changes in 5.1.5
+  * Fix buffer checkings
+- changes in 5.1.4
+  * Added Colemak layout support provided by libchewing
+  * Workaround some issue with rust libchewing
+
+-------------------------------------------------------------------
 Thu May 23 07:50:51 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.3
