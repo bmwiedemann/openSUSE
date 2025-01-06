@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-dynamic-versioning
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-dynamic-versioning
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Plugin for Poetry to enable dynamic versioning based on VCS tags
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/mtkennerly/poetry-dynamic-versioning
 Source:         https://files.pythonhosted.org/packages/source/p/poetry-dynamic-versioning/poetry_dynamic_versioning-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.2.0}
 BuildRequires:  fdupes

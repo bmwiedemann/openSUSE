@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:13:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.5.0:
+  * CLI: When pyproject.toml contains the project section, the enable command
+    will add the required fields for Poetry 2.0.0+.
+  * For compatibility with Poetry 2.0.0, adjusted Poetry constraint from ^1.2.0
+    to >=1.2.0
+  * For compatibility with Poetry 2.0.0, when inserting the dynamic version
+    into pyproject.toml with PEP 621 mode activated, the plugin ensures not to
+    set project.version and tool.poetry.version at the same time.
+  * An UnboundLocalError could happen when pyproject.toml was misconfigured.
+
+-------------------------------------------------------------------
 Wed Sep 11 05:43:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.4.1:
