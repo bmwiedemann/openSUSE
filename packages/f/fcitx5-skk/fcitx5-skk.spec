@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-skk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           %{pname}
-Version:        5.1.3
+Version:        5.1.5
 Release:        0
 Summary:        Libskk input method engine for Fcitx5
 License:        GPL-3.0-or-later
@@ -88,8 +88,8 @@ fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend.
 %{_fcitx5_addondir}/skk.conf
 %{_fcitx5_imconfdir}/skk.conf
 %{_fcitx5_datadir}/skk
-%{_datadir}/icons/hicolor/*/apps/fcitx-skk*
-%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-skk*
+%{_datadir}/icons/hicolor/*/apps/fcitx_skk*
+%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx_skk*
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Skk.metainfo.xml
 
 %changelog
