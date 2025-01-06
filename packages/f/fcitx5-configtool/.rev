@@ -88,4 +88,29 @@
 </comment>
     <requestid>1176749</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>01a7e295422bca75e3ca7660aae837f3</srcmd5>
+    <version>5.1.7</version>
+    <time>1736175928</time>
+    <user>anag+factory</user>
+    <comment>- use lua macro to distinguish older kcm locations from newer ones,
+  eg: 15.5 and 15.6 both have suse_version = 1500, but the former's
+  kcm location is /usr/lib64/qt5/plugins/kcms while the later's kcm
+  is placed at /usr/lib64/qt5/plugins/plasma/kcms
+- update version 5.1.7
+  * translation update
+- changes in 5.1.6
+  * directly launch external tool if ExternalOption is the only option
+- changes in 5.1.5
+  * Don't use migrators in string
+  * Support empty enum name
+  * Variable name and other clean up
+  * fix: select all checkbox inconsistent
+  * Use Qt6 by default
+- changes in 5.1.4
+  * Fix return key drawn incorrectly
+  * Fix usage of ListSectionHeader
+</comment>
+    <requestid>1235154</requestid>
+  </revision>
 </revisionlist>

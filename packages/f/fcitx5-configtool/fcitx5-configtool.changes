@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan  6 10:12:24 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- use lua macro to distinguish older kcm locations from newer ones,
+  eg: 15.5 and 15.6 both have suse_version = 1500, but the former's
+  kcm location is /usr/lib64/qt5/plugins/kcms while the later's kcm
+  is placed at /usr/lib64/qt5/plugins/plasma/kcms
+
+-------------------------------------------------------------------
+Sun Jan  5 05:55:42 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update version 5.1.7
+  * translation update
+- changes in 5.1.6
+  * directly launch external tool if ExternalOption is the only option
+- changes in 5.1.5
+  * Don't use migrators in string
+  * Support empty enum name
+  * Variable name and other clean up
+  * fix: select all checkbox inconsistent
+  * Use Qt6 by default
+- changes in 5.1.4
+  * Fix return key drawn incorrectly
+  * Fix usage of ListSectionHeader
+
+-------------------------------------------------------------------
 Thu May 23 10:40:31 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - add Conflicts so users can switch between plasma5 and plasma6

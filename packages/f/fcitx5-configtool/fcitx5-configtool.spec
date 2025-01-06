@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-configtool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,11 @@
 %global pname %{sname}-%{flavor}
 %endif
 
+# define lua macro to distinguish older kcm places from newer ones
+%define is_old_kcm %{lua: if posix.access("%{_datadir}/kservices5") then print(1) else print(0) end}
+
 Name:           %pname
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later
@@ -126,6 +129,7 @@ Configuration module for fcitx5
 
 %install
 %cmake_install
+cat /usr/lib/rpm/suse/macros | grep suse_version
 
 %find_lang kcm_fcitx5
 %find_lang %{sname}
@@ -156,6 +160,12 @@ Configuration module for fcitx5
 %if "%{flavor}" == ""
 %files -n kcm_fcitx5 -f kcm_fcitx5.lang
 %{_bindir}/fcitx5-plasma-theme-generator
+%if 0%{?is_old_kcm}
+%dir %{_libdir}/qt5/plugins/kcms
+%dir %{_datadir}/kservices5
+%{_libdir}/qt5/plugins/kcms/kcm_fcitx5.so
+%{_datadir}/kservices5/kcm_fcitx5.desktop
+%else
 %dir %{_datadir}/kpackage
 %dir %{_datadir}/kpackage/kcms
 %dir %{_libdir}/qt5/plugins/plasma
@@ -164,6 +174,7 @@ Configuration module for fcitx5
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_fcitx5.so
 %{_datadir}/applications/kcm_fcitx5.desktop
 %{_datadir}/kpackage/kcms/kcm_fcitx5
+%endif
 %endif
 %if "%{flavor}" == "qt6"
 %files -n %{sname}-kcm6 -f kcm_fcitx5.lang
