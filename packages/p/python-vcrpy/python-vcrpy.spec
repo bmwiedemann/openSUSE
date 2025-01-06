@@ -1,7 +1,7 @@
 #
 # spec file for package python-vcrpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vcrpy
-Version:        6.0.2
+Version:        7.0.0
 Release:        0
 Summary:        Python module to mock and replay HTTP interactions
 License:        MIT

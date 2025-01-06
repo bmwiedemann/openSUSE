@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  6 10:53:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.0.0
+  * Drop support for python 3.8 (major version bump) - thanks @jairhenrique
+  * Various linting and test fixes - thanks @jairhenrique
+  * Bugfix for urllib2>=2.3.0 - missing version_string (#888)
+  * Bugfix for asyncio.run - thanks @alekeik1
+
+-------------------------------------------------------------------
 Tue Oct 29 12:01:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.0.2
