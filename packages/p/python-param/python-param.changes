@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  6 11:44:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.0
+  * Annotate `depends` and `accept_arguments` decorators (#962)
+  * Stop directly importing numpy and add `gen_types` decorator (#966)
+  * Added missing `super().__init_subclass__` call in `_ParameterBase.__init_subclass__` (#969)
+  * Remove `_dict_update` (#980)
+  * Improve some docstrings and set up `ruff` to validate them (#977), (#982), and (#983)
+  * Remove `_param_watchers`, raise `RuntimeError` on unsafe ops during init,
+    and failed validation of a parameter default after inheritance (#973)
+  * Promote many deprecation warnings to future warnings (#974)
+  * Test Python 3.13 (#971)
+  * Drop Python 3.8 support (#986)
+  * Replace `hatch` with `pixi` (#971)
+  * Fix reactive tests failing intermittently on Windows (#971)
+  * Change linting to `ruff` (#978)
+
+-------------------------------------------------------------------
 Sun Jun 30 19:30:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:

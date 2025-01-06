@@ -294,4 +294,12 @@
   * Fix test_reactive_logic_unary_ops on Python 3.12</comment>
     <requestid>1184129</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9b6a7782e1a85d2487ed344345d9878f</srcmd5>
+    <version>2.2.0</version>
+    <time>1736175953</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235179</requestid>
+  </revision>
 </revisionlist>
