@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-maps-geolocation
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define realversion 1.0.0b1
+%define realversion 1.0.0b3
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-maps-geolocation
-Version:        1.0.0~b1
+Version:        1.0.0~b3
 Release:        0
 Summary:        Microsoft Azure Maps Geolocation Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-maps-geolocation/azure-maps-geolocation-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure_maps_geolocation/azure_maps_geolocation-%{realversion}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0)
@@ -48,10 +47,10 @@ BuildArch:      noarch
 This package contains a Python SDK for Azure Maps Services for Geolocation.
 
 %prep
-%setup -q -n azure-maps-geolocation-%{realversion}
+%setup -q -n azure_maps_geolocation-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-maps-geolocation-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure_maps_geolocation-%{realversion}
 %pyproject_wheel
 
 %install

@@ -7,4 +7,19 @@
     <comment>Another Azure SDK package</comment>
     <requestid>1178734</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d4deacf01c100da20c51a568bd1704d</srcmd5>
+    <version>1.0.0~b3</version>
+    <time>1736175947</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1235127 from glaubitz)</comment>
+    <requestid>1235172</requestid>
+  </revision>
 </revisionlist>
