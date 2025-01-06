@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan  4 18:58:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of %dnl usage (fails on SP7 due to unkonwn macro); also
+  after latest change I now got an autodecline that patches in
+  sources are not mentioned in specfile; just use '#patch ...'
+  now for not applying a patch ...
+
+-------------------------------------------------------------------
+Sat Jan  4 18:37:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- properly comment out also "PatchXX:" lines; since 
+  'osc service runall source_validator' failed with latest change
+
+-------------------------------------------------------------------
+Mon Dec 23 17:02:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly comment out %patch lines: '#' still expands the macro, which
+  makes build fail with rpm 4.20. Use %dnl instead.
+
+-------------------------------------------------------------------
+Wed Dec 18 10:32:34 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to relesae 21.1.15
+  * dix-config.h: add HAVE_SOCKLEN_T definition
+  * config: add a quirk for Apple Silicon appledrm
+  * os: Fix assignment with incompatible pointer type
+  * os: Fix siHostnameAddrMatch in the case where h_addr isn't defined
+  * hw/xfree86: Fix -Wmissing-prototypes warnings
+  * hw/xfree86: Fix -Wincompatible-pointer-types sbus compile failure
+
+-------------------------------------------------------------------
 Sun Dec  8 19:01:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - re-added and re-enabled u_xfree86-activate-GPU-screens-on-autobind.patch

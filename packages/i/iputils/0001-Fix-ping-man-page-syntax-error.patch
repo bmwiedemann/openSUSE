@@ -1,0 +1,40 @@
+From e8c9d6d7aebd16b0617f00d128cbcd24c9a1094d Mon Sep 17 00:00:00 2001
+From: Nicolai Dagestad <nicolai@dagestad.fr>
+Date: Mon, 18 Nov 2024 16:27:36 +0100
+Subject: [PATCH] Fix ping man page syntax error
+
+Missing <para> tag caused broken formating (markup '.SH "EXIT STATUS"'
+was displayed as text). Also convert space to tabs (consistency).
+
+Fixes: 6fc68b1 ("ping: Allow to disable with environment variable")
+Closes:	https://github.com/iputils/iputils/pull/568
+Reviewed-by: Petr Vorel <pvorel@suse.cz>
+Signed-off-by: Nicolai Dagestad <nicolai@dagestad.fr>
+[ pvorel: commit message ]
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+[ Upstream status:
+https://github.com/iputils/iputils/commit/e8c9d6d7aebd16b0617f00d128cbcd24c9a1094d ]
+---
+ doc/ping.xml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/doc/ping.xml b/doc/ping.xml
+index 3efa07c..b1ad335 100644
+--- a/doc/ping.xml
++++ b/doc/ping.xml
+@@ -790,9 +790,9 @@ xml:id="man.ping">
+     <info>
+       <title>ENVIRONMENT</title>
+     </info>
+-	<emphasis remap="I">IPUTILS_PING_PTR_LOOKUP</emphasis> environment
+-	variable set to 0 disable reverse DNS resolution (PTR lookup) by default.
+-	It will be overrided by <option>-H</option> or <option>-n</option> option.
++    <para><emphasis remap="I">IPUTILS_PING_PTR_LOOKUP</emphasis> environment
++    variable set to 0 disable reverse DNS resolution (PTR lookup) by default.
++    It will be overrided by <option>-H</option> or <option>-n</option> option.</para>
+   </refsection>
+ 
+   <refsection xml:id="exit_status">
+-- 
+2.47.1
+

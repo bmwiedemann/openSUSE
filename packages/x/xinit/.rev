@@ -345,4 +345,29 @@
   (boo#1227313)</comment>
     <requestid>1185381</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>692d61549678ca8b0542c7bd4b2c10d8</srcmd5>
+    <version>1.4.3</version>
+    <time>1736175881</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.3
+  * Reindent startx after !6
+  * Remove Xdmx from suggested Xserver list
+  * Mark global variables as static since there's only one source file
+  * Clear -Wunused-parameter warnings from clang
+  * Use ptrdiff_t to store results of pointer subtraction
+  * Use asprintf() if available
+  * Don't exit with failure on SIGTERM regardless.
+  * darwin: Remove bashism from 10-tmpdirs script
+  * Modernized shell scripts
+  * startx: Assign XSERVERRC to correct userserverrc
+  * add closing quote to /dev/random mcookie hex
+- adjusted xinit-suse.patch
+- refreshed xinit-client-session.patch
+- refreshed xinit-tolerant-hostname-changes.patch
+
+- Properly comment %patch 5 out: '#' still expands the macro, which
+  makes build fail with rpm 4.20. Use %dnl instead.</comment>
+    <requestid>1235079</requestid>
+  </revision>
 </revisionlist>

@@ -621,4 +621,15 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
   * Fix Python 3.13 compatibility re: `collections.abc`</comment>
     <requestid>1217044</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e95471ccf9778ac89b26eca30e160816</srcmd5>
+    <version>3.3.8</version>
+    <time>1736175895</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.8:
+  * Fix inability to import `collections.abc` in python 3.13.1.
+    The reported fixes in astroid 3.3.6 and 3.3.7 did not actually
+    fix this issue.</comment>
+    <requestid>1234570</requestid>
+  </revision>
 </revisionlist>

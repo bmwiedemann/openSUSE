@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  4 11:19:52 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.11
+  * Fix issue in XIM client when type with mouse click
+  * Fix compiling error with GCC 15
+  * Fix wrong border color in classic ui
+
+-------------------------------------------------------------------
 Tue Sep 10 02:20:28 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 5.1.10

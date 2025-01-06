@@ -55,6 +55,7 @@ specifications for these languages.
 %package devel
 Summary:        OpenGL and OpenGL ES shader front end and validator
 Group:          Development/Libraries/C and C++
+Requires:       cmake(SPIRV-Tools-opt)
 Requires:       %lname = %version
 
 %description devel

@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.1.10
+Version:        5.1.11
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later

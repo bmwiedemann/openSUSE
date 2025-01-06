@@ -1214,4 +1214,1246 @@
     <comment>- update licensing information (IBS sr#343838)</comment>
     <requestid>1198935</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>c1ad43fa0445ee21547fab448715f58e</srcmd5>
+    <version>1.13.1</version>
+    <time>1736175903</time>
+    <user>anag+factory</user>
+    <comment>- update to Doxygen 1.13.1
+  * As of doxygen version 1.13.1 and layout version 2.0, Doxygen
+    will insert defaults for elements that are missing in the user
+    defined layout file.
+  * Add WARN_LAYOUT_FILE option to toggle warnings in layout file
+- update to Doxygen 1.13.0
+  * Using README.md as directory description via new option
+    IMPLICIT_DIR_DOCS.
+  * Add CSS class for @p command [view]
+  * Add class attribute to the @qualifier command in the HTML output
+  * New option HIDE_UNDOC_NAMESPACES which can be used to hide
+    undocumented namespaces (similar to HIDE_UNDOC_CLASSES)
+  * New option PLANTUMLFILE_DIRS and command \plantumlfile to
+    include plantuml files (similar to DOT_DIRS, and \dotfile)
+  * New option AUTOLINK_IGNORE_WORDS to specific a set of words
+    that should not be linked
+  * Update available emojis
+  * Added strip and nostrip options to \include and \snippet to
+    either strip or keep doxygen comments
+  * Added helper script to live edit &amp; view a doxygen comment
+    block, see addon/doxycommentviewer in the repo
+  * Extending autobrief end characters with ? and !
+- update licensing information (IBS sr#343838)
+- Update to Doxygen 1.12.0
+  * Adding &quot;engine&quot; chen and chronology for plantuml
+  * Also allow backticks to be combined with emphasis in Markdown
+- Update to Doxygen 1.11.0
+  * Add Markdown style todo list
+  * Add support for GitHub Markdown style alerts
+  * Add a &quot;Run&quot; menu item key-command to DoxyWizard
+  * Added 'raise' and 'prefix' options to @include{doc}
+  * Support `link` / `endlink` command in section title
+  * Add support for @subparagraph and @subsubparagraph
+  * Translation updates for German/Greek/Polish/Portuegse/Dutch/Chinese
+  * `doxyapp --locate` list all overloads by including arguments
+  * Adding support for &quot;engine&quot; files for plantuml
+  * Show emoji in HTML treeview
+  * Add `HTML_CODE_FOLDING` possibility to CHM
+  * Make `HTML_CODE_FOLDING` possible when `DISABLE_INDEX=YES`
+  * Add doxyindexer and doxysearch installation
+  * cmake: always install man pages, only install for the
+    binaries installed
+  * allow function ptr with `INLINE_SIMPLE_STRUCTS`
+- Use %patch -P N instead of deprecated %patchN.
+- reintroduce useful reproducible.patch
+- modified patches
+  % doxygen-no-lowercase-man-names.patch (refreshed)
+- added patches
+  + reproducible.patch
+- Update to doxygen 1.10.0
+  Full changelog see https://www.doxygen.nl/manual/changelog.html
+- Drop patches that are part of upstream since 1.9.7
+  Fix-boundingbox-parsing_part1.patch,
+  Fix-boundingbox-parsing_part2.patch,
+  Fix-boundingbox-parsing_part3.patch,
+  and Fix-boundingbox-parsing_part4.patch.
+- Drop patch reproducible.patch, it does no longer apply and
+  messing around with the internals of a C++ filesystem library
+  does not seem to be the right approach.
+- Add reproducible.patch to make doxytags output reproducible (boo#1201579)
+- Re-download patches: the server presents them with shorter hash
+  refs:
+  * Fix-boundingbox-parsing_part1.patch
+  * Fix-boundingbox-parsing_part2.patch
+  * Fix-boundingbox-parsing_part3.patch
+  * Fix-boundingbox-parsing_part4.patch
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+- Fix boundingbox parsing of graphviz PDFs when using cairo &gt;=
+  1.17.6, add:
+  * Fix-boundingbox-parsing_part1.patch
+  * Fix-boundingbox-parsing_part2.patch
+  * Fix-boundingbox-parsing_part3.patch
+  * Fix-boundingbox-parsing_part4.patch
+- update to 1.9.6: see https://www.doxygen.nl/manual/changelog.html
+  * Adding Python PEP 526 typing support
+  * issue #2580: Formatting-options for $datetime
+  * issue #9702: Add new command \qualifier to add custom tags that would be
+    similar to &quot;inline&quot; and &quot;static&quot; to some functions or classes [view] and [view]
+  * issue #9549: Feature request: Allow to disable Webkit scrollbar styling [view]
+  * NUM_PROC_THREAD!=1 will now process formulas on multiple threads [view]
+  * Treat __name variable as private and _name variables as protected in Python [view]
+  * Add support for multiple &lt;summary&gt; sections inside &lt;details&gt; [view], [view],
+  * WARN_IF_UNDOC_ENUM_VAL to have warnings for undocumented enum values [view],
+- fix bsc#1204558, doxygen fails to build on ppc64le - compiler crash? 
+- added sources
+  + _constraints
+- Update to version 1.9.5: See https://doxygen.nl/manual/changelog.html.
+- Remove upstreamed patches:
+  * doxygen-modify_footer.patch
+  * doxygen-gcc12.patch
+  * doxygen-1.9.4-fix-symlink-detection.patch
+- Add doxygen-1.9.4-fix-symlink-detection.patch: Fix symlink
+  detection issue leading to givaro build to hang
+  (gh#doxygen/doxygen#9491).
+- Update to 1.9.4. Check https://doxygen.nl/manual/changelog.html
+  for the complete changelog.
+  New features:
+  * Add CINDEX_NO_EXPORTS option when linking against static
+    libclang
+  * Introduce CREATE_SUBDIRS_LEVEL
+  * Add for the xml output also xml to the markdown image
+    representation.
+  * Adding Qt6 support
+  * Update Bulgarian translation
+  * Better translation for trPackageMembers
+  * Refer to chapter Grouping with GROUP_GRAPHS
+  * HTMLHELP warning on using svg as image format for graphs
+  * mention doxygen debugging flags on the web
+  * mention how to get additional usage flags
+- Add patch to fix build with GCC 12:
+  * doxygen-gcc12.patch
+- update to 1.9.3:
+  * Write directory dependency graphs recursively
+  * Added missing symbols needed to enable SANITIZE_UNDEFINED
+  * Add the xml output format to the image command as generic
+    format
+  * Add the HTML and XML commands to the index [view]
+  * Added explanation for directory dependency graphs in graph
+    manual
+  * Avoid tampering with special commands while doing markdown
+    parsing
+  * Adding HTML tag &lt;cite&gt; [view]
+  * Adding engine to xml output for plantuml [view]
+  * Czech localization update, added all missing czech localization
+    strings up to 1.9.3
+  * translate chinese upto version 1.9.2
+  * Updated swedish translation to 1.9.2
+  * Greek translation updated to 1.9.2
+  * Portuguese translators upddated to 1.9.3
+  * UTF-8 characters in email address
+  * Support for char32_t etc. in code coloring
+  * Changed license of doxmlparser from GPLv2 to MIT
+  * Better error message in case of a fatal error in a lexer
+  * Better readable warnings / debug messages incase of warning with
+    token / return value in docparser
+  * value attribute for &lt;li&gt; tag
+  * Copy original dotfile to output directory in case of DOT_CLEANUP
+    is not set
+  * allow using percentual numbers for images dimensions
+  * Make email obfuscation optional
+  * Improvement of WARN_LOGFILE possibilities
+  * No warning in case non existing macro parameter
+  * HTML tag details
+  * Include qualified names in `&lt;memberdef&gt;`s in XML output
+  * CLASS_DIAGRAM has become obsolete. The same functionality can
+    now be achieved using HAVE_DOT and CLASS_GRAPH. Old settings in
+    the Doxyfile will be automatically converted when reading or
+    updating it
+- update to 1.9.2
+  * Add support for C++20 concept
+  * Introduce new sidebar layout via FULL_SIDEBAR option
+  * Add -q commandline-parameter for quiet operation
+  * Add config option SHOW_HEADERFILE [view]
+  * Add config option WARN_IF_INCOMPLETE_DOC [view]
+  * Add config options GENERATE_SQLITE3, SQLITE3_OUTPUT and
+    SQLITE3_RECREATE_DB to better control the sqlite3 output
+  * Add config option MATHJAX_VERSION to support both MathJax 2.x
+    and 3.x
+  * Allow more fine tuning of semanitic syntax highlighting via CSS
+    classes
+  * Use language name to get code coloring
+  * Extra settings for MathJax V3
+  * Support vertical alignment in multirow table
+  * Add option for an anchor to the image command
+  * Deprecate options LATEX_SOURCE_CODE, RTF_SOURCE_CODE and
+    DOCBOOK_PROGRAMLISTING; code listing is now controlled globally
+    via the SOURCE_BROWSER option
+  * Make OUTPUT_TEXT_DIRECTION option obsolete
+  * Replace the C++ doxmlparser libary by a python based module
+  * many bug fixes and improvements
+- drop vhdlparser-no-return.patch, included upstream
+- doxywizard: remove explicit -fPIC from build flags, because this breaks our
+  gcc-PIE compiler profile (bsc#1184122), resulting in a non-PIE
+  /usr/bin/doxywizard.
+- update to 1.9.1:
+  Bugfixes:
+  * issue #8282: Error on ALIAS declaration without quotes [view]
+  * issue #8286: Incorrect processing of VHDL strings [view], [view]
+  * issue #8291: Doxygen crash on Windows when INLINE_SIMPLE_STRUCTS=YES [view]
+  * issue #8294: Draw sibling dependee directories within same parent directoy in directory dependency graph. [view], [view], [view], [view], and [view]
+  * issue #8295: segmentation fault [view]
+  * issue #8296: LaTeX Error: File ... not found. [view], and [view]
+  * issue #8297: fails to parse list of INPUT files [view]
+  * issue #8300: File naming changed in Doxygen 1.9.0 [view]
+  * issue #8304: compilation failure [view]
+  * issue #8311: Markdown table: double-quote ruins the output [view]
+  * Fix cases where classes inside inline namespaces could lead to crashes [view]
+  * Fix coverity dead-code warning [view]
+  * Fix potential crash with inline namespace [view]
+  * Incorrect entries on treeview [view]
+  * Layout in doxywizard documentation [view]
+  * Various fixes based on coverity scan results [view]
+  * bug_549093 Regular HTML comments are removed. [view]
+  Features:
+  * Add a CLANG_ADD_INC_PATHS option
+  * Add some missing info to the XML output
+  Refactorings and cleanups
+- version update to 1.9.0
+  * Features
+    Show QT version in doxywizard [view]
+    Adding possibility to add command line options when running doxygen from doxygen wizard [view], [view]
+    Add param validation to typedef function pointers [view]
+    Allow building doxygen as a subproject [view]
+    Layout changes doxywizard [view]
+    Show configuration warnings unconditionally in the doxywizard [view]
+    Enable UML diagrams without member fields [view]
+    add variable for the fold length of UML diagrams (DOT_WRAP_THRESHOLD) [view]
+    use boolean to add or remove uml details (DOT_UML_DETAILS) [view] and [view]
+    add suggestion #7686 to show type and parameters [view]
+  * Bug fixes
+  * Refactoring, cleanup
+  * Documentation updates
+  * see https://www.doxygen.nl/manual/changelog.html for details
+- deleted patches
+  - 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch (upstreamed)
+- Use gcc9 for building on SLE_15 based distributions to workaround
+  gcc7 bug PR85180.
+- Adjust building with libclang support for doxygen-1.8.20.
+  - doxygen-llvm-libs.patch
+  - doxygen-libclang-cpp.patch
+  + doxygen-no-libclang-cpp.patch
+- Fix anonymous enums from multiple files being squashed together:
+  Add 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch
+- doxygen 1.8.20:
+  * Add configuration setting to have docstrings net as pre-
+    formatted text but as normal documentation
+  * bug fixes
+- includes changes from 1.8.19:
+  * Add experimental multi-thread input processing support
+  * Add the xml:lang tag to XML and Docbook output
+  * Scalable search bar for high resolution displays
+  * Add doxygen version information to tag file
+  * Add options to enable various sanitizers
+  * Add configuration option to better control the sqlite3 output
+  * Improve using plantuml for vhfl flowcharts
+  * bug fixes
+- version update to 1.8.18
+  Removed functionality
+    * Removed support for TCL (code is too buggy and unmaintained, language not very popular)
+  Features
+    * Added the few missing French translations [view]
+    * Updated Swedish translation to match the latest version [view]
+    * Adding check on configuration setting EXTENSION_MAPPING [view]
+    * Adding commands `\rtfinclude`, `\docbookinclude`, `\maninclude` and `\xmlinclude` [view]
+    * output on doxyparse if a function is a prototype [view]
+    * print protection information on doxyparse [view]
+    * Creation of svg images for formulas with inkscape [view]
+    * Improve formula handling and rendering. [view]
+    * Doxygen version in the messages output (#7640) [view]
+    * Doxygen version information (#7645) [view]
+    * Enabling Travis builds for s390x [view]
+    * Relative markdown file reference (#7032) [view]
+  Bugs fixed
+    * see https://www.doxygen.nl/manual/changelog.html
+- modified patches
+  % doxygen-no-lowercase-man-names.patch (refreshed)
+  % vhdlparser-no-return.patch (refreshed)
+- deleted patches
+  - 0001-issue-7248-Including-external-tag-files-with-TOC-pro.patch (upstreamed)
+  - PR_7193_fix_blank_file_patterns.patch (upstreamed)
+  - doxygen-64f1f2357ae764f2c8190d067aff801bc0a56721.patch (upstreamed)
+  - doxygen-git-not-required.patch (upstreamed)
+  - reproducible-sort.patch (upstreamed)
+- Improve build with libclang support:
+  * add doxygen-libclang-cpp.patch to support linking against libclang-cpp
+  * add upstream doxygen-64f1f2357ae764f2c8190d067aff801bc0a56721.patch
+    to support clang-10
+- Add reproducible-sort.patch to make html output reproducible
+  in spite of ASLR (boo#1062303)
+- Use modern cmake macros
+- Add upstream patch 0001-issue-7248-Including-external-tag-files-with-TOC-pro.patch
+  (boo#1160629)
+- Add PR_7193_fix_blank_file_patterns.patch to populate the
+  default for FILE_PATTERNS if not set, otherwise no files are
+  processed [https://github.com/doxygen/doxygen/issues/7190]
+- Remove obsolete and no longer applying patch:
+  doxygen-dot-one-thread.patch
+- Optional build with libclang support:
+  * add doxygen-llvm-libs.patch to link with monolithic libLLVM
+  * support &quot;--with libclang&quot; in specfile
+- version update to 1.8.16
+  - many bugs fixed
+  - many features implemented
+  - http://www.doxygen.nl/manual/changelog.html
+- modified patches
+  % doxygen-modify_footer.patch (refreshed)
+- deleted patches
+  - doxygen-empty-strings-segfault.patch (upstreamed)
+  - doxygen-latex-makeindex.patch (upstreamed)
+- added patches
+  really do not require git executable
+  + doxygen-git-not-required.patch
+- add doxygen-latex-makeindex.patch to fix build of libssh and
+  cmocka [https://github.com/doxygen/doxygen/issues/6725]
+- add doxygen-empty-strings-segfault.patch to fix build of ldb
+  [https://github.com/doxygen/doxygen/pull/6751]
+- fix url and source url
+- Update to 1.8.15:
+  * Another year, another lengthy set of fixes
+    http://www.doxygen.nl/manual/changelog.html#log_1_8_15
+- Removed res2cc_sort_resources.diff (issue fixed upstream)
+- Update to 1.8.14:
+  * Many fixes during the one year development cycle:
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html#log_1_8_14
+- Switch to python3 instead of python2
+- Remove upstream merged doxygen-guard-null-variable.patch
+- Refresh patch vhdlparser-no-return.patch
+- Kill doxygen-doc subpackages the latex deps keep growing while
+  it is really easy to download the generated pdfs from upstream
+- Update licensing information
+- Explicitly require python2 for building
+- Use more cmake macros
+- Run spec-cleaner
+- remove CFLAGS CXXFLAGS overrides to block PIE enablement.
+- Add doxygen-guard-null-variable.patch: Protected against NULL
+  pointer of variable al, upstream commit 0f02761.
+- Update to 1.8.13
+  See changelog at http://www.stack.nl/~dimitri/doxygen/manual/changelog.html#log_1_8_13
+- dropped doxygen-fix-QCH-files.patch, it is part of the release
+- Added res2cc_sort_resources.diff, sort template files in
+  generated resources.cpp for reproducible build, fixes bgo#777672
+- Fix: Add missing jquery.js, dynsections.js &amp; optional
+ svgpan.js to QCH file [bsc#1011331]
+ + doxygen-fix-QCH-files.patch
+- Update to 1.8.12
+  See changelog at http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- update patch doxygen-dot-one-thread.patch
+- same work around ppc64 as already done for ppc64le [boo#921577]
+- Do not link with -pie if we are not compiling with -fPIE
+- Update to 1.8.11
+  See changelog at http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- Update patch vhdlparser-no-return.patch
+- Remove patch doxygen-no-shared-libs.patch which is included
+  in upstream
+- work around Power8 double free or corruption [bnc#921577]
+  + doxygen-dot-one-thread.patch
+- Move checks to doxywizard package to avoid build cycle
+- Set proper minimal cmake version required
+- Use system stack for cmake params and obey cflags
+- Add patch to build required static libs:
+  * doxygen-no-shared-libs.patch
+- Refresh patch:
+  * doxygen-no-lowercase-man-names.patch
+- Add patch to avoid no-return-in-nonvoid function error:
+  * vhdlparser-no-return.patch
+- updated to 1.8.10
+  * Change the build system to use cmake.
+  * Add support for basic XML syntax highlighting
+  * Added documentation for ``` style fenced code block and more 
+    robust parsing
+  * Added function arguments to the LaTeX toc
+  * Added support for language codes
+  * etc. see http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- removed unneded patches:
+  - doxygen-1.5.9-64archs.patch
+  - doxygen-1.5.9-man.patch
+  - doxygen-1.7.0-modify_footer.patch renamed to doxygen-modify_footer.patch
+- remove doxygen-html.sh
+- Cleanup spec file with spec-cleaner
+- Split documentation to separate package
+- Do not bundle pdf documentation
+- Generate html documentation
+- Update to 1.8.9.1:
+  * bugfix releas, see
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+    for details
+- Doxygen 1.8.8
+- New features:
+  * Support for PlantUML
+  * Add BREAD_CRUMB_TRAIL
+- A selection of bug fixes and updates as listed in
+  http://www.stack.nl/~dimitri/doxygen/manual/changelog.html#log_1_8_8
+- Don't disable optimisation
+- updated to 1.8.7:
+  * many bugfixes and features, see
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+    for details
+- altered modify_footer.patch
+- updated to 1.8.6:
+  * many bugfixes and features, see
+    http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+    for details
+- updated to 1.8.5:
+  * Added SOURCE_TOOLTIPS option for advanced tooltip support while 
+    source browsing. 
+  * bugfixes
+- removed upstreamed endless-loop.patch
+- upstream patch to fix endless loop
+  doxygen-1.4.8-endless-loop.patch 
+- updated to 1.8.4:
+  * id 686384: When INLINE_SIMPLE_STRUCTS is enabled, also structs
+    with simple typedefs will be inlined.
+  * Doxywizard: scrolling with mouse wheel no longer affects the
+    values in the expert view.
+  * id 681733: More consistent warnings and errors.
+  * Added support for &quot;clang assisted parsing&quot;, which allows the
+    code to also be parsed via libclang (C/C++ frontend of LLVM)
+    and can improve the quality of the syntax highting,
+    cross-references, and call graphs, especially for template
+    heavy C++ code. To enable this feature you have to configure
+    doxygen with the --with-libclang option. Then you get two new
+    configuration options: CLANG_ASSISTED_PARSING to enable or
+    disable parsing via clang and CLANG_OPTIONS to pass additional
+    compiler options needed to compile the files. Note that
+    enabling this feature has a significant performance penality.
+  * Included patch donated by Intel which adds Docbook support.
+    This can be enabled via GENERATE_DOCBOOK and the output
+    location can be controlled using DOCBOOK_OUTPUT. Docbook
+    specific sections can be added using
+    \docbookonly ... \enddocbookonly
+  * Added support for UNO IDL (interace language used in
+    Open/Libre Office), thanks to Michael Stahl for the patch.
+  * Included patch by Adrian Negreanu which stores data gathered
+    by doxygen in a sqlite3 database. Currently still work in
+    progress and can only be enabled using --with-sqlite3 during
+    ./configure.
+  * For interactive SVG graphs, edges are now highlighted when
+    hovered by the mouse.
+  * Include patch by Adrian Negreanu to show duration statistics
+    after a run. You can enable this by running doxygen with the
+    &quot;-d Time&quot; option.
+  * Included patch by Markus Geimer which adds a new option
+    LATEX_EXTRA_FILES which works similarily to HTML_EXTRA_FILES
+    in that it copied specified files to the LaTeX output
+    directory.
+  * etc., see http://www.stack.nl/~dimitri/doxygen/manual/changelog.html
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+- updated to 1.8.3.1:
+  Changes
+  *  Changed to way the search results for multiple projects can 
+     be linked together. A project is now no longer identified by 
+     the tag files name but via new option EXTERNAL_SEARCH_ID giving 
+     a bit more flexibility.
+  *  Disabled the disk cache for member data. Allows removing quite 
+     some complexity in doxygen and is not really needed now that 
+     64bit systems with &gt;4GB RAM are becoming more common. Let me 
+     know if you think you benefit from this caching.
+  *  id 691607: Using $relpath$ in a custom footer could lead to 
+     ambiguities when followed by a name that could also be a marker, 
+     like 'search'. Now $relpath^ should be used instead. $relpath$ 
+     is still supported for backward compatibility. 
+  New features
+  *  You can now use EXTENSION_MAPPING on files without any 
+     extension using no_extension as placeholder (thanks to 
+     Jason Majors for the patch).
+  *  To make navindex section inside a layout file that 
+     links to a specific URL you can use usergroup with the 
+     url attribute.
+  *  To make navindex section without any link inside a 
+     layout file you can use usergroup with special title 
+     [none]. 
+  Details at: http://www.stack.nl/~dimitri/doxygen/changelog.html
+- updated to 1.8.3:
+    Changes
+    * Expanding the tree in an index page of the HTML output, will 
+      now expand only one level instead of the whole sub-tree.
+    * A blockquote in Markdown does no longer require a whitespace 
+      after the last '&gt;' if the '&gt;' is followed by a newline.
+    * id 682718: Included patch to add version info to all 
+      generated template files (headers, footers, stylesheets, 
+      layout files, etc). 
+    New features
+    * Added support for using external tools to index and search 
+      through the HTML documentation. An example index tool is 
+      provided (doxyindexer) and an example search engine 
+      (doxysearch.cgi). To configure the external search engine 
+      the following new options are added to the configuration 
+      file: EXTERNAL_SEARCH (to enable the feature), 
+      SEARCHENGINE_URL (to specify the URL of the search engine), 
+      SEARCHDATA_FILE (to specify the name of the raw search 
+      data to index), EXTRA_SEARCH_MAPPINGS (for search through 
+      multiple projects). See the manual for details.
+    * Added USE_MDFILE_AS_MAINPAGE config option to select a 
+      markdown page to be used as the main page.
+    * id 630645: This patch (contributed by Albert) adds support 
+      for simple logic expressions for \cond, \if, and friends, 
+      i.e. you can do \if (SOME_SECTION_NAME &amp;&amp; 
+      (!THIS_ALTERNATIVE || THAT_ALTERNATIVE))
+    * id 684152: Patch (contributed by Albert) adds a new 
+      configuration option MATHJAX_FORMAT to select the MathJax 
+      output format. Options are HTML-CSS, NativeMML, or SVG. 
+    Bug Fixes
+      * see http://www.stack.nl/~dimitri/doxygen/changelog.html
+- updated to 1.8.2:
+    changes
+    * Using a fenched block (~~~~) in Markdown without explicit 
+      extension will now be interpreted as a @code..@endcode block 
+      instead of @verbatim..@endverbatim.
+    * Classes inheriting from an class that is outside the scope 
+      of doxygen are still shown in diagrams. This does not hold 
+      for usage relations. 
+    new features
+    * Added support for C++11.
+    * Made several improvements to the way Objective-C categories 
+      and protocols are handled:
+    * Added option HTML_EXTRA_STYLESHEET which allows adding an 
+      additional stylesheet without completely replacing 
+      doxygen.css.
+    * Added option AUTOLINK_SUPPORT which can be used to 
+      enable/disable autolinking globally.
+    * Included language updates for Czech, Spanish, Greek, Slovak, 
+      and Esparanto. 
+    etc. see http://www.stack.nl/~dimitri/doxygen/changelog.html
+- updated to 1.8.1.2:
+  changes
+  * doxygen now strips the leading indentation shared by the lines 
+    in a @code..@endcode block. 
+  * id 678218: Changed title of the SVG graphs from 'G' to the root 
+    node of the graph. 
+  * Integrated the root navigation tree in navtree.js for faster 
+    loading
+  * When the navigation tree is enabled, clicking jump to a line 
+    in the source code view will now highlight the line. 
+  features
+  * Added button in the navigation tree to allow enabling/disabling 
+    syncing the navigation tree with the content.
+  * Extended the number of HTML entities with Greek letters and 
+    other symbols (thanks to Charles Karney for the patch).
+  * id 663645: Added support for C++11 strongly typed enums (enum 
+    class E { ... }). 
+  * VHDL code now has a new Design Overview page (thanks for 
+    Martin Kreis for the patch). Requires HAVE_DOT=YES, and 
+    DOT_IMAGE_FORMAT=svg.
+  * id 677678: Added support for strong and weak attributes in 
+    Objective-C properties. 
+  * bugfixes
+- for details see http://www.stack.nl/~dimitri/doxygen/changelog.html
+- 1.8.1 generates man page names uncondidionally lowercase which
+  causes problem for lapack build for example; reverting one hunk 
+  of fix for
+  https://bugzilla.gnome.org/show_bug.cgi?id=674563
+  as workaround
+  * no-lowercase-man-names.patch
+- updated to 1.8.1:
+  * Included a couple of performance improvements.
+  * Changed the way indexes (Class,File,Namespace,Groups) are rendered.
+  * Changed the way member attributes (like protected, virtual, and 
+    static) are rendered in the HTML output
+  * more info at http://www.stack.nl/~dimitri/doxygen/changelog.html
+- updated to 1.8.0svn20120416:
+  * fixed crash [bnc#755402]
+- updated to 1.8.0:
+  * Auto list items can now consist of multiple paragraphs.
+  * When UML_LOOK is enabled, relations shown on the edge of a 
+    graph are not shown as attributes.
+  * Updated the manual and improved the look.
+  * Latex: made the margins of latex page layout smaller using the 
+    geometry package.
+  * etc., see http://www.stack.nl/~dimitri/doxygen/changelog.html
+- updated to 1.7.6.1:
+   * Doxygen now reports its cache usage (for the symbol and the 
+     lookup cache) at the end of a run (if QUIET=NO), and 
+     recommends settings for SYMBOL_CACHE_SIZE and 
+     LOOKUP_CACHE_SIZE for your project if either cache is too 
+     small. 
+   * Added new option LOOKUP_CACHE_SIZE to control the internal 
+     cache doxygen uses to find symbols given their name and 
+     a context. 
+   * Python: added support for @staticmethod.
+   * Python: scopes are now shown with . instead of :: 
+   * id 665313: Space before @if was not preserved, causing 
+     problems with inline @if .. @endif constructs.
+   * id 665583: Fixed XHTML validity problem when using mscgen 
+     graphs. 
+   * id 665641: Fixed XHTML validity problem when 
+     GENERATE_TREEVIEW was disabled. 
+   * id 665720: Included patch to fix hang issue when non-empty 
+     INCLUDE_PATH was used.
+   * id 665778: Fixed parse issue when a comma appeared as part 
+     of an enum's value. 
+- updated to 1.7.6:
+   * To improve the performance of loading the navigation tree, 
+     the data is now split into multiple javascript files which 
+     are loaded dynamically.
+   * The selected member is now briefly highlighted in the HTML 
+     output (when GENERATE_TREEVIEW is enabled).
+   * The navigation tree (GENERATE_TREEVIEW) now shows the same 
+     information as the index.
+   * The navindex section of layout now also controls what is 
+     shown in the navigation tree.
+   * Improved HTML output support for IE9.
+   * Included redesigned VHDL parser (thanks to Martin Kreis 
+     for the patch)
+   * When a class/structs has many (&gt;15) members of the same type, 
+     only the first 10 are shown in the UML diagram.
+   * Made the output of the javascript based search engine more 
+     compact.  
+   * Update of the French translation.
+   * id 607305: Added support for PHP heredoc and nowdoc constructs.
+   * Added support for cross-referencing in case of operator-&gt; 
+     overloading. This includes support for std::auto_ptr,
+     std::smart_ptr,std::unique_ptr and std::weak_ptr when 
+     BUILTIN_STL_SUPPORT is enabled. 
+   * bugfixes
+- remove arm specific patch that broke building on arm
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- update to 1.7.5.1:
+  * A bug that could cause doxygen to crash on large projects was 
+    fixed.
+- update to 1.7.5:
+  * id 641904: Function in the call graphs are now shown based on first 
+    appearance rather then alphabetical order.                      
+  * id 616213: When customizing the HTML header $title now only generates 
+    the title excluding the project name (which can still be      
+    added using $projectname)                                                                                                           
+  * Improved the look of the class index: all items now have equal spacing.
+  * New option INTERACTIVE_SVG which when set to YES in combination with 
+    DOT_IMAGE_FORMAT=svg will make doxygen generate interactive SVG 
+    diagrams that support zooming and panning via the mouse (only for 
+    large graphs).                                                
+  * Added support for the Tcl programming language (thanks to Rene Zaumseil
+    and Samuel Bentley for the patch).                          
+  * Added @copyright command.                                                                                                           
+  * added option MATHJAX_EXTENSIONS to provide additional extensions for 
+    MathJax (thanks to David Munger for the patch).                
+  * added option INLINE_SIMPLE_STRUCTS which when enabled shows the fields 
+    of simple classes and structs (with only public data fields) as a table 
+    and inline in context (file/group/namespace/class) 
+    provided this context is documented.                          
+  * When using the server based search engine (SEARCHENGINE=YES and 
+    SERVER_BASED_SEARCH=YES) doxygen now advertises a opensearch provider 
+    for your project, that allows integrating the search directly in the 
+    search field of the browser (thanks to Phil Lello for the patch). 
+  * id 503239: Added new option CITE_BIB_FILES and LATEX_BIB_STYLE and a new 
+    command \cite, allowing you to make references to literature (as defined 
+    in one or more .bib files). This also works for output formats other 
+    than LaTeX. The tool bibtex is required for this to work though. Thanks 
+    to David Munger for the initial patch upon which this feature is based.                    
+  * PHP namespaces are now shown as A\B in the output.                                                                                  
+  * Added new \snippet command that can be used to include marked sections 
+    from a source file. See http://www.doxygen.org/commands.html#cmdsnippet 
+    for more info.                                                                     
+  * Added translation support for Armenian, thank to Armen Tangamyan. and 
+    included translation updates for a number of languages.      
+  * Many bug fixes, for details see 
+    http://www.stack.nl/~dimitri/doxygen/changelog.html.
+- update to 1.7.4:
+  * adds an option that allows embedding of the class documentation inside the
+    documentation of a group
+  * doxygen -w html now reads the default Doxyfile even if not specified
+    explicitly
+  * doxygen -w html now produces a template header and footer that can be used
+    independent of the configuration options used. 
+  * new option INLINE_GROUPED_CLASSES that when enabled shows grouped classes
+    inside the group documentation, instead of on a separate page.
+  * included updates for the Italian and Russian translation.
+  * #640875: added option HTML_EXTRA_FILES which makes it easier to copy
+    additional files to the HTML output and also add them to the index files
+  * #642579: Included patch that adds new LATEX_FOOTER option to customize the
+    end of refman.tex in the LaTeX output
+  * #566921: %A::B now prevents a link for A::B, instead of only for A and
+    generating a warning that ::B cannot be linked.
+  * #634415: Fixed problem parsing an array of character literals.
+  * #635537: Links to file members were not made when found in tag files.
+  * #638655: Double quote in page or group title broke treeview.
+  * #638856: Fixed problem autolinking to struct field using #S::a
+  * #639272: using @dot...@endot produced an image referenced with absolute
+    path.
+  * #640463: Fixed problem parsing PHP &quot;use&quot; statement when the argument did
+    not have a namespace scope.
+  * #640646: Long error messages could cause memory corruption.
+  * #640754: Comment with XML style list of type table was not rendered
+    properly.
+  * #640828: Internal section marked with @internal was not shown as such
+    anymore in the XML output.
+  * #640847: PHP: Fixed parse problem referring to class in global namespace.
+  * #640924: Included patch to make the custom header and footer independent of
+    the chosen config options.
+  * #640927: Included fix to prevent a warning in the server side PHP search
+    script.
+  * #641026: Included patch to fix broken hyperlink to page entry in xreflists.
+  * #641188: Header of \page was wrong in Man page output.
+  * #641336: #include's to other directories were not always linked.
+  * #641673: Using &quot;use Foo\Foo;&quot; in PHP could cause doxygen to hang.
+  * #641814: In some cases the HTML output could contain an extra &lt;/p&gt;.
+  * #642030: Tooltips with HTML entities could be wrongly truncated.
+  * #642475: Include graphs could be incomplete.
+  * #643056: Fixed problem with macro expansion.
+  * #643279: Fixed potential crash when generating a warning for void f(int %x)
+    style parameter, which is valid in C++/CLI.
+  * #643655: Fixed argument matching issue when one of match candidates was a
+    typedef of a method pointer.
+  * doxygen -w html now ignores the values for HTML_HEADER and HTML_FOOTER
+    found in the config file.
+  * importing a group via a tag file could overrule a local group with the same
+    name even when EXTERNAL_GROUPS was disabled. 
+- update to 1.7.3:
+  * adds support for including SVG images generated by the dot tool
+  * the way the tree view looks and works has been redesigned: it is now
+    dynamically loaded on a page instead of using HTML frames
+  * each HTML page now (optionally) has a header with project name, synopsis,
+    and logo
+- changed modify_footer.patch: drop suse specific HTML_FOOTER_DESCRIPTION
+  option functionality, each package could use now HTML_TIMESTAMP to
+  avoid putting timestamp in to generated html files
+- updated to 1.7.2:
+  * Changed the default font of the LaTeX output to helvetica.
+  * Changed the way parameters and return values are represented 
+    in the LaTeX and RTF output. They are now listed using tables. 
+  *  added support for Apple's block object extension for C/Obj-C/C++.
+  * added support for detecting Python constructors and destructors.
+  * id 624575: Added \endinternal command that can be used to force 
+    the end of a section started with \internal.
+  * id 552605: Added parsing support for PHP 5.3+ style namespaces.
+  * id 582532: added \mscfile command which can be used to insert a 
+    message sequence chart given a .msc file. Also added a new 
+    config option MSCFILE_DIRS to provide directories were msc 
+    files are searched (Thanks to Adrien for the patch).
+  * Added support for type specifiers for documenting PHP 
+    parameters, format: &quot;@param type $paramname docs&quot;
+  * Added support for rendering formulas in the HTML output using 
+    MathJax instead of using prerendered bitmaps. For this purpose 
+    the options USE_MATHJAX and MATHJAX_RELPATH were added. 
+  * Many bugfixes.
+  * For details see http://www.stack.nl/~dimitri/doxygen/changelog.html.
+-  set HTML_TIMESTAMP default to off, so all packages that
+   generate documentation during build dont get republished
+   just due to a timestamp change.
+- unfuzzy patches to build on &gt;= 11.3
+- update to 1.7.1:
+  * Changes:
+    + id 621695: Made warning and error messages appear with lower case &quot;warning:&quot; and &quot;error:&quot; prefix to make it easier to use the messages from Visual Studio
+  * New features:
+    + id 621908: added new config option FORMULA_TRANSPARENT which allows selecting between transparent (YES) or non-transparent (NO) PNGs for formulas in the HTML output.
+    + update for Turkish translation
+  * Bug fixes:
+    + id 533821: Inheritance relation for a C# class deriving from a generic class was not handled correctly
+    + id 554638: Changing DOT_IMAGE_FORMAT did not cause the graphs to be regenerated
+    + id 576533: A field of the form &quot;enum E *p&quot; was ignore
+    + id 597016: Hide scope name was not working properly for todo items inside class members, where the class was inside a namespace
+    + id 617761: In dot graphs now also @ref worked (previously only \ref was supported)
+    + id 621733: Removed bogus warning about undocument return type for define when WARN_NO_PARAMDOC was enabled
+    + id 621780: Fixed parsing support for a function that returns a struct definition
+    + id 621785: Doxygen could hang when using \copydoc in a function with \param
+    + id 621805: Using //!&lt; after a #define no longer worked
+    + id 621854,622219,622593: html help compiler (and also the Qt help compiler) was called before all dot images were generated.
+    + id 621984: Using a auto-list in combination with \subpage cause the items to be inlined
+    + id 622018: Fixed problem parsing a @param command where the text part started with a formula
+    + id 622019: Added some instructions how to document Fortran code
+    + id 622041: Using \var multiple times in a comment block did not work properly
+    + id 622413: Tooltips could get wrongly truncated when multi-byte UTF-8 characters were used
+    + id 622471: Argument matching failed for typedef in another namespace
+    + Fixed crash situation while handling commands inside a @ref section
+    + Treeview icons were missing in the HTML output when setting GENERATE_TREEVIEW to NO and USE_INLINE_TREES to YES
+- update to 1.7.0:
+  * the look of the HTML output was changed
+  * the color of HTML output can now be changed easily
+  * several performance enhancements were included:
+    + ability to run multiple instances of dot in parallel for
+      faster graph generation
+  * many bugs have been fixed
+- update to 1.6.3:
+ - New features
+    * id 608480: Using \dir without argument will create directory
+      documentation for the directory in which the \dir command
+      was found. 
+ - Bug fixes (ids refer to the bugzilla database)
+    * id 590161: perlmod output was wrong when using paragraph
+      commands.
+    * id 600525: Included patch for VHDL.
+    * id 605698: Replaced size attribute of hr tag by class attribute
+      in the HTML output.
+    * id 606030,606192,607563: Using \dot produced &quot;Error opening
+      map file&quot; or could even crash doxygen.
+    * id 606104: Grouped members with todo-like items were shown
+      with &quot;GlobalScope&quot; prefix.
+    * id 606156: Fixed RTF rendering problem with group index.
+    * id 606206,610133: Added missing line break in LaTeX output.
+    * id 606330, 608056: The title of pages whose label had an
+      underscore was not shown
+    * id 606717: Include guard not starting with #ifndef SOME_GUARD_H
+      were not recognised as such.
+    * id 606718: Setting SEARCHENGINE to YES and GENERATE_HTML to NO
+      caused error that search results directory could not be created.
+    * id 606772,608493: typedef'ed enums or struct with the same as
+      the typedef did no longer show up.
+    * id 607088,607946: Related pages (manual and automatic like the
+      todo page) caused broken links when SHORT_NAMES was enabled.
+    * id 607432,608002: Automatically generated related pages (like
+      the todo page) caused broken links when CREATE_SUBDIR was
+      enabled.
+    * id 607736: comments after #if could cause next function call
+      not to be cross-referenced.
+    * id 607743: \internal inside a conditional section caused
+      warning.
+    * id 608016: Using \internal inside a \section did not end at the
+      next \section as documented.
+    * id 608018: \internal command produced message with .: in the
+      LaTeX output.
+    * id 608072: HTML Tables with custom attributes were not rendered
+      properly.
+    * id 608227: Man pages with underscore got double underscore in
+      the name.
+    * id 608590: Buffer overflow when using non-ascii characters as
+      class name.
+    * id 608921: Macro definition had effect even if the definition
+      was not actually included.
+    * id 609504: config.h and config.l where missing from the SVN
+      repository.
+    * id 609624: Todo items were merged for overloaded functions.
+    * id 609709: C# enum values with @todo items were missing from
+      the todo list.
+    * id 610437: Removed bogus warning when using &lt;br/&gt; tag.
+    * Fixed parsing problem for function pointer type starting with
+      &quot;typedef enum&quot;.
+    * Preprocessor did not take EXCLUDE_PATTERNS into account, which
+      could cause parse issues when importing a .tlb file. 
+- update to 1.6.2:
+  * two new methods of searching through the HTML documentation:
+    were added:
+    + via a PHP based Web server
+    + via an Eclipse help plugin
+  * the \addindex command now also works for the HTML indices
+  * rendering of LaTeX formulas in the HTML output has been
+    improved (especially for non-white backgrounds)
+  * smaller improvements
+  * large number of bugfixes
+- update to 1.6.1:
+  * fixed file handle leak when parsing include files; also fixed
+    the logic that determines whether or not an include file need
+    to be parsed
+  * search result pages were not using UTF-8 character encoding
+  * search results pointing to external references were not linked
+    correctly
+  * multiline second argument of \ref caused unexpected &quot; warning
+  * feeding invalid XML could crash doxygen's DBus XML parser
+  * include patch to fix problem with building rpms
+  * SHOW_USED_FILES now works again
+  * xrefitems (like @todo) did not appear in the list when found
+    in comments marked with @enum or @name. 
+- updated to version 1.6.0
+ - Changes
+  * id 580924, 541234: Replaced the PHP based search engine by a
+    Javascript/DHTML based one. As a result the search feature no longer
+    requires a HTTP server with PHP enabled to be usable. Searching is limited
+    to symbols though, but it is now possible to filter on symbol type.
+  * id 519886: Make the HTML output XHTML 1.0 compliant.
+  * id 579950: Objective-C categories are now merged with their base class,
+    unless there is no base class.
+  * Member groups with the same header within the same scope are now merged.
+    This also works for Objective-C categories.
+  * Changed the LaTeX style sheet such that more of the markup is configurable.
+    Please update your style sheet if you use a custom one.
+  * id 584844: Treat \details inside a brief description as a new paragraph
+    command.
+  * Split GENERATE_TREEVIEW into two separate options: GENERATE_TREEVIEW and
+    USE_INLINE_TREES.
+  * Removed the dependencies on libpng and libz, doxygen now generates gifs
+    again for internal class diagrams (like it did 7 years ago ;-) 
+ - New features
+  * Added option SORT_MEMBERS_CTORS_1ST, which when enabled places the
+    constructors and destructors first in an otherwise sorted list.
+  * id 581518: Applied patch by Tobias Hunger that adds support for
+    documenting DBus XML interface descriptions.
+  * Included QtHelp patch by Karsten Heimrich which adds missing reference
+    and keyword for methods.
+  * Included updates for the Korean and Polish translation. 
+ - Bug fixes (ids refer to the gnome bugzilla database)
+  * id 131989: Fixed preprocessor handling for C# code.
+  * id 133418: -- was not rendered correctly for LaTeX output
+  * id 157485: Missing link in todo page.
+  * id 318061: Two template functions that only differed in the number of
+    template arguments were seen as the same function.
+  * id 443939: HIDE_UNDOC_CLASSES did not work properly.
+  * id 509348: Fixed problem with syncing the information of declaration and
+    definition in the presence of an extra forward declaration in the source
+    code.
+  * id 522193: For C# enum values were merged together if the same enum name
+    was used in different scopes.
+  * id 523167: Included patch to handle PROGRAM statement in Fortran as
+    subroutines/functions.
+  * id 554636: Remove spacing around brackets for Obj-C protocols.
+  * id 557026: Included patch for fixing wrongly labeled items in docsets.
+  * id 560512: Improved parser to better disambiguate nested templates ending
+    with &gt;&gt; from the bitshift right operator.
+  * id 570238: Fixed matching problem for method in nested class, where the
+    outer class is a template.
+  * id 581746: Segfault/realloc error when a very long path was used.
+  * id 582469: documented #define with guard caused wrong documentation.
+  * id 582276: Doxywizard could crash on exit in some cases.
+  * id 582676: Regression: a struct ivar in ObjC class screws up method
+    identification.
+  * id 583213: Included patch that avoids trailing spaces in the generated
+    Doxyfile template.
+  * id 584192: Included VHDL patch by Martin Klein
+  * id 585543: Fixed case where matching declaration and definition did not
+    work correctly.
+  * id 585260: The &quot;more...&quot; link for files was broken, since the anchor was
+    not generated.
+  * id 586925: Fixed parsing problem when an unpaired apostrophe appeared in
+    a Python comment.
+  * id 588291: Included fix for doxywizard makefile.
+  * id 588587: Added missing virtual destructor to CompAccept base class.
+  * id 588968: Fixed segmentation fault for specific case in PHP code.
+  * Fixed some issues building for Windows.
+  * id 589514: Fixed problem handling strings like a&quot;\b&quot; within a comment.
+  * id 589616: Fixed problem matching explicitly scoped parameter in a
+    template class.
+  * id 590712: A namespaced with name &quot;internal&quot; (C++/CLI keyword) could
+    confuse doxygen's C++ parser.
+  * id 591749: @optional/@required attributes for Objective-C were missing
+    from the XML output. 
+- integrated patch from http://blog.dixo.net/2009/05/20/using-doxygen-help-in-qtcreator/
+  that allows doxygen-created .qch files to be used with the tooltips shown
+  in Qt Creator
+- Changed default behavior ! :
+  added modify_footer.patch (bnc#489947), which disable text 
+  in footer by default, you could enable this text with option 
+  HTML_FOOTER_DESCRIPTION = YES, this feature was added due to 
+  increasing efficiency of build buildservice
+- updated to version 1.5.9
+ - New features
+  * Added new option LATEX_SOURCE_CODE, which when enabled adds 
+    source code also to the latex output
+  * Included updates for the Finnish, Romanian, Korean, German, 
+    Japanese, and Hongarian translation.
+  * Added translation support for Esperanto.
+  * Added class attribute to the \todo and \bug HTML 
+    code so they can be customized via CSS.
+  * Added support for Æ and æ characters. 
+ - Bug fixes (ids refer to the gnome bugzilla database)
+  * id 395169: Some links via tagfiles were not correct in 
+    combination with CREATE_SUBDIRS=YES
+  * id 539080: Having the same comment for the declaration and 
+    definition of a function could result in duplicate documentation
+     in case the indentation level was different.
+  * id 566713: Dot font was not removed even though DOT_CLEANUP was YES.
+  * id 566925: Fixed problem resolving symbolic links.
+  * id 567044: Fully qualified name was not shown correctly for 
+    nested classes.
+  * id 567375: Fixed parse problem for typedefs with redundant braces.
+  * id 567535: Fixed problem when parsing operator%= for CLI/C++ code.
+  * id 567777: Fixed problem with latex output when using enums.
+  * id 567990: Doxygen could crash when there was a symlink in project.
+  * id 568237: Non-ascii values entered where not saved according 
+    to the INPUT_ENCODING.
+  * id 568505: Fixed build problem for old Linux distributions.
+  * id 569478: Fixed line continuation issue with the Fortran parser.
+  * id 570960: C++ class defined in a .mm file was sometimes parsed
+    as Objective-C code.
+  * id 571013: In the wizard, editing a text field in the middle of 
+    the text in the expert tab caused the cursor to jump to the end
+     of the line.
+  * id 571096: Fixed Objective-C parsing problem when multiple 
+    protocol forward declarations are put on one line.
+  * id 571990: Fixed compiler issue with portable_iconv by moving
+    the function to a C file.
+  * id 572560: Fixed parse issue when a #define is inside an enum.
+  * id 572740: Fixed problem parsing C++ comments using line continuation.
+  * id 573057: Included update for Swedish translator and changed
+    the language code from SE to SV to comply with ISO 639.
+  * id 578382: When referring to a static variable or function 
+    doxygen will now look at the file context in case of ambiguity. 
+- compile with RPM_OPT_FLAGS again
+- apply 64bit patch unconditionally
+- fix compile warnings for string and signed char handling
+- disable language support on ppc64
+  code size too large, -mminimal-toc does not help
+- updated to compile on Mandriva
+- updated to version 1.5.8
+  Changes:
+  * Included Qt help update by Sebastian Pipping introducing three 
+    new options to define custom filter sections and attributes: 
+    QHP_CUST_FILTER_NAME, QHP_CUST_FILTER_ATTRS, QHP_SECT_FILTER_ATTRS.
+  New features:
+  * Add new option EXTENSION_MAPPING, which can be used to change
+    the mapping of file extension to language parser
+  * Added support for Vietnamese (thanks to Dang Minh Tuan)
+  * Thanks to Emin Ilker Cetinbas doxygen can now also produce 
+    Turkish documentation.
+  * It is now possible to add the direction attributes normally used
+    with the @param command to document parameters inline
+- rewritten doxygen-*-man.patch
+- spec file clean-up
+- updated to version 1.5.6
+  Changes
+  * The GENERATE_TREEVIEW option is not longer a boolean, but can 
+    now have 4 values, NONE (was NO), FRAME (was YES), HIERARCHIES,
+    and ALL.
+  * a page marked as a sub page (\subpage) is now shown in the LaTeX
+    and RTF output as a section of its parent page. So the top level 
+    pages are shown a chapters, subpages as sections, subpages
+    of a subpage as subsections, etc.
+  New features
+  * Added DOT_FONTNAME and DOT_FONTPATH options
+  * Added option CHM_INDEX_ENCODING to specify the encoding to be
+    used for the CHM index files.
+  * Included patch to make the font-size button visible in the CHM output.
+  * Added new options SHOW_NAMESPACES and SHOW_FILES to Suppress
+    Namepace and Files Pages.
+  * Included a patch that makes it easy to modify the root
+    of the html treeview with an image using style sheets.
+  * Added option IDL_PROPERTY_SUPPORT to enable/disable special
+    propget/propput handling in IDL files.
+  * Added option FORMULA_FONTSIZE which can be used to change
+    the font size of the formulas included in the HTML documentation.
+  And lots of bugfixes
+- updated to version 1.5.5
+  Changes:
+  *  Pages created with @page are now chapters in the LaTeX and RTF
+     output and treeviews, and directly follow the mainpage.
+     Also the project name is not longer repeated for each chapter.
+    * For dot graphs with an edge with more than ten labels, only
+      the first ten are shown followed by an ellipsis; done
+      to prevent very long dot runs resulting in unreadable graphs.
+    * Use of pdflatex with hyperlinks is now the default.
+    * C++ preprocessor macro names are now replaced in the comments
+    * The options SOURCE_BROWSER, CALL_GRAPH, CALLER_GRAPH,
+      REFERENCES_RELATION, and REFERENCED_BY_RELATION can now be
+      indepently enabled and disabled. By default the relations are
+      now disabled. 
+  New features:
+    * Added support for VHDL (.vhd or .vhdl extension).
+      Use OPTIMIZE_OUTPUT_VHDL when parsing VHDL code.
+    * Added support for Objective-C 2.0 properties.
+    * Added support for docsets, which allow integration of doxygen
+      generated API documentation in Xcode 3. new options:
+          o GENERATE_DOCSET: enables/disables the feature
+          o DOCSET_FEEDNAME: sets the provider/suite name 
+                             under which the set is listed.
+          o DOCSET_BUNDLE_ID: A unique name for the docset. 
+    * Added support for the \tparam command, which works similar to
+      \param but is meant for documenting template parameters.
+    * Added \headerfile command which can be used to specify
+      the second and third argument of a \class command, when
+      the documentation is already in front of a class definition.
+- updated to version 1.5.4
+  Changes:
+  * When setting SOURCE_BROWSER to YES, all undocumented classes
+    also ended up in the documentation. Now this will only happen
+    if EXTRACT_ALL is also enabled.
+  * Upgraded included third party libs libpng and zlib to version
+    1.2.21 and 1.2.3 respectively.
+  New features:
+  * Included support for parsing Fortran 90
+  * Added config option SIP_SUPPORT to support handling SIP sources
+    (used for Python to C++ bindings).
+  * Added support for CLI/C++ style indexed properties.
+  * Added config option TYPEDEF_HIDES_STRUCT which when enabled
+    treats a typedef of a struct as a struct with the name of the
+    typedef. This behavious was coupled to OPTIMIZE_OUTPUT_FOR_C
+    in the previous version and is now an independent option.
+- updated to version 1.5.3
+  Changes:
+  * When OPTIMIZE_OUTPUT_FOR_C is enabled then a struct definition
+    of the form typedef struct _S { ... } S_t will be shown
+    in the output as a struct of type S_t and the typedef itself
+    is omitted (previousily _S was shown as well as a typedef
+    of the form typedef _S S_t).
+  * Improved the line-breaking rules for members whose return types
+    have many characters (for example a function returning a pointer
+    to a template class).
+  * Multiple brief and detailed descriptions are now possible.
+    It is still not recommended to make use of them, but at least
+    no documentation is silently hidden when there are two brief
+    or two detailed descriptions for the same entity.
+  * Improved dot layout control and page sizing to better fit
+    images on the screen and paper. 
+  New features:
+  * Added support for aliases with arguments, see the manual
+    for more information.
+  * Added HTML_DYNAMIC_SECTIONS option which, when enabled, will
+    produce sections in the HTML output that can be expanded/collapsed.
+    Currently used for diagrams and graphs.
+  * Added support for type constraints as available in the C# language
+    (&quot;where&quot; clause)
+  * id 332263: Added new option EXTRACT_ANON_NSPACES that when set to YES
+    will extract the contents of anonymous namespaces and show
+    then in the output.
+  * id 423765: Added support for &lt;see cref=&quot;SomeSymbol&quot;/&gt; style XML comments.
+  * id 426971: Added QT_AUTOBRIEF config option, which has the same meaning
+    as JAVADOC_AUTOBRIEF only now for /*! .. */ style comment blocks.
+  * id 435108: Reintroduced the MAX_DOT_GRAPH_DEPTH option as a means
+    to further reduce the size of a graph. 
+- fixed build of Doxywizard
+- updated to version 1.5.2:
+  * Doxygen now uses UTF-8 internally for all strings
+    A new config option INPUT_ENCODING has been added which can be
+    used to specify the encoding of the input
+  * Added support for message sequence charts (using mscgen)
+  * Added support for C++/CLI
+  * IGNORE_PREFIX now also works for function/members names when 
+    shown in the various indices
+  * Doxygen will show a tooltip in the HTML output for links
+    to classes, namespaces, and members with the brief description
+  * Syntax highlight support for several (managed) C++ keywords
+  * Added two LaTeX layout enhancements
+  * Lots of bugfixes
+- dropped obsolete disable-rtf-debug.patch
+- added flex and bison to buildrequires
+-updated to version 1.5.1, bugfixes:
+ * id 148567: @todo at the end of a comment block caused problem
+              when copied by @copydoc
+ * id 352420: Fixed bug in LaTeX output (missing space after \bf).
+ * id 363227: missing output for instance variables defined
+              in a Python function that has a doc string
+ * id 363397: Member groups did not appear in a class when
+              SUBGROUPING was set to YES.
+ * id 364341: Parsing could become really slow if often included
+              header files contained using statements.
+ * id 364673: The values of two enums with the same name
+              (both in difference scopes) where merged.
+ * Running 2 instances of doxygen on the same output directory 
+   caused corruption of the temporary files generated by doxygen. 
+- don't abort just because of a warning (fixes yast2-core build)
+  (dont-exit-on-warning.patch)
+- updated to version 1.5.0
+  *  Cleaned up the internal structures to make them smaller,
+     and made doxygen use a temporary file to store the parse
+     results (instead of keeping them in memory), which will
+     further reduce the memory usage, especially for large projects
+  *  Sections produces by \note, \warning, \remarks etc, now have
+     a class label in the generated HTML (&lt;dl&gt; tag) so you can give
+     them a distinct style using a non-default stylesheet
+     (i.e. using HTML_STYLESHEET).
+  *  Lots of bugfixes
+- updated to 1.4.7
+  * changes in the CSS stylesheet and HTML class names =&gt; possible
+    incompatibility with custom stylesheets
+  * new CALLER_GRAPH option to add called-by graph to functions
+  * new REFERENCES_LINK_SOURCE option to set whether function names
+    in REFERENCES_RELATION and REFERENCED_BY_RELATION link to
+    source or documentation
+  * updated some translations
+  * added support for get/set properties in IDL
+  * lost of bugfixes
+- dropped patches: qtools.patch, segfault.patch
+- added script to update the html docu tarball to source rpm
+- converted neededforbuild to BuildRequires
+- fix segfault in doxygen.cpp
+  [#141384] (segfault.patch)
+- use make -j
+- add -fno-strict-aliasing
+- update to 1.4.6
+- update to 1.4.5
+- fix qtools to build with gcc-4.1.0 
+- disable RTF debug comments in src/rtfdocvisitor.cpp (those
+  comments are displayed by default in ooffice and abiword). See
+  gnome bugzilla #149797
+- updated to version 1.4.4
+  * added man pages
+- removed obsoleted qt-mt patch
+- un-packing QChar seems to break doxygen; removed the
+  incriminated methods instead as they are unused anyway
+- GCC does not allow references to members of packed structs on
+  ARM
+- updated to version 1.4.1
+- linked dynamically against libpng
+- updated to version 1.3.8
+- doxywizard split off (removed qt3 dependency)
+- applied patches from cvs to fix bug #36397 (doxygen ate all memory building the libstdc++)
+- updated to version 1.3.6
+- build as user
+- Use prebuild documentation from website
+- update to version 1.3.4
+- add desktop file for doxywizard
+- updated to version 1.3.2
+- Update to 1.3.1
+- fix build with tetex-2.0 
+- force install tool 
+- use ghostscript-mini-packages in neededforbuild 
+- updated to version 1.2.18
+    * @deprecated is now treated as @todo, @test, and @bug
+    * enum value documentation was added to the XML output.
+    * files ending with &quot;.inc&quot; are now recognised as PHP files
+    * included updated documentation for language translators
+    * included language updates
+    * added new configuration options XML_DTD and XML_SCHEMA to set the DTD or Schema used in the XML output.
+- patch for 64bit archs
+- added ghostscript-x11-packages to neededforbuild (for gs)
+- use RPM_OPT_FLAGS so it builds on ppc64.
+- updating to 1.2.17 (needed for new kdelibs3)
+- build with -mminimal-toc on ppc64, workaround
+- really write %_lib instead of just lib64
+- %_lib fixes
+- export compiler flags via RPM_OPTL_FLAGS to get an effect
+  (fix compile for mips)
+- patch tmake config file as well to use qt-mt 
+- build against qt3 
+- added libgimpprint to neededforbuild 
+- use %{suse_update_libdir}
+- updated to version 1.2.13.1
+- updated to version 1.2.13
+- updated to version 1.2.12
+- use qt-devel-packages 
+- updated to version 1.2.11.1
+- updated to version 1.2.11
+- updated to version 1.2.10
+- update to version 1.2.9.1
+- update to version 1.2.9
+- gzipped doxygen_manual.ps
+- update to version 1.2.8.1
+- added glib to neededforbuild
+- changed neededforbuild &lt;gs_fonts&gt; to &lt;ghostscript-fonts-std&gt;
+- changed neededforbuild &lt;gs_lib&gt; to &lt;ghostscript-library&gt;
+- changed neededforbuild &lt;gs_x11&gt; to &lt;ghostscript-x11&gt;
+- update to version 1.2.7
+- fixed warnings on ia64
+- fixed neededforbuild
+- update to version 1.2.6
+- update to version 1.2.5
+- update to version 1.2.4
+- fixed neededforbuild: += liblcms
+- fixed neededforbuild: += libmng-devel 
+- fixed to compile
+- fixed neededforbuild
+- update to version 1.2.3
+- update to version 1.2.2
+- added libmng to neededforbuild
+- added BuildRoot
+- fixed neededforbuild
+- Update to stable version 1.2.1.
+- No need for using -g for release version any longer.
+- Update to doxygen-1.1.5: Many bugfixes (last pre-1.2)
+- Documentation (.ps,.pdf) is now being build from the sources
+- Detect qtlib2 version and pass it to the dynamic linker with 
+  LD_RUN_PATH (equivalent to -rpath).
+- Change QTDIR to /usr/lib/qt2 (instead of qt-2.1.1) to avoid
+  breakage in case of qtlib2 upgrade.
+- Upgrade to doxygen-1.1.4.
+- Use qt2 to build.
+- The Makefile for the doc subdir is now correctly created.
+- Use %{_docdir}
+- Upgrade to doxygen-1.0.0
+- re-added -g to CFLAGS (workaround for a segfault without) 
+- Update to 0.49-991003.
+- Added pdf docu.
+- Update to 0.49-990728.
+- Added missing neededforbuild packages.
+- Add -g to compile flags: Workaround for egcs on AXP (!)
+- Check in der 0.49-990522 Version. linux-egcs Target. (forwarded request 1234594 from mathletic)</comment>
+    <requestid>1234687</requestid>
+  </revision>
 </revisionlist>

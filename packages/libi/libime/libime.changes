@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  5 06:55:29 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 1.1.9:
+  * update model and dict
+  * Manually adjust certain character weight in dict
+    to avoid some meaningless score
+- add patch libime-1.1.9-boost166.patch
+  * <boost/container_hash/hash.hpp> was splitted from
+    <boost/functional/hash.hpp> since boost 1.67
+
+-------------------------------------------------------------------
 Sun Sep  8 15:44:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.8:

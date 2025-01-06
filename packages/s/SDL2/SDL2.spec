@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.30.10
+Version:        2.30.11
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Jan  2 14:15:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.6.10:
+  * Fix: some descriptions of missing branches in HTML and LCOV
+    reports were incorrect when multi-line statements were
+    involved (issue 1874 and issue 1875).  These are now fixed.
+  * Fix: Python 3.14 defers evaluation of annotations by moving
+    them into separate code objects.  That code is rarely
+    executed, so coverage.py would mark them as missing, as
+    reported in issue 1908.  Now they are ignored by coverage
+    automatically.
+  * Fixed an obscure and mysterious problem on PyPy 3.10
+    seemingly involving mocks, imports, and trace functions:
+    issue 1902.  To be honest, I don't understand the problem or
+    the solution, but git bisect helped find it, and now it's
+    fixed.
+  * Docs: re-wrote the :ref:`subprocess` page to put
+    multiprocessing first and to highlight the correct use of
+    :class:`multiprocessing.Pool
+    <python:multiprocessing.pool.Pool>`.
+  * Fix: Tomas Uribe fixed a performance problem in the XML
+    report.  Large code bases should produce XML reports much
+    faster now.
+  * Fix: the LCOV report code assumed that a branch line that
+    took no branches meant that the entire line was unexecuted.
+    This isn't true in a few cases: the line might always raise
+    an exception, or might have been optimized away. Fixes issue
+    1896.
+  * Fix: similarly, the HTML report will now explain that a line
+    that jumps to none of its expected destinations must have
+    always raised an exception. Previously, it would say
+    something nonsensical like, "line 4 didn't jump to line 5
+    because line 4 was never true, and it didn't jump to line 7
+    because line 4 was always true."  This was also shown in
+    issue 1896.
+  * Fix: ugh, the other assert from 7.6.5 can also be encountered
+    in the wild, so it's been restored to a conditional.  Sorry
+    for the churn.
+  * One of the new asserts from 7.6.5 caused problems in real
+    projects, as reported in issue 1891.  The assert has been
+    removed.
+  * Fix: fine-tuned the exact Python version (3.12.6) when
+    exiting from with statements changed how they traced.  This
+    affected whether people saw the fix for `issue 1880`_.
+  * Fix: isolate our code more from mocking in the os module that
+    in rare cases can cause bizarre behavior.
+  * Refactor: some code unreachable code paths in parser.py were
+    changed to asserts.  If you encounter any of these, please
+    let me know!
+
+-------------------------------------------------------------------
 Tue Oct 22 15:51:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.6.4:

@@ -836,4 +836,41 @@ update to latest version</comment>
     thanks to Zack Weinberg (pull 1849 and pull 1851).</comment>
     <requestid>1217070</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>98ded2b7ed174902daef11f2f7799a38</srcmd5>
+    <version>7.6.10</version>
+    <time>1736175896</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.6.10:
+  * Fix: some descriptions of missing branches in HTML and LCOV
+    reports were incorrect when multi-line statements were
+    involved (issue 1874 and issue 1875).  These are now fixed.
+  * Fix: Python 3.14 defers evaluation of annotations by moving
+    them into separate code objects.  That code is rarely
+    executed, so coverage.py would mark them as missing, as
+    reported in issue 1908.  Now they are ignored by coverage
+    automatically.
+  * Fixed an obscure and mysterious problem on PyPy 3.10
+    seemingly involving mocks, imports, and trace functions:
+    issue 1902.  To be honest, I don't understand the problem or
+    the solution, but git bisect helped find it, and now it's
+    fixed.
+  * Docs: re-wrote the :ref:`subprocess` page to put
+    multiprocessing first and to highlight the correct use of
+    :class:`multiprocessing.Pool
+    &lt;python:multiprocessing.pool.Pool&gt;`.
+  * Fix: Tomas Uribe fixed a performance problem in the XML
+    report.  Large code bases should produce XML reports much
+    faster now.
+  * Fix: the LCOV report code assumed that a branch line that
+    took no branches meant that the entire line was unexecuted.
+    This isn't true in a few cases: the line might always raise
+    an exception, or might have been optimized away. Fixes issue
+    1896.
+  * Fix: similarly, the HTML report will now explain that a line
+    that jumps to none of its expected destinations must have
+    always raised an exception. Previously, it would say
+    something nonsensical like, &quot;line 4 didn't jump to line 5</comment>
+    <requestid>1234571</requestid>
+  </revision>
 </revisionlist>

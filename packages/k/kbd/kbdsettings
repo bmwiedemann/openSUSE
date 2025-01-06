@@ -49,7 +49,3 @@ for i in NUM SCR CAPS; do
 		esac
 	done
 done
-
-if [ "$KBD_DISABLE_CAPS_LOCK" = "yes" ]; then
-	/usr/bin/dumpkeys | sed 's/ *58 *= *Caps_Lock/ 58 = Control/' | /usr/bin/loadkeys -q -
-fi

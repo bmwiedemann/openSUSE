@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan  5 21:33:42 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.3
+  * Reindent startx after !6
+  * Remove Xdmx from suggested Xserver list
+  * Mark global variables as static since there's only one source file
+  * Clear -Wunused-parameter warnings from clang
+  * Use ptrdiff_t to store results of pointer subtraction
+  * Use asprintf() if available
+  * Don't exit with failure on SIGTERM regardless.
+  * darwin: Remove bashism from 10-tmpdirs script
+  * Modernized shell scripts
+  * startx: Assign XSERVERRC to correct userserverrc
+  * add closing quote to /dev/random mcookie hex
+- adjusted xinit-suse.patch
+- refreshed xinit-client-session.patch
+- refreshed xinit-tolerant-hostname-changes.patch
+
+-------------------------------------------------------------------
+Mon Dec 23 16:55:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly comment %patch 5 out: '#' still expands the macro, which
+  makes build fail with rpm 4.20. Use %dnl instead.
+
+-------------------------------------------------------------------
 Thu Jul  4 12:02:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - xinitrc.common: no longer start nvidia-settings in background in

@@ -2680,4 +2680,12 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment>- Set kvm.enable_virt_at_load=0 via a modprobe file</comment>
     <requestid>1233843</requestid>
   </revision>
+  <revision rev="285" vrev="5">
+    <srcmd5>1b78da5b0ad43d4cc1aea02e50f574a4</srcmd5>
+    <version>7.1.4</version>
+    <time>1736175872</time>
+    <user>anag+factory</user>
+    <comment>- Remove bogus ExecCondition= from vboxclient.service. [boo#1234870]</comment>
+    <requestid>1234839</requestid>
+  </revision>
 </revisionlist>

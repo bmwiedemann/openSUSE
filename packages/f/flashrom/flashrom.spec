@@ -17,7 +17,7 @@
 
 
 Name:           flashrom
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only

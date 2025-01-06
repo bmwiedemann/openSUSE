@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  3 21:10:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add bcb009f56f8f1c9c0d1612a0ec9f581907b51534.patch -- Fix
+  compilation against Poppler 25.01.
+
+-------------------------------------------------------------------
 Sun Dec  8 09:27:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

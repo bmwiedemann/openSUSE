@@ -1,12 +1,12 @@
-Index: xinit-1.3.4/startx.cpp
+Index: xinit-1.4.3/startx.cpp
 ===================================================================
---- xinit-1.3.4.orig/startx.cpp
-+++ xinit-1.3.4/startx.cpp
-@@ -407,6 +407,7 @@ fi
+--- xinit-1.4.3.orig/startx.cpp
++++ xinit-1.4.3/startx.cpp
+@@ -412,6 +412,7 @@ fi
  XCOMM handle TCP port 6000
  test "$DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN" != "yes" && \
    serverargs="$serverargs -nolisten tcp"
 +export XAUTHLOCALHOSTNAME=`hostname`
  
- #if defined(__APPLE__) || defined(__CYGWIN__)
- eval XINIT \"$client\" $clientargs -- \"$server\" $display $serverargs
+ case "$(uname -s)" in
+ CYGWIN_NT*|Darwin)

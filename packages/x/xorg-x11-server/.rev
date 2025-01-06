@@ -4188,4 +4188,29 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   NVIDIA GeForce RTX 4060) (boo#1234301)</comment>
     <requestid>1229142</requestid>
   </revision>
+  <revision rev="438" vrev="1">
+    <srcmd5>2ebc29d392f924ecb995a7bfc95a682a</srcmd5>
+    <version>21.1.15</version>
+    <time>1736175874</time>
+    <user>anag+factory</user>
+    <comment>- get rid of %dnl usage (fails on SP7 due to unkonwn macro); also
+  after latest change I now got an autodecline that patches in
+  sources are not mentioned in specfile; just use '#patch ...'
+  now for not applying a patch ...
+
+- properly comment out also &quot;PatchXX:&quot; lines; since 
+  'osc service runall source_validator' failed with latest change
+
+- Properly comment out %patch lines: '#' still expands the macro, which
+  makes build fail with rpm 4.20. Use %dnl instead.
+
+- Update to relesae 21.1.15
+  * dix-config.h: add HAVE_SOCKLEN_T definition
+  * config: add a quirk for Apple Silicon appledrm
+  * os: Fix assignment with incompatible pointer type
+  * os: Fix siHostnameAddrMatch in the case where h_addr isn't defined
+  * hw/xfree86: Fix -Wmissing-prototypes warnings
+  * hw/xfree86: Fix -Wincompatible-pointer-types sbus compile failure</comment>
+    <requestid>1234946</requestid>
+  </revision>
 </revisionlist>

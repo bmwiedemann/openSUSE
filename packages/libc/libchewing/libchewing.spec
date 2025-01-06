@@ -1,7 +1,7 @@
 #
 # spec file for package libchewing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,182 +16,104 @@
 #
 
 
-%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
-%define with_utils 1
-%if %{with_utils}
-%define utilver 0.4.0+git20150602.81299e5
-%endif
-
 Name:           libchewing
 %define soname	3
-Version:        0.5.1+git20200627.452f622
+Version:        0.9.1
 Release:        0
 Summary:        Intelligent Phonetic Input Method Library for Traditional Chinese
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/chewing
-Source:         %{name}-%{version}.tar.xz
-Source1:        chewing-utils-%{utilver}.tar.gz
-#PATCH-FIX-UPSTREAM yuyichao@gmail.com fix a lot of errors in the code
-Source2:        chewing-utils-abuild.patch
-#PATCH-FIX-UPSTREAM marguerite@opensuse.org remove rpath from simple-select
-Patch0:         libchewing-0.4.0-simple-select-rpath.patch
+Source:         %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source99:       baselibs.conf
-BuildRequires:  autoconf >= 2.67
-%if %{with_utils}
-BuildRequires:  gtk2-devel
-%endif
-BuildRequires:  libtool
-BuildRequires:  makeinfo
+BuildRequires:  cmake
+BuildRequires:  corrosion
 BuildRequires:  ncurses-devel
-BuildRequires:  pkg-config
+BuildRequires:  rust
 BuildRequires:  sqlite3-devel
-Requires(post): info
-Requires(postun):info
+BuildRequires:  zstd
+BuildRequires:  fdupes
 
 %description
 Intelligent phonetic input method library for traditional Chinese.
 
 %package devel
-Summary:        Development package for chewing
+Summary:        Development package for libchewing
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{soname} = %{version}
-Requires:       python-chewing = %{version}
 
 %description devel
-Development package for chewing (An Intelligent phonetic input method library for traditional Chinese)
+Development package for libchewing.
 
 %package -n %{name}%{soname}
 Summary:        Chewing libraries
 Group:          System/Libraries
 Requires:       chewing-data
-Recommends:     chewing-utils = %{version}
 
 %description -n %{name}%{soname}
-This package contains libraries for Chewing, an intelligent phonetic
-input method library for traditional Chinese.
+This package contains libraries for Chewing.
+
+%package -n chewing-cli
+Summary:        Chewing Command Line
+Group:          System/I18n/Chinese
+
+%description -n chewing-cli
+This package provides command-line tool for Chewing.
 
 %package -n chewing-data
-Summary:        Chewing Data for %{name}
+Summary:        Data for libchewing
 Group:          System/I18n/Chinese
+BuildArch:      noarch
 
 %description -n chewing-data
-This package contains data files for chewing, an intelligent phonetic
-input method library for traditional Chinese.
-
-%package -n chewing-utils
-Summary:        Hash editor for %{name}
-Group:          System/I18n/Chinese
-
-%description -n chewing-utils
-This package contains a hash editor for chewing, an intelligent phonetic
-input method library for tranditional Chinese.
-
-It's used to add, modify and remove entries in the chewing user database
-(usually located at ~/.chewing/uhash.dat).
-
-%package -n python-chewing
-Summary:        Python bindings for %{name}
-Group:          Development/Libraries/Python
-
-%description -n python-chewing
-This package contains python bindings for chewing, an intelligent phonetic
-input method library for traditional Chinese.
-
-Only input method framework written in python (like very old versions of ibus)
-or developers will need it.
+This package contains data files for libchewing.
 
 %prep
-%autosetup -p1
+%autosetup -a 1
 
 %build
-# build libchewing main
-./autogen.sh
-NCURSESW6_CFLAGS=`ncursesw6-config --cflags`
-NCURSESW6_LIBS=`ncursesw6-config --libs`
-CFLAGS="$NCURSESW6_CFLAGS %{optflags} -fno-strict-aliasing" \
-LIBS="$NCURSES_LIBS" \
-%configure --disable-static --with-pic --with-ncurses
+mkdir .cargo
+cat > .cargo/config.toml <<EOF
+[source.crates-io]
+replace-with = "vendored-sources"
 
-make %{?_smp_mflags}
+[source.vendored-sources]
+directory = "vendor"
+EOF
+cmake --preset rust-with-sqlite-release --install-prefix %{buildroot}%{_prefix}
+cmake --build build
 
-# build contrib
-pushd contrib
-make -f Makefile %{?_smp_mflags}
-popd
-
-# build utils
-cp -r %{SOURCE1} ./
-tar -xf chewing-utils-%{utilver}.tar.gz
-rm -rf chewing-utils-%{utilver}.tar.gz
-pushd chewing-utils-%{utilver}/hash-editor
-pushd ..
-patch -p1 < %{SOURCE2}
-popd
-make %{?_smp_mflags}
-popd
+%check
+cmake --build build -t test
 
 %install
-# install main
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+sed -i "s|prefix=%{buildroot}%{_prefix}|prefix=%{_prefix}|" build/chewing.pc
+cmake --build build -t install
 
-# remove .la file
-find %{buildroot}%{_libdir} -name "*.la" -delete
+%fdupes %{buildroot}%{_includedir}
 
-# install simple-select
-mkdir -p %{buildroot}%{_bindir}
-cp -r contrib/simple-select %{buildroot}%{_bindir}
-
-# install python bindings
-mkdir -p %{buildroot}%{python_sitearch}/chewing/
-cp -r contrib/python/chewing.py %{buildroot}%{python_sitearch}/chewing/
-pushd %{buildroot}%{python_sitearch}/chewing/
-python3 -m py_compile *.py
-popd
-
-# install chewing-utils
-mkdir -p %{buildroot}%{_docdir}/chewing-utils
-pushd chewing-utils-%{utilver}
-cp -r AUTHORS %{buildroot}%{_docdir}/chewing-utils/
-cp -r COPYING %{buildroot}%{_docdir}/chewing-utils/
-cp -r hash-editor/ChangeLog.old %{buildroot}%{_docdir}/chewing-utils/ChangeLog
-cp -r hash-editor/src/che %{buildroot}%{_bindir}
-cp -r hash-editor/src/zhuindict_compile %{buildroot}%{_bindir}
-popd
-
-%post -n %{name}%{soname}
-/sbin/ldconfig
+%post -n %{name}%{soname} -p /sbin/ldconfig
 
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
-%post -n %{name}-devel
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun -n %{name}-devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
 %files -n %{name}%{soname}
 %license COPYING
-%doc AUTHORS NEWS README.md TODO
+%doc AUTHORS NEWS README.md
 %{_libdir}/libchewing.so.3
 %{_libdir}/libchewing.so.3.3.1
+
+%files -n chewing-cli
+%{_bindir}/chewing-cli
+%{_mandir}/man1/chewing-cli*.gz
 
 %files -n chewing-data
 %{_datadir}/%{name}/
 
-%files -n python-chewing
-%{python_sitearch}/chewing
-
-%files -n chewing-utils
-%{_bindir}/che
-%{_bindir}/simple-select
-%{_bindir}/zhuindict_compile
-%doc %{_docdir}/chewing-utils
-
 %files devel
 %{_includedir}/chewing/
 %{_libdir}/libchewing.so
+%{_libdir}/cmake/Chewing
 %{_libdir}/pkgconfig/chewing.pc
-%{_infodir}/*.gz
 
 %changelog

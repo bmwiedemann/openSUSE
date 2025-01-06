@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  2 10:42:13 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- update to v2024.09.02: (jsc#PED-9993 jsc#PED-10202)
+  * Updated DSP topology files for SOF2.11.3
+
+-------------------------------------------------------------------
 Wed Nov 13 07:43:32 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
-- update to v2024.09.1:
+- update to v2024.09.1: (jsc#PED-9993 jsc#PED-10202)
   * Add missing links for SOF v2.11.1 signed Intel binaries for ARL
   * fixup the intel-signed/sof-arl.ri link
   * Update v2.2.12 topology files for Intel platforms
@@ -10,7 +16,7 @@ Wed Nov 13 07:43:32 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 -------------------------------------------------------------------
 Tue Oct  1 08:04:39 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
-- update to v2024.09:
+- update to v2024.09: (jsc#PED-9993 jsc#PED-10202)
   * Add sof-v2.11 binaries
   * v2.2.x: Update v2.2.11 topology files for Intel platforms
   * Add sof-v2.11.1 binaries for Intel TGL/ADL/RPL hardware
@@ -18,7 +24,7 @@ Tue Oct  1 08:04:39 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 -------------------------------------------------------------------
 Thu Jul 25 09:35:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to 2024.06:
+- update to 2024.06: (bsc#1230236)
   * Add SOF v2.9 signed binaries for Intel Arrow Lake S
   * Add sof-v2.10 for Intel hardware
   * Add SOF v2.10 signed Intel binaries

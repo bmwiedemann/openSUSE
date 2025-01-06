@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  2 14:14:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.8:
+  * Fix inability to import `collections.abc` in python 3.13.1.
+    The reported fixes in astroid 3.3.6 and 3.3.7 did not actually
+    fix this issue.
+
+-------------------------------------------------------------------
 Tue Oct 22 13:46:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.5:

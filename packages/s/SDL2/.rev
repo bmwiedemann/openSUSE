@@ -572,4 +572,12 @@
     <comment>- Update to release 2.30.10</comment>
     <requestid>1230038</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>d04c7edc211f27375441731d260bd0f3</srcmd5>
+    <version>2.30.11</version>
+    <time>1736175890</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.30.11</comment>
+    <requestid>1234536</requestid>
+  </revision>
 </revisionlist>

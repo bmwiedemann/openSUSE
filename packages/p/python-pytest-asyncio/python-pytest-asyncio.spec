@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-asyncio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-asyncio%{psuffix}
-Version:        0.24.0
+Version:        0.25.1
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0

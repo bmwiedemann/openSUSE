@@ -4739,4 +4739,13 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
     <comment>Fix recent changelog entries containing improper jir references</comment>
     <requestid>1233161</requestid>
   </revision>
+  <revision rev="411" vrev="4">
+    <srcmd5>609e28c998d1fb0a7b57e1979c81a564</srcmd5>
+    <version>10.10.0</version>
+    <time>1736175868</time>
+    <user>anag+factory</user>
+    <comment>- tests: Extend EOY check in virtimetest
+  boo#1234995</comment>
+    <requestid>1234786</requestid>
+  </revision>
 </revisionlist>

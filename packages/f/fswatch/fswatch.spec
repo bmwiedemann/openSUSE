@@ -1,7 +1,7 @@
 #
 # spec file for package fswatch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fswatch
-Version:        1.17.1
+Version:        1.18.0
 Release:        0
 Summary:        Multi platform file change monitor
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ Source:         https://github.com/emcrisostomo/fswatch/releases/download/%{vers
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 
 %package -n lib%{name}13
 Summary:        Shared library for %{name}
@@ -69,6 +70,7 @@ monitors based on:
 %autosetup
 
 %build
+./autogen.sh
 %configure
 %make_build
 
@@ -81,6 +83,15 @@ rm %{buildroot}%{_libdir}/lib%{name}.la
 
 # remove copying - will get installed via license
 rm %{buildroot}%{_datadir}/doc/%{name}/COPYING
+
+# remove non Linux READMEs
+rm %{buildroot}%{_datadir}/doc/%{name}/README.bsd \
+   %{buildroot}%{_datadir}/doc/%{name}/README.freebsd \
+   %{buildroot}%{_datadir}/doc/%{name}/README.illumos \
+   %{buildroot}%{_datadir}/doc/%{name}/README.macos \
+   %{buildroot}%{_datadir}/doc/%{name}/README.smartos \
+   %{buildroot}%{_datadir}/doc/%{name}/README.solaris \
+   %{buildroot}%{_datadir}/doc/%{name}/README.windows
 
 install -d -m0755 %{buildroot}%{_defaultdocdir}
 mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_defaultdocdir}

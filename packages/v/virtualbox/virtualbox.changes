@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  4 01:40:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove bogus ExecCondition= from vboxclient.service.
+  [boo#1234870]
+
+-------------------------------------------------------------------
 Sun Dec 29 22:25:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Set kvm.enable_virt_at_load=0 via a modprobe file when virtualbox

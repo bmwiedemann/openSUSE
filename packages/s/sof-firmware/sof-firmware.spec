@@ -1,7 +1,7 @@
 #
 # spec file for package sof-firmware
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2024.09.1
+Version:        2024.09.2
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes

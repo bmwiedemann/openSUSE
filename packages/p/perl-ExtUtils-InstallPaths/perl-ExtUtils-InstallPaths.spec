@@ -18,10 +18,10 @@
 
 %define cpan_name ExtUtils-InstallPaths
 Name:           perl-ExtUtils-InstallPaths
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
-# 0.013 -> normalize -> 0.13.0
-%define cpan_version 0.013
+# 0.014 -> normalize -> 0.14.0
+%define cpan_version 0.014
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Build.PL install path logic made easy
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,8 +30,8 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::Config) >= 0.002
-Requires:       perl(ExtUtils::Config) >= 0.002
+BuildRequires:  perl(ExtUtils::Config) >= 0.9.0
+Requires:       perl(ExtUtils::Config) >= 0.9.0
 Provides:       perl(ExtUtils::InstallPaths) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}

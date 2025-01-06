@@ -529,7 +529,7 @@ install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}%{_sbi
 install -m 744 src/VBox/Additions/linux/installer/vboxadd-service.sh %{buildroot}%{_vbox_instdir}/vboxadd-service
 install -d %{buildroot}%{_userunitdir}
 # udev rule for guest (virtualbox-guest-tools)
-install -m 644 %{SOURCE3}			%{buildroot}%{_udevrulesdir}/90-vboxguest.rules
+install -m 644 %{SOURCE3} %{buildroot}%{_udevrulesdir}/90-vboxguest.rules
 install -p -m 0644 -D %{SOURCE12} %{buildroot}%{_unitdir}/vboxclient.service
 install -p -m 0644 -D %{SOURCE13} %{buildroot}%{_unitdir}/vboxservice.service
 # /media is used for auto-mounting of shared folders

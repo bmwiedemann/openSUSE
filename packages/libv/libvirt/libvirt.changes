@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  3 19:34:51 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- tests: Extend EOY check in virtimetest
+  boo#1234995
+
+-------------------------------------------------------------------
 Thu Dec 12 18:00:38 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - qemu: tpm: do not update profile name for transient domains

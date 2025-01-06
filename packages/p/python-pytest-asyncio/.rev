@@ -258,4 +258,12 @@ required by mycroft-core</comment>
 </comment>
     <requestid>1227110</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>855c62523bd0946d28c549a1433a276d</srcmd5>
+    <version>0.25.1</version>
+    <time>1736175905</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1234718</requestid>
+  </revision>
 </revisionlist>

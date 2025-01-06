@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  2 08:54:06 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix building vsgXChange and other packages by adding the
+  missing runtime dependency to the development package
+  for SPIRV-Tools-opt
+
+-------------------------------------------------------------------
 Sun Dec 15 21:51:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 15.1

@@ -1,8 +1,8 @@
-Index: xinit-1.4.0/startx.cpp
+Index: xinit-1.4.3/startx.cpp
 ===================================================================
---- xinit-1.4.0.orig/startx.cpp	2018-03-10 02:46:03.000000000 +0100
-+++ xinit-1.4.0/startx.cpp	2018-07-11 13:16:21.864694488 +0200
-@@ -50,11 +50,103 @@
+--- xinit-1.4.3.orig/startx.cpp
++++ xinit-1.4.3/startx.cpp
+@@ -59,11 +59,103 @@ userclientrc=$HOME/.xinitrc
  [ -f "${XINITRC}" ] && userclientrc="${XINITRC}"
  sysclientrc=XINITDIR/xinitrc
  
@@ -97,52 +97,53 @@ Index: xinit-1.4.0/startx.cpp
 +. /etc/sysconfig/displaymanager
 +
  userserverrc=$HOME/.xserverrc
- [ -f "${XSERVERRC}" ] && userclientrc="${XSERVERRC}"
- sysserverrc=XINITDIR/xserverrc
- defaultclient=XTERM
+ [ -f "${XSERVERRC}" ] && userserverrc="${XSERVERRC}"
+ sysserverrc=$xinitdir/xserverrc
+ defaultclient=$xterm
 +XCOMM set X Server accordingly (Xorg/Xgl)
- defaultserver=XSERVER
+ defaultserver=$xserver
 +test -n "$DISPLAYMANAGER_XSERVER" && defaultserver=/usr/bin/$DISPLAYMANAGER_XSERVER
  defaultclientargs=""
  defaultserverargs=""
  defaultdisplay=""
-@@ -312,6 +404,9 @@
-         fi
+@@ -317,6 +409,10 @@ EOF
      done
  fi
+ 
 +XCOMM handle TCP port 6000
 +test "$DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN" != "yes" && \
 +  serverargs="$serverargs -nolisten tcp"
- 
- #if defined(__APPLE__) || defined(__CYGWIN__)
- eval XINIT \"$client\" $clientargs -- \"$server\" $display $serverargs
-@@ -320,6 +415,12 @@
- #endif
++
+ case "$(uname -s)" in
+ CYGWIN_NT*|Darwin)
+     eval $xinit \"$client\" $clientargs -- \"$server\" $display $serverargs
+@@ -327,6 +423,12 @@ CYGWIN_NT*|Darwin)
+ esac
  retval=$?
  
 +if [ "$retval" != 0 -a ! -u "/usr/bin/Xorg" ]; then
-+	echo "-------------------------------------------------------------------------------------------"
-+	echo "xinit failed. /usr/bin/Xorg is not setuid, maybe that's the reason?"
-+	echo "If so either use a display manager (strongly recommended) or adjust /etc/permissions.local and run \"chkstat --system --set\" afterwards"
++       echo "-------------------------------------------------------------------------------------------"
++       echo "xinit failed. /usr/bin/Xorg is not setuid, maybe that's the reason?"
++       echo "If so either use a display manager (strongly recommended) or adjust /etc/permissions.local and run \"chkstat --system --set\" afterwards"
 +fi
 +
- if [ x"$enable_xauth" = x1 ] ; then
-     if [ x"$removelist" != x ]; then
-         XAUTH remove $removelist
-Index: xinit-1.4.0/xinitrc.cpp
+ if [ "$enable_xauth" = 1 ] ; then
+     if [ "$removelist" != "" ]; then
+         $xauth remove $removelist
+Index: xinit-1.4.3/xinitrc.cpp
 ===================================================================
---- xinit-1.4.0.orig/xinitrc.cpp	2018-03-10 02:46:03.000000000 +0100
-+++ xinit-1.4.0/xinitrc.cpp	2018-07-11 13:13:23.808686361 +0200
-@@ -48,8 +48,10 @@
+--- xinit-1.4.3.orig/xinitrc.cpp
++++ xinit-1.4.3/xinitrc.cpp
+@@ -47,8 +47,10 @@ if [ -d $xinitdir/xinitrc.d ] ; then
  	unset f
  fi
  
--TWM &
+-$twm &
 +if [ -x /usr/X11R6/bin/fvwm -o -x /usr/bin/fvwm]; then
 +    exec fvwm
 +fi
- XCLOCK -geometry 50x50-1+1 &
- XTERM -geometry 80x50+494+51 &
- XTERM -geometry 80x20+494-0 &
--exec XTERM -geometry 80x66+0+0 -name login
-+exec TWM
+ $xclock -geometry 50x50-1+1 &
+ $xterm -geometry 80x50+494+51 &
+ $xterm -geometry 80x20+494-0 &
+-exec $xterm -geometry 80x66+0+0 -name login
++exec $twm

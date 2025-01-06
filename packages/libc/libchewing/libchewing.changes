@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  5 09:24:09 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update version 0.9.1
+- drop unneeded patch:
+  * libchewing-0.4.0-simple-select-rpath.patch
+  * chewing-utils-abuild.patch
+
+-------------------------------------------------------------------
 Sun Mar 24 12:41:03 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - move the %install_info macros to the subpackage where they belong

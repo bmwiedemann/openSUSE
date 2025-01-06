@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 22 10:48:46 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.1
+  * fixed an issue flashing some Intel-based platforms with the
+    internal programmer that was introduced in 1.5.0.
+
+-------------------------------------------------------------------
 Sun Dec  8 12:58:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.0

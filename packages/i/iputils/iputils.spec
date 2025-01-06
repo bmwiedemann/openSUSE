@@ -1,7 +1,7 @@
 #
 # spec file for package iputils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/iputils/iputils
 Source0:        https://github.com/iputils/iputils/releases/download/%{version}/iputils-%{version}.tar.xz
+Patch0:         0001-Fix-ping-man-page-syntax-error.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iproute2

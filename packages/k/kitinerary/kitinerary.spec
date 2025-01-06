@@ -1,7 +1,7 @@
 #
 # spec file for package kitinerary
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM bcb009f56f8f1c9c0d1612a0ec9f581907b51534.patch -- Fix compilation against Poppler 25.01
+Patch0:         https://github.com/KDE/kitinerary/commit/bcb009f56f8f1c9c0d1612a0ec9f581907b51534.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libphonenumber-devel

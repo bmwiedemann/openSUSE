@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 23 21:26:53 UTC 2024 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Add support for userspace livepatching on ppc64le (jsc#PED-11850).
+- Use gcc-13 for ppc64le.
+
+-------------------------------------------------------------------
 Tue Oct 15 12:46:08 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducibledate.patch (boo#1231667)

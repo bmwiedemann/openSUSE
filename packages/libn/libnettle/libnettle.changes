@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan  2 08:34:18 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to nettle 3.10.1:
+  * Bug fixes:
+    - Fix buffer overread in the new sha256 assembly for
+      powerpc64, as well as a stack alignment issue.
+    - Added missing nettle_mac structs for hmac-gosthash.
+    - Fix configure test for valgrind, to not attempt to run
+      valgrind on executables built using memory sanitizers.
+  * Enable back the gcm regression test:
+    - Remove libnettle-powerpc64-skip-AES-GCM-test.patch
+  * Remove patches upstream:
+    - libnettle-powerpc64-sha256-fix-loading-overreads.patch
+    - libnettle-powerpc64-sha256-adjust-stack-offset-for-non-volatile-registers.patch
+    - libnettle-powerpc64-remove-m4_unquote-sha256.patch
+
+-------------------------------------------------------------------
 Tue Dec  3 08:07:16 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - ppcl64le: POWER10 performance enhancements for cryptography [jsc#PED-9904]

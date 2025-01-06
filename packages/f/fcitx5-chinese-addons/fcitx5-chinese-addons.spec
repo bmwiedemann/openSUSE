@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-chinese-addons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define build_qt5 1
 %define build_qt6 1
 Name:           fcitx5-chinese-addons
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

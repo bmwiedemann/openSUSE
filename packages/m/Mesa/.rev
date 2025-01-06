@@ -6078,4 +6078,20 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1232706</requestid>
   </revision>
+  <revision rev="527" vrev="399">
+    <srcmd5>37a218999cd885d5769bff37a7ab695d</srcmd5>
+    <version>unknown</version>
+    <time>1736175876</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 24.3.3
+  --&gt; https://docs.mesa3d.org/relnotes/24.3.3
+
+- Update to release 24.3.2
+  --&gt; https://docs.mesa3d.org/relnotes/24.3.2
+- supersedes the following patches:
+  * 0001-dri-don-t-fetch-X11-modifiers-if-we-don-t-support-th.patch
+  * 0002-egl-wayland-only-supply-LINEAR-modifier-when-support.patch
+  * 0003-egl-wayland-fallback-to-implicit-modifiers-if-advert.patch</comment>
+    <requestid>1234954</requestid>
+  </revision>
 </revisionlist>

@@ -36,8 +36,7 @@ Source1:        https://github.com/c-ares/c-ares/releases/download/v%{version}/c
 Source3:        c-ares.keyring
 Source4:        baselibs.conf
 Source5:        series
-# forwarded: https://github.com/c-ares/c-ares/issues/953
-Patch1:         skip-test.patch
+Patch1:         a531524a3d085fcd9a5e25d5f6cbdb953082c2b9.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 # Needed for getservbyport_r function to work properly.

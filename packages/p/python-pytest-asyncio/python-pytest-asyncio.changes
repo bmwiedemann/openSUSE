@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan  3 09:12:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.25.1:
+  * Fixes an issue that caused a broken event loop when a
+    function-scoped test was executed in between two tests with
+    wider loop scope #950
+  * Improves test collection speed in auto mode #1020
+  * Corrects the warning that is emitted upon redefining the
+    event_loop fixture
+
+-------------------------------------------------------------------
+Fri Jan  3 09:10:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 0.25.0:
+  * Deprecated: Added warning when asyncio test requests async
+    @pytest.fixture in strict mode. This will become an error in a
+    future version of flake8-asyncio. #979
+  * Updates the error message about pytest.mark.asyncio's scope
+    keyword argument to say loop_scope instead. #1004
+  * Verbose log displays correct parameter name:
+    asyncio_default_fixture_loop_scope #990
+  * Propagates contextvars set in async fixtures to other fixtures
+    and tests on Python 3.11 and above. #1008
+
+-------------------------------------------------------------------
 Tue Oct  8 15:42:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.24.0

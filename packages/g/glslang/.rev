@@ -441,4 +441,14 @@
     <comment>- Update to release 15.1</comment>
     <requestid>1231576</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>0783c9ac4c0c167820db6a856e4c7036</srcmd5>
+    <version>15.1.0</version>
+    <time>1736175889</time>
+    <user>anag+factory</user>
+    <comment>- Fix building vsgXChange and other packages by adding the
+  missing runtime dependency to the development package
+  for SPIRV-Tools-opt</comment>
+    <requestid>1234527</requestid>
+  </revision>
 </revisionlist>

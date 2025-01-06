@@ -1,8 +1,8 @@
-Index: xinit-1.3.4/xinit.c
+Index: xinit-1.4.3/xinit.c
 ===================================================================
---- xinit-1.3.4.orig/xinit.c
-+++ xinit-1.3.4/xinit.c
-@@ -89,6 +89,7 @@ char xserverrcbuf[256];
+--- xinit-1.4.3.orig/xinit.c
++++ xinit-1.4.3/xinit.c
+@@ -90,6 +90,7 @@ static char xserverrcbuf[256];
  
  #define TRUE 1
  #define FALSE 0
@@ -10,7 +10,7 @@ Index: xinit-1.3.4/xinit.c
  
  static char *default_server = "X";
  static char *default_display = ":0";        /* choose most efficient */
-@@ -560,6 +561,8 @@ startClient(char *client_argv[])
+@@ -570,6 +571,8 @@ startClient(char *client_argv[])
  {
      clientpid = fork();
      if (clientpid == 0) {
@@ -19,7 +19,7 @@ Index: xinit-1.3.4/xinit.c
          set_environment();
          setWindowPath();
  
-@@ -567,7 +570,17 @@ startClient(char *client_argv[])
+@@ -577,7 +580,17 @@ startClient(char *client_argv[])
              Error("cannot change uid");
              _exit(EXIT_FAILURE);
          }

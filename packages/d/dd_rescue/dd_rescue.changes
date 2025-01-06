@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 29 17:45:37 CET 2024 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.18:
+  * Cleanup libddr_lzma flags and memory handling; support sparse
+    input. Default preset to 4 now.
+  * Detect sparse output from unsparse plugins (decompression
+    and decryption may benefit from this).
+  * Testcase for (de)compression with sparse files.
+  * Fix calchmac.py for Python 3.12, so HMAC tests succeed again.
+  * Rationalize log level handling (control by -q, -v, -E).
+  * Move cache prefetching fomr plugins to main program.
+
+-------------------------------------------------------------------
 Sat Nov  2 20:13:16 CET 2024 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.17:

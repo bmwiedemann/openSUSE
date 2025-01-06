@@ -23,13 +23,13 @@
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
 Group:          Development/Languages/C and C++
-URL:            https://github.com/oneapi-src/oneVPL
-Source0:        https://github.com/oneapi-src/oneVPL/archive/refs/tags/v%{version}.tar.gz#/libvpl-%{version}.tar.gz
+URL:            https://github.com/intel/libvpl
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/libvpl-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

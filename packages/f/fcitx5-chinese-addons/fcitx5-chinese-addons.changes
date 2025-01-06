@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  5 05:47:50 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.7
+  * Slightly improve the order of English candidate when it contains
+    upper case
+- changes in 5.1.6
+  * Fix compose key that need AltGr
+  * Add support to use spell-check candidate into the sentence
+  * hide cangjie by default.
+
+-------------------------------------------------------------------
 Wed May 22 09:28:00 UTC 2024 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.5

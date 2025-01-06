@@ -1,7 +1,7 @@
 #
 # spec file for package xinit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define UsrEtcMove 1
 %endif
 Name:           xinit
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        X Window System initializer
 License:        MIT
@@ -72,7 +72,7 @@ sed -i 's+%{_sysconfdir}/X11+%{_libexecdir}+' %{PATCH0}
 %patch -P 2 -p1
 %patch -P 3 -p1
 ### patch is applied later in %install section
-#%patch -P 5 -p0
+%dnl %patch -P 5 -p0
 # needed for patch0
 autoreconf -fi
 

@@ -1,12 +1,12 @@
-Index: fcitx5-5.0.7/src/frontend/ibusfrontend/ibusfrontend.cpp
+Index: fcitx5-5.1.11/src/frontend/ibusfrontend/ibusfrontend.cpp
 ===================================================================
---- fcitx5-5.0.7.orig/src/frontend/ibusfrontend/ibusfrontend.cpp
-+++ fcitx5-5.0.7/src/frontend/ibusfrontend/ibusfrontend.cpp
-@@ -580,14 +580,23 @@ private:
-         ([]() -> dbus::DBusStruct<uint32_t, uint32_t> {
-             return {0, 0};
-         }),
-+#if __GNUC__ < 9
+--- fcitx5-5.1.11.orig/src/frontend/ibusfrontend/ibusfrontend.cpp
++++ fcitx5-5.1.11/src/frontend/ibusfrontend/ibusfrontend.cpp
+@@ -598,23 +598,39 @@ private:
+     FCITX_OBJECT_VTABLE_WRITABLE_PROPERTY(
+         contentType, "ContentType", "(uu)",
+         ([]() -> dbus::DBusStruct<uint32_t, uint32_t> { return {0, 0}; }),
++#if __GNC__ < 9
 +        ([&](dbus::DBusStruct<uint32_t, uint32_t> type) {
 +#else
          ([this](dbus::DBusStruct<uint32_t, uint32_t> type) {
@@ -16,7 +16,7 @@ Index: fcitx5-5.0.7/src/frontend/ibusfrontend/ibusfrontend.cpp
          dbus::PropertyOption::Hidden);
      FCITX_OBJECT_VTABLE_WRITABLE_PROPERTY(
          clientCommitPreedit, "ClientCommitPreedit", "(b)",
-+#if __GNUC__ < 9
++#if __GNC__ < 9
 +        ([&]() -> dbus::DBusStruct<bool> { return {clientCommitPreedit_}; }),
 +        ([&](dbus::DBusStruct<bool> value) {
 +#else
@@ -26,19 +26,36 @@ Index: fcitx5-5.0.7/src/frontend/ibusfrontend/ibusfrontend.cpp
              clientCommitPreedit_ = std::get<0>(value);
          }),
          dbus::PropertyOption::Hidden);
-Index: fcitx5-5.0.7/test/testdbus.cpp
+     FCITX_OBJECT_VTABLE_WRITABLE_PROPERTY(
+         effectivePostProcessKeyEvent, "EffectivePostProcessKeyEvent", "(b)",
++#if __GNC__ < 9
++        ([&]() -> dbus::DBusStruct<bool> {
++            return {effectivePostProcessKeyEvent_};
++        }),
++        ([&](dbus::DBusStruct<bool> value) {
++#else
+         ([this]() -> dbus::DBusStruct<bool> {
+             return {effectivePostProcessKeyEvent_};
+         }),
+         ([this](dbus::DBusStruct<bool> value) {
++#endif
+             effectivePostProcessKeyEvent_ = std::get<0>(value);
+         }),
+         dbus::PropertyOption::Hidden);
+Index: fcitx5-5.1.11/test/testdbus.cpp
 ===================================================================
---- fcitx5-5.0.7.orig/test/testdbus.cpp
-+++ fcitx5-5.0.7/test/testdbus.cpp
-@@ -67,7 +67,11 @@ private:
+--- fcitx5-5.1.11.orig/test/testdbus.cpp
++++ fcitx5-5.1.11/test/testdbus.cpp
+@@ -70,8 +70,13 @@ private:
+     FCITX_OBJECT_VTABLE_PROPERTY(testProperty, "testProperty", "i",
                                   []() { return 5; });
      FCITX_OBJECT_VTABLE_WRITABLE_PROPERTY(
-         testProperty2, "testProperty2", "i", [this]() { return prop2; },
--        [this](int32_t v) { prop2 = v; });
 +#if __GNUC__ < 9
++        testProperty2, "testProperty2", "i", [&]() { return prop2; },
 +        [&](int32_t v) { prop2 = v; });
 +#else
-+        [this](int32_t v) { prop2 = v; });
+         testProperty2, "testProperty2", "i", [this]() { return prop2; },
+         [this](int32_t v) { prop2 = v; });
 +#endif
  };
  

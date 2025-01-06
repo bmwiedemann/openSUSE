@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.14
+Version:        21.1.15
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
@@ -147,7 +147,7 @@ Requires:       libpixman-1-0 >= 0.24
 Requires:       Mesa
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Provides:       xorg-x11-server-glx
 Obsoletes:      xorg-x11-server-glx
@@ -368,21 +368,21 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 12 -p1
 #
 %patch -P 100 -p1
-#%patch -P 101 -p1
+#patch -P 101 -p1
 %patch -P 104 -p1
 %patch -P 117 -p1
 %patch -P 160 -p1
 %patch -P 208 -p1
 %patch -P 209 -p1
 ### not applicable anymore
-#%patch -P 210 -p1
+#patch -P 210 -p1
 %patch -P 215 -p1
 ### disabled for now
-#%patch -P 1162 -p1
+#patch -P 1162 -p1
 ### disabled for now
-#%patch -P 1211 -p1
+#patch -P 1211 -p1
 ### patch222 might not be applicable anymore
-#%patch -P 1222 -p1
+#patch -P 1222 -p1
 %patch -P 1401 -p1
 %patch -P 1503 -p1
 %patch -P 1900 -p1

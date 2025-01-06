@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.17
+Version:        1.99.18
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -109,7 +109,7 @@ appending to .lzo files, so it fits neatly into dd_rescue.
 
 Some fuzz testing has been applied to the plugin's decompression routines,
 though more will have to be done to feel confident about feeding untrusted
-data to the decompressor; the plugin is still young and might expose bugs.
+data to the decompressor.
 
 %package lzma
 Summary:        LZMA (xz) de/compression plugin for dd_rescue

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 11 05:32:24 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14.0 (0.014)
+   see /usr/share/doc/packages/perl-ExtUtils-InstallPaths/Changes
+
+  0.014     2024-09-10 18:20:50+02:00 Europe/Brussels
+            - Drop 5.006 support
+            - Compensate for perls without installsitescript
+
+-------------------------------------------------------------------
 Fri Apr 26 03:08:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.013

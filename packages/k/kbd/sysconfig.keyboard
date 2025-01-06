@@ -19,8 +19,9 @@ KBD_RATE=""
 ## Default:     bios
 #
 # NumLock on? ("yes" or "no" or "bios" for BIOS setting)
+# "bios" requires access to BIOS settings. Does not work with Secure Boot and falls back to "no" there.
 # This setting may interfere with GNOME /org/gnome/settings-daemon/peripherals/keyboard/remember-numlock-state DConf key.
-KBD_NUMLOCK="bios"
+KBD_NUMLOCK="no"
 
 ## Type:        yesno
 ## Default:     no
@@ -33,17 +34,6 @@ KBD_SCRLOCK="no"
 #
 # CapsLock on? ("yes" or "no")
 KBD_CAPSLOCK="no"
-
-## Type:        yesno
-## Default:     no
-#
-# Disable CAPS LOCK and make it a normal Shift key?
-# (Ctrl Caps Lock will still toggle Caps Lock functionality)
-# Note that you need to tweak the xkb maps or use xmodmap
-# if you want to do the same under X-Windows. In ~/.Xmodmap:
-# keycode 0x42 = Shift_L Shift_L
-#
-KBD_DISABLE_CAPS_LOCK="no"
 
 ## Type:        string
 ## Default:

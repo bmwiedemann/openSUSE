@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan  6 10:56:56 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- sysconfig.keyboard: KBD_NUMLOCK="bios" works only on systems
+  without Secure Boot. Document that. Change the default to
+  KBD_NUMLOCK="no". (boo#1212141)
+- kbdsettings-nox86.patch: Update and return missing chunk.
+
+-------------------------------------------------------------------
+Thu Jan  2 23:12:19 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete parts of suse-add.tar.bz2 (jsc#PED-7977),
+  possible BREAKING CHANGES for obscure configurations:
+  * Replace consolefonts/Cyr_a8x*.psf with upstream instances.
+  * Replace consolefonts/cp850-full-8x*.psfu with upstream
+    instances.
+  * Drop consolefonts/lat5--*.psfu in favor of upstream
+    lat5-*.psfu, exactly the same fonts with a better unimap.
+  * Drop consolefonts/lat7.psf as it is lat7a-16.psf in the
+    upstream.
+  * Drop consolefonts/lt-brim-8x14.psfu in favor of upstream
+    lat7a-14.psfu, exactly the same fonts with a better unimap.
+  * Drop keymaps/i386/qwerty/Pl02.map in favor of nearly equal
+    upstream pl2.map.
+  * Drop keymaps/i386/qwerty/br-abnt-alt.map in favor of nearly
+    equal upstream br-abnt.map.
+  * Drop keymaps/i386/qwerty/tj_alt-UTF8.map that is already
+    upstreamed.
+  * Drop unimaps/iso07*.uni that is already upstreamed.
+- Remove broken KBD_DISABLE_CAPS_LOCK feature (sysconfig.keyboard,
+  boo#1179897, jsc#PED-7814).
+  Can be replaced by KEYMAP="{my map} disable.capslock" in
+  /etc/vconsole.conf.
+
+-------------------------------------------------------------------
 Tue Oct 22 08:34:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable libkfont

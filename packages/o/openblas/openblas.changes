@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Jan  2 15:15:51 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.3.27 (jsc#PED-9676):
+  * General:
+    + Reworked the unfinished implementation of `HUGETLB` from GotoBLAS
+      for allocating huge memory pages as buffers on suitable systems.
+    + Changed the unfinished implementation of `GEMM3M` for the generic
+      target on all architectures to at least forward to regular GEMM.
+    + Improved multithreaded `GEMM` performance for large non-skinny
+      matrices.
+    + Improved BLAS3 performance on larger multicore systems through
+      improved parallelism.
+    + Improved performance of the initial memory allocation by reducing
+      locking overhead.
+    + Improved performance of `GBMV` at small problem sizes by introducing
+      a size barrier for the switch to multithreading.
+    + Added an implementation of the `CBLAS_GEMM_BATCH` extension.
+    + Fixed corner cases involving the handling of NAN and INFINITY
+      arguments in `?SCAL` on all architectures.
+    + Fixed NAN handling and potential accuracy issues in compilations
+      with Intel ICX by supplying a suitable fp-model option by default.
+    + It is now possible to register a callback function that replaces
+      the built-in support for multithreading with an external backend
+      like TBB (`openblas_set_threads_callback_function`).
+    + Fixed potential duplication of suffixes in shared library naming.
+    + Improved C compiler detection by the build system to tolerate
+      more naming variants for gcc builds.
+    + Fixed an unnecessary dependency of the utest on CBLAS.
+    + Fixed spurious error reports from the BLAS extensions `utest`.
+    + Fixed unwanted invocation of the `GEMM3M` tests in cross-
+      compilation.
+    + Fixed a flaw in the makefile build that could lead to the
+      pkgconfig file containing an entry of `UNKNOWN` for the target
+      cpu after installing.
+    + Integrated fixes from the Reference-LAPACK project:
+      - Fixed uninitialized variables in the LAPACK tests for `?QP3RK`.
+      - Fixed potential bounds error in `?UNHR_COL`/`?ORHR_COL`.
+      - Fixed potential infinite loop in the LAPACK testsuite.
+      - Make the variable type used for hidden length arguments
+        configurable.
+    + Fixed `SYTRD` workspace computation and various typos.
+    + Prevent compiler use of FMA that could increase numerical
+      error in `?GEEVX`.
+  * x86-64:
+    + Fixed a potential thread buffer overrun in `SBSTOBF16` on small
+      systems.
+    + Fixed an accuracy issue in `ZSCAL` introduced in 0.3.26.
+    + Added support for Intel Emerald Rapids and Meteor Lake CPUs.
+    + Added autodetection support for the Zhaoxin KX-7000 CPU.
+    + Fixed autodetection of Intel Prescott (probably broken
+      since 0.3.19).
+    + Fixed compilation of the converter-generated C versions
+      of the LAPACK sources with gcc-14.
+    + Added support for supplying the L2 cache size via an
+      environment variable (`OPENBLAS_L2_SIZE`) in case it is not
+      correctly reported (as in some VM configurations).
+    + Improved the error message shown when thread creation fails
+    on startup.
+  * arm64:
+    + Added a fast path forwarding `SGEMM` and `DGEMM` calls with a
+      1xN or Mx1 matrix to the corresponding `GEMV` kernel.
+    + Added optimized `SGEMV` and `DGEMV` kernels for A64FX.
+    + Added optimized SVE kernels for small-matrix `GEMM`.
+    + Added A64FX to the CPU list for DYNAMIC_ARCH.
+    + Fixed building with support for CPU affinity.
+    + Worked around accuracy problems with `C/ZNRM2` on NeoverseN1
+      targets.
+    + Improved GEMM performance on Neoverse V1.
+    + Fixed compilation for `NEOVERSEN2` with older compilers.
+    + Fixed potential miscompilation of the SVE `SDOT` and `DDOT`
+      kernels.
+    + Fixed potential miscompilation of the non-SVE `CDOT` and
+      `ZDOT` kernels.
+    + Fixed a potential overflow when using very large user-defined
+      `BUFFERSIZE`.
+  * Power:
+    + Added a fast path forwarding `SGEMM` and `DGEMM` calls with a 1xN
+    or Mx1 matrix to the corresponding `GEMV` kernel.
+    + Significantly improved performance of `SBGEMM`. on POWER10.
+    + Fixed compilation with OpenMP and the XLF compiler.
+    + Fixed building of parts of the LAPACK testsuite with XLF.
+    + Fixed CSWAP/ZSWAP on big-endian POWER10 targets.
+    + Fixed a performance regression in SAXPY on POWER10 with OpenXL.
+    + Fixed a potential overflow when using very large user-defined
+      `BUFFERSIZE`.
+    + Fixed an accuracy issue in the POWER6 kernels for `GEMM` and
+      `GEMV`.
+  * RISCV64:
+    + Added a fast path forwarding `SGEMM` and `DGEMM` calls with a
+      1xN or Mx1 matrix to the corresponding GEMV kernel.
+    + Wdded `DYNAMIC_ARCH` support (comprising `GENERIC_RISCV64` and
+      the two RVV 1.0 targets with vector length of 128 and 256).
+    + Worked around the `ZVL128B` kernels for `AXPBY` mishandling the
+      special case of zero Y increment.
+- Obsoleted: no-static.patch.
+
+-------------------------------------------------------------------
 Mon Jul 29 09:21:41 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Duplicate all options passed to `make` also to `make install`:

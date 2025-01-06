@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jan  5 10:35:58 UTC 2025 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 1.18.0
+ * The C++17 standard has been adopted: code has been rewritten and simplified
+   to adobe new features of the C++17 standard library such as std::filesystem.
+ * gettextize: gettext v. 0.22.5
+ * Documentation: add reference to Go bindings.
+ * Issue #313: Make -1, --one-event return $? when killed.
+ * Remove unused or obsolete configuration checks.
+ * Use the #include predefined notation to include generated configuration headers.
+ * Use target CPPFLAGS instead of AM_CPPFLAGS.
+ * Update FSEventStreamEventFlags flags and add support to macOS 10.13+ features.
+ * Issue #278: fsevents monitor: Add support to for extended data, to allow
+ * file inodes to be collected with events. This feature enables users to
+ * correlate rename events.
+ * Issue #278: inotify monitor: Add support for
+  correlation cookie. This feature enables users to correlate rename events.
+ * Add %c format specifier to print the event correlation id.
+ * Require <mutex>, <atomic> and thread_local and remove checks and conditional code.
+- libfswatch v. 1.18.0 introduces the following features and bug fixes:
+ * Update the event class to have a correlation id field.
+ * Remove private headers from the list of installed header files.
+ * Library interface does not depend on configuration any longer.
+- Packaging changes
+ * Use autogen.sh to regnerate configure script
+ * Remove non Linux READMEs
+
+-------------------------------------------------------------------
 Mon Mar 18 22:42:24 UTC 2024 - Michal Vyskocil <mvyskocill@opensuse.org>
 
 - Initial packaging of fswatch 1.17.1 for openSUSE

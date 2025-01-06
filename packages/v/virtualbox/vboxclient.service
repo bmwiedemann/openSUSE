@@ -1,7 +1,6 @@
 [Unit]
 Description=VirtualBox guest VMSVGA resize client
 ConditionVirtualization=|oracle
-ExecCondition=sh -c '[[ "$XDG_SESSION_TYPE" == "wayland" ]] || exit -1'
 
 [Service]
 Type=simple
@@ -10,4 +9,4 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-
+# also Wanted by 90-vboxguest.rules

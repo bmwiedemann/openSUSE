@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-longterm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.68
-%define git_commit 71b7e2928fd21f1632de68094dbe402b74aa9193
+%define patchversion 6.6.69
+%define git_commit 9b1b47aeb21d1709b0945ce2c282aa1b3ff3c3e3
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-longterm
 Summary:        The Linux Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.6.68
+Version:        6.6.69
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g71b7e29
+Release:        <RELEASE>.g9b1b47a
 %else
 Release:        0
 %endif

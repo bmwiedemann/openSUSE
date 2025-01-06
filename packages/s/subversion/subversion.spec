@@ -1,7 +1,7 @@
 #
 # spec file for package subversion
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #

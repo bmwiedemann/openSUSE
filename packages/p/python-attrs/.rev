@@ -367,4 +367,24 @@
 </comment>
     <requestid>1221445</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e6887105aa1b8b86c9ec633dba4a011c</srcmd5>
+    <version>24.3.0</version>
+    <time>1736175893</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.3.0:
+  * Python 3.7 has been dropped.
+  * Introduce `attrs.NothingType`, for annotating types
+    consistent with `attrs.NOTHING`.
+  * Allow mutating `__suppress_context__` and `__notes__` on
+    frozen exceptions.
+  * `attrs.converters.optional()` works again when taking
+    `attrs.converters.pipe()` or another Converter as its
+    argument.
+  * *attrs* instances now support `copy.replace()`.
+  * `attrs.validators.instance_of()`'s type hints now allow for
+    union types.
+  * For example: `instance_of(str | int)`</comment>
+    <requestid>1234568</requestid>
+  </revision>
 </revisionlist>

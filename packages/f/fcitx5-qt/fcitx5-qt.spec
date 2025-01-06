@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-qt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 
 %define build_qt5 1
 Name:           fcitx5-qt
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later

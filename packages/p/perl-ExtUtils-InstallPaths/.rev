@@ -56,4 +56,16 @@
             - Try to install any installable paths (forwarded request 1173741 from tinita)</comment>
     <requestid>1174134</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a1fc357a7fe4f1ebf5c547aed483abe</srcmd5>
+    <version>0.14.0</version>
+    <time>1736175867</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.14.0 (0.014)
+   see /usr/share/doc/packages/perl-ExtUtils-InstallPaths/Changes
+  0.014     2024-09-10 18:20:50+02:00 Europe/Brussels
+            - Drop 5.006 support
+            - Compensate for perls without installsitescript (forwarded request 1233990 from tinita)</comment>
+    <requestid>1234769</requestid>
+  </revision>
 </revisionlist>

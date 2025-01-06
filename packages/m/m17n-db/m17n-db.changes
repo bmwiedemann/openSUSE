@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  5 06:37:57 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 1.8.9
+  * mr-gamabhana.mim
+  * ar-translit.mim: Use Shift+t(T) in ar-translit.mim to
+    input the Arabic tatweel
+
+-------------------------------------------------------------------
 Sun Nov 12 17:10:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.5:

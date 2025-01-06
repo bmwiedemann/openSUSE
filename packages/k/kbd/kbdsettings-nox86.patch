@@ -1,6 +1,33 @@
+--- a/kbdsettings
++++ b/kbdsettings
+@@ -25,24 +25,6 @@
+ 			fi
+ 			/usr/bin/setleds -D -$param < /dev/$tty
+ 			;;
+-		bios)
+-			if [ -x /usr/libexec/kbd/numlockbios ]; then
+-				bios=$(/usr/libexec/kbd/numlockbios 2>/dev/null)
+-			else
+-				bios=$(/usr/lib/kbd/numlockbios 2>/dev/null)
+-			fi
+-			if [ $param = "num" ]; then
+-				if [ "$bios" = "on" ]; then
+-					touch /run/numlock-on
+-					/usr/bin/setleds -D +$param < /dev/$tty
+-				elif [ "$bios" = "off" -o "$bios" = "unknown" ]; then
+-					rm -f /run/numlock-on
+-					/usr/bin/setleds -D -$param < /dev/$tty
+-				fi
+-			else
+-				echo "Value $confval invalid for $conf"
+-			fi
+-			;;
+ 		*)
+ 			echo "error: unknown value $confval in $conf"
+ 			;;
 --- a/sysconfig.keyboard
 +++ b/sysconfig.keyboard
-@@ -15,12 +15,12 @@
+@@ -15,11 +15,10 @@
  # Keyboard repeat rate (2.0 - 30.0)
  KBD_RATE=""
  
@@ -10,10 +37,8 @@
 +## Default:     no
  #
 -# NumLock on? ("yes" or "no" or "bios" for BIOS setting)
+-# "bios" requires access to BIOS settings. Does not work with Secure Boot and falls back to "no" there.
 +# NumLock on? ("yes" or "no")
  # This setting may interfere with GNOME /org/gnome/settings-daemon/peripherals/keyboard/remember-numlock-state DConf key.
--KBD_NUMLOCK="bios"
-+KBD_NUMLOCK="no"
+ KBD_NUMLOCK="no"
  
- ## Type:        yesno
- ## Default:     no

@@ -79,8 +79,8 @@ and "SVNPath" is specified explicitly, see section 3 for an alternative.
 To create the repository itself:
 
   cd /srv/svn/repos
-  svnadmin create project1
-  chown -R wwwrun:www project1/{db,locks}
+  svnadmin create myproject1
+  chown -R wwwrun:www myproject1/{db,locks}
 
 If using svnserve is not planned, /srv/svn/repos may be owned by wwrun:www.
 Otherwise see instruction in the svnserve section on how to use the user and
@@ -92,23 +92,23 @@ The webserver must be (re)started:
 
 To create the user access files:
 
-  touch /srv/svn/user_access/project1_passwdfile
-  chown root:www /srv/svn/user_access/project1_passwdfile
-  chmod 640 /srv/svn/user_access/project1_passwdfile
+  touch /srv/svn/user_access/myproject1_passwdfile
+  chown root:www /srv/svn/user_access/myproject1_passwdfile
+  chmod 640 /srv/svn/user_access/myproject1_passwdfile
 
-  htpasswd2 /srv/svn/user_access/project1_passwdfile user1
-  htpasswd2 /srv/svn/user_access/project1_passwdfile user2
+  htpasswd2 /srv/svn/user_access/myproject1_passwdfile user1
+  htpasswd2 /srv/svn/user_access/myproject1_passwdfile user2
 
-Create the group file for project1:
-  /srv/svn/user_access/project1_groupfile
+Create the group file for myproject1:
+  /srv/svn/user_access/myproject1_groupfile
 
-  project1_committers: user2
-  project1_readers: user1 user2
+  myproject1_committers: user2
+  myproject1_readers: user1 user2
 
 
 You can test access by:
 
-  svn info http://127.0.0.1/repos/project1
+  svn info http://127.0.0.1/repos/myproject1
 
 ================================================================================
 
@@ -184,13 +184,13 @@ http://svnbook.red-bean.com/en/1.8/svn.serverconfig.multimethod.html
 
 You can test repository access by:
 
-  svn info svn://127.0.0.1/project1
+  svn info svn://127.0.0.1/myproject1
 
 Please note that by default, svnserve is configured to be started with -R,
 meaning read-only access only. Remove to allow write access, after you have
 configured access via
 
-  /srv/svn/repos/repo1/conf/svnserve.conf
+  /srv/svn/repos/myproject1/conf/svnserve.conf
 
 To configue authentication for svnserve, see
 http://svnbook.red-bean.com/en/1.8/svn.serverconfig.svnserve.html#svn.serverconfig.svnserve.auth
@@ -227,8 +227,8 @@ Make systemd pick up the changed unit file and restart the service:
 7. quickstart for mod_dontdothat
 
 The apache module mod_dontdothat can be used to prevent users from causing high
-load on the server, e.g. checking out the root of the tree or the tags or 
-branches directories. 
+load on the server, e.g. checking out the root of the tree or the tags or
+branches directories.
 
 Make sure mod_dontdothat is loaded:
 $ a2enmod dontdothat

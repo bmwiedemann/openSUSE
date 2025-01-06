@@ -1,4 +1,3 @@
 KERNEL=="vboxguest", NAME="vboxguest", OWNER="root", MODE="0660" ENV{ID_INPUT}="1", ENV{ID_INPUT_MOUSE}="1"
 KERNEL=="vboxuser", NAME="vboxuser", OWNER="root", MODE="0660", TAG+="uaccess"
 ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card[0-9]", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x15ad", ATTRS{device}=="0x0405", TAG+="systemd", ENV{SYSTEMD_WANTS}="vboxclient.service"
-

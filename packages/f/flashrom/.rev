@@ -247,4 +247,12 @@ No indication of aggregation (forwarded request 159153 from babelworx)</comment>
   * Update flashrom.keyring</comment>
     <requestid>1231759</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>28851ff1c181d93ac6bb143a69f120e3</srcmd5>
+    <version>1.5.1</version>
+    <time>1736175887</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1234525</requestid>
+  </revision>
 </revisionlist>
