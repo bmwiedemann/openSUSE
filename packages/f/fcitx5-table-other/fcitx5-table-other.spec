@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-table-other
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-table-other
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Other Non-Chinese table input methods for Fcitx5
 License:        GPL-3.0-only AND SUSE-Public-Domain
@@ -91,8 +91,8 @@ fcitx-table-other provides some other Non-Chinese table for Fcitx.
 %files
 %license LICENSES/GPL-3.0-only.txt
 %doc README
-%{_datadir}/icons/hicolor/*/apps/fcitx-*
-%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-*
+%{_datadir}/icons/hicolor/*/apps/fcitx_*
+%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx_*
 %{_fcitx5_imconfdir}/*.conf
 %{_fcitx5_datadir}/table
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.TableOther.metainfo.xml
