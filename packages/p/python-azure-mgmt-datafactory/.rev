@@ -357,4 +357,18 @@
     <comment></comment>
     <requestid>1196343</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>489e9dbe49730c8be443d136c54496a6</srcmd5>
+    <version>9.1.0</version>
+    <time>1736175950</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 9.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1235132 from glaubitz)</comment>
+    <requestid>1235174</requestid>
+  </revision>
 </revisionlist>
