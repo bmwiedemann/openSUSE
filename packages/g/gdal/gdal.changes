@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  5 08:36:23 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add upstream patch 19ba2562.patch to support newer poppler.
+  fix boo#1235083
+
+-------------------------------------------------------------------
 Thu Nov  7 09:09:26 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to feature release 3.10.0
