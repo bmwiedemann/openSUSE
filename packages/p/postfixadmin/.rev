@@ -481,4 +481,17 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
 - drop usermod call for ancient (pre-2012) wrong group of vacation user (forwarded request 1144733 from cboltz)</comment>
     <requestid>1144734</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>dbddb3291e0e6f3fa69d8e4d48dddad8</srcmd5>
+    <version>3.3.15</version>
+    <time>1736175933</time>
+    <user>anag+factory</user>
+    <comment>- update to PostfixAdmin 3.3.15
+  - update smarty and jQuery
+  - add postfixadmin-cli manpage
+  - several bugfixes - for details, see
+    https://github.com/postfixadmin/postfixadmin/releases/tag/postfixadmin-3.3.14
+    https://github.com/postfixadmin/postfixadmin/releases/tag/postfixadmin-3.3.15 (forwarded request 1235062 from cboltz)</comment>
+    <requestid>1235064</requestid>
+  </revision>
 </revisionlist>

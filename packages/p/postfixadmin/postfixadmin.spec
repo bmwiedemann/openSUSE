@@ -1,8 +1,8 @@
 #
 # spec file for package postfixadmin
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2007-2024 Christian Boltz
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2007-2025 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           postfixadmin
-Version:        3.3.13
+Version:        3.3.15
 Release:        0
 URL:            http://postfixadmin.sourceforge.net/
 Source0:        https://github.com/postfixadmin/postfixadmin/archive/%{name}-%{version}.tar.gz
@@ -159,6 +159,9 @@ chmod 755 %{buildroot}/usr/share/%{name}/scripts/postfixadmin-cli
 install -d %{buildroot}/usr/bin
 ( cd %{buildroot}/usr/bin && ln -s /usr/share/%{name}/scripts/postfixadmin-cli . )
 
+install -d %{buildroot}%{_mandir}/man1
+install -m 0644 debian/manpage/postfixadmin-cli.1 %{buildroot}%{_mandir}/man1/
+
 install -d %{buildroot}/var/cache/%{name}/templates_c
 install -d %{buildroot}/var/cache/%{name}/sessions
 
@@ -198,6 +201,7 @@ fi
 %attr(640,root,www) %config(noreplace) %{_sysconfdir}/%{name}/config.local.php
 %doc DOCUMENTS/* *.TXT README.md VIRTUAL_VACATION
 /usr/bin/postfixadmin-cli
+%{_mandir}/man1/postfixadmin-cli.1%{ext_man}
 /usr/share/%{name}/
 %attr(770,root,%{apache_group}) %dir /var/cache/%{name}/
 %attr(770,root,%{apache_group}) %dir /var/cache/%{name}/templates_c/

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  5 17:25:04 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to PostfixAdmin 3.3.15
+  - update smarty and jQuery
+  - add postfixadmin-cli manpage
+  - several bugfixes - for details, see
+    https://github.com/postfixadmin/postfixadmin/releases/tag/postfixadmin-3.3.14
+    https://github.com/postfixadmin/postfixadmin/releases/tag/postfixadmin-3.3.15
+
+-------------------------------------------------------------------
 Tue Feb  6 20:56:10 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - switch vacation user to use sysusers.d
