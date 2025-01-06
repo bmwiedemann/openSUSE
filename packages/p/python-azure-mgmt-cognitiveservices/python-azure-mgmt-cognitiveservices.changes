@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  6 10:15:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 13.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr  4 12:55:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

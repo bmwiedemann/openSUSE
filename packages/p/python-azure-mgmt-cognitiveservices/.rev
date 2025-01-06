@@ -194,4 +194,21 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164743 from glaubitz)</comment>
     <requestid>1165141</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>25b321f3a829d87b5d7c36f33e5d540a</srcmd5>
+    <version>13.6.0</version>
+    <time>1736175946</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 13.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1235142 from glaubitz)</comment>
+    <requestid>1235171</requestid>
+  </revision>
 </revisionlist>
