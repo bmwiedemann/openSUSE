@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 05 17:15:03 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1735912767.1d8e059:
+  * Remove unreachable states in tests 18-backend-qemu
+  * Fix code coverage for qemu.pm
+  * t: fix tests for #2550 for old and new qemu
+  * Fix test of qemu backend
+  * Enable multifd support
+  * Remove redundant newline in "GOT GO" message
+  * autotest: Simplify with post-if
+
+-------------------------------------------------------------------
 Wed Jan 01 15:14:32 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1735636267.be6a5a9:
