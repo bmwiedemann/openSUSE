@@ -40,4 +40,15 @@
 - Switch source archive format to TAR.GZ (forwarded request 1223294 from glaubitz)</comment>
     <requestid>1223361</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>45af396387f1fdca2caa79635a1a02e8</srcmd5>
+    <version>1.0.0~b3</version>
+    <time>1736175948</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1235129 from glaubitz)</comment>
+    <requestid>1235173</requestid>
+  </revision>
 </revisionlist>

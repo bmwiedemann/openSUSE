@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-maps-route
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 1.0.0b2
+%define realversion 1.0.0b3
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-maps-route
-Version:        1.0.0~b2
+Version:        1.0.0~b3
 Release:        0
 Summary:        Azure Maps Route Package client library for Python
 License:        MIT
