@@ -2144,6 +2144,7 @@ unsorted:
   - chemical-mime-data 
   - cherrytree 
   - cherrytree-lang 
+  - chewing-cli 
   - chezdav 
   - chezmoi 
   - chezmoi-bash-completion 
@@ -15066,10 +15067,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_27-gnu-hpc 
-  - libopenblas-pthreads_0_3_27-gnu-hpc-devel 
-  - libopenblas_0_3_27-gnu-hpc 
-  - libopenblas_0_3_27-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_28-gnu-hpc 
+  - libopenblas-pthreads_0_3_28-gnu-hpc-devel 
+  - libopenblas_0_3_28-gnu-hpc 
+  - libopenblas_0_3_28-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit 
@@ -20548,8 +20549,8 @@ unsorted:
   - openbao-postgresql-database-plugin 
   - openbao-server 
   - openblas-common-devel 
-  - openblas-pthreads_0_3_27-gnu-hpc-devel-static 
-  - openblas_0_3_27-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_28-gnu-hpc-devel-static 
+  - openblas_0_3_28-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -23772,7 +23773,6 @@ unsorted:
   - python-caja-devel 
   - python-caja-lang 
   - python-castellan-doc 
-  - python-chewing 
   - python-cinderclient-doc 
   - python-curses 
   - python-dbus-python-common-devel 
@@ -37334,6 +37334,7 @@ unsorted:
   - python313-ollama 
   - python313-olm 
   - python313-omemo-dr 
+  - python313-omni-camera 
   - python313-onigurumacffi 
   - python313-onnx 
   - python313-onnxconverter-common 
@@ -38770,6 +38771,7 @@ unsorted:
   - python313-xxhash 
   - python313-xyzservices 
   - python313-y-py 
+  - python313-yacron 
   - python313-yamale 
   - python313-yamlcore 
   - python313-yamldoc 
