@@ -1,7 +1,7 @@
 #
 # spec file for package python-openai
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openai
-Version:        1.40.8
+Version:        1.59.1
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0
@@ -49,6 +49,7 @@ BuildRequires:  %{python_module importlib-metadata >= 6.7.0}
 BuildRequires:  %{python_module inline-snapshot >= 0.7.0}
 BuildRequires:  %{python_module jiter}
 BuildRequires:  %{python_module mypy}
+BuildRequires:  %{python_module nest-asyncio}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pyright >= 1.1.359}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -76,7 +77,7 @@ You can find usage examples for the OpenAI Python library in
  https://github.com/openai/openai-cookbook/.
 
 %prep
-%autosetup -p1 -n openai-%{version}
+%autosetup -p1 -n openai-python-%{version}
 
 %build
 %pyproject_wheel

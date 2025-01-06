@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  3 13:46:26 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.59.1:
+  * bump license year (#1981) (f29011a)
+- Update to 1.59.0:
+  * azure: support for the Realtime API (#1963) (9fda141)
+  * realtime: update docstrings (#1964) (3dee863)
+
+-------------------------------------------------------------------
 Thu Sep 19 07:33:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add missing dependency
