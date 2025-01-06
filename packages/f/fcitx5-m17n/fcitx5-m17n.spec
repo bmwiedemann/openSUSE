@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-m17n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-m17n
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        M17n input method engine for Fcitx5
 License:        LGPL-2.1-or-later
