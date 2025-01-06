@@ -3371,7 +3371,7 @@
     <package name="pcsc-asedriveiiie-usb" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-asedriveiiie-usb -->
     <package name="pcsc-asekey" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-asekey -->
     <package name="pcsc-cyberjack" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-cyberjack -->
-    <package name="pcsc-gempc" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-gempc -->
+    <!-- pcsc-gempc not found on x86_64-->
     <package name="pcsc-lite" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pcsc-towitoko" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-towitoko -->
     <package name="pentaho-libxml" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

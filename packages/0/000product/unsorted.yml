@@ -594,6 +594,7 @@ unsorted:
   - amdgpu_top 
   - amfora 
   - aml-devel 
+  - amp 
   - amsynth 
   - amsynth-lang 
   - amsynth-plugin-dssi 
@@ -840,6 +841,7 @@ unsorted:
   - apptainer-leap 
   - apptainer-sle15_5 
   - apptainer-sle15_6 
+  - apptainer-sle15_7 
   - appx-util 
   - apr-devel 
   - apr-util-devel 
@@ -1040,7 +1042,6 @@ unsorted:
   - asteroid 
   - asteroids3D 
   - astyle 
-  - asusfan 
   - asymptote 
   - at-spi-sharp 
   - at-spi-sharp-devel 
@@ -1111,10 +1112,6 @@ unsorted:
   - augeas-devel-32bit 
   - augeas-lense-tests 
   - authbind 
-  - authselect 
-  - authselect-compat 
-  - authselect-lang 
-  - authselect-profiles 
   - auto 
   - auto-common 
   - auto-javadoc 
@@ -2129,9 +2126,6 @@ unsorted:
   - chafa-devel 
   - chafa-doc 
   - changelog-generator-data 
-  - charliecloud 
-  - charliecloud-doc 
-  - charliecloud-examples 
   - chart-testing 
   - chasen 
   - chasen-devel 
@@ -2189,7 +2183,6 @@ unsorted:
   - cinnamon-control-center-devel 
   - cinnamon-control-center-lang 
   - cinnamon-gschemas 
-  - cinnamon-gschemas-branding-openSUSE 
   - cinnamon-gschemas-branding-upstream 
   - cinnamon-lang 
   - cinnamon-menus-doc 
@@ -3658,7 +3651,6 @@ unsorted:
   - ebook-tools 
   - ebumeter 
   - echomixer 
-  - eciadsl-usermode 
   - ecj 
   - ecl 
   - ecl-devel 
@@ -3913,7 +3905,6 @@ unsorted:
   - erlang-src 
   - erlang-wx 
   - erlang-wx-src 
-  - erldash 
   - esbuild 
   - esc 
   - espanso 
@@ -4033,7 +4024,6 @@ unsorted:
   - faenza-icon-theme-mint 
   - faenza-icon-theme-radiance 
   - fail2ban 
-  - fairymax 
   - fake-gcs-server 
   - fake-hwclock 
   - fakechroot 
@@ -4327,7 +4317,6 @@ unsorted:
   - ffmpegthumbs-kf5 
   - ffmsindex 
   - ffnvcodec-devel 
-  - ffsb 
   - fftw3-devel 
   - fftw3-gnu-hpc-devel 
   - fftw3-gnu-mpich-hpc-devel 
@@ -4636,8 +4625,6 @@ unsorted:
   - frei0r-plugins-opencv 
   - frescobaldi 
   - fribidi-devel 
-  - frink 
-  - fritzing 
   - fritzing-parts 
   - frizbee 
   - frizbee-bash-completion 
@@ -4746,7 +4733,6 @@ unsorted:
   - gala-lang 
   - gala-plugins 
   - galaxis 
-  - galene 
   - galera-4 
   - galera-4-wsrep-provider 
   - gama 
@@ -4931,7 +4917,6 @@ unsorted:
   - gbdfed 
   - gc-devel 
   - gcab-devel 
-  - gcad3d 
   - gcal 
   - gcal-lang 
   - gcalcli 
@@ -7102,8 +7087,6 @@ unsorted:
   - giflib-progs 
   - gifsicle 
   - gimp-devel 
-  - gimp-gap 
-  - gimp-gap-lang 
   - gimp-help 
   - gimp-help-ca 
   - gimp-help-da 
@@ -7479,7 +7462,6 @@ unsorted:
   - gnome-shell-extension-onboard 
   - gnome-shell-extension-pop-shell 
   - gnome-shell-extension-system-monitor 
-  - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
   - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-bijiben 
@@ -8022,7 +8004,6 @@ unsorted:
   - gpuvis 
   - gpxsee 
   - gq 
-  - gqlplus 
   - gqrx 
   - gr-funcube 
   - gr-funcube-doc 
@@ -8690,7 +8671,6 @@ unsorted:
   - hmaccalc 
   - hmcfgusb 
   - hmconv 
-  - hoard 
   - hobbits 
   - hobbits-devel 
   - hollywood 
@@ -8837,7 +8817,6 @@ unsorted:
   - i3status 
   - i3status-rust 
   - iamb 
-  - iasimage 
   - ibacm 
   - ibdev2netdev 
   - ibm-data-db2 
@@ -9075,7 +9054,6 @@ unsorted:
   - intelhex 
   - inter-fonts 
   - inter-variable-fonts 
-  - interbench 
   - interceptty 
   - intlfonts 
   - intlfonts-arabic-bitmap-fonts 
@@ -9503,6 +9481,7 @@ unsorted:
   - jdom2 
   - jdom2-javadoc 
   - jdupes 
+  - jed 
   - jedit 
   - jedit-javadoc 
   - jefferson 
@@ -9622,6 +9601,7 @@ unsorted:
   - jitterentropy-devel 
   - jitterentropy-devel-32bit 
   - jitterentropy-devel-static 
+  - jj-fzf 
   - jlatexmath 
   - jlatexmath-fop 
   - jlatexmath-javadoc 
@@ -10850,6 +10830,8 @@ unsorted:
   - labplot-kf5-lang 
   - labwc 
   - labwc-lang 
+  - labwc-tweaks 
+  - labwc-tweaks-lang 
   - ladish 
   - ladspa 
   - ladspa-32bit 
@@ -10924,7 +10906,6 @@ unsorted:
   - lash 
   - lash-devel 
   - last-resort-font 
-  - lastpass-cli 
   - laszip-devel 
   - latencytop 
   - latex2html 
@@ -12077,8 +12058,6 @@ unsorted:
   - libaudtag3 
   - libaugeas0-32bit 
   - libauparse0-32bit 
-  - libauthselect-devel 
-  - libauthselect3 
   - libautotrace3 
   - libav-tools 
   - libavahi-devel 
@@ -12577,7 +12556,6 @@ unsorted:
   - libcimcclient0 
   - libcinnamon-control-center1 
   - libcinnamon-desktop-data 
-  - libcinnamon-desktop-data-branding-openSUSE 
   - libcinnamon-desktop-data-branding-upstream 
   - libcinnamon-desktop-devel 
   - libcinnamon-desktop-lang 
@@ -16045,9 +16023,6 @@ unsorted:
   - libreoffice-voikko 
   - libreoffice-writer-extensions 
   - libreofficekit-devel 
-  - librep 
-  - librep-devel 
-  - librep16 
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
@@ -16779,6 +16754,7 @@ unsorted:
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
+  - libumf0 
   - libumfpack-doc 
   - libumockdev-preload0 
   - libumockdev0 
@@ -16810,12 +16786,14 @@ unsorted:
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
   - libupb39 
-  - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
   - libupnpp16 
   - libupower-glib-devel 
   - libupsclient6 
+  - libur_adapter_native_cpu0 
+  - libur_adapter_opencl0 
+  - libur_loader0 
   - liburcu-devel 
   - liburcu8-32bit 
   - liburfkill-glib-devel 
@@ -17752,7 +17730,6 @@ unsorted:
   - llvm19-polly 
   - llvm19-polly-devel 
   - llvm19-vim-plugins 
-  - lmarbles 
   - lmdb 
   - lmdb-devel 
   - lmms 
@@ -18243,12 +18220,10 @@ unsorted:
   - mac-devel 
   - mac-robber 
   - macchanger 
-  - macchina 
   - macrofusion 
   - madeline 
   - madplay 
   - madplay-lang 
-  - maelstrom 
   - maeparser-devel 
   - mage 
   - magic-wormhole.rs 
@@ -18314,8 +18289,6 @@ unsorted:
   - man-pages-sv 
   - man-pages-uk 
   - man-pages-vi 
-  - manaplus 
-  - manaplus-lang 
   - manchu-fonts 
   - mandoc 
   - mandown 
@@ -18462,7 +18435,7 @@ unsorted:
   - mathgl-tools 
   - mathjax 
   - mathjax-ams-fonts 
-  - mathjax-caligraphic-fonts 
+  - mathjax-calligraphic-fonts 
   - mathjax-fraktur-fonts 
   - mathjax-main-fonts 
   - mathjax-math-fonts 
@@ -18473,8 +18446,8 @@ unsorted:
   - mathjax-size3-fonts 
   - mathjax-size4-fonts 
   - mathjax-typewriter-fonts 
-  - mathjax-winchrome-fonts 
-  - mathjax-winie6-fonts 
+  - mathjax-vector-fonts 
+  - mathjax-zero-fonts 
   - mathml-dtd 
   - mathmod 
   - matio-tools 
@@ -19155,7 +19128,6 @@ unsorted:
   - mono-zeroconf-doc 
   - mono-zeroconf-provider-avahi 
   - monodoc-core 
-  - moolticute 
   - mopac7 
   - moreutils 
   - moreutils-parallel 
@@ -19314,10 +19286,6 @@ unsorted:
   - mrboom 
   - mrouted 
   - mrrescue 
-  - mrsh 
-  - mrsh-rsh-compat 
-  - mrsh-rsh-server-compat 
-  - mrsh-server 
   - mruby 
   - mruby-devel 
   - ms-gsl-devel 
@@ -19719,7 +19687,6 @@ unsorted:
   - nbdkit-xz-filter 
   - nbsdgames 
   - ncdu 
-  - ncftp 
   - ncmpcpp 
   - nco 
   - nco-doc 
@@ -19836,7 +19803,6 @@ unsorted:
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
-  - netdate 
   - netdiscover 
   - netease-cloud-music-gtk 
   - netease-cloud-music-gtk-lang 
@@ -20646,7 +20612,6 @@ unsorted:
   - openldap2-devel-static 
   - openldap2-doc 
   - openlibm-devel 
-  - openlierox 
   - openmarkup 
   - openmarkup-javadoc 
   - openmarkup-manual 
@@ -20957,8 +20922,6 @@ unsorted:
   - pacemaker-schemas 
   - pack200 
   - pack200-javadoc 
-  - packETH 
-  - packETH-cli 
   - package-translations 
   - packagekitqt5-devel 
   - packagekitqt6-devel 
@@ -21514,7 +21477,6 @@ unsorted:
   - perl-Audio-RPLD 
   - perl-Authen-DecHpwd 
   - perl-Authen-Passphrase 
-  - perl-Authen-SASL-Cyrus 
   - perl-B-COW 
   - perl-B-Debug 
   - perl-B-Hooks-EndOfScope 
@@ -23026,7 +22988,6 @@ unsorted:
   - pinentry-fltk 
   - pinentry-rofi 
   - pinfo 
-  - pingtunnel 
   - pingus 
   - pink-pony 
   - pink-pony-data 
@@ -23288,7 +23249,6 @@ unsorted:
   - polymake 
   - polymake-devel 
   - pommed 
-  - pongix 
   - pop 
   - pop-icon-theme 
   - pop-launcher 
@@ -23507,7 +23467,6 @@ unsorted:
   - prelude-correlator 
   - prelude-lml 
   - prelude-lml-devel 
-  - prelude-lml-rules 
   - prelude-tools 
   - preludedb-tools 
   - premake4 
@@ -24235,7 +24194,6 @@ unsorted:
   - python3-tpm2-pytss 
   - python3-uhd 
   - python3-unbound 
-  - python3-upm 
   - python3-vapoursynth 
   - python3-vigranumpy 
   - python3-virt-bootstrap 
@@ -38938,7 +38896,6 @@ unsorted:
   - qcustomplot-doc 
   - qd-devel 
   - qdirstat 
-  - qdl 
   - qdox 
   - qdox-javadoc 
   - qelectrotech 
@@ -39655,7 +39612,6 @@ unsorted:
   - readline5-devel 
   - readline6-devel 
   - readrec0 
-  - reaim 
   - realmd 
   - realmd-lang 
   - rear 
@@ -39729,8 +39685,6 @@ unsorted:
   - rendercheck 
   - renderdoc 
   - renderdoc-devel 
-  - rep-gtk 
-  - rep-gtk-devel 
   - replacer 
   - replacer-javadoc 
   - replay-sorcery 
@@ -39834,7 +39788,6 @@ unsorted:
   - rime-schema-terra-pinyin 
   - rime-schema-wubi 
   - rime-schema-wugniu 
-  - rinetd 
   - rinstall 
   - rinutils-devel 
   - rioterm 
@@ -39854,12 +39807,16 @@ unsorted:
   - river-riverctl 
   - river-rivertile 
   - river-zsh-completion 
+  - rizin 
+  - rizin-common 
+  - rizin-devel 
   - rk-devel 
   - rkdeveloptool 
   - rke 
   - rke2 
   - rke2-1.29 
   - rke2-1.30 
+  - rke2-1.31 
   - rke2-selinux 
   - rkhunter 
   - rkward 
@@ -39909,7 +39866,6 @@ unsorted:
   - roundcubemail 
   - rovasiras-kende-fonts 
   - rovasiras-roga-fonts 
-  - rox-filer 
   - rp-pppoe 
   - rpcgen 
   - rpcs3 
@@ -40566,7 +40522,6 @@ unsorted:
   - sccs 
   - scdl 
   - scdoc 
-  - schedtool 
   - schemaspy 
   - scheme48 
   - scheme48-devel 
@@ -40608,7 +40563,6 @@ unsorted:
   - scite 
   - scitokens-cpp-devel 
   - scm-manager-cli 
-  - scmon 
   - scons 
   - scotch 
   - scotch-devel 
@@ -40656,7 +40610,6 @@ unsorted:
   - sdcc 
   - sdcc-doc 
   - sdcc-libc-sources 
-  - sdcv 
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
@@ -40738,7 +40691,6 @@ unsorted:
   - sgmltool 
   - sgmltool-latex 
   - sgpio 
-  - sgrep 
   - sgtk-menu 
   - sha1collisiondetection 
   - sha3sum 
@@ -40889,8 +40841,6 @@ unsorted:
   - slicot-devel-static 
   - slop 
   - slop-devel 
-  - slrn 
-  - slrn-lang 
   - slsa-verifier 
   - sluice 
   - sluice-bash-completion 
@@ -41261,7 +41211,9 @@ unsorted:
   - stuntman 
   - su-wrapper 
   - subnetcalc 
+  - subnetcalc-bash-completion 
   - subnetcalc-doc 
+  - subnetcalc-lang 
   - subtitlecomposer 
   - subtitlecomposer-lang 
   - subtitleeditor 
@@ -41552,7 +41504,6 @@ unsorted:
   - tagsoup 
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
-  - taigo 
   - tail-tray 
   - tailscale 
   - tailscale-bash-completion 
@@ -41690,8 +41641,6 @@ unsorted:
   - terminology-theme-openSUSE 
   - terminology-theme-openSUSE-oliveleaf 
   - terminology-theme-upstream 
-  - terminus 
-  - terminus-lang 
   - termit 
   - termotp 
   - termrec 
@@ -50997,8 +50946,6 @@ unsorted:
   - tini 
   - tini-static 
   - tint 
-  - tint2 
-  - tint2-lang 
   - tintii 
   - tiny 
   - tinyfecvpn 
@@ -51035,7 +50982,6 @@ unsorted:
   - tkimg 
   - tkimg-devel 
   - tkinfo 
-  - tktable 
   - tkxcd 
   - tllist-devel 
   - tlp 
@@ -51111,7 +51057,6 @@ unsorted:
   - torbrowser-launcher 
   - torbrowser-launcher-lang 
   - torrentinfo 
-  - torsocks 
   - totem-devel 
   - totem-pl-parser-devel 
   - totem-plugin-gnome-dvb-daemon 
@@ -51376,7 +51321,6 @@ unsorted:
   - tslib-plugins 
   - tsung 
   - ttf-converter 
-  - ttf2pt1 
   - ttyd 
   - ttynvt 
   - ttyper 
@@ -51820,6 +51764,10 @@ unsorted:
   - unicode-ucd 
   - unicode-ucd-unihan 
   - unifdef 
+  - unified-memory-framework-devel 
+  - unified-memory-framework-doc 
+  - unified-runtime 
+  - unified-runtime-devel 
   - unifraktur-fonts 
   - unionfs-fuse 
   - unique-factory-devel 
@@ -51870,7 +51818,6 @@ unsorted:
   - updatecli-fish-completion 
   - updatecli-zsh-completion 
   - uperf 
-  - upm-devel 
   - upmpdcli 
   - upmpdcli-bbc 
   - upmpdcli-config 
@@ -52063,7 +52010,6 @@ unsorted:
   - veusz 
   - veusz-common 
   - vexctl 
-  - veyon 
   - vgrabbj 
   - vgrep 
   - vhba-kmp-default 
@@ -52428,8 +52374,6 @@ unsorted:
   - wine-devel 
   - wine-devel-32bit 
   - wine-gecko 
-  - wine-nine-standalone 
-  - wine-nine-standalone-32bit 
   - wine-staging 
   - wine-staging-32bit 
   - wine-staging-devel 
@@ -52584,7 +52528,6 @@ unsorted:
   - xbase-doc 
   - xbean 
   - xbean-javadoc 
-  - xbench 
   - xbiff 
   - xbindkeys 
   - xbitmaps-devel 
@@ -52824,8 +52767,6 @@ unsorted:
   - xmonad 
   - xmoontool 
   - xmore 
-  - xmorph 
-  - xmorph-devel 
   - xmoto 
   - xmoto-data 
   - xmp 
@@ -52915,7 +52856,6 @@ unsorted:
   - xreader-plugin-xpsdocument 
   - xrefresh 
   - xrestop 
-  - xroach 
   - xroachng 
   - xrootd-client 
   - xrootd-client-devel 
