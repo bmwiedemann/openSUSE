@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1168464</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>daab7b0bab70febabe840d6dcef1b675</srcmd5>
+    <version>0.6.1</version>
+    <time>1736175938</time>
+    <user>anag+factory</user>
+    <comment>- Set environment variable so older PyO3 will build with 3.13.
+- Run one example as a test of sorts.
+- Correct Suggests.</comment>
+    <requestid>1235083</requestid>
+  </revision>
 </revisionlist>

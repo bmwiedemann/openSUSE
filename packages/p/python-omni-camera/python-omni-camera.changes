@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  5 23:36:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Set environment variable so older PyO3 will build with 3.13.
+- Run one example as a test of sorts.
+- Correct Suggests.
+
+-------------------------------------------------------------------
 Tue Apr 16 07:44:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.6.1
