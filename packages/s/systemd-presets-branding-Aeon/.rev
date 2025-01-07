@@ -39,4 +39,12 @@
     <comment>Fixes for TPM2 issues in Aeon RC3</comment>
     <requestid>1190478</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>25850ccb3ef8af17be465c637949a9d6</srcmd5>
+    <version>20231005</version>
+    <time>1736279685</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235589</requestid>
+  </revision>
 </revisionlist>

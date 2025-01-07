@@ -6,3 +6,4 @@ enable lastlog2-import.service
 enable zramswap.service
 enable x86_64_v3-transactional-update.service
 enable aeon-check.service
+enable switcheroo-control.service
