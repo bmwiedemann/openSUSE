@@ -259,7 +259,6 @@ Requires:       gnome-color-manager
 #Requires:       gnome-packagekit
 Requires:       gnome-software
 Requires:       gnome-system-monitor
-Requires:       gnome-tweak-tool
 Requires:       gnome-user-docs
 # bnc#879466
 Requires:       gpgme
@@ -417,6 +416,9 @@ Requires:       aeon-check
 
 ### gnome-console as default terminal
 Requires:       gnome-console
+
+### Add switcheroo-control
+Requires:       switcheroo-control
 
 %description base
 This is the openSUSE Aeon base system. It contains only fully working immutable desktop system.
