@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Mon Jan  6 00:26:01 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Changed pkgconfig(wlroots) to >= 0.17.0
+  * Multiple options available for wlroots
+
+-------------------------------------------------------------------
+Mon Aug 26 03:34:37 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.9.0:
+  * Major new feature is CSS theming support.
+  * initialize manager with NULL.
+  * Fix excusive zone when zwf_shell_manager_v2 is unavailable.
+  * Listen for toggle_menu event.
+  * panel: middle click to close window.
+  * Fix crash with parentheses in filenames.
+  * wf-background: allow seamless background updates.
+  * window-list: Allow smaller panel heights.
+  * Install wayfire.png to hicolor icon theme.
+  * bug fixes.
+  * Add "Fill and Crop" option for wf-background. Pt 2.
+  * window-list: use ~/.local/share when looking for apps / icons.
+  * Check for and load absolute path icons in panel launchers.
+  * Collection of Menu alterations.
+  * menu: Allow sorting by relevance.
+  * menu: Allow themed icon in panel.
+  * window-list: Dragging files to window list and hovering 
+    activates window.
+  * background: allow taking keyboard focus.
+  * Visible separator.
+  * panel: add css classes to widgets.
+  * wf-panel: hot-reload css.
+  * separator: css classname.
+  * css examples.
+  * background: free old image after transition.
+  * window-list: additional classes for window state.
+  * gtk-utils: set icon changes.
+  * launcher: remove features.
+  * tray: allow css styling.
+  * launchers, tray: untheme button by default.
+  * window-list: attach popup menu to button.
+  * css: added classes to popovers.
+  * Update gvc.
+  * Move some more style code into CSS & misc extra CSS work.
+  * menu: Fix resize in config.
+
+-------------------------------------------------------------------
+Thu Mar 14 04:43:04 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.1:
+  * Ability to configure a binding to toggle the menu widget 
+    (from the wayfire-shell plugin in Wayfire).
+  * SIGUSR1 can be used to change the background if multiple 
+    backgrounds are configured.
+  * A few bug fixes.
+
+-------------------------------------------------------------------
+Mon Oct  9 06:33:18 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.0:
+  * This version has a number of new widgets:
+    - Tray.
+    - Command-output for displaying output of commands in the panel.
+    - Notifications.
+    - Logout interface.
+
+-------------------------------------------------------------------
+Fri Dec  2 03:39:07 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update wlroots minimum version to spec. 
+
+-------------------------------------------------------------------
+Wed Nov 30 03:36:21 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Set wlroots max version to spec.  
+
+-------------------------------------------------------------------
+Wed Feb  3 05:16:28 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * Compatible with Wayfire 0.7.x and wf-config 0.7.x
+  * Only minor changes since 0.6.1, most notably there has been 
+    a new option for CSS theming: #77 
+
+-------------------------------------------------------------------
+Fri Nov 13 12:01:28 UTC 2020 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.6.1:
+  * No changelog was made available.
+  
+
+-------------------------------------------------------------------
+Mon Nov  9 04:46:59 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Wed Aug  5 05:35:48 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.5.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Thu Apr 30 05:27:02 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Remove service 
+
+-------------------------------------------------------------------
+Mon Mar 23 04:05:09 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.4.0:
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Tue Mar 17 05:29:19 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.3:
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Thu Oct 03 13:25:55 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.1.git~20191002.513c22f:
+  * No changelog was made available.
+  
+-------------------------------------------------------------------
+Thu Oct  3 13:25:24 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
