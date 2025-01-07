@@ -69,7 +69,7 @@
 %endif
 
 Name:           osc
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -138,6 +138,8 @@ Recommends:     obs-service-format_spec_file
 Recommends:     obs-service-obs_scm
 Recommends:     obs-service-set_version
 Recommends:     obs-service-source_validator
+# the older versions of obs-service-source_validator do not support .osc store 2.0
+Conflicts:      obs-service-source_validator < 0.39
 Recommends:     obs-service-tar_scm
 Recommends:     obs-service-verify_file
 
