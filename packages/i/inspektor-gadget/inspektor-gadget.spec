@@ -1,7 +1,7 @@
 #
 # spec file for package inspektor-gadget
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           inspektor-gadget
-Version:        0.34.0
+Version:        0.36.0
 Release:        0
 Summary:        A eBPF tool and systems inspection framework
 License:        Apache-2.0

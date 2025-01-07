@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue Jan 07 15:07:27 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.0:
+  * Some relevant changes for this version are:
+    - introduce support for otel-logs by @flyth in #3697
+    - trace_dns: add fields cwd & exepath (--paths) by @alban in
+      #3817
+    - gadgets: Uniform filtering by @mauriciovasquezbernal in #3648
+  * General Improvements
+    - CODEOWNERS: Update following latest changes in the code by
+      @mauriciovasquezbernal in #3649
+    - Artifact Hub: Update gadgets version to v0.35.0 by
+      @github-actions in #3735
+    - Update ADOPTERS.md by @mayasingh17 in #3727
+    - expose SocketPath in k8s.go by @matthyx in #3730
+    - tree-wide: Fix clang-format target and apply it by
+      @mauriciovasquezbernal in #3753
+    - Export filter operator by @Sefi4 in #3774
+    - deploy/charts: allow configuring otel-metrics by
+      @mqasimsarfraz in #3684
+    - treewide: Format eBPF code using clang-format-18. by
+      @eiffel-fl in #3809
+    - Update ADOPTERS.md by @mayasingh17 in #3785
+    - ebpf-builder: Update to clang-18 and provide clang-format by
+      @mauriciovasquezbernal in #3825
+    - cilium/ebpf: Update to v0.17.1 by @burak-ok in #3829
+    - pkg/gadgets: dns: Update generated bpf2go files with
+      cilium/ebpf v0.1… by @eiffel-fl in #3834
+    - Align datasource enrichment by @Sefi4 in #3668
+    - feat(kubectl-gadget): disallow instances with same name by
+      @KapilSareen in #3839
+    - trace exec: add 'file' field for scripts by @alban in #3818
+    - Update entrypoint logic for gadget-container by @KapilSareen
+      in #3811
+    - export the whole RuntimeConfig in K8sClient by @matthyx in
+      #3816
+    - tree-wide: Remove usage of multierr by @mauriciovasquezbernal
+      in #3841
+    - oci: remote manifest file by @mqasimsarfraz in #3807
+    - wasm/testdata: Use in-tree ig to build the images by
+      @burak-ok in #3757
+    - pkg: Rework error message to cope with code scanning alerts.
+      by @eiffel-fl in #3847
+  * Bug Fixes
+    - ig-k8s: Fix server version message by @mauriciovasquezbernal
+      in #3743
+    - ig-k8s: Fix fix server version message by
+      @mauriciovasquezbernal in #3752
+    - operators/bpf: Fix perf ring buffer fallback logic by
+      @mauriciovasquezbernal in #3633
+    - dns: don't send full packet to userspace by @alban in #3806
+    - (built-in)/trace/dns: Fix logic for percpu array map by
+      @mauriciovasquezbernal in #3830
+  * Testing and Continue Integration
+    - ci: Add "Signed-off-by" to commit bumping artifacthub-pkg.yml
+      files. by @eiffel-fl in #3736
+    - dependabot: Add group for containers dependency by
+      @mauriciovasquezbernal in #3738
+    - dependabot: Use directories key by @mauriciovasquezbernal in
+      #3766
+    - ci/check-artifacthub-tags: Add permissions by @mqasimsarfraz
+      in #3765
+    - tests: Increase timeout for snapshotter tests by
+      @mauriciovasquezbernal in #3760
+    - Alias ebpftypes.Process as Process in utils package by
+      @MeherRushi in #3764
+    - ci: Enable workflow_dispatch by @mauriciovasquezbernal in
+      #3792
+
+-------------------------------------------------------------------
+Tue Jan 07 14:57:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.0:
+  * Some relevant changes for this version are:
+    - Add maps functions to WASM by @eiffel-fl in #3596
+    - gadgets/deadlock: add deadlock detection using cycles in
+      mutex wait di-graph by @Snehil-Shah in #3532
+    - New gadget: fdpass by @alban in #3672
+  * General Improvements
+    - feat: enhance version command output to json format by
+      @Priyansurout in #3651
+    - gadgets: Standardize common information by
+      @mauriciovasquezbernal in #3506
+    - Use ContainerPid method in example by @ninadingole in #3674
+    - datasource: refactor SetRequested to Unreference & add to
+      WASM API by @Snehil-Shah in #3657
+    - field: add AddTags method to fieldAccessor and corresponding
+      WASM API by @Snehil-Shah in #3652
+    - uprobe,container-hook: add coherence check on file sizes by
+      @alban in #3701
+    - Added TID for execsnoop & open by @afek854 in #3658
+    - Adding exepath field for trace_exec image-based gadget by
+      @Sefi4 in #3695
+    - tools/monitoring: Use otel-metrics exporter by @mqasimsarfraz
+      in #3639
+    - gadgets/deadlock: handle dead processes and add pid based
+      filtering by @Snehil-Shah in #3717
+    - operators/wasm: Add WASM function to create and close maps.
+      by @eiffel-fl in #3713
+    - container-hook: additional coherence checks by @alban in
+      #3724
+    - exec args: support up to 256 bytes per arg by @alban in #3726
+  * Bug Fixes
+    - trace_tcpconnect: Fix missing src and dst ip and port on
+      error by @burak-ok in #3517
+    - gadgets/tcpdrop: Fix mount ns filtering by @mqasimsarfraz in
+      #3632
+    - oci-handler: fix annotate param merge with prior config by
+      @flyth in #3696
+    - tools/monitoring: Remove the old dashboard by @mqasimsarfraz
+      in #3715
+    - Remove runcfanotify package by @alban in #3699
+  * Documentation Improvements
+    - Add ADOPTERS.md file by @alban in #3671
+    - Readme: Update the declarative config line in the features
+      list by @blixtra in #3685
+    - Readme: Update section to only show recent videos by @blixtra
+      in #3686
+  * Testing and Continue Integration
+    - ci: test image gadgets on different kernel versions by
+      @mastersans in #3631
+    - ci: added workflow to verify artifacthub tags by @4rivappa in
+      #3703
+
+-------------------------------------------------------------------
 Mon Nov 04 19:57:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.34.0:
