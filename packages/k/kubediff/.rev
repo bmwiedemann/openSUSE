@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50734073e6d654f4d95d40f6e00f82f7</srcmd5>
+    <version>0.1.7</version>
+    <time>1736279711</time>
+    <user>anag+factory</user>
+    <comment>new package kubediff: cli tool written in Rust is a wrapper around kubectl diff</comment>
+    <requestid>1235655</requestid>
+  </revision>
+</revisionlist>

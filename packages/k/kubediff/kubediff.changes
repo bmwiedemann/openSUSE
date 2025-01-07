@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Dec 27 13:26:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubediff: cli tool written in Rust is a wrapper
+  around kubectl diff
