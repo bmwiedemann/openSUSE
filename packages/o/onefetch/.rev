@@ -443,4 +443,28 @@
   Bump git-path to 0.10.11</comment>
     <requestid>1202097</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0c537331c300c789ef9d25f4d46a7ad6</srcmd5>
+    <version>2.23.1</version>
+    <time>1736279704</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.23.1:
+  * Fix version in man page
+
+- Update to 0.23.0:
+  New Features:
+  * add language support for OpenSCAD #1502
+  * add language support for Modelica #1262
+  * add language support for ATS #523
+  * add language support for CUDA #940
+  * add missing nerd fonts icons for some languages #1491
+  Chores:
+  * add Italian translation of README #1435
+  * add Polish translation of README #1444
+  * add Czech translation of READEME #1439
+  * update russian README #1478
+  * add script to preview/validate Nerd Fonts #1492
+  * add Powershell snippet to run onefetch automatically #1453</comment>
+    <requestid>1235632</requestid>
+  </revision>
 </revisionlist>
