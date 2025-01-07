@@ -1,7 +1,7 @@
 #
 # spec file for package thonny
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define desktop_file_name thonny
 
 Name:           thonny
-Version:        4.1.4
+Version:        4.1.7
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT

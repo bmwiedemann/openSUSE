@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan  7 03:33:51 UTC 2025 - ming li <mli@suse.com>
+
+- update to 4.1.7
+  * Fix PyPI package search. Thonny now bases search results on the
+    list of 5000 most popular PyPI packages. If you need to install
+    a less popular package, you need to enter the exact name, #3401
+  * Allow selecting ESP32-C6 family in esptool dialog, #3363
+  * Update org.thonny.Thonny.appdata.xml
+  * Update bundled esptool
+  * Fix missing dbus-next dependency in Linux
+
+- update to 4.1.6
+  * Make macOS installer work in Sequoia, #3283
+  * Add more entitlements for macOS app bundle (may fix problems
+    with programs using camera or microphone)
+  * New and updated languages thanks to the translators at POEditor
+  * Fix handling nulls in PyPI metadata (fixes installing some PyPI
+    packages)
+  * Work around dialogs getting stuck after minimizing windows, #3068
+  * Fix too eager instrumentation of MicroPython code, #3043
+  * Fix installing package from local file
+  * Update several dependencies 
+
+-------------------------------------------------------------------
 Sat May 25 14:50:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 4.1.4
