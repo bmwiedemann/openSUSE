@@ -132,4 +132,12 @@
   * Fix Ukrainian EDRPOU check digit calculation</comment>
     <requestid>1160435</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b6fea3dfe7a06368aff3b34915c07d52</srcmd5>
+    <version>1.20</version>
+    <time>1736279686</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235596</requestid>
+  </revision>
 </revisionlist>

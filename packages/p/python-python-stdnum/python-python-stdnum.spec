@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-stdnum
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           python-%{modname}
 Version:        1.20
 Release:        0
 Summary:        Python module to handle standardized numbers and codes
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 URL:            https://arthurdejong.org/python-stdnum/
 Source:         https://files.pythonhosted.org/packages/source/p/python-stdnum/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
