@@ -1,7 +1,7 @@
 #
 # spec file for package kubetui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           kubetui
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        A terminal UI for Kubernetes
 License:        MIT
 URL:            https://github.com/sarub0b0/kubetui
-Source0:        kubetui-%{version}.tar.zst
+Source0:        kubetui-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  cargo1.82

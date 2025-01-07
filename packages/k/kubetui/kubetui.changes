@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Jan 07 08:04:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- refactor "_service" file to not have both tarball and
+  obscpio archive
+- Update to version 1.6.0:
+  * feat: bump version to 1.6.0
+  * refactor: remove debug statements from code
+  * docs: update help command output
+  * docs: add customizable UI appearance with config file
+  * refactor(theme): rename selection to selected_item
+  * chore(example): enhance theme settings and translations
+  * feat(config): replace xdg crate with dirs crate
+  * feat(theme): add YAML and API dialog theme support
+  * feat(api_resources): add API theme configuration support
+  * feat(api_resources): add styled table for kube resources
+  * feat(event): add event highlight configuration
+  * feat(pod): add default pod highlight rules
+  * fix(theme): improve regex error handling
+  * feat(theme): enable custom pod table highlights
+  * refactor(poller): remove PollerBase struct
+  * feat(theme): add table header theme configuration
+  * feat(theme): add input form theme configuration
+  * feat(theme): apply theme to remaining widgets
+  * feat(theme): add theme support for multiple select widget
+  * feat(theme): add theme support for select widget
+  * feat: add help dialog theme configuration support
+  * feat: add style_to_ansi function to convert Style to ANSI
+  * feat(theme): add dialog theme configuration
+  * feat(ui/dialog): update Dialog and StyledClear widget
+  * feat(theme): add table filter form theme configuration
+  * feat(theme): add text theme configuration for search and
+    selection
+  * feat(ui): add theming support to Text widget
+  * feat(ui): add theming support to InputForm widget
+  * feat(theme): add widget theme support
+  * feat(theme): add header theme support
+  * feat(config): add environment variable support
+  * feat(theme): add support for custom tab theme configuration
+  * feat(config): add configuration file loading
+  * fix(ui): adjust tab padding and spacing
+  * fix(deps): update rust crate async-trait to v0.1.84 (#685)
+  * Add support for pretty-printed JSON logs (#674)
+  * chore(deps): update rust crate rstest to 0.24.0 (#684)
+  * feat(clipboard): copy to both primary and clipboard selections
+    on linux (#683)
+  * fix(deps): update rust crate serde to v1.0.217 (#682)
+  * fix(deps): update kube-rs (kube, kube-runtime, k8s-openapi)
+    (#679)
+  * fix(deps): update rust crate anyhow to v1.0.95 (#681)
+  * fix(deps): update rust crate thiserror to v2.0.9 (#678)
+  * fix(deps): update rust crate serde_json to v1.0.134 (#677)
+  * refactor: update lifetimes and impl blocks
+  * fix(help): update title in help dialog
+  * chore(cspell): update cspell.json word list
+  * chore: rename 'Api' to 'API' in titles
+  * chore(api_resources): rename list components to api
+  * fix(deps): update rust crate thiserror to v2.0.8 (#675)
+
+-------------------------------------------------------------------
 Sun Dec 15 15:34:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.5.4:
