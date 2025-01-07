@@ -1,7 +1,7 @@
 #
 # spec file for package python-spotipy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-spotipy
-Version:        2.24.0
+Version:        2.25.0
 Release:        0
 Summary:        Client for the Spotify Web API
 License:        MIT
@@ -25,8 +26,10 @@ URL:            https://spotipy.readthedocs.org/
 # https://github.com/plamere/spotipy/issues/454
 Source:         https://github.com/plamere/spotipy/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-redis >= 3.5.3
@@ -51,10 +54,10 @@ https://spotipy.readthedocs.io/
 %setup -q -n spotipy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
