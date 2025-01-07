@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  6 19:35:15 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.1
+  * Fixed issue #2306: Segmentation fault on each HTTP request when not
+    listening to debugging connections
+  * Fixed issue #2307: Segmentation fault due to a superglobal being a
+    reference while checking for triggers
+  * Fixed issue #2309: Installation on Windows with PHP PIE failing
+  * Fixed issue #2310: xdebug 3.4.0 crashes php8.1-fpm after script
+    execution
+
+-------------------------------------------------------------------
 Thu Nov 28 20:00:21 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.4.0
