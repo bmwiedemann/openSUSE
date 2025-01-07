@@ -18,13 +18,13 @@
 
 %global modprobe_d_files 50-avrdude_parport.conf
 %define         libname   lib%{name}
-%define         libsoname %{libname}1
+%define         libsoname %{libname}2
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
 Name:           avrdude
-Version:        7.3
+Version:        8.0
 Release:        0
 Summary:        Upload tool for AVR microcontrollers
 License:        GPL-2.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  libelf-devel
 BuildRequires:  libhidapi-devel
+BuildRequires:  libserialport-devel
 BuildRequires:  libusb-devel
 BuildRequires:  readline-devel
 Requires(post): /sbin/modprobe
@@ -57,6 +58,7 @@ in-system programmers. avrdude allows programming microcontrollers
 through a USB or parallel port of the computer.
 
 %package -n %{libsoname}
+Obsoletes:      %{libname}1 < %{version}
 Summary:        Shared library of %{name}
 
 %description -n %{libsoname}
@@ -144,7 +146,7 @@ done
 %dir %{_modprobedir}
 %doc NEWS README.md
 %license COPYING
-%{_bindir}/avrdude
+%{_bindir}/*
 %{_mandir}/*/*
 %if 0%{?suse_version} < 1600
 %{_sysconfdir}/avrdude.conf
@@ -155,7 +157,7 @@ done
 %{udevdir}
 
 %files devel
-%{_includedir}/libavrdude.h
+%{_includedir}/libavrdude*.h
 %{_libdir}/libavrdude.so
 
 %files -n %{libsoname}

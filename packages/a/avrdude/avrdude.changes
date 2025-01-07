@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan  5 11:43:31 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 8.0
+ * Major changes compared to the previous version:
+   - Support of multi-memory .hex/.srec files and memory lists #1828
+   - New terminal disasm command #1842
+   - GUI implementation of avrdude to demonstrate libavrdude #1714
+ * New devices supported:
+   - AVR16DU14, AVR16DU20, AVR16DU28, AVR16DU32
+   - AVR32DU14, AVR32DU20, AVR32DU28, AVR32DU32
+ * New programmers supported:
+   - serprog
+   - pickit5_updi
+ * New serial adapters supported:
+   -  ch342, ch344, ch347, ch9103
+
+- bump libavrdude soname
+
+- building with libserialport now
+
+-------------------------------------------------------------------
 Fri Jul  5 14:21:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set version appropriately in PKGBUILD: if it file is present, it
