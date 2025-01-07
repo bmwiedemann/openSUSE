@@ -34,4 +34,12 @@
     including upgrading to `cryptography==43.0.3`</comment>
     <requestid>1225983</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d9b9b943d334e9907862d8daba9948a</srcmd5>
+    <version>2.4.0</version>
+    <time>1736279702</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235637</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:34:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4.0
+  * An optional `hints` argument has been added to `generate_registration_options()`
+    to specify one or more categories of authenticators for the browser to prioritize
+    registration of. See `webauthn.helpers.structs.PublicKeyCredentialHint` for more
+    information (#234)
+
+-------------------------------------------------------------------
 Sat Nov 23 16:39:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
