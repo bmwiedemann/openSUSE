@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 31 16:17:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- switch to a new upstream url, as main repo is unmaintained
+- update to 1.0.1+196:
+  * this is just a general overview of all the changes since the fork
+    - switch to gtk4
+    - integrate a plugins manager
+    - a lot of bugfixes
+- add tests
+
+-------------------------------------------------------------------
 Tue Jun 20 13:33:36 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update vendored dependencies

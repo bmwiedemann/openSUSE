@@ -1,23 +1,20 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="versionprefix">0.2.0+git</param>
-    <param name="url">https://github.com/daa84/neovim-gtk</param>
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
-    <param name="exclude">.git*</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">Matej Cepl &lt;mcepl@cepl.eu&gt;</param>
+    <param name="url">https://github.com/Lyude/neovim-gtk</param>
+    <param name="revision">main</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="set_version" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
      <param name="srcdir">neovim-gtk</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
-  </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">neovim-gtk</param>
   </service>
 </services>
