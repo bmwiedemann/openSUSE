@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-branding-Aeon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 SUSE Software Solutions GmbH
 #
 # All modifications and additions to the file contributed by third parties

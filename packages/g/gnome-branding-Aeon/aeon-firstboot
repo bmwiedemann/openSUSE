@@ -40,6 +40,7 @@ customizeOptions() {
 TRUE org.mozilla.firefox "Mozilla Firefox" "Default Web Browser" \
 TRUE org.gnome.TextEditor "Text Editor" "Basic Text Editor" \
 TRUE app.devsuite.Ptyxis "Ptyxis" "Advanced Terminal Emulator" \
+TRUE page.tesk.Refine "Refine" "Tweak advanced settings in GNOME" \
 FALSE com.mattjakeman.ExtensionManager "Extension Manager" "Shell Extensions Manager" \
 FALSE com.github.tchx84.Flatseal "Flatseal" "Application Permissions Manager" \
 FALSE com.valvesoftware.Steam "Steam" "Steam Games Launcher" \
@@ -50,7 +51,6 @@ FALSE org.gnome.Showtime "Showtime" "Basic Video Player" \
 FALSE io.github.celluloid_player.Celluloid "Celluloid" "Advanced Video Player" \
 FALSE org.telegram.desktop "Telegram Desktop" "Telegram Messaging Client" \
 FALSE org.libreoffice.LibreOffice "LibreOffice" "LibreOffice Office Suite" \
-FALSE org.gimp.GIMP "GNU Image Manipulation Program" "Image Editor" \
 FALSE org.gnome.Builder "Builder" "Graphical IDE" \
 FALSE io.github.dvlv.boxbuddyrs "BoxBuddy" "Distrobox Container Manager" \
 FALSE org.gnome.Boxes "Boxes" "Virtualisation" \
