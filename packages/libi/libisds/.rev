@@ -116,4 +116,12 @@
 - drop tests-Fix-building-with-GCC-10.patch (upstream)</comment>
     <requestid>1039781</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f72d4ca25d1932b4c33b40250c875b70</srcmd5>
+    <version>0.11.2</version>
+    <time>1736279688</time>
+    <user>anag+factory</user>
+    <comment>- libisds-build-fix.patch:  fix build with gcc14</comment>
+    <requestid>1235607</requestid>
+  </revision>
 </revisionlist>

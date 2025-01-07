@@ -1,0 +1,12 @@
+Index: libisds-0.11.2/test/simline/service.c
+===================================================================
+--- libisds-0.11.2.orig/test/simline/service.c
++++ libisds-0.11.2/test/simline/service.c
+@@ -5,6 +5,7 @@
+ #include "services.h"
+ #include "system.h"
+ #include <string.h>
++#include <stdlib.h>
+ #include <stdint.h>     /* For intmax_t */
+ #include <inttypes.h>   /* For PRIdMAX */
+ #include <ctype.h>      /* for isdigit() */

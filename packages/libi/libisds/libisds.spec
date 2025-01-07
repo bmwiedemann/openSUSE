@@ -1,7 +1,7 @@
 #
 # spec file for package libisds
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            http://xpisar.wz.cz/libisds/
 Source0:        http://xpisar.wz.cz/%{name}/dist/%{name}-%{version}.tar.xz
 Source1:        http://xpisar.wz.cz/%{name}/dist/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         libisds-build-fix.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gpg2
 BuildRequires:  libgcrypt-devel
