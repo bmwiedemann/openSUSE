@@ -1,8 +1,8 @@
 #
 # spec file for package firefox-esr
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2006-2024 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2006-2025 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.5.1
-%define orig_version   128.5.1
+%define mainver        %major.6.0
+%define orig_version   128.6.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1

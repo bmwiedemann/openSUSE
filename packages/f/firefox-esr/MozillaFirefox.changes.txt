@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:24:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 128.6.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 128.6.0
+  https://www.mozilla.org/security/advisories/mfsa2025-02
+  MFSA 2025-02 (boo#1234991)
+  * CVE-2025-0237 (bmo#1915257)
+    WebChannel APIs susceptible to confused deputy attack
+  * CVE-2025-0238 (bmo#1915535)
+    Use-after-free when breaking lines in text
+  * CVE-2025-0239 (bmo#1929156)
+    Alt-Svc ALPN validation failure when redirected
+  * CVE-2025-0240 (bmo#1929623)
+    Compartment mismatch when parsing JavaScript JSON module
+  * CVE-2025-0241 (bmo#1933023)
+    Memory corruption when using JavaScript Text Segmentation
+  * CVE-2025-0242 (bmo#1874523, bmo#1926454, bmo#1931873,
+    bmo#1932169)
+    Memory safety bugs fixed in Firefox 134, Thunderbird 134,
+    Firefox ESR 115.19, Firefox ESR 128.6, Thunderbird 115.19,
+    and Thunderbird 128.6
+  * CVE-2025-0243 (bmo#1827142, bmo#1932783)
+    Memory safety bugs fixed in Firefox 134, Thunderbird 134,
+    Firefox ESR 128.6, and Thunderbird 128.6
+
+-------------------------------------------------------------------
+Fri Dec 13 08:39:09 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 128.5.2 ESR
+  * Fixed: Fixed a crash experienced by Windows users with Qihoo
+    360 Total Security Antivirus software installed (bmo#1934258)
+
+-------------------------------------------------------------------
 Wed Dec 11 15:24:36 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add MozillaFirefox.changes.txt as a hard link to firefox-esr.changes

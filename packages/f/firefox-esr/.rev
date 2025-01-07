@@ -7,4 +7,12 @@
     <comment>Introduce Mozilla Firefox ESR as a new package &quot;firefox-esr&quot; to Factory; this package happily co-exists with the real &quot;MozillaFirefox&quot;.</comment>
     <requestid>1230315</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>687b54dc66a46b8c8d819c9247bedfc7</srcmd5>
+    <version>128.6.0</version>
+    <time>1736279719</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235674</requestid>
+  </revision>
 </revisionlist>
