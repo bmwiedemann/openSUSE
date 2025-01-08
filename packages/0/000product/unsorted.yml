@@ -411,6 +411,7 @@ unsorted:
   - actkbd 
   - actuated-cli 
   - adaptivecpp 
+  - adaptivecpp-devel 
   - adaptx 
   - adaptx-doc 
   - adaptx-javadoc 
@@ -4464,6 +4465,7 @@ unsorted:
   - fmt-10-devel 
   - fmt-9-devel 
   - fmt-devel 
+  - fmtools 
   - fnm 
   - fnm-bash-completion 
   - fnm-fish-completion 
@@ -7075,6 +7077,13 @@ unsorted:
   - ghostscript-fonts 
   - ghostscript-mini 
   - ghostscript-mini-devel 
+  - ghostty 
+  - ghostty-bash-completion 
+  - ghostty-doc 
+  - ghostty-fish-completion 
+  - ghostty-neovim 
+  - ghostty-vim 
+  - ghostty-zsh-completion 
   - ghostview 
   - ghostwriter 
   - ghostwriter-lang 
@@ -10640,6 +10649,7 @@ unsorted:
   - kubectl-who-can 
   - kubectx 
   - kubecui 
+  - kubediff 
   - kubefirst 
   - kubefirst-bash-completion 
   - kubefirst-fish-completion 
@@ -10659,7 +10669,6 @@ unsorted:
   - kubernetes-apiserver-minus2 
   - kubernetes-apiserver-minus3 
   - kubernetes-client 
-  - kubernetes-client-fish-completion 
   - kubernetes-controller-manager 
   - kubernetes-controller-manager-minus1 
   - kubernetes-controller-manager-minus2 
@@ -11856,6 +11865,12 @@ unsorted:
   - libacl-devel-32bit 
   - libacm-1_3 
   - libacm-devel 
+  - libacpp-bitcode 
+  - libacpp-clang 
+  - libacpp-common 
+  - libacpp-llvm-to-backend 
+  - libacpp-rt 
+  - libacpp-rt-omp 
   - libacr38ucontrol0 
   - libad9361-0 
   - libad9361-iio-devel 
@@ -11868,9 +11883,6 @@ unsorted:
   - libada14-32bit 
   - libada7 
   - libada7-32bit 
-  - libadaptivecpp 
-  - libadaptivecpp-devel 
-  - libadaptivecpp-omp 
   - libaddrxlat-devel 
   - libaddrxlat3 
   - libadios2-2_10 
@@ -12095,7 +12107,7 @@ unsorted:
   - libavfs0 
   - libavif-devel 
   - libavif16-32bit 
-  - libavrdude1 
+  - libavrdude2 
   - libavresample4_0 
   - libavresample4_0-32bit 
   - libavtp-devel 
@@ -12417,8 +12429,8 @@ unsorted:
   - libbz2-1-32bit 
   - libbz2-devel 
   - libbz2-devel-32bit 
-  - libbzip3-0 
-  - libbzip3-0-x86-64-v3 
+  - libbzip3-1 
+  - libbzip3-1-x86-64-v3 
   - libbzrtp0 
   - libc++-devel 
   - libc++1 
@@ -15294,7 +15306,7 @@ unsorted:
   - libpapi_7_1_0-hpc 
   - libpappl1 
   - libparanoia1_0 
-  - libparaview5_12 
+  - libparaview5_13 
   - libpari-gmp-tls9 
   - libparlatype-devel 
   - libparlatype7 
@@ -16102,6 +16114,7 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit 
+  - libruby3_3-3_3 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -16817,6 +16830,11 @@ unsorted:
   - libusbmuxd-2_0-6-32bit 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
+  - libuser 
+  - libuser-devel 
+  - libuser-docs 
+  - libuser-lang 
+  - libuser1 
   - libusrp-devel 
   - libusrp1 
   - libusrsctp2 
@@ -24061,6 +24079,7 @@ unsorted:
   - python3-libsoc 
   - python3-libstoragemgmt 
   - python3-libtorrent-rasterbar 
+  - python3-libuser 
   - python3-libvoikko 
   - python3-lilv 
   - python3-linkchecker 
@@ -24200,7 +24219,6 @@ unsorted:
   - python3-virt-scenario 
   - python3-virt-tuner 
   - python3-virtualbox 
-  - python3-virtualenvwrapper 
   - python3-vtk 
   - python3-vtk-openmpi4 
   - python3-xcb-proto-devel 
@@ -27733,6 +27751,7 @@ unsorted:
   - python310-virtkey 
   - python310-virtualenv 
   - python310-virtualenv-clone 
+  - python310-virtualenvwrapper 
   - python310-virtue 
   - python310-visitor 
   - python310-vispy 
@@ -31293,6 +31312,7 @@ unsorted:
   - python311-virtkey 
   - python311-virtualenv 
   - python311-virtualenv-clone 
+  - python311-virtualenvwrapper 
   - python311-virtue 
   - python311-visitor 
   - python311-vispy 
@@ -34978,6 +34998,7 @@ unsorted:
   - python312-virtkey 
   - python312-virtualenv 
   - python312-virtualenv-clone 
+  - python312-virtualenvwrapper 
   - python312-virtue 
   - python312-visitor 
   - python312-vispy 
@@ -38670,6 +38691,7 @@ unsorted:
   - python313-virtkey 
   - python313-virtualenv 
   - python313-virtualenv-clone 
+  - python313-virtualenvwrapper 
   - python313-virtue 
   - python313-visitor 
   - python313-vispy 
@@ -39980,350 +40002,354 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
+  - ruby3.3 
   - ruby3.3-devel 
   - ruby3.3-devel-extra 
   - ruby3.3-doc 
   - ruby3.3-doc-ri 
-  - ruby3.3-rubygem-Ascii85 
-  - ruby3.3-rubygem-actioncable-7.0 
-  - ruby3.3-rubygem-actioncable-8.0 
-  - ruby3.3-rubygem-actionmailbox-7.0 
-  - ruby3.3-rubygem-actionmailbox-8.0 
-  - ruby3.3-rubygem-actionmailer-7.0 
-  - ruby3.3-rubygem-actionmailer-8.0 
-  - ruby3.3-rubygem-actionpack-7.0 
-  - ruby3.3-rubygem-actionpack-8.0 
-  - ruby3.3-rubygem-actiontext-7.0 
-  - ruby3.3-rubygem-actiontext-8.0 
-  - ruby3.3-rubygem-actionview-7.0 
-  - ruby3.3-rubygem-actionview-8.0 
-  - ruby3.3-rubygem-activejob-7.0 
-  - ruby3.3-rubygem-activejob-8.0 
-  - ruby3.3-rubygem-activemodel-7.0 
-  - ruby3.3-rubygem-activemodel-8.0 
-  - ruby3.3-rubygem-activerecord-7.0 
-  - ruby3.3-rubygem-activerecord-8.0 
-  - ruby3.3-rubygem-activestorage-7.0 
-  - ruby3.3-rubygem-activestorage-8.0 
-  - ruby3.3-rubygem-activesupport-7.0 
-  - ruby3.3-rubygem-activesupport-8.0 
-  - ruby3.3-rubygem-addressable 
-  - ruby3.3-rubygem-aes_key_wrap 
-  - ruby3.3-rubygem-afm 
-  - ruby3.3-rubygem-agama-yast 
-  - ruby3.3-rubygem-amq-protocol 
-  - ruby3.3-rubygem-arel 
-  - ruby3.3-rubygem-asciidoctor 
-  - ruby3.3-rubygem-ast 
-  - ruby3.3-rubygem-attr_required 
-  - ruby3.3-rubygem-autoprefixer-rails 
-  - ruby3.3-rubygem-axiom-types 
-  - ruby3.3-rubygem-backport 
-  - ruby3.3-rubygem-base32 
-  - ruby3.3-rubygem-bcrypt 
-  - ruby3.3-rubygem-bcrypt_pbkdf 
-  - ruby3.3-rubygem-benchmark 
-  - ruby3.3-rubygem-bindata 
-  - ruby3.3-rubygem-bindex 
-  - ruby3.3-rubygem-binding_of_caller 
-  - ruby3.3-rubygem-bootsnap 
-  - ruby3.3-rubygem-builder 
-  - ruby3.3-rubygem-bundler 
-  - ruby3.3-rubygem-bundler-audit 
-  - ruby3.3-rubygem-byebug 
-  - ruby3.3-rubygem-changelog_generator 
-  - ruby3.3-rubygem-chef-utils 
-  - ruby3.3-rubygem-childprocess 
-  - ruby3.3-rubygem-coderay 
-  - ruby3.3-rubygem-coercible 
-  - ruby3.3-rubygem-coffee-rails 
-  - ruby3.3-rubygem-coffee-script 
-  - ruby3.3-rubygem-coffee-script-source 
-  - ruby3.3-rubygem-colorator 
-  - ruby3.3-rubygem-concurrent-ruby 
-  - ruby3.3-rubygem-connection_pool 
-  - ruby3.3-rubygem-cool.io 
-  - ruby3.3-rubygem-crack 
-  - ruby3.3-rubygem-crass 
-  - ruby3.3-rubygem-cri 
-  - ruby3.3-rubygem-css_parser 
-  - ruby3.3-rubygem-csv 
-  - ruby3.3-rubygem-debase-ruby_core_source 
-  - ruby3.3-rubygem-debug_inspector 
-  - ruby3.3-rubygem-delayed_job 
-  - ruby3.3-rubygem-delayed_job_active_record 
-  - ruby3.3-rubygem-descendants_tracker 
-  - ruby3.3-rubygem-diff-lcs 
-  - ruby3.3-rubygem-diffy 
-  - ruby3.3-rubygem-docile 
-  - ruby3.3-rubygem-docker-api 
-  - ruby3.3-rubygem-domain_name 
-  - ruby3.3-rubygem-dotenv 
-  - ruby3.3-rubygem-down 
-  - ruby3.3-rubygem-dry-configurable 
-  - ruby3.3-rubygem-dry-container 
-  - ruby3.3-rubygem-dry-core 
-  - ruby3.3-rubygem-dry-equalizer 
-  - ruby3.3-rubygem-dry-inflector 
-  - ruby3.3-rubygem-dry-logic 
-  - ruby3.3-rubygem-dry-types 
-  - ruby3.3-rubygem-ed25519 
-  - ruby3.3-rubygem-em-websocket 
-  - ruby3.3-rubygem-equalizer 
-  - ruby3.3-rubygem-erubi 
-  - ruby3.3-rubygem-erubis 
-  - ruby3.3-rubygem-et-orbi 
-  - ruby3.3-rubygem-eventmachine 
-  - ruby3.3-rubygem-exception_notification 
-  - ruby3.3-rubygem-excon 
-  - ruby3.3-rubygem-execjs 
-  - ruby3.3-rubygem-fake_ftp 
-  - ruby3.3-rubygem-faraday 
-  - ruby3.3-rubygem-faraday-follow_redirects 
-  - ruby3.3-rubygem-faraday-net_http 
-  - ruby3.3-rubygem-fast_gettext-1.1 
-  - ruby3.3-rubygem-ffi 
-  - ruby3.3-rubygem-ffi-compiler 
-  - ruby3.3-rubygem-flog 
-  - ruby3.3-rubygem-fluentd 
-  - ruby3.3-rubygem-fog-core 
-  - ruby3.3-rubygem-fog-json 
-  - ruby3.3-rubygem-fog-libvirt 
-  - ruby3.3-rubygem-fog-xml 
-  - ruby3.3-rubygem-font-awesome-rails 
-  - ruby3.3-rubygem-formatador 
-  - ruby3.3-rubygem-forwardable-extended 
-  - ruby3.3-rubygem-fugit 
-  - ruby3.3-rubygem-get_process_mem 
-  - ruby3.3-rubygem-gettext 
-  - ruby3.3-rubygem-gettext_i18n_rails 
-  - ruby3.3-rubygem-gettext_i18n_rails_js 
-  - ruby3.3-rubygem-gli 
-  - ruby3.3-rubygem-globalid 
-  - ruby3.3-rubygem-google-protobuf 
-  - ruby3.3-rubygem-googleapis-common-protos-types 
-  - ruby3.3-rubygem-gpgme 
-  - ruby3.3-rubygem-grpc 
-  - ruby3.3-rubygem-gssapi 
-  - ruby3.3-rubygem-gyoku 
-  - ruby3.3-rubygem-haml 
-  - ruby3.3-rubygem-haml-rails 
-  - ruby3.3-rubygem-hashdiff 
-  - ruby3.3-rubygem-hashery 
-  - ruby3.3-rubygem-hashicorp-checkpoint 
-  - ruby3.3-rubygem-hashie 
-  - ruby3.3-rubygem-highline 
-  - ruby3.3-rubygem-hitimes 
-  - ruby3.3-rubygem-hoe 
-  - ruby3.3-rubygem-html2haml 
-  - ruby3.3-rubygem-http-cookie 
-  - ruby3.3-rubygem-http-form_data 
-  - ruby3.3-rubygem-http_parser.rb 
-  - ruby3.3-rubygem-httpclient 
-  - ruby3.3-rubygem-i18n 
-  - ruby3.3-rubygem-ice_nine 
-  - ruby3.3-rubygem-importmap-rails 
-  - ruby3.3-rubygem-inifile 
-  - ruby3.3-rubygem-jaro_winkler 
-  - ruby3.3-rubygem-jbuilder 
-  - ruby3.3-rubygem-jquery-rails 
-  - ruby3.3-rubygem-js-routes 
-  - ruby3.3-rubygem-jsbundling-rails 
-  - ruby3.3-rubygem-json 
-  - ruby3.3-rubygem-json-jwt 
-  - ruby3.3-rubygem-json-schema 
-  - ruby3.3-rubygem-json_pure 
-  - ruby3.3-rubygem-jwt 
-  - ruby3.3-rubygem-kamal 
-  - ruby3.3-rubygem-kgio 
-  - ruby3.3-rubygem-kramdown 
-  - ruby3.3-rubygem-kramdown-parser-gfm 
-  - ruby3.3-rubygem-kredis 
-  - ruby3.3-rubygem-language_server-protocol 
-  - ruby3.3-rubygem-launchy 
-  - ruby3.3-rubygem-libyui-rake 
-  - ruby3.3-rubygem-lightbox2 
-  - ruby3.3-rubygem-liquid 
-  - ruby3.3-rubygem-listen 
-  - ruby3.3-rubygem-little-plugger 
-  - ruby3.3-rubygem-llhttp-ffi 
-  - ruby3.3-rubygem-locale 
-  - ruby3.3-rubygem-log4r 
-  - ruby3.3-rubygem-logging 
-  - ruby3.3-rubygem-loofah 
-  - ruby3.3-rubygem-mail 
-  - ruby3.3-rubygem-manpages 
-  - ruby3.3-rubygem-marcel 
-  - ruby3.3-rubygem-mercenary 
-  - ruby3.3-rubygem-method_source 
-  - ruby3.3-rubygem-micromachine 
-  - ruby3.3-rubygem-mime 
-  - ruby3.3-rubygem-mime-types 
-  - ruby3.3-rubygem-mime-types-data 
-  - ruby3.3-rubygem-mimemagic 
-  - ruby3.3-rubygem-mini_magick 
-  - ruby3.3-rubygem-mini_mime 
-  - ruby3.3-rubygem-mini_portile2 
-  - ruby3.3-rubygem-minitar 
-  - ruby3.3-rubygem-mixlib-authentication 
-  - ruby3.3-rubygem-mixlib-cli 
-  - ruby3.3-rubygem-mixlib-config 
-  - ruby3.3-rubygem-mixlib-shellout 
-  - ruby3.3-rubygem-mocha 
-  - ruby3.3-rubygem-moneta 
-  - ruby3.3-rubygem-msgpack 
-  - ruby3.3-rubygem-multi_json 
-  - ruby3.3-rubygem-multi_xml 
-  - ruby3.3-rubygem-multipart-post 
-  - ruby3.3-rubygem-mustache 
-  - ruby3.3-rubygem-mustermann 
-  - ruby3.3-rubygem-mustermann-grape 
-  - ruby3.3-rubygem-mysql2 
-  - ruby3.3-rubygem-net-ldap 
-  - ruby3.3-rubygem-net-scp 
-  - ruby3.3-rubygem-net-sftp 
-  - ruby3.3-rubygem-net-ssh 
-  - ruby3.3-rubygem-netrc 
-  - ruby3.3-rubygem-nio4r 
-  - ruby3.3-rubygem-nori 
-  - ruby3.3-rubygem-oauth2 
-  - ruby3.3-rubygem-omniauth 
-  - ruby3.3-rubygem-omniauth-oauth2 
-  - ruby3.3-rubygem-optimist 
-  - ruby3.3-rubygem-orm_adapter 
-  - ruby3.3-rubygem-os 
-  - ruby3.3-rubygem-packaging_rake_tasks 
-  - ruby3.3-rubygem-parallel 
-  - ruby3.3-rubygem-parallel_tests 
-  - ruby3.3-rubygem-parser 
-  - ruby3.3-rubygem-passenger 
-  - ruby3.3-rubygem-path_expander 
-  - ruby3.3-rubygem-pg 
-  - ruby3.3-rubygem-pkg-config 
-  - ruby3.3-rubygem-po_to_json 
-  - ruby3.3-rubygem-propshaft 
-  - ruby3.3-rubygem-pry 
-  - ruby3.3-rubygem-pry-doc 
-  - ruby3.3-rubygem-public_suffix 
-  - ruby3.3-rubygem-puma 
-  - ruby3.3-rubygem-puma_worker_killer 
-  - ruby3.3-rubygem-pundit 
-  - ruby3.3-rubygem-raabro 
-  - ruby3.3-rubygem-rack 
-  - ruby3.3-rubygem-rack-2.2 
-  - ruby3.3-rubygem-rack-accept 
-  - ruby3.3-rubygem-rack-oauth2 
-  - ruby3.3-rubygem-rack-protection 
-  - ruby3.3-rubygem-rack-proxy 
-  - ruby3.3-rubygem-rack-session 
-  - ruby3.3-rubygem-rack-test 
-  - ruby3.3-rubygem-rack-test-0_6 
-  - ruby3.3-rubygem-rackup 
-  - ruby3.3-rubygem-rails-7.0 
-  - ruby3.3-rubygem-rails-8.0 
-  - ruby3.3-rubygem-rails-dom-testing 
-  - ruby3.3-rubygem-rails-html-sanitizer 
-  - ruby3.3-rubygem-rails-i18n 
-  - ruby3.3-rubygem-railties-7.0 
-  - ruby3.3-rubygem-railties-8.0 
-  - ruby3.3-rubygem-rainbow 
-  - ruby3.3-rubygem-rake-compiler 
-  - ruby3.3-rubygem-rb-fsevent 
-  - ruby3.3-rubygem-rb-inotify 
-  - ruby3.3-rubygem-redcarpet 
-  - ruby3.3-rubygem-redis 
-  - ruby3.3-rubygem-redis-client 
-  - ruby3.3-rubygem-regexp_parser 
-  - ruby3.3-rubygem-reline 
-  - ruby3.3-rubygem-reverse_markdown 
-  - ruby3.3-rubygem-ronn-ng 
-  - ruby3.3-rubygem-rouge 
-  - ruby3.3-rubygem-rpm 
-  - ruby3.3-rubygem-rspec 
-  - ruby3.3-rubygem-rspec-core 
-  - ruby3.3-rubygem-rspec-expectations 
-  - ruby3.3-rubygem-rspec-its 
-  - ruby3.3-rubygem-rspec-mocks 
-  - ruby3.3-rubygem-rspec-rails 
-  - ruby3.3-rubygem-rspec-support 
-  - ruby3.3-rubygem-rubocop 
-  - ruby3.3-rubygem-rubocop-ast 
-  - ruby3.3-rubygem-ruby-libvirt 
-  - ruby3.3-rubygem-ruby-openid 
-  - ruby3.3-rubygem-ruby-progressbar 
-  - ruby3.3-rubygem-ruby-vips 
-  - ruby3.3-rubygem-ruby2_keywords 
-  - ruby3.3-rubygem-ruby_parser 
-  - ruby3.3-rubygem-rubyntlm 
-  - ruby3.3-rubygem-rubyzip 
-  - ruby3.3-rubygem-safe_yaml 
-  - ruby3.3-rubygem-sass 
-  - ruby3.3-rubygem-sass-listen 
-  - ruby3.3-rubygem-sass-rails 
-  - ruby3.3-rubygem-sass-rails-5.1 
-  - ruby3.3-rubygem-sassc 
-  - ruby3.3-rubygem-sassc-rails 
-  - ruby3.3-rubygem-securerandom 
-  - ruby3.3-rubygem-semantic_range 
-  - ruby3.3-rubygem-serverengine 
-  - ruby3.3-rubygem-sexp_processor 
-  - ruby3.3-rubygem-sigdump 
-  - ruby3.3-rubygem-simplecov 
-  - ruby3.3-rubygem-simplecov-html 
-  - ruby3.3-rubygem-simplecov_json_formatter 
-  - ruby3.3-rubygem-slim 
-  - ruby3.3-rubygem-slop 
-  - ruby3.3-rubygem-snaky_hash 
-  - ruby3.3-rubygem-solid_cable 
-  - ruby3.3-rubygem-solid_cache 
-  - ruby3.3-rubygem-solid_queue 
-  - ruby3.3-rubygem-sorbet-runtime 
-  - ruby3.3-rubygem-spring 
-  - ruby3.3-rubygem-sprockets 
-  - ruby3.3-rubygem-sprockets-3.7 
-  - ruby3.3-rubygem-sprockets-helpers 
-  - ruby3.3-rubygem-sprockets-rails 
-  - ruby3.3-rubygem-sqlite3 
-  - ruby3.3-rubygem-sshkit 
-  - ruby3.3-rubygem-stimulus-rails 
-  - ruby3.3-rubygem-strptime 
-  - ruby3.3-rubygem-temple 
-  - ruby3.3-rubygem-text 
-  - ruby3.3-rubygem-thor 
-  - ruby3.3-rubygem-thread_safe 
-  - ruby3.3-rubygem-tilt 
-  - ruby3.3-rubygem-timeout 
-  - ruby3.3-rubygem-tomlrb 
-  - ruby3.3-rubygem-turbo-rails 
-  - ruby3.3-rubygem-turbolinks 
-  - ruby3.3-rubygem-turbolinks-source 
-  - ruby3.3-rubygem-tzinfo 
-  - ruby3.3-rubygem-tzinfo-data 
-  - ruby3.3-rubygem-uglifier 
-  - ruby3.3-rubygem-unf 
-  - ruby3.3-rubygem-unf_ext 
-  - ruby3.3-rubygem-unicode-display_width 
-  - ruby3.3-rubygem-uri 
-  - ruby3.3-rubygem-useragent 
-  - ruby3.3-rubygem-validate_email 
-  - ruby3.3-rubygem-validate_url 
-  - ruby3.3-rubygem-version_gem 
-  - ruby3.3-rubygem-virtus 
-  - ruby3.3-rubygem-web-console 
-  - ruby3.3-rubygem-webmock 
-  - ruby3.3-rubygem-webpacker 
-  - ruby3.3-rubygem-webrick 
-  - ruby3.3-rubygem-websocket 
-  - ruby3.3-rubygem-websocket-driver 
-  - ruby3.3-rubygem-websocket-extensions 
-  - ruby3.3-rubygem-xdg 
-  - ruby3.3-rubygem-xml-simple 
-  - ruby3.3-rubygem-xmlhash 
-  - ruby3.3-rubygem-xmlrpc 
-  - ruby3.3-rubygem-yajl-ruby 
-  - ruby3.3-rubygem-yard 
-  - ruby3.3-rubygem-yast-rake 
-  - ruby3.3-rubygem-zeitwerk 
+  - ruby3.4-devel 
+  - ruby3.4-devel-extra 
+  - ruby3.4-doc 
+  - ruby3.4-doc-ri 
+  - ruby3.4-rubygem-Ascii85 
+  - ruby3.4-rubygem-actioncable-7.0 
+  - ruby3.4-rubygem-actioncable-8.0 
+  - ruby3.4-rubygem-actionmailbox-7.0 
+  - ruby3.4-rubygem-actionmailbox-8.0 
+  - ruby3.4-rubygem-actionmailer-7.0 
+  - ruby3.4-rubygem-actionmailer-8.0 
+  - ruby3.4-rubygem-actionpack-7.0 
+  - ruby3.4-rubygem-actionpack-8.0 
+  - ruby3.4-rubygem-actiontext-7.0 
+  - ruby3.4-rubygem-actiontext-8.0 
+  - ruby3.4-rubygem-actionview-7.0 
+  - ruby3.4-rubygem-actionview-8.0 
+  - ruby3.4-rubygem-activejob-7.0 
+  - ruby3.4-rubygem-activejob-8.0 
+  - ruby3.4-rubygem-activemodel-7.0 
+  - ruby3.4-rubygem-activemodel-8.0 
+  - ruby3.4-rubygem-activerecord-7.0 
+  - ruby3.4-rubygem-activerecord-8.0 
+  - ruby3.4-rubygem-activestorage-7.0 
+  - ruby3.4-rubygem-activestorage-8.0 
+  - ruby3.4-rubygem-activesupport-7.0 
+  - ruby3.4-rubygem-activesupport-8.0 
+  - ruby3.4-rubygem-addressable 
+  - ruby3.4-rubygem-aes_key_wrap 
+  - ruby3.4-rubygem-afm 
+  - ruby3.4-rubygem-agama-yast 
+  - ruby3.4-rubygem-amq-protocol 
+  - ruby3.4-rubygem-arel 
+  - ruby3.4-rubygem-asciidoctor 
+  - ruby3.4-rubygem-ast 
+  - ruby3.4-rubygem-attr_required 
+  - ruby3.4-rubygem-autoprefixer-rails 
+  - ruby3.4-rubygem-axiom-types 
+  - ruby3.4-rubygem-backport 
+  - ruby3.4-rubygem-base32 
+  - ruby3.4-rubygem-bcrypt 
+  - ruby3.4-rubygem-bcrypt_pbkdf 
+  - ruby3.4-rubygem-benchmark 
+  - ruby3.4-rubygem-bindata 
+  - ruby3.4-rubygem-bindex 
+  - ruby3.4-rubygem-binding_of_caller 
+  - ruby3.4-rubygem-bootsnap 
+  - ruby3.4-rubygem-builder 
+  - ruby3.4-rubygem-bundler 
+  - ruby3.4-rubygem-bundler-audit 
+  - ruby3.4-rubygem-byebug 
+  - ruby3.4-rubygem-changelog_generator 
+  - ruby3.4-rubygem-chef-utils 
+  - ruby3.4-rubygem-childprocess 
+  - ruby3.4-rubygem-coderay 
+  - ruby3.4-rubygem-coercible 
+  - ruby3.4-rubygem-coffee-rails 
+  - ruby3.4-rubygem-coffee-script 
+  - ruby3.4-rubygem-coffee-script-source 
+  - ruby3.4-rubygem-colorator 
+  - ruby3.4-rubygem-concurrent-ruby 
+  - ruby3.4-rubygem-connection_pool 
+  - ruby3.4-rubygem-cool.io 
+  - ruby3.4-rubygem-crack 
+  - ruby3.4-rubygem-crass 
+  - ruby3.4-rubygem-cri 
+  - ruby3.4-rubygem-css_parser 
+  - ruby3.4-rubygem-csv 
+  - ruby3.4-rubygem-debase-ruby_core_source 
+  - ruby3.4-rubygem-debug_inspector 
+  - ruby3.4-rubygem-delayed_job 
+  - ruby3.4-rubygem-delayed_job_active_record 
+  - ruby3.4-rubygem-descendants_tracker 
+  - ruby3.4-rubygem-diff-lcs 
+  - ruby3.4-rubygem-diffy 
+  - ruby3.4-rubygem-docile 
+  - ruby3.4-rubygem-docker-api 
+  - ruby3.4-rubygem-domain_name 
+  - ruby3.4-rubygem-dotenv 
+  - ruby3.4-rubygem-down 
+  - ruby3.4-rubygem-dry-configurable 
+  - ruby3.4-rubygem-dry-container 
+  - ruby3.4-rubygem-dry-core 
+  - ruby3.4-rubygem-dry-equalizer 
+  - ruby3.4-rubygem-dry-inflector 
+  - ruby3.4-rubygem-dry-logic 
+  - ruby3.4-rubygem-dry-types 
+  - ruby3.4-rubygem-ed25519 
+  - ruby3.4-rubygem-em-websocket 
+  - ruby3.4-rubygem-equalizer 
+  - ruby3.4-rubygem-erubi 
+  - ruby3.4-rubygem-erubis 
+  - ruby3.4-rubygem-et-orbi 
+  - ruby3.4-rubygem-eventmachine 
+  - ruby3.4-rubygem-exception_notification 
+  - ruby3.4-rubygem-excon 
+  - ruby3.4-rubygem-execjs 
+  - ruby3.4-rubygem-fake_ftp 
+  - ruby3.4-rubygem-faraday 
+  - ruby3.4-rubygem-faraday-follow_redirects 
+  - ruby3.4-rubygem-faraday-net_http 
+  - ruby3.4-rubygem-fast_gettext-1.1 
+  - ruby3.4-rubygem-ffi 
+  - ruby3.4-rubygem-ffi-compiler 
+  - ruby3.4-rubygem-flog 
+  - ruby3.4-rubygem-fluentd 
+  - ruby3.4-rubygem-fog-core 
+  - ruby3.4-rubygem-fog-json 
+  - ruby3.4-rubygem-fog-libvirt 
+  - ruby3.4-rubygem-fog-xml 
+  - ruby3.4-rubygem-font-awesome-rails 
+  - ruby3.4-rubygem-formatador 
+  - ruby3.4-rubygem-forwardable-extended 
+  - ruby3.4-rubygem-fugit 
+  - ruby3.4-rubygem-get_process_mem 
+  - ruby3.4-rubygem-gettext 
+  - ruby3.4-rubygem-gettext_i18n_rails 
+  - ruby3.4-rubygem-gettext_i18n_rails_js 
+  - ruby3.4-rubygem-gli 
+  - ruby3.4-rubygem-globalid 
+  - ruby3.4-rubygem-google-protobuf 
+  - ruby3.4-rubygem-googleapis-common-protos-types 
+  - ruby3.4-rubygem-gpgme 
+  - ruby3.4-rubygem-grpc 
+  - ruby3.4-rubygem-gssapi 
+  - ruby3.4-rubygem-gyoku 
+  - ruby3.4-rubygem-haml 
+  - ruby3.4-rubygem-haml-rails 
+  - ruby3.4-rubygem-hashdiff 
+  - ruby3.4-rubygem-hashery 
+  - ruby3.4-rubygem-hashicorp-checkpoint 
+  - ruby3.4-rubygem-hashie 
+  - ruby3.4-rubygem-highline 
+  - ruby3.4-rubygem-hitimes 
+  - ruby3.4-rubygem-hoe 
+  - ruby3.4-rubygem-html2haml 
+  - ruby3.4-rubygem-http-cookie 
+  - ruby3.4-rubygem-http-form_data 
+  - ruby3.4-rubygem-http_parser.rb 
+  - ruby3.4-rubygem-httpclient 
+  - ruby3.4-rubygem-i18n 
+  - ruby3.4-rubygem-ice_nine 
+  - ruby3.4-rubygem-importmap-rails 
+  - ruby3.4-rubygem-inifile 
+  - ruby3.4-rubygem-jaro_winkler 
+  - ruby3.4-rubygem-jbuilder 
+  - ruby3.4-rubygem-jquery-rails 
+  - ruby3.4-rubygem-js-routes 
+  - ruby3.4-rubygem-jsbundling-rails 
+  - ruby3.4-rubygem-json 
+  - ruby3.4-rubygem-json-jwt 
+  - ruby3.4-rubygem-json-schema 
+  - ruby3.4-rubygem-json_pure 
+  - ruby3.4-rubygem-jwt 
+  - ruby3.4-rubygem-kamal 
+  - ruby3.4-rubygem-kgio 
+  - ruby3.4-rubygem-kramdown 
+  - ruby3.4-rubygem-kramdown-parser-gfm 
+  - ruby3.4-rubygem-kredis 
+  - ruby3.4-rubygem-language_server-protocol 
+  - ruby3.4-rubygem-launchy 
+  - ruby3.4-rubygem-libyui-rake 
+  - ruby3.4-rubygem-lightbox2 
+  - ruby3.4-rubygem-liquid 
+  - ruby3.4-rubygem-listen 
+  - ruby3.4-rubygem-little-plugger 
+  - ruby3.4-rubygem-llhttp-ffi 
+  - ruby3.4-rubygem-locale 
+  - ruby3.4-rubygem-log4r 
+  - ruby3.4-rubygem-logging 
+  - ruby3.4-rubygem-loofah 
+  - ruby3.4-rubygem-mail 
+  - ruby3.4-rubygem-manpages 
+  - ruby3.4-rubygem-marcel 
+  - ruby3.4-rubygem-mercenary 
+  - ruby3.4-rubygem-method_source 
+  - ruby3.4-rubygem-micromachine 
+  - ruby3.4-rubygem-mime 
+  - ruby3.4-rubygem-mime-types 
+  - ruby3.4-rubygem-mime-types-data 
+  - ruby3.4-rubygem-mimemagic 
+  - ruby3.4-rubygem-mini_magick 
+  - ruby3.4-rubygem-mini_mime 
+  - ruby3.4-rubygem-mini_portile2 
+  - ruby3.4-rubygem-minitar 
+  - ruby3.4-rubygem-mixlib-authentication 
+  - ruby3.4-rubygem-mixlib-cli 
+  - ruby3.4-rubygem-mixlib-config 
+  - ruby3.4-rubygem-mixlib-shellout 
+  - ruby3.4-rubygem-mocha 
+  - ruby3.4-rubygem-moneta 
+  - ruby3.4-rubygem-msgpack 
+  - ruby3.4-rubygem-multi_json 
+  - ruby3.4-rubygem-multi_xml 
+  - ruby3.4-rubygem-multipart-post 
+  - ruby3.4-rubygem-mustache 
+  - ruby3.4-rubygem-mustermann 
+  - ruby3.4-rubygem-mustermann-grape 
+  - ruby3.4-rubygem-mysql2 
+  - ruby3.4-rubygem-net-ldap 
+  - ruby3.4-rubygem-net-scp 
+  - ruby3.4-rubygem-net-sftp 
+  - ruby3.4-rubygem-net-ssh 
+  - ruby3.4-rubygem-netrc 
+  - ruby3.4-rubygem-nio4r 
+  - ruby3.4-rubygem-nori 
+  - ruby3.4-rubygem-oauth2 
+  - ruby3.4-rubygem-omniauth 
+  - ruby3.4-rubygem-omniauth-oauth2 
+  - ruby3.4-rubygem-optimist 
+  - ruby3.4-rubygem-orm_adapter 
+  - ruby3.4-rubygem-os 
+  - ruby3.4-rubygem-packaging_rake_tasks 
+  - ruby3.4-rubygem-parallel 
+  - ruby3.4-rubygem-parallel_tests 
+  - ruby3.4-rubygem-parser 
+  - ruby3.4-rubygem-passenger 
+  - ruby3.4-rubygem-path_expander 
+  - ruby3.4-rubygem-pg 
+  - ruby3.4-rubygem-pkg-config 
+  - ruby3.4-rubygem-po_to_json 
+  - ruby3.4-rubygem-propshaft 
+  - ruby3.4-rubygem-pry 
+  - ruby3.4-rubygem-pry-doc 
+  - ruby3.4-rubygem-public_suffix 
+  - ruby3.4-rubygem-puma 
+  - ruby3.4-rubygem-puma_worker_killer 
+  - ruby3.4-rubygem-pundit 
+  - ruby3.4-rubygem-raabro 
+  - ruby3.4-rubygem-rack 
+  - ruby3.4-rubygem-rack-2.2 
+  - ruby3.4-rubygem-rack-accept 
+  - ruby3.4-rubygem-rack-oauth2 
+  - ruby3.4-rubygem-rack-protection 
+  - ruby3.4-rubygem-rack-proxy 
+  - ruby3.4-rubygem-rack-session 
+  - ruby3.4-rubygem-rack-test 
+  - ruby3.4-rubygem-rack-test-0_6 
+  - ruby3.4-rubygem-rackup 
+  - ruby3.4-rubygem-rails-7.0 
+  - ruby3.4-rubygem-rails-8.0 
+  - ruby3.4-rubygem-rails-dom-testing 
+  - ruby3.4-rubygem-rails-html-sanitizer 
+  - ruby3.4-rubygem-rails-i18n 
+  - ruby3.4-rubygem-railties-7.0 
+  - ruby3.4-rubygem-railties-8.0 
+  - ruby3.4-rubygem-rainbow 
+  - ruby3.4-rubygem-rake-compiler 
+  - ruby3.4-rubygem-rb-fsevent 
+  - ruby3.4-rubygem-rb-inotify 
+  - ruby3.4-rubygem-redcarpet 
+  - ruby3.4-rubygem-redis 
+  - ruby3.4-rubygem-redis-client 
+  - ruby3.4-rubygem-regexp_parser 
+  - ruby3.4-rubygem-reline 
+  - ruby3.4-rubygem-reverse_markdown 
+  - ruby3.4-rubygem-ronn-ng 
+  - ruby3.4-rubygem-rouge 
+  - ruby3.4-rubygem-rpm 
+  - ruby3.4-rubygem-rspec 
+  - ruby3.4-rubygem-rspec-core 
+  - ruby3.4-rubygem-rspec-expectations 
+  - ruby3.4-rubygem-rspec-its 
+  - ruby3.4-rubygem-rspec-mocks 
+  - ruby3.4-rubygem-rspec-rails 
+  - ruby3.4-rubygem-rspec-support 
+  - ruby3.4-rubygem-rubocop 
+  - ruby3.4-rubygem-rubocop-ast 
+  - ruby3.4-rubygem-ruby-libvirt 
+  - ruby3.4-rubygem-ruby-openid 
+  - ruby3.4-rubygem-ruby-progressbar 
+  - ruby3.4-rubygem-ruby-vips 
+  - ruby3.4-rubygem-ruby2_keywords 
+  - ruby3.4-rubygem-ruby_parser 
+  - ruby3.4-rubygem-rubyntlm 
+  - ruby3.4-rubygem-rubyzip 
+  - ruby3.4-rubygem-safe_yaml 
+  - ruby3.4-rubygem-sass 
+  - ruby3.4-rubygem-sass-listen 
+  - ruby3.4-rubygem-sass-rails 
+  - ruby3.4-rubygem-sass-rails-5.1 
+  - ruby3.4-rubygem-sassc 
+  - ruby3.4-rubygem-sassc-rails 
+  - ruby3.4-rubygem-securerandom 
+  - ruby3.4-rubygem-semantic_range 
+  - ruby3.4-rubygem-serverengine 
+  - ruby3.4-rubygem-sexp_processor 
+  - ruby3.4-rubygem-sigdump 
+  - ruby3.4-rubygem-simplecov 
+  - ruby3.4-rubygem-simplecov-html 
+  - ruby3.4-rubygem-simplecov_json_formatter 
+  - ruby3.4-rubygem-slim 
+  - ruby3.4-rubygem-slop 
+  - ruby3.4-rubygem-snaky_hash 
+  - ruby3.4-rubygem-solid_cable 
+  - ruby3.4-rubygem-solid_cache 
+  - ruby3.4-rubygem-solid_queue 
+  - ruby3.4-rubygem-sorbet-runtime 
+  - ruby3.4-rubygem-spring 
+  - ruby3.4-rubygem-sprockets 
+  - ruby3.4-rubygem-sprockets-3.7 
+  - ruby3.4-rubygem-sprockets-helpers 
+  - ruby3.4-rubygem-sprockets-rails 
+  - ruby3.4-rubygem-sqlite3 
+  - ruby3.4-rubygem-sshkit 
+  - ruby3.4-rubygem-stimulus-rails 
+  - ruby3.4-rubygem-strptime 
+  - ruby3.4-rubygem-temple 
+  - ruby3.4-rubygem-text 
+  - ruby3.4-rubygem-thor 
+  - ruby3.4-rubygem-thread_safe 
+  - ruby3.4-rubygem-tilt 
+  - ruby3.4-rubygem-timeout 
+  - ruby3.4-rubygem-tomlrb 
+  - ruby3.4-rubygem-turbo-rails 
+  - ruby3.4-rubygem-turbolinks 
+  - ruby3.4-rubygem-turbolinks-source 
+  - ruby3.4-rubygem-tzinfo 
+  - ruby3.4-rubygem-tzinfo-data 
+  - ruby3.4-rubygem-uglifier 
+  - ruby3.4-rubygem-unf 
+  - ruby3.4-rubygem-unf_ext 
+  - ruby3.4-rubygem-unicode-display_width 
+  - ruby3.4-rubygem-uri 
+  - ruby3.4-rubygem-useragent 
+  - ruby3.4-rubygem-validate_email 
+  - ruby3.4-rubygem-validate_url 
+  - ruby3.4-rubygem-version_gem 
+  - ruby3.4-rubygem-virtus 
+  - ruby3.4-rubygem-web-console 
+  - ruby3.4-rubygem-webmock 
+  - ruby3.4-rubygem-webpacker 
+  - ruby3.4-rubygem-webrick 
+  - ruby3.4-rubygem-websocket 
+  - ruby3.4-rubygem-websocket-driver 
+  - ruby3.4-rubygem-websocket-extensions 
+  - ruby3.4-rubygem-xml-simple 
+  - ruby3.4-rubygem-xmlhash 
+  - ruby3.4-rubygem-xmlrpc 
+  - ruby3.4-rubygem-yajl-ruby 
+  - ruby3.4-rubygem-yard 
+  - ruby3.4-rubygem-yast-rake 
+  - ruby3.4-rubygem-zeitwerk 
   - rubygem-libguestfs 
   - rubygem-passenger 
   - rubygem-passenger-apache2 
@@ -40371,6 +40397,10 @@ unsorted:
   - rygel-plugin-tracker 
   - rypper 
   - ryzenadj 
+  - rz-cutter 
+  - rz-cutter-devel 
+  - rz-ghidra 
+  - rz-ghidra-devel 
   - rzip 
   - rzsz 
   - s-tui 
@@ -41635,6 +41665,7 @@ unsorted:
   - termcap-devel-static 
   - terminator 
   - terminator-lang 
+  - terminfo-ghostty 
   - terminology 
   - terminology-lang 
   - terminology-theme-Flat 
@@ -52346,6 +52377,8 @@ unsorted:
   - wezterm-zsh-completion 
   - wf-config-devel 
   - wf-recorder 
+  - wf-shell 
+  - wf-shell-devel 
   - wg-info 
   - wget2 
   - wget2-devel 
@@ -52412,6 +52445,7 @@ unsorted:
   - wlcs 
   - wlcs-devel 
   - wlgreet 
+  - wlogout 
   - wlopm 
   - wlprop 
   - wlr-randr 

@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250106" schemaversion="4.1">
+<image name="OBS__openSUSE___20250107" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250106</productvar>
+      <productvar name="VERSION">20250107</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250106,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250107,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250106/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250107/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2661,7 +2661,7 @@
       <repopackage name="librscg1_0"/>
       <repopackage name="librsvg-2-2"/>
       <repopackage name="librubberband2"/>
-      <repopackage name="libruby3_3-3_3"/>
+      <repopackage name="libruby3_4-3_4"/>
       <repopackage name="libsamplerate0"/>
       <repopackage name="libsane1"/>
       <repopackage name="libsasl2-3"/>
@@ -3891,17 +3891,17 @@
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
       <repopackage name="ruby-solv"/>
-      <repopackage name="ruby3.3"/>
-      <repopackage name="ruby3.3-rubygem-abstract_method"/>
-      <repopackage name="ruby3.3-rubygem-cfa"/>
-      <repopackage name="ruby3.3-rubygem-cfa_grub2"/>
-      <repopackage name="ruby3.3-rubygem-cheetah"/>
-      <repopackage name="ruby3.3-rubygem-fast_gettext"/>
-      <repopackage name="ruby3.3-rubygem-gem2rpm"/>
-      <repopackage name="ruby3.3-rubygem-nokogiri"/>
-      <repopackage name="ruby3.3-rubygem-ruby-augeas"/>
-      <repopackage name="ruby3.3-rubygem-ruby-dbus"/>
-      <repopackage name="ruby3.3-rubygem-simpleidn"/>
+      <repopackage name="ruby3.4"/>
+      <repopackage name="ruby3.4-rubygem-abstract_method"/>
+      <repopackage name="ruby3.4-rubygem-cfa"/>
+      <repopackage name="ruby3.4-rubygem-cfa_grub2"/>
+      <repopackage name="ruby3.4-rubygem-cheetah"/>
+      <repopackage name="ruby3.4-rubygem-fast_gettext"/>
+      <repopackage name="ruby3.4-rubygem-gem2rpm"/>
+      <repopackage name="ruby3.4-rubygem-nokogiri"/>
+      <repopackage name="ruby3.4-rubygem-ruby-augeas"/>
+      <repopackage name="ruby3.4-rubygem-ruby-dbus"/>
+      <repopackage name="ruby3.4-rubygem-simpleidn"/>
       <repopackage name="sac"/>
       <repopackage name="salt"/>
       <repopackage name="salt-master"/>
