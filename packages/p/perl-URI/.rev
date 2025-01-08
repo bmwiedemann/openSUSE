@@ -423,4 +423,17 @@
       - Add otpauth URI (GH#145) (david-dick) (forwarded request 1203087 from tinita)</comment>
     <requestid>1204049</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e9444c3e6b51932333fc138c3da99d19</srcmd5>
+    <version>5.310.0</version>
+    <time>1736279445</time>
+    <user>anag+factory</user>
+    <comment>- updated to 5.310.0 (5.31)
+   see /usr/share/doc/packages/perl-URI/Changes
+  5.31      2024-11-06 03:38:29Z
+      - Re-releasing with corrected module permissions. No changes since 5.31
+  5.30      2024-10-08 21:18:35Z
+      - Add scp, ftps, ftpes, irc, ircs schemes (GH#16) (SineSwiper) (forwarded request 1235358 from tinita)</comment>
+    <requestid>1235369</requestid>
+  </revision>
 </revisionlist>

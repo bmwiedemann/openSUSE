@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan  4 08:16:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.4:
+  + Fixed:
+    - image-rs: Support `image/qoi` mime-type for QOI in addition
+      to `image/x-qoi`.
+    - libglycin:
+      . Include stdint.h.
+      . Remove dependency on gtk in header and move it to
+        libglycin-gtk4.
+
+-------------------------------------------------------------------
+Tue Dec 17 08:46:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update URL and git url to new upstream home (GNOME core).
+  Following this, run all services, ensure the new url works as
+  expected.
+
+-------------------------------------------------------------------
 Wed Dec 11 08:45:45 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update vendor tarball (fixes build for i586). 

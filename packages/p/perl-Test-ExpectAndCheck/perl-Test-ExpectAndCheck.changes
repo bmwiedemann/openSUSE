@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 14 05:34:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.70.0 (0.07)
+   see /usr/share/doc/packages/perl-Test-ExpectAndCheck/Changes
+
+  0.07    2024-10-13
+          [CHANGES]
+           * Added `namedargs()` helper for dealing with methods that take named
+             arguments in maybe-unreliable orders due to hash order randomisation
+           * Added optional VERBOSE debugging mode
+
+-------------------------------------------------------------------
 Fri Mar  8 23:05:25 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

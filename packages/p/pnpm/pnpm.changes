@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  6 05:41:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.15.3:
+  * Fixed the Regex used to find the package manifest during
+    packing #8938.
+  * pnpm update --filter <pattern> --latest <pkg> should only
+    change the specified package for the specified workspace, when
+    dedupe-peer-dependents is set to true #8877.
+  * Exclude .DS_Store file at patch-commit #8922.
+  * Fix a bug in which pnpm patch is unable to bring back old patch
+    without specifying @version suffix #8919.
+
+-------------------------------------------------------------------
 Mon Dec 30 07:25:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.15.2:

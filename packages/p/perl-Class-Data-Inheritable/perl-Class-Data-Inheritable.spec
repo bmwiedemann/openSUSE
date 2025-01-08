@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Class-Data-Inheritable
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name Class-Data-Inheritable
 Name:           perl-Class-Data-Inheritable
-Version:        0.09
+Version:        0.100.0
 Release:        0
-Summary:        Inheritable, overridable class data
+# 0.10 -> normalize -> 0.100.0
+%define cpan_version 0.10
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Inheritable, overridable class data
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSHERER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSHERER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Class::Data::Inheritable) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -51,7 +55,7 @@ The interesting part happens when a class inherits from Pere::Ubu:
 
   package Raygun;
   use base qw(Pere::Ubu);
-  
+
   # Raygun's suitcase is Red.
   $suitcase = Raygun->Suitcase;
 
@@ -79,7 +83,7 @@ longer effect Raygun.
   Pere::Ubu->Suitcase('Samsonite');
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -20,7 +20,7 @@
 
 Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
-Version:        0.11.0+0
+Version:        0.11.1+0
 Release:        0
 Summary:        X25519-based, simple, modern, and secure file encryption tool
 #               If you know the license, put it's SPDX string here.

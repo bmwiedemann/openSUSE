@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-wxWidgets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Building, finding and using wxWidgets binaries
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         perl-Alien-wxWidgets-do_not_build_wxgtk.patch
@@ -43,7 +43,7 @@ Requires:       perl(Module::Pluggable) >= 2.6
 # MANUAL BEGIN
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
-BuildRequires:  wxWidgets-3_0-nostl-devel
+BuildRequires:  wxWidgets-3_2-nostl-devel
 %else
 BuildRequires:  wxWidgets-ansi-devel
 %endif

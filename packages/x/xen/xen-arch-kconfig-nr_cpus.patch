@@ -1,13 +1,13 @@
-Index: xen-4.19.0-testing/xen/arch/Kconfig
+Index: xen-4.20.0-testing/xen/arch/Kconfig
 ===================================================================
---- xen-4.19.0-testing.orig/xen/arch/Kconfig
-+++ xen-4.19.0-testing/xen/arch/Kconfig
-@@ -7,7 +7,7 @@ config PHYS_ADDR_T_32
- config NR_CPUS
+--- xen-4.20.0-testing.orig/xen/arch/Kconfig
++++ xen-4.20.0-testing/xen/arch/Kconfig
+@@ -8,7 +8,7 @@ config NR_CPUS
  	int "Maximum number of CPUs"
+ 	range 1 1 if ARM && MPU
  	range 1 16383
 -	default "256" if X86
 +	default "1024" if X86
+ 	default "1" if ARM && MPU
  	default "8" if ARM && RCAR3
  	default "4" if ARM && QEMU
- 	default "4" if ARM && MPSOC

@@ -26,6 +26,7 @@ Mon Dec 16 11:15:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
   * thirdparty/libz: update to zlib-1.3.1 #1542
   * thirdparty/libpng: update to libpng-1.6.43 #1541
   * thirdparty/libtiff: update to libtiff 4.6.0 #1540
+- fixes CVE-2024-56826 [bsc#1235029]
 
 -------------------------------------------------------------------
 Fri Aug 16 16:59:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>

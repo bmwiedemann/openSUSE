@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,9 +88,29 @@ export CPPFLAGS="%{optflags} -fno-stack-protector"
 %make_build -C src
 
 %check
+declare -a TEST_EXCLUDE=()
+
+%if 0%{?sle_version} == 150500
+TEST_EXCLUDE+=( fallocate.t fd-pass.t fixed-buf-merge.t msg-ring-overflow.t nop.t poll-race-mshot.t reg-hint.t sqwait.t wq-aff.t )
+%endif
+%if 0%{?sle_version} == 150600 || 0%{?sle_version} == 150700
+TEST_EXCLUDE+=( fallocate.t )
+%endif
+%if 0%{?suse_version} == 1600
+TEST_EXCLUDE+=( sqwait.t )
+%endif
+
+%ifarch ppc64le
+TEST_EXCLUDE+=( no-mmap-inval.t recv-multishot.t reg-fd-only.t recvsend_bundle.t recvsend_bundle-inc.t )
+%elifarch s390x
+TEST_EXCLUDE+=( futex.t multicqes_drain.t poll-mshot-update.t read-mshot.t waitid.t )
+TEST_EXCLUDE+=( link-timeout.t min-timeout-wait.t submit-and-wait.t sync-cancel.t )
+%endif
+
 # io_uring syscalls not supported as of qemu 7.0.0 and would test the host
 # kernel anyway not the target kernel..
 %if !0%{?qemu_user_space_build}
+echo "TEST_EXCLUDE=\"${TEST_EXCLUDE[@]}\"" > test/config.local
 %make_build runtests
 %endif
 

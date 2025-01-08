@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 19 05:31:59 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.120.0 (6.12)
+   see /usr/share/doc/packages/perl-HTML-Form/Changes
+
+  6.12      2024-10-18 16:19:06Z
+      - Fix CRLF normalization with HTTP::Message 7.00 (GH#53) (Graham Knop)
+
+-------------------------------------------------------------------
 Sun Feb 12 03:07:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.11

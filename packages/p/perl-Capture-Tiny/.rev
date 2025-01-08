@@ -257,4 +257,13 @@
     <comment></comment>
     <requestid>599888</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>628a5f7431e3c0a6d531a4270ab55c0d</srcmd5>
+    <version>0.500.0</version>
+    <time>1736279449</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.500.0 (0.50)
+   see /usr/share/doc/packages/perl-Capture-Tiny/Changes (forwarded request 1235424 from tinita)</comment>
+    <requestid>1235495</requestid>
+  </revision>
 </revisionlist>

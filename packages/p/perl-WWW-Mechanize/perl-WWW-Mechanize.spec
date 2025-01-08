@@ -18,9 +18,10 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.180.0
+Version:        2.190.0
 Release:        0
-%define cpan_version 2.18
+# 2.19 -> normalize -> 2.190.0
+%define cpan_version 2.19
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -52,6 +53,7 @@ BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(URI::URL)
 BuildRequires:  perl(URI::file)
+BuildRequires:  perl(parent)
 Requires:       perl(HTML::Form) >= 6.08
 Requires:       perl(HTML::HeadParser)
 Requires:       perl(HTML::TokeParser)
@@ -62,6 +64,7 @@ Requires:       perl(HTTP::Request::Common)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(URI::URL)
 Requires:       perl(URI::file)
+Requires:       perl(parent)
 Provides:       perl(WWW::Mechanize) = %{version}
 Provides:       perl(WWW::Mechanize::Image) = %{version}
 Provides:       perl(WWW::Mechanize::Link) = %{version}

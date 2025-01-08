@@ -485,4 +485,12 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     <comment>- Downgrade back to 2.5.17.0</comment>
     <requestid>1224226</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fc034193a08946286626dab141d95560</srcmd5>
+    <version>2.5.18.0</version>
+    <time>1736279536</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235212</requestid>
+  </revision>
 </revisionlist>

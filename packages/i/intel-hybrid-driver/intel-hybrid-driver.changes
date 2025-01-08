@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  6 11:19:06 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed source URL in specfile 
+
+-------------------------------------------------------------------
+Fri Jan  3 22:36:02 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed driver for current libva by switchting to gentoo patches
+  (boo#1234858)
+  * intel-hybrid-codec-driver-2.0.0-gcc10-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-invalid-read-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-nullptr-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-vadriverinit-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-x11-fix.patch
+- supersedes the following patches
+  * U_Update-the-dependency-to-libva-2.0.patch
+  * n_libva-2.0-ABI-header-fix.patch
+  * u_gcc10.patch
+- raised driver version number to 2.0.0
+
+-------------------------------------------------------------------
 Tue Jun  9 10:25:59 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_gcc10.patch

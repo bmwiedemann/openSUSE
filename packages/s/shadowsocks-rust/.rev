@@ -90,4 +90,12 @@
   * Fix bugs (forwarded request 1225827 from hillwood)</comment>
     <requestid>1225828</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>15cfb6dff34d3b21ab75f31d613c3c04</srcmd5>
+    <version>1.21.2</version>
+    <time>1736279525</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235195</requestid>
+  </revision>
 </revisionlist>

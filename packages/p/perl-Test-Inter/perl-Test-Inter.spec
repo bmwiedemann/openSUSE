@@ -18,9 +18,10 @@
 
 %define cpan_name Test-Inter
 Name:           perl-Test-Inter
-Version:        1.110.0
+Version:        1.120.0
 Release:        0
-%define cpan_version 1.11
+# 1.12 -> normalize -> 1.120.0
+%define cpan_version 1.12
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Framework for more readable interactive test scripts
 URL:            https://metacpan.org/release/%{cpan_name}

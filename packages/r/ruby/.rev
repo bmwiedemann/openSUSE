@@ -494,4 +494,12 @@
     <comment>- switch the default ruby to 3.3</comment>
     <requestid>1132468</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>45a0caa052fdc2e622979a5c7e26c90f</srcmd5>
+    <version>3.4</version>
+    <time>1736279457</time>
+    <user>anag+factory</user>
+    <comment>- switch the default ruby to 3.4</comment>
+    <requestid>1230620</requestid>
+  </revision>
 </revisionlist>

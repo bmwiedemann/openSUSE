@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-libev
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -172,7 +172,8 @@ getent passwd shadowsocks >/dev/null || %{_sbindir}/useradd --system -c "shadows
 %service_add_post %{name}-redir@.service
 %service_add_post %{name}-tunnel@.service
 chown root:shadowsocks %{_sysconfdir}/shadowsocks -R
-chmod 640 %{_sysconfdir}/shadowsocks -R
+chmod 750 %{_sysconfdir}/shadowsocks
+chmod 640 %{_sysconfdir}/shadowsocks/*
 
 %preun
 %service_del_preun %{name}-server.service

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:50:04 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.57.0:
+  - Features
+    * feat: Add chezmoi:template:format-indent template directive
+    * feat: Implement builtin mode for keepassxc
+    * feat: Add script hooks that use configured interpreters
+
+-------------------------------------------------------------------
 Wed Dec 18 14:07:15 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.56.0:

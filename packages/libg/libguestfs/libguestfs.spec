@@ -1,7 +1,7 @@
 #
 # spec file for package libguestfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.54.0
+Version:        1.55.2
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
+BuildRequires:  libjson-c-devel
 BuildRequires:  libtool
 BuildRequires:  ocaml-augeas-devel
 BuildRequires:  ocaml-hivex-devel

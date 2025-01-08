@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 06 13:23:22 UTC 2025 - jan.kuzilek@suse.com
+
+- Update to version 0.6.3:
+  * Release v0.6.3
+  * Also log update errors to terminal
+  * Switch from openssl to rustls
+  * Introduce error message ui, make update errors non-fatal
+  * Release v0.6.2
+  * Add --version flag
+
+-------------------------------------------------------------------
 Tue Dec 31 11:39:54 UTC 2024 - jan.kuzilek@suse.com
 
 - Update to version 0.6.1:

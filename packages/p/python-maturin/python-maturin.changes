@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan  3 17:39:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.1
+  * Downgrade invalid version info in `pyproject.toml` error to 
+    warning in #2417
+  * Make `maturin develop` fail if version info is invalid in 
+    pyproject.toml in #2418
+  * Don't add wheel data to sdist in #2367
+  * Add sparcv9 architecture support in #2380
+  * Properly handle dynamic version in pyproject.toml in #2391
+  * Fix xwin cross compile on non-Windows system in #2391
+  * Fix interpreter selection for abi3 bindings in #2392
+  * Use the official recommended naming pattern for cffi module 
+    file in #2406
+  * Add Linux armv5te architecture support in #2409
+  * Only build Python 3.13t wheels by default for `pyo3` 0.23+ in 
+    #2413
+
+-------------------------------------------------------------------
 Wed Dec 18 12:01:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.8

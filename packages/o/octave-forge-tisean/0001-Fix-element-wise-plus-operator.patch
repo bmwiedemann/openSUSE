@@ -1,0 +1,115 @@
+From 91eb92651920d306d7281b718d6c903e03e62691 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 1 Jan 2025 22:14:59 +0100
+Subject: [PATCH] Fix element-wise plus operator
+
+The ".+" notation was deprecated in 7.x and removed with 9.x, it was
+equivalent with the regular "+" operator.
+
+The operation broadcasts both index ranges, and then sums them
+elementwise to create indices representing a sliding window.
+---
+ inst/av_d2.m    | 2 +-
+ inst/c2g.m      | 6 +++---
+ inst/c2t.m      | 4 ++--
+ inst/endtoend.m | 2 +-
+ inst/upo.m      | 2 +-
+ inst/upoembed.m | 4 ++--
+ 6 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/inst/av_d2.m b/inst/av_d2.m
+index 3c897cd..e44f021 100644
+--- a/inst/av_d2.m
++++ b/inst/av_d2.m
+@@ -149,7 +149,7 @@ function output = av_d2 (d2_c2d_c1_out, varargin)
+   # Create smoothing functions
+   # Smoothes single column
+   smooth_column = @(col) sum (col((-aver:aver) ...
+-                                  .+(aver+1:(length(col)-aver)).'),2) ...
++                                  +(aver+1:(length(col)-aver)).'),2) ...
+                          ./(2*aver + 1);
+   # Smoothes one cell
+   smooth_cell   = @(cell_mat) [smooth_column(cell_mat{1}(:,1)), ...
+diff --git a/inst/c2g.m b/inst/c2g.m
+index c0dc02e..964a34d 100644
+--- a/inst/c2g.m
++++ b/inst/c2g.m
+@@ -123,9 +123,9 @@ function output = c2g (d2_out)
+ 
+     # Create column vectors instead of using loop
+     k_id    = 1:length(tmp.c2)-1;
+-    f       = exp((emat(k_id+1).*cmat(k_id).-emat(k_id).*cmat(k_id+1))
+-              ./(emat(k_id+1).-emat(k_id)));
+-    d       = (cmat(k_id+1).-cmat(k_id))./(emat(k_id+1).-emat(k_id));
++    f       = exp((emat(k_id+1).*cmat(k_id)-emat(k_id).*cmat(k_id+1))
++              ./(emat(k_id+1)-emat(k_id)));
++    d       = (cmat(k_id+1)-cmat(k_id))./(emat(k_id+1)-emat(k_id));
+     a       = emat(k_id);
+     b       = emat(k_id+1);
+ 
+diff --git a/inst/c2t.m b/inst/c2t.m
+index 4cb0d43..6f0b55d 100644
+--- a/inst/c2t.m
++++ b/inst/c2t.m
+@@ -109,8 +109,8 @@ function output = c2t (d2_c1_out)
+     emat    = log (corr_sums(idx,1));
+     cmat    = log (corr_sums(idx,2));
+ 
+-    b = (emat(2:end) .* cmat(1:end-1) .- emat(1:end-1) .* cmat(2:end)) ...
+-        ./ (emat(2:end) .- emat(1:end-1));
++    b = (emat(2:end) .* cmat(1:end-1) - emat(1:end-1) .* cmat(2:end)) ...
++        ./ (emat(2:end) - emat(1:end-1));
+     a = (cmat(2:end) - cmat(1:end-1)) ./ (emat(2:end) - emat(1:end-1));
+ 
+     cint       = (exp (b) ./ a) ...
+diff --git a/inst/endtoend.m b/inst/endtoend.m
+index 2a9154d..e05a2ef 100644
+--- a/inst/endtoend.m
++++ b/inst/endtoend.m
+@@ -209,7 +209,7 @@ S=    reshape (S, [rows(S),1,columns(S)]);
+     endwhile
+     etot = original_col_S;
+     for nj = 0:(rows (S) - nmaxp)
+-      [x,s] = mismatch (S((1:nmaxp).+nj,1,:));
++      [x,s] = mismatch (S((1:nmaxp)+nj,1,:));
+       xj(1+nj) = x;
+       sj(1+nj) = s;
+     endfor
+diff --git a/inst/upo.m b/inst/upo.m
+index 4c17bf0..898fc46 100644
+--- a/inst/upo.m
++++ b/inst/upo.m
+@@ -80,7 +80,7 @@
+ ## n-the orbit you need to:
+ ## @example
+ ##
+-## nth_orbit_data = orbit_data(sum(olens(1:n-1)).+(1:olens(n)));
++## nth_orbit_data = orbit_data(sum(olens(1:n-1))+(1:olens(n)));
+ ##
+ ## @end example
+ ## @item acc
+diff --git a/inst/upoembed.m b/inst/upoembed.m
+index c14b160..3143629 100644
+--- a/inst/upoembed.m
++++ b/inst/upoembed.m
+@@ -126,7 +126,7 @@ values of olens");
+   ## Create delay vectors
+   j         = (m:-1:1);
+   delay_vec = @(x) orbit_data(sum(olens(1:idx(x)-1))+ ...
+-                              mod(((1:olens(idx(x))+1).').-...
++                              mod(((1:olens(idx(x))+1).')-...
+                               (j-1).*delay -1 +m.*olens(idx(x)),...
+                               olens(idx(x)))+1);
+   output    = arrayfun (delay_vec,(1:length(idx)).','UniformOutput', false);
+@@ -138,7 +138,7 @@ values of olens");
+   #    for k=1:olens(i)+1;
+   #      for j=m:-1:1;
+   #       output(sum(olens(1:i-1)+1)+k,m+1-j) = ...
+-  #       orbit_data(sum(olens(1:i-1))+mod(k.-(j-1).*delay-1+m*olens(i),olens(i))+1);
++  #       orbit_data(sum(olens(1:i-1))+mod(k-(j-1).*delay-1+m*olens(i),olens(i))+1);
+   #      endfor
+   #    endfor
+   #  endfor
+-- 
+2.47.1
+

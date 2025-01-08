@@ -645,4 +645,39 @@
     <comment></comment>
     <requestid>1228526</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>15a1a26ab925197ceeba27ee28c7c958</srcmd5>
+    <version>3.11.11</version>
+    <time>1736279448</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.11.11:
+  - Bug fixes
+    - Updated :py:meth:~aiohttp.ClientSession.request to reuse
+      the quote_cookie setting from ClientSession._cookie_jar
+      when processing cookies parameter.
+    - Fixed type of SSLContext for some static type checkers
+      (e.g. pyright).
+    - Updated :meth:aiohttp.web.StreamResponse.write annotation
+      to also allow :class:bytearray and :class:memoryview as
+      inputs
+    - Fixed a hang where a connection previously used for a
+      streaming download could be returned to the pool in a
+      paused state.
+  - Features
+    - Enabled ALPN on default SSL contexts. This improves
+      compatibility with some proxies which don't work without
+      this extension.
+  - Miscellaneous internal changes
+    - Fixed an infinite loop that can occur when using aiohttp in
+      combination with async-solipsism
+- Update to 3.11.10:
+  - Fixed race condition in :class:aiohttp.web.FileResponse
+    that could have resulted in an incorrect response if the
+    file was replaced on the file system during prepare
+  - Replaced deprecated call to :func:mimetypes.guess_type with
+    :func:mimetypes.guess_file_type when using Python 3.13+
+  - Disabled zero copy writes in the StreamWriter
+</comment>
+    <requestid>1235442</requestid>
+  </revision>
 </revisionlist>

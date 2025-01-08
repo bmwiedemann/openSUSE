@@ -18,9 +18,10 @@
 
 %define cpan_name Future-IO
 Name:           perl-Future-IO
-Version:        0.150.0
+Version:        0.160.0
 Release:        0
-%define cpan_version 0.15
+# 0.16 -> normalize -> 0.160.0
+%define cpan_version 0.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Future-returning IO methods
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,9 +38,9 @@ BuildRequires:  perl(Test::ExpectAndCheck) >= 0.60.0
 BuildRequires:  perl(Test::Future::IO::Impl)
 Requires:       perl(Future)
 Requires:       perl(Struct::Dumb)
-Provides:       perl(Future::IO) = 0.150.0
-Provides:       perl(Future::IO::ImplBase) = 0.150.0
-Provides:       perl(Future::IO::System) = 0.150.0
+Provides:       perl(Future::IO) = %{version}
+Provides:       perl(Future::IO::ImplBase) = %{version}
+Provides:       perl(Future::IO::System) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

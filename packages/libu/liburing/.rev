@@ -218,4 +218,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1230755</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>3bf1810a91c7ed4b7fd3016186ed7fb8</srcmd5>
+    <version>2.8</version>
+    <time>1736279395</time>
+    <user>anag+factory</user>
+    <comment>- disable some tests for older kernels &amp; strange archs
+</comment>
+    <requestid>1235113</requestid>
+  </revision>
 </revisionlist>

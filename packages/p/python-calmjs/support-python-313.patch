@@ -40,3 +40,15 @@ Index: calmjs-3.4.4/src/calmjs/tests/test_argparse.py
  
  
  class ArgumentParserTestCase(unittest.TestCase):
+@@ -306,7 +315,10 @@ class StoreCommaDelimitedListTestCase(un
+         with self.assertRaises(SystemExit):
+             argparser.parse_known_args(['-p', '3,2,1,0'])
+ 
+-        self.assertIn("(choose from '1', '2', '3')", sys.stderr.getvalue())
++        msg = "(choose from '1', '2', '3')"
++        if sys.version_info[:2] == (3, 12):
++            msg = "(choose from 1, 2, 3)"
++        self.assertIn(msg, sys.stderr.getvalue())
+ 
+         with self.assertRaises(SystemExit):
+             argparser.parse_known_args(['-p', '0'])

@@ -6848,4 +6848,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.12.8 &amp; 6.12.7 &amp; other fixes; bugs: bsc#1012628 bsc#1180749 bsc#1190358 bsc#1190428 bsc#1234782</comment>
     <requestid>1234560</requestid>
   </revision>
+  <revision rev="762" vrev="2">
+    <srcmd5>bb5eb17800d3bcba046dbf8d2de6c48c</srcmd5>
+    <version>6.12.8</version>
+    <time>1736279383</time>
+    <user>anag+factory</user>
+    <comment>Align HZ values with SLE; Disable CONFIG_FB_DEVICE; fix for PCI; bugs: boo#1212947 bsc#1196438 bsc#1234623</comment>
+    <requestid>1235110</requestid>
+  </revision>
 </revisionlist>

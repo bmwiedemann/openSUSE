@@ -1,7 +1,7 @@
 #
 # spec file for package pnpm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pnpm
-Version:        9.15.2
+Version:        9.15.3
 Release:        0
 Summary:        Fast, disk space efficient package manager
 License:        MIT

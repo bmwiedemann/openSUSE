@@ -433,4 +433,20 @@
     https://github.com/davatorium/rofi/releases/tag/1.7.6</comment>
     <requestid>1233579</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4cf957065170a5df470fc698a59a3c75</srcmd5>
+    <version>1.7.7</version>
+    <time>1736279637</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.7:
+  * Fix drawing issue #2068
+  * Fix window mode missing some windows #2071
+  * Fix character in config file broken #2070
+  * Resolve 'rasinc' for @imports #2069
+  * Desktop file DBus activation #1924
+  * Resolve -config identical to -theme #2040
+
+- Update to 1.7.6:</comment>
+    <requestid>1235530</requestid>
+  </revision>
 </revisionlist>

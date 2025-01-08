@@ -1,3 +1,16 @@
+-------------------------------------------------------------------
+Wed Oct 16 05:34:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.10.0 (1.01)
+   see /usr/share/doc/packages/perl-Mojo-JWT/Changes
+
+  1.01 2024-10-15
+    - Fix non-portable test
+
+  1.00 2024-10-15
+    - Use CryptX (libtomcrypt) for all cryptographic functions
+    - Crypt::OpenSSL input is still accepted but converted in-use
+
 
 -------------------------------------------------------------------
 Tue Aug 30 15:15:00 CET 2022 - sriedel@suse.com

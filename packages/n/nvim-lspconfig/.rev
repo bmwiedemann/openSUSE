@@ -23,4 +23,30 @@
   * refactor: fix luals warnings (forwarded request 1233962 from rrahl0)</comment>
     <requestid>1233965</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a6397bbbd161110bc5fc4d9c6f42a26</srcmd5>
+    <version>1.3.0</version>
+    <time>1736279490</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.0:
+  * refactor: deprecate util.path.join
+  * refactor: deprecate util.path.path_separator
+  * refactor: silence luals warnings
+  * refactor: deprecate util.path.iterate_parents
+  * feat: add server configuration for autohotkey_lsp (init)
+  * refactor!: remove public interface of util.path.traverse_parents
+  * fix(mdx-analyzer): Duplicate node_modules folder causing errors, and
+    filetypes option
+  * fix: add build.gradle.kts for java language server
+  * feat: cue language server
+  * feat(ccls): add CclsSwitchSourceHeader
+  * fix(ccls): typo on request method
+  * refactor(clangd): imporve switchsourceheader handler
+  * fix(clangd): fix switchSourceHeader detection
+  * docs(ruby_lsp): Remove instructions for adding ruby-lsp to Gemfile
+  * feat: Update Harper's Supported Languages
+  * feat: atlas language server
+  * fix(msbuild): more root patterns (forwarded request 1235077 from rrahl0)</comment>
+    <requestid>1235078</requestid>
+  </revision>
 </revisionlist>

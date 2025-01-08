@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Digest-HMAC
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,24 @@
 
 %define cpan_name Digest-HMAC
 Name:           perl-Digest-HMAC
-Version:        1.04
+Version:        1.50.0
 Release:        0
-Summary:        Keyed-Hashing for Message Authentication
+# 1.05 -> normalize -> 1.50.0
+%define cpan_version 1.05
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Keyed-Hashing for Message Authentication
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::SHA) >= 1
 Requires:       perl(Digest::SHA) >= 1
+Provides:       perl(Digest::HMAC) = %{version}
+Provides:       perl(Digest::HMAC_MD5) = %{version}
+Provides:       perl(Digest::HMAC_SHA1) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,7 +56,7 @@ functions. For stronger algorithms the blocksize probably needs to be
 increased.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

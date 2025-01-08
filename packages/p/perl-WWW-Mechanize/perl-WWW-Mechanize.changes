@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 17 05:32:34 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.190.0 (2.19)
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.19      2024-09-16 15:25:45Z
+      [DOCUMENTATION]
+      - Fix minor typo in SYNOPSIS example code comment (GH#379) (Paul Cochrane)
+      [ENHANCEMENTS]
+      - Replace "base" with "parent" (GH#381) (James Raspass)
+
+-------------------------------------------------------------------
 Fri Mar  8 23:11:31 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

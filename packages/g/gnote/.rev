@@ -818,4 +818,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
 </comment>
     <requestid>1204880</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>e739bbdb32cde3abae516485002a4647</srcmd5>
+    <version>47.2</version>
+    <time>1736279604</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235456</requestid>
+  </revision>
 </revisionlist>

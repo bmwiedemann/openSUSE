@@ -400,4 +400,12 @@
 - Drop python-google-api-core-no-mock.patch, merged upstream (forwarded request 1228327 from glaubitz)</comment>
     <requestid>1228363</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d1582023dc72655cc10850bc334eb194</srcmd5>
+    <version>2.24.0</version>
+    <time>1736279582</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235263</requestid>
+  </revision>
 </revisionlist>

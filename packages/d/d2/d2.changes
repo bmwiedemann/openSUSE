@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Sun Jan  5 15:18:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.6.8:
+  * Render: SVG files render in non-browser contexts (e.g. Inkscape, LaTeX) #2147
+  * Lib: removes a dependency on external slog that was causing troubles with installation #2137
+  * CLI: attempts writing to path atomically, falling back to non-atomic if failed #2141
+  * Export: pptx has "created at" metadata removed, so successive runs yield the same result #2169
+  * Formatter: empty board keywords (e.g. layers) are removed #2178
+  * Render: a tooltip or link by itself will not expand width of shape #2183
+  * Render: fixes edge case of a 3d shape with outside label being cut off #2132
+  * Composition: labels for boards set with shorthand x: y was not applied #2182
+  * Globs: double globs (**) were erroring when used with multiple scenario boards #2195
+
+- Update to version 0.6.7:
+  * Vars: Variable definitions can refer to other variables in the current scope #2052
+  * Composition: Imported boards can use underscores to reference boards beyond its own scope 
+    (e.g. to a sibling board at the scope its imported to) #2075
+  * Autoformat: Reserved keywords are formatted to be lowercase #2098
+  * Misc: support for characters in the Latin-1 and geometric shapes unicode range #2100
+  * Imports: can now import from absolute file paths #2113
+  * Render: linear and radial gradients are now available for fill, stroke and font-color #2120
+  * Sequence diagram: edge groups account for edge label heights #2038
+  * Sequence diagram: self-referential edges account for edge label heights #2040
+  * Sequence diagram: The spacing between self-referential edges and regular edges is uniform #2043
+  * Compiler: Error on multi-line labels in sql_table shapes #2057
+  * Sequence diagram: Image shape actors can use spans and notes #2056
+  * Globs: Filters work with default values (e.g. &opacity: 1 will capture everything without opacity explicitly set) #2090
+  * Render: connection label fills have a bit of padding and border-radius for better aesthetics #2094
+  * Sequence diagram: the padding between message labels and message endpoints are slightly increased #2096
+  * Render: code syntax highlighter dependency upgrade caused some slight subtle color changes in code snippets #2119
+  * Sequence diagram: multi-line edge labels no longer can collide with other elements #2049
+  * Sequence diagram: long self-referential edge labels no longer can collide neighboring actors 
+    (or its own) lifeline edges #2050
+  * Sequence diagram: fixes layout when sequence diagrams are in children boards (e.g. a layer) #1692
+  * Globs: An edge case was fixed where globs used in edges were creating nodes when it shouldn't have #2051
+  * Render: Multi-line class labels/headers are rendered correctly #2057
+  * CLI: Watch mode uses correct backlinks (_ usages) #2058
+  * Vars: Spread variables are inserted in place instead of appending to end of scope #2062
+  * Imports: fix local icon imports from files that are imported #2066
+  * CLI: fixes edge case of watch mode links to nested board that had more nested boards not working #2070
+  * CLI: fixes theme flag not being passed to GIF outputs #2071
+  * CLI: fixes scale flag not being passed to animated SVG outputs #2071
+  * CLI: pptx exports use theme flags correctly #2099
+  * Imports: importing files with url links is fixed #2105
+  * Composition: linking to invalid boards no longer produces an invalid link #2118
+
+-------------------------------------------------------------------
+Fri Aug  2 03:40:33 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.6:
+  * Glob inverse filters are implemented (e.g. *: {!&shape: circle; style.fill: red} to turn all non-circles red) #2008
+  * Globs can be used in glob filter values, including checking for existence (e.g. *: {&link: *; style.fill: red} to turn all objects with a link red) #2009
+  * Opacity 0 shapes no longer have a label mask which made any segment of connections going through them lower opacity #1940
+  * Bidirectional connections are now animated in opposite directions rather than one direction #1939
+  * Local relative icons are relative to the d2 file instead of CLI invoke path #1924
+  * Custom label positions weren't being read when the width was smaller than the label #1928
+  * Using shape: circle for arrowheads no longer removes all arrowheads along path in sketch mode #1942
+  * Globs to null connections work #1965
+  * Edge globs setting styles inherit correctly in child boards #1967
+  * Board links imported with spread imports work #1972
+  * Fix importing a file with nested boards #1998
+  * Fix importing a file with underscores in links #1999
+  * Replace a panic with an error message resulting from invalid link usage #2011
+  * Fix globs not applying to scenarios on keys that were applied in earlier scenarios #2021
+  * Fix edge case of invalid SVG from code blocks #2031
+
+-------------------------------------------------------------------
+Thu Apr 18 05:12:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.5:
+  * D2 0.6.5 has a hotfix for 0.6.4 breaking plugin compatibility. Also includes 2 compiler fixes regarding substitutions/vars.
+  * Fix executable plugins that implement standalone router #1910
+  * Fix compiler error with multiple nested spread substitutions #1913
+  * Fix substitutions from imports into different scopes #1914
+
+-------------------------------------------------------------------
+Thu Apr 11 05:46:12 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.4:
+  * style.underline works on connections #1836
+  * none is added as an accepted value for fill-pattern. Previously there was no way to cancel the fill-pattern on select objects set by a theme that applies it (Origami) #1882
+  * Dimensions can be set less than label dimensions #1901
+  * Boards no longer inherit label fields from parents #1838
+  * Prevents near targeting a child of a special object like grid cells, which wasn't doing anything #1851
+  * Theme flags on CLI apply to PDFs #1894
+  * Fixes styles in connections not overriding styles set by globs #1857
+  * Fixes null being set on a nested shape not working in certain cases when connections also pointed to that shape #1830
+  * Fixes edge case of bad import syntax crashing using d2 as a library #1829
+  * Fixes style.fill not applying to markdown #1872
+  * Fixes compiler erroring on certain styles when the shape's shape value is not all lowercase (e.g. Circle) #1887
+
+-------------------------------------------------------------------
 Wed Jan 17 22:48:08 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.6.3:

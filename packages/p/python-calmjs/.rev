@@ -104,4 +104,13 @@
 - Switch to pyrpoject macros.</comment>
     <requestid>1229184</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>eaed4cd501f9a243afd7b90d2093cc97</srcmd5>
+    <version>3.4.4</version>
+    <time>1736279618</time>
+    <user>anag+factory</user>
+    <comment>- Rejig patch support-python-313.patch to also cope with other argparse
+  changes.</comment>
+    <requestid>1235476</requestid>
+  </revision>
 </revisionlist>

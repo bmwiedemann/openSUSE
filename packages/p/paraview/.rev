@@ -554,4 +554,42 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>1232907</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3efc15fa53d9c5207ae535d9b329eeac</srcmd5>
+    <version>5.13.2</version>
+    <time>1736279615</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.13.2:
+  * Update Insitu logic to use script filename (instead of full
+    path) when searching PYTHONPATH directories (details).
+  * Fixed CLI error loading multiple-file series (details).
+  * Fixed CLI error that was opening two copies of single file
+    specified in command line (details).
+  * Fixed pvbatch syntax warning messages (“invalid escape
+    sequence”) (details).
+  * Fixed spreadsheet view to update correctly when timestep is
+    reset to 0 (details).
+  * Fixed problems loading state file when remote volume rendering
+    is used (details).
+  * More info at:
+    &lt;https://www.kitware.com/paraview-5-13-2-release-notes/&gt;.
+- Use internal pegtl lib due to version incompatibility.
+- Disable ZFP due to building problems with internal/external.
+- Added sed command to fix linker flags in build.ninja.
+- Removed unnecessary shebang at rtImageTest.py.
+- Dropped patches:
+  * 0001-Fix-missing-fmt-ranges.h-include-in-ioss-ThirdParty-.patch
+  * fix-CVE-2024-50602.patch
+- Add patches:
+  * 0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
+- Various spec file cleanups and fixes:
+  * Fix version dependent bcond's for TW
+  * Remove unused netcdf-cxx build dependency
+  * Remove unnecessary sqlite and wget binary build dependencies
+  * Use system libharu, fast-float and fmt when available
+- Fix build with recent fmt, add
+  * 0001-Fix-missing-fmt-ranges.h-include-in-ioss-ThirdParty-.patch
+</comment>
+    <requestid>1235695</requestid>
+  </revision>
 </revisionlist>

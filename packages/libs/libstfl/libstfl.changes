@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 11:16:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete broken patch stfl-ncurses.patch to fix FTBFS.
+- Stop shipping static library
+
+-------------------------------------------------------------------
 Fri Mar  1 10:04:25 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

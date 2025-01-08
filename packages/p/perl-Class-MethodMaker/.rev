@@ -218,4 +218,16 @@
     <comment></comment>
     <requestid>1155452</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>42f444643309edf330ae6b98c5295d23</srcmd5>
+    <version>2.250.0</version>
+    <time>1736279588</time>
+    <user>anag+factory</user>
+    <comment>- Remove reproducible.patch (fixed upstream)
+- updated to 2.250.0 (2.25)
+   see /usr/share/doc/packages/perl-Class-MethodMaker/Changes
+  2.25	Nov 15 2024
+          - deterministic hash key order, needed for reproducible builds (GH#6, Bernhard M. Wiedemann) (forwarded request 1235371 from tinita)</comment>
+    <requestid>1235375</requestid>
+  </revision>
 </revisionlist>

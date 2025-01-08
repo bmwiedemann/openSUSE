@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 24 11:44:22 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.4.0:
+  + Add new user configuration for the cache
+  + docs: fix link to docker install instructions
+  + Fix console warnings in newer python versions
+  + Update github CI workflow actions
+  + Fix `bst artifact show --long` for artifacts with symlinks
+  + Fix race condition in public data handling
+  + Cleanup deadcode
+  + Make remote execution directory fetching more robust
+  + Disable logging for frequent cache query jobs
+  + Improve performance when using `storage-service`
+  + Fixed issues with nested junctions
+  + Drop support for Python 3.8 and add support for Python 3.13
+  + Load time optimization for commands which don't require cache
+    queries
+  + Address deprecation warnings from deprecated pkg_resources
+
+-------------------------------------------------------------------
 Thu Sep 12 09:28:39 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.3.0:

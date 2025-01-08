@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtualenvwrapper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %bcond_with test
-%global pythons python3
 Name:           python-virtualenvwrapper
 Version:        6.1.1
 Release:        0
@@ -25,6 +24,7 @@ Summary:        Enhancements to virtualenv
 License:        MIT
 URL:            https://virtualenvwrapper.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-%{version}.tar.gz
+Source98:       README-SUSE.rst
 Source99:       python-virtualenvwrapper.rpmlintrc
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
@@ -65,6 +65,8 @@ conflicts in their dependencies.
 %autosetup -p1 -n virtualenvwrapper-%{version}
 sed -i -e '1i#!/bin/sh' virtualenvwrapper.sh
 
+cp -p %{SOURCE98} .
+
 %build
 %pyproject_wheel
 
@@ -92,7 +94,7 @@ done
 
 %files %{python_files}
 %license LICENSE
-%doc README.es.rst README.ja.rst README.txt
+%doc README.es.rst README.ja.rst README.txt README-SUSE.rst
 %python_alternative %{_bindir}/virtualenvwrapper
 %python_alternative %{_bindir}/virtualenvwrapper_lazy
 %{python_sitelib}/virtualenvwrapper

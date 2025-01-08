@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:32:07 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- switch to github tarball, as there's no longer an sdist on pypi
+- update to version v3.3.3:
+ - Changes
+  - Starting with version 0.28.0 of httpx, *verify* should be either a bool or an *SSL Context*.
+- update to version 3.3.2:
+ - Fixes
+  - Replace the removed httpx parameter of *proxies* by *proxy* (fixes #102)
+  - Pin dependencies to supported relative upstream versions.
+  - Remove the now obsolete *setup.py*.
+- update to version 3.3.1:
+ - Fixes
+  - Fix str(bytes) warning (*BytesWarning: str() on a bytes instance*) (#1074)
+ - Changes
+  - Set included files for ruff
+  - Switch to hatchling
+  - Set ignores for tests files
+  - Ignore uv.lock
+- update to version 3.3.0:
+ - Removed
+  - Remove support for now EoL Python 3.8.
+- update to version 3.2.0:
+ - Added
+  - Added option for custom list of fields to be populated for search "query_format" param to avoid unnecessary round trips to get fields like Told, Starts, Resolved, etc by returning the required fields during search. (see #97 @nerdfirefighter)
+
+-------------------------------------------------------------------
 Mon Sep 23 09:20:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

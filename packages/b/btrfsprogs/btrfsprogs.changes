@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jan  6 00:00:00 CET 2025 - dsterba@suse.cz
+
+- update to 6.12
+  * subvolume delete: add new option to do recursive subvolume deletion (for
+    regular user delete only accessible subvolumes)
+  * mkfs:
+    * new option --subvol to create subvolumes in given paths, read-write,
+      read-only and default
+    * add hard link detection support for --rootdir option
+  * fixes:
+    * receive: message verbosity fixes
+    * check: fix false positive report of missing checksum for extent holes
+    * check: handle compressed extents when checking tree log
+    * when asking Y/N user questions, flush the terminal so the question is
+      displayed (e.g. btrfstune -S)
+  * other
+    * code refactoring, error handling
+    * python packaging fixes
+    * documentation updates
+    * new tests
+- update to 6.11
+  * check:
+    * check items in tree-log
+    * detect invalid file extent items for symlinks
+    * properly detect inode cache and suggest removal by 'clear-ino-cache'
+  * convert: fix symlink length checks
+  * fi show: remove stray newline at the end of the output
+  * fixes:
+    * open devices in write-exclusive mode in most commands, prevent
+      concurrent mount by other programs
+    * rescue clear-ino-cache: fix subvolume iteration that can fail in some cases
+    * map-logical: fix first extent searching condition
+    * fi resize: warn if new size is below 256M
+  * tree-checker:
+    * slightly stricter file type validation
+    * verify device extent items
+  * other:
+    * documentation updates
+    * ship btrfs-ioctl manual page (incomplete)
+
+-------------------------------------------------------------------
 Thu Aug 15 00:00:00 CEST 2024 - dsterba@suse.cz
 
 - update to 6.10.1

@@ -1,7 +1,7 @@
 #
 # spec file for package intel-hybrid-driver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,17 @@
 
 
 Name:           intel-hybrid-driver
-Version:        1.0.2
+Version:        2.0.0
 Release:        0
 Summary:        VA driver for Intel G45 & HD Graphics family
 License:        MIT
 URL:            https://github.com/intel/intel-hybrid-driver
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         U_Update-the-dependency-to-libva-2.0.patch
-Patch1:         n_libva-2.0-ABI-header-fix.patch
-Patch2:         u_gcc10.patch
+Source0:        %{url}/archive/1.0.2/%{name}-1.0.2.tar.gz
+Patch1:         intel-hybrid-codec-driver-2.0.0-gcc10-fix.patch
+Patch2:         intel-hybrid-codec-driver-2.0.0-invalid-read-fix.patch
+Patch3:         intel-hybrid-codec-driver-2.0.0-nullptr-fix.patch
+Patch4:         intel-hybrid-codec-driver-2.0.0-vadriverinit-fix.patch
+Patch5:         intel-hybrid-codec-driver-2.0.0-x11-fix.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  libtool
@@ -46,7 +48,7 @@ This is the VA-API implementation for Intel G45 chipsets
 and Intel HD Graphics for Intel Core processor family.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-1.0.2
 
 %build
 NOCONFIGURE=1 ./autogen.sh

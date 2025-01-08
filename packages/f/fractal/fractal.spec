@@ -60,6 +60,7 @@ BuildRequires:  pkgconfig(shumate-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.24.0
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.14.1
 Requires:       glycin-loaders
+Requires:       gstreamer-plugins-good-gtk
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

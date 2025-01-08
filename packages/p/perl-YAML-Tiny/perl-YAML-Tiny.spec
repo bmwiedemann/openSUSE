@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-Tiny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name YAML-Tiny
 Name:           perl-YAML-Tiny
-Version:        1.74
+Version:        1.760.0
 Release:        0
+# 1.76 -> normalize -> 1.760.0
+%define cpan_version 1.76
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Read/Write YAML files with as little code as possible
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -31,6 +33,8 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(Test::More) >= 0.88
+Provides:       perl(YAML::Tiny) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -71,9 +75,9 @@ the order of your YAML data. But it should round-trip from Perl structure
 to file and back again just fine.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

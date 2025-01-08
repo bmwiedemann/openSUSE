@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Jan  6 15:41:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.157.0
+  * **aiplatform:** Update the api
+  * **androidpublisher:** Update the api
+  * **apigee:** Update the api
+  * **chromemanagement:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **content:** Update the api
+  * **css:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **firebaseml:** Update the api
+  * **jobs:** Update the api
+  * **merchantapi:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **translate:** Update the api
+  * **dlp:** Update the api
+- from version 2.156.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **artifactregistry:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **chat:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudidentity:** Update the api
+  * **config:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **css:** Update the api
+  * **dataflow:** Update the api
+  * **datamigration:** Update the api
+  * **dataplex:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **file:** Update the api
+  * **gkehub:** Update the api
+  * **healthcare:** Update the api
+  * **integrations:** Update the api
+  * **migrationcenter:** Update the api
+  * **netapp:** Update the api
+  * **networkmanagement:** Update the api
+  * **notebooks:** Update the api
+  * **oracledatabase:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **privateca:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **servicecontrol:** Update the api
+  * **sheets:** Update the api
+  * **sqladmin:** Update the api
+  * **storage:** Update the api
+  * **workflows:** Update the api
+  * **workloadmanager:** Update the api
+- from version 2.155.0
+  * **admin:** Update the api
+  * **aiplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticsdata:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **apigee:** Update the api
+  * **appengine:** Update the api
+  * **appengine:** Update the api
+  * **bigquery:** Update the api
+  * **checks:** Update the api
+  * **checks:** Update the api
+  * **chromemanagement:** Update the api
+  * **classroom:** Update the api
+  * **cloudidentity:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **content:** Update the api
+  * **dataform:** Update the api
+  * **datafusion:** Update the api
+  * **datamigration:** Update the api
+  * **deploymentmanager:** Update the api
+  * **digitalassetlinks:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **eventarc:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebasedynamiclinks:** Update the api
+  * **firebaseml:** Update the api
+  * **firebaseml:** Update the api
+  * **forms:** Update the api
+  * **integrations:** Update the api
+  * **merchantapi:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **orgpolicy:** Update the api
+  * **playintegrity:** Update the api
+  * **playintegrity:** Update the api
+  * **policysimulator:** Update the api
+  * **redis:** Update the api
+  * **redis:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **servicemanagement:** Update the api
+  * **serviceusage:** Update the api
+  * **tagmanager:** Update the api
+  * **toolresults:** Update the api
+  * **walletobjects:** Update the api
+  * **youtube:** Update the api
+  * **youtube:** Update the api
+  * **youtube:** Update the api
+
+-------------------------------------------------------------------
 Thu Dec  5 09:46:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.154.0

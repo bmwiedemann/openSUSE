@@ -10,4 +10,4 @@ addFilter("devel-file-in-non-devel-package .*/usr/lib.*/paraview-[0-9.]*/plugins
 addFilter("python3-paraview.* explicit-lib-dependency python3-matplotlib")
 
 # 0 size files are referenced in cmake files
-addFilter("paraview-devel.* zero-length")
+addFilter("paraview.* zero-length")

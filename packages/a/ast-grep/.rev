@@ -712,4 +712,15 @@
   * feat: resolve rule id for ScanResult 9a7f3cc</comment>
     <requestid>1234486</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>95e7238b00ec7c9f1975785a6f093951</srcmd5>
+    <version>0.33.0</version>
+    <time>1736279677</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.33.0:
+  * Breaking change: refactor: move pyo3 registration to CustomLang 4ddb08f
+  * feat: introduce napi_lang for dynamic loading 1a8d782
+  * chore(deps): update dependency @ast-grep/napi to v0.32.3 713244f</comment>
+    <requestid>1235583</requestid>
+  </revision>
 </revisionlist>

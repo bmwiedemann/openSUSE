@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.11.9
+Version:        3.11.11
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -128,15 +128,15 @@ rm -r %{buildroot}%{$python_sitearch}/aiohttp/.hash
 
 %check
 donttest="test_aiohttp_request_coroutine or test_mark_formdata_as_processed or test_aiohttp_plugin_async or test_secure_https_proxy_absolute_path"
-# no name resolution
-donttest+=" or test_client_session_timeout_zero"
-# flaky
-donttest+=" or test_https_proxy_unsupported_tls_in_tls"
-donttest+=" or test_shutdown_handler_cancellation_suppressed"
+# # no name resolution
+# donttest+=" or test_client_session_timeout_zero"
+# # flaky
+# donttest+=" or test_https_proxy_unsupported_tls_in_tls"
+# donttest+=" or test_shutdown_handler_cancellation_suppressed"
 # raises not expected "ConnectionResetError" with openssl 3.2 and python < 3.11
 donttest+=" or test_tcp_connector_raise_connector_ssl_error[pyloop]"
-# fails with pytest 8 https://github.com/aio-libs/aiohttp/issues/8234
-donttest+=" or (test_pytest_plugin and test_aiohttp_plugin)"
+# # fails with pytest 8 https://github.com/aio-libs/aiohttp/issues/8234
+# donttest+=" or (test_pytest_plugin and test_aiohttp_plugin)"
 
 # requires python-on-whales
 rm -v tests/autobahn/test_autobahn.py

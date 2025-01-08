@@ -1,0 +1,25 @@
+<services>
+
+<service name="obs_scm" mode="manual">
+  <param name="scm">git</param>
+  <param name="url">https://github.com/YACReader/yacreader</param>
+  <param name="filename">yacreader</param>
+  <param name="revision">9.15.0</param>
+  <param name="versionformat">@PARENT_TAG@</param>
+</service>
+
+<service name="obs_scm" mode="manual">
+  <param name="scm">git</param>
+  <param name="url">https://github.com/selmf/unarr</param>
+  <param name="filename">unarr</param>
+  <param name="revision">b211040df83dee513362cdeb9bd87afa26fd5e38</param>
+  <param name="version">_none_</param>
+</service>
+
+<service name="tar" mode="manual" />
+<service name="recompress" mode="manual">
+  <param name="compression">zstd</param>
+  <param name="file">*.tar</param>
+</service>
+
+</services>

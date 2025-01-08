@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  1 05:32:58 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20241001
+   see /usr/share/doc/packages/perl-Modern-Perl/Changes
+
+  1.20241001 2024-09-30 19:12:47-07:00 America/Los_Angeles
+      - fix switch tests after Perl 5.41.4 removal of deprecated feature (RT #155822, Slaven Rezic)
+
+  1.20240120 2024-01-20 12:15:09-08:00 America/Los_Angeles
+      - fix tests for Perl < 5.26.0 (RT #151198, Slaven Rezic)
+      - fix feature reset for Perl < 5.15 (RT #151190, Slaven Rezic)
+
+-------------------------------------------------------------------
 Mon Jan 15 03:07:07 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20240115

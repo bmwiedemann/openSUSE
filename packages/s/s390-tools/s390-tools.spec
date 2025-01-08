@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -158,6 +158,7 @@ Patch915:       s390-tools-02-zipl-src-fix-imprecise-check-that-file-is-on-speci
 ###
 Patch916:       s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch
 Patch917:       s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch
+Patch918:       s390-tools-03-rust-pvimg-Add-enable-disable-image-encryption-flags-to-pvimg-create.patch
 ###
 Patch920:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###

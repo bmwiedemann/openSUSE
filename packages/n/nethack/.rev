@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>1234671</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fe2b49be2c500915948bde4c27ff1251</srcmd5>
+    <version>3.4.3</version>
+    <time>1736279622</time>
+    <user>anag+factory</user>
+    <comment>- Mark NetHack's record and logfile file with %config(noreplace), so
+  that package updates do not overwrite existing highscores and
+  information about previous games. Also list the various state files
+  individually instead of lumping them together.
+- Install 'logfile' instead of 'log' in NetHack's state directory. The
+  file contains information about earlier played games.
+- Avoid race around dlb.o (boo#1102408)
+</comment>
+    <requestid>1235499</requestid>
+  </revision>
 </revisionlist>

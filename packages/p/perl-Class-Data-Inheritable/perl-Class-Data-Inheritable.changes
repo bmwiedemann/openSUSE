@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 24 05:32:14 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-Class-Data-Inheritable/Changes
+
+  0.10  Thu Oct 24 01:40:24 UTC 2024
+      - don't use vars, use our (thanks haarg)
+
+-------------------------------------------------------------------
 Sat Jul 31 03:06:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.09

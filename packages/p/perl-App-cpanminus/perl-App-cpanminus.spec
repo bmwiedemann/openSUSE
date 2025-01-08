@@ -18,7 +18,7 @@
 
 %define cpan_name App-cpanminus
 Name:           perl-App-cpanminus
-Version:        1.7047
+Version:        1.7048
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Get, unpack, build and install modules from CPAN

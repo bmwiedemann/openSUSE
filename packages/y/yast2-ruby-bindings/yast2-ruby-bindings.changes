@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 16:01:56 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt to ruby 3.4 (gh#yast/yast-ruby-bindings#292)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

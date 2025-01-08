@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 06 18:31:44 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1736157351.7aa835c:
+  * Modify loadtestdir in autotest for more code coverage
+  * Remove unreachable states in tests 18-backend-qemu
+  * Fix code coverage for qemu.pm
+  * t: fix tests for #2550 for old and new qemu
+  * Fix test of qemu backend
+  * Enable multifd support
+  * Add unit test for 'ensure_installed' to improve code coverage
+
+-------------------------------------------------------------------
 Sun Jan 05 17:15:03 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1735912767.1d8e059:

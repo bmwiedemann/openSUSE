@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 14:58:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.9
+  * Place client_assertion JWT in body instead of URL
+
+-------------------------------------------------------------------
 Tue Nov 12 13:34:00 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 2.9.8

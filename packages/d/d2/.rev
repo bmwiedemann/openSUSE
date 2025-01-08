@@ -128,4 +128,41 @@
   * Fixes a bug where an edge could become disconnected with dagre layout and direction right. #1778 (forwarded request 1139555 from jfkw)</comment>
     <requestid>1139556</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aefa31ff17558ba1bd654bb7180197a9</srcmd5>
+    <version>0.6.8</version>
+    <time>1736279487</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.8:
+  * Render: SVG files render in non-browser contexts (e.g. Inkscape, LaTeX) #2147
+  * Lib: removes a dependency on external slog that was causing troubles with installation #2137
+  * CLI: attempts writing to path atomically, falling back to non-atomic if failed #2141
+  * Export: pptx has &quot;created at&quot; metadata removed, so successive runs yield the same result #2169
+  * Formatter: empty board keywords (e.g. layers) are removed #2178
+  * Render: a tooltip or link by itself will not expand width of shape #2183
+  * Render: fixes edge case of a 3d shape with outside label being cut off #2132
+  * Composition: labels for boards set with shorthand x: y was not applied #2182
+  * Globs: double globs (**) were erroring when used with multiple scenario boards #2195
+- Update to version 0.6.7:
+  * Vars: Variable definitions can refer to other variables in the current scope #2052
+  * Composition: Imported boards can use underscores to reference boards beyond its own scope 
+    (e.g. to a sibling board at the scope its imported to) #2075
+  * Autoformat: Reserved keywords are formatted to be lowercase #2098
+  * Misc: support for characters in the Latin-1 and geometric shapes unicode range #2100
+  * Imports: can now import from absolute file paths #2113
+  * Render: linear and radial gradients are now available for fill, stroke and font-color #2120
+  * Sequence diagram: edge groups account for edge label heights #2038
+  * Sequence diagram: self-referential edges account for edge label heights #2040
+  * Sequence diagram: The spacing between self-referential edges and regular edges is uniform #2043
+  * Compiler: Error on multi-line labels in sql_table shapes #2057
+  * Sequence diagram: Image shape actors can use spans and notes #2056
+  * Globs: Filters work with default values (e.g. &amp;opacity: 1 will capture everything without opacity explicitly set) #2090
+  * Render: connection label fills have a bit of padding and border-radius for better aesthetics #2094
+  * Sequence diagram: the padding between message labels and message endpoints are slightly increased #2096
+  * Render: code syntax highlighter dependency upgrade caused some slight subtle color changes in code snippets #2119
+  * Sequence diagram: multi-line edge labels no longer can collide with other elements #2049
+  * Sequence diagram: long self-referential edge labels no longer can collide neighboring actors 
+    (or its own) lifeline edges #2050 (forwarded request 1235047 from amanzini)</comment>
+    <requestid>1235063</requestid>
+  </revision>
 </revisionlist>

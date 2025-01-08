@@ -184,4 +184,14 @@
     <comment></comment>
     <requestid>1132890</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>4edb55622e3d40b3cb4f675f3668b0ab</srcmd5>
+    <version>3.3.5</version>
+    <time>1736279509</time>
+    <user>anag+factory</user>
+    <comment>- Fix start failure by systemd
+  * Make sure /etc/shadowsocks can be read by shadowsocks user
+  * Create the PID under /run/shadowsocks (forwarded request 1235123 from hillwood)</comment>
+    <requestid>1235124</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 27 09:14:38 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Use wxWidgets-3_2 instead wxWidgets-3_0.
+
+-------------------------------------------------------------------
 Mon Mar  4 12:00:57 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

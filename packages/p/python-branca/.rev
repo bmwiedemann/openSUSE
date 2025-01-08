@@ -119,4 +119,12 @@ Required by python-ipyleaflet and python-folium</comment>
   * Add type hints</comment>
     <requestid>1198884</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ae9c8923b8bf9330429fdc82d9fda91e</srcmd5>
+    <version>0.8.1</version>
+    <time>1736279638</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235526</requestid>
+  </revision>
 </revisionlist>

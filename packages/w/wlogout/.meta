@@ -1,0 +1,6 @@
+<package name="wlogout" project="openSUSE:Factory">
+  <title>wlogout</title>
+  <description>Wlogout is a wayland based logout menu</description>
+  <devel project="X11:Wayland" package="wlogout"/>
+  <url>https://github.com/ArtsyMacaw/wlogout</url>
+</package>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Form
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name HTML-Form
 Name:           perl-HTML-Form
-Version:        6.11
+Version:        6.120.0
 Release:        0
+# 6.12 -> normalize -> 6.120.0
+%define cpan_version 6.12
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Class that represents an HTML form element
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -42,6 +44,16 @@ Requires:       perl(HTTP::Request::Common) >= 6.03
 Requires:       perl(Test::More) >= 0.96
 Requires:       perl(URI) >= 1.10
 Requires:       perl(parent)
+Provides:       perl(HTML::Form) = %{version}
+Provides:       perl(HTML::Form::FileInput) = %{version}
+Provides:       perl(HTML::Form::IgnoreInput) = %{version}
+Provides:       perl(HTML::Form::ImageInput) = %{version}
+Provides:       perl(HTML::Form::Input) = %{version}
+Provides:       perl(HTML::Form::KeygenInput) = %{version}
+Provides:       perl(HTML::Form::ListInput) = %{version}
+Provides:       perl(HTML::Form::SubmitInput) = %{version}
+Provides:       perl(HTML::Form::TextInput) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -52,7 +64,7 @@ be tweaked and it can then be asked to provide HTTP::Request objects that
 can be passed to the request() method of LWP::UserAgent.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

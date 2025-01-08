@@ -1,7 +1,7 @@
 #
 # spec file for package python-rt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,23 @@
 
 
 Name:           python-rt
-Version:        3.2.0
+Version:        3.3.3
 Release:        0
 Summary:        Python interface to Request Tracker API
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/CZ-NIC/python-rt
-Source:         https://files.pythonhosted.org/packages/source/r/rt/rt-%{version}.tar.gz
+Source:         https://github.com/python-rt/python-rt/archive/refs/tags/v%{version}.tar.gz#/rt-%{version}.tar.gz
 Source1:        setup.cfg
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-httpx >= 0.28
 Requires:       python-requests
-Requires:       python-requests-toolbelt
 BuildArch:      noarch
 
 %python_subpackages
@@ -41,7 +42,7 @@ BuildArch:      noarch
 Python implementation of Request Tracker (a ticketing system) REST API described here: https://rt-wiki.bestpractical.com/wiki/REST
 
 %prep
-%setup -q -n rt-%{version}
+%setup -q -n python-rt-%{version}
 cp %{SOURCE1} setup.cfg
 sed -i 's/^dynamic = \["version"]/version = "%{version}"/' pyproject.toml
 

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 17 05:36:26 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.760.0 (1.76)
+   see /usr/share/doc/packages/perl-YAML-Tiny/Changes
+
+  1.76    2024-12-16 18:59:46Z
+          [FIXED]
+          - revert change from #60: "yes", "y" etc are not actually booleans.
+            (see issue #66).
+  1.75    2024-12-15 21:24:54Z
+          [FIXED]
+          - fixed regression in %QUOTE (Nathan Monfils, PR#60) [later reverted
+            in release 1.76, see above)
+          - fix version comparison logic for forward compatibility (BooK, PR#63)
+
+-------------------------------------------------------------------
 Fri Mar 24 03:08:42 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.74

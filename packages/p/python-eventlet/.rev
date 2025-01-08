@@ -644,4 +644,12 @@
   - Switch back to stable releases</comment>
     <requestid>1228388</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>af505e13b59129a3e76619341349eaeb</srcmd5>
+    <version>0.38.2</version>
+    <time>1736279454</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235524</requestid>
+  </revision>
 </revisionlist>

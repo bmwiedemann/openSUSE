@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 30 05:32:43 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13.0 (0.013)
+   see /usr/share/doc/packages/perl-IRI/Changes
+
+  0.013  2024-09-29
+   - (Update) New version to address bad data in META.yml in 0.12 release.
+  0.012  2024-09-28
+   - (Update) Fix bug that inadvertently allowed trailing newlines at the end
+     of an IRI.
+
+-------------------------------------------------------------------
 Fri Feb 21 03:10:50 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.011

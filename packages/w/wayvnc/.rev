@@ -136,4 +136,24 @@
     Attaching fails, but it doesn't crash.</comment>
     <requestid>1150571</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>050076c5ca7300ae88cfb2786e56448b</srcmd5>
+    <version>0.9.1</version>
+    <time>1736279672</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.1:
+  * Fix buffer allocation on FreeBSD.
+
+- Update to 0.9.0:
+  * The new ext-image-copy-capture-v1 protocol has been implemented for output
+    capturing.
+  * A file descriptor created by a parent process can be used for listening for
+    new connections, thanks to Attila Fidan.
+  * Clipboard handling has been made more robust, thanks again to Attila Fidan.
+  * WayVNC can now allocate CMA backed pixel buffers. They are required for
+    hardware encoding on Raspberry Pi.
+  * Keyboard LED state can be passed to clients.
+  * Output power management is now only enabled while capturing.</comment>
+    <requestid>1235576</requestid>
+  </revision>
 </revisionlist>

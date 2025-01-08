@@ -1,7 +1,7 @@
 #
 # spec file for package ruby
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           ruby
-Version:        3.3
+Version:        3.4
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         README
-Url:            http://www.ruby-lang.org/
+URL:            http://www.ruby-lang.org/
 Summary:        An Interpreted Object-Oriented Scripting Language
 License:        MIT
 Group:          Development/Languages/Ruby

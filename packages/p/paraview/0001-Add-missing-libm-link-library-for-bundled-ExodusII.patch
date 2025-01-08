@@ -1,0 +1,22 @@
+From 11749efe6bbe30e8d9a88b624c356a45c3207fd2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 12 Dec 2024 17:27:49 +0100
+Subject: [PATCH] Add missing libm link library for bundled ExodusII
+
+---
+ VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt b/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
+index e3b10bb9..8e4ccd6e 100644
+--- a/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
++++ b/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
+@@ -338,4 +338,5 @@ vtk_module_include(VTK::exodusII
+     "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>")
+ vtk_module_link(VTK::exodusII
+   PRIVATE
++    m
+     Threads::Threads)
+-- 
+2.47.1
+

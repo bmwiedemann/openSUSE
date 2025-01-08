@@ -85,7 +85,7 @@ the execution time of each script.
  
 --- a/tools/libs/light/libxl_create.c
 +++ b/tools/libs/light/libxl_create.c
-@@ -1345,6 +1345,7 @@ static void initiate_domain_create(libxl
+@@ -1363,6 +1363,7 @@ static void initiate_domain_create(libxl
       * build info around just to know if the domain has a device model or not.
       */
      store_libxl_entry(gc, domid, &d_config->b_info);
@@ -294,7 +294,7 @@ the execution time of each script.
      /* private */
      libxl__ev_time time;
      libxl__ev_child child;
-@@ -4892,6 +4895,9 @@ _hidden int userlookup_helper_getpwuid(l
+@@ -4899,6 +4902,9 @@ _hidden int userlookup_helper_getpwuid(l
  
  #endif
  

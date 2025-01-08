@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Mon Jan  6 21:21:49 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- refetch f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+
+-------------------------------------------------------------------
+Fri Jan  3 00:45:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace no-strip.patch with the official patch, which also covers
+  more cases:
+  https://github.com/ghostty-org/ghostty/commit/f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+
+-------------------------------------------------------------------
+Wed Jan  1 22:44:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to the official tarball for 1.0.1 and add minisign file
+  plus verification step.
+
+-------------------------------------------------------------------
+Wed Jan  1 21:41:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- lock zig dependency to the same limits as upstream.
+
+-------------------------------------------------------------------
+Wed Jan  1 16:52:54 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add no-strip.patch
+  disable strip for the binary
+
+-------------------------------------------------------------------
+Wed Jan  1 16:42:44 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- move trim-deps.sh to vendor.sh and make it do all the steps to
+  cache the dependencies into vendor/zig
+- make the test file cleanup more robust
+
+-------------------------------------------------------------------
+Wed Jan  1 16:39:59 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.0.1
+  https://github.com/ghostty-org/ghostty/compare/v1.0.0...v1.0.1  
+- drop 3426.patch
+
+-------------------------------------------------------------------
+Wed Jan  1 16:00:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- simplify filelist
+
+-------------------------------------------------------------------
+Wed Jan  1 15:55:05 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add https://patch-diff.githubusercontent.com/raw/ghostty-org/ghostty/pull/3426.patch 
+  Fix missing DESTDIR handling for the terminfo step.
+
+-------------------------------------------------------------------
+Wed Jan  1 15:33:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- set the build option to have a clean version string
+- set the cpu=baseline define so we get the more portable binary
+- refactor out common build options into a define to ease
+  maintenance
+
+-------------------------------------------------------------------
+Wed Jan  1 14:29:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- also split out the neovim files
+
+-------------------------------------------------------------------
+Wed Jan  1 13:53:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- split out the terminfo files
+
+-------------------------------------------------------------------
+Thu Dec 26 21:00:05 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- initial package @v1.0.0

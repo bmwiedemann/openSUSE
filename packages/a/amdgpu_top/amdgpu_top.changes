@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jan  5 03:28:43 UTC 2025 - Marek Sapota <marek@sapota.org>
+
+- Update to version 0.10.1
+- v0.10.1
+  * Update libdrm_amdgpu_sys
+    * Fix CHIP_CLASS check for GFX12
+  * Include CHIP_GFX1103_R1X (Hawk Point1) in has_npu condition
+  * Add description of --xdna option
+  * Add new layout for wide term (150 or more columns) (#107)
+  * Fix "No localization for id"
+  * Add CPU Core Power Plot
+  * Add CPU Temperature Plot
+  * Add VCLK/DCLK Plot
+  * Persist selected PCI bus
+- v0.10.0
+  * Support for AMD XDNA NPU (amd/xdna-driver)
+  * Update libdrm_amdgpu_sys
+    * Support for GFX12 family (RDNA 4), CHIP_GFX1200 and CHIP_GFX1201
+    * Support for CHIP_GFX1103_R1X (Hawk Point1) and CHIP_GFX1103_R2X (Hawk Point2)
+  * Update GRBM2_INDEX
+    * Rename "RunList Controller" to "Ring List Controller"
+    * Fix the "Ring List Controller" bit for GFX10_3 (RDNA 2)
+  * Stop using get_unchecked (#104)
+  * Add metainfo file
+  * Remove amd_.*_visible_vram fields in FdInfoUsage
+    * ref: https://lists.freedesktop.org/archives/amd-gfx/2024-September/113971.html
+  * Implement dynamic_no_pc
+    * This allows the APU to transition to GFXOFF state.
+  * Add --gl and --vk options
+  * Support for the Close shortcut key (#97)
+  * Add the Quit button
+  * Update eframe to v0.29
+  * Update versions of i18n-embed and i18n-embed-fl
+  * Use LazyLock instead of once_cell
+  * Use wgpu feature (#101)
+    * This allows to get the driver version (Vulkan) and use APU for rendering.
+    * Enable x11 feature (#102)
+    * Select the GL backend as default
+
+-------------------------------------------------------------------
 Sun Sep 22 08:45:11 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 0.9.2 

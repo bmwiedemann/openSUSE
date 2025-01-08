@@ -381,4 +381,47 @@
   	* data update for 2024-08-03 (forwarded request 1195931 from tinita)</comment>
     <requestid>1196231</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6e4776beaa72b5719812bf5b849541db</srcmd5>
+    <version>20241224.1.0</version>
+    <time>1736279451</time>
+    <user>anag+factory</user>
+    <comment>- updated to 20241224.1.0 (20241224.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20241224.001 2024-12-24T04:16:05Z
+  	* data update for 2024-12-24
+  20241220.001 2024-12-20T12:09:49Z
+  	* data update for 2024-12-20
+  20241206.001 2024-12-07T16:13:59Z
+  	* Data update for 2024-12-06
+  20241205.001 2024-12-05T04:10:05Z
+  	* 2024-12-04 data update
+  20241130.001 2024-11-30T11:38:06Z
+  	* data update for 2024-11-30
+  20241123.001 2024-11-23T04:35:44Z
+  	* data update for 2024-11-22
+  20241112.001 2024-11-12T14:28:30Z
+  	* data update for 2024-11-12
+  20241107.001 2024-11-07T04:42:32Z
+  	* data update for 2024-11-06
+  20241105.001 2024-11-06T01:48:47Z
+  	* data update for 2024-11-05
+  20241025.001 2024-10-25T13:29:03Z
+  	* data update for 2024-10-25
+  20241019.001 2024-10-19T15:49:53Z
+  	* data update for 2024-10-19
+  20241017.001 2024-10-17T17:17:24Z
+  	* data update for 2024-10-17
+  20241014.001 2024-10-14T20:18:10Z
+  	* data update for 2024-10-14
+  20240930.001 2024-09-30T06:16:15Z
+  	* data update for 2024-09-30
+  20240918.001 2024-09-18T16:07:47Z
+  	* data update for 2024-09-18
+  20240914.001 2024-09-14T21:30:59Z
+  	* data update for 2024-09-14
+  20240906.001 2024-09-06T13:48:17Z
+  	* data update for 2024-09-06 (forwarded request 1235427 from tinita)</comment>
+    <requestid>1235496</requestid>
+  </revision>
 </revisionlist>

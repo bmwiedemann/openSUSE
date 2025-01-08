@@ -46,7 +46,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1858,6 +1858,7 @@ static inline int libxl_retrieve_domain_
+@@ -1863,6 +1863,7 @@ static inline int libxl_retrieve_domain_
  
  typedef struct {
      uint32_t flags; /* LIBXL_SUSPEND_* */

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan  6 16:55:04 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Mark NetHack's record and logfile file with %config(noreplace), so
+  that package updates do not overwrite existing highscores and
+  information about previous games. Also list the various state files
+  individually instead of lumping them together.
+
+- Install 'logfile' instead of 'log' in NetHack's state directory. The
+  file contains information about earlier played games.
+
+-------------------------------------------------------------------
+Fri Jan  3 09:53:43 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid race around dlb.o (boo#1102408)
+
+-------------------------------------------------------------------
 Fri Jan  3 07:27:58 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Implement parallel builds for all target. The Makefiles do not

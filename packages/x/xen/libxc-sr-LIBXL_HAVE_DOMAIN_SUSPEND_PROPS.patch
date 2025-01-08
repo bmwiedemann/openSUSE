@@ -20,7 +20,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
 
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1850,13 +1850,28 @@ static inline int libxl_retrieve_domain_
+@@ -1855,13 +1855,28 @@ static inline int libxl_retrieve_domain_
      libxl_retrieve_domain_configuration_0x041200
  #endif
  

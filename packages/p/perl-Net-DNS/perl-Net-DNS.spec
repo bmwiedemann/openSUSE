@@ -18,10 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.460.0
+Version:        1.490.0
 Release:        0
-# 1.46 -> normalize -> 1.460.0
-%define cpan_version 1.46
+# 1.49 -> normalize -> 1.490.0
+%define cpan_version 1.49
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -102,6 +102,7 @@ Provides:       perl(Net::DNS::RR::DHCID)
 Provides:       perl(Net::DNS::RR::DNAME)
 Provides:       perl(Net::DNS::RR::DNSKEY)
 Provides:       perl(Net::DNS::RR::DS)
+Provides:       perl(Net::DNS::RR::DSYNC)
 Provides:       perl(Net::DNS::RR::EUI48)
 Provides:       perl(Net::DNS::RR::EUI64)
 Provides:       perl(Net::DNS::RR::GPOS)
@@ -143,6 +144,7 @@ Provides:       perl(Net::DNS::RR::OPT::NSID)
 Provides:       perl(Net::DNS::RR::OPT::PADDING)
 Provides:       perl(Net::DNS::RR::OPT::REPORT_CHANNEL)
 Provides:       perl(Net::DNS::RR::OPT::TCP_KEEPALIVE)
+Provides:       perl(Net::DNS::RR::OPT::ZONEVERSION)
 Provides:       perl(Net::DNS::RR::PTR)
 Provides:       perl(Net::DNS::RR::PX)
 Provides:       perl(Net::DNS::RR::RP)

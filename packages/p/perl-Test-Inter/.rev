@@ -140,4 +140,16 @@
 </comment>
     <requestid>1156513</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6f91f69cde16cb26e8ef96f4d665b868</srcmd5>
+    <version>1.120.0</version>
+    <time>1736279443</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.120.0 (1.12)
+   see /usr/share/doc/packages/perl-Test-Inter/Changes
+  1.12  2024-12-09
+    - Fixed some comparisons so that perl 5.41.* won't give warnings.  Reported in
+      GitHub #51 (for Date::Manip distribution). (forwarded request 1235355 from tinita)</comment>
+    <requestid>1235368</requestid>
+  </revision>
 </revisionlist>

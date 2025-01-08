@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec 28 05:32:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.281.0 (1.281)
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.281   2024-12-27 14:44:47Z
+  	Summary:
+  	- Implement support for signatures and other parsing features
+
+  	Details:
+  	- Framework for recognition of parsing feature activation via:
+  	  - `use $PERL_VERSION` in code
+  	  - `use feature` in code
+  	  - `use $Common::CPAN::Module` in code
+  	  - PPI::Document->new( feature_mods => ... )
+  	  - PPI::Document->new( custom_feature_includes => ... )
+  	  - PPI::Document->new( custom_feature_include_cb => ... )
+  	  - $ENV{PPI_CUSTOM_FEATURE_INCLUDES}
+  	- Added ability to parse features:
+  	  - signatures, as PPI::Structure::Signature
+  	  - try catch, as PPI::Statement::Compound
+
+-------------------------------------------------------------------
 Sun Sep  1 05:31:34 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.279.0 (1.279)

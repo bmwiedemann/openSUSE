@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 20 06:39:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Fixes GHSA-4fg7-vxc8-qx5w
+- Update to version 0.11.1+0:
+  * Fixed a security vulnerability that could allow an attacker to
+    execute an arbitrary binary under certain conditions. Plugin
+    names are now required to only contain alphanumeric characters
+    or the four special characters +-._.
+  * Replace the test `NoCallbacks` with the library version
+  * Restrict set of valid characters for plugin names
+  * Add tests for invalid plugin name chars
+
+-------------------------------------------------------------------
 Sun Nov  3 19:04:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.11.0+0:
   Added:
   * Partial French translation!
-Fixed:
+  Fixed:
   * [Unix] Files can now be encrypted with rage --passphrase when
     piped over stdin, without requiring an explicit - argument as
     INPUT.

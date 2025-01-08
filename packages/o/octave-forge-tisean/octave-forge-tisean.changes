@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  1 19:25:41 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix some build issues with Octave 9.x, add
+  * 0001-Fix-const-correctness-invalid-used-of-non-const-fort.patch
+  * 0001-Fix-element-wise-plus-operator.patch
+
+-------------------------------------------------------------------
 Wed Apr 19 08:51:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add tisean-drop-error_state-use.patch -- Drop the use of

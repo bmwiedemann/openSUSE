@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 13 05:33:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.310.0 (0.31)
+   see /usr/share/doc/packages/perl-namespace-autoclean/Changes
+
+  0.31      2024-10-12 16:06:26Z
+    - no changes from last trial release
+
+  0.30      2021-04-20 17:51:47Z (TRIAL RELEASE)
+    - switch from Sub::Identify to Sub::Util (core in modern perls), falling
+      back to B.pm as needed
+
+-------------------------------------------------------------------
 Sun Aug 25 05:41:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.29

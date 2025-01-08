@@ -1,22 +1,22 @@
---- apache-tomcat-9.0.75-src/java/org/apache/jasper/compiler/JDTCompiler.java	2023-05-22 18:12:16.915658492 +0200
-+++ apache-tomcat-9.0.75-src/java/org/apache/jasper/compiler/JDTCompiler.java	2023-05-22 19:45:14.491706823 +0200
-@@ -310,7 +310,7 @@
-             } else if(opt.equals("15")) {
+--- apache-tomcat-9.0.98-src/java/org/apache/jasper/compiler/JDTCompiler.java	2025-01-06 17:29:55.096709905 +0100
++++ apache-tomcat-9.0.98-src/java/org/apache/jasper/compiler/JDTCompiler.java	2025-01-06 17:32:39.494486072 +0100
+@@ -298,7 +298,7 @@
+             } else if (opt.equals("15")) {
                  settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_15);
-             } else if(opt.equals("16")) {
+             } else if (opt.equals("16")) {
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_16);
 +                settings.put(CompilerOptions.OPTION_Source, "16");
-             } else if(opt.equals("17")) {
+             } else if (opt.equals("17")) {
                  // Constant not available in latest ECJ version that runs on
                  // Java 8.
-@@ -392,8 +392,8 @@
+@@ -395,8 +395,8 @@
                  settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_15);
                  settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_15);
-             } else if(opt.equals("16")) {
+             } else if (opt.equals("16")) {
 -                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_16);
 -                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_16);
 +                settings.put(CompilerOptions.OPTION_TargetPlatform, "16");
 +                settings.put(CompilerOptions.OPTION_Compliance, "16");
-             } else if(opt.equals("17")) {
+             } else if (opt.equals("17")) {
                  // Constant not available in latest ECJ version that runs on
                  // Java 8.

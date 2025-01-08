@@ -18,10 +18,10 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.290.0
+Version:        5.310.0
 Release:        0
-# 5.29 -> normalize -> 5.290.0
-%define cpan_version 5.29
+# 5.31 -> normalize -> 5.310.0
+%define cpan_version 5.31
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -56,12 +56,16 @@ Provides:       perl(URI::file::QNX) = %{version}
 Provides:       perl(URI::file::Unix) = %{version}
 Provides:       perl(URI::file::Win32) = %{version}
 Provides:       perl(URI::ftp) = %{version}
+Provides:       perl(URI::ftpes) = %{version}
+Provides:       perl(URI::ftps) = %{version}
 Provides:       perl(URI::geo) = %{version}
 Provides:       perl(URI::gopher) = %{version}
 Provides:       perl(URI::http) = %{version}
 Provides:       perl(URI::https) = %{version}
 Provides:       perl(URI::icap) = %{version}
 Provides:       perl(URI::icaps) = %{version}
+Provides:       perl(URI::irc) = %{version}
+Provides:       perl(URI::ircs) = %{version}
 Provides:       perl(URI::ldap) = %{version}
 Provides:       perl(URI::ldapi) = %{version}
 Provides:       perl(URI::ldaps) = %{version}
@@ -76,6 +80,7 @@ Provides:       perl(URI::rlogin) = %{version}
 Provides:       perl(URI::rsync) = %{version}
 Provides:       perl(URI::rtsp) = %{version}
 Provides:       perl(URI::rtspu) = %{version}
+Provides:       perl(URI::scp) = %{version}
 Provides:       perl(URI::sftp) = %{version}
 Provides:       perl(URI::sip) = %{version}
 Provides:       perl(URI::sips) = %{version}

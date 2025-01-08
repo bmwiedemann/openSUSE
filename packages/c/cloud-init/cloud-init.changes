@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:17:05 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-wait-for-net.patch (bsc#1227237)
+  + Wait for udev once if we cannot find the expected MAC
+
+-------------------------------------------------------------------
 Fri Jun 14 10:34:54 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - remove dependency on /usr/bin/python3 via using the macros (bsc#1212476)
@@ -7,7 +13,7 @@ Fri Jun 14 10:34:54 UTC 2024 - Markéta Machová <mmachova@suse.com>
 Mon Jun  3 19:53:46 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-skip-rename.patch (bsc#1219680)
-  + Brute force appraoch to skip renames if the device is already present
+  + Brute force approach to skip renames if the device is already present
 
 -------------------------------------------------------------------
 Mon Apr 29 21:49:48 UTC 2024 - Robert Schweikert <rjschwei@suse.com>

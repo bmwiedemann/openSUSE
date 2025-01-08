@@ -1,0 +1,5 @@
+<package name="rz-ghidra" project="openSUSE:Factory">
+  <title>Deep ghidra decompiler and sleigh disassembler integration for rizin</title>
+  <description>rz-ghidra is an integration of the Ghidra decompiler and Sleigh Disassembler for Rizin</description>
+  <devel project="devel:tools" package="rz-ghidra"/>
+</package>

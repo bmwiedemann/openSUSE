@@ -382,4 +382,16 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219473</requestid>
   </revision>
+  <revision rev="36" vrev="25">
+    <srcmd5>a3d472d98f22a5eddcc0823a98323025</srcmd5>
+    <version>0.10.1</version>
+    <time>1736279465</time>
+    <user>anag+factory</user>
+    <comment>- update filelist for the final 3.4.0 api_version
+
+- Fix filelist for 3.4.0
+
+- enable ruby3.4 support</comment>
+    <requestid>1233482</requestid>
+  </revision>
 </revisionlist>

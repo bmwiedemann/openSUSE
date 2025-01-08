@@ -51,4 +51,12 @@
 - Don't build on Python 3.6, due to no NumPy.</comment>
     <requestid>1137306</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01dbf4736a1e75fed706f65c2aa99516</srcmd5>
+    <version>0.7.6</version>
+    <time>1736279581</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235243</requestid>
+  </revision>
 </revisionlist>

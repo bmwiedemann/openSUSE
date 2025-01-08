@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  6 06:55:31 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- disable some tests for older kernels & strange archs
+
+-------------------------------------------------------------------
 Fri Dec  6 09:49:21 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - switch to signed tarball -- thanks to Andreas.Stieger@gmx.de

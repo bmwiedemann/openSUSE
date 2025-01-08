@@ -1,3 +1,13 @@
+-------------------------------------------------------------------
+Mon Jan  6 08:32:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix freeze on WebDAV automatic sync
+  + Fix memory leak on sync
+  + Allow to clear settings when sync is configured
+  + UI fixes for synchronization settings
+  + Fix hang when opening completely empty note
+  + Fix impossible to enter tab character
 
 -------------------------------------------------------------------
 Sun Sep 22 06:34:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>

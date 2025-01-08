@@ -70,6 +70,7 @@ sed -i "s/^CFLAGS.*/& %{optflags}/" Makefile dat/Makefile doc/Makefile src/Makef
 # files for makedefs first.
 %make_build -C src monst.o
 %make_build -C src objects.o
+%make_build -C src dlb.o
 
 # Build the game binary, then some data files. Finally build all
 # remaining default targets. Although 'all' covers the first three
@@ -93,7 +94,7 @@ install -d %{buildroot}/%{_mandir}/man6/
 # game directory
 install -m 775 -d %{buildroot}%{_localstatedir}/games/nethack/
 install -m 775 -d %{buildroot}%{_localstatedir}/games/nethack/save/
-for file in log perm record ; do
+for file in logfile perm record ; do
 	touch %{buildroot}%{_localstatedir}/games/nethack/$file
 	chmod 0664 %{buildroot}%{_localstatedir}/games/nethack/$file
 done
@@ -142,8 +143,11 @@ install -m 755 util/{dgn_comp,dlb,lev_comp,makedefs,recover} %{buildroot}%{_pref
 %{_prefix}/lib/nethack/makedefs
 %{_prefix}/lib/nethack/recover
 %{_mandir}/man6/*
-%attr(-,games,games) %{_localstatedir}/games/nethack
-%dir %{_localstatedir}/games
+%dir %attr(0770,games,games) %{_localstatedir}/games/nethack
+%dir %attr(0770,games,games) %{_localstatedir}/games/nethack/save
+%config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/logfile
+%config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/record
+%attr(0660,games,games) %{_localstatedir}/games/nethack/perm
 %{_bindir}/nethack
 
 %changelog

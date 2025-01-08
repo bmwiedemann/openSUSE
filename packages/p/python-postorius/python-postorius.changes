@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  6 16:09:18 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing python-six BR for running tests
+
+-------------------------------------------------------------------
 Mon Nov 18 07:23:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - %defattr is evil! Rather have a long (and readable) list of

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 18 05:32:52 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.50.0 (1.05)
+   see /usr/share/doc/packages/perl-Digest-HMAC/Changes
+
+  Version 1.05: 2024-10-17
+
+    - Use 'our' instead of 'use vars' (HAARG).
+    - Minimum perl version is now 5.8.1.
+
+-------------------------------------------------------------------
 Fri Apr  2 03:06:58 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.04

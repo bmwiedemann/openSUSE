@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan  5 20:48:04 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 2.57:
+  * Added aam/aad imm8 missing instruction variant.
+  * Added corrections for constant too large warnings and included >64bit size immediate errors.
+  * Corrected a conflict between local and struct having the same name.
+  * Updated the encoding of xchg eax,eax to not just be a NOP in 64bit code as a side effect is
+    clearing the top half of RAX.
+  * Reduced unnecessary REX prefixes in PROC prologue.
+  * Cleaned up makefile names
+  * Fixed a general failure on empty unions.
+  * Applied typedef ptr fix in legacy codeview symbolic debugging info.
+  * Noted string literal usage in manual.
+  * Fixed a stack balancing regression leading to an umatched add/sub rsp,8 pair forLinux 64bit.
+  * Prevented vmovd/vmovq from accepting ymm or zmm registes.
+  * Prevent OR rax,64bit immediate and other instructions that aren't MOV.
+  * Based on a patch to original Jwasm which may have entered an infinite loop if a structured
+    variable wasn't defined (yet), but a member name matched a local name.
+  * Included Vortex Def2Lib utility in the distribution with Import Definitions kindly supplied
+    from MASM32.
+    Can be run via MakeLib.bat or    
+    def2lib *.def
+    def2lib ntvdm.def -e
+
+-------------------------------------------------------------------
 Mon Jul 15 12:21:34 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added -fpermissive to %{optflags} so that GCC 14 does not

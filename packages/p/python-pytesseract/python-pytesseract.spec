@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytesseract
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,16 @@ Version:        0.3.13
 Release:        0
 Summary:        Python wrapper for Google's Tesseract-OCR
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/madmaze/python-tesseract
 # https://github.com/madmaze/pytesseract/issues/262
 Source:         https://github.com/madmaze/pytesseract/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
-Requires:       python-setuptools
+Requires:       python-packaging
 Requires:       tesseract-ocr-traineddata-deu
 Requires:       tesseract-ocr-traineddata-eng
 Requires:       pkgconfig(tesseract)
@@ -44,7 +45,7 @@ BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
 BuildRequires:  pkgconfig(tesseract)
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -64,16 +65,17 @@ bounding box data is planned for future releases.
 sed -i -e '/^#!\//, 1d' pytesseract/pytesseract.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pytesseract
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export TESSDATA_PREFIX=%{_datadir}/tessdata/
-%pytest
+# Raises TesseractNotFoundError
+%pytest -k 'not test_get_languages'
 
 %post
 %python_install_alternative pytesseract
@@ -86,6 +88,6 @@ export TESSDATA_PREFIX=%{_datadir}/tessdata/
 %license LICENSE
 %python_alternative %{_bindir}/pytesseract
 %{python_sitelib}/pytesseract
-%{python_sitelib}/pytesseract-%{version}*-info
+%{python_sitelib}/pytesseract-%{version}.dist-info
 
 %changelog

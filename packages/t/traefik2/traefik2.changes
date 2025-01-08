@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  7 15:45:48 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.18
+  - websocket,server
+    * Disable http2 connect setting for websocket by default
+      (gh#traefik/traefik#11412)
+
+-------------------------------------------------------------------
+Mon Jan  6 12:50:10 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.17
+  - acme
+    * Update go-acme/lego to v4.21.0 (gh#traefik/traefik#11368)
+  - middleware
+    * Fix typo in basicauth note (gh#traefik/traefik#11397)
+  - service
+    * Configure ErrorLog in httputil.ReverseProxy (gh#traefik/traefik#11344)
+  Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365)
+
+-------------------------------------------------------------------
 Mon Dec 16 13:42:39 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.16

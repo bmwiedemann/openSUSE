@@ -27,9 +27,8 @@ URL:            http://www.clifford.at/stfl/
 Source:         http://www.clifford.at/stfl/stfl-%{version}.tar.gz
 Source99:       libstfl-rpmlintrc
 Patch1:         stfl-optflags.patch
-Patch2:         stfl-ncurses.patch
 BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 STFL is a library which implements a curses-based widget set for text
@@ -65,8 +64,7 @@ describe STFL GUIs.
 %autosetup -p0 -n "stfl-%{version}"
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-make %{?_smp_mflags} \
+%make_build \
 	CC="gcc" \
 	OPTFLAGS="%{optflags}"\
 	FOUND_SPL=0 \
@@ -80,14 +78,14 @@ make %{?_smp_mflags} \
 	libdir="%{_lib}" \
 	prefix="%{_prefix}"
 
-[ -e "%{buildroot}%{_libdir}/libstfl.so.%{sover}" ] || {
+if ! [ -e "%{buildroot}/%{_libdir}/libstfl.so.%{sover}" ]; then
     pushd "%{buildroot}%{_libdir}/"
     ln -s libstfl.so.*.* libstfl.so.%{sover}
     popd
-}
+fi
+rm -fv "%{buildroot}/%{_libdir}"/*.a
 
-%post   -n libstfl%{sover} -p /sbin/ldconfig
-%postun -n libstfl%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libstfl%{sover}
 
 %files -n libstfl%{sover}
 %license COPYING
@@ -98,7 +96,6 @@ make %{?_smp_mflags} \
 %files -n libstfl-devel
 %{_includedir}/stfl.h
 %{_libdir}/libstfl.so
-%{_libdir}/libstfl.a
 %{_libdir}/pkgconfig/stfl.pc
 
 %changelog

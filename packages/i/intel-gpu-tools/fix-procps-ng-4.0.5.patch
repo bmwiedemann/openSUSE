@@ -1,0 +1,39 @@
+diff -ruNp a/meson.build b/meson.build
+--- a/meson.build
++++ b/meson.build
+@@ -135,10 +135,14 @@ pciaccess = dependency('pciaccess', vers
+ libkmod = dependency('libkmod')
+ libprocps = dependency('libprocps', required : false)
+ libproc2 = dependency('libproc2', required : false)
++libproc21 = dependency('libproc2', required : false, version : '>=4.0.5')
+ if libprocps.found()
+   config.set('HAVE_LIBPROCPS', 1)
+ elif libproc2.found()
+   config.set('HAVE_LIBPROC2', 1)
++  if libproc21.found()
++    config.set('HAVE_LIBPROC21', 1)
++  endif
+ else
+   error('Either libprocps or libproc2 is required')
+ endif
+diff -ruNp a/lib/igt_aux.c b/lib/igt_aux.c
+--- a/lib/igt_aux.c
++++ b/lib/igt_aux.c
+@@ -1358,10 +1358,17 @@ static bool get_process_ids(struct igt_p
+ 	prcs->comm = NULL;
+ 	prcs->stack = procps_pids_get(prcs->info, PIDS_FETCH_TASKS_ONLY);
+ 	if (prcs->stack) {
++#ifdef HAVE_LIBPROC21
++		prcs->tid = PIDS_VAL(EU_PID, s_int, prcs->stack);
++		prcs->euid = PIDS_VAL(EU_EUID, s_int, prcs->stack);
++		prcs->egid = PIDS_VAL(EU_EGID, s_int, prcs->stack);
++		prcs->comm = PIDS_VAL(EU_CMD, str, prcs->stack);
++#else
+ 		prcs->tid = PIDS_VAL(EU_PID, s_int, prcs->stack, prcs->info);
+ 		prcs->euid = PIDS_VAL(EU_EUID, s_int, prcs->stack, prcs->info);
+ 		prcs->egid = PIDS_VAL(EU_EGID, s_int, prcs->stack, prcs->info);
+ 		prcs->comm = PIDS_VAL(EU_CMD, str, prcs->stack, prcs->info);
++#endif
+ 	}
+ #endif
+ 	return prcs->tid != 0;

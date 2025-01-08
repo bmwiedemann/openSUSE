@@ -1,0 +1,5 @@
+<package name="rz-cutter" project="openSUSE:Factory">
+  <title>GUI for Rizin reverse engineering framework</title>
+  <description>Cutter is a free and open-source reverse engineering platform powered by rizin. It aims at being an advanced and customizable reverse engineering platform while keeping the user experience in mind. </description>
+  <devel project="devel:tools" package="rz-cutter"/>
+</package>

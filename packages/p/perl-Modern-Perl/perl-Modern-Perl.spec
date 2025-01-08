@@ -18,7 +18,7 @@
 
 %define cpan_name Modern-Perl
 Name:           perl-Modern-Perl
-Version:        1.20240115
+Version:        1.20241001
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Enable all of the features of Modern Perl with one import

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  7 12:14:08 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade x3270 to version 4.3.ga10 (bsc#1234758)
+- Release Notes/suite3270/4.3ga10
+  * https://x3270.miraheze.org/wiki/Release_Notes/suite3270/4.3ga10
+
+-------------------------------------------------------------------
 Mon Sep  2 11:53:23 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade x3270 to version 4.3.ga9 ( bsc#1230046(CVE-2024-45490), 

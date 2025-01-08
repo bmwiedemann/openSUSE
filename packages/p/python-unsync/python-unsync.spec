@@ -1,7 +1,7 @@
 #
 # spec file for package python-unsync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
+%{?sle15_python_module_pythons}
 %define modname unsync
 Name:           python-unsync
-Version:        1.3
+Version:        1.3.2
 Release:        0
 Summary:        Unsynchronize asyncio
 License:        MIT
 URL:            https://github.com/alex-sherman/unsync
 Source:         https://github.com/alex-sherman/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -62,10 +64,10 @@ Unsynchronize `asyncio` by using an ambient event loop in a separate thread.
 %setup -q -n unsync-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

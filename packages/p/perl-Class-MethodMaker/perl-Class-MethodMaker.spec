@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Class-MethodMaker
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Class-MethodMaker
-Version:        2.24
-Release:        0
 %define cpan_name Class-MethodMaker
-Summary:        Create generic methods for OO Perl
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Class-MethodMaker/
-Source:         http://www.cpan.org/authors/id/S/SC/SCHWIGON/class-methodmaker/%{cpan_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=122339
-Patch0:         reproducible.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:           perl-Class-MethodMaker
+Version:        2.250.0
+Release:        0
+# 2.25 -> normalize -> 2.250.0
+%define cpan_version 2.25
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Module for creating generic methods
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SC/SCHWIGON/class-methodmaker/%{cpan_name}-%{cpan_version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Class::MethodMaker) = %{version}
+Provides:       perl(Class::MethodMaker::Constants)
+Provides:       perl(Class::MethodMaker::Engine) = %{version}
+Provides:       perl(Class::MethodMaker::OptExt)
+Provides:       perl(Class::MethodMaker::V1Compat)
+Provides:       perl(Generate)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -46,15 +51,16 @@ the 'use' keyword introduces a 'BEGIN' block, so you may need to define (or
 at least declare) your overriding method in a 'BEGIN' block.
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -62,7 +68,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README TODO
 
 %changelog

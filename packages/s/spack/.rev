@@ -590,4 +590,12 @@
     <comment>- Fix version of spack package to build documentation with (forwarded request 1234923 from eeich)</comment>
     <requestid>1234924</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>a9bc3d47a39d67c4023deb4c8cc0e459</srcmd5>
+    <version>0.23.0</version>
+    <time>1736279634</time>
+    <user>anag+factory</user>
+    <comment>- Work towards a reproducible doc build (boo#1235144): (forwarded request 1235521 from eeich)</comment>
+    <requestid>1235522</requestid>
+  </revision>
 </revisionlist>

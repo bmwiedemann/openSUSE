@@ -18,9 +18,10 @@
 
 %define cpan_name SQL-Translator
 Name:           perl-SQL-Translator
-Version:        1.650.0
+Version:        1.660.0
 Release:        0
-%define cpan_version 1.65
+# 1.66 -> normalize -> 1.660.0
+%define cpan_version 1.66
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND GPL-2.0-only
 Summary:        SQL DDL transformations and more

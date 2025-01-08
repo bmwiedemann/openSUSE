@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan  3 14:09:24 MST 2025 - carnold@suse.com
+
+- Update to version 1.55.2 (jsc#PED-8910)
+  * lib/inspect-osinfo.c: Add Windows Server 2025 osinfo
+  * appliance: Use stable owner, group and mtime in appliance
+    tarballs
+  * mltools: Replace jansson with json-c
+  * lib/info.c: Replace jansson with json-c
+  * lib/qemu.c: Replace jansson with json-c
+  * lib: direct: Remove test for qemu mandatory locking
+  * Various language translations
+  * Fix dhcpcd failing on systemd-resolved stub
+  * mlcustomize: Add heuristic support for Windows Server 2025
+  * mlcustomize/customize_run.ml: Move 'in' to new line
+  * mlstdutils/guestfs_config: Define host_os
+  * mlcustomize, mltools: Check guest OS is compatible before
+    allowing --run
+  * generator: Remove common/mlv2v/uefi.ml{,i} files
+  * qemuopts: Add ability to add raw, unquoted output to qemu
+    scripts
+  * qemuopts: Fix missing break statement
+  * mlstdutils: Remove Option module
+  * Remove test for caml_alloc_initialized_string
+  * build: Move baseline OCaml to 4.08
+
+-------------------------------------------------------------------
 Thu Oct 10 07:06:04 MDT 2024 - carnold@suse.com
 
 - Update to version 1.54.0 (jsc#PED-8910)

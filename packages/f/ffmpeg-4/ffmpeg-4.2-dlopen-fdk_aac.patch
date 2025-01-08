@@ -1,7 +1,14 @@
-Index: ffmpeg-4.4.3/configure
+---
+ configure                  |    3 ++
+ libavcodec/dlopen.h        |   12 ++++++++++
+ libavcodec/libfdk-aacdec.c |   53 +++++++++++++++++++++++++++++++++++++++++++++
+ libavcodec/libfdk-aacenc.c |   47 +++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 115 insertions(+)
+
+Index: ffmpeg-4.4.5/configure
 ===================================================================
---- ffmpeg-4.4.3.orig/configure
-+++ ffmpeg-4.4.3/configure
+--- ffmpeg-4.4.5.orig/configure
++++ ffmpeg-4.4.5/configure
 @@ -232,6 +232,7 @@ External library support:
    --enable-libdc1394       enable IIDC-1394 grabbing using libdc1394
                             and libraw1394 [no]
@@ -15,10 +22,10 @@ Index: ffmpeg-4.4.3/configure
      decklink
      libfdk_aac
 +    libfdk_aac_dlopen
-     openssl
      libtls
  "
-@@ -6368,6 +6370,7 @@ enabled libdrm            && require_pkg
+ 
+@@ -6370,6 +6372,7 @@ enabled libdrm            && require_pkg
  enabled libfdk_aac        && { check_pkg_config libfdk_aac fdk-aac "fdk-aac/aacenc_lib.h" aacEncOpen ||
                                 { require libfdk_aac fdk-aac/aacenc_lib.h aacEncOpen -lfdk-aac &&
                                   warn "using libfdk without pkg-config"; } }
@@ -26,10 +33,10 @@ Index: ffmpeg-4.4.3/configure
  flite_extralibs="-lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite"
  enabled libflite          && require libflite "flite/flite.h" flite_init $flite_extralibs
  enabled fontconfig        && enable libfontconfig
-Index: ffmpeg-4.4.3/libavcodec/dlopen.h
+Index: ffmpeg-4.4.5/libavcodec/dlopen.h
 ===================================================================
 --- /dev/null
-+++ ffmpeg-4.4.3/libavcodec/dlopen.h
++++ ffmpeg-4.4.5/libavcodec/dlopen.h
 @@ -0,0 +1,12 @@
 +#ifndef LOCALINC_DLOPEN_H
 +#define LOCALINC_DLOPEN_H
@@ -43,10 +50,10 @@ Index: ffmpeg-4.4.3/libavcodec/dlopen.h
 +		goto error;
 +
 +#endif
-Index: ffmpeg-4.4.3/libavcodec/libfdk-aacdec.c
+Index: ffmpeg-4.4.5/libavcodec/libfdk-aacdec.c
 ===================================================================
---- ffmpeg-4.4.3.orig/libavcodec/libfdk-aacdec.c
-+++ ffmpeg-4.4.3/libavcodec/libfdk-aacdec.c
+--- ffmpeg-4.4.5.orig/libavcodec/libfdk-aacdec.c
++++ ffmpeg-4.4.5/libavcodec/libfdk-aacdec.c
 @@ -37,6 +37,54 @@
  #define AAC_PCM_MAX_OUTPUT_CHANNELS AAC_PCM_OUTPUT_CHANNELS
  #endif
@@ -114,10 +121,10 @@ Index: ffmpeg-4.4.3/libavcodec/libfdk-aacdec.c
      s->handle = aacDecoder_Open(avctx->extradata_size ? TT_MP4_RAW : TT_MP4_ADTS, 1);
      if (!s->handle) {
          av_log(avctx, AV_LOG_ERROR, "Error opening decoder\n");
-Index: ffmpeg-4.4.3/libavcodec/libfdk-aacenc.c
+Index: ffmpeg-4.4.5/libavcodec/libfdk-aacenc.c
 ===================================================================
---- ffmpeg-4.4.3.orig/libavcodec/libfdk-aacenc.c
-+++ ffmpeg-4.4.3/libavcodec/libfdk-aacenc.c
+--- ffmpeg-4.4.5.orig/libavcodec/libfdk-aacenc.c
++++ ffmpeg-4.4.5/libavcodec/libfdk-aacenc.c
 @@ -35,6 +35,48 @@
  #define FDKENC_VER_AT_LEAST(vl0, vl1) 0
  #endif

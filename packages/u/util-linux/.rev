@@ -2652,4 +2652,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
   util-linux-umount-losetup-lazy-destruction-generated.patch).</comment>
     <requestid>1225398</requestid>
   </revision>
+  <revision rev="291" vrev="3">
+    <srcmd5>2f303be1a98b84dea3edc5ac14f43ff9</srcmd5>
+    <version>2.40.2</version>
+    <time>1736279473</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235054</requestid>
+  </revision>
 </revisionlist>

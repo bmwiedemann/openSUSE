@@ -600,4 +600,12 @@
 - Update to 550.142 (boo#1234675)</comment>
     <requestid>1234916</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>a6a2a624f7bbe20ef3890c1e12b96591</srcmd5>
+    <version>550.142</version>
+    <time>1736279514</time>
+    <user>anag+factory</user>
+    <comment>added to changelog that 550.142 supersedes 550.135.patch</comment>
+    <requestid>1235163</requestid>
+  </revision>
 </revisionlist>

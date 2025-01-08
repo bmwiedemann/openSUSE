@@ -1,0 +1,10 @@
+<package name="fmtools" project="openSUSE:Factory">
+  <title>FM radio tuner for V4L2 supported devices</title>
+  <description>Command-line utilities for adjusting the frequency and volume and
+muting of supported FM radio cards.
+
+fm - control frequency, volume, mute/unmute of FM radio card
+fmscan - scan FM band for radio stations</description>
+  <devel project="multimedia:apps" package="fmtools"/>
+  <url>https://benpfaff.org/fmtools/</url>
+</package>

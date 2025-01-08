@@ -1,7 +1,7 @@
 #
 # spec file for package adaptivecpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           adaptivecpp
-Version:        24.06.0~0
+Version:        24.10.0~0
 Release:        0
 Summary:        Open implementation of SYCL for CPUs and GPUs
 License:        BSD-2-Clause
 URL:            https://adaptivecpp.github.io
 Source:         %{name}-%{version}.tar.gz
 Patch1:         0001-Use-bin-env-python3-instead-of-python3-in-scripts.patch
-Patch2:         0002-CMake-acpp-clang-to-MODULE.patch
-Patch3:         0003-Remove-realpath-in-acpp.patch
+Patch2:         0002-Remove-realpath-in-acpp.patch
 BuildRequires:  boost-devel
-BuildRequires:  clang18
-BuildRequires:  clang18-devel
+BuildRequires:  clang
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -37,46 +36,93 @@ BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_fiber-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libedit-devel
-BuildRequires:  libomp18-devel
-# todo: remove version specifier on next v.
-BuildRequires:  llvm18
-BuildRequires:  llvm18-devel
+BuildRequires:  llvm
+BuildRequires:  llvm-devel
 BuildRequires:  make
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  terminfo
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
-Requires:       clang18
-Requires:       libadaptivecpp = %{version}
 ExcludeArch:    i586
 
 %description
-A C++ compiler that supports the SYCL standard and C++ standard parallelism for CPUs and
-GPUs from all vendors.
+AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
+for CPUs and GPUs from all vendors.
 
-%package -n libadaptivecpp
-Summary:        Library for AdaptiveCpp
-Requires:       libadaptivecpp-omp
-Requires:       libadaptivecpp-rt
+%package -n libacpp-common
+Summary:        Common library for AdaptiveCpp
+Obsoletes:      libadaptivecpp <= %{version}-%{release}
 
-%description -n libadaptivecpp
-Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors.
+%description -n libacpp-common
+AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
+for CPUs and GPUs from all vendors.
 
-%package -n libadaptivecpp-omp
+This package contains the common library for AdaptiveCpp.
+
+%package -n libacpp-clang
+Summary:        Clang plugin for AdaptiveCpp
+Requires:       libacpp-bitcode
+Provides:       libacpp-clang = %{version}
+Obsoletes:      libadaptivecpp <= %{version}-%{release}
+
+%description -n libacpp-clang
+AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
+for CPUs and GPUs from all vendors.
+
+This package contains the Clang plugin for AdaptiveCpp.
+
+%package -n libacpp-rt
+Summary:        Runtime library for AdaptiveCpp
+Requires:       adaptivecpp-rt
+Provides:       libacpp
+Provides:       libadaptivecpp = %{version}-%{release}
+Obsoletes:      libadaptivecpp <= %{version}-%{release}
+
+%description -n libacpp-rt
+AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
+for CPUs and GPUs from all vendors.
+
+This package contains the runtime library for AdaptiveCpp.
+
+%package -n libacpp-rt-omp
 Summary:        OpenMP runtime for AdaptiveCpp
-Requires:       libadaptivecpp = %{version}
-Provides:       libadaptivecpp-rt
+Provides:       adaptivecpp-rt
+Obsoletes:      libadaptivecpp-omp <= %{version}-%{release}
 
-%description -n libadaptivecpp-omp
-Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors.
+%description -n libacpp-rt-omp
+AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
+for CPUs and GPUs from all vendors.
+
 This package contains the OpenMP runtime for AdaptiveCpp.
 
-%package -n libadaptivecpp-devel
-Summary:        Development files for libadaptivecpp
+%package -n libacpp-bitcode
+Summary:        Bitcode for AdaptiveCpp
+Obsoletes:      libadaptivecpp <= %{version}-%{release}
+BuildArch:      noarch
 
-%description -n libadaptivecpp-devel
-Development files for libadaptivecpp
+%description -n libacpp-bitcode
+AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
+for CPUs and GPUs from all vendors.
+
+This package contains the bitcode for AdaptiveCpp JIT compilation.
+
+%package -n libacpp-llvm-to-backend
+Summary:        LLVM to backend for AdaptiveCpp
+Requires:       libacpp-bitcode
+Obsoletes:      libadaptivecpp <= %{version}-%{release}
+
+%description -n libacpp-llvm-to-backend
+LLVM to backend for AdaptiveCpp
+
+%package devel
+Summary:        Development files for libadaptivecpp
+Requires:       adaptivecpp = %{version}
+Requires:       libacpp-clang = %{version}
+Obsoletes:      libadaptivecpp-devel <= %{version}-%{release}
+
+%description devel
+Development files for AdaptiveCpp
 
 %prep
 %autosetup -p1
@@ -84,6 +130,7 @@ Development files for libadaptivecpp
 %build
 %define __builder ninja
 %cmake
+
 %cmake_build
 
 %install
@@ -104,30 +151,39 @@ Development files for libadaptivecpp
 %{_bindir}/acpp-info
 %{_bindir}/syclcc
 %{_bindir}/syclcc-clang
-%dir %{_prefix}%{_sysconfdir}/AdaptiveCpp
-%{_prefix}%{_sysconfdir}/AdaptiveCpp/acpp-core.json
 
 # Leap <= 15.6
 %if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
 %dir %{_prefix}%{_sysconfdir}/
 %endif
 
-%files -n libadaptivecpp
-%{_prefix}/lib/libacpp-clang.so
-%{_prefix}/lib/libacpp-common.so
-%{_prefix}/lib/libacpp-rt.so
-%dir %{_prefix}/lib/hipSYCL
-%{_prefix}/lib/hipSYCL/bitcode/
-%{_prefix}/lib/hipSYCL/llvm-to-backend/
-
-%files -n libadaptivecpp-omp
-%{_prefix}/lib/hipSYCL/librt-backend-omp.so
-
-%files -n libadaptivecpp-devel
+%files devel
 %{_includedir}/AdaptiveCpp/
 %dir %{_prefix}/lib/cmake/
 %{_prefix}/lib/cmake/AdaptiveCpp/
 %{_prefix}/lib/cmake/OpenSYCL/
 %{_prefix}/lib/cmake/hipSYCL/
+%dir %{_prefix}%{_sysconfdir}/AdaptiveCpp
+%{_prefix}%{_sysconfdir}/AdaptiveCpp/acpp-core.json
+
+%files -n libacpp-common
+%{_prefix}/lib/libacpp-common.so
+
+%files -n libacpp-clang
+%{_prefix}/lib/libacpp-clang.so
+
+%files -n libacpp-rt
+%{_prefix}/lib/libacpp-rt.so
+
+%files -n libacpp-bitcode
+%dir %{_prefix}/lib/hipSYCL/
+%{_prefix}/lib/hipSYCL/bitcode/
+
+%files -n libacpp-rt-omp
+%{_prefix}/lib/hipSYCL/librt-backend-omp.so
+
+%files -n libacpp-llvm-to-backend
+%dir %{_prefix}/lib/hipSYCL/
+%{_prefix}/lib/hipSYCL/llvm-to-backend/
 
 %changelog

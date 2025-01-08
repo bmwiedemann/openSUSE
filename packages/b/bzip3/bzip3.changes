@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  2 16:43:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5.1:
+  * Add `--rm` option that removes the original files after
+    successful operation
+  * `bz3grep`: display the correct program name on invalid
+    invocation
+  * Tighter LZP/RLE bounds in the decoder for slightly improved
+    compression with no observable format change
+  * Add the `bz3_min_memory_needed` API.
+  * ABI breaking changes: `bz3_decode_block` and `bz3_encode_block`.
+  * Fix: the file `$dir.bz3` being created when invoked as
+    `bzip3 -e $dir` where `$dir` is a directory.
+
+-------------------------------------------------------------------
 Mon Dec 18 08:48:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.4.0:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 24 05:38:46 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.340.0 (0.34)
+   see /usr/share/doc/packages/perl-Plack-Middleware-Session/Changes
+
+  0.34  2024-09-23 09:54:12 PDT
+          - Add support for Partitioned cookies (CHIP) #51
+
+-------------------------------------------------------------------
 Wed Mar 13 16:31:00 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.33

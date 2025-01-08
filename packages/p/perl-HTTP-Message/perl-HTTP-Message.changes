@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  8 05:32:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.0.0 (7.00)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  7.00      2024-10-07 15:31:56Z
+      - Stop transforming LF into CRLF. Fixes #69 (GH#196) (Olaf Alders)
+
+-------------------------------------------------------------------
 Sun Jun 23 16:20:47 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 6.460.0 (6.46)

@@ -1,0 +1,25 @@
+From 8811e2a52977bb5686c32cc97609a5a84c8ae79e Mon Sep 17 00:00:00 2001
+From: VaiTon <eyadlorenzo@gmail.com>
+Date: Fri, 6 Dec 2024 12:33:52 +0100
+Subject: [PATCH 2/2] Remove realpath in acpp
+
+---
+ bin/acpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/acpp b/bin/acpp
+index f4bfd67..0d930dd 100755
+--- a/bin/acpp
++++ b/bin/acpp
+@@ -1948,7 +1948,7 @@ if __name__ == '__main__':
+     print_error("acpp requires python 3.")
+     sys.exit(-1)
+ 
+-  filename = os.path.basename(os.path.realpath(__file__))
++  filename = sys.argv[0]
+   if filename == "syclcc":
+     print_warning("syclcc is deprecated; please use acpp instead.")
+   if filename == "syclcc-clang":
+-- 
+2.47.1
+

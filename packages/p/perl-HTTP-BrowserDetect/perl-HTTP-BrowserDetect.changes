@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  3 05:33:05 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.410.0 (3.41)
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.41      2024-10-02 14:13:45Z
+      - add amazonbot (GH#212) (mla)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:33:07 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

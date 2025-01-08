@@ -1210,4 +1210,15 @@
     <comment></comment>
     <requestid>1181325</requestid>
   </revision>
+  <revision rev="103" vrev="14">
+    <srcmd5>cb3f1979b1f6156bf5a259ca7c78d59a</srcmd5>
+    <version>23.3</version>
+    <time>1736279409</time>
+    <user>anag+factory</user>
+    <comment>- Add cloud-init-wait-for-net.patch (bsc#1227237)
+  + Wait for udev once if we cannot find the expected MAC
+
+  + Brute force approach to skip renames if the device is already present</comment>
+    <requestid>1235207</requestid>
+  </revision>
 </revisionlist>

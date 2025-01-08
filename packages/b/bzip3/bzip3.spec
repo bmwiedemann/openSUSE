@@ -2,6 +2,7 @@
 # spec file for package bzip3
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,9 @@
 #
 
 
-%define libname libbzip3-0
+%define libname libbzip3-1
 Name:           bzip3
-Version:        1.4.0
+Version:        1.5.1
 Release:        0
 Summary:        Compressor with Burrows–Wheeler transform and PPM context modeling
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -58,7 +59,7 @@ Requires:       %{libname} = %{version}
 Development headers and library files for BZip3.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure \
@@ -72,9 +73,13 @@ Development headers and library files for BZip3.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%check
+%make_build check
+
 %ldconfig_scriptlets -n %{libname}
 
 %files
+%license LICENSE
 %doc NEWS README.md
 %{_bindir}/bunzip3
 %{_bindir}/bz3cat
@@ -86,10 +91,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{libname}
 %license LICENSE
-%{_libdir}/libbzip3.so.0
-%{_libdir}/libbzip3.so.0.0.0
+%{_libdir}/libbzip3.so.1
+%{_libdir}/libbzip3.so.1.0.0
 
 %files devel
+%license LICENSE
 %{_includedir}/libbz3.h
 %{_libdir}/libbzip3.so
 %{_libdir}/pkgconfig/bzip3.pc

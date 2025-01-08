@@ -18,10 +18,10 @@
 
 %define cpan_name Dumbbench
 Name:           perl-Dumbbench
-Version:        0.504.0
+Version:        0.505.0
 Release:        0
-# 0.504 -> normalize -> 0.504.0
-%define cpan_version 0.504
+# 0.505 -> normalize -> 0.505.0
+%define cpan_version 0.505
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        More reliable benchmarking with the least amount of thinking
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -46,7 +46,7 @@ Requires:       perl(Number::WithError) >= 1.00
 Requires:       perl(Params::Util)
 Requires:       perl(Statistics::CaseResampling) >= 0.06
 Requires:       perl(parent)
-Provides:       perl(Benchmark::Dumb) = 0.503
+Provides:       perl(Benchmark::Dumb) = %{version}
 Provides:       perl(Dumbbench) = %{version}
 Provides:       perl(Dumbbench::BoxPlot)
 Provides:       perl(Dumbbench::CPUFrequencyPinner)

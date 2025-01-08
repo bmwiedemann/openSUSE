@@ -26,4 +26,36 @@ AFAIK we do miss an open source SYCL implementation in Factory.</comment>
 </comment>
     <requestid>1228747</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1216d28b128bd04d6b28576f8960a490</srcmd5>
+    <version>24.10.0~0</version>
+    <time>1736279519</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.10.0~0:
+  * AdaptiveCpp 24.10 introduces additional JIT-time optimizations,
+    especially at the default ACPP_ADAPTIVITY_LEVEL=1 setting.
+    Users may see substantial performance improvements for some
+    kernels.
+  * ACPP_ALLOCATION_TRACKING=1 was added which can enable the JIT
+    compiler to include even more information about memory usage in
+    code generation, further improving performance in some cases.
+  * Added full support for the SYCL 2020 group algorithms library
+    in the default generic JIT compiler on all backends.
+  * Additional C++ parallel STL algorithms supported for offloading
+  * Introducing the acpp::algorithms library: The algorithms
+    underneath the C++ parallel STL offloading support are now also
+    documented and exposed on the SYCL level for users who wish to
+    invoke them from SYCL with a higher degree of control.
+  * Added framework for JIT-time reflection to generic JIT
+    compiler.
+  * New extensions:
+    ~ AdaptiveCpp_restrict_ptr
+    ~ AdaptiveCpp_jit::compile_if
+- Remove requirement on LLVM 18 and update version
+- Renamed libraries to libacpp-*
+- Deleted 0002-CMake-acpp-clang-to-MODULE.patch: upstreamed
+- Renamed 0003-Remove-realpath-in-acpp.patch to
+  0002-Remove-realpath-in-acpp.patch</comment>
+    <requestid>1235204</requestid>
+  </revision>
 </revisionlist>

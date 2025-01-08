@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-libevdev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libevdev-devel >= %{libevdev_reqver}
 BuildRequires:  python-rpm-macros
-%define libmodule %(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libevdev.so))
+%define libmodule %(rpm -q --qf "%%{name}" -f $(readlink -f %{_prefix}/lib*/libevdev.so))
 Requires:       %{libmodule} >= %{libevdev_reqver}
 BuildArch:      noarch
 %python_subpackages

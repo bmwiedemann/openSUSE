@@ -23,10 +23,6 @@ Fri Jan  3 16:11:01 UTC 2025 - Egbert Eich <eich@suse.com>
 - Version 1.3.4
   * Fixed sif-embedded overlay partitions for containers that are
     larger than 2 gigabytes.
-  * Fixed the apparmor profile that was added in v1.3.3 but didn't
-    work. An apparmor profile is applied in all Debian-based
-    apptainer packaging, but is only needed to enable user namespaces
-    for apptainer on a default-configured Ubuntu 23.10 or newer.
   * Fixed the failure when starting apptainer with
     `instance --fakeroot`.
   * `apptainer build -B ...` can now be used to mount custom
@@ -67,7 +63,6 @@ Fri Jan  3 16:11:01 UTC 2025 - Egbert Eich <eich@suse.com>
     errors at startup.
   * Fixed a segmentation violation issue when running Apptainer
     checkpoint.
-  * Added apparmor profiles for ubuntu 24.04 or higher distros.
   * Fixed an issue that Apptainer won't read default docker
     credentials.
 - Version 1.3.2
@@ -106,6 +101,9 @@ Fri Jan  3 16:11:01 UTC 2025 - Egbert Eich <eich@suse.com>
 - Obsoleted:
   * Remove-signatures-from-Docker-images.patch
   * Bump-github.com-containers-image-v5-from-5.30.0-to-5.30.1.patch
+- Make sure, build is reproducible by setting the GNU build ID to one
+  derived from the Go one. See https://pkg.go.dev/cmd/link.
+- Use go-jose version with fix for CVE-2024-28180 (bsc#1235211).
 
 -------------------------------------------------------------------
 Mon May 13 05:36:38 UTC 2024 - Egbert Eich <eich@suse.com>

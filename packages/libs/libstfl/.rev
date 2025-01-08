@@ -106,4 +106,13 @@ No indication of LGPL-3.0 (only) files. See README also (forwarded request 10777
     <comment></comment>
     <requestid>1154029</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>575191a5f05a9ce93d07ac110632851b</srcmd5>
+    <version>0.24</version>
+    <time>1736279543</time>
+    <user>anag+factory</user>
+    <comment>- Delete broken patch stfl-ncurses.patch to fix FTBFS.
+- Stop shipping static library</comment>
+    <requestid>1235218</requestid>
+  </revision>
 </revisionlist>

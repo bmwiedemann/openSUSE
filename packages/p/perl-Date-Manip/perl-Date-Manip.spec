@@ -18,10 +18,10 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.950.0
+Version:        6.960.0
 Release:        0
-# 6.95 -> normalize -> 6.950.0
-%define cpan_version 6.95
+# 6.96 -> normalize -> 6.960.0
+%define cpan_version 6.96
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,7 +29,7 @@ Source0:        https://cpan.metacpan.org/authors/id/S/SB/SBECK/%{cpan_name}-%{c
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.67_01
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.67
 BuildRequires:  perl(Test::Inter) >= 1.09
 Provides:       perl(Date::Manip) = %{version}
 Provides:       perl(Date::Manip::Base) = %{version}
@@ -463,7 +463,6 @@ Provides:       perl(Date::Manip::Offset::off403) = %{version}
 Provides:       perl(Date::Manip::Offset::off404) = %{version}
 Provides:       perl(Date::Manip::Offset::off405) = %{version}
 Provides:       perl(Date::Manip::Offset::off406) = %{version}
-Provides:       perl(Date::Manip::Offset::off407) = %{version}
 Provides:       perl(Date::Manip::Recur) = %{version}
 Provides:       perl(Date::Manip::TZ) = %{version}
 Provides:       perl(Date::Manip::TZ::a00) = %{version}
@@ -628,7 +627,6 @@ Provides:       perl(Date::Manip::TZ::asbarn00) = %{version}
 Provides:       perl(Date::Manip::TZ::asbeir00) = %{version}
 Provides:       perl(Date::Manip::TZ::asbish00) = %{version}
 Provides:       perl(Date::Manip::TZ::aschit00) = %{version}
-Provides:       perl(Date::Manip::TZ::aschoi00) = %{version}
 Provides:       perl(Date::Manip::TZ::ascolo00) = %{version}
 Provides:       perl(Date::Manip::TZ::asdama00) = %{version}
 Provides:       perl(Date::Manip::TZ::asdhak00) = %{version}
@@ -710,10 +708,8 @@ Provides:       perl(Date::Manip::TZ::aupert00) = %{version}
 Provides:       perl(Date::Manip::TZ::ausydn00) = %{version}
 Provides:       perl(Date::Manip::TZ::b00) = %{version}
 Provides:       perl(Date::Manip::TZ::c00) = %{version}
-Provides:       perl(Date::Manip::TZ::cet00) = %{version}
 Provides:       perl(Date::Manip::TZ::d00) = %{version}
 Provides:       perl(Date::Manip::TZ::e00) = %{version}
-Provides:       perl(Date::Manip::TZ::eet00) = %{version}
 Provides:       perl(Date::Manip::TZ::etgmt00) = %{version}
 Provides:       perl(Date::Manip::TZ::etgmtm00) = %{version}
 Provides:       perl(Date::Manip::TZ::etgmtm01) = %{version}
@@ -790,7 +786,6 @@ Provides:       perl(Date::Manip::TZ::inmaur00) = %{version}
 Provides:       perl(Date::Manip::TZ::k00) = %{version}
 Provides:       perl(Date::Manip::TZ::l00) = %{version}
 Provides:       perl(Date::Manip::TZ::m00) = %{version}
-Provides:       perl(Date::Manip::TZ::met00) = %{version}
 Provides:       perl(Date::Manip::TZ::n00) = %{version}
 Provides:       perl(Date::Manip::TZ::o00) = %{version}
 Provides:       perl(Date::Manip::TZ::p00) = %{version}
@@ -832,7 +827,6 @@ Provides:       perl(Date::Manip::TZ::u00) = %{version}
 Provides:       perl(Date::Manip::TZ::ut00) = %{version}
 Provides:       perl(Date::Manip::TZ::v00) = %{version}
 Provides:       perl(Date::Manip::TZ::w00) = %{version}
-Provides:       perl(Date::Manip::TZ::wet00) = %{version}
 Provides:       perl(Date::Manip::TZ::x00) = %{version}
 Provides:       perl(Date::Manip::TZ::y00) = %{version}
 Provides:       perl(Date::Manip::TZ::z00) = %{version}

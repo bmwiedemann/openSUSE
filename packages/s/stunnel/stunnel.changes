@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:32:26 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 5.74:
+  * Bugfixes
+    - Fixed a stapling cache deallocation crash.
+    - Fixed "redirect" with protocol negotiation.
+  * Features
+    - "protocolHost" support for "socks" protocol clients.
+    - More detailed logs in OpenSSL 3.0 or later.
+
+-------------------------------------------------------------------
 Thu Oct  3 06:40:55 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.73:

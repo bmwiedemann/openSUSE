@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  3 14:50:33 MST 2025 - carnold@suse.com
+
+- Update to version 1.53.5 (jsc#PED-8910)
+  * builder: Update opensuse.gpg key
+  * mlcustomize/customize_run.ml: Move 'in' to new line
+  * mlstdutils/guestfs_config: Define host_os
+  * mlcustomize, mltools: Check guest OS is compatible before
+    allowing --run
+  * Remove mlv2v/ subdirectory
+  * resize: Update xpath command
+- Drop builder-update-openSUSE.gpg-key.patch
+
+-------------------------------------------------------------------
 Tue Nov 12 04:37:05 MST 2024 - carnold@suse.com
 
 - virt-builder ships with out-of-date openSUSE signing key

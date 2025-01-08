@@ -175,4 +175,16 @@
     <comment></comment>
     <requestid>884588</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>15715e1b44e0ecc4175100420bad3e8d</srcmd5>
+    <version>1.50.0</version>
+    <time>1736279435</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.50.0 (1.05)
+   see /usr/share/doc/packages/perl-Digest-HMAC/Changes
+  Version 1.05: 2024-10-17
+    - Use 'our' instead of 'use vars' (HAARG).
+    - Minimum perl version is now 5.8.1. (forwarded request 1235306 from tinita)</comment>
+    <requestid>1235352</requestid>
+  </revision>
 </revisionlist>

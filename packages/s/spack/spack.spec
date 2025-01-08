@@ -226,6 +226,12 @@ for i in share/spack/setup-env.*; do
 done
 %else
 cp %{S:5} lib/spack/docs/
+# For building docs make build reproducible:
+# - hard code year in license checker
+year=$(sed -ne "/Copyright/s@.*\([0-9]\{4\}\).*@\1@p" %{_sourcedir}/%{name}.spec)
+sed -ie "/^latest_year/s@\(.* = \).*@\1${year}@" lib/spack/spack/cmd/license.py
+# - hard code cpu count dependent settings
+sed -ie "/max_cpus.* =\|build_jobs/s@cpus_available()@8@" lib/spack/spack/config.py
 %endif
 
 %build

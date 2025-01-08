@@ -1,7 +1,7 @@
 #
 # spec file for package intel-gpu-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           intel-gpu-tools
-Version:        1.29
+Version:        1.30
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
@@ -25,6 +25,8 @@ Group:          Development/Tools/Other
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz
 Source1:        https://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz.sig
+# PATCH-FIX-OPENSUSE fix-procps-ng-4.0.5.patch https://gitlab.com/procps-ng/procps/-/issues/332
+Patch0:         fix-procps-ng-4.0.5.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -74,7 +76,7 @@ Requires:       %{name} = %{version}
 Development files and library headers for %{name}
 
 %prep
-%autosetup -n igt-gpu-tools-%{version}
+%autosetup -n igt-gpu-tools-%{version} -p1
 
 %build
 # Tests fail on x86_64 with -z now
@@ -91,6 +93,7 @@ ninja -C %{_vpath_builddir} igt-gpu-tools-doc
 sed -i 's#/usr/bin/env python3#/usr/bin/python3#' \
 	%{buildroot}%{_bindir}/{code_cov_gather_on_test,intel-gfx-fw-info}
 
+%fdupes %{buildroot}%{_includedir}
 %fdupes %{buildroot}%{_libexecdir}
 
 # These are only useful with the full source tree

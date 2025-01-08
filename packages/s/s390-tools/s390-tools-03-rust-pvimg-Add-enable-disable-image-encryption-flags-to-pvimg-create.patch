@@ -1,0 +1,334 @@
+From cf51ac786095f2a1a17d04fea9ee73271438d247 Mon Sep 17 00:00:00 2001
+From: Marc Hartmayer <mhartmay@linux.ibm.com>
+Date: Wed, 11 Dec 2024 19:25:59 +0100
+Subject: [PATCH] rust/pvimg: Add '--(enable|disable)-image-encryption' flags
+ to 'pvimg create'
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With runtime attestation it might be useful to have non-encrypted Secure
+Execution images. This patch adds the support for this to the 'pvimg
+create' and 'genprotimg' commands.
+
+Reviewed-by: Steffen Eiden <seiden@linux.ibm.com>
+Acked-by: Hendrik Brueckner <brueckner@linux.ibm.com>
+Signed-off-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ rust/pvimg/man/genprotimg.1   | 26 +++++++++++++++++++++-----
+ rust/pvimg/man/pvimg-create.1 | 26 +++++++++++++++++++++-----
+ rust/pvimg/man/pvimg-info.1   | 10 +++++-----
+ rust/pvimg/man/pvimg-test.1   | 10 +++++-----
+ rust/pvimg/man/pvimg.1        | 10 +++++-----
+ rust/pvimg/src/cli.rs         | 18 ++++++++++++++++++
+ rust/pvimg/src/cmd/create.rs  | 10 ++++++++++
+ 7 files changed, 85 insertions(+), 25 deletions(-)
+
+diff --git a/rust/pvimg/man/genprotimg.1 b/rust/pvimg/man/genprotimg.1
+index 46a91aa4..3f4949e9 100644
+--- a/rust/pvimg/man/genprotimg.1
++++ b/rust/pvimg/man/genprotimg.1
+@@ -3,11 +3,11 @@
+ .\" it under the terms of the MIT license. See LICENSE for details.
+ .\"
+ 
+-.TH genprotimg 1 "2024-12-05" "s390-tools" "Genprotimg Manual"
++.TH genprotimg 1 "2024-12-11" "s390-tools" "Genprotimg Manual"
+ .nh
+ .ad l
+ .SH NAME
+-\fBgenprotimg\fP - Create an IBM Secure Execution image
++\fBgenprotimg\fP \- Create an IBM Secure Execution image
+ \fB
+ .SH SYNOPSIS
+ .nf
+@@ -196,6 +196,22 @@ Disable the support for backup target keys (default).
+ .RE
+ .RE
+ .PP
++\-\-enable\-image\-encryption
++.RS 4
++Enable encryption of the image components (default). The image components are:
++the kernel, ramdisk, and kernel command line.
++.RE
++.RE
++.PP
++\-\-disable\-image\-encryption
++.RS 4
++Disable encryption of the image components. The image components are: the
++kernel, ramdisk, and kernel command line. Use only if the components used do not
++contain any confidential content (for example, secrets like non\-public
++cryptographic keys).
++.RE
++.RE
++.PP
+ \-v, \-\-verbose
+ .RS 4
+ Provide more detailed output.
+@@ -222,16 +238,16 @@ Print help (see a summary with \fB\-h\fR).
+ 
+ .SH EXIT STATUS
+ .TP 8
+-.B 0 - Program finished successfully
++.B 0 \- Program finished successfully
+ The command was executed successfully.
+ .RE
+ .TP 8
+-.B 1 - Generic error
++.B 1 \- Generic error
+ Something went wrong during the operation. Refer to the error
+ message.
+ .RE
+ .TP 8
+-.B 2 - Usage error
++.B 2 \- Usage error
+ The command was used incorrectly, for example: unsupported command
+ line flag, or wrong number of arguments.
+ .RE
+diff --git a/rust/pvimg/man/pvimg-create.1 b/rust/pvimg/man/pvimg-create.1
+index aba197fa..dae1cf18 100644
+--- a/rust/pvimg/man/pvimg-create.1
++++ b/rust/pvimg/man/pvimg-create.1
+@@ -3,11 +3,11 @@
+ .\" it under the terms of the MIT license. See LICENSE for details.
+ .\"
+ 
+-.TH pvimg-create 1 "2024-12-05" "s390-tools" "Pvimg Manual"
++.TH pvimg-create 1 "2024-12-11" "s390-tools" "Pvimg Manual"
+ .nh
+ .ad l
+ .SH NAME
+-\fBpvimg create\fP - Create an IBM Secure Execution image
++\fBpvimg create\fP \- Create an IBM Secure Execution image
+ \fB
+ .SH SYNOPSIS
+ .nf
+@@ -195,6 +195,22 @@ Disable the support for backup target keys (default).
+ .RE
+ .RE
+ .PP
++\-\-enable\-image\-encryption
++.RS 4
++Enable encryption of the image components (default). The image components are:
++the kernel, ramdisk, and kernel command line.
++.RE
++.RE
++.PP
++\-\-disable\-image\-encryption
++.RS 4
++Disable encryption of the image components. The image components are: the
++kernel, ramdisk, and kernel command line. Use only if the components used do not
++contain any confidential content (for example, secrets like non\-public
++cryptographic keys).
++.RE
++.RE
++.PP
+ \-h, \-\-help
+ .RS 4
+ Print help (see a summary with \fB\-h\fR).
+@@ -203,16 +219,16 @@ Print help (see a summary with \fB\-h\fR).
+ 
+ .SH EXIT STATUS
+ .TP 8
+-.B 0 - Program finished successfully
++.B 0 \- Program finished successfully
+ The command was executed successfully.
+ .RE
+ .TP 8
+-.B 1 - Generic error
++.B 1 \- Generic error
+ Something went wrong during the operation. Refer to the error
+ message.
+ .RE
+ .TP 8
+-.B 2 - Usage error
++.B 2 \- Usage error
+ The command was used incorrectly, for example: unsupported command
+ line flag, or wrong number of arguments.
+ .RE
+diff --git a/rust/pvimg/man/pvimg-info.1 b/rust/pvimg/man/pvimg-info.1
+index e88cbe49..d2726c35 100644
+--- a/rust/pvimg/man/pvimg-info.1
++++ b/rust/pvimg/man/pvimg-info.1
+@@ -3,11 +3,11 @@
+ .\" it under the terms of the MIT license. See LICENSE for details.
+ .\"
+ 
+-.TH pvimg-info 1 "2024-12-05" "s390-tools" "Pvimg Manual"
++.TH pvimg-info 1 "2024-12-11" "s390-tools" "Pvimg Manual"
+ .nh
+ .ad l
+ .SH NAME
+-\fBpvimg info\fP - Print information about the IBM Secure Execution image
++\fBpvimg info\fP \- Print information about the IBM Secure Execution image
+ \fB
+ .SH SYNOPSIS
+ .nf
+@@ -51,16 +51,16 @@ Print help (see a summary with \fB\-h\fR).
+ 
+ .SH EXIT STATUS
+ .TP 8
+-.B 0 - Program finished successfully
++.B 0 \- Program finished successfully
+ The command was executed successfully.
+ .RE
+ .TP 8
+-.B 1 - Generic error
++.B 1 \- Generic error
+ Something went wrong during the operation. Refer to the error
+ message.
+ .RE
+ .TP 8
+-.B 2 - Usage error
++.B 2 \- Usage error
+ The command was used incorrectly, for example: unsupported command
+ line flag, or wrong number of arguments.
+ .RE
+diff --git a/rust/pvimg/man/pvimg-test.1 b/rust/pvimg/man/pvimg-test.1
+index 901c7edb..4fb7d73f 100644
+--- a/rust/pvimg/man/pvimg-test.1
++++ b/rust/pvimg/man/pvimg-test.1
+@@ -3,11 +3,11 @@
+ .\" it under the terms of the MIT license. See LICENSE for details.
+ .\"
+ 
+-.TH pvimg-test 1 "2024-12-05" "s390-tools" "Pvimg Manual"
++.TH pvimg-test 1 "2024-12-11" "s390-tools" "Pvimg Manual"
+ .nh
+ .ad l
+ .SH NAME
+-\fBpvimg test\fP - Test different aspects of an existing IBM Secure Execution image
++\fBpvimg test\fP \- Test different aspects of an existing IBM Secure Execution image
+ \fB
+ .SH SYNOPSIS
+ .nf
+@@ -54,16 +54,16 @@ Print help (see a summary with \fB\-h\fR).
+ 
+ .SH EXIT STATUS
+ .TP 8
+-.B 0 - Program finished successfully
++.B 0 \- Program finished successfully
+ The command was executed successfully.
+ .RE
+ .TP 8
+-.B 1 - Generic error
++.B 1 \- Generic error
+ Something went wrong during the operation. Refer to the error
+ message.
+ .RE
+ .TP 8
+-.B 2 - Usage error
++.B 2 \- Usage error
+ The command was used incorrectly, for example: unsupported command
+ line flag, or wrong number of arguments.
+ .RE
+diff --git a/rust/pvimg/man/pvimg.1 b/rust/pvimg/man/pvimg.1
+index 37c8e978..5676b61d 100644
+--- a/rust/pvimg/man/pvimg.1
++++ b/rust/pvimg/man/pvimg.1
+@@ -3,11 +3,11 @@
+ .\" it under the terms of the MIT license. See LICENSE for details.
+ .\"
+ 
+-.TH pvimg 1 "2024-12-05" "s390-tools" "Pvimg Manual"
++.TH pvimg 1 "2024-12-11" "s390-tools" "Pvimg Manual"
+ .nh
+ .ad l
+ .SH NAME
+-\fBpvimg\fP - Create and inspect IBM Secure Execution images
++\fBpvimg\fP \- Create and inspect IBM Secure Execution images
+ \fB
+ .SH SYNOPSIS
+ .nf
+@@ -69,16 +69,16 @@ Print help (see a summary with \fB\-h\fR).
+ 
+ .SH EXIT STATUS
+ .TP 8
+-.B 0 - Program finished successfully
++.B 0 \- Program finished successfully
+ The command was executed successfully.
+ .RE
+ .TP 8
+-.B 1 - Generic error
++.B 1 \- Generic error
+ Something went wrong during the operation. Refer to the error
+ message.
+ .RE
+ .TP 8
+-.B 2 - Usage error
++.B 2 \- Usage error
+ The command was used incorrectly, for example: unsupported command
+ line flag, or wrong number of arguments.
+ .RE
+diff --git a/rust/pvimg/src/cli.rs b/rust/pvimg/src/cli.rs
+index 2ca4e901..12f0b764 100644
+--- a/rust/pvimg/src/cli.rs
++++ b/rust/pvimg/src/cli.rs
+@@ -140,6 +140,20 @@ pub struct CreateBootImageLegacyFlags {
+     /// Disable the support for backup target keys (default).
+     #[arg(long, action = clap::ArgAction::SetTrue, conflicts_with="enable_backup_keys", group="header-flags")]
+     pub disable_backup_keys: Option<bool>,
++
++    /// Enable encryption of the image components (default).
++    ///
++    /// The image components are: the kernel, ramdisk, and kernel command line.
++    #[arg(long, action = clap::ArgAction::SetTrue, group="header-flags")]
++    pub enable_image_encryption: Option<bool>,
++
++    /// Disable encryption of the image components.
++    ///
++    /// The image components are: the kernel, ramdisk, and kernel command line.
++    /// Use only if the components used do not contain any confidential content
++    /// (for example, secrets like non-public cryptographic keys).
++    #[arg(long, action = clap::ArgAction::SetTrue, conflicts_with="enable_image_encryption", group="header-flags")]
++    pub disable_image_encryption: Option<bool>,
+ }
+ 
+ #[non_exhaustive]
+@@ -476,6 +490,8 @@ mod test {
+             flat_map_collect(insert(mvca.clone(), vec![CliOption::new("enable-pckmo", ["--enable-pckmo"])])),
+             flat_map_collect(insert(mvca.clone(), vec![CliOption::new("enable-pckmo-hmac", ["--enable-pckmo-hmac"])])),
+             flat_map_collect(insert(mvca.clone(), vec![CliOption::new("enable-backup-keys", ["--enable-backup-keys"])])),
++            flat_map_collect(insert(mvca.clone(), vec![CliOption::new("disable-image-encryption", ["--disable-image-encryption"])])),
++            flat_map_collect(insert(mvca.clone(), vec![CliOption::new("enable-image-encryption", ["--enable-image-encryption"])])),
+         ];
+         let invalid_create_args = [
+             flat_map_collect(remove(mvcanv.clone(), "no-verify")),
+@@ -501,6 +517,8 @@ mod test {
+                                                    CliOption::new("x-pcf2", ["--x-pcf", "0x0"])])),
+             flat_map_collect(insert(mvca.clone(), vec![CliOption::new("enable-pckmo", ["--enable-pckmo"]),
+                                                    CliOption::new("disable-pckmo", ["--disable-pckmo"])])),
++            flat_map_collect(insert(mvca.clone(), vec![CliOption::new("enable-image-encryption", ["--enable-image-encryption"]),
++                                                   CliOption::new("disable-image-encryption", ["--disable-image-encryption"])])),
+         ];
+ 
+         let mut genprotimg_valid_args = vec![
+diff --git a/rust/pvimg/src/cmd/create.rs b/rust/pvimg/src/cmd/create.rs
+index b696d790..475d3523 100644
+--- a/rust/pvimg/src/cmd/create.rs
++++ b/rust/pvimg/src/cmd/create.rs
+@@ -80,6 +80,12 @@ fn parse_flags(
+         lf.enable_backup_keys
+             .filter(|x| *x)
+             .and(Some(PcfV1::all_enabled([PcfV1::BackupTargetKeys]))),
++        lf.disable_image_encryption
++            .filter(|x| *x)
++            .and(Some(PcfV1::all_enabled([PcfV1::NoComponentEncryption]))),
++        lf.enable_image_encryption
++            .filter(|x| *x)
++            .and(Some(PcfV1::all_disabled([PcfV1::NoComponentEncryption]))),
+     ]
+     .into_iter()
+     .flatten()
+@@ -135,6 +141,10 @@ pub fn create(opt: &CreateBootImageArgs) -> Result<OwnExitCode> {
+         read_user_provided_keys(opt.comm_key.as_deref(), &opt.experimental_args)?;
+     let (plaintext_flags, secret_flags) = parse_flags(opt)?;
+ 
++    if plaintext_flags.is_set(PcfV1::NoComponentEncryption) {
++        warn!("The components encryption is disabled, make sure that the components do not contain any confidential content.");
++    }
++
+     let mut components = components(&opt.component_paths)?;
+     if opt.no_component_check {
+         warn!("The component check is turned off!");

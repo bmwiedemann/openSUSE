@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 17 05:34:25 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.500.0 (0.50)
+   see /usr/share/doc/packages/perl-HTTP-DAV/Changes
+
+    v0.50 (released 2024/10/16):
+      *   bug fixes
+
+          Fixed missing custom headers when calling PUT methods. Closes
+          "RT#100756". Thanks Georg Acher for the patch and for patiently
+          waiting a decade (!) for a fix.
+
+-------------------------------------------------------------------
 Thu Dec  6 15:44:54 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.49

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 29 16:41:11 UTC 2024 - egotthold@suse.com
+
+- Update to version 1.6.0
+  * Update vendored dependencies
+  * Update containernetworking plugins to 1.6.0
+
+-------------------------------------------------------------------
 Thu Jan 25 21:00:14 UTC 2024 - egotthold@suse.com
 
 - Update to version 1.4.0:

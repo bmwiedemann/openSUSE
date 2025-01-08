@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  6 21:11:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.0.1
+  * Fix a data loss bug
+  * Fix application icon on Wayland
+  * Fix crash when video thumbnail cache contains empty files
+    (kde#497831)
+  * The "Configure KPhotoAlbum" menu entry is now shown again
+  * Clicking on a tag in the Viewer’s info box shows the
+    respective tag in the browser again
+  * When the main window is closed and the viewer is opened, it
+    is also closed now automatically.
+
+-------------------------------------------------------------------
 Sun Dec  8 10:29:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.0.0

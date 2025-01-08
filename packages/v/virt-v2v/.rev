@@ -167,4 +167,12 @@
     <comment>Update virt-v2v to version 2.6.0</comment>
     <requestid>1206710</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0e260cc1d47db81aa1eecf3de04e84cf</srcmd5>
+    <version>2.7.4</version>
+    <time>1736279555</time>
+    <user>anag+factory</user>
+    <comment>Update virt-v2v to version 2.7.4</comment>
+    <requestid>1235238</requestid>
+  </revision>
 </revisionlist>

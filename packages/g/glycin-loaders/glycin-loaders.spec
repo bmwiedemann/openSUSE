@@ -1,7 +1,7 @@
 #
 # spec file for package glycin-loaders
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %bcond_without jxl
 
 Name:           glycin-loaders
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0
-URL:            https://gitlab.gnome.org/sophie-h/glycin
+URL:            https://gitlab.gnome.org/GNOME/glycin
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 

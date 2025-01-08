@@ -1,0 +1,36 @@
+--- cloudinit/sources/helpers/openstack.py.orig
++++ cloudinit/sources/helpers/openstack.py
+@@ -736,7 +736,14 @@ def convert_net_json(network_json=None,
+             if not mac:
+                 raise ValueError("No mac_address or name entry for %s" % d)
+             if mac not in known_macs:
+-                raise ValueError("Unable to find a system nic for %s" % d)
++                # Let's give udev a chance to catch up
++                try:
++                    util.udevadm_settle()
++                except subp.ProcessExecutionError:
++                    pass
++                known_macs = net.get_interfaces_by_mac()
++                if mac not in known_macs:
++                    raise ValueError("Unable to find a system nic for %s" % d)
+             d["name"] = known_macs[mac]
+ 
+         for cfg, key, fmt, targets in link_updates:
+--- tests/unittests/sources/test_configdrive.py.orig
++++ tests/unittests/sources/test_configdrive.py
+@@ -389,6 +389,7 @@ class TestConfigDriveDataSource(CiTestCa
+             M_PATH + "util.find_devs_with", "m_find_devs_with", return_value=[]
+         )
+         self.tmp = self.tmp_dir()
++        self.allowed_subp = True
+ 
+     def test_ec2_metadata(self):
+         populate_dir(self.tmp, CFG_DRIVE_FILES_V2)
+@@ -869,6 +870,7 @@ class TestConvertNetworkData(CiTestCase)
+     def setUp(self):
+         super(TestConvertNetworkData, self).setUp()
+         self.tmp = self.tmp_dir()
++        self.allowed_subp = True
+ 
+     def _getnames_in_config(self, ncfg):
+         return set(

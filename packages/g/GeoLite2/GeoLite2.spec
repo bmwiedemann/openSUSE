@@ -1,7 +1,7 @@
 #
 # spec file for package GeoLite2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           GeoLite2
-Version:        2024.12.07
+Version:        2024.10.25
 Release:        0
 Summary:        Free Geolocation Data
 License:        CC-BY-SA-4.0
 URL:            https://github.com/P3TERX/GeoLite.mmdb
-Source0:        https://github.com/P3TERX/GeoLite.mmdb/releases/download/%{version}/%{name}-ASN.mmdb
-Source1:        https://github.com/P3TERX/GeoLite.mmdb/releases/download/%{version}/%{name}-City.mmdb
-Source2:        https://github.com/P3TERX/GeoLite.mmdb/releases/download/%{version}/%{name}-Country.mmdb
+Source0:        %{name}-ASN.mmdb
+Source1:        %{name}-City.mmdb
+Source2:        %{name}-Country.mmdb
 BuildRequires:  mmdblookup
 BuildArch:      noarch
 
@@ -64,9 +64,11 @@ install -Dpm0644 %{SOURCE1} %{buildroot}%{_datadir}/%{name}/%{name}-City.mmdb
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_datadir}/%{name}/%{name}-Country.mmdb
 
 %check
-mmdblookup --file %{buildroot}%{_datadir}/%{name}/%{name}-ASN.mmdb --ip 9.9.9.9 autonomous_system_organization
-mmdblookup --file %{buildroot}%{_datadir}/%{name}/%{name}-City.mmdb --ip 9.9.9.9 city names en
-mmdblookup --file %{buildroot}%{_datadir}/%{name}/%{name}-Country.mmdb --ip 9.9.9.9 country names en
+# The GeoLite2-City.mmdb database should show correctly the cities of the Crimean IPs.
+%define _ip 178.219.171.159
+mmdblookup --file %{buildroot}%{_datadir}/%{name}/%{name}-ASN.mmdb --ip %{_ip} autonomous_system_organization
+mmdblookup --file %{buildroot}%{_datadir}/%{name}/%{name}-City.mmdb --ip %{_ip} city names en
+mmdblookup --file %{buildroot}%{_datadir}/%{name}/%{name}-Country.mmdb --ip %{_ip} country names en
 
 %files ASN
 %dir %{_datadir}/%{name}

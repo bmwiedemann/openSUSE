@@ -1385,4 +1385,13 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
 </comment>
     <requestid>1226461</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>428d70fd573dd6e524cab7634a74868a</srcmd5>
+    <version>2.0.13</version>
+    <time>1736279430</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 2.0.13
+ * allow negative KDUMP_KEEP_OLD_DUMPS (bsc#1234845)</comment>
+    <requestid>1235309</requestid>
+  </revision>
 </revisionlist>

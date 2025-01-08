@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:28:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.7:
+  * Fix drawing issue #2068
+  * Fix window mode missing some windows #2071
+  * Fix character in config file broken #2070
+  * Resolve 'rasinc' for @imports #2069
+  * Desktop file DBus activation #1924
+  * Resolve -config identical to -theme #2040
+
+-------------------------------------------------------------------
 Fri Dec 27 16:27:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
-- Update to 1.75:
+- Update to 1.7.6:
   * Recursive file browser
   * Copy to clipboard support
   * Entry box history

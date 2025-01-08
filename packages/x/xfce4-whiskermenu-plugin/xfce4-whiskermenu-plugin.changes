@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  4 09:08:15 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.8.4
+  * Fix menu not hiding in labwc.
+  * Fix GHashTable leak in Settings::load.
+  * Fix string leak in is_separator.
+  * Translation updates
+
+-------------------------------------------------------------------
 Wed Jan 17 08:16:52 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 2.8.3

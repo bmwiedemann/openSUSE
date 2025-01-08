@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  1 22:00:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.18.0
+  - exr: Avoid integer overflow for large deep exr slice strides
+    #4542
+  - pnm: Broken pnm files with invalid resolution #4561
+  - build: Use target_compile_options (fixes a LibRaw build issue)
+    #4556 (by Don Olmstead)
+  - testing: Add new ref output for libheif updates #4525
+  - ci: Increased the macos timeout slightly to fix spurious
+    failures #4526
+  - ci: Fix broken CI for ASWF 2021 and 2022 containers #4543
+  - docs: Clarify 'copy_image' example #4522
+  - docs: Update some old links to our new vanity URLs #4533
+
+-------------------------------------------------------------------
 Thu Nov 14 13:57:23 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Downgrade back to 2.5.17.0

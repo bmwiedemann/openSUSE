@@ -116,6 +116,10 @@ based on the latest openSUSE Leap release.
 %setup -q -n %{name}-%{version}%{?vers_suffix}
 %autopatch -p1
 cp %{S:1} .
+# For reproducible builds derive the GNU build ID from the Go one.
+# See discussion in https://github.com/apptainer/apptainer/issues/1623
+# as well as https://pkg.go.dev/cmd/link
+sed -i -e "s/\(GO_LDFLAGS += -ldflags=\"\).*\(\"\)/\1-B gobuildid\2/" mlocal/frags/go_normal_opts.mk
 
 %build
 

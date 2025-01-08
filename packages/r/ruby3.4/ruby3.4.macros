@@ -1,0 +1,16 @@
+#
+# IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
+#
+#  if you change any macros here you have to update the copy in the
+#  prjconf aswell.
+#
+# IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
+#
+%rubygemsruby34() rubygem(ruby:3.4.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby34() %{expand:%%{rubygemsx%*}}
+
+%rubyruby34() ruby3.4 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby34() %{expand:%%{rubyx%*}}
+
+%rubydevelruby34() ruby3.4-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby34() %{expand:%%{rubydevelx%*}}

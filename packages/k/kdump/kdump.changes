@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 16:56:36 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.13
+ * allow negative KDUMP_KEEP_OLD_DUMPS (bsc#1234845)
+
+-------------------------------------------------------------------
 Fri Nov 22 17:37:47 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.12

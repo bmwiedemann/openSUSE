@@ -1,7 +1,7 @@
 #
 # spec file for package PrusaSlicer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           PrusaSlicer
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
@@ -27,12 +27,14 @@ URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-2.8.1-pr13609-fix-build.patch gh#prusa3d/PrusaSlicer#13609
-Patch2:         PrusaSlicer-2.8.1-pr13609-fix-build.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch gh#prusa3d/PrusaSlicer#13761
 Patch10:        PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
 Patch11:        PrusaSlicer-2.6.0-octoprint-name-fix.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13896-static-libs.patch gh#prusa3d/PrusaSlicer#13896
+Patch12:        PrusaSlicer-2.9.0-pr13896-static-libs.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch gh#prusa3d/PrusaSlicer#13885
+Patch13:        PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -74,12 +76,12 @@ BuildRequires:  wxGTK3-devel >= 3.2
 BuildRequires:  nanosvg-devel >= 2022.12.22
 BuildRequires:  (cmake(Catch2) >= 2.9 with cmake(Catch2) < 3)
 BuildRequires:  cmake(LibBGCode)
+BuildRequires:  cmake(Qhull)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(qhull_r)
 BuildRequires:  pkgconfig(qhullcpp)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)

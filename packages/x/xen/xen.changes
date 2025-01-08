@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jan  6 06:01:11 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.0 pre-release (jsc#PED-8907)
+  xen-4.20.0-testing-src.tar.bz2
+- New Features
+  * On Arm:
+    - Experimental support for Armv8-R.
+    - Support for NXP S32G3 Processors Family and NXP LINFlexD UART driver.
+    - Basic handling for SCMI requests over SMC using Shared Memory, by allowing
+      forwarding the calls to EL3 FW if coming from hwdom.
+    - Support for LLC (Last Level Cache) coloring.
+  * On x86:
+    - xl suspend/resume subcommands.
+    - Support for SRSO_U/S_NO and SRSO_MSR_FIX
+- Changed Features
+  * Fixed blkif protocol specification for sector sizes different than 512b.
+  * The dombuilder in libxenguest no longer un-gzips secondary modules, instead
+    leaving this to the guest kernel to do in guest context.
+  * On x86:
+    - Prefer ACPI reboot over UEFI ResetSystem() run time service call.
+    - Switched the xAPIC flat driver to use physical destination mode for external
+      interrupts instead of logical destination mode.
+- Removed Features
+  * On x86:
+    - Support for running on Xeon Phi processors.
+    - Removed the `ucode=allow-same` command line option.
+    - Removed x2APIC Cluster Mode for external interrupts.  x2APIC Physical and
+      Mixed Modes are still available.
+- Dropped patches
+  xsa466.patch
+
+-------------------------------------------------------------------
+Wed Dec 11 11:11:11 UTC 2024 - ohering@suse.de
+
+- Move /etc/bash_completion.d/xl back to %_datadir/bash-completion/completions
+
+-------------------------------------------------------------------
+Mon Dec  9 10:13:51 MST 2024 - carnold@suse.com
+
+- bsc#1234282 - VUL-0: xen: XSA-466: Xen hypercall page unsafe
+  against speculative attacks
+  xsa466.patch
+
+-------------------------------------------------------------------
 Wed Dec  4 09:16:24 MST 2024 - carnold@suse.com
 
 - Update to Xen 4.19.1 bug fix release (jsc#PED-8907)
@@ -56,7 +100,7 @@ Tue Oct 29 12:34:56 UTC 2024 - ohering@suse.de
 Thu Sep 26 11:30:00 CEST 2024 - jbeulich@suse.com
 
 - bsc#1230366 - VUL-0: CVE-2024-45817: xen: x86: Deadlock in
-  vlapic_error() (XSA-462)  
+  vlapic_error() (XSA-462)
   66f2af41-x86-vLAPIC-undue-recursion-of-vlapic_error.patch
   Drop xsa462.patch
 - Upstream bug fixes (bsc#1027519)
@@ -71,7 +115,7 @@ Thu Sep 26 11:30:00 CEST 2024 - jbeulich@suse.com
 Tue Sep 10 09:54:34 MDT 2024 - carnold@suse.com
 
 - bsc#1230366 - VUL-0: CVE-2024-45817: xen: x86: Deadlock in
-  vlapic_error() (XSA-462)  
+  vlapic_error() (XSA-462)
   xsa462.patch
 
 -------------------------------------------------------------------

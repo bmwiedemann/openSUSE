@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 31 05:32:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.116.0 (0.116)
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.116     2024-12-30 16:13:39-05:00 America/New_York
+          - do not leave Getopt::Long configuration in an altered state after
+            getting options
+
+  0.115     2024-11-07 18:00:02+00:00 Europe/Dublin
+          - cope with the user forgetting the first argument, generally "%c %o",
+            to `describe_options`, by assuming they meant that value exactly
+
+-------------------------------------------------------------------
 Sun Jan 21 03:08:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.114

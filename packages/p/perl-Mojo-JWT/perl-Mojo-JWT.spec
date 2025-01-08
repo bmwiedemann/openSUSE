@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-JWT
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
-Name:           perl-Mojo-JWT
-Version:        0.09
-Release:        0
 %define cpan_name Mojo-JWT
-Summary:        JSON Web Token the Mojo way
+Name:           perl-Mojo-JWT
+Version:        1.10.0
+Release:        0
+# 1.01 -> normalize -> 1.10.0
+%define cpan_version 1.01
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        JSON Web Token the Mojo way
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/J/JB/JBERGER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/J/JB/JBERGER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Digest::SHA)
-BuildRequires:  perl(MIME::Base64) >= 3.11
+BuildRequires:  perl(CryptX) >= 0.029
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny)
 BuildRequires:  perl(Mojolicious) >= 5.00
-Requires:       perl(Digest::SHA)
-Requires:       perl(MIME::Base64) >= 3.11
+Requires:       perl(CryptX) >= 0.029
 Requires:       perl(Mojolicious) >= 5.00
-Recommends:     perl(Crypt::OpenSSL::Bignum)
-Recommends:     perl(Crypt::OpenSSL::RSA)
+Provides:       perl(Mojo::JWT) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,7 +54,7 @@ the data is not encrypted, so don't use it to send secrets over clear
 channels.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Build.PL --installdirs=vendor
@@ -69,9 +68,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes metamerge.json README
 %license LICENSE
 
 %changelog
-

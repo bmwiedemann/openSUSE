@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 17 05:30:56 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+
+  0.16    2024-09-16
+          [CHANGES]
+           * Added `Future::IO->load_impl` convenience method for toplevel
+             applications
+
+-------------------------------------------------------------------
 Fri Mar  8 22:27:37 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

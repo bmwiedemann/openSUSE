@@ -1,7 +1,7 @@
 #
 # spec file for package yacreader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,17 @@
 #
 
 
-%define unarr_version 569ffdb
 %define p7zip_version 16.02
+%define srcext        tar.zst
 Name:           yacreader
-Version:        9.14.2
+Version:        9.15.0
 Release:        0
 Summary:        The best way for reading your comics
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.yacreader.com
-Source0:        https://github.com/YACReader/yacreader/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        unarr-%{unarr_version}.zip
+Source0:        yacreader-%{version}.%{srcext}
+Source1:        unarr.%{srcext}
 # Source URL: https://sourceforge.net/projects/p7zip/files/p7zip/16.02/p7zip_16.02_src_all.tar.bz2/download
 Source2:        p7zip_%{p7zip_version}_src_all.tar.bz2
 Patch1:         0001-fix-unarr.patch
@@ -35,18 +35,20 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5QuickControls2-devel
-BuildRequires:  libQt5Sql5-sqlite
-BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtdeclarative-devel
-BuildRequires:  libqt5-qtmultimedia-devel
-BuildRequires:  libqt5-qtscript-devel
-BuildRequires:  libqt5-qtsvg-devel
+BuildRequires:  libpoppler-qt6-devel
 BuildRequires:  mozilla-nss
+BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-declarative-devel
+BuildRequires:  qt6-linguist-devel
+BuildRequires:  qt6-multimedia-devel
+BuildRequires:  qt6-qml-devel
+BuildRequires:  qt6-qt5compat-devel
+BuildRequires:  qt6-quickcontrols2-devel
+BuildRequires:  qt6-sql-devel
+BuildRequires:  qt6-svg-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+BuildRequires:  zstd
 Requires:       hicolor-icon-theme
 
 %description
@@ -54,12 +56,12 @@ A cross platform comic reader and library manager.
 
 %prep
 %setup -q -a 1 -a 2
-mv unarr-%{unarr_version} compressed_archive/unarr/unarr-master
+mv unarr compressed_archive/unarr/unarr-master
 %patch -P 1 -p1
 mv p7zip_%{p7zip_version} compressed_archive/libp7zip
 
 %build
-qmake-qt5
+qmake6
 make %{?_smp_mflags}
 
 %install

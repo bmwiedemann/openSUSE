@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Jan  6 16:57:03 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add support for Leap 15.6
+- use make macro
+- fix Leap16
+- disable tests for Leap16, as openldap-server is missing and crpyt
+  will be removed
+
+-------------------------------------------------------------------
+Thu Jan  2 08:56:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging

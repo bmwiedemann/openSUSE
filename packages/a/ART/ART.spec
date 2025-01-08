@@ -20,6 +20,12 @@
 %global force_gcc_version 12
 %endif
 
+%if (0%{?suse_version} >= 1590) || ("%{_project}" == "graphics")
+%bcond_without art_ctl
+%else
+%bcone_with    art_ctl
+%endif
+
 Name:           ART
 Version:        1.24.5
 Release:        0
@@ -33,7 +39,7 @@ Source:         https://github.com/artpixls/ART/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 Patch0:         fix-missing-lm.patch
 BuildRequires:  OpenColorIO-devel
-%if 0%{?suse_version} > 1590
+%if %{with art_ctl}
 BuildRequires:  ctl-devel
 %endif
 BuildRequires:  cmake
@@ -95,8 +101,13 @@ A free, open-source, cross-platform raw image processing program. ART is a deriv
 export CFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/')"
 export CXXFLAGS="$CFLAGS"
 
+%if 0%{?force_gcc_version}
+export CC=gcc-%{?force_gcc_version}
+export CXX=gcc-%{?force_gcc_version}
+%else
 export CC=gcc
 export CXX=gcc
+%endif
 
 %cmake \
 %if 0%{?force_gcc_version}
@@ -107,7 +118,7 @@ export CXX=gcc
     -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCACHE_NAME_SUFFIX="" \
     -DENABLE_LIBRAW="ON" \
-%if 0%{?suse_version} > 1590
+%if %{with art_ctl}
     -DENABLE_CTL="ON" \
     -DCTL_INCLUDE_DIR="%{_includedir}/CTL" \
 %endif

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Dec 30 11:06:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  * This patch release adds missing bounds checks.
+    Two buffer overflow vulnerabilities were reported by Frederik
+    Reiter who also provided patches to fix them.
+    There are potential security implications, but only authenticated
+    clients would be able to exploit these vulnerabilities, if at all.
+    Nevertheless, it is prudent to update as soon as possible.
+
+-------------------------------------------------------------------
+Mon Dec 30 11:05:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * Fix a data type mismatch in the clipboard code that caused the
+    build to fail for 32 bit architectures.
+
+-------------------------------------------------------------------
+Mon Dec 30 11:05:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  Highlights:
+  * A v4l2m2m based H.264 encoder that works on Raspberry Pi 1 to 4,
+    sponsored by Raspberry Pi Ltd.
+  * Extended clipboard for UTF-8 text was implemented by Attila Fidan.
+  * Listening on a pre-bound file descriptor, implemented by Attila Fidan.
+  * The continuous updates extension was implemented by Philipp Zabel.
+  * We now have simple bandwidth estimation and improved frame pacing.
+  * Methods for rating pixel formats and modifiers have according to Neat VNC's
+    preferences have been added.
+  * The Qemu/VMWare LED state extensions have been implemented.
+  * H.264 encoders will now encode the correct colour space into the elementary
+    stream.
+  Bug fixes:
+  * Some memory leaks and reference counting errors have been eradicated.
+  * A race between resizing events and framebuffer updates that would cause a
+    buffer with the previous size to be sent after a resize event has been fixed.
+  * Buffers with 24 bits per pixel will now result in 32 bpp being reported to
+    the client because 24 bpp is not allowed by the protocol. Nvidia users should
+    now be able to use a wider selection of clients as a result of this change.
+- Update fix-build-in-15.6.patch
+  15e56b8e444532d299598b753f760cf0d4d9a4e2 added the LIBAVFILTER_VERSION_INT
+
+-------------------------------------------------------------------
 Wed Oct 23 07:57:14 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.8.1+git20241008.b539421 adding a _service file to

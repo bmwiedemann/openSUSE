@@ -107,7 +107,7 @@ Tue Sep 17 19:04:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
     acceleration (enabled by default).
   + Undeprecate console messages API and make it available in 6.0
     API.
-  + Security fixes: CVE-2024-40866, CVE-2024-44187, CVE-2044-44185,
+  + Security fixes: CVE-2024-40866, CVE-2024-44187, CVE-2024-44185,
     CVE-2024-54508, CVE-2024-54534.
 
 -------------------------------------------------------------------

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:38:28 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.120.0 (1.12)
+   see /usr/share/doc/packages/perl-Test-Inter/Changes
+
+  1.12  2024-12-09
+    - Fixed some comparisons so that perl 5.41.* won't give warnings.  Reported in
+      GitHub #51 (for Date::Manip distribution).
+
+-------------------------------------------------------------------
 Fri Mar  8 23:05:36 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

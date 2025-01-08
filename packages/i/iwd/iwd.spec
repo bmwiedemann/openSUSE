@@ -1,7 +1,7 @@
 #
 # spec file for package iwd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iwd
-Version:        3.0
+Version:        3.3
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 01:03:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- consistently set CC/CXX variables
+- enable CTL support in the devel project
+
+-------------------------------------------------------------------
 Sat Jan  4 07:16:15 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.24.5:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 08:27:53 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix start failure by systemd
+  * Make sure /etc/shadowsocks can be read by shadowsocks user
+  * Create the PID under /run/shadowsocks
+
+-------------------------------------------------------------------
 Wed Dec 13 13:52:10 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Set permissions as 640 for /etc/shadowsocks (boo#1216372) 

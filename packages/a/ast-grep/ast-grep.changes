@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 11:06:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.33.0:
+  * Breaking change: refactor: move pyo3 registration to CustomLang 4ddb08f
+  * feat: introduce napi_lang for dynamic loading 1a8d782
+  * chore(deps): update dependency @ast-grep/napi to v0.32.3 713244f
+
+-------------------------------------------------------------------
 Thu Jan  2 07:11:38 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.32.3:

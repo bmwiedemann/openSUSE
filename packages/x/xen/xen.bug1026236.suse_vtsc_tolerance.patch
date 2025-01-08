@@ -20,7 +20,7 @@ actually handle. The default is zero tolerance.
  unsigned long __read_mostly cpu_khz;  /* CPU clock frequency in kHz. */
  DEFINE_SPINLOCK(rtc_lock);
  unsigned long pit0_ticks;
-@@ -2797,6 +2800,8 @@ int tsc_set_info(struct domain *d,
+@@ -2887,6 +2890,8 @@ int tsc_set_info(struct domain *d,
  
      switch ( tsc_mode )
      {
@@ -29,7 +29,7 @@ actually handle. The default is zero tolerance.
      case XEN_CPUID_TSC_MODE_DEFAULT:
      case XEN_CPUID_TSC_MODE_ALWAYS_EMULATE:
          d->arch.vtsc_offset = get_s_time() - elapsed_nsec;
-@@ -2810,8 +2815,25 @@ int tsc_set_info(struct domain *d,
+@@ -2900,8 +2905,25 @@ int tsc_set_info(struct domain *d,
           * When a guest is created, gtsc_khz is passed in as zero, making
           * d->arch.tsc_khz == cpu_khz. Thus no need to check incarnation.
           */

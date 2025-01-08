@@ -40,4 +40,25 @@
   * fixes build against gcc10, which uses -fno-common as default</comment>
     <requestid>812862</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a117fbb93968c32b3c74aca6ae9895b</srcmd5>
+    <version>2.0.0</version>
+    <time>1736279517</time>
+    <user>anag+factory</user>
+    <comment>- fixed source URL in specfile 
+
+- fixed driver for current libva by switchting to gentoo patches
+  (boo#1234858)
+  * intel-hybrid-codec-driver-2.0.0-gcc10-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-invalid-read-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-nullptr-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-vadriverinit-fix.patch
+  * intel-hybrid-codec-driver-2.0.0-x11-fix.patch
+- supersedes the following patches
+  * U_Update-the-dependency-to-libva-2.0.patch
+  * n_libva-2.0-ABI-header-fix.patch
+  * u_gcc10.patch
+- raised driver version number to 2.0.0</comment>
+    <requestid>1235158</requestid>
+  </revision>
 </revisionlist>

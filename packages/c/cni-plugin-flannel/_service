@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/flannel-io/cni-plugin.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.4.0-flannel1</param>
+    <param name="revision">v1.6.0-flannel1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)-flannel1</param>
@@ -14,6 +14,6 @@
     <param name="compression">gz</param>
   </service>
   <service mode="manual" name="go_modules">
-    <param name="archive">cni-plugin-1.4.0.tar.gz</param>
+    <param name="archive">cni-plugin-1.6.0.tar.gz</param>
   </service>
 </services>

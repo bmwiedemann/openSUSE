@@ -1,7 +1,7 @@
 #
 # spec file for package uasm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           uasm
-Version:        2.56.2
+Version:        2.57r
 Release:        0
 Summary:        MASM-compatible assembler based on JWasm
 License:        Watcom-1.0
@@ -35,7 +35,7 @@ MASM-compatible assembler based on JWasm
 %build
 # Workaround for boo#1225948
 %global optflags %{optflags} -fpermissive
-%make_build -f gccLinux64.mak CFLAGS="%{optflags}"
+%make_build -f Makefile-Linux-GCC-64.mak CFLAGS="%{optflags}"
 
 %install
 mkdir -p %{buildroot}%{_bindir}

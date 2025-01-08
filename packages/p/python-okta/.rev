@@ -7,4 +7,12 @@
     <comment>Forward the current version of python-okta to Factory</comment>
     <requestid>1223833</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>489d90a14c119a683b8e5531279881ff</srcmd5>
+    <version>2.9.9</version>
+    <time>1736279579</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235242</requestid>
+  </revision>
 </revisionlist>

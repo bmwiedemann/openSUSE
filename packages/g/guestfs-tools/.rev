@@ -175,4 +175,12 @@
     <comment>virt-builder ships with out-of-date openSUSE signing key resulting in a GPG failure</comment>
     <requestid>1223715</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>38cc683548c93c08b4ff34a9c29473d5</srcmd5>
+    <version>1.53.5</version>
+    <time>1736279553</time>
+    <user>anag+factory</user>
+    <comment>Update guestfs-tools to version 1.53.5</comment>
+    <requestid>1235235</requestid>
+  </revision>
 </revisionlist>

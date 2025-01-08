@@ -252,4 +252,15 @@
 </comment>
     <requestid>1221618</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f303e6b38df47e9c4e6081080858d2aa</srcmd5>
+    <version>6.1.1</version>
+    <time>1736279578</time>
+    <user>anag+factory</user>
+    <comment>- Add README-SUSE.rst to describe the location of
+  `/usr/local/bin/virtualenvwrapper*.sh` in our packages
+  (bsc#1235076).
+</comment>
+    <requestid>1235236</requestid>
+  </revision>
 </revisionlist>

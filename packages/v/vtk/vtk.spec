@@ -1,7 +1,7 @@
 #
 # spec file for package vtk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@
 %bcond_with examples
 %bcond_with documentation
 %bcond_with testing
+%bcond_with mysql
 
 %ifarch %arm aarch64
 %bcond_without gles
@@ -135,7 +136,9 @@ BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_graph_parallel-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libjpeg-devel
+%if %{with mysql}
 BuildRequires:  libmysqlclient-devel
+%endif
 BuildRequires:  libtiff-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -244,8 +247,7 @@ Requires:       gcc-c++
 Requires:       hdf5-devel
 %{?with_mpi:Requires:       hdf5-%{mpi_flavor}-devel}
 Requires:       libjpeg-devel
-Requires:       libmysqlclient-devel
-Requires:       libnetcdf_c++-devel
+%{?with_mysql:Requires:       libmysqlclient-devel}
 Requires:       libtiff-devel
 # not strictly necessary, but required by VTKs cmake files
 Requires:       python3-%{name} = %{version}
@@ -488,9 +490,10 @@ export CXXFLAGS="%{optflags}"
     -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=%{?with_system_pegtl:YES}%{!?with_system_pegtl:NO} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
-    -DVTK_MODULE_ENABLE_VTK_ioss:BOOL=%{!?with_mpi:WANT}%{?with_mpi:NO} \
-    -DVTK_MODULE_ENABLE_VTK_pegtl:BOOL=YES \
-    -DVTK_MODULE_ENABLE_VTK_zfp:BOOL=NO \
+    -DVTK_MODULE_ENABLE_VTK_ioss:STRING=%{!?with_mpi:WANT}%{?with_mpi:NO} \
+    -DVTK_MODULE_ENABLE_VTK_pegtl:STRING=YES \
+    -DVTK_MODULE_ENABLE_VTK_zfp:STRING=NO \
+    -DVTK_MODULE_ENABLE_VTK_IOMySQL=%{?with_mysql:ON}%{!?with_mysql:NO} \
     %{nil}
 
 %cmake_build

@@ -331,4 +331,15 @@
     <comment>- Add Apptainer definition template for SLE15-SP7. (forwarded request 1234921 from eeich)</comment>
     <requestid>1234922</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>6e6c34892c309bf5d88d7ca4512fe34c</srcmd5>
+    <version>1.3.6</version>
+    <time>1736279512</time>
+    <user>anag+factory</user>
+    <comment>- Remove changelog entries which are irrelevant to us. (forwarded request 1235135 from eeich)
+- Make sure, build is reproducible by setting the GNU build ID to one
+  derived from the Go one. See https://pkg.go.dev/cmd/link.
+- Use go-jose version with fix for CVE-2024-28180 (bsc#1235211).</comment>
+    <requestid>1235678</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  5 04:39:42 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add bcond for mysql, keep it disabled by default. Make libmysql
+  devel dependency conditional.
+- Remove obsolete netcdf-c++ dependency from devel package.
+
+-------------------------------------------------------------------
 Mon Dec 30 18:53:44 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.4.1, see:

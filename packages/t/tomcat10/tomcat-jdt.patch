@@ -1,15 +1,15 @@
---- apache-tomcat-10.1.20-src/java/org/apache/jasper/compiler/JDTCompiler.java	2024-04-06 14:14:17.015180386 +0200
-+++ apache-tomcat-10.1.20-src/java/org/apache/jasper/compiler/JDTCompiler.java	2024-04-06 14:14:33.635284982 +0200
-@@ -310,13 +310,13 @@
-             } else if(opt.equals("15")) {
+--- apache-tomcat-10.1.34-src/java/org/apache/jasper/compiler/JDTCompiler.java     2025-01-03 18:40:16.470885660 +0000
++++ apache-tomcat-10.1.34-src/java/org/apache/jasper/compiler/JDTCompiler.java    2024-12-05 16:01:16.000000000 +0000
+@@ -298,13 +298,13 @@
+             } else if (opt.equals("15")) {
                  settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_15);
-             } else if(opt.equals("16")) {
+             } else if (opt.equals("16")) {
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_16);
 +                settings.put(CompilerOptions.OPTION_Source, "16");
-             } else if(opt.equals("17")) {
+             } else if (opt.equals("17")) {
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_17);
 +                settings.put(CompilerOptions.OPTION_Source, "17");
-             } else if(opt.equals("18")) {
+             } else if (opt.equals("18")) {
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_18);
 +                settings.put(CompilerOptions.OPTION_Source, "18");
              } else if (opt.equals("19")) {
@@ -18,20 +18,20 @@
              } else if (opt.equals("20")) {
                  // Constant not available in latest ECJ version that runs on
                  // Java 11.
-@@ -388,17 +388,17 @@
+@@ -386,17 +386,17 @@
                  settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_15);
                  settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_15);
-             } else if(opt.equals("16")) {
+             } else if (opt.equals("16")) {
 -                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_16);
 -                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_16);
 +                settings.put(CompilerOptions.OPTION_TargetPlatform, "16");
 +                settings.put(CompilerOptions.OPTION_Compliance, "16");
-             } else if(opt.equals("17")) {
+             } else if (opt.equals("17")) {
 -                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_17);
 -                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_17);
 +                settings.put(CompilerOptions.OPTION_TargetPlatform, "17");
 +                settings.put(CompilerOptions.OPTION_Compliance, "17");
-             } else if(opt.equals("18")) {
+             } else if (opt.equals("18")) {
 -                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_18);
 -                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_18);
 +                settings.put(CompilerOptions.OPTION_TargetPlatform, "18");

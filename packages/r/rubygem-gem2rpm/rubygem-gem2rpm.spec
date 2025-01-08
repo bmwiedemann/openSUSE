@@ -37,6 +37,7 @@
 %bcond_with     ruby31
 %bcond_with     ruby32
 %bcond_with     ruby33
+%bcond_with     ruby34
 %bcond_with     rubinius25
 
 Name:           rubygem-gem2rpm
@@ -893,6 +894,64 @@ fi
 %files -n ruby3.3-rubygem-gem2rpm-doc
 %defattr(-,root,root,-)
 %doc %{_libdir}/ruby/gems/3.3.0/doc/gem2rpm-%{version}
+%endif
+%endif
+
+%if %{with ruby34}
+%package -n ruby3.4-rubygem-gem2rpm
+Summary:        Generate rpm specfiles from gems
+Group:          Development/Languages/Ruby
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+
+%description -n ruby3.4-rubygem-gem2rpm
+Generate source rpms and rpm spec files from a Ruby Gem.
+The spec file tries to follow the gem as closely as possible
+
+%package -n ruby3.4-rubygem-gem2rpm-doc
+Summary:        RDoc documentation for %{mod_name}
+Group:          Development/Languages/Ruby
+Requires:       ruby3.4-rubygem-gem2rpm = %{version}
+
+%description -n ruby3.4-rubygem-gem2rpm-doc
+Documentation generated at gem installation time.
+Usually in RDoc and RI formats.
+
+%post -n ruby3.4-rubygem-gem2rpm
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby3.4-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm-%{version}   gem2rpm-%{version}   %{_bindir}/gem2rpm.ruby3.4-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm.ruby3.4 gem2rpm.ruby3.4 %{_bindir}/gem2rpm.ruby3.4-%{version} %{mod_weight}
+
+%preun -n ruby3.4-rubygem-gem2rpm
+if [ "$1" = 0 ] ; then
+    /usr/sbin/update-alternatives --remove gem2rpm          %{_bindir}/gem2rpm.ruby3.4-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby3.4-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm.ruby3.4  %{_bindir}/gem2rpm.ruby3.4-%{version}
+fi
+
+%files -n ruby3.4-rubygem-gem2rpm
+%defattr(-,root,root,-)
+%{_docdir}/ruby3.4-rubygem-gem2rpm
+#{_bindir}/gem2rpm-opensuse
+%{_bindir}/gem2rpm.ruby3.4-%{version}
+%ghost %{_bindir}/gem2rpm.ruby3.4
+%ghost %{_bindir}/gem2rpm-%{version}
+%ghost %{_bindir}/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.4
+%ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+# cache file
+%{_libdir}/ruby/gems/3.4.0/cache/gem2rpm-%{version}.gem
+%{_libdir}/ruby/gems/3.4.0/gems/gem2rpm-%{version}
+%{_libdir}/ruby/gems/3.4.0/specifications/gem2rpm-%{version}.gemspec
+
+%if %{with docs}
+%files -n ruby3.4-rubygem-gem2rpm-doc
+%defattr(-,root,root,-)
+%doc %{_libdir}/ruby/gems/3.4.0/doc/gem2rpm-%{version}
 %endif
 %endif
 

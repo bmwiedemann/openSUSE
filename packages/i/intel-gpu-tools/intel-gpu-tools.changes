@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jan  2 10:24:19 UTC 2025 - munix9@googlemail.com
+
+- Update to version 1.30:
+  * General changes:
+    - New meson options xe_eudebug and vmtb.
+  * Library changes:
+    - Added PantherLake (PTL) support, unified PCI IDs into one
+      common header pciids.h (Ngai-Mint Kwan)
+    - Added BMG support for OA (Observability Architecture) for Xe driver.
+      (José Roberto de Souza)
+    - Added support for Xe3 platforms in GPGPU shader. (Andrzej Hajda)
+    - Added 6k resolution support for a single CRTC. (Jeevan B)
+    - Added support for MTL platform in GPGPU compute. (Nishit Sharma)
+  * Runner changes:
+    - Set option PRUNE_KEEP_ALL as default. (Kamil Konieczny)
+    - Allow to dynamically ignore dmesg warn messages when generating
+      results, usefull when driver is using kernel fault injection.
+      (Kamil Konieczny).
+  * Tools changes:
+    - New power tool for power/energy measurement. (Ville Syrjälä)
+    - New VM Testbench (VMTB) - SR-IOV Virtual Machine testing tool.
+      (Adam Miszczak)
+    - Fixes in amd_hdmi_compliance. (Stylon Wang and Wayne Lin)
+    - Fixes in intel_reg. (Lucas De Marchi)
+  * And many other bug fixes, improvements, cleanups and new tests.
+
+- Add fix-procps-ng-4.0.5.patch: Fix build with procps-ng >= 4.0.5
+  (https://gitlab.com/procps-ng/procps/-/issues/332)
+
+-------------------------------------------------------------------
 Sat Oct 12 05:40:05 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 1.29. Tools and scripts changes:

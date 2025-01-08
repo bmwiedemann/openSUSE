@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec 31 01:05:18 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
+
+-------------------------------------------------------------------
+Tue Sep 24 05:38:18 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20240924.0.0 (20240924)
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20240924
+    - Update from Mozilla repository to 2024-09-24
+    - Added certificates:
+      - SecureSign Root CA12
+        sha256: 3f034bb5704d44b2d08545a02057de93ebf3905fce721acbc730c06ddaee904e
+      - SecureSign Root CA14
+        sha256: 4b009c1034494f9ab56bba3ba1d62731fc4d20d8955adcec10a925607261e338
+      - SecureSign Root CA15
+        sha256: e778f0f095fe843729cd1a0082179e5314a9c291442805e1fb1d8fb6b8886c3a
+      - TWCA CYBER Root CA
+        sha256: 3f63bb2814be174ec8b6439cf08d6d56f0b7c405883a5648a334424d6b3ec558
+
+-------------------------------------------------------------------
 Mon Sep  2 13:38:33 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Add ca-certificates-mozilla to runtime Requires as well

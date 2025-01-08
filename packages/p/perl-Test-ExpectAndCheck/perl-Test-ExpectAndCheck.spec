@@ -18,9 +18,10 @@
 
 %define cpan_name Test-ExpectAndCheck
 Name:           perl-Test-ExpectAndCheck
-Version:        0.60.0
+Version:        0.70.0
 Release:        0
-%define cpan_version 0.06
+# 0.07 -> normalize -> 0.70.0
+%define cpan_version 0.07
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Expect/check-style unit testing with object methods
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,8 +38,8 @@ BuildRequires:  perl(Test::Future::Deferred)
 Requires:       perl(Test::Builder) >= 1.302
 Requires:       perl(Test::Deep)
 Requires:       perl(Test::Future::Deferred)
-Provides:       perl(Test::ExpectAndCheck) = 0.60.0
-Provides:       perl(Test::ExpectAndCheck::Future) = 0.60.0
+Provides:       perl(Test::ExpectAndCheck) = %{version}
+Provides:       perl(Test::ExpectAndCheck::Future) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

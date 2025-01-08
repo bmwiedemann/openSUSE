@@ -72,9 +72,9 @@ References: bsc#954872
 +}
 +
  static int libxl__build_device_model_args_new(libxl__gc *gc,
-                                         const char *dm, int guest_domid,
-                                         const libxl_domain_config *guest_config,
-@@ -1885,9 +1909,11 @@ static int libxl__build_device_model_arg
+     const char *dm, int guest_domid,
+     const libxl_domain_config *guest_config,
+@@ -1891,9 +1915,11 @@ static int libxl__build_device_model_arg
                  libxl__device_disk_dev_number(disks[i].vdev, &disk, &part);
              const char *format;
              char *drive;

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-DAV
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-Name:           perl-HTTP-DAV
-Version:        0.49
-Release:        0
-#Upstream:  Patrick Collins G03 Gloucester Place, Kensington Sydney, Australia Email: pcollins@cpan.org Phone: +61 2 9663 4916 All rights reserved. Current co-maintainer of the module is Cosimo Streppone for Opera Software ASA, the opera@cpan.org manpage. You may distribute this module under the terms of either the GNU General Public License or the Artistic License, as specified in the Perl README file.
 %define cpan_name HTTP-DAV
-Summary:        WebDAV client library for Perl5
+Name:           perl-HTTP-DAV
+Version:        0.500.0
+Release:        0
+# 0.50 -> normalize -> 0.500.0
+%define cpan_version 0.50
+#Upstream:  Patrick Collins G03 Gloucester Place, Kensington Sydney, Australia Email: pcollins@cpan.org Phone: +61 2 9663 4916 All rights reserved. Current co-maintainer of the module is Cosimo Streppone for Opera Software ASA, the opera@cpan.org manpage. You may distribute this module under the terms of either the GNU General Public License or the Artistic License, as specified in the Perl README file.
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CO/COSIMO/%{cpan_name}-%{version}.tar.gz
+Summary:        WebDAV client library for Perl5
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CO/COSIMO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(LWP) >= 5.48
@@ -39,6 +39,16 @@ Requires:       perl(LWP) >= 5.48
 Requires:       perl(URI)
 Requires:       perl(URI::Escape)
 Requires:       perl(XML::DOM)
+Provides:       perl(HTTP::DAV) = %{version}
+Provides:       perl(HTTP::DAV::Comms)
+Provides:       perl(HTTP::DAV::Headers)
+Provides:       perl(HTTP::DAV::Lock) = 0.09
+Provides:       perl(HTTP::DAV::Resource) = %{version}
+Provides:       perl(HTTP::DAV::ResourceList) = 0.11
+Provides:       perl(HTTP::DAV::Response) = 0.14
+Provides:       perl(HTTP::DAV::UserAgent)
+Provides:       perl(HTTP::DAV::Utils) = 0.11
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,11 +57,11 @@ webservers using the WebDAV protocol. Now you can LOCK, DELETE and PUT
 files and much more on a DAV-enabled webserver.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -62,7 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes doc README TODO
 
 %changelog

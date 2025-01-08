@@ -669,4 +669,12 @@
     <comment>- Add ffmpeg-4-CVE-2024-7055.patch:</comment>
     <requestid>1201542</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>c9fedece2eae271b45627ad0db8211c5</srcmd5>
+    <version>4.4.5</version>
+    <time>1736279408</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.4.5</comment>
+    <requestid>1235206</requestid>
+  </revision>
 </revisionlist>

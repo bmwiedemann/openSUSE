@@ -18,9 +18,10 @@
 
 %define cpan_name XML-RSS
 Name:           perl-XML-RSS
-Version:        1.630.0
+Version:        1.640.0
 Release:        0
-%define cpan_version 1.63
+# 1.64 -> normalize -> 1.640.0
+%define cpan_version 1.64
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Creates and updates RSS files
 URL:            https://metacpan.org/release/%{cpan_name}

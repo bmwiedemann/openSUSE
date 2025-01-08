@@ -1,6 +1,6 @@
---- libguestfs-1.52.0/lib/launch-direct.c.orig	2024-02-05 14:17:10.208970293 -0700
-+++ libguestfs-1.52.0/lib/launch-direct.c	2024-02-05 14:21:37.548976664 -0700
-@@ -650,7 +650,10 @@ launch_direct (guestfs_h *g, void *datav
+--- a/lib/launch-direct.c
++++ b/lib/launch-direct.c
+@@ -645,7 +645,10 @@ launch_direct (guestfs_h *g, void *datav
    flag ("-no-reboot");
  
    /* These are recommended settings, see RHBZ#1053847. */

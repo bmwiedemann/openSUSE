@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  6 12:57:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.2.4
+  - acme
+    * Update go-acme/lego to v4.21.0 (gh#traefik/traefik#11368)
+  - k8s/gatewayapi
+    * Support empty value for core Kubernetes API group (gh#traefik/traefik#11386)
+  - middleware
+    * Fix typo in basicauth note (gh#traefik/traefik#11397)
+  - service
+    * Configure ErrorLog in httputil.ReverseProxy (gh#traefik/traefik#11344)
+  - tls
+    * Upgrade github.com/spiffe/go-spiffe/v2 to v2.4.0 (gh#traefik/traefik#11385)
+  Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365)
+  Remove duplicate github.com/coreos/go-systemd dependency (gh#traefik/traefik#11354)
+
+-------------------------------------------------------------------
 Mon Dec 16 13:27:07 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.2.3 

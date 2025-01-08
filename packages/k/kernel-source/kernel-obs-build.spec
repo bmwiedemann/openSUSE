@@ -38,7 +38,7 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-ab2dfe60ff3604409438ab68a1e4e19c9f9a8376
+%global kernel_package kernel%kernel_flavor-srchash-90b0f5bec3c74e2fb0bbf3d5a7738de0305f169e
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
@@ -47,7 +47,7 @@
 Name:           kernel-obs-build
 Version:        6.12.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gab2dfe6
+Release:        <RELEASE>.g90b0f5b
 %else
 Release:        0
 %endif

@@ -4,11 +4,13 @@
     <param name="filename">adaptivecpp</param>
     <param name="url">https://github.com/AdaptiveCpp/AdaptiveCpp.git</param>
     <param name="scm">git</param>
-    <param name="revision">v24.06.0</param>
+    <param name="revision">v24.10.0</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
+
+
   <service name="set_version" mode="manual" />
 
   <service name="tar" mode="buildtime">
@@ -16,7 +18,7 @@
   </service>
   <service name="recompress" mode="buildtime">
     <param name="compression">gz</param>
-    <param name="file">adaptivecpp-*.tar</param>
+    <param name="file">*.tar</param>
   </service>
 
 </services>

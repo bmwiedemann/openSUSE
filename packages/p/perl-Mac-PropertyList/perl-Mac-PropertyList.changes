@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 10 05:32:29 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.602.0 (1.602)
+   see /usr/share/doc/packages/perl-Mac-PropertyList/Changes
+
+  1.602 2024-09-09T10:19:03Z
+  	* remove stray debugging statement (from joz-k, #28)
+
+-------------------------------------------------------------------
 Sat Jul 27 05:29:09 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.601.0 (1.601)

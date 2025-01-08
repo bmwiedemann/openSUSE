@@ -117,4 +117,14 @@
   * Various CI upgrades</comment>
     <requestid>1133185</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e28c90046fcc684761f26d8cbb1e6083</srcmd5>
+    <version>0.3.13</version>
+    <time>1736279619</time>
+    <user>anag+factory</user>
+    <comment>- Skip test cases that raise TesseractNotFoundError.
+- Switch to pyproject macros.
+- Correct Requires, we need packaging not pkg_resources.</comment>
+    <requestid>1235478</requestid>
+  </revision>
 </revisionlist>

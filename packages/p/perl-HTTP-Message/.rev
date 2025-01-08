@@ -307,4 +307,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1183237</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>498bff5ac2a0247bfdfc2dfdc39ece9e</srcmd5>
+    <version>7.0.0</version>
+    <time>1736279391</time>
+    <user>anag+factory</user>
+    <comment>- updated to 7.0.0 (7.00)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+  7.00      2024-10-07 15:31:56Z
+      - Stop transforming LF into CRLF. Fixes #69 (GH#196) (Olaf Alders) (forwarded request 1234010 from tinita)</comment>
+    <requestid>1234767</requestid>
+  </revision>
 </revisionlist>

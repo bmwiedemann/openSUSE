@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Signature
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,23 @@
 
 %define cpan_name Module-Signature
 Name:           perl-Module-Signature
-Version:        0.88
+Version:        0.890.0
 Release:        0
+# 0.89 -> normalize -> 0.890.0
+%define cpan_version 0.89
 #Upstream: SUSE-Public-Domain
+License:        (Artistic-1.0 OR GPL-1.0-or-later) AND CC0-1.0
 Summary:        Module signature file manipulation
-License:        CC0-1.0 AND (GPL-1.0-or-later OR Artistic-1.0)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.36
 BuildRequires:  perl(IPC::Run)
+Provides:       perl(Module::Signature) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  gpg
@@ -62,7 +66,8 @@ authors are strongly encouraged to regenerate their _SIGNATURE_ files.
 Users verifying old SHA1 signature files will receive a warning.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END
@@ -80,6 +85,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2022.pub README
+%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2022.pub README TIMLEGGE2024.pub
 
 %changelog

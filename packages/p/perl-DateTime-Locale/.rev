@@ -396,4 +396,15 @@
     <comment></comment>
     <requestid>1190784</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>430b29b4e78e3deedd53fee9f64d037b</srcmd5>
+    <version>1.440000</version>
+    <time>1736279446</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.44
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+  1.44     2024-10-27
+  - Rebuilt all locale data with the data from CLDR 46.0.0 (forwarded request 1235391 from tinita)</comment>
+    <requestid>1235399</requestid>
+  </revision>
 </revisionlist>

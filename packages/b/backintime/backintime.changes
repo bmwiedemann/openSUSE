@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 28 15:15:06 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.5.3
+  * Feature: Support language Interlingua (Occidental)
+  * Feature: Warn if destination directory is formatted as NTFS (#1854) (David Gibbs @fallingrock)
+  * Breaking Change: Minimal Python version 3.9 required (#1731)
+  * Breaking Change: Auto migration of config version 4 or lower not longer supported (#1857)
+  * Fix: Prevent duplicates in Exclude/Include list of Manage Profiles dialog
+  * Fix: Fix Qt segmentation fault when canceling out of unconfigured BiT (#1095) (Derek Veit @DerekVeit)
+  * Fix: Correct global flock fallbacks (#1834) (Timothy Southwick @NickNackGus)
+  * Fix: Use SSH key password only if it is valid, otherwise request it from user (#1852) (David Wales @daviewales)
+  * Feature: Support fcron (#610)
+  * Feature: User message about release candidate (#1906)
+
+-------------------------------------------------------------------
 Sat Oct 12 05:19:55 UTC 2024 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 1.5.2

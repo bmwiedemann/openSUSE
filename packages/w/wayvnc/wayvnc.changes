@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  7 11:07:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * Fix buffer allocation on FreeBSD.
+
+-------------------------------------------------------------------
+Tue Jan  7 10:57:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * The new ext-image-copy-capture-v1 protocol has been implemented for output
+    capturing.
+  * A file descriptor created by a parent process can be used for listening for
+    new connections, thanks to Attila Fidan.
+  * Clipboard handling has been made more robust, thanks again to Attila Fidan.
+  * WayVNC can now allocate CMA backed pixel buffers. They are required for
+    hardware encoding on Raspberry Pi.
+  * Keyboard LED state can be passed to clients.
+  * Output power management is now only enabled while capturing.
+
+-------------------------------------------------------------------
 Mon Feb 26 07:16:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:

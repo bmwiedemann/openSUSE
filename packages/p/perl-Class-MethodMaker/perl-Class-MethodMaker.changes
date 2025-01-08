@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  6 17:27:41 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Remove reproducible.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Thu Dec 12 16:12:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.250.0 (2.25)
+   see /usr/share/doc/packages/perl-Class-MethodMaker/Changes
+
+  2.25	Nov 15 2024
+          - deterministic hash key order, needed for reproducible builds (GH#6, Bernhard M. Wiedemann)
+
+-------------------------------------------------------------------
 Mon Mar  4 12:33:59 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

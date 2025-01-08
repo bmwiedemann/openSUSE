@@ -37,4 +37,12 @@
 - Drop unneeded extra tarball, PKGBUILD and dsc files.</comment>
     <requestid>1115707</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>566bd0fc28d801df98d99bfb40271a19</srcmd5>
+    <version>90</version>
+    <time>1736279530</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235205</requestid>
+  </revision>
 </revisionlist>

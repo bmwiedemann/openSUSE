@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 07 07:59:38 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.71.2:
+  * fix: Use correct cache while parsing partial config (#3701)
+  * Update hclfmt documentation (#3702)
+  * Minor Code Improvements (#3718)
+  * Dependencies update (#3716)
+  * Feature flags concurrency fix (#3713)
+  * feat: Adding `%tf-command` log placeholder for custom format
+    (#3709)
+  * fix: Updating Discord link for website (#3697)
+  * fix: Rephrasing missing dependency a bit (#3695)
+  * Enhanced clarity of error messages for missing mock outputs
+    when using the dependencies block, fix #3567 (#3692)
+
+-------------------------------------------------------------------
 Sat Dec 21 14:30:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.71.1:

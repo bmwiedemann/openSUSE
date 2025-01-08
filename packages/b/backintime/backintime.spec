@@ -23,7 +23,7 @@
 %endif
 
 Name:           backintime
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 Group:          Productivity/Archiving/Backup
@@ -33,7 +33,7 @@ Source0:        https://github.com/bit-team/backintime/releases/download/v%{vers
 # Public key mentioned in https://github.com/bit-team/backintime#archlinux
 Source2:        %{name}.keyring
 Source3:        %{name}.png
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 # TEST REQUIREMENTS (only works on real hardware)
 #BuildRequires:  %#{python_module packaging}
 #BuildRequires:  %#{python_module dbus-python}
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module devel >= 3.8}
 #BuildRequires:  rsync
 #BuildRequires:  udev
 # /TEST REQUIREMENTS
-BuildConflicts: python3-devel < 3.8
+BuildConflicts: python3-devel < 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -54,11 +54,10 @@ Requires:       %{python_flavor}-packaging
 Requires:       cron
 Requires:       openssh
 Requires:       pkexec
-Requires:       python3 >= 3.8
+Requires:       python3 >= 3.9
 Requires:       rsync
 Recommends:     encfs
 Recommends:     sshfs
-Requires:       libnotify-tools
 Conflicts:      backintime-gnome
 Conflicts:      backintime-kde
 Obsoletes:      backintime-doc < %{version}

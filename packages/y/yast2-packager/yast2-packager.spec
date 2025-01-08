@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-packager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later

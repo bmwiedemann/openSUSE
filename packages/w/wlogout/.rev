@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8961d908b9961d1eba37f7fd47519e2b</srcmd5>
+    <version>1.2.2</version>
+    <time>1736279621</time>
+    <user>anag+factory</user>
+    <comment>Hello,
+I want to introduce a new package to factory:
+
+wlogout is a wayland based logout menu
+https://github.com/ArtsyMacaw/wlogout
+
+It is useful for wayland based window managers like hyprland and sway, where no power menu is provided by default.
+Therefore it would be important to have the package available in the main repos.
+
+Thank you,
+
+Lorenz</comment>
+    <requestid>1235498</requestid>
+  </revision>
+</revisionlist>

@@ -150,7 +150,7 @@ Thu Apr  4 12:27:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
   * mkfs.minix: handle 64bit time on 32bit system
   * mkswap: implement --file
   * mkswap: implement --offset
-  * more: clea processes not cleaned up after failed SSH session
+  * more: clean processes not cleaned up after failed SSH session
     using up 100% CPU (bsc#1220117)
   * mount: add --map-users and --map-groups convenience options
   * nsenter: add option `-c` to join the cgroup of target process

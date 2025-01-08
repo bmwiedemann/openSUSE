@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -98,7 +98,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.4.4
+Version:        4.4.5
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -122,19 +122,11 @@ Patch5:         soversion.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
-Patch12:        0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
-Patch13:        0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
 Patch14:        ffmpeg-glslang-cxx17.patch
 Patch15:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
-Patch16:        0001-avfilter-vf_minterpolate-Check-pts-before-division.patch
 Patch17:        ffmpeg-CVE-2023-49502.patch
-Patch18:        ffmpeg-CVE-2023-51793.patch
-Patch19:        0001-avfilter-af_stereowiden-Check-length.patch
-Patch20:        ffmpeg-CVE-2023-50010.patch
-Patch21:        ffmpeg-4-CVE-2024-32230.patch
 Patch22:        ffmpeg-c99.patch
 Patch23:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
-Patch24:        ffmpeg-4-CVE-2024-7055.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

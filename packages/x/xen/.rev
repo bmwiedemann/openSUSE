@@ -3006,4 +3006,12 @@
     <comment>Update to Xen version 4.19.1 bug fix release</comment>
     <requestid>1228353</requestid>
   </revision>
+  <revision rev="354" vrev="1">
+    <srcmd5>bebbbc3fa0a3908f26ee55a2d3e7f5f9</srcmd5>
+    <version>4.20.0_02</version>
+    <time>1736279413</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen version 4.20.0</comment>
+    <requestid>1235233</requestid>
+  </revision>
 </revisionlist>

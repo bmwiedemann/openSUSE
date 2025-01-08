@@ -1,7 +1,7 @@
 #
 # spec file for package neatvnc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libsoname libneatvnc0
 
 Name:           neatvnc
-Version:        0.8.1+git20241008.b539421
+Version:        0.9.2
 Release:        0
 Summary:        A VNC server library
 License:        ISC

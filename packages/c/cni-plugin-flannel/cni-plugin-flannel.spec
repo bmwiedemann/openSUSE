@@ -19,7 +19,7 @@
 %define cni_dir %{_libexecdir}/cni
 
 Name:           cni-plugin-flannel
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        A CNI network plugin that is powered by flannel
 License:        Apache-2.0

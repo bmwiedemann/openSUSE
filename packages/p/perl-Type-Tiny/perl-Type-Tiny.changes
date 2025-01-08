@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Sep 30 05:34:15 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.006000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.006000	2024-09-24
+   [ Documentation ]
+   - Update NEWS.
+   [ Packaging ]
+   - Repackage as stable. (See also the changelog for 2.005_001 and
+     2.005_002.)
+  2.005_002	2024-09-08
+   [ Bug Fixes ]
+   - Fix uninitialized warning messages from Error::TypeTiny when processing
+     very shallow stack traces.
+     Diab Jerius++
+   [ Documentation ]
+   - Fix minor typo in documentation for named parameters in `Type::Params`.
+   - Update copyright notices in files to 2024.
+   [ Other ]
+   - Improved initialization of variables when they are tied to a type
+     constraint; initialization to explicit values will work even when not
+     tied via the `ttie` wrapper function; if no explicit values are
+     provided, tied scalars will be initialized to the type's `type_default`.
+     So for example, `tie( my $title, Str )` will initialize `$title` to the
+     empty string instead of undef, and `tie( my $title, Str, 'Foo' )` will
+     initialize the variable to 'Foo' as was already implied by
+     documentation.
+     Daniel Mita++
+     XSven++
+   - Inlining `Int` now calls the XS implementation when available. (The
+     speed improvement is negligible, but it also may result in small memory
+     savings.)
+     Zaki Mughal++
+     <https://github.com/tobyink/p5-type-tiny/pull/145>
+   - Removed: Support for the ${^TYPE_PARAMS_MULTISIG} global variable has
+     been dropped. Using this global variable was deprecated in trial version
+     1.999_010 and stable version 2.000000, both of which are nearly two
+     years old. Use ${^_TYPE_PARAMS_MULTISIG} instead.
+  2.005_001	2024-09-07
+   [ Documentation ]
+   - Fixes for various typos.
+     Yoshikazu Sawa++
+     <https://github.com/tobyink/p5-type-tiny/pull/155>
+   - Improve documentation for the initialization of the `coercion` attribute
+     for `Type::Tiny`.
+     Diab Jerius++
+   [ Other ]
+   - Updated: Smartmatch discontinued beginning perl-5.41.3; Type::Tiny will
+     no longer attempt to support smartmatch if the Perl version is too high.
+     James E Keenan++
+     <https://github.com/tobyink/p5-type-tiny/pull/161>
+
+-------------------------------------------------------------------
 Thu Apr  6 03:11:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.004000

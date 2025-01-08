@@ -53,7 +53,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1863,6 +1863,7 @@ typedef struct {
+@@ -1868,6 +1868,7 @@ typedef struct {
  } libxl_domain_suspend_suse_properties;
  #define LIBXL_SUSPEND_DEBUG 1
  #define LIBXL_SUSPEND_LIVE 2

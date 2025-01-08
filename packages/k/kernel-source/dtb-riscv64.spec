@@ -27,7 +27,7 @@
 Name:           dtb-riscv64
 Version:        6.12.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gab2dfe6
+Release:        <RELEASE>.g90b0f5b
 %else
 Release:        0
 %endif

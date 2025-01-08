@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan  5 18:44:01 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.3
+  * Fix issue with handling External Authentication.
+  version 3.2:
+  * Fix issue with GCC 15 and -std=c23 build errors.
+  * Add support for using PMKSA over SAE if available.
+  * Add support for HighUtilization/StationCount thresholds.
+  * Add support for disabling Multicast RX option.
+  version 3.1:
+  * Fix issue with handling OWE transition BSS selection.
+  * Fix issue with handling oper class 136 starting frequency.
+
+-------------------------------------------------------------------
 Tue Oct 29 15:17:54 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 ver 3.0:

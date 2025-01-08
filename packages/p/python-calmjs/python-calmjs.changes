@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  7 03:37:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Rejig patch support-python-313.patch to also cope with other argparse
+  changes.
+
+-------------------------------------------------------------------
 Mon Dec  9 03:34:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:

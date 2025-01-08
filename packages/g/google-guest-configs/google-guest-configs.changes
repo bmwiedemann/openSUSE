@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 30 14:47:09 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add ggc-no-dup-metasrv-entry.patch
+  + Follow up to (bsc#1234289, bsc#1234293). Avoid duplicate entries for
+    the metadata server in /etc/hosts
+
+-------------------------------------------------------------------
 Thu Dec 12 14:55:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20241205.00 (bsc#1234254, bsc#1234255)

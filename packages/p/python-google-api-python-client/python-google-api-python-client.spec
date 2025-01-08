@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-api-python-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-api-python-client
-Version:        2.154.0
+Version:        2.157.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0

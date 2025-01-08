@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan  3 15:21:51 MST 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.4 (jsc#PED-8910)
+  * mltools: Replace jansson with json-c
+  * lib: OVF: Add preliminary support for Windows Server 2025
+  * in-place: Add a warning about checking the exit code
+  * -i libvirtxml: Implement disk checksumming
+  * v2v: Allow printing the checksum
+  * -i libvirt: Trim whitespace around name
+  * -o qemu: Replace hard-coded UEFI paths
+  * -o qemu: Add set -e, -x at the top of the output script
+  * -o qemu: Remove confusing comment about smm
+  * lib, input: Model UEFI secureboot property in metadata
+  * -i vmx: Parse uefi.secureBoot.enabled from vmx file
+  * -o libvirt: Add full <firmware/> section
+  * -o libvirt: Remove incorrect comment about secure boot
+  * -i libvirt: Parse UEFI secureboot flag from libvirt XML
+  * build: Move baseline OCaml to 4.08
+  * build: Depend on libnbd >= 1.14
+  * build: Use nbdcopy and nbdinfo from ./configure
+  * v2v: Implement --parallel=N for parallel disk copies
+  * in-place: Fix name of program in the --help output
+  * inspector: Reorder -O option in alphabetical order
+  * v2v: Ensure --parallel >= 1
+  * inspector: Move the code that creates XML output to a separate file
+  * in-place: Add new -O option to write inspector XML
+
+-------------------------------------------------------------------
 Thu Oct 10 07:19:56 MDT 2024 - carnold@suse.com
 
 - Update to virt-v2v 2.6.0 (jsc#PED-8910)

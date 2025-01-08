@@ -1,6 +1,7 @@
 #
 # spec file for package python-okta
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,41 +18,41 @@
 
 
 Name:           python-okta
-Version:        2.9.8
+Version:        2.9.9
 Release:        0
 Summary:        Python SDK for the Okta Management API
 License:        Apache-2.0
 URL:            https://github.com/okta/okta-sdk-python
 Source:         https://files.pythonhosted.org/packages/source/o/okta/okta-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aenum}
+BuildRequires:  %{python_module PyJWT}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module flatdict}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pydash}
-BuildRequires:  %{python_module PyJWT}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module xmltodict}
-BuildRequires:  %{python_module yarl}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-recording}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module xmltodict}
+BuildRequires:  %{python_module yarl}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-PyJWT
+Requires:       python-PyYAML
 Requires:       python-aenum
 Requires:       python-aiohttp
 Requires:       python-flatdict
 Requires:       python-jwcrypto
 Requires:       python-pycryptodomex
 Requires:       python-pydash
-Requires:       python-PyJWT
-Requires:       python-PyYAML
 Requires:       python-xmltodict
 Requires:       python-yarl
 BuildArch:      noarch

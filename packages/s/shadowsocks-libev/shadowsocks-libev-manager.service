@@ -18,8 +18,8 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
 Type=forking
-PIDFile=/var/run/shadowsocks-libev-manager.pid
-ExecStart=/usr/bin/ss-manager -c /etc/shadowsocks/shadowsocks-libev-config.json -f /var/run/shadowsocks-libev-manager.pid -u --fast-open
+PIDFile=/run/shadowsocks/shadowsocks-libev-manager.pid
+ExecStart=/usr/bin/ss-manager -c /etc/shadowsocks/shadowsocks-libev-config.json -f /run/shadowsocks/shadowsocks-libev-manager.pid -u --fast-open
 Restart=on-failure
 User=shadowsocks
 Group=shadowsocks

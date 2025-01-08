@@ -1543,4 +1543,41 @@
    * [pylint] Fix PLW1508 false positive for default string created via a mult operation</comment>
     <requestid>1231367</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1d53db9faaa2332a3812e5535dece0ef</srcmd5>
+    <version>0.8.6</version>
+    <time>1736279397</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.6 
+ * Preview features
+   * [format]: Preserve multiline implicit concatenated strings in docstring positions 
+   * [ruff] Add rule to detect empty literal in deque call (RUF025) 
+   * [ruff] Avoid reporting when ndigits is possibly negative (RUF057) 
+ * Rule changes
+   * [flake8-todos] remove issue code length restriction (TD003) 
+   * [pyflakes] Ignore errors in @no_type_check string annotations (F722, F821) 
+ * CLI
+   * Show errors for attempted fixes only when passed --verbose 
+ * Bug fixes
+   * [ruff] Avoid syntax error when removing int over multiple lines (RUF046) 
+   * [pyupgrade] Revert &quot;Add all PEP-585 names to UP006 rule&quot; 
+ 0.8.5
+ * Preview features
+   * [airflow] Extend names moved from core to provider (AIR303)
+   * [airflow] Extend rule to check class attributes, methods, arguments (AIR302)
+   * [fastapi] Update FAST002 to check keyword-only arguments 
+   * [flake8-type-checking] Disable TC006 and TC007 in stub files 
+   * [pylint] Detect nested methods correctly (PLW1641) 
+   * [ruff] Detect more strict-integer expressions (RUF046) 
+   * [ruff] Implement falsy-dict-get-fallback (RUF056) 
+   * [ruff] Implement unnecessary-round (RUF057) 
+ * Rule changes
+   * Visit PEP 764 inline TypedDict keys as non-type-expressions 
+   * [flake8-comprehensions] Skip C416 if comprehension contains unpacking 
+   * [flake8-pie] Allow cast(SomeType, ...) (PIE796) 
+   * [flake8-simplify] More precise inference for dictionaries (SIM300) 
+   * [flake8-use-pathlib] Catch redundant joins in PTH201 and avoid syntax errors 
+   * [pycodestyle] Preserve original value format (E731)</comment>
+    <requestid>1235139</requestid>
+  </revision>
 </revisionlist>

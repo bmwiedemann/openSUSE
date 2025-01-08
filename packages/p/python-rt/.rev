@@ -198,4 +198,35 @@
     the required fields during search. (see #97 @nerdfirefighter)</comment>
     <requestid>1202583</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c5724f91583c279bf7c691a87dc4be09</srcmd5>
+    <version>3.3.3</version>
+    <time>1736279669</time>
+    <user>anag+factory</user>
+    <comment>- switch to github tarball, as there's no longer an sdist on pypi
+- update to version v3.3.3:
+ - Changes
+  - Starting with version 0.28.0 of httpx, *verify* should be either a bool or an *SSL Context*.
+- update to version 3.3.2:
+ - Fixes
+  - Replace the removed httpx parameter of *proxies* by *proxy* (fixes #102)
+  - Pin dependencies to supported relative upstream versions.
+  - Remove the now obsolete *setup.py*.
+- update to version 3.3.1:
+ - Fixes
+  - Fix str(bytes) warning (*BytesWarning: str() on a bytes instance*) (#1074)
+ - Changes
+  - Set included files for ruff
+  - Switch to hatchling
+  - Set ignores for tests files
+  - Ignore uv.lock
+- update to version 3.3.0:
+ - Removed
+  - Remove support for now EoL Python 3.8.
+- update to version 3.2.0:
+ - Added
+  - Added option for custom list of fields to be populated for search &quot;query_format&quot; param to avoid unnecessary round trips to get fields like Told, Starts, Resolved, etc by returning the required fields during search. (see #97 @nerdfirefighter)
+</comment>
+    <requestid>1235563</requestid>
+  </revision>
 </revisionlist>

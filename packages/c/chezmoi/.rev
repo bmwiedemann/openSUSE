@@ -661,4 +661,17 @@
 </comment>
     <requestid>1231909</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>eef38861be19b3eeb19cde47f7efb321</srcmd5>
+    <version>2.57.0</version>
+    <time>1736279675</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.57.0:
+  - Features
+    * feat: Add chezmoi:template:format-indent template directive
+    * feat: Implement builtin mode for keepassxc
+    * feat: Add script hooks that use configured interpreters
+</comment>
+    <requestid>1235579</requestid>
+  </revision>
 </revisionlist>

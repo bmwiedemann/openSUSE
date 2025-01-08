@@ -1,7 +1,7 @@
 #
 # spec file for package guestfs-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.53.4
+Version:        1.53.5
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -42,8 +42,6 @@ ExclusiveArch:  x86_64 ppc64le s390x aarch64 riscv64
 URL:            http://libguestfs.org/
 Source0:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
-
-Patch0:         builder-update-openSUSE.gpg-key.patch
 
 %if 0%{patches_touch_autotools}
 BuildRequires:  autoconf

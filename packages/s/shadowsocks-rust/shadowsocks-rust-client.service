@@ -18,7 +18,7 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions
 Type=forking
-PIDFile=/var/run/shadowsocks-rust-client.pid
+PIDFile=/run/shadowsocks/shadowsocks-rust-client.pid
 ExecStart=/usr/bin/sslocal --log-without-time -c /etc/shadowsocks/shadowsocks-rust.json --tcp-fast-open
 Restart=on-failure
 User=shadowsocks

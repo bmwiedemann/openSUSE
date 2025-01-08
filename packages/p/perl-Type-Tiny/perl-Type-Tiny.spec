@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Type-Tiny
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Type-Tiny
 Name:           perl-Type-Tiny
-Version:        2.004000
+Version:        2.006000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny, yet Moo(se)-compatible type constraint
@@ -35,9 +35,9 @@ Recommends:     perl(Class::XSAccessor) >= 1.17
 Recommends:     perl(Devel::LexAlias) >= 0.05
 Recommends:     perl(Devel::StackTrace)
 Recommends:     perl(Ref::Util::XS) >= 0.100
-Recommends:     perl(Regexp::Util) >= 0.003
+Recommends:     perl(Regexp::Util) >= 0.3.0
 Recommends:     perl(Sub::Util)
-Recommends:     perl(Type::Tiny::XS) >= 0.025
+Recommends:     perl(Type::Tiny::XS) >= 0.25.0
 %{perl_requires}
 
 %description

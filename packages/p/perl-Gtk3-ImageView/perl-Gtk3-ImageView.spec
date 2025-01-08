@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Gtk3-ImageView
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Gtk3-ImageView
 Name:           perl-Gtk3-ImageView
-Version:        10
+Version:        12.0.0
 Release:        0
-Summary:        Image viewer widget for Gtk3
+# 12 -> normalize -> 12.0.0
+%define cpan_version 12
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Image viewer widget for Gtk3
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AS/ASOKOLOV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -37,15 +39,18 @@ BuildRequires:  perl(Image::Magick)
 BuildRequires:  perl(Readonly)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::MockObject)
-BuildRequires:  perl(Test::Perl::Critic)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(feature)
 Requires:       perl(Cairo)
 Requires:       perl(Glib) >= 1.210
 Requires:       perl(Glib::Object::Subclass)
 Requires:       perl(Gtk3)
 Requires:       perl(Readonly)
-Requires:       perl(feature)
+Provides:       perl(Gtk3::ImageView) = %{version}
+Provides:       perl(Gtk3::ImageView::Tool) = %{version}
+Provides:       perl(Gtk3::ImageView::Tool::Dragger) = %{version}
+Provides:       perl(Gtk3::ImageView::Tool::Selector) = %{version}
+Provides:       perl(Gtk3::ImageView::Tool::SelectorDragger) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libgtkimageview-devel
@@ -62,7 +67,7 @@ To discuss Gtk3::ImageView or gtk3-perl, ask questions and flame/praise the
 authors, join gtk-perl-list@gnome.org at lists.gnome.org.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

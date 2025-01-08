@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 16 05:36:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.640.0 (1.64)
+   see /usr/share/doc/packages/perl-XML-RSS/Changes
+
+  1.64    2024-10-16
+      - Avoid double $VERSION
+          - https://github.com/shlomif/perl-XML-RSS/pull/23
+          - https://github.com/shlomif/perl-XML-RSS/issues/18
+          - Thanks to @yoshikazusawa
+          - Thanks to @hvds
+
+-------------------------------------------------------------------
 Fri Mar  8 23:11:49 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:13:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid usage of %{_libdir}: a noarch package cannot rely on libdir
+  pointing to arch-specific packages. TWeak using
+  %{_prefix}/lib*/libevdev.so to find the correct library package
+  %name.
+
+-------------------------------------------------------------------
 Sat Sep 24 10:52:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - upadte to 0.11:

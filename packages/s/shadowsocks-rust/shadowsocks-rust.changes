@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 08:27:53 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix start failure by systemd
+  * Make sure /etc/shadowsocks can be read by shadowsocks user
+  * Create the PID file under /run/shadowsocks
+
+-------------------------------------------------------------------
 Fri Nov 22 13:00:48 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.21.2

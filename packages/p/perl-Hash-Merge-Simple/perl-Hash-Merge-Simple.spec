@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Hash-Merge-Simple
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:           perl-Hash-Merge-Simple
-Version:        0.051
-Release:        0
+
 %define cpan_name Hash-Merge-Simple
+Name:           perl-Hash-Merge-Simple
+Version:        0.52.0
+Release:        0
+# 0.052 -> normalize -> 0.52.0
+%define cpan_version 0.052
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Recursively merge two or more hashes, simply
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Hash-Merge-Simple/
-#Source:         http://www.cpan.org/authors/id/R/RO/ROKR/Hash-Merge-Simple-%{version}.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{cpan_version}.tar.gz
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Clone)
-BuildRequires:  perl(Test::Most)
+BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Clone)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+Provides:       perl(Hash::Merge::Simple) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,29 +44,26 @@ hash, but doesn't attempt to combine arrays, objects, scalars, or anything
 else. The rightmost hash also takes precedence, replacing whatever was in
 the left hash if a conflict occurs.
 
-This code was pretty much taken straight from the Catalyst::Utils manpage,
-and modified to handle more than 2 hashes at the same time.
+This code was pretty much taken straight from Catalyst::Utils, and modified
+to handle more than 2 hashes at the same time.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(644,root,root,755)
 %doc Changes README
+%license LICENSE
 
 %changelog

@@ -172,4 +172,15 @@
     <comment></comment>
     <requestid>909808</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c4f9370a2734323be6fcc3ea40a049fc</srcmd5>
+    <version>0.100.0</version>
+    <time>1736279436</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-Class-Data-Inheritable/Changes
+  0.10  
+      - don't use vars, use our (thanks haarg) (forwarded request 1235324 from tinita)</comment>
+    <requestid>1235353</requestid>
+  </revision>
 </revisionlist>

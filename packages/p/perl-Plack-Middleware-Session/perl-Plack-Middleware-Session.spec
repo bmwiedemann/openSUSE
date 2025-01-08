@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Plack-Middleware-Session
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,48 @@
 #
 
 
-Name:           perl-Plack-Middleware-Session
-Version:        0.33
-Release:        0
 %define cpan_name Plack-Middleware-Session
-Summary:        Middleware for session management
+Name:           perl-Plack-Middleware-Session
+Version:        0.340.0
+Release:        0
+# 0.34 -> normalize -> 0.340.0
+%define cpan_version 0.34
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
+Summary:        Middleware for session management
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Cookie::Baker) >= 0.10
+BuildRequires:  perl(Cookie::Baker) >= 0.120
 BuildRequires:  perl(Digest::HMAC_SHA1) >= 1.03
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(LWP::UserAgent)
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Plack) >= 0.9910
 BuildRequires:  perl(Test::Fatal) >= 0.006
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Requires)
-Requires:       perl(Cookie::Baker) >= 0.10
+Requires:       perl(Cookie::Baker) >= 0.120
 Requires:       perl(Digest::HMAC_SHA1) >= 1.03
 Requires:       perl(Digest::SHA)
 Requires:       perl(Plack) >= 0.9910
+Provides:       perl(Plack::Middleware::Session) = %{version}
+Provides:       perl(Plack::Middleware::Session::Cookie)
+Provides:       perl(Plack::Session) = %{version}
+Provides:       perl(Plack::Session::Cleanup) = %{version}
+Provides:       perl(Plack::Session::State) = %{version}
+Provides:       perl(Plack::Session::State::Cookie) = %{version}
+Provides:       perl(Plack::Session::Store) = %{version}
+Provides:       perl(Plack::Session::Store::Cache) = %{version}
+Provides:       perl(Plack::Session::Store::DBI) = %{version}
+Provides:       perl(Plack::Session::Store::File) = %{version}
+Provides:       perl(Plack::Session::Store::Null) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -61,8 +74,9 @@ needed.
 of 'plack.session'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
@@ -78,7 +92,6 @@ export PERL5LIB=$PWD
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README
 %license LICENSE
 

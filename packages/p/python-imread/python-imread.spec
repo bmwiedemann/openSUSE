@@ -1,7 +1,7 @@
 #
 # spec file for package python-imread
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-imread
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Image reading library
 License:        MIT
@@ -73,7 +73,7 @@ pushd imread
 %pytest_arch
 
 %files %{python_files}
-%doc ChangeLog README.rst
+%doc ChangeLog README.md
 %license COPYING.MIT
 %{python_sitearch}/imread
 %{python_sitearch}/imread-%{version}.dist-info

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:09:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.7048
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+
+  1.7048  2024-10-29 11:48:22 PDT
+     [Bug Fix]
+        - Upgrade fatpacked version to 0.9929 (#682)
+
+-------------------------------------------------------------------
 Tue Aug 27 12:14:26 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Add a patch to use https instead of http

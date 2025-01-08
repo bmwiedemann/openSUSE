@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 23 05:32:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20240923
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20240923 2024-09-23 Australia/Melbourne
+    * Fix loading of ED25519 keys with CryptX-0.081
+
+  1.20240827 2024-08-27 Australia/Melbourne
+    * Add missing Author prerequisite
+      Thanks to Giovanni <g.bechis@snb.it>
+    * Option to pass a time to the Validator to assert the time
+      which should be considered as "now" for expiry checks
+
+-------------------------------------------------------------------
 Sun Jun 23 16:29:40 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 1.20240619

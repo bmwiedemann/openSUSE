@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  3 04:32:38 UTC 2025 - Xu Zhao <i@xuzhao.net>
+
+- Update to 9.15.0
+  * Save magnifying glass size and zoom level.
+  * Bump PDF render size.
+  * Fix trackpad scrolling.
+- Use obs_scm to manage source code
+
+-------------------------------------------------------------------
 Wed Feb 21 20:28:47 UTC 2024 - Xu Zhao <i@xuzhao.net>
 
 - Update to 9.14.2.2402143

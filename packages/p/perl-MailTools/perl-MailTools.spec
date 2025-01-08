@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MailTools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,47 @@
 #
 
 
-Name:           perl-MailTools
-Version:        2.21
-Release:        0
 %define cpan_name MailTools
-Summary:        Bundle of ancient email modules
+Name:           perl-MailTools
+Version:        2.220.0
+Release:        0
+# 2.22 -> normalize -> 2.220.0
+%define cpan_version 2.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{version}.tar.gz
+Summary:        Various ancient e-mail related modules
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Date::Format)
 BuildRequires:  perl(Date::Parse)
 Requires:       perl(Date::Format)
 Requires:       perl(Date::Parse)
+Provides:       perl(Mail::Address) = %{version}
+Provides:       perl(Mail::Cap) = %{version}
+Provides:       perl(Mail::Field) = %{version}
+Provides:       perl(Mail::Field::AddrList) = %{version}
+Provides:       perl(Mail::Field::Date) = %{version}
+Provides:       perl(Mail::Field::Generic) = %{version}
+Provides:       perl(Mail::Filter) = %{version}
+Provides:       perl(Mail::Header) = %{version}
+Provides:       perl(Mail::Internet) = %{version}
+Provides:       perl(Mail::Mailer) = %{version}
+Provides:       perl(Mail::Mailer::qmail) = %{version}
+Provides:       perl(Mail::Mailer::rfc822) = %{version}
+Provides:       perl(Mail::Mailer::sendmail) = %{version}
+Provides:       perl(Mail::Mailer::smtp) = %{version}
+Provides:       perl(Mail::Mailer::smtp::pipe) = %{version}
+Provides:       perl(Mail::Mailer::smtps) = %{version}
+Provides:       perl(Mail::Mailer::smtps::pipe) = %{version}
+Provides:       perl(Mail::Mailer::testfile) = %{version}
+Provides:       perl(Mail::Mailer::testfile::pipe) = %{version}
+Provides:       perl(Mail::Send) = %{version}
+Provides:       perl(Mail::Util) = %{version}
+Provides:       perl(MailTools) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -47,11 +70,11 @@ libraries. The main reason that you still find this code on CPAN, is
 because many books use it as example.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -62,7 +85,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog examples MailTools.ppd README README.demos README.md
 
 %changelog

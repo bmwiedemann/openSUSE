@@ -1,0 +1,26 @@
+diff --git a/configure.ac b/configure.ac
+index 37036a9..ad107b4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-AC_INIT([fmtools], [2.0.7], [blp@cs.stanford.edu])
++AC_INIT([fmtools], [2.0.8], [blp@cs.stanford.edu])
+ AC_CONFIG_AUX_DIR([build-aux])
+ AM_INIT_AUTOMAKE([foreign])
+ AC_PREREQ([2.59])
+diff --git a/package.m4 b/package.m4
+index 6345ba2..e68623e 100644
+--- a/package.m4
++++ b/package.m4
+@@ -4,9 +4,9 @@ m4_define([AT_PACKAGE_NAME],
+ m4_define([AT_PACKAGE_TARNAME],
+   [fmtools])
+ m4_define([AT_PACKAGE_VERSION],
+-  [2.0.7])
++  [2.0.8])
+ m4_define([AT_PACKAGE_STRING],
+-  [fmtools 2.0.7])
++  [fmtools 2.0.8])
+ m4_define([AT_PACKAGE_BUGREPORT],
+   [blp@cs.stanford.edu])
+ m4_define([AT_PACKAGE_URL],

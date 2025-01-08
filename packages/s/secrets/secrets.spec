@@ -1,7 +1,7 @@
 #
 # spec file for package secrets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        10.3
+Version:        10.4
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-only

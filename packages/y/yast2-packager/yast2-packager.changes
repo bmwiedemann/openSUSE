@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 10:45:35 UTC 2025 - Martin Vidner <mvidner@suse.com>
+
+- Adjust test for ruby-3.4 (bsc#1235099)
+- 5.0.6
+
+-------------------------------------------------------------------
 Tue Mar 12 13:43:26 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - Change the product mapping API to be the same as in SP5 and older

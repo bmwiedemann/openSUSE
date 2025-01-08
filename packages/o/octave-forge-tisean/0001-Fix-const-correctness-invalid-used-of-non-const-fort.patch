@@ -1,0 +1,124 @@
+From 1c672392dffcc5a9a124241ac966d9a81102dccf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 1 Jan 2025 20:24:11 +0100
+Subject: [PATCH] Fix const-correctness, invalid used of non-const fortran_vec
+
+fortran_vec() is a non-const method, replace with the const data() method.
+---
+ src/__lzo_gm__.cc                      | 4 ++--
+ src/__lzo_run__.cc                     | 2 +-
+ src/__lzo_test__.cc                    | 8 ++++----
+ src/routines_c/find_multi_neighbors.cc | 2 +-
+ src/routines_c/tsa.h                   | 2 +-
+ 5 files changed, 9 insertions(+), 9 deletions(-)
+ mode change 100755 => 100644 src/__lzo_gm__.cc
+ mode change 100755 => 100644 src/__lzo_run__.cc
+
+diff --git a/src/__lzo_gm__.cc b/src/__lzo_gm__.cc
+old mode 100755
+new mode 100644
+index 40b5065..c8b6476
+--- a/src/__lzo_gm__.cc
++++ b/src/__lzo_gm__.cc
+@@ -42,7 +42,7 @@ void make_fit(const Matrix& series, octave_idx_type dim,
+   octave_idx_type LENGTH = series.rows ();
+   for (octave_idx_type i=0;i<dim;i++) 
+     {
+-      const double *si = series.fortran_vec() + LENGTH * i;
++      const double *si = series.data() + LENGTH * i;
+       double cast=si[found[0]+STEP];
+       for (octave_idx_type j=1;j<number;j++)
+         cast += si[found[j]+STEP];
+@@ -106,7 +106,7 @@ DEFUN_DLD (__lzo_gm__, args, , HELPTEXT)
+       OCTAVE_LOCAL_BUFFER (double, error_array, dim);
+       OCTAVE_LOCAL_BUFFER (double, hrms, dim);
+       OCTAVE_LOCAL_BUFFER (double, hav, dim);
+-      OCTAVE_LOCAL_BUFFER (double *, hser, dim);
++      OCTAVE_LOCAL_BUFFER (const double *, hser, dim);
+ 
+       MArray<octave_idx_type> box (dim_vector(NMAX,NMAX));
+ 
+diff --git a/src/__lzo_run__.cc b/src/__lzo_run__.cc
+old mode 100755
+new mode 100644
+index 03ff253..14bca5c
+--- a/src/__lzo_run__.cc
++++ b/src/__lzo_run__.cc
+@@ -136,7 +136,7 @@ void make_zeroth(const Matrix &series, TISEAN_rand &generator,
+   for (octave_idx_type d=0;d<dim;d++) {
+     newcast[d]=0.0;
+ //  old   sd=series[d]+1;
+-    const double *sd = series.fortran_vec() + d*len + 1;
++    const double *sd = series.data() + d*len + 1;
+     for (octave_idx_type i=0;i<number;i++)
+       newcast[d] += sd[found[i]];
+     newcast[d] /= (double)number;
+diff --git a/src/__lzo_test__.cc b/src/__lzo_test__.cc
+index 650223c..f55b1a9 100644
+--- a/src/__lzo_test__.cc
++++ b/src/__lzo_test__.cc
+@@ -38,7 +38,7 @@ FOR INTERNAL USE ONLY"
+ void sort(const Matrix &series, octave_idx_type *found, 
+           double *abstand, octave_idx_type embed, octave_idx_type DELAY, 
+           octave_idx_type MINN, octave_idx_type nfound,
+-          double **hser)
++          const double **hser)
+ {
+ 
+   octave_idx_type hdim = (embed-1) * DELAY;
+@@ -81,7 +81,7 @@ void make_fit(const Matrix &series, octave_idx_type dim,
+     {
+       casted=0.0;
+   //  old  help=series[j]+istep;
+-      help=series.fortran_vec()+j*len+istep;
++      help=series.data()+j*len+istep;
+       for (octave_idx_type i=0;i<number;i++)
+         casted += help[found[i]];
+       casted /= (double)number;
+@@ -122,7 +122,7 @@ DEFUN_DLD (__lzo_test__, args, nargout, HELPTEXT)
+       octave_idx_type dim     = input.columns ();
+ 
+       // Allocate memory and analyze input
+-      OCTAVE_LOCAL_BUFFER(double*, hser, dim);
++      OCTAVE_LOCAL_BUFFER(const double*, hser, dim);
+       OCTAVE_LOCAL_BUFFER(double, av, dim);
+       OCTAVE_LOCAL_BUFFER(double, rms, dim);
+       OCTAVE_LOCAL_BUFFER(double, hinter, dim);
+@@ -178,7 +178,7 @@ DEFUN_DLD (__lzo_test__, args, nargout, HELPTEXT)
+           for (octave_idx_type j=0;j<dim;j++)
+             {
+ //          old  hser[j]=series[j]+hi;
+-              hser[j] = input.fortran_vec() + j * LENGTH + hi;
++              hser[j] = input.data() + j * LENGTH + hi;
+             }
+           actfound=find_multi_neighbors(input,box,list,hser,NMAX,
+                                         dim,embed,DELAY,epsilon,hfound);
+diff --git a/src/routines_c/find_multi_neighbors.cc b/src/routines_c/find_multi_neighbors.cc
+index 1af503b..47d5764 100644
+--- a/src/routines_c/find_multi_neighbors.cc
++++ b/src/routines_c/find_multi_neighbors.cc
+@@ -30,7 +30,7 @@
+ 
+ octave_idx_type find_multi_neighbors(const Matrix &s,
+                                      const MArray <octave_idx_type> &box,
+-                                     long *list,double **x,
++                                     long *list,const double **x,
+                                      octave_idx_type bs,octave_idx_type dim,
+                                      octave_idx_type emb,octave_idx_type del,
+                                      double eps, unsigned long *flist)
+diff --git a/src/routines_c/tsa.h b/src/routines_c/tsa.h
+index b044728..33d51b5 100644
+--- a/src/routines_c/tsa.h
++++ b/src/routines_c/tsa.h
+@@ -66,7 +66,7 @@ extern octave_idx_type exclude_interval(octave_idx_type,long,long,
+ 
+ extern octave_idx_type find_multi_neighbors(const Matrix &,
+                                             const MArray<octave_idx_type> &,
+-                                            long *,double **,
++                                            long *,const double **,
+                                             octave_idx_type, octave_idx_type, 
+                                             octave_idx_type, octave_idx_type,
+                                             double,unsigned long *);
+-- 
+2.47.1
+

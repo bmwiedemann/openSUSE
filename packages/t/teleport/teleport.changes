@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:55:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add _constraints to fix builds on ppc64le
+
+-------------------------------------------------------------------
+Tue Jan  7 09:35:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.1.4:
+  * Fixed a Postgres database-access auto-user provisioning syntax
+    error that caused a misleading debug level error log in most
+    cases, unless the database admin is not a superuser and the
+    database was upgraded from Postgres v15 or lower to Postgres
+    v16 or higher, in which case the role "teleport-auto-user" must
+    be granted to the database admin with the ADMIN option
+    manually. #50782
+  * Fixes a bug where S3 bucket details fail to fetch due to
+    incorrect bucket region. #50763
+  * Present connection errors to the Web UI terminal during
+    database sessions. #50700
+
+-------------------------------------------------------------------
 Fri Jan  3 08:54:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.1.3:

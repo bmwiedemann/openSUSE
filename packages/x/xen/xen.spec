@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.19.1-testing
+%define xen_build_dir xen-4.20.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -124,12 +124,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.19.1_02
+Version:        4.20.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.19.1-testing-src.tar.bz2
+Source0:        xen-4.20.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -512,6 +512,7 @@ make \
 	DESTDIR=%{buildroot} \
 	SYSCONFIG_DIR=%{_fillupdir} \
 	PKG_INSTALLDIR=%{_libdir}/pkgconfig \
+	BASH_COMPLETION_DIR=%{_datadir}/bash-completion/completions \
 	%{?_smp_mflags} \
 	install
 find %{buildroot} -ls
@@ -940,7 +941,7 @@ rm -rf %{buildroot}/%{with_systemd_modules_load}
 rm -rf %{buildroot}/usr/sbin
 rm -rf %{buildroot}/etc/xen
 rm -rf %{buildroot}/var
-rm -f  %{buildroot}/%{_sysconfdir}/bash_completion.d/xl
+rm -f  %{buildroot}/%{_datadir}/bash-completion/completions/xl
 rm -f  %{buildroot}/%{_sysconfdir}/init.d/xen*
 rm -f  %{buildroot}/%{_bindir}/*trace*
 rm -f  %{buildroot}/%{_bindir}/vchan-socket-proxy
@@ -1076,7 +1077,7 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %exclude %{_unitdir}/%{name}-vcpu-watch.service
 %exclude %{_unitdir}/xendomains-wait-disks.service
 %config %{with_systemd_modules_load}
-/etc/bash_completion.d/xl
+%{_datadir}/bash-completion/completions/xl
 %dir %{_libdir}/python%{pyver}/site-packages/grub
 %dir %{_libdir}/python%{pyver}/site-packages/xen
 %dir %{_libdir}/python%{pyver}/site-packages/xen/lowlevel

@@ -18,10 +18,10 @@
 
 %define cpan_name PPI
 Name:           perl-PPI
-Version:        1.279.0
+Version:        1.281.0
 Release:        0
-# 1.279 -> normalize -> 1.279.0
-%define cpan_version 1.279
+# 1.281 -> normalize -> 1.281.0
+%define cpan_version 1.281
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse, Analyze and Manipulate Perl (without perl)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,18 +34,24 @@ BuildRequires:  perl(Class::Inspector) >= 1.22
 BuildRequires:  perl(Clone) >= 0.30
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Params::Util) >= 1.00
+BuildRequires:  perl(Safe::Isa)
 BuildRequires:  perl(Storable) >= 2.17
 BuildRequires:  perl(Task::Weaken)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Object) >= 0.07
 BuildRequires:  perl(Test::SubCalls) >= 1.07
+BuildRequires:  perl(YAML::PP)
 BuildRequires:  perl(parent)
+BuildRequires:  perl(version) >= 0.77
 Requires:       perl(Clone) >= 0.30
 Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Params::Util) >= 1.00
+Requires:       perl(Safe::Isa)
 Requires:       perl(Storable) >= 2.17
 Requires:       perl(Task::Weaken)
+Requires:       perl(YAML::PP)
+Requires:       perl(version) >= 0.77
 Provides:       perl(PPI) = %{version}
 Provides:       perl(PPI::Cache) = %{version}
 Provides:       perl(PPI::Document) = %{version}
@@ -86,6 +92,7 @@ Provides:       perl(PPI::Structure::Constructor) = %{version}
 Provides:       perl(PPI::Structure::For) = %{version}
 Provides:       perl(PPI::Structure::Given) = %{version}
 Provides:       perl(PPI::Structure::List) = %{version}
+Provides:       perl(PPI::Structure::Signature) = %{version}
 Provides:       perl(PPI::Structure::Subscript) = %{version}
 Provides:       perl(PPI::Structure::Unknown) = %{version}
 Provides:       perl(PPI::Structure::When) = %{version}

@@ -9,11 +9,11 @@ Subject: [PATCH] Make initializers explicit to avoid ambiguous wxArrayString
  src/slic3r/GUI/Plater.cpp                | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Index: PrusaSlicer-version_2.8.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp
+Index: PrusaSlicer-version_2.9.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp
 ===================================================================
---- PrusaSlicer-version_2.8.0.orig/src/slic3r/GUI/PhysicalPrinterDialog.cpp
-+++ PrusaSlicer-version_2.8.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp
-@@ -606,7 +606,7 @@ void PhysicalPrinterDialog::build_printh
+--- PrusaSlicer-version_2.9.0.orig/src/slic3r/GUI/PhysicalPrinterDialog.cpp	2024-12-20 12:54:34.000000000 +0100
++++ PrusaSlicer-version_2.9.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp	2024-12-20 15:32:12.247773628 +0100
+@@ -607,7 +607,7 @@ void PhysicalPrinterDialog::build_printh
      // Always fill in the "printhost_port" combo box from the config and select it.
      {
          Choice* choice = dynamic_cast<Choice*>(m_optgroup->get_field("printhost_port"));
@@ -22,39 +22,24 @@ Index: PrusaSlicer-version_2.8.0/src/slic3r/GUI/PhysicalPrinterDialog.cpp
          choice->set_selection();
      }
  
-Index: PrusaSlicer-version_2.8.0/src/slic3r/GUI/Plater.cpp
+Index: PrusaSlicer-version_2.9.0/src/slic3r/GUI/Plater.cpp
 ===================================================================
---- PrusaSlicer-version_2.8.0.orig/src/slic3r/GUI/Plater.cpp
-+++ PrusaSlicer-version_2.8.0/src/slic3r/GUI/Plater.cpp
-@@ -4048,7 +4048,7 @@ void Plater::load_project(const wxString
- 
-     p->reset();
+--- PrusaSlicer-version_2.9.0.orig/src/slic3r/GUI/Plater.cpp	2024-12-20 12:54:34.000000000 +0100
++++ PrusaSlicer-version_2.9.0/src/slic3r/GUI/Plater.cpp	2024-12-20 15:32:12.251106999 +0100
+@@ -4420,7 +4420,7 @@ void Plater::load_project(const wxString
+     s_multiple_beds.set_loading_project_flag(true);
+     ScopeGuard guard([](){ s_multiple_beds.set_loading_project_flag(false);});
  
 -    if (! load_files({ into_path(filename) }).empty()) {
 +    if (! load_files(std::vector<boost::filesystem::path>({ into_path(filename) })).empty()) {
          // At least one file was loaded.
          p->set_project_filename(filename);
          // Save the names of active presets and project specific config into ProjectDirtyStateManager.
-
+Index: PrusaSlicer-version_2.9.0/src/slic3r/Utils/PrusaConnect.cpp
 ===================================================================
-More of the same:
-===================================================================
---- a/src/slic3r/GUI/PrintHostDialogs.cpp
-+++ b/src/slic3r/GUI/PrintHostDialogs.cpp
-@@ -467,9 +467,7 @@
-         wxVariant nm, hst;
-         job_list->GetValue(nm, evt.job_id, COL_FILENAME);
-         job_list->GetValue(hst, evt.job_id, COL_HOST);
--        const wchar_t * nm_str = nm.GetString();
--        const wchar_t * hst_str = hst.GetString();
--        wxGetApp().notification_manager()->set_upload_job_notification_percentage(evt.job_id + 1, into_u8(nm_str), into_u8(hst_str), evt.progress / 100.f);
-+        wxGetApp().notification_manager()->set_upload_job_notification_percentage(evt.job_id + 1, into_u8(nm.GetString()), into_u8(hst.GetString()), evt.progress / 100.f);
-     }
- }
- 
---- a/src/slic3r/Utils/PrusaConnect.cpp
-+++ b/src/slic3r/Utils/PrusaConnect.cpp
-@@ -290,7 +290,7 @@
+--- PrusaSlicer-version_2.9.0.orig/src/slic3r/Utils/PrusaConnect.cpp	2024-12-20 12:54:34.000000000 +0100
++++ PrusaSlicer-version_2.9.0/src/slic3r/Utils/PrusaConnect.cpp	2024-12-20 15:32:12.251106999 +0100
+@@ -256,7 +256,7 @@ bool PrusaConnectNew::get_storage(wxArra
                      if (path && (!available || *available)) {
                          StorageInfo si;
                          si.path = boost::nowide::widen(*path);

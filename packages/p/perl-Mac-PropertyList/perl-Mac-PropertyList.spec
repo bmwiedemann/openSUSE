@@ -18,10 +18,10 @@
 
 %define cpan_name Mac-PropertyList
 Name:           perl-Mac-PropertyList
-Version:        1.601.0
+Version:        1.602.0
 Release:        0
-# 1.601 -> normalize -> 1.601.0
-%define cpan_version 1.601
+# 1.602 -> normalize -> 1.602.0
+%define cpan_version 1.602
 License:        Artistic-2.0
 Summary:        Work with Mac plists at a low level
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -41,7 +41,7 @@ Provides:       perl(Mac::PropertyList::Boolean)
 Provides:       perl(Mac::PropertyList::Container)
 Provides:       perl(Mac::PropertyList::Item)
 Provides:       perl(Mac::PropertyList::LineListSource)
-Provides:       perl(Mac::PropertyList::ReadBinary) = 1.505.0
+Provides:       perl(Mac::PropertyList::ReadBinary) = 1.506.0
 Provides:       perl(Mac::PropertyList::Scalar)
 Provides:       perl(Mac::PropertyList::Source)
 Provides:       perl(Mac::PropertyList::TextSource)

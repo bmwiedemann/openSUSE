@@ -1,7 +1,7 @@
 #
 # spec file for package python-branca
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # no ipython
 %global skip_python39 1
 Name:           python-branca
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        HTML+JS page generator
 License:        MIT

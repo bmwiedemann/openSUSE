@@ -599,4 +599,13 @@
     <comment></comment>
     <requestid>1163128</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7ac93d4db40b6322272bcdb1d235ae46</srcmd5>
+    <version>6.960.0</version>
+    <time>1736279437</time>
+    <user>anag+factory</user>
+    <comment>- updated to 6.960.0 (6.96)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes (forwarded request 1235335 from tinita)</comment>
+    <requestid>1235360</requestid>
+  </revision>
 </revisionlist>

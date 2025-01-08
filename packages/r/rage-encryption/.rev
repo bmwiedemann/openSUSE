@@ -162,4 +162,22 @@
     <comment></comment>
     <requestid>1221281</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7d1bc13d1114f32fc6bbf1e6bea78b20</srcmd5>
+    <version>0.11.1+0</version>
+    <time>1736279485</time>
+    <user>anag+factory</user>
+    <comment>- Fixes GHSA-4fg7-vxc8-qx5w
+- Update to version 0.11.1+0:
+  * Fixed a security vulnerability that could allow an attacker to
+    execute an arbitrary binary under certain conditions. Plugin
+    names are now required to only contain alphanumeric characters
+    or the four special characters +-._.
+  * Replace the test `NoCallbacks` with the library version
+  * Restrict set of valid characters for plugin names
+  * Add tests for invalid plugin name chars
+
+  Fixed:</comment>
+    <requestid>1235049</requestid>
+  </revision>
 </revisionlist>
