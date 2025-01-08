@@ -621,9 +621,11 @@ Prefer: -libmarkdown2-devel
 
 # have choice for rubygem(ruby:3.3.0:puma) >= 5.0: ruby3.3-rubygem-puma ruby3.3-rubygem-puma-5, have choice for rubygem(ruby:3.3.0:rack-test) >= 0.6.3 needed by ruby3.3-rubygem-actionpack-7.0: ruby3.3-rubygem-rack-test ruby3.3-rubygem-rack-test-0_6
 Prefer: -ruby3.3-rubygem-puma-5 -ruby3.3-rubygem-rack-test-0_6
+Prefer: -ruby3.4-rubygem-puma-5 -ruby3.4-rubygem-rack-test-0_6
 
 # have choice for rubygem(ruby:3.3.0:activejob) >= 7.0: ruby3.3-rubygem-activejob-7.0 ruby3.3-rubygem-activejob-8.0
 Prefer: -ruby3.3-rubygem-activejob-7.0
+Prefer: -ruby3.4-rubygem-activejob-7.0
 
 # unresolvable: have choice for cmake(lxqt-build-tools) >= 0.8.0: lxqt-build-tools-devel lxqt-build-tools-qt5-devel
 Prefer: -lxqt-build-tools-devel
@@ -1424,7 +1426,9 @@ Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby3.3-rubygem-fast_gettext
+Prefer: ruby3.4-rubygem-fast_gettext
 Prefer: -ruby3.3-rubygem-public_suffix-3.1
+Prefer: -ruby3.4-rubygem-public_suffix-3.1
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
