@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 08 19:25:50 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1736332167.3796202:
+  * Add subtests for commands.pm
+  * Fix warn+return precendence
+  * Remove extra arguments from testapi::send_key()
+  * Modify loadtestdir in autotest for more code coverage
+  * t: cover both old and new qemu paths in 18-backend-qemu.t
+
+-------------------------------------------------------------------
 Mon Jan 06 18:31:44 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1736157351.7aa835c:
