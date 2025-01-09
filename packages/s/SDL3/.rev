@@ -47,4 +47,12 @@
     <comment>- Add baselibs.conf</comment>
     <requestid>1231277</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1dcbf26227ec3cbf19b8e823c690fd39</srcmd5>
+    <version>3.1.8</version>
+    <time>1736431895</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.1.8</comment>
+    <requestid>1236051</requestid>
+  </revision>
 </revisionlist>
