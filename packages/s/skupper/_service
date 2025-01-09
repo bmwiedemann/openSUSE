@@ -3,7 +3,7 @@
     <param name="url">https://github.com/skupperproject/skupper</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">1.8.2</param>
+    <param name="revision">1.8.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

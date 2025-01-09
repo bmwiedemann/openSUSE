@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 09 06:39:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.3:
+  * update for 1.8.3
+  * remove external process log (#1865)
+  * Fixes internal console-auth implementation (#1833)
+  * Ensure podman service containers bind correct hosts (#1799)
+  * Update test images for ARM and OCP 3.11 (#1652)
+  * Add stability to TestGateway and TestBasic tests (#1766)
+
+-------------------------------------------------------------------
 Mon Nov 04 19:49:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.2:
