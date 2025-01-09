@@ -1261,4 +1261,12 @@
 - only use distribution-release to make work everywhere (forwarded request 1201407 from msmeissn)</comment>
     <requestid>1201408</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>154c84b2ca492e3de716f71c4bd5653b</srcmd5>
+    <version>1.4.1</version>
+    <time>1736431925</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.1 (forwarded request 1236107 from abergmann)</comment>
+    <requestid>1236117</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:49:37 UTC 2025 - Alexander Bergmann <abergmann@suse.com>
+
+- update to 1.4.1:
+  * New features
+    - Introduce "oscap-im" - script that can be used in Containerfiles to build
+    - hardened bootable container images to run as Image Mode Operating System
+    Maintenance, bug fix
+    - Add support for containers with no entrypoint/cmd in "oscap-docker"
+    - Stop printing useless component reference information in "oscap info"
+    - Fix missing declaration of PATH_MAX on Solaris
+    - Fix RPM database path in RPM probes (RHEL-55251, #2151)
+    - Fix issues reported by OpenScanHub after 1.4.0 release
+    - Fix failing test probes/filehash58/test_probes_filehash58.sh on s390x
+    - architecture
+    - Ensure xlink namespace exists (RHEL-34104)
+    - Minor fixes in test suite and CI
+- update to 1.4.0:
+  * New features
+    - Introduce ability to generate Kickstarts for unattended OS installation using the oscap xccdf generate fix --fix-type kickstart command
+    - Add ability to process multi-profile JSON tailorings by the autotailor tool
+  * Removed features
+    - Removed cve, cvss, cvrf modules
+    - Removed ds submodules sds-compose, sds-add, sds-split, rds-create, rds-split
+    - Removed --template, --oval-template and --sce-template options from the xccdf generate submodule
+    - Remove the --skip-valid option (replaced by --skip-validation)
+  * Maintenance, bug fix
+    - Advertise path to SSG in remediation scripts
+    - Remove the option to build with PCRE
+    - Process CPE AL platforms if CPE dictionary isn't part of data stream
+    - Disable GConf probe by default (and remove dependencies from docs)
+    - Disable MD5 and SHA-1 by default
+    - Remove CPE dictionary
+    - Fix compiler warnings
+    - Update User Manual
+- Remove SUSE/openSUSE CPE dictionary patches.
+  * drop 0001-Add-openSUSE-cpe-links.patch
+  * drop 0002-Add-SUSE-cpe-links.patch
+- Set .so version to 33.
+
+-------------------------------------------------------------------
 Mon Sep 16 11:49:29 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - disable sendmail buildrequires (seems unused)

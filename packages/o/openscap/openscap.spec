@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define sover 25
+%define sover 33
 %define with_bindings 0
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openscap
-Version:        1.3.10
+Version:        1.4.1
 Release:        0
 Summary:        A Set of Libraries for Integration with SCAP
 License:        LGPL-2.1-or-later
@@ -38,8 +38,6 @@ Source3:        scap-yast2sec-xccdf.xml
 Source4:        scap-yast2sec-oval.xml
 Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
-Patch1:         0001-Add-openSUSE-cpe-links.patch
-Patch2:         0002-Add-SUSE-cpe-links.patch
 Patch3:         0003-Use-openSUSE-SUSE-cpe-links.patch
 %if 0%{?suse_version} != 1599
 Patch4:         0004-oscap-remediate-is-located-in-bindir.patch
@@ -311,6 +309,7 @@ mv %{buildroot}/%{_prefix}/libexec/oscap-remediate %{buildroot}/%{_bindir}
 %{_unitdir}/oscap-scan.service
 %{_bindir}/autotailor
 %{_bindir}/oscap
+%{_bindir}/oscap-im
 %{_bindir}/oscap-vm
 %{_bindir}/oscap-scan
 %{_bindir}/oscap-ssh
