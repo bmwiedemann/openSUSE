@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Jan 09 06:40:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.23:
+  * Minor Changes:
+    - cli: aws mixed nodes install fix (cilium/cilium#36336,
+      @viktor-kurchenko)
+  * Bugfixes:
+    - Cilium CLI fix for AWS ENI mode (cilium/cilium#36887,
+      @viktor-kurchenko)
+    - Restore the original flag semantics for
+      --egress-masquerade-interfaces to the same as v1.17.0-pre.2
+      or earlier (cilium/cilium#36504, @viktor-kurchenko)
+  * CI Changes:
+    - Add --external-other-target parameter to cilium CLI
+      connectivity tests. (cilium/cilium#36080, @wedaly)
+    - Change client-egress-l7-tls tests to sequential because flaky
+      (cilium/cilium#36568, @youngnick)
+    - cilium-cli/connectivity: fix IPv6 feature check for 2ndary
+      node IPv6 (cilium/cilium#36513, @tklauser)
+    - cilium-cli: Add envoy log pattern in error check
+      (cilium/cilium#36498, @sayboras)
+    - Fix cilium CLI connectivity tests in IPv6-only clusters.
+      (cilium/cilium#36026, @wedaly)
+  * Misc Changes:
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#36706, @cilium-renovate[bot])
+    - chore(deps): update docker.io/library/golang:1.23.4 docker
+      digest to 7003184 (main) (cilium/cilium#36604,
+      @cilium-renovate[bot])
+    - chore(deps): update docker.io/library/golang:1.23.4 docker
+      digest to 7ea4c9d (main) (cilium/cilium#36808,
+      @cilium-renovate[bot])
+    - ci/connectivity: Don't apply cnp to conn-disrupt pods in
+      1.15, 1.14 (cilium/cilium#36682, @jschwinger233)
+    - cilium-cli: skip some IPv6 connectivity tests for Cilium<1.14
+      when IPsec is enabled (cilium/cilium#36664, @jschwinger233)
+    - Isolate node-to-node encryption tests to wireguard
+      (cilium/cilium#36556, @ldelossa)
+    - chore(deps): update all github action dependencies (minor) by
+      @renovate in #2887
+    - Update stable release to v0.16.22 by @tklauser in #2888
+    - chore(deps): update module golang.org/x/crypto to v0.31.0
+      [security] by @renovate in #2889
+    - chore(deps): update all github action dependencies (minor) by
+      @renovate in #2890
+    - Dockerfile: drop syntax comment by @tklauser in #2893
+    - chore(deps): update dependency kubernetes-sigs/kind to
+      v0.26.0 by @renovate in #2892
+    - chore(deps): update dependency cilium/cilium to v1.16.5 by
+      @renovate in #2894
+    - chore(deps): update actions/upload-artifact action to v4.5.0
+      by @renovate in #2896
+    - chore(deps): update module golang.org/x/net to v0.33.0
+      [security] by @renovate in #2895
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v1.63.0 by @renovate in #2899
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v1.63.4 by @renovate in #2902
+    - chore(deps): update helm/kind-action action to v1.12.0 by
+      @renovate in #2901
+    - chore(deps): update softprops/action-gh-release action to
+      v2.2.1 by @renovate in #2905
+    - Prepare for v0.16.23 release by @michi-covalent in #2903
+
+-------------------------------------------------------------------
 Wed Dec 11 06:56:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.22:
