@@ -2950,6 +2950,7 @@ BuildFlags: onlybuild:python-parameterized
 BuildFlags: onlybuild:python-pathspec
 BuildFlags: onlybuild:python-pbr
 BuildFlags: onlybuild:python-pefile
+BuildFlags: onlybuild:python-pendulum
 BuildFlags: onlybuild:python-pexpect
 BuildFlags: onlybuild:python-pip
 BuildFlags: onlybuild:python-platformdirs
@@ -2993,6 +2994,7 @@ BuildFlags: onlybuild:python-python-dateutil
 BuildFlags: onlybuild:python-python-dbusmock
 BuildFlags: onlybuild:python-python-magic
 BuildFlags: onlybuild:python-python-xlib
+BuildFlags: onlybuild:python-pytzdata
 BuildFlags: onlybuild:python-pytz
 BuildFlags: onlybuild:python-pyudev
 BuildFlags: onlybuild:python-pyxdg
