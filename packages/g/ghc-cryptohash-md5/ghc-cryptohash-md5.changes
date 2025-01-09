@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  1 17:36:48 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update cryptohash-md5 to version 0.11.101.0 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Jun 26 09:24:12 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update cryptohash-md5 to version 0.11.101.0 revision 5.
