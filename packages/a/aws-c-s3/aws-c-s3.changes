@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:29:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.7
+  * Remove Extra Platform Info That Is Not Used by @waahm7 in (#475)
+  * [s3_meta_request]: Retry on ExpiredToken by @grrtrr in (#472)
+- from version 0.7.6
+  * Add full object checksum callback by @TingDaoK in (#473)
+  * Respect checksum header over setting by @TingDaoK in (#474)
+
+-------------------------------------------------------------------
 Mon Dec  9 11:20:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.5
