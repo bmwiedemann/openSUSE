@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 17 15:07:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 9.0.0
+  ## Fixes:
+  * Fix for background-thread output going to the wrong cell in a
+    notebook.
+  ## Other changes:
+  * Compatibility fixes for upcoming ipykernel 7 (ipykernel 6.9.1
+    is now required)
+  * JupyterLab extension dependencies are updated from 3.x to
+    JupyterLab 4.3
+  * Use importlib.metadata instead of deprecated entrypoints (no
+    effect for users)
+
+-------------------------------------------------------------------
 Sun May  5 18:54:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.8.0

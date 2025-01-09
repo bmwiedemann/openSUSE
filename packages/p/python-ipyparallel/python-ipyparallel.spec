@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 8.8
+%define distversion 9
 Name:           python-ipyparallel
-Version:        8.8.0
+Version:        9.0.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -36,28 +36,28 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 # /SECTION
 # SECTION runtime requirements
-BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module ipykernel >= 4.4}
-BuildRequires:  %{python_module ipython >= 4}
-BuildRequires:  %{python_module jupyter-client >= 5}
+BuildRequires:  %{python_module ipykernel >= 6.9.1}
+BuildRequires:  %{python_module ipython >= 5}
+BuildRequires:  %{python_module jupyter-client >= 7}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
-BuildRequires:  %{python_module pyzmq >= 18}
-BuildRequires:  %{python_module tornado >= 5.1}
+BuildRequires:  %{python_module pyzmq >= 25}
+BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module tqdm}
-BuildRequires:  %{python_module traitlets >= 4.3}
+BuildRequires:  %{python_module traitlets >= 5}
+Requires:       %{python_module importlib_metadata >= 3.6 if %python-base < 3.10}
 Requires:       python-decorator
-Requires:       python-entrypoints
-Requires:       python-ipykernel >= 4.4
-Requires:       python-ipython >= 4
-Requires:       python-jupyter-client
+Requires:       python-ipykernel >= 6.9.1
+Requires:       python-ipython >= 5
+Requires:       python-jupyter-client >= 7
 Requires:       python-psutil
 Requires:       python-python-dateutil >= 2.1
-Requires:       python-pyzmq >= 18
-Requires:       python-tornado >= 5.1
+Requires:       python-pyzmq >= 25
+Requires:       python-tornado >= 6.1
 Requires:       python-tqdm
-Requires:       python-traitlets >= 4.3
+Requires:       python-traitlets >= 5
+Requires:       (python-importlib_metadata >= 3.6 if python-base < 3.10)
 # /SECTION
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -111,7 +111,6 @@ Documentation and help files for ipyparallel.
 
 %prep
 %autosetup -p1 -n ipyparallel-%{version}
-sed -i 's/--color=yes//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -126,7 +125,12 @@ sed -i 's/--color=yes//' pyproject.toml
 
 %{python_expand # These files are meant to be runnable stand-alone, so they should be executable
 pushd %{buildroot}%{$python_sitelib}/ipyparallel
-for f in apps/iploggerapp.py cluster/app.py engine/app.py controller/app.py controller/heartmonitor.py; do
+for f in apps/iploggerapp.py \
+         controller/app.py controller/heartmonitor.py \
+         cluster/app.py cluster/shellcmd.py cluster/shellcmd_receive.py \
+         engine/app.py \
+         shellcmd.py
+do
   chmod a+x $f
   # Fix wrong-script-interpreter
   sed -i "s|#!%{_bindir}/env python.*|#!%__$python|" $f
@@ -162,7 +166,7 @@ donttest+=" or test_local_ip_true_doesnt_trigger_warning"
 %python_alternative %{_bindir}/ipcluster
 %python_alternative %{_bindir}/ipcontroller
 %python_alternative %{_bindir}/ipengine
-%{python_sitelib}/ipyparallel-%{version}*-info
+%{python_sitelib}/ipyparallel-%{version}.dist-info
 %{python_sitelib}/ipyparallel/
 
 %files -n jupyter-ipyparallel
