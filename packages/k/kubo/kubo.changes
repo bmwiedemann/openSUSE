@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan  9 07:47:35 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.32.1 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.32.1
+  * AutoTLS: Automatic Certificates for libp2p WebSockets via libp2p.direct
+  * Dependency updates
+    + ipfs-webui to v4.4.0
+    + boxo to v0.24.3
+    + go-libp2p to v0.37.0
+    + go-libp2p-kad-dht to v0.28.1
+    + go-libp2p-pubsub to v0.12.0
+    + p2p-forge/client to v0.0.2
+
+-------------------------------------------------------------------
 Fri Oct 25 18:17:20 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 0.31.0 - for details see
@@ -57,6 +71,7 @@ Sat Jan 27 15:44:31 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * Removed several deprecated commands
   * Support optional pin names
   * jaeger trace exporter has been removed
+  * fix quic-go memory exhaustion attack (boo#1235162, CVE-2023-49295)
 
 - Update to 0.25.0 - for details see
   * https://github.com/ipfs/kubo/releases/tag/v0.25.0

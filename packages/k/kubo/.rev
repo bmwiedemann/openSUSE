@@ -125,4 +125,23 @@ now with fixed build</comment>
     <comment></comment>
     <requestid>1219601</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d1bb868b31f3d4c1be8fbf0ef5e0790b</srcmd5>
+    <version>0.32.1</version>
+    <time>1736431920</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.32.1 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.32.1
+  * AutoTLS: Automatic Certificates for libp2p WebSockets via libp2p.direct
+  * Dependency updates
+    + ipfs-webui to v4.4.0
+    + boxo to v0.24.3
+    + go-libp2p to v0.37.0
+    + go-libp2p-kad-dht to v0.28.1
+    + go-libp2p-pubsub to v0.12.0
+    + p2p-forge/client to v0.0.2
+
+  add reference about fix quic-go memory exhaustion attack (boo#1235162, CVE-2023-49295)</comment>
+    <requestid>1236120</requestid>
+  </revision>
 </revisionlist>
