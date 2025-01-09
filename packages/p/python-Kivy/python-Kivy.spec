@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kivy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %define plainpython python
 Name:           python-Kivy
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Hardware-accelerated multitouch application library
 License:        Apache-2.0 AND MIT AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only AND BSD-3-Clause
@@ -64,6 +64,7 @@ BuildRequires:  pkgconfig(pangoft2)
 Requires:       mtdev
 Requires:       python-Pygments
 Requires:       python-docutils
+Requires:       python-filetype
 Requires:       xclip
 # Not listed in setup.cfg but imported in core/spelling/spelling_enchant.py
 Requires:       python-pyenchant
@@ -73,6 +74,7 @@ Requires:       python-requests
 # /SECTION
 # SECTION test
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module filetype}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xvfb}

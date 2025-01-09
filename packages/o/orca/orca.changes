@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  6 08:28:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Web:
+    - Add handling for the "semantics" MathML element which is not
+      being pruned from the accessibility tree by Chromium.
+    - Fix bug related to presentation of a character name in
+      MathML.
+    - Fix bug in obtaining the fragment portion of a URI.
+    - Fix bug in obtaining the document's MIME type.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 22 17:26:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:

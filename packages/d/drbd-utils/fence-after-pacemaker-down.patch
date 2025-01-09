@@ -2,7 +2,7 @@ diff -Naur drbd-utils-8.9.6.orig/scripts/crm-fence-peer.sh drbd-utils-8.9.6/scri
 --- drbd-utils-8.9.6.orig/scripts/crm-fence-peer.sh	2016-03-14 15:54:38.701360775 +0800
 +++ drbd-utils-8.9.6/scripts/crm-fence-peer.sh	2016-03-14 16:00:06.333338664 +0800
 @@ -531,6 +531,25 @@
- 	[[ $crmd = "banned" ]] && will_fence=true
+ 	[[ $join = "banned" ]] && will_fence=true
  	if [[ ${expected-down} = "down" && $in_ccm = "false"  && $crmd != "online" ]]; then
  		: "pacemaker considers this as clean down"
 +	elif [[ $crmd/$join/$expected = "offline/down/down" ]] ; then

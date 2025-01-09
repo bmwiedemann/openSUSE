@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">git://git.jedsoft.org/git/slang.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">slang-*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">slang</param>
+  </service>
+</services>

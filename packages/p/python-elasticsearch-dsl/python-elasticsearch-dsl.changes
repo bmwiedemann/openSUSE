@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:35:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 8.17.0:
+  * Added support for quantized dense vector options (#1948)
+  * Added support for composable index templates (#1943)
+- 8.16.0:
+  * Autogenerate parts of the library using documentation and types from the Elasticsearch specification
+    - query classes (#1890)
+    - aggregation classes (#1918)
+    - response classes (#1929 #1932)
+  * Support pipe syntax to declare optional document fields (#1937)
+  * Ignore document attributes typed with ClassVar (#1936)
+  * Support Python 3.13 (#1938)
+- 8.15.4:
+  * Fixed the use of dictionaries as values in Terms query (#1920)
+- 8.15.3:
+  * Fixed regression introduced in Terms query class (#1907)
+  * Removed unnecessary filter argument in AggBase.__getitem__ (#1903)
+  * Fixed deserialization of datetime.date fields (#1914)
+- 8.15.2:
+  * Added support for any iterables to the Terms query (#1887)
+  * Added back support for tuples and other iterables to Search.source() method (#1895)
+  * Added recursive option to AttrDict.to_dict() (#1892)
+  * Removed unused analyzer from search as you type example (#1883)
+- 8.15.1:
+  * Added support for the semantic_text field and semantic query type (#1881)
+  * Removed extra __orig_class__ attribute in aggregation responses (#1877)
+- 8.15.0:
+  * Added the option to use Python types to declare document fields (#1845)
+  * Added type annotations (#1533)
+  * Added support for bulk document operations with Document.bulk() (#1864)
+  * Added the ConstantKeyword field to the top-level package (#1843)
+  * Added async_connections to the top-level package (#1865)
+  * Added index creation to the aggregations example (#1862)
+- 8.14.0:
+  * Added text_expansion query clause (#1837)
+  * Added Response.search_after() and Search.search_after() methods for efficient iteration (#1829)
+  * Added point in time support and the iterate() method in the Search class (#1833)
+  * Added support for slicing multiple times in Search class (#1771)
+  * Added support for regular expressions in Completion.suggest() (#1836)
+  * Fixed suggest() method of the Completion class to format requests correctly. (#1836)
+  * Fixed Document.update() to accept fields set to None or empty (#1820)
+  * Started work on type hints (Thanks Caio Fontes for leading this effort!)
+    - Added Type hints to function.py (#1827)
+    - Added Type hints to query.py (#1821)
+- 8.13.1:
+  * Added support for knn as a query option (#1770)
+  * Made the dims attribute of the dense vector type optional (#1776)
+  * Added missing inner_hits option to search.knn() method (#1777)
+  * Added support for detecting document updates in InnerDoc attributes (#1535)
+  * Changed _expand__to_dot setting to resolve at runtime (#1633)
+  * Added explicit error message when unsupported minimum_should_match values are used (#1774)
+  * Added the EmptySearch class (#1780)
+  * Added several missing aggregations:
+    - AdjacencyMatrix (#1553)
+    - CategorizeText (#1588)
+    - GeohexGrid (#1590)
+    - IPPrefix (#1592)
+    - RandomSampler (#1594)
+    - GeoLine (#1628)
+    - MatrixStats (#1630)
+    - TopMetrics (#1706)
+  * Added params option to the FacetedSearch object (#1500)
+  * Added support for passing a dictionary in the script option for a document update (#1560)
+  * Added keys() and items() methods to AttrDict class (#1784)
+  * Added a to_list() method to the AttrList class (#1584)
+  * Fixed various documentation issues and typos (#1769, #1615, #1585, #1318, #1223)
+  * Added a vector search example (#1778)
+- 8.13.0:
+  * Added asyncio support (#1714)
+  * Dropped support for Python 3.7 (#1717)
+  * Stopped mixing body and parameters in UpdateByQuery (#1702)
+
+-------------------------------------------------------------------
 Sat Jan 20 12:39:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.12.0:

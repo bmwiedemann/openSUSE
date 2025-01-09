@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 08 19:13:46 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1736278545.8d3af5b5:
+  * Check existing job groups in openqa-load-templates
+  * Bump datatables.net-bs5 from 2.1.8 to 2.2.0
+
+-------------------------------------------------------------------
 Mon Jan 06 18:14:16 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1736169195.f9ab8902:

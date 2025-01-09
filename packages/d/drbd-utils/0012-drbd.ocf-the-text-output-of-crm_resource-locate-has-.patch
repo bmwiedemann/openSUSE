@@ -1,0 +1,32 @@
+From 0a014f290802e0221d06bb52a74c2e29f11ef02e Mon Sep 17 00:00:00 2001
+From: Lars Ellenberg <lars.ellenberg@linbit.com>
+Date: Fri, 6 Dec 2024 15:35:58 +0100
+Subject: [PATCH 12/12] drbd.ocf: the text output of "crm_resource --locate"
+ has changed
+
+"Recent" Pacemaker reports "Promoted" instead of "Master" for promoted resources.
+Recognize that.
+
+This change was made quite a while ago, but the resource agent parameter
+ remove_master_score_if_peer_primary=unexpected
+is little known and rarely in use, so no-one noticed.
+---
+ scripts/drbd.ocf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/drbd.ocf b/scripts/drbd.ocf
+index c31858343ba4..34d208f22dd5 100755
+--- a/scripts/drbd.ocf
++++ b/scripts/drbd.ocf
+@@ -1021,7 +1021,7 @@ crm_resource_locate_master()
+ 	called_crm_resource_locate=true
+ 	DRBD_PRIMARY_PEER_according_to_pcmk=$(
+ 		crm_resource --resource "$OCF_RESOURCE_INSTANCE" --locate 2>/dev/null |
+-		sed -ne 's/^.*is running on: \([^ ]*\) Master.*$/\1/p' |
++		sed -ne 's/^.*is running on: \([^ ]*\) \(Master\|Promoted\).*$/\1/p' |
+ 		grep -vix -m1 -e "$HOSTNAME")
+ }
+ 
+-- 
+2.43.0
+

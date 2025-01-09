@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:22:05 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable tests as it requires python-pydantic, which is not in
+  Factory yet
+
+-------------------------------------------------------------------
+Tue Jan  7 09:15:52 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.5
+  * Add Pydantic for validation and serialization
+  * Passing Functions as Tools
+  * No head request for create blob
+  * Deprecate embeddings from docs in favor of embed
+  * various bugfixes
+
+-------------------------------------------------------------------
 Thu Nov 14 08:59:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.3:

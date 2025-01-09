@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-exporter-otlp-proto-grpc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-otlp-proto-grpc
-Version:        1.27.0
+Version:        1.29.0
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over gRPC Exporter
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module grpcio >= 1.0.0}
 BuildRequires:  %{python_module opentelemetry-api >= 1.15}
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-common = %{version}}
 BuildRequires:  %{python_module opentelemetry-proto = %{version}}
-BuildRequires:  %{python_module opentelemetry-sdk >= 1.27.0}
+BuildRequires:  %{python_module opentelemetry-sdk >= %{version}}
 BuildRequires:  %{python_module opentelemetry-test-utils}
 BuildRequires:  %{python_module pytest-grpc}
 BuildRequires:  %{python_module requests}

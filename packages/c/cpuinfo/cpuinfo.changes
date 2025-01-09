@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:48:32 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- ExcludeArch s390x because it is not supported by IBM boo#1235402
+
+-------------------------------------------------------------------
 Thu Jul 25 03:18:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:45:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- 8.17.0: 
+  * Fix use of SSLContext with sniffing (#199)
+  * Fix enabled_cleanup_closed warning (#202)
+  * Remove unneeded install requirement (#196)
+
+-------------------------------------------------------------------
 Thu Dec 12 15:56:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update test runs: pytest 8 is supported, httpx 0.28 creates

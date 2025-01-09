@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan  7 15:20:47 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.15.3:
+  * Bugfix/catch exceptions to prevent crash 
+    (gh#nextcloud/desktop#7705)
+  * Bugfix/elidedtext (gh#nextcloud/desktop#7706)
+  * Call setDesktopFileName without `.desktop` suffix 
+    (gh#nextcloud/desktop#7707)
+  * add a simple github action workflow to build test the 
+    documentation (gh#nextcloud/desktop#7709)
+  * Fix filename of fix-macosvfs-file-sharing.png
+    (gh#nextcloud/desktop#7712)
+  * Fix .netrc parsing (gh#nextcloud/desktop#7714)
+  * Bugfix/do not always free up storage windows shortcuts
+    (gh#nextcloud/desktop#7715)
+  * fix dev application name to keep a consitant migration 
+    behaviour for the dev and prod build 
+    (gh#nextcloud/desktop#7722)
+  * ensure proper read write access to root folder and db files 
+    (gh#nextcloud/desktop#7726)
+  * gui/tray: Fix colour for secondary text items being too pale 
+    (gh#nextcloud/desktop#7727)
+
+-------------------------------------------------------------------
 Tue Dec 17 05:59:24 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 3.15.2:

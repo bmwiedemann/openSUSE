@@ -1,7 +1,7 @@
 #
 # spec file for package branding-openSUSE
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,7 +54,6 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 Conflicts:      branding
 Provides:       branding
-BuildArch:      noarch
 %if 0%{?suse_version} > 1320
 BuildRequires:  update-bootloader-rpm-macros
 %endif

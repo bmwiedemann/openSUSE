@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan  6 20:34:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.0:
+  + Support g_autoptr for exported allocated types
+  + Replace gtk-doc with gi-docgen for API docs
+  + Add missing vnc_color_map_lookup method sym to exports
+  + Speed up coroutine switching with setjmp/longjmp
+  + Improve valgrind compatibility with coroutines
+  + Add native winfiber coroutine for Windows
+  + Add support for libucontext coroutines
+  + Refuse to use broken native ucontext support on macOS aarch64
+  + Raise fatal error on impossible conditions / OOM in coroutines
+  + Many other misc coroutine bugs / improvements
+  + Add support to pass CA cert data for TLS
+  + Allow ungrabbing keyboard in gvncviewer demo
+  + Fix leak of socket address in SASL auth
+  + Avoid mandating SASL SSF over UNIX sockets
+  + Don't assume SASL out data is NUL terminated
+  + Fix rendering artifacts on HiDPI displays
+  + Don't expose server auth types to apps that are not implemented
+  + Convert more code to use GNUTLS for ciphers/hashes
+  + Replace remaining use of gcrypt with gmp
+  + Add unit testing of VNC, ARD, MS logon auth types
+- Pass gi-docs=disabled to meson setup, do not build docs.
+
+-------------------------------------------------------------------
 Fri Aug  5 07:53:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.3.1:

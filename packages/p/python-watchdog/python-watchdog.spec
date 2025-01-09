@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchdog
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-watchdog
-Version:        4.0.1
+Version:        6.0.0
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
@@ -55,10 +55,13 @@ This package contains documentation and examples for %{name}.
 %endif
 
 %prep
-%setup -q -n watchdog-%{version}
+%autosetup -p1 -n watchdog-%{version}
 chmod -x README.rst
 # Remove all shebangs
 find src -name "*.py" | xargs sed -i -e '/^#!\//, 1d'
+
+# Remove coverage testing
+sed -i '/^[[:space:]]\+--cov/d' pyproject.toml
 
 %build
 %python_build
@@ -76,7 +79,8 @@ sed -i '/--cov/d' setup.cfg
 export LANG=en_US.UTF-8
 # test_event_dispatcher randomly fails on SLE15
 # test_unmount_watched_directory_filesystem requires sudo/root which is not available
-%pytest -k 'not test_event_dispatcher and not test_unmount_watched_directory_filesystem'
+# test_select_fd
+%pytest -k 'not (test_event_dispatcher or test_unmount_watched_directory_filesystem or test_select_fd)'
 
 %post
 %python_install_alternative watchmedo

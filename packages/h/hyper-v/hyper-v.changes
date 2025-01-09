@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  1 01:01:01 UTC 2025 - ohering@suse.de
+
+- update route parsing in kvp daemon
+- reduce resource usage in hv_kvp_daemon (175c71c2)
+- reduce resouce usage in hv_get_dns_info helper (a4d024fe)
+- hv_kvp_daemon: Pass NIC name to hv_get_dns_info as well (07dfa6e8)
+- terminate fcopy daemon if read from uio fails (a9640fcd)
+- change permissions of NetworkManager configuration file (91ae69c7)
+- Fix a complier warning in the fcopy uio daemon (cb1b78f1)
+- remove obsolete kvptest.ps1.txt which failed since a decade
+- remove obsolete rpm postinstall code for SLE11SP2
+
+-------------------------------------------------------------------
 Tue Oct 22 22:22:22 UTC 2024 - ohering@suse.de
 
 - Add memory allocation check in hv_fcopy_start (94e86b17)

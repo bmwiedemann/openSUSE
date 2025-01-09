@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  7 00:30:30 UTC 2025 - William Brown <william.brown@suse.com>
+
+- add 0001-Skip-warnings.patch to allow building on rust 1.83
+
+-------------------------------------------------------------------
 Wed Oct 30 01:07:51 UTC 2024 - william.brown@suse.com
 
 - Update to version 0.21.0~git0.78f9859:

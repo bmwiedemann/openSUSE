@@ -151,4 +151,17 @@ tools.</comment>
   * Fix build against Python 3.13</comment>
     <requestid>1180149</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2140a64056e304bc152df13421751b96</srcmd5>
+    <version>4.6</version>
+    <time>1736431519</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch skip-pip-install.patch:
+  * Point pip to the directory that setuptools-wheel uses, since that is
+    the only requirement for pip install with the current version of
+    setuptools.
+- Remove unneeded Requires, limit them appropiately.
+- Switch to pyproject macros.</comment>
+    <requestid>1235773</requestid>
+  </revision>
 </revisionlist>

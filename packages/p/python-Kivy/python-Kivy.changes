@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:11:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.3.1: 
+  * Fix `ConfigParser.write` error with  when `--save` is supplied 
+    as an argument
+  * Fix dropped motion events in mtdev provider.Update `monitor` 
+    module to use `dp`
+  * Rename `CaptureDelegate` to `KivyCaptureDelegate` in 
+    `AVFoundationCamera` to avoid duplicated symbols
+  * `avplayer` audio provider: Fixes `seek` and `state` on iOS and macOS
+  * Fix numpy float/int error when using `CameraAndroid.decode_frame`
+  * Use `filetype` as `imghdr` built-in module is deprecated and slated 
+    for removal in Python 3.13
+  * Updated ES vkeyboard layout to resemble a real ES keyboard layout
+  * Fix `xsel` import when clipboard is empty, and add timeout failsafe
+  * Fix `SDL_EventFilter` definitions to match SDL definitions 
+    (fixes build on GCC 14)
+  * Revert #8415 and align `glShaderSource` `typedef` in `common_subset.h` 
+    with Khronos Headers
+  * Fix dropped motion events in mtdev provider.
+  Full changelog: https://github.com/kivy/kivy/releases/tag/2.3.1
+
+-------------------------------------------------------------------
 Sat Jan 13 20:32:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

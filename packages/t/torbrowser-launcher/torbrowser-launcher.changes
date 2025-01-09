@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  7 19:54:54 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- Load/reload AppArmor profiles when installing the package (boo#1235080)
+
+-------------------------------------------------------------------
 Mon Jan 15 03:30:56 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.3.7:

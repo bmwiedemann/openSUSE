@@ -17,7 +17,7 @@
 
 
 Name:           asar
-Version:        3.2.17
+Version:        3.2.18
 Release:        0
 Summary:        Creating atom-shell (electron) app packages
 License:        MIT and ISC

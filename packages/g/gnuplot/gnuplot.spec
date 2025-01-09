@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package gnuplot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,7 +83,7 @@ BuildRequires:  tex(textgreek.sty)
 BuildRequires:  tex(upquote.sty)
 %endif
 URL:            https://www.gnuplot.info/
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 %global         underscore 6
 %if "%{flavor}" == ""
@@ -121,7 +121,7 @@ Patch7:         gnuplot-PIE.patch
 %if "%{flavor}" == "doc"
 Requires:       %{sname}
 Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
+Requires(preun): %install_info_prereq
 BuildArch:      noarch
 %endif
 

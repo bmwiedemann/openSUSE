@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 07 19:03:23 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 3.88.1:
+  * added token_revoke status condition in slack api detector (#3831)
+  * feat(scrapingbee): tweak detections (#3820)
+  * [chore] - remove resumption option (#3830)
+  * Deprecated RockSet and RestPack detectors (#3812)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.13.0 [security] (#3829)
+  * stop using context.TODO in archive handler (#3809)
+  * fixed bombbomb detector pattern test as part of issue 3817 (#3825)
+  * fixed github issue 3821 for string shannon entropy test (#3824)
+  * fixed github issue 3819 for endpoint customizer tests (#3823)
+  * fixed github issue 3774 for custom detector secret size (#3816)
+
+-------------------------------------------------------------------
 Mon Dec 23 06:44:33 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.88.0:

@@ -902,4 +902,18 @@
 </comment>
     <requestid>1233869</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>56e4f50c002ccfa43da71f8f5953265e</srcmd5>
+    <version>1.4.39</version>
+    <time>1736431684</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.39:
+  * [REM-3260] Fix bug passing wrong value in SPICE plugin (Breaking compilation on some distributions) !2624 @myheroyuki
+  * [REM-3257] Add option to automatically copy ssh text when selected !2624 @myheroyuki
+  * [REM-2604] Allow -c to work with www plugin !2604 @myheroyuki
+  * [REM-3256] Don't prompt about closing connections with no connections !2625 @myheroyuki
+  * Mainly fixing memory leaks and some small bugs !2626 @myheroyuki
+</comment>
+    <requestid>1235870</requestid>
+  </revision>
 </revisionlist>

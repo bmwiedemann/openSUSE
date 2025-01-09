@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  8 08:39:42 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.5.5:
+  * fix: make scrape command deterministic and update lofigirl list
+  * feat: allow variable width 
+  * fix: read list header to lofigirl list
+  * fix: use unicode-segmentation to fix issues with unicode track names
+  * bump dependencies
+
+-------------------------------------------------------------------
 Thu Oct 31 07:25:00 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.5.3:

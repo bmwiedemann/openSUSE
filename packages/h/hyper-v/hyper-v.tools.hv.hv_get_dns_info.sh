@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # This script parses /etc/resolv.conf to retrive DNS information.
 # In the interest of keeping the KVP daemon code free of distro specific
@@ -10,7 +10,8 @@
 # this script can be based on the Network Manager APIs for retrieving DNS
 # entries.
 
-if test -r /etc/resolv.conf
+if test -f /etc/resolv.conf
 then
-	awk -- '/^nameserver/ { print $2 }' /etc/resolv.conf
+	exec awk -- '/^nameserver/ { print $2 }' /etc/resolv.conf
 fi
+exit 0

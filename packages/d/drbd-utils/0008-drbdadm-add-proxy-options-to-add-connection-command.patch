@@ -1,0 +1,95 @@
+From 9dab78b5822d59a13e767ef20fdffab46f79cb25 Mon Sep 17 00:00:00 2001
+From: Joel Colledge <joel.colledge@linbit.com>
+Date: Thu, 21 Nov 2024 09:55:26 +0100
+Subject: [PATCH 08/12] drbdadm: add proxy options to 'add connection' command
+
+Some options such as rcvbuf-size must be set before attempting to
+connect. Proxy v3 used ugly hacks to allow time for the options to
+arrive before connecting. Proxy v4 does not use this approach. Instead
+it requires the options to be set on the command line for 'add
+connection'.
+
+The additional options are ignored by Proxy v3 with a "trailing garbage"
+warning.
+
+We continue to set the properties using 'set' commands as well to retain
+compatibility with Proxy v3. Proxy v4 ignores 'set' commands which do
+not change the value of the option.
+
+So this is compatible with Proxy v3 and v4.
+---
+ user/v9/drbdadm_main.c | 38 ++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 36 insertions(+), 2 deletions(-)
+
+diff --git a/user/v9/drbdadm_main.c b/user/v9/drbdadm_main.c
+index 74cf60365a6d..a983a9463fb8 100644
+--- a/user/v9/drbdadm_main.c
++++ b/user/v9/drbdadm_main.c
+@@ -2043,19 +2043,33 @@ char *_proxy_connection_name(char *conn_name, const struct d_resource *res, cons
+ 	return conn_name;
+ }
+ 
++#define ADD_CONNECTION_MAX_LEN 4096
++
+ static int do_proxy_conn_up(const struct cfg_ctx *ctx)
+ {
+ 	const char *argv[4] = { drbd_proxy_ctl, "-c", NULL, NULL };
+ 	struct connection *conn = ctx->conn;
+ 	struct path *path = STAILQ_FIRST(&conn->paths); /* multiple paths via proxy, later! */
+ 	char *conn_name;
++	char *buffer;
++	char *buffer_pos;
++	int buffer_remaining;
++	int n;
++	struct d_option *opt;
++	int rv = -1;
+ 
+ 	if (!path->my_proxy || !path->peer_proxy)
+ 		return 0;
+ 
+ 	conn_name = proxy_connection_name(ctx->res, conn);
+ 
+-	argv[2] = ssprintf(
++	buffer_remaining = ADD_CONNECTION_MAX_LEN;
++	buffer = checked_malloc(buffer_remaining);
++	buffer_pos = buffer;
++
++	n = snprintf(
++		buffer_pos,
++		buffer_remaining,
+ 		"add connection %s %s:%s %s:%s %s:%s %s:%s",
+ 		conn_name,
+ 		path->my_proxy->inside.addr,
+@@ -2066,8 +2080,28 @@ static int do_proxy_conn_up(const struct cfg_ctx *ctx)
+ 		path->my_proxy->outside.port,
+ 		path->my_address->addr,
+ 		path->my_address->port);
++	if (n < 0 || n >= buffer_remaining)
++		goto out;
++	buffer_pos += n;
++	buffer_remaining -= n;
+ 
+-	return m_system_ex(argv, SLEEPS_SHORT, ctx->res->name);
++	STAILQ_FOREACH(opt, &path->my_proxy->options, link) {
++		n = snprintf(
++			buffer_pos,
++			buffer_remaining,
++			" --%s=%s",
++			opt->name, opt->value);
++		if (n < 0 || n >= buffer_remaining)
++			goto out;
++		buffer_pos += n;
++		buffer_remaining -= n;
++	}
++
++	argv[2] = buffer;
++	rv = m_system_ex(argv, SLEEPS_SHORT, ctx->res->name);
++out:
++	free(buffer);
++	return rv;
+ }
+ 
+ static int do_proxy_conn_plugins(const struct cfg_ctx *ctx)
+-- 
+2.43.0
+

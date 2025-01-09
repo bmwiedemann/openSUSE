@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  8 08:35:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.7:
+  * Amend missing changelog
+
+-------------------------------------------------------------------
+Wed Jan  8 08:35:33 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.6:
+  * Support for Python 3.12 & 3.13
+  * Fix escaping in docstrings (#608)
+
+-------------------------------------------------------------------
 Fri Aug 18 15:51:56 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Spec source changed from PyPI to GitHub since the PyPI tarball no

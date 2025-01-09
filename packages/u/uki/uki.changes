@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:38:31 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix posttrans script condition
+
+-------------------------------------------------------------------
 Tue Dec 31 15:31:46 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Do not sign uki for local build. Remove local certificate. 

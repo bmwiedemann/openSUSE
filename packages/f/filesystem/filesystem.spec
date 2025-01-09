@@ -123,7 +123,7 @@ cat > pre.lua <<'EOF'
 needmigrate = false
 local dirs = {"/bin",
   "/sbin",
-%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 hppa64
   "/lib64",
 %endif
   "/lib" }
@@ -201,7 +201,7 @@ cat >> filesystem.links << EOF
 usr/bin   /bin
 usr/sbin  /sbin
 usr/lib   /lib
-%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 hppa64
 usr/lib64 /lib64
 %endif
 EOF
@@ -233,10 +233,18 @@ powerpc64-suse-linux \
 %ifarch ppc64le
 powerpc64le-suse-linux \
 %else
+%ifarch hppa
+hppa-suse-linux \
+%else
+%ifarch hppa64
+hppa64-suse-linux \
+%else
 %ifarch %arm
 %{_target_cpu}-suse-linux-gnueabi \
 %else
 %{_target_cpu}-suse-linux \
+%endif
+%endif
 %endif
 %endif
 %endif

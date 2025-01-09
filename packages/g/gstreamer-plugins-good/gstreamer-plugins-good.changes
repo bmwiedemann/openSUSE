@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  7 21:44:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.11:
+  + matroskamux: Fix audio-only stream conditions and consider
+    audio buffers as keyframes when writing out simpleblocks
+  + qtdemux: fix accumulated base offset in segment seeks
+  + rtppassthroughpay: ensure buffer is writable before mapping
+    writable
+  + rtpsession: Fix twcc stats structure leak
+  + v4l2: object: Add P010 format
+  + v4l2videodec: release decode only frame in input list
+
+-------------------------------------------------------------------
 Mon Dec  9 11:58:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.10:

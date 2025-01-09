@@ -1,7 +1,7 @@
 #
 # spec file for package python-zstd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zstd
-Version:        1.5.5.1
+Version:        1.5.6.1
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause

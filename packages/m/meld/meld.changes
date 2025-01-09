@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  8 08:38:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.22.3:
+  + Fix custom label handling for folder and version-control views
+  + Remove Ctrl+Page Up/Down bindings for horizontal scroll
+  + Fix incorrect parent state in path label when opening new files
+  + Don't use deprecated pipes module
+  + Fix crash on blank folder comparison
+  + Avoid loading MeldNotebook CSS provider multiple times
+  + Fix pathbar not updating in folder comparisons
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 25 15:17:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.22.2:

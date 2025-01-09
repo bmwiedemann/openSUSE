@@ -1,0 +1,29 @@
+From 9063cbac560158629b7c99307a8e2c7666ea1419 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 8 Jan 2025 14:16:52 +1100
+Subject: [PATCH] Drop use of six
+
+This package has an undeclared requirement on six, but since Python 2 is
+long unsupported, remove it and just use the Python 3 idiom.
+---
+ sklearn_pandas/pipeline.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/sklearn_pandas/pipeline.py b/sklearn_pandas/pipeline.py
+index e8aae87..cde2fea 100644
+--- a/sklearn_pandas/pipeline.py
++++ b/sklearn_pandas/pipeline.py
+@@ -1,4 +1,3 @@
+-import six
+ from sklearn.pipeline import _name_estimators, Pipeline
+ from sklearn.utils import tosequence
+ 
+@@ -59,7 +58,7 @@ def __init__(self, steps):
+ 
+     def _pre_transform(self, X, y=None, **fit_params):
+         fit_params_steps = dict((step, {}) for step, _ in self.steps)
+-        for pname, pval in six.iteritems(fit_params):
++        for pname, pval in fit_params.items():
+             step, param = pname.split('__', 1)
+             fit_params_steps[step][param] = pval
+         Xt = X

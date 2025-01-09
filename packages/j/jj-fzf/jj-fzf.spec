@@ -24,16 +24,16 @@ License:        MPL-2.0
 URL:            https://github.com/tim-janik/jj-fzf
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  awk
 BuildRequires:  bash >= 5.1.16
 BuildRequires:  coreutils
 BuildRequires:  fzf
-BuildRequires:  gawk
 BuildRequires:  jujutsu
 BuildRequires:  sed
+Requires:       awk
 Requires:       bash >= 5.1.16
 Requires:       coreutils
 Requires:       fzf
-Requires:       gawk
 Requires:       jujutsu
 Requires:       sed
 
@@ -73,4 +73,3 @@ install -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 %{_bindir}/%{name}
 
 %changelog
-

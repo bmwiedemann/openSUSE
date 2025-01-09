@@ -1638,4 +1638,41 @@ Now with build cycle removed.</comment>
   * Update .AU Section (#2267)</comment>
     <requestid>1228225</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>9aad485898a52908a083ad3052bc1da6</srcmd5>
+    <version>20250107</version>
+    <time>1736431527</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250107:
+  * Add `cloudbeesusercontent.io` (#2298)
+  * add PSL Sandbox (#2358)
+  * Replace broken links (#2360)
+  * Add Code of Conduct (#2364)
+  * remove Hakaran domains (#2361)
+  * chore: formatting + fixes (#2329)
+  * remove `curv.dev` (#2317)
+  * remove Diher Solutions section (#2319)
+  * add botdash domains (#2342)
+  * update email address (#2354)
+  * remove `spacekit.io` (#2348)
+  * remove `drud.io` and `drud.us` (#2347)
+  * remove `platter-app.com` (#2346)
+  * util: gTLD data autopull updates for 2024-12-23T15:16:32 UTC (#2357)
+  * chore: update website URL (#2344)
+  * remove `lab.ms` (#2334)
+  * remove `n4t.co`, `001www.com`, `now-dns.top` (#2324)
+  * remove `secaas.hk` (#2335)
+  * util: gTLD data autopull updates for 2024-12-12T15:18:57 UTC (#2341)
+  * remove `shiftedit.io` (#2312)
+  * fix some URLs (#2340)
+  * update `.az` section (#2331)
+  * update `.bw` section (#2339)
+  * add confirmation message to `.am` (#2330)
+  * remove `lelux.site` (#2336)
+  * remove `yombo.me` (#2337)
+  * Remove blogspot ccTLD domains (#2327)
+  * chore(tools/internal/parser): remove unneeded exceptions (#2328)
+  * Update comments for `.it`, `.jp`, `.se`, `.xn--fiqs8s`, `.xn--fiqz9s` (#2325)</comment>
+    <requestid>1235817</requestid>
+  </revision>
 </revisionlist>

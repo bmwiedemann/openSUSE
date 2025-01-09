@@ -64,4 +64,14 @@
 </comment>
     <requestid>1063364</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0afa133e5c80c0886d921b07afd49da0</srcmd5>
+    <version>2.2.0</version>
+    <time>1736431640</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-six.patch:
+  * Drop use of six.
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1235770</requestid>
+  </revision>
 </revisionlist>

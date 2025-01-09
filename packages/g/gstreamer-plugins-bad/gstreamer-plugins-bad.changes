@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  7 21:47:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.11:
+  + decklink: add missing video modes, fix 8K video modes
+  + onnx: disable onnxruntime telemetry
+  + srtpdec:
+    - Fix build when libsrtp1 is being used
+    - Fix a use-after-free buffer issue
+  + va: display: Optimize out some property indirection
+  + vp9parse/av1parse: Add video codec tag to the tag list
+  + webrtc: Simplify fmtp handling in codec stats
+  + webrtcbin: Fix potential deadlock on bin elements cleanup
+  + zxing: Replace deprecated DecodeHints with ReaderOptions
+  + meson: Also disable drm on GNU/Hurd
+
+-------------------------------------------------------------------
 Mon Dec  9 12:01:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.10:

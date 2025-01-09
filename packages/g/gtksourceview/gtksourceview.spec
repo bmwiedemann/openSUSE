@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
 Source0:        http://download.gnome.org/sources/gtksourceview/3.24/%{name}-%{version}.tar.xz
-Source1:        changes.lang
 # PATCH-FIX-UPSTREAM gtksourceview-gcc14.patch mgorse@suse.com -- fix assignment from incompatible pointer type.
 Patch0:         gtksourceview-gcc14.patch
 
@@ -123,8 +122,6 @@ features typical of a source editor.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-3.0
-# Install language definition for *.changes files:
-install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-3.0/language-specs/
 %fdupes %{buildroot}%{_datadir}
 
 %ldconfig_scriptlets -n libgtksourceview-3_0-1

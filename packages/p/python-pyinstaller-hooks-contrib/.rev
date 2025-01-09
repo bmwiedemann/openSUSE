@@ -110,4 +110,22 @@
     dynamically-loaded extension, required by this module, is</comment>
     <requestid>1142839</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea6c17ee6aa5ed5f29392611051997d1</srcmd5>
+    <version>2024.11</version>
+    <time>1736431656</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2024.11
+  * Update torch hook to suppress creation of symbolic links to the 
+    top-level application directory
+  * Update sklearn.tree hook for compatibility with scikit-learn v1.6.0
+- Downloaded upstream conftest.py missing in the tarball
+
+- update to 2024.10
+  * Add many hooks, updated many hooks.
+  * Released sdists and tagged GitHub source archives contain the 
+    changelog entries for their current release.
+  * See the complete changelog in CHANGELOG.rst.</comment>
+    <requestid>1235754</requestid>
+  </revision>
 </revisionlist>

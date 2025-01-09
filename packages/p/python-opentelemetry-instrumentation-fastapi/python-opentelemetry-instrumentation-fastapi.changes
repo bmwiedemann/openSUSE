@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:32:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.50b0
+  * `opentelemetry-instrumentation-starlette` Add type hints to the instrumentation
+  * `opentelemetry-distro` default to OTLP log exporter.
+  * `opentelemetry-instrumentation-sqlalchemy` Update unit tests to run with SQLALchemy 2
+  * Add `opentelemetry-instrumentation-openai-v2` to `opentelemetry-bootstrap`
+  * `opentelemetry-instrumentation-sqlalchemy` Add sqlcomment to `db.statement` attribute
+  * `opentelemetry-instrumentation-dbapi` Add sqlcomment to `db.statement` attribute
+  * `opentelemetry-instrumentation-dbapi` instrument_connection accepts optional connect_module
+  * `opentelemetry-instrumentation-mysqlclient` Add sqlcommenter support
+  * `opentelemetry-instrumentation-pymysql` Add sqlcommenter support
+  * `opentelemetry-instrumentation-click`: new instrumentation to trace click commands
+  * `opentelemetry-instrumentation-starlette`: Retrieve `meter_provider` key instead of
+    `_meter_provider` on `_instrument`
+  * `opentelemetry-instrumentation-httpx`: instrument_client is a static method again
+  * `opentelemetry-instrumentation-system_metrics`: fix callbacks reading wrong config
+  * `opentelemetry-instrumentation-httpx`: Check if mount transport is none before wrap it
+  * Replace all instrumentor unit test `assertEqualSpanInstrumentationInfo` calls with
+    `assertEqualSpanInstrumentationScope` calls
+  * `opentelemetry-instrumentation-sqlalchemy` Fixes engines from `sqlalchemy.engine_from_config`
+    not being fully instrumented
+  * `opentelemetry-instrumentation-sqlalchemy`: Fix a remaining memory leak in EngineTracer
+  * `opentelemetry-instrumentation-sqlite3`: Update documentation on explicit cursor support of tracing
+  * `opentelemetry-instrumentation-sqlalchemy` teach instruments version
+  * Drop `opentelemetry-instrumentation-test` package from default instrumentation list
+  * `opentelemetry-instrumentation-httpx`: remove private unused `_InstrumentedClient`
+    and `_InstrumentedAsyncClient` classes
+- from version 0.49b0
+  * `opentelemetry-instrumentation-openai-v2` Instrumentation for OpenAI >= 0.27.0
+  * `opentelemetry-instrumentation-fastapi` Add autoinstrumentation mechanism tests.
+  * `opentelemetry-instrumentation-aiokafka` Add instrumentor and auto instrumentation
+    support for aiokafka
+  * `opentelemetry-instrumentation-redis` Add additional attributes for methods create_index
+    and search, rename those spans
+  * `opentelemetry-instrumentation` Add support for string based dotted module paths in unwrap
+  * `opentelemetry-instrumentation-aiokafka` Wrap `AIOKafkaConsumer.getone()` instead of `AIOKafkaConsumer.__anext__`
+  * `opentelemetry-instrumentation-confluent-kafka` Fix to allow `topic` to be extracted from `kwargs` in `produce()`
+  * `opentelemetry-instrumentation-system-metrics` Update metric units to conform to UCUM conventions.
+  * `opentelemetry-instrumentation-celery` Don't detach context without a None token
+  * `opentelemetry-exporter-prometheus-remote-write`: sort labels before exporting
+  * `opentelemetry-instrumentation-dbapi` sqlcommenter key values created from PostgreSQL, MySQL systems
+  * `opentelemetry-instrumentation-system-metrics`: don't report open file descriptors on Windows
+  * Deprecation of pkg_resource in favor of importlib.metadata
+  * `opentelemetry-instrumentation` Don't fail distro loading if instrumentor raises ImportError, instead skip them
+  * `opentelemetry-instrumentation-httpx` Rewrote instrumentation to use wrapt instead of subclassing
+- Use %{version} in BuildRequires and Requires for dependencies
+
+-------------------------------------------------------------------
 Wed Sep  4 21:30:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build

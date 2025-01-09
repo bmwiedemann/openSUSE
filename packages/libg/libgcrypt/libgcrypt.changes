@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:28:25 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix redefinition error of 'rol64'. Remove not used rol64()
+  definition after removing the built-in jitter rng.
+  * Add libgcrypt-rol64-redefinition.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 10:11:10 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove unrecognized option: --enable-m-guard

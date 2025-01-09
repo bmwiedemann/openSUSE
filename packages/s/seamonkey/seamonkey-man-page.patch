@@ -1,13 +1,13 @@
---- build/moz.configure/old.configure	2022-06-08 21:10:25.000000000 +0200
-+++ build/moz.configure/old.configure	2022-07-11 14:04:06.231167162 +0200
-@@ -246,6 +246,7 @@
+--- build/moz.configure/old.configure	2024-12-12 18:30:12.000000000 -0600
++++ build/moz.configure/old.configure	2024-12-30 17:18:44.383356721 -0600
+@@ -112,6 +112,7 @@
      '--enable-zipwriter',
      '--includedir',
      '--libdir',
 +    '--mandir',
      '--prefix',
-     '--with-app-basename',
-     '--with-app-name',
+     '--with-branding',
+     '--with-debug-label',
 --- comm/suite/installer/Makefile.in	2021-08-08 15:29:32.000000000 +0200
 +++ comm/suite/installer/Makefile.in	2022-07-11 14:04:44.710104711 +0200
 @@ -145,6 +145,10 @@

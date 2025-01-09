@@ -14,6 +14,10 @@
     <udn>uuid:ebc72883-bdd4-432e-be5f-87051d2d0091</udn>
     <home>/etc/gerbera</home>
     <webroot>/usr/share/gerbera/web</webroot>
+    <!-- perhaps you need port and ip when you use docker and/or ipv6
+    <port>49152</port>
+    <ip>GERBERA_IP</ip>
+    -->
     <!--
         How frequently (in seconds) to send ssdp:alive advertisements.
         Minimum alive value accepted is: 62

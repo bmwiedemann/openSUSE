@@ -1,7 +1,7 @@
 #
 # spec file for package gerbera
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           gerbera
-Version:        2.3.0
+Version:        2.4.1
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -42,8 +42,9 @@ BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
-BuildRequires:  pkgconfig(duktape)
-BuildRequires:  pkgconfig(exiv2)
+BuildRequires:  pkgconfig(duktape) >= 2.6.0
+BuildRequires:  pkgconfig(exiv2) >= 0.26
+BuildRequires:  pkgconfig(fmt) >= 9.1.0
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gmock_main)
 BuildRequires:  pkgconfig(gtest)
@@ -53,13 +54,13 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libebml)
-BuildRequires:  pkgconfig(libffmpegthumbnailer)
-BuildRequires:  pkgconfig(libmatroska)
+BuildRequires:  pkgconfig(libffmpegthumbnailer) >= 2.2.2
+BuildRequires:  pkgconfig(libmatroska) >= 1.6.3
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libupnp) >= 1.14.6
-BuildRequires:  pkgconfig(pugixml)
-BuildRequires:  pkgconfig(spdlog) >= 1.8.1
-BuildRequires:  pkgconfig(sqlite3) >= 3.7.11
+BuildRequires:  pkgconfig(pugixml) >= 1.10
+BuildRequires:  pkgconfig(spdlog) >= 1.11.0
+BuildRequires:  pkgconfig(sqlite3) >= 3.35.5
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(taglib) >= 1.12
 BuildRequires:  pkgconfig(uuid)
@@ -107,8 +108,8 @@ rm -f web/.gitignore
 
 # server test hardcodes alpha strings
 sed -i -e '/test_server/d' test/CMakeLists.txt
-sed -i -e 's/@USER@/gerbera/' %{SOURCE2}
-sed -i -e 's/@GROUP@/gerbera/' %{SOURCE2}
+#sed -i -e 's/@USER@/gerbera/' %%{SOURCE2}
+#sed -i -e 's/@GROUP@/gerbera/' %%{SOURCE2}
 
 %build
 %cmake \
@@ -131,9 +132,10 @@ sed -i -e 's/@GROUP@/gerbera/' %{SOURCE2}
 %install
 %cmake_install
 
-mkdir -p %{buildroot}%{_sysconfdir}/gerbera
-touch %{buildroot}%{_sysconfdir}/gerbera/{gerbera.db,gerbera.html}
-mkdir -p %{buildroot}%{_localstatedir}/log/gerbera
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+touch %{buildroot}%{_sysconfdir}/%{name}/gerbera.html
+mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
+mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 touch %{buildroot}%{_localstatedir}/log/%{name}
 mkdir -p  %{buildroot}%{_sysconfdir}/logrotate.d
 cat > %{buildroot}%{_sysconfdir}/logrotate.d/%{name} << 'EOF'
@@ -143,6 +145,12 @@ cat > %{buildroot}%{_sysconfdir}/logrotate.d/%{name} << 'EOF'
       compress
       missingok
 }
+EOF
+cat > %{buildroot}%{_sysconfdir}/%{name}/_INFO_ << 'EOF'
+gerbera.xml         <- active configuration file
+gerbera-example.xml <- example configuration with almost all options
+gerbera-new.xml     <- new configuration file after update of package
+gerbera-diff.xml    <- diff between gerbera.xml and gerbera-new.xml
 EOF
 
 install -d %{buildroot}%{_sbindir}
@@ -170,14 +178,20 @@ install -D -m0644 %{SOURCE11} %{buildroot}%{_sysconfdir}/nginx/vhosts.d/%{name}.
 %service_add_post %{name}.service
 # only do on install
 if [ "$1" -eq 1 ]; then
+  echo "o Create config.xml..." || :
   gerbera --create-config | sudo tee /etc/gerbera/config.xml || :
-  sed -i -e 's|<home>/root/</home>|<home>/etc/gerbera</home>|g' /etc/gerbera/config.xml
+  sed -i -e 's|<home>/root/</home>|<home>/etc/gerbera</home>|g' /etc/gerbera/config.xml || :
+  sed -i -e 's|<database-file>gerbera.db</database-file>|<database-file>/var/lib/gerbera/gerbera.db</database-file>|g' /etc/gerbera/config.xml || :
 fi
 # only do on upgrade
 if [ "$1" -gt 1 ]; then
+  echo "o Create config-diff.xml from own config to new config..." || :
   gerbera --create-config | sudo tee /etc/gerbera/config-new.xml || :
-  diff /etc/gerbera/config.xml /etc/gerbera/config-new.xml > config-diff.xml || :
+  sed -i -e 's|<home>/root/</home>|<home>/etc/gerbera</home>|g' /etc/gerbera/config-new.xml || :
+  sed -i -e 's|<database-file>gerbera.db</database-file>|<database-file>/var/lib/gerbera/gerbera.db</database-file>|g' /etc/gerbera/config-new.xml || :
+  diff /etc/gerbera/config.xml /etc/gerbera/config-new.xml > /etc/gerbera/config-diff.xml || :
 fi
+echo "o Create new config-example.xml with almost all options..." || :
 gerbera --create-example-config | sudo tee /etc/gerbera/config-example.xml || :
 
 %preun
@@ -189,9 +203,10 @@ gerbera --create-example-config | sudo tee /etc/gerbera/config-example.xml || :
 %files
 %license LICENSE.md
 %doc AUTHORS CONTRIBUTING.md ChangeLog.md README.SUSE
-%attr(-,gerbera,gerbera)%dir %{_sysconfdir}/%{name}/
-%attr(-,gerbera,gerbera)%config(noreplace) %{_sysconfdir}/%{name}/*
-%attr(-,gerbera,gerbera) %{_localstatedir}/log/%{name}
+%dir %attr(0750,gerbera,gerbera) %{_sysconfdir}/%{name}
+%attr(640,gerbera,gerbera)%config(noreplace) %{_sysconfdir}/%{name}/*
+%dir %attr(0750,gerbera,gerbera) %{_localstatedir}/log/%{name}
+%dir %attr(0750,gerbera,gerbera) %{_localstatedir}/lib/%{name}
 %dir %{_sysconfdir}/logrotate.d
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}

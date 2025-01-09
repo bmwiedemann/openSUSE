@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-vnc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define _sonamepkg 2_0
 
 Name:           gtk-vnc
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        A GTK widget for VNC clients
 License:        LGPL-2.1-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://wiki.gnome.org/Projects/gtk-vnc
-Source0:        https://download.gnome.org/sources/gtk-vnc/1.3/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtk-vnc/1.4/%{name}-%{version}.tar.xz
 
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.4
@@ -162,7 +162,9 @@ threaded.
 sed -i '/install:/s/false/true/' examples/meson.build
 
 %build
-%meson
+%meson \
+	-D gi-docs=disabled \
+	%{nil}
 %meson_build
 
 %install

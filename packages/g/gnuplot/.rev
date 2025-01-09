@@ -1296,4 +1296,41 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
   * FIX x11: Empirical correction for bad rotation of enhanced text    Bug 2661</comment>
     <requestid>1178241</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>34eeb9ad5a0703c76de8d407e4e7973b</srcmd5>
+    <version>6.0.2</version>
+    <time>1736431504</time>
+    <user>anag+factory</user>
+    <comment>- Update to gnuplot 6.0.2
+  * NEW backport plot style &quot;with hsteps&quot;
+  * NEW backport plot style &quot;splot with filledcurves&quot; (waterfall plots)
+  * NEW general binary keyword option &quot;blank=NaN&quot;
+        - faciliates binary input to plot styles sensitive to blank lines
+  * NEW polygons in splot can use pm3d coloring
+        - facilitates use of triangular tessellated 3D pm3d surfaces
+  * NEW - UTF-8 terminal input now works when linked against BSD editline
+          ./configure --with-readline=bsd
+  * CHANGE backport reimplementation of local variables
+        - faster function block evaluation, better-defined scope
+  * CHANGE apply jitter to the horizontal spread of boxplot outliers
+  * CHANGE dump $GPVAL_LAST_MULTIPLOT at the end of a &quot;save&quot; file
+  * FIX backport reworked generation of logscale axis tic marks        Bug 2372 2717
+  * FIX Do not save extraneous commands to $GPVAL_LAST_MULTIPLOT       Bug 2714
+  * FIX svg: modify gnuplot_svg.js to work in local standalone mode    Bug 2715
+  * FIX &quot;set table&quot;: honor &quot;nosurface&quot; keyword in splot
+  * FIX &quot;set table&quot;: honor &quot;set format z&quot; when z is printed from plot
+  * FIX better contouring near the edge of a z-clipped surface
+  * FIX x11: handle mousing of logscale axes in inactive plot window   Bug 2723
+  * FIX qt: handle mousing of logscale axes in inactive plot window    Bug 2723
+  * FIX wxt: handle mousing of logscale axes in inactive plot window   Bug 2723
+  * FIX wxt: release per-thread font data before entering &quot;persist&quot;    Bug 2693
+  * FIX &quot;set tics scale&quot; should not change other axis tick properties  Bug 2724
+  * FIX fill properties can be given as part of &quot;splot with circles&quot;
+  * FIX some properties of the key title not shown by &quot;show&quot; or &quot;save&quot; Bug 2729
+  * FIX points with variable color value NaN should not be drawn       Bug 2737
+  * FIX &quot;set term tikz nostandalone&quot; should suppress the latex wrapper Bug 2740
+  * FIX handle unusual case of intersecting pm3d surfaces              Bug 2744
+  * FIX prevent use-after-free if a function block has no &quot;return&quot;     Bug 2745</comment>
+    <requestid>1235564</requestid>
+  </revision>
 </revisionlist>

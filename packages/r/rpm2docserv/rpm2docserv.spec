@@ -1,7 +1,7 @@
 #
 # spec file for package rpm2docserv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@
 %endif
 
 Name:           rpm2docserv
-Version:        20240320.aa59b30
+Version:        20250107.10e1695
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
 URL:            https://github.com/thkukuk/rpm2docserv
-Source:         rpm2docserv-%{version}.tar.gz
+Source:         rpm2docserv-%{version}.tar.xz
 Source1:        vendor.tar.gz
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools

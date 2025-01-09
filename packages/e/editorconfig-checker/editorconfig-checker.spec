@@ -1,7 +1,7 @@
 #
 # spec file for package editorconfig-checker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name ec
 
 Name:           editorconfig-checker
-Version:        3.0.3
+Version:        3.1.1
 Release:        0
 Summary:        Tool to verify that your files are in harmony with your .editorconfig
 License:        MIT

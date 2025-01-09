@@ -24,17 +24,18 @@ License:        NGPL
 Group:          Amusements/Games/RPG
 URL:            http://www.nethack.org/
 Source0:        nethack-343-src.tar.bz2
-# PATCH-FIX-UPSTREAM nethack-config.patch
+# PATCH-FIX-OPENSUSE nethack-config.patch Adapt build to openSUSE systems
 Patch0:         nethack-config.patch
-# PATCH-FIX-UPSTREAM nethack-decl.patch
+# PATCH-FIX-OPENSUSE nethack-decl.patch Do not redeclare system interfaces
 Patch1:         nethack-decl.patch
-# PATCH-FIX-UPSTREAM nethack-misc.patch
-Patch2:         nethack-misc.patch
-# PATCH-FIX-UPSTREAM nethack-syscall.patch
-Patch3:         nethack-syscall.patch
-# PATCH-FIX-UPSTREAM nethack-gzip.patch
-Patch5:         nethack-gzip.patch
-Patch6:         reproducible.patch
+# PATCH-FIX-OPENSUSE nethack-escape-char.patch
+Patch2:         nethack-escape-char.patch
+# PATCH-FIX-OPENSUSE nethack-secure.patch Handle SECURE in recover utility
+Patch3:         nethack-secure.patch
+# PATCH-FIX-OPENSUSE nethack-gzip.patch Use gzip compression
+Patch4:         nethack-gzip.patch
+# PATCH-FIX-OPENSUSE nethack-reproducible.patch boo#1047218
+Patch5:         nethack-reproducible.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -57,8 +58,8 @@ This package contains the text interface.
 %patch -P1
 %patch -P2
 %patch -P3
-%patch -P5
-%patch -P6 -p1
+%patch -P4
+%patch -P5 -p1
 
 %build
 # copy Makefiles and add optimization flags
@@ -94,7 +95,7 @@ install -d %{buildroot}/%{_mandir}/man6/
 # game directory
 install -m 775 -d %{buildroot}%{_localstatedir}/games/nethack/
 install -m 775 -d %{buildroot}%{_localstatedir}/games/nethack/save/
-for file in logfile perm record ; do
+for file in logfile paniclog perm record ; do
 	touch %{buildroot}%{_localstatedir}/games/nethack/$file
 	chmod 0664 %{buildroot}%{_localstatedir}/games/nethack/$file
 done
@@ -146,6 +147,7 @@ install -m 755 util/{dgn_comp,dlb,lev_comp,makedefs,recover} %{buildroot}%{_pref
 %dir %attr(0770,games,games) %{_localstatedir}/games/nethack
 %dir %attr(0770,games,games) %{_localstatedir}/games/nethack/save
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/logfile
+%config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/paniclog
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/record
 %attr(0660,games,games) %{_localstatedir}/games/nethack/perm
 %{_bindir}/nethack

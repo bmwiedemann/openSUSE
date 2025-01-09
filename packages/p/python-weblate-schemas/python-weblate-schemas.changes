@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 15:38:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2024.2
+  * Added schema for Weblate Fedora Messaging.
+  * Added support for Python 3.13.
+  * Clarified language field in the component backup schema.
+
+-------------------------------------------------------------------
 Thu Jun 13 14:54:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1:

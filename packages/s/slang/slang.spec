@@ -1,7 +1,7 @@
 #
 # spec file for package slang
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           slang
-Version:        2.3.3
+Version:        2.3.3+git16.89d32bb
 Release:        0
 Summary:        Programming Library and Embeddable Extension Language
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.jedsoft.org/
-Source0:        http://www.jedsoft.org/releases/slang/slang-%{version}.tar.bz2
-Source1:        http://www.jedsoft.org/releases/slang/slang-%{version}.tar.bz2.asc
-Source2:        %{name}.keyring
-Source3:        baselibs.conf
-Patch0:         slang.patch
-Patch1:         slang-autoconf.patch
-Patch2:         slang-fsuid.patch
+Source0:        %{name}-%{version}.tar.bz2
+Source1:        baselibs.conf
+Patch1:         0001-Use-termcap.patch
+Patch2:         0002-Fix-CFLAGS-and-generate-sl-config.h.patch
+Patch3:         0003-Enforce-use-of-setfsuid.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pcre-devel

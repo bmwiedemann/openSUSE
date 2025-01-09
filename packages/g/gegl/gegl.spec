@@ -1,7 +1,7 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            http://gegl.org/
+URL:            https://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source1:        normalize-gir.pl
 Source99:       baselibs.conf

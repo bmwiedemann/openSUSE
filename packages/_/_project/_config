@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20250107
+ExpandFlags: macroserial:20250109
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -436,6 +436,7 @@ FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/ronn ruby3.4-rubygem-ronn-ng
 FileProvides: /usr/bin/rsync rsync
 FileProvides: /usr/bin/ruby ruby3.4
+FileProvides: /usr/bin/ruby.ruby3.3 ruby3.3
 FileProvides: /usr/bin/ruby.ruby3.4 ruby3.4
 FileProvides: /usr/bin/runawk runawk
 FileProvides: /usr/bin/sbcl sbcl
@@ -3497,7 +3498,7 @@ Macros:
 ## PYTHON MACROS BEGIN
 # order of %pythons is important: The last flavor overrides any operation on conflicting files and definitions during expansions,
 # making it the "default" in many cases --> keep the primary python3 provider at the end.
-%pythons %{?!skip_python3:%{?!skip_python310:python310} %{?!skip_python312:python312} %{?!skip_python313:python313} %{?!skip_python311:python311}}
+%pythons %{?!skip_python3:%{?!skip_python312:python312} %{?!skip_python313:python313} %{?!skip_python311:python311}}
 %add_python() %{expand:%%define pythons %1 %pythons}
 
 %_without_python2 1

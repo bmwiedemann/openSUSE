@@ -41,6 +41,7 @@ Patch0001:  0001-drbd-Fix-memory-leak.patch
 # suse special patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
+Patch1003:  boo1235399-fix_the_warning_of_blk_validate_limits.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py

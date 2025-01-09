@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:46:28 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.4.1
+  * Changes
+    - Fix Dockerfile (#3335)
+
+-------------------------------------------------------------------
+Tue Jan  7 08:39:20 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.4.0
+
+  Rerun gerbera --create-config="Boxlayout|DynamicContainer"
+  and merge changes to the boxlayout and containers the get support for upnp shortcut list feature.
+
+  There are some noteworthy new features in this release:
+  - the search page: Query your database with UPnP search statements in Web UI,
+  - the dark mode for the Web UI,
+  - access permissions for files: Restrict access to directories via client groups,
+  - support for UPnP filters in requests,
+  - support for UPnP CONTAINER_SHORTCUTS feature.
+
+  * NEW Features
+    - Configuration of ui handler to allow hosting of docs and doxygen output
+    - Support for UPnP filters
+    - Support for UPnP shortcuts
+    - Search page in web UI
+    - Command line options --create-config and --create-example-config support arguments
+    - Provide packages for Ubuntu-24.10
+    - Allow deleting of client entries immediately
+  * FIXES
+    - Logic exceptions are reported
+    - Handling of logging command line options
+    - Handling of checkbox values on web ui
+    - Access to cache option if thumbnailer is disabled
+    - Container creation in web ui
+    - Handling of multi-valued tags in virtual paths
+    - Increase of pupnp threadpool size
+    - Drop Build Support for Ubuntu 23.04 and 23.10
+  * Code Improvements
+    - Build without ffmpeg leaves option unset
+    - Compatibility with ffmpeg > 6.0
+    - Logging of build info with --compile-info
+    - Update versions of libpupnp (1.14.20), spdlog (1.15.0)
+    - Update Build Environment
+    - Update versions of js vendor files jquery-ui (v1.13.2 -> v1.14.1), js-cookie (v3.0.1 -> v3.0.5), @popperjs/core (v2.11.6 -> v2.11.8)
+  * Changes
+    - Gerbera 2.4.0 (#3330)
+    - Fix Artist Image in Virtual Layout (#3333)
+    - Set correct image size for xx-large pictures (#3332)
+    - Enhance xsd (#3329)
+    - Validate XSD CI workflow (#3328)
+    - Gerbera welcomes 2025 (#3327)
+    - Fix container filters (#3325)
+    - Handle int parse error in config (#3324)
+    - Debian: pack postinst file (#3320)
+    - Fix SIMPLE_DATE (#3318)
+    - Mention systemd as optional package (#3317)
+    - Web UI: Add dark mode (#3309)
+    - Fix config2.xsd: The QName value upnp-properties does not resolve to … (#3314)
+    - Dynamic banner colour in Readme (#3308)
+    - Update build for openSuSE (#3307)
+    - Fix parsing enum config values (#3304)
+    - Update docker settings (#3301)
+    - Clients: Support deleting entries (#3299)
+    - Debian: create changelog file (#3297)
+    - Fix systemd detection (#3295)
+    - ConfigGenerator: Export defaults for more entries (#3293)
+    - UPnP filters: provided defaults for filter properties (#3292)
+    - Scripting: Clean up property handling (#3290)
+    - Update and refactor MySQL code (#3289)
+    - Improve compile info contents (#3286)
+    - actions: clang-format 18 (#3257)
+    - deps: Fix build with ffmpeg 6.1 (#3256)
+    - Fix CodeQL messages (#3285)
+    - Config: Unify path handling (#3282)
+    - Add workflow for Release Drafter (#3277)
+    - Test: Fix CMake commands (#3284)
+    - Drop Build Support for Ubuntu 23.04 (#3283)
+    - Web UI: Cleanup display of item number (#3280)
+    - Handle broken ContainerImage (#3278)
+    - Update Release Template (#3276)
+    - Drop Build Support for Ubuntu 23.10 (#3275)
+    - Update js vendor files (#3274)
+    - Add variables to docker images (#3267)
+    - Fix Handling command line options (#3273)
+    - UPnP Shortcuts feature (#3261)
+    - Access permissions for files by client (#3255)
+    - Fix autoscan issue with empty filename (#3254)
+    - Update Build Environment (#3252)
+    - Resource directory configuration and cleanup collection (#3251)
+    - Bump cookie, express and socket.io in /gerbera-web (#3249)
+    - Web UI: Fix detail display (#3247)
+    - Increase size of pupnp threadpool (#3244)
+    - Web UI: Add Search page (#3242)
+    - Improve handling multivalue tags in virtual paths (#3241)
+    - Fix creating containers in web ui (#3240)
+    - UPnP: Add support for filters (#3233)
+    - Fix access to cache option if thumbnailer disabled (#3232)
+    - Fix build without ffmpeg (#3231)
+    - Fix handling of checkbox values on web ui (#3229)
+    - Config: UI handler mimetypes and CSP (#3227)
+    - Bump master (#3226)
+
+- Fix some errors in post section from spec file.
+- Fix rights for config and log directories and files.
+- Fix wrong group in gerbera.sysusers.in
+- Move sqlite gerbera.db from /etc/gerbera to /var/lib/gerbera for new installations.
+
+-------------------------------------------------------------------
+Mon Dec 30 07:40:57 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove fmt <11.1 requirements since spdlog now builds fine with it.
+
+-------------------------------------------------------------------
+Fri Dec 27 12:10:21 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Fix build error with fmt version. gerbera does not build with fmt >= 11.1
+  Upstream spdlog version 1.15.0 use bundled fmt version 11.0.2.
+- Add some hints to config.xml.
+
+-------------------------------------------------------------------
 Mon Nov 18 12:16:42 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Create config.xml automatically in the psot section,

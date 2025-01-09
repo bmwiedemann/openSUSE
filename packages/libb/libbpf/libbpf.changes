@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 18 09:55:26 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Drop libbpf-Fix-NULL-pointer-dereference-in-bpf_object__c.patch
+  * included since 1.4.0
+
+-------------------------------------------------------------------
 Wed Oct 30 15:59:44 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 1.5.0:
@@ -68,6 +74,13 @@ Tue Jun  4 06:10:48 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 - update to 1.4.3:
   * Fix libbpf unintentionally dropping FD_CLOEXEC flag when (internally)
     duping FDs
+
+-------------------------------------------------------------------
+Tue May 21 07:07:12 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Fix null pointer dereference in bpf_object__collect_prog_relos()
+  (bsc#1221101)
+  * Add libbpf-Fix-NULL-pointer-dereference-in-bpf_object__c.patch
 
 -------------------------------------------------------------------
 Sat May 11 07:03:51 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>

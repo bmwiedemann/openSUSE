@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-devtools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           gstreamer-devtools
-Version:        1.24.10
+Version:        1.24.11
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later

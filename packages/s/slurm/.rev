@@ -1583,4 +1583,41 @@
     flags are also set: `scheduler_unset`, `scheduled_on_submit`, (forwarded request 1220075 from eeich)</comment>
     <requestid>1220076</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>764e17bc4a62dab1d3ca0081505f3719</srcmd5>
+    <version>24.11.0</version>
+    <time>1736431642</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.11
+  * `slurmctld` - Reject arbitrary distribution jobs that do not
+    specifying a task count.
+  * Fix backwards compatibility of the `RESPONSE_JOB_INFO RPC`
+    (used by `squeue`, `scontrol show job`, etc.) with Slurm clients
+    version 24.05 and below. This was a regression in 24.11.0rc1.
+  * Do not let `slurmctld`/`slurmd` start if there are more nodes
+    defined in `slurm.conf` than the maximum supported amount
+    (64k nodes).
+  * `slurmctld` - Set job's exit code to 1 when a job fails with
+    state `JOB_NODE_FAIL`. This fixes `sbatch --wait` not being able
+    to exit with error code when a job fails for this reason in
+    some cases.
+  * Fix certain reservation updates requested from 23.02 clients.
+  * `slurmrestd` - Fix populating non-required object fields of
+    objects as `{}` in JSON/YAML instead of `null` causing compiled
+    OpenAPI clients to reject the response to
+    `GET /slurm/v0.0.40/jobs` due to validation failure of
+    `.jobs[].job_resources`.
+  * Fix issue where older versions of Slurm talking to a 24.11 dbd
+    could loose step accounting.
+  * Fix minor memory leaks.
+  * Fix bad memory reference when `xstrchr` fails to find char.
+  * Remove duplicate checks for a data structure.
+  * Fix race condition in `stepmgr` step completion handling.
+  * `slurm.spec` - add ability to specify patches to apply on the
+    command line.
+  * `slurm.spec` - add ability to supply extra version information.
+  * Fix 24.11 HA issues.
+  * Fix requeued jobs keeping their priority until the decay thread (forwarded request 1235783 from eeich)</comment>
+    <requestid>1235784</requestid>
+  </revision>
 </revisionlist>

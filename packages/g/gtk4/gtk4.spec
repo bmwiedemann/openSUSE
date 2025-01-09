@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.16.7
+Version:        4.16.12
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later

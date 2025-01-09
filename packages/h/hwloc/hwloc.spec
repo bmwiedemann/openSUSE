@@ -1,7 +1,7 @@
 #
 # spec file for package hwloc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,12 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.10.0
+Version:        2.11.2
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 URL:            https://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.10/hwloc-%{version}.tar.bz2
+Source0:        https://download.open-mpi.org/release/hwloc/v2.11/hwloc-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -62,7 +62,7 @@ Requires:       %{lname} = %{version}-%{release}
 Requires:       perl-JSON
 Requires:       perl-base >= 5.18.2
 Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
+Requires(postun): desktop-file-utils
 %{?systemd_ordering}
 
 %description

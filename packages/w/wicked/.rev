@@ -1974,4 +1974,20 @@
   [- 0002-systemd-use-Bindsto-in-favor-of-Requisite-bsc-1229745.patch]</comment>
     <requestid>1218265</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>90ab0ffc03e5566e00ad002652f86320</srcmd5>
+    <version>0.6.78</version>
+    <time>1736431544</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.78
+  - man: small fixes in wireless manpage (gh#opensuse/wicked#1053)
+  - rtnetlink: fix RTM_NEWLINK name resolution in debug (gh#opensuse/wicked#1052)
+  - Add support for IPVLAN/IPVTAP (jsc#PED-1942, gh#opensuse/wicked#1050, gh#opensuse/wicked#1051)
+  - fsm: remove children reference array from worker (gh#opensuse/wicked#1049)
+  - ifxml: migrate and generate lower configs/policies (gh#opensuse/wicked#1048)
+  - fsm: use refcount and array macros in worker and policy (gh#opensuse/wicked#1047)
+  - route: use refcounted array and fix error leaks (gh#opensuse/wicked#1046)
+  - utils: add support for refcounted objects in generic array (gh#openSUSE/wicked#1045)</comment>
+    <requestid>1235890</requestid>
+  </revision>
 </revisionlist>

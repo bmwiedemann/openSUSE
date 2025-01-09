@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 09:10:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build package as noarch: ifarch and noarch logically cannot
+  be combined and with RPM 4.20 they clash for real.
+
+-------------------------------------------------------------------
 Thu Oct  3 09:42:05 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - The wallpapers-openSUSE-extra complete the distribution wallpaper

@@ -1,7 +1,7 @@
 #
 # spec file for package exo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,6 @@ This package provides the helpers data for exo.
 Summary:        Application Development Library for Xfce
 Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
-Requires:       perl-URI
 Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-tools
 Obsoletes:      libexo-1-0
@@ -157,4 +156,3 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_datadir}/gtk-doc/html/exo-2/
 
 %changelog
-

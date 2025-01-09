@@ -1,0 +1,25 @@
+From 4ecb776ed6b75d326624281b50f0a11adeca2e58 Mon Sep 17 00:00:00 2001
+From: Robert Altnoeder <robert.altnoeder@linbit.com>
+Date: Wed, 20 Nov 2024 18:44:19 +0100
+Subject: [PATCH 04/12] DRBDmon: Adjust events log supplier program name
+
+---
+ user/drbdmon/subprocess/EventsSourceSpawner.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/user/drbdmon/subprocess/EventsSourceSpawner.cpp b/user/drbdmon/subprocess/EventsSourceSpawner.cpp
+index 20fa13bec0d8..1b50aa23b6d6 100644
+--- a/user/drbdmon/subprocess/EventsSourceSpawner.cpp
++++ b/user/drbdmon/subprocess/EventsSourceSpawner.cpp
+@@ -21,7 +21,7 @@ const char* const EventsSourceSpawner::EVENTS_PROGRAM_ARGS[] =
+     "all",
+     nullptr
+ };
+-const char* const EventsSourceSpawner::SAVED_EVENTS_PROGRAM = "eventsfeeder";
++const char* const EventsSourceSpawner::SAVED_EVENTS_PROGRAM = "drbd-events-log-supplier";
+ 
+ EventsSourceSpawner::EventsSourceSpawner(MessageLog& logRef):
+     log(logRef)
+-- 
+2.43.0
+

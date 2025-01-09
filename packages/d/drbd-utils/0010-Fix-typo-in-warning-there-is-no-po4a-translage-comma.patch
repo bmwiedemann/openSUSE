@@ -1,0 +1,25 @@
+From ee3ab4a67f15fadff72995e45defcbf1e944c9bd Mon Sep 17 00:00:00 2001
+From: Ulf 'Tiggi' Tigerstedt <ulf.tigerstedt@csc.fi>
+Date: Mon, 16 Dec 2024 15:54:37 +0200
+Subject: [PATCH 10/12] Fix typo in warning, there is no po4a-translage command
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 630163cee103..4377f3c24a08 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -332,7 +332,7 @@ else
+ fi
+ 
+ if test -z $PO4A_TRANSLATE; then
+-   AC_MSG_WARN([Cannot build man pages without po4a-translage. You may safely ignore this warning when building from a tarball.])
++   AC_MSG_WARN([Cannot build man pages without po4a-translate. You may safely ignore this warning when building from a tarball.])
+    dnl default to some sane value at least,
+    dnl so the error message about command not found makes sense
+    PO4A_TRANSLATE=po4a-translate
+-- 
+2.43.0
+

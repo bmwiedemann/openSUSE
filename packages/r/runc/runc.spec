@@ -1,7 +1,7 @@
 #
 # spec file for package runc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 0d37cfd4b557771e555a184d5a78d0ed4bdb79a5
-%define git_short   0d37cfd4b557
+%define git_version 6c52b3fc541fb26fe8c374d5f58112a0a5dbda66
+%define git_short   6c52b3fc541f
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.2.3
+Version:        1.2.4
 %define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers

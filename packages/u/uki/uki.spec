@@ -1,7 +1,7 @@
 #
 # spec file for package uki
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -203,7 +203,7 @@ else
 fi
 cert_file=$(basename %{cert_install_dir}/%{efi_name}-*.crt)
 cert_file_p="%{cert_install_dir}/${cert_file}"
-if test "$entry_added" = "1" -a -f ${cert_file_p} ]; then
+if test "$entry_added" = "1" -a -f ${cert_file_p} ; then
     echo -e "\033[0;32mTo enroll the uki certificate key please run:\033[0m"
     echo -e "\033[0;32mmokutil \
 --import ${cert_file_p}\033[0m"

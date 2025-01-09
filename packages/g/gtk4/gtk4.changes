@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  3 21:18:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.16.12:
+  + Switch to the new release process.
+- Changes from version 4.16.8:
+  + GtkFileChooser: Fix a focus problem with the server entry.
+  + GtkEmojiChooser: Update to CLDR 46 / Unicode 16.
+  + GtkAboutDialog: Small improvements.
+  + Wayland:
+    - Fix some Vulkan sizing corner cases.
+    - Fix problems with rotated, offloaded images.
+    - Fix a few crashes.
+  + Demos: Don't create extra windows for D-Bus activation.
+
+-------------------------------------------------------------------
 Sun Nov 24 10:12:30 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.16.7:

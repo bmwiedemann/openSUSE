@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cerberus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define	skip_python2	1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Cerberus
-Version:        1.3.5
+Version:        1.3.7
 Release:        0
 Summary:        Extensible schema and data validation tool for Python dictionaries
 License:        ISC

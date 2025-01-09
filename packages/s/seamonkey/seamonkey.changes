@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Tue Jan 07 13:14:58 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.20
+  * Use Services.focus for bookmarking from mailnews in SeaMonkey bug
+    1925033.
+  * Replace the Bookmark Manager with the Firefox Library in
+    SeaMonkey: Another followup bug bug 1932731.
+  * Port bug 1458385 - Update SeaMonkey's confvars.sh bug 1913633.
+  * Tidy up channels code in cZ bug 1920565.
+  * Sometimes tag data from an IRC server doesn't contain a pair bug
+    1923211.
+  * Fix call to updateUsers in network onAway in cZbug 1923213.
+  * Remove unused XTLabelRecord from tree-utils.js in cZbug 1923215.
+  * Remove unused code from connection-xpcom.js in cZbug 1923219.
+  * Remove unusued code from utils.js in cZbug 1923221.
+  * Switch from using arrayContains helper to using JS Array includes
+    method in cZ bug 1923224.
+  * Switch from using arrayIndexOf helper to using JS Array includes
+    and indexOf methods in cZ bug 1923225.
+  * Switch from using arrayRemoveAt and arrayInsertAt helpers to using
+    JS Array splice and unshift methods in cZbug 1923227.
+  * Switch from using stringTrim helper to using JS string trim method
+    in cZ bug 1923229.
+  * Inline newObject function in cZ bug 1924338.
+  * Remove getWindowByType function from cZ bug 1924586.
+  * Inline viewCert function in cZ bug 1924587.
+  * Remove getSpecialDirectory function and use Services.dirsvc in cZ
+    bug 1924588.
+  * Remove getNSSErrorClass function and tidy up NSS related code in
+    cZ bug 1924589.
+  * Tidy message manager code in cZ bug 1924592.
+  * Remove getService helper and tidy up code around its callers in cZ
+    bug 1924595.
+  * Remove use of NSGetModule in cZ bug 1925871.
+  * Tidy up chatzilla-service.js bug 1926406.
+  * Use Intl.DateTimeFormat in cZ's strftime function bug 1927348.
+  * Remove unused code from pref-manager.js in cZ bug 1927370.
+  * Use Services.scriptloader in cZ bug 1927374.
+  * Use more Services in cZ bug 1927376.
+  * Tidy up some Components.* code in static.js in cZ bug 1927377.
+  * Switch to using listbox instead of tree for cZ chat window bug
+    1927582.
+  * Away status isn't reflected correctly in channel userlist in cZ
+    bug 1928749.
+  * Fix too much recursion and missing variable in cmdSave in cZ bug
+    1930391.
+  * Replace confirm helper with Services.prompt.confirm in cZ bug
+    1930396.
+  * Use Services.prompt in confirmEx, prompt and promptPassword
+    helpers in cZ bug 1930540.
+  * Use Services.prompt.alert and remove alert helper in cZ bug
+    1931705.
+  * Simplify getListFIle in cZ bug 1931707.
+  * Remove various const from file-utils.js in cZ bug 1931708.
+  * Remove unused 2nd argument from mkdir helper in file-utils.js in
+    cZ bug 1931709.
+  * Use LocalFile directly rather via helper fopen in cZ bug 1931710.
+  * Tidy up picker code in file-utils.js in cZ bug 1931712.
+  * Remove unnecessary type attributes in cZ bug 1933043.
+  * Clean up Components usage in cZ bug 1933081.
+  * Remove unused encodeForXMLAttribute function for cZ utils.js bug
+    1933083.
+  * Move renameProperty helper into lib/irc.js for cZ bug 1933084.
+  * Move formatDateOffset helper into handlers.js in cZ bug 1933085.
+  * Move objectContains helper into command-manager.js in cZ bug
+    1933086.
+  * Move splitLongWord helper into mungers.js in cZ bug 1933087.
+  * Move randomString helper into commands.js in cZ bug 1933089.
+  * Move Clone helper into commands.js in cZ bug 1933090.
+  * Move equalsObject helper into channels.js in cZ bug 1933092.
+  * Move matchEntry helper into static.js in cZ bug 1933093.
+  * Move getCommonPfx helper to handlers.js in cZ bug 1933342.
+  * Remove some code duplication in getSISize and getSISpeed helpers
+    and improve coding in scaleNumbersBy1024 in cZ bug 1933346.
+  * UI: Link for download of Themes leads to Themes for Thunderbird
+    bug 1656564.
+  * Add ESR 128 links to debugQA bug 1909855.
+  * Port changes needed from |Bug 1476333 - Consolidate the ways that
+    we reference "browser.xul" across the tree| to SeaMonkey bug
+    1911841.
+  * Switch from boxObject to getBoundingClientRect in utilityOverlay
+    bug 1911844.
+  * Align the SeaMonkey switchToTabHavingURI() call syntax with
+    Firefox and toolkit bug 1925037.
+  * Empty out SeaMonkey's removed-files.in (port bug 1392913) bug
+    1913579.
+  * Update SeaMonkey installer to register as handler for media types
+    bug 1925023.
+  * Remove obsolete chat services from SeaMonkey address book part2
+    bug 1909853.
+  * Add UI for browser.display.prefers_color_scheme to the SeaMonkey
+    colors prefpane bug 1909743.
+  * Update SeaMonkey wikipedia icon bug 1925021.
+  * Show specific placeholders for bookmarks and history in SeaMonkey
+    sidebar search bug 1925025.
+  * Adjust dragOver method of tabbrowser.xml to be closer to Firefox
+    version bug 1911845.
+  * Avoid boxObject where appropriate in tabbrowser bug 1911847.
+  * Simplify tab drop indicator code and styling bug 1911848.
+  * SeaMonkey 2.53.20 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.20 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 115.19
+    and Thunderbird 115.19 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- Adapt seamonkey-man-page.patch for SeaMonkey 2.53.20
+- Adapt seamonkey-GNUmakefile to set MOZBUILD_STATE_PATH and to fix
+  post-configure stamping per
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1692516#c13
+- Update minimum build requirements for SeaMonkey 2.53.20
+- Remove .mozconfig options no longer recognized in SeaMonkey 2.53.20
+- request inclusion in Leap 15.6:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1235392
+
+-------------------------------------------------------------------
 Mon Nov 25 02:49:51 UTC 2024 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - disable --with-system-icu on Tumbleweed due to

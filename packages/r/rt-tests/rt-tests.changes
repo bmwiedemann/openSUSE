@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:29:37 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.8:
+  https://lore.kernel.org/linux-rt-users/20241128215059.40116-1-jkacur@redhat.com/
+
+-------------------------------------------------------------------
+Wed Jan  8 09:26:56 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Revert back to tar.gz from git.kernel.org (2.7 was moved to "older" subfolder
+  in https://mirrors.kernel.org, it shows it's not stable URL).
+
+-------------------------------------------------------------------
 Tue Jul 23 10:03:04 UTC 2024 - Petr Vorel <pvorel@suse.cz>
 
 - Fix archive URL
@@ -25,7 +37,7 @@ Tue Apr 18 08:23:24 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
   * 0001-cyclictest-Fix-threads-being-affined-even-when-a-isn.patch
   * 0002-rt-tests-Remove-arbitrary-num-of-threads-limits.patch
   * 0003-rt-tests-hackbench-Add-error-checking-to-connect-and.patch
-  * 0004-rt-tests-hwlatdetect-Update-to-integer-division.patch 
+  * 0004-rt-tests-hwlatdetect-Update-to-integer-division.patch
 
 -------------------------------------------------------------------
 Fri Nov 25 09:19:51 UTC 2022 - Martin Pluskal <mpluskal@suse.com>

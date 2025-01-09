@@ -18,7 +18,7 @@
 
 
 Name:           nestopia
-Version:        1.52.1
+Version:        1.53.0
 Release:        0
 Summary:        Nintendo Entertainment System/Famicom emulator
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 

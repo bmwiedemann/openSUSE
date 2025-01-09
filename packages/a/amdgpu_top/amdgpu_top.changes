@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  6 09:44:35 UTC 2025 - Marek Sapota <marek@sapota.org>
+
+- Add missing runtime requirements.
+  * libwayland-egl1
+  * libxkbcommon0
+  * Fixes boo#1235098
+
+-------------------------------------------------------------------
 Sun Jan  5 03:28:43 UTC 2025 - Marek Sapota <marek@sapota.org>
 
 - Update to version 0.10.1

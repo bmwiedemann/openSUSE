@@ -1,7 +1,7 @@
 #
 # spec file for package rt-tests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           rt-tests
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Realtime Kernel Testsuite
 License:        GPL-2.0-only
 Group:          System/Benchmark
 URL:            https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git
-Source0:        https://mirrors.kernel.org/pub/linux/utils/rt-tests/rt-tests-%{version}.tar.xz
+Source0:        https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/snapshot/rt-tests-%{version}.tar.gz
 BuildRequires:  libnuma-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base

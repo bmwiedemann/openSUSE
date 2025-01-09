@@ -1,0 +1,111 @@
+From e73c4ca4aec9c2f3e3556d45f2330d8ed9edc7e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 7 Jan 2025 17:44:24 +0100
+Subject: [PATCH 3/3] Enforce use of setfsuid
+
+---
+ autoconf/configure.ac |  9 +++++++++
+ src/config.hin        |  2 ++
+ src/slinclud.h        |  4 ++++
+ src/sltermin.c        | 28 ++++++++++++++++++++++++++++
+ 4 files changed, 43 insertions(+)
+
+diff --git a/autoconf/configure.ac b/autoconf/configure.ac
+index 4f8d184..c027289 100644
+--- a/autoconf/configure.ac
++++ b/autoconf/configure.ac
+@@ -177,9 +177,18 @@ sys/socket.h \
+ netinet/in.h \
+ arpa/inet.h \
+ sys/un.h \
++sys/fsuid.h \
+ sys/resource.h \
+ )
+ 
++AC_CHECK_FUNCS(setfsuid setfsgid)
++
++if test "${ac_cv_func_setfsuid}" != "yes" || test "${ac_cv_func_setfsgid}" != "yes"; then
++    AC_MSG_ERROR([
++*** setfsguid and setfsgid cannot be found!!!
++    These are needed to support setuid/setgid applications ***])
++fi
++
+ AC_TYPE_MODE_T
+ AC_TYPE_PID_T
+ AC_TYPE_UID_T
+diff --git a/src/config.hin b/src/config.hin
+index 1348e89..f0748f0 100644
+--- a/src/config.hin
++++ b/src/config.hin
+@@ -202,6 +202,8 @@
+ #undef HAVE_SYS_UN_H
+ #undef socklen_t
+ 
++#undef HAVE_SYS_FSUID_H
++#undef HAVE_SETFSUID
+ #undef HAVE_CONFSTR
+ #undef HAVE_SYSCONF
+ #undef HAVE_PATHCONF
+diff --git a/src/slinclud.h b/src/slinclud.h
+index 27bfc95..6ea1242 100644
+--- a/src/slinclud.h
++++ b/src/slinclud.h
+@@ -30,4 +30,8 @@
+ # include <memory.h>
+ #endif
+ 
++#ifdef HAVE_SYS_FSUID_H
++# include <sys/fsuid.h>
++#endif
++
+ #endif				       /* _SLANG_INCLUDE_H_ */
+diff --git a/src/sltermin.c b/src/sltermin.c
+index 20784e2..dd01596 100644
+--- a/src/sltermin.c
++++ b/src/sltermin.c
+@@ -23,6 +23,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+ USA.
+ */
+ 
++#include <unistd.h>
++#include <sys/types.h>
++
+ #include "slinclud.h"
+ 
+ #include "slang.h"
+@@ -168,7 +171,32 @@ static FILE *open_terminfo (char *file, SLterminfo_Type *h)
+     * I will also look into the use of setreuid, seteuid and setregid, setegid.
+     * FIXME: Priority=medium
+     */
++   /* If your system lacks setfsuid/getfsuid either write
++      equivalent support or dont use slang to build setuid/setgid
++      apps like Mutt */
++
++   if(setfsuid(getuid())==-1)
++   {
++       perror("setfsuid");
++       return NULL;
++   }
++   if(setfsgid(getgid())==-1)
++   {
++       perror("setfsgid");
++       return NULL;
++   }
+    fp = fopen (file, "rb");
++   if(setfsuid(geteuid())==-1)
++   {
++       perror("setfsuid");
++       return NULL;
++   }
++   if(setfsgid(getegid())==-1)
++   {
++       perror("setfsgid");
++       return NULL;
++   }
++
+    if (fp == NULL) return NULL;
+ 
+    if (12 != fread ((char *)buf, 1, 12, fp))
+-- 
+2.47.1
+

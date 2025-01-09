@@ -69,20 +69,11 @@ Index: sys/unix/Makefile.top
  SHELLDIR = $(PREFIX)/games
  
  # per discussion in Install.X11 and Install.Qt
-@@ -48,7 +48,7 @@ VARDATND =
- # for BeOS
- # VARDATND = beostiles
- # for Gnome
--# VARDATND = x11tiles pet_mark.xbm rip.xpm mapbg.xpm
-+VARDATND = x11tiles pet_mark.xbm rip.xpm mapbg.xpm
- 
- VARDATD = data oracles options quest.dat rumors
- VARDAT = $(VARDATD) $(VARDATND)
 Index: include/config.h
 ===================================================================
 --- include/config.h.orig
 +++ include/config.h
-@@ -143,16 +143,16 @@
+@@ -143,10 +143,10 @@
  
  #ifndef WIZARD		/* allow for compile-time or Makefile changes */
  # ifndef KR1ED
@@ -95,13 +86,6 @@ Index: include/config.h
  # endif
  #endif
  
- #define LOGFILE "logfile"	/* larger file for debugging purposes */
- #define NEWS "news"		/* the file containing the latest hack news */
--#define PANICLOG "paniclog"	/* log of panic and impossible events */
-+/* #define PANICLOG "paniclog" */	/* log of panic and impossible events */
- 
- /*
-  *	If COMPRESS is defined, it should contain the full path name of your
 @@ -185,7 +185,7 @@
   *	a tar-like file, thus making a neater installation.  See *conf.h
   *	for detailed configuration.
@@ -197,3 +181,25 @@ Index: sys/unix/nethack.sh
  MAXNROFPLAYERS=4
  
  # Since Nethack.ad is installed in HACKDIR, add it to XUSERFILESEARCHPATH
+Index: doc/nethack.6
+===================================================================
+--- doc/nethack.6.orig
++++ doc/nethack.6
+@@ -197,7 +197,7 @@ option, which must be the first argument
+ supplies a directory which is to serve as the playground.
+ It overrides the value from NETHACKDIR, HACKDIR,
+ or the directory specified by the game administrator during compilation
+-(usually /usr/games/lib/nethackdir).
++(usually /usr/share/games/nethack).
+ This option is usually only useful to the game administrator.
+ The playground must contain several auxiliary files such as help files,
+ the list of top scorers, and a subdirectory
+@@ -283,7 +283,7 @@ MAIL	Mailbox file.
+ .br
+ MAILREADER	Replacement for default reader
+ .br
+-	(probably /bin/mail or /usr/ucb/mail).
++	(probably /usr/bin/mail).
+ .br
+ NETHACKDIR	Playground.
+ .br

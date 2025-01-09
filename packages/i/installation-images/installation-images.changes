@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Wed Jan 8 12:37:51 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#749
+- fix zram setup taking new module dependencies into account
+  (bsc#1235440)
+- 17.148
+
+--------------------------------------------------------------------
+Wed Jan 8 10:58:03 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#748
+- etc: update module.config to match 6.13
+- 17.147
+
+--------------------------------------------------------------------
 Thu Nov 28 11:39:14 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#746

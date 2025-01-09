@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Tue Jan  7 18:01:56 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -Denable_wldisplays=false to build.
+  * wdisplays is already packaged and available in :Factory, added
+    Requires: to package for the already packaged wdisplays
+- Remove deprecated %suse_update_desktop_file from the %install
+  section
+
+-------------------------------------------------------------------
+Sun Jan  5 17:43:04 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to pkgconfig(wlroots) >= 0.17.0
+  * Build is choking, because there are three versions of wlroots
+    available
+
+-------------------------------------------------------------------
+Mon Aug 26 03:55:55 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.9.0:
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Mon Oct 09 05:58:44 UTC 2023 - dead_mozay@opensuse.org
+
+- Update to version 0.8.0:
+  * `PluginPage`: set_scrollable(true), s.t. it looks ok with panel config page (there are many groups) (#63)
+  * make wcm search user directories for icons (#61)
+  * Added LXQt-shell plugin icon (#60)
+  * Center plugins description (#59)
+  * XKB layouts option: suggest available layouts in the context menu (#58)
+  * plugin name label: set_justify(center) (#57)
+  * Make color button editor show alpha slider (#56)
+  * Fix ordering of combo boxes (#53)
+  * Present window when wcm is run again (#50)
+  * add 'config' and 'shell-config' command line options (#49)
+  * vswitch bindings dynamic list widget (#46)
+  * make buttons on main page be the same size (old behavior) (#45)
+  * Add vertical spacing around separators on the main page
+  * change window defaut size; set min children per line for flowbox
+  * fix: show command name for empty commands
+  * expand `BindingWidget` when command is empty
+  * use `#pragma once` instead of `#ifndef/#define/#endif`
+  * `KeyEntry::check_and_confirm`: fix condition for showing dialog
+  * Enabling/disabling plugins
+  * `BindingWidget`: adding new binding
+  * `BindingWidget`: removing
+  * `BindingWidget`: changing binding type
+  * Saving; Fix KeyEntry modifiers names; Autostart: add/remove
+  * Init pointers with nullptr: doesn't work sometimes without it
+  * update screenshot; add tooltips in `AutostartWidget`
+  * abstract KeyEntry from Option; reset button now do something
+  * key grab: fix grabbing Esc and Tab
+  * use Gtk::SearchEntry
+  * key grab
+  * key entry: no modifiers confirm dialog
+  * file chooser dialogs; better dynamic lists
+  * Command widget; better key entry widget
+  * Saving and dynamic list options prototyping
+  * fix Gdk::RGBA initializing
+  * rewrite to gtkmm and refactor: without saving
+  * Respect defaults from defaults.ini if it exists
+  * Add transition animation (#38)
+  * Add new icons to `meson.build` (#37)
+  * Add more icons
+  * Change icon "back" to "go-previous" (#34)
+  * Reset colors for all formats (#36)
+  * Only open wdisplays with specific keys when widget is focused
+  * autostart: fix support for dynamic lists (#31)
+
+-------------------------------------------------------------------
+Tue Jan 17 08:34:33 UTC 2023 - dead_mozay@opensuse.org
+
+- Update to version 0.7.5:
+  * Respect defaults from defaults.ini if it exists
+  * Add transition animation (#38)
+  * Add more icons
+  * Change icon "back" to "go-previous" (#34)
+  * Reset colors for all formats (#36)
+  * Only open wdisplays with specific keys when widget is focused
+  * autostart: fix support for dynamic lists (#31)
+  * Use better margin choices for left panel buttons
+
+-------------------------------------------------------------------
+Fri Dec  2 03:40:34 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update wlroots minimum version to spec. 
+
+-------------------------------------------------------------------
+Wed Nov 30 03:30:57 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Set wlroots max version to spec.  
+
+-------------------------------------------------------------------
+Wed Feb  3 04:38:04 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Mon Nov  9 06:47:33 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Mon Aug 17 06:41:10 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.5.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Thu Apr 30 05:13:39 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Remove _service 
+
+-------------------------------------------------------------------
+Mon Mar 23 05:31:01 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version v0.4.0:
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Mon Mar 23 05:30:47 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 

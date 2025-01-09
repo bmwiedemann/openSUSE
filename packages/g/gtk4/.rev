@@ -993,4 +993,12 @@ New upstream release</comment>
     - Fix an invalid free call. (forwarded request 1226072 from iznogood)</comment>
     <requestid>1226292</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>46fd4d013905380aa17eb85884008e10</srcmd5>
+    <version>4.16.12</version>
+    <time>1736431454</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235445</requestid>
+  </revision>
 </revisionlist>

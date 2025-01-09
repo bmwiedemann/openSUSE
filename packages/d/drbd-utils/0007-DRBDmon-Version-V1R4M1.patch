@@ -1,0 +1,24 @@
+From 17c3bc04145900b0039a686b4e2cc28f9d5f3859 Mon Sep 17 00:00:00 2001
+From: Robert Altnoeder <robert.altnoeder@linbit.com>
+Date: Mon, 4 Nov 2024 19:13:46 +0100
+Subject: [PATCH 07/12] DRBDmon: Version V1R4M1
+
+---
+ user/drbdmon/DrbdMonConsts.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/user/drbdmon/DrbdMonConsts.cpp b/user/drbdmon/DrbdMonConsts.cpp
+index 6b130db93156..5135d636bd2a 100644
+--- a/user/drbdmon/DrbdMonConsts.cpp
++++ b/user/drbdmon/DrbdMonConsts.cpp
+@@ -7,6 +7,6 @@ extern "C"
+ }
+ 
+ const std::string DrbdMonConsts::PROGRAM_NAME       = "DRBDmon";
+-const std::string DrbdMonConsts::PROJECT_VERSION    = "V1R4M0";
++const std::string DrbdMonConsts::PROJECT_VERSION    = "V1R4M1";
+ const std::string DrbdMonConsts::UTILS_VERSION      = PACKAGE_VERSION;
+ const std::string DrbdMonConsts::BUILD_HASH         = GITHASH;
+-- 
+2.43.0
+

@@ -70,4 +70,38 @@
     <comment></comment>
     <requestid>1199129</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3297e3f4acf9e06a78941e2a462be22c</srcmd5>
+    <version>1.29.0</version>
+    <time>1736431795</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.29.0
+  * Fix crash exporting a log record with None body
+  * Fix metrics export with exemplar and no context and filtering observable instruments
+  * Fix recursion error with sdk disabled and handler added to root logger
+  * sdk: setup EventLogger when OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED is set
+  * api: fix logging of duplicate EventLogger setup warning
+  * sdk: fix setting of process owner in ProcessResourceDetector
+  * sdk: fix serialization of logs severity_number field to int
+  * Remove `TestBase.assertEqualSpanInstrumentationInfo` method,
+    use `assertEqualSpanInstrumentationScope` instead
+  * sdk: instantiate lazily `ExemplarBucket`s in `ExemplarReservoir`s
+  * semantic-conventions: Bump to 1.29.0
+- from version 1.28.0
+  * Removed superfluous py.typed markers and added them where they were missing
+  * Include metric info in encoding exceptions
+  * sdk: Add support for log formatting
+  * sdk: Add Host resource detector
+  * sdk: Implementation of exemplars
+  * Implement events sdk
+  * Update semantic conventions to version 1.28.0
+  * Add support to protobuf 5+ and drop support to protobuf 3 and 4
+  * Update environment variable descriptions to match signal
+  * Record logger name as the instrumentation scope name
+  * Fix memory leak in exporter and reader
+  * Drop `OTEL_PYTHON_EXPERIMENTAL_DISABLE_PROMETHEUS_UNIT_NORMALIZATION` environment variable
+  * Improve compatibility with other logging libraries that override
+    `LogRecord.getMessage()` in order to customize message formatting (forwarded request 1235902 from glaubitz)</comment>
+    <requestid>1235918</requestid>
+  </revision>
 </revisionlist>

@@ -914,4 +914,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1229393</requestid>
   </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>930eb4088cfa22987b53ecd36e96dade</srcmd5>
+    <version>1.11.0</version>
+    <time>1736431452</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235881</requestid>
+  </revision>
 </revisionlist>

@@ -165,4 +165,19 @@
     <comment></comment>
     <requestid>1196054</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f33bea10ce8ee57a86791a91a2248ba9</srcmd5>
+    <version>1.52.0</version>
+    <time>1736431502</time>
+    <user>anag+factory</user>
+    <comment>- delete obsolete patch fix-configure-1171.patch
+- delete obsolete patch espeak-ng-CVE-2023-49990-49991-49992-49993-49994.patch
+- update to new version 1.52.0:
+ - added cmake build system
+ - Added stress marks to phoneme events
+ - a meny fixes to core C code
+ - many updated and new languages
+</comment>
+    <requestid>1235539</requestid>
+  </revision>
 </revisionlist>

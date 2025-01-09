@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 08 13:06:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.82:
+  * always set right provider in ee (#1868)
+  * fix heading (#1866)
+
+-------------------------------------------------------------------
 Mon Dec 30 15:23:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.81:

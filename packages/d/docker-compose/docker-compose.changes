@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 08 06:43:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.2:
+  * remove engine v25 from e2e test matrix The 1st version
+    available for Ubuntu 24.x is Docker Engine v26
+  * fix relative path in compose file
+  * bump compose-go to v2.4.7
+  * replace tibdex/github-app-token by official GitHub
+    create-github-app-token
+  * bump golang.org/x/net to v0.33.0 to fix potential security
+    issue https://github.com/golang/go/issues/70906
+  * checkExpectedVolumes must ignore anonymous volumes
+  * When retrying to resolveOrCreateNetwork, retry with a valid
+    network name
+  * only check bind mount conflict if sync action is involved
+  * use the 3 latest major versions of the engine to run e2e step
+  * bump Golang version to v1.22.10 and update CI actions
+  * add --pull to run command
+  * CI to validate fmt
+  * `make fmt` so any contributor can enforce formatting
+  * format code with gofumpt
+
+-------------------------------------------------------------------
 Tue Dec 17 05:42:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.1:

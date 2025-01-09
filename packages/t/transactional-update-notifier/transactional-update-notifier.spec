@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update-notifier
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022 Luciano Santos <luc14n0@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           transactional-update-notifier
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        A notifier for systems using transactional updates
 License:        GPL-3.0-only

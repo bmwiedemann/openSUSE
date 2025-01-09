@@ -2,7 +2,7 @@
 # spec file for package gpg2
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,13 +49,9 @@ Patch12:        gnupg-revert-rfc4880bis.patch
 Patch13:        gnupg-nobetasuffix.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
-%ifnarch loongarch64
-BuildRequires:  ibmswtpm2
-BuildRequires:  ibmtss-devel
-%endif
-BuildRequires:  libassuan-devel >= 2.5.0
-BuildRequires:  libgcrypt-devel >= 1.9.1
-BuildRequires:  libgpg-error-devel >= 1.46
+BuildRequires:  libassuan-devel >= 3.0.0
+BuildRequires:  libgcrypt-devel >= 1.11.0
+BuildRequires:  libgpg-error-devel >= 1.51
 BuildRequires:  libksba-devel >= 1.6.3
 BuildRequires:  makeinfo
 BuildRequires:  npth-devel >= 1.2
@@ -73,6 +69,10 @@ Provides:       gnupg = %{version}
 Provides:       gpg = 1.4.9
 Provides:       newpg
 Obsoletes:      gpg < 1.4.9
+%ifnarch loongarch64
+BuildRequires:  ibmswtpm2
+BuildRequires:  ibmtss-devel
+%endif
 
 %description
 GnuPG is a hybrid-encryption software program; it uses a combination

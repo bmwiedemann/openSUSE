@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:49:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2024.11
+  * Update torch hook to suppress creation of symbolic links to the 
+    top-level application directory
+  * Update sklearn.tree hook for compatibility with scikit-learn v1.6.0
+- Downloaded upstream conftest.py missing in the tarball
+
+-------------------------------------------------------------------
+Fri Dec 13 10:56:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 2024.10
+  * Add many hooks, updated many hooks.
+  * Released sdists and tagged GitHub source archives contain the 
+    changelog entries for their current release.
+  * See the complete changelog in CHANGELOG.rst.
+
+-------------------------------------------------------------------
 Tue Jan 30 17:57:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.0:

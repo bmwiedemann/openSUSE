@@ -17,7 +17,7 @@
 
 
 Name:           swipl
-Version:        9.3.15
+Version:        9.3.18
 Release:        0
 Summary:        Prolog Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,9 +26,6 @@ Source0:        https://www.swi-prolog.org/download/devel/src/swipl-%{version}.t
 Source98:       swipl-rpmlintrc
 # For SOURCE_DATE_EPOCH variable- reproducible builds
 Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM 104-fix-prolog_in_java.patch gh#SWI-Prolog/packages-jpl#104 mcepl@suse.com
-# Fix the wrong location of hamcrest location
-Patch0:         104-fix-prolog_in_java.patch
 BuildRequires:  cmake
 BuildRequires:  db-devel
 BuildRequires:  fdupes

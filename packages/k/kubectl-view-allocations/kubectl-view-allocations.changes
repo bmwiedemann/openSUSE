@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 08 06:37:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.2:
+  * :rocket: (cargo-release) version 0.20.2
+  * Update kube requirement from 0.97 to 0.98
+  * :arrow_up: Update itertools requirement from 0.13 to 0.14
+  * :arrow_up: Bump mozilla-actions/sccache-action from 0.0.6 to
+    0.0.7
+  * :arrow_up: Update kube requirement from 0.96 to 0.97
+  * :arrow_up: Update thiserror requirement from 1.0 to 2.0
+  * :arrow_up: Bump rajatjindal/krew-release-bot from 0.0.46 to
+    0.0.47
+
+-------------------------------------------------------------------
 Tue Nov 12 09:30:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.1:

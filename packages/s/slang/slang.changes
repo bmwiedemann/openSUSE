@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 07 16:37:11 UTC 2025 - kkaempf@suse.de
+
+- Update to version 2.3.3+git16.89d32bb:
+  * pre2.3.4-16: Removed unnecessary chack for a NULL string in keymap.c:find_the_key, and corrected a potential memory leak in the sltoken.c:compile_byte_compiled_multistring function
+  * pre2.3.4-15: Added UTF-16 surrogate handling to the expand_escaped_string function and json module
+  * pre2.3.4-14: Added fcntl_getpipe_sz and fcntl_setpipe_sz functions to the fcntl module to get and set the buffer size for pipes
+  * pre2.3.4-13: Initialize the variables provided by the %g operator to zero to not leak uninitialized data from the stack if not set by %P. (Miroslav Lichvar)
+  * pre2.3.4-12: modules/chksum_sha2.c: Use memcpy to avoid type-punning warning
+  * pre2.3.4-11: lib/timestamp.sl: Fixed a bug involving leap years
+  * pre2.3.4-10: Updated the Unicode tables to v15 from v10
+  * pre2.3.4-9: src/slang.ver: Removed the undefined symbol SLang_Rline_Quit, which was causing a link error on Gentoo Linux (Michal Rostecki)
+  * pre2.3.4-8: check for NULL return value from the ctime function
+  * pre2.3.4-7: mkfiles/makefile.m32: Added install1 target to work with versions of mingw make that cannot process the install target.  Previously this required editing the makefile (windows-specific)
+
+- download from git://git.jedsoft.org/git/slang.git
+  * drop slang-2.3.3.tar.bz2.asc and slang.keyring
+
+- rename patches
+  * slang.patch to 0001-Use-termcap.patch
+  * slang-autoconf.patch to 0002-Fix-CFLAGS-and-generate-sl-config.h.patch
+  * slang-fsuid.patch to 0003-Enforce-use-of-setfsuid.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 09:16:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop slsh/lib/test/test_timestamp.sl: Do not test timestamps but

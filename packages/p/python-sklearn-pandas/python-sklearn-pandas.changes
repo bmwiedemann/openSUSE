@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 03:19:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-six.patch:
+  * Drop use of six.
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Mon Feb  6 08:06:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests gh#scikit-learn-contrib/sklearn-pandas#248

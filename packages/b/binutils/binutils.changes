@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 17 14:09:54 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Unset SUSE_ZNOW while running testsuite, many tests cannot cope
+
+-------------------------------------------------------------------
 Mon Dec  9 14:49:46 UTC 2024 - Michael Matz <matz@suse.com>
 
 - Update to current 2.43.1 branch [PED-10254, PED-10306]:

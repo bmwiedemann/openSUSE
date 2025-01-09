@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:57:40 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to 6.0.0:
+  - Breaking Changes
+    - [inotify] Use of select.poll() instead of deprecated
+      select.select(), if available.
+    - [utils] Removed the unused echo_class() function from the
+      echo module.
+    - [utils] Removed the unused echo_instancemethod() function
+      from the echo module.
+    - [utils] Removed the unused echo_module() function from the
+      echo module.
+    - [utils] Removed the unused is_class_private_name() function
+      from the echo module.
+    - [utils] Removed the unused is_classmethod() function from
+      the echo module.
+    - [utils] Removed the unused is_method(met() function from
+      the echo module.
+    - [utils] Removed the unused method_name() function from the
+      echo module.
+    - [utils] Removed the unused name() function from the echo
+      module.
+    - [watchmedo] Removed the --trace CLI argument from the
+      watchmedo log command, useless since events are logged by
+      default at the LoggerTrick class level.
+  - Other Changes Pin test dependecies.
+    - [docs] Add typing info to quick start.
+    - [inotify] Fix reading inotify file descriptor after closing
+      it.
+    - [utils] The stop_signal keyword-argument type of the
+      AutoRestartTrick class can now be either a signal.Signals
+      or an int.
+    - [utils] Added the __repr__() method to the Trick class.
+    - [watchmedo] Fixed Mypy issues.
+    - [watchmedo] Added the __repr__() method to the
+      HelpFormatter class.
+    - [windows] Fixed Mypy issues.
+- Switch off test coverage measurement.
+- Skip test test_select_fd (gh#gorakhargosh/watchdog!1086 ?)
+
+-------------------------------------------------------------------
 Thu Jun 13 15:32:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  7 13:27:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.0.2
+  * Update CI, in line with gitdb by @EliahKagan in (#53)
+  * No longer treat 3.12 as experimental on smmap CI
+    by @EliahKagan in (#54)
+  * Bump actions/setup-python from 4 to 5 by @dependabot in (#55)
+  * Replace use of mktemp by @EliahKagan in (#56)
+  * Use SPDX identifier by @Shortfinga in (#57)
+
+-------------------------------------------------------------------
 Mon Nov 27 16:06:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:

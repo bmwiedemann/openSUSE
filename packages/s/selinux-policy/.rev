@@ -1284,4 +1284,164 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1231553</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>9bbf87e66a864f9da907439ec89443e5</srcmd5>
+    <version>20241220</version>
+    <time>1736431505</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241220:
+  * Revert &quot;Remove the fail2ban module sources&quot;
+  * Revert &quot;Remove the linuxptp module sources&quot;
+  * Revert &quot;Remove the amtu module sources&quot;
+  * Allow auditctl signal auditd
+  * Dontaudit systemd-coredump the sys_resource capability
+  * Allow traceroute_t bind rawip sockets to unreserved ports
+  * Fix the cups_read_pid_files() interface to use read_files_pattern
+  * Allow virtqemud additional permissions for tmpfs_t blk devices
+  * Allow virtqemud rw access to svirt_image_t chr files
+  * Allow virtqemud rw and setattr access to fixed block devices
+  * Label /etc/mdevctl.d/scripts.d with bin_t
+  * Allow virtqemud open svirt_devpts_t char files
+  * Allow virtqemud relabelfrom virt_log_t files
+  * Allow svirt_tcg_t read virtqemud_t fifo_files
+  * Allow virtqemud rw and setattr access to sev devices
+  * Allow virtqemud directly read and write to a fixed disk
+  * Allow virtqemud_t relabel virt_var_lib_t files
+  * Allow virtqemud_t relabel virtqemud_var_run_t sock_files
+  * Add gnome_filetrans_gstreamer_admin_home_content() interface
+  * Label /dev/swradio, /dev/v4l-subdev, /dev/v4l-touch with v4l_device_t
+  * Make bootupd_t permissive
+  * Allow init_t nnp domain transition to locate_t
+  * allow gdm and iiosensorproxy talk to each other via D-bus
+  * Allow systemd-journald getattr nsfs files
+  * Allow sendmail to map mail server configuration files
+  * Allow procmail to read mail aliases
+  * Allow cifs.idmap helper to set attributes on kernel keys
+  * Allow irqbalance setpcap capability in the user namespace
+  * Allow sssd_selinux_manager_t the setcap process permission
+  * Allow systemd-sleep manage efivarfs files
+  * Allow systemd-related domains getattr nsfs files
+  * Allow svirt_t the sys_rawio capability
+  * Allow alsa watch generic device directories
+  * Move systemd-homed interfaces to seperate optional_policy block
+  * Update samba-bgqd policy
+  * Update virtlogd policy
+  * Allow svirt_t the sys_rawio capability
+  * Allow qemu-ga the dac_override and dac_read_search capabilities
+  * Allow bacula execute container in the container domain
+  * Allow httpd get attributes of dirsrv unit files
+  * Allow samba-bgqd read cups config files
+  * Add label rshim_var_run_t for /run/rshim.pid
+  * [5/5][sync from 'mysql-selinux'] Add mariadb-backup
+  * [4/5][sync from 'mysql-selinux'] Fix regex to also match '/var/lib/mysql/mysqlx.sock'
+  * [3/5][sync from 'mysql-selinux'] Allow mysqld_t to read and write to the 'memory.pressure' file in cgroup2
+  * [2/5][sync from 'mysql-selinux'] 2nd attempt to fix rhbz#2186996 rhbz#2221433 rhbz#2245705
+  * [1/5][sync from 'mysql-selinux'] Allow 'mysqld' to use '/usr/bin/hostname'
+  * Allow systemd-networkd read mount pid files
+  * Update policy for samba-bgqd
+  * Allow chronyd read networkmanager's pid files
+  * Allow staff user connect to generic tcp ports
+  * Allow gnome-remote-desktop dbus chat with policykit
+  * Allow tlp the setpgid process permission
+  * Update the bootupd policy
+  * Allow sysadm_t use the io_uring API
+  * Allow sysadm user dbus chat with virt-dbus
+  * Allow virtqemud_t read virsh_t files
+  * Allow virt_dbus_t connect to virtd_t over a unix stream socket
+  * Allow systemd-tpm2-generator read hardware state information
+  * Allow coreos-installer-generator execute generic programs
+  * Allow coreos-installer domain transition on udev execution
+  * Revert &quot;Allow unconfined_t execute kmod in the kmod domain&quot;
+  * Allow iio-sensor-proxy create and use unix dgram socket
+  * Allow virtstoraged read vm sysctls
+  * Support ssh connections via systemd-ssh-generator
+  * Label all semanage store files in /etc as semanage_store_t
+  * Add file transition for nvidia-modeset
+  * Allow dirsrv-snmp map dirsv_tmpfs_t files
+  * Label /usr/lib/node_modules_22/npm/bin with bin_t
+  * Add policy for /usr/libexec/samba/samba-bgqd
+  * Allow gnome-remote-desktop watch /etc directory
+  * Allow rpcd read network sysctls
+  * Allow journalctl connect to systemd-userdbd over a unix socket
+  * Allow some confined users send to lldpad over a unix dgram socket
+  * Allow lldpad send to unconfined_t over a unix dgram socket
+  * Allow lldpd connect to systemd-machined over a unix socket
+  * Confine the ktls service
+  * Allow dirsrv read network sysctls
+  * Label /run/sssd with sssd_var_run_t
+  * Label /etc/sysctl.d and /run/sysctl.d with system_conf_t
+  * Allow unconfined_t execute kmod in the kmod domain
+  * Allow confined users r/w to screen unix stream socket
+  * Label /root/.screenrc and /root/.tmux.conf with screen_home_t
+  * Allow virtqemud read virtd_t files
+  * Allow ping_t read network sysctls
+  * Allow systemd-homework connect to init over a unix socket
+  *  Fix systemd-homed blobs directory permissions
+  * Allow virtqemud read sgx_vepc devices
+  * Allow lldpad create and use netlink_generic_socket
+  * Allow systemd-homework write to init pid socket
+  * Allow init create /var/cache/systemd/home
+  * Confine the pcm service
+  * Allow login_userdomain read thumb tmp files
+  * Update power-profiles-daemon policy
+  * Fix the /etc/mdevctl\.d(/.*)? regexp
+  * Grant rhsmcertd chown capability &amp; userdb access
+  * Allow iio-sensor-proxy the bpf capability
+  * Allow systemd-machined the kill user-namespace capability
+  * Remove the fail2ban module sources
+  * Remove the linuxptp module sources
+  * Remove legacy rules for slrnpull
+  * Remove the aiccu module sources
+  * Remove the bcfg2 module sources
+  * Remove the amtu module sources
+  * Remove the rhev module sources
+  * Remove all file context entries for /bin and /lib
+  * Allow ptp4l the sys_admin capability
+  * Confine power-profiles-daemon
+  * Label /var/cache/systemd/home with systemd_homed_cache_t
+  * Allow login_userdomain connect to systemd-homed over a unix socket
+  * Allow boothd connect to systemd-homed over a unix socket
+  * Allow systemd-homed get attributes of a tmpfs filesystem
+  * Allow abrt-dump-journal-core connect to systemd-homed over a unix socket
+  * Allow aide connect to systemd-homed over a unix socket
+  * Label /dev/hfi1_[0-9]+ devices
+  * Remove the openct module sources
+  * Remove the timidity module sources
+  * Enable the slrn module
+  * Remove i18n_input module sources
+  * Enable the distcc module
+  * Remove the ddcprobe module sources
+  * Remove the timedatex module sources
+  * Remove the djbdns module sources
+  * Confine iio-sensor-proxy
+  * Allow staff user nlmsg_write
+  * Update policy for xdm with confined users
+  * Allow virtnodedev watch mdevctl config dirs
+  * Allow ssh watch home config dirs
+  * Allow ssh map home configs files
+  * Allow ssh read network sysctls
+  * Allow chronyc sendto to chronyd-restricted
+  * Allow cups sys_ptrace capability in the user namespace
+  * Add policy for systemd-homed
+  * Remove fc entry for /usr/bin/pump
+  * Label /usr/bin/noping and /usr/bin/oping with ping_exec_t
+  * Allow accountsd read gnome-initial-setup tmp files
+  * Allow xdm write to gnome-initial-setup fifo files
+  * Allow rngd read and write generic usb devices
+  * Allow qatlib search the content of the kernel debugging filesystem
+  * Allow qatlib connect to systemd-machined over a unix socket
+  * mls/modules.conf - fix typo
+  * Use dist/targeted/modules.conf in build workflow
+  * Fix default and dist config files
+  * Allow unprivileged user watch /run/systemd
+  * CI: update to actions/checkout@v4
+  * Allow boothd connect to kernel over a unix socket
+  * Clean up and sync securetty_types
+  * Bring config files from dist-git into the source repo
+  * Confine gnome-remote-desktop
+  * Allow virtstoraged execute mount programs in the mount domain
+  * Make mdevctl_conf_t member of the file_type attribute
+</comment>
+    <requestid>1235571</requestid>
+  </revision>
 </revisionlist>

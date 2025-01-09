@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:09:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-add: Drop dependency from libexo to perl-URI: there is no indication
+  of any perl reference in that library.
+
+-------------------------------------------------------------------
 Sun Dec 15 10:25:26 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.20.0

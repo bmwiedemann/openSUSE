@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:18:49 CET 2025 - ro@suse.de
+
+- Chromium 131.0.6778.264 (boo#1235422)
+  * CVE-2025-0291: Type Confusion in V8
+  * Various fixes from internal audits, fuzzing and other initiatives 
+
+-------------------------------------------------------------------
 Thu Dec 19 14:58:31 CET 2024 - ro@suse.de
 
 - Chromium 131.0.6778.204 (boo#1234704)

@@ -48,7 +48,7 @@
  
  #define Nwidths 10
  static unsigned int widths[Nwidths] = { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-@@ -2294,6 +2301,8 @@ exec_cmd(plot_struct *plot, char *comman
+@@ -2290,6 +2297,8 @@ exec_cmd(plot_struct *plot, char *comman
  		/* Save the request default font */
  		c = &(buffer[strlen(buffer)-1]);
  		while (*c <= ' ') *c-- = '\0';
@@ -57,7 +57,7 @@
  		strncpy(default_font, &buffer[2], sizeof(default_font)-1);
  		FPRINTF((stderr, "gnuplot_x11: exec_cmd() set default_font to \"%s\"\n", default_font));
  		break;
-@@ -5820,7 +5829,7 @@ XFontStruct *gpXLoadQueryFont (Display *
+@@ -5810,7 +5819,7 @@ XFontStruct *gpXLoadQueryFont (Display *
  	    }
  #else
  	    if (first_time) {
@@ -66,7 +66,7 @@
  		first_time = FALSE;
  	    }
  	    while (n_miss-- > 0)
-@@ -5972,6 +5981,18 @@ char *fontname;
+@@ -5962,6 +5971,18 @@ char *fontname;
      }
  
  #ifdef USE_X11_MULTIBYTE

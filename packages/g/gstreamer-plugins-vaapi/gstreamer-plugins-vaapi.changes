@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  7 21:53:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.11:
+  + meson: Re-added required: lines accidentally removed
+
+-------------------------------------------------------------------
 Mon Dec  9 12:32:50 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.10:

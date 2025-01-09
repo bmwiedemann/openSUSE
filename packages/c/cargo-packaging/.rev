@@ -115,4 +115,12 @@ provides from elf metadata of vendored deps
     <comment></comment>
     <requestid>1188510</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b64a3b95ebfb84f0d971993a2080bce</srcmd5>
+    <version>1.2.0+7</version>
+    <time>1736431493</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235463</requestid>
+  </revision>
 </revisionlist>

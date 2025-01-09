@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 15:47:17 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.2.5
+  - websocket,server 
+    * Disable http2 connect setting for websocket by default 
+      (gh#traefik/traefik#11412)
+
+-------------------------------------------------------------------
 Mon Jan  6 12:57:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.2.4

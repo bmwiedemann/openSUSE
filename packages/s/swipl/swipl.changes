@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:32:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 9.3.18:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&from=9.3.15&to=9.3.18
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.
+- Remove upstreamed patch:
+  - 104-fix-prolog_in_java.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 13:31:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 9.3.15:

@@ -19,10 +19,11 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+# Please also update slepc, which is version locked with petsc
 %define pname petsc
-%define vers 3.21.2
-%define _vers 3_21_2
-%define so_ver 3_21
+%define vers 3.22.2
+%define _vers 3_22_2
+%define so_ver 3_22
 %define openblas_vers 0.3.6
 
 ExcludeArch:    s390 s390x
@@ -284,7 +285,7 @@ BuildRequires:  blas-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
-BuildRequires:  suitesparse-devel
+BuildRequires:  suitesparse-devel >= 5.6.0
 
  %if %{with mpi}
 BuildRequires:  %{mpi_family}%{?mpi_vers}-devel
@@ -672,9 +673,9 @@ mkdir -p %{buildroot}%{p_libdir}/pkgconfig
 ln -s %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib/pkgconfig/petsc.pc \
       %{buildroot}%{p_libdir}/pkgconfig/
 %endif
-for d in /usr/lib64/petsc/3.21.2/linux-gnu-c-opt/share/petsc/matlab \
- /usr/lib64/petsc/3.21.2/linux-gnu-c-opt/lib/petsc/bin \
- /usr/lib64/petsc/3.21.2/linux-gnu-c-opt/share/petsc/bin
+for d in /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/share/petsc/matlab \
+ /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/lib/petsc/bin \
+ /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/share/petsc/bin
 do
    for i in `find %{buildroot}/$d -type f  -a -perm /a=x`
    do

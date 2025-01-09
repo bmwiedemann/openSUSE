@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  8 04:02:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch skip-pip-install.patch:
+  * Point pip to the directory that setuptools-wheel uses, since that is
+    the only requirement for pip install with the current version of
+    setuptools.
+- Remove unneeded Requires, limit them appropiately.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Jun 12 09:22:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6:

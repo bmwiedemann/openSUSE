@@ -197,4 +197,41 @@
     <comment></comment>
     <requestid>1226196</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>779cb61bb1b965292c69734a78e1394d</srcmd5>
+    <version>0.25.0</version>
+    <time>1736431652</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.25.0:
+  Features:
+  * Set terminal title to file names when Paging is not Paging::Never #2807
+  * bat --squeeze-blank/bat -s will now squeeze consecutive empty lines, see #1441 and #2665
+  * bat --squeeze-limit to set the maximum number of empty consecutive when using --squeeze-blank, see #1441 #2665
+  * PrettyPrinter::squeeze_empty_lines to support line squeezing for bat as a library, see #1441 #2665
+  * Syntax highlighting for JavaScript files that start with #!/usr/bin/env bun #2913
+  * bat --strip-ansi={never,always,auto} to remove ANSI escape sequences from bat's input, see #2999
+  * Add or remove individual style components without replacing all styles #2929
+  * Automatically choose theme based on the terminal's color scheme, see #2896
+  * Add option --binary=as-text for printing binary content, see issue #2974 and PR #2976
+  * Make shell completions available via --completion &lt;shell&gt;, see issue #2057 and PR #3126
+  * Syntax highlighting for puppet code blocks within Markdown files, see #3152
+  Bugfixes:
+  * Fix long file name wrapping in header, see #2835
+  * Fix NO_COLOR support, see #2767
+  * Fix handling of inputs with OSC ANSI escape sequences, see #2541 and #2544
+  * Fix handling of inputs with combined ANSI color and attribute sequences, see #2185 and #2856
+  * Fix panel width when line 10000 wraps, see #2854
+  * Fix compile issue of time dependency caused by standard library regression #3045
+  * Fix override behavior of --plain and --paging, see issue #2731 and PR #3108
+  * Fix bugs in $LESSOPEN support, see #2805
+  Other:
+  * Upgrade to Rust 2021 edition #2748
+  * Refactor and cleanup build script #2756
+  * Checks changelog has been written to for PRs in CI #2766
+    + Use GitHub API to get correct PR submitter #2791
+  * Minor benchmark script improvements #2768
+  * Update Arch Linux package URL in README files #2779
+  * Update and improve zsh completion, see #2772</comment>
+    <requestid>1235801</requestid>
+  </revision>
 </revisionlist>

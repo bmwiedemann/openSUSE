@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-audit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,8 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/RustSec/cargo-audit
 Source0:        %{workspace_name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
+Patch0:         0001-Skip-warnings.patch
 
-BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_tier1_arches}
@@ -41,8 +40,7 @@ Audit Cargo.lock files for crates with security vulnerabilities reported to the 
 %prep
 %setup -q -n %{workspace_name}-%{version}
 %setup -qa1 -n %{workspace_name}-%{version}
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
+%autopatch -p 1
 
 %build
 %{cargo_build}

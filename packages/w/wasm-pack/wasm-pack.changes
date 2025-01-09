@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 07 02:18:11 UTC 2025 - william.brown@suse.com
+
+- Explicitly depend on wasm-bindgen version as these must be updated in lockstep.
+- Update to version 0.13.1~0:
+  * 0.13.1
+  * fix: allow npm binary upgrades
+  * Requests using proxy settings from ENV
+  * fmt
+  * fixup
+  * Remove unmaintained dependency atty in favor of stdlib
+  * chore(deps): bump actions/download-artifact in /.github/workflows
+  * chore: Update binary-install to v0.4.1
+
+-------------------------------------------------------------------
+Fri Oct 18 06:54:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add BuildIgnore for libldap-data
+  This package is required by lldap in network:ldap and projects branched from
+  there. The setup there is broken due to libldap-data. Adding a BuildIgnore
+  solves this on package-level.
+  As wasm-pack does not depend on libldap-data, this should do no harm.
+
+-------------------------------------------------------------------
 Tue Sep 10 23:59:07 UTC 2024 - William Brown <william.brown@suse.com>
 
 - explicitly depend on cargo to pull in latest compiler revision

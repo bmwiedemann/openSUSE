@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Jan  8 07:10:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.0:
+  Features:
+  * Set terminal title to file names when Paging is not Paging::Never #2807
+  * bat --squeeze-blank/bat -s will now squeeze consecutive empty lines, see #1441 and #2665
+  * bat --squeeze-limit to set the maximum number of empty consecutive when using --squeeze-blank, see #1441 #2665
+  * PrettyPrinter::squeeze_empty_lines to support line squeezing for bat as a library, see #1441 #2665
+  * Syntax highlighting for JavaScript files that start with #!/usr/bin/env bun #2913
+  * bat --strip-ansi={never,always,auto} to remove ANSI escape sequences from bat's input, see #2999
+  * Add or remove individual style components without replacing all styles #2929
+  * Automatically choose theme based on the terminal's color scheme, see #2896
+  * Add option --binary=as-text for printing binary content, see issue #2974 and PR #2976
+  * Make shell completions available via --completion <shell>, see issue #2057 and PR #3126
+  * Syntax highlighting for puppet code blocks within Markdown files, see #3152
+  Bugfixes:
+  * Fix long file name wrapping in header, see #2835
+  * Fix NO_COLOR support, see #2767
+  * Fix handling of inputs with OSC ANSI escape sequences, see #2541 and #2544
+  * Fix handling of inputs with combined ANSI color and attribute sequences, see #2185 and #2856
+  * Fix panel width when line 10000 wraps, see #2854
+  * Fix compile issue of time dependency caused by standard library regression #3045
+  * Fix override behavior of --plain and --paging, see issue #2731 and PR #3108
+  * Fix bugs in $LESSOPEN support, see #2805
+  Other:
+  * Upgrade to Rust 2021 edition #2748
+  * Refactor and cleanup build script #2756
+  * Checks changelog has been written to for PRs in CI #2766
+    + Use GitHub API to get correct PR submitter #2791
+  * Minor benchmark script improvements #2768
+  * Update Arch Linux package URL in README files #2779
+  * Update and improve zsh completion, see #2772
+  * More extensible syntax mapping mechanism #2755
+  * Use proper Architecture for Debian packages built for musl, see #2811
+  * Pull in fix for unsafe-libyaml security advisory, see #2812
+  * Update git-version dependency to use Syn v2, see #2816
+  * Update git2 dependency to v0.18.2, see #2852
+  * Improve performance when color output disabled, see #2397 and #2857
+  * Relax syntax mapping rule restrictions to allow brace expansion #2865
+  * Apply clippy fixes #2864
+  * Faster startup by offloading glob matcher building to a worker thread #2868
+  * Display which theme is the default one in basic output (no colors), see #2937
+  * Display which theme is the default one in colored output, see #2838
+  * Add aarch64-apple-darwin ("Apple Silicon") binary tarballs to releases, see #2967
+  * Update the Lisp syntax, see #2970
+  * Use bat's ANSI iterator during tab expansion, see #2998
+  * Support 'statically linked binary' for aarch64 in 'Release' page, see #2992
+  * Update options in shell completions and the man page of bat, see #2995
+  * Update nix dev-dependency to v0.29.0, see #3112
+  * Bump MSRV to 1.74, see #3154
+  * Update clircle dependency to remove winapi transitive dependency, see #3113
+  Syntaxes:
+  * cmd-help: scope subcommands followed by other terms, and other misc improvements, see #2819
+  * Upgrade JQ syntax, see #2820
+  * Add syntax mapping for quadman quadlets #2866
+  * Map containers .conf files to TOML syntax #2867
+  * Associate .xsh files with xonsh syntax that is Python, see #2840
+  * Associate JSON with Comments .jsonc with json syntax, see #
+  * Associate JSON-LD .jsonld files with json syntax, see #3037
+  * Associate .textproto files with ProtoBuf syntax, see #3038
+  * Associate GeoJSON .geojson files with json syntax, see #3084
+  * Associate .aws/{config,credentials}, see #2795
+  * Associate Wireguard config /etc/wireguard/*.conf, see #2874
+  * Add support for CFML, see #3031
+  * Map *.mkd files to Markdown syntax, see issue #3060 and PR #3061
+  * Add syntax mapping for CITATION.cff, see #3103
+  * Add syntax mapping for kubernetes config files #3049
+  * Adds support for pipe delimiter for CSV #3115
+  * Add syntax mapping for /etc/pacman.conf #2961
+  * Associate uv.lock with TOML syntax, see #3132
+  Themes:
+  * Patched/improved themes for better Manpage syntax highlighting support, see #2994
+
+-------------------------------------------------------------------
 Tue Nov 19 22:43:42 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update vendored dependencies to fix build failures on newer rust versions

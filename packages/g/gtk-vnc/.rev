@@ -455,4 +455,12 @@ Consolidate licenses (forwarded request 160578 from babelworx)</comment>
     <comment>New stable release (forwarded request 993250 from iznogood)</comment>
     <requestid>993939</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>e098675908d1d736c11f74d68ecacc47</srcmd5>
+    <version>1.4.0</version>
+    <time>1736431495</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235511</requestid>
+  </revision>
 </revisionlist>

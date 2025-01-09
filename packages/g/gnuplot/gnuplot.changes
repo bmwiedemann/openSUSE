@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:57:13 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 6.0.2
+  * NEW backport plot style "with hsteps"
+  * NEW backport plot style "splot with filledcurves" (waterfall plots)
+  * NEW general binary keyword option "blank=NaN"
+        - faciliates binary input to plot styles sensitive to blank lines
+  * NEW polygons in splot can use pm3d coloring
+        - facilitates use of triangular tessellated 3D pm3d surfaces
+  * NEW - UTF-8 terminal input now works when linked against BSD editline
+          ./configure --with-readline=bsd
+  * CHANGE backport reimplementation of local variables
+        - faster function block evaluation, better-defined scope
+  * CHANGE apply jitter to the horizontal spread of boxplot outliers
+  * CHANGE dump $GPVAL_LAST_MULTIPLOT at the end of a "save" file
+  * FIX backport reworked generation of logscale axis tic marks        Bug 2372 2717
+  * FIX Do not save extraneous commands to $GPVAL_LAST_MULTIPLOT       Bug 2714
+  * FIX svg: modify gnuplot_svg.js to work in local standalone mode    Bug 2715
+  * FIX "set table": honor "nosurface" keyword in splot
+  * FIX "set table": honor "set format z" when z is printed from plot
+  * FIX better contouring near the edge of a z-clipped surface
+  * FIX x11: handle mousing of logscale axes in inactive plot window   Bug 2723
+  * FIX qt: handle mousing of logscale axes in inactive plot window    Bug 2723
+  * FIX wxt: handle mousing of logscale axes in inactive plot window   Bug 2723
+  * FIX wxt: release per-thread font data before entering "persist"    Bug 2693
+  * FIX "set tics scale" should not change other axis tick properties  Bug 2724
+  * FIX fill properties can be given as part of "splot with circles"
+  * FIX some properties of the key title not shown by "show" or "save" Bug 2729
+  * FIX points with variable color value NaN should not be drawn       Bug 2737
+  * FIX "set term tikz nostandalone" should suppress the latex wrapper Bug 2740
+  * FIX handle unusual case of intersecting pm3d surfaces              Bug 2744
+  * FIX prevent use-after-free if a function block has no "return"     Bug 2745
+- Port patches
+  * gnuplot-4.6.0-demo.diff
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+
+-------------------------------------------------------------------
 Mon Jun  3 06:04:48 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 6.0.1

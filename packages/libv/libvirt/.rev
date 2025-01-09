@@ -4748,4 +4748,14 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   boo#1234995</comment>
     <requestid>1234786</requestid>
   </revision>
+  <revision rev="412" vrev="5">
+    <srcmd5>fe16f1bc228502c82915aa338c5f02b5</srcmd5>
+    <version>10.10.0</version>
+    <time>1736431492</time>
+    <user>anag+factory</user>
+    <comment>- security: apparmor: Fix probing of apparmor availability on the
+  VM host when using modular daemons
+  bsc#1235079</comment>
+    <requestid>1235461</requestid>
+  </revision>
 </revisionlist>

@@ -5276,4 +5276,14 @@ boo#1224178</comment>
   * Various fixes from internal audits, fuzzing and other initiatives</comment>
     <requestid>1232602</requestid>
   </revision>
+  <revision rev="443" vrev="1">
+    <srcmd5>64a636e9ca2c90d89819e3ca9708c68b</srcmd5>
+    <version>131.0.6778.264</version>
+    <time>1736431687</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 131.0.6778.264 (boo#1235422)
+  * CVE-2025-0291: Type Confusion in V8
+  * Various fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>1235874</requestid>
+  </revision>
 </revisionlist>

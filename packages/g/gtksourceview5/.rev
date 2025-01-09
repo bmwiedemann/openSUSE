@@ -157,4 +157,12 @@
   + Add missing 5_14 version macros (forwarded request 1225681 from iznogood)</comment>
     <requestid>1225812</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>100ec96ef67927d08683bd07fe10aa35</srcmd5>
+    <version>5.14.2</version>
+    <time>1736431498</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235515</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,76 @@
+From 5611462e6e157e23e9571bfd364cb22ec17b91b6 Mon Sep 17 00:00:00 2001
+From: Robert Altnoeder <robert.altnoeder@linbit.com>
+Date: Wed, 20 Nov 2024 18:45:11 +0100
+Subject: [PATCH 06/12] DRBDmon: Adjust Makefile
+
+---
+ drbd.spec.in             |  1 +
+ user/drbdmon/Makefile.in | 10 ++++++++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/drbd.spec.in b/drbd.spec.in
+index 0205776f2618..9559e2950e13 100644
+--- a/drbd.spec.in
++++ b/drbd.spec.in
+@@ -155,6 +155,7 @@ This packages includes the DRBD administration tools.
+ %endif
+ %if %{with drbdmon}
+ %{_sbindir}/drbdmon
++%{_sbindir}/drbd-events-log-supplier
+ %endif
+ %if "%{initscripttype}" == "sysv"
+ %{_initddir}/drbd
+diff --git a/user/drbdmon/Makefile.in b/user/drbdmon/Makefile.in
+index 36673b19c857..9c5427e9b22a 100644
+--- a/user/drbdmon/Makefile.in
++++ b/user/drbdmon/Makefile.in
+@@ -16,7 +16,7 @@ else
+ DESTDIR ?= /
+ endif
+ 
+-binaries := drbdmon
++binaries := drbdmon drbd-events-log-supplier
+ 
+ ifeq ($(WITH_DRBDMON),yes)
+ all: $(binaries)
+@@ -28,6 +28,7 @@ PHONY := all
+ 
+ dsaext-obj := cppdsaext/src/dsaext.o
+ integerparse-obj := cppdsaext/src/integerparse.o
++supplier-obj := drbd-events-log-supplier.o
+ 
+ l-obj := DrbdMon.o DrbdMonConsts.o MessageLog.o IntervalTimer.o SubProcessNotification.o
+ l-obj += MessageLogNotification.o
+@@ -77,6 +78,9 @@ $(integerparse-obj): $(basename $(integerparse-obj)).cpp $(basename $(integerpar
+ drbdmon: $(ls-obj)
+ 	$(CXX) -o $@ $(CPPFLAGS) $(CXXFLAGS) $^ $(LIBS)
+ 
++drbd-events-log-supplier: $(supplier-obj)
++	$(CXX) -o $@ $(CPPFLAGS) $(CXXFLAGS) $^
++
+ # do not try to rebuild Makefile itself
+ Makefile: ;
+ 
+@@ -89,16 +93,18 @@ Makefile: ;
+ install:
+ ifeq ($(WITH_DRBDMON),yes)
+ 	install -m 755 drbdmon $(DESTDIR)$(sbindir)
++	install -m 755 drbd-events-log-supplier $(DESTDIR)$(sbindir)
+ endif
+ 
+ uninstall:
+ ifeq ($(WITH_DRBDMON),yes)
+ 	rm -f $(DESTDIR)$(sbindir)/drbdmon
++	rm -r $(DESTDIR)$(sbindir)/drbd-events-log-supplier
+ endif
+ 
+ PHONY += clean distclean
+ clean:
+-	rm -f $(local-obj) $(dsaext-obj) $(integerparse-obj) $(binaries)
++	rm -f $(local-obj) $(dsaext-obj) $(integerparse-obj) $(supplier-obj) $(binaries)
+ distclean: clean
+ 	rm -f $(local-dep)
+ 
+-- 
+2.43.0
+

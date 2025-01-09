@@ -861,4 +861,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
 - drop skip_failing_tests.patch: obsolete</comment>
     <requestid>1225342</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>1720c9e8b5a86ea94e5d3db7d70159fc</srcmd5>
+    <version>6.1.1</version>
+    <time>1736431553</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235896</requestid>
+  </revision>
 </revisionlist>

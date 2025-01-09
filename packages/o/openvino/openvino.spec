@@ -31,13 +31,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2440
+%define so_ver 2460
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2024.4.0
+Version:        2024.6.0
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -45,16 +45,12 @@ License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND HPND AND JSON A
 URL:            https://github.com/openvinotoolkit/openvino
 Source0:        %{name}-%{version}.tar.zst
 Source1:        %{name}-rpmlintrc
-# PATCH-FEATURE-OPENSUSE openvino-onnx-ml-defines.patch badshah400@gmail.com -- Define ONNX_ML at compile time when using system onnx to allow using 'onnx-ml.pb.h' instead of 'onnx.pb.h', the latter not being shipped with openSUSE's onnx-devel package
-Patch0:         openvino-onnx-ml-defines.patch
 # PATCH-FEATURE-OPENSUSE openvino-fix-install-paths.patch badshah400@gmail.com -- Fix installation paths hardcoded into upstream defined cmake macros
-Patch2:         openvino-fix-install-paths.patch
+Patch0:         openvino-fix-install-paths.patch
 # PATCH-FIX-UPSTREAM openvino-ComputeLibrary-include-string.patch badshah400@gmail.com -- Include header for std::string
-Patch3:         openvino-ComputeLibrary-include-string.patch
+Patch1:         openvino-ComputeLibrary-include-string.patch
 # PATCH-FIX-UPSTREAM openvino-fix-build-sample-path.patch cabelo@opensuse.org -- Fix sample source path in build script
-Patch4:         openvino-fix-build-sample-path.patch
-# PATCH-FIX-UPSTREAM openvino-remove-npu-compile-tool.patch cabelo@opensuse.org -- Remove NPU Compile Tool
-Patch5:         openvino-remove-npu-compile-tool.patch
+Patch2:         openvino-fix-build-sample-path.patch
 
 BuildRequires:  ade-devel
 BuildRequires:  cmake
@@ -423,6 +419,7 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %files -n %{name}-sample
 %license LICENSE
 %{_datadir}/%{prj_name}/
+%exclude %{_prefix}/lib/debug/usr/share/OpenVINO/tools/compile_tool/
 
 %files -n %{name}-devel
 %license LICENSE

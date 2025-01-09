@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 27 12:59:34 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add /usr/$march directories for HPPA. Will be packaging both
+  hppa-suse-linux and hppa64-suse-linux because the compiler
+  suite is usually configured with the latter on this arch.
+
+-------------------------------------------------------------------
 Wed Sep 25 19:10:06 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move /srv/www hierachy to the packages which use them

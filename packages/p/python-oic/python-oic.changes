@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 14 07:17:29 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.7.0
+  * Fix test for new requests version by @tpazderka in #841
+  * Fix typing for Cryptodomex by @tpazderka in #843
+  * Don't throw exception for token error response. by @zamzterz in #844
+  * Fix links after repo move by @tpazderka in #846
+  * Pass timeout to all requests by @tpazderka in #848
+  * Improve settings by using pydantic by @tpazderka in #847
+  * Correct OpenID Connect Core specification URL in doc by @hlin in #850
+  * Add authn_method to Consumer.complete() by @stinovlas in #852
+  * Use session_state to backup consumer state if available by @gbip in #854
+  * Repair some oauth_examples and get rid of the outdated jquery file by @schlenk in #857
+  * Pin autodoc_pydantic to >=2.0.0 by @schlenk in #863
+  * Remove Python 3.7 by @schlenk in #870
+  * Fix logging without format string by @schlenk in #871
+  * Bump jinja2 from 2.11.3 to 3.1.3 in /oidc_example/simple_op by @dependabot in #865
+  * OSSF Scorecard & Badge by @schlenk in #874
+  * Update scorecard.yml by @schlenk in #875
+- Drop fix-scheme-message.patch
+
+-------------------------------------------------------------------
 Mon Feb  6 08:42:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update patch fix-scheme-message.patch with upstream change

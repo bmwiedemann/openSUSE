@@ -494,7 +494,7 @@ make -C gas-nesc %{?make_output_sync} %{?_smp_mflags}
 %endif
 
 %check
-unset SUSE_ASNEEDED
+unset SUSE_ASNEEDED SUSE_ZNOW
 # newer distros set this envvar (e.g. to get deterministic archives by default)
 # but of course that breaks tests that precisely are
 # designed for checking file replacement in archives based on mtime.

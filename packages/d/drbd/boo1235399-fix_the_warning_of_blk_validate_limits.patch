@@ -1,0 +1,73 @@
+Subject: [PATCH] drbd: Fix block layer warning
+
+drbdadm down r0 trigger kernel warning
+
+drbd_reconsider_queue_parameters
+ + get_common_queue_limits
+ |  blk_set_stacking_limits
+ |   lim->max_zone_append_sectors = UINT_MAX; <=== set
+ |
+ + ... ...
+ |
+ + queue_limits_commit_update
+    blk_validate_limits
+     WARN_ON_ONCE(lim->max_zone_append_sectors) <== trigger
+
+log:
+
+```
+Jan 08 14:43:37 tw-2 kernel: drbd r0/0 drbd0: disk( UpToDate -> Detaching ) [down]
+Jan 08 14:43:37 tw-2 kernel: drbd r0/0 drbd0: disk( Detaching -> Diskless ) [go-diskless]
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 1773 at block/blk-settings.c:75 blk_validate_limits+0x41d/0x440
+... ...
+Call Trace:
+ <TASK>
+ ? blk_validate_limits+0x41d/0x440
+ ? __warn.cold+0x93/0xf7
+ ? blk_validate_limits+0x41d/0x440
+ ? report_bug+0xff/0x140
+ ? handle_bug+0x58/0x90
+ ? exc_invalid_op+0x17/0x70
+ ? asm_exc_invalid_op+0x1a/0x20
+ ? blk_validate_limits+0x41d/0x440
+ queue_limits_commit_update+0x1b/0xa0
+ drbd_reconsider_queue_parameters+0x1d2/0x240 [drbd 9a1d8dc285f5b1fe449ab4495af7893c660ff3ea]
+ w_after_state_change+0x1997/0x20a0 [drbd 9a1d8dc285f5b1fe449ab4495af7893c660ff3ea]
+ ? idr_get_next_ul+0xee/0x110
+ ? do_unqueued_device_work+0x1da/0x2a0 [drbd 9a1d8dc285f5b1fe449ab4495af7893c660ff3ea]
+ drbd_worker+0x109/0x530 [drbd 9a1d8dc285f5b1fe449ab4495af7893c660ff3ea]
+ ? __pfx_autoremove_wake_function+0x10/0x10
+ ? __pfx_drbd_thread_setup+0x10/0x10 [drbd 9a1d8dc285f5b1fe449ab4495af7893c660ff3ea]
+ drbd_thread_setup+0x6d/0x170 [drbd 9a1d8dc285f5b1fe449ab4495af7893c660ff3ea]
+ kthread+0xcf/0x100
+ ? __pfx_kthread+0x10/0x10
+ ret_from_fork+0x31/0x50
+ ? __pfx_kthread+0x10/0x10
+ ret_from_fork_asm+0x1a/0x30
+ </TASK>
+Jan 08 14:43:37 tw-2 kernel: ---[ end trace 0000000000000000 ]---
+Jan 08 14:43:37 tw-2 kernel: drbd r0/0 drbd0: setting new queue limits failed
+Jan 08 14:43:37 tw-2 kernel: drbd r0/0 drbd0: drbd_bm_resize called with capacity == 0
+Jan 08 14:43:37 tw-2 kernel: drbd /unregistered/r0: Terminating worker thread
+
+---[ end trace 0000000000000000 ]---
+drbd /unregistered/r0/0 drbd0: setting new queue limits failed
+drbd /unregistered/r0: Terminating worker thread
+```
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+
+diff -Nupr a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+--- a/drbd/drbd_nl.c	2025-01-08 14:25:56.369599242 +0800
++++ b/drbd/drbd_nl.c	2025-01-08 14:32:07.260157474 +0800
+@@ -2068,6 +2068,8 @@ static void get_common_queue_limits(stru
+ 	common_limits->physical_block_size = device->device_conf.block_size;
+ 	common_limits->logical_block_size = device->device_conf.block_size;
+ 	common_limits->io_min = device->device_conf.block_size;
++	if (!(common_limits->features & BLK_FEAT_ZONED))
++		common_limits->max_zone_append_sectors = 0;
+ 
+ 	rcu_read_lock();
+ 	for_each_peer_device_rcu(peer_device, device) {

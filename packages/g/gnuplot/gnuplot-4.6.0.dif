@@ -29,16 +29,16 @@
  gihdir = @GIHDIR@
  
  noinst_PROGRAMS = checkdoc doc2ipf doc2tex doc2gih doc2hlp \
-@@ -111,7 +111,7 @@ wxhelp_figures wxhelp/*.html wxhelp/wgnu
- wxhelp/wgnuplot.htc wxhelp/doc2html$(EXEEXT) windows/wgnuplot.htk	\
- svg_figures html/*.html html/*.svg html/*.hhc html/*.hhk                \
+@@ -113,7 +113,7 @@ svg_figures html/*.html html/*.svg html/
  webp_figures html/*.webp html/figure_mask.png                           \
+ psdoc/*.aux psdoc/*.dvi psdoc/*.log                                     \
+ psdoc/ps_fontfile_doc.pdf psdoc/ps_fontfile_doc.ps psdoc/ps_symbols.ps  \
 -windows/*.png gnuplot.htb gnuplot.texi gnuplot-eldoc.el $(ELCS)
 +windows/*.png gnuplot.htb gnuplot.texi gnuplot-eldoc.el $(ELCS) gnuplot-fr.gih
  
  DISTFILES = $(DIST_COMMON) $(SOURCES) $(DOCHEADERS) $(EXTRA_DIST)
  
-@@ -271,17 +271,21 @@ gnuplot.hlp: doc2hlp$(EXEEXT) $(srcdir)/
+@@ -273,17 +273,21 @@ gnuplot.hlp: doc2hlp$(EXEEXT) $(srcdir)/
  doc2hlp_SOURCES = doc2hlp.c termdoc.c
  
  ### gnuplot interactive help format
@@ -64,7 +64,7 @@
  alldoc2gih_CPPFLAGS = -DALL_TERM_DOC $(AM_CPPFLAGS)
 --- gnuplot-6.0.0/src/gadgets.h
 +++ gnuplot-6.0.0/src/gadgets.h	2024-01-08 09:16:58.124450437 +0000
-@@ -524,7 +524,7 @@ extern TBOOLEAN	clip_lines2;
+@@ -533,7 +533,7 @@ extern TBOOLEAN	clip_lines2;
  extern TBOOLEAN	clip_points;
  extern TBOOLEAN	clip_radial;
  
@@ -75,7 +75,7 @@
  
 --- gnuplot-6.0.0/src/gplt_x11.c
 +++ gnuplot-6.0.0/src/gplt_x11.c	2024-01-08 09:16:58.124450437 +0000
-@@ -2518,9 +2518,12 @@ exec_cmd(plot_struct *plot, char *comman
+@@ -2514,9 +2514,12 @@ exec_cmd(plot_struct *plot, char *comman
  	}
      }
      /*   X11_justify_text(mode) - set text justification mode  */
@@ -93,7 +93,7 @@
  
 --- gnuplot-6.0.0/src/plot.c
 +++ gnuplot-6.0.0/src/plot.c	2024-01-08 09:16:58.124450437 +0000
-@@ -296,6 +296,22 @@ main(int argc_orig, char **argv)
+@@ -298,6 +298,22 @@ main(int argc_orig, char **argv)
      rl_getc_function = getc_wrapper;
  #endif
  
@@ -113,7 +113,7 @@
 +    }
 +#endif
 +
- #if defined(HAVE_LIBREADLINE) || defined(HAVE_LIBEDITLINE)
+ #if defined(HAVE_LIBREADLINE)
      /* T.Walter 1999-06-24: 'rl_readline_name' must be this fix name.
       * It is used to parse a 'gnuplot' specific section in '~/.inputrc'
 --- gnuplot-6.0.0/src/term.h

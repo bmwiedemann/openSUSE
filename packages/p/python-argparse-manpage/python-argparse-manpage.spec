@@ -1,7 +1,7 @@
 #
 # spec file for package python-argparse-manpage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,17 @@ Summary:        Tool for automatic manual page building from a Python ArgumentPa
 License:        Apache-2.0
 URL:            https://github.com/praiskup/argparse-manpage
 Source:         https://github.com/praiskup/argparse-manpage/archive/v%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Skip pip install tests until pip can behave better
-Patch0:         skip-pip-install.patch
 BuildArch:      noarch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
+%if 0%{python_version_nodots} < 311
 Requires:       python-tomli
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages
@@ -52,15 +52,17 @@ support for (deprecated) optparse objects, too.
 %autosetup -p1 -n %{mod_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/argparse-manpage
 %python_clone -a %{buildroot}%{_mandir}/man1/argparse-manpage.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PIP_NO_INDEX=1
+export PIP_FIND_LINKS=$(ls -1 /usr/lib/python3.*/wheels | head -n 1)
 %pytest
 
 %post
@@ -70,11 +72,11 @@ support for (deprecated) optparse objects, too.
 %python_uninstall_alternative argparse-manpage
 
 %files %{python_files}
-%doc README*
+%doc README.md
 %license LICENSE
 %{python_sitelib}/argparse_manpage
 %{python_sitelib}/build_manpages
-%{python_sitelib}/argparse_manpage-%{version}*info
+%{python_sitelib}/argparse_manpage-%{version}.dist-info
 %python_alternative %{_bindir}/argparse-manpage
 %python_alternative %{_mandir}/man1/argparse-manpage.1%{?ext_man}
 

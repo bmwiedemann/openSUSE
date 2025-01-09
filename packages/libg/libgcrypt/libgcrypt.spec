@@ -1,7 +1,7 @@
 #
 # spec file for package libgcrypt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,8 @@ Patch105:       libgcrypt-FIPS-jitter-standalone.patch
 Patch106:       libgcrypt-FIPS-jitter-errorcodes.patch
 #PATCH-FIX-SUSE bsc#1220893 FIPS: Use Jitter RNG for the whole length entropy buffer
 Patch107:       libgcrypt-FIPS-jitter-whole-entropy.patch
+#PATCH-FIX-SUSE Remove not used rol64() definition after removing the built-in jitter rng
+Patch108:       libgcrypt-rol64-redefinition.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  libgpg-error-devel >= 1.49
 BuildRequires:  libtool

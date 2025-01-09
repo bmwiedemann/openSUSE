@@ -1,7 +1,7 @@
 #
 # spec file for package espeak-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,12 @@
 
 %define sover   1
 Name:           espeak-ng
-Version:        1.51.1
+Version:        1.52.0
 Release:        0
 Summary:        Software speech synthesizer (text-to-speech)
 License:        Apache-2.0 AND BSD-2-Clause AND GPL-3.0-or-later AND Unicode-DFS-2015
 URL:            https://github.com/espeak-ng/espeak-ng
 Source0:        https://github.com/espeak-ng/espeak-ng/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX_UPSTREAM fix-configure-1171.patch -- https://github.com/espeak-ng/espeak-ng/issues/1171
-Patch0:         https://github.com/espeak-ng/espeak-ng/commit/a25849e4d54a23ae1294b129d5696ca7e144ec8b.patch#/fix-configure-1171.patch
-# PATCH-FIX-UPSTEAM espeak-ng-CVE-2023-49990-49991-49992-49993-49994.patch -- based on https://github.com/espeak-ng/espeak-ng/commit/58f1e0b6a4e6aa55621c6f01118994d01fd6f68c.patch and backported
-Patch1:         espeak-ng-CVE-2023-49990-49991-49992-49993-49994.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool >= 2.4.2
@@ -57,6 +53,7 @@ This package contains development files for espeak-ng.
 Summary:        Executables compatible with the original espeak
 Requires:       %{name} = %{version}
 Conflicts:      espeak
+BuildArch:      noarch
 
 %description    compat
 This package contains executables compatible with the original espeak.
@@ -119,7 +116,7 @@ ESPEAK_DATA_PATH=`pwd` LD_LIBRARY_PATH=src:${LD_LIBRARY_PATH} src/espeak-ng ...
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG.md README.md
+%doc ChangeLog.md README.md
 %license COPYING COPYING.APACHE COPYING.BSD2 COPYING.UCD
 %{_bindir}/espeak-ng
 %{_bindir}/speak-ng

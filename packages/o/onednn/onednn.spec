@@ -1,7 +1,7 @@
 #
 # spec file for package onednn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,25 @@
 #
 
 
+%define libname libdnnl3
 %ifarch x86_64
 %bcond_without opencl
 %else
 # Build broken on non-x86, with openCL
 %bcond_with opencl
 %endif
-
 %ifarch aarch64
 # Disable ACL until fixed upstream - https://github.com/oneapi-src/oneDNN/issues/2137
 %bcond_with acl
 %else
 %bcond_with acl
 %endif
-
-%define libname libdnnl3
 Name:           onednn
-Version:        3.6
+Version:        3.6.2
 Release:        0
-Summary:        Intel Math Kernel Library for Deep Neural Networks
+Summary:        oneAPI Deep Neural Network Library (oneDNN)
 License:        Apache-2.0
-URL:            https://01.org/onednn
+URL:            https://github.com/oneapi-src/oneDNN
 Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
 BuildRequires:  chrpath
 BuildRequires:  cmake
@@ -44,7 +42,12 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
+BuildRequires:  ninja
 BuildRequires:  texlive-dvips-bin
+Provides:       mkl-dnn = %{version}
+Obsoletes:      mkl-dnn <= %{version}
+Provides:       oneDNN = %{version}
+ExclusiveArch:  x86_64 aarch64 ppc64le
 %if %{with acl}
 BuildRequires:  ComputeLibrary-devel >= 24.08.1
 %endif
@@ -53,17 +56,13 @@ BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenCL)
 %endif
-ExclusiveArch:  x86_64 aarch64 ppc64le
-Provides:       mkl-dnn = %{version}
-Obsoletes:      mkl-dnn <= %{version}
-Provides:       oneDNN = %{version}
 
 %description
-Intel Math Kernel Library for Deep Neural Networks (Intel MKL-DNN) is an
-open-source performance library for deep-learning applications. The library
-accelerates deep-learning applications and frameworks on Intel architecture.
-Intel MKL-DNN contains vectorized and threaded building blocks that you can use
-to implement deep neural networks (DNN) with C and C++ interfaces.
+oneAPI Deep Neural Network Library (oneDNN) is an open-source cross-platform
+performance library of basic building blocks for deep learning applications.
+
+oneDNN project is part of the UXL Foundation and is an implementation of the
+oneAPI specification for oneDNN component.
 
 %package -n benchdnn
 Summary:        Header files of Intel Math Kernel Library
@@ -81,13 +80,13 @@ This package only includes the benchmark utility including its input files.
 %package devel
 Summary:        Header files of Intel Math Kernel Library
 Requires:       %{libname} = %{version}
+Provides:       mkl-dnn-devel = %{version}
+Obsoletes:      mkl-dnn-devel <= %{version}
+Provides:       oneDNN-devel = %{version}
 %if %{with opencl}
 Requires:       opencl-headers
 Requires:       pkgconfig(OpenCL)
 %endif
-Provides:       mkl-dnn-devel = %{version}
-Obsoletes:      mkl-dnn-devel <= %{version}
-Provides:       oneDNN-devel = %{version}
 
 %description devel
 Intel Math Kernel Library for Deep Neural Networks (Intel MKL-DNN) is an
@@ -121,6 +120,7 @@ to implement deep neural networks (DNN) with C and C++ interfaces.
 %autosetup -p1 -n oneDNN-%{version}
 
 %build
+%define __builder ninja
 %cmake \
   -DCMAKE_INSTALL_LIBDIR=%{_lib} \
   -DMKLDNN_ARCH_OPT_FLAGS="" \
@@ -164,7 +164,7 @@ chrpath -d %{buildroot}/%{_bindir}/benchdnn
 # do not use macro so we can exclude all gpu and cross (gpu and cpu) tests (they need gpu set up)
 pushd build
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-ctest --output-on-failure --force-new-ctest-process %{_smp_mflags} -E '(gpu|cross)'
+ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} -E '(gpu|cross)'
 popd
 
 %post -n %{libname} -p /sbin/ldconfig

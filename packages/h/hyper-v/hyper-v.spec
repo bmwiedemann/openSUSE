@@ -43,7 +43,6 @@ URL:            http://www.kernel.org
 Version:        9
 Release:        0
 Source0:        hyper-v.lsvmbus.py
-Source5:        hyper-v.kvptest.ps1.txt
 Source7:        hyper-v.compare-with-upstream.sh
 Source8:        hyper-v.tools.hv.vmbus_bufring.h
 Source9:        hyper-v.include.linux.hyperv.h
@@ -63,7 +62,6 @@ This package contains the Microsoft Hyper-V tools.
 
 %prep
 %setup -Tc
-cp -avL %{S:5} kvptest.ps1.txt
 cp -vL %{S:8} %vmbus_bufring.h
 cp -vL %{S:9} %include_uapi_linux_hyperv.h
 cp -vL %{S:10} .
@@ -263,58 +261,15 @@ chmod 755 %buildroot${bindir}/${helper}
 %?python3_fix_shebang
 
 %files
-%doc kvptest.ps1.txt
 %_unitdir/*
 %_udevrulesdir/*
 %_sbindir/*
 %helper_dir
 
-%pre
-# hv_kvp_daemon in SLES11 SP2 stored temporary state files in /var/opt
-# move them to /var/lib and remove old directory, if possible.
-if test -d /var/opt/hyperv
-then
-	if mkdir -p -v -m 0755 /var/lib/hyperv
-	then
-		cd /var/lib/hyperv
-		for oldfile in /var/opt/hyperv/ifcfg-* /var/opt/hyperv/.kvp_pool_*
-		do
-			if test -e "${oldfile}"
-			then
-				mv -vfb "${oldfile}" . || :
-			fi
-		done
-		cd - >/dev/null
-	fi
-	rmdir -v  /var/opt/hyperv || :
-fi
-: nothing to do in case of systemd
-
+# the relevant part is systemctl daemon-reload, due to udev triggers
 %post
-board_vendor=
-product_name=
-if cd /sys/class/dmi/id 2>/dev/null
-then
-	if test -r board_vendor
-	then
-		board_vendor="`cat board_vendor`"
-	fi
-	if test -r product_name
-	then
-		product_name="`cat product_name`"
-	fi
-	cd - >/dev/null
-fi
-if test "${board_vendor}" = "Microsoft Corporation" -a "${product_name}" = "Virtual Machine"
-then
-: nothing to do in case of systemd
-fi
-
-%preun
-: nothing to do in case of systemd
-
+%service_add_post %hv_kvp_daemon %hv_vss_daemon %hv_fcopy_daemon %hv_fcopy_uio_daemon
 %postun
-# no restart on update because the daemon can not be restarted
-: nothing to do in case of systemd
+%service_del_postun_without_restart %hv_kvp_daemon %hv_vss_daemon %hv_fcopy_daemon %hv_fcopy_uio_daemon
 
 %changelog

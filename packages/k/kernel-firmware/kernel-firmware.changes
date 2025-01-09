@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 01 10:01:03 UTC 2025 - tiwai@suse.com
+
+- Update to version 20241220 (git commit 9cf329b39cf1):
+  * cnm: update chips&media wave521c firmware.
+  * WHENCE: Add "Info:" tag to text that's clearly not part of the license
+  * rtl_nic: add firmware rtl8125bp-2
+  * qcom: venus-5.4: update firmware binary for sc7180 and qcs615
+  * cirrus: cs35l56: Correct filenames of SSID 17aa3832
+  * cirrus: cs35l56: Add and update firmware for various Cirrus CS35L54 and CS35L56 laptops
+  * cirrus: cs35l56: Correct SSID order for 103c8d01 103c8d08 10431f43
+
+-------------------------------------------------------------------
 Wed Dec 11 14:39:32 UTC 2024 - tiwai@suse.com
 
 - Update to version 20241211 (git commit 163296523cd4):

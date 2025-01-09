@@ -1,0 +1,169 @@
+From 1053b3344c85646bbfbc59233a3d502183c3ea65 Mon Sep 17 00:00:00 2001
+From: Robert Altnoeder <robert.altnoeder@linbit.com>
+Date: Fri, 26 Jul 2024 08:37:09 +0200
+Subject: [PATCH 03/12] DRBDmon: Integrate global/local command delegation
+
+---
+ user/drbdmon/terminal/DisplayCommon.h       | 12 +++++-----
+ user/drbdmon/terminal/DisplayCommonImpl.cpp | 20 ++++++++++-------
+ user/drbdmon/terminal/DisplayCommonImpl.h   |  8 +++++--
+ user/drbdmon/terminal/MDspBase.cpp          | 25 +++------------------
+ 4 files changed, 28 insertions(+), 37 deletions(-)
+
+diff --git a/user/drbdmon/terminal/DisplayCommon.h b/user/drbdmon/terminal/DisplayCommon.h
+index 9160c3ddb215..b1b94e43e51f 100644
+--- a/user/drbdmon/terminal/DisplayCommon.h
++++ b/user/drbdmon/terminal/DisplayCommon.h
+@@ -2,6 +2,7 @@
+ #define DISPLAYCOMMON_H
+ 
+ #include <default_types.h>
++#include <terminal/ModularDisplay.h>
+ 
+ class DisplayCommon
+ {
+@@ -16,9 +17,7 @@ class DisplayCommon
+     enum command_state_type : uint8_t
+     {
+         INPUT       = 0,
+-        CANCEL      = 1,
+-        CMD_LOCAL   = 2,
+-        CMD_GLOBAL  = 3
++        CANCEL      = 1
+     };
+ 
+     virtual ~DisplayCommon() noexcept
+@@ -47,9 +46,12 @@ class DisplayCommon
+     virtual void display_problem_mode_label(const bool using_problem_mode) const = 0;
+     virtual problem_mode_type get_problem_mode() const noexcept = 0;
+     virtual void toggle_problem_mode() noexcept = 0;
+-    virtual command_state_type command_line_key_pressed(const uint32_t key) const = 0;
++    virtual command_state_type command_line_key_pressed(
++        const uint32_t  key,
++        ModularDisplay& display
++    ) const = 0;
+     virtual void activate_command_line() const = 0;
+-    virtual bool global_command() const = 0;
++    virtual bool execute_command(ModularDisplay& display) const = 0;
+     virtual void application_idle() const = 0;
+     virtual void application_working() const = 0;
+ };
+diff --git a/user/drbdmon/terminal/DisplayCommonImpl.cpp b/user/drbdmon/terminal/DisplayCommonImpl.cpp
+index 8427b2fc46a0..f3ceed782e02 100644
+--- a/user/drbdmon/terminal/DisplayCommonImpl.cpp
++++ b/user/drbdmon/terminal/DisplayCommonImpl.cpp
+@@ -706,7 +706,10 @@ void DisplayCommonImpl::toggle_problem_mode() noexcept
+     }
+ }
+ 
+-DisplayCommon::command_state_type DisplayCommonImpl::command_line_key_pressed(const uint32_t key) const
++DisplayCommon::command_state_type DisplayCommonImpl::command_line_key_pressed(
++    const uint32_t  key,
++    ModularDisplay& display
++) const
+ {
+     DisplayCommon::command_state_type state = DisplayCommon::command_state_type::INPUT;
+     if (key == KeyCodes::FUNC_12)
+@@ -717,11 +720,8 @@ DisplayCommon::command_state_type DisplayCommonImpl::command_line_key_pressed(co
+     else
+     if (key == KeyCodes::ENTER)
+     {
+-        state = DisplayCommon::command_state_type::CMD_LOCAL;
+-        if (global_command())
+-        {
+-            state = DisplayCommon::command_state_type::CMD_GLOBAL;
+-        }
++        const bool processed = execute_command(display);
++        state = processed ? DisplayCommon::command_state_type::CANCEL : DisplayCommon::command_state_type::INPUT;
+     }
+     else
+     {
+@@ -834,7 +834,7 @@ void DisplayCommonImpl::activate_command_line() const
+     }
+ }
+ 
+-bool DisplayCommonImpl::global_command() const
++bool DisplayCommonImpl::execute_command(ModularDisplay& display) const
+ {
+     bool processed = false;
+     const std::string& command = dsp_comp_hub.command_line->get_text();
+@@ -859,7 +859,11 @@ bool DisplayCommonImpl::global_command() const
+                     processed = dsp_comp_hub.global_cmd_exec->execute_command(upper_keyword, tokenizer);
+                     if (!processed)
+                     {
+-                        processed = dsp_comp_hub.drbd_cmd_exec->execute_command(upper_keyword, tokenizer);
++                        processed = display.execute_command(upper_keyword, tokenizer);
++                        if (!processed)
++                        {
++                            processed = dsp_comp_hub.drbd_cmd_exec->execute_command(upper_keyword, tokenizer);
++                        }
+                     }
+                 }
+             }
+diff --git a/user/drbdmon/terminal/DisplayCommonImpl.h b/user/drbdmon/terminal/DisplayCommonImpl.h
+index 1ac7fafa6f96..8e09bfbe1eb7 100644
+--- a/user/drbdmon/terminal/DisplayCommonImpl.h
++++ b/user/drbdmon/terminal/DisplayCommonImpl.h
+@@ -3,6 +3,7 @@
+ 
+ #include <default_types.h>
+ #include <terminal/DisplayCommon.h>
++#include <terminal/ModularDisplay.h>
+ #include <terminal/DisplayIo.h>
+ #include <terminal/ComponentsHub.h>
+ #include <string>
+@@ -35,9 +36,12 @@ class DisplayCommonImpl : public DisplayCommon
+     virtual void display_problem_mode_label(const bool using_problem_mode) const override;
+     virtual problem_mode_type get_problem_mode() const noexcept;
+     virtual void toggle_problem_mode() noexcept;
+-    virtual DisplayCommon::command_state_type command_line_key_pressed(const uint32_t key) const;
++    virtual command_state_type command_line_key_pressed(
++        const uint32_t  key,
++        ModularDisplay& display
++    ) const override;
+     virtual void activate_command_line() const;
+-    virtual bool global_command() const override;
++    virtual bool execute_command(ModularDisplay& display) const override;
+     virtual void application_idle() const override;
+     virtual void application_working() const override;
+ 
+diff --git a/user/drbdmon/terminal/MDspBase.cpp b/user/drbdmon/terminal/MDspBase.cpp
+index 77bc86af6160..f95d3a21ac7f 100644
+--- a/user/drbdmon/terminal/MDspBase.cpp
++++ b/user/drbdmon/terminal/MDspBase.cpp
+@@ -176,29 +176,10 @@ bool MDspBase::key_pressed(const uint32_t key)
+     else
+     if (base_input_mode == base_input_mode_type::COMMAND)
+     {
+-        const DisplayCommon::command_state_type state = dsp_comp_hub.dsp_common->command_line_key_pressed(key);
+-        bool exit_cmd_mode = false;
+-        if (state == DisplayCommon::command_state_type::CMD_LOCAL)
+-        {
+-            StringTokenizer tokenizer(dsp_comp_hub.command_line->get_text(), DisplayConsts::CMD_TOKEN_DELIMITER);
+-            if (tokenizer.has_next())
+-            {
+-                std::string keyword(tokenizer.next());
+-                if (keyword.length() >= 2)
+-                {
+-                    keyword.erase(0, 1);
+-                    std::string upper_keyword = string_transformations::uppercase_copy_of(keyword);
+-                    exit_cmd_mode = execute_command(upper_keyword, tokenizer);
+-                }
+-            }
+-        }
+-        else
++        const DisplayCommon::command_state_type state = dsp_comp_hub.dsp_common->command_line_key_pressed(
++            key, *this
++        );
+         if (state != DisplayCommon::command_state_type::INPUT)
+-        {
+-            exit_cmd_mode = true;
+-        }
+-
+-        if (exit_cmd_mode)
+         {
+             base_input_mode = base_input_mode_type::GLOBAL_KEYS;
+             dsp_comp_hub.dsp_io->write_text(dsp_comp_hub.ansi_ctl->ANSI_CURSOR_OFF.c_str());
+-- 
+2.43.0
+

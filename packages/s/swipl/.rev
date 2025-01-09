@@ -122,4 +122,22 @@
 (🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/6 by mcepl)</comment>
     <requestid>1225990</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>075825498894f3925d63ce6e40d1db46</srcmd5>
+    <version>9.3.18</version>
+    <time>1736431678</time>
+    <user>anag+factory</user>
+    <comment>Update To 9.3.18
+
+- Update to 9.3.18:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=9.3.15&amp;to=9.3.18
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.
+- Remove upstreamed patch:
+  - 104-fix-prolog_in_java.patch
+
+(🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/7 by mcepl)</comment>
+    <requestid>1235851</requestid>
+  </revision>
 </revisionlist>

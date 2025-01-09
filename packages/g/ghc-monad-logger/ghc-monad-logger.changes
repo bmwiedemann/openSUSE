@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 31 08:10:41 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update monad-logger to version 0.3.41.
+  ## 0.3.41
+
+  * Add `MonadAccum` instances for `LoggingT` and `NoLoggingT`
+
+-------------------------------------------------------------------
 Mon Jun  5 11:14:59 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update monad-logger to version 0.3.40.

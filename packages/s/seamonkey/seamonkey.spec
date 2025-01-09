@@ -56,10 +56,10 @@ BuildRequires:  xorg-x11-libXt-devel
 BuildRequires:  yasm
 BuildRequires:  zip
 BuildRequires:  pkgconfig(gdk-x11-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
+BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.30
 BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(libffi) > 3.0.9
@@ -78,9 +78,9 @@ BuildRequires:  clang-devel
 %endif
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.19
+Version:        2.53.20
 Release:        0
-%define releasedate 20240904000000
+%define releasedate 20250107000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -255,7 +255,9 @@ ac_add_options --disable-tests
 ac_add_options --disable-install-strip
 ac_add_options --enable-release
 ac_add_options --enable-default-toolkit=cairo-gtk3
-ac_add_options --disable-gconf
+
+# Removed for SeaMonkey 2.53.20
+#ac_add_options --disable-gconf
 
 # Elfhack fails on ix86: https://bugzilla.mozilla.org/show_bug.cgi?id=1706264
 %ifarch aarch64 ppc %arm %ix86
@@ -269,7 +271,8 @@ ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 %endif
 ac_add_options --with-system-zlib
-ac_add_options --with-system-bz2
+# Removed for SeaMonkey 2.53.20
+#ac_add_options --with-system-bz2
 
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 ac_add_options --with-system-webp
@@ -296,7 +299,8 @@ ac_add_options --with-system-webp
 
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
-ac_add_options --enable-startup-notification
+# Removed for SeaMonkey 2.53.20
+#ac_add_options --enable-startup-notification
 ac_add_options --enable-alsa
 %if %has_system_cairo
 ac_add_options --enable-system-cairo

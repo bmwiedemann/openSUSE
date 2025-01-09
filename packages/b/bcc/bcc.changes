@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 06:46:58 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Default to LLVM 19 in Factory and SLE15-SP7
+- Drop fix-alignment-issue-on-x86_64-due-to-consecutive-bit.patch
+  (bsc#1219096)
+  * since LLVM 19 this is no longer required
+
+-------------------------------------------------------------------
 Thu Nov 28 14:41:06 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Removed patch: build-remove-llvm-dev-dependency-from-libbcc.patch
@@ -41,6 +49,13 @@ Tue Jun  4 05:41:57 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Remove bcc-devel's requirement on llvm-devel
   * add build-remove-llvm-dev-dependency-from-libbcc.patch
+
+-------------------------------------------------------------------
+Fri May  3 13:46:02 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Fix incorrect offset calculation when consecutive bitfields are
+  present (bsc#1219096)
+  * add fix-alignment-issue-on-x86_64-due-to-consecutive-bit.patch
 
 -------------------------------------------------------------------
 Wed Mar 27 09:57:56 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>

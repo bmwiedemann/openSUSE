@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20241211
+%define version_unconverted 20241220
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20241211
+Version:        20241220
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT

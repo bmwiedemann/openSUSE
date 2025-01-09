@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyinstaller-hooks-contrib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyinstaller-hooks-contrib%{psuffix}
-Version:        2024.0
+Version:        2024.11
 Release:        0
 Summary:        Community maintained hooks for PyInstaller
 License:        Apache-2.0 OR GPL-2.0-only
 URL:            https://github.com/pyinstaller/pyinstaller-hooks-contrib
-Source:         https://files.pythonhosted.org/packages/source/p/pyinstaller-hooks-contrib/pyinstaller-hooks-contrib-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyinstaller_hooks_contrib/pyinstaller_hooks_contrib-%{version}.tar.gz
+# conftest.py not present in the tarball
+Source1:        https://raw.githubusercontent.com/pyinstaller/pyinstaller-hooks-contrib/refs/heads/master/tests/conftest.py
 BuildRequires:  %{python_module setuptools >= 30.3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -53,26 +56,28 @@ BuildRequires:  %{python_module scikit-learn}
 Community maintained hooks for PyInstaller
 
 %prep
-%autosetup -p1 -n pyinstaller-hooks-contrib-%{version}
+%autosetup -p1 -n pyinstaller_hooks_contrib-%{version}
+cp %{SOURCE1} tests/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
-%pytest src/_pyinstaller_hooks_contrib/tests
+# pytest-runner is dead in Python 3.13
+%pytest -k "not pytest_runner"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc README.md
-%license LICENSE LICENSE.APL.txt LICENSE.GPL.txt
+%license LICENSE
 %{python_sitelib}/_pyinstaller_hooks_contrib
 %{python_sitelib}/pyinstaller_hooks_contrib-%{version}*-info
 %endif

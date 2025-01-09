@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-semantic-conventions
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-semantic-conventions
-Version:        0.48b0
+Version:        0.50b0
 Release:        0
 Summary:        OpenTelemetry Semantic Conventions
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Deprecated >= 1.2.6
-Requires:       python-opentelemetry-api >= 1.27.0
+Requires:       python-opentelemetry-api >= 1.29.0
 BuildArch:      noarch
 %python_subpackages
 

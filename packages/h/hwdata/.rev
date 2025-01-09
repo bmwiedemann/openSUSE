@@ -746,4 +746,13 @@
   * Update pci and vendor ids</comment>
     <requestid>1228221</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e282802e51b6b8ebf6657410cd79a48f</srcmd5>
+    <version>0.391</version>
+    <time>1736431529</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.391
+  * Update pci and vendor ids</comment>
+    <requestid>1235818</requestid>
+  </revision>
 </revisionlist>

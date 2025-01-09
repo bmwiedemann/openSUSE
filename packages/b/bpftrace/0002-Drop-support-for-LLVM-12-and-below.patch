@@ -1,0 +1,363 @@
+From 08a7d5c48bc36c4876e7de62323a8860e886f7a8 Mon Sep 17 00:00:00 2001
+From: Alastair Robertson <ajor@meta.com>
+Date: Wed, 17 Jul 2024 08:03:30 -0700
+Subject: [PATCH 1/3] Drop support for LLVM 12 and below
+
+LLVM 11 and below have been untested for a while.
+Dropping LLVM 12 allows us to upgrade to C++ 20.
+---
+ .github/workflows/ci.yml        |  5 --
+ CHANGELOG.md                    |  2 +
+ CMakeLists.txt                  |  2 +-
+ flake.nix                       |  2 -
+ src/ast/irbuilderbpf.cpp        | 18 +-----
+ src/ast/irbuilderbpf.h          | 19 -------
+ src/ast/passes/codegen_llvm.cpp |  4 +-
+ src/clang_parser.cpp            | 99 +--------------------------------
+ tests/clang_parser.cpp          |  5 --
+ tests/data/CMakeLists.txt       |  8 +--
+ tests/testprogs/CMakeLists.txt  |  5 --
+ 11 files changed, 8 insertions(+), 161 deletions(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 6b87ea3c..a37b7bdc 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -28,11 +28,6 @@ jobs:
+     strategy:
+       matrix:
+         env:
+-        - NAME: LLVM 12 Release
+-          CMAKE_BUILD_TYPE: Release
+-          NIX_TARGET: .#bpftrace-llvm12
+-          TOOLS_TEST_OLDVERSION: tcpdrop.bt
+-          TOOLS_TEST_DISABLE: biosnoop.bt
+         - NAME: LLVM 13 Release
+           CMAKE_BUILD_TYPE: Release
+           NIX_TARGET: .#bpftrace-llvm13
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 7fa1fe14..c223b4e5 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -12,6 +12,8 @@ and this project adheres to
+ #### Changed
+ #### Deprecated
+ #### Removed
++- Drop support for LLVM 12 and below
++  - [#3325](https://github.com/bpftrace/bpftrace/pull/3325)
+ #### Fixed
+ #### Security
+ #### Docs
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e03ca7d..05ca8dcc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -148,7 +148,7 @@ else()
+   find_package(LLVM REQUIRED)
+ endif()
+ 
+-set(MIN_LLVM_MAJOR 6)
++set(MIN_LLVM_MAJOR 13)
+ set(MAX_LLVM_MAJOR 18)
+ 
+ if((${LLVM_VERSION_MAJOR} VERSION_LESS ${MIN_LLVM_MAJOR}) OR (${LLVM_VERSION_MAJOR} VERSION_GREATER ${MAX_LLVM_MAJOR}))
+diff --git a/flake.nix b/flake.nix
+index 6202e372..9931a2a5 100644
+--- a/flake.nix
++++ b/flake.nix
+@@ -145,7 +145,6 @@
+             bpftrace-llvm15 = mkBpftrace pkgs.llvmPackages_15;
+             bpftrace-llvm14 = mkBpftrace pkgs.llvmPackages_14;
+             bpftrace-llvm13 = mkBpftrace pkgs.llvmPackages_13;
+-            bpftrace-llvm12 = mkBpftrace pkgs.llvmPackages_12;
+ 
+             # Self-contained static binary with all dependencies
+             appimage = nix-appimage.mkappimage.${system} {
+@@ -192,7 +191,6 @@
+             bpftrace-llvm15 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm15;
+             bpftrace-llvm14 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm14;
+             bpftrace-llvm13 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm13;
+-            bpftrace-llvm12 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm12;
+           };
+         });
+ }
+diff --git a/src/ast/irbuilderbpf.cpp b/src/ast/irbuilderbpf.cpp
+index deccf4a8..89434075 100644
+--- a/src/ast/irbuilderbpf.cpp
++++ b/src/ast/irbuilderbpf.cpp
+@@ -15,14 +15,6 @@
+ #include "log.h"
+ #include "utils.h"
+ 
+-#if LLVM_VERSION_MAJOR >= 10
+-#define CREATE_MEMSET(ptr, val, size, align)                                   \
+-  CreateMemSet((ptr), (val), (size), MaybeAlign((align)))
+-#else
+-#define CREATE_MEMSET(ptr, val, size, align)                                   \
+-  CreateMemSet((ptr), (val), (size), (align))
+-#endif
+-
+ namespace libbpf {
+ #include "libbpf/bpf.h"
+ } // namespace libbpf
+@@ -247,7 +239,7 @@ void IRBuilderBPF::CreateMemsetBPF(Value *ptr, Value *val, uint32_t size)
+     // So only use helper based memset when we really need it. And that's when
+     // we're memset()ing off-stack. We know it's off stack b/c 512 is program
+     // stack limit.
+-    CREATE_MEMSET(ptr, val, getInt64(size), 1);
++    CreateMemSet(ptr, val, getInt64(size), MaybeAlign(1));
+   }
+ }
+ 
+@@ -347,11 +339,7 @@ CallInst *IRBuilderBPF::createCall(FunctionType *callee_type,
+                                    ArrayRef<Value *> args,
+                                    const Twine &Name)
+ {
+-#if LLVM_VERSION_MAJOR >= 11
+   return CreateCall(callee_type, callee, args, Name);
+-#else
+-  return CreateCall(callee, args, Name);
+-#endif
+ }
+ 
+ Value *IRBuilderBPF::GetMapVar(const std::string &map_name)
+@@ -2445,11 +2433,7 @@ StoreInst *IRBuilderBPF::createAlignedStore(Value *val,
+                                             Value *ptr,
+                                             unsigned int align)
+ {
+-#if LLVM_VERSION_MAJOR < 10
+-  return CreateAlignedStore(val, ptr, align);
+-#else
+   return CreateAlignedStore(val, ptr, MaybeAlign(align));
+-#endif
+ }
+ 
+ void IRBuilderBPF::CreateProbeRead(Value *ctx,
+diff --git a/src/ast/irbuilderbpf.h b/src/ast/irbuilderbpf.h
+index 6a42c003..e9b3b124 100644
+--- a/src/ast/irbuilderbpf.h
++++ b/src/ast/irbuilderbpf.h
+@@ -11,32 +11,13 @@
+ #include "bpftrace.h"
+ #include "types.h"
+ 
+-#if LLVM_VERSION_MAJOR >= 5 && LLVM_VERSION_MAJOR < 7
+-#define CREATE_MEMCPY(dst, src, size, algn)                                    \
+-  CreateMemCpy((dst), (src), (size), (algn))
+-#define CREATE_MEMCPY_VOLATILE(dst, src, size, algn)                           \
+-  CreateMemCpy((dst), (src), (size), (algn), true)
+-#elif LLVM_VERSION_MAJOR >= 7 && LLVM_VERSION_MAJOR < 10
+-#define CREATE_MEMCPY(dst, src, size, algn)                                    \
+-  CreateMemCpy((dst), (algn), (src), (algn), (size))
+-#define CREATE_MEMCPY_VOLATILE(dst, src, size, algn)                           \
+-  CreateMemCpy((dst), (algn), (src), (algn), (size), true)
+-#elif LLVM_VERSION_MAJOR >= 10
+ #define CREATE_MEMCPY(dst, src, size, algn)                                    \
+   CreateMemCpy((dst), MaybeAlign(algn), (src), MaybeAlign(algn), (size))
+ #define CREATE_MEMCPY_VOLATILE(dst, src, size, algn)                           \
+   CreateMemCpy((dst), MaybeAlign(algn), (src), MaybeAlign(algn), (size), true)
+-#else
+-#error Unsupported LLVM version
+-#endif
+ 
+-#if LLVM_VERSION_MAJOR >= 13
+ #define CREATE_ATOMIC_RMW(op, ptr, val, align, order)                          \
+   CreateAtomicRMW((op), (ptr), (val), MaybeAlign((align)), (order))
+-#else
+-#define CREATE_ATOMIC_RMW(op, ptr, val, align, order)                          \
+-  CreateAtomicRMW((op), (ptr), (val), (order))
+-#endif
+ 
+ #if LLVM_VERSION_MAJOR >= 15
+ #define GET_PTR_TY() getPtrTy()
+diff --git a/src/ast/passes/codegen_llvm.cpp b/src/ast/passes/codegen_llvm.cpp
+index 562ec65f..f4314023 100644
+--- a/src/ast/passes/codegen_llvm.cpp
++++ b/src/ast/passes/codegen_llvm.cpp
+@@ -3727,10 +3727,8 @@ void CodegenLLVM::emit(raw_pwrite_stream &stream)
+ 
+ #if LLVM_VERSION_MAJOR >= 18
+   auto type = CodeGenFileType::ObjectFile;
+-#elif LLVM_VERSION_MAJOR >= 10
+-  auto type = llvm::CGFT_ObjectFile;
+ #else
+-  auto type = llvm::TargetMachine::CGFT_ObjectFile;
++  auto type = llvm::CGFT_ObjectFile;
+ #endif
+ 
+   if (target_machine_->addPassesToEmitFile(PM, stream, nullptr, type))
+diff --git a/src/clang_parser.cpp b/src/clang_parser.cpp
+index 8d79f076..52bb8786 100644
+--- a/src/clang_parser.cpp
++++ b/src/clang_parser.cpp
+@@ -86,102 +86,6 @@ static std::string get_clang_string(CXString string)
+   return str;
+ }
+ 
+-/*
+- * is_anonymous
+- *
+- * Determine whether the provided cursor points to an anonymous struct.
+- *
+- * This union is anonymous:
+- *   struct { int i; };
+- * This is not, although it is marked as such in LLVM 8:
+- *   struct { int i; } obj;
+- * This is not, and does not actually declare an instance of a struct:
+- *   struct X { int i; };
+- *
+- * The libclang API was changed in LLVM 8 and restored under a different
+- * function in LLVM 9. For LLVM 8 there is no way to properly tell if
+- * a record declaration is anonymous, so we do some hacks here.
+- *
+- * LLVM version differences:
+- *   https://reviews.llvm.org/D54996
+- *   https://reviews.llvm.org/D61232
+- */
+-static bool is_anonymous(CXCursor c)
+-{
+-#if LLVM_VERSION_MAJOR <= 7
+-  return clang_Cursor_isAnonymous(c);
+-#elif LLVM_VERSION_MAJOR >= 9
+-  return clang_Cursor_isAnonymousRecordDecl(c);
+-#else // LLVM 8
+-  if (!clang_Cursor_isAnonymous(c))
+-    return false;
+-
+-  // In LLVM 8, some structs which the above function says are anonymous
+-  // are actually not. We iterate through the siblings of our struct
+-  // definition to see if there is a field giving it a name.
+-  //
+-  // struct Parent                 struct Parent
+-  // {                             {
+-  //   struct                        struct
+-  //   {                             {
+-  //     ...                           ...
+-  //   } name;                       };
+-  //   int sibling;                  int sibling;
+-  // };                            };
+-  //
+-  // Children of parent:           Children of parent:
+-  //   Struct: (cursor c)            Struct: (cursor c)
+-  //   Field:  (Record)name          Field:  (int)sibling
+-  //   Field:  (int)sibling
+-  //
+-  // Record field found after      No record field found after
+-  // cursor - not anonymous        cursor - anonymous
+-
+-  auto parent = clang_getCursorSemanticParent(c);
+-  if (clang_Cursor_isNull(parent))
+-    return false;
+-
+-  struct AnonFinderState {
+-    CXCursor struct_to_check;
+-    bool is_anon;
+-    bool prev_was_definition;
+-  } state;
+-
+-  state.struct_to_check = c;
+-  state.is_anon = true;
+-  state.prev_was_definition = false;
+-
+-  clang_visitChildren(
+-      parent,
+-      [](CXCursor c2, CXCursor, CXClientData client_data) {
+-        auto state = static_cast<struct AnonFinderState *>(client_data);
+-        if (state->prev_was_definition) {
+-          // This is the next child after the definition of the struct we're
+-          // interested in. If it is a field containing a record, we assume
+-          // that it must be the field for our struct, so our struct is not
+-          // anonymous.
+-          state->prev_was_definition = false;
+-          auto kind = clang_getCursorKind(c2);
+-          auto type = clang_getCanonicalType(clang_getCursorType(c2));
+-          if (kind == CXCursor_FieldDecl && type.kind == CXType_Record) {
+-            state->is_anon = false;
+-            return CXChildVisit_Break;
+-          }
+-        }
+-
+-        // We've found the definition of the struct we're interested in
+-        if (memcmp(c2.data,
+-                   state->struct_to_check.data,
+-                   3 * sizeof(uintptr_t)) == 0)
+-          state->prev_was_definition = true;
+-        return CXChildVisit_Continue;
+-      },
+-      &state);
+-
+-  return state.is_anon;
+-#endif
+-}
+-
+ /*
+  * get_named_parent
+  *
+@@ -192,7 +96,8 @@ static CXCursor get_named_parent(CXCursor c)
+ {
+   CXCursor parent = clang_getCursorSemanticParent(c);
+ 
+-  while (!clang_Cursor_isNull(parent) && is_anonymous(parent)) {
++  while (!clang_Cursor_isNull(parent) &&
++         clang_Cursor_isAnonymousRecordDecl(parent)) {
+     parent = clang_getCursorSemanticParent(parent);
+   }
+ 
+diff --git a/tests/clang_parser.cpp b/tests/clang_parser.cpp
+index acf07b19..db099fb4 100644
+--- a/tests/clang_parser.cpp
++++ b/tests/clang_parser.cpp
+@@ -208,13 +208,8 @@ TEST(clang_parser, nested_struct_no_type)
+   parse("struct Foo { struct { int x; } bar; union { int y; } baz; }",
+         bpftrace);
+ 
+-#if LLVM_VERSION_MAJOR >= 13
+   std::string bar_name = "struct Foo::(unnamed at definitions.h:2:14)";
+   std::string baz_name = "union Foo::(unnamed at definitions.h:2:37)";
+-#else
+-  std::string bar_name = "struct Foo::(anonymous at definitions.h:2:14)";
+-  std::string baz_name = "union Foo::(anonymous at definitions.h:2:37)";
+-#endif
+ 
+   ASSERT_TRUE(bpftrace.structs.Has("struct Foo"));
+   ASSERT_TRUE(bpftrace.structs.Has(bar_name));
+diff --git a/tests/data/CMakeLists.txt b/tests/data/CMakeLists.txt
+index 7eaded22..caa4b397 100644
+--- a/tests/data/CMakeLists.txt
++++ b/tests/data/CMakeLists.txt
+@@ -11,17 +11,11 @@ find_program(AWK awk REQUIRED)
+ find_program(STRIP strip REQUIRED)
+ 
+ # Build data_source.o and inject BTF into it
+-set(DATA_SOURCE_CFLAGS -g)
+-if(LLVM_VERSION_MAJOR VERSION_LESS 13)
+-  # CI's GCC compile the testprogs using DWARF version 5
+-  # LLDB doesn't support DWARF5 before version 13, so we force DWARF4
+-  set(DATA_SOURCE_CFLAGS ${DATA_SOURCE_CFLAGS} -gdwarf-4)
+-endif()
+ set(DATA_SOURCE_C ${CMAKE_CURRENT_SOURCE_DIR}/data_source.c)
+ set(DATA_SOURCE_O ${CMAKE_CURRENT_BINARY_DIR}/data_source.o)
+ add_custom_command(
+   OUTPUT ${DATA_SOURCE_O}
+-  COMMAND gcc ${DATA_SOURCE_CFLAGS} -o ${DATA_SOURCE_O} ${DATA_SOURCE_C}
++  COMMAND gcc -g -o ${DATA_SOURCE_O} ${DATA_SOURCE_C}
+   # pahole uses LLVM_OBJCOPY env var.
+   # We must hack it like this b/c cmake does not support setting env vars at build time
+   COMMAND bash -c "LLVM_OBJCOPY=${LLVM_OBJCOPY} pahole -J ${DATA_SOURCE_O}"
+diff --git a/tests/testprogs/CMakeLists.txt b/tests/testprogs/CMakeLists.txt
+index 58c17f7a..8f93658c 100644
+--- a/tests/testprogs/CMakeLists.txt
++++ b/tests/testprogs/CMakeLists.txt
+@@ -1,9 +1,4 @@
+ set(testprog_cflags "-g -O0 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer")
+-if(LLVM_VERSION_MAJOR VERSION_LESS 13)
+-  # CI's GCC compile the testprogs using DWARF version 5
+-  # LLDB doesn't support DWARF5 before version 13, so we force DWARF4
+-  set(testprog_cflags "${testprog_cflags} -gdwarf-4")
+-endif()
+ 
+ file(GLOB testprog_sources CONFIGURE_DEPENDS *.c)
+ set(testprogtargets "")
+-- 
+2.47.1
+

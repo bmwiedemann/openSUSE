@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>1233748</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7c315adf4ca13545e130a2cfecd490df</srcmd5>
+    <version>1.1.2</version>
+    <time>1736431530</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.1.2
+  * Show title &quot;System Updater&quot; in notifications</comment>
+    <requestid>1235868</requestid>
+  </revision>
 </revisionlist>

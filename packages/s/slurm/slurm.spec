@@ -1,7 +1,7 @@
 #
 # spec file for package slurm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 41
+%define so_version 42
 # Make sure to update `upgrades` as well!
-%define ver 24.05.4
-%define _ver _24_05
+%define ver 24.11.0
+%define _ver _24_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
@@ -61,6 +61,9 @@ ExclusiveArch:  do_not_build
 %endif
 %if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
 %define base_ver 2302
+%endif
+%if 0%{?sle_version} == 150700
+%define base_ver 2411
 %endif
 
 %define ver_m %{lua:x=string.gsub(rpm.expand("%ver"),"%.[^%.]*$","");print(x)}
@@ -756,6 +759,11 @@ rm %{buildroot}%{perl_archlib}/perllocal.pod \
    %{buildroot}%{perl_sitearch}/auto/Slurm/.packlist \
    %{buildroot}%{perl_sitearch}/auto/Slurmdb/.packlist
 
+# Fix shell completion bindings
+for i in `find %{buildroot}/usr/share/bash-completion/completions/ -type l`; do
+    ln -sf $(basename $(readlink -f $i)) $i;
+done
+
 mkdir -p %{buildroot}%{perl_vendorarch}
 
 mv %{buildroot}%{perl_sitearch}/* \
@@ -1081,6 +1089,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{?have_netloc:%{_bindir}/netloc_to_topology}
 %{_sbindir}/sackd
 %{_sbindir}/slurmctld
+%{_datadir}/bash-completion/completions/
 %dir %{_libdir}/slurm/src
 %{_unitdir}/slurmctld.service
 %{_sbindir}/rcslurmctld
@@ -1193,9 +1202,9 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/acct_gather_filesystem_lustre.so
 %{_libdir}/slurm/burst_buffer_lua.so
 %{_libdir}/slurm/burst_buffer_datawarp.so
+%{_libdir}/slurm/data_parser_v0_0_42.so
 %{_libdir}/slurm/data_parser_v0_0_41.so
 %{_libdir}/slurm/data_parser_v0_0_40.so
-%{_libdir}/slurm/data_parser_v0_0_39.so
 %{_libdir}/slurm/cgroup_v1.so
 %if 0%{?suse_version} >= 1500
 %{_libdir}/slurm/cgroup_v2.so
@@ -1270,6 +1279,9 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_libdir}/slurm/node_features_knl_generic.so
 %{_libdir}/slurm/acct_gather_profile_influxdb.so
 %{_libdir}/slurm/jobcomp_elasticsearch.so
+%{_libdir}/slurm/certmgr_script.so
+%{_libdir}/slurm/gpu_nvidia.so
+%{_libdir}/slurm/mcs_label.so
 
 %files lua
 %{_libdir}/slurm/job_submit_lua.so
@@ -1304,8 +1316,6 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man8/slurmrestd.*
 %{_libdir}/slurm/openapi_slurmctld.so
 %{_libdir}/slurm/openapi_slurmdbd.so
-%{_libdir}/slurm/openapi_dbv0_0_39.so
-%{_libdir}/slurm/openapi_v0_0_39.so
 %{_libdir}/slurm/rest_auth_local.so
 %endif
 

@@ -191,4 +191,16 @@ Also switch to _service and generated tarball
 (🤖: Submission of git-bug via https://src.opensuse.org/pool/git-bug/pulls/2 by mcepl)</comment>
     <requestid>1231700</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1728520f93a4a252eb624d8ae18cec2a</srcmd5>
+    <version>0.8.0+git.1733745604.d499b6e</version>
+    <time>1736431667</time>
+    <user>anag+factory</user>
+    <comment>Update To D499b6e
+
+Update to the commit d499b6e.
+
+(🤖: Submission of git-bug via https://src.opensuse.org/pool/git-bug/pulls/4 by mcepl)</comment>
+    <requestid>1235844</requestid>
+  </revision>
 </revisionlist>

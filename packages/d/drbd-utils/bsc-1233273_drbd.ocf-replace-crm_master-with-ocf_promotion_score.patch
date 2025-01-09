@@ -57,15 +57,15 @@ index 1d051baa550d..133aff737455 100755
  	if [[ $1 -le 0 ]]; then
  		remove_master_score
  	else
--		do_cmd ${HA_SBIN_DIR}/crm_master -Q -l reboot -v $1 &&
-+		do_cmd ocf_promotion_score -Q -v $1 &&
+-		do_cmd_CRM_meta_timeout ${HA_SBIN_DIR}/crm_master -Q -l reboot -v $1 &&
++		do_cmd_CRM_meta_timeout ocf_promotion_score -Q -v $1 &&
  		current_master_score=$1
  	fi
  }
  
  remove_master_score() {
--	do_cmd ${HA_SBIN_DIR}/crm_master -l reboot -D
-+	do_cmd ocf_promotion_score -D
+-	do_cmd_CRM_meta_timeout ${HA_SBIN_DIR}/crm_master -l reboot -D
++	do_cmd_CRM_meta_timeout ocf_promotion_score -D
  	current_master_score=""
  }
  

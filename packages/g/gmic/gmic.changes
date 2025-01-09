@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  7 13:10:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- gimp3 plugin needs to be in a subdir 
+
+-------------------------------------------------------------------
+Tue Jan  7 12:57:23 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- use installation of gimp plugin by using install -D
+
+-------------------------------------------------------------------
+Tue Jan  7 12:37:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix the gimp 3 based build by using gimptool-3.0 instead of
+  gimptool-2.99
+
+-------------------------------------------------------------------
 Wed Jan  1 14:12:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.5.0

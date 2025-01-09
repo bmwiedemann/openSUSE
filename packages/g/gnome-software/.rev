@@ -1230,4 +1230,12 @@ New stable release</comment>
   + Updated translations. (forwarded request 1226281 from iznogood)</comment>
     <requestid>1226511</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>95265d7bf60dd39e473facb13714377a</srcmd5>
+    <version>47.3</version>
+    <time>1736431482</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235453</requestid>
+  </revision>
 </revisionlist>

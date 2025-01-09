@@ -1,7 +1,7 @@
 #
 # spec file for package remmina
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with     remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.37
+Version:        1.4.39
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -61,12 +61,12 @@ BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(spice-client-gtk-3.0)
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
-%if 0%{?suse_version} > 1590
+%if 0%{?suse_version} > 1690
 BuildRequires:  pkgconfig(freerdp3) >= 3.0.0
 BuildRequires:  pkgconfig(winpr3)
 %else
-BuildRequires:  freerdp-devel < 3.0.0
-BuildRequires:  freerdp-server < 3.0.0
+BuildRequires:  freerdp2-devel < 3.0.0
+BuildRequires:  freerdp2-server < 3.0.0
 BuildRequires:  pkgconfig(winpr2)
 %endif
 BuildRequires:  pkgconfig(xkbfile)

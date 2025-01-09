@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Jan 09 06:41:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.1.1:
+  * chore(main): release 3.1.1 (#412)
+  * fix: dockerfile expected binary at /, not /usr/bin/ #410 (#411)
+
+-------------------------------------------------------------------
+Wed Jan 08 12:04:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.1.0:
+  * chore(main): release 3.1.0 (#408)
+  * chore(deps): bump anchore/sbom-action from 0.17.4 to 0.17.9
+    (#407)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.7
+    to 1.4.8 (#406)
+  * fix: actually use the correct end marker (#405)
+  * fix: this release-please marker (#403)
+  * ci: build artifacts with GoReleaser and use Release Please
+    (#385)
+  * chore(deps): bump wagoid/commitlint-github-action from 6.1.2 to
+    6.2.0 (#400)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.6
+    to 1.4.7 (#398)
+  * chore(deps): bump golang.org/x/text from 0.20.0 to 0.21.0
+    (#399)
+  * chore(deps): bump codecov/codecov-action from 4 to 5 (#396)
+  * chore(deps): bump golang.org/x/text from 0.19.0 to 0.20.0
+    (#395)
+  * refactor: replace Logger.LogMessage by storing an io.Writer
+    (#380)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.5
+    to 1.4.6 (#393)
+  * docs: fix Hits-of-Code badge (#391)
+  * chore: rename our own .ecrc to the new name (#392)
+  * chore: pre-commit v2 (#384)
+  * chore: add a pre-commit config (#381)
+  * fix: add `.ecrc` deprecation warning (#389)
+  * fix: typo in config, `SpacesAftertabs` => `SpacesAfterTabs`
+    (#386)
+  * chore(deps): bump golang.org/x/text from 0.18.0 to 0.19.0
+    (#387)
+  * chore: load codecov token from secrets (#382)
+  * docs: add CONTRIBUTING.md and MAINTAINERS.md (#378)
+  * refactor: output FormatErrors (#377)
+  * feat: support `.editorconfig-checker.json` config (#375)
+  * docs: try to explain excludes better for #370 (#372)
+  * chore: docker `FROM…as` to `FROM…AS` (#376)
+  * feat: provide Codeclimate compatible report fromat (#367)
+  * chore(deps): bump golang.org/x/text from 0.17.0 to 0.18.0
+    (#369)
+  * chore(deps): bump wagoid/commitlint-github-action from 6.1.1 to
+    6.1.2 (#368)
+  * feat: consolidate adjacent error messages (#360)
+  * feat: editorconfig-checker-disable-next-line (#363)
+  * feat: add zip version when compressing all binaries (#321)
+    (#362)
+  * chore(deps): bump wagoid/commitlint-github-action from 6.0.2 to
+    6.1.1 (#361)
+  * chore(deps): bump golang.org/x/text from 0.16.0 to 0.17.0
+    (#358)
+  * chore(deps): bump wagoid/commitlint-github-action from 6.0.1 to
+    6.0.2 (#357)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.4
+    to 1.4.5 (#356)
+
+-------------------------------------------------------------------
 Mon Dec 23 07:44:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.3:

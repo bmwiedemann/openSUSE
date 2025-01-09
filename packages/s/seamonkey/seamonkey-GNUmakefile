@@ -51,10 +51,13 @@ ifeq (,$(wildcard .mozconfig))
 $(error Cannot find .mozconfig file in the current directory)
 endif
 
-MACH_CMD = env MACH_USE_SYSTEM_PYTHON=1 ./mach --log-no-times
 export MACH_USE_SYSTEM_PYTHON = 1
+export MOZBUILD_STATE_PATH=$(CURDIR)/.mozbuild
 
-OBJDIR := $(shell $(MACH_CMD) environment --format=json | sed -e 's/.*"topobjdir": "//' -e 's/".*//')
+MACH_CMD = env MACH_USE_SYSTEM_PYTHON=1 MOZBUILD_STATE_PATH=$(CURDIR)/.mozbuild ./mach --log-no-times
+
+
+OBJDIR := $(shell $(MACH_CMD) environment --format=json | sed -n -e 's/.*"topobjdir": "//' -e 's/".*//p')
 
 OBJDIR_TARGETS = install distribution source-package package clobber
 
@@ -70,6 +73,10 @@ configure: $(OBJDIR)/Makefile
 
 $(OBJDIR)/Makefile: .mozconfig
 	$(MACH_CMD) configure
+
+#  Since the bug #1671424, a separate "mach configure" no longer creates $(OBJDIR)/CLOBBER stamp file
+#  (as full "mach build" does), so do it manually as before.
+	[ -f $(OBJDIR)/CLOBBER ] || touch -r $(OBJDIR)/.mozconfig.json $(OBJDIR)/CLOBBER
 
 
 build: $(OBJDIR)/Makefile

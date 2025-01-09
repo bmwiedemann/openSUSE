@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
 Source0:        https://download.gnome.org/sources/gtksourceview/4.8/%{_name}-%{version}.tar.xz
-Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
@@ -124,8 +123,6 @@ features typical of a source editor.
 %meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-4
-# Install language definition for *.changes files:
-install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-4/language-specs/
 
 %ldconfig_scriptlets -n libgtksourceview-4-0
 

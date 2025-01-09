@@ -1801,4 +1801,22 @@
   * Added new detector for Twilio APIKey (#3803) (forwarded request 1233100 from ph03nix)</comment>
     <requestid>1233105</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>df2e6a732382e327d06bc27e57314298</srcmd5>
+    <version>3.88.1</version>
+    <time>1736431616</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.1:
+  * added token_revoke status condition in slack api detector (#3831)
+  * feat(scrapingbee): tweak detections (#3820)
+  * [chore] - remove resumption option (#3830)
+  * Deprecated RockSet and RestPack detectors (#3812)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.13.0 [security] (#3829)
+  * stop using context.TODO in archive handler (#3809)
+  * fixed bombbomb detector pattern test as part of issue 3817 (#3825)
+  * fixed github issue 3821 for string shannon entropy test (#3824)
+  * fixed github issue 3819 for endpoint customizer tests (#3823)
+  * fixed github issue 3774 for custom detector secret size (#3816) (forwarded request 1235708 from ph03nix)</comment>
+    <requestid>1235715</requestid>
+  </revision>
 </revisionlist>

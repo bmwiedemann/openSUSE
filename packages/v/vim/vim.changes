@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:13:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0993
+ * 9.1.0993: New 'cmdheight' behavior may be surprising
+ * runtime(sh): fix typo in Last Change header
+ * 9.1.0992: Vim9: double-free after v9.1.0988
+ * 9.1.0991: v:stacktrace has wrong type in Vim9 script
+ * runtime(sh): add PS0 to bashSpecialVariables in syntax script
+ * runtime(vim): Remove trailing comma from match_words
+ * runtime(zsh): sync syntax script with upstream repo
+ * runtime(doc): Capitalise the mnemonic "Zero" for the 'z' flag of search()
+ * 9.1.0990: Inconsistent behavior when changing cmdheight
+ * 9.1.0989: Vim9: Whitespace after the final enum value causes a syntax error
+ * runtime(java): Quietly opt out for unsupported markdown.vim versions
+ * runtime(vim): fix failing vim syntax test
+ * 9.1.0988: Vim9: no error when using uninitialized var in new()
+ * runtime(doc): update index.txt
+ * 9.1.0987: filetype: cake files are not recognized
+ * 9.1.0986: filetype: 'jj' filetype is a bit imprecise
+ * runtime(jj): Support diffs in jj syntax
+ * runtime(vim): Update matchit pattern, no Vim9 short names
+ * 9.1.0985: Vim9: some ex commands can be shortened
+ * 9.1.0984: exception handling can be improved
+ * runtime(doc): update doc for :horizontal
+ * runtime(doc): update index.txt, windows.txt and version9.txt
+ * runtime(doc): Tweak documentation about base64 function
+ * runtime(chordpro): update syntax script
+ * 9.1.0983: not able to get the displayed items in complete_info()
+ * runtime(doc): use standard SGR format at :h xterm-true-color
+ * 9.1.0982: TI linker files are not recognized
+ * runtime(vim): update vim generator syntax script
+ * 9.1.0981: tests: typo in test_filetype.vim
+ * 9.1.0980: no support for base64 en-/decoding functions in Vim Script
+ * syntax(sh): Improve the recognition of bracket expressions
+ * runtime(doc): mention how NUL bytes are handled
+ * 9.1.0979: VMS: type warning with $XDG_VIMRC_FILE
+ * 9.1.0978: GUI tests sometimes fail when setting 'scroll' options
+ * 9.1.0977: filetype: msbuild filetypes are not recognized
+ * 9.1.0976: Vim9: missing return statement with throw
+ * 9.1.0975: Vim9: interpolated string expr not working in object methods
+ * 9.1.0974: typo in change of commit v9.1.0873
+ * 9.1.0973: too many strlen() calls in fileio.c
+ * runtime(sh): set shellcheck as the compiler for supported shells
+ * runtime(doc): Fix enum example syntax
+ * 9.1.0972: filetype: TI linker map files are not recognized
+ * runtime(vim): Improve syntax script generator for Vim Script
+ * 9.1.0971: filetype: SLNX files are not recognized
+ * 9.1.0970: VMS: build errors on VMS architecture
+ * runtime(doc): Fix documentation typos
+ * runtime(doc): update for new keyprotocol option value (after v9.1.0969)
+ * 9.1.0969: ghostty not using kitty protocol by default
+ * 9.1.0968: tests: GetFileNameChecks() isn't fully sorted by filetype name
+ * runtime(doc): update version9.txt for bash filetype
+ * runtime(netrw): update last change header for #16265
+ * runtime(doc): fix doc error in :r behaviour
+ * 9.1.0967: SpotBugs compiler setup can be further improved
+ * 9.1.0966: Vim9: :enum command can be shortened
+ * runtime(compiler): include a basic bash syntax checker compiler
+ * 9.1.0965: filetype: sh filetype set when detecting the use of bash
+ * runtime(doc): clarify ARCH value for 32-bit in INSTALLpc.txt
+ * 9.1.0963: fuzzy-matching does not prefer full match
+ * 9.1.0962: filetype: bun.lock file is not recognized
+ * runtime(vim): update indentation plugin for Vim script
+ * runtime(doc): tweak documentation style in helphelp.txt
+ * runtime(vim): Update base-syntax, allow parens in default arguments
+ * runtime(doc): mention auto-format using clang-format for sound.c/sign.c
+ * runtime(help): fix typo s/additional/arbitrary/
+ * runtime(help): Add better support for language annotation highlighting
+ * 9.1.0961: filetype: TI gel files are not recognized
+ * 9.1.0960: filetype: hy history files are not recognized
+ * translation(fi): Fix typoes in Finish menu translation
+ * 9.1.0959: Coverity complains about type conversion
+ * runtime(vim): Use supported syntax in indent tests
+ * 9.1.0958: filetype: supertux2 config files detected as lisp
+ * 9.1.0956: completion may crash, completion highlight wrong with preview window
+ * 9.1.0955: Vim9: vim9compile.c can be further improved
+ * runtime(doc): move help tag E1182
+ * runtime(graphql): contribute vim-graphql to Vim core
+ * 9.1.0954: popupmenu.c can be improved
+ * 9.1.0953: filetype: APKBUILD files not correctly detected
+ * 9.1.0952: Vim9: missing type checking for any type assignment
+ * 9.1.0951: filetype: jshell files are not recognized
+ * runtime(dockerfile): do not set commentstring in syntax script
+ * 9.1.0950: filetype: fennelrc files are not recognized
+ * runtime(netrw): do not double escape Vim special characters
+ * git: ignore reformatting change of netrw plugin
+ * runtime(netrw): more reformating #16248
+ * runtime(doc): Add a note about handling symbolic links in starting.txt
+ * 9.1.0949: popups inconsistently shifted to the left
+ * git: ignore reformatting change of netrw plugin
+ * runtime(netrw): change indent size from 1 to 2
+ * 9.1.0948: Missing cmdline completion for :pbuffer
+ * runtime(tutor): Reformat tutor1
+ * 9.1.0947: short-description
+ * 9.1.0946: cross-compiling fails on osx-arm64
+ * 9.1.0945: ComplMatchIns highlight doesn't end after inserted text
+ * translation(sv): re-include the change from #16240
+ * 9.1.0944: tests: test_registers fails when not run under X11
+ * 9.1.0943: Vim9: vim9compile.c can be further improved
+ * runtime(doc): Update README and mention make check to verify
+ * translation(sv): partly revert commit 98874dca6d0b60ccd6fc3a140b3ec
+ * runtime(vim): update base-syntax after v9.1.0936
+ * 9.1.0942: a few typos were found
+ * 9.1.0941: ComplMatchIns doesn't work after multibyte chars
+ * runtime(doc): Fix style in fold.txt
+ * translation(sv): Fix typo in Swedish translation
+ * 9.1.0940: Wrong cursor shape with "gq" and 'indentexpr' executes :normal
+ * runtime(doc): fix some small errors
+ * 9.1.0939: make installtutor fails
+ * 9.1.0938: exclusive selection not respected when re-selecting block mode
+ * 9.1.0937: test_undolist() is flaky
+ * 9.1.0936: cannot highlight completed text
+ * 9.1.0935: SpotBugs compiler can be improved
+ * 9.1.0934: hard to view an existing buffer in the preview window
+ * runtime(doc): document how to minimize fold computation costs
+ * 9.1.0933: Vim9: vim9compile.c can be further improved
+ * 9.1.0932: new Italian tutor not installed
+ * runtime(doc): fix a few minor errors from the last doc updates
+ * translation(it): add Italian translation for the interactive tutor
+ * runtime(doc): update the change.txt help file
+ * runtime(help): Add Vim lang annotation support for codeblocks
+ * 9.1.0931: ml_get error in terminal buffer
+ * 9.1.0930: tests: test_terminal2 may hang in GUI mode
+ * 9.1.0929: filetype: lalrpop files are not recognized
+ * 9.1.0928: tests: test_popupwin fails because the filter command fails
+ * editorconfig: set trim_trailing_whitespace = false for src/testdir/test*.vim
+ * 9.1.0927: style issues in insexpand.c
+ * 9.1.0926: filetype: Pixi lock files are not recognized
+ * runtime(doc): Add a reference to |++opt| and |+cmd| at `:h :pedit`
+ * runtime(doc): add a note about inclusive motions and exclusive selection
+ * 9.1.0925: Vim9: expression compiled when not necessary
+ * 9.1.0924: patch 9.1.0923 causes issues
+ * 9.1.0923: too many strlen() calls in filepath.c
+ * 9.1.0923: wrong MIN macro in popupmenu.c
+ * 9.1.0921: popupmenu logic is a bit convoluted
+ * 9.1.0920: Vim9: compile_assignment() too long
+ * 9.1.0919: filetype: some assembler files are not recognized
+ * runtime(netrw): do not pollute search history with symlinks
+ * 9.1.0918: tiny Vim crashes with fuzzy buffer completion
+ * 9.1.0917: various vartabstop and shiftround bugs when shifting lines
+ * runtime(typst): add definition lists to formatlistpat, update maintainer
+ * 9.1.0916: messages.c is exceeding 80 columns
+ * runtime(proto): include filetype plugin for protobuf
+ * 9.1.0915: GVim: default font size a bit too small
+ * 9.1.0914: Vim9: compile_assignment() is too long
+ * 9.1.0913: no error check for neg values for 'messagesopt'
+ * runtime(netrw): only check first arg of netrw_browsex_viewer for being executable
+ * 9.1.0912: xxd: integer overflow with sparse files and -autoskip
+ * 9.1.0911: Variable name for 'messagesopt' doesn't match short name
+ * 9.1.0910: 'messagesopt' does not check max wait time
+ * runtime(doc): update wrong Vietnamese localization tag
+ * 9.1.0909: Vim9: crash when calling instance method
+
+-------------------------------------------------------------------
 Sat Dec  7 12:51:41 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0908

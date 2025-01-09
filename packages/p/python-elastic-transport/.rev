@@ -134,4 +134,15 @@
     problems</comment>
     <requestid>1230777</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>049c5d0fb4831cdfbcf49ba94431110c</srcmd5>
+    <version>8.17.0</version>
+    <time>1736431552</time>
+    <user>anag+factory</user>
+    <comment>- 8.17.0: 
+  * Fix use of SSLContext with sniffing (#199)
+  * Fix enabled_cleanup_closed warning (#202)
+  * Remove unneeded install requirement (#196)</comment>
+    <requestid>1236129</requestid>
+  </revision>
 </revisionlist>

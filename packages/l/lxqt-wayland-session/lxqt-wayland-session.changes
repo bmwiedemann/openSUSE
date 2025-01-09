@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan  8 17:29:38 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Drop:
+  * 0001-Adjust-labwc-pointerspeed.patch
+  * 001-labwc-autostart-swaybg.patch
+- Add:
+  * 0001-configuration-changes-for-default-labwc-session.patch
+    - Combines both dropped patches to a git_am style patch
+  * Recommends for labwc session (Quality of Life Improvements)
+    - labwc-tweaks (some GUI labwc configuration options)
+    - wdisplays (GUI settings of displays under wayland)
+    - sddm-conf (GUI configuration for sddm)
+
+-------------------------------------------------------------------
+Mon Dec 30 17:08:33 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added Requires: hyprland-qtutils to hyprland session, provides
+  further integration/support with the Qt toolkit to hyprland
+
+-------------------------------------------------------------------
+Mon Dec 30 17:05:50 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added:
+  * 0001-Adjust-labwc-pointerspeed.patch Adjusts default pointer
+    speed in labwc session
+
+-------------------------------------------------------------------
 Mon Nov 25 18:24:00 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 0.1.1:

@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} > 1600
 %bcond_without docs
 %else
 %bcond_with    docs

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  8 21:46:41 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.3.2.
+  Changelog: https://github.com/rbenv/rbenv/releases/tag/v1.3.2
+  * Fix traversing PATH for bash < 4.4 by @mislav in #1606
+
+-------------------------------------------------------------------
+Wed Jan  8 01:57:15 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.3.1.
+  Changelog: https://github.com/rbenv/rbenv/releases/tag/v1.3.1
+  * Add `/usr/etc/rbenv.d` to hooks path by @tomschr in #1587
+  * Use `readarray` in bash v4+ to avoid rbenv init hanging by @mislav in #1604
+  * Add instructions for Fedora Linux installation by @nethad in #1583
+  * Skip BW01 and BW02 error messages during tests by @mikelolasagasti in #1600
+  * Bump mislav/bump-homebrew-formula-action from 3.1 to 3.2 by @dependabot in #1598
+
+-------------------------------------------------------------------
 Sat Jul  6 19:10:02 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 1.3.0.

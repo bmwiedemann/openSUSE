@@ -2358,4 +2358,12 @@ soon.
   for debug info sections by default.</comment>
     <requestid>1229830</requestid>
   </revision>
+  <revision rev="175" vrev="4">
+    <srcmd5>f58f92a2b8cf2dd6ff4f71684b926168</srcmd5>
+    <version>2.43</version>
+    <time>1736431449</time>
+    <user>anag+factory</user>
+    <comment>- Unset SUSE_ZNOW while running testsuite, many tests cannot cope (forwarded request 1231723 from Andreas_Schwab)</comment>
+    <requestid>1235669</requestid>
+  </revision>
 </revisionlist>

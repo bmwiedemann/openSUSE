@@ -159,4 +159,15 @@
   * Switch to google.golang.org/protobuf</comment>
     <requestid>1159841</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>707b21d390459787eab23021ffdf7fff</srcmd5>
+    <version>20250107.10e1695</version>
+    <time>1736431650</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250107.10e1695:
+  * Update dependencies
+  * Replace hostname command
+  * Add metrics namespace</comment>
+    <requestid>1235802</requestid>
+  </revision>
 </revisionlist>

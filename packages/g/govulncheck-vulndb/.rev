@@ -313,4 +313,16 @@
   * GO-2024-3354 CVE-2024-12678 GHSA-hr68-hvgv-xxqf (forwarded request 1232952 from jfkw)</comment>
     <requestid>1232963</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d87d029cb8e2b28288bfbd72c3138aca</srcmd5>
+    <version>0.0.20250108T191942</version>
+    <time>1736431617</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20250108T191942 2025-01-08T19:19:42Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3371 GHSA-2r2v-9pf8-6342
+  * GO-2025-3374 CVE-2025-22130 GHSA-j4jw-m6xr-fv6c (forwarded request 1236064 from jfkw)</comment>
+    <requestid>1236065</requestid>
+  </revision>
 </revisionlist>

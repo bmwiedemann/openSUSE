@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Jan 08 06:38:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.26.1:
+  * chore(main): release 0.26.1 (#1423)
+  * docs(website): move website to
+    https://github.com/glasskube/glasskube.dev/ (#1479)
+  * chore(deps): update dependency typescript-eslint to v8.19.1
+    (#1482)
+  * docs(website): fix company name input type (#1478)
+  * docs(website): add contact form (#1477)
+  * chore(deps): update dependency esbuild to v0.24.2 (#1467)
+  * fix(deps): update dependency @giscus/react to v3.1.0 (#1475)
+  * fix(deps): update dependency giscus to v1.6.0 (#1476)
+  * chore(deps): update dependency typescript-eslint to v8.19.0
+    (#1473)
+  * fix(deps): update fontsource monorepo to v5.1.1 (#1471)
+  * chore(deps): update dependency eslint-plugin-react to v7.37.3
+    (#1469)
+  * chore(deps): update dependency typescript-eslint to v8.18.2
+    (#1468)
+  * docs(website): added airgapped glossary piece (#1463)
+  * chore(deps): update dependency esbuild to v0.24.1 (#1465)
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.22.1
+    (#1464)
+  * chore(deps): update actions/upload-artifact action to v4.5.0
+    (#1461)
+  * chore(deps): update dependency globals to v15.14.0 (#1462)
+  * fix(deps): update font awesome to v6.7.2 (#1460)
+  * chore(deps): update dependency typescript-eslint to v8.18.1
+    (#1459)
+  * chore(deps): update actions/setup-go digest to 3041bf5 (#1451)
+  * chore(deps): update dependency @commitlint/cli to v19.6.1
+    (#1458)
+  * chore(deps): update dependency @eslint/js to v9.17.0 (#1457)
+  * fix(deps): update dependency htmx.org to v2.0.4 (#1456)
+  * fix(deps): update dependency htmx-ext-response-targets to
+    v2.0.2 (#1455)
+  * docs(website): glossary isv (#1454)
+  * fix(deps): update dependency prism-react-renderer to v2.4.1
+    (#1453)
+  * fix(deps): update dependency posthog-docusaurus to v2.0.2
+    (#1449)
+  * docs(webiste): fix link (#1448)
+  * docs(website): adapt website for glasskube cloud launch (#1437)
+  * chore(deps): bump nanoid from 3.3.7 to 3.3.8 in /website
+    (#1446)
+  * chore(deps): bump path-to-regexp and express in /website
+    (#1442)
+  * fix(deps): update module sigs.k8s.io/controller-runtime to
+    v0.19.3 (#1433)
+  * fix(deps): update module golang.org/x/term to v0.27.0 (#1436)
+  * fix(deps): update module github.com/onsi/gomega to v1.36.1
+    (#1444)
+  * chore(deps): update dependency typescript-eslint to v8.18.0
+    (#1443)
+  * chore(deps): update actions/cache action to v4.2.0 (#1438)
+  * docs(website): add on-prem glossary piece and fix broken link
+    (#1441)
+  * docs(website): fix broken link (#1440)
+  * chore(deps): update dependency typescript-eslint to v8.17.0
+    (#1435)
+  * chore(deps): update dependency globals to v15.13.0 (#1434)
+  * chore(deps): update dependency prettier to v3.4.2 (#1431)
+  * chore(deps): update dependency prettier to v3.4.2 (#1430)
+  * docs(website): cloud vs on-premises vs byoc blog post (#1382)
+  * chore(deps): update dependency @eslint/js to v9.16.0 (#1429)
+  * docs(website): remove orphan pages from sitemap, fix broken
+    link (#1428)
+  * docs(website): add cta components (#1427)
+  * docs(website): fix broken links (#1426)
+  * docs(website): fixed broken glossary links (#1419)
+  * chore(deps): update dependency prettier to v3.4.1 (#1425)
+  * chore(deps): update dependency prettier to v3.4.1 (#1424)
+  * docs(website): add cloudnativepg guide guide (#1414)
+  * chore(deps): update dependency @eslint/js to v9.15.0 (#1417)
+  * chore(deps): update dependency typescript-eslint to v8.16.0
+    (#1418)
+  * fix(deps): update module github.com/onsi/gomega to v1.36.0
+    (#1420)
+
+-------------------------------------------------------------------
 Tue Nov 26 14:07:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.26.0:

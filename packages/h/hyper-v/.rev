@@ -501,4 +501,20 @@
 - use a meaningful variable name for ifcfg in hv_set_ifconfig.sh</comment>
     <requestid>1217113</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>b2e2cfe788737ecb7196312a375adc71</srcmd5>
+    <version>9</version>
+    <time>1736431551</time>
+    <user>anag+factory</user>
+    <comment>- update route parsing in kvp daemon
+- reduce resource usage in hv_kvp_daemon (175c71c2)
+- reduce resouce usage in hv_get_dns_info helper (a4d024fe)
+- hv_kvp_daemon: Pass NIC name to hv_get_dns_info as well (07dfa6e8)
+- terminate fcopy daemon if read from uio fails (a9640fcd)
+- change permissions of NetworkManager configuration file (91ae69c7)
+- Fix a complier warning in the fcopy uio daemon (cb1b78f1)
+- remove obsolete kvptest.ps1.txt which failed since a decade
+- remove obsolete rpm postinstall code for SLE11SP2</comment>
+    <requestid>1236106</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-instrumentation-fastapi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation-fastapi%{?psuffix}
-Version:        0.48b0
+Version:        0.50b0
 Release:        0
 Summary:        OpenTelemetry FastAPI Instrumentation
 License:        Apache-2.0
@@ -39,19 +40,19 @@ BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module fastapi >= 0.58}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module opentelemetry-instrumentation-fastapi = %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils == 0.48b0}
+BuildRequires:  %{python_module opentelemetry-instrumentation-fastapi == %{version}}
+BuildRequires:  %{python_module opentelemetry-test-utils == %{version}}
 BuildRequires:  %{python_module pytest}
 %endif
-BuildRequires:  %{python_module opentelemetry-api >= 1.12}
-BuildRequires:  %{python_module opentelemetry-instrumentation = 0.48b0}
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module opentelemetry-api >= 1.12}
+BuildRequires:  %{python_module opentelemetry-instrumentation == %{version}}
 BuildRequires:  fdupes
 Requires:       python-opentelemetry-api >= 1.12
-Requires:       python-opentelemetry-instrumentation-asgi = 0.48b0
-Requires:       python-opentelemetry-instrumentation = 0.48b0
-Requires:       python-opentelemetry-semantic-conventions = 0.48b0
-Requires:       python-opentelemetry-util-http = 0.48b0
+Requires:       python-opentelemetry-instrumentation == %{version}
+Requires:       python-opentelemetry-instrumentation-asgi == %{version}
+Requires:       python-opentelemetry-semantic-conventions == %{version}
+Requires:       python-opentelemetry-util-http == %{version}
 BuildArch:      noarch
 %python_subpackages
 

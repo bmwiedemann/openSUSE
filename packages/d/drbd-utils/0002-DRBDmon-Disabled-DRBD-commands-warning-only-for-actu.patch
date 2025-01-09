@@ -1,0 +1,59 @@
+From b37e33525eeff89d03cd6b98862d15f90aee7e15 Mon Sep 17 00:00:00 2001
+From: Robert Altnoeder <robert.altnoeder@linbit.com>
+Date: Fri, 26 Jul 2024 08:35:09 +0200
+Subject: [PATCH 02/12] DRBDmon: Disabled DRBD commands warning only for actual
+ DRBD commands
+
+---
+ user/drbdmon/terminal/DrbdCommandsImpl.cpp | 26 ++++++++++++----------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/user/drbdmon/terminal/DrbdCommandsImpl.cpp b/user/drbdmon/terminal/DrbdCommandsImpl.cpp
+index 8b75a2aae8a7..006234f70df6 100644
+--- a/user/drbdmon/terminal/DrbdCommandsImpl.cpp
++++ b/user/drbdmon/terminal/DrbdCommandsImpl.cpp
+@@ -83,10 +83,10 @@ DrbdCommandsImpl::~DrbdCommandsImpl() noexcept
+ bool DrbdCommandsImpl::execute_command(const std::string& command, StringTokenizer& tokenizer)
+ {
+     bool processed = false;
+-    if (dsp_comp_hub.enable_drbd_actions)
++    Entry* const cmd_entry = cmd_map->get(&command);
++    if (cmd_entry != nullptr)
+     {
+-        Entry* const cmd_entry = cmd_map->get(&command);
+-        if (cmd_entry != nullptr)
++        if (dsp_comp_hub.enable_drbd_actions)
+         {
+             cmd_func_type cmd_func = cmd_entry->cmd_func;
+             try
+@@ -109,16 +109,18 @@ bool DrbdCommandsImpl::execute_command(const std::string& command, StringTokeniz
+                 );
+             }
+         }
++        else
++        {
++            const uint64_t msg_id = dsp_comp_hub.log->add_entry(
++                MessageLog::log_level::WARN,
++                "DRBD commands are currently disabled"
++            );
++            dsp_comp_hub.dsp_shared->message_id = msg_id;
++            dsp_comp_hub.dsp_selector->switch_to_display(DisplayId::display_page::MSG_VIEWER);
++        }
++
+     }
+-    else
+-    {
+-        const uint64_t msg_id = dsp_comp_hub.log->add_entry(
+-            MessageLog::log_level::WARN,
+-            "DRBD commands are currently disabled"
+-        );
+-        dsp_comp_hub.dsp_shared->message_id = msg_id;
+-        dsp_comp_hub.dsp_selector->switch_to_display(DisplayId::display_page::MSG_VIEWER);
+-    }
++
+     return processed;
+ }
+ 
+-- 
+2.43.0
+

@@ -36,10 +36,11 @@ Command line interface for LibreSpeed speed test backends, written in Go.
 
 %build
 DEFS_PATH="github.com/librespeed/speedtest-cli"
+test -n "$SOURCE_DATE_EPOCH" || SOURCE_DATE_EPOCH=$(date +%%s)
 go build -mod=vendor -buildmode=pie -ldflags "-w -s \
   -X \"${DEFS_PATH}/defs.ProgName=%{name}\" \
   -X \"${DEFS_PATH}/defs.ProgVersion=%{version}\" \
-  -X \"${DEFS_PATH}/defs.BuildDate=$(date -u '+%%Y-%%m-%%d %%H:%%M:%%S %%Z')\" \
+  -X \"${DEFS_PATH}/defs.BuildDate=$(date -u -d "@$SOURCE_DATE_EPOCH" '+%%Y-%%m-%%d %%H:%%M:%%S %%Z')\" \
 " -trimpath
 
 %install

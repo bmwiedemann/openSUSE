@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 17:03:41 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- ddclient.service: Do not restrict access to devices, can conflicts
+  with ipmi. [bsc#1232044]
+
+-------------------------------------------------------------------
 Wed Oct 30 09:31:48 UTC 2024 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Add ddclient-disable-automake-treating-warnings-as-error.patch:

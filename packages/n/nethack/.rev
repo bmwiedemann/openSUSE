@@ -30,4 +30,35 @@
 </comment>
     <requestid>1235499</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d62bb21e3599312d6fcf313e2b37a441</srcmd5>
+    <version>3.4.3</version>
+    <time>1736431773</time>
+    <user>anag+factory</user>
+    <comment>- Add nethack-escape-char.patch: Split off from nethack-misc.patch,
+  this patch contains a fix for input handling.
+- Add nethack-secure.patch: Improve support for SECURE in recover
+  utility. Does not affect the game binary. Taken from nethack-misc.patch.
+- Modify nethack-config.patch: When patching Makefiles, also fix the
+  paths in the documentation to match openSUSE systems.
+- Drop nethack-misc.patch: The patch has been split and its content
+  moved to other patch files.
+- Modify nethack-gzip.patch: Point COMPRESS to /usr/bin/gzip and avoid
+  the symlink /bin. The top-level /bin directory is supposed to go away.
+- Modify nethack-config.patch: The patch enabled building a number of
+  files for X11, which we don't support. Remove them from the build.
+- Drop nethack-syscall.patch: The patch only affects builds with GNOME
+  support, which we don't do.
+- Add nethack-reproducible.patch: Same as reproducible.patch, but
+  follows patch-nameing conventions. There's now also a short patch
+  description in the spec file.
+- Drop reproducible.patch: Renamed to nethack-reproducible.patch.
+- Modify nethack-syscall.patch: Refresh to account for offset changes.
+- Modify nethack-gzip.patch: Refresh to account for offset changes.
+- Modify nethack-config: Enable panic logging. This records serious
+  errors in the file panic log in the game's state directory. Helps
+  with debugging.
+</comment>
+    <requestid>1235878</requestid>
+  </revision>
 </revisionlist>

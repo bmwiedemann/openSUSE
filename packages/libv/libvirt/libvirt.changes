@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 22:38:12 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- security: apparmor: Fix probing of apparmor availability on the
+  VM host when using modular daemons
+  bsc#1235079
+
+-------------------------------------------------------------------
 Fri Jan  3 19:34:51 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - tests: Extend EOY check in virtimetest

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 07 14:21:37 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.672.gcd143fd0:
+  * fix(dracut): rework timeout for devices added via --mount and --add-device (bsc#1231792)
+
+-------------------------------------------------------------------
 Wed Dec 11 15:49:33 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.669.g60f5981b:

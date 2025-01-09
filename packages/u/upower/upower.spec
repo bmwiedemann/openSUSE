@@ -1,7 +1,7 @@
 #
 # spec file for package upower
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ URL:            https://upower.freedesktop.org/
 Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE: Skip installation of test-only dependencies
 Patch1:         skip-tests-install.patch
+# PATCH-FIX-UPSTREAM faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch -- dbus: show charge-threshold-* status as yes/no
+Patch2:         https://gitlab.freedesktop.org/upower/upower/-/commit/faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool

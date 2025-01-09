@@ -1,0 +1,309 @@
+by heming.zhao@suse.com
+remove the patch of scripts/.gitignore for following complain msg:
+```
++ /usr/lib/rpm/rpmuncompress /usr/src/packages/SOURCES/0009-Do-not-hardcode-paths-in-services-and-scripts.patch
++ /usr/bin/patch -p1 -s --fuzz=0 --no-backup-if-mismatch -f
+The text leading up to this was:
+--------------------------
+|diff --git a/scripts/.gitignore b/scripts/.gitignore
+|index a307904047f8..ba121127c341 100644
+|--- a/scripts/.gitignore
+|+++ b/scripts/.gitignore
+--------------------------
+No file to patch.  Skipping patch.
+1 out of 1 hunk ignored
+```
+
+From 080e93bd9bcf546cd3a9870ae1add2469a2a4e24 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20Wanzenb=C3=B6ck?= <moritz.wanzenboeck@linbit.com>
+Date: Fri, 20 Sep 2024 10:30:24 +0200
+Subject: [PATCH 09/12] Do not hardcode paths in services and scripts
+
+This fixes issues when drbd-utils get installed to non-standard locations.
+
+Since the autoconf generated Makefile should still allow override on install,
+we have to use a new target to do our own expansion. The implementation is
+lifted from the autconf manual:
+
+  info autoconf "Installation Directory Variables"
+
+# Conflicts:
+#	scripts/.gitignore
+#	scripts/Makefile.in
+---
+ configure.ac                                  |  2 +-
+ scripts/.gitignore                            |  8 +++++++
+ scripts/Makefile.in                           | 23 +++++++++++++++----
+ ...ce => drbd-demote-or-escalate@.service.in} |  2 +-
+ ...vice => drbd-graceful-shutdown.service.in} |  2 +-
+ scripts/drbd-promote@.service.in              |  4 ++--
+ ...-reconfigure-suspend-or-error@.service.in} |  4 ++--
+ ...ervice-shim.sh => drbd-service-shim.sh.in} | 18 +++++++--------
+ ...rvice => drbd-wait-promotable@.service.in} |  2 +-
+ scripts/{drbd.service => drbd.service.in}     |  6 ++---
+ scripts/{drbd@.service => drbd@.service.in}   |  6 ++---
+ .../{ocf.ra@.service => ocf.ra@.service.in}   |  4 ++--
+ 12 files changed, 51 insertions(+), 30 deletions(-)
+ rename scripts/{drbd-demote-or-escalate@.service => drbd-demote-or-escalate@.service.in} (92%)
+ rename scripts/{drbd-graceful-shutdown.service => drbd-graceful-shutdown.service.in} (88%)
+ rename scripts/{drbd-reconfigure-suspend-or-error@.service => drbd-reconfigure-suspend-or-error@.service.in} (71%)
+ rename scripts/{drbd-service-shim.sh => drbd-service-shim.sh.in} (81%)
+ rename scripts/{drbd-wait-promotable@.service => drbd-wait-promotable@.service.in} (84%)
+ rename scripts/{drbd.service => drbd.service.in} (80%)
+ rename scripts/{drbd@.service => drbd@.service.in} (87%)
+ rename scripts/{ocf.ra@.service => ocf.ra@.service.in} (85%)
+
+diff --git a/configure.ac b/configure.ac
+index cd166bbafbc0..630163cee103 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -525,7 +525,7 @@ fi
+ 
+ dnl The configuration files we create (from their .in template)
+ if test -z $SPECMODE; then
+-   AC_CONFIG_FILES(Makefile user/shared/Makefile user/v9/Makefile user/v84/Makefile scripts/Makefile scripts/drbd.rules user/windrbd/Makefile user/drbdmon/Makefile documentation/common/Makefile_v84_com documentation/common/Makefile_v9_com)
++   AC_CONFIG_FILES(Makefile user/shared/Makefile user/v9/Makefile user/v84/Makefile scripts/Makefile user/windrbd/Makefile user/drbdmon/Makefile documentation/common/Makefile_v84_com documentation/common/Makefile_v9_com)
+    AC_CONFIG_HEADERS(user/shared/config.h)
+ else
+    AC_CONFIG_FILES(drbd.spec)
+diff --git a/scripts/Makefile.in b/scripts/Makefile.in
+index 7652ee872500..001d08da54e4 100644
+--- a/scripts/Makefile.in
++++ b/scripts/Makefile.in
+@@ -67,9 +67,20 @@ SYSTEMD_TEMPLATES += drbd-wait-promotable@.service
+ SYSTEMD_UNITS  = drbd.service
+ SYSTEMD_UNITS += drbd-graceful-shutdown.service
+ 
+-SERVICE_TEMPLATES  = drbd-promote@.service
++UDEV_TEMPLATES  = drbd.rules
+ 
+-TEMPLATES := $(SERVICE_TEMPLATES)
++SERVICE_TEMPLATES  = drbd.service
++SERVICE_TEMPLATES += drbd@.service
++SERVICE_TEMPLATES += drbd-demote-or-escalate@.service
++SERVICE_TEMPLATES += drbd-graceful-shutdown.service
++SERVICE_TEMPLATES += drbd-promote@.service
++SERVICE_TEMPLATES += drbd-reconfigure-suspend-or-error@.service
++SERVICE_TEMPLATES += drbd-wait-promotable@.service
++SERVICE_TEMPLATES += ocf.ra@.service
++
++SCRIPT_TEMPLATES = drbd-service-shim.sh
++
++TEMPLATES := $(SCRIPT_TEMPLATES) $(SERVICE_TEMPLATES) $(UDEV_TEMPLATES)
+ 
+ # variables meant to be overridden from the make command line
+ ifeq ($(WITH_WINDRBD),yes)
+@@ -82,7 +93,7 @@ all: $(TEMPLATES)
+ 
+ install: install-utils install-udev install-xen install-heartbeat install-pacemaker install-rgmanager install-bashcompletion
+ 
+-install-utils: $(SERVICE_TEMPLATES)
++install-utils: $(SERVICE_TEMPLATES) $(SCRIPT_TEMPLATES)
+ 	install -d $(DESTDIR)$(LIBDIR)
+ # "sysv" or "both"
+ ifeq ($(subst both,sysv,$(initscripttype)),sysv)
+@@ -172,7 +183,7 @@ ifeq ($(WITH_XEN),yes)
+ 	install -m 755 block-drbd $(DESTDIR)$(sysconfdir)/xen/scripts
+ endif
+ 
+-install-udev:
++install-udev: $(UDEV_TEMPLATES)
+ ifeq ($(WITH_UDEV),yes)
+ 	mkdir -p $(DESTDIR)$(udevrulesdir)
+ 	install -m 644 drbd.rules $(DESTDIR)$(udevrulesdir)/65-drbd.rules$(UDEV_RULE_SUFFIX)
+@@ -214,7 +225,9 @@ Makefile.in: ;
+ Makefile: Makefile.in ../config.status
+ 	cd .. && ./config.status scripts/Makefile
+ 
+-edit = sed -e ''
++edit = sed -e '' \
++	-e 's|@sbindir[@]|$(sbindir)|g' \
++	-e 's|@libdir[@]|$(LIBDIR)|g' \
+ 
+ ifeq ($(SYSTEMD_EXEC_CONDITION),no)
+ 	edit += -e 's|^ExecCondition=|ExecStart=|'
+diff --git a/scripts/drbd-demote-or-escalate@.service b/scripts/drbd-demote-or-escalate@.service.in
+similarity index 92%
+rename from scripts/drbd-demote-or-escalate@.service
+rename to scripts/drbd-demote-or-escalate@.service.in
+index 2093223847b4..f5e123199323 100644
+--- a/scripts/drbd-demote-or-escalate@.service
++++ b/scripts/drbd-demote-or-escalate@.service.in
+@@ -28,5 +28,5 @@ TimeoutSec=60
+ # "Type=forking" would be an option to have it retry a number of times,
+ # and then only escalate to FailureAction if that did not help.
+ Type=oneshot
+-ExecStart=/lib/drbd/scripts/drbd-service-shim.sh secondary-or-escalate %I
++ExecStart=@libdir@/scripts/drbd-service-shim.sh secondary-or-escalate %I
+ ExecStopPost=-/bin/journalctl --sync
+diff --git a/scripts/drbd-graceful-shutdown.service b/scripts/drbd-graceful-shutdown.service.in
+similarity index 88%
+rename from scripts/drbd-graceful-shutdown.service
+rename to scripts/drbd-graceful-shutdown.service.in
+index b6e8a149d051..6118d880d8fb 100644
+--- a/scripts/drbd-graceful-shutdown.service
++++ b/scripts/drbd-graceful-shutdown.service.in
+@@ -13,4 +13,4 @@ Before=drbd.service drbd@.service
+ Type=oneshot
+ RemainAfterExit=yes
+ 
+-ExecStop=/lib/drbd/scripts/drbd-service-shim.sh down all
++ExecStop=@libdir@/scripts/drbd-service-shim.sh down all
+diff --git a/scripts/drbd-promote@.service.in b/scripts/drbd-promote@.service.in
+index 71345d9b723d..23e74c282250 100644
+--- a/scripts/drbd-promote@.service.in
++++ b/scripts/drbd-promote@.service.in
+@@ -24,5 +24,5 @@ RemainAfterExit=yes
+ # (ab)using systemd features
+ # if we cannot configure and promote, that's a condition, not a failure
+ # See the comment above wrt. FailureAction vs OnFailure
+-ExecCondition=/lib/drbd/scripts/drbd-service-shim.sh primary %I
+-ExecStop=/lib/drbd/scripts/drbd-service-shim.sh secondary %I
++ExecCondition=@libdir@/scripts/drbd-service-shim.sh primary %I
++ExecStop=@libdir@/scripts/drbd-service-shim.sh secondary %I
+diff --git a/scripts/drbd-reconfigure-suspend-or-error@.service b/scripts/drbd-reconfigure-suspend-or-error@.service.in
+similarity index 71%
+rename from scripts/drbd-reconfigure-suspend-or-error@.service
+rename to scripts/drbd-reconfigure-suspend-or-error@.service.in
+index c0e59e5e72d3..6a0a2584e3a6 100644
+--- a/scripts/drbd-reconfigure-suspend-or-error@.service
++++ b/scripts/drbd-reconfigure-suspend-or-error@.service.in
+@@ -10,5 +10,5 @@ RefuseManualStop=yes
+ SyslogIdentifier=drbd-%I
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStop=-/usr/sbin/drbdsetup resource-options --on-no-quorum io-error --on-no-data io-error %I
+-ExecStart=-/usr/sbin/drbdsetup resource-options --on-no-quorum suspend-io --on-no-data suspend-io %I
++ExecStop=-@sbindir@/drbdsetup resource-options --on-no-quorum io-error --on-no-data io-error %I
++ExecStart=-@sbindir@/drbdsetup resource-options --on-no-quorum suspend-io --on-no-data suspend-io %I
+diff --git a/scripts/drbd-service-shim.sh b/scripts/drbd-service-shim.sh.in
+similarity index 81%
+rename from scripts/drbd-service-shim.sh
+rename to scripts/drbd-service-shim.sh.in
+index 786387463891..56029bdcebe2 100755
+--- a/scripts/drbd-service-shim.sh
++++ b/scripts/drbd-service-shim.sh.in
+@@ -14,7 +14,7 @@ secondary_check() {
+ 	local ex_secondary current_state opts
+ 	opts="$1"
+ 
+-	/usr/sbin/drbdsetup secondary $opts "$res"
++	@sbindir@/drbdsetup secondary $opts "$res"
+ 	ex_secondary=$?
+ 	case $ex_secondary in
+ 	 0)
+@@ -26,7 +26,7 @@ secondary_check() {
+ 	# any other special treatment for special exit codes?
+ 	*)
+ 		# double check for "resource does not exist"
+-		current_state=$(/usr/sbin/drbdsetup events2 --now "$res")
++		current_state=$(@sbindir@/drbdsetup events2 --now "$res")
+ 		if [[ $current_state = "exists -" ]]; then
+ 			echo >&2 "<7>not even configured"
+ 			return 0
+@@ -40,23 +40,23 @@ secondary_check() {
+ 
+ case "$cmd" in
+ adjust)
+-  exec /usr/sbin/drbdadm adjust "$res"
++  exec @sbindir@/drbdadm adjust "$res"
+   ;;
+ down)
+-  exec /usr/sbin/drbdsetup down "$res"
++  exec @sbindir@/drbdsetup down "$res"
+   ;;
+ primary)
+-  exec /usr/sbin/drbdsetup primary "$res"
++  exec @sbindir@/drbdsetup primary "$res"
+   ;;
+ secondary)
+-  exec /usr/sbin/drbdsetup secondary "$res"
++  exec @sbindir@/drbdsetup secondary "$res"
+   ;;
+ secondary-force)
+-  exec /usr/sbin/drbdsetup secondary --force=yes "$res"
++  exec @sbindir@/drbdsetup secondary --force=yes "$res"
+   ;;
+ secondary-secondary-force)
+-  /usr/sbin/drbdsetup secondary "$res" && exit 0
+-  exec /usr/sbin/drbdsetup secondary --force=yes "$res"
++  @sbindir@/drbdsetup secondary "$res" && exit 0
++  exec @sbindir@/drbdsetup secondary --force=yes "$res"
+   ;;
+ secondary*-or-escalate)
+ 	# Log something and try to get journald to flush its logs
+diff --git a/scripts/drbd-wait-promotable@.service b/scripts/drbd-wait-promotable@.service.in
+similarity index 84%
+rename from scripts/drbd-wait-promotable@.service
+rename to scripts/drbd-wait-promotable@.service.in
+index 81c3789f5a4c..f416274839e9 100644
+--- a/scripts/drbd-wait-promotable@.service
++++ b/scripts/drbd-wait-promotable@.service.in
+@@ -10,7 +10,7 @@ Type=oneshot
+ 
+ # on first start, wait for access to "good data"
+ # let systemd handle timeouts
+-ExecStart=/lib/drbd/scripts/drbd-wait-promotable.sh %I
++ExecStart=@libdir@/scripts/drbd-wait-promotable.sh %I
+ RemainAfterExit=yes
+ 
+ [Install]
+diff --git a/scripts/drbd.service b/scripts/drbd.service.in
+similarity index 80%
+rename from scripts/drbd.service
+rename to scripts/drbd.service.in
+index 96c599e75042..8bfeb17cb91d 100644
+--- a/scripts/drbd.service
++++ b/scripts/drbd.service.in
+@@ -12,11 +12,11 @@ RemainAfterExit=yes
+ # A check for INIT_VERSION already exists, just set it to something.
+ Environment=INIT_VERSION=systemd
+ 
+-ExecStart=/lib/drbd/scripts/drbd start
+-ExecStop=/lib/drbd/scripts/drbd stop
++ExecStart=@libdir@/scripts/drbd start
++ExecStop=@libdir@/scripts/drbd stop
+ 
+ # Re-adjust everything on reload
+-ExecReload=/lib/drbd/scripts/drbd reload
++ExecReload=@libdir@/scripts/drbd reload
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/scripts/drbd@.service b/scripts/drbd@.service.in
+similarity index 87%
+rename from scripts/drbd@.service
+rename to scripts/drbd@.service.in
+index 0fad10be237e..ab1c044cdeb1 100644
+--- a/scripts/drbd@.service
++++ b/scripts/drbd@.service.in
+@@ -35,8 +35,8 @@ RemainAfterExit=yes
+ 
+ # depends... do we want this as ExecCondition or as ExecStart
+ # failed start is "failed", failed condition is just "not startable yet"
+-ExecStart=/lib/drbd/scripts/drbd-service-shim.sh adjust %I
+-ExecReload=/lib/drbd/scripts/drbd-service-shim.sh adjust %I
++ExecStart=@libdir@/scripts/drbd-service-shim.sh adjust %I
++ExecReload=@libdir@/scripts/drbd-service-shim.sh adjust %I
+ 
+ # can only succeed, if you first stop all depending services
+-ExecStopPost=/lib/drbd/scripts/drbd-service-shim.sh down %I
++ExecStopPost=@libdir@/scripts/drbd-service-shim.sh down %I
+diff --git a/scripts/ocf.ra@.service b/scripts/ocf.ra@.service.in
+similarity index 85%
+rename from scripts/ocf.ra@.service
+rename to scripts/ocf.ra@.service.in
+index 9c2268a615a7..4779706a8853 100644
+--- a/scripts/ocf.ra@.service
++++ b/scripts/ocf.ra@.service.in
+@@ -22,5 +22,5 @@ Environment=monitor_inverval=30
+ # Only the first argument is used by the wrapper,
+ # the %n is just to identify which is which in the process list.
+ # All parameterization is done via Environment= in per instance override.conf
+-ExecStart=/lib/drbd/scripts/ocf.ra.wrapper.sh start-and-monitor %n
+-ExecStopPost=/lib/drbd/scripts/ocf.ra.wrapper.sh stop %n
++ExecStart=@libdir@/scripts/ocf.ra.wrapper.sh start-and-monitor %n
++ExecStopPost=@libdir@/scripts/ocf.ra.wrapper.sh stop %n
+-- 
+2.43.0
+

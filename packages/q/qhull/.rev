@@ -192,4 +192,12 @@ Use SUSE- proprietary prefix until Qhull (incidentially, also the Fedora designa
     <comment></comment>
     <requestid>1148184</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>7873c19422703279495dbc9662d4f855</srcmd5>
+    <version>2020.2</version>
+    <time>1736431520</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235774</requestid>
+  </revision>
 </revisionlist>

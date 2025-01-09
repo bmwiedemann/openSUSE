@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  7 12:43:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.6
+  * Moving away from self-hosted gitlab (mathieui)
+  * Fix connection to Snikket instances (pep., mathieui)
+  * Performance fix for XEP-0115 queries
+  * New documentation listing projects using slixmpp (genghis)
+  * Bugfix and improvements (nicoco, mostly)
+- Remove shebang from slixmpp/plugins/xep_0454/__init__.py
+
+-------------------------------------------------------------------
 Tue Feb 27 03:29:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.5:

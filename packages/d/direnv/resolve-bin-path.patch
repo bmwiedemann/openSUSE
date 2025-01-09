@@ -1,0 +1,16 @@
+Hardcode binary full path
+index 78c9557..45b3b7f 100644
+--- a/internal/cmd/cmd_hook.go.1
++++ b/internal/cmd/cmd_hook.go
+@@ -28,10 +28,7 @@ func cmdHookAction(_ Env, args []string) (err error) {
+ 		target = args[1]
+ 	}
+ 
+-	selfPath, err := os.Executable()
+-	if err != nil {
+-		return err
+-	}
++	selfPath := `/usr/bin/direnv`
+ 
+ 	// Convert Windows path if needed
+ 	selfPath = strings.Replace(selfPath, "\\", "/", -1)

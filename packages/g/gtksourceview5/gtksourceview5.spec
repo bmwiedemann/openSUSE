@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
 Source0:        %{_name}-%{version}.tar.zst
-Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel >= 1.70
 BuildRequires:  meson >= 0.59.0
@@ -102,8 +101,6 @@ features typical of a source editor.
 %install
 %meson_install
 %find_lang %{_name}-5
-# Install language definition for *.changes files:
-install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-5/language-specs/
 
 %ldconfig_scriptlets -n libgtksourceview-5-0
 

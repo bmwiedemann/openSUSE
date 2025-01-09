@@ -1,7 +1,7 @@
 #
 # spec file for package python-sklearn-pandas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%define         skip_python2 1
-# SciPy 1.6.0 dropped support for Python 3.6
-%define         skip_python36 1
 Name:           python-sklearn-pandas
 Version:        2.2.0
 Release:        0
 Summary:        Pandas integration with sklearn
 License:        BSD-2-Clause AND Zlib
-Group:          Development/Languages/Python
 URL:            https://github.com/scikit-learn-contrib/sklearn-pandas
 Source:         %{url}/archive/v%{version}.tar.gz#/sklearn-pandas-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#scikit-learn-contrib/sklearn-pandas#266
+Patch0:         remove-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.18.1
@@ -49,13 +49,13 @@ This module provides a bridge between Scikit-Learn's machine learning
 methods and pandas-style Data Frames.
 
 %prep
-%setup -q -n sklearn-pandas-%{version}
+%autosetup -p1 -n sklearn-pandas-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +67,7 @@ donttest="test_onehot_df or test_dict_vectorizer"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/sklearn_pandas*
+%{python_sitelib}/sklearn_pandas
+%{python_sitelib}/sklearn_pandas-%{version}.dist-info
 
 %changelog

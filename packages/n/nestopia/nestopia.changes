@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Dec 27 10:16:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.53.0
+  Changes:
+   * FLTK: Major rewrite to become a Nestopia-specific
+     "Jolly Good API" frontend.
+   * FLTK: Use libsamplerate directly instead of relying on SDL's
+     abstraction.
+   * FLTK: Better looking theme.
+   * FLTK: Window is freely resizable and the image scales to the
+     window size.
+   * FLTK: Codebase is now ISO C++17.
+  Additions:
+   * FLTK: Support for significantly more input devices.
+   * FLTK: Joystick hotplugging.
+   * FLTK: All UI controls may be assigned to a joystick button.
+   * FLTK: Aspect ratio options.
+   * FLTK: OpenGL 3.1/GLES 3.0 renderer with shaders.
+   * FLTK: Configurable overscan masking on all edges.
+   * FLTK: Drag and Drop support.
+   * FLTK: Support FDS microphone using a real microphone/headset.
+   * FLTK: Support for loading XML Romsets.
+  Core:
+  Additions:
+   * Support for loading Virtual Console/NES Remix format ROMs.
+   * Support NES 2.0 Default Expansion Device field.
+   * Add support for Mapper 555 (EVENT2).
+  Fixes:
+   * Better support for MMC3 hacks with large WRAM, CHR RAM, or
+     PRG ROM sizes.
+   * VRC heuristics improvement to help with VRC hacks and
+     homebrew.
+   * Handle NES 2.0 Mapper 30 special battery flag case.
+
+-------------------------------------------------------------------
 Tue Apr  2 20:05:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.52.1

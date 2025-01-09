@@ -121,4 +121,41 @@
   * Fixed importing collapse from dictionary</comment>
     <requestid>1140106</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>858069d6123782c271818a84300036b2</srcmd5>
+    <version>8.17.0</version>
+    <time>1736431684</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.17.0:
+  * Added support for quantized dense vector options (#1948)
+  * Added support for composable index templates (#1943)
+- 8.16.0:
+  * Autogenerate parts of the library using documentation and types from the Elasticsearch specification
+    - query classes (#1890)
+    - aggregation classes (#1918)
+    - response classes (#1929 #1932)
+  * Support pipe syntax to declare optional document fields (#1937)
+  * Ignore document attributes typed with ClassVar (#1936)
+  * Support Python 3.13 (#1938)
+- 8.15.4:
+  * Fixed the use of dictionaries as values in Terms query (#1920)
+- 8.15.3:
+  * Fixed regression introduced in Terms query class (#1907)
+  * Removed unnecessary filter argument in AggBase.__getitem__ (#1903)
+  * Fixed deserialization of datetime.date fields (#1914)
+- 8.15.2:
+  * Added support for any iterables to the Terms query (#1887)
+  * Added back support for tuples and other iterables to Search.source() method (#1895)
+  * Added recursive option to AttrDict.to_dict() (#1892)
+  * Removed unused analyzer from search as you type example (#1883)
+- 8.15.1:
+  * Added support for the semantic_text field and semantic query type (#1881)
+  * Removed extra __orig_class__ attribute in aggregation responses (#1877)
+- 8.15.0:
+  * Added the option to use Python types to declare document fields (#1845)
+  * Added type annotations (#1533)
+  * Added support for bulk document operations with Document.bulk() (#1864)
+  * Added the ConstantKeyword field to the top-level package (#1843)</comment>
+    <requestid>1235858</requestid>
+  </revision>
 </revisionlist>

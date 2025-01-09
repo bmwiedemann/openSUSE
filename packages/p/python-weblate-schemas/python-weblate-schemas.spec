@@ -1,7 +1,7 @@
 #
 # spec file for package python-weblate-schemas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,30 @@
 #
 
 
-%define skip_python2 1
 Name:           python-weblate-schemas
-Version:        2024.1
+Version:        2024.2
 Release:        0
 Summary:        A collection of schemas used by Weblate
 License:        MIT
 URL:            https://weblate.org/
 Source:         https://files.pythonhosted.org/packages/source/w/weblate_schemas/weblate_schemas-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module fedora-messaging}
+BuildRequires:  %{python_module fqdn >= 1.5.1}
+BuildRequires:  %{python_module jsonschema-format}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rfc3987 >= 1.3.8}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module strict-rfc3339 >= 0.7}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-fqdn >= 1.5.1
 Requires:       python-jsonschema
+Requires:       python-rfc3987 >= 1.3.8
+Requires:       python-strict-rfc3339 >= 0.7
 BuildArch:      noarch
 %python_subpackages
 

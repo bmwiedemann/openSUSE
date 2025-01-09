@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:47:32 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Add nethack-escape-char.patch: Split off from nethack-misc.patch,
+  this patch contains a fix for input handling.
+
+- Add nethack-secure.patch: Improve support for SECURE in recover
+  utility. Does not affect the game binary. Taken from nethack-misc.patch.
+
+- Modify nethack-config.patch: When patching Makefiles, also fix the
+  paths in the documentation to match openSUSE systems.
+
+- Drop nethack-misc.patch: The patch has been split and its content
+  moved to other patch files.
+
+-------------------------------------------------------------------
+Wed Jan  8 09:31:10 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-gzip.patch: Point COMPRESS to /usr/bin/gzip and avoid
+  the symlink /bin. The top-level /bin directory is supposed to go away.
+
+-------------------------------------------------------------------
+Wed Jan  8 09:18:19 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config.patch: The patch enabled building a number of
+  files for X11, which we don't support. Remove them from the build.
+
+-------------------------------------------------------------------
+Wed Jan  8 09:14:27 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Drop nethack-syscall.patch: The patch only affects builds with GNOME
+  support, which we don't do.
+
+-------------------------------------------------------------------
+Wed Jan  8 08:52:02 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Add nethack-reproducible.patch: Same as reproducible.patch, but
+  follows patch-nameing conventions. There's now also a short patch
+  description in the spec file.
+
+- Drop reproducible.patch: Renamed to nethack-reproducible.patch.
+
+-------------------------------------------------------------------
+Wed Jan  8 08:17:03 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-syscall.patch: Refresh to account for offset changes.
+
+- Modify nethack-gzip.patch: Refresh to account for offset changes.
+
+-------------------------------------------------------------------
+Tue Jan  7 17:04:31 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Modify nethack-config: Enable panic logging. This records serious
+  errors in the file panic log in the game's state directory. Helps
+  with debugging.
+
+-------------------------------------------------------------------
 Mon Jan  6 16:55:04 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Mark NetHack's record and logfile file with %config(noreplace), so

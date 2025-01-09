@@ -1,0 +1,42 @@
+From 66b3dc4aafd8a97a08564bd460e6742582d69432 Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Wed, 8 Jan 2025 09:24:02 -0800
+Subject: [PATCH] configuration changes for default labwc session
+
+Combines two prior patches into one, as they're both for the labwc
+session.   Sets openSUSE background for labwc session, and adjusts
+the pointerspeed to make the default mouse pointer less twitchy
+---
+ configurations/labwc/autostart | 2 +-
+ configurations/labwc/rc.xml    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configurations/labwc/autostart b/configurations/labwc/autostart
+index fa49741..a756d24 100644
+--- a/configurations/labwc/autostart
++++ b/configurations/labwc/autostart
+@@ -3,7 +3,7 @@
+ # Preferred place for starting wayland-only applications
+ 
+ # Set background color or image (below the desktop):
+-swaybg -i /usr/share/lxqt/wallpapers/origami-dark-labwc.png  >/dev/null 2>&1 &
++swaybg -i /usr/share/wallpapers/openSUSEdefault/contents/images/default.png  >/dev/null 2>&1 &
+ 
+ # Faster startup for GTK apps:
+ dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY > /dev/null 2>&1 &
+diff --git a/configurations/labwc/rc.xml b/configurations/labwc/rc.xml
+index 41d628c..07acc3c 100644
+--- a/configurations/labwc/rc.xml
++++ b/configurations/labwc/rc.xml
+@@ -607,7 +607,7 @@
+     <device category="default">
+       <naturalScroll></naturalScroll>
+       <leftHanded></leftHanded>
+-      <pointerSpeed>1</pointerSpeed>
++      <pointerSpeed>0.0</pointerSpeed>
+       <accelProfile></accelProfile>
+       <tap>yes</tap>
+       <tapButtonMap></tapButtonMap>
+-- 
+2.47.1
+

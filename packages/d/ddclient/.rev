@@ -455,4 +455,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment></comment>
     <requestid>1219568</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>9536b16a26890ddbfb8fcea44ec58f1c</srcmd5>
+    <version>3.11.2</version>
+    <time>1736431872</time>
+    <user>anag+factory</user>
+    <comment>Update the ddclient.service to not conflicts with ipmi devices (forwarded request 1226323 from vlefebvre)</comment>
+    <requestid>1235987</requestid>
+  </revision>
 </revisionlist>

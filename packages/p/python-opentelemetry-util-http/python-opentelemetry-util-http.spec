@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-util-http
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-util-http
-Version:        0.48b0
+Version:        0.50b0
 Release:        0
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 License:        Apache-2.0
@@ -30,19 +30,19 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-opentelemetry-api = 1.27.0
-Requires:       python-opentelemetry-instrumentation = 0.48b0
-Requires:       python-opentelemetry-sdk = 1.27.0
-Requires:       python-opentelemetry-semantic-conventions = 0.48b0
+Requires:       python-opentelemetry-api = 1.29.0
+Requires:       python-opentelemetry-instrumentation == %{version}
+Requires:       python-opentelemetry-sdk = 1.29.0
+Requires:       python-opentelemetry-semantic-conventions == %{version}
 Requires:       python-wrapt >= 1.0.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module opentelemetry-api = 1.27.0}
-BuildRequires:  %{python_module opentelemetry-instrumentation = 0.48b0}
-BuildRequires:  %{python_module opentelemetry-sdk = 1.27.0}
-BuildRequires:  %{python_module opentelemetry-semantic-conventions = 0.48b0}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.48b0}
+BuildRequires:  %{python_module opentelemetry-api = 1.29.0}
+BuildRequires:  %{python_module opentelemetry-instrumentation == %{version}}
+BuildRequires:  %{python_module opentelemetry-sdk = 1.29.0}
+BuildRequires:  %{python_module opentelemetry-semantic-conventions == %{version}}
+BuildRequires:  %{python_module opentelemetry-test-utils == %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wrapt >= 1.0.0}
 # /SECTION

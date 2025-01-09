@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-sdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-sdk
-Version:        1.27.0
+Version:        1.29.0
 Release:        0
 Summary:        OpenTelemetry Python SDK
 License:        Apache-2.0
@@ -27,8 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-s
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module opentelemetry-api == %{version}}
-BuildRequires:  %{python_module opentelemetry-semantic-conventions == 0.48b0}
-BuildRequires:  %{python_module opentelemetry-test-utils == 0.48b0}
+BuildRequires:  %{python_module opentelemetry-semantic-conventions == 0.50b0}
+BuildRequires:  %{python_module opentelemetry-test-utils == 0.50b0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-opentelemetry-api == %{version}
-Requires:       python-opentelemetry-semantic-conventions == 0.48b0
+Requires:       python-opentelemetry-semantic-conventions == 0.50b0
 Requires:       python-typing-extensions >= 3.7.4
 BuildArch:      noarch
 %python_subpackages

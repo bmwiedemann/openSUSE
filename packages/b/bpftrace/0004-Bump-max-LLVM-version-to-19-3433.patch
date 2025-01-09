@@ -1,0 +1,127 @@
+From 63811ea6ccaf2b6315d55b219921eb872a38042c Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 11 Dec 2024 23:14:10 -0800
+Subject: [PATCH 3/3] Bump max LLVM version to 19 (#3433)
+
+* cmake: Bump max LLVM version to 19
+
+* Add CI job for clang/llvm 19
+
+* flake.nix: Add LLVM 19 support
+---
+ .github/workflows/ci.yml | 27 +++++++++++++++------------
+ CHANGELOG.md             |  2 ++
+ CMakeLists.txt           |  2 +-
+ flake.nix                |  5 +++++
+ 4 files changed, 23 insertions(+), 13 deletions(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index a37b7bdc..ce28320f 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -53,31 +53,34 @@ jobs:
+           NIX_TARGET: .#bpftrace-llvm17
+           TOOLS_TEST_OLDVERSION: tcpdrop.bt
+           TOOLS_TEST_DISABLE: biosnoop.bt
+-        - NAME: LLVM 18 Release
++        - NAME: LLVM 18
++          CMAKE_BUILD_TYPE: Debug
++          NIX_TARGET: .#bpftrace-llvm18
++          TOOLS_TEST_OLDVERSION: tcpdrop.bt
++          TOOLS_TEST_DISABLE: biosnoop.bt
++        - NAME: LLVM 19 Release
+           CMAKE_BUILD_TYPE: Release
+-          NIX_TARGET: .#bpftrace-llvm18
+-          TOOLS_TEST_OLDVERSION: tcpdrop.bt
++          NIX_TARGET: .#bpftrace-llvm19
+           TOOLS_TEST_DISABLE: biosnoop.bt
+-        - NAME: LLVM 18 Debug
++        - NAME: LLVM 19 Debug
+           CMAKE_BUILD_TYPE: Debug
+-          NIX_TARGET: .#bpftrace-llvm18
+-          TOOLS_TEST_OLDVERSION: tcpdrop.bt
++          NIX_TARGET: .#bpftrace-llvm19
+           TOOLS_TEST_DISABLE: biosnoop.bt
+-        - NAME: LLVM 18 Clang Debug
++        - NAME: LLVM 19 Clang Debug
+           CMAKE_BUILD_TYPE: Debug
+-          NIX_TARGET: .#bpftrace-llvm18
++          NIX_TARGET: .#bpftrace-llvm19
+           CC: clang
+           CXX: clang++
+           TOOLS_TEST_OLDVERSION: tcpdrop.bt
+           TOOLS_TEST_DISABLE: biosnoop.bt
+-        - NAME: Memleak test (LLVM 18 Debug)
++        - NAME: Memleak test (LLVM 19 Debug)
+           CMAKE_BUILD_TYPE: Debug
+-          NIX_TARGET: .#bpftrace-llvm18
++          NIX_TARGET: .#bpftrace-llvm19
+           RUN_MEMLEAK_TEST: 1
+           RUN_TESTS: 0
+-        - NAME: Memleak test (LLVM 18 Release)
++        - NAME: Memleak test (LLVM 19 Release)
+           CMAKE_BUILD_TYPE: Release
+-          NIX_TARGET: .#bpftrace-llvm18
++          NIX_TARGET: .#bpftrace-llvm19
+           RUN_MEMLEAK_TEST: 1
+           RUN_TESTS: 0
+     steps:
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index c223b4e5..e326548a 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -9,6 +9,8 @@ and this project adheres to
+ ## Unreleased
+ 
+ #### Added
++= Bump max supported LLVM version to 19
++  - [#3433](https://github.com/bpftrace/bpftrace/pull/3433)
+ #### Changed
+ #### Deprecated
+ #### Removed
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 025ff321..a3ba009a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -156,7 +156,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+   # releases.
+   set(MAX_LLVM_MAJOR 999)
+ else()
+-  set(MAX_LLVM_MAJOR 18)
++  set(MAX_LLVM_MAJOR 19)
+ endif()
+ 
+ if((${LLVM_VERSION_MAJOR} VERSION_LESS ${MIN_LLVM_MAJOR}) OR (${LLVM_VERSION_MAJOR} VERSION_GREATER ${MAX_LLVM_MAJOR}))
+diff --git a/flake.nix b/flake.nix
+index 9931a2a5..e589f989 100644
+--- a/flake.nix
++++ b/flake.nix
+@@ -21,6 +21,9 @@
+     flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" ]
+       (system:
+         let
++          # The default LLVM version is the latest supported release
++          defaultLlvmVersion = 19;
++
+           # Overlay to specify build should use the specific libbpf we want
+           libbpfVersion = "1.4.2";
+           libbpfOverlay =
+@@ -139,6 +142,7 @@
+             default = bpftrace-llvm18;
+ 
+             # Support matrix of llvm versions
++            bpftrace-llvm19 = mkBpftrace pkgs.llvmPackages_19;
+             bpftrace-llvm18 = mkBpftrace pkgs.llvmPackages_18;
+             bpftrace-llvm17 = mkBpftrace pkgs.llvmPackages_17;
+             bpftrace-llvm16 = mkBpftrace pkgs.llvmPackages_16;
+@@ -185,6 +189,7 @@
+           devShells = rec {
+             default = bpftrace-llvm18;
+ 
++            bpftrace-llvm19 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm19;
+             bpftrace-llvm18 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm18;
+             bpftrace-llvm17 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm17;
+             bpftrace-llvm16 = mkBpftraceDevShell self.packages.${system}.bpftrace-llvm16;
+-- 
+2.47.1
+

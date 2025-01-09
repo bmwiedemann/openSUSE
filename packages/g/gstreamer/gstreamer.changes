@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan  7 21:37:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.11:
+  + Highlighted bugfixes:
+    - playback: Fix SSA/ASS subtitles with embedded fonts
+    - decklink: add missing video modes and fix 8K video modes
+    - matroskamux: spec compliance fixes for audio-only files
+    - onnx: disable onnxruntime telemetry
+    - qtdemux: Fix base offset update when doing segment seeks
+    - srtpdec: Fix a use-after-free issue
+    - (uri)decodebin3: Fix stream change scenarios, possible
+      deadlock on shutdown
+    - video: fix missing alpha flag in AV12 format description
+    - avcodecmap: Add some more channel position mappings
+    - cerbero bootstrap fixes for Windows 11
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - No changes.
+
+-------------------------------------------------------------------
 Mon Dec  9 11:49:13 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.10:

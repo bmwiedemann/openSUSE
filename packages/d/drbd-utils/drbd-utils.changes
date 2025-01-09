@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Jan  8 07:42:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- Update drbd-utils from 9.25.0 to 9.29.0
+
+  * Changelog from Linbit:
+
+    9.29.0
+    -----------
+     * drbdmeta: fix initialization for external md
+     * build: allow disbling keyutils
+     * tests: export sanitized environment
+     * drbdmon: various improvements
+     * build: add cyclonedx
+     * drbsetup,v9: fix multiple paths drbdsetup show --json
+       strictly spreaking breaking change, but maily used internally
+     * events2: expose if device is open
+     * drbdadm: fix undefined behavior that triggered on amd64
+     * shared: fix out-of-bounds access in parsing
+     * drbsetup,v9: event consistency with peer devices
+     * drbdadm: fix parsing of v8.4 configs for compatibility
+     * drbdmeta: fix segfault for check-resize on intentionally diskless
+     * drbd-promote@.service: check if ExecCondition is available
+    
+    9.28.0
+    -----------
+     * events2: set may_promote:no promotion_score:0 while
+       force-io-failure:yes
+     * drbdsetup,v9: show TLS in connection status
+     * drbdsetup,v9: add udev command
+     * 8.3: remove
+     * crm-fence-peer.9.sh: fixes for pacemaker 2.1.7
+     * events2: improved out of order message handling
+    
+    9.27.0
+    -----------
+     * adjust,v9: retry for diskless primaries
+     * tests: sanitize env (e.g., TZ)
+     * drbdmeta: dump and restore the members field
+    
+    9.26.0
+    -----------
+     * config,v9: new config option load-balance-paths
+     * config,v9: new config options rdma-ctrls-(snd|rcv)buf-size
+     * drbdadm,v9: fix segfault if proxy has no path
+     * drbd: increase maximum CPU mask size
+     * systemd: introduce drbd-graceful-shutdown.service
+     * drbdmeta,v9: fix regression, allow attach after offline resize
+     * drbdsetup,v9: add path established information to JSON status
+     * events2: terminate on module unload even under --poll
+     * events2: specif exit code if module unload
+     * docs: add spdx license file
+     * drbdmon: various smaller improvements
+     * drbdsetup,v9: support for TLS/kTLS
+
+  * remove patches which are already included in upstream code:
+     0001-drbdadm-v9-do-not-segfault-when-re-configuring-proxy.patch
+     0002-user-drbrdmon-add-missing-stdint.h-includes.patch
+     0003-Introduce-default_types.h-header.patch
+     bsc-1219263_crm-fence-peer.9.sh-fix-parsing-in_ccm-crmd-fields-o.patch
+     bsc-1219263_crm-fence-peer.9.sh-use-join-of-node_state-to-judge-.patch
+     bsc-1233273_drbd.ocf-update-regex-of-sed-for-new-output-from-crm.patch
+     usrmerge_move_lib_to_prefix_lib.patch 
+  
+  * add upstream patches to align commit 0a014f290802:
+     0001-drbd-verify.py-relax-host-key-checking.patch
+     0002-DRBDmon-Disabled-DRBD-commands-warning-only-for-actu.patch
+     0003-DRBDmon-Integrate-global-local-command-delegation.patch
+     0004-DRBDmon-Adjust-events-log-supplier-program-name.patch
+     0005-DRBDmon-Add-drbd-events-log-supplier.patch
+     0006-DRBDmon-Adjust-Makefile.patch
+     0007-DRBDmon-Version-V1R4M1.patch
+     0008-drbdadm-add-proxy-options-to-add-connection-command.patch
+     0009-Do-not-hardcode-paths-in-services-and-scripts.patch
+     0010-Fix-typo-in-warning-there-is-no-po4a-translage-comma.patch
+     0011-drbd.ocf-explicitly-timeout-crm_master-IPC-early.patch
+     0012-drbd.ocf-the-text-output-of-crm_resource-locate-has-.patch
+  
+  * update patches according to source code changes:
+     bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score.patch
+     fence-after-pacemaker-down.patch
+  
+  * modify upstream patch for passing build:
+     0009-Do-not-hardcode-paths-in-services-and-scripts.patch
+  
+  * add new service:
+     drbd-graceful-shutdown.service
+  
+  * add new binrary:
+     drbd-events-log-supplier
+
+-------------------------------------------------------------------
 Tue Nov 12 10:00:52 UTC 2024 - Glass Su <glass.su@suse.com>
 
 - drbd: Support and adaptations for OCF 1.1 standard (bsc#1233273)

@@ -1,7 +1,7 @@
 #
 # spec file for package torbrowser-launcher
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://gitlab.torproject.org/tpo/applications/torbrowser-launcher/
 Source0:        https://github.com/torproject/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
 BuildRequires:  gpg2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -92,6 +93,9 @@ python3 setup.py install --skip-build --root %{buildroot}
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/torbrowser-settings.desktop
 
 %find_lang %{name} %{?no_lang_C}
+
+%post -n torbrowser-apparmor-profile
+%{apparmor_reload %{_sysconfdir}/apparmor.d/torbrowser.Browser.firefox %{_sysconfdir}/apparmor.d/torbrowser.Tor.tor}
 
 %files
 %license LICENSE

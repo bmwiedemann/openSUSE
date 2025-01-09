@@ -1,7 +1,7 @@
 #
 # spec file for package publicsuffix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 yaneti@declera.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           publicsuffix
-Version:        20241202
+Version:        20250107
 Release:        0
 Summary:        Cross-vendor public domain suffix database
 License:        MPL-2.0

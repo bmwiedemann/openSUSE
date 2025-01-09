@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,18 @@
 Name:           python-elasticsearch
 # DO NOT UPDATE until the compatible version of
 # python-elasticsearch-dsl is available
-Version:        8.12.0
+Version:        8.17.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
 Source:         https://github.com/elastic/elasticsearch-py/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Make-pyarrow-dependency-optional-for-tests.patch gh#elastic/elasticsearch-py#2733
+Patch1:         0001-Make-pyarrow-dependency-optional-for-tests.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module elastic-transport}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module urllib3 >= 1.21.1}
 BuildRequires:  %{python_module wheel}
@@ -39,6 +42,7 @@ BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module PyYAML >= 5.4}
 BuildRequires:  %{python_module aiohttp >= 3 with %python-aiohttp < 4}
+BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -63,12 +67,14 @@ sed -i '/addopts/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Skip some flaky tests that fails in OBS
+donttest="test_sniff_uses_sniff_timeout or test_sniff_on_node_failure_triggers"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
-%doc CODE_OF_CONDUCT.md CHANGELOG.md README.rst
+%doc CODE_OF_CONDUCT.md CHANGELOG.md README.md
 %{python_sitelib}/elasticsearch
-%{python_sitelib}/elasticsearch-%{version}.dist-info
+%{python_sitelib}/elasticsearch-%{version}*-info
 
 %changelog

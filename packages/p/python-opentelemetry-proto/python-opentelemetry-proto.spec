@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-proto
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-proto
-Version:        1.27.0
+Version:        1.29.0
 Release:        0
 Summary:        OpenTelemetry Python Proto
 License:        Apache-2.0
@@ -29,11 +29,11 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module protobuf >= 3.19}
+BuildRequires:  %{python_module protobuf >= 5.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-protobuf >= 3.19
+Requires:       python-protobuf >= 5.0
 BuildArch:      noarch
 %python_subpackages
 

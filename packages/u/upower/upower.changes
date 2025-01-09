@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  3 21:44:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch -- dbus: show
+  charge-threshold-* status as yes/no.
+
+-------------------------------------------------------------------
 Tue Nov  5 14:48:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.90.6:

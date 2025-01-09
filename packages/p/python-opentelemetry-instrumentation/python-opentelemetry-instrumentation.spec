@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-instrumentation
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation
-Version:        0.48b0
+Version:        0.50b0
 Release:        0
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-instrumentation
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-instrumentation/opentelemetry_instrumentation-%{version}.tar.gz
+BuildRequires:  %{python_module packaging >= 18.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements

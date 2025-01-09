@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-wayland-session
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,12 @@ URL:            https://github.com/lxqt/lxqt-wayland-session
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch1:         001-labwc-autostart-swaybg.patch
+## PATCH-CONFIGURATION-openSUSE 0001-configuration-changes-for-default-labwc-session.patch
+Patch0:         0001-configuration-changes-for-default-labwc-session.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(KF6WindowSystem)
@@ -50,6 +52,7 @@ Summary:        Session files for LXQt-Hyprland
 License:        BSD-3-Clause
 Requires:       %{name} = %{version}
 Requires:       hyprland
+Requires:       hyprland-qtutils
 Supplements:    (%{name} and hyprland)
 
 %description -n lxqt-hyprland-session
@@ -94,6 +97,8 @@ Summary:        Session files for LXQt-wayfire
 License:        MIT
 Requires:       %{name} = %{version}
 Requires:       wayfire
+Recommends:     sddm-conf
+Recommends:     wcm
 Supplements:    (%{name} and wayfire)
 
 %description -n lxqt-wayfire-session
@@ -108,6 +113,9 @@ Requires:       labwc >= 0.7.2
 Requires:       swaybg
 Requires:       swayidle
 Requires:       swaylock
+Recommends:     labwc-tweaks
+Recommends:     sddm-conf
+Recommends:     wdisplays
 Supplements:    (%{name} and labwc)
 Conflicts:      labwc-theme-vent <= %{version}
 
@@ -115,7 +123,7 @@ Conflicts:      labwc-theme-vent <= %{version}
 This package contains the openbox themes and other files for labwc.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -S git_am
 
 %build
 %cmake
@@ -150,7 +158,7 @@ This package contains the openbox themes and other files for labwc.
 
 %files -n lxqt-river-session
 %license COPYING
-%{_datadir}/lxqt/wayland/lxqt-river-init
+%attr(0755,root,root)%{_datadir}/lxqt/wayland/lxqt-river-init
 
 %files -n lxqt-sway-session
 %license LICENSE.MIT

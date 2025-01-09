@@ -1,10 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 26 12:57:46 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Support building with LLVM 19
+  * add 0002-Drop-support-for-LLVM-12-and-below.patch
+  * add 0003-cmake-Allow-any-LLVM-release-for-debug-builds.patch
+  * add 0004-Bump-max-LLVM-version-to-19-3433.patch
+- Default to LLVM 19 in Factory and SLE15-SP7
+
+-------------------------------------------------------------------
 Wed Dec 18 07:43:13 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.21.3
   * Fix alignment issue for multi-key maps
 
 -------------------------------------------------------------------
+
 Mon Nov 11 11:33:27 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Use clang for build in Factory.
@@ -91,6 +101,11 @@ Wed Jan 31 07:31:21 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
   * Fix silent truncation of 64-bit values in hist()
   * Fix retval for kretfunc/fexit
   * Add PPID field to execsnoop.bt
+
+-------------------------------------------------------------------
+Mon Jan 22 13:39:02 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Switch to gcc for compilation (bsc#1219008)
 
 -------------------------------------------------------------------
 Wed Dec 20 22:44:04 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>

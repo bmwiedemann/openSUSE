@@ -115,7 +115,7 @@
      envptr = loadpath;
 --- src/show.c
 +++ src/show.c	2020-07-17 07:25:00.022670914 +0000
-@@ -1140,6 +1140,15 @@ show_version(FILE *fp)
+@@ -1139,6 +1139,15 @@ show_version(FILE *fp)
  	    p 			/* type "help seeking-assistance" */
  	    );
  

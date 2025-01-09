@@ -1,7 +1,7 @@
 #
 # spec file for package qhull
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,12 +99,18 @@ sed -i 's#@LIB_INSTALL_DIR@#%{_lib}#' build/qhull.pc.in
 # Neither is INCLUDE_INSTALL_DIR
 sed -i 's#@INCLUDE_INSTALL_DIR@#include#' build/qhull.pc.in
 
+# Only build static qhull_CPP
+sed -i 's#set(qhull_TARGETS_STATIC .*)#set(qhull_TARGETS_STATIC ${qhull_CPP})#' CMakeLists.txt
+
 %cmake \
         -DDOC_INSTALL_DIR="%{_docdir}/%{name}" \
         -DINCLUDE_INSTALL_DIR="%{_includedir}" \
         -DLIB_INSTALL_DIR="%{_libdir}" \
         -DBIN_INSTALL_DIR="%{_bindir}" \
-        -DMAN_INSTALL_DIR="%{_mandir}/man1/"
+        -DMAN_INSTALL_DIR="%{_mandir}/man1/" \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_STATIC_LIBS=ON \
+        -DLINK_APPS_SHARED=ON
 %cmake_build qhullcpp
 
 %install
@@ -118,9 +124,6 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING.txt
 
 # Fix rpmlint warning: E: double-slash-in-pkgconfig-path
 sed -i 's#//#/#' %{buildroot}%{_libdir}/pkgconfig/*.pc
-
-# Manually install cpp lib since it isn't installed by make install
-find ./ -name "libqhullcpp.a" -print -exec install -m0644 {} %{buildroot}%{_libdir}/ \;
 
 # We don't install static libs for qhull, so don't install the corresponding pkgconfig files either
 rm %{buildroot}%{_libdir}/pkgconfig/qhullstatic*.pc

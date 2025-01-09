@@ -22,9 +22,9 @@
 %bcond_with    krita5
 %endif
 
-%if %{pkg_vcmp gimp >= 2.99}
+%if %{pkg_vcmp gimp >= 3}
 %define gimp_suffix 3
-%global _gimpplugindir %(gimptool-2.99 --gimpplugindir)/plug-ins/
+%global _gimpplugindir %(gimptool-3.0 --gimpplugindir)/plug-ins/gmic_gimp_qt/
 %else
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins/
 %endif
@@ -235,7 +235,7 @@ pushd gmic-qt
 install -m 0755 build/gmic_qt %{buildroot}%{_bindir}/gmic_qt
 
 # gimp plugin
-install -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
+install -D -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
 popd
 
 %ldconfig_scriptlets -n libgmic3

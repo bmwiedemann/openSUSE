@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-vaapi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-vaapi
-Version:        1.24.10
+Version:        1.24.11
 Release:        0
 Summary:        Gstreamer VA-API plugins
 License:        LGPL-2.1-or-later

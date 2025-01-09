@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 06 23:31:24 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.2.0+7:
+  * Correct incremental build flags (#10)
+  * Doc custom build flags (#9)
+
+-------------------------------------------------------------------
 Fri Jul 19 03:18:37 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Resolve build failure when backported to 15-SP3

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 07:08:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- fix the warning of blk_validate_limits when running drbdadm down (boo#1235399)
+  * add patch
+    boo1235399-fix_the_warning_of_blk_validate_limits.patch
+
+-------------------------------------------------------------------
 Fri Dec 11 02:35:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
 
 - Update DRBD version from 9.1.22 to 9.1.23 (boo#1234849)

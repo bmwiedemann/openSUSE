@@ -286,4 +286,19 @@
   See https://clojure.org/news/2024/09/05/clojure-1-12-0</comment>
     <requestid>1199555</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9a448df60e02f67d01ad32b64ed55c25</srcmd5>
+    <version>1.12.0.1495</version>
+    <time>1736431670</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.0.1495:
+  * Echo args with -M deprecation warning for clarity
+  * Update to tools.deps 0.21.1467
+
+- Update to 1.12.0.1488:
+  * Tweak message when -X or -T function namespace not found
+  * Update to latest tools.tools
+  * Update to latest tools.deps</comment>
+    <requestid>1235830</requestid>
+  </revision>
 </revisionlist>

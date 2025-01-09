@@ -1,7 +1,7 @@
 #
 # spec file for package python-elastic-transport
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elastic-transport
-Version:        8.15.1
+Version:        8.17.0
 Release:        0
 Summary:        Transport classes and utilities shared among Python Elastic client libraries
 License:        Apache-2.0
@@ -77,6 +77,7 @@ donttest="$donttest or test_simple_request"
 donttest="$donttest or (TestHttpxAsyncNode and not Creation)"
 # Flaky test
 donttest="$donttest or test_decimal_serialization[OrjsonSerializer]"
+donttest="$donttest or test_sniff_before_requests or test_sniffed_nodes_added_to_pool or test_sniff_on_node_failure"
 %pytest -W ignore::DeprecationWarning -k "not ($donttest)"
 
 %files %{python_files}

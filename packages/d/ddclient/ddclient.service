@@ -8,7 +8,9 @@ Wants=network-online.target nss-lookup.target
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
 ProtectHome=true
-PrivateDevices=true
+PrivateDevices=false
+DevicePolicy=closed
+DeviceAllow=char-ipmidev rw
 ProtectHostname=true
 ProtectClock=true
 ProtectKernelTunables=true

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 18:07:53 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop changes.lang source, request from upstream + gedit no longer
+  uses plain gtksourceview. (boo#1205804)
+
+-------------------------------------------------------------------
 Mon Apr 22 15:39:39 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add gtksourceview-gcc14.patch: fix assignment from incompatible

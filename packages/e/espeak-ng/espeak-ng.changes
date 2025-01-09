@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:29:11 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- delete obsolete patch fix-configure-1171.patch
+- delete obsolete patch espeak-ng-CVE-2023-49990-49991-49992-49993-49994.patch
+- update to new version 1.52.0:
+ - added cmake build system
+ - Added stress marks to phoneme events
+ - a meny fixes to core C code
+ - many updated and new languages
+
+-------------------------------------------------------------------
 Fri Aug 23 11:57:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire /usr/bin/ronn instead of rubygem(ronn): Tumbleweed

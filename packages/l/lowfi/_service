@@ -6,7 +6,7 @@
     <param name="scm">git</param>
     <param name="version">git-master</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.5.3</param>
+    <param name="revision">1.5.5</param>
     <param name="changesauthor">andrea.manzini@suse.com</param>
   </service>
   <service mode="manual" name="set_version"/>

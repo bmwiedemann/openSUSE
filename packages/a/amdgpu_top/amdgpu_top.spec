@@ -1,7 +1,7 @@
 #
 # spec file for package amdgpu_top
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging >= 1.2.0
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_amdgpu)
+Requires:       libwayland-egl1
+Requires:       libxkbcommon0
 
 %description
 Tool that displays AMD GPU utilization.

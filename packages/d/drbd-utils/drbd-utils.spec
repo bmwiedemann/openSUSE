@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define services drbd.service drbd-lvchange@.service drbd-promote@.service drbd-demote-or-escalate@.service drbd-reconfigure-suspend-or-error@.service drbd-services@.target drbd-wait-promotable@.service drbd@.service drbd@.target ocf.ra@.service
+%define services drbd.service drbd-graceful-shutdown.service drbd-lvchange@.service drbd-promote@.service drbd-demote-or-escalate@.service drbd-reconfigure-suspend-or-error@.service drbd-services@.target drbd-wait-promotable@.service drbd@.service drbd@.target ocf.ra@.service
 %if 0%{?suse_version} < 1550
   # for SLEs
   %define sbindir /sbin
@@ -32,7 +32,7 @@
 # Only need po4a to build man from git source code
 %bcond_without prebuiltman
 Name:           drbd-utils
-Version:        9.25.0
+Version:        9.29.0
 Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
@@ -43,23 +43,28 @@ Source100:      %{name}.rpmlintrc
 
 #############################################
 # Upstream patches
-Patch0001:      0001-drbdadm-v9-do-not-segfault-when-re-configuring-proxy.patch
-Patch0002:      0002-user-drbrdmon-add-missing-stdint.h-includes.patch
-Patch0003:      0003-Introduce-default_types.h-header.patch
+Patch0001:      0001-drbd-verify.py-relax-host-key-checking.patch
+Patch0002:      0002-DRBDmon-Disabled-DRBD-commands-warning-only-for-actu.patch
+Patch0003:      0003-DRBDmon-Integrate-global-local-command-delegation.patch
+Patch0004:      0004-DRBDmon-Adjust-events-log-supplier-program-name.patch
+Patch0005:      0005-DRBDmon-Add-drbd-events-log-supplier.patch
+Patch0006:      0006-DRBDmon-Adjust-Makefile.patch
+Patch0007:      0007-DRBDmon-Version-V1R4M1.patch
+Patch0008:      0008-drbdadm-add-proxy-options-to-add-connection-command.patch
+Patch0009:      0009-Do-not-hardcode-paths-in-services-and-scripts.patch
+Patch0010:      0010-Fix-typo-in-warning-there-is-no-po4a-translage-comma.patch
+Patch0011:      0011-drbd.ocf-explicitly-timeout-crm_master-IPC-early.patch
+Patch0012:      0012-drbd.ocf-the-text-output-of-crm_resource-locate-has-.patch
 
 # SUSE specific patches
 Patch1001:      init-script-fixes.diff
-Patch1002:      usrmerge_move_lib_to_prefix_lib.patch
-Patch1003:      fence-after-pacemaker-down.patch
-Patch1004:      bsc-1032142_Disable-quorum-in-default-configuration.patch
-Patch1005:      move_fencing_from_disk_to_net_in_example.patch
-Patch1006:      pie-fix.patch
-Patch1007:      bsc-1219263_crm-fence-peer.9.sh-fix-parsing-in_ccm-crmd-fields-o.patch
-Patch1008:      bsc-1219263_crm-fence-peer.9.sh-use-join-of-node_state-to-judge-.patch
-Patch1009:      bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score.patch
-Patch1010:      bsc-1233273_drbd.ocf-update-regex-of-sed-for-new-output-from-crm.patch
-Patch1011:      bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
-Patch1099:      rpmlint-build-error.patch
+Patch1002:      fence-after-pacemaker-down.patch
+Patch1003:      bsc-1032142_Disable-quorum-in-default-configuration.patch
+Patch1004:      move_fencing_from_disk_to_net_in_example.patch
+Patch1005:      pie-fix.patch
+Patch1006:      bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score.patch
+Patch1007:      bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
+Patch1008:      rpmlint-build-error.patch
 #############################################
 
 Provides:       drbd-bash-completion = %{version}
@@ -214,6 +219,7 @@ fi
 %{sbindir}/drbdmeta
 %if %{with drbdmon}
 %{sbindir}/drbdmon
+%{sbindir}/drbd-events-log-supplier
 %endif
 %ifarch %{ix86} x86_64
 %dir %attr(700,root,root) %{_sysconfdir}/xen
@@ -225,6 +231,7 @@ fi
 %{_prefix}/lib/ocf/resource.d/linbit/drbd.shellfuncs.sh
 %{_udevrulesdir}/65-drbd.rules
 %{_unitdir}/drbd.service
+%{_unitdir}/drbd-graceful-shutdown.service
 %{_unitdir}/drbd-lvchange@.service
 %{_unitdir}/drbd-promote@.service
 %{_unitdir}/drbd-demote-or-escalate@.service

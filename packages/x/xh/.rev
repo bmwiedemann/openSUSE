@@ -71,4 +71,18 @@
   * Ignore NO_COLOR if set to empty string, see #370</comment>
     <requestid>1208099</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df51fd9c91e32c6ed75e342b0d3638a2</srcmd5>
+    <version>0.23.1</version>
+    <time>1736431674</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.23.1:
+  Security fixes:
+  * Upgrade to ruzstd v0.7.3 to fix RUSTSEC-2024-0400, see #396
+  Bug fixes:
+  * Warn on combination of --continue and Range header, #394
+  Other:
+  * Enable logging in rustls and tracing-using dependencies, see #390</comment>
+    <requestid>1235826</requestid>
+  </revision>
 </revisionlist>
