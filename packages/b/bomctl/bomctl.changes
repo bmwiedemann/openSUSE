@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Thu Jan 09 06:47:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.2:
+  * New features
+    - feat: Output Sboms without Modification (#210) (@ashearin)
+    - feat: SBOM Aliases (#129) (@lmphil)
+    - feat: SBOM linking (#223) (@jhoward-lm)
+    - feat: add base document db annotation,
+      WithSourceDocumentAnnotations and
+      WithRevisedDocumentAnnotations functions (#211) (@ashearin)
+    - feat: add latest document annotation (#230) (@ashearin)
+    - feat: add link command stubs (#222) (@jhoward-lm)
+    - feat: bomctl push subcommand OCI client functionality (#139)
+      (@jhoward-lm)
+    - feat: document annotations for source data, hash, format, and
+      URL (#153) (@jhoward-lm)
+    - feat: github client fetch support (#209) (@lallevato-lm)
+    - feat: gitlab fetch (#229) (@lmphil)
+    - feat: implement autocomplete (#238) (@lallevato-lm)
+  * Bug fixes
+    - fix: Fix typo in MAINTAINERS (#180) (@evankanderson)
+    - fix: Print DocID for list cmd. Dynamic id/alias column width
+      (#165) (@ashearin)
+    - fix: add cyclonedx 1.6 support (#188) (@ashearin)
+    - fix: update compare_docs function (#202) (@ashearin)
+  * Documentation
+    - docs: ADR-0006 sbom merge (#111) (@pkwiatkowski1)
+    - docs: ADR-0007 sbom diff (#112) (@mfrystacky)
+    - docs: ADR-0008 storage and retrieval without modification
+      (#194) (@ashearin)
+    - docs: ADR-0009 SBOM Linking (#164) (@lmphil)
+    - docs: Roadmap Updates (#161) (@idunbarh)
+    - docs: add ADR for auth types and encrypted secrets (#104)
+      (@jhoward-lm)
+  * Other changes
+    - refactor: add Unpack function, rename to match package (#239)
+      (@jhoward-lm)
+    - refactor: add choiceValue type for static sets of flag
+      options (#240) (@jhoward-lm)
+    - refactor: add sliceutils helper package for dev convenience
+      (#163) (@jhoward-lm)
+    - refactor: break out Fetcher and Pusher from Client interface,
+      add PrepareFetch method (#245) (@jhoward-lm)
+    - refactor: internal option to force list output if desired
+      (#241) (@jhoward-lm)
+    - refactor: stage all externally referenced SBOMs before push
+      (#155) (@jhoward-lm)
+    - test: add cmd format/encoding unit tests, update e2e tests
+      (#185) (@ashearin)
+    - test: add unit tests for alias/tags DB functions (#174)
+      (@lmphil)
+    - test: client fetch unit tests (#205) (@jhoward-lm)
+    - test: integration testing of functionality (#169) (@ashearin)
+
+-------------------------------------------------------------------
+Sat Dec 28 17:21:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package bomctl: Format agnostic SBOM tooling

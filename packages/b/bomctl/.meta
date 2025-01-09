@@ -1,0 +1,5 @@
+<package name="bomctl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="bomctl"/>
+</package>
