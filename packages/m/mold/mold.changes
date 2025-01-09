@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jan  9 08:02:26 UTC 2025 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.36.0
+  * The --package-metadata=<string> option has been added to embed a given string
+    into the .note.package section. This option is designed for build scripts that
+    generate binary packages, such as .rpm or .deb, to include package metadata in
+    each executable. It simplifies the process of identifying the corresponding
+    package for a given executable or core file. (7ddc8f4)
+  * [ARM][PowerPC] We've improved the algorithm for creating range extension thunks
+    to reduce memory usage and improve speed. For example, linking clang-19 for
+    ARM64 is now ~7% faster than before. (9fc0ace)
+  * [RISC-V][LoongArch] We've improved the algorithm for code-shrinking linker
+    relaxation to reduce memory usage and improve speed. For example, linking
+    clang-19 for RISC-V is now ~4% faster than before. (3234d88)
+  * mold created a bad relocation for an IFUNC if the linker's output file type was
+    a shared library and the symbol was exported. This bug could cause a
+    segmentation fault of a linked program. The problem has now been fixed.
+    (a297859)
+  * [RISC-V] mold could produce incorrect code as a result of code-shrinking
+    relaxation for the R_RISCV_HI20 relocation. That type of relocation was used
+    rarely because it is not PC-relative. That being said, if your program used the
+    relocation, and the relocation targets were at a low address (from 0x1f800 to
+    0x20000), your program would crash at runtime due to the linker's bug. The issue
+    has now been resolved. (eec3f6b)
+  * [RISC-V][LoongArch] When the linker removed instructions from a function as a
+    result of code-shrinking relaxation, the function symbol's size in the output
+    file should be updated to reflect the result of relaxation, even though doing it
+    is mostly cosmetic. mold did not do that. Now, mold sets correct sizes to output
+    function symbols. (e6345d5)
+  * [LoongArch] Binaries linked with mold now work on 64 KiB page systems.
+    Previously, only up to 16 KiB pages were supported. (2d7b6b2)
+  * [s390x] The s390x processor-specific ABI requires the linker to reserve the
+    first three slots of the .got section for the runtime. mold, however, reserved
+    only two slots and used the third for itself. Even though we did not observe
+    issues in the wild, it was a violation of the psABI. The problem has now been
+    fixed. (dfce2fc)
+
+-------------------------------------------------------------------
 Tue Dec 17 06:02:19 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.35.1
