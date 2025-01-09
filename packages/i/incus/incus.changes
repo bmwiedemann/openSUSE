@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:25:54 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Add missing Requires for OCI support. bsc#1234300
+
+-------------------------------------------------------------------
 Fri Dec 13 07:07:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.8:

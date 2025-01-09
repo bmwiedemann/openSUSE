@@ -1,7 +1,7 @@
 #
 # spec file for package incus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,6 +118,10 @@ Requires:       qemu-x86 >= 6.0
 Requires:       qemu-arm >= 6.0
 %endif
 %endif
+# Needed for OCI support.
+Requires:       skopeo
+Requires:       umoci
+# Helper tools for admins.
 Recommends:     %{name}-tools
 # Storage backends -- we don't recommend ZFS since it's not *technically* a
 # blessed configuration.
