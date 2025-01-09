@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 08 07:53:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.1:
+  * Version 0.24.1
+  * fix: remove superfluous bash prompt characters (#301)
+  * Bump which from 6.0.3 to 7.0.0 (#292)
+  * Bump the all group across 1 directory with 8 updates (#309)
+  * Explicitly specify cpu architecture in building
+    x86_64-apple-darwin (#307)
+  * Bump the all group across 1 directory with 6 updates (#290)
+  * fix: default value in example (#291)
+  * Bump the all group across 1 directory with 5 updates (#275)
+
+-------------------------------------------------------------------
 Sat Sep 14 15:03:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.24.0:

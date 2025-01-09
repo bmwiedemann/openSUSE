@@ -1,7 +1,7 @@
 #
 # spec file for package kubie
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubie
-Version:        0.24.0
+Version:        0.24.1
 Release:        0
 Summary:        A Kubernetes context switcher
 License:        Zlib
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Recommends:     fzf
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.67.0
+BuildRequires:  rust >= 1.82.0
 
 %description
 kubie offers context switching, namespace switching and prompt modification in a

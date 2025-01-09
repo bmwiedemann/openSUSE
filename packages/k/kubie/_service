@@ -3,9 +3,9 @@
     <param name="url">https://github.com/sbstp/kubie</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
+    <param name="revision">v0.24.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.24.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="manual">
@@ -13,14 +13,10 @@
     <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="manual">
-    <param name="basename">kubie</param>
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="update">true</param>
     <param name="srcdir">kubie</param>
     <param name="compression">xz</param>
-  </service>
-  <service name="cargo_audit" mode="manual">
-     <param name="srcdir">kubie</param>
   </service>
 </services>
