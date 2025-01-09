@@ -1,7 +1,7 @@
 #
 # spec file for package logback
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.xz
 # Remove deprecated methods
 Patch0:         %{name}-1.2.8-jetty.patch
 Patch1:         logback-1.2.3-getCallerClass.patch
+Patch2:         logback-CVE-2024-12801-CVE-2024-12798.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.mail:mail)
@@ -88,6 +89,7 @@ chmod +x %{name}-examples/src/main/resources/setClasspath.sh
 
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :findbugs-maven-plugin

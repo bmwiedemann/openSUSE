@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  8 13:10:15 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
+
+- CVE-2024-12798 (bsc#1234742) Arbitrary code execution via
+  JaninoEventEvaluator
+  * Resolution: remove JaninoEventEvaluator
+- CVE-2024-12801 (bsc#1234743) Server-Side Request Forgery (SSRF)
+  in SaxEventRecorder
+  * Resolution: prevent Server-Side Request Forgery (SSRF) attacks
+    by ignoring external DTD files in DOCTYPE
+  * Remove SaxEventRecorder
+- Add logback-CVE-2024-12801-CVE-2024-12798.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 10:48:45 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
