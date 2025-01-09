@@ -19,22 +19,19 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           qt6-qtpbfimageformat
-Version:        3.2
+Version:        4.0
 Release:        1
 Summary:        Qt6 PBF Image Format Plugin
 License:        LGPL-3.0-only
 Group:          Development/Libraries/X11
 Url:            https://github.com/tumic0/QtPBFImagePlugin
 Source0:        https://github.com/tumic0/QtPBFImagePlugin/archive/%{version}/QtPBFImagePlugin-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE pkgconfig.patch - fix for broken OpenSUSE linker
-Patch0:         pkgconfig.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  make
 %if 0%{?suse_version}
 BuildRequires:  qt6-core-devel
 BuildRequires:  qt6-gui-devel
-BuildRequires:  protobuf-devel
 BuildRequires:  zlib-devel
 %else
 %if 0%{?fedora_version}
@@ -42,16 +39,13 @@ BuildRequires:  qt6-qtbase
 BuildRequires:  qt6-qtbase-gui
 BuildRequires:  qt6-qtbase-devel
 BuildRequires:  zlib-devel
-BuildRequires:  protobuf-lite-devel
 %else
 # Mageia
 BuildRequires:  libqt6core-devel
 BuildRequires:  libqt6gui-devel
 %ifarch x86_64
-BuildRequires:  lib64protobuf-devel
 BuildRequires:  lib64zlib-devel
 %else
-BuildRequires:  libprotobuf-devel
 BuildRequires:  libzlib-devel
 %endif
 %endif

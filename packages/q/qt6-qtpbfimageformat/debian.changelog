@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (4.0) stable; urgency=low
+
+  * Removed Google Protocol buffers dependency.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 08 Jan 2025 01:10:03 +0100
+
 qt5-pbf-image-plugin (3.2) stable; urgency=low
 
   * Improved rendering performance.

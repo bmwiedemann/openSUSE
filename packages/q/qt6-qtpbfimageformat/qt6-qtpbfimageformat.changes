@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 01:07:27 CET 2025 - tumic@cbox.cz
+
+- Update to version 4.0
+  * Removed Google Protocol buffers dependency.
+  * Removed the related pkgconfig.patch
+
+-------------------------------------------------------------------
 Sun Oct  6 13:55:00 CEST 2024 - tumic@cbox.cz
 
 - Update to version 3.2
