@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,36 +27,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.8.5
+Version:        2.0.0
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://python-poetry.org/
 # PyPI sdist doesn't contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.9.0 with %python-poetry-core < 2.0.0}
+BuildRequires:  %{python_module poetry-core >= 2.0.0 with %python-poetry-core < 2.1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-build >= 1.0.3
-Requires:       python-poetry-core = 1.9.1
+Requires:       python-build >= 1.2.1
+Requires:       python-poetry-core = 2.0.0
 Requires:       python-poetry-plugin-export >= 1.6.0
 # SECTION cachecontrol[filecache]
-Requires:       python-CacheControl >= 0.13
+Requires:       python-CacheControl >= 0.14
 Requires:       python-filelock >= 3.8.0
 # /SECTION
-Requires:       python-cleo >= 2.0.0
-Requires:       python-crashtest >= 0.4.1
-Requires:       python-dulwich >= 0.21.2
+Requires:       python-cleo >= 2.1.0
+Requires:       python-dulwich >= 0.22.6
 Requires:       python-fastjsonschema >= 2.18.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 4.4
 %endif
 Requires:       python-installer >= 0.7.0
-Requires:       python-keyring >= 24.0
-Requires:       python-packaging >= 23.1
+Requires:       python-keyring >= 25.1
+Requires:       python-packaging >= 24.0
 Requires:       python-pexpect >= 4.7.0
 Requires:       python-pkginfo >= 1.12.0
 Requires:       python-pyproject-hooks >= 1.0.0
@@ -95,11 +93,6 @@ Python dependency management and packaging made easy.
 
 %prep
 %autosetup -p1 -n poetry-%{version}
-for f in console/events/console_events.py \
-         layouts/standard.py; do
-  [ -e src/poetry/$f ] || exit 1 # file does not exist
-  [ ! -s src/poetry/$f ] && echo "# empty module" >> src/poetry/$f || exit 2 # file is not empty
-done
 
 %if !%{with test}
 %build
@@ -124,6 +117,10 @@ donttest="$donttest or test_isolated_env_install_success"
 donttest="$donttest or test_executor_known_hashes"
 # no command "exit-code"
 donttest="$donttest or test_info_setup_complex_calls_script"
+# we have other packages installed
+donttest="$donttest or test_system_site_packages"
+# does not raise deprecationwarning
+donttest="$donttest or test_get_http_auth"
 %{python_expand # pytest needs to be called from the virtualenv python interpreter gh#python-poetry/poetry#1645
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
 source testenv-%{$python_bin_suffix}/bin/activate
