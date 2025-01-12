@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-runner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           lxqt-runner
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later
-Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/lxqt-runner
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -59,6 +58,9 @@ is implemented too.
 %{qt6_install}
 
 %find_lang %{name} --with-qt
+
+%check
+%ctest
 
 %files
 %doc AUTHORS CHANGELOG README.md

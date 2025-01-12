@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 11 21:34:22 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.1.1:
+  * Suppressed new Qt warnings for invaled QRegularExpression
+  * Fixed new crash on closing runner on Wayland
+  * Updated manpages
+- Specfile cleanup and added %check section
+
+-------------------------------------------------------------------
 Wed Nov  6 21:36:20 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.1.0:
