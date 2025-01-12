@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 11 16:46:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.95:
+  * :bookmark: Bump the Helm chart version to 52.3.95
+  * Update worker liveness/readiness config (#1684)
+  * support new radius protocol (#1682)
+  * updated the notes (#1681)
+
+-------------------------------------------------------------------
 Sat Jan 04 08:09:40 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.94 (52.3.93 was yanked):
