@@ -608,4 +608,12 @@
     <comment>added to changelog that 550.142 supersedes 550.135.patch</comment>
     <requestid>1235163</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>757b42a29fcb3d995c096f4c3f410c5f</srcmd5>
+    <version>550.142</version>
+    <time>1736677363</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1237048</requestid>
+  </revision>
 </revisionlist>
