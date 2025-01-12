@@ -52,4 +52,12 @@
 - Add patch fix-version.patch:</comment>
     <requestid>1146492</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c16bcd61b24f3447e523c09747178d86</srcmd5>
+    <version>3.7.0</version>
+    <time>1736679611</time>
+    <user>anag+factory</user>
+    <comment>- Correct %doc and %license locations.</comment>
+    <requestid>1236764</requestid>
+  </revision>
 </revisionlist>

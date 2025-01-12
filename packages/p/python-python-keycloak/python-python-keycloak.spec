@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-keycloak
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,10 +65,8 @@ export KEYCLOAK_ADMIN KEYCLOAK_ADMIN_PASSWORD KEYCLOAK_PORT
 %pytest --ignore tests/test_keycloak_admin.py --ignore tests/test_keycloak_openid.py --ignore tests/test_keycloak_uma.py
 
 %files %{python_files}
-%doc README.md
-%doc %{python_sitelib}/CHANGELOG.md
-%doc %{python_sitelib}/CONTRIBUTING.md
-%license %{python_sitelib}/LICENSE
+%license LICENSE
+%doc README.md CHANGELOG.md CONTRIBUTING.md
 %{python_sitelib}/keycloak
 %{python_sitelib}/python_keycloak-%{version}.dist-info
 
