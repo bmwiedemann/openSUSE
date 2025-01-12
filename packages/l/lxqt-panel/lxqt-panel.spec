@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-panel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -77,7 +77,6 @@ lxqt-panel represents the taskbar of LXQt.
 
 %package devel
 Summary:        Devel files for lxqt-panel
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -86,7 +85,6 @@ LXQt panel development files and headers
 
 %package branding-upstream
 Summary:        Upstream branding of %{name}
-Group:          System/GUI/LXQt
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding

@@ -1290,4 +1290,12 @@
  * Fixed bugs about multi-screen setups on Wayland. (forwarded request 1233097 from AndnoVember)</comment>
     <requestid>1233459</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>42e2d80f6edfac0157c0b3829eed1691</srcmd5>
+    <version>2.1.4</version>
+    <time>1736677408</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237107</requestid>
+  </revision>
 </revisionlist>

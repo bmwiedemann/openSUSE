@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 11 21:26:50 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.1.4:
+  * Regressions found and fixed in Task Manager
+  * Added exclusion list support to Task Manager
+  * Added configurable tooltip to Custom Command Plugin
+- Specfile Cleanup
+
+-------------------------------------------------------------------
 Mon Dec 23 05:54:29 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.1.3:
