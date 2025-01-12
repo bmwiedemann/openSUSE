@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Jan 11 18:42:09 UTC 2025 - mrueckert@suse.de
+
+- Update to version 1.33.1:
+  * Telegraf v1.33.1
+  * Update changelog for v1.33.1
+  * Update build_version.txt for v1.33.1
+  * fix(outputs.influxdb_v2): Fix panic and API error handling (#16388)
+  * fix(inputs.intel_powerstat): Fix option removal version (#16377)
+  * docs(parsers.json_v2): Add warning about choosing XPath instead (#16373)
+  * chore(deps): Bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1 (#16346)
+  * chore(deps): Bump github.com/gopacket/gopacket from 1.3.0 to 1.3.1 (#16345)
+  * chore(deps): Bump cloud.google.com/go/bigquery from 1.64.0 to 1.65.0 (#16344)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.162.1 to 1.198.1 (#16343)
+  * fix(outputs.influxdb_v2): Allow overriding auth and agent headers (#16383)
+  * chore(inputs.syslog): Fix testcase timestamp hardcoding 2024 (#16384)
+  * chore: Fix linter findings for `revive:unused-receiver` in `plugins/inputs/[s-z]` (#16327)
+  * chore: Fix linter findings for `revive:unused-receiver` in `plugins/inputs/[l-r]` (#16325)
+  * chore(deps): Bump github.com/vapourismo/knx-go from v0.0.0-20240217175130-922a0d50c241 to v0.0.0-20240915133544-a6ab43471c11 (#16324)
+  * chore(deps): Bump github.com/Azure/go-autorest/autorest/adal from 0.9.23 to 0.9.24 (#16315)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/p*` (#16307)
+  * fix(inputs.mongodb): Do not dereference nil pointer if gathering database stats fails (#16310)
+  * chore(deps): Bump github.com/prometheus/common from 0.60.0 to 0.61.0 (#16318)
+  * chore(deps): Bump github.com/IBM/nzgo/v12 from 12.0.9-0.20231115043259-49c27f2dfe48 to 12.0.9 (#16319)
+  * chore(deps): Bump github.com/fatih/color from 1.17.0 to 1.18.0 (#16317)
+  * docs(parsers.openmetrics): Update link to specification (#16312)
+  * chore(deps): Bump super-linter/super-linter from 7.2.0 to 7.2.1 (#16313)
+  * chore: Fix linter findings for `revive:unused-receiver` in `plugins/inputs/[f-k]` (#16308)
+  * chore: Fix linter findings for `revive:unused-receiver` in `plugins/inputs/[a-e]` (#16263)
+  * chore(processors.unpivot): Cleanup code and improve performance (#16299)
+  * chore(agent): Add warning about changing default for 'skip_processors_after_aggregators' (#16302)
+  * chore(deps): Bump golang.org/x/crypto from 0.29.0 to 0.31.0 (#16297)
+  * fix(agent): Skip initialization of second processor state if requested (#16290)
+  * test(linters): Enable `testifylint`: `contains`, `encoded-compare` and `regexp` (#16262)
+  * docs(specs): Add `probe` as value to `startup_error_behavior` (#16052)
+  * fix(outputs.remotefile): Handle tracking metrics correctly (#16289)
+  * chore(deps): Bump k8s.io/client-go from 0.30.1 to 0.31.3 (#16281)
+  * chore(deps): Bump github.com/nats-io/nats.go from 1.36.0 to 1.37.0 (#16282)
+  * chore(deps): Bump cloud.google.com/go/monitoring from 1.21.1 to 1.22.0 (#16283)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/config from 1.27.39 to 1.28.6 (#16280)
+  * chore: Update link to release calendar (#16278)
+
+-------------------------------------------------------------------
 Mon Dec 09 20:56:33 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.33.0:

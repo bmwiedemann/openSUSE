@@ -436,4 +436,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
   * chore(deps): Bump golang.org/x/net from 0.30.0 to 0.31.0 (#16236) (forwarded request 1229491 from jfkw)</comment>
     <requestid>1229492</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>714391bdce7e7e32ea0a0c9202071186</srcmd5>
+    <version>1.33.1</version>
+    <time>1736677381</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.33.1: (forwarded request 1237073 from darix)</comment>
+    <requestid>1237074</requestid>
+  </revision>
 </revisionlist>
