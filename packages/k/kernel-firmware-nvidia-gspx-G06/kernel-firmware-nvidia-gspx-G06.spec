@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package kernel-firmware-nvidia-gspx-G06
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 550.135
+%define gfx_version 550.142
 %define cuda_version 560.35.03
 
 %global flavor @BUILD_FLAVOR@%{?nil}
