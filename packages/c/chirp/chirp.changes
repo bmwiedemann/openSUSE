@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 11 18:05:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250110:
+  * Improve keyboard navigation and editing
+  * Add Baofeng BFT20D radio
+  * rt21: Fix DTCS decoding when stored in hex
+  * tdh3: Fix incorrect ponmsg and step list values
+  * Update UV-5GPlus model alias
+  * Added support for Kenwood TS-790E
+  * kenwood_live: Refresh memory after setting
+
+-------------------------------------------------------------------
 Wed Jan  1 11:13:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20241226:
