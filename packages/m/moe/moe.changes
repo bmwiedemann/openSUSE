@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 11 12:34:36 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU moe 1.15:
+  * Files are now saved by lines (not by bytes), which is about one
+    order of magnitude faster.
+  * 'Auto unmark' now turns off highlighting by reducing block size
+    to 0 instead of resetting the block. This way the beginning of
+    the block can still be reached with Alt-B.
+  * Move window to the first column after word wrapping at right
+    margin.
+  * One more space has been inserted between columns in the help
+    screens showing the 'Character Set'.
+  * The chapter 'Syntax of command-line arguments' has been added
+    to the manual.
+
+-------------------------------------------------------------------
 Mon Jan 22 22:45:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU moe 1.14:
