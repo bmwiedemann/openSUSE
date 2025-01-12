@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 11 12:10:16 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.0:
+  * feat: add support to add and drop linux capabilities (#1702)
+  * Update pkg/build/pipeline.go
+  * Update pkg/build/pipeline.go
+  * build(deps): bump golang.org/x/time from 0.8.0 to 0.9.0
+  * build(deps): bump github.com/invopop/jsonschema from 0.12.0 to
+    0.13.0
+  * build(deps): bump golang.org/x/sys from 0.28.0 to 0.29.0
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.12.0 to
+    5.13.1
+  * minor go cleanup
+  * minor go cleanup
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.5 to 0.9.0
+  * Fix(piepline): use correct comment systax
+  * fix: Move the go mod tidy after cd to modrootfeat: Check if
+    go.mod file exiest in modroot dir to ensure modroot is set
+    correctly
+
+-------------------------------------------------------------------
 Mon Dec 30 07:23:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.3:
