@@ -1,0 +1,26 @@
+From 728d0a543290d23c4f19023f15845e1ca0e7fc3f Mon Sep 17 00:00:00 2001
+From: Michael Black W9MDB <mdblack98@yahoo.com>
+Date: Sun, 29 Dec 2024 08:56:53 -0600
+Subject: [PATCH 3/6] Fix listrigs.s rig_list_foreach
+ https://github.com/Hamlib/Hamlib/issues/1647
+
+---
+ tests/listrigs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/listrigs.c b/tests/listrigs.c
+index 65300d25f..230b1c413 100644
+--- a/tests/listrigs.c
++++ b/tests/listrigs.c
+@@ -27,7 +27,7 @@
+ #include <hamlib/rig.h>
+ 
+ 
+-int print_caps_sum(struct rig_caps *caps, void *data)
++int print_caps_sum(const struct rig_caps *caps, void *data)
+ {
+     const char *fmt1 = "%-13s";
+     printf("%6u \t%-22s \t%-23s\t%-8s   \t",
+-- 
+2.47.1
+

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 11 17:26:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add patches from upstream fixing Tucnak build:
+  * 0001-Change-rig_list_foreach-back-to-using-const-argument.patch
+  * 0002-Fix-testrigopen.c-rig_list_foreach.patch
+  * 0003-Fix-listrigs.s-rig_list_foreach.patch
+  * 0004-Fix-rig_list_foreach-in-hamlibmodels.c.patch
+  * 0005-Fix-rig_list_foreach-in-testmW2power.c.patch
+
+-------------------------------------------------------------------
 Sat Dec 28 22:31:12 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.6 (2024-12-24)

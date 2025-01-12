@@ -2,6 +2,7 @@
 # spec file for package hamlib
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +30,11 @@ Source2:        https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{
 # taken from debian
 Source3:        %{name}.keyring
 Patch0:         hamlib-3.0-perl_install.patch
+Patch1:         0001-Change-rig_list_foreach-back-to-using-const-argument.patch
+Patch2:         0002-Fix-testrigopen.c-rig_list_foreach.patch
+Patch3:         0003-Fix-listrigs.s-rig_list_foreach.patch
+Patch4:         0004-Fix-rig_list_foreach-in-hamlibmodels.c.patch
+Patch5:         0005-Fix-rig_list_foreach-in-testmW2power.c.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -120,7 +126,7 @@ autoreconf -fiv
   --with-perl-binding \
   --with-tcl-binding \
   --with-lua-binding \
-  --with-python-binding PYTHON_VERSION=%py3_ver \
+  --with-python-binding PYTHON_VERSION=%{py3_ver} \
   --with-xml-support
 %make_build
 
@@ -138,10 +144,8 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %check
 %make_build check
 
-%post -n libhamlib++%{sover} -p /sbin/ldconfig
-%post -n libhamlib%{sover} -p /sbin/ldconfig
-%postun -n libhamlib++%{sover} -p /sbin/ldconfig
-%postun -n libhamlib%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libhamlib%{sover}
+%ldconfig_scriptlets -n libhamlib++%{sover}
 
 %files
 %license LICENSE
@@ -181,6 +185,7 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %exclude %{_docdir}/hamlib/LICENSE
 
 %files devel
+%license COPYING COPYING.LIB
 %dir %{_includedir}/hamlib
 %{_includedir}/hamlib/*.h
 %{_datadir}/aclocal/hamlib.m4
@@ -197,19 +202,23 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_libdir}/libhamlib++.so.%{sover}*
 
 %files -n lua-Hamliblua
+%license COPYING COPYING.LIB
 %{_libdir}/lua
 
 %files -n python3-Hamlib
+%license COPYING COPYING.LIB
 %{python3_sitearch}/Hamlib.*
 %{python3_sitearch}/_Hamlib.*
 %{python3_sitearch}/__pycache__/Hamlib.cpython*.pyc
 
 %files -n tcl-Hamlib
+%license COPYING COPYING.LIB
 %dir %{_libdir}/tcl*/
 %dir %{_libdir}/tcl*/Hamlib
 %{_libdir}/tcl*/Hamlib/*
 
 %files -n perl-Hamlib
+%license COPYING COPYING.LIB
 %{perl_vendorarch}/*
 
 %changelog

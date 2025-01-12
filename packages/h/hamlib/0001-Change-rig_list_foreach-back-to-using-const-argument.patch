@@ -1,0 +1,55 @@
+From f2a9f091d08667db9d3fc2e842a427af7cfb990e Mon Sep 17 00:00:00 2001
+From: Michael Black W9MDB <mdblack98@yahoo.com>
+Date: Sun, 29 Dec 2024 08:42:24 -0600
+Subject: [PATCH 1/6] Change rig_list_foreach back to using const argument --
+ was breaking many C++ application builds
+ https://github.com/Hamlib/Hamlib/issues/1647
+
+---
+ include/hamlib/rig.h | 2 +-
+ src/register.c       | 2 +-
+ tests/rigctl_parse.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/include/hamlib/rig.h b/include/hamlib/rig.h
+index c15c706c9..bba2f8133 100644
+--- a/include/hamlib/rig.h
++++ b/include/hamlib/rig.h
+@@ -3791,7 +3791,7 @@ extern HAMLIB_EXPORT(int)
+ rig_unregister HAMLIB_PARAMS((rig_model_t rig_model));
+ 
+ extern HAMLIB_EXPORT(int)
+-rig_list_foreach HAMLIB_PARAMS((int (*cfunc)(struct rig_caps *, rig_ptr_t),
++rig_list_foreach HAMLIB_PARAMS((int (*cfunc)(const struct rig_caps *, rig_ptr_t),
+                                 rig_ptr_t data));
+ 
+ extern HAMLIB_EXPORT(int)
+diff --git a/src/register.c b/src/register.c
+index fcf62b03e..ef0c1f9fd 100644
+--- a/src/register.c
++++ b/src/register.c
+@@ -393,7 +393,7 @@ int HAMLIB_API rig_unregister(rig_model_t rig_model)
+  * executes cfunc on all the elements stored in the rig hash list
+  */
+ //! @cond Doxygen_Suppress
+-int HAMLIB_API rig_list_foreach(int (*cfunc)(struct rig_caps *,
++int HAMLIB_API rig_list_foreach(int (*cfunc)(const struct rig_caps *,
+                                 rig_ptr_t),
+                                 rig_ptr_t data)
+ {
+diff --git a/tests/rigctl_parse.c b/tests/rigctl_parse.c
+index 263a7bad8..bcb10af96 100644
+--- a/tests/rigctl_parse.c
++++ b/tests/rigctl_parse.c
+@@ -2088,7 +2088,7 @@ int print_conf_list2(const struct confparams *cfp, rig_ptr_t data)
+     return 1;  /* !=0, we want them all ! */
+ }
+ 
+-static int hash_model_list(struct rig_caps *caps, void *data)
++static int hash_model_list(const struct rig_caps *caps, void *data)
+ {
+     hash_add_model(caps->rig_model,
+                    caps->mfg_name,
+-- 
+2.47.1
+
