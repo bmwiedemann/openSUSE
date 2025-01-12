@@ -1,6 +1,7 @@
 #
 # spec file for package niri
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %bcond_without test
 Name:           niri
-Version:        0.1.10.1
+Version:        25.01
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
@@ -31,7 +32,7 @@ BuildRequires:  clang
 BuildRequires:  pango-devel
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.77.0
+BuildRequires:  rust >= 1.80.0
 BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(dbus-1)
@@ -79,6 +80,8 @@ install -Dm644 -t %{buildroot}%{_userunitdir} resources/niri{.service,-shutdown.
 
 %check
 %if %{with test}
+export XDG_RUNTIME_DIR="$(mktemp -d)"
+export RAYON_NUM_THREADS=1
 %cargo_test -- --workspace --exclude niri-visual-tests
 %endif
 
