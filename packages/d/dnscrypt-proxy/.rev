@@ -315,4 +315,13 @@ dnscrypt-proxy v2 differs significantly from v1.</comment>
     <comment>added patch quic-go.patch (boo#1222473)</comment>
     <requestid>1169724</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>73aa8a1819029bf568ab8cde07ee1bf8</srcmd5>
+    <version>2.1.7</version>
+    <time>1736677376</time>
+    <user>anag+factory</user>
+    <comment>version 2.1.7
+version 2.1.6</comment>
+    <requestid>1237072</requestid>
+  </revision>
 </revisionlist>

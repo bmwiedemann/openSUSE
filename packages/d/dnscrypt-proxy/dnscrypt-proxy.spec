@@ -1,7 +1,7 @@
 #
 # spec file for package dnscrypt-proxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define services    %{name}.socket %{name}.service %{name}-resolvconf.service
 
 Name:           dnscrypt-proxy
-Version:        2.1.5
+Version:        2.1.7
 Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        ISC
@@ -43,15 +43,13 @@ Source5:        README.openSUSE
 Source6:        %{name}.socket.conf
 # dnscrypt user configuration
 Source7:        %{user_group}-user.conf
-# can be dropped in next release with quic-go v0.42 included (boo#1222473)
-Patch0:         quic-go.patch
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.20
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  vendored_licenses_packager
+BuildRequires:  golang(API) >= 1.23
+BuildRequires:  pkgconfig(libsystemd)
 %sysusers_requires
 %{?systemd_requires}
 # For systemd pidfile solution.

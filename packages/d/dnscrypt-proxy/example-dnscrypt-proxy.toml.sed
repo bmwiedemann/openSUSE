@@ -28,6 +28,7 @@ s/  #   cache_file = 'odoh-servers.md'/  #   cache_file = '\/var\/lib\/dnscrypt-
 s/  #   cache_file = 'odoh-relays.md'/  #   cache_file = '\/var\/lib\/dnscrypt-proxy\/odoh-relays.md'/
 s/  #   cache_file = 'quad9-resolvers.md'/  #   cache_file = '\/var\/lib\/dnscrypt-proxy\/quad9-resolvers.md'/
 s/  #   cache_file = 'parental-control.md'/  #   cache_file = '\/var\/lib\/dnscrypt-proxy\/parental-control.md'/
+s/  #    cache_file = "dnscry.pt-resolvers.md"/  #    cache_file = '\/var\/lib\/dnscrypt-proxy\/dnscry.pt-resolvers.md'/
 
 # package directory instead of source code directory
 s/## `utils\/generate-domains-blocklists` directory of the dnscrypt-proxy source code./## '\/usr\/share\/dnscrypt-proxy\/generate-domains-blocklists' directory./
