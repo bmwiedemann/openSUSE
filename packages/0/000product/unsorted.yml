@@ -1404,6 +1404,7 @@ unsorted:
   - belcard-devel 
   - belle-sip-data 
   - belle-sip-devel 
+  - below 
   - belr-devel 
   - bemenu 
   - bemenu-devel 
@@ -1636,6 +1637,7 @@ unsorted:
   - brlapi-devel 
   - brlapi-java 
   - brlemu 
+  - brlist 
   - brltty-driver-espeak 
   - brltty-driver-libbraille 
   - brltty-udev-generic 
@@ -2189,6 +2191,7 @@ unsorted:
   - cinnamon-control-center-devel 
   - cinnamon-control-center-lang 
   - cinnamon-gschemas 
+  - cinnamon-gschemas-branding-openSUSE 
   - cinnamon-gschemas-branding-upstream 
   - cinnamon-lang 
   - cinnamon-menus-doc 
@@ -2345,6 +2348,7 @@ unsorted:
   - cmake-mini 
   - cmark 
   - cmark-devel 
+  - cmatrix 
   - cmctl 
   - cmctl-bash-completion 
   - cmctl-fish-completion 
@@ -12575,6 +12579,7 @@ unsorted:
   - libcimcclient0 
   - libcinnamon-control-center1 
   - libcinnamon-desktop-data 
+  - libcinnamon-desktop-data-branding-openSUSE 
   - libcinnamon-desktop-data-branding-upstream 
   - libcinnamon-desktop-devel 
   - libcinnamon-desktop-lang 
@@ -13166,6 +13171,7 @@ unsorted:
   - libfec3 
   - libfeedback-0_0-0 
   - libff-1_0_0 
+  - libff-1_0_0-x86-64-v3 
   - libff-devel 
   - libffado-devel 
   - libffado2-32bit 
@@ -13488,7 +13494,7 @@ unsorted:
   - libgensiomdns10 
   - libgensioosh10 
   - libgeocode-glib0 
-  - libgeos3_12_2 
+  - libgeos3_13_0 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -14860,14 +14866,6 @@ unsorted:
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel-static 
-  - libnetcdf-fortran-gnu-hpc 
-  - libnetcdf-fortran-gnu-mpich-hpc 
-  - libnetcdf-fortran-gnu-mvapich2-hpc 
-  - libnetcdf-fortran-gnu-openmpi4-hpc 
-  - libnetcdf-fortran_4_5_3-gnu-hpc 
-  - libnetcdf-fortran_4_5_3-gnu-mpich-hpc 
-  - libnetcdf-fortran_4_5_3-gnu-mvapich2-hpc 
-  - libnetcdf-fortran_4_5_3-gnu-openmpi4-hpc 
   - libnetcdf-gnu-hpc 
   - libnetcdf-gnu-mpich-hpc 
   - libnetcdf-gnu-mvapich2-hpc 
@@ -15469,14 +15467,14 @@ unsorted:
   - libpolylibgmp8 
   - libpolys-4_3_2 
   - libpolys-devel 
-  - libpoppler-cpp1-32bit 
+  - libpoppler-cpp2-32bit 
   - libpoppler-devel 
   - libpoppler-glib-devel 
   - libpoppler-glib8-32bit 
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler144-32bit 
+  - libpoppler145-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -19794,14 +19792,6 @@ unsorted:
   - netcdf-devel 
   - netcdf-devel-data 
   - netcdf-devel-static 
-  - netcdf-fortran-gnu-hpc-devel 
-  - netcdf-fortran-gnu-mpich-hpc-devel 
-  - netcdf-fortran-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran-gnu-openmpi4-hpc-devel 
-  - netcdf-fortran_4_5_3-gnu-hpc-devel 
-  - netcdf-fortran_4_5_3-gnu-mpich-hpc-devel 
-  - netcdf-fortran_4_5_3-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran_4_5_3-gnu-openmpi4-hpc-devel 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
   - netcdf-gnu-mpich-hpc 
@@ -21426,7 +21416,7 @@ unsorted:
   - pdsh-netgroup 
   - pdsh-slurm 
   - peazip 
-  - peazip-kf5 
+  - peazip-kf6 
   - peek 
   - peek-lang 
   - peg 
@@ -24196,7 +24186,6 @@ unsorted:
   - python3-rpmconf 
   - python3-rrdtool 
   - python3-saharaclient 
-  - python3-salt-testsuite 
   - python3-satyr 
   - python3-seccomp 
   - python3-senlinclient 
@@ -24234,7 +24223,6 @@ unsorted:
   - python3-zbar 
   - python310 
   - python310-32bit 
-  - python310-StrEnum 
   - python310-azure-ai-ml 
   - python310-base 
   - python310-base-32bit 
@@ -24246,7 +24234,6 @@ unsorted:
   - python310-dqsegdb 
   - python310-gphoto2 
   - python310-gpt4all 
-  - python310-guessit 
   - python310-gwpy 
   - python310-idle 
   - python310-kiwi-keg 
@@ -24402,6 +24389,8 @@ unsorted:
   - python311-PyQt6-Charts-devel 
   - python311-PyQt6-DataVisualization 
   - python311-PyQt6-DataVisualization-devel 
+  - python311-PyQt6-Graphs 
+  - python311-PyQt6-Graphs-devel 
   - python311-PyQt6-NetworkAuth 
   - python311-PyQt6-NetworkAuth-devel 
   - python311-PyQt6-QScintilla 
@@ -24545,6 +24534,7 @@ unsorted:
   - python311-alsa 
   - python311-altair 
   - python311-altair-widgets 
+  - python311-altcha 
   - python311-altgraph 
   - python311-amqp 
   - python311-amqpstorm 
@@ -25247,6 +25237,7 @@ unsorted:
   - python311-cx_Freeze 
   - python311-cymem 
   - python311-cymruwhois 
+  - python311-cyrtranslit 
   - python311-cytoolz 
   - python311-czifile 
   - python311-dacite 
@@ -25379,6 +25370,8 @@ unsorted:
   - python311-django-nine 
   - python311-django-oauth-toolkit 
   - python311-django-oidc-provider 
+  - python311-django-otp 
+  - python311-django-otp-webauthn 
   - python311-django-parler 
   - python311-django-perf-rec 
   - python311-django-pglocks 
@@ -25450,6 +25443,8 @@ unsorted:
   - python311-dqsegdb 
   - python311-dqsegdb2 
   - python311-dragonmapper 
+  - python311-drf-spectacular 
+  - python311-drf-spectacular-sidecar 
   - python311-drgn 
   - python311-drms 
   - python311-dropbox 
@@ -27215,6 +27210,7 @@ unsorted:
   - python311-sadisplay 
   - python311-safe-netrc 
   - python311-safetensors 
+  - python311-salt-testsuite 
   - python311-sambacc 
   - python311-samplerate 
   - python311-sane 
@@ -27969,6 +27965,8 @@ unsorted:
   - python312-PyQt6-Charts-devel 
   - python312-PyQt6-DataVisualization 
   - python312-PyQt6-DataVisualization-devel 
+  - python312-PyQt6-Graphs 
+  - python312-PyQt6-Graphs-devel 
   - python312-PyQt6-NetworkAuth 
   - python312-PyQt6-NetworkAuth-devel 
   - python312-PyQt6-QScintilla 
@@ -28120,6 +28118,7 @@ unsorted:
   - python312-alsa 
   - python312-altair 
   - python312-altair-widgets 
+  - python312-altcha 
   - python312-altgraph 
   - python312-amqp 
   - python312-amqpstorm 
@@ -28843,6 +28842,7 @@ unsorted:
   - python312-cx_Freeze 
   - python312-cymem 
   - python312-cymruwhois 
+  - python312-cyrtranslit 
   - python312-cytoolz 
   - python312-czifile 
   - python312-dacite 
@@ -28979,6 +28979,8 @@ unsorted:
   - python312-django-nine 
   - python312-django-oauth-toolkit 
   - python312-django-oidc-provider 
+  - python312-django-otp 
+  - python312-django-otp-webauthn 
   - python312-django-parler 
   - python312-django-perf-rec 
   - python312-django-pglocks 
@@ -29051,6 +29053,8 @@ unsorted:
   - python312-dqsegdb 
   - python312-dqsegdb2 
   - python312-dragonmapper 
+  - python312-drf-spectacular 
+  - python312-drf-spectacular-sidecar 
   - python312-drgn 
   - python312-drms 
   - python312-dropbox 
@@ -30888,6 +30892,8 @@ unsorted:
   - python312-sadisplay 
   - python312-safe-netrc 
   - python312-safetensors 
+  - python312-salt 
+  - python312-salt-testsuite 
   - python312-sambacc 
   - python312-samplerate 
   - python312-sane 
@@ -31660,6 +31666,8 @@ unsorted:
   - python313-PyQt6-Charts-devel 
   - python313-PyQt6-DataVisualization 
   - python313-PyQt6-DataVisualization-devel 
+  - python313-PyQt6-Graphs 
+  - python313-PyQt6-Graphs-devel 
   - python313-PyQt6-NetworkAuth 
   - python313-PyQt6-NetworkAuth-devel 
   - python313-PyQt6-QScintilla 
@@ -31811,6 +31819,7 @@ unsorted:
   - python313-alsa 
   - python313-altair 
   - python313-altair-widgets 
+  - python313-altcha 
   - python313-altgraph 
   - python313-amqp 
   - python313-amqpstorm 
@@ -32533,6 +32542,7 @@ unsorted:
   - python313-cwcwidth 
   - python313-cymem 
   - python313-cymruwhois 
+  - python313-cyrtranslit 
   - python313-cytoolz 
   - python313-czifile 
   - python313-dacite 
@@ -32669,6 +32679,8 @@ unsorted:
   - python313-django-nine 
   - python313-django-oauth-toolkit 
   - python313-django-oidc-provider 
+  - python313-django-otp 
+  - python313-django-otp-webauthn 
   - python313-django-parler 
   - python313-django-perf-rec 
   - python313-django-pglocks 
@@ -32741,6 +32753,7 @@ unsorted:
   - python313-dqsegdb 
   - python313-dqsegdb2 
   - python313-dragonmapper 
+  - python313-drf-spectacular-sidecar 
   - python313-drgn 
   - python313-drms 
   - python313-dropbox 
@@ -34580,6 +34593,8 @@ unsorted:
   - python313-sadisplay 
   - python313-safe-netrc 
   - python313-safetensors 
+  - python313-salt 
+  - python313-salt-testsuite 
   - python313-sambacc 
   - python313-samplerate 
   - python313-sane 
@@ -36971,6 +36986,8 @@ unsorted:
   - scummvm 
   - scummvm-extra 
   - scummvm-tools 
+  - scx 
+  - scx-devel 
   - sd 
   - sd-bash-completion 
   - sd-fish-completion 
