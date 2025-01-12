@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Fix file name of the mobile djvu desktop file
+  * Only install relevant desktop files
+  * Fix scroll down/up at the last/first page in single page, non-continuous mode (kde#498038)
+  * Fix Q_UNREACHABLE being reached with poppler 24.12
+  * Disable performance-enum-size clang-tidy warning
+  * Move to avoid copy
+  * Make clang-tidy happy when using string_view.data()
+  * cast pointers to pointer to void to make clang-tidy happy
+  * Add missing braces
+  * Fix parameter name
+  * Allow void as a way to silence bugprone-unused-return-value
+  * Remove deref no-op function
+  * Fix clang-tidy warning
+  * Remove std::move() for raw pointer
+  * Add braces around single-line if/else
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

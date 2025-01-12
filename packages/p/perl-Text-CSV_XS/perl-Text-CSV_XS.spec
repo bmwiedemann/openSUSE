@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-CSV_XS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Text-CSV_XS
 Name:           perl-Text-CSV_XS
-Version:        1.560.0
+Version:        1.590.0
 Release:        0
-# 1.56 -> normalize -> 1.560.0
-%define cpan_version 1.56
+# 1.59 -> normalize -> 1.590.0
+%define cpan_version 1.59
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Comma-Separated Values manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}

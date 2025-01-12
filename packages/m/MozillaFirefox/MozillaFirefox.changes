@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jan  8 11:02:03 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 134.0
+  https://www.mozilla.org/en-US/firefox/134.0/releasenotes
+  * Firefox now supports touchpad hold gestures on Linux. This means
+    that kinetic (momentum) scrolling can now be interrupted by placing
+    two fingers on the touchpad
+  * Ecosia's availability has been expanded to all languages in the
+    German region along with Austria, Belgium, Italy, Netherlands, Spain,
+    Sweden and Switzerland
+  MFSA 2025-01 (bsc#1234991)
+  * CVE-2025-0244 (bmo#1929584)
+    Address bar spoofing using an invalid protocol scheme on
+    Firefox for Android
+  * CVE-2025-0245 (bmo#1895342)
+    Lock screen setting bypass in Firefox Focus for Android
+  * CVE-2025-0246 (bmo#1912709)
+    Address bar spoofing using an invalid protocol scheme on
+    Firefox for Android
+  * CVE-2025-0237 (bmo#1915257)
+    WebChannel APIs susceptible to confused deputy attack
+  * CVE-2025-0238 (bmo#1915535)
+    Use-after-free when breaking lines in text
+  * CVE-2025-0239 (bmo#1929156)
+    Alt-Svc ALPN validation failure when redirected
+  * CVE-2025-0240 (bmo#1929623)
+    Compartment mismatch when parsing JavaScript JSON module
+  * CVE-2025-0241 (bmo#1933023)
+    Memory corruption when using JavaScript Text Segmentation
+  * CVE-2025-0242 (bmo#1874523, bmo#1926454, bmo#1931873, bmo#1932169)
+    Memory safety bugs fixed in Firefox 134, Thunderbird 134,
+    Firefox ESR 115.19, Firefox ESR 128.6, Thunderbird 115.19,
+    and Thunderbird 128.6
+  * CVE-2025-0243 (bmo#1827142, bmo#1932783)
+    Memory safety bugs fixed in Firefox 134, Thunderbird 134,
+    Firefox ESR 128.6, and Thunderbird 128.6
+  * CVE-2025-0247 (bmo#1835193, bmo#1910021, bmo#1919803,
+    bmo#1931576, bmo#1931948, bmo#1932173)
+    Memory safety bugs fixed in Firefox 134 and Thunderbird 134
+- requires
+  NSS 3.107
+  NSPR 4.36 (since FF 133 already)
+- rebased patches
+
+-------------------------------------------------------------------
 Sat Dec 14 14:16:06 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 133.0.3

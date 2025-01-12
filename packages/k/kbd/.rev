@@ -1024,4 +1024,12 @@ Fix version typo:
     <comment></comment>
     <requestid>1235161</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>3d10c317914d0531b7f511275843c229</srcmd5>
+    <version>2.7.1</version>
+    <time>1736676598</time>
+    <user>anag+factory</user>
+    <comment>Remove empty doxygen documentation. (forwarded request 1236037 from sbrabec)</comment>
+    <requestid>1236038</requestid>
+  </revision>
 </revisionlist>

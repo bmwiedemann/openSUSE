@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 09 14:33:30 UTC 2025 - matthias.gerstner@suse.com
+
+- Update to version 2.6.1+git20250109.dfc27180:
+  * whitelistings: add sssd permissions drop-in file for helper caps (bsc#1233131)
+
+-------------------------------------------------------------------
 Fri Dec 06 13:01:31 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 2.6.1+git20241206.0bc429f2:

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:23:29 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.450.0 (1.45)
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2024-11-24  Slaven Rezic  <slaven@rezic.de>
+      Release 1.45
+      Stable release with all changes in 1.44_50..1.44_51
+  2024-11-23  Slaven Rezic  <slaven@rezic.de>
+      Release 1.44_51
+      Added t/ppm_error.t test.
+  2024-11-20  Slaven Rezic  <slaven@rezic.de>
+      Release 1.44_50
+      Stop propagating error on thumbnail image to main image (PR #15, by nanto)
+      Parse SRATIONAL values appropriately (PR #14, by nanto)
+      Replace "use vars" with "our" (PR #13, by JRaspass)
+      Smaller CI improvements.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:34:17 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

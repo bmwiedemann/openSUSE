@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 24 05:34:28 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.490.0 (0.49)
+   see /usr/share/doc/packages/perl-Specio/Changes
+
+  0.49     2024-12-23
+
+  - Attempting to import any structured type caused a confusing "Can't store CODE items"
+    error. Reported by Kerin Millar.
+  - Removed the "this is alpha" warning from Specio::Library::Structured. Given that I don't plan on
+    making any major changes to this module, it's as production-ready as it's going to get.
+
+-------------------------------------------------------------------
 Sun Jun 12 03:07:32 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.48

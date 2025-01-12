@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Business-ISBN
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Business-ISBN
 Name:           perl-Business-ISBN
-Version:        3.9.0
+Version:        3.11.0
 Release:        0
-%define cpan_version 3.009
+# 3.011 -> normalize -> 3.11.0
+%define cpan_version 3.011
 License:        Artistic-2.0
 Summary:        Work with International Standard Book Numbers
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -64,7 +65,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc bad-isbn13s.txt bad-isbns.txt Changes examples isbn13s.txt isbns.txt
+%doc bad-isbn13s.txt bad-isbns.txt Changes examples isbn13s.txt isbns.txt SECURITY.md
 %license LICENSE
 
 %changelog

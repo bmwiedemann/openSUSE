@@ -364,4 +364,12 @@
 - drop py312.patch: upstream</comment>
     <requestid>1222460</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c50865a13f48baf1c189e1e385429b0d</srcmd5>
+    <version>3.0.2</version>
+    <time>1736676616</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236169</requestid>
+  </revision>
 </revisionlist>

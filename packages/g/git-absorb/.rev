@@ -35,4 +35,13 @@ to completion packages</comment>
   * Bump git2 and time crates to fix various issues</comment>
     <requestid>1188497</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e9ae4e444123ca60290ef205da98bcdf</srcmd5>
+    <version>0.6.17</version>
+    <time>1736677212</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.17
+ * Bump git2 to fix various issues</comment>
+    <requestid>1236752</requestid>
+  </revision>
 </revisionlist>

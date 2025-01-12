@@ -105,4 +105,12 @@
 - Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
     <requestid>1222704</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9c9c96937d4f27d7cc418e77ce864e95</srcmd5>
+    <version>6.8.0</version>
+    <time>1736677175</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236042</requestid>
+  </revision>
 </revisionlist>

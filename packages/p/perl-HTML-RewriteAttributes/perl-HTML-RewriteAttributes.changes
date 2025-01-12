@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:22:25 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.60.0 (0.06)
+   see /usr/share/doc/packages/perl-HTML-RewriteAttributes/Changes
+
+  0.06    Fri Nov  12 2024
+          Pass more args to callback to support adding attributes.
+          Improve documentation for other features.
+          Add dot ('.') to Makefile.PL to find Module::Install in newer perls. Reported by Kent Fredric, RT 121446.
+          Remove unneeded shebang line in lib files. Reported by Laurent Baillet, RT 126906.
+          Fix spelling error in docs. Reported by x.guimard, RT 126964.
+
+-------------------------------------------------------------------
 Tue Oct  3 08:14:57 UTC 2017 - coolo@suse.com
 
 - patch the Makefile to build with perl 5.26

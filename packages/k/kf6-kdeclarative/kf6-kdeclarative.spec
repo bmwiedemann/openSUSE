@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname kdeclarative
-# Full KF6 version (e.g. 6.9.0)
+# Full KF6 version (e.g. 6.10.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kdeclarative
-Version:        6.9.0
+Version:        6.10.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
@@ -95,6 +95,7 @@ Development files.
 
 %find_lang kdeclarative6
 
+%ldconfig_scriptlets -n kf6-kdeclarative-imports
 %ldconfig_scriptlets -n libKF6CalendarEvents6
 
 %files -n libKF6CalendarEvents6
@@ -103,6 +104,7 @@ Development files.
 %{_kf6_libdir}/libKF6CalendarEvents.so.*
 
 %files imports
+%{_kf6_libdir}/libkquickcontrolsprivate.so.*
 %dir %{_kf6_qmldir}/org/kde/private
 %{_kf6_qmldir}/org/kde/draganddrop/
 %{_kf6_qmldir}/org/kde/graphicaleffects/

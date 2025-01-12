@@ -1,7 +1,7 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://gitlab.suse.de/selinux/selinux-policy.git</param>
-              <param name="changesrevision">33c703587e800be11fca3101b7caf2d4a5c77117</param></service><service name="tar_scm">
+              <param name="changesrevision">e706802b7bfd75c30c10bbe66e23019e5514dc34</param></service><service name="tar_scm">
                 <param name="url">https://github.com/containers/container-selinux.git</param>
               <param name="changesrevision">07b3034f6d9625ab84508a2f46515d8ff79b4204</param></service><service name="tar_scm">
                 <param name="url">https://gitlab.suse.de/jsegitz/selinux-policy.git</param>

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Jan 11 12:09:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.0:
+  * Tofu 1.9.0 support (#3746)
+  * fix: Adjusting docs for install (#3745)
+  * fix: Fixing race condition in
+    `TestDownloadTerraformSourceFromLocalFolderWithManifest` test
+    (#3744)
+
+-------------------------------------------------------------------
+Fri Jan 10 06:05:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.71.5:
+  * fix: Flush buffer early so that users still get streamed logs
+    (#3742)
+  * fix: Removing integrity check on hubspot script (#3739)
+
+-------------------------------------------------------------------
+Fri Jan 10 06:00:01 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.71.4:
+  * Added exclude_from_copy to config (#3543)
+
+-------------------------------------------------------------------
+Fri Jan 10 05:53:52 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.71.3:
+  * Updated stack version to point to main (#3743)
+  * Stacks: generate (#3627)
+  * Fixed discord link (#3740)
+  * build(deps): bump github.com/gruntwork-io/boilerplate (#3725)
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.32.5 to
+    1.32.7 (#3729)
+  * build(deps): bump ruby/setup-ruby from 1.204.0 to 1.207.0
+    (#3728)
+  * build(deps): bump golang.org/x/term from 0.27.0 to 0.28.0
+    (#3727)
+  * build(deps): bump github.com/zclconf/go-cty from 1.15.1 to
+    1.16.0 (#3726)
+  * fix: Fixing some broken links (#3736)
+  * Feat/add subscribe banner (#3731)
+
+-------------------------------------------------------------------
 Tue Jan 07 07:59:38 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.71.2:

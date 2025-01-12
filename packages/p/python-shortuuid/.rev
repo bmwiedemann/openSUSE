@@ -71,4 +71,12 @@
   * switch to poetry</comment>
     <requestid>1158480</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8f6c1e5d29a20b4ead7d7ed212cebbc7</srcmd5>
+    <version>1.0.13</version>
+    <time>1736677233</time>
+    <user>anag+factory</user>
+    <comment>- We don't need to clean up the license from sitelib.</comment>
+    <requestid>1236766</requestid>
+  </revision>
 </revisionlist>

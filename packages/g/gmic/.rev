@@ -423,4 +423,16 @@
     <comment></comment>
     <requestid>1235707</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>194da049eea66884c8cdfb9cfc4e0413</srcmd5>
+    <version>3.5.0</version>
+    <time>1736677302</time>
+    <user>anag+factory</user>
+    <comment>- Use GCC 13 on Leap 15
+
+- switch all the Qt gui implementations to Qt6 except for the krita
+  one, as this also still pulls KF5 libraries, not sure how well
+  mixing KF5 and QT6 would work. (boo#1218653#c14)</comment>
+    <requestid>1236940</requestid>
+  </revision>
 </revisionlist>

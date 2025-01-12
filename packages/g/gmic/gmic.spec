@@ -63,10 +63,15 @@ BuildRequires:  krita
 #
 # /SECTION
 #
-BuildRequires:  cmake >= 3.14.0
+BuildRequires:  cmake >= 3.16.0
 BuildRequires:  dos2unix
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-threads-devel
+%if 0%{?suse_version} == 1500
+# Qt 6 requires c++-17, we'll use the latest version available on Leap 15
+BuildRequires:  gcc13-c++
+BuildRequires:  gcc13-PIE
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -80,6 +85,12 @@ BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libcurl)
@@ -165,6 +176,10 @@ This package contains shared data files for the various gmic frontends.
 dos2unix src/gmic_libc.*
 
 %build
+%if 0%{?suse_version} == 1500
+export CC=gcc-13 CXX=g++-13
+%endif
+
 # Build gmic
 # Starting with gmic 3.1.0, the gmic dev replaced their CMake build system with a non-configurable Makefile...
 sed -i 's#LIB ?= lib#LIB ?= %{_lib}#' src/Makefile
@@ -185,20 +200,20 @@ EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 %__make cli_shared %{?_smp_mflags}
 # Build gmic{_gimp|_krita}_qt
 pushd gmic-qt
 
-%cmake %{gmic_qt_options} -DGMIC_QT_HOST=none
+%cmake %{gmic_qt_options} -DGMIC_QT_HOST=none  -DBUILD_WITH_QT6=ON
 %cmake_build
 
 cd ..
 
 for hostapp in %{hostapps} ; do
-%cmake %{gmic_qt_options} -DGMIC_QT_HOST=${hostapp}
+%cmake %{gmic_qt_options} -DGMIC_QT_HOST=${hostapp}  -DBUILD_WITH_QT6=ON
 %cmake_build
 
 cd ..
 done
 
 %if %{with krita5}
-%cmake_kf5 -d plugin-build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} %{gmic_qt_options} -DGMIC_QT_HOST=krita-plugin -DCMAKE_BUILD_TYPE=RelWithDebInfo
+%cmake_kf5 -d plugin-build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} %{gmic_qt_options} -DGMIC_QT_HOST=krita-plugin -DCMAKE_BUILD_TYPE=RelWithDebInfo  -DBUILD_WITH_QT6=OFF
 
 %cmake_build
 

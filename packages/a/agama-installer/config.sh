@@ -38,6 +38,7 @@ systemctl enable NetworkManager.service
 systemctl enable avahi-daemon.service
 systemctl enable agama.service
 systemctl enable agama-web-server.service
+systemctl enable agama-dbus-monitor.service
 systemctl enable agama-auto.service
 systemctl enable agama-hostname.service
 systemctl enable agama-proxy-setup.service
@@ -81,11 +82,11 @@ echo "root_disk=live:LABEL=$label" >>/etc/cmdline.d/10-liveroot.conf
 # if there's a default network location, add it here
 # echo "root_net=" >> /etc/cmdline.d/10-liveroot.conf
 echo 'install_items+=" /etc/cmdline.d/10-liveroot.conf "' >/etc/dracut.conf.d/10-liveroot-file.conf
-echo 'add_dracutmodules+=" dracut-menu "' >>/etc/dracut.conf.d/10-liveroot-file.conf
+echo 'add_dracutmodules+=" dracut-menu agama-cmdline "' >>/etc/dracut.conf.d/10-liveroot-file.conf
 
-if [ "${arch}" = "s390x" ];then
-    # workaround for custom bootloader setting
-    touch /config.bootoptions
+if [ "${arch}" = "s390x" ]; then
+  # workaround for custom bootloader setting
+  touch /config.bootoptions
 fi
 
 # replace the @@LIVE_MEDIUM_LABEL@@ with the real Live partition label name from KIWI
@@ -110,7 +111,7 @@ rm /var/log/zypper.log /var/log/zypp/history
 # reduce the "vim-data" content, this package is huge (37MB unpacked!), keep only
 # support for JSON (for "agama config edit") and Ruby (fixing/debugging the Ruby
 # service)
-rpm -ql vim-data | grep -v -e '/ruby.vim$' -e '/json.vim$' -e colors | xargs rm 2> /dev/null || true
+rpm -ql vim-data | grep -v -e '/ruby.vim$' -e '/json.vim$' -e colors | xargs rm 2>/dev/null || true
 
 du -h -s /usr/{share,lib}/locale/
 
@@ -124,7 +125,7 @@ du -h -s /usr/{share,lib}/locale/
 mkdir -p /etc/agama.d
 # emulate "localectl list-locales" call, it cannot be used here because it
 # insists on running systemd as PID 1 :-/
-ls -1 -d /usr/lib/locale/*.utf8 | sed -e "s#/usr/lib/locale/##" -e "s#utf8#UTF-8#" > /etc/agama.d/locales
+ls -1 -d /usr/lib/locale/*.utf8 | sed -e "s#/usr/lib/locale/##" -e "s#utf8#UTF-8#" >/etc/agama.d/locales
 
 # delete translations and unusupported languages (makes ISO about 22MiB smaller)
 # build list of ignore options for "ls" with supported languages like "-I cs* -I de* -I es* ..."
@@ -137,7 +138,7 @@ ls -1 "${IGNORE_OPTS[@]}" -I "en_US*" -I "C.*" /usr/lib/locale/ | xargs -I% sh -
 
 # delete unused translations (MO files)
 for t in zypper gettext-runtime p11-kit; do
-    rm -f /usr/share/locale/*/LC_MESSAGES/$t.mo
+  rm -f /usr/share/locale/*/LC_MESSAGES/$t.mo
 done
 du -h -s /usr/{share,lib}/locale/
 
@@ -160,10 +161,11 @@ rpm -e --nodeps alsa alsa-utils alsa-ucm-conf || true
 # and remove the drivers for sound cards and TV cards instead. Those do not
 # make sense on a server.
 du -h -s /lib/modules /lib/firmware
-# delete sound drivers
-rm -rfv /lib/modules/*/kernel/sound
-# delete TV cards and radio cards
-rm -rfv /lib/modules/*/kernel/drivers/media/
+
+# remove the multimedia drivers
+/tmp/driver_cleanup.rb --delete
+# remove the script, not needed anymore
+rm /tmp/driver_cleanup.rb
 
 # remove the unused firmware (not referenced by kernel drivers)
 /tmp/fw_cleanup.rb --delete
@@ -178,7 +180,7 @@ du -h -s /lib/modules /lib/firmware
 
 # disable the services included by dependencies
 for s in purge-kernels; do
-	systemctl -f disable $s || true
+  systemctl -f disable $s || true
 done
 
 # Only used for OpenCL and X11 acceleration on vmwgfx (?), saves ~50MiB

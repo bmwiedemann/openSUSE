@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  9 09:22:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.2
+  * Add support for aarch64 wheels. Thank you @bbayles!
+  * Add wheels for PyPy 3.10
+  * Added Python 3.13 support
+  * Better error message when attempting to parse
+    a BCE year (#156). Thanks @javiabellan
+
+-------------------------------------------------------------------
 Tue Sep 24 13:27:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-ciso8601, required by python-mashumaro

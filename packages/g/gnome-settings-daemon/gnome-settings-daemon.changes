@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 10 09:57:27 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Add gnome-settings-daemon-fix-stop-service.patch
+  * Part of the fix of bsc#1233824
+  * Reference: glgo#GNOME/gnome-settings-daemon!395
+
+-------------------------------------------------------------------
 Fri Nov 22 10:36:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only recommend xf86-input-libinput if xorg-x11-server is present:

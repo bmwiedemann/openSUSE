@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 10 09:20:14 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.5.0
+  * Test data updates to fix test failures
+  * Update test_idna_encoding_query_a with
+    new errno to align to new c-ares version
+  * Do not define HAVE_GETSERVBYPORT_R for
+    platforms Android, Cygwin, Darwin
+  * Drop distutils
+  * build(deps): bump actions/download-artifact
+    from 3 to 4.1.7 in /.github/workflows
+  * Add 3.13 support, remove 3.8
+  * chore(ci): fix upload & add more platforms to cibuildwheel
+  * Test building release wheels on PRs
+  * Fix building sdist
+  * Fixup CI
+
+-------------------------------------------------------------------
 Mon Dec 11 08:24:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:

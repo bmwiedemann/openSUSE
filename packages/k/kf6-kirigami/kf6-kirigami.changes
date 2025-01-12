@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:12:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.10.0
+- Changes since 6.9.0:
+  * Update dependency version to 6.10.0
+  * Expose auto exclusive from AbstractButton to Kirigami.Action
+  * Mnemonic: Emit sequence change also when it gets disabled
+  * ListSectionHeader: set Accessible.role to Heading
+  * controls/Card: set title as default Accessible.name
+  * FormLayout: Set mnemonic only if buddy is visible and doesn't have one
+  * FormLayout: Activate buddy with ShortcutFocusReason
+  * qmltest: Avoid Qt module include
+  * SearchDialog: Add emptyHelpfulAction
+  * FormLayout: Make use of animateClick in shortcut activation
+  * Don't overwrite menubar position
+  * platformtheme: Set Accent color in highlight
+  * Fix documentation referring to not existing Theme.smallSpacing
+  * Ensure sidebar "y" position is only shifted when menubar/header is visible
+  * Update version to 6.10.0
+
+-------------------------------------------------------------------
 Sun Dec  8 10:09:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0

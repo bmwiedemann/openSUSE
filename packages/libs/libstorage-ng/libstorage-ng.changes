@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Jan 9 09:26:48 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1004
+- allow to disable blkdiscard calls
+- 4.5.222
+
+--------------------------------------------------------------------
 Thu Dec 19 09:53:24 UTC 2024 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1003

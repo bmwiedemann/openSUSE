@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan  6 14:12:33 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.7.1:
+  * setfont: Fixed regression in argument parsing.
+  * dumpkeys: Fixed dumpkeys on pc and non-pc architectures.
+  * libkeymap: Add API to get/set keymap keywords.
+    Export functions to convert the value to kernel code.
+    Fix double kbdfile open.
+    Dump action codes for keycode 0.
+  * libkfont: Fix buffer allocation for doubled font.
+    Check console mode.
+  * keymaps:
+    Add hcesar layout, for portuguese speaking countries.
+    Update Colemak-DH keymaps with upstream changes.
+    sv-latin1.map: make Ctrl+AltGr+9 act as Ctrl+].
+  * fonts:
+    Remove non-free Agafari fonts. (bnc#95915,
+    remove repack_kbd.sh)
+  * other:
+    Update man pages.
+    Remove deprecated startup scripts.
+    (Refresh kbd-2.0.2-fix-bashisms.patch.)
+    Remove outdated docs.
+    (Drop kbd-1.15.2-docu-X11R6-xorg.patch.)
+    Update translations.
+- Drop upstreamed patches: kbd-1.15.2-sv-latin1-keycode10.patch,
+  kbd-2.0.2-doshell-reference.patch.
+- Refresh kbd-1.15.5-loadkeys-search-path.patch.
+- Releases are signed, add kbd.keyring and the signature.
+
+-------------------------------------------------------------------
 Mon Jan  6 10:56:56 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - sysconfig.keyboard: KBD_NUMLOCK="bios" works only on systems
@@ -28,7 +59,7 @@ Thu Jan  2 23:12:19 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
     upstreamed.
   * Drop unimaps/iso07*.uni that is already upstreamed.
 - Remove broken KBD_DISABLE_CAPS_LOCK feature (sysconfig.keyboard,
-  boo#1179897, jsc#PED-7814).
+  kbdsettings, boo#1179897, jsc#PED-7814).
   Can be replaced by KEYMAP="{my map} disable.capslock" in
   /etc/vconsole.conf.
 

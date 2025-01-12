@@ -29,6 +29,7 @@ Version:        5.1.5
 Release:        0
 Summary:        Libskk input method engine for Fcitx5
 License:        GPL-3.0-or-later
+Group:          System/I18n/Japanese
 URL:            https://github.com/fcitx/fcitx5-skk
 Source:         https://download.fcitx-im.org/fcitx5/%{sname}/%{sname}-%{version}.tar.zst
 BuildRequires:  cmake
@@ -64,7 +65,11 @@ fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend.
 
 %build
 %if "%{flavor}" == "qt6"
+%if 0%{?suse_version} == 1500
+%cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-13
+%else
 %cmake
+%endif
 %endif
 %if "%{flavor}" == ""
 %cmake -DUSE_QT6=OFF
@@ -83,7 +88,7 @@ fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend.
 %{_fcitx5_qt5dir}/libfcitx5-skk-config.so
 %endif
 %if "%{flavor}" == "qt6"
-%{_fcitx5_qt6dir}/libfcitx5-skk-config.so
+%{_libdir}/fcitx5/qt6/libfcitx5-skk-config.so
 %endif
 %{_fcitx5_addondir}/skk.conf
 %{_fcitx5_imconfdir}/skk.conf

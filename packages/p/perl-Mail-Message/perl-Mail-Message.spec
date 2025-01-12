@@ -18,9 +18,10 @@
 
 %define cpan_name Mail-Message
 Name:           perl-Mail-Message
-Version:        3.15.0
+Version:        3.16.0
 Release:        0
-%define cpan_version 3.015
+# 3.016 -> normalize -> 3.16.0
+%define cpan_version 3.016
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Processing MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}

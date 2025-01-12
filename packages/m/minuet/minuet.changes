@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * snapcraft: Bring in fixes from master.
+  * Call onExited in a way that is compatible with Qt5 and Qt6
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

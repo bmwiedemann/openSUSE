@@ -1,7 +1,7 @@
 #
 # spec file for package python-pendulum
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,52 +18,48 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pendulum
-Version:        2.1.2
+Version:        3.0.0
 Release:        0
 Summary:        Python datetimes made easy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pendulum.eustace.io
 # https://github.com/sdispater/pendulum/issues/453
-Source:         https://github.com/sdispater/pendulum/archive/%{version}.tar.gz#/pendulum-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module freezegun}
+Source0:        https://github.com/sdispater/pendulum/archive/%{version}.tar.gz#/pendulum-%{version}-gh.tar.gz
+Source1:        vendor.tar.zst
+BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
-BuildRequires:  %{python_module pytz >= 2020.1}
-BuildRequires:  %{python_module pytzdata >= 2020.1}
-BuildRequires:  %{python_module typing}
+BuildRequires:  %{python_module pytz >= 2022.1}
+BuildRequires:  %{python_module time-machine >= 2.16.0}
+BuildRequires:  %{python_module tzdata}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.6
-Requires:       python-pytz >= 2020.1
-Requires:       python-pytzdata >= 2020.1
-Requires:       python-typing
+Requires:       python-time-machine >= 2.16.0
+Requires:       python-tzdata >= 2020.1
+ExcludeArch:    %ix86 %arm32
 %python_subpackages
 
 %description
 Python datetimes made easy
 
 %prep
-%setup -q -n pendulum-%{version}
+%autosetup -p1 -a1 -n pendulum-%{version}
 
 %build
 export CFLAGS="%{optflags}"
+export CARGO_HOME=$PWD/rust/.cargo
 %pyproject_wheel
 
 %install
 %pyproject_install
-%{python_expand # remove source files
-find %{buildroot}%{$python_sitearch} -name '*.c' -delete
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# https://github.com/sdispater/pendulum/issues/644
-donttest="(test_timezone and test_dst) or (test_behavior and test_proper_dst)"
-%pytest_arch -k "not ($donttest)"
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst

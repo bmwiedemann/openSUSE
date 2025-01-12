@@ -1,7 +1,7 @@
 #
 # spec file for package python-guessit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/wackou/guessit
 Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove-six.patch
+Patch0:         remove-six.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module babelfish >= 0.6.0}
 BuildRequires:  %{python_module importlib_resources}
@@ -35,13 +37,14 @@ BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock >= 3.3.1}
 %endif
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module rebulk >= 3.2.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-babelfish >= 0.6.0
-Requires:       python-importlib-resources
 Requires:       python-python-dateutil
 Requires:       python-rebulk >= 3.2.0
 Requires(post): update-alternatives
@@ -57,7 +60,7 @@ a video using its filename only. This matcher works with both movies
 and TV shows episodes.
 
 %prep
-%autosetup -n guessit-%{version}
+%autosetup -p1 -n guessit-%{version}
 # Remove shebang from non-executable files
 for i in {'audio_codec','bit_rate','bonus','cd','container','country','crc','date','edition','episodes','episode_title','film','__init__','language','mimetype','other','part','release_group','screen_size','size','source','streaming_service','title','type','video_codec','website'}; do
   sed -i -e "1d" "guessit/rules/properties/$i.py"
@@ -72,10 +75,10 @@ done
 sed -i 's:.pytest-runner.::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/guessit
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -95,6 +98,6 @@ sed -i 's:.pytest-runner.::' setup.py
 %license LICENSE
 %python_alternative %{_bindir}/guessit
 %{python_sitelib}/guessit
-%{python_sitelib}/guessit-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/guessit-%{version}.dist-info
 
 %changelog

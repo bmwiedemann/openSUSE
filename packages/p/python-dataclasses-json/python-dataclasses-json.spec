@@ -1,7 +1,7 @@
 #
 # spec file for package python-dataclasses-json
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,17 @@ Version:        0.6.7
 Release:        0
 Summary:        API for encoding and decoding dataclasses to and from JSON
 License:        MIT
-URL:            python-dataclasses-json
+URL:            https://github.com/lidatong/dataclasses-json
 Source:         https://github.com/lidatong/dataclasses-json/archive/refs/tags/v%{version}.tar.gz#/dataclasses-json-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#lidatong/dataclasses-json#553
+Patch0:         support-poetry-core-2.patch
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module marshmallow}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module poetry-dynamic-versioning}
-BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-inspect}
 BuildRequires:  fdupes
 Requires:       python-marshmallow
@@ -61,7 +61,9 @@ sed -i 's/version = "0.0.0"/version = "%{version}"/' pyproject.toml
 %pytest
 
 %files %python_files
+%license LICENSE
+%doc README.md
 %{python_sitelib}/dataclasses_json
-%{python_sitelib}/dataclasses_json-%{version}*-info
+%{python_sitelib}/dataclasses_json-%{version}.dist-info
 
 %changelog

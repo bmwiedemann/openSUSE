@@ -17,4 +17,12 @@
 - Remove the hardcoded libopenssl-1_1-devel to libopenssl-devel.</comment>
     <requestid>1146386</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a329317ce53d596d6df2febdc7d61f57</srcmd5>
+    <version>1.0.0</version>
+    <time>1736677249</time>
+    <user>anag+factory</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
+    <requestid>1236841</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package iosevka-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 typeface family, designed for writing code, using in terminals, and\
 preparing technical documents.
 Name:           iosevka-fonts
-Version:        32.3.0
+Version:        32.3.1
 Release:        0
 Summary:        Slender typeface for source code
 License:        OFL-1.1

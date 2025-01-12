@@ -18,13 +18,15 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.62
+Version:        1.640.0
 Release:        0
+# 1.64 -> normalize -> 1.640.0
+%define cpan_version 1.64
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPSCHUCK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPSCHUCK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -64,8 +66,6 @@ BuildRequires:  perl(String::Util)
 BuildRequires:  perl(Test2) >= 1.302167
 BuildRequires:  perl(Test::Kwalitee)
 BuildRequires:  perl(Test::Perl::Critic)
-BuildRequires:  perl(Test::Pod)
-BuildRequires:  perl(Test::Pod::Coverage) >= 1.00
 BuildRequires:  perl(Text::Template)
 BuildRequires:  perl(Time::Piece)
 BuildRequires:  perl(Time::Seconds)
@@ -108,6 +108,67 @@ Requires:       perl(Try::Tiny)
 Requires:       perl(URI::Escape) >= 3.31
 Requires:       perl(Web::Scraper)
 Requires:       perl(XML::LibXML)
+Provides:       perl(Finance::Quote) = %{version}
+Provides:       perl(Finance::Quote::AEX) = %{version}
+Provides:       perl(Finance::Quote::ASEGR) = %{version}
+Provides:       perl(Finance::Quote::ASX) = %{version}
+Provides:       perl(Finance::Quote::AlphaVantage) = %{version}
+Provides:       perl(Finance::Quote::BSEIndia) = %{version}
+Provides:       perl(Finance::Quote::BVB) = %{version}
+Provides:       perl(Finance::Quote::Bloomberg) = %{version}
+Provides:       perl(Finance::Quote::BorsaItaliana) = %{version}
+Provides:       perl(Finance::Quote::Bourso) = %{version}
+Provides:       perl(Finance::Quote::CSE) = %{version}
+Provides:       perl(Finance::Quote::Comdirect) = %{version}
+Provides:       perl(Finance::Quote::Consorsbank) = %{version}
+Provides:       perl(Finance::Quote::Currencies) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::AlphaVantage) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::CurrencyFreaks) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::ECB) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::FinanceAPI) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::Fixer) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::OpenExchange) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::YahooJSON) = %{version}
+Provides:       perl(Finance::Quote::DWS) = %{version}
+Provides:       perl(Finance::Quote::Deka) = %{version}
+Provides:       perl(Finance::Quote::FTfunds) = %{version}
+Provides:       perl(Finance::Quote::FinanceAPI) = %{version}
+Provides:       perl(Finance::Quote::Finanzpartner) = %{version}
+Provides:       perl(Finance::Quote::Fondsweb) = %{version}
+Provides:       perl(Finance::Quote::Fool) = %{version}
+Provides:       perl(Finance::Quote::GoldMoney) = %{version}
+Provides:       perl(Finance::Quote::GoogleWeb) = %{version}
+Provides:       perl(Finance::Quote::HU) = %{version}
+Provides:       perl(Finance::Quote::IndiaMutual) = %{version}
+Provides:       perl(Finance::Quote::MarketWatch) = %{version}
+Provides:       perl(Finance::Quote::MorningstarAU) = %{version}
+Provides:       perl(Finance::Quote::MorningstarCH) = %{version}
+Provides:       perl(Finance::Quote::MorningstarJP) = %{version}
+Provides:       perl(Finance::Quote::MorningstarUK) = %{version}
+Provides:       perl(Finance::Quote::NSEIndia) = %{version}
+Provides:       perl(Finance::Quote::NZX) = %{version}
+Provides:       perl(Finance::Quote::OnVista) = %{version}
+Provides:       perl(Finance::Quote::Oslobors) = %{version}
+Provides:       perl(Finance::Quote::SEB) = %{version}
+Provides:       perl(Finance::Quote::SIX) = %{version}
+Provides:       perl(Finance::Quote::Sinvestor) = %{version}
+Provides:       perl(Finance::Quote::StockData) = %{version}
+Provides:       perl(Finance::Quote::Stooq) = %{version}
+Provides:       perl(Finance::Quote::TMX) = %{version}
+Provides:       perl(Finance::Quote::TSP) = %{version}
+Provides:       perl(Finance::Quote::TesouroDireto) = %{version}
+Provides:       perl(Finance::Quote::Tiaacref) = %{version}
+Provides:       perl(Finance::Quote::Tradegate) = %{version}
+Provides:       perl(Finance::Quote::TreasuryDirect) = %{version}
+Provides:       perl(Finance::Quote::Troweprice) = %{version}
+Provides:       perl(Finance::Quote::TwelveData) = %{version}
+Provides:       perl(Finance::Quote::Union) = %{version}
+Provides:       perl(Finance::Quote::UserAgent) = %{version}
+Provides:       perl(Finance::Quote::XETRA) = %{version}
+Provides:       perl(Finance::Quote::YahooJSON) = %{version}
+Provides:       perl(Finance::Quote::YahooWeb) = %{version}
+Provides:       perl(Finance::Quote::ZA) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -125,7 +186,7 @@ The first part of the hash (eg, "CML") is referred to as the stock. The
 second part (in this case, "price") is referred to as the label.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

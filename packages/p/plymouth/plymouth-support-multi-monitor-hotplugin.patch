@@ -1,0 +1,291 @@
+commit 1896ea7439457a33ad1d1cc72a5dceb564dd77ef
+Author: Timo Teräs <timo.teras@iki.fi>
+Date:   Wed Mar 22 13:54:39 2023 +0200
+
+     script: handle display hotplug
+
+    - Fix script plugin to handle monitor hotplug events
+
+    - Expose Plymouth.SetDisplayHotplugFunction to set script callback
+      after display hotplug
+
+    fixes #186
+
+--- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/script/plugin.c
++++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/script/plugin.c
+@@ -392,13 +392,22 @@
+                    ply_pixel_display_t      *display)
+ {
+         ply_list_append_data (plugin->displays, display);
++
++        if (plugin->script_sprite_lib != NULL) {
++                script_lib_sprite_pixel_display_added (plugin->script_sprite_lib, display);
++                script_lib_plymouth_on_display_hotplug (plugin->script_state, plugin->script_plymouth_lib);
++        }
+ }
+ 
+ static void
+ remove_pixel_display (ply_boot_splash_plugin_t *plugin,
+                       ply_pixel_display_t      *display)
+ {
+-        script_lib_sprite_pixel_display_removed (plugin->script_sprite_lib, display);
++        if (plugin->script_sprite_lib != NULL) {
++                script_lib_sprite_pixel_display_removed (plugin->script_sprite_lib, display);
++                script_lib_plymouth_on_display_hotplug (plugin->script_state, plugin->script_plymouth_lib);
++        }
++
+         ply_list_remove_data (plugin->displays, display);
+ }
+ 
+--- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/script/script-lib-plymouth.c
++++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/script/script-lib-plymouth.c
+@@ -108,6 +108,7 @@
+         data->script_display_prompt_func = script_obj_new_null ();
+         data->script_validate_input_func = script_obj_new_null ();
+         data->script_display_message_func = script_obj_new_null ();
++        data->script_display_hotplug_func = script_obj_new_null ();
+         data->script_hide_message_func = script_obj_new_null ();
+         data->script_quit_func = script_obj_new_null ();
+         data->script_system_update_func = script_obj_new_null ();
+@@ -177,6 +178,12 @@
+                                     "function",
+                                     NULL);
++        script_add_native_function (plymouth_hash,
++                                    "SetDisplayHotplugFunction",
++                                    plymouth_set_function,
++                                    &data->script_display_hotplug_func,
++                                    "function",
++                                    NULL);
+         script_add_native_function (plymouth_hash,
+                                     "SetValidateInputFunction",
+                                     plymouth_set_function,
+                                     &data->script_validate_input_func,
+@@ -233,6 +240,7 @@
+         script_obj_unref (data->script_display_password_func);
+         script_obj_unref (data->script_display_question_func);
+         script_obj_unref (data->script_display_prompt_func);
++        script_obj_unref (data->script_display_hotplug_func);
+         script_obj_unref (data->script_validate_input_func);
+         script_obj_unref (data->script_display_message_func);
+         script_obj_unref (data->script_hide_message_func);
+@@ -384,6 +392,16 @@
+         script_obj_unref (ret.object);
+ }
+ 
++void script_lib_plymouth_on_display_hotplug (script_state_t             *state,
++                                             script_lib_plymouth_data_t *data)
++{
++        script_return_t ret = script_execute_object (state,
++                                                     data->script_display_hotplug_func,
++                                                     NULL,
++                                                     NULL);
++        script_obj_unref (ret.object);
++}
++
+ bool script_lib_plymouth_on_validate_input (script_state_t             *state,
+                                             script_lib_plymouth_data_t *data,
+                                             const char                 *entry_text,
+--- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/script/script-lib-plymouth.h
++++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/script/script-lib-plymouth.h
+@@ -37,6 +37,7 @@
+         script_obj_t          *script_display_password_func;
+         script_obj_t          *script_display_question_func;
+         script_obj_t          *script_display_prompt_func;
++        script_obj_t          *script_display_hotplug_func;
+         script_obj_t          *script_validate_input_func;
+         script_obj_t          *script_display_message_func;
+         script_obj_t          *script_hide_message_func;
+@@ -80,6 +81,8 @@
+                                             const char                 *prompt,
+                                             const char                 *entry_text,
+                                             bool                        is_secret);
++void script_lib_plymouth_on_display_hotplug (script_state_t             *state,
++                                             script_lib_plymouth_data_t *data);
+ bool script_lib_plymouth_on_validate_input (script_state_t             *state,
+                                             script_lib_plymouth_data_t *data,
+                                             const char                 *entry_text,
+--- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/script/script-lib-sprite.c
++++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/script/script-lib-sprite.c
+@@ -223,17 +223,7 @@
+                 return script_return_obj (script_obj_new_number (width));
+         }
+ 
+-        width = 0;
+-        for (node = ply_list_get_first_node (data->displays);
+-             node;
+-             node = ply_list_get_next_node (data->displays, node)) {
+-                display = ply_list_node_get_data (node);
+-                if (width == 0)
+-                        width = ply_pixel_display_get_width (display->pixel_display);
+-                else
+-                        width = MAX (width, ply_pixel_display_get_width (display->pixel_display));
+-        }
+-        return script_return_obj (script_obj_new_number (width));
++        return script_return_obj (script_obj_new_number (data->max_width));
+ }
+ 
+ static script_return_t sprite_window_get_height (script_state_t *state,
+@@ -261,17 +251,7 @@
+                 return script_return_obj (script_obj_new_number (height));
+         }
+ 
+-        height = 0;
+-        for (node = ply_list_get_first_node (data->displays);
+-             node;
+-             node = ply_list_get_next_node (data->displays, node)) {
+-                display = ply_list_node_get_data (node);
+-                if (height == 0)
+-                        height = ply_pixel_display_get_height (display->pixel_display);
+-                else
+-                        height = MAX (height, ply_pixel_display_get_height (display->pixel_display));
+-        }
+-        return script_return_obj (script_obj_new_number (height));
++        return script_return_obj (script_obj_new_number (data->max_height));
+ }
+ 
+ static script_return_t sprite_window_get_x (script_state_t *state,
+@@ -519,45 +499,65 @@
+         }
+ }
+ 
++static void
++update_displays (script_lib_sprite_data_t *data)
++{
++        ply_list_node_t *node;
++        script_lib_display_t *script_display;
++
++        data->max_width = 0;
++        data->max_height = 0;
++        for (node = ply_list_get_first_node (data->displays);
++             node;
++             node = ply_list_get_next_node (data->displays, node)) {
++                script_display = ply_list_node_get_data (node);
++                data->max_width = MAX (data->max_width, ply_pixel_display_get_width (script_display->pixel_display));
++                data->max_height = MAX (data->max_height, ply_pixel_display_get_height (script_display->pixel_display));
++        }
++
++        for (node = ply_list_get_first_node (data->displays);
++             node;
++             node = ply_list_get_next_node (data->displays, node)) {
++                script_display = ply_list_node_get_data (node);
++                script_display->x = (data->max_width - ply_pixel_display_get_width (script_display->pixel_display)) / 2;
++                script_display->y = (data->max_height - ply_pixel_display_get_height (script_display->pixel_display)) / 2;
++        }
++
++        data->full_refresh = true;
++}
++
++static void
++add_display (script_lib_sprite_data_t *data,
++             ply_pixel_display_t      *pixel_display)
++{
++        script_lib_display_t *script_display = malloc (sizeof(script_lib_display_t));
++
++        script_display->pixel_display = pixel_display;
++        script_display->data = data;
++        ply_pixel_display_set_draw_handler (pixel_display,
++                                            (ply_pixel_display_draw_handler_t)
++                                            script_lib_sprite_draw_area, script_display);
++
++        ply_list_append_data (data->displays, script_display);
++}
++
+ script_lib_sprite_data_t *script_lib_sprite_setup (script_state_t *state,
+                                                    ply_list_t     *pixel_displays)
+ {
+         ply_list_node_t *node;
+-        unsigned int max_width, max_height;
+         script_lib_sprite_data_t *data = malloc (sizeof(script_lib_sprite_data_t));
+ 
+         data->class = script_obj_native_class_new (sprite_free, "sprite", data);
+         data->sprite_list = ply_list_new ();
+         data->displays = ply_list_new ();
+ 
+-        max_width = 0;
+-        max_height = 0;
+-
+         for (node = ply_list_get_first_node (pixel_displays);
+              node;
+              node = ply_list_get_next_node (pixel_displays, node)) {
+                 ply_pixel_display_t *pixel_display = ply_list_node_get_data (node);
+-                max_width = MAX (max_width, ply_pixel_display_get_width (pixel_display));
+-                max_height = MAX (max_height, ply_pixel_display_get_height (pixel_display));
+-        }
+-
+-        for (node = ply_list_get_first_node (pixel_displays);
+-             node;
+-             node = ply_list_get_next_node (pixel_displays, node)) {
+-                ply_pixel_display_t *pixel_display = ply_list_node_get_data (node);
+-                script_lib_display_t *script_display = malloc (sizeof(script_lib_display_t));
+-                script_display->pixel_display = pixel_display;
+-
+-                script_display->x = (max_width - ply_pixel_display_get_width (pixel_display)) / 2;
+-                script_display->y = (max_height - ply_pixel_display_get_height (pixel_display)) / 2;
+-
+-                script_display->data = data;
+-                ply_pixel_display_set_draw_handler (pixel_display,
+-                                                    (ply_pixel_display_draw_handler_t)
+-                                                    script_lib_sprite_draw_area, script_display);
+-
+-                ply_list_append_data (data->displays, script_display);
++                add_display (data, pixel_display);
+         }
++        update_displays (data);
+ 
+         script_obj_t *sprite_hash = script_obj_hash_get_element (state->global, "Sprite");
+ 
+@@ -718,12 +718,20 @@
+         ply_region_add_rectangle (region, &rectangle);
+ }
+ 
++void script_lib_sprite_pixel_display_added (script_lib_sprite_data_t *data,
++                                            ply_pixel_display_t      *pixel_display)
++{
++        add_display (data, pixel_display);
++        update_displays (data);
++}
++
+ void script_lib_sprite_pixel_display_removed (script_lib_sprite_data_t *data,
+                                               ply_pixel_display_t      *pixel_display)
+ {
+         ply_list_node_t *node;
+         ply_list_node_t *next_node;
+         script_lib_display_t *display;
++        bool update = false;
+ 
+         if (!data)
+                 return;
+@@ -735,9 +743,13 @@
+ 
+                 if (display->pixel_display == pixel_display) {
+                         ply_list_remove_node (data->displays, node);
++                        update = true;
+                 }
+                 node = next_node;
+         }
++
++        if (update)
++                update_displays (data);
+ }
+ 
+ void
+--- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/script/script-lib-sprite.h
++++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/script/script-lib-sprite.h
+@@ -35,6 +35,8 @@
+         uint32_t                   background_color_start;
+         uint32_t                   background_color_end;
+         bool                       full_refresh;
++        unsigned int               max_width;
++        unsigned int               max_height;
+ } script_lib_sprite_data_t;
+ 
+ typedef struct
+@@ -65,6 +67,8 @@
+ 
+ script_lib_sprite_data_t *script_lib_sprite_setup (script_state_t *state,
+                                                    ply_list_t     *displays);
++void script_lib_sprite_pixel_display_added (script_lib_sprite_data_t *data,
++                                            ply_pixel_display_t      *pixel_display);
+ void script_lib_sprite_pixel_display_removed (script_lib_sprite_data_t *data,
+                                               ply_pixel_display_t      *pixel_display);
+ void script_lib_sprite_refresh (script_lib_sprite_data_t *data);

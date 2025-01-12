@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:19:41 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 13.9.1
+  * New ABI version 13.9
+  * Match python3-sip6-devel 6.9.1+
+
+-------------------------------------------------------------------
 Tue Oct 15 12:41:08 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to ABI version 13.8.0

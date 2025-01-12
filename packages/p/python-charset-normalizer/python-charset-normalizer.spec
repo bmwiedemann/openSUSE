@@ -1,7 +1,7 @@
 #
 # spec file for package python-charset-normalizer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-charset-normalizer
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
@@ -44,8 +44,6 @@ Python Universal Charset detector.
 
 %prep
 %setup -q -n charset_normalizer-%{version}
-# remove code coverage flags from pytest
-sed -i '/addopts/d' setup.cfg
 
 %build
 %pyproject_wheel

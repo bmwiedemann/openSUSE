@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:30:51 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.370.0 (1.37)
+   see /usr/share/doc/packages/perl-Module-ScanDeps/Changes
+
+  1.37  2024-11-14
+  - fix parsing of "use if ..."
+    Fixes errors in PAR::Packer test t/90-rt59710.t
+  - add test for _parse_libs()
+  1.36  2024-10-21
+  - Fix CVE-2024-10224: Unsanitized input leads to LPE
+    - use three-argument open()
+    - replace 'eval "..."' constructs
+    Note: this version was not released on CPAN because of
+    Coordinated Release Date for CVE
+  - README: add "Source Repository" and "Contact" info
+    switch "Please submit bug reports to ..." to GitHub issues
+  - add preload rule for MooX::HandlesVia
+    cf. https://github.com/rschupp/PAR-Packer/issues/88
+
+-------------------------------------------------------------------
 Fri Mar  8 22:43:47 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.36.0
+Version:        2.37.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-auth/goo
 # https://github.com/googleapis/google-auth-library-python/issues/1055
 Patch1:         python-google-auth-no-mock.patch
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module aioresponses}
 BuildRequires:  %{python_module cachetools >= 2.0.0}
@@ -49,6 +50,7 @@ Requires:       python-cachetools >= 2.0.0
 Requires:       python-pyasn1-modules >= 0.2.1
 Requires:       python-rsa >= 3.1.4
 Requires:       python-urllib3
+Recommends:     python-PyJWT >= 2.0
 Recommends:     python-aiohttp >= 3.6.2
 Recommends:     python-cryptography >= 38.0.3
 Recommends:     python-pyOpenSSL >= 22.0.0

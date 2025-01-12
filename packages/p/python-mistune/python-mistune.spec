@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-mistune
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname mistune
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause
@@ -27,9 +27,13 @@ URL:            https://github.com/lepture/mistune
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if "%{python_flavor}" < "python311"
+Requires:       python-typing_extensions
+%endif
 BuildArch:      noarch
 Conflicts:      python-mistune2 < %{version}
 Obsoletes:      python-mistune2 < %{version}

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 10 04:59:32 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.4
+
+  + Bugfixes:
+   + Fixed Spotify songs not being available for scrobbling.
+   + Fixed leading "A" and "The" articles being skipped for album sort text.
+   + Fixed thread safety issue when validating playlist songs on startup.
+   + Fixed filter search not ignoring space after colon when using column based search.
+   + Fixed KGlobalAccel to use capitalized application name.
+   + Fixed slash not properly handled when saving a playlist (#1624).
+   + (Unix) Fixed collection scanner so it ignores special filesystem paths (/sys, /proc, /run, etc) (#1615).
+
+  + Enhancements:
+   + Use XSPF "title" as playlist name when loading and saving playlists (#1624).
+   + Added support for using album ID when receving album covers for Subsonic songs (#1636).
+   + Added option for preserving directory structure when trascoding songs (#1637).
+
+-------------------------------------------------------------------
 Sun Dec  8 16:41:12 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.3

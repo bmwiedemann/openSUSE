@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  4 05:36:16 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.229.0 (1.229)
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+
+  1.229 2025-01-04T05:10:10Z
+  	* refresh distro and move to BRIANDFOY
+
+-------------------------------------------------------------------
 Fri Mar  8 23:06:36 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

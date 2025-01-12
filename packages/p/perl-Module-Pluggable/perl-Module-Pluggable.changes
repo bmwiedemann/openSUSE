@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 25 05:36:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.200.0 (6.2)
+   see /usr/share/doc/packages/perl-Module-Pluggable/Changes
+
+  2024-10-23 - 6.2
+      Simon, did you forget to remove a dependency you used only for testing? Yes, yes you did.
+
+  2024-10-22 - 6.1
+      Don't use vars, use our (thanks to Graham Knop @haarg)
+      Ignore the .AppleDouble (thanks to Dave Cantrell @DrHyde)
+      Improve vim swapfile patterns (thanks to Elan Ruusamäe @glensc)
+      Fix behaviour of File::Find and symlinks on certain versions of Win32 (thanks @thockar)
+      Skip unreadable files (thanks Sven Schober @sschober)
+
+  2015-11-20 - 6.0
+      Fix typo in examples (thanks to Zoffix Znet @zoffixznet)
+      Fix spelling of "FatPacker" (thanks to David Wheeler @theory)
+      Add before_instantiate and after_instantiate hooks (thanks to Dean Hamstead @djzort)
+      Use explicit test plan instead of done_testing (thanks to Matthew Horsfall @wolfsage)
+
+-------------------------------------------------------------------
 Sat Aug  8 08:48:49 UTC 2015 - coolo@suse.com
 
 - updated to 5.2

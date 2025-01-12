@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:38:53 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.30.0 (1.03)
+   see /usr/share/doc/packages/perl-Test-utf8/CHANGES
+
+  1.03   2024-11-14
+       - Fix tests to adapt to Perl now removing
+         apostrophe as package separator [RT#154915]
+       - upgraded distro files like packaged Module::Install version
+         and META.yml, to avoid other looming Perl deprecation issues
+
+-------------------------------------------------------------------
 Mon Mar  2 03:17:32 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.02

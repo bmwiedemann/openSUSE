@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kig
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later

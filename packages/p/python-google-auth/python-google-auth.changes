@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:34:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.37.0
+  * Allow users to use jwk keys for verifying ID token (#1641)
+- from version 2.36.1
+  * Improve user guide for Impersonation and SA (#1627)
+- Update BuildRequires and Recommends from setup.py
+
+-------------------------------------------------------------------
 Thu Dec  5 11:00:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.36.0

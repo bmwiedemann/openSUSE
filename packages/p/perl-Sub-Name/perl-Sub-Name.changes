@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 16 05:37:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.280.0 (0.28)
+   see /usr/share/doc/packages/perl-Sub-Name/Changes
+
+  0.28      2024-12-15 20:57:44Z
+      - fix version comparison logic for forward compatibility
+
+-------------------------------------------------------------------
 Sun Apr 30 03:09:58 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.27

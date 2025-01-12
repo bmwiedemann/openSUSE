@@ -1,7 +1,7 @@
 #
 # spec file for package libinput
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,13 +37,12 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.27.0
+Version:        1.27.1
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/libinput/
-
 #Git-Web:	https://gitlab.freedesktop.org/libinput/libinput/
 #DL-URL:        https://gitlab.freedesktop.org/libinput/libinput/-/releases
 Source:         https://gitlab.freedesktop.org/libinput/libinput/-/archive/%version/libinput-%version.tar.gz

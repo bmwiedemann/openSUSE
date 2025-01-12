@@ -39,7 +39,7 @@
 %define srcext           tar.zst
 
 Name:           telegram-desktop
-Version:        5.10.0
+Version:        5.10.3
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:52:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Ensure sequence clips in timeline are not resized to smaller when hiding a track (kde#498178)
+  * Fix crash moving build-in effect with feature disabled
+  * Fix crash saving effect stack (kde#498124)
+  * Fix layout order with > 9 layouts
+  * Fix use after free from last commit
+  * Fix reload or proxy clip losing tags, markers, force aspect ratio (kde#498014)
+  * Fix bin clips effects sometimes incorrectly applied to timeline instance
+  * Fix typo BUG: 497932 (kde#497932)
+  * Fix title widget braking text shadow and typewriter settings. (kde#476885)
+  * Math operators not supported in xml params (kde#497796)
+  * Fix track resizing
+  * Fix bin effects cannot be removed from timeline instance
+  * Fix crash trying to move bin effect before builtin effect
+  * Fix venv packages install on some distros
+  * Fix Whisper models download
+  * Fix delta display when resizing clip, add duration info when resizing from start
+  * Fix line return when pasting text with timecodes inside project notes
+  * Fix transparent rendering ffv1 profile
+  * Bring back presets to build in effects
+
+-------------------------------------------------------------------
 Sun Dec  8 09:27:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

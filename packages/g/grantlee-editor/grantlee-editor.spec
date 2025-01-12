@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.0
+%define kpim6_version 6.3.1
 
 %bcond_without released
 Name:           grantlee-editor
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

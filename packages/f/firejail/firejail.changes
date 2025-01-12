@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 21:42:45 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- Load/reload AppArmor profiles when installing the package (boo#1235142#c1)
+
+-------------------------------------------------------------------
 Sun Feb  4 19:16:55 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use sysuser-tools to generate firejail group

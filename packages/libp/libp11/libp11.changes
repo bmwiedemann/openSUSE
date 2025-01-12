@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec 20 17:51:35 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Add patch to fix upstream
+  * fix-wrong-non-static-lib.patch
+
+-------------------------------------------------------------------
+Thu Dec 19 17:26:52 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.4.13:
+  * Increased maximum PIN length (Michał Trojnara)
+  * Fixed several memory leaks (Michał Trojnara, Małgorzata Olszówka)
+  * Don't include libp11.rc VERSIONINFO into pkcs11 (Mikhail Titov)
+  * Improved tests (Małgorzata Olszówka)
+  * Added static ENGINE (libpkcas11.a) build (Marouene Boubakri)
+  * Added a workaround broken foreign key handling in OpenSSL
+  * 3.0.12-3.0.13, 3.1.4-3.1.5, 3.2.0-3.2.1 (Małgorzata Olszówka)
+  * Added a workaround for conflicting atexit() callbacks (Michał Trojnara)
+  * Always login with PIN If FORCE_LOGIN is specified in openssl config
+    (Plamen Todorov)
+  * Added OAEP support to RSA_private_decrypt (Peter Popovec)
+  * Added PKCS11_enumerate_*_ext functions (Harshal Gohel)
+  * Fixed non-null-terminated label padding (Jorge Ramirez-Ortiz)
+  * Fixed several object management issues (Jakub Jelen)
+  * Deferred libp11 initialization until needed (Doug Engert)
+- Removed patches:
+  * libp11-openssl-3.1.patch
+  * libp11-configure-treat-all-openssl-3.x-releases-the-same.patch
+- Enable unit tests
+
+-------------------------------------------------------------------
 Fri Jan 19 10:43:16 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Add support for OpenSSL 3.x:

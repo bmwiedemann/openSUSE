@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.0
+%define kpim6_version 6.3.1
 
 %bcond_without released
 Name:           akonadi-calendar
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later

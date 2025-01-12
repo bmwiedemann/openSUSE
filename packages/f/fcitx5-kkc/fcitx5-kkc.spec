@@ -69,12 +69,11 @@ This package provides libkkc input method support for Fcitx5.
 %cmake -DUSE_QT6=OFF
 %endif
 %if "%{flavor}" == "qt6"
-# leap 15.5 qt6/QtCore/qfile.h include <filesystem> which was in experimental in gcc12
 %if 0%{?suse_version} == 1500
-export CFLAGS="-I%{_includedir}/c++/12/experimental"
-export CXXFLAGS="-I%{_includedir}/c++/12/experimental"
-%endif
+%cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-13
+%else
 %cmake
+%endif
 %endif
 %make_build
 
@@ -92,7 +91,7 @@ export CXXFLAGS="-I%{_includedir}/c++/12/experimental"
 %{_libdir}/fcitx5/qt5/libfcitx5-kkc-config.so
 %endif
 %if "%{flavor}" == "qt6"
-%{_fcitx5_qt6dir}/libfcitx5-kkc-config.so
+%{_libdir}/fcitx5/qt6/libfcitx5-kkc-config.so
 %endif
 %{_datadir}/fcitx5/addon/kkc.conf
 %{_datadir}/fcitx5/inputmethod/kkc.conf

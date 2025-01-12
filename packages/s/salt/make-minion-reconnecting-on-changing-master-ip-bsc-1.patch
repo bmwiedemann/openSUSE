@@ -1,0 +1,770 @@
+From eb6c67e6f535cdfbf685a54c6352018673e37a12 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Tue, 26 Nov 2024 11:59:08 +0300
+Subject: [PATCH] Make minion reconnecting on changing master IP
+ (bsc#1228182)
+
+* Minions check dns when re-connecting to a master
+
+Check for a chainging dns record anytime a minion gets disconnected from
+it's master. See github issue #63654 #61482.
+
+* Regression tests for dns defined masters
+
+Adding tests to validate we check for changing dns anytime we're
+disconnected from the currently connected master
+
+* Update docs for master dns changes
+
+Update docs to use master_alive_interval to detect master ip changes via
+DNS.
+
+* Remove comment which is not true anymore
+
+* Make minion reconnecting on changing master IP
+
+with zeromq transport
+
+* Don't create schedule for alive if no master_alive_interval
+
+* Skip the tests if running with non-root user
+
+* Skip if unable to set additional IP address
+
+* Set master_tries to -1 for minions
+
+* Fix the tests
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <daniel.wozniak@broadcom.com>
+---
+ conf/minion                                   |   5 +-
+ doc/ref/configuration/minion.rst              |   4 +-
+ salt/channel/client.py                        |   2 -
+ salt/config/__init__.py                       |   4 +-
+ salt/minion.py                                | 190 ++++++++----------
+ salt/transport/zeromq.py                      |  17 +-
+ tests/pytests/scenarios/dns/__init__.py       |   0
+ tests/pytests/scenarios/dns/conftest.py       |  99 +++++++++
+ .../scenarios/dns/multimaster/conftest.py     | 124 ++++++++++++
+ .../scenarios/dns/multimaster/test_dns.py     |  54 +++++
+ tests/pytests/scenarios/dns/test_dns.py       |  37 ++++
+ .../multimaster/test_failover_master.py       |   4 -
+ tests/pytests/unit/test_minion.py             |   2 +
+ 13 files changed, 422 insertions(+), 120 deletions(-)
+ create mode 100644 tests/pytests/scenarios/dns/__init__.py
+ create mode 100644 tests/pytests/scenarios/dns/conftest.py
+ create mode 100644 tests/pytests/scenarios/dns/multimaster/conftest.py
+ create mode 100644 tests/pytests/scenarios/dns/multimaster/test_dns.py
+ create mode 100644 tests/pytests/scenarios/dns/test_dns.py
+
+diff --git a/conf/minion b/conf/minion
+index eeef626fa8..f89e18451f 100644
+--- a/conf/minion
++++ b/conf/minion
+@@ -271,9 +271,8 @@
+ #ping_interval: 0
+ 
+ # To auto recover minions if master changes IP address (DDNS)
+-#    auth_tries: 10
+-#    auth_safemode: True
+-#    ping_interval: 2
++#    master_alive_interval: 10
++#    master_tries: -1
+ #
+ # Minions won't know master is missing until a ping fails. After the ping fail,
+ # the minion will attempt authentication and likely fails out and cause a restart.
+diff --git a/doc/ref/configuration/minion.rst b/doc/ref/configuration/minion.rst
+index 57af5ce4a3..a1b0f2e86e 100644
+--- a/doc/ref/configuration/minion.rst
++++ b/doc/ref/configuration/minion.rst
+@@ -291,7 +291,9 @@ Default: ``0``
+ 
+ Configures how often, in seconds, the minion will verify that the current
+ master is alive and responding.  The minion will try to establish a connection
+-to the next master in the list if it finds the existing one is dead.
++to the next master in the list if it finds the existing one is dead. This
++setting can also be used to detect master DNS record changes when a minion has
++been disconnected.
+ 
+ .. code-block:: yaml
+ 
+diff --git a/salt/channel/client.py b/salt/channel/client.py
+index 76d7a8e5b9..34aafb2c9e 100644
+--- a/salt/channel/client.py
++++ b/salt/channel/client.py
+@@ -385,8 +385,6 @@ class AsyncPubChannel:
+             # else take the relayed publish_port master reports
+             else:
+                 publish_port = self.auth.creds["publish_port"]
+-            # TODO: The zeromq transport does not use connect_callback and
+-            # disconnect_callback.
+             yield self.transport.connect(
+                 publish_port, self.connect_callback, self.disconnect_callback
+             )
+diff --git a/salt/config/__init__.py b/salt/config/__init__.py
+index b3cd5d85ae..d4865807e6 100644
+--- a/salt/config/__init__.py
++++ b/salt/config/__init__.py
+@@ -75,7 +75,7 @@ elif salt.utils.platform.is_darwin():
+ else:
+     _DFLT_IPC_MODE = "ipc"
+     _DFLT_FQDNS_GRAINS = False
+-    _MASTER_TRIES = 1
++    _MASTER_TRIES = -1
+     _MASTER_USER = salt.utils.user.get_user()
+ 
+ 
+@@ -1272,7 +1272,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
+         "username": None,
+         "password": None,
+         "zmq_filtering": False,
+-        "zmq_monitor": False,
++        "zmq_monitor": True,
+         "cache_sreqs": True,
+         "cmd_safe": True,
+         "sudo_user": "",
+diff --git a/salt/minion.py b/salt/minion.py
+index e21a017cfd..834f0848c6 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -2737,10 +2737,64 @@ class Minion(MinionBase):
+                 # we are not connected anymore
+                 self.connected = False
+                 log.info("Connection to master %s lost", self.opts["master"])
++                if self.opts["transport"] != "tcp":
++                    self.schedule.delete_job(name=master_event(type="alive"))
++
++                log.info("Trying to tune in to next master from master-list")
++
++                if hasattr(self, "pub_channel"):
++                    self.pub_channel.on_recv(None)
++                    if hasattr(self.pub_channel, "auth"):
++                        self.pub_channel.auth.invalidate()
++                    if hasattr(self.pub_channel, "close"):
++                        self.pub_channel.close()
++                if hasattr(self, "req_channel") and self.req_channel:
++                    self.req_channel.close()
++                    self.req_channel = None
++
++                # if eval_master finds a new master for us, self.connected
++                # will be True again on successful master authentication
++                try:
++                    master, self.pub_channel = yield self.eval_master(
++                        opts=self.opts,
++                        failed=True,
++                        failback=tag.startswith(master_event(type="failback")),
++                    )
++                except SaltClientError:
++                    pass
++
++                if self.connected:
++                    self.opts["master"] = master
++
++                    # re-init the subsystems to work with the new master
++                    log.info(
++                        "Re-initialising subsystems for new master %s",
++                        self.opts["master"],
++                    )
++
++                    self.req_channel = salt.channel.client.AsyncReqChannel.factory(
++                        self.opts, io_loop=self.io_loop
++                    )
+ 
+-                if self.opts["master_type"] != "failover":
+-                    # modify the scheduled job to fire on reconnect
+-                    if self.opts["transport"] != "tcp":
++                    # put the current schedule into the new loaders
++                    self.opts["schedule"] = self.schedule.option("schedule")
++                    (
++                        self.functions,
++                        self.returners,
++                        self.function_errors,
++                        self.executors,
++                    ) = self._load_modules()
++                    # make the schedule to use the new 'functions' loader
++                    self.schedule.functions = self.functions
++                    self.pub_channel.on_recv(self._handle_payload)
++                    self._fire_master_minion_start()
++                    log.info("Minion is ready to receive requests!")
++
++                    # update scheduled job to run with the new master addr
++                    if (
++                        self.opts["transport"] != "tcp"
++                        and self.opts["master_alive_interval"] > 0
++                    ):
+                         schedule = {
+                             "function": "status.master",
+                             "seconds": self.opts["master_alive_interval"],
+@@ -2749,116 +2803,35 @@ class Minion(MinionBase):
+                             "return_job": False,
+                             "kwargs": {
+                                 "master": self.opts["master"],
+-                                "connected": False,
++                                "connected": True,
+                             },
+                         }
+                         self.schedule.modify_job(
+                             name=master_event(type="alive", master=self.opts["master"]),
+                             schedule=schedule,
+                         )
+-                else:
+-                    # delete the scheduled job to don't interfere with the failover process
+-                    if self.opts["transport"] != "tcp":
+-                        self.schedule.delete_job(name=master_event(type="alive"))
+-
+-                    log.info("Trying to tune in to next master from master-list")
+-
+-                    if hasattr(self, "pub_channel"):
+-                        self.pub_channel.on_recv(None)
+-                        if hasattr(self.pub_channel, "auth"):
+-                            self.pub_channel.auth.invalidate()
+-                        if hasattr(self.pub_channel, "close"):
+-                            self.pub_channel.close()
+-                        del self.pub_channel
+-
+-                    # if eval_master finds a new master for us, self.connected
+-                    # will be True again on successful master authentication
+-                    try:
+-                        master, self.pub_channel = yield self.eval_master(
+-                            opts=self.opts,
+-                            failed=True,
+-                            failback=tag.startswith(master_event(type="failback")),
+-                        )
+-                    except SaltClientError:
+-                        pass
+-
+-                    if self.connected:
+-                        self.opts["master"] = master
+-
+-                        # re-init the subsystems to work with the new master
+-                        log.info(
+-                            "Re-initialising subsystems for new master %s",
+-                            self.opts["master"],
+-                        )
+-
+-                        self.req_channel = (
+-                            salt.transport.client.AsyncReqChannel.factory(
+-                                self.opts, io_loop=self.io_loop
+-                            )
+-                        )
+-
+-                        # put the current schedule into the new loaders
+-                        self.opts["schedule"] = self.schedule.option("schedule")
+-                        (
+-                            self.functions,
+-                            self.returners,
+-                            self.function_errors,
+-                            self.executors,
+-                        ) = self._load_modules()
+-                        # make the schedule to use the new 'functions' loader
+-                        self.schedule.functions = self.functions
+-                        self.pub_channel.on_recv(self._handle_payload)
+-                        self._fire_master_minion_start()
+-                        log.info("Minion is ready to receive requests!")
+-
+-                        # update scheduled job to run with the new master addr
+-                        if self.opts["transport"] != "tcp":
+-                            schedule = {
+-                                "function": "status.master",
+-                                "seconds": self.opts["master_alive_interval"],
+-                                "jid_include": True,
+-                                "maxrunning": 1,
+-                                "return_job": False,
+-                                "kwargs": {
+-                                    "master": self.opts["master"],
+-                                    "connected": True,
+-                                },
+-                            }
+-                            self.schedule.modify_job(
+-                                name=master_event(
+-                                    type="alive", master=self.opts["master"]
+-                                ),
+-                                schedule=schedule,
+-                            )
+ 
+-                            if (
+-                                self.opts["master_failback"]
+-                                and "master_list" in self.opts
+-                            ):
+-                                if self.opts["master"] != self.opts["master_list"][0]:
+-                                    schedule = {
+-                                        "function": "status.ping_master",
+-                                        "seconds": self.opts[
+-                                            "master_failback_interval"
+-                                        ],
+-                                        "jid_include": True,
+-                                        "maxrunning": 1,
+-                                        "return_job": False,
+-                                        "kwargs": {
+-                                            "master": self.opts["master_list"][0]
+-                                        },
+-                                    }
+-                                    self.schedule.modify_job(
+-                                        name=master_event(type="failback"),
+-                                        schedule=schedule,
+-                                    )
+-                                else:
+-                                    self.schedule.delete_job(
+-                                        name=master_event(type="failback"), persist=True
+-                                    )
+-                    else:
+-                        self.restart = True
+-                        self.io_loop.stop()
++                        if self.opts["master_failback"] and "master_list" in self.opts:
++                            if self.opts["master"] != self.opts["master_list"][0]:
++                                schedule = {
++                                    "function": "status.ping_master",
++                                    "seconds": self.opts["master_failback_interval"],
++                                    "jid_include": True,
++                                    "maxrunning": 1,
++                                    "return_job": False,
++                                    "kwargs": {"master": self.opts["master_list"][0]},
++                                }
++                                self.schedule.modify_job(
++                                    name=master_event(type="failback"),
++                                    schedule=schedule,
++                                )
++                            else:
++                                self.schedule.delete_job(
++                                    name=master_event(type="failback"), persist=True
++                                )
++                else:
++                    self.restart = True
++                    self.io_loop.stop()
+ 
+         elif tag.startswith(master_event(type="connected")):
+             # handle this event only once. otherwise it will pollute the log
+@@ -2870,7 +2843,10 @@ class Minion(MinionBase):
+                 self.connected = True
+                 # modify the __master_alive job to only fire,
+                 # if the connection is lost again
+-                if self.opts["transport"] != "tcp":
++                if (
++                    self.opts["transport"] != "tcp"
++                    and self.opts["master_alive_interval"] > 0
++                ):
+                     schedule = {
+                         "function": "status.master",
+                         "seconds": self.opts["master_alive_interval"],
+diff --git a/salt/transport/zeromq.py b/salt/transport/zeromq.py
+index 7cc6b9987f..89f705190e 100644
+--- a/salt/transport/zeromq.py
++++ b/salt/transport/zeromq.py
+@@ -1,6 +1,7 @@
+ """
+ Zeromq transport classes
+ """
++
+ import errno
+ import hashlib
+ import logging
+@@ -211,6 +212,12 @@ class PublishClient(salt.transport.base.PublishClient):
+             self.master_pub,
+         )
+         log.debug("%r connecting to %s", self, self.master_pub)
++        if (
++            hasattr(self, "_monitor")
++            and self._monitor is not None
++            and disconnect_callback is not None
++        ):
++            self._monitor.disconnect_callback = disconnect_callback
+         self._socket.connect(self.master_pub)
+         connect_callback(True)
+ 
+@@ -680,13 +687,21 @@ class ZeroMQSocketMonitor:
+         log.debug("ZeroMQ event: %s", evt)
+         if evt["event"] == zmq.EVENT_MONITOR_STOPPED:
+             self.stop()
++        elif evt["event"] == zmq.EVENT_DISCONNECTED:
++            if (
++                hasattr(self, "disconnect_callback")
++                and self.disconnect_callback is not None
++            ):
++                self.disconnect_callback()
+ 
+     def stop(self):
+         if self._socket is None:
+             return
+         self._socket.disable_monitor()
+         self._socket = None
+-        self._monitor_socket = None
++        if self._monitor_socket is not None:
++            self._monitor_socket.close()
++            self._monitor_socket = None
+         if self._monitor_stream is not None:
+             self._monitor_stream.close()
+             self._monitor_stream = None
+diff --git a/tests/pytests/scenarios/dns/__init__.py b/tests/pytests/scenarios/dns/__init__.py
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/tests/pytests/scenarios/dns/conftest.py b/tests/pytests/scenarios/dns/conftest.py
+new file mode 100644
+index 0000000000..5a8850719f
+--- /dev/null
++++ b/tests/pytests/scenarios/dns/conftest.py
+@@ -0,0 +1,99 @@
++import logging
++import pathlib
++import subprocess
++
++import pytest
++
++log = logging.getLogger(__name__)
++
++
++@pytest.fixture(scope="package")
++def master_alive_interval():
++    return 5
++
++
++class HostsFile:
++    """
++    Simple helper class for tests that need to modify /etc/hosts.
++    """
++
++    def __init__(self, path, orig_text):
++        self._path = path
++        self._orig_text = orig_text
++
++    @property
++    def orig_text(self):
++        return self._orig_text
++
++    def __getattr__(self, key):
++        if key in ["_path", "_orig_text", "orig_text"]:
++            return self.__getattribute__(key)
++        return getattr(self._path, key)
++
++
++@pytest.fixture
++def etc_hosts():
++    hosts = pathlib.Path("/etc/hosts")
++    orig_text = hosts.read_text(encoding="utf-8")
++    hosts = HostsFile(hosts, orig_text)
++    try:
++        yield hosts
++    finally:
++        hosts.write_text(orig_text)
++
++
++@pytest.fixture(scope="package")
++def master(request, salt_factories):
++
++    try:
++        subprocess.check_output(["ip", "addr", "add", "172.16.0.1/32", "dev", "lo"])
++        ip_addr_set = True
++    except subprocess.CalledProcessError:
++        ip_addr_set = False
++
++    config_defaults = {
++        "open_mode": True,
++        "transport": request.config.getoption("--transport"),
++    }
++    config_overrides = {
++        "interface": "0.0.0.0",
++    }
++    factory = salt_factories.salt_master_daemon(
++        "master",
++        defaults=config_defaults,
++        overrides=config_overrides,
++        extra_cli_arguments_after_first_start_failure=["--log-level=info"],
++    )
++    factory.ip_addr_set = ip_addr_set
++    with factory.started(start_timeout=180):
++        yield factory
++
++    try:
++        subprocess.check_output(["ip", "addr", "del", "172.16.0.1/32", "dev", "lo"])
++    except subprocess.CalledProcessError:
++        pass
++
++
++@pytest.fixture(scope="package")
++def salt_cli(master):
++    return master.salt_cli(timeout=180)
++
++
++@pytest.fixture(scope="package")
++def minion(master, master_alive_interval):
++    config_defaults = {
++        "transport": master.config["transport"],
++    }
++    port = master.config["ret_port"]
++    config_overrides = {
++        "master": f"master.local:{port}",
++        "publish_port": master.config["publish_port"],
++        "master_alive_interval": master_alive_interval,
++    }
++    factory = master.salt_minion_daemon(
++        "minion",
++        defaults=config_defaults,
++        overrides=config_overrides,
++        extra_cli_arguments_after_first_start_failure=["--log-level=info"],
++    )
++    return factory
+diff --git a/tests/pytests/scenarios/dns/multimaster/conftest.py b/tests/pytests/scenarios/dns/multimaster/conftest.py
+new file mode 100644
+index 0000000000..3333f812ce
+--- /dev/null
++++ b/tests/pytests/scenarios/dns/multimaster/conftest.py
+@@ -0,0 +1,124 @@
++import logging
++import os
++import shutil
++import subprocess
++
++import pytest
++
++log = logging.getLogger(__name__)
++
++
++@pytest.fixture(scope="package")
++def salt_mm_master_1(request, salt_factories):
++
++    try:
++        subprocess.check_output(["ip", "addr", "add", "172.16.0.1/32", "dev", "lo"])
++        ip_addr_set = True
++    except subprocess.CalledProcessError:
++        ip_addr_set = False
++
++    config_defaults = {
++        "open_mode": True,
++        "transport": request.config.getoption("--transport"),
++    }
++    config_overrides = {
++        "interface": "0.0.0.0",
++        "master_sign_pubkey": True,
++    }
++    factory = salt_factories.salt_master_daemon(
++        "mm-master-1",
++        defaults=config_defaults,
++        overrides=config_overrides,
++        extra_cli_arguments_after_first_start_failure=["--log-level=info"],
++    )
++    factory.ip_addr_set = ip_addr_set
++    try:
++        with factory.started(start_timeout=180):
++            yield factory
++    finally:
++
++        try:
++            subprocess.check_output(["ip", "addr", "del", "172.16.0.1/32", "dev", "lo"])
++        except subprocess.CalledProcessError:
++            pass
++
++
++@pytest.fixture(scope="package")
++def mm_master_1_salt_cli(salt_mm_master_1):
++    return salt_mm_master_1.salt_cli(timeout=180)
++
++
++@pytest.fixture(scope="package")
++def salt_mm_master_2(salt_factories, salt_mm_master_1):
++    # if salt.utils.platform.is_darwin() or salt.utils.platform.is_freebsd():
++    #    subprocess.check_output(["ifconfig", "lo0", "alias", "127.0.0.2", "up"])
++
++    config_defaults = {
++        "open_mode": True,
++        "transport": salt_mm_master_1.config["transport"],
++    }
++    config_overrides = {
++        "interface": "0.0.0.0",
++        "master_sign_pubkey": True,
++    }
++
++    # Use the same ports for both masters, they are binding to different interfaces
++    for key in (
++        "ret_port",
++        "publish_port",
++    ):
++        config_overrides[key] = salt_mm_master_1.config[key] + 1
++    factory = salt_factories.salt_master_daemon(
++        "mm-master-2",
++        defaults=config_defaults,
++        overrides=config_overrides,
++        extra_cli_arguments_after_first_start_failure=["--log-level=info"],
++    )
++
++    # Both masters will share the same signing key pair
++    for keyfile in ("master_sign.pem", "master_sign.pub"):
++        shutil.copyfile(
++            os.path.join(salt_mm_master_1.config["pki_dir"], keyfile),
++            os.path.join(factory.config["pki_dir"], keyfile),
++        )
++    with factory.started(start_timeout=180):
++        yield factory
++
++
++@pytest.fixture(scope="package")
++def mm_master_2_salt_cli(salt_mm_master_2):
++    return salt_mm_master_2.salt_cli(timeout=180)
++
++
++@pytest.fixture(scope="package")
++def salt_mm_minion_1(salt_mm_master_1, salt_mm_master_2, master_alive_interval):
++    config_defaults = {
++        "transport": salt_mm_master_1.config["transport"],
++    }
++
++    mm_master_1_port = salt_mm_master_1.config["ret_port"]
++    mm_master_2_port = salt_mm_master_2.config["ret_port"]
++    config_overrides = {
++        "master": [
++            f"master1.local:{mm_master_1_port}",
++            f"master2.local:{mm_master_2_port}",
++        ],
++        "publish_port": salt_mm_master_1.config["publish_port"],
++        "master_alive_interval": master_alive_interval,
++        "master_tries": -1,
++        "verify_master_pubkey_sign": True,
++        "retry_dns": True,
++    }
++    factory = salt_mm_master_1.salt_minion_daemon(
++        "mm-minion-1",
++        defaults=config_defaults,
++        overrides=config_overrides,
++        extra_cli_arguments_after_first_start_failure=["--log-level=info"],
++    )
++    # Need to grab the public signing key from the master, either will do
++    shutil.copyfile(
++        os.path.join(salt_mm_master_1.config["pki_dir"], "master_sign.pub"),
++        os.path.join(factory.config["pki_dir"], "master_sign.pub"),
++    )
++    # with factory.started(start_timeout=180):
++    yield factory
+diff --git a/tests/pytests/scenarios/dns/multimaster/test_dns.py b/tests/pytests/scenarios/dns/multimaster/test_dns.py
+new file mode 100644
+index 0000000000..fafb30c12e
+--- /dev/null
++++ b/tests/pytests/scenarios/dns/multimaster/test_dns.py
+@@ -0,0 +1,54 @@
++import logging
++import subprocess
++import time
++
++import pytest
++
++log = logging.getLogger(__name__)
++
++
++@pytest.mark.skip_unless_on_linux
++@pytest.mark.skip_if_not_root
++def test_multimaster_dns(
++    salt_mm_master_1,
++    salt_mm_minion_1,
++    mm_master_1_salt_cli,
++    etc_hosts,
++    caplog,
++    master_alive_interval,
++):
++    """
++    Verify a minion configured with multimaster hot/hot will pick up a master's
++    dns change if it's been disconnected.
++    """
++
++    if not salt_mm_master_1.ip_addr_set:
++        pytest.skip("Unable to set additional IP address for master1")
++
++    etc_hosts.write_text(
++        f"{etc_hosts.orig_text}\n172.16.0.1    master1.local master2.local"
++    )
++
++    log.info("Added hosts record for master1.local and master2.local")
++
++    with salt_mm_minion_1.started(start_timeout=180):
++        with caplog.at_level(logging.INFO):
++            ret = mm_master_1_salt_cli.run("test.ping", minion_tgt="mm-minion-1")
++            assert ret.returncode == 0
++            etc_hosts.write_text(
++                f"{etc_hosts.orig_text}\n127.0.0.1    master1.local master2.local"
++            )
++            log.info("Changed hosts record for master1.local and master2.local")
++            subprocess.check_output(["ip", "addr", "del", "172.16.0.1/32", "dev", "lo"])
++            log.info("Removed secondary master IP address.")
++            # Wait for the minion's master_alive_interval, adding a second for
++            # reliablity.
++            time.sleep(master_alive_interval + 1)
++            assert (
++                "Master ip address changed from 172.16.0.1 to 127.0.0.1" in caplog.text
++            )
++            ret = mm_master_1_salt_cli.run("test.ping", minion_tgt="mm-minion-1")
++            assert ret.returncode == 0
++            assert (
++                "Master ip address changed from 172.16.0.1 to 127.0.0.1" in caplog.text
++            )
+diff --git a/tests/pytests/scenarios/dns/test_dns.py b/tests/pytests/scenarios/dns/test_dns.py
+new file mode 100644
+index 0000000000..cd33f0e7f0
+--- /dev/null
++++ b/tests/pytests/scenarios/dns/test_dns.py
+@@ -0,0 +1,37 @@
++import logging
++import subprocess
++import time
++
++import pytest
++
++log = logging.getLogger(__name__)
++
++
++@pytest.mark.skip_unless_on_linux
++@pytest.mark.skip_if_not_root
++def test_dns_change(master, minion, salt_cli, etc_hosts, caplog, master_alive_interval):
++    """
++    Verify a minion will pick up a master's dns change if it's been disconnected.
++    """
++
++    if not master.ip_addr_set:
++        pytest.skip("Unable to set additional IP address for master")
++
++    etc_hosts.write_text(f"{etc_hosts.orig_text}\n172.16.0.1    master.local")
++
++    with minion.started(start_timeout=180):
++        with caplog.at_level(logging.INFO):
++            ret = salt_cli.run("test.ping", minion_tgt="minion")
++            assert ret.returncode == 0
++            etc_hosts.write_text(f"{etc_hosts.orig_text}\n127.0.0.1    master.local")
++            log.info("Changed hosts record for master1.local and master2.local")
++            subprocess.check_output(["ip", "addr", "del", "172.16.0.1/32", "dev", "lo"])
++            log.info("Removed secondary master IP address.")
++            # Wait for the minion's master_alive_interval, adding a second for
++            # reliablity.
++            time.sleep(master_alive_interval + 1)
++            assert (
++                "Master ip address changed from 172.16.0.1 to 127.0.0.1" in caplog.text
++            )
++            ret = salt_cli.run("test.ping", minion_tgt="minion")
++            assert ret.returncode == 0
+diff --git a/tests/pytests/scenarios/failover/multimaster/test_failover_master.py b/tests/pytests/scenarios/failover/multimaster/test_failover_master.py
+index 9f6251a4d6..ebb2899ff0 100644
+--- a/tests/pytests/scenarios/failover/multimaster/test_failover_master.py
++++ b/tests/pytests/scenarios/failover/multimaster/test_failover_master.py
+@@ -162,10 +162,6 @@ def test_minions_alive_with_no_master(
+     """
+     Make sure the minions stay alive after all masters have stopped.
+     """
+-    if grains["os_family"] == "Debian" and grains["osmajorrelease"] == 9:
+-        pytest.skip(
+-            "Skipping on Debian 9 until flaky issues resolved. See issue #61749"
+-        )
+     start_time = time.time()
+     with salt_mm_failover_master_1.stopped():
+         with salt_mm_failover_master_2.stopped():
+diff --git a/tests/pytests/unit/test_minion.py b/tests/pytests/unit/test_minion.py
+index a9e91742a2..017c28d163 100644
+--- a/tests/pytests/unit/test_minion.py
++++ b/tests/pytests/unit/test_minion.py
+@@ -884,6 +884,8 @@ async def test_master_type_failover(minion_opts):
+         assert opts["master"] == "master2"
+         return MockPubChannel()
+ 
++    minion_opts["master_tries"] = 1
++
+     with patch("salt.minion.resolve_dns", mock_resolve_dns), patch(
+         "salt.channel.client.AsyncPubChannel.factory", mock_channel_factory
+     ), patch("salt.loader.grains", MagicMock(return_value=[])):
+-- 
+2.47.0
+

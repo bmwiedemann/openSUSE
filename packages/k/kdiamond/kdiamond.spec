@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdiamond
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Single player puzzle game
 License:        GPL-2.0-or-later

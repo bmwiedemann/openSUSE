@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  6 05:35:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.590.0 (1.59)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.59	- 2025-01-05, H.Merijn Brand
+      * Fixed EOL test for Windows with crnl layer
+      * It is 2025
+
+  1.58	- 2024-12-30, H.Merijn Brand
+      * Add strict_eol (warnings default in csv ())
+      * Add XS line number in errors
+      * Add streaming support - not set in stone
+
+  1.57	- 2024-11-12, H.Merijn Brand
+      * Keep runtime error from csv ()
+      * add csv (on_error)
+
+-------------------------------------------------------------------
 Sat Aug 10 05:29:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.560.0 (1.56)

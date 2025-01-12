@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 10 14:28:05 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.10.14
+  * Specify build system dependency on maturin>=1,<2 again.
+  * Allocate memory using PyMem_Malloc() and similar APIs for
+    integration with pymalloc, mimalloc, and tracemalloc.
+  * Source distribution does not ship compressed test documents and
+    relevant tests skip if fixtures are not present.
+  * Build now depends on Rust 1.82 or later instead of 1.72.
+- Release 3.10.13
+  * Fix compatibility with maturin introducing a breaking change in
+    1.8.0 and specify a fixed version of maturin. Projects relying
+    on any previous version being buildable from source by end
+    users (via PEP 517) must upgrade to at least this version.
+- Remove pendulum from tests: Not desired in Ring1 and not
+  maintained upstream. It's only supported on x86_64.
+
+-------------------------------------------------------------------
 Mon Dec  2 11:05:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.10.12:

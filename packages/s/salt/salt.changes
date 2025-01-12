@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  9 12:57:12 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Revert setting SELinux context for minion service (bsc#1233667)
+- Remove System V init support
+  * Make systemd the only supported init system by removing System V init
+    and insserv references
+  * Ensure package builds with no init system dependencies if built
+    without systemd (for example for use in containers)
+  * Apply some spec-cleaner suggestions (update copyright year, sort
+    requirements, adjust spacing)
+
+- Added:
+  * revert-setting-selinux-context-for-minion-service-bs.patch
+
+-------------------------------------------------------------------
+Tue Nov 26 14:53:34 UTC 2024 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Fix the condition of alternatives for Tumbleweed and Leap 16
+- Use update-alternatives for salt-call and fix builing on EL8
+- Build all python bindings for all flavors
+- Make minion reconnecting on changing master IP (bsc#1228182)
+
+- Added:
+  * make-minion-reconnecting-on-changing-master-ip-bsc-1.patch
+
+-------------------------------------------------------------------
 Thu Oct 17 14:02:57 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
 
 - Handle logger exception when flushing already closed file

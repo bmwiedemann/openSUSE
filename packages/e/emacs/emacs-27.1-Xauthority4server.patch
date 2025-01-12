@@ -10,11 +10,12 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  2 files changed, 45 insertions(+), 2 deletions(-)
 
 --- etc/emacs.service
-+++ etc/emacs.service	2024-04-11 06:46:29.320172754 +0000
-@@ -5,9 +5,11 @@
++++ etc/emacs.service	2025-01-09 13:32:23.071591602 +0000
+@@ -5,9 +5,12 @@
  [Unit]
  Description=Emacs text editor
  Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
++PartOf=graphical-session.target
 +After=graphical-session.target
  
  [Service]
@@ -23,6 +24,12 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  ExecStart=emacs --fg-daemon
  
  # Emacs will exit with status 15 after having received SIGTERM, which
+@@ -20,4 +23,4 @@ SuccessExitStatus=15
+ Restart=on-failure
+ 
+ [Install]
+-WantedBy=default.target
++WantedBy=graphical-session.target
 --- lisp/server.el
 +++ lisp/server.el	2024-04-11 06:17:17.692578500 +0000
 @@ -289,6 +289,11 @@ If nil, no instructions are displayed."

@@ -1,7 +1,7 @@
 #
-# spec file for package dpdk
+# spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,8 @@ Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Patch0:         0001-fix-cpu-compatibility.patch
 # PATCH-FIX-UPSTREAM - https://bugs.dpdk.org/show_bug.cgi?id=1530
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
+# PATCH-FIX-UPSTREAM - CVE-2024-11614 [bsc#1234718], net/virtio: Fix Denial Of Service from malicious guest on hypervisors using DPDK Vhost library
+Patch2:         dpdk-CVE-2024-11614.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pyelftools >= 0.22}
 BuildRequires:  %{pythons}

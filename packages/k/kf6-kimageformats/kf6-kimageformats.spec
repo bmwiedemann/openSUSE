@@ -30,7 +30,7 @@
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kimageformats
-Version:        6.9.0
+Version:        6.10.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -91,6 +91,7 @@ environments.
 %dir %{_kf6_plugindir}/imageformats
 %{_kf6_plugindir}/imageformats/kimg_ani.so
 %{_kf6_plugindir}/imageformats/kimg_avif.so
+%{_kf6_plugindir}/imageformats/kimg_dds.so
 %if 0%{?with_exr}
 %{_kf6_plugindir}/imageformats/kimg_exr.so
 %endif

@@ -300,4 +300,12 @@
   - sync requires/buildrequires with setup.py</comment>
     <requestid>1228387</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>91d95c6623ce88139c829e4a3e6c5520</srcmd5>
+    <version>7.2.14</version>
+    <time>1736676858</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236181</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Fix some translations not being properly used
+  * Add IsSpam/IsHam
+  * add IsRead/IsIgnored
+  * fix typo
+  * Create SearchLineCommand::SearchLineInfo from mStatus
+  * Use status/option
+  * Add TODO
+  * Return essageList::Core::SearchLineCommand::SearchLineInfo
+  * Prepare to fix get search info from messagesearchline
+  * Allow to install SearchLineCommand
+  * We use search command line by default now
+  * Add current folder
+  * Don't duplicate searched text
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

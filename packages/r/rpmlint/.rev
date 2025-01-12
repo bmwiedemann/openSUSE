@@ -5111,4 +5111,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * dbus-services: fix mistake in sddm-kalpa whitelisting (bsc#1232647)</comment>
     <requestid>1228780</requestid>
   </revision>
+  <revision rev="494" vrev="1">
+    <srcmd5>6ceddd3d4cc7cd71422b3f30ae95df38</srcmd5>
+    <version>2.6.1+git20250109.dfc27180</version>
+    <time>1736676836</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20250109.dfc27180:
+  * whitelistings: add sssd permissions drop-in file for helper caps (bsc#1233131)</comment>
+    <requestid>1236240</requestid>
+  </revision>
 </revisionlist>

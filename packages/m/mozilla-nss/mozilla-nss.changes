@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan  7 12:47:09 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.107
+  * bmo#1923038 - Remove MPI fuzz targets.
+  * bmo#1925512 - Remove globals `lockStatus` and `locksEverDisabled`.
+  * bmo#1919015 - Enable PKCS8 fuzz target.
+  * bmo#1923037 - Integrate Cryptofuzz in CI.
+  * bmo#1913677 - Part 2: Set tls server target socket options in config class
+  * bmo#1913677 - Part 1: Set tls client target socket options in config class
+  * bmo#1913680 - Support building with thread sanitizer.
+  * bmo#1922392 - set nssckbi version number to 2.72.
+  * bmo#1919913 - remove Websites Trust Bit from Entrust Root
+                  Certification Authority - G4.
+  * bmo#1920641 - remove Security Communication RootCA3 root cert.
+  * bmo#1918559 - remove SecureSign RootCA11 root cert.
+  * bmo#1922387 - Add distrust-after for TLS to Entrust Roots.
+  * bmo#1927096 - update expected error code in pk12util pbmac1 tests.
+  * bmo#1929041 - Use random tstclnt args with handshake collection script
+  * bmo#1920466 - Remove extraneous assert in ssl3gthr.c.
+  * bmo#1928402 - Adding missing release notes for NSS_3_105.
+  * bmo#1874451 - Enable the disabled mlkem tests for dtls.
+  * bmo#1874451 - NSS gtests filter cleans up the constucted buffer
+                  before the use.
+  * bmo#1925505 - Make ssl_SetDefaultsFromEnvironment thread-safe.
+  * bmo#1925503 - Remove short circuit test from ssl_Init.
+
+-------------------------------------------------------------------
 Wed Dec 11 15:00:16 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - fix build on loongarch64 (setting it as 64bit arch)
@@ -7,7 +34,7 @@ Wed Dec 11 15:00:16 UTC 2024 - Adrian Schröter <adrian@suse.de>
 Tue Nov 26 15:07:49 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Remove upstreamed bmo-1400603.patch
-- Added nss-bmo1930797.patch to fix failing tests in testsuite 
+- Added nss-bmo1930797.patch to fix failing tests in testsuite
 
 -------------------------------------------------------------------
 Thu Nov 21 14:11:56 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>

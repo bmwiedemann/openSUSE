@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  1 13:12:20 UTC 2025 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+-  Fix CVE-2024-11614 [bsc#1234718] - Denial Of Service from malicious guest on hypervisors using DPDK Vhost library
+-  Added patch,
+     + dpdk-CVE-2024-11614.patch 
+
+-------------------------------------------------------------------
 Sat Sep 14 12:34:14 UTC 2024 - Dan Partelly <d.partelly@yahoo.com>
 
 - Enable (disabled by default) installation of headers needed

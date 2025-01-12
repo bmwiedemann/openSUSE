@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  7 23:05:34 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to snapshot t20250101:
+  * configure updates
+  * friendly aborting on a fatal errors
+  * ensure a space between filename and date in the "REV:" lines
+  * support and document $RCS_DIR
+
+-------------------------------------------------------------------
 Wed Apr 24 14:08:01 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to snapshot t20240419:

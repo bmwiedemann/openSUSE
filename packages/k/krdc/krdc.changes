@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Cherry pick 334126b0 and fix most frequent crash on 24.12
+  * snapcraft: merge with master.
+  * Add the nativeVirtualKey value to fake keyrelease events generated to unpress modifiers (kde#497111)
+  * Wayland: fix "grab keys" when switching from/to fullscreen
+  * Link vnc and rdp plugin with libnetwork on Haiku
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

@@ -1,7 +1,7 @@
 #
 # spec file for package emacs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -218,6 +218,7 @@ Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch29:        emacs-27.1-Xauthority4server.patch
 Patch30:        emacs-CVE-2024-53920.patch
+Patch31:        emacs-29.4-boo1234673.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
@@ -325,7 +326,7 @@ Summary:        Info files for GNU Emacs
 Group:          Documentation/Other
 %if 0%{?suse_version} <= 1500
 Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
+Requires(preun): %install_info_prereq
 %endif
 BuildArch:      noarch
 
@@ -353,7 +354,7 @@ group called "games".
 Summary:        Generate Tag Files for Use with Emacs
 Group:          Development/Tools/Navigators
 Requires(post): coreutils update-alternatives
-Requires(preun):coreutils update-alternatives
+Requires(preun): coreutils update-alternatives
 Provides:       ctags:/usr/bin/etags
 
 %description -n etags
@@ -381,6 +382,7 @@ and most assembler-like syntaxes.
 %patch -P26 -p0 -b .fmt
 %patch -P29 -p0 -b .xauth
 %patch -P30 -p0 -b .cve202453920
+%patch -P31 -p0 -b .boo1234673
 %patch -P0  -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -755,6 +757,7 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/server.el.xauth
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/htmlfontify.el.cve202248339
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/elisp-mode.el.el.cve202453920
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/ruby-mode.el.cve202248338
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/emacs-lisp/comp.el.boo1234673
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient-mail.desktop.cve202327985
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient-mail.desktop.cve202327986
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient.desktop.cve202327985
@@ -869,7 +872,10 @@ export AR=gcc-ar-13
 export RANLIB=gcc-ranlib-13
 %endif
 %endif
-make check
+sed -ri '/sleep 2/{ s/sleep 2/sleep 6/ }' test/lisp/eshell/eshell-tests.el
+sed -ri '/\(sleep-for/{ s/1/5/ }' test/lisp/net/network-stream-tests.el
+export MAKEFLAGS="--jobs=1"
+make -k check
 %endif
 
 %if %{with games} && "%{gattr}" == "02755"

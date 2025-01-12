@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyrad
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/pyradius/pyrad
 Source0:        https://github.com/pyradius/pyrad/archive/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#pyradius/pyrad#162
 Patch0:         use-correct-assertion-methods.patch
+# PATCH-FIX-UPSTREAM Based on gh#pyradius/pyrad#208
+Patch1:         support-poetry-core-2.patch
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
@@ -52,8 +54,6 @@ them and decoding responses.
 
 %install
 %pyproject_install
-# Do not install the examples into site-packages
-%python_expand rm -r %{buildroot}%{$python_sitelib}/example
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

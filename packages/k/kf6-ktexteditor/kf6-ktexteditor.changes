@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:12:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.10.0
+- Changes since 6.9.0:
+  * Update dependency version to 6.10.0
+  * Fix default shortcuts for mac os
+  * rewrite Kate::TextBlock::mergeBlock m_cursors merging code
+  * use one targetBlock->m_lines.insert instead of many targetBlock->m_lines.push_back
+  * add testNoFlippedRange and testBlockSplitAndMerge to movingrange_test
+  * Preprocess lineEndings before pasting
+  * "Paste From File" feature for Kate to select a file and insert it's contents into the current file (kde#496902)
+  * Remove unnecessary multicursor clipboard code
+  * Try to split clipboard text across multiple cursors when pasting (kde#497863)
+  * Optimize kill lines for large number of cursors
+  * Fix full line selection behaviour of the C++ versions of the editing commands
+  * remove not needed include
+  * ensure content like from document doesn't make the dialog size explode (kde#497328)
+  * store QTextLayout inline
+  * Update version to 6.10.0
+
+-------------------------------------------------------------------
 Sun Dec  8 10:09:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0

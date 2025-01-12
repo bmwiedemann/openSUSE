@@ -68,4 +68,13 @@
     <comment></comment>
     <requestid>1202864</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>91f2e5587dfe60746f2251a04c68a93d</srcmd5>
+    <version>2.4</version>
+    <time>1736681147</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-poetry-core-2.patch:
+  * Support poetry-core 2.0 changes.</comment>
+    <requestid>1236761</requestid>
+  </revision>
 </revisionlist>

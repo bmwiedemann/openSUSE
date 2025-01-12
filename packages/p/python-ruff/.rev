@@ -1580,4 +1580,41 @@
    * [pycodestyle] Preserve original value format (E731)</comment>
     <requestid>1235139</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c4bd3af33513c07e73c95bb607f45f43</srcmd5>
+    <version>0.9.0</version>
+    <time>1736676524</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * This release introduces the new 2025 stable style (#13371),
+    stabilizing the following changes:
+  * Format expressions in f-string elements
+  * Alternate quotes for strings inside f-strings
+  * Preserve the casing of hex codes in f-string debug
+    expressions
+  * Choose the quote style for each string literal in an
+    implicitly concatenated f-string rather than for the entire
+    string
+  * Automatically join an implicitly concatenated string into a
+    single string literal if it fits on a single line
+  * Remove the `ISC001` incompatibility warning
+  * Prefer parenthesizing the `assert` message over breaking the
+    assertion expression
+  * Automatically parenthesize over-long `if` guards in `match`
+    `case` clauses
+  * More consistent formatting for `match` `case` patterns
+  * Avoid unnecessary parentheses around return type annotations
+  * Keep the opening parentheses on the same line as the `if`
+    keyword for comprehensions where the condition has a leading
+    comment
+  * More consistent formatting for `with` statements with a
+    single context manager for Python 3.8 or older
+  * Correctly calculate the line-width for code blocks in
+    docstrings when using `max-doc-code-line-length = &quot;dynamic&quot;`
+
+- update to 0.8.6
+   * [format]: Preserve multiline implicit concatenated strings in docstring positions
+   * [ruff] Add rule to detect empty literal in deque call (RUF025)</comment>
+    <requestid>1236832</requestid>
+  </revision>
 </revisionlist>

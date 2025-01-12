@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jan  9 14:28:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.19.1 (boo#1235025):
+  + New Features:
+    - Introduce the Notification v2 portal. This updated version of
+      the Notification portal supports a plethora of new fields for
+      notifications, such as sounds, categories, purpose, and more.
+    - Introduce the USB portal. This portal allows apps with
+      relevant permissions to enumerate and acquire access to
+      specific USB devices.
+    - Introduce a new SchemeSupported method to the OpenURI portal.
+      This new method allows apps to know ahead of time if the host
+      system is able to deal with a particular scheme.
+  + Enhancements:
+    - Continued the move towards Python-based tests. This should
+      simplify the test setup in the project quite significantly,
+      and also will allow removing the cyclic dependency between
+      libportal and XDG Desktop Portal.
+    - Introduce umockdev-based tests.
+    - Improve the icon validator so it can deal with memfd-based
+      icons.
+    - Clarify behavior of the Settings portal for non-standardized
+      keys.
+    - In the Global Shortcuts portal, clarify that the result the
+      BindShortcuts of may be a subset of all requested shortcuts.
+    - Add a documentation page about icon validation requirements.
+  + Bug Fixes:
+    - Fix memory leaks in the Background, Email, and Global
+      Shortcuts portals.
+    - Fix a general file descriptor & memory leak.
+    - Fix a regression in the Settings portal.
+    - Updated translations.
+- Add pkgconfig(gstreamer-pbutils-1.0), gstreamer-plugins-good and
+  gstreamer-utils BuildRequires: New dependencies.
+- Add fix-test-dependencies.patch: build/tests: Check for python
+  found and version in single require call.
+
+-------------------------------------------------------------------
 Tue Dec 31 09:03:21 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Delete unreproducible Sphinx doctrees (boo#1234334)

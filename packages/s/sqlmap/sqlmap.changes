@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  4 17:21:22 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.9:
+  * Implements --disable-hashing (#5827)
+  * fixed #5828 Clickhouse - Unable to retrieve tables
+  * update of checksums
+
+-------------------------------------------------------------------
 Wed Nov 27 15:56:23 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8.11:

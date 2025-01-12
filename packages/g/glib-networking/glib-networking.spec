@@ -1,7 +1,7 @@
 #
 # spec file for package glib-networking
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.80.0
+Version:        2.80.1
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later

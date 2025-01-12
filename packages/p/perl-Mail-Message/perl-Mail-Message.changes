@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:25:15 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.16.0 (3.016)
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.016: Wed 27 Nov 10:53:40 CET 2024
+
+  	Changes:
+  	- when (illegally) multiple attributes with the same name are used
+  	  in a single header line, then the last is returned.  Just like
+  	  Apple and Outlook do.  Originally returned the first.
+  	  github issue 20 [Todd Richmond]
+
+-------------------------------------------------------------------
 Fri Mar  8 22:42:19 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

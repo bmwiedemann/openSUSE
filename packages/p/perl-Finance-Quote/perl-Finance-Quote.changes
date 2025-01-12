@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:21:17 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.640.0 (1.64)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+
+  1.64      2024-11-27 18:11:09-08:00 America/Los_Angeles
+  	* Update AlphaVantage.pm - Issue #447
+  	* Fix to Stooq.pm - Issue #445
+  	* Updated ASX.pm - Issue #404
+  	* Added more fields to CSE.pm and exposed all labels.
+  	* Changed parsing in Comdirect.pm - Issue #413
+  	* Complete rewrite of OnVista.pm - Issue #414
+  	* Minor fix to FinanceAPI decoding JSON - Issue #434
+  	* Modified YahooJSON to deal with "nan" as dividend yield in JSON.
+  	* New CurrencyRates module, CurrencyRates/FinanceAPI - Issue #427
+  	* Fixed Bourso.pm - Issue #417
+  	* Allowed Currency Rates modules Fixer.pm and OpenExchange.pm to read their API keys from environment variables - Issue #426
+
+  1.63      2024-09-21 12:47:39-07:00 America/Los_Angeles
+  	* Fixed TesouroDireto.pm - Using different source URL - PR #424
+  	* Added FinanceAPI.pm - Requires API key from https://financeapi.net/. US and other exchange data available.
+  	* Fixed BVB.pm - Issue #409
+  	* Fixed BSEIndia.pm - Issue #410 and removed Unzip as quotes file is now a CSV file
+  	* Fixed NSEIndia.pm - Issue #410
+  	* Fixed NZX.pm - Issue #401
+
+-------------------------------------------------------------------
 Mon Jun 10 18:13:08 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - updated to 1.62

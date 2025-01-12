@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  7 23:27:45 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- update to version 1.4 snapshot t20250101:
+  * configure updates
+  * add "--format-date" option
+  * fix stricter gcc 15 warnings
+
+-------------------------------------------------------------------
 Mon Feb 12 00:15:50 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to version 1.4 snapshot t20240206:

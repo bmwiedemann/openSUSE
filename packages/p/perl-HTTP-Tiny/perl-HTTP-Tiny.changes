@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:22:47 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.090
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+
+  0.090     2024-11-12 11:51:32+01:00 Europe/Brussels
+      - No changes from 0.089-TRIAL
+  0.089     2024-10-21 09:35:48+02:00 Europe/Brussels (TRIAL RELEASE)
+      [CHANGED]
+      - Find the certificate bundle via IO::Socket::SSL rather than implementing
+        it in HTTP::Tiny.
+      - When encoding form data, given a hashref with an arrayref value,
+        preserve the order of the values in the arrayref rather than sorting.
+      [DOCS]
+      - Fixed internal link to "TLS/SSL SUPPORT" section
+
+-------------------------------------------------------------------
 Fri Mar  8 22:33:26 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

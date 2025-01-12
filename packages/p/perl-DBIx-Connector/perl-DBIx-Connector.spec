@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Connector
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,33 @@
 
 %define cpan_name DBIx-Connector
 Name:           perl-DBIx-Connector
-Version:        0.59
+Version:        0.600.0
 Release:        0
+# 0.60 -> normalize -> 0.600.0
+%define cpan_version 0.60
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Fast, safe DBI connection and transaction management
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBI) >= 1.605
 Requires:       perl(DBI) >= 1.605
+Provides:       perl(DBIx::Connector) = %{version}
+Provides:       perl(DBIx::Connector::Driver) = %{version}
+Provides:       perl(DBIx::Connector::Driver::Firebird) = %{version}
+Provides:       perl(DBIx::Connector::Driver::MSSQL) = %{version}
+Provides:       perl(DBIx::Connector::Driver::MariaDB) = %{version}
+Provides:       perl(DBIx::Connector::Driver::Oracle) = %{version}
+Provides:       perl(DBIx::Connector::Driver::Pg) = %{version}
+Provides:       perl(DBIx::Connector::Driver::SQLite) = %{version}
+Provides:       perl(DBIx::Connector::Driver::mysql) = %{version}
+Provides:       perl(DBIx::Connector::RollbackError) = 0.58
+Provides:       perl(DBIx::Connector::SvpRollbackError) = 0.58
+Provides:       perl(DBIx::Connector::TxnRollbackError) = 0.58
+%undefine       __perllib_provides
 Recommends:     perl(DBI) >= 1.614
 %{perl_requires}
 
@@ -47,7 +62,7 @@ You might be familiar with Apache::DBI and with the DBI's
 does a much better job. How is it different? I'm glad you asked!
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

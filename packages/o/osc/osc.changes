@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:27:35 UTC 2025 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.11.1
+  - Command-line:
+    - Fix 'linkpac' command for projects with a project link
+    - Fix 'linkpac' command by always removing <scmsync> element from target meta
+    - Fix command descriptions in help by moving the import statements under docstring in the do_*() methods
+
+-------------------------------------------------------------------
 Tue Jan  7 12:45:40 UTC 2025 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.11.0

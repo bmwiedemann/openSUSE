@@ -1,21 +1,27 @@
 -------------------------------------------------------------------
-Thu Jul 18 22:31:45 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Fri Jan 10 01:08:58 UTC 2025 - litma Leung <pirateclip@protonmail.com>
+
+- Update to 0.6.17
+ * Bump git2 to fix various issues
+
+-------------------------------------------------------------------
+Thu Jul 18 22:31:45 UTC 2024 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 0.6.15
   * Bump git2 and time crates to fix various issues
 
 -------------------------------------------------------------------
-Wed Apr 24 09:40:41 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Wed Apr 24 09:40:41 UTC 2024 - litma Leung <pirateclip@protonmail.com>
 
 - Remove redundant %{cargo_build}
 
 -------------------------------------------------------------------
-Thu Apr  4 02:35:56 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Thu Apr  4 02:35:56 UTC 2024 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 0.6.13
   * Nushell completions have been added
 
 -------------------------------------------------------------------
-Fri Mar 22 10:29:45 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+Fri Mar 22 10:29:45 UTC 2024 - litma Leung <pirateclip@protonmail.com>
 
 - initial commit

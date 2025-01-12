@@ -27,4 +27,15 @@
     <comment></comment>
     <requestid>1197031</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bff8d8419e3370565ad5dde12a51bc2b</srcmd5>
+    <version>0.6.7</version>
+    <time>1736677233</time>
+    <user>anag+factory</user>
+    <comment>- Correct BuildRequires.
+- Fix URL to actually be an URL.
+- Add patch support-poetry-core-2.patch:
+  * Support poetry-core 2.0 changes.</comment>
+    <requestid>1236762</requestid>
+  </revision>
 </revisionlist>

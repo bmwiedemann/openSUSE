@@ -2,12 +2,16 @@ Index: fwupd-1.9.14/plugins/uefi-capsule/fu-uefi-common.c
 ===================================================================
 --- fwupd-1.9.14.orig/plugins/uefi-capsule/fu-uefi-common.c
 +++ fwupd-1.9.14/plugins/uefi-capsule/fu-uefi-common.c
-@@ -235,9 +235,13 @@ fu_uefi_get_esp_path_for_os(void)
- 	g_autofree gchar *esp_path = NULL;
+@@ -251,6 +251,7 @@
+ 	g_autofree gchar *full_systemd_path = NULL;
  	g_autoptr(GError) error_local = NULL;
- 	g_autoptr(GHashTable) os_release = fwupd_get_os_release(&error_local);
+ 	g_autoptr(GHashTable) os_release = NULL;
 +	g_auto(GStrv) split = NULL;
- 	/* try to lookup /etc/os-release ID key */
+ 
+ 	/* distro (or user) is using systemd-boot */
+ 	systemd_path = g_build_filename("EFI", "systemd", NULL);
+@@ -262,6 +263,9 @@
+ 	os_release = fwupd_get_os_release(&error_local);
  	if (os_release != NULL) {
  		os_release_id = g_hash_table_lookup(os_release, "ID");
 +		/* Overide os_release_id for SLE and openSUSE */

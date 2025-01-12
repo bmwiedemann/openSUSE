@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 10 10:08:37 UTC 2025 - rfrohl@suse.com
+
+- Update to version 2.234.2:
+  * TMT: enable epel idomatically
+  * Packit: switch back to fedora-all
+  * RPM: Bump Epoch to 4
+  * rpm: ship manpage
+  * Add proper labeling for RamaLama
+  * Packit: remove rhel / epel jobs
+  * packit: remove unused file
+
+-------------------------------------------------------------------
+Thu Jan  9 14:16:15 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Add BuildRequires selinux-policy-%{selinuxtype} to enable building
+  for SLFO. Might be removed in the future again when 1231252
+  is fixed.
+
+-------------------------------------------------------------------
 Thu Nov 07 12:04:40 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 2.233.0:

@@ -91,6 +91,9 @@ rm -rf /usr/lib*/libmfxhw*.so.* /usr/lib*/mfx/
 if [ "$desktop" = "x11" ]; then
 	# Generated on boot if missing
 	rm /etc/udev/hwdb.bin
+	# xfce4-pulseaudio-plugin is omitted, remove it from the panel config.
+	# To avoid having to mess with IDs, just replace it with a separator.
+	sed -i 's/"pulseaudio"/"separator"/' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 fi
 
 # Kernel modules (+ firmware) for X13s
@@ -146,7 +149,9 @@ rm -f /boot/System.map-* /lib/modules/*/System.map
 # Decompress kernel modules, better for squashfs (boo#1192457)
 find /lib/modules/*/kernel -name '*.ko.xz' -exec xz -d {} +
 find /lib/modules/*/kernel -name '*.ko.zst' -exec zstd --rm -d {} +
-depmod $(basename /lib/modules/*)
+for moddir in /lib/modules/*; do
+	depmod "$(basename "$moddir")"
+done
 
 # Add repos from /etc/YaST2/control.xml
 add-yast-repos

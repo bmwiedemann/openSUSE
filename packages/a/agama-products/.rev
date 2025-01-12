@@ -48,4 +48,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1230578</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5da1b6207784c9c95f7ca047147de22c</srcmd5>
+    <version>0</version>
+    <time>1736677293</time>
+    <user>anag+factory</user>
+    <comment>- Add the user selectable patterns list to the SLES product
+  (gh#agama-project/agama#1885).
+
+- Update SLES name (gh#agama-project/agama#1883).
+
+- Add support for products registration (jsc#PED-11192,
+  gh#agama-project/agama#1809).
+
+- Drop yast from Leap 16.0 software selection
+  code-o-o#leap/features#173
+
+- SLES for SAP Application product:
+  Change product description.
+  (bsc#1235023)</comment>
+    <requestid>1236913</requestid>
+  </revision>
 </revisionlist>

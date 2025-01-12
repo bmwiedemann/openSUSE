@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  9 18:00:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.3. Check the ChangeLog file for the full list of
+  changes.
+- Drop patch, merged upstream:
+  * fix_build_with_poppler_24.12.0.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 17:14:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add poppler 24.10 compatibility patch:

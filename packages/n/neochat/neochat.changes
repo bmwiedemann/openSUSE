@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Use symbolic icon for purpose plugin
+  * Explicitly set the parent in QuickSwitcher
+  * Port away from methods removed in libquotient. (kde#497458)
+  * [UserInfo] Fix shortcut
+  * snap: use cmake snap and use . as source
+  * Add better support for colored text (and shrugs) from other clients
+  * Fix web shortcuts not doing anything (kde#496434)
+  * Update Android Gradle plugin version to 8.6.0
+  * Don't set emoji size to font size
+  * Fix crash when sending messages
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

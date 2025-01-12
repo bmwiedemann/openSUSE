@@ -66,4 +66,12 @@
                =completion-category-overrides= and =completion-extra-properties=.</comment>
     <requestid>1191460</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6d1fbb5520a6640e47b8efc834e24cdd</srcmd5>
+    <version>30.0.0.0</version>
+    <time>1736676853</time>
+    <user>anag+factory</user>
+    <comment>- Install also compat-mac.el as native compilation search for it</comment>
+    <requestid>1236171</requestid>
+  </revision>
 </revisionlist>

@@ -237,4 +237,15 @@
 </comment>
     <requestid>1156462</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b8eeb167984e9d47222c598426528c9b</srcmd5>
+    <version>3.11.0</version>
+    <time>1736676516</time>
+    <user>anag+factory</user>
+    <comment>- updated to 3.11.0 (3.011)
+   see /usr/share/doc/packages/perl-Business-ISBN/Changes
+  3.011 2025-01-04T03:01:58Z
+  	* add SECURITY.md; no code changes (forwarded request 1236691 from tinita)</comment>
+    <requestid>1236811</requestid>
+  </revision>
 </revisionlist>

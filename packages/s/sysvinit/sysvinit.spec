@@ -1,7 +1,7 @@
 #
 # spec file for package sysvinit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 Name:           sysvinit
 %define KPVER  2.23
-%define SIVER  3.11
+%define SIVER  3.13
 %define START  0.65
 Version:        %{SIVER}
 Release:        0
@@ -89,7 +89,7 @@ ln -sf startpar startpar-%{START}
 %setup -n %{name}-%{SIVER} -q -b 1 -b 2
 %patch -P 2  -p0 -b .suse
 %patch -P 9  -p0 -b .no-kill
-%patch -P 0
+%patch -P 0  -b .p0
 pushd doc
   mkdir killproc
 popd

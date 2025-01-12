@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:12:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.10.0
+- Changes since 6.9.0:
+  * Update dependency version to 6.10.0
+  * systemd unit: update to systemd v257
+  * Add missing include
+  * Update version to 6.10.0
+
+-------------------------------------------------------------------
 Sun Dec  8 10:09:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0

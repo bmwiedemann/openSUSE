@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  7 21:21:40 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.3.7:
+  * fixes a regression introduced in 0.3.6 that prevents adaptive
+    sync/VRR from working properly.
+  * fixes an assertion failure that can be hit with ~50 days of
+    uptime.
+
+-------------------------------------------------------------------
 Tue Dec 10 04:42:17 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.3.6:

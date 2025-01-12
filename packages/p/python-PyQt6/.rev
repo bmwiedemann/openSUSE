@@ -220,4 +220,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment>- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
     <requestid>1222700</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c99f032e31c97b57d59300af953c2f7c</srcmd5>
+    <version>6.8.0</version>
+    <time>1736676602</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236044</requestid>
+  </revision>
 </revisionlist>

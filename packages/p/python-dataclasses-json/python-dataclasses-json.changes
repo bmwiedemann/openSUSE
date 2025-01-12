@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 10 04:22:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct BuildRequires.
+- Fix URL to actually be an URL.
+- Add patch support-poetry-core-2.patch:
+  * Support poetry-core 2.0 changes.
+
+-------------------------------------------------------------------
 Tue Aug 27 16:56:04 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons

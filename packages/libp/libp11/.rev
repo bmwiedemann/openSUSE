@@ -277,4 +277,12 @@
   Add libp11-configure-treat-all-openssl-3.x-releases-the-same.patch</comment>
     <requestid>1139912</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>69555d2604e577a4feaf94e0f9a8c6ab</srcmd5>
+    <version>0.4.13</version>
+    <time>1736676846</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236161</requestid>
+  </revision>
 </revisionlist>

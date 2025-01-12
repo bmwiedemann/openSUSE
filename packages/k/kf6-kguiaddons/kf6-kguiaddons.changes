@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:17:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.10.0
+- Changes since 6.9.0:
+  * Update dependency version to 6.10.0
+  * systemclipboard: Cache mimetypes after retrieval (kde#497735)
+  * Dont crash if the compostior doesnt support the shortcut inhibit protocol (kde#497457)
+  * Bump PlasmaWaylandProtocols build dependency to 1.15.0 due to 333ba24
+  * Update version to 6.10.0
+  * [KColorSchemeWatcher] Fix reading XDG preference
+
+-------------------------------------------------------------------
 Sun Dec  8 10:09:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0

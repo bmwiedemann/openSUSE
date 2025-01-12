@@ -203,4 +203,12 @@ Fixed bugref (forwarded request 922054 from dimstar)</comment>
   distutils.</comment>
     <requestid>1227101</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>e3ae287a410165053cf879515078106d</srcmd5>
+    <version>1.4.5</version>
+    <time>1736676527</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236840</requestid>
+  </revision>
 </revisionlist>

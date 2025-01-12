@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  9 09:56:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.0
+  * Python 3.13 support
+  * Fixed deprecation warnings on Python 3.12
+  * Dropped support for Python 3.8
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Thu Dec  7 22:08:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0.post0:

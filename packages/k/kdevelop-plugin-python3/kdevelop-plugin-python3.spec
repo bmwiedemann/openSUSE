@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           kdevelop-plugin-python3
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later

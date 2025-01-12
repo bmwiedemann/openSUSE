@@ -91,15 +91,3 @@ diff -Ndurp kbd-2.0.2/contrib/showconsolefont kbd-2.0.2-fix-bashisms/contrib/sho
  done
 -echo -ne "\033%@"
 +printf "\033%%@"
-diff -Ndurp kbd-2.0.2/rc/suse-kbd.rc kbd-2.0.2-fix-bashisms/rc/suse-kbd.rc
---- kbd-2.0.2/rc/suse-kbd.rc	2012-02-27 12:27:11.000000000 +0200
-+++ kbd-2.0.2-fix-bashisms/rc/suse-kbd.rc	2014-10-19 23:00:34.475266064 +0300
-@@ -76,7 +76,7 @@ case "$1" in
- 	else
- 	    return=$rc_failed
- 	fi
--	echo -e "Loading keymap ${retmsg#Loading*/usr/lib/kbd/keymaps/*/}${return}"
-+	printf "Loading keymap ${retmsg#Loading*/usr/lib/kbd/keymaps/*/}${return}\n"
- 	;;
-     stop)
- 	;;

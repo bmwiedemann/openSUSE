@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jan 10 05:59:38 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.3.0:
+  * New Feature
+    - Add skipIfNoCache to tests by @maroshii in #4612
+  * Bug Fix
+    - Handle new unschedulable status by @maroshii in #4598
+    - fix bug compose deploy sts by @jLopezbarb in #4609
+    - DEV-828: Don't allow execution of empty tests names by
+      @ifbyol in #4614
+    - Enhance healthcheck failure handling and logging by
+      @teresaromero in #4595
+    - Fix error image tag and hint message by @teresaromero in
+      #4620
+    - revert: restore kustomize in the cli binary by @jLopezbarb in
+      #4630
+    - DEV-834: Fixed scenario where an okteto deploy executed
+      within a manifest with remote flag wasn't getting correctly
+      the variables by @ifbyol in #4629
+    - [Backport release-3.3] remove security context and fsgroup on
+      initialization by @github-actions in #4644
+    - [Backport release-3.3] revert: 4568 PR maintaining warnings
+      by @github-actions in #4645
+
+-------------------------------------------------------------------
+Fri Jan 10 05:53:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.2.3:
+  * fix: bad merge (#4647)
+  * revert: 4568 PR maintaining warnings (#4642) (#4646)
+  * remove security context and fsgroup on initialization (#4640)
+    (#4643)
+
+-------------------------------------------------------------------
 Wed Dec 18 06:24:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.2.2:

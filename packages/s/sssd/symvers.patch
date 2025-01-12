@@ -12,14 +12,14 @@ libsss_ldap.so(-2.7.4) cannot find a libsss_util.so(-2.7.4), since
 the system only has libsss_util.so(-2.8.2) at this point.
 
 ---
- Makefile.am |   47 ++++++++++++++++++++++++++++++++---------------
- 1 file changed, 32 insertions(+), 15 deletions(-)
+ Makefile.am |   44 ++++++++++++++++++++++++++++++--------------
+ 1 file changed, 30 insertions(+), 14 deletions(-)
 
-Index: sssd-2.9.2/Makefile.am
+Index: sssd-2.10.1/Makefile.am
 ===================================================================
---- sssd-2.9.2.orig/Makefile.am
-+++ sssd-2.9.2/Makefile.am
-@@ -955,7 +955,11 @@ libsss_debug_la_SOURCES = \
+--- sssd-2.10.1.orig/Makefile.am
++++ sssd-2.10.1/Makefile.am
+@@ -971,7 +971,11 @@ libsss_debug_la_SOURCES = \
  libsss_debug_la_LIBADD = \
      $(SYSLOG_LIBS)
  libsss_debug_la_LDFLAGS = \
@@ -32,7 +32,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libsss_child.la
  libsss_child_la_SOURCES = src/util/child_common.c
-@@ -965,7 +969,8 @@ libsss_child_la_LIBADD = \
+@@ -981,7 +985,8 @@ libsss_child_la_LIBADD = \
      $(DHASH_LIBS) \
      libsss_debug.la \
      $(NULL)
@@ -42,7 +42,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libsss_crypt.la
  
-@@ -1004,7 +1009,8 @@ libsss_crypt_la_LIBADD = \
+@@ -1021,7 +1026,8 @@ libsss_crypt_la_LIBADD = \
      libsss_debug.la \
      $(NULL)
  libsss_crypt_la_LDFLAGS = \
@@ -52,7 +52,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libsss_cert.la
  
-@@ -1029,8 +1035,9 @@ libsss_cert_la_LIBADD = \
+@@ -1046,8 +1052,9 @@ libsss_cert_la_LIBADD = \
      libsss_debug.la \
      $(NULL)
  libsss_cert_la_LDFLAGS = \
@@ -63,7 +63,7 @@ Index: sssd-2.9.2/Makefile.am
  
  generate-sbus-code:
  	$(builddir)/sbus_generate.sh $(abs_srcdir)
-@@ -1131,8 +1138,9 @@ libsss_sbus_la_CFLAGS = \
+@@ -1148,8 +1155,9 @@ libsss_sbus_la_CFLAGS = \
      $(DBUS_CFLAGS) \
      $(NULL)
  libsss_sbus_la_LDFLAGS = \
@@ -74,7 +74,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libsss_sbus_sync.la
  libsss_sbus_sync_la_SOURCES = \
-@@ -1167,8 +1175,9 @@ libsss_sbus_sync_la_CFLAGS = \
+@@ -1184,8 +1192,9 @@ libsss_sbus_sync_la_CFLAGS = \
      $(UNICODE_LIBS) \
      $(NULL)
  libsss_sbus_sync_la_LDFLAGS = \
@@ -85,7 +85,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libsss_iface.la
  libsss_iface_la_SOURCES = \
-@@ -1197,8 +1206,9 @@ libsss_iface_la_CFLAGS = \
+@@ -1214,8 +1223,9 @@ libsss_iface_la_CFLAGS = \
      $(DBUS_CFLAGS) \
      $(NULL)
  libsss_iface_la_LDFLAGS = \
@@ -96,7 +96,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libsss_iface_sync.la
  libsss_iface_sync_la_SOURCES = \
-@@ -1225,8 +1235,9 @@ libsss_iface_sync_la_CFLAGS = \
+@@ -1242,8 +1252,9 @@ libsss_iface_sync_la_CFLAGS = \
      $(DBUS_CFLAGS) \
      $(NULL)
  libsss_iface_sync_la_LDFLAGS = \
@@ -107,7 +107,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libsss_util.la
  libsss_util_la_SOURCES = \
-@@ -1322,7 +1333,8 @@ endif
+@@ -1338,7 +1349,8 @@ endif
  if BUILD_PASSKEY
  libsss_util_la_SOURCES += src/db/sysdb_passkey_user_verification.c
  endif # BUILD_PASSKEY
@@ -115,19 +115,9 @@ Index: sssd-2.9.2/Makefile.am
 +libsss_util_la_LDFLAGS = -avoid-version ${symv}
 +EXTRA_libsss_util_la_DEPENDENCIES = x.sym
  
- pkglib_LTLIBRARIES += libsss_semanage.la
- libsss_semanage_la_CFLAGS = \
-@@ -1341,7 +1353,8 @@ libsss_semanage_la_LIBADD += $(SEMANAGE_
- endif
- 
- libsss_semanage_la_LDFLAGS = \
--    -avoid-version
-+    -avoid-version ${symv}
-+EXTRA_libsss_semanage_la_DEPENDENCIES = x.sym
- 
  SSSD_INTERNAL_LTLIBS = \
      libsss_util.la \
-@@ -1357,7 +1370,7 @@ lib_LTLIBRARIES = libipa_hbac.la \
+@@ -1354,7 +1366,7 @@ lib_LTLIBRARIES = libipa_hbac.la \
                    $(NULL)
  
  pkgconfig_DATA += src/lib/ipa_hbac/ipa_hbac.pc
@@ -136,7 +126,7 @@ Index: sssd-2.9.2/Makefile.am
  libipa_hbac_la_SOURCES = \
      src/lib/ipa_hbac/hbac_evaluator.c \
      src/util/sss_utf8.c
-@@ -1688,8 +1701,9 @@ libifp_iface_la_CFLAGS = \
+@@ -1682,8 +1694,9 @@ libifp_iface_la_CFLAGS = \
      $(DBUS_CFLAGS) \
      $(NULL)
  libifp_iface_la_LDFLAGS = \
@@ -147,7 +137,7 @@ Index: sssd-2.9.2/Makefile.am
  
  pkglib_LTLIBRARIES += libifp_iface_sync.la
  libifp_iface_sync_la_SOURCES = \
-@@ -1714,8 +1728,9 @@ libifp_iface_sync_la_CFLAGS = \
+@@ -1708,8 +1721,9 @@ libifp_iface_sync_la_CFLAGS = \
      $(DBUS_CFLAGS) \
      $(NULL)
  libifp_iface_sync_la_LDFLAGS = \
@@ -158,7 +148,7 @@ Index: sssd-2.9.2/Makefile.am
  
  sssd_ifp_SOURCES = \
      src/responder/ifp/ifpsrv.c \
-@@ -4314,8 +4329,9 @@ libsss_ldap_common_la_LIBADD = \
+@@ -4314,8 +4328,9 @@ libsss_ldap_common_la_LIBADD = \
      $(SSSD_INTERNAL_LTLIBS) \
      $(NULL)
  libsss_ldap_common_la_LDFLAGS = \
@@ -169,7 +159,7 @@ Index: sssd-2.9.2/Makefile.am
  if BUILD_SYSTEMTAP
  libsss_ldap_common_la_LIBADD += stap_generated_probes.lo
  endif
-@@ -4372,7 +4388,8 @@ libsss_krb5_common_la_LIBADD = \
+@@ -4371,7 +4386,8 @@ libsss_krb5_common_la_LIBADD = \
      $(SSSD_INTERNAL_LTLIBS) \
      $(NULL)
  libsss_krb5_common_la_LDFLAGS = \

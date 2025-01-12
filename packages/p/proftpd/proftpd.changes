@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:25:19 UTC 2025 - chris@computersalat.de
+
+- 1.3.8c - Released 11-Dec-2024
+  fix for boo#1233997 (CVE-2024-48651)
+  * http://proftpd.org/docs/NEWS-1.3.8c
+    gh#1830 - Supplemental group inheritance grants unintended access to GID 0
+    due to lack of supplemental groups from mod_sql
+    https://github.com/proftpd/proftpd/issues/1830
+- rebase patch
+  * proftpd-no_BuildDate.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:45:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

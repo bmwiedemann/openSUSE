@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan 10 08:33:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.1345.0
+  * Revert "Update configurePackage to use fixed download method"
+  * Revert "Use a single syscall for route table for health check IP"
+- from version 3.3.1311.0
+  * Add alternative to wmic to support Windows 2025
+  * Add armv7 architecture support for greengrass component
+  * Add support in ssm-setup-cli for standalone installation
+    in on-premises environments
+  * Fail ssm-setup-cli install command if agent config is not loadable
+  * Implement S3 ownership verification as an optional parameter for plugins
+  * Mark Session task as cancelled when MGS indicates that session is over
+  * Update configurePackage to use fixed download method
+  * Update Docker Engine version and use system environment
+    variables in installation path
+  * Update GreenGrass component minor version to 1.3.1
+- from version 3.3.1230.0
+  * Revert compatibility hook for future Windows versions as it
+    increased CPU consumption for document execution on Windows.
+  * Revert Increase RunCommand timeout during the registration
+    process for the on-prem instances
+
+-------------------------------------------------------------------
 Wed Oct 30 15:29:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.1142.0

@@ -1,0 +1,44 @@
+From 635b0cfe0afc8330aecadf2083af9ce1fdf92441 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 10 Jan 2025 15:18:55 +1100
+Subject: [PATCH] Support poetry-core 2.0 changes
+
+poetry-core 2.0 has released, and it's a lot more strict about the
+configuration groups and their contents in pyproject.toml.
+---
+ pyproject.toml | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 20a147fb..b24d8d69 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,9 +1,16 @@
+-[tool.poetry]
++[project]
+ name = "dataclasses-json"
+ version = "0.0.0"
+ description = "Easily serialize dataclasses to and from JSON."
+-authors = ["Charles Li <charles.dt.li@gmail.com>"]
+-maintainers = ['Charles Li <charles.dt.li@gmail.com>', 'Georgiy Zubrienko <gzu@ecco.com>', 'Vitaliy Savitskiy <visa@ecco.com>', 'Matthias Als <mata@ecco.com>']
++authors = [
++    { "name" = "Charles Li", "email" = "charles.dt.li@gmail.com" },
++]
++maintainers = [
++    { "name" = "Charles Li", "email" = "charles.dt.li@gmail.com" },
++    { "name" = "Georgiy Zubrienko", "email" = "gzu@ecco.com" },
++    { "name" = "Vitaliy Savitskiy", "email" = "visa@ecco.com" },
++    { "name" = "Matthias Als", "email" = "mata@ecco.com>" },
++]
+ license = 'MIT'
+ readme = "README.md"
+ repository = 'https://github.com/lidatong/dataclasses-json'
+@@ -33,7 +40,7 @@ build-backend = "poetry_dynamic_versioning.backend"
+ [tool.poetry-dynamic-versioning]
+ enable = true
+ 
+-[tool.poetry.urls]
++[project.urls]
+ changelog = "https://github.com/lidatong/dataclasses-json/releases"
+ documentation = "https://lidatong.github.io/dataclasses-json/"
+ issues = "https://github.com/lidatong/dataclasses-json/issues"

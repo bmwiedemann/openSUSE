@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  3 05:33:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.901.0 (1.901)
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.901 Thu Jan 02 17:30:00 EST 2024
+    * Add MCE::Core package for future development.
+  1.900 Mon Sep 09 20:30:00 EST 2024
+    * Improve MCE::Child exiting when signaled.
+  1.899 Fri Sep 06 00:15:00 EST 2024
+    * Fix for MCE::Child and MCE::Channel signal anomaly #24.
+      Thank you, @exodist.
+
+-------------------------------------------------------------------
 Thu Aug 22 05:29:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.898.0 (1.898)

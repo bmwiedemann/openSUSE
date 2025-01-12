@@ -25,6 +25,9 @@ tar:
 	# Patches for the JS frontend go after here \
 	patch --no-backup-if-mismatch -p1 -i ../../0001-Add-source-code-reference.patch && \
 	# End patches section \
+	# Patches for Go modules go after here \
+	patch --no-backup-if-mismatch -p1 -i ../../0004-Bump-crypto.patch && \
+	# End of Go modules patches section \
 	go mod download && \
 	go mod verify && \
 	go work vendor && \

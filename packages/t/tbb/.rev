@@ -447,4 +447,12 @@
     <comment>- Update to version 2022.0.0:</comment>
     <requestid>1234152</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>bf6f5af8cc38d21eb9347d531f1f6363</srcmd5>
+    <version>2022.0.0</version>
+    <time>1736676600</time>
+    <user>anag+factory</user>
+    <comment>- Modernize building of the Python subpackage, don't generate *.egg.</comment>
+    <requestid>1236039</requestid>
+  </revision>
 </revisionlist>

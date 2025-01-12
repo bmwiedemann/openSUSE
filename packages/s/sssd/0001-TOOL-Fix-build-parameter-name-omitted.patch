@@ -1,0 +1,85 @@
+From b927ca4196f828bda6d5db6c6a6d852389bfede0 Mon Sep 17 00:00:00 2001
+From: Samuel Cabrero <scabrero@suse.de>
+Date: Thu, 2 Jan 2025 14:09:17 +0100
+Subject: [PATCH] TOOL: Fix build, parameter name omitted
+
+Signed-off-by: Samuel Cabrero <scabrero@suse.de>
+---
+ src/tools/sssctl/sssctl_data.c | 8 ++++----
+ src/tools/sssctl/sssctl_logs.c | 6 +++---
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/tools/sssctl/sssctl_data.c b/src/tools/sssctl/sssctl_data.c
+index b28556e73..a473e7e14 100644
+--- a/src/tools/sssctl/sssctl_data.c
++++ b/src/tools/sssctl/sssctl_data.c
+@@ -125,7 +125,7 @@ static errno_t sssctl_backup(bool force)
+ }
+ 
+ errno_t sssctl_client_data_backup(struct sss_cmdline *cmdline,
+-                                  struct sss_tool_ctx *)
++                                  struct sss_tool_ctx *tool_ctx)
+ {
+     struct sssctl_data_opts opts = {0};
+     errno_t ret;
+@@ -184,7 +184,7 @@ static errno_t sssctl_restore(bool force_start, bool force_restart)
+ }
+ 
+ errno_t sssctl_client_data_restore(struct sss_cmdline *cmdline,
+-                                   struct sss_tool_ctx *)
++                                   struct sss_tool_ctx *tool_ctx)
+ {
+     struct sssctl_data_opts opts = {0};
+     errno_t ret;
+@@ -206,7 +206,7 @@ errno_t sssctl_client_data_restore(struct sss_cmdline *cmdline,
+ }
+ 
+ errno_t sssctl_cache_remove(struct sss_cmdline *cmdline,
+-                            struct sss_tool_ctx *)
++                            struct sss_tool_ctx *tool_ctx)
+ {
+     struct sssctl_data_opts opts = {0};
+     errno_t ret;
+@@ -413,7 +413,7 @@ done:
+ }
+ 
+ errno_t sssctl_cache_index(struct sss_cmdline *cmdline,
+-                           struct sss_tool_ctx *)
++                           struct sss_tool_ctx *tool_ctx)
+ {
+     const char *attr = NULL;
+     const char *action_str = NULL;
+diff --git a/src/tools/sssctl/sssctl_logs.c b/src/tools/sssctl/sssctl_logs.c
+index f8ef9f2c6..8ba18b394 100644
+--- a/src/tools/sssctl/sssctl_logs.c
++++ b/src/tools/sssctl/sssctl_logs.c
+@@ -418,7 +418,7 @@ int parse_debug_level(const char *strlevel)
+ }
+ 
+ errno_t sssctl_logs_remove(struct sss_cmdline *cmdline,
+-                           struct sss_tool_ctx *)
++                           struct sss_tool_ctx *tool_ctx)
+ {
+     struct sssctl_logs_opts opts = {0};
+     errno_t ret;
+@@ -470,7 +470,7 @@ errno_t sssctl_logs_remove(struct sss_cmdline *cmdline,
+ }
+ 
+ errno_t sssctl_logs_fetch(struct sss_cmdline *cmdline,
+-                          struct sss_tool_ctx *)
++                          struct sss_tool_ctx *tool_ctx)
+ {
+     const char *file = NULL;
+     errno_t ret;
+@@ -587,7 +587,7 @@ fini:
+ }
+ 
+ errno_t sssctl_analyze(struct sss_cmdline *cmdline,
+-                       struct sss_tool_ctx *)
++                       struct sss_tool_ctx *tool_ctx)
+ {
+ #ifndef BUILD_CHAIN_ID
+     PRINT("ERROR: Tevent chain ID support missing, log analyzer is unsupported.\n");
+-- 
+2.47.1
+

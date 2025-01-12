@@ -1,7 +1,7 @@
 #
 # spec file for package python-falcon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1600
+%bcond_without doc
+%else
+%bcond_with doc
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-falcon
@@ -31,7 +37,6 @@ BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module myst-parser >= 2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydata-sphinx-theme}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx-design}
 BuildRequires:  %{python_module sphinx-tabs}
@@ -52,6 +57,9 @@ BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module httpx if (%python-base without python36-base)}
 BuildRequires:  %{python_module uvicorn if (%python-base without python36-base)}
 BuildRequires:  %{python_module websockets if (%python-base without python36-base)}
+%endif
+%if %{with doc}
+BuildRequires:  %{python_module pydata-sphinx-theme}
 %endif
 # /SECTION
 BuildRequires:  fdupes
@@ -86,11 +94,14 @@ rm tests/test_media_handlers.py
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %pyproject_wheel
+
+%if %{with doc}
 export PYTHONPATH="$(pwd)"
 pushd docs
 make html
 rm _build/html/.buildinfo
 popd
+%endif
 
 %install
 %pyproject_install
@@ -98,9 +109,12 @@ popd
 %python_clone -a %{buildroot}%{_bindir}/falcon-inspect-app
 %python_clone -a %{buildroot}%{_bindir}/falcon-print-routes
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%if %{with doc}
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-doc
 cp -ar docs/_build/html examples %{buildroot}%{_defaultdocdir}/%{name}-doc/
 %fdupes %{buildroot}%{_defaultdocdir}/%{name}-doc/
+%endif
 
 %check
 export LANG=en_US.UTF8
@@ -121,7 +135,9 @@ export LANG=en_US.UTF8
 %{python_sitelib}/falcon
 %{python_sitelib}/falcon-%{version}.dist-info
 
+%if %{with doc}
 %files -n %{name}-doc
 %doc %{_defaultdocdir}/%{name}-doc
+%endif
 
 %changelog

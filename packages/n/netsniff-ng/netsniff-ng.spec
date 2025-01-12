@@ -1,7 +1,7 @@
 #
 # spec file for package netsniff-ng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           netsniff-ng
-Version:        0.6.8
+Version:        0.6.9
 Release:        0
 Summary:        Network Sniffer for Packet Inspection
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            http://netsniff-ng.org/
 Source:         http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-%{version}.tar.xz
+Patch0:         netsniff-ng-ncursesw.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -43,8 +44,6 @@ BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(ncursesw)
-Patch0:         netsniff-ng-ncursesw.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 netsniff-ng is a network sniffer for packet inspection. It is similar
@@ -70,20 +69,35 @@ The netsniff-ng toolkit consists of the following utilities:
 
 %build
 export NACL_LIB=sodium
-export NACL_INC_DIR=/usr/include/sodium
+export NACL_INC_DIR=%{_includedir}/sodium
 ./configure --disable-geoip
-make %{?_smp_mflags} ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags}"
+%make_build ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags}"
 
 %install
 # disable parrallel execution with -j1 because it cause an error with make 4.4
 make -j1 install PREFIX=%{_prefix} ETCDIR=%{_sysconfdir} DESTDIR=%{buildroot}
+rm -Rf %{buildroot}%{_docdir}/netsniff-ng %{buildroot}%{_datadir}/licenses/
 
 %files
 %license COPYING
 %doc AUTHORS README REPORTING-BUGS
 %dir %{_sysconfdir}/netsniff-ng
 %config(noreplace) %{_sysconfdir}/netsniff-ng/*
-%{_sbindir}/*
-%{_mandir}/man8/*
+%{_sbindir}/astraceroute
+%{_sbindir}/bpfc
+%{_sbindir}/curvetun
+%{_sbindir}/flowtop
+%{_sbindir}/ifpps
+%{_sbindir}/mausezahn
+%{_sbindir}/netsniff-ng
+%{_sbindir}/trafgen
+%{_mandir}/man8/astraceroute.8%{?ext_man}
+%{_mandir}/man8/bpfc.8%{?ext_man}
+%{_mandir}/man8/curvetun.8%{?ext_man}
+%{_mandir}/man8/flowtop.8%{?ext_man}
+%{_mandir}/man8/ifpps.8%{?ext_man}
+%{_mandir}/man8/mausezahn.8%{?ext_man}
+%{_mandir}/man8/netsniff-ng.8%{?ext_man}
+%{_mandir}/man8/trafgen.8%{?ext_man}
 
 %changelog

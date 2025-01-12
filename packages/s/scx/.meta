@@ -1,0 +1,5 @@
+<package name="scx" project="openSUSE:Factory">
+  <title>scx</title>
+  <description>Scx userland schedulers</description>
+  <devel project="Base:System" package="scx"/>
+</package>

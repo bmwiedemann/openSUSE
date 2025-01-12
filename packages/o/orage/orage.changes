@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jan  7 14:06:26 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0
+  * Redesigned appointment window recurrence tab. Related with
+    Issue #23.
+  * Internal changes, changed appointment window to subclass of
+    GtkWindow
+  * Internal changes, changed mainbox to subclass of
+    GtkApplicationWindow (MR !48)
+  * Moved internal CSS string to separte theme file (MR !47,
+    MR !65)
+  * Added command line parameter '-i' to import ICS files
+  * Rudimentary synchronization support: added support for calling a
+    user-specified synchronization command
+  * Fixed Gtk-CRITICAL message while adding new appointment.
+  * Replaced Orage wake up detection with wake up detection from
+    panel clock plugin.
+  * Fixed memory leak and error handling when timezone info loading
+    fails. (MR !56)
+  * Added support for TZDIR environment variable (Issue #28).
+  * Updated desktop file: added actions for 'today' and 'new appointment'
+    (MR !58), added Keywords (MR! 64)
+  * Recurrence tab improvements: fixed dependency from ICAL RRULE
+    (MR !59, MR !52, Issue #23, Issue #29)
+  * Use gettext and XDT_VERSION_INIT (MR !60)
+  * Internal changes, changed day window (MR !62)
+  * Disabled tray icon by default, (MR !66, MR !64)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Feb  8 17:00:53 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.0

@@ -1051,4 +1051,16 @@ Peter Hutterer (3):
     <comment>- Update to release 1.27</comment>
     <requestid>1225065</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>0ab2f059b2d9839cdc8ace63baaf9fd9</srcmd5>
+    <version>1.27.1</version>
+    <time>1736676609</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.27.1
+  * Fixed two regressions in the gesture state handling.
+  * Removed an assert triggered by a finger count mismatch.
+  * libinput replay has a slightly new output format and now
+    supports Ctrl+C to stop the currently replaying event sequence.</comment>
+    <requestid>1236128</requestid>
+  </revision>
 </revisionlist>

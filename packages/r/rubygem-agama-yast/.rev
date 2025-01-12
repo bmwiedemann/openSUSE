@@ -95,4 +95,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226181</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5d0f28ec4c7d092ec4d9ff604b9e6caf</srcmd5>
+    <version>11.devel1</version>
+    <time>1736677300</time>
+    <user>anag+factory</user>
+    <comment>- Objects from the D-Bus trees representing the storage devices are
+  removed before performing the probing. It prevents a segmentation
+  fault by accessing to old objects (gh#agama-project/agama#1884).
+
+- Activate multipath in case it is forced by the user 
+  (gh#agama-project/agama#1875).
+
+- Add support for products registration (jsc#PED-11192,
+  gh#agama-project/agama#1809).
+
+- Fix collision between hotfix and new bootlaoder dbus interface
+  (gh#agama-project/agama#1852)
+
+- Hotfix to avoid losing the storage config with auto installation
+  (bsc#1234711).
+
+- Add bootloader dbus interface to allow to set if bootloader
+  should stop on boot menu (gh#agama-project/agama#1840)
+
+- Work around to a problem triggered after formatting DASD devices
+  (mitigates gh#agama-project/agama#1818).
+
+- Fix parsing agama.install_url that contain '='
+  (gh#agama-project/agama#1803)
+
+- Convert AutoYaST scripts when importing an AutoYaST profile (gh#agama-project/agama#1800).
+
+- Include the agama-dbus-monitor package in the spec file
+  (gh#agama-project/agama#1805).</comment>
+    <requestid>1236917</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:52:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * fix out of bounds access on MediaPlayListProxyModel::mapRowToSource
+  * Fix APK build with Gradle Android plugin 8.6.0
+  * Update Android Gradle plugin version to 8.6.0
+
+-------------------------------------------------------------------
 Sun Dec  8 09:27:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

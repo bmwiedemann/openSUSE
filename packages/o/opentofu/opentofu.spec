@@ -1,7 +1,7 @@
 #
 # spec file for package opentofu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name tofu
 
 Name:           opentofu
-Version:        1.8.8
+Version:        1.9.0
 Release:        0
 Summary:        Declaratively manage your cloud infrastructure
 License:        MPL-2.0

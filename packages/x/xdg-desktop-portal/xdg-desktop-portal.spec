@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %define oname xdg-desktop-portal
 
 Name:           %{oname}%{?psuffix}
-Version:        1.19.0
+Version:        1.19.1
 Release:        0
 %if "%{flavor}" == ""
 Summary:        A portal frontend service for Flatpak
@@ -41,6 +41,8 @@ Supplements:    (%{oname}-devel and patterns-base-documentation)
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{oname}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-test-dependencies.patch -- build/tests: Check for python found and version in single require call
+Patch:          fix-test-dependencies.patch
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.58
@@ -52,6 +54,8 @@ BuildRequires:  python3-furo
 BuildRequires:  python3-sphinxcontrib-copybutton
 BuildRequires:  python3-sphinxext-opengraph
 %endif
+BuildRequires:  gstreamer-plugins-good
+BuildRequires:  gstreamer-utils
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(flatpak)
@@ -60,10 +64,11 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.5.2
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.2.90
-BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libportal) >= 0.9.0
 BuildRequires:  pkgconfig(libsystemd)
 # Break cycle: we buildrequire flatpak, and flatpak has a requires on xdg-desktop-portal
 #!BuildIgnore:  xdg-desktop-portal
@@ -146,6 +151,7 @@ rm -fr %{buildroot}/%{_datadir}/{dbus-1,%{oname},locale,pkgconfig} %buildroot%{_
 %dir %{_datadir}/%{name}/portals
 %{_libexecdir}/%{name}
 %{_libexecdir}/xdg-desktop-portal-validate-icon
+%{_libexecdir}/xdg-desktop-portal-validate-sound
 %{_libexecdir}/xdg-document-portal
 %{_libexecdir}/xdg-permission-store
 %{_libexecdir}/xdg-desktop-portal-rewrite-launchers

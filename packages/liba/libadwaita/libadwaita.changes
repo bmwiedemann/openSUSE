@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 10 06:32:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.3:
+  + Build: Drop pre-built docs and styles
+  + AdwActionRow: Set accessible role to presentation for the icon
+  + AdwBottomSheet: Fix more criticals in dispose
+  + AdwButtonRow: Set accessible role to presentation for icons
+  + AdwClampLayout: Fix layout with multiple children
+  + AdwComboRow: Fix a property noficiation
+  + AdwDialog:
+    - Fix accessible role critical when using window-backed dialogs
+    - Handle close() before and right after present()
+  + AdwHeaderBar: Ignore split views outside sheets
+  + AdwLengthUnit Fix pt and sp unit values when gtk-xft-dpi = -1
+
+-------------------------------------------------------------------
 Fri Nov 22 21:01:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.2:

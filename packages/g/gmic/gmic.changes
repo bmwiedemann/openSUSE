@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:43:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Use GCC 13 on Leap 15
+
+-------------------------------------------------------------------
+Wed Jan  8 13:06:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch all the Qt gui implementations to Qt6 except for the krita
+  one, as this also still pulls KF5 libraries, not sure how well
+  mixing KF5 and QT6 would work. (boo#1218653#c14)
+
+-------------------------------------------------------------------
 Tue Jan  7 13:10:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - gimp3 plugin needs to be in a subdir 

@@ -1,7 +1,7 @@
 #
 # spec file for package libplasma6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -187,7 +187,7 @@ if [ -x /usr/lib/systemd/systemd-update-helper ] && [ -d /run/systemd/system ] \
     echo -e '[Unit]\nRefuseManualStop=true' > "/run/systemd/user/${unit}.d/boo1221405.conf"
   done
   touch /run/plasma-boo1221405-workaround
-  /usr/lib/systemd/systemd-update-helper user-reload
+  /usr/lib/systemd/systemd-update-helper user-reload || :
 fi
 
 %ldconfig_scriptlets -n libPlasma6
@@ -196,7 +196,7 @@ fi
 # Remove the temporary dropin files from pre again.
 if [ -e /run/plasma-boo1221405-workaround ]; then
   rm /run/systemd/user/plasma-*.service.d/boo1221405.conf
-  /usr/lib/systemd/systemd-update-helper user-reload
+  /usr/lib/systemd/systemd-update-helper user-reload || :
   rm /run/plasma-boo1221405-workaround
 fi
 

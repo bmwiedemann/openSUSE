@@ -275,4 +275,13 @@
     <comment></comment>
     <requestid>1223760</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>b729cfef86e3a0f27a229fb2619f0560</srcmd5>
+    <version>4.0.2</version>
+    <time>1736676842</time>
+    <user>anag+factory</user>
+    <comment>- Build doc package just for tumbleweed to remove
+  pydata-sphinx-theme requirement</comment>
+    <requestid>1236160</requestid>
+  </revision>
 </revisionlist>

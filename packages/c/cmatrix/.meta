@@ -1,0 +1,7 @@
+<package name="cmatrix" project="openSUSE:Factory">
+  <title>The Console Screensaver in Accordance with Matrix</title>
+  <description>The console screensaver in accordance with Matrix.
+</description>
+  <devel project="utilities" package="cmatrix"/>
+  <url>http://www.asty.org/cmatrix/</url>
+</package>

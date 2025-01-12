@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>1229610</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>149ce4706ed3a348abda32d77b22cbb8</srcmd5>
+    <version>1.1.0</version>
+    <time>1736677312</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * docs: fix README badges
+  * feat(python): bump versions
+  * build: update bindings
+  * feat: add statement to supertypes
+  * chore: regenerate (forwarded request 1236955 from rrahl0)</comment>
+    <requestid>1236956</requestid>
+  </revision>
 </revisionlist>

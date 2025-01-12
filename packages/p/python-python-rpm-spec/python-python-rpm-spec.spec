@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rpm-spec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-rpm-spec
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Python module for parsing RPM spec files
 License:        MIT

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan  9 08:39:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.1.8
+  * Fix an issue with type hints for ``click.open_file()``. :issue:`2717`
+  * Fix issue where error message for invalid ``click.Path`` displays on
+    multiple lines. :issue:`2697`
+  * Fixed issue that prevented a default value of ``""`` from being displayed in
+    the help for an option. :issue:`2500`
+  * The test runner handles stripping color consistently on Windows.
+    :issue:`2705`
+  * Show correct value for flag default when using ``default_map``.
+    :issue:`2632`
+  * Fix ``click.echo(color=...)`` passing ``color`` to coloroma so it can be
+    forced on Windows. :issue:`2606`.
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Sep  7 10:58:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.1.7:

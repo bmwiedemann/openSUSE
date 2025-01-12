@@ -29,6 +29,7 @@ Version:        5.1.5
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          System/Localization
 URL:            https://github.com/fcitx/fcitx5-unikey
 Source:         https://download.fcitx-im.org/fcitx5/%{sname}/%{sname}-%{version}.tar.zst
 BuildRequires:  cmake
@@ -65,7 +66,11 @@ Chewing Wrapper for Fcitx5.
 %cmake -DUSE_QT6=OFF
 %endif
 %if "%{flavor}" == "qt6"
+%if 0%{?suse_version} == 1500
+%cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-13
+%else
 %cmake
+%endif
 %endif
 %make_build
 
@@ -82,8 +87,8 @@ Chewing Wrapper for Fcitx5.
 %{_fcitx5_qt5dir}/libfcitx5-unikey-macro-editor.so
 %endif
 %if "%{flavor}" == "qt6"
-%{_fcitx5_qt6dir}/libfcitx5-unikey-keymap-editor.so
-%{_fcitx5_qt6dir}/libfcitx5-unikey-macro-editor.so
+%{_libdir}/fcitx5/qt6/libfcitx5-unikey-keymap-editor.so
+%{_libdir}/fcitx5/qt6/libfcitx5-unikey-macro-editor.so
 %endif
 %{_fcitx5_addondir}/unikey.conf
 %{_fcitx5_imconfdir}/unikey.conf

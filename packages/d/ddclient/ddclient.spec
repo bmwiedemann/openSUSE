@@ -1,7 +1,7 @@
 #
 # spec file for package ddclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,15 +37,15 @@ BuildRequires:  curl
 BuildRequires:  make
 BuildRequires:  sysuser-tools
 BuildRequires:  perl(HTTP::Daemon)
+%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
 BuildRequires:  perl(HTTP::Message::PSGI)
-BuildRequires:  perl(IO::Socket::SSL)
+%endif
 BuildRequires:  perl(Test::MockModule)
 BuildRequires:  perl(Test::Warnings)
 Requires:       curl
 Requires:       perl >= 5.10.1
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
-Recommends:     perl-IO-Socket-SSL
 BuildArch:      noarch
 %{?systemd_requires}
 %sysusers_requires

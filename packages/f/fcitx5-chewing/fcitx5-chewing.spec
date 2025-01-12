@@ -32,7 +32,6 @@ BuildRequires:  libchewing-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zstd
 Requires:       chewing-data
-Requires:       chewing-utils
 Requires:       fcitx5
 Provides:       fcitx-chewing = %{version}
 Obsoletes:      fcitx-chewing < %{version}

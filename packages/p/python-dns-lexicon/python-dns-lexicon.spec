@@ -1,7 +1,7 @@
 #
 # spec file for package python-dns-lexicon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dns-lexicon
-Version:        3.17.0
+Version:        3.20.1
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT
 URL:            https://github.com/AnalogJ/lexicon
-Source0:        https://github.com/AnalogJ/lexicon/archive/v%{version}.tar.gz#/lexicon-%{version}.tar.gz
+Source:         https://github.com/dns-lexicon/dns-lexicon/archive/refs/tags/v%{version}.tar.gz#/dns-lexicon-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Python build system requirements
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 # /SECTION
@@ -35,7 +36,6 @@ BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module PyYAML >= 3}
 BuildRequires:  %{python_module beautifulsoup4 >= 4}
 BuildRequires:  %{python_module cryptography >= 3}
-BuildRequires:  %{python_module importlib-metadata >= 4.6}
 BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module requests >= 2}
 BuildRequires:  %{python_module tldextract >= 2}
@@ -59,12 +59,11 @@ Requires:       python-PyYAML >= 3
 Requires:       python-beautifulsoup4 >= 4
 Requires:       python-cryptography >= 2
 Requires:       python-dnspython >= 2
-Requires:       python-importlib-metadata >= 4.6
 Requires:       python-pyotp
 Requires:       python-requests >= 2
 Requires:       python-tldextract >= 2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-boto3 >= 1.28
 Recommends:     python-localzone >= 0.9.8
 Recommends:     python-oci >= 2
@@ -83,7 +82,7 @@ Python library.
 Lexicon was designed to be used in automation, specifically letsencrypt.
 
 %prep
-%autosetup -p1 -n lexicon-%{version}
+%autosetup -p1 -n dns-lexicon-%{version}
 # rpmlint
 find . -type f -name ".gitignore" -delete
 
@@ -102,6 +101,7 @@ ignoretests="--ignore tests/providers/test_auto.py"
 ignoretests="$ignoretests --ignore tests/providers/test_oci.py"
 # test_namecheap has invalid vcr casettes, attempts to update them failed
 ignoretests="$ignoretests --ignore tests/providers/test_namecheap.py"
+ignoretests="$ignoretests --ignore tests/providers/test_godaddy.py"
 %pytest tests $ignoretests -x
 
 %post

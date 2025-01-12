@@ -19,28 +19,24 @@
 %define plainpython python
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
-%define pep440version 6.8.0.dev2410061818
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        6.8.0~dev2410061818
+Version:        6.8.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-#Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%%{version}.tar.gz
-# The URL will be dead soon, don't bother including it
-# https://www.riverbankcomputing.com/pypi/packages/PyQt6/PyQt6-%{version}.tar.gz
-Source:         PyQt6-%{pep440version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt6.
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
 BuildRequires:  %{python_module PyQt6-sip >= 13.8}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
-BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module pyqt-builder >= 1.15}
-BuildRequires:  %{python_module sip-devel >= 6.8}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module pyqt-builder >= 1.17}
+BuildRequires:  %{python_module sip-devel >= 6.9}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -180,7 +176,7 @@ PyQt is a set of Python bindings for the Qt framework.
 This package contains programming examples for PyQt6.
 
 %prep
-%autosetup -p1 -n PyQt6-%{pep440version}
+%autosetup -p1 -n PyQt6-%{version}
 dos2unix examples/quick/models/*/view.qml
 dos2unix examples/multimedia*/*/*.ui
 
@@ -206,7 +202,7 @@ dos2unix examples/multimedia*/*/*.ui
 export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
 %{python_expand # there is no test suite. If it compiles and imports, it should be okay.
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{pep440version}"'
+$python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{version}"'
 }
 
 %post devel
@@ -219,7 +215,7 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{pep44
 %license LICENSE
 %doc README.md NEWS ChangeLog
 %{python_sitearch}/PyQt6/
-%{python_sitearch}/PyQt6-%{pep440version}.dist-info/
+%{python_sitearch}/PyQt6-%{version}.dist-info/
 %dir %{python_sitelib}/dbus
 %dir %{python_sitelib}/dbus/mainloop
 %{python_sitelib}/dbus/mainloop/pyqt6.py

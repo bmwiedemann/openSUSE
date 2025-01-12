@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:16:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.7
+  * fix: Fail on unmatched tags.
+- from version 0.6.6
+  * Update README to match supported versions.
+  * Update pre-commit.
+  * Update pyproject.toml with 3.12 and 3.13 Python versions.
+  * Update tox config to use Python 3.12 and 3.13 versions.
+  * Update yml files with Python 3.12 and 3.13.
+  * Update changelog for v0.6.5 a bit belatedly.
+
+-------------------------------------------------------------------
 Tue Jan  2 21:19:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.5:

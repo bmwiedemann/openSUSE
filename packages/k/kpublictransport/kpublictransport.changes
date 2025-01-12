@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Fix determining station name for arrival queries
+  * Add support for DB's proxied Hafas API
+  * Namespace Hafas identifiers for locations
+  * Make Hafas remark metadata externally accessible
+  * Isolate test from cached data on the host
+  * Factor out Hafas load level parsing
+  * Add Hafas location identifier parser
+  * Adapt to changes in the MOTIS v2 vehicle parking modes
+  * Ensure WALK is always in the access/egress modes for MOTIS v2 requests
+  * Adapt to MOTIS v2 rental vehicle form factor API changes
+  * Improve merging of features with conditional/limited availability
+  * Propagate disruption effects when setting arrival/departure stopovers
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

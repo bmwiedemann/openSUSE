@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           skanlite
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Image Scanner Application
 License:        LGPL-2.1-or-later

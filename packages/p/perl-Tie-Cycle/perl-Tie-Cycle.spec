@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tie-Cycle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Tie-Cycle
 Name:           perl-Tie-Cycle
-Version:        1.228.0
+Version:        1.229.0
 Release:        0
-%define cpan_version 1.228
+# 1.229 -> normalize -> 1.229.0
+%define cpan_version 1.229
 License:        Artistic-2.0
 Summary:        Cycle through a list of values via a scalar
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -68,7 +69,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md examples
+%doc Changes CONTRIBUTING.md examples SECURITY.md
 %license LICENSE
 
 %changelog

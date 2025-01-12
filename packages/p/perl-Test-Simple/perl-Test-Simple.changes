@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 28 05:33:39 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302207
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302207  2024-12-27 18:13:18-08:00 America/Los_Angeles
+      - Fix debugging info when JSON::MaybeXS is missing (Thanks James E Keenan)
+      - Fix typos (Thanks sobrado8086)
+      - Add TEST2_ENABLE_PLUGINS env var
+      - Add Test2::Env docs
+  1.302206  2024-12-19 17:51:07-08:00 America/Los_Angeles
+      - Remove Test::Builder::IO::Scalar
+      - Fix #1016
+  1.302205  2024-12-19 09:28:05-08:00 America/Los_Angeles
+      - Use our instead of 'use vars'
+      - Fix $[ usage
+      - Doc updates
+  1.302204  2024-09-14 10:32:25-07:00 America/Los_Angeles
+      - Add pending diagnostics functionality
+      - Show warnings/exceptions for no_warnings() and lives()
+  1.302203  2024-09-04 16:15:07-07:00 America/Los_Angeles
+      - Fix some tests when run on windows
+  1.302202  2024-09-02 16:27:17-07:00 America/Los_Angeles
+      - Add comment on how to make tables bigger, #931
+      - Typo fix
+
+-------------------------------------------------------------------
 Wed Aug 14 05:31:07 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302201

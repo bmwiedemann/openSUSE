@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jan 10 05:28:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.5.0:
+  * fix cisco ios show tacacs
+  * fix: Corrected Huawei VRP display_service-set_all template
+  * fix: Corrected Ubiquiti EdgeRouter show_ip_route template
+  * fix: Corrected Cisco IOS show_access-list template
+  * Add sros show lag port
+  * Fix Arista EOS show processes top once
+  * Alcatel aos show vlan port members
+  * added template for Alcatel AOS: show chassis
+  * Adding new template for Alcatel aos: show system
+  * New template Alcatel AOS: show mac-address-table
+  * Created cisco_xr_show_bgp_vrf_all_neighbors_advertised-routes.textfsm
+  * New template Alcatel AOS: show port-security
+  * Add: mikrotik_routeros_routing_ospf_interface_print_terse
+  * feat: Add show_port_description for alcatel_sros
+  * feat: Add show service service-using
+  * feat: Add show service id sap
+  * Consolidate and add extra VRF to XR BGP neighbors
+  * Enhancements to index and alcatel_aos_show_mac
+  * fix: Bring port_id inline with other templates (allow satelites
+    for interface)
+  * cisco_ios_show_platform, only for switches
+  * asa-vpn-l2l allow for empty connection
+  * Update extreme_exos_show_iparp to support output format change
+  * Fix empty line strings to have end-of-line match
+  * New Template Alcatel AOS: show interfaces status
+  * New template for Alcatel AOS: show lldp remote-system
+  * Fix: mikrotik_routeros_ip_address_print
+  * fix: Also take into account satellite ports for show port description
+  * Updating command in Alcatel AOS: show vlan
+  * Added template for Alcatel AOS: show interfaces port
+  * updating the templates to add multiple PON ports
+  * Added template for Extreme EXOS show fdb
+- Correct version in pyproject.toml.
+- No longer any need to clean up LICENSE and README.
+
+-------------------------------------------------------------------
 Mon Nov  4 18:22:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.4.0

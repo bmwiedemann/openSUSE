@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Remove workaround for bug 494500 and add an assert
+  * Do not return QVector with an empty AltTrans (kde#494500)
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

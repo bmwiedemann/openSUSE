@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  7 05:33:07 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.90.0 (0.09)
+   see /usr/share/doc/packages/perl-ExtUtils-LibBuilder/Changes
+
+  0.09    Mon Jan  6 13:36:44 UTC 2025
+          - Added support to Haiku OS (thanks to Joachim Mairböc)
+
+-------------------------------------------------------------------
 Wed Oct 21 08:55:01 UTC 2015 - coolo@suse.com
 
 - updated to 0.08

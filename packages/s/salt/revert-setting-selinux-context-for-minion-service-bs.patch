@@ -1,0 +1,65 @@
+From 7217fccdce5df73fda1a8378dc7120642ffe8181 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 16 Dec 2024 15:31:26 +0300
+Subject: [PATCH] Revert setting SELinux context for minion service
+ (bsc#1233667)
+
+This reverts commit d933c8f0795fdada84a01a2cc754586fa720993d.
+---
+ pkg/common/salt-minion.service         | 1 -
+ pkg/old/deb/salt-minion.service        | 1 -
+ pkg/old/suse/salt-minion.service       | 1 -
+ pkg/old/suse/salt-minion.service.rhel7 | 1 -
+ 4 files changed, 4 deletions(-)
+
+diff --git a/pkg/common/salt-minion.service b/pkg/common/salt-minion.service
+index 696d0263c3..69aff18c58 100644
+--- a/pkg/common/salt-minion.service
++++ b/pkg/common/salt-minion.service
+@@ -9,7 +9,6 @@ Type=notify
+ NotifyAccess=all
+ LimitNOFILE=8192
+ ExecStart=/usr/bin/salt-minion
+-SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/old/deb/salt-minion.service b/pkg/old/deb/salt-minion.service
+index b0ad82c133..7e6cf14654 100644
+--- a/pkg/old/deb/salt-minion.service
++++ b/pkg/old/deb/salt-minion.service
+@@ -8,7 +8,6 @@ KillMode=process
+ NotifyAccess=all
+ LimitNOFILE=8192
+ ExecStart=/usr/bin/salt-minion
+-SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/old/suse/salt-minion.service b/pkg/old/suse/salt-minion.service
+index b99ef06352..12f28314cb 100644
+--- a/pkg/old/suse/salt-minion.service
++++ b/pkg/old/suse/salt-minion.service
+@@ -10,7 +10,6 @@ ExecStart=/usr/bin/salt-minion
+ KillMode=process
+ Restart=on-failure
+ RestartSec=15
+-SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/pkg/old/suse/salt-minion.service.rhel7 b/pkg/old/suse/salt-minion.service.rhel7
+index 92cc66d32f..6917267714 100644
+--- a/pkg/old/suse/salt-minion.service.rhel7
++++ b/pkg/old/suse/salt-minion.service.rhel7
+@@ -9,7 +9,6 @@ ExecStart=/usr/bin/salt-minion
+ KillMode=process
+ Restart=on-failure
+ RestartSec=15
+-SELinuxContext=system_u:system_r:unconfined_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.47.1
+

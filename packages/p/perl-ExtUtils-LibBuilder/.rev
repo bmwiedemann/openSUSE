@@ -61,4 +61,15 @@
     <comment>1</comment>
     <requestid>340341</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>19b459a8fc61f960fa81dde7740f4e00</srcmd5>
+    <version>0.90.0</version>
+    <time>1736676521</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.90.0 (0.09)
+   see /usr/share/doc/packages/perl-ExtUtils-LibBuilder/Changes
+  0.09    
+          - Added support to Haiku OS (thanks to Joachim Mairböc) (forwarded request 1236708 from tinita)</comment>
+    <requestid>1236817</requestid>
+  </revision>
 </revisionlist>

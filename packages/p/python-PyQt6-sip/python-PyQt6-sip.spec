@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQt6-sip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-sip
-Version:        13.8.0
+Version:        13.9.1
 Release:        0
 Summary:        The sip module support for PyQt6
 License:        BSD-2-Clause AND SUSE-SIP
-URL:            https://www.riverbankcomputing.com/software/sip/
-Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/PyQt6_sip-%{version}.tar.gz
+URL:            https://github.com/Python-SIP/sip
+Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/pyqt6_sip-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +43,7 @@ can also be used write self contained extension modules, i.e.
 without a library to be wrapped.
 
 %prep
-%autosetup -p1 -n PyQt6_sip-%{version}
+%autosetup -p1 -n pyqt6_sip-%{version}
 
 %build
 export CFLAGS="%{optflags}"

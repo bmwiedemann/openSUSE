@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 10 10:53:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.1
+  * Add Python 3.13 support
+  * Minimum required python to be 3.9
+
+-------------------------------------------------------------------
 Thu Dec 14 20:51:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Jan 10 18:40:14 UTC 2025 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Add %pre hook
+- Get rid of unneeded attack surface
+- Comply with logrotate config naming convention
+
+-------------------------------------------------------------------
+Tue Dec 31 14:16:38 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Add initial below package

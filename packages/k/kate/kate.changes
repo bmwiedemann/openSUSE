@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:52:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * snapcraft: Bring in fixes from release/24.08
+  * Build plugin: Add the <pre> tag to all lines
+
+-------------------------------------------------------------------
 Thu Dec 26 20:20:14 UTC 2024 - Petr Vanek <petr@yarpen.cz>
 
 - new Qt keychain dependency to re-enable SQL plugin build

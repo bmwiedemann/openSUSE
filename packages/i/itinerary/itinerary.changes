@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:52:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Ignore cancelled elements when determining weather forecast length
+  * TripGroupPage: Add separator in first FormCard
+  * Override instead of merge destination names when applying new journeys (kde#474096)
+  * Fix adding DST info elements in single trip group mode
+  * Fix crash on importing health certificates
+  * Use FormCardButton in SheetDrawer
+  * Optimize CountryComboBox
+  * Allow to add transfers in more cases
+  * Unify checks for *.itinerary files
+  * Don't show the welcome page again when there's already a trip group
+  * Reduce Appium reservation test even more aggressively in 24.12
+  * Make Appium reservationtest reliably pass again
+  * Exclude FluentWinUI3 QtQuick Controls style from the APK as well
+  * Exclude unused Qt translation catalogs
+  * Build release packages against released dependencies
+  * Improve look of RadioSelector
+  * Remove useless spacing
+
+-------------------------------------------------------------------
 Sun Dec  8 09:27:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

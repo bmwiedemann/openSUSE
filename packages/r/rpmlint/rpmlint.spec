@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.6.1+git20241206.0bc429f2
+Version:        2.6.1+git20250109.dfc27180
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later

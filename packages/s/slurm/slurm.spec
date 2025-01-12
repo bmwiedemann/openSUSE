@@ -852,7 +852,12 @@ filelist="$(grep '#include' *.c | sed -ne 's/.*:#include *\"\([^\"]*\)\".*/\1/p'
 while true; do
     oldfilelist=$filelist; tlist=""
     for i in $filelist; do
-        nlist=" $(grep '#include' ../../$i | sed -ne 's/#include *\"\([^\"]*\)\".*/\1/p')"
+        nlist=" $(grep '#include' ../../$i | sed -ne 's@#include *\"\([^\"]*\)\".*@\1@p')"
+        tlist+=" $(for j in $nlist; do [ -e ../../$j ] && echo $j || true; done)"
+    done
+    # Cater for erroneous: `#include <src/[slurm_internal_header]>`
+    for i in $filelist; do
+        nlist=" $(grep '#include' ../../$i | sed -ne 's@#include *<\(src/\)\([^>]*\)>.*@\1\2@p')"
         tlist+=" $(for j in $nlist; do [ -e ../../$j ] && echo $j || true; done)"
     done
     filelist="$(for i in $filelist $tlist; do echo $i; done | sort | uniq)"

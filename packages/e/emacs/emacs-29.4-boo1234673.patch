@@ -1,0 +1,27 @@
+https://emacs.stackexchange.com/questions/82010/why-is-emacs-recompiling-some-packages-on-every-startup
+
+---
+ lisp/emacs-lisp/comp.el |   12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+--- lisp/emacs-lisp/comp.el
++++ lisp/emacs-lisp/comp.el	2025-01-09 09:34:45.706219439 +0000
+@@ -4177,6 +4177,18 @@ LOAD and SELECTOR work as described in `
+            (cl-some (lambda (re)
+                       (string-match-p re file))
+                     native-comp-jit-compilation-deny-list))))
++;; SUSE boo#1234673 -- Emacs freeze for a few seconds when opening any python file, with 100% Xorg usage
++(defun fixed-native-compile-async-skip-p
++        (native-compile-async-skip-p file load selector)
++    (let* ((naive-elc-file (file-name-with-extension file "elc"))
++           (elc-file       (replace-regexp-in-string
++                               "\\.el\\.elc$" ".elc" naive-elc-file)))
++        (or (gethash elc-file comp--no-native-compile)
++            (funcall native-compile-async-skip-p file load selector))))
++
++(advice-add 'native-compile-async-skip-p
++    :around 'fixed-native-compile-async-skip-p)
++;; SUSE boo#1234673 -- end
+ 
+ (defun native--compile-async (files &optional recursively load selector)
+   ;; BEWARE, this function is also called directly from C.

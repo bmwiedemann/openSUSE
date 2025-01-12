@@ -1,7 +1,7 @@
 #
 # spec file for package python-fabio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define pyversion 2024.4.0
+%define pyversion 2024.9.0
 Name:           python-fabio
-Version:        2024.4
+Version:        2024.9.0
 Release:        0
 Summary:        Image IO for images produced by 2D X-ray detectors
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -26,10 +26,13 @@ URL:            https://github.com/silx-kit/fabio
 Source:         https://github.com/silx-kit/fabio/archive/v%{version}.tar.gz#/fabio-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module hdf5plugin}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module matplotlib-qt}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module meson-python >= 0.11}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
@@ -45,6 +48,8 @@ Requires:       python-h5py
 Requires:       python-hdf5plugin
 Requires:       python-lxml
 Requires:       python-numpy
+Recommends:     python-PyQt5
+Recommends:     python-matplotlib
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # This package does not support 32 bit arch.
@@ -69,6 +74,7 @@ find src -name '*.py' -and ! -path src/fabio/_version.py -exec sed -i '1{/^#!/d}
 %python_clone -a %{buildroot}%{_bindir}/fabio_viewer
 %python_clone -a %{buildroot}%{_bindir}/eiger2cbf
 %python_clone -a %{buildroot}%{_bindir}/eiger2crysalis
+%python_clone -a %{buildroot}%{_bindir}/hdf2neggia
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # the master/slave names have changed, we need to uninstall the old set before installing any new flavor
@@ -76,7 +82,7 @@ find src -name '*.py' -and ! -path src/fabio/_version.py -exec sed -i '1{/^#!/d}
 %python_uninstall_alternative densify-Bragg
 
 %post
-%python_install_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis densify_Bragg
+%python_install_alternative fabio-convert fabio_viewer eiger2cbf eiger2crysalis densify_Bragg hdf2neggia
 
 %postun
 %python_uninstall_alternative fabio-convert
@@ -90,6 +96,7 @@ $python ./run_tests.py --installed -v
 %files %{python_files}
 %doc README.rst
 %license copyright
+%python_alternative %{_bindir}/hdf2neggia
 %python_alternative %{_bindir}/densify_Bragg
 %python_alternative %{_bindir}/fabio-convert
 %python_alternative %{_bindir}/fabio_viewer

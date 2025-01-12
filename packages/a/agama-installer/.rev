@@ -57,4 +57,38 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1225294</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>40fba7edb32c7671b1ba88f0162d856e</srcmd5>
+    <version>10.0.0</version>
+    <time>1736677295</time>
+    <user>anag+factory</user>
+    <comment>- Depend on Ruby's default version (gh#agama-project/agama#1872).
+
+- Make agama kernel cmdline options available in the sysroot at
+  /etc/agama.d/cmdline.conf and set it as a EnvironmentFile
+  in Agama related services (gh#agama-project/agama#1866).
+
+- Updated config.sh to enable agama-dbus-monitor service
+  (gh#agama-project/agama#1824).
+
+- Fixed missing firmware for some drivers (gh#agama-project/agama#1756)
+  - Support wildcards (&quot;*&quot;) in the references firmware files
+  - Handle symbolic links
+
+- Drop unneeded packages (gh#agama-project/agama#1805):
+  - xf86-video-* are obsoleted by the modesetting driver.
+  - xf86-input-wacom is obsoleted by libinput.
+
+- Use the installation-images config file for removing the kernel
+  drivers, it deletes even more not needed drivers and it is
+  a reliable source (related to gh#agama-project/agama#1665)
+- The ISO size decreased by ~40MB
+
+- Less aggressive kernel driver cleanup, keep the multimedia
+  drivers which are needed as dependencies of other drivers
+  (usually graphic card drivers) (gh#agama-project/agama#1665)
+
+  (gh#openSUSE/agama#1593)</comment>
+    <requestid>1236915</requestid>
+  </revision>
 </revisionlist>

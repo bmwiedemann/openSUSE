@@ -1557,4 +1557,25 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1229136</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f50c58c86598c47ce4a0c109acca8704</srcmd5>
+    <version>1.2.4</version>
+    <time>1736677214</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.4
+  + Bugfixes:
+   + Fixed Spotify songs not being available for scrobbling.
+   + Fixed leading &quot;A&quot; and &quot;The&quot; articles being skipped for album sort text.
+   + Fixed thread safety issue when validating playlist songs on startup.
+   + Fixed filter search not ignoring space after colon when using column based search.
+   + Fixed KGlobalAccel to use capitalized application name.
+   + Fixed slash not properly handled when saving a playlist (#1624).
+   + (Unix) Fixed collection scanner so it ignores special filesystem paths (/sys, /proc, /run, etc) (#1615).
+  + Enhancements:
+   + Use XSPF &quot;title&quot; as playlist name when loading and saving playlists (#1624).
+   + Added support for using album ID when receving album covers for Subsonic songs (#1636).
+   + Added option for preserving directory structure when trascoding songs (#1637).
+</comment>
+    <requestid>1236757</requestid>
+  </revision>
 </revisionlist>

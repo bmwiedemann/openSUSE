@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  9 19:28:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.1.0:
+  * docs: fix README badges
+  * feat(python): bump versions
+  * build: update bindings
+  * feat: add statement to supertypes
+  * chore: regenerate
+
+-------------------------------------------------------------------
 Thu Dec  5 00:56:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

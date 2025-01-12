@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>281cb908df3b859bfb6b0bd0804bf5ab</srcmd5>
+    <version>1.0.8</version>
+    <time>1736676892</time>
+    <user>anag+factory</user>
+    <comment>
+
+This package contains pluggable CPU schedulers from the sched-ext project (https://github.com/sched-ext/scx) as well as development files to develop new custom schedulers in the scx-devel subpackage.
+
+Me, Giovanni Gherdovich (ggherdovich) and Shung-Hsi Yu (shunghsiyu) would like to maintain this in Factory.
+
+There is a wiki-page describing the provided schedulers and usage here: https://en.opensuse.org/Pluggable_CPU_schedulers
+
+This version excludes the scx_loader service because of the dbus lints that failed the previous request and reworks the changelog to be more in line with the openSUSE guidelines.
+
+Looking forward to any feedback!</comment>
+    <requestid>1236851</requestid>
+  </revision>
+</revisionlist>

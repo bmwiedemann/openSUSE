@@ -1,7 +1,7 @@
 #
 # spec file for package yq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,14 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.44.3
+Version:        4.44.6
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT
 URL:            https://github.com/mikefarah/yq
 Source0:        https://github.com/mikefarah/yq/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch0:         Bump-golang.org-x-net-from-0.32.0-to-0.33.0.patch
 # conflict with all python3X-yq packages since they install /usr/bin/yq
 # we need to handle Leap 15.4 specially since the python3dist() is not
 # generated there
@@ -71,7 +72,7 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%setup -qa1
+%autosetup -p1 -a1
 
 %build
 go build -trimpath -buildmode=pie -mod=vendor -o bin/%{name}

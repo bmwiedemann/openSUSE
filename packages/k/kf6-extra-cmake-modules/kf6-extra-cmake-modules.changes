@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:17:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.10.0
+- Changes since 6.9.0:
+  * Make building docs optional
+  * Add since documentation
+  * ECMAddAndroidApk: add "PACKAGE_NAME" argument
+  * ECMGenerateHeaders: set IWYU export pragma also for helper prefixed headers
+  * Also allow to disable the nasty Android threads workaround via env vars
+  * ECMGenerateHeaders: Set include-what-you-use pragma
+  * Simplify moving QM catalog loading to the main thread
+  * Update version to 6.10.0
+
+-------------------------------------------------------------------
 Sun Dec  8 10:09:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0

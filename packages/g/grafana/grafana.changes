@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:27:35 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2024-45337: Prevent possible misuse of
+  ServerConfig.PublicKeyCallback by upgrading golang.org/x/crypto
+  (bsc#1234554)
+  * Add 0004-Bump-crypto.patch
+
+-------------------------------------------------------------------
 Wed Nov 13 11:07:08 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Disable changelog autogeneration.

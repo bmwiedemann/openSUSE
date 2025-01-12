@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%ifarch %{ix86} x86_64 aarch64 riscv64 s390x ppc64le
+%ifarch %{ix86} x86_64 %{arm} aarch64 riscv64
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        1.9.25
+Version:        1.9.27
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -137,7 +137,9 @@ Requires:       shim >= 11
 Requires:       udisks2
 %endif
 %endif
-Requires:       (fwupd-efi if shim)
+%if %{with efi_fw_update}
+Requires:       fwupd-efi
+%endif
 
 %description
 fwupd is a daemon to allows session software to update device firmware on

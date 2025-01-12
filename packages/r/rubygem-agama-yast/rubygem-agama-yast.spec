@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-agama-yast
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        10.devel489
+Version:        11.devel1
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}

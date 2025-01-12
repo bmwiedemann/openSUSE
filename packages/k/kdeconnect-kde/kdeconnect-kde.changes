@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:52:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * plugins/findthisdevice: fix broken qml config page
+  * [kio] Don't query mountpoint twice
+  * [kio] Handle error when getting mount point
+  * Add icons to the app plugin config list
+
+-------------------------------------------------------------------
 Sun Dec  8 09:27:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

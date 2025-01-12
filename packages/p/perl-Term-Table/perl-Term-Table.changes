@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec 28 05:33:11 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.024
+   see /usr/share/doc/packages/perl-Term-Table/Changes
+
+  0.024     2024-12-27 18:52:06-08:00 America/Los_Angeles
+      - Additional changes to t/honor_env_in_non_tty.t, and adding debugging
+  0.023     2024-10-26 20:30:20-07:00 America/Los_Angeles
+      - t/honor_env_in_non_tty.t requires Test2::Tools::Tiny >= 1.30297;
+        use Test::More if not available
+  0.022     2024-08-06 11:40:22-07:00 America/Los_Angeles
+      - Some initial support for non-ASCII systems
+  0.021     2024-08-06 10:37:21-07:00 America/Los_Angeles
+      - Fix warnings in HashBase.t
+  0.020     2024-08-05 07:11:23-07:00 America/Los_Angeles
+      - Fix test broken on Test::More
+  0.019     2024-08-05 07:07:59-07:00 America/Los_Angeles
+      - Fix use cycle between Test-Simple and Term::Table now that Test2::Suite was merged into Test-Simple
+
+-------------------------------------------------------------------
 Fri Mar  8 23:05:06 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

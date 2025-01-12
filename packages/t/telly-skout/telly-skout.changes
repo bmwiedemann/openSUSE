@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:54:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Add 24.12.1 release description
+  * TV Spielfilm fetcher: fix fetching of channels
+  * Fix loading placeholder when loading channels
+  * "Favorites" page: do not show refetch button while loading
+  * TV Spielfilm fetcher: use i18n placeholders for description
+  * TV Spielfilm fetcher: fix description with multiple paragraphs
+  * TV Spielfilm fetcher: fix description with multiple names for one role
+  * Speed up program description update (kde#497954)
+  * "Favorites" page: wrap header (kde#497747)
+  * TV Spielfilm fetcher: fix program stop time before start time (kde#497738)
+  * "Favorites" page: add refetch button (kde#497598)
+  * "Favorites" page: fix placeholder message not shown
+  * Set loading percentage to 100% if there are no favorites
+  * Fix Linux CI build for GCC < 14
+  * Fix Linux CI build
+  * Fix spacing in ChannelTableDelegate
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

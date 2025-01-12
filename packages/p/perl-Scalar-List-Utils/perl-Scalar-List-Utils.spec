@@ -18,10 +18,10 @@
 
 %define cpan_name Scalar-List-Utils
 Name:           perl-Scalar-List-Utils
-Version:        1.650.0
+Version:        1.680.0
 Release:        0
-# 1.65 -> normalize -> 1.650.0
-%define cpan_version 1.65
+# 1.68 -> normalize -> 1.680.0
+%define cpan_version 1.68
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Common Scalar and List utility subroutines
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,10 +29,17 @@ Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(List::Util) = 1.68
+Provides:       perl(List::Util::XS) = 1.68
+Provides:       perl(Scalar::List::Utils) = %{version}
+Provides:       perl(Scalar::Util) = 1.68
+Provides:       perl(Sub::Util) = 1.68
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-Common Scalar and List utility subroutines
+'Scalar::List::Utils' does nothing on its own. It is packaged with several
+useful modules.
 
 %prep
 %autosetup  -n %{cpan_name}-%{cpan_version}

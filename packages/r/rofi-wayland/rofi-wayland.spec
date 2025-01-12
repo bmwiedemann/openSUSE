@@ -1,7 +1,7 @@
 #
 # spec file for package rofi-wayland
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rofi-wayland
-Version:        1.7.5+wayland3+git.1709656676.1c41373
+Version:        1.7.7+wayland1+git.1736252691.5df2d3a
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
@@ -35,6 +35,7 @@ BuildRequires:  librsvg-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  meson
+BuildRequires:  pandoc
 BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  startup-notification-devel
@@ -86,6 +87,7 @@ sed -i '1s,%{_bindir}/env bash,/bin/bash,' script/rofi-sensible-terminal \
 %{_mandir}/man5/rofi-keys.5%{?ext_man}
 %{_mandir}/man5/rofi-script.5%{?ext_man}
 %{_mandir}/man5/rofi-theme.5%{?ext_man}
+%{_mandir}/man5/rofi-thumbnails.5%{?ext_man}
 
 %files devel
 %{_includedir}/rofi/

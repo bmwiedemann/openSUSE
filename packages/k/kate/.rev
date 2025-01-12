@@ -1432,4 +1432,12 @@
     <comment>- new Qt keychain dependency to re-enable SQL plugin build</comment>
     <requestid>1233466</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>4a5b5d4c65068c0032b60a02c702afd2</srcmd5>
+    <version>24.12.1</version>
+    <time>1736676706</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.12.1 (forwarded request 1235746 from krop)</comment>
+    <requestid>1236433</requestid>
+  </revision>
 </revisionlist>

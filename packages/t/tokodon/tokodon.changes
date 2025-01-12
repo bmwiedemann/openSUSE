@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:54:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Fix interacting with grouped notifications
+  * Fix typo in NotificationPage
+  * Improve the "More" menu on the notifications page
+  * Improve the cross-account action dialog
+  * Don't allow managing following/followers of other accounts
+  * Don't show the navigation tab bar when loading (kde#497920)
+  * Fix the width of the content notice
+  * Don't call Q_UNREACHABLE in NotificationHandler
+  * Fix copying link to clipboard
+  * Remove .craft.ini for 24.12
+  * Reduce the amount of required Android permissions
+  * ListsPage: Fix undefined warning
+  * Load cross action prompt asynchronously
+  * Load the cute elephant mascot asynchronously
+  * Don't load the initial timeline twice
+  * Remove unused ReportDialog
+  * Inherit Item in AttachmentGrid instead of Control
+  * Fix runtime warning in firstAttachmentAspectRatio
+  * Don't create a content notice for every post
+  * Fix the safety page not doing much on mobile
+  * Fix opening the Settings page on the Welcome screen on mobile
+  * Pass TokodonApplication to the WelcomePage
+  * Reduce spacing of LinkPreview
+  * Reload the lists page when you delete a list
+  * Reload the lists page when you add a list
+  * Make sidebar scrollable on small screen
+  * Update Android Gradle plugin version to 8.6.0
+  * Fix sidebar being shifted by one pixel
+
+-------------------------------------------------------------------
 Sun Dec  8 09:28:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:02:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.5
+  * Add studio host
+  * Case-insensitively avoid duplicate attribute values
+  * Updated test expected values
+  * Add registrar_url for base entry
+  * Update expected samples
+  * This addresses #223 while trying to be backwards compatible
+    with the old format just in case ...
+  * Enhancements for .jp domains
+  * Fix exception
+  * Fix datetime.UTC, which doesn't work on all versions of Py3
+  * Update WhoisSg to address #222
+  * Adding a quick timeout option to whois.whois()
+  * Handle "before YYYY" entries to fix #228
+  * Standardize test assertions for sample files
+  * Create test case sample for .sg domain
+  * Update WhoisSG parser to grab status, updated_date, dnssec and ns
+  * Add .live domain server config and sample
+  * Move socket creation to external func, to reuse it in findwhois_iana with proxy
+  * Add parsing for .lv domains
+  * Added the "Reseller" field to the parser.
+  * tr domains not support idna encoded decoded whois requests
+  * Set request for tr domains without idna
+  * Quick fix for tr domain
+  * Add convert_punycode flag
+  * Remove .DS_Store
+  * Quick-fix
+  * Fix tests
+  * Update parser.py with created for .de
+- from version 0.9.4
+  * Complete the regex for parsing the WHOIS response results for .jp domains.
+  * Bump ci actions
+  * Fix regex for parsing .pl nameservers
+  * Update and rename README.rst to README.md
+  * Update README.md
+  * Added support for markdown in setup and bumped version
+  * Fixed .ru used correct nic server
+- Adjust upstream source name in spec file
+- Rename README.rst to README.md in %files section
+
+-------------------------------------------------------------------
 Sun Apr 21 08:12:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.3:

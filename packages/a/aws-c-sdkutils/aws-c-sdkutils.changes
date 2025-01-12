@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  9 10:39:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.2
+  * Switch CI to use Roles by @DmitriyMusatkin in (#49)
+  * Update Config File Parsing Logic to Parse Services
+    Section by @waahm7 in (#51)
+
+-------------------------------------------------------------------
 Tue Nov 12 12:50:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.1

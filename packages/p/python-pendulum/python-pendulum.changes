@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jan  8 09:27:19 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Exclude 32bit platforms: Fails to build with overflow errors
+
+-------------------------------------------------------------------
+Tue Jan  7 20:44:47 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Fix sources and revert to github tarball: tests missing
+
+-------------------------------------------------------------------
+Fri Jan  3 17:36:36 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to version 3.0.0
+   Added
+    * Added new testing helpers to time travel. #626
+    * Made instance() support all native types (date, time, datetime). #732
+   Changed
+    * Dropped support for Python 2.7, 3.5 and 3.6. #569
+    * The Timezone class now relies on the native zoneinfo.ZoneInfo class. #569
+    * Renamed the Period class to Interval. #676
+    * Renamed the period helper to interval. #676
+    * Removed existing testing helpers: test() and set_test_now(). #626
+    * Dropped support for Python 3.7. #734
+    * Rewrote extensions in Rust. #721
+    * Made day of week convention more consistent across the codebase. #731    
+    * Relaxed dependency constraints. #760
+    * The testing helpers are now optional and must be opted-in via the test extra. #778
+   Fixed
+    * Fixed datetime string representation to match the native library. #733
+    * Fixed issues on some system when retrieving the local timezone. #733
+    * Fixed DST handling in start_of()/end_of() methods. #713
+    * Removed remaining mentions of periods instead of intervals. #757
+    * Fixed the behavior of the week_of_month property for edge cases in January and December. #774
+    * Fixed the handling of the fold attribute when deep-copying a DateTime instance. #776
+    * Fixed errors where hours and days were not handled properly when adding durations. #775
+    * Fixed errors where hours and days were not handled properly when adding durations. #775
+   Locales
+    * Added the sk locale. #575
+    * Added the ja locale. #610
+    * Added the he locale. #585
+    * Added the sv locale. #562
+
+-------------------------------------------------------------------
 Sat Jun 10 17:44:54 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -24,4 +24,5 @@
     fi \
     %global jobs $([[ -n $_threads ]] && echo $_threads || echo "`/usr/bin/getconf _NPROCESSORS_ONLN`") \
     %global _smp_mflags $([[ -n $_threads ]] && echo "-j$_threads" || echo "-j`/usr/bin/getconf _NPROCESSORS_ONLN`") \
+    %global _smp_build_ncpus $([[ -n $_threads ]] && echo "$_threads" || echo "`/usr/bin/getconf _NPROCESSORS_ONLN`") \
     %{nil}

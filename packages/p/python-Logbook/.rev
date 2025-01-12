@@ -124,4 +124,12 @@
   * Added support for controlling rotating file names -- Logbook now allows users to</comment>
     <requestid>1131713</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>96c5d7dcf63e6873850accfd19a106c5</srcmd5>
+    <version>1.8.0</version>
+    <time>1736676848</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236167</requestid>
+  </revision>
 </revisionlist>

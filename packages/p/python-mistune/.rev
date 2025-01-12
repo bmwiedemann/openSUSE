@@ -196,4 +196,12 @@
 - Switch from nose to pytest</comment>
     <requestid>1127857</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>69d20d51f0122f8ec1070f40627c1607</srcmd5>
+    <version>3.1.0</version>
+    <time>1736676619</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236180</requestid>
+  </revision>
 </revisionlist>

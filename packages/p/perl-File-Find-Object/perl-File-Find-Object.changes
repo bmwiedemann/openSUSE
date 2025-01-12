@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:20:56 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.3.9
+   see /usr/share/doc/packages/perl-File-Find-Object/Changes
+
+  0.3.9       2024-12-11
+      - Avoid implicit symbol imports.
+          - https://perl-begin.org/tutorials/bad-elements/#non_explicitly_imported_symbols
+
+-------------------------------------------------------------------
 Sun Jul 23 03:06:20 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.3.8

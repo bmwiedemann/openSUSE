@@ -709,4 +709,12 @@ New stable rel</comment>
     <comment>GNOME 46 (forwarded request 1158302 from dimstar)</comment>
     <requestid>1159468</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>0f47145bbf578831a8841528e4650dd1</srcmd5>
+    <version>2.80.1</version>
+    <time>1736676622</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236226</requestid>
+  </revision>
 </revisionlist>

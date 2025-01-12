@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-kotlin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _name kotlin
 Name:           tree-sitter-kotlin
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Kotlin grammar for tree-sitter
 License:        MIT

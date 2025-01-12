@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:33:06 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.8.0
+  * Added support for Qt v6.8 (excluding any technical previews).
+  * Python enums are now handled correctly by Qt Designer (requires
+    Qt v6.8.1 or later).
+  * Implemented QtAudio as a synonym for QAudio.
+  * Added QWindow.setVulkanInstance(), QWindow.vulkanInstance(),
+    QVulkanExtension, QVulkanInstance and QVulkanLayer.
+  * Bug fixes.
+- Should fix boo#1234295
+
+-------------------------------------------------------------------
 Fri Nov  8 08:57:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185

@@ -1,7 +1,7 @@
 #
 # spec file for package blame
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define origversion 1.4
-%define tversion t20240206
+%define tversion t20250101
 
 Name:           blame
 Version:        %{origversion}+%{tversion}

@@ -240,4 +240,12 @@
     <comment>- dnspython is not an optional requirement, bump it to Requires.</comment>
     <requestid>1132965</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>133345d8d2fadb6f16f6cf61e13dbd60</srcmd5>
+    <version>3.20.1</version>
+    <time>1736676851</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236174</requestid>
+  </revision>
 </revisionlist>

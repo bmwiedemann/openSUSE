@@ -18,7 +18,7 @@
 
 %define cpan_name Dancer2
 Name:           perl-Dancer2
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Lightweight yet powerful web application framework
@@ -29,7 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CLI::Osprey)
-BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.120620
+BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121
 BuildRequires:  perl(Capture::Tiny) >= 0.12
 BuildRequires:  perl(Clone)
 BuildRequires:  perl(Config::Any)
@@ -50,6 +50,7 @@ BuildRequires:  perl(JSON::MaybeXS)
 BuildRequires:  perl(List::Util) >= 1.29
 BuildRequires:  perl(MIME::Base64) >= 3.13
 BuildRequires:  perl(Module::Metadata)
+BuildRequires:  perl(Module::Pluggable)
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moo) >= 2.000000
 BuildRequires:  perl(Moo::Role)
@@ -88,6 +89,7 @@ Requires:       perl(Import::Into)
 Requires:       perl(JSON::MaybeXS)
 Requires:       perl(List::Util) >= 1.29
 Requires:       perl(MIME::Base64) >= 3.13
+Requires:       perl(Module::Pluggable)
 Requires:       perl(Module::Runtime)
 Requires:       perl(Moo) >= 2.000000
 Requires:       perl(Moo::Role)
@@ -117,7 +119,6 @@ Recommends:     perl(Math::Random::ISAAC::XS)
 Recommends:     perl(MooX::TypeTiny)
 Recommends:     perl(Pod::Simple::Search)
 Recommends:     perl(Pod::Simple::SimpleTree)
-Recommends:     perl(Scope::Upper)
 Recommends:     perl(Type::Tiny::XS)
 Recommends:     perl(URL::Encode::XS)
 Recommends:     perl(Unicode::UTF8)

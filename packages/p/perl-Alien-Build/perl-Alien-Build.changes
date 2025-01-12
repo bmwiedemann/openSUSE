@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:08:41 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.840.0 (2.84)
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.84      2024-10-28 18:51:39 -0600
+    - Added is_system_install and is_share_install methods to
+      Alien::Build (gh#418, gh#420, shawnlaffan++)
+    - Some comment and documentation spelling fixes (gh#250)
+
+-------------------------------------------------------------------
 Sun Jun 23 16:08:56 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 2.830.0 (2.83)

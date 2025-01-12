@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  9 13:29:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.2.0:
+  - Improved extension handling:
+  - Several new extensions are now supported, both for Fido2Client
+    and WindowsClient.
+  - Extension APIs have been redesigned, and old APIs have been
+    deprecated, slated for
+  - removal in version 2.0.
+    - Disable hmac-secret extension by default, preferring prf.
+  - Improved (de-)serialization of dataclasses to/from
+    JSON-friendly dicts.
+  - Fido2Client:
+    - Support allowCredentials/excludeCredentials of arbitrary
+      length.
+    - Handle PUAT_REQUIRED by re-attempting with PIN/UV.
+  - Allow localhost (and subdomains) to use http:// in RP ID
+    verification by default.
+  - NFC: Support for Authenticators that return SW=61XX on SELECT.
+  - USB: Improve connection recovery and use more specific
+    exceptions for errors.
+  - Fix: Handle residentKey=preferred properly.
+  - Fix: Handle Authentictors that do not pass extensions in
+    GetInfo.
+
+-------------------------------------------------------------------
 Tue May  7 16:26:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.3:

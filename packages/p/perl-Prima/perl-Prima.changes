@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 22 05:31:43 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.75
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.75 2024-12-21
+   - FrameSet: rename .arrangement to .vertical, remove .resizeMethod
+   - add Date,Time,KeySelector,FrameSet, and CheckList to VB
+   - s/dragable/draggable/g
+   - Grouped menu items use a distinct radio style check mark bitmap
+   - Support CPAL/COLR colored fonts
+   - Add the PopupButton class
+
+-------------------------------------------------------------------
 Tue Aug 20 05:30:44 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.74

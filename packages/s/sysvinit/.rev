@@ -1572,4 +1572,36 @@ So just for consistency. (forwarded request 875922 from lnussel)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219429</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>62b8e27e877557473a547f3674554332</srcmd5>
+    <version>3.13</version>
+    <time>1736676613</time>
+    <user>anag+factory</user>
+    <comment>- Update to sysvinit 3.31
+  * Adjusted manual page install location. Patch provided
+    by Mark Hindley.
+  sysvinit (3.12) released; urgency=low
+  * There were instances of the ctime() function being called in multiple files without
+    checking the return value (can be NULL) and without checking the length of the
+    returned information. While there _should_ never be a case where ctime() fails
+    assuming success and length of returned string isn't ideal (or future-proof).
+    We now check the return value of ctime() in bootlogd, dowall, last, logsave, and
+    shutdown. Where no valid value is returned we supply a dummy value (usually a
+    space in place of the expected time stamp). We also no longer assume returned string
+    is at least 11-16 characters.
+  * Re-commit flexible Makefile for GoboLinux.
+  * Make sure pty.h and sys/sysmacros.h are included when building bootlogd on
+    systems with glibc.
+  * Fixed typos and syntax in manual page for init.8.
+    Edits provided by : Bjarni Ingi Gislason.
+  * Allow setting of location of the /usr directory in src/Makefile.
+    This is handled by the usrdir variable.
+  * Make sure src/Makefile uses sysconfdir (/etc by default) when installing
+    configuration files.
+  * Fix typos and syntax in pidof manual page.
+- Port patches
+  * sysvinit-2.88dsf-suse.patch
+  * sysvinit-2.90.dif</comment>
+    <requestid>1236152</requestid>
+  </revision>
 </revisionlist>

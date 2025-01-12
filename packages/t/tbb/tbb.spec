@@ -34,7 +34,6 @@
 %bcond_with test
 
 %if 0%{suse_version} >= 1500
-%{?!python_module:%define python_module() python3-%{**}}
 %bcond_without python3
 %define skip_python2 1
 %else
@@ -59,6 +58,8 @@ BuildRequires:  hwloc-devel
 %if %{with python3}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 3.0.6
 %endif
@@ -225,7 +226,7 @@ cd ..
 # rebuild for every python flavor
 %if %{with python3}
 pushd python
-%python_build
+%pyproject_wheel
 popd
 %endif
 
@@ -238,8 +239,10 @@ source build/*/vars.sh
 
 %if %{with python3}
 pushd python
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%pyproject_install
+%{python_expand %fdupes %{buildroot}%{$python_sitearch}
+    rm -rfv %{buildroot}%{$python_sitearch}/TBB-%{version}*.egg
+}
 popd
 %endif
 
@@ -305,7 +308,6 @@ popd
 %files %{python_files %{name}}
 %{python_sitearch}/tbb
 %{python_sitearch}/TBB.py
-%{python_sitearch}/TBB-*py3*
 %{python_sitearch}/TBB-%{version}*-info
 %pycache_only %{python_sitearch}/__pycache__/TBB*
 %endif

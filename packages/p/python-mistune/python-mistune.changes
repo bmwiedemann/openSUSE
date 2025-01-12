@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:56:07 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 3.1.0:
+  * Add typing-extensions into dependencies  -  by @lepture (93fd1)
+  * Cleanup unused imports  -  by @lepture (6d046)
+  * Make typing-extension optional dependency  -  by @lepture (f7db5)
+  * Importing Self from typing_extensions  -  by @lepture (0772c)
+  * Only HTML-escape codespan in HTML render  -  by @mentalisttraceur (245c0)
+  * Only HTML-escape URLs when rendering to HTML  -  by @mentalisttraceur (f4237)
+  * Use correct importing for typing_extensions  -  by @lepture (4f91d) 
+
+-------------------------------------------------------------------
 Tue Nov 21 08:53:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add conflicts with python-mistune2

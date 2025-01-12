@@ -225,4 +225,12 @@ of Markdown.</comment>
   * [pull #587] Fix AssertionError on malformed HTML</comment>
     <requestid>1219195</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bb1989cb392ad9bc1e62050bbb76f2bc</srcmd5>
+    <version>2.5.2</version>
+    <time>1736677244</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236810</requestid>
+  </revision>
 </revisionlist>

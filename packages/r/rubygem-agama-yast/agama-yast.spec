@@ -1,7 +1,7 @@
 #
 # spec file for package agama-yast
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           agama-yast
-Version:        10.devel489
+Version:        11.devel1
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -51,6 +51,7 @@ install -D -m 0644 %{mod_full_name}/share/dbus.conf %{buildroot}%{_datadir}/dbus
 install --directory %{buildroot}%{_datadir}/dbus-1/agama-services
 install -m 0644 --target-directory=%{buildroot}%{_datadir}/dbus-1/agama-services %{mod_full_name}/share/org.opensuse.Agama*.service
 install -D -m 0644 %{mod_full_name}/share/agama.service %{buildroot}%{_unitdir}/agama.service
+install -D -m 0644 %{mod_full_name}/share/agama-dbus-monitor.service %{buildroot}%{_unitdir}/agama-dbus-monitor.service
 install -D -m 0644 %{mod_full_name}/share/agama-proxy-setup.service %{buildroot}%{_unitdir}/agama-proxy-setup.service
 install --directory %{buildroot}/usr/share/agama/conf.d
 install -D -m 0644 %{mod_full_name}/conf.d/*.yaml %{buildroot}/usr/share/agama/conf.d/
@@ -60,21 +61,26 @@ sh "%{SOURCE2}" "%{SOURCE1}"
 
 %pre
 %service_add_pre agama.service
+%service_add_pre agama-dbus-monitor.service
 
 %post
 %service_add_post agama.service
+%service_add_post agama-dbus-monitor.service
 
 %preun
 %service_del_preun agama.service
+%service_del_preun agama-dbus-monitor.service
 
 %postun
 %service_del_postun_with_restart agama.service
+%service_del_postun_with_restart agama-dbus-monitor.service
 
 %files
 %{_datadir}/dbus-1/agama.conf
 %dir %{_datadir}/dbus-1/agama-services
 %{_datadir}/dbus-1/agama-services/org.opensuse.Agama*.service
 %{_unitdir}/agama.service
+%{_unitdir}/agama-dbus-monitor.service
 %{_unitdir}/agama-proxy-setup.service
 %dir %{_datadir}/agama
 %dir %{_datadir}/agama/conf.d

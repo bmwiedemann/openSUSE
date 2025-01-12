@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Dec 10 20:17:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.10.1
+  * SSSD does not create anymore missing path components of
+    DIR:/FILE: ccache types while acquiring user's TGT. The
+    parent directory of requested ccache directory must exist and
+    the user trying to log in must have rwx access to this
+    directory. This matches behavior of /usr/bin/kinit.
+  * The option default_domain_suffix is deprecated.
+- Delete 0001-Configuration-make-sure-etc-sssd-and-everything.patch,
+  0001-INI-relax-config-files-checks.patch,
+  0001-INI-stop-using-libini_config-for-access-check.patch,
+  0001-sssd-always-print-path-when-config-object-is-rejecte.patch
+  (merged)
+- Add 0001-TOOL-Fix-build-parameter-name-omitted.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 12:59:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.10.0
+  * The ``sssctl cache-upgrade`` command was removed. SSSD
+    performs automatic upgrades at startup when needed.
+  * Support of ``enumeration`` feature (i.e. ability to list all
+    users/groups using ``getent passwd/group`` without argument)
+    for AD/IPA providers is deprecated and might be removed in
+    further releases.
+  * The new tool ``sss_ssh_knownhosts`` can be used with ssh's
+    ``KnownHostsCommand`` configuration option to retrieve the
+    host's public keys from a remote server (FreeIPA, LDAP,
+    etc.). It replaces ```sss_ssh_knownhostsproxy``.
+  * The default value for ``ldap_id_use_start_tls`` changed from
+    false to true for improved security.
+  * https://github.com/SSSD/sssd/releases/tag/2.10.0
+- Add 0001-sssd-always-print-path-when-config-object-is-rejecte.patch,
+  0001-INI-stop-using-libini_config-for-access-check.patch,
+  0001-INI-relax-config-files-checks.patch,
+  0001-Configuration-make-sure-etc-sssd-and-everything.patch
+- Fix socket activation of responders
+- Daemon runs now as unprivileged user 'sssd'
+
+-------------------------------------------------------------------
 Tue Oct  1 10:15:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update filelists involving memberof.so and idmap/sss.so to

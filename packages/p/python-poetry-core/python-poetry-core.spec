@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        1.9.1
+Version:        2.0.0
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION these are all test dependencies, including python-devel and git-core
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli-w}
-BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module build >= 0.10.0}
+BuildRequires:  %{python_module pytest >= 7.1.2}
+BuildRequires:  %{python_module pytest-mock >= 3.10}
+BuildRequires:  %{python_module tomli-w >= 1.0.0}
+BuildRequires:  %{python_module trove-classifiers >= 2022.5.19}
+BuildRequires:  %{python_module virtualenv >= 20.21}
 BuildRequires:  git-core
 # /SECTION
 %python_subpackages
@@ -66,9 +67,9 @@ cp -p src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.L
 %check
 # gh#python-poetry/poetry#1645
 git init
-#https://github.com/python-poetry/poetry/issues/9678
-donttest="obsdummyprefix"
-%pytest -k "not ($donttest)"
+# tests expect the default 2016-01-01 for test builds, not the epoch set by OBS (serverside)
+unset SOURCE_DATE_EPOCH
+%pytest
 
 %files %{python_files}
 %doc README.md

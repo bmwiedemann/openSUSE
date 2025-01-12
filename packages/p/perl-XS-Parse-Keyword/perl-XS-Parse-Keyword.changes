@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:46:16 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.470.0 (0.47)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.47    2024-11-25
+          [BUGFIXES]
+           * Don't upset gcc 15, by ensuring that function pointer casts fully
+             specify argument types (RT157196)
+  0.46    2024-09-03
+          [CHANGES]
+           * Added `XPK_PREFIXED_TERMEXPR_ENTERLEAVE`
+           * Use module-specific rather than dist-specific dirs to store
+             `include/` files
+  0.45    2024-08-29
+          [CHANGES]
+           * Refuse to register operators that have neither `.new_op` nor
+             `.ppadd`, as these will never work
+          [BUGFIXES]
+           * Update for perl 5.41.3: `OP_SMARTMATCH` is now removed, so make
+             that registration conditional (RT155194)
+
+-------------------------------------------------------------------
 Sat Jul 20 05:29:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.440.0 (0.44)

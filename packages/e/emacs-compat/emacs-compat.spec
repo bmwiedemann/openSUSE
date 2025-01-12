@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-compat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Björn Bidar
 #
 # All modifications and additions to the file contributed by third parties
@@ -55,6 +55,7 @@ compat.el, the forwards-compatibility library for (GNU) Emacs Lisp, versions 24.
 
 %install
 %make_install
+install -m 0644 compat-macs.el %{buildroot}%{_emacs_sitelispdir}
 
 %check
 

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jan  9 07:05:53 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied backport patches from s390-tools 2.37 to 2.36  ( jsc#PED-11870 )
+    ( jsc#IBM-1447, jsc#IBM-1062 )
+  * s390-tools-General-update-01.patch
+  * s390-tools-General-update-02.patch
+  * s390-tools-General-update-03.patch
+  * s390-tools-General-update-04.patch
+  * s390-tools-General-update-05.patch
+  * s390-tools-General-update-06.patch
+  * s390-tools-General-update-07.patch
+  * s390-tools-General-update-08.patch
+  * s390-tools-General-update-09.patch
+  * s390-tools-General-update-10.patch
+  * s390-tools-General-update-11.patch
+  * s390-tools-General-update-12.patch
+  * s390-tools-Additional-update-01.patch
+  * s390-tools-Additional-update-02.patch
+    ( jsc#IBM-1570, jsc#IBM-1571 )
+  * s390-tools-Support-unencrypted-SE-images-01.patch
+    ( jsc#IBM-1572, jsc#IBM-1573 )
+  * s390-tools-pvimg-info-command-01.patch
+  * s390-tools-pvimg-info-command-02.patch
+  * s390-tools-pvimg-info-command-03.patch
+  * s390-tools-pvimg-info-command-04.patch
+    ( jsc#IBM-1576, jsc#IBM-1577 )
+  * s390-tools-pvimg-additional-01.patch
+- Renamed patches from - to
+  * s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch 
+      to
+      s390-tools-Additional-update-01.patch
+  * s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch
+      to
+      s390-tools-Additional-update-02.patch
+  * s390-tools-03-rust-pvimg-Add-enable-disable-image-encryption-flags-to-pvimg-create.patch
+      to
+      s390-tools-Support-unencrypted-SE-images-01.patch
+- Revendored vendor.tar.gz
+
+-------------------------------------------------------------------
 Tue Jan  7 08:59:16 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch for '--(enable|disable)-image-encryption' flags for 'pvimg create' (jsc#PED-11870) 

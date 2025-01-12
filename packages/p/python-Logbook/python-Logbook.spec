@@ -1,7 +1,7 @@
 #
 # spec file for package python-Logbook
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-Logbook
-Version:        1.7.0.post0
+Version:        1.8.0
 Release:        0
 Summary:        A logging replacement for Python
 License:        BSD-3-Clause
 URL:            https://github.com/getlogbook/logbook
-Source:         https://files.pythonhosted.org/packages/source/L/Logbook/Logbook-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/l/logbook/logbook-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Jinja2}
@@ -54,7 +54,7 @@ Recommends:     python-redis
 An alternative logging implementation for python.
 
 %prep
-%autosetup -p1 -n Logbook-%{version}
+%autosetup -p1 -n logbook-%{version}
 dos2unix LICENSE
 
 %build

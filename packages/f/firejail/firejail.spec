@@ -1,7 +1,7 @@
 #
 # spec file for package firejail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        https://github.com/netblue30/%{name}/releases/download/%{version
 # https://firejail.wordpress.com/download-2/
 Source2:        %{name}.keyring
 Source3:        %{name}-group.conf
+BuildRequires:  apparmor-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
@@ -87,6 +88,7 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 
 %post
 %set_permissions %{_bindir}/firejail
+%apparmor_reload %{_sysconfdir}/apparmor.d/firejail-default
 
 %verifyscript
 %verify_permissions -e %{_bindir}/firejail

@@ -1,7 +1,7 @@
 #
 # spec file for package libpwquality
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/libpwquality/libpwquality
 Source:         %{url}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM - Fix installation of python bindings using setuptools. loosely based on commit 7b5e0f00
+Patch0:         libpwquality-fix-python-install.patch
 
 BuildRequires:  cracklib-devel
 BuildRequires:  gettext-devel
@@ -159,7 +161,7 @@ fi
 %{_mandir}/man8/pam_pwquality.8%{?ext_man}
 
 %files -n python3-pwquality
-%{python3_sitearch}/pwquality-%{version}-py3*-linux-*.egg
+%{python3_sitearch}/pwquality*
 
 %files lang -f libpwquality.lang
 

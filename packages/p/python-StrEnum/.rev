@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1142771</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>75f14eb6a4d00b431aa09a91a0c71aef</srcmd5>
+    <version>0.4.15</version>
+    <time>1736677211</time>
+    <user>anag+factory</user>
+    <comment>- Switch to GitHub tarball for tests, and run the testsuite.
+- Add patch support-python-312.patch:
+  * Support configparser changes in Python 3.12.</comment>
+    <requestid>1236754</requestid>
+  </revision>
 </revisionlist>

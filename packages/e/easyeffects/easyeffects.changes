@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 11 06:22:28 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- update to release 7.2.3
+  + Improved compatibility with future PipeWire releases. This version will avoid compilation errors like #3620
+- update to release 7.2.2
+  + Updated translations
+  + Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management. What in turns breaks our spinbuttons on some locales.
+
+-------------------------------------------------------------------
 Tue Dec  3 08:58:05 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
 
 - update to release 7.2.1

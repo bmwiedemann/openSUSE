@@ -25,12 +25,14 @@
 %define frr_user frr
 %define frr_group frr
 %define frrvty_group frrvty
+# see configure: frr_libstatedir=/var/lib/frr
 %define frr_home %{_localstatedir}/lib/%{name}
+# see configure: frr_runstatedir=[/var]/run/frr
 %define frr_statedir %{_rundir}/%{name}
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        10.0.2
+Version:        10.2.1
 Release:        0
 Summary:        The FRRouting Protocol Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -207,7 +209,6 @@ autoreconf -fiv
 %configure \
     --disable-silent-rules \
     --sysconfdir=%{_sysconfdir}\
-    --localstatedir=%{_rundir} \
     --sbindir=%{frr_daemondir} \
     --with-moduledir=%{_libdir}/frr/modules \
     --disable-static \
@@ -298,7 +299,8 @@ install -D -m 0644 redhat/frr.logrotate %{buildroot}%{_distconfdir}/logrotate.d/
 install -D -m 0644 redhat/frr.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/frr
 %endif
 
-install -d -m 0750 %{buildroot}%{rundir}
+install -d -m 0750 %{buildroot}%{frr_home}
+install -d -m 0751 %{buildroot}%{frr_statedir}
 install -d -m 0750 %{buildroot}%{_localstatedir}/log/frr
 install -D -m 0644 %{SOURCE1} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 sed -e "s|@frr_statedir@|%{frr_statedir}|g" -i %{buildroot}/%{_tmpfilesdir}/%{name}.conf
@@ -387,10 +389,10 @@ done
 %license COPYING
 %doc README.md
 %doc doc/mpls
-%dir %attr(750,%{frr_user},%{frr_user}) %{_sysconfdir}/%{name}
-%config(noreplace) %attr(640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/[!v]*.conf*
-%config(noreplace) %attr(640,%{frr_user},%{frrvty_group}) %{_sysconfdir}/%{name}/vtysh.conf
-%config(noreplace) %%attr(640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/daemons
+%dir %attr(0750,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}
+%config(noreplace) %attr(0640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/[!v]*.conf*
+%config(noreplace) %attr(0640,%{frr_user},%{frrvty_group}) %{_sysconfdir}/%{name}/vtysh.conf
+%config(noreplace) %attr(0640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/daemons
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/frr
 %else
@@ -407,9 +409,10 @@ done
 %{_unitdir}/%{name}.service
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/%{name}.conf
-%dir %attr(-,%{frr_user},%{frr_group}) %{_localstatedir}/log/frr
-%dir %attr(-,%{frr_user},%{frr_group}) %ghost %{frr_statedir}
+%dir %attr(0750,%{frr_user},%{frr_group}) %{_localstatedir}/log/frr
+%dir %attr(0751,%{frr_user},%{frr_group}) %ghost %{frr_statedir}
 %{_sbindir}/rc%{name}
+%dir %attr(0750,%{frr_user},%{frr_group}) %{frr_home}
 %dir %{_prefix}/lib/frr
 %{_prefix}/lib/frr/fabricd
 %{_prefix}/lib/frr/vrrpd
@@ -444,6 +447,7 @@ done
 %{frr_daemondir}/watchfrr
 %{frr_daemondir}/watchfrr.sh
 %{frr_daemondir}/zebra
+%{frr_daemondir}/fpm_listener
 %dir %{_libdir}/frr
 %dir %{_libdir}/frr/modules
 %{_libdir}/frr/modules/zebra_cumulus_mlag.so

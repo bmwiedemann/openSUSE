@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 10 02:03:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to GitHub tarball for tests, and run the testsuite.
+- Add patch support-python-312.patch:
+  * Support configparser changes in Python 3.12.
+
+-------------------------------------------------------------------
 Tue Jan 30 12:14:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.4.15)

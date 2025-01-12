@@ -83,4 +83,12 @@
 - drop remove-future-requirement.patch (upstream)</comment>
     <requestid>1169465</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>495174381156718135cab914c397669f</srcmd5>
+    <version>0.9.5</version>
+    <time>1736677274</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236880</requestid>
+  </revision>
 </revisionlist>

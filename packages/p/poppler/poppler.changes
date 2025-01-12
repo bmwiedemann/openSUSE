@@ -1,10 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan  3 17:08:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 25.01.0:
+  + core:
+    - TextOutputDev: Better detect fakebold words
+    - TextOutputDev: Faster sorting algorithm
+    - Internal code improvements
+    - Fix crashes in malformed documents
+  + cpp: Remove rect parameter from image::copy, it was never
+    implemented
+  + qt6: Fix crash in Submit Forms if document links to non
+    existing field
+  + qt5: Fix crash in Submit Forms if document links to non
+    existing field
+  + glib: mark transfer of poppler_page_get_selected_region
+  + utils: pdfdetach: Make -savefile work with Unicode strings.
+  + build system: Don't update pdfsig.pot when POT-Creation-date is
+    the only change.
+- Drop poppler-CVE-2024-56378.patch: Fixed upstream.
+- Bump poppler sover and poppler_cpp_sover following upstream
+  changes.
+
+-------------------------------------------------------------------
 Mon Dec 23 09:38:52 UTC 2024 - pgajdos@suse.com
 
-- security update
-- added patches
-  fix CVE-2024-56378 [bsc#1234795], out-of-bounds read vulnerability within the JBIG2Bitmap::combine function in JBIG2Stream.cc
-  + poppler-CVE-2024-56378.patch
+- Security update:
+  + Added patch; fix CVE-2024-56378 [bsc#1234795], out-of-bounds
+    read vulnerability within the JBIG2Bitmap::combine function in
+    JBIG2Stream.cc (poppler-CVE-2024-56378.patch)
 
 -------------------------------------------------------------------
 Thu Dec 19 16:15:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>

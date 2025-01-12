@@ -18,26 +18,16 @@
 
 %define cpan_name Term-Table
 Name:           perl-Term-Table
-Version:        0.18.0
+Version:        0.024
 Release:        0
-%define cpan_version 0.018
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Format a header and rows into a table
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test2::Tools::Tiny) >= 1.302097
-Provides:       perl(Term::Table) = 0.18.0
-Provides:       perl(Term::Table::Cell) = 0.18.0
-Provides:       perl(Term::Table::CellStack) = 0.18.0
-Provides:       perl(Term::Table::HashBase) = 0.18.0
-Provides:       perl(Term::Table::LineBreak) = 0.18.0
-Provides:       perl(Term::Table::Spacer) = 0.18.0
-Provides:       perl(Term::Table::Util) = 0.18.0
-%undefine       __perllib_provides
 Recommends:     perl(Term::Size::Any) >= 0.002
 Recommends:     perl(Unicode::GCString) >= 2013.10
 Recommends:     perl(Unicode::LineBreak) >= 2015.06
@@ -48,7 +38,7 @@ This is used by some failing tests to provide diagnostics about what has
 gone wrong. This module is able to format rows of data into tables.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

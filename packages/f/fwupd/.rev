@@ -795,4 +795,46 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1208170</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e4b550f5a7844ce3d56527a03c6bc83f</srcmd5>
+    <version>1.9.27</version>
+    <time>1736676606</time>
+    <user>anag+factory</user>
+    <comment>- Update fwupd-bsc1130056-change-shim-path.patch to correct the
+  path for shim.efi
+- Correct efi_fw_update arch list:
+  * Remove ppc64le and s390x - these aren't supported
+  * Add armv6hl/armv7hl and riscv64 - support recently added
+- Update to version 1.9.27:
+  + This release fixes the following bugs:
+    - Add a power quirk for Framework systems
+    - Allow cros-ec repair the device after flush failure
+    - Check the VLI USB3 firmware size before erasing
+    - Disallow DBX updates on the Samsung Galaxy Book2 360
+    - Do not show 'Device has been removed' as a dock error
+    - Do not use a CMSE11 function when using CSME18
+    - Fix an unlikely memory leak when using ModemManger Sahara devices
+    - Fix a tiny memory leak in algoltek-usb when checking status
+    - Mark UEFI dbx updates as affecting full disk encryption
+    - Parse FDTs with missing END tokens
+    - Rename the dell-k2 plugin to dell-kestrel and rework the update flow
+  + This release adds support for the following hardware:
+    - Google GID8 Headset
+    - Parade PS188
+    - Primax Ryder Mouse
+    
+- Update to version 1.9.26:
+  + This release fixes the following bugs:
+    - Add HSI tests for Arrow and Meteor Lake CSME
+    - Allow UEFI capsule config values to be set with fwupdmgr modify-config
+    - Check for the logitech-bulkcontroller response packet length correctly
+    - Fix using ID_LIKE for fallback when ESP isn't mounted
+    - Fix various Coverity-reported overflowed constants
+    - Only compare the first 10 characters of the AMD GPU part number
+  + This release adds support for the following hardware:
+    - Jabra PanaCast
+    - Some Lenovo Legion HID devices
+</comment>
+    <requestid>1236122</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-policy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20241220
+Version:        20250109
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -400,8 +400,9 @@ if [ ! -s %{_sysconfdir}/selinux/config ]; then
 # commandline option.
 #
 # SELINUX= can take one of these three values:
-#     enforcing - SELinux security policy is enforced.
+#     enforcing  - SELinux security policy is enforced.
 #     permissive - SELinux prints warnings instead of enforcing.
+#     disabled   - SELinux is disabled
 SELINUX=permissive
 # SELINUXTYPE= can take one of these three values:
 #     targeted - Targeted processes are protected,

@@ -1,7 +1,7 @@
 #
 # spec file for package poppler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 144
-%define poppler_cpp_sover 1
+%define poppler_sover 145
+%define poppler_cpp_sover 2
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
 %define poppler_qt6_sover 3
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        24.12.0
+Version:        25.01.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -44,8 +44,7 @@ Source90:       poppler.keyring
 Source99:       baselibs.conf
 Patch0:         reduce-boost-required-version.patch
 Patch1:         reduce-libtiff-required-version.patch
-# CVE-2024-56378 [bsc#1234795], out-of-bounds read vulnerability within the JBIG2Bitmap::combine function in JBIG2Stream.cc
-Patch2:         poppler-CVE-2024-56378.patch
+
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gtk-doc
 BuildRequires:  libboost_headers-devel >= 1.66

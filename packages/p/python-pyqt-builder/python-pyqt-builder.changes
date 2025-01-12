@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:25:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.17.1
+  * Added support for Qt v6.8
+  * Added support for the QtGraphs module.
+  * Linux wheels now require GLIBC v2.35 (eg. Ubuntu 22.04) on
+    Intel and v2.39 (eg. Ubuntu 24.04) on Arm.
+- Drop support-python3.6.patch
+  * Python 3.6 is no longer maintained for PyQt
+
+-------------------------------------------------------------------
 Mon Nov  4 13:05:02 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use pypi url for source

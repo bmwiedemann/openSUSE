@@ -187,4 +187,12 @@
     <comment>container-selinux october update</comment>
     <requestid>1227115</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>860a98cb4c06abbf440f92250a236190</srcmd5>
+    <version>2.234.2</version>
+    <time>1736676593</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236910</requestid>
+  </revision>
 </revisionlist>

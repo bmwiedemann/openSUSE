@@ -463,4 +463,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment>Update the ddclient.service to not conflicts with ipmi devices (forwarded request 1226323 from vlefebvre)</comment>
     <requestid>1235987</requestid>
   </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>b042c98628bc1a3a1d508041aaba68d5</srcmd5>
+    <version>3.11.2</version>
+    <time>1736677173</time>
+    <user>anag+factory</user>
+    <comment>sync spec and changes file, remove obsolete deps (forwarded request 1236718 from computersalat)</comment>
+    <requestid>1236720</requestid>
+  </revision>
 </revisionlist>

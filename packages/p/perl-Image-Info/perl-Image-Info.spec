@@ -18,9 +18,10 @@
 
 %define cpan_name Image-Info
 Name:           perl-Image-Info
-Version:        1.440.0
+Version:        1.450.0
 Release:        0
-%define cpan_version 1.44
+# 1.45 -> normalize -> 1.450.0
+%define cpan_version 1.45
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extract meta information from image files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,29 +30,29 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Bundle::Image::Info::Everything) = 0.02
-Provides:       perl(Bundle::Image::Info::PNG) = 0.02
-Provides:       perl(Bundle::Image::Info::SVG) = 0.02
-Provides:       perl(Bundle::Image::Info::XBM) = 0.02
-Provides:       perl(Bundle::Image::Info::XPM) = 0.02
-Provides:       perl(Image::Info) = 1.440.0
+Provides:       perl(Bundle::Image::Info::Everything) = 0.30.0
+Provides:       perl(Bundle::Image::Info::PNG) = 0.30.0
+Provides:       perl(Bundle::Image::Info::SVG) = 0.30.0
+Provides:       perl(Bundle::Image::Info::XBM) = 0.30.0
+Provides:       perl(Bundle::Image::Info::XPM) = 0.30.0
+Provides:       perl(Image::Info) = %{version}
 Provides:       perl(Image::Info::AVIF) = 0.10.0
 Provides:       perl(Image::Info::BMP) = 1.04
 Provides:       perl(Image::Info::GIF) = 1.02
 Provides:       perl(Image::Info::ICO) = 0.02
-Provides:       perl(Image::Info::JPEG) = 0.06
-Provides:       perl(Image::Info::PNG) = 1.03
-Provides:       perl(Image::Info::PPM) = 0.04
+Provides:       perl(Image::Info::JPEG) = 0.70.0
+Provides:       perl(Image::Info::PNG) = 1.40.0
+Provides:       perl(Image::Info::PPM) = 0.50.0
 Provides:       perl(Image::Info::Result)
-Provides:       perl(Image::Info::SVG) = 2.04
-Provides:       perl(Image::Info::SVG::XMLLibXMLReader) = 1.05
+Provides:       perl(Image::Info::SVG) = 2.50.0
+Provides:       perl(Image::Info::SVG::XMLLibXMLReader) = 1.60.0
 Provides:       perl(Image::Info::SVG::XMLSimple) = 1.05
 Provides:       perl(Image::Info::TIFF) = 0.05
-Provides:       perl(Image::Info::WBMP) = 0.01
-Provides:       perl(Image::Info::WEBP) = 0.01
+Provides:       perl(Image::Info::WBMP) = 0.20.0
+Provides:       perl(Image::Info::WEBP) = 0.20.0
 Provides:       perl(Image::Info::XBM) = 1.08
 Provides:       perl(Image::Info::XPM) = 1.09
-Provides:       perl(Image::TIFF) = 1.11
+Provides:       perl(Image::TIFF) = 1.120.0
 Provides:       perl(Image::TIFF::Rational)
 %undefine       __perllib_provides
 Recommends:     perl(Bundle::Image::Info::PNG)

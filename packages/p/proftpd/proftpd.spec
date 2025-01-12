@@ -1,7 +1,7 @@
 #
 # spec file for package proftpd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Summary:        Configurable GPL-licensed FTP server software
 # We only accept updates for "STABLE" Versions
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
-Version:        1.3.8b
+Version:        1.3.8c
 Release:        0
 URL:            http://www.proftpd.org/
 Source0:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz

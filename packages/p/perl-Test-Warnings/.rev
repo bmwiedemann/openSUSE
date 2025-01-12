@@ -163,4 +163,27 @@
 </comment>
     <requestid>1156516</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>43082b90e745f5236141ba7be59b1a83</srcmd5>
+    <version>0.37.0</version>
+    <time>1736676519</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.37.0 (0.037)
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+  0.037     2025-01-05 20:38:16Z
+            - remove unneeded use of Import::Into
+            - fix tests that invoke Test::Warnings-&gt;import directly
+  0.036     2025-01-03 18:30:28Z
+            - avoid redefinition warnings when $^W is enabled in tests
+              (RT#158297)
+  0.035     2025-01-03 17:47:24Z
+            - allow tests to pass even when Import::Into is not installed
+              (RT#158296)
+            - add backcompat shim for cases where Test::More is loaded in tests
+              after Test::Warnings
+  0.034     2025-01-03 02:46:29Z
+            - fix Test2 compability for done_testing()
+            - Test2::Warnings added as a simple wrapper (for now) (forwarded request 1236704 from tinita)</comment>
+    <requestid>1236815</requestid>
+  </revision>
 </revisionlist>

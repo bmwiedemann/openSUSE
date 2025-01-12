@@ -16,21 +16,20 @@
 #
 
 
-%define mname pyqt-builder
 %{?sle15_python_module_pythons}
-Name:           python-%{mname}
-Version:        1.16.4
+Name:           python-pyqt-builder
+Version:        1.17.1
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        BSD-2-Clause
 URL:            https://github.com/Python-PyQt/PyQt-builder
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/pyqt_builder-%{version}.tar.gz
-# PATCH-FEATURE-SUSE support-python3.6.patch alarrosa@suse.com -- The PyQt5 packages have the SLE15 python module macro, but it is disable in some maintance projects
-Patch0:         support-python3.6.patch
-BuildRequires:  %{python_module base >= 3.6}
+Source99:       python-pyqt-builder.rpmlintrc
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 64}
-BuildRequires:  %{python_module setuptools_scm >= 8}
+# Technically >= 8, but we make it compatible in prep.
+BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,6 +56,10 @@ sip-install or pip can then be used to build and install the project.
 
 %prep
 %autosetup -p1 -n pyqt_builder-%{version}
+# Make it work with setuptools_scm < 8
+%if 0%{suse_version} < 1600
+sed -i s/version_file/write_to/ pyproject.toml
+%endif
 
 %build
 %pyproject_wheel
@@ -86,6 +89,6 @@ $python -c 'import pyqtbuild'
 %python_alternative %{_bindir}/pyqt-bundle
 %python_alternative %{_bindir}/pyqt-qt-wheel
 %{python_sitelib}/pyqtbuild
-%{python_sitelib}/PyQt_builder-%{version}*-info
+%{python_sitelib}/PyQt_builder-%{version}.dist-info
 
 %changelog

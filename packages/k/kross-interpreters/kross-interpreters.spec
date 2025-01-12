@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kross-interpreters
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Diverse bindings for KROSS
 License:        LGPL-2.1-or-later

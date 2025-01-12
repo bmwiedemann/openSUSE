@@ -1,7 +1,7 @@
 #
 # spec file for package python-orjson
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.10.12
+Version:        3.10.14
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/ijl/orjson
-# Update: Run `osc service runall download_files && sh ./devendor-sdist.sh && osc service runall cargo_vendor`
+# Update: Change version and run `osc rm orjson-*.tar.gz && osc service runall download_files && sh ./devendor-sdist.sh && osc service runall cargo_vendor`
 Source0:        orjson-%{version}-devendored.tar.xz
 Source1:        vendor.tar.xz
 Source2:        https://files.pythonhosted.org/packages/source/o/orjson/orjson-%{version}.tar.gz
@@ -39,7 +39,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pendulum}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}

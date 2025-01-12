@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Future
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,32 @@
 
 %define cpan_name Future
 Name:           perl-Future
-Version:        0.50
+Version:        0.510.0
 Release:        0
+# 0.51 -> normalize -> 0.510.0
+%define cpan_version 0.51
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Represent an operation awaiting completion
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.25
-BuildRequires:  perl(Module::Build) >= 0.400400
+BuildRequires:  perl(List::Util) >= 1.29
+BuildRequires:  perl(Module::Build) >= 0.4004
 BuildRequires:  perl(Test2::V0) >= 0.000148
 Requires:       perl(Carp) >= 1.25
+Requires:       perl(List::Util) >= 1.29
+Provides:       perl(Future) = %{version}
+Provides:       perl(Future::Exception) = %{version}
+Provides:       perl(Future::Mutex) = %{version}
+Provides:       perl(Future::PP) = %{version}
+Provides:       perl(Future::Utils) = %{version}
+Provides:       perl(Test::Future) = %{version}
+Provides:       perl(Test::Future::Deferred) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -70,17 +82,17 @@ Unless otherwise noted, the following methods require at least version
 _0.08_.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files

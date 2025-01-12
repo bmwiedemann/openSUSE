@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MCE
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name MCE
 Name:           perl-MCE
-Version:        1.898.0
+Version:        1.901.0
 Release:        0
-# 1.898 -> normalize -> 1.898.0
-%define cpan_version 1.898
+# 1.901 -> normalize -> 1.901.0
+%define cpan_version 1.901
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Many-Core Engine for Perl providing parallel processing capabilities
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -41,6 +41,7 @@ Provides:       perl(MCE::Channel::SimpleFast) = %{version}
 Provides:       perl(MCE::Channel::Threads) = %{version}
 Provides:       perl(MCE::Channel::ThreadsFast) = %{version}
 Provides:       perl(MCE::Child) = %{version}
+Provides:       perl(MCE::Core) = %{version}
 Provides:       perl(MCE::Core::Input::Generator) = %{version}
 Provides:       perl(MCE::Core::Input::Handle) = %{version}
 Provides:       perl(MCE::Core::Input::Iterator) = %{version}

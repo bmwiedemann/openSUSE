@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  9 15:39:31 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Disable the gcm regression test as it fails in virtual
+  environments for the ppc64le architecture.
+  * Add libnettle-powerpc64-skip-AES-GCM-test.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 08:34:18 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to nettle 3.10.1:

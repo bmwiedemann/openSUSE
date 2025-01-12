@@ -24,7 +24,7 @@
 
 %bcond_without released
 Name:           kdevelop
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later

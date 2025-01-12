@@ -1,7 +1,7 @@
 #
 # spec file for package python-cliff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cliff
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module Sphinx >= 2.0.0}
 BuildRequires:  %{python_module cmd2 >= 1.0.0}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module importlib_metadata >= 4.4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module stevedore >= 2.0.1}
 BuildRequires:  %{python_module testscenarios >= 0.4}
@@ -46,7 +45,6 @@ Requires:       python-PrettyTable >= 0.7.2
 Requires:       python-PyYAML >= 3.12
 Requires:       python-autopage >= 0.4.0
 Requires:       python-cmd2 >= 1.0.0
-Requires:       python-importlib_metadata >= 4.4
 Requires:       python-stevedore >= 2.0.1
 BuildArch:      noarch
 %python_subpackages

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 13:03:15 UTC 2025 - pallas wept <pallaswept@proton.me>
+
+- Add notification-null-icon-pointer.patch 
+  * Fixes build against xdg-desktop-portal 1.19.1
+
+-------------------------------------------------------------------
 Fri Dec 20 13:17:34 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 47.1+3:

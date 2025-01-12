@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:23:00 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.8.0
+  * Added support for Qt v6.8.
+- Use sip-build --concatenate 1 as a workaround for incomplete type
+  class error
+  https://www.riverbankcomputing.com/pipermail/pyqt/2024-December/046097.html
+
+-------------------------------------------------------------------
 Fri Nov  8 08:52:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Back to PyPI source

@@ -543,4 +543,23 @@
       * Strict affected by column_names (forwarded request 1195915 from tinita)</comment>
     <requestid>1196228</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6401a3e5d82a975d014c8013a10b408c</srcmd5>
+    <version>1.590.0</version>
+    <time>1736676520</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.590.0 (1.59)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+  1.59	- 2025-01-05, H.Merijn Brand
+      * Fixed EOL test for Windows with crnl layer
+      * It is 2025
+  1.58	- 2024-12-30, H.Merijn Brand
+      * Add strict_eol (warnings default in csv ())
+      * Add XS line number in errors
+      * Add streaming support - not set in stone
+  1.57	- 2024-11-12, H.Merijn Brand
+      * Keep runtime error from csv ()
+      * add csv (on_error) (forwarded request 1236705 from tinita)</comment>
+    <requestid>1236816</requestid>
+  </revision>
 </revisionlist>

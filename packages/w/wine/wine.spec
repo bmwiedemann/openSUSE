@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.0-rc3
-Version:        10.0~rc3
+%define downloadver  10.0-rc4
+Version:        10.0~rc4
 Release:        0
 Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later

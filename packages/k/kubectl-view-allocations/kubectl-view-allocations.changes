@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 09 14:16:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.3:
+  * :rocket: (cargo-release) version 0.20.3
+  * enable http-proxy and oidc support on kube access
+
+-------------------------------------------------------------------
 Wed Jan 08 06:37:46 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.2:

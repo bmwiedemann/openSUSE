@@ -90,4 +90,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1234628</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>33bd0b3c1e4903ab8fcdd3bd45f4c4cd</srcmd5>
+    <version>0</version>
+    <time>1736677296</time>
+    <user>anag+factory</user>
+    <comment>- Add storage reprobing and recalculate proposal when going back to
+  either the proposal page or the devices selector if the system
+  is deprecated (gh#agama-project/agama#1884).
+
+- Drop the feature for deregistering a product
+  (gh#agama-project/agama#1882).
+
+- Do not allow changing the storage setup when Agama is using the
+  new storage settings (gh#agama-project/agama#1881).
+
+- Add support for products registration (jsc#PED-11192,
+  gh#agama-project/agama#1809).
+
+- Use product ID instead of slug to link labels and descriptions to
+  their corresponding radio inputs (gh#agama-project/agama#1873).
+
+- Show the cancel action at product selection page only when
+  a product is already selected (gh#agama-project/agama#1871).</comment>
+    <requestid>1236916</requestid>
+  </revision>
 </revisionlist>

@@ -143,4 +143,14 @@
     <comment>Plasma 6.2.5 (forwarded request 1234189 from Vogtinator)</comment>
     <requestid>1234219</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b294246f7d9d26e250c1b7142d0af1af</srcmd5>
+    <version>6.2.5</version>
+    <time>1736676518</time>
+    <user>anag+factory</user>
+    <comment>- In some corner cases, systemd user instances might be in failing state and
+  attempts to reload them (via the 'systemd-update-helper' private script) may
+  fail. Avoid to abort the upgrade process in these cases (bsc#1234904). (forwarded request 1236796 from fbui)</comment>
+    <requestid>1236814</requestid>
+  </revision>
 </revisionlist>

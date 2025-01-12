@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntc-templates
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           python-ntc-templates
-Version:        7.4.0
+Version:        7.5.0
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/networktocode/ntc-templates
 Source:         https://github.com/networktocode/ntc-templates/archive/v%{version}.tar.gz#/ntc-templates-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -52,6 +51,8 @@ TextFSM is a project built by Google that takes CLI string output and passes eac
 %setup -q -n ntc-templates-%{version}
 # rpmlintrc
 chmod -x ntc_templates/templates/cisco*
+# Correct version -- https://github.com/networktocode/ntc-templates/issues/1969
+sed -i 's/6.0.0/%{version}/' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -59,7 +60,6 @@ chmod -x ntc_templates/templates/cisco*
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm %{buildroot}%{$python_sitelib}/{LICENSE,README.md}
 
 %check
 %if 0%{suse_version} <= 1500
@@ -75,6 +75,7 @@ rm tests/cisco_ios/show_access-list/cisco_ios_show_access-list.raw
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/ntc_templates*
+%{python_sitelib}/ntc_templates
+%{python_sitelib}/ntc_templates-%{version}.dist-info
 
 %changelog

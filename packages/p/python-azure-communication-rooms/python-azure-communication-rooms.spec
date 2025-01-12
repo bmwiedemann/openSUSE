@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-communication-rooms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-rooms
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Microsoft Communication Rooms Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-rooms/azure-communication-rooms-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_communication_rooms/azure_communication_rooms-%{version}.tar.gz
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.29.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.32.0 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-communication-rooms < 1.0.0
@@ -47,10 +46,9 @@ BuildArch:      noarch
 This package contains a Python SDK for Azure Communication Services for Rooms.
 
 %prep
-%setup -q -n azure-communication-rooms-%{version}
+%setup -q -n azure_communication_rooms-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-rooms-%{version}
 %pyproject_wheel
 
 %install
@@ -65,7 +63,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/communication/rooms
 %{python_sitelib}/azure_communication_rooms-*.dist-info
 

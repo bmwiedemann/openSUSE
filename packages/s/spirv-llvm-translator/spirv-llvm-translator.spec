@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-llvm-translator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover   19
 Name:           spirv-llvm-translator
-Version:        19.1.2
+Version:        19.1.3
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause

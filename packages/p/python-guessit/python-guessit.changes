@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 15:47:50 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- migrate to pyproject macros
+- add remove-six.patch to drop dependency on python-six
+
+-------------------------------------------------------------------
 Sun Jun 23 14:36:07 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Raise version requirement for python-rebulk (fixes boo#1226826)

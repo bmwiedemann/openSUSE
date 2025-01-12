@@ -1,0 +1,204 @@
+From 01cd81ecf5d1a7e1e504ae1b67692cf63cd4b51d Mon Sep 17 00:00:00 2001
+From: Steffen Eiden <seiden@linux.ibm.com>
+Date: Tue, 5 Mar 2024 11:56:57 +0100
+Subject: [PATCH] rust/pv_core: Retrieve Secret UVC
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Create the uvdevice-IOCTL functionality for the new Retrieve Secret UVC.
+
+Reviewed-by: Christoph Schlameuss <schlameuss@linux.ibm.com>
+Acked-by: Marc Hartmayer <marc@linux.ibm.com>
+Signed-off-by: Steffen Eiden <seiden@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ rust/pv_core/src/error.rs                |  7 ++
+ rust/pv_core/src/lib.rs                  |  2 +-
+ rust/pv_core/src/uvdevice/secret.rs      | 97 +++++++++++++++++++++++-
+ rust/pv_core/src/uvdevice/secret_list.rs | 15 ++++
+ 4 files changed, 118 insertions(+), 3 deletions(-)
+
+diff --git a/rust/pv_core/src/error.rs b/rust/pv_core/src/error.rs
+index 20fca24d..ba7b7e26 100644
+--- a/rust/pv_core/src/error.rs
++++ b/rust/pv_core/src/error.rs
+@@ -4,6 +4,8 @@
+ 
+ use std::path::PathBuf;
+ 
++use crate::uv::SecretId;
++
+ /// Result type for this crate
+ pub type Result<T, E = Error> = std::result::Result<T, E>;
+ 
+@@ -70,6 +72,11 @@ pub enum Error {
+     #[error("The attestation request does not specify a measurement size or measurement data.")]
+     BinArcbNoMeasurement,
+ 
++    #[error(
++        "The secret with the ID {id} cannot be retrieved. The requested size is too large ({size})"
++    )]
++    InvalidRetrievableSecretType { id: SecretId, size: usize },
++
+     // errors from other crates
+     #[error(transparent)]
+     Io(#[from] std::io::Error),
+diff --git a/rust/pv_core/src/lib.rs b/rust/pv_core/src/lib.rs
+index 349c0b28..5922211f 100644
+--- a/rust/pv_core/src/lib.rs
++++ b/rust/pv_core/src/lib.rs
+@@ -32,7 +32,7 @@ pub mod misc {
+ /// [`crate::uv::UvCmd`]
+ pub mod uv {
+     pub use crate::uvdevice::attest::AttestationCmd;
+-    pub use crate::uvdevice::secret::{AddCmd, ListCmd, LockCmd};
++    pub use crate::uvdevice::secret::{AddCmd, ListCmd, LockCmd, RetrieveCmd};
+     pub use crate::uvdevice::secret_list::{ListableSecretType, SecretEntry, SecretId, SecretList};
+     pub use crate::uvdevice::{ConfigUid, UvCmd, UvDevice, UvDeviceInfo, UvFlags, UvcSuccess};
+ }
+diff --git a/rust/pv_core/src/uvdevice/secret.rs b/rust/pv_core/src/uvdevice/secret.rs
+index 6c22b6ed..263f17d5 100644
+--- a/rust/pv_core/src/uvdevice/secret.rs
++++ b/rust/pv_core/src/uvdevice/secret.rs
+@@ -3,8 +3,15 @@
+ // Copyright IBM Corp. 2023
+ 
+ use super::ffi;
+-use crate::{request::MagicValue, uv::UvCmd, uvsecret::AddSecretMagic, Error, Result, PAGESIZE};
+-use std::io::Read;
++use crate::{
++    request::{Confidential, MagicValue},
++    uv::{SecretEntry, UvCmd},
++    uvsecret::AddSecretMagic,
++    Error, Result, PAGESIZE,
++};
++use log::debug;
++use std::{io::Read, mem::size_of_val};
++use zerocopy::AsBytes;
+ 
+ /// _List Secrets_ Ultravisor command.
+ ///
+@@ -116,3 +123,89 @@ impl UvCmd for LockCmd {
+         }
+     }
+ }
++
++/// Retrieve a secret value from UV store
++#[derive(Debug)]
++pub struct RetrieveCmd {
++    entry: SecretEntry,
++    key: Confidential<Vec<u8>>,
++}
++
++impl RetrieveCmd {
++    /// Maximum size of a retrieved key (=2 pages)
++    pub const MAX_SIZE: usize = ffi::UVIO_RETR_SECRET_MAX_LEN;
++
++    /// Create a retrieve-secret UVC from a [`SecretEntry`].
++    ///
++    /// This uses the index of the secret entry for the UVC.
++    pub fn from_entry(entry: SecretEntry) -> Result<Self> {
++        entry.try_into()
++    }
++
++    /// Transform a [`RetrieveCmd`] into a key-vector.
++    ///
++    /// Only makes sense to call after a successful UVC execution.
++    pub fn into_key(self) -> Confidential<Vec<u8>> {
++        self.key
++    }
++
++    /// Get the secret entry
++    ///
++    /// Get the secret entry that is used as metadata to retrieve the secret
++    pub fn meta_data(&self) -> &SecretEntry {
++        &self.entry
++    }
++}
++
++impl TryFrom<SecretEntry> for RetrieveCmd {
++    type Error = Error;
++
++    fn try_from(entry: SecretEntry) -> Result<Self> {
++        let len = entry.secret_size() as usize;
++
++        // Next to impossible if the secret entry is a valid response from UV
++        if len > Self::MAX_SIZE {
++            return Err(Error::InvalidRetrievableSecretType {
++                id: entry.secret_id().to_owned(),
++                size: len,
++            });
++        }
++
++        // Ensure that an u16 fits into the buffer.
++        let size = std::cmp::max(size_of_val(&entry.index()), len);
++        debug!("Create a buf with {} elements", size);
++        let mut buf = vec![0; size];
++        // The IOCTL expects the secret index in the first two bytes of the buffer. They will be
++        // overwritten in the response
++        entry.index_be().write_to_prefix(&mut buf).unwrap();
++        Ok(Self {
++            entry,
++            key: buf.into(),
++        })
++    }
++}
++
++impl UvCmd for RetrieveCmd {
++    const UV_IOCTL_NR: u8 = ffi::UVIO_IOCTL_RETR_SECRET_NR;
++
++    fn rc_fmt(&self, rc: u16, _: u16) -> Option<&'static str> {
++        match rc {
++            // should not appear (TM), software creates request from a list item
++            0x0009 => Some("the allocated buffer is to small to store the secret"),
++            // should not appear (TM), kernel allocates the memory
++            0x0102 => {
++                Some("access exception recognized when accessing retrieved secret storage area")
++            }
++            // should not appear (TM), software creates request from a list item
++            0x010f => Some("the Secret Store is empty"),
++            // should not appear (TM), software creates request from a list item
++            0x0110 => Some("the Secret Store does not contain a secret with the specified index"),
++            0x0111 => Some("the secret is not retrievable"),
++            _ => None,
++        }
++    }
++
++    fn data(&mut self) -> Option<&mut [u8]> {
++        Some(self.key.value_mut())
++    }
++}
+diff --git a/rust/pv_core/src/uvdevice/secret_list.rs b/rust/pv_core/src/uvdevice/secret_list.rs
+index d20928b5..0a8af504 100644
+--- a/rust/pv_core/src/uvdevice/secret_list.rs
++++ b/rust/pv_core/src/uvdevice/secret_list.rs
+@@ -110,6 +110,11 @@ impl SecretEntry {
+         self.index.get()
+     }
+ 
++    /// Returns the index of this [`SecretEntry`] in BE.
++    pub(crate) fn index_be(&self) -> &U16<BigEndian> {
++        &self.index
++    }
++
+     /// Returns the secret type of this [`SecretEntry`].
+     pub fn stype(&self) -> ListableSecretType {
+         self.stype.into()
+@@ -127,6 +132,16 @@ impl SecretEntry {
+     pub fn id(&self) -> &[u8] {
+         self.id.as_ref()
+     }
++
++    /// Get the id as [`SecretId`] reference
++    pub(crate) fn secret_id(&self) -> &SecretId {
++        &self.id
++    }
++
++    /// Returns the secret size of this [`SecretEntry`].
++    pub fn secret_size(&self) -> u32 {
++        self.len.get()
++    }
+ }
+ 
+ impl Display for SecretEntry {

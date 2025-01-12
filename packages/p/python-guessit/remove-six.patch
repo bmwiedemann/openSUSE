@@ -1,0 +1,21 @@
+Index: guessit-3.8.0/guessit/jsonutils.py
+===================================================================
+--- guessit-3.8.0.orig/guessit/jsonutils.py
++++ guessit-3.8.0/guessit/jsonutils.py
+@@ -4,7 +4,6 @@ JSON Utils
+ """
+ import json
+ 
+-from six import text_type
+ from rebulk.match import Match
+ 
+ class GuessitEncoder(json.JSONEncoder):
+@@ -16,6 +15,6 @@ class GuessitEncoder(json.JSONEncoder):
+         if isinstance(o, Match):
+             return o.advanced
+         if hasattr(o, 'name'):  # Babelfish languages/countries long name
+-            return text_type(o.name)
++            return str(o.name)
+         # pragma: no cover
+-        return text_type(o)
++        return str(o)

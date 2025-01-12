@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:41:11 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.9.1
+  * sip-sdist creates PEP 625 compatible file names. The sdists
+    created by sip-sdist are now compatible with PEP 625 in that
+    they have lower case names. This ensures that they will still
+    be able to be uploaded to PyPI. Resolves #23
+  * Update the minimum version of setuptools. The minimum version
+    of setuptools used by SIP and by the generated sip module
+    sdists has been set to v69.5. This is the oldest version that
+    supports PEP 625. Resolves #55
+  * sip module sdist Requires-Python is incorrect. The minimum
+    Python version in the generated sip module metadata is now set
+    to v3.9. Resolves #56
+- Release v6.9.0
+  * Removal of support for Python v3.8. Generated bindings now
+    require Python v3.9 or later.
+  * Type hints now conform to PEP 585.
+  * The latest sip module ABI versions are v12.16 and v13.9.
+    Resolves #37
+  * Added support for the deprecated() decorator in .pyi files.
+    .pyi files now use the deprecated() decorator when the
+    /Deprecated/ annotation is specified. The /Deprecated/
+    annotation may now specify an optional string which will be
+    appended to the default deprecation warning. Resolves #8
+  * PyQt-specific support for registering QFlags types. Calls to
+    qMetaTypeId() for all QFlags mapped types are now automatically
+    generated for PyQt using ABI v13. Resolves #43
+  ## Bug fixes
+  * The handling of the SIP versions timeline was fixed. (Resolves
+    #47)
+  * Annotations are now only validated if they are known to be
+    needed.
+  * The buffer protocol support for byte objects was fixed.
+    (Resolves #36)
+  * All outstanding compiler warnings were eliminated when building
+    the sip module. (Resolves #32)
+  * Redundant % in trace output of this pointer in were removed.
+    (Pull request #33)
+- Use github tarball and enable test suite
+
+-------------------------------------------------------------------
 Tue Oct 15 12:43:28 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 6.8.6

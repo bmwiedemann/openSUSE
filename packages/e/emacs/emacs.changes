@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 12:26:03 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-29.4-boo1234673.patch
+  * Avoid that Emacs recompiles some packages on every startup (boo#1234673) 
+
+-------------------------------------------------------------------
 Fri Dec 13 14:42:16 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-CVE-2024-53920.patch (bsc#1233894, CVE-2024-53920) 

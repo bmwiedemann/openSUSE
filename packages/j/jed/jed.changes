@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 07 16:26:49 UTC 2025 - kkaempf@suse.de
+
+- Update to version v0.99.19+git177.55b1d75:
+  * pre0.99.20-186: The current point was being moved to the position of the mouse prior to the call to the mouse handlers.  This would sometimes incorrectly position the cursor for horizontally scrolled lines/windows.
+  * pre0.99.20-185: Added support for visual wrapping to the mouse specific functions (affects xjed, etc)
+  * pre0.99.20-184: Added visual wrapping of long lines.  This is distinct from wrapping where newline characters are added to force a line wrap. Visual wrapping is purely a visual effect.  See doc/txt/viswrap.txt for more information.
+  * pre0.99.20-183: lib/dired.sl: The target of symbolic links were getting removed instead of the symbolic link itself
+  * pre0.99.20-182: Added an option to display the timestamp in the recent file list menu item.  This can be turned off using the Recentx_Display_Timestamp variable
+  * pre0.99.20-181: lib/slmode.sl: Added "abs" to the keyword list
+  * pre0.99.20-179: Use insert_byte instead of insert_char when decoding quoted-printable
+  * pre0.99.20-179: The regular expression \&, which matches the whole match, was not being handled properly
+  * pre0.99.20-178: s2 used instead of s1 in mark_window_attributes
+  * pre0.99.20-177: Updated copyright year
+
+- get source from git://git.jedsoft.org/git/jed.git
+
+- rename jed-0.99-19.dif to 0001-Fix-path-and-settings-for-Linux.patch
+-------------------------------------------------------------------
 Fri Jan  3 21:47:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - adapt spec file for newer Tumbleweed:

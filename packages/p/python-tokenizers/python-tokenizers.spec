@@ -1,7 +1,7 @@
 #
 # spec file for package python-tokenizers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 Requires:       python-huggingface-hub
 %python_subpackages
 

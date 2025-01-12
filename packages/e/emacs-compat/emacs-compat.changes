@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  9 12:13:53 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Install also compat-mac.el as native compilation search for it 
+
+-------------------------------------------------------------------
 Sat Aug  3 17:21:16 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add back the install_info macro's for Leap, info triggers

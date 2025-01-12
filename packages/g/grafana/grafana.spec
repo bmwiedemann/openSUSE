@@ -1,7 +1,7 @@
 #
 # spec file for package grafana
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source3:        README
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
 Patch2:         0002-Use-bash-instead-of-env.patch
+# CVE-2024-45337 Bump golang.org/x/crypto
+Patch4:         0004-Bump-crypto.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  wire

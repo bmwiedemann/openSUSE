@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ Patch0:         gnome-settings-daemon-initial-keyboard.patch
 Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
 # PATCH-FIX-UPSTREAM 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch glgo#GNOME/gnome-settings-daemon#780, bsc#1226423, CVE-2024-38394 sckang@suse.com -- usb-protection: Treat hubs and HID devices like any other USB gadget
 Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
+# PATCH-FIX-UPSTREAM gnome-settings-daemon-fix-stop-service.patch bsc#1233824 glgo#GNOME/gnome-settings-daemon!395-- sharing: Stop systemd service waiting when daemon is stopping
+Patch5:         gnome-settings-daemon-fix-stop-service.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep

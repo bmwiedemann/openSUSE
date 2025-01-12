@@ -1,7 +1,7 @@
 #
 # spec file for package perl-TheSchwartz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,32 @@
 
 %define cpan_name TheSchwartz
 Name:           perl-TheSchwartz
-Version:        1.17
+Version:        1.180.0
 Release:        0
-Summary:        Reliable job queue
+# 1.18 -> normalize -> 1.180.0
+%define cpan_version 1.18
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Reliable job queue
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AK/AKIYM/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AK/AKIYM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Accessor::Fast)
 BuildRequires:  perl(Data::ObjectDriver) >= 0.04
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 Requires:       perl(Class::Accessor::Fast)
 Requires:       perl(Data::ObjectDriver) >= 0.04
+Provides:       perl(TheSchwartz) = %{version}
+Provides:       perl(TheSchwartz::Error)
+Provides:       perl(TheSchwartz::ExitStatus)
+Provides:       perl(TheSchwartz::FuncMap)
+Provides:       perl(TheSchwartz::Job)
+Provides:       perl(TheSchwartz::JobHandle)
+Provides:       perl(TheSchwartz::Worker)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -60,8 +71,9 @@ coalescing value. The worker that grabs that job could then batch deliver
 all the mail for that domain once it connects to that domain's mail server.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
@@ -75,7 +87,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes doc minil.toml README.md
+%doc Changes doc README.md
 %license LICENSE
 
 %changelog

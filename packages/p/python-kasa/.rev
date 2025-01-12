@@ -62,4 +62,12 @@
 - skip python 3.6 (only compatible with python 3.7+)</comment>
     <requestid>1135323</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7f076eb862121b321b1986d0bd1a3c4b</srcmd5>
+    <version>0.5.4</version>
+    <time>1736681146</time>
+    <user>anag+factory</user>
+    <comment>- We don't need to clean up the CHANGELOG anymore.</comment>
+    <requestid>1236765</requestid>
+  </revision>
 </revisionlist>

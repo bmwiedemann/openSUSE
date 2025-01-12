@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 13 05:33:30 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.390.0 (4.39)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.39 2024-12-12 (rurban)
+          - Fix Windows -Dusequadmath (sisyphus GH #235, GH #229)
+          - Fix inconsistent behavior between decoding escaped and unescaped
+            surrogates, and escaped non-characters vs non-escaped non-characters.
+            Now aligned to JSON::PP (Gavin Hayes GH #233, GH #227)
+          - Add type_all_string tests (Bernhard Schmalhofer GH #236)
+          - Silence UV to char cast warnings  (bulk88 GH #232)
+          - Fix MSVC preprocessor errors (bulk88 GH #232)
+          - Fix -Wformat warnings on Windows (sisyphus GH #228)
+          - Clarify BigInt decoding (GH #226)
+
+-------------------------------------------------------------------
 Sun Jun 23 16:13:17 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 4.380.0 (4.38)

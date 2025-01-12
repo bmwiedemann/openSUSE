@@ -20,7 +20,7 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-sdkutils
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        AWS C SDK Utils
 License:        Apache-2.0

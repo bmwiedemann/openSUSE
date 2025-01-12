@@ -29,7 +29,7 @@
 %endif
 %bcond_without qt5
 Name:           wireshark
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -54,7 +54,7 @@ BuildRequires:  libgnutls-devel >= 3.2
 BuildRequires:  libpcap-devel
 BuildRequires:  libsmi-devel
 BuildRequires:  libtool
-BuildRequires:  lua51-devel
+BuildRequires:  lua-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre2-devel

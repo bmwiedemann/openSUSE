@@ -18,14 +18,12 @@
 
 %define cpan_name experimental
 Name:           perl-experimental
-Version:        0.32.0
+Version:        0.033
 Release:        0
-# 0.032 -> normalize -> 0.32.0
-%define cpan_version 0.032
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Experimental features made easy
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -33,9 +31,6 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.89
 BuildRequires:  perl(version)
 Requires:       perl(version)
-Provides:       perl(experimental) = %{version}
-Provides:       perl(stable) = %{version}
-%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -56,7 +51,7 @@ enclosing lexical scope:
   use experimental 'feature-name';
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

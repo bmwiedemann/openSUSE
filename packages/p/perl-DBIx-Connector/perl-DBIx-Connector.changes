@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 21 05:32:30 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.600.0 (0.60)
+   see /usr/share/doc/packages/perl-DBIx-Connector/Changes
+
+  0.60  Mon 21 Oct 2024
+        - MariaDB support (Issue #50)
+        - Fix for leaking $@ from driver constructor (Issue #51)
+        - Fix for swallowing driver compile errors
+
+-------------------------------------------------------------------
 Mon Jul  3 03:06:57 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.59

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:36:15 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2024.09.0
+  * Link peak from sparse dataset to the dense one when using 
+    densify_Bragg
+  * New tool hdf2neggia which converts any HDF5 file compatible into 
+    something compatible with XDS+neggia plug-in
+  * support new detector: LambdaImage
+  * Fix endianness issue in several file-format
+  * Fix bug in edf.fast_data_read
+  * Fix warnings which became errors in gcc14
+  * Supports Python 3.8-3.12
+
+-------------------------------------------------------------------
 Thu Jul  4 07:20:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2024.4:

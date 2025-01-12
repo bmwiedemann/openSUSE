@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,8 @@ Patch8:         plymouth-log-on-default.patch
 Patch9:         plymouth-screen-twice-scale-on-160DPI-higher.patch
 # PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
 Patch10:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
+# PATCH-FIX-SLE plymouth-support-multi-monitor-hotplugin.patch bsc#1231214 qzhao@suse.com -- support the 2nd monitor hotplugin to the system to display the same content with the first monitor.
+Patch13:        plymouth-support-multi-monitor-hotplugin.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc

@@ -1,7 +1,7 @@
 #
 # spec file for package python-click
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click
-Version:        8.1.7
+Version:        8.1.8
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
@@ -26,8 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/click
 Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +46,10 @@ defaults out of the box.
 %autosetup -p1 -n click-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,9 +57,9 @@ export LANG=en_US.UTF-8
 %pytest -rs --tb=short
 
 %files %{python_files}
-%license LICENSE.rst
-%doc CHANGES.rst README.rst
+%license LICENSE.txt
+%doc CHANGES.rst README.md
 %{python_sitelib}/click
-%{python_sitelib}/click-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/click-%{version}.dist-info
 
 %changelog

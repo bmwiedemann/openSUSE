@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  8 17:41:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Modernize building of the Python subpackage, don't generate *.egg.
+
+-------------------------------------------------------------------
 Tue Dec 31 13:57:21 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Remove use-FORTIFY_SOURCE-from-distribution.patch, as it is now

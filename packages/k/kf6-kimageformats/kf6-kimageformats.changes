@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:12:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.10.0
+- Changes since 6.9.0:
+  * Update dependency version to 6.10.0
+  * avif: color profiles improvements
+  * Update heif.json
+  * HEIF plug-in extended to read AVCI format
+  * Readme updated with some clarification
+  * DDS: enable plugin by default
+  * PSD: Added support to MCH1 and MCH2
+  * XCF: Fix OSS Fuzz issue 42527849
+  * JXR: Fix loss of HDR data on write for format RGBA16FPx16_Premultiplied
+  * DDS: Fix for OSS Fuzz issue 384974505
+  * DDS: improved read/write support
+  * Read / Write test: added NULL device test
+  * DDS: multiple FP improvements
+  * PFM: fix error when loading images with comments
+  * DDS: fix buffer overflow in readCubeMap
+  * Re-added DDS plugin support
+  * Update version to 6.10.0
+
+-------------------------------------------------------------------
 Sun Dec  8 10:09:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0

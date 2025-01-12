@@ -7,6 +7,14 @@ Wed Dec  4 14:03:31 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
   fbdev interfaces.(bsc#1232727)
 
 -------------------------------------------------------------------
+Fri Nov  1 13:17:39 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-support-multi-monitor-hotplugin.patch:
+  To support the 2nd monitor hotplugin to the system in random
+  order. Display the same content is fine.
+  (bsc#1231214)
+
+-------------------------------------------------------------------
 Mon Aug 28 03:33:51 UTC 2023 - Cliff Zhao <qzhao@suse.com>
 
 - Remove plymouth-runstatedir-revert.patch: Tumbleweed following

@@ -1,7 +1,7 @@
 #
 # spec file for package python-kasa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ Requires:       python-setuptools
 Requires:       python-voluptuous
 Requires:       python-xdoctest
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -68,7 +68,6 @@ find . -name \*.py -o -name \*.json -exec chmod -x '{}' \;
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/kasa
-%python_expand rm %{buildroot}%{$python_sitelib}/CHANGELOG.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

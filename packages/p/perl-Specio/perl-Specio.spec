@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Specio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,19 @@
 
 %define cpan_name Specio
 Name:           perl-Specio
-Version:        0.48
+Version:        0.490.0
 Release:        0
+# 0.49 -> normalize -> 0.490.0
+%define cpan_version 0.49
 License:        Artistic-2.0
 Summary:        Type constraints and coercions for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Clone)
 BuildRequires:  perl(Devel::StackTrace)
 BuildRequires:  perl(Eval::Closure)
 BuildRequires:  perl(List::Util) >= 1.33
@@ -43,6 +46,7 @@ BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(XString)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.83
+Requires:       perl(Clone)
 Requires:       perl(Devel::StackTrace)
 Requires:       perl(Eval::Closure)
 Requires:       perl(List::Util) >= 1.33
@@ -57,6 +61,47 @@ Requires:       perl(Try::Tiny)
 Requires:       perl(XString)
 Requires:       perl(parent)
 Requires:       perl(version) >= 0.83
+Provides:       perl(Specio) = %{version}
+Provides:       perl(Specio::Coercion) = %{version}
+Provides:       perl(Specio::Constraint::AnyCan) = %{version}
+Provides:       perl(Specio::Constraint::AnyDoes) = %{version}
+Provides:       perl(Specio::Constraint::AnyIsa) = %{version}
+Provides:       perl(Specio::Constraint::Enum) = %{version}
+Provides:       perl(Specio::Constraint::Intersection) = %{version}
+Provides:       perl(Specio::Constraint::ObjectCan) = %{version}
+Provides:       perl(Specio::Constraint::ObjectDoes) = %{version}
+Provides:       perl(Specio::Constraint::ObjectIsa) = %{version}
+Provides:       perl(Specio::Constraint::Parameterizable) = %{version}
+Provides:       perl(Specio::Constraint::Parameterized) = %{version}
+Provides:       perl(Specio::Constraint::Role::CanType) = %{version}
+Provides:       perl(Specio::Constraint::Role::DoesType) = %{version}
+Provides:       perl(Specio::Constraint::Role::Interface) = %{version}
+Provides:       perl(Specio::Constraint::Role::IsaType) = %{version}
+Provides:       perl(Specio::Constraint::Simple) = %{version}
+Provides:       perl(Specio::Constraint::Structurable) = %{version}
+Provides:       perl(Specio::Constraint::Structured) = %{version}
+Provides:       perl(Specio::Constraint::Union) = %{version}
+Provides:       perl(Specio::Declare) = %{version}
+Provides:       perl(Specio::DeclaredAt) = %{version}
+Provides:       perl(Specio::Exception) = %{version}
+Provides:       perl(Specio::Exporter) = %{version}
+Provides:       perl(Specio::Helpers) = %{version}
+Provides:       perl(Specio::Library::Builtins) = %{version}
+Provides:       perl(Specio::Library::Numeric) = %{version}
+Provides:       perl(Specio::Library::Perl) = %{version}
+Provides:       perl(Specio::Library::String) = %{version}
+Provides:       perl(Specio::Library::Structured) = %{version}
+Provides:       perl(Specio::Library::Structured::Dict) = %{version}
+Provides:       perl(Specio::Library::Structured::Map) = %{version}
+Provides:       perl(Specio::Library::Structured::Tuple) = %{version}
+Provides:       perl(Specio::OO) = %{version}
+Provides:       perl(Specio::PartialDump) = %{version}
+Provides:       perl(Specio::Registry) = %{version}
+Provides:       perl(Specio::Role::Inlinable) = %{version}
+Provides:       perl(Specio::Subs) = %{version}
+Provides:       perl(Specio::TypeChecks) = %{version}
+Provides:       perl(Test::Specio) = %{version}
+%undefine       __perllib_provides
 Recommends:     perl(Ref::Util) >= 0.112
 Recommends:     perl(Sub::Util) >= 1.40
 %{perl_requires}
@@ -73,12 +118,10 @@ to apply a type to a variable at all.
 Instead, you can explicitly check a value against a type, and optionally
 coerce values to that type.
 
-My long-term goal is to replace Moose's built-in types and MooseX::Types
-with this module.
-
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

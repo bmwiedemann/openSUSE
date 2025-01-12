@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.9.5
+Version:        2.10.1
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -28,10 +28,11 @@ Source:         https://github.com/SSSD/sssd/releases/download/%version/%name-%v
 Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
-Patch1:         krb-noversion.diff
-Patch2:         harden_sssd-ifp.service.patch
-Patch3:         harden_sssd-kcm.service.patch
-Patch4:         symvers.patch
+Patch1:         0001-TOOL-Fix-build-parameter-name-omitted.patch
+Patch11:        krb-noversion.diff
+Patch12:        harden_sssd-ifp.service.patch
+Patch13:        harden_sssd-kcm.service.patch
+Patch14:        symvers.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bind-utils
@@ -48,26 +49,32 @@ BuildRequires:  libtool
 BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
+BuildRequires:  libopenssl-3-devel
 BuildRequires:  nscd
 BuildRequires:  nss_wrapper
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config >= 0.21
+BuildRequires:  python3-wheel
+BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  uid_wrapper
 BuildRequires:  pkgconfig(augeas) >= 1.0.0
 BuildRequires:  pkgconfig(collection) >= 0.5.1
 BuildRequires:  pkgconfig(dbus-1) >= 1.0.0
 BuildRequires:  pkgconfig(dhash) >= 0.4.2
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(ini_config) >= 1.1.0
+BuildRequires:  pkgconfig(ini_config) >= 1.3
 BuildRequires:  pkgconfig(jansson)
-BuildRequires:  pkgconfig(ldb) >= 0.9.2
+BuildRequires:  pkgconfig(ldb) >= 1.2.0
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcares)
-BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcrypto) >= 1.0.1
 %if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libcurl)
 %endif
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libnfsidmap)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnl-route-3.0) >= 3.0
@@ -93,7 +100,10 @@ BuildRequires:  pkgconfig(uuid)
 # Package contains just config files, not needed for build.
 #!BuildIgnore: libldap-data
 %endif
+%sysusers_requires
 %{?systemd_ordering}
+Requires(post): permissions
+Requires(verify): permissions
 Requires:       sssd-ldap = %version-%release
 Requires(postun): pam-config
 Provides:       libsss_sudo = %version-%release
@@ -102,13 +112,23 @@ Obsoletes:      libsss_sudo < %version-%release
 Provides:       sssd-common = %version-%release
 Obsoletes:      sssd-common < %version-%release
 
+%global sssd_user sssd
 %define servicename	sssd
 %define sssdstatedir	%_localstatedir/lib/sss
 %define dbpath		%sssdstatedir/db
 %define pipepath	%sssdstatedir/pipes
 %define pubconfpath	%sssdstatedir/pubconf
 %define gpocachepath	%sssdstatedir/gpo_cache
+%define keytabdir	%sssdstatedir/keytabs
+%define mcpath		%sssdstatedir/mc
 %define ldbdir %(pkg-config ldb --variable=modulesdir)
+
+
+%if 0%{?suse_version} >= 1600
+%define permissions_path %_datadir/permissions/permissions.d/
+%else
+%define permissions_path %_sysconfdir/permissions.d/
+%endif
 
 # Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
 # %%_sysconfdir/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
@@ -122,11 +142,11 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
 %description
-Provides a set of daemons to manage access to remote directories and
-authentication mechanisms. It provides an NSS and PAM interface toward
-the system and a pluggable backend system to connect to multiple different
-account sources. It is also the basis to provide client auditing and policy
-services for projects like FreeIPA.
+A set of daemons to manage access to remote directories and
+authentication mechanisms. sssd provides an NSS and PAM interfaces
+toward the system and a pluggable backend system to connect to
+multiple different account sources. It is also the basis to provide
+client auditing and policy services for projects like FreeIPA.
 
 %package ad
 Summary:        The ActiveDirectory backend plugin for sssd
@@ -136,9 +156,8 @@ Requires:       %name-krb5-common = %version-%release
 Requires:       adcli
 
 %description ad
-Provides the Active Directory back end that the SSSD can utilize to
-fetch identity data from and authenticate against an Active Directory
-server.
+A back-end provider that the SSSD can utilize to fetch identity data
+from, and authenticate with, an Active Directory server.
 
 %package dbus
 Summary:        The D-Bus responder of sssd
@@ -147,7 +166,7 @@ Group:          System/Base
 Requires:       %name = %version
 
 %description dbus
-Provides the D-Bus responder of sssd, called InfoPipe, which allows
+D-Bus responder of sssd, called InfoPipe, which allows
 information from sssd to be transmitted over the system bus.
 
 %package ipa
@@ -161,8 +180,8 @@ Obsoletes:      %name-ipa-provider < %version-%release
 Provides:       %name-ipa-provider = %version-%release
 
 %description ipa
-Provides the IPA back end that the SSSD can utilize to fetch identity
-data from and authenticate against an IPA server.
+A back-end provider that the SSSD can utilize to fetch identity data
+from, and authenticate with, an IPA server.
 
 %package kcm
 Summary:        SSSD's Kerberos cache manager
@@ -181,14 +200,16 @@ Group:          System/Daemons
 Requires:       %name-krb5-common = %version-%release
 
 %description krb5
-Provides the Kerberos back end that the SSSD can utilize authenticate
-against a Kerberos server.
+A back-end provider that the SSSD can utilize to authenticate against
+a Kerberos server.
 
 %package krb5-common
 Summary:        SSSD helpers needed for Kerberos and GSSAPI authentication
 License:        GPL-3.0-or-later
 Group:          System/Daemons
 Requires:       cyrus-sasl-gssapi
+Requires(post): permissions
+Requires(verify): permissions
 
 %description krb5-common
 Provides helper processes that the LDAP and Kerberos back ends can
@@ -201,8 +222,8 @@ Group:          System/Daemons
 Requires:       %name-krb5-common = %version-%release
 
 %description ldap
-Provides the LDAP back end that the SSSD can utilize to fetch
-identity data from and authenticate against an LDAP server.
+A back-end provider that the SSSD can utilize to fetch identity data
+from, and authenticate with, an LDAP server.
 
 %package proxy
 Summary:        The proxy backend plugin for sssd
@@ -210,8 +231,8 @@ License:        GPL-3.0-or-later
 Group:          System/Daemons
 
 %description proxy
-Provides the proxy back end which can be used to wrap an existing NSS
-and/or PAM modules to leverage SSSD caching.
+A back-end provider which can be used to wrap existing NSS and/or PAM
+modules to leverage SSSD caching. (This can replace nscd.)
 
 %package tools
 Summary:        Commandline tools for sssd
@@ -221,7 +242,7 @@ Requires:       python3-sssd-config = %version-%release
 Requires:       sssd = %version
 
 %description tools
-The packages contains commandline tools for managing users and groups using
+The packages contains command-line tools for managing users and groups using
 the "local" id provider of the System Security Services Daemon (sssd).
 
 %package winbind-idmap
@@ -238,7 +259,7 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n libsss_certmap0
-A utility library for FreeIPA to map certs.
+A utility library for FreeIPA to map certificates.
 
 %package -n libsss_certmap-devel
 Summary:        Development files for the FreeIPA certmap library
@@ -247,7 +268,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libsss_certmap0 = %version
 
 %description -n libsss_certmap-devel
-A utility library for FreeIPA to map certs.
+A utility library for FreeIPA to map certificates.
 
 %package -n libipa_hbac0
 Summary:        FreeIPA HBAC Evaluator library
@@ -311,7 +332,6 @@ Requires:       libsss_nss_idmap0 = %version
 %description -n libsss_nss_idmap-devel
 A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
-%if 0%{?suse_version} < 1600
 %package -n libsss_simpleifp0
 Summary:        The SSSD D-Bus responder helper library
 License:        GPL-3.0-or-later
@@ -334,7 +354,6 @@ Requires:       libsss_simpleifp0 = %version
 This subpackage provides the development files for sssd's simpleifp,
 a library that simplifies the D-Bus API for the SSSD InfoPipe
 responder.
-%endif
 
 %package -n libsss_sudo
 Summary:        A library to allow communication between sudo and SSSD
@@ -401,27 +420,26 @@ autoreconf -fiv
 	--with-environment-file="%_sysconfdir/sysconfig/sssd" \
 	--with-initscript=systemd \
 	--with-syslog=journald \
-	--with-pid-path="%_rundir" \
-	--enable-nsslibdir="/%_lib" \
+	--with-pid-path="%_rundir/sssd" \
 	--enable-pammoddir="%_pam_moduledir" \
 	--with-ldb-lib-dir="%ldbdir" \
 	--with-os=suse \
 	--disable-ldb-version-check \
 	--without-python2-bindings \
 	--without-oidc-child \
+	--with-sssd-user="%sssd_user" \
 %if 0%{?suse_version} >= 1600
 	--with-selinux=yes \
 	--with-subid
 %else
 	--with-selinux=no \
-	--with-semanage=no \
 	--with-libsifp \
 	--with-files-provider
 %endif
 %make_build all
 
 %install
-# sss_obfuscate is compatible with both python 2 and 3
+# sss_obfuscate is compatible with both Python 2 and 3
 perl -i -lpe 's{%_bindir/python\b}{%_bindir/python3}' src/tools/sss_obfuscate
 %make_install dbuspolicydir=%_datadir/dbus-1/system.d
 b="%buildroot"
@@ -455,22 +473,44 @@ find "$b" -type f -name "*.la" -print -delete
 %find_lang %name --all-name
 
 # dummy target for cifs-idmap-plugin
-mkdir -pv %buildroot/%_sysconfdir/alternatives %buildroot/%_sysconfdir/cifs-utils
-ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
+mkdir -pv "$b/%_sysconfdir/alternatives" "$b/%_sysconfdir/cifs-utils"
+ln -sfv "%_sysconfdir/alternatives/%cifs_idmap_name" "$b/%cifs_idmap_plugin"
 %python3_fix_shebang
 %if 0%{?suse_version} > 1600
-%python3_fix_shebang_path %buildroot/%_libexecdir/%name/
+%python3_fix_shebang_path %buildroot/%_libexecdir/%name/sss_analyze
 %elif 0%{?suse_version} == 1600
 # python3_fix_shebang_path macro does not exist in < 1600, was added in python-rom-macros 20231204
-sed -i '1s@#!.*python.*@#!%{_bindir}/python3.11@' %{buildroot}/%{_libexecdir}/%{name}/sss_analyze
+sed -i '1s@#!.*python.*@#!%_bindir/python3.11@' "$b/%_libexecdir/%name/sss_analyze"
 %endif
+
+echo 'u sssd - "System Security Services Daemon" /run/sssd /sbin/nologin' >system-user-sssd.conf
+mkdir -p "$b/%_sysusersdir"
+cp -a system-user-sssd.conf "$b/%_sysusersdir/"
+%sysusers_generate_pre system-user-sssd.conf random system-user-sssd.conf
+install -Dpm 0644 contrib/sssd-tmpfiles.conf "%buildroot/%_tmpfilesdir/%name.conf"
+#
+# Security considerations for capabilities, chown and stuff:
+# https://www.openwall.com/lists/oss-security/2024/12/19/1
+#
+# should match entry from %%files list
+mkdir -p "$b/%permissions_path"
+cat >"$b/%permissions_path/sssd" <<-EOF
+	%_libexecdir/sssd/sssd_pam root:sssd 0750
+	 +capabilities cap_dac_read_search=p
+	%_libexecdir/sssd/selinux_child root:sssd 0750
+	 +capabilities cap_setgid,cap_setuid=p
+	%_libexecdir/sssd/krb5_child root:sssd 0750
+	 +capabilities cap_dac_read_search,cap_setgid,cap_setuid=p
+	%_libexecdir/sssd/ldap_child root:sssd 0750
+	 +capabilities cap_dac_read_search=p
+EOF
 
 %check
 # sss_config-tests fails
 %make_build check || :
 
-%pre
-%service_add_pre sssd.service
+%pre -f random.pre
+%service_add_pre sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 %if "%{?_distconfdir}" != ""
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in sssd/sssd.conf pam.d/sssd-shadowutils logrotate.d/sssd ; do
@@ -484,38 +524,38 @@ done
 if [ -f "%_sysconfdir/sssd/sssd.conf" ]; then
 	/bin/sed -i -e 's,^krb5_kdcip =,krb5_server =,g' "%_sysconfdir/sssd/sssd.conf"
 fi
-%service_add_post sssd.service
+%service_add_post sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
+
+%_bindir/rm -f %mcpath/passwd %mcpath/group %mcpath/initgroups %mcpath/sid
+%tmpfiles_create %name.conf
+%set_permissions %_libexecdir/%name/selinux_child %_libexecdir/%name/sssd_pam
 
 # install SSSD cifs-idmap plugin as an alternative
 update-alternatives --install %cifs_idmap_plugin %cifs_idmap_name %cifs_idmap_lib %cifs_idmap_priority
 
 %preun
-%service_del_preun sssd.service
+%service_del_preun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
 %postun
 /sbin/ldconfig
-if [ "$1" = "0" -a -x "%_sbindir/pam-config" ]; then
+if [ "$1" = "0" ] && [ -x "%_sbindir/pam-config" ]; then
 	"%_sbindir/pam-config" -d --sss || :
 fi
 # del_postun includes a try-restart
-%service_del_postun sssd.service
+%service_del_postun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
 if [ ! -f "%cifs_idmap_lib" ]; then
 	update-alternatives --remove %cifs_idmap_name %cifs_idmap_lib
 fi
 
-%post   -n libsss_certmap0 -p /sbin/ldconfig
-%postun -n libsss_certmap0 -p /sbin/ldconfig
-%post   -n libipa_hbac0 -p /sbin/ldconfig
-%postun -n libipa_hbac0 -p /sbin/ldconfig
-%post   -n libsss_idmap0 -p /sbin/ldconfig
-%postun -n libsss_idmap0 -p /sbin/ldconfig
-%post   -n libsss_nss_idmap0 -p /sbin/ldconfig
-%postun -n libsss_nss_idmap0 -p /sbin/ldconfig
-%if 0%{?suse_version} < 1600
-%post   -n libsss_simpleifp0 -p /sbin/ldconfig
-%postun -n libsss_simpleifp0 -p /sbin/ldconfig
-%endif
+%ldconfig_scriptlets -n libsss_certmap0
+%ldconfig_scriptlets -n libipa_hbac0
+%ldconfig_scriptlets -n libsss_idmap0
+%ldconfig_scriptlets -n libsss_nss_idmap0
+%ldconfig_scriptlets -n libsss_simpleifp0
+
+%verifyscript
+%verify_permissions -e %_libexecdir/%name/selinux_child %_libexecdir/%name/sssd_pam
 
 %triggerun -- %name < %version-%release
 # sssd takes care of upgrading the database but it doesn't handle downgrades.
@@ -550,17 +590,27 @@ fi
 %postun kcm
 %service_del_postun sssd-kcm.service sssd-kcm.socket
 
+%pre krb5-common -f random.pre
+
+%post krb5-common
+%set_permissions %_libexecdir/%name/krb5_child %_libexecdir/%name/ldap_child
+
+%verifyscript krb5-common
+%verify_permissions -e %_libexecdir/%name/krb5_child %_libexecdir/%name/ldap_child
+
+%pre proxy -f random.pre
+
 %pretrans
 # Migrate sssd.service from sssd-common to sssd
 systemctl is-enabled sssd.service > /dev/null
 if [ $? -eq 0 ]; then
-mkdir -p /run/systemd/rpm/
-touch /run/systemd/rpm/sssd-was-enabled
+	mkdir -p /run/systemd/rpm/
+	touch /run/systemd/rpm/sssd-was-enabled
 fi
 systemctl is-active sssd.service > /dev/null
 if [ $? -eq 0 ]; then
-mkdir -p /run/systemd/rpm/
-touch /run/systemd/rpm/sssd-was-active
+	mkdir -p /run/systemd/rpm/
+	touch /run/systemd/rpm/sssd-was-active
 fi
 
 %posttrans
@@ -572,20 +622,20 @@ done
 %endif
 # Migrate sssd.service from sssd-common to sssd
 if [ -e /run/systemd/rpm/sssd-was-enabled ]; then
-systemctl is-enabled sssd.service > /dev/null
-if [ $? -ne 0 ]; then
-    echo "Migrating sssd.service, was enabled"
-    systemctl enable sssd.service
-fi
-rm /run/systemd/rpm/sssd-was-enabled
+	systemctl is-enabled sssd.service >/dev/null
+	if [ $? -ne 0 ]; then
+		echo "Migrating sssd.service, was enabled"
+		systemctl enable sssd.service
+	fi
+	rm /run/systemd/rpm/sssd-was-enabled
 fi
 if [ -e /run/systemd/rpm/sssd-was-active ]; then
-systemctl is-active sssd.service > /dev/null
-if [ $? -ne 0 ]; then
-    echo "Migrating sssd.service, was active"
-    systemctl start sssd.service
-fi
-rm /run/systemd/rpm/sssd-was-active
+	systemctl is-active sssd.service >/dev/null
+	if [ $? -ne 0 ]; then
+		echo "Migrating sssd.service, was active"
+		systemctl start sssd.service
+	fi
+	rm /run/systemd/rpm/sssd-was-active
 fi
 
 %files -f sssd.lang
@@ -598,12 +648,17 @@ fi
 %_unitdir/sssd-pac.socket
 %_unitdir/sssd-pac.service
 %_unitdir/sssd-pam.socket
-%_unitdir/sssd-pam-priv.socket
 %_unitdir/sssd-pam.service
 %_unitdir/sssd-ssh.socket
 %_unitdir/sssd-ssh.service
 %_unitdir/sssd-sudo.socket
 %_unitdir/sssd-sudo.service
+%_sysusersdir/*sssd*
+%_tmpfilesdir/*sssd*
+%permissions_path/sssd
+%dir %_datadir/polkit-1
+%attr(0555,root,root) %dir %_datadir/polkit-1/rules.d
+%_datadir/polkit-1/rules.d/*
 %_bindir/sss_ssh_*
 %_sbindir/sssd
 %if 0%{?suse_version} < 1600
@@ -647,7 +702,6 @@ fi
 %_libdir/%name/libsss_files*
 %endif
 %_libdir/%name/libsss_iface*
-%_libdir/%name/libsss_semanage*
 %_libdir/%name/libsss_sbus*
 %_libdir/%name/libsss_simple*
 %_libdir/%name/libsss_util*
@@ -660,32 +714,33 @@ fi
 %_libexecdir/%name/sssd_autofs
 %_libexecdir/%name/sssd_be
 %_libexecdir/%name/sssd_nss
-%_libexecdir/%name/sssd_pam
+%attr(750,root,%sssd_user) %caps(cap_dac_read_search=p) %_libexecdir/%name/sssd_pam
 %_libexecdir/%name/sssd_ssh
 %_libexecdir/%name/sssd_sudo
 %_libexecdir/%name/sss_signal
 %_libexecdir/%name/sssd_check_socket_activated_responders
 %if 0%{?suse_version} >= 1600
-%_libexecdir/%name/selinux_child
+%attr(750,root,%sssd_user) %caps(cap_setgid,cap_setuid=p) %_libexecdir/%name/selinux_child
 %endif
 %dir %sssdstatedir
-%attr(700,root,root) %dir %dbpath/
-%attr(755,root,root) %dir %pipepath/
-%attr(700,root,root) %dir %pipepath/private/
-%attr(755,root,root) %dir %pubconfpath/
-%attr(755,root,root) %dir %pubconfpath/krb5.include.d
-%attr(755,root,root) %dir %gpocachepath/
-%attr(755,root,root) %dir %sssdstatedir/mc/
-%attr(700,root,root) %dir %sssdstatedir/keytabs/
-%attr(750,root,root) %dir %_localstatedir/log/%name/
+%attr(700,%sssd_user,%sssd_user) %dir %dbpath/
+%attr(755,%sssd_user,%sssd_user) %dir %pipepath/
+%attr(700,%sssd_user,%sssd_user) %dir %pipepath/private/
+%attr(755,%sssd_user,%sssd_user) %dir %pubconfpath/
+%attr(755,%sssd_user,%sssd_user) %dir %pubconfpath/krb5.include.d
+%attr(755,%sssd_user,%sssd_user) %dir %gpocachepath/
+%attr(755,%sssd_user,%sssd_user) %dir %mcpath/
+%attr(700,%sssd_user,%sssd_user) %dir %keytabdir/
+%attr(750,%sssd_user,%sssd_user) %dir %_localstatedir/log/%name/
+%attr(775,%sssd_user,%sssd_user) %dir %sssdstatedir/
 %if "%{?_distconfdir}" != ""
-%dir %_distconfdir/sssd/
-%%dir %_distconfdir/sssd/conf.d
-%config(noreplace) %_distconfdir/sssd/sssd.conf
+%attr(750,root,%sssd_user) %dir %_distconfdir/sssd/
+%attr(750,root,%sssd_user) %dir %_distconfdir/sssd/conf.d
+%attr(640,root,%sssd_user) %_distconfdir/sssd/sssd.conf
 %else
-%dir %_sysconfdir/sssd/
-%%dir %_sysconfdir/sssd/conf.d
-%config(noreplace) %_sysconfdir/sssd/sssd.conf
+%attr(750,root,%sssd_user) %dir %_sysconfdir/sssd/
+%attr(750,root,%sssd_user) %dir %_sysconfdir/sssd/conf.d
+%ghost %attr(640,root,%sssd_user) %config(noreplace) %_sysconfdir/sssd/sssd.conf
 %endif
 %if 0%{?suse_version} > 1500
 %_distconfdir/logrotate.d/sssd
@@ -704,11 +759,12 @@ fi
 %else
 %exclude %_mandir/*/*/sssd-files.5.gz
 %endif
+%attr(775,%sssd_user,%sssd_user) %ghost %dir %_rundir/sssd
 %doc src/examples/sssd.conf
 #
 # sssd-client
 #
-/%_lib/libnss_sss.so.2
+%_libdir/libnss_sss.so.2
 %_pam_moduledir/pam_sss.so
 %_pam_moduledir/pam_sss_gss.so
 %_libdir/krb5/
@@ -793,8 +849,8 @@ fi
 %dir %_libdir/%name/
 %_libdir/%name/libsss_krb5_common.so
 %dir %_libexecdir/%name/
-%_libexecdir/%name/krb5_child
-%_libexecdir/%name/ldap_child
+%attr(750,root,%sssd_user) %caps(cap_dac_read_search,cap_setgid,cap_setuid=p) %_libexecdir/%name/krb5_child
+%attr(750,root,%sssd_user) %caps(cap_dac_read_search=p) %_libexecdir/%name/ldap_child
 
 %files ldap
 %dir %_libdir/%name/
@@ -811,7 +867,7 @@ fi
 %dir %_libdir/%name/
 %_libdir/%name/libsss_proxy.so
 %dir %_libexecdir/%name/
-%_libexecdir/%name/proxy_child
+%attr(750,root,%sssd_user) %_libexecdir/%name/proxy_child
 %dir %_datadir/%name/
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-proxy.conf

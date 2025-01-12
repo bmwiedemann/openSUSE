@@ -1,7 +1,7 @@
 #
 # spec file for package python-fido2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fido2
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Python-based FIDO 2.0 library
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Yubico/python-fido2
 Source0:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz
-Source1:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz.asc
+Source1:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cryptography >= 2.6}

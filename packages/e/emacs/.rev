@@ -2071,4 +2071,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
     elisp code from foreign source.</comment>
     <requestid>1231394</requestid>
   </revision>
+  <revision rev="197" vrev="12">
+    <srcmd5>744c6f173cab99d4e7ca476e1524c409</srcmd5>
+    <version>29.4</version>
+    <time>1736676536</time>
+    <user>anag+factory</user>
+    <comment>- Add patch emacs-29.4-boo1234673.patch
+  * Avoid that Emacs recompiles some packages on every startup (boo#1234673)</comment>
+    <requestid>1236885</requestid>
+  </revision>
 </revisionlist>

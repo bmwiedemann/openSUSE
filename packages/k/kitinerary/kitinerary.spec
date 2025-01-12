@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.0
+%define kpim6_version 6.3.1
 
 %bcond_without released
 Name:           kitinerary
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM bcb009f56f8f1c9c0d1612a0ec9f581907b51534.patch -- Fix compilation against Poppler 25.01
-Patch0:         https://github.com/KDE/kitinerary/commit/bcb009f56f8f1c9c0d1612a0ec9f581907b51534.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libphonenumber-devel

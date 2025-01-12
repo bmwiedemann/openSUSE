@@ -144,18 +144,14 @@
         <package name="agama-cli"/>
         <package name="agama-auto"/>
         <package name="agama-integration-tests"/>
+        <package name="rubygem(agama-yast)"/>
+        <package name="rubygem(byebug)"/>
         <package name="microos-tools"/>
         <package name="icewm-lite"/>
         <package name="xinit"/>
         <package name="xorg-x11-server"/>
         <package name="xorg-x11-fonts-core"/>
         <package name="xf86-input-libinput" />
-        <package name="xf86-input-wacom" arch="aarch64,x86_64,ppc64le"/>
-        <package name="xf86-video-amdgpu" arch="x86_64"/>
-        <package name="xf86-video-intel" arch="x86_64"/>
-        <package name="xf86-video-nv" arch="x86_64"/>
-        <package name="xf86-video-qxl" arch="x86_64"/>
-        <package name="xf86-video-vesa" arch="x86_64"/>
         <package name="psmisc"/>
         <package name="joe"/>
         <package name="checkmedia"/>
@@ -172,8 +168,6 @@
         <package name="grub2-branding-openSUSE" arch="aarch64,x86_64"/>
         <package name="openSUSE-repos-Leap"/>
         <package name="patterns-openSUSE-base"/>
-        <package name="ruby3.2-rubygem-agama-yast"/>
-        <package name="ruby3.2-rubygem-byebug"/>
         <package name="staging-build-key"/>
         <package name="openSUSE-build-key"/>
         <package name="MozillaFirefox-branding-openSUSE"/>
@@ -184,8 +178,6 @@
         <package name="grub2-branding-openSUSE" arch="aarch64,x86_64"/>
         <package name="openSUSE-repos-Tumbleweed"/>
         <package name="patterns-openSUSE-base"/>
-        <package name="ruby3.3-rubygem-agama-yast"/>
-        <package name="ruby3.3-rubygem-byebug"/>
         <package name="staging-build-key"/>
         <package name="openSUSE-build-key"/>
         <package name="MozillaFirefox-branding-openSUSE"/>
@@ -195,8 +187,6 @@
         <package name="agama-products-sle"/>
         <package name="grub2-branding-SLE" arch="aarch64,x86_64"/>
         <package name="patterns-sles-base"/>
-        <package name="ruby3.2-rubygem-agama-yast"/>
-        <package name="ruby3.2-rubygem-byebug"/>
         <package name="suse-build-key"/>
         <package name="MozillaFirefox-branding-SLE"/>
     </packages>

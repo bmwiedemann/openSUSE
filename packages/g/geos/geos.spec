@@ -1,7 +1,7 @@
 #
 # spec file for package geos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define uver	3_12_2
+%define uver	3_13_0
 Name:           geos
-Version:        3.12.2
+Version:        3.13.0
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Find-Object
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name File-Find-Object
 Name:           perl-File-Find-Object
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 License:        Artistic-2.0
 Summary:        An object oriented File::Find replacement

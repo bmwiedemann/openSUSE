@@ -1,7 +1,7 @@
 #
 # spec file for package git-absorb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-absorb
-Version:        0.6.15
+Version:        0.6.17
 Release:        0
 Summary:        git commit --fixup, but automatic
 License:        BSD-3-Clause
@@ -25,6 +25,7 @@ URL:            https://github.com/tummychow/git-absorb
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Requires:       git-core
+BuildRequires:  cargo >= 1.79
 BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 

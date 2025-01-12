@@ -102,4 +102,15 @@
 </comment>
     <requestid>1156520</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f2b36c27b355e7bba345333444c9d21c</srcmd5>
+    <version>1.229.0</version>
+    <time>1736676517</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.229.0 (1.229)
+   see /usr/share/doc/packages/perl-Tie-Cycle/Changes
+  1.229 2025-01-04T05:10:10Z
+  	* refresh distro and move to BRIANDFOY (forwarded request 1236698 from tinita)</comment>
+    <requestid>1236813</requestid>
+  </revision>
 </revisionlist>

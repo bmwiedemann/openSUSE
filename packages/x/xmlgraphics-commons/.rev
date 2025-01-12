@@ -260,4 +260,12 @@
     <comment>2.10 needed by bsc#1231428, CVE-2024-28168</comment>
     <requestid>1207475</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7828e374acbbf45406331450ecc00db5</srcmd5>
+    <version>2.10</version>
+    <time>1736676531</time>
+    <user>anag+factory</user>
+    <comment>typo in changes</comment>
+    <requestid>1236864</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package conman
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 Requires(pre):  shadow
 Requires(post): %fillup_prereq sed
-Requires(postun):coreutils
+Requires(postun): coreutils
 %endif
 
 Patch1:         conman-suse-fix-expect-scripts.patch
@@ -196,7 +196,7 @@ if [ $1 -eq 2 -a ! -e %_localstatedir/lib/conman/%migrated ]; then
 	< /etc/conman.conf > $tmpfile
     if ! cmp /etc/conman.conf $tmpfile; then
 	mv /etc/conman.conf /etc/conman.conf.rpmsave
-	mv $tmpfile /etc/conman.conf
+	mv -Z $tmpfile /etc/conman.conf
 	chown %conman_u:%conman_g /etc/conman.conf
 	cat > %_localstatedir/adm/update-messages/%{name}-%{version}-%{release}-%{name}.txt <<EOF
 

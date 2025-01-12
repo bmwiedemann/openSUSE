@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Spell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Pod-Spell
 Name:           perl-Pod-Spell
-Version:        1.26
+Version:        1.270.0
 Release:        0
+# 1.27 -> normalize -> 1.270.0
+%define cpan_version 1.27
 License:        Artistic-2.0
 Summary:        Formatter for spellchecking Pod
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -42,6 +44,9 @@ Requires:       perl(Lingua::EN::Inflect)
 Requires:       perl(Pod::Escapes)
 Requires:       perl(Pod::Simple) >= 3.27
 Requires:       perl(parent)
+Provides:       perl(Pod::Spell) = %{version}
+Provides:       perl(Pod::Wordlist) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -60,7 +65,7 @@ can be supplemented (on a per-document basis) by having '"=for stopwords"'
 / '"=for :stopwords"' region(s) in a document.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

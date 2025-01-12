@@ -1,0 +1,423 @@
+From 93da795520ca2f0a73cfbfc951a9b16437a1b95b Mon Sep 17 00:00:00 2001
+From: Steffen Eiden <seiden@linux.ibm.com>
+Date: Mon, 19 Feb 2024 15:15:16 +0100
+Subject: [PATCH] rust/pvsecret: Add support for retrievable secrets
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Support for creating and retrieving retrievable secrets.
+
+Acked-by: Marc Hartmayer <marc@linux.ibm.com>
+Reviewed-by: Christoph Schlameuss <schlameuss@linux.ibm.com>
+Signed-off-by: Steffen Eiden <seiden@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ rust/pvsecret/src/cli.rs        | 129 +++++++++++++++++++++++++++++++-
+ rust/pvsecret/src/cmd.rs        |   6 +-
+ rust/pvsecret/src/cmd/create.rs |  30 +++++++-
+ rust/pvsecret/src/cmd/list.rs   |  12 ++-
+ rust/pvsecret/src/cmd/retr.rs   |  62 +++++++++++++++
+ rust/pvsecret/src/main.rs       |   1 +
+ 6 files changed, 230 insertions(+), 10 deletions(-)
+ create mode 100644 rust/pvsecret/src/cmd/retr.rs
+
+diff --git a/rust/pvsecret/src/cli.rs b/rust/pvsecret/src/cli.rs
+index c4b9f2b3..4e747682 100644
+--- a/rust/pvsecret/src/cli.rs
++++ b/rust/pvsecret/src/cli.rs
+@@ -1,7 +1,10 @@
+ // SPDX-License-Identifier: MIT
+ //
+-// Copyright IBM Corp. 2023
++// Copyright IBM Corp. 2023, 2024
+ 
++use std::fmt::Display;
++
++use clap::error::ErrorKind::ValueValidation;
+ use clap::{ArgGroup, Args, CommandFactory, Parser, Subcommand, ValueEnum, ValueHint};
+ use utils::{CertificateOptions, DeprecatedVerbosityOptions, STDOUT};
+ 
+@@ -177,6 +180,72 @@ pub enum AddSecretType {
+         #[arg(long, value_name = "SECRET-FILE", value_hint = ValueHint::FilePath,)]
+         output_secret: Option<String>,
+     },
++
++    /// Create a retrievable secret.
++    ///
++    /// A retrievable secret is stored in the  per-guest storage of the Ultravisor. A SE-guest can
++    /// retrieve the secret at runtime and use it. All retrievable secrets, but the plaintext
++    /// secret, are retrieved as wrapped/protected key objects and only usable inside the current,
++    /// running SE-guest instance.
++    #[command(visible_alias = "retr")]
++    Retrievable {
++        /// String that identifies the new secret.
++        ///
++        /// The actual secret is set with '--secret'. The name is saved in `NAME.yaml` with
++        /// white-spaces mapped to `_`.
++        name: String,
++
++        /// Print the hashed name to stdout.
++        ///
++        /// The hashed name is not written to `NAME.yaml`
++        #[arg(long)]
++        stdout: bool,
++
++        /// Use SECRET-FILE as retrievable secret
++        #[arg(long, value_name = "SECRET-FILE", value_hint = ValueHint::FilePath)]
++        secret: String,
++
++        /// Specify the secret type.
++        ///
++        /// Limitations to the input data apply depending on the secret type.
++        #[arg(long = "type", value_name = "TYPE")]
++        kind: RetrieveableSecretInpKind,
++    },
++}
++
++#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum, Debug)]
++pub enum RetrieveableSecretInpKind {
++    /// A plaintext secret.
++    /// Can be any file up to 8190 bytes long
++    Plain,
++    /// An AES key.
++    /// Must be a plain byte file 128, 192, or 256 bit long.
++    Aes,
++    /// An AES-XTS key.
++    /// Must be a plain byte file 512, or 1024 bit long.
++    AesXts,
++    /// A HMAC-SHA key.
++    /// Must be a plain byte file 512, or 1024 bit long.
++    HmacSha,
++    /// An elliptic curve private key.
++    /// Must be a PEM or DER file.
++    Ec,
++}
++
++impl Display for RetrieveableSecretInpKind {
++    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
++        write!(
++            f,
++            "{}",
++            match self {
++                Self::Plain => "PLAINTEXT",
++                Self::Aes => "AES KEY",
++                Self::AesXts => "AES-XTS KEY",
++                Self::HmacSha => "HMAC-SHA KEY",
++                Self::Ec => "EC PRIVATE KEY",
++            }
++        )
++    }
+ }
+ 
+ // all members s390x only
+@@ -238,6 +307,56 @@ pub struct VerifyOpt {
+     pub output: String,
+ }
+ 
++// all members s390x only
++#[derive(Args, Debug)]
++pub struct RetrSecretOptions {
++    /// Specify the secret ID to be retrieved.
++    ///
++    /// Input type depends on '--inform'. If `yaml` (default) is specified, it must be a yaml
++    /// created by the create subcommand of this tool. If `hex` is specified, it must be a hex
++    /// 32-byte unsigned big endian number string. Leading zeros are required.
++    #[cfg(target_arch = "s390x")]
++    #[arg(value_name = "ID", value_hint = ValueHint::FilePath)]
++    pub input: String,
++
++    /// Specify the output path to place the secret value
++    #[cfg(target_arch = "s390x")]
++    #[arg(short, long, value_name = "FILE", default_value = STDOUT, value_hint = ValueHint::FilePath)]
++    pub output: String,
++
++    /// Define input type for the Secret ID
++    #[cfg(target_arch = "s390x")]
++    #[arg(long, value_enum, default_value_t)]
++    pub inform: RetrInpFmt,
++
++    /// Define the output format for the retrieved secret
++    #[cfg(target_arch = "s390x")]
++    #[arg(long, value_enum, default_value_t)]
++    pub outform: RetrOutFmt,
++}
++
++#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum, Debug, Default)]
++pub enum RetrInpFmt {
++    /// Use a yaml file
++    #[default]
++    Yaml,
++    /// Use a hex string.
++    Hex,
++}
++
++#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum, Debug, Default)]
++pub enum RetrOutFmt {
++    /// Write the secret as PEM.
++    ///
++    /// File starts with `-----BEGIN IBM PROTECTED KEY----` and `-----BEGIN
++    /// PLAINTEXT SECRET-----` for plaintext secrets it contains one header
++    /// line with the type information and the base64 protected key
++    #[default]
++    Pem,
++    /// Write the secret in binary.
++    Bin,
++}
++
+ #[derive(Subcommand, Debug)]
+ pub enum Command {
+     /// Create a new add-secret request.
+@@ -274,6 +393,10 @@ pub enum Command {
+     /// provided key. Outputs the arbitrary user-data.
+     Verify(VerifyOpt),
+ 
++    /// Retrieve a secret from the UV secret store (s390x only).
++    #[command(visible_alias = "retr")]
++    Retrieve(RetrSecretOptions),
++
+     /// Print version information and exit.
+     #[command(aliases(["--version"]), hide(true))]
+     Version,
+@@ -294,13 +417,13 @@ pub fn validate_cli(cli: &CliOptions) -> Result<(), clap::Error> {
+             }
+             if secret_out == &Some(format!("{name}.yaml")) {
+                 return Err(CliOptions::command().error(
+-                    clap::error::ErrorKind::ValueValidation,
++                    ValueValidation,
+                     format!("Secret output file and the secret name '{name}.yaml' are the same."),
+                 ));
+             }
+             if format!("{name}.yaml") == opt.output {
+                 return Err(CliOptions::command().error(
+-                    clap::error::ErrorKind::ValueValidation,
++                    ValueValidation,
+                     format!(
+                         "output file and the secret name '{}' are the same.",
+                         &opt.output
+diff --git a/rust/pvsecret/src/cmd.rs b/rust/pvsecret/src/cmd.rs
+index a826fb31..10d99a5b 100644
+--- a/rust/pvsecret/src/cmd.rs
++++ b/rust/pvsecret/src/cmd.rs
+@@ -16,6 +16,8 @@ mod add;
+ mod list;
+ #[cfg(target_arch = "s390x")]
+ mod lock;
++#[cfg(target_arch = "s390x")]
++mod retr;
+ 
+ // Commands (directly) related to UVCs are only available on s389x
+ #[cfg(target_arch = "s390x")]
+@@ -24,12 +26,13 @@ mod uv_cmd {
+     pub use add::add;
+     pub use list::list;
+     pub use lock::lock;
++    pub use retr::retr;
+     pub const UV_CMD_FN: &[&str] = &["+add", "+lock", "+list"];
+ }
+ 
+ #[cfg(not(target_arch = "s390x"))]
+ mod uv_cmd {
+-    use crate::cli::{AddSecretOpt, ListSecretOpt};
++    use crate::cli::{AddSecretOpt, ListSecretOpt, RetrSecretOptions};
+     use anyhow::{bail, Result};
+     macro_rules! not_supp {
+         ($name: ident $( ,$opt: ty )?) => {
+@@ -40,6 +43,7 @@ mod uv_cmd {
+     }
+     not_supp!(add, AddSecretOpt);
+     not_supp!(list, ListSecretOpt);
++    not_supp!(retr, RetrSecretOptions);
+     not_supp!(lock);
+     pub const UV_CMD_FN: &[&str] = &[];
+ }
+diff --git a/rust/pvsecret/src/cmd/create.rs b/rust/pvsecret/src/cmd/create.rs
+index 9251c38c..73089a12 100644
+--- a/rust/pvsecret/src/cmd/create.rs
++++ b/rust/pvsecret/src/cmd/create.rs
+@@ -4,7 +4,6 @@
+ 
+ use std::path::Path;
+ 
+-use crate::cli::{AddSecretType, CreateSecretFlags, CreateSecretOpt};
+ use anyhow::{anyhow, bail, Context, Error, Result};
+ use log::{debug, info, trace, warn};
+ use pv::{
+@@ -22,6 +21,8 @@ use pv::{
+ use serde_yaml::Value;
+ use utils::get_writer_from_cli_file_arg;
+ 
++use crate::cli::{AddSecretType, CreateSecretFlags, CreateSecretOpt, RetrieveableSecretInpKind};
++
+ fn write_out<P, D>(path: &P, data: D, ctx: &str) -> pv::Result<()>
+ where
+     P: AsRef<Path>,
+@@ -32,6 +33,23 @@ where
+     Ok(())
+ }
+ 
++fn retrievable(name: &str, secret: &str, kind: &RetrieveableSecretInpKind) -> Result<GuestSecret> {
++    let secret_data = read_file(secret, &format!("retrievable {kind}"))?.into();
++
++    match kind {
++        RetrieveableSecretInpKind::Plain => GuestSecret::plaintext(name, secret_data),
++        RetrieveableSecretInpKind::Aes => GuestSecret::aes(name, secret_data),
++        RetrieveableSecretInpKind::AesXts => GuestSecret::aes_xts(name, secret_data),
++        RetrieveableSecretInpKind::HmacSha => GuestSecret::hmac_sha(name, secret_data),
++        RetrieveableSecretInpKind::Ec => GuestSecret::ec(
++            name,
++            read_private_key(secret_data.value())
++                .with_context(|| format!("Cannot read {secret} as {kind} from PEM or DER"))?,
++        ),
++    }
++    .map_err(Error::from)
++}
++
+ /// Prepare an add-secret request
+ pub fn create(opt: &CreateSecretOpt) -> Result<()> {
+     if pv_guest_bit_set() {
+@@ -88,6 +106,9 @@ fn build_asrcb(opt: &CreateSecretOpt) -> Result<AddSecretRequest> {
+             input_secret: None,
+             ..
+         } => GuestSecret::association(name, None)?,
++        AddSecretType::Retrievable {
++            name, secret, kind, ..
++        } => retrievable(name, secret, kind)?,
+     };
+     trace!("AddSecret: {secret:x?}");
+ 
+@@ -136,7 +157,9 @@ fn build_asrcb(opt: &CreateSecretOpt) -> Result<AddSecretRequest> {
+         .as_ref()
+         .map(|p| read_file(p, "User-signing key"))
+         .transpose()?
+-        .map(|buf| read_private_key(&buf))
++        .map(|buf| {
++            read_private_key(&buf).context("Cannot read {secret} as private key from PEM or DER")
++        })
+         .transpose()?;
+ 
+     if user_data.is_some() || user_key.is_some() {
+@@ -258,6 +281,9 @@ fn write_secret<P: AsRef<Path>>(
+                 write_out(path, guest_secret.confidential(), "Association secret")?
+             }
+         }
++        AddSecretType::Retrievable { name, stdout, .. } => {
++            write_yaml(name, guest_secret, stdout, outp_path)?
++        }
+         _ => (),
+     };
+     Ok(())
+diff --git a/rust/pvsecret/src/cmd/list.rs b/rust/pvsecret/src/cmd/list.rs
+index f7e3a72b..0bd9eca4 100644
+--- a/rust/pvsecret/src/cmd/list.rs
++++ b/rust/pvsecret/src/cmd/list.rs
+@@ -3,21 +3,25 @@
+ // Copyright IBM Corp. 2023
+ 
+ use crate::cli::{ListSecretOpt, ListSecretOutputType};
+-use anyhow::{Context, Result};
++use anyhow::{Context, Error, Result};
+ use log::warn;
+ use pv::uv::{ListCmd, SecretList, UvDevice, UvcSuccess};
+ use utils::{get_writer_from_cli_file_arg, STDOUT};
+ 
+ /// Do a List Secrets UVC
+-pub fn list(opt: &ListSecretOpt) -> Result<()> {
+-    let uv = UvDevice::open()?;
++pub fn list_uvc(uv: &UvDevice) -> Result<SecretList> {
+     let mut cmd = ListCmd::default();
+     match uv.send_cmd(&mut cmd)? {
+         UvcSuccess::RC_SUCCESS => (),
+         UvcSuccess::RC_MORE_DATA => warn!("There is more data available than expected"),
+     };
++    cmd.try_into().map_err(Error::new)
++}
+ 
+-    let secret_list: SecretList = cmd.try_into()?;
++/// Do a List Secrets UVC and output the list in the requested format
++pub fn list(opt: &ListSecretOpt) -> Result<()> {
++    let uv = UvDevice::open()?;
++    let secret_list = list_uvc(&uv)?;
+     let mut wr_out = get_writer_from_cli_file_arg(&opt.output)?;
+ 
+     match &opt.format {
+diff --git a/rust/pvsecret/src/cmd/retr.rs b/rust/pvsecret/src/cmd/retr.rs
+new file mode 100644
+index 00000000..7f7704cc
+--- /dev/null
++++ b/rust/pvsecret/src/cmd/retr.rs
+@@ -0,0 +1,62 @@
++// SPDX-License-Identifier: MIT
++//
++// Copyright IBM Corp. 2024
++
++use super::list::list_uvc;
++use crate::cli::{RetrInpFmt, RetrOutFmt, RetrSecretOptions};
++use anyhow::{anyhow, bail, Context, Result};
++use log::{debug, info};
++use pv::{
++    misc::open_file,
++    misc::write,
++    secret::{GuestSecret, RetrievedSecret},
++    uv::{RetrieveCmd, SecretId, UvDevice},
++};
++use utils::get_writer_from_cli_file_arg;
++
++fn retrieve(id: &SecretId) -> Result<RetrievedSecret> {
++    let uv = UvDevice::open()?;
++    let secrets = list_uvc(&uv)?;
++    let secret = secrets
++        .into_iter()
++        .find(|s| s.id() == id.as_ref())
++        .ok_or(anyhow!(
++            "The UV secret-store has no secret with the ID {id}"
++        ))?;
++
++    info!("Try to retrieve secret at index: {}", secret.index());
++    debug!("Try to retrieve: {secret:?}");
++
++    let mut uv_cmd = RetrieveCmd::from_entry(secret)?;
++    uv.send_cmd(&mut uv_cmd)?;
++
++    Ok(RetrievedSecret::from_cmd(uv_cmd))
++}
++
++pub fn retr(opt: &RetrSecretOptions) -> Result<()> {
++    let mut output = get_writer_from_cli_file_arg(&opt.output)?;
++    let id = match &opt.inform {
++        RetrInpFmt::Yaml => match serde_yaml::from_reader(&mut open_file(&opt.input)?)? {
++            GuestSecret::Retrievable { id, .. } => id,
++            gs => bail!("The file contains a {gs}-secret, which is not retrievable."),
++        },
++        RetrInpFmt::Hex => {
++            serde_yaml::from_str(&opt.input).context("Cannot parse SecretId information")?
++        }
++    };
++
++    let retr_secret =
++        retrieve(&id).context("Could not retrieve the secret from the UV secret store.")?;
++
++    let out_data = match opt.outform {
++        RetrOutFmt::Bin => retr_secret.into_bytes(),
++        RetrOutFmt::Pem => retr_secret.to_pem()?.into_bytes(),
++    };
++    write(
++        &mut output,
++        out_data.value(),
++        &opt.output,
++        "IBM Protected Key",
++    )?;
++    Ok(())
++}
+diff --git a/rust/pvsecret/src/main.rs b/rust/pvsecret/src/main.rs
+index 502a6ea0..883a3ee2 100644
+--- a/rust/pvsecret/src/main.rs
++++ b/rust/pvsecret/src/main.rs
+@@ -45,6 +45,7 @@ fn main() -> ExitCode {
+         Command::Create(opt) => cmd::create(opt),
+         Command::Version => Ok(print_version!("2024", log_level; FEATURES.concat())),
+         Command::Verify(opt) => cmd::verify(opt),
++        Command::Retrieve(opt) => cmd::retr(opt),
+     };
+ 
+     match res {

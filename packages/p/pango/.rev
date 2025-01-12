@@ -1231,4 +1231,12 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
 - Drop -Dinstall-tests meson parameter: no longer supported. (forwarded request 1179614 from dimstar)</comment>
     <requestid>1179670</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>416c8b43274787d977956b84f07f73bd</srcmd5>
+    <version>1.56.0</version>
+    <time>1736676544</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236899</requestid>
+  </revision>
 </revisionlist>

@@ -18,9 +18,9 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.74000
+Version:        1.75000
 Release:        0
-%define cpan_version 1.74
+%define cpan_version 1.75
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
 Summary:        Perl graphic toolkit

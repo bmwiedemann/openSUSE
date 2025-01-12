@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jan 10 05:54:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  We're proud to announce that OpenTofu 1.9.0 is now officially
+  out! This release includes a lot of major and minor new features,
+  as well as a ton of community contributions!
+  The highlights are:
+  * for_each in provider configuration blocks: An alternate (aka
+    "aliased") provider configuration can now have multiple
+    dynamically-chosen instances using the for_each argument:
+
+    provider "aws" {
+      alias    = "by_region"
+      for_each = var.aws_regions
+
+      region = each.key
+    }
+
+    Each instance of a resource can also potentially select a
+    different instance of the associated provider configuration,
+    making it easier to declare infrastructure that ought to be
+    duplicated for each region.
+  * -exclude planning option: similar to -target, this allows
+    operators to tell OpenTofu to work on only a subset of the
+    objects declared in the configuration or tracked in the state.
+
+      tofu plan -exclude=kubernetes_manifest.crds
+
+    While -target specifies the objects to include and skips
+    everything not needed for the selected objects, -exclude
+    instead specifies objects to skip. OpenTofu will exclude the
+    selected objects and everything that depends on them.
+
+  Please take the above for a spin and let us know your feedback!
+  For all the features, see the detailed changelog.
+  https://github.com/opentofu/opentofu/blob/v1.9.0/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Dec 27 12:21:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.8:

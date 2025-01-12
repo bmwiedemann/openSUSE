@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 17 05:33:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.84.0 (0.084)
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.084   2024-10-16
+          - libtommath: fix cpantesters crash on freebsd/i386
+          - updated ppport.h
+  0.083   2024-10-15
+          - fix #110 regression: 0.081 fails to parse PEMs that 0.080 parsed fine
+          - bundled libtomcrypt update branch:develop (commit:cbb01b37 2024-10-14)
+  0.082   2024-10-07
+          - fix #111 libcryptx-perl: t/sshkey.t fails on some architectures
+          - CHANGE: Crypt::Cipher::Blowfish max key size increased to 72 bytes
+          - bundled libtomcrypt update branch:develop (commit:29af8922 2024-10-07)
+  0.081   2024-09-08
+          - fix #107 Drop -msse4.1 -maes for libtomcrypt
+          - fix #105 Several functions in CryptX::AuthEnc deal weirdly with non-simple-string plaintext
+          - fix #104 Add ethereum format signature
+          - fix #103 Use standard __asm__ blocks instead of asm
+          - fix #99 ltc: fix aesni flag handling
+          - fix #87 Add possibility to use different hash algorithms in RSAES-OAEP
+          - BIG CHANGE switch to PEM/SSH key loading via libtomcrypt
+          - bundled libtomcrypt update branch:develop (commit:ce904c86 2024-09-02)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:03:33 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

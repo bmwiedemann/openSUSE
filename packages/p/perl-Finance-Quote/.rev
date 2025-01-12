@@ -504,4 +504,12 @@ See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
     <comment></comment>
     <requestid>1179829</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f152a843bf9e78ab56a4306230ecab19</srcmd5>
+    <version>1.640.0</version>
+    <time>1736676926</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236298</requestid>
+  </revision>
 </revisionlist>

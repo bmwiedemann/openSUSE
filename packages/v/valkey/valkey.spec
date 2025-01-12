@@ -1,7 +1,7 @@
 #
 # spec file for package valkey
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) Jonathan Wright
 # Copyright (c) Neal Gompa
 #
@@ -25,7 +25,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 Name:           valkey
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause

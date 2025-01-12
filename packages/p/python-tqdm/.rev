@@ -535,4 +535,12 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1229317</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>e804a9c6e98233f0a4948b4116b17612</srcmd5>
+    <version>4.67.1</version>
+    <time>1736676621</time>
+    <user>anag+factory</user>
+    <comment>- Remove nbval build dependency</comment>
+    <requestid>1236199</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tqdm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-asyncio >= 0.24}
-BuildRequires:  %{python_module nbval}
 # Conditional required for SLE-15-SP4+
 BuildRequires:  %{python_module numpy if (python-base without python36-base)}
 BuildRequires:  %{python_module pytest-timeout}

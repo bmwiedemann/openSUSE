@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 22 05:33:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.51    2024-10-21
+          [CHANGES]
+           * Permit convergent futures to not cancel some component futures,
+             simplifying the use of `->without_cancel`
+           * Give a more obvious error message when a `Test::Future::Deferred`
+             runs out of things to do
+           * Various small module style updates to documentation, unit tests,
+             etc
+           * Now requires Perl version 5.14 or later
+
+-------------------------------------------------------------------
 Sat Mar 18 03:06:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.50

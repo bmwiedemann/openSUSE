@@ -25,7 +25,7 @@
 %define libname libp11-3
 %endif
 Name:           libp11
-Version:        0.4.12
+Version:        0.4.13
 Release:        0
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 License:        LGPL-2.1-or-later
@@ -36,16 +36,19 @@ Source1:        https://github.com/OpenSC/libp11/releases/download/%{name}-%{ver
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
 Source4:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         libp11-openssl-3.1.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         libp11-configure-treat-all-openssl-3.x-releases-the-same.patch
+# FIX-UPSTREAM
+Patch0:         fix-wrong-non-static-lib.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
+# Required for testing
+BuildRequires:  opensc
+# For pgrep
+BuildRequires:  procps
+BuildRequires:  softhsm
 # The engine_pkcs11 library has been merged into version 0.4.0 and later.
 # (It existed only in security:chipcard OBS repository.
 Obsoletes:      engine_pkcs11 <= 0.2.2
@@ -120,10 +123,9 @@ echo %{libname} > %{_sourcedir}/baselibs.conf
 %build
 autoreconf -fiv
 %configure \
-  --disable-static \
-  --disable-silent-rules \
-	--enable-doc\
-	--docdir=%{_docdir}/%{libname}
+    --disable-static \
+    --disable-silent-rules \
+    --docdir=%{_docdir}/%{libname}
 %make_build
 
 %install
@@ -132,12 +134,15 @@ mkdir -p %{buildroot}%{_docdir}/%{name} %{buildroot}%{_docdir}/%{libname}
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_docdir}
 
+%check
+%make_build check
+
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
 %doc %{_docdir}/%{libname}
-%{_libdir}/*.so.*
+%{_libdir}/libp11.so.*
 
 %files -n openssl-engine-%{name}
 %if 0%{?suse_version} > 1325

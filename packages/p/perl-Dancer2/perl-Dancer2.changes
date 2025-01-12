@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:14:47 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.1.2
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  1.1.2     2024-11-25 08:34:51-05:00 America/New_York
+      [ BUG FIXES ]
+      * None
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * None
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * PR #1715: Update deprecated download-artifact (dependabot)
+      * GH #1716: Remove Scope::Upper from list of recommended deps
+        (Russell @veryrusty Jenkins)
+      * PR #1718: Add Module::Pluggable as a requirement, excluding
+        broken versions (Russell @veryrusty Jenkins)
+      * PR #1719: Force install of Module::Pluggable so CI can successfully
+        run (Jason A. Crome, Russell @veryrusty Jenkins)
+
+-------------------------------------------------------------------
 Fri Jul 19 05:30:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.1.1

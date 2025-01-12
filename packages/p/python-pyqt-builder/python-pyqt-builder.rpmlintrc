@@ -1,0 +1,4 @@
+# SIP is packaged as sip-devel
+addFilter("python-missing-require sip")
+addFilter("python-leftover-require python3.*-sip-devel")
+addFilter("devel-dependency python3.*-sip-devel")

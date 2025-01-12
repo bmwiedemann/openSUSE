@@ -18,10 +18,10 @@
 
 %define cpan_name Alien-Build
 Name:           perl-Alien-Build
-Version:        2.830.0
+Version:        2.840.0
 Release:        0
-# 2.83 -> normalize -> 2.830.0
-%define cpan_version 2.83
+# 2.84 -> normalize -> 2.840.0
+%define cpan_version 2.84
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Build external dependencies for use in CPAN
 URL:            https://metacpan.org/release/%{cpan_name}

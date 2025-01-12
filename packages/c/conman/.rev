@@ -189,4 +189,14 @@
     <comment></comment>
     <requestid>1151399</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>78ece2b319edee41e5d4923dd4111fd4</srcmd5>
+    <version>0.3.1</version>
+    <time>1736676844</time>
+    <user>anag+factory</user>
+    <comment>- Fix post install script for SELinux: when moving temporary file
+  to final destination, remove temporary file security context
+  (boo#1235443). (forwarded request 1236164 from eeich)</comment>
+    <requestid>1236165</requestid>
+  </revision>
 </revisionlist>

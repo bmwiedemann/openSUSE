@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:49:52 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- update to 3.20.1:
+  * Setup Docker entrypoint to run Lexicon by default
+- update to 3.20.0:
+  * Fix Docker build & migrate image to Github Container registry
+- update to 3.19.0:
+  * Add regfish provider (#2102)
+  * Add ionos provider (#2127)
+  * Add support of Python 3.13
+  * Migrate build tooling from poetry to uv
+  * Provider porkbun now use the new API exposed by the DNS provider (#2069)
+  * Drop support of Python 3.8
+- update to 3.18.0:
+  * Add timeweb provider (#1850)
+  * Add qcloud provider (#1824)
+  * Update cloudflare documentation regarding the zoneID (#1783)
+  * Add support of personal access tokens (PATs) in gandi provider (#1987)
+  * Prevent invalid TTL values and proper behavior with subdomains in godaddy provider (#1834)
+
+-------------------------------------------------------------------
 Thu Dec 14 04:38:35 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - dnspython is not an optional requirement, bump it to Requires. 

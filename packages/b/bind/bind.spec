@@ -1,7 +1,7 @@
 #
 # spec file for package bind
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,12 +52,14 @@
 %define with_sfw2 0
 %endif
 
+%define dlz_modules_hash 5923650
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.20.3
+Version:        9.20.4
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -68,6 +70,7 @@ Source1:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.t
 Source2:        vendor-files.tar.bz2
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source3:        %{name}.keyring
+Source4:        dlz-modules-%{dlz_modules_hash}.tar.gz
 Source9:        https://www.internic.net/domain/named.root
 Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
@@ -232,6 +235,7 @@ possible string of labels in the query name that matches the wildcard.
 
 %prep
 %autosetup -p1 -a2
+%setup -T -D -a4
 
 # use the year from source gzip header instead of current one to make reproducible rpms
 year=$(perl -e 'sysread(STDIN, $h, 8); print (1900+(gmtime(unpack("l",substr($h,4))))[5])' < %{SOURCE0})
@@ -308,8 +312,8 @@ done
 %sysusers_generate_pre %{SOURCE72} named named.conf
 %endif
 # special build for the plugins
-for d in contrib/dlz/modules/*; do
-	[ -e $d/Makefile ] && make -C $d
+for d in dlz-modules-%{dlz_modules_hash}/modules/*; do
+       [ -e $d/Makefile ] && make -C $d
 done
 
 %install
@@ -340,25 +344,28 @@ rm -rf %{buildroot}%{_includedir}
 
 # Install the plugins
 mkdir -p %{buildroot}/%{_libdir}/bind-plugins
+pushd dlz-modules-%{dlz_modules_hash}/modules
 %if %{with_modules_perl}
-    install -m 0644 contrib/dlz/modules/perl/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 perl/*.so %{buildroot}/%{_libdir}/bind-plugins
 %endif
 %if %{with_modules_mysql}
-    install -m 0644 contrib/dlz/modules/mysql/*.so %{buildroot}/%{_libdir}/bind-plugins
-    install -m 0644 contrib/dlz/modules/mysqldyn/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 mysql/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 mysqldyn/*.so %{buildroot}/%{_libdir}/bind-plugins
 %endif
 %if %{with_modules_ldap}
-    install -m 0644 contrib/dlz/modules/ldap/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 ldap/*.so %{buildroot}/%{_libdir}/bind-plugins
 %endif
 %if %{with_modules_bdbhpt}
-    install -m 0644 contrib/dlz/modules/bdbhpt/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 bdbhpt/*.so %{buildroot}/%{_libdir}/bind-plugins
 %endif
 %if %{with_modules_sqlite3}
-    install -m 0644 contrib/dlz/modules/sqlite3/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 sqlite3/*.so %{buildroot}/%{_libdir}/bind-plugins
 %endif
 %if %{with_modules_generic}
-    install -m 0644 contrib/dlz/modules/{filesystem,wildcard}/*.so %{buildroot}/%{_libdir}/bind-plugins
+    install -m 0644 {filesystem,wildcard}/*.so %{buildroot}/%{_libdir}/bind-plugins
 %endif
+popd
+
 # remove useless .la files
 rm -f %{buildroot}/%{_libdir}/lib*.{la,a} %{buildroot}/%{_libdir}/bind/*.la
 mv vendor-files/config/named.conf %{buildroot}/%{_sysconfdir}

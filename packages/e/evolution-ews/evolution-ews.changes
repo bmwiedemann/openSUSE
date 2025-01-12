@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 06:56:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.3.0:
+  + Bug Fixes:
+    - m365: Calendar: Incomplete importing and floating time zone
+      issue
+    - Calendar: Import of event with DURATION incorrect
+
+-------------------------------------------------------------------
 Fri Nov 22 12:41:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.54.2:

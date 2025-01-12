@@ -21,20 +21,20 @@
 Name:           jed
 BuildRequires:  slang-devel
 Requires:       slang-slsh
-Version:        0.99.19
+Version:        0.99.19+git177.55b1d75
 Release:        0
 URL:            http://www.jedsoft.org
 License:        GPL-2.0-only
 Summary:        Small editor
-Source:         %{name}-0.99-19.tar.bz2
-Patch0:         %{name}-0.99-19.dif
+Source:         %{name}-%{version}.tar.bz2
+Patch0:         0001-Fix-path-and-settings-for-Linux.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 JED text editor
 
 %prep
-%autosetup -p1 -n %{name}-0.99-19
+%autosetup -p1
 
 %build
 slanginc=/usr/include

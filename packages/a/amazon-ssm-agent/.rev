@@ -378,4 +378,31 @@
   * Remove deprecated go coverage library (golang.org/x/tools/cmd/cover) (forwarded request 1219606 from glaubitz)</comment>
     <requestid>1219607</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8b55f3f1eb8f70be33956a729ebbaf18</srcmd5>
+    <version>3.3.1345.0</version>
+    <time>1736677255</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.1345.0
+  * Revert &quot;Update configurePackage to use fixed download method&quot;
+  * Revert &quot;Use a single syscall for route table for health check IP&quot;
+- from version 3.3.1311.0
+  * Add alternative to wmic to support Windows 2025
+  * Add armv7 architecture support for greengrass component
+  * Add support in ssm-setup-cli for standalone installation
+    in on-premises environments
+  * Fail ssm-setup-cli install command if agent config is not loadable
+  * Implement S3 ownership verification as an optional parameter for plugins
+  * Mark Session task as cancelled when MGS indicates that session is over
+  * Update configurePackage to use fixed download method
+  * Update Docker Engine version and use system environment
+    variables in installation path
+  * Update GreenGrass component minor version to 1.3.1
+- from version 3.3.1230.0
+  * Revert compatibility hook for future Windows versions as it
+    increased CPU consumption for document execution on Windows.
+  * Revert Increase RunCommand timeout during the registration
+    process for the on-prem instances (forwarded request 1236801 from glaubitz)</comment>
+    <requestid>1236853</requestid>
+  </revision>
 </revisionlist>

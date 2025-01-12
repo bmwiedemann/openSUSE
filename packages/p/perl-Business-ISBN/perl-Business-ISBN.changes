@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  4 05:29:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.11.0 (3.011)
+   see /usr/share/doc/packages/perl-Business-ISBN/Changes
+
+  3.011 2025-01-04T03:01:58Z
+  	* add SECURITY.md; no code changes
+
+-------------------------------------------------------------------
 Fri Mar  8 22:00:01 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

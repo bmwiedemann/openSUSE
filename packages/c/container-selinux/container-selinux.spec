@@ -26,7 +26,7 @@
 # Version of SELinux we were using
 %define selinux_policyver %(rpm -q selinux-policy --qf '%%{version}')
 Name:           container-selinux
-Version:        2.233.0
+Version:        2.234.2
 Release:        0
 Summary:        SELinux policies for container runtimes
 License:        GPL-2.0-only
@@ -34,6 +34,7 @@ URL:            https://github.com/containers/container-selinux
 Source0:        container-selinux-%{version}.tar.xz
 BuildRequires:  selinux-policy
 BuildRequires:  selinux-policy-devel
+BuildRequires:  selinux-policy-%{selinuxtype}
 Requires:       selinux-policy >= %(rpm -q selinux-policy --qf '%%{version}-%%{release}')
 Requires(posttrans): policycoreutils
 Requires(posttrans): /usr/bin/sed
@@ -62,6 +63,8 @@ install -d %{buildroot}/%{_datadir}/containers/selinux
 install -m 644 container_contexts %{buildroot}/%{_datadir}/containers/selinux/contexts
 install -d %{buildroot}%{_datadir}/udica/templates
 install -m 0644 udica-templates/*.cil %{buildroot}%{_datadir}/udica/templates
+install -d %{buildroot}%{_mandir}/man8/
+install -pm 0644 container_selinux.8 %{buildroot}%{_mandir}/man8/
 
 %check
 
@@ -98,5 +101,6 @@ matchpathcon -qV %{_sharedstatedir}/containers || restorecon -R %{_sharedstatedi
 %dir %{_datadir}/udica
 %dir %{_datadir}/udica/templates
 %{_datadir}/udica/templates/*
+%{_mandir}/man8/container_selinux.8*
 
 %changelog

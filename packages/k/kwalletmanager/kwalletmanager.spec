@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kwalletmanager
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  9 10:20:35 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Fix post install script for SELinux: when moving temporary file
+  to final destination, remove temporary file security context
+  (boo#1235443).
+
+-------------------------------------------------------------------
 Mon Feb 26 11:02:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

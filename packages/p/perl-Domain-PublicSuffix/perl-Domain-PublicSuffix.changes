@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:20:31 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.210.0 (0.21)
+   see /usr/share/doc/packages/perl-Domain-PublicSuffix/Changes
+
+  0.21    2024-11-26 00:02 GMT
+    - Refresh PublicSuffix list
+
+-------------------------------------------------------------------
 Fri Mar  8 22:17:36 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

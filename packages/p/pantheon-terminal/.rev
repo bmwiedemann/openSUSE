@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1230704</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de86da7a940cd41de0e84a54256cdd0b</srcmd5>
+    <version>6.3.1</version>
+    <time>1736677311</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.3.1:
+  * Stop window size increasing when opened
+  * Change hotkeys for Reset and Clear Screen actions
+  * Translation updates (forwarded request 1236953 from rrahl0)</comment>
+    <requestid>1236954</requestid>
+  </revision>
 </revisionlist>

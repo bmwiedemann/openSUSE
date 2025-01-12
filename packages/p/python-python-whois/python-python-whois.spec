@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-whois
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-python-whois
-Version:        0.9.3
+Version:        0.9.5
 Release:        0
 Summary:        Whois querying and parsing of domain registration information
 License:        MIT
 URL:            https://github.com/richardpenman/whois
-Source:         https://files.pythonhosted.org/packages/source/p/python-whois/python-whois-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python_whois/python_whois-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +43,7 @@ Able to extract data for all the popular TLDs (com, org, net, ...)
 Query a WHOIS server directly instead of going through an intermediate web service like many others do.
 
 %prep
-%autosetup -p1 -n python-whois-%{version}
+%autosetup -p1 -n python_whois-%{version}
 # requires internet connection:
 rm test/test_query.py
 
@@ -61,7 +61,7 @@ rm test/test_query.py
 %pytest -k 'not (test_ipv4 or test_ipv6 or test_il_parse or test_choose_server)'
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %{python_sitelib}/whois
 %{python_sitelib}/python_whois-%{version}.dist-info
 

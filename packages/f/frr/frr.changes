@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:04:40 UTC 2025 - Marius Tomaschewski <mt@suse.com>
+
+- Update to frr 10.2.1 release providing fix for a Denial of Service
+  scenario due to RIB revalidation (CVE-2024-55553,bsc#1235237) and
+  other fixes, see https://frrouting.org/release/10.2.1/
+  The 10.2 version provides new features and many enhancements, see
+  https://frrouting.org/release/10.2/
+- Add new fpm_listener daemon binary to rpm file lists.
+- Remove --localstatedir configure parameter causing to use /run/lib
+  instead of /var/lib prefix for the northbound databases and added
+  the /var/lib/frr directory to the rpm file list.
+- Adjust to set permissions in rpm attr macros (rpmlint suggestion)
+  and use frr_group instead of frr_user in group parameter.
+
+-------------------------------------------------------------------
 Mon Sep 30 09:49:59 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - Update to frr 10.0.2 release providing fix for CVE-2024-44070

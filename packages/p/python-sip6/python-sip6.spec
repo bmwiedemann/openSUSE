@@ -1,7 +1,7 @@
 #
 # spec file for package python-sip6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sip6
-Version:        6.8.6
+Version:        6.9.1
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        BSD-2-Clause AND BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/Python-SIP/sip
-Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+Source0:        https://github.com/Python-SIP/sip/archive/refs/tags/%{version}.tar.gz#/sip-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools >= 69.5}
 # Technically >= 8, but we make it compatible in prep.
 BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module devel}
+BuildRequires:  c++_compiler
+# /SECTION
 BuildArch:      noarch
 
 %python_subpackages
@@ -50,9 +55,9 @@ to generate wxPython, the Python bindings for wxWidgets.
 Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
 Requires:       c++_compiler
-Requires:       python-base >= 3.8
+Requires:       python-base >= 3.9
 Requires:       python-packaging
-Requires:       python-setuptools
+Requires:       python-setuptools >= 69.5
 Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -95,7 +100,7 @@ sed -i s/version_file/write_to/ pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# No upstream tests available. Appease rpmlint no-%%check-section
+%pyunittest discover -v test
 
 %post devel
 %python_install_alternative sip-build sip-distinfo sip-install sip-module sip-sdist sip-wheel

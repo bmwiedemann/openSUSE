@@ -4,7 +4,7 @@
 sources:
  - perl-DBI.rpmlintrc
 patches:
-  perl-DBI-CVE-2014-10402.patch: -p1
+#  perl-DBI-CVE-2014-10402.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

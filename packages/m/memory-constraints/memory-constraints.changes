@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:29:51 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Also set _smp_build_ncpus to fix usage with meson macro and
+  maybe others
+
+-------------------------------------------------------------------
 Tue Jun 29 14:50:50 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix Requires for awk to work also on Fedora

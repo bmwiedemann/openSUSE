@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 10:35:42 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Remove unnecessary build dependency libpackagekit-glib2-devel
+
+-------------------------------------------------------------------
 Thu Nov  7 12:29:32 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - UsrEtc fixes, create parent directory for sssd.conf; (bsc#1232921);

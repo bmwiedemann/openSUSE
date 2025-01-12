@@ -739,4 +739,13 @@ All changes since 3.3.7:
 </comment>
     <requestid>1190506</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f514e32146b1b30c7e7bdd5cfe416806</srcmd5>
+    <version>3.13.0</version>
+    <time>1736677252</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.0:
+  - See provided NEWS.md for a complete list of changes</comment>
+    <requestid>1236859</requestid>
+  </revision>
 </revisionlist>

@@ -209,4 +209,12 @@
   * Remove support for Python 3.8</comment>
     <requestid>1225038</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>054d23ea025dcd6eeb84ab4bdccb0993</srcmd5>
+    <version>2.36.1</version>
+    <time>1736676855</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236179</requestid>
+  </revision>
 </revisionlist>

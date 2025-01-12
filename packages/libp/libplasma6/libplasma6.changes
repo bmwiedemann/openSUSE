@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 10 07:20:51 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- In some corner cases, systemd user instances might be in failing state and
+  attempts to reload them (via the 'systemd-update-helper' private script) may
+  fail. Avoid to abort the upgrade process in these cases (bsc#1234904).
+
+-------------------------------------------------------------------
 Tue Dec 31 20:49:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

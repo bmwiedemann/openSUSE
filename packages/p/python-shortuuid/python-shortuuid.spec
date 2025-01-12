@@ -1,7 +1,7 @@
 #
 # spec file for package python-shortuuid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,6 @@ similar-looking letters and numbers.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/shortuuid
-%python_expand rm %{buildroot}%{$python_sitelib}/COPYING
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +66,7 @@ similar-looking letters and numbers.
 %doc README.md
 %license COPYING
 %python_alternative %{_bindir}/shortuuid
-%{python_sitelib}/*shortuuid*/
+%{python_sitelib}/shortuuid
+%{python_sitelib}/shortuuid-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan  8 16:52:32 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- Updated to 4.44.6:
+  * Fixed deleting items in array bug #2027, #2172; Thanks @jandubois
+  * Docker image for armv7 / raspberry pi3, Thanks @brianegge
+  * Fixed no-colors regression #2218
+  * Fixed various panic scenarios #2211
+  * Bumped dependencies
+- Changes from 4.44.5 (4.44.4 was skipped)
+  * Format comments with a gray foreground (Thanks @gabe565)
+  * Fixed handling of nulls with sort_by expressions #2164
+  * Force no color output when NO_COLOR env presents (Thanks @narqo)
+  * Fixed array subtraction update bug #2159
+  * Fixed index out of range error
+  * Can traverse straight from parent operator (parent.blah)
+  * Bumped dependencies
+
+- Bumped x/net to 0.33.0 to fix CVE-2024-45338
+  * add file Bump-golang.org-x-net-from-0.32.0-to-0.33.0.patch
+
+
+
+-------------------------------------------------------------------
 Mon Aug 12 13:18:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.44.3:

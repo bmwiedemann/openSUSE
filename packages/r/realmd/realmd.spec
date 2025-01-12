@@ -31,7 +31,6 @@ BuildRequires:  automake
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel >= 2.36
 BuildRequires:  intltool
-BuildRequires:  libpackagekit-glib2-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig

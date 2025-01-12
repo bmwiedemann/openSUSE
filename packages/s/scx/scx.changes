@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Tue Dec 17 09:35:57 UTC 2024 - fredrik.lonnegren@suse.com
+
+- Update to version 1.0.8:
+  * scx_layered: Put all tasks with custom affinities into the hi fallback DSQs
+  * scx_bpfland: do not rely on scx_utils::autopower
+  * scx_layered: Make low fallback DSQs useful and other changes
+  * scx_layered: handle nr_to_free calculation
+  * scx_layered: Implement empty LLC draining
+  * scx_layered: queued_runtime tracking bug fix and disable xllc_mig_min_us
+  * scx_bpfland: server workload improvements
+  * scx_loader: add mode for server-oriented workloads
+  * scx_layered: Improve layer core growth algos
+  * scx_layered: Make layered work in pid namespaces
+  * scx_loader: fix recursion of type convertion
+  * scx_layered: Add pid namespace layer matching
+
+-------------------------------------------------------------------
+Sat Dec 07 13:29:51 UTC 2024 - fredrik.lonnegren@suse.com
+
+- Update to version 1.0.7:
+  * scx_layered: Add fallback DSQ cost accounting
+  * scx_layered: Fix verifier issue when tracing
+  * scx_lavd: update cur_logical_clk atomically
+  * scx_loader: tune scx_bpfland default options
+  * scx_layered: Fix verifier issue on older kernels
+  * scx_layered: Use layer idle_smt option
+  * scx_layered: Add fallback costs to dump
+  * scx_layered: Work around older kernels choking on function calls
+  * scx_layered: add timer antistall
+  * scx_layered: Fix error in dispatch consumption
+  * scx_layered: Add helper for layer slice duration
+  * scx_layered: Fix cost accounting for fallback dsqs
+  * scx_layered: Consume from local LLCs for dispatch
+  * scheds: introduce scx_flash
+  * scx_layered: Perf improvements and a bug fix
+  * scx_layered: Don't limit antistall execution to layered_cpumask
+  * scx_layered: Fix verifier issues on older kernels
+  * scx_layered: Cleanups around topology handling
+  * scx_lavd: Factor the task's runtime more aggressively in a deadline
+    calculation
+  * scx_layered: Work around verification failure in antistall_set()
+  * scx_loader: add scx_flash as supported scheduler
+  * scx_layered: Add netdev IRQ balancing
+  * scx_layered: Use PROG_RUN for cpumask updates
+  * scx_lavd: Optimize the layout of struct task_ctx
+  * scx_layered: Remove high fallback dsq budget check
+  * scx_lavd: Do not exclude exiting tasks
+  * scx_rustland_core: proactively wake up CPUs when selected by user space
+  * scx_layered: Reimplement CPU allocation and some other fixes
+  * scx_rusty: Fix verifier errors on older kernels
+  * scx_layered: select_cpu() fixes and updates
+  * scx_lavd: Boost time slice more generously
+  * scx_lavd: Optimize performance criticality calculation
+  * scx_lavd: Optimize the cpuc_ctx layout for cache friendliness
+  * scx_lavd: Optimize preemption
+  * scx_bpfland: restart on energy profile change
+  * scx_lavd: add tunables for adjusting time slices
+  * scx_layered: Track owned/open execution times and per-LLC-layer stats
+  * scx_loader: restart scheduler upon fail
+  * scx_lavd: Limit the slice extension of a lock holder
+  * scx_layered: Implement in-layer execution protection to replace cost based
+    fairness
+  * scx_bpfland: dump cache_id_map in ascending order
+  * scx_layered: Fix idle selection on big/little
+  * scx_layered: Prioritize sched userspace and fix owned execution protection
+  * scx_layered: State tracking updates and layer sizing related fixes
+  * scx_lavd: Load balancing across compute domains
+  * scx_layered: Deprecate idle_smt layer config
+  * scx_lavd: Fetch active profile from power-profiles-daemon dbus interface
+    when using autopower
+  * scx_layered: Make vtime_now per-LLC
+  * scx_layered: Implement layer config xllc_mig_min_us
+  * scx_utils: Extend topology to support Snapdragon X Elite
+  * scx_rusty: Refactor access operation of nodemask
+  * scx_stats,scx_lavd: describe non-nested stats meta
+  * scx_lavd: Reset per-CPU preemption information when a CPU is released
+  * scx_layered: Fix vtime and llc_id handling bugs
+  * scx_layered: Fix a silly bug in select_cpu() and implement per-layer fifo
+    mode
+
+-------------------------------------------------------------------
+Mon Nov 18 15:49:21 UTC 2024 - fredrik.lonnegren@suse.com
+
+- Update to version 1.0.6:
+  * scx_lavd: support CPU hotplug correctly
+  * scx_rusty: fix single dom short-circuit
+  * scx_layered: Add per layer time slices to stats
+  * scx_layered: Refactor topology algorithms to a separate module
+  * scx_layered: Add per layer weights
+  * scx_bpfland: rework lowlatency mode
+  * scx_layered: Add big cpumask
+  * scx_layered: Use idle smt mask for idle selection
+  * scx_layered: Improve perf on non topo aware paths
+  * scx_rusty: Fix BPF crash during CPU hotplug
+  * scx_layered: Update idle topology selection order
+  * scx_layered: lighten/reduce nested loops in layered dispatch
+  * scx_layered: Add stress-ng example layer
+  * scx_layered: Make stress-ng non exclusive in example
+  * scx_bpfland: prevent per-CPU DSQ stall with per-CPU kthreads
+  * scx_layered: enable configuring layer iteration when no topo
+  * [rusty] Fix load stats when host is under-utilized
+  * scx_layered: Update CI to show stats
+  * layered: split dispatch into no_topo version
+  * scx_layered: Rename load_adj statistic
+  * layered: attempt to work steal from own llc before others
+  * scx_layered: Fix verifier errors
+  * scx_layered: Cleanup debug messages
+  * scx_bpfland: fix cpumask initialization error
+  * scx_layered: Change default DSQ iter algo
+  * scx_layered: Cleanup topology preempt path
+  * scx_layered: Implement reverse weight DSQ algorithm
+  * scx_layered: make default value for disable_topology dynamic
+  * scx_lavd: mitigate the lock holder preemption problem
+  * scx_rustland_core: use handle_mm_fault kprobe
+  * scx_bpfland: drop per-cpu DSQs
+  * scx_lavd: do not inspect scx_lavd process itself
+  * scx_layered: Remove layer iteration
+  * scx_mitosis: handle enqueue() on !wakeup
+  * scx_mitosis: Handle pinned tasks
+  * scx_layered: add RandomTopo layer growth algorithm
+  * scx_layered: make disable_topology arg require equals
+  * scx_bpfland: rework lowlatency mode
+  * scx_layered: Fix crash on aarch64 due to unavailable cache id file
+  * scx_lavd: add missing reset_lock_futex_boost()
+  * scx_rustland: Adjust task's vruntime budget based on latency weight
+  * scx_layered: fix exit_task ctx lookup err
+  * scx_lavd: fix/work around a verifier error
+  * scx_lavd: various optimizations for more consistent performance
+  * scx_loader: introduce configuration
+  * scx_layered: Add monitor
+  * scx_layered: Fix declarations in timer
+  * scx_lavd: fix uninitialized memory access at comp_preemption_info()
+  * scx_layered: support verifying on older kernels and fix logic
+  * scx_layered: Add cost accounting
+  * scx_lavd: optimize preemption
+  * scx_layered: Refactor dispatch
+  * scx_lavd: tuning and optimizing latency criticality calculation
+  * scx_layered: Add layer name to bpf
+  * scx_layered: Add layer CPU cost to dump
+  * scx_lavd: Correct the type of taskc within lavd_dispatch()
+  * scx_lavd: optimize ops.dispatch() and DSQ placement
+  * scx_layered: Fix dump output format
+  * scx_layered: Add additional drain to fallback DSQs
+  * scx_layered: Fix trace format
+  * scx_layered: point costc to global struct when initializing budgets
+  * scx_lavd: entirely drop kernel lock tracing
+  * scx_rusty: Restore push domain tasks when no task found
+  * scx_lavd: fix a performance regression bug 
+    (perf bench -f simple sched messaging)
+
+-------------------------------------------------------------------
+Tue Oct 29 18:02:44 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Move scx-<version>.tar.zst to buildtime service.
+
+-------------------------------------------------------------------
+Tue Oct 22 08:48:50 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Add devel package that includes the common headers from the upstream
+  repository.
+
+-------------------------------------------------------------------
+Thu Oct  3 19:00:46 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to v1.0.5:
+  * scx_rustland_core: introduce topology awareness
+  * scx_layered: clean up Layer::new layer_growth_algo
+  * scx_lavd: improve greedy ratio calculation and more
+  * scx_rustland_core: move includes back to the lib section
+  * scx_bpfland: use sum_exec_runtime to evaluate task's used time slice
+  * scx_layered: Fix typo in stats
+  * scx_layered: Pass layer spec for core growth algo
+  * scx_rusty: init domains when calculating averages
+  * scx_layered: Add random layer growth algo by
+  * scx_layered: Add topology aware core growth selection
+  * scx_layered: Add stats for XNUMA/XLLC migrations
+  * scx_lavd: add a short circuit for the case of no turbo core
+  * scx_lavd: boost the latency-criticality of kernel threads
+  * scx_bpfland: refine idle CPU selection logic
+  * scx_layered: add round robin growth strategy
+  * scxstats_to_openmetrics: fix format string
+  * scx_rustland_core: improve idle CPU selection API and logic
+  * scx_rustland_core: prevent CI failures
+  * scx_rustland_core: Access the returned value of saturating_sub()
+  * scx_layered: Refactor match_layer() and implement helper function to access
+    cpumask within bpf_cpumask
+  * scx_bpfland: Remove the usage of cast_mask in bpfland_enqueue
+  * scx_lavd: consider waker's CPU when ops.select_cpu()
+  * scx_layered: Add a hi fallback dsq per llc
+  * scx_layered: Add Big/Little core growth algos
+  * scx_layered: Add topology aware preemption
+  * scx_lavd: find a victim cpu for preemption within task's compute domain
+  * scx_layered: Add waker stats per layer
+  * scx_layered: Cleanup dump format
+  * scx_lavd: propagate waker's latency criticality to its wakee
+  * scx_layered: Restrict preemption to layer cpumask
+  * scx_layered: Make layered idle CPU selection topology aware
+  * scx_rustland_core: fix mm stall
+  * scx_loader: Add initial automatic scheduler switching via --monitor-no-dbus
+  * scx_layered: Add layer growth algo to layer bpf config
+  * Sync from kernel and re-enable scx_flatcg and scx_pair
+  * scx_layered: Fix idle core selection
+  * scx_loader: Add systemd service and on-DBUS launch
+  * scx_lavd: more accurately determine the performance criticality threshold
+  * scx_lavd: fix two potential bugs
+  * scx_layered: Fix cache initialization
+  * Revert "scx_rustland_core: prevent deadlock with per-CPU DSQs and CPU
+  * scx_bpfland small fixes and improvements
+  * scx_stats: Implement macro #stat_doc to autogen doc from stat desc
+  * scx_lavd: Fix typo
+

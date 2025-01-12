@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Ignore the new Fluent QQC style in APKs
+  * Update Android Gradle plugin version to 8.6.0
+  * Show speaker name(s)
+
+-------------------------------------------------------------------
 Sun Dec  8 09:27:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.0

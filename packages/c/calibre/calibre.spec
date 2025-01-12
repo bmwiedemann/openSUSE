@@ -1,7 +1,7 @@
 #
 # spec file for package calibre
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.23.0
+Version:        7.24.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -30,7 +30,10 @@ Source0:        https://download.calibre-ebook.com/%{version}/calibre-%{version}
 Source1:        https://calibre-ebook.com/signatures/calibre-%{version}.tar.xz.sig
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
 Source5:        https://github.com/mathjax/MathJax/archive/3.1.4/mathjax-3.1.4.tar.gz
-Source6:        https://github.com/LibreOffice/dictionaries/archive/master/hyphenation-dictionaries.tar.gz
+#Source6-URL:        https://github.com/LibreOffice/dictionaries/archive/master/hyphenation-dictionaries.tar.gz
+# Must be comment out because obs/osc can not download it altought it is valid, and obs rise up an error when it enable.
+# Source6 is backup if upstream change something again.
+Source6:        hyphenation-dictionaries.tar.gz
 # Source7-URL: https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/main/iso-codes-main.zip
 # Must be comment out because obs/osc can not download it altought it is valid, and obs rise up an error when it enable.
 # Source7 is backup if upstream change something again.

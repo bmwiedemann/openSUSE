@@ -130,4 +130,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1233560</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>4317fc49712d17011eb8020c4d26d6b5</srcmd5>
+    <version>0</version>
+    <time>1736677293</time>
+    <user>anag+factory</user>
+    <comment>- Disable the browser cache setting the &quot;Cache-Control&quot; header to
+  &quot;no-store&quot; (gh#agama-project/agama#1880).
+
+- Increase disk size in _constraints to fix build on ppc
+  (gh#agama-project/agama#1876).
+
+- Add support for products registration (jsc#PED-11192,
+  gh#agama-project/agama#1809).</comment>
+    <requestid>1236914</requestid>
+  </revision>
 </revisionlist>

@@ -123,4 +123,16 @@
 - Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
     <requestid>1222705</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>636f11750d17a29a2bdde283f343d4e9</srcmd5>
+    <version>6.8.0</version>
+    <time>1736677182</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.8.0
+  * Added support for Qt v6.8.
+- Use sip-build --concatenate 1 as a workaround for incomplete type
+  class error
+  https://www.riverbankcomputing.com/pipermail/pyqt/2024-December/046097.html (forwarded request 1236726 from bnavigator)</comment>
+    <requestid>1236727</requestid>
+  </revision>
 </revisionlist>

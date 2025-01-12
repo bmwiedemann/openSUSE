@@ -457,4 +457,14 @@
     <comment></comment>
     <requestid>1181947</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>52b01f12dd96e3a16168c7dffec0fcba</srcmd5>
+    <version>1.645.0</version>
+    <time>1736676515</time>
+    <user>anag+factory</user>
+    <comment>- Remove perl-DBI-CVE-2014-10402.patch (fixed upstream)
+- updated to 1.645.0 (1.645)
+   see /usr/share/doc/packages/perl-DBI/Changes (forwarded request 1236685 from tinita)</comment>
+    <requestid>1236807</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Thu Jan 10 05:27:07 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250110:
+  * rsx/shaders: Track active MRT count per shader
+  * rsx: Default initialize vertex program fields
+  * rsx/fp: Re-design register write tracking
+  * rsx: Don't crash when invalid buffer is allocated for a shader
+  * Qt: add mouse config legend to mouse move dialog
+  * Qt/Input: use empty string for pad_button_max_enum
+  * Fix self assignment warning
+  * ps move: allow to configure mouse move handler buttons
+  * input: Allow mapping keys to basic mouse buttons
+  * cellGem: Add more camera image conversions
+  * Fix some warnings
+  * fake move: add gyro support
+
+-------------------------------------------------------------------
+Mon Jan 06 23:24:25 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250107:
+  * Decrease mouse move assignment distance
+  * PPU LLVM: Fixup patches enlisting in analyzer
+  * Minor cleanup (#16519)
+  * PPU LLVM: Function table dependent resolver hashing
+
+-------------------------------------------------------------------
+Mon Jan 06 17:24:53 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250106:
+  * Do not re-use the old game window if the renderer changed
+  * move error_report to ErrorCodes.cpp
+  * Disable continuous mode if a savestate is not possible
+  * Keep game window open when loading the last savestate
+  * Clean up old game window in case of unexpected errors
+  * Show message while creating savestate in continuous mode
+  * RSX/Qt: Reuse gs_frame if possible
+  * cheats: add float32 gui support
+  * cmake: fix wolfssl
+  * cmake: remove "--no-quick" from windeployqt
+  * Thread.h: Fix a bug by adding thread_state::destroying_context
+  * Fix sys_config_unregister_service
+  * vk: Support panvk, allow creating device without textureCompressionBC
+  * vk: Add driver vendor PANVK (Mali GPU on Mesa)
+  * patches: create patch path on update
+  * Qt: delete settings_dialog
+  * Qt: delete batch progress dialog after user closed it (as originally intended)
+  * Qt: fix batch compilation after a game was already running
+  * Qt: stop batch compilation immediately on cancel
+  * Fix IDM image serialization
+
+-------------------------------------------------------------------
+Fri Jan 03 21:26:09 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250103:
+  * Qt: workaround for crash in long accepted slot
+  * VS: Fix compilation with new wolfssl version
+  * Update xxHash to 0.8.3
+  * Update Wolfssl to 5.7.6
+  * Update FAudio to 25.01
+  * Update SDL to 2.30.11
+  * sys_time.cpp: Anti TSC measures
+  * MacOS: fix for crash in SDL_Quit w/ gamepad input
+  * Audio: Add mute/unmute and volume shortcuts
+  * qt6: QT_MIN_VER should be 6.7 because of QCheckBox::checkStateChanged
+  * overlays: add trophy list dialog
+  * rsx: Flush MM queue before memory is unmapped
+  * Fix types 2
+  * Use corresponding SI/IEC units
+  * Fix types
+  * Report filesizes on macOS as decimal multiples
+  * SPU: Operating system LR memory signals
+  * rsx: Properly track changes in instancing state
+  * rsx: Test vertex program flags on each draw
+  * Cosmetic improvements
+  * rsx: Do not use global registers object in logical "firmware" units
+  * rsx: Handle dangling execution barriers
+  * rsx: Fix rare crash in vertex program decompiler
+  * rsx: Fix instancing bug when indexed addressing is used to read constants
+  * vk: Add support for hardware instanced draws
+  * rsx: Fix vertex program compiler crash
+  * rsx: Move more functions from rsx thread to the draw command processor
+  * rsx: Move draw call related functions to their own class
+  * rsx: Add GLSL support for instanced rendering
+  * rsx: Add code to detect instanced draw commands
+  * Revert "rsx/vk: Implement hardware instancing (#16466)"
+  * rsx/vk: Implement hardware instancing (#16466)
+  * Fix atomic_ptr value constructing overloads (#16473)
+  * CELL: Fix reservation notifications
+  * VS: add some missing files to solution filters
+  * Windows: log command line args in utf8
+  * Add empty hdd tmp to UI (#16462)
+  * MacOS: silence some warnings
+  * Simplify some ternaries
+  * VS: Add sysinfo_darwin.mm to filters
+  * fix some warning
+  * Qt: Add Operating system category
+  * shared_ptr.hpp: Rewrite shared_ptr to single_ptr conversion
+  * serialzation.hpp: Fix add_padding
+  * Fixup lv2_socket
+  * vk: Wrap device fault handler in SEH2
+  * vk: Selectively enable extended device fault features in logical device creation step
+  * vk: Minor improvements to extended fault output
+  * vk: Properly initialize device fault counts structure
+  * vk: Fix device fault extension loading
+  * vk: Add support for spec-compliant query scopes
+  * vk: Workaround for older SDK header versions
+  * vk: Register honeykrisp as known driver in RTT quirks check
+  * vk: Fix build
+  * vk: Add basic support for honeykrisp driver
+  * vk: Remove unnecessary workaround for older SDK versions
+  * vk: Add support for extended device fault information
+  * Fix Emulator::Pause() segfault
+  * Add some FXO init checks
+  * StrFmt.cpp: Make function printing shorter
+  * Fixup GDB
+  * Remove lv2_socket_native destructor
+  * Thread.h: Add a few noexcept
+  * sys_config: Move cleanup to IDM abort
+  * util/shared_ptr.hpp: STX pointers library fixes
+  * Fixup sys_process
+
+-------------------------------------------------------------------
 Mon Dec 23 18:06:15 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.34~git20241223:

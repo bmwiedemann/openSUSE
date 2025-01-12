@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-gnome
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM -- https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/merge_requests/189
 Patch0:         xdg-desktop-portal-gnome-gtk_init.patch
+# PATCH-FIX-UPSTREAM notification-null-icon-pointer.patch -- Fix build with xdg-desktop-portal >= 1.19.1
+Patch1:         notification-null-icon-pointer.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig
@@ -39,7 +41,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.alpha
 BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.18.2
+BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.19.1
 Requires:       xdg-desktop-portal
 # Use rich deps to pull in this package when gnome-shell and flatpak (or snapd) are both installed
 Supplements:    (gnome-shell and (flatpak or snapd))

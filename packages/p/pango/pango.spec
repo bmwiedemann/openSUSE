@@ -1,7 +1,7 @@
 #
 # spec file for package pango
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.54.0
+Version:        1.56.0
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -27,18 +27,17 @@ Source0:        %{name}-%{version}.tar.xz
 Source2:        macros.pango
 Source99:       baselibs.conf
 
-BuildRequires:  gcc-c++
-BuildRequires:  help2man
-BuildRequires:  meson >= 0.63.0
+BuildRequires:  c++_compiler
+BuildRequires:  meson >= 1.2.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(cairo) >= 1.12.10
-BuildRequires:  pkgconfig(fontconfig) >= 2.13
+BuildRequires:  pkgconfig(cairo) >= 1.18
+BuildRequires:  pkgconfig(fontconfig) >= 2.15
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.6
-BuildRequires:  pkgconfig(glib-2.0) >= 2.62
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.59.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.80
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(harfbuzz) >= 2.6
+BuildRequires:  pkgconfig(harfbuzz) >= 8.4
 BuildRequires:  pkgconfig(libthai) >= 0.1.9
 BuildRequires:  pkgconfig(xft) >= 2.0.0
 BuildRequires:  pkgconfig(xrender)
@@ -156,7 +155,6 @@ cp %{SOURCE2} %{buildroot}%_rpmmacrodir
 %{_bindir}/pango-list
 %{_bindir}/pango-segmentation
 %{_bindir}/pango-view
-%{_mandir}/man1/pango-view.1%{ext_man}
 
 %files devel
 %doc CODING_STYLE.md THANKS

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:02:42 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 7.2.14:
+  * MinioAdmin: add IDP/LDAP attach/detach/list APIs by @balamurugana in #1470
+  * MinioAdmin: add {attach,detach}_policy and get_policy_entities APIs by @balamurugana in #1471
+- Update to 7.2.13:
+  * Add NewerNoncurrentVersions in LifecycleConfig by @balamurugana in #1469
+  * IamAwsProvider: fix url with role name by @balamurugana in #1465
+
+-------------------------------------------------------------------
 Wed Dec  4 13:33:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 7.2.12:

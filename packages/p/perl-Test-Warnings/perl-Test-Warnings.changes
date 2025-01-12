@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  6 05:34:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.37.0 (0.037)
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.037     2025-01-05 20:38:16Z
+            - remove unneeded use of Import::Into
+            - fix tests that invoke Test::Warnings->import directly
+  0.036     2025-01-03 18:30:28Z
+            - avoid redefinition warnings when $^W is enabled in tests
+              (RT#158297)
+  0.035     2025-01-03 17:47:24Z
+            - allow tests to pass even when Import::Into is not installed
+              (RT#158296)
+            - add backcompat shim for cases where Test::More is loaded in tests
+              after Test::Warnings
+  0.034     2025-01-03 02:46:29Z
+            - fix Test2 compability for done_testing()
+            - Test2::Warnings added as a simple wrapper (for now)
+
+-------------------------------------------------------------------
 Fri Mar  8 23:06:05 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

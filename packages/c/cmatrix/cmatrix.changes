@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Fri Jan 10 08:08:03 UTC 2025 - alessio.biancalana@suse.com
+
+- Apply the spec-cleaner to the specfile
+- Migrate the OBS services to `disabled`
+
+-------------------------------------------------------------------
+Tue Jun  8 01:48:09 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Updating the OBS packaging.
+- fix_compilation_errors.patch: fix lvalue errors during compilation; fix fonts directory.
+-------------------------------------------------------------------
+Sat Sep  8 16:40:43 UTC 2012 - mrdocs@opensuse.org
+- fix make install macro to build on SLE
+--------------------------------------------------------------------
+Fri Sep  7 17:24:47 UTC 2012 - toganm@opensuse.org
+
+- added automake and autoconf to BuildRequires for 12.2 and Factory
+  builds 
+- corrected licence to spdx format
+-------------------------------------------------------------------
+Mon Apr 11 12:42:31 UTC 2011 - puzel@novell.com
+
+- use spec-cleaner 
+- add cmatrix-no-TIME-DATE.patch (prevent unnecessary rebuilds)
+
+-------------------------------------------------------------------
+Wed Jan  7 14:23:15 CET 2009 - puzel@suse.cz
+
+- fix rpmlint warnings 
+
+-------------------------------------------------------------------
+Fri Mar 30 15:31:48 CEST 2007 - rguenther@suse.de
+
+- add ncurses-devel BuildRequires 
+
+-------------------------------------------------------------------
+Thu Aug 10 12:52:47 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts/misc (because of X11R7).
+
+-------------------------------------------------------------------
+Mon Jul 24 15:49:59 CEST 2006 - mmarek@suse.de
+
+- workaround build with modular Xorg
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Sep 28 14:07:40 CEST 2004 - uli@suse.de
+
+- no consolefonts on s390* 
+
+-------------------------------------------------------------------
+Fri Jul 23 15:24:08 CEST 2004 - ro@suse.de
+
+- added kbd to neededforbuild
+
+-------------------------------------------------------------------
+Sat Jan 10 20:18:48 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Mon Feb 10 14:39:27 CET 2003 - vbobek@suse.cz
+
+- update to version 1.2a:
+        * bugfixes
+        * matrix size is now allocated dynamically
+
+-------------------------------------------------------------------
+Thu Feb 21 18:39:47 CET 2002 - pmladek@suse.cz
+
+- fixed location of console fonts
+- fixed file list
+
+-------------------------------------------------------------------
+Mon Nov  5 15:08:05 CET 2001 - pmladek@suse.cz
+
+- fixed for automake 1.5
+
+-------------------------------------------------------------------
+Fri Mar 16 14:59:46 CET 2001 - pmladek@suse.cz
+
+- new package
+- added buildroot

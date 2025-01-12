@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  9 09:28:23 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Replace pulseaudio entry in the xfce panel config for
+  the rescue CD with a separator
+
+-------------------------------------------------------------------
+Thu Jan  9 08:26:48 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Run depmod for all kernel module directories to support
+  kmps with mismatching versions (boo#1233432)
+
+-------------------------------------------------------------------
 Wed Nov 27 08:56:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ignore feh, as recommended by xdm. None of our live images really

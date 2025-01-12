@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-utf8
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-Name:           perl-Test-utf8
-Version:        1.02
-Release:        0
 %define cpan_name Test-utf8
-Summary:        Handy utf8 tests
+Name:           perl-Test-utf8
+Version:        1.30.0
+Release:        0
+# 1.03 -> normalize -> 1.30.0
+%define cpan_version 1.03
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKF/%{cpan_name}-%{version}.tar.gz
+Summary:        Handy utf8 tests
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SC/SCHWIGON/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
+Provides:       perl(Test::utf8) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -41,11 +44,11 @@ valid and not corrupt, whereas the characteristics tests will check that
 string has a given set of characteristics.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -56,7 +59,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc CHANGES README
 
 %changelog

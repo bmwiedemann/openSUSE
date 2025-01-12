@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.15.12
+Version:        1.16.0
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later

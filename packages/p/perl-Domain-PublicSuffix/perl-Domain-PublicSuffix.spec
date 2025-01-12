@@ -18,9 +18,10 @@
 
 %define cpan_name Domain-PublicSuffix
 Name:           perl-Domain-PublicSuffix
-Version:        0.200.0
+Version:        0.210.0
 Release:        0
-%define cpan_version 0.20
+# 0.21 -> normalize -> 0.210.0
+%define cpan_version 0.21
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse a domain down to root
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -35,8 +36,8 @@ BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Class::Accessor::Fast)
 Requires:       perl(Net::IDN::Encode) >= 2.401
 Requires:       perl(Test::More) >= 0.88
-Provides:       perl(Domain::PublicSuffix) = 0.200.0
-Provides:       perl(Domain::PublicSuffix::Default) = 0.200.0
+Provides:       perl(Domain::PublicSuffix) = %{version}
+Provides:       perl(Domain::PublicSuffix::Default) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

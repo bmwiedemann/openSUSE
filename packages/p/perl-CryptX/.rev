@@ -139,4 +139,12 @@ so the bots can find them
 - updated to 0.062 (fix CVE-2018-25099, bsc#1221528)</comment>
     <requestid>1168005</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b6bcb71dbb6975e8665e740d7cd063f3</srcmd5>
+    <version>0.84.0</version>
+    <time>1736676567</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1236263</requestid>
+  </revision>
 </revisionlist>

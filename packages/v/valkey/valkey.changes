@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan  8 17:22:51 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 8.0.2:
+  - Security fixes
+    * (CVE-2024-46981, bsc#1235387) Lua script commands may lead to remote code execution. (#1513)
+    * (CVE-2024-51741, bsc#1235386) Denial-of-service due to malformed ACL selectors. (#1514)
+  - Bug fixes
+    * Fix an uncommon crash when using TLS with dual channel replication. (#1173)
+    * Make sure repl_down_since is correctly reset when dual channel replication
+      fails. (#1149)
+    * Fix a performance regression where a replica does not properly initialize
+      the database size when loading a snapshot during replication. (#1199)
+    * Make sure the last accessed time is correctly updated when using the TOUCH
+      command with the CLIENT NO-TOUCH option.
+    * Fix a bug where total_net_repl_output_bytes may report the wrong. (#1486)
+    * Fix a bug where used_memory_scripts may report the wrong value. (#1255)
+    * Fix a bug where server might crash when using active defrag when scripts
+      are evicted from the script cache. (#1310)
+    * Fix a bug where extra memory would be used when storing strings in the
+      inline protocol. (#1213)
+    * Fix a bug where the SORT command may throw a cross slot error. (#1182)
+    * Fix a bug where the RANDOMKEY command may omit returning keys in cluster
+      mode. (#1155)
+    * Send the correct error message when FUNCTION KIlL is used to kill an
+      ongoing script. (#1171)
+    * Fix a potential memory corruption when databases are emptied, such as
+      through FLUSHDB, when during active defrag is running. (#1512)
+  - Behavior changes
+    * Revert an unintended breaking change when sending an unsubuscribe command
+      when a client is not subscribed to any channels. (#1265)
+
+-------------------------------------------------------------------
 Wed Dec  4 20:05:34 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix redis and sentinel units lookup in migration script (bsc#1226986)

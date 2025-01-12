@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kcron
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later

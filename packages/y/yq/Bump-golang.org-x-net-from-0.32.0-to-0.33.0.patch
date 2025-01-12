@@ -1,0 +1,56 @@
+From 7efae2dad9f3900a5d4e3ef275735657f0a34d2a Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Thu, 19 Dec 2024 03:23:37 +0000
+Subject: [PATCH] Bump golang.org/x/net from 0.32.0 to 0.33.0
+
+Bumps [golang.org/x/net](https://github.com/golang/net) from 0.32.0 to 0.33.0.
+- [Commits](https://github.com/golang/net/compare/v0.32.0...v0.33.0)
+
+---
+updated-dependencies:
+- dependency-name: golang.org/x/net
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+---
+ go.mod | 2 +-
+ go.sum | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/go.mod b/go.mod
+index f44bcbbd..56bd2a2c 100644
+--- a/go.mod
++++ b/go.mod
+@@ -16,7 +16,7 @@ require (
+ 	github.com/spf13/cobra v1.8.1
+ 	github.com/spf13/pflag v1.0.5
+ 	github.com/yuin/gopher-lua v1.1.1
+-	golang.org/x/net v0.32.0
++	golang.org/x/net v0.33.0
+ 	golang.org/x/text v0.21.0
+ 	gopkg.in/op/go-logging.v1 v1.0.0-20160211212156-b2cb9fa56473
+ 	gopkg.in/yaml.v3 v3.0.1
+diff --git a/go.sum b/go.sum
+index e8746990..4fec28d7 100644
+--- a/go.sum
++++ b/go.sum
+@@ -62,10 +62,10 @@ github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsT
+ github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
+ github.com/yuin/gopher-lua v1.1.1 h1:kYKnWBjvbNP4XLT3+bPEwAXJx262OhaHDWDVOPjL46M=
+ github.com/yuin/gopher-lua v1.1.1/go.mod h1:GBR0iDaNXjAgGg9zfCvksxSRnQx76gclCIb7kdAd1Pw=
+-golang.org/x/crypto v0.30.0 h1:RwoQn3GkWiMkzlX562cLB7OxWvjH1L8xutO2WoJcRoY=
+-golang.org/x/crypto v0.30.0/go.mod h1:kDsLvtWBEx7MV9tJOj9bnXsPbxwJQ6csT/x4KIN4Ssk=
+-golang.org/x/net v0.32.0 h1:ZqPmj8Kzc+Y6e0+skZsuACbx+wzMgo5MQsJh9Qd6aYI=
+-golang.org/x/net v0.32.0/go.mod h1:CwU0IoeOlnQQWJ6ioyFrfRuomB8GKF6KbYXZVyeXNfs=
++golang.org/x/crypto v0.31.0 h1:ihbySMvVjLAeSH1IbfcRTkD/iNscyz8rGzjF/E5hV6U=
++golang.org/x/crypto v0.31.0/go.mod h1:kDsLvtWBEx7MV9tJOj9bnXsPbxwJQ6csT/x4KIN4Ssk=
++golang.org/x/net v0.33.0 h1:74SYHlV8BIgHIFC/LrYkOGIwL19eTYXQ5wc6TBuO36I=
++golang.org/x/net v0.33.0/go.mod h1:HXLR5J+9DxmrqMwG9qjGCxZ+zKXxBru04zlTvWlWuN4=
+ golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+ golang.org/x/sys v0.28.0 h1:Fksou7UEQUWlKvIdsqzJmUmCX3cZuD2+P3XyyzwMhlA=
+-- 
+2.43.0
+

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 31 05:34:31 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.180.0 (1.18)
+   see /usr/share/doc/packages/perl-TheSchwartz/Changes
+
+  1.18 2024-12-31T00:55:27Z
+
+      - docs: Fix link in documentation GH#14 (@mikkoi++)
+      - docs: Fix typo and add a link to Data::ObjectDriver GH#13 (@mikkoi++)
+
+-------------------------------------------------------------------
 Fri Dec 31 03:07:50 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.17

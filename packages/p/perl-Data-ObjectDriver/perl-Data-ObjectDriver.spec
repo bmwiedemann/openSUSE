@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-ObjectDriver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Data-ObjectDriver
 Name:           perl-Data-ObjectDriver
-Version:        0.22
+Version:        0.230.0
 Release:        0
+# 0.23 -> normalize -> 0.230.0
+%define cpan_version 0.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple, transparent data interface, with caching
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIXAPART/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIXAPART/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -33,6 +35,7 @@ BuildRequires:  perl(Class::Data::Inheritable)
 BuildRequires:  perl(Class::Trigger)
 BuildRequires:  perl(DBI)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(version)
@@ -40,6 +43,34 @@ Requires:       perl(Class::Accessor::Fast)
 Requires:       perl(Class::Data::Inheritable)
 Requires:       perl(Class::Trigger)
 Requires:       perl(DBI)
+Provides:       perl(Data::ObjectDriver) = %{version}
+Provides:       perl(Data::ObjectDriver::BaseObject)
+Provides:       perl(Data::ObjectDriver::BaseView)
+Provides:       perl(Data::ObjectDriver::Driver::BaseCache)
+Provides:       perl(Data::ObjectDriver::Driver::Cache::Apache)
+Provides:       perl(Data::ObjectDriver::Driver::Cache::Cache)
+Provides:       perl(Data::ObjectDriver::Driver::Cache::Memcached)
+Provides:       perl(Data::ObjectDriver::Driver::Cache::RAM)
+Provides:       perl(Data::ObjectDriver::Driver::DBD)
+Provides:       perl(Data::ObjectDriver::Driver::DBD::MariaDB)
+Provides:       perl(Data::ObjectDriver::Driver::DBD::Oracle)
+Provides:       perl(Data::ObjectDriver::Driver::DBD::Oracle::db)
+Provides:       perl(Data::ObjectDriver::Driver::DBD::Pg)
+Provides:       perl(Data::ObjectDriver::Driver::DBD::SQLite)
+Provides:       perl(Data::ObjectDriver::Driver::DBD::mysql)
+Provides:       perl(Data::ObjectDriver::Driver::DBI)
+Provides:       perl(Data::ObjectDriver::Driver::GearmanDBI)
+Provides:       perl(Data::ObjectDriver::Driver::MultiPartition)
+Provides:       perl(Data::ObjectDriver::Driver::Multiplexer)
+Provides:       perl(Data::ObjectDriver::Driver::Partition)
+Provides:       perl(Data::ObjectDriver::Driver::SimplePartition)
+Provides:       perl(Data::ObjectDriver::Errors)
+Provides:       perl(Data::ObjectDriver::Iterator)
+Provides:       perl(Data::ObjectDriver::Profiler)
+Provides:       perl(Data::ObjectDriver::ResultSet)
+Provides:       perl(Data::ObjectDriver::SQL)
+Provides:       perl(Data::ObjectDriver::SQL::Oracle)
+%undefine       __perllib_provides
 Recommends:     perl(Text::SimpleTable)
 %{perl_requires}
 
@@ -54,9 +85,9 @@ multiple physical databases, without your application code needing to know
 where the data is stored.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
@@ -70,7 +101,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes minil.toml README.md ToDo
+%doc Changes README.md ToDo
 %license LICENSE
 
 %changelog

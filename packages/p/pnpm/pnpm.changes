@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Jan 10 00:08:03 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 10.0.0:
+  * Lifecycle scripts of dependencies are not executed during
+    installation by default! This is a breaking change aimed at
+    increasing security. In order to allow lifecycle scripts of
+    specific dependencies, they should be listed in the pnpm
+    onlyBuiltDependencies field of package.json #8897
+  * The pnpm link command now adds overrides to the root package.json. #8653
+  * Secure hashing with SHA256
+  * Configuration updates
+  * Changes to the global store
+  * The # character is now escaped in directory names within
+    node_modules/.pnpm. #8557
+  * Running pnpm add --global pnpm or pnpm add --global @pnpm/exe
+    now fails with an error message, directing you to use pnpm
+    self-update instead. #8728
+  * Dependencies added via a URL now record the final resolved
+    URL in the lockfile, ensuring that any redirects are fully
+    captured. #8833
+  * The pnpm deploy command now only works in workspaces that
+    have inject-workspace-packages=true. This limitation is
+    introduced to allow us to create a proper lockfile for the
+    deployed project using the workspace lockfile.
+  * Removed conversion from lockfile v6 to v9. If you need v6-to-
+    v9 conversion, use pnpm CLI v9.
+  * pnpm test now passes all parameters after the test keyword
+    directly to the underlying script. This matches the behavior
+    of pnpm run test. Previously you needed to use the -- prefix. #8619
+  * node-gyp updated to version 11.
+  * pnpm deploy now tries creating a dedicated lockfile from a
+    shared lockfile for deployment. It will fallback to
+    deployment without a lockfile if there is no shared lockfile
+    or force-legacy-deploy is set to true.
+  * Added support for a new type of dependencies called
+    "configurational dependencies". These dependencies are
+    installed before all the other types of dependencies (befor
+    "dependencies", "devDependencies", "optionalDependencies").
+  * New verify-deps-before-run setting. This setting controls how
+    pnpm checks node_modules before running scripts #8836
+  * On repeated installs, pnpm performs a quick check to ensure
+    node_modules is up to date. #8838
+  * pnpm add integrates with default workspace catalog: #8640
+  * pnpm dlx now resolves packages to their exact versions and
+    uses these exact versions for cache keys. This ensures pnpm
+    dlx always installs the latest requested packages #8811
+  * No node_modules validation on certain commands. Commands that
+    should not modify node_modules (e.g., pnpm install --lockfile-
+    only) no longer validate or purge node_modules. #8657
+  * for full changes, see https://github.com/pnpm/pnpm/releases/tag/v10.0.0
+
+-------------------------------------------------------------------
 Mon Jan  6 05:41:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.15.3:

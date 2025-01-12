@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kdevelop-plugin-php
-Version:        24.12.0
+Version:        24.12.1
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later

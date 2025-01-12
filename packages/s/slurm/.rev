@@ -1620,4 +1620,14 @@
   * Fix requeued jobs keeping their priority until the decay thread (forwarded request 1235783 from eeich)</comment>
     <requestid>1235784</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>b0899dc86fdec20adb8099af178022cc</srcmd5>
+    <version>24.11.0</version>
+    <time>1736676894</time>
+    <user>anag+factory</user>
+    <comment>- Fix testsuite:
+  Cater for erroneous: `#include &lt;/src/[slurm_internal_header]&gt;`
+  statements. (forwarded request 1236246 from eeich)</comment>
+    <requestid>1236247</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  7 18:53:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.1/
+- Changes since 24.12.0:
+  * Add files pkp-app files
+  * Initial version of PKP IC app ticket extractor (EN/PL)
+  * fix: fix bus number extract and brand for SlovakLines extractor
+  * add: slovak locale for SlovakLines pdf ticket parser
+  * add: Fix support for Slovak Lines Partner tickers
+  * Fix compilation against Poppler 25.01
+- Drop patch, merged upstream:
+  * bcb009f56f8f1c9c0d1612a0ec9f581907b51534.patch
+
+-------------------------------------------------------------------
 Fri Jan  3 21:10:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add bcb009f56f8f1c9c0d1612a0ec9f581907b51534.patch -- Fix

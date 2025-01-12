@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan  9 09:05:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.1
+  * Project metadata are now stored using `pyproject.toml` instead of
+    `setup.cfg` using setuptools as the build backend.
+  * Enforce annotation delayed loading for a simpler and consistent
+    types in the project.
+  * Optional mypyc compilation upgraded to version 1.14 for Python >= 3.8
+  * Added pre-commit configuration.
+  * Added noxfile.
+  * Removed `build-requirements.txt` as per using `pyproject.toml`
+    native build configuration.
+  * Removed `bin/integration.py` and `bin/serve.py` in favor of downstream
+    integration test (see noxfile).
+  * Removed `setup.cfg` in favor of `pyproject.toml` metadata configuration.
+  * Removed unused `utils.range_scan` function.
+  * Converting content to Unicode bytes may insert `utf_8` instead of
+    preferred `utf-8`. (#572)
+  * Deprecation warning "'count' is passed as positional argument" when
+    converting to Unicode bytes on Python 3.13+
+- Drop sed command to remove code coverage flags from pytest
+
+-------------------------------------------------------------------
 Mon Oct 28 16:37:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to PEP517 build

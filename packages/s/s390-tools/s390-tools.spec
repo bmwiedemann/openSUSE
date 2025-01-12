@@ -153,14 +153,35 @@ Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.p
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
+###
 Patch914:       s390-tools-01-zipl_helper.device-mapper-add-missed-step-in-logical.patch
 Patch915:       s390-tools-02-zipl-src-fix-imprecise-check-that-file-is-on-specifi.patch
 ###
-Patch916:       s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch
-Patch917:       s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch
-Patch918:       s390-tools-03-rust-pvimg-Add-enable-disable-image-encryption-flags-to-pvimg-create.patch
+Patch920:       s390-tools-General-update-01.patch
+Patch921:       s390-tools-General-update-02.patch
+Patch922:       s390-tools-General-update-03.patch
+Patch923:       s390-tools-General-update-04.patch
+Patch924:       s390-tools-General-update-05.patch
+Patch925:       s390-tools-General-update-06.patch
+Patch926:       s390-tools-General-update-07.patch
+Patch927:       s390-tools-General-update-08.patch
+Patch928:       s390-tools-General-update-09.patch
+Patch929:       s390-tools-General-update-10.patch
+Patch930:       s390-tools-General-update-11.patch
+Patch931:       s390-tools-General-update-12.patch
 ###
-Patch920:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
+Patch935:       s390-tools-Additional-update-01.patch
+Patch936:       s390-tools-Additional-update-02.patch
+###
+Patch950:       s390-tools-pvimg-info-command-01.patch
+Patch951:       s390-tools-pvimg-info-command-02.patch
+Patch952:       s390-tools-pvimg-info-command-03.patch
+###
+Patch960:       s390-tools-Support-unencrypted-SE-images-01.patch
+Patch961:       s390-tools-pvimg-info-command-04.patch
+Patch962:       s390-tools-pvimg-additional-01.patch
+###
+Patch990:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
 
 BuildRequires:  curl-devel
@@ -809,7 +830,7 @@ done
 %prep
 %autosetup -p1
 
-install -D -m 0644 %{SOURCE200} .cargo/config
+install -D -m 0644 %{SOURCE200} .cargo/config.toml
 tar -xzf %{SOURCE201}
 
 %build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  9 19:44:26 UTC 2025 - chris@computersalat.de
+
+- sync spec and changes file with SUSE_SLE-15_Update
+- remove obsolete deps
+  * perl(IO::Socket::SSL)
+
+-------------------------------------------------------------------
 Mon Nov 25 17:03:41 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - ddclient.service: Do not restrict access to devices, can conflicts
@@ -16,6 +23,12 @@ Wed Oct 30 09:31:48 UTC 2024 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 Mon Feb  5 10:10:56 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Use sysuser-tools to create user.
+
+-------------------------------------------------------------------
+Mon Dec 18 15:12:17 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove buildRequires to perl(HTTP::Message::PSGI) not available and needed
+  only for tests.
 
 -------------------------------------------------------------------
 Thu Nov 23 17:05:39 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
@@ -125,7 +138,7 @@ Tue Jul 12 16:08:36 UTC 2022 - chris@computersalat.de
 - update ddclient-config.patch
   * fix PID file path
 - merge ddclient-replace-varrun-with-run.patch into
-  ddclient-config.patc
+  ddclient-config.patch
 - merge changes file with SLES Maintained pkg
 - update Source to %{name}-%{version}
 

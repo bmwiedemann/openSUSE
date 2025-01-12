@@ -1,0 +1,5 @@
+<package name="brlist" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="brlist"/>
+</package>

@@ -450,4 +450,41 @@
   * Fix running single analyzer which isn't a rule bug (#1231) (forwarded request 1203912 from ph03nix)</comment>
     <requestid>1203918</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>99ff093121c11cbfdf983e9c9f78cf59</srcmd5>
+    <version>2.22.0</version>
+    <time>1736676889</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.22.0:
+  * Update what message for G104 (#1282)
+  * chore(deps): update module github.com/onsi/ginkgo/v2 to v2.22.2 (#1281)
+  * chore(deps): update all dependencies (#1280)
+  * chore(deps): update all dependencies (#1279)
+  * Simplify sortIssues implementation (#1277)
+  * Enable testifylint and fix up lint issues (#1276)
+  * Refactor AppendError to check for build.NoGoError (#1273)
+  * chore(deps): update module golang.org/x/net to v0.33.0 [security] (#1275)
+  * Update README.md (#1274)
+  * Rule documentation updates (#1272)
+  * Replace old golang.org links with new go.dev (#1271)
+  * Refactor AppendError to use strings.Contains (#1270)
+  * Simplify Analyzer.ignore by reducing nesting (#1269)
+  * Improve capitalization in AI API flags descriptions (#1267)
+  * Remove unused golint dependency (#1266)
+  * Simplify tests by using GinkgoT().TempDir() (#1265)
+  * Documentation on adding new rules and analyzers (#1262)
+  * chore(deps): update all dependencies (#1268)
+  * Update to go 1.22.10 and 1.23.4 versions (#1264)
+  * chore(deps): update module golang.org/x/crypto to v0.31.0 [security] (#1263)
+  * chore(deps): update all dependencies (#1261)
+  * chore(deps): update module github.com/onsi/gomega to v1.36.0 (#1259)
+  * fix: revive.redefines-builtin-id lint warnings (#1257)
+  * Fix typos in comments and fields
+  * Remove the decryption funtions/methods from G407 check
+  * Upate go to version 1.23.3 and 1.22.9
+  * Fix G115 false positive when going from parsed uint to larger int
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies (forwarded request 1236191 from ph03nix)</comment>
+    <requestid>1236236</requestid>
+  </revision>
 </revisionlist>

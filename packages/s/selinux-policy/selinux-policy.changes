@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jan 10 10:04:01 UTC 2025 - rfrohl@suse.com
+
+- Update to version 20250109:
+  * Update virtqemud policy regarding the svirt_tcg_t domain
+  * Allow virtqemud domain transition on numad execution
+  * Support virt live migration using ssh
+  * Allow virtqemud permissions needed for live migration
+  * Allow virtqemud the getpgid process permission
+  * Allow virtqemud manage nfs dirs when virt_use_nfs boolean is on
+  * Allow virtqemud relabelfrom virt_log_t files
+  * Allow virtqemud relabel tun_socket
+  * Add policy for systemd-import-generator
+  * Confine vsftpd systemd system generator
+  * Allow virtqemud read and write sgx_vepc devices
+  * Allow systemd-networkd list cgroup directories
+  * Allow xdm dbus chat with power-profiles-daemon
+  * Allow ssh_t read systemd config files
+  * Add Valkey rules to Redis module
+  * Update ktlsh policy
+  * Allow request-key to read /etc/passwd
+  * Allow request-key to manage all domains' keys
+  * Add support for the KVM guest memfd anon inodes
+- Update embedded container-selinux version to commit:
+  * 7fdbd0e8c428c335406969878f28e14f335f2e7e
+
+-------------------------------------------------------------------
 Fri Dec 20 12:51:57 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20241220:
@@ -159,6 +185,11 @@ Mon Dec 16 16:19:03 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20241216:
   * Allow vhostmd_t list virtqemud pid dirs (bsc#1230961)
+
+-------------------------------------------------------------------
+Mon Dec 16 09:59:30 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Explain third possible value in selinux config file (disabled)
 
 -------------------------------------------------------------------
 Fri Dec 13 10:10:49 UTC 2024 - cathy.hu@suse.com

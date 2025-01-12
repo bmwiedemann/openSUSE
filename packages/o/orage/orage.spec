@@ -1,7 +1,7 @@
 #
 # spec file for package orage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           orage
-Version:        4.18.0
+Version:        4.20.0
 Release:        0
 Summary:        Time-managing Application for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://docs.xfce.org/panel-plugins/orage/start
-Source:         https://archive.xfce.org/src/apps/orage/4.18/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/orage/4.20/%{name}-%{version}.tar.bz2
 Source1:        README.SUSE
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(libical) >= 3.0
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
-BuildRequires:  pkgconfig(popt)
 Recommends:     %{name}-lang = %{version}-%{release}
 # use /usr/bin/play to play notification sounds
 Recommends:     sox
@@ -78,6 +77,8 @@ cp %{SOURCE1} .
 %{_datadir}/icons/hicolor/*
 %{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/dbus-1/services/org.xfce.orage.service
+%dir %{_datadir}/themes/Default/orage-4.0
+%{_datadir}/themes/Default/orage-4.0/gtk.css
 
 %files lang -f %{name}.lang
 

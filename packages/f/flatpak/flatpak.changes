@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jan  9 17:41:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.0:
+  + Bug fixes:
+    - Update libglnx to 2024-12-06:
+      . Fix an assertion failure if creating a parent directory
+        encounters a dangling symlink.
+      . Fix a Meson warning.
+      . Don't emit terminal progress indicator escape sequences by
+        default. They are interpreted as notifications by some
+        terminal emulators.
+    - Fix introspection annotations in libflatpak.
+  + Enhancements:
+    - Add the FLATPAK_TTY_PROGRESS environment variable, which
+      re-enables the terminal progress indicator escape sequences
+      added in 1.15.91.
+    - Document the FLATPAK_FANCY_OUTPUT environment variable, which
+      allows disabling the fancy formatting when outputting to a
+      terminal.
+
+-------------------------------------------------------------------
+Fri Dec 20 17:52:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.15.91 (unstable):
+  + Enhancements:
+    - Add the FLATPAK_DATA_DIR environment variable, which allows
+      overriding at runtime the data directory location that
+      Flatpak uses to search for configuration files such as
+      remotes. This is useful for running tests, and for when
+      installing using Flatpak in a chroot.
+    - Add a FLATPAK_DOWNLOAD_TMPDIR variable. This allows using
+      download directories other than /var/tmp.
+    - Emit progress escape sequence. This can be used by terminal
+      emulators to detect and display progress of Flatpak
+      operations on their graphical user interfaces.
+  + Bug fixes:
+    - Install missing test data. This should fix "as-installed"
+      tests via ginsttest-runner, used for example in Debian's
+      autopkgtest framework.
+    - Unify and improve how the Wayland socket is passed to the
+      sandboxed app. This should fix a regression that is triggered
+      by compositors that both implement the security-context-v1
+      protocol, and sets the WAYLAND_DISPLAY environment variable
+      when launching Flatpak apps.
+    - Fix the plural form of a translatable string.
+
+-------------------------------------------------------------------
 Thu Nov 28 21:57:18 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.15.12:

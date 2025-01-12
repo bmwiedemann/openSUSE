@@ -1,0 +1,51 @@
+From d02da911e73113b42e0cb86a565437f3884818d7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 7 Jan 2025 17:31:00 +0100
+Subject: [PATCH] Fix path and settings for Linux
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Klaus Kämpf <kkaempf@gmail.com>
+---
+ configure      | 2 +-
+ src/jed-feat.h | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure b/configure
+index 669f8a5..ae59f76 100755
+--- a/configure
++++ b/configure
+@@ -6910,7 +6910,7 @@ $as_echo "Libraries: $GTK_LIBS" >&6; }
+ 
+ 
+ if test "x$prefix" != xNONE; then
+-  default_jed_root="$prefix/jed"
++  default_jed_root="$datadir/jed"
+ else
+   default_jed_root="$ac_default_prefix/jed"
+ fi
+diff --git a/src/jed-feat.h b/src/jed-feat.h
+index 830d3c9..139b0c0 100644
+--- a/src/jed-feat.h
++++ b/src/jed-feat.h
+@@ -69,14 +69,14 @@
+  * Are filenames case sensitive? If this is set to 1 Ma* will not match
+  * makefile, even on systems that are not case sensitive by default.
+  */
+-#define	JED_FILENAME_CASE_SENSITIVE	0
++#define	JED_FILENAME_CASE_SENSITIVE	1
+ 
+ /* If compiled with XJED_SET_WM_COMMAND non-zero, then Xjed
+  * will set the WM_COMMAND property to inform the
+  * window manager or session manager of the command line used to
+  * start the application.  Not all versions of X support this.
+  */
+-#define XJED_SET_WM_COMMAND	0
++#define XJED_SET_WM_COMMAND	1
+ 
+ #if JED_HAS_EMACS_LOCKING && !defined(HAVE_SYMLINK)
+ # undef JED_HAS_EMACS_LOCKING
+-- 
+2.47.1
+

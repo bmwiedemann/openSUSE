@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-RewriteAttributes
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-HTML-RewriteAttributes
-Version:        0.05
-Release:        0
 %define cpan_name HTML-RewriteAttributes
-Summary:        Concise Attribute Rewriting
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTML-RewriteAttributes/
-Source0:        https://cpan.metacpan.org/authors/id/T/TS/TSIBLEY/%{cpan_name}-%{version}.tar.gz
+Name:           perl-HTML-RewriteAttributes
+Version:        0.60.0
+Release:        0
+# 0.06 -> normalize -> 0.60.0
+%define cpan_version 0.06
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Concise attribute rewriting
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.36
 BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::Parser)
 BuildRequires:  perl(HTML::Tagset)
@@ -38,6 +39,10 @@ Requires:       perl(HTML::Entities)
 Requires:       perl(HTML::Parser)
 Requires:       perl(HTML::Tagset)
 Requires:       perl(URI)
+Provides:       perl(HTML::RewriteAttributes) = %{version}
+Provides:       perl(HTML::RewriteAttributes::Links) = 0.03
+Provides:       perl(HTML::RewriteAttributes::Resources) = 0.03
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -48,20 +53,24 @@ You simply specify a callback to run for each attribute and we do the rest
 for you.
 
 This module is designed to be subclassable to make handling special cases
-eaiser. See the source for methods you can override.
+easier. See the source for methods you can override.
+
+See the SYNOPSIS above and included tests in the 't' directory for more
+examples.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -69,7 +78,6 @@ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' 
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

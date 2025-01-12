@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebTest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-WebTest
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module cssselect}
 BuildRequires:  %{python_module pyquery}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module waitress >= 0.8.5}
+BuildRequires:  %{python_module waitress >= 3.0.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation build requirements:

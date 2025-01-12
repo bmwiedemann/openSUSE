@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  7 13:29:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.9
+  * Allow to manually define CPUs for trafgen.
+  * Fix make install and output netsniff-ng stats on stderr.
+  * trafgen: Fix for ipv6 header generation when L3-only devices
+    are present.
+  * mausezahn: use getopt_long instead of getopt.
+  * build: fix install dependencies in Makefile template.
+  * trafgen: move cpu stats temp file to /tmp.
+  * ring_tx: handle EINTR from sendto.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:06:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

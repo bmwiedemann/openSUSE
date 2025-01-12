@@ -30,6 +30,8 @@ Source1:        https://ftp.gnu.org/gnu/nettle/nettle-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        %{name}-rpmlintrc
+#PATCH-FIX-SUSE Skip the AES-GCM test as it fails on ppc64le virtual envs
+Patch1:         libnettle-powerpc64-skip-AES-GCM-test.patch
 BuildRequires:  autoconf
 BuildRequires:  fipscheck
 BuildRequires:  gmp-devel >= 6.1.0
