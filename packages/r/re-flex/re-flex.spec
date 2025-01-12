@@ -1,7 +1,7 @@
 #
 # spec file for package re-flex
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           re-flex
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        C++ regex library and lexical analyzer generator with Unicode support
 License:        BSD-3-Clause

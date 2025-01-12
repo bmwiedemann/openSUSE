@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 11 10:24:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 5.1.1:
+  * fix a minor issue with case-insensitive matching when regex
+    patterns are specified in certain ways in combination with
+    "string-like" patterns such that one ore more alternating
+    sub-patterns overlap from the start.
+
+-------------------------------------------------------------------
 Thu Dec  5 17:54:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 5.1.0:
