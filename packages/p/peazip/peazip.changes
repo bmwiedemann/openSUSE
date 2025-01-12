@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  4 12:55:25 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 10.2.0:
+  * enhances detection of issues in archives
+  * improves displaying archive comments
+  * adds support for Brotli and Zstandard maximum compression
+  * updates app's icon to unify the look & feel on all platforms.
+  * 7z backend is updated to 24.09
+  * PEA is updated to 1.22 introducing hybrid KDF mode, employing both PBKDF2 and Scrypt to increase resiliency against dictionary and brute force password-recovery attacks.
+  * Qt6 packages replace Qt5 ones, and Flatpak is now built for Wayland (with fallback X11 option).
+
+-------------------------------------------------------------------
 Tue Nov 12 12:28:03 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 10.1.0:

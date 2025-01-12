@@ -1,7 +1,7 @@
 #
 # spec file for package peazip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 
 Name:           peazip
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -44,7 +44,7 @@ BuildRequires:  fpc
 BuildRequires:  fpc-src
 BuildRequires:  kf5-filesystem
 BuildRequires:  lazarus-ide
-BuildRequires:  lazarus-lcl-qt5
+BuildRequires:  lazarus-lcl-qt6
 BuildRequires:  lazarus-tools
 BuildRequires:  libX11-devel
 BuildRequires:  unzip
@@ -59,9 +59,6 @@ BuildRequires:  p7zip
 Requires:       p7zip
 %endif
 Requires:       upx
-%if 0%{?suse_version} < 1500
-BuildRequires:  update-desktop-files
-%endif
 Suggests:       arc
 Suggests:       brotli
 Suggests:       zpaq
@@ -79,19 +76,28 @@ create self-extracting archives, split/join files, supports strong encryption wi
 has an encrypted password manager, secure deletion, can find duplicate files, calculate hashes, and
 export job definition as a script.
 
+%if 0%{?suse_version} < 1690
 %package kf5
 Summary:        KF5 servicemenu for peazip
 Group:          Productivity/Archiving/Compression
 Requires:       peazip
-%if 0%{?suse_version} < 1500
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-%endif
 BuildArch:      noarch
 
 %description kf5
 PeaZip is a file and archive manager GUI for many formats.
 This subpackage contains the KF5 integration.
+%else
+
+%package kf6
+Summary:        KF6 servicemenu for peazip
+Group:          Productivity/Archiving/Compression
+Requires:       peazip
+BuildArch:      noarch
+
+%description kf6
+PeaZip is a file and archive manager GUI for many formats.
+This subpackage contains the KF6 integration.
+%endif
 
 %prep
 %autosetup -p1 -n %{name}-%{version}.src
@@ -109,8 +115,8 @@ lazbuild \
 %ifarch x86_64
 	--cpu=x86_64 \
 %endif
-	--widgetset=qt5 \
-        --max-process-count=1 \
+	--widgetset=qt6 \
+  --max-process-count=1 \
 	-B --add-package metadarkstyle/metadarkstyle.lpk
 # Build Peazip
 lazbuild \
@@ -118,8 +124,8 @@ lazbuild \
 %ifarch x86_64
 	--cpu=x86_64 \
 %endif
-	--widgetset=qt5 \
-        --max-process-count=1 \
+	--widgetset=qt6 \
+  --max-process-count=1 \
 	-B project_pea.lpi project_peach.lpi
 
 %install
@@ -157,27 +163,24 @@ sed -i 's/Categories=Qt;KDE;Utility;System;Archiving;/Categories=Qt;KDE;Utility;
 mkdir -p %{buildroot}%{_datadir}/pixmaps/
 cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/
 rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png
-# Remove hard linked png
-rm %{buildroot}%{_peazipinstalldir}/res/share/icons/peazip_app.png
-rm %{buildroot}%{_peazipinstalldir}/res/share/icons/peazip_alt.png
 
 chmod +x %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/*
+%if 0%{?suse_version} < 1690
 pushd %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus
 install -m644 *.desktop %{buildroot}%{_kf5_servicesdir}/ServiceMenus
+%else
+pushd %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE6-dolphin/
+mkdir -p %{buildroot}%{_datadir}/kio/servicemenus
+install -m644 *.desktop %{buildroot}%{_datadir}/kio/servicemenus/
+%endif
 popd
+# Remove hard linked png
+rm %{buildroot}%{_peazipinstalldir}/res/share/icons/peazip.png
 
 find %{buildroot} -type f -size 0 -delete
 
 %fdupes %{buildroot}/%{_prefix}
-
-%if 0%{?suse_version} < 1500
-%post kf5
-%desktop_database_post
-
-%postun kf5
-%desktop_database_postun
-%endif
 
 %files
 %license copying.txt
@@ -188,8 +191,16 @@ find %{buildroot} -type f -size 0 -delete
 %{_datadir}/applications/peazip.desktop
 %{_datadir}/pixmaps/peazip.png
 
+%if 0%{?suse_version} < 1690
 %files kf5
 %dir %{_kf5_servicesdir}/ServiceMenus
 %{_kf5_servicesdir}/ServiceMenus/*.desktop
+%else
+
+%files kf6
+%dir %{_datadir}/kio
+%dir %{_datadir}/kio/servicemenus
+%{_datadir}/kio/servicemenus/*.desktop
+%endif
 
 %changelog
