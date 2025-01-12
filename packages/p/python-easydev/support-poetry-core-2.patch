@@ -1,0 +1,31 @@
+From 57840ffd66a23e9546c3cf97f870094d0b6dd5aa Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 10 Jan 2025 15:33:10 +1100
+Subject: [PATCH] Support poetry-core 2.0
+
+poetry-core 2.0 has been released, and it is a lot more strict with the
+configuration in pyproject.toml.
+---
+ pyproject.toml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 52c55a3..2ad7f62 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -2,11 +2,13 @@
+ requires = ["poetry-core"]
+ build-backend = "poetry.core.masonry.api"
+ 
+-[tool.poetry]
++[project]
+ name = "easydev"
+ version = "0.13.2"
+ description = "Commn utilities to ease development of Python packages"
+-authors = ["Thomas Cokelaer <thomas.cokelaer@pasteur.fr>"]
++authors = [
++    { "name" = "Thomas Cokelaer", "email" = "thomas.cokelaer@pasteur.fr" },
++]
+ license = "BSD-3-Clause"
+ readme = "README.rst"
+ keywords = ["config", "decorators", "development"]

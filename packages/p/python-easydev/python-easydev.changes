@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 04:35:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-poetry-core-2.patch:
+  * Support poetry-core 2.0 changes.
+
+-------------------------------------------------------------------
 Mon Apr 29 06:11:17 UTC 2024 - pgajdos@suse.com
 
 - update to 0.13.2

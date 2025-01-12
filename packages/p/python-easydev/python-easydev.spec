@@ -1,7 +1,7 @@
 #
 # spec file for package python-easydev
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Common utilities to ease the development of Python packages
 License:        BSD-3-Clause
 URL:            https://github.com/cokelaer/easydev
 Source:         https://github.com/cokelaer/easydev/archive/refs/tags/v%{version}.tar.gz#/easydev-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#cokelaer/easydev#37
+Patch0:         support-poetry-core-2.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama
@@ -72,6 +74,6 @@ also as an incubator for other packages and is stable.
 %doc README.rst
 %license COPYING
 %{python_sitelib}/easydev
-%{python_sitelib}/easydev*-info
+%{python_sitelib}/easydev-%{version}.dist-info
 
 %changelog
