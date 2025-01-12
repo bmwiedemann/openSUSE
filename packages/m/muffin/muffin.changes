@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 12 03:49:25 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.1
+  * Remove volatile qualifier for g_once_init handles
+  * Exposes monitor names
+- update to 6.4.0
+  * window-x11.c: Handle a special case for sending a ConfigureNotify
+  * Change all g_memdup() to g_memdup2()
+  * Make clutter_offscreen_effect_get_target avaiable to Cjs
+  * gir: Correct usage of the closure annotation
+  * constraints: Allow resize of windows moved above screen
+
+-------------------------------------------------------------------
 Sun Aug 11 05:02:00 UTC 2024 - sb56637 <mxoo28j7@duck.com>
 
 - update to 6.2.0:
