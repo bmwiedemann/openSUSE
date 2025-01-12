@@ -1,7 +1,7 @@
 #
 # spec file for package tiled
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           tiled
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
 URL:            https://www.mapeditor.org
 Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh/mapeditor/tiled#4077
-Patch1:         fix_compile_against_qt_6_8.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
