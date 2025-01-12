@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 11 20:58:18 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 3.88.2:
+  * oss-87: added new sanity detector (#3836)
+  * Update log for large s3 file (#3835)
+  * [chore] Use static token in GitHub source (#3834)
+
+-------------------------------------------------------------------
 Tue Jan 07 19:03:23 UTC 2025 - felix.niederwanger@suse.com
 
 - Update to version 3.88.1:

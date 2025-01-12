@@ -1819,4 +1819,15 @@
   * fixed github issue 3774 for custom detector secret size (#3816) (forwarded request 1235708 from ph03nix)</comment>
     <requestid>1235715</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>5ecaf68658160c67c406ed03aac652ad</srcmd5>
+    <version>3.88.2</version>
+    <time>1736677388</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.2:
+  * oss-87: added new sanity detector (#3836)
+  * Update log for large s3 file (#3835)
+  * [chore] Use static token in GitHub source (#3834) (forwarded request 1237088 from ph03nix)</comment>
+    <requestid>1237090</requestid>
+  </revision>
 </revisionlist>
