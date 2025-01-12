@@ -1,7 +1,7 @@
 #
 # spec file for package wpan-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 Name:           wpan-tools
 Summary:        Utilities to manage the Linux 802.15.4 WPAN stack
+Version:        0.10
+Release:        0
 License:        ISC
 Group:          Hardware/Wifi
-Version:        0.9
-Release:        0
 URL:            https://github.com/linux-wpan/wpan-tools
 Source:         https://github.com/linux-wpan/wpan-tools/releases/download/%name-%version/%name-%version.tar.xz
 BuildRequires:  bison
@@ -37,11 +37,11 @@ compatible with IEEE 802.15.4-2003 (and to a lesser extent,
 2006).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

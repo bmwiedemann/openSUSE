@@ -15,4 +15,12 @@
     <comment>- Update to new upstream release 0.9</comment>
     <requestid>725831</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>559cf02adda85ee1d8b2b14e91610687</srcmd5>
+    <version>0.10</version>
+    <time>1736677384</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.10</comment>
+    <requestid>1237082</requestid>
+  </revision>
 </revisionlist>
