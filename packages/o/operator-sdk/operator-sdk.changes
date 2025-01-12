@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 11 12:13:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.39.0:
+  * Release v1.39.0 (#6890)
+  * move v1.22 from netlify to gh like in toml file (#6889)
+  * updating dependencies to k8s 1.31 (#6878)
+  * fix prometheus documentation link (#6888)
+  * fix small typo in filename (#6886)
+  * fixing CVE-2025-21614 in github.com/go-git/go-git/v5 (#6885)
+  * fixing CVE-2024-45338 in golang.org/x/net (#6884)
+  * updating project to use go 1.23 and UBI 9.5 (#6883)
+  * updating copywrite for 2025
+  * Bump golang.org/x/crypto from 0.27.0 to 0.31.0 (#6876)
+  * fix test data scaffolding...again (#6877)
+  * Update README.md - To add importance notice about legacy image
+    (#6871)
+
+-------------------------------------------------------------------
 Wed Nov 20 07:56:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.38.0:
