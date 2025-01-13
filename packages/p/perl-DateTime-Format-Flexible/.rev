@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>907029</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>103919d980527730e149202b8370c972</srcmd5>
+    <version>0.370.0</version>
+    <time>1736788049</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.370.0 (0.37)
+   see /usr/share/doc/packages/perl-DateTime-Format-Flexible/Changes
+</comment>
+    <requestid>1237531</requestid>
+  </revision>
 </revisionlist>

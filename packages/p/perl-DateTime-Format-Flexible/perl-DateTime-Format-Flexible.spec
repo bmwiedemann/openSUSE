@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Flexible
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name DateTime-Format-Flexible
 Name:           perl-DateTime-Format-Flexible
-Version:        0.34
+Version:        0.370.0
 Release:        0
-Summary:        DateTime::Format::Flexible - Flexibly parse strings and turn them into D[cut]
+# 0.37 -> normalize -> 0.370.0
+%define cpan_version 0.37
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        DateTime::Format::Flexible - Flexibly parse strings and turn them into D[cut]
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TH/THINC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TH/THINC/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -31,14 +33,18 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::Format::Builder) >= 0.74
 BuildRequires:  perl(DateTime::TimeZone)
-BuildRequires:  perl(List::MoreUtils)
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::MockTime)
 BuildRequires:  perl(Test::NoWarnings)
 Requires:       perl(DateTime)
 Requires:       perl(DateTime::Format::Builder) >= 0.74
 Requires:       perl(DateTime::TimeZone)
-Requires:       perl(List::MoreUtils)
+Provides:       perl(DateTime::Format::Flexible) = %{version}
+Provides:       perl(DateTime::Format::Flexible::lang)
+Provides:       perl(DateTime::Format::Flexible::lang::de)
+Provides:       perl(DateTime::Format::Flexible::lang::en)
+Provides:       perl(DateTime::Format::Flexible::lang::es)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,7 +56,7 @@ _DateTime::Format::Flexible_ attempts to take any string you give it and
 parse it into a DateTime object.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
