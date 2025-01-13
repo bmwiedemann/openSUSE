@@ -1,7 +1,7 @@
 #
 # spec file for package iperf2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iperf2
-Version:        2.1.9
+Version:        2.2.1
 Release:        0
 Summary:        Network throughput and latency measurement tool
 License:        NCSA
@@ -43,6 +43,7 @@ dual queue L4S) over sockets both TCP and UDP.
 
 %files
 %license COPYING
+%doc doc/RELEASE_NOTES
 %{_bindir}/iperf
 %{_mandir}/man1/iperf*
 
