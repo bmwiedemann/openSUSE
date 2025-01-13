@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 10:52:10 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix CVE-2024-45338 (bsc#1235311): Bump golang.org/x/net to 0.34.0
+  * Add file 0003-Bump-x-net.patch
+
+-------------------------------------------------------------------
 Tue Oct  8 10:55:24 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Initial package, version 0.7.11

@@ -1,7 +1,7 @@
 #
 # spec file for package kepler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,20 +20,21 @@ Name:           kepler
 Version:        0.7.11
 Release:        0
 Summary:        Kubernetes-based Efficient Power Level Exporter
-License:        Apache-2.0 and (GPL-2.0-only or BSD-2-Clause) and GPL-2.0-only
+License:        Apache-2.0 AND (BSD-2-Clause OR GPL-2.0-only) AND GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://github.com/sustainable-computing-io/kepler/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch1:         0001-use-local-bpf2go.patch
 Patch2:         0002-change-data-path.patch
+Patch3:         0003-Bump-x-net.patch
 
 BuildRequires:  bpf2go
 BuildRequires:  clang
-BuildRequires:  golang(API) >= 1.21
 BuildRequires:  llvm
 BuildRequires:  llvm-devel
 BuildRequires:  zlib-devel
+BuildRequires:  golang(API) >= 1.21
 Recommends:     cpuid
 %{?systemd_ordering}
 
