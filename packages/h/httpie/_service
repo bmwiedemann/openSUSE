@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="versionprefix">3.2.3</param>
+    <param name="versionprefix">3.2.4</param>
     <param name="url">https://github.com/httpie/cli.git</param>
-    <param name="revision">f4cf43ecdd6c5c52b5c4ba91086d5c6ccfebcd6d</param>
+    <param name="revision">2105caa49bae87c5809c274e407619a0de2639d1</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
     <param name="changesgenerate">disable</param>

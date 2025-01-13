@@ -1,7 +1,7 @@
 #
 # spec file for package httpie
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,14 @@
 #
 
 
-%define _mtime 1720621443
-%define _commit f4cf43e
+%define _mtime 1730482196
+%define _commit 2105caa
+
+%define primary_python python311
+%define python_version 3.11
 
 Name:           httpie
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        CLI, cURL-like tool for humans
 License:        BSD-3-Clause
@@ -67,8 +70,8 @@ Requires:       %{primary_python}-requests >= 2.22.0
 Requires:       %{primary_python}-requests-toolbelt >= 0.9.1
 Requires:       %{primary_python}-rich >= 9.10.0
 Requires:       %{primary_python}-setuptools
-Provides:       %{primary_python}-httpie = 3.2.2
-Provides:       python3-httpie = 3.2.2
+Provides:       %{primary_python}-httpie = %{version}
+Provides:       python3-httpie = %{version}
 Obsoletes:      %{primary_python}-httpie < 2.3.0
 Obsoletes:      python3-httpie < 2.3.0
 BuildArch:      noarch

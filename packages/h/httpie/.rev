@@ -119,4 +119,17 @@
     <comment></comment>
     <requestid>1188330</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b0b458834179e3a642b2b52aa1c06aa2</srcmd5>
+    <version>3.2.4</version>
+    <time>1736787202</time>
+    <user>anag+factory</user>
+    <comment>- Change python version back to 3.11 because too many tests fail
+  with 3.12 and higher
+
+- Update to version 3.2.4
+  * Fix default certs loading and unpin requests.
+- Update manpage to version 3.2.4</comment>
+    <requestid>1237388</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 23 02:36:08 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Change python version back to 3.11 because too many tests fail
+  with 3.12 and higher
+
+-------------------------------------------------------------------
+Sat Nov 23 20:22:17 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 3.2.4
+  * Fix default certs loading and unpin requests.
+- Update manpage to version 3.2.4
+
+-------------------------------------------------------------------
 Wed Jul 10 15:52:33 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 3.2.3
