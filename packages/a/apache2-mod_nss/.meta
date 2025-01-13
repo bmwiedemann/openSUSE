@@ -1,5 +1,0 @@
-<package name="apache2-mod_nss" project="openSUSE:Factory">
-  <title>Mozilla SSL/TLS module for the Apache HTTP server</title>
-  <description>The mod_nss module provides strong cryptography for the Apache Web server via the Secure Sockets Layer (SSL) and Transport Layer Security (TLS) protocols using the Network Security Services (NSS) security library.</description>
-  <devel project="Apache:Modules" package="apache2-mod_nss"/>
-</package>
