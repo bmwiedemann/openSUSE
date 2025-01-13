@@ -58,4 +58,25 @@
   * Do not attempt to use lib2to3 in a doctest.</comment>
     <requestid>1220153</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>838c04c732140068b907d257c2079923</srcmd5>
+    <version>1.3.7</version>
+    <time>1736787208</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1237402 from glaubitz
+
+- Update to 1.3.7
+    * Added `requestkw` to `ub.download`.
+    * Minor test issues.
+    * `ub.IndexableWalker.diff` for empty inputs
+    * Bug in `memoize_method` which could produce incorrect results
+      if methods from different instances are assigned to variables.
+    * Rare error in `test_copy_directory_cases` test due to list sorting.
+    * Added module name printout to `schedule_deprecation`
+    * `ub.hash_data` now supports `datatime.datetime`, `datetime.date`,
+      `decimal.Decimal` objects.
+  - Drop no-lib2to3.patch, fixed upstream
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1237411</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ubelt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ubelt
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        Python utility belt containing simple tools
 License:        Apache-2.0
 URL:            https://github.com/Erotemic/ubelt
 Source:         https://github.com/Erotemic/ubelt/archive/refs/tags/v%{version}.tar.gz#/ubelt-%{version}-gh.tar.gz
-# PATCH-FIX-OPENSUSE Do not mention lib2to3 in a doctest
-Patch0:         no-lib2to3.patch
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
