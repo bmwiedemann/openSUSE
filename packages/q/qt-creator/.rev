@@ -331,4 +331,13 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment></comment>
     <requestid>1228524</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>4fdc65ce2ea89c856c5ef018885f9559</srcmd5>
+    <version>15.0.0</version>
+    <time>1736788046</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to avoid regression in 15.0.0 (QTCREATORBUG-32305):
+  * 0001-Revert-Autotools-Make-the-BuildSystem-per-BuildConfi.patch</comment>
+    <requestid>1237439</requestid>
+  </revision>
 </revisionlist>

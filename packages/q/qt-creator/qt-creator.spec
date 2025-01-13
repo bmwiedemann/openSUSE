@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package qt-creator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,8 @@ Source1:        qt-creator-rpmlintrc
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
+# Waiting for upstream fix
+Patch13:        0001-Revert-Autotools-Make-the-BuildSystem-per-BuildConfi.patch
 ##
 BuildRequires:  cmake
 # clang-devel in Leap 15 points to clang7...
@@ -107,7 +109,6 @@ BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt_min_version}
-BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick3D) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick3DAssetImport) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick3DAssetUtils) >= %{qt_min_version}
