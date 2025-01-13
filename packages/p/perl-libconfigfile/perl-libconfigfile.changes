@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:12:05 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- delete leftover old version to avoid race condition (boo#1102408)
+
+-------------------------------------------------------------------
 Sun Aug 28 18:41:32 UTC 2011 - andrea.turrini@gmail.com
 
 - fixed typo in perl-libconfigfile.spec

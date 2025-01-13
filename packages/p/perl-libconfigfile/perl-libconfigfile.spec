@@ -47,6 +47,8 @@ Authors:
 
 %prep
 %setup -q -n libconfigfile-perl-%{version}
+# delete leftover old version to not cause race conditions on which ConfigFile.pm gets installed
+rm -r libconfigfile-perl-1.1
 
 %build
 perl Makefile.PL
