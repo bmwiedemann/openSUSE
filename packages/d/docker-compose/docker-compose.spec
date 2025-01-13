@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           docker-compose
-Version:        2.32.2
+Version:        2.32.3
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0

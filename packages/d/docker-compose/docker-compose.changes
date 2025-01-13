@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:53:04 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.3:
+  * ci: update bake-action to v6
+  * simplification
+  * image can be set to a local ID, that isn't a valid docker ref
+  * can't render progress concurrently with buildkit
+  * exclude one-off container running convergence
+  * Only override service mac if set on the main network.
+
+-------------------------------------------------------------------
 Wed Jan 08 06:43:45 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.2:
