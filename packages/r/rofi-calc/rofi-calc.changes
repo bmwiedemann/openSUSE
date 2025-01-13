@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 10 09:24:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.3.0:
+  * Fix multiline outputs only showing the first line
+  * Error Message Color
+
+-------------------------------------------------------------------
 Fri Mar 29 14:13:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.1:

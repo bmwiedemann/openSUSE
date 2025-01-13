@@ -156,4 +156,12 @@
   * Fix functions crashing with libqalculate 5 #117</comment>
     <requestid>1163544</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>56026a2964453b114c97356ad377e746</srcmd5>
+    <version>2.3.0</version>
+    <time>1736787219</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237434</requestid>
+  </revision>
 </revisionlist>

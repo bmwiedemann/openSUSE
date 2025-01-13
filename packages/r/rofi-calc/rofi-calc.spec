@@ -1,7 +1,7 @@
 #
 # spec file for package rofi-calc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rofi-calc
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Calculator for rofi
 License:        MIT
