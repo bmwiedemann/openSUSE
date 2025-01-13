@@ -342,4 +342,12 @@
 - Use go-jose version with fix for CVE-2024-28180 (bsc#1235211).</comment>
     <requestid>1235678</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>932af22e6b28664f82a0165cda40a546</srcmd5>
+    <version>1.3.6</version>
+    <time>1736787193</time>
+    <user>anag+factory</user>
+    <comment>    [CVE-2024-3727](https://bugzilla.suse.com/show_bug.cgi?id=1224114)</comment>
+    <requestid>1237414</requestid>
+  </revision>
 </revisionlist>

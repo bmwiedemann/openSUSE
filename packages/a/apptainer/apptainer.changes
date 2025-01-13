@@ -67,7 +67,7 @@ Fri Jan  3 16:11:01 UTC 2025 - Egbert Eich <eich@suse.com>
     credentials.
 - Version 1.3.2
   * Fix for
-    [CVE-2024-3727](https://github.com/advisories/GHSA-6wvf-f2vw-3425)
+    [CVE-2024-3727](https://bugzilla.suse.com/show_bug.cgi?id=1224114)
     in a dependent library which describes a flaw that can allow
     attackers to trigger unexpected authenticated registry accesses
     due to object digest values not being validated in all cases.
