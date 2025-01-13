@@ -3,7 +3,7 @@ Wed Dec 18 05:53:11 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Add backport for CVE-2024-29018 fix. bsc#1234089
   + 0010-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
-- Add backport for CVE-2024-23650 fix. bsc#1219437
+- Add backport for CVE-2024-23650 fix and rename patch filename. bsc#1219437
   - 0006-CVE-2024-23653-update-buildkit-to-include-CVE-patche.patch
   + 0006-CVE-2024-2365x-update-buildkit-to-include-CVE-patche.patch
 - Reorder and rebase patches:

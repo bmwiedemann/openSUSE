@@ -1,7 +1,7 @@
 #
 # spec file for package nfpm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nfpm
-Version:        2.41.0
+Version:        2.41.2
 Release:        0
 Summary:        Simple deb, rpm, apk and arch linux packager written in Go
 License:        MIT

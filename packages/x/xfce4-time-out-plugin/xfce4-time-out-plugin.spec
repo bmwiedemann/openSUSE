@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-time-out-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.16.0
 %define plugin time-out
 %define old_plugname timeout
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Time-out Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -29,12 +29,13 @@ Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-time-out-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.1/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(x11) >= 1.6.7
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif

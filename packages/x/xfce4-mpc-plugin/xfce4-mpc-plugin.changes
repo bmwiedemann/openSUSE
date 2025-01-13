@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:08:19 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.5.5
+  * Revert "build: Use #ifdef instead of #if"
+
+-------------------------------------------------------------------
 Sun Dec 29 14:28:19 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.5.4

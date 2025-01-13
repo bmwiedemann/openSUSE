@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 11 14:49:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.7.3
+  * fix missing react error with fragments in react-native
+  * Do not require import attributes for JSON imports in --module node16
+  * Cache started nonexistent property error checks to prevent reentrancy i
+    in the check
+  * Fix library inclusions for ES2024 target
+  * Remove reference not found errors from jsx: preserve
+  * Avoid incorrectly reusing assertion nodes from property assignments
+  * Do not require import attribute on type-only JSON import
+  * Mark the inherited any-based index signature so it can be elided in declaration emit
+  * Harden sanitizeLog against incorrect matches on TypeScript versions
+  * Don't try to add an implicit undefined for mapped properties outside of strictNullChecks
+  * Fix CodeQL configuration, releases
+
+-------------------------------------------------------------------
 Sun Nov 24 19:46:05 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.7.2

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Jan 12 07:34:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.41.2:
+  * test: test centos10, fedora 40+ (#899)
+  * ci: release metadata (#882)
+  * ci: aur sources archive content (#896)
+  * ci: update dependabot config
+  * chore(deps): update chglog
+  * feat(deps): bump github.com/caarlos0/go-version from 0.1.1 to
+    0.2.0
+  * feat(deps): bump github.com/invopop/jsonschema from 0.12.0 to
+    0.13.0 (#897)
+  * ci: publish AUR from sources (#895)
+  * chore(deps): bump anchore/sbom-action from 0.17.8 to 0.17.9
+    (#894)
+  * feat(deps): bump golang.org/x/crypto from 0.23.0 to 0.31.0
+    (#893)
+  * chore(deps): bump actions/cache from 4.1.2 to 4.2.0 (#892)
+  * docs: sponsor logo (#887)
+  * feat(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#888)
+  * chore(deps): bump anchore/sbom-action from 0.17.7 to 0.17.8
+    (#886)
+  * feat(deps): bump github.com/Masterminds/semver/v3 from 3.3.0 to
+    3.3.1 (#885)
+  * fix: testifylint and revive lint issues (#884)
+  * chore(deps): remove github.com/xi2/xz (#883)
+  * docs: update cmd docs
+
+-------------------------------------------------------------------
+Sun Jan 12 06:52:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.41.1:
+  * fix: properly close file
+  * chore(deps): bump codecov/codecov-action from 4 to 5 (#881)
+  * chore(deps): bump anchore/sbom-action from 0.17.6 to 0.17.7
+    (#875)
+  * ci: updating build scripts (#877)
+  * ci: add back dpkg-signed tests
+  * ci: update acceptance tests to debian:trixie, remove dpkg-sig
+    from tests
+  * chore(deps): bump anchore/sbom-action from 0.17.5 to 0.17.6
+    (#873)
+  * docs: update cmd docs
+  * chore(deps): bump anchore/sbom-action from 0.17.3 to 0.17.5
+    (#870)
+  * chore(deps): bump actions/cache from 4.1.1 to 4.1.2 (#871)
+
+-------------------------------------------------------------------
 Fri Oct 25 16:53:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.41.0:

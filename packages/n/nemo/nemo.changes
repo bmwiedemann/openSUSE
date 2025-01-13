@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jan 12 04:53:24 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.3
+  * I18n
+- update to 6.4.2
+  * nemo-window-manage-views: fix null pointer ref
+- update to 6.4.1
+  * remove unused libxml headers
+  * fix inhibit name so nemo's desktop file is discovered by
+    cinnamon-session for the logout dialog
+- update to 6.4.0
+  * nemo_action_layout_editor.py: Fix non-initialized variable
+  * tree-sidebar: Add missing properties menu item
+  * search: Improve logging when loading search helpers.
+  * search: Replace third-party OpenDocument search helper.
+  * Add setting to disable auto-expanding of treeview rows during
+    drag-and-drop operations.
+  * actions: Cancel action update idle callbacks during dispose for
+    non-NemoView types.
+  * nemo-places-sidebar.c: Only register the special eject icon size
+    once.
+  * Guard against gdkx11 calls in a Wayland session.
+  * places sidebar: Improve eject icon behavior.
+  * layout editor: Add support for accelerator keys.
+  * NemoAction: Add support for keyboard shortcuts.
+  * Fix blocking when listing or entering a network location with an
+    inaccessible host.
+
+-------------------------------------------------------------------
 Tue Aug 13 03:29:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.2.8:

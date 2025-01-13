@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:11:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.1.2:
+  * chore(main): release 3.1.2 (#417)
+  * fix: provide both .tar.gz as well as .zip archives (#416)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.7 to
+    0.5.8 (#401)
+  * chore: use go1.23(.4) to build and release (#414)
+
+-------------------------------------------------------------------
 Thu Jan 09 06:41:18 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.1.1:

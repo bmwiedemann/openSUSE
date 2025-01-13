@@ -1,8 +1,0 @@
-<package name="python-cornice" project="openSUSE:Factory">
-  <title>Define Web Services in Pyramid</title>
-  <description>Provides helpers to build &amp; document Web Services with Pyramid.
-
-</description>
-  <devel project="devel:languages:python" package="python-cornice"/>
-  <url>https://cornice.readthedocs.io/</url>
-</package>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyipp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyipp
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Asynchronous Python client for Internet Printing Protocol (IPP)
 License:        MIT
@@ -36,6 +36,7 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module syrupy}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yarl >= 1.4.2}
 BuildRequires:  fdupes

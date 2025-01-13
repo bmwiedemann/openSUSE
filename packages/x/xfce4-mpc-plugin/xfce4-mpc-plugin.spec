@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-mpc-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin mpc
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        MPD Client Plugin for the Xfce Panel
 License:        ISC
@@ -32,7 +32,7 @@ BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.60.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(libmpd)
+BuildRequires:  pkgconfig(libmpd) >= 0.12
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
 %if %{with git}

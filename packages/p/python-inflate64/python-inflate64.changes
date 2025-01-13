@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 13 09:45:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.1
+  * Change deflate_tree: base_length[] and length_code[] not to
+    be const to avoid C2166 error on windows
+  * Drop support for python 3.8 and add support for python 3.13
+
+-------------------------------------------------------------------
 Fri Feb 16 14:24:03 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove bogus runtime and test requirements

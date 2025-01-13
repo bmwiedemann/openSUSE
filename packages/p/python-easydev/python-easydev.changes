@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 03:01:27 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.3:
+  * Support poetry-core 2.0 by @s-t-e-v-e-n-k in #37
+- Drop patch support-poetry-core-2.patch, included upstream.
+
+-------------------------------------------------------------------
 Fri Jan 10 04:35:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-poetry-core-2.patch:

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package xfce4-sensors-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin sensors
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Hardware Sensor Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -29,16 +29,16 @@ URL:            https://docs.xfce.org/panel-plugins/xfce4-sensors-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.4/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 %if %{with git}
 BuildRequires:  xfce4-dev-tools

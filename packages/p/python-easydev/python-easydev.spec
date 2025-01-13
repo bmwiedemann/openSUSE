@@ -17,14 +17,12 @@
 
 
 Name:           python-easydev
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        Common utilities to ease the development of Python packages
 License:        BSD-3-Clause
 URL:            https://github.com/cokelaer/easydev
 Source:         https://github.com/cokelaer/easydev/archive/refs/tags/v%{version}.tar.gz#/easydev-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#cokelaer/easydev#37
-Patch0:         support-poetry-core-2.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama

@@ -1,7 +1,7 @@
 #
 # spec file for package nemo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover   1
 Name:           nemo
-Version:        6.2.8
+Version:        6.4.3
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
 BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(exempi-2.0)
@@ -118,10 +117,6 @@ sed -i 's|/usr/bin/env bash|/usr/bin/bash|g' search-helpers/%{name}-epub2text
 
 %install
 %meson_install
-
-%suse_update_desktop_file %{name}
-%suse_update_desktop_file %{name}-autostart
-%suse_update_desktop_file %{name}-autorun-software
 
 # We need to own this directory.
 mkdir -p %{buildroot}%{_libdir}/nemo/extensions-3.0/

@@ -1,7 +1,7 @@
 #
 # spec file for package pgn-extract
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
+%define mver    25-01
 Name:           pgn-extract
-Version:        24.11
-%define mver    24-11
+Version:        25.01
 Release:        0
 Summary:        A CLI program for manipulating PGN files
 License:        GPL-3.0-or-later

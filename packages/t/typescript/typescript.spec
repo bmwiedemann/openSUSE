@@ -1,7 +1,7 @@
 #
 # spec file for package typescript
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           typescript
-Version:        5.7.2
+Version:        5.7.3
 Release:        0
 Summary:        A language for application scale JavaScript development
 License:        Apache-2.0

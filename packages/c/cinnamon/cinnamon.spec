@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _version 6.2.9
+%define _version 6.4.6
 Name:           cinnamon
-Version:        6.2.9
+Version:        6.4.6
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -53,15 +53,17 @@ BuildRequires:  libtool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  python3-libsass
 BuildRequires:  python3-xml
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop) >= 6.2.0
 BuildRequires:  pkgconfig(cjs-1.0) >= 6.0.0
 BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
 BuildRequires:  pkgconfig(libmuffin-0) >= 6.2.0
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
@@ -103,7 +105,7 @@ Requires:       wget
 Requires:       xdg-user-dirs
 Requires:       xdg-user-dirs-gtk
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     %{name}-lang
 Recommends:     blueberry
 Recommends:     cinnamon-themes
@@ -215,15 +217,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # Delete useless gir files
 %{__rm} -rf %{buildroot}%{_datadir}/gir-1.0/
 %fdupes %{buildroot}%{_datadir}/
-
-%suse_update_desktop_file %{name}-settings
-%suse_update_desktop_file %{name}-settings-users
-%suse_update_desktop_file %{name}-menu-editor
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}2d.desktop
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}-killer-daemon.desktop
-%suse_update_desktop_file %{buildroot}%{_datadir}/xsessions/%{name}.desktop
-%suse_update_desktop_file %{buildroot}%{_datadir}/xsessions/%{name}2d.desktop
 
 %post
 /sbin/ldconfig

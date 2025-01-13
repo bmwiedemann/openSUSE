@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:21:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.3:
+  * Add 2.8.3 changelog (#4712)
+  * Update web/ for 2.8 (#4706)
+  * [release/v2.8] Don't fail user creation if org exists (#4687)
+    (#4692)
+  * [release/v2.8] Improve error on config loading (#4024) (#4698)
+  * [release/v2.8] Fix addon `nil` values (#4666) (#4693)
+  * Fix avatar column type (#4340) (#4602)
+
+-------------------------------------------------------------------
 Fri Dec 20 09:15:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.2:

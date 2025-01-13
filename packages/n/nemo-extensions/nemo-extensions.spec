@@ -1,7 +1,7 @@
 #
 # spec file for package nemo-extensions
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define         _version 6.0.0
 Name:           nemo-extensions
-Version:        6.2.0
+Version:        6.4.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 URL:            https://github.com/linuxmint/nemo-extensions
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-hwcaps.patch
+Patch1:         gnome-installer-removal.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime

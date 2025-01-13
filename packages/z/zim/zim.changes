@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 13 10:31:02 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 0.76.0:
+  * Add Indexed Full-Text Search plugin
+  * Add Window Title Editor plugin
+  * Add Mermaid diagrams plugin
+  * Add preference to toggle dark theme variant
+  * Add separate style for page links
+  * Add commandline page import
+  * Add preferences menu for side pane widgets
+  * Diagram plugin: add preference for default text
+  * Journal plugin: add range offsets to journal_plugin.days() in template
+  * Search: add option to output scores on the command line
+  * Spellcheck plugin: add Gspell support
+  * Quicknote plugin: support wiki heading format as page name
+  * Arithmetic plugin: add option for limiting output decimals
+  * Markdown export: use blockquote to export indented paragraphs
+  * Markdown export: include image dimensions and ID
+  * Windows: fix high CPU usage by storing child process PID
+  * Windows: Fix unicode handling of strftime for windows
+  * Refactor to use Gtk.Application
+  * Refactor zim.parser to zim.parse.regexparser
+  * Refactor find API for pageview
+  * Refactor internal serialization for textbuffer
+  * Refactor parsing modules and utils
+  * Port setup.py from distutils to setuptools
+
+-------------------------------------------------------------------
 Tue Feb 20 11:27:30 UTC 2024 - pgajdos@suse.com
 
 - use python macros to build and install

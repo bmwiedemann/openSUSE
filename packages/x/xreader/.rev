@@ -511,4 +511,12 @@
 - remove older support of Leap releases</comment>
     <requestid>1195104</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fb673407ae2e373bcd869a96f61a3c45</srcmd5>
+    <version>4.2.3</version>
+    <time>1736787010</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237143</requestid>
+  </revision>
 </revisionlist>

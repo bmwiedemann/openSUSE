@@ -31,4 +31,12 @@
   * mkcomposefs: Fix error message (forwarded request 1234776 from rrahl0)</comment>
     <requestid>1234777</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5471db4b59d87d9a05a5edbbd10669b0</srcmd5>
+    <version>1.0.8</version>
+    <time>1736787040</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1237202</requestid>
+  </revision>
 </revisionlist>

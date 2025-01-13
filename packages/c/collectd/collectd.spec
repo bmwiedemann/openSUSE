@@ -156,6 +156,7 @@ BuildRequires:  pkgconfig(libsigrok)
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(libmodbus)
+BuildRequires:  strip-nondeterminism
 %endif
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libmosquitto)
@@ -748,6 +749,10 @@ EOF
 install -d -m 0755 "%{buildroot}%{_sbindir}"
 install -D -m0644 contrib/systemd.collectd.service %{buildroot}%{_unitdir}/collectd.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+
+%if 0%?have_strip_nondeterminism > 0
+    strip-all-nondeterminism %{buildroot}%{_datadir}/collectd/java/
+%endif
 
 %preun
 %service_del_preun %{name}.service

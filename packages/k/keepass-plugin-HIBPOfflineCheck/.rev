@@ -62,4 +62,14 @@
   * Minor fixes and updated documentation.</comment>
     <requestid>1087098</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4528c99f1e19852e19dd1a4f649062e0</srcmd5>
+    <version>1.7.11</version>
+    <time>1736787028</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.7.11
+  * Added a new option to configure the default status for empty
+    passwords.</comment>
+    <requestid>1237164</requestid>
+  </revision>
 </revisionlist>

@@ -29,6 +29,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Patch0:         do-not-send-eof-when-closing-application.patch
 BuildRequires:  Mesa-libEGL-devel
+Requires:       dmz-icon-theme-cursors
 
 BuildRequires:  cargo >= 1.43
 %if 0%{?suse_version} > 1500

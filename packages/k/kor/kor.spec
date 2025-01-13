@@ -1,7 +1,7 @@
 #
 # spec file for package kor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kor
-Version:        0.5.7
+Version:        0.5.8
 Release:        0
 Summary:        Tool to discover unused Kubernetes Resources
 License:        MIT

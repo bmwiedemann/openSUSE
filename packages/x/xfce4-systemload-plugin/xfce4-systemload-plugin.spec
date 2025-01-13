@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package xfce4-systemload-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,25 @@
 %define plugin systemload
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        System Load Monitoring Plugin for the Xfce Panel
 License:        BSD-2-Clause
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-systemload-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.3/%{name}-%{version}.tar.bz2
-Patch0:         convert-gulong.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.7
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libgtop-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
-BuildRequires:  pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
+BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif

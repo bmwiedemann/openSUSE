@@ -1,7 +1,7 @@
 #
 # spec file for package spec-cleaner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Vincent Untz <vuntz@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           spec-cleaner
-Version:        1.2.3+1
+Version:        1.2.3+6
 Release:        0
 Summary:        .spec file cleaner
 License:        BSD-3-Clause

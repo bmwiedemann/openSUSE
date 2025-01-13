@@ -31,4 +31,12 @@
     <comment>- Build kddockwidgets without spdlog until fmt 11 gets supported</comment>
     <requestid>1189363</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2971d23f59cb46eab76c00be978aa72</srcmd5>
+    <version>2.2.1</version>
+    <time>1736787029</time>
+    <user>anag+factory</user>
+    <comment>Update to 2.2.1</comment>
+    <requestid>1237171</requestid>
+  </revision>
 </revisionlist>

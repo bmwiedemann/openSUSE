@@ -1,7 +1,7 @@
 #
 # spec file for package xreader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         typelib1 typelib-1_0-XreaderDocument-1_5
 %define         typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -29,11 +29,10 @@ Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
-BuildRequires:  mathjax
+#BuildRequires:  mathjax
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.17
 BuildRequires:  pkgconfig(gail-3.0)
@@ -110,12 +109,13 @@ Requires:       %{typelib2} = %{version}
 Xreader is a document viewer capable of displaying multiple and
 single page document formats like PDF and Postscript.
 
-%package -n xreader-plugin-epubdocument
-Summary:        EPUB document support for Xreader
-Requires:       %{name}
+#%package -n xreader-plugin-epubdocument
+#Summary:        EPUB document support for Xreader
+#Requires:       %{name}
 
-%description -n xreader-plugin-epubdocument
-A plugin for Xreader to read EPUB documents.
+
+#%description -n xreader-plugin-epubdocument
+#A plugin for Xreader to read EPUB documents.
 
 %package -n xreader-plugin-pdfdocument
 Summary:        PDF document support for Xreader
@@ -182,7 +182,7 @@ A plugin for Xreader to read Pixbuf documents.
   -Ddjvu=true \
   -Ddvi=true \
   -Dt1lib=true \
-  -Depub=true \
+  -Depub=false \
   -Dpdf=true \
   -Dpixbuf=true \
   -Dps=true \
@@ -203,7 +203,6 @@ A plugin for Xreader to read Pixbuf documents.
 %install
 %meson_install
 %find_lang %{name}
-%suse_update_desktop_file %{name}
 %fdupes %{buildroot}
 
 %post -n libxreaderview%{sover} -p /sbin/ldconfig
@@ -256,9 +255,9 @@ A plugin for Xreader to read Pixbuf documents.
 %{_datadir}/gir-1.0/*.gir
 %{_libdir}/pkgconfig/*.pc
 
-%files -n xreader-plugin-epubdocument
-%{_libdir}/%{name}/%{sover}/backends/epubdocument.xreader-backend
-%{_libdir}/%{name}/%{sover}/backends/libepubdocument.so
+#%files -n xreader-plugin-epubdocument
+#%{_libdir}/%{name}/%{sover}/backends/epubdocument.xreader-backend
+#%{_libdir}/%{name}/%{sover}/backends/libepubdocument.so
 
 %files -n xreader-plugin-pdfdocument
 %{_libdir}/%{name}/%{sover}/backends/pdfdocument.xreader-backend

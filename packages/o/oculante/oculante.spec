@@ -1,6 +1,7 @@
 #
 # spec file for package oculante
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +21,7 @@
 %define force_gcc_version 13
 %define appid io.github.woelper.Oculante
 Name:           oculante
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
@@ -51,7 +52,7 @@ tools.
 %autosetup -a1 -p1
 
 echo 'StartupWMClass=oculante' >> res/flathub/%{appid}.desktop
-sed -i 's|MimeType=|MimeType=image/jxl;|' res/flathub/%{appid}.desktop
+sed -i 's|MimeType=|MimeType=image/jxl;image/vnd.adobe.photoshop;|' res/flathub/%{appid}.desktop
 
 %build
 %if 0%{?suse_version} < 1600
@@ -82,6 +83,7 @@ export CXX="g++-%{?force_gcc_version}"
 %{cargo_test} -- \
     --skip=tests::net \
     --skip=bench \
+    --skip=thumbnails::test_thumbs \
     --skip=tests::flathub
 %endif
 appstream-util validate-relax --nonet \

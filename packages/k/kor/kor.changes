@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:11:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.8:
+  * chore: prerelease chart bump (#397)
+  * security: update some go modules (#396)
+  * Docs: README.md tweaks (#390)
+  * Fix: added missing nindent arg in imagePullSecrets (#394)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.31.3 to
+    0.32.0 (#393)
+
+-------------------------------------------------------------------
 Tue Dec 10 11:50:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.7:

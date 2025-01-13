@@ -1,7 +1,7 @@
 #
 # spec file for package zim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Matthias Propst.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,10 @@
 
 
 %define skip_python2 1
+%define hierarchical_name org.zim_wiki.Zim
 
 Name:           zim
-Version:        0.75.2
+Version:        0.76.0
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
@@ -66,7 +67,7 @@ version control.
 %install
 %python3_install
 
-%suse_update_desktop_file %{name}
+%suse_update_desktop_file %{hierarchical_name}
 # remove ubuntu-specific icons
 rm -r %{buildroot}%{_datadir}/icons/{ubuntu-mono-dark,ubuntu-mono-light}
 %find_lang %{name}
@@ -82,10 +83,10 @@ rm -r %{buildroot}%{_datadir}/icons/{ubuntu-mono-dark,ubuntu-mono-light}
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.zim_wiki.Zim.appdata.xml
-%{_datadir}/applications/zim.desktop
-%{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/icons/hicolor/*/apps/zim.*
+%{_datadir}/metainfo/%{hierarchical_name}.appdata.xml
+%{_datadir}/applications/%{hierarchical_name}.desktop
+%{_datadir}/mime/packages/%{hierarchical_name}.xml
+%{_datadir}/icons/hicolor/*/apps/%{hierarchical_name}.*
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-zim-notebook.*
 %{_mandir}/man1/zim.1%{?ext_man}
 

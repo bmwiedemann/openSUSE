@@ -1,4 +1,230 @@
 -------------------------------------------------------------------
+Sun Jan 12 16:50:23 UTC 2025 - mrueckert@suse.de
+
+- Update to version 1.69.0:
+  https://rclone.org/changelog/#v1-69-0-2025-01-12
+
+  Rclone is using golang.org/x/net but was not affected to
+  CVE-2024-45337 and CVE-2024-45338.
+
+  * Version v1.69.0
+  * test_all: disable docker plugin tests
+  * docs: fix typo
+  * accounting: fix race stopping/starting the stats counter
+  * docs: add github.com/icholy/gomajor to RELEASE for updating major versions
+  * ftp: fix ls commands returning empty on "Microsoft FTP Service" servers
+  * s3: add docs on data integrity
+  * webdav: make --webdav-auth-redirect to fix 401 unauthorized on redirect
+  * rest: make auth preserving redirects an option
+  * box: fix panic when decoding corrupted PEM from JWT file
+  * size: make output compatible with -P
+  * vfs: add remote name to vfs cache log messages - fixes #7952
+  * dropbox: fix return status when full to be fatal error
+  * rc: add relative to vfs/queue-set-expiry
+  * vfs: fix open files disappearing from directory listings
+  * docker serve: parse all remaining mount and VFS options
+  * smb: fix panic if stat fails
+  * googlephotos: fix nil pointer crash on upload - fixes #8233
+  * iclouddrive: tweak docs
+  * serve dlna: sort the directory entries by directories first then alphabetically by name
+  * serve nfs: fix missing inode numbers which was messing up ls -laR
+  * serve nfs: implement --nfs-cache-type symlink
+  * azureblob,oracleobjectstorage,s3: quit multipart uploads if the context is cancelled
+  * http: fix incorrect URLs with initial slash
+  * build: update `github.com/shirou/gopsutil` to v4
+  * Replace Windows-specific NewLazyDLL with NewLazySystemDLL
+  * lib/oauthutil: don't require token to exist for client credentials flow
+  * fs/operations: make log messages consistent for mkdir/rmdir at INFO level
+  * Add Francesco Frassinelli to contributors
+  * smb: Add support for Kerberos authentication.
+  * docs: smb: link to CloudSoda/go-smb2 fork
+  * cloudinary: add cloudinary backend - fixes #7989
+  * operations: fix eventual consistency in TestParseSumFile test
+  * Add TAKEI Yuya to contributors
+  * docs: Remove Backblaze as a Platinum sponsor
+  * docs: add RcloneView as silver sponsor
+  * serve docker: fix incorrect GID assignment
+  * serve s3: fix Last-Modified timestamp
+  * Add ToM to contributors
+  * Add Henry Lee to contributors
+  * Add Louis Laureys to contributors
+  * docs: filtering: mention feeding --files-from from standard input
+  * docs: filtering: fix --include-from copypaste error
+  * s3: rename glacier storage class to flexible retrieval
+  * b2: add daysFromStartingToCancelingUnfinishedLargeFiles to backend lifecycle command
+  * build: update golang.org/x/net to v0.33.0 to fix CVE-2024-45338
+  * azurefiles: fix missing x-ms-file-request-intent header
+  * Add Thomas ten Cate to contributors
+  * docs: Document --url and --unix-socket on the rc page
+  * docs: link to the outstanding vfs symlinks issue
+  * Add Yxxx to contributors
+  * Add hayden.pan to contributors
+  * docs: update pcloud doc to avoid puzzling token error when use remote rclone authorize
+  * pikpak: add option to use original file links - fixes #8246
+  * rc/job: use mutex for adding listeners thread safety
+  * docs: mention in serve tls options when value is path to file - fixes #8232
+  * build: update all dependencies
+  * accounting: fix debug printing when debug wasn't set
+  * Add Filipe Azevedo to contributors
+  * fs: make --links flag global and add new --local-links and --vfs-links flag
+  * vfs: add docs for -l/--links flag
+  * nfsmount,serve nfs: introduce symlink support #2975
+  * mount2: introduce symlink support #2975
+  * mount: introduce symlink support #2975
+  * cmount: introduce symlink support #2975
+  * vfstest: make VFS test suite support symlinks
+  * vfs: add symlink support to VFS
+  * vfs: add ELOOP error
+  * vfs: Add link permissions
+  * vfs: Add VFS --links command line switch
+  * vfs: add vfs.WriteFile to match os.WriteFile
+  * fs: Move link suffix to fs
+  * cmount: fix problems noticed by linter
+  * mount2: Fix missing . and .. entries
+  * sftp: fix nil check when using auth proxy
+  * Add Martin Hassack to contributors
+  * serve sftp: resolve CVE-2024-45337
+  * googlecloudstorage: typo fix in docs
+  * onedrive: add support for OAuth client credential flow - fixes #6197
+  * lib/oauthutil: add support for OAuth client credential flow
+  * lib/oauthutil: return error messages from the oauth process better
+  * bin/test_backend_sizes.py fix compile flags and s3 reporting
+  * test makefiles: add --flat flag for making directories with many entries
+  * Add divinity76 to contributors
+  * Add Ilias Ozgur Can Leonard to contributors
+  * Add remygrandin to contributors
+  * Add Michael R. Davis to contributors
+  * cmd/mountlib: better snap mount error message
+  * vfs: with --vfs-used-is-size value is calculated and then thrown away - fixes #8220
+  * serve sftp: fix loading of authorized keys file with comment on last line - fixes #8227
+  * oracleobjectstorage: make specifying compartmentid optional
+  * plcoud: fix failing large file uploads - fixes #8147
+  * docs: add docker volume plugin troubleshooting steps
+  * docs: fix missing `state` parameter in `/auth` link in instructions
+  * build: fix build failure on ubuntu
+  * docs: upgrade fontawesome to v6
+  * s3: fix multitenant multipart uploads with CEPH
+  * Add David Seifert to contributors
+  * Add vintagefuture to contributors
+  * use better docs
+  * googlecloudstorage: update docs on service account access tokens
+  * test_all: POSIX head/tail invocations
+  * icloud: Added note about app specific password not working
+  * s3: fix download of compressed files from Cloudflare R2 - fixes #8137
+  * s3: fix testing tiers which don't exist except on AWS
+  * Changelog updates from Version v1.68.2
+  * local: fix permission and ownership on symlinks with --links and --metadata
+  * Revert "Merge commit from fork"
+  * Add Dimitrios Slamaris to contributors
+  * Merge commit from fork
+  * onedrive: fix integration tests after precision change
+  * operations: fix TestRemoveExisting on crypt backends by shortening the file name
+  * bisync: fix output capture restoring the wrong output for logrus
+  * serve sftp: update github.com/pkg/sftp to v1.13.7 and fix deadlock in tests
+  * build: fix comments after golangci-lint upgrade
+  * build: update all dependencies
+  * build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1
+  * pikpak: fix fatal crash on startup with token that can't be refreshed
+  * yandex: fix server side copying over existing object
+  * sugarsync: fix server side copying over existing object
+  * putio: fix server side copying over existing object
+  * onedrive: fix server side copying over existing object
+  * dropbox: fix server side copying over existing object
+  * operations: add RemoveExisting to safely remove an existing file
+  * gofile: fix server side copying over existing object
+  * test_all: try to fix mailru rate limits in integration tests
+  * Add shenpengfeng to contributors
+  * Add Dimitar Ivanov to contributors
+  * docs: fix function name in comment
+  * sftp: allow inline ssh public certificate for sftp
+  * serve s3: fix excess locking which was making serve s3 single threaded
+  * lib/oauthutil: allow the browser opening function to be overridden
+  * Add Moises Lima to contributors
+  * lib/http: disable automatic authentication skipping for unix sockets
+  * onedrive: fix Retry-After handling to look at 503 errors also
+  * s3: Storj provider: fix server-side copy of files bigger than 5GB
+  * s3: add Selectel as a provider
+  * fs: fix Don't know how to set key "chunkSize" on upload errors in tests
+  * drive: implement rclone backend rescue to rescue orphaned files
+  * Add tgfisher to contributors
+  * Add Diego Monti to contributors
+  * Add Randy Bush to contributors
+  * Add Alexandre Hamez to contributors
+  * Add Simon Bos to contributors
+  * docs: mention that inline comments are not supported in a filter-file
+  * s3: add Wasabi eu-south-1 region
+  * docs: fix forward refs in step 9 of using your own client id
+  * docs: fix Scaleway Glacier website URL
+  * dlna: fix loggingResponseWriter disregarding log level
+  * build: remove required property on boolean inputs
+  * build: use inputs context in github workflow
+  * s3: fix crash when using --s3-download-url after migration to SDKv2
+  * docs: update overview to show pcloud can set modtime
+  * Add André Tran to contributors
+  * Add Matthias Gatto to contributors
+  * Add lostb1t to contributors
+  * Add Noam Ross to contributors
+  * Add Benjamin Legrand to contributors
+  * s3: add Outscale provider
+  * Add ICloud Drive backend
+  * drive: add support for markdown format
+  * accounting: fix global error acounting
+  * onedrive: fix time precision for OneDrive personal
+  * Add RcloneView as a sponsor
+  * Add Leandro Piccilli to contributors
+  * cache: skip bisync tests
+  * bisync: allow blank hashes on tests
+  * box: fix server-side copying a file over existing dst - fixes #3511
+  * sync: add tests for copying/moving a file over itself
+  * fs/cache: fix parent not getting pinned when remote is a file
+  * gcs: add access token auth with --gcs-access-token
+  * accounting: write the current bwlimit to the log on SIGUSR2
+  * accounting: fix wrong message on SIGUSR2 to enable/disable bwlimit
+  * gphotos: implment --gphotos-proxy to allow download of full resolution media
+  * googlephotos: remove noisy debugging statements
+  * docs: add note to CONTRIBUTING that the overview needs editing in 2 places
+  * test_all: add ignoretests parameter for skipping certain tests
+  * build: replace "golang.org/x/exp/slices" with "slices" now go1.21 is required
+  * Changelog updates from Version v1.68.1
+  * Makefile: Fail when doc recipes create dir named '$HOME'
+  * Makefile: Prevent `doc` recipe from creating dir named '$HOME'
+  * pikpak: fix cid/gcid calculations for fs.OverrideRemote
+  * bisync: change exit code from 2 to 7 for critically aborted run
+  * cmd: change exit code from 1 to 2 for syntax and usage errors
+  * local: fix --copy-links on macOS when cloning
+  * azureblob: add --azureblob-use-az to force the use of the Azure CLI for auth
+  * azureblob: add --azureblob-disable-instance-discovery
+  * s3: add initial --s3-directory-bucket to support AWS Directory Buckets
+  * Add Lawrence Murray to contributors
+  * backend/protondrive: improve performance of Proton Drive backend
+  * ftp: implement --ftp-no-check-upload to allow upload to write only dirs
+  * docs: document that fusermount3 may be needed when mounting/unmounting
+  * Add rishi.sridhar to contributors
+  * Add quiescens to contributors
+  * docs/zoho: update options
+  * zoho: make upload cutoff configurable
+  * zoho: add support for private spaces
+  * zoho: try to handle rate limits a bit better
+  * zoho: print clear error message when missing oauth scope
+  * zoho: switch to large file upload API for larger files, fix missing URL encoding of filenames for the upload API
+  * zoho: use download server to accelerate downloads
+  * opendrive: add about support to backend
+  * pikpak: fix login issue where token retrieval fails
+  * webdav: nextcloud: implement backoff and retry for 423 LOCKED errors
+  * s3: fix rclone ignoring static credentials when env_auth=true
+  * fs: fix setting stringArray config values from environment variables
+  * rc: fix default value of --metrics-addr
+  * fs: fix --dump filters not always appearing
+  * docs: correct notes on docker manual build
+  * Add ttionya to contributors
+  * build: fix docker release build - fixes #8062
+  * docs: add section for improving performance for s3
+  * onedrive: fix spurious "Couldn't decode error response: EOF" DEBUG
+  * Add Divyam to contributors
+  * serve docker: add missing vfs-read-chunk-streams option in docker volume driver
+  * Start v1.69.0-DEV development
+
+-------------------------------------------------------------------
 Fri Nov 15 15:43:42 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.68.2:

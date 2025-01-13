@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  6 16:48:14 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.5.2
+  * build: Fix automake options
+
+- Update to 0.5.1
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * Support the panel's deskbar mode.
+  * build: Switch from intltool to gettext
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * autoconf: Some updates
+  * Use dist-xz for release tarballs
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Oct  7 12:57:57 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.5.0

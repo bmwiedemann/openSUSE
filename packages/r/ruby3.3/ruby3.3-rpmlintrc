@@ -1,8 +1,0 @@
-addFilter("files-duplicate /usr/share/ri/.*")
-addFilter("unexpanded-macro /usr/share/ri/.*")
-addFilter("ruby3.3.*devel-file-in-non-devel-package.*/usr/lib.*/ruby/gems/3.3.0/gems/")
-addFilter("ruby3.3-devel-extra.*devel-file-in-non-devel-package.*/usr/include/ruby-3.3.0.*/")
-addFilter("ruby3.3.*devel-file-in-non-devel-package.*/usr/lib.*/ruby/gems/.*")
-addFilter("ruby3.3.*env-script-interpreter.*/usr/lib.*/ruby/gems/.*")
-addFilter("ruby3.3.*non-executable-script.*/usr/lib.*/ruby/gems/.*")
-addFilter("ruby3.3.*non-executable-script.*/usr/lib.*/ruby/.*/bundler/.*")

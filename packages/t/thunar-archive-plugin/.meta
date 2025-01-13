@@ -1,0 +1,9 @@
+<package name="thunar-archive-plugin" project="openSUSE:Factory">
+  <title>Thunar Plugin Providing Integration with Archive Managers</title>
+  <description>The Thunar Archive Plugin allows for creating and extracting archive files
+through the file context menus in the Thunar file manager using an archive
+manager. It provides scripting interface that can be used to adapt it to
+different archive managers.</description>
+  <devel project="X11:xfce" package="thunar-archive-plugin"/>
+  <url>https://docs.xfce.org/xfce/thunar/archive</url>
+</package>

@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-desktop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define typelib typelib-1_0-CinnamonDesktop-3_0
 %define typelib_cvc typelib-1_0-Cvc-1_0
 Name:           cinnamon-desktop
-Version:        6.2.0
+Version:        6.4.1
 Release:        0
 Summary:        Libcinnamon-desktop API
 License:        GPL-2.0-or-later AND MIT
@@ -36,6 +36,7 @@ Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE cinnamon-desktop-correct-background-path.patch sor.alexi@meowr.ru -- Fix path to Adwaita background.
 Patch0:         %{name}-correct-background-path.patch
 BuildRequires:  intltool
+BuildRequires:  iso-codes-devel
 BuildRequires:  meson
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig

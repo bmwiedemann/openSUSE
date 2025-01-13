@@ -19,7 +19,7 @@
 %define soname  libcinnamon-control-center
 %define sover   1
 Name:           cinnamon-control-center
-Version:        6.2.0
+Version:        6.4.1
 Release:        0
 Summary:        Utilities to configure the Cinnamon desktop
 License:        GPL-2.0-only AND GPL-3.0-or-later AND MIT
@@ -35,7 +35,6 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(cinnamon-settings-daemon)
@@ -125,10 +124,6 @@ needed to develop applications that require these.
 
 %install
 %meson_install
-
-ls %{buildroot}%{_datadir}/applications/cinnamon-* | while read desktop; do
-    %suse_update_desktop_file $desktop
-done
 
 %fdupes %{buildroot}%{_datadir}/
 

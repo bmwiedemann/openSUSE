@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan  6 17:56:56 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.7.3
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * Add the capability to trigger a countdown from the command line.
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * gcc-analyzer: Fix -Wanalyzer-deref-before-check
+  * build: Get rid of intltool
+  * Add an UTC option to the alarm
+  * Fix copyright info
+  * Remove deprecated project files
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Apr 18 17:47:45 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.7.2

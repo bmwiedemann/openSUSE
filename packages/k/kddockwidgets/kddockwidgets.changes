@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 12 12:14:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.2.1
+  * qtquick: Add support for MainWindowOption_HasCentralWidget
+  * qtquick: Add QtQuick::FloatingWindow::setQuickWindowCreationCallback
+  * Add Config::setDockWidgetTabIndexOverrideFunc()
+  * Allow to redock back to a floating window
+  * Add KDDockWidgets::controllersToViews
+  * Add Config::setTabsAtBottom()
+  * Fix case where persistent central widget would detach when dragged
+  * Fix windows having transparency when drop indicators inhibited
+  * Fix case where persistent central widget would detach when dragged
+  * Allow to build against external KDBindings
+  * Fix restore layout of nested main windows
+  * Fix restore maximized window corner case
+  * Fix linking against static KDDW
+
+-------------------------------------------------------------------
 Wed Jul 24 11:02:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Build kddockwidgets without spdlog until fmt 11 gets supported

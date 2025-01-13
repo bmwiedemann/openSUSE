@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Versioned
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Versioned
 Version:        0.9.4
@@ -23,10 +24,10 @@ Summary:        Add version info to file paths
 License:        BSD-3-Clause
 URL:            http://github.com/pilt/flask-versioned
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Versioned/Flask-Versioned-%{version}-20101221.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
 # /SECTION
@@ -53,7 +54,7 @@ Add version info to file paths.
 
 %files %{python_files}
 %if 0%{suse_version} >= 1600
-%{python_sitelib}/Flask_Versioned-0.9.4.post20101221-py3.10-nspkg.pth
+%{python_sitelib}/Flask_Versioned-0.9.4.post20101221-py3.12-nspkg.pth
 %else
 %{python_sitelib}/Flask_Versioned-0.9.4.post20101221-py3.11-nspkg.pth
 %endif

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 12 04:06:51 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.1
+  * Add iso-codes as build-depends
+- update to 6.4.0
+  * Remove gnome-installer
+  * Backport some language/locale-related changes for keyboard
+  * Adapt gnome-rr-* to work thru muffin, to support color profiles
+  * Simplify overamplification setting
+
+-------------------------------------------------------------------
 Sun Aug  11 05:25:29 UTC 2024 - sb56637 <mxoo28j7@duck.com>
 
 - update to 6.2.0:

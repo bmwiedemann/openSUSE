@@ -7,4 +7,12 @@
     <comment>It could be interesting to have in Factory.</comment>
     <requestid>1221728</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>94b78d78662c0ea10d03babde98fbdd6</srcmd5>
+    <version>0.9.4</version>
+    <time>1736787042</time>
+    <user>anag+factory</user>
+    <comment>- Python 3.12 is now the first flavor built, fix nspkg.pth</comment>
+    <requestid>1237203</requestid>
+  </revision>
 </revisionlist>

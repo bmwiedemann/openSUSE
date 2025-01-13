@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Jan 13 06:58:02 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.0:
+  This release comes with one new audit (secrets-inherit), plus a
+  slew of bugfixes and internal refactors that unblock future
+  improvements!
+  * Added
+    - New audit: secrets-inherit detects use of secrets: inherit
+      with reusable workflow calls (#408)
+  * Improved
+    - The template-injection audit now detects injections in calls
+      to azure/cli and azure/powershell (#421)
+  * Fixed
+    - The template-injection audit no longer consider
+      github.server_url dangerous (#412)
+    - The template-injection audit no longer crashes when
+      evaluating the static-ness of an environment for a uses: step
+      (#420)
+
+-------------------------------------------------------------------
+Wed Jan 08 12:10:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.1:
+  This is a small quality and bugfix release. Thank you to
+  everybody who helped by reporting and shaking out bugs from our
+  first stable release!
+  * Improved
+    - The github-env audit now detects dangerous writes to
+      GITHUB_PATH, is more precise, and can produce multiple
+      findings per run block (#391)
+  * Fixed
+    - workflow_call.secrets keys with missing values are now parsed
+      correctly (#388)
+    - The cache-poisoning audit no longer incorrectly treats
+      docker/build-push-action as a publishing workflow is push:
+      false is explicitly set (#389)
+    - The template-injection audit no longer considers
+      github.action_path to be a potentially dangerous expansion
+      (#402)
+    - The github-env audit no longer skips run: steps with
+      non-trivial shell: stanzas (#403)
+
+-------------------------------------------------------------------
+Fri Jan  3 15:07:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package zizmore: a static analysis tool for GitHub Actions

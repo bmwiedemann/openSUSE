@@ -41,4 +41,12 @@
 - Remove _service file (forwarded request 1080495 from manfred-h)</comment>
     <requestid>1080849</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>909da164505f50c14f29f2f4eeb1d389</srcmd5>
+    <version>0.7.3</version>
+    <time>1736786990</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237001</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec 29 14:20:10 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 1.1.7
+  * Update copyright year
+  * gcc-analyzer: Update false positive file
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * gcc-analyzer: Add false positive file
+  * gcc-analyzer: Fix -Wanalyzer-malloc-leak
+  * gcc-analyzer: Fix -Wanalyzer-possible-null-argument
+  * gcc-analyzer: Fix -Wanalyzer-null-argument
+  * gcc-analyzer: Fix -Wanalyzer-null-dereference
+  * scan-build: Fix unix.Malloc
+  * scan-build: Fix deadcode.DeadStores
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Apr 21 05:38:06 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Updated to 1.1.5
+- Updated to 1.1.6
   * Remove unused old doc/ folder
   * Improve autotools configuration
   * Update copyright year

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 09 01:32:27 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 3.3.37:
+  * This release is highlighted by a long overdue rewrite of the
+    -b, -e, and -v[x] man page and help options. And changing the
+    long incorrect -F/--full to -e/--expanded, which is more
+    accurate. -e expands -b, that is, but is not full. -v8 is full.
+    -F/--full will keep working until this inxi is in the stable
+    repos of the major distros.
+  * Renamed to inxi.metainfo.xml
+  * Changed id to org.smxi.inxi
+  * Added inxi.metadata.xml.
+- Remove %Check in spec file.
+- Add installation of metainfo.
+
+-------------------------------------------------------------------
 Thu Sep 05 21:05:13 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to version 3.3.36:

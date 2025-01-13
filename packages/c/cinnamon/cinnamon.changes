@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 12 04:49:30 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.6
+  * see github commits for details
+
+-------------------------------------------------------------------
 Mon Aug  19 15:01:03 UTC 2024 - sb56637 <mxoo28j7@duck.com>
 
   * Changes to the RPM .spec file for proper dependency versions of other Cinnamon components at different version numbers

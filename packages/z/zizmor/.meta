@@ -1,0 +1,6 @@
+<package name="zizmor" project="openSUSE:Factory">
+  <title>A static analysis tool for GitHub Actions</title>
+  <description>zizmor is a static analysis tool for GitHub Actions. It can find many common security issues in typical GitHub Actions CI/CD setups.</description>
+  <devel project="security" package="zizmor"/>
+  <url>https://github.com/woodruffw/zizmor</url>
+</package>

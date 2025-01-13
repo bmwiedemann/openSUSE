@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 29 08:54:26 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.7.3
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * parser: Fix GError warning about 0 quark
+  * lexer: Fix parsing of dots
+  * Fix calc_free
+  * build: Remove unnecessary check for libx11
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Apr 20 08:00:26 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.7.2

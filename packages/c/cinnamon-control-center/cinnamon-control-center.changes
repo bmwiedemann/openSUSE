@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 12 04:40:26 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.1
+  * L10n change
+- update to 6.4.0
+  * network: Could not load editor VPN plugin warning
+  * color-panel: Replace broken package-kit installation of
+    gnome-color-manager with apturl (if available)
+  * network: prevent redefinition error when building with
+    musl libc
+
+-------------------------------------------------------------------
 Mon Aug  19 14:46:00 UTC 2024 - sb56637 <mxoo28j7@duck.com>
 
 - update to 6.2.0:

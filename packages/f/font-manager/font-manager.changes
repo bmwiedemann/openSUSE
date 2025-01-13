@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jan 12 19:15:04 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- Update to 0.9.1
+  * Address segfault caused by missing sources - Closes #405
+  * Update Unicode data files to version 16.0
+  * Fix GLib Schema loading to ensure newest file gets loaded
+  * Fix base dir detection for Google Fonts waterfall preview
+  * Add preference to control spacing between lines in waterfall - Issue #399
+  * Check for default preview and load localized version instead - Issue #389
+  * Set cursor to visible in active preview - Issue #403
+  * Ship fallback icons to avoid missing image icons - Issue #373
+  * FontList : Increase margin to improve TreeExpander consistency - Issue #373
+  * Waterfall Preview : Allow access to waterfall settings from right click menu - Issue #373
+  * Collections : More accurate state tracking
+  * Unsorted Category : Fix matching
+  * Unsorted Category : Prevent possible crash due to access of null object
+  * Browse Mode : Save preview tile size - Issue #373
+  * Browse Mode : Set Gtk.GridView:max-columns to 36, defaults to 7 - Issue #373
+  * Browse Mode : Add tooltip text to controls - Issue #373
+  * Browse Mode : Fix preview size not updating with tile size
+  * Browse Mode : Restore list option and allow for custom text - Issue #378
+  * Google Fonts : link waterfall settings for consistency
+  * Google Fonts : Move file management into Font object for improved state tracking
+  * Google Fonts : Set margins to match Manage fontlist
+  * Dark Theme : Fix light backgrounds in various areas and dialogs
+
+-------------------------------------------------------------------
 Fri Jul  5 12:09:35 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - Update to 0.9.0

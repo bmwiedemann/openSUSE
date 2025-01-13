@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan  5 14:07:08 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.4.2
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * Fix Darwin build
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * I18n: Update po/LINGUAS list
+  * desktop: Remove extra layer of input
+  * build: Get rid of intltool
+  * monitor-label: Do not resize the label width after speed falls
+  * Update plugin size also on as_bits_toggled
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Apr 29 09:01:29 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.4.1

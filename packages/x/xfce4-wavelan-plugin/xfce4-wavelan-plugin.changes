@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan  6 18:51:32 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.6.4
+  * Introduce Darwin support
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * scan-build: Fix deadcode.DeadStores
+  * build: Get rid of intltool
+  * Remove useless size request (Fixes #15)
+  * Fix plugin icon size
+  * Update copyright year and bug report address
+  * build: Add GLib requirement
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * OpenBSD: rewrite rate calculation to use IFM_BAUDRATE_DESCRIPTIONS
+  * Default "Wifi Manager Command" to NetWorkManager only on Linux
+  * Limit list of interfaces to IEEE 802.11 on OpenBSD and NetBSD
+  * Limit list of interfaces to Ethernet on BSD
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Wed Jun 22 13:13:24 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.6.3

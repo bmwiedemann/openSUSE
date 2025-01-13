@@ -2,7 +2,7 @@
 # spec file for package ugrep
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_without fish
 %endif
 Name:           ugrep
-Version:        7.1.1
+Version:        7.1.3
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(bzip3)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
@@ -42,10 +43,6 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 Provides:       ugrep-indexer = 1.0.0
 Obsoletes:      ugrep-indexer < 1.0.0
-# the bzip3 version seems to old, the tests break with decompression errors
-%if 0%{?suse_version} > 1599
-BuildRequires:  pkgconfig(bzip3)
-%endif
 
 %description
 Ugrep supports an interactive query UI and can search file systems, source
@@ -96,9 +93,7 @@ This package contains the fish completion for ugrep.
 %configure \
 	--disable-avx2 \
 	--enable-color \
-%if 0%{?suse_version} > 1599
 	--with-bzip3 \
-%endif
 %if !%{with fish}
 	--with-fish-completion-dir=no \
 %endif

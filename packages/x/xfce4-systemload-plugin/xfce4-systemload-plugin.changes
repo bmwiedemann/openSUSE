@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan  6 16:56:38 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- update to 1.3.3:
+  * Introduce Darwin support
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * Fix BSD `glibtop_get_netload: Function not implemented` error
+  * scan-build: Fix false positive file
+  * scan-build: Add false positive file
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * scan-build: Fix deadcode.DeadStores
+  * network.cc: Fix -Wundef
+  * build: Get rid of intltool
+  * Add 24px icon, cleanup SVG metadata
+  * Fix timeout-seconds min value (Fixes #29)
+  * build: Fix failure due to wrong var type (Fixes #25)
+  * build: Add GLib requirement
+  * Translation Updates
+- Remove obsolete convert-gulong.patch
+
+-------------------------------------------------------------------
 Thu Dec 22 09:49:28 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add convert-gulong.patch to avoid an otherwise impossible

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:14:19 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.3:
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 7 updates
+  * with the new go-git version, this issue was fixed
+    https://github.com/go-git/go-git/pull/1050
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.12.0 to
+    5.13.0
+  * build(deps): bump anchore/scan-action from 5 to 6
+  * build(deps): bump buildpacks/github-actions from 5.8.4 to 5.8.5
+
+-------------------------------------------------------------------
 Fri Dec 27 12:34:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.2:

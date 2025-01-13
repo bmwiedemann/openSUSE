@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 13 10:32:20 UTC 2025 - daniel.garcia@suse.com
+
+- Update to version 1.2.3+6:
+  * Do not modify copyright by default
+  * Move setup.py configuration to pyproject.toml
+  * Post release version bump
+  * CI: Drop 3.6 and 3.7 versions
+
+-------------------------------------------------------------------
 Mon Jul  8 10:51:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 1.2.3+1:

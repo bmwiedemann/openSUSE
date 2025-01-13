@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:06:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.4.0:
+  * gjs-util: Backport private closure annotations patch
+  * Fix meson.build deprecations up to 0.56.0
+
+-------------------------------------------------------------------
 Mon Aug 26 16:10:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop cmake and libtool BuildRequires: the package uses meson to

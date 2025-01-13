@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d53c6778d44e1f328584b6a3cd62dc70</srcmd5>
+    <version>0.5.0</version>
+    <time>1736786995</time>
+    <user>anag+factory</user>
+    <comment>- Package renamed from thunar-plugin-media-tags to thunar-media-tags-plugin to 
+  follow upstream name convention
+- Update to version 0.5.0:
+  * build: Add ACLOCAL_FLAGS to ACLOCAL_AMFLAGS
+  * Fix AtkRelationSet leaks
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Add missing check for bind_textdomain_codeset
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Translation Updates</comment>
+    <requestid>1237014</requestid>
+  </revision>
+</revisionlist>

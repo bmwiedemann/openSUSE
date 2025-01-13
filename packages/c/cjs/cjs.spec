@@ -19,7 +19,7 @@
 %define         sover   0
 %define         typelib typelib-1_0-CjsPrivate-1_0
 Name:           cjs
-Version:        6.2.0
+Version:        6.4.0
 Release:        0
 Summary:        JavaScript module used by Cinnamon
 License:        (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later) AND MIT
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(mozjs-115)
-%if %{?suse_version} > 1500
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(readline)
 %else
 BuildRequires:  readline-devel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 12 10:00:25 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 25.01
+  * bug fix for repetition detection (--repetition);
+  * find games whether the winner is either the higher or lower rated player
+    (--lowerratedwinner and --higherratedwinner);
+  * extend -v to match move sequences anywhere in a game, not just at the 
+    start (--vanywhere);
+  * find games played at odds (--odds).
+
+-------------------------------------------------------------------
 Sun Jul 21 10:03:17 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 24.11

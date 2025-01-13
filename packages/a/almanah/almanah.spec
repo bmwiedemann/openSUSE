@@ -17,32 +17,30 @@
 
 
 Name:           almanah
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        GTK+ application to allow you to keep a diary of your life
 License:        GPL-3.0+
 Group:          Productivity/Office/Other
 URL:            https://gitlab.gnome.org/GNOME/almanah
 Source:         https://download.gnome.org/sources/almanah/0.12/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM Fix-build-meson-060.patch bjorn.lie@gmail.com -- Fix build with meson 0.60.x and newer
-Patch0:          Fix-build-meson-060.patch
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  gpgme-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.51
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cryptui-0.0)
-BuildRequires:  pkgconfig(gcr-base-3)
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.5.6
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(libecal-2.0)
 BuildRequires:  pkgconfig(libedataserver-1.2)
@@ -68,22 +66,20 @@ diary entries using multiple events.
 %install
 %meson_install
 
-%suse_update_desktop_file %{name} X-SuSE-DesktopUtility
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%meson_test
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README.md
+%doc AUTHORS NEWS.md README.md
 %{_bindir}/%{name}
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/almanah.appdata.xml
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/*/almanah-*.svg
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%dir %{_datadir}/GConf/
-%dir %{_datadir}/GConf/gsettings/
-%{_datadir}/GConf/gsettings/%{name}.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
+%{_datadir}/applications/org.gnome.Almanah.desktop
+%{_datadir}/icons/hicolor/*/apps/org.gnome.Almanah.png
+%{_datadir}/icons/hicolor/scalable/a*/org.gnome.Almanah-*.svg
+%{_datadir}/metainfo/org.gnome.Almanah.metainfo.xml
 
 %files lang -f %{name}.lang
 

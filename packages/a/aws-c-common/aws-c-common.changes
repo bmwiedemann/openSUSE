@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 08:48:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- exclude s390x as upstream does not support this platform
+- use ldconfig_scriptlet macros
+- package license in every distributed rpm
+
+-------------------------------------------------------------------
 Tue Jan  7 10:24:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.6

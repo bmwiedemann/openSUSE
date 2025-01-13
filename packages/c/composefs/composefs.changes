@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  5 22:40:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- for some reason s390x times out on verifying checksums in the tests,
+  let's disable it for now
+
+-------------------------------------------------------------------
 Fri Jan  3 18:16:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.8:

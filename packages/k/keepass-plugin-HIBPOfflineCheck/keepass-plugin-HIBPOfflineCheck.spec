@@ -1,7 +1,7 @@
 #
 # spec file for package keepass-plugin-HIBPOfflineCheck
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define _plugin_name HIBPOfflineCheck
 Name:           keepass-plugin-%{_plugin_name}
-Version:        1.7.10
+Version:        1.7.11
 Release:        0
 Summary:        A KeePass plugin for Have I been pwned
 License:        GPL-3.0-only

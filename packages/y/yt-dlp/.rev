@@ -446,4 +446,12 @@
     <comment>- Fix 15.6 build</comment>
     <requestid>1233307</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2ae7974980a6d194825c89fcf7b52a58</srcmd5>
+    <version>2025.01.12</version>
+    <time>1736787046</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2025.01.12</comment>
+    <requestid>1237204</requestid>
+  </revision>
 </revisionlist>

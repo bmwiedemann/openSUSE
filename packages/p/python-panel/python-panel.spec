@@ -1,7 +1,7 @@
 #
 # spec file for package python-panel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,9 @@
 %bcond_with servertests
 
 # truncate trailing suffix
-%define distversion 1.5.4
+%define distversion 1.5.5
 Name:           python-panel%{psuffix}
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -49,6 +49,8 @@ Source99:       python-panel-rpmlintrc
 %include        %{_sourcedir}/node_modules.spec.inc
 # PATCH-FEATURE-OPENSUSE opensuse-js-fixes.patch boo#1231254 gh#openSUSE/obs-service-node_modules#41
 Patch0:         opensuse-js-fixes.patch
+# PATCH-FIX-UPSTREAM manual-asyncio-loop.patch https://github.com/holoviz/panel/pull/7591
+Patch1:         manual-asyncio-loop.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module bokeh >= 3.5.0 with %python-bokeh < 3.7}
@@ -146,7 +148,6 @@ pushd panel
 rm package-lock.json
 local-npm-registry %{_sourcedir} install --include=dev --include=peer
 popd
-
 
 %if ! %{with test}
 %build

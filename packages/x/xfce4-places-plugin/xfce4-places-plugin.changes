@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jan  5 14:18:24 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.8.4
+  * build: Bump dependency versions and fix deprecation warnings
+  * build: Remove check for libx11
+  * gcc-analyzer: Fix -Wanalyzer-deref-before-check
+  * Add empty trash option
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * I18n: Update po/LINGUAS list
+  * scripts: Remove unused scripts
+  * build: Get rid of intltool
+  * Add missing G_BEGIN_DECLS
+  * Bump libxfce4panel version and remove dead code
+  * Replace deprecated GtkStock icon
+  * Remove extra padding in some themes (Fixes #27)
+  * Fix remaining blurry icons when UI scale > 1
+  * Avoid inappropriate use of xfce_panel_pixbuf_from_source()
+  * Translation Updates
+
+- Update to version 1.8.3
+  * Fix function called only in debug mode (Clear button works now)
+
+- Remove _service file
+
+-------------------------------------------------------------------
 Mon Sep 26 18:15:57 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.8.2

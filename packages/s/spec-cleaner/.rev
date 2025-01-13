@@ -774,4 +774,16 @@
 - Fix version number in package from github master</comment>
     <requestid>1186143</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>a59bd9e94701a0a8572f03ff3fd744ff</srcmd5>
+    <version>1.2.3+6</version>
+    <time>1736787190</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.3+6:
+  * Do not modify copyright by default
+  * Move setup.py configuration to pyproject.toml
+  * Post release version bump
+  * CI: Drop 3.6 and 3.7 versions</comment>
+    <requestid>1237378</requestid>
+  </revision>
 </revisionlist>

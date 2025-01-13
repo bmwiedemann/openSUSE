@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 12 12:04:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.2
+  * Replaced remaining QScopedPointer occurrences with
+    std::unique_ptr; introduce DeleteLater and QObjectHolder for
+    better integration of std::unique_ptr and QObject-based types
+  * New range facilities: findIndex() and rangeTo(), to cover for
+    the missing std::ranges::to() on macOS
+  * Fixes to some Quotest tests getting stuck in limbo
+  * findIndirect() algorithm was found unnecessary, as
+    std::ranges::find() covers its use case
+  * Only signal pending event as merged once the real one is in
+    the timeline
+  * ThreadView to track threads in a room
+  * AccountSettings: fix working with MXIDs that have forward-
+    and backslashes
+
+-------------------------------------------------------------------
 Fri Dec 20 14:19:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.1

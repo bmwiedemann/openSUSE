@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  6 10:50:01 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.11.1
+  * build: Bump dependency versions and fix deprecation warnings
+  * build: clang: Fix -Wdeprecated-non-prototype
+  * I18n: Update po/LINGUAS list
+  * build: Remove unnecessary check for libx11
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Don't highlight matching brackets
+  * Fix hypertext mouse cursor after editing text
+  * Work around buggy annotation for gtk_menu_shell_append()
+  * Add full undo/redo support
+  * New dependency: GtkSourceView-4
+  * Fix parallel build
+  * Make check for vala compiler more strict
+  * Translation Updates
+- Vala issues have been fixed upstream, which is why we can use
+  default gcc on Tumbleweed/Slowroll again.
+
+-------------------------------------------------------------------
 Fri Aug 30 10:00:16 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Vala does not properly work with gcc-14; lets stick with gcc-13

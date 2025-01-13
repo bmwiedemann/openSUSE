@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 00:14:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.01.12
+  * yt: fix DASH formats incorrectly skipped in some situations
+  * yt: refactor cookie auth
+
+-------------------------------------------------------------------
 Wed Dec 25 09:38:56 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix 15.6 build

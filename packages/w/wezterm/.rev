@@ -1014,4 +1014,13 @@ Using filterer cut 120+MB of dependencies to ~50MB
 </comment>
     <requestid>1234640</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>6ca153b2d724c7796e0da7b1f6978c4c</srcmd5>
+    <version>20240203.110809.5046fc22+git421</version>
+    <time>1736787011</time>
+    <user>anag+factory</user>
+    <comment>- Add dmz-icon-theme-cursors to resolve bsc#1234979
+</comment>
+    <requestid>1237153</requestid>
+  </revision>
 </revisionlist>

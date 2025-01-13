@@ -1,19 +1,39 @@
 -------------------------------------------------------------------
+Fri Jan 10 02:28:40 UTC 2025 - malcolmlewis@opensuse.org
+
+- Updated to version 0.4.3:
+  * Added -g flag to iGnore certain class names - ported from
+    nwg-dock;
+  * Dependencies updated.
+- Updates from version 0.4.2:
+  * Margins omitted for the hotspot window (autohiDe mode),
+    (gh#nwg-piotr/nwg-dock-hyprland#65).
+- Updates from version 0.4.1:
+  * Added optional ~/.config/nwg-dock-hyprland/hotspot.css file
+    support, (gh#nwg-piotr/nwg-dock-hyprland#65).
+  * Dependencies updated.
+- Updates from version 0.4.0:
+  * Switched from the gotk3 library to gtk3,
+    (gh#nwg-piotr/nwg-dock-hyprland#66).
+- Add build requires for gobject-introspection-1.0.
+- General spec file cleanup.
+
+-------------------------------------------------------------------
 Fri Nov 29 03:24:00 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to version 0.3.3:
-  * Use separate task images (dots) and placement, according to the dock
-    position, (gh#nwg-piotr/nwg-dock-hyprland#62).
+  * Use separate task images (dots) and placement, according to the
+    dock position, (gh#nwg-piotr/nwg-dock-hyprland#62).
   * Refresh the dock on item unpinned.
   * Update dependencies.
 - Changes from version 0.3.2;
   * Added -p right position flag for left-handed users,
     (gh#nwg-piotr/nwg-dock-hyprland#43).
-  * Hotspot layershell namespace renamed to "hotspot", to avoid blurring the
-    window together with the dock;
+  * Hotspot layershell namespace renamed to "hotspot", to avoid
+    blurring the window together with the dock;
 - Changes from version 0.3.1:
-  * Added -iw (ignoreWorkspaces) parameter to exclude clients from specified
-    workspaces, (gh#nwg-piotr/nwg-dock-hyprland#59).
+  * Added -iw (ignoreWorkspaces) parameter to exclude clients from
+    specified workspaces, (gh#nwg-piotr/nwg-dock-hyprland#59).
 - Changes from version 0.3.0:
   * Open new instances of apps using middle mouse button,
     (gh#nwg-piotr/nwg-dock-hyprland#51).
@@ -26,8 +46,8 @@ Fri Nov 29 03:24:00 UTC 2024 - malcolmlewis@opensuse.org
     + added sigShow (SIGRTMIN+2) to show the window,
     + added sigHide (SIGRTMIN+3) to hide the window.
 - Changes from version 0.2.2:
-  * Fixed crash on Hyprland v0.42.0: client.Fullscreen field type changed from
-    bool to int, (gh#nwg-piotr/nwg-dock-hyprland#48).
+  * Fixed crash on Hyprland v0.42.0: client.Fullscreen field type
+    changed from bool to int, (gh#nwg-piotr/nwg-dock-hyprland#48).
 - Changes from version 0.2.1:
   * Fixed, (gh#nwg-piotr/nwg-dock-hyprland#49).
   * gotk3 updated.

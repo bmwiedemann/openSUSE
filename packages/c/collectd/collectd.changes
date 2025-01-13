@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 18 10:28:48 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize jar mtimes for reproducible builds (boo#1134568)
+
+-------------------------------------------------------------------
 Sat Mar 11 15:43:03 UTC 2023 - suse+build@de-korte.org
 
 - Update to version 5.12.0.134.g4cebbfc:

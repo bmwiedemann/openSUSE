@@ -1,5 +1,0 @@
-<package name="scap-workbench" project="openSUSE:Factory">
-  <title>A GUI tool that serves as an SCAP scanner and provides tailoring functionality for SCAP content. </title>
-  <description>The main goal of this application is to lower the initial barrier of using SCAP. Therefore, the scope of very narrow - scap-workbench only scans a single machine and only with XCCDF/SDS (no direct OVAL evaluation).</description>
-  <devel project="security" package="scap-workbench"/>
-</package>

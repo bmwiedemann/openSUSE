@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 29 13:55:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.3.2
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: clang: Silence -Wcast-align
+  * Fix missing plugin icon
+  * build: Get rid of intltool
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Apr 21 05:29:58 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.3.1

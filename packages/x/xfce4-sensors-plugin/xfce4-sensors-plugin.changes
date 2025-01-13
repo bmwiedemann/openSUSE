@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:18:25 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.4.5
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * sensors-plugin: Drop subtitle from properties dialog
+  * build: Fix -Werror=deprecated-declarations
+  * build: Fix LDFLAGS
+  * scan-build: Fix false positive file
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * scan-build: Add false positive file
+  * scan-build: Fix unix.Malloc
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * build: Fix -Werror=format=
+  * build: Get rid of intltool
+  * build: Add missing includes of config.h
+  * build: Fix autotools warnings
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Dec 23 16:28:37 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.4.4

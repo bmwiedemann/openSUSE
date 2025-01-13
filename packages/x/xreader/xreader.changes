@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 12 05:15:35 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 4.2.3
+  * Update translations
+- fix build by disable epub whith requires mathjax
+  * mathjax 3.2.2 has no MathJax.js file
+
+-------------------------------------------------------------------
 Tue Aug 13 01:46:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 4.2.2:

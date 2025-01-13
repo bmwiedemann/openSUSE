@@ -1,7 +1,7 @@
 #
 # spec file for package font-manager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global DBusName com.github.FontManager.FontManager
 %global DBusName2 com.github.FontManager.FontViewer
 Name:           font-manager
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later

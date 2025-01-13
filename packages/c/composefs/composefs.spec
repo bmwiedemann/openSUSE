@@ -62,8 +62,10 @@ Devel files for %{name}.
 %meson_install
 rm -rf %{buildroot}%{_libdir}/libcomposefs.{a,la}
 
+%ifnarch s390x
 %check
 %meson_test
+%endif
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
 

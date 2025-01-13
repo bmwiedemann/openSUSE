@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jan 13 06:57:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.92.0:
+  * Features
+    - githubaction autodiscovery should allow for pinning version
+      to commit hash @loispostula (#3508)
+    - improvement(httpclient): add support for http proxy in retry
+      client @ryancurrah (#3516)
+    - feat: add versionfilter of kind lexicographical @acobaugh
+      (#3371)
+    - feat: add versionfilter of kind time @olblak (#3405)
+  * Bug Fixes
+    - fix(autodiscovery/helm): correctly handle ignore/only rule
+      @olblak (#3501)
+    - fix(autodiscovery/dockercompose): correctly set arch @olblak
+      (#3500)
+    - fix(helm): retrieve correct helm chart changelog based on a
+      version @olblak (#3489)
+    - fix(helm): Protect against undefined sourceSpec
+      @kuisathaverat (#3369)
+    - fix(autodiscovery/argocd): ArgoCD autodiscovery for OCI
+      registry @dshmelev (#3461)
+    - fix!(versionfilter): preserve original version for
+      regex/semver @mcwarman (#3404)
+    - fix: use latest when tag is not set in autodiscover
+      @kuisathaverat (#3370)
+  * Maintenance
+    - refactor(git): git error messages @olblak (#3460)
+    - refactor(json): improving json error message @olblak (#3458)
+    - Adds devcontainer @btrepp (#2807)
+    - deps(go): bump module
+      github.com/testcontainers/testcontainers-go @updateclibot
+      (#3517)
+    - deps(go): bump module github.com/go-git/go-git/v5
+      @updateclibot (#3447)
+    - deps(go): bump module golang.org/x/oauth2 @updateclibot
+      (#3430)
+    - deps(go): bump module github.com/zclconf/go-cty @updateclibot
+      (#3431)
+    - deps(go): bump module github.com/goccy/go-yaml @updateclibot
+      (#3394)
+    - deps(go): bump module github.com/invopop/jsonschema
+      @updateclibot (#3387)
+    - deps(go): bump module github.com/go-git/go-git/v5
+      @updateclibot (#3375)
+
+-------------------------------------------------------------------
 Fri Dec 27 12:37:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.91.0:

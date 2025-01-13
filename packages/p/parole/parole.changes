@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 30 09:04:20 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * Update copyright year
+  * I18n: Update po/LINGUAS list
+  * Added missing Keywords entry to .desktop file
+  * medialist: Fix wrong response code when saving
+  * player: Do not forward up/down keys to playlist
+  * Remove unnecessary GtkAllocation heap allocation
+  * build: Bump dependency versions and remove dead code
+  * scan-build: Fix unix.Malloc
+  * gcc-analyzer: Fix -Wanalyzer-possible-null-argument
+  * build: clang: Fix -Wunused-but-set-variable
+  * build: Explicitly depend on gstreamer-audio
+  * build: Clean up references of gstreamer-interfaces
+  * build: Explicitly depend on gstreamer-tag
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Do not use type-check macros to test whether an object is still
+    alive
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Nov 30 17:54:10 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.1

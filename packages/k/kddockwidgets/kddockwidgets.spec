@@ -24,10 +24,10 @@
 %define qt6 1
 %define pkg_suffix -qt6
 %endif
-%define soversion 2_1
+%define soversion 2_2
 %define rname kddockwidgets
 Name:           kddockwidgets%{?pkg_suffix}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Qt dock widget library, suitable for replacing QDockWidget
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -105,7 +105,8 @@ Requires:       cmake(Qt6Widgets)
 Development files for libkddockwidgets
 
 %prep
-%autosetup -p1 -n %{rname}-%{version}
+%autosetup -p1 -n KDDockWidgets-%{version}
+
 %if 0%{?suse_version} < 1550
 # examples require cmake >= 3.21
 %define extra_opts -DKDDockWidgets_EXAMPLES:BOOL=OFF

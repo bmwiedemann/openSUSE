@@ -1,0 +1,6 @@
+<package name="hyprland-qt-support" project="openSUSE:Factory">
+  <title>Hyprland-qt-support</title>
+  <description>A qt6 qml style provider for hypr* apps.</description>
+  <devel project="X11:Wayland" package="hyprland-qt-support"/>
+  <url>https://github.com/hyprwm/hyprland-qt-support</url>
+</package>

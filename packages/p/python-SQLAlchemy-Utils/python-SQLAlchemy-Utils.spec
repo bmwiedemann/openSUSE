@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy-Utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module flexmock >= 0.9.7}
 BuildRequires:  %{python_module furl >= 0.4.1}
 BuildRequires:  %{python_module intervals >= 0.7.1}
 BuildRequires:  %{python_module passlib >= 1.6}
-BuildRequires:  %{python_module pendulum >= 2.0.5}
+BuildRequires:  %{python_module pendulum >= 2.0.5 if %python-base < 3.13}
 BuildRequires:  %{python_module phonenumbers >= 5.9.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psycopg2 >= 2.5.1}
@@ -59,8 +59,8 @@ Recommends:     python-dateutil
 Recommends:     python-furl >= 0.4.1
 Recommends:     python-intervals >= 0.7.1
 Recommends:     python-passlib >= 1.6
-Recommends:     python-pendulum >= 2.0.5
 Recommends:     python-phonenumbers >= 5.9.2
+Suggests:       python-pendulum >= 2.0.5
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 39
 Requires:       python-backports.zoneinfo
@@ -81,8 +81,6 @@ Various utility functions and custom data types for SQLAlchemy.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/kvesteri/sqlalchemy-utils/issues/594
-sed -i 's:import mock:from unittest import mock:' tests/types/test_password.py
 # needs running pgsql / mssql / mysql
 rm tests/test_asserts.py
 rm tests/test_translation_hybrid.py

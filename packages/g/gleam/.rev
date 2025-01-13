@@ -123,4 +123,13 @@
    bytecode on older versions of Erlang/OTP. (yoshi)</comment>
     <requestid>1228090</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>506c93813dda02d4aa9904ec500f9ee0</srcmd5>
+    <version>1.7.0</version>
+    <time>1736787036</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.0:
+ * Changelog: https://gleam.run/news/improved-performance-and-publishing/</comment>
+    <requestid>1237192</requestid>
+  </revision>
 </revisionlist>

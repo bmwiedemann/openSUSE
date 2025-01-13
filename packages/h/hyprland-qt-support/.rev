@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22f5c0c9a2f2273000eda56b0d184e39</srcmd5>
+    <version>0.1.0</version>
+    <time>1736786996</time>
+    <user>anag+factory</user>
+    <comment>New Package
+
+Dependency for hyprland-qtutils
+Replaces use of kf6-qqc2-desktop-style in hypr* apps</comment>
+    <requestid>1237054</requestid>
+  </revision>
+</revisionlist>

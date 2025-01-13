@@ -1,7 +1,7 @@
 #
 # spec file for package parole
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           parole
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Media Player for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -27,25 +27,32 @@ Source0:        https://archive.xfce.org/src/apps/parole/4.18/%{name}-%{version}
 # PATCH-FEATURE-UPSTREAM parole-add-uri-scheme-handler-support.patch gber@opensuse.org -- Adds support for URI scheme handlers
 Patch1:         parole-add-uri-scheme-handler-support.patch
 BuildRequires:  appstream-glib
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(clutter-1.0) >= 1.16.4
+BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.4.4
 BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.70
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
+BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
-BuildRequires:  pkgconfig(libnotify) >= 0.4.1
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libnotify) >= 0.7.8
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.11.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
-BuildRequires:  pkgconfig(taglib)
+BuildRequires:  pkgconfig(taglib) >= 1.4
+BuildRequires:  pkgconfig(x11) >= 1.6.7
 Recommends:     %{name}-lang = %{version}
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good

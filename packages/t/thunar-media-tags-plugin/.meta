@@ -1,0 +1,5 @@
+<package name="thunar-media-tags-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:xfce" package="thunar-media-tags-plugin"/>
+</package>

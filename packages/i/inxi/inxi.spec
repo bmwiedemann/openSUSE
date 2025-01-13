@@ -1,8 +1,8 @@
 #
 # spec file for package inxi
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2011-2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2011-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define _version 3.3.36-1
+%define _version 3.3.37-1
 Name:           inxi
-Version:        3.3.36
+Version:        3.3.37
 Release:        0
 Summary:        A system information script
 License:        GPL-3.0-or-later
@@ -62,17 +62,17 @@ sed -i '/^#!/s/env \(.*\)$/\1/' %{name}
 ## Nothing to build.
 
 %install
-install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1
+install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1 \
+                   %{buildroot}%{_datadir}/metainfo
 install -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 install -m 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
-
-%check
-## Empty section added as per rpmlint report
+install -m 0644 %{name}.metainfo.xml %{buildroot}%{_datadir}/metainfo/%{name}.metainfo.xml
 
 %files
 %license LICENSE.txt
 %doc inxi.changelog README.txt
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/metainfo/%{name}.metainfo.xml
 
 %changelog

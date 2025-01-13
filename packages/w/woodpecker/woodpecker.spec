@@ -1,7 +1,7 @@
 #
 # spec file for package woodpecker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define server_executable_name woodpecker-server
 
 Name:           woodpecker
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        Simple yet powerful CI/CD engine with great extensibility
 License:        Apache-2.0

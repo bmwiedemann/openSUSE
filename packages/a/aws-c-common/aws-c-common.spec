@@ -29,6 +29,8 @@ Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
+# https://github.com/awslabs/aws-c-common/issues/1175
+ExcludeArch:    s390x
 
 %description
 Core C99 package for AWS SDK for C. It includes cross-platform primitives,
@@ -77,8 +79,7 @@ mv %{buildroot}%{_libdir}/aws-c-common/cmake/* %{buildroot}%{_libdir}/cmake/aws-
 mv %{buildroot}%{_libdir}/cmake/Aws* %{buildroot}%{_libdir}/cmake/aws-c-common/
 rm -rf %{buildroot}%{_libdir}/aws-c-common
 
-%post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
-%postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{library_soversion}
 
 %files -n lib%{name}%{library_soversion}
 %doc NOTICE README.md
@@ -87,6 +88,7 @@ rm -rf %{buildroot}%{_libdir}/aws-c-common
 %{_libdir}/*.so.%{library_version}
 
 %files devel
+%license LICENSE
 %{_libdir}/cmake/
 %{_libdir}/*.so
 %{_includedir}/*

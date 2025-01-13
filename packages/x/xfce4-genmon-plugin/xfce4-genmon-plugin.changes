@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  6 12:51:14 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.2.1
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: clang: Fix -Wsometimes-uninitialized
+  * build: Get rid of intltool
+  * Install scripts dir when building
+  * Fix copyright string
+  * Update copyright year and info
+  * Fix type in xfconf migration script
+  * Translation Updates
+- Add installed scripts to the rpm filelist.
+
+-------------------------------------------------------------------
 Mon Apr 17 06:23:47 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.2.0

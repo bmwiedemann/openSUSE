@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan  6 11:10:25 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.5
+  * prefs-dialog: Remove unused stock icon name
+
+- Update to version 0.8.4
+  * Exit early and remove plugin on non X11 environments
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * Use pango context to adjust dpi (Fixes #56)
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * scan-build: Fix core.CallAndMessage
+  * Avoid deprecated rsvg_handle_close()
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Update README consistent with common template
+  * build: Add GLib requirement
+  * Use xfce_panel_plugin_popup_menu() when possible
+  * Implement list of window class names that default to each layout (#33)
+  * COPYING: Replace BSD-2-Clause with GPL (#41)
+  * Translation Updates
+
+- Remove _service file
+
+-------------------------------------------------------------------
 Sun Jul 17 15:06:55 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.8.3

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  6 12:38:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.11
+  * Update copyright year
+  * Introduce Darwin support
+  * Clang: Ignore array designators warning
+  * Remove unneeded condition from SMT code
+  * Refactor SMT
+  * build: clang: Fix -Wunqualified-std-cast-call
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec  3 14:29:46 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.2.10

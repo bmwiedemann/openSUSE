@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan  6 15:24:48 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.5.3
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * build: Fix intltool lock file problem during make distcheck
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * autoconf: AM_CONFIG_HEADER -> AC_CONFIG_HEADERS
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Fri Dec 25 20:01:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.2

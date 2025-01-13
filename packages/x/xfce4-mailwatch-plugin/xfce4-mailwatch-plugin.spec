@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-mailwatch-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,29 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.16.0
 %define plugin mailwatch
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Versatile Mail Checking Plugin for the Xfce Panel
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-mailwatch-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/xfce4-mailwatch-plugin/1.3/%{name}-%{version}.tar.bz2
-BuildRequires:  ed
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(exo-2) >= 0.11.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gnutls) >= 1.2.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -71,11 +70,6 @@ Provides translations for the "%{name}" package.
 
 %prep
 %autosetup
-# fix up missing icon
-ed -s panel-plugin/mailwatch.desktop.in 2>/dev/null <<'EOF'
-,s/^Icon=xfce-mail/Icon=mail-unread/
-w
-EOF
 
 %build
 %configure --disable-static

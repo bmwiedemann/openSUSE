@@ -91,4 +91,14 @@
   * Support poetry-core 2.0 changes.</comment>
     <requestid>1236763</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d194427f8784b9734df27bcb4d6fe4ef</srcmd5>
+    <version>0.13.3</version>
+    <time>1736787051</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13.3:
+  * Support poetry-core 2.0 by @s-t-e-v-e-n-k in #37
+- Drop patch support-poetry-core-2.patch, included upstream.</comment>
+    <requestid>1237217</requestid>
+  </revision>
 </revisionlist>

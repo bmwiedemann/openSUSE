@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 12 06:51:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.83:
+  * fix send correct repo name in setstatus reporting (#1870)
+
+-------------------------------------------------------------------
 Wed Jan 08 13:06:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.82:

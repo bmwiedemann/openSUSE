@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 12 04:23:09 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.0
+  * Refactor/simplify end-session dialog handling to use a native-
+    Cinnamon dialog if available
+  * autostart: Blacklist nm-applet
+
+-------------------------------------------------------------------
 Fri Nov  8 15:48:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require /usr/bin/dbus-launch instead of dbus-1-x11: the latter is

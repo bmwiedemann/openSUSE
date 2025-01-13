@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jan 11 09:52:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.4:
+  + Added:
+    - Search (Ctrl-F) and Quit (Ctrl-Q) keyboard shortcuts
+    - Nix-based development environment and CI
+  + Fixed:
+    - Various deprecations
+    - Localization of aplication name
+  + Changed: Application ID and icon name is now rDNS
+    (org.gnome.Almanah) instead of just almanah
+  + Changed dependencies:
+    - GTKSourceView 3 → GTKSourceView 4
+    - Gcr 3 → Gcr 4
+    - appstream-util → appstreamcli
+  + Updated translations.
+- Drop Fix-build-meson-060.patch: Fixed upstream.
+- Changes in BuildRequires following upstream changes:
+  + Drop: update-desktop-files, pkgconfig(gcr-base-3) and
+    pkgconfig(gtksourceview-3.0)
+  + Add: desktop-file-utils, pkgconfig(gtksourceview-4) and
+    pkgconfig(gcr-4)
+- Add check section and run meson_test macro during build.
+
+-------------------------------------------------------------------
 Mon Nov  6 15:49:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 -  Fix build with RPM 4.19: unnumbered patches are no longer

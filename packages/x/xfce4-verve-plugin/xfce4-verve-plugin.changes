@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  6 18:46:00 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.0.4
+  * Update copyright year
+  * build: Bump dependency versions and fix deprecation warnings
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Silence GCompletion deprecation warnings
+  * I18n: Update po/LINGUAS list
+  * build: Get rid of intltool
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Jul 15 18:49:10 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 2.0.3

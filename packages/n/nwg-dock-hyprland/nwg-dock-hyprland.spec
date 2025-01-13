@@ -1,8 +1,8 @@
 #
 # spec file for package nwg-dock-hyprland
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2023-2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2023-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 
 Name:           nwg-dock-hyprland
-Version:        0.3.3
+Version:        0.4.3
 Release:        0
 Summary:        Hyprland application dock
 License:        MIT
 URL:            https://github.com/nwg-piotr/nwg-dock-hyprland
-Source0:        https://codeload.github.com/nwg-piotr/nwg-dock-hyprland/tar.gz/refs/tags/v%{version}#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  go >= 1.22
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
 
 %description
@@ -39,7 +40,7 @@ client buttons and the launcher button.
 %autosetup -p1 -a1
 
 %build
-## Note build takes around 10 minutes, so be patient as there is no output!
+## Note build takes around 15 minutes
 go build -v \
    -mod=vendor \
    -buildmode=pie

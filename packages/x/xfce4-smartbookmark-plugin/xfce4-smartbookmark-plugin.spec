@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-smartbookmark-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.16.0
 %define plugin smartbookmark
 %bcond_with git
 Name:           xfce4-smartbookmark-plugin
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Smart Bookmark Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -28,10 +28,12 @@ Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-smartbookmark-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.5/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif

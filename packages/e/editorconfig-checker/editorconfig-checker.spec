@@ -19,7 +19,7 @@
 %define executable_name ec
 
 Name:           editorconfig-checker
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Tool to verify that your files are in harmony with your .editorconfig
 License:        MIT

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 12 04:33:32 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.3
+  * no openSUSE related change
+- update to 6.4.0
+  * csd-color-calibrate: Fix GNOME refs following plugin rebase
+  * csd-media-keys: Show device description on volume OSD
+  * csd-power: Refactoring display backlight code.
+  * backport cinnamon-desktop changes, nightlight
+  * media-keys: Add support for an audio device selection dialog
+  * csd-media-keys: Adapt to new overamplification setting
+  * csd-power-manager: Assume a keyboard backlight max-value of 0
+    to mean that adjustment is unsupported
+  * csd-settings-remap-manager.c: Only report on missing schemas
+    and keys when debugging.
+
+-------------------------------------------------------------------
 Mon Aug  19 14:39:00 UTC 2024 - sb56637 <mxoo28j7@duck.com>
 
 - update to 6.2.0:
