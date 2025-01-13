@@ -7,16 +7,17 @@ Tue Oct 22 06:53:46 UTC 2024 - Christian Goll <cgoll@suse.com>
 Mon Oct 14 13:41:00 UTC 2024 - cgoll@suse.com
 
 - Update to version 4.5.8:
-- Warewulf v4.5.8 simplifies the "wwinit" boot process for SELinux and
-  configures tmpfs to spread the node image across all available NUMA nodes. It
-  also improves the detection of kernels in the container image to more
-  reliably detect the newest available kernel and to avoid debug / rescue
-  kernels.
-- Warewulf v4.5.7 fixes the ability to override overlay files configured in
-  profiles with overlays configured per-node; fixes a template processing bug
-  bug in development-time overlay rendering; and improves the preview
-  dracut-based boot process to better support a "secure" boot process.
-- rmeoved added-cow-option-to-bind.patch as now in upstream
+- Warewulf v4.5.8 simplifies the `wwinit` boot process for SELinux
+  and configures tmpfs to spread the node image across all
+  available NUMA nodes. It also improves the detection of kernels
+  in the container image to more reliably detect the newest
+  available kernel and to avoid debug / rescue kernels.
+- Warewulf v4.5.7 fixes the ability to override overlay files
+  configured in profiles with overlays configured per-node; fixes
+  a template processing bug bug in development-time overlay
+  rendering; and improves the preview dracut-based boot process to
+  better support a "secure" boot process.
+- removed added-cow-option-to-bind.patch as now in upstream
 
 -------------------------------------------------------------------
 Thu Aug 22 12:56:41 UTC 2024 - Christian Goll <cgoll@suse.com>
@@ -30,15 +31,16 @@ Thu Aug 22 12:56:41 UTC 2024 - Christian Goll <cgoll@suse.com>
 Fri Aug 09 12:39:33 UTC 2024 - cgoll@suse.com
 
 - Update to version 4.5.6 with following changes:
-  * Show more information during wwctl container <shell|exec> about 
-    when and if the container image will be rebuilt. 
-  * Command-line completion for wwctl overlay <edit|delete|chmod|chown>. 
-  * Display an error during boot if no container is defined. 
-  * wwctl conaitner list --kernel shows the kernel detected for each container. 
-  *  wwctl container list --size shows the uncompressed size of each container. 
-    --compressed shows the compressed size, and --chroot shows the size of the container i
-    source on the server. 
-  * Add a logrotate config for warewulfd.log.
+  * Show more information during `wwctl container <shell|exec>`
+    about when and if the container image will be rebuilt.
+  * Command-line completion for `wwctl overlay <edit|delete|chmod|chown>`.
+  * Display an error during boot if no container is defined.
+  * `wwctl container list --kernel` shows the kernel detected for
+    each container.
+  *  `wwctl container list --size` shows the uncompressed size of
+     each container. `--compressed` shows the compressed size, and
+     `--chroot` shows the size of the container source on the server.
+  * Add a logrotate config for `warewulfd.log`.
 - removed following patches as accepted upstream:
   * empty-container.patch
   * enhanced-cont-list.patch
