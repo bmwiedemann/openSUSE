@@ -5396,4 +5396,14 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1237045</requestid>
   </revision>
+  <revision rev="456" vrev="1">
+    <srcmd5>99b87aa5c49dc8dbef683226fe60c65b</srcmd5>
+    <version>10.0~rc5</version>
+    <time>1736788043</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.0-rc5 release:
+  - Bug fixes only, we are in code freeze.
+- update staging to 10.0-rc5 release</comment>
+    <requestid>1237437</requestid>
+  </revision>
 </revisionlist>
