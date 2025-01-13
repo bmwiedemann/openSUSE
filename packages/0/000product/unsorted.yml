@@ -801,7 +801,6 @@ unsorted:
   - apache2-mod_jk 
   - apache2-mod_maxminddb 
   - apache2-mod_mono 
-  - apache2-mod_nss 
   - apache2-mod_perl 
   - apache2-mod_perl-devel 
   - apache2-mod_security2 
@@ -8813,6 +8812,7 @@ unsorted:
   - hyprland-devel 
   - hyprland-fish-completion 
   - hyprland-protocols-devel 
+  - hyprland-qt-support 
   - hyprland-qtutils 
   - hyprland-wallpapers 
   - hyprland-zsh-completion 
@@ -14229,8 +14229,8 @@ unsorted:
   - libkdcraw 
   - libkdcraw-devel 
   - libkdcraw-qt6-devel 
-  - libkddockwidgets-qt6-2_1 
-  - libkddockwidgets2_1 
+  - libkddockwidgets-qt6-2_2 
+  - libkddockwidgets2_2 
   - libkdecoration2-devel 
   - libkdecorations2-5 
   - libkdecorations2-5-lang 
@@ -16118,7 +16118,6 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit 
-  - libruby3_3-3_3 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -24300,6 +24299,7 @@ unsorted:
   - python311-Flask-SQLAlchemy 
   - python311-Flask-Security 
   - python311-Flask-SocketIO 
+  - python311-Flask-Versioned 
   - python311-Flask-WTF 
   - python311-Flask-doc 
   - python311-FontTools 
@@ -25199,7 +25199,6 @@ unsorted:
   - python311-cooldict 
   - python311-copr 
   - python311-copr-cli 
-  - python311-cornice 
   - python311-cotengra 
   - python311-covdefaults 
   - python311-coverage 
@@ -27870,6 +27869,7 @@ unsorted:
   - python312-Flask-SQLAlchemy 
   - python312-Flask-Security 
   - python312-Flask-SocketIO 
+  - python312-Flask-Versioned 
   - python312-Flask-WTF 
   - python312-Flask-doc 
   - python312-FontTools 
@@ -28801,7 +28801,6 @@ unsorted:
   - python312-cooldict 
   - python312-copr 
   - python312-copr-cli 
-  - python312-cornice 
   - python312-cotengra 
   - python312-covdefaults 
   - python312-coverage 
@@ -31570,6 +31569,7 @@ unsorted:
   - python313-Flask-SQLAlchemy 
   - python313-Flask-Security 
   - python313-Flask-SocketIO 
+  - python313-Flask-Versioned 
   - python313-Flask-WTF 
   - python313-Flask-doc 
   - python313-FontTools 
@@ -32502,7 +32502,6 @@ unsorted:
   - python313-cooldict 
   - python313-copr 
   - python313-copr-cli 
-  - python313-cornice 
   - python313-cotengra 
   - python313-covdefaults 
   - python313-coverage 
@@ -36357,11 +36356,6 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
-  - ruby3.3 
-  - ruby3.3-devel 
-  - ruby3.3-devel-extra 
-  - ruby3.3-doc 
-  - ruby3.3-doc-ri 
   - ruby3.4-devel 
   - ruby3.4-devel-extra 
   - ruby3.4-doc 
@@ -36900,8 +36894,6 @@ unsorted:
   - scap-security-guide-debian 
   - scap-security-guide-redhat 
   - scap-security-guide-ubuntu 
-  - scap-workbench 
-  - scap-workbench-doc 
   - scapy 
   - scat 
   - scc 
@@ -47286,11 +47278,13 @@ unsorted:
   - thunar-devel 
   - thunar-font-manager 
   - thunar-plugin-dropbox 
-  - thunar-plugin-shares 
-  - thunar-plugin-shares-lang 
   - thunar-plugin-vcs 
   - thunar-plugin-vcs-lang 
   - thunar-sendto-clamtk 
+  - thunar-shares-plugin 
+  - thunar-shares-plugin-lang 
+  - thunar-vcs-plugin 
+  - thunar-vcs-plugin-lang 
   - thunar-volman-branding-upstream 
   - thunarx-python 
   - thunarx-python-doc 
@@ -49242,7 +49236,6 @@ unsorted:
   - xreader-plugin-comicsdocument 
   - xreader-plugin-djvudocument 
   - xreader-plugin-dvidocument 
-  - xreader-plugin-epubdocument 
   - xreader-plugin-pdfdocument 
   - xreader-plugin-pixbufdocument 
   - xreader-plugin-psdocument 
@@ -49539,6 +49532,7 @@ unsorted:
   - zita-resampler-devel 
   - zita-resampler-tools 
   - zix-devel 
+  - zizmor 
   - zk 
   - zk-spaced 
   - zlib-devel 

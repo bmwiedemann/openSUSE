@@ -4058,11 +4058,15 @@
     <package name="thin-provisioning-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="thryomanes-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="thunar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="thunar-archive-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="thunar-archive-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="thunar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="thunar-plugin-archive" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="thunar-plugin-archive-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="thunar-plugin-media-tags" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="thunar-plugin-media-tags-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="thunar-media-tags-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="thunar-media-tags-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="thunar-plugin-archive" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="thunar-plugin-archive-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="thunar-plugin-media-tags" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="thunar-plugin-media-tags-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="thunar-sendto-blueman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="thunar-volman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="thunar-volman-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
