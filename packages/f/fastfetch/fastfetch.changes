@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 13 13:45:37 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- update to 2.34.1
+  Features:
+   * Report vendor name when detecting GPUs by OpenGL 
+     - Note: the vendor name is actually the creator of the OpenGL 
+       driver (such as `Mesa`) and may not be the same as the GPU 
+       vendor
+  Bugfixes:
+   * Fix Ghostty termfont detection 
+     (gh#fastfetch-cli/fastfetch#1495)
+   * Fix compatibility with KDE Plasma 6.3 
+     (gh#fastfetch-cli/fastfetch#1504)
+   * Make memory usage detection logic consistent with other 
+     systems (Memory, OpenBSD / NetBSD)
+   * Report media file name if media title is not available (Media)
+   * Fix max frequency detection for CPUs with both performance and 
+     efficiency cores (CPU, FreeBSD)
+  Logo:
+   * Add HeliumOS
+   * Add Oreon
+   * Update SnigdhaOS
+
+-------------------------------------------------------------------
 Thu Jan  9 17:45:04 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 2.34.0

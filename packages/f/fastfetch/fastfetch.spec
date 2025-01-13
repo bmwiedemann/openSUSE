@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.34.0
+Version:        2.34.1
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
