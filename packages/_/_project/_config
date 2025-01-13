@@ -3517,6 +3517,9 @@ Macros:
 
 # END PYTHON STUFF
 
+# have choice for salt-call = 3006.0-27.1 needed by salt: python311-salt python312-salt python313-salt
+Prefer: %{primary_python}-salt
+
 # BEGIN RUST STUFF
 Prefer: cargo
 
