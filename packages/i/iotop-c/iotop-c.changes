@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:50:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.27:
+  * src/iotop: correct pg_cb signature #64
+
+-------------------------------------------------------------------
 Sat Feb  3 18:23:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.26:

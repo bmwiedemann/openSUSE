@@ -70,4 +70,13 @@
   * Add clock in upper right corner</comment>
     <requestid>1143851</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>43a98e80e9e97ab4340211af192160e2</srcmd5>
+    <version>1.27</version>
+    <time>1736788041</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.27:
+  * src/iotop: correct pg_cb signature #64</comment>
+    <requestid>1237438</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">1.26</param>
+    <param name="versionformat">1.27</param>
     <param name="url">https://github.com/Tomas-M/iotop</param>
     <param name="scm">git</param>
     <param name="changesgenerate">disable</param>
