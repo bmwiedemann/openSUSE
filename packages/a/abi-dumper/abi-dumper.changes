@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:59:48 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4:
+  * fix: handle data_member_location == 2^64-1 #28
+  * fixed symbol search sentence judgment 
+  * Fix usage notes in readme
+  * Fix usage notes in readme
+  * Add -extra-dump option to dump more symbols info (for new ABI Viewer tool)
+
+-------------------------------------------------------------------
 Tue Jan  5 20:26:14 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 1.2:

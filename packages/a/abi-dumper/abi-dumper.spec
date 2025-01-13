@@ -1,7 +1,7 @@
 #
 # spec file for package abi-dumper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           abi-dumper
-Version:        1.2
+Version:        1.4
 Release:        0
 Summary:        Tool to dump ABI of an ELF object containing DWARF debug info
 License:        LGPL-2.1-or-later
