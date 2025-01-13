@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Jan 13 13:49:04 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.12.0:
+  * Bump helm/kind-action from 1.11.0 to 1.12.0 in the actions
+    group (#702)
+  * Bump helm.sh/helm/v3 from 3.16.3 to 3.16.4 in the gomod group
+    (#700)
+  * Bump the actions group with 4 updates (#701)
+  * Add missing `helm-extra-set-args` configuration flag (#697)
+  * Bump anchore/sbom-action from 0.17.7 to 0.17.8 in the actions
+    group (#696)
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 (#695)
+  * Bump helm.sh/helm/v3 from 3.16.2 to 3.16.3 in the gomod group
+    (#694)
+  * Bump the actions group with 2 updates (#692)
+  * Feature: add extra flags to skip helm dependencies download and
+    upgrade Go to 1.23 (#690)
+  * Bump anchore/sbom-action from 0.17.5 to 0.17.6 in the actions
+    group (#691)
+  * Bump the actions group with 2 updates (#688)
+  * Bump anchore/sbom-action from 0.17.3 to 0.17.5 in the actions
+    group (#686)
+  * Bump helm.sh/helm/v3 from 3.16.1 to 3.16.2 in the gomod group
+    (#684)
+  * Bump anchore/sbom-action from 0.17.2 to 0.17.3 in the actions
+    group (#683)
+  * Bump the actions group with 4 updates (#681)
+  * Bump actions/checkout from 4.1.7 to 4.2.0 in the actions group
+    (#679)
+  * Bump helm.sh/helm/v3 from 3.15.4 to 3.16.1 (#678)
+  * Bump anchore/sbom-action from 0.17.1 to 0.17.2 in the actions
+    group (#676)
+  * Bump anchore/sbom-action from 0.17.0 to 0.17.1 in the actions
+    group (#674)
+  * Bump helm.sh/helm/v3 from 3.15.3 to 3.15.4 in the gomod group
+    (#673)
+  * Bump sigstore/cosign-installer from 3.5.0 to 3.6.0 in the
+    actions group (#671)
+  * Bump the actions group with 2 updates (#670)
+  * Bump the actions group with 3 updates (#669)
+  * docs: updated quay link (#666)
+  * Bump the actions group with 2 updates (#668)
+  * Bump helm.sh/helm/v3 from 3.15.2 to 3.15.3 in the gomod group
+    (#667)
+  * Fix typo in README.md (#665)
+  * Bump the actions group with 2 updates (#664)
+  * Bump helm.sh/helm/v3 from 3.14.4 to 3.15.2 (#663)
+  * Bump actions/checkout from 4.1.6 to 4.1.7 in the actions group
+    (#661)
+  * Bump github.com/spf13/cobra from 1.8.0 to 1.8.1 in the gomod
+    group (#662)
+  * Bump goreleaser/goreleaser-action from 5.1.0 to 6.0.0 (#660)
+  * Bump github.com/hashicorp/go-retryablehttp in the gomod group
+    (#656)
+  * Bump github.com/spf13/viper from 1.18.2 to 1.19.0 (#657)
+  * Bump docker/login-action from 3.1.0 to 3.2.0 in the actions
+    group (#658)
+  * if pr/issues have the frozen label to not stale/close (#651)
+  * use .helmignore when identifying changed charts (#591)
+  * --- (#650)
+  * Bump github.com/hashicorp/go-retryablehttp in the gomod group
+    (#646)
+  * Bump goreleaser/goreleaser-action in the actions group (#647)
+  * Bump golangci/golangci-lint-action from 5.3.0 to 6.0.1 (#648)
+  * Bump the actions group with 3 updates (#645)
+  * Bump golangci/golangci-lint-action from 4.0.0 to 5.1.0 (#644)
+  * Bump the actions group with 3 updates (#643)
+
+-------------------------------------------------------------------
 Sat Apr 27 14:22:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11.0:
