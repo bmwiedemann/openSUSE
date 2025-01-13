@@ -1,7 +1,7 @@
 #
 # spec file for package apfsprogs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           apfsprogs
-Version:        0~git511
+Version:        0.2.0
 Release:        0
 Summary:        Experimental APFS tools for Linux
 License:        GPL-2.0-only
 URL:            https://github.com/linux-apfs/apfsprogs
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/apfsprogs-%{version}.tar.gz
 
 %description
 apfsprogs is a suite of userland software to work with the Apple File System
@@ -35,7 +35,7 @@ are included:
   o apfsck: a filesystem integrity checker, for now only useful for testers
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 %build
 make %{?_smp_mflags} -C lib

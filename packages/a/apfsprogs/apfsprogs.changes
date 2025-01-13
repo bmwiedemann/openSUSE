@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 10 16:26:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.0
+  * mkapfs: Allow choice of the tier 2 device size
+  * makfs: Update comment about the free_next list
+  * Fix exit code when GIT_COMMIT is not null (#14)
+  * Always mention the -v cli flag on usage()
+  * apfsck: Update boundary checks for free_next array
+  * mkapfs: Actually use the fatal() function
+  * apfsck: Check the block zero magic before all else
+- Switch upstream source to Github releases
+
+-------------------------------------------------------------------
 Mon Nov  4 21:25:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0~git511
