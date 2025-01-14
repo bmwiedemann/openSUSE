@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrokdecode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 Name:           libsigrokdecode
 %define libname %{name}4
-%define baseversion 0.5.3
-Version:        0.5.3
+%define baseversion 0.6.0
+Version:        0.6.0+git20240304.0235970
 Release:        0
 Summary:        Protocol Decoders for sigrok
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://sigrok.org/
+
+# osb service had problems creating the tarball, I used this workaround:
+# git archive --format=tar.gz --prefix=libsigrokdecode-0.6.0+git20240304.0235970
+#   -o ../libsigrokdecode-0.6.0+git20240304.0235970.tar.gz master
+
 Source0:        https://sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         libsigrokdecode-versioned-decoders.patch
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Properly-detect-python-library-for-3.9.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel >= 0.9.4
@@ -61,6 +64,15 @@ logic analyzer hardware products.
 libsigrokdecode is a shared library written in C which provides the basic
 API for running sigrok protocol decoders. The protocol decoders themselves
 are written in Python.
+
+%package     -n libirmp0
+Summary:        Protocol Decoder Library for sigrok
+Group:          System/Libraries
+
+%description -n libirmp0
+The sigrok project aims at creating a portable, cross-platform,
+Free/Libre/Open-Source logic analyzer software that supports various
+logic analyzer hardware products.
 
 %package        devel
 Summary:        Protocol Decoder Library for sigrok
@@ -98,8 +110,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{libname}
 %license COPYING
 %doc README HACKING NEWS
-%{_libdir}/*.so.*
+%{_libdir}/libsig*.so.*
 %{_datadir}/%{name}-%{baseversion}/
+
+%files -n libirmp0
+%{_libdir}/libirmp*.so.*
+%license COPYING
 
 %files devel
 %{_libdir}/*.so

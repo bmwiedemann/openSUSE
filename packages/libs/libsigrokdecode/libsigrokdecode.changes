@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 14 09:48:23 UTC 2024 - kkaempf@suse.de
+
+- Update to version libsigrokdecode-0.6.0+git20240304.0235970:
+  * avr_isp: Add more parts
+  * avr_isp: fix crash if part name is not known
+  * st25r39xx_spi: Fix FIFOR/FIFOW issues with PV's Tabular Output View
+  * srd: drop deprecated PyEval_InitThreads() on Python 3.9+
+  * spiflash: add MX25L8006 device type
+  * sae_j1850_vpw: rewrite decoder to improve usability and maintenance
+  * rgb_led_spi: adjust decoder implementation's Python style
+  * rgb_led_ws281x: default to RGB[W] annotation text order
+  * rgb_led_ws281x: emit annotations for individual colour components
+  * rgb_led_ws281x: add developer comments, link to chip datasheets
+
+- split off libirmp0
+
+- drop 0001-Properly-detect-python-library-for-3.9.patch, upstream
+
+-------------------------------------------------------------------
 Mon Jun 27 17:42:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Python >= 3.9, add

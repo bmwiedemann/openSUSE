@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/sigrokproject/libsigrokdecode.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">libsigrokdecode4-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">libsigrokdecode4</param>
+  </service>
+</services>
