@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:42:09 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.15.0:
+  * Added
+    * Config option `window.level = "AlwaysOnTop"` to force Alacritty to always
+    * be the toplevel window
+    * Escape sequence to move cursor forward tabs ( CSI Ps I )
+    * Pass activation token in `alacritty msg create-window` on Wayland/X11
+  * Changed
+    * Don't switch to semantic/line selection when control is pressed
+    * Always emit `1` for the first parameter when having modifiers in kitty
+    * keyboard protocol
+  * Fixed
+    * Mouse/Vi cursor hint highlighting broken on the terminal cursor line
+    * Hint launcher opening arbitrary text, when terminal content changed while
+    * opening
+    * `SemanticRight`/`SemanticLeft` vi motions breaking with wide semantic
+    * escape characters
+    * `alacritty migrate` crashing with recursive toml imports
+    * Migrating nonexistent toml import breaking the entire migration
+    * First daemon mode window ignoring window options passed through CLI
+    * Report of Enter/Tab/Backspace in kitty keyboard's report event types mode
+    * Cut off wide characters in preedit string
+
+-------------------------------------------------------------------
 Fri Oct 25 20:39:28 UTC 2024 - adam@mizerski.pl
 
 - Update to version 0.14.0:
