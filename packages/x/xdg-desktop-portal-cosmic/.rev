@@ -72,4 +72,12 @@
   * screencast: Pass buffer transform to pipewire metadata</comment>
     <requestid>1228864</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d1e017b59ed915e0b4929a3898aa0e5b</srcmd5>
+    <version>1.0.0~alpha5+1</version>
+    <time>1736868770</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237780</requestid>
+  </revision>
 </revisionlist>
