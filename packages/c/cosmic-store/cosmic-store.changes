@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 10 22:48:27 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+1:
+  * Update dependencies
+  * Spell checked with LibreOffice
+  * Update cosmic_store.ftl
+  * Update (add) translation
+  * improve & check for spelling the Dutch translation
+  * Update flathub stats, mark debian/rules executable
+  * Removed annoying popup dialog on canceling authentication with system packages
+  * i18n(de): add German translation
+  * Improve Dutch translation
+  * Improve & Correct spelling Dutch translation
+  * Remove a11y from default features
+  * Update cosmic_store.ftl PL Translation operation fix
+  * Added Irish translation
+  * 18n pt-BR translation update
+  * i18n(th): Add Thai translation
+
+-------------------------------------------------------------------
 Fri Dec 06 03:07:20 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
