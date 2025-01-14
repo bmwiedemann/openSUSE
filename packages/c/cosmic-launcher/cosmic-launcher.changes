@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:51:32 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+1:
+  * update deps
+  * chore: update libcosmic
+  * update libcosmic
+  * cleanup
+  * update libcosmic
+  * fix justfile
+  * fix compile
+  * use github fork instead of path
+  * impl queue + some refractor
+  * use debug log level when debug mode
+  * journald support
+  * remove comment
+  * re add if self.last_hide.elapsed().as_millis() > 100
+  * add debug variable to justfile
+  * do not close the service every time
+
+-------------------------------------------------------------------
 Fri Dec 06 00:14:14 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
