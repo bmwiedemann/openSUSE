@@ -63,4 +63,12 @@
   * Use unbounded channel to prevent deadlock (forwarded request 1228846 from rrahl0)</comment>
     <requestid>1228847</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1c42f68ffd692db7f5c71c1a5618c7b5</srcmd5>
+    <version>1.0.0~alpha5+2</version>
+    <time>1736868780</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237791</requestid>
+  </revision>
 </revisionlist>

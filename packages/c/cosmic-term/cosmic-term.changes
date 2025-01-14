@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 10 22:54:33 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+2:
+  * Update dependencies
+  * Add Rose Pine, Rose Pine Moon and Rose Pine Dawn color schemes (#409)
+  * improve Dutch translation (#406)
+  * Add Dracula theme
+  * i18n(th): Add Thai translation
+  * Improve Dutch translation
+  * Improve Dutch translation
+  * Add Dutch translation
+  * Apply post processing to hyperlink. So less regexs with unlikely trailing characters are matches
+  * regex hyperlinks
+
+-------------------------------------------------------------------
 Fri Dec 06 03:14:30 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
