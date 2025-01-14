@@ -115,4 +115,15 @@
   a product is already selected (gh#agama-project/agama#1871).</comment>
     <requestid>1236916</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>8249a24572e338a4651f10d73810afe1</srcmd5>
+    <version>0</version>
+    <time>1736868260</time>
+    <user>anag+factory</user>
+    <comment>- Do not allow changing selected product after registering one
+  (related to gh#agama-project/agama#1891).
+
+- Version 11</comment>
+    <requestid>1237711</requestid>
+  </revision>
 </revisionlist>
