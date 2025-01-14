@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 10 20:51:56 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+1:
+  * update deps
+  * fix(input-sources): duplicating input sources
+  * perf(libcosmic): reduce per-app memory usage by 12MB
+  * update libcosmic
+  * Fix formatting
+  * Added workaroud for toggle after separator crash
+  * Cleaned up code a bit
+  * Added todo coments
+  * Fixed connecting and disconnecting to wrong hw_device
+  * Added comparing hw_address everywhere
+
+-------------------------------------------------------------------
 Thu Dec 05 22:45:45 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
