@@ -52,4 +52,12 @@
 - Add dependency on cosmic-settings-daemon</comment>
     <requestid>1228862</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fda29217cd3f888c153b880d790ca1d9</srcmd5>
+    <version>1.0.0~alpha5+1</version>
+    <time>1736868776</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237788</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 10 22:32:05 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+1:
+  * fix: steam fails when dconf profile lacks ending newline
+  * Switch media handler to COSMIC Player
+  * Add cosmic-player
+  * fix: don't set XCURSOR_THEME in start-cosmic
+  * chore: update launch-pad
+  * build: Make dconf profile path explicit and configurable
+
+-------------------------------------------------------------------
 Fri Dec  6 18:26:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - add cosmic dconf config
