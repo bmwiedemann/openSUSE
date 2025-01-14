@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:16:52 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+0:
+  * toplevel-info: Send initial `state` even if empty
+  * kms: Don't try to restore modifiers, if we don't have any surfaces
+  * output_configuration: Better log errors
+  * Use `Mul` impl of `Size`
+  * Migrate away from `Rectangle::from_loc_and_size`
+  * chore: Update `smithay`
+  * render: Fix race during startup
+  * chore: github-ci was also missing pixman apparently
+  * chore: Add libdisplay-info to github ci
+  * kms: Use scaled sizes for placing new outputs
+  * kms: Cleanup now that `output_elements` won't panic for uninitialized outputs
+  * shell: Allow active workspace to be `None`
+  * chore: Add libdisplay-info dependency for packaging
+  * debug: Fixup feature compilation
+  * kms: Allow diverging primary plane formats under certain conditions
+  * kms: skip cursor updates for fullscreen content above the minimum refresh rate
+  * deps: Switch from edid-rs to libdisplay-info
+  * drm_lease: Disable overlay planes when active
+  * kms: Use new `DrmOutput` api
+  * xdg_activation: Also consider tiled windows
+  * chore: Fix a few warnings
+  * chore: Update smithay
+  * Update leds when devices are added
+  * Fix sticky toggle crashes on maximized windows (#1110)
+  * refactor(shell/element): refactor how decorations height is accessed
+  * When removing output global, use `disable_global`, remove with timer
+  * focus: Fix active/focused output on `refresh_focus`
+  * shell: Fix stacking maximized windows
+  * toplevel-info: Fix behavior with multiple instances of global
+  * shell: Unset focused outputs on `remove_output`
+  * kms/surface: Fix racy output disable
+  * fix: manually scale the damage
+  * fix: improve damage tracking
+  * fix(iced): use internal_ref size
+  * chore: update deps
+  * feat: alt+shift+tab
+  * chore: update iced/libcosmic
+  * Call `data_init.init` even if weak references are not alive
+  * output_configuration: Use `unwrap` in calls to `Resource::data`
+  * Use `WeakOutput` when accessing data of `ZwlrOutputHeadV1`
+  * fix: activation of an element outside the current workspace
+  * main: Update D-Bus activation environment also on non-systemd systems
+  * focus: Only consider focused output
+  * focus: Un-activate non-active workspaces
+  * fix: filter by active workspace in overlap notify
+  * shell: Fix windows global geometry to include ssd
+
+-------------------------------------------------------------------
 Thu Dec 05 23:36:42 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
