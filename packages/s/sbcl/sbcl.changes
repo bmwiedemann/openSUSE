@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  8 15:39:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs
+- Replace xargs by more direct find -exec.
+- Trim redundancies from description (already present
+  in License: field)
+- Split /usr/bin/sbcl to a separate package (sbcl-bin.rpm).
+  Because SBCL-using programs ship a static copy of the standard
+  library anyway, they need not pull in the standard library
+  (sbcl.rpm:/usr/lib/sbcl/sbcl.core) itself any longer.
+
+-------------------------------------------------------------------
 Thu Jan  2 10:17:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.5.0

@@ -1,7 +1,7 @@
 #
 # spec file for package sbcl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,15 +102,21 @@ BuildRequires:  texlive-ec
 Patch0:         sbcl-1.1.2-install.patch
 # PATCH-FIX-OPENSUSE  strip -armv5 from CFLAGS
 Patch1:         strip-arm-CFLAGS.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390x
+Requires:       sbcl-bin
 
 %description
 Steel Bank Common Lisp (SBCL) is a high performance Common Lisp
-compiler. It is open source / free software, with a permissive license.
+compiler.
 In addition to the compiler and runtime system for ANSI Common Lisp, it
 provides an interactive environment including a debugger, a statistical
 profiler, a code coverage tool, and many other extensions.
+
+%package bin
+Summary:        The Steel Bank Common Lisp loader program
+
+%description bin
+This package contains just the SBCL loader stub.
 
 %prep
 %if %{with bootstrap}
@@ -119,10 +125,8 @@ tar -xf %{S:%{sbcl_bootstrap_src}}
 ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
 %endif
 %endif
-%setup -q
-%patch -P0 -p1 -b install
-%patch -P1 -p1
 
+%autosetup -p1
 cp %{S:1} .
 cp %{S:2} .
 cp %{S:3} .
@@ -153,20 +157,13 @@ if test %{_docdir} != %{_prefix}/share/doc ;then
 fi
 ## Unpackaged files
 rm -f  %{buildroot}%{_infodir}/dir
-# CVS crud
-find %{buildroot} -name CVS -type d | xargs rm -rf
-find %{buildroot} -name .cvsignore | xargs rm -f
-find %{buildroot} -name .gitignore | xargs rm -f
-# remove the a.out files
-find %{buildroot} -name a\.out | xargs rm -f
-# 'test-passed' files from %%check
-find %{buildroot} -name 'test-passed' | xargs rm -vf
-find %{buildroot} -name 'test-output' -type d | xargs rm -rf
-
-# remove dangling texinfo files
-find %{buildroot} -name *\.texinfo | xargs rm -f
-# remove Makefiles
-find %{buildroot} -name Makefile | xargs rm -f
+# SCM crud, test files from %%check, dangling texinfo files
+find %{buildroot} "(" \
+	-name CVS -o -name .cvsignore -o \
+	-name .gitignore -o -name a.out -o \
+	-name test-passed -o -name test-output -o \
+	-name "*.texinfo" -o -name makefile ")" \
+	-exec rm -Rf {} +
 
 # How to make that info stuff portable?
 %if 0%{?install_info:1} > 0
@@ -181,15 +178,16 @@ find %{buildroot} -name Makefile | xargs rm -f
 %endif
 
 %files
-%defattr(-,root,root,-)
 %doc %{_docdir}/%{name}
 %doc %{_mandir}/man1/sbcl.1*
 %doc %{_infodir}/asdf.info*
 %doc %{_infodir}/sbcl.info*
-%{_bindir}/sbcl
 %dir %{_prefix}/lib/sbcl/
 %{_prefix}/lib/sbcl/sbcl.core
 %{_prefix}/lib/sbcl/sbcl.mk
 %{_prefix}/lib/sbcl/contrib/
+
+%files bin
+%{_bindir}/sbcl
 
 %changelog
