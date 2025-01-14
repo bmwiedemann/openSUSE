@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 14 10:17:06 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.8.5
+  * fix false delimiter mismatch marker which gets stuck under certain 
+    circumstances gh#texstudio-org/texstudio#489
+  * fix label stop working when using subfigure package 
+    gh#texstudio-org/texstudio#3816
+  * fix ai wizard conversation history gh#texstudio-org/texstudio#3820
+  * fix colspec parsing gh#texstudio-org/texstudio#3831
+  * fix user command handling in cached files gh#texstudio-org/texstudio#3828
+  * fix label detection on memoir class gh#texstudio-org/texstudio#3829
+  * fix crash when %Tex root document was not found
+  * class are used for completion in documentclass
+  * class names are not used anymore for package name completion
+  * local packages can provide local cwl files, see manual
+  * fix handling of user definition commands in subfiles 
+    gh#texstudio-org/texstudio#3885
+  * fix crash in preview tooltip if no pdflatex is defined 
+    gh#texstudio-org/texstudio#3875
+  * handle special columntypes (m[l],NiceMatrix) better
+    gh#texstudio-org/texstudio#3881
+  * handle key/val completion in frame environment better
+    gh#texstudio-org/texstudio#3846
+  * fix caching of newly defined colornames
+
+-------------------------------------------------------------------
 Mon Oct 21 13:19:57 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.8.4
