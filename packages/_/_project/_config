@@ -597,6 +597,9 @@ Prefer: -ansible-core-2.16
 # choice for MozillaThunderbird-openpgp needed by MozillaThunderbird: MozillaThunderbird-openpgp-librnp sequoia-octopus-librnp
 Prefer: -sequoia-octopus-librnp
 
+# have choice for thunar-plugin-archive needed by patterns-xfce-xfce: thunar-archive-plugin thunar-plugin-archive, have choice for thunar-plugin-media-tags needed by patterns-xfce-xfce: thunar-media-tags-plugin thunar-plugin-media-tags
+Prefer: -thunar-plugin-archive thunar-plugin-media-tags
+
 # have choice for (gdm-xdm-integration or gdm-systemd) needed by gdm: gdm-systemd gdm-xdm-integration
 # gdm-systems is the standalong systemd service, but for now we stick to the xdm integration
 Prefer: -gdm-systemd
