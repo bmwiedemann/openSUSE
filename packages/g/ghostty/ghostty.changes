@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jan 13 11:49:23 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- now that we have the proper files in the terminfo we can switch
+  to using the distro provided terminfo files again.
+
+-------------------------------------------------------------------
+Sun Jan 12 12:04:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- As we actually have a file conflict we should also have a
+  conflict for the package. (boo#1235689)
+
+-------------------------------------------------------------------
+Sun Jan 12 11:39:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- reenable the the standalone terminfo package. the ghostty
+  terminfo file in the main terminfo package is broken.
+  (boo#1235689)
+
+-------------------------------------------------------------------
+Sun Jan 12 11:19:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Disable the standalone terminfo package as the same file is now
+  in the default terminfo package.
+
+-------------------------------------------------------------------
 Mon Jan  6 21:21:49 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - refetch f60068eabd94e6784f3b557c7287c49dd36bb24c.diff

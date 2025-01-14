@@ -17,6 +17,15 @@
 
 
 %global common_build_flags --system %{_builddir}/%{name}-%{version}/vendor/zig/p -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Dversion-string=%{version} %{?_smp_mflags}
+
+%if 0%{?suse_version} >= 1600
+%global terminfo_with_ghostty_version 6.5.20250111
+%bcond_with    standalone_terminfo
+%else
+%global terminfo_with_ghostty_version 0
+%bcond_without  standalone_terminfo
+%endif
+
 Name:           ghostty
 Version:        1.0.1
 Release:        0
@@ -53,7 +62,11 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(oniguruma)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(zlib)
+%if %{with standalone_terminfo}
 Requires:       terminfo-ghostty = %{version}
+%else
+Requires:       terminfo >= %{terminfo_with_ghostty_version}
+%endif
 
 %package        bash-completion
 Summary:        Bash Completion for %{name}
@@ -123,6 +136,7 @@ emulator that uses platform-native UI and GPU acceleration.
 %package -n terminfo-ghostty
 Summary:        Terminfo files for ghostty
 BuildArch:      noarch
+Conflicts:      terminfo >= 6.5.20250104
 
 %description -n terminfo-ghostty
 Ghostty is a fast, feature-rich, and cross-platform terminal
@@ -141,6 +155,9 @@ zig build %{common_build_flags}
 %install
 export DESTDIR=%{buildroot}
 zig build %{common_build_flags} --prefix %{_prefix}
+%if %{without standalone_terminfo}
+rm -rv %{buildroot}%{_datadir}/terminfo/
+%endif
 
 %files
 %license LICENSE
@@ -221,10 +238,12 @@ zig build %{common_build_flags} --prefix %{_prefix}
 %{_datadir}/vim/vimfiles/ftplugin/ghostty.vim
 %{_datadir}/vim/vimfiles/syntax/ghostty.vim
 
+%if %{with standalone_terminfo}
 %files -n terminfo-ghostty
 %{_datadir}/terminfo/g/ghostty
 %{_datadir}/terminfo/ghostty.termcap
 %{_datadir}/terminfo/ghostty.terminfo
 %{_datadir}/terminfo/x/xterm-ghostty
+%endif
 
 %changelog

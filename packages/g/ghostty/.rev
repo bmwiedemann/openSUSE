@@ -7,4 +7,23 @@
     <comment>refetched patch</comment>
     <requestid>1235419</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c02dcd1ef7ae2966985b1803d2f187b7</srcmd5>
+    <version>1.0.1</version>
+    <time>1736871554</time>
+    <user>dimstar_suse</user>
+    <comment>- now that we have the proper files in the terminfo we can switch
+  to using the distro provided terminfo files again.
+
+- As we actually have a file conflict we should also have a
+  conflict for the package. (boo#1235689)
+
+- reenable the the standalone terminfo package. the ghostty
+  terminfo file in the main terminfo package is broken.
+  (boo#1235689)
+
+- Disable the standalone terminfo package as the same file is now
+  in the default terminfo package.</comment>
+    <requestid>1237394</requestid>
+  </revision>
 </revisionlist>
