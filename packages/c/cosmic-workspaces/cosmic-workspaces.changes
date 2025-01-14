@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 10 23:02:05 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+0:
+  * On mock backend, don't hide when toplevel is opened
+  * Fix building with `mock-backend` and `no-subsurfaces`
+
+-------------------------------------------------------------------
 Fri Dec 06 01:03:13 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
