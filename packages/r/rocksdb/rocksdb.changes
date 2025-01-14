@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 12 10:12:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.10.0:
+  * Introduce TransactionOptions::commit_bypass_memtable to enable
+    transaction commit to bypass memtable insertions. This can be
+    beneficial for transactions with many operations, as it reduces
+    commit time that is mostly spent on memtable insertion.
+  * Deprecated Remote Compaction APIs (StartV2, WaitForCompleteV2)
+    are completely removed from the codebase
+  * DB::KeyMayExist() now follows its function comment, which means
+    value parameter can be null, and it will be set only if
+    value_found is passed in.
+  * Bug fixes and performance improvements
+
+-------------------------------------------------------------------
 Wed Dec 18 17:39:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.9.3:
