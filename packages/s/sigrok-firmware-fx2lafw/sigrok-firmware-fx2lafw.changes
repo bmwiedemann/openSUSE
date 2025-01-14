@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 14 09:34:21 UTC 2024 - kkaempf@suse.de
+
+- Update to version sigrokfirmwarefx2lafw0.1.7+git20240203.0f2d324:
+  * Add Hantek PSO2020 firmware support
+  * fx2lib: fix SDCC warning 283
+  * fx2lafw: Update __at syntax for sdcc>=4.2.3
+  * fx2lafw: Update __interrupt syntax for sdcc>=4.2.3
+  * fx2lib: Update __interrupt syntax for sdcc>=4.2.3
+  * fx2lafw: silence integer overflow compile warnings
+  * Makefile.am: Restore alpha sort order of device drivers in build rules
+  * doc: update IRC reference to Libera.Chat
+  * Update NEWS
+  * Add Instrustar ISDS205B firmware
+
+-------------------------------------------------------------------
 Fri Nov 15 21:17:28 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.1.7, upstream changes:
