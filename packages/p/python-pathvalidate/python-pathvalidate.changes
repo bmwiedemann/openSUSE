@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:12:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.3
+  * Fix dot-files validation
+- from version 3.2.2
+  * Fix the detection logic of the reservation
+    words for the file name on Windows
+  * Drop support for Python 3.7/3.8
+  * Refactor type annotations
+
+-------------------------------------------------------------------
 Sat Aug 31 12:18:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:
