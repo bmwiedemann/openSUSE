@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:04:49 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+0:
+  * fix: focus search on activation
+  * fix: icon on a raised layer
+  * fix: icon position
+  * refactor: change widget order for button event handling
+  * fix: autosize wrapper for group add/delete
+  * fix: autosize wrapper for menu
+  * update deps
+  * udpate
+  * draft: update libcosmic
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
 Thu Dec 05 23:20:01 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+epoch-1.0.0-alpha.4:
