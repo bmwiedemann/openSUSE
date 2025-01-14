@@ -12844,7 +12844,7 @@ unsorted:
   - libdc1394-tools 
   - libdca-devel 
   - libdca0-32bit 
-  - libdcmtk18 
+  - libdcmtk19 
   - libddcutil-devel 
   - libdde-file-manager5 
   - libdde-network-utils1 
@@ -14135,6 +14135,7 @@ unsorted:
   - libirman-devel 
   - libirman0 
   - libirml1 
+  - libirmp0 
   - libirrecord0 
   - libisal2 
   - libiscsi-devel 
@@ -21104,6 +21105,7 @@ unsorted:
   - par 
   - par2cmdline 
   - par_text 
+  - parallel-printer-support 
   - paranamer 
   - paranamer-ant 
   - paranamer-generator 
@@ -24230,7 +24232,6 @@ unsorted:
   - python310-devel 
   - python310-doc 
   - python310-doc-devhelp 
-  - python310-dqsegdb 
   - python310-gphoto2 
   - python310-gpt4all 
   - python310-gwpy 
@@ -27540,6 +27541,7 @@ unsorted:
   - python311-transip 
   - python311-transitions 
   - python311-translate-toolkit 
+  - python311-translate-toolkit-man 
   - python311-translation-finder 
   - python311-translationstring 
   - python311-translitcodec 
@@ -31232,6 +31234,7 @@ unsorted:
   - python312-transip 
   - python312-transitions 
   - python312-translate-toolkit 
+  - python312-translate-toolkit-man 
   - python312-translation-finder 
   - python312-translationstring 
   - python312-translitcodec 
@@ -34935,6 +34938,7 @@ unsorted:
   - python313-transip 
   - python313-transitions 
   - python313-translate-toolkit 
+  - python313-translate-toolkit-man 
   - python313-translation-finder 
   - python313-translationstring 
   - python313-translitcodec 
@@ -35257,6 +35261,7 @@ unsorted:
   - qalculate-gtk 
   - qalculate-gtk-lang 
   - qalculate-qt 
+  - qarma 
   - qatengine 
   - qatlib 
   - qatlib-devel 
@@ -36830,6 +36835,7 @@ unsorted:
   - saxpath-javadoc 
   - sbc-devel 
   - sbcl 
+  - sbcl-bin 
   - sbctl 
   - sbd 
   - sbd-devel 
@@ -37272,7 +37278,6 @@ unsorted:
   - smproxy 
   - smssend 
   - smtpping 
-  - snack 
   - snakeyaml 
   - snakeyaml-javadoc 
   - snallygaster 
@@ -38014,7 +38019,6 @@ unsorted:
   - termcap-devel-static 
   - terminator 
   - terminator-lang 
-  - terminfo-ghostty 
   - terminology 
   - terminology-lang 
   - terminology-theme-Flat 
@@ -48693,7 +48697,6 @@ unsorted:
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
   - weblate 
-  - weblate-doc 
   - weblug 
   - webp-pixbuf-loader 
   - websocketpp-devel 
