@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jan 14 12:22:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.67.0:
+  * [Reader] Paused pages animations when obscured
+  * [Servers] Anteiku Scans (FR): Update
+  * [Servers] Asura Scans For Free (EN): Update
+  * [Servers] ED Scanlation (FR): Update
+  * [Servers] EZmanga (EN): Update
+  * [Servers] Kewn Scans (EN): Update
+  * [Servers] MonkeyUser (EN): Update
+  * [Servers] Pepper&Carrot: Update
+  * [Servers] Starbound Scans (FR): Update
+  * [Servers] Terco Scans (ES): Update
+  * [Servers] Webtoon Hatti (TR): Update
+  * [Servers] Rukav Inari (ES): Disabled
+  * [Servers] MangaWeebs (EN): Disabled
+  * [Servers] LSComic (EN): Disabled
+  * [Servers] Hunlight Scans (EN): Disabled
+  * [Servers] Mode Scanlator (pt_BR): Disabled
+  * [Servers] Best Manga (RU): Disabled
+  * [Servers] Atikrost (TR): Disabled
+  * [Servers] Perf Scan (FR): Disabled
+  * [L10n] Updated Bulgarian, German and Polish translations
+- update to 1.66.0:
+  * [Servers] Added Asura Scans For Free (EN)
+  * [Servers] Asura Scans (EN): Update
+  * [Servers] MangaDex: Ignored externals and empty chapters
+  * [Servers] MangaDex: Added Genres filter
+  * [Servers] MangaHub: Avoided exceeding API rate limiting
+  * [Servers] MangaLib (RU): Update
+  * [Servers] Mangareader (to): Fixed decoding of scrumbled images
+  * [L10n] Updated Finnish, Portuguese (Brazil), Russian, Spanish, Swedish and Ukrainian translations
+- fix build by escaping quotes, adding fix-quotes.patch (fixes boo#1234719)
+- add rudimentary tests
+
+-------------------------------------------------------------------
 Fri Dec  6 17:54:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.65.0:

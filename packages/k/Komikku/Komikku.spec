@@ -1,7 +1,7 @@
 #
 # spec file for package Komikku
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.65.0
+Version:        1.67.0
 Release:        0
 Summary:        A manga reader for GNOME
 License:        GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         convert-to-modern-colorthief.patch
+Patch1:         fix-quotes.patch
 BuildRequires:  appstream-glib
 BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
@@ -41,8 +43,10 @@ Requires:       python3-Unidecode
 Requires:       python3-beautifulsoup4
 Requires:       python3-cffi
 Requires:       python3-cloudscraper
+Requires:       python3-cryptography
 Requires:       python3-dateparser
 Requires:       python3-emoji
+Requires:       python3-gobject
 Requires:       python3-keyring
 Requires:       python3-lxml
 Requires:       python3-modern-colorthief >= 0.1.3
@@ -52,10 +56,14 @@ Requires:       python3-pillow-heif
 Requires:       python3-pure-protobuf >= 3.0.0
 Requires:       python3-pycairo
 Requires:       python3-python-magic
+Requires:       python3-pytz
 Requires:       python3-rarfile
+Requires:       python3-regex
 Requires:       python3-requests
 Requires:       python3-setuptools-gettext
 Requires:       python3-typing_extensions
+Requires:       python3-tzlocal
+Requires:       python3-urllib3
 Requires:       python3-wheel
 Requires:       unrar_wrapper
 BuildArch:      noarch
@@ -94,20 +102,22 @@ Keys features
 %meson_install
 %fdupes %{buildroot}
 
+%check
+%meson_test
+
 %find_lang komikku
 
 %files
 %license LICENSE
 %doc README.md CONTRIBUTING.md
 %{_bindir}/komikku
-%{_datadir}/applications/info.febvre.Komikku.desktop
-%{_datadir}/glib-2.0/schemas/info.febvre.Komikku.gschema.xml
-%{_datadir}/icons/*
-%dir %{_datadir}/komikku
-%{_datadir}/komikku/info.febvre.Komikku.gresource
-%{_datadir}/metainfo/info.febvre.Komikku.appdata.xml
-%dir %{python_sitelib}/komikku
-%{python_sitelib}/komikku/*
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/komikku
+%{python_sitelib}/komikku
 
 %files lang -f komikku.lang
 

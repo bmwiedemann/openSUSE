@@ -1,0 +1,12 @@
+diff -rub komikku/komikku/card/tracking.py komikku-patched/komikku/card/tracking.py
+--- komikku/komikku/card/tracking.py	2025-01-03 01:45:24.000000000 +0100
++++ komikku-patched/komikku/card/tracking.py	2025-01-14 13:18:09.366246466 +0100
+@@ -276,7 +276,7 @@
+             self.set_expanded(True)
+             self.set_arrow_visible(True)
+             self.btn.set_visible(False)
+-            self.action_row.set_title(f'<a href="{self.tracker.get_manga_url(data['id'])}">{html_escape(data["name"])}</a>')
++            self.action_row.set_title(f'''<a href="{self.tracker.get_manga_url(data['id'])}">{html_escape(data["name"])}</a>''')
+ 
+             with self.chapters_progress_row.handler_block(self.num_chapter_changed_handler_id):
+                 adj = Gtk.Adjustment(
