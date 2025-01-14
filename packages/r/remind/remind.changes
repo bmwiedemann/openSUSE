@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  7 08:57:57 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.2 Patch 2 - 2025-01-06
+
+- NEW FEATURE: remind: The "-p+" option lets you produce weekly calendars;
+  so far, the rem2pdf and rem2html back-ends support rendering of weekly
+  calendars.
+
+- NEW FEATURE: remind: The $CalType system variable indicates the type of
+  calendar being produced; its value is one of "monthly", "weekly",
+  or "none".  "none" signifies agenda mode rather than calendar mode.
+
+- IMPROVEMENT: remind: Warn if a POP-OMIT-CONTEXT matches a
+  PUSH-OMIT-CONTEXT that is in a different file.
+
+- CHANGE: remind: Split the "-ds" debug option into two separate options:
+  "-ds" for debugging expression-parsing and "-dh" for printing hash
+  table statistics on exit.
+
+-------------------------------------------------------------------
 Tue Dec 17 09:46:42 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.2 Patch 1 - 2024-12-16
