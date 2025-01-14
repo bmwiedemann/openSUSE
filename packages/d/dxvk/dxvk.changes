@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 14 00:32:17 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 2.5.3:
+  * Fixed a regression that would cause severe rendering issues
+    in many D3D8 and D3D9 games that use fixed-function rendering
+  * Fixed invalid shader code generation for certain rare texture
+    operations in D3D11
+  * This fixes a potential crash in TopSpin 2k25
+  * Fixed a potential issue with handling NaN tessellation factors
+    in D3D11 hull shaders
+  * Fixed an issue with D3D9 shader validation that would cause
+    valid shader code to be rejected in some situations
+  * Improved the debugging experience when DXVK_DEBUG=markers is
+    set
+  * Arcana Heart 3 Love Max!!!!!: Enabled 60 FPS limit to work
+    around a game issue on Steam Deck OLED
+  * Bright Memory: Worked around an issue where the game would
+    prioritize integrated graphics over dedicated Intel GPUs
+  * Far Cry 5: Worked around an issue that would cause terrain to
+    be invisible on Intel GPUs
+  * Halo: The Master Chief Collection: Fixed a shader-related
+    issue that would cause flickering objects on some drivers
+  * Max Payne 3: Enabled strict float emulation to work around
+    broken rendering in D3D9 mode
+  * The Hurricane of the Varstray -Collateral hazard-: Enabled 60
+    FPS limit to work around game issues when running in windowed
+    mode
+
+-------------------------------------------------------------------
 Sat Nov 23 20:28:31 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to 2.5.1:

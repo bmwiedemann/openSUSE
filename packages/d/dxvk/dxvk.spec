@@ -1,7 +1,7 @@
 #
 # spec file for package dxvk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dxvk
-Version:        2.5.1
+Version:        2.5.3
 Release:        0
 Summary:        Vulkan-based Direct3D 8/9/10/11 implementation for Linux / Wine
 License:        zlib-acknowledgement
