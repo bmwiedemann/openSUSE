@@ -135,7 +135,7 @@ This package provides the interface to Orthanc
 
 %prep
 %setup -q -n %{name}-%{version}
-## %patch -P 0 -p1
+## %%patch -P 0 -p1
 cp %{S:1} .
 cp %{S:2} .
 
