@@ -1,7 +1,7 @@
 #
 # spec file for package byobu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,7 +38,6 @@ Requires:       gawk
 Requires:       gettext-runtime
 Requires:       net-tools
 Requires:       python3-newt
-Requires:       snack
 Recommends:     pastebinit
 Recommends:     sensible-utils
 Recommends:     tmux
