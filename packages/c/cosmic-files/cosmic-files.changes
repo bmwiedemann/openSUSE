@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:28:32 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+1:
+  * Update dependencies
+  * Update cosmic_files.ftl (#727)
+  * Add Dutch translation (#724)
+  * Fix crash for dialog in debug mode
+  * Fix 'New folder...' context menu item in save dialog
+  * Enable `Open item location` for Recents
+  * update search on events
+  * use parent of file/folder instead of tab location for renaming
+  * Update Turkish translation
+  * Update Turkish translation
+  * i18n(de): add German translation
+  * i18n pt-BR translation update
+  * i18n pt-BR translation update
+  * Add Danish translation
+  * Fix Show Hidden Files
+  * Add Thai translation
+  * Unset `show_details` on close too
+
+-------------------------------------------------------------------
 Thu Dec 05 23:51:21 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:

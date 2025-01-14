@@ -89,4 +89,12 @@
   * Update cosmic_files.ftl zh-CN and fix several translation errors</comment>
     <requestid>1228853</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff3851beb7356d5c1e424094d02e1194</srcmd5>
+    <version>1.0.0~alpha5+1</version>
+    <time>1736868753</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237760</requestid>
+  </revision>
 </revisionlist>
