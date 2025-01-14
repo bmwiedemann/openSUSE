@@ -10,3 +10,15 @@ diff -rub komikku/komikku/card/tracking.py komikku-patched/komikku/card/tracking
  
              with self.chapters_progress_row.handler_block(self.num_chapter_changed_handler_id):
                  adj = Gtk.Adjustment(
+diff -rub komikku/komikku/servers/mangalib/__init__.py komikku-patched/komikku/servers/mangalib/__init__.py
+--- komikku/komikku/servers/mangalib/__init__.py	2025-01-03 01:45:24.000000000 +0100
++++ komikku-patched/komikku/servers/mangalib/__init__.py	2025-01-14 14:17:14.978184644 +0100
+@@ -124,7 +124,7 @@
+                     scanlators.append(team['name'])
+ 
+             data['chapters'].append(dict(
+-                slug=f'v{chapter['volume']}/c{chapter['number']}',
++                slug=f"v{chapter['volume']}/c{chapter['number']}",
+                 title=f'Том {chapter["volume"]} Глава {chapter["number"]} - {chapter["name"]}',
+                 num=chapter['number'] if is_number(chapter['number']) else None,
+                 num_volume=chapter['volume'] if is_number(chapter['volume']) else None,
