@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 13:46:53 UTC 2025 - dimstar@opensuse.org
+
+- Update to version 0.39+2:
+  * helpers/check_patches_applied: Fix detection of applying nonexisting patches
+
+-------------------------------------------------------------------
 Wed Oct 30 17:16:25 UTC 2024 - dmueller@suse.com
 
 - Update to version 0.39:
