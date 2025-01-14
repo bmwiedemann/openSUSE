@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 14 10:22:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.6.2
+  * CI-only fix.
+- from version 1.6.1
+  * CI-only fix.
+- from version 1.6.0
+  * Support for Python 3.13.  Contributed by Miro Hrončok and Adam Williamson.
+  * CI:  Publish 3.13 binaries and Linux aarch64 wheels for multiple versions.
+- Drop py313-support.patch, merged upstream
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Nov 20 16:01:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Modernize specfile 
