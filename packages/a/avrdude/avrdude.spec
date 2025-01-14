@@ -35,8 +35,6 @@ Source2:        avrdude.keyring
 Source3:        modprobe.avrdude_parport
 Source4:        avrdude-usbdevices
 Source6:        debian.avrdude.udev
-Patch0:         avrdude-5.11-no-builddate.diff
-Patch1:         avrdude-ipv6.patch
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  bison
@@ -73,10 +71,7 @@ This package contains development files for %{name}.
 
 %prep
 %setup -q
-# avrdude-5.11-no-builddate.diff
-# %patch -P 0 -p1
-# %patch -P 1
-#touch lexer.l
+touch lexer.l
 
 %build
 # 15.4 at least has "-Wl,--no-undefined" in there which breaks library build

@@ -332,4 +332,12 @@
     <comment>re-submit, see https://build.opensuse.org/requests/1235048</comment>
     <requestid>1235623</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c00fc6f8f22e6c05baa5533035b07697</srcmd5>
+    <version>8.0</version>
+    <time>1736876453</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237879</requestid>
+  </revision>
 </revisionlist>
