@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 10:51:52 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Fix versioning of tiff-docs under Recommends
+
+-------------------------------------------------------------------
 Tue Nov 12 14:40:24 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - make doc packages noarch. no need to have those per arch

@@ -1,7 +1,7 @@
 #
 # spec file for package raptor
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source3:        baselibs.conf
 Patch2:         ubsan.patch
 # Patch sent upstream: https://github.com/dajobe/raptor/pull/58
 Patch3:         raptor-libxml2-2.11-support.patch
+Patch4:         raptor-CVE-2024-57823.patch
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  libxslt-devel
@@ -70,6 +71,7 @@ raptor library.
 %setup -q -n %{name}2-%{version}
 %patch -P 2
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 %configure \

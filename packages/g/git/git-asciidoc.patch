@@ -1,17 +1,17 @@
 ---
- Documentation/asciidoc.conf |    2 ++
+ Documentation/asciidoc.conf.in |    2 ++
  1 file changed, 2 insertions(+)
 
-Index: git-2.11.0/Documentation/asciidoc.conf
+Index: git-2.48.0/Documentation/asciidoc.conf.in
 ===================================================================
---- git-2.11.0.orig/Documentation/asciidoc.conf
-+++ git-2.11.0/Documentation/asciidoc.conf
-@@ -21,6 +21,8 @@ tilde=&#126;
- apostrophe=&#39;
- backtick=&#96;
- litdd=&#45;&#45;
+--- git-2.48.0.orig/Documentation/asciidoc.conf.in
++++ git-2.48.0/Documentation/asciidoc.conf.in
+@@ -24,6 +24,8 @@ litdd=&#45;&#45;
+ manmanual=Git Manual
+ mansource=Git @GIT_VERSION@
+ revdate=@GIT_DATE@
 +# drops the "last-updated" footer, with asciidoc-8.6.9+
 +footer-style=none
  
- ifdef::backend-docbook[]
- [linkgit-inlinemacro]
+ ifdef::doctype-book[]
+ [titles]

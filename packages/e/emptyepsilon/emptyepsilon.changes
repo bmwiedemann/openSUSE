@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:06:16 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2024.12.08
+  * Remove 'f' suffix from numbers in lua (#2164)
+  * Some minor de updates
+  * fix minor typo
+  * more minor de updates
+
+-------------------------------------------------------------------
 Sun Sep 15 16:52:32 UTC 2024 - Dominik Heidler <dheidler@suse.com>
 
 - Version 2024.08.09

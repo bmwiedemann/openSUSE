@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 13 08:16:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250111
+  + add check for infinite loop in tic's use-resolution.
+  + increase limit on use-clauses from 32 to 40, warn but allow entries
+    which exceed the old limit.
+  + add some null-pointer checks after mallocs in test-programs.
+- Add patch ncurses-6.5-ghostty.dif
+  * Add an alias which causes the link /usr/share/terminfo/x/xterm-ghostty
+  to ../g/ghostty (bug boo#1235689)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:15:07 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250104 

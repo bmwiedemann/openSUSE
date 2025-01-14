@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:34:13 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Disable gimp plugin on SLFO. Gimp is currently unavailable there.
+- Re-add lcms2 dependency for s390x. It is used instead of skcms
+  on big-endian architectures.
+
+-------------------------------------------------------------------
 Tue Nov 26 20:55:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.11.1 (boo#1233763 boo#1233785)

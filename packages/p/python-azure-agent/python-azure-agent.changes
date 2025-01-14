@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Mon Dec 23 10:54:55 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 2.12.04 (bsc#1235140)
+  + Remove agent-no-auto-update.patch handeled by config file specialization
+    sub-packages
+  + Remove paa_force_py3_sle15.patch handled by RPM macro
+  + Remove agent-micro-is-sles.patch included upstream
+  + Forward port paa_12_sp5_rdma_no_ext_driver.patch
+  + Forward port remove-mock.patch
+  + Add paa_direct_exec_in_service.patch
+    ~ The waagent script is executable and we set the proper interpreter
+      using the macro for multibuild python. Do prefix the execution in the
+      service file wit the interpreter
+  + Fix install_requires list syntax
+  + Update spec file
+    ~ Remove conditions for distros no longer maintained
+    ~ Simplify build and install conditionals using macros
+  + Enable GA versioning #3082 #3184 #3189
+  + Cgroups api refactor for v2 #3096 #3135 #3188 #3196
+  + Fix JIT for FIPS 140-3 #3190
+  + reset network service unit file if python version changes #3058
+  + Recognize SLE-Micro as a SLE based distribution #3048
+  + Add distutils/version.py to azurelinuxagent #3063
+  + Use legacycrypt instead of crypt on Python >= 3.13 #3070
+  + Fix osutil/default route_add to pass string array. #3072
+  + Fix argument to GoalState.init #3073
+  + Add lock around access to fast_track.json #3076
+  + Add DistroVersion class to compare distro versions #3078
+  + LogCollector should skip and log warning for files that don't exist #3098
+  + check for unexpected process in agent cgroups before cgroups enabled #3103
+  + [Redo with correct source/target]: Remove check for "ibXX" interface
+    format and rework mac-address regex to expand support #3150
+  + Fix Ubuntu version codename for 24.04 #3159
+  + Update test certificate data #3166
+  + move setupslice after cgroupsv2 check, remove unit file for
+    log collector and remove fiirewall daemon-reload #3223
+  + Address pylint warning deprecated-method #3059
+  + Run pylint on Python 3.11 #3067
+  + Run unit tests with pytest on Python >= 3.10
+  + Log logcollector cgroups if process is found in unexpected slice #3107
+  + remove secret and use cert for aad app in e2e pipeline #3116
+  + suppress pylint warn contextmanager-generator-missing-cleanup #3138
+  + Switching to SNI based authentication for aad app #3137
+  + updated PR template #3144
+  + Avoiding mocked exception from being lost on test when using
+    python 3.12: complete mocked info #3149
+  + Add more useful logging statement for agent unit properties #3154
+  + Remove wireserver fallback for imds calls #3152
+  + Remove unused import #3155
+  + Add support for Azure Linux 3 #3183
+  + Fix pytest warnings #3084
+  + Allow use of node 16 #3160
+  + Send controller/cgroup path telemetry #3231
+From 2.13.0.2
+  + #3221 Add support for nftables (+ refactoring of firewall code)
+  + #3239 Create walinuxagent nftable atomically
+  + Features in progress (Verify extension signature/Policy Enforcement)
+  + #3200 Parse encodedSignature property from EGS
+  + #3187 Add Regorus policy engine framework
+  + #3222 Remove Regorus and platform check for policy enforcement
+  + #3242 Telemetry (update logcollector telemetry with common properties)
+  + #3208 Handle non-boolean when parsing extension manifests
+  + #3211 Fix unicode type check when parsing extension manifests
+  + #3133 Telemetry: high-priority events
+  + #3240 Telemetry: report apparent dead code
+  + #3210 Cleanup: remove AMA extension services cgroups tracking code
+  + #3197 Accommodate the new behavior in OpenSSL 3.2.2 when given an
+    empty input
+From 2.11.1.12
+  + Remove multi config extension status only on extension delete #3172
+From 2.111.1.4
+  + General Improvements
+  + Improvements in telemetry for firewall settings #3110, #3124
+From 2.10.0.8
+  + GA versioning #2810 #2850 #2860 #2881 #2974 #3004 #3015 #3033
+  + Disabled GA versioning #2909 #2917 #3044
+  + Add regular expression to match logs from very old agents #2839
+  + Remove empty "distro" module #2854
+  + Enable Python 2.7 for unit tests #2856
+  + Add check for noexec on Permission denied errors #2859
+  + Reorganize file structure of unit tests #2894
+  + Report useful message when extension processing is disabled #2895
+  + Add log and telemetry event for extension disabled #2897
+  + Cleanup common directory #2902
+  + Fix agent memory usage check #2903
+  + enable rhel/centos agent-cgroups #2922
+  + Add support for EC certificates #2936
+  + Add Cpu Arch in local logs and telemetry events #2938
+  + Clarify support status of installing from source. #2941
+  + Gathering Guest ProxyAgent Log Files #2975
+  + Remove debug info from waagent.status.json #2971
+  + Handle errors when adding logs to the archive #2982
+  + Update supported Ubuntu versions #2980
+  + Fix pylint warning #2988
+  + Add information about HTTP proxies #2985
+  + update the proxy agenet log folder for logcollector #3028
+  + Add config parameter to wait for cloud-init
+    (Extensions.WaitForCloudInit) #3031 [Added in 2.10.0.8]
+  + Adding AutoUpdate.UpdateToLatestVersion new flag support #3020 #3027
+    [Added in 2.10.0.8]
+  + Check certificates only if certificates are included in goal state #2803
+  + Redact access tokens from extension's output #2811
+  + Fix name of single IB device when provisioning RDMA #2814
+  + Port NSBSD system to the latest version of waagent #2828
+  + fix daemon version #2874
+  + fix version checking in setup.py #2920
+  + fix(ubuntu): Point to correct dhcp lease files #2979
+  + Download certs on FT GS after check_certificates only when missing
+    from disk #2907
+  + Add support for EC certificates (#2936) #2943 [Added in 2.10.0.5]
+  + Fix for "local variable _COLLECT_NOEXEC_ERRORS referenced before
+    assignment" (#2935) #2944 [Added in 2.10.0.5]
+  + Cache daemon version #2942 #2946 [Added in 2.10.0.5]
+  + undo get daemon version change #2951 [Added in 2.10.0.5]
+  + fix self-update frequency to spread over 24 hrs for regular type
+    and 4 hrs for hotfix #2948 [Added in 2.10.0.5]
+  + ignore dependencies from extensions that do not have settings #2957
+    [Added in 2.10.0.6]
+  + Do not reset the mode of a extension's log directory #3014
+    [Added in 2.10.0.8]
+  + skip cgroup monitoring if log collector doesn't start by the agent.
+    #2939 [Added in 2.10.0.8]
+  + NM should not be restarted during hostname publish if NM_CONTROLLED=y
+    #3008 [Added in 2.10.0.8]
+  + Daemon should remove stale published_hostname file and log
+    useful warning #3016 [Added in 2.10.0.8]
+  + Revert changes to publish_hostname in RedhatOSModernUtil #3032
+    [Added in 2.10.0.8]
+  + Recover primary nic if down after publishing hostname in
+    RedhatOSUtil #3024 [Added in 2.10.0.8]
+
+-------------------------------------------------------------------
 Thu Oct 31 09:50:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix a few typos in the spec file and use proper macros where

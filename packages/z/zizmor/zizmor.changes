@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 05:42:08 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.1:
+  * chore: prep 1.1.1 (#438)
+  * chore(deps): bump the cargo group with 4 updates (#434)
+  * chore(deps): bump the github-actions group with 2 updates
+    (#436)
+  * fix: bump github-actions-models (#437)
+  * docs: bump trophies (#430)
+
+-------------------------------------------------------------------
 Mon Jan 13 06:58:02 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.1.0:

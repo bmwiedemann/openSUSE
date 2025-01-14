@@ -19,7 +19,7 @@
 %define use_python python3
 %define pythons %{use_python}
 Name:           brlist
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Tool for listing linux bridges with their member interfaces
 License:        GPL-3.0-or-later

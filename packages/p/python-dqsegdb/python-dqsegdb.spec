@@ -1,7 +1,7 @@
 #
 # spec file for package python-dqsegdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,26 +19,30 @@
 %define skip_python2 1
 %define modname dqsegdb
 Name:           python-dqsegdb
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Client library for DQSegDB
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
-URL:            https://github.com/ligovirgo/dqsegdb
+URL:            https://git.ligo.org/computing/dqsegdb/client
 Source:         https://files.pythonhosted.org/packages/source/d/dqsegdb/dqsegdb-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE remove-six.patch to remove dependency on python-six
+Patch0:         remove-six.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 8.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-gpstime
 Requires:       python-gwdatafind
 Requires:       python-lal
-Requires:       python-lscsoft-glue >= 1.55.0
-Requires:       python-numpy
+Requires:       python-ligo-segments
+Requires:       python-lscsoft-glue >= 3.0.1
 Requires:       python-pyOpenSSL
 Requires:       python-pyRXP
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module lal}
@@ -54,21 +58,19 @@ python-dqsegdb provides the python bindings and the client tools to
 connect to LIGO/VIRGO DQSEGDB server instances.
 
 %prep
-%setup -q -n dqsegdb-%{version}
+%autosetup -p1 -n dqsegdb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for exe in ligolw_dq_query_dqsegdb ligolw_publish_threaded_dqxml_dqsegdb ligolw_segment_insert_dqsegdb ligolw_segment_query_dqsegdb ligolw_segments_from_cats_dqsegdb
 do
 %python_clone -a %{buildroot}%{_bindir}/${exe}
 done
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-rm %{buildroot}%{_prefix}%{_sysconfdir}/dqsegdb-user-env.*
 
 %check
 %pytest
@@ -86,7 +88,7 @@ rm %{buildroot}%{_prefix}%{_sysconfdir}/dqsegdb-user-env.*
 %python_alternative %{_bindir}/ligolw_segment_insert_dqsegdb
 %python_alternative %{_bindir}/ligolw_segment_query_dqsegdb
 %python_alternative %{_bindir}/ligolw_segments_from_cats_dqsegdb
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

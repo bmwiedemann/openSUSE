@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 31 05:30:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.337.0 (0.337)
+   see /usr/share/doc/packages/perl-App-Cmd/Changes
+
+  0.337     2024-12-30 17:58:25-05:00 America/New_York
+          - improve how overriding getopt_conf interacts with unknown options
+
+-------------------------------------------------------------------
 Fri Mar  8 21:59:37 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package pdsh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,25 @@
 %define _slurm_version _%{slurm_version}
 %endif
 
-%if 0%{!?sle_version:1} || 0%{?sle_version} >= 120200
-%define have_munge 1
-%define have_slurm 1
-%define have_genders 1
+%if %{suse_version >= 1600}
+%{bcond_with munge}
+%else
+%{bcond_without munge}
 %endif
+%ifarch s390x i586
+%{bcond_with slurm}
+%else
+%{bcond_without slurm}
+%endif
+%{bcond_without genders}
+
 %if 0%{?suse_version} >= 1550 || "%{?slurm_version}" != "18_08"
  %ifarch %ix86 %arm ppc s390
    %define have_slurm 0
  %endif
 %endif
 
-%if !0%{?have_slurm} && 0%{?_slurm_version:1}
+%if !0%{?with_slurm} && 0%{?_slurm_version:1}
 ExclusiveArch:  do_not_build
 %endif
 
@@ -43,15 +50,15 @@ Name:           %{pname}%{?_slurm_version:_slurm%{?_slurm_version}}
 BuildRequires:  dejagnu
 BuildRequires:  openssh
 BuildRequires:  readline-devel
-%if 0%{?have_slurm}
+%if 0%{?with_slurm}
 BuildRequires:  slurm%{?_slurm_version}-devel
 %endif
-%if 0%{?have_munge}
+%if %{with munge}
 BuildRequires:  munge-devel
 %endif
 BuildRequires:  pam-devel
 Recommends:     mrsh
-%if 0%{?have_genders}
+%if %{with genders}
 BuildRequires:  genders-devel > 1.0
 %endif
 URL:            https://github.com/chaos/%{pname}
@@ -135,12 +142,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 	--with-ssh \
 	--with-dshgroups \
 	--with-netgroup \
-        --with-rcmd-rank-list="ssh %{?have_munge:mrsh} krb4 qsh mqsh exec xcpu" \
+        --with-rcmd-rank-list="ssh %{?with_munge:mrsh} krb4 qsh mqsh exec xcpu" \
         --with-pam \
-        %{?have_genders:--with-genders} \
-        %{?have_munge:--with-mrsh} \
+        %{?with_genders:--with-genders} \
+        %{?with_munge:--with-mrsh} \
 %endif
-        %{?have_slurm:--with-slurm} \
+        %{?with_slurm:--with-slurm} \
 	--without-rsh \
 	--disable-static
 %if 0%{!?make_build:1}
@@ -170,13 +177,13 @@ make check
 %{_mandir}/man1/dshbak.1.gz
 %{_mandir}/man1/rpdcp.1.gz
 %{_libdir}/pdsh
-%{?have_genders:%exclude %{_libdir}/pdsh/genders.so}
-%{?have_slurm:%exclude %{_libdir}/pdsh/slurm.so}
+%{?with_genders:%exclude %{_libdir}/pdsh/genders.so}
+%{?with_slurm:%exclude %{_libdir}/pdsh/slurm.so}
 %exclude %{_libdir}/pdsh/machines.so
 %exclude %{_libdir}/pdsh/dshgroup.so
 %exclude %{_libdir}/pdsh/netgroup.so
 
-%if 0%{?have_genders}
+%if %{with genders}
 %files genders
 %{_libdir}/pdsh/genders.so
 %endif
@@ -191,7 +198,7 @@ make check
 %{_libdir}/pdsh/netgroup.so
 %endif # if _slurm_version
 
-%if 0%{?have_slurm}
+%if 0%{?with_slurm}
 %files -n %{pname}-slurm%{?_slurm_version}
 %{_libdir}/pdsh/slurm.so
 %endif

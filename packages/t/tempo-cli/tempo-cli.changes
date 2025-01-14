@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jan 14 05:46:24 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.0:
+  Please check the full changelog for the breaking changes:
+  https://github.com/grafana/tempo/releases/tag/v2.7.0
+  CLI-related changes:
+  * [release-v2.7] Changelog cleanup 2.7.0 (#4544)
+  * [DOC] Add clarification for metrics summary and traceQL metrics
+    (#4316)
+  * tempo-cli: support dropping multiple traces in a single
+    operation (#4266)
+  * docs: Remove duplicated examples (#4295)
+  * docs: mark serverless as deprecated (#4017)
+  * docs: Update readme with explore traces info (#4263)
+  * Docs: fix trace:rootService example code (#4265)
+  * doc: correct traceQL metrics documentation (#4252)
+  * Fix tempo cli arguments (#4259)
+  * [DOC] Update metrics query docs with examples, more details
+    (#4248)
+  * [DOC] Update local-block processor config for 2.6 changes
+    (#4223)
+  * [DOC] Add 2.6.1 breaking change to Upgrade page (#4215)
+  * [DOC] Add deprecation for metrics summary (#4193)
+  * [DOC] Fix wrong date command in push HTTP API doc (#4206)
+  * [DOC] Remove traceQLStreaming feature flag (#4188)
+  * [DOC] Add 2.6.1 to release notes (#4191)
+  * [DOC] Update statement for metrics-generator for Cloud (#4151)
+  * [DOC] Update metrics for Alloy troubleshooting doc (#4137)
+  * [docs] use proper default value for grpc server message size
+    (#4133)
+  * [DOC] Clarify Parquet requirements in 2.6 (#4135)
+  * tempo-cli: add support for /api/v2/traces endpoint (#4127)
+  * [DOC] Add other attributes to trace structure doc (#4106)
+  * Fix cli analyse block dedicated text output (#4055)
+  * [DOC] Release notes for 2.6 (#4048)
+  * [DOC] TraceQL, metrics-gen, and overrides doc updates for 2.6
+    (#4041)
+  * [DOC] Convert monitor, troubleshoot, set up test app to Alloy
+    (#4026)
+  * [DOC] Add vParquet4 to analyse blocks CLI and update parquet
+    doc (#4033)
+  * [Doc] Update retrieve traces  doc to use Traces V2 (#4037)
+  * [DOC] Add doc for compare function for metrics doc (#4024)
+  * [DOC] Update query editor content and screenshots (#3986)
+  * [DOC] operator: clarify supported Kubernetes versions (#4019)
+  * [DOC] Correct Jaeger spelling mistake (#4015)
+  * [cli] add jsonnet support to analyse blocks (#4012)
+
+-------------------------------------------------------------------
 Wed Oct 16 08:40:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.6.1:

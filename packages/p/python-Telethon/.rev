@@ -352,4 +352,12 @@ Library should now retry on the suddenly-common TimedOutError.
 - update to 1.31.0:</comment>
     <requestid>1225500</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6107e19cc8e515896e3466910d5fae30</srcmd5>
+    <version>1.38.1</version>
+    <time>1736868229</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237650</requestid>
+  </revision>
 </revisionlist>

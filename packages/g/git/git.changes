@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 13 20:00:00 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.48.0
+  * Reference consistency checks: git refs verify
+  * Reflogs can now be migrated with git refs migrate
+  * git is free of memory leaks as covered by the test suite
+  * Performance improvements
+  * Other improvements, UI changes, options extensions and largely
+    compatible behavior changes as listed in
+    https://raw.githubusercontent.com/git/git/refs/tags/v2.48.0/Documentation/RelNotes/2.48.0.txt
+
+-------------------------------------------------------------------
 Mon Nov 25 10:58:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.47.1:

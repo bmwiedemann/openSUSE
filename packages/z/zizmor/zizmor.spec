@@ -17,9 +17,9 @@
 
 
 Name:           zizmor
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
-Summary:	A static analysis tool for GitHub Actions
+Summary:        A static analysis tool for GitHub Actions
 License:        MIT
 URL:            https://github.com/woodruffw/zizmor
 Source0:        %{name}-%{version}.tar.gz

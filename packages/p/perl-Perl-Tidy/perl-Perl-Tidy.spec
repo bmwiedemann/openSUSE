@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Tidy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20240903.0.0
+Version:        20250105.0.0
 Release:        0
-# 20240903 -> normalize -> 20240903.0.0
-%define cpan_version 20240903
+# 20250105 -> normalize -> 20250105.0.0
+%define cpan_version 20250105
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts

@@ -1,0 +1,18 @@
+Add an alias which causes the link /usr/share/terminfo/x/xterm-ghostty
+to ../g/ghostty (bug boo#1235689)
+
+---
+ misc/terminfo.src |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- misc/terminfo.src
++++ misc/terminfo.src	2025-01-13 08:43:20.312926680 +0000
+@@ -8368,7 +8368,7 @@ contour-direct|Contour terminal with dir
+ #
+ # The developers set "Tc" in their terminal description to hint that it
+ # supports direct-colors, but the feature did not work with this version -TD
+-ghostty|Ghostty terminal emulator,
++ghostty|xterm-ghostty|Ghostty terminal emulator,
+ 	am, bce, km, mc5i, mir, msgr, npc, xenl, AX, XT,
+ 	cols#80, lines#24, pairs#0x7fff,
+ 	acsc=++\,\,--..00``aaffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxy

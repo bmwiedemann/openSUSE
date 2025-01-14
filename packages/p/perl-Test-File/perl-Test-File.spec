@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-File
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Test-File
 Name:           perl-Test-File
-Version:        1.993
+Version:        1.994.0
 Release:        0
+# 1.994 -> normalize -> 1.994.0
+%define cpan_version 1.994
 License:        Artistic-2.0
 Summary:        Test file attributes
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -31,6 +33,8 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::Builder) >= 1.001006
 BuildRequires:  perl(Test::Builder::Tester) >= 1.04
 BuildRequires:  perl(Test::More) >= 1
+Provides:       perl(Test::File) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -52,7 +56,7 @@ The optional NAME parameter for every function allows you to specify a name
 for the test. If not supplied, a reasonable default will be generated.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -67,7 +71,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CITATION.cff examples
+%doc Changes CITATION.cff examples SECURITY.md
 %license LICENSE
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package tempo-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           tempo-cli
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        CLI for the Grafana Tempo tracing backend
 License:        Apache-2.0
@@ -27,9 +25,7 @@ URL:            https://github.com/grafana/tempo
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 
-# fails to build with go1.23
-# https://github.com/grafana/tempo/issues/4086
-BuildRequires:  go1.22
+BuildRequires:  go >= 1.23.3
 
 %description
 Tempo CLI is a separate executable that contains utility functions related to

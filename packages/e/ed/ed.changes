@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 11 12:19:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU ed 1.21
+  * 'r !command' and 'w !command' ignore again the exit status of
+    'command'
+  * The messages "Newline inserted" and "Newline appended" are now
+    suppressed in scripted mode (-s)
+  * documentation updates and portqability fixes
+
+-------------------------------------------------------------------
 Wed May  1 11:52:59 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU ed 1.20.2:

@@ -1,0 +1,39 @@
+From 89a6e399f1e17d08a8bc8cdaa05b2ac9a50cd4f6 Mon Sep 17 00:00:00 2001
+From: Joerg Riesmeier <dicom@jriesmeier.com>
+Date: Sat, 11 Jan 2025 17:59:39 +0100
+Subject: [PATCH] Fixed issue rendering invalid monochrome image.
+
+Fixed issue when rendering an invalid monochrome DICOM image where the
+number of pixels stored does not match the expected number of pixels.
+If the stored number is less than the expected number, the rest of the
+pixel matrix for the intermediate representation was always filled with
+the value 0. Under certain, very rare conditions, this could result in
+memory problems reported by an Address Sanitizer (ASAN). Now, the rest
+of the matrix is filled with the smallest possible value for the image.
+
+Thanks to Emmanuel Tacheau from the Cisco Talos team
+<vulndiscovery@external.cisco.com> for the original report, the sample
+file (PoC) and further details. See TALOS-2024-2122 and CVE-2024-47796.
+---
+ dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h b/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h
+index e749a6b16..50389a540 100644
+--- a/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h
++++ b/dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h
+@@ -72,9 +72,9 @@ class DiMonoInputPixelTemplate
+                 rescale(pixel);                     // "copy" or reference pixel data
+                 this->determineMinMax(OFstatic_cast(T3, this->Modality->getMinValue()), OFstatic_cast(T3, this->Modality->getMaxValue()));
+             }
+-            /* erase empty part of the buffer (= blacken the background) */
++            /* erase empty part of the buffer (= fill the background with the smallest possible value) */
+             if ((this->Data != NULL) && (this->InputCount < this->Count))
+-                OFBitmanipTemplate<T3>::zeroMem(this->Data + this->InputCount, this->Count - this->InputCount);
++                OFBitmanipTemplate<T3>::setMem(this->Data + this->InputCount, OFstatic_cast(T3, this->Modality->getAbsMinimum()), this->Count - this->InputCount);
+         }
+     }
+ 
+-- 
+2.47.1
+

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 11 16:37:07 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.17.2:
+  * src/login_nopam.c: Fix compiler warnings #1170
+  * lib/chkname.c: Put limits for LOGIN_NAME_MAX and sysconf(_SC_LOGIN_NAME_MAX) #1169
+  * Use HTTPS in link to Wikipedia article on password strength #1164
+  * lib/attr.h: use C23 attributes only with gcc >= 10 #1172
+  * login: Fix no-pam authorization regression #1174
+  * man: Add Portuguese translation #1178
+  * Update French translation #1177
+  * Add cheap defense mechanisms #1171
+  * Add Romanian translation #1176
+
+-------------------------------------------------------------------
 Tue Dec 31 19:41:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.17.1:

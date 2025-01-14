@@ -1,7 +1,7 @@
 #
 # spec file for package gitleaks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gitleaks
-Version:        8.22.1
+Version:        8.23.0
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT

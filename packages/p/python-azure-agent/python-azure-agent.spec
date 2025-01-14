@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,42 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%elif 0%{?suse_version} = 1315
+%define pythons python
+%else
+%define pythons python3
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 Name:           python-azure-agent
-Version:        2.9.1.1
+Version:        2.12.0.4
 Release:        0
 Summary:        Microsoft Azure Linux Agent
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
-Patch1:         agent-no-auto-update.patch
-Patch6:         paa_force_py3_sle15.patch
 Patch7:         reset-dhcp-deprovision.patch
 Patch8:         paa_12_sp5_rdma_no_ext_driver.patch
 # PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#2741
 Patch9:         remove-mock.patch
-Patch10:        agent-micro-is-sles.patch
 # PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#3158
 Patch11:        agent-btrfs-use-f.patch
+Patch12:        paa_direct_exec_in_service.patch
 BuildRequires:  dos2unix
 
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  distribution-release
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} > 1315
-BuildRequires:  python3-distro
-BuildRequires:  python3-setuptools
+BuildRequires:  %{pythons}-distro
 %else
-BuildRequires:  python-setuptools
-BuildRequires:  python-xml
+BuildRequires:  %{pythons}-xml
 %endif
 BuildRequires:  pkgconfig(udev)
 Requires:       eject
@@ -58,13 +66,10 @@ Requires:       sysvinit-tools
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 Requires:       wicked
 %endif
+Requires:       %{pythons}-pyasn1
+Requires:       %{pythons}-xml
 %if 0%{?suse_version} > 1315
-Requires:       python3-distro
-Requires:       python3-pyasn1
-Requires:       python3-xml
-%else
-Requires:       python-pyasn1
-Requires:       python-xml
+Requires:       %{pythons}-distro
 %endif
 Requires:       sudo
 Requires:       util-linux
@@ -88,12 +93,10 @@ Microsoft Azure Stack framework.
 Summary:        Unit tests
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
+Requires:       %{pythons}-pytest
 Requires:       openssl
-%if 0%{?suse_version} > 1315
-Requires:       python3-pytest
-%else
-Requires:       python-mock
-Requires:       python-pytest
+%if 0%{?suse_version} == 1315
+Requires:       %{pythons}-mock
 %endif
 
 %description test
@@ -144,30 +147,25 @@ setup
 
 %prep
 %setup -q -n WALinuxAgent-%{version}
-%patch -P 1
-%if 0%{?suse_version} > 1315
-%patch -P 6
-%endif
 %patch -P 7
-%patch -P 8
+%patch -P 8 -p1
 %patch -P 9 -p1
-%patch -P 10
 %patch -P 11
+%patch -P 12
 
 %build
-%if 0%{?suse_version} > 1315
-python3 setup.py build
-%else
-python setup.py build
-%endif
+# We have an insane veriation in the way we identify our distros from suse,
+# sles, opensuse, openSUSE Tumbleweed and who knows what else. This makes it
+# for all intend and purposes impractical to follow the bouncing ball and keep
+# updating the upstream detection code. We use setup.py to be able to
+# pass an argument during install
+%python_build
 
 %install
+%python_exec setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %if 0%{?suse_version} > 1315
-python3 setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 rm %{buildroot}%{_sbindir}/waagent2.0
 %python3_fix_shebang
-%else
-python setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %endif
 
 # Config file flavor setup
@@ -210,13 +208,8 @@ mv %{buildroot}/lib/systemd/system/* %{buildroot}/%{_unitdir}
 fi
 
 ### udev rules
-%if 0%{?suse_version} < 1230
-mkdir -p %{buildroot}/lib/udev/rules.d
-mv %{buildroot}%{_sysconfdir}/udev/rules.d/* %{buildroot}/lib/udev/rules.d/
-%else
 mkdir -p %{buildroot}%{_prefix}/lib/udev/rules.d
 mv %{buildroot}%{_sysconfdir}/udev/rules.d/* %{buildroot}%{_prefix}/lib/udev/rules.d/
-%endif
 ### log file ghost
 mkdir -p  %{buildroot}/%{_localstatedir}/log
 touch %{buildroot}/%{_localstatedir}/log/waagent.log
@@ -229,11 +222,7 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent.logrotate %{buildroot}/%{_sys
 %endif
 
 # install tests
-%if 0%{?suse_version} > 1315
-cp -r tests %{buildroot}/%{python3_sitelib}/azurelinuxagent
-%else
-cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
-%endif
+cp -r tests %{buildroot}/%{_sitelibdir}/azurelinuxagent
 
 %pre
 %service_add_pre waagent.service
@@ -316,31 +305,18 @@ ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
 %endif
 %ghost %{_localstatedir}/log/waagent.log
 %{_unitdir}/waagent.service
-%if 0%{?suse_version} < 1230
-/lib/udev/rules.d/66-azure-storage.rules
-/lib/udev/rules.d/99-azure-product-uuid.rules
-%else
 %{_prefix}/lib/udev/rules.d/66-azure-storage.rules
 %{_prefix}/lib/udev/rules.d/99-azure-product-uuid.rules
-%endif
-%if 0%{?suse_version} > 1315
-%dir %{python3_sitelib}/azurelinuxagent
-%{python3_sitelib}
-%exclude %{python3_sitelib}/azurelinuxagent/tests
-%else
-%dir %{python_sitelib}/azurelinuxagent
+%dir %{_sitelibdir}/azurelinuxagent
+%{_sitelibdir}
+%exclude %{_sitelibdir}/azurelinuxagent/tests
+%if 0%{?suse_version} <= 1315
 %attr(0755,root,root) %{_sbindir}/waagent2.0
-%{python_sitelib}
-%exclude %{python_sitelib}/azurelinuxagent/tests
 %endif
 
 %files test
 %defattr(0644,root,root,0755)
-%if 0%{?suse_version} > 1315
-%{python3_sitelib}/azurelinuxagent/tests
-%else
-%{python_sitelib}/azurelinuxagent/tests
-%endif
+%{_sitelibdir}/azurelinuxagent/tests
 
 %files config-default
 %ghost %{_sysconfdir}/waagent.conf

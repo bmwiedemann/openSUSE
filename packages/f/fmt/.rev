@@ -536,4 +536,12 @@
     <comment>- Update to release 11.1.1</comment>
     <requestid>1233628</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>65b566626755735169e96c64a704aada</srcmd5>
+    <version>11.1.1</version>
+    <time>1736868072</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-Restore-ABI-compatibility.patch [boo#1235078]</comment>
+    <requestid>1237052</requestid>
+  </revision>
 </revisionlist>

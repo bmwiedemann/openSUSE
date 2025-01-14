@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:55:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.23.0:
+  * feat(generate): use multiple allowlists (#1691)
+  * chore(rules): include fps in reference (#1471)
+  * Add comma as operator for GenerateSemiGenericRegex (#1679)
+  * refactor: central logger (#1692)
+  * friendship ended with tines
+
+-------------------------------------------------------------------
 Tue Dec 31 10:22:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.22.1:

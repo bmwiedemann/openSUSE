@@ -879,4 +879,13 @@ source service setup which messed up my spec file.
     (bsc#1234275) (forwarded request 1229758 from mwilck)</comment>
     <requestid>1229759</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a657a107c258f50858730560327c6b1a</srcmd5>
+    <version>16.0.55</version>
+    <time>1736868110</time>
+    <user>anag+factory</user>
+    <comment>* regenerate-initrd-posttrans: return error if regenerating all
+    initrds fails (bsc#1234308) (forwarded request 1237521 from mwilck)</comment>
+    <requestid>1237522</requestid>
+  </revision>
 </revisionlist>

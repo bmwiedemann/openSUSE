@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_sound
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_sound
 %define lname	libSDL2_sound2
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Sound Sample Library for SDL (Simple DirectMedia Layer)
 License:        LGPL-2.1-or-later
@@ -29,8 +29,8 @@ Source:         https://github.com/icculus/SDL_sound/archive/refs/tags/v%version
 BuildRequires:  c_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig(sdl2)
-Provides:       bundled(dr_flac) = 0.12.37
-Provides:       bundled(dr_mp3) = 0.6.32
+Provides:       bundled(dr_flac) = 0.12.42
+Provides:       bundled(dr_mp3) = 0.6.38
 Provides:       bundled(libmodplug)
 Provides:       bundled(stb_vorbis) = 1.22
 

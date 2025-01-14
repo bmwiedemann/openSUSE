@@ -1,7 +1,7 @@
 #
 # spec file for package dhcp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -415,21 +415,6 @@ getent passwd dhcpd >/dev/null || useradd -r -g nogroup -s /bin/false -c "DHCP s
 %{fillup_only -ans syslog dhcpd}
 %service_add_post dhcpd.service
 %service_add_post dhcpd6.service
-# FIXME: update?
-if [ $1 -gt 1 ]; then
-    if grep -q '^DHCPD_RUN_AS=.*nobody' etc/sysconfig/dhcpd; then
-	tmpfile=$(mktemp -q etc/sysconfig/dhcpd.XXXXXX)
-	sed 's|^DHCPD_RUN_AS=.*|DHCPD_RUN_AS="dhcpd"|' etc/sysconfig/dhcpd \
-	  > $tmpfile && mv $tmpfile etc/sysconfig/dhcpd
-	rm -f $tmpfile
-    fi
-    if grep -q '^DHCPD_BINARY=.*dhcpd\..*' etc/sysconfig/dhcpd; then
-	tmpfile=$(mktemp -q etc/sysconfig/dhcpd.XXXXXX)
-	sed 's|^DHCPD_BINARY=.*|DHCPD_BINARY=""|' etc/sysconfig/dhcpd \
-	  > $tmpfile && mv $tmpfile etc/sysconfig/dhcpd
-	rm -f $tmpfile
-    fi
-fi
 
 %preun server
 %service_del_preun dhcpd.service

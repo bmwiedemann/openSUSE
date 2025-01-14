@@ -1,7 +1,7 @@
 #
 # spec file for package qhexedit2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _libver 4
 Name:           qhexedit2
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        Qt-based hex editor
 License:        LGPL-2.0-only
@@ -32,8 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Widgets)
 
 %description
 QHexEdit is a hex editor widget written in C++ for the Qt framework.
@@ -65,19 +64,19 @@ Group:          System/Libraries
 Qt5 library for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 mkdir build-lib
 pushd build-lib
-qmake-qt5 QMAKE_CXXFLAGS="%{optflags}" ../src/qhexedit.pro
+qmake6 QMAKE_CXXFLAGS="%{optflags}" ../src/qhexedit.pro
 make %{?_smp_mflags}
 popd
 
 # Build application
 mkdir build-example
 pushd build-example
-qmake-qt5 QMAKE_CXXFLAGS="%{optflags}" ../example/qhexedit.pro
+qmake6 QMAKE_CXXFLAGS="%{optflags}" ../example/qhexedit.pro
 make %{?_smp_mflags}
 popd
 

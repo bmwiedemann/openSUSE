@@ -1279,4 +1279,14 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment></comment>
     <requestid>1179721</requestid>
   </revision>
+  <revision rev="143" vrev="19">
+    <srcmd5>25952ffbde10658843b0c40015a24866</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1736868108</time>
+    <user>anag+factory</user>
+    <comment>- Remove obsolete migration from dhcp-server post scriptlet
+  [bsc#1235447]
+</comment>
+    <requestid>1237520</requestid>
+  </revision>
 </revisionlist>

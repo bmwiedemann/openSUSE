@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  9 05:30:16 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.670.0 (4.67)
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.67 2025-01-08
+
+      [ FIX ]
+      - correctly parse unquoted expires cookie values containing embedded commas (GH #268, thanks to rlauer6 for the patch)
+
+-------------------------------------------------------------------
 Sun Jun 23 16:10:07 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 4.660.0 (4.66)

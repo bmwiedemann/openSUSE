@@ -955,4 +955,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1234913</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8c066f3c6e2ace5eae594228be9c7e9e</srcmd5>
+    <version>13.12</version>
+    <time>1736868226</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237647</requestid>
+  </revision>
 </revisionlist>

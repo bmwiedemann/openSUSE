@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 20:43:57 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fixtest.patch to fix tests after 2033 (boo#1102840)
+
+-------------------------------------------------------------------
 Wed Sep 12 13:34:03 UTC 2018 - pmonrealgonzalez@suse.com
 
 - update to 2013.0912:

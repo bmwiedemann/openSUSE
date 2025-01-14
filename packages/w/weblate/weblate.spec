@@ -1,7 +1,7 @@
 #
 # spec file for package weblate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
-Version:        5.6.2
+Version:        5.9.2
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
 URL:            https://github.com/WeblateOrg/weblate
 Source0:        https://github.com/WeblateOrg/weblate/releases/download/weblate-%{version}/weblate-%{version}.tar.gz
-Source1:        https://github.com/WeblateOrg/weblate/releases/download/weblate-%{version}/weblate-%{version}.tar.gz.sigstore
+Source1:        https://github.com/WeblateOrg/weblate/releases/download/weblate-%{version}/weblate-%{version}.tar.gz.sigstore.json
 # GPG key from Michal Čihař
 # Fingerprint 63CB 1DF1 EF12 CF2A C0EE 5A32 9C27 B313 42B7 511D
 # https://cihar.com/.well-known/openpgpkey/hu/wmxth3chu9jfxdxywj1skpmhsj311mzm
@@ -36,12 +36,12 @@ Source2:        %{name}.keyring
 # skip failing test_ocr and test_ocr_backend
 # most probably some issue on our side
 Patch:          skip-test_ocr.patch
-# PATCH-FIX-OPENSUSE mmachova@suse.com Use older, yet still supported html theme (for consistency and because the newer one isn't packaged yet).
-Patch:          use-old-html-theme.patch
+# PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/commit/c59bec99e84abc21b225b235cfec719d32847787 fix(formats): use new more tolerant ttkit
+Patch:          ttkit.patch
 BuildRequires:  bitstream-vera
 BuildRequires:  borgbackup >= 1.2.5
 BuildRequires:  fdupes
-BuildRequires:  git
+BuildRequires:  git >= 2.28
 BuildRequires:  git-review >= 1.27.0
 BuildRequires:  git-svn
 BuildRequires:  gpg2
@@ -57,92 +57,88 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 3.0.0
 BuildRequires:  python3-Django >= 5.0
 BuildRequires:  python3-GitPython >= 3.1.0
-BuildRequires:  python3-Levenshtein
 BuildRequires:  python3-Pillow >= 10.3.0
-BuildRequires:  python3-Pygments >= 2.15.0
-BuildRequires:  python3-Sphinx >= 1.8
+BuildRequires:  python3-Pygments >= 2.17.0
+BuildRequires:  python3-Unidecode >= 1.3.8
 BuildRequires:  python3-aeidon >= 1.14.1
 BuildRequires:  python3-ahocorasick-rs >= 0.20.0
 BuildRequires:  python3-aliyun-python-sdk-alimt >= 3.2.0
-BuildRequires:  python3-boto3 >= 1.25.0
+BuildRequires:  python3-altcha >= 0.1.7
+BuildRequires:  python3-boto3 >= 1.28.62
 BuildRequires:  python3-celery >= 5.4.0
-BuildRequires:  python3-chardet
+BuildRequires:  python3-certifi >= 2024.8.30
 BuildRequires:  python3-charset-normalizer >= 2.0.12
 BuildRequires:  python3-crispy-bootstrap3 >= 2024.1
+BuildRequires:  python3-cryptography >= 42.0.4
 BuildRequires:  python3-cssselect >= 1.2
-BuildRequires:  python3-dbm
-BuildRequires:  python3-diff_match_patch = 20230430
+BuildRequires:  python3-cyrtranslit >= 1.1.0
+BuildRequires:  python3-dateparser >= 1.2.0
+BuildRequires:  python3-diff_match_patch = 20241021
 BuildRequires:  python3-django-appconf >= 1.0.3
 BuildRequires:  python3-django-auth-ldap >= 4.6.0
 BuildRequires:  python3-django-celery-beat >= 2.6.0
 BuildRequires:  python3-django-cors-headers >= 4.3.0
-BuildRequires:  python3-django-crispy-forms >= 2.1
+BuildRequires:  python3-django-crispy-forms >= 2.3
 BuildRequires:  python3-django-filter >= 23.4
+BuildRequires:  python3-django-otp >= 1.5.2
+BuildRequires:  python3-django-otp-webauthn >= 0.4.0
 BuildRequires:  python3-django-redis >= 5.4.0
 BuildRequires:  python3-django_compressor >= 4.4
-BuildRequires:  python3-djangorestframework >= 3.15.0
-BuildRequires:  python3-filelock >= 3.12
+BuildRequires:  python3-djangorestframework >= 3.15.2
+BuildRequires:  python3-drf-spectacular >= 0.27.2
+BuildRequires:  python3-drf-spectacular-sidecar
+BuildRequires:  python3-filelock >= 3.16.1
 BuildRequires:  python3-fluent.syntax >= 0.18.1
-BuildRequires:  python3-gobject >= 3.34.0
-BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-gobject-cairo
-BuildRequires:  python3-google-cloud-translate >= 3.8.0
+BuildRequires:  python3-gobject >= 3.40.1
+BuildRequires:  python3-google-cloud-storage >= 2.18.2
+BuildRequires:  python3-google-cloud-translate >= 3.13.0
 BuildRequires:  python3-hiredis >= 2.2.1
 BuildRequires:  python3-html2text >= 2024.2.25
-BuildRequires:  python3-httpretty
 BuildRequires:  python3-iniparse >= 0.5
-BuildRequires:  python3-jsonschema >= 4.5
+BuildRequires:  python3-jsonschema >= 4.23.0
 BuildRequires:  python3-lxml >= 5.2.0
-BuildRequires:  python3-matplotlib
-BuildRequires:  python3-misaka >= 2.1.0
-BuildRequires:  python3-mistletoe >= 1.3.0
+BuildRequires:  python3-mistletoe >= 1.4.0
 BuildRequires:  python3-nh3 >= 0.2.14
 BuildRequires:  python3-openai >= 1.3.0
 BuildRequires:  python3-openpyxl >= 3.1.0
-BuildRequires:  python3-packaging >= 22
-BuildRequires:  python3-phply >= 1.2.5
+BuildRequires:  python3-packaging >= 23
+BuildRequires:  python3-phply >= 1.2.6
 BuildRequires:  python3-psycopg >= 3.1.8
-BuildRequires:  python3-pycairo >= 1.15.3
+BuildRequires:  python3-pycairo >= 1.20.0
 BuildRequires:  python3-pyicumessageformat >= 1.0.0
 BuildRequires:  python3-pyparsing >= 3.1.1
 BuildRequires:  python3-python-akismet >= 0.4.2
 BuildRequires:  python3-python-dateutil >= 2.8.2
-BuildRequires:  python3-python-redis-lock >= 3.6.0
+BuildRequires:  python3-python-redis-lock >= 4
 BuildRequires:  python3-python3-saml >= 1.2.1
-BuildRequires:  python3-pytz
-BuildRequires:  python3-rapidfuzz >= 2.6.0
+BuildRequires:  python3-qrcode >= 7.4.1
+BuildRequires:  python3-rapidfuzz >= 3.8.0
+BuildRequires:  python3-redis >= 5.0.2
 BuildRequires:  python3-requests >= 2.32.2
 BuildRequires:  python3-responses >= 0.10.1
 BuildRequires:  python3-respx >= 0.20.2
 BuildRequires:  python3-ruamel.yaml >= 0.17.2
 BuildRequires:  python3-selenium
-BuildRequires:  python3-sentry-sdk >= 2.2
+BuildRequires:  python3-sentry-sdk >= 2.15.0
 BuildRequires:  python3-setuptools >= 40.3.0
 BuildRequires:  python3-siphashc >= 2.1
-BuildRequires:  python3-social-auth-app-django >= 5.4.0
+BuildRequires:  python3-social-auth-app-django >= 5.4.1
 BuildRequires:  python3-social-auth-core >= 4.5.0
-BuildRequires:  python3-sphinx-jsonschema
-BuildRequires:  python3-sphinx_rtd_theme
-BuildRequires:  python3-sphinxcontrib-copybutton
-BuildRequires:  python3-sphinxcontrib-httpdomain
-BuildRequires:  python3-sphinxext-opengraph
 BuildRequires:  python3-tesserocr >= 2.6.1
-BuildRequires:  python3-translation-finder >= 2.16
+BuildRequires:  python3-translation-finder >= 2.18
 BuildRequires:  python3-user-agents >= 2.0
-BuildRequires:  python3-weblate-language-data >= 2024.3
-BuildRequires:  python3-weblate-schemas = 2024.1
-BuildRequires:  python3-zeep >= 4.1.0
-BuildRequires:  redis
+BuildRequires:  python3-weblate-language-data >= 2024.14
+BuildRequires:  python3-weblate-schemas = 2024.2
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  translate-toolkit >= 3.13.1
+BuildRequires:  translate-toolkit >= 3.14.4
 BuildRequires:  typelib(Pango) >= 1.0
 BuildRequires:  typelib(PangoCairo) >= 1.0
 BuildRequires:  typelib(Rsvg)
 BuildRequires:  user(wwwrun)
 Requires:       borgbackup >= 1.2.5
 Requires:       cron
-Requires:       git
+Requires:       git >= 2.28
 Requires:       gpg2
 Requires:       postgresql
 Requires:       postgresql-contrib
@@ -151,52 +147,65 @@ Requires:       python3-Django >= 5.0
 Requires:       python3-GitPython >= 3.1.0
 Requires:       python3-Levenshtein
 Requires:       python3-Pillow >= 10.3.0
-Requires:       python3-Pygments >= 2.15.0
+Requires:       python3-Pygments >= 2.17.0
+Requires:       python3-Unidecode >= 1.3.8
+Requires:       python3-aeidon >= 1.14.1
 Requires:       python3-ahocorasick-rs >= 0.20.0
+Requires:       python3-altcha >= 0.1.7
 Requires:       python3-celery >= 5.4.0
+Requires:       python3-certifi >= 2024.8.30
 Requires:       python3-charset-normalizer >= 2.0.12
+Requires:       python3-crispy-bootstrap3 >= 2024.1
+Requires:       python3-cryptography >= 42.0.4
 Requires:       python3-cssselect >= 1.2
-Requires:       python3-diff_match_patch = 20230430
+Requires:       python3-cyrtranslit >= 1.1.0
+Requires:       python3-dateparser >= 1.2.0
+Requires:       python3-diff_match_patch = 20241021
 Requires:       python3-django-appconf >= 1.0.3
 Requires:       python3-django-celery-beat >= 2.6.0
 Requires:       python3-django-cors-headers >= 4.3.0
-Requires:       python3-django-crispy-forms >= 2.1
+Requires:       python3-django-crispy-forms >= 2.3
 Requires:       python3-django-filter >= 23.4
+Requires:       python3-django-otp >= 1.5.2
+Requires:       python3-django-otp-webauthn >= 0.4.0
 Requires:       python3-django-redis >= 5.4.0
 Requires:       python3-django_compressor >= 4.4
-Requires:       python3-djangorestframework >= 3.15.0
-Requires:       python3-filelock >= 3.12
+Requires:       python3-djangorestframework >= 3.15.2
+Requires:       python3-drf-spectacular >= 0.27.2
+Requires:       python3-drf-spectacular-sidecar
+Requires:       python3-filelock >= 3.16.1
 Requires:       python3-fluent.syntax >= 0.18.1
-Requires:       python3-gobject >= 3.34.0
-Requires:       python3-gobject-Gdk
-Requires:       python3-gobject-cairo
+Requires:       python3-gobject >= 3.40.1
 Requires:       python3-hiredis >= 2.2.1
 Requires:       python3-html2text >= 2019.8.11
-Requires:       python3-jsonschema >= 4.5
+Requires:       python3-iniparse >= 0.5
+Requires:       python3-jsonschema >= 4.23.0
 Requires:       python3-lxml >= 5.2
-Requires:       python3-misaka >= 2.1.0
-Requires:       python3-mistletoe >= 1.3.0
+Requires:       python3-mistletoe >= 1.4.0
 Requires:       python3-nh3 >= 0.2.14
 Requires:       python3-openpyxl >= 3.1.0
-Requires:       python3-packaging >= 22
-Requires:       python3-psycopg >= 3.1.8
-Requires:       python3-pycairo >= 1.15.3
+Requires:       python3-packaging >= 23
+Requires:       python3-phply >= 1.2.6
+Requires:       python3-pycairo >= 1.20.0
 Requires:       python3-pyicumessageformat >= 1.0.0
 Requires:       python3-pyparsing >= 3.1.1
-Requires:       python3-python-dateutil >= 2.8.1
-Requires:       python3-python-redis-lock >= 3.6.0
-Requires:       python3-rapidfuzz >= 2.6.0
+Requires:       python3-python-dateutil >= 2.8.2
+Requires:       python3-python-redis-lock >= 4
+Requires:       python3-qrcode >= 7.4.1
+Requires:       python3-rapidfuzz >= 3.8.0
+Requires:       python3-redis >= 5.0.2
 Requires:       python3-requests >= 2.32.2
-Requires:       python3-sentry-sdk >= 2.2
-Requires:       python3-setuptools >= 40.3.0
+Requires:       python3-ruamel.yaml >= 0.17.2
+Requires:       python3-sentry-sdk >= 2.15.0
 Requires:       python3-siphashc >= 2.1
-Requires:       python3-social-auth-app-django >= 5.4.0
+Requires:       python3-social-auth-app-django >= 5.4.1
 Requires:       python3-social-auth-core >= 4.5.0
-Requires:       python3-translation-finder >= 2.16
+Requires:       python3-tesserocr >= 2.6.1
+Requires:       python3-translation-finder >= 2.18
 Requires:       python3-user-agents >= 2.0
-Requires:       python3-weblate-language-data >= 2024.3
-Requires:       python3-weblate-schemas = 2024.1
-Requires:       translate-toolkit >= 3.13.1
+Requires:       python3-weblate-language-data >= 2024.14
+Requires:       python3-weblate-schemas = 2024.2
+Requires:       translate-toolkit >= 3.14.4
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       typelib(Pango) >= 1.0
 Requires:       typelib(PangoCairo) >= 1.0
@@ -204,22 +213,11 @@ Requires(pre):  user(wwwrun)
 Recommends:     git-review >= 1.27.0
 Recommends:     git-svn
 Recommends:     mercurial >= 6.2
-Recommends:     python3-aeidon >= 1.10
 Recommends:     python3-boto3 >= 1.25.0
-# optional feature from aeidon is used
-Recommends:     python3-chardet
 Recommends:     python3-django-auth-ldap >= 1.3.0
-Recommends:     python3-docutils
 Recommends:     python3-google-cloud-translate >= 3.8.0
-Recommends:     python3-iniparse >= 0.5
-Recommends:     python3-phply >= 1.2.5
 Recommends:     python3-python-akismet >= 0.4.2
-Recommends:     python3-python-memcached
 Recommends:     python3-python3-saml >= 1.2.1
-Recommends:     python3-pytz
-Recommends:     python3-ruamel.yaml >= 0.17.2
-Recommends:     python3-tesserocr >= 2.6.1
-Recommends:     python3-zeep >= 4.1.0
 Recommends:     tesseract-ocr-traineddata-english
 Recommends:     tesseract-ocr-traineddata-orientation_and_script_detection
 BuildArch:      noarch
@@ -244,13 +242,6 @@ List of features includes:
 * Tunable access control
 * Wide range of supported translation formats (Getext, Qt, Java, Windows, Symbian and more)
 
-%package doc
-Summary:        Weblate Documentation
-BuildArch:      noarch
-
-%description doc
-HTML documentation files for the Weblate collaborative web translation tool.
-
 %prep
 %setup -q -n %{name}-%{version}
 %autopatch -p1
@@ -263,8 +254,8 @@ sed -e 's:==:>=:g' \
     -i pyproject.toml
 
 %build
-%make_build -C docs html
-rm docs/_build/html/.buildinfo
+# docs were dropped from the release tarball
+#%%make_build -C docs html
 # Copy example settings
 cp weblate/settings_example.py weblate/settings.py
 # Set correct directories in settings
@@ -284,7 +275,6 @@ rm -rf %{buildroot}/%{WLDIR}/data-test
 rm -rf %{buildroot}/%{WLDIR}/.git
 
 # We ship this separately
-rm -rf %{buildroot}/%{WLDIR}/docs
 rm -f %{buildroot}/%{WLDIR}/README.rst \
     %{buildroot}/%{WLDIR}/ChangeLog \
     %{buildroot}/%{WLDIR}/COPYING \
@@ -336,7 +326,7 @@ export LANG=en_US.UTF-8
 export DJANGO_SETTINGS_MODULE=weblate.settings_test
 
 # start the redis server
-%{_sbindir}/redis-server &
+timeout 5m %{_sbindir}/redis-server &
 
 # PostgreSQL test databse setup
 export CI_DB_USER=`id -un`
@@ -353,12 +343,13 @@ python3 ./manage.py compilemessages -v 2
 python3 ./manage.py check -v 2
 python3 ./manage.py test -v 2
 
-# kill the redis server
-pkill -f redis-server
-
 # Cleanup postgresql
 %{_bindir}/pg_ctl stop
 rm -r $PGDATA
+
+# kill the redis server
+# ... but as pkill returns 1 on a success, exit 0 instead
+pkill -f redis-server || exit 0
 
 %files
 %license COPYING
@@ -369,8 +360,5 @@ rm -r $PGDATA
 %config(noreplace) %{_sysconfdir}/apache2/vhosts.d/weblate.conf
 %{WLDIR}
 %attr(0755,wwwrun,www) %{WLDATADIR}
-
-%files doc
-%doc docs/_build/html
 
 %changelog

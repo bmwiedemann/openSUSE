@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  1 01:01:01 UTC 2025 - olaf@aepfle.de
+
+- force -std=gnu99 because C99 because the code uses features 
+
+-------------------------------------------------------------------
 Mon Dec 30 14:17:03 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
 
 - update to 2.0.30:

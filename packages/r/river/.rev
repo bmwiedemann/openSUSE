@@ -377,4 +377,13 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment></comment>
     <requestid>1236947</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a66f9cd53e157517e13cd1c8aa223151</srcmd5>
+    <version>0.3.7</version>
+    <time>1736868184</time>
+    <user>anag+factory</user>
+    <comment>- Include qt6-wayland. This ensures Qt apps look great.
+</comment>
+    <requestid>1237615</requestid>
+  </revision>
 </revisionlist>

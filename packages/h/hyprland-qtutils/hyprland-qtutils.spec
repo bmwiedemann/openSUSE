@@ -19,15 +19,21 @@
 
 
 Name:           hyprland-qtutils
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Hyprland QT/qml utility apps
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprland-qtutils
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-openSUSE 0001-Remove-donate-screen-module.patch <sfalken@opensuse.org>
+# A Donate button was added in the v0.1.2 release, which was small and out of the way
+# Adding a Donate Screen like this just feels like crossing a line, and has been
+# Removed.
+Patch0:         0001-Remove-donate-screen-module.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  git-core
 BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  pkgconfig(Qt6Platform)
 BuildRequires:  pkgconfig(Qt6Quick)
@@ -36,14 +42,14 @@ BuildRequires:  pkgconfig(Qt6WaylandClient)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(hyprutils)
 ## MANUAL BEGIN
-Requires:       kf6-qqc2-desktop-style
+Requires:       hyprland-qt-support
 ## MANUAL END
 
 %description
 QT and QML utilities that might be used by various hypr* apps.
 
 %prep
-%autosetup
+%autosetup -p1 -S git_am
 
 %build
 %cmake

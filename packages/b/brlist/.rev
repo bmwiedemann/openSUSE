@@ -7,4 +7,14 @@
     <comment>New Package</comment>
     <requestid>1236939</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02bf0e652c884b8950494e3f1a23123f</srcmd5>
+    <version>0.2</version>
+    <time>1736868130</time>
+    <user>anag+factory</user>
+    <comment>- Version 0.2
+  * Add full OVS support
+  * List bridges with no interfaces attached</comment>
+    <requestid>1237450</requestid>
+  </revision>
 </revisionlist>

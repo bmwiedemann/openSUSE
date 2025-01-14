@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:50:23 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+  * regenerate-initrd-posttrans: return error if regenerating all
+    initrds fails (bsc#1234308)
+
+-------------------------------------------------------------------
 Tue Dec 10 10:08:41 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
   * rpm-script: create dangling symlinks in kiwi environments

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Dispatchouli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Log-Dispatchouli
 Name:           perl-Log-Dispatchouli
-Version:        3.7.0
+Version:        3.9.0
 Release:        0
-%define cpan_version 3.007
+# 3.009 -> normalize -> 3.9.0
+%define cpan_version 3.009
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple wrapper around Log::Dispatch
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -58,10 +59,10 @@ Requires:       perl(Sub::Exporter::GlobExporter) >= 0.002
 Requires:       perl(Sys::Syslog) >= 0.16
 Requires:       perl(Try::Tiny) >= 0.04
 Requires:       perl(experimental)
-Provides:       perl(Log::Dispatchouli) = 3.7.0
-Provides:       perl(Log::Dispatchouli::Global) = 3.7.0
-Provides:       perl(Log::Dispatchouli::Proxy) = 3.7.0
-Provides:       perl(Log::Fmt) = 3.7.0
+Provides:       perl(Log::Dispatchouli) = %{version}
+Provides:       perl(Log::Dispatchouli::Global) = %{version}
+Provides:       perl(Log::Dispatchouli::Proxy) = %{version}
+Provides:       perl(Log::Fmt) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

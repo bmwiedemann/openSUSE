@@ -36,7 +36,6 @@ Requires(pre):  group(lp)
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Supplements:    cups
 
 %description
 This package creates static udev nodes for the parallel ports.  The

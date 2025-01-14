@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 13 08:44:00 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.8
+
+- Fix bsc#1232694 (spec): Demote some fonts from recommends -> recommends
+  Needed for some fonts to smooth requirements and for SLE 16
+
+  Affected fonts:
+  dejavu-fonts, google-opensans-fonts, google-poppings-fonts,
+  sil-charis-fonts, gnu-free-fonts, arabic-amiri-fonts
+
+-------------------------------------------------------------------
 Wed Aug 21 12:25:01 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.8
 
 - Update 2.94.8

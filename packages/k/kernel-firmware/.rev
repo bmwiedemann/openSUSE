@@ -2103,4 +2103,12 @@ SR 184278 -- creates ucode-intel, which contains the ucode from microcode_ctl fo
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1235877</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>9bf9b15fa00f5d4e75f134dc657035b4</srcmd5>
+    <version>20250111</version>
+    <time>1736868095</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237417</requestid>
+  </revision>
 </revisionlist>

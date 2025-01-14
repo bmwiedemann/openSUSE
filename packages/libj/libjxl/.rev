@@ -191,4 +191,14 @@ Leap 15.5
     <comment>- add bugrefs</comment>
     <requestid>1230037</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>347006b52ed6fdb2e680e23e29e645c8</srcmd5>
+    <version>0.11.1</version>
+    <time>1736868070</time>
+    <user>anag+factory</user>
+    <comment>- Disable gimp plugin on SLFO. Gimp is currently unavailable there.
+- Re-add lcms2 dependency for s390x. It is used instead of skcms
+  on big-endian architectures.</comment>
+    <requestid>1237050</requestid>
+  </revision>
 </revisionlist>

@@ -57,7 +57,7 @@ BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     tiff-docs = %{versiong}
+Recommends:     tiff-docs = %{version}
 
 %description
 This package contains the library and support programs for the TIFF

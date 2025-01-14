@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>967033</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d070a6624946fa39db47776b9a550fa</srcmd5>
+    <version>2.1.0</version>
+    <time>1736868144</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.0:
+- add remove-six.patch to not require deprecated python-six
+- update project url, upstream migrated to ligo.org
+- migrate to setuptools and pyproject macros</comment>
+    <requestid>1237539</requestid>
+  </revision>
 </revisionlist>

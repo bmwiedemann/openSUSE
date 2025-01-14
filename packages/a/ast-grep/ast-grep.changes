@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:04:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.33.1:
+  * feat: Support passing rule config to SgNode match methods (matches, has, inside, follows, precedes) #1730
+  * chore(deps): update dependency @ast-grep/napi to v0.33.0 61f7177
+  * fix(deps): update dependency typescript to v5.7.3 85a7204
+  * fix(deps): update dependency tree-sitter to v0.22.4 ec70763
+
+-------------------------------------------------------------------
 Tue Jan  7 11:06:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.33.0:

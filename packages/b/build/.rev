@@ -1858,4 +1858,21 @@ Changes:
 - Harden export_debian_orig_from_git (boo#1230469)</comment>
     <requestid>1224114</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>cb07d8716f2ca12f16e514cf595b32da</srcmd5>
+    <version>20250113</version>
+    <time>1736868080</time>
+    <user>anag+factory</user>
+    <comment>- debian: Support installation of foreign architecture packages
+          (required for armv7l setups)
+- Parse unknown timezones as UTC
+- Apk (Alpine Linux) format support added
+- Implement default value in parameter expansion
+- Also support supplements that use &amp; as &quot;and&quot;
+- Add workaround for skopeo's argument parser
+- add cap-htm=off on power9
+- Fixed usage of chown calls
+- Remove leading `go` from `purl` locators</comment>
+    <requestid>1237285</requestid>
+  </revision>
 </revisionlist>

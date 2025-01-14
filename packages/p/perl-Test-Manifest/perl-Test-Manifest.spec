@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Manifest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Test-Manifest
 Name:           perl-Test-Manifest
-Version:        2.24.0
+Version:        2.25.0
 Release:        0
-%define cpan_version 2.024
+# 2.025 -> normalize -> 2.25.0
+%define cpan_version 2.025
 License:        Artistic-2.0
 Summary:        Interact with a t/test_manifest file
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -75,7 +76,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples test_manifest test_manifest_levels test_manifest_with_include
+%doc Changes examples SECURITY.md test_manifest test_manifest_levels test_manifest_with_include
 %license LICENSE
 
 %changelog

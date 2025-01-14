@@ -723,4 +723,16 @@
   * chore(deps): update dependency @ast-grep/napi to v0.32.3 713244f</comment>
     <requestid>1235583</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9e9887ced2f903f86954aa60d131ff06</srcmd5>
+    <version>0.33.1</version>
+    <time>1736868134</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.33.1:
+  * feat: Support passing rule config to SgNode match methods (matches, has, inside, follows, precedes) #1730
+  * chore(deps): update dependency @ast-grep/napi to v0.33.0 61f7177
+  * fix(deps): update dependency typescript to v5.7.3 85a7204
+  * fix(deps): update dependency tree-sitter to v0.22.4 ec70763</comment>
+    <requestid>1237514</requestid>
+  </revision>
 </revisionlist>

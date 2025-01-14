@@ -1,7 +1,7 @@
 #
 # spec file for package fmt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 URL:            http://fmtlib.net/
 Source:         https://github.com/fmtlib/fmt/archive/%version.tar.gz
 Source1:        baselibs.conf
+Patch1:         0001-Restore-ABI-compatibility.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkg-config
@@ -64,8 +65,7 @@ export CXXFLAGS="$CFLAGS"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:%buildroot/%_libdir"
 %ctest
 
-%post   -n libfmt%sover -p /sbin/ldconfig
-%postun -n libfmt%sover -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfmt%sover
 
 %files -n libfmt%sover
 %license LICENSE

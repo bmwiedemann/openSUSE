@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:43:31 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Remove obsolete migration from dhcp-server post scriptlet
+  [bsc#1235447]
+
+-------------------------------------------------------------------
 Fri May 24 13:51:57 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop initscripts-legacy support [jsc#PED264]

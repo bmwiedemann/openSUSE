@@ -16,26 +16,20 @@
 #
 
 
-%define abiversion 18
+%define abiversion 19
 Name:           dcmtk
-Version:        3.6.8
+Version:        3.6.9
 Release:        0
 Summary:        DICOM Toolkit
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://dicom.offis.de/dcmtk.php.en
-Source0:        ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/release/%{name}-%{version}.tar.gz
+Source0:        https://dicom.offis.de/download/dcmtk/dcmtk369/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dcmtk-fix-DCMTKTargets.cmake.patch -- Do not track executables to be able to use dcmtk-devel without dcmtk package
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Fixed-buffer-overflow-in-decompression-codecs.patch
-Patch2:         0001-Fixed-possible-overflows-when-allocating-memory.patch
-Patch3:         0001-Fixed-two-segmentation-faults.patch
-Patch4:         0001-Fixed-unchecked-typecasts-of-DcmItem-search-results.patch
-Patch5:         0002-Fixed-unchecked-typecasts-and-fixed-LUT-handling.patch
-Patch6:         0003-Fixed-wrong-error-handling-previous-commit.patch
-Patch7:         0001-Fixed-DcmDecimalString-unit-tests.patch
-Patch8:         0001-Fixed-link-instructions-for-libtiff.patch
-Patch9:         0001-Fix-find_package-library-variables-for-libtiff.patch
+Patch1:         0001-Added-check-to-make-sure-HighBit-BitsAllocated.patch
+Patch2:         0001-Replaced-call-of-delete-by-delete.patch
+Patch3:         0001-Fixed-issue-rendering-invalid-monochrome-image.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -88,7 +82,8 @@ parts the DICOM standard.
  -DDCMTK_WITH_XML=ON \
  -DDCMTK_WITH_OPENSSL=ON \
  -DDCMTK_WITH_SNDFILE=ON \
- -DDCMTK_WITH_ZLIB=ON}
+ -DDCMTK_WITH_ZLIB=ON \
+ -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir}}
 
 %cmake_build
 
@@ -123,7 +118,6 @@ install -pm 0644 README %{buildroot}%{_docdir}/dcmtk/
 %{_mandir}/man1/*
 
 %files devel
-%license COPYRIGHT
 %{_includedir}/dcmtk/
 %{_libdir}/*.so
 %{_libdir}/cmake/dcmtk/

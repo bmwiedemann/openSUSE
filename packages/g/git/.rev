@@ -2861,4 +2861,14 @@ git 2.12.3
     <comment></comment>
     <requestid>1226628</requestid>
   </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>b86b8904877ce1632de3feb2bf1a77f0</srcmd5>
+    <version>2.48.0</version>
+    <time>1736868122</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1237560 from AndreasStieger
+
+git 2.48.0</comment>
+    <requestid>1237608</requestid>
+  </revision>
 </revisionlist>

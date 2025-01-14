@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Output
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Test-Output
 Name:           perl-Test-Output
-Version:        1.034
+Version:        1.35.0
 Release:        0
+# 1.035 -> normalize -> 1.35.0
+%define cpan_version 1.035
 License:        Artistic-2.0
 Summary:        Utilities to test STDOUT and STDERR messages
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -35,6 +37,8 @@ BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(Test::Tester) >= 0.107
 Requires:       perl(Capture::Tiny) >= 0.17
 Requires:       perl(File::Temp) >= 0.17
+Provides:       perl(Test::Output) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -46,7 +50,7 @@ Likewise, Capture::Tiny provides a much more robust capture mechanism
 without than the original Test::Output::Tie.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -61,7 +65,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes
+%doc Changes SECURITY.md
 %license LICENSE
 
 %changelog

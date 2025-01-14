@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.5.222
+Version:        4.5.223
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
@@ -123,6 +123,7 @@ Summary:        Python bindings for libstorage-ng
 Group:          System/Libraries
 Requires:       %{libname} = %{version}
 Obsoletes:      libstorage-python
+Provides:       libstorage-ng-python-%{py3_ver}
 
 %description python3
 This package contains Python bindings for libstorage-ng.
@@ -132,6 +133,7 @@ Summary:        Ruby bindings for libstorage-ng
 Group:          System/Libraries
 Requires:       %{libname} = %{version}
 Obsoletes:      libstorage-ruby
+Provides:       libstorage-ng-ruby-%{rb_ver}
 
 %description ruby
 This package contains Ruby bindings for libstorage-ng.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 12 13:05:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop cups Supplements: No longer install this by default when
+  cups is present.
+
+-------------------------------------------------------------------
 Tue May  2 14:32:07 CEST 2017 - kukuk@suse.de
 
 - Require group "lp".

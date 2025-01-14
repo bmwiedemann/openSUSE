@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 10 12:03:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Split the documentation from the main package to avoid many new 
+  dependencies in Ring1
+  * man pages are being made optional by this change
+
+-------------------------------------------------------------------
+Mon Jan  6 12:55:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.14.5
+  * Improvements to multiple formats.
+  * Dropped support for Python 3.8.
+  * Improved multistring implementation.
+  * Python 3.13 compatiblity.
+- Drop merged py313.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 17:12:33 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.13.3

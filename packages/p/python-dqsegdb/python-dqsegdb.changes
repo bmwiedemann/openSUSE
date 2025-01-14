@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:33:47 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.1.0:
+  * migrates the CI from Github Actions to GitLab CI.
+  * removes user-env scripts
+  * adds lint job to the CI pipeline
+  * updates RPM build/install to use wheels
+  * modifies code that used glue.gpstime for GPS time conversion 
+    to use gpstime package instead (some specific routines will 
+    produce times that are 4 seconds different, due to updates in 
+    leap seconds, but uses of those routines shouldn't be sensitive 
+    to such changes)
+  * removes unused (and broken) function setup_files() from clientutils.py
+  * pins lscsoft-glue to version >= 3.0.1, < 4.0.0
+- add remove-six.patch to not require deprecated python-six
+- update project url, upstream migrated to ligo.org
+- migrate to setuptools and pyproject macros
+
+-------------------------------------------------------------------
 Tue Apr  5 10:37:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Sync ExclusiveArch with lal: do not build for i586 as

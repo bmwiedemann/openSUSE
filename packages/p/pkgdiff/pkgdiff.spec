@@ -1,7 +1,7 @@
 #
 # spec file for package pkgdiff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pkgdiff
-Version:        1.7.2
+Version:        1.8
 Release:        0
 Summary:        Package Changes Analyzer
 License:        GPL-2.0-only
@@ -59,7 +59,7 @@ install -m 0644 %{name}.1 %{buildroot}%{_mandir}/man1
 
 %files
 %license LICENSE
-%doc README doc
+%doc README.md doc
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man*/*

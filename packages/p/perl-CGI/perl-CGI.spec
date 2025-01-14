@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.660.0
+Version:        4.670.0
 Release:        0
-# 4.66 -> normalize -> 4.660.0
-%define cpan_version 4.66
+# 4.67 -> normalize -> 4.670.0
+%define cpan_version 4.67
 License:        Artistic-2.0
 Summary:        Handle Common Gateway Interface requests and responses
 URL:            https://metacpan.org/release/%{cpan_name}

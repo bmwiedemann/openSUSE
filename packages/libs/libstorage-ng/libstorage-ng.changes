@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Jan 13 11:37:37 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1005
+- added provides with explicit ruby version (bsc#1235598)
+- 4.5.223
+
+--------------------------------------------------------------------
 Thu Jan 9 09:26:48 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1004

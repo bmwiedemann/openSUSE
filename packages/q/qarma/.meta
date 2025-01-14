@@ -1,0 +1,6 @@
+<package name="qarma" project="openSUSE:Factory">
+  <title>qarma</title>
+  <description>Qarma is a tool to create dialog boxes, based on Qt. It's a clone of Zenity which was written for GTK+.</description>
+  <devel project="X11:LXQt" package="qarma"/>
+  <url>https://github.com/luebking/qarma</url>
+</package>

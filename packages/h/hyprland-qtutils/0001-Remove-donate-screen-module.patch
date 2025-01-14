@@ -1,0 +1,24 @@
+From ce569bd7cd83d807d0e959b712c3e2da3754dd96 Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Fri, 10 Jan 2025 15:13:13 -0800
+Subject: [PATCH] Remove donate screen module
+
+The prior donate button, in the update dialog is unobtrusive and out of
+the way.  The donate screen crosses a line.
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c825644..8cc2a23 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,5 +18,4 @@ qt_standard_project_setup(REQUIRES 6.5)
+ 
+ add_subdirectory(utils/dialog)
+ add_subdirectory(utils/update-screen)
+-add_subdirectory(utils/donate-screen)
+ 
+-- 
+2.47.1
+

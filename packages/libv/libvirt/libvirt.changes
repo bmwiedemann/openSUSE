@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  8 14:01:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert from tar_scm to obs_scm: allow OBS internal data
+  structure to be more efficient by using .obscpio files
+
+-------------------------------------------------------------------
 Mon Jan  6 22:38:12 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - security: apparmor: Fix probing of apparmor availability on the

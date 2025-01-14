@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 12 22:05:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.1
+ * Preview features
+   * [pycodestyle] Run too-many-newlines-at-end-of-file on each cell in notebooks (W391) 
+   * [ruff] Omit diagnostic for shadowed private function parameters in used-dummy-variable (RUF052) 
+ * Rule changes
+   * [flake8-bugbear] Improve assert-raises-exception message (B017) 
+ * Formatter
+   * Preserve trailing end-of line comments for the last string literal in implicitly concatenated strings 
+ * Server
+   * Fix a bug where the server and client notebooks were out of sync after reordering cells 
+ * Bug fixes
+   * [flake8-pie] Correctly remove wrapping parentheses (PIE800) 
+   * [pyupgrade] Handle comments and multiline expressions correctly (UP037) 
+
+-------------------------------------------------------------------
 Fri Jan 10 10:47:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.0:

@@ -20,14 +20,23 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-%else
+%bcond_with doc
+%endif 
+%if "%{flavor}" == "man+doc"
+%define psuffix -man
+%bcond_with test
+%bcond_without doc
+%endif
+%if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
+%bcond_with doc
 %endif
 %define modname translate_toolkit
+%define pkgname translate-toolkit
 
 %define binaries_and_manpages %{shrink:\
-    poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology pretranslate \
+    pretranslate poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
     android2po csv2po csv2tbx dtd2po flatxml2po html2po ical2po idml2po ini2po json2po \
     moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
     po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo \
@@ -40,32 +49,25 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.13.3
+Version:        3.14.5
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
 Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 Patch0:         xliff-xsd-no-network.patch
-# PATCH-FIX-UPSTREAM https://github.com/translate/translate/pull/5349 feat: Python 3.13 compatibility
-Patch1:         py313.patch
-BuildRequires:  %{python_module Levenshtein >= 0.12}
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module sphinx-bootstrap-theme}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
-# extra modules here are needed for manpages
 BuildRequires:  %{python_module cheroot >= 9}
+BuildRequires:  %{python_module cwcwidth >= 0.1.9}
 BuildRequires:  %{python_module iniparse >= 0.5}
 BuildRequires:  %{python_module lxml >= 4.6.3}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module phply >= 1.2.5}
 BuildRequires:  %{python_module ruamel.yaml >= 0.17.21}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module vobject >= 0.9.6.1}
-BuildRequires:  %{python_module wcwidth}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -75,11 +77,13 @@ BuildRequires:  iso-codes
 BuildRequires:  python-rpm-macros
 Requires:       gettext-runtime
 Requires:       python
+Requires:       python-cwcwidth >= 0.1.9
 Requires:       python-lxml >= 4.6.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # The following are for the full experience of translate-toolkit
 Recommends:     %{name}-doc
+Recommends:     %{name}-man
 Recommends:     gaupol
 Recommends:     iso-codes
 Recommends:     python-Levenshtein >= 0.12
@@ -100,8 +104,10 @@ Obsoletes:      translate-toolkit < %{version}-%{release}
 %endif
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module Levenshtein >= 0.12}
 BuildRequires:  %{python_module aeidon >= 1.13}
-BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
+BuildRequires:  %{python_module charset-normalizer >= 3.3.2}
 BuildRequires:  %{python_module mistletoe >= 1.2.1}
 BuildRequires:  %{python_module pyenchant >= 3.2.2}
 BuildRequires:  %{python_module pyparsing >= 3.1.1}
@@ -112,7 +118,42 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  %{python_module syrupy}
 BuildRequires:  gaupol
 %endif
+%if %{with doc}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module furo}
+BuildRequires:  %{python_module sphinxcontrib-copybutton}
+BuildRequires:  %{python_module sphinxext-opengraph}
+BuildRequires:  %{python_module translate-toolkit = %{version}}
+Requires:       %{pkgname} = %{version}
+Supplements:    %{pkgname} = %{version}
+%endif
 %python_subpackages
+
+%if "%{flavor}" == "man+doc"
+%description
+The %{pkgname}-man package contains manual pages for %{pkgname}.
+
+%package -n %{pkgname}-doc
+Summary:        Tools and API to assist with translation and software localization -- HTML docs
+Requires:       %{pkgname} = %{version}
+BuildArch:      noarch
+
+%description -n %{pkgname}-doc
+The %{pkgname}-doc package contains Translate Toolkit documentation in HTML format.
+
+%package -n %{pkgname}-devel-doc
+Summary:        Tools and API to assist with translation and software localization -- API docs
+Requires:       %{pkgname} = %{version}
+Requires:       %{pkgname}-doc = %{version}
+Provides:       %{pkgname}-devel = %{version}
+Obsoletes:      %{pkgname}-devel < %{version}
+BuildArch:      noarch
+
+%description -n %{pkgname}-devel-doc
+The %{pkgname}-devel-doc package contains Translate Toolkit API documentation for developers wishing to build new tools for the
+toolkit or to use the libraries in other localization tools.
+
+%else
 
 %description
 The Translate Toolkit is a set of software and documentation designed to help
@@ -132,26 +173,7 @@ these formats.
 
 Also part of the Toolkit are Python programs to create word counts, merge
 translations and perform various checks on translation files.
-
-%package -n %{name}-doc
-Summary:        Tools and API to assist with translation and software localization -- HTML docs
-Requires:       %{name} = %{version}
-BuildArch:      noarch
-
-%description -n %{name}-doc
-The %{name}-doc package contains Translate Toolkit documentation in HTML format.
-
-%package -n %{name}-devel-doc
-Summary:        Tools and API to assist with translation and software localization -- API docs
-Requires:       %{name} = %{version}
-Requires:       %{name}-doc = %{version}
-Provides:       %{name}-devel = %{version}
-Obsoletes:      %{name}-devel < %{version}
-BuildArch:      noarch
-
-%description -n %{name}-devel-doc
-The %{name}-devel-doc package contains Translate Toolkit API documentation for developers wishing to build new tools for the
-toolkit or to use the libraries in other localization tools.
+%endif
 
 %prep
 %setup -q -n %{modname}-%{version}
@@ -168,25 +190,40 @@ find . -name jquery.js -exec dos2unix '{}' \;
 
 %build
 %if !%{with test}
+%if !%{with doc}
 %pyproject_wheel
 
+%else
+
+# build docs
 pushd docs
 # Can't use parallel build here!
-%make_build -j1 html man
+%make_build -j1 man html
 #no hidden files
 find _build -name '.?*' -delete
 popd
 %endif
+%endif
 
 %install
 %if !%{with test}
+%if !%{with doc}
 %pyproject_install
+
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+# Prepare alternatives for binaries
+for binary in %{binaries} ; do
+%python_clone -a %{buildroot}%{_bindir}/$binary
+done
+
+%else
 
 # create manpages
 mkdir -p %{buildroot}%{_mandir}/man1
-for program in %{buildroot}%{_bindir}/*; do
-    MPAGE="%{buildroot}%{_mandir}/man1/$(basename $program).1"
-    LC_ALL=C PYTHONPATH=. $program --manpage > "$MPAGE" || rm -f "$MPAGE"
+for program in %{binaries}; do
+    MPAGE="%{buildroot}%{_mandir}/man1/$program.1"
+    LC_ALL=C PYTHONPATH=. %{_bindir}/$program --manpage > "$MPAGE" || rm -f "$MPAGE"
 done
 install -m 644 docs/_build/man/* %{buildroot}%{_mandir}/man1/
 
@@ -199,16 +236,13 @@ rm -rf %{buildroot}home/abuild/.local/lib/python%{$python_version}/site-packages
 
 # create symlinks for man pages
 %fdupes -s %{buildroot}%{_mandir}
-# create hardlinks for the rest
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Prepare alternatives
+# Prepare alternatives for manpages
 for mpage in %{manpages} ; do
 %python_clone -a %{buildroot}%{_mandir}/man1/$mpage.1
 done
-for binary in %{binaries} ; do
-%python_clone -a %{buildroot}%{_bindir}/$binary
-done
+
+%endif
 %endif
 
 %check
@@ -217,30 +251,44 @@ rm -v tests/translate/storage/test_fluent.py
 %pytest
 %endif
 
+%if !%{with test}
+%if !%{with doc}
 %post
-%python_install_alternative %{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(m .. ".1 ") end} %binaries
+%python_install_alternative %binaries
 
 %postun
-%python_uninstall_alternative translatetoolkit.1%{?ext_man}
+%python_uninstall_alternative pretranslate
 
-%if !%{with test}
 %files %{python_files}
 %license COPYING
 %doc README.rst
 %{lua: for b in string.gmatch(rpm.expand("%binaries"),"%S+") do print(rpm.expand("%python_alternative %{_bindir}/" .. b) .. "\n") end}
-%{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(rpm.expand("%python_alternative %{_mandir}/man1/" .. m .. ".1") .. "\n") end}
 %{python_sitelib}/translate
 %{python_sitelib}/translate_toolkit-%{version}.dist-info
 
-%files -n %{name}-doc
+%else
+
+%post
+%python_install_alternative %{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(m .. ".1 ") end}
+
+%postun
+%python_uninstall_alternative translatetoolkit.1%{?ext_man}
+
+%files %{python_files}
+%license COPYING
+%doc README.rst
+%{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(rpm.expand("%python_alternative %{_mandir}/man1/" .. m .. ".1") .. "\n") end}
+
+%files -n %{pkgname}-doc
 %dir %{_defaultdocdir}/%{modname}
 %doc %{_defaultdocdir}/%{modname}/html/
 %exclude %{_defaultdocdir}/%{modname}/html/api
 %exclude %{_defaultdocdir}/%{modname}/html/_sources
 
-%files -n %{name}-devel-doc
+%files -n %{pkgname}-devel-doc
 %doc %{_defaultdocdir}/%{modname}/html/api
 %doc %{_defaultdocdir}/%{modname}/html/_sources
+%endif
 %endif
 
 %changelog

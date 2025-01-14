@@ -24,6 +24,7 @@ License:        SUSE-Permissive
 Group:          Development/Libraries/Perl
 Url:            https://metacpan.org/release/MUIR/Time-modules-2013.0912
 Source:         https://www.cpan.org/modules/by-module/Time/Time-modules-%{version}.tar.gz
+Patch0:         fixtest.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -34,13 +35,14 @@ BuildRequires:  timezone
 Perl modules providing various time functions.
 
 %prep
-%setup -q -n Time-modules-%{version}
+%autosetup -p1 -n Time-modules-%{version}
 
 %build
 perl Makefile.PL
 make %{?_smp_mflags}
 
 %check
+#cd ~/rpmbuild/BUILD/Time-modules-2013.0912/ && PERL5LIB=lib perl t/datetime.t | tee /tmp/datetime.out ; exit 1
 make %{?_smp_mflags} test
 
 %install

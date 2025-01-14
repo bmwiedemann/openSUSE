@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 13 23:20:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.4
+  * Update bundled stb_vorbis to address CVE-2023-45676,
+    CVE-2023-45677, CVE-2023-45679, CVE-2023-45680,
+    CVE-2023-45681, CVE-2023-45682.
+
+-------------------------------------------------------------------
 Fri Nov  3 08:41:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.2

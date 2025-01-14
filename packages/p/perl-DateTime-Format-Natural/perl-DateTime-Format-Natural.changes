@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  6 05:32:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.190.0 (1.19)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.19  2025-01-05  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.18_01  2025-01-04  <schubiger@cpan.org>
+   - Use List::Util instead of List::MoreUtils.
+     [github #22 - Graham Ollis]
+
+-------------------------------------------------------------------
 Fri Mar  8 22:16:46 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

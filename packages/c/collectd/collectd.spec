@@ -1,7 +1,7 @@
 #
 # spec file for package collectd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2005-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -59,7 +59,7 @@
 %bcond_with nut
 %endif
 Name:           collectd
-Version:        5.12.0.134.g4cebbfc
+Version:        5.12.0.348.g93f9bdcb
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT
@@ -509,12 +509,13 @@ Requires:       %{name} = %{version}-%{release}
 Optional %{name} plugin for reporting block state of flash memory devices with UBIFS filesystem.
 
 %package plugin-write_influxdb_udp
-Summary:        write_influxdb_udp plugin for %{name}
+Summary:        InfluxDB UDP protocol plugin for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
 
 %description plugin-write_influxdb_udp
-Optional %{name} plugin to send values to InfluxDB using line protocol via udp
+Optional %{name} plugin to send values to InfluxDB using line protocol via udp.
+For HTTP line protocol use write_http plugin.
 
 %package plugins-all
 Summary:        All Monitoring Plugins for %{name}
@@ -772,7 +773,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %files -f plugins.lst
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %doc contrib
 %config(noreplace) %{_sysconfdir}/collectd.conf
 %dir %{_sysconfdir}/collectd

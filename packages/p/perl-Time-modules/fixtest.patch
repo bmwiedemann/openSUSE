@@ -1,0 +1,30 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse.de>
+Date: 2018-10-31
+
+Make tests pass in the future
+
+Without this patch, 33 tests failed in 2033 by misinterpreting 2-digit years
+e.g.
+  two digit year '94' expanded into 2094
+  jd(2094, 11, 06) = 2486188
+  before  2486188 08 49 37
+  after rs  2486188 8 49 37
+  jd_secondsgm(2486188, 8, 49, 37) = 3939871777
+  adjusting secs for GMT: 0
+  returning 3939871777.
+  not ok 273 # Sunday, 06-Nov-94 08:49:37 GMT
+  Expected(784111777):    Sun Nov  6  0:49:37 1994 PST
+	 Got(3939871777): Sat Nov  6  0:49:37 2094 PST (11/06 08:49 AM GMT)
+
+Index: Time-modules-2013.0912/t/datetime.t
+===================================================================
+--- Time-modules-2013.0912.orig/t/datetime.t
++++ Time-modules-2013.0912/t/datetime.t
+@@ -437,6 +437,7 @@ while (@sdt) {
+ 	$ar = shift(@sdt);
+ 	$toparse = shift(@$ar);
+ 	%opts = @$ar;
++	$opts{NOW} //= 1000000000;
+ 	if (defined $opts{NOW}) {
+ 		$opts{NOW} -= $epoch;
+ 	}

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:00:40 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Drop munge and mrsh support for TW and Leap 16: the biggest
+  consumer of munge authentication has been Slurm. Slurm can
+  now be used without it, therefore, it is a good time to start
+  phasing it out. `mrsh` has been a 'drop-in' replacement for
+  `rsh`, `pdsh` is perfectly capable of using `ssh` and we may
+  assume that this is the preferred way to use a parallel shell
+  today.
+- Do not build Slurm support for s390x and i586: Slurm no longer
+  builds for s390x or 32bit.
+
+-------------------------------------------------------------------
 Wed Jan 17 15:49:28 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 2.35

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 13 18:31:30 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.58.0:
+  - Features
+    * feat: Add --git-lfs option to init command
+    * feat: Add builtin mode for gopass
+    * feat: Improve placeholders in password prompts
+    * feat: Show all contributors in README.md
+  - Fixes
+    * fix: Fix doctor command when --config is specified
+    * fix: Correct nested groups for keepassxc builtin mode
+    * fix: Suppress gitleaks logspam
+  - Documentation updates
+    * docs: Tidy up formatting as suggested by markdownlint
+- Reorder services to avoid go_modules version mismatch warning
+
+-------------------------------------------------------------------
 Tue Jan  7 10:50:04 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.57.0:

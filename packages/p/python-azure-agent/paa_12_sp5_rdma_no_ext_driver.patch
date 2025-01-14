@@ -1,16 +1,18 @@
---- azurelinuxagent/pa/rdma/suse.py.orig
-+++ azurelinuxagent/pa/rdma/suse.py
+Index: WALinuxAgent-2.12.0.4/azurelinuxagent/pa/rdma/suse.py
+===================================================================
+--- WALinuxAgent-2.12.0.4.orig/azurelinuxagent/pa/rdma/suse.py
++++ WALinuxAgent-2.12.0.4/azurelinuxagent/pa/rdma/suse.py
 @@ -31,8 +31,17 @@ class SUSERDMAHandler(RDMAHandler):
      def install_driver(self):  # pylint: disable=R1710
          """Install the appropriate driver package for the RDMA firmware"""
  
 +        suport_pci_passthrough = False
-+        if Version(DISTRO_VERSION) == Version('12'):
++        if DistroVersion(DISTRO_VERSION) == DistroVersion('12'):
 +            release_data = open('/etc/os-release').read()
 +            if 'SP5' in release_data:
 +                suport_pci_passthrough = True
 +
-         if Version(DISTRO_VERSION) >= Version('15'):
+         if DistroVersion(DISTRO_VERSION) >= DistroVersion('15'):
 -            msg = 'SLE 15 and later only supports PCI pass through, no '
 +            suport_pci_passthrough = True
 +

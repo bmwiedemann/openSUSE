@@ -55,19 +55,19 @@ Requires(postun): sgml-skel >= 0.7
 #
 # FONTS
 # "Default" fonts for suse2022 stylesheets
-Requires:       dejavu-fonts
-Requires:       google-opensans-fonts
-Requires:       google-poppins-fonts
-Requires:       sil-charis-fonts
+Recommends:     dejavu-fonts
+Recommends:     google-opensans-fonts
+Recommends:     google-poppins-fonts
+Recommends:     sil-charis-fonts
 #
 # Western fallback: currently necessary for building with XEP, it seems.
 Requires:       ghostscript-fonts-std
 #
 # Western fallback 2: These should make the Ghostscript fonts unnecessary.
-Requires:       gnu-free-fonts
+Recommends:     gnu-free-fonts
 #
 # Arabic:
-Requires:       arabic-amiri-fonts
+Recommends:     arabic-amiri-fonts
 #
 # Japanese (regular/bold):
 Requires:       google-noto-sans-jp-regular-fonts

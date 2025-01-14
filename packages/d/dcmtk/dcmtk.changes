@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 13 18:43:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.6.9. See DOCS/CHANGES.368 for the full list of changes
+- Drop patches, merged upstream:
+  * 0001-Fixed-buffer-overflow-in-decompression-codecs.patch
+  * 0001-Fixed-possible-overflows-when-allocating-memory.patch
+  * 0001-Fixed-two-segmentation-faults.patch
+  * 0001-Fixed-unchecked-typecasts-of-DcmItem-search-results.patch
+  * 0002-Fixed-unchecked-typecasts-and-fixed-LUT-handling.patch
+  * 0003-Fixed-wrong-error-handling-previous-commit.patch
+  * 0001-Fixed-DcmDecimalString-unit-tests.patch
+  * 0001-Fixed-link-instructions-for-libtiff.patch
+  * 0001-Fix-find_package-library-variables-for-libtiff.patch
+- Add patches:
+  * 0001-Added-check-to-make-sure-HighBit-BitsAllocated.patch
+    (CVE-2024-52333, boo#1235811)
+  * 0001-Replaced-call-of-delete-by-delete.patch
+  * 0001-Fixed-issue-rendering-invalid-monochrome-image.patch
+    (CVE-2024-47796, boo#1235810)
+
+-------------------------------------------------------------------
 Wed Nov 20 16:59:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:

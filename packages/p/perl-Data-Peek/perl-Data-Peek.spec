@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Peek
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Data-Peek
 Name:           perl-Data-Peek
-Version:        0.52
+Version:        0.530.0
 Release:        0
+# 0.53 -> normalize -> 0.530.0
+%define cpan_version 0.53
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Modified and extended debugging facilities
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
+Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -31,7 +33,9 @@ BuildRequires:  perl(Test::More) >= 0.90
 BuildRequires:  perl(Test::Warnings)
 Requires:       perl(Test::More) >= 0.9
 Requires:       perl(Test::Warnings)
-Recommends:     perl(Data::Dumper) >= 2.184
+Provides:       perl(Data::Peek) = %{version}
+%undefine       __perllib_provides
+Recommends:     perl(Data::Dumper) >= 2.189
 Recommends:     perl(Perl::Tidy)
 %{perl_requires}
 
@@ -42,7 +46,7 @@ utilities that no other module provided yet, using the lowest level of the
 perl internals API as possible.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
@@ -57,6 +61,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog CONTRIBUTING.md examples README
+%doc ChangeLog CONTRIBUTING.md examples README SECURITY.md
 
 %changelog

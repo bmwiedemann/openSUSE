@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Jan 13 11:21:24 UTC 2025 - tiwai@suse.com
+
+- Update to version 20250111 (git commit b3049665a5d0):
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+  * amdgpu: update sdma 6.0.3 firmware
+  * amdgpu: update psp 13.0.10 firmware
+  * amdgpu: update gc 11.0.3 firmware
+  * amdgpu: update sdma 4.4.5 firmware
+  * amdgpu: update psp 13.0.14 firmware
+  * amdgpu: update gc 9.4.4 firmware
+  * amdgpu: update psp 13.0.5 firmware
+  * amdgpu: update vega20 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update vega10 firmware
+  * amdgpu: update vcn 4.0.0 firmware
+  * amdgpu: update psp 13.0.0 firmware
+  * amdgpu: update gc 11.0.0 firmware
+  * amdgpu: update picasso firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update vangogh firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update psp 13.0.11 firmware
+  * amdgpu: update gc 11.0.4 firmware
+  * amdgpu: update vcn 4.0.2 firmware
+  * amdgpu: update psp 13.0.4 firmware
+  * amdgpu: update gc 11.0.1 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update vcn 4.0.6 firmware
+  * amdgpu: update psp 14.0.1 firmware
+  * amdgpu: update vcn 4.0.5 firmware
+  * amdgpu: update gc 11.5.0 firmware
+  * amdgpu: update vcn 5.0.0 firmware
+  * amdgpu: update smu 14.0.3 firmware
+  * amdgpu: update psp 14.0.3 firmware
+  * amdgpu: update gc 12.0.1 firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update arcturus firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: update smu 14.0.2 firmware
+  * amdgpu: update psp 14.0.2 firmware
+  * amdgpu: update gc 12.0.0 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update vcn 4.0.3 firmware
+  * amdgpu: update sdma 4.4.2 firmware
+  * amdgpu: update psp 13.0.6 firmware
+  * amdgpu: update gc 9.4.3 firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update vcn 4.0.4 firmware
+  * amdgpu: update psp 13.0.7 firmware
+  * amdgpu: update gc 11.0.2 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update aldebaran firmware
+  * cirrus: cs35l56: Correct some links to address the correct amp instance
+  * linux-firmware: Update firmware file for Intel Bluetooth Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel Bluetooth Solar core
+  * cirrus: cs35l41: Add Firmware for Ayaneo system 1f660105
+  * Fix has_gnu_parallel function
+
+-------------------------------------------------------------------
+Tue Jan 07 14:06:59 UTC 2025 - tiwai@suse.com
+
+- Update to version 20250106 (git commit e39831b1a9d7):
+  * rtl_bt: Add separate config for RLT8723CS Bluetooth part
+  * amdgpu: revert VCN 3.1.2 firmware
+  * amdgpu: revert yellow carp VCN firmware
+  * amdgpu: revert sienna cichlid VCN firmware
+  * amdgpu: revert navy flounder VCN firmware
+  * amdgpu: revert dimgrey cavefish VCN firmware
+  * WHENCE: Link the Raspberry Pi CM5 and 500 to the 4B
+  * copy-firmware.sh: Fix typo in error message.
+  * Add support to install files/symlinks in parallel.
+  * Makefile: Remove obsolete/broken reference.
+  * check_whence.py: Use a more portable shebang.
+  * rtl_bt: Update RTL8852B BT USB FW to 0x04BE_1F5E
+
+-------------------------------------------------------------------
 Wed Jan 01 10:01:03 UTC 2025 - tiwai@suse.com
 
 - Update to version 20241220 (git commit 9cf329b39cf1):

@@ -1617,4 +1617,24 @@
    * [ruff] Add rule to detect empty literal in deque call (RUF025)</comment>
     <requestid>1236832</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>161f36fa5cf7b90ecfc533b508f4c656</srcmd5>
+    <version>0.9.1</version>
+    <time>1736868077</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.1
+ * Preview features
+   * [pycodestyle] Run too-many-newlines-at-end-of-file on each cell in notebooks (W391) 
+   * [ruff] Omit diagnostic for shadowed private function parameters in used-dummy-variable (RUF052) 
+ * Rule changes
+   * [flake8-bugbear] Improve assert-raises-exception message (B017) 
+ * Formatter
+   * Preserve trailing end-of line comments for the last string literal in implicitly concatenated strings 
+ * Server
+   * Fix a bug where the server and client notebooks were out of sync after reordering cells 
+ * Bug fixes
+   * [flake8-pie] Correctly remove wrapping parentheses (PIE800) 
+   * [pyupgrade] Handle comments and multiline expressions correctly (UP037)</comment>
+    <requestid>1237200</requestid>
+  </revision>
 </revisionlist>

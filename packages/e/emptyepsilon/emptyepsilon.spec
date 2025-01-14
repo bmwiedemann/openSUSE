@@ -1,7 +1,7 @@
 #
 # spec file for package emptyepsilon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           emptyepsilon
-Version:        2024.08.09
+Version:        2024.12.08
 Release:        0
 Summary:        Open source spaceship bridge simulator
 License:        GPL-2.0-only
@@ -33,6 +33,7 @@ Patch1:         use_bundled_meshoptimizer.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  bsdtar
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
@@ -91,15 +92,17 @@ export CXX=g++-10
 
 %install
 %cmake_install
+%fdupes %{buildroot}/%{_datadir}
 
 %files
 %doc README.md
 %{_bindir}/EmptyEpsilon
-%{_docdir}/emptyepsilon/
+%{_docdir}/emptyepsilon/script_reference.html
 %{_datadir}/emptyepsilon/
-%{_datadir}/applications/EmptyEpsilon.desktop
-%{_datadir}/icons/hicolor/1024x1024/apps/EmptyEpsilon.png
-%dir %{_datadir}/icons/hicolor/1024x1024/apps
-%dir %{_datadir}/icons/hicolor/1024x1024
+%{_datadir}/applications/io.github.daid.EmptyEpsilon.desktop
+%{_datadir}/icons/hicolor/512x512/apps/io.github.daid.EmptyEpsilon.png
+%{_datadir}/metainfo/io.github.daid.EmptyEpsilon.metainfo.xml
+%dir %{_datadir}/icons/hicolor/512x512/apps
+%dir %{_datadir}/icons/hicolor/512x512
 
 %changelog

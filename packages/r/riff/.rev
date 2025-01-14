@@ -243,4 +243,13 @@
   * Fix building with older Rust versions</comment>
     <requestid>1226808</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8821c7b2aa7328419ab9cbc6b2178aad</srcmd5>
+    <version>3.3.8</version>
+    <time>1736868131</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.8:
+  * Accept arguments in PAGER variable</comment>
+    <requestid>1237451</requestid>
+  </revision>
 </revisionlist>

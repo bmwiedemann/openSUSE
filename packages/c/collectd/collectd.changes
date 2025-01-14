@@ -4,6 +4,178 @@ Wed Dec 18 10:28:48 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 - Normalize jar mtimes for reproducible builds (boo#1134568)
 
 -------------------------------------------------------------------
+Sat Dec 14 13:55:55 UTC 2024 - matwey.kornilov@gmail.com
+
+- Update to version 5.12.0.348.g93f9bdcb:
+  * add MariaDB to README
+  * Update README.md (#4318)
+  * perl: fix compile on clang by ignoring a warning
+  * intel_rdt: removed ifdefs
+  * bind: fix warning for variable used only in DEBUG() calls
+  * intel_rdt: Use pqos_mon_get_value api to obtain event values
+  * intel_rdt: corrected returned value for llc_miss mertic
+  * intel_rdt: Updated list of supported RDT events
+  * intel_rdt: corrected reported value for llc_ref mertic
+  * intel_rdt: corrected reported value for llc_miss mertic
+  * intel_rdt: corrected reported value name
+  * intel_rdt: added support for LLC misses monitoring event
+  * lua: add missing test case for #3779, #4235
+  * memory.c: workaround to let ValuesPercentage works again without "available"
+  * epics: Fix potential deadlock in handle_label_event
+  * ras plugin: Ensure each log message prints an appropriate prefix.
+  * ras plugin: Use `sysconf(_SC_NPROCESSORS_CONF)` instead of `get_nprocs_conf()`.
+  * FreeBSD's PF has a new interface so leverage libpfctl to access it so the right interface is used depending on the version
+  * ras plugin: Remove unnecessary includes.
+  * .github/workflows/release.yml: Import changes from `collectd-6.0`.
+  * version-gen.sh: Add the `--tags` flag to `git describe`.
+  * Add GitHub Action to automatically build and upload release assets.
+  * ci: Remove the "statgrab" task from CirrusCI.
+  * .cirrus.yml: Rename `checks_script` to `make_distcheck_script`.
+  * .cirrus.yml: Upload `.log` files as artifacts.
+  * write_redis plugin: Clean up allocated fields in `wr_config_free()`.
+  * disk.c: add config options to support diskstats 15-20 in KERNEL_LINUX
+  * interface plugin: Reorder implementations to put kstat above getifaddrs.
+  * configure.ac: fix grpc build
+  * disk plugin: Build `disk_submit_single` on Linux only.
+  * disk: add /proc/diskstats fields 15 to 20 in KERNEL_LINUX
+  * docs/CONTRIBUTING.md: Change formulation examples to discourage verbatim copying.
+  * docs/CONTRIBUTING.md: Replace remaining use of "Unlisted Change".
+  * docs/CONTRIBUTING.md: Document that PRs with features and fixes should be split.
+  * docs/CONTRIBUTING.md: Rename "Unlisted Change" to "Maintenance".
+  * write_riemann_threshold.c: fix switch-case fall through warning
+  * Pass strcmp() to c_avl_create() as function pointer, not data one
+  * turbostat, format_json: Satisfy clang-format CI check
+  * Fix signedness mismatch GCC warnings in few of the plugins
+  * daemon/utils_cache: remove unused functions and function args
+  * Remove unused function arguments from few of the plugins
+  * Attribute unused function args as such in few of the plugins
+  * write_prometheus: annotate unused args and fix comments
+  * format_json, network_parse: annotate unused args as unused
+  * docs/CONTRIBUTING.md: Rename "Bug" to "Fix"; improve wording.
+  * lua: update explanation about register_notification callback
+  * lua: add missing notification callback
+  * docs: Document important labels and how to interact with them.
+  * .github/workflows/distcheck.yml: Run on Debian12 (current stable).
+  * write_riemann plugin: Terminate `riemann_event_set` arguments with `RIEMANN_EVENT_FIELD_NONE`.
+  * .cirrus.yml: Provide expected plugin list to `check-built-plugins.sh` if present.
+  * .cirrus.yml: Rename container images.
+  * .github/workflows/build.yml: Add "Check expected plugins" to "experimental".
+  * .github/workflows/build.yml: Add a "Check expected plugins" step.
+  * .github/workflows/: Rename container images.
+  * .github/workflows/build.yml: Remove Ubuntu Bionic.
+  * lua: Add functions to register some missing callbacks
+  * lua: Use a global lock to call Lua's API
+  * Initial implementation for epics plugin
+  * lua: add fallback to detect LuaJIT
+  * collection3: Fix inappropriate usage of CGI:param
+  * common: Use `sstrncpy` to get around misinformed compiler error.
+  * common: Fix compiler warning in unit test.
+  * contrib/format.sh src/utils/common/common_test.c
+  * cmds: Add a test for `cmd_parse_putval`.
+  * cmds: Prevent `cmd_parse_putval` from modifying its `argv` argument.
+  * common: Change `parse_values` so it doesn't modify the parsed string.
+  * MySQL plugin: Fix incorrect WSREP/Galera metric types.
+  * evaluate flush condition with oldest value in the buffer
+  * Makefile.am: Build `test_virt_plugin` with the same `CFLAGS` as the *virt plugin*.
+  * configure: Use `elif` instead of two separate `if` blocks.
+  * configure: Improve the reporting when the "virt" plugin cannot be built.
+  * procevent plugin: Consistently mention the unit in log message.
+  * procevent plugin: Reference buffer sizing guideline.
+  * write_log plugin: remove the "write_log values:" line when logging metrics.
+  * procevent plugin: report errors in human readable form.
+  * procevent plugin: ensure the ring buffer length is not zero.
+  * procevent plugin: remove use of a nested flexible array member.
+  * Build workflow: request that clang produce DWARF v4 debug symbols.
+  * Disable "exit on error" when running `make check`.
+  * procevent plugin: Disable the `-Wgnu-variable-sized-type-not-at-end` warning.
+  * .cirrus.yml: Update list of compilers to match the `debian_unstable` container.
+  * Build workflow: add builds for `--enable-debug` and `CC=clang`.
+  * Workflows: rename "sid_amd64" to "debian_sid".
+  * .cirrus.yml: Report failures from CentOS 9 and Fedora 39.
+  * .cirrus.yml: Fix reporting of test failure.
+  * .cirrus.yml: set parallelism to number of CPUs.
+  * .cirrus.yml: Add task for FreeBSD builds.
+  * .cirrus.yml: remove obsolete platforms, add recent ones.
+  * .cirrus.yml: s/master/main/
+  * NUT plugin: import `<time.h>` before `<upsclient.h>`.
+  * gmond plugin: Improve `mc_handle_metadata_msg()`.
+  * gmond plugin: Look for RPC headers in /usr/include/tirpc.
+  * gmond plugin: Import `<ganglia.h>`.
+  * Workflow build: upload `config.log` and other log files.
+  * Notify upstart/systemd after initialization is complete.
+  * SMART plugin: initialize struct passed to `ioctl(2)`.
+  * Netlink plugin: complete initialize structs used for testing.
+  * Build workflow: report the status of `make check` after the test log has been uploaded.
+  * Build workflow: use all available CPUs.
+  * Build workflow: Add Fedora 38 and 39, remove Fedora 36.
+  * ./contrib/format.sh src/amqp.c
+  * Update README.md
+  * Add Ubuntu 22.04 ("Jammy Jellyfish") and Ubuntu 23.10 ("Mantic Minotaur").
+  * Build workflow: also remove EL8 (based on CentOS 8).
+  * Build workflow: remove old distros.
+  * AMQP plugin: prefer the `rabbitmq-c/amqp.h` header if available.
+  * Fix compile warning for amqp
+  * Intel RDT plugin: use `pqos_mon_start_cores()` if available.
+  * Intel RDT plugin: use `pqos_mon_start_pids2()` if available.
+  * Python plugin: use `PyConfig` to set argv.
+  * Write MongoDB plugin: fix format trunction errors.
+  * Give the action and job better names.
+  * Remove `make distcheck` from the regular "build" action.
+  * Distcheck action: use Debian 11 ("Bullseye") for now.
+  * Add new GitHub action for running `make distcheck`.
+  * curl_stats: fix compatibility with new versions of cURL.
+  * Build workflow: add Debian 12 ("Bookworm") and remove Debian 9 ("Stretch").
+  * Add Valgrind suppression for libvirt memory leak.
+  * Intel RDT: fix compilation with libpqos < 4.4.
+  * Revert "GitHub actions: upgrade to actions/checkout@v4"
+  * GitHub actions: upgrade to actions/checkout@v4
+  * GitHub actions: include job name in artifact name.
+  * GitHub actions: continue on error and upload test logs.
+  * clang format
+  * Compare both PID and process start time to avoid issues with immediate PID reuse on Linux platform.
+  * write_prometheus: don't use AI_ADDRCONFIG for resolving bind address
+  * Convert src/collectdctl.pod to UTF-8.
+  * Add .md to README in redhat specfile
+  * Put README(.md) back in the dist
+  * Ensure %perl_vendorlib in redhat specfile
+  * Update IPTables plugin build-dep in redhat specfile
+  * Add RAS plugin to redhat specfile
+  * Add MMC plugin to redhat specfile
+  * Removed extra call to swap_submit_usage.
+  * Update README.md
+  * Update contrib/postgresql/README.md
+  * Update contrib/postgresql/README.md
+  * Update contrib/postgresql/README.md
+  * contrib/postgresql: Second postgresql database layout.
+  * intel_rdt: added support for LLC references monitoring event
+  * intel_rdt: start only supported events
+  * add questions metric for mysql plugin
+  * plugin processes: fix doc typo
+  * Change AMQP queue drops from DEBUG to WARNING
+  * vmem: add metrics starting with `pgrefill`
+  * 3052: Renamed README to README.md and added TOC.
+  * processes: format array size def in read fork_rate & ctxt
+  * processes: fix prints & remove useless comments
+  * processes: simpler illustration in conf.pod
+  * processes: eliminate hardcoded arraysize in read ctxt & fork_rate
+  * processes: determine if ctxt is enabled before read_sys_ctxt_switch
+  * processes: format `/proc/stat` WARNING & ERROR
+  * processes: use buffer to read /proc/stat once according to procs_running
+  * processes: remove running++ since we calc it in procs_running later
+  * processes: make contextswitches configurable
+  * Running contrib/format.sh.
+  * Pass precise size of struct sockaddr, whichever type of struct sockaddr, to getnameinfo() on NetBSD.
+  * cpufreq: init max_avail_freqs with 128
+  * cpufreq: dynamically alloc max_avail_freqs according to time_in_state
+  * cpufreq: format.sh cpufreq.c
+  * cpufreq: make MAX_AVAIL_FREQS configurable in conf
+  * Fix glibc feature macro handling for timegm
+  * vmem: add "scan" metrics starting with "pgscan_"
+  * vmem: add "pgscan_"
+  * vmem: add metrics start with "pgscan_" in Kernel Linux
+  * Fix a memory leak in the `write_stackdriver` plugin
+
+-------------------------------------------------------------------
 Sat Mar 11 15:43:03 UTC 2023 - suse+build@de-korte.org
 
 - Update to version 5.12.0.134.g4cebbfc:

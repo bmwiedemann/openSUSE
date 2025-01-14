@@ -30,4 +30,17 @@
 </comment>
     <requestid>1201280</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f93550b7b0c641ce6074d9143db3ea3</srcmd5>
+    <version>2024.12.08</version>
+    <time>1736868231</time>
+    <user>anag+factory</user>
+    <comment>- Version 2024.12.08
+  * Remove 'f' suffix from numbers in lua (#2164)
+  * Some minor de updates
+  * fix minor typo
+  * more minor de updates
+</comment>
+    <requestid>1237732</requestid>
+  </revision>
 </revisionlist>

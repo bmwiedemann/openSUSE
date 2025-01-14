@@ -6856,4 +6856,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>Align HZ values with SLE; Disable CONFIG_FB_DEVICE; fix for PCI; bugs: boo#1212947 bsc#1196438 bsc#1234623</comment>
     <requestid>1235110</requestid>
   </revision>
+  <revision rev="763" vrev="1">
+    <srcmd5>e2085fd5371dde3b9f64a6820ceae039</srcmd5>
+    <version>6.12.9</version>
+    <time>1736868124</time>
+    <user>anag+factory</user>
+    <comment>6.12.9; bugs: bsc#1012628 bsc#1223838 bsc#1235020</comment>
+    <requestid>1236845</requestid>
+  </revision>
 </revisionlist>

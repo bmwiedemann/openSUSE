@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jan 13 18:11:03 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.1.4:
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck: remove unnecessary fixups
+  * cmd/govulncheck: better mask new (sbom) versions
+  * cmd/govulncheck: mask dirty dependency versions
+  * cmd/govulncheck: add missing test data
+  * cmd/govulncheck: set gotypesalias=1 when using >=1.23 toolchain
+  * go.mod: update golang.org/x dependencies
+  * internal/sarif: use empty arrays instead of nils
+  * cmd/govulncheck/testdata: expand set of go versions in fixup
+  * cmd/govulncheck: remove unused fixup
+  * internal/scan: add amounts to sbom text output
+  * internal/scan: remove 'scanning n packages...' msg
+  * internal/scan: add SBOM to text output
+  * internal/vulncheck: pass SBOM to handlers
+  * go.mod: update golang.org/x dependencies
+  * internal/semver: add SemverToGoTag
+  * internal/govulncheck: add sbom message type
+  * internal/openvex: refactor PURL
+  * internal/openvex: populate product subcomponents
+  * internal/scan: do not show stacks in traces mode for binaries
+  * internal/scan: reorganize trace text layout in trace mode
+  * go.mod: update golang.org/x dependencies
+  * internal/vulncheck: remove use of ssautil.AllFunctions
+  * cmd/govulncheck: update test file for main module vulnerabilities
+  * cmd/govulncheck: add docs on detecting main module vulns
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck: update unit tests
+  * internal/vulncheck: properly check for main package vulns
+  * internal/vulncheck: explicitly exclude devel from affected ranges
+  * internal/vulncheck: consider main module when checking bin vulns
+  * internal/vulncheck: exclude dev go versions from ancient check
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.22 matching go.mod
+
+-------------------------------------------------------------------
 Wed Oct 16 14:47:39 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

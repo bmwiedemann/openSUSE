@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooseX-Getopt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name MooseX-Getopt
 Name:           perl-MooseX-Getopt
-Version:        0.760.0
+Version:        0.780.0
 Release:        0
-%define cpan_version 0.76
+# 0.78 -> normalize -> 0.780.0
+%define cpan_version 0.78
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Moose role for processing command line options
@@ -44,6 +45,7 @@ BuildRequires:  perl(Moose::Util)
 BuildRequires:  perl(Moose::Util::TypeConstraints)
 BuildRequires:  perl(MooseX::Role::Parameterized) >= 1.01
 BuildRequires:  perl(Path::Tiny) >= 0.009
+BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Fatal) >= 0.003
 BuildRequires:  perl(Test::Moose)

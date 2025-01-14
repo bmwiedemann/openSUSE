@@ -1,0 +1,55 @@
+Index: dqsegdb-2.1.0/dqsegdb/apicalls.py
+===================================================================
+--- dqsegdb-2.1.0.orig/dqsegdb/apicalls.py
++++ dqsegdb-2.1.0/dqsegdb/apicalls.py
+@@ -19,7 +19,7 @@ import sys
+ import time
+ from datetime import datetime, time as time2
+ 
+-from six.moves.urllib.error import HTTPError
++from urllib.error import HTTPError
+ 
+ try:
+     import pyRXPU as pyRXP
+Index: dqsegdb-2.1.0/dqsegdb/clientutils.py
+===================================================================
+--- dqsegdb-2.1.0.orig/dqsegdb/clientutils.py
++++ dqsegdb-2.1.0/dqsegdb/clientutils.py
+@@ -21,7 +21,7 @@ import os
+ import operator
+ import tempfile
+ 
+-from six.moves import reduce
++from functools import reduce
+ 
+ from ligo import segments
+ 
+Index: dqsegdb-2.1.0/dqsegdb/urifunctions.py
+===================================================================
+--- dqsegdb-2.1.0.orig/dqsegdb/urifunctions.py
++++ dqsegdb-2.1.0/dqsegdb/urifunctions.py
+@@ -23,9 +23,9 @@ import time
+ import os
+ from OpenSSL import crypto
+ 
+-from six.moves.urllib.parse import urlparse
+-from six.moves import http_client
+-from six.moves.urllib import (request as urllib_request,
++from urllib.parse import urlparse
++import http.client as http_client
++from urllib import (request as urllib_request,
+                               error as urllib_error)
+ 
+ 
+Index: dqsegdb-2.1.0/setup.py
+===================================================================
+--- dqsegdb-2.1.0.orig/setup.py
++++ dqsegdb-2.1.0/setup.py
+@@ -45,7 +45,6 @@ setup(name=PACKAGENAME,
+           'lscsoft-glue>=3.0.1,<4.0.0',
+           'pyOpenSSL>=0.14',
+           'pyRXP',
+-          'six',
+       ],
+       provides=[PACKAGENAME],
+       author=AUTHOR,

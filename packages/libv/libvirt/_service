@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/openSUSE/libvirt.git</param>
     <param name="revision">factory</param>
@@ -7,12 +7,13 @@
     <param name="extract">README.packaging.txt</param>
     <param name="extract">libvirt-supportconfig</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">[v]?([^-+a-z]+)(.*)</param>
+    <param name="versionrewrite-pattern">[v]?([^-a-z]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">disable</param>
   </service>
   <service name="set_version" mode="manual"/>
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

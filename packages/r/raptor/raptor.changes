@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 10:57:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add raptor-CVE-2024-57823.patch (bsc#1235673, CVE-2024-57823)
+
+-------------------------------------------------------------------
 Fri Feb 23 11:32:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -12,7 +17,7 @@ Mon Dec  4 09:34:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
 Thu May  4 09:59:20 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Add support for libxml 2.11.0+
-  * Added patch raptor-libxml2-2.11-support.patch 
+  * Added patch raptor-libxml2-2.11-support.patch
 
 -------------------------------------------------------------------
 Tue Mar  7 12:23:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -62,11 +67,11 @@ Sat Sep 14 16:41:05 UTC 2013 - hrvoje.senjan@gmail.com
 Thu May 30 17:31:45 UTC 2013 - tittiatcoke@gmail.com
 
 - Update to version 2.0.9
-  * Added full parsing and serializing support for Turtle Terse RDF 
+  * Added full parsing and serializing support for Turtle Terse RDF
     Triple Language W3C Candidate Recommendation 19 February 2013
   * Added CMake build framework for building Raptor on Microsoft
   * Made a few minor fixes and improvements
-  * Fixed reported issues: 0000499, 0000508, 0000520, 0000521 
+  * Fixed reported issues: 0000499, 0000508, 0000520, 0000521
     and 0000526
 
 -------------------------------------------------------------------
@@ -92,7 +97,7 @@ Thu Jun 28 09:28:26 UTC 2012 - mlin@suse.com
 - Update to version 2.0.8
   * Added support for RDFa 1.1 via updated librdfa
   * Multiple portability fixes for Windows and Solarises. (Daniel Richard G.)
-  * Multiple minor fixes and improvements 
+  * Multiple minor fixes and improvements
   * Fixed reported issues: 0000381, 0000487, 0000505 and 0000507
 
 -------------------------------------------------------------------
@@ -110,9 +115,9 @@ Wed Dec 21 12:41:18 UTC 2011 - tittiatcoke@gmail.com
 
 - Update to v2.0.6
   * Handle libCurl SSL options before 7.16.4 (2007)
-  * Add a few sequence utility methods for sort, reverse and 
+  * Add a few sequence utility methods for sort, reverse and
     permute
-  * All parsers and serializers use the W3C Format URIs as their 
+  * All parsers and serializers use the W3C Format URIs as their
     primary URI
   * N-Quads parser can now handle optional context/graph URI
   * Turtle serializer uses official text/turtle mime type
@@ -123,7 +128,7 @@ Wed Dec 21 12:41:18 UTC 2011 - tittiatcoke@gmail.com
 -------------------------------------------------------------------
 Sat Oct  1 03:35:30 UTC 2011 - crrodriguez@opensuse.org
 
-- Do not require gtk-doc to build 
+- Do not require gtk-doc to build
 
 -------------------------------------------------------------------
 Mon Sep 19 11:41:09 UTC 2011 - tittiatcoke@gmail.com
@@ -144,10 +149,10 @@ Thu Aug 11 19:07:13 UTC 2011 - aj@suse.de
 
 -------------------------------------------------------------------
 Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
-    
+
 - added 32bit compatibility libraries
 - removed package name from summary (fix for RPMLINT warning)
- 
+
 -------------------------------------------------------------------
 Sat Apr 10 06:44:32 UTC 2010 - davejplater@gmail.com
 
@@ -199,7 +204,7 @@ Fri Jul 25 00:33:26 CEST 2008 - dmueller@suse.de
 Sun Apr  6 02:09:29 CEST 2008 - crrodriguez@suse.de
 
 - update to version 1.4.17
-	* Added two new JSON serializers: resource-centric 'json' 
+	* Added two new JSON serializers: resource-centric 'json'
 	  (Talis RDF/JSON) and triple-centric 'json-triples'
     * Added a new public XML SAX2 API class
     * Added a new error handling structure
@@ -211,7 +216,7 @@ Sun Apr  6 02:09:29 CEST 2008 - crrodriguez@suse.de
 -------------------------------------------------------------------
 Wed Dec 19 20:03:46 CET 2007 - crrodriguez@suse.de
 
-- missing pkg-config in buildrequires 
+- missing pkg-config in buildrequires
 
 -------------------------------------------------------------------
 Sun Oct 28 08:41:27 CET 2007 - stbinner@suse.de

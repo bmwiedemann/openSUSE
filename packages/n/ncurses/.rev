@@ -4871,4 +4871,19 @@
 - Port patches</comment>
     <requestid>1235635</requestid>
   </revision>
+  <revision rev="280" vrev="53">
+    <srcmd5>aefed2a4418f05be6efe349833891f0b</srcmd5>
+    <version>unknown</version>
+    <time>1736868126</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20250111
+  + add check for infinite loop in tic's use-resolution.
+  + increase limit on use-clauses from 32 to 40, warn but allow entries
+    which exceed the old limit.
+  + add some null-pointer checks after mallocs in test-programs.
+- Add patch ncurses-6.5-ghostty.dif
+  * Add an alias which causes the link /usr/share/terminfo/x/xterm-ghostty
+  to ../g/ghostty (bug boo#1235689)</comment>
+    <requestid>1237393</requestid>
+  </revision>
 </revisionlist>

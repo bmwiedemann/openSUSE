@@ -674,4 +674,25 @@
 </comment>
     <requestid>1235579</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>918e0a1e9e1449f7ff037f44ca5a7119</srcmd5>
+    <version>2.58.0</version>
+    <time>1736868148</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.58.0:
+  - Features
+    * feat: Add --git-lfs option to init command
+    * feat: Add builtin mode for gopass
+    * feat: Improve placeholders in password prompts
+    * feat: Show all contributors in README.md
+  - Fixes
+    * fix: Fix doctor command when --config is specified
+    * fix: Correct nested groups for keepassxc builtin mode
+    * fix: Suppress gitleaks logspam
+  - Documentation updates
+    * docs: Tidy up formatting as suggested by markdownlint
+- Reorder services to avoid go_modules version mismatch warning
+</comment>
+    <requestid>1237545</requestid>
+  </revision>
 </revisionlist>

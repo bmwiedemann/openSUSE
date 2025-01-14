@@ -319,4 +319,22 @@ Updating to those licenses stated in the LICENSE.txt file (even though the LGPL-
     <comment></comment>
     <requestid>1155022</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>e676cc8a8475cdbe0424df2a35db5794</srcmd5>
+    <version>2.0.16</version>
+    <time>1736868090</time>
+    <user>anag+factory</user>
+    <comment>- add raptor-CVE-2024-57823.patch (bsc#1235673, CVE-2024-57823)
+
+  * Added patch raptor-libxml2-2.11-support.patch
+  * Added full parsing and serializing support for Turtle Terse RDF
+  * Fixed reported issues: 0000499, 0000508, 0000520, 0000521
+  * Multiple minor fixes and improvements
+  * Add a few sequence utility methods for sort, reverse and
+  * All parsers and serializers use the W3C Format URIs as their
+- Do not require gtk-doc to build
+	* Added two new JSON serializers: resource-centric 'json'
+- missing pkg-config in buildrequires</comment>
+    <requestid>1237384</requestid>
+  </revision>
 </revisionlist>

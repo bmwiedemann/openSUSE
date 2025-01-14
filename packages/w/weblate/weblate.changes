@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:58:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.9.2
+  * Added Key filter in the component.
+  * Searching now supports filtering by object path and Fuzzy values for 
+    DATETIME fields.
+  * Merge requests credentials can now be passed in the repository URL, 
+    see Configuring version control credentials.
+  * Azure OpenAI automatic suggestion service.
+  * Bitbucket Cloud pull requests.
+  * Weblate now requires Python 3.11 or newer.
+  * Amazon Translate now requires the TranslateFullAccess permission.
+  * Weblate’s REST API now has a preview OpenAPI specification.
+  * Per-project Automatic suggestions can now be configured via the 
+    Project Weblate’s REST API.
+  * Translation memory import now supports files with XLIFF, PO and CSV 
+    formats.
+  * The registration CAPTCHA now includes proof-of-work mechanism ALTCHA.
+  * Leading problematic characters in CSV are now checks for Glossary.
+  * Logging to Graylog log management.
+  * Rollbar integration no longer includes client-side error collection.
+  * Weblate now requires Git 2.28 or newer.
+  * WEB_WORKERS now configures number of threads instead of processes.
+- Docs were excluded from the release tarball, dropped from the package
+- Drop no-longer-needed use-old-html-theme.patch
+- Add upstream ttkit.patch to fix tests
+
+-------------------------------------------------------------------
+Wed Sep 18 10:37:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.7.2
+  * Many more changes, see https://docs.weblate.org/en/latest/changes.html
+  * Two-factor authentication is now supported using Passkeys, WebAuthn, 
+    authentication apps (TOTP), and recovery codes.
+  * Weblate now uses mistletoe instead of misaka as a Markdown renderer.
+  * Two-factor authentication can be enforced at the team or project level.
+  * Adding new strings can now create plural strings in the user interface.
+  * OpenAI now supports custom models and URLs and offers rephrasing of 
+    existing strings.
+  * Cyrtranslit automatic suggestion service.
+  * Content security policy is now stricter what might block third-party 
+    customizations.
+  * ENABLE_HTTPS is now required for WebAuthn support. If you cannot use HTTPS, 
+    please silence related check as described in ENABLE_HTTPS documentation.
+  * Updated language names to better describe different scripts and Sintic 
+    languages.
+  * Instead of redirecting, the sign-out now displays a page.
+
+-------------------------------------------------------------------
+Sun Aug 18 12:06:14 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid stuck build on test-failure (boo#1204884)
+
+-------------------------------------------------------------------
 Tue Jul 16 08:00:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.6.2 (bsc#1227273, CVE-2024-39303)

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  9 05:30:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.670.0 (2.67)
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.67  - fix github.com/TLINDEN/Config-General/issues/5:
+  	fixing tests (add missing file to dist tarball) contributed
+  	by @paulwalrath.
+        - created gitignore file.
+
+  2.66  - fix github.com/TLINDEN/Config-General/issues/1:
+  	add support to quote values containing whitespace using the
+  	new flag -AlwaysQuoteOutput.
+
+        - apply patch by @haarg github.com/TLINDEN/Config-General/pull/2:
+  	fix exporter setup, use "our" where appropriate.
+
+-------------------------------------------------------------------
 Mon Apr 11 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.65

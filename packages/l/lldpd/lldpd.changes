@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 13 21:55:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.19
+  Changes:
+  * Add cvlan/svlan/tpmr capabilities.
+  * Add lldpctl_watch_sync_unblock to liblldpctl.
+  * Add C++ wrapper for lldpctl.
+  Fix:
+  * Fix AppArmor policy for /run/lldpd/lldpd.socket.lock.
+  * Do not query stats for a down interface on Linux.
+
+-------------------------------------------------------------------
 Sun Jan 28 12:43:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.18

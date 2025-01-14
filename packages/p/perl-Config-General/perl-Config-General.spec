@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Config-General
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,19 @@
 
 %define cpan_name Config-General
 Name:           perl-Config-General
-Version:        2.65
+Version:        2.670.0
 Release:        0
+# 2.67 -> normalize -> 2.670.0
+%define cpan_version 2.67
 License:        Artistic-2.0
 Summary:        Generic Config Module
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TL/TLINDEN/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TL/TLINDEN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Config::General) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -44,7 +48,7 @@ In addition to the capabilities of an Apache config file it supports some
 enhancements such as here-documents, C-style comments or multiline options.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

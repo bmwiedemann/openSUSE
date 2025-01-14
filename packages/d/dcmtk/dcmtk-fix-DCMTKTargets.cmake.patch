@@ -10,7 +10,7 @@ This prevents installing the devel package without requiring the dcmtk utilities
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/CMake/GenerateCMakeExports.cmake b/CMake/GenerateCMakeExports.cmake
-index 4512624..11205e3 100644
+index b4f44e4..0e3cc3c 100644
 --- a/CMake/GenerateCMakeExports.cmake
 +++ b/CMake/GenerateCMakeExports.cmake
 @@ -18,8 +18,8 @@
@@ -25,10 +25,10 @@ index 4512624..11205e3 100644
  # Get and store libraries to DCMTKTargets.cmake within the build's main dir
  get_property(DCMTK_LIBRARY_TARGETS GLOBAL PROPERTY DCMTK_LIBRARY_TARGETS)
 diff --git a/CMake/dcmtkMacros.cmake b/CMake/dcmtkMacros.cmake
-index 6cbce0a..0844e58 100644
+index bd35469..b318a56 100644
 --- a/CMake/dcmtkMacros.cmake
 +++ b/CMake/dcmtkMacros.cmake
-@@ -64,7 +64,7 @@ macro(DCMTK_ADD_EXECUTABLE PROGRAM)
+@@ -63,7 +63,7 @@ macro(DCMTK_ADD_EXECUTABLE PROGRAM)
  
          # declare installation files, also export DCMTKTargets.cmake
          install(TARGETS ${PROGRAM}
@@ -37,6 +37,3 @@ index 6cbce0a..0844e58 100644
                  COMPONENT bin
                  DESTINATION ${CMAKE_INSTALL_BINDIR})
      endif()
--- 
-2.37.1
-

@@ -18,9 +18,10 @@
 
 %define cpan_name App-Cmd
 Name:           perl-App-Cmd
-Version:        0.336.0
+Version:        0.337.0
 Release:        0
-%define cpan_version 0.336
+# 0.337 -> normalize -> 0.337.0
+%define cpan_version 0.337
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write command line apps with less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,7 +35,7 @@ BuildRequires:  perl(Class::Load) >= 0.06
 BuildRequires:  perl(Data::OptList)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Getopt::Long) >= 2.39
-BuildRequires:  perl(Getopt::Long::Descriptive) >= 0.084
+BuildRequires:  perl(Getopt::Long::Descriptive) >= 0.116
 BuildRequires:  perl(IO::TieCombine)
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(Module::Pluggable::Object)
@@ -51,7 +52,7 @@ Requires:       perl(Capture::Tiny) >= 0.13
 Requires:       perl(Class::Load) >= 0.06
 Requires:       perl(Data::OptList)
 Requires:       perl(Getopt::Long) >= 2.39
-Requires:       perl(Getopt::Long::Descriptive) >= 0.084
+Requires:       perl(Getopt::Long::Descriptive) >= 0.116
 Requires:       perl(IO::TieCombine)
 Requires:       perl(Module::Pluggable::Object)
 Requires:       perl(Pod::Usage) >= 1.61
@@ -61,19 +62,19 @@ Requires:       perl(Sub::Exporter::Util)
 Requires:       perl(Sub::Install)
 Requires:       perl(experimental)
 Requires:       perl(parent)
-Provides:       perl(App::Cmd) = 0.336.0
-Provides:       perl(App::Cmd::ArgProcessor) = 0.336.0
-Provides:       perl(App::Cmd::Command) = 0.336.0
-Provides:       perl(App::Cmd::Command::commands) = 0.336.0
-Provides:       perl(App::Cmd::Command::help) = 0.336.0
-Provides:       perl(App::Cmd::Command::version) = 0.336.0
-Provides:       perl(App::Cmd::Plugin) = 0.336.0
-Provides:       perl(App::Cmd::Setup) = 0.336.0
-Provides:       perl(App::Cmd::Simple) = 0.336.0
-Provides:       perl(App::Cmd::Subdispatch) = 0.336.0
-Provides:       perl(App::Cmd::Subdispatch::DashedStyle) = 0.336.0
-Provides:       perl(App::Cmd::Tester) = 0.336.0
-Provides:       perl(App::Cmd::Tester::CaptureExternal) = 0.336.0
+Provides:       perl(App::Cmd) = %{version}
+Provides:       perl(App::Cmd::ArgProcessor) = %{version}
+Provides:       perl(App::Cmd::Command) = %{version}
+Provides:       perl(App::Cmd::Command::commands) = %{version}
+Provides:       perl(App::Cmd::Command::help) = %{version}
+Provides:       perl(App::Cmd::Command::version) = %{version}
+Provides:       perl(App::Cmd::Plugin) = %{version}
+Provides:       perl(App::Cmd::Setup) = %{version}
+Provides:       perl(App::Cmd::Simple) = %{version}
+Provides:       perl(App::Cmd::Subdispatch) = %{version}
+Provides:       perl(App::Cmd::Subdispatch::DashedStyle) = %{version}
+Provides:       perl(App::Cmd::Tester) = %{version}
+Provides:       perl(App::Cmd::Tester::CaptureExternal) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

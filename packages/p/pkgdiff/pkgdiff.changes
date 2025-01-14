@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 13 14:53:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8:
+  * Omit *.N suffix when determining the file format
+  * Do not print warning about missed wdiff into the report
+  * Move to secure HTTPS.
+  * Added more file classes. 5% performance optimization.
+  * Fixed -d option to compare large directories. Added more file classes…
+  * Works faster on large packages with small changes. Use File::LibMagic…
+  * Add support of Android package file "APK"
+  * Skip by default original META-INF and apktool generated files from AP…
+  * Update style of the README. Properly diff log files.
+  * Fixed detection of file types
+  * Support aar archives
+  * Beautify JS files before diffing
+  * Report styles cleanup; Add -c alias for -hide-unchanged option
+
+-------------------------------------------------------------------
 Tue Nov 24 09:30:53 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Package cleanup

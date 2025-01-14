@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1181973</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e258be397fc3630c60f6a9bb1e417953</srcmd5>
+    <version>2.31.1</version>
+    <time>1736868160</time>
+    <user>anag+factory</user>
+    <comment>- v2.31.1: Update
+  - Fixed return type for PowerPC _gf_vect_mul_base function.
+  - Fixed isal_deflate_icf_finish_lvl1 dispatcher for aarch64.
+  - Fixed CRC compilation on aarch64.
+  - Fixed MacOS-14 compilation.
+  - Fixed MinGW build.
+  - Fixed Clang compilation on igzip library on aarch64.
+  - Fixed Windows build on erasure code performance applications.
+  - Fixed compilation with YASM</comment>
+    <requestid>1237554</requestid>
+  </revision>
 </revisionlist>

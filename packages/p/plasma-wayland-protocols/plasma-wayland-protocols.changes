@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  9 11:46:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.16.0:
+  * external-brightness: Allow the client to specify observed brightness
+  * output management: add a failure reason event
+  * output device,-management: add a dimming multiplier
+  * output device/management: add power/performance vs. color accuracy
+    preference
+
+-------------------------------------------------------------------
 Sat Dec  7 13:06:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.15.0:

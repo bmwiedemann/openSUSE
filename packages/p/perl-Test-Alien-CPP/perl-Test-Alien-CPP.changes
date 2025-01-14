@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  5 05:32:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.40.0 (1.04)
+   see /usr/share/doc/packages/perl-Test-Alien-CPP/Changes
+
+  1.04      2025-01-04 11:52:46 -0700
+    - Fix undefined unitialized warnings on some systems (DJERIUS++, gh#15)
+
+-------------------------------------------------------------------
 Wed May 11 03:08:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.03

@@ -57,6 +57,7 @@ Recommends:     xorg-x11-server-wayland
 # Otherwise, it will try to run under XWayland
 Recommends:     libqt5-qtwayland
 Recommends:     libqt5-qtwayland-32bit
+Recommends:     qt6-wayland
 Requires:       river-riverctl
 Requires:       river-rivertile
 Recommends:     river-contrib

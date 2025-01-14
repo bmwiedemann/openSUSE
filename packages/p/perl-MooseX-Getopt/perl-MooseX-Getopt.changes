@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  4 05:33:10 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.780.0 (0.78)
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+  0.78      2025-01-03 17:07:02Z
+   - improve author-only warning tests
+
+  0.77      2025-01-03 01:19:11Z
+   - Fix broken test of overriding Getopt::Long options (RT#158253)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:44:11 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

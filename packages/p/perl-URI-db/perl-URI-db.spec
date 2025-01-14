@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI-db
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name URI-db
 Name:           perl-URI-db
-Version:        0.220.0
+Version:        0.230.0
 Release:        0
-# 0.22 -> normalize -> 0.220.0
-%define cpan_version 0.22
+# 0.23 -> normalize -> 0.230.0
+%define cpan_version 0.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Database URIs
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,6 +37,7 @@ BuildRequires:  perl(URI::Nested) >= 0.10
 Requires:       perl(URI) >= 1.40
 Requires:       perl(URI::Nested) >= 0.10
 Provides:       perl(URI::cassandra) = %{version}
+Provides:       perl(URI::clickhouse) = 0.200.0
 Provides:       perl(URI::cockroach) = %{version}
 Provides:       perl(URI::cockroachdb) = %{version}
 Provides:       perl(URI::couch) = %{version}

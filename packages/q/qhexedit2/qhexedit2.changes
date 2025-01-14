@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 13 19:21:10 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.10
+  * Replace QPallete::Background with QPallete::Window (for Qt6)
+  * Update main.cpp to add version option and future
+    extensibility
+  * Support the use of SIP5
+  * Some small improvements
+- Switch build to Qt6
+
+-------------------------------------------------------------------
 Sun Aug 16 20:08:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.8.9:

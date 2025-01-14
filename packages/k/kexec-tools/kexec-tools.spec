@@ -67,8 +67,8 @@ the loaded kernel after it panics.
 
 %build
 autoreconf -fvi
-export CFLAGS="%{optflags} -fPIC"
-export BUILD_CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fPIC -std=gnu99"
+export BUILD_CFLAGS="%{optflags} -std=gnu99"
 export LDFLAGS="-pie"
 %configure
 %make_build

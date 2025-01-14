@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  5 05:33:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.25.0 (2.025)
+   see /usr/share/doc/packages/perl-Test-Manifest/Changes
+
+  2.025 2025-01-04T15:58:23Z
+  	* refresh distro and move to BRIANDFOY
+
+-------------------------------------------------------------------
 Fri Mar  8 23:05:47 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

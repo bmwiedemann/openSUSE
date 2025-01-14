@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Carp-Assert-More
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define cpan_name Carp-Assert-More
 Name:           perl-Carp-Assert-More
-Version:        2.4.0
+Version:        2.8.0
 Release:        0
+# v2.8.0 -> normalize -> 2.8.0
+%define cpan_version v2.8.0
 License:        Artistic-2.0
 Summary:        Convenience assertions for common situations
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-2.8.0.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::Exception)
-Requires:       perl(Test::Exception)
+BuildRequires:  perl(Test::More) >= 0.72
 %{perl_requires}
 
 %description
@@ -52,7 +55,7 @@ My intent here is to make common assertions easy so that we as programmers
 have no excuse to not use them.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-2.8.0
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

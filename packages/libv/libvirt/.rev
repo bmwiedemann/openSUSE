@@ -4758,4 +4758,13 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   bsc#1235079</comment>
     <requestid>1235461</requestid>
   </revision>
+  <revision rev="413" vrev="6">
+    <srcmd5>1f4951cd652d3c0065bad128b4bebe58</srcmd5>
+    <version>10.10.0</version>
+    <time>1736868111</time>
+    <user>anag+factory</user>
+    <comment>- Convert from tar_scm to obs_scm: allow OBS internal data
+  structure to be more efficient by using .obscpio files</comment>
+    <requestid>1237523</requestid>
+  </revision>
 </revisionlist>
