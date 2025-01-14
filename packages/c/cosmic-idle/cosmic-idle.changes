@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 10 21:48:00 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+0:
+  * Slow down the fade to black time
+  * Reduce `Cargo.lock` build for CI build
+  * Run `cargo update`
+  * Add a slight delay between screen off and locking
+
+-------------------------------------------------------------------
 Fri Dec 06 00:08:41 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
