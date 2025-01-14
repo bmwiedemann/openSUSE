@@ -1,7 +1,7 @@
 #
 # spec file for package opi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,11 @@
 #
 
 
+%define use_python python3
+%define pythons %{use_python}
+
 Name:           opi
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -25,6 +28,14 @@ Group:          System/Packages
 URL:            https://github.com/openSUSE/%{name}
 Source0:        https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
+
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+
 BuildRequires:  help2man
 BuildRequires:  python3
 BuildRequires:  python3-curses
@@ -49,22 +60,27 @@ Requires:       squashfs
 
 %description
 OBS Package Installer (CLI)
+Search and install almost all packages available for openSUSE and SLE:
+- openSUSE Build Service
+- Packman
+- Popular packages for 3rd party vendors
 
 %prep
 %setup -q
 
 %build
 help2man -s8 -N ./bin/opi > opi.8
+%pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
 install -m 644 -D -v org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
 install -m 644 -D -v opi.8 %{buildroot}%{_datadir}/man/man8/opi.8
 install -m 644 -D -v opi.default.cfg %{buildroot}%{_sysconfdir}/opi.cfg
 %python3_fix_shebang
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
-python3 setup.py --version | grep %{version}
 
 %files
 %license LICENSE

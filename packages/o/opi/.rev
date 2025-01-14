@@ -658,4 +658,20 @@
   * Add option to install google-chrome-canary</comment>
     <requestid>1220564</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>abdade80c91a3eb7a50acd7d681db24b</srcmd5>
+    <version>5.5.0</version>
+    <time>1736871557</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.5.0
+  * Update opi/plugins/collabora.py
+  * add collabora office desktop
+  * Omit unsupported cli args on leap in 99_install_opi.py
+  * Switch to PEP517 install
+  * Fix 09_install_with_multi_repos_in_single_file_non_interactive.py
+  * Fix 07_install_multiple.py on tumbleweed
+  * Fix test suite on tumbleweed
+  * Update available apps in opi - README.md</comment>
+    <requestid>1237861</requestid>
+  </revision>
 </revisionlist>
