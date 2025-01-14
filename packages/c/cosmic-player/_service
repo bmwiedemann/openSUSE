@@ -4,7 +4,9 @@
     <param name="url">https://github.com/pop-os/cosmic-player.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="versionformat">0.1.0+git%cd.%h</param>
+    <param name="versionrewrite-pattern">epoch-(.*)\+0</param>
+    <param name="versionformat">1.0.0~alpha5+@TAG_OFFSET@</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-player</param>
     <param name="changesgenerate">enable</param>

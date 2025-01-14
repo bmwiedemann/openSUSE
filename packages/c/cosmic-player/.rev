@@ -53,4 +53,12 @@
 - remove patch ffmpeg-next.patch as it's not required anymore (forwarded request 1228838 from rrahl0)</comment>
     <requestid>1228839</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f2915eec3c41da8ec1a466e19680409</srcmd5>
+    <version>1.0.0~alpha5+2</version>
+    <time>1736868774</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237787</requestid>
+  </revision>
 </revisionlist>

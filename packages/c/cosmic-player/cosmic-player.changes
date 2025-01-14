@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 10 22:17:00 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+2:
+  * Update dependencies
+  * Update cosmic_player.ftl (#36)
+  * Revert Cargo.lock to version 3
+  * Use just vendor for debian packaging
+  * spell check and improve Dutch translation (#33)
+  * Improve plugin install logic
+  * Update iced_video_player
+  * i18n(de): add German translation
+  * Create cosmic_player.ftl PL initial translation
+  * Added Irish translation
+  * update dutch translation
+  * update italian translation
+  * update french translation
+  * update euro spanish translation
+  * update japanese translation
+
+-------------------------------------------------------------------
 Fri Dec 06 02:47:38 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 0.1.0+git20241205.b26005d:
