@@ -69,4 +69,12 @@
   (bsc#1235023)</comment>
     <requestid>1236913</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e33e24615a5e5a111a6ea9f142d5cb97</srcmd5>
+    <version>0</version>
+    <time>1736868257</time>
+    <user>anag+factory</user>
+    <comment>- Update SLES4SAP ID to SLES_SAP (gh#agama-project/agama#1890).</comment>
+    <requestid>1237710</requestid>
+  </revision>
 </revisionlist>
