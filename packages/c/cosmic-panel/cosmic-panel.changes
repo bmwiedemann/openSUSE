@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 10 22:10:00 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+1:
+  * update deps
+  * refactor: timed cleanup
+  * fix: layer surface sizes
+  * update deps
+  * fix: patch
+  * fix: patch
+  * improv: adjust timeouts
+  * improv: more fine grained throttling for frame events
+  * update launch-pad not to panic on kill
+  * fix: avoid drawing when panel is too small
+  * sleep for up to 50ms if there is time left in the iteration timeout
+  * fix: typo
+
+-------------------------------------------------------------------
 Fri Dec 06 00:32:51 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha4+0:
