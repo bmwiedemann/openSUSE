@@ -1,0 +1,24 @@
+From 898674c557199b3beb4cde1f356c18ec8f6187e4 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 15 Jan 2025 14:49:59 +0100
+Subject: [PATCH] Fix finding liborigin on openSUSE
+
+---
+ cmake/FindLibOrigin.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/FindLibOrigin.cmake b/cmake/FindLibOrigin.cmake
+index f9819925f..c5aa209ad 100644
+--- a/cmake/FindLibOrigin.cmake
++++ b/cmake/FindLibOrigin.cmake
+@@ -16,6 +16,7 @@ find_library(LIBORIGIN_LIBRARIES
+ 
+ find_path(LIBORIGIN_INCLUDE_DIR
+     NAMES OriginFile.h
++    PATH_SUFFIXES liborigin
+     HINTS ${PC_LIBORIGIN_INCLUDE_DIRS}
+ )
+ 
+-- 
+2.47.1
+

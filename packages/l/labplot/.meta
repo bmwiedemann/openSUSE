@@ -1,0 +1,8 @@
+<package name="labplot" project="openSUSE:Factory">
+  <title>Data Visualization and Analysis software</title>
+  <description>LabPlot provides an easy way to create, manage and edit plots. It allows you to
+produce plots based on data from a spreadsheet or on data imported from external
+files. Plots can be exported to several pixmap and vector graphic formats.</description>
+  <devel project="KDE:Extra" package="labplot"/>
+  <url>https://apps.kde.org/labplot/</url>
+</package>

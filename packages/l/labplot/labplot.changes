@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Jan 15 13:28:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Use a git snapshot for proper cantor support
+- Add patch:
+  * 0001-Fix-finding-liborigin-on-openSUSE.patch
+
+-------------------------------------------------------------------
+Mon Jan 13 23:04:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Init labplot. Qt 6 port of labplot-kf5
