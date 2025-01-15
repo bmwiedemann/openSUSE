@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 15 14:01:29 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.90
+  ## ✨ Features
+
+  * Docker: run as non-root (https://github.com/element-hq/element-web/pull/28849). Contributed by @richvdh.
+  * Docker: allow configuration of HTTP listen port via env var (https://github.com/element-hq/element-web/pull/28840). Contributed by @richvdh.
+  * Update matrix-wysiwyg to consume WASM asset (https://github.com/element-hq/element-web/pull/28838). Contributed by @t3chguy.
+  * OIDC settings tweaks (https://github.com/element-hq/element-web/pull/28787). Contributed by @t3chguy.
+  * Delabs native OIDC support (https://github.com/element-hq/element-web/pull/28615). Contributed by @t3chguy.
+  * Move room header info button to right-most position (https://github.com/element-hq/element-web/pull/28754). Contributed by @t3chguy.
+  * Enable key backup by default (https://github.com/element-hq/element-web/pull/28691). Contributed by @dbkr.
+
+  ## 🐛 Bug Fixes
+
+  * Fix building the automations mermaid diagram (https://github.com/element-hq/element-web/pull/28881). Contributed by @dbkr.
+  * Playwright: wait for the network listener on the postgres db (https://github.com/element-hq/element-web/pull/28808). Contributed by @dbkr.
+
+
+
+Version 1.11.89
+  * No changes
+
+  ## 🐛 Bug Fixes
+
+  * Upgrade matrix-sdk-crypto-wasm to 1.11.0 (https://github.com/matrix-org/matrix-js-sdk/pull/4593)
+  * Fix url preview display (https://github.com/element-hq/element-web/pull/28766).
+
+-------------------------------------------------------------------
 Wed Dec 18 11:56:21 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.88

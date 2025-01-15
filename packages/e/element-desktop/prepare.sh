@@ -29,6 +29,7 @@ cd "$tmpdir"
 mkdir -pv "$tmpdir/home"
 oldhome="$HOME"
 export HOME="$tmpdir/home"
+ln -s "$oldhome/.rustup" "$HOME"
 
 tar -xzvvf "${oldwd}/element-desktop-${version}.tar.gz"
 cd element-desktop-${version}
@@ -89,7 +90,7 @@ find . -type f| sponge |\
 
 
 rm -f "${oldwd}/vendor.tar.zst"
-ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${oldwd}/vendor.tar.zst" .hak node_modules
+ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -Scf "${oldwd}/vendor.tar.zst" .hak node_modules
 
 
 cd "$oldwd"
