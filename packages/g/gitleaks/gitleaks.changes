@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 13:21:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.23.1:
+  * chore(gcp): add firebase example keys to the gcp-api-key
+    allowlists (#1635)
+  * fix: unaligned 64-bit atomic operation panic (#1696)
+  * force push to master everyday
+  * feat(config): disable extended rule (#1535)
+  * style: prevent globbing and word splitting (#1543)
+  * refactor(generic-api-key): remove hard-coded 'magic' (#1600)
+  * chore(generate): add failing test case (#1690)
+
+-------------------------------------------------------------------
 Mon Jan 13 15:55:07 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.23.0:
