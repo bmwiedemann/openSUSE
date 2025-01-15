@@ -1,7 +1,7 @@
 #
 # spec file for package gnunet-messenger-cli
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnunet-messenger-cli
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Terminal application using the GNUnet Messenger service
 License:        AGPL-3.0-or-later
@@ -26,6 +26,9 @@ Source:         http://ftpmirror.gnu.org/gnunet/messenger-cli-%{version}.tar.gz
 Source2:        http://ftpmirror.gnu.org/gnunet/messenger-cli-%{version}.tar.gz.sig
 # https://gnunet.org/~schanzen/3D11063C10F98D14BD24D1470B0998EF86F59B6A
 Source3:        %{name}.keyring
+%if 0%{?suse_version} < 1600 && 0%{?is_opensuse}
+Patch0:         exit_curses.patch
+%endif
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnunetchat) >= 0.5.0

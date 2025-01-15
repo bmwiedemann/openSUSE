@@ -1,0 +1,27 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Sat, 11 Jan 2025 11:10:05 +0100
+Subject: Fix Leap 15.6 build
+Upstream: no
+
+Fixes:
+
+[   24s] ../src/messenger_cli.c: In function ‘main’:
+[   24s] ../src/messenger_cli.c:37:3: warning: implicit declaration of function ‘exit_curses’ [-Wimplicit-function-declaration]
+[   24s]    exit_curses(status);
+[   24s]    ^~~~~~~~~~~
+[...]
+[   24s] /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/ld: messenger-cli.p/src_messenger_cli.c.o: in function `main':
+[   24s] /home/abuild/rpmbuild/BUILD/messenger-cli-0.3.1/x86_64-suse-linux/../src/messenger_cli.c:37:(.text.startup+0x42): undefined reference to `exit_curses'
+
+This is an optional call and right before main() exits.
+
+diff -ru messenger-cli-0.3.1.orig/src/messenger_cli.c messenger-cli-0.3.1/src/messenger_cli.c
+--- messenger-cli-0.3.1.orig/src/messenger_cli.c	2025-01-11 11:02:05.981499478 +0100
++++ messenger-cli-0.3.1/src/messenger_cli.c	2025-01-11 11:03:11.641487993 +0100
+@@ -34,6 +34,5 @@
+ 
+   const int status = application_status(&app);
+ 
+-  exit_curses(status);
+   return status;
+ }
