@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 08:11:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.18 (bsc#1235856)
+  * CVE-2024-56374: Potential denial-of-service vulnerability in 
+    IPv6 validation 
+
+-------------------------------------------------------------------
 Mon Dec  9 09:31:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.1.17 (bsc#1234231, CVE-2024-53908, bsc#1234232, CVE-2024-53907)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-Django4
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.2.17
+Version:        4.2.18
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
