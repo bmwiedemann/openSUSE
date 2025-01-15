@@ -1,7 +1,7 @@
 #
 # spec file for package neomutt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           neomutt
-Version:        20250109
+Version:        20241212
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later

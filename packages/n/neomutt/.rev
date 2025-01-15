@@ -332,4 +332,11 @@ so there is no usability hurdle for existing mutt users.
 </comment>
     <requestid>1237318</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>7c4cd26c469d45b4d5f72cc24b931b5f</srcmd5>
+    <version>20241212</version>
+    <time>1736928713</time>
+    <user>anag+factory</user>
+    <comment>https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/M6HOYDU6Q43QAP72NCEEWFV5UZ2HBUGP/</comment>
+  </revision>
 </revisionlist>
