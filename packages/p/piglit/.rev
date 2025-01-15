@@ -454,4 +454,21 @@
   * arb_gpu_shader5: Test bitfieldInsert with a base that is masked</comment>
     <requestid>1223646</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e69740a10525f6d45ea206dd44afd068</srcmd5>
+    <version>1~20250108</version>
+    <time>1736959532</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1~20250108:
+  * gl/frameworks: Use piglit_set_destroy_func() when gl_fw-&gt;destroy is set
+  * arb_framebuffer_object: add missing MSAA alpha-to-coverage and alpha-to-one tests
+  * ARB_ubo/referenced-by-shader: pass if shader compiler moves UBOs between shaders
+  * glsl: test loop unroll with uint overflow
+  * glsl-1.30: add more loop unroll tests
+  * glsl-1.10: test mesa bug conflict between globals
+  * ext_image_dma_buf_import-export-tex: fix multi plane export
+  * tests: add ext_image_dma_buf_import-tex-modifier
+  * glsl-1.10: test mesa bug with forward declaration</comment>
+    <requestid>1238040</requestid>
+  </revision>
 </revisionlist>
