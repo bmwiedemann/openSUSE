@@ -10846,8 +10846,10 @@ unsorted:
   - kyverno-bash-completion 
   - kyverno-fish-completion 
   - kyverno-zsh-completion 
+  - labplot 
   - labplot-kf5 
   - labplot-kf5-lang 
+  - labplot-lang 
   - labwc 
   - labwc-lang 
   - labwc-tweaks 
@@ -12208,8 +12210,6 @@ unsorted:
   - libbiblesync2_0 
   - libbinio-devel 
   - libbinio1 
-  - libbitcoinconsensus-devel 
-  - libbitcoinconsensus0 
   - libbitmask-devel 
   - libbitmask1 
   - libbitstream2 
@@ -20976,6 +20976,7 @@ unsorted:
   - palaura 
   - palette 
   - palette-lang 
+  - palo 
   - pam-devel 
   - pam-devel-32bit 
   - pam-doc 
@@ -35970,6 +35971,7 @@ unsorted:
   - rbenv-bundle-exec 
   - rbenv-zsh-completion 
   - rbutil 
+  - rc 
   - rcc-runtime 
   - rclone 
   - rclone-bash-completion 
