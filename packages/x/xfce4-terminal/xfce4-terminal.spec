@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-terminal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,9 @@ Patch1:         relax-x11-version.patch
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
+%endif
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.22.0
@@ -64,11 +66,17 @@ helps to save space on the desktop.
 %if %{with git}
 NOCONFIGURE=1 ./autogen.sh
 %configure \
-    --enable-maintainer-mode \
-    --with-utempter
+%if 0%{?suse_version} < 1600
+    --with-utempter \
+%endif
+    --enable-maintainer-mode
 %else
+%if 0%{?suse_version} < 1600
 %configure \
     --with-utempter
+%else
+%configure
+%endif
 %endif
 %make_build
 
