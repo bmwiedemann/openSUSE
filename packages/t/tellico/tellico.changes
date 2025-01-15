@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 15 09:08:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.1
+  https://tellico-project.org/tellico-4-1-released/
+  * Improved image loading to be on-demand only, improving load
+    time for local and remote images (kde#490922).
+  * Redesigned the welcome screen.
+  * Added an option to disable the welcome screen.
+  * Added property to disable line feed replacement in Paragraph
+    fields.
+  * Added tooltips in the Settings for configured image location.
+  * Added a tooltip to show the internal field name for custom
+    fields.
+  * Tweaked the report templates to follow color settings.
+  * Added option to disable building of documentation.
+  * Improved logging for data searches.
+  * Fixed print preview (kde#496816).
+  * Fixed a crashing bug when printing (kde#496648).
+  * FIxed theme handling when using qt6ct (kde#496074).
+  * Updated the data sources for Dark Horse comics (deb#1087109),
+    iTunes search, and Kino.de.
+  * Fixed compilation on FreeBSD with libcdio.
+
+-------------------------------------------------------------------
 Tue Oct  1 21:16:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.0.1
