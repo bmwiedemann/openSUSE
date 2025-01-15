@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 13 22:48:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.5.2:
+  * Compatibility with gnunet 0.23.0
+  * Implement iteration of tags by chat contact
+  * Adjust types and API to improve consistency
+  * Add more test cases and fix some older test cases
+  * Adjust IV derivation for file encryption/decryption key
+
+-------------------------------------------------------------------
 Sun Oct 20 06:09:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.5.1:

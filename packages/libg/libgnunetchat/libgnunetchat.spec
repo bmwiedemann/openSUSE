@@ -1,7 +1,7 @@
 #
 # spec file for package libgnunetchat
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgnunetchat
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Library for applications to utilize the Messenger service of GNUnet
 License:        AGPL-3.0-or-later
