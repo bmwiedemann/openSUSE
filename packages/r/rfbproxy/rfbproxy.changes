@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 14 13:20:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean up old, commented patches that have not been there forever
+  (addressing RPM 4.20, where %patch is a standard macro and
+  commenting it out using # might lead to errors).
+
+-------------------------------------------------------------------
 Tue Oct 14 09:38:19 UTC 2014 - jengelh@inai.de
 
 - Enable parallel biuld and remove ancient specfile tags and sections
