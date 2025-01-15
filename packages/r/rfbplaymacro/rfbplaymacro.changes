@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 14 13:14:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean up old, commented patches that have not been there forever
+  (addressing RPM 4.20, where %patch is a standard macro and
+  commenting it out using # might lead to errors).
+
+-------------------------------------------------------------------
 Fri May 09 17:05:57 CEST 2008 - mfabian@suse.de
 
 - bnc#388222: update to 0.2.2
