@@ -140,4 +140,30 @@
     <comment></comment>
     <requestid>1225867</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a956bad3e7b8e2706f6bf707472b55d</srcmd5>
+    <version>3.6.1</version>
+    <time>1736959502</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.6.0: (boo#1235876)
+  This release introduces a security fix for all platforms, which
+  has been assigned CVE-2024-53263.
+  When requesting credentials from Git for a remote host, prior
+  versions of Git LFS passed portions of the host's URL to the
+  git-credential(1) command without checking for embedded
+  line-ending control characters, and then sent any credentials
+  received back from the Git credential helper to the remote host.
+  By inserting URL-encoded control characters such as line feed
+  (LF) or carriage return (CR) characters into the URL, an attacker
+  might have been able to retrieve a user's Git credentials.
+  Git LFS now prevents bare line feed (LF) characters from being
+  included in the values sent to the git-credential(1) command, and
+  also prevents bare carriage return (CR) characters from being
+  included unless the credential.protectProtocol configuration
+  option is set to a value equivalent to false.
+  * Bugs
+    - Reject bare line-ending control characters in Git credential
+      requests (@chrisd8088)</comment>
+    <requestid>1238007</requestid>
+  </revision>
 </revisionlist>
