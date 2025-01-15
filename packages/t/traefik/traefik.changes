@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jan 12 16:50:31 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+- Version 3.3.1 changes
+  - acme
+    * Add options to control ACME propagation checks (#11241 by ldez)
+  - api
+    * Add support dump API endpoint (#11328 by mmatur)
+  - http
+    * Set Host header in HTTP provider request (#11237 by nikonhub)
+  - k8s/crd, k8s
+    * Make the IngressRoute kind optional (#11177 by skirtan1)
+  - k8s/ingress, sticky-session, k8s/crd,k8s
+    * Support serving endpoints (#11121 by BZValoche)
+    * Fix fenced server status computation (#11361 by kevinpollet)
+  - logs, accesslogs
+    * OpenTelemetry Logs and Access Logs (#11319 by rtribotte)
+    * Add experimental flag for OTLP logs integration (#11335 by kevinpollet)
+  - metrics, tracing, accesslogs
+    * Manage observability at entrypoint and router level (#11308 by rtribotte)
+  - middleware, authentication
+    * Add an option to preserve the ForwardAuth Server Location header (#11318 by Nelwhix)
+    * Only calculate basic auth hashes once for concurrent requests (#11143 by michelheusschen)
+    * Send request body to authorization server for forward auth (#11097 by kyo-ke)
+  - plugins
+    * Add AbortOnPluginFailure option to abort startup on plugin load failure (#11228 by bmagic)
+  - sticky-session
+    * Configurable path for sticky cookies (#11165 by IIpragmaII)
+  - webui, api
+    * Configurable API & Dashboard base path (#11250 by rtribotte)
+
+-------------------------------------------------------------------
 Tue Jan  7 15:47:17 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.2.5
