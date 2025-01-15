@@ -1,0 +1,11 @@
+diff -Nru netutils-1.12.0.orig/pyproject.toml netutils-1.12.0/pyproject.toml
+--- netutils-1.12.0.orig/pyproject.toml	2025-01-08 23:21:29.000000000 +0100
++++ netutils-1.12.0/pyproject.toml	2025-01-14 11:39:00.467478137 +0100
+@@ -1,6 +1,6 @@
+ [tool.poetry]
+ name = "netutils"
+-version = "1.11.0"
++version = "1.12.0"
+ description = "Common helper functions useful in network automation."
+ authors = ["Network to Code, LLC <opensource@networktocode.com>"]
+ license = "Apache-2.0"

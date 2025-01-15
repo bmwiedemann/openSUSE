@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 14 10:42:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.12.0
+  * Added Python 3.13 support.
+  * Removed Python 3.8 support.
+- from version 1.11.0
+  * (no changes reported)
+- Add fix-version-in-pyproject.patch to fix version in pyproject.toml
+- Drop use-legacycrypt-if-required.patch, merged upstream
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Dec  3 03:45:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.10.0:

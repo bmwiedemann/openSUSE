@@ -1,7 +1,7 @@
 #
 # spec file for package python-netutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           python-netutils
-Version:        1.10.0
+Version:        1.12.0
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0
 URL:            https://netutils.readthedocs.io
 Source:         https://github.com/networktocode/netutils/archive/refs/tags/v%{version}.tar.gz#/netutils-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#networktocode/netutils#601
-Patch0:         use-legacycrypt-if-required.patch
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FIX-UPSTREAM - Fix version in pyproject.toml
+# see: https://github.com/networktocode/netutils/issues/613
+Patch:          fix-version-in-pyproject.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module legacycrypt if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
