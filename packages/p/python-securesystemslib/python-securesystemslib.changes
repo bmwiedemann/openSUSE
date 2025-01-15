@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 17:00:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Remove ed25519 tests to avoid that module in Leap
+
+-------------------------------------------------------------------
 Thu Oct 31 07:30:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed patch use_python3_interpreter_in_tests.diff

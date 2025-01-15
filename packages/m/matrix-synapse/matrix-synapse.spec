@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-synapse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %if %{with use_poetry_for_dependencies}
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.4
-%global Pillow_version                10.4.0
+%global Pillow_version                11.0.0
 %global PyYAML_version                6.0.2
 %global attrs_version                 23.2.0
 %global bcrypt_version                4.2.0
@@ -58,9 +58,11 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
+# TODO: 1.4.0
 %global Authlib_version               1.3.2
 %global lxml_version                  5.3.0
-%global sentry_sdk_version            2.13.0
+# TODO: 2.19.2
+%global sentry_sdk_version            2.19.0
 %global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -154,7 +156,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.121.0
+Version:        1.122.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

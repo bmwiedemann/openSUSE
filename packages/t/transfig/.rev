@@ -627,4 +627,25 @@
     directives with PDF 1.4 (boo#1230427)</comment>
     <requestid>1200547</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>1b7a5d08990aeeb5d79e9eae216e50ff</srcmd5>
+    <version>3.2.9a</version>
+    <time>1736959324</time>
+    <user>anag+factory</user>
+    <comment>- Update to fig2dev version 3.2.9a (Dec 2024)
+  o Specify pdf minor version with option -Y.
+  o Specify width (-Z &lt;wid&gt;w) or height (-Z &lt;height&gt;h) of figure.
+  o Correctly read from a pipe, ticket #156.
+  o Fix behavior of option -F for e(e)pic and latex outputs, ticket #157.
+  o Compounds containing ascii-only text would disable utf-8 output, #158.
+  o Option --enable-versioning works in out-of-tree builds.
+  o Correct links to embedded image files in svg output.
+  o Correct font size in svg output, ticket #176.
+- Port patches
+  * 0001-Use-native-fig2dev-pdf-output-instead-of-epstopdf.patch
+  * fig2dev-3.2.6-fig2mpdf.patch
+  * transfig-3.2.9.dif
+  * transfig-gs10.03.patch</comment>
+    <requestid>1237664</requestid>
+  </revision>
 </revisionlist>

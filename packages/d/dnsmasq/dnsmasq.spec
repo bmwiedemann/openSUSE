@@ -1,7 +1,7 @@
 #
 # spec file for package dnsmasq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,13 @@
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 %bcond_without tftp_user_package
+%bcond_without nftset
+%define dnsmasq_group dnsmasq
 %else
 %bcond_with tftp_user_package
+%bcond_with nftset
+Requires(pre):  group(nogroup)
+%define dnsmasq_group nogroup
 %endif
 Name:           dnsmasq
 Version:        2.90
@@ -37,12 +42,14 @@ Source6:        system-user-dnsmasq.conf
 Patch0:         dnsmasq-groups.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
-BuildRequires:  libidn2-devel
 BuildRequires:  libnettle-devel
 BuildRequires:  lua-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libnftables)
+BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libnetfilter_conntrack)
+%if %{with nftset}
+BuildRequires:  pkgconfig(libnftables)
+%endif
 BuildRequires:  pkgconfig(systemd)
 Provides:       dns_daemon
 %if %{with tftp_user_package}
@@ -89,13 +96,13 @@ sed -i -e 's|\(PREFIX *= *\)%{_prefix}/local|\1/usr|;
 sed -i -e 's|lua5.2|lua%{lua_version}|' Makefile
 
 # SED-FIX-UPSTREAM -- Fix man page
-sed -i -e 's|The default is "dip",|The default is "dnsmasq",|' \
+sed -i -e 's|The default is "dip",|The default is "%dnsmasq_group",|' \
 	man/dnsmasq.8
 
 # SED-FIX-UPSTREAM -- Fix cachesize, group , user and pid location
 sed -i -e 's|CACHESIZ 150|CACHESIZ 2000|;
 	   s|CHUSER "nobody"|CHUSER "dnsmasq"|;
-	   s|CHGRP "dip"|CHGRP "dnsmasq"|;
+	   s|CHGRP "dip"|CHGRP "%dnsmasq_group"|;
 	   s|RUNFILE "/var/run/dnsmasq.pid"|RUNFILE "%{_rundir}/dnsmasq.pid"|' \
 	src/config.h
 
@@ -122,8 +129,11 @@ export CFLAGS="%{optflags} -std=gnu99 -fPIC -DPIC -fpie"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 # the dnsmasq make system hashes the configuration flags, so we have to supply the
 # same flags for make and make install, else everything gets recompiled
-%define _copts   "-DHAVE_DBUS -DHAVE_CONNTRACK -DHAVE_LIBIDN2 -DHAVE_DNSSEC -DHAVE_LUASCRIPT -DHAVE_NFTSET"
+%define _copts   "-DHAVE_DBUS -DHAVE_CONNTRACK -DHAVE_LIBIDN2 -DHAVE_DNSSEC -DHAVE_LUASCRIPT %{?with_nftset:-DHAVE_NFTSET}"
 %make_build AWK=gawk all-i18n CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" COPTS=%{_copts}
+# Make sure that compile time options don't change unnoticed
+./src/dnsmasq --version |
+grep -q "Compile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 Lua TFTP conntrack ipset %{!?with_nftset:no-}nftset auth cryptohash DNSSEC loop-detect inotify dumpfile"
 %if %{with tftp_user_package}
 %sysusers_generate_pre %{SOURCE6} dnsmasq system-user-dnsmasq.conf
 %endif
@@ -138,7 +148,7 @@ if ! %{_bindir}/getent passwd tftp >/dev/null; then
     -r -s /bin/false tftp
 fi
 if ! %{_bindir}/getent passwd dnsmasq >/dev/null; then
-    %{_sbindir}/useradd -r -d %{_localstatedir}/lib/empty -s /bin/false -c "dnsmasq" -g nogroup -G tftp dnsmasq
+    %{_sbindir}/useradd -r -d %{_localstatedir}/lib/empty -s /bin/false -c "dnsmasq" -g "%dnsmasq_group" -G tftp dnsmasq
 fi
 %else
 

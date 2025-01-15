@@ -101,4 +101,12 @@
   * https://www.postgresql.org/docs/release/17.2/</comment>
     <requestid>1225748</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>97a65afdb5bd6bf5b544255e471234d5</srcmd5>
+    <version>17.2</version>
+    <time>1736959347</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237832</requestid>
+  </revision>
 </revisionlist>

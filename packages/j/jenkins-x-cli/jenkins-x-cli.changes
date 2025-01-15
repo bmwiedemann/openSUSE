@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan 15 11:56:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.7:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.13
+
+-------------------------------------------------------------------
+Wed Jan 15 11:52:24 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.6:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.67
+
+-------------------------------------------------------------------
+Wed Jan 15 07:09:55 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.5:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.9
+
+-------------------------------------------------------------------
+Wed Jan 15 07:04:20 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.4:
+  * fix: update contributing go version and pre commit status
+
+-------------------------------------------------------------------
+Wed Jan 15 06:58:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.3:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    0.23.9
+
+-------------------------------------------------------------------
 Mon Dec 16 06:32:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package jenkins-x-cli: CLI for Jenkins-X. Jenkins X provides

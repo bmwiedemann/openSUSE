@@ -1,7 +1,7 @@
 #
 # spec file for package QMPlay2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -112,7 +112,7 @@ It's a development package for %{name}.
 %prep
 %autosetup -p1 -n %{name}-%{version}.%{_mtime}.%{_commit}
 # %setup -q -n %{name}-%{version}.%{_mtime}.%{_commit}
-# %patch1 -p1
+# %%patch1 -p1
 
 %build
 # Build options

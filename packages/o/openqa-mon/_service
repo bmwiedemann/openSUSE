@@ -3,7 +3,7 @@
     <param name="url">https://github.com/grisu48/openqa-mon.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="version">v1.3.1</param>
+    <param name="version">v1.4.0</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
 	<param name="changesgenerate">enable</param>
   </service>

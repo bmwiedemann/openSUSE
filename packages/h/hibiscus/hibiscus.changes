@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 16:45:25 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.10.23
+  - NEW: 1119 Update auf HBCI4Java 3.1.85 - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.85 - siehe https://homebanking-hilfe.de/forum/topic.php?p=174231#real174231
+
+- Changes from 2.10.22
+  - NEW: 1118 Neue obantoo-Version mit aktualisierter BLZ-Datei gültig ab 09.12.2024
+  - NEW: 1117 Update auf HBCI4Java 3.1.84 - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.84
+  - CHG: 1116 Postbank-Kundenkennungen können ein „@“ enthalten
+
+-------------------------------------------------------------------
 Wed Sep 18 15:39:12 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.21

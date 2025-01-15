@@ -1,7 +1,7 @@
 #
 # spec file for package rusty_v8
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __requires_exclude_from ^%{_libdir}/crates/rusty_v8/.*$
 
 Name:           rusty_v8
-Version:        130.0.1
+Version:        130.0.7
 Release:        0
 Summary:        Build tooling for Deno (do not install or use!)
 License:        MIT

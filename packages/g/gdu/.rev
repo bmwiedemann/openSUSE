@@ -33,4 +33,15 @@
   * fix: division by zero error in formatFileRow by @xroberx in #359 (forwarded request 1232835 from timos2543)</comment>
     <requestid>1232877</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14c4a3b0dec593874eff51e8ac13c7d3</srcmd5>
+    <version>5.30.1</version>
+    <time>1736959416</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Use a BUILD_DATE suitable to preserve reproducible builds
+  * BUILD_DATE is used in bespoke LDFLAGS arg to go build expected
+    by gdu --version output (forwarded request 1237925 from jfkw)</comment>
+    <requestid>1237926</requestid>
+  </revision>
 </revisionlist>

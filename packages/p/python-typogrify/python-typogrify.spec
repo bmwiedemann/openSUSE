@@ -1,7 +1,7 @@
 #
 # spec file for package python-typogrify
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typogrify
-Version:        2.0.7
+Version:        2.1.0
 Release:        0
 Summary:        Typography related template filters for Django & Jinja2 applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mintchaos/typogrify
 Source:         https://files.pythonhosted.org/packages/source/t/typogrify/typogrify-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module smartypants}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module smartypants >= 1.8.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-smartypants
+Requires:       python-smartypants >= 1.8.3
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,16 +42,17 @@ typographically-improved HTML.
 
 %prep
 %setup -q -n typogrify-%{version}
-# remove useless shebang
+# remove useless shebang and executable bit
 sed -i '1d' \
 	typogrify/packages/titlecase/__init__.py \
 	typogrify/packages/titlecase/tests.py
+chmod -x typogrify/packages/titlecase/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}%{_prefix}
 
 %check
@@ -60,7 +62,8 @@ $python -mdoctest -v typogrify/filters.py
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/typogrify-%{version}.dist-info
+%{python_sitelib}/typogrify
 
 %changelog

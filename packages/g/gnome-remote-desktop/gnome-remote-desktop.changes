@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 12 08:41:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Fix gdctl crash when setting VNC password
+  + Don't hard code keyboard type
+
+-------------------------------------------------------------------
 Sun Nov 24 20:26:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:

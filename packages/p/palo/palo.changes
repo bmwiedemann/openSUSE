@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Jan 14 10:35:09 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.27
+  * Fix loading initrd from CD-ROM on C8000 by limiting transfer
+    size.
+  * ipl: Add hidden option to toggle block read mode.
+
+-------------------------------------------------------------------
+Wed Jan  8 11:04:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.26
+  * Fix file permissions of documentation.
+  * Rephrased 2GB boot limit message in palo ipl loader
+  * PA-RISC Wiki was migrated to kerneldoc documentation
+  * Adjust pathnames for openSUSE. Prepare for initial openSUSE
+    package.
+- Drop patch:
+  * makefile.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Mon Dec  9 22:17:51 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.25
+- Add patch:
+  * makefile.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package python-securesystemslib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Source:         securesystemslib-%{version}.tar.xz
 BuildRequires:  %{python_module PyKCS11}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cryptography >= 3.3.2}
-BuildRequires:  %{python_module ed25519}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -59,9 +58,10 @@ rm -rf %{buildroot}%{$python_sitelib}/securesystemslib/_vendor/ed25519/.gitignor
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-donttest="test_ed25519_kat or test_checkparams"
 # spinhcs+ key support requires the pyspx library
-donttest+=" or test_sphincs"
+donttest="test_sphincs"
+# remove the ed25519 tests, the module is "Not Recommended For New Applications: Use pynacl Instead"
+rm securesystemslib/_vendor/ed25519/test_ed25519.py
 %pytest -k "not ($donttest)"
 
 %files %{python_files}

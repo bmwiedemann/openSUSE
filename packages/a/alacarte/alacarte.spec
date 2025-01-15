@@ -1,7 +1,7 @@
 #
 # spec file for package alacarte
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alacarte
-Version:        3.54.0
+Version:        3.54.1
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later

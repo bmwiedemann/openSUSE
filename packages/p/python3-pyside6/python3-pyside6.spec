@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define short_version 6.8.0
+%define tar_version 6.8.1.1
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,21 +43,16 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.8.0.2
+Version:        6.8.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{short_version}.tar.xz
+Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{tar_version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
 Patch1:         fix-pytest-qt.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-signature-Fix-pointers-to-signature-bytes-with-the-h.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-PySide6-Documentation-Name-the-.rst-doc-files-accord.patch
-Patch4:         0001-build-Install-module-doc-snippet-files.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx
@@ -76,10 +71,7 @@ BuildRequires:  pkgconfig(libxslt)
 # /SECTION
 %if "%{pyside_flavor}" == "pyside6"
 # For the registry_existence test
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
-# Not available in 15.5
 BuildRequires:  %{mypython}-distro
-%endif
 BuildRequires:  %{mypython}-shiboken6-devel = %{version}
 # SECTION test_dependencies
 BuildRequires:  Mesa-dri
@@ -169,7 +161,7 @@ Obsoletes:      python3-%{pyside_flavor}-devel < %{version}-%{release}
 Python bindings for the Qt cross-platform application and UI framework
 
 %prep
-%autosetup -p1 -n %{tar_name}-%{short_version}
+%autosetup -p1 -n %{tar_name}-%{version}
 
 # Restore 6.6.1 RPATH value. rpmlint will complain otherwise
 sed -i 's#${base}/../shiboken6/##' sources/pyside6/CMakeLists.txt
@@ -269,10 +261,6 @@ ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_te
 # QtWidgets_bug_668, QtWidgets_bug_728 segfault
 %ifarch aarch64
 ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test|QtWebEngineCore_web_engine_custom_scheme|QtWebEngineCore_qwebenginecookiestore_test|pysidetest_new_inherited_functions_test|QtWidgets_bug_668|QtWidgets_bug_728"
-%endif
-# python311-distro is unavailable in 15.5, skip registry_existence_test
-%if 0%{?sle_version} == 150500
-ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test"
 %endif
 %endif
 

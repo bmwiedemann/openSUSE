@@ -1,0 +1,11 @@
+<package name="palo" project="openSUSE:Factory">
+  <title>Linux boot loader for HP PA-RISC</title>
+  <description>PALO is the boot loader for HP PA-RISC machines. This package contains
+both the actual boot loader called iplboot as well as a boot media
+management tool after which bears the name PALO. While iplboot
+can be used on PA-RISC machines only, the PALO media management tool
+runs on any architecture and is used to create boot media for
+HP PA-RISC machines.</description>
+  <devel project="Base:System" package="palo"/>
+  <url>https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git/</url>
+</package>

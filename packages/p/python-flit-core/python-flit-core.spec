@@ -1,7 +1,7 @@
 #
 # spec file for package python-flit-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,14 +52,12 @@ ExclusiveArch:  do-not-build
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-flit-core%{?psuffix}
-Version:        3.9.0
+Version:        3.10.1
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/pypa/flit
 Source0:        https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-%{version}.tar.gz
-Patch1:         https://github.com/pypa/flit/commit/915fa612e227fb4bf67f8484af5c8a399f108526.patch#/py312-avoid-using-utcfromtimestamp.patch
-Patch2:         https://github.com/pypa/flit/commit/6ab62c91d0db451b5e9ab000f0dba5471550b442.patch#/py314-avoid-using-ast-str.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -102,8 +100,6 @@ $mypython -m flit_core.wheel
 %{python_expand #
 mkdir -p %{buildroot}%{$python_sitelib}
 $python bootstrap_install.py dist/flit_core-%{version}-py3-none-any.whl -i %{buildroot}%{$python_sitelib}
-# Don't package the tests
-rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
 }
 %{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -119,7 +115,7 @@ rm flit_core/*.py pyproject.toml
 %if "%{flavor}" != "test"
 %files %{python_files}
 %{python_sitelib}/flit_core
-%{python_sitelib}/flit_core-%{version}*-info
+%{python_sitelib}/flit_core-%{version}.dist-info
 %endif
 
 %changelog

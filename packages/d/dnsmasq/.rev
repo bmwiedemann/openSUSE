@@ -940,4 +940,15 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment></comment>
     <requestid>1225486</requestid>
   </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>610fb4cb17f3c71fdb7ced0de9ff2893</srcmd5>
+    <version>2.90</version>
+    <time>1736959335</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1235834: Don't let compile time options change silently.
+- Use pkgconfig for libidn2.
+- Disable --nftset for SLE-15-SP3 and older.
+- bsc#1235517: Reintroduce nogroup for SLE-15-SP3 and older.</comment>
+    <requestid>1237778</requestid>
+  </revision>
 </revisionlist>

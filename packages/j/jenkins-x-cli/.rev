@@ -7,4 +7,12 @@
     <comment>new package jenkins-x-cli: CLI for Jenkins-X. Jenkins X provides automated CI+CD for Kubernetes with Preview Environments on Pull Requests using Cloud Native pipelines from Tekton</comment>
     <requestid>1234135</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f2e7e6c4e46a221e7a729b7d04d5d5ee</srcmd5>
+    <version>3.11.7</version>
+    <time>1736959478</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238031</requestid>
+  </revision>
 </revisionlist>

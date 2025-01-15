@@ -5678,4 +5678,41 @@ I cannot test locally unfortunately.
     allow client-side path traversal</comment>
     <requestid>1231002</requestid>
   </revision>
+  <revision rev="352" vrev="1">
+    <srcmd5>985a432760dc5527ef1933ee698cce98</srcmd5>
+    <version>128.6.0</version>
+    <time>1736959427</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.6.0
+  * New mail notification was not hidden after reading the new message
+  * New mail notification could show for the wrong folder, causing
+    repeated alerts
+  * macOS shortcut CMD+1 did not restore the main window when it was
+    minimized
+  * Clicking the context menu &quot;Reply&quot; button resulted in &quot;Reply-All&quot;
+  * Switching from &quot;All&quot;, &quot;Unread&quot;, and &quot;Threads with unread&quot; did not work
+  * Downloading message headers from a newsgroup could cause a hang
+  * Message list performance slow when many updates happened at once
+  * &quot;mailto:&quot; links did not apply the compose format of the current identity
+  * Authentication failure of AUTH PLAIN or AUTH LOGIN did not fall
+    back to USERPASS
+  MFSA 2025-05  (bsc#1234991)
+  * CVE-2025-0237 (bmo#1915257)
+    WebChannel APIs susceptible to confused deputy attack
+  * CVE-2025-0238 (bmo#1915535)
+    Use-after-free when breaking lines in text
+  * CVE-2025-0239 (bmo#1929156)
+    Alt-Svc ALPN validation failure when redirected
+  * CVE-2025-0240 (bmo#1929623)
+    Compartment mismatch when parsing JavaScript JSON module
+  * CVE-2025-0241 (bmo#1933023)
+    Memory corruption when using JavaScript Text Segmentation
+  * CVE-2025-0242 (bmo#1874523, bmo#1926454, bmo#1931873, bmo#1932169)
+    Memory safety bugs fixed in Firefox 134, Thunderbird 134,
+    Firefox ESR 115.19, Firefox ESR 128.6, Thunderbird 115.19,
+    and Thunderbird 128.6
+  * CVE-2025-0243 (bmo#1827142, bmo#1932783)
+    Memory safety bugs fixed in Firefox 134, Thunderbird 134,</comment>
+    <requestid>1237936</requestid>
+  </revision>
 </revisionlist>

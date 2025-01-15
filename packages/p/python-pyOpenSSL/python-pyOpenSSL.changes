@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 13 22:33:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build tests noarch: they refer to %__isa, which differs
+  per architecture, invalidating the noarch option.
+  Fixes build with rpm 4.20.
+
+-------------------------------------------------------------------
 Tue Jul 23 11:39:23 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - 24.2.1:

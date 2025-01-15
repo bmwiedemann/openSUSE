@@ -18,14 +18,14 @@
 
 %define cpan_name DBI
 Name:           perl-DBI
-Version:        1.645.0
+Version:        1.646.0
 Release:        0
-# 1.645 -> normalize -> 1.645.0
-%define cpan_version 1.645
+# 1.646 -> normalize -> 1.646.0
+%define cpan_version 1.646
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Database independent interface for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
+Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        perl-DBI.rpmlintrc
 Source2:        cpanspec.yml
 BuildRequires:  perl

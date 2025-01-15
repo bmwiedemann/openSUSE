@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 06:56:26 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.3.1:
+  * fix divert with docker compose (#4651) (#4653)
+
+-------------------------------------------------------------------
 Fri Jan 10 05:59:38 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.3.0:

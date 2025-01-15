@@ -12,7 +12,7 @@ diff --git a/fig2dev/dev/genpstex.c b/fig2dev/dev/genpstex.c
 index bb081fd..5999e03 100644
 --- a/fig2dev/dev/genpstex.c
 +++ b/fig2dev/dev/genpstex.c
-@@ -279,10 +279,7 @@ int depth;
+@@ -280,10 +280,7 @@ int depth;
  	sprintf(szFileName + iLength, "%03d", iObjectsFileNumber++);
  	fprintf(ptCreateFile, "if [ \"$iOptRemove\" == \"\" ]; then\n");
  	if (iPdfOutputs)

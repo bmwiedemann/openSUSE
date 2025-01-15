@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 14 19:57:53 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.1
+  * waitforcardevent(): do not miss events between 2 calls.
+  * Test, fix, and simplify ATR parsing.
+
+-------------------------------------------------------------------
 Sun Oct 20 20:20:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.0

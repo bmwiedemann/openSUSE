@@ -12,7 +12,7 @@
  
  ! Image editor - can edit imported image
  Fig.image_editor:		xdg-open
-@@ -166,8 +167,11 @@ Fig*canvas.shadowWidth:  0
+@@ -180,8 +181,11 @@ Fig*canvas.shadowWidth:  0
  
  ! If on monochrome server, or no Fig-color app-defaults file
  ! This background resource shows between the buttons like a border
@@ -25,7 +25,7 @@
  
  ! Specify a private Compose key database file.  If this resource contains a "/"
  ! then the wired-in name of the xfig global directory will not be prefixed
-@@ -638,7 +642,29 @@ Fig*sideruler.background:		gray95
+@@ -652,7 +656,29 @@ Fig*sideruler.background:		gray95
  ! file panel and scrollbar
  Fig*FigList*background:			gray95
  Fig*List*background:			gray95

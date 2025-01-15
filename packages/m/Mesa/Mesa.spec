@@ -89,7 +89,7 @@
   %ifarch %{arm} aarch64
     %define with_vulkan 1
     %if 0%{?suse_version} > 1600
-    %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau
+    %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost
     %else
     %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk
     %endif
@@ -804,6 +804,13 @@ Group:          System/Libraries
 
 %description -n libvulkan_freedreno
 This package contains the Vulkan parts for Mesa.
+
+%package -n libvulkan_panfrost
+Summary:        Mesa vulkan driver for ARM Mali
+Group:          System/Libraries
+
+%description -n libvulkan_panfrost
+This package contains the Vulkan parts for Mesa.
 %endif
 
 %package -n Mesa-vulkan-device-select
@@ -1383,6 +1390,12 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d
 %{_datadir}/vulkan/icd.d/freedreno_icd.*.json
+
+%files -n libvulkan_panfrost
+%{_libdir}/libvulkan_panfrost.so
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%{_datadir}/vulkan/icd.d/panfrost_icd.*.json
 %endif
 
 %files -n Mesa-vulkan-device-select

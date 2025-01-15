@@ -1,7 +1,7 @@
 #
 # spec file for package hibiscus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %define _major 2
 %define _minor 10
-%define _micro 21
-%define _build 385
+%define _micro 23
+%define _build 387
 %define _version %{_major}.%{_minor}.%{_micro}
 %define _tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:22:56 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 2.1.0:
+  * Add ability to select which filters are applied
+  * Package via pyproject instead of Setuptools
+  * Improve testing, linting, and CI tooling
+  * Drop support for Python < 3.9
+- update the build requirements to build with pip and hatchling
+- remove executable bit of typogrify/packages/titlecase/__init__.py
+- restrict the list of packaged files to typogrify only
+
+-------------------------------------------------------------------
 Thu Jul  6 11:08:55 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

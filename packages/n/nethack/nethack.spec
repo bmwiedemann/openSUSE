@@ -19,11 +19,12 @@
 Name:           nethack
 Version:        3.4.3
 Release:        0
-Summary:        Character Based RPG
+Summary:        Turn-based role-playing game
 License:        NGPL
 Group:          Amusements/Games/RPG
-URL:            http://www.nethack.org/
+URL:            https://www.nethack.org
 Source0:        nethack-343-src.tar.bz2
+Source1:        nethack-rpmlintrc
 # PATCH-FIX-OPENSUSE nethack-config.patch Adapt build to openSUSE systems
 Patch0:         nethack-config.patch
 # PATCH-FIX-OPENSUSE nethack-decl.patch Do not redeclare system interfaces
@@ -47,8 +48,10 @@ Requires(pre):  permissions
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-This RPG is somewhat cryptic with its character based output. But a
-true fan knows and appreciates its complexity and possibilities.
+NetHack is a turn-based role-playing game with complex game mechanics.
+Descent into the Maze of Menace and retrieve the Amulet of Yendor. Play
+as different character classes, such as fighter, wizard, rogue and others.
+Persist against various monsters and defeat the Wizard of Yendor.
 
 This package contains the text interface.
 
@@ -93,32 +96,25 @@ install -d %{buildroot}%{_prefix}/games
 install -d %{buildroot}%{_datadir}/games/nethack
 install -d %{buildroot}/%{_mandir}/man6/
 # game directory
-install -m 775 -d %{buildroot}%{_localstatedir}/games/nethack/
-install -m 775 -d %{buildroot}%{_localstatedir}/games/nethack/save/
+install -d %{buildroot}%{_localstatedir}/games/nethack/
+install -d %{buildroot}%{_localstatedir}/games/nethack/save/
 for file in logfile paniclog perm record ; do
 	touch %{buildroot}%{_localstatedir}/games/nethack/$file
-	chmod 0664 %{buildroot}%{_localstatedir}/games/nethack/$file
 done
 # binaries
-install -m 2755 src/nethack %{buildroot}%{_prefix}/lib/nethack/
+install src/nethack %{buildroot}%{_prefix}/lib/nethack/
 # options
-install -m 644 dat/options %{buildroot}%{_prefix}/lib/nethack/
+install dat/options %{buildroot}%{_prefix}/lib/nethack/
 # man pages
-install -m 644 doc/{nethack,lev_comp,dlb,dgn_comp,recover}.6 %{buildroot}/%{_mandir}/man6/
-# doc
-install -d %{buildroot}/%{_docdir}/nethack
-install doc/fixes* %{buildroot}/%{_docdir}/nethack
-install doc/Guidebook.{ps,txt} %{buildroot}/%{_docdir}/nethack
+install doc/{nethack,lev_comp,dlb,dgn_comp,recover}.6 %{buildroot}/%{_mandir}/man6/
 # common data
-install -m0644 dat/nhdat %{buildroot}%{_datadir}/games/nethack/
-install -m0644 dat/license %{buildroot}%{_datadir}/games/nethack/
-# configs
-install -m0755 -d %{buildroot}%{_sysconfdir}/nethack
+install dat/nhdat %{buildroot}%{_datadir}/games/nethack/
+install dat/license %{buildroot}%{_datadir}/games/nethack/
 # main launcher script
 install -d %{buildroot}%{_bindir}
-install -m0755 sys/unix/nethack.sh %{buildroot}%{_bindir}/nethack
+install sys/unix/nethack.sh %{buildroot}%{_bindir}/nethack
 # utils
-install -m 755 util/{dgn_comp,dlb,lev_comp,makedefs,recover} %{buildroot}%{_prefix}/lib/nethack/
+install util/{dgn_comp,dlb,lev_comp,makedefs,recover} %{buildroot}%{_prefix}/lib/nethack/
 
 %fdupes -s %{buildroot}%{_datadir}/games/nethack/license
 
@@ -129,27 +125,29 @@ install -m 755 util/{dgn_comp,dlb,lev_comp,makedefs,recover} %{buildroot}%{_pref
 %verify_permissions -e /usr/lib/nethack/nethack
 
 %files
+%defattr(0644,root,root)
 %license dat/license
 %doc doc/fixes*
 %doc doc/Guidebook.ps
 %doc doc/Guidebook.txt
-%defattr(-,root,root)
-%verify(not mode) %attr(0755,games,games) %{_prefix}/lib/nethack/nethack
-%{_prefix}/lib/nethack/options
-%dir %{_prefix}/lib/nethack
-%{_datadir}/games/nethack
-%{_prefix}/lib/nethack/dgn_comp
-%{_prefix}/lib/nethack/dlb
-%{_prefix}/lib/nethack/lev_comp
-%{_prefix}/lib/nethack/makedefs
-%{_prefix}/lib/nethack/recover
+%attr(0755,-,-) %{_bindir}/nethack
 %{_mandir}/man6/*
+%dir %{_datadir}/games/nethack
+%{_datadir}/games/nethack/license
+%{_datadir}/games/nethack/nhdat
+%dir %{_prefix}/lib/nethack
+%attr(0755,-,-) %{_prefix}/lib/nethack/dgn_comp
+%attr(0755,-,-) %{_prefix}/lib/nethack/dlb
+%attr(0755,-,-) %{_prefix}/lib/nethack/lev_comp
+%attr(0755,-,-) %{_prefix}/lib/nethack/makedefs
+%attr(0755,-,-) %{_prefix}/lib/nethack/nethack
+%attr(0755,-,-) %{_prefix}/lib/nethack/recover
+%{_prefix}/lib/nethack/options
 %dir %attr(0770,games,games) %{_localstatedir}/games/nethack
 %dir %attr(0770,games,games) %{_localstatedir}/games/nethack/save
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/logfile
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/paniclog
 %config(noreplace) %attr(0660,games,games) %{_localstatedir}/games/nethack/record
 %attr(0660,games,games) %{_localstatedir}/games/nethack/perm
-%{_bindir}/nethack
 
 %changelog

@@ -1117,4 +1117,43 @@ mostly-working synapse than nothing at all) and the package has been update to
   without the python3 indirection</comment>
     <requestid>1230166</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>068161dcbb2a43df1ee1a7b315bff797</srcmd5>
+    <version>1.122.0</version>
+    <time>1736959399</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1237891 from darix
+
+- Update to 1.122.0
+  Please note that this version of Synapse drops support for
+  PostgreSQL 11 and 12. The minimum version of PostgreSQL supported
+  is now version 13.
+  - Deprecations and Removals
+    - Remove support for PostgreSQL 11 and 12. Contributed by @clokep. (#18034)
+  - Features
+    - Added the email.tlsname config option. This allows specifying
+      the domain name used to validate the SMTP server's TLS
+      certificate separately from the email.smtp_host to connect
+      to. (#17849)
+    - Module developers will have access to the user ID of the
+      requester when adding check_username_for_spam callbacks to
+      spam_checker_module_callbacks. Contributed by
+      Wilson@Pangea.chat. (#17916)
+    - Add endpoints to the Admin API to fetch the number of invites
+      the provided user has sent after a given timestamp, fetch the
+      number of rooms the provided user has joined after a given
+      timestamp, and get report IDs of event reports against a
+      provided user (i.e. where the user was the sender of the
+      reported event). (#17948)
+    - Support stable account suspension from MSC3823. (#17964)
+    - Add macaroon_secret_key_path config option. (#17983)
+  - Bugfixes
+    - Fix bug when rejecting withdrew invite with a
+      third_party_rules module, where the invite would be stuck for
+      the client. (#17930)
+    - Properly purge state groups tables when purging a room with
+      the Admin API. (#18024)
+    - Fix a bug preventing the admin redaction endpoint from</comment>
+    <requestid>1237892</requestid>
+  </revision>
 </revisionlist>

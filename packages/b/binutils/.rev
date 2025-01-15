@@ -2366,4 +2366,12 @@ soon.
     <comment>- Unset SUSE_ZNOW while running testsuite, many tests cannot cope (forwarded request 1231723 from Andreas_Schwab)</comment>
     <requestid>1235669</requestid>
   </revision>
+  <revision rev="176" vrev="5">
+    <srcmd5>9b1a519ba3151cb2d5d214cb58eca992</srcmd5>
+    <version>2.43</version>
+    <time>1736959351</time>
+    <user>anag+factory</user>
+    <comment>- Enable multitarget build on loongarch64 (forwarded request 1236850 from jsulig)</comment>
+    <requestid>1237516</requestid>
+  </revision>
 </revisionlist>

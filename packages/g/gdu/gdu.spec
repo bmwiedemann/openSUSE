@@ -1,7 +1,7 @@
 #
 # spec file for package gdu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gdu
-Version:        5.29.0
+Version:        5.30.1
 Release:        0
 Summary:        Fast disk usage analyzer with console interface
 License:        MIT
@@ -26,7 +26,7 @@ Source:         https://github.com/dundee/gdu/archive/refs/tags/v%{version}.tar.
 Source1:        vendor.tar.zstd
 BuildRequires:  gzip
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.21
 
 %description
 Fast disk usage analyzer with console interface. Gdu is intended
@@ -41,7 +41,13 @@ huge.
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
-go build ./cmd/%{name}
+# construct a BUILD_DATE compatible with reproducible builds
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+# populate LDFLAGS -X metadata for bespoke gdu version output
+# Not best practice for Go apps but gdu assumes this data is present
+LDFLAGS="-X github.com/dundee/gdu/v5/build.Version=%{version} -X 'github.com/dundee/gdu/v5/build.Time=${BUILD_DATE}' -X github.com/dundee/gdu/v5/build.User=OBS"
+go build -ldflags "$LDFLAGS" ./cmd/%{name}
 
 # compress upstream provided man page
 gzip %{name}.1

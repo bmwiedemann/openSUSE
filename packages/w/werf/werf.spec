@@ -1,7 +1,7 @@
 #
 # spec file for package werf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           werf
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
 Summary:        CLI for the Werf CI/CD system
 License:        Apache-2.0

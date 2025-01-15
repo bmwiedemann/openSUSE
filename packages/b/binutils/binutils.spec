@@ -1,7 +1,7 @@
 #
 # spec file for package binutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ Release:        0
 %define	make_check_handling	false
 %endif
 # handle all binary object formats supported by SUSE (and a few more)
-%ifarch %ix86 %arm aarch64 ia64 ppc ppc64 ppc64le riscv64 s390 s390x x86_64 %x86_64
+%ifarch %ix86 %arm aarch64 ia64 ppc ppc64 ppc64le riscv64 s390 s390x x86_64 %x86_64 loongarch64
 %define build_multitarget 1
 %else
 %define build_multitarget 0

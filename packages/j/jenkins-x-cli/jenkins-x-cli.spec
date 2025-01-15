@@ -1,7 +1,7 @@
 #
 # spec file for package jenkins-x-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name jx
 
 Name:           jenkins-x-cli
-Version:        3.11.2
+Version:        3.11.7
 Release:        0
 Summary:        CLI for Jenkins X
 License:        Apache-2.0

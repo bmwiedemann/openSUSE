@@ -12,7 +12,7 @@
  #include <signal.h>
  #include <stdio.h>
  #include <stdlib.h>
-@@ -805,9 +806,6 @@ main(int argc, char **argv)
+@@ -780,9 +781,6 @@ main(int argc, char **argv)
  		}
  	}
  
@@ -22,7 +22,7 @@
  	/*
  	 * save the command line arguments
  	 */
-@@ -914,6 +912,10 @@ main(int argc, char **argv)
+@@ -889,6 +887,10 @@ main(int argc, char **argv)
  	else
  		setup_icons_big();
  
@@ -33,7 +33,7 @@
  	/*************************************************/
  	/* indicate if the international option is unset */
  	/*************************************************/
-@@ -1663,6 +1665,9 @@ setup_visual(int *argc_p, char **argv, A
+@@ -1638,6 +1640,9 @@ setup_visual(int *argc_p, char **argv, A
  	 */
  	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options),
  			argc_p, argv, fallback_resources, args, 0);

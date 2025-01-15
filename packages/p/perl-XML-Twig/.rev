@@ -295,4 +295,24 @@
     <comment></comment>
     <requestid>1155450</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e64ffa23a4c60723d56416058158df8d</srcmd5>
+    <version>3.530.0</version>
+    <time>1736959328</time>
+    <user>anag+factory</user>
+    <comment>- Update perl-XML-Twig-CVE-2016-9180.patch
+- updated to 3.530.0 (3.53)
+   see /usr/share/doc/packages/perl-XML-Twig/Changes
+  3.53 - 2024-12-10 - minor maintenance release
+  - fixed warning from recent perl version
+    See RT#155759 https://rt.cpan.org/Public/Bug/Display.html?id=155759
+  - fixed bug with namespaced elements in navigation
+  - added multiclass selectors in navigation and handler triggers
+    (css style, eg elt.class1.class2)
+  - fixed bug with dots in element names confusing navigation
+    conditions in some cases
+  - fixed output when a CDATA section includes a CDATA end marker
+    spotted by Djibril (forwarded request 1237600 from tinita)</comment>
+    <requestid>1237717</requestid>
+  </revision>
 </revisionlist>

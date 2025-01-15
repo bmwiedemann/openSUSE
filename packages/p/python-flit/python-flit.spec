@@ -1,7 +1,7 @@
 #
 # spec file for package python-flit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-flit
-Version:        3.9.0
+Version:        3.10.1
 Release:        0
 Summary:        Simplified packaging of Python modules
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pypa/flit
 Source:         https://files.pythonhosted.org/packages/source/f/flit/flit-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module flit-core >= %{version}}
 BuildRequires:  %{python_module pip}
@@ -36,10 +34,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils
 Requires:       python-flit-core >= %{version}
+Requires:       python-pip
 Requires:       python-requests
 Requires:       python-tomli-w
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 2.7.3}
@@ -85,6 +84,6 @@ export PATH=$PWD/build/testbin/:$PATH
 %license LICENSE
 %python_alternative %{_bindir}/flit
 %{python_sitelib}/flit
-%{python_sitelib}/flit-%{version}*-info
+%{python_sitelib}/flit-%{version}.dist-info
 
 %changelog

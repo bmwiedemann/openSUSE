@@ -1,7 +1,7 @@
 #
 # spec file for package apache2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -735,6 +735,8 @@ apxs -q CFLAGS | grep "\\%{optflags}"
 cp %{SOURCE21} mod_example.c
 apxs -c mod_example.c
 test_dir="$PWD/my-test-devel"
+# hack: %{_libdir} cannot be used in noarch packages, define shell variable _libdir, using apxs to find the real value
+_libexecdir=$(apxs -q libdir)/apache2
 echo "Try to load example module"
 mkdir $test_dir
 cat > $test_dir/httpd.conf << EOF
@@ -745,7 +747,7 @@ User $(id -un)
 Group $(id -gn)
 Listen 60080
 DocumentRoot $test_dir
-LoadModule authz_core_module %{libexecdir}-%{default_mpm}/mod_authz_core.so
+LoadModule authz_core_module ${_libexecdir}-%{default_mpm}/mod_authz_core.so
 LoadModule example_module $PWD/.libs/mod_example.so
 <Location /hello>
   SetHandler example-handler
@@ -780,15 +782,17 @@ function dep()
 }
 # create a conf loading all MPM's modules
 echo >  $PWD/load-all-modules.conf
+# hack: %{_libdir} cannot be used in noarch packages, define shell variable _libdir, using apxs to find the real value
+_libdir=$(apxs -q libdir)
 # hack: sort -u to load mod_proxy before mod_proxy_http, mod_cache before mod_cache_disk, etc.
-modules=$(find %{_libdir}/apache2-%{mpm}/ %{_libdir}/apache2/ -name *.so | sed 's:.*/mod_\(.*\).so:\1:' | sort -u)
+modules=$(find ${_libdir}/apache2-%{mpm}/ ${_libdir}/apache2/ -name *.so | sed 's:.*/mod_\(.*\).so:\1:' | sort -u)
 # fix up dependencies
 dep "lbmethod_bybusyness" "proxy"
 dep "lbmethod_byrequests" "proxy"
 dep "lbmethod_bytraffic"  "proxy"
 dep "lbmethod_heartbeat"  "proxy"
 for m in $modules; do
-  path=$(find %{_libdir}/apache2-%{mpm}/ %{_libdir}/apache2/ -name mod_$m.so | head -n 1)
+  path=$(find ${_libdir}/apache2-%{mpm}/ ${_libdir}/apache2/ -name mod_$m.so | head -n 1)
   if ! grep -q "mod_$m.c" $PWD/load-all-modules.conf; then
     echo "<IfModule !mod_$m.c>"           >> $PWD/load-all-modules.conf
     echo "  LoadModule ${m}_module $path" >> $PWD/load-all-modules.conf

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-remote-desktop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define polkit_req >= 122
 
 Name:           gnome-remote-desktop
-Version:        47.2
+Version:        47.3
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later

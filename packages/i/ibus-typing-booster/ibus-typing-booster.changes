@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 14 20:32:40 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.8
+- Make code to support multiple m17n candidates better readable using a NamedTuple
+  (Related: https://github.com/mike-fabian/ibus-typing-booster/issues/523)
+- Translation update from Weblate (it 100%, pt 94.4%)
+
+-------------------------------------------------------------------
 Wed Jan 08 19:29:14 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.7

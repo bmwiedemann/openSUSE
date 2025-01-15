@@ -1,0 +1,8 @@
+# no testsuite available
+addFilter("no-%check-section")
+
+# empty files required in package
+addFilter("zero-length /var/games/nethack/logfile")
+addFilter("zero-length /var/games/nethack/paniclog")
+addFilter("zero-length /var/games/nethack/perm")
+addFilter("zero-length /var/games/nethack/record")

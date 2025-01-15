@@ -10,3 +10,27 @@ Index: libquicktime-1.2.4+git20180804.fff99cd/configure.ac
      main()
      {
      int version_major;
+@@ -661,6 +662,7 @@
+ AC_TRY_RUN([
+     #include <inttypes.h>
+     #include <faac.h>
++int
+     main()
+     {
+     int samplerate = 44100, num_channels = 2;
+@@ -730,6 +732,7 @@
+ AC_TRY_RUN([
+     #include <neaacdec.h>
+     #include <stdio.h>
++int
+     main()
+     {
+     int faad_major;
+@@ -763,6 +766,7 @@
+ AC_TRY_RUN([
+     #include <faad.h>
+     #include <stdio.h>
++int
+     main()
+     {
+     int faad_major;

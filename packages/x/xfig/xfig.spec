@@ -1,7 +1,7 @@
 #
 # spec file for package xfig
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfig
-Version:        3.2.9
+Version:        3.2.9a
 Release:        0
 Summary:        Facility for Interactive Generation of Figures under the X Window System
 License:        MIT
@@ -32,25 +32,10 @@ URL:            https://sourceforge.net/projects/mcj/
 #Source:        https://sourceforge.net/projects/mcj/files/xfig-%{version}.tar.xz/download#/xfig-%{version}.tar.xz
 Source:         xfig-%{version}.tar.xz
 Source1:        font-test.fig
-Source4:        xfig.desktop
 Patch0:         xfig-3.2.6.dif
-Patch1:         xfig-3.2.9-dingbats.dif
-Patch3:         xfig.3.2.3d-international-std-fonts.dif
-# PATCH-FIX-UPSTREAM xfig.3.2.5b-mediaboxrealnb.dif [debian#530898]
 Patch5:         xfig.3.2.5b-null.dif
 Patch6:         xfig.3.2.5b-locale.dif
 Patch7:         xfig.3.2.5b-fixes.dif
-# PATCH-FIX-UPSTREAM
-Patch8:         Sanitize-a-call-to-realloc-ticket-165.patch
-# PATCH-FIX-UPSTREAM
-Patch9:         Fix-exporting-only-active-layers-ticket-163.patch
-# PATCH-FIX-UPSTREAM
-Patch10:        xfig-3.2.9-gcc14.patch
-# PATCH-FIX-UPSTREAM for boo#1230298 / upstream bug report #179
-Patch11:        042708.patch
-Patch12:        7e0157.patch
-Patch13:        a038d6.patch
-Patch14:        f3466c.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -74,7 +59,7 @@ BuildRequires:  pkgconfig(xt)
 Requires:       efont-unicode
 Requires:       fontconfig
 %if 0%{?suse_version} >= 1699
-Requires:       (ghostscript-fonts-std or urw-base35-fonts)
+Requires:       urw-base35-fonts
 %else
 Requires:       ghostscript-fonts-std
 %endif
@@ -109,18 +94,9 @@ find -type f | while read file; do
 done
 set -x
 %patch -P0
-%patch -P1 -b .dingbats
-%patch -P3 -b .international-std-fonts
 %patch -P5 -b .null
 %patch -P6 -b .locale
 %patch -P7 -b .fixes
-%patch -P8 -p1
-%patch -P9 -p1
-%patch -P10
-%patch -P11
-%patch -P12
-%patch -P13
-%patch -P14
 cp %{SOURCE1} .
 test ! -e Libraries/Examples/aircraft.fig || { echo forbidden file found 1>&2; exit 1; }
 
@@ -147,7 +123,7 @@ find -name '*.bak' -exec rm -vf '{}' \+
 mv %{buildroot}%{_mandir}/man1/xfig.1 %{buildroot}%{_mandir}/man1/xfig.1x
 gzip -9 %{buildroot}%{_mandir}/man1/xfig.1x
 %fdupes %{buildroot}
-%suse_update_desktop_file xfig VectorGraphics
+%suse_update_desktop_file %{buildroot}%{_datadir}/applications/org.%name.%name.desktop VectorGraphics
 
 %files
 %defattr(-,root,root,755)
@@ -155,9 +131,10 @@ gzip -9 %{buildroot}%{_mandir}/man1/xfig.1x
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Fig
 %{_bindir}/xfig*
-%{_datadir}/applications/xfig.desktop
+%{_datadir}/applications/*xfig.desktop
+%{_datadir}/metainfo/*xfig.metainfo.xml
 %{_datadir}/pixmaps/xfig.png
 %{_datadir}/xfig
-%{_mandir}/man1/xfig.1*.gz
+%{_mandir}/man1/xfig.1*%{?ext_man}
 
 %changelog

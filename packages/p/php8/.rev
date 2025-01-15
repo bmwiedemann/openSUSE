@@ -1045,4 +1045,12 @@
         Fixed bug GH-16851 (JIT_G(enabled) not set correctly on other threads).</comment>
     <requestid>1232801</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>2555687f2604bfcd2f21e25b06e63829</srcmd5>
+    <version>8.3.15</version>
+    <time>1736959333</time>
+    <user>anag+factory</user>
+    <comment>- obsolete php7 to smooth the migration [bsc#1234788] (forwarded request 1237532 from pgajdos)</comment>
+    <requestid>1237725</requestid>
+  </revision>
 </revisionlist>

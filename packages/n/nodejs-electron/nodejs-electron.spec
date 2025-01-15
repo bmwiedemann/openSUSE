@@ -285,6 +285,7 @@ Patch598:       chromium-127-crabby.patch
 #End gentoo patches
 Patch599:       remove-libphonenumber.patch
 Patch600:       delete-old-language-detection-which-uses-tflite.patch
+Patch601:       MakeSbixTypeface-null-pointer-call.patch 
 
 
 

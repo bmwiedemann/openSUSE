@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 14 18:51:39 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add MakeSbixTypeface-null-pointer-call.patch
+  * fixes crash when handling SBIX color bitmap fonts (bsc#1235830)
+
+-------------------------------------------------------------------
 Sun Jan 12 12:38:29 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Update to 33.3.1

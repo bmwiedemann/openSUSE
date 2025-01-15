@@ -1,7 +1,7 @@
 #
 # spec file for package borgmatic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           borgmatic
-Version:        1.8.14
+Version:        1.9.5
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -27,43 +27,36 @@ Source:         https://github.com/borgmatic-collective/borgmatic/archive/%{vers
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module apprise}
-BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module docopt}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module flexmock}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module mccabe}
-BuildRequires:  %{python_module more-itertools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pyflakes}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
-# Testing requirements
 BuildRequires:  borgbackup
-# To create the manpage
+BuildRequires:  fdupes
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
-Requires:       %{pythons}-colorama > 0.3.9
 Requires:       %{pythons}-jsonschema >= 3.2.0
 Requires:       %{pythons}-packaging
 Requires:       %{pythons}-requests
 Requires:       %{pythons}-ruamel.yaml > 0.15.0
-Requires:       %{pythons}-setuptools
 Requires:       borgbackup
 Suggests:       %{pythons}-apprise
 BuildArch:      noarch
@@ -81,7 +74,6 @@ common errors.
 %prep
 %autosetup -p1
 
-sed -i -e "s/colorama>=0.4.1,<0.5/colorama>=0.3.9/" setup.py
 %if 0%{?suse_version} <= 1500
 sed -i -e "s/^LogRateLimitIntervalSec=/#LogRateLimitIntervalSec=/" sample/systemd/borgmatic.service
 %endif
@@ -97,12 +89,13 @@ perl -pi -e "s/ruamel.yaml>0.15.0,<0.17.0/ruamel.yaml/" setup.py
 perl -pi -e "s/packages=find_packages\(\)/packages=find_packages(exclude=('tests*',))/" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 # Create the manpage
 pandoc -s -f markdown -t man README.md -o borgmatic.1
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -d %{buildroot}%{_sysconfdir}/borgmatic
 install -d %{buildroot}%{_sysconfdir}/borgmatic.d
 install -d %{buildroot}%{_docdir}/%{name}/sample/cron
@@ -125,8 +118,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcborgmatic
 export LANG=en_US.UTF-8
 %python_exec -m venv --system-site-packages --without-pip borgmatic-env
 source borgmatic-env/bin/activate
-%python_exec setup.py install
-PYTHONPATH=$(pwd) py.test -v --pyargs borgmatic tests
+%python_exec -m pip install --disable-pip-version-check --no-compile --ignore-installed --no-deps --no-index --find-links ./build borgmatic==1.9.5
+PYTHONPATH=$(pwd):%{buildroot} py.test -v --pyargs borgmatic tests
 
 %post
 %service_add_post borgmatic.service
@@ -151,7 +144,7 @@ fi
 %dir %{_sysconfdir}/borgmatic.d
 %dir %{_docdir}/%{name}/sample
 %{python_sitelib}/borgmatic/
-%{python_sitelib}/borgmatic-%{version}-py%{py3_ver}.egg-info
+%{python_sitelib}/borgmatic-%{version}*info
 %{_unitdir}/borgmatic.service
 %{_unitdir}/borgmatic.timer
 %{_bindir}/borgmatic

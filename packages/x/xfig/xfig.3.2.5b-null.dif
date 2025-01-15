@@ -6,7 +6,7 @@
 
 --- src/w_dir.c
 +++ src/w_dir.c	2023-09-13 09:39:27.454515496 +0000
-@@ -151,6 +151,8 @@ FileSelected(Widget w, XtPointer client_
+@@ -148,6 +148,8 @@ FileSelected(Widget w, XtPointer client_
  
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  
@@ -15,7 +15,7 @@
      strcpy(CurrentSelectionName, ret_struct->string);
      FirstArg(XtNstring, CurrentSelectionName);
      if (browse_up) {
-@@ -185,6 +187,8 @@ DirSelected(Widget w, XtPointer client_d
+@@ -182,6 +184,8 @@ DirSelected(Widget w, XtPointer client_d
  
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  
@@ -26,7 +26,7 @@
  }
 --- src/w_library.c
 +++ src/w_library.c	2023-09-13 09:38:05.523980529 +0000
-@@ -514,6 +514,8 @@ NewObjectSel(Widget w, XtPointer closure
+@@ -503,6 +503,8 @@ NewObjectSel(Widget w, XtPointer closure
      int		    new_obj;
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  
@@ -37,7 +37,7 @@
  	/* unhighlight the current view icon */
 --- src/w_srchrepl.c
 +++ src/w_srchrepl.c	2023-09-13 09:40:26.341462455 +0000
-@@ -918,6 +918,9 @@ spell_select_word(Widget widget, XtPoint
+@@ -921,6 +921,9 @@ spell_select_word(Widget widget, XtPoint
  	(void)widget; (void)closure;
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  

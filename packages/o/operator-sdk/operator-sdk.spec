@@ -17,7 +17,7 @@
 
 
 Name:           operator-sdk
-Version:        1.39.0
+Version:        1.39.1
 Release:        0
 Summary:        CLI for installing the Operator Lifecycle Manager
 License:        Apache-2.0

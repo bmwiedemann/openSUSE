@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 14 09:31:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.1.1. Check the installed changes-6.8.1 file for the
+  full list of changes
+- Drop patches, merged upstream:
+  * 0001-PySide6-Documentation-Name-the-.rst-doc-files-accord.patch
+  * 0001-build-Install-module-doc-snippet-files.patch
+- Drop 0001-signature-Fix-pointers-to-signature-bytes-with-the-h.patch
+
+-------------------------------------------------------------------
 Fri Nov  8 09:58:04 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.8.0.2

@@ -116,7 +116,7 @@ BuildRequires:  %libpq
 %endif
 
 %if 0%{?suse_version} >= 1500 && %pgmajor >= 11
-%ifarch riscv64
+%ifarch riscv64 loongarch64
 %bcond_with     llvm
 %else
 %bcond_without  llvm

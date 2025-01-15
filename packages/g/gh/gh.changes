@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Wed Jan 15 08:57:11 UTC 2025 - pdostal@suse.com
+
+- Update to version 2.65.0:
+  * Bump cli/go-gh for indirect security vulnerability
+  * Panic mustParseTrackingRef if format is incorrect
+  * Move trackingRef into pr create package
+  * Make tryDetermineTrackingRef tests more respective of reality
+  * Rework tryDetermineTrackingRef tests
+  * Avoid pointer return from determineTrackingBranch
+  * Doc determineTrackingBranch
+  * Don't use pointer for determineTrackingBranch branchConfig
+  * Panic if tracking ref can't be reconstructed
+  * Document and rework pr create tracking branch lookup
+  * Upgrade generated workflows
+  * Fixed test for stdout in non-tty use case of repo fork
+  * Fix test
+  * Alternative: remove LocalBranch from BranchConfig
+  * Set LocalBranch even if the git config fails
+  * Add test for permissions check for security and analysis edits (#1)
+  * print repo url to stdout
+  * Update pkg/cmd/auth/login/login.go
+  * Move mention of classic token to correct line
+  * Separate type decrarations
+  * Add mention of classic token in gh auth login docs
+  * Update pkg/cmd/repo/create/create.go
+  * docs(repo): make explicit which branch is used when creating a repo
+  * fix(repo fork): add non-TTY output when fork is newly created
+  * Move api call to editRun
+  * Complete get -> list renaming
+  * Better error testing for autolink TestListRun
+  * Decode instead of unmarshal
+  * Use 'list' instead of 'get' for autolink list type and method
+  * Remove NewAutolinkClient
+  * Break out autolink list json fields test
+  * PR nits
+  * Refactor autolink subcommands into their own packages
+  * Whitespace
+  * Refactor out early return in test code
+  * Add testing for AutoLinkGetter
+  * Refactor autolink list and test to use http interface for simpler testing
+  * Apply PR comment changes
+  * Introduce repo autolinks list commands
+  * Remove release discussion posts and clean up related block in deployment yml
+  * Extract logic into helper function
+  * add pending status for workflow runs
+  * Feat: Allow setting security_and_analysis settings in gh repo edit
+  * Upgrade golang.org/x/net to v0.33.0
+  * Document SmartBaseRepoFunc
+  * Document BaseRepoFunc
+  * Update releasing.md
+  * Document how to set gh-merge-base
+
+-------------------------------------------------------------------
+Mon Dec 23 05:28:11 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.64.0:
+  * add test for different SAN and SourceRepositoryURI values
+  * add test for signerRepo and tenant
+  * add some more fields to test that san, sanregex are set properly
+  * Bump github.com/cpuguy83/go-md2man/v2 from 2.0.5 to 2.0.6
+  * update san and sanregex configuration for readability
+  * reduce duplication when creating policy content
+  * tweak output of build policy info
+  * Name conditionals in PR finder
+  * Support pr view for intra-org forks
+  * Return err instead of silentError in merge queue check
+  * linting pointed out this var is no longer used
+  * Removed fun, but inaccessible ASCII header
+  * further tweaks to the long description
+  * Exit on pr merge with `-d` and merge queue
+  * Addressed PR review feedback; expanded Long command help string, used ghrepo, clarified some abbreviations
+  * Update pkg/cmd/attestation/inspect/inspect.go
+  * Update gh auth commands to point to GitHub Docs
+  * Reformat ext install long
+  * Mention Windows quirk in ext install help text
+  * Fix error mishandling in local ext install
+  * Assert on err msg directly in ext install tests
+  * Clarify hosts in ext install help text
+  * Bump golang.org/x/crypto from 0.29.0 to 0.31.0
+  * Removed now redundant file
+  * minor tweak to language
+  * go mod tidy
+  * Deleted no-longer-used code.
+  * deleted now-invalid tests, added a tiny patina of new testing.
+  * Tightened up docs, deleted dead code, improved printing
+  * fix file name creation on windows
+  * wording
+  * hard code expected digest
+  * fix download test
+  * use bash shell with integration tests
+  * simplify var creation
+  * update integration test scripts
+  * fix: list branches in square brackets in gh codespace
+  * try nesting scripts
+  * run all tests in a single script
+  * windows for loop syntax
+  * use replaceAll
+  * update expected file path on windows
+  * run integration tests with windows specific syntax
+  * run all attestation cmd integration tests automatically
+  * Bump actions/attest-build-provenance from 1.4.4 to 2.1.0
+  * Improve error handling in apt setup script
+  * use different file name for attestation files on windows
+  * test(gh run): assert branch names are enclosed in square brackets
+  * docs: enhance help text and prompt for rename command
+  * Revert "Confirm auto-detected base branch"
+  * Confirm auto-detected base branch
+  * Merge changes from #10004
+  * Set gh-merge-base from `issue develop`
+  * Open PR against gh-merge-base
+  * Refactor extension executable error handling
+  * fix: list branches in square brackets in gh run view (#10038)
+  * docs: update description of command
+  * style: reformat files
+  * docs: update sentence case
+  * use github owned oci image
+  * docs: add mention of scopes help topic in `auth refresh` command help
+  * docs: add mention of scopes help topic in `auth login` command help
+  * docs: add help topic for auth scopes
+  * docs: improve help for browse command
+  * docs: improve docs for browse command as of #5352
+  * fix package reference
+  * add gh attestation verify integration test for oci bundles
+  * add integration test for bundle-from-oci option
+  * update tests
+  * update tests
+  * move content of veriy policy options function into enforcement criteria
+  * comment
+  * try switch statement
+  * remove duplicate err checking
+  * get bundle issuer in another func
+  * more logic updating to remove nesting
+  * inverse logic for less nesting
+  * remove unneeded nesting
+  * wip, linting, getting tests to pass
+  * wording
+  * var naming
+  * drop table view
+  * order policy info so relevant info is printed next to each other
+  * Update pkg/cmd/attestation/verification/policy.go
+  * Update pkg/cmd/attestation/verification/policy.go
+  * Update pkg/cmd/attestation/verification/policy.go
+  * wip: added new printSummaryInspection
+  * Improve error handling for missing executable
+  * experiment with table output
+  * Assert stderr is empty in manager_test.go
+  * Update error message wording
+  * Change: exit zero, still print warning to stderr
+  * wording
+  * Improve docs on installing extensions
+  * Update language for missing extension executable
+  * Update test comments about Windows behavior
+  * wording
+  * wording
+  * wording
+  * add newlines for additional policy info
+  * Document requirements for local extensions
+  * Warn when installing local ext with no executable
+  * wording
+  * formatting
+  * print policy information before verifying
+  * add initial policy info method
+  * more wip poking around, now with table printing
+  * wip, gh at inspect will check the signature on the bundle
+  * wip: inspect now prints various bundle fields in a nice json
+
+-------------------------------------------------------------------
 Fri Dec 06 11:44:20 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.63.2:

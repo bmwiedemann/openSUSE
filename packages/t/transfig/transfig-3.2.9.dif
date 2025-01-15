@@ -7,7 +7,7 @@
 
 --- configure
 +++ configure	2023-09-15 07:11:23.442594968 +0000
-@@ -2340,7 +2340,7 @@ ac_c_conftest_c99_main='
+@@ -2359,7 +2359,7 @@ ac_c_conftest_c99_main='
    int dynamic_array[ni.number];
    dynamic_array[0] = argv[0][0];
    dynamic_array[ni.number - 1] = 543;
@@ -26,7 +26,7 @@
  
  #include "fig2dev.h"	/* includes bool.h and object.h */
  //#include "object.h"	/* NUMSHADES, NUMTINTS */
-@@ -1363,10 +1364,10 @@ append(const char *restrict infilename,
+@@ -1366,10 +1367,10 @@ append(const char *restrict infilename,
  static bool
  append_find_composite(FILE *restrict out)
  {
@@ -40,7 +40,7 @@
  
  	libdir = getenv("FIG2DEV_LIBDIR");
  #ifdef I18N_DATADIR
-@@ -1378,18 +1379,28 @@ append_find_composite(FILE *restrict out
+@@ -1381,18 +1382,28 @@ append_find_composite(FILE *restrict out
  		fputs(COMPOSITE_ERRMSG, stderr);
  		return false;
  	}
@@ -76,7 +76,7 @@
  		return false;
  	}
  
-@@ -1443,8 +1454,7 @@ append_find_composite(FILE *restrict out
+@@ -1446,8 +1457,7 @@ append_find_composite(FILE *restrict out
  		put_msg("The output might be broken.");
  	}
  

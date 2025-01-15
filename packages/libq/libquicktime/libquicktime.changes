@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 12 18:19:42 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- update fix-gcc14-build.patch
+  * add fix for faad2 and faac as well
+
+-------------------------------------------------------------------
 Wed Apr 10 13:10:44 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix build with GCC 14, bsc#1221701

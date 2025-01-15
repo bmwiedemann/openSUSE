@@ -286,4 +286,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
   + Updated translations. (forwarded request 1226127 from iznogood)</comment>
     <requestid>1226294</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d14f306ea6c3221e4d9816d1c6f9d8a8</srcmd5>
+    <version>47.3</version>
+    <time>1736959384</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237897</requestid>
+  </revision>
 </revisionlist>

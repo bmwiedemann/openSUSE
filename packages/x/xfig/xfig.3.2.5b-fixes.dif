@@ -4,7 +4,7 @@
 
 --- src/w_layers.c
 +++ src/w_layers.c	2016-09-22 08:45:38.381908911 +0000
-@@ -128,9 +128,27 @@ init_depth_panel(Widget parent)
+@@ -121,9 +121,27 @@ init_depth_panel(Widget parent)
  {
      Widget	 label, below;
      Widget	 layer_viewform;
@@ -34,7 +34,7 @@
  
      /* main form to hold all the layer stuff */
  
-@@ -385,11 +403,18 @@ void
+@@ -335,11 +353,18 @@ void
  setup_depth_panel(void)
  {
      Dimension	 ind_ht, snap_ht=0;

@@ -119,4 +119,37 @@
 - skip install tests for better interoperability with PEP 668</comment>
     <requestid>1109506</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7f04885c5960e448d7081ebb55efeec8</srcmd5>
+    <version>3.10.1</version>
+    <time>1736959318</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.10.1:
+  * flit publish can now use PyPI tokens stored in keyring (PR #649), either
+    project tokens with a ‘username’ like pypi_token:project:project_name
+    (use the normalised form of the name) or user tokens
+    (pypi_token:user:username).
+  * The --python option can now take the path of a virtualenv folder, as an
+    alternative to a Python executable (PR #667).
+  * Flit will work with current development versions of Pythona again
+    (PR #684).
+  * The flit command line package now requires Python 3.8 or above (PR #660).
+    flit_core still works with Python 3.6 or above.
+  * The metadata in packages now has the names of optional dependency
+    groups (“extras”) normalised, complying with version 2.3 of the metadata
+    standard (PR #676, PR #697).
+  * The flit command line package now depends on pip (PR #647).
+  * Fix potential substitution of environment variables into passwords read
+    from .pypirc files (PR #652).
+  * A warning is now shown when building packages which specify the old
+    flit.buildapi backend, which should be replaced by flit_core.buildapi
+    (PR #674). It’s a good idea to always set a maximum version for the
+    build requirement, to protect against changes in future major versions
+    of Flit.
+  * Avoid using the deprecated datetime.utcfromtimestamp() (PR #682).
+  * Flit now has a SECURITY.md file in the Github repository (PR #665).
+  * The tests for flit_core are no longer part of the installed package,
+    reducing the size of the wheels (PR #691).</comment>
+    <requestid>1237618</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package aerc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Hannes Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           aerc
-Version:        0.18.2
+Version:        0.19.0
 Release:        0
 Summary:        An email client for terminals
 License:        GPL-3.0-or-later
@@ -33,8 +33,8 @@ BuildRequires:  make
 BuildRequires:  notmuch-devel >= 0.37
 BuildRequires:  scdoc
 BuildRequires:  zstd
-Recommends:     dante
-Recommends:     w3m
+Requires:       dante
+Requires:       w3m
 
 %description
 aerc is an email client that runs in terminals.

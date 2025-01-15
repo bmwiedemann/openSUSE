@@ -400,7 +400,7 @@ diff --git a/fig2dev/drivers.h b/fig2dev/drivers.h
 diff --git a/fig2dev/fig2dev.c b/fig2dev/fig2dev.c
 --- a/fig2dev/fig2dev.c
 +++ b/fig2dev/fig2dev.c
-@@ -829,6 +829,23 @@ help_msg(void)
+@@ -858,6 +858,23 @@ help_msg(void)
  			);
  		}
  
@@ -424,7 +424,7 @@ diff --git a/fig2dev/fig2dev.c b/fig2dev/fig2dev.c
  		if (dev == NULL || !strcmp(lang, "shape")) {
  			puts(
  "SHAPE (ShapePar driver) Options:\n"
-@@ -974,6 +991,12 @@ static int compound_dump(F_compound *com
+@@ -1003,6 +1020,12 @@ static int compound_dump(F_compound *com
  static int
  rec_comp(struct obj_rec *r1, struct obj_rec *r2)
  {
@@ -1338,7 +1338,7 @@ diff --git a/fig2mpdf/fig2mpdf b/fig2mpdf/fig2mpdf
 diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
 --- a/man/fig2dev.1.in
 +++ b/man/fig2dev.1.in
-@@ -75,8 +75,8 @@ Set the output graphics language.
+@@ -80,8 +80,8 @@ Set the output graphics language.
  Valid languages are
  \fBbox, cgm, dxf, epic, eepic, eepicemu, emf, eps, gbx (Gerber beta
  driver), gif, ibmgl, jpeg, latex, map (HTML image map), mf (MetaFont),
@@ -1349,7 +1349,7 @@ diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
  shape (LaTeX shaped paragraphs), sld (AutoCad slide format), svg,
  textyl, tiff, tikz, tk (tcl/tk), tpic, xbm and xpm\fR.
  
-@@ -1145,6 +1145,61 @@ text flagged as "TeX Text".
+@@ -1152,6 +1152,61 @@ text flagged as "TeX Text".
  The pstex and pdftex drivers accept the same options that the EPS driver
  accepts.
  
@@ -1411,7 +1411,7 @@ diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
  .TP
  .B \-n name
  Set the Title part of the PostScript output to
-@@ -1551,6 +1606,12 @@ The string \fIfont\fR can be one of
+@@ -1558,6 +1613,12 @@ The string \fIfont\fR can be one of
  
  
  .SH BUGS and RESTRICTIONS
@@ -1424,7 +1424,7 @@ diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
  Please send bug reports, fixes, new features etc. to:
  .br
  \&@PACKAGE_BUGREPORT@
-@@ -1640,3 +1701,7 @@ Michael Schrick (m_schrick@hotmail.com)
+@@ -1647,3 +1708,7 @@ Michael Schrick (m_schrick@hotmail.com)
  The GBX (Gerber) driver was written by
  .br
  Edward Grace (ej.grace@imperial.ac.uk).

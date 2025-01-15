@@ -179,4 +179,17 @@
   * Set version to release (forwarded request 1226243 from ph03nix)</comment>
     <requestid>1226326</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>041767e00909470b6fe5914f42080dbc</srcmd5>
+    <version>1.4.0</version>
+    <time>1736959394</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.0:
+  * Release version 1.4.0
+  * Set correct groupid to match with description
+  * Prepare 1.4.0 RC1 release
+  * Refactoring
+  * Introduce tabs (forwarded request 1237652 from ph03nix)</comment>
+    <requestid>1237893</requestid>
+  </revision>
 </revisionlist>

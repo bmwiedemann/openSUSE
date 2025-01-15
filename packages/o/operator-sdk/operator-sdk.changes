@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 15 07:07:08 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.39.1:
+  * Release v1.39.1 (#6896)
+  * fix constant reconcilation issue in helm controller (#6895)
+  * fix constant reconcilation issue in helm controller (#6892)
+  * re-generate scaffolding post release (#6893)
+
+-------------------------------------------------------------------
 Sat Jan 11 12:13:44 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.39.0:

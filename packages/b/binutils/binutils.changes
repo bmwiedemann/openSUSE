@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 10 08:54:55 UTC 2025 - JS <obs.coke518@passinbox.com>
+
+- Enable multitarget build on loongarch64
+
+-------------------------------------------------------------------
 Tue Dec 17 14:09:54 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Unset SUSE_ZNOW while running testsuite, many tests cannot cope

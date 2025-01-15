@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan 10 17:56:14 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Update perl-XML-Twig-CVE-2016-9180.patch
+
+-------------------------------------------------------------------
+Sat Dec 14 05:34:55 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.530.0 (3.53)
+   see /usr/share/doc/packages/perl-XML-Twig/Changes
+
+  3.53 - 2024-12-10 - minor maintenance release
+  - fixed warning from recent perl version
+    See RT#155759 https://rt.cpan.org/Public/Bug/Display.html?id=155759
+  - fixed bug with namespaced elements in navigation
+  - added multiclass selectors in navigation and handler triggers
+    (css style, eg elt.class1.class2)
+  - fixed bug with dots in element names confusing navigation
+    conditions in some cases
+  - fixed output when a CDATA section includes a CDATA end marker
+    spotted by Djibril
+
+-------------------------------------------------------------------
 Mon Mar  4 16:15:09 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

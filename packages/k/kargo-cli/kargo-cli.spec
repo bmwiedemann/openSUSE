@@ -1,7 +1,7 @@
 #
 # spec file for package kargo-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name kargo
 
 Name:           kargo-cli
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        CLI for the Kubernetes Application lifecycle orchestration
 License:        Apache-2.0

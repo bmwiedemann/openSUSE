@@ -4,11 +4,11 @@
 
 --- fig2dev/dev/genpdf.c
 +++ fig2dev/dev/genpdf.c	2024-09-12 11:42:17.585579884 +0000
-@@ -48,6 +48,7 @@
+@@ -49,6 +49,7 @@
   */
  #ifdef GSEXE
  #define	GSFMT	GSEXE " -q -dSAFER -dAutoRotatePages=/None -sDEVICE=pdfwrite " \
 +		"-dWriteXRefStm=false -dWriteObjStms=false " \
- 		"-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -o '%s' -"
+ 		"-dCompatibilityLevel=1.%d -dPDFSETTINGS=/prepress -o '%s' -"
  #else
  #define GSFMT	""

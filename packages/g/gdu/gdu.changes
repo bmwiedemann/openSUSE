@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jan 14 17:21:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Use a BUILD_DATE suitable to preserve reproducible builds
+  * BUILD_DATE is used in bespoke LDFLAGS arg to go build expected
+    by gdu --version output
+
+-------------------------------------------------------------------
+Tue Jan 14 05:56:02 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.21 matching go.mod
+  * Move ldflags metadata out of ppc64 buildmode PIE conditional
+
+-------------------------------------------------------------------
+Tue Dec 31 17:10:40 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Version 5.30.1
+  * fix: set default colors when config file does not exist
+- Version 5.30.0
+  * feat: show top largest files using `-t` or `--top` option in
+    (gh#dundee/gdu#391)
+  * feat: introduce more style options in (gh#dundee/gdu#396)
+
+-------------------------------------------------------------------
+Tue Dec 24 11:25:43 UTC 2024 - Timo Schwaak <opensuse@tschwaak.de>
+
+- gdu version output is incomplete when built with normal go build.
+  Add ldflags to populate metadata needed by bespoke version
+  reporting implementation. Changelog comments by Jeff Kowalczyk:
+  * gdu --version ouput with package version 5.29.0:
+    Version: development
+    Built time:
+    Built user:
+  * Upstream code has a package build/build.go with an
+    implementation managng the above output.
+  * Generally we want to remove uses of ldflags for bespoke build
+    metadata where possible. In this case, give gdu what it
+    expects for now.
+  * go1.24+ will have better main module version information in
+    output of go version -m binaryname. Perhaps that facility and
+    contacting gdu upstream about the issue will allow us to remove
+    the ldflags usage from our packaging in the future.
+
+-------------------------------------------------------------------
 Fri Dec 20 12:42:26 UTC 2024 - Timo Schwaak <opensuse@tschwaak.de>
 
 - Version 5.29.0
@@ -6,7 +51,6 @@ Fri Dec 20 12:42:26 UTC 2024 - Timo Schwaak <opensuse@tschwaak.de>
   * feat: add --show-mtime (-M) option by @dundee in #350
   * feat: add option --no-unicode to disable unicode symbols by @dundee in #362
   * fix: division by zero error in formatFileRow by @xroberx in #359
-
 
 -------------------------------------------------------------------
 Wed Apr 24 12:08:01 UTC 2024 - Dominik Heidler <dheidler@suse.de>

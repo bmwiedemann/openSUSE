@@ -61,4 +61,27 @@
 </comment>
     <requestid>1235878</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0ffac25920c96b63aa9530bff0860f08</srcmd5>
+    <version>3.4.3</version>
+    <time>1736959379</time>
+    <user>anag+factory</user>
+    <comment>- Add an interesting and meaningful description to the package.
+- Clarify package summary.
+- Link to HTTPS URL.
+- Filter no-%check-section rpmlint warnings. There are no test cases
+  for NetHack. (W: no-%check-section)
+- Filter zero-length rpmlint warnings. Several files are required to
+  by empty. Filter them from the RPM linter. (E: zero-length)
+- Do not install documentation files. We package these files from the
+  dource directory No need to copy them into the build root.
+- Set file attributes in %files section. It is not possible to use
+  'make install' for this package, so we have to install all files
+  manually. Resolve the hodgepotch of install and %attr commands by
+  setting all file attributes in the %files section.
+- Do not install /etc/nethack directory. We do not packaged it and it
+  does not contain any files.
+</comment>
+    <requestid>1237881</requestid>
+  </revision>
 </revisionlist>

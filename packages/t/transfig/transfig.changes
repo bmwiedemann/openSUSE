@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 14 08:47:58 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to fig2dev version 3.2.9a (Dec 2024)
+  o Specify pdf minor version with option -Y.
+  o Specify width (-Z <wid>w) or height (-Z <height>h) of figure.
+  o Correctly read from a pipe, ticket #156.
+  o Fix behavior of option -F for e(e)pic and latex outputs, ticket #157.
+  o Compounds containing ascii-only text would disable utf-8 output, #158.
+  o Option --enable-versioning works in out-of-tree builds.
+  o Correct links to embedded image files in svg output.
+  o Correct font size in svg output, ticket #176.
+- Port patches
+  * 0001-Use-native-fig2dev-pdf-output-instead-of-epstopdf.patch
+  * fig2dev-3.2.6-fig2mpdf.patch
+  * transfig-3.2.9.dif
+  * transfig-gs10.03.patch
+
+-------------------------------------------------------------------
 Thu Sep 12 12:00:53 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch transfig-gs10.03.patch

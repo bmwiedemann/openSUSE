@@ -2198,4 +2198,15 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     <comment></comment>
     <requestid>1221591</requestid>
   </revision>
+  <revision rev="214" vrev="4">
+    <srcmd5>ff8cf5ca012a4db97219b6d250f6de21</srcmd5>
+    <version>2.4.62</version>
+    <time>1736959326</time>
+    <user>anag+factory</user>
+    <comment>- Fix builds of test package with RPM 4.20:
+  + noarch packages cannot rely on libdir, which is an
+    arch-dependent variable. Rely on apxs -q libdir to extract the
+    correct information instead. (forwarded request 1237660 from dimstar)</comment>
+    <requestid>1237712</requestid>
+  </revision>
 </revisionlist>

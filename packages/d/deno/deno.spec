@@ -1,7 +1,7 @@
 #
 # spec file for package deno
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020-2024 Avindra Goolcharan <avindra@opensuse.org>
 # Copyright (c) 2018-2024 the Deno authors
 #
@@ -19,9 +19,9 @@
 
 
 %global _lto_cflags %nil
-%global _v8_version 130.0.1
+%global _v8_version 130.0.7
 Name:           deno
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT

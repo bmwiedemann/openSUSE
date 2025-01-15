@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Jan 14 12:27:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.9.5
+  * #418: Backup and restore databases that have the same name but with different ports, hostnames,
+    or hooks.
+  * #947: To avoid a hang in the database hooks, error and exit when the borgmatic runtime
+    directory overlaps with the configured excludes.
+  * #954: Fix a findmnt command error in the Btrfs hook by switching to parsing JSON output.
+  * #956: Fix the printing of a color reset code even when color is disabled.
+  * #958: Drop colorama as a library dependency.
+  * When the ZFS, Btrfs, or LVM hooks aren't configured, don't try to cleanup snapshots for them.
+  * #80 (beta): Add an LVM hook for snapshotting and backing up LVM logical volumes. See the
+    documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/snapshot-your-filesystems/
+  * #251 (beta): Add a Btrfs hook for snapshotting and backing up Btrfs subvolumes. See the
+    documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/snapshot-your-filesystems/
+  * #926: Fix a library error when running within a PyInstaller bundle.
+  * #950: Fix a snapshot unmount error in the ZFS hook when using nested datasets.
+  * Update the ZFS hook to discover and snapshot ZFS datasets even if they are parent/grandparent
+    directories of your source directories.
+  * Reorganize data source and monitoring hooks to make developing new hooks easier.
+  * #261 (beta): Add a ZFS hook for snapshotting and backing up ZFS datasets. See the documentation
+    for more information: https://torsion.org/borgmatic/docs/how-to/snapshot-your-filesystems/
+  * Remove any temporary copies of the manifest file created in support of the "bootstrap" action.
+  * Deprecate the "store_config_files" option at the global scope and move it under the "bootstrap"
+    hook. See the documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/extract-a-backup/#extract-the-configuration-files-used-to-create-an-archive
+  * Require the runtime directory to be an absolute path.
+  * Add a "--deleted" flag to the "repo-list" action for listing deleted archives that haven't
+    yet been compacted (Borg 2 only).
+  * Promote the "spot" check from a beta feature to stable.
+  * #441: Apply the "umask" option to all relevant actions, not just some of them.
+  * #722: Remove the restriction that the "extract" and "mount" actions must match a single
+    repository. Now they work more like other actions, where each repository is applied in turn.
+  * #932: Fix the missing build backend setting in pyproject.toml to allow Fedora builds.
+  * #934: Update the logic that probes for the borgmatic streaming database dump, bootstrap
+    metadata, and check state directories to support more platforms and use cases. See the
+    documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/backup-your-databases/#runtime-directory
+  * #934: Add the "RuntimeDirectory" and "StateDirectory" options to the sample systemd service
+    file to support the new runtime and state directory logic.
+  * #939: Fix borgmatic ignoring the "BORG_RELOCATED_REPO_ACCESS_IS_OK" and
+    "BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK" environment variables.
+  * Add a Pushover monitoring hook. See the documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#pushover-hook
+  * #928: Fix the user runtime directory location on macOS (and possibly Cygwin).
+  * #930: Fix an error with the sample systemd service when no credentials are configured.
+  * #931: Fix an error when implicitly upgrading the check state directory from ~/.borgmatic to
+    ~/.local/state/borgmatic across filesystems.
+  * #609: Fix the glob expansion of "source_directories" values to respect the "working_directory"
+    option.
+  * #609: BREAKING: Apply the "working_directory" option to all actions, not just "create". This
+    includes repository paths, destination paths, mount points, etc.
+  * #562: Deprecate the "borgmatic_source_directory" option in favor of "user_runtime_directory"
+    and "user_state_directory".
+  * #562: BREAKING: Move the default borgmatic streaming database dump and bootstrap metadata
+    directory from ~/.borgmatic to /run/user/$UID/borgmatic, which is more XDG-compliant. You can
+    override this location with the new "user_runtime_directory" option. Existing archives with
+    database dumps at the old location are still restorable. 
+  * #562, #638: Move the default check state directory from ~/.borgmatic to 
+    ~/.local/state/borgmatic. This is more XDG-compliant and also prevents these state files from
+    getting backed up (unless you explicitly include them). You can override this location with the
+    new "user_state_directory" option. After the first time you run the "check" action with borgmatic
+    1.9.0, you can safely delete the ~/.borgmatic directory.
+  * #838: BREAKING: With Borg 1.4+, store database dumps and bootstrap metadata in a "/borgmatic"
+    directory within a backup archive, so the path doesn't depend on the current user. This means
+    that you can now backup as one user and restore or bootstrap as another user, among other use
+    cases.
+  * #902: Add loading of encrypted systemd credentials. See the documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/provide-your-passwords/#using-systemd-service-credentials
+  * #911: Add a "key change-passphrase" action to change the passphrase protecting a repository key.
+  * #914: Fix a confusing apparent hang when when the repository location changes, and instead
+    show a helpful error message.
+  * #915: BREAKING: Rename repository actions like "rcreate" to more explicit names like
+    "repo-create" for compatibility with recent changes in Borg 2.0.0b10.
+  * #918: BREAKING: When databases are configured, don't auto-enable the "one_file_system" option,
+    as existing auto-excludes of special files should be sufficient to prevent Borg from hanging on
+    them. But if this change causes problems for you, you can always enable "one_file_system"
+    explicitly.
+  * #919: Clarify the command-line help for the "--config" flag.
+  * #919: Document a policy for versioning and breaking changes:
+    https://torsion.org/borgmatic/docs/how-to/upgrade/#versioning-and-breaking-changes
+  * #921: BREAKING: Change soft failure command hooks to skip only the current repository rather than
+    all repositories in the configuration file.
+  * #922: Replace setup.py (Python packaging metadata) with the more modern pyproject.toml.
+  * When using Borg 2, default the "archive_name_format" option to just "{hostname}", as Borg 2 does
+    not require unique archive names; identical archive names form a common "series" that can be
+    targeted together. See the Borg 2 documentation for more information:
+    https://borgbackup.readthedocs.io/en/2.0.0b13/changes.html#borg-1-2-x-1-4-x-to-borg-2-0
+  * Add support for Borg 2's "rclone:" repository URLs, so you can backup to 70+ cloud storage
+    services whether or not they support Borg explicitly.
+  * Add support for Borg 2's "sftp://" repository URLs.
+  * Update the "--match-archives" and "--archive" flags to support Borg 2 series names or archive
+    hashes.
+  * Add a "--match-archives" flag to the "prune" action.
+  * Add "--local-path" and "--remote-path" flags to the "config bootstrap" action for setting the
+    Borg executable paths used for bootstrapping.
+  * Add a "--user-runtime-directory" flag to the "config bootstrap" action for helping borgmatic
+    locate the bootstrap metadata stored in an archive.
+  * Add a Zabbix monitoring hook. See the documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#zabbix-hook
+  * Add a tarball of borgmatic's HTML documentation to the packages on the project page.
+- Refresh dependencies
+- Update packaging to the modern python standard
+
+-------------------------------------------------------------------
 Fri Sep 20 10:16:06 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - Update to 1.8.14:

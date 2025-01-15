@@ -3346,4 +3346,109 @@
 </comment>
     <requestid>1231178</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d8c86a99e87d463b75168d2125937292</srcmd5>
+    <version>2.1.5</version>
+    <time>1736959485</time>
+    <user>anag+factory</user>
+    <comment>- Update rusty v8 requirement to 130.0.7
+- Update to version 2.1.5:
+  * docs: added jsdoc for window.close()
+  * refactor(npm): move `InNpmPackageChecker` code to deno_resolver
+  * fix(lsp): use verbatim specifier for URL auto-imports
+  * refactor(npm): extract out some npm fs resolution code from the cli
+  * refactor(npm): split some resolution from installation
+  * refactor: update deno_core for error refactor
+  * fix(ext/net): update moka cache to avoid potential panic in `Deno.resolveDns` on some laptops with Ryzen CPU
+  * fix(jsr): Wasm imports fail to load
+  * fix(ext/node): Fix `os.cpus()` on Linux
+  * fix(ext/websocket): Fix close code without reason
+  * fix(ext/node): have `process` global available in Node context
+  * fix(lint): fix single char selectors being ignored
+  * fix(no-slow-types): handle rest param with internal assignments
+  * fix(lsp): don't skip dirs with enabled subdirs
+  * feat(node/fs): Add a chmod method to the FileHandle class
+  * Revert &quot;perf: build denort with panic = &quot;abort&quot; for releases&quot;
+  * refactor: make `IncrementalCache` accept a `CacheDBHash`
+  * test(ext/node): disable flaky dgram tests
+  * feat(unstable): no config npm:@opentelemetry/api integration
+  * refactor(quic): introduce endpoint, 0rtt, cleanup
+  * feat(unstable): replace SpanExporter with TracerProvider
+  * fix(ext/http): improve error message when underlying resource of request body unavailable
+  * fix(kv): improve backoff error message and inline documentation
+  * fix(check): move module not found errors to typescript diagnostics
+  * fix(check): line-break between diagnostic message chain entries
+  * refactor: Use 'await using' in serve_test
+  * fix(permissions): implicit `--allow-import` when using `--cached-only`
+  * refactor: remove use of home crate
+  * refactor: update some fs_util functions to use sys_traits
+  * refactor(node/npm): separate out permission check from npm resolvers
+  * fix(lsp): css preprocessor formatting
+  * fix(npm): deterministically output tags to initialized file
+  * perf: build denort with `panic = &quot;abort&quot;` for releases
+  * chore: cargo fmt - turn on group_imports=StdExternalCrate
+  * perf(fs/windows): stat - only open file once
+  * refactor: do not use `deno_fs::FileSystem` everywhere
+  * fix(ext/node): support private key export in JWK format
+  * fix(node): Add missing `inspector/promises`
+  * chore(lint): remove manual AST field counter
+  * refactor: use sys_traits
+  * perf(node/fs/copy): reduce metadata lookups copying directory
+  * fix(ext/node): convert brotli chunks with proper byte offset
+  * fix(unstable): don't error on non-existing attrs or type attr
+  * fix(ext/node): add support of any length IV for aes-(128|256)-gcm ciphers
+  * fix(ext/node): RangeError timingSafeEqual with different byteLength
+  * feat(unstable): add OTEL MeterProvider
+  * fix(ext/node): make getCiphers return supported ciphers
+  * fix: incorrect memory info free/available bytes on mac
+  * feat(unstable): support selectors in JS lint plugins
+  * fix(ext/fetch): better error message when body resource is unavailable
+  * fix(ext/fs): do not throw for bigint ctime/mtime/atime
+  * fix(node): handle cjs exports with escaped chars
+  * feat(unstable): add JS linting plugin infrastructure
+  * perf: remove now needless canonicalization getting closest package.json
+  * perf: upgrade to deno_semver 0.7
+  * perf: don't store duplicate info for ops in the snapshot
+  * feat(unstable): Implement QUIC
+  * fix(ext/node): add `truncate` method to the `FileHandle` class
+  * fix(lsp): rewrite imports for 'Move to a new file' action
+  * fix(publish): infer literal types in const contexts
+  * fix(task): support tasks without commands
+  * fix(compile): be more deterministic when compiling the same code in different directories
+  * fix(ext/node): do not exit worker thread when there is pending async op
+  * chore: release ext/ crates
+  * fix(ext/node): Fix `fs.access`/`fs.promises.access` with `X_OK` mode parameter on Windows
+  * fix(ext/fetch): retry some http/2 errors
+  * chore: upgrade libc
+  * fix(ext/node): sort list of built-in modules alphabetically
+  * fix(task): properly handle task name wildcards with --recursive
+  * fix(outdated): ensure &quot;Latest&quot; version is greater than &quot;Update&quot; version
+  * fix(lsp): include &quot;node:&quot; prefix for node builtin auto-imports
+  * fix: deno_resolver crate without 'sync' feature
+  * chore: release &quot;deno_*&quot; crates
+  * feat(permission): separate PermissionDeniedError to Retryable and Fatal
+  * refactor(lint): renames and code flattening
+  * refactor: use capacity_builder for writing deno compile data section
+  * refactor: extract out `FileFetcher` to `deno_cache_dir`
+  * fix(lsp): respect &quot;typescript.suggestionActions.enabled&quot; setting
+  * fix: upgrade deno_doc to 0.161.3
+  * fix(compile): display embedded file sizes and total
+  * fix: FastString v8_string() should error when cannot allocated
+  * refactor: add 'sync' feature to deno_resolver crate
+  * fix(outdated): support updating dependencies in external import maps
+  * fix(lockfile): include dependencies listed in external import map in lockfile
+  * fix(lsp): sql and component file formatting
+  * chore: bump hyper-util to 0.1.10
+  * Revert &quot;ci: use self-hosted mac arm runner only on main branch&quot;
+  * feat(ext/web): add `[[ErrorData]]` slot to `DOMException`
+  * fix(ext/node): support createConnection option in node:http.request()
+  * chore: mark ./tools/release/npm/build.ts as executable
+  * fix(npm): search node_modules folder for package matching npm specifier
+  * chore: add npm distribution at `deno` package
+  * fix(compile): analyze modules in directory specified in --include
+  * refactor(unstable): otel configuration
+  * fix(compile): output contents of embedded file system
+</comment>
+    <requestid>1238023</requestid>
+  </revision>
 </revisionlist>

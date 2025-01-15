@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 14 08:34:19 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix builds of test package with RPM 4.20:
+  + noarch packages cannot rely on libdir, which is an
+    arch-dependent variable. Rely on apxs -q libdir to extract the
+    correct information instead.
+
+-------------------------------------------------------------------
 Tue Nov  5 18:16:04 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update httpd-framework to svn1921782.

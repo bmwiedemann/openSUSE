@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jan 15 06:56:39 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.18.0:
+  * chore: release 2.18.0 (#6533)
+  * feat(build): force use the only one sync server (#6512)
+  * fix(helm): pass --debug option to helm
+  * chore(docs): fix redirects for v1.1 (#6500)
+  * fix(deploy): compiling error — unused import
+  * feat(deploy): kube-run won't require list permissions for pods
+    and secrets
+  * fix(deploy): kube-run should not require any namespace
+    permissions
+  * docs(images): small improvements
+  * chore(ci): fix lint (#6529)
+  * docs: small improvements (#6527)
+  * docs: add build backends and werf images articles (#6491)
+  * chore(ci): update release and publish actions (#6511)
+  * chore(docs): increase the priority of usage pages (#6523)
+  * chore(ci): add milliseconds to artifact name (#6525)
+  * test(e2e): rewrite and expand complex converge test
+  * chore(ci): disable quai tests
+  * test(converge): fix flapping complex converge tests
+  * fix(build, report): add non-final images
+  * fix(deploy): panics with subcharts
+  * refactor(deploy): move secrets handling to 3p-helm and
+    common-go
+  * chore: test ci
+  * refactor(deploy, build): move util and secret packages to
+    github.com/werf/common-go
+  * refactor(deploy): move part of GiterminismManager interface to
+    3p-helm
+  * fix(test): add giterminism for plain secret value
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
 Thu Dec 19 07:22:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.17.0:

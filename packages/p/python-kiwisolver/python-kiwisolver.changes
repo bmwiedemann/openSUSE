@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 14 10:16:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.8
+  * Drop support for Python 3.8 and 3.9
+  * Do not link to MSVCP on Windows and drop windows 32 bits support
+  * Add support for free-threaded builds on Python 3.13
+
+-------------------------------------------------------------------
 Wed Oct 23 20:27:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.7:

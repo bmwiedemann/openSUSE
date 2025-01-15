@@ -1,7 +1,7 @@
 #
 # spec file for package python-kiwisolver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kiwisolver
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        An implementation of the Cassowary constraint solver
 License:        BSD-3-Clause

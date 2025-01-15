@@ -593,4 +593,41 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
   User defined text brakes Dimension Lines</comment>
     <requestid>1199613</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>135e5310cdbfff443d8387aa2f60b594</srcmd5>
+    <version>3.2.9a</version>
+    <time>1736959360</time>
+    <user>anag+factory</user>
+    <comment>- Update to xfig 3.2.9a
+  this is Patchlevel 9a (Dez 2024)
+  CHANGES:
+  Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  * Remove application resource fixedFontSet, fontSetSize.
+  * Use float fontsizes, ticket #168.
+  BUGS FIXED:
+  * Enable compilation with libxaw, instead of libxaw3d, #138, #174.
+  * Speed up drawing of a lot (thousands) of text objects, ticket #166.
+  * Draw text in a user color, ticket #180.
+  * Correctly place text into dimension lines, ticket #179.
+  * Enable compilation on Mac Darwin, ticket #177.
+  * Only print active layers if required, ticket #172.
+  * Place line length values at saner locations, ticket #167.
+  * Do not crash on export to pdf/latex under some circumstances, #165.
+  * Export only active layers, ticket #163.
+  * Sanitize sed script for build on Darwin, ticket #162.
+  * Show symbol and dingbats fonts, ticket #159.
+- Remove obsolete patches now upstream 
+  * xfig-3.2.9-gcc14.patch
+  * Fix-exporting-only-active-layers-ticket-163.patch
+  * Sanitize-a-call-to-realloc-ticket-165.patch
+  * 042708.patch
+  * 7e0157.patch
+  * a038d6.patch
+  * f3466c.patch
+- Remove patch xfig.3.2.3d-international-std-fonts.dif as outdated with UTF-8
+- Remove patch xfig-3.2.9-dingbats.dif as we use now URW fonts only
+- Port patches
+  * xfig-3.2.6.dif</comment>
+    <requestid>1235636</requestid>
+  </revision>
 </revisionlist>

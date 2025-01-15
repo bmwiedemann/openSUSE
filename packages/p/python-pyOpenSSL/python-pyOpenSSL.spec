@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyOpenSSL
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,9 @@ Requires:       python-cffi
 Requires:       (python-cryptography >= 41.0.5 with python-cryptography < 44)
 Provides:       pyOpenSSL = %{version}
 Provides:       pyopenssl = %{version}-%release
+%if %{without test}
 BuildArch:      noarch
-%if %{with test}
+%else
 BuildRequires:  %{python_module cryptography >= 41.0.5 with %python-cryptography < 44}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}

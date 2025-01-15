@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 13 09:44:55 UTC 2025 - schubi@suse.com
+
+- Update to version 0.7.7:
+  * Additional fix for parsing empty config files (bsc#1234405).
+
+-------------------------------------------------------------------
 Fri Dec 13 13:03:47 UTC 2024 - schubi@suse.com
 
 - Update to version 0.7.6:

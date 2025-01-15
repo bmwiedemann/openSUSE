@@ -59,4 +59,14 @@
 </comment>
     <requestid>1225589</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>45d69a2c10ca96a481499c2ca5fe6846</srcmd5>
+    <version>130.0.7</version>
+    <time>1736959481</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 130.0.7:
+  * fix: add back incorrectly spelled initalize_process
+</comment>
+    <requestid>1237993</requestid>
+  </revision>
 </revisionlist>

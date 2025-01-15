@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Twig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,30 @@
 #
 
 
-Name:           perl-XML-Twig
-Version:        3.52
-Release:        0
 %define cpan_name XML-Twig
-Summary:        Perl Module for Processing Huge Xml Documents in Tree Mode
+Name:           perl-XML-Twig
+Version:        3.530.0
+Release:        0
+# 3.53 -> normalize -> 3.530.0
+%define cpan_version 3.53
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        XML, The Perl Way
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://www.cpan.org/authors/id/M/MI/MIROD/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIROD/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         perl-XML-Twig-CVE-2016-9180.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(XML::Parser) >= 2.23
 Requires:       perl(XML::Parser) >= 2.23
+Provides:       perl(XML::Twig) = %{version}
+Provides:       perl(XML::Twig::Elt)
+Provides:       perl(XML::Twig::Entity)
+Provides:       perl(XML::Twig::Entity_list)
+Provides:       perl(XML::Twig::Notation)
+Provides:       perl(XML::Twig::Notation_list)
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  expat
@@ -73,12 +80,13 @@ care of a lot of the (usually) annoying (but sometimes necessary) features
 that come with XML and XML::Parser.
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -89,7 +97,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes check_optional_modules filter_for_5.005 README speedup Twig_pm.slow
 
 %changelog
