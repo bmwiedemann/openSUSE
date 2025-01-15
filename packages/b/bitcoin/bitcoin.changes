@@ -1,4 +1,1295 @@
 -------------------------------------------------------------------
+Wed Jan 15 08:52:43 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 28.0:
+  * doc: 28.0 Release Notes
+  * doc: generate manpages
+  * build: Bump to 28.0
+  * validation: Disable CheckForkWarningConditions for background chainstate
+  * test: Use shell builtins in run_command test case
+  * doc: Generate manpages
+  * build: Bump to 28.0rc2
+  * streams: remove AutoFile::Get() entirely
+  * streams: cache file position within AutoFile
+  * qt: Translations update
+  * gui: fix crash when closing wallet
+  * test: Wait for local services to update in feature_assumeutxo
+  * test: add coverage for assumeUTXO honest peers disconnection
+  * assumeUTXO: fix peers disconnection during sync
+  * test: Work around boost compilation error
+  * depends: build libevent with -D_GNU_SOURCE
+  * test: fixing failing system_tests/run_command under some Locales
+  * test: Avoid intermittent timeout in p2p_headers_sync_with_minchainwork.py
+  * test: fix `TestShell` initialization (late follow-up for #30463)
+  * doc: Point release notes to wiki draft
+  * examples: Generate example bitcoin.conf
+  * doc: Generate manpages
+  * build: Bump to 28.0rc1
+  * docs: Add 379 and 387 to bips.md
+  * docs: Remove release 28.0 release notes fragments
+  * seeds: Regenerate mainnet seeds
+  * seeds: Pull nodes from Luke's seeder
+  * seeds: Pull nodes from virtu's crawler
+  * chainparams: Remove seed.bitcoinstats.com
+  * build: Bump to 28.99
+  * wallet: bugfix: ensure atomicity in settings updates
+  * qt: 28.0 translations update
+  * test: check xor.dat recreated when missing
+  * test: add null block xor key
+  * refactor: lift NUM_XOR_BYTES
+  * refactor: move read_xor_key() to TestNode
+  * refactor: use unlink rather than os.remove
+  * test: add blocks_key_path
+  * test: Avoid intermittent block download timeout in p2p_ibd_stalling
+  * test: Avoid duplicate curl call in get_previous_releases.py
+  * test: Add time-timewarp-attack boundary cases
+  * Fix maybe-uninitialized warning in IsSpentKey
+  * devtools, utxo-snapshot: Fix block height out of range
+  * test: replace deprecated secp256k1 context flags usage
+  * miner: adjust clock to timewarp rule
+  * Add timewarp attack mitigation test
+  * consensus: enable BIP94 on regtest
+  * test: assumeutxo: check that UTXO-querying RPCs operate on snapshot chainstate
+  * consensus: lower regtest nPowTargetTimespan to 144
+  * fuzz: Speed up utxo_snapshot fuzz target
+  * seeds: Use fjahr's more up to date asmap
+  * seeds: Fixed seeds update
+  * seeds: Add testnet4 fixed seeds file
+  * seeds: Remove manual onion and i2p seeds
+  * seeds: Add testnet instructions
+  * seeds: Also pull from achow101 seeder
+  * makeseeds: Configurable minimum blocks for testnet4's smaller chain
+  * headerssync: Update headerssync configuration
+  * params: Update assumevalid and minimum chainwork
+  * params: Update chainTxData
+  * params: Update assumed blockchain and chainstate sizes
+  * test: Enable detect_leaks=1 in ASAN_OPTIONS explicitly
+  * fuzz: Speed up utxo_snapshot by lazy re-init
+  * Rename ReleaseWallet to FlushAndDeleteWallet
+  * fuzz: Remove unused DataStream object
+  * wallet: WaitForDeleteWallet, do not expect thread safety
+  * wallet: rename UnloadWallet to WaitForDeleteWallet
+  * wallet: unload, notify GUI as soon as possible
+  * makeseeds: Shuffle ips after parsing
+  * makeseeds: Support CJDNS
+  * makeseeds: Update user agent regex
+  * test: add functional test for XORed block/undo files (`-blocksxor`)
+  * [doc] mention bip94 support
+  * test: refactor: move `read_xor_key`/`util_xor` helpers to util module
+  * qt: Update translation source file for v28.0 string freeze
+  * gui: Use menu for wallet migration
+  * remove repeated word in note
+  * Move maximum timewarp attack threshold back to 600s from 7200s
+  * Deduplicate list of chain strings in RPC help texts
+  * gui: Use wallet name for wallet migration rather than WalletModel
+  * gui: don't remove wallet manually before migration
+  * gui: Consolidate wallet display name to GUIUtil function
+  * wallet, interfaces: Include database format in listWalletDir
+  * test: Disallow fee_estimator construction in ChainTestingSetup
+  * wallet: fix, detect blank legacy wallets in IsLegacy
+  * doc: add missing "testnet4" network string in RPC/init help texts
+  * policy/feerate.h: avoid constraint self-dependency
+  * add missing #include <cstdint> for GCC 15
+  * doc: Update ccache website link
+  * chainparams: Handle Testnet4 in GetNetworkForMagic
+  * doc: Remove outdated nTx faking comment
+  * chainparams: add mainnet assumeutxo param at height 840_000
+  * wallet: List sqlite wallets with empty string name
+  * wallet: Ignore .bak files when listing wallet files
+  * validation: Use MAX_TIMEWARP constant as testnet4 timewarp defense delta
+  * net: Clarify that m_addr_local is only set once
+  * [test]: remove `ExtractDestination` false assertion for `ANCHOR` script
+  * lint: Find function calls in default arguments
+  * doc: Add release notes for 29775
+  * doc: Align deprecation warnings
+  * assumeutxo: Drop block height from metadata
+  * Reduce cache lookups in CCoinsViewCache::FetchCoin
+  * guix: bump time-machine to 7bf1d7aeaffba15c4f680f93ae88fbef25427252
+  * contrib: support reading XORed blocks in linearize-data.py script
+  * chainparams: Add initial minimum chain work for Testnet4
+  * Revert "depends: Fetch miniupnpc sources from an alternative website"
+  * add deprecation warning for mempoolfullrbf
+  * [doc] update documentation for new mempoolfullrbf default
+  * p2p: For assumeutxo, download snapshot chain before background chain
+  * p2p: Restrict downloading of blocks for snapshot chain
+  * doc: Drop no longer needed workaround for WSL
+  * fuzz: replace hardcoded numbers for bech32 limits
+  * validation: don't erase coins cache on prune flushes
+  * Add linked-list test to CCoinsViewCache::SanityCheck
+  * coins: move Sync logic to CoinsViewCacheCursor
+  * coins: pass linked list of flagged entries to BatchWrite
+  * test: add cache entry linked list tests
+  * coins: track flagged cache entries in linked list
+  * testnet: Add timewarp attack prevention for Testnet4
+  * testnet: Add Testnet4 difficulty adjustment rules fix
+  * testnet: Introduce Testnet4
+  * refactor: use c++20 std::views::reverse instead of reverse_iterator.h
+  * ci: Silent Homebrew's reinstall warnings
+  * doc: release note for 30212
+  * rpc: clarify ALREADY_IN_CHAIN rpc errors
+  * build: remove check for __declspec(dllexport)
+  * build: remove check for __attribute__((visibility..
+  * depends: fix ZMQ CMake getcachesize check
+  * scripted-diff: Replace uint256S("str") -> uint256{"str"}
+  * refactor: Hand-replace some uint256S -> uint256
+  * refactor: Add consteval uint256(hex_str)
+  * miniscript: Use `ToIntegral` instead of `ParseInt64`
+  * scripted-diff: Modernize naming of nChainTx and nTxCount
+  * test: Add basic check for nChainTx type
+  * chainparams: Change nChainTx to uint64_t
+  * refactor: remove un-tested early returns
+  * tests: add tests for KeyPair
+  * refactor: move SignSchnorr to KeyPair
+  * logging: clarify -debug and -debugexclude descriptions
+  * rpc: make logging method reject "0" category and correct the help text
+  * logging, refactor: minor encapsulation improvement and use BCLog::NONE instead of 0
+  * logging, refactor: make category special cases explicit
+  * doc + test: Correct uint256 hex string endianness
+  * doc: Add missed cmake package to build depends
+  * crypto: add KeyPair wrapper class
+  * tests: add key tweak smoke test
+  * bench: add benchmark for signing with a taptweak
+  * doc: Add note about distro's g++-mingw-w64-x86-64-posix version
+  * policy: enable full-rbf by default
+  * doc: add release notes for full-rbf
+  * test: check that keyless P2A 'signing' via `signrawtransactionwithkey` succeeds
+  * test: check that P2A with witness data is still consensus-legal
+  * test: P2A is a destination type with an address
+  * gui, qt: brintToFront workaround for Wayland
+  * [rpc, fees]: add more detail on the fee estimation modes
+  * [doc]: add `30275` release notes
+  * fuzz: fix timeout in crypter target
+  * test: Disable known broken USDT test for now
+  * Revert "build: pass --with-ecmult-gen-kb=86 to secp256k1"
+  * Squashed 'src/secp256k1/' changes from 4af241b320..642c885b61
+  * doc: tor.md: use -bind=127.0.0.1:8334=onion for the Tor bind
+  * Showing local addresses on the Node Window
+  * net: Providing an interface for mapLocalHost
+  * coins: call ClearFlags in CCoinsCacheEntry destructor
+  * refactor: require self and sentinel parameters for AddFlags
+  * refactor: add CoinsCachePair alias
+  * refactor: move flags to private uint8_t and rename to m_flags
+  * refactor: disallow setting flags in CCoinsCacheEntry constructors
+  * refactor: encapsulate flags setting with AddFlags and ClearFlags
+  * refactor: encapsulate flags get access for all other checks
+  * refactor: encapsulate flags access for dirty and fresh checks
+  * clusterlin: improve rechunking in LinearizationChunking (optimization)
+  * clusterlin: add MergeLinearizations function + fuzz test + benchmark
+  * clusterlin: add PostLinearize + benchmarks + fuzz tests
+  * clusterlin: add algorithms for connectedness/connected components
+  * clusterlin: rename Intersect -> IntersectPrefixes
+  * fuzz: improve scriptpubkeyman target
+  * qt: Replace deprecated LogPrintf with LogInfo in GUIUtil::LogQtInfo()
+  * qt, build: Drop `QT_STATICPLUGIN` macro
+  * depends: Fix `zeromq` build on OpenBSD
+  * refactor: remove TxidFromString
+  * test: replace WtxidFromString with Wtxid::FromHex
+  * fuzz: increase FromHex() coverage
+  * test: add uint256::FromHex unittest coverage
+  * test: Avoid CScript() as default function argument
+  * [fuzz] Harness for version handshake
+  * scripted-diff: Rename lazily initialized bloom filters
+  * doc: Remove reference to resolved issue
+  * [net processing] Lazily initialize m_recent_confirmed_transactions
+  * [net processing] Lazily initialize m_recent_rejects_reconsiderable
+  * [net processing] Lazily initialize m_recent_rejects
+  * test: Try previously intermittently broken USDT test again
+  * doc: remove obsolete mention and link to closed PR
+  * doc: add release notes for #22729
+  * test: Make leaf_script mandatory when scriptpath is set in TaprootSignatureMsg
+  * test: fix constructor of msg_tx
+  * doc: mention optional dependencies (qrencode, zmq) in OpenBSD build docs
+  * test: add P2A ProduceSignature coverage
+  * Add release note for P2A output feature
+  * test: add P2A coverage for decodescript
+  * test: Add anchor mempool acceptance test
+  * policy: stop 3rd party wtxid malleability of anchor spend
+  * policy: make anchor spend standard
+  * policy: Add OP_1 <0x4e73> as a standard output type
+  * kernel: Only setup kernel context globals once
+  * qt: Update translation source file
+  * qt: Bump Transifex slug for 28.x
+  * qt: Pull recent translations from Transifex
+  * test: fix intermittent failures in feature_proxy.py
+  * doc: Update issue reference for libbitcoinkernel
+  * rpc: fix maybe-uninitialized compile warning in getchaintxstats
+  * ci: enable berkley db on test each commit job
+  * rpc: add utxo's blockhash and number of confirmations to scantxoutset output
+  * guix: move bison from global scope, to Linux
+  * mingw: Document mode wbx workaround
+  * Add -blocksxor boolean option
+  * rpc: Return precise loadtxoutset error messages
+  * Return XOR AutoFile from BlockManager::Open*File()
+  * guix: bump time-machine to efc26826400762207cde9f23802cfe75a737963c
+  * guix: patch /gnu/store paths out of winpthreads
+  * doc: rpc: Use "output script" consistently (2/2)
+  * bench: add cluster linearization improvement benchmark
+  * clusterlin: permit passing in existing linearization to Linearize
+  * clusterlin: add LinearizationChunking class
+  * clusterlin: randomize the SearchCandidateFinder search order
+  * clusterlin: use bounded BFS exploration (optimization)
+  * bench: Candidate finding and linearization benchmarks
+  * clusterlin: add Linearize function
+  * clusterlin: add chunking algorithm
+  * clusterlin: add SearchCandidateFinder class
+  * clusterlin: add AncestorCandidateFinder class
+  * tests: framework for testing DepGraph class
+  * clusterlin: introduce cluster_linearize.h with Cluster and DepGraph types
+  * depends: remove ENV unsetting for darwin
+  * guix: improve ENV unsetting for macOS
+  * depends: patch explicit -lm usage out of Qt tools
+  * refactor: Use untranslated error message in ActivateSnapshot
+  * depends: cleanup after qrencode build
+  * depends: cleanup after miniupnpc build
+  * depends: Cleanup postprocess commands after switching to CMake
+  * m_tx_download_mutex followups
+  * release m_tx_download_mutex before MakeAndPushMessage GETDATA
+  * [refactor] change ActiveTipChange to use CBlockIndex ref instead of ptr
+  * ci: Add missing qttools5-dev install to Asan task
+  * doc: Add release notes for two pull requests
+  * refactor: Replace ParseHashStr with FromHex
+  * rest: Reject truncated hex txid early in getutxos parsing
+  * refactor: Expose FromHex in transaction_identifier
+  * refactor: Implement strict uint256::FromHex()
+  * ci: add _LIBCPP_REMOVE_TRANSITIVE_INCLUDES to TSAN job
+  * refactor: fix missing includes
+  * [test]: ensure `estimatesmartfee` default mode is `economical`
+  * [doc] TxOrphanage is no longer thread-safe
+  * [refactor] combine block vtx loops in BlockConnected
+  * cleanse: Use SecureZeroMemory for mingw-w64 (release) builds
+  * refactor: Add FlatFileSeq member variables in BlockManager
+  * scripted-diff: Rename SetHex to SetHexDeprecated
+  * test: refactor: Replace SetHex with uint256 constructor directly
+  * depends: Bump `libmultiprocess` for CMake fixes
+  * test: Fix intermittent issue in p2p_v2_misbehaving.py
+  * net: Log accepted connection after m_nodes.push_back
+  * guix: use gcc-12 to compile winpthreads
+  * depends: switch to building expat with CMake
+  * guix: use GCC 12.4.0 over 12.3.0
+  * guix: consolidate back to GCC 12 toolchain for all HOSTS
+  * fix: Make TxidFromString() respect string_view length
+  * refactor: Change base_blob::SetHex() to take std::string_view
+  * test: uint256 - Garbage suffixes and zero padding
+  * refactor: Make uint256_tests no longer use deprecated BOOST_CHECK()
+  * test: Add test for TxidFromString() behavior
+  * doc: use proper doxygen formatting for CTxMemPool::cs
+  * fuzz: Speed up PickValue in txorphan
+  * lint: Use git clone --depth=1
+  * lint: Add missing docker.io prefix to ci/lint_imagefile
+  * lint: Use consistent out-of-tree build for python and test_runner
+  * Fix lint-spelling warnings
+  * doc: Clarify intent of ./ci/lint_run_all.sh
+  * lint: Use $CI_RETRY_EXE when building ./ci/lint_imagefile
+  * fuzz: reduce keypool size in scriptpubkeyman target
+  * Fix MSVC warning C4273 "inconsistent dll linkage"
+  * depends: bump libmultiprocess for CMake fixes
+  * depends: Fix CMake-generated `libevent*.pc` files
+  * fuzz: Deglobalize signature cache in sigcache test
+  * fuzz: Limit parse_univalue input length
+  * log: Remove NOLINT(bitcoin-unterminated-logprintf)
+  * depends: switch zmq to CMake
+  * fuzz: Use BasicTestingSetup for coins_view target
+  * test: Add arguments for creating a slimmer setup
+  * depends: add zeromq no librt patch
+  * depends: add zeromq cmake minimum patch
+  * depends: add zeromq windows usage patch
+  * depends: add zeromq builtin sha1 patch
+  * depends: add zeromq mktemp macos patch
+  * logging: use std::string_view
+  * logging: Apply formatting to early log messages
+  * logging: Limit early logging buffer
+  * test: Add loadtxoutset test with tip on snapshot block
+  * test: Remove already resolved assumeutxo todo comments
+  * depends: use CMake to build FreeType
+  * contrib: assume binary existence in sec/sym checks
+  * [fees]: change `estimatesmartfee` default mode to `economical`
+  * contrib: simplify ELF test-security-check
+  * contrib: simplify PE test-security-check
+  * contrib: simplify MACHO test-security-check
+  * refactor: add coinbase constraints to BlockCreateOptions
+  * test: bump mocktime after node has received and sent bytes
+  * refactor: Use util::Split to avoid a harmless unsigned-integer-overflow
+  * test: Non-Shy version sender
+  * refactor: Make m_last_notified_header private
+  * doc: getaddressinfo[isscript] is optional
+  * test: Fix MSVC warning C4101 "unreferenced local variable"
+  * univalue, refactor: Convert indentation tabs to spaces
+  * qa: Do not assume running `feature_asmap.py` from source directory
+  * qa: Consider `cache` and `config.ini` relative to invocation directory
+  * scripted-diff: Add `__file__` argument to `BitcoinTestFramework.init()`
+  * [refactor] delete EraseTxNoLock, just use EraseTx
+  * remove obsoleted TxOrphanage::m_mutex
+  * lock m_recent_confirmed_transactions using m_tx_download_mutex
+  * remove obsoleted hashRecentRejectsChainTip
+  * update recent_rejects filters on ActiveTipChange
+  * add ValidationInterface::ActiveTipChange
+  * guard TxRequest and rejection caches with new mutex
+  * refactor: pass BlockCreateOptions to createNewBlock
+  * refactor: use CHECK_NONFATAL to avoid single-use symbol
+  * gui: correct replacement of amp character in the wallet name for QMenu
+  * test: Fix intermittent failure in p2p_v2_misbehaving.py
+  * Add fuzz test for FSChaCha20Poly1305
+  * Add fuzz test for AEADChacha20Poly1305
+  * fuzz: limit the number of nested wrappers in descriptors
+  * fuzz: limit the number of sub-fragments per fragment for descriptors
+  * net: Allow DNS lookups on nodes with IPV6 lo only
+  * rest: Reject negative outpoint index in getutxos parsing
+  * init: change shutdown order of load block thread and scheduler
+  * rpc: Use CHECK_NONFATAL over Assert
+  * logging: Add DisableLogging()
+  * contrib: c++ify test stubs after switching to c++ compilers
+  * validation: Don't load a snapshot if it's not in the best header chain.
+  * log: Fix __func__ in LogError in blockstorage module
+  * log: LogError with FlatFilePos in UndoReadFromDisk
+  * refactor: Mark IsBlockPruned const
+  * remove truc_policy.cpp from libbitcoin_common_a_SOURCES
+  * test: fix inconsistency in fundrawtransaction weight limits test
+  * util: Catch translation string errors at compile time
+  * Reapply "test: p2p: check that connecting to ourself leads to disconnect"
+  * net: prevent sending messages in `NetEventsInterface::InitializeNode`
+  * net: fix race condition in self-connect detection
+  * package rbf: cpfp structure requires package > parent feerate
+  * test package rbf boundary conditions more closely
+  * fuzz: mini_miner_selection fixups.
+  * MiniMiner: use FeeFrac in AncestorFeerateComparator
+  * [doc] archive v26.2 release notes
+  * refactor: Mark some static global vars as const
+  * refactor: De-globalize last notified header index
+  * refactor: De-globalize validation benchmark timekeeping
+  * rpc: doc: use "output script" terminology consistently in "asm"/"hex" results
+  * test: [refactor] Pass TestOpts
+  * tidy: modernize-use-equals-default
+  * Use WITH_LOCK in Warnings::Set
+  * GUI/OptionsDialog: Prefer to stretch actual options area rather than waste space
+  * GUI/OptionsDialog: Allow Maximize of window
+  * random: drop ad-hoc Shuffle in favor of std::shuffle
+  * bench random: benchmark more functions, and add InsecureRandomContext
+  * refactor: Use designated initializer
+  * rpc: Use untranslated error strings in loadtxoutset
+  * net_processing: use existing RNG object in ProcessGetBlockData
+  * random bench refactor: move to new bench/random.cpp
+  * test: loadtxoutset in divergent chain with less work
+  * refactor: Use named arguments to get path arg in loadtxoutset
+  * kernel: De-globalize signature cache
+  * fuzz: improve utxo_snapshot target
+  * Expose CSignatureCache class in header
+  * kernel: De-globalize script execution cache hasher
+  * kernel: De-globalize script execution cache
+  * validation: Don't error if maxsigcachesize exceeds uint32::max
+  * contrib: rename cc to cxx in binary checking scripts
+  * contrib: use c++ rather than c for binary tests
+  * fuzz: fix key size in crypter target
+  * validation: Check if mempool exists before asserting in ActivateSnapshot
+  * logging: Add thread safety annotations
+  * lint: remove unneeded trailing line fix
+  * lint: ignore files ignored by git in mlc
+  * test: add test for modififed walletprocesspsbt calls
+  * net: require P2P binds to succeed
+  * net: report an error if unable to bind on the Tor listening addr:port
+  * net: don't extra bind for Tor if binds are restricted
+  * [doc] add release note for TRUC
+  * use version=3 instead of v3 in debug strings
+  * scripted-diff: change names from V3 to TRUC
+  * [doc] replace mentions of v3 with TRUC
+  * rename mempool_accept_v3.py to mempool_truc.py
+  * wallet: fix FillPSBT errantly showing as complete
+  * test: Add coverage for getchaintxstats in assumeutxo context
+  * rpc: Reorder getchaintxstats output
+  * rpc: Avoid getchaintxstats invalid results
+  * Revert "test: p2p: check that connecting to ourself leads to disconnect"
+  * test: verify wallet is still active post-migration failure
+  * wallet: Use LegacyDataSPKM when loading
+  * wallet: Move MigrateToDescriptor and DeleteRecords to LegacyDataSPKM
+  * wallet: Move LegacyScriptPubKeyMan::IsMine to LegacyDataSPKM
+  * wallet: Move LegacySPKM data storage and handling to LegacyDataSPKM
+  * random: replace construct/assign with explicit Reseed()
+  * random: use LogError for init failure
+  * tests: make fuzz tests (mostly) deterministic with fixed seed
+  * random: cleanup order, comments, static
+  * net, net_processing: use existing RNG objects more
+  * random: improve precision of MakeExponentiallyDistributed
+  * random: convert GetExponentialRand into rand_exp_duration
+  * random: convert GetRand{Micros,Millis} into randrange
+  * net: use GetRandMicros for cache expiration
+  * random: get rid of GetRand by inlining
+  * wallet: update mempool conflicts tests + docs
+  * util: Use SteadyClock in RandAddSeedPerfmon
+  * random: make GetRand() support entire range (incl. max)
+  * tests: overhaul deterministic test randomness
+  * random: convert XoRoShiRo128PlusPlus into full RNG
+  * random: move XoRoShiRo128PlusPlus into random module
+  * xoroshiro128plusplus: drop comment about nonexisting copy()
+  * random: modernize XoRoShiRo128PlusPlus a bit
+  * random: add RandomMixin::randbits with compile-known bits
+  * random: Improve RandomMixin::randbits
+  * random: refactor: move rand* utilities to RandomMixin
+  * random: use BasicByte concept in randbytes
+  * random: add a few noexcepts to FastRandomContext
+  * random: move rand256() and randbytes() to .h file
+  * random: write rand256() in function of fillrand()
+  * ci: Clear unused /msan/llvm-project
+  * Moved the repeated -printpriority fetching out of AddToBlock
+  * test: Added coverage to Block not found error using gettxoutsetinfo
+  * p2p: Start downloading historical blocks from common ancestor
+  * test: p2p: check that connecting to ourself leads to disconnect
+  * scripted-diff: Log parameter interaction not thrice
+  * doc: Fix outdated dev comment about logging
+  * wallet: use LogTrace for walletdb log messages at trace level
+  * Compare ASMaps with respect to specific addresses
+  * [wallet, rpc]: add `max_tx_weight` to tx funding options
+  * doc: detail -rpccookieperms option
+  * test: add rpccookieperms test
+  * init: add option for rpccookie permissions
+  * util: add perm string helper functions
+  * [wallet]: update the data type of `change_output_size`, `change_spend_size` and `tx_noinputs_size` to `int`
+  * [doc]: update reason for deducting change output weight
+  * [refactor]: update coin selection algorithms input parameter `max_weight` name
+  * Have testBlockValidity hold cs_main instead of caller
+  * refactor: use CHECK_NONFATAL to avoid single-use symbol
+  * Drop unneeded lock from createNewBlock
+  * mempool: move LoadMempool/DumpMempool to node
+  * Change MigrateLegacyToDescriptor to reopen wallet as BERKELEY_RO
+  * kernel: remove mempool_persist.cpp
+  * refactor: Remove no longer needed clang-15 workaround for std::span
+  * fuzz: Clarify Apple-Clang-16 workaround
+  * build: Bump clang minimum supported version to 16
+  * refactor: testBlockValidity make out argument last
+  * Add missing include for mining interface
+  * test: change comments to `self.log.info` for `test_addnode_getaddednodeinfo`
+  * test: add coverage for `node` field of `getaddednodeinfo` RPC
+  * rest: don't copy data when sending binary response
+  * ci: test-each-commit merge base optional
+  * ci: forks can opt-out of CI branch push (Cirrus only)
+  * contrib: Fixup verify-binaries OS platform parsing
+  * depends: update doc in Qt pwd patch
+  * depends: switch libevent to CMake
+  * Squashed 'src/secp256k1/' changes from 06bff6dec8..4af241b320
+  * build: Drop redundant `sys/sysctl.h` header check
+  * doc: Add note to getblockfrompeer on missing undo data
+  * rpc: Make pruneheight also reflect undo data presence
+  * wallet: notify when preset + automatic inputs exceed max weight
+  * ci: increase available ccache size to 300MB
+  * test: Check that non empty version packet is ignored and no disconnection happens
+  * test: Check that disconnection happens when AAD isn't filled
+  * test: Check that disconnection happens when garbage sent/received are different
+  * test: Check that disconnection happens when wrong garbage terminator is sent
+  * test: Check that disconnection happens when >4095 garbage bytes is sent
+  * refactor, blockstorage: Generalize GetFirstStoredBlock
+  * build: add -Wundef
+  * refactor: use #ifdef HAVE_SOCKADDR_UN
+  * randomenv: use ifdef over if
+  * zmq: use #ifdef ENABLE_ZMQ
+  * build: Suppress warnings from boost and capnproto in multiprocess code
+  * test: Remove unnecessary restart in assumeutxo test
+  * assumeutxo: Check snapshot base block is not marked invalid
+  * ci: clarify Cirrus self-hosted workers setup
+  * refactor: remove extraneous lock annotations from function definitions
+  * ci: add option for running tests without volume
+  * gui: show maximum mempool size in information window
+  * add node interface method for getting maximum mempool size
+  * contrib: add R(UN)PATH check to ELF symbol-check
+  * test: Make blockencodings_tests deterministic
+  * refactor: Move early loadtxoutset checks into ActiveSnapshot
+  * QA: Expect PACKAGE_NAME rather than constant "Bitcoin Core"
+  * fuzz: Fix wallet_bdb_parser 32-bit unhandled fseek error
+  * Don't use iterator addresses in IteratorComparator
+  * rpc: call IsInitialBlockDownload via miner interface
+  * Replace hard-coded constant in test
+  * Validate oversized transaction
+  * Validate transaction without inputs
+  * Use SCRIPT_VERIFY_NONE instead of hard-coded 0 in transaction_tests
+  * rpc: minize getTipHash() calls in gbt
+  * rpc: call processNewBlock via miner interface
+  * rpc: getTransactionsUpdated via miner interface
+  * Always pass options to BlockAssembler constructor
+  * rpc: call CreateNewBlock via miner interface
+  * rpc: getblocktemplate getTipHash() via Miner interface
+  * rpc: call TestBlockValidity via miner interface
+  * Introduce Mining interface
+  * fuzz: have package_rbf always make small txns
+  * doc: reword package RBF documentation
+  * upnp: add compatibility for miniupnpc 2.2.8
+  * rename policy/v3_policy.* to policy/truc_policy.*
+  * build: use -no_exported_symbols on macOS
+  * ci: remove unused bcc variable from workflow
+  * doc: replace mention of V3 with TRUC
+  * move-only: refactor CreateTransactionInternal
+  * wallet: use CRecipient instead of CTxOut
+  * test: expand LimitOrphan and EraseForPeer coverage
+  * test: Introduce test types and modify v2 handshake function accordingly
+  * test: write functional test results to csv
+  * test: Added test coverage to listsinceblock rpc
+  * fuzz: FuzzedSock::Recv() don't lose bytes from MSG_PEEK read
+  * fuzz: simplify FuzzedSock::m_peek_data
+  * netbase: extend CreateSock() to support creating arbitrary sockets
+  * ci: enable self-assignment clang-tidy check
+  * refactor: add self-assign checks to classes which violate the clang-tidy check
+  * doc: rewrite some of the macdeploy docs
+  * depends: swap mmacosx-version-min for mmacos-version-min
+  * Add release note for size 2 package rbf
+  * doc: update package RBF comment
+  * mempool: Improve logging of replaced transactions
+  * CheckPackageMempoolAcceptResult: Check package rbf invariants
+  * Fuzz: pass mempool to CheckPackageMempoolAcceptResult
+  * [test] package rbf
+  * [policy] package rbf
+  * Revert "contrib: macdeploy: monkey-patch gen-sdk to be deterministic"
+  * Squashed 'src/leveldb/' changes from e2f10b4e47..688561cba8
+  * refactor: remove warnings globals
+  * node: update uiInterface whenever warnings updated
+  * introduce and use the generalized `node::Warnings` interface
+  * move-only: move warnings from common to node
+  * refactor: remove unnecessary AppendWarning helper function
+  * test: cover more errors for `signrawtransactionwithkey` RPC
+  * i2p: fix log when an interruption happens during `Accept`
+  * i2p: log errors properly according to their severity
+  * doc: archive release notes for v27.1
+  * Squashed 'src/minisketch/' changes from 3472e2f5ec..eb37a9b8e7
+  * fuzz: Use std::span in FuzzBufferType
+  * ci: move Asan / LSan / USDT job to Github Actions
+  * guix: use glibc 2.31
+  * test: add functional test for tagged MiniWallet instances
+  * test: fix MiniWallet internal key derivation for tagged instances
+  * utils: add missing include
+  * test: fix MiniWallet script-path spend (missing parity bit in leaf version)
+  * test: refactor: return TaprootInfo from P2TR address creation routine
+  * test: add coverage for errors for `combinerawtransaction` RPC
+  * PackageV3Checks: Relax assumptions
+  * doc: add release note for 29091 and 29165
+  * refactor: rename (macho) ld64 to lld
+  * ci: update deps for macOS cross build
+  * depends: update install docs for macOS cross compilation
+  * depends: remove no-longer used llvm_* vars from macOS build
+  * depends: no-longer pass -B to clang in macOS cross-compile
+  * depends: remove native LLVM package
+  * depends: remove FORCE_USE_SYSTEM_CLANG
+  * guix: use clang-toolchain-18 for macOS build
+  * tests: add fuzz tests for BitSet
+  * util: add BitSet
+  * log: use error level for critical log messages
+  * test: Remove redundant verack check
+  * build: Remove --enable-gprof
+  * test: doc: fix units in tx size standardness test (s/vbytes/weight units)
+  * refactor: performance-for-range-copy in psbt.h
+  * ci: add IPV6 network to ci container
+  * refactor: Rename CTransaction::nVersion to version
+  * blockman: Replace m_reindexing with m_blockfiles_indexed
+  * test: Add functional test for continuing a reindex
+  * indexes: Don't wipe indexes again when already reindexing
+  * kernel: Add less confusing reindex options
+  * consensus: Store transaction nVersion as uint32_t
+  * refactor: Add explicit cast to expected_last_page to silence fuzz ISan
+  * minor: remove unnecessary semicolons from RPC content type examples
+  * refactor: move orphanage constants to header file
+  * test: use json-rpc 2.0 in all functional tests by default
+  * bitcoin-cli: use json-rpc 2.0
+  * test: remove unused variable in interface_rpc.py
+  * doc: update and link for JSON-RPC 2.0
+  * validation: Remove needs_init from LoadBlockIndex
+  * bugfix: Streamline setting reindex option
+  * ci: Use relative paths in `win64-native` CI job consistently
+  * ci: Remove no longer needed workaround for GHA Windows images
+  * tests: add fuzz tests for VecDeque
+  * util: add VecDeque
+  * fuzz: add I2P harness
+  * net_processing: make MaybePunishNodeFor{Block,Tx} return void
+  * build: warn on self-assignment
+  * refactor: disable self-assign warning for tests
+  * test: Add ReceiveWithExtraTransactions Compact Block receive test.
+  * test: refactor: Rename extra_txn to const empty_extra_txn as it is empty in all test cases
+  * build: re-enable deprecated warning copy
+  * test: add `createmultisig` P2MS encoding test for all n (1..20)
+  * test: add unit test for `keys_to_multisig_script`
+  * test: fix `keys_to_multisig_script` (P2MS) helper for n/k > 16
+  * guix: bump time-machine to f0bb724211872cd6158fce6162e0b8c73efed126
+  * Reduce memory copying operations in bech32 encode
+  * Reserve hrp memory in Decode and LocateErrors
+  * build: no-longer allow GCC-10 in C++20 check
+  * doc: fixup deps doc after #30198
+  * chainparams: Add achow101 DNS seeder
+  * test: Set mocktime in p2p_disconnect_ban.py to avoid intermittent test failure
+  * test: Fix typos and use names args
+  * Support running individual lint checks
+  * refactor: remove unused `CKey::Negate` method
+  * guix: show *_FLAGS variables in pre-build output
+  * [fuzz] Avoid endless waiting in FuzzedSock::{Wait,WaitMany}
+  * [fuzz] Make peeking through FuzzedSock::Recv fuzzer friendly
+  * depends: Update Boost download link
+  * build: Fix building `fuzz` binary on on SunOS / illumos
+  * [doc] update bips.md for 431
+  * [test] wallet uses CURRENT_VERSION which is 2
+  * [policy] make v3 transactions standard
+  * doc: JSON-RPC request Content-Type is application/json
+  * [fuzz] Use fuzzer friendly ConsumeRandomLengthByteVector in FuzzedSock::Recv
+  * depends: consolidate dependency docs
+  * net: log connections failures via SOCKS5 with less severity
+  * [refactor] use TRUC_VERSION in place of 3
+  * test: MiniWallet: respect fee_rate for target_weight, use in mempool_limit.py
+  * test: add framework functional test for MiniWallet's tx padding
+  * test: MiniWallet: fix tx padding (`target_weight`) for large sizes, improve accuracy
+  * net_processing: remove Misbehavior score and increments
+  * net_processing: make all Misbehaving increments = 100
+  * net_processing: drop 8 headers threshold for incoming BIP130
+  * net_processing: drop Misbehavior for unconnecting headers
+  * net_processing: do not treat non-connecting headers as response
+  * depends: fix Qt macOS build with Clang 18
+  * clang-tidy: Add `bugprone-move-forwarding-reference` check
+  * build: remove --enable-lcov-branch-coverage
+  * depends: qt 5.15.14
+  * refactor: use recommended type hiding on multi_index types
+  * qa: a fuzz target for the block index database
+  * scripted-diff: Replace nNextSweep with m_next_sweep
+  * increase txorphan harness stability
+  * fuzz: Handle missing BDBRO errors
+  * Use `exact_target` shorthand in coinselector_tests
+  * log: Add V2 handshake timeout
+  * test: Make global TRANSPORT_VERSION variable an instance variable
+  * Fold GetSelectionWaste() into ComputeAndSetWaste()
+  * test: Add coverage for txid coins count check when loading snapshot
+  * assumeutxo: Add network magic ctor param to SnapshotMetadata
+  * fuzz: Fix wallet_bdb_parser stdlib error matching
+  * lint: add markdown hyperlink checker
+  * assumeutxo: Deserialize trailing byte instead of Txid
+  * doc: Add release notes for #29612
+  * Link to gen-bitcoin-conf.sh instead of bitcoin.conf placeholder
+  * [fuzz] Avoid collecting initialization coverage
+  * Add sanity checks for various ATMPArgs booleans
+  * [refactor] make some members MemPoolAccept-wide
+  * cpfp carveout is excluded in packages
+  * Add m_allow_sibling_eviction as separate ATMPArgs flag
+  * Add description for m_test_accept
+  * test: Assumeutxo: snapshots with less work should not be loaded
+  * clang-tidy: add check for non-trivial thread_local vars
+  * depends: Fetch miniupnpc sources from an alternative website
+  * test: add coverage for `mapped_as` from `getrawaddrman`
+  * net: rpc: return peer's mapped AS in getrawaddrman
+  * doc: Correct pull request prefix for scripts and tools
+  * guix: drop binutils from macOS env
+  * guix: use GUIX_LD_WRAPPER_DISABLE_RPATH for all HOSTS
+  * guix: remove ZERO_AR_DATE export
+  * depends: remove cctools & libtapi
+  * build: switch to using lld for macOS builds
+  * build: add lld into macOS build environment(s)
+  * depends: swap cctools-x for llvm-x
+  * depends: don't use -no_warning_for_no_symbols in macOS qt build
+  * windeploy: Renew certificate
+  * wallet, tests: Avoid stringop-overflow warning in PollutePubKey
+  * [fuzz] V3_MAX_VSIZE and effective ancestor/descendant size limits
+  * [policy] restrict all v3 transactions to 10kvB
+  * [policy] explicitly require non-v3 for CPFP carve out
+  * test: improve robustness of connect_nodes()
+  * rpc: Enhance metadata of the dumptxoutset output
+  * assumeutxo: Add documentation on dumptxoutset serialization format
+  * assumeutxo: Add test for changed coin size value
+  * rpc: Optimize serialization disk space of dumptxoutset
+  * build: remove --enable-threadlocal
+  * doc: remove comment about using thread_local
+  * build: Enable `thread_local` for MinGW-w64 builds
+  * refactor: replace hardcoded numbers
+  * ci: Add mising -Wno-error=maybe-uninitialized to armhf task
+  * rpc: avoid copying into UniValue
+  * doc: Update NetBSD Build Guide
+  * tests: improve wallet multisig descriptor test and docs
+  * build: pass --with-ecmult-gen-kb=86 to secp256k1
+  * [[refactor]] Check CTxMemPool options in constructor
+  * test: remove unneeded `-maxorphantx=1000` settings
+  * bench: bugfix, properly release wallet before erasing directory
+  * test: Log when the garbage is actually sent to transport layer
+  * wallet, test: Be able to always swap BDB endianness
+  * test: Test bdb_ro dump of wallet without reset LSNs
+  * test: Test dumping dbs with overflow pages
+  * test: Test dumps of other endian BDB files
+  * bdb: Be able to make byteswapped databases
+  * Error if LSNs are not reset
+  * Berkeley RO Database fuzz test
+  * tests: Add BerkeleyRO to db prefix tests
+  * wallettool: Optionally use BERKELEY_RO as format when dumping BDB wallets
+  * Add MakeBerkeleyRODatabase
+  * Implement handling of other endianness in BerkeleyRODatabase
+  * wallet: implement independent BDB deserializer in BerkeleyRODatabase
+  * fuzz: add more coverage for `ScriptPubKeyMan`
+  * util: avoid using thread_local variable that has a destructor
+  * doc: Clarify distinction between util and common libraries in libraries.md
+  * util: Move util/string.h functions to util namespace
+  * util: add TransactionError includes and namespace declarations
+  * util: move fees.h and error.h to common/messages.h
+  * common: Add PSBTError enum
+  * util: move error.h TransactionError enum to node/types.h
+  * util: move spanparsing.h to script/parsing.h
+  * util: move spanparsing.h Split functions to string.h
+  * util: move HexStr and HexDigit from util to crypto
+  * util: move util/message to common/signmessage
+  * build: move memory_cleanse from util to crypto
+  * build: move chainparamsbase from util to common
+  * test: Add check-deps.sh script to check for unexpected library dependencies
+  * kernel: De-globalize fReindex
+  * Squashed 'src/secp256k1/' changes from d8311688bd..06bff6dec8
+  * refactor: Use type-safe time in txorphanage
+  * rpc: Remove index-based Arg accessor
+  * crypto: disable asan for sha256_sse4 with clang and -O0
+  * ci: Roll test-each-commit Ubuntu
+  * ci: Remove clang version pin in test-each-commit
+  * blockstorage: Don't move cursor backwards in UpdateBlockInfo
+  * blockstorage: Rename FindBlockPos and have it return a FlatFilePos
+  * validation, blockstorage: Separate code paths for reindex and saving new blocks
+  * blockstorage: split up FindBlockPos function
+  * doc: Improve doc for functions involved in saving blocks to disk
+  * doc: add comments and release-notes for JSON-RPC 2.0
+  * rpc: JSON-RPC 2.0 should not respond to "notifications"
+  * rpc: Avoid returning HTTP errors for JSON-RPC 2.0 requests
+  * rpc: Add "jsonrpc" field and drop null "result"/"error" fields
+  * rpc: identify JSON-RPC 2.0 requests
+  * test: add conflicting topology test case
+  * tests, fuzz: use new NUMS_H const
+  * [log] updates in TxOrphanage
+  * [functional test] attackers sending mutated orphans
+  * [unit test] TxOrphanage handling of same-txid-different-witness txns
+  * [p2p] allow entries with the same txid in TxOrphanage
+  * [refactor] TxOrphanage::EraseTx by wtxid
+  * [refactor] TxOrphanage::HaveTx only by wtxid
+  * [p2p] don't query orphanage by txid
+  * kernel: Remove batchpriority from kernel library
+  * crypto: add NUMS_H const
+  * wallet: implement BerkeleyRODatabase::Backup
+  * wallet: implement BerkeleyROBatch
+  * wallet: add dummy BerkeleyRODatabase and BerkeleyROBatch classes
+  * refactor: simplify `FormatSubVersion` using strprintf/Join
+  * cli: Add warning for duplicate port definition
+  * cli: Sanitize ports in rpcconnect and rpcport
+  * rpc: move UniValue in blockToJSON
+  * depends: set RANLIB for CMake
+  * depends: set NM for CMake
+  * depends: set AR for CMake
+  * refactor: Model the bech32 charlimit as an Enum
+  * script/sign: avoid duplicated signature verification after signing
+  * bench: add benchmark for `SignTransaction`
+  * test: add GetAddedNodeInfo() CJDNS regression unit test
+  * p2p, bugfix: detect addnode cjdns peers in GetAddedNodeInfo()
+  * refactor, subprocess: Remove unused stream API calls
+  * refactor, subprocess: Remove unused `Popen::child_created_` data member
+  * refactor, subprocess: Remove unused `Popen::poll()`
+  * refactor, subprocess: Remove `Popen::pid()`
+  * test: test sendall does ancestor aware funding
+  * contrib: drop dead get_machine from test sym check
+  * contrib: use env_flags in get_arch
+  * Refactor: Remove ECC_Start and ECC_Stop from key header
+  * kernel: Remove key module from kernel library
+  * tools: Use ECC_Context helper in bitcoin-tx and bitcoin-wallet tools
+  * test: Use ECC_Context helper in bench and fuzz tests
+  * common: Add ECC_Context RAII wrapper for ECC_Start/ECC_Stop
+  * blockstorage: Add Assume for fKnown / snapshot chainstate
+  * build, test: Remove unused `TIMEOUT` environment variable
+  * build: swap otool for (llvm-)objdump
+  * test: Remove struct.pack from almost all places
+  * scripted-diff: test: Use int.to_bytes over struct packing
+  * test: Use int.to_bytes over struct packing
+  * test: Normalize struct.pack format
+  * ci: Exclude feature_init for now in valgrind task
+  * doc: rpc: fix submitpackage examples
+  * rpc: update min package size error message in submitpackage
+  * doc: rpc: submitpackage takes sorted array
+  * test: add bounds checking for submitpackage RPC
+  * test: added test coverage to loadtxoutset
+  * refactor: Simply include CTxMemPool::Options in CTxMemPool directly rather than duplicating definition
+  * build, test, doc: Temporarily remove Android-related stuff
+  * test: use tagged ephemeral MiniWallet instance in fill_mempool
+  * test: add MiniWallet tagging support to avoid UTXO mixing
+  * test: refactor: eliminate COINBASE_MATURITY magic number in fill_mempool
+  * test: refactor: move fill_mempool to new module mempool_util
+  * net: reduce LOCK(cs_main) scope in ProcessGetBlockData
+  * net: reduce LOCK(cs_main) scope in GETBLOCKTXN
+  * build, msvc: Compile test\fuzz\miniscript.cpp
+  * test: addmultisigaddress, coverage for script size limits
+  * bugfix: addmultisigaddress, add unsupported operation for redeem scripts over 520 bytes
+  * test: coverage for 16-20 segwit multisig scripts
+  * rpc: bugfix, incorrect segwit redeem script size used in signrawtransactionwithkey
+  * fix incorrect multisig redeem script size limit for segwit
+  * test: rpc_createmultisig, decouple 'test_sortedmulti_descriptors_bip67'
+  * test: rpc_createmultisig, decouple 'test_mixing_uncompressed_and_compressed_keys'
+  * test: rpc_createmultisig, remove unnecessary checkbalances()
+  * test: refactor, multiple cleanups in rpc_createmultisig.py
+  * test: rpc_createmultisig, remove manual wallet initialization
+  * miniscript: make operator_mst consteval
+  * doc: fix broken relative md links
+  * [test]: remove duplicate WITNESS_SCALE_FACTOR
+  * gui: fix misleading signmessage error with segwit
+  * build: no-longer disable WARN_CXXFLAGS when CXXFLAGS is set
+  * ci: remove -Wdocumentation from -Werror in multiprocess CI
+  * ci: remove -Warray-bounds from -Werror for win64
+  * ci: disable -Werror=maybe-uninitialized for Windows builds
+  * refactor, test: Always initialize pointer
+  * Replace remaining "520" magic numbers with MAX_SCRIPT_ELEMENT_SIZE
+  * refactor: Avoid unused-variable warning in init.cpp
+  * [refactor] use reference in for loop through iters
+  * refactor: Make 64-bit shift explicit
+  * fuzz: wallet, add target for Crypter
+  * fuzz: txorphan tests fixups
+  * rpc: return warnings as an array instead of just a single one
+  * Process every MempoolAcceptResult regardless of PackageValidationResult
+  * [refactor] have ProcessPackageResult take a PackageToValidate
+  * [doc] remove redundant PackageToValidate comment
+  * [txpackages] use std::lexicographical_compare instead of sorting hex strings
+  * [refactor] make MempoolAcceptResult::m_replaced_transactions non-optional
+  * Add lint check for bitcoin-config.h include IWYU pragma
+  * scripted-diff: Add IWYU pragma keep to bitcoin-config.h includes
+  * lint: [doc] Clarify Windows line endings (CR LF) not to be used
+  * test: use sleepy wait-for-log in reindex readonly
+  * doc: add release-notes-27064.md
+  * system: use %LOCALAPPDATA% as default datadir on windows
+  * depends: fix miniupnpc snprintf usage on Windows
+  * depends: switch miniupnpc to CMake
+  * depends: add upstream CMake patch to miniupnpc
+  * depends: miniupnpc 2.2.7
+  * guix: fix suggested fake date for openssl -1.1.1l
+  * test: Don't rely on incentive incompatible replacement in mempool_accept_v3.py
+  * doc: removed help text saying that peers may not connect automatically
+  * functional test: ensure confirmed utxo being sourced for 2nd chain
+  * test: Handle functional test disk-full error
+  * doc: add LLVM instruction for macOS < 13
+  * depends: Fix build of Qt for 32-bit platforms
+  * fuzz: don't allow adding duplicate transactions to the mempool
+  * update comments in cpp-subprocess (check_output references)
+  * remove unused method `Popen::kill` from cpp-subprocess
+  * net: Fix misleading comment for Discover
+  * net: Replace ifname check with IFF_LOOPBACK in Discover
+  * build, msvc: Compile `test\fuzz\bitdeque.cpp`
+  * refactor: Fix "error C2248: cannot access private member" on MSVC
+  * build: Bump clang minimum supported version to 15
+  * build, msvc: Drop duplicated `common\url.cpp` source file
+  * validation: allow to specify frequency for -checkblockindex
+  * validation: improve performance of CheckBlockIndex
+  * test: adds outbound eviction tests for non outbound-full-relay peers
+  * test: adds outbound eviction functional tests, updates comment in ConsiderEviction
+  * [Test] Assumeutxo: ensure failure when importing a snapshot twice
+  * [functional test] opportunistic 1p1c package submission
+  * [p2p] opportunistically accept 1-parent-1-child packages
+  * [p2p] add separate rejections cache for reconsiderable txns
+  * [fuzz] break out parent functions and add GetChildrenFrom* coverage
+  * [unit test] TxOrphanage::GetChildrenFrom*
+  * [txorphanage] add method to get all orphans spending a tx
+  * [txpackages] add canonical way to get hash of package
+  * test: Add two more urlDecode tests
+  * refactor: Avoid copying util::Result values
+  * refactor: Drop util::Result operator=
+  * remove commented out code in cpp-subprocess
+  * contrib: Add asmap-tool
+  * contrib: rpcauth.py - Add new option (-j/--json) to output text in json format
+  * test: Add test case for spending bare multisig
+  * depends: pass verbose through to cmake based make
+  * Fix typos in description.md and wallet_util.py
+  * remove unused templates from cpp-subprocess
+  * common: Don't terminate on null character in UrlDecode
+  * scripted-diff: Modernize name of urlDecode function and param
+  * refactor: Remove hooking code for urlDecode
+  * refactor: Replace libevent use in urlDecode with our own code
+  * test: Add unit tests for urlDecode
+  * doc: Bash is needed in gen_id and is not installed on FreeBSD by default
+  * doc: suggest only necessary Qt packages for installation on FreeBSD
+  * doc: Suggest only necessary Qt packages for installation on OpenBSD
+  * test: add missing comparison of node1's mempool in MempoolPackagesTest
+  * test: Run framework unit tests in parallel
+  * Replace locale-dependent `std::strerror` with `SysErrorString`
+  * refactor: Rename `subprocess.hpp` to follow our header name conventions
+  * remove unneeded environment option from cpp-subprocess
+  * test:Validate UTXO snapshot with coin_height > base_height & amount > money_supply
+  * Added seednode prioritization message to help output
+  * Gives seednode priority over dnsseed if both are provided
+  * sign: don't assume we are parsing a sane Miniscript
+  * doc: explain what the wallet password does
+  * Avoid explicitly computing diagram; compare based on chunks
+  * test: Fix intermittent timeout in p2p_tx_download.py
+  * ci: Drop no longer needed `-I` flag in "tidy" task
+  * guix: remove no-longer-used bzip2
+  * depends: switch qrencode to .tar.gz
+  * depends: switch libxcb_util_wm to .tar.gz
+  * depends: switch libxcb_util_render to .tar.gz
+  * depends: switch libxcb_util_keysyms to .tar.gz
+  * depends: switch libxcb_util_image to .tar.gz
+  * depends: switch libxcb_util to .tar.gz
+  * depends: switch xproto to .tar.gz
+  * depends: switch libXau to .tar.gz
+  * depends: switch fontconfig to .tar.gz
+  * depends: switch boost to .tar.gz
+  * test: Fix intermittent issue in p2p_handshake.py
+  * [doc] update release-process.md and backports section of CONTRIBUTING
+  * net: attempts to connect to all resolved addresses when connecting to a node
+  * test: Fix `test/streams_tests.cpp` compilation on SunOS / illumos
+  * ci, msvc: Add "Run fuzz binaries" step
+  * fuzz: Pass `SystemRoot` environment variable to subprocess
+  * ci, msvc: Add "Clone fuzz corpus" step
+  * build, msvc: Build `fuzz.exe` binary
+  * build, msvc: Enable preprocessor conformance mode
+  * fuzz: Re-implement `read_stdin` in portable way
+  * index: race fix, lock cs_main while 'm_synced' is subject to change
+  * build: better scope usage of -Wl,-headerpad_max_install_names
+  * build: don't use install_name_tool for macOS deploy when cross-compiling
+  * build: don't pass strip to macOS deploy if cross-compiling
+  * doc: release notes for PR 27679
+  * test: cover unix sockets in zmq interface
+  * zmq: accept unix domain socket address for notifier
+  * test: fix intermittent failure in p2p_compactblocks_hb.py
+  * wallet: return and display signer error
+  * wallet: compare address returned by displayaddress
+  * test: use h marker for external signer mock
+  * fuzz: explicitly cap the vsize of RBFs for diagram checks
+  * test: Fix failing univalue float test
+  * netbase: clean up Proxy logging
+  * remove unneeded cwd option from cpp-subprocess
+  * remove unneeded bufsize option from cpp-subprocess
+  * remove unneeded close_fds option from cpp-subprocess
+  * remove unneeded session_leader option from cpp-subprocess
+  * remove unneeded defer_spawn option from cpp-subprocess
+  * remove unneeded preexec function option from cpp-subprocess
+  * remove unneeded shell option from cpp-subprocess
+  * [doc] restore comment about why we check if ptx HasWitness before caching rejected txid
+  * guard against MempoolAcceptResult::m_replaced_transactions
+  * doc: archive 27.0 release notes
+  * test: p2p: add test for rejected tx request logic (`m_recent_rejects` filter)
+  * fixup: get all utxos up front in fill_mempool, discourage wallet mixing
+  * chore: fix some typos in comments
+  * refactor: Use chrono type for g_mock_time
+  * test: Add missing Assert(mock_time_in >= 0s) to SetMockTime
+  * [rpc, bugfix] Enforce maximum value for setmocktime
+  * rpc: Reword SighashFromStr error message
+  * ci: use clang-16 for Valgrind
+  * ci: Bump s390x to ubuntu:24.04
+  * build: remove minisketch clz check
+  * Squashed 'src/minisketch/' changes from a571ba20f9..3472e2f5ec
+  * build: Fix false positive `CHECK_ATOMIC` test for clang-15
+  * psbt: Check non witness utxo outpoint early
+  * net: Decrease nMaxIPs when learning from DNS seeds
+  * Fix typos in `subprocess.hpp`
+  * Remove timedata
+  * [net processing] Move IgnoresIncomingTxs to PeerManagerInfo
+  * [net processing] Introduce PeerManagerInfo
+  * Add TimeOffsets helper class
+  * [net processing] Use std::chrono for type-safe time offsets
+  * [net processing] Move nTimeOffset to net_processing
+  * guix: replace GCC unaligned VMOV patch with binutils patch
+  * depends: remove no longer needed patch for Boost::Process
+  * gui: Hide peers details
+  * ci: disable _FORTIFY_SOURCE with MSAN
+  * fuzz: Add coverage for client_maxfeerate
+  * AcceptMultipleTransactions: Fix workspace client_maxfeerate
+  * fill_mempool: assertions and docsctring update
+  * Move fill_mempool to util function
+  * Change MAC_OSX macro to __APPLE__ in crypto package
+  * Revert "ci: Temporarily disable bpfcc-tools"
+  * fill_mempool: remove subtest-specific comment
+  * doc: 25.2 historical release notes
+  * guix: remove gcc-toolchain static from Windows build
+  * [clang-tidy] Enable the misc-no-recursion check
+  * depends: add the new LLVM debug macro
+  * refactor: Simplify `extra_txn` to be a vec of CTransactionRef instead of a vec of pair<Wtxid, CTransactionRef>
+  * test: remove immediate tx relay workaround in wallet_groups.py
+  * fuzz: Introduce `BITCOINFUZZ` environment variable
+  * fuzz, refactor: Deduplicate fuzz binary path creation
+  * refactor, bench, fuzz: Drop unneeded `UCharCast` calls
+  * ci: remove --with-asm usage (secp256k1)
+  * ci: use LLVM 18.1.3 in MSAN jobs
+  * crypto: chacha20: always use our fallback timingsafe_bcmp rather than libc's
+  * ci: Drop duplicated compiler flags
+  * depends: switch libnatpmp to CMake
+  * depends: libnatpmp f2433bec24ca3d3f22a8a7840728a3ac177f94ba
+  * test: add unit tests for `calculate_input_weight`
+  * test: introduce and use `calculate_input_weight` helper
+  * doc: i2p: improve `-i2pacceptincoming` mention
+  * gui: don't permit port in proxy IP option
+  * test: Fix debug recommendation in argsman_tests
+  * test: Extends wait_for_getheaders so a specific block hash can be checked
+  * Squashed 'src/secp256k1/' changes from efe85c70a2..d8311688bd
+  * guix: Remove another leftover from #29648
+  * build, depends: Fix `libmultiprocess` cross-compilation
+  * Update the developer mailing list address.
+  * depends: remove -g from sqlite debug flags
+  * depends: add -g to DEBUG=1 flags
+  * test: Bump timeouts in feature_index_prune and wallet_importdescriptors
+  * Drop Windows Socket dependency for `randomenv.cpp`
+  * guix: remove errant leftover from #29648
+  * ci: Temporarily disable bpfcc-tools
+  * [doc] add historical release notes for 26.1
+  * Add AutoFile::seek and tell
+  * Fix #29767, set m_synced = true after Commit()
+  * bench: Disable WalletCreate* benchmarks when building with MSVC
+  * msvc, bench: Add missing source files to bench_bitcoin project
+  * ci: Use clang-18 in asan/fuzz/tsan task
+  * gui: fix create unsigned transaction fee bump
+  * ci: Bump clang+llvm in i686_multiprocess task
+  * ci: Pull in qtbase5-dev instead of seperate low-level libraries
+  * doc: Suggest installing dev packages for debian/ubuntu qt5 build
+  * refactor: Use typesafe Wtxid in compact block encoding message, instead of ambiguous uint256.
+  * test: add coverage for -reindex and assumeutxo
+  * doc: Override `-g` properly to skip debugging information
+  * test: check disconnection when sending sendaddrv2 after verack
+  * gui: change example address from legacy (P2PKH) to bech32m (P2TR)
+  * test: fix StopIteration exception in p2p_node_network_limited.py
+  * validation: don't clear cache on periodic flush
+  * depends: qt 5.15.13
+  * test: makes timeout a forced named argument in tests methods that use it
+  * build: remove boost::process dependency for building external signer support
+  * external_signer: replace boost::process with cpp-subprocess
+  * Add `cpp-subprocess` header-only library
+  * log: renamed disk to file so wording was more accurate
+  * mempool: Log added for dumping mempool transactions to disk
+  * depends: fix mingw-w64 Qt DEBUG=1 build
+  * ci: Print tsan errors to stderr
+  * ci: use codespell 2.2.6
+  * doc: fix some typos
+  * doc: Fix typos
+  * CalculateFeerateDiagramsForRBF: update misleading description of old diagram contents
+  * test: remove duplicated ban test
+  * CompareFeerateDiagram: short-circuit comparison when detected as incomparable
+  * remove erroneous CompareFeerateDiagram comment about slope
+  * unit test: clarify unstated assumption for calc_feerate_diagram_rbf chunking
+  * s/effected/affected/
+  * CalculateFeerateDiagramsForRBF: remove size tie-breaking from chunking conflicts
+  * fuzz: Add more invariant checks for package_rbf
+  * fuzz: finer grained ImprovesFeerateDiagram check on error result
+  * unit test: improve ImprovesFeerateDiagram coverage with one less vb case
+  * unit test: make calc_feerate_diagram_rbf less brittle
+  * fuzz: add PrioritiseTransaction coverage in diagram checks
+  * unit test: add coverage showing priority affects diagram check results
+  * unit test: add CheckConflictTopology case for not the only child
+  * build, macos: Drop unused `osx_volname` target
+  * unit test: check tx4 conflict error message
+  * unit test: have CompareFeerateDiagram tested with diagrams both ways
+  * ImprovesFeerateDiagram: Spelling fix and removal of unused diagram vectors
+  * doc: fix comment about non-existing CompareFeeFrac
+  * test: Refactor subtree exclusion in lint tests
+  * depends: switch to building libqrencode with CMake
+  * guix: make cmake-minimal a global requirement
+  * init, validation: Fix -reindex option with an existing snapshot
+  * use const ref for client_maxfeerate
+  * scripted-diff: Rename max_sane_feerate to client_maxfeerate
+  * depends: always set CMAKE_POSITION_INDEPENDENT_CODE=ON
+  * depends: always set CMAKE_INSTALL_LIBDIR=lib/
+  * correct '-dbcache' to '-prune'
+  * init: clarify -test error
+  * addrman: drop /*deterministic=*/ comment
+  * test: check that addrman seeding is successful
+  * test: make p2p_handshake robust against timeoffset warnings
+  * tidy: remove C compiler check
+  * tidy: set CMAKE_CXX_STANDARD to 20
+  * tidy: remove terminfo TODO
+  * tidy: set minimum CMake to 3.22
+  * doc: Rename `contrib/devtools/bitcoin-tidy/README` to `README.md`
+  * lint: Fix COMMIT_RANGE issues
+  * refactor: Avoid implicit-integer-sign-change in processNewTransaction
+  * refactor: Avoid implicit-signed-integer-truncation-or-sign-change in FreedesktopImage
+  * refactor: Avoid implicit-integer-sign-change in createTransaction
+  * guix: build GCC with --enable-standard-branch-protection
+  * node: Use log levels in noui_ThreadSafeMessageBox
+  * node: Make translations of fatal errors consistent
+  * Change Luke Dashjr seed to dashjr-list-of-p2p-nodes.us
+  * lint: scripted-diff verification also requires GNU grep
+  * guix: use GCC 11 for macOS builds
+  * cli: improve bitcoin-cli error when not connected
+  * bench: add benchmark for checkblockindex
+  * test: Add test for createwalletdescriptor
+  * wallet: Test upgrade of pre-taproot wallet to have tr() descriptors
+  * wallet, rpc: Add createwalletdescriptor RPC
+  * wallet: Be able to retrieve single key from descriptors
+  * wallet: Add GetActiveHDPubKeys to retrieve xpubs from active descriptors
+  * wallet, descspkm: Refactor wallet descriptor generation to standalone func
+  * wallet: Refactor function for single DescSPKM setup
+  * tests: Test for gethdkeys
+  * wallet, rpc: Add gethdkeys RPC
+  * wallet, rpc: show mempool conflicts in `gettransaction` result
+  * wallet: track mempool conflicts
+  * test: add coverage for bech32m in `wallet_keypool_topup`
+  * index: Move last_locator_write_time and logging to end of threadsync loop
+  * ci: Bump msan to llvm-18
+  * test: fix test to ensure hidden RPC is present in detailed help
+  * test: remove unused mocktime in test_addpeeraddress
+  * rpc: "addpeeraddress tried" return error on failure
+  * remove libbitcoinconsensus
+  * assumeutxo: Remove BLOCK_ASSUMED_VALID flag
+  * test: assumeutxo snapshot block CheckBlockIndex crash test
+  * test: assumeutxo stale block CheckBlockIndex crash test
+  * assumeutxo: Get rid of faked nTx and nChainTx values
+  * doc: Improve comments describing setBlockIndexCandidates checks
+  * validation: Check GuessVerificationProgress is not called with disconnected block
+  * ci: add getchaintxstats ubsan suppressions
+  * assumeutxo test: Add RPC test for fake nTx and nChainTx values
+  * wallet: Add IsActiveScriptPubKeyMan
+  * desc spkm: Add functions to retrieve specific private keys
+  * build: Remove HAVE_GMTIME_R
+  * refactor: FormatISO8601* without gmtime*
+  * Revert "time: add runtime sanity check"
+  * Unit tests for CalculateFeerateDiagramsForRBF
+  * test: unit test for ImprovesFeerateDiagram
+  * Add fuzz test for FeeFrac
+  * fuzz: fuzz diagram creation and comparison
+  * test: Add tests for CompareFeerateDiagram and CheckConflictTopology
+  * fuzz: Add fuzz target for ImprovesFeerateDiagram
+  * Implement ImprovesFeerateDiagram
+  * Add FeeFrac unit tests
+  * Add FeeFrac utils
+  * lint: Add lint runner build dir and lint pycache to clean task
+  * lint: Add lint runner build dir to gitignore
+  * lint: Clarify lint runner rust dependency
+  * ci: Drop `--enable-c++20` option
+  * fuzz: actually test garbage >64b in p2p transport test
+  * wallet refactor: use CWalletTx member functions to determine tx state
+  * ci: Bump `TIDY_LLVM_V`
+  * doc: Add example of mixing private and public keys in descriptors
+  * Bugfix: GUI: Help messages already have a trailing newline, so don't add an extra one
+  * Bugfix: bitcoin-cli: Check length of peer.transport_protocol_type
+  * scripted-diff: wallet: s/TxStateConflicted/TxStateBlockConflicted
+  * test: Add tests for wallet mempool conflicts
+  * depends: always configure with --with-pic
+  * Remove unused g++-10 workaround
+  * guix: bump time-machine to dc4842797bfdc5f9f3f5f725bf189c2b68bd6b5a
+  * build: Bump g++ minimum supported version to 11
+  * depends: drop 1 qt determinism patch
+  * ci: Better tidy errors
+  * netbase: remove unnecessary log message
+  * lint: Use git --no-pager to print any output in one go
+  * Avoid divide-by-zero in header sync logs when NodeClock is behind
+  * refactor: Modernize header sync logs
+  * RPC: Add maxfeerate and maxburnamount args to submitpackage
+  * test: simplify test_runner.py
+  * test: fix intermittent failures with test=addrman
+  * rest: read raw block in rest_block and deserialize for json
+  * rpc: read raw block in getblock and deserialize for verbosity > 0
+  * test: check more details on zmq raw block response
+  * zmq: read raw block with ReadRawBlockFromDisk
+  * blockstorage: check nPos in ReadRawBlockFromDisk before seeking back
+  * guix: temporarily disable powerpcle taget
+  * guix: use GCC 12.3.0
+  * ci: use Debian Bookworm (GCC 12) for ARM ci job
+  * ci: use Debian Bookworm (GCC 12) for win64 job
+  * log: Remove error() reference
+  * refactor: init, simplify index shutdown code
+  * index: decrease ThreadSync cs_main contention
+  * index: cache last block filter header
+  * blockstorage: do not flush block to disk if it is already there
+  * lint: Fix lint-whitespace issues
+  * index: blockfilter, decouple header lookup into its own function
+  * index: blockfilter, decouple Write into its own function
+  * bench: basic block filter index initial sync
+  * ci, macos: Use `--break-system-packages` with Homebrew's python
+  * test: p2p: check limited peers desirability (depending on best block depth)
+  * test: p2p: check disconnect due to lack of desirable service flags
+  * test: p2p: support disconnect waiting for `add_outbound_p2p_connection`
+  * refactor: Remove unused error()
+  * scripted-diff: Replace error() with LogError()
+  * refactor: Make error() return type void
+  * scripted-diff:  return error(...);  ==>  error(...); return false;
+  * refactor: Add missing {} around error() calls
+  * [refactor] consolidate invalid MempoolAcceptResult processing
+  * [refactor] consolidate valid MempoolAcceptResult processing
+  * test: Support disconnect waiting for add_p2p_connection
+  * test: Rename early key response test and move random_bitflip to util
+  * test: fix accurate multisig sigop count (BIP16), add unit test
+  * ci: Add workaround for Homebrew's python link error
+  * wallet: default wallet migration, modify inconvenient backup filename
+  * Reserve memory for ToLower/ToUpper conversions
+  * build, msvc: Cleanup `bitcoin_config.h.in`
+  * depends: don't use -h with touch on OpenBSD
+  * doc: Wrap flags with code in developer-notes.md
+  * rpc: refactor single/batch requests
+  * rpc: Avoid copies in JSONRPCReplyObj()
+  * test: cover JSONRPC 2.0 requests, batches, and notifications
+  * test: refactor interface_rpc.py
+  * test: test_bitcoin: allow -testdatadir=<datadir>
+  * contrib: list other binaries in manpage output
+  * build: ignore deprecated-declaration warnings in objc++ macOS code
+  * build: Add missed definition for `AM_OBJCXXFLAGS`
+  * [fuzz] Apply fuzz env (suppressions, etc.) when fetching harness list
+  * ci: add print of powershell version to win64 job
+  * build: bump version to 27.99
+  * test: exit with code 1 when no fn tests are found
+  * Rename CalculateHeadersWork to CalculateClaimedHeadersWork
+  * crypto: Guard code with `ENABLE_SSE41` macro
+  * build: Fix test for SSE4.1 intrinsics
+  * qt, test: Clean settings after tests
+  * qt, test: Set organization name
+  * doc: add release notes and help text for unix sockets
+  * test: cover UNIX sockets in feature_proxy.py
+  * init: allow UNIX socket path for -proxy and -onion
+  * gui: accomodate unix socket Proxy in updateDefaultProxyNets()
+  * i2p: construct Session with Proxy instead of CService
+  * net: split ConnectToSocket() from ConnectDirectly() for unix sockets
+  * proxy: rename randomize_credentials to m_randomize_credentials
+  * netbase: extend Proxy class to wrap UNIX socket as well as TCP
+  * net: move CreateSock() calls from ConnectNode() to netbase methods
+  * netbase: allow CreateSock() to create UNIX sockets if supported
+  * netbase: refactor CreateSock() to accept sa_family_t
+  * configure: test for unix domain sockets
+  * [functional test] sibling eviction
+  * [unit test] sibling not returned from SingleV3Checks if 1p2c or 3gen
+  * [policy] sibling eviction for v3 transactions
+  * rpc: access some args by name
+  * rpc: add named arg helper
+  * rpc: add arg helper unit test
+  * ci: add --v2transport to an existing CI job
+  * test: ignore --v2transport for older versions instead of asserting
+  * test: add -v1transport option and use it in test_runner
+  * tests: Provide more helpful assert_equal errors
+  * Preallocate result in `TryParseHex` to avoid resizing
+  * Add benchmark for TryParseHex
+  * protocol: make message types constexpr
+  * net: make the list of known message types a compile time constant
+  * docs: add release notes for #27114
+  * test: add coverage for whitelisting manual connections
+  * test: add option to speed up tx relay/mempool sync
+  * Accept "in" and "out" flags to -whitelist to allow whitelisting manual connections
+  * net_processing: Move extra service flag into InitializeNode
+  * net: Move `NetPermissionFlags::Implicit` verification to `AddWhitelistPermissionFlags`
+  * net: store `-whitelist{force}relay` values in `CConnman`
+  * test: Update --tmpdir doc string to say directory must not exist
+  * test: Add test for loadtxoutset when headers are not synced
+  * test: Remove unnecessary sync_blocks in assumeutxo tests
+  * [refactor] return pair from SingleV3Checks
+  * test: check_mempool_result negative feerate
+  * serialization: Add ParamsStream GetStream() method
+  * net: Simplify ParamsStream usage
+  * serialization: Accept multiple parameters in ParamsStream constructor
+  * serialization: Reverse ParamsStream constructor order
+  * serialization: Drop unnecessary ParamsStream references
+  * serialization: Drop references to GetVersion/GetType
+  * descriptor: Be able to get the pubkeys involved in a descriptor
+  * key: Add constructor for CExtKey that takes CExtPubKey and CKey
+  * serfloat: improve/simplify tests
+  * serfloat: do not test encode(bits)=bits anymore
+  * qt: keep focus on "Hide" while ModalOverlay is visible
+  * kernel: Remove dependency on CScheduler
+  * scripted-diff: Rename MainSignals to ValidationSignals
+  * scripted-diff: Rename SingleThreadedSchedulerClient to SerialTaskRunner
+  * [refactor] Make MainSignals RAII styled
+  * refactor: De-globalize g_signals
+  * [refactor] Prepare for g_signals de-globalization
+  * [refactor] Make signals optional in mempool and chainman
+  * Wallet encrypt on create, allow to navigate options
+  * logging: remove unused BCLog::UTIL
+  * log: deduplicate category names and improve logging.cpp
+  * wallet, rpc: implement ancestor aware funding for sendall
+  * rpc, test: test sendall spends unconfirmed change and unconfirmed inputs when specified
+  * test: add coverage for parsing cryptographically invalid pubkeys
+  * rpc: use `HexToPubKey` helper for all legacy pubkey-parsing RPCs
+  * rpc: check and throw specific pubkey parsing errors in `HexToPubKey`
+  * i2p: log connection was refused due to arbitrary port
+  * test: avoid requesting blocks beyond limited peer threshold
+  * p2p: sync from limited peer, only request blocks below threshold
+  * refactor: Make FindNextBlocks friendlier
+  * test: bumpfee with user specified fee_rate ignores walletIncrementalRelayFee
+  * bumpfee: ignore WALLET_INCREMENTAL_RELAY_FEE when user specifies fee rate
+  * test: add script compression coverage for not-on-curve P2PK outputs
+  * gui: debugwindow: update session ID tooltip
+  * serialization: Support for multiple parameters
+  * [test] Use deterministic addrman in addrman info tests
+  * [test] Restart a node with empty addrman
+  * [test] Use deterministic addrman in addpeeraddress test
+  * Revert "test: avoid non-determinism in asmap-addrman test"
+  * [init] Create deterministic addrman in tests using -test=addrman
+  * [init] Remove -addrmantest command line arg
+  * [init] Add new command line arg for use only in functional tests
+  * doc: fixup NAT-PMP help doc
+  * init: remove redundant upnp #ifdef
+  * security: restrict abis in bitcoind.service
+
+-------------------------------------------------------------------
 Mon Jun 24 09:37:55 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 27.1:

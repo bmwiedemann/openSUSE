@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,10 +21,10 @@
 %define base bitcoin
 %define base_pretty Bitcoin
 %define name_pretty %{base_pretty}
-%define consensus 1
+%define consensus 0
 %define is_base 1
 Name:           bitcoin
-Version:        27.1
+Version:        28.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT

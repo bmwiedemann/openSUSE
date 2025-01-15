@@ -553,4 +553,41 @@
     <comment></comment>
     <requestid>1183047</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>f20bdf495242eb6b68c4bd2d929ef707</srcmd5>
+    <version>28.0</version>
+    <time>1736959505</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 28.0:
+  * doc: 28.0 Release Notes
+  * doc: generate manpages
+  * build: Bump to 28.0
+  * validation: Disable CheckForkWarningConditions for background chainstate
+  * test: Use shell builtins in run_command test case
+  * doc: Generate manpages
+  * build: Bump to 28.0rc2
+  * streams: remove AutoFile::Get() entirely
+  * streams: cache file position within AutoFile
+  * qt: Translations update
+  * gui: fix crash when closing wallet
+  * test: Wait for local services to update in feature_assumeutxo
+  * test: add coverage for assumeUTXO honest peers disconnection
+  * assumeUTXO: fix peers disconnection during sync
+  * test: Work around boost compilation error
+  * depends: build libevent with -D_GNU_SOURCE
+  * test: fixing failing system_tests/run_command under some Locales
+  * test: Avoid intermittent timeout in p2p_headers_sync_with_minchainwork.py
+  * test: fix `TestShell` initialization (late follow-up for #30463)
+  * doc: Point release notes to wiki draft
+  * examples: Generate example bitcoin.conf
+  * doc: Generate manpages
+  * build: Bump to 28.0rc1
+  * docs: Add 379 and 387 to bips.md
+  * docs: Remove release 28.0 release notes fragments
+  * seeds: Regenerate mainnet seeds
+  * seeds: Pull nodes from Luke's seeder
+  * seeds: Pull nodes from virtu's crawler
+  * chainparams: Remove seed.bitcoinstats.com</comment>
+    <requestid>1238012</requestid>
+  </revision>
 </revisionlist>
