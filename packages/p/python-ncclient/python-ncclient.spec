@@ -1,7 +1,7 @@
 #
 # spec file for package python-ncclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,18 +29,18 @@ Patch0:         allow_old_sphinx.patch
 # PATCH-FIX-UPSTREAM intersphinx-mapping.patch gh#ncclient/ncclient#604 mcepl@suse.com
 # use conditionally new form of intersphinx_mapping
 Patch1:         intersphinx-mapping.patch
+# https://github.com/ncclient/ncclient/commit/59ccaac8e01e63f776fb4bf3b68a02e33d24bb20
+Patch2:         python-ncclient-no-python2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml >= 3.3.0
 Requires:       python-paramiko >= 1.15.0
 Requires:       python-setuptools > 0.6
-Requires:       python-six
 BuildArch:      noarch
 BuildRequires:  %{python_module lxml >= 3.3.0}
 BuildRequires:  %{python_module paramiko >= 1.15.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 %python_subpackages
 
 %description
@@ -64,6 +64,7 @@ This package contains documentation files for %{name}.
 %patch -p 1 -P 0
 %endif
 %patch -p 1 -P 1
+%patch -p 1 -P 2
 
 find examples/ -name "*.py" -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/python|g' {} \;
 # drop shebang

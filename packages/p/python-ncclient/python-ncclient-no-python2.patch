@@ -1,0 +1,963 @@
+diff --git a/examples/base/nc08.py b/examples/base/nc08.py
+index 40eab7f2..df3deec4 100644
+--- a/examples/base/nc08.py
++++ b/examples/base/nc08.py
+@@ -5,7 +5,7 @@
+ # 
+ # $ ./nc08.py Paulo Seguel
+ 
+-import sys, os, warnings
++import sys, warnings
+ warnings.simplefilter("ignore", DeprecationWarning)
+ import datetime
+ from ncclient import manager
+diff --git a/examples/vendor/cisco/nxosapi.py b/examples/vendor/cisco/nxosapi.py
+index c423163b..55cb58b1 100644
+--- a/examples/vendor/cisco/nxosapi.py
++++ b/examples/vendor/cisco/nxosapi.py
+@@ -116,13 +116,13 @@ def enable_vlan(mgr, vlanid, vlanname):
+ def enable_vlan_on_trunk_int(mgr, interface, vlanid):
+     confstr = cmd_vlan_int_snippet % (interface, vlanid)
+     confstr = exec_conf_prefix + confstr + exec_conf_postfix
+-    print confstr
++    print(confstr)
+     mgr.edit_config(target='running', config=confstr)
+ 
+ 
+ def disable_vlan_on_trunk_int(mgr, interface, vlanid):
+     confstr = cmd_no_vlan_int_snippet % (interface, vlanid)
+-    print confstr
++    print(confstr)
+     mgr.edit_config(target='running', config=confstr)
+ 
+ 
+diff --git a/ncclient/__init__.py b/ncclient/__init__.py
+index 50e7991d..17de7dce 100644
+--- a/ncclient/__init__.py
++++ b/ncclient/__init__.py
+@@ -16,8 +16,8 @@
+ 
+ import sys
+ 
+-if sys.version_info < (2, 7):
+-    raise RuntimeError('You need Python 2.7+ for this module.')
++if sys.version_info < (3, 5):
++    raise RuntimeError('You need Python 3.5+ for this module.')
+ 
+ class NCClientError(Exception):
+     "Base type for all NCClient errors"
+diff --git a/ncclient/capabilities.py b/ncclient/capabilities.py
+index 5d6eabeb..14fe6dbd 100644
+--- a/ncclient/capabilities.py
++++ b/ncclient/capabilities.py
+@@ -13,7 +13,6 @@
+ # limitations under the License.
+ 
+ import logging
+-import six
+ 
+ 
+ logger = logging.getLogger("ncclient.capabilities")
+@@ -39,7 +38,7 @@ def schemes(url_uri):
+     "Given a URI that has a *scheme* query string (i.e. `:url` capability URI), will return a list of supported schemes."
+     return url_uri.partition("?scheme=")[2].split(",")
+ 
+-class Capabilities(object):
++class Capabilities:
+ 
+     "Represents the set of capabilities available to a NETCONF client or server. It is initialized with a list of capability URI's."
+ 
+@@ -60,7 +59,7 @@ def __getitem__(self, key):
+         try:
+             return self._dict[key]
+         except KeyError:
+-            for capability in six.itervalues(self._dict):
++            for capability in self._dict.values():
+                 if key in capability.get_abbreviations():
+                     return capability
+ 
+@@ -69,12 +68,11 @@ def __getitem__(self, key):
+     def __len__(self):
+         return len(self._dict)
+ 
+-    # python 2 and 3 compatible
+     def __iter__(self):
+-        return six.iterkeys(self._dict)
++        return self._dict.keys()
+ 
+     def __repr__(self):
+-        return repr(six.iterkeys(self._dict))
++        return repr(self._dict.keys())
+ 
+     def add(self, uri):
+         "Add a capability."
+@@ -86,7 +84,7 @@ def remove(self, uri):
+             del self._dict[uri]
+ 
+ 
+-class Capability(object):
++class Capability:
+ 
+     """Represents a single capability"""
+ 
+@@ -135,7 +133,7 @@ def _parse_parameter_string(string, uri):
+             )
+ 
+ 
+-class _Parameter(object):
++class _Parameter:
+ 
+     """Represents a parameter to a capability"""
+ 
+diff --git a/ncclient/devices/default.py b/ncclient/devices/default.py
+index 675859cb..acd68079 100644
+--- a/ncclient/devices/default.py
++++ b/ncclient/devices/default.py
+@@ -25,12 +25,8 @@
+ 
+ from ncclient.transport.parser import DefaultXMLParser
+ 
+-import sys
+-if sys.version >= '3':
+-    xrange = range
+ 
+-
+-class DefaultDeviceHandler(object):
++class DefaultDeviceHandler:
+     """
+     Default handler for device specific information.
+ 
+@@ -68,7 +64,7 @@ def __init__(self, device_params=None):
+         self._exempt_errors_startwith_wildcard_match = []
+         self._exempt_errors_endwith_wildcard_match = []
+         self._exempt_errors_full_wildcard_match = []
+-        for i in xrange(len(self._EXEMPT_ERRORS)):
++        for i in range(len(self._EXEMPT_ERRORS)):
+             e = self._EXEMPT_ERRORS[i].lower()
+             if e.startswith("*"):
+                 if e.endswith("*"):
+diff --git a/ncclient/devices/junos.py b/ncclient/devices/junos.py
+index d7515608..5d293e4d 100644
+--- a/ncclient/devices/junos.py
++++ b/ncclient/devices/junos.py
+@@ -122,11 +122,7 @@ def transform_reply(self):
+         </xsl:template>
+         </xsl:stylesheet>
+         '''
+-        import sys
+-        if sys.version < '3':
+-            return reply
+-        else:
+-            return reply.encode('UTF-8')
++        return reply.encode('UTF-8')
+ 
+     def get_xml_parser(self, session):
+         # use_filter in device_params can be used to enabled using SAX parsing
+diff --git a/ncclient/manager.py b/ncclient/manager.py
+index 12fe7c0c..a0cc9758 100644
+--- a/ncclient/manager.py
++++ b/ncclient/manager.py
+@@ -212,7 +212,7 @@ def call_home(*args, **kwds):
+     kwds['sock'] = sock
+     return connect_ssh(*args, **kwds)
+ 
+-class Manager(object):
++class Manager:
+ 
+     """
+     For details on the expected behavior of the operations and their
+diff --git a/ncclient/operations/lock.py b/ncclient/operations/lock.py
+index 06738847..87c1473f 100644
+--- a/ncclient/operations/lock.py
++++ b/ncclient/operations/lock.py
+@@ -49,7 +49,7 @@ def request(self, target="candidate"):
+         return self._request(node)
+ 
+ 
+-class LockContext(object):
++class LockContext:
+ 
+     """A context manager for the :class:`Lock` / :class:`Unlock` pair of RPC's.
+ 
+diff --git a/ncclient/operations/rpc.py b/ncclient/operations/rpc.py
+index 2511b6f3..fa6af9cc 100644
+--- a/ncclient/operations/rpc.py
++++ b/ncclient/operations/rpc.py
+@@ -44,7 +44,7 @@ def __init__(self, raw, errs=None):
+         if errs is None:
+             # Single RPCError
+             self._errlist = None
+-            for attr in six.itervalues(RPCError.tag_to_attr):
++            for attr in RPCError.tag_to_attr.values():
+                 setattr(self, attr, None)
+             for subele in raw:
+                 attr = RPCError.tag_to_attr.get(subele.tag, None)
+@@ -79,7 +79,7 @@ def __init__(self, raw, errs=None):
+             OperationError.__init__(self, self.message)
+ 
+     def to_dict(self):
+-        return dict([ (attr[1:], getattr(self, attr)) for attr in six.itervalues(RPCError.tag_to_attr) ])
++        return dict([ (attr[1:], getattr(self, attr)) for attr in RPCError.tag_to_attr.values() ])
+ 
+     @property
+     def xml(self):
+@@ -128,7 +128,7 @@ def errlist(self):
+         return self._errlist
+ 
+ 
+-class RPCReply(object):
++class RPCReply:
+ 
+     """Represents an *rpc-reply*. Only concerns itself with whether the operation was successful.
+ 
+@@ -173,8 +173,7 @@ def parse(self):
+         except Exception as e:
+             if self._parsing_error_transform is None:
+                 # re-raise as we have no workaround
+-                exc_type, exc_value, exc_traceback = sys.exc_info()
+-                six.reraise(exc_type, exc_value, exc_traceback)
++                raise e
+ 
+             # Apply device specific workaround and try again
+             self._parsing_error_transform(root)
+@@ -263,13 +262,13 @@ def callback(self, root, raw):
+ 
+     def errback(self, err):
+         try:
+-            for rpc in six.itervalues(self._id2rpc):
++            for rpc in self._id2rpc.values():
+                 rpc.deliver_error(err)
+         finally:
+             self._id2rpc.clear()
+ 
+ 
+-class RaiseMode(object):
++class RaiseMode:
+     """
+     Define how errors indicated by RPC should be handled.
+ 
+@@ -288,7 +287,7 @@ class RaiseMode(object):
+     "Don't look at the `error-type`, always raise."
+ 
+ 
+-class RPC(object):
++class RPC:
+ 
+     """Base class for all operations, directly corresponding to *rpc* requests. Handles making the request, and taking delivery of the reply."""
+ 
+diff --git a/ncclient/transport/notify.py b/ncclient/transport/notify.py
+index 85490312..1d240639 100644
+--- a/ncclient/transport/notify.py
++++ b/ncclient/transport/notify.py
+@@ -14,7 +14,7 @@
+ 
+ from ncclient.xml_ import to_ele
+ 
+-class Notification(object):
++class Notification:
+     def __init__(self, raw):
+         self._raw = raw
+         self._root_ele = to_ele(raw)
+diff --git a/ncclient/transport/parser.py b/ncclient/transport/parser.py
+index cb5b071c..4b68ddc5 100644
+--- a/ncclient/transport/parser.py
++++ b/ncclient/transport/parser.py
+@@ -22,6 +22,7 @@
+ except ImportError:
+     import selectors2 as selectors
+ 
++from io import BytesIO as StringIO
+ from xml.sax.handler import ContentHandler
+ 
+ from ncclient.transport.errors import NetconfFramingError
+@@ -33,11 +34,6 @@
+ import logging
+ logger = logging.getLogger("ncclient.transport.parser")
+ 
+-if sys.version < '3':
+-    from six import StringIO
+-else:
+-    from io import BytesIO as StringIO
+-
+ 
+ PORT_NETCONF_DEFAULT = 830
+ PORT_SSH_DEFAULT = 22
+@@ -61,12 +57,8 @@
+ #
+ RE_NC11_DELIM = re.compile(r'\n(?:#([0-9]+)|(##))\n')
+ 
+-if sys.version < '3':
+-    def textify(buf):
+-        return buf
+-else:
+-    def textify(buf):
+-        return buf.decode('UTF-8')
++def textify(buf):
++    return buf.decode('UTF-8')
+ 
+ 
+ class SAXParserHandler(SessionListener):
+@@ -90,7 +82,7 @@ def __str__(self):
+         return "SAX filter input xml not provided for listener: %s" % self._listener
+ 
+ 
+-class DefaultXMLParser(object):
++class DefaultXMLParser:
+ 
+     def __init__(self, session):
+         """
+@@ -131,10 +123,7 @@ def _parse10(self):
+             buf.seek(0)
+             msg, _, remaining = buf.read().decode('UTF-8').partition(MSG_DELIM)
+             msg = msg.strip()
+-            if sys.version < '3':
+-                self._session._dispatch_message(msg.encode())
+-            else:
+-                self._session._dispatch_message(msg)
++            self._session._dispatch_message(msg)
+             self._session._buffer = StringIO()
+             self._parsing_pos10 = 0
+             if len(remaining.strip()) > 0:
+diff --git a/ncclient/transport/session.py b/ncclient/transport/session.py
+index 5e933756..6ebe96e8 100644
+--- a/ncclient/transport/session.py
++++ b/ncclient/transport/session.py
+@@ -16,10 +16,8 @@
+ 
+ import logging
+ from threading import Thread, Lock, Event
+-try:
+-    from Queue import Queue, Empty
+-except ImportError:
+-    from queue import Queue, Empty
++from queue import Queue, Empty
++
+ try:
+     import selectors
+ except ImportError:
+@@ -42,7 +40,7 @@
+ TICK = 0.1
+ 
+ 
+-class NetconfBase(object):
++class NetconfBase:
+     '''Netconf Base protocol version'''
+     BASE_10 = 1
+     BASE_11 = 2
+@@ -292,7 +290,7 @@ def id(self):
+         return self._id
+ 
+ 
+-class SessionListener(object):
++class SessionListener:
+ 
+     """Base class for :class:`Session` listeners, which are notified when a new
+     NETCONF message is received or an error occurs.
+@@ -349,11 +347,7 @@ def build(capabilities, device_handler):
+         hello = new_ele("hello", **xml_namespace_kwargs)
+         caps = sub_ele(hello, "capabilities")
+         def fun(uri): sub_ele(caps, "capability").text = uri
+-        #python3 changes
+-        if sys.version < '3':
+-            map(fun, capabilities)
+-        else:
+-            list(map(fun, capabilities))
++        list(map(fun, capabilities))
+         return to_xml(hello)
+ 
+     @staticmethod
+diff --git a/ncclient/transport/ssh.py b/ncclient/transport/ssh.py
+index d1796807..79e9ba66 100644
+--- a/ncclient/transport/ssh.py
++++ b/ncclient/transport/ssh.py
+@@ -17,11 +17,11 @@
+ import getpass
+ import os
+ import re
+-import six
+ import sys
+ import socket
+ import threading
+ from binascii import hexlify
++from io import BytesIO as StringIO
+ 
+ try:
+     import selectors
+@@ -77,12 +77,6 @@ def _colonify(fp):
+     return finga
+ 
+ 
+-if sys.version < '3':
+-    from six import StringIO
+-else:
+-    from io import BytesIO as StringIO
+-
+-
+ class SSHSession(Session):
+ 
+     "Implements a :rfc:`4742` NETCONF session over SSH."
+@@ -263,7 +257,7 @@ def connect(
+             proxycommand = config.get("proxycommand")
+             if proxycommand:
+                 self.logger.debug("Configuring Proxy. %s", proxycommand)
+-                if not isinstance(proxycommand, six.string_types):
++                if not isinstance(proxycommand, str):
+                   proxycommand = [os.path.expanduser(elem) for elem in proxycommand]
+                 else:
+                   proxycommand = os.path.expanduser(proxycommand)
+@@ -287,11 +281,7 @@ def connect(
+                 else:
+                     raise SSHError("Could not open socket to %s:%s" % (host, port))
+         elif sock is None:
+-            if sys.version_info[0] < 3:
+-                s = socket.fromfd(int(sock_fd), socket.AF_INET, socket.SOCK_STREAM)
+-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, _sock=s)
+-            else:
+-                sock = socket.fromfd(int(sock_fd), socket.AF_INET, socket.SOCK_STREAM)
++            sock = socket.fromfd(int(sock_fd), socket.AF_INET, socket.SOCK_STREAM)
+             sock.settimeout(timeout)
+ 
+         self._transport = paramiko.Transport(sock)
+diff --git a/ncclient/transport/third_party/junos/ioproc.py b/ncclient/transport/third_party/junos/ioproc.py
+index e1e63afd..60f83ff4 100644
+--- a/ncclient/transport/third_party/junos/ioproc.py
++++ b/ncclient/transport/third_party/junos/ioproc.py
+@@ -1,20 +1,12 @@
+ import sys
+ import re
+-import six
+-
+-if sys.version < '3':
+-    from cStringIO import StringIO
+-else:
+-    from io import BytesIO as StringIO
+-if sys.version>='2.7':
+-    from subprocess import Popen, check_output, PIPE, STDOUT
+-else:
+-    from subprocess import Popen, PIPE, STDOUT
++from io import BytesIO as StringIO
++from subprocess import Popen, check_output, PIPE, STDOUT
+ 
+ from ncclient.transport.errors import SessionCloseError, TransportError, PermissionError
+ from ncclient.transport.ssh import SSHSession
+ 
+-MSG_DELIM = six.b("]]>]]>")
++MSG_DELIM = b"]]>]]>"
+ NETCONF_SHELL = 'netconf'
+ 
+ 
+diff --git a/ncclient/transport/tls.py b/ncclient/transport/tls.py
+index b7443f9c..27298098 100644
+--- a/ncclient/transport/tls.py
++++ b/ncclient/transport/tls.py
+@@ -17,14 +17,10 @@
+ import sys
+ import threading
+ 
++from io import BytesIO as StringIO
+ from socket import AF_INET, SOCK_STREAM
+ from ssl import CERT_REQUIRED, SSLContext, SSLError
+ 
+-if sys.version < '3':
+-    from six import StringIO
+-else:
+-    from io import BytesIO as StringIO
+-
+ from ncclient.capabilities import Capabilities
+ from ncclient.logging_ import SessionLoggerAdapter
+ from ncclient.transport.errors import TLSError
+diff --git a/ncclient/xml_.py b/ncclient/xml_.py
+index 8f58b35a..f46ec025 100644
+--- a/ncclient/xml_.py
++++ b/ncclient/xml_.py
+@@ -17,11 +17,9 @@
+ 
+ 
+ import io
+-import sys
+-import six
+ import types
+-from six import StringIO
+-from io import BytesIO
++from io import BytesIO, StringIO
++
+ from lxml import etree
+ 
+ # In case issues come up with XML generation/parsing
+@@ -91,7 +89,7 @@ def register_namespace(prefix, uri):
+         # cElementTree uses ElementTree's _namespace_map, so that's ok
+         ElementTree._namespace_map[uri] = prefix
+ 
+-for (ns, pre) in six.iteritems({
++for (ns, pre) in {
+     BASE_NS_1_0: 'nc',
+     NETCONF_MONITORING_NS: 'ncm',
+     NXOS_1_0: 'nxos',
+@@ -101,7 +99,7 @@ def register_namespace(prefix, uri):
+     CISCO_CPI_1_0: 'cpi',
+     FLOWMON_1_0: 'fm',
+     JUNIPER_1_1: 'junos',
+-}):
++}.items():
+     register_namespace(pre, ns)
+ 
+ qualify = lambda tag, ns=BASE_NS_1_0: tag if ns is None else "{%s}%s" % (ns, tag)
+@@ -111,11 +109,8 @@ def register_namespace(prefix, uri):
+ def to_xml(ele, encoding="UTF-8", pretty_print=False):
+     "Convert and return the XML for an *ele* (:class:`~xml.etree.ElementTree.Element`) with specified *encoding*."
+     xml = etree.tostring(ele, encoding=encoding, pretty_print=pretty_print)
+-    if sys.version < '3':
+-        return xml if xml.startswith('<?xml') else '<?xml version="1.0" encoding="%s"?>%s' % (encoding, xml)
+-    else:
+-        return xml.decode('UTF-8') if xml.startswith(b'<?xml') \
+-            else '<?xml version="1.0" encoding="%s"?>%s' % (encoding, xml.decode('UTF-8'))
++    return xml.decode('UTF-8') if xml.startswith(b'<?xml') \
++        else '<?xml version="1.0" encoding="%s"?>%s' % (encoding, xml.decode('UTF-8'))
+ 
+ 
+ def to_ele(x, huge_tree=False):
+@@ -123,18 +118,12 @@ def to_ele(x, huge_tree=False):
+ 
+     *huge_tree*: parse XML with very deep trees and very long text content
+     """
+-    if sys.version < '3':
+-        return x if etree.iselement(x) else etree.fromstring(x, parser=_get_parser(huge_tree))
+-    else:
+-        return x if etree.iselement(x) else etree.fromstring(x.encode('UTF-8'), parser=_get_parser(huge_tree))
++    return x if etree.iselement(x) else etree.fromstring(x.encode('UTF-8'), parser=_get_parser(huge_tree))
+ 
+ 
+ def parse_root(raw):
+     "Efficiently parses the root element of a *raw* XML document, returning a tuple of its qualified name and attribute dictionary."
+-    if sys.version < '3':
+-        fp = StringIO(raw)
+-    else:
+-        fp = BytesIO(raw.encode('UTF-8'))
++    fp = BytesIO(raw.encode('UTF-8'))
+     for event, element in etree.iterparse(fp, events=('start',)):
+         return (element.tag, element.attrib)
+ 
+@@ -168,7 +157,7 @@ def validated_element(x, tags=None, attrs=None):
+ }
+ 
+ 
+-class NCElement(object):
++class NCElement:
+     def __init__(self, result, transform_reply, huge_tree=False):
+         self.__result = result
+         self.__transform_reply = transform_reply
+@@ -213,10 +202,7 @@ def findall(self, expression):
+ 
+     def __str__(self):
+         """syntactic sugar for str() - alias to tostring"""
+-        if sys.version < '3':
+-            return self.tostring
+-        else:
+-            return self.tostring.decode('UTF-8')
++        return self.tostring.decode('UTF-8')
+ 
+     @property
+     def tostring(self):
+diff --git a/requirements.txt b/requirements.txt
+index 64cf505d..3363b16e 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,5 +1,3 @@
+ setuptools>0.6
+ paramiko>=1.15.0
+ lxml>=3.3.0
+-selectors2>=2.0.1; python_version <= '3.4'
+-six
+diff --git a/setup.py b/setup.py
+index 68e00412..32ad3b91 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,7 +18,6 @@
+ from distutils.command.install import install as _install
+ 
+ import sys
+-import platform
+ import codecs
+ import versioneer
+ 
+@@ -26,8 +25,8 @@
+ __author_email__ = "shikhar@schmizz.net, lpoulopoulos@verisign.com, exa@dscp.org, einarnn@gmail.com"
+ __licence__ = "Apache 2.0"
+ 
+-if sys.version_info.major == 2 and sys.version_info.minor < 7:
+-    print ("Sorry, Python < 2.7 is not supported")
++if sys.version_info.major == 2 or sys.version_info.minor < 5:
++    print ("Sorry, Python < 3.5 is not supported")
+     exit()
+ 
+ #parse requirements
+@@ -55,10 +54,9 @@
+       license=__licence__,
+       platforms=["Posix; OS X; Windows"],
+       keywords=['NETCONF', 'NETCONF Python client', 'Juniper Optimization', 'Cisco NXOS Optimization'],
+-      python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*',
++      python_requires='>=3.5',
+       classifiers=[
+           'Development Status :: 5 - Production/Stable',
+-          'Programming Language :: Python :: 2.7',
+           'Programming Language :: Python :: 3.5',
+           'Programming Language :: Python :: 3.6',
+           'Programming Language :: Python :: 3.7',
+diff --git a/test/unit/devices/test_junos.py b/test/unit/devices/test_junos.py
+index 97ac9ccf..50bc6d42 100644
+--- a/test/unit/devices/test_junos.py
++++ b/test/unit/devices/test_junos.py
+@@ -1,12 +1,10 @@
+ import unittest
++from unittest.mock import patch
++
++import paramiko
++
+ from ncclient.devices.junos import *
+ import ncclient.transport
+-try:
+-    from unittest.mock import patch  # Python 3.4 and later
+-except ImportError:
+-    from mock import patch
+-import paramiko
+-import sys
+ 
+ xml = '''<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+         <xsl:output method="xml" indent="no"/>
+@@ -93,10 +91,7 @@ def test_additional_operations(self):
+         self.assertEqual(dict, self.obj.add_additional_operations())
+ 
+     def test_transform_reply(self):
+-        if sys.version >= '3':
+-            reply = xml.encode('utf-8')
+-        else:
+-            reply = xml
++        reply = xml.encode('utf-8')
+         self.assertEqual(self.obj.transform_reply(), reply)
+ 
+     def test_perform_quality_check(self):
+diff --git a/test/unit/operations/test_retrieve.py b/test/unit/operations/test_retrieve.py
+index 21fa3092..d1b51104 100644
+--- a/test/unit/operations/test_retrieve.py
++++ b/test/unit/operations/test_retrieve.py
+@@ -1,9 +1,11 @@
+-from ncclient.operations.retrieve import *
++import copy
+ import unittest
+-try:
+-    from unittest.mock import patch  # Python 3.4 and later
+-except ImportError:
+-    from mock import patch
++from unittest.mock import patch
++
++from xml.etree import ElementTree
++from lxml import etree
++
++from ncclient.operations.retrieve import *
+ from ncclient import manager
+ import ncclient.manager
+ import ncclient.transport
+@@ -11,10 +13,6 @@
+ from ncclient.xml_ import *
+ from ncclient.operations import RaiseMode
+ from ncclient.operations.errors import MissingCapabilityError
+-from xml.etree import ElementTree
+-from lxml import etree
+-import copy
+-import six
+ 
+ 
+ class TestRetrieve(unittest.TestCase):
+@@ -96,8 +94,7 @@ def test_get_with_defaults_not_supported(self, mock_request):
+             "Invalid 'with-defaults' mode 'report-all-tagged'; the server "
+             "only supports the following: explicit, report-all, trim"
+         )
+-        six.assertRaisesRegex(
+-            self,
++        self.assertRaisesRegex(
+             WithDefaultsError,
+             expected_error,
+             obj.request,
+diff --git a/test/unit/operations/test_rpc.py b/test/unit/operations/test_rpc.py
+index 8d60700d..47767b0e 100644
+--- a/test/unit/operations/test_rpc.py
++++ b/test/unit/operations/test_rpc.py
+@@ -1,9 +1,7 @@
+-from ncclient.operations.rpc import *
+ import unittest
+-try:
+-    from unittest.mock import patch  # Python 3.4 and later
+-except ImportError:
+-    from mock import patch
++from unittest.mock import patch
++
++from ncclient.operations.rpc import *
+ from ncclient import manager
+ import ncclient.manager
+ import ncclient.transport
+@@ -11,12 +9,8 @@
+ from ncclient.operations import RaiseMode
+ from ncclient.capabilities import Capabilities
+ from xml.sax.saxutils import escape
+-import sys
+ 
+-if sys.version >= '3':
+-    patch_str = 'ncclient.operations.rpc.Event.is_set'
+-else:
+-    patch_str = 'threading._Event.is_set'
++patch_str = 'ncclient.operations.rpc.Event.is_set'
+ 
+ xml1 = """<rpc-reply xmlns:junos="http://xml.juniper.net/junos/12.1X46/junos">
+     <ok/>
+diff --git a/test/unit/test_xml_.py b/test/unit/test_xml_.py
+index 9e8c55a6..28d10113 100644
+--- a/test/unit/test_xml_.py
++++ b/test/unit/test_xml_.py
+@@ -1,8 +1,9 @@
+-from ncclient import manager
+-from ncclient.xml_ import *
+ import unittest
+ import os
+ import sys
++
++from ncclient import manager
++from ncclient.xml_ import *
+ file_path = os.path.join(os.getcwd(), "test", "unit", "reply1")
+ 
+ 
+@@ -18,8 +19,7 @@ def test_ncelement_reply_001(self):
+         transform_reply = device_handler.transform_reply()
+         result = NCElement(reply, transform_reply)
+         result_str = result.tostring
+-        if sys.version >= '3':
+-            result_str = result_str.decode('UTF-8')
++        result_str = result_str.decode('UTF-8')
+         self.assertEqual(str(result), result_str)
+         #data_xml != tostring
+         self.assertNotEqual(result_str, result.data_xml)
+diff --git a/test/unit/transport/test_parser.py b/test/unit/transport/test_parser.py
+index d06d2cb9..abe4a3d9 100644
+--- a/test/unit/transport/test_parser.py
++++ b/test/unit/transport/test_parser.py
+@@ -1,10 +1,7 @@
+ import os
+-
+ import unittest
+-try:
+-    from unittest.mock import patch  # Python 3.4 and later
+-except ImportError:
+-    from mock import patch
++from unittest.mock import patch
++
+ import paramiko
+ 
+ from ncclient import manager
+@@ -21,7 +18,6 @@
+ 
+ class TestSession(unittest.TestCase):
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.SSHSession.connected')
+     @patch('paramiko.channel.Channel.send_ready')
+     @patch('paramiko.channel.Channel.send')
+@@ -50,7 +46,6 @@ def test_filter_xml_sax_on(self, mock_uuid4, mock_select, mock_session, mock_rec
+         # as filter_xml is not having software-information, response wont contain it
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/software-information')), 0)
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.SSHSession.connected')
+     @patch('paramiko.channel.Channel.send_ready')
+     @patch('paramiko.channel.Channel.send')
+@@ -81,7 +76,6 @@ def test_filter_xml_sax_on_junos_rfc_compliant(self, mock_uuid4, mock_select, mo
+         # as filter_xml is not having software-information, response wont contain it
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/software-information')), 0)
+         
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.SSHSession.connected')
+     @patch('paramiko.channel.Channel.send_ready')
+     @patch('paramiko.channel.Channel.send')
+@@ -111,7 +105,6 @@ def test_filter_xml_delimiter_rpc_reply(self, mock_uuid4, mock_select,
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/re-name')), 2)
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/software-information')), 0)
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.SSHSession.connected')
+     @patch('paramiko.channel.Channel.send_ready')
+     @patch('paramiko.channel.Channel.send')
+@@ -143,7 +136,6 @@ def test_filter_xml_delimiter_multiple_rpc_reply(self, mock_uuid4, mock_select,
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/re-name')), 2)
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/software-information')), 0)
+ 
+-        @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+         @patch('ncclient.transport.SSHSession.connected')
+         @patch('paramiko.channel.Channel.send_ready')
+         @patch('paramiko.channel.Channel.send')
+@@ -229,7 +221,6 @@ def test_filter_xml_delimiter_multiple_rpc_in_parallel(self, mock_uuid4, mock_se
+             resp = obj.request(rpc)._NCElement__doc[0]
+             self.assertEqual(len(resp.xpath('pfe-traffic-statistics')), 1)
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.SSHSession.connected')
+     @patch('paramiko.channel.Channel.send_ready')
+     @patch('paramiko.channel.Channel.send')
+@@ -261,7 +252,6 @@ def test_filter_xml_delimiter_splited_rpc_reply(self, mock_uuid4, mock_select,
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/re-name')), 2)
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/software-information')), 0)
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.SSHSession.connected')
+     @patch('paramiko.channel.Channel.send_ready')
+     @patch('paramiko.channel.Channel.send')
+@@ -292,7 +282,6 @@ def test_use_filter_xml_without_sax_input(self, mock_uuid4, mock_select,
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/re-name')), 2)
+         self.assertEqual(len(resp.xpath('multi-routing-engine-item/software-information')), 2)
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.SSHSession.connected')
+     @patch('paramiko.channel.Channel.send_ready')
+     @patch('paramiko.channel.Channel.send')
+diff --git a/test/unit/transport/test_ssh.py b/test/unit/transport/test_ssh.py
+index 73a82be5..4d66130f 100644
+--- a/test/unit/transport/test_ssh.py
++++ b/test/unit/transport/test_ssh.py
+@@ -1,14 +1,11 @@
+ # -*- coding: utf-8 -*-
+ import unittest
+-try:
+-    from unittest.mock import MagicMock, patch, call  # Python 3.4 and later
+-except ImportError:
+-    from mock import MagicMock, patch, call
++from unittest.mock import MagicMock, patch, call
++
+ from ncclient.transport.ssh import SSHSession
+ from ncclient.transport import AuthenticationError, SessionCloseError, NetconfBase
+ import paramiko
+ from ncclient.devices.junos import JunosDeviceHandler
+-import sys
+ 
+ try:
+     import selectors
+@@ -79,12 +76,8 @@ def _test_parsemethod(self, mock_dispatch, parsemethod, reply, ok_chunk,
+                           expected_messages):
+         device_handler = JunosDeviceHandler({'name': 'junos'})
+         obj = SSHSession(device_handler)
+-        if sys.version >= "3.0":
+-            obj._buffer.write(bytes(reply, "utf-8"))
+-            remainder = bytes(ok_chunk, "utf-8")
+-        else:
+-            obj._buffer.write(reply)
+-            remainder = ok_chunk
++        obj._buffer.write(bytes(reply, "utf-8"))
++        remainder = bytes(ok_chunk, "utf-8")
+         parsemethod(obj)
+ 
+         for i in range(0, len(expected_messages)):
+@@ -102,12 +95,8 @@ def test_parse(self, mock_dispatch):
+     def test_parse11(self, mock_dispatch):
+         device_handler = JunosDeviceHandler({'name': 'junos'})
+         obj = SSHSession(device_handler)
+-        if sys.version >= "3.0":
+-            obj._buffer.write(bytes(rpc_reply11, "utf-8"))
+-            remainder = bytes(reply_ok_partial_chunk, "utf-8")
+-        else:
+-            obj._buffer.write(rpc_reply11)
+-            remainder = reply_ok_partial_chunk
++        obj._buffer.write(bytes(rpc_reply11, "utf-8"))
++        remainder = bytes(reply_ok_partial_chunk, "utf-8")
+         obj.parser._parse11()
+ 
+         expected_messages = [reply_data, reply_ok]
+@@ -121,22 +110,14 @@ def test_parse11(self, mock_dispatch):
+     def test_parse_incomplete_delimiter(self, mock_dispatch):
+         device_handler = JunosDeviceHandler({'name': 'junos'})
+         obj = SSHSession(device_handler)
+-        if sys.version >= "3.0":
+-            b = bytes(rpc_reply_part_1, "utf-8")
+-            obj._buffer.write(b)
+-            obj._parse()
+-            self.assertFalse(mock_dispatch.called)
+-            b = bytes(rpc_reply_part_2, "utf-8")
+-            obj._buffer.write(b)
+-            obj._parse()
+-            self.assertTrue(mock_dispatch.called)
+-        else:
+-            obj._buffer.write(rpc_reply_part_1)
+-            obj._parse()
+-            self.assertFalse(mock_dispatch.called)
+-            obj._buffer.write(rpc_reply_part_2)
+-            obj._parse()
+-            self.assertTrue(mock_dispatch.called)
++        b = bytes(rpc_reply_part_1, "utf-8")
++        obj._buffer.write(b)
++        obj._parse()
++        self.assertFalse(mock_dispatch.called)
++        b = bytes(rpc_reply_part_2, "utf-8")
++        obj._buffer.write(b)
++        obj._parse()
++        self.assertTrue(mock_dispatch.called)
+ 
+     @patch('paramiko.transport.Transport.auth_publickey')
+     @patch('paramiko.agent.AgentSSH.get_keys')
+@@ -321,7 +302,6 @@ def test_ssh_known_hosts_2(self, mock_auth, mock_pc,
+         hk_inst.load.assert_called_once_with('file_name')
+         mock_os.mock_calls == [call('~/.ssh/config'), call('known_hosts_file')]
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     @patch('ncclient.transport.ssh.SSHSession.close')
+     @patch('paramiko.channel.Channel.recv')
+     @patch('selectors.DefaultSelector.select')
+@@ -338,12 +318,10 @@ def test_run_receive_py3(self, mock_error, mock_selector, mock_recv, mock_close)
+                 mock_error.call_args_list[0][0][0],
+                 SessionCloseError))
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     def test_run_send_py3_10(self):
+         self._test_run_send_py3(NetconfBase.BASE_10,
+                                 lambda msg: msg.encode() + b"]]>]]>")
+ 
+-    @unittest.skipIf(sys.version_info.major == 2, "test not supported < Python3")
+     def test_run_send_py3_11(self):
+         def chunker(msg):
+             encmsg = msg.encode()
+@@ -374,23 +352,6 @@ def _test_run_send_py3(self, base, chunker, mock_error, mock_selector,
+                 mock_error.call_args_list[0][0][0],
+                 SessionCloseError))
+ 
+-    @unittest.skipIf(sys.version_info.major >= 3, "test not supported >= Python3")
+-    @patch('ncclient.transport.ssh.SSHSession.close')
+-    @patch('paramiko.channel.Channel.recv')
+-    @patch('selectors2.DefaultSelector')
+-    @patch('ncclient.transport.ssh.Session._dispatch_error')
+-    def test_run_receive_py2(self, mock_error, mock_selector, mock_recv, mock_close):
+-        mock_selector.select.return_value = True
+-        mock_recv.return_value = 0
+-        device_handler = JunosDeviceHandler({'name': 'junos'})
+-        obj = SSHSession(device_handler)
+-        obj._channel = paramiko.Channel("c100")
+-        obj.run()
+-        self.assertTrue(
+-            isinstance(
+-                mock_error.call_args_list[0][0][0],
+-                SessionCloseError))
+-
+     @unittest.skip("test currently non-functional")
+     @patch('ncclient.transport.ssh.SSHSession.close')
+     @patch('paramiko.channel.Channel.send_ready')
+diff --git a/test/unit/transport/test_tls.py b/test/unit/transport/test_tls.py
+index e1530171..d6bdb4ca 100644
+--- a/test/unit/transport/test_tls.py
++++ b/test/unit/transport/test_tls.py
+@@ -16,11 +16,7 @@
+ import sys
+ import unittest
+ import socket
+-
+-try:
+-    from unittest.mock import MagicMock, patch, call
+-except ImportError:
+-    from mock import MagicMock, patch, call
++from unittest.mock import MagicMock, patch, call
+ 
+ try:
+     from ssl import PROTOCOL_TLS_CLIENT
+

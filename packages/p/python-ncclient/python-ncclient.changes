@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:54:22 UTC 2025 - pgajdos@suse.com
+
+- do not require six for build
+- added patches
+  fix https://github.com/ncclient/ncclient/commit/59ccaac8e01e63f776fb4bf3b68a02e33d24bb20
+  + python-ncclient-no-python2.patch
+
+-------------------------------------------------------------------
 Sun Nov 10 19:50:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.16
