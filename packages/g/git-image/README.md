@@ -15,7 +15,7 @@ This container provides the openSUSE Project version of Git.
 Example of using Git container:
 
 ```ShellSession
-$ podman run registry.opensuse.org/opensuse/git:2.47 git help
+$ podman run registry.opensuse.org/opensuse/git:2.48 git help
 ```
 
 As Git requires a repository, the container

@@ -14,7 +14,7 @@ https://github.com/SUSE/BCI-dockerfile-generator
 Please submit bugfixes or comments via https://bugs.opensuse.org/
 You can contact the BCI team via https://github.com/SUSE/bci/discussions
 -->
-<!-- OBS-AddTag: opensuse/git:%%git_version%%-%RELEASE% opensuse/git:%%git_version%% opensuse/git:2.47 opensuse/git:%%git_major_version%% opensuse/git:latest -->
+<!-- OBS-AddTag: opensuse/git:%%git_version%%-%RELEASE% opensuse/git:%%git_version%% opensuse/git:2.48 opensuse/git:%%git_major_version%% opensuse/git:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
 <image schemaversion="7.4" name="git-image" xmlns:suse_label_helper="com.suse.label_helper">
@@ -28,7 +28,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
       <containerconfig
           name="opensuse/git"
           tag="%%git_version%%-%RELEASE%"
-          additionaltags="%%git_version%%,2.47,%%git_major_version%%,latest">
+          additionaltags="%%git_version%%,2.48,%%git_major_version%%,latest">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.git">
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed with Git"/>
