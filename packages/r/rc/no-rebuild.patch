@@ -1,0 +1,12 @@
+---
+ Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -35,4 +35,4 @@ uninstall:
+ check: rc
+ 	./rc run-tests
+ 
+-.PHONY: all rc clean install uninstall doc
++.PHONY: all clean install uninstall doc

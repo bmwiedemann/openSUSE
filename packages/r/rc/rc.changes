@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Wed Jan 15 11:39:48 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove libalternatives, the proper solution for unrelated
+  packages providing the same name binary is to Conflict: or
+  rename.
+
+-------------------------------------------------------------------
+Wed Jan  8 13:41:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Move binary back to %{_bindir} and establish use of
+  libalternatives.
+
+-------------------------------------------------------------------
+Sun Dec 29 17:09:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Make patch SUSE-specific, it was rejected upstream
+  (https://lists.sr.ht/~sircmpwn/hare-dev/%3C20241221132941.412307-1-mcepl@cepl.eu%3E#%3CD6HNSS6UQYO2.1PUCINTL5VSDS@d2evs.net%3E).
+
+-------------------------------------------------------------------
+Sat Dec 21 13:02:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix the location of the binary (/bin instead of %{_bindir}).
+- Add no-rebuild.patch to avoid rebuilding the binary during
+  %install.
+
+-------------------------------------------------------------------
+Wed Oct 23 10:54:19 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0+git.1725436050.2b2d211:
+  * Makefile: accept HAREFLAGS
+  * interp: update for iterator changes upstream
+
+-------------------------------------------------------------------
+Mon May 13 09:22:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Shell belongs to /bin.
+
+-------------------------------------------------------------------
+Sun May 12 22:40:38 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0+git.1710699033.2e5495e:
+  * test: add (some of) builtin.rc
+  * test: add switch test
+  * interp: use buffered write on builtin_read
+  * interp: skip empty tokens on splitting
+  * interp: fix read builtin printing to stdout
+  * rc/interactive: update to latest madeline
+  * Implement `"ifs"{...}
+  * interp::value: disallow nested lists
+  * exec_assign: return $status
+  * interp: add read built-in
+  * lex::lexarg: remove @ from nonarg list
+  * interp: drop obsolete TODO
+  * Source /etc/profile.rc if running as login shell
+  * Use parent interpreter context in interactive mode
+  * README.md: add prefix note
+  * all (scripts): replace dc with expr
+  * set builtin: add new flags
+  * Implement simple pipefail equivalent
+  * parse: Allow whitespace in assignments
+  * parse: remove unreachable abort
+  * parse: Accept whitespace in variable sub-list access
+  * rc(1): Escape backticks
+  * rc(1): document $'var
+  * all: use dupflags in io::dup{,2}
+  * interp: implement exec built-in
+  * rc: move istty after initialization
+  * all: port to +gaia
+  * doc/grammar.txt: add index
+  * Implement variable sub-list access using other variables
+  * interp: implement ~user
+  * rc(1): document rcstart
+  * rc(1): fix error and typos
+  * Implement the variable sub-list operator
+  * rc(1): fix formatting
+  * lex: allow dots in function names
+  * interp: fix assertion failure
+  * lib/getopt.rc: fix no-option case
+  * all: fix argument storage in loop contexts
+  * lib/getopt.rc: initial commit
+  * interp/exec: special-case ~
+  * interp: fix use-after-free
+  * lex: fix unterminated heredoc
+  * Parse semicolons in command lists
+  * Implement >> append redirects
+  * Finish basic heredoc implementation
+  * lex: lex simple here-docs
+  * harness.rc: detect unpaired begin/end
+  * test/loops: fix unmatched begin/end
+  * doc/grammar.txt: add heredoc grammar
+  * interp: correct comment
+  * doc/grammar.txt: remove arithmetic & logic
+  * Preserve exit status on command expansion
+  * interp: return 0 from if
+  * implement break, continue
+  * test: add loops.rc
+  * Implement return
+  * (basic) implementation of rc -x/set -x
+  * rc: set -e by default for non-interactive shell
+  * Implement set -e (and rc -e)
+  * interp: expand tilde
+  * Various updates per upstream Hare changes
+  * update to bufio changes upstream
+  * @noreturn -> never
+
+-------------------------------------------------------------------
+Wed Aug 09 16:03:51 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 0+git.1691405423.28c3a67:
+  * all: updates per upstream hare changes
+  * interp: don't use NOCHECK on globs
+  * lex: remove & from non-arg list
+  * parse: remove temporary import
+  * Add basic test suite
+  * Implement ! commands
+  * Remove = from non-arg list
+  * cd: implement cd -
+  * cd: set $PWD and $OLDPWD
+  * fix ui for ^C
