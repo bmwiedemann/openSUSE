@@ -620,6 +620,9 @@ Prefer: -python311-numpy1 -python310-numpy1 -python312-numpy1 -python313-numpy1
 # have choice for python3-PyPDF2 >= 2.1.1: python310-pypdf python311-PyPDF2 python311-pypdf python312-pypdf
 Prefer: -python310-pypdf -python311-pypdf -python312-pypdf -python313-pypdf
 
+# unresolvable: have choice for translate-toolkit >= 3.14.4: python311-translate-toolkit python311-translate-toolkit-man
+Prefer: -python311-translate-toolkit-man
+
 # have choice for pkgconfig(libmarkdown): libmarkdown-devel libmarkdown2-devel
 Prefer: -libmarkdown2-devel
 

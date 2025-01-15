@@ -1,0 +1,42 @@
+Abseil's int128 hasd broken comparison under gcc:
+
+In file included from /usr/include/c++/14/string:49,
+                 from ../../content/browser/private_aggregation/private_aggregation_host.h:11:
+/usr/include/c++/14/bits/stl_function.h: In instantiation of ‘constexpr bool std::less<_Tp>::operator()(const _Tp&, const _Tp&) const [with _Tp = content::{anonymous}::ContributionMergeKey]’:
+/usr/include/c++/14/bits/stl_map.h:599:37:   required from ‘std::pair<typename std::_Rb_tree<_Key, std::pair<const _Key, _Val>, std::_Select1st<std::pair<const _Key, _Val> >, _Compare, typename __gnu_cxx::__alloc_traits<_Allocator>::rebind<std::pair<const _Key, _Val> >::other>::iterator, bool> std::map<_Key, _Tp, _Compare, _Alloc>::emplace(_Args&& ...) [with _Args = {content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution&}; _Key = content::{anonymous}::ContributionMergeKey; _Tp = blink::mojom::AggregatableReportHistogramContribution; _Compare = std::less<content::{anonymous}::ContributionMergeKey>; _Alloc = std::allocator<std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution> >; typename std::_Rb_tree<_Key, std::pair<const _Key, _Val>, std::_Select1st<std::pair<const _Key, _Val> >, _Compare, typename __gnu_cxx::__alloc_traits<_Allocator>::rebind<std::pair<const _Key, _Val> >::other>::iterator = std::_Rb_tree<content::{anonymous}::ContributionMergeKey, std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution>, std::_Select1st<std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution> >, std::less<content::{anonymous}::ContributionMergeKey>, std::allocator<std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution> > >::iterator; typename __gnu_cxx::__alloc_traits<_Allocator>::rebind<std::pair<const _Key, _Val> >::other = std::allocator<std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution> >; typename __gnu_cxx::__alloc_traits<_Allocator>::rebind<std::pair<const _Key, _Val> > = __gnu_cxx::__alloc_traits<std::allocator<std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution> >, std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution> >::rebind<std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution> >; typename _Allocator::value_type = std::pair<const content::{anonymous}::ContributionMergeKey, blink::mojom::AggregatableReportHistogramContribution>]’
+  599 |                     if (__i == end() || key_comp()(__k, (*__i).first))
+      |                                         ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+../../content/browser/private_aggregation/private_aggregation_host.cc:457:37:   required from here
+  457 |       accepted_contributions.emplace(std::move(merge_key),
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+  458 |                                      *std::move(contribution));
+      |                                      ~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/14/bits/stl_function.h:405:20: error: use of deleted function ‘constexpr auto content::{anonymous}::ContributionMergeKey::operator<=>(const content::{anonymous}::ContributionMergeKey&) const’
+  405 |       { return __x < __y; }
+      |                ~~~~^~~~~
+../../content/browser/private_aggregation/private_aggregation_host.cc:141:8: note: ‘constexpr auto content::{anonymous}::ContributionMergeKey::operator<=>(const content::{anonymous}::ContributionMergeKey&) const’ is implicitly deleted because the default definition would be ill-formed:
+  141 |   auto operator<=>(const ContributionMergeKey& a) const = default;
+      |        ^~~~~~~~
+../../content/browser/private_aggregation/private_aggregation_host.cc:143:17: note: three-way comparison of ‘content::{anonymous}::ContributionMergeKey::bucket’ has type ‘absl::lts_20240722::strong_ordering’, not a comparison category type
+  143 |   absl::uint128 bucket;
+      |                 ^~~~~~
+
+--- src/content/browser/private_aggregation/private_aggregation_host.cc	2025-01-02 22:23:57.594885484 +0100
++++ /var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/BUILD/src/content/browser/private_aggregation/private_aggregation_host.cc	2025-01-03 21:33:27.795544465 +0100
+@@ -51,7 +51,6 @@
+ #include "mojo/public/cpp/bindings/pending_receiver.h"
+ #include "mojo/public/cpp/bindings/receiver_set.h"
+ #include "services/network/public/cpp/is_potentially_trustworthy.h"
+-#include "third_party/abseil-cpp/absl/numeric/int128.h"
+ #include "third_party/blink/public/common/features.h"
+ #include "third_party/blink/public/mojom/aggregation_service/aggregatable_report.mojom.h"
+ #include "third_party/blink/public/mojom/private_aggregation/private_aggregation_host.mojom.h"
+@@ -140,7 +139,7 @@ struct ContributionMergeKey {
+ 
+   auto operator<=>(const ContributionMergeKey& a) const = default;
+ 
+-  absl::uint128 bucket;
++  unsigned __int128 bucket;
+   uint64_t filtering_id;
+ };
+ 

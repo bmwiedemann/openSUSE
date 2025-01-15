@@ -18,16 +18,3 @@
      "//components/content_settings/core/common",
      "//components/crash/core/common",
      "//components/device_signals/core/common:features",
---- src/content/utility/BUILD.gn.orig
-+++ src/content/utility/BUILD.gn
-@@ -144,10 +144,6 @@ source_set("utility") {
-     }
-   }
- 
--  if (is_linux || is_chromeos) {
--    deps += [ "//services/screen_ai:screen_ai_sandbox_hook" ]
--  }
--
-   if (enable_accessibility_service) {
-     deps += [ "//services/accessibility:lib" ]
-   }

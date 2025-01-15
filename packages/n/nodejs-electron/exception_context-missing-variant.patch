@@ -1,0 +1,32 @@
+From 47fb59539e5744467eb6f7aae52f5a169910d56c Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Thu, 19 Sep 2024 11:04:49 +0000
+Subject: [PATCH] IWYU: missing include for usage of std::variant in
+ exception_context.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug: 41455655
+Change-Id: I7c4a26c28481de40b22646f5a9f018235079dbca
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5872753
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Reviewed-by: Michael Lippautz <mlippautz@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1357540}
+---
+ .../blink/renderer/platform/bindings/exception_context.h        | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/third_party/blink/renderer/platform/bindings/exception_context.h b/third_party/blink/renderer/platform/bindings/exception_context.h
+index 82d20a29326432..afa27f00d03924 100644
+--- a/third_party/blink/renderer/platform/bindings/exception_context.h
++++ b/third_party/blink/renderer/platform/bindings/exception_context.h
+@@ -5,6 +5,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_PLATFORM_BINDINGS_EXCEPTION_CONTEXT_H_
+ #define THIRD_PARTY_BLINK_RENDERER_PLATFORM_BINDINGS_EXCEPTION_CONTEXT_H_
+ 
++#include <variant>
++
+ #include "base/check_op.h"
+ #include "base/dcheck_is_on.h"
+ #include "base/notreached.h"

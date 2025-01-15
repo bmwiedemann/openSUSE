@@ -1,8 +1,8 @@
 Reducing symbol_level is a kludge and should have no effect on generated code.
 
---- src/base/BUILD.gn.orig
-+++ src/base/BUILD.gn
-@@ -2531,11 +2531,6 @@ buildflag_header("debugging_buildflags")
+--- src/base/BUILD.gn.orig	2024-12-08 18:43:52.881356091 +0100
++++ src/base/BUILD.gn	2024-12-18 12:11:47.597615650 +0100
+@@ -2510,11 +2510,6 @@ buildflag_header("debugging_buildflags")
    enable_commandline_sequence_checks =
        (is_debug || dcheck_always_on) && !is_android
  
@@ -11,15 +11,15 @@ Reducing symbol_level is a kludge and should have no effect on generated code.
 -        symbol_level > 0,
 -        "symbol_level must be set to greater than 0 for source line numbers.")
 -  }
+   _enable_stack_trace_line_numbers =
+       !print_unsymbolized_stack_traces && enable_stack_trace_line_numbers
  
-   flags = [
-     "DCHECK_IS_CONFIGURABLE=$dcheck_is_configurable",
---- src/build/config/logging.gni.orig
-+++ src/build/config/logging.gni
-@@ -11,5 +11,5 @@ declare_args() {
-   enable_log_error_not_reached =
-       is_chromeos_ash && !(is_debug || dcheck_always_on)
+--- src/build/config/logging.gni.orig	2024-12-08 18:34:51.748006561 +0100
++++ src/build/config/logging.gni	2024-12-18 12:12:08.104531156 +0100
+@@ -20,5 +20,5 @@ declare_args() {
  
+   # Enables the DWARF line number reader on Linux. This only has an effect if
+   # print_unsymbolized_stack_traces is false.
 -  enable_stack_trace_line_numbers = symbol_level > 0
 +  enable_stack_trace_line_numbers = true
  }

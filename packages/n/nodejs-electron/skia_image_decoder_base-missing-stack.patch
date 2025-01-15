@@ -1,0 +1,28 @@
+From 39583ff118920284de516d262979960e7159bcfc Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Thu, 19 Sep 2024 15:44:36 +0000
+Subject: [PATCH] IWYU: missing include for usage of std::stack in
+ skia_image_decoder_base.cc
+
+Bug: 41455655
+Change-Id: Id9c09f951dacc34d46aadc4badc6b3fd250ad38b
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5872492
+Reviewed-by: Peter Kasting <pkasting@chromium.org>
+Commit-Queue: Peter Kasting <pkasting@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1357626}
+---
+ .../platform/image-decoders/skia/skia_image_decoder_base.cc      | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/third_party/blink/renderer/platform/image-decoders/skia/skia_image_decoder_base.cc b/third_party/blink/renderer/platform/image-decoders/skia/skia_image_decoder_base.cc
+index 1d002cc258ae8b..84fd71c1e46139 100644
+--- a/third_party/blink/renderer/platform/image-decoders/skia/skia_image_decoder_base.cc
++++ b/third_party/blink/renderer/platform/image-decoders/skia/skia_image_decoder_base.cc
+@@ -5,6 +5,7 @@
+ #include "third_party/blink/renderer/platform/image-decoders/skia/skia_image_decoder_base.h"
+ 
+ #include <limits>
++#include <stack>
+ 
+ #include "third_party/blink/renderer/platform/image-decoders/segment_stream.h"
+ #include "third_party/skia/include/codec/SkCodec.h"

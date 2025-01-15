@@ -1,0 +1,39 @@
+From 40c273b2c0f5f26e16e67428ceaafd8b339bb61f Mon Sep 17 00:00:00 2001
+From: Ivan Murashov <ivan.murashov@lge.com>
+Date: Fri, 20 Sep 2024 08:03:22 +0000
+Subject: [PATCH] IWYU: Add missing include for std::variant usage in
+ vtt_scanner.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In the CLs https://crrev.com/c/5832540 and https://crrev.com/c/5842227
+used std::variant in the
+third_party/blink/renderer/core/html/track/vtt/vtt_scanner.h, but
+corresponding include was missed.
+Added missing include for std::variant usage.
+
+Bug: 41455655
+Change-Id: I90d07b12239f8d58e32c8011c710b6c7ea31fb5b
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5872861
+Reviewed-by: Anders Hartvoll Ruud <andruud@chromium.org>
+Reviewed-by: Fredrik Söderquist <fs@opera.com>
+Commit-Queue: Anders Hartvoll Ruud <andruud@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1358046}
+---
+ third_party/blink/renderer/core/html/track/vtt/vtt_scanner.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/third_party/blink/renderer/core/html/track/vtt/vtt_scanner.h b/third_party/blink/renderer/core/html/track/vtt/vtt_scanner.h
+index 78fc6657e38824..1b466bc9c5f8c3 100644
+--- a/third_party/blink/renderer/core/html/track/vtt/vtt_scanner.h
++++ b/third_party/blink/renderer/core/html/track/vtt/vtt_scanner.h
+@@ -30,6 +30,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_CORE_HTML_TRACK_VTT_VTT_SCANNER_H_
+ #define THIRD_PARTY_BLINK_RENDERER_CORE_HTML_TRACK_VTT_VTT_SCANNER_H_
+ 
++#include <variant>
++
+ #include "base/check_op.h"
+ #include "third_party/blink/renderer/core/core_export.h"
+ #include "third_party/blink/renderer/platform/wtf/allocator/allocator.h"

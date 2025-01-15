@@ -51,18 +51,6 @@ Use -fpic for code which goes only in dlls (gives smaller code),
    if (is_clang) {
      cflags += [
        "-Wno-implicit-fallthrough",
---- a/third_party/vulkan-deps/spirv-tools/src/BUILD.gn
-+++ b/third_party/vulkan-deps/spirv-tools/src/BUILD.gn
-@@ -356,7 +356,8 @@
-     ":spvtools_include_gen_dirs",
-   ]
- 
--  cflags = []
-+  cflags = ["-fpic", "-fno-semantic-interposition"]
-+  asmflags = ["-fpic", "-fno-semantic-interposition"]
-   if (is_clang) {
-     cflags += [
-       "-Wno-implicit-fallthrough",
 --- a/third_party/vulkan_memory_allocator/BUILD.gn
 +++ b/third_party/vulkan_memory_allocator/BUILD.gn
 @@ -35,6 +35,8 @@

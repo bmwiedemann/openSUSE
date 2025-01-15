@@ -71,17 +71,6 @@ Unbundle assorted lexing/parsing/transpiling tools written in Python.
  ../../build/scripts/blinkbuild/__init__.py
  ../../build/scripts/blinkbuild/name_style_converter.py
  bind_gen/__init__.py
---- a/third_party/blink/renderer/modules/sanitizer_api/builtins/generate_attribute_lists.py
-+++ b/third_party/blink/renderer/modules/sanitizer_api/builtins/generate_attribute_lists.py
-@@ -4,7 +4,7 @@
- # found in the LICENSE file.
- """Generate list of attribute names known to this version of Chromium."""
- 
--from pyjson5.src import json5
-+import json5
- import optparse
- import sys
- 
 --- src/third_party/blink/renderer/bindings/scripts/check_generated_file_list.pydeps.old	2022-11-30 10:28:05.822183900 +0000
 +++ src/third_party/blink/renderer/bindings/scripts/check_generated_file_list.pydeps	2022-11-30 19:51:45.562760400 +0000
 @@ -2,29 +2,6 @@
@@ -138,18 +127,19 @@ Unbundle assorted lexing/parsing/transpiling tools written in Python.
        sources = sources_list
        public_deps = parser_deps
        outputs = []
---- src/third_party/blink/renderer/build/scripts/scripts.gni.old
-+++ src/third_party/blink/renderer/build/scripts/scripts.gni
-@@ -17,9 +17,6 @@ _scripts_dir = "//third_party/blink/rend
- scripts_for_json5_files = [
-   # jinja2/__init__.py contains version string, so sufficient as
-   # dependency for whole jinja2 package
--  "//third_party/jinja2/__init__.py",
--  "//third_party/markupsafe/__init__.py",  # jinja2 dep
--  "//third_party/pyjson5/src/json5/__init__.py",
-   "$_scripts_dir/blinkbuild/name_style_converter.py",
-   "$_scripts_dir/hasher.py",
-   "$_scripts_dir/json5_generator.py",
+--- src/third_party/blink/renderer/build/scripts/scripts.gni.orig	2024-12-08 18:35:01.138006834 +0100
++++ src/third_party/blink/renderer/build/scripts/scripts.gni	2024-12-18 13:24:36.436191575 +0100
+@@ -18,10 +18,6 @@ if (is_ios) {
+ _scripts_dir = "//third_party/blink/renderer/build/scripts"
+ 
+ scripts_for_json5_files = jinja2_sources + [
+-                            "//third_party/pyjson5/src/json5/__init__.py",
+-                            "//third_party/pyjson5/src/json5/lib.py",
+-                            "//third_party/pyjson5/src/json5/parser.py",
+-                            "//third_party/pyjson5/src/json5/version.py",
+                             "$_scripts_dir/blinkbuild/name_style_converter.py",
+                             "$_scripts_dir/json5_generator.py",
+                             "$_scripts_dir/license.py",
 --- src/third_party/blink/renderer/bindings/scripts/generate_event_interface_names.pydeps.old
 +++ src/third_party/blink/renderer/bindings/scripts/generate_event_interface_names.pydeps
 @@ -2,10 +2,6 @@

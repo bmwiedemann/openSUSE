@@ -1,0 +1,10 @@
+--- src/chrome/browser/extensions/api/BUILD.gn.orig	2024-12-08 18:34:53.171339936 +0100
++++ src/chrome/browser/extensions/api/BUILD.gn	2025-01-01 21:24:35.512530556 +0100
+@@ -34,7 +34,6 @@ group("api_implementations") {
+     "//chrome/browser/extensions/api/downloads_internal",
+     "//chrome/browser/extensions/api/experimental_ai_data",
+     "//chrome/browser/extensions/api/font_settings",
+-    "//chrome/browser/extensions/api/mdns",
+     "//chrome/browser/extensions/api/module",
+     "//chrome/browser/extensions/api/networking_private",
+     "//chrome/browser/extensions/api/omnibox",

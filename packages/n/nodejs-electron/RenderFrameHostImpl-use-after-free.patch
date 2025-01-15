@@ -1,5 +1,5 @@
---- src/content/browser/renderer_host/render_frame_host_impl.cc.orig	2023-02-08 21:38:09.974003318 +0100
-+++ src/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-13 14:13:50.217792624 +0100
+--- src/content/browser/renderer_host/render_frame_host_impl.cc.orig	2024-12-08 18:45:24.018025513 +0100
++++ src/content/browser/renderer_host/render_frame_host_impl.cc	2024-12-20 14:29:00.900380913 +0100
 @@ -8,6 +8,7 @@
  #include <deque>
  #include <limits>
@@ -8,10 +8,10 @@
  #include <optional>
  #include <string_view>
  #include <tuple>
-@@ -1818,7 +1819,12 @@ RenderFrameHostImpl::~RenderFrameHostImp
+@@ -2276,7 +2277,12 @@ RenderFrameHostImpl::~RenderFrameHostImp
+   // completes. Among other things, this ensures that any `SafeRef`s from
    // `DocumentService` and `RenderFrameHostUserData` subclasses are still valid
    // when their destructors run.
-   document_associated_data_->RemoveAllServices();
 -  document_associated_data_.reset();
 +  // HACK: Using .reset() here works on MSVC and LLVM libc++ because the std::optional
 +  // is still valid while the destructor runs. This does not work on GNU libstdc++
@@ -22,7 +22,7 @@
  
    // If this was the last active frame in the SiteInstanceGroup, the
    // DecrementActiveFrameCount call will trigger the deletion of the
-@@ -13254,7 +13260,9 @@ bool RenderFrameHostImpl::DidCommitNavig
+@@ -14482,7 +14488,9 @@ bool RenderFrameHostImpl::DidCommitNavig
        // RenderFrameHost commits before the navigation commits. This happens
        // when the current RenderFrameHost crashes before navigating to a new
        // URL.

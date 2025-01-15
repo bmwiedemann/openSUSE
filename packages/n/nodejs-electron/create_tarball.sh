@@ -139,12 +139,20 @@ python3 src/tools/download_optimization_profile.py \
 # Needed to get typescript compiler
 echo ">>>>>> Download and unpack webui-node-modules tarball for third_party/node"
 python3 src/third_party/depot_tools/download_from_google_storage.py \
-    --no_resume --extract --no_auth --bucket chromium-nodejs \
+    --no_resume --no_auth --bucket chromium-nodejs \
     -s src/third_party/node/node_modules.tar.gz.sha1
 if [ $? -ne 0 ]; then
     echo "ERROR: download_from_google_storage failed"
     cleanup_and_exit 1
 fi
+mkdir -pv src/third_party/node/node_modules
+pushd src/third_party/node/node_modules
+tar -xvvf ../node_modules.tar.gz
+if [ $? -ne 0 ]; then
+    echo "ERROR: tar extract failed"
+    cleanup_and_exit 1
+fi
+popd
 # we don't need the orig tarball
 rm -v src/third_party/node/node_modules.tar.gz
 
@@ -169,7 +177,6 @@ keeplibs=(
     base/third_party/icu #Derived code, not vendored dependency.
     base/third_party/superfasthash #Not a shared library.
     base/third_party/symbolize #Derived code, not vendored dependency.
-    base/third_party/valgrind #Copy of a private header.
     base/third_party/xdg_user_dirs #Derived code, not vendored dependency.
     chrome/third_party/mozilla_security_manager #Derived code, not vendored dependency.
     net/third_party/mozilla_security_manager #Derived code, not vendored dependency.
@@ -179,7 +186,6 @@ keeplibs=(
     third_party/abseil-cpp #Leap and fc36 too old.
     third_party/angle  # ANGLE is an integral part of chrome and is not available as a shared library.
     third_party/angle/src/third_party/ceval #not in any distro
-    third_party/angle/src/third_party/volk #replacement vulkan loader. Drop it when Leap has new enough libvulkan
     third_party/blink #Integral part of chrome
     third_party/boringssl #Factory has an ancient version, but upstream seems to have gave up on making it a shared library
     third_party/boringssl/src/third_party/fiat #Not in any distro
@@ -212,14 +218,15 @@ keeplibs=(
     third_party/devtools-frontend #Javascript code, integral part of chrome
     third_party/devtools-frontend/src/front_end/third_party #various javascript code compiled into chrome, see README.md
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/parsel-js
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
     third_party/devtools-frontend/src/third_party/i18n #javascript
-    third_party/devtools-frontend/src/third_party/typescript #Chromium added code
     third_party/distributed_point_functions #not in any distro
     third_party/dom_distiller_js #javascript
     #third_party/eigen3 #Used only by tflite which is not used in electron
     third_party/electron_node #Integral part of electron
     third_party/emoji-segmenter #not available as a shared library
+    third_party/fast_float #Header-only library thus we're not debundling it rn.
     third_party/fdlibm #derived code, not vendored dep
     third_party/fp16 #Fedora 41 has it (but an old version?) Not in openSUSE. Header-only library thus we're not debundling it rn.
     third_party/hunspell #heavily forked version
@@ -228,16 +235,10 @@ keeplibs=(
     third_party/jstemplate #javascript
     third_party/khronos #Modified to add ANGLE definitions
     third_party/leveldatabase #use of private headers
-    third_party/libaom #15.5 is too old
-    third_party/libaom/source/libaom/third_party/fastfeat
-    third_party/libaom/source/libaom/third_party/SVT-AV1
-    third_party/libaom/source/libaom/third_party/vector
-    third_party/libaom/source/libaom/third_party/x86inc
     third_party/libavif #bleeding-edge nightly. try unbundling again when 1.1 gets released
     third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h)
     third_party/libsrtp #Needs to be built against boringssl, not openssl
     third_party/libsync #not yet in any distro
-    third_party/libudev #Headers for a optional delay-loaded dependency
     third_party/liburlpattern #Derived code, not vendored dep.
     third_party/libva_protected_content #ChromeOS header not available separately. needed for build.
     third_party/libvpx #15.5/FC37 too old
@@ -268,27 +269,26 @@ keeplibs=(
     #third_party/pdfium/third_party/skia_shared #Skia is not available as a shared library yet.
     third_party/perfetto #Seems not to be available as a shared library, despite the presence of a `debian` directory.
     third_party/perfetto/protos/third_party/chromium #derived code, not vendored dep
+    third_party/perfetto/protos/third_party/simpleperf #not available in any distro
     third_party/pffft #not in any distro, also heavily patched
     third_party/polymer #javascript
     third_party/protobuf #Heavily forked. Apparently was officially unbundlable back in the GYP days, and may be again in the future.
+    third_party/rapidhash #Fork
     third_party/re2 # fedora too old
     third_party/rnnoise #use of private headers
     third_party/skia #integral part of chrome
     third_party/speech-dispatcher #Headers for a delay-loaded optional dependency
+    third_party/spirv-headers
     third_party/sqlite #heavily forked version
     third_party/swiftshader #not available as a shared library
     third_party/swiftshader/third_party/astc-encoder #not in rawhide or factory. Debian has it (astc-encoder)
     third_party/swiftshader/third_party/llvm-subzero #heavily forked version of libLLVM for use in subzero
     third_party/swiftshader/third_party/marl #not on any distro
-    third_party/swiftshader/third_party/SPIRV-Headers #Leap too old
-    third_party/swiftshader/third_party/SPIRV-Tools #Leap too old
     third_party/swiftshader/third_party/subzero #integral part of swiftshader
     #third_party/tflite #Not used by electron, but chrome needs it.
     #third_party/tflite/src/third_party/eigen3
     #third_party/tflite/src/third_party/fft2d
-    third_party/vulkan-deps/spirv-headers #15.5 too old
-    third_party/vulkan-deps/spirv-tools #15.5 too old
-    third_party/vulkan-deps/vulkan-headers #15.5 too old. CONSIDER UNBUNDLING when all distros have new enough vulkan sdk
+    third_party/vulkan-headers #15.6 too old
     third_party/vulkan_memory_allocator #not in Factory
     third_party/webgpu-cts #Javascript code. Needed even if you're building chrome without webgpu
     third_party/webrtc #Integral part of chrome

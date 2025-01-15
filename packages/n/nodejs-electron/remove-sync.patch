@@ -178,9 +178,9 @@ Inspired by:
  
    // True if the dictionary has been loaded. Otherwise false.
    bool is_loaded_;
---- src/device/fido/BUILD.gn.orig
-+++ src/device/fido/BUILD.gn
-@@ -163,33 +163,6 @@ component("fido") {
+--- src/device/fido/BUILD.gn.orig	2024-12-08 18:34:58.231340083 +0100
++++ src/device/fido/BUILD.gn	2024-12-18 12:59:49.294713941 +0100
+@@ -163,36 +163,6 @@ component("fido") {
          "device_operation.h",
          "device_response_converter.cc",
          "device_response_converter.h",
@@ -200,48 +200,54 @@ Inspired by:
 -        "enclave/transact.h",
 -        "enclave/types.cc",
 -        "enclave/types.h",
+-        "enclave/verify/amd.cc",
+-        "enclave/verify/amd.h",
+-        "enclave/verify/attestation_report.cc",
+-        "enclave/verify/attestation_report.h",
 -        "enclave/verify/claim.cc",
 -        "enclave/verify/claim.h",
 -        "enclave/verify/endorsement.cc",
 -        "enclave/verify/endorsement.h",
--        "enclave/verify/hash.cc",
--        "enclave/verify/hash.h",
 -        "enclave/verify/rekor.cc",
 -        "enclave/verify/rekor.h",
 -        "enclave/verify/utils.cc",
 -        "enclave/verify/utils.h",
--        "enclave/verify/verify.h",
+-        "enclave/verify/verifier.cc",
+-        "enclave/verify/verifier.h",
          "fido_authenticator.cc",
          "fido_authenticator.h",
          "fido_device.cc",
-@@ -256,7 +229,6 @@ component("fido") {
+@@ -257,7 +227,6 @@ component("fido") {
        ]
  
        deps += [
 -        "//components/sync/protocol:protocol",
+         "//device/fido/enclave/verify/proto:proto",
          "//services/device/public/cpp/hid",
          "//services/device/public/cpp/usb",
-         "//services/device/public/mojom",
---- src/device/fido/fido_discovery_factory.cc.orig
-+++ src/device/fido/fido_discovery_factory.cc
-@@ -38,7 +38,7 @@
- #include "device/fido/cros/discovery.h"
- #endif  // BUILDFLAG(IS_CHROMEOS)
- 
--#if !BUILDFLAG(IS_CHROMEOS)
-+#if 0
- #include "device/fido/enclave/enclave_discovery.h"
- #endif
- 
-@@ -127,7 +127,7 @@ std::vector<std::unique_ptr<FidoDiscover
+--- src/device/fido/fido_discovery_factory.cc.orig	2024-12-08 18:34:58.241340085 +0100
++++ src/device/fido/fido_discovery_factory.cc	2024-12-18 13:01:00.958049095 +0100
+@@ -13,7 +13,6 @@
+ #include "device/fido/aoa/android_accessory_discovery.h"
+ #include "device/fido/cable/fido_cable_discovery.h"
+ #include "device/fido/cable/v2_discovery.h"
+-#include "device/fido/enclave/enclave_discovery.h"
+ #include "device/fido/features.h"
+ #include "device/fido/fido_discovery_base.h"
+ #include "device/fido/hid/fido_hid_discovery.h"
+@@ -124,12 +123,7 @@ std::vector<std::unique_ptr<FidoDiscover
  
  std::optional<std::unique_ptr<FidoDiscoveryBase>>
  FidoDiscoveryFactory::MaybeCreateEnclaveDiscovery() {
--#if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_WIN) || BUILDFLAG(IS_LINUX)
-+#if 0
-   if (!base::FeatureList::IsEnabled(kWebAuthnEnclaveAuthenticator) ||
-       !enclave_ui_request_stream_ || !network_context_factory_) {
+-  if (!base::FeatureList::IsEnabled(kWebAuthnEnclaveAuthenticator) ||
+-      !enclave_ui_request_stream_ || !network_context_factory_) {
      return std::nullopt;
+-  }
+-  return std::make_unique<enclave::EnclaveAuthenticatorDiscovery>(
+-      std::move(enclave_ui_request_stream_), network_context_factory_);
+ }
+ 
+ bool FidoDiscoveryFactory::IsTestOverride() {
 --- src/device/fido/fido_discovery_factory.h.orig
 +++ src/device/fido/fido_discovery_factory.h
 @@ -15,7 +15,6 @@
@@ -252,3 +258,13 @@ Inspired by:
  #include "device/fido/cable/cable_discovery_data.h"
  #include "device/fido/cable/v2_constants.h"
  #include "device/fido/ctap_get_assertion_request.h"
+--- src/components/variations/service/BUILD.gn.orig	2024-12-08 18:34:57.401340060 +0100
++++ src/components/variations/service/BUILD.gn	2025-01-01 21:55:42.476247680 +0100
+@@ -74,7 +74,6 @@ static_library("service") {
+     "//components/network_time",
+     "//components/pref_registry",
+     "//components/prefs",
+-    "//components/sync/service",
+     "//components/variations",
+     "//components/variations/field_trial_config",
+     "//components/variations/proto",

@@ -15,7 +15,7 @@
 		</conditions>
 		<hardware>
 			<memory>
-				<size unit="G">24</size>
+				<size unit="G">30</size> <!-- lto1-wpa does really need enormous amounts of memory -->
 			</memory>
 		</hardware>
 	</overwrite>
@@ -29,18 +29,6 @@
 				<size unit="G">30</size>
 			</memory>
 			<jobs>8</jobs>
-		</hardware>
-	</overwrite>
-	<overwrite>
-		<conditions>
-			<arch>aarch64</arch>
-			<arch>armv7l</arch>
-			<arch>armv6l</arch>
-		</conditions>
-		<hardware>
-			<cpu>
-			<flag>asimdrdm</flag> <!-- prevent scheduling on old machines -->
-			</cpu>
 		</hardware>
 	</overwrite>
 </constraints>

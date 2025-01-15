@@ -1,0 +1,32 @@
+From 7e28832cd3320d2b603e6ef9468581e1c65c14f1 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Thu, 19 Sep 2024 15:05:26 +0000
+Subject: [PATCH] IWYU: missing include for usage of std::optional in
+ ip_protection_data_types.h
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug: 41455655
+Change-Id: Id26fc5bc3a4bde79c2f9a3134d18eeaab68603ad
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5873261
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Reviewed-by: Dustin Mitchell <djmitche@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1357601}
+---
+ components/ip_protection/common/ip_protection_data_types.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/components/ip_protection/common/ip_protection_data_types.h b/components/ip_protection/common/ip_protection_data_types.h
+index 35648110915fc4..978dfac4ac74a5 100644
+--- a/components/ip_protection/common/ip_protection_data_types.h
++++ b/components/ip_protection/common/ip_protection_data_types.h
+@@ -5,6 +5,8 @@
+ #ifndef COMPONENTS_IP_PROTECTION_COMMON_IP_PROTECTION_DATA_TYPES_H_
+ #define COMPONENTS_IP_PROTECTION_COMMON_IP_PROTECTION_DATA_TYPES_H_
+ 
++#include <optional>
++
+ #include "base/time/time.h"
+ 
+ namespace ip_protection {

@@ -8,8 +8,8 @@
  
  if (is_android) {
    import("//build/config/android/rules.gni")
---- src/chrome/common/BUILD.gn.orig	2024-09-12 13:46:51.785984196 +0200
-+++ src/chrome/common/BUILD.gn	2024-09-12 15:27:58.398867501 +0200
+--- src/chrome/common/BUILD.gn.orig	2024-12-08 18:34:54.604673311 +0100
++++ src/chrome/common/BUILD.gn	2024-12-18 13:09:33.621395162 +0100
 @@ -22,7 +22,6 @@ import("//testing/libfuzzer/fuzzer_test.
  import("//third_party/widevine/cdm/widevine.gni")
  import("//tools/grit/grit_rule.gni")
@@ -17,7 +17,7 @@
 -assert(enable_supervised_users)
  assert(!is_fuchsia, "Fuchsia shouldn't use anything in //chrome")
  
- fuzzer_test("ini_parser_fuzzer") {
+ declare_args() {
 --- src/chrome/renderer/BUILD.gn.orig	2024-09-12 13:46:51.849317526 +0200
 +++ src/chrome/renderer/BUILD.gn	2024-09-12 15:29:17.915843739 +0200
 @@ -18,7 +18,6 @@ import("//testing/libfuzzer/fuzzer_test.
@@ -38,18 +38,18 @@
  
  # //build/config/android/rules.gni imports //tools/grit/grit_rule.gni, which
  # produces a conflict for the "grit" template so we have to only include one.
---- src/chrome/browser/ui/BUILD.gn.orig	2024-09-12 13:46:51.212650894 +0200
-+++ src/chrome/browser/ui/BUILD.gn	2024-09-12 15:32:36.489733448 +0200
-@@ -32,7 +32,6 @@ import("//third_party/protobuf/proto_lib
+--- src/chrome/browser/ui/BUILD.gn.orig	2024-12-08 18:34:54.011339960 +0100
++++ src/chrome/browser/ui/BUILD.gn	2024-12-18 13:09:34.948061857 +0100
+@@ -30,7 +30,6 @@ import("//third_party/protobuf/proto_lib
  import("//ui/base/ui_features.gni")
  import("//ui/views/features.gni")
  
 -assert(enable_supervised_users)
  assert(!is_fuchsia, "Fuchsia shouldn't use anything in //chrome")
  
- generate_histograms_variants_allowlist("webui_name_variants") {
---- src/chrome/browser/extensions/BUILD.gn.orig	2024-09-12 13:46:50.369317607 +0200
-+++ src/chrome/browser/extensions/BUILD.gn	2024-09-12 15:33:39.046452725 +0200
+ generate_allowlist_from_histograms_file("webui_name_variants") {
+--- src/chrome/browser/extensions/BUILD.gn.orig	2024-12-08 18:34:53.171339936 +0100
++++ src/chrome/browser/extensions/BUILD.gn	2024-12-18 13:09:34.948061857 +0100
 @@ -20,7 +20,6 @@ import("//testing/libfuzzer/fuzzer_test.
  import("//third_party/protobuf/proto_library.gni")
  
@@ -57,4 +57,4 @@
 -assert(enable_supervised_users)
  assert(!is_fuchsia, "Fuchsia shouldn't use anything in //chrome")
  
- static_library("extensions") {
+ source_set("extensions") {

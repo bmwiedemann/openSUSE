@@ -1,0 +1,335 @@
+From 6185a6e178fc236aad3502fbc969ddd38aabf020 Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Tue, 6 Aug 2024 00:27:29 +0000
+Subject: [PATCH] [Wayland] Add ToplevelIconManager
+
+This CL is just the boilerplate.  Actual implementation to follow.
+
+R=nickdiego
+
+Change-Id: I135d5366761fcbb132405d782738d6c09f52bdd8
+Bug: 356424077
+Low-Coverage-Reason: TESTS_IN_SEPARATE_CL: This CL adds the boilerplate.  Tests will be added in a followup.
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5752291
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Auto-Submit: Thomas Anderson <thomasanderson@chromium.org>
+Reviewed-by: Nick Yamane <nickdiego@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1337593}
+---
+ third_party/wayland-protocols/BUILD.gn        |  4 ++
+ ui/ozone/platform/wayland/BUILD.gn            |  3 ++
+ .../platform/wayland/common/wayland_object.cc | 50 ++++++++++++-------
+ .../platform/wayland/common/wayland_object.h  |  2 +
+ .../wayland/host/toplevel_icon_manager.cc     | 44 ++++++++++++++++
+ .../wayland/host/toplevel_icon_manager.h      | 29 +++++++++++
+ .../wayland/host/wayland_connection.cc        |  3 ++
+ .../wayland/host/wayland_connection.h         |  6 +++
+ 8 files changed, 123 insertions(+), 18 deletions(-)
+ create mode 100644 ui/ozone/platform/wayland/host/toplevel_icon_manager.cc
+ create mode 100644 ui/ozone/platform/wayland/host/toplevel_icon_manager.h
+
+diff --git a/third_party/wayland-protocols/BUILD.gn b/third_party/wayland-protocols/BUILD.gn
+index 67941c2c90cf5e..0bd73c2f56c380 100644
+--- a/third_party/wayland-protocols/BUILD.gn
++++ b/third_party/wayland-protocols/BUILD.gn
+@@ -207,3 +207,7 @@ wayland_protocol("xdg_shell_protocol") {
+ wayland_protocol("xdg_toplevel_drag_protocol") {
+   sources = [ "src/staging/xdg-toplevel-drag/xdg-toplevel-drag-v1.xml" ]
+ }
++
++wayland_protocol("xdg_toplevel_icon_protocol") {
++  sources = [ "src/staging/xdg-toplevel-icon/xdg-toplevel-icon-v1.xml" ]
++}
+diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
+index 0264365be7c6ce..4ba36222f03906 100644
+--- a/ui/ozone/platform/wayland/BUILD.gn
++++ b/ui/ozone/platform/wayland/BUILD.gn
+@@ -77,6 +77,8 @@ source_set("wayland") {
+     "host/single_pixel_buffer.h",
+     "host/surface_augmenter.cc",
+     "host/surface_augmenter.h",
++    "host/toplevel_icon_manager.cc",
++    "host/toplevel_icon_manager.h",
+     "host/wayland_bubble.cc",
+     "host/wayland_bubble.h",
+     "host/wayland_buffer_backing.cc",
+@@ -291,6 +293,7 @@ source_set("wayland") {
+     "//third_party/wayland-protocols:xdg_foreign",
+     "//third_party/wayland-protocols:xdg_output_protocol",
+     "//third_party/wayland-protocols:xdg_shell_protocol",
++    "//third_party/wayland-protocols:xdg_toplevel_icon_protocol",
+     "//ui/base",
+     "//ui/base:buildflags",
+     "//ui/base:data_exchange",
+diff --git a/ui/ozone/platform/wayland/common/wayland_object.cc b/ui/ozone/platform/wayland/common/wayland_object.cc
+index cab61aa4409ca5..e30367a19d7774 100644
+--- a/ui/ozone/platform/wayland/common/wayland_object.cc
++++ b/ui/ozone/platform/wayland/common/wayland_object.cc
+@@ -44,6 +44,7 @@
+ #include <xdg-foreign-unstable-v2-client-protocol.h>
+ #include <xdg-output-unstable-v1-client-protocol.h>
+ #include <xdg-shell-client-protocol.h>
++#include <xdg-toplevel-icon-v1-client-protocol.h>
+ 
+ #include "base/logging.h"
+ 
+@@ -77,31 +78,36 @@ void delete_output(wl_output* output) {
+ }
+ 
+ void delete_keyboard(wl_keyboard* keyboard) {
+-  if (wl::get_version_of_object(keyboard) >= WL_KEYBOARD_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(keyboard) >=
++      WL_KEYBOARD_RELEASE_SINCE_VERSION) {
+     wl_keyboard_release(keyboard);
+-  else
++  } else {
+     wl_keyboard_destroy(keyboard);
++  }
+ }
+ 
+ void delete_pointer(wl_pointer* pointer) {
+-  if (wl::get_version_of_object(pointer) >= WL_POINTER_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(pointer) >= WL_POINTER_RELEASE_SINCE_VERSION) {
+     wl_pointer_release(pointer);
+-  else
++  } else {
+     wl_pointer_destroy(pointer);
++  }
+ }
+ 
+ void delete_seat(wl_seat* seat) {
+-  if (wl::get_version_of_object(seat) >= WL_SEAT_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(seat) >= WL_SEAT_RELEASE_SINCE_VERSION) {
+     wl_seat_release(seat);
+-  else
++  } else {
+     wl_seat_destroy(seat);
++  }
+ }
+ 
+ void delete_touch(wl_touch* touch) {
+-  if (wl::get_version_of_object(touch) >= WL_TOUCH_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(touch) >= WL_TOUCH_RELEASE_SINCE_VERSION) {
+     wl_touch_release(touch);
+-  else
++  } else {
+     wl_touch_destroy(touch);
++  }
+ }
+ 
+ void delete_zaura_output_manager(zaura_output_manager* manager) {
+@@ -113,39 +119,45 @@ void delete_zaura_output_manager_v2(zaura_output_manager_v2* manager) {
+ }
+ 
+ void delete_zaura_shell(zaura_shell* shell) {
+-  if (wl::get_version_of_object(shell) >= ZAURA_SHELL_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(shell) >= ZAURA_SHELL_RELEASE_SINCE_VERSION) {
+     zaura_shell_release(shell);
+-  else
++  } else {
+     zaura_shell_destroy(shell);
++  }
+ }
+ 
+ void delete_zaura_surface(zaura_surface* surface) {
+-  if (wl::get_version_of_object(surface) >= ZAURA_SURFACE_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(surface) >=
++      ZAURA_SURFACE_RELEASE_SINCE_VERSION) {
+     zaura_surface_release(surface);
+-  else
++  } else {
+     zaura_surface_destroy(surface);
++  }
+ }
+ 
+ void delete_zaura_output(zaura_output* output) {
+-  if (wl::get_version_of_object(output) >= ZAURA_OUTPUT_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(output) >= ZAURA_OUTPUT_RELEASE_SINCE_VERSION) {
+     zaura_output_release(output);
+-  else
++  } else {
+     zaura_output_destroy(output);
++  }
+ }
+ 
+ void delete_zaura_toplevel(zaura_toplevel* toplevel) {
+   if (wl::get_version_of_object(toplevel) >=
+-      ZAURA_TOPLEVEL_RELEASE_SINCE_VERSION)
++      ZAURA_TOPLEVEL_RELEASE_SINCE_VERSION) {
+     zaura_toplevel_release(toplevel);
+-  else
++  } else {
+     zaura_toplevel_destroy(toplevel);
++  }
+ }
+ 
+ void delete_zaura_popup(zaura_popup* popup) {
+-  if (wl::get_version_of_object(popup) >= ZAURA_POPUP_RELEASE_SINCE_VERSION)
++  if (wl::get_version_of_object(popup) >= ZAURA_POPUP_RELEASE_SINCE_VERSION) {
+     zaura_popup_release(popup);
+-  else
++  } else {
+     zaura_popup_destroy(popup);
++  }
+ }
+ 
+ }  // namespace
+@@ -245,6 +257,8 @@ IMPLEMENT_WAYLAND_OBJECT_TRAITS(xdg_popup)
+ IMPLEMENT_WAYLAND_OBJECT_TRAITS(xdg_positioner)
+ IMPLEMENT_WAYLAND_OBJECT_TRAITS(xdg_surface)
+ IMPLEMENT_WAYLAND_OBJECT_TRAITS(xdg_toplevel)
++IMPLEMENT_WAYLAND_OBJECT_TRAITS(xdg_toplevel_icon_manager_v1)
++IMPLEMENT_WAYLAND_OBJECT_TRAITS(xdg_toplevel_icon_v1)
+ IMPLEMENT_WAYLAND_OBJECT_TRAITS(xdg_wm_base)
+ IMPLEMENT_WAYLAND_OBJECT_TRAITS_WITH_DELETER(zaura_output_manager,
+                                              delete_zaura_output_manager)
+diff --git a/ui/ozone/platform/wayland/common/wayland_object.h b/ui/ozone/platform/wayland/common/wayland_object.h
+index ed4902d29edb8f..38213eff64de40 100644
+--- a/ui/ozone/platform/wayland/common/wayland_object.h
++++ b/ui/ozone/platform/wayland/common/wayland_object.h
+@@ -156,6 +156,8 @@ DECLARE_WAYLAND_OBJECT_TRAITS(xdg_popup)
+ DECLARE_WAYLAND_OBJECT_TRAITS(xdg_positioner)
+ DECLARE_WAYLAND_OBJECT_TRAITS(xdg_surface)
+ DECLARE_WAYLAND_OBJECT_TRAITS(xdg_toplevel)
++DECLARE_WAYLAND_OBJECT_TRAITS(xdg_toplevel_icon_manager_v1)
++DECLARE_WAYLAND_OBJECT_TRAITS(xdg_toplevel_icon_v1)
+ DECLARE_WAYLAND_OBJECT_TRAITS(xdg_wm_base)
+ DECLARE_WAYLAND_OBJECT_TRAITS(zaura_output)
+ DECLARE_WAYLAND_OBJECT_TRAITS(zaura_output_manager)
+diff --git a/ui/ozone/platform/wayland/host/toplevel_icon_manager.cc b/ui/ozone/platform/wayland/host/toplevel_icon_manager.cc
+new file mode 100644
+index 00000000000000..44478f56c88a97
+--- /dev/null
++++ b/ui/ozone/platform/wayland/host/toplevel_icon_manager.cc
+@@ -0,0 +1,44 @@
++// Copyright 2024 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "ui/ozone/platform/wayland/host/toplevel_icon_manager.h"
++
++#include <xdg-toplevel-icon-v1-client-protocol.h>
++
++#include "base/check_op.h"
++#include "base/logging.h"
++#include "ui/ozone/platform/wayland/common/wayland_object.h"
++#include "ui/ozone/platform/wayland/host/wayland_connection.h"
++
++namespace ui {
++
++namespace {
++
++constexpr uint32_t kMaxVersion = 1;
++
++}  // namespace
++
++// static
++void ToplevelIconManager::Instantiate(WaylandConnection* connection,
++                                      wl_registry* registry,
++                                      uint32_t name,
++                                      const std::string& interface,
++                                      uint32_t version) {
++  CHECK_EQ(interface, kInterfaceName) << "Expected \"" << kInterfaceName
++                                      << "\" but got \"" << interface << "\"";
++
++  if (connection->toplevel_icon_manager_v1_) {
++    return;
++  }
++
++  auto instance = wl::Bind<::xdg_toplevel_icon_manager_v1>(
++      registry, name, std::min(version, kMaxVersion));
++  if (!instance) {
++    LOG(ERROR) << "Failed to bind " << kInterfaceName;
++    return;
++  }
++  connection->toplevel_icon_manager_v1_ = std::move(instance);
++}
++
++}  // namespace ui
+diff --git a/ui/ozone/platform/wayland/host/toplevel_icon_manager.h b/ui/ozone/platform/wayland/host/toplevel_icon_manager.h
+new file mode 100644
+index 00000000000000..8525dd7cda62db
+--- /dev/null
++++ b/ui/ozone/platform/wayland/host/toplevel_icon_manager.h
+@@ -0,0 +1,29 @@
++// Copyright 2024 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef UI_OZONE_PLATFORM_WAYLAND_HOST_TOPLEVEL_ICON_MANAGER_H_
++#define UI_OZONE_PLATFORM_WAYLAND_HOST_TOPLEVEL_ICON_MANAGER_H_
++
++#include "ui/ozone/platform/wayland/common/wayland_object.h"
++
++namespace ui {
++
++// Sets up the global xdg_toplevel_icon_manager_v1 instance.
++class ToplevelIconManager
++    : public wl::GlobalObjectRegistrar<ToplevelIconManager> {
++ public:
++  static constexpr char kInterfaceName[] = "xdg_toplevel_icon_manager_v1";
++
++  static void Instantiate(WaylandConnection* connection,
++                          wl_registry* registry,
++                          uint32_t name,
++                          const std::string& interface,
++                          uint32_t version);
++
++  ToplevelIconManager() = delete;
++};
++
++}  // namespace ui
++
++#endif  // UI_OZONE_PLATFORM_WAYLAND_HOST_TOPLEVEL_ICON_MANAGER_H_
+diff --git a/ui/ozone/platform/wayland/host/wayland_connection.cc b/ui/ozone/platform/wayland/host/wayland_connection.cc
+index fe695e355e26b8..51ca168a198bda 100644
+--- a/ui/ozone/platform/wayland/host/wayland_connection.cc
++++ b/ui/ozone/platform/wayland/host/wayland_connection.cc
+@@ -38,6 +38,7 @@
+ #include "ui/ozone/platform/wayland/host/proxy/wayland_proxy_impl.h"
+ #include "ui/ozone/platform/wayland/host/single_pixel_buffer.h"
+ #include "ui/ozone/platform/wayland/host/surface_augmenter.h"
++#include "ui/ozone/platform/wayland/host/toplevel_icon_manager.h"
+ #include "ui/ozone/platform/wayland/host/wayland_buffer_factory.h"
+ #include "ui/ozone/platform/wayland/host/wayland_buffer_manager_host.h"
+ #include "ui/ozone/platform/wayland/host/wayland_cursor.h"
+@@ -152,6 +153,8 @@ bool WaylandConnection::Initialize(bool use_threaded_polling) {
+                               &SinglePixelBuffer::Instantiate);
+   RegisterGlobalObjectFactory(SurfaceAugmenter::kInterfaceName,
+                               &SurfaceAugmenter::Instantiate);
++  RegisterGlobalObjectFactory(ToplevelIconManager::kInterfaceName,
++                              &ToplevelIconManager::Instantiate);
+   RegisterGlobalObjectFactory(WaylandZAuraOutputManagerV2::kInterfaceName,
+                               &WaylandZAuraOutputManagerV2::Instantiate);
+   RegisterGlobalObjectFactory(WaylandDataDeviceManager::kInterfaceName,
+diff --git a/ui/ozone/platform/wayland/host/wayland_connection.h b/ui/ozone/platform/wayland/host/wayland_connection.h
+index 54eb0c234a44fc..10fe500d24e33f 100644
+--- a/ui/ozone/platform/wayland/host/wayland_connection.h
++++ b/ui/ozone/platform/wayland/host/wayland_connection.h
+@@ -169,6 +169,10 @@ class WaylandConnection {
+     return fractional_scale_manager_v1_.get();
+   }
+ 
++  xdg_toplevel_icon_manager_v1* toplevel_icon_manager_v1() const {
++    return toplevel_icon_manager_v1_.get();
++  }
++
+   void SetPlatformCursor(wl_cursor* cursor_data, int buffer_scale);
+ 
+   void SetCursorBufferListener(WaylandCursorBufferListener* listener);
+@@ -384,6 +388,7 @@ class WaylandConnection {
+   friend class OverlayPrioritizer;
+   friend class SinglePixelBuffer;
+   friend class SurfaceAugmenter;
++  friend class ToplevelIconManager;
+   friend class WaylandDataDeviceManager;
+   friend class WaylandOutput;
+   friend class WaylandSeat;
+@@ -489,6 +494,7 @@ class WaylandConnection {
+   wl::Object<zcr_extended_drag_v1> extended_drag_v1_;
+   wl::Object<zxdg_output_manager_v1> xdg_output_manager_;
+   wl::Object<wp_fractional_scale_manager_v1> fractional_scale_manager_v1_;
++  wl::Object<xdg_toplevel_icon_manager_v1> toplevel_icon_manager_v1_;
+ 
+   // Manages Wayland windows.
+   WaylandWindowManager window_manager_{this};

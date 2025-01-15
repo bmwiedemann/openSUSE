@@ -1,0 +1,32 @@
+From c502d310d8cb91f1c1098a7287e75114023e57f0 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Thu, 19 Sep 2024 10:55:23 +0000
+Subject: [PATCH] IWYU: missing include for usage of std::once_flag in
+ css_attr_value_tainting.cc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug: 41455655
+Change-Id: I8a8d486c1ee3b2a162accb41faaadaaa0664595f
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5872634
+Reviewed-by: Steinar H Gunderson <sesse@chromium.org>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1357539}
+---
+ third_party/blink/renderer/core/css/css_attr_value_tainting.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/third_party/blink/renderer/core/css/css_attr_value_tainting.cc b/third_party/blink/renderer/core/css/css_attr_value_tainting.cc
+index 42525e92307f8b..a44ffc15be2335 100644
+--- a/third_party/blink/renderer/core/css/css_attr_value_tainting.cc
++++ b/third_party/blink/renderer/core/css/css_attr_value_tainting.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "third_party/blink/renderer/core/css/css_attr_value_tainting.h"
+ 
++#include <mutex>
++
+ #include "base/containers/span.h"
+ #include "base/unguessable_token.h"
+ #include "third_party/blink/renderer/core/css/parser/css_parser_token_stream.h"

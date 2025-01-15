@@ -9,8 +9,8 @@
  #include "base/time/time_override.h"
  #include "build/build_config.h"
  
---- a/base/BUILD.gn	2022-06-30 13:13:20.315537859 +0200
-+++ b/base/BUILD.gn	2022-06-30 13:25:39.947410797 +0200
+--- src/base/BUILD.gn.orig	2024-12-08 18:43:52.881356091 +0100
++++ src/base/BUILD.gn	2024-12-18 13:19:11.049201868 +0100
 @@ -1,3 +1,8 @@
 +import("//build/config/linux/pkg_config.gni")
 +
@@ -20,16 +20,16 @@
  # Copyright 2013 The Chromium Authors
  # Use of this source code is governed by a BSD-style license that can be
  # found in the LICENSE file.
-@@ -826,8 +831,6 @@
-     "third_party/cityhash_v103/src/city_v103.cc",
-     "third_party/cityhash_v103/src/city_v103.h",
-     "third_party/icu/icu_utf.h",
+@@ -809,8 +814,6 @@ component("base") {
+     "task/updateable_sequenced_task_runner.h",
+     "test/scoped_logging_settings.h",
+     "test/spin_wait.h",
 -    "third_party/nspr/prtime.cc",
 -    "third_party/nspr/prtime.h",
-     "third_party/superfasthash/superfasthash.c",
      "thread_annotations.h",
      "threading/hang_watcher.cc",
-@@ -1414,6 +1417,7 @@
+     "threading/hang_watcher.h",
+@@ -1028,6 +1031,7 @@ component("base") {
      "//build/config/compiler:wexit_time_destructors",
      "//build/config/compiler:wglobal_constructors",
      "//electron/build/config:mas_build",

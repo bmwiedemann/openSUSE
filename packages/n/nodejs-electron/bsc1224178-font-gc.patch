@@ -1,0 +1,422 @@
+Example stack trace for this crash:
+#0  0x000055f451cdf761 in partition_alloc::PartitionRoot::FreeNoHooksImmediate(void*, partition_alloc::internal::SlotSpanMetadata<(partition_alloc::internal::MetadataKind)1>*, unsigned long)::{lambda()#1}::operator()() const (__closure=<optimized out>, 
+    __closure=<optimized out>) at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1531
+#1  partition_alloc::PartitionRoot::FreeNoHooksImmediate (this=<optimized out>, object=<optimized out>, slot_span=<optimized out>, slot_start=<optimized out>, this=<optimized out>, object=<optimized out>, slot_span=<optimized out>, slot_start=<optimized out>)
+    at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1531
+#2  partition_alloc::PartitionRoot::FreeInline<(partition_alloc::internal::FreeFlags)2> (this=<optimized out>, object=<optimized out>, this=<optimized out>, object=<optimized out>) at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1513
+#3  partition_alloc::PartitionRoot::FreeInlineInUnknownRoot<(partition_alloc::internal::FreeFlags)2> (object=0x316400f16770) at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1432
+#4  allocator_shim::internal::PartitionFreeInternal<(partition_alloc::internal::FreeFlags)2> (object=0x316400f16770, context=0x0) at ../../base/allocator/partition_allocator/src/partition_alloc/shim/allocator_shim_default_dispatch_to_partition_alloc.cc:407
+#5  allocator_shim::internal::PartitionFree (object=0x316400f16770, context=0x0) at ../../base/allocator/partition_allocator/src/partition_alloc/shim/allocator_shim_default_dispatch_to_partition_alloc.cc:411
+#6  0x000055f44ef26567 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign (this=0x316401a361c8, __str="/usr/share/fonts/truetype/NimbusSans-Regular.otf") at /usr/include/c++/14/bits/basic_string.tcc:289
+#7  0x000055f4563f3d34 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::assign (this=<optimized out>, __str=...) at /usr/include/c++/14/bits/basic_string.h:1619
+#8  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::operator= (this=<optimized out>, __str=...) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:141021183
+#9  blink::FontFaceCreationParams::operator= () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:141021183
+#10 blink::FontCacheKey::operator=(blink::FontCacheKey const&) [clone .isra.0] () at ../../third_party/blink/renderer/platform/fonts/font_cache_key.h:55
+#11 0x000055f4564c44d9 in WTF::HashMapTranslator<WTF::HashTraits<blink::FontCacheKey>, WTF::HashMapValueTraits<WTF::HashTraits<blink::FontCacheKey>, WTF::HashTraits<cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer> > > >::Store<WTF::KeyValuePair<blink::FontCacheKey, cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer> >, blink::FontCacheKey&, blink::FontPlatformData const*&> () at ../../third_party/blink/renderer/platform/wtf/hash_map.h:340
+#12 WTF::HashTable<blink::FontCacheKey, WTF::KeyValuePair<blink::FontCacheKey, cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer> >, WTF::KeyValuePairExtractor, WTF::HashMapValueTraits<WTF::HashTraits<blink::FontCacheKey>, WTF::HashTraits<cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer> > >, WTF::HashTraits<blink::FontCacheKey>, blink::HeapAllocator>::insert<WTF::HashMapTranslator<WTF::HashTraits<blink::FontCacheKey>, WTF::HashMapValueTraits<WTF::HashTraits<blink::FontCacheKey>, WTF::HashTraits<cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer> > > >, blink::FontCacheKey&, blink::FontPlatformData const*&>(blink::FontCacheKey&, blink::FontPlatformData const*&) [clone .isra.0] () at ../../third_party/blink/renderer/platform/wtf/hash_table.h:1291
+#13 0x000055f4543111b1 in WTF::HashMap<blink::FontCacheKey, cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer>, WTF::HashTraits<blink::FontCacheKey>, WTF::HashTraits<cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer> >, blink::HeapAllocator>::InlineAdd<blink::FontCacheKey&, blink::FontPlatformData const*&> () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:141870345
+#14 WTF::HashMap<blink::FontCacheKey, cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer>, WTF::HashTraits<blink::FontCacheKey>, WTF::HashTraits<cppgc::internal::BasicMember<blink::FontPlatformData const, cppgc::internal::WeakMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer> >, blink::HeapAllocator>::insert<blink::FontCacheKey&, blink::FontPlatformData const*&> () at ../../third_party/blink/renderer/platform/wtf/hash_map.h:475
+#15 blink::FontPlatformDataCache::GetOrCreateFontPlatformData (this=this@entry=0x316400141880, font_cache=font_cache@entry=0x316400141850, font_description=..., creation_params=..., alternate_font_name=alternate_font_name@entry=0)
+    at ../../third_party/blink/renderer/platform/fonts/font_platform_data_cache.cc:68
+#16 0x000055f454311a0a in blink::FontCache::GetFontPlatformData (this=0x316400141850, font_description=..., creation_params=..., alternate_font_name=0) at ../../third_party/blink/renderer/platform/fonts/font_cache.cc:164
+#17 0x000055f4564bbc7d in blink::FontCache::PlatformFallbackFontForCharacter () at ../../third_party/blink/renderer/platform/fonts/linux/font_cache_linux.cc:143
+#18 0x000055f4564bcc2b in blink::FontCache::FallbackFontForCharacter(blink::FontDescription const&, int, blink::SimpleFontData const*, blink::FontFallbackPriority) [clone .isra.0] () at ../../third_party/blink/renderer/platform/fonts/font_cache.cc:251
+#19 0x000055f45443653f in blink::FontFallbackIterator::UniqueSystemFontForHintList () at ../../third_party/blink/renderer/platform/fonts/font_fallback_iterator.cc:303
+#20 blink::FontFallbackIterator::Next (this=0x7ffefa904bf0, hint_list=...) at ../../third_party/blink/renderer/platform/fonts/font_fallback_iterator.cc:152
+#21 0x000055f45431a4b6 in blink::HarfBuzzShaper::ShapeSegment (this=<optimized out>, range_data=<optimized out>, segment=..., result=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158192637
+#22 0x000055f453953f86 in blink::HarfBuzzShaper::Shape () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:145662151
+#23 Reshape (this=0x7ffefa9050d0, start_item=..., font=..., start_offset=<optimized out>, end_offset=end_offset@entry=43) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:145662155
+#24 0x000055f4539542f0 in ShapeWithoutCache (this=this@entry=0x7ffefa9050d0, start_item=..., font=..., end_offset=end_offset@entry=43) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:145662155
+#25 0x000055f4539b5ab9 in operator() () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:147940603
+#26 Shape () at ../../third_party/blink/renderer/core/layout/inline/inline_node.cc:177
+#27 blink::InlineNode::ShapeText (this=this@entry=0x7ffefa9057a8, data=data@entry=0x316403e7e958, previous_text=previous_text@entry=0x0, previous_items=previous_items@entry=0x0, override_font=override_font@entry=0x0)
+    at ../../third_party/blink/renderer/core/layout/inline/inline_node.cc:1512
+#28 0x000055f4539b9692 in blink::InlineNode::ShapeTextIncludingFirstLine () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:147941159
+#29 blink::InlineNode::PrepareLayout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:145662744
+#30 blink::InlineNode::PrepareLayoutIfNeeded (this=<optimized out>) at ../../third_party/blink/renderer/core/layout/inline/inline_node.cc:598
+#31 0x000055f45400a06d in blink::InlineNode::EnsureData () at ../../third_party/blink/renderer/core/layout/inline/inline_node.cc:978
+#32 blink::InlineNode::IsBlockLevel () at ../../third_party/blink/renderer/core/layout/inline/inline_node.h:102
+#33 blink::BlockNode::FirstChild (this=this@entry=0x7ffefa905860) at ../../third_party/blink/renderer/core/layout/block_node.cc:1121
+#34 0x000055f45400a200 in blink::BlockNode::IsInlineFormattingContextRoot (this=0x7ffefa905860, first_child_out=0x7ffefa905830) at ../../third_party/blink/renderer/core/layout/block_node.cc:1466
+#35 0x000055f45423975b in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa905860) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:546
+#36 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#37 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#38 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#39 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#40 0x000055f454237e4f in LayoutBlockChild () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324341
+#41 LayoutInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:129
+#42 LayoutInflow () at gen/third_party/blink/public/mojom/frame/frame.mojom.cc:44270740
+#43 blink::BlockLayoutAlgorithm::HandleInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:2139
+#44 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa9063b0, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:993
+#45 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa9063b0) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#46 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#47 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#48 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#49 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#50 0x000055f4562235f2 in blink::FlexLayoutAlgorithm::PlaceFlexItems(blink::HeapVector<blink::NGFlexLine, 0u>*, blink::HeapVector<cppgc::internal::BasicMember<blink::LayoutBox, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer>, 0u>*, bool) [clone .constprop.0] () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1253
+#51 0x000055f45402e6c6 in blink::FlexLayoutAlgorithm::LayoutInternal () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1043
+#52 blink::FlexLayoutAlgorithm::Layout (this=this@entry=0x7ffefa9070e0) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883768
+#53 0x000055f454032076 in operator()<blink::FlexLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#54 CreateAlgorithmAndRun<blink::FlexLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#55 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#56 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#57 0x000055f4562235f2 in blink::FlexLayoutAlgorithm::PlaceFlexItems(blink::HeapVector<blink::NGFlexLine, 0u>*, blink::HeapVector<cppgc::internal::BasicMember<blink::LayoutBox, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer>, 0u>*, bool) [clone .constprop.0] () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1253
+#58 0x000055f45402e6c6 in blink::FlexLayoutAlgorithm::LayoutInternal () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1043
+#59 blink::FlexLayoutAlgorithm::Layout (this=this@entry=0x7ffefa9081a0) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883768
+#60 0x000055f454032076 in operator()<blink::FlexLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#61 CreateAlgorithmAndRun<blink::FlexLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#62 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#63 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#64 0x000055f4562235f2 in blink::FlexLayoutAlgorithm::PlaceFlexItems(blink::HeapVector<blink::NGFlexLine, 0u>*, blink::HeapVector<cppgc::internal::BasicMember<blink::LayoutBox, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer>, 0u>*, bool) [clone .constprop.0] () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1253
+#65 0x000055f45402e6c6 in blink::FlexLayoutAlgorithm::LayoutInternal () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1043
+#66 blink::FlexLayoutAlgorithm::Layout (this=this@entry=0x7ffefa909260) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883768
+#67 0x000055f454032076 in operator()<blink::FlexLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#68 CreateAlgorithmAndRun<blink::FlexLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#69 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#70 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#71 0x000055f454230b9a in LayoutBlockChild () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:114
+#72 blink::BlockLayoutAlgorithm::LayoutNewFormattingContext (this=this@entry=0x7ffefa90a330, child=..., child_break_token=child_break_token@entry=0x0, child_data=..., origin_offset=..., abort_if_cleared=false, out_child_bfc_offset=0x7ffefa90a19c, 
+    out_resolved_margins=0x7ffefa90a1d0) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:1953
+#73 0x000055f454237063 in blink::BlockLayoutAlgorithm::HandleNewFormattingContext () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324366
+#74 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90a330, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:988
+#75 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90a330) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#76 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#77 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#78 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#79 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#80 0x000055f4540d6105 in blink::OutOfFlowLayoutPart::GenerateFragment () at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:2546
+#81 blink::OutOfFlowLayoutPart::Layout (this=this@entry=0x7ffefa90b1b0, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false)
+    at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917333
+#82 0x000055f4540e5174 in blink::OutOfFlowLayoutPart::LayoutOOFNode (this=this@entry=0x7ffefa90b1b0, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, 
+    is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917453
+#83 0x000055f4540e5b85 in blink::OutOfFlowLayoutPart::LayoutCandidates (this=this@entry=0x7ffefa90b1b0, candidates=candidates@entry=0x7ffefa90b110) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:1111
+#84 0x000055f4540f2b9e in blink::OutOfFlowLayoutPart::Run (this=0x7ffefa90b1b0) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:523
+#85 0x000055f45423444d in blink::BoxFragmentBuilder::HandleOofsAndSpecialDescendants (this=this@entry=0x7ffefa90b550) at ../../third_party/blink/renderer/core/layout/box_fragment_builder.cc:547
+#86 0x000055f4542367d0 in blink::BlockLayoutAlgorithm::FinishLayout () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:1357
+#87 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90b540, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:156517574
+#88 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90b540) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#89 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#90 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#91 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#92 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#93 0x000055f454230b9a in LayoutBlockChild () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:114
+#94 blink::BlockLayoutAlgorithm::LayoutNewFormattingContext (this=this@entry=0x7ffefa90c280, child=..., child_break_token=child_break_token@entry=0x0, child_data=..., origin_offset=..., abort_if_cleared=false, out_child_bfc_offset=0x7ffefa90c0ec, 
+    out_resolved_margins=0x7ffefa90c120) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:1953
+#95 0x000055f454237063 in blink::BlockLayoutAlgorithm::HandleNewFormattingContext () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324366
+#96 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90c280, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:988
+#97 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90c280) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#98 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#99 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#100 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#101 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#102 0x000055f454230b9a in LayoutBlockChild () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:114
+#103 blink::BlockLayoutAlgorithm::LayoutNewFormattingContext (this=this@entry=0x7ffefa90cfc0, child=..., child_break_token=child_break_token@entry=0x0, child_data=..., origin_offset=..., abort_if_cleared=false, out_child_bfc_offset=0x7ffefa90ce2c, 
+    out_resolved_margins=0x7ffefa90ce60) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:1953
+#104 0x000055f454237063 in blink::BlockLayoutAlgorithm::HandleNewFormattingContext () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324366
+#105 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90cfc0, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:988
+#106 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90cfc0) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#107 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#108 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#109 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#110 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#111 0x000055f454237e4f in LayoutBlockChild () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324341
+#112 LayoutInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:129
+#113 LayoutInflow () at gen/third_party/blink/public/mojom/frame/frame.mojom.cc:44270740
+#114 blink::BlockLayoutAlgorithm::HandleInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:2139
+#115 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90db10, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:993
+#116 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90db10) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#117 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#118 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#119 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#120 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#121 0x000055f454237e4f in LayoutBlockChild () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324341
+#122 LayoutInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:129
+#123 LayoutInflow () at gen/third_party/blink/public/mojom/frame/frame.mojom.cc:44270740
+#124 blink::BlockLayoutAlgorithm::HandleInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:2139
+#125 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90e660, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:993
+#126 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90e660) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#127 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#128 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#129 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#130 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#131 0x000055f454237e4f in LayoutBlockChild () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324341
+#132 LayoutInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:129
+#133 LayoutInflow () at gen/third_party/blink/public/mojom/frame/frame.mojom.cc:44270740
+#134 blink::BlockLayoutAlgorithm::HandleInflow () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:2139
+#135 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90f1b0, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:993
+#136 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa90f1b0) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#137 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#138 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#139 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#140 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#141 0x000055f4562235f2 in blink::FlexLayoutAlgorithm::PlaceFlexItems(blink::HeapVector<blink::NGFlexLine, 0u>*, blink::HeapVector<cppgc::internal::BasicMember<blink::LayoutBox, cppgc::internal::StrongMemberTag, cppgc::internal::DijkstraWriteBarrierPolicy, cppgc::internal::DisabledCheckingPolicy, cppgc::internal::CompressedPointer>, 0u>*, bool) [clone .constprop.0] () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1253
+#142 0x000055f45402e6c6 in blink::FlexLayoutAlgorithm::LayoutInternal () at ../../third_party/blink/renderer/core/layout/flex/flex_layout_algorithm.cc:1043
+#143 blink::FlexLayoutAlgorithm::Layout (this=this@entry=0x7ffefa90fee0) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883768
+#144 0x000055f454032076 in operator()<blink::FlexLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#145 CreateAlgorithmAndRun<blink::FlexLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#146 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#147 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#148 0x000055f454230b9a in LayoutBlockChild () at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:114
+#149 blink::BlockLayoutAlgorithm::LayoutNewFormattingContext (this=this@entry=0x7ffefa910fb0, child=..., child_break_token=child_break_token@entry=0x0, child_data=..., origin_offset=..., abort_if_cleared=false, out_child_bfc_offset=0x7ffefa910e1c, 
+    out_resolved_margins=0x7ffefa910e50) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:1953
+#150 0x000055f454237063 in blink::BlockLayoutAlgorithm::HandleNewFormattingContext () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:142324366
+#151 blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa910fb0, inline_child_layout_context=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:988
+#152 0x000055f4542397a2 in blink::BlockLayoutAlgorithm::Layout (this=0x7ffefa910fb0) at ../../third_party/blink/renderer/core/layout/block_layout_algorithm.cc:549
+#153 0x000055f45400cb43 in operator()<blink::BlockLayoutAlgorithm> () at ../../third_party/blink/renderer/core/layout/block_node.cc:214
+#154 CreateAlgorithmAndRun<blink::BlockLayoutAlgorithm, blink::(anonymous namespace)::LayoutWithAlgorithm(const blink::LayoutAlgorithmParams&)::<lambda(Algorithm*)> >(const blink::LayoutAlgorithmParams &, const struct {...} &) (params=..., callback=...)
+    at ../../third_party/blink/renderer/core/layout/block_node.cc:120
+#155 0x000055f45401ae3e in LayoutWithAlgorithm () at ../../third_party/blink/renderer/core/layout/block_node.cc:212
+#156 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/layout/block_node.cc:523
+#157 0x000055f4540d6105 in blink::OutOfFlowLayoutPart::GenerateFragment () at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:2546
+#158 blink::OutOfFlowLayoutPart::Layout (this=this@entry=0x7ffefa911e30, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false)
+    at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917333
+#159 0x000055f4540e5174 in blink::OutOfFlowLayoutPart::LayoutOOFNode (this=this@entry=0x7ffefa911e30, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, 
+    is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917453
+#160 0x000055f4540e5b85 in blink::OutOfFlowLayoutPart::LayoutCandidates (this=this@entry=0x7ffefa911e30, candidates=candidates@entry=0x7ffefa911d90) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:1111
+#161 0x000055f4540f2b9e in blink::OutOfFlowLayoutPart::Run (this=0x7ffefa911e30) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:523
+#162 0x000055f45423444d in blink::BoxFragmentBuilder::HandleOofsAndSpecialDescendants (this=0x7ffefa9121e0) at ../../third_party/blink/renderer/core/layout/box_fragment_builder.cc:547
+#163 0x000055f4540f3540 in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:302
+#164 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#165 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#166 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#167 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#168 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#169 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#170 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#171 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#172 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#173 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#174 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#175 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#176 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#177 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#178 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#179 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#180 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#181 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#182 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#183 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#184 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#185 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#186 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#187 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#188 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#189 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#190 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#191 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#192 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#193 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#194 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#195 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#196 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#197 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#198 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#199 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#200 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#201 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#202 0x000055f4540d6105 in blink::OutOfFlowLayoutPart::GenerateFragment () at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:2546
+#203 blink::OutOfFlowLayoutPart::Layout (this=this@entry=0x7ffefa9154f0, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false)
+    at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917333
+#204 0x000055f4540e5174 in blink::OutOfFlowLayoutPart::LayoutOOFNode (this=this@entry=0x7ffefa9154f0, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, 
+    is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917453
+#205 0x000055f4540e5b85 in blink::OutOfFlowLayoutPart::LayoutCandidates (this=this@entry=0x7ffefa9154f0, candidates=candidates@entry=0x7ffefa915450) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:1111
+#206 0x000055f4540f2b9e in blink::OutOfFlowLayoutPart::Run (this=0x7ffefa9154f0) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:523
+#207 0x000055f45423444d in blink::BoxFragmentBuilder::HandleOofsAndSpecialDescendants (this=0x7ffefa9158a0) at ../../third_party/blink/renderer/core/layout/box_fragment_builder.cc:547
+#208 0x000055f4540f3540 in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:302
+#209 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#210 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#211 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#212 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#213 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#214 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#215 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#216 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#217 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#218 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#219 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#220 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#221 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#222 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#223 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#224 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#225 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#226 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#227 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#228 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#229 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#230 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#231 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#232 0x000055f4540d6105 in blink::OutOfFlowLayoutPart::GenerateFragment () at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:2546
+#233 blink::OutOfFlowLayoutPart::Layout (this=this@entry=0x7ffefa9179b0, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false)
+    at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917333
+#234 0x000055f4540e5174 in blink::OutOfFlowLayoutPart::LayoutOOFNode (this=this@entry=0x7ffefa9179b0, oof_node_to_layout=..., fragmentainer_constraint_space=fragmentainer_constraint_space@entry=0x0, 
+    is_last_fragmentainer_so_far=is_last_fragmentainer_so_far@entry=false) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:158917453
+#235 0x000055f4540e5b85 in blink::OutOfFlowLayoutPart::LayoutCandidates (this=this@entry=0x7ffefa9179b0, candidates=candidates@entry=0x7ffefa917910) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:1111
+#236 0x000055f4540f2b9e in blink::OutOfFlowLayoutPart::Run (this=0x7ffefa9179b0) at ../../third_party/blink/renderer/core/layout/out_of_flow_layout_part.cc:523
+#237 0x000055f45423444d in blink::BoxFragmentBuilder::HandleOofsAndSpecialDescendants (this=0x7ffefa917d60) at ../../third_party/blink/renderer/core/layout/box_fragment_builder.cc:547
+#238 0x000055f4540f3540 in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:302
+#239 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#240 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#241 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#242 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#243 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#244 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#245 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#246 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#247 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#248 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#249 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#250 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#251 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#252 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#253 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#254 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#255 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#256 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#257 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#258 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#259 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#260 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#261 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#262 0x000055f4540f303c in blink::BlockNode::SimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:653
+#263 blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/layout/simplified_layout_algorithm.cc:237
+#264 0x000055f45401a28a in blink::SimplifiedLayoutAlgorithm::Layout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:157234584
+#265 blink::BlockNode::RunSimplifiedLayout () at ../../third_party/blink/renderer/core/layout/block_node.cc:1705
+#266 blink::BlockNode::Layout (this=<optimized out>, constraint_space=..., break_token=<optimized out>, early_break=<optimized out>, column_spanner_path=<optimized out>) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:146883682
+#267 0x000055f4537e965e in blink::LayoutBox::LayoutSubtreeRoot () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:143013582
+#268 blink::LayoutBox::LayoutSubtreeRoot () at gen/third_party/blink/renderer/core/html_names.cc:85762220
+#269 blink::LocalFrameView::LayoutFromRootObject () at ../../third_party/blink/renderer/core/frame/local_frame_view.cc:666
+#270 blink::LocalFrameView::LayoutFromRootObject () at gen/third_party/blink/renderer/core/html_names.cc:85758991
+#271 blink::LocalFrameView::PerformLayout (this=this@entry=0x316400158c00) at ../../third_party/blink/renderer/core/frame/local_frame_view.cc:761
+#272 0x000055f4537eb0bb in blink::LocalFrameView::UpdateLayout () at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:143013984
+#273 blink::LocalFrameView::UpdateStyleAndLayoutInternal (this=this@entry=0x316400158c00) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:143013762
+#274 0x000055f4537ecb9b in blink::LocalFrameView::UpdateStyleAndLayout (this=0x316400158c00) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:143671655
+#275 0x000055f4544b9cd2 in blink::Document::UpdateStyleAndLayout (this=0x3164001e2530, reason=26) at ../../third_party/blink/renderer/core/dom/document.cc:2784
+#276 0x000055f455fc4492 in blink::FrameSelection::ComputeAbsoluteBounds(gfx::Rect&, gfx::Rect&) const [clone .constprop.0] () at ../../third_party/blink/renderer/core/editing/frame_selection.cc:656
+#277 0x000055f453827206 in blink::WebFrameWidgetImpl::CalculateSelectionBounds (this=this@entry=0x316400156138, anchor_root_frame=..., focus_root_frame=..., bounding_box_in_root_frame=bounding_box_in_root_frame@entry=0x7ffefa91a820)
+    at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:132558908
+#278 0x000055f4538296b2 in blink::WebFrameWidgetImpl::GetSelectionBoundsInWindow (this=0x316400156138, focus=0x4140017b980, anchor=0x4140017b990, bounding_box=0x4140017b9a0, focus_dir=0x7ffefa91a8d0, anchor_dir=0x7ffefa91a8c8, is_anchor_first=0x7ffefa91a8c7)
+    at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:78747162
+#279 0x000055f454433e25 in blink::WidgetBase::UpdateSelectionBounds (this=this@entry=0x4140017b800) at ../../third_party/blink/renderer/platform/widget/widget_base.cc:1468
+#280 0x000055f454433f8f in blink::WidgetBase::WillBeginMainFrame (this=0x4140017b800) at ../../third_party/blink/renderer/platform/widget/widget_base.cc:967
+#281 0x000055f4529a093c in cc::LayerTreeHost::WillBeginMainFrame (this=0x414000ed500) at ../../cc/trees/layer_tree_host.cc:354
+#282 0x000055f452a2f399 in cc::ProxyMain::BeginMainFrame (this=<optimized out>, begin_main_frame_state=std::unique_ptr<cc::BeginMainFrameAndCommitState> = {...}) at ../../base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h:1002
+#283 0x000055f452a8b781 in base::internal::DecayedFunctorTraits<void (cc::ProxyMain::*)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), base::WeakPtr<cc::ProxyMain>&&, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >&&>::Invoke<void (cc::ProxyMain::*)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), base::WeakPtr<cc::ProxyMain> const&, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> > > (method=<optimized out>, receiver_ptr=...) at /usr/include/c++/14/bits/unique_ptr.h:191
+#284 base::internal::InvokeHelper<true, base::internal::FunctorTraits<void (cc::ProxyMain::*&&)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), base::WeakPtr<cc::ProxyMain>&&, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >&&>, void, 0ul, 1ul>::MakeItSo<void (cc::ProxyMain::*)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), std::tuple<base::WeakPtr<cc::ProxyMain>, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> > >>(void (cc::ProxyMain::*&&)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), std::tuple<base::WeakPtr<cc::ProxyMain>, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> > >&&) (
+    functor=@0x41400589d30: (void (cc::ProxyMain::*)(cc::ProxyMain * const, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >)) 0x55f452a2ef80 <cc::ProxyMain::BeginMainFrame(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >)>, bound=...) at ../../base/functional/bind_internal.h:954
+#285 base::internal::Invoker<base::internal::FunctorTraits<void (cc::ProxyMain::*&&)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), base::WeakPtr<cc::ProxyMain>&&, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >&&>, base::internal::BindState<true, true, false, void (cc::ProxyMain::*)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), base::WeakPtr<cc::ProxyMain>, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> > >, void ()>::RunImpl<void (cc::ProxyMain::*)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), std::tuple<base::WeakPtr<cc::ProxyMain>, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> > >, 0ul, 1ul>(void (cc::ProxyMain::*&&)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), std::tuple<base::WeakPtr<cc::ProxyMain>, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> > >&&, std::integer_sequence<unsigned long, 0ul, 1ul>) (
+    functor=@0x41400589d30: (void (cc::ProxyMain::*)(cc::ProxyMain * const, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >)) 0x55f452a2ef80 <cc::ProxyMain::BeginMainFrame(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >)>, bound=...) at ../../base/functional/bind_internal.h:1067
+#286 base::internal::Invoker<base::internal::FunctorTraits<void (cc::ProxyMain::*&&)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), base::WeakPtr<cc::ProxyMain>&&, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >&&>, base::internal::BindState<true, true, false, void (cc::ProxyMain::*)(std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> >), base::WeakPtr<cc::ProxyMain>, std::unique_ptr<cc::BeginMainFrameAndCommitState, std::default_delete<cc::BeginMainFrameAndCommitState> > >, void ()>::RunOnce(base::internal::BindStateBase*) (base=0x41400589d10) at ../../base/functional/bind_internal.h:980
+#287 0x000055f4565b518d in base::OnceCallback<void ()>::Run() && (this=0x41400018678) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:200122192
+#288 base::TaskAnnotator::RunTaskImpl(base::PendingTask&) [clone .isra.0] (pending_task=..., this=<optimized out>) at ../../base/task/common/task_annotator.cc:203
+#289 0x000055f451ca3130 in base::TaskAnnotator::RunTask<base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWorkImpl(base::LazyNow*)::<lambda(perfetto::EventContext&)> > (this=0x4140004c200, event_name=..., pending_task=...)
+    at ../../base/task/common/task_annotator.h:90
+#290 base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWorkImpl (this=<optimized out>, continuation_lazy_now=0x7ffefa91af40) at ../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:470
+#291 base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::DoWork (this=<optimized out>) at ../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:332
+#292 0x000055f451ca5027 in base::MessagePumpDefault::Run (this=0x414000040c0, delegate=0x4140004c0f8) at ../../base/message_loop/message_pump_default.cc:40
+#293 0x000055f451ca14e9 in base::sequence_manager::internal::ThreadControllerWithMessagePumpImpl::Run (this=0x4140004c000, application_tasks_allowed=true, timeout=...) at ../../base/task/sequence_manager/thread_controller_with_message_pump_impl.cc:640
+#294 0x000055f451ca18b2 in base::RunLoop::Run (this=0x7ffefa91b550, location=...) at ../../base/run_loop.cc:134
+#295 base::RunLoop::Run (this=<optimized out>, location=...) at ../../base/run_loop.cc:106
+#296 0x000055f4535391b5 in content::RendererMain (parameters=...) at ../../content/renderer/renderer_main.cc:361
+#297 0x000055f44f2d48af in content::RunZygote (delegate=delegate@entry=0x7ffefa91c040) at /usr/include/c++/14/bits/unique_ptr.h:191
+#298 0x000055f44f2d8b18 in content::RunOtherNamedProcessTypeMain (process_type="zygote", main_function_params=..., delegate=0x7ffefa91c040) at ../../content/app/content_main_runner_impl.cc:807
+#299 content::ContentMainRunnerImpl::Run (this=<optimized out>) at ../../content/app/content_main_runner_impl.cc:1167
+#300 0x000055f44eeb846c in content::RunContentProcess (params=..., content_main_runner=0x4100006d880) at ../../content/app/content_main.cc:354
+#301 content::ContentMain (params=...) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:166189489
+#302 main (argc=argc@entry=2, argv=argv@entry=0x7ffefa91c5d8) at ../../third_party/blink/renderer/core/frame/local_dom_window.cc:166189474
+#303 0x00007ffa48c2a2ae in __libc_start_call_main (main=main@entry=0x55f44eeb80a0 <main(int, char**)>, argc=argc@entry=2, argv=argv@entry=0x7ffefa91c5d8) at ../sysdeps/nptl/libc_start_call_main.h:58
+#304 0x00007ffa48c2a379 in __libc_start_main_impl (main=0x55f44eeb80a0 <main(int, char**)>, argc=2, argv=0x7ffefa91c5d8, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7ffefa91c5c8) at ../csu/libc-start.c:360
+#305 0x000055f44eee5b45 in _start () at ../sysdeps/x86_64/start.S:115
+
+From 3c55b5cb524b2f304a623bd0ddd8321f8fa2e37e Mon Sep 17 00:00:00 2001
+From: Martin Negyokru <negyokru@inf.u-szeged.hu>
+Date: Thu, 19 Sep 2024 16:55:22 +0200
+Subject: Fix UAF in FontCache
+
+Fixes a rare crash related to font caching.
+Upstream issue: https://issues.chromium.org/issues/342778288
+Its been only fixed for ASAN builds for some reason.
+
+This change backports the fix: https://crrev.com/c/5629253
+and extends the ASAN guards with IS_QTWEBENGINE.
+
+Change-Id: I0fb7348ef97882fed199d1432b3a2543804e8de5
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/592190
+Reviewed-by: Peter Varga <pvarga@inf.u-szeged.hu>
+---
+ .../renderer/platform/fonts/font_face_creation_params.h      | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/chromium/third_party/blink/renderer/platform/fonts/font_face_creation_params.h b/chromium/third_party/blink/renderer/platform/fonts/font_face_creation_params.h
+index 8f0aa2f1c14..9d4c07637fc 100644
+--- a/third_party/blink/renderer/platform/fonts/font_face_creation_params.h
++++ b/third_party/blink/renderer/platform/fonts/font_face_creation_params.h
+@@ -38,6 +38,8 @@
+ #include "third_party/blink/renderer/platform/wtf/text/case_folding_hash.h"
+ #include "third_party/blink/renderer/platform/wtf/text/string_hasher.h"
+ 
++#include <optional>
++
+ namespace blink {
+ 
+ enum FontFaceCreationType {
+@@ -79,7 +81,7 @@ class FontFaceCreationParams {
+   }
+   const std::string& Filename() const {
+     DCHECK_EQ(creation_type_, kCreateFontByFciIdAndTtcIndex);
+-#if defined(ADDRESS_SANITIZER)
++#if 1
+     DCHECK(filename_.has_value());
+     return *filename_;
+ #else
+@@ -126,7 +128,7 @@ class FontFaceCreationParams {
+   AtomicString family_;
+ 
+   void SetFilename(std::string& filename) {
+-#if defined(ADDRESS_SANITIZER)
++#if 1
+     *filename_ = filename;
+ #else
+     filename_ = filename;
+@@ -134,7 +136,7 @@ class FontFaceCreationParams {
+   }
+ 
+   bool FilenameEqual(const FontFaceCreationParams& other) const {
+-#if defined(ADDRESS_SANITIZER)
++#if 1
+     if (!filename_.has_value() || !other.filename_.has_value()) {
+       return filename_.has_value() == other.filename_.has_value();
+     }
+@@ -145,14 +147,14 @@ class FontFaceCreationParams {
+   }
+ 
+   bool HasFilename() const {
+-#if defined(ADDRESS_SANITIZER)
++#if 1
+     return filename_.has_value();
+ #else
+     return true;
+ #endif
+   }
+ 
+-#if defined(ADDRESS_SANITIZER)
++#if 1
+   // We put the `std::string` behind an optional as ASAN counter checks require
+   // that we properly call constructors and destructors for all strings. This is
+   // not the case when `FontFaceCreationParams` is used in `WTF::HashMap` as key
+-- 
+cgit v1.2.3
+

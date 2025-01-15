@@ -13,10 +13,10 @@ Do not try to build a private copy of a DLL which is already available on every 
          binary = "$root_out_dir/libvulkan.so.1"
  
          if (current_cpu == "x86") {
---- a/third_party/vulkan-deps/vulkan-loader/src/BUILD.gn
-+++ b/third_party/vulkan-deps/vulkan-loader/src/BUILD.gn
-@@ -99,7 +99,18 @@
-     library_type = "static_library"
+--- src/third_party/vulkan-loader/src/BUILD.gn.orig	2024-12-08 18:37:20.394677662 +0100
++++ src/third_party/vulkan-loader/src/BUILD.gn	2024-12-18 13:15:54.021404544 +0100
+@@ -144,7 +144,18 @@ if (!is_android) {
+     }
    }
  
 -  target(library_type, "libvulkan") {
@@ -35,4 +35,3 @@ Do not try to build a private copy of a DLL which is already available on every 
      sources = [
        "loader/adapters.h",
        "loader/allocation.c",
-

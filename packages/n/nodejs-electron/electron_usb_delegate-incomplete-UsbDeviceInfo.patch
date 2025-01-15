@@ -1,0 +1,63 @@
+In file included from ../../base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr_backup_ref_impl.h:13,
+                 from ../../base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h:50,
+                 from ../../base/memory/raw_ptr.h:11,
+                 from ../../base/memory/weak_ptr.h:82,
+                 from ../../electron/shell/browser/usb/electron_usb_delegate.h:14,
+                 from ../../electron/shell/browser/usb/electron_usb_delegate.cc:5:
+../../base/allocator/partition_allocator/src/partition_alloc/partition_address_space.h:279:3: warning: multi-line comment [-Wcomment]
+  279 |   //       \
+      |   ^
+../../base/allocator/partition_allocator/src/partition_alloc/partition_address_space.h:281:3: warning: multi-line comment [-Wcomment]
+  281 |   //         \
+      |   ^
+In file included from /usr/include/c++/14/memory:78,
+                 from ../../electron/shell/browser/usb/electron_usb_delegate.h:8:
+/usr/include/c++/14/bits/unique_ptr.h: In instantiation of ‘void std::default_delete<_Tp>::operator()(_Tp*) const [with _Tp = device::mojom::UsbDeviceInfo]’:
+/usr/include/c++/14/bits/unique_ptr.h:399:17:   required from ‘std::unique_ptr<_Tp, _Dp>::~unique_ptr() [with _Tp = device::mojom::UsbDeviceInfo; _Dp = std::default_delete<device::mojom::UsbDeviceInfo>]’
+  399 |           get_deleter()(std::move(__ptr));
+      |           ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+../../mojo/public/cpp/bindings/struct_ptr.h:48:3:   required from ‘constexpr void std::destroy_at(_Tp*) [with _Tp = mojo::StructPtr<device::mojom::UsbDeviceInfo>]’
+   48 |   ~StructPtr() = default;
+      |   ^
+/usr/include/c++/14/bits/stl_construct.h:149:22:   required from ‘constexpr void std::_Destroy(_Tp*) [with _Tp = mojo::StructPtr<device::mojom::UsbDeviceInfo>]’
+  149 |       std::destroy_at(__pointer);
+      |       ~~~~~~~~~~~~~~~^~~~~~~~~~~
+/usr/include/c++/14/bits/stl_construct.h:163:19:   required from ‘static constexpr void std::_Destroy_aux<<anonymous> >::__destroy(_ForwardIterator, _ForwardIterator) [with _ForwardIterator = mojo::StructPtr<device::mojom::UsbDeviceInfo>*; bool <anonymous> = false]’
+  163 |             std::_Destroy(std::__addressof(*__first));
+      |             ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/14/bits/stl_construct.h:193:44:   required from ‘constexpr void std::_Destroy(_ForwardIterator, _ForwardIterator) [with _ForwardIterator = mojo::StructPtr<device::mojom::UsbDeviceInfo>*]’
+  193 |         return std::_Destroy_aux<false>::__destroy(__first, __last);
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/14/bits/alloc_traits.h:981:20:   required from ‘constexpr void std::_Destroy(_ForwardIterator, _ForwardIterator, allocator<_T2>&) [with _ForwardIterator = mojo::StructPtr<device::mojom::UsbDeviceInfo>*; _Tp = mojo::StructPtr<device::mojom::UsbDeviceInfo>]’
+  981 |       std::_Destroy(__first, __last);
+      |       ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/14/bits/stl_vector.h:735:15:   required from ‘constexpr std::vector<_Tp, _Alloc>::~vector() [with _Tp = mojo::StructPtr<device::mojom::UsbDeviceInfo>; _Alloc = std::allocator<mojo::StructPtr<device::mojom::UsbDeviceInfo> >]’
+  735 |         std::_Destroy(this->_M_impl._M_start, this->_M_impl._M_finish,
+      |         ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  736 |                       _M_get_Tp_allocator());
+      |                       ~~~~~~~~~~~~~~~~~~~~~~
+../../electron/shell/browser/usb/electron_usb_delegate.cc:231:74:   required from here
+  231 |     std::move(callback).Run(std::vector<device::mojom::UsbDeviceInfoPtr>());
+      |                                                                          ^
+/usr/include/c++/14/bits/unique_ptr.h:91:23: error: invalid application of ‘sizeof’ to incomplete type ‘device::mojom::UsbDeviceInfo’
+   91 |         static_assert(sizeof(_Tp)>0,
+      |                       ^~~~~~~~~~~
+
+--- src/electron/shell/browser/usb/electron_usb_delegate.cc.orig	2025-01-02 22:20:04.494886103 +0100
++++ src/electron/shell/browser/usb/electron_usb_delegate.cc	2025-01-03 23:05:03.664747897 +0100
+@@ -13,6 +13,7 @@
+ #include "content/public/browser/render_frame_host.h"
+ #include "content/public/browser/web_contents.h"
+ #include "electron/buildflags/buildflags.h"
++#include "services/device/public/mojom/usb_device.mojom.h"
+ #include "services/device/public/mojom/usb_enumeration_options.mojom.h"
+ #include "shell/browser/electron_browser_context.h"
+ #include "shell/browser/electron_permission_manager.h"
+@@ -28,7 +29,6 @@
+ #include "extensions/browser/guest_view/web_view/web_view_guest.h"
+ #include "extensions/common/constants.h"
+ #include "extensions/common/extension.h"
+-#include "services/device/public/mojom/usb_device.mojom.h"
+ #endif
+ 
+ namespace {

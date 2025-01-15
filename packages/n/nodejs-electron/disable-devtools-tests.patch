@@ -1,8 +1,8 @@
---- a/third_party/devtools-frontend/src/BUILD.gn
-+++ b/third_party/devtools-frontend/src/BUILD.gn
-@@ -13,7 +13,6 @@ import("./third_party/blink/public/publi
- 
+--- src/third_party/devtools-frontend/src/BUILD.gn.orig	2024-12-08 18:36:42.531343187 +0100
++++ src/third_party/devtools-frontend/src/BUILD.gn	2024-12-18 12:29:53.036757634 +0100
+@@ -16,7 +16,6 @@ import("./third_party/blink/public/publi
  devtools_frontend_resources_deps = [
+   ":favicon",
    "front_end",
 -  "test",
  ]

@@ -1,6 +1,6 @@
---- src/third_party/electron_node/common.gypi.orig	2024-05-09 09:30:23.202414200 +0000
-+++ src/third_party/electron_node/common.gypi	2024-05-10 17:53:01.801592000 +0000
-@@ -428,10 +428,15 @@
+--- src/third_party/electron_node/common.gypi.orig	2024-12-08 18:45:44.261359453 +0100
++++ src/third_party/electron_node/common.gypi	2024-12-18 11:12:53.414653184 +0100
+@@ -487,10 +487,15 @@
          'ldflags': [ '-pthread' ],
        }],
        [ 'OS in "linux freebsd openbsd solaris android aix os400 cloudabi"', {
@@ -11,14 +11,14 @@
 +        # `-fvisibility=hidden` is something we're adding to fix downstream overzealous exports.
 +        # The electron headers annotate their visibility correctly, but many third-party code does not which leads to bloated builds.
 +        'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', '-fpic', '-fno-semantic-interposition', '-fvisibility=hidden' ],
-         'cflags_cc': [ '-fno-rtti', '-fno-exceptions', '-std=gnu++17' ],
+         'cflags_cc': [ '-fno-rtti', '-fno-exceptions', '-std=gnu++20' ],
          'defines': [ '__STDC_FORMAT_MACROS' ],
 -        'ldflags': [ '-rdynamic' ],
 +        #'ldflags': [ '-rdynamic' ], this is totally bogus — we are building a plugin, not a plugin host
          'target_conditions': [
            # The 1990s toolchain on SmartOS can't handle thin archives.
            ['_type=="static_library" and OS=="solaris"', {
-@@ -608,29 +613,7 @@
+@@ -670,29 +675,7 @@
            '-Wl,--export-dynamic',
          ],
        }],

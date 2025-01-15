@@ -1,0 +1,61 @@
+From 04b25cdd531cf3826d7418141897492979d8f0fb Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Thu, 19 Sep 2024 10:13:04 +0000
+Subject: [PATCH] GCC: avoid clash between type and getter in WaylandConnection
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+WaylandConnection::xdg_toplevel_drag_manager_v1 getter clashes with
+the xdg_toplevel_drag_manager_v1 type. Renamed getter to
+toplevel_drag_manager_v1 following the decision with other types.
+
+Bug: 40565911
+Change-Id: I7331be4bcb00f47cd48a74b043067f044b40dcbc
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5875679
+Reviewed-by: Nick Yamane <nickdiego@igalia.com>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1357526}
+---
+ ui/ozone/platform/wayland/host/wayland_connection.h         | 2 +-
+ .../platform/wayland/host/wayland_window_drag_controller.cc | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ui/ozone/platform/wayland/host/wayland_connection.h b/ui/ozone/platform/wayland/host/wayland_connection.h
+index 79680db7189852..55a89735882ff7 100644
+--- a/ui/ozone/platform/wayland/host/wayland_connection.h
++++ b/ui/ozone/platform/wayland/host/wayland_connection.h
+@@ -160,7 +160,7 @@ class WaylandConnection {
+   zcr_extended_drag_v1* extended_drag_v1() const {
+     return extended_drag_v1_.get();
+   }
+-  xdg_toplevel_drag_manager_v1* xdg_toplevel_drag_manager_v1() const {
++  xdg_toplevel_drag_manager_v1* toplevel_drag_manager_v1() const {
+     return xdg_toplevel_drag_manager_v1_.get();
+   }
+ 
+diff --git a/ui/ozone/platform/wayland/host/wayland_window_drag_controller.cc b/ui/ozone/platform/wayland/host/wayland_window_drag_controller.cc
+index 6184684e308154..6fbf3df07bfe68 100644
+--- a/ui/ozone/platform/wayland/host/wayland_window_drag_controller.cc
++++ b/ui/ozone/platform/wayland/host/wayland_window_drag_controller.cc
+@@ -109,9 +109,9 @@ class WaylandWindowDragController::XdgToplevelDrag {
+  public:
+   XdgToplevelDrag(WaylandConnection& connection, wl_data_source* source)
+       : connection_(connection) {
+-    DCHECK(connection.xdg_toplevel_drag_manager_v1());
++    DCHECK(connection.toplevel_drag_manager_v1());
+     drag_.reset(xdg_toplevel_drag_manager_v1_get_xdg_toplevel_drag(
+-        connection.xdg_toplevel_drag_manager_v1(), source));
++        connection.toplevel_drag_manager_v1(), source));
+     DCHECK(drag_);
+   }
+ 
+@@ -737,7 +737,7 @@ bool WaylandWindowDragController::IsExtendedDragAvailable() const {
+ }
+ 
+ bool WaylandWindowDragController::IsXdgToplevelDragAvailable() const {
+-  return !!connection_->xdg_toplevel_drag_manager_v1();
++  return !!connection_->toplevel_drag_manager_v1();
+ }
+ 
+ bool WaylandWindowDragController::IsActiveDragAndDropSession() const {

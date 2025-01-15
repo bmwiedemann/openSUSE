@@ -1,0 +1,10 @@
+--- src/chrome/test/BUILD.gn.orig	2024-12-08 18:44:32.671357320 +0100
++++ src/chrome/test/BUILD.gn	2025-01-01 21:35:00.776064485 +0100
+@@ -8317,7 +8317,6 @@ test("unit_tests") {
+       "//chrome/browser/ui/zoom:unit_tests",
+       "//chrome/browser/web_applications:web_applications_test_support",
+       "//chrome/common/accessibility:mojo_bindings",
+-      "//chrome/services/speech:unit_tests",
+       "//components/app_constants",
+       "//components/color",
+       "//components/commerce/core:account_checker_test_support",

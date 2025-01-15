@@ -1,0 +1,33 @@
+From dc9db222b929f5da415216134b77d7f3bf141813 Mon Sep 17 00:00:00 2001
+From: Ivan Murashov <ivan.murashov@lge.com>
+Date: Wed, 18 Sep 2024 19:25:42 +0000
+Subject: [PATCH] IWYU: Add missing include for std::optional usage in
+ account_id.h
+
+In the CL https://crrev.com/c/5834683 used std::optional in the
+components/account_id/account_id.h, but corresponding include
+was missed. Added missing include for std::optional usage.
+
+Bug: 41455655
+Change-Id: Ifea71ffb41a8c83051ce95763d9cb836488ca86f
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5872821
+Commit-Queue: Ivan Murashov <ivan.murashov@lge.com>
+Reviewed-by: Hidehiko Abe <hidehiko@chromium.org>
+Reviewed-by: Xiyuan Xia <xiyuan@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1357262}
+---
+ components/account_id/account_id.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/components/account_id/account_id.h b/components/account_id/account_id.h
+index 9804f179139063..e03b974cb481ba 100644
+--- a/components/account_id/account_id.h
++++ b/components/account_id/account_id.h
+@@ -8,6 +8,7 @@
+ #include <stddef.h>
+ 
+ #include <functional>
++#include <optional>
+ #include <ostream>
+ #include <string>
+ #include <string_view>

@@ -12,9 +12,9 @@ Remove this unused component which brings a huge dependency on //third_party/daw
      "//services/screen_ai/buildflags",
      "//services/service_manager/public/cpp",
      "//services/service_manager/public/mojom",
---- src/content/utility/services.cc.orig
-+++ src/content/utility/services.cc
-@@ -31,7 +31,6 @@
+--- src/content/utility/services.cc.orig	2024-12-08 18:34:58.184673416 +0100
++++ src/content/utility/services.cc	2024-12-18 12:44:27.424691055 +0100
+@@ -32,7 +32,6 @@
  #include "services/audio/service_factory.h"
  #include "services/data_decoder/data_decoder_service.h"
  #include "services/network/network_service.h"
@@ -22,21 +22,20 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  #include "services/tracing/public/mojom/tracing_service.mojom.h"
  #include "services/tracing/tracing_service.h"
  #include "services/video_capture/public/mojom/video_capture_service.mojom.h"
-@@ -327,13 +326,6 @@ auto RunVideoCapture(
+@@ -371,12 +370,6 @@ auto RunVideoEffects(
  }
  #endif
  
 -auto RunOnDeviceModel(
 -    mojo::PendingReceiver<on_device_model::mojom::OnDeviceModelService>
 -        receiver) {
--  return std::make_unique<on_device_model::OnDeviceModelService>(
--      std::move(receiver));
+-  return on_device_model::OnDeviceModelService::Create(std::move(receiver));
 -}
 -
  #if BUILDFLAG(ENABLE_VR) && !BUILDFLAG(IS_ANDROID)
  auto RunXrDeviceService(
      mojo::PendingReceiver<device::mojom::XRDeviceService> receiver) {
-@@ -408,9 +400,6 @@ void RegisterMainThreadServices(mojo::Se
+@@ -455,9 +448,6 @@ void RegisterMainThreadServices(mojo::Se
    services.Add(RunVideoEffects);
  #endif
  
@@ -46,8 +45,8 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  
  #if BUILDFLAG(GOOGLE_CHROME_BRANDING) && BUILDFLAG(IS_CHROMEOS)
    services.Add(RunShapeDetectionService);
---- src/content/utility/utility_main.cc.orig	2024-07-24 12:50:51.439131000 +0200
-+++ src/content/utility/utility_main.cc	2024-08-03 00:11:18.255682100 +0200
+--- src/content/utility/utility_main.cc.orig	2024-12-08 18:34:58.184673416 +0100
++++ src/content/utility/utility_main.cc	2024-12-18 12:43:43.314689968 +0100
 @@ -32,7 +32,6 @@
  #include "sandbox/policy/mojom/sandbox.mojom.h"
  #include "sandbox/policy/sandbox.h"
@@ -55,8 +54,8 @@ Remove this unused component which brings a huge dependency on //third_party/daw
 -#include "services/on_device_model/on_device_model_service.h"
  #include "services/screen_ai/buildflags/buildflags.h"
  #include "services/tracing/public/cpp/trace_startup.h"
- #include "third_party/icu/source/common/unicode/unistr.h"
-@@ -246,9 +245,6 @@ int UtilityMain(MainFunctionParams param
+ 
+@@ -238,9 +237,6 @@ int UtilityMain(MainFunctionParams param
      }
    }
  
@@ -66,7 +65,7 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  
  #if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
    // Thread type delegate of the process should be registered before first
-@@ -283,11 +279,6 @@ int UtilityMain(MainFunctionParams param
+@@ -275,11 +271,6 @@ int UtilityMain(MainFunctionParams param
      case sandbox::mojom::Sandbox::kAudio:
        pre_sandbox_hook = base::BindOnce(&audio::AudioPreSandboxHook);
        break;
@@ -78,7 +77,7 @@ Remove this unused component which brings a huge dependency on //third_party/daw
      case sandbox::mojom::Sandbox::kSpeechRecognition:
        pre_sandbox_hook =
            base::BindOnce(&speech::SpeechRecognitionPreSandboxHook);
-@@ -437,9 +428,6 @@ int UtilityMain(MainFunctionParams param
+@@ -440,9 +431,6 @@ int UtilityMain(MainFunctionParams param
  
    run_loop.Run();
  

@@ -1,0 +1,36 @@
+From 4860148c51cb673711a41bc26135659ad4e6cb9d Mon Sep 17 00:00:00 2001
+From: Dan Tan <dwtan@google.com>
+Date: Wed, 31 Jan 2024 09:11:18 -0800
+Subject: [PATCH] Add WebRTC-LibaomAv1Encoder-MaxConsecFrameDrop parameter to
+ explicitly limit the maximum consecutive frame drop
+
+Bug: webrtc:15821
+Change-Id: Ib8be6827ea57e4e54269b94a0fc9ea81945af09f
+Reviewed-on: https://webrtc-review.googlesource.com/c/src/+/337020
+Reviewed-by: Marco Paniconi <marpan@webrtc.org>
+Commit-Queue: Dan Tan <dwtan@google.com>
+Reviewed-by: Sergey Silkin <ssilkin@webrtc.org>
+Cr-Commit-Position: refs/heads/main@{#41648}
+---
+ experiments/field_trials.py                   |  3 +++
+ .../codecs/av1/libaom_av1_encoder.cc          | 18 ++++++++++++-
+ .../codecs/av1/libaom_av1_encoder_unittest.cc | 25 +++++++++++++++++++
+ 3 files changed, 45 insertions(+), 1 deletion(-)
+
+diff --git a/modules/video_coding/codecs/av1/libaom_av1_encoder.cc b/modules/video_coding/codecs/av1/libaom_av1_encoder.cc
+index 4ff22bfe34..03bb367fe0 100644
+--- a/third_party/webrtc/modules/video_coding/codecs/av1/libaom_av1_encoder.cc
++++ b/third_party/webrtc/modules/video_coding/codecs/av1/libaom_av1_encoder.cc
+@@ -297,6 +307,12 @@ int LibaomAv1Encoder::InitEncode(const VideoCodec* codec_settings,
+     SET_ENCODER_PARAM_OR_RETURN_ERROR(AV1E_SET_ENABLE_PALETTE, 0);
+   }
+ 
++  if (codec_settings->mode == VideoCodecMode::kRealtimeVideo &&
++      encoder_settings_.GetFrameDropEnabled() && max_consec_frame_drop_ > 0) {
++    SET_ENCODER_PARAM_OR_RETURN_ERROR(AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR,
++                                      max_consec_frame_drop_);
++  }
++
+   if (cfg_.g_threads == 8) {
+     // Values passed to AV1E_SET_TILE_ROWS and AV1E_SET_TILE_COLUMNS are log2()
+     // based.

@@ -1,0 +1,22 @@
+--- src/third_party/blink/renderer/platform/BUILD.gn.orig	2025-01-02 22:23:59.424885429 +0100
++++ src/third_party/blink/renderer/platform/BUILD.gn	2025-01-03 19:03:30.286845650 +0100
+@@ -1243,8 +1243,6 @@ component("platform") {
+     "keyboard_codes.h",
+     "language.cc",
+     "language.h",
+-    "language_detection/detect.cc",
+-    "language_detection/detect.h",
+     "link_hash.cc",
+     "link_hash.h",
+     "media/web_audio_source_provider_client.h",
+@@ -1754,10 +1752,8 @@ component("platform") {
+     "//cc",
+     "//cc/ipc",
+     "//cc/mojo_embedder",
+-    "//components/language_detection/core:language_detection",
+     "//components/paint_preview/common",
+     "//components/search_engines:search_engine_utils",
+-    "//components/translate/core/language_detection:language_detection",
+     "//components/viz/client",
+     "//components/viz/common",
+     "//components/webrtc:net_address_utils",

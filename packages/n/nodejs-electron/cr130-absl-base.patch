@@ -1,0 +1,99 @@
+--- src/build/linux/unbundle/absl_base.gn.orig	2025-01-02 10:33:14.819582911 +0100
++++ src/build/linux/unbundle/absl_base.gn	2025-01-02 12:14:46.875133605 +0100
+@@ -13,6 +13,14 @@ pkg_config("system_absl_core_headers") {
+   packages = [ "absl_core_headers" ]
+ }
+ 
++pkg_config("system_absl_dynamic_annotations") {
++  packages = [ "absl_dynamic_annotations" ]
++}
++
++pkg_config("system_absl_log_severity") {
++  packages = [ "absl_log_severity" ]
++}
++
+ pkg_config("system_absl_nullability") {
+   packages = [ "absl_nullability" ]
+ }
+@@ -21,13 +29,16 @@ pkg_config("system_absl_prefetch") {
+   packages = [ "absl_prefetch" ]
+ }
+ 
++pkg_config("system_absl_raw_logging_internal") {
++  packages = [ "absl_raw_logging_internal" ]
++}
++
+ shim_headers("base_shim") {
+   root_path = "."
+   prefix = "absl/base/"
+   headers = [
+     "call_once.h",
+     "casts.h",
+-    "dynamic_annotations.h",
+   ]
+ }
+ 
+@@ -69,6 +80,28 @@ source_set("core_headers") {
+   public_configs = [ ":system_absl_core_headers" ]
+ }
+ 
++shim_headers("dynamic_annotations_shim") {
++  root_path = "."
++  prefix = "absl/base/"
++  headers = [ "dynamic_annotations.h" ]
++}
++
++source_set("dynamic_annotations") {
++  deps = [ ":dynamic_annotations_shim" ]
++  public_configs = [ ":system_absl_dynamic_annotations" ]
++}
++
++shim_headers("log_severity_shim") {
++  root_path = "."
++  prefix = "absl/base/"
++  headers = [ "log_severity.h" ]
++}
++
++source_set("log_severity") {
++  deps = [ ":log_severity_shim" ]
++  public_configs = [ ":system_absl_log_severity" ]
++}
++
+ shim_headers("nullability_shim") {
+   root_path = "."
+   prefix = "absl/base/"
+@@ -91,6 +124,17 @@ source_set("prefetch") {
+   public_configs = [ ":system_absl_prefetch" ]
+ }
+ 
++shim_headers("raw_logging_internal_shim") {
++  root_path = "."
++  prefix = "absl/base/"
++  headers = [ "internal/raw_logging.h" ]
++}
++
++source_set("raw_logging_internal") {
++  deps = [ ":raw_logging_internal_shim" ]
++  public_configs = [ ":system_absl_raw_logging_internal" ]
++}
++
+ source_set("no_destructor") {
+   # Dummy — unavailable with abseil 202308 and chromium 122 does not use it
+ }
+@@ -99,7 +143,15 @@ source_set("config_test") {
+ }
+ source_set("no_destructor_test") {
+ }
++source_set("nullability_default_nonnull_test") {
++}
+ source_set("nullability_test") {
+ }
++source_set("poison_test") {
++}
+ source_set("prefetch_test") {
+ }
++source_set("tracing_internal_strong_test") {
++}
++source_set("tracing_internal_weak_test") {
++}
+\ Brak znaku nowej linii na końcu pliku

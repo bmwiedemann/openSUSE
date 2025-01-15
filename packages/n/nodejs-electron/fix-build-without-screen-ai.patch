@@ -1,0 +1,100 @@
+--- src/chrome/test/BUILD.gn.orig	2024-12-08 18:44:32.671357320 +0100
++++ src/chrome/test/BUILD.gn	2025-01-01 20:54:36.278270275 +0100
+@@ -1959,9 +1959,6 @@ if (!is_android) {
+       "//chrome/browser/resource_coordinator:tab_manager_features",
+       "//chrome/browser/safe_browsing:advanced_protection",
+       "//chrome/browser/safe_browsing:verdict_cache_manager_factory",
+-      "//chrome/browser/screen_ai:screen_ai_install_state",
+-      "//chrome/browser/screen_ai:screen_ai_service_router_factory",
+-      "//chrome/browser/screen_ai/public:test_support",
+       "//chrome/browser/search",
+       "//chrome/browser/search_engines",
+       "//chrome/browser/segmentation_platform:test_utils",
+@@ -2334,9 +2331,6 @@ if (!is_android) {
+       "//services/network/public/proto:sct_audit_report_proto",
+       "//services/preferences/public/cpp",
+       "//services/preferences/public/cpp/tracked",
+-      "//services/screen_ai:test_support",
+-      "//services/screen_ai/public/cpp:utilities",
+-      "//services/screen_ai/public/mojom",
+       "//services/service_manager/public/cpp",
+       "//services/strings",
+       "//services/test/echo/public/mojom",
+@@ -8373,7 +8367,6 @@ test("unit_tests") {
+       "//services/device/public/cpp/bluetooth",
+       "//services/metrics/public/cpp:ukm_builders",
+       "//services/network:test_support",
+-      "//services/screen_ai:test_support",
+       "//services/video_effects/test:test_support",
+       "//third_party/crashpad/crashpad/util",
+       "//third_party/libaddressinput",
+--- src/chrome/browser/BUILD.gn.orig	2024-12-08 18:44:32.671357320 +0100
++++ src/chrome/browser/BUILD.gn	2025-01-01 21:05:47.125477818 +0100
+@@ -4343,9 +4343,6 @@ static_library("browser") {
+       "//components/webauthn/core/browser:passkey_model",
+       "//services/device/public/cpp/bluetooth",
+       "//services/device/public/cpp/hid",
+-      "//services/screen_ai",
+-      "//services/screen_ai/public/cpp:utilities",
+-      "//services/screen_ai/public/mojom",
+       "//third_party/crashpad/crashpad/client:common",
+       "//third_party/zxcvbn-cpp",
+       "//ui/views",
+--- src/chrome/renderer/BUILD.gn.orig	2024-12-08 18:34:54.671339980 +0100
++++ src/chrome/renderer/BUILD.gn	2025-01-01 21:11:57.272282026 +0100
+@@ -408,7 +408,6 @@ static_library("renderer") {
+       "//components/crx_file",
+       "//components/trusted_vault",
+       "//services/screen_ai/buildflags",
+-      "//services/screen_ai/public/mojom",
+       "//services/strings",
+       "//third_party/re2:re2",
+     ]
+--- src/chrome/utility/BUILD.gn.orig	2024-12-08 18:34:55.478006671 +0100
++++ src/chrome/utility/BUILD.gn	2025-01-01 21:14:46.902339035 +0100
+@@ -67,7 +67,6 @@ static_library("utility") {
+     "//services/network:network_service",
+     "//services/passage_embeddings:passage_embeddings",
+     "//services/passage_embeddings/public/mojom",
+-    "//services/screen_ai/buildflags",
+     "//services/service_manager/public/cpp",
+     "//skia",
+     "//sql",
+@@ -145,7 +144,6 @@ static_library("utility") {
+       "//chrome/common/importer:interfaces",
+       "//components/autofill/core/common",
+       "//services/proxy_resolver:lib",
+-      "//services/screen_ai",
+     ]
+   }
+ 
+--- src/chrome/browser/screen_ai/BUILD.gn.orig	2024-12-08 18:34:53.871339956 +0100
++++ src/chrome/browser/screen_ai/BUILD.gn	2025-01-01 21:17:11.015719404 +0100
+@@ -48,7 +48,6 @@ source_set("screen_ai_install_state") {
+     "//chrome/browser:browser_process",
+     "//components/prefs",
+     "//content/public/browser",
+-    "//services/screen_ai/public/cpp:utilities",
+     "//ui/accessibility:ax_base",
+   ]
+ 
+@@ -68,9 +67,6 @@ source_set("screen_ai_service_router_fac
+     "//chrome/browser/profiles:profile",
+     "//components/keyed_service/core",
+     "//content/public/browser",
+-    "//services/screen_ai/public/cpp:utilities",
+-    "//services/screen_ai/public/mojom:factory",
+-    "//services/screen_ai/public/mojom:mojom",
+   ]
+ 
+   configs += [ "//build/config/compiler:wexit_time_destructors" ]
+--- src/chrome/browser/screen_ai/public/BUILD.gn.orig	2024-12-08 18:34:53.871339956 +0100
++++ src/chrome/browser/screen_ai/public/BUILD.gn	2025-01-01 21:18:43.609082510 +0100
+@@ -12,7 +12,6 @@ source_set("optical_character_recognizer
+     "//chrome/browser/profiles:profile",
+     "//chrome/browser/screen_ai:screen_ai_service_router_factory",
+     "//content/public/browser",
+-    "//services/screen_ai/public/mojom",
+   ]
+ 
+   configs += [ "//build/config/compiler:wexit_time_destructors" ]

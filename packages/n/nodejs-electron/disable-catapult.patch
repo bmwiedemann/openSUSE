@@ -169,9 +169,9 @@ author: Michael Gilbert <mgilbert@debian.org>
        "//media/mojo/mojom:speech_recognition",
        "//ui/base",
      ]
---- a/chrome/chrome_paks.gni
-+++ b/chrome/chrome_paks.gni
-@@ -190,8 +190,6 @@ template("chrome_extra_paks") {
+--- src/chrome/chrome_paks.gni.orig	2024-12-08 18:34:54.604673311 +0100
++++ src/chrome/chrome_paks.gni	2024-12-18 12:15:07.247395616 +0100
+@@ -202,8 +202,6 @@ template("chrome_extra_paks") {
          "$root_gen_dir/chrome/webui_gallery_resources.pak",
          "$root_gen_dir/chrome/whats_new_resources.pak",
          "$root_gen_dir/content/browser/devtools/devtools_resources.pak",
@@ -180,8 +180,8 @@ author: Michael Gilbert <mgilbert@debian.org>
        ]
        deps += [
          "//chrome/browser/resources:component_extension_resources",
-@@ -199,7 +197,6 @@ template("chrome_extra_paks") {
-         "//chrome/browser/resources/lens/overlay/search_bubble:resources",
+@@ -215,7 +213,6 @@ template("chrome_extra_paks") {
+         "//chrome/browser/resources/lens/shared:resources",
          "//chrome/browser/resources/search_engine_choice:resources",
          "//content/browser/devtools:devtools_resources",
 -        "//content/browser/tracing:resources",

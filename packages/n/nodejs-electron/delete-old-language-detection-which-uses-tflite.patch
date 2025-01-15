@@ -1,0 +1,176 @@
+From 12e89eee78a2dea41591fedc7937ca83e68c9168 Mon Sep 17 00:00:00 2001
+From: Fergal Daly <fergal@chromium.org>
+Date: Tue, 17 Dec 2024 22:06:08 -0800
+Subject: [PATCH] Delete the old language detection API.
+
+Bug: 349927087
+Change-Id: I41458da3cf03e78ec9c25fe3fddea343c3e982d6
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6054825
+Reviewed-by: Jiacheng Guo <gjc@google.com>
+Commit-Queue: Fergal Daly <fergal@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1397739}
+---
+ .../bindings/generated_in_modules.gni         |  2 -
+ .../renderer/bindings/idl_in_modules.gni      |  1 -
+ .../ai_language_detector.idl                  |  5 ++
+ .../modules/on_device_translation/BUILD.gn    |  2 -
+ .../language_detector.cc                      | 52 ----------------
+ .../on_device_translation/language_detector.h | 41 -------------
+ .../language_detector.idl                     | 23 --------
+ .../on_device_translation/translation.cc      | 59 -------------------
+ .../on_device_translation/translation.h       |  7 ---
+ .../on_device_translation/translation.idl     | 16 -----
+ .../canDetect.tentative.window.js             |  9 ---
+ .../detect-en.tentative.window.js             | 14 -----
+ 12 files changed, 5 insertions(+), 226 deletions(-)
+ delete mode 100644 third_party/blink/renderer/modules/on_device_translation/language_detector.cc
+ delete mode 100644 third_party/blink/renderer/modules/on_device_translation/language_detector.h
+ delete mode 100644 third_party/blink/renderer/modules/on_device_translation/language_detector.idl
+ delete mode 100644 third_party/blink/web_tests/external/wpt/ai/language_detection/canDetect.tentative.window.js
+ delete mode 100644 third_party/blink/web_tests/external/wpt/ai/language_detection/detect-en.tentative.window.js
+
+diff --git a/third_party/blink/renderer/bindings/generated_in_modules.gni b/third_party/blink/renderer/bindings/generated_in_modules.gni
+index 05b8fe33432374..0fa149cc2101ac 100644
+--- a/third_party/blink/renderer/bindings/generated_in_modules.gni
++++ b/third_party/blink/renderer/bindings/generated_in_modules.gni
+@@ -2827,8 +2825,6 @@ generated_interface_sources_in_modules = [
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_track_default_list.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_track_default_list.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_language_detector.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_language_detector.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_url.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_url.h",
+diff --git a/third_party/blink/renderer/modules/on_device_translation/BUILD.gn b/third_party/blink/renderer/modules/on_device_translation/BUILD.gn
+index 21470f0869cfda..21772fce07cc5e 100644
+--- a/third_party/blink/renderer/modules/on_device_translation/BUILD.gn
++++ b/third_party/blink/renderer/modules/on_device_translation/BUILD.gn
+@@ -8,8 +8,6 @@ blink_modules_sources("on_device_translation") {
+   sources = [
+     "dom_translation.cc",
+     "dom_translation.h",
+-    "language_detector.cc",
+-    "language_detector.h",
+     "language_translator.cc",
+     "language_translator.h",
+     "translation.cc",
+diff --git a/third_party/blink/renderer/modules/on_device_translation/translation.h b/third_party/blink/renderer/modules/on_device_translation/translation.h
+index 0a0f54be56787a..e19db842628997 100644
+--- a/third_party/blink/renderer/modules/on_device_translation/translation.h
++++ b/third_party/blink/renderer/modules/on_device_translation/translation.h
+@@ -18,7 +18,6 @@
+ #include "third_party/blink/renderer/platform/mojo/heap_mojo_remote.h"
+ 
+ namespace blink {
+-class LanguageDetector;
+ class LanguageTranslator;
+ class V8TranslationAvailability;
+ 
+@@ -43,12 +42,6 @@ class Translation final : public ScriptWrappable,
+       ScriptState* script_state,
+       TranslationLanguageOptions* options,
+       ExceptionState& exception_state);
+-  ScriptPromise<V8TranslationAvailability> canDetect(
+-      ScriptState* script_state,
+-      ExceptionState& exception_state);
+-  ScriptPromise<LanguageDetector> createDetector(
+-      ScriptState* script_state,
+-      ExceptionState& exception_state);
+ 
+  private:
+   HeapMojoRemote<mojom::blink::TranslationManager>&
+diff --git a/third_party/blink/renderer/modules/on_device_translation/translation.idl b/third_party/blink/renderer/modules/on_device_translation/translation.idl
+index a27472ece123df..b9c74c41d4c406 100644
+--- a/third_party/blink/renderer/modules/on_device_translation/translation.idl
++++ b/third_party/blink/renderer/modules/on_device_translation/translation.idl
+@@ -31,20 +31,4 @@ interface Translation {
+   Promise<LanguageTranslator> createTranslator(
+     TranslationLanguageOptions options
+   );
+-  [
+-    RuntimeEnabled=LanguageDetectionAPI,
+-    Exposed=Window,
+-    Measure,
+-    CallWith=ScriptState,
+-    RaisesException
+-  ]
+-  Promise<TranslationAvailability> canDetect();
+-  [
+-    RuntimeEnabled=LanguageDetectionAPI,
+-    Exposed=Window,
+-    Measure,
+-    CallWith=ScriptState,
+-    RaisesException
+-  ]
+-  Promise<LanguageDetector> createDetector();
+ };
+--- src/third_party/blink/renderer/modules/on_device_translation/language_detector.idl.orig	2025-01-02 22:23:59.384885429 +0100
++++ src/third_party/blink/renderer/modules/on_device_translation/language_detector.idl	2025-01-03 22:57:39.104809606 +0100
+@@ -8,16 +8,3 @@ dictionary LanguageDetectionResult {
+   DOMString? detectedLanguage;
+   double confidence;
+ };
+-
+-[
+-  RuntimeEnabled=LanguageDetectionAPI,
+-  Exposed=Window
+-]
+-interface LanguageDetector {
+-  [
+-    Measure,
+-    CallWith=ScriptState,
+-    RaisesException
+-  ]
+-  Promise<sequence<LanguageDetectionResult>> detect(DOMString input);
+-};
+--- src/third_party/blink/renderer/modules/on_device_translation/translation.cc.orig	2025-01-02 22:23:59.384885429 +0100
++++ src/third_party/blink/renderer/modules/on_device_translation/translation.cc	2025-01-03 23:11:15.414694080 +0100
+@@ -10,7 +10,6 @@
+ #include "third_party/blink/renderer/bindings/core/v8/script_promise_resolver.h"
+ #include "third_party/blink/renderer/bindings/modules/v8/v8_translation_language_options.h"
+ #include "third_party/blink/renderer/core/execution_context/execution_context.h"
+-#include "third_party/blink/renderer/modules/on_device_translation/language_detector.h"
+ #include "third_party/blink/renderer/modules/on_device_translation/language_translator.h"
+ #include "third_party/blink/renderer/platform/bindings/exception_state.h"
+ #include "third_party/blink/renderer/platform/bindings/script_state.h"
+@@ -116,39 +115,4 @@ ScriptPromise<LanguageTranslator> Transl
+   return promise;
+ }
+ 
+-ScriptPromise<V8TranslationAvailability> Translation::canDetect(
+-    ScriptState* script_state,
+-    ExceptionState& exception_state) {
+-  if (!script_state->ContextIsValid()) {
+-    exception_state.ThrowDOMException(DOMExceptionCode::kInvalidStateError,
+-                                      "The execution context is not valid.");
+-    return ScriptPromise<V8TranslationAvailability>();
+-  }
+-
+-  auto* resolver =
+-      MakeGarbageCollected<ScriptPromiseResolver<V8TranslationAvailability>>(
+-          script_state);
+-  auto promise = resolver->Promise();
+-
+-  resolver->Resolve(
+-      V8TranslationAvailability(V8TranslationAvailability::Enum::kReadily));
+-
+-  return promise;
+-}
+-
+-ScriptPromise<LanguageDetector> Translation::createDetector(
+-    ScriptState* script_state,
+-    ExceptionState& exception_state) {
+-  if (!script_state->ContextIsValid()) {
+-    exception_state.ThrowDOMException(DOMExceptionCode::kInvalidStateError,
+-                                      "The execution context is not valid.");
+-    return ScriptPromise<LanguageDetector>();
+-  }
+-
+-  auto* resolver =
+-      MakeGarbageCollected<ScriptPromiseResolver<LanguageDetector>>(
+-          script_state);
+-  resolver->Resolve(MakeGarbageCollected<LanguageDetector>());
+-  return resolver->Promise();
+-}
+ }  // namespace blink

@@ -1,0 +1,27 @@
+Add absl_algorithm to shims
+This library is used in chrome 130 therefore it should be now submitted upstream
+
+--- webrtc-5845d/build/linux/unbundle/absl_algorithm.gn.orig	2023-09-21 19:43:13.163148940 +0200
++++ webrtc-5845d/build/linux/unbundle/absl_algorithm.gn	2023-09-21 21:24:11.594506276 +0200
+@@ -1,6 +1,21 @@
+ import("//build/config/linux/pkg_config.gni")
+ import("//build/shim_headers.gni")
+ 
++pkg_config("system_absl_algorithm") {
++  packages = [ "absl_algorithm" ]
++}
++
++shim_headers("algorithm_shim") {
++  root_path = "."
++  prefix = "absl/algorithm/"
++  headers = [ "algorithm.h" ]
++}
++
++source_set("algorithm") {
++  deps = [ ":algorithm_shim" ]
++  public_configs = [ ":system_absl_algorithm" ]
++}
++
+ pkg_config("system_absl_algorithm_container") {
+   packages = [ "absl_algorithm_container" ]
+ }

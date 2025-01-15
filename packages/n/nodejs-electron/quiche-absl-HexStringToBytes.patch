@@ -22,15 +22,6 @@ diff --git a/quiche/quic/core/crypto/web_transport_fingerprint_proof_verifier.cc
 index 167e4efc4..fc8cffd40 100644
 --- a/net/third_party/quiche/src/quiche/quic/core/crypto/web_transport_fingerprint_proof_verifier.cc
 +++ b/net/third_party/quiche/src/quiche/quic/core/crypto/web_transport_fingerprint_proof_verifier.cc
-@@ -6,6 +6,8 @@
- 
- #include <cstdint>
- #include <memory>
-+#include <string>
-+#include <utility>
- 
- #include "absl/strings/escaping.h"
- #include "absl/strings/match.h"
 @@ -18,6 +20,7 @@
  #include "quiche/quic/core/quic_types.h"
  #include "quiche/quic/core/quic_utils.h"
@@ -60,34 +51,34 @@ index eefd002dc..06e6ed2b7 100644
 --- a/net/third_party/quiche/src/quiche/quic/masque/masque_client_bin.cc
 +++ b/net/third_party/quiche/src/quiche/quic/masque/masque_client_bin.cc
 @@ -281,7 +281,12 @@ int RunMasqueClient(int argc, char* argv[]) {
-         QUIC_LOG(ERROR) << "Signature authentication key ID cannot be empty";
+         QUIC_LOG(ERROR) << "Concealed authentication key ID cannot be empty";
          return 1;
        }
--      private_key_seed = absl::HexStringToBytes(signature_auth_param_split[1]);
-+      if (!absl::HexStringToBytes(signature_auth_param_split[1],
+-      private_key_seed = absl::HexStringToBytes(concealed_auth_param_split[1]);
++      if (!absl::HexStringToBytes(concealed_auth_param_split[1],
 +                                  &private_key_seed)) {
-+        QUIC_LOG(ERROR) << "Signature authentication key hex value is invalid";
++        QUIC_LOG(ERROR) << "Concealed authentication key hex value is invalid";
 +        return 1;
 +      }
 +
        if (private_key_seed.size() != kEd25519Rfc8032PrivateKeySize) {
          QUIC_LOG(ERROR)
-             << "Invalid signature authentication private key length "
+             << "Invalid Concealed authentication private key length "
 diff --git a/quiche/quic/masque/masque_server_backend.cc b/quiche/quic/masque/masque_server_backend.cc
 index f4ff2e0ed..66ca13c96 100644
 --- a/net/third_party/quiche/src/quiche/quic/masque/masque_server_backend.cc
 +++ b/net/third_party/quiche/src/quiche/quic/masque/masque_server_backend.cc
 @@ -193,7 +193,10 @@ void MasqueServerBackend::SetSignatureAuth(absl::string_view signature_auth) {
      quiche::QuicheTextUtils::RemoveLeadingAndTrailingWhitespace(&kv[1]);
-     SignatureAuthCredential credential;
+     ConcealedAuthCredential credential;
      credential.key_id = std::string(kv[0]);
 -    std::string public_key = absl::HexStringToBytes(kv[1]);
 +    std::string public_key;
 +    if (!absl::HexStringToBytes(kv[1], &public_key)) {
-+      QUIC_LOG(FATAL) << "Invalid signature auth public key hex " << kv[1];
++      QUIC_LOG(FATAL) << "Invalid concealed auth public key hex " << kv[1];
 +    }
      if (public_key.size() != sizeof(credential.public_key)) {
-       QUIC_LOG(FATAL) << "Invalid signature auth public key length "
+       QUIC_LOG(FATAL) << "Invalid concealed auth public key length "
                        << public_key.size();
 diff --git a/quiche/quic/tools/crypto_message_printer_bin.cc b/quiche/quic/tools/crypto_message_printer_bin.cc
 index eb7393d54..82850d94a 100644

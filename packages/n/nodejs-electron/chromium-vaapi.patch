@@ -18,11 +18,9 @@ Index: electron-17.1.0/chrome/browser/about_flags.cc
      {"system-keyboard-lock", flag_descriptions::kSystemKeyboardLockName,
       flag_descriptions::kSystemKeyboardLockDescription, kOsDesktop,
       FEATURE_VALUE_TYPE(features::kSystemKeyboardLock)},
-Index: electron-17.1.0/chrome/browser/flag_descriptions.cc
-===================================================================
---- electron-17.1.0.orig/chrome/browser/flag_descriptions.cc	2022-03-07 17:20:30.960813654 +0100
-+++ electron-17.1.0/chrome/browser/flag_descriptions.cc	2022-03-09 08:25:19.662417046 +0100
-@@ -4031,12 +4031,24 @@ const char kUseAngleGL[] = "OpenGL";
+--- src/chrome/browser/flag_descriptions.cc.orig	2024-12-08 18:34:53.268006605 +0100
++++ src/chrome/browser/flag_descriptions.cc	2025-01-01 20:24:47.007188847 +0100
+@@ -5838,12 +5838,24 @@ const char kUseAngleGL[] = "OpenGL";
  
  #if BUILDFLAG(IS_CHROMEOS_ASH)
  
@@ -44,14 +42,12 @@ Index: electron-17.1.0/chrome/browser/flag_descriptions.cc
 +
 +#if BUILDFLAG(IS_CHROMEOS_ASH)
 +
- const char kAdaptiveChargingForTestingName[] =
-     "Show adaptive charging notifications for testing";
- const char kAdaptiveChargingForTestingDescription[] =
-Index: electron-17.1.0/chrome/browser/flag_descriptions.h
-===================================================================
---- electron-17.1.0.orig/chrome/browser/flag_descriptions.h	2022-03-07 17:20:30.960813654 +0100
-+++ electron-17.1.0/chrome/browser/flag_descriptions.h	2022-03-09 08:25:19.666416981 +0100
-@@ -2305,9 +2305,21 @@ extern const char kUseAngleGL[];
+ const char kAccessibilityFilterKeysName[] = "Filter keys";
+ const char kAccessibilityFilterKeysDescription[] =
+     "Enables settings to filter key presses in various ways, such as slow keys "
+--- src/chrome/browser/flag_descriptions.h.orig	2024-12-08 18:34:53.268006605 +0100
++++ src/chrome/browser/flag_descriptions.h	2025-01-01 20:26:07.993071516 +0100
+@@ -3375,9 +3375,21 @@ extern const char kUseAngleGL[];
  
  #if BUILDFLAG(IS_CHROMEOS_ASH)
  
@@ -70,6 +66,6 @@ Index: electron-17.1.0/chrome/browser/flag_descriptions.h
 +
 +// Chrome OS ------------------------------------------------------------------
 +
- extern const char kAdaptiveChargingName[];
- extern const char kAdaptiveChargingDescription[];
+ extern const char kAccessibilityFilterKeysName[];
+ extern const char kAccessibilityFilterKeysDescription[];
  

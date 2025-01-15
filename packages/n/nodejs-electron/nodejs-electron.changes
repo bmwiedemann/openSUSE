@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sun Jan 12 12:38:29 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 33.3.1
+  * Drop 32-bit support
+  * chromium 130.0.6723.170
+  * node 20.18.0
+  * v8 13.0
+  * Behavior Changed: frame properties may retrieve detached WebFrameMain instances or none at all
+  * Behavior Changed: webContents property on login on app
+  * Added a handler, app.setClientCertRequestPasswordHandler(handler), to help unlock cryptographic devices when a PIN is needed.
+  * Added View.setBorderRadius(radius) for customizing the border radius of views—with compatibility for WebContentsView.
+  * Extended navigationHistory API with 2 new functions for better history management. #42014
+  * see https://github.com/electron/electron/releases/tag/v33.0.0 and https://www.electronjs.org/blog/electron-33-0 for more
+- Disable aarch64 builds due to OBS hardware limits. Sorry.
+- Drop Leap 15.5 support
+- Drop no longer needed patches 
+  * absl-base-dynamic_annotations.patch
+  * angle-State-constexpr.patch
+  * chromium-124-shims.patch
+  * color_provider-incomplete-ColorProviderInternal.patch
+  * ConsumeRadii-linker-error.patch
+  * Cr126-abseil-shims.patch
+  * crashpad-use-system-abseil.patch
+  * DesktopNativeWidgetAura-HandleActivationChanged-crash.patch
+  * harfbuzz-replace-chromium-scoped-type.patch
+  * harfbuzz-replace-HbScopedPointer.patch
+  * http_auth_ntlm_mechanism-could-not-convert-to-base-span.patch
+  * licenses.py-FileNotFoundError.patch
+  * native_css_paint_definition-expected-unqualified-id.patch
+  * page_popup_controller-missing-optional.patch
+  * partition_alloc-no-lto.patch
+  * preview_cancel_reason-missing-string.patch
+  * quiche-QuicIntervalDeque-no-match-for-operator-mm.patch
+  * real_time_reporting_bindings-forward-declaration.patch
+  * run_segmenter-missing-optional.patch
+  * skia-system-vulkan-headers.patch
+  * system-zlib.patch
+  * text_decoder-missing-optional.patch
+  * wayland-proto-31-cursor-shape.patch
+- Drop libaom_av1_encoder-aom37-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR.patch and replace it with more fine-grained reverts:
+  * aom3.10-AV1E_SET_MAX_CONSEC_FRAME_DROP_MS_CBR.patch
+  * aom3.10-AV1E_SET_AUTO_TILES.patch
+  * webrtc-aom3.8-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR.patch
+  * webrtc-aom3.8-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR-2.patch
+- Drop the following revert:
+  * bad-font-gc0000.patch
+  * bad-font-gc000.patch
+  * bad-font-gc00.patch
+  * bad-font-gc0.patch
+  * bad-font-gc11.patch
+  * bad-font-gc1.patch
+  * bad-font-gc2.patch
+  * bad-font-gc3.patch
+- Add bsc1224178-font-gc.patch for a proper fix for bsc#1224178 deb#1067886
+- Add backported or forwardable patches to fix build errors:
+  * account_id-missing-optional.patch
+  * css_attr_value_tainting-missing-once_flag.patch
+  * electron_usb_delegate-incomplete-UsbDeviceInfo.patch
+  * exception_context-missing-variant.patch
+  * fix-build-without-service-discovery.patch
+  * ip_protection_data_types-missing-optional.patch
+  * skia_image_decoder_base-missing-stack.patch
+  * vtt_scanner-missing-variant.patch
+  * wayland_connection-Wchanges-meaning.patch
+- Add patches to fix build errors due to our changes:
+  * build-without-speech-service.patch
+  * chromium-123-qrcode.patch
+  * chromium-125-cloud_authenticator.patch
+  * chromium-127-cargo_crate.patch
+  * chromium-127-crabby.patch
+  * chromium-129-disable-H.264-video-parser-during-demuxing.patch
+  * chromium-130-fontations.patch
+  * cr130-abseil-remove-unused-deps.patch
+  * cr130-absl-base.patch
+  * delete-old-language-detection-which-uses-tflite.patch
+  * fix-build-without-screen-ai.patch
+  * private_aggregation_host-uint128.patch
+  * remove-libphonenumber.patch
+  * system-absl_algorithm.patch
+  * wayland_version.patch
+- 15.6: use bundled vulkan and spirv headers
+- 15.6: revert upstream changes to build with old wayland
+  * wayland-protocol-toplevel-icon.patch
+  * wayland-protocol-toplevel-icon-2.patch
+  * wayland-protocol-toplevel-drag.patch
+- Use bundled yuv everywhere due to system version being too old
+
+
+-------------------------------------------------------------------
 Wed Nov 27 20:33:48 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 31.7.6

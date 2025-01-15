@@ -1,0 +1,545 @@
+From 900160bc0e224746bd4b7c30c63433dad66b95f6 Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Thu, 8 Aug 2024 07:28:26 +0000
+Subject: [PATCH] [Wayland] Implement setting icons with XDG toplevel icon
+
+Note that this is untested since no compositors currently support
+the protocol, though there is a merge request for server support in
+KWin and merge requests for client support in QT, and SDL, and merged
+client support in GameScope.
+
+Once compositor support is added, this change can be tested by
+installing the Youtube PWA and verifying that the icon changes
+to the Youtube logo.
+
+
+R=nickdiego
+
+Change-Id: I6135d72879ecc025c26e7c65b68eb557dd72e854
+Fixed: 356424077
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5755162
+Auto-Submit: Thomas Anderson <thomasanderson@chromium.org>
+Code-Coverage: findit-for-me@appspot.gserviceaccount.com <findit-for-me@appspot.gserviceaccount.com>
+Reviewed-by: Maksim Sisov <msisov@igalia.com>
+Commit-Queue: Maksim Sisov <msisov@igalia.com>
+Reviewed-by: Nick Yamane <nickdiego@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1338910}
+---
+ ui/ozone/platform/wayland/BUILD.gn            |  4 +
+ .../wayland/host/shell_toplevel_wrapper.h     |  3 +
+ .../wayland/host/wayland_toplevel_window.cc   | 14 +++
+ .../wayland/host/wayland_toplevel_window.h    |  2 +
+ .../host/xdg_toplevel_icon_unittest.cc        | 47 +++++++++
+ .../wayland/host/xdg_toplevel_wrapper_impl.cc | 53 ++++++++++-
+ .../wayland/host/xdg_toplevel_wrapper_impl.h  |  1 +
+ .../wayland/test/mock_xdg_toplevel_icon.cc    | 95 +++++++++++++++++++
+ .../wayland/test/mock_xdg_toplevel_icon.h     | 79 +++++++++++++++
+ .../test/test_wayland_server_thread.cc        |  3 +
+ .../wayland/test/test_wayland_server_thread.h |  6 ++
+ 11 files changed, 303 insertions(+), 4 deletions(-)
+ create mode 100644 ui/ozone/platform/wayland/host/xdg_toplevel_icon_unittest.cc
+ create mode 100644 ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.cc
+ create mode 100644 ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.h
+
+diff --git a/ui/ozone/platform/wayland/BUILD.gn b/ui/ozone/platform/wayland/BUILD.gn
+index 4ba36222f03906..4f22bf74dd8d34 100644
+--- a/ui/ozone/platform/wayland/BUILD.gn
++++ b/ui/ozone/platform/wayland/BUILD.gn
+@@ -432,6 +432,8 @@ source_set("test_support") {
+     "test/mock_xdg_shell.h",
+     "test/mock_xdg_surface.cc",
+     "test/mock_xdg_surface.h",
++    "test/mock_xdg_toplevel_icon.cc",
++    "test/mock_xdg_toplevel_icon.h",
+     "test/mock_zcr_extended_text_input.cc",
+     "test/mock_zcr_extended_text_input.h",
+     "test/mock_zwp_linux_dmabuf.cc",
+@@ -576,6 +578,7 @@ source_set("test_support") {
+     "//third_party/wayland-protocols:xdg_activation",
+     "//third_party/wayland-protocols:xdg_output_protocol",
+     "//third_party/wayland-protocols:xdg_shell_protocol",
++    "//third_party/wayland-protocols:xdg_toplevel_icon_protocol",
+     "//ui/display:test_support",
+     "//ui/gfx/geometry:geometry",
+   ]
+@@ -608,6 +611,7 @@ source_set("wayland_unittests") {
+     "host/wayland_zcr_color_manager_unittest.cc",
+     "host/wayland_zwp_pointer_gestures_unittest.cc",
+     "host/xdg_activation_unittest.cc",
++    "host/xdg_toplevel_icon_unittest.cc",
+     "host/zwp_text_input_wrapper_v1_unittest.cc",
+     "host/zwp_text_input_wrapper_v3_unittest.cc",
+     "mojom/wayland_overlay_config_mojom_traits_unittest.cc",
+diff --git a/ui/ozone/platform/wayland/host/shell_toplevel_wrapper.h b/ui/ozone/platform/wayland/host/shell_toplevel_wrapper.h
+index 735a218e6b5667..63b68902a7addd 100644
+--- a/ui/ozone/platform/wayland/host/shell_toplevel_wrapper.h
++++ b/ui/ozone/platform/wayland/host/shell_toplevel_wrapper.h
+@@ -12,6 +12,7 @@
+ #include "ui/platform_window/extensions/wayland_extension.h"
+ 
+ namespace gfx {
++class ImageSkia;
+ class Rect;
+ class RoundedCornersF;
+ }
+@@ -210,6 +211,8 @@ class ShellToplevelWrapper {
+ 
+   virtual void AckRotateFocus(uint32_t serial, uint32_t handled) = 0;
+ 
++  virtual void SetIcon(const gfx::ImageSkia& icon) = 0;
++
+   // Casts `this` to XDGToplevelWrapperImpl, if it is of that type.
+   virtual XDGToplevelWrapperImpl* AsXDGToplevelWrapper();
+ };
+diff --git a/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc b/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
+index 7ba2d52b575a21..204e65c90ec374 100644
+--- a/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
++++ b/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
+@@ -363,6 +363,20 @@ void WaylandToplevelWindow::Deactivate() {
+   WaylandWindow::Deactivate();
+ }
+ 
++void WaylandToplevelWindow::SetWindowIcons(const gfx::ImageSkia& window_icon,
++                                           const gfx::ImageSkia& app_icon) {
++  if (!shell_toplevel_) {
++    return;
++  }
++  // Let the app icon take precedence over the window icon.
++  if (!app_icon.isNull()) {
++    shell_toplevel_->SetIcon(app_icon);
++  } else {
++    shell_toplevel_->SetIcon(window_icon);
++  }
++  root_surface()->Commit(/*flush=*/true);
++}
++
+ void WaylandToplevelWindow::SizeConstraintsChanged() {
+   // Size constraints only make sense for normal windows.
+   if (!shell_toplevel_)
+diff --git a/ui/ozone/platform/wayland/host/wayland_toplevel_window.h b/ui/ozone/platform/wayland/host/wayland_toplevel_window.h
+index 40e16fef05f985..3491798f4c19da 100644
+--- a/ui/ozone/platform/wayland/host/wayland_toplevel_window.h
++++ b/ui/ozone/platform/wayland/host/wayland_toplevel_window.h
+@@ -126,6 +126,8 @@ class WaylandToplevelWindow : public WaylandWindow,
+   void Restore() override;
+   void Activate() override;
+   void Deactivate() override;
++  void SetWindowIcons(const gfx::ImageSkia& window_icon,
++                      const gfx::ImageSkia& app_icon) override;
+   void SizeConstraintsChanged() override;
+   // `SetZOrderLevel()` must be called on `z_order_` in
+   // `SetUpShellIntegration()`.
+diff --git a/ui/ozone/platform/wayland/host/xdg_toplevel_icon_unittest.cc b/ui/ozone/platform/wayland/host/xdg_toplevel_icon_unittest.cc
+new file mode 100644
+index 00000000000000..bd91e0641a7395
+--- /dev/null
++++ b/ui/ozone/platform/wayland/host/xdg_toplevel_icon_unittest.cc
+@@ -0,0 +1,47 @@
++// Copyright 2024 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "ui/ozone/platform/wayland/test/wayland_test.h"
++
++namespace ui {
++
++using XdgToplevelIconTest = WaylandTestSimple;
++
++TEST_F(XdgToplevelIconTest, Basic) {
++  SkBitmap bitmap;
++  bitmap.allocN32Pixels(128, 128);
++  gfx::ImageSkia icon = gfx::ImageSkia::CreateFrom1xBitmap(bitmap);
++  window_->SetWindowIcons(gfx::ImageSkia(), icon);
++
++  PostToServerAndWait([&](wl::TestWaylandServerThread* server) {
++    auto* const manager = server->xdg_toplevel_icon_manager_v1();
++    ASSERT_TRUE(manager);
++    wl::XdgToplevelIconResources expected_resources = {
++        wl::XdgToplevelIconResource(gfx::Size(128, 128), 1)};
++    EXPECT_EQ(manager->resources(), expected_resources);
++  });
++}
++
++TEST_F(XdgToplevelIconTest, AppIconTakesPrecedence) {
++  SkBitmap app_bitmap;
++  app_bitmap.allocN32Pixels(128, 128);
++  gfx::ImageSkia app_icon = gfx::ImageSkia::CreateFrom1xBitmap(app_bitmap);
++
++  SkBitmap window_bitmap;
++  window_bitmap.allocN32Pixels(64, 64);
++  gfx::ImageSkia window_icon =
++      gfx::ImageSkia::CreateFrom1xBitmap(window_bitmap);
++
++  window_->SetWindowIcons(window_icon, app_icon);
++
++  PostToServerAndWait([&](wl::TestWaylandServerThread* server) {
++    auto* const manager = server->xdg_toplevel_icon_manager_v1();
++    ASSERT_TRUE(manager);
++    wl::XdgToplevelIconResources expected_resources = {
++        wl::XdgToplevelIconResource(gfx::Size(128, 128), 1)};
++    EXPECT_EQ(manager->resources(), expected_resources);
++  });
++}
++
++}  // namespace ui
+diff --git a/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.cc b/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.cc
+index 78a81356a5f01e..a716b337518f8c 100644
+--- a/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.cc
++++ b/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.cc
+@@ -6,6 +6,7 @@
+ 
+ #include <aura-shell-client-protocol.h>
+ #include <xdg-decoration-unstable-v1-client-protocol.h>
++#include <xdg-toplevel-icon-v1-client-protocol.h>
+ 
+ #include <optional>
+ 
+@@ -15,6 +16,7 @@
+ #include "base/strings/utf_string_conversions.h"
+ #include "ui/base/hit_test.h"
+ #include "ui/base/ui_base_features.h"
++#include "ui/gfx/image/image_skia_rep_default.h"
+ #include "ui/ozone/common/features.h"
+ #include "ui/ozone/platform/wayland/common/wayland_object.h"
+ #include "ui/ozone/platform/wayland/common/wayland_util.h"
+@@ -25,6 +27,7 @@
+ #include "ui/ozone/platform/wayland/host/wayland_output_manager.h"
+ #include "ui/ozone/platform/wayland/host/wayland_seat.h"
+ #include "ui/ozone/platform/wayland/host/wayland_serial_tracker.h"
++#include "ui/ozone/platform/wayland/host/wayland_shm_buffer.h"
+ #include "ui/ozone/platform/wayland/host/wayland_toplevel_window.h"
+ #include "ui/ozone/platform/wayland/host/wayland_window.h"
+ #include "ui/ozone/platform/wayland/host/wayland_zaura_shell.h"
+@@ -104,8 +107,9 @@ bool XDGToplevelWrapperImpl::Initialize() {
+     return false;
+   }
+ 
+-  if (!xdg_surface_wrapper_)
++  if (!xdg_surface_wrapper_) {
+     return false;
++  }
+ 
+   xdg_toplevel_.reset(
+       xdg_surface_get_toplevel(xdg_surface_wrapper_->xdg_surface()));
+@@ -233,9 +237,10 @@ void XDGToplevelWrapperImpl::SetMinimized() {
+ 
+ void XDGToplevelWrapperImpl::SurfaceMove(WaylandConnection* connection) {
+   DCHECK(xdg_toplevel_);
+-  if (auto serial = GetSerialForMoveResize(connection))
++  if (auto serial = GetSerialForMoveResize(connection)) {
+     xdg_toplevel_move(xdg_toplevel_.get(), connection->seat()->wl_object(),
+                       serial->value);
++  }
+ }
+ 
+ void XDGToplevelWrapperImpl::SurfaceResize(WaylandConnection* connection,
+@@ -261,8 +266,9 @@ void XDGToplevelWrapperImpl::SetTitle(const std::u16string& title) {
+   // length of the string so it would fit the message with some margin.
+   const size_t kMaxLengh = 4000;
+   auto short_title = base::UTF16ToUTF8(title);
+-  if (short_title.size() > kMaxLengh)
++  if (short_title.size() > kMaxLengh) {
+     short_title.resize(kMaxLengh);
++  }
+   xdg_toplevel_set_title(xdg_toplevel_.get(), short_title.c_str());
+ }
+ 
+@@ -470,8 +476,9 @@ void XDGToplevelWrapperImpl::OnConfigureOcclusionState(
+ 
+ void XDGToplevelWrapperImpl::SetTopLevelDecorationMode(
+     DecorationMode requested_mode) {
+-  if (!zxdg_toplevel_decoration_ || requested_mode == decoration_mode_)
++  if (!zxdg_toplevel_decoration_ || requested_mode == decoration_mode_) {
+     return;
++  }
+ 
+   zxdg_toplevel_decoration_v1_set_mode(zxdg_toplevel_decoration_.get(),
+                                        ToInt32(requested_mode));
+@@ -769,6 +776,44 @@ void XDGToplevelWrapperImpl::AckRotateFocus(uint32_t serial, uint32_t handled) {
+   connection_->Flush();
+ }
+ 
++void XDGToplevelWrapperImpl::SetIcon(const gfx::ImageSkia& icon) {
++  auto* manager = connection_->toplevel_icon_manager_v1();
++  if (!manager) {
++    return;
++  }
++
++  if (icon.isNull()) {
++    xdg_toplevel_icon_manager_v1_set_icon(manager, xdg_toplevel_.get(),
++                                          nullptr);
++    return;
++  }
++
++  std::vector<std::pair<WaylandShmBuffer, float>> buffers;
++  auto* xdg_icon = xdg_toplevel_icon_manager_v1_create_icon(manager);
++  for (const auto& rep : icon.image_reps()) {
++    const auto& bitmap = rep.GetBitmap();
++    gfx::Size image_size = gfx::SkISizeToSize(bitmap.dimensions());
++    if (image_size.IsEmpty() || image_size.width() != image_size.height()) {
++      // The toplevel icon protocol requires square icons.
++      continue;
++    }
++
++    WaylandShmBuffer buffer(connection_->buffer_factory(), image_size);
++    if (!buffer.IsValid()) {
++      LOG(ERROR) << "Failed to create SHM buffer for icon Bitmap.";
++      return;
++    }
++
++    wl::DrawBitmap(bitmap, &buffer);
++    buffers.emplace_back(std::move(buffer), rep.scale());
++  }
++  for (const auto& [buffer, scale] : buffers) {
++    xdg_toplevel_icon_v1_add_buffer(xdg_icon, buffer.get(), scale);
++  }
++  xdg_toplevel_icon_manager_v1_set_icon(manager, xdg_toplevel_.get(), xdg_icon);
++  xdg_toplevel_icon_v1_destroy(xdg_icon);
++}
++
+ XDGToplevelWrapperImpl* XDGToplevelWrapperImpl::AsXDGToplevelWrapper() {
+   return this;
+ }
+diff --git a/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.h b/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.h
+index 99db31788888b8..f34cc782ffc82e 100644
+--- a/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.h
++++ b/ui/ozone/platform/wayland/host/xdg_toplevel_wrapper_impl.h
+@@ -81,6 +81,7 @@ class XDGToplevelWrapperImpl : public ShellToplevelWrapper {
+   void SetPersistable(bool persistable) const override;
+   void SetShape(std::unique_ptr<ShapeRects> shape_rects) override;
+   void AckRotateFocus(uint32_t serial, uint32_t handled) override;
++  void SetIcon(const gfx::ImageSkia& icon) override;
+ 
+   XDGToplevelWrapperImpl* AsXDGToplevelWrapper() override;
+ 
+diff --git a/ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.cc b/ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.cc
+new file mode 100644
+index 00000000000000..464884e9e1124b
+--- /dev/null
++++ b/ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.cc
+@@ -0,0 +1,95 @@
++// Copyright 2024 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.h"
++
++#include <wayland-server-core.h>
++
++#include "base/check_op.h"
++#include "ui/ozone/platform/wayland/host/wayland_shm_buffer.h"
++#include "ui/ozone/platform/wayland/test/server_object.h"
++
++namespace wl {
++
++namespace {
++
++void DestroyManager(struct wl_client* client, struct wl_resource* resource) {}
++
++void CreateIcon(struct wl_client* client,
++                struct wl_resource* resource,
++                uint32_t id) {
++  auto* global = GetUserDataAs<MockXdgToplevelIconManagerV1>(resource);
++  wl_resource* icon = CreateResourceWithImpl<MockXdgToplevelIconV1>(
++      client, &xdg_toplevel_icon_v1_interface, 1, &kMockXdgToplevelIconImpl, id,
++      global);
++  global->set_icon(GetUserDataAs<MockXdgToplevelIconV1>(icon));
++}
++
++void SetIcon(struct wl_client* client,
++             struct wl_resource* resource,
++             struct wl_resource* toplevel,
++             struct wl_resource* icon) {
++  auto* manager = GetUserDataAs<MockXdgToplevelIconManagerV1>(resource);
++  ASSERT_TRUE(manager);
++  auto* toplevel_icon = GetUserDataAs<MockXdgToplevelIconV1>(icon);
++  ASSERT_TRUE(toplevel_icon);
++  manager->resources() = toplevel_icon->resources();
++}
++
++}  // namespace
++
++const struct xdg_toplevel_icon_manager_v1_interface
++    kMockXdgToplevelIconManagerImpl = {
++        .destroy = DestroyManager,
++        .create_icon = CreateIcon,
++        .set_icon = SetIcon,
++};
++
++MockXdgToplevelIconManagerV1::MockXdgToplevelIconManagerV1()
++    : GlobalObject(&xdg_toplevel_icon_manager_v1_interface,
++                   &kMockXdgToplevelIconManagerImpl,
++                   1) {}
++
++MockXdgToplevelIconManagerV1::~MockXdgToplevelIconManagerV1() = default;
++
++namespace {
++
++void DestroyIcon(struct wl_client* client, struct wl_resource* resource) {}
++
++void SetName(struct wl_client* client,
++             struct wl_resource* resource,
++             const char* icon_name) {}
++
++void AddBuffer(struct wl_client* client,
++               struct wl_resource* resource,
++               struct wl_resource* buffer,
++               int32_t scale) {
++  auto* icon = GetUserDataAs<MockXdgToplevelIconV1>(resource);
++  ASSERT_TRUE(icon);
++  wl_shm_buffer* shm_buffer = wl_shm_buffer_get(buffer);
++  ASSERT_TRUE(buffer);
++  auto width = wl_shm_buffer_get_width(shm_buffer);
++  auto height = wl_shm_buffer_get_height(shm_buffer);
++  icon->resources().emplace_back(gfx::Size(width, height), scale);
++}
++
++}  // namespace
++
++const struct xdg_toplevel_icon_v1_interface kMockXdgToplevelIconImpl = {
++    .destroy = DestroyIcon,
++    .set_name = SetName,
++    .add_buffer = AddBuffer,
++};
++
++MockXdgToplevelIconV1::MockXdgToplevelIconV1(
++    wl_resource* resource,
++    MockXdgToplevelIconManagerV1* global)
++    : ServerObject(resource), global_(global) {}
++
++MockXdgToplevelIconV1::~MockXdgToplevelIconV1() {
++  CHECK_EQ(global_->icon(), this);
++  global_->set_icon(nullptr);
++}
++
++}  // namespace wl
+diff --git a/ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.h b/ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.h
+new file mode 100644
+index 00000000000000..4272f362be0d18
+--- /dev/null
++++ b/ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.h
+@@ -0,0 +1,79 @@
++// Copyright 2024 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef UI_OZONE_PLATFORM_WAYLAND_TEST_MOCK_XDG_TOPLEVEL_ICON_H_
++#define UI_OZONE_PLATFORM_WAYLAND_TEST_MOCK_XDG_TOPLEVEL_ICON_H_
++
++#include <xdg-toplevel-icon-v1-server-protocol.h>
++
++#include <vector>
++
++#include "base/check.h"
++#include "base/memory/raw_ptr.h"
++#include "testing/gmock/include/gmock/gmock.h"
++#include "ui/gfx/geometry/size.h"
++#include "ui/ozone/platform/wayland/test/global_object.h"
++#include "ui/ozone/platform/wayland/test/server_object.h"
++
++namespace wl {
++
++class MockXdgToplevelIconV1;
++
++struct XdgToplevelIconResource {
++  gfx::Size size;
++  int32_t scale;
++
++  bool operator==(const XdgToplevelIconResource& other) const {
++    return size == other.size && scale == other.scale;
++  }
++};
++
++using XdgToplevelIconResources = std::vector<XdgToplevelIconResource>;
++
++extern const struct xdg_toplevel_icon_manager_v1_interface
++    kMockXdgToplevelIconManagerImpl;
++extern const struct xdg_toplevel_icon_v1_interface kMockXdgToplevelIconImpl;
++
++class MockXdgToplevelIconManagerV1 : public GlobalObject {
++ public:
++  MockXdgToplevelIconManagerV1();
++
++  MockXdgToplevelIconManagerV1(const MockXdgToplevelIconManagerV1&) = delete;
++  MockXdgToplevelIconManagerV1& operator=(const MockXdgToplevelIconManagerV1&) =
++      delete;
++
++  ~MockXdgToplevelIconManagerV1() override;
++
++  void set_icon(MockXdgToplevelIconV1* icon) { icon_ = icon; }
++  MockXdgToplevelIconV1* icon() { return icon_; }
++
++  XdgToplevelIconResources& resources() { return resources_; }
++
++ private:
++  raw_ptr<MockXdgToplevelIconV1> icon_ = nullptr;
++
++  XdgToplevelIconResources resources_;
++};
++
++class MockXdgToplevelIconV1 : public ServerObject {
++ public:
++  MockXdgToplevelIconV1(wl_resource* resource,
++                        MockXdgToplevelIconManagerV1* global);
++
++  MockXdgToplevelIconV1(const MockXdgToplevelIconV1&) = delete;
++  MockXdgToplevelIconV1& operator=(const MockXdgToplevelIconV1&) = delete;
++
++  ~MockXdgToplevelIconV1() override;
++
++  XdgToplevelIconResources& resources() { return resources_; }
++
++ private:
++  raw_ptr<MockXdgToplevelIconManagerV1> global_ = nullptr;
++
++  XdgToplevelIconResources resources_;
++};
++
++}  // namespace wl
++
++#endif  // UI_OZONE_PLATFORM_WAYLAND_TEST_MOCK_XDG_TOPLEVEL_ICON_H_
+diff --git a/ui/ozone/platform/wayland/test/test_wayland_server_thread.cc b/ui/ozone/platform/wayland/test/test_wayland_server_thread.cc
+index ab6f43e4a0cdb6..c925b27eb31cb4 100644
+--- a/ui/ozone/platform/wayland/test/test_wayland_server_thread.cc
++++ b/ui/ozone/platform/wayland/test/test_wayland_server_thread.cc
+@@ -171,6 +171,9 @@ bool TestWaylandServerThread::Start() {
+   if (!xdg_activation_v1_.Initialize(display_.get())) {
+     return false;
+   }
++  if (!xdg_toplevel_icon_manager_v1_.Initialize(display_.get())) {
++    return false;
++  }
+ 
+   client_ = wl_client_create(display_.get(), server_fd.release());
+   if (!client_)
+diff --git a/ui/ozone/platform/wayland/test/test_wayland_server_thread.h b/ui/ozone/platform/wayland/test/test_wayland_server_thread.h
+index d17deea735bc01..dd8f538ea23c18 100644
+--- a/ui/ozone/platform/wayland/test/test_wayland_server_thread.h
++++ b/ui/ozone/platform/wayland/test/test_wayland_server_thread.h
+@@ -23,6 +23,7 @@
+ #include "ui/ozone/platform/wayland/test/mock_wp_presentation.h"
+ #include "ui/ozone/platform/wayland/test/mock_xdg_activation_v1.h"
+ #include "ui/ozone/platform/wayland/test/mock_xdg_shell.h"
++#include "ui/ozone/platform/wayland/test/mock_xdg_toplevel_icon.h"
+ #include "ui/ozone/platform/wayland/test/mock_zwp_linux_dmabuf.h"
+ #include "ui/ozone/platform/wayland/test/test_alpha_compositing.h"
+ #include "ui/ozone/platform/wayland/test/test_compositor.h"
+@@ -187,6 +188,10 @@ class TestWaylandServerThread : public TestOutput::Delegate,
+ 
+   MockXdgActivationV1* xdg_activation_v1() { return &xdg_activation_v1_; }
+ 
++  MockXdgToplevelIconManagerV1* xdg_toplevel_icon_manager_v1() {
++    return &xdg_toplevel_icon_manager_v1_;
++  }
++
+   void set_output_delegate(OutputDelegate* delegate) {
+     output_delegate_ = delegate;
+   }
+@@ -260,6 +265,7 @@ class TestWaylandServerThread : public TestOutput::Delegate,
+   MockWpPresentation wp_presentation_;
+   TestWpPointerGestures wp_pointer_gestures_;
+   MockXdgActivationV1 xdg_activation_v1_;
++  MockXdgToplevelIconManagerV1 xdg_toplevel_icon_manager_v1_;
+   std::unique_ptr<TestSelectionDeviceManager> primary_selection_device_manager_;
+ 
+   std::vector<std::unique_ptr<GlobalObject>> globals_;
