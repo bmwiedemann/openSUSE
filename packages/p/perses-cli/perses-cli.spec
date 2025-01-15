@@ -1,7 +1,7 @@
 #
 # spec file for package perses-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,16 @@
 %define executable_name percli
 
 Name:           perses-cli
-Version:        0.49.0
+Version:        0.50.0
 Release:        0
 Summary:        CLI for the Perses observability visualisation project
 License:        Apache-2.0
 URL:            https://github.com/perses/perses
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/perses/perses/pull/2416
-Patch1:         https://github.com/perses/perses/commit/b04061023c941d879460d81e6e4c6019621dbc16.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.22 >= 1.22.5
+BuildRequires:  go1.23
 BuildRequires:  zsh
 Provides:       percli = %{version}
 
