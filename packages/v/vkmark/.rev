@@ -134,4 +134,29 @@
 - Drop no longer needed vkmark-cstdint-include.patch</comment>
     <requestid>1093343</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aa38dd6e3f9411cae72dd3c8e7efe221</srcmd5>
+    <version>2017.08+git.20250114</version>
+    <time>1736959512</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2017.08+git.20250114:
+  * kms: Create gbm_bos with explicit modifiers if possible
+  * kms: Explicitly request all extensions dependencies
+  * github: Add ubuntu-24.04 build in CI
+  * headless: Add plugin for a headless window system
+  * ws: Resolve swapchain related validation errors
+  * vulkan_state: Set application vulkan version
+  * vulkan_state: Add support for validation layers
+  * build: Generate format names map from vk.xml
+  * scenes,ws: Silence [[nodiscard]] warnings
+  * kms: Add winsys option to specify the TTY to use
+  * kms: Unbreak on FreeBSD
+  * xcb: Fix incorrect window hint size
+  * kms: Probe and use the first functional /dev/dri/cardX device
+  * build: Require C++17
+  * wayland: Avoid segfault after failure to connect to display server
+  * kms: Gracefully handle null results from KMS functions
+  * ws: Improve automatic window system selection</comment>
+    <requestid>1238014</requestid>
+  </revision>
 </revisionlist>

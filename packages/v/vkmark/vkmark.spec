@@ -1,7 +1,7 @@
 #
 # spec file for package vkmark
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018-2022 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           vkmark
-Version:        2017.08+git.20230412
+Version:        2017.08+git.20250114
 Release:        0
 Summary:        Vulkan benchmark utility
 License:        LGPL-2.1-or-later
