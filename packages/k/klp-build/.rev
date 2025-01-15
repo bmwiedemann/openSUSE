@@ -186,4 +186,41 @@
   * setup: 15.6-RT uses the SLERT repo</comment>
     <requestid>1206105</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7efaee7b453c55bf592b6fbcf8e84079</srcmd5>
+    <version>0~20250108.8e6c7f6</version>
+    <time>1736959562</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20250108.8e6c7f6:
+  * ksrc: drop support for SLE15-SP5-RT
+  * ksrc: rename SLE15-SP5 branch to LTSS
+  * setup: Always set archs and cve to cs_data
+  * extractor: Replace '-' for &quot;-&quot; on module name of externalized syms
+  * ksrc: Skip SLE Micro for now
+  * Pylint: Solve reports on Setup class and on test files
+  * setup: Do not reassign archs with archs.sort()
+  * cmd: use correct archs field
+  * setup: Move ctor args into a functions
+  * klpbuild: Fix more pylint warnings
+  * Fix pylint warnings on extract and templ modules
+  * templ: Remove the CreateMakefile function
+  * ksrc: Fix some pylint warnings
+  * Fix pylint issues on Config class
+  * codestream: Do not use empty list and dict as default value
+  * ksrc: Honor --no-check on scan
+  * extractor: Dump the env vars used by ccp
+  * config: natsort the codestreams of codestreams.json
+  * extractor: Check if make invocation fails
+  * man: Add definiton of the `scan` subcommand
+  * ksrc: Use atomic transactions with git-fetch
+  * setup: Always pass conf to scan
+  * ksrc: Fix IBS constructor
+  * utils: Remove unneeded variable
+  * ibs.py: Automatically drop stale codestreams
+  * config: Fix flush_cs_file regarding list vs dict
+  * Config: Move check_symbol_archs to Codestream class
+  * util: Use natsorted on classify_codestreams
+  * Move filter_cs to utils</comment>
+    <requestid>1238073</requestid>
+  </revision>
 </revisionlist>

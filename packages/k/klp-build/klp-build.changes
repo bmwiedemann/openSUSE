@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Jan 15 14:19:42 UTC 2025 - mvetter@suse.com
+
+- Update to version 0~20250108.8e6c7f6:
+  * ksrc: drop support for SLE15-SP5-RT
+  * ksrc: rename SLE15-SP5 branch to LTSS
+  * setup: Always set archs and cve to cs_data
+  * extractor: Replace '-' for "-" on module name of externalized syms
+  * ksrc: Skip SLE Micro for now
+  * Pylint: Solve reports on Setup class and on test files
+  * setup: Do not reassign archs with archs.sort()
+  * cmd: use correct archs field
+  * setup: Move ctor args into a functions
+  * klpbuild: Fix more pylint warnings
+  * Fix pylint warnings on extract and templ modules
+  * templ: Remove the CreateMakefile function
+  * ksrc: Fix some pylint warnings
+  * Fix pylint issues on Config class
+  * codestream: Do not use empty list and dict as default value
+  * ksrc: Honor --no-check on scan
+  * extractor: Dump the env vars used by ccp
+  * config: natsort the codestreams of codestreams.json
+  * extractor: Check if make invocation fails
+  * man: Add definiton of the `scan` subcommand
+  * ksrc: Use atomic transactions with git-fetch
+  * setup: Always pass conf to scan
+  * ksrc: Fix IBS constructor
+  * utils: Remove unneeded variable
+  * ibs.py: Automatically drop stale codestreams
+  * config: Fix flush_cs_file regarding list vs dict
+  * Config: Move check_symbol_archs to Codestream class
+  * util: Use natsorted on classify_codestreams
+  * Move filter_cs to utils
+  * Cleanups
+  * ksrc: Add --force to git fetch
+  * config: Remove codestreams_list and use a dict everywhere
+  * ksrc: Don't download codestreams data with "scan"
+  * config: Move self.lp_name to the classes that inherit COnfig
+  * Move lp_out_file and lp_name to Codestream class
+  * config: Simplify get_tests_path
+  * Drop conf.json
+  * Move found commits from conf.json to codestreams.json file
+  * Move cve data to codestreams.json
+  * config: Move archs from conf.json to codestreams.json
+  * config: Move the codestreams into it's own key inside codestreams.json
+  * klp-build: Remove --data-dir
+  * config: Remove unused conf.json fields
+  * Move find_obj_path to Codestream class
+  * Codestreams: Add get_mod
+  * Move validate_config to Codestream class
+  * ksrc: Move get_cs_branch to utils
+  * ksrc: Clean get_cs_branch function
+  * Revert "templ.py: Include linux/livepatch.h header for IBT enabled kernels"
+  * Codestreams: Add lpdir to Codestreams class
+  * templ: Use SUSE_HEADER only once
+  * templ: Drop unused methods
+  * Extractor: Merge CCP class into Extractor
+  * Codestream.py: Add needs_ibt attribute
+  * ibs: Use more cs.dir()
+  * Move lp_path to the Codestream class
+  * Remove clang-extract usage
+  * extractor: cs-diff: Assert the correct variable
+  * ksrc: Add --quiet to git fetch
+  * pylint: First batch of changes, mostly imports and unused vars
+  * setup: Remove --codestreams in favor of --filter
+  * ibs: Speed-up the bulk download of codestreams
+  * Enable scan --conf to check if we support a livepatch for the CVE
+  * klp-build: Download missing codestreams on scan
+  * klpbuild: Remove self.working_cs
+  * tests: Remove the workers argument from Extractor class
+  * ccp: Adapt to the new ccp policy scripts
+  * ibs: Fix typo in log
+  * templ.py: Include linux/livepatch.h header for IBT enabled kernels
+  * Fix remaining issues regarding the Codestream class introduction
+  * config: Add 'workers' setting to config file
+  * Add 'Settings' section to config file
+  * doc: Remove support for upstream kernel
+  * cmd: log: Create Codestream object before calling log
+  * Move ELF handling to utils
+  * Move more code out of Config class
+  * Move more code out of Config class
+  * Add more code to Codestream class
+  * Simplify get_boot_file to always use files from /boot/*
+  * codestream: Add ktype and kname on Codestream class
+  * Remove support for host and kdir types of LP creation
+  * cmd: Add scan subcommand
+  * cmd.py: Remove the --experimental optinal\
+  * config: rename new_codestreams to codestreams_list
+  * config: Make verbose=False the default for filter_cs
+  * Second batch of Codestream class support
+  * Huge transformation: use Codestream class everywhere
+  * Use Codestream on IBS class
+  * Let GitHelper to download and filter the codestreams
+  * setup: Split the _scan_ part from setup_codestreams
+  * test: utils: Add check for the new Codestream classify
+  * Start moving setup phase to use Codestream class
+  * utils: Change classify to also recognize Codestreams class
+  * Introduce Codestreams class
+  * tests: Convert setup tests to use pytest
+  * tests: Convert templ to use pytest
+
+-------------------------------------------------------------------
 Mon Oct 07 12:58:01 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20241007.06dcc8f:

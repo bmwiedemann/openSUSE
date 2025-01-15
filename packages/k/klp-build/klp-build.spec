@@ -1,7 +1,7 @@
 #
 # spec file for package klp-build
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           klp-build
-Version:        0~20241007.06dcc8f
+Version:        0~20250108.8e6c7f6
 Release:        0
 Summary:        The kernel livepatching creation tool
 License:        GPL-2.0-only
