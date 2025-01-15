@@ -15,7 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{suse_version} < 1600
+%define gccver 13
+%endif
 Name:           openscad
 Version:        2021.01
 Release:        0
@@ -33,7 +35,7 @@ Patch5:         fix_fs_error.patch
 BuildRequires:  bison
 BuildRequires:  double-conversion-devel
 BuildRequires:  flex
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
@@ -74,9 +76,14 @@ aspects, e.g. modelling of machine parts.
 
 %prep
 %autosetup -p1
+# build with C++17
+sed -i "s|c++14 strict_c++|c++17 strict_c++|g" c++std.pri
+sed -i "s|Using C++14|Using C++17|g" c++std.pri
+sed -i "s|set(CMAKE_CXX_STANDARD 14)|set(CMAKE_CXX_STANDARD 17)|g" CMakeLists.txt
 
 %build
-%qmake5 PREFIX=%{_prefix} CONFIG+=qopenglwidget
+%qmake5 %{?gccver:QMAKE_CC=gcc-%{gccver} QMAKE_CXX=g++-%{gccver}} \
+        PREFIX=%{_prefix} CONFIG+=qopenglwidget
 
 # As of 08.05.2021, memoryperjob constraint is not working correctly,
 # so limit memory per job here.
