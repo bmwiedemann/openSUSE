@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 11 09:36:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.10.2:
+  * Fixes compatibility with libgnunetchat 0.5.2
+  * Update appdata to current state
+  * Implement notification sounds
+  * List tags of contacts
+  * Implement filtering by tags
+
+-------------------------------------------------------------------
 Sun Oct 20 06:24:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.10.1:

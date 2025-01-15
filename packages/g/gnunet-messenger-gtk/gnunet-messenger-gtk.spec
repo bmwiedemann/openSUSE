@@ -1,7 +1,7 @@
 #
 # spec file for package gnunet-messenger-gtk
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnunet-messenger-gtk
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        GUI for GNUnet Messenger service
 License:        AGPL-3.0-or-later
@@ -42,6 +42,9 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(libqrencode)
+%if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
+BuildRequires:  gcc13
+%endif
 
 %description
 A GTK based UI using the GNUnet Messenger service
@@ -50,6 +53,9 @@ A GTK based UI using the GNUnet Messenger service
 %autosetup -p1 -n messenger-gtk-%{version}
 
 %build
+%if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
+export CC=gcc-13
+%endif
 %meson
 %meson_build
 

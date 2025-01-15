@@ -25,4 +25,12 @@ libextractor -&gt; gnunet -&gt; gnunet-fuse </comment>
     <comment></comment>
     <requestid>1222447</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>068a509bb5594aa8e8f820807d0e6c97</srcmd5>
+    <version>0.10.2</version>
+    <time>1736959539</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238052</requestid>
+  </revision>
 </revisionlist>
