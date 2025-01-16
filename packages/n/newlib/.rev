@@ -261,4 +261,25 @@
 - Includes epiphany-fixes.diff</comment>
     <requestid>1227696</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>49b635b163fc12a453c1fff61ee144c6</srcmd5>
+    <version>4.5.0.20241231</version>
+    <time>1737048891</time>
+    <user>anag+factory</user>
+    <comment>- Update to v4.5.0
+  * major clean-up of libgloss build including merging a number of platforms
+    into top-level Makefile (moxie, v850, i960, msp430, frv, i386, ...) and
+    removal of dead platforms such as xc16x
+  * strverscmp fixed for comparison of digit sequence with non-digits
+  * proper locking added from amdgcn
+  * numerous improvements to arc support including support of 16-entry
+    register file
+  * long double complex functions are now skipped if long double != double
+  * support for POSIX.1-2024 added to features.h
+  * arc64: port added for Synopsys Designware ARCv3 ISA
+  * sys/xtensa removed and replaced by machine/xtensa and libgloss
+  * fixes to powf
+  * fixes for building with gcc-15</comment>
+    <requestid>1238280</requestid>
+  </revision>
 </revisionlist>

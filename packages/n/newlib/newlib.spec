@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 # In the staging/ring projects, we don't want to build the unneeded packages
 %bcond_with ringdisabled
 Name:           %{pname}
-Version:        4.4.0.20231231
+Version:        4.5.0.20241231
 Release:        0
 Summary:        C library intended for use on embedded systems
 License:        BSD-3-Clause AND MIT AND LGPL-2.0-or-later AND ISC
