@@ -1,7 +1,7 @@
 #
 # spec file for package python-venusian
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-venusian
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        A library for deferring decorator actions
 License:        SUSE-Repoze AND ZPL-2.1
 URL:            https://github.com/Pylons/venusian
 Source:         https://files.pythonhosted.org/packages/source/v/venusian/venusian-%{version}.tar.gz
-Patch1:         https://github.com/Pylons/venusian/pull/92/commits/000b36d6968502683615da618afc3677ec8f05fc.patch#/py313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
