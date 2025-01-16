@@ -911,6 +911,10 @@ Thu Feb 29 11:25:49 UTC 2024 - daniel@molkentin.de
 
 - Update to version 10.2.3:
 
+  Security
+  * CVE-2025-21613: Removes vulnerable library
+    github.com/go-git/go-git/v5 (bsc#1235574)
+
   Features and enhancements
 
   * Auth: Improve groups claim setup docs for AzureAD.
