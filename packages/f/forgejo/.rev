@@ -366,4 +366,41 @@
 - disable gpg verification for this release (forwarded request 1230940 from rrahl0)</comment>
     <requestid>1230941</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0c1199cdeae78eeda954ba583ffab0d5</srcmd5>
+    <version>10.0.0</version>
+    <time>1737055452</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.0.0:
+  full changelog at https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/10.0.0.md
+  * Fix and refactor markdown rendering
+  * migrate TOTP secrets to keying
+  * Ensure source_id parameter is not skipped when set to 0 and correctly
+    filter users in /api/v1/admin/users endpoint
+  * Rework user profile settings
+  * Rework new repository dialog
+  * Show repository size on mobile
+  * Add links to commit lists in contributors graph page
+  * Add copy path button to file view
+  * Put issue actions in a single row on mobile
+  * Don't display email in profile settings when hidden
+  * Highlight user mention in comments and commit messages
+  * When bleve is used for issue search, a fuzzy search now applies to each
+    word instead of all of them, as if they were a phrase
+  * Add search to releases page
+  * Combine review requests comments
+  * If you select a portion of a comment and use the 'Quote reply' feature in
+    the context menu, only that portion will be quoted
+  * Set &quot;your repositories&quot; as the default filter for org dashboards
+  * Add button to create a Markdown table in a comment
+  * Add a bullet symbol between author and committer
+  * Added link to show all Issues/PullRequests
+  * Fix Action log UI race condition that occasionally prevents logs from loading
+  * Fix wiki search overflowing on wide screens
+  * Move &quot;forgot_password&quot;-link to fix login tab order
+  * Update help links on page with no workflows
+  * Add Low German to list of default languages
+  * i18n: Add dummy language for checking translation keys (forwarded request 1238298 from rrahl0)</comment>
+    <requestid>1238299</requestid>
+  </revision>
 </revisionlist>

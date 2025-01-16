@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Jan 16 15:16:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 10.0.0:
+  full changelog at https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/10.0.0.md
+  * Fix and refactor markdown rendering
+  * migrate TOTP secrets to keying
+  * Ensure source_id parameter is not skipped when set to 0 and correctly
+    filter users in /api/v1/admin/users endpoint
+  * Rework user profile settings
+  * Rework new repository dialog
+  * Show repository size on mobile
+  * Add links to commit lists in contributors graph page
+  * Add copy path button to file view
+  * Put issue actions in a single row on mobile
+  * Don't display email in profile settings when hidden
+  * Highlight user mention in comments and commit messages
+  * When bleve is used for issue search, a fuzzy search now applies to each
+    word instead of all of them, as if they were a phrase
+  * Add search to releases page
+  * Combine review requests comments
+  * If you select a portion of a comment and use the 'Quote reply' feature in
+    the context menu, only that portion will be quoted
+  * Set "your repositories" as the default filter for org dashboards
+  * Add button to create a Markdown table in a comment
+  * Add a bullet symbol between author and committer
+  * Added link to show all Issues/PullRequests
+  * Fix Action log UI race condition that occasionally prevents logs from loading
+  * Fix wiki search overflowing on wide screens
+  * Move "forgot_password"-link to fix login tab order
+  * Update help links on page with no workflows
+  * Add Low German to list of default languages
+  * i18n: Add dummy language for checking translation keys
+  * Updates for translations
+  * Add summary card for repos and releases
+  * Implement update branch API
+  * Allow changing default branch update style
+  * Add sorting functionality to /api/v1/admin/users endpoint
+  * Add Swift login endpoint
+  * Make LFS http_client parallel within a batch
+  * Improve performance of notifications page for MySQL
+  * Filepath filter for code search
+  * Add option to disable builtin authentication
+  * Add github compatible tarball download API endpoints
+  * Improve performance of allowed org repo creation query
+  * Allow the actions user to login via the jwt token
+  * Add a "summary card" to issues & PRs for consumption by OpenGraph clients
+  * Add a doctor check to disable the "Actions" unit for mirrors
+  * Make AVIF Images work with Forgejo
+  * Trim spaces from repo names on form submission
+  * Add new [lfs_client].BATCH_SIZE and [server].LFS_MAX_BATCH_SIZE config settings.
+  * Add setting to block disposable emails
+  * mermaid: Add the Kanban board diagram type.
+  * mermaid: Class diagram includes a new "classBox" shape, classDef statement,
+    support for styling the default class and lollipop interfaces.
+  * Add DISABLE_ORGANIZATIONS_PAGE and DISABLE_CODE_PAGE settings for explore pages
+  * Add branch deletion for scheduled PRs
+  * The requested_reviewers data is included in more webhook events.
+  * Support migrating GitHub/GitLab PR draft status.
+  * Language detection in the repository learned about the following languages:
+    - Java Template Engine, Noir, Cylc, iCalendar, vCard (aka. VCF: Virtual
+      Contact File) and Variant Call Format (VCF), B4X, Carbon, LiveCode
+      Script, Dune (OCaml build system)
+  * Allow filtering pull requests by poster in the API.
+  * Add support for searching users by email.
+  * New mermaid flowchart shapes.
+  * Code search results when using the bleve indexer are sorted by relevance.
+  * Add bin to Composer Metadata.
+  * Support regexp in git-grep search
+  * Git notes can be modified via the API or the UI
+
+-------------------------------------------------------------------
 Fri Dec 13 05:19:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 9.0.3:

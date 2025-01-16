@@ -1,7 +1,7 @@
 #
 # spec file for package forgejo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,14 @@
 %endif
 %endif
 Name:           forgejo
-Version:        9.0.3
+Version:        10.0.0
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
 Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
+# something is broken with the verification, works fine manually
 #Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
 #Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6c0dc2bcdd183550a4b61a2dc5923710#/%{name}.keyring
 Source3:        package-lock.json
@@ -126,8 +127,10 @@ by the hooks. An ini file also gives a good default and means that
 users do not have to completely provide a full environment.
 
 %description
-Providing Git hosting for your project, friends, company or community? Forgejo (/for'd͡ʒe.jo/ inspired by forĝejo
-– the Esperanto word for forge) has you covered with its intuitive interface, light and easy hosting and a lot of builtin functionality.
+Providing Git hosting for your project, friends, company or community? Forgejo
+(/for'd͡ʒe.jo/ inspired by forĝejo – the Esperanto word for forge) has you
+covered with its intuitive interface, light and easy hosting and a lot of
+builtin functionality.
 
 %prep
 %autosetup -p1 -n %{name}-src-%{version}
@@ -196,10 +199,6 @@ semodule -r %{name} 2>/dev/null || :
 
 %postun
 %service_del_postun %{name}.service
-
-%check
-#as of now, broken
-#%%make_build test
 
 %files
 %license LICENSE
