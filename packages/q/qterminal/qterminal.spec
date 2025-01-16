@@ -1,7 +1,7 @@
 #
 # spec file for package qterminal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ Source2:        %{name}.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
+%endif
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
