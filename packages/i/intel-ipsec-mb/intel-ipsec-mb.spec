@@ -1,7 +1,7 @@
 #
 # spec file for package intel-ipsec-mb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022, Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,8 @@
 #
 
 
-%global major        1
-%global minor        5
+%global major        2
+%global minor        0
 %global patch        0
 
 # GitHub properties
