@@ -436,7 +436,6 @@ FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/ronn ruby3.4-rubygem-ronn-ng
 FileProvides: /usr/bin/rsync rsync
 FileProvides: /usr/bin/ruby ruby3.4
-FileProvides: /usr/bin/ruby.ruby3.3 ruby3.3
 FileProvides: /usr/bin/ruby.ruby3.4 ruby3.4
 FileProvides: /usr/bin/runawk runawk
 FileProvides: /usr/bin/sbcl sbcl
@@ -3731,7 +3730,7 @@ Macros:
 %product_libs_gcc_ver_libgphobos3 12
 %product_libs_gcc_ver_libgdruntime3 12
 # The following shlibs have the latest version build from GCC 13 sources
-%product_libs_gcc_ver_libm2 13
+%product_libs_gcc_ver_libm218 13
 %product_libs_gcc_ver_libgo22 13
 %product_libs_gcc_ver_libgphobos4 13
 %product_libs_gcc_ver_libgdruntime4 13
