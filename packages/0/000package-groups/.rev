@@ -2082,4 +2082,11 @@ to ease detection of our immutable OS</comment>
 Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</comment>
     <requestid>1226212</requestid>
   </revision>
+  <revision rev="292" vrev="290">
+    <srcmd5>daf79ca7c6611a443a566b519b073ed2</srcmd5>
+    <version>unknown</version>
+    <time>1737036030</time>
+    <user>dimstar_suse</user>
+    <comment>32bit: nodejs-electron no longer supported</comment>
+  </revision>
 </revisionlist>

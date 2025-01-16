@@ -271,8 +271,6 @@
       <package name="mozjs128-devel"/>
       <package name="mozjs78"/>
       <package name="mozjs78-devel"/>
-      <package name="nodejs-electron"/>
-      <package name="nodejs-electron-devel"/>
     </packagelist>
   </group>
 
