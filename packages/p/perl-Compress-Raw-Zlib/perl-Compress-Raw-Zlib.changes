@@ -1,0 +1,747 @@
+-------------------------------------------------------------------
+Sat Aug 31 05:31:20 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.213
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.213 28 August 2024
+        * version 2.213
+          Wed Aug 28 15:42:15 2024 +0100
+          6db34434df59999e57aacfcb52a9cc8cb5161155
+        * Add zlib-ng 2.2.1 to workflow
+          Tue Jul 2 15:28:39 2024 +0100
+          fe3cd4a98c1e432fa06aed1617599424048d6ac8
+        * add zlib-ng 2.1.7 & 2.2.0
+          Wed Jun 19 17:07:02 2024 +0100
+          293d041abfa7763d3e8c4be8fa41024a80cd9a4b
+        * Add zlib-ng 2.1.7 & 2.2.0 to github workflow
+          Wed Jun 19 16:57:56 2024 +0100
+          2db84c21e4441a23d289e593f201597f0d863fe4
+        * remove Werror from clang legacy builds
+          Mon Jun 17 10:41:34 2024 +0100
+          d6440a3e08254c64bb8e5d8d805697d19895745b
+        * use -xc++ when building with C++
+          Mon Jun 17 08:04:20 2024 +0100
+          da8e6b716f81148e9720257414e41c724dc43cc0
+        * Add perl 5.40 to workflows
+          Sun Jun 16 17:42:29 2024 +0100
+          f7d1764f4e5a944c35ae3d27ae488c707e21784b
+
+-------------------------------------------------------------------
+Sun Apr 28 03:08:37 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.212
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.212 27 April 2024
+        * no functional changes
+    2.211 6 April 2024
+        * version 2.211
+          Sat Apr 6 14:17:42 2024 +0100
+          f14a09ae54eb45c7904aa0b1c22ff3314f8d18a1
+
+-------------------------------------------------------------------
+Fri Mar  8 22:02:13 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Tue Feb 27 03:07:27 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.209
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.209 26 February 2024
+        * version 2.209
+          Mon Feb 26 15:54:39 2024 +0000
+          b8c062949b7e89a2f1643825f6b66f79b2ba3b68
+        * #31 Fix build failure with "c++-compat" warnings
+          Mon Feb 26 15:20:07 2024 +0000
+          d9af6f896accf755fa1ef486cf128fdf66314213
+    2.208 18 February 2024
+        * #30 Fix for READMEmd target
+          Mon Feb 19 09:09:05 2024 +0000
+          6945e13819aa525ab1e5d61362e171011aae9e7b
+    2.207 18 February 2024
+        * #28 use zlib 1.3.1 in examples
+          Tue Feb 13 09:34:23 2024 +0000
+          4292a3b6e2151404b8b544c20b7e54512ca2852f
+        * #28 include zlib-1.3.1 source
+          Tue Feb 13 09:31:12 2024 +0000
+          e2bd28778a465ce8205233a3ec0e8c2f4c28f705
+        * #29 Add author & absrtract to Makefile.PL & meta.*
+          Sat Feb 10 16:17:15 2024 +0000
+          0d4b451e1788300f3ffa21b3bf76e0ac26bcc32c
+        * #28 upgrade to zlib 1.3.1 for upstream testing
+          Thu Jan 25 09:56:35 2024 +0000
+          6c0ab334eacaf26203efccbb491d1ae86221cf3e
+
+-------------------------------------------------------------------
+Wed Jul 26 03:07:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.206
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.206 25 July 2023
+        * 2.206
+          Tue, 25 Jul 2023 16:18:52 +0100
+          b74db6a4557769233f1504bc94fbc4bafb0efc8a
+        * drop rt.cpan from SUPPORT section
+          Tue, 18 Jul 2023 09:22:34 +0100
+          a2c231b7e3e178c150c614bad7dc4d8a91fa4b8a
+    2.205 16 July 2023
+        * 2.205
+          Sun, 16 Jul 2023 16:11:31 +0100
+          3effdb9dbaa9bedfff3cad44902e515409ffae78
+        * Test::More::isn't warns in perl 5.38
+          Sun, 9 Jul 2023 21:38:15 +0100
+          928bbc6ddc5178621fb477b38a1b4b4de38866cf
+        * add zlib-ng 2.1.3
+          Thu, 29 Jun 2023 19:51:58 +0100
+          b1aa2583b4c114c2194890a0e015fdc439928c31
+        * add zlib-ng 2.1.2
+          Fri, 9 Jun 2023 14:51:17 +0100
+          0d505d9156ca7e9cac15e2d6e574099300f91a14
+        * Change storage of ZLIBNG_VER_STATUS from IV to PV https://github.com/pmqs/Compress-Raw-Zlib/issues/24
+          Fri, 9 Jun 2023 14:30:36 +0100
+          0a8fb7141a43b8e49609fb06f05fad5150a97c2a
+        * Fix to allow building with C++17 register keyword not allowed in C++17 https://github.com/pmqs/Compress-Raw-Zlib/issues/23
+          Mon, 22 May 2023 12:42:51 +0100
+          a7c12acdd4ce7fdc070f50ac78e68e04c8699c81
+        * Change while loop for `LimitOutput`  example https://github.com/pmqs/Compress-Raw-Zlib/issues/21
+          Sun, 21 May 2023 21:32:19 +0100
+          972f03b5b0bf06d44991bbee2d2c9216e4175154
+        * [doc] zlib.h: Remove duplicate "the" (#22)
+          Mon, 1 May 2023 22:46:39 +0200
+          89b43e6978d8e9b16801f48881cadf822585be0d
+        * Add zlib compat version for 2.0.7
+          Sat, 18 Mar 2023 08:42:59 +0000
+          e7d79cbd5924fbdcd3515fb3b0ad171c7720105c
+
+-------------------------------------------------------------------
+Thu Feb  9 03:07:29 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.204
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+-------------------------------------------------------------------
+Tue Jun 28 03:06:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.202
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.201 27 June 2022
+
+        * Z_NULL should be 'UV' rather than 'PV'
+          https://github.com/pmqs/Compress-Raw-Zlib/issues/17
+          Sun Jun 26 22:02:04 2022 +0100
+          de28f0335d3d605d696b19d43fc48de42272455c
+
+-------------------------------------------------------------------
+Sun Jun 26 03:07:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.201
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+-------------------------------------------------------------------
+Sun May 15 03:06:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.105
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.104 14 April 2022
+        * Add Compress::Raw::Zlib::VERSION to output
+          Sat May 14 15:16:57 2022 +0100
+          3e22c93169a67986017f64d9a2e5085c417d8624
+        * Dump version info when running test harness
+          Sat May 14 15:10:17 2022 +0100
+          ca9f33ba0323d0abc91a83800636f180b2b44162
+        * Fix use of ZLIB_INCLUDE/LIB
+          Sat May 14 09:01:38 2022 +0100
+          8a7d4a97d7441b61a8a888342766419044fa5a33
+        * More fixes for BUILD_ZLIB off
+          Sat May 14 08:54:04 2022 +0100
+          2d9650094dab90858ef58bfbda62f3bc60e159e4
+        * Add BUILD_ZLIB to the matrix
+          Sat May 14 08:31:54 2022 +0100
+          b61b92fc9d06bf04f1adec337357ffbd39535901
+        * Merge branch 'master' of https://github.com/pmqs/Compress-Raw-Zlib
+          Sat May 14 08:27:14 2022 +0100
+          3ac7d0d3d45ae263402fab1ebb3835e2ae16c5a6
+        * Fix for BUILD_ZLIB disabled
+          Sat May 14 08:25:34 2022 +0100
+          b0f04e37fb58a34ef01767ad16a8f63ca868eec6
+        * Add BUILD_ZLIB to the matrix
+          Sat May 14 08:22:56 2022 +0100
+          aa8f5ff981c7305c995d4e2f798ae0d7d45866a5
+    2.104 13 April 2022
+        * Merge pull request #11 from monkburger/symbol_fix_2
+          Fri May 13 07:17:19 2022 +0100
+          64aea2d3f78946d7df4096eadfa0d7267f4439a5
+        * perl_crz -> Perl_crz
+          Tue May 3 18:19:24 2022 +0000
+          20502e6c2eba8ddcad80b20574e840457c0cb369
+        * This is a slightly different way to fix https://github.com/pmqs/Compress-Raw-Zlib/issues/8
+          Tue May 3 18:06:48 2022 +0000
+          d9cd27fb212da7455b6ba44729ca11bb441f3950
+        * add tests for crc32/adler32_combine
+          Mon May 2 16:18:13 2022 +0100
+          dcfe9ef439790f1a4fae81cf3eac38cfeb848294
+
+-------------------------------------------------------------------
+Wed Apr  6 03:08:32 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.103
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.103 3 April 2022
+        * Sync upstream fix for CVE-2018-25032
+          https://github.com/advisories/GHSA-jc36-42cf-vqwj
+          Update to Zlib 1.2.12
+          d507f527768f6cbab5831ed3ec17fe741163785c
+          Fix for inflateSync return code change
+          f47ea5f36c40fe19efe404dd75fd790b115de596
+          Fix for incorrect CRC from zlib 1.2.12.1
+          https://github.com/madler/zlib/commit/ec3df00224d4b396e2ac6586ab5d25f673caa4c2
+          60104e3a162a116548303861ae0811fb850e65fd
+        * AUTHOR doesn't contain the stated information
+          bf5a03c1b440c8d9e41cffb344bf889794cc532b
+
+-------------------------------------------------------------------
+Sun Feb 21 03:08:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.101
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+
+    2.101 20 February 2021
+
+        * fix version numbers in meta files
+
+-------------------------------------------------------------------
+Fri Jan  8 03:07:39 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.100
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.100 7 January 2021
+
+        * trim whitespace
+          5de62cd3987c736c14d1aa804936808fbc1fe9cb
+
+-------------------------------------------------------------------
+Sat Aug  1 03:10:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.096
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.096 31 July 2020
+        * No changes
+    2.095 19 July 2020
+        * No changes
+
+-------------------------------------------------------------------
+Tue Jul 14 03:10:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.094
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.094 13 July 2020
+
+        * Issue with Append mode & SvOOK
+          https://github.com/pmqs/Compress-Raw-Zlib/issues/3
+          80ee0524012f46c5984c2d57649af0b07f82c750
+
+-------------------------------------------------------------------
+Sun Dec  8 03:16:34 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.093
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.093 7 December 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Thu Dec  5 03:09:50 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.092
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.092 4 December 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Nov 25 11:47:19 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.091
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.091 23 November 2019
+  
+        * Silence "macro expands to multiple statements" warning
+          Change sourced upstream from https://github.com/Perl/perl5/issues/17013
+          https://github.com/pmqs/Compress-Raw-Zlib/issues/2
+          da2bd1fc765b80d01ed10a79b6c4a035e5095ed8
+
+-------------------------------------------------------------------
+Sun Nov 10 10:03:39 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.090
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.090 9 November 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Nov  4 11:15:43 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.089
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.089 3 November 2019
+  
+        * No Changes
+  
+    2.088 31 October 2019
+  
+        * Add SUPPORT section
+          d348ad76c2073a2973d094891fbd0c2e24bf397d
+  
+        * 000prereq.t: dump Perl version
+          e1afe502818cb1ccf5bad917b14b029b408f47f1
+
+-------------------------------------------------------------------
+Sun Aug 11 05:04:49 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.087
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.087 10 August 2019
+  
+        * clang warning in ppport.h
+          update to latest ppport.h
+          https://github.com/pmqs/Compress-Raw-Zlib/issues/1
+          664a5fbacf778acdd4cfbcc571997f3df5ee43d3
+
+-------------------------------------------------------------------
+Wed Apr  3 06:48:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.086
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.086 31 March 2019
+  
+        * Moved source to github https://github.com/pmqs/Compress-Raw-Zlib
+  
+        * Add META_MERGE to Makefile.PL
+  
+        * Added meta-json.t & meta-yaml.t
+
+-------------------------------------------------------------------
+Mon Jan  7 06:03:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.084
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.084 5 January 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Dec 31 06:04:26 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.083
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.083 30 December 2018
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Tue Apr 10 05:25:51 UTC 2018 - coolo@suse.com
+
+- updated to 2.081
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.081 4 April 2018
+  
+        * previous release used $^W instead of use warnings. Fixed.
+
+-------------------------------------------------------------------
+Wed Apr  4 05:08:44 UTC 2018 - coolo@suse.com
+
+- updated to 2.080
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.080 2 April 2018
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Thu Dec  7 06:10:21 UTC 2017 - coolo@suse.com
+
+- updated to 2.076
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.076 21 Nov 2017
+  
+        * Zlib.xs
+          Silence gcc compiler warnings when -Wsign-compare is enabled
+          #123688: Compilation warnings with clang
+  
+        * zlib-src/inflate.c and zlib-src/infback.c
+          Silence gcc compiler warnings when -Wimplicit-fallthrough is enabled
+          #123358: Compilation warnings with gcc-7.*
+  
+        * Makefile.PL
+          Windows uses -lzlib. Linux uses -lz
+          #123699: wrong external zlib name used on Windows
+
+-------------------------------------------------------------------
+Wed Nov 15 06:09:24 UTC 2017 - coolo@suse.com
+
+- updated to 2.075
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.075 14 Nov 2017
+  
+        * Update zlib-src directory to use zlib 1.2.11
+          #123245: perl 5.26.1 is vulnerable to CVE-2016-9843, CVE-2016-9841, CVE-2016-9840, CVE-2016-9842
+  
+        * Zlib.xs
+          Don't allow offset to be greater than length of buffer in crc32.
+  
+        * Zlib.xs
+          Change my_zcalloc to use safecalloc.
+          The link, https://github.com/madler/zlib/issues/253, is the upstream report for the remaining 
+          valgrind errors not already dealt with by 1.2.11. Using calloc in Zlib.xs for now as a workaround.
+          #121074: valgrind errors in the test suite
+
+-------------------------------------------------------------------
+Mon Feb 20 06:13:17 UTC 2017 - coolo@suse.com
+
+- updated to 2.074
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.074 19 Feb 2017
+  
+        * Fix bad 2.073 release
+  
+    2.073 18 Feb 2017
+  
+        * Zlib.xs
+          Comment out unused variables & remove C++-ism
+          #120272: [PATCH] Unbreak compilation
+
+-------------------------------------------------------------------
+Mon Feb 13 11:25:21 UTC 2017 - coolo@suse.com
+
+- updated to 2.072
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.072 12 Feb 2017
+  
+        * Makefile.PL
+          #120084: Need Fix for Makefile.PL depending on . in @INC
+  
+        * zlib-src
+          #120207: inflateUndermine: subvert arg conditionally used/unused
+  
+        * zlib-src
+          #112829: two gcc6-found problems
+  
+        * fix deflateParams for zlib > 1.2.8
+          #119762: Tests broken with zlib-1.2.10
+  
+    2.071 30 Dec 2016
+  
+        * #119580 (inflate.c: One (last?) compilation warning)
+          Identical issue reeported in upstream zlib
+               https://github.com/madler/zlib/issues/111
+  
+          Fix checked into zlib dev codeline via
+              https://github.com/madler/zlib/commit/2edb94a3025d288dc251bc6cbb2c02e60fbd7438
+
+-------------------------------------------------------------------
+Fri Dec 30 06:11:02 UTC 2016 - coolo@suse.com
+
+- updated to 2.070
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.070 28 Dec 2016
+  
+        * #107642: compilation warning from inflate.c
+  
+        * #119007: [PATCH] Wrong FLAG_APPEND logic analog to Bzip2
+
+-------------------------------------------------------------------
+Tue Oct  6 11:30:21 UTC 2015 - coolo@suse.com
+
+- updated to 2.069
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.069 26 Sept 2015
+  
+        * reduce compiler warnings and stderr noise
+          [#101341]
+  
+        * amigaos4: cpan/Compress-Raw-Zlib: also __amigaos4__
+          [#106799]
+  
+        * const all global data
+          https://github.com/madler/zlib/commit/82e9dc60932bf2ce5422a5e76e66e5a05abd26e3
+          [#101298]
+  
+        * Coverity finding: Unused value
+          https://github.com/madler/zlib/commit/9859a94c1002484ee5f824c05683a5b2484cbf49
+          [105414]
+  
+        * Coverity findings
+          [102399]
+  
+        * Coverity finding: Overlapping buffer in memory copy
+          [105413]
+
+-------------------------------------------------------------------
+Wed Dec 24 15:19:43 UTC 2014 - jnweiger@gmail.com
+
+- update to 2.068 10 Dec 2014
+      * Silence more compiler warnings
+      * Disable running of 07bufsize.y by default.
+        COMPRESS_ZLIB_RUN_MOST needs set to run them. Makes life more
+        bearable on legacy platforms
+- 2.067 8 Dec 2014
+      * Silence compiler warnings
+
+- 2.066 21 Sept 2014
+      * Another COW violation [#98069]
+      * misleading nesting/indentation (found by Coverity) [#95405]
+
+- 2.065 3 February 2014
+      * [PATCH] resolve c++ build failure in core [#92657]
+      * gcc -g3: final link failed: Memory exhausted [#88936]
+
+- 2.064 1 February 2014
+      * [PATCH] Handle non-PVs better [#91558]
+      * Z_OK instead of Z_BUF_ERROR [#92521]
+
+- 2.063 23 October 2013
+      * gcc -g3: final link failed: Memory exhausted [#88936]
+      * Compress::Raw::Zlib uses AutoLoader for no reason [#88260]
+      * Typo in Compress::Zlib _combine function documentation [#89305]
+
+-------------------------------------------------------------------
+Mon Oct 14 17:04:30 UTC 2013 - lars@linux-schulserver.de
+
+- update to 2.062:
+  + typo fix [RT#86417]
+  + Include zlib 1.2.8 source.
+  + typo fix [RT#85431]
+  + silence compiler warning by making 2nd parameter to
+    DispStream a const char*
+  + Mishandling of BUILD_ZLIB=0 option [RT#85492]
+  + Mention SimpleZip in POD
+  + Copy-on-write support [RT#81353]
+  + Compress::Raw::Zlib needs to use PERL_NO_GET_CONTEXT [RT#80319]
+  + Install to 'site' instead of 'perl' when perl version is 5.11+
+    [RT#79812]
+  + update to ppport.h that includes SvPV_nomg_nolen [RT#78079]
+  + Fix C++ build issue
+  + Fix misuse of magic in API [RT#78079]
+
+-------------------------------------------------------------------
+Mon Jun 25 09:09:29 UTC 2012 - chris@computersalat.de
+
+- update to 2.054
+  * Build issue on Win32
+    [#77030] 
+- 2.053 6 May 2012
+  * Include zlib 1.2.7 source.
+- 2.052 29 April 2012
+  * Fixed build issue when Perl is built with C++
+- 2.051 20 February 2012
+  * Bug in Compress::Raw::Zlib on Windows
+    [#75222] 
+
+-------------------------------------------------------------------
+Wed Feb 22 02:36:17 UTC 2012 - vcizek@suse.com
+
+- update to 2.050
+      * Build failure on Irix & Solaris.
+        [RT #69985]
+
+-------------------------------------------------------------------
+Mon Feb 20 02:36:59 UTC 2012 - vcizek@suse.com
+
+- update to 2.049
+      * Include zlib 1.2.6 source.
+
+-------------------------------------------------------------------
+Tue Jan 31 10:28:11 UTC 2012 - vcizek@suse.com
+
+- update to 2.048
+      * Set minimum zlib version to 1.2.0
+      * Allow flush to be called multiple times without any intermediate
+        call to deflate and still return Z_OK.
+        In the code below $status was Z_BUF_ERROR before this change.
+          $def->flush(...);
+          $status = $def->flush(...);
+      * Added support for zlibCompileFlags
+      * Set minimum Perl version to 5.6
+
+-------------------------------------------------------------------
+Mon Dec  5 02:35:10 UTC 2011 - vcizek@suse.com
+
+- update to 2.045
+      * Moved FAQ.pod into Zlib.pm
+
+-------------------------------------------------------------------
+Wed Nov 30 15:10:04 UTC 2011 - cfarrell@suse.com
+
+- license update: Zlib and (GPL-1.0+ or Artistic-1.0)
+  SPDX and use Zlib instead of BSD-3-Clause
+
+-------------------------------------------------------------------
+Mon Nov 21 02:36:56 UTC 2011 - vcizek@suse.com
+
+- update to 2.043
+  - minor changes
+
+-------------------------------------------------------------------
+Mon Oct 31 02:34:22 UTC 2011 - vcizek@suse.com
+
+- update to 2.040
+      * croak if attempt to freeze/thaw compression object
+        [RT #69985]
+
+-------------------------------------------------------------------
+Thu Jun 23 07:50:35 UTC 2011 - vcizek@novell.com
+
+- update to 2.037
+      * small test changes
+
+-------------------------------------------------------------------
+Mon Jun 20 15:51:56 UTC 2011 - jw@novell.com
+
+- changed from bz2 to gz, to make
+  /source/devel:languages:perl/_project/_service happy, which would 
+  abort the build with: "broken: service download_files failed:"
+  otherwise.
+
+-------------------------------------------------------------------
+Mon Jun 20 10:18:18 UTC 2011 - jw@novell.com
+
+- updated to 2.036, version needed by perl-IO-Compress
+  * Added offset parameter to CRC32
+
+-------------------------------------------------------------------
+Wed May 11 08:40:44 UTC 2011 - vcizek@novell.com
+
+- update to 2.035
+      * Almost No Changes
+
+-------------------------------------------------------------------
+Fri May  6 08:06:46 UTC 2011 - vcizek@novell.com
+
+- update to 2.034
+- license correction
+
+-------------------------------------------------------------------
+Mon Jan 17 08:07:25 UTC 2011 - vcizek@novell.com
+
+- update to 2.033
+      * Fixed typos & spelling errors.
+        [perl# 81782]
+
+-------------------------------------------------------------------
+Wed Jan 12 08:33:21 UTC 2011 - vcizek@novell.com
+
+- added Provides: to spec
+
+-------------------------------------------------------------------
+Tue Jan 11 12:45:30 UTC 2011 - vcizek@novell.com
+
+- update to 2.032
+ * Document inflateReset [RT #61082]
+ * Ran the zlib2ansi script against the files in zlib-src.
+ * Added "-DNO_VIZ" to DEFINE in Makefile.PL [RT #65293]
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:08 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Jun 25 21:02:22 UTC 2010 - jw@novell.com
+
+- updated to 2.027
+  * Updated to include zlib 1.2.5
+  * Fixed definition of Z_TREES in Makefile.PL
+  * fixed instance where $[ should have been $] in t/02zlib.t
+  * ...
+
+-------------------------------------------------------------------
+Fri Jun 19 01:09:41 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Wed Jun 17 23:42:24 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+
+-------------------------------------------------------------------
+Sun Jun 14 23:39:16 CEST 2009 - chris@computersalat.de
+
+- update to 2.015
+  * Makefile.PL
+    Backout changes made in 2.014
+- 2.014
+  * Makefile.PL
+    Updated to check for indirect dependencies.
+- 2.012
+  * Document the gzip flags that WindowBits can take.
+  * Allow a dictionary to be used with a raw inflate.
+    Needs zlib 1.2.2.1 or better.
+    [RT #36046]
+- 2.011
+  * A C++-style comment sneaked in with the last update. Fixed.
+    [core patch #33828]
+- 2.010
+  * No Changes
+- 2.009
+  * No Changes
+- 2.008
+  * Minor documentation changes in README
+- spec mods
+- autogen filelist
+
+-------------------------------------------------------------------
+Mon Oct  8 09:33:35 CEST 2007 - anicka@suse.cz
+
+- update to 2.006
+  * Makefile.PL: Added INSTALLDIRS directive to install as a core 
+    module when built on a perl >= 5.9.
+
+-------------------------------------------------------------------
+Tue Jul  3 08:34:48 CEST 2007 - anicka@suse.cz
+
+- update to 2.005
+  * Only include ppport.h when not being built with perl.
+
+-------------------------------------------------------------------
+Wed Mar  7 10:47:51 CET 2007 - anicka@suse.cz
+
+- update to 2.004
+  * Fixed lvalue substr issue
+  * Remove redundant code from Zlib.xs
+
+-------------------------------------------------------------------
+Mon Feb 26 13:23:39 CET 2007 - anicka@suse.cz
+
+- package created (initial version 2.003) 
+
