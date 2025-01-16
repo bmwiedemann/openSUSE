@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 14 13:34:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.
+
+-------------------------------------------------------------------
 Tue Feb  7 10:04:26 UTC 2012 - cfarrell@suse.com
 
 - license update: SUSE-Oasis-Specification-Notice

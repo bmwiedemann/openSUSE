@@ -122,4 +122,12 @@ Use this SUSE- spdx proprietary prefix until the oasis spec license notice is pu
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="19" vrev="85">
+    <srcmd5>cd182afe51381f40a0c0cbefebd40f81</srcmd5>
+    <version>1.1</version>
+    <time>1737048888</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238264</requestid>
+  </revision>
 </revisionlist>

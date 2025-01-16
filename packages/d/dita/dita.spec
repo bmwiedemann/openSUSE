@@ -1,7 +1,7 @@
 #
 # spec file for package dita
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
 Name:           dita
-BuildRequires:  sgml-skel unzip
-Url:            http://www.oasis-open.org/committees/dita/
+BuildRequires:  sgml-skel
+BuildRequires:  unzip
+URL:            http://www.oasis-open.org/committees/dita/
 License:        SUSE-Oasis-Specification-Notice
 Group:          Productivity/Publishing/XML
 Requires:       sgml-skel
 %define regcat /usr/bin/sgml-register-catalog
 PreReq:         %{regcat} /usr/bin/xmlcatalog /usr/bin/edit-xml-catalog
-PreReq:         sed grep awk coreutils
+PreReq:         awk
+PreReq:         coreutils
+PreReq:         grep
+PreReq:         sed
 Summary:        OASIS Darwin Information Typing Architecture (DITA)
 Version:        1.1
-Release:        62
+Release:        0
 Source0:        http://www.oasis-open.org/committees/download.php/24944/dita1.1.zip
 Source1:        http://www.oasis-open.org/committees/download.php/15396/dita-document-definitions-1.0.1.zip
 # Patch:          dita-catalog.diff
@@ -69,7 +72,7 @@ for z in $zip; do
   unzip -a $z
 done
 unzip -a -o %{S:1}
-# %patch -p 1
+# %%patch -p 1
 chmod -R a+rX,g-w,o-w .
 find . -type f | xargs chmod a-x
 
