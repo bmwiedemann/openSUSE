@@ -102,4 +102,12 @@
   * do-not-require-venv.patch</comment>
     <requestid>1227206</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ee55678008b506ef1f6195d7b36fcb17</srcmd5>
+    <version>1.7.5</version>
+    <time>1737055461</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238300</requestid>
+  </revision>
 </revisionlist>

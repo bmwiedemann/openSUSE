@@ -1,7 +1,7 @@
 #
 # spec file for package python-docformatter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,8 +76,6 @@ chmod -x src/docformatter/__main__.py
 
 %install
 %pyproject_install
-# Do not install LICENSE
-%python_expand rm %{buildroot}%{$python_sitelib}/LICENSE
 %python_clone -a %{buildroot}%{_bindir}/docformatter
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
