@@ -1,7 +1,7 @@
 #
 # spec file for package python-aws-sam-translator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-aws-sam-translator
-Version:        1.92.0
+Version:        1.94.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0

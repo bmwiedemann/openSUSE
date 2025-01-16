@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:04:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.94.0
+  * feat: support for Provisioned Poller (MSK and SelfManagedKafka)
+  * chore: bump version to 1.94.0
+- from version 1.93.0
+  * chore: update valid appsync function runtime in tests (#3670)
+  * chore: fix graphql transform test template (#3672)
+  * chore(schema): update (#3671)
+  * feat: add introspection, query & resolver limits properties in appsync graphql api (#3668)
+  * fix:skip tests if eventrule to eventbus feature aren't available in specific regions (#3673)
+  * Added kms:GenerateDataKey action to KMSEncryptPolicy policy (#3657)
+  * feat: add property to update lambda version when lambda layer is updated (#3661)
+  * chore(schema): update (#3674)
+  * feat: support observability for ESM (DDB and Kinesis and SQS)
+  * feat: Add Type S3Bucket to DestinationConfig
+  * chore: bump version to 1.93.0
+  * format fix
+
+-------------------------------------------------------------------
 Sat Nov  9 09:06:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.92.0:
