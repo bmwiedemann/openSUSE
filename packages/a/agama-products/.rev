@@ -77,4 +77,12 @@
     <comment>- Update SLES4SAP ID to SLES_SAP (gh#agama-project/agama#1890).</comment>
     <requestid>1237710</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>aa4b1f9ed554f420eaed29f4d5e8aa3c</srcmd5>
+    <version>0</version>
+    <time>1737048898</time>
+    <user>anag+factory</user>
+    <comment>- Update also base product from SLES-SAP to SLES_SAP(bsc#1235956)</comment>
+    <requestid>1238295</requestid>
+  </revision>
 </revisionlist>
