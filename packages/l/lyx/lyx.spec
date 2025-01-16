@@ -1,7 +1,7 @@
 #
 # spec file for package lyx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           lyx
-Version:        2.4.2.1
+Version:        2.4.3
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later

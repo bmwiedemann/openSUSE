@@ -936,4 +936,14 @@
   * Incliudes last minute fix. This is the read 2.4.2</comment>
     <requestid>1205669</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>00f5e1e9e6b0d9b4c9972e52be477479</srcmd5>
+    <version>2.4.3</version>
+    <time>1737048887</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.3:
+  * This is a maintenance release. For details see included
+    ANNOUNCE or https://www.lyx.org/announce/2_4_3.txt</comment>
+    <requestid>1238261</requestid>
+  </revision>
 </revisionlist>
