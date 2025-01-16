@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:00:34 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind
+
+-------------------------------------------------------------------
 Wed Nov  6 21:44:16 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.1.0:

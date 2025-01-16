@@ -1,7 +1,7 @@
 #
 # spec file for package qtermwidget
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake
+%if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
+%endif
 BuildRequires:  utf8proc-devel
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets) >= 6.6.0

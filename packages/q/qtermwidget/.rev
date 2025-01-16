@@ -36,4 +36,12 @@ going forward in lxqt where they make sense to drop</comment>
   * Fixed comparison of pointer addition with NULL (#549) (forwarded request 1222010 from AndnoVember)</comment>
     <requestid>1223224</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>af8a356a784d7bcb0e1716dbf63c7af0</srcmd5>
+    <version>2.1.0</version>
+    <time>1737055478</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238301</requestid>
+  </revision>
 </revisionlist>
