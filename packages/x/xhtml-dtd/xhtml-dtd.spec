@@ -1,7 +1,7 @@
 #
 # spec file for package xhtml-dtd
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,7 +31,7 @@ Requires(postun): sgml-skel >= 0.7
 Requires:       sgml-skel >= 0.7
 %define regcat /usr/bin/sgml-register-catalog
 PreReq:         %{regcat} /usr/bin/xmlcatalog
-Url:            http://www.w3.org/MarkUp/
+URL:            http://www.w3.org/MarkUp/
 Source0:        http://www.w3.org/Consortium/Legal/copyright-software.html
 Source1:        http://www.w3.org/TR/xhtml1/xhtml1.tgz
 Source2:        http://www.w3.org/TR/2001/REC-xhtml11-20010531/xhtml11.tgz
@@ -45,7 +45,7 @@ Source7:        CATALOG.xhtml-1-modularization
 Source8:        CATALOG.xhtml-1.1
 Source9:        CATALOG.xhtml-basic10
 Source10:       CATALOG.xhtml-math-svg
-#Patch: 
+#Patch:
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -77,7 +77,7 @@ variants.
 
 %prep
 %setup -q -c -T
-# %patch
+# %%patch
 cp -p %{SOURCE0} .
 cp %{S:6} %{S:7} %{S:8} %{S:9} %{S:10} .
 %setup -q -D -T -a1 -a2 -a3 -a4 -a5
