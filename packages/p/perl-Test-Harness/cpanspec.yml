@@ -1,0 +1,29 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#preamble: |-
+# BuildRequires:  gcc-c++
+post_prep: |-
+  chmod a+x t/source_tests/source.sh t/source_tests/source_args.sh
+#post_build: |-
+# rm unused.files
+post_install: |-
+ mv %buildroot/usr/bin/prove %buildroot/usr/bin/prove-cpan
+ mv %buildroot/usr/share/man/man1/prove.1 %buildroot/usr/share/man/man1/prove-cpan.1
+#sed -i s,/prove,/prove-cpan, %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

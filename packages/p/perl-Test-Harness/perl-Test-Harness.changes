@@ -1,0 +1,348 @@
+-------------------------------------------------------------------
+Wed Aug 14 05:30:43 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.50
+   see /usr/share/doc/packages/perl-Test-Harness/Changes
+
+-------------------------------------------------------------------
+Fri Mar  8 23:05:30 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Tue Oct  3 03:08:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.48
+   see /usr/share/doc/packages/perl-Test-Harness/Changes
+
+  3.48 2023-10-02
+          - Accept TAP version 14
+
+-------------------------------------------------------------------
+Mon Aug 14 03:07:33 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.47
+   see /usr/share/doc/packages/perl-Test-Harness/Changes
+
+  3.47 2023-08-13
+          - Add missing negation in EINTR check
+          - Fix HARNESS_PERL_SWITCHES=-I handling in TAP::Harness::Env
+
+-------------------------------------------------------------------
+Tue Aug  8 03:10:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.46
+   see /usr/share/doc/packages/perl-Test-Harness/Changes
+
+  3.46  2023-07-30
+          - Color the "ok"s as well.
+          - Skip symlink tests on msys2
+          - Use use absolute path for executable tests
+          - Space-quote executable if has spaces
+          - Avoid using Errno::EINTR directly for platforms without it
+          - stop calling import on App::Prove plugins
+
+  3.45_02  2023-06-01
+          - Avoid using Errno::EINTR directly for platforms without it
+
+  3.45_01  28-04-2023
+          - Color the "ok"s as well.
+          - Skip symlink tests on msys2
+          - Use use absolute path for executable tests
+          - Space-quote executable if has spaces
+
+-------------------------------------------------------------------
+Mon Apr 18 03:15:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.44
+   see /usr/share/doc/packages/perl-Test-Harness/Changes
+
+  3.44     17-04-2022
+          - Release 3.43_06 as non-dev
+  3.43_06  11-04-2022
+          - Fix skipping SEGV test
+  3.43_05  07-04-2022
+          - Fix failing SEGV test on Windows
+  3.43_04 22-01-2022
+          - Remove ASCII-isms to better work on EBCDIC
+  3.43_03 30-07-2021
+          - Move timer initialization
+          - Fix YAMLish behaviour with empty values
+          - fix eintr error handling in TAP::Parser::Multiplexer
+          - Parse out signal name & core dump.
+  3.43_02 25-03-2020
+          - Let the aggregator finish gracefully after bailout
+          - Make prove respect HARNESS_VERBOSE if no verbosity flags are passed
+
+-------------------------------------------------------------------
+Tue Mar 20 06:57:24 UTC 2018 - coolo@suse.com
+
+- updated to 3.42
+   see /usr/share/doc/packages/perl-Test-Harness/Changes-2.64
+
+-------------------------------------------------------------------
+Thu Mar  1 07:04:20 UTC 2018 - coolo@suse.com
+
+- updated to 3.41
+   see /usr/share/doc/packages/perl-Test-Harness/Changes-2.64
+
+-------------------------------------------------------------------
+Fri Apr  7 06:56:40 UTC 2017 - coolo@suse.com
+
+- updated to 3.39
+   see /usr/share/doc/packages/perl-Test-Harness/Changes-2.64
+
+-------------------------------------------------------------------
+Tue Mar 14 07:44:45 UTC 2017 - coolo@suse.com
+
+- updated to 3.38
+   see /usr/share/doc/packages/perl-Test-Harness/Changes-2.64
+
+-------------------------------------------------------------------
+Mon Mar 13 15:34:25 UTC 2017 - coolo@suse.com
+
+- fix build on sle12
+
+-------------------------------------------------------------------
+Mon Feb  8 07:05:49 UTC 2016 - coolo@suse.com
+
+- readd manual fix
+
+-------------------------------------------------------------------
+Sun Feb  7 10:43:21 UTC 2016 - coolo@suse.com
+
+- updated to 3.36
+   see /usr/share/doc/packages/perl-Test-Harness/Changes
+
+          - Accept YAML with trailing whitespace in header (Maik Hentsche)
+          - Stop bundling Test::More for testing
+  
+  3.35    2015-01-14
+          - Fix prove --version to actually print the version (Leon Timmermans, #101216)
+          - Add --version to usage message (Leon Timmermans, #101215)
+  
+  3.34    2014-11-02
+          - Enable printing CPU times spent per test (Jarkko Hietaniemi)
+  
+  3.33    2014-08-16
+          - Various documentation fixes (Leon Timmermans, Justin Cook)
+  
+  3.32    2014-06-11
+          - Remove harness_class from argument hash in T::H::E (Leon Timmermans)
+  
+  3.31    2014-06-07
+          - Implement external rulesfile for TAP::Harness (David Golden)
+          - Add harness_class argument to TAP::Harness::Env (Leon Timmermans)
+          - Make prove respect environmental variables #28 (Leon Timmermans)
+
+-------------------------------------------------------------------
+Fri Dec  6 12:24:03 UTC 2013 - coolo@suse.com
+
+- avoid another file conflict
+
+-------------------------------------------------------------------
+Tue Nov 26 13:56:58 UTC 2013 - coolo@suse.com
+
+- updated to 3.30
+      - Fix missing parent prereq in META.{yml,json} and NotBuild.PL
+        (Dagfinn Ilmari Mannsåker, #89650)
+      - Respect PERL5LIB in tainting source handler test (Dagfinn Ilmari Mannsåker, 
+        Leon Timmermans)
+      - Use base instead of parent:
+        This dist is used for testing all other modules, so it should avoid
+        having any non-core prerequisites.  Having parent as a prereq leads to a
+        circular dependency of parent -> Test::More -> Test::Harness. (Graham Knop)
+      - Various POD fixes (Nathan Gary Glenn)
+      - Don't localize all of %ENV in harness.t (Craig Berry)
+      - Give TAP::Harness::Beyond a unique NAME (Leon Timmermans)
+
+-------------------------------------------------------------------
+Thu Oct 17 18:55:47 UTC 2013 - lars@linux-schulserver.de
+
+- update to 3.29:
+  + Get rid of use vars in favor of our in all modules 
+    (Leon Timmermans) and tests (Karen Etheridge)
+  + Added use warnings to all modules (Leon Timmermans) and tests 
+    (Karen Etheridge)
+  + Use parent instead of @ISA in all modules (Leon Timmermans) 
+    and tests (Karen Etheridge)
+  + Fix failing test on VMS (Craig Berry)
+  + Improve error message on loading failure 
+    (Leon Timmermans, RT#77730)
+  + Use Text::ParseWords, deprecate TAP::Parser::Utils
+  + Dramatically reduce memory usage (Nick Clark, RT #84939)
+  + Store test_num (in Grammar.pm) as a number instead of a string.
+    Reduces memory usage (Nick Clark, RT#84939)
+  + PERL5LIB is always propogated to a test's @INC, even with 
+    taint more (Schwern, RT#84377)
+  + restore "always add -w to switches" behavior
+  + Renamed env.opts.t to env_opts.t (for VMS)
+  + RT #74393: corrected typo in M::B integration docs.
+  + RT #63473: fix typo.
+  + RT #49732: Attempt to load File::Glob::Windows to get correct
+    glob semantics on Win32.
+  + RT #47890: Don't use Win32::GetShortPathName.
+  + RT #64404: Ignore textness ('-T') of script when reading shebang.
+  + Handle the case where we don't know the wait status of the
+    test more gracefully.
+  + Make the test summary 'ok' line overrideable so that it can be
+    changed to a plugin to make the output of prove idempotent.
+  + Stop adding '-w' to perl switches by default
+  + testargs.t: don't run a world-writable file
+- remove man page already during install (excluded anyway) to avoid
+  problems during perl_process_packlist (file exists already...)
+- fix license to be in spdx format
+
+-------------------------------------------------------------------
+Tue Feb 22 17:15:01 UTC 2011 - lars@linux-schulserver.de
+
+- update to 3.23:
+  + Made SourceHandler understand that an executable binary file
+    is probably an executable.
+  + Added workaround for Getopt::Long 2.25 handling of
+    multivalue options. Fixes test failure on stock perl 5.6.2
+  + Removed TAP::Parser::SourceHandler::pgTAP. Find it in its own
+    distribution on CPAN
+  + Add --trap (summary on Ctrl-C) option to prove (#59427)
+  + Preserve old semantics for test scripts with a shebang line
+    by favouring Perl as the intepreter for any file with a
+    shebang (#59457)
+  + Allow TAP::Parser to recognize a nested BAIL_OUT directive.
+  + Add brief HOWTO for creating and running pgTAP tests to
+    TAP::Parser::SourceHandler::pgTAP.
+  + Fix trailing plan + embedded YAML + TAP 13 case. Thanks to
+    Steffen Schwigon. #54518.
+  + Numerous spelling fixes. Thanks to Ville Skyttä.
+  + Add new option --tapversion for prove to set the default
+    assumed TAP version. Thanks to Steffen Schwigon.
+  + Fixed tests to run successfully under Devel::Cover. Thanks to
+    Phillipe Bruhat.
+  + Fixed injection of test args to work with general executables
+    as well as Perl scripts (#59186).
+  + Allow multiple --ext=.foo arguments to prove, to allow running
+    different types of tests in the same prove run.
+  + App::Prove::extension() is now App::Prove::extensions(), and
+    returns an arrayref of extensions, rather than a single scalar.
+    The same change has been made to App::Prove::State::extension().
+
+-------------------------------------------------------------------
+Tue Nov 30 14:03:24 UTC 2010 - coolo@novell.com
+
+- add perl(ExtUtils::Manifest) as buildrequire
+
+-------------------------------------------------------------------
+Tue Nov 30 13:37:28 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Jan 25 08:14:11 UTC 2010 - lars@linux-schulserver.de
+
+- update to 3.20:
+  + Remove references / dependency on TAP::Parser::Source::Perl
+  + Avoid depending on Module::Build. The resulting circular
+    dependency made it impossible to install Test::Harness and/or
+    Module::Build in some cases.
+
+-------------------------------------------------------------------
+Wed Jan 20 08:03:51 UTC 2010 - lars@linux-schulserver.de
+
+- update to 3.18:
+  - Handle the case where the filename of the perl executable
+    contains space. Thanks to kmx.
+  - Various documentation fixes.
+  - Fix failures due to unknown location of Perl in t/source_handler.t.
+  - Use EUMM style shebang magic to produce an executable 'psql'
+    for t/source_handler.t.
+  - Fix failures due to over-strict assertions in t/source.t.
+  - Merge in Steve's missing changes. Oops.
+  - Re-engineered source handling API to allow users to configure how
+    TAP is sourced by the parser.  Introduced a new 'sources' param to
+    TAP::Harness.
+    The new TAP::Parser::SourceHandler API makes it much easier to
+    write plugins.  This breaks backwards compatibility for plugins &
+    extenstions that rely on the following APIs:
+
+        TAP::Parser::Source
+        TAP::Parser::SourceFactory
+        TAP::Parser::IteratorFactory
+        TAP::Parser, specifically:
+          new: 'source' & 'tap' params
+          source_class
+          perl_source_class
+          iterator_factory_class
+          make_source
+          make_perl_source
+          make_iterator
+
+    Please see the TAP::Parser docs for more details.
+    [Steve Purkis & David Wheeler]
+  - Removed dependency on File::Spec [Schwern]
+  - Made it possible to pass different args to each test [Lee Johnson]
+  - Added HARNESS_SUBCLASS option to Test::Harness
+  - Added TAP::Parser::SourceHandler::File which lets you to stream TAP
+    from a text file (eg: *.tap).
+  - Added TAP::Parser::SourceHandler::pgTAP. All the source handlers are
+    new, but this is the only one to add major new functioality: the
+    ability to run pgTAP tests (http://pgtap.projects.postgresql.org/).
+
+-------------------------------------------------------------------
+Sat Jul 25 19:44:32 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Sat Jun 27 15:14:27 CEST 2009 - chris@computersalat.de
+
+- update to 3.17
+  - 3.17    2009-05-05
+        - Changed the 'failures' so that it is overridden by verbosity rather
+          than the other way around.
+        - Added the 'comments' option, most useful when used in conjunction
+          with the 'failures' option.
+        - Deprecated support for Perls earlier than 5.6.0.
+        - Allow '-I lib' as well as '-Ilib' in $Test::Harness::Switches
+          (regression).
+        - Restore old skip parsing semantics for TAP < v13. Refs #39031.
+        - Numerous small documentation fixes.
+        - Remove support for fork-based parallel testing. Multiplexed
+          parallel testing remains.
+  - 3.16    2009-02-19
+        - Fix path splicing on platforms where the path separator
+          is not ':'.
+        - Fixes/skips for failing Win32 tests.
+        - Don't break with older CPAN::Reporter versions.
+  - 3.15    2009-02-17
+        - Refactor getter/setter generation into TAP::Object.
+        - The App::Prove::State::Result::Test now stores the parser object.
+        - After discussion with Andy, agreed to clean up the test output
+          somewhat.  t/foo.....ok becomes t/foo.t ... ok
+        - Make Bail out! die instead of exiting. Dies with the same
+          message as 2.64 for (belated) backwards compatibility.
+        - Alex Vaniver's patch to refactor TAP::Formatter::Console into
+          a new class, TAP::Formatter::File and a common base class: 
+          TAP::Formatter::Base.
+        - Fix a bug where PERL5LIB might be put in the wrong spot in @INC.
+          #40257
+        - Steve Purkis implemented a plugin mechanism for App::Prove.
+  - 3.14    2008-09-13
+        - Created a proper (ha!) API for prove state results and tests.
+        - Added --count and --nocount options to prove to control X/Y display
+          while running tests.
+        - Added 'fresh' state option to run test scripts that have been
+          touched since the test run.
+        - fixed bug where PERL5OPT was not properly split  
+        - fixed regex in _filtered_inc. Fixes #39248. Thanks Slaven.
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+- spec mods
+  o added header
+  o fixed deps
+
+-------------------------------------------------------------------
+Fri Aug 15 21:41:43 CEST 2008 - lrupp@suse.de
+
+- initial version 3.13
+
