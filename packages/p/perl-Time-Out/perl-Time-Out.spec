@@ -18,27 +18,28 @@
 
 %define cpan_name Time-Out
 Name:           perl-Time-Out
-Version:        0.240.0
+Version:        1.0.0
 Release:        0
-%define cpan_version 0.24
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Easily timeout long running operations
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SV/SVW/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SV/SVW/%{cpan_name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(App::cpanminus) >= 1.7046
+BuildRequires:  perl(Carp) >= 1.32
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.76
 BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.09
 BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test::Harness) >= 3.50
+BuildRequires:  perl(Test::More) >= 1.001005
 BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Try::Tiny)
+BuildRequires:  perl(version) >= 0.9915
+Requires:       perl(Carp) >= 1.32
 Requires:       perl(Try::Tiny)
-Provides:       perl(Time::Out) = %{version}
-Provides:       perl(Time::Out::Exception) = %{version}
-Provides:       perl(Time::Out::ParamConstraints) = %{version}
-%undefine       __perllib_provides
-Recommends:     perl(Time::HiRes) >= 1.972.600
+Requires:       perl(version) >= 0.9915
+Recommends:     perl(Time::HiRes) >= 1.9726
 %{perl_requires}
 
 %description
@@ -66,7 +67,7 @@ float timeout values to be used effectively:
   };
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

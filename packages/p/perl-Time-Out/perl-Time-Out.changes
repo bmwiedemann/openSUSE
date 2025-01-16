@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 17 05:37:01 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0.0
+   see /usr/share/doc/packages/perl-Time-Out/Changes
+
+  1.0.0 Wed Oct 16 12:28:54 CEST 2024
+        - update author extensions
+        - improve dependencies setup in cpanfile
+        - improve README
+        - use version pragma and dotted decimal version
+        - setup CI workflow that is based on the GitHub project
+          PerlToolsTeam/github_workflows
+
+-------------------------------------------------------------------
 Fri Mar  8 23:06:42 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
