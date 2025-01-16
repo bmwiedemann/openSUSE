@@ -1,0 +1,8 @@
+<package name="perl-IO-Compress" project="openSUSE:Factory">
+  <title>IO Interface to compressed data files/buffers</title>
+  <description>IO Interface to compressed data files/buffers. This module is not intended for direct use in application code. Its sole purpose if to to be sub-classed by IO::Compress modules.
+
+Note: Included in perl (usually in an older version), has workaround to be installable</description>
+  <devel project="devel:languages:perl" package="perl-IO-Compress"/>
+  <url>https://metacpan.org/release/IO-Compress</url>
+</package>
