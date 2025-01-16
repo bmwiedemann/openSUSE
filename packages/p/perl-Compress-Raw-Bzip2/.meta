@@ -1,0 +1,13 @@
+<package name="perl-Compress-Raw-Bzip2" project="openSUSE:Factory">
+  <title>Low-Level Interface to bzip2 compression library</title>
+  <description>'Compress::Raw::Bzip2' provides an interface to the in-memory
+compression/uncompression functions from the bzip2 compression library.
+
+Although the primary purpose for the existence of 'Compress::Raw::Bzip2' is
+for use by the 'IO::Compress::Bzip2' and 'IO::Compress::Bunzip2' modules,
+it can be used on its own for simple compression/uncompression tasks.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Compress-Raw-Bzip2"/>
+  <url>http://search.cpan.org/dist/Compress-Raw-Bzip2/</url>
+</package>

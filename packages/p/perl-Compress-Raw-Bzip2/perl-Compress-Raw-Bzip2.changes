@@ -1,0 +1,454 @@
+-------------------------------------------------------------------
+Sat Aug 31 05:30:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.213
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+-------------------------------------------------------------------
+Sun Apr 28 03:07:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.212
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.212 27 April 2024
+        * no functional changes
+    2.211 6 April 2024
+      * version 2.211
+        Sat Apr 6 14:18:21 2024 +0100
+        f0af7da12a9bdb3860965aab1ad57bca2f5004dc
+
+-------------------------------------------------------------------
+Fri Mar  8 22:01:56 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Tue Feb 27 03:06:37 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.210
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.210 26 February 2024
+      * version 2.210
+        Mon Feb 26 09:28:29 2024 +0000
+        f21aa27dc4c434e8dcbb4001767485c99b00c0e2
+      * Fix Changes for 2.209
+        Mon Feb 26 09:27:30 2024 +0000
+        25d4f210f7fc4ff6153fff971c01a4f1ce81bddd
+    2.209 20 February 2024
+      * version 2.209
+        Tue Feb 20 13:14:56 2024 +0000
+        3682e4e48c316dcc6c004578e099377190d0b23b
+      * #14 BUILD_BZIP2 default should be true
+        Tue Feb 20 13:12:22 2024 +0000
+        07b8b9549c15eaffd304d6ae1ace4644bc049969
+    2.208 19 February 2024
+      * fix for READMEmd target
+        Mon Feb 19 09:11:15 2024 +0000
+        b488bed5ffc2acfa076a0018ec08fa72a0cb3882
+    2.207 18 February 2024
+      * No changes
+
+-------------------------------------------------------------------
+Wed Jul 26 03:06:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.206
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.206 25 July 2023
+      * 2.206
+        Tue, 25 Jul 2023 16:21:41 +0100
+        8cb376d21785d7304586cd03d528a9d2d56aeb58
+      * drop rt.cpan from SUPPORT section
+        Tue, 18 Jul 2023 09:22:56 +0100
+        4dba5be3e368bc6681a229294a07e34abcae858d
+    2.205 8 February 2023
+      * 2.205
+        Sun, 16 Jul 2023 16:21:33 +0100
+        62de94af7f8328691abbadbeeb0f2b5effc551b2
+      * Test::More::isn't warns in perl 5.38
+        Sun, 9 Jul 2023 21:52:47 +0100
+        cab526b7f1d8fed30e30f3a16c07af66d5b4d4b5
+      * Add perl 5.38 & run cron for upstream repos
+        Sun, 9 Jul 2023 21:49:34 +0100
+        6c9f55033f725eab641411a1ac7f54f26250eeef
+      * add on workflow_dispatch
+        Fri, 9 Jun 2023 16:32:22 +0100
+        4d3a1d1a261be3599eee48ba28c349a7fc0f1750
+      * fix reference to github issue
+        Mon, 22 May 2023 12:37:07 +0100
+        edcb04c0b3bdbc2893654fcc7600474ba090c77a
+      * Fix to allow building with C++17 register keyword not allowed in C++17 https://github.com/pmqs/Compress-Raw-Bzip2/issues/11
+        Mon, 22 May 2023 12:29:30 +0100
+        9357289d218d14d64fc31cfa8ae5746a6dcbfca3
+      * Silence warnings on HPUX https://github.com/pmqs/Compress-Raw-Bzip2/issues/10
+        Thu, 23 Mar 2023 14:05:43 +0000
+        1418b2afd5b16bb9ddbc19e377c16c6af113d64f
+
+-------------------------------------------------------------------
+Thu Feb  9 03:06:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.204
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.204 8 February 2023
+      * Cast isdigit argument as unsigned char
+        https://github.com/pmqs/Compress-Raw-Bzip2/pull/9
+        967696b4fa91768fa4d46163f46982bc063a175e
+      * Use GIMME_V instead of GIMME
+        https://github.com/pmqs/Compress-Raw-Bzip2/pull/8
+        54e3c1e18b61f0892056925240bbc80f76e2f038
+      * typos
+        12496575c17829506cc9c9fa325e31aab1fcd1c7
+      * Trim trailing spaces from bzip2-src
+        https://github.com/pmqs/Compress-Raw-Bzip2/pull/7
+        8728d405e8d805cb88685b82a5e5493b62288046
+
+-------------------------------------------------------------------
+Sun Jun 26 03:06:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.201
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.201 25 June 2022
+
+        * 2.201
+          Sat Jun 25 08:46:32 2022 +0100
+          92a318bb03b85e2dcb4991f4b958fbce6ce9913f
+
+        * Add perl 5.36
+          Sun Jun 5 13:45:55 2022 +0100
+          23064d78dcd14f0898aeb64ce408914dac0805a0
+
+-------------------------------------------------------------------
+Wed Apr  6 03:07:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.103
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.103 3 April 2022
+
+        * Silence uninitialized warnings
+          https://github.com/pmqs/Compress-Raw-Bzip2/pull/5
+          ff3d907325091287ac1525db384b99a968d763d7
+          641a440ec6229c1d368b9ead48f4968b955c0115
+
+-------------------------------------------------------------------
+Sun Feb 21 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.101
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.101 20 February 2021
+
+        * fix version numbers in meta files
+
+-------------------------------------------------------------------
+Fri Jan  8 03:06:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.100
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.100 7 January 2021
+
+        * trim whitespace
+          f5bb5c5d254f2a9ac6c6e67a5a4823d0f67e7ecb
+
+-------------------------------------------------------------------
+Sat Aug  1 03:07:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.096
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.096 31 July 2020
+        * No changes
+    2.095 19 July 2020
+        * No changes
+
+-------------------------------------------------------------------
+Tue Jul 14 03:07:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.094
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.094 13 July 2020
+
+        * Issue with Append mode & SvOOK
+          https://github.com/pmqs/Compress-Raw-Bzip2/issues/2
+          e6f1fa7d86a4c631b82b7c923a5def3e274925fa
+
+-------------------------------------------------------------------
+Sun Dec  8 03:14:02 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.093
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.093 7 December 2019
+  
+        * No changes
+
+-------------------------------------------------------------------
+Thu Dec  5 03:08:40 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.092
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.092 4 December 2019
+  
+        * No changes
+
+-------------------------------------------------------------------
+Mon Nov 25 11:44:38 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.091
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+-------------------------------------------------------------------
+Sun Nov 10 10:01:07 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.090
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.090 9 November 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Nov  4 11:10:28 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 2.089
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.089 3 November 2019
+  
+        * No Changes
+        
+    2.088 31 October 2019
+  
+        * Add Support Details
+          37e04fb3dc50287a3512b004282425c6eedb8af6
+  
+        * upgrade to Bzip2 1.0.8
+          027a30848ee57731b435d2ea7af09e532bf6fbfd
+
+-------------------------------------------------------------------
+Sun Aug 11 05:04:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.087
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.087 10 August 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Wed Apr  3 06:48:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.086
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.086 31 March 2019
+  
+        * Moved source to github https://github.com/pmqs/Compress-Raw-Bzip2
+  
+        * Add META_MERGE to Makefile.PL
+  
+        * Added meta-json.t & meta-yaml.t
+
+-------------------------------------------------------------------
+Mon Jan  7 06:03:17 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.084
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.084 5 January 2019
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Dec 31 06:03:50 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.083
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.083 30 December 2018
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Apr  9 05:06:26 UTC 2018 - coolo@suse.com
+
+- updated to 2.081
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.081 4 April 2018
+  
+        * previous release used $^W instead of use warnings. Fixed.
+
+-------------------------------------------------------------------
+Wed Apr  4 05:08:09 UTC 2018 - coolo@suse.com
+
+- updated to 2.080
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.080 2 April 2018
+  
+        * No Changes
+
+-------------------------------------------------------------------
+Mon Feb 20 06:12:38 UTC 2017 - coolo@suse.com
+
+- updated to 2.074
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.074 19 Feb 2017
+  
+        * Fix bad 2.073 release
+
+-------------------------------------------------------------------
+Mon Feb 13 11:24:31 UTC 2017 - coolo@suse.com
+
+- updated to 2.072
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.072 4 Feb 2017
+        * Makefile.PL
+          #120084: Need Fix for Makefile.PL depending on . in @INC
+
+-------------------------------------------------------------------
+Fri Dec 30 06:10:14 UTC 2016 - coolo@suse.com
+
+- updated to 2.070
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+    2.070 28 Dec 2016
+  
+        * #119005: [PATCH] Wrong APPEND_OUTPUT logic
+  
+        * #119141: perl-Compress-Raw-Bzip2-2.069 bug report
+  
+        * #100817: gcc 4.9.2 warnings
+          Coped fix for same issue from #105647
+
+-------------------------------------------------------------------
+Mon Sep 28 08:31:30 UTC 2015 - coolo@suse.com
+
+- updated to 2.069
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+
+  
+    2.069 26 Sept 2015
+  
+        * reduce compiler warnings and stderr noise
+          [#101340]
+  
+        * consting misc tables
+          [#101296]
+
+-------------------------------------------------------------------
+Wed Dec 24 15:12:36 UTC 2014 - jw@owncloud.com
+
+- update to 2.068 23 Dec 2014
+      * No Changes
+
+- 2.067 8 Dec 2014
+      * Silence compiler warnings
+
+- 2.066 21 Sept 2014
+      * No Changes
+
+- 2.064 1 February 2014
+      * [PATCH] Handle non-PVs better [#91558]
+
+- 2.063 20 October 2013
+      * Compress::Raw::Bzip2 uses AutoLoader for no reason [#88259]
+
+-------------------------------------------------------------------
+Mon Oct 14 16:57:16 UTC 2013 - lars@linux-schulserver.de
+
+- update to 2.062
+  + silence compiler warning by making 2nd parameter to
+    DispStream a const char*
+  + Copy-on-write support [RT#81352]
+  + Compress::Raw::Bzip2 needs to use PERL_NO_GET_CONTEXT 
+    [RT#80318]
+  + Install to 'site' instead of 'perl' when perl version is 5.11+ 
+    [#79811]
+  + update to ppport.h that includes SvPV_nomg_nolen [#78080]
+  + Fix misuse of magic in API [RT#78080}
+
+-------------------------------------------------------------------
+Mon Jun 25 08:47:00 UTC 2012 - chris@computersalat.de
+
+- update to 2.052
+ - 2.047 28 January 2012
+   * Set minimum Perl version to 5.6
+ - 2.045 3 December 2011
+   * Moved FAQ.pod to IO::Compress
+ - 2.044 2 December 2011
+   * Moved FAQ.pod under the lib directory so it can get installed
+
+-------------------------------------------------------------------
+Wed Nov 30 15:33:56 UTC 2011 - cfarrell@suse.com
+
+- license update: BSD-3-Clause and (GPL-1.0+ or Artistic-1.0)
+  Bzip2 license is ~= BSD-3-Clause and this is aggregated with Perl license
+  -> the entire thing to SPDX format
+
+-------------------------------------------------------------------
+Tue Nov 29 15:32:30 UTC 2011 - coolo@suse.com
+
+- update to 2.040
+   * croak if attempt to freeze/thaw compression object
+       [RT #69985]
+
+-------------------------------------------------------------------
+Mon Jun 20 10:27:19 UTC 2011 - jw@novell.com
+
+- updated to 2.036, version needed by perl-IO-Compress
+
+-------------------------------------------------------------------
+Sun Jun  5 02:49:14 UTC 2011 - lars@linux-schulserver.de
+
+- update to 2.035, no useful changelog
+
+-------------------------------------------------------------------
+Wed May  4 11:07:18 UTC 2011 - coolo@opensuse.org
+
+- updated to 2.034, no useful changelog
+
+-------------------------------------------------------------------
+Fri Apr 15 07:21:58 UTC 2011 - coolo@opensuse.org
+
+- updated to 2.033, no useful changelog
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:06 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Jun 25 21:30:24 UTC 2010 - jw@novell.com
+
+- updated to 2.027 
+  * Documented the unused "verbosity" option in Compress::Raw::Bunzip2::new
+  * Removed redundant bzip2 source files from the bzip2-src directory.
+  * Fixed instance where $[ should have been $] in t/01bzip2.t
+
+-------------------------------------------------------------------
+Sat Jul 25 19:29:57 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jun 19 01:09:39 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Thu Jun 18 13:30:05 CEST 2009 - chris@computersalat.de
+
+- initial package 2.015
+
