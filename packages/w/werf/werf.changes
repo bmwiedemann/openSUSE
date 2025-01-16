@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:55:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.19.0:
+  * chore: release 2.19.0
+  * fix(deploy): LastError empty in logs on failures for some
+    resources
+  * fix(cr-login): fix UserAgent
+  * feat(deploy): ExternalSecret CR tracking works again
+  * fix(deploy): `hidden sensitive output` message in plan for
+    Secrets even if no sensitive changes
+  * chore(taskfile, build): optional version for dev binary
+  * chore(taskfile, build): refactor go and cgo variables
+  * test(e2e): remove unused Chart.lock from complex converge test
+  * refactor(deploy): move dependency management from werf to
+    nelm/helm
+  * chore(release): 1.2 rock-solid, 2 alpha,beta,ea,stable
+
+-------------------------------------------------------------------
 Wed Jan 15 06:56:39 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.18.0:
