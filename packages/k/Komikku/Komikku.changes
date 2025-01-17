@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 13:28:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without %check (boo#1227364)
+
+-------------------------------------------------------------------
 Tue Jan 14 13:19:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - missed a second syntax error

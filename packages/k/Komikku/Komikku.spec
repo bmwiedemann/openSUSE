@@ -102,10 +102,10 @@ Keys features
 %meson_install
 %fdupes %{buildroot}
 
+%find_lang komikku
+
 %check
 %meson_test
-
-%find_lang komikku
 
 %files
 %license LICENSE
