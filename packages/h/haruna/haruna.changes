@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:29:35 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.3.0
+  Features:
+  * Changed the settings related to restoring the playback
+    position, if you changed the defaults you might have to redo
+    them
+  * Playlist: added context menu entries for non local urls to
+    be opened in the browser and to be removed (from the
+    playlist)
+  * Added setting (in General) to start app in fullscreen
+  * Added setting (in Subtitles) to control subtitle auto
+    selection
+  * Changed left and right mouse button default actions: left
+    click is now play/pause and right click opens the context
+    menu. Actions can be changed in settings Mouse page
+  * Dragging the seek/progress bar will update the main view as
+    well as the seekbar preview
+  * Decreased the minimum window size
+  * Replaced hardware decoding checkbox with an option in the
+    hardware decoding combobox/drop-down
+  Bugfixes:
+  * Improved scrolling performance of playlist, shortcuts and
+    seekbar's chapters menu
+  * Fixed issue with setting shortcuts with modifier keys (ctrl,
+    alt etc.)
+  * Fixed active audio and subtitle tracks not being correctly
+    checked
+  * Removed empty header toolbar from settings window
+  * Fixed a bug where the app would freeze when loading a file
+    with lots of tracks
+  * Improved menubar animation
+  * The floating footer now hides when the mouse leaves the app
+
+-------------------------------------------------------------------
 Fri Sep 27 16:22:56 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.1

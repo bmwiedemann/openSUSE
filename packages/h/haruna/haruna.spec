@@ -1,7 +1,7 @@
 #
 # spec file for package haruna
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -69,7 +69,8 @@ Haruna is a video player built with Qt/QML on top of libmpv.
 %autosetup -p1
 
 %build
-%cmake_kf6
+%cmake_kf6 \
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
 
 %kf6_build
 
