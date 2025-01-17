@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 17 15:01:51 UTC 2025 - pgajdos@suse.com
+
+- really remove six requirements
+
+-------------------------------------------------------------------
+Fri Jan 17 14:21:10 UTC 2025 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/man-group/pytest-plugins/commit/0018cc543229732b9c04fad909d2b7ee6167fa40
+  + python-pytest-shutil-no-six.patch
+
+-------------------------------------------------------------------
 Mon Nov  4 11:05:21 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed dep python-setuptools-git

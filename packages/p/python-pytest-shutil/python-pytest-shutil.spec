@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-shutil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,18 @@ Summary:        A goodie-bag of unix shell and environment tools for pytest
 License:        MIT
 URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-shutil/pytest-shutil-%{version}.tar.gz
+# https://github.com/man-group/pytest-plugins/commit/0018cc543229732b9c04fad909d2b7ee6167fa40
+Patch0:         python-pytest-shutil-no-six.patch
 BuildRequires:  %{python_module execnet}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module termcolor}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-execnet
 Requires:       python-pytest
-Requires:       python-six
 Requires:       python-termcolor
 BuildArch:      noarch
 
@@ -46,7 +46,7 @@ This library is a goodie-bag of Unix shell and environment management
 tools for automated tests.
 
 %prep
-%autosetup -p2 -n pytest-shutil-%{version}
+%autosetup -p1 -n pytest-shutil-%{version}
 
 %build
 %pyproject_wheel

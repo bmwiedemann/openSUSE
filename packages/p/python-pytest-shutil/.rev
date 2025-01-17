@@ -108,4 +108,12 @@
     <comment>- Remove not needed dep python-setuptools-git</comment>
     <requestid>1220541</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ee7f372fbfa9f0300092ef925cd2ada7</srcmd5>
+    <version>1.8.0</version>
+    <time>1737135833</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238531</requestid>
+  </revision>
 </revisionlist>
