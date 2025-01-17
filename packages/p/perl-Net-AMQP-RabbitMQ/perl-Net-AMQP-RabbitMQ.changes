@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:32:06 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.40014
+   see /usr/share/doc/packages/perl-Net-AMQP-RabbitMQ/Changes
+
+  2.40014 - 2024-11-09
+      - Added `confirm_select()` to put a channel into `confirm.select` mode.
+      - Added `publisher_confirm_wait()` to wait for publisher confirms.
+
+  2.40013 - 2024-10-13
+      - Added a `Containerfile` to test unstable Debian builds in podman.
+      - Fixed gcc-14-related build issues with a number of Linux distributions.
+      - Resolved duplicate library warnings in macOS
+
+-------------------------------------------------------------------
 Thu Jul  4 19:16:58 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 2.40012

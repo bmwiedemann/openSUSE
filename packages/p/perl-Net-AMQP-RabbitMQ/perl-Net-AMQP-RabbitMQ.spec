@@ -18,7 +18,7 @@
 
 %define cpan_name Net-AMQP-RabbitMQ
 Name:           perl-Net-AMQP-RabbitMQ
-Version:        2.40012
+Version:        2.40014
 Release:        0
 #Upstream: MPL
 License:        MPL-1.1
@@ -63,7 +63,7 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md run-one-test
-%license LICENSE LICENSE-MIT
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md SECURITY.md
+%license LICENSE LICENSE-MIT LICENSE-MPL-1.1
 
 %changelog

@@ -47,4 +47,21 @@
     <comment></comment>
     <requestid>1186438</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed2ceb25c65def831f9928fc5a0d3106</srcmd5>
+    <version>2.40014</version>
+    <time>1737135818</time>
+    <user>anag+factory</user>
+    <comment>- updated to 2.40014
+   see /usr/share/doc/packages/perl-Net-AMQP-RabbitMQ/Changes
+  2.40014 - 2024-11-09
+      - Added `confirm_select()` to put a channel into `confirm.select` mode.
+      - Added `publisher_confirm_wait()` to wait for publisher confirms.
+  2.40013 - 2024-10-13
+      - Added a `Containerfile` to test unstable Debian builds in podman.
+      - Fixed gcc-14-related build issues with a number of Linux distributions.
+      - Resolved duplicate library warnings in macOS
+</comment>
+    <requestid>1238479</requestid>
+  </revision>
 </revisionlist>
