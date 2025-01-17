@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ChrisTitusTech/linutil</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">2024.10.31</param>
+    <param name="revision">2025.01.10</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>

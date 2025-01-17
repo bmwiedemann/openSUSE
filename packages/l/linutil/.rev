@@ -230,4 +230,95 @@
 </comment>
     <requestid>1224332</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84e4c55ad27879c5214ca5aea834989e</srcmd5>
+    <version>2025.01.10~0</version>
+    <time>1737135823</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2025.01.10~0:
+  * Update linutil.yml (#993)
+  * chore(release): prepare for 25.1.10 (#991)
+  * refact: minor fixes (#971)
+  * chore: update copyright year (#988)
+  * Move ZapZap entry to communication apps, remove redundant zoom entry (#925)
+  * chore: Update package version upon release action  (#965)
+  * docs(README): wrong crate name in `cargo install` instructions (#964)
+  * refact: rust fixes and optimizations (#933)
+  * Use vt100-ctt instead of patching the dep (#952)
+  * fix: crate cache &amp; versions (#949)
+  * Add accidentally deleted preview.tape (#947)
+  * implement a root check menu (#927)
+  * Update CLI arguments documentation (#926)
+  * Reduce the size of the linutil binary by removing unused features from tui/Cargo.toml (#922)
+  * fix: headers not installing (#915)
+  * feat: Mouse scroll (#913)
+  * fix: permission err (#912)
+  * add aarch64 (#910)
+  * refact: auto-cpufreq (#908)
+  * fix(fedora): Recent syntax changes with DNF5 (#907)
+  * fix (ci): preview workflow (#905)
+  * fix(create-bootable-usb.sh) confirmation prompt (#902)
+  * docs: new repo (#888)
+  * feat: Command execution log (#898)
+  * fix(system-cleanup): failing with no orphan packages on arch (#882)
+  * fix: Autocpu-freq script not detecting battery on laptops (#877)
+  * Update multimedia-codecs.sh (#863)
+  * Delist Firewall setup on systems with Firewalld installed, such as fedora (#862)
+  * fix: Debian &amp;&amp; popos gaming deps (#859)
+  * refactor: system-update.sh (#843)
+  * feat: tor browser installation (#842)
+  * feat: whatsapp desktop app (#838)
+  * feat: printer driver installation (#837)
+  * feat: Add automation based on config file (#836)
+  * Linutil arguments when using `curl` (#835)
+  * feat: Add `--skip-confirmation` flag (#834)
+  * Increase scroll length (#830)
+  * Added required dependencies for Arch (#824)
+  * Add OpenSUSE to list of linutil added to package managers (#820)
+  * Update mybash-setup.sh (#819)
+  * Update ollama.sh (#815)
+  * feat: Alpine linux support  (#814)
+  * feat: Add Arch virtualization setup script (#813)
+  * refactor: Re-export ego-tree dependency from linutil core (#811)
+  * fix reversion (#923)
+  * xtask docgen (#924)
+  * Remove dependabot ignores (#806)
+  * Use ratatui bundled crossterm (#805)
+  * feat: Add arch nvidia installation script (#797)
+  * 📃 feat: Linux Neptune (Valve's kernel for SteamDeck) installation (#683)
+  * Change numlock description (#790)
+  * feat: btrfs assistant &amp; grub-btrfs (#789)
+  * Added support for installing podman (#787)
+  * refact: Handle temporary directories entirely within core (#754)
+  * Implement Rounded corners (#918)
+  * fix(dwmtitus-setup): dm picking (#823)
+  * 🦀 feat(ux): add a minimum size bypass cli flag (#920)
+  * implement word wrapping functionality (#755)
+  * fix: flatpak path (#916)
+  * refact: multi-selection to per cmd (#719)
+  * Add greeter install for lightdm during dwm-titus setup (#831)
+  * Add missing gaming deps (#761)
+  * implement fish like tab completion (#767)
+  * fix doc privs for pushing new prs to docs
+  * fix tag output
+  * change to PAT Token
+  * feat: jetbrains-toolbox (#893)
+  * add pr write privs
+  * refact: use tags instead of runner id (#900)
+  * refact(ci): Preview workflow to create PR (#901)
+  * Preview Commit to PR fix
+  * refact fix: Flatpak (#705)
+  * refact(ci): bashisms.yml (#793)
+  * fix: remove unnecessary arch update (#897)
+  * fix: shellcheck errors (#896)
+  * fix: aarch64 release (#894)
+  * Use flatpak (#812)
+  * Bump clap from 4.5.19 to 4.5.20 (#825)
+  * Bump tree-sitter-highlight from 0.24.2 to 0.24.3 (#826)
+  * Bump crate-ci/typos from 1.25.0 to 1.26.0 (#827)
+  * chore: bump ratatui -&gt; 0.29.0 (#865)
+  * fix: `ILoveCandy` in `pacman` conf (#892)
+</comment>
+    <requestid>1238484</requestid>
+  </revision>
 </revisionlist>
