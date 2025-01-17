@@ -7,7 +7,7 @@ After=clamd.service syslog.target network.target
 [Service]
 Type=forking
 User=root
-ExecStart=/usr/sbin/clamonacc --ping 30:10 --wait
+ExecStart=/usr/sbin/clamonacc --ping 30:10 --wait --fdpass
 
 [Install]
 WantedBy=multi-user.target

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 13:00:11 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1232242: Start clamonacc with --fdpass to avoid errors due to
+  clamd not being able to access user files.
+
+-------------------------------------------------------------------
 Wed Dec 18 16:00:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix factory submission (clam.tcl, clamscan.log)
