@@ -1,7 +1,7 @@
 #
 # spec file for package python-whatthepatch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define skip_python2 1
 Name:           python-whatthepatch
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        A patch parsing and application library
 License:        MIT

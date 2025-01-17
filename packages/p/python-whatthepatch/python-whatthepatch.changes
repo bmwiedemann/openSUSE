@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 17 11:52:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.7
+  * PR #62 fix: incorrect regular expression matching diffcmd
+  * Support up to 3.13
+  * Drop support up to 3.8
+
+-------------------------------------------------------------------
 Mon Sep 23 09:23:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.6:
