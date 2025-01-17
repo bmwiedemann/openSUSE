@@ -405,4 +405,18 @@
     process for the on-prem instances (forwarded request 1236801 from glaubitz)</comment>
     <requestid>1236853</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>441af3207c9b4d27ad9fdc55c08bb8ee</srcmd5>
+    <version>3.3.1611.0</version>
+    <time>1737135804</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.1611.0 (bsc#1235575, CVE-2025-21613)
+  * Update aws-sdk-go from 1.51.20 to 1.55.5
+  * Update golang.org/x/crypto from 0.24.0 to 0.32.0
+  * Update github.com/go-git/go-git/v5 from 5.12.0 to 5.13.1
+  * Update golang.org/x/net from 0.26.0 to 0.34.0
+  * Update golang.org/x/oauth2 from 0.0.0-20211005180243-6b3c2da341f1
+    to 0.24.0 (forwarded request 1238418 from glaubitz)</comment>
+    <requestid>1238456</requestid>
+  </revision>
 </revisionlist>
