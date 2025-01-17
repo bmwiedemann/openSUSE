@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 10:40:22 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix incidentally wrongly uploaded source code tarball without
+  generated frontend code
+
+-------------------------------------------------------------------
 Thu Jan  9 11:27:35 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2024-45337: Prevent possible misuse of
