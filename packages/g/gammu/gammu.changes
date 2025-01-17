@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 26 10:11:37 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Disable test_sql_time to prevent Gammu from being removed. This
+  allows the package to remain available a bit longer.
+  Add patch 0002-disable-test_sql_time.patch
+
+-------------------------------------------------------------------
 Mon May 23 19:38:16 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add fix-buffer-overflow-in-backup.patch in order to address

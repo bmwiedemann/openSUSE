@@ -1,7 +1,7 @@
 #
 # spec file for package gammu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch3:         0001-Update-Python-scripts-to-Python-3.patch
 Patch4:         0001-Docs-Adjust-attributes-order-to-avoid-bugs-in-breath.patch
 Patch5:         harden_gammu-smsd.service.patch
 Patch6:         0001-Fix-buffer-overflow-in-Backup.Creator.patch
+Patch7:         0002-disable-test_sql_time.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gettext
