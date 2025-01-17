@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:38:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Actually clean up comments that have no meaning (empty, commented
+  Patch line, commented-out non-existing patch being applied).
+
+-------------------------------------------------------------------
 Tue Jan 14 13:33:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix escaping of commented out patch: with RPM 4.20, %patch
