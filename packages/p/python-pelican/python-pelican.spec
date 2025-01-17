@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pelican
-Version:        4.10.2
+Version:        4.11.0
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
@@ -58,7 +58,7 @@ Requires(postun): update-alternatives
 Recommends:     make
 Suggests:       asciidoc
 Suggests:       python-Markdown >= 3.5.1
-Suggests:       python-typogrify >= 2.0.7
+Suggests:       python-typogrify >= 2.1.0
 BuildArch:      noarch
 ExcludeArch:    %{ix86}
 # SECTION test
@@ -74,7 +74,7 @@ BuildRequires:  %{python_module pytest-cov >= 4.1.0}
 BuildRequires:  %{python_module pytest-sugar >= 0.9.7}
 BuildRequires:  %{python_module pytest-xdist >= 3.4.0}
 BuildRequires:  %{python_module tomli >= 2.0.1 if %python_base < 3.11}
-BuildRequires:  %{python_module typogrify >= 2.0.7}
+BuildRequires:  %{python_module typogrify >= 2.1.0}
 # /SECTION
 %python_subpackages
 
