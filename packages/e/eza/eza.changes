@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:01:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.17:
+  Features:
+  * Add editorconfig icon for .editorconfig
+  Build:
+  * Cargo bump 2025-01-16
+  * Flake bump 2025-01-16
+
+-------------------------------------------------------------------
 Thu Jan  9 06:54:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.16:

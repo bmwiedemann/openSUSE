@@ -932,4 +932,17 @@
   * Bump git2 from 0.19.0 to 0.20.0</comment>
     <requestid>1236103</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a749d703dfbdcde1d7f4410b1d5640c0</srcmd5>
+    <version>0.20.17</version>
+    <time>1737135800</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.17:
+  Features:
+  * Add editorconfig icon for .editorconfig
+  Build:
+  * Cargo bump 2025-01-16
+  * Flake bump 2025-01-16</comment>
+    <requestid>1238447</requestid>
+  </revision>
 </revisionlist>
