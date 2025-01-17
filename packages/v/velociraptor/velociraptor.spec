@@ -1,7 +1,7 @@
 #
 # spec file for package velociraptor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.7.0.4.git97.675e45f9
+Version:        0.7.0.4.git142.862ef23
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
@@ -100,8 +100,6 @@ Source12:       package-lock.json
 Patch1:         vendor-build-fixes-for-SLE12.patch
 Patch2:         sdjournal-build-fix-for-SLE12.patch
 Patch3:         velociraptor-reproducible-timestamp.diff
-# PATCH-FIX-UPSTREAM CVE-2022-25883-npm-watch-semver-deps.patch bsc#1212572 -- upgrade npm-watch
-Patch4:         CVE-2022-25883-npm-watch-semver-deps.patch
 BuildRequires:  fileb0x
 %if 0%{?suse_version}
 BuildRequires:  systemd-rpm-macros
@@ -251,10 +249,7 @@ This package provides a shared system user for all velociraptor components
 
 %prep
 %setup -q -a 1 -a 2 -n %{projname}-%{VERSION}
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
+%autopatch -p1
 
 # Set the version to something more specific than <next-tag>-dev
 sed -ie "s/\([[:space:]]VERSION *= \).*/\1 \"%{VERSION}\"/" constants/constants.go

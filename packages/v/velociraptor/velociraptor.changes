@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jan 17 13:49:28 UTC 2025 - antonio.teixeira@suse.com
+
+- Update to version 0.7.0.4.git142.862ef23:
+  * github: fix deprecated upload artifact again
+  * Update npm packages
+    Includes fixes for the following vulnerabilities:
+    CVE-2023-45133
+    CVE-2023-46234
+    CVE-2024-55565
+    CVE-2024-45296
+    CVE-2023-44270
+    CVE-2024-47068
+    CVE-2024-23331
+    CVE-2024-31207
+    CVE-2024-45812
+    CVE-2024-45811
+  * Update go dependencies
+    Includes fixes for the following vulnerabilities:
+    CVE-2024-45338
+    CVE-2024-37298
+    CVE-2024-24786
+    CVE-2023-45683 (bsc#1216310)
+    CVE-2023-1732
+  * Update jwt to 4.5.1
+    Fixes CVE-2024-51744 (bsc#1232944)
+  * Update go-retryablehttp to 0.7.7
+    Fixes CVE-2024-6104 (bsc#1227061)
+  * Update go-oidc and go-jose
+    Fixes CVE-2024-28180 (bsc#1235168)
+  * Update dompurify to 3.1.3
+    Fixes CVE-2024-47875 (bsc#1231574)
+  * Update package-lock.json
+  * Update micromatch to 4.0.8
+    Partial fix for CVE-2024-4067 (bsc#1224367)
+    Partial fix for CVE-2024-4068 (bsc#1224296)
+  * Update axios to 1.7.9
+    Fixes CVE-2024-39338 (bsc#1229424)
+  * Update cross-spawn to 7.0.6
+    Fixes CVE-2024-21538 (bsc#1233845)
+  * Update elliptic to 6.6.1
+    Update contains fixes for:
+    CVE-2024-48949 (bsc#1231558)
+    CVE-2024-48948 (bsc#1231685)
+    CVE-2024-42459 (bsc#1232543)
+    CVE-2024-42460 (bsc#1232543)
+    CVE-2024-42461 (bsc#1232543)
+  * Update follow-redirects to 1.15.6
+    Fixes CVE-2024-28849 (bsc#1221456)
+  * fix: gui/velociraptor/package.json to reduce vulnerabilities
+    Fixes CVE-2022-25883 (bsc#1212572)
+- Drop CVE-2022-25883-npm-watch-semver-deps.patch
+  * Fix was included upstream
+
+-------------------------------------------------------------------
+Tue Jan 14 20:22:25 UTC 2025 - doreilly@suse.com
+
+- Update to version 0.7.0.4.git126.27cfbe1:
+  * bpf: fix plugins not stopping when context cancelled
+  * tcpsnoop: move parsing to its own function
+  * bpf plugins: remove depreciated libbpfgo calls
+  * bpf plugins: add context to error logs
+  * chattrsnoop: fix files not getting closed
+  * chattrsnoop: move hashing from plugin to artifact
+  * RPM artifact: start checks immediately on artifact load
+  * rpm plugin: fix ndb magic error
+  * audit s390x: fix arch filter rules errors
+  * github: fix deprecated upload artifact
+  * tcpsnoop: fix ipv6 local and remote addresses order
+  * tcpsnoop: fix missing ipv6 outbound connections
+  * Linux.Events.ProcessExecutions: remove parent cmdline
+  * audit: reduce FileBufferLeaseSize to ease GC overhead
+  * audit: fix auditBuf allocation and go vet warnings
+  * audit: fix plugin shutdown race condition
+  * audit: fix audit client data races
+  * audit: fix race in subscriber
+  * audit: prevent Windows loading audit package
+  * sdjournal: fix package causing test failures
+  * github: run linux unit tests
+
+-------------------------------------------------------------------
 Mon Aug 19 20:45:30 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update node modules with security fixes. 
