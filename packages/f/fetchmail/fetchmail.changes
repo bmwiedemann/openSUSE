@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 14 08:56:46 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 6.5.2
+  * TRANSLATIONS: fetchmail's translations were updated, courtesy of:
+    * cs:    Petr Pisar [Czech]
+    * sr:    Мирослав Николић (Miroslav Nikolić) [Serbian]
+  * CHANGES:
+    * Minor documentation consistency fixes (versions, dates).
+
+-------------------------------------------------------------------
 Tue Nov 26 09:22:07 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Upgrade to 6.5.1 
