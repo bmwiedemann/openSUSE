@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:47:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.9
+  * Remove Const for copy_source_uri by @waahm7 in (#485)
+- from version 0.7.8
+  * [s3_client]: retry on failed TLS negotiation by @grrtrr in (#478)
+  * Fix CI for GCC-13 on Ubuntu-18 by @waahm7 in (#479)
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#483)
+  * Improve Copy Operation by taking the Source URI by @waahm7 in (#482)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:29:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.7
