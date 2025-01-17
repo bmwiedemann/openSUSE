@@ -14147,10 +14147,10 @@ unsorted:
   - libisds-devel 
   - libisds5 
   - libisl23-32bit 
-  - libiso9660++0 
-  - libiso9660++0-32bit 
-  - libiso9660-11 
-  - libiso9660-11-32bit 
+  - libiso9660++1 
+  - libiso9660++1-32bit 
+  - libiso9660-12 
+  - libiso9660-12-32bit 
   - libisoburn-devel 
   - libisofs-devel 
   - libispcrt1 
@@ -15000,11 +15000,13 @@ unsorted:
   - libnutscan2 
   - libnvidia-egl-gbm-devel 
   - libnvidia-egl-gbm1 
+  - libnvidia-egl-gbm1-32bit 
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
   - libnvidia-egl-wayland1-32bit 
   - libnvidia-egl-x11-devel 
   - libnvidia-egl-x111 
+  - libnvidia-egl-x111-32bit 
   - libnvme-devel 
   - libnxml-devel 
   - libnxml0 
@@ -17144,53 +17146,23 @@ unsorted:
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
   - libwx_baseu-suse-nostl12_0_0 
-  - libwx_baseu-suse-nostl3_0_5 
   - libwx_baseu-suse12_0_0 
-  - libwx_baseu-suse3_0_5 
   - libwx_baseu_net-suse-nostl12_0_0 
-  - libwx_baseu_net-suse-nostl3_0_5 
   - libwx_baseu_net-suse12_0_0 
-  - libwx_baseu_net-suse3_0_5 
   - libwx_baseu_xml-suse-nostl12_0_0 
-  - libwx_baseu_xml-suse-nostl3_0_5 
   - libwx_baseu_xml-suse12_0_0 
-  - libwx_baseu_xml-suse3_0_5 
-  - libwx_gtk2u_adv-suse-nostl3_0_5 
   - libwx_gtk2u_adv-suse12_0_0 
-  - libwx_gtk2u_adv-suse3_0_5 
-  - libwx_gtk2u_aui-suse-nostl3_0_5 
   - libwx_gtk2u_aui-suse12_0_0 
-  - libwx_gtk2u_aui-suse3_0_5 
-  - libwx_gtk2u_core-suse-nostl3_0_5 
   - libwx_gtk2u_core-suse12_0_0 
-  - libwx_gtk2u_core-suse3_0_5 
-  - libwx_gtk2u_gl-suse-nostl3_0_5 
   - libwx_gtk2u_gl-suse12_0_0 
-  - libwx_gtk2u_gl-suse3_0_5 
-  - libwx_gtk2u_html-suse-nostl3_0_5 
   - libwx_gtk2u_html-suse12_0_0 
-  - libwx_gtk2u_html-suse3_0_5 
-  - libwx_gtk2u_media-suse-nostl3_0_5 
   - libwx_gtk2u_media-suse12_0_0 
-  - libwx_gtk2u_media-suse3_0_5 
-  - libwx_gtk2u_propgrid-suse-nostl3_0_5 
   - libwx_gtk2u_propgrid-suse12_0_0 
-  - libwx_gtk2u_propgrid-suse3_0_5 
-  - libwx_gtk2u_qa-suse-nostl3_0_5 
   - libwx_gtk2u_qa-suse12_0_0 
-  - libwx_gtk2u_qa-suse3_0_5 
-  - libwx_gtk2u_ribbon-suse-nostl3_0_5 
   - libwx_gtk2u_ribbon-suse12_0_0 
-  - libwx_gtk2u_ribbon-suse3_0_5 
-  - libwx_gtk2u_richtext-suse-nostl3_0_5 
   - libwx_gtk2u_richtext-suse12_0_0 
-  - libwx_gtk2u_richtext-suse3_0_5 
-  - libwx_gtk2u_stc-suse-nostl3_0_5 
   - libwx_gtk2u_stc-suse12_0_0 
-  - libwx_gtk2u_stc-suse3_0_5 
-  - libwx_gtk2u_xrc-suse-nostl3_0_5 
   - libwx_gtk2u_xrc-suse12_0_0 
-  - libwx_gtk2u_xrc-suse3_0_5 
   - libwx_gtk3u_adv-suse-nostl12_0_0 
   - libwx_gtk3u_adv-suse12_0_0 
   - libwx_gtk3u_aui-suse-nostl12_0_0 
@@ -18180,6 +18152,7 @@ unsorted:
   - lxqt-labwc-session 
   - lxqt-menu-data 
   - lxqt-menu-data-devel 
+  - lxqt-miriway-session 
   - lxqt-niri-session 
   - lxqt-notificationd 
   - lxqt-notificationd-lang 
@@ -22718,7 +22691,6 @@ unsorted:
   - perl-Web-Scraper 
   - perl-WebService-MusicBrainz 
   - perl-Win-Hivex 
-  - perl-Wx 
   - perl-X11-Protocol-Other 
   - perl-XML-Atom 
   - perl-XML-Atom-SimpleFeed 
@@ -38032,6 +38004,7 @@ unsorted:
   - termcap-devel-static 
   - terminator 
   - terminator-lang 
+  - terminfo-ghostty 
   - terminology 
   - terminology-lang 
   - terminology-theme-Flat 
@@ -48878,15 +48851,11 @@ unsorted:
   - wxMaxima 
   - wxMaxima-lang 
   - wxQt-3_2-devel 
-  - wxWidgets-3_0-devel 
-  - wxWidgets-3_0-nostl-devel 
-  - wxWidgets-3_0-plugin-sound_sdlu-3_0 
   - wxWidgets-3_2-devel 
   - wxWidgets-3_2-doc-html 
   - wxWidgets-3_2-doc-xml 
   - wxWidgets-3_2-nostl-devel 
   - wxWidgets-3_2-plugin-sound_sdlu-3_2 
-  - wxWidgets-lang 
   - wxhexeditor 
   - wxhexeditor-lang 
   - wxlua 
