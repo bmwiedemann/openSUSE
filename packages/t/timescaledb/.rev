@@ -292,4 +292,13 @@
   https://github.com/timescale/timescaledb/releases/tag/2.17.1</comment>
     <requestid>1216816</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6b1676b0bf070194356da2410537546f</srcmd5>
+    <version>2.17.2</version>
+    <time>1737135815</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.17.2
+  https://github.com/timescale/timescaledb/releases/tag/2.17.2</comment>
+    <requestid>1238462</requestid>
+  </revision>
 </revisionlist>
