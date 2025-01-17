@@ -1,7 +1,7 @@
 #
 # spec file for package o2scl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define pname o2scl
 %define shlib lib%{pname}0
 Name:           %{pname}%{?psuffix}
-Version:        0.929.2
+Version:        0.930
 Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
@@ -110,7 +110,7 @@ O2scl is a C++ library for object-oriented numerical programming.
 This package provides the documentation for %{name}.
 
 %prep
-%autosetup -p1 -n %{pname}-0.929
+%autosetup -p1 -n %{pname}-%{version}
 cp %{SOURCE1} doc/o2scl/
 sed -Ei "s/\r$/\n/g" doc/o2scl/html/_static/evan.eml
 
@@ -167,6 +167,7 @@ find %{buildroot}%{_libdir} "(" -name "*.a" -o -name "*.la" ")" -delete -print
 %license COPYING
 %{_bindir}/acol
 %{_bindir}/ame_parse
+%{_bindir}/nucleus
 %{_bindir}/yanic
 %{_datadir}/%{name}/
 %{_libdir}/*.so

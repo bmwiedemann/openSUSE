@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:25:11 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to version 0.930:
+  * Notes: https://github.com/awsteiner/o2scl/releases/tag/v0.930
+
+-------------------------------------------------------------------
 Thu Sep 19 15:46:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use numpy-config to fix cflags for use with numpy >= 2.0.
