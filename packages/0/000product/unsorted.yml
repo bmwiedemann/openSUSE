@@ -7106,6 +7106,7 @@ unsorted:
   - giflib-progs 
   - gifsicle 
   - gimp-devel 
+  - gimp-extension-goat-excercises 
   - gimp-help 
   - gimp-help-ca 
   - gimp-help-da 
@@ -7133,13 +7134,14 @@ unsorted:
   - gimp-plugin-dds 
   - gimp-plugin-dds-doc 
   - gimp-plugin-gmic 
+  - gimp-plugin-jxl 
   - gimp-plugin-lqr 
   - gimp-plugin-lqr-lang 
   - gimp-plugin-resynthesizer 
-  - gimp-plugins-python 
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
   - gimp-ufraw 
+  - gimp-vala 
   - ginac 
   - ginac-devel 
   - ginac-doc-html 
@@ -11247,7 +11249,7 @@ unsorted:
   - libIMECore0 
   - libIMEPinyin0 
   - libIMETable0 
-  - libIPSec_MB1 
+  - libIPSec_MB2 
   - libIccXML-devel 
   - libIccXML2 
   - libIex-3_2-31-32bit 
@@ -18967,6 +18969,8 @@ unsorted:
   - miredo-server 
   - mirisdr 
   - mirisdr-udev 
+  - miriway 
+  - miriway-session 
   - mirror 
   - mirrormagic 
   - mirrorsorcerer 
@@ -21592,7 +21596,9 @@ unsorted:
   - perl-Code-TidyAll 
   - perl-CommonMark 
   - perl-Compress-Bzip2 
+  - perl-Compress-Raw-Bzip2 
   - perl-Compress-Raw-Lzma 
+  - perl-Compress-Raw-Zlib 
   - perl-Config-Any 
   - perl-Config-Auto 
   - perl-Config-AutoConf 
@@ -21632,6 +21638,7 @@ unsorted:
   - perl-Crypt-Rot13 
   - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
+  - perl-Crypt-URandom 
   - perl-Crypt-UnixCrypt_XS 
   - perl-Curses 
   - perl-CursesWidgets 
@@ -21886,7 +21893,6 @@ unsorted:
   - perl-Git-Version-Compare 
   - perl-Glib 
   - perl-Glib-Object-Introspection 
-  - perl-GnuPG-Interface 
   - perl-GooCanvas2 
   - perl-Graph 
   - perl-GraphViz 
@@ -21952,6 +21958,7 @@ unsorted:
   - perl-IO-All 
   - perl-IO-Async 
   - perl-IO-CaptureOutput 
+  - perl-IO-Compress 
   - perl-IO-Compress-Lzma 
   - perl-IO-Event 
   - perl-IO-Handle-Util 
@@ -22537,6 +22544,7 @@ unsorted:
   - perl-Test-Fork 
   - perl-Test-Future-IO-Impl 
   - perl-Test-HTTP-MockServer 
+  - perl-Test-Harness 
   - perl-Test-HasVersion 
   - perl-Test-Identity 
   - perl-Test-InDistDir 
@@ -26883,6 +26891,7 @@ unsorted:
   - python311-pytest-flask 
   - python311-pytest-forked 
   - python311-pytest-freezegun 
+  - python311-pytest-freezer 
   - python311-pytest-git 
   - python311-pytest-grpc 
   - python311-pytest-helpers-namespace 
@@ -30556,6 +30565,7 @@ unsorted:
   - python312-pytest-flask 
   - python312-pytest-forked 
   - python312-pytest-freezegun 
+  - python312-pytest-freezer 
   - python312-pytest-git 
   - python312-pytest-grpc 
   - python312-pytest-helpers-namespace 
@@ -34260,6 +34270,7 @@ unsorted:
   - python313-pytest-flask 
   - python313-pytest-forked 
   - python313-pytest-freezegun 
+  - python313-pytest-freezer 
   - python313-pytest-git 
   - python313-pytest-grpc 
   - python313-pytest-helpers-namespace 
@@ -37006,6 +37017,7 @@ unsorted:
   - sddm-kalpa-lang 
   - sddm-kalpa-themes 
   - sddm-kalpa-wayland-generic 
+  - sddm-wayland-miriway 
   - sdl-asylum 
   - sdl-ball 
   - sdl12_compat-devel 
@@ -37130,7 +37142,6 @@ unsorted:
   - sierra-gtk-theme 
   - sigil 
   - signify 
-  - signing-party 
   - signon-plugin-oauth2-devel 
   - signon-plugins-devel 
   - signon-plugins-docs 
@@ -47803,7 +47814,6 @@ unsorted:
   - typelib-1_0-AyatanaAppIndicator-0_1 
   - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
-  - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
   - typelib-1_0-BlockDev-3_0 
   - typelib-1_0-BraseroBurn-3_2_0 
@@ -47886,7 +47896,6 @@ unsorted:
   - typelib-1_0-Gdaui-6_0 
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gee-0_8 
-  - typelib-1_0-Gegl-0_4 
   - typelib-1_0-GeocodeGlib-1_0 
   - typelib-1_0-Gepub-0_7 
   - typelib-1_0-Gfls-1 

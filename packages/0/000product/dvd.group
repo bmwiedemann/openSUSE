@@ -539,7 +539,7 @@
     <package name="gigolo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gimp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-plugin-aa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="gimp-plugin-jxl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gimp-plugin-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="git" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -1696,7 +1696,7 @@
     <package name="libappindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libappmenu-gtk2-parser0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libappmenu-gtk3-parser0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libappstream5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libapr-util1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="libapr1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -1745,6 +1745,7 @@
     <package name="libb64-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libbacktrace0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbase" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libbd_btrfs3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1829,7 +1830,7 @@
     <package name="libcdr-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcdrdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-gtk25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2063,8 +2064,8 @@
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgif7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgimp-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgimpui-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgimp-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgimpui-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgio-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libgiomm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4109,6 +4110,7 @@
     <package name="typelib-1_0-AppIndicator3-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Atk-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-Atspi-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-Babl-0_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Cheese-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Clutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Cogl-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4127,6 +4129,7 @@
     <package name="typelib-1_0-Gcr-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GdkPixbuf-2_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-Gdm-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-Gegl-0_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Geoclue-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GeocodeGlib-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gio-2_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
