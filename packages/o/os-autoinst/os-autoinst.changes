@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 17 17:28:20 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1737129853.8e8f463:
+  * Add test coverage for sshXtermVt
+  * Add coverage for tags subroutine when called with more than 2
+  * Update perltidy to 20250105
+  * t: Fix hidden output of 'diag explain'
+  * Drop some orphaned lines about gocrbin
+
+-------------------------------------------------------------------
 Wed Jan 08 19:25:50 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1736332167.3796202:
