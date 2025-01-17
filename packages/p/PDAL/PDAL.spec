@@ -1,7 +1,7 @@
 #
 # spec file for package PDAL
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Friedmann Bruno, Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define sovers 18.0.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:

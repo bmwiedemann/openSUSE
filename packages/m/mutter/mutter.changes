@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:47:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.4:
+  + Use BT709 coefficients and limited range for YUV conversion by
+    defaults
+  + Also request high priority secondary EGL context
+  + Fix Xwayland DND coordinates when using fractional scaling
+  + Fix applying initial _NET_WM_WINDOW_OPACITY on Xwayland
+  + Implement wp_viewport support for cursor surfaces
+  + Improve input → output latency of cursor movements
+  + Improve frame rate on monitors attached to secondary GPUs in
+    copy mode
+  + Send preferred scales to all surface roles
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  6 07:39:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:

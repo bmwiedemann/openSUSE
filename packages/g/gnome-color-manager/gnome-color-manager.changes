@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 14 19:23:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.2:
+  + Remove forgotten libcanberra include
+  + Set prgname to application ID
+  + Update appdata
+  + Updated translations.
+- Switch to source service for tarball/sources.
+- Drop obsolete update-desktop-files BuildRequires and macros.
+- Drop pkgconfig(libcanberra-gtk3) BuildRequires following upstream
+  changes.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:36:47 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

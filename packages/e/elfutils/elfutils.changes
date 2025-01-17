@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 12 18:37:00 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add fix-static-linking.patch (bsc#1234445)
+
+-------------------------------------------------------------------
 Mon Dec  2 13:13:00 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Remove files packaged by elfutils-debuginfod

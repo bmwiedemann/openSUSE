@@ -1,7 +1,7 @@
 #
 # spec file for package python-glfw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-glfw
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        A ctypes-based wrapper for GLFW3
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/FlorianRhiem/pyGLFW
 Source:         https://files.pythonhosted.org/packages/source/g/glfw/glfw-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libglfw3
 BuildRequires:  python-rpm-macros
@@ -53,10 +55,10 @@ except for:
 %setup -q -n glfw-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +67,7 @@ except for:
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/glfw
+%{python_sitelib}/glfw-*.dist-info
 
 %changelog

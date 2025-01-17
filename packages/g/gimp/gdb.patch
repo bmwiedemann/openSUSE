@@ -1,0 +1,61 @@
+commit 7694b1dc04c253a8b1c14740a1ef20f13114cd34
+Author: Jehan <jehan@girinstud.io>
+Date:   Mon Jan 6 21:09:37 2025 +0100
+
+    Issue #12640: run in-build GIMP binary through a debugger when gdb is available.
+    
+    It is not in fact a fix for #12640, only an improvement to our build
+    script, wrapping our calls to GIMP executables and outputting a
+    backtrace on a crash. This way, when people report issues during one of
+    the relevant calls, we may be able to diagnose.
+    
+    It won't be useful for other types of failures (when the process doesn't
+    crash, but e.g. the script is wrong or other non-fatal bugs in GIMP).
+
+diff --git a/meson.build b/meson.build
+index e1b7450805..6c155a9bf4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1951,7 +1951,8 @@ subdir('app-tools')
+ # tool.
+ 
+ gimp_run_env=environment()
+-gimp_run_env.set('GIMP_GLOBAL_BUILD_ROOT', meson.global_build_root())
++gimp_run_env.set('GIMP_GLOBAL_BUILD_ROOT',  meson.global_build_root())
++gimp_run_env.set('GIMP_GLOBAL_SOURCE_ROOT', meson.global_source_root())
+ 
+ if meson.can_run_host_binaries() and have_gobject_introspection
+   if enable_console_bin
+diff --git a/tools/debug-in-build-gimp.py b/tools/debug-in-build-gimp.py
+new file mode 100644
+index 0000000000..7225a7c4e4
+--- /dev/null
++++ b/tools/debug-in-build-gimp.py
+@@ -0,0 +1,8 @@
++def my_signal_handler (event):
++  if (isinstance(event, gdb.SignalEvent)):
++    gdb.write("Eeeeeeeeeeeek: in-build GIMP crashed!\n")
++    gdb.execute('info threads')
++    gdb.execute("thread apply all backtrace full")
++
++gdb.events.stop.connect(my_signal_handler)
++gdb.execute("run")
+diff --git a/tools/in-build-gimp.sh b/tools/in-build-gimp.sh
+index b1254e7e98..913fd19c80 100755
+--- a/tools/in-build-gimp.sh
++++ b/tools/in-build-gimp.sh
+@@ -24,7 +24,13 @@ if [ -n "$GIMP_TEMP_UPDATE_RPATH" ]; then
+   unset IFS
+ fi
+ 
+-cat /dev/stdin | $GIMP_SELF_IN_BUILD "$@"
++if command -v gdb; then
++  echo RUNNING: cat /dev/stdin "|" gdb --batch -x "$GIMP_GLOBAL_SOURCE_ROOT/tools/debug-in-build-gimp.py" --args $GIMP_SELF_IN_BUILD "$@"
++  cat /dev/stdin | gdb --return-child-result --batch -x "$GIMP_GLOBAL_SOURCE_ROOT/tools/debug-in-build-gimp.py" --args $GIMP_SELF_IN_BUILD "$@"
++else
++  echo RUNNING: cat /dev/stdin "|" $GIMP_SELF_IN_BUILD "$@"
++  cat /dev/stdin | $GIMP_SELF_IN_BUILD "$@"
++fi
+ 
+ if [ -n "$GIMP_TEMP_UPDATE_RPATH" ]; then
+   export IFS=":"

@@ -372,4 +372,12 @@
     <comment>- Add 1e10a41f.patch: Fix compatibility with libxml2 2.12.x. (forwarded request 1133095 from dimstar)</comment>
     <requestid>1133104</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>71f4fa853e014e33b6888be94fcda8cf</srcmd5>
+    <version>0.14.3</version>
+    <time>1737048678</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238100</requestid>
+  </revision>
 </revisionlist>

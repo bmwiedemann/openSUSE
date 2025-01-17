@@ -1,7 +1,7 @@
 #
 # spec file for package harfbuzz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,14 @@
 
 
 Name:           harfbuzz
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
-# PAtCH-FIX-UPSTREAM harfbuzz-CVE-2024-56732.patch boo#1234880 mgorse@suse.com -- guard hb_cairo_glyphs_from_buffer() against bad UTF-8.
-Patch0:         harfbuzz-CVE-2024-56732.patch
+
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson

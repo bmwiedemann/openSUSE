@@ -5286,4 +5286,41 @@ boo#1224178</comment>
   * Various fixes from internal audits, fuzzing and other initiatives</comment>
     <requestid>1235874</requestid>
   </revision>
+  <revision rev="444" vrev="1">
+    <srcmd5>0330b2eade32cd4dd1c41d6275520cdc</srcmd5>
+    <version>132.0.6834.83</version>
+    <time>1737048690</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 132.0.6834.83
+  (stable released 2024-01-14) (bsc#1235892)
+  * CVE-2025-0434: Out of bounds memory access in V8
+  * CVE-2025-0435: Inappropriate implementation in Navigation
+  * CVE-2025-0436: Integer overflow in Skia
+  * CVE-2025-0437: Out of bounds read in Metrics
+  * CVE-2025-0438: Stack buffer overflow in Tracing
+  * CVE-2025-0439: Race in Frames
+  * CVE-2025-0440: Inappropriate implementation in Fullscreen
+  * CVE-2025-0441: Inappropriate implementation in Fenced Frames
+  * CVE-2025-0442: Inappropriate implementation in Payments
+  * CVE-2025-0443: Insufficient data validation in Extensions
+  * CVE-2025-0446: Inappropriate implementation in Extensions
+  * CVE-2025-0447: Inappropriate implementation in Navigation
+  * CVE-2025-0448: Inappropriate implementation in Compositing
+- dropped patches:
+  * chromium-131-unbundle-enable-freetype.patch (upstream)
+- added patches:
+  * chromium-8d882c289f17e3a67d6d67d5ff7e9d16ebb4f19a.patch
+    (apply git upstream reverse for 15.x with llvm17)
+  * chromium-93-ffmpeg-4.4-rest.patch
+    (split off to only apply after the reverse) 
+  * chromium-132-old_libdrm.patch
+    (applied only on 15.5 with libdrm &lt; 2.4.116)
+  * chromium-132-pdfium-explicit-template.patch
+    (error: alias template requires template arguments)
+- update context in
+  * chromium-125-compiler.patch
+  * chromium-127-rust-clanglib.patch
+  * Cr122-ffmpeg-new-channel-layout.patch</comment>
+    <requestid>1238043</requestid>
+  </revision>
 </revisionlist>

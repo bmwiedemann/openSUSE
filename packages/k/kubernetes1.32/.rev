@@ -7,4 +7,12 @@
     <comment>New Package — Kubernetes v1.32.0 (new minor version release)</comment>
     <requestid>1232551</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31f3fafb6850322d1d88bac22038438e</srcmd5>
+    <version>1.32.1</version>
+    <time>1737048869</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – Jan, 2025: Update to version 1.32.1</comment>
+    <requestid>1238214</requestid>
+  </revision>
 </revisionlist>

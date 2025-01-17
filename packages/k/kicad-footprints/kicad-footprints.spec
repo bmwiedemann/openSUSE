@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-footprints
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 %define compatversion 8.0.0
 
 Name:           kicad-footprints
-Version:        8.0.7
-%define file_version 8.0.7
+Version:        8.0.8
+%define file_version 8.0.8
 Release:        0
 Summary:        Footprint library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception

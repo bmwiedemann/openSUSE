@@ -1506,4 +1506,13 @@
     <comment>Update to v1.28.1</comment>
     <requestid>1227985</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>e79fa0826a531f84ce4a677ddb690cba</srcmd5>
+    <version>1.29.2</version>
+    <time>1737048875</time>
+    <user>anag+factory</user>
+    <comment>* Update to v1.29.2
+* Remove signature validation for now, see changelog entry for reasoning</comment>
+    <requestid>1238231</requestid>
+  </revision>
 </revisionlist>

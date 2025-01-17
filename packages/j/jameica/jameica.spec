@@ -1,7 +1,7 @@
 #
 # spec file for package jameica
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  java-devel >= 11
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-apis
 Requires:       java >= 11
+Requires:       libgthread-2_0-0
 
 %ifarch %{ix86} ppc s390
 %global bits 32

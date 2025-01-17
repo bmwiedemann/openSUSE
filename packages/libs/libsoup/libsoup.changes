@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jan 11 21:15:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.3:
+  + http2: Significantly reduce memory usage of large requests
+  + server: Treat `ECONNREFUSED` when listening on IPv6 as
+    unsupported
+  + auth-digest: Fix handling missing nonce/realm in responses, as
+    well as a leak
+  + In `soup_uri_decode_data_uri()` fix handling of URIs with a
+    path beginning with `//`
+  + In `soup_message_headers_get_content_disposition()` fix
+    possibility of NULL-deref and double-free
+  + In `soup_header_parse_quality_list()` fix leak
+  + In `soup_form_decode_multipart()` fix ownership annotation for
+    the multipart object
+
+-------------------------------------------------------------------
+Thu Dec 12 13:13:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.6.1+4:
+  + Fix ownership annotatin for soup_form_decode_multipart().
+- Convert to obs_scm source service: allow for easier maintenance.
+
+-------------------------------------------------------------------
 Wed Dec  4 22:17:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Increase test timeout on s390x. The http2-body-stream test can be

@@ -73,4 +73,12 @@ https://github.com/kubernetes/kubernetes/releases/tag/v1.30.0</comment>
     <comment>Monthly Patch Release – Dec, 2024: Update to version 1.30.8</comment>
     <requestid>1232533</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e9067e699e0ae0dffa564121b6221ff</srcmd5>
+    <version>1.30.9</version>
+    <time>1737048872</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – Jan, 2025: Update to version 1.30.9</comment>
+    <requestid>1238219</requestid>
+  </revision>
 </revisionlist>

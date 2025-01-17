@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 02:02:17 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Extend options-cxx17.patch and options-old.patch
+  to avoid race-condition (boo#1235867)
+
+-------------------------------------------------------------------
 Sat Nov 16 22:20:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20240722.0:

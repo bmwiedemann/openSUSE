@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.89.0
+%define kf5_version 5.108.0
 %define qt5_version 5.15.0
 %bcond_without released
 Name:           amarok
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -130,9 +130,6 @@ This package provides documentation for the Amarok media player.
 %autosetup -p1
 
 %build
-%ifarch ppc ppc64
-export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
 %cmake_kf5 -d build
 
 %cmake_build
@@ -178,10 +175,8 @@ rm %{buildroot}%{_kf5_libdir}/libamarok{core,lib,shared,-sqlcollection,-transcod
 %{_kf5_plugindir}/kcm_amarok_service_*.so
 %{_kf5_qmldir}/org/kde/amarok/
 %{_kf5_servicesdir}/
-%{_kf5_servicetypesdir}/amarok*.desktop
 %{_kf5_sharedir}/amarok/
 %{_kf5_sharedir}/dbus-1/services/org.kde.amarok.service
-
 %dir %{_kf5_sharedir}/kpackage
 %{_kf5_sharedir}/kpackage/amarok/
 %dir %{_kf5_sharedir}/kpackage/genericqml

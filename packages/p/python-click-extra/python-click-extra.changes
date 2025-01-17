@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 16 11:19:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add click818.patch to fix tests with new click
+
+-------------------------------------------------------------------
 Thu Nov 14 09:06:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-click-extra: Drop-in replacement for Click to

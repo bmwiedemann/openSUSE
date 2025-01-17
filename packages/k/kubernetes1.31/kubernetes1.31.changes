@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 16 09:58:06 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.5:
+  * kubelet: use env vars in node log query PS command
+  * webhook: alter regex to account for x509sha1 GODEBUG removal
+  * kubeadm: fix a bug where the node.skipPhases in UpgradeNodeConfiguration is not respected by 'kubeadm upgrade node'
+  * Bump images, dependencies and versions to go 1.22.10 and distroless iptables
+  * Do not attempt to truncate revision history if revisionHistoryLimit is negative
+  * fetch cni plugins from GitHub releases
+  * Fix volume expansion offline
+  * prevent unnecessary resolving of iscsi/fc devices to dm
+  * kubelet: Fix the volume manager did't check the device mount state in the actual state of the world before marking the volume as detached. It may cause a pod to be stuck in the Terminating state due to the above issue when it was deleted.
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires: go >= 1.22.10`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.5/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Thu Dec 19 08:16:44 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.4:

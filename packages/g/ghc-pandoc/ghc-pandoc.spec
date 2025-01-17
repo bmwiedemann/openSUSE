@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.6
+Version:        3.6.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later

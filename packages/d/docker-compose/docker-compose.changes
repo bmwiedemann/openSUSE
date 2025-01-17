@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 16 05:55:59 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.4:
+  * add missing tag for build during merge workflow
+  * ci: re-use local source to build binary images
+  * ci: use local source for binary builds
+
+-------------------------------------------------------------------
 Mon Jan 13 14:53:04 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.3:

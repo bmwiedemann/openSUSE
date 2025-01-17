@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:18:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.1
+  * Support gpodder and lastfm on Qt6 builds
+  * Limit maximum current track font size more when context view
+    is narrow
+  * Fix displaying settings button for Internet services
+  * Enable Wikipedia context applet on Qt6 builds
+  * Don't crash when copying multiple files to MTP device (kde#467616)
+  * Avoid unnecessarily flooding MTP devices with storage
+    capacity queries
+  * Compilation fixes for various compiler + Qt6 version
+    combinations
+
+-------------------------------------------------------------------
+Mon Dec 30 08:10:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.2
+  * Building an experimental Qt6/KF6 Amarok version is now possible
+  * Allow filtering collection by lack of tag / empty tag (kde#325317)
+  * Amarok now depends on KDE Frameworks 5.108
+  * Show current track context applet by default
+  * Probably fix occasional crashes when filtering collection (kde#492406)
+  * Probably fix occasional crashes when clearing CompondProgressBars
+  * Fix context view applets on Qt6/KF6
+  * Fix Ampache login on server version 5.0.0 and later (kde#496581)
+  * Fix crash if Ampache login is redirected (kde#396590)
+- Rebase disable-web-plugins-by-default.patch
+
+-------------------------------------------------------------------
 Sun Sep 29 14:35:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.1.1

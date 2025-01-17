@@ -1,7 +1,7 @@
 #
 # spec file for package libsecret
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.21.4
+Version:        0.21.5
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later

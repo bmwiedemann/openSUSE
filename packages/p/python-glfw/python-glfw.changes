@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 16 11:15:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.8.0
+  * Update to GLFW 3.4
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Mon Mar 25 20:02:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.0:

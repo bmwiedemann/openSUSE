@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:18:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.3:
+  + xml: Fix compatibility with libxml2 2.12.x
+  + Add missing array annotation
+  + build: Fix Requires: line of pkg-config file
+  + Loosen restriction on dc:date verification
+- Drop patches fixed upstream:
+  + 1e10a41f.patch
+  + 767388bc.patch
+  + gupnp-av-libxml2.11-support.patch
+- Switch to source service for tarball/sources.
+
+-------------------------------------------------------------------
 Thu Dec 14 12:53:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 1e10a41f.patch: Fix compatibility with libxml2 2.12.x.

@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,35 @@
 
 
 # python-rpm-macros doesn't work for hplip!
-# We just build for py3 since SLE15
+%if 0%{?suse_version} >= 1500
 %define pyversion 3
 %define pymod() python3-%{**}
 %define pyver %{py3_ver}
 %define pyexe %{_bindir}/python3
+%define py_compile(O) %{py3_compile %{-O} %*}
 %global use_qt5 1
+%define gobject gobject
+%else
+%define pyversion 2
+%define pymod() python-%{**}
+%define pyver %{py_ver}
+%define pyexe %{_bindir}/python
+%define gobject gobject2
+%global use_qt5 0
+%global make_build make V=1
+%global make_install make DESTDIR=%{buildroot} V=1 install
+%endif
+
+%if 0%{use_qt5}
+%global config_qt_opts --disable-qt4 --enable-qt5
+%global requires_qt %{pymod qt5}
+%global ui_dir ui5
+%else
+%global config_qt_opts --enable-qt4 --disable-qt5
+%global requires_qt %{pymod qt4}
+%global ui_dir ui4
+%endif
+
 Name:           hplip
 Version:        3.24.4
 Release:        0
@@ -93,8 +116,13 @@ Patch603:       hplip-scan-orblite-c99.patch
 Patch604:       hplip-sclpml-strcasestr.patch
 Patch605:       hplip-hpaio-gcc14.patch
 
-BuildRequires:  %{pymod devel}
+%if %use_qt5
 BuildRequires:  %{pymod qt5-devel}
+%else
+BuildRequires:  %{pymod qt4}
+BuildRequires:  libqt4-devel
+%endif
+BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod xml}
 BuildRequires:  cups > 1.5
 BuildRequires:  cups-devel > 1.5
@@ -133,7 +161,7 @@ Requires:       %{name}-hpijs = %{version}-%{release}
 Requires:       %{name}-sane = %{version}-%{release}
 Requires:       %{pymod dbus-python} >= 0.80
 Requires:       %{pymod gobject}
-Requires:       %{pymod qt5}
+Requires:       %{requires_qt}
 Requires:       cups > 1.5
 # foomatic-filters and cups-filters-foomatic-rip
 # do not require Ghostscript because depending on the PPD
@@ -162,7 +190,9 @@ Requires(post): %{_bindir}/find
 Requires(post): /bin/grep
 Requires(post): /bin/sed
 Requires(post): coreutils
+%if 0%{?suse_version} >= 1500
 Recommends:     python3-reportlab
+%endif
 # Obsolete earlier package names
 Obsoletes:      hplip17
 Provides:       hplip3 = 3.9.5
@@ -260,8 +290,10 @@ Requires:       %{name}-udev-rules = %{version}-%{release}
 Suggests:       %{name} = %{version}
 Enhances:       sane-backends
 # Automatically install this package if hpijs sub-package and sane-backends are
-# both installed:
+# both installed (syntax only
+%if 0%{?suse_version} >= 1500
 Supplements:    (%{name}-hpijs and sane-backends)
+%endif
 
 %description sane
 This package includes the backend driver for scanning with HP scanners
@@ -336,7 +368,10 @@ This sub-package is only required by developers.
 %patch -P 401 -p1
 %patch -P 402 -p1
 %patch -P 403 -p1
+%if 0%{?suse_version} >= 1500
+# This patch replaces python-config by python3-config, don't apply on SLE12
 %patch -P 404 -p1
+%endif
 %patch -P 500 -p1
 %patch -P 601 -p1
 %patch -P 602 -p1
@@ -361,7 +396,7 @@ cp -p %{SOURCE103} %{SOURCE104} ppd/hpcups
 # in each directory where a Makefile.am exists:
 AUTOMAKE='automake --foreign' autoreconf -fvi
 # Fix improper method of Python.h lookup in configure, no longer working with Python 3.8
-PYTHON_INCLUDEDIR="$(python3-config --includes)"
+PYTHON_INCLUDEDIR="$(%{pymod config} --includes)"
 # Set our preferred architecture-specific flags for the compiler and linker:
 export CFLAGS="%{optflags} ${PYTHON_INCLUDEDIR} -Wno-error=return-type"
 export CXXFLAGS="%{optflags} ${PYTHON_INCLUDEDIR} -fno-strict-aliasing -Wno-error=return-type"
@@ -391,8 +426,7 @@ export CXXFLAGS="%{optflags} ${PYTHON_INCLUDEDIR} -fno-strict-aliasing -Wno-erro
 # so that --with-htmldir must be explicitly set.
 %configure \
             --disable-qt3 \
-            --disable-qt4 \
-            --enable-qt5 \
+            %{config_qt_opts} \
             --disable-policykit \
             --enable-doc-build \
             --enable-network-build \
@@ -424,8 +458,7 @@ sed -i 's|ppd/hpcups/\*.ppd.gz ||g' Makefile
 %make_install
 
 # Make and install Python compiled bytecode files
-%py3_compile %{buildroot}%{_datadir}/hplip
-%py3_compile -O %{buildroot}%{_datadir}/hplip
+%py_compile -O %{buildroot}%{_datadir}/hplip
 
 # Hardlink .pyc and .pyo when they have same content.
 # Do not run "fdupes buildroot/_datadir/hplip" because
@@ -673,14 +706,14 @@ exit 0
 %{_datadir}/hplip/
 %exclude %{_datadir}/hplip/data/models/models.dat
 %exclude %{_datadir}/hplip/base/imageprocessing.py*
-%exclude %{_datadir}/hplip/ui5/scandialog.py*
+%exclude %{_datadir}/hplip/%{ui_dir}/scandialog.py*
 %exclude %{_datadir}/hplip/scan
 %exclude %{_datadir}/hplip/scan.py*
 %exclude %{_datadir}/hplip/uiscan.py*
 %exclude %{_datadir}/hplip/__pycache__/uiscan.*
 %exclude %{_datadir}/hplip/__pycache__/scan.*
 %exclude %{_datadir}/hplip/base/__pycache__/imageprocessing.*
-%exclude %{_datadir}/hplip/ui5/__pycache__/scandialog.*
+%exclude %{_datadir}/hplip/%{ui_dir}/__pycache__/scandialog.*
 
 # The scanning utils depend on PIL and python3-scikit-image,
 # which are not available in SLE
@@ -693,11 +726,13 @@ exit 0
 %{_datadir}/hplip/scan.py*
 %{_datadir}/hplip/uiscan.py*
 %{_datadir}/hplip/base/imageprocessing.py*
-%{_datadir}/hplip/ui5/scandialog.py*
+%if %{pyversion} != 2
+%{_datadir}/hplip/%{ui_dir}/scandialog.py*
 %{_datadir}/hplip/__pycache__/uiscan.*
 %{_datadir}/hplip/__pycache__/scan.*
 %{_datadir}/hplip/base/__pycache__/imageprocessing.*
-%{_datadir}/hplip/ui5/__pycache__/scandialog.*
+%{_datadir}/hplip/%{ui_dir}/__pycache__/scandialog.*
+%endif
 
 %files hpijs
 %config %{_sysconfdir}/hp/

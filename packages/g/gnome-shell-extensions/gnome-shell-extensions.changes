@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:54:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + places-menu: Fix opening drives with mount operations
+  + window-list: Fix hiding when entering overview with gestures
+  + workspace-indicator: Only show previews of regular windows
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Dec 19 06:02:21 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update gnome-shell-add-app-to-desktop.patch: (bsc#1234648).

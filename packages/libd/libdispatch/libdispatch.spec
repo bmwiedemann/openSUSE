@@ -1,7 +1,7 @@
 #
 # spec file for package libdispatch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source1:        libdispatch-rpmlintrc
 Patch0:         prevent_unused.patch
 # set library versions
 Patch2:         soversion.patch
+# UPSTREAM-PATCH https://github.com/swiftlang/swift-corelibs-libdispatch/pull/840
+Patch3:         disable-cast-function-type-mismatch.patch
 BuildRequires:  chrpath
 BuildRequires:  clang
 BuildRequires:  cmake

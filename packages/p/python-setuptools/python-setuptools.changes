@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 16 01:55:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Also provide python3-setuptools-wheel for the primary flavor. 
+
+-------------------------------------------------------------------
+Wed Jan 15 15:27:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire python-rpm-packaging: when primary flavor
+  is added, this is auto-installed by dependencies. But as we now
+  build the primary flavor separated, we have to ensure to also
+  have it present in the other cases, in order to get the python(abi)
+  dependencies added.
+
+-------------------------------------------------------------------
+Wed Jan 15 05:49:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Split out the primary Python build.
+
+-------------------------------------------------------------------
 Fri Nov 22 08:40:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove duplicated "uses_network" skip

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jan 16 11:32:55 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Remove signature validation for now
+  The signature is valid but GPG nevertheless exits with a non-zero
+  return code. This problem has been discussed with upstream. The
+  discussion hasn't been conclusive but it might be an issue with GPG
+  itself. Until this is fixed I am removing the signature.
+
+-------------------------------------------------------------------
+Sun Jan 12 22:28:32 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.29.2
+  * Bugfixes:
+    #9913: panic: string field contains invalid UTF-8 [recovered]
+
+-------------------------------------------------------------------
+Thu Jan  9 22:12:55 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.29.1
+  * Bugfixes:
+    #9904: The browse API response has changed as of Syncthing v1.29.0
+    #9906: Deadlocks randomly, occasionally
+    #9907: The response of "pending" APIs has changed as of Syncthing v1.29.0
+    #9909: Login into UI (Browser) not working anymore
+
+-------------------------------------------------------------------
+Mon Jan  6 15:22:23 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.29.0
+  * Bugfixes:
+    #9855: GUI address unix socket broken
+    #9872: When socket files are in a folder that needs to be synced on linux, some files were not synced until the socket files were removed
+    #9875: Clarify log message for ignored folders
+  * Other issues:
+    #9870: Fails with Go 1.24: runtime go1.24rc1 not found in compat.yaml
+
+-------------------------------------------------------------------
 Tue Dec  3 12:55:41 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.28.1

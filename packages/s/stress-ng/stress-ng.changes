@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 09:46:19 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- BuildRequire EGL to improve GPU support
+
+-------------------------------------------------------------------
 Tue Jan  7 10:00:11 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - bugfix release 0.18.09

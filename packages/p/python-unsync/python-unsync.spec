@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define modname unsync
 Name:           python-unsync
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Unsynchronize asyncio
 License:        MIT

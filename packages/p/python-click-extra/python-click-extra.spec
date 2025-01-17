@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-extra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Drop-in replacement for Click to make user-friendly and colorful
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/click-extra
 Source:         https://github.com/kdeldycke/click-extra/archive/v%{version}.tar.gz#/%{module_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/kdeldycke/click-extra/commit/ab9cff085aefff5787a2c9c7def8e71c9d3ed379 Fix 8.1.8 tests
+Patch:          click818.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module setuptools}

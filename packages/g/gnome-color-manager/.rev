@@ -545,4 +545,12 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930901</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>e64c524df2998a4da16ca8653ee4f9f7</srcmd5>
+    <version>3.36.2</version>
+    <time>1737048679</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238102</requestid>
+  </revision>
 </revisionlist>

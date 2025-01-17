@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 11:10:21 UTC 2025 - okurz@suse.com
+
+- Update to version 1737025645.819c129:
+  * Fix shellcheck reported issue SC2317
+  * count-fail-ratio: Fix commands with quoted arguments
+
+-------------------------------------------------------------------
 Wed Aug 14 08:53:47 UTC 2024 - okurz@suse.com
 
 - Update to version 1723625520.fd868ce:

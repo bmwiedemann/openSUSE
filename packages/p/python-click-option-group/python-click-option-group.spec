@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-option-group
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,8 @@ dos2unix README.md CHANGELOG.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_missing_group_decl_first_api fails with click 8.1.8 https://github.com/click-contrib/click-option-group/issues/65
+%pytest -k "not test_missing_group_decl_first_api"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

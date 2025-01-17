@@ -1,7 +1,7 @@
 #
 # spec file for package kubernetes1.31
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.30
 
 Name:           kubernetes%{baseversion}
-Version:        1.31.4
+Version:        1.31.5
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.22.9
+BuildRequires:  go >= 1.22.10
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -84,7 +84,9 @@ for management and discovery.
 
 
 
+
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management

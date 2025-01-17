@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 16 06:08:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.1:
+  * fix: set ExcludeFromCopy correctly (#3766)
+  * fix: Adjusting Discord invite link (#3761)
+  * fix(docs): correct typo in stacks.md (#3758)
+  * fix: Adjusting delay to reduce flakiness (#3748)
+  * Discord link update (#3747)
+
+-------------------------------------------------------------------
 Sat Jan 11 12:09:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.72.0:

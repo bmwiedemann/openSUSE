@@ -1,7 +1,7 @@
 #
 # spec file for package kitty
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.38.1
+Version:        0.39.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only

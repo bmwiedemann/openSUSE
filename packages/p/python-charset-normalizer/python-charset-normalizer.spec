@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-charset-normalizer
 Version:        3.4.1
@@ -30,8 +36,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Suggests:       python-unicodedata2
 BuildArch:      noarch
 # SECTION test requirements
@@ -55,6 +66,10 @@ Python Universal Charset detector.
 
 %check
 %pytest
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative normalizer
 
 %post
 %python_install_alternative normalizer

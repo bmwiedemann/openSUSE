@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 15 19:50:51 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix release version 3.10.1
+  + CMake: FindDotnet.cmake: remove obsolete cmake_minimum_required()
+  + CMake: fix swig/csharp/CMakeLists.txt compatibility with CMake 3.31
+  + CMake: use add_compile_options() instead of setting CMAKE_CXX_FLAGS for -fno-finite-math-only (#11286)
+  + Set GDAL_DEV_SUFFIX to the pre-release suffix if a corresponding Git tag was found.
+  + PDF: fix build issue on CondaForge build infrastructure (gcc 13.3)
+  + Fix issues in cpl_vsil_win32.cpp with latest mingw64
+- Remove merged upstream 19ba2562.patch
+
+-------------------------------------------------------------------
 Sun Jan  5 08:36:23 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Add upstream patch 19ba2562.patch to support newer poppler.

@@ -1,0 +1,12 @@
+diff -up gimp-2.99.18/etc/gimprc.in.external-help-browser gimp-2.99.18/etc/gimprc.in
+--- gimp-2.99.18/etc/gimprc.in.external-help-browser	2024-05-07 14:41:40.660506520 +0200
++++ gimp-2.99.18/etc/gimprc.in	2024-05-07 14:46:04.028680986 +0200
+@@ -828,7 +828,7 @@
+ # Sets the browser used by the help system.  Possible values are gimp and
+ # web-browser.
+ # 
+-# (help-browser gimp)
++(help-browser web-browser)
+ 
+ # The maximum number of actions saved in history.  This is an integer value.
+ # 

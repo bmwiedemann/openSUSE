@@ -1,0 +1,6 @@
+<package name="miriway" project="openSUSE:Factory">
+  <title>miriway</title>
+  <description>Miriway is a starting point for creating a Wayland based desktop environment using Mir.</description>
+  <devel project="X11:Wayland" package="miriway"/>
+  <url>https://github.com/Miriway/Miriway</url>
+</package>

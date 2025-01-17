@@ -1,7 +1,7 @@
 #
 # spec file for package nftlb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nftlb
-Version:        1.0.9
+Version:        1.1.0
 Release:        0
 Summary:        nftables load balancer
 License:        AGPL-3.0-or-later

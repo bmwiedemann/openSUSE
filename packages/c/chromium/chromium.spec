@@ -22,7 +22,10 @@
 %define outputdir out
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+# suse_version 1500 all of sle code 15, all of leap15
+# suse_version 1600 all of alp, slfo
+# suse_version 1699 tw
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150400
 %bcond_without gtk4
 %bcond_without qt
 %else
@@ -34,7 +37,7 @@
 %else
 %bcond_without swiftshader
 %endif
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1600
 %bcond_without system_harfbuzz
 %bcond_without system_freetype
 %bcond_without arm_bti
@@ -42,23 +45,36 @@
 # //chrome/browser/ui/lens:unit_tests(//build/toolchain/linux/unbundle:default)
 #   needs //third_party/icu:icuuc_public(//build/toolchain/linux/unbundle:default)
 #bcond_without system_icu
-%bcond_without ffmpeg_51
 %bcond_with qt6
+%bcond_without ffmpeg_51
+%define ffmpeg_version 59
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
-%bcond_with ffmpeg_51
 %bcond_with qt6
+%bcond_with ffmpeg_51
+%define ffmpeg_version 58
 %endif
 %bcond_with system_zstd
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150700
+# LLVM version
+%define llvm_version 19
+# RUST version
+%define rust_version 1.83
+# GCC version
+%define gcc_version 14
+%else
 # LLVM version
 %define llvm_version 17
 # RUST version
 %define rust_version 1.81
 # GCC version
 %define gcc_version 13
+%endif
+# esbuild version
+%define esbuild_version 0.24.0
 %if 0%{?suse_version} <= 1699
 %bcond_with system_webp
 %bcond_with system_re2
@@ -83,11 +99,10 @@
 %else
 %bcond_with libxml2_2_12
 %endif
-# FFmpeg version
-%if %{with ffmpeg_51}
-%define ffmpeg_version 59
+%if %{pkg_vcmp libdrm-devel >= 2.4.115}
+%bcond_without libdrm_2_4_115
 %else
-%define ffmpeg_version 58
+%bcond_with libdrm_2_4_115
 %endif
 # Package names
 %if %{with is_beta}
@@ -98,17 +113,16 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        131.0.6778.264
+Version:        132.0.6834.83
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
-Source1:        esbuild.tar.gz
+# https://github.com/evanw/esbuild/archive/refs/tags/v%%{esbuild_version}.tar.gz
+Source1:        esbuild-%{esbuild_version}.tar.gz
+Source2:        esbuild-%{esbuild_version}-vendor.tar.gz
 Source3:        README.SUSE
-Source4:        ffmpeg-new-channel-layout.patch
-Source5:        Cr122-ffmpeg-new-channel-layout.patch
-Source6:        chromium-125-ffmpeg-5.x-reordered_opaque.patch
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -132,27 +146,38 @@ Patch9:         system-libdrm.patch
 Patch15:        chromium-125-compiler.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
-Patch68:        chromium-94-ffmpeg-roll.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
-Patch203:       chromium-106-ffmpeg-duration.patch
 Patch240:       chromium-117-string-convert.patch
 Patch248:       chromium-119-assert.patch
 Patch256:       chromium-120-make_unique-struct.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch311:       chromium-125-disable-FFmpegAllowLists.patch
-Patch336:       chromium-124-system-libxml.patch
 Patch337:       chromium-123-missing-QtGui.patch
 Patch359:       chromium-126-quiche-interator.patch
 Patch360:       chromium-127-bindgen.patch
 Patch361:       chromium-127-rust-clanglib.patch
-Patch362:       chromium-127-clang17-traitors.patch
 Patch363:       chromium-127-constexpr.patch
 Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
 Patch366:       chromium-130-no-hardware_destructive_interference_size.patch
-Patch367:       chromium-131-unbundle-enable-freetype.patch
 Patch368:       chromium-131-clang-stack-protector.patch
+Patch369:       chromium-132-pdfium-explicit-template.patch
+# conditionally applied patches
+# patch where ffmpeg < 5
+Patch1001:      chromium-94-ffmpeg-roll.patch
+Patch1002:      chromium-125-ffmpeg-5.x-reordered_opaque.patch
+Patch1003:      Cr122-ffmpeg-new-channel-layout.patch
+Patch1004:      ffmpeg-new-channel-layout.patch
+Patch1005:      chromium-106-ffmpeg-duration.patch
+Patch1006:      chromium-93-ffmpeg-4.4-rest.patch
+# patch where libxml < 2.12
+Patch1010:      chromium-124-system-libxml.patch
+# patch where libdrm < 2.4.115
+Patch1015:      chromium-132-old_libdrm.patch
+# patch where llvm < 19
+Patch1020:      chromium-127-clang17-traitors.patch
+# end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -178,7 +203,7 @@ BuildRequires:  ninja >= 1.7.2
 BuildRequires:  nodejs >= 20.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1600
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
@@ -354,9 +379,8 @@ BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libzstd) >= 1.5.5
 %endif
 %if %{with clang}
-%if 0%{?suse_version} < 1570
+%if 0%{?suse_version} <= 1500
 BuildRequires:  clang%{llvm_version}
-BuildRequires:  gcc%{gcc_version}
 %if %{with libstdcpp}
 BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
 %else
@@ -380,12 +404,12 @@ BuildRequires:  llvm
 %endif
 %if %{without clang}
 BuildRequires:  binutils-gold
-%if 0%{?suse_version} >= 1550
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%else
+%if 0%{?suse_version} <= 1500
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 %endif
 %endif
 %if 0%{?suse_version} >= 1699
@@ -408,33 +432,43 @@ Provides:       chromedriver = %{version}-%{release}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
-%autosetup -p1 -n %{rname}-%{version}
-%if 0%{?suse_version} >= 1550
-patch -R -p1 < %{PATCH68}
-%endif
+%setup -q -n %{rname}-%{version}
+# apply all patches up to 999
+%autopatch -p1 -M 999
+
 %if %{without ffmpeg_51}
-patch -R -p1 < %{SOURCE6}
-patch -R -p1 < %{SOURCE5}
-patch -R -p1 < %{SOURCE4}
+# ffmpeg is too old
+%patch -p1 -P 1001
+%patch -p1 -R -P 1002
+%patch -p1 -R -P 1003
+%patch -p1 -R -P 1004
+%patch -p1 -P 1005
+%patch -p1 -P 1006
 %endif
-%if %{with libxml2_2_12}
-patch -R -p1 < %{PATCH336}
+
+%if %{without libxml2_2_12}
+%patch -p1 -P 1010
 %endif
-# apply only on 15.5 and 15.6, revert for the others
-%if 0%{?sle_version} != 150600 && 0%{?sle_version} != 150500
-# chromium-106-ffmpeg-duration.patch not needed in factory/tw
-patch -R -p1 < %{PATCH203}
+
+# apply only on 15.5 with libdrm < 2.4.116
+%if 0%{?sle_version} <= 150500
+%patch -p1 -P 1015
+%endif
+
+%if 0%{?llvm_version} == 17
 # chromium-127-clang17-traitors.patch only needed for older clang
-patch -R -p1 < %{PATCH362}
+%patch -p1 -P 1020
 %endif
 
 %build
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
 tar -xf %{SOURCE1}
+tar -xf %{SOURCE2}
+ln -sf esbuild-%{esbuild_version} esbuild
 pushd esbuild
 gflags="-mod=vendor"
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1600
 gflags+=" -buildvcs=false"
 %endif
 GO_FLAGS="${gflags}" make
@@ -451,7 +485,7 @@ ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 
 # python3
 mkdir -p $HOME/bin
-%if 0%{?suse_version} >= 1599
+%if 0%{?suse_version} >= 1600
 export PYTHON=python3
 %else
 export PYTHON=python3.11
@@ -561,6 +595,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/parsel-js
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
+    third_party/devtools-frontend/src/node_modules/fast-glob
     third_party/devtools-frontend/src/third_party
     third_party/distributed_point_functions
     third_party/dom_distiller_js
@@ -603,6 +638,7 @@ keeplibs=(
     third_party/libsecret
     third_party/libsrtp
     third_party/libsync
+    third_party/libtess2
     third_party/liburlpattern
     third_party/libva_protected_content
     third_party/libwebm
@@ -986,7 +1022,7 @@ myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
 %if %{with lto} && %{with clang}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150300
 myconf_gn+=" use_thin_lto=true"
 %endif
 %endif

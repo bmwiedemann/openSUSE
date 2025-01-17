@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 14 11:34:35 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- hplip.spec: re-introduce macros for SLE12 compatibility, so that
+  we can backport security fixes to older releases
+  (bsc#1234745, CVE-2020-6923)
+
+-------------------------------------------------------------------
 Mon Jul 15 15:19:58 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add hplip-pserror-c99.patch hplip-scan-hpaio-include.patch

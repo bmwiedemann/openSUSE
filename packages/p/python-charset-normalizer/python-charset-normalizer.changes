@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:26:52 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1235781
+
+-------------------------------------------------------------------
 Thu Jan  9 09:05:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.4.1

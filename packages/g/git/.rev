@@ -2871,4 +2871,14 @@ git 2.12.3
 git 2.48.0</comment>
     <requestid>1237608</requestid>
   </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>d2dc7fe783cbc0814aeb18a49c1d7741</srcmd5>
+    <version>2.48.1</version>
+    <time>1737048674</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.48.1: (boo#1235600 boo#1235601)
+  * CVE-2024-50349, CVE-2024-52006: 
+    refuse to accept URLs that contain control sequences</comment>
+    <requestid>1238002</requestid>
+  </revision>
 </revisionlist>

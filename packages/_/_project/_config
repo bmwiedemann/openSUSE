@@ -3015,6 +3015,7 @@ BuildFlags: onlybuild:python-rtslib-fb
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
 BuildFlags: onlybuild:python-setuptools
+BuildFlags: onlybuild:python-setuptools:primary
 BuildFlags: onlybuild:python-setuptools-rust
 BuildFlags: onlybuild:python-setuptools_scm
 BuildFlags: onlybuild:python-sip

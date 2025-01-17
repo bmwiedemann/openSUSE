@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 4.3.2
+%define distversion 4.3.4
 Name:           python-jupyterlab
-Version:        4.3.2
+Version:        4.3.4
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module async_lru >= 1.0.0}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module httpx >= 0.28.0}
+BuildRequires:  %{python_module httpx >= 0.25.0}
 BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module importlib-resources >= 1.4 if %python-base < 3.9}
 BuildRequires:  %{python_module ipykernel >= 6.5.0}
@@ -56,7 +56,7 @@ Requires(postun): update-alternatives
 Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-async_lru >= 1.0.0
-Requires:       python-httpx >= 0.28.0
+Requires:       python-httpx >= 0.25.0
 Requires:       python-ipykernel >= 6.5.0
 Requires:       python-jupyter-lsp >= 2.0.0
 Requires:       python-jupyter_core

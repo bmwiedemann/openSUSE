@@ -122,4 +122,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1180129 from glaubitz)</comment>
     <requestid>1180272</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>19a790cd873fb85a795530268438f147</srcmd5>
+    <version>1.4.1</version>
+    <time>1737048881</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.4.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1238204 from glaubitz)</comment>
+    <requestid>1238242</requestid>
+  </revision>
 </revisionlist>

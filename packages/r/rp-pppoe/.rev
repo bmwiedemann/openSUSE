@@ -270,4 +270,12 @@
     <comment>- Removed rcpppoe and rcpppoe-server rudiments.</comment>
     <requestid>1144028</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>c0831ed5a62874359d69ca09e1d0886c</srcmd5>
+    <version>4.0</version>
+    <time>1737048677</time>
+    <user>anag+factory</user>
+    <comment>- Fixed status script pppoe-status and systemd unit file.</comment>
+    <requestid>1238098</requestid>
+  </revision>
 </revisionlist>

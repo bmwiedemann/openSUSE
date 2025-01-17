@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jan 14 21:14:06 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 5.10:
+  + Trading Accounts
+  + Segfault/Crash if payment dialog change from customer to vendor
+  + gnucash 5.8 crashes on windows 10 while importing qif
+  + Crash when creating ETF transaction
+  + Crash when changing accounting period end date
+  + Type-Ahead feature lost account setting functionality
+  + Right-click issue in import window
+  + Right-click issue in reconcile window
+  + Crash deleting and recreating an SX with the scheduled transaction editor
+    open
+  + Duplicate information in description when importing CAMT.053.001.02 via
+    aqbanking
+  + Edit find account jump then open, open the last highlighted account not the
+    jumped to account
+  + Silent crash on CSV import
+  + Cannot translate different meanings of string "_Balance" to Chinese.
+  + Transaction Report: Cannot subtotal based on Number field
+  + Numeric value in exported CSV transactions
+  + Tabbing through fields autoselects all but Num field
+  + Crash attempting to edit a scheduled transaction
+  + Crash when clicking on Schedule Transaction Editor
+  + Tabs now close when you middle-click on them.
+  + The SX editor's saved duration and height are stored differently in
+    preferences so values previously saved will be lost when switching between
+    versions 5.9 and 5.10 (and later). We regret the inconvenience but the new
+    scheme better matches GnuCash's use of the preferences.
+  + Allow 0 cash amount when using the Stock Assistant to create a sell
+    transaction. This might happen if the commission and fees exactly balance
+    the proceeds of the sale.
+  + Enforce searching for our gsettings schema files first where they were
+    installed. This was not done when the installation prefix was /usr or
+    /usr/local which could potentially cause gnucash to find other schema files
+    first.
+  + Set tooltip text on the outer tab container again so that it can be updated
+    by main_window_update_page_long_name.
+  + Tooltips on chart reports now appear any time the pointer hovers in the
+    chart area and reflect the nearest point. Previously the pointer had to be
+    very close to a point.
+  + Updated the quote source lists in the Security Editor dialog to reflect the
+    current Finance::Quote version.
+  + Display a warning dialog when a transaction is unbalanceable because the
+    user has set a minimum fraction on an account smaller than the security's
+    fraction in a book using trading accounts.
+  + Deleting a commodity will fail if there are accounts denominated in the
+    commodity. When reporting the error to the user list those accounts.
+  + Correct in Tips of the Day the IRC network where GnuCash's channel can be
+    found.
+  + Ensure Python bindings Session constructor loads the session's data.
+  + Fix compile failures with Boost 1.87. This requires the minimum Boost
+    version to be 1.67, removing the option for distributions to patch older
+    versions.
+  + Prevent deleting an account with an open register from logging spurious
+    errors
+  + Check that GUI refreshes are not suspended before calling
+    gnc_gui_refresh_all.
+  + Unify wording for alphavazntage tooltips.
+  + New script to update translator-credits.
+  + Document cmake 3.14 requirement set a year ago.
+
+-------------------------------------------------------------------
 Sun Nov 24 14:56:33 UTC 2024 - Johannes Engel <jcnengel@gmail.com>
 
 - Add gnucash-icu.patch: Fix build with recent ICU libraries

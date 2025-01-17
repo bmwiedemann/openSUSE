@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:02:19 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.1:
+  * kubelet: use env vars in node log query PS command
+  * DRA e2e: adapt to increased ReservedFor limit
+  * DRA API: bump maximum size of ReservedFor to 256
+  * Add watch permission to namespace-controller for WatchListClient feature
+  * webhook: alter regex to account for x509sha1 GODEBUG removal
+  * kubeadm: fix a bug where the node.skipPhases in UpgradeNodeConfiguration is not respected by 'kubeadm upgrade node'
+  * kubeadm: skip disabled addons in clusterconfig on upgrade
+  * Bump images, dependencies and versions to go 1.23.4 and distroless iptables
+  * Do not attempt to truncate revision history if revisionHistoryLimit is negative
+  * fetch cni plugins from GitHub releases
+  * Fix volume expansion offline
+  * prevent unnecessary resolving of iscsi/fc devices to dm
+  * Isolate mock signer for externaljwt tests
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.23.4`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.1/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Thu Dec 19 08:47:30 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - initial package for Kubernetes v1.32.0 

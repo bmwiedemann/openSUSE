@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 15 07:12:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.0.0:
+  * Major
+    - Support ansible 2.18, drop 2.14/2.15 and py39 (#443) @ssbarnea
+  * Bugfixes
+    - Change cache_dir location to prefer venv and project_directory (#439) @ssbarnea
+    - Enable toml-sort-fix (#442) @ssbarnea
+    - Refactor search_galaxy_paths to use pathlib (#437) @ssbarnea
+
+-------------------------------------------------------------------
 Wed Nov 13 14:31:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.10.0:

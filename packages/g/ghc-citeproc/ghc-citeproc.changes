@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 20 16:59:45 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.8.1.2.
+  ## 0.8.1.2
+
+    * Allow containers 0.7 (#143)
+
+    * Update tests to use Diff >= 1.0 (#146).
+
+    * Fix `dropTextWhile` and `dropTextWhileEnd` in Citeproc.Pandoc.
+      Ensure that they treat SoftBreak like Space (jgm/pandoc#10451).
+
+-------------------------------------------------------------------
 Mon Dec 16 07:54:13 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Enable building of the citeproc executable.

@@ -1,7 +1,7 @@
 #
 # spec file for package retry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retry
-Version:        1723625520.fd868ce
+Version:        1737025645.819c129
 Release:        0
 Summary:        A simple tool for retrying command executions in plain POSIX sh
 License:        MIT

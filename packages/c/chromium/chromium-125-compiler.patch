@@ -21,7 +21,7 @@ Index: chromium-126.0.6478.8/build/config/compiler/BUILD.gn
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -554,55 +554,6 @@ config("compiler") {
+@@ -566,63 +566,6 @@
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -71,6 +71,14 @@ Index: chromium-126.0.6478.8/build/config/compiler/BUILD.gn
 -      cflags += [ "/clang:-ffp-contract=off" ]
 -    } else {
 -      cflags += [ "-ffp-contract=off" ]
+-    }
+-
+-    # Enable ELF CREL (see crbug.com/357878242) for all platforms that use ELF
+-    # (excluding toolchains that use an older version of LLVM).
+-    # TODO(crbug.com/376278218): This causes segfault on Linux ARM builds.
+-    if (is_linux && !llvm_android_mainline && current_cpu != "arm" &&
+-        default_toolchain != "//build/toolchain/cros:target") {
+-      cflags += [ "-Wa,--crel,--allow-experimental-crel" ]
 -    }
 -  }
 -

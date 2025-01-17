@@ -1,0 +1,23 @@
+From 1990f4ede558773949580c49e74261a5e542e75e Mon Sep 17 00:00:00 2001
+From: Ben Barham <ben_barham@apple.com>
+Date: Thu, 8 Aug 2024 16:25:51 -0700
+Subject: [PATCH] Disable new `cast-function-type-mismatch`
+
+Should fix this properly, but for now just disable the warning itself.
+---
+ cmake/modules/DispatchCompilerWarnings.cmake | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cmake/modules/DispatchCompilerWarnings.cmake b/cmake/modules/DispatchCompilerWarnings.cmake
+index 9f390f010..cd71f36e5 100644
+--- a/cmake/modules/DispatchCompilerWarnings.cmake
++++ b/cmake/modules/DispatchCompilerWarnings.cmake
+@@ -77,4 +77,8 @@ else()
+     add_compile_options($<$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>:-Wno-shorten-64-to-32>)
+   endif()
+   add_compile_options($<$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>:-Wno-error=assign-enum>)
++
++  # Should re-enable after rdar://133498289 is fixed (ie. fixing the one mismatched cast in apply.c)
++  add_compile_options($<$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>:-Wno-cast-function-type-mismatch>)
++  add_compile_options($<$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>:-Wno-error=unknown-warning-option>)
+ endif()

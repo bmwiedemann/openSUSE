@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:17:35 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add missing require libgtread-2_0-0.
+
+-------------------------------------------------------------------
 Sun Mar 24 14:02:05 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Drop all unbundle things, and use source completely from upstream,

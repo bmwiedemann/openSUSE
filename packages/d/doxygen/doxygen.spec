@@ -15,14 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?sle_version} >= 150100
-# build with "--with libclang" to enable libclang support
-%bcond_with libclang
-%endif
-
 Name:           doxygen
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -32,25 +26,18 @@ URL:            https://www.doxygen.nl/
 Source0:        https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 # suse specific
 Patch1:         %{name}-no-lowercase-man-names.patch
-# The unified libclang-cpp library doesn't exist on older Leap / SLE
-Patch2:         doxygen-no-libclang-cpp.patch
-Patch3:         reproducible.patch
+Patch2:         reproducible.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc9-c++
-%else
 BuildRequires:  gcc-c++
-%endif
+BuildRequires:  llvm-clang-devel
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 # Do not bother building documentation with latex since it is present on the
 # web trivialy for all versions of doxygen
 Obsoletes:      doxygen-doc
-%if %{with libclang}
-BuildRequires:  llvm-clang-devel
-%endif
+
 
 %description
 Doxygen is the de facto standard tool for generating documentation
@@ -62,14 +49,7 @@ language VHDL.
 
 %prep
 %setup -q
-# Leap 15 and SLE don't accept '%%autopatch -M'
-%patch -P 1 -p1
-%if %{with libclang}
-%if 0%{?sle_version} == 150100 || (0%{?sle_version} == 150200 && !0%{?is_opensuse})
-%patch -P 2 -p1
-%endif
-%endif
-%patch -P 3 -p1
+%autopatch -p1
 
 %build
 %cmake \
@@ -77,13 +57,7 @@ language VHDL.
     -Dbuild_xmlparser=ON \
     -Dbuild_search=OFF \
     -Dbuild_wizard=OFF \
-%if %{with libclang}
     -Duse_libclang=ON \
-%endif
-%if 0%{?suse_version} <= 1500
-    -DCMAKE_C_COMPILER=gcc-9 \
-    -DCMAKE_CXX_COMPILER=g++-9 \
-%endif
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \

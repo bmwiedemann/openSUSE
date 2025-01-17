@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:11:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * allow several farms with same helpers
+  * server: enable only loopback interface by default
+
+-------------------------------------------------------------------
 Thu Sep 14 23:01:19 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.9

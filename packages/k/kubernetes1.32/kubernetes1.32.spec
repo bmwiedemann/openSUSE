@@ -1,7 +1,7 @@
 #
 # spec file for package kubernetes1.32
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.31
 
 Name:           kubernetes%{baseversion}
-Version:        1.32.0
+Version:        1.32.1
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.23.3
+BuildRequires:  go >= 1.23.4
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -66,6 +66,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 

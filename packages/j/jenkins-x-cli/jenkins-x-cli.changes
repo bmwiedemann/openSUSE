@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 16 06:01:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.9:
+  * chore(deps): upgrade jenkins-x-plugins/jx-secret to version
+    0.4.10
+
+-------------------------------------------------------------------
+Thu Jan 16 05:55:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.8:
+  * fix: don't require cluster for cli upgrade
+
+-------------------------------------------------------------------
 Wed Jan 15 11:56:44 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11.7:

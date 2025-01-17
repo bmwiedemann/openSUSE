@@ -1,7 +1,7 @@
 Make amarok able to open .flac files (boo#671581)
 
 diff --git a/src/org.kde.amarok.desktop b/src/org.kde.amarok.desktop
-index 1a7588c..a7be5a8 100644
+index 506b2a0277..bcc85efcd4 100644
 --- a/src/org.kde.amarok.desktop
 +++ b/src/org.kde.amarok.desktop
 @@ -194,7 +194,7 @@ Icon=amarok
@@ -9,7 +9,7 @@ index 1a7588c..a7be5a8 100644
  # Add pure audio formats here, for other formats see amarok_*.desktop files
  # See bug 242292
 -MimeType=audio/aac;audio/mp4;audio/mpeg;audio/mpegurl;audio/vnd.rn-realaudio;audio/vorbis;audio/x-flac;audio/x-mp3;audio/x-mpegurl;audio/x-ms-wma;audio/x-musepack;audio/x-oggflac;audio/x-pn-realaudio;audio/x-scpls;audio/x-speex;audio/x-vorbis;audio/x-wav;application/x-ogm-audio;audio/x-vorbis+ogg;audio/ogg;
-+MimeType=audio/aac;audio/mp4;audio/mpeg;audio/mpegurl;audio/vnd.rn-realaudio;audio/vorbis;audio/flac;audio/x-mp3;audio/x-mpegurl;audio/x-ms-wma;audio/x-musepack;audio/x-oggflac;audio/x-pn-realaudio;audio/x-scpls;audio/x-speex;audio/x-vorbis;audio/x-wav;application/x-ogm-audio;audio/x-vorbis+ogg;audio/ogg;
++MimeType=audio/aac;audio/mp4;audio/mpeg;audio/mpegurl;audio/vnd.rn-realaudio;audio/vorbis;audio/x-flac;audio/flac;audio/x-mp3;audio/x-mpegurl;audio/x-ms-wma;audio/x-musepack;audio/x-oggflac;audio/x-pn-realaudio;audio/x-scpls;audio/x-speex;audio/x-vorbis;audio/x-wav;application/x-ogm-audio;audio/x-vorbis+ogg;audio/ogg;
  X-DocPath=amarok/index.html
  X-KDE-Keywords=music,podcast
  X-KDE-Keywords[bg]=music,podcast

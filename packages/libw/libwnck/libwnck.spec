@@ -1,7 +1,7 @@
 #
 # spec file for package libwnck
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libwnck
-Version:        43.1
+Version:        43.2
 Release:        0
 Summary:        Window Navigator Construction Kit (Library Package)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libwnck
-Source0:        https://download.gnome.org/sources/libwnck/43/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel

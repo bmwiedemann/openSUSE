@@ -1308,4 +1308,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1227289</requestid>
   </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>cc814ffdccce0b99eebc7c64cec2e395</srcmd5>
+    <version>75.6.0</version>
+    <time>1737048650</time>
+    <user>anag+factory</user>
+    <comment>- Also provide python3-setuptools-wheel for the primary flavor. 
+
+- Explicitly BuildRequire python-rpm-packaging: when primary flavor
+  is added, this is auto-installed by dependencies. But as we now
+  build the primary flavor separated, we have to ensure to also
+  have it present in the other cases, in order to get the python(abi)
+  dependencies added.
+
+- Split out the primary Python build.</comment>
+    <requestid>1238138</requestid>
+  </revision>
 </revisionlist>

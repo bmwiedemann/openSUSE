@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jan 13 15:00:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop buildrequires for the font. really not needed.
+
+-------------------------------------------------------------------
+Tue Jan  7 12:40:20 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- scm scripts seems to also require the typelib for gimp. move the
+  typelib to the main package including the requires for the
+  babl/gegl typelibs
+
+-------------------------------------------------------------------
+Tue Jan  7 12:12:25 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added 33ab56f55406cc3cbe3cc7c0627340da1c1f2d6a.patch 
+  This properly fixes that gimp doesnt crash if it doesnt find any
+  fonts. 
+- guard the gdb buildrequires in a bcond debug_in_build_gimp so we
+  can easily reenable it for future issues
+- replace bitstream-vera-fonts with google-noto-sans-fonts
+  The actual font it looks for is "Warsaw Gothic" but according to
+  https://gitlab.gnome.org/GNOME/gimp/-/issues/12640#note_2312400
+
+  it should not really need it during the build
+
+-------------------------------------------------------------------
+Tue Jan  7 00:24:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Sync spec file with master package
+  - add libbacktrace-devel for better backtrace support
+  - add BR for bitstream-vera-fonts so that at least some fonts
+    are available for the splash screen. this fixes the build
+    crash.
+- cleanup lua BR as the lua plugin is experimental and shouldnt be
+  enabled.
+
+-------------------------------------------------------------------
+Tue Jan  7 00:24:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add gdb.patch and gdb BR to debug
+  https://gitlab.gnome.org/GNOME/gimp/-/issues/12640
+
+-------------------------------------------------------------------
+Sat Dec 28 01:22:53 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Import some useful patches from Fedora 
+  gimp-2.99.19-cm-system-monitor-profile-by-default.patch
+  gimp-2.99.19-external-help-browser.patch
+  gimp-2.99.19-no-phone-home-default.patch
+- Add BuildRequires for the python runtime requires to see if it
+  fixes the problem with the splash screen
+
+-------------------------------------------------------------------
+Sat Dec 28 00:49:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.0~RC2
+  https://www.gimp.org/news/2024/12/27/gimp-3-0-RC2-released/
+
+-------------------------------------------------------------------
 Thu Nov 28 14:47:18 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix jpeg-xl disabling, use proper with/without
@@ -15,12 +74,42 @@ Mon Nov 11 15:16:56 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
   CVE-2022-32990 CVE-2023-44441 CVE-2023-44442
   CVE-2023-44443 CVE-2023-44444
   bsc#1201192 bsc#1217160 bsc#1217161 bsc#1217162 bsc#1217163
+
+-------------------------------------------------------------------
+Wed Nov  6 22:22:39 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.0~RC1
+  https://www.gimp.org/news/2024/11/06/gimp-3-0-RC1-released/#downloading-gimp-30-rc1
+
+  For all the details see the gimp blog and the
+  /usr/share/doc/packages/gimp/NEWS
+  
+  This version drops the python 2 support in favor of python3
+  support.
+- drop 11892f1d83ffc465346dab7e2e8c6e790f555a64.patch
+
 -------------------------------------------------------------------
 Fri Oct 18 08:15:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gtk-update-icon-cache BuildRequires: Ensure
   /usr/bin/gtk-update-icon-cache is present during build, as
   configure checks for it.
+
+-------------------------------------------------------------------
+Thu Aug 29 09:44:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.99.18
+  This is the version before the release candidate for gimp 3.0.
+  https://www.gimp.org/news/2024/02/21/gimp-2-99-18-released/
+
+  For all the details see the gimp blog and the
+  /usr/share/doc/packages/gimp/NEWS
+  
+  This version drops the python 2 support in favor of python3
+  support.
+- Add 11892f1d83ffc465346dab7e2e8c6e790f555a64.patch
+  install missing header
+- drop fix-gcc14-build.patch
 
 -------------------------------------------------------------------
 Tue May 21 08:45:44 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>

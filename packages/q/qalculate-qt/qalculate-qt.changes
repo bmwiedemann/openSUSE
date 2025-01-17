@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:55:58 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.5.0:
+  * Place approximate value before exact in calculate
+    as you type result
+  * Option to disable cursor blinking
+  * Set ans variable to solution(s) of equation
+    (as if solve() function were used)
+  * Fix display of units automatically appended to expression in
+    parse status
+  * Fix reading of expressions from file
+  * a(i) and a[i] syntax (the latter with support for functions)
+    for element in vector (libqalculate)
+  * New function: factor() (libqalculate)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Thu Dec 19 04:20:00 UTC 2024 - pallas wept <pallaswept@proton.me>
 
 - Build with Qt6

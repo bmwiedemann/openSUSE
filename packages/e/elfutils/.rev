@@ -1173,4 +1173,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   	      New API for metadata queries: file name -&gt; buildid.</comment>
     <requestid>1227791</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>1b4a1eea65a8cf5a03c1f628b2208a82</srcmd5>
+    <version>0.192</version>
+    <time>1737048684</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-static-linking.patch (bsc#1234445) (forwarded request 1230649 from ateixeira)</comment>
+    <requestid>1238095</requestid>
+  </revision>
 </revisionlist>

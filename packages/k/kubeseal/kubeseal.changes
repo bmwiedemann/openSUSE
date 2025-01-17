@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:03:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.28.0:
+  * Release Notes for 0.28.0 (#1672)
+  * fix: explicitly set resourceFieldRef.divisor (#1655)
+  * Bump github.com/onsi/ginkgo/v2 from 2.22.1 to 2.22.2 (#1670)
+  * Bump golang.org/x/crypto from 0.31.0 to 0.32.0 (#1671)
+  * Bump github.com/onsi/gomega from 1.36.1 to 1.36.2 (#1669)
+  * Bump github.com/onsi/ginkgo/v2 from 2.22.0 to 2.22.1 (#1668)
+  * Fix deprecated functions for bumping client-go (#1667)
+  * Bump github.com/onsi/gomega from 1.36.0 to 1.36.1 (#1664)
+  * Bump golang.org/x/crypto from 0.30.0 to 0.31.0 (#1659)
+  * Bump golang.org/x/crypto from 0.29.0 to 0.30.0 (#1657)
+  * Release carvel package 2.17.0 (#1654)
+  * Release chart 2.17.0 (#1652)
+
+-------------------------------------------------------------------
 Thu Dec 05 12:22:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.27.3:

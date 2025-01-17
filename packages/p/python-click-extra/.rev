@@ -7,4 +7,12 @@
     <comment>new package python-click-extra: Drop-in replacement for Click to make user-friendly and colorful CLI</comment>
     <requestid>1228697</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>71a98f67e2451709b9c2f5368007bd29</srcmd5>
+    <version>4.11.7</version>
+    <time>1737048879</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238240</requestid>
+  </revision>
 </revisionlist>

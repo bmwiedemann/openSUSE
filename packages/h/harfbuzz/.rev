@@ -1108,4 +1108,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1234402</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>7362a4fdb729662762c859d16d305c69</srcmd5>
+    <version>10.2.0</version>
+    <time>1737048662</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237898</requestid>
+  </revision>
 </revisionlist>

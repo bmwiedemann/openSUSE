@@ -2456,4 +2456,17 @@
 - Check in der 0.49-990522 Version. linux-egcs Target. (forwarded request 1234594 from mathletic)</comment>
     <requestid>1234687</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>90028eee0ed8e3249a7e83ae60ce95e5</srcmd5>
+    <version>1.13.2</version>
+    <time>1737048659</time>
+    <user>anag+factory</user>
+    <comment>- update to Doxygen 1.13.2
+  * Support for Plus sign code fence directives - GitHub flavor
+  * String representation at &quot;show configuration&quot; in doxywizard
+- Remove special paths for older Suse versions for which packages
+  are no longer built anyway
+  * Drop related patch doxygen-no-libclang-cpp.patch (forwarded request 1236969 from mathletic)</comment>
+    <requestid>1237886</requestid>
+  </revision>
 </revisionlist>

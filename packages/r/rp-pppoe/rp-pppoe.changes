@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Sun Feb  4 17:34:28 UTC 2024 - Илья Индиго <ilya@ilya.cf>
+Wed Jan 15 16:47:01 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Fixed status script pppoe-status and systemd unit file.
+
+-------------------------------------------------------------------
+Sun Feb  4 17:34:28 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Removed rcpppoe and rcpppoe-server rudiments.
 
@@ -53,12 +58,12 @@ Sun Sep  4 17:53:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 - Converted usage of egrep to "grep -E" (boo#1203092).
 
 -------------------------------------------------------------------
-Thu Mar 10 13:47:22 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+Thu Mar 10 13:47:22 UTC 2022 - Илья Индиго <ilya@ilya.top>
 
 - Removed Wants=network.target from pppoe.service (bsc#1196359).
 
 -------------------------------------------------------------------
-Sat May  8 20:24:02 UTC 2021 - Илья Индиго <ilya@ilya.cf>
+Sat May  8 20:24:02 UTC 2021 - Илья Индиго <ilya@ilya.top>
 
 - Refreshed spec-file via spec-cleaner and manual optimisations.
   * Changed files: pppoe-connect, pppoe-setup, pppoe-status and
@@ -69,7 +74,7 @@ Sat May  8 20:24:02 UTC 2021 - Илья Индиго <ilya@ilya.cf>
   * Switch from net-tools to iproute2.
 
 -------------------------------------------------------------------
-Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.cf>
+Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.top>
 
 - Refresh spec-file via spec-cleaner and manual optimisations.
   * Add make_build and autopatch macros.
@@ -88,7 +93,7 @@ Thu May 28 01:11:10 UTC 2020 - Илья Индиго <ilya@ilya.cf>
   * Change VERSION macro to RP_VERSION to avoid conflict with pppd macro.
 
 -------------------------------------------------------------------
-Mon Jun 17 07:50:57 UTC 2019 - Илья Индиго <ilya@ilya.cf>
+Mon Jun 17 07:50:57 UTC 2019 - Илья Индиго <ilya@ilya.top>
 
 - Refresh spec-file via spec-cleaner and manual optimisations.
   * New URL and Source project.
@@ -104,38 +109,38 @@ Wed Jun 12 14:56:41 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
   shortcut the build queues by allowing usage of systemd-mini
 
 -------------------------------------------------------------------
-Sat Mar 10 02:40:34 UTC 2018 - ilya@ilya.cf
+Sat Mar 10 02:40:34 UTC 2018 - ilya@ilya.top
 
 - Refresh spec-file via spec-cleaner and manual optimisations.
 - Add %license macro.
 
 -------------------------------------------------------------------
-Thu Nov 23 14:06:28 UTC 2017 - ilya@ilya.cf
+Thu Nov 23 14:06:28 UTC 2017 - ilya@ilya.top
 
 - Add Requires/Requires(pre) group(dialout) (boo#1067511).
 - Add %verify_permissions script for pppoe-wrapper.
 
 -------------------------------------------------------------------
-Thu Nov  9 12:53:45 UTC 2017 - ilya@ilya.cf
+Thu Nov  9 12:53:45 UTC 2017 - ilya@ilya.top
 
 - Refresh pppoe.spec via spec-cleaner.
 
 -------------------------------------------------------------------
-Sun Oct  8 12:26:27 UTC 2017 - ilya@ilya.cf
+Sun Oct  8 12:26:27 UTC 2017 - ilya@ilya.top
 
 - Add pppoe.service for run pppoe as client (boo#1060710).
 - Refresh pppoe.spec.
 - Drop SLE 11 support.
 
 -------------------------------------------------------------------
-Wed Nov 16 15:51:48 UTC 2016 - ilya@ilya.cf
+Wed Nov 16 15:51:48 UTC 2016 - ilya@ilya.top
 
 - Fix patches and script for version 3.12.
 - dropped logger-path.diff
 - Add net-tools support. net-tools-deprecated is no longer required.
 
 -------------------------------------------------------------------
-Tue Oct 25 22:23:41 EEST 2016 - ilya@ilya.cf
+Tue Oct 25 22:23:41 EEST 2016 - ilya@ilya.top
 
 - Update to version 3.12.
 - Fix patch release-buildsystem.diff for 3.12 version.

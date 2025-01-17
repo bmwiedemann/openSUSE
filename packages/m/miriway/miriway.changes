@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Dec  4 20:15:26 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed:
+  * 0002-Add-sddm-configuration.patch, accepted upstream
+
+-------------------------------------------------------------------
+Thu Oct 31 22:30:16 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Corrected errors in initial packaging
+  * Changed Requires: for layer-shell-qt to layer-shell-qt6
+  * moved sddm configuration snippet to proper location
+
+-------------------------------------------------------------------
+Wed Oct 30 17:07:33 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial Commit

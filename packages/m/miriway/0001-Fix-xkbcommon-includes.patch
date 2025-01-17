@@ -1,0 +1,36 @@
+From a86caf14b0bb2e9fe3ecfc3f7417a2ae29ec67bf Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Wed, 4 Dec 2024 12:09:27 -0800
+Subject: [PATCH] Fix xkbcommon includes
+
+---
+ CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6e6a8d1..0da2a62 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,8 @@ add_library(miriwaycommon STATIC
+     miriway_workspace_manager.cpp   miriway_workspace_manager.h
+ )
+ 
+-target_include_directories(miriwaycommon PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS})
++target_include_directories(miriwaycommon PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS}
++${XKBCOMMON_INCLUDE_DIRS})
+ target_link_libraries(     miriwaycommon PUBLIC        ${MIRAL_LDFLAGS} ${XKBCOMMON_LIBRARIES})
+ target_compile_definitions(miriwaycommon PRIVATE MIR_LOG_COMPONENT="miriway")
+ 
+@@ -43,7 +44,8 @@ add_executable(miriway-run-shell
+     miriway-run-shell.cpp
+ )
+ target_link_libraries(miriway-run-shell ${MIRAL_LDFLAGS})
+-target_include_directories(miriway-run-shell PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS})
++target_include_directories(miriway-run-shell PUBLIC SYSTEM ${MIRAL_INCLUDE_DIRS}
++${XKBCOMMON_INCLUDE_DIRS})
+ target_compile_definitions(miriway-run-shell PRIVATE MIR_LOG_COMPONENT="miriway")
+ 
+ add_custom_target(miriway ALL
+-- 
+2.47.1
+

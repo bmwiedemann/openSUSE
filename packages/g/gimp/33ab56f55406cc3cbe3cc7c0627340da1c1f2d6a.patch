@@ -1,0 +1,54 @@
+From 33ab56f55406cc3cbe3cc7c0627340da1c1f2d6a Mon Sep 17 00:00:00 2001
+From: Jehan <jehan@girinstud.io>
+Date: Tue, 7 Jan 2025 12:34:20 +0100
+Subject: [PATCH] Issue #12640: crash on font not found.
+
+pango_context_load_font() can return NULL.
+---
+ app/text/gimpfont.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/app/text/gimpfont.c b/app/text/gimpfont.c
+index 0db776164b..b8559bfe47 100644
+--- a/app/text/gimpfont.c
++++ b/app/text/gimpfont.c
+@@ -285,10 +285,13 @@ gimp_font_deserialize_create (GType     type,
+           context = pango_font_map_create_context (fontmap);
+           pfd     = pango_font_description_from_string (font_name);
+           fc_font = PANGO_FC_FONT (pango_context_load_font (context, pfd));
+-          fc_pattern = pango_fc_font_get_pattern (fc_font);
+-          FcPatternGetString  (fc_pattern, FC_FULLNAME,        0, (FcChar8 **) &fullname);
+-          FcPatternGetString  (fc_pattern, FC_FILE,            0, (FcChar8 **) &file_path);
+-          FcPatternGetString  (fc_pattern, FC_POSTSCRIPT_NAME, 0, (FcChar8 **) &psname);
++          if (fc_font != NULL)
++            {
++              fc_pattern = pango_fc_font_get_pattern (fc_font);
++              FcPatternGetString  (fc_pattern, FC_FULLNAME,        0, (FcChar8 **) &fullname);
++              FcPatternGetString  (fc_pattern, FC_FILE,            0, (FcChar8 **) &file_path);
++              FcPatternGetString  (fc_pattern, FC_POSTSCRIPT_NAME, 0, (FcChar8 **) &psname);
++            }
+         }
+       /* If a font's pfd matches a font's pfd or the pfd matches name+style then done.
+        * Otherwise, use the pfd to retrieve a font file name & psname & fullname, and match with that
+@@ -302,7 +305,8 @@ gimp_font_deserialize_create (GType     type,
+               !g_strcmp0 (font->fullname, font_name) ||
+               !g_strcmp0 (font->family_style_concat, font_name))
+             break;
+-          else if (!g_strcmp0 (font->file_path, file_path) &&
++          else if (fc_font != NULL                         &&
++                   !g_strcmp0 (font->file_path, file_path) &&
+                    (!g_strcmp0 (font->psname, psname) || !g_strcmp0 (font->fullname, fullname)))
+             possible_match = font;
+ 
+@@ -321,7 +325,7 @@ gimp_font_deserialize_create (GType     type,
+         {
+           g_object_unref (fontmap);
+           g_object_unref (context);
+-          g_object_unref (fc_font);
++          g_clear_object (&fc_font);
+           g_free (font_name);
+         }
+ 
+-- 
+GitLab
+

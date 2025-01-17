@@ -65,6 +65,6 @@ Index: chromium-120.0.6099.18/base/BUILD.gn
 +    configs -= [ "//build/config/compiler:gcc_lto" ]
 +  }
 +
-   if (build_rust_base_conversions) {
+   if (!is_nacl) {
      sources += [
        "containers/span_rust_unittest.cc",

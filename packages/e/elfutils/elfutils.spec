@@ -31,6 +31,7 @@ Source4:        https://sourceware.org/elfutils/ftp/%{version}/%{name}-%{version
 Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
 Patch1:         harden_debuginfod.service.patch
+Patch2:         fix-static-linking.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

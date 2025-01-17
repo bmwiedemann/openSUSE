@@ -2187,4 +2187,12 @@ New stable rel</comment>
   + Fixed crash (forwarded request 1228701 from iznogood)</comment>
     <requestid>1229723</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>b803ed39fb3b71b0d9bf9561475d0111</srcmd5>
+    <version>47.4</version>
+    <time>1737048666</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1237899</requestid>
+  </revision>
 </revisionlist>

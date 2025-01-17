@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        24.10.0
+Version:        25.0.0
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -43,12 +43,13 @@ BuildRequires:  %{python_module jsonschema >= 4.17.3}
 BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
 # https://github.com/ansible/ansible-compat/blob/main/.config/requirements-test.in
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-instafail}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-plus}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
-Requires:       ansible-core >= 2.14
+Requires:       ansible-core >= 2.16
 Requires:       python-PyYAML
 Requires:       python-jsonschema >= 4.17.3
 Requires:       python-packaging
@@ -91,6 +92,10 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[scanT-raises_not_foundF]
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_upgrade_collection"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_runtime_has_playbook"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_load_plugins[modules]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_get_cache_dir_relative"
+# tests that need network connectivity
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[0]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[1]"
 # Disable checks on test names: https://github.com/pytest-dev/pytest-plus#user-content-avoiding-problematic-test-identifiers https://github.com/ansible/ansible-compat/issues/340
 export PYTEST_CHECK_TEST_ID_REGEX=0
 %pytest -k "not (${IGNORED_CHECKS})"

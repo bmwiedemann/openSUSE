@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jan 16 06:37:26 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.39.0:
+  * `diff kitten`: Automatically use dark/light color scheme based on the
+    color scheme of the parent terminal. Can be controlled via the new
+    `kitten-diff.color_scheme` option. Note that this is a default behavior
+    change (#8170)
+    - https://sw.kovidgoyal.net/kitty/kittens/diff/
+    - https://sw.kovidgoyal.net/kitty/kittens/diff/#opt-kitten-diff.color_scheme
+  * Allow dynamically generating configuration by running an arbitrary program
+    using the new geninclude directive in kitty.conf
+  * When a program running in kitty reports progress of a task display it as a
+    percentage in the tab title. Controlled by the `tab_title_template` option
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.tab_title_template
+  * When mapping a custom kitten allow using shell escaping for the kitten
+    path (#8178)
+  * Fix border colors not being changed by auto light/dark themes at
+    startup (#8180)
+  * ssh kitten: Fix kitten not being on PATH when SSHing into Debian
+    systems (#7160)
+  * diff kitten: Abort when run inside a terminal that does not support the
+    kitty keyboard protocol (#8185)
+  * query kitten: Add support for reporting name of the OS the terminal
+    emulator is running on (#8201)
+  * macOS: Allow using the Passwords app to autofill passwords via the
+    Edit->Autofill menu mimicking other macOS applications (#8195)
+  * macOS: Add menu items to the Edit menu to clear the screen and scrollback
+  * Fix the `clear_terminal scrollback` action also clearing screen, not just
+    the scrollback
+    - https://sw.kovidgoyal.net/kitty/actions/#action-clear_terminal
+  * When reloading configuration fix auto color themes not being
+    re-applied (#8203)
+
+-------------------------------------------------------------------
 Thu Dec 26 06:09:08 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.38.1:

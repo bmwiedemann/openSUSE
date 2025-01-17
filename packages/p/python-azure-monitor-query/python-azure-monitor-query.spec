@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-monitor-query
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-monitor-query
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Microsoft Azure Azure Monitor Query Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-monitor-query/azure-monitor-query-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_monitor_query/azure_monitor_query-%{version}.tar.gz
 BuildRequires:  %{python_module azure-monitor-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -59,10 +58,9 @@ type. Telemetry such as events and traces are stored as logs in addition to perf
 so that it can all be combined for analysis.
 
 %prep
-%setup -q -n azure-monitor-query-%{version}
+%setup -q -n azure_monitor_query-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-monitor-query-%{version}
 %pyproject_wheel
 
 %install
@@ -77,7 +75,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/monitor/query
 %{python_sitelib}/azure_monitor_query-*.dist-info
 

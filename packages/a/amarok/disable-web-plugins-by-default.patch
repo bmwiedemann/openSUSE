@@ -1,29 +1,30 @@
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Subject: Disable plugins which cause automatic network requests by default
 References: boo#1070899
-
-diff --git a/src/services/lastfm/amarok_service_lastfm.desktop b/src/services/lastfm/amarok_service_lastfm.desktop
-index 8bce92c..ec01520 100644
---- a/src/services/lastfm/amarok_service_lastfm.desktop
-+++ b/src/services/lastfm/amarok_service_lastfm.desktop
-@@ -123,6 +123,6 @@ X-KDE-PluginInfo-Email=kde@dontletsstart.com
- X-KDE-PluginInfo-Version=1.0
- X-KDE-PluginInfo-Category=Service
- X-KDE-PluginInfo-License=GPL
--X-KDE-PluginInfo-EnabledByDefault=true
-+X-KDE-PluginInfo-EnabledByDefault=false
- X-KDE-Library=amarok_service_lastfm
- X-KDE-PluginInfo-Name=amarok_service_lastfm
-diff --git a/src/services/magnatune/amarok_service_magnatunestore.desktop b/src/services/magnatune/amarok_service_magnatunestore.desktop
-index 14cf601..e222621 100644
---- a/src/services/magnatune/amarok_service_magnatunestore.desktop
-+++ b/src/services/magnatune/amarok_service_magnatunestore.desktop
-@@ -129,7 +129,7 @@ X-KDE-PluginInfo-Email=nhnFreespirit@gmail.com
- X-KDE-PluginInfo-Version=2.0
- X-KDE-PluginInfo-Category=Service
- X-KDE-PluginInfo-License=GPL
--X-KDE-PluginInfo-EnabledByDefault=true
-+X-KDE-PluginInfo-EnabledByDefault=false
- X-KDE-Library=amarok_service_magnatunestore
- X-KDE-PluginInfo-Name=amarok_service_magnatunestore
  
+diff --git a/src/services/lastfm/amarok_service_lastfm.json b/src/services/lastfm/amarok_service_lastfm.json
+index 8228656b58..f96452fb7b 100644
+--- a/src/services/lastfm/amarok_service_lastfm.json
++++ b/src/services/lastfm/amarok_service_lastfm.json
+@@ -51,7 +51,7 @@
+         "Description[uk]": "Служба, яка інтегрує функціональність Last.fm до Amarok",
+         "Description[x-test]": "xxA service that integrates Last.fm functionality into Amarokxx",
+         "Description[zh_TW]": "一種將 Last.fm 其功能性整合到 Amarok 中的服務",
+-        "EnabledByDefault": true,
++        "EnabledByDefault": false,
+         "Icon": "view-services-lastfm-amarok",
+         "Id": "amarok_service_lastfm",
+         "License": "GPL",
+diff --git a/src/services/magnatune/amarok_service_magnatunestore.json b/src/services/magnatune/amarok_service_magnatunestore.json
+index 09e445cdfc..b22ce2cfbe 100644
+--- a/src/services/magnatune/amarok_service_magnatunestore.json
++++ b/src/services/magnatune/amarok_service_magnatunestore.json
+@@ -51,7 +51,7 @@
+         "Description[uk]": "Прослухайте і купіть музику з ненав’язливої агенції звукозапису Magnatune",
+         "Description[x-test]": "xxPreview and buy music from the non-evil Magnatune record labelxx",
+         "Description[zh_TW]": "從標為不邪惡的 Magnatune 唱片標籤的音樂中，預聽並購買",
+-        "EnabledByDefault": true,
++        "EnabledByDefault": false,
+         "Icon": "view-services-magnatune-amarok",
+         "Id": "amarok_service_magnatunestore",
+         "License": "GPL",

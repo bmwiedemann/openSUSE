@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 15 16:25:37 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Update to version 4.4.0
+  * Audio + Video settings moved to first tab
+  * Audio: Recording devices are identified by an image as a
+    microphone or speaker
+  * Fixed Magnifier and Countdown not displaying correctly
+    when the screen is scaled
+  * Various fixes for Wayland support
+
+-------------------------------------------------------------------
 Wed Apr 17 13:46:20 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.1.0

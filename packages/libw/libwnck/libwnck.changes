@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 14 19:11:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Add WnckHandle to the docs.
+  + Add missing build dependency.
+  + Do not restore original event mask.
+- Switch to source service for tarball/source.
+
+-------------------------------------------------------------------
 Sat Oct  5 12:07:44 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

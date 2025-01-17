@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 09:23:41 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add disable-cast-function-type-mismatch.patch
+  Disable new cast-function-type-mismatch while a proper fix is
+  provided by upstream.
+
+-------------------------------------------------------------------
 Thu Jul 13 09:05:27 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Disable unused-command-line-argument warning on riscv64

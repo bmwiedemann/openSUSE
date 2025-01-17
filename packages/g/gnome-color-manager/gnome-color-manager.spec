@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-color-manager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,25 +18,23 @@
 
 
 Name:           gnome-color-manager
-Version:        3.36.0
+Version:        3.36.2
 Release:        0
 Summary:        Color management tools for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-color-manager
-Source:         https://download.gnome.org/sources/gnome-color-manager/3.36/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  libtiff-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(colord) >= 1.3.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.31.10
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.0
 BuildRequires:  pkgconfig(lcms2) >= 2.2
-BuildRequires:  pkgconfig(libcanberra-gtk3)
 Requires:       colord
 Requires:       colord-color-profiles
 # We only recommend PackageKit - knowing that some features are not available if not present
@@ -62,9 +60,6 @@ install and generate color profiles in the GNOME desktop.
 %install
 %meson_install
 
-%suse_update_desktop_file gcm-import
-%suse_update_desktop_file gcm-picker
-%suse_update_desktop_file org.gnome.ColorProfileViewer HardwareSettings
 %find_lang %{name} %{?no_lang_C}
 
 %files

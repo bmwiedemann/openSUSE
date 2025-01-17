@@ -1,0 +1,12 @@
+diff -up gimp-2.99.18/etc/gimprc.in.no-phone-home-default gimp-2.99.18/etc/gimprc.in
+--- gimp-2.99.18/etc/gimprc.in.no-phone-home-default	2024-05-07 14:40:02.746185394 +0200
++++ gimp-2.99.18/etc/gimprc.in	2024-05-07 14:40:49.353862228 +0200
+@@ -399,7 +399,7 @@
+ # Check for availability of GIMP updates through background internet queries.
+ #  Possible values are yes and no.
+ # 
+-# (check-updates yes)
++(check-updates no)
+ 
+ # Timestamp of the last update check.  This is an integer value.
+ # 

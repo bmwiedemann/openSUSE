@@ -6,7 +6,7 @@ After=network.target
 Group=dialout
 Type=oneshot
 RemainAfterExit=true
-ExecStart=/usr/sbin/pppoe-start
+ExecStart=-/usr/sbin/pppoe-start
 ExecStop=/usr/sbin/pppoe-stop
 
 [Install]

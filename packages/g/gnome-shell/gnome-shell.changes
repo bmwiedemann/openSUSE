@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 13 12:50:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Fix Escape handling in run dialog
+  + Fix custom text-scaling-factor getting reset
+  + Tweak ibus candidate popover appearance
+  + Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
 Mon Nov 25 19:59:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:

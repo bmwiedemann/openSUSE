@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:05:57 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to 1.19.1
+  * linux: fix a hang if there are no reads from the tty. Use non blocking sockets to read and write from the tty so that the "crun exec" process doesn't hang when the terminal is not consuming any data.
+  * linux: remove the workaround needed to mount a cgroup on top of another cgroup mount. The workaround had the disadvantage to temporarily leak a mount on the host. The alternative that is currently used is to mount a temporary tmpfs between the twoo cgroup mounts.
+
+- Update to 1.19
+  * wasm: add new handler wamr.
+  * criu: allow passing network lock method to libcriu.
+  * linux: honor exec cpu affinity mask.
+  * build: fix build with musl libc.
+  * crun: use mount API to self-clone.
+  * cgroup, systemd: do not override devices on update. If the "update" request has no device block configured, do not reset the previously configuration.
+  * cgroup: handle case where cgroup v1 freezer is disabled. On systems without the freezer controller, containers were mistakenly reported as paused.
+  * cgroup: do not stop process on exec. The cpu mask is configured on the systemd scope, the previous workaround to stop the container until the cgroup is fully configured is no longer needed.
+
+-------------------------------------------------------------------
 Tue Dec 10 06:14:24 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update crun.keyring to point to primary key. The original packaging of

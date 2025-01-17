@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -29,11 +29,7 @@ Source1:        doxywizard.desktop
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc9-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -44,11 +40,9 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 Requires:       doxygen = %{version}
-%if 0%{?suse_version} > 1230 && 0%{?suse_version} != 1315
 # for make tests
 BuildRequires:  libxml2-tools
 BuildRequires:  texlive-bibtex
-%endif
 
 %description
 Doxywizard is a graphical front-end to read/edit/write doxygen
@@ -60,10 +54,6 @@ configuration files.
 %build
 %cmake \
     -Dbuild_wizard=ON \
-%if 0%{?suse_version} <= 1500
-    -DCMAKE_C_COMPILER=gcc-9 \
-    -DCMAKE_CXX_COMPILER=g++-9 \
-%endif
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
@@ -71,13 +61,11 @@ configuration files.
     -DBUILD_STATIC_LIBS=ON
 %cmake_build
 
-%if 0%{?suse_version} > 1230 && 0%{?suse_version} != 1315
 %check
 export LANG=C.UTF-8
 # testing doxygen package here to avoid build
 # cycle between latex and doxygen
 %ctest
-%endif
 
 %install
 %cmake_install

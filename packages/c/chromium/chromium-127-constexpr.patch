@@ -90,3 +90,19 @@ author: Andres Salomon <dilinger@debian.org>
  // Estimated token count of the preamble text in prompt.
  static constexpr size_t kPreambleTokenBufferSize = 100u;
  // Estimated token count of overhead text per passage.
+--- a/components/compose/core/browser/config.cc
++++ b/components/compose/core/browser/config.cc
+@@ -46,11 +46,11 @@
+ }
+ 
+ constexpr auto DEFAULT_COMPOSE_ENABLED_COUNTRIES =
+-    base::MakeFixedFlatSet<std::string>({"bd", "ca", "gh", "in", "ke", "my",
++    base::MakeFixedFlatSet<std::string_view>({"bd", "ca", "gh", "in", "ke", "my",
+                                          "ng", "ph", "pk", "sg", "tz", "ug",
+                                          "us", "zm", "zw"});
+ constexpr auto DEFAULT_PROACTIVE_NUDGE_ENABLED_COUNTRIES =
+-    base::MakeFixedFlatSet<std::string>({"us"});
++    base::MakeFixedFlatSet<std::string_view>({"us"});
+ 
+ }  // namespace
+ 

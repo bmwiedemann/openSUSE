@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 16 09:13:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.4
+  ## Bugs fixed
+  * Sync Settings Editor with Updated Settings #17091 (@Darshan808)
+  * Focus terminal after copy and paste operations #17097
+    (@krassowski)
+  * Fix background of the popup toolbar #17098 (@krassowski)
+  * Fix consecutive invocations of inline completion #17082
+    (@fcollonval)
+  * Fix contrast for unselected search matches in Dark High
+    Contrast theme #17065 (@krassowski)
+  ## Maintenance and upkeep improvements
+  * Workaround the Chromium bug with navigator.language #17094
+    (@krassowski)
+- Release 4.3.3
+  ## Bugs fixed
+  * Use AsyncHTTPTransport over HTTPTransport for httpx #17058
+    (@krassowski)
+  * Fix filebrowser name order #17038 (@Nriver)
+  * Remove unused CSS #16968 (@mgeier)
+  * Improve drag image styling #16936 (@JasonWeill)
+  * Fix newline handling in stream outputs #17043 (@davidbrochart)
+  * Reset resizeData after column adjustment to allow file dragging
+    #17047 (@Darshan808)
+  * Abort saving if a file cannot be saved #16900 (@JasonWeill)
+  ## Maintenance and upkeep improvements
+  * Bump nanoid from 3.3.6 to to 3.3.8 #17057 (@krassowski)
+  * Restore bottom httpx version window #17041 (@bollwyvl)
+
+-------------------------------------------------------------------
 Sat Dec  7 13:23:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.3.2

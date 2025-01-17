@@ -354,4 +354,12 @@
     <comment></comment>
     <requestid>1236172</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1147569a2f38565ef2b31eb12a2d16f3</srcmd5>
+    <version>3.4.1</version>
+    <time>1737048677</time>
+    <user>anag+factory</user>
+    <comment>- Use libalternatives instead of update-alternatives, bsc#1235781</comment>
+    <requestid>1238022</requestid>
+  </revision>
 </revisionlist>

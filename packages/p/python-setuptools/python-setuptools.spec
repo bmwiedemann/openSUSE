@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,31 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+%if 0%{?suse_version} >= 1550
+%if "%{flavor}" == "primary"
+# this one is goes into Ring0:  Bootstrap for primary python stack
+%define pprefix %{primary_python}
+%define pythons %{primary_python}
+%define psuffix %{nil}
+%endif
+%if "%{flavor}" == ""
+# The rest is in Ring1
+%define pprefix python
+%{expand:%%define skip_%{primary_python} 1}
+%define psuffix %{nil}
+%endif
+%else
+# backport and option d projects for 15.X having one or more python in the buildset don't need the Ring split for bootstrap
+%if "%{flavor}" == "primary"
+%define python_module() invalid-multibuild-flavor-for-15.X
+ExclusiveArch:  do-not-build
+%else
+%define pprefix python
+%endif
+%endif
 %if "%{flavor}" == "test"
 %define psuffix -test
+%define pprefix python
 %bcond_without test
 %endif
 %if "%{flavor}" == ""
@@ -29,7 +52,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 %{?sle15_python_module_pythons}
-Name:           python-setuptools%{psuffix}
+Name:           %{pprefix}-setuptools%{psuffix}
 Version:        75.6.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
@@ -41,6 +64,7 @@ Patch0:         sort-for-reproducibility.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-packaging
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -69,6 +93,9 @@ BuildRequires:  %{python_module virtualenv >= 13.0.0}
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
 %endif
+%if "%{flavor}" == "primary"
+Provides:       %{mypython}3-setuptools = %{version}-%{release}
+%endif
 %python_subpackages
 
 %description
@@ -79,6 +106,9 @@ especially ones that have dependencies on other packages.
 %package wheel
 Summary:        The setuptools wheel for custom tests and install requirements
 Requires:       %mypython(abi) = %python_version
+%if "%{flavor}" == "primary"
+Provides:       %{mypython}3-setuptools-wheel = %{version}-%{release}
+%endif
 
 %description wheel
 This packages provides the setuptools wheel as separate file for cases where

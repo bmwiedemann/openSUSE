@@ -478,7 +478,7 @@ $ECHO "Congratulations, it should be all set up!"
 $ECHO ""
 $ECHO "Type '/usr/sbin/ifup $dsl_device' to bring up your xDSL link and '/sbin/ifdown $dsl_device'"
 $ECHO "to bring it down."
-$ECHO "Type '/usr/sbin/pppoe-status $NETWORKDIR/ifcfg-$dsl_device'"
+$ECHO "Type '/usr/sbin/pppoe-status'"
 $ECHO "to see the link status."
 $ECHO ""
 

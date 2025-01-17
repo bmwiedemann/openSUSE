@@ -38,6 +38,9 @@ BuildRequires:  libcap-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(glesv2)
 
 %description
 stress-ng can stress various subsystems of a computer. It can stress load CPU,

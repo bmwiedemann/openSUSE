@@ -1,7 +1,7 @@
 #
 # spec file for package syncthing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           syncthing
-Version:        1.28.1
+Version:        1.29.2
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
 Group:          Productivity/Networking/File-Sharing
 URL:            https://syncthing.net/
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz
-Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz.asc
+# signature can not be validated at the moment, see changelog entry from "Jan 16 11:32:55 UTC 2025" and https://github.com/syncthing/syncthing/issues/9902
+#Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-relaysrv-user.conf
 Patch0:         harden_strelaysrv.service.patch

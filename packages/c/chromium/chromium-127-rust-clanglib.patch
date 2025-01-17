@@ -10,7 +10,33 @@ diff -up chromium-127.0.6533.72/build/rust/rust_bindgen.gni.me chromium-127.0.65
  }
  
  # Template to build Rust/C bindings with bindgen.
-@@ -195,6 +195,8 @@
+@@ -105,6 +105,14 @@
+       # it's declared.
+       deps = [ ":${_rust_bindgen_generator_name}_static_fns" ]
+     }
++
++    # Default configs include "-fvisibility=hidden", and for some reason this
++    # causes bindgen not to emit function bindings. Override it.
++    args = []
++    if (!is_win) {
++      args += [ "-fvisibility=default" ]
++    }
++
+     if (defined(cpp) && cpp) {
+       # This cfg is used to control the bindings public export.
+       rustflags = [
+--- chromium-132.0.6811.2/build/rust/rust_bindgen_generator.gni	2024/11/07 11:34:54	1.1
++++ chromium-132.0.6811.2/build/rust/rust_bindgen_generator.gni	2024/11/07 11:35:41
+@@ -22,7 +22,7 @@
+ if (host_os == "win") {
+   _libclang_path += "/bin"
+ } else {
+-  _libclang_path += "/lib"
++  _libclang_path += "/lib64"
+ }
+ 
+ # Template to build Rust/C bindings with bindgen.
+@@ -266,6 +266,8 @@
      # causes bindgen not to emit function bindings. Override it.
      if (!is_win) {
        args += [ "-fvisibility=default" ]
@@ -19,4 +45,13 @@ diff -up chromium-127.0.6533.72/build/rust/rust_bindgen.gni.me chromium-127.0.65
      }
  
      if (is_win) {
-
+--- chromium-132.0.6811.2/build/config/gcc/BUILD.gn	2024/11/07 14:13:22	1.1
++++ chromium-132.0.6811.2/build/config/gcc/BUILD.gn	2024/11/07 14:13:45
+@@ -32,7 +32,6 @@
+ # See http://gcc.gnu.org/wiki/Visibility
+ config("symbol_visibility_hidden") {
+   cflags = [ "-fvisibility=hidden" ]
+-  rustflags = [ "-Zdefault-visibility=hidden" ]
+ 
+   # Visibility attribute is not supported on AIX.
+   if (current_os != "aix") {

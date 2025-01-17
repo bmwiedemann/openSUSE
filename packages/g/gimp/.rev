@@ -2144,4 +2144,41 @@ General:
     <comment>Fix JPEG-XL disabling properly</comment>
     <requestid>1227143</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>1d4aa329670dd434a566dd950f33d53c</srcmd5>
+    <version>3.0.0~RC2</version>
+    <time>1737048654</time>
+    <user>anag+factory</user>
+    <comment>- drop buildrequires for the font. really not needed.
+
+- scm scripts seems to also require the typelib for gimp. move the
+  typelib to the main package including the requires for the
+  babl/gegl typelibs
+
+- Added 33ab56f55406cc3cbe3cc7c0627340da1c1f2d6a.patch 
+  This properly fixes that gimp doesnt crash if it doesnt find any
+  fonts. 
+- guard the gdb buildrequires in a bcond debug_in_build_gimp so we
+  can easily reenable it for future issues
+- replace bitstream-vera-fonts with google-noto-sans-fonts
+  The actual font it looks for is &quot;Warsaw Gothic&quot; but according to
+  https://gitlab.gnome.org/GNOME/gimp/-/issues/12640#note_2312400
+  it should not really need it during the build
+
+- Sync spec file with master package
+  - add libbacktrace-devel for better backtrace support
+  - add BR for bitstream-vera-fonts so that at least some fonts
+    are available for the splash screen. this fixes the build
+    crash.
+- cleanup lua BR as the lua plugin is experimental and shouldnt be
+  enabled.
+
+- Add gdb.patch and gdb BR to debug
+  https://gitlab.gnome.org/GNOME/gimp/-/issues/12640
+
+- Import some useful patches from Fedora 
+  gimp-2.99.19-cm-system-monitor-profile-by-default.patch
+  gimp-2.99.19-external-help-browser.patch</comment>
+    <requestid>1237665</requestid>
+  </revision>
 </revisionlist>
