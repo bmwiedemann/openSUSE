@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 07:21:57 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Fix directory not found error when building on Leap 16
+
+-------------------------------------------------------------------
 Mon Oct 21 12:06:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - ensure openexr is at least version 3 and the devel package also

@@ -1,7 +1,7 @@
 #
 # spec file for package ctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -177,7 +177,7 @@ CTL interpreter.
 %{_libdir}/libIlmCtlSimd.so.%{version}
 
 %files doc
-%if 0%{?sle_version} >= 150600 || %{?suse_version} > 1600
+%if 0%{?sle_version} >= 150600 || %{?suse_version} >= 1600
 %dir %{_docdir}/ctl
 %dir %{_docdir}/ctl/CTL
 %{_docdir}/ctl/CTL/CtlManual.*
