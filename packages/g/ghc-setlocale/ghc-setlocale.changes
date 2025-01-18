@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  3 16:40:09 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update setlocale to version 1.0.0.10 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon May 13 17:44:16 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update setlocale to version 1.0.0.10 revision 5.
