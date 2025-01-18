@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan 17 01:25:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeeded BuildRequires on python3-recommonmark. 
+
+-------------------------------------------------------------------
+Fri Oct  4 12:41:44 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Remove deps-makefile.patch
+- Do not force gcc versions
+- Revert to use system libcurl-devel
+- Use clang over gcc
+
+-------------------------------------------------------------------
+Wed Oct  2 01:45:30 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Attempt to let Julia's build logic handle which are missing
+
+-------------------------------------------------------------------
+Tue Oct  1 06:52:43 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Use bundled libcurl. The recent version breaks Julia.
+
+-------------------------------------------------------------------
+Mon Sep 30 01:40:31 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Disable INTEL_JITEVENTS. Accidentally enabled during testing.
+
+-------------------------------------------------------------------
 Fri Sep 27 13:21:20 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Remove julia-libunwind-1.9.patch

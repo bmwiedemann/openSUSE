@@ -1,7 +1,7 @@
 #
 # spec file for package julia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,6 @@
 #
 
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-%global force_gcc_version 13
-%endif
-
-# We must not strip binaries in julia, since it can lead to many problems.
-# For example, see:
-#
-# https://github.com/JuliaLang/julia/issues/17941
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
@@ -32,9 +24,9 @@
 
 # If not Tumbleweed. Leap 15.6 seems to have trouble with libpthread
 %if 0%{?suse_version} < 1600
-%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_USE_THREAD=0 OPENBLAS_TARGET_ARCH=NEHALEM OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=0 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=1 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=1 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
+%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_USE_THREAD=0 OPENBLAS_TARGET_ARCH=NEHALEM OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=0 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=1 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
 %else
-%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=0 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=1 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=1 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
+%global __julia_opts NO_GIT=1 DEPS_GIT=0 BUILD_LLD=1 BUILD_LLDB=1 USE_BINARYBUILDER=0 USE_SYSTEM_CSL=1 USE_SYSTEM_LLVM=0 USE_SYSTEM_LLD=0 OPENBLAS_SYMBOLSUFFIX="%{?__isa_bits}_" OPENBLAS_LIBNAMESUFFIX="%{?__isa_bits}_" OPENBLAS_CFLAGS="${CFLAGS}" LIBBLAS=-lopenblas64_ LIBBLASNAME=libopenblas64_ LIBLAPACK=-lopenblas64_ LIBLAPACKNAME=libopenblas64_ SUITESPARSE_LIB="-lumfpack64_ -lcholmod64_ -lamd64_ -lcamd64_ -lcolamd64_ -lspqr64_" USE_SYSTEM_LIBUNWIND=0 USE_SYSTEM_PCRE=0 USE_SYSTEM_BLAS=0 USE_SYSTEM_LAPACK=0 USE_SYSTEM_LIBBLASTRAMPOLINE=1 USE_SYSTEM_GMP=0 USE_SYSTEM_MPFR=0 USE_SYSTEM_LIBSUITESPARSE=0 USE_SYSTEM_SUITESPARSE=0 USE_INTEL_JITEVENTS=0 USE_SYSTEM_LIBWHICH=1 USE_SYSTEM_DSFMT=0 USE_SYSTEM_LIBUV=0 USE_SYSTEM_UTF8PROC=1 USE_SYSTEM_LIBGIT2=0 USE_SYSTEM_LIBSSH2=0 USE_SYSTEM_MBEDTLS=0 USE_SYSTEM_CURL=1 USE_SYSTEM_PATCHELF=1 USE_SYSTEM_ZLIB=1 USE_SYSTEM_P7ZIP=1 USE_SYSTEM_OPENLIBM=1 USE_BLAS64=1 JLDFLAGS="$LDFLAGS" USE_BINARYBUILDER_BLASTRAMPOLINE=0 USE_BINARYBUILDER_CURL=0 USE_BINARYBUILDER_DSFMT=0 USE_BINARYBUILDER_GMP=0 USE_BINARYBUILDER_LIBGIT2=0 USE_BINARYBUILDER_LIBSSH2=0 USE_BINARYBUILDER_LIBSUITESPARSE=0 USE_BINARYBUILDER_LIBTRACYCLIENT=0 USE_BINARYBUILDER_LIBUNWIND=0 USE_BINARYBUILDER_LIBUV=0 USE_BINARYBUILDER_LLVM=0 USE_BINARYBUILDER_MBEDTLS=0 USE_BINARYBUILDER_MPFR=0 USE_BINARYBUILDER_OPENBLAS=0 USE_BINARYBUILDER_OPENLIBM=0 USE_BINARYBUILDER_P7ZIP=0 USE_BINARYBUILDER_PCRE=0 USE_BINARYBUILDER_ZLIB=0 VERBOSE=0
 %endif
 
 # List all bundled libraries.
@@ -150,29 +142,25 @@ Patch6:         openlibm.patch
 Patch7:         julia-hardcoded-libs.patch
 # PATCH-FIX-OPENSUSE -- A bug in MPFR which they describe in their INSTALL file. So we have to assist the mpfr.mk that julia uses.
 Patch8:         mpfr-looking-for-gmp-fix.patch
-# # PATCH-FIX-OPENSUSE -- Respect openSUSE FSH
-Patch9:         deps-makefile.patch
 Patch10:        apply-gmp-arm64-invert_limb.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  autoconf
 BuildRequires:  ca-certificates
+BuildRequires:  clang
 BuildRequires:  cmake >= 3.22
-BuildRequires:  curl
 BuildRequires:  dos2unix
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel >= 3.3.4
-BuildRequires:  gcc%{?force_gcc_version}
-BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  git
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcares)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libsystemd)
@@ -183,7 +171,6 @@ BuildRequires:  pkgconfig(zlib)
 # Additional dependencies for libgit2
 BuildRequires:  fdupes
 BuildRequires:  gpg2
-BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  perl-Error
@@ -242,14 +229,13 @@ BuildRequires:  valgrind-devel
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  ccache
 BuildRequires:  fdupes
-BuildRequires:  libstdc++6-devel-gcc13
+BuildRequires:  libstdc++-devel
 BuildRequires:  libvmmalloc-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-psutil
-BuildRequires:  python3-recommonmark
 BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libzstd)
@@ -440,11 +426,8 @@ echo "true" | tee deps/tools/jldownload
 echo "true" | tee deps/tools/jlchecksum
 
 %build
-%if 0%{?force_gcc_version}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%endif
-
+export CC=clang
+export CXX=clang++
 export CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 export CXXFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 
@@ -465,17 +448,6 @@ ln -sf %{_libdir}/libgfortran.so.5 %{_builddir}/%{buildsubdir}/build/%{_libdir}/
 ln -sf %{_libdir}/libblastrampoline.so %{_builddir}/%{buildsubdir}/build/%{_libdir}/libblastrampoline.so
 
 export LD_LIBRARY_PATH="%{_builddir}/%{buildsubdir}/build/usr/lib:%{_builddir}/%{buildsubdir}/build%{_libdir}:/usr/lib64:/usr/lib"
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-pcre            %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-openblas        %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-mbedtls         %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-libssh2         %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-libsuitesparse  %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-libuv           %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-gmp             %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-mpfr            %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-nghttp2         %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-libgit2         %{__julia_opts}
-make MARCH=%{julia_march} prefix=%{_prefix} libdir=%{_libdir} bindir=%{_bindir} build_prefix="%{_builddir}/%{buildsubdir}/build%{_prefix}" build_libdir="%{_builddir}/%{buildsubdir}/build%{_libdir}"   -C deps install-llvm            %{__julia_opts}
 
 # Based on fedora specfile
 # Work around bug that prompts zlib to be downloaded even when not used
@@ -529,12 +501,10 @@ if [ "x%{_lib}" != xlib ] ; then
 fi
 
 %check
+export CC=clang
+export CXX=clang++
 export CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 export CXXFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
-%if 0%{?force_gcc_version}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%endif
 # Failures are to be expected if tests are done
 # - int.jl not being found. see https://github.com/JuliaLang/julia/pull/53682#issuecomment-1992420825
 # - Dates printing inconsistent. see https://github.com/JuliaLang/julia/issues/34655
@@ -553,10 +523,8 @@ pushd %{_builddir}/%{buildsubdir}/test
 popd
 
 %install
-%if 0%{?force_gcc_version}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%endif
+export CC=clang
+export CXX=clang++
 export CFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 export CXXFLAGS="%{optflags} -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration"
 export DEPS_GIT=0
