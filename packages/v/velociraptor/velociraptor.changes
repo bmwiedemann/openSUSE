@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 17:37:39 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Reorganize llvm dependency version conditionals
+- Use llvm17 for Leap 15.5
+
+-------------------------------------------------------------------
 Fri Jan 17 13:49:28 UTC 2025 - antonio.teixeira@suse.com
 
 - Update to version 0.7.0.4.git142.862ef23:

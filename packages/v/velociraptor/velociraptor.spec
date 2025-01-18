@@ -51,6 +51,18 @@
 %bcond_without bpf
 %endif
 
+%if %{with bpf} && 0%{?suse_version}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150600 || (0%{?sle_version} == 150500 && 0%{?is_opensuse})
+%global llvm_version 17
+%else
+%if 0%{?sle_version} >= 150300
+%global llvm_version 16
+%else
+%global llvm_version 13
+%endif
+%endif
+%endif
+
 %if "%{_vendor}" == "debbuild"
 %define _unitdir /usr/lib/systemd/system
 %endif
@@ -122,22 +134,13 @@ BuildRequires:  local-npm-registry
 BuildRequires:  nodejs >= 18
 BuildRequires:  npm >= 18
 %endif
+
 %if %{with bpf}
 %if 0%{?suse_version}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150600
-BuildRequires:  clang17
-BuildRequires:  llvm17
-%else
-%if 0%{?sle_version} >= 150300
-BuildRequires:  clang16
-BuildRequires:  llvm16
-%if 0%{?sle_version} > 150400
+BuildRequires:  clang%{?llvm_version}
+BuildRequires:  llvm%{?llvm_version}
+%if 0%{?sle_version} == 150500 && !0%{?is_opensuse}
 BuildRequires:  llvm16-libclang13
-%endif
-%else
-BuildRequires:  clang13
-BuildRequires:  llvm13
-%endif
 %endif
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel

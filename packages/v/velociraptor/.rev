@@ -151,4 +151,12 @@ causing crashes in libbpfgo.</comment>
     <comment></comment>
     <requestid>1238528</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>64d0e1a891dd8dd792ebab77a729787f</srcmd5>
+    <version>0.7.0.4.git142.862ef23</version>
+    <time>1737202702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1238559</requestid>
+  </revision>
 </revisionlist>
