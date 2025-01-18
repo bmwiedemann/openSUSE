@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 18 08:08:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.17:
+  * no CLI-related changes in this release
+- update to 0.8.16:
+  * no CLI-related changes in this release
+- update to 0.8.15:
+  * Meshery CLI
+    - [mesheryctl] Unit Tests for mesheryctl exp relationships generate command @riyaa14 (#13208)
+- update to 0.8.14:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Fri Jan 17 07:01:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.13:
@@ -6,7 +19,6 @@ Fri Jan 17 07:01:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     - [Chore] Docker compatibility in golang packages @leecalcote
       (#13288)
     - meshery dependency version bump @souvikinator (#13286)
-
 - update to 0.8.12:
   * no CLI-related changes in this release
 
