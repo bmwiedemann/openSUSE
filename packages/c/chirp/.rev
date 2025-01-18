@@ -71,4 +71,12 @@
     <comment></comment>
     <requestid>1237071</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>456499267a5743148877c5f55952a56c</srcmd5>
+    <version>20250117</version>
+    <time>1737205121</time>
+    <user>dimstar_suse</user>
+    <comment>chirp 20250117 (forwarded request 1238675 from AndreasStieger)</comment>
+    <requestid>1238677</requestid>
+  </revision>
 </revisionlist>

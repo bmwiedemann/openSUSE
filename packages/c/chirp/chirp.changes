@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 18 11:40:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250117:
+  * Multiple modules: Fix tuning step encoding
+  * tk280: Fix supporting duplex=split and other improvements
+  * UI: Improve keyboard navigation from setting group to editor
+  * Add Kenwood TK-280,380 support
+  * add Retevis H777H PMR version, Radtel H777H FRS version
+  * uv17pro: Fix exposing static banks on some models
+
+-------------------------------------------------------------------
+Sun Jan 12 20:00:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- require Python lark module
+
+-------------------------------------------------------------------
 Sat Jan 11 18:05:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250110:
