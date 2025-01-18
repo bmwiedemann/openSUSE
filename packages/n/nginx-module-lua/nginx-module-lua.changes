@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 18 09:32:11 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.10.28
+  * https://github.com/openresty/lua-nginx-module/compare/v0.10.27...v0.10.28
+  * Fixed setkeepalive failure on TLSv1.3.
+
+-------------------------------------------------------------------
 Wed Aug 28 04:09:06 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Initialized 0.10.27.

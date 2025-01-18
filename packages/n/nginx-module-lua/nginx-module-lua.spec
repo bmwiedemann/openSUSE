@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-lua
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define project_name lua-nginx-module
 %define so_name ngx_http_lua_module.so
 Name:           nginx-module-lua
-Version:        0.10.27
+Version:        0.10.28
 Release:        0
 Summary:        Embed the power of Lua into Nginx HTTP Servers
 License:        BSD-2-Clause
