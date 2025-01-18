@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  3 22:47:35 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update indexed-traversable to version 0.1.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu May 16 07:59:00 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update indexed-traversable to version 0.1.4.
