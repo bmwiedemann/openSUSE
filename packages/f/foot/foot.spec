@@ -20,7 +20,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           foot
-Version:        1.20.1
+Version:        1.20.2
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -30,7 +30,9 @@ Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.si
 # https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
 Source2:        %{name}.keyring
 Requires:       terminfo
+%if 0%{?suse_version} < 1600
 Requires:       utempter
+%endif
 BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -86,8 +88,12 @@ users an easy way to theme foot.
 	-Dterminfo=enabled \
 	-Dterminfo-base-name=foot-extra \
 	-Dthemes=true \
+%if 0%{?suse_version} < 1600
 	-Dutmp-backend=libutempter \
 	-Dutmp-default-helper-path=%{_libexecdir}/utempter/utempter
+%else
+	-Dutmp-backend=none
+%endif
 %meson_build
 
 %install

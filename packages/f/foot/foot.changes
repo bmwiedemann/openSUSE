@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan 18 10:10:43 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.20.2:
+  * foot.ini options:
+    * colors.flash-alpha can be set to 1.0 (fully opaque) again.
+      The issue where this would cause window to be stuck in flash state
+      has been fixed separately.
+  * "Report window title" (CSI 21 t) and "Report app-id" (OSC 176 ?)
+    are now ignored. This relates to CVEs reported in some other terminals
+    where a malicious program / ssh remote can trick the user into running
+    arbitrary commands by using these sequences to fill
+    the shell input buffer.
+  * Fixed a crash on startup if the compositor sent a keyboard enter event
+    before the window was mapped.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.20.2 for more details.
+
+-------------------------------------------------------------------
+Fri Jan 17 10:25:58 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind
+
+-------------------------------------------------------------------
 Fri Jan  3 08:58:48 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.20.1:
