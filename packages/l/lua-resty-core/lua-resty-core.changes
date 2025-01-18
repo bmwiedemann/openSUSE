@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 18 10:27:39 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.1.31.
+  * https://github.com/openresty/lua-resty-core/compare/v0.1.30...v0.1.31
+  * Added function ngx.resp.set_status(status, reason).
+  * Implemented decode_base64mime.
+
+-------------------------------------------------------------------
 Thu Nov  7 08:18:19 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.1.30.

@@ -25,4 +25,15 @@
   * Upstream doesn't provide a ChangeLog.</comment>
     <requestid>1222036</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9661496127b5d0bba9d724ab76fdb2b1</srcmd5>
+    <version>0.1.31</version>
+    <time>1737202964</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.1.31.
+  * https://github.com/openresty/lua-resty-core/compare/v0.1.30...v0.1.31
+  * Added function ngx.resp.set_status(status, reason).
+  * Implemented decode_base64mime.</comment>
+    <requestid>1238661</requestid>
+  </revision>
 </revisionlist>
