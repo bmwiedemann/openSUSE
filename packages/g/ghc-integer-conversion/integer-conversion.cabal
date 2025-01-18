@@ -1,0 +1,83 @@
+cabal-version:      2.2
+name:               integer-conversion
+version:            0.1.1
+x-revision:         1
+synopsis:           Conversion from strings to Integer
+category:           Data
+description:
+  The naive @foldl' (\acc d -> acc * 10 + d) 0@ is expensive (quadratic!) for large @Integer@s.
+  This package provides sub-quadratic implementation.
+
+homepage:           https://github.com/phadej/integer-conversion
+bug-reports:        https://github.com/phadej/integer-conversion/issues
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Oleg Grenrus <oleg.grenrus@iki.fi>
+maintainer:         Oleg.Grenrus <oleg.grenrus@iki.fi>
+copyright:          (c) 2023 Oleg Grenrus
+build-type:         Simple
+extra-source-files: ChangeLog.md
+tested-with:
+  GHC ==8.6.5
+   || ==8.8.4
+   || ==8.10.7
+   || ==9.0.2
+   || ==9.2.8
+   || ==9.4.8
+   || ==9.6.6
+   || ==9.8.4
+   || ==9.10.1
+   || ==9.12.1
+
+source-repository head
+  type:     git
+  location: https://github.com/phadej/integer-conversion.git
+
+library
+  default-language: Haskell2010
+  hs-source-dirs:   src
+  exposed-modules:  Data.Integer.Conversion
+  build-depends:
+    , base        >=4.12.0.0   && <4.22
+    , bytestring  ^>=0.10.8.1 || ^>=0.11.4.0 || ^>=0.12.0.2
+    , primitive   ^>=0.9.0.0
+    , text        ^>=1.2.3.0  || ^>=2.0.1    || ^>=2.1
+
+test-suite integer-conversion-tests
+  default-language: Haskell2010
+  hs-source-dirs:   tests src-other
+  type:             exitcode-stdio-1.0
+  main-is:          integer-conversion-tests.hs
+  build-depends:
+    , base
+    , bytestring
+    , integer-conversion
+    , text
+
+  -- test dependencies
+  build-depends:
+    , QuickCheck        ^>=2.14.3 || ^>=2.15
+    , tasty             ^>=1.4.3  || ^>=1.5
+    , tasty-quickcheck  ^>=0.10.2 || ^>=0.11
+
+  other-modules:
+    Alternative
+    Naive
+
+benchmark integer-conversion-bench
+  default-language: Haskell2010
+  ghc-options:      -threaded -rtsopts
+  type:             exitcode-stdio-1.0
+  main-is:          integer-conversion-bench.hs
+  hs-source-dirs:   bench src-other
+  build-depends:
+    , base
+    , bytestring
+    , integer-conversion
+    , text
+
+  -- bench dependencies
+  build-depends:    tasty-bench ^>=0.3.4 || ^>=0.4.1
+  other-modules:
+    Alternative
+    Naive
