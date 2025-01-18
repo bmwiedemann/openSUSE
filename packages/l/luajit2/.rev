@@ -52,4 +52,15 @@
   * Upstream doesn't provide a ChangeLog.</comment>
     <requestid>1225972</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ecd2f6a64f5e0dff3a95afe67fdac732</srcmd5>
+    <version>2.1.20250117</version>
+    <time>1737202961</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.1.20250117 (1737090214).
+  * Changed file luajit2-name.patch.
+  * https://github.com/openresty/luajit2/compare/v2.1-20241203...v2.1-20250117
+  * Fixed recording of BC_VARG.</comment>
+    <requestid>1238655</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package luajit2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 %define so_ver 2
 %define lib_ver 5_1-%{so_ver}
 %define major 2.1
-%define minor 20241113
-%define upstream 1731486438
+%define minor 20250117
+%define upstream 1737090214
 Name:           luajit2
 Version:        %{major}.%{minor}
 Release:        0
