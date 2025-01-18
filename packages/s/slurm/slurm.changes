@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 14:19:10 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Make test suite package work on SLE-12.
+
+-------------------------------------------------------------------
 Thu Jan  9 08:35:38 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Fix testsuite:
@@ -75,16 +80,16 @@ Mon Jan  6 12:40:31 UTC 2025 - Egbert Eich <eich@suse.com>
   * Increase efficency of sending logs to syslog.
   * Switch to new official YAML mime type `application/yaml` in
     compliance with RFC9512 as primary mime type for YAML formatting.
-  * `slurmrestd` - Removed deprecated fields from the following
+  * `slurmrestd` - Remove deprecated fields from the following
     endpoints:
-	`.result' from `POST /slurm/v0.0.42/job/submit`.
-	`.job_id`, `.step_id`, `.job_submit_user_msg` from `POST /slurm/v0.0.42/job/{job_id}`.
-	`.job.exclusive`, `.jobs[].exclusive` to `POST /slurm/v0.0.42/job/submit`.
-	`.jobs[].exclusive` from `GET /slurm/v0.0.42/job/{job_id}`.
-	`.jobs[].exclusive` from `GET /slurm/v0.0.42/jobs`.
-	`.job.oversubscribe`, `.jobs[].oversubscribe` to `POST /slurm/v0.0.42/job/submit`.
-	`.jobs[].oversubscribe` from `GET /slurm/v0.0.42/job/{job_id}`.
-	`.jobs[].oversubscribe` from `GET /slurm/v0.0.42/jobs`.
+     `.result` from `POST /slurm/v0.0.42/job/submit`.  
+     `.job_id`, `.step_id`, `.job_submit_user_msg` from `POST /slurm/v0.0.42/job/{job_id}`.  
+     `.job.exclusive`, `.jobs[].exclusive` to `POST /slurm/v0.0.42/job/submit`.  
+     `.jobs[].exclusive` from `GET /slurm/v0.0.42/job/{job_id}`.  
+     `.jobs[].exclusive` from `GET /slurm/v0.0.42/jobs`.  
+     `.job.oversubscribe`, `.jobs[].oversubscribe` to `POST /slurm/v0.0.42/job/submit`.  
+     `.jobs[].oversubscribe` from `GET /slurm/v0.0.42/job/{job_id}`.  
+     `.jobs[].oversubscribe` from `GET /slurm/v0.0.42/jobs`.  
   * `scontrol` - Removed deprecated fields `.jobs[].exclusive` and
     `.jobs[].oversubscribe` from `scontrol show jobs --{json|yaml}`.
   * `squeue` - Removed deprecated fields `.jobs[].exclusive` and
@@ -100,297 +105,297 @@ Mon Jan  6 12:40:31 UTC 2025 - Egbert Eich <eich@suse.com>
     to the drivers.
   * Limit `SwitchName` to `HOST_NAME_MAX` chars length.
   * For `scancel --ctld` and the following rest api endpoints:
-      `DELETE /slurm/v0.0.40/jobs`
-      `DELETE /slurm/v0.0.41/jobs`
-      `DELETE /slurm/v0.0.42/jobs`
+     `DELETE /slurm/v0.0.40/jobs`  
+     `DELETE /slurm/v0.0.41/jobs`  
+     `DELETE /slurm/v0.0.42/jobs`  
     Support array expressions in the responses to the client.
   * `salloc` - Always output node names to the user when an
-	allocation is granted.
+    allocation is granted.
   * `slurmrestd` - Removed all v0.0.39 endpoints.
   * `select/linear` - Reject jobs asking for GRES per
-	`job|socket|task` or `cpus|mem` per GRES.
+    `job|socket|task` or `cpus|mem` per GRES.
   * Add `/nodes` POST endpoint to REST API, supports multiple
-	node update whereas previously only single nodes could be
-	updated through `/node/<nodename>` endpoint:
-      `POST /slurm/v0.0.42/nodes`
+    node update whereas previously only single nodes could be
+    updated through `/node/<nodename>` endpoint:
+    `POST /slurm/v0.0.42/nodes`
   * Do not allow changing or setting `PreemptMode=GANG` to a
-	partition as this is a cluster-wide option.
+    partition as this is a cluster-wide option.
   * Add `%b` as a file name pattern for the array task id modulo 10.
   * Skip packing empty nodes when they are hidden during
-	`REQUEST_NODE_INFO RPC`.
+    `REQUEST_NODE_INFO RPC`.
   * `accounting_storage/mysql` - Avoid a fatal condition when
-	the db server is not reachable.
+    the db server is not reachable.
   * Always lay out steps cyclically on nodes in an allocation.
   * `squeue` - add priority by partition
-	(`.jobs[].priority_by_partition`) to JSON and YAML output.
+    (`.jobs[].priority_by_partition`) to JSON and YAML output.
   * `slurmrestd` - Add clarification to `failed to open slurmdbd
-	connection` error if the error was the result of an
-	authentication failure.
+    connection` error if the error was the result of an
+    authentication failure.
   * Make it so `slurmctld` responds to RPCs that have authentication
-	errors with the `SLURM_PROTOCOL_AUTHENTICATION_ERROR` error
-	code.
+    errors with the `SLURM_PROTOCOL_AUTHENTICATION_ERROR` error
+    code.
   * `openapi/slurmctld` - Display the correct error code instead
-	of `Unspecified error` if querying the following endpoints
-	fails:
-      `GET /slurm/v0.0.40/diag/`
-      `GET /slurm/v0.0.41/diag/`
-      `GET /slurm/v0.0.42/diag/`
-      `GET /slurm/v0.0.40/licenses/`
-      `GET /slurm/v0.0.41/licenses/`
-      `GET /slurm/v0.0.42/licenses/`
-      `GET /slurm/v0.0.40/reconfigure`
-      `GET /slurm/v0.0.41/reconfigure`
-      `GET /slurm/v0.0.42/reconfigure`
+    of `Unspecified error` if querying the following endpoints
+    fails:  
+    `GET /slurm/v0.0.40/diag/`  
+    `GET /slurm/v0.0.41/diag/`  
+    `GET /slurm/v0.0.42/diag/`  
+    `GET /slurm/v0.0.40/licenses/`  
+    `GET /slurm/v0.0.41/licenses/`  
+    `GET /slurm/v0.0.42/licenses/`  
+    `GET /slurm/v0.0.40/reconfigure`  
+    `GET /slurm/v0.0.41/reconfigure`  
+    `GET /slurm/v0.0.42/reconfigure`  
   * Fix how used CPUs are tracked in a job allocation to allow the
-	max number of concurrent steps to run at a time if threads per
-	core is greater than 1.
+    max number of concurrent steps to run at a time if threads per
+    core is greater than 1.
   * In existing allocations SLURM_GPUS_PER_NODE environment
-	variable will be ignored by srun if `--gpus` is specified.
+    variable will be ignored by srun if `--gpus` is specified.
   * When using `--get-user-env` explicitly or implicitly, check
-	if PID or mnt namespaces are disabled and fall back to old
-	logic that does not rely on them when they are not available.
+    if PID or mnt namespaces are disabled and fall back to old
+    logic that does not rely on them when they are not available.
   * Removed non-functional option `SLURM_PROLOG_CPU_MASK` from
-	`TaskProlog` which was used to reset the affinity of a task
-	based on the mask given.
+    `TaskProlog` which was used to reset the affinity of a task
+    based on the mask given.
   * `slurmrestd` - Support passing of `-d latest` to load latest
     version of `data_parser` plugin.
   * `sacct`,`sacctmgr`,`scontrol`,`sdiag`,`sinfo`,`squeue`,`sshare`
-	- Change response to `--json=list` or `--yaml=list` to send
-	list of plugins to stdout and descriptive header to stderr to
-	allow for easier parsing.
+    - Change response to `--json=list` or `--yaml=list` to send
+    list of plugins to stdout and descriptive header to stderr to
+    allow for easier parsing.
   * `slurmrestd` - Change response to `-d list`, `-a list` or
-	`-s list` to send list of plugins to stdout and descriptive
-	header to stderr to allow for easier parsing.
+    `-s list` to send list of plugins to stdout and descriptive
+    header to stderr to allow for easier parsing.
   * `sacct`,`sacctmgr`,`scontrol`,`sdiag`,`sinfo`,`squeue`,
     `sshare`,`slurmrestd` - Avoid crash when loading `data_parser`
-	plugins fail due to NULL dereference.
+    plugins fail due to NULL dereference.
   * Add autodetected GPUs to the output of `slurmd -C`
   * Remove `burst_buffer/lua` call `slurm.job_info_to_string()`.
   * Add `SchedulerParameters=bf_allow_magnetic_slot` option. It
-	allows jobs in magnetic reservations to be planned by backfill
-	scheduler.
+    allows jobs in magnetic reservations to be planned by backfill
+    scheduler.
   * `slurmrestd` - Refuse to run as root, `SlurmUser`, and
-	`nobody(99)`.
+    `nobody(99)`.
   * `openapi/slurmctld` - Revert regression that caused signaling
-	jobs to cancel entire job arrays instead of job array tasks:
-      `DELETE /slurm/v0.0.40/{job_id}`
-      `DELETE /slurm/v0.0.41/{job_id}`
-      `DELETE /slurm/v0.0.42/{job_id}`
+    jobs to cancel entire job arrays instead of job array tasks:
+    `DELETE /slurm/v0.0.40/{job_id}`  
+    `DELETE /slurm/v0.0.41/{job_id}`  
+    `DELETE /slurm/v0.0.42/{job_id}`  
   * `openapi/slurmctld` - Support more formats for `{job_id}`
-	including job steps:
-      `DELETE /slurm/v0.0.40/{job_id}`
-      `DELETE /slurm/v0.0.41/{job_id}`
-      `DELETE /slurm/v0.0.42/{job_id}`
+    including job steps:  
+    `DELETE /slurm/v0.0.40/{job_id}`  
+    `DELETE /slurm/v0.0.41/{job_id}`  
+    `DELETE /slurm/v0.0.42/{job_id}`  
   * Alter scheduling of jobs at submission time to consider job
-	submission time and job id. This makes it so that that
-	interactive jobs aren't allocated resources before batch jobs
-	when they have the same priority at submit time.
+    submission time and job id. This makes it so that that
+    interactive jobs aren't allocated resources before batch jobs
+    when they have the same priority at submit time.
   * Fix multi-cluster submissions with differing Switch plugins.
   * `slurmrestd` - Change `+prefer_refs` flag to default in
-	`data_parser/v0.0.42` plugin. Add `+minimize_refs` flag to
-	inline single referenced schemas in the OpenAPI schema. This
-	sets the default OpenAPI schema generation behavior of
+    `data_parser/v0.0.42` plugin. Add `+minimize_refs` flag to
+    inline single referenced schemas in the OpenAPI schema. This
+    sets the default OpenAPI schema generation behavior of
     `data_parser/v0.0.42` to match v0.0.41 `+prefer_refs` and
-	v0.0.40 (without flags).
+    v0.0.40 (without flags).
   * Fix `LaunchParameters=batch_step_set_cpu_freq`.
   * Clearer `seff` warning message for running jobs.
   * `data_parser/v0.0.42` - Rename `JOB_INFO` field
-	`minimum_switches` to `required_switches` to reflect the
-	actual behavior.
+    `minimum_switches` to `required_switches` to reflect the
+    actual behavior.
   * `data_parser/v0.0.42` - Rename `ACCOUNT_CONDITION` field
-	`assocation` to `association` to fix typo.
+    `assocation` to `association` to fix typo.
   * `cgroup/v2` - fix cgroup cleanup when running inside a
-	container without write permissions to `/sys/fs/cgroup`.
+    container without write permissions to `/sys/fs/cgroup`.
   * `cgroup/v2` - fix accounting of swap events detection.
   * Fix gathering MaxRSS for jobs that run shorter than two
-	`jobacctgather` intervals. Get the metrics from cgroups
-	`memory.peak` or `memory.max_usage_in_bytes` where available.
+    `jobacctgather` intervals. Get the metrics from cgroups
+    `memory.peak` or `memory.max_usage_in_bytes` where available.
   * `openapi/slurmctld` - Set complex number support for the
-	following fields:
-      `.shares[][].fairshare.factor`
-      `.shares[][].fairshare.level`
-    for endpoints:
-      `GET /slurm/v0.0.42/shares`
-    and for commands:
-      `sshare --json`
-      `sshare --yaml`
+    following fields:  
+    `.shares[][].fairshare.factor`  
+    `.shares[][].fairshare.level`  
+    for endpoints:  
+    `GET /slurm/v0.0.42/shares`  
+    and for commands:  
+    `sshare --json`  
+    `sshare --yaml`  
   * `data_parser/v0.0.42` - Avoid dumping `Infinity` for `NO_VAL`
-	tagged `number` fields.
+    tagged `number` fields.
   * Add `TopologyParam=TopoMaxSizeUnroll=#` to allow
-	`--nodes=<min>-<max>` for `topology/block`.
+    `--nodes=<min>-<max>` for `topology/block`.
   * `sacct` - Respect `--noheader` for `--batch-script` and
-	`--env-vars`.
+    `--env-vars`.
   * `sacct` - Remove extra newline in output from `--batch-script`
-	and --env-vars.
+    and --env-vars.
   * Add `sacctmgr ping` command to query status of `slurmdbd`.
   * Generate an error message when a `NodeSet` name conflicts with
-	a `NodeName`, and prevent the controller from starting if such
-	a conflict exists.
+    a `NodeName`, and prevent the controller from starting if such
+    a conflict exists.
   * `slurmd` - properly detect slurmd restarts in the energy
-	gathering logic which caused bad numbers in accounting.
+    gathering logic which caused bad numbers in accounting.
   * `sackd` - retry fetching slurm configs indefinately in
-	configless mode.
+    configless mode.
   * `job_submit/lua` - Add `assoc_qos` attribute to `job_desc`
-	to display all potential QOS's for a job's association.
+    to display all potential QOS's for a job's association.
   * `job_submit/lua` - Add `slurm.get_qos_priority()` function
-	to retrieve the given QOS's priority.
+    to retrieve the given QOS's priority.
   * `sbcast` - Add `--nodelist` option to specify where files are
-	transmitted to.
+    transmitted to.
   * `sbcast` - Add `--no-allocation` option to transmit files to
-	nodes outside of a job allocation
+    nodes outside of a job allocation
   * Add `DataParserParameters` `slurm.conf` parameter to allow
-	setting default value for CLI `--json` and `--yaml` arguments.
+    setting default value for CLI `--json` and `--yaml` arguments.
   * `seff` - improve step's max memory consumption report by using
-	`TresUsageInTot` and `TresUsageInAve` instead of overestimating
-	the values.
+    `TresUsageInTot` and `TresUsageInAve` instead of overestimating
+    the values.
   * Enable RPC queueing for `REQUEST_KILL_JOBS`, which is used when
-	`scancel` is executed with `--ctld` flag.
+    `scancel` is executed with `--ctld` flag.
   * `slurmdbd` - Add `-u` option. This is used to determine if
-	restarting the DBD will result in database conversion.
+    restarting the DBD will result in database conversion.
   * Fix `srun` inside an `salloc` in a federated cluster when using
-	IPv6.
+    IPv6.
   * Calculate the forwarding timeouts according to tree depth
-	rather than node count / tree width for each level. Fixes race
-	conditions with same timeouts between two consecutive node
-	levels.
+    rather than node count / tree width for each level. Fixes race
+    conditions with same timeouts between two consecutive node
+    levels.
   * Add ability to submit jobs with multiple QOS.
   * Fix difference in behavior when swapping partition order in job
-	submission.
+    submission.
   * Improve `PLANNED` state detection for mixed nodes and updating
-	state before yielding backfill locks.
+    state before yielding backfill locks.
   * Always consider partition priority tiers when deciding to try
-	scheduling jobs on submit.
+    scheduling jobs on submit.
   * Prevent starting jobs without reservations on submit when there
-	are pending jobs with reservations that have flags `FLEX` or
-	`ANY_NODES` that can be scheduled on overlapping nodes.
+    are pending jobs with reservations that have flags `FLEX` or
+    `ANY_NODES` that can be scheduled on overlapping nodes.
   * Prevent jobs that request both high and low priority tier
-	partitions from starting on submit in lower priority tier
-	partitions if it could delay pending jobs in higher priority
-	tier partitions.
+    partitions from starting on submit in lower priority tier
+    partitions if it could delay pending jobs in higher priority
+    tier partitions.
   * `scontrol` - Wait for `slurmctld` to start reconfigure in
-	foreground mode before returning.
+    foreground mode before returning.
   * Improve reconfigure handling on Linux to only close open file
-	descriptors to avoid long delays on systems with large
-	`RLIMIT_NOFILE` settings.
+    descriptors to avoid long delays on systems with large
+    `RLIMIT_NOFILE` settings.
   * `salloc` - Removed `--get-user-env` option.
   * Removed the instant on feature from `switch/hpe_slingshot`.
   * Hardware collectives in `switch/hpe_slingshot` now requires
-	`enable_stepmgr`.
+    `enable_stepmgr`.
   * Allow backfill to plan jobs on nodes currently being used by
-	exclusive user or mcs jobs.
+    exclusive user or mcs jobs.
   * Avoid miscaching IPv6 address to hostname lookups that could
-	have caused logs to have the incorrect hostname.
+    have caused logs to have the incorrect hostname.
   * `scontrol` - Add `--json`/`--yaml` support to `listpids`
   * `scontrol` - Add `liststeps`
   * `scontrol` - Add `listjobs`
   * `slurmrestd` - Avoid connection to slurmdbd for the following
-	endpoints:
-      `GET /slurm/v0.0.42/jobs`
-      `GET /slurm/v0.0.42/job/{job_id}`
+    endpoints:  
+    `GET /slurm/v0.0.42/jobs`  
+    `GET /slurm/v0.0.42/job/{job_id}`  
   * `slurmctld` - Changed incoming RPC handling to dedicated thread
-	pool.
+    pool.
   * `job_container/tmpfs` - Add `EntireStepInNS` option that will
-	place the `slurmstepd` process within the constructed namespace
-	directly.
+    place the `slurmstepd` process within the constructed namespace
+    directly.
   * `scontrol show topo` - Show aggregated block sizes when using
-	`topology/block`.
+    `topology/block`.
   * `slurmrestd` - Add more descriptive HTTP status for
-	authentication failure and connectivity errors with controller.
+    authentication failure and connectivity errors with controller.
   * `slurmrestd` - Improve reporting errors from `slurmctld` for
-	job	queries:
-      `GET /slurm/v0.0.41/{job_id}`
-      `GET /slurm/v0.0.41/jobs/`
+    job	queries:  
+    `GET /slurm/v0.0.41/{job_id}`  
+    `GET /slurm/v0.0.41/jobs/`  
   * Avoid rejecting a step request that needs fewer GRES than nodes
-	in the job allocation.
+    in the job allocation.
   * `slurmrestd` - Tag the never populated `.jobs[].pid` field as
-	deprecated for the following endpoints:
-      `GET /slurm/v0.0.42/{job_id}`
-      `GET /slurm/v0.0.42/jobs/`
+    deprecated for the following endpoints:  
+    `GET /slurm/v0.0.42/{job_id}`  
+    `GET /slurm/v0.0.42/jobs/`  
   * `scontrol`,`squeue` - Tag the never populated `.jobs[].pid` field
-	as deprecated for the following:
-      `scontrol show jobs --json`
-      `scontrol show jobs --yaml`
-      `scontrol show job ${JOB_ID} --json`
-      `scontrol show job ${JOB_ID} --yaml`
-      `squeue --json`
-      `squeue --yaml`
+     as deprecated for the following:  
+     `scontrol show jobs --json`  
+     `scontrol show jobs --yaml`  
+     `scontrol show job ${JOB_ID} --json`  
+     `scontrol show job ${JOB_ID} --yaml`  
+     `squeue --json`  
+     `squeue --yaml`  
   * `data_parser` v0.0.42 - fix timestamp parsing regression
-	introduced in in v0.0.40 (eaf3b6631f), parsing of non iso 8601
-	style timestamps
+    introduced in in v0.0.40 (eaf3b6631f), parsing of non iso 8601
+    style timestamps
   * `cgroup/v2` will detect some special container and namespaced
-	setups and will work with it.
+    setups and will work with it.
   * Support IPv6 in configless mode.
   * Add `SlurmctldParamters=ignore_constraint_validation` to ignore
     `constraint/feature` validation at submission.
   * `slurmrestd` - Set `.pings[].mode` field as deprecated in the
-	following endpoints:
-      `GET /slurm/v0.0.42/ping`
+    following endpoints:  
+    `GET /slurm/v0.0.42/ping`
   * `scontrol` - Set `.pings[].mode` field as deprecated in the
-	following commands:
-      `scontrol ping --json`
-      `scontrol ping --yaml`
+    following commands:  
+    `scontrol ping --json`  
+    `scontrol ping --yaml`
   * `slurmrestd` - Set `.pings[].pinged` field as deprecated in
-	the following endpoints:
-      `GET /slurm/v0.0.42/ping`
+    the following endpoints:  
+    `GET /slurm/v0.0.42/ping`
   * `scontrol` - Set `.pings[].pinged` field as deprecated in the
-	following commands:
-      `scontrol ping --json`
-      `scontrol ping --yaml`
+     following commands:  
+     `scontrol ping --json`  
+     `scontrol ping --yaml`  
   * `slurmrestd` - Add `.pings[].primary` field to the following
-	endpoints:
-      `GET /slurm/v0.0.42/ping`
+    endpoints:  
+    `GET /slurm/v0.0.42/ping`
   * `scontrol` - Add `.pings[].primary` field to the following
-	commands:
-      `scontrol ping --json`
-      `scontrol ping --yaml`
+    commands:
+    `scontrol ping --json`  
+    `scontrol ping --yaml`
   * `slurmrestd` - Add `.pings[].responding` field to the following
-	endpoints:
-      `GET /slurm/v0.0.42/ping`
+    endpoints:  
+    `GET /slurm/v0.0.42/ping`  
   * `scontrol` - Add `.pings[].responding` field to the following
-	commands:
-      `scontrol ping --json`
-      `scontrol ping --yaml`
+    commands:  
+    `scontrol ping --json`  
+    `scontrol ping --yaml`  
   * Prevent jobs without reservations from delaying jobs in
-	reservations with flags `FLEX` or `ANY_NODES` in the main
-	scheduler.
+    reservations with flags `FLEX` or `ANY_NODES` in the main
+    scheduler.
   * Fix allowing to ask for multiple different types of TRES
-	when one of them has a value of 0.
+    when one of them has a value of 0.
   * `slurmctld` - Add a grace period to ensure the agent retry
-	queue is properly flushed during shutdown.
+    queue is properly flushed during shutdown.
   * Don't ship `src/slurmrestd/plugins/openapi/slurmdbd/openapi.json`
-	`slurmrest` should always be used to enerate a new OpenAPI
-	schema (aka openapi.json or openapi.yaml).
+    `slurmrest` should always be used to enerate a new OpenAPI
+    schema (aka openapi.json or openapi.yaml).
   * `mpi/pmix` - Fix potential deadlock and races with het jobs,
-	and fix potential memory and FDs leaks.
+    and fix potential memory and FDs leaks.
   * Fix jobs with `--gpus` being rejected in some edge cases for
-	partitions where not all nodes have the same amount of GPUs
-	and CPUs configured.
+    partitions where not all nodes have the same amount of GPUs
+    and CPUs configured.
   * In an extra constraints expression in a job request, do not
-	allow an empty string for a key or value.
+    allow an empty string for a key or value.
   * In an extra constraints expression in a job request, fix
-	validation that requests are separated by boolean operators.
+    validation that requests are separated by boolean operators.
   * Add `TaskPluginParam=OOMKillStep` to kill the step as a whole
-	when one task OOMs.
+    when one task OOMs.
   * Fix `scontrol` show conf not showing all `TaskPluginParam`
-	elements.
+    elements.
   * `slurmrestd` - Add fields `.job.oom_kill_step`
-	`.jobs[].oom_kill_step` to `POST /slurm/v0.0.42/job/submit`
-	and `POST /slurm/v0.0.42/job/allocate`.
+    `.jobs[].oom_kill_step` to `POST /slurm/v0.0.42/job/submit`
+    and `POST /slurm/v0.0.42/job/allocate`.
   * Improve performance for `_will_run_test()`.
   * Add `SchedulerParameters=bf_topopt_enable` option to enable
-	experimental hook to control backfill.
+    experimental hook to control backfill.
   * If a step fails to launch under certain conditions, set the
-	step's state to `NODE_FAIL`.
+    step's state to `NODE_FAIL`.
   * `sched/backfill` - Fix certain situations where a job would
-	not get a planned time, which could lead to it being delayed
-	by lower priority jobs.
+    not get a planned time, which could lead to it being delayed
+    by lower priority jobs.
   * `slurmrestd` - Dump JSON `null` instead of `{}` (empty object)
-	for non-required fields in objects to avoid client
-	compatiblity issues for v0.0.42 version tagged endpoints.
+    for non-required fields in objects to avoid client
+    compatiblity issues for v0.0.42 version tagged endpoints.
   * `sacct`,`sacctmgr`,`scontrol`,`sdiag`,`sinfo`,`squeue`,
-	`sshare` - Dump `null` instead `{}` (empty object) for
-	non-required fields in objects to avoid client compatiblity
-	issues when run with `--json` or `--yaml`.
+    `sshare` - Dump `null` instead `{}` (empty object) for
+    non-required fields in objects to avoid client compatiblity
+    issues when run with `--json` or `--yaml`.
 
 -------------------------------------------------------------------
 Fri Nov  1 12:50:27 UTC 2024 - Egbert Eich <eich@suse.com>

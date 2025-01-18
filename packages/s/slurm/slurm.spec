@@ -174,6 +174,7 @@ Source12:       slurmdbd.xml
 # create: tar --owner=nobody --group=nogroup --exclude=*~ -cvzf test_setup.tar.gz test_setup
 Source20:       test_setup.tar.gz
 Source21:       README_Testsuite.md
+Source22:       regression.py.sle12
 Patch0:         Remove-rpath-from-build.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
 Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
@@ -581,7 +582,9 @@ Requires:       %{name}-lua = %version
 Requires:       %{name}-munge = %version
 Requires:       %{name}-node = %version
 Requires:       %{name}-openlava = %version
+%if 0%{?build_slurmrestd}
 Requires:       %{name}-rest = %version
+%endif
 Requires:       %{name}-seff = %version
 Requires:       %{name}-sjstat = %version
 Requires:       %{name}-slurmdbd = %version
@@ -598,6 +601,7 @@ Requires:       libnuma-devel
 Requires:       pam
 Requires:       pdsh
 Requires:       perl-%{name} = %version
+Requires:       readline-devel
 Requires:       sudo
 Requires:       tar
 BuildRequires:  sudo
@@ -890,6 +894,10 @@ find -type f -name "*.[ao]" -print | while read f; do
   # drop non-deterministic lto bits from .o files
   strip -p --discard-locals -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 $f
 done
+# on versions < SLE15 replace regression.py with one compatible with py 3.4
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150000
+install -m 755 %{S:22} %{buildroot}/srv/slurm-testsuite/testsuite/expect/regression.py
+%endif
 %if 0%{?suse_version} >= 1500
 %define tar_sort --sort=name
 %endif
@@ -922,6 +930,12 @@ fi
 sed -i -e '/ExecStart/aExecStartPre=/bin/bash -c "for i in 0 1 2 3; do test -e /dev/nvidia$i || mknod /dev/nvidia$i c 10 $((i+2)); done"' $SLURMD_SERVICE
 
 tar -xzf %{S:20}
+# on versions < SLE15 turn off AcctGatherProfileType and pmix
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150000
+sed -i -e "/AcctGatherProfileType/s@^@#@" \
+    -e "/MpiDefault/s@pmix_v3@pmi2@" test_setup/slurm.conf
+sed -i -e "/ProfileHDF5Dir/s@^@#@" test_setup/acct_gather.conf
+%endif
 mkdir -p %{buildroot}%{_pam_secconfdir}/limits.d
 mv test_setup/slurm.conf.limits %{buildroot}%_pam_secconfdir/limits.d/slurm.conf
 %if 0%{?sle_version} < 150200
