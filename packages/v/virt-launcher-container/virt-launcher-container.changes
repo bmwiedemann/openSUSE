@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 23:09:56 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Fix ovmf firmware path for SEV(ES) VMs (bsc#1232762)
+
+-------------------------------------------------------------------
 Tue Oct 15 05:50:28 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add LABEL with support level

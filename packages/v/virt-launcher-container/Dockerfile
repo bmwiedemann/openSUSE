@@ -55,7 +55,7 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then \
         mkdir -p /usr/share/OVMF && \
         ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.fd && \
         ln -s ../qemu/ovmf-x86_64-vars.bin /usr/share/OVMF/OVMF_VARS.fd && \
-        ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.cc.fd && \
+        ln -s ../qemu/ovmf-x86_64-sev.bin /usr/share/OVMF/OVMF_CODE.cc.fd && \
         ln -s ../qemu/ovmf-x86_64-smm-ms-code.bin /usr/share/OVMF/OVMF_CODE.secboot.fd && \
         ln -s ../qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/OVMF/OVMF_VARS.secboot.fd ; \
     fi
