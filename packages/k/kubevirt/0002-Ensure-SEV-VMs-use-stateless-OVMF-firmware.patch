@@ -1,0 +1,149 @@
+From 7ece048f90223e395001f9fc158c5c2af35ca520 Mon Sep 17 00:00:00 2001
+From: Vasiliy Ulyanov <vulyanov@suse.de>
+Date: Wed, 10 Jul 2024 10:27:15 +0200
+Subject: [PATCH] Ensure SEV VMs use stateless OVMF firmware
+
+Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
+Signed-off-by: Caleb Crane <ccrane@suse.de>
+---
+ .../virtwrap/converter/converter.go           | 20 ++++++++++++-------
+ pkg/virt-launcher/virtwrap/efi/efi.go         | 11 ++++------
+ pkg/virt-launcher/virtwrap/efi/efi_test.go    |  8 +-------
+ rpm/BUILD.bazel                               |  2 +-
+ 4 files changed, 19 insertions(+), 22 deletions(-)
+
+diff --git a/pkg/virt-launcher/virtwrap/converter/converter.go b/pkg/virt-launcher/virtwrap/converter/converter.go
+index 0565ceb5dd..8f1094d141 100644
+--- a/pkg/virt-launcher/virtwrap/converter/converter.go
++++ b/pkg/virt-launcher/virtwrap/converter/converter.go
+@@ -1222,6 +1222,12 @@ func Convert_v1_Firmware_To_related_apis(vmi *v1.VirtualMachineInstance, domain
+ 			Template: c.EFIConfiguration.EFIVars,
+ 			NVRam:    filepath.Join(services.PathForNVram(vmi), vmi.Name+"_VARS.fd"),
+ 		}
++
++		if util.IsSEVVMI(vmi) {
++			// Use stateless firmware for SEV VMs
++			domain.Spec.OS.BootLoader.Type = "rom"
++			domain.Spec.OS.NVRam = nil
++		}
+ 	}
+ 
+ 	if firmware.Bootloader != nil && firmware.Bootloader.BIOS != nil {
+@@ -1449,13 +1455,13 @@ func Convert_v1_VirtualMachineInstance_To_api_Domain(vmi *v1.VirtualMachineInsta
+ 
+ 	// Set SEV launch security parameters: https://libvirt.org/formatdomain.html#launch-security
+ 	if c.UseLaunchSecurity {
+-		sevPolicyBits := launchsecurity.SEVPolicyToBits(vmi.Spec.Domain.LaunchSecurity.SEV.Policy)
+-		// Cbitpos and ReducedPhysBits will be filled automatically by libvirt from the domain capabilities
+-		domain.Spec.LaunchSecurity = &api.LaunchSecurity{
+-			Type:    "sev",
+-			Policy:  "0x" + strconv.FormatUint(uint64(sevPolicyBits), 16),
+-			DHCert:  vmi.Spec.Domain.LaunchSecurity.SEV.DHCert,
+-			Session: vmi.Spec.Domain.LaunchSecurity.SEV.Session,
++    sevPolicyBits := launchsecurity.SEVPolicyToBits(vmi.Spec.Domain.LaunchSecurity.SEV.Policy)
++    // Cbitpos and ReducedPhysBits will be filled automatically by libvirt from the domain capabilities
++    domain.Spec.LaunchSecurity = &api.LaunchSecurity{
++      Type:    "sev",
++      Policy:  "0x" + strconv.FormatUint(uint64(sevPolicyBits), 16),
++      DHCert:  vmi.Spec.Domain.LaunchSecurity.SEV.DHCert,
++				Session: vmi.Spec.Domain.LaunchSecurity.SEV.Session,
+ 		}
+ 		controllerDriver = &api.ControllerDriver{
+ 			IOMMU: "on",
+diff --git a/pkg/virt-launcher/virtwrap/efi/efi.go b/pkg/virt-launcher/virtwrap/efi/efi.go
+index 0a51067dc0..730b637c9f 100644
+--- a/pkg/virt-launcher/virtwrap/efi/efi.go
++++ b/pkg/virt-launcher/virtwrap/efi/efi.go
+@@ -31,8 +31,7 @@ const (
+ 	EFIVarsAARCH64    = "AAVMF_VARS.fd"
+ 	EFICodeSecureBoot = "OVMF_CODE.secboot.fd"
+ 	EFIVarsSecureBoot = "OVMF_VARS.secboot.fd"
+-	EFICodeSEV        = "OVMF_CODE.cc.fd"
+-	EFIVarsSEV        = EFIVars
++	EFICodeSEV        = "OVMF.amdsev.fd"
+ )
+ 
+ type EFIEnvironment struct {
+@@ -41,14 +40,13 @@ type EFIEnvironment struct {
+ 	codeSecureBoot string
+ 	varsSecureBoot string
+ 	codeSEV        string
+-	varsSEV        string
+ }
+ 
+ func (e *EFIEnvironment) Bootable(secureBoot, sev bool) bool {
+ 	if secureBoot {
+ 		return e.varsSecureBoot != "" && e.codeSecureBoot != ""
+ 	} else if sev {
+-		return e.varsSEV != "" && e.codeSEV != ""
++		return e.codeSEV != ""
+ 	} else {
+ 		return e.vars != "" && e.code != ""
+ 	}
+@@ -68,7 +66,8 @@ func (e *EFIEnvironment) EFIVars(secureBoot, sev bool) string {
+ 	if secureBoot {
+ 		return e.varsSecureBoot
+ 	} else if sev {
+-		return e.varsSEV
++		// SEV uses stateless firmware
++		return ""
+ 	} else {
+ 		return e.vars
+ 	}
+@@ -100,7 +99,6 @@ func DetectEFIEnvironment(arch, ovmfPath string) *EFIEnvironment {
+ 
+ 	// detect EFI with SEV
+ 	codeWithSEV := getEFIBinaryIfExists(ovmfPath, EFICodeSEV)
+-	varsWithSEV := getEFIBinaryIfExists(ovmfPath, EFIVarsSEV)
+ 
+ 	return &EFIEnvironment{
+ 		codeSecureBoot: codeWithSB,
+@@ -108,7 +106,6 @@ func DetectEFIEnvironment(arch, ovmfPath string) *EFIEnvironment {
+ 		code:           code,
+ 		vars:           vars,
+ 		codeSEV:        codeWithSEV,
+-		varsSEV:        varsWithSEV,
+ 	}
+ }
+ 
+diff --git a/pkg/virt-launcher/virtwrap/efi/efi_test.go b/pkg/virt-launcher/virtwrap/efi/efi_test.go
+index dcc0e5a6f7..1123c20abd 100644
+--- a/pkg/virt-launcher/virtwrap/efi/efi_test.go
++++ b/pkg/virt-launcher/virtwrap/efi/efi_test.go
+@@ -82,7 +82,7 @@ var _ = Describe("EFI environment detection", func() {
+ 	)
+ 
+ 	It("SEV EFI Roms", func() {
+-		ovmfPath := createEFIRoms(EFICodeSEV, EFIVarsSEV)
++		ovmfPath := createEFIRoms(EFICodeSEV)
+ 		defer os.RemoveAll(ovmfPath)
+ 
+ 		efiEnv := DetectEFIEnvironment("x86_64", ovmfPath)
+@@ -98,11 +98,5 @@ var _ = Describe("EFI environment detection", func() {
+ 		Expect(efiEnv.EFICode(secureBootEnabled, !sevEnabled)).ToNot(Equal(codeSEV))
+ 		Expect(efiEnv.EFICode(!secureBootEnabled, sevEnabled)).To(Equal(codeSEV))
+ 		Expect(efiEnv.EFICode(!secureBootEnabled, !sevEnabled)).ToNot(Equal(codeSEV))
+-
+-		varsSEV := filepath.Join(ovmfPath, EFIVarsSEV)
+-		Expect(efiEnv.EFIVars(secureBootEnabled, sevEnabled)).ToNot(Equal(varsSEV))
+-		Expect(efiEnv.EFIVars(secureBootEnabled, !sevEnabled)).ToNot(Equal(varsSEV))
+-		Expect(efiEnv.EFIVars(!secureBootEnabled, sevEnabled)).To(Equal(varsSEV))
+-		Expect(efiEnv.EFIVars(!secureBootEnabled, !sevEnabled)).To(Equal(varsSEV)) // same as EFIVars
+ 	})
+ })
+diff --git a/rpm/BUILD.bazel b/rpm/BUILD.bazel
+index 5c98670f80..13184cadb5 100644
+--- a/rpm/BUILD.bazel
++++ b/rpm/BUILD.bazel
+@@ -1228,7 +1228,7 @@ rpmtree(
+         "/usr/sbin/iptables": "/usr/sbin/iptables-legacy",
+         "/usr/bin/nc": "/usr/bin/ncat",
+         # Create a symlink to OVMF binary with SEV support (edk2 rpm does not do that for unknown reason)
+-        "/usr/share/OVMF/OVMF_CODE.cc.fd": "../edk2/ovmf/OVMF_CODE.cc.fd",
++        "/usr/share/OVMF/OVMF.amdsev.fd": "../edk2/ovmf/OVMF.amdsev.fd",
+     },
+     visibility = ["//visibility:public"],
+ )
+-- 
+2.47.1
+

@@ -1,0 +1,128 @@
+From 0db64ad662f3be98e503cc00c1b96cadbf01dbf5 Mon Sep 17 00:00:00 2001
+From: YuJack <jk82421@gmail.com>
+Date: Mon, 23 Dec 2024 12:25:34 +0800
+Subject: [PATCH] feat: pass timeout from virt-monitor to virt-tail
+
+Signed-off-by: YuJack <jk82421@gmail.com>
+Signed-off-by: Caleb Crane <ccrane@suse.de>
+---
+ cmd/virt-tail/main.go                         | 22 +++++++++++--------
+ .../services/serialconsolelog.go              |  4 ++--
+ pkg/virt-controller/services/template.go      |  6 +++--
+ 3 files changed, 19 insertions(+), 13 deletions(-)
+
+diff --git a/cmd/virt-tail/main.go b/cmd/virt-tail/main.go
+index 3cd16d6b1f..faa652d83e 100644
+--- a/cmd/virt-tail/main.go
++++ b/cmd/virt-tail/main.go
+@@ -40,6 +40,9 @@ import (
+ 	"kubevirt.io/client-go/log"
+ )
+ 
++// initial timeout for serial console socket creation
++const initialSocketTimeout = time.Second * 20
++
+ type TermFileError struct{}
+ type SocketFileError struct{}
+ 
+@@ -52,9 +55,10 @@ func (m *SocketFileError) Error() string {
+ }
+ 
+ type VirtTail struct {
+-	ctx     context.Context
+-	logFile string
+-	g       *errgroup.Group
++	ctx           context.Context
++	logFile       string
++	g             *errgroup.Group
++	socketTimeout *time.Duration
+ }
+ 
+ func (v *VirtTail) checkFile(socketFile string) bool {
+@@ -134,10 +138,8 @@ func (v *VirtTail) watchFS() error {
+ 		return err
+ 	}
+ 
+-	// initial timeout for serial console socket creation
+-	const initialSocketTimeout = time.Second * 20
+ 	socketCheckCh := make(chan int)
+-	time.AfterFunc(initialSocketTimeout, func() {
++	time.AfterFunc(*v.socketTimeout, func() {
+ 		socketCheckCh <- 1
+ 	})
+ 
+@@ -195,6 +197,7 @@ func main() {
+ 	pflag.CommandLine.AddGoFlag(goflag.CommandLine.Lookup("v"))
+ 	pflag.CommandLine.ParseErrorsWhitelist = pflag.ParseErrorsWhitelist{UnknownFlags: true}
+ 	logFile := pflag.String("logfile", "", "path of the logfile to be streamed")
++	socketTimeout := pflag.Duration("socket-timeout", initialSocketTimeout, "Amount of time to wait for qemu")
+ 	pflag.Parse()
+ 
+ 	log.InitializeLogging("virt-tail")
+@@ -212,9 +215,10 @@ func main() {
+ 	g, gctx := errgroup.WithContext(ctx)
+ 
+ 	v := &VirtTail{
+-		ctx:     gctx,
+-		logFile: *logFile,
+-		g:       g,
++		ctx:           gctx,
++		logFile:       *logFile,
++		socketTimeout: socketTimeout,
++		g:             g,
+ 	}
+ 
+ 	g.Go(v.tailLogs)
+diff --git a/pkg/virt-controller/services/serialconsolelog.go b/pkg/virt-controller/services/serialconsolelog.go
+index ea6463e4d3..de9ec6f9b5 100644
+--- a/pkg/virt-controller/services/serialconsolelog.go
++++ b/pkg/virt-controller/services/serialconsolelog.go
+@@ -13,7 +13,7 @@ import (
+ 	virtconfig "kubevirt.io/kubevirt/pkg/virt-config"
+ )
+ 
+-func generateSerialConsoleLogContainer(vmi *v1.VirtualMachineInstance, image string, config *virtconfig.ClusterConfig, virtLauncherLogVerbosity uint) *k8sv1.Container {
++func generateSerialConsoleLogContainer(vmi *v1.VirtualMachineInstance, image string, config *virtconfig.ClusterConfig, virtLauncherLogVerbosity uint, socketTimeout string) *k8sv1.Container {
+ 	const serialPort = 0
+ 	if isSerialConsoleLogEnabled(vmi, config) {
+ 		logFile := fmt.Sprintf("%s/%s/virt-serial%d-log", util.VirtPrivateDir, vmi.ObjectMeta.UID, serialPort)
+@@ -25,7 +25,7 @@ func generateSerialConsoleLogContainer(vmi *v1.VirtualMachineInstance, image str
+ 			Image:           image,
+ 			ImagePullPolicy: k8sv1.PullIfNotPresent,
+ 			Command:         []string{"/usr/bin/virt-tail"},
+-			Args:            []string{"--logfile", logFile},
++			Args:            []string{"--logfile", logFile, "--socket-timeout", socketTimeout},
+ 			VolumeMounts: []k8sv1.VolumeMount{
+ 				k8sv1.VolumeMount{
+ 					Name:      "private",
+diff --git a/pkg/virt-controller/services/template.go b/pkg/virt-controller/services/template.go
+index a0f1b3a8d6..b980fd06e5 100644
+--- a/pkg/virt-controller/services/template.go
++++ b/pkg/virt-controller/services/template.go
+@@ -398,6 +398,8 @@ func (t *templateService) renderLaunchManifest(vmi *v1.VirtualMachineInstance, i
+ 	}
+ 
+ 	var command []string
++	var qemuTimeout = generateQemuTimeoutWithJitter(t.launcherQemuTimeout)
++
+ 	if tempPod {
+ 		logger := log.DefaultLogger()
+ 		logger.Infof("RUNNING doppleganger pod for %s", vmi.Name)
+@@ -406,7 +408,7 @@ func (t *templateService) renderLaunchManifest(vmi *v1.VirtualMachineInstance, i
+ 			"echo", "bound PVCs"}
+ 	} else {
+ 		command = []string{"/usr/bin/virt-launcher-monitor",
+-			"--qemu-timeout", generateQemuTimeoutWithJitter(t.launcherQemuTimeout),
++			"--qemu-timeout", qemuTimeout,
+ 			"--name", domain,
+ 			"--uid", string(vmi.UID),
+ 			"--namespace", namespace,
+@@ -502,7 +504,7 @@ func (t *templateService) renderLaunchManifest(vmi *v1.VirtualMachineInstance, i
+ 		containers = append(containers, virtiofsContainers...)
+ 	}
+ 
+-	sconsolelogContainer := generateSerialConsoleLogContainer(vmi, t.launcherImage, t.clusterConfig, virtLauncherLogVerbosity)
++	sconsolelogContainer := generateSerialConsoleLogContainer(vmi, t.launcherImage, t.clusterConfig, virtLauncherLogVerbosity, qemuTimeout)
+ 	if sconsolelogContainer != nil {
+ 		containers = append(containers, *sconsolelogContainer)
+ 	}

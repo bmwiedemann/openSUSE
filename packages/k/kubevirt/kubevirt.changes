@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 17 23:44:08 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Fix guest-console-log failure during live migration and Harvester upgrades
+  0001-feat-pass-timeout-from-virt-monitor-to-virt-tail.patch
+- Fix SEV(ES) guests not being bootable from incompatible firmware
+  0002-Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch (bsc#1232762)
+
+-------------------------------------------------------------------
 Wed Nov 13 12:12:42 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.4.0
