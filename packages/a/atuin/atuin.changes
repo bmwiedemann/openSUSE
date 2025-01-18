@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 15 14:10:38 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 18.4.0:
+  * Thanks to @philtweir, we now have a theming system! It's too much to write 
+    about here, so see the section in the docs: https://docs.atuin.sh/guide/theming/
+  * With this release, some defaults have changed. The most obvious will likely
+    be the switch to the compact UI style + inline rendering
+    read more here: https://github.com/atuinsh/atuin/pull/2249
+  * atuin wrapped: See your stats for 2024 with: atuin wrapped
+
+-------------------------------------------------------------------
 Tue Jul  9 02:28:22 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
 
 - Fixing broken build. Needs rustc >= 1.77 and protobuf-devel 
