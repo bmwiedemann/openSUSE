@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 18 01:59:12 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to version 1.61.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.61.0
+
+-------------------------------------------------------------------
 Tue Oct 15 05:49:47 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Enable aarch64 build for SLE and mark it as techpreview (jsc#PED-10545)
