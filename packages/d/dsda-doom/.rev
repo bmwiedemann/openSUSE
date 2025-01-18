@@ -47,4 +47,12 @@
     <comment>- Update to release 0.28.2</comment>
     <requestid>1218597</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b688594bd375c2fbc10d3d8d2717125f</srcmd5>
+    <version>0.28.3</version>
+    <time>1737202703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.28.3</comment>
+    <requestid>1238567</requestid>
+  </revision>
 </revisionlist>
