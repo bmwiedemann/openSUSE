@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 17 15:58:08 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.8.2+git.0.553c632:
+  * Version 0.8.2
+  * Entra Id no longer permits SFA enrollment
+  * Remove SSO python dependencies
+  * Version 0.8.1
+  * Rewrite the sso code in Rust
+
+-------------------------------------------------------------------
 Thu Dec 19 22:26:54 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.8.0+git.0.249ba5f:

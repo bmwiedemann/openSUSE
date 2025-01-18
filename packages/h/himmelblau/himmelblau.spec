@@ -1,7 +1,7 @@
 #
 # spec file for package himmelblau
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.8.0+git.0.249ba5f
+Version:        0.8.2+git.0.553c632
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -63,9 +63,7 @@ Provides:       aad-cli
 Provides:       aad-common
 Provides:       authd
 Provides:       authd-msentraid
-%if 0%{?is_opensuse}
 Suggests:       himmelblau-sso
-%endif
 Requires:       man
 # This is necessary to prevent users from installing Himmelblau along side
 # Microsoft's Broker, as these will conflict.
@@ -112,20 +110,16 @@ Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
 which allows users to sign into a Linux machine using Azure
 Entra Id credentials.
 
-%if 0%{?is_opensuse}
-# SLE doesn't provide python3-pydbus
 %package -n himmelblau-sso
 Summary:        Azure Entra Id Firefox SSO Configuration
 Requires:       %{name} = %{version}
 Requires:       MozillaFirefox
-Requires:       python3-pydbus
 Provides:       linux-entra-sso
 
 %description -n himmelblau-sso
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
 which allows users to sign into a Linux machine using Azure
 Entra Id credentials.
-%endif
 
 %post   -n libnss_himmelblau2 -p /sbin/ldconfig
 %postun -n libnss_himmelblau2 -p /sbin/ldconfig
@@ -183,14 +177,12 @@ install -D -d -m 0755 %{buildroot}%{_sysconfdir}/krb5.conf.d
 install -m 0644 %{_builddir}/%{name}-%{version}/src/config/krb5_himmelblau.conf %{buildroot}%{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
 
 # Firefox Single Sign On
-%if 0%{?is_opensuse}
-install -m 0755 %{_builddir}/%{name}-%{version}/src/sso/src/linux-entra-sso.py %{buildroot}/%{_bindir}/linux-entra-sso
-sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' %{buildroot}/%{_bindir}/linux-entra-sso
+strip --strip-unneeded target/release/linux-entra-sso
+install -m 0755 target/release/linux-entra-sso %{buildroot}/%{_bindir}/linux-entra-sso
 install -D -d -m 0755 %{buildroot}%{_libdir}/mozilla/native-messaging-hosts
 install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/linux_entra_sso.json %{buildroot}%{_libdir}/mozilla/native-messaging-hosts/
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/firefox/policies
 install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/policies.json %{buildroot}%{_sysconfdir}/firefox/policies/
-%endif
 
 # Man pages
 install -D -d -m 0755 %{buildroot}%{_mandir}/man1
@@ -245,7 +237,6 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{b
 %endif
 %config %{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
 
-%if 0%{?is_opensuse}
 %files -n himmelblau-sso
 %{_bindir}/linux-entra-sso
 %dir %{_libdir}/mozilla
@@ -254,6 +245,5 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{b
 %dir %{_sysconfdir}/firefox
 %dir %{_sysconfdir}/firefox/policies
 %config %{_sysconfdir}/firefox/policies/policies.json
-%endif
 
 %changelog

@@ -1,5 +1,5 @@
 <services>
-	<service name="tar_scm" mode="disabled">
+	<service name="tar_scm" mode="manual">
 		<param name="url">https://github.com/himmelblau-idm/himmelblau.git</param>
 		<param name="scm">git</param>
 		<param name="revision">stable-0.8.x</param>
@@ -11,20 +11,20 @@
 		<param name="exclude">src/kanidm/Cargo.*</param>
 		<param name="changesgenerate">enable</param>
 	</service>
-	<service name="set_version" mode="disabled">
+	<service name="set_version" mode="manual">
 		<param name="basename">himmelblau</param>
 		<param name="regex">^himmelblau-([^/]+)</param>
 		<param name="file">himmelblau.spec</param>
 	</service>
-	<service name="recompress" mode="disabled">
+	<service name="recompress" mode="manual">
 		<param name="file">*.tar</param>
 		<param name="compression">bz2</param>
 	</service>
-	<service name="cargo_vendor" mode="disabled">
+	<service name="cargo_vendor" mode="manual">
 		<param name="srcdir">himmelblau</param>
 		<param name="update">true</param>
 	</service>
-	<service name="cargo_audit" mode="disabled">
+	<service name="cargo_audit" mode="manual">
 		<param name="srcdir">himmelblau</param>
                 <param name="lockfile">Cargo.lock</param>
 	</service>
