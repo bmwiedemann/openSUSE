@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-subtests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-subtests
-Version:        0.12.1
+Version:        0.14.1
 Release:        0
 Summary:        Python unittest subTest() support and subtests fixture
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-subtests
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-subtests/pytest-subtests-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-subtests/pytest_subtests-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-attrs >= 19.2.0
 Requires:       python-pytest >= 7.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -40,7 +41,7 @@ BuildRequires:  %{python_module pytest >= 7.0}
 Python unittest subTest() support and subtests fixture.
 
 %prep
-%setup -q -n pytest-subtests-%{version}
+%setup -q -n pytest_subtests-%{version}
 
 %build
 %pyproject_wheel

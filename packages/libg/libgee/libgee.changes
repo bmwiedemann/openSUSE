@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 16 19:57:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.20.8:
+  + Fixes for newer valac.
+- Drop patches fixed upstream:
+  + ce8461ff6ea8ed79ce06b4241cb4fbb6d3d314f1.patch
+  + b33a6627f4fc96938b6015e05849867c472160a8.patch
+  + 2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch
+- Add check section and run make check during build.
+
+-------------------------------------------------------------------
 Sat Jul  6 23:48:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Trigger Vala compilation during build, for GCC 14 compatibility.

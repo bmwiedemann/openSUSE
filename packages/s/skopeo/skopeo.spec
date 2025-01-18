@@ -20,7 +20,7 @@
 %define project        github.com/containers/skopeo
 
 Name:           skopeo
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -29,7 +29,6 @@ URL:            https://%project
 Source:         %{name}-%{version}.tar.xz
 Source1:        skopeo.rpmlintrc
 Requires:       libcontainers-common
-Patch0:         0001-Update-container-storage-to-v1.55.1.patch
 BuildRequires:  bash
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  glib2-devel

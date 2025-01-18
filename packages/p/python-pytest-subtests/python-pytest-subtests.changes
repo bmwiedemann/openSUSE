@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:45:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.14.1:
+  * Fix self.instance._outcome is None case in #173 (#174).
+- update to 0.14.0:
+  * Add support for Python 3.13.
+  * Dropped support for EOL Python 3.8.
+  * Fixed output when using TestCase.skipTest (#169).
+  * Fixed pytest requirement to >=7.3 (#159).
+- update to 0.13.1:
+  * Fixed bug were an extra test would execute when -x/--exitfirst
+    was used (#139).
+- update to 0.13.0:
+  * Dropped support for EOL Python 3.7.
+  * Added support for -x/--exitfirst (#134).
+  * Hide the traceback inside the SubTests.test() method (#131).
+
+-------------------------------------------------------------------
 Mon Mar 25 15:00:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.1:

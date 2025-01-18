@@ -130,7 +130,11 @@ Recommends:     dbus(com.intel.dleyna-server)
 # the printers panel can use the dbus service
 Recommends:     system-config-printer-dbus-service
 # For the power panel
-Recommends:     power-profiles-daemon
+# power-profile-daemon uses a dbus interface, which is provided by tuned-ppd and power-profiles-daemom
+# Either one will do
+Recommends:     ppd-server
+# If the user expresses no choice, we pick the original power-profiles-daemon for now
+Suggests:       power-profiles-daemon
 
 %description
 The control center is GNOME's main interface for configuration of
@@ -206,7 +210,7 @@ GNOME control center.
 %patch -P 1002 -p1
 %patch -P 1003 -p1
 # patch needs rebase
-# %patch -P 1004 -p1
+# %%patch -P 1004 -p1
 %endif
 
 %build

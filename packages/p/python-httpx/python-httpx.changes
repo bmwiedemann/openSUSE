@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 13:25:11 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1235784 
+- don't run tests in strict async mode, upstream doesn't either
+- disable flaky test
+
+-------------------------------------------------------------------
 Sat Dec  7 13:27:08 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.28.1

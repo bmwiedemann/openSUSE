@@ -1,0 +1,23 @@
+<services>
+  <service name="format_spec_file" mode="manual" />
+  <service name="obs_scm" mode="manual">
+    <param name="filename">llamacpp</param>
+    <param name="url">https://github.com/ggerganov/llama.cpp.git</param>
+    <param name="scm">git</param>
+    <param name="revision">b4501</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">b(.*)</param>
+    <param name="changesgenerate">enable</param>
+    <param name="submodules">enable</param>
+  </service>
+  <service name="set_version" mode="manual" />
+
+  <service name="tar" mode="buildtime">
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">llamacpp-*.tar</param>
+  </service>
+
+</services>

@@ -1053,4 +1053,41 @@
     <comment>- obsolete php7 to smooth the migration [bsc#1234788] (forwarded request 1237532 from pgajdos)</comment>
     <requestid>1237725</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>47a3326e59a387e6e7d2dea7ed65db7f</srcmd5>
+    <version>8.3.16</version>
+    <time>1737202657</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.3.16
+    Core:
+        Fixed bug GH-17106 (ZEND_MATCH_ERROR misoptimization).
+        Fixed bug GH-17162 (zend_array_try_init() with dtor can cause engine UAF).
+        Fixed bug GH-17101 (AST-&gt;string does not reproduce constructor property promotion correctly).
+        Fixed bug GH-17211 (observer segfault on function loaded with dl()).
+        Fixed bug GH-17216 (Trampoline crash on error).
+    Date:
+        Fixed bug GH-14709 DatePeriod::__construct() overflow on recurrences.
+    DBA:
+        Skip test if inifile is disabled.
+    DOM:
+        Fixed bug GH-17224 (UAF in importNode).
+    Embed:
+        Make build command for program using embed portable.
+    FFI:
+        Fixed bug #79075 (FFI header parser chokes on comments).
+        Fix memory leak on ZEND_FFI_TYPE_CHAR conversion failure.
+        Fixed bug GH-16013 and bug #80857 (Big endian issues).
+    Filter:
+        Fixed bug GH-16944 (Fix filtering special IPv4 and IPv6 ranges, by using information from RFC 6890).
+    FPM:
+        Fixed bug GH-13437 (FPM: ERROR: scoreboard: failed to lock (already locked)).
+        Fixed bug GH-17112 (Macro redefinitions).
+        Fixed bug GH-17208 (bug64539-status-json-encoding.phpt fail on 32-bits).
+    GD:
+        Fixed bug GH-16255 (Unexpected nan value in ext/gd/libgd/gd_filter.c).
+        Ported fix for libgd bug 276 (Sometimes pixels are missing when storing images as BMPs).
+    Gettext:
+        Fixed bug GH-17202 (Segmentation fault ext/gettext/gettext.c bindtextdomain()).</comment>
+    <requestid>1238427</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,8 @@
-diff -ur a/clientserver.c b/clientserver.c
---- a/clientserver.c	2023-11-28 17:12:41.643268046 +0100
-+++ b/clientserver.c	2023-11-28 17:25:30.476279700 +0100
-@@ -1261,10 +1261,16 @@
+Index: rsync-3.4.0/clientserver.c
+===================================================================
+--- rsync-3.4.0.orig/clientserver.c
++++ rsync-3.4.0/clientserver.c
+@@ -1261,10 +1261,16 @@ static void send_listing(int fd)
  static int load_config(int globals_only)
  {
  	if (!config_file) {
@@ -20,10 +21,11 @@ diff -ur a/clientserver.c b/clientserver.c
  	}
  	return lp_load(config_file, globals_only);
  }
-diff -ur a/configure.ac b/configure.ac
---- a/configure.ac	2023-11-28 17:12:41.647268046 +0100
-+++ b/configure.ac	2023-11-28 17:40:15.678280030 +0100
-@@ -175,7 +175,7 @@
+Index: rsync-3.4.0/configure.ac
+===================================================================
+--- rsync-3.4.0.orig/configure.ac
++++ rsync-3.4.0/configure.ac
+@@ -175,7 +175,7 @@ AC_ARG_WITH(rsync-path,
  AC_DEFINE_UNQUOTED(RSYNC_PATH, "$RSYNC_PATH", [location of rsync on remote machine])
  
  AC_ARG_WITH(rsyncd-conf,
@@ -32,7 +34,7 @@ diff -ur a/configure.ac b/configure.ac
  	[ if test ! -z "$with_rsyncd_conf" ; then
  		case $with_rsyncd_conf in
  			yes|no)
-@@ -193,7 +193,27 @@
+@@ -193,7 +193,27 @@ AC_ARG_WITH(rsyncd-conf,
  	fi ],
  	[ RSYNCD_SYSCONF="/etc/rsyncd.conf" ])
  
@@ -61,10 +63,11 @@ diff -ur a/configure.ac b/configure.ac
  
  AC_ARG_WITH(rsh,
  	AS_HELP_STRING([--with-rsh=CMD],[set remote shell command to CMD (default: ssh)]))
-diff -ur a/rsyncd.conf.5.md b/rsyncd.conf.5.md
---- a/rsyncd.conf.5.md	2023-11-28 17:12:41.643268046 +0100
-+++ b/rsyncd.conf.5.md	2023-11-29 13:08:32.125333095 +0100
-@@ -1235,7 +1235,7 @@
+Index: rsync-3.4.0/rsyncd.conf.5.md
+===================================================================
+--- rsync-3.4.0.orig/rsyncd.conf.5.md
++++ rsync-3.4.0/rsyncd.conf.5.md
+@@ -1242,7 +1242,7 @@ The /etc/rsyncd.secrets file would look
  
  ## FILES
  

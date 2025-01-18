@@ -888,4 +888,14 @@ source service setup which messed up my spec file.
     initrds fails (bsc#1234308) (forwarded request 1237521 from mwilck)</comment>
     <requestid>1237522</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>3745d689291bacb07362100f7bb126ed</srcmd5>
+    <version>16.0.56</version>
+    <time>1737202686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.56:
+  * rpm-script: create /boot/vmlinuz and /boot/initrd in kiwi environment
+    (bsc#1234275, bsc#1234759) (forwarded request 1238534 from mwilck)</comment>
+    <requestid>1238535</requestid>
+  </revision>
 </revisionlist>

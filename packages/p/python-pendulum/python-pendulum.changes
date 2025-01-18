@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 10 15:47:09 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Skip python313: Not maintained enough
+  gh#python-pendulum/pendulum#844
+
+-------------------------------------------------------------------
 Wed Jan  8 09:27:19 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Exclude 32bit platforms: Fails to build with overflow errors

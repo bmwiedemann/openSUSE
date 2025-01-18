@@ -7242,4 +7242,20 @@
     Firefox ESR 115.19, Firefox ESR 128.6, Thunderbird 115.19,</comment>
     <requestid>1236666</requestid>
   </revision>
+  <revision rev="446" vrev="1">
+    <srcmd5>93da610abfc1f724461abbebc580b07d</srcmd5>
+    <version>134.0.1</version>
+    <time>1737202665</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 134.0.1
+  * Fixed UI hangs happening on YouTube and Google Docs in some situations
+    (bmo#1939295)
+  * Fixed a startup crash affecting some users upgrading from Firefox 133
+    (bmo#1941134)
+  * Fixed an issue where search engines selection menus and context
+    menus could be broken if a user had previously reverted to an
+    earlier version (bmo#1940533)
+- raised required rust version to 1.81</comment>
+    <requestid>1238501</requestid>
+  </revision>
 </revisionlist>

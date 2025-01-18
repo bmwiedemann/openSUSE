@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Dec 06 11:41:50 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.17.0:
+  * Bump to c/Skopeo v1.17.0
+  * Bump c/common to v0.60.0
+  * fix(deps): update module github.com/containers/image/v5 to v5.33.0
+  * Trigger a rebuild of the ostree-rs-ext container
+  * Update contrib/cirrus/ostree_ext.dockerfile for DNF 5
+  * update CI images to f41
+  * cirrus: use dnf remove over erase
+  * fix(deps): update golang.org/x/exp digest to f66d83c
+  * fix(deps): update module github.com/containers/storage to v1.55.1 (fixes  CVE-2024-9676 / bsc#1231698)
+  * Fix format string inconsistency causing a build failure
+  * proxy: Add various debug logging
+  * chore(deps): update dependency containers/automation_images to v20241010
+  * * Added option to create digest file for syncing images. * Digest file output would have docker reference of source and sha of of the mainfest sync'd with the target. This file would not be created if dry-run flag is enabled * improved the sync document to include the correct output for manifest file. * added new line for the manifest file once all images are sync'd * Ensuring we log on manifest digest if the copy operation was successful. * Check for errors if any once sync process is complete. * Ensure to capture the failure when closing the manifest file. * Ensure we are not writing manifest sha for failed copy of imagesand aborting the process in case write to file fails
+  * Packit: constrain downstream koji job to fedora package
+  * fix(deps): update module golang.org/x/term to v0.25.0
+  * fix(deps): update module github.com/containers/common to v0.60.4
+  * fix(deps): update golang.org/x/exp digest to 701f63a
+  * vendor: switch to moby/sys/capability (#2428)
+  * Document that zstd:chunked is downgraded to zstd when encrypting
+  * fix(deps): update module github.com/containers/common to v0.60.3
+  * Packit: split out ELN jobs and reuse fedora downstream targets
+  * Packit: Enable sidetags for bodhi updates
+  * chore(deps): update dependency golangci/golangci-lint to v1.61.0
+  * fix(deps): update module golang.org/x/term to v0.24.0
+  * Use a range expression
+  * Update to Go 1.22
+  * Restrict Packit targets to those that support Go 1.22
+  * fix(deps): update golang.org/x/exp digest to 9b4947d
+  * chore(deps): update dependency containers/automation_images to v20240821
+  * Update skopeo-generate-sigstore-key.1.md
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.60.3
+  * fix(deps): update module github.com/masterminds/semver/v3 to v3.3.0
+  * fix(deps): update module github.com/containers/common to v0.60.2
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.60.2
+  * fix(deps): update module github.com/containers/image/v5 to v5.32.2
+  * Replace egrep with grep -E
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.60.1
+  * fix(deps): update module github.com/containers/common to v0.60.1
+  * fix(deps): update module github.com/containers/image/v5 to v5.32.1
+  * fix(deps): update module golang.org/x/term to v0.23.0
+  * The fakeroot package doesn't exist in RHEL.
+  * Bump Skopeo to v1.17.0-dev
+
+- drop merged patch:
+  * 0001-Update-container-storage-to-v1.55.1.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 05:16:59 UTC 2024 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Add patch for CVE-2024-9676 (bsc#1231698):

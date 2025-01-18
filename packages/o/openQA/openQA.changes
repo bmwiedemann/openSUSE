@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 17 17:16:38 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1737122167.8637e820:
+  * Make openqa-clone-job work with authenticated assets downloads
+  * t: Fix hidden output of 'diag explain'
+  * Rollback of pull request #6107: full-stack.t removed from unstable_tests
+  * Make key/secret auth work in `/api/v1/auth` route via `auth_request`
+  * Bump ace-builds from 1.37.4 to 1.37.5
+  * UI: Clarify that virtio_console.log is renamed
+  * Update authentication headers when following redirection via user agent
+  * Simplify code of openQA user agent
+  * Enable authenticated requests via cache service
+  * Dependency cron 2025-01-16
+  * Update perltidy and freeze newline wrapping
+  * Bump eslint-plugin-prettier from 5.2.1 to 5.2.2
+  * Add 2 retry to full-stack
+  * Add restricting asset downloads via NGINX using subrequest auth
+  * Allow all authentication methods for asset downloads
+  * systemd: Fix premature kill of openqa-gru background processes
+  * Bump eslint-config-prettier from 9.1.0 to 10.0.1
+  * Avoid calling `is_running` unnecessarily in `kill`
+  * Bump eslint from 9.17.0 to 9.18.0
+  * Bump @eslint/plugin-kit from 0.2.4 to 0.2.5
+  * Apply t/full-stack.t as unstable to mitigate the failing test
+  * Dependency cron 2025-01-13
+  * Allow cleaning up openQA devel packages from the zypper cache directory
+  * Bump ace-builds from 1.37.3 to 1.37.4
+  * Bump datatables.net-bs5 from 2.2.0 to 2.2.1
+
+-------------------------------------------------------------------
 Thu Jan 09 18:14:13 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1736443232.5b07ee40:

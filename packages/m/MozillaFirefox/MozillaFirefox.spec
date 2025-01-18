@@ -2,7 +2,7 @@
 # spec file for package MozillaFirefox
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2006-2024 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2006-2025 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          134
-%define mainver        %major.0
-%define orig_version   134.0
+%define mainver        %major.0.1
+%define orig_version   134.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -103,8 +103,8 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo1.78
-BuildRequires:  rust1.78
+BuildRequires:  cargo1.81
+BuildRequires:  rust1.81
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif

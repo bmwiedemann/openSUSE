@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,12 @@
 %else
 %define psuffix %{nil}
 %bcond_with test
+%endif
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
 %endif
 
 %{?sle15_python_module_pythons}
@@ -49,8 +55,13 @@ Recommends:     python-Pygments >= 2
 Recommends:     python-click >= 8
 Recommends:     python-h2 >= 3.0
 Recommends:     python-rich >= 10
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
@@ -95,8 +106,14 @@ Python HTTP client with async support.
 donttest="network"
 # no socksio
 donttest="$donttest or socks"
-%pytest -vv -k "not ($donttest)" --asyncio-mode=strict
+# test is hardware dependent, fails on OBS
+donttest="$donttest or test_write_timeout[trio]"
+%pytest -vv -k "not ($donttest)"
 %endif
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative httpx
 
 %post
 %python_install_alternative httpx

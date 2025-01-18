@@ -18,7 +18,7 @@
 
 %define api_version 3.0
 Name:           libsoup
-Version:        3.6.3
+Version:        3.6.4
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later

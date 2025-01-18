@@ -1,7 +1,7 @@
 #
 # spec file for package meson
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +33,6 @@
 %endif
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
-%bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
 Version:        1.6.1
@@ -49,16 +48,11 @@ Source2:        meson.keyring
 Patch0:         meson-test-installed-bin.patch
 # PATCH-FIX-OPENSUSE give more time to testsuites that run emulated
 Patch1:         extend-test-timeout-on-qemu-builds.patch
-# PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
-Patch2:         meson-distutils.patch
 
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with setuptools}
-BuildRequires:  %{python_module setuptools}
-Requires:       python3-setuptools
-%endif
 %if "%{flavor}" != "test"
 Requires:       ninja >= 1.8.2
 # meson-gui was last used in openSUSE Leap 42.1.
@@ -182,12 +176,7 @@ This package provides meson.build syntax highlighting support for
 Vim/NeoVim.
 
 %prep
-%autosetup -N -n meson-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
-%if !%{with setuptools}
-%patch -P 2 -p1
-%endif
+%autosetup -p1 -n meson-%{version}
 
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 # AddressSanitizer fails here because of ulimit.
@@ -234,31 +223,6 @@ install -Dpm 0644 data/syntax-highlighting/vim/indent/meson.vim \
 install -Dpm 0644 data/syntax-highlighting/vim/syntax/meson.vim \
   -t %{buildroot}%{vim_data_dir}/site/syntax/
 
-# entry points are not distutils-able
-%if !%{with setuptools}
-mkdir -p %{buildroot}%{_bindir}
-echo """#!%{_bindir}/python3
-from mesonbuild.mesonmain import main
-import sys
-
-sys.exit(main())
-""" > %{buildroot}%{_bindir}/%{name}
-chmod +x %{buildroot}%{_bindir}/%{name}
-%{python_expand %{$python_fix_shebang}
-
-# ensure egg-info is a directory
-rm %{buildroot}%{$python_sitelib}/*.egg-info
-cp -r meson.egg-info %{buildroot}%{$python_sitelib}/meson-%{version}-py%{$python_version}.egg-info
-}
-
-# Fix missing data files with distutils
-while read line; do
-  if [[ "$line" = %{_name}/* ]]; then
-    [[ "$line" = *.py ]] && continue
-    cp "$line" "%{buildroot}%{python_sitelib}/$line"
-  fi
-done < meson.egg-info/SOURCES.txt
-%endif
 %endif
 
 %if %{with test}

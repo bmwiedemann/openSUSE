@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpds-py
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?sle15_python_module_pythons}
 Name:           python-rpds-py
-Version:        0.21.0
+Version:        0.22.3
 Release:        0
 Summary:        Python bindings to Rust's persistent data structures (rpds)
 License:        MIT
 URL:            https://github.com/Julian/rpds.py
 Source:         rpds.py-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +45,6 @@ Python bindings to Rust's persistent data structures (rpds)
 
 %prep
 %autosetup -a1 -n rpds.py-%{version}
-cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}

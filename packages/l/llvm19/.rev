@@ -86,4 +86,16 @@
 </comment>
     <requestid>1232675</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4507832c4fdbec1ea1a311719fcc90d4</srcmd5>
+    <version>19.1.7</version>
+    <time>1737202652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.1.7.
+  * This release contains bug-fixes for the LLVM 19.1.0 release.
+    This release is API and ABI compatible with 19.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1238359</requestid>
+  </revision>
 </revisionlist>

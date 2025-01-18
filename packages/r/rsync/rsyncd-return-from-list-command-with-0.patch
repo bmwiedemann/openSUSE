@@ -15,11 +15,11 @@ Signed-off-by: Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
  clientserver.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/clientserver.c b/clientserver.c
-index 7c897abc..c507ea91 100644
---- a/clientserver.c
-+++ b/clientserver.c
-@@ -1371,7 +1371,7 @@ int start_daemon(int f_in, int f_out)
+Index: rsync-3.4.0/clientserver.c
+===================================================================
+--- rsync-3.4.0.orig/clientserver.c
++++ rsync-3.4.0/clientserver.c
+@@ -1377,7 +1377,7 @@ int start_daemon(int f_in, int f_out)
  		rprintf(FLOG, "module-list request from %s (%s)\n",
  			host, addr);
  		send_listing(f_out);
@@ -28,6 +28,3 @@ index 7c897abc..c507ea91 100644
  	}
  
  	if (*line == '#') {
--- 
-2.46.0
-

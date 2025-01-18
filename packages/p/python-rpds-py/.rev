@@ -54,4 +54,12 @@
     * Remove __hash__ for HashTrieMap</comment>
     <requestid>1228386</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c1163a525cbe842efaab37fd3178f5a7</srcmd5>
+    <version>0.22.3</version>
+    <time>1737202683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1238505</requestid>
+  </revision>
 </revisionlist>

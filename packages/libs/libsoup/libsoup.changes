@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 22:43:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.4:
+  + http2: Fix regression on 32bit systems when reading response
+    data.
+
+-------------------------------------------------------------------
 Sat Jan 11 21:15:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.6.3:

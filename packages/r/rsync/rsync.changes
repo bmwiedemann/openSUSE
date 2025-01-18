@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:26:55 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.1
+  * BUG FIXES:
+    - fixed handling of -⁠H flag with conflict in internal flag values
+    - fixed a user after free in logging of failed rename
+    - fixed build on systems without openat()
+    - removed dependency on alloca() in bundled popt
+  * DEVELOPER RELATED:
+    - fix to permissions handling in the developer release script
+- Drop 705.patch, because now in upstream.
+
+-------------------------------------------------------------------
+Thu Jan 16 17:26:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4.1
+  * fixed handling of -H flag with conflict in internal flag values
+    (replaces 705.patch)
+  * fixed a user after free in logging of failed rename
+  * fixed build on systems without openat()
+  * removed dependency on alloca() in bundled popt
+
+-------------------------------------------------------------------
+Wed Jan 15 14:53:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Backport patch from PR 705 to fix broken handling of hashes and
+  hard links:
+  * Add 705.patch
+
+-------------------------------------------------------------------
+Wed Jan 15 13:30:11 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 3.4
+  * Bump to protocol 32
+  Drop CVE patches:
+  * Drop rsync-gcc14.patch
+  * Removed rsync-CVE-2024-12084-overflow-01.patch
+  * Removed rsync-CVE-2024-12084-overflow-02.patch
+  * Removed rsync-CVE-2024-12085.patch
+  * Removed rsync-CVE-2024-12086_01.patch
+  * Removed rsync-CVE-2024-12086_02.patch
+  * Removed rsync-CVE-2024-12086_03.patch
+  * Removed rsync-CVE-2024-12086_04.patch
+  * Removed rsync-CVE-2024-12087_01.patch
+  * Removed rsync-CVE-2024-12087_02.patch
+  * Removed rsync-CVE-2024-12088.patch
+  * Removed rsync-CVE-2024-12747.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 08:39:57 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Security update,CVE-2024-12747, bsc#1235475 race condition in handling symbolic links
+  * Added rsync-CVE-2024-12747.patch
+
+-------------------------------------------------------------------
+Thu Jan  9 08:00:28 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Security update, fix multiple vulnerabilities:
+  * CVE-2024-12084, bsc#1234100 - Heap Buffer Overflow in Checksum Parsing
+  * CVE-2024-12085, bsc#1234101 - Info Leak via uninitialized Stack contents defeats ASLR
+  * CVE-2024-12086, bsc#1234102 - Server leaks arbitrary client files
+  * CVE-2024-12087, bsc#1234103 - Server can make client write files outside of destination directory using symbolic links
+  * CVE-2024-12088, bsc#1234104 - --safe-links Bypass
+  * Added rsync-CVE-2024-12084-overflow-01.patch
+  * Added rsync-CVE-2024-12084-overflow-02.patch
+  * Added rsync-CVE-2024-12085.patch
+  * Added rsync-CVE-2024-12086_01.patch
+  * Added rsync-CVE-2024-12086_02.patch
+  * Added rsync-CVE-2024-12086_03.patch
+  * Added rsync-CVE-2024-12086_04.patch
+  * Added rsync-CVE-2024-12087_01.patch
+  * Added rsync-CVE-2024-12087_02.patch
+  * Added rsync-CVE-2024-12088.patch
+
+-------------------------------------------------------------------
 Fri Sep  6 12:23:31 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - rsync-gcc14.patch: fixed the ipv6 configure check (bsc#1230156)

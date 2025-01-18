@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 17 15:49:05 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.56:
+  * rpm-script: create /boot/vmlinuz and /boot/initrd in kiwi environment
+    (bsc#1234275, bsc#1234759)
+
+-------------------------------------------------------------------
 Mon Jan 13 15:50:23 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
   * regenerate-initrd-posttrans: return error if regenerating all

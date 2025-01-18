@@ -3,21 +3,21 @@ is run serially over these binaries instead of in parallel.
 OBS workers run out of memory as each executable seems to require
 upward of 5G RAM
 
-Index: node-v22.12.0/node.gyp
+Index: node-v22.13.0/node.gyp
 ===================================================================
---- node-v22.12.0.orig/node.gyp
-+++ node-v22.12.0/node.gyp
-@@ -1186,6 +1186,7 @@
-         'deps/simdutf/simdutf.gyp:simdutf',
-         'deps/ada/ada.gyp:ada',
+--- node-v22.13.0.orig/node.gyp
++++ node-v22.13.0/node.gyp
+@@ -1180,6 +1180,7 @@
+         'deps/googletest/googletest.gyp:gtest_main',
+         'deps/histogram/histogram.gyp:histogram',
          'deps/nbytes/nbytes.gyp:nbytes',
 +		'fuzz_env'
        ],
  
        'includes': [
-@@ -1264,6 +1265,7 @@
+@@ -1257,6 +1258,7 @@
+         '<(node_lib_target_name)',
          'deps/histogram/histogram.gyp:histogram',
-         'deps/ada/ada.gyp:ada',
          'deps/nbytes/nbytes.gyp:nbytes',
 +		'cctest'
        ],

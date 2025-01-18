@@ -17,6 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
+# gh#python-pendulum/pendulum#844
+%define skip_python313 1
 Name:           python-pendulum
 Version:        3.0.0
 Release:        0
@@ -65,6 +67,6 @@ export CARGO_HOME=$PWD/rust/.cargo
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/pendulum
-%{python_sitearch}/pendulum-%{version}*-info
+%{python_sitearch}/pendulum-%{version}.dist-info
 
 %changelog

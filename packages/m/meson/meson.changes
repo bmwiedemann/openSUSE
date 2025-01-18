@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 04:16:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop the bcond on setuptools, its primary flavor will live in Ring 0.
+- Drop patch meson-distutils.patch, not required.
+- Instruct autosetup macro to apply all patches.
+
+-------------------------------------------------------------------
 Tue Dec 17 07:21:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.6.1:

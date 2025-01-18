@@ -1,0 +1,511 @@
+-------------------------------------------------------------------
+Fri Jan 17 15:37:49 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 4501:
+  * Optimizations to Vulkan kernels
+  * Add internlm3 support
+  * Add `llama_model_load_from_splits`
+  * ggml: aarch64: implement SVE kernels for q4_K_q8_K vector dot
+  * cli : auto activate conversation mode if chat template is
+    available (#11214)
+  * common : support tag-based --hf-repo like on ollama
+  * cli: reset color before exiting
+
+-------------------------------------------------------------------
+Sun Jan 12 23:05:48 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 4458
+- Add 0002-build-main-cli.patch to only build necessary binaries
+
+- Package convert_hf_to_gguf script
+- Package gguf.h header file
+
+- Remove llama-perplexity
+- Remove llama-test-backend-ops
+- Use pkg-config for OpenCL and Vulkan
+- Do not build tests
+
+-------------------------------------------------------------------
+Fri Jan 03 22:14:32 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 4409
+
+-------------------------------------------------------------------
+Thu Dec 19 12:16:28 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Disable LTO, as it was causing some issues with dynamic loading
+  of backends
+
+- Disable dynamic loading of backends for now
+
+-------------------------------------------------------------------
+Sat Dec 14 03:30:05 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 4326:
+  * Introducing experimental OpenCL backend
+  * Vulkan backend improvements and optimizations
+  * Update documentation for server streaming mode
+  * Improve -ctv -ctk CLI arguments
+
+-------------------------------------------------------------------
+Wed Dec 11 20:36:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 4304:
+  * Load all backends from a user-provided search path at runtime
+  * Vulkan backend improvements and optimizations
+  * Server improvements and optimizations
+
+-------------------------------------------------------------------
+Sat Dec  7 18:58:28 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Split backends into different packages
+- Added llama-server llama-perplexity and llama-bench binaries
+
+-------------------------------------------------------------------
+Sat Dec 07 18:33:35 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 4284:
+  * Various ops optimizations
+  * Various server fixes
+  * Vulkan backend improvements and optimizations
+  * Automatic selection of best CPU backend
+
+-------------------------------------------------------------------
+Sat Nov 30 19:44:19 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Removed ggml-amx.so, as it is now included in the CPU backend
+
+- Update to version 4230:
+  * ggml-cpu: replace AArch64 NEON assembly with intrinsics in
+    ggml_gemv_q4_0_4x4_q8_0() (#10567)
+  * readme : remove old badge
+  * readme : refresh (#10587)
+  * vulkan: Dynamic subgroup size support for Q6_K mat_vec (#10536)
+  * ggml : move AMX to the CPU backend (#10570)
+  * server : add more test cases (#10569)
+  * imatrix : support combine-only (#10492)
+  * cleanup UI link list (#10577)
+  * ggml : fix I8MM Q4_1 scaling factor conversion (#10562)
+  * ggml-cpu: fix typo in gemv/gemm iq4_nl_4_4 (#10580)
+  * sycl : offload of get_rows set to 0 (#10432)
+
+-------------------------------------------------------------------
+Fri Nov 29 11:36:01 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 4219:
+  * sycl : Reroute permuted mul_mats through oneMKL (#10408)
+  * CANN: RoPE operator optimization (#10563)
+  * vulkan: get the first command buffer submitted sooner (#10499)
+  * llava: return false instead of exit (#10546)
+  * ggml : remove redundant copyright notice + update authors
+  * llama : add missing model types
+  * server : (tests) don't use thread for capturing stdout/stderr,
+    bump openai client library (#10568)
+  * common: fix warning message when no GPU found (#10564)
+  * docs: fix outdated usage of llama-simple (#10565)
+  * ci : fix tag name in cuda and hip releases (#10566)
+  * ggml : fix row condition for i8mm kernels (#10561)
+  * cmake : fix ARM feature detection (#10543)
+  * ggml-cpu: support IQ4_NL_4_4 by runtime repack (#10541)
+  * kompute : improve backend to pass test_backend_ops (#10542)
+  * CANN: Update cann.md to display correctly in CLion (#10538)
+  * CANN: Fix SOC_TYPE compile bug (#10519)
+  * CANN: ROPE operator optimization (#10540)
+  * common : fix duplicated file name with hf_repo and hf_file
+    (#10550)
+  * Add some minimal optimizations for CDNA (#10498)
+  * ci : faster CUDA toolkit installation method and use ccache
+    (#10537)
+  * metal : fix group_norm support condition (#0)
+  * sync : ggml
+  * Do not include arm_neon.h when compiling CUDA code (ggml/1028)
+  * vulkan: define all quant data structures in types.comp (#10440)
+
+-------------------------------------------------------------------
+Wed Nov 27 10:56:13 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 4195:
+  * vulkan: Handle GPUs with less shared memory (#10468)
+  * vulkan: further optimize q5_k mul_mat_vec (#10479)
+  * vulkan: skip integer div/mod in get_offsets for batch_idx==0 (#10506)
+  * vulkan: optimize Q2_K and Q3_K mul_mat_vec (#10459)
+  * ci : fix cuda releases (#10532)
+  * Add OLMo 2 model in docs (#10530)
+  * ci : remove nix workflows (#10526)
+  * llama : disable warnings for 3rd party sha1 dependency (#10527)
+  * Fix HIP flag inconsistency & build docs (#10524)
+  * mtgpu: Add MUSA_DOCKER_ARCH in Dockerfiles && update cmake and make (#10516)
+  * vulkan: fix group_norm (#10496)
+  * server : replace behave with pytest (#10416)
+  * restore the condistion to build & update pacakge when merge (#10507)
+  * cmake : enable warnings in llama (#10474)
+  * ci : publish the docker images created during scheduled runs (#10515)
+  * ci : add ubuntu cuda build, build with one arch on windows (#10456)
+  * ggml-cpu: cmake add arm64 cpu feature check for macos (#10487)
+  * server : fix parallel speculative decoding (#10513)
+  * speculative : simplify the implementation (#10504)
+  * CANN: Improve the Inferencing Performance for Ascend NPU Device (#10454)
+  * CANN: RoPE and CANCAT operator optimization (#10488)
+  * vulkan: Fix a vulkan-shaders-gen arugment parsing error (#10484)
+  * Introduce llama-run (#10291)
+  * ci : build docker images only once daily (#10503)
+  * server : add more information about error (#10455)
+  * server : enable cache_prompt by default (#10501)
+  * metal : enable mat-vec kernels for bs <= 4 (#10491)
+  * Rename Olmo1124 to Olmo2 (#10500)
+  * llama : accept a list of devices to use to offload a model (#10497)
+  * Github: update issue templates [no ci] (#10489)
+  * Add download chat feature to server chat (#10481)
+  * server : add speculative decoding support (#10455)
+  * ggml : add support for dynamic loading of backends (#10469)
+  * tests : fix compile warning
+  * metal : minor code formatting
+  * [SYCL] Fix building Win package for oneAPI 2025.0 update (#10483)
+  * speculative : refactor and add a simpler example (#10362)
+  * flake.lock: Update (#10470)
+  * llama : fix op mul check with command-r-plus (#10476)
+  * convert : XLMRoberta Type Vocab Size (#10458)
+  * fix gguf-py:  Conversion error when multiple licenses are configured (#9807)
+  * ggml : do not use ARM features not included in the build (#10457)
+
+-------------------------------------------------------------------
+Sat Nov 23 14:26:54 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 4153:
+  * ci: Update oneAPI runtime dll packaging (#10428)
+  * GitHub: ask for more info in issue templates (#10426)
+  * CANN: Support Ascend310P to accelerate F32 and F16 Model (#10216)
+  * cuda : optimize argmax (#10441)
+  * llama : handle KV shift for recurrent models (#10402)
+  * sync : ggml
+  * ggml/sched : do not skip views in pre-assignments
+  * ggml-opt: fix data corruption (ggml/1022)
+  * vulkan: predicate max operation in soft_max shaders/soft_max (#10437)
+  * cmake: add link dependencies to cmake find pkg (#10433)
+  * llama : add .clang-format file (#10415)
+  * vulkan: copy iq4_nl LUT into shared memory (#10409)
+  * vulkan: further optimize mul_mat_vec using larger loads (#10387)
+  * update rel to 4040 (#10395)
+  * Fix missing file renames in Makefile due to changes in commit ae8de6d50a (#10413)
+  * add cmake rvv support (#10411)
+  * sync : ggml
+  * metal : fox offset integer overflows in im2col (ggml/1015)
+  * metal : add `GGML_UNARY_OP_ELU` kernel (ggml/1018)
+  * cmake: force MSVC compiler charset to utf-8 (#9989)
+  * Add required ggml-base and backend libs to cmake pkg (#10407)
+  * cuda : fix CUDA_FLAGS not being applied (#10403)
+  * llama : add check for KV cache shifts (#10401)
+
+-------------------------------------------------------------------
+Tue Nov 19 10:24:21 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 4130:
+  * llama : add OLMo November 2024 support (#10394)
+  * sycl : Add option to set the SYCL architecture for all targets (#10266)
+  * vulkan: Optimize soft_max (#10301)
+  * sycl: Revert MUL_MAT_OP support changes (#10385)
+
+-------------------------------------------------------------------
+Tue Nov 19 10:23:16 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Package test-backend-ops
+
+-------------------------------------------------------------------
+Mon Nov 18 20:56:41 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Lower requires CMake version to 3.14
+
+-------------------------------------------------------------------
+Mon Nov 18 19:04:51 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Re-enable Vulkan backend
+
+- Update to version 4126:
+  * cuda : only use native when supported by cmake (#10389)
+  * Skip searching root path for cross-compile builds (#10383)
+  * vulkan: remove use of null initializer (#10372)
+  * flake.lock: Update (#10346)
+  * Vulkan: Fix device info output format specifiers (#10366)
+  * docker: use GGML_NATIVE=OFF (#10368)
+
+-------------------------------------------------------------------
+Mon Nov 18 09:58:08 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Disable Vulkan backend because of a bug on vnsprintf and Vulkan
+  Backend: https://github.com/ggerganov/llama.cpp/issues/10375
+
+- Remove libllava packaging (for now)
+
+- Update to version 4120:
+  * CUDA: fix MMV kernel being used for FP16 src1 (#10357)
+  * CMake: fix typo in comment [no ci] (#10360)
+  * llama : only use default buffer types for the KV cache (#10358)
+  * gitignore : ignore local run scripts [no ci]
+  * metal : refactor kernel args into structs (#10238)
+  * ggml : fix undefined reference to 'getcpu' (#10354)
+  * CUDA: remove DMMV, consolidate F16 mult mat vec (#10318)
+  * CMake: default to -arch=native for CUDA build (#10320)
+  * ggml : fix possible buffer use after free in sched reserve (#9930)
+  * ggml : inttypes.h -> cinttypes (#0)
+  * ggml : adapt AMX to tensor->grad removal (#0)
+  * make : add ggml-opt (#0)
+  * tests : remove test-grad0
+  * ggml : fix compile warnings (#0)
+  * ggml: new optimization interface (ggml/988)
+  * scripts : update sync
+  * docs : vulkan build instructions to use git bash mingw64 (#10303)
+  * llama/ex: remove --logdir argument (#10339)
+  * llamafile : fix include path (#0)
+  * make : auto-determine dependencies (#0)
+
+-------------------------------------------------------------------
+Sat Nov 16 16:06:36 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Split libllama into libllama and libllava
+
+- Build with Vulkan support
+
+- Update to version 4100:
+  * server: (web UI) Add samplers sequence customization (#10255)
+  * scripts : fix missing key in compare-llama-bench.py (#10332)
+  * vulkan: Optimize some mat-vec mul quant shaders (#10296)
+  * vulkan : add cmake preset debug/release (#10306)
+  * ggml : optimize Q4_0 into Q4_0_X_Y repack (#10324)
+  * llama : save number of parameters and the size in llama_model (#10286)
+  * Make updates to fix issues with clang-cl builds while using AVX512 flags (#10314)
+  * scripts: update compare-llama-bench.py (#10319)
+  * ggml : fix some build issues
+  * cmake : fix ppc64 check (whisper/0)
+  * ggml : vulkan logs (whisper/2547)
+  * sync : ggml
+  * AVX BF16 and single scale quant optimizations (#10212)
+  * ci: build test musa with cmake (#10298)
+  * sycl: Update Intel docker images to use DPC++ 2025.0 (#10305)
+  * server : (web UI) add copy button for code block, fix api key (#10242)
+  * cann: dockerfile and doc adjustment (#10302)
+  * scripts : fix regex in sync [no ci]
+  * sycl: Use syclcompat::dp4a (#10267)
+  * backend cpu: add online flow for aarch64 Q4_0 GEMV/GEMM kernels (#9921)
+  * ggml : build backends as libraries (#10256)
+  * CUDA: no -sm row for very small matrices (#10185)
+  * speculative : fix out-of-bounds access (#10289)
+  * vulkan: Optimize binary ops (#10270)
+  * vulkan: Use macros to make the mat mul pipeline creation more concise (#10259)
+  * llama : propagate the results of `graph_compute` (#9525)
+  * sync : ggml
+  * docs : update bindings list (#10261)
+  * server : add missing docs (#10269)
+  * server : fix incorrect res in validate_model_chat_template (#10272)
+  * metadata: Detailed Dataset Authorship Metadata (#8875)
+  * sycl : Fixes to broken builds and test-backend-ops (#10257)
+  * vulkan: Optimize contiguous copies (#10254)
+  * vulkan: Throttle the number of shader compiles during the build step. (#10222)
+
+-------------------------------------------------------------------
+Mon Nov 11 14:48:14 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 4066:
+  * metal : more precise Q*K in FA vec kernel (#10247)
+  * server : enable KV cache defrag by default (#10233)
+  * flake.lock: Update (#10243)
+  * server : (web UI) Add back sampler settings (#10239)
+
+-------------------------------------------------------------------
+Mon Nov 11 00:28:04 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove not used CLI commands from package
+
+- Update to version 4062:
+  * vulkan: Fix newly added tests for permuted mul_mat and 1D im2col (#10226)
+  * metal : reorder write loop in mul mat kernel + style (#10231)
+  * metal : fix build and some more comments (#10229)
+  * metal : fix F32 accumulation in FA vec kernel (#10232)
+  * llama : fix Qwen model type strings
+  * metal : hide debug messages from normal log
+  * ggml: fix zero division in ‘dne’ calculation in CUDA COUNT_EQUAL operator when ‘ne’ is small (#10213)
+  * ggml : optimize llamafile cpu matrix multiplication for ppc64le (#10156)
+  * scripts : fix pattern and get n_tokens in one go (#10221)
+  * metal : opt-in compile flag for BF16 (#10218)
+  * metal : improve clarity (minor) (#10171)
+  * metal : optimize FA kernels (#10171)
+  * swift : exclude ggml-metal-embed.metal (#10211)
+  * server : minor UI fix (#10207)
+  * server : revamp chat UI with vuejs and daisyui (#10175)
+  * scripts : add amx to sync-ggml.sh [no ci]
+  * sync : ggml
+  * scripts : sync update
+  * ggml : add ggml-cpu.h to the public headers (#10204)
+  * Remove identical wte/etw logic for jais (#10203)
+  * DRY: Fixes clone functionality (#10192)
+  * fix q4_0_8_8 format for corrupted tokens issue (#10198)
+  * Optimize RWKV6 Operator Naming and Implement Multi-core CPU/ SYCL Acceleration (#10133)
+  * metal : add BF16 support (#8439)
+  * server : remove hack for extra parallel slot (#10187)
+  * metal : fix from ptr buffer name (#10189)
+  * ggml : adjust is_first_call init value (#10193)
+  * metal : add quantized FA support (#10149)
+  * llama : add <|tool_call|> formatting to Granite template (#10177)
+  * ggml : fix arch check in bf16_to_fp32 (#10164)
+  * Q6_K AVX improvements (#10118)
+  * ggml : fix gelu tables initialization (#10172)
+  * ggml : fix q4xx mat mul, increase ggml_aligned_malloc alignment (#10167)
+  * server : clarify /slots endpoint, add is_processing (#10162)
+  * fix build break on arm64 linux (#10166)
+  * cuda : clear error after changing peer access (#10153)
+  * metal : simplify f16 and f32 dequant kernels (#0)
+  * metal : move dequantize templates to beginning of MSL source (#0)
+  * CANN: adjust backend registry refactor. (#10158)
+  * sync : ggml
+  * cmake : make it possible linking ggml as external lib (ggml/1003)
+  * metal : fix minor string leaks (ggml/1004)
+  * ggml : move CPU backend to a separate file (#10144)
+  * metal : minor fixup in FA kernel (#10143)
+  * flake.lock: Update (#10146)
+  * Add apple arm to presets (#10134)
+  * server : fix slot selection by lru (#10126)
+  * server : fix endpoint checks (#10135)
+  * llama : adjust default context size + print warnings (#10136)
+  * simple-chat : only add bos on first prompt (#10129)
+  * convert-lora : make `--base` optional (#10110)
+  * llama : add simple-chat example (#10124)
+  * llama : use smart pointers for ggml resources (#10117)
+  * vulkan : improve ggml_vk_create_buffer error handling (#9898)
+  * readme : update hot topics
+  * server : fix smart selection of available slot (#10120)
+  * ggml : remove ggml_scratch (#10121)
+  * sync : ggml
+  * ggml : alloc ggml_contexts on the heap (whisper/2525)
+  * build: fix build error in Windows env with OneAPI setup (#10107)
+  * llama : improve output buffer type selection (#10098)
+  * quantize : fix --keep-split (#10114)
+  * llama : fix buffer checks for mamba and rwk (#10111)
+  * loader:  refactor tensor weights storage (#9935)
+  * server : include scheme when printing URL (#10106)
+  * ggml : check tensor name lengths in gguf files (#10100)
+  * kompute: add mul_mat_q4_k shader (#10097)
+
+-------------------------------------------------------------------
+Thu Oct 31 02:02:37 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 3995:
+  * kompute: add backend registry / device interfaces (#10045)
+  * ggml : fix memory leaks when loading invalid gguf files (#10094)
+  * readme : more lora detail in main example readme (#10064)
+  * convert : more detailed convert lora usage docs (#10065)
+  * ggml : add Q4_0_8_8 RISC-V GEMV and GEMM kernels (#10029)
+  * llama : refactor model loader with backend registry (#10026)
+  * ggml: Add POOL2D OP for GPU acceleration to the Vulkan backend in the MobileVLM model. (#9763)
+  * llama : remove Tail-Free sampling (#10071)
+  * llama : Add IBM granite template (#10013)
+  * flake.lock: Update (#10063)
+  * musa: workaround for Guilty Lockup in cleaning src0 (#10042)
+  * server : don't overfill the batch during infill (#10018)
+  * llama : switch KQ multiplication to F32 precision by default (#10015)
+  * sync : ggml
+  * increase cuda_cpy block size (ggml/996)
+  * scripts : fix amx sync [no ci]
+  * metal : support permuted matrix multiplicaions (#10033)
+  * llama : add DRY sampler (#9702)
+  * llama: string_split fix (#10022)
+  * llamafile : extend sgemm.cpp support for Q5_0 models (#10010)
+  * server : check that the prompt fits in the slot's context (#10030)
+  * server : refactor slot input data, move tokenizer to HTTP thread (#10023)
+  * ci : fix cmake flags for SYCL
+
+-------------------------------------------------------------------
+Thu Oct 24 16:09:57 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 3972:
+  * CUDA: fix insufficient buffer clearing for MMQ (#10032)
+  * CUDA: fix MMQ for non-contiguous src0, add tests (#10021)
+  * server : samplers accept the prompt correctly (#10019)
+  * sync : ggml
+  * llama.vim : bump generation time limit to 3s [no ci]
+  * CUDA: fix 1D im2col, add tests (ggml/993)
+  * ggml : remove redundant set of contexts used field (ggml/978)
+  * llama.vim : add classic vim support (#9995)
+  * metal : add POOL2D and fix IM2COL (#9943)
+  * flake.lock: Update
+  * llama : fix empty batch causing llama_batch_allocr to crash (#9966)
+  * llama : rename batch to ubatch (#9950)
+  * Rwkv chat template fix (#10001)
+  * lora : warn user if new token is added in the adapter (#9948)
+  * llama : add chat template for RWKV-World + fix EOT (#9968)
+  * [CANN] Adapt to dynamically loadable backends mechanism (#9970)
+  * arg : fix typo in embeddings argument help [no ci] (#9994)
+  * llama.vim : fix info text display [no ci] (#9787)
+  * llama.vim : move info to the right of screen [no ci] (#9787)
+  * readme : update UI list (#9972)
+  * arg : fix attention non-causal arg value hint (#9985)
+  * llama.vim : plugin for Neovim (#9787)
+  * ggml : add asserts for type conversion in fattn kernels (#9971)
+  * rpc : pack only RPC structs (#9959)
+  * llama : default sampling changes + greedy update (#9897)
+  * speculative : fix handling of some input params (#9963)
+  * fix mul_mat_vec_q and *_vec_q error (#9939)
+  * readme : update bindings list (#9951)
+  * readme : update infra list (#9942)
+  * llama : remove all_pos_0, all_pos_1, all_seq_id from llama_batch (#9745)
+  * rpc : backend refactoring (#9912)
+  * [SYCL] Add SYCL Backend registry, device and Event Interfaces (#9705)
+  * add amx kernel for gemm (#8998)
+  * server : add n_indent parameter for line indentation requirement (#9929)
+  * llama : rename batch_all to batch (#8881)
+  * readme : remove --memory-f32 references (#9925)
+  * llama : change warning to debug log
+  * llama : infill sampling handle very long tokens (#9924)
+  * readme : update bindings list (#9918)
+  * vulkan : add backend registry / device interfaces (#9721)
+  * fix: allocating CPU buffer with size `0` (#9917)
+  * fix: use `vm_allocate` to allocate CPU backend buffer on macOS (#9875)
+
+-------------------------------------------------------------------
+Wed Oct 16 23:01:40 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 3930:
+  * llama : suppress conversion from 'size_t' to 'int' (#9046)
+  * llava : fix typo in error message [no ci] (#9884)
+  * grammar : fix JSON Schema for string regex with top-level alt. (#9903)
+  * llama : add tensor name for "result_norm" (#9907)
+  * server : fix the disappearance of the end of the text (#9867)
+  * sync : ggml
+  * ggml-alloc : remove buffer_id from leaf_alloc (ggml/987)
+  * [CANN] Fix cann compilation error (#9891)
+
+-------------------------------------------------------------------
+Tue Oct 15 22:33:33 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 3922:
+  * llama : add infill sampler (#9896)
+  * server : improve infill context reuse (#9894)
+  * sampling : add XTC sampler (#9742)
+  * server : update preact (#9895)
+  * readme : update bindings list (#9889)
+
+-------------------------------------------------------------------
+Mon Oct 14 08:52:45 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 3917:
+  * server : handle "logprobs" field with false value (#9871)
+  * Vectorize load instructions in dmmv f16 CUDA kernel (#9816)
+  * server : accept extra_context for the infill endpoint (#9874)
+  * server : reuse cached context chunks (#9866)
+  * flake.lock: Update (#9870)
+
+-------------------------------------------------------------------
+Mon Oct 14 08:16:06 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add Vulkan support
+
+-------------------------------------------------------------------
+Sat Oct 12 19:43:58 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 3912:
+  * server : add option to time limit the generation phase (#9865)
+  * server : remove self-extend features (#9860)
+  * server : remove legacy system_prompt feature (#9857)
+
+-------------------------------------------------------------------
+Sat Oct 12 14:28:06 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Initial packaging

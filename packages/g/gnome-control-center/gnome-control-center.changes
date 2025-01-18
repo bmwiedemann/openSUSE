@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 17 12:48:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend ppd-server instead of power-profiles-daemon: there is
+  also tuned-ppd, which provides the same dbus interface. If the
+  user does not chose between the two, we suggest the original
+  power-profiles-daemon.
+
+-------------------------------------------------------------------
+Tue Jan 14 13:29:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.
+
+-------------------------------------------------------------------
 Thu Jan  9 17:48:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:

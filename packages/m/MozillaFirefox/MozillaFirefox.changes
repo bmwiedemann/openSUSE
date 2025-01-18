@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:31:32 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 134.0.1
+  * Fixed UI hangs happening on YouTube and Google Docs in some situations
+    (bmo#1939295)
+  * Fixed a startup crash affecting some users upgrading from Firefox 133
+    (bmo#1941134)
+  * Fixed an issue where search engines selection menus and context
+    menus could be broken if a user had previously reverted to an
+    earlier version (bmo#1940533)
+- raised required rust version to 1.81
+
+-------------------------------------------------------------------
 Wed Jan  8 11:02:03 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 134.0

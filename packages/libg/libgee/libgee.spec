@@ -1,7 +1,7 @@
 #
 # spec file for package libgee
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,19 +18,13 @@
 
 
 Name:           libgee
-Version:        0.20.6
+Version:        0.20.8
 Release:        0
 Summary:        GObject-based library providing commonly used data structures
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libgee
 Source0:        https://download.gnome.org/sources/libgee/0.20/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM b33a6627f4fc96938b6015e05849867c472160a8.patch -- Add more missing generic type arguments
-Patch0:         https://gitlab.gnome.org/GNOME/libgee/-/commit/b33a6627f4fc96938b6015e05849867c472160a8.patch
-# PATCH-FIX-UPSTREAM 2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch -- Implementations of "G List.get()" should use non-nullable return as defined
-Patch1:         https://gitlab.gnome.org/GNOME/libgee/-/commit/2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch
-# PATCH-FIX-UPSTREAM ce8461ff6ea8ed79ce06b4241cb4fbb6d3d314f1.patch -- Drop unsupported inline modifier on constructor and destructor declarations
-Patch2:         https://gitlab.gnome.org/GNOME/libgee/-/commit/ce8461ff6ea8ed79ce06b4241cb4fbb6d3d314f1.patch
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
@@ -89,6 +83,9 @@ find -name '*.vala' -exec touch {} \;
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n libgee-0_8-2
+
+%check
+make check
 
 %files -n libgee-0_8-2
 %license COPYING

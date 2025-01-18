@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jan 17 08:24:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.3:
+  * Properly tag a release fixing the soundness issue.
+  * Bump to PyO3 0.23.3, avoiding 0.23.x's previous soundness
+    issues.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Fri Jan 17 08:24:40 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.1:
+  * Tag a release for regaining all the Windows wheels.
+  * ci: separate free-threaded and standard 3.13 distribution
+    builds
+  * Bump pyo3 from 0.23.1 to 0.23.2
+
+-------------------------------------------------------------------
+Fri Jan 17 08:19:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.0:
+  * Bump to 0.22.0 for a free-threading-supported beta release.
+  * Enable free-threaded wheel builds
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] auto fixes from pre-commit.com hooks
+  * revert changes to wheel-building config
+  * work around CPython issue 127065
+  * declare support for free-threading
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump pyo3 from 0.23.0 to 0.23.1
+  * Build on all branches.
+  * Skip zizmor in pre-commit.ci as well.
+  * add 3.13t to CI config
+  * point Cargo.toml at pyo3 0.23 on crates.io
+  * update rpds.py for PyO3 0.23
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump the zizmor version.
+
+-------------------------------------------------------------------
 Wed Dec 04 07:42:20 UTC 2024 - adrian@suse.de
 
 - Update to version 0.21.0:
