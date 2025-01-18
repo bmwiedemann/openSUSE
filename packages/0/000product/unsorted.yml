@@ -5207,6 +5207,7 @@ unsorted:
   - gfxboot-branding-openSUSE 
   - gfxboot-branding-upstream 
   - gfxboot-devel 
+  - ggml-devel 
   - gh 
   - gh-bash-completion 
   - gh-fish-completion 
@@ -13517,6 +13518,11 @@ unsorted:
   - libgfortran5-gcc13-32bit 
   - libgfrpc0 
   - libgfxdr0 
+  - libggml 
+  - libggml-base 
+  - libggml-cpu 
+  - libggml-opencl 
+  - libggml-vulkan 
   - libgiac0 
   - libgif7-32bit 
   - libgig-devel 
@@ -14434,6 +14440,7 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit 
   - liblittleb0 
+  - libllama 
   - liblldb13 
   - liblldb14 
   - liblldb15 
@@ -16106,7 +16113,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_7_4 
+  - librssguard-4_8_1 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -17602,6 +17609,8 @@ unsorted:
   - livi 
   - lksctp-tools 
   - lksctp-tools-devel 
+  - llamacpp 
+  - llamacpp-devel 
   - llcbench 
   - lld 
   - lld13 
@@ -33828,7 +33837,6 @@ unsorted:
   - python313-pegen 
   - python313-pelican 
   - python313-pem 
-  - python313-pendulum 
   - python313-pep440 
   - python313-pep8-naming 
   - python313-peppercorn 

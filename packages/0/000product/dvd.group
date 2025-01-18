@@ -3582,7 +3582,7 @@
     <package name="postgresql17-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql17-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="power-profiles-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerprofilesctl-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
