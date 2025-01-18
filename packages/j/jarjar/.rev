@@ -151,4 +151,14 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148483</requestid>
   </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>cfb3ce27d8ec975d6e36d8d7f31c36ee</srcmd5>
+    <version>1.4</version>
+    <time>1737202956</time>
+    <user>dimstar_suse</user>
+    <comment>- Create an ant config file to account for the fact that we don't
+  bundle the objectweb-asm as the upstream does
+</comment>
+    <requestid>1238650</requestid>
+  </revision>
 </revisionlist>

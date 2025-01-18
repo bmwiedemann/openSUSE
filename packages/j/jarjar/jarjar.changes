@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 16:23:13 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Create an ant config file to account for the fact that we don't
+  bundle the objectweb-asm as the upstream does
+
+-------------------------------------------------------------------
 Wed Feb 21 09:30:36 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

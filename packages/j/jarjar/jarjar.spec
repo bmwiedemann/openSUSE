@@ -1,7 +1,7 @@
 #
 # spec file for package jarjar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,14 +86,14 @@ export OPT_JAR_LIST="ant/ant-junit junit"
 
 %install
 # jars
-mkdir -p %{buildroot}%{_javadir}
-install -m 644 dist/%{name}-%{version}.jar \
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 dist/%{name}-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}.jar
-install -m 644 dist/%{name}-util-%{version}.jar \
+install -pm 0644 dist/%{name}-util-%{version}.jar \
   %{buildroot}%{_javadir}/%{name}-util.jar
 
 # poms
-mkdir -p %{buildroot}/%{_mavenpomdir}
+install -dm 0755 %{buildroot}/%{_mavenpomdir}
 %{mvn_install_pom} %{SOURCE1} \
   %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %{mvn_install_pom} %{SOURCE2} \
@@ -103,12 +103,17 @@ mkdir -p %{buildroot}/%{_mavenpomdir}
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a "jarjar:%{name},com.tonicsystems:%{name},com.googlecode.jarjar:%{name},org.gradle.jarjar:%{name}"
 %add_maven_depmap JPP-%{name}-util.pom %{name}-util.jar -a "jarjar:%{name}-util,com.tonicsystems:%{name}-util"
 
+# ant config
+install -dm 0755 %{buildroot}%{_sysconfdir}/ant.d
+echo %{name} %{name} objectweb-asm/asm{,-commons} > %{buildroot}%{_sysconfdir}/ant.d/%{name}
+
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/javadoc/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
+%config(noreplace) %{_sysconfdir}/ant.d/%{name}
 %license COPYING
 
 %files javadoc
