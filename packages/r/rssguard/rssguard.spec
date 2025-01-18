@@ -1,7 +1,7 @@
 #
 # spec file for package rssguard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_7_4
+%define libver  4_8_1
 Name:           rssguard
-Version:        4.7.4
+Version:        4.8.1
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -26,8 +26,8 @@ License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-4.7.2-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch0:         rssguard-4.7.2-add_library_version.patch
+# PATCH-FIX-OPENSUSE rssguard-4.8.1-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch0:         rssguard-4.8.1-add_library_version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} == 1500

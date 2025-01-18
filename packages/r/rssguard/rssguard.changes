@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jan 17 21:27:52 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.8.1
+  + Fixed some untested code regression
+- Update to version 4.8.0
+  + Added:
+    - Support for Gemini protocol and gemtext markup files.
+      (gh#martinrotter/rssguard#1550)
+    - It is now possible to pause feed fetching. (gh#martinrotter/rssguard#970)
+    - Reddit URLs are now parsed during feed discovery and found feed links are
+      processed. (gh#martinrotter/rssguard#1530)
+    - YouTube URLs are now parsed during feed discovery and found feed links
+      are processed. (gh#martinrotter/rssguard#1532)
+    - Click article icon in article list now switches read/unread state, the
+      same way as clicking "starred" icon works.
+      (gh#martinrotter/rssguard#1521)
+    - Some RTL-related things were added. (gh#martinrotter/rssguard#1371)
+    - User can now manually specify custom HTTP headers to be sent when
+      fetching individual feeds.
+    - Sounds of notifications can now be individually switched off.
+    - Image caching in built-in LITE web viewer now takes image size into
+      account, thus providing better scaling and visual UX.
+    - In "Discover feeds" dialog, when mouse hovering above found feeds, more
+      info is shown in tooltips.
+  + Fixed:
+    - Compilation with MinGW compiler is now working without problems. Also
+      MSYS2-FHS-related changes were applied. (gh#martinrotter/rssguard#1540)
+    - Reduce number of duplicate feeds found in "Discover feeds" feature.
+- Replace rssguard-4.7.2-add_library_version.patch with updated
+  rssguard-4.8.1-add_library_version.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 20:30:00 UTC 2024 - Alexey Rochev <equeim@gmail.com>
 
 - Update to version 4.7.4
