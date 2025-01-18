@@ -1,7 +1,7 @@
 #
 # spec file for package minio-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minio-client
-Version:        20241121T172154Z
+Version:        20250117T232550Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only
@@ -25,7 +25,7 @@ URL:            https://github.com/minio/mc
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        README.SUSE
-BuildRequires:  go1.22
+BuildRequires:  go1.23
 # obsolete some other package we had in the past
 Provides:       minio-mc = %{version}-%{release}
 Obsoletes:      minio-mc < %{version}-%{release}

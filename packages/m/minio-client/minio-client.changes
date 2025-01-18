@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 18 07:44:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20250117T232550Z:
+  * chore: update deps
+  * The version-id in the get command does not work (#5110)
+  * chore: update deps (#5102)
+  * Add go runtime profile type (#5098)
+  * fix ilm rule edit for --expire-all-object-versions (#5101)
+  * update all deps and update CREDITS (#5097)
+  * Add support top rpc ui nicities (#5087)
+  * Improve trace stats (#5095)
+
+-------------------------------------------------------------------
 Sun Dec 15 10:29:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20241121T172154Z:
