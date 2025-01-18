@@ -794,4 +794,12 @@
   * supported libfmt 11 and ICU 76</comment>
     <requestid>1230097</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>37a8ddd70cf38db9f7da5be302843b70</srcmd5>
+    <version>0.23.16</version>
+    <time>1737202965</time>
+    <user>dimstar_suse</user>
+    <comment>- Limited build to fmt 10.2.1 for Tumbleweed (fmt 11.1.1 broken).</comment>
+    <requestid>1238667</requestid>
+  </revision>
 </revisionlist>

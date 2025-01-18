@@ -1,7 +1,7 @@
 #
 # spec file for package mpd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fluidsynth)
-BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(jack)
@@ -105,6 +104,11 @@ Provides:       user(%{name})
 %{?systemd_requires}
 %if %{with faad}
 BuildRequires:  faad2-devel
+%endif
+%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
+BuildRequires:  pkgconfig(fmt)
+%else
+BuildRequires:  pkgconfig(fmt) = 10.2.1
 %endif
 %if %{with mpd_iso9660}
 BuildRequires:  pkgconfig(libiso9660)
