@@ -19,7 +19,7 @@
 %define executable_name pack
 
 Name:           buildpacks-cli
-Version:        0.36.3
+Version:        0.36.4
 Release:        0
 Summary:        CLI for building apps using Cloud Native Buildpacks
 License:        Apache-2.0
@@ -32,6 +32,11 @@ BuildRequires:  go >= 1.22
 BuildRequires:  zsh
 Provides:       pack = %{version}
 Conflicts:      allegro44-tools
+#
+# vendor/github.com/gdamore/tcell/v2/attr.go:32:25: cannot use 1 << 31 (untyped
+# int constant 2147483648) as AttrMask value in constant declaration
+# (overflows)
+ExcludeArch:    %{ix86} armv7hl
 
 %description
 pack makes it easy for...
