@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -121,6 +121,11 @@
 %define sunxi_spl 1
 %endif
 %if "%target" == "orangepizero2"
+%define is_h616 1
+%define is_armv8 1
+%define sunxi_spl 1
+%endif
+%if "%target" == "orangepizero2w"
 %define is_h616 1
 %define is_armv8 1
 %define sunxi_spl 1

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 11 05:31:35 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.300.0 (6.3)
+   see /usr/share/doc/packages/perl-Module-Pluggable/Changes
+
+  2025-01-10 - 6.3
+      Fix make_path() in t/29unreadable.t. (thanks to Michal Josef Špaček @michal-josef-spacek)
+      Fix t/29unreadable.t tests failing as root. (thanks to Michal Josef Špaček @michal-josef-spacek)
+
+-------------------------------------------------------------------
 Fri Oct 25 05:36:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.200.0 (6.2)

@@ -39,6 +39,7 @@ Provides:       perl(XML::Twig::Entity)
 Provides:       perl(XML::Twig::Entity_list)
 Provides:       perl(XML::Twig::Notation)
 Provides:       perl(XML::Twig::Notation_list)
+Provides:       perl(XML::Twig::XPath)
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN

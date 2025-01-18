@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 17 03:47:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.2:
+  * build: update package-lock.json
+  * fix: allow host as a standalone class name
+  * fix: don't disallow single quotes when determining pseudo class selection
+  * fix: improve error recovery with incomplete pseudo-class selectors
+  * fix: mark selectors before combinators as optional
+  * build: bump deps
+  * chore: generate
+
+-------------------------------------------------------------------
 Wed Dec  4 22:13:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.23.1:

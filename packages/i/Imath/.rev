@@ -106,4 +106,12 @@
 - initial version 3.0.1, splitted from openexr (forwarded request 1184362 from dirkmueller)</comment>
     <requestid>1184838</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>611b7d358d39289d343def13037c9603</srcmd5>
+    <version>3.1.12</version>
+    <time>1737135445</time>
+    <user>anag+factory</user>
+    <comment>Update to version 3.1.12 (forwarded request 1238421 from simonlm)</comment>
+    <requestid>1238422</requestid>
+  </revision>
 </revisionlist>

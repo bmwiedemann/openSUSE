@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 15:51:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also provide perl(XML::Twig::XPath), as provided by the file
+  /usr/lib/perl5/vendor_perl/*/XML/Twig/XPath.pm.
+
+-------------------------------------------------------------------
 Fri Jan 10 17:56:14 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Update perl-XML-Twig-CVE-2016-9180.patch

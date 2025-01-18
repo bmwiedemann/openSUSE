@@ -47,7 +47,6 @@ enable mdcheck_start.timer
 enable mdmonitor-oneshot.timer
 enable mlocate.timer
 enable ModemManager.service
-enable nscd.service
 enable nvmefc-boot-connections.service
 enable nvmf-autoconnect.service
 enable pcscd.socket

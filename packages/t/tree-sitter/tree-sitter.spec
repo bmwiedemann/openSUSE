@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         somajor 0_24
 Name:           tree-sitter
-Version:        0.24.6
+Version:        0.24.7
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        GPL-2.0-only AND MIT

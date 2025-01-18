@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 01:30:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded BuildRequires on recommonmark, it was dropped back in
+  2.2.0.
+
+-------------------------------------------------------------------
 Sun Mar 24 17:26:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:

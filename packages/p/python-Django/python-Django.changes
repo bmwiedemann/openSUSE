@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 15 07:53:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.5 (bsc#1235856)
+  * CVE-2024-56374: Potential denial-of-service vulnerability in 
+    IPv6 validation
+  * Fixed a crash when applying migrations with references to the 
+    removed Meta.index_together option
+
+-------------------------------------------------------------------
 Mon Dec  9 09:13:02 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.4 (bsc#1234231, CVE-2024-53908, bsc#1234232, CVE-2024-53907)

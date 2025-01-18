@@ -172,4 +172,13 @@ spec file cleaned from old TODO comments (forwarded request 174583 from HighwayS
     <comment></comment>
     <requestid>1202966</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>b7f1e0735798734114e5026e3d91cee8</srcmd5>
+    <version>3.5</version>
+    <time>1737135447</time>
+    <user>anag+factory</user>
+    <comment>- Use libalternatives instead of update-alternatives, bsc#1235782
+</comment>
+    <requestid>1238445</requestid>
+  </revision>
 </revisionlist>

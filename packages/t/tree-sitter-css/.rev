@@ -35,4 +35,19 @@
 - add devel package</comment>
     <requestid>1229595</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d425fb5ea3fd50f8b7b3231c2e6c04c0</srcmd5>
+    <version>0.23.2</version>
+    <time>1737135501</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.2:
+  * build: update package-lock.json
+  * fix: allow host as a standalone class name
+  * fix: don't disallow single quotes when determining pseudo class selection
+  * fix: improve error recovery with incomplete pseudo-class selectors
+  * fix: mark selectors before combinators as optional
+  * build: bump deps
+  * chore: generate</comment>
+    <requestid>1238375</requestid>
+  </revision>
 </revisionlist>

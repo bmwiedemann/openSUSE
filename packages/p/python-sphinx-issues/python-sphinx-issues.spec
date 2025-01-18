@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-issues
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-issues
-Version:        4.1.0
+Version:        5.0.0
 Release:        0
 Summary:        A Sphinx extension for linking to a project's issue tracker
 License:        MIT
 URL:            https://github.com/sloria/sphinx-issues
 Source:         https://github.com/sloria/sphinx-issues/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -33,9 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 %python_subpackages
 
 %description

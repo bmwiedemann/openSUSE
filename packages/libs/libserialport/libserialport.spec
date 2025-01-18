@@ -1,7 +1,7 @@
 #
 # spec file for package libserialport
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 
 Name:           libserialport
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 URL:            http://sigrok.org
 BuildRequires:  autoconf
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libudev)
-Source0:        http://sigrok.org/download/source/libserialport/%{name}-%{version}.tar.gz
+Source0:        https://sigrok.org/download/source/libserialport/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -79,7 +79,7 @@ software that uses serial ports.
 %setup -q
 
 %build
-# ./autogen.sh
+autoreconf -f
 %configure --disable-static
 make %{?smp_mflags}
 
@@ -94,11 +94,13 @@ rm -f %buildroot%{_libdir}/libserialport.la
 
 %files -n %libname
 %defattr(-,root,root,-)
-%doc COPYING README NEWS
+%license COPYING
+%doc README NEWS
 %_libdir/*.so.*
 
 %files devel
 %defattr(-,root,root,-)
+%license COPYING
 %_libdir/*.so
 %_includedir/*
 %_libdir/pkgconfig/*

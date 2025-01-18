@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 17 03:07:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.1.0:
+  * Updated translations
+  * Fixed rare crash when a dock window was killed
+  * Added interactive screenshot shortcut
+  * Fixed crash when using tiling shortcuts
+
+-------------------------------------------------------------------
 Mon Dec  2 20:49:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.4:

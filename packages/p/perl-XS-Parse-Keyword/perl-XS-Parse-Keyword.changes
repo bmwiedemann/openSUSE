@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 10 05:33:03 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.480.0 (0.48)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.48    2025-01-09
+          [CHANGES]
+           * Added `XPK_FLAG_PERMIT_LEXICAL`, allowing optional 'my'-prefixed
+             keywords
+
+-------------------------------------------------------------------
 Thu Dec 12 16:46:16 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.470.0 (0.47)

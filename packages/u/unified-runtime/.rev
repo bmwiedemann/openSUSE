@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1234903</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a14f333a7c397d3b3859bfb93b7dfc2d</srcmd5>
+    <version>0.11.2</version>
+    <time>1737135490</time>
+    <user>anag+factory</user>
+    <comment>- Added the static library to the devel package</comment>
+    <requestid>1238355</requestid>
+  </revision>
 </revisionlist>

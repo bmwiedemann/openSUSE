@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-mini
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,6 +93,7 @@ rm %{buildroot}/opt/testing/bin/activate*
 # We need these available
 cp -a %{_vpath_builddir}/src/desktop-file-validate %{buildroot}/opt/testing/bin
 cp -a %{_bindir}/dash %{_bindir}/checkbashisms %{buildroot}/opt/testing/bin
+cp -a %{_bindir}/{tar,gzip} %{buildroot}/opt/testing/bin
 cp -a %{_libdir}/libedit.so.0* %{buildroot}/opt/testing/lib
 # Install config files
 install -d -m 755 %{buildroot}/opt/testing/share

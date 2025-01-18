@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-ReadSXC
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Spreadsheet-ReadSXC
 Name:           perl-Spreadsheet-ReadSXC
-Version:        0.380.0
+Version:        0.390.0
 Release:        0
-%define cpan_version 0.38
+# 0.39 -> normalize -> 0.390.0
+%define cpan_version 0.39
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extract OpenOffice 1.x spreadsheet data
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +33,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Zip) >= 1.34
-#BuildRequires:  perl(Filter::signatures) >= 0.16
+#BuildRequires:  perl(Filter::signatures) >= 0.160
 BuildRequires:  perl(Moo) >= 2
 BuildRequires:  perl(PerlIO::gzip)
 BuildRequires:  perl(PerlX::Maybe)
@@ -49,13 +50,13 @@ Requires:       perl(XML::Twig) >= 3.50
 Requires:       perl(XML::Twig::XPath)
 Requires:       perl(XML::XPath)
 Requires:       perl(XML::XPathEngine)
-Provides:       perl(Spreadsheet::ParseODS) = 0.380.0
-Provides:       perl(Spreadsheet::ParseODS::Cell) = 0.380.0
-Provides:       perl(Spreadsheet::ParseODS::Settings) = 0.380.0
-Provides:       perl(Spreadsheet::ParseODS::Styles) = 0.380.0
-Provides:       perl(Spreadsheet::ParseODS::Workbook) = 0.380.0
-Provides:       perl(Spreadsheet::ParseODS::Worksheet) = 0.380.0
-Provides:       perl(Spreadsheet::ReadSXC) = 0.380.0
+Provides:       perl(Spreadsheet::ParseODS) = %{version}
+Provides:       perl(Spreadsheet::ParseODS::Cell) = %{version}
+Provides:       perl(Spreadsheet::ParseODS::Settings) = %{version}
+Provides:       perl(Spreadsheet::ParseODS::Styles) = %{version}
+Provides:       perl(Spreadsheet::ParseODS::Workbook) = %{version}
+Provides:       perl(Spreadsheet::ParseODS::Worksheet) = %{version}
+Provides:       perl(Spreadsheet::ReadSXC) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

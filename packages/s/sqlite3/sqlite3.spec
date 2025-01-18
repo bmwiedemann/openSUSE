@@ -1,7 +1,7 @@
 #
 # spec file for package sqlite3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define oname sqlite
-%define tarversion 3470200
-%define docversion 3470200
+%define tarversion 3480000
+%define docversion 3480000
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.47.2
+Version:        3.48.0
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -31,7 +31,6 @@ URL:            https://www.sqlite.org/
 Source0:        https://www.sqlite.org/2023/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        https://www.sqlite.org/2023/sqlite-doc-%{docversion}.zip
-Patch0:         sqlite3-6216bfcb.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -170,6 +169,7 @@ export CFLAGS="%{optflags} \
 	-DSQLITE_STRICT_SUBTYPE=1 \
 	"
 %configure \
+  --soname=legacy \
   --disable-static \
   --enable-readline \
   --enable-fts3 \

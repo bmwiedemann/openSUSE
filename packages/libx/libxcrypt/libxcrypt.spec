@@ -16,8 +16,10 @@
 #
 
 
+%define sover   1
+%define lname   libcrypt%{sover}
 Name:           libxcrypt
-Version:        4.4.37
+Version:        4.4.38
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
@@ -45,7 +47,7 @@ interfaces, as well as a set of extended interfaces pioneered by
 Openwall Linux, 'crypt_rn', 'crypt_ra', 'crypt_gensalt',
 'crypt_gensalt_rn', and 'crypt_gensalt_ra'.
 
-%package -n libcrypt1
+%package -n %{lname}
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        BSD-2-Clause AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Libraries
@@ -60,7 +62,7 @@ Provides:       libowcrypt.so.1
 Provides:       libowcrypt.so.1(OW_CRYPT_1.0)
 %endif
 
-%description -n libcrypt1
+%description -n %{lname}
 libxcrypt is a modern library for one-way hashing of passwords.  It
 supports DES, MD5, SHA-2-256, SHA-2-512, and bcrypt-based password
 hashes, and provides the traditional Unix 'crypt' and 'crypt_r'
@@ -72,7 +74,7 @@ Openwall Linux, 'crypt_rn', 'crypt_ra', 'crypt_gensalt',
 Summary:        Development files for %{name}
 License:        BSD-2-Clause AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Languages/C and C++
-Requires:       libcrypt1 = %{version}
+Requires:       %{lname} = %{version}
 Requires:       pkgconfig >= 0.9.0
 Conflicts:      glibc-devel < 2.28
 Provides:       glibc-devel:%{_libdir}/libcrypt.so
@@ -153,10 +155,9 @@ rm -v %{buildroot}%{_libdir}/*.la
     exit $rc;
   }
 
-%post -n libcrypt1 -p /sbin/ldconfig
-%postun -n libcrypt1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
-%files -n libcrypt1
+%files -n %{lname}
 %license COPYING.LIB LICENSING
 %doc AUTHORS NEWS THANKS
 %{_libdir}/*.so.*

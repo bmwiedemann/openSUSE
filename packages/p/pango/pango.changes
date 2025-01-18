@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 16 09:11:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.56.0+12:
+  * Deal with FC_FONT_WRAPPER more graciously
+  * itemize: Limp along harder
+  * build: Reshuffle docs build
+  * build: Move gir to toplevel meson.build
+  * build: Generate glib deprecation defines
+  * build: Sync naming with gtk
+
+-------------------------------------------------------------------
 Thu Jan  9 19:36:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.56.0:

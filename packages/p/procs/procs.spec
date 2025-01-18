@@ -1,7 +1,7 @@
 #
 # spec file for package procs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           procs
-Version:        0.14.8
+Version:        0.14.9
 Release:        0
 Summary:        A modern replacement for ps written in Rust
 License:        MIT

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_with memcached
 %{?sle15_python_module_pythons}
 Name:           python-Django
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause

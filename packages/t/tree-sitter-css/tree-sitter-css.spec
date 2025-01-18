@@ -18,7 +18,7 @@
 
 %define         _name css
 Name:           tree-sitter-css
-Version:        0.23.1
+Version:        0.23.2
 Release:        0
 Summary:        CSS grammar for tree-sitter
 License:        MIT

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 13 05:31:53 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9733
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9733 2025-01-12
+  - added max_cliques (#33,#34) - thanks @choroba
+  - restore 0.9716 behaviour of random_graph (#32) - thanks @kester-habermann for report
+
+-------------------------------------------------------------------
 Tue Sep  3 05:31:29 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9732

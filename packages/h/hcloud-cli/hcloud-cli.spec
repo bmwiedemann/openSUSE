@@ -1,7 +1,7 @@
 #
 # spec file for package hcloud-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name hcloud
 
 Name:           hcloud-cli
-Version:        1.49.0
+Version:        1.50.0
 Release:        0
 Summary:        A command-line interface for Hetzner Cloud
 License:        MIT

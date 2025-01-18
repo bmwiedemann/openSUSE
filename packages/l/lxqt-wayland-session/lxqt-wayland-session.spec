@@ -27,16 +27,26 @@ Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.as
 Source2:        %{name}.keyring
 ## PATCH-CONFIGURATION-openSUSE 0001-configuration-changes-for-default-labwc-session.patch
 Patch0:         0001-configuration-changes-for-default-labwc-session.patch
+## PATCH-CONFIGURATION-openSUSE 0002-configuration-changes-for-default-wayfire-session.patch
+Patch1:         0002-configuration-changes-for-default-wayfire-session.patch
+## PATCH-CONFIGURATION-openSUSE 0003-configuration-changes-for-default-niri-session.patch
+Patch2:         0003-configuration-changes-for-default-niri-session.patch
+## PATCH-FEATURE-Upstream 0004-configuration-adds-miriway-session.patch
+Patch3:         0004-configuration-adds-miriway-session.patch
+
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
+
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(lxqt2-build-tools)
+
 BuildRequires:  pkgconfig(lxqt) >= 2.1.0
+
 Requires:       layer-shell-qt6 >= 6.2.0
 Requires:       lxqt-session >= 2.1.0
 Requires:       xdg-user-dirs
@@ -57,6 +67,34 @@ Supplements:    (%{name} and hyprland)
 
 %description -n lxqt-hyprland-session
 This package contains the files necessary to use Hyprland as the Wayland
+compositor with LXQt
+
+%package -n     lxqt-labwc-session
+Summary:        Session files and theme for labwc
+License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
+Requires:       %{name} = %{version}
+Requires:       labwc >= 0.7.2
+Requires:       swaybg
+Requires:       swayidle
+Requires:       swaylock
+Recommends:     labwc-tweaks
+Recommends:     sddm-conf
+Recommends:     wdisplays
+Supplements:    (%{name} and labwc)
+Conflicts:      labwc-theme-vent <= %{version}
+
+%description -n lxqt-labwc-session
+This package contains the openbox themes and other files for labwc.
+
+%package -n     lxqt-miriway-session
+Summary:        Session files for LXQt-Miriway
+License:        GPL-3.0-or-later
+Requires:       %{name} = %{version}
+Requires:       miriway
+Supplements:    (%{name} and miriway)
+
+%description -n lxqt-miriway-session
+This package contains the files necessary to use Miriway as the Wayland
 compositor with LXQt
 
 %package -n     lxqt-niri-session
@@ -105,23 +143,6 @@ Supplements:    (%{name} and wayfire)
 This package contains the files necessary to use wayfire as the Wayland
 compositor with LXQt
 
-%package -n     lxqt-labwc-session
-Summary:        Session files and theme for labwc
-License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
-Requires:       %{name} = %{version}
-Requires:       labwc >= 0.7.2
-Requires:       swaybg
-Requires:       swayidle
-Requires:       swaylock
-Recommends:     labwc-tweaks
-Recommends:     sddm-conf
-Recommends:     wdisplays
-Supplements:    (%{name} and labwc)
-Conflicts:      labwc-theme-vent <= %{version}
-
-%description -n lxqt-labwc-session
-This package contains the openbox themes and other files for labwc.
-
 %prep
 %autosetup -p1 -S git_am
 
@@ -152,22 +173,6 @@ This package contains the openbox themes and other files for labwc.
 %license LICENSE.BSD
 %{_datadir}/lxqt/wayland/lxqt-hyprland.conf
 
-%files -n lxqt-niri-session
-%license COPYING
-%{_datadir}/lxqt/wayland/lxqt-niri.kdl
-
-%files -n lxqt-river-session
-%license COPYING
-%attr(0755,root,root)%{_datadir}/lxqt/wayland/lxqt-river-init
-
-%files -n lxqt-sway-session
-%license LICENSE.MIT
-%{_datadir}/lxqt/wayland/lxqt-sway.config
-
-%files -n lxqt-wayfire-session
-%license LICENSE.MIT
-%{_datadir}/lxqt/wayland/lxqt-wayfire.ini
-
 %files -n lxqt-labwc-session
 %license LICENSE.GPLv2
 %dir %{_datadir}/lxqt/wallpapers
@@ -184,5 +189,27 @@ This package contains the openbox themes and other files for labwc.
 %{_datadir}/lxqt/wayland/labwc/themerc
 %{_datadir}/lxqt/wayland/labwc/themerc-override
 %{_datadir}/lxqt/graphics/lxqt-labwc.png
+
+%files -n lxqt-miriway-session
+%license COPYING
+%dir %{_datadir}/lxqt/wayland/miriway
+%attr(0755,root,root)%{_datadir}/lxqt/wayland/miriway/lxqt-miriway-wrapper
+%{_datadir}/lxqt/wayland/miriway/miriway-shell.config
+
+%files -n lxqt-niri-session
+%license COPYING
+%{_datadir}/lxqt/wayland/lxqt-niri.kdl
+
+%files -n lxqt-river-session
+%license COPYING
+%attr(0755,root,root)%{_datadir}/lxqt/wayland/lxqt-river-init
+
+%files -n lxqt-sway-session
+%license LICENSE.MIT
+%{_datadir}/lxqt/wayland/lxqt-sway.config
+
+%files -n lxqt-wayfire-session
+%license LICENSE.MIT
+%{_datadir}/lxqt/wayland/lxqt-wayfire.ini
 
 %changelog

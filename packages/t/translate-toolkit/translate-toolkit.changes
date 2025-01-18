@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 14:52:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only provide the 'translate-toolkit' symbol in the actual
+  packages, not the doc/test flavored ones.
+
+-------------------------------------------------------------------
 Fri Jan 10 12:03:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Split the documentation from the main package to avoid many new 

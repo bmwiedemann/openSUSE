@@ -81,4 +81,16 @@
   * Raise ValueError if neither issues_uri nor issues_github_path</comment>
     <requestid>1184074</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e6d48f6d5fbcb02fc686b409decee492</srcmd5>
+    <version>5.0.0</version>
+    <time>1737135428</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.0:
+  * Remove :cwe: and :cve: roles, as these are officially included in
+    Sphinx&gt;=8.1.0.
+  * Support Python 3.9-3.13. Python 3.8 is no longer supported.
+- Clean up Python 2 remains.</comment>
+    <requestid>1238137</requestid>
+  </revision>
 </revisionlist>

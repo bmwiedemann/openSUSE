@@ -510,4 +510,12 @@ for reproducible packages even with --nocheck (forwarded request 1150775 from bm
     <comment>Update to version 2024.2 (forwarded request 1218704 from simonlm)</comment>
     <requestid>1219321</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1171e96602dbf6aa1b79fbde82e073dc</srcmd5>
+    <version>2025</version>
+    <time>1737135435</time>
+    <user>anag+factory</user>
+    <comment>Update to version 2025 (forwarded request 1238185 from simonlm)</comment>
+    <requestid>1238198</requestid>
+  </revision>
 </revisionlist>

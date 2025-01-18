@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:22:16 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Update to 4.21.3
+  * More possible replication loops against Azure AD;
+    (bso#15701).
+  * Compound rename from Mac clients can fail with
+    NT_STATUS_INTERNAL_ERROR if the file has a lease;
+    (bso#15697).
+  * vfs crossrename seems not work correctly; (bso#15724).
+  * After 'machine password timeout' /etc/krb5.keytab is not
+    updated; (bso#6750).
+  * Memory leak wbcCtxLookupSid; (bso#15771).
+  * Fix heap-user-after-free with association groups;
+    (bso#15765).
+  * Segfault in vfs_btrfs; (bso#15758).
+  * Avoid event failure race when disabling an event script;
+    (bso#15755).
+
+-------------------------------------------------------------------
 Fri Dec  6 09:09:04 UTC 2024 - Noel Power <nopower@suse.com>
 
 - Update shipped /etc/samba/smb.conf to point to smb.conf

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:03:51 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- fix alternatives
+
+-------------------------------------------------------------------
+Wed Jan 15 12:05:07 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1235782
+
+-------------------------------------------------------------------
 Tue Sep 24 11:27:17 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error under Leap.

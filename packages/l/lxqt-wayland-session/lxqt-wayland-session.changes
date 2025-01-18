@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 15 16:38:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add:
+  * 0002-configuration-changes-for-default-wayfire-session.patch
+    - Sets openSUSE background for wayfire session
+  * 0003-configuration-changes-for-default-niri-session.patch
+    - Disables "natural scrolling" by default
+  * 0004-configuration-adds-miriway-session.patch
+    - Enables miriway as a compositor option, and adds
+      configurations
+- Minor specfile cleanup
+
+-------------------------------------------------------------------
 Wed Jan  8 17:29:38 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Drop:

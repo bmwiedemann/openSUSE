@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyserial
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-pyserial
 Version:        3.5
@@ -27,12 +33,18 @@ URL:            https://github.com/pyserial/pyserial
 Source:         https://files.pythonhosted.org/packages/source/p/pyserial/pyserial-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - pyserial/pyserial#757 - Replace deprecated unittest.findTestCases function
 Patch1:         https://github.com/pyserial/pyserial/pull/757.patch#/replace-deprecated-unittest-function.patch
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
+%endif
 Provides:       python-serial = %{version}
 Obsoletes:      python-serial < %{version}
 BuildArch:      noarch
@@ -53,8 +65,7 @@ Documentation, examples, and help files for %{name}.
 %endif
 
 %prep
-%setup -q -n pyserial-%{version}
-%patch -P 1 -p1
+%autosetup -p1 -n pyserial-%{version}
 
 # Unnecessary
 rm serial/tools/list_ports_windows.py \
@@ -91,6 +102,11 @@ rm documentation/_build/doctrees/environment.pickle
 
 %check
 %python_exec test/run_all_tests.py
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pyserial-miniterm
+%python_libalternatives_reset_alternative pyserial-ports
 
 %post
 %python_install_alternative pyserial-miniterm

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 16 01:21:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.0:
+  * Remove :cwe: and :cve: roles, as these are officially included in
+    Sphinx>=8.1.0.
+  * Support Python 3.9-3.13. Python 3.8 is no longer supported.
+- Clean up Python 2 remains.
+
+-------------------------------------------------------------------
 Sun Jun 30 07:39:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:

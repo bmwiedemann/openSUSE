@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -672,9 +672,11 @@ Requires:       selinux-policy
 Requires:       selinux-policy-base
 Requires:       selinux-tools
 Requires:       pattern() = minimal_base
+# Needed for podman et al.
+Requires:       (container-selinux if libcontainers-common)
 Recommends:     checkpolicy
-Recommends:     container-selinux
-Recommends:     selinux-policy-targeted
+# Use targeted as default policy if none was explicitly requested.
+Suggests:       selinux-policy-targeted
 
 %description selinux
 Security-Enhanced Linux (SELinux) provides a mechanism for supporting access control security policies, including mandatory access controls (MAC).

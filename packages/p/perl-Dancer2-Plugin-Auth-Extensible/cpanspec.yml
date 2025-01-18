@@ -8,7 +8,7 @@
 #  - source1
 #  - source2
 patches:
-  remove-env-perl.patch: -p1
+#  remove-env-perl.patch: -p1
 #  bar.patch:
 #  baz.patch: PATCH-FIX-OPENSUSE
 #preamble: |-

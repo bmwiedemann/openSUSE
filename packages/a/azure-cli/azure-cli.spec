@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.67.0
+Version:        2.68.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -79,7 +79,7 @@ Requires:       %{pythons}-azure-mgmt-compute >= 33.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
 Requires:       %{pythons}-azure-mgmt-containerservice >= 33.0.0
-Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.6.0
+Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.7.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
@@ -101,7 +101,7 @@ Requires:       %{pythons}-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       %{pythons}-azure-mgmt-media >= 9.0
 Requires:       %{pythons}-azure-mgmt-monitor >= 5.0.0
 Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
-Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.0.0~b2
+Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.0.0~b3
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.1.0~b1

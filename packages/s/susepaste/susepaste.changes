@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 25 08:26:13 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
+
+- Update to Version 20241225
+  * Update the update.patch
+
+-------------------------------------------------------------------
+Sat Dec  7 08:41:28 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
+
+- Updated to version 20241207
+  * Repair susepaste-screenshot
+  * handle multiple login sessions
+  * Update manpage
+-------------------------------------------------------------------
 Fri May 31 22:24:51 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Update to version 0.7 (commit dbdce91bfd7954616731e47f97f82b8e10586101):

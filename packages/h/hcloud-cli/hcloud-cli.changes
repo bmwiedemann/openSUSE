@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Jan 17 06:36:11 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.50.0:
+  * chore(main): release v1.50.0 (#936)
+  * test: add ISO e2e tests (#953)
+  * deps: update module github.com/goccy/go-yaml to v1.15.14 (#956)
+  * test: add Load Balancer Type e2e tests (#954)
+  * deps: update module golang.org/x/crypto to v0.32.0 (#952)
+  * deps: update module golang.org/x/term to v0.28.0 (#951)
+  * deps: update dependency golangci/golangci-lint to v1.63.4
+    (#950)
+  * test(e2e): add e2e tests for certificate resource (#945)
+  * feat(certificate): allow adding labels during create (#949)
+  * test(e2e): add ssh key e2e tests (#947)
+  * deps: update dependency golangci/golangci-lint to v1.63.3
+    (#948)
+  * deps: update dependency golangci/golangci-lint (#946)
+  * deps: update module github.com/goccy/go-yaml to v1.15.13 (#944)
+  * deps: update module github.com/goccy/go-yaml to v1.15.12 (#943)
+  * deps: update module github.com/hetznercloud/hcloud-go/v2 to
+    v2.17.1 (#940)
+  * deps: update module github.com/spf13/cast to v1.7.1 (#942)
+  * deps: update module github.com/goccy/go-yaml to v1.15.11 (#941)
+  * deps: update module github.com/goccy/go-yaml to v1.15.10 (#939)
+  * deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.5
+    (#938)
+  * deps: update module github.com/goccy/go-yaml to v1.15.9 (#937)
+  * deps: update module golang.org/x/crypto to v0.31.0 (#931)
+  * deps: update module golang.org/x/term to v0.27.0 (#930)
+  * fix: display $ when the currency is USD (#933)
+  * deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.4
+    (#935)
+  * deps: update module github.com/goccy/go-yaml to v1.15.8 (#934)
+  * deps: update module github.com/goccy/go-yaml to v1.15.7 (#932)
+  * deps: update dependency go to v1.23.4 (#929)
+  * deps: update module github.com/goccy/go-yaml to v1.15.6 (#928)
+  * deps: update module github.com/goccy/go-yaml to v1.15.5 (#927)
+  * deps: update module github.com/goccy/go-yaml to v1.15.4 (#926)
+  * deps: update module github.com/goccy/go-yaml to v1.15.3 (#924)
+  * deps: update module github.com/stretchr/testify to v1.10.0
+    (#922)
+  * deps: update module github.com/hetznercloud/hcloud-go/v2 to
+    v2.17.0 (#921)
+  * deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.3
+    (#925)
+  * deps: update dependency golangci/golangci-lint to v1.62.2
+    (#923)
+  * deps: update module github.com/jedib0t/go-pretty/v6 to v6.6.2
+    (#920)
+  * deps: update apricote/releaser-pleaser action to v0.5.0 (#919)
+  * deps: update codecov/codecov-action action to v5 (#915)
+  * deps: update module github.com/goccy/go-yaml to v1.14.3 (#917)
+  * deps: update module github.com/goccy/go-yaml to v1.14.2 (#916)
+  * deps: update module github.com/goccy/go-yaml to v1.14.1 (#914)
+  * deps: update module github.com/goccy/go-yaml to v1.13.8 (#913)
+  * deps: update dependency golangci/golangci-lint (#912)
+  * deps: update module github.com/anchore/quill to v0.5.0 (#910)
+  * deps: update module github.com/goccy/go-yaml to v1.13.7 (#911)
+
+-------------------------------------------------------------------
 Tue Nov 12 08:17:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.49.0:

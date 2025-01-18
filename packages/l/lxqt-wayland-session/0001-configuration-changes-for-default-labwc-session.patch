@@ -1,7 +1,7 @@
-From 66b3dc4aafd8a97a08564bd460e6742582d69432 Mon Sep 17 00:00:00 2001
+From 24e1764403171309cde962f5849ad11fbd16b2f4 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Wed, 8 Jan 2025 09:24:02 -0800
-Subject: [PATCH] configuration changes for default labwc session
+Subject: [PATCH 1/4] configuration changes for default labwc session
 
 Combines two prior patches into one, as they're both for the labwc
 session.   Sets openSUSE background for labwc session, and adjusts

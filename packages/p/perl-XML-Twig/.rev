@@ -315,4 +315,13 @@
     spotted by Djibril (forwarded request 1237600 from tinita)</comment>
     <requestid>1237717</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6e3d1269ecc95682385c30022dde1c0c</srcmd5>
+    <version>3.530.0</version>
+    <time>1737135442</time>
+    <user>anag+factory</user>
+    <comment>- Also provide perl(XML::Twig::XPath), as provided by the file
+  /usr/lib/perl5/vendor_perl/*/XML/Twig/XPath.pm. (forwarded request 1238296 from dimstar)</comment>
+    <requestid>1238297</requestid>
+  </revision>
 </revisionlist>

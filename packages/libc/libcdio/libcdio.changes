@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Jan 16 00:15:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.2.0:
+  - Revised to note ABI change in ISO-9660 shared library (.so)
+    version numbers; bump release version from 2.1.1 to 2.2.0
+    to note both API and ABI changes. These are the last three
+    bullet items under Version 2.1.1.
+  - Remove LIBCDIO_SOURCE_PATH from configure.ac.
+
+-------------------------------------------------------------------
+Fri Jan 10 11:33:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.1.1:
+  - More checks of potentially NULL buffers. More
+    malloc()/calloc() result checks.
+  - Enforce non-widestring ("A" suffixed) calls when we pass
+    char* parameters.
+  - Use widestring API calls unless otherwise specified.
+  - Remove a deprecation warning of the declaration of
+    is_cdrom_aspi() and GetVersion().
+  - Updates for compiling on MSVC.
+  - Move to github
+  - Add github CI checks.
+  - Count empty fields as tracks.
+  - Add some validity checks to enhance security.
+  - Add support for ISO9660 multi extent files.
+  - Fix Recognition of multi-extent in ISO9660 when Joliet is
+    present.
+  - Use getmntent/setmntent for reading mounts.
+  - Use GNU/Linux new ioctl on kernel v5.16 or newer.
+  - Use "%s"-style format in cdda-player.c: to make it catch
+    cases when user input is used in place of format.
+  - Remove some memory leaks in C++ code.
+  - Allow for DO_NOT_WANT_COMPATIBILITY macro in config.h to
+    disable APIs that are being retired.
+  - Fix win32 implementation of .get_track_msf() for CD with
+    first track number > 1
+  - Fix testing on Windows and remove compilation warnings.
+  - Add Rock Ridge deep directory support.
+  - Fix and clean up various Rock Ridge issues and adjust tests.
+  - Fix double reporting of sizes in cd-info.c.
+  - CD-Text character set interpretation more tolerant of bad
+    input.
+  - Remove homegrown boolean type in favor of <stdbool.h>.
+  - Improve pkg-config configuration detection
+  - Fix crash reading CD TOC on macOS Ventura.
+  - Update freedb references to GnuDB.
+  - Fix charset check in Windows cdio_charset_from_utf8
+    implementation.
+  - Add support for reading CD-Text on macOS and Windows
+- Remove upstreamed patch:
+  - fix-undefined-behavior-in-readlink.patch
+- Remove GPG authentication, not supported any more.
+
+-------------------------------------------------------------------
 Thu Aug  1 09:17:31 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Add c99.patch fixing implicit declaration of a function error so

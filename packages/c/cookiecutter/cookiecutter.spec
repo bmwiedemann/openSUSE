@@ -1,7 +1,7 @@
 #
 # spec file for package cookiecutter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -66,10 +66,6 @@ BuildRequires:  python3-myst-parser
 BuildRequires:  python3-sphinx-autodoc-typehints
 BuildRequires:  python3-sphinx-click
 BuildRequires:  python3-sphinxcontrib-apidoc
-%if 0%{?sle_version} == 150300
-BuildRequires:  python3-commonmark
-%endif
-BuildRequires:  python3-recommonmark
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       cookiecutter = %{version}-%{release}
@@ -79,7 +75,6 @@ Obsoletes:      cookiecutter < %{version}-%{release}
 
 %package -n cookiecutter-doc
 Summary:        Documentation files for %{name}
-Group:          Documentation/HTML
 
 %description
 A command-line utility that creates projects from cookiecutters (project

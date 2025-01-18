@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 17 06:19:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.2:
+  * Fixed broken links on expermient pages (#3776)
+  * Revert "docs: Shuffling docs ordering (#3768)" (#3775)
+  * docs: Shuffling docs ordering (#3768)
+  * Update status of stacks experiment (#3774)
+  * fix: Addressing #3586 review feedback (#3773)
+  * Stacks: run (#3762)
+  * feat: add encryption to remote_state (#3586)
+
+-------------------------------------------------------------------
 Thu Jan 16 06:08:34 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.72.1:

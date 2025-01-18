@@ -1,7 +1,7 @@
 #
 # spec file for package opensp-doc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,8 +88,8 @@ tools (package 'opensp').
 
 %prep
 %setup -q -n OpenSP-%{version}
-# %patch -P 0 -p1
-# %patch -P 1 -p1
+# %%patch -P 0 -p1
+# %%patch -P 1 -p1
 %patch -P 11 -p1
 %patch -P 12
 

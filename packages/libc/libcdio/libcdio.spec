@@ -1,7 +1,7 @@
 #
 # spec file for package libcdio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,18 @@
 
 %define cdio_name libcdio19
 %define cdiopp_name libcdio++1
-%define iso9660_name libiso9660-11
-%define iso9660pp_name libiso9660++0
+%define iso9660_name libiso9660-12
+%define iso9660pp_name libiso9660++1
 %define udf_name libudf0
 Name:           libcdio
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        CD-ROM Access Library
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://savannah.gnu.org/projects/libcdio
-Source0:        https://ftp.gnu.org/gnu/libcdio/%{name}-%{version}.tar.bz2
-Source1:        https://ftp.gnu.org/gnu/libcdio/%{name}-%{version}.tar.bz2.sig
-Source2:        %{name}.keyring
+Source0:        https://github.com/libcdio/libcdio/releases/download/%{version}/libcdio-%{version}.tar.bz2
 Source3:        baselibs.conf
-Patch0:         fix-undefined-behavior-in-readlink.patch
 Patch1:         c99.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

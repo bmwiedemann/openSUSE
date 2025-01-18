@@ -37,7 +37,11 @@ that are not available in kubectl. It is supported on kubectl v1.11+
 
 %build
 %goprep github.com/Azure/kubelogin
+%ifarch s390x i586 armv7l
+export CGO_ENABLED=1
+%else
 export CGO_ENABLED=0
+%endif
 %gobuild -mod vendor -buildmode pie -ldflags "-X main.version=v%{version}" "${name}"
 
 %install

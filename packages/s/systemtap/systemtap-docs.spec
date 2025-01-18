@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap-docs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@ cp README AUTHORS NEWS %{buildroot}%{_docdir}/systemtap/
 # remove binaries and runtime stuff
 rm -rf %{buildroot}%{_bindir}
 rm -rf %{buildroot}%{_sbindir}
-rm -rf %{buildroot}%{_libdir}
+rm -rf %{buildroot}%{_prefix}/lib*
 rm -rf %{buildroot}%{_libexecdir}
 rm -rf %{buildroot}%{_datadir}/systemtap
 rm -rf %{buildroot}%{_includedir}

@@ -1189,6 +1189,13 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	%{terminfo i/iterm}
 	%{terminfo i/iterm2}
 	EOF
+#
+# Remove ghostty terminfo as the ghostty uses its own termcap
+# and the terminfo here in the mixed
+#
+    rm -vf %{buildroot}%{terminfo g/ghostty}
+    rm -vf %{buildroot}%{terminfo x/xterm-ghostty}
+
     find %{buildroot}%{tabset ""} %{buildroot}%{terminfo ""} \
 	\( -type f -or -type l \) | \
 	sed "s@^%{buildroot}@@g" | \

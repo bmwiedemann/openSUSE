@@ -26,4 +26,15 @@
   in the default terminfo package.</comment>
     <requestid>1237394</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>254ea5d00d55f134f930b923d44d0f4e</srcmd5>
+    <version>1.0.1</version>
+    <time>1737135474</time>
+    <user>anag+factory</user>
+    <comment>- testing shows that we can not rely on the terminfo files coming
+  from the ncurses package. reenable the terminfo-ghostty package 
+  - we drop the conflicts with the terminfo package as the ghostty
+    files should be dropped from that package now.</comment>
+    <requestid>1238239</requestid>
+  </revision>
 </revisionlist>

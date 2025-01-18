@@ -1,0 +1,105 @@
+diff -Naur susepaste-script/script/susepaste susepaste-scriptn/script/susepaste
+--- susepaste-script/script/susepaste	2024-12-07 09:30:21.258449268 +0100
++++ susepaste-scriptn/script/susepaste	2024-12-25 09:17:03.488242577 +0100
+@@ -136,8 +136,8 @@
+ 	if [ -x /usr/bin/loginctl ]
+ 	then
+ 	
+-		session_id=$(loginctl list-sessions --no-legend | awk "/$SELF/{print \$1}")
+-		session_type=$(loginctl show-session "$session_id" -P Type)
++		session_id=$(loginctl list-sessions --no-legend | awk "/$SELF seat[0-9]* /{ print \$1 ; exit }")
++		session_type=$(loginctl show-session -PType "$session_id")
+ 		
+ 		case "$session_type" in
+ 			"x11")
+diff -Naur susepaste-script/script/susepaste.1 susepaste-scriptn/script/susepaste.1
+--- susepaste-script/script/susepaste.1	2024-12-07 09:30:21.258449268 +0100
++++ susepaste-scriptn/script/susepaste.1	2024-12-25 09:19:50.167812745 +0100
+@@ -15,6 +15,18 @@
+ specified as arguments.
+ .SH OPTIONS
+ .TP
++-e \fBEXPIRE\fR
++for how long will be paste stored on the server. Default is 30 minutes,
++possible values are:
++     \fI30\fR            30 Minutes
++     \fI60\fR             1 Hour
++     \fI360\fR            6 Hours
++     \fI720\fR           12 Hours
++     \fI1440\fR           1 Day
++     \fI10080\fR          1 Week
++     \fI43200\fR          1 Month
++     \fI131040\fR         3 Months (Maximum)
++.TP
+ -n \fBNICK\fR
+ nickname of the author of the paste
+ .TP
+@@ -205,22 +217,6 @@
+      \fIxorg_conf\fR        Xorg configuration
+      \fIz80\fR              ZiLOG Z80 Assembler
+ .TP
+--e \fBEXPIRE\fR
+-for how log will be paste stored on the server. Default is 30 minutes,
+-possible values are:
+-     \fI30\fR            30 Minutes
+-     \fI60\fR             1 Hour
+-     \fI360\fR            6 Hours
+-     \fI720\fR           12 Hours
+-     \fI1440\fR           1 Day
+-     \fI10080\fR          1 Week
+-     \fI40320\fR          1 Month
+-     \fI151200\fR         3 Months
+-     \fI604800\fR         1 Year
+-     \fI1209600\fR        2 Years
+-     \fI1814400\fR        3 Years
+-     \fI0\fR                Never
+-.TP
+ -s \fBSCHEMA\fR
+ what schema should be used for pasting. Default is https,
+ possible values are:
+diff -Naur susepaste-script/script/susepaste-screenshot.1 susepaste-scriptn/script/susepaste-screenshot.1
+--- susepaste-script/script/susepaste-screenshot.1	2024-12-07 09:30:21.258449268 +0100
++++ susepaste-scriptn/script/susepaste-screenshot.1	2024-12-25 09:25:03.879105435 +0100
+@@ -17,17 +17,8 @@
+ --all
+ takes screenshot of whole desktop instean
+ .TP
+--n \fBNICK\fR
+-nickname of the author of the paste
+-.TP
+--t \fBTITLE\fR
+-name of the paste
+-.TP
+--k \fBKEY\fR
+-API key to paste as you
+-.TP
+ -e \fBEXPIRE\fR
+-for how log will be paste stored on the server. Default is 30 minutes,
++for how long will be paste stored on the server. Default is 30 minutes,
+ possible values are:
+      \fI30\fR            30 Minutes
+      \fI60\fR             1 Hour
+@@ -35,12 +26,17 @@
+      \fI720\fR           12 Hours
+      \fI1440\fR           1 Day
+      \fI10080\fR          1 Week
+-     \fI40320\fR          1 Month
+-     \fI151200\fR         3 Months
+-     \fI604800\fR         1 Year
+-     \fI1209600\fR        2 Years
+-     \fI1814400\fR        3 Years
+-     \fI0\fR                Never
++     \fI43200\fR          1 Month
++     \fI131040\fR         3 Months (Maximum)
++.TP
++-n \fBNICK\fR
++nickname of the author of the paste
++.TP
++-t \fBTITLE\fR
++name of the paste
++.TP
++-k \fBKEY\fR
++API key to paste as you
+ 
+ .SH EXAMPLES
+ 

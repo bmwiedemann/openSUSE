@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.40.2
+Version:        2.40.4
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
@@ -110,14 +110,6 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         static_lib.patch
-# PATCH-FIX-UPSTREAM util-linux-umount-losetup-lazy-destruction.patch bsc1159034 sbrabec@suse.com -- Document unexpected side effects of lazy destruction.
-Patch12:        util-linux-umount-losetup-lazy-destruction.patch
-# PATCH-FIX-UPSTREAM util-linux-umount-losetup-lazy-destruction-generated.patch bsc1159034 sbrabec@suse.com -- Document unexpected side effects of lazy destruction. (patch generated file)
-Patch13:        util-linux-umount-losetup-lazy-destruction-generated.patch
-# PATCH-FIX-UPSTREAM util-linux-agetty-prevent-cursor-escape.patch bsc1194818 sbrabec@suse.com -- Prevent cursor escape using arrows or escape sequences.
-Patch14:        util-linux-agetty-prevent-cursor-escape.patch
-# PATCH-FIX-UPSTREAM util-linux-lscpu-skip-aarch64-decode.patch bsc1229476 sbrabec@suse.com -- Skip aarch64 decode path for rest of the architectures.
-Patch15:        util-linux-lscpu-skip-aarch64-decode.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

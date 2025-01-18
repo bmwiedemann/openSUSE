@@ -55,7 +55,7 @@ diff -ur Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS.pm Spreadsheet-ReadSX
 --- Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS.pm	2020-10-15 16:17:17.475784988 +0200
 +++ Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS.pm	2020-10-15 16:18:15.296702765 +0200
 @@ -12,7 +12,6 @@
- our $VERSION = '0.38';
+ our $VERSION = '0.39';
  our @CARP_NOT = (qw(XML::Twig));
  
 -use Filter::signatures;

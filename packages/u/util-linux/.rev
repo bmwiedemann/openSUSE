@@ -2660,4 +2660,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1235054</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>cc7b631b766fc6b661ce37486dd39fd1</srcmd5>
+    <version>2.40.4</version>
+    <time>1737135401</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.40.4...</comment>
+    <requestid>1237948</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:20:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid usage of %{_libdir} in a noarch package: noarch cannot rely
+  on libdir, an arch-dependent variable. Rather use %{_prefix}/lib*
+  to remove files. Fixes build with RPM 4.20.
+
+-------------------------------------------------------------------
 Mon Jun 17 22:44:47 UTC 2024 - Tony Jones <tonyj@suse.com>
 
 - Upgrade to version 5.1. See systemtap.changes for changelog 

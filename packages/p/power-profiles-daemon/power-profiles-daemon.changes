@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 16 09:06:42 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Introduce ppd-service as done by tuned-ppd and conflict with it
+  compare with fedora commit:
+  https://src.fedoraproject.org/rpms/power-profiles-daemon/c/
+  f6921ff236aecdf9726119ded97cb93215aa0232?branch=rawhide
+
+-------------------------------------------------------------------
+Mon Jan 13 09:54:13 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.23:
+  * Bugfix release for a performance regression with users who
+    manually adjusted AMD dGPU settings using other software.
+- Drop respect-dpm-manual.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Mon Sep  9 18:54:06 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Add respect-dpm-manual.patch:

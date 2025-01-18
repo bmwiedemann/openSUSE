@@ -139,4 +139,15 @@
     <comment>submit new version 11</comment>
     <requestid>1237339</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>55a8127f10b9e722952d7c2f04d529b7</srcmd5>
+    <version>11.devel25</version>
+    <time>1737135484</time>
+    <user>anag+factory</user>
+    <comment>- Correctly select the base product to install (bsc#1235931)
+
+ - Add missing gems to the gemspec file
+  (gh#agama-project/agama#1899).</comment>
+    <requestid>1238330</requestid>
+  </revision>
 </revisionlist>

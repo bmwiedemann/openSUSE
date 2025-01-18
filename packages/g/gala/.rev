@@ -25,4 +25,16 @@
   * Updated Translations</comment>
     <requestid>1227863</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c70ef9e497b0eedc1905c1f182fb55c</srcmd5>
+    <version>8.1.0</version>
+    <time>1737135499</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.1.0:
+  * Updated translations
+  * Fixed rare crash when a dock window was killed
+  * Added interactive screenshot shortcut
+  * Fixed crash when using tiling shortcuts (forwarded request 1238370 from rrahl0)</comment>
+    <requestid>1238371</requestid>
+  </revision>
 </revisionlist>

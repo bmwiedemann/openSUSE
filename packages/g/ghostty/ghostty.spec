@@ -18,13 +18,7 @@
 
 %global common_build_flags --system %{_builddir}/%{name}-%{version}/vendor/zig/p -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Dversion-string=%{version} %{?_smp_mflags}
 
-%if 0%{?suse_version} >= 1600
-%global terminfo_with_ghostty_version 6.5.20250111
-%bcond_with    standalone_terminfo
-%else
-%global terminfo_with_ghostty_version 0
 %bcond_without  standalone_terminfo
-%endif
 
 Name:           ghostty
 Version:        1.0.1
@@ -65,6 +59,7 @@ BuildRequires:  pkgconfig(zlib)
 %if %{with standalone_terminfo}
 Requires:       terminfo-ghostty = %{version}
 %else
+BuildRequires:  terminfo
 Requires:       terminfo >= %{terminfo_with_ghostty_version}
 %endif
 
@@ -136,7 +131,6 @@ emulator that uses platform-native UI and GPU acceleration.
 %package -n terminfo-ghostty
 Summary:        Terminfo files for ghostty
 BuildArch:      noarch
-Conflicts:      terminfo >= 6.5.20250104
 
 %description -n terminfo-ghostty
 Ghostty is a fast, feature-rich, and cross-platform terminal

@@ -11,18 +11,16 @@ not be available on 32-bit systems on glibc.
 
 Signed-off-by: Alfred Wingate <parona@protonmail.com>
 ---
- configure.ac               |  8 ++++----
- lib/driver/_cdio_generic.c | 12 +-----------
- lib/driver/_cdio_stdio.c   |  6 +-----
+ configure.ac               |    8 ++++----
+ lib/driver/_cdio_generic.c |   12 +-----------
+ lib/driver/_cdio_stdio.c   |    6 +-----
  3 files changed, 6 insertions(+), 20 deletions(-)
 
-diff --git a/configure.ac b/configure.ac
-index 0399a718..5ea300fe 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -547,10 +547,10 @@ AC_DEFINE_UNQUOTED(LIBCDIO_SOURCE_PATH, "$LIBCDIO_SOURCE_PATH",
- 	[Full path to libcdio top_sourcedir.])
- AC_SUBST(LIBCDIO_SOURCE_PATH)
+@@ -539,10 +539,10 @@ AC_SUBST(HAVE_SOLARIS_CDROM)
+ AC_SUBST(HAVE_WIN32_CDROM)
+ AC_SUBST(HAVE_OS2_CDROM)
  
 -AC_CHECK_FUNCS( [chdir drand48 fseeko fseeko64 ftruncate geteuid getgid \
 -		 getuid getpwuid gettimeofday lseek64 lstat memcpy memset mkstemp rand \
@@ -35,8 +33,6 @@ index 0399a718..5ea300fe 100644
  
  # check for timegm() support
  AC_CHECK_FUNC(timegm, AC_DEFINE(HAVE_TIMEGM,1,
-diff --git a/lib/driver/_cdio_generic.c b/lib/driver/_cdio_generic.c
-index 4a7fcadf..f5c8c402 100644
 --- a/lib/driver/_cdio_generic.c
 +++ b/lib/driver/_cdio_generic.c
 @@ -55,16 +55,6 @@
@@ -65,8 +61,6 @@ index 4a7fcadf..f5c8c402 100644
  }
  
  /*!
-diff --git a/lib/driver/_cdio_stdio.c b/lib/driver/_cdio_stdio.c
-index 1d46b156..c26a35d0 100644
 --- a/lib/driver/_cdio_stdio.c
 +++ b/lib/driver/_cdio_stdio.c
 @@ -47,11 +47,7 @@
@@ -82,6 +76,3 @@ index 1d46b156..c26a35d0 100644
  #define CDIO_FSEEK fseeko
  #else
  #define CDIO_FSEEK fseek
--- 
-2.45.1
-

@@ -37,13 +37,12 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.14
+Version:        1.6.15
 Release:        %{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
 Source2:        %{name}.keyring
-Patch1:         gcc-14.patch
 Summary:        IPMI Service Processor, BMC management tool
 License:        GPL-3.0-or-later
 Group:          System/Management

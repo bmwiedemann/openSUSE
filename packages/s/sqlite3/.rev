@@ -1766,4 +1766,41 @@ CVE-2020-13871 boo#1172646</comment>
   https://sqlite.org/forum/forumpost/7b2bab04c5</comment>
     <requestid>1231554</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>843b218fcbff27e90bd574c9d2490c43</srcmd5>
+    <version>3.48.0</version>
+    <time>1737135435</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.48.0:
+  * Improved EXPLAIN QUERY PLAN output for covering indexes.
+  * Allow a two-argument version of the iif() SQL function.
+  * Also allow if() as an alternative spelling for iif().
+  * Add the &quot;.dbtotxt&quot; command to the CLI.
+  * Add the SQLITE_IOCAP_SUBPAGE_READ property to the
+    xDeviceCharacteristics method of the sqlite3_io_methods object.
+  * Add the SQLITE_PREPARE_DONT_LOG option to sqlite3_prepare_v3()
+    that prevents warning messages being sent to the error log if
+    the SQL is ill-formed. This allows sqlite3_prepare_v3() to be
+    used to do test compiles of SQL to check for validity without
+    polluting the error log with false messages.
+  * Increase the minimum allowed value of SQLITE_LIMIT_LENGTH from
+    1 to 30.
+  * Added the SQLITE_FCNTL_NULL_IO file control.
+  * Extend the FTS5 auxiliary API xInstToken() to work with prefix
+    queries via the insttoken configuration option and the
+    fts5_insttoken() SQL function.
+  * Increase the maximum number of arguments to an SQL function
+    from 127 to 1000.
+  * Obsoletes sqlite3-6216bfcb.patch .
+- Re-enable SONAME which got disabled by default in 3.48.0.
+  * https://www.sqlite.org/src/forumpost/5a3b44f510df8ded
+  * https://sqlite.org/forum/forumpost/ab8f15697a  
+
+- Update to release 3.48.0:
+  * Improved EXPLAIN QUERY PLAN output for covering indexes.
+  * Allow a two-argument version of the iif() SQL function.
+  * Also allow if() as an alternative spelling for iif().
+  * Add the &quot;.dbtotxt&quot; command to the CLI.</comment>
+    <requestid>1238215</requestid>
+  </revision>
 </revisionlist>

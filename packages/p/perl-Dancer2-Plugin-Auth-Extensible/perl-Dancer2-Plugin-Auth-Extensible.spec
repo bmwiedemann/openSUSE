@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dancer2-Plugin-Auth-Extensible
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define cpan_name Dancer2-Plugin-Auth-Extensible
 Name:           perl-Dancer2-Plugin-Auth-Extensible
-Version:        0.710
+Version:        0.711.0
 Release:        0
+# 0.711 -> normalize -> 0.711.0
+%define cpan_version 0.711
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extensible authentication framework for Dancer2 apps
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AB/ABEVERLEY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AB/ABEVERLEY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         remove-env-perl.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -74,6 +75,14 @@ Requires:       perl(Try::Tiny)
 Requires:       perl(URI::Escape)
 Requires:       perl(YAML)
 Requires:       perl(namespace::clean)
+Provides:       perl(Dancer2::Plugin::Auth::Extensible) = %{version}
+Provides:       perl(Dancer2::Plugin::Auth::Extensible::Provider::Config) = %{version}
+Provides:       perl(Dancer2::Plugin::Auth::Extensible::Provider::Example) = %{version}
+Provides:       perl(Dancer2::Plugin::Auth::Extensible::Provider::Unix) = %{version}
+Provides:       perl(Dancer2::Plugin::Auth::Extensible::Role::Provider) = %{version}
+Provides:       perl(Dancer2::Plugin::Auth::Extensible::Test) = %{version}
+Provides:       perl(Dancer2::Plugin::Auth::Extensible::Test::App) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -92,7 +101,7 @@ hashed passwords is included, or you can use Crypt::SaltedHash yourself to
 do so, or use the 'slappasswd' utility if you have it installed.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

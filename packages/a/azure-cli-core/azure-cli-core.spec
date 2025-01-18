@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           azure-cli-core
-Version:        2.67.0
+Version:        2.68.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-PyJWT >= 2.1.0
 Requires:       %{pythons}-argcomplete < 4.0
-Requires:       %{pythons}-argcomplete >= 3.3.0
+Requires:       %{pythons}-argcomplete >= 3.5.2
 Requires:       %{pythons}-azure-mgmt-core < 2.0.0
 Requires:       %{pythons}-azure-mgmt-core >= 1.2.0
 Requires:       %{pythons}-azure-nspkg >= 3.0.0
@@ -52,7 +52,7 @@ Requires:       %{pythons}-knack < 1.0.0
 Requires:       %{pythons}-knack >= 0.11.0
 Requires:       %{pythons}-microsoft-security-utilities-secret-masker >= 1.0.0~b2
 Requires:       %{pythons}-msal < 2.0.0
-Requires:       %{pythons}-msal >= 1.31.0
+Requires:       %{pythons}-msal >= 1.31.1
 Requires:       %{pythons}-msal-extensions < 2.0.0
 Requires:       %{pythons}-msal-extensions >= 1.2.0
 Requires:       %{pythons}-msrestazure < 0.7.0

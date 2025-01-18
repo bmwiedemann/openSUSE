@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 16 18:31:32 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 11.0.0
+  - jsc#PED-5899, jsc#PED-8909, jsc#PED-9543, jsc#PED-9854,
+    jsc#PED-9855
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-0-0-2025-01-15
+
+-------------------------------------------------------------------
 Wed Jan  8 14:01:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert from tar_scm to obs_scm: allow OBS internal data

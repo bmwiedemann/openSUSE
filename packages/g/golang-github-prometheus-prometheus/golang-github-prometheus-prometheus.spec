@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-prometheus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0

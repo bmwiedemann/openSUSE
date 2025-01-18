@@ -1,26 +1,20 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/dalance/procs.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.14.8</param>
+    <param name="revision">v0.14.9</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="compression">zst</param>
+    <param name="file">*.tar</param>
   </service>
-  <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">procs</param>
-     <param name="compression">zst</param>
-     <param name="update">true</param>
-	 <param name="filter">true</param>
-  </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">procs</param>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">procs</param>
   </service>
 </services>

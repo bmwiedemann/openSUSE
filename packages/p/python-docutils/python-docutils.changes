@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:00:56 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- fix alternatives
+
+-------------------------------------------------------------------
+Wed Jan 15 13:51:33 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1235783
+
+-------------------------------------------------------------------
 Sun Nov  3 05:32:05 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.21.2:

@@ -190,4 +190,14 @@
   * playground: backport new playground (forwarded request 1234117 from rrahl0)</comment>
     <requestid>1234118</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e8fe526322c437bc65b753716d54ac4f</srcmd5>
+    <version>0.24.7</version>
+    <time>1737135470</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.24.7:
+  * lib: Use inclusive range check for non-empty nodes in next sibling
+    computation (forwarded request 1238373 from rrahl0)</comment>
+    <requestid>1238374</requestid>
+  </revision>
 </revisionlist>

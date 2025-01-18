@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 16 09:30:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.56.1:
+  + Add new API from pango 1.56.0
+  + Regenerate docs.xml and .defs files, using files from pango
+    1.56.0
+  + Replace gtkmm.org by gtkmm.gnome.org
+  + AttrList: Update the documentation
+  + docs/reference/Doxyfile.in: Remove unsupported entries
+- Update URL with new home.
+
+-------------------------------------------------------------------
 Thu Jul 25 17:45:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.54.0:

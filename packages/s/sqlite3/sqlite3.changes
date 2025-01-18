@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:39:29 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Re-enable SONAME which got disabled by default in 3.48.0.
+  * https://www.sqlite.org/src/forumpost/5a3b44f510df8ded
+  * https://sqlite.org/forum/forumpost/ab8f15697a  
+
+-------------------------------------------------------------------
+Tue Jan 14 15:44:26 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to release 3.48.0:
+  * Improved EXPLAIN QUERY PLAN output for covering indexes.
+  * Allow a two-argument version of the iif() SQL function.
+  * Also allow if() as an alternative spelling for iif().
+  * Add the ".dbtotxt" command to the CLI.
+  * Add the SQLITE_IOCAP_SUBPAGE_READ property to the
+    xDeviceCharacteristics method of the sqlite3_io_methods object.
+  * Add the SQLITE_PREPARE_DONT_LOG option to sqlite3_prepare_v3()
+    that prevents warning messages being sent to the error log if
+    the SQL is ill-formed. This allows sqlite3_prepare_v3() to be
+    used to do test compiles of SQL to check for validity without
+    polluting the error log with false messages.
+  * Increase the minimum allowed value of SQLITE_LIMIT_LENGTH from
+    1 to 30.
+  * Added the SQLITE_FCNTL_NULL_IO file control.
+  * Extend the FTS5 auxiliary API xInstToken() to work with prefix
+    queries via the insttoken configuration option and the
+    fts5_insttoken() SQL function.
+  * Increase the maximum number of arguments to an SQL function
+    from 127 to 1000.
+  * Obsoletes sqlite3-6216bfcb.patch .
+
+-------------------------------------------------------------------
 Mon Dec 16 15:40:43 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Add sqlite3-6216bfcb.patch to fix a test suite regression in

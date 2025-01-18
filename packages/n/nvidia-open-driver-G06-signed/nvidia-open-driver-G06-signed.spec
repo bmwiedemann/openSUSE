@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 550.142
+%define gfx_version 550.144.03
 %define cuda_version 565.57.01
 
 %global flavor @BUILD_FLAVOR@%{?nil}

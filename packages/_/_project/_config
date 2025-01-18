@@ -2301,7 +2301,9 @@ BuildFlags: onlybuild:libnl3
 BuildFlags: onlybuild:libnotify
 BuildFlags: onlybuild:libnscd
 BuildFlags: onlybuild:libnss_usrfiles
+BuildFlags: onlybuild:libnvidia-egl-gbm
 BuildFlags: onlybuild:libnvidia-egl-wayland
+BuildFlags: onlybuild:libnvidia-egl-x11
 BuildFlags: onlybuild:libogg
 BuildFlags: onlybuild:libopenmpt
 BuildFlags: onlybuild:liboqs

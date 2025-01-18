@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 18:26:25 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 4.4.38
+  * Fix several "-Wunterminated-string-initialization", which are seen by
+    upcoming GCC 15.x (issue #194).
+  * Fix "-Wmaybe-uninitialized" in crypt.c, which is seen by GCC 13.3.0.
+  * Skip test/explicit-bzero if compiling with ASAN.
+  * Drop hard requirement for the pkg-config binary (issue #198).
+- Use %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Thu Jan  2 14:28:53 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 4.4.37

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jan 17 06:19:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.15:
+  * feat: add v1.10 to supported version
+  * docs: update CLI reference documentation (#807)
+  * chore(deps): update dependency siderolabs/talos to v1.9.2
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.9.2
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.9
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.20.3
+  * chore(container): update bitnami/kubectl docker tag to v1.32.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#799)
+  * docs: update CLI reference documentation (#798)
+  * chore(schema): update talconfig.yaml JSON schema (#797)
+  * docs(config): update documentations
+  * feat(config)!: rename `isoSchematic` to `imageSchematic`
+  * feat(genurl)!: replace `genurl iso` subcommand with `genurl
+    image`
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.8
+  * chore(container): update alpine docker tag to v3.21.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#796)
+  * feat(readme): thank you @roachmanfp for the sponsor!
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.63.4
+  * fix(go): fix go refusing to run
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.9.3
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.5.1
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.63.3
+  * fix(deps): update module github.com/invopop/jsonschema to
+    v0.13.0
+  * chore(schema): update talconfig.yaml JSON schema (#788)
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.9.3
+  * docs(config): add docs for `volumes`
+  * feat(config): ad `volumes` field for `VolumeConfig` manifest
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.14
+  * feat: update Scoop for talhelper version v3.0.14
+  * feat: update flake (#777)
+
+-------------------------------------------------------------------
 Fri Dec 27 12:05:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.14:

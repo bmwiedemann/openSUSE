@@ -98,7 +98,7 @@ Recommends:     python-pyenchant >= 3.2.2
 Recommends:     python-pyparsing >= 3.1.1
 Recommends:     python-ruamel.yaml >= 0.18.5
 Recommends:     python-vobject >= 0.9.6.1
-%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
+%if %{without test} && %{without doc} && ("%{python_flavor}" == "python3" || "%{?python_provides}" == "python3")
 Provides:       translate-toolkit = %{version}-%{release}
 Obsoletes:      translate-toolkit < %{version}-%{release}
 %endif

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XS-Parse-Keyword
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.470.0
+Version:        0.480.0
 Release:        0
-# 0.47 -> normalize -> 0.470.0
-%define cpan_version 0.47
+# 0.48 -> normalize -> 0.480.0
+%define cpan_version 0.48
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing keyword syntax
 URL:            https://metacpan.org/release/%{cpan_name}

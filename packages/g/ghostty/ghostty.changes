@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:44:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- testing shows that we can not rely on the terminfo files coming
+  from the ncurses package. reenable the terminfo-ghostty package 
+  - we drop the conflicts with the terminfo package as the ghostty
+    files should be dropped from that package now.
+
+-------------------------------------------------------------------
 Mon Jan 13 11:49:23 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - now that we have the proper files in the terminfo we can switch

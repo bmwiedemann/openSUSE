@@ -1239,4 +1239,12 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
     <comment></comment>
     <requestid>1236899</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>07ee8458ac78610fa73bfab9cff4ae97</srcmd5>
+    <version>1.56.0+12</version>
+    <time>1737135451</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238322</requestid>
+  </revision>
 </revisionlist>

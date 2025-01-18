@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 12:52:36 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- selinux: Turn recommends for container-selinux into a hard but
+  conditional dependency
+
+-------------------------------------------------------------------
 Thu Dec 19 13:12:09 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - base: suggest tar to avoid busybox-tar in default installs

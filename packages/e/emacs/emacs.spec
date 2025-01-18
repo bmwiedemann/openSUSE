@@ -100,7 +100,11 @@ BuildRequires:  update-desktop-files
 #BuildRequires:  xdotool
 #BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xz
+%if 0%{?suse_version} > 1550
+BuildRequires:  zlib-ng-compat-devel
+%else
 BuildRequires:  zlib-devel
+%endif
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(dbus-1)
@@ -161,6 +165,7 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xxf86vm)
+BuildRequires:  treesitter_grammar(tree-sitter-ruby)
 URL:            http://www.gnu.org/software/emacs/
 Version:        29.4
 Release:        0
@@ -230,7 +235,13 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define appDefaultsDir %{_x11data}/app-defaults
 %define appDefaultsFile %{appDefaultsDir}/Emacs
 %else
+%global inodelib    %(ls -id /%{_lib}/|sed 's@ /.*@@')
+%global inodeusrlib %(ls -id %{_libdir}/|sed 's@ /.*@@')
+%if %inodelib == %inodeusrlib
+%define _x11lib     /%{_lib}
+%else
 %define _x11lib     %{_libdir}
+%endif
 %define _x11data    %{_datadir}/X11
 %define _libx11     %{_exec_prefix}/lib/X11
 %define _x11inc     %{_includedir}
@@ -462,12 +473,13 @@ VERSION=%{version}
 %endif
  CFLAGS="${RPM_OPT_FLAGS} -D_GNU_SOURCE -DGDK_DISABLE_DEPRECATION_WARNINGS -DGLIB_DISABLE_DEPRECATION_WARNINGS"
 LDFLAGS=
-  cflags -pipe                   CFLAGS
-  cflags -Wno-pointer-sign       CFLAGS
-  cflags -Wno-unused-variable    CFLAGS
-  cflags -Wno-unused-label       CFLAGS
-  cflags -fno-optimize-sibling-calls CFLAGS
-  cflags -Wl,-O2		 LDFLAGS
+  cflags -pipe                  CFLAGS
+  cflags -Wno-pointer-sign      CFLAGS
+  cflags -Wno-unused-variable   CFLAGS
+  cflags -Wno-unused-label      CFLAGS
+  cflags -fno-optimize-sibling-calls	CFLAGS
+  cflags -Wl,-O2		LDFLAGS
+  cflags -Wl,--copy-dt-needed-entries	LDFLAGS
 %ifarch ia64
  CFLAGS=$(echo "${CFLAGS}"|sed -r 's/-O[0-9]?/-O1/g')
 %endif

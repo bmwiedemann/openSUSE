@@ -4886,4 +4886,13 @@
   to ../g/ghostty (bug boo#1235689)</comment>
     <requestid>1237393</requestid>
   </revision>
+  <revision rev="281" vrev="54">
+    <srcmd5>d2499b547b4018471a0c77a51740bad3</srcmd5>
+    <version>unknown</version>
+    <time>1737135399</time>
+    <user>anag+factory</user>
+    <comment>- Drop all ghostty terminfo entries as ghostty read also its own
+  termcap files even with terminfo (boo#1235689)</comment>
+    <requestid>1238238</requestid>
+  </revision>
 </revisionlist>

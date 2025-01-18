@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 16 20:45:22 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to 11.0.0
+  - Add all new APIs and constants in libvirt 11.0.0
+  - jsc#PED-5899, jsc#PED-8909, jsc#PED-9543, jsc#PED-9854,
+    jsc#PED-9855
+
+-------------------------------------------------------------------
 Mon Dec  2 18:37:58 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to 10.10.0

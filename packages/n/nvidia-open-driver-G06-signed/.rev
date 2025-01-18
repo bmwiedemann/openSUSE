@@ -616,4 +616,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1237048</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>556ee4093c41344fa8595e1caebb564d</srcmd5>
+    <version>550.144.03</version>
+    <time>1737135479</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.144.03 (bsc#1235461, boo#1235871)
+  * fixes CVE-2024-0131, CVE-2024-0147, CVE-2024-0149,
+    CVE-2024-0150, CVE-2024-53869</comment>
+    <requestid>1238477</requestid>
+  </revision>
 </revisionlist>

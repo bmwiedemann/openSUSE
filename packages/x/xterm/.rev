@@ -1920,4 +1920,13 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>xterm 393 (forwarded request 1187202 from AndreasStieger)</comment>
     <requestid>1187223</requestid>
   </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>94380bc56ef6dcdad9d76a76728dbbe8</srcmd5>
+    <version>393</version>
+    <time>1737135433</time>
+    <user>anag+factory</user>
+    <comment>- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind (forwarded request 1238186 from kukuk)</comment>
+    <requestid>1238187</requestid>
+  </revision>
 </revisionlist>

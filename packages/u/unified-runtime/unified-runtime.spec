@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1600
+%bcond_without opencl_adapter
+%else
+%bcond_with opencl_adapter
+%endif
 Name:           unified-runtime
 Version:        0.11.2
 Release:        0
@@ -27,9 +32,11 @@ Patch1:         remove-link.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  ocl-icd-devel
-BuildRequires:  opencl-headers
 BuildRequires:  unified-memory-framework-devel
+BuildRequires:  pkgconfig
+%if %{with opencl_adapter}
+BuildRequires:  pkgconfig(OpenCL)
+%endif
 
 %description
 oneAPI Unified Runtime (UR) provides a unified interface to device
@@ -80,12 +87,17 @@ This package contains the oneAPI Unified Runtime OpenCL adapter.
 
 %build
 %define __builder ninja
+# the static library is needed by the produced cmake files
+# otherwise, when using find_package, CMake throws an error
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %cmake \
     -DUR_USE_EXTERNAL_UMF=ON \
     -DUR_BUILD_TESTS=OFF \
     -DUR_BUILD_ADAPTER_NATIVE_CPU=ON \
+%if %{with opencl_adapter}
     -DUR_BUILD_ADAPTER_OPENCL=ON \
     -DUR_OPENCL_INCLUDE_DIR=%{_includedir} \
+%endif
     -DCMAKE_SKIP_RPATH=ON
 %cmake_build
 %cmake_build urinfo
@@ -96,11 +108,13 @@ This package contains the oneAPI Unified Runtime OpenCL adapter.
 install -Dm 755 build/bin/urinfo %{buildroot}%{_bindir}/urinfo
 
 rm %{buildroot}%{_includedir}/.clang-format
-rm %{buildroot}%{_libdir}/libur_common.a
 
 %ldconfig_scriptlets -n libur_loader0
 %ldconfig_scriptlets -n libur_adapter_native_cpu0
+
+%if %{with opencl_adapter}
 %ldconfig_scriptlets -n libur_adapter_opencl0
+%endif
 
 %files
 %license LICENSE.TXT
@@ -117,10 +131,14 @@ rm %{buildroot}%{_libdir}/libur_common.a
 
 %dir %{_prefix}/lib/cmake/
 %{_prefix}/lib/cmake/unified-runtime/
-
 %{_libdir}/libur_loader.so
 %{_libdir}/libur_adapter_native_cpu.so
+%{_libdir}/libur_common.a
+
+%if %{with opencl_adapter}
 %{_libdir}/libur_adapter_opencl.so
+%endif
+
 
 %files -n libur_loader0
 %{_libdir}/libur_loader.so.0
@@ -130,8 +148,10 @@ rm %{buildroot}%{_libdir}/libur_common.a
 %{_libdir}/libur_adapter_native_cpu.so.0
 %{_libdir}/libur_adapter_native_cpu.so.0.11.2
 
+%if %{with opencl_adapter}
 %files -n libur_adapter_opencl0
 %{_libdir}/libur_adapter_opencl.so.0
 %{_libdir}/libur_adapter_opencl.so.0.11.2
+%endif
 
 %changelog

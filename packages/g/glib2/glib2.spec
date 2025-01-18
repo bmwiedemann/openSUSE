@@ -1,7 +1,7 @@
 #
 # spec file for package glib2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.82.2
+Version:        2.82.4
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later

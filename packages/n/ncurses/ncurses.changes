@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 12:03:11 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Drop all ghostty terminfo entries as ghostty read also its own
+  termcap files even with terminfo (boo#1235689)
+
+-------------------------------------------------------------------
 Mon Jan 13 08:16:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250111

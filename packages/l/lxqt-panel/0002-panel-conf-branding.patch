@@ -1,0 +1,29 @@
+From 4d8f90e8f087d6259e55a955a75312afb7f9cb79 Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Thu, 16 Jan 2025 09:42:29 -0800
+Subject: [PATCH 2/3] panel conf branding
+
+---
+ panel/resources/panel.conf | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/panel/resources/panel.conf b/panel/resources/panel.conf
+index 2c0799c..c7aadea 100644
+--- a/panel/resources/panel.conf
++++ b/panel/resources/panel.conf
+@@ -8,6 +8,12 @@ desktop=0
+ [fancymenu]
+ type=fancymenu
+ alignment=Left
++buttonsAtTop=false
++categoriesAtRight=false
++icon=/usr/share/lxqt/graphics/opensuse-green.svg
++ownIcon=true
++showText=true
++text=" openSUSE"
+ filterClear=true
+ autoSel=true
+ autoSelDelay=150
+-- 
+2.48.0
+

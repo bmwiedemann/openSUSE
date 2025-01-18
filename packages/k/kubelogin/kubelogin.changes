@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 17:51:26 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Enable CGO because of failed s390x build based on disabled CGO
+- Add ifarch for failing architectures
+
+-------------------------------------------------------------------
 Sat Dec 14 21:24:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.1.6:

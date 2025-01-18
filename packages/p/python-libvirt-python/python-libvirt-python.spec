@@ -1,7 +1,7 @@
 #
 # spec file for package python-libvirt-python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        10.10.0
+Version:        11.0.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later

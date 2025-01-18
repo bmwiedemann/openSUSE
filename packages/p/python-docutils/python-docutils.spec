@@ -1,7 +1,7 @@
 #
 # spec file for package python-docutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,13 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-docutils%{psuffix}
 Version:        0.21.2
 Release:        0
@@ -38,9 +45,14 @@ BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(pre):  update-alternatives
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Recommends:     python-Pillow
 Recommends:     python-Pygments
 Recommends:     python-roman
@@ -102,6 +114,8 @@ done
 # sometime ago rst2html was the master which would let fail the upgrade with master docutils in post below
 %pre
 update-alternatives --query rst2html >/dev/null 2>&1 && update-alternatives --quiet --remove-all rst2html ||:
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative docutils
 
 %post
 %python_install_alternative docutils rst2html rst2latex rst2man rst2odt rst2pseudoxml rst2s5 rst2xetex rst2xml rst2html4 rst2html5

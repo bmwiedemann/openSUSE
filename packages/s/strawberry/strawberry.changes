@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 17 11:28:10 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.6
+
+  + Fixed dragging songs from playlist to queue.
+
+-------------------------------------------------------------------
+Fri Jan 17 02:36:37 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.5
+
+  + Fixed crash when saving playcount or rating to file (#1633).
+  + Fixed QFile::open failing in unit tests.
+  + Fixed playlist sequence settings saved to wrong configuration file (#1649).
+  + Fixed use of deprecated GIO functions with GLib 2.84 and newer.
+
+-------------------------------------------------------------------
 Fri Jan 10 04:59:32 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.4

@@ -133,4 +133,12 @@
   * [Fixed] Build breaks on FreeBSD #703</comment>
     <requestid>1217332</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>60cd78e6c181a6bf2987b83952d66e91</srcmd5>
+    <version>0.14.9</version>
+    <time>1737135497</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238455</requestid>
+  </revision>
 </revisionlist>

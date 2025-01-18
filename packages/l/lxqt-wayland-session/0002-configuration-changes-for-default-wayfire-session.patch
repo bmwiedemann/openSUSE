@@ -1,0 +1,26 @@
+From 38f2d4080029bf38c452c176bc675a2b1bd2c818 Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Wed, 8 Jan 2025 10:47:45 -0800
+Subject: [PATCH 2/4] configuration changes for default wayfire session
+
+Set openSUSE background in default wayfire session
+---
+ configurations/lxqt-wayfire.ini | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configurations/lxqt-wayfire.ini b/configurations/lxqt-wayfire.ini
+index edcbab3..3e531ef 100644
+--- a/configurations/lxqt-wayfire.ini
++++ b/configurations/lxqt-wayfire.ini
+@@ -126,7 +126,7 @@ toggle = <super> <ctrl> KEY_F
+ # Automatically start background and panel.
+ # Set to false if you want to override the default clients.
+ autostart_wf_shell = false
+-splash = swaybg -i /usr/share/lxqt/wallpapers/origami-dark.png
++splash = swaybg -i /usr/share/wallpapers/openSUSEdefault/contents/images/default.png
+ session = lxqt-session && killall wayfire
+ 
+ # Output configuration
+-- 
+2.47.1
+

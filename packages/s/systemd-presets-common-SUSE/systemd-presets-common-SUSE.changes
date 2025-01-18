@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  7 09:43:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove enable nscd, nscd doesn't work anymore with systemd 257
+  [bsc#1234904] 
+
+-------------------------------------------------------------------
 Tue Oct  1 06:51:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable audit-rules: audit-rules has been split form audit with

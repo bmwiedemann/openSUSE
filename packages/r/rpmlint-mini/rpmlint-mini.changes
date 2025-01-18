@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:17:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Include tar and gzip, as rpmlint relies on those tools to unpack
+  rpms when rpm2archive exists (i.e rpm 4.20). The versions in the
+  buildroot might not be suitable (e.g busybox-tar, zstd-gzip).
+
+-------------------------------------------------------------------
 Thu Feb  1 12:02:45 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Don't include copy of libm

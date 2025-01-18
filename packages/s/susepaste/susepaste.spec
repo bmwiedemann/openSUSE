@@ -17,13 +17,14 @@
 
 
 Name:           susepaste
-Version:        0.7
+Version:        20241225
 Release:        0
 Summary:        Script for using openSUSE paste
 License:        GPL-3.0-only
 Group:          Productivity/Other
 URL:            https://github.com/openSUSE/paste
-Source0:        susepaste-script-%{version}.tar.xz
+Source0:        susepaste-script.tar.xz
+Patch1:         update.patch
 Requires:       bash
 Requires:       curl
 BuildArch:      noarch
@@ -46,7 +47,7 @@ A script for using the openSUSE paste service.
 You can paste screenshot of the window or whole desktop.
 
 %prep
-%autosetup -n susepaste-script-%{version} -p 1
+%autosetup -n susepaste-script -p 1
 mv script/gpl-3.0.txt COPYING
 
 %build

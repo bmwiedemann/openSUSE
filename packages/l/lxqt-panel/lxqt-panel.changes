@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 16 17:55:45 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated package to use git_am style patches
+- Dropped:
+  * 001-fix-plugin-loader.patch
+  * 002-panel-conf-branding.patch
+- Added:
+  * 0001-fix-plugin-loader.patch
+  * 0002-panel-conf-branding.patch
+  * 0003-use-wlroots-backend-with-unknown-compositors.patch
+    (https://github.com/lxqt/lxqt-panel/pull/2161)
+
+-------------------------------------------------------------------
 Sat Jan 11 21:26:50 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.1.4:

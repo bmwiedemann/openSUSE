@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 12 05:32:16 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.50.0 (2.05)
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  2.05  2025-01-11
+      - Imported tests/fixes from Text::CSV_XS 1.59
+
+-------------------------------------------------------------------
 Fri Mar  8 23:06:23 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

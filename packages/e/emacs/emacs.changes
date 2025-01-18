@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 13:53:48 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Try to avoid crash on later loaded shared libraries as seen in
+  bug boo#1234865 with libnvidia-tls.so
+
+-------------------------------------------------------------------
 Thu Jan  9 12:26:03 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-29.4-boo1234673.patch

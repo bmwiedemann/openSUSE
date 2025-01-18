@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Jan 17 06:47:38 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.0:
+  * :seedling: bump to go1.23.0 (#203)
+  * fix bingo-upgrade target (#215)
+  * Bump rajatjindal/krew-release-bot from 0.0.46 to 0.0.47 (#214)
+  * Bump k8s.io/apiextensions-apiserver from 0.31.0 to 0.31.1
+    (#209)
+  * Bump github.com/containerd/containerd from 1.7.21 to 1.7.22
+    (#207)
+  * Bump github.com/operator-framework/operator-registry (#206)
+  * Bump github.com/operator-framework/operator-controller (#205)
+  * Bump github.com/operator-framework/operator-controller from
+    0.13.0 to 0.14.0 (#204)
+  * :seedling: update bingo + tools (#202)
+  * Bump github.com/operator-framework/operator-controller (#198)
+  * Bump github.com/operator-framework/operator-registry (#196)
+  * bump to go1.22.5 (#201)
+  * Bump github.com/containerd/containerd from 1.7.20 to 1.7.21
+    (#199)
+  * Bump github.com/onsi/gomega from 1.34.1 to 1.34.2 (#200)
+  * Bump github.com/operator-framework/api from 0.26.0 to 0.27.0
+    (#197)
+  * Bump k8s.io/client-go from 0.30.3 to 0.31.0 (#194)
+  * Bump k8s.io/apimachinery from 0.30.3 to 0.31.0 (#193)
+  * Bump sigs.k8s.io/controller-runtime from 0.18.4 to 0.18.5
+    (#192)
+  * Bump github.com/onsi/gomega from 1.34.0 to 1.34.1 (#191)
+  * Bump github.com/onsi/gomega from 1.33.1 to 1.34.0 (#190)
+  * Bump github.com/containerd/containerd from 1.7.19 to 1.7.20
+    (#189)
+  * Bump k8s.io/apiextensions-apiserver from 0.30.2 to 0.30.3
+    (#186)
+  * Bump github.com/operator-framework/operator-registry (#188)
+  * Bump k8s.io/client-go from 0.30.2 to 0.30.3 (#187)
+  * Bump github.com/operator-framework/operator-controller (#183)
+  * Bump github.com/operator-framework/operator-controller (#179)
+    (#182)
+  * Bump github.com/operator-framework/operator-controller (#179)
+  * Bump github.com/operator-framework/operator-registry (#180)
+  * Bump actions/add-to-project from 1.0.1 to 1.0.2 (#178)
+  * Bump github.com/spf13/cobra from 1.8.0 to 1.8.1 (#176)
+  * Bump k8s.io/apiextensions-apiserver from 0.30.1 to 0.30.2
+    (#172)
+  * Bump k8s.io/client-go from 0.30.1 to 0.30.2 (#174)
+  * Bump github.com/operator-framework/api from 0.25.0 to 0.26.0
+    (#175)
+  * Bump sigs.k8s.io/controller-runtime from 0.18.3 to 0.18.4
+    (#170)
+  * Bump github.com/containerd/containerd from 1.7.17 to 1.7.18
+    (#169)
+  * Bump github.com/operator-framework/operator-registry (#167)
+  * Bump sigs.k8s.io/controller-runtime from 0.18.2 to 0.18.3
+    (#168)
+  * Bump github.com/operator-framework/api from 0.24.0 to 0.25.0
+    (#166)
+  * Bump github.com/operator-framework/operator-registry (#165)
+  * Bump github.com/containerd/containerd from 1.7.16 to 1.7.17
+    (#164)
+  * Bump k8s.io/apiextensions-apiserver from 0.30.0 to 0.30.1
+    (#163)
+  * Bump k8s.io/client-go from 0.30.0 to 0.30.1 (#160)
+  * Bump github.com/operator-framework/operator-controller (#157)
+  * Bump github.com/operator-framework/operator-registry (#162)
+  * Bump k8s.io/apimachinery from 0.30.0 to 0.30.1 (#158)
+  * Bump k8s.io/api from 0.30.0 to 0.30.1 (#161)
+  * Bump github.com/operator-framework/api from 0.23.0 to 0.24.0
+    (#153)
+  * Bump sigs.k8s.io/controller-runtime from 0.18.0 to 0.18.2
+    (#155)
+  * Bump github.com/operator-framework/operator-registry (#149)
+  * bump k8s apis to 1.30 and controller-runtime to 0.18.0 (#146)
+
+-------------------------------------------------------------------
 Tue Apr 30 19:14:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.1:

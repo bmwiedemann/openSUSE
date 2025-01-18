@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 14 13:30:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.
+
+-------------------------------------------------------------------
 Tue Feb 27 11:10:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

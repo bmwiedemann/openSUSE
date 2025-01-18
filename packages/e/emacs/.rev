@@ -2080,4 +2080,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * Avoid that Emacs recompiles some packages on every startup (boo#1234673)</comment>
     <requestid>1236885</requestid>
   </revision>
+  <revision rev="198" vrev="13">
+    <srcmd5>bc7297722a0f64833efb6b89076e2048</srcmd5>
+    <version>29.4</version>
+    <time>1737135421</time>
+    <user>anag+factory</user>
+    <comment>- Try to avoid crash on later loaded shared libraries as seen in
+  bug boo#1234865 with libnvidia-tls.so</comment>
+    <requestid>1238087</requestid>
+  </revision>
 </revisionlist>

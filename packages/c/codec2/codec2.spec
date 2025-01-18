@@ -1,7 +1,7 @@
 #
 # spec file for package codec2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Release:        0
 Summary:        Low bit rate speech codec
 # octave/plot_fsk_demod_stats.py is GPL-3.0-or-later, unused
 License:        LGPL-2.1-only
-Group:          Productivity/Hamradio/Other
 URL:            https://rowetel.com/codec2.html
 Source:         https://github.com/drowe67/codec2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
@@ -31,6 +30,7 @@ Patch0:         codec2-1.2.0-install-binaries.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.13
 BuildRequires:  pkgconfig
+%{?suse_build_hwcaps_libs}
 
 %description
 Codec 2 is a speech codec designed for communications quality speech
@@ -38,7 +38,6 @@ between 700 and 3200 bit/s.
 
 %package -n %{libname}
 Summary:        Low bit rate speech codec
-Group:          System/Libraries
 
 %description -n %{libname}
 Codec 2 is a speech codec designed for communications quality speech
@@ -46,7 +45,6 @@ between 700 and 3200 bit/s.
 
 %package devel
 Summary:        Development library for codec2
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel

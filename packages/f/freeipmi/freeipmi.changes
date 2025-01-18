@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 16 21:37:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeimpi 1.6.15:
+  * In ipmi-config, fix incorrect output of
+    IPv6_Dynamic_Address_Source_Type
+  * In ipmi-oem, increase precision of Dell cumulative energy
+    output
+  * Do not advertise options that are only available when special
+    debugging is compiled into FreeIPMI
+  * libfreeipmi: remove unnecessary / duplicate parameter checks
+  * Minor documentation updates
+- drop gcc-14.patch
+
+-------------------------------------------------------------------
 Mon Jun  3 14:40:55 UTC 2024 - Klaus Kämpf <kkaempf@suse.com>
 
 - use %autosetup

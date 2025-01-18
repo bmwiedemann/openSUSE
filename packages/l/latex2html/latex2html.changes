@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 16 08:20:44 UTC 2025 - ming li <mli@suse.com>
+
+- Update to version 2025
+  * generate a numeric char reference for chars not found in the
+    output character encoding.
+  * fix \'{\i}
+  * switch --entities no longer makes accents like &iacute;
+  * fix \verb&A&
+  * avoid processing eqnarray* as one image, make layout consistent
+    with eqnarray
+
+-------------------------------------------------------------------
 Thu Oct 24 09:11:53 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 2024.2

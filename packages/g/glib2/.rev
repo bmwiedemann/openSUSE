@@ -2355,4 +2355,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
   if libgio is uninstalled first (bsc#1231463). (forwarded request 1226951 from mgorse)</comment>
     <requestid>1227081</requestid>
   </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>ce83e411083695759bc1e63e87c32cff</srcmd5>
+    <version>2.82.4</version>
+    <time>1737135462</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238342</requestid>
+  </revision>
 </revisionlist>

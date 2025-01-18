@@ -108,4 +108,12 @@
     <comment></comment>
     <requestid>1101653</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ce6b211e413b4e74399bd3858a96f913</srcmd5>
+    <version>1.2.0</version>
+    <time>1737135431</time>
+    <user>anag+factory</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
+    <requestid>1238184</requestid>
+  </revision>
 </revisionlist>

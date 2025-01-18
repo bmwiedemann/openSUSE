@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 10 18:46:12 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Added the static library to the devel package
+
+-------------------------------------------------------------------
+Mon Jan  6 17:06:15 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Build OpenCL adapter only on supported platforms (OpenCL 3.0)
+
+-------------------------------------------------------------------
 Sat Jan  4 01:01:14 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Initial packaging at v0.11.2 
+- Initial packaging at v0.11.2

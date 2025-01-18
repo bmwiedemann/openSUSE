@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 10 18:14:36 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Remove remove-env-perl.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sat Aug 31 05:32:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.711.0 (0.711)
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-Auth-Extensible/Changes
+
+  0.711 Thu 29 Aug 10:28:00 BST 2024
+
+      [BUG FIXES]
+
+      * Ensure uninit warnings not emitted
+
+-------------------------------------------------------------------
 Sun May 16 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.710

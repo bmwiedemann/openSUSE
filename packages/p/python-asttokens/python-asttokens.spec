@@ -1,7 +1,7 @@
 #
 # spec file for package python-asttokens
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-asttokens
-Version:        2.4.1
+Version:        3.0.0
 Release:        0
 Summary:        Annotate AST trees with source code positions
 License:        Apache-2.0
@@ -34,14 +33,10 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-## Manual Begin
-Requires:       python-six
-## Manual End
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,6 +61,7 @@ export LC_ALL=en_US.utf8
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/asttokens-%{version}-*-info
+%{python_sitelib}/asttokens
 
 %changelog

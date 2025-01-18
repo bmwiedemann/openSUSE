@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jan 14 22:29:47 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.40.4:
+  * agetty: Prevent cursor escape (bsc#1194818, drop
+    util-linux-agetty-prevent-cursor-escape.patch)
+    add "systemd" to --version output\
+  * chcpu(8): Document CPU deconfiguring behavior
+  * fdisk: SGI fixes
+  * hardlink: fix memory corruption
+  * hardlink.1 directory|file is mandatory
+  * lib/env: fix env_list_setenv() for strings without '='
+  * libblkid:
+    (exfat) validate fields used by prober
+    (gpt) use blkid_probe_verify_csum() for partition array
+     checksum
+    add FSLASTBLOCK for swaparea
+    bitlocker fix version on big-endian systems
+  * libfdisk: make sure libblkid uses the same sector size
+  * libmount:
+    extract common error handling function
+    propagate first error of multiple filesystem types
+  * logger: correctly format tv_usec
+  * lscpu: Skip aarch64 decode path for rest of the architectures
+    (bsc#1229476, drop util-linux-lscpu-skip-aarch64-decode.patch)
+  * lsns: ignore ESRCH errors reported when accessing files under
+    /proc
+  * mkswap: set selinux label also when creating file
+  * more: make sure we have data on stderr
+  * nsenter: support empty environ
+  * umount, losetup: Document loop destroy behavior
+    (bsc#1159034, drop
+    util-linux-umount-losetup-lazy-destruction.patch,
+    util-linux-umount-losetup-lazy-destruction-generated.patch).
+  * uuidd: fix /var/lib/libuuid mode uuidd-tmpfiles.conf
+    fix /var/lib/libuuid mode uuidd-tmpfiles.conf
+  * Many other fixes, improvements and code cleanup. For the
+    complete list see
+    https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.40/v2.40.3-ReleaseNotes
+    https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.40/v2.40.4-ReleaseNotes
+  - Refresh util-linux.keyring. Key validity was extended.
+
+-------------------------------------------------------------------
 Sun Nov 17 21:06:01 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - Skip aarch64 decode path for rest of the architectures

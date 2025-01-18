@@ -1578,4 +1578,19 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1236757</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>75f63eda7c41de2bb650f704279a83f6</srcmd5>
+    <version>1.2.6</version>
+    <time>1737135495</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.6
+  + Fixed dragging songs from playlist to queue.
+- Update to version 1.2.5
+  + Fixed crash when saving playcount or rating to file (#1633).
+  + Fixed QFile::open failing in unit tests.
+  + Fixed playlist sequence settings saved to wrong configuration file (#1649).
+  + Fixed use of deprecated GIO functions with GLib 2.84 and newer.
+</comment>
+    <requestid>1238472</requestid>
+  </revision>
 </revisionlist>

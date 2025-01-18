@@ -1,7 +1,7 @@
 #
 # spec file for package cdio-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define cdioutils 1
 Name:           cdio-utils
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Utility programs making use of libcdio, a CD-ROM access library
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://savannah.gnu.org/projects/libcdio
-Source0:        https://ftp.gnu.org/gnu/libcdio/libcdio-%{version}.tar.bz2
-Source1:        https://ftp.gnu.org/gnu/libcdio/libcdio-%{version}.tar.bz2.sig
-Source2:        libcdio.keyring
+Source0:        https://github.com/libcdio/libcdio/releases/download/%{version}/libcdio-%{version}.tar.bz2
 Source4:        baselibs.conf
 Patch0:         c99.patch
 BuildRequires:  fdupes
@@ -76,7 +74,7 @@ rm -rf %{buildroot}%{_libdir} %{buildroot}%{_includedir} %{buildroot}%{_infodir}
 %fdupes -s %{buildroot}%{_mandir}
 
 %files -n cdio-utils
-%doc AUTHORS NEWS.md README README.libcdio THANKS TODO
+%doc AUTHORS THANKS TODO ChangeLog NEWS.md README-libcdio.md README.md
 %license COPYING*
 %{_bindir}/cd-*
 %{_bindir}/cdda-*

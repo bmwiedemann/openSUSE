@@ -64,8 +64,8 @@
 -    LD_SWITCH_X_SITE_RPATH=-Wl,-rpath,`
 -      AS_ECHO(["$x_libraries"]) | sed -e 's/:/ -Wl,-rpath,/g'
 -    `
-+    LD_SWITCH_X_SITE="-L ${x_libraries%%:*}"
-+    LD_SWITCH_X_SITE_RPATH="-Wl,-rpath-link,${x_libraries%%:*}"
++    LD_SWITCH_X_SITE=""
++    LD_SWITCH_X_SITE_RPATH=""
    fi
    x_default_search_path=""
    x_search_path=${x_libraries}

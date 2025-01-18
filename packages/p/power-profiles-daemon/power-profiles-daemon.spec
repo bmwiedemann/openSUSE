@@ -1,7 +1,7 @@
 #
 # spec file for package power-profiles-daemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           power-profiles-daemon
-Version:        0.22
+Version:        0.23
 Release:        0
 Summary:        Power profiles handling over D-Bus
 License:        GPL-3.0-or-later
@@ -25,8 +25,6 @@ URL:            https://gitlab.freedesktop.org/upower/power-profiles-daemon
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE hold-profile-hardening.patch boo#1189900 -- Hardening of HoldProfile D-Bus method
 Patch0:         hold-profile-hardening.patch
-# PATCH-FIX-UPSTREAM respect-dpm-manual.patch -- based on commit 21b58819 glfo#upower/power-profiles-daemon#163 : Don't override user settings for dpm if set to manual
-Patch1:         https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/commit/21b58819edcbbd87fc161474d1501debfd9b84b7.patch#/respect-dpm-manual.patch
 BuildRequires:  c_compiler
 BuildRequires:  cmake
 BuildRequires:  gtk-doc
@@ -47,6 +45,8 @@ BuildRequires:  pkgconfig(umockdev-1.0)
 BuildRequires:  pkgconfig(upower-glib)
 Requires:       polkit
 Requires:       python3-gobject
+Conflicts:      ppd-service
+Provides:       ppd-service
 
 %description
 power-profiles-daemon offers to modify system behaviour based upon user-selected

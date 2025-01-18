@@ -1,7 +1,7 @@
 #
 # spec file for package xterm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -50,7 +50,9 @@ BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
+%endif
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
@@ -109,7 +111,9 @@ bunzip2 %{basename:%{SOURCE8}} %{basename:%{SOURCE9}}
     --enable-mini-luit \
     --enable-sco-fkeys \
     --enable-wide-chars \
+%if 0%{?suse_version} < 1600
     --with-utempter \
+%endif
     --with-tty-group=tty \
     --with-app-defaults=%{xappdefs} \
     --enable-backarrow-is-erase \

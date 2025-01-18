@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Pluggable
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Module-Pluggable
 Name:           perl-Module-Pluggable
-Version:        6.200.0
+Version:        6.300.0
 Release:        0
-# 6.2 -> normalize -> 6.200.0
-%define cpan_version 6.2
+# 6.3 -> normalize -> 6.300.0
+%define cpan_version 6.3
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Automatically give your module the ability to have plugins
 URL:            https://metacpan.org/release/%{cpan_name}

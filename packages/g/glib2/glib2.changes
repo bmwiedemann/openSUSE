@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jan 15 18:14:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.82.4:
+  + Fix a double-unref crash which affects many apps which use
+    pygobject to export objects on D-Bus
+  + Bugs fixed:
+    - Fix regression: lollypop crashes on startup
+    - Revert "gdbus: Fix leak of method invocation when registering
+      an object with closures"
+    - ci: Add release component to automate tarball publishing
+
+-------------------------------------------------------------------
+Mon Dec  9 16:41:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.82.3:
+  + Fix compatibility with tzdata 2024b
+  + Bugs fixed:
+    - Test regressions with tzdata 2024b
+    - gdatetime test: Do not assume PST8PDT was always exactly
+      -8/-7
+    - glib: Don't require GLIB_DOMAIN to be a NUL-terminated string
+    - gio: Fix GFileEnumerator leaks in gio tools
+    - macos: Remove extraous space from type identifier
+    - refstring: Fix race between releasing and re-acquiring an
+      interned GRefString
+    - appmonitor: Fix warning building test
+    - grefstring: Mark a variable as potentially unused
+    - gdbus: Fix leak of method invocation when registering an
+      object with closures
+
+-------------------------------------------------------------------
 Wed Nov 27 17:40:33 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Have the glib2-tools postun trigger exit normally if

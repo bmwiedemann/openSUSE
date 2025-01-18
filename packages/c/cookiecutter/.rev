@@ -173,4 +173,13 @@
   all code was verified to match pep8, pep257 and other code-styling guides.</comment>
     <requestid>1161152</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ddefa67dedf45f7c494961cc0ebd0a30</srcmd5>
+    <version>2.6.0</version>
+    <time>1737135491</time>
+    <user>anag+factory</user>
+    <comment>- Drop unneeded BuildRequires on recommonmark, it was dropped back in
+  2.2.0.</comment>
+    <requestid>1238358</requestid>
+  </revision>
 </revisionlist>

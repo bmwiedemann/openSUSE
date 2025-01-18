@@ -1,7 +1,7 @@
 #
 # spec file for package pangomm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.54.0
+Version:        2.56.1
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            https://www.gtkmm.org
+URL:            https://gtkmm.gnome.org
 Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  c++_compiler
