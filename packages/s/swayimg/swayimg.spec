@@ -1,6 +1,7 @@
 #
 # spec file for package swayimg
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %bcond_with test
 Name:           swayimg
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -42,6 +43,7 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libsixel)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpdemux)

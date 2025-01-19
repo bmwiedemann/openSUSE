@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 19 18:24:02 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.7:
+  * Improved anti-aliasing (enabled by default now);
+  * Added support for persistent thumbnail cache (disabled by
+    default);
+  * Added support for fractional scale output (HiDPI);
+  * Added support for text comments embedded in PNG images;
+  * Added window decorations (title and borders, disabled by
+    default);
+  * Added sixel image format support;
+  * Added support for preserving scale across images;
+  * Fixed BMP format decoder;
+  * Fixed bug with opening special files;
+  * Use absolute path in file info block and exec action.
+- Add pkgconfig(libsixel) BuildRequires: enable sixel image support
+
+-------------------------------------------------------------------
 Sun Dec  8 21:46:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.6:
