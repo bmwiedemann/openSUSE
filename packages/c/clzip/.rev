@@ -118,4 +118,12 @@
     <comment>- Update to release 1.14</comment>
     <requestid>1145184</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d23fd1c591c52f8431efd4717e5a12c3</srcmd5>
+    <version>1.15</version>
+    <time>1737319828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.15</comment>
+    <requestid>1238835</requestid>
+  </revision>
 </revisionlist>

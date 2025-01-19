@@ -1,7 +1,7 @@
 #
 # spec file for package clzip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           clzip
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Lossless Data Compressor based on LZMA
 License:        GPL-2.0-or-later
