@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 19 04:39:27 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250115.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250115
+  * Added 3.3.7
+- Changes from version 20250114:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250114
+  * Fix library lookup path in vendored OpenSSL on Linux by @mislav in #2493 #2496
+  * `script/update-cruby`: improve curl HTTP error handling by @kou029w in #2483
+
+-------------------------------------------------------------------
 Thu Dec 26 00:12:43 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20241225.2.

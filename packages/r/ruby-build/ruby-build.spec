@@ -1,7 +1,7 @@
 #
 # spec file for package ruby-build
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20241225.2
+Version:        20250115
 Release:        0
 BuildArch:      noarch
 License:        MIT
