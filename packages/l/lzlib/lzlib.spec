@@ -1,7 +1,7 @@
 #
 # spec file for package lzlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define lname liblz1
 Name:           lzlib
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        LZMA Compression and Decompression Library
 License:        BSD-2-Clause AND GPL-2.0-or-later
@@ -90,8 +90,7 @@ pushd build/
 %make_build check
 popd
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %post devel
 %install_info --info-dir="%_infodir" "%_infodir/%name.info%ext_info"
