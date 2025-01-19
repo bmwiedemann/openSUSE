@@ -2295,6 +2295,7 @@ unsorted:
   - clingo 
   - clingo-devel 
   - clipgrab 
+  - cliphist 
   - clipman 
   - clipped 
   - clipped-lang 
@@ -13977,6 +13978,7 @@ unsorted:
   - libheif-devel 
   - libheif1-32bit 
   - libhfst55 
+  - libhfst_c0 
   - libhfstospell11 
   - libhfstospell11-32bit 
   - libhibr-devel 
@@ -47276,8 +47278,6 @@ unsorted:
   - thunar-devel 
   - thunar-font-manager 
   - thunar-plugin-dropbox 
-  - thunar-plugin-vcs 
-  - thunar-plugin-vcs-lang 
   - thunar-sendto-clamtk 
   - thunar-shares-plugin 
   - thunar-shares-plugin-lang 
