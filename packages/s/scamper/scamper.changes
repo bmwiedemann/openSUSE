@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Jan 12 13:46:25 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to scamper 20250106:
+ * scamper:
+  * handle many ports in BPF compiler better.
+  * remove cycles, autoreload features from file input sources.
+  * do not compile in support for select(2) by default (saving CPU and
+    memory in the default use).
+  * normalize kqueue(2) / epoll(2) code paths.
+  * use IP_RECVIF on platforms (FreeBSD) that don't have IP_PKTINFO.
+  * remove sig_tx_ip_src from task signature structure, nothing used it.
+  * add holdtime (-H) parameter back to scamper, will controls the
+    length of time that scamper will hold task signatures before
+    allowing a follow up measurement to use the same signature.  5
+    seconds by default, disable with zero (to save memory and CPU).
+  * fix compilation when platform has IPV6_PKTINFO but not
+    IPV6_RECVPKTINFO setsockopt (old platforms).
+  * replace calls to getaddrinfo AI_NUMERICHOST with calls to inet_pton
+    (fixes complilation on old MacOS, and is probably the faster
+    solution generally).
+  * increase pps-max (scamper -p) to 50,000.
+  * adjust timestamps using datalink timestamps when using
+    trace -N <squeries>.
+  * reduce memory use in storing traceroute state.
+  * remove per-measurement pktbufs, to save a tiny amount of memory.
+  * refactor BPF compiler to make it more obvious what is going on.
+  * refactor ping task signatures to make it more obvious what is going
+    on.
+  * refactor scamper's timeout calculation to make it more obvious what
+    is going on.
+  * move output of done tasks into its own function to make it more
+    obvious what is going on.
+ * throughout:
+  * reduce memory use in dlist_t, splaytree_t, heap_t.
+  * rearrange header include order in mjl_heap.c, mjl_list.c,
+    mjl_patricia.c, mjl_prefixtree.c, mjl_splaytree.c so that asserts
+    are not compiled in by default (saving CPU).
+  * update string_concat code reduce use of vsnprintf, which will
+    reduce CPU use in things like rendering json.
+  * remove hardly-used onremove callback support from [cds]list_t,
+    splaytree_t, heap_t, saving memory / CPU.
+ * libscamperfile, libscamperctrl:
+  * bump library version because underlying code changed (API did not)
+ * tests:
+  * add string_concat test to unit_string.
+  * add unit_splaytree, unit_heap, unit_http_warts, unit_ping_warts,
+    unit_trace_warts, unit_udpprobe_warts tests.  http, trace, and
+    udpprobe warts unit tests were contributed by Marcus Luckie.
+  * add fuzz_warts for fuzzing libscamperfile, contributed by Marcus
+    Luckie.
+
+-------------------------------------------------------------------
 Sat Nov 16 17:58:30 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20241112:
