@@ -1,7 +1,7 @@
 #
 # spec file for package lziprecover
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,9 @@
 #
 
 
+%bcond_without tests
 Name:           lziprecover
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        Utility to repair broken lzip files
 License:        GPL-2.0-or-later
@@ -28,6 +29,9 @@ Source:         http://download.savannah.gnu.org/releases/lzip/lziprecover/%name
 Source2:        http://download.savannah.gnu.org/releases/lzip/lziprecover/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 BuildRequires:  gcc-c++
+%if %{with tests}
+BuildRequires:  lzip >= 1.16
+%endif
 Requires(post): info
 Requires(preun):info
 
@@ -68,10 +72,12 @@ pushd build/
 %make_install
 popd
 
+%if %{with tests}
 %check
 pushd build/
-make %{?_smp_mflags} check
+%make_build check
 popd
+%endif
 
 %post
 %install_info --info-dir="%_infodir" "%_infodir/%name".info*

@@ -79,4 +79,12 @@
     <comment>- Update to release 1.24</comment>
     <requestid>1145186</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6747f3575ac29e8c2da189c09a9bcb8f</srcmd5>
+    <version>1.25</version>
+    <time>1737319829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.25</comment>
+    <requestid>1238837</requestid>
+  </revision>
 </revisionlist>

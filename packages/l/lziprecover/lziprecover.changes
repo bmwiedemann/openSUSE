@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:48:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25
+  * Added new options: -F/--fec, -0 .. -9, -b/--block-size,
+    --fec-file, -r/--recursive, -R/--dereference-recursive.
+  * The short name of option `--byte-repair` has been changed to
+    `-B`.
+  * The option `--byte-repair` now repairs a nonzero first LZMA
+    byte.
+  * When decompressing, testing, or listing, lziprecover now exits
+    with error status 2 if any empty member is found in a regular
+    multimember file unless `-i` is given.
+  * When decompressing or testing, lziprecover now exits with error
+    status 2 if the first byte of the LZMA stream is not 0 unless
+    `-i` is given.
+  * The option `--clear-marking` has been renamed to
+    `--nonzero-repair`.
+  * Options `--empty-error` and `--marking-error` have been removed.
+
+-------------------------------------------------------------------
 Thu Feb  8 13:21:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.24
