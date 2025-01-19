@@ -110,4 +110,12 @@
     <comment>- Update to release 1.11</comment>
     <requestid>1145191</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7704db861994b5a351027ad6b4488c79</srcmd5>
+    <version>1.12</version>
+    <time>1737319831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release 1.12</comment>
+    <requestid>1238839</requestid>
+  </revision>
 </revisionlist>

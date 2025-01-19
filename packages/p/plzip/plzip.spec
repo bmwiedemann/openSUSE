@@ -1,7 +1,7 @@
 #
 # spec file for package plzip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           plzip
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Parallel LZMA Data Compressor
 License:        GPL-2.0-or-later
