@@ -16,8 +16,6 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define cli_package_name woodpecker-cli
 %define cli_executable_name woodpecker-cli
 
@@ -28,7 +26,7 @@
 %define server_executable_name woodpecker-server
 
 Name:           woodpecker
-Version:        2.8.3
+Version:        3.0.0
 Release:        0
 Summary:        Simple yet powerful CI/CD engine with great extensibility
 License:        Apache-2.0
@@ -88,21 +86,21 @@ tar xvf %{SOURCE2}
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X go.woodpecker-ci.org/woodpecker/v2/version.Version=v%{version}" \
+   -ldflags="-X go.woodpecker-ci.org/woodpecker/v3/version.Version=v%{version}" \
    -o bin/%{cli_executable_name} ./cmd/cli
 
 # Agent executable
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X go.woodpecker-ci.org/woodpecker/v2/version.Version=v%{version}" \
+   -ldflags="-X go.woodpecker-ci.org/woodpecker/v3/version.Version=v%{version}" \
    -o bin/%{agent_executable_name} ./cmd/agent
 
 # Server
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X go.woodpecker-ci.org/woodpecker/v2/version.Version=v%{version}" \
+   -ldflags="-X go.woodpecker-ci.org/woodpecker/v3/version.Version=v%{version}" \
    -o bin/%{server_executable_name} ./cmd/server
 
 # system-user

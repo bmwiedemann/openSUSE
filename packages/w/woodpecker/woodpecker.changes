@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:37:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.0:
+  Major update, full changelog is here:
+  https://github.com/woodpecker-ci/woodpecker/releases/tag/v3.0.0
+  * Breaking changes
+    - Add rootless (alpine) images [#4617]
+    - Unify CLI bin name [#4673]
+    - Support Git as only VCS [#4346]
+    - Add rolling semver tags, remove latest tag [#4600]
+    - Drop native Let's Encrypt support [#4541]
+    - Require approval for prs from public repos by default [#4456]
+    - Do not set empty environment variables [#4193]
+    - Unify cli commands and flags [#4481]
+    - Move pipeline logs command [#4480]
+    - Fix woodpecker-go repo model to match server [#4479]
+    - Restructure cli commands [#4467]
+    - Add pagination options to all supported endpoints in sdk
+      [#4463]
+    - Allow to set custom trusted clone plugins [#4352]
+    - Add PipelineListsOptions to woodpecker-go [#3652]
+    - Remove secrets in favor of from_secret [#4363]
+    - Kubernetes | Docker: Add support for rootless images [#4151]
+    - Split repo trusted setting [#4025]
+    - Move docker resource limit settings from server to agent
+      [#3174]
+    - Set /woodpecker as default workdir for the woodpecker-cli
+      container [#4130]
+    - Require upgrade from 2.x [#4112]
+    - Don't expose task data via api [#4108]
+    - Remove some ci environment variables [#3846]
+    - Remove all default privileged plugins [#4053]
+    - Add option to filter secrets by plugins with specific tags
+      [#4069]
+    - Remove old pipeline options [#4016]
+    - Remove various deprecations [#4017]
+    - Drop repo name fallback for hooks [#4013]
+    - Improve local backend detection [#4006]
+    - Refactor JSON and SDK fields [#3968]
+    - Migrate to maintained cron lib and remove seconds [#3785]
+    - Switch to profile-based AppArmor configuration [#4008]
+    - Remove Kubernetes default image pull secret name regcred
+      [#4005]
+    - Drop "WOODPECKER_WEBHOOK_HOST" env var and adjust docs
+      [#3969]
+    - Drop version in schema [#3970]
+    - Update docker to v27 [#3972]
+    - Require gitlab 12.4 [#3966]
+    - Migrate to maintained httpsign library [#3839]
+    - Remove WOODPECKER_DEV_OAUTH_HOST and
+      WOODPECKER_DEV_GITEA_OAUTH_URL [#3961]
+    - Remove deprecated pipeline keywords: pipeline:, platform:,
+      branches: [#3916]
+    - server: remove old unused routes [#3845]
+    - CLI: remove step-id and add step-number as option to logs
+      [#3927]
+  * Security
+    - Don't log DB passwords [#4583]
+    - Do not log forge tokens [#4551]
+    - Add server config to disable user registered agents [#4206]
+    - chore: fix http-proxy-middleware CVE [#4257]
+    - Allow altering trusted clone plugins and filter them via tag
+      [#4074]
+    - Update gitea sdk [#4012]
+    - Update Forgejo SDK [#3948]
+  * Features
+    - Add user as docker backend_option [#4526]
+    - Add dns config option to official feature set [#4418]
+    - Implement org/user agents [#3539]
+    - Replay pipeline using cli exec by downloading metadata
+      [#4103]
+    - Update clone plugin to support sha256 [#4136]
+
+-------------------------------------------------------------------
 Mon Jan 13 06:21:12 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.3:
