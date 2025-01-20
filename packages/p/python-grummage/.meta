@@ -1,0 +1,8 @@
+<package name="python-grummage" project="openSUSE:Factory">
+  <title>Interactive terminal frontend to Grype</title>
+  <description>Grype + Rummage = Grummage.
+
+Grummage is an interactive terminal frontend to Grype.</description>
+  <devel project="devel:kubic" package="python-grummage"/>
+  <url>https://github.com/popey/grummage</url>
+</package>
