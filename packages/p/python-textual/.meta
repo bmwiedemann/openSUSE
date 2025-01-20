@@ -1,0 +1,10 @@
+<package name="python-textual" project="openSUSE:Factory">
+  <title>TUI framework for Python</title>
+  <description>Textual is a Python framework for creating interactive applications that run in your terminal.
+
+It adds interactivity to Rich with a Python API inspired by modern web development.
+
+On modern terminal software (installed by default on most systems), Textual apps can use 16.7 million colors with mouse support and smooth flicker-free animation. A layout engine and re-usable components make it possible to build apps that resemble the desktop and web experience.</description>
+  <devel project="devel:languages:python" package="python-textual"/>
+  <url>https://github.com/Textualize/textual</url>
+</package>
