@@ -1,0 +1,27 @@
+From 6cc307548a490ddaf2054ead00b8e354b494e5bc Mon Sep 17 00:00:00 2001
+From: Bohumir Zamecnik <bohumir.zamecnik@gmail.com>
+Date: Thu, 16 Jan 2025 16:52:41 +0700
+Subject: [PATCH] Fix: Remove image.copy() argument in poppler 25.01
+
+- from poppler changelog: "Remove rect parameter from image::copy,
+  it was never implemented"
+---
+ src/cpp/image.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/cpp/image.cpp b/src/cpp/image.cpp
+index 725359b..91131f4 100644
+--- a/src/cpp/image.cpp
++++ b/src/cpp/image.cpp
+@@ -102,7 +102,11 @@ PYBIND11_MODULE(image, m)
+         .def(py::init<int, int, image::format_enum>(), py::arg("iwidth"), py::arg("iheight"), py::arg("iformat"))
+         .def("bytes_per_row", &image::bytes_per_row)
+         // .def("const_data", &image::const_data)
++#if HAS_VERSION(25, 1)
++        .def("copy", &image::copy)
++#else
+         .def("copy", &image::copy, py::arg("rect") = rect())
++#endif
+         .def("data", &data)
+         .def("set_data", &set_data)
+         .def("format", &image::format)
