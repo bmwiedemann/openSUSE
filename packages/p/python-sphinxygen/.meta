@@ -1,0 +1,6 @@
+<package name="python-sphinxygen" project="openSUSE:Factory">
+  <title>A script to generate Sphinx ReST from Doxygen XML</title>
+  <description>Sphinxygen is a Python module/script that generates Sphinx markup to describe a C API, from an XML description extracted by Doxygen.</description>
+  <devel project="multimedia:libs" package="python-sphinxygen"/>
+  <url>https://gitlab.com/drobilla/sphinxygen</url>
+</package>

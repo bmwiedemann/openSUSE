@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sat Jan 18 23:57:42 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add update-alternatives to Requires
+- Update to 1.0.10
+  * Add missing meson_options.txt to distribution archive
+
+- version 1.0.8 changes:
+  * Add option for installing executable script
+
+- version 1.0.6 changes:
+  * Include macro replacement text in documentation
+  * Place defines and types before functions
+
+-------------------------------------------------------------------
+Sun Nov 19 08:46:23 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.0.4 upload
