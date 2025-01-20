@@ -449,4 +449,21 @@
 - Update to 1.7.6:</comment>
     <requestid>1235530</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d88767fc37a10923f651f9054c16c154</srcmd5>
+    <version>1.7.8</version>
+    <time>1737319818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.8:
+  * Fix drawing issue
+    In the last release we had some code that hit a bug in some
+    graphics drivers. #2076
+  * DBusActivatable
+    The previously introduced DBusActivatable seems to cause
+    some issues and confusion. #2077
+  * CI Fixes
+  * See https://github.com/davatorium/rofi/releases/tag/1.7.8
+    for details</comment>
+    <requestid>1238822</requestid>
+  </revision>
 </revisionlist>

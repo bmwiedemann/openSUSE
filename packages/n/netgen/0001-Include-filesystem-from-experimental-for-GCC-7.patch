@@ -1,4 +1,4 @@
-From 795acce76a715ac34afd0cfa093350502ac90dfa Mon Sep 17 00:00:00 2001
+From cc76ca399f1782d94583512ca7d7a0199ca83457 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Wed, 13 Jul 2022 15:58:16 +0200
 Subject: [PATCH] Include filesystem from experimental for GCC 7
@@ -13,7 +13,8 @@ Subject: [PATCH] Include filesystem from experimental for GCC 7
  libsrc/general/mystring.hpp    |  5 +++++
  libsrc/interface/writeuser.hpp | 10 +++++++---
  libsrc/meshing/meshclass.hpp   |  7 ++++++-
- 9 files changed, 66 insertions(+), 36 deletions(-)
+ ng/ngpkg.cpp                   |  4 ++--
+ 10 files changed, 68 insertions(+), 38 deletions(-)
 
 diff --git a/libsrc/core/CMakeLists.txt b/libsrc/core/CMakeLists.txt
 index 39d7fd6..a85a414 100644
@@ -30,10 +31,10 @@ index 39d7fd6..a85a414 100644
  
  if(USE_PYTHON)
 diff --git a/libsrc/core/archive.hpp b/libsrc/core/archive.hpp
-index d754606..3f41665 100644
+index 8a3d7a3..be5ea23 100644
 --- a/libsrc/core/archive.hpp
 +++ b/libsrc/core/archive.hpp
-@@ -5,7 +5,13 @@
+@@ -6,7 +6,13 @@
  #include <array>                // for array
  #include <complex>              // for complex
  #include <cstring>              // for size_t, strlen
@@ -48,7 +49,7 @@ index d754606..3f41665 100644
  #include <fstream>              // for ifstream, ofstream
  #include <functional>           // for function
  #include <map>                  // for map
-@@ -860,7 +866,7 @@ namespace ngcore
+@@ -862,7 +868,7 @@ namespace ngcore
      BinaryOutArchive(std::shared_ptr<std::ostream>&& astream)
        : Archive(true), stream(std::move(astream))
      { }
@@ -57,7 +58,7 @@ index d754606..3f41665 100644
        : BinaryOutArchive(std::make_shared<std::ofstream>(filename)) {}
      ~BinaryOutArchive () override { FlushBuffer(); }
  
-@@ -956,7 +962,7 @@ namespace ngcore
+@@ -958,7 +964,7 @@ namespace ngcore
      BinaryInArchive (std::shared_ptr<std::istream>&& astream)
        : Archive(false), stream(std::move(astream))
      { }
@@ -66,7 +67,7 @@ index d754606..3f41665 100644
        : BinaryInArchive(std::make_shared<std::ifstream>(filename)) { ; }
  
      using Archive::operator&;
-@@ -1056,7 +1062,7 @@ namespace ngcore
+@@ -1058,7 +1064,7 @@ namespace ngcore
      TextOutArchive (std::shared_ptr<std::ostream>&& astream)
        : Archive(true), stream(std::move(astream))
      { }
@@ -75,7 +76,7 @@ index d754606..3f41665 100644
        TextOutArchive(std::make_shared<std::ofstream>(filename)) { }
  
      using Archive::operator&;
-@@ -1111,7 +1117,7 @@ namespace ngcore
+@@ -1113,7 +1119,7 @@ namespace ngcore
      TextInArchive (std::shared_ptr<std::istream>&& astream) :
        Archive(false), stream(std::move(astream))
      { }
@@ -136,7 +137,7 @@ index 4ab08f3..ba454f6 100644
      Unload();
      lib_name = lib_name_;
 diff --git a/libsrc/core/utils.hpp b/libsrc/core/utils.hpp
-index 323fe67..8f1b15d 100644
+index a503d53..a7a8f51 100644
 --- a/libsrc/core/utils.hpp
 +++ b/libsrc/core/utils.hpp
 @@ -3,7 +3,13 @@
@@ -298,7 +299,7 @@ index 20a7779..d05826a 100644
      }
  };
 diff --git a/libsrc/general/mystring.hpp b/libsrc/general/mystring.hpp
-index ee364d7..5eb39df 100644
+index 4f2167e..edb2b9b 100644
 --- a/libsrc/general/mystring.hpp
 +++ b/libsrc/general/mystring.hpp
 @@ -19,7 +19,12 @@
@@ -343,7 +344,7 @@ index 99dc21e..1835707 100644
  typedef std::function<void (Mesh & mesh, const filesystem::path & filename)> FRead;
  typedef std::function<bool (const filesystem::path & filename)> FTest;
 diff --git a/libsrc/meshing/meshclass.hpp b/libsrc/meshing/meshclass.hpp
-index 0c7fd57..d786e33 100644
+index 4be51c8..9635863 100644
 --- a/libsrc/meshing/meshclass.hpp
 +++ b/libsrc/meshing/meshclass.hpp
 @@ -11,7 +11,12 @@
@@ -360,6 +361,28 @@ index 0c7fd57..d786e33 100644
  
  #include <gprim/adtree.hpp>
  #include <gprim/transform3d.hpp>
+diff --git a/ng/ngpkg.cpp b/ng/ngpkg.cpp
+index 8b6a245..fe728cd 100644
+--- a/ng/ngpkg.cpp
++++ b/ng/ngpkg.cpp
+@@ -2132,7 +2132,7 @@ namespace netgen
+ #endif // JPEGLIB
+     {
+         string command;
+-        std::filesystem::path filepath(filename);
++        filesystem::path filepath(filename);
+ 
+         bool need_conversion = filepath.extension() != ".ppm";
+         if (need_conversion)
+@@ -2163,7 +2163,7 @@ namespace netgen
+               return TCL_ERROR;
+           }
+ 
+-          std::filesystem::remove(filepath);
++          filesystem::remove(filepath);
+         }
+ 
+         return TCL_OK;
 -- 
-2.47.1
+2.48.1
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 11:08:55 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove utempter build dependency, there is no code using it.
+
+-------------------------------------------------------------------
 Fri Aug 23 15:25:26 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - run autoreconf for fixing the build with gcc14

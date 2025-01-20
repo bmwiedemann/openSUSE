@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 18 15:21:57 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- %{?sle15_python_module_pythons}
+
+
+-------------------------------------------------------------------
 Wed May 26 06:52:58 UTC 2021 - pgajdos@suse.com
 
 - %check: run testsuite with %pytest rpm macro

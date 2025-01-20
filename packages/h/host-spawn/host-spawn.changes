@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 14 14:35:17 UTC 2025 - michal.vyskocil@gmail.com
+
+- Update to version v1.6.1:
+  * Do not allocate a pty if stdout is redirected
+  * Do not assume we're only going to receive HostCommandExited messages
+  * Show helpful error if we receive an unexpected DBus signal
+  * Start a shell if basename starts with host-spawn
+  * Show error message if we fail to spawn the process
+- drop v prefix from a tarball name
+
+-------------------------------------------------------------------
 Tue Jun 04 14:39:54 UTC 2024 - michal.vyskocil@gmail.com
 
 - Update to version v1.6.0:

@@ -66,4 +66,12 @@
   * An UnboundLocalError could happen when pyproject.toml was misconfigured. (forwarded request 1235191 from rrahl0)</comment>
     <requestid>1235192</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a2b29da0f90b0ff25666865bfab0d28e</srcmd5>
+    <version>1.7.0</version>
+    <time>1737319754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1238720</requestid>
+  </revision>
 </revisionlist>

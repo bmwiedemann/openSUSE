@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 18 15:10:40 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.20.1.
+  * Fixed possible guard checker anomaly on fixpoints containing an
+    inner fixpoint that is reducible (because of its main argument
+    reducing to a constructor). This was a regression in 8.20.
+  * Fixed spurious warnings about incompatible prefixes in presence
+    of `as pattern syntax_modifier` or recursive notations.
+  * Fixed a regression in `Hint Extern` matching primitive
+    projections.
+
+-------------------------------------------------------------------
 Thu Sep  5 20:49:31 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.20.0. The most impactful changes are:

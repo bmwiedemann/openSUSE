@@ -314,4 +314,12 @@
     <comment>- Update to release 3.5.1</comment>
     <requestid>1220177</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>1dca72dc1c059a3e9e2b28cb88eb988d</srcmd5>
+    <version>3.5.1</version>
+    <time>1737319741</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gs.patch to fix FTBFS</comment>
+    <requestid>1238690</requestid>
+  </revision>
 </revisionlist>

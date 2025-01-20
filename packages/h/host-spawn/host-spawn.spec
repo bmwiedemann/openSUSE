@@ -1,7 +1,7 @@
 #
 # spec file for package host-spawn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           host-spawn
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A reimplementation of flatpak-spawn --host
 License:        MIT-0
 URL:            https://github.com/1player/host-spawn
-Source0:        %{name}-v%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 # Go packaging wiki suggests golang-packaging, but this does not work on 15.5
 BuildRequires:  golang(API) >= 1.18
@@ -32,12 +32,12 @@ BuildRequires:  zstd
 Run commands on your host machine from inside your flatpak sandbox, toolbox or distrobox containers.
 
 %prep
-%autosetup -p1 -a1 -n %{name}-v%{version}
+%autosetup -p1 -a1
 
 %build
 # https://github.com/1player/host-spawn/blob/master/build.sh#L22
 CGO_ENABLED=0 go build \
-   -ldflags  "-X main.Version=%{version}" \
+   -ldflags  "-X main.Version=v%{version}" \
    -mod=vendor \
    -buildmode=pie
 

@@ -1,0 +1,17 @@
+<services>
+
+<service name="obs_scm" mode="manual">
+  <param name="scm">git</param>
+  <param name="url">https://github.com/cisco/ChezScheme</param>
+  <param name="filename">ChezScheme</param>
+  <param name="revision">v10.1.0</param>
+  <param name="versionformat">@PARENT_TAG@</param>
+</service>
+
+<service name="tar" mode="buildtime" />
+<service name="recompress" mode="buildtime">
+  <param name="compression">zstd</param>
+  <param name="file">*.tar</param>
+</service>
+
+</services>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 14 12:39:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.13.0:
+  * Added putAlongAxis() [gh#dpilger26/NumCpp#217].
+  * Fixed random seeding [gh#dpilger26/NumCpp#218].
+  * Fixed error in fromfile() that limited filesize to 4GB
+    [gh#dpilger26/NumCpp#219].
+- Update NumCpp-disable-pytest.patch: In addition to disabling
+  pytest tests (not yet resolved), uncomment to enable gtest based
+  tests [gh#dpilger26/NumCpp#222].
+- Add NumCpp-add-tests.patch: Add `multitest` and `cppcheck` tests
+  to ctest to make testing during %check easy.
+- Restore ninja for build, does not affect issues related to
+  python linking errors during tests (disabled by
+  NumCpp-disable-pytest.patch).
+
+-------------------------------------------------------------------
 Mon Dec 16 09:31:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add NumCpp-disable-pytest.patch: Temporarily disable pytests

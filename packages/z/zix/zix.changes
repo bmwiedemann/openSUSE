@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 19 00:34:43 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Change source URL
+- Update to 0.6.2
+  * Fix documentation build with sphinxygen fallback wrap
+
+- Version 0.6.0 changes:
+  * Add ZIX_NODISCARD attribute
+  * Add option to build for older Windows versions
+  * Add zix_expand_environment_strings()
+  * Add zix_string_view_equals()
+  * Avoid fdatasync() on Darwin
+  * Fix build on POSIX systems without PATH_MAX defined
+  * Fix library current_version on MacOS
+  * Fix nullability annotations for zix_canonical_path() and friends
+  * Fix ring unit test when mlock() is unavailable
+  * Improve documentation
+  * Support building for UWP
+  * Support building for Windows with or without UNICODE
+
+-------------------------------------------------------------------
 Mon Oct 30 00:53:04 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Initial upload version 0.4.2

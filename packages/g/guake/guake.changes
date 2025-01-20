@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 12:53:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind
+
+-------------------------------------------------------------------
 Tue Apr  2 10:16:34 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
 
 - Update URL to https://guake.github.io/

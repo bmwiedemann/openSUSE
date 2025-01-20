@@ -1,7 +1,7 @@
 #
 # spec file for package Coin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with docs
 
 Name:           Coin4
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        Scene-graph based retain-mode 3D graphics library
 License:        BSD-3-Clause

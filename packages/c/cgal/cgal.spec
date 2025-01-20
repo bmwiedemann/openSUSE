@@ -23,7 +23,7 @@
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
 %define _sourcename CGAL
 Name:           cgal
-Version:        5.6.2
+Version:        6.0.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -38,15 +38,15 @@ BuildRequires:  fdupes
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_atomic-devel >= 1.66
-BuildRequires:  libboost_system-devel >= 1.66
-BuildRequires:  libboost_thread-devel >= 1.66
+BuildRequires:  libboost_atomic-devel >= 1.72
+BuildRequires:  libboost_system-devel >= 1.72
+BuildRequires:  libboost_thread-devel >= 1.72
 BuildRequires:  mpfr-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 Requires:       libcgal-devel = %{version}
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -68,9 +68,9 @@ Requires:       blas
 Requires:       cmake
 Requires:       gmp-devel
 Requires:       lapack
-Requires:       libboost_atomic-devel
-Requires:       libboost_system-devel
-Requires:       libboost_thread-devel
+Requires:       libboost_atomic-devel >= 1.72
+Requires:       libboost_system-devel >= 1.72
+Requires:       libboost_thread-devel >= 1.72
 Requires:       mpfr-devel
 Requires:       zlib-devel
 #For compatibility with package looking for our old name
@@ -106,7 +106,7 @@ This package provides the documentation for CGAL algorithms.
 
 %build
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CXX="g++-11"
+export CXX="g++-13"
 %endif
 
 %cmake -DCGAL_INSTALL_LIB_DIR=%{_lib} \
@@ -128,7 +128,7 @@ cp -a examples/* %{buildroot}/%{_datadir}/CGAL/examples
 cp -a demo/* %{buildroot}/%{_datadir}/CGAL/demo
 
 # no macos here.
-rm %{buildroot}/%{_bindir}/cgal_make_macosx_app
+#rm %{buildroot}/%{_bindir}/cgal_make_macosx_app
 
 # installed as docs, but licenses are under %%{_datadir}/licenses/, remove duplicate
 rm %{buildroot}%{_docdir}/%{name}-doc/LICENSE*

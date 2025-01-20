@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  2 04:12:35 UTC 2025 - Xu Zhao <i@xuzhao.net>
+
+- remove redundant submodule source files
+
+-------------------------------------------------------------------
+Sat Dec 28 07:12:42 UTC 2024 - Xu Zhao <i@xuzhao.net>
+
+- use obs_scm to manage source files
+
+-------------------------------------------------------------------
 Sat Dec 28 04:53:09 UTC 2024 - Xu Zhao <i@xuzhao.net>
 
 - update to version 10.1.0

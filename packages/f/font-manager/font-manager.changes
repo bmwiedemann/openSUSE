@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 19 08:48:58 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- Update to 0.9.2
+  * Address segfault reported on FreeBSD - Closes #395
+  * Add StartupWMClass to desktop files to avoid duplicate entry in docks
+
+-------------------------------------------------------------------
 Sun Jan 12 19:15:04 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - Update to 0.9.1

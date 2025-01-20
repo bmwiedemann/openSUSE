@@ -19,7 +19,7 @@
 %global DBusName com.github.FontManager.FontManager
 %global DBusName2 com.github.FontManager.FontViewer
 Name:           font-manager
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later

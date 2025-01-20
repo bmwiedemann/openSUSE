@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 18 16:39:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.0.1:
+  * Fixes a regression that was introduced in version 6.0.0 by which the
+    [container].options config file setting was ignored.
+- update to 6.0.0:
+  * Security: the container options a job is allowed to specify are limited to
+    a predefined allow list.
+
+-------------------------------------------------------------------
 Wed Dec 18 00:03:40 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 5.0.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package fast_float
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           fast_float
-Version:        6.0.0
+Version:        7.0.0
 Release:        0
 Summary:        A fast number parsing library
 License:        Apache-2.0 OR BSL-1.0 OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/fastfloat/fast_float
 Source:         https://github.com/fastfloat/fast_float/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://patch-diff.githubusercontent.com/raw/fastfloat/fast_float/pull/233.patch#/make_supplemental_tests_optional.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  cmake(doctest)
@@ -68,4 +66,3 @@ from_chars functions for float and double types as well as integer types.
 %{_datadir}/cmake/FastFloat
 
 %changelog
-

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 18 09:51:50 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2406
+  * no changelog provided
+- Update patch:
+  * 0001-Include-filesystem-from-experimental-for-GCC-7.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 13:30:27 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Enable python tests on Tumbleweed (requires python-check).

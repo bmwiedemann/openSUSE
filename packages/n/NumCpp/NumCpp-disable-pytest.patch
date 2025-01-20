@@ -1,17 +1,18 @@
 
 ---
- test/CMakeLists.txt |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ test/CMakeLists.txt |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: NumCpp-Version_2.12.1/test/CMakeLists.txt
+Index: NumCpp-Version_2.13.0/test/CMakeLists.txt
 ===================================================================
---- NumCpp-Version_2.12.1.orig/test/CMakeLists.txt
-+++ NumCpp-Version_2.12.1/test/CMakeLists.txt
+--- NumCpp-Version_2.13.0.orig/test/CMakeLists.txt
++++ NumCpp-Version_2.13.0/test/CMakeLists.txt
 @@ -1,7 +1,7 @@
  if(BUILD_TESTS)
      message(STATUS "Configuring Unit Tests")
-     add_subdirectory(gtest)
+-    # add_subdirectory(gtest)
 -    add_subdirectory(pytest)
++    add_subdirectory(gtest)
 +    # add_subdirectory(pytest)
  endif()
  

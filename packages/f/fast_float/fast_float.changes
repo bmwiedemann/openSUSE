@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 18 05:58:09 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 7.0.0:
+  + Iplus/minus handling in parse_infnan
+  + enum class chars_format
+  + Add allow_leading_plus and skip_white_space in chars_format
+- Drop upstream make_supplemental_tests_optional.patch
+
+-------------------------------------------------------------------
 Mon Dec 25 22:18:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version (6.0.0)

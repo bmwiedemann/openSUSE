@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 18 16:14:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.7.0:
+  * The enable command now supports the bypass/override environment variables
+    to use a different placeholder version than 0.0.0.
+  * The enable command would add "version" to project.dynamic even if it were
+    already present.
+  * The enable command would set tool.poetry.version to "0.0.0" even if the
+    field were already present with a different value.
+- update to 1.6.0:
+  * CLI: show command to print the version without changing any files.
+- update to 1.5.2:
+  * The formatting of project.dynamic and tool.poetry.version could be changed
+    when triggering the plugin via poetry dynamic-versioning or pip install
+    (but not via poetry build or poetry-dynamic-versioning).
+- update to 1.5.1:
+  * Array formatting was not preserved when changing project.dynamic in
+    pyproject.toml.
+
+-------------------------------------------------------------------
 Mon Jan  6 13:13:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.5.0:

@@ -3451,4 +3451,44 @@
 </comment>
     <requestid>1238023</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>bdf62062cbf43f00f5f1911a07170997</srcmd5>
+    <version>2.1.6</version>
+    <time>1737319732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.6:
+  * fix(outdated): Use `latest` tag even when it's the same as the current version (#27699)
+  * fix(outdated): retain strict semver specifier when updating (#27701)
+  * fix(check/lsp): fix bugs with tsc type resolution, allow npm packages to augment `ImportMeta` (#27690)
+  * fix(ext/console): change Temporal color (#27684)
+  * docs: adding jsdocs info for console interface (#27666)
+  * docs: JSDocs examples for prompt, confirm, and alert (#27695)
+  * docs:Adds examples in JSDocs for localStorage and sessionStorage (#27668)
+  * chore: add missing internal `core_import_map` file paths (#27691)
+  * fix(check/lsp): correctly resolve compilerOptions.types (#27686)
+  * refactor: create deno_lib crate (#27673)
+  * fix(ext/node): add chown method to FileHandle class (#27638)
+  * refactor: add 'deno_os' crate (#27655)
+  * fix(ext/node): fix playwright http client (#27662)
+  * refactor: move `CliNpmResolver` to `deno_resolver::npm::NpmResolver` (#27659)
+  * feat(unstable): refactor js lint plugin AST (#27615)
+  * refactor: deno_config 0.45 (#27660)
+  * fix(node/fs): add utimes method to the FileHandle class (#27582)
+  * fix(ext/node): add `writev` method to `FileHandle` (#27563)
+  * fix(compile/windows): better handling of deno_dir on different drive letter than code (#27654)
+  * refactor: create `NpmInstaller` (#27626)
+  * fix(node): Prevent node:child_process from always inheriting the parent environment (#27343) (#27340)
+  * fix(compile): store embedded fs case sensitivity (#27653)
+  * refactor(node_resolver): make conditions_from_resolution_mode configurable (#27596)
+  * fix(lsp): handle pathless untitled URIs (#27637)
+  * fix(ext/node): apply `@npmcli/agent` workaround to `npm-check-updates` (#27639)
+  * fix(lsp/check): don't resolve unknown media types to a `.js` extension (#27631)
+  * fix(regression): show bare-node-builtin hint when using an import map (#27632)
+  * refactor: remove `CliNpmReqResolver` trait in deno_resolver (#27616)
+  * fix(ext/node): use primordials in `ext/node/polyfills/_fs_common.ts` (#27589)
+  * refactor: implement `NpmPackageFolderResolver` in deno_resolver (#27614)
+  * refactor(npm): move `SloppyImportsCachedFs` to deno_resolver (#27610)
+</comment>
+    <requestid>1238679</requestid>
+  </revision>
 </revisionlist>

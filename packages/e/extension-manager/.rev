@@ -94,4 +94,12 @@
     <comment>- fix license (forwarded request 1230206 from rrahl0)</comment>
     <requestid>1230207</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>651acf33d2a41efe75c4fc65608569b5</srcmd5>
+    <version>0.6.1</version>
+    <time>1737319752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1238715</requestid>
+  </revision>
 </revisionlist>

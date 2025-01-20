@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:37:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.16:
+  * fix: use the commit where `busPath` is not broken
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.15
+  * feat: update Scoop for talhelper version v3.0.15
+  * feat: update flake (#808)
+
+-------------------------------------------------------------------
 Fri Jan 17 06:19:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.15:

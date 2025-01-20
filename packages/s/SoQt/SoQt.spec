@@ -1,7 +1,7 @@
 #
 # spec file for package SoQt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define         sover 20
-%define         realver 1.6.2
+%define         realver 1.6.3
 Name:           SoQt
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        A library which provides the glue between Coin and Qt
 License:        BSD-3-Clause

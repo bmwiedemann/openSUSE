@@ -1,0 +1,26 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-01-18 00:55:51.888346224 +0100
+
+GS took a shortcut to not include SDL2_ttf headers
+and now GS broke due to SDL2_ttf commit:
+
+	commit 22347419ee08e49d77411c680f15e314ef870ab7
+	Renamed "struct _TTF_Font" to "struct TTF_Font"
+	Fixes https://github.com/libsdl-org/SDL_ttf/issues/372
+---
+ GsKit/graphics/GsTrueTypeFont.h |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: Commander-Genius-v3.5.1/GsKit/graphics/GsTrueTypeFont.h
+===================================================================
+--- Commander-Genius-v3.5.1.orig/GsKit/graphics/GsTrueTypeFont.h
++++ Commander-Genius-v3.5.1/GsKit/graphics/GsTrueTypeFont.h
+@@ -6,7 +6,7 @@
+ #include <base/interface/Color.h>
+ #include <graphics/GsSurface.h>
+ 
+-typedef struct _TTF_Font TTF_Font;
++typedef struct TTF_Font TTF_Font;
+ 
+ class GsTrueTypeFont
+ {

@@ -7,4 +7,12 @@
     <comment>New dependency for VTK 9.3.0</comment>
     <requestid>1135327</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e4e43d63003bd2965308ae2bc648492f</srcmd5>
+    <version>7.0.0</version>
+    <time>1737319776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1238754</requestid>
+  </revision>
 </revisionlist>

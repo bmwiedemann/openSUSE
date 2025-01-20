@@ -1,7 +1,7 @@
 #
 # spec file for package fnott
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,6 +77,9 @@ Zsh command-line completion support for %{name}
 %files
 %{_bindir}/fnott
 %{_bindir}/fnottctl
+%if 0%{?suse_version} > 1600 && 0%{?is_opensuse}
+%{_userunitdir}/fnott.service
+%endif
 
 %{_mandir}/man1/fnott.1%{?ext_man}
 %{_mandir}/man1/fnottctl.1%{?ext_man}

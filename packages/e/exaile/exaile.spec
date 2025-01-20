@@ -1,7 +1,7 @@
 #
 # spec file for package exaile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __requires_exclude typelib\\((GtkosxApplication)\\)
 %define _name   Exaile
 Name:           exaile
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        GTK Amarok-like music player
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  update-desktop-files
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       gstreamer
 Requires:       gstreamer-plugins-good
-Requires:       python3-bsddb3
+Requires:       python3-berkeleydb
 Requires:       python3-cairo
 Requires:       python3-dbus-python
 Requires:       python3-feedparser
@@ -107,7 +107,11 @@ done
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps/
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/metainfo/*%{name}.appdata.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %dir %{_datadir}/dbus-1/

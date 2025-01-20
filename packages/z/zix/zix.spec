@@ -1,7 +1,7 @@
 #
 # spec file for package zix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define sover 0
 Name:           zix
-Version:        0.4.2
+Version:        0.6.2
 Release:        0
 Summary:        A lightweight C library of portability wrappers and data structures
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/drobilla/zix
-Source0:        https://github.com/drobilla/zix/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
+URL:            https://gitlab.com/drobilla/zix
+Source0:        https://gitlab.com/drobilla/zix/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -67,7 +67,7 @@ Threading
 File System
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}
 
 %build
 %meson -Ddocs=disabled

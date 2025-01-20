@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 18 07:19:33 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 0.6.9:
+  * Python 3.12/Qt6 support
+- Drop upstream patches:
+  * fix_python_312_replace_PyEval_CallObject.patch
+  * fix_python_312_PyUnicode_usage.patch
+
+-------------------------------------------------------------------
 Thu Apr 11 13:38:29 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Python 3.12, BuildRequire python-setuptools, add

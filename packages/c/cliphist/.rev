@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>52446a9d669715dcb66921d4db493284</srcmd5>
+    <version>0.6.1</version>
+    <time>1737319759</time>
+    <user>dimstar_suse</user>
+    <comment>
+Hello,
+I want to introduce a new package to factory:
+
+Cliphist is a wayland clipboard manager with support for multimedia
+https://github.com/sentriz/cliphist
+
+It is useful for wayland based window managers like hyprland and sway, where no clipboard manager is provided by default.
+Therefore it would be important to have the package available in the main repos.</comment>
+    <requestid>1238723</requestid>
+  </revision>
+</revisionlist>

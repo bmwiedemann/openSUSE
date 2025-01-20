@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 19 00:01:42 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.9.0:
+  New Features
+  * feat: add Wait to wait for expected output
+  * feat: added osh
+  * feat: added xonsh
+  * feat: don't create 'out.gif' by default
+  * feat: nushell: adopt colored >  prompt
+  * feat: warn when using SET commands not being the top decl
+  Bug fixes
+  * fix: remove gifs
+  * fix: typo in WindowBar parser
+  * Documentation updates
+  * docs: document wait
+
+-------------------------------------------------------------------
 Tue Oct 22 04:44:15 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests

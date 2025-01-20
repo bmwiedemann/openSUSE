@@ -558,4 +558,20 @@
 </comment>
     <requestid>1199381</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4ae4cd400b77301e5305a9db3d81de64</srcmd5>
+    <version>8.20.1</version>
+    <time>1737319748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.20.1.
+  * Fixed possible guard checker anomaly on fixpoints containing an
+    inner fixpoint that is reducible (because of its main argument
+    reducing to a constructor). This was a regression in 8.20.
+  * Fixed spurious warnings about incompatible prefixes in presence
+    of `as pattern syntax_modifier` or recursive notations.
+  * Fixed a regression in `Hint Extern` matching primitive
+    projections.
+</comment>
+    <requestid>1238701</requestid>
+  </revision>
 </revisionlist>

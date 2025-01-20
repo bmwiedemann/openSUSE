@@ -1,7 +1,7 @@
 #
 # spec file for package libminizinc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libminizinc
-Version:        2.8.5
+Version:        2.8.7
 Release:        0
 Summary:        A high-level constraint modelling language
 Group:          Productivity/Scientific/Math

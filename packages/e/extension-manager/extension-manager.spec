@@ -1,7 +1,7 @@
 #
 # spec file for package extension-manager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid com.mattjakeman.ExtensionManager
 Name:           extension-manager
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A utility for browsing and installing GNOME Shell Extensions
 License:        GPL-3.0-or-later

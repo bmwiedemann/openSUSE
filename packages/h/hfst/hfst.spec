@@ -1,7 +1,7 @@
 #
 # spec file for package hfst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hfst
-Version:        3.16.0
+Version:        3.16.2
 Release:        0
 Summary:        Helsinki Finite-State Transducer Technology
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND GPL-3.0-only
@@ -25,9 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://hfst.github.io/
 
 Source:         https://github.com/hfst/hfst/archive/refs/tags/v%version.tar.gz
-Patch1:         0001-build-fix-build-failure-with-ICU-75.patch
-Patch2:         hfst-nodate.diff
-Patch3:         hfst-sse.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -41,7 +38,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
-#BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  openfst-devel
 BuildRequires:  pkgconfig(icu-uc) >= 50
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -54,11 +51,25 @@ implementation of morphological analyzers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
 
 %package -n libhfst55
-Summary:        Helsinki Finite-State Transducer Technology Libraries
+Summary:        Helsinki Finite-State Transducer C++ API Library
 License:        GPL-3.0-only
 Group:          System/Libraries
 
 %description -n libhfst55
+The Helsinki Finite-State Transducer software is intended for the
+implementation of morphological analyzers and other tools which are
+based on weighted and unweighted finite-state transducer technology.
+
+%ifarch %ix86
+On 32-bit x86, this package requires the presence of SSE2.
+%endif
+
+%package -n libhfst_c0
+Summary:        Helsinki Finite-State Transducer C API Library
+License:        GPL-3.0-only
+Group:          System/Libraries
+
+%description -n libhfst_c0
 The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analyzers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
@@ -68,6 +79,7 @@ Summary:        Development files for the Helsinki Finite-State Transducer
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 Requires:       libhfst55 = %version
+Requires:       libhfst_c0 = %version
 
 %description devel
 The Helsinki Finite-State Transducer software is intended for the
@@ -98,8 +110,8 @@ rm -fv "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %check
 %make_build check -j1
 
-%post   -n libhfst55 -p /sbin/ldconfig
-%postun -n libhfst55 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libhfst55
+%ldconfig_scriptlets -n libhfst_c0
 
 %files
 %_bindir/hfst*
@@ -110,9 +122,13 @@ rm -fv "%buildroot/%_libdir/"{libfoma,libfst,libsfst}.so
 %files -n libhfst55
 %_libdir/libhfst.so.55*
 
+%files -n libhfst_c0
+%_libdir/libhfst_c.so.0*
+
 %files devel
 %_includedir/*
 %_libdir/libhfst.so
+%_libdir/libhfst_c.so
 %_libdir/pkgconfig/*.pc
 %_datadir/aclocal/
 

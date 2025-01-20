@@ -63,4 +63,12 @@
     <comment>- Add 0001-build-fix-build-failure-with-ICU-75.patch</comment>
     <requestid>1178480</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d4e2daa85c36991e9fc9e9e841dfc543</srcmd5>
+    <version>3.16.2</version>
+    <time>1737319763</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.16.2</comment>
+    <requestid>1238727</requestid>
+  </revision>
 </revisionlist>

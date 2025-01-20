@@ -1,7 +1,7 @@
 #
 # spec file for package commandergenius
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://clonekeenplus.sf.net/
 #Git-Clone:     https://gitlab.com/Dringgstein/Commander-Genius
 Source:         https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v%version/Commander-Genius-v%version.tar.bz2
 Patch1:         fix-icons.patch
+Patch2:         gs.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -47,6 +48,9 @@ It has 4-player cooperative mode and six difficulty modes.
 
 %prep
 %autosetup -p1 -n Commander-Genius-v%version
+if pkg-config 'SDL2_ttf < 2.24'; then
+%patch -P 2 -R -p1
+fi
 
 %build
 %cmake \

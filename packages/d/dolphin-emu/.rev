@@ -156,4 +156,12 @@
   * Enabled LTO and Achievements.</comment>
     <requestid>1230069</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>19b1b9a06db48c5ea0f155938bdb7e05</srcmd5>
+    <version>2412</version>
+    <time>1737319730</time>
+    <user>dimstar_suse</user>
+    <comment>- Limited build to fmt 10.2.1 (fmt 11.1.1 broken).</comment>
+    <requestid>1238669</requestid>
+  </revision>
 </revisionlist>

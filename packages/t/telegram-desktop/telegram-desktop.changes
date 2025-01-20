@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 18 12:50:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace ffmpeg-6-*-devel with ffmpeg-7-*-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Jan 18 06:50:26 UTC 2025 - Xu Zhao <i@xuzhao.net>
+
+- Remove patches
+  * 0001-use-bundled-webrtc.patch
+  * 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+  * 0003-revert-webrtc-cmake-target-file.patch
+  * 0004-use-dynamic-x-libraries.patch
+  * 0005-use-bundled-ada.patch
+  * 0006-tdesktop-disable-h264.patch
+  * 0007-tg_owt-h264-dlopen.patch
+- Add patches
+  * 0001-dynamic-link-x.patch
+  * 0002-tg_owt-h264-dlopen.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 23:14:36 UTC 2025 - Xu Zhao <i@xuzhao.net>
 
 - Update to version 5.10.3

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 18 14:49:48 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 2.3.2:
+  * ignore get_osinfo output if it fails
+  * Add finnish translation
+
+-------------------------------------------------------------------
 Thu Nov 28 20:15:55 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.3.0:

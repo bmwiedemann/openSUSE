@@ -1345,4 +1345,23 @@
 </comment>
     <requestid>1237051</requestid>
   </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>a4541d7337fd81b69557c08e8ce9a85b</srcmd5>
+    <version>5.10.3</version>
+    <time>1737319792</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace ffmpeg-6-*-devel with ffmpeg-7-*-devel BuildRequires.
+- Remove patches
+  * 0001-use-bundled-webrtc.patch
+  * 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+  * 0003-revert-webrtc-cmake-target-file.patch
+  * 0004-use-dynamic-x-libraries.patch
+  * 0005-use-bundled-ada.patch
+  * 0006-tdesktop-disable-h264.patch
+  * 0007-tg_owt-h264-dlopen.patch
+- Add patches
+  * 0001-dynamic-link-x.patch
+  * 0002-tg_owt-h264-dlopen.patch</comment>
+    <requestid>1238761</requestid>
+  </revision>
 </revisionlist>

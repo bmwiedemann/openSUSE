@@ -1,7 +1,7 @@
 #
 # spec file for package python-pivy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 #%%define skip_python310 1
 
 Name:           python-pivy
-Version:        0.6.8
+Version:        0.6.9
 Release:        0
 Summary:        Coin Binding for Python
 # GPL only applies to some examples
@@ -29,8 +29,6 @@ License:        GPL-2.0-only AND ISC
 Group:          Development/Libraries/Python
 URL:            https://github.com/coin3d/pivy
 Source0:        https://github.com/coin3d/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/coin3d/pivy/pull/113.patch#/fix_python_312_replace_PyEval_CallObject.patch
-Patch1:         https://github.com/coin3d/pivy/commit/d3faf04b8770.patch#/fix_python_312_PyUnicode_usage.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake

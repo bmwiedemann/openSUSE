@@ -1,9 +1,9 @@
 #
 # spec file for package coq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012-2018 Peter Trommler, peter.trommler at ohm-hochschule.de
-# Copyright (c) 2024 Aaron Puchert <aaronpuchert@alice-dsl.net>
+# Copyright (c) 2025 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           coq
-Version:        8.20.0
+Version:        8.20.1
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only

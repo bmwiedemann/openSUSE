@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,12 @@ Patch3:         0001-Mod-CAM-Add-missing-OpenGL-includes.patch
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
 # PATCH-FIX-OPENSUSE
 Patch14:        freecad-opengl.patch
+# PATCH-FIX-UPSTREAM
+Patch15:        https://github.com/FreeCAD/FreeCAD/commit/3b502359353e2a74dee8a8bcfed5750b69f32cdc.patch#/smesh-Fix-build-failure-with-vtk-9_4.patch
+# PATCH-FIX-UPSTREAM -- Prereq for Fix-test-failure-temporary-file-race.patch
+Patch16:        https://github.com/FreeCAD/FreeCAD/commit/6f23f01e509348a6755ad3c465a3d7ffd758ee03.patch#/Add-property-read-write-test.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/a0e1a31623e334d7186e687c33fad3887e91ee2e -- rebased
+Patch17:        Fix-test-failure-temporary-file-race.patch
 # PATCH-FIX-UPSTREAM
 Patch50:        https://github.com/Ondsel-Development/OndselSolver/commit/2e3659c4bce3e6885269e0cb3d640261b2a91108.patch#/ondselsolver_fix_gcc_75_filesystem.patch
 
@@ -165,6 +171,7 @@ This package contains the files needed for development with FreeCAD.
 %prep
 %autosetup -c -N
 %autopatch -p1 -M 49
+
 # Run manually, have to inject the 3rdParty path
 cat %{P:50} | patch --verbose -d src/3rdParty/OndselSolver -p1
 

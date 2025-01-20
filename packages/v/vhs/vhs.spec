@@ -1,7 +1,7 @@
 #
 # spec file for package vhs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global _lto_cflags %nil
 Name:           vhs
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        CLI video recorder
 URL:            https://github.com/charmbracelet/vhs

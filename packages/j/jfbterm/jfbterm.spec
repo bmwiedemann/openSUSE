@@ -1,7 +1,7 @@
 #
 # spec file for package jfbterm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,11 +42,6 @@ Patch9:         jfbterm-0.4.7-hang-on-utmp-refresh-with-invalid-utid.patch
 Patch10:        jfbterm-0.4.7-AUTHORS-encoding.patch
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
-%if 0%{?suse_version} > 1130
-BuildRequires:  utempter-devel
-%else
-BuildRequires:  utempter
-%endif
 Requires(post): %{_bindir}/grep
 Requires(post): /bin/cat
 Requires(post): permissions

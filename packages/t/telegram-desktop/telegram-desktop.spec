@@ -50,23 +50,11 @@ Source1:        tg_owt.%{srcext}
 Source2:        ada.%{srcext}
 Source3:        tg_owt-dlopen-headers.tar.gz
 %if %{with use_system_rnnoise}
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-use-bundled-webrtc.patch
 %else
 Source4:        rnnoise-git20210122.tar.gz
-# PATCH-FIX-OPENSUSE
-Patch2:         0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
 %endif
-# PATCH-FIX-OPENSUSE
-Patch3:         0003-revert-webrtc-cmake-target-file.patch
-# PATCH-FIX-OPENSUSE
-Patch4:         0004-use-dynamic-x-libraries.patch
-# PATCH-FIX-OPENSUSE
-Patch5:         0005-use-bundled-ada.patch
-# PATCH-FIX-OPENSUSE
-Patch6:         0006-tdesktop-disable-h264.patch
-# PATCH-FIX_OPENSUSE
-Patch7:         0007-tg_owt-h264-dlopen.patch
+Patch1:         0001-dynamic-link-x.patch
+Patch2:         0002-tg_owt-h264-dlopen.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -78,11 +66,11 @@ BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
-BuildRequires:  ffmpeg-6-libavcodec-devel
-BuildRequires:  ffmpeg-6-libavdevice-devel
-BuildRequires:  ffmpeg-6-libavfilter-devel
-BuildRequires:  ffmpeg-6-libavformat-devel
-BuildRequires:  ffmpeg-6-libavutil-devel
+BuildRequires:  ffmpeg-7-libavcodec-devel
+BuildRequires:  ffmpeg-7-libavdevice-devel
+BuildRequires:  ffmpeg-7-libavfilter-devel
+BuildRequires:  ffmpeg-7-libavformat-devel
+BuildRequires:  ffmpeg-7-libavutil-devel
 %if %{with compiler_upgrade} || %{with compiler_downgrade}
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
@@ -183,7 +171,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 %endif
-BuildRequires:  zstd
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vpx)
@@ -224,13 +211,13 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}
-%autopatch -p1 -M 6
+%autopatch -p1 1
 
 cd %{_builddir}
 mkdir -p %{_builddir}/Libraries
 # -q: quiet mode
 # -T: do not perform default archive unpacking
-# -D: do not delete tdesktop-%{version} directory
+# -D: do not delete the tdesktop-{version} directory
 # -b <n>: unpack nth sources before changing the directory
 %setup -q -T -D -b 1 -n tdesktop-%{version}
 mv ../tg_owt %{_builddir}/Libraries
@@ -247,7 +234,7 @@ mv ../rnnoise-git20210122 ../Libraries/rnnoise
 %endif
 
 pushd %{_builddir}/Libraries/tg_owt
-%autopatch -p1 7
+%autopatch -p1 2
 popd
 
 %build
@@ -271,38 +258,47 @@ pushd %{_builddir}/Libraries/rnnoise
 popd
 %endif
 
+# setup library install path
+mkdir -p %{_builddir}/Libraries/install
+
 # Build Ada
 pushd %{_builddir}/Libraries/ada
 cmake -GNinja -B build . \
+        -D CMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install \
 		-D CMAKE_BUILD_TYPE=None \
         -D ADA_TESTING=OFF \
         -D ADA_TOOLS=OFF
 cmake --build build --parallel
+# Install ada to build dir
+ninja install -C build
 
+# Build tg_owt
 cd %{_builddir}/Libraries/tg_owt
-mkdir -p out/Release
-cd out/Release
 cmake -G Ninja \
-       -DCMAKE_BUILD_TYPE=Release \
+      -B out/Release \
+      -DCMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install \
+      -DCMAKE_BUILD_TYPE=Release \
 %ifarch armv7l armv7hl
-       -DTG_OWT_ARCH_ARMV7_USE_NEON=OFF \
+      -DTG_OWT_ARCH_ARMV7_USE_NEON=OFF \
 %endif
-       -DTG_OWT_DLOPEN_H264=ON \
-       -DTG_OWT_SPECIAL_TARGET=linux \
-       -DTG_OWT_LIBJPEG_INCLUDE_PATH=/usr/include \
-       -DTG_OWT_OPENH264_INCLUDE_PATH=%{_builddir}/Libraries/openh264/include \
-       -DTG_OWT_OPENSSL_INCLUDE_PATH=/usr/include/openssl \
-       -DTG_OWT_OPUS_INCLUDE_PATH=/usr/include/opus \
-       -DTG_OWT_FFMPEG_INCLUDE_PATH=/usr/include/ffmpeg \
-       -DTG_OWT_LIBVPX_INCLUDE_PATH=/usr/include/vpx \
-       ../..
-sed -i 's,gnu++2a,gnu++17,g' build.ninja
-ninja
+      -DTG_OWT_DLOPEN_H264=ON \
+      -DTG_OWT_SPECIAL_TARGET=linux \
+      -DTG_OWT_LIBJPEG_INCLUDE_PATH=/usr/include \
+      -DTG_OWT_OPENH264_INCLUDE_PATH=%{_builddir}/Libraries/openh264/include \
+      -DTG_OWT_OPENSSL_INCLUDE_PATH=/usr/include/openssl \
+      -DTG_OWT_OPUS_INCLUDE_PATH=/usr/include/opus \
+      -DTG_OWT_FFMPEG_INCLUDE_PATH=/usr/include/ffmpeg \
+      -DTG_OWT_LIBVPX_INCLUDE_PATH=/usr/include/vpx \
+      .
+sed -i 's,gnu++2a,gnu++17,g' out/Release/build.ninja
+cmake --build out/Release --parallel
+ninja install -C out/Release
 
-cd %{_builddir}/tdesktop-%{version}
+pushd %{_builddir}/tdesktop-%{version}
 # Use the official API key that telegram uses for their snap builds:
 # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
 # Thanks to @primeos on Github.
+export CMAKE_PREFIX_PATH=%{_builddir}/Libraries/install/lib64/cmake
 %cmake \
       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_BUILD_TYPE=Release \

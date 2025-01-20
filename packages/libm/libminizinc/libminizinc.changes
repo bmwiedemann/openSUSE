@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sat Jan 18 06:09:16 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.8.7:
+  * Bug fixes:
+    + Fix bug that caused where clauses to be removed from
+      comprehensions.
+    + Fix optimisation of Boolean constraints that could sometimes
+      trigger an assertion failure in debug builds.
+- update to 2.8.6:
+  * Changes:
+    + Variable in operators on arrays of (nested) records and
+      tuples containing only enumerable (enum, int, or bool) will
+      now be rewritten into table global constraints.
+    + Values that are par in the left hand side will be checked and
+      filtered from the resulting table constraint.
+    + Variable <, <=, > and >= operators on (nested) records and
+      tuples containing only enumerable (enum, int, or bool) will
+      now be rewritten into lex_less or lex_lesseq global
+      constraints.
+    + Automatically detect SCIP 9.0.1 and potential future versions
+      on Windows.
+    + The interface to the HiGHS solver now requires version 1.7.2
+      or later.
+    + Enforce strict enum type correctness for set operations.
+    + Add par opt overloads of min / max and return enum values
+      instead of coercing to integers.
+    + Use half-reification only when there isn’t a reification that
+      is a more specific match.
+    + Add multidimensional overloads for the ++ array concatenation
+      operator.
+  * Bug fixes:
+    + Fix incorrect type error for array literals where the first
+      element is <> and subsequent elements are sets.
+    + Fix missing code block in visualisation feature
+      documentation.
+    + Emit type error when using variable if-then-else/array access
+      containing tuples or records containing non-varifiable types.
+    + Emit type error when using a variable comprehension with a
+      tuple/record type.
+    + Emit type error when using optional array access for arrays
+      of tuples/records.
+    + Emit type error for array literals with <> and var set
+      elements.
+    + Fix missing cross-references for IDE preference dialog
+      documentation figures.
+    + Fix crash when using nested tuples/record types inside var
+      if-then-else expressions.
+    + Fix evaluation error for comprehensions with an initial
+      assignment generator and a where clause which doesn’t involve
+      any of the generator identifiers.
+    + Fix type checking of if then else expressions with _ in the
+      else branch.
+    + Fix parsing of the most negative integer literal.
+    + Fix typo in warning messages for undefined results in
+      function calls.
+    + Fix bug in flattening identifier causing debug assertion to
+      fail.
+    + Fix missing type when flattening indexed var comprehension
+      leading to error or incorrect value type.
+    + Fix crash when generating error message for mismatched index
+      set where an enum index set is empty.
+    + Fix crash due to incorrect handling of negated constraints
+      matching entry in CSE map.
+    + Fix type error due to missing overload of max.
+    + Fix handling of contexts and maybe_partial annotations when
+      flattening par expressions.
+    + Fix par evaluation of boolean operators where an operand is
+      an array access into an empty array literal.
+    + Fix crash when concatenating arrays of annotations.
+    + Ensure DZN output of enum index sets of multidimensional
+      arrays is properly quoted.
+    + Fix parsing of enumerated values in JSON for integer
+      parameters.
+    + Fix crash during flattening of clauses with opt bool
+      arguments.
+    + Fix the coercions of index set for empty array literals to
+      allow any of the index sets to be empty.
+    + Fix behaviour of overloading for the ++ operator.
+    + Avoid outputting objective statistic when value is invalid
+      for MIP solvers.
+    + Fix bug in unification of aliased output variables when using
+      -O2 and above.
+
+-------------------------------------------------------------------
 Sun Sep  8 15:51:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.5:

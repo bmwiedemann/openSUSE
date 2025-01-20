@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 19 12:57:43 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.8:
+  * Fix drawing issue
+    In the last release we had some code that hit a bug in some
+    graphics drivers. #2076
+  * DBusActivatable
+    The previously introduced DBusActivatable seems to cause
+    some issues and confusion. #2077
+  * CI Fixes
+  * See https://github.com/davatorium/rofi/releases/tag/1.7.8
+    for details
+
+-------------------------------------------------------------------
 Tue Jan  7 09:28:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.7:

@@ -1,7 +1,7 @@
 #
 # spec file for package NumCpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-# %%define __builder ninja
+%define __builder ninja
 Name:           NumCpp
-Version:        2.12.1
+Version:        2.13.0
 Release:        0
 Summary:        C++ implementation of the Python Numpy library
 License:        MIT
 URL:            https://github.com/dpilger26/NumCpp
 Source:         %{url}/archive/refs/tags/Version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM NumCpp-disable-pytest.patch badshah400@gmail.com -- Disable pytests that are incorrectly setup for pybind11
+# PATCH-FIX-UPSTREAM NumCpp-disable-pytest.patch badshah400@gmail.com -- Disable pytests that are incorrectly setup for pybind11 and enable gtest
 Patch0:         NumCpp-disable-pytest.patch
+# PATCH-FIX-UPSTREAM NumCpp-add-tests.patch badshah400@gmail.com -- Add tests to cmake so that they can be run using ctest
+Patch1:         NumCpp-add-tests.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -66,10 +68,10 @@ This package provides the header files for compiling code using NumCpp.
 %build
 %cmake \
   -DNUMCPP_USE_MULTITHREAD:BOOL=ON \
-  -DBUILD_TESTS:BOOL=ON \
   -DBUILD_DOCS:BOOL=ON \
-  -DNUMCPP_INCLUDE_PYBIND_PYTHON_INTERFACE:BOOL=ON \
-  -DNUMCPP_INCLUDE_BOOST_PYTHON_INTERFACE:BOOL=ON \
+  -DBUILD_TESTS:BOOL=ON \
+  -DBUILD_MULTIPLE_TEST:BOOL=ON \
+  -DBUILD_CPPCHECK_TEST:BOOL=ON \
 %{nil}
 %cmake_build
 

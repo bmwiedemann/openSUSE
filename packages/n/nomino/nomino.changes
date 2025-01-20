@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 18 23:50:41 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.6.0:
+  * support named capture groups
+  * remove -e flag and add -E
+
+-------------------------------------------------------------------
 Sat Jan  4 07:38:58 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.4.0:

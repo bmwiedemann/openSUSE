@@ -1,7 +1,7 @@
 #
 # spec file for package forgejo-runner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           forgejo-runner
-Version:        5.0.4
+Version:        6.0.1
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        MIT
