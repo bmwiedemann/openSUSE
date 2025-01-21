@@ -1,0 +1,69 @@
+From 382593f36effbff3c8d7a88848a0f595e0c858b0 Mon Sep 17 00:00:00 2001
+From: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Date: Thu, 25 Apr 2024 22:28:55 +0200
+Subject: [PATCH] Onboard/Config.py: Check desktop env before requesting GNOME
+ Accessibility Toolkit.
+
+Signed-off-by: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+---
+ Onboard/Config.py | 30 +++++++++++++++++++-----------
+ 1 file changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/Onboard/Config.py b/Onboard/Config.py
+index 70b1c246..5605185a 100644
+--- a/Onboard/Config.py
++++ b/Onboard/Config.py
+@@ -337,6 +337,18 @@ class Config(ConfigObject):
+             _logger.warning("Starting in project directory, "
+                             "importing local packages and extensions.")
+ 
++    @staticmethod
++    def isdesktop(id):
++
++        xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
++        desktop = os.environ.get("DESKTOP_SESSION", "")
++
++        def istrcmp(s1, s2):
++            if sys.version_info < (3,3):
++                return s1.lower() == s2.lower()
++            return s1.casefold() == s2.casefold()
++
++        return istrcmp(xdg_desktop, id) or istrcmp(desktop, id)
+ 
+     def init(self):
+         """
+@@ -1137,6 +1149,12 @@ class Config(ConfigObject):
+         return self.keyboard.input_event_source == InputEventSourceEnum.XINPUT
+ 
+     def check_gnome_accessibility(self, parent = None):
++        if not (self.isdesktop("GNOME") or \
++                self.isdesktop("GNOME-Classic:GNOME") or \
++                self.isdesktop("Unity") or \
++                self.isdesktop("X-Cinnamon") or self.isdesktop("cinnamon") \
++               ):
++            return False
+         if not self.xid_mode and \
+            not self.gdi.toolkit_accessibility:
+             question = _("Enabling auto-show requires Gnome Accessibility.\n\n"
+@@ -1476,17 +1494,7 @@ class Config(ConfigObject):
+         """
+         Detect current desktop environment. Extend as needed.
+         """
+-        xdg_desktop = os.environ.get("XDG_CURRENT_DESKTOP", "")
+-        desktop = os.environ.get("DESKTOP_SESSION", "")
+-
+-        def istrcmp(s1, s2):
+-            if sys.version_info < (3,3):
+-                return s1.lower() == s2.lower()
+-            return s1.casefold() == s2.casefold()
+-
+-
+-        def isdesktop(id):
+-            return istrcmp(xdg_desktop, id) or istrcmp(desktop, id)
++        isdesktop = Config.isdesktop
+ 
+         if isdesktop("X-Cinnamon") or isdesktop("cinnamon"):
+             return DesktopEnvironmentEnum.Cinnamon
+-- 
+2.39.2
+
