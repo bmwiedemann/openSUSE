@@ -1,0 +1,36 @@
+diff --git a/MagickCore/statistic.c b/MagickCore/statistic.c
+index 8489fa4a0d1..377c7256a92 100644
+--- a/MagickCore/statistic.c
++++ b/MagickCore/statistic.c
+@@ -377,7 +377,7 @@ static double ApplyEvaluateOperator(RandomInfo *random_info,const Quantum pixel,
+     }
+     case PowEvaluateOperator:
+     {
+-      if (PerceptibleReciprocal(value) <= MagickEpsilon)
++      if (fabs(value) <= MagickEpsilon)
+         break;
+       if (((double) pixel < 0.0) && ((value-floor(value)) > MagickEpsilon))
+         result=(double) -((double) QuantumRange*pow(-(QuantumScale*(double)
+diff --git a/MagickWand/operation.c b/MagickWand/operation.c
+index 38e3145c321..1d853eedeb5 100644
+--- a/MagickWand/operation.c
++++ b/MagickWand/operation.c
+@@ -2477,14 +2477,15 @@ static MagickBooleanType CLISimpleOperatorImage(MagickCLI *cli_wand,
+           if (IsGeometry(arg1) == MagickFalse)
+             CLIWandExceptArgBreak(OptionError,"InvalidArgument",option,arg1);
+           constant=StringToDouble(arg1,(char **) NULL);
+-#if 1
++#if 0
+           /* Using Gamma, via a cache */
+           if (IfPlusOp)
+             constant=PerceptibleReciprocal(constant);
+           (void) GammaImage(_image,constant,_exception);
+ #else
+           /* Using Evaluate POW, direct update of values - more accurate */
+-          if (IfNormalOp)
++          if (IfNormalOp && (fabs(constant) <= MagickEpsilon) &&
++             ((constant-1.0) > MagickEpsilon))
+             constant=PerceptibleReciprocal(constant);
+           (void) EvaluateImage(_image,PowEvaluateOperator,constant,_exception);
+           _image->gamma*=StringToDouble(arg1,(char **) NULL);
+

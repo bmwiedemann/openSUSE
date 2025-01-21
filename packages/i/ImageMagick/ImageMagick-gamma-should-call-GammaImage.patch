@@ -1,0 +1,14 @@
+diff --git a/MagickWand/operation.c b/MagickWand/operation.c
+index bbe00a5e5ca..38e3145c321 100644
+--- a/MagickWand/operation.c
++++ b/MagickWand/operation.c
+@@ -2477,7 +2477,7 @@ static MagickBooleanType CLISimpleOperatorImage(MagickCLI *cli_wand,
+           if (IsGeometry(arg1) == MagickFalse)
+             CLIWandExceptArgBreak(OptionError,"InvalidArgument",option,arg1);
+           constant=StringToDouble(arg1,(char **) NULL);
+-#if 0
++#if 1
+           /* Using Gamma, via a cache */
+           if (IfPlusOp)
+             constant=PerceptibleReciprocal(constant);
+
