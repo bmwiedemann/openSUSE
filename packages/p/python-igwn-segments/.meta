@@ -1,0 +1,7 @@
+<package name="python-igwn-segments" project="openSUSE:Factory">
+  <title>Representations of semi-open intervals</title>
+  <description>This package provides the segment and segmentlist objects, as well as the
+infinity object used to define semi-infinite and infinite segments.</description>
+  <devel project="science" package="python-igwn-segments"/>
+  <url>https://igwn-segments.readthedocs.io/en/stable/</url>
+</package>
