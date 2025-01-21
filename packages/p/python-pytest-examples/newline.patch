@@ -1,0 +1,28 @@
+Index: pytest_examples-0.0.15/tests/test_run_examples.py
+===================================================================
+--- pytest_examples-0.0.15.orig/tests/test_run_examples.py
++++ pytest_examples-0.0.15/tests/test_run_examples.py
+@@ -171,6 +171,7 @@ def test_find_run_examples(example: Code
+         '@@ -4 +4 @@',
+         '-x =[1,2, 3]',
+         '+x = [1, 2, 3]',
++        '',
+     ]
+ 
+ 
+@@ -205,6 +206,7 @@ def test_find_run_examples(example: Code
+         '@@ -4 +4 @@',
+         '-x·=[1,2,·3]',
+         '+x·=·[1,·2,·3]',
++        '',
+     ]
+ 
+ 
+@@ -251,6 +253,7 @@ def test_find_run_examples(example: Code
+         '-    3',
+         '-]',
+         '+x = [1, 2, 3]',
++        '',
+     ]
+ 
+ 
