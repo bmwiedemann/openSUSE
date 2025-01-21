@@ -1,0 +1,38 @@
+diff -ur tablib-3.7.0/tests/test_tablib.py tablib-3.7.0.patched/tests/test_tablib.py
+--- tablib-3.7.0/tests/test_tablib.py	2024-10-08 15:11:38.000000000 +0200
++++ tablib-3.7.0.patched/tests/test_tablib.py	2025-01-20 21:38:50.331022734 +0100
+@@ -16,6 +16,7 @@
+ import xlrd
+ from odf import opendocument, table
+ from openpyxl.reader.excel import load_workbook
++import pytest
+ 
+ import tablib
+ from tablib.core import Row, detect_format
+@@ -53,7 +54,7 @@
+ 
+     def _test_export_data_in_all_formats(self, dataset, exclude=()):
+         all_formats = [
+-            'json', 'yaml', 'csv', 'tsv', 'xls', 'xlsx', 'ods', 'html', 'jira',
++            'json', 'yaml', 'csv', 'tsv', 'xlsx', 'ods', 'html', 'jira',
+             'latex', 'df', 'rst',
+         ]
+         for format_ in all_formats:
+@@ -400,9 +401,6 @@
+         """Test auto format detection."""
+         # html, jira, latex, rst are export only.
+ 
+-        _xls = self.founders.export('xls')
+-        self.assertEqual(tablib.detect_format(_xls), 'xls')
+-
+         _xlsx = self.founders.export('xlsx')
+         self.assertEqual(tablib.detect_format(_xlsx), 'xlsx')
+ 
+@@ -1280,6 +1278,7 @@
+         self.assertEqual(cells[2].getAttribute('datevalue'), '2019-10-04T12:30:08')
+ 
+ 
++@pytest.mark.skip("No XLS support without xlwt")
+ class XLSTests(BaseTestCase):
+     def test_xls_format_detect(self):
+         """Test the XLS format detection."""
