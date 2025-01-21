@@ -1,0 +1,8 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">rfc3161_client-*</param>
+    <param name="cargotoml">Cargo.toml</param>
+    <param name="compression">zst</param>
+  </service>
+</services>
