@@ -1,0 +1,69 @@
+Index: streamz-0.6.4/requirements.txt
+===================================================================
+--- streamz-0.6.4.orig/requirements.txt
++++ streamz-0.6.4/requirements.txt
+@@ -1,5 +1,4 @@
+ tornado
+ toolz
+ zict
+-six
+-setuptools
+\ No newline at end of file
++setuptools
+Index: streamz-0.6.4/streamz/core.py
+===================================================================
+--- streamz-0.6.4.orig/streamz/core.py
++++ streamz-0.6.4/streamz/core.py
+@@ -3,8 +3,6 @@ from collections import deque, defaultdi
+ from datetime import timedelta
+ import functools
+ import logging
+-import six
+-import sys
+ import threading
+ from time import time
+ from typing import Any, Callable, Hashable, Union
+@@ -1942,8 +1940,8 @@ def sync(loop, func, *args, **kwargs):
+             if timeout is not None:
+                 future = gen.with_timeout(timedelta(seconds=timeout), future)
+             result[0] = yield future
+-        except Exception:
+-            error[0] = sys.exc_info()
++        except Exception as exc:
++            error[0] = exc
+         finally:
+             thread_state.asynchronous = False
+             e.set()
+@@ -1955,7 +1953,8 @@ def sync(loop, func, *args, **kwargs):
+     else:
+         while not e.is_set():
+             e.wait(10)
++
+     if error[0]:
+-        six.reraise(*error[0])
++        raise error[0]
+     else:
+         return result[0]
+Index: streamz-0.6.4/streamz/utils_test.py
+===================================================================
+--- streamz-0.6.4.orig/streamz/utils_test.py
++++ streamz-0.6.4/streamz/utils_test.py
+@@ -1,8 +1,8 @@
+ import asyncio
+ from contextlib import contextmanager
++import io
+ import logging
+ import os
+-import six
+ import shutil
+ import tempfile
+ from time import time, sleep
+@@ -85,7 +85,7 @@ def captured_logger(logger, level=loggin
+     if propagate is not None:
+         orig_propagate = logger.propagate
+         logger.propagate = propagate
+-    sio = six.StringIO()
++    sio = io.StringIO()
+     logger.handlers[:] = [logging.StreamHandler(sio)]
+     logger.setLevel(level)
+     try:
