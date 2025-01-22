@@ -1,0 +1,15 @@
+--- a/src/java.base/share/classes/java/io/File.java
++++ b/src/java.base/share/classes/java/io/File.java
+@@ -1376,7 +1376,11 @@ public class File
+         if (isInvalid()) {
+             return false;
+         }
+-        return fs.createDirectory(this);
++        boolean result = fs.createDirectory(this);
++        if ( result && System.getenv("SOURCE_DATE_EPOCH") != null ) {
++            fs.setLastModifiedTime(this, 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
++        return result;
+     }
+ 
+     /**
