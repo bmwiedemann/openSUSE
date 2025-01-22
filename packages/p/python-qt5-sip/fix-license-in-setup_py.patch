@@ -1,0 +1,39 @@
+Index: pyqt5_sip-12.16.1/PKG-INFO
+===================================================================
+--- pyqt5_sip-12.16.1.orig/PKG-INFO
++++ pyqt5_sip-12.16.1/PKG-INFO
+@@ -5,7 +5,7 @@ Summary: The sip module support for PyQt
+ Home-page: https://github.com/Python-SIP/sip
+ Author: Phil Thompson
+ Author-email: phil@riverbankcomputing.com
+-License: SIP
++License: BSD-2-Clause
+ Platform: X11
+ Platform: macOS
+ Platform: Windows
+Index: pyqt5_sip-12.16.1/setup.py
+===================================================================
+--- pyqt5_sip-12.16.1.orig/setup.py
++++ pyqt5_sip-12.16.1/setup.py
+@@ -17,7 +17,7 @@ module = Extension('PyQt5.sip', module_s
+ setup(
+         name='PyQt5_sip',
+         version='12.16.1',
+-        license='SIP',
++        license='BSD-2-Clause',
+         python_requires='>=3.9',
+         ext_modules=[module]
+      )
+Index: pyqt5_sip-12.16.1/PyQt5_sip.egg-info/PKG-INFO
+===================================================================
+--- pyqt5_sip-12.16.1.orig/PyQt5_sip.egg-info/PKG-INFO
++++ pyqt5_sip-12.16.1/PyQt5_sip.egg-info/PKG-INFO
+@@ -5,7 +5,7 @@ Summary: The sip module support for PyQt
+ Home-page: https://github.com/Python-SIP/sip
+ Author: Phil Thompson
+ Author-email: phil@riverbankcomputing.com
+-License: SIP
++License: BSD-2-Clause
+ Platform: X11
+ Platform: macOS
+ Platform: Windows
