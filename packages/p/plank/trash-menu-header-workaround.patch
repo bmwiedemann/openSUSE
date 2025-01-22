@@ -1,0 +1,16 @@
+Work around excessively large text in the header which gets clipped (lp#1679883).
+Index: lib/Widgets/TitledSeparatorMenuItem.vala
+===================================================================
+--- a/lib/Widgets/TitledSeparatorMenuItem.vala	2023-12-13 11:43:21.156950996 +0000
++++ b/lib/Widgets/TitledSeparatorMenuItem.vala	2023-12-13 12:34:44.688950996 +0000
+@@ -83,8 +83,8 @@ namespace Plank
+ 			}
+ 			
+ 			unowned Pango.FontDescription font_desc = style.font_desc;
+-			font_desc.set_absolute_size ((int) (h * Pango.SCALE * Pango.Scale.LARGE));
+-			font_desc.set_weight (Pango.Weight.BOLD);
++			// font_desc.set_absolute_size ((int) (h * Pango.SCALE * Pango.Scale.LARGE));
++			// font_desc.set_weight (Pango.Weight.BOLD);
+ 			
+ 			var layout = new Pango.Layout (Gdk.pango_context_get ());
+ 			layout.set_font_description (font_desc);
