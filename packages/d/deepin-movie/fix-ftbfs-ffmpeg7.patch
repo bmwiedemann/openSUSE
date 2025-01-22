@@ -1,0 +1,45 @@
+Description: Fix FTBFS with ffmpeg 7.
+Author: Arun Kumar Pariyar <arun@debian.org>
+Bug-Debian: https://bugs.debian.org/1078277
+Last-Update: 2024-09-15
+---
+
+Index: deepin-movie-reborn-6.0.11/src/libdmr/playlist_model.cpp
+===================================================================
+--- deepin-movie-reborn-6.0.11.orig/src/libdmr/playlist_model.cpp
++++ deepin-movie-reborn-6.0.11/src/libdmr/playlist_model.cpp
+@@ -26,6 +26,8 @@ extern "C" {
+ }
+ DWIDGET_USE_NAMESPACE
+ 
++#define HAVE_CH_LAYOUT (LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(57, 28, 100))
++
+ typedef int (*mvideo_avformat_open_input)(AVFormatContext **ps, const char *url, AVInputFormat *fmt, AVDictionary **options);
+ typedef int (*mvideo_avformat_find_stream_info)(AVFormatContext *ic, AVDictionary **options);
+ typedef int (*mvideo_av_find_best_stream)(AVFormatContext *ic, enum AVMediaType type, int wanted_stream_nb, int related_stream, AVCodec **decoder_ret, int flags);
+@@ -341,7 +343,11 @@ struct MovieInfo PlaylistModel::parseFro
+         mi.aCodeID = audio_dec_ctx->codec_id;
+         mi.aCodeRate = audio_dec_ctx->bit_rate;
+         mi.aDigit = audio_dec_ctx->format;
+-        mi.channels = audio_dec_ctx->channels;
++        #if HAVE_CH_LAYOUT
++            mi.channels = audio_dec_ctx->ch_layout.nb_channels;
++        #else
++            mi.channels = audio_dec_ctx->channels;
++        #endif
+         mi.sampling = audio_dec_ctx->sample_rate;
+ 
+ #ifdef USE_TEST
+@@ -1706,7 +1712,11 @@ MovieInfo MovieInfo::parseFromFile(const
+     mi.aCodeID = dec_ctx->codec_id;
+     mi.aCodeRate = dec_ctx->bit_rate;
+     mi.aDigit = dec_ctx->format;
+-    mi.channels = dec_ctx->channels;
++    #if HAVE_CH_LAYOUT
++        mi.channels = dec_ctx->ch_layout.nb_channels;
++    #else
++        mi.channels = dec_ctx->channels;
++    #endif
+     mi.sampling = dec_ctx->sample_rate;
+ 
+     AVDictionaryEntry *tag = NULL;
