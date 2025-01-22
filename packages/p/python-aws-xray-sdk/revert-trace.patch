@@ -1,0 +1,59 @@
+From 7ec8c59e2d61d13cb223f50f6a4973c51f8c5da5 Mon Sep 17 00:00:00 2001
+From: Prashant Srivastava <50466688+srprash@users.noreply.github.com>
+Date: Wed, 26 Oct 2022 09:48:54 -0700
+Subject: [PATCH] persist original trace header in lambda context (#362)
+
+---
+ aws_xray_sdk/core/lambda_launcher.py | 1 +
+ tests/test_lambda_context.py         | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+Index: aws-xray-sdk-python-2.14.0/aws_xray_sdk/core/lambda_launcher.py
+===================================================================
+--- aws-xray-sdk-python-2.14.0.orig/aws_xray_sdk/core/lambda_launcher.py
++++ aws-xray-sdk-python-2.14.0/aws_xray_sdk/core/lambda_launcher.py
+@@ -160,6 +160,5 @@ class LambdaContext(Context):
+                 entityid=trace_header.parent,
+                 sampled=sampled,
+             )
+-        segment.save_origin_trace_header(trace_header)
+         setattr(self._local, 'segment', segment)
+         setattr(self._local, 'entities', [])
+Index: aws-xray-sdk-python-2.14.0/tests/test_lambda_context.py
+===================================================================
+--- aws-xray-sdk-python-2.14.0.orig/tests/test_lambda_context.py
++++ aws-xray-sdk-python-2.14.0/tests/test_lambda_context.py
+@@ -9,8 +9,7 @@ from aws_xray_sdk.core.models.subsegment
+ 
+ TRACE_ID = '1-5759e988-bd862e3fe1be46a994272793'
+ PARENT_ID = '53995c3f42cd8ad8'
+-DATA = 'Foo=Bar'
+-HEADER_VAR = "Root=%s;Parent=%s;Sampled=1;%s" % (TRACE_ID, PARENT_ID, DATA)
++HEADER_VAR = "Root=%s;Parent=%s;Sampled=1" % (TRACE_ID, PARENT_ID)
+ 
+ os.environ[lambda_launcher.LAMBDA_TRACE_HEADER_KEY] = HEADER_VAR
+ context = lambda_launcher.LambdaContext()
+@@ -28,7 +27,6 @@ def test_facade_segment_generation():
+     assert segment.id == PARENT_ID
+     assert segment.trace_id == TRACE_ID
+     assert segment.sampled
+-    assert DATA in segment.get_origin_trace_header().to_header_str()
+ 
+ 
+ def test_put_subsegment():
+@@ -46,7 +44,6 @@ def test_put_subsegment():
+     assert subsegment2.parent_id == subsegment.id
+     assert subsegment.parent_id == segment.id
+     assert subsegment2.parent_segment is segment
+-    assert DATA in subsegment2.parent_segment.get_origin_trace_header().to_header_str()
+ 
+     context.end_subsegment()
+     assert context.get_trace_entity().id == subsegment.id
+@@ -64,7 +61,6 @@ def test_disable():
+     global_sdk_config.set_sdk_enabled(False)
+     segment = context.get_trace_entity()
+     assert not segment.sampled
+-    assert DATA in segment.get_origin_trace_header().to_header_str()
+ 
+ 
+ def test_non_initialized():
