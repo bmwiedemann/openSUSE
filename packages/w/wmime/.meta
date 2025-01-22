@@ -1,0 +1,5 @@
+<package name="wmime" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:mail" package="wmime"/>
+</package>

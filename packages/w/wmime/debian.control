@@ -1,0 +1,21 @@
+Source: wmime
+Priority: optional
+Section: mail
+Maintainer: openSUSE <opensuse@opensuse.org>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+
+Package: libwmime2
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Library for working with MIME messages and IMAP/POP/SMTP
+ .
+
+Package: wmime-dev
+Architecture: any
+Breaks: libvmime-dev (< 0.9.2.204)
+Replaces: libvmime-dev (< 0.9.2.204)
+Depends: ${misc:Depends}, libwmime2 (= ${binary:Version}),
+ libgsasl-dev | libgsasl7-dev, libgnutls28-dev
+Description: Development files for vmime, an e-mail message library
+ .
