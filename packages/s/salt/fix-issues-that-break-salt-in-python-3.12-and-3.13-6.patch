@@ -1,0 +1,71 @@
+From d7a6f923ed86be59183161590b60698ea2fd1a21 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 22 Jan 2025 13:01:09 +0000
+Subject: [PATCH] Fix issues that break Salt in Python 3.12 and 3.13
+ (#698)
+
+---
+ salt/ext/tornado/netutil.py | 22 +++++++++++++---------
+ salt/utils/url.py           |  5 ++---
+ 2 files changed, 15 insertions(+), 12 deletions(-)
+
+diff --git a/salt/ext/tornado/netutil.py b/salt/ext/tornado/netutil.py
+index f86b430674..3e7fa130b5 100644
+--- a/salt/ext/tornado/netutil.py
++++ b/salt/ext/tornado/netutil.py
+@@ -48,15 +48,19 @@ except ImportError:
+ if PY3:
+     xrange = range
+ 
+-if hasattr(ssl, 'match_hostname') and hasattr(ssl, 'CertificateError'):  # python 3.2+
+-    ssl_match_hostname = ssl.match_hostname
+-    SSLCertificateError = ssl.CertificateError
+-elif ssl is None:
+-    ssl_match_hostname = SSLCertificateError = None  # type: ignore
+-else:
+-    import backports.ssl_match_hostname
+-    ssl_match_hostname = backports.ssl_match_hostname.match_hostname
+-    SSLCertificateError = backports.ssl_match_hostname.CertificateError  # type: ignore
++try:
++    from salt.ext.ssl_match_hostname import CertificateError as SSLCertificateError
++    from salt.ext.ssl_match_hostname import match_hostname as ssl_match_hostname
++except ImportError:
++    if hasattr(ssl, 'match_hostname') and hasattr(ssl, 'CertificateError'):  # python 3.2+
++        ssl_match_hostname = ssl.match_hostname
++        SSLCertificateError = ssl.CertificateError
++    elif ssl is None:
++        ssl_match_hostname = SSLCertificateError = None  # type: ignore
++    else:
++        import backports.ssl_match_hostname
++        ssl_match_hostname = backports.ssl_match_hostname.match_hostname
++        SSLCertificateError = backports.ssl_match_hostname.CertificateError  # type: ignore
+ 
+ if hasattr(ssl, 'SSLContext'):
+     if hasattr(ssl, 'create_default_context'):
+diff --git a/salt/utils/url.py b/salt/utils/url.py
+index a30610394c..0a10e0e1b6 100644
+--- a/salt/utils/url.py
++++ b/salt/utils/url.py
+@@ -5,7 +5,7 @@ URL utils
+ 
+ import re
+ import sys
+-from urllib.parse import urlparse, urlunparse
++from urllib.parse import urlparse, urlunparse, urlunsplit
+ 
+ import salt.utils.data
+ import salt.utils.path
+@@ -47,8 +47,7 @@ def create(path, saltenv=None):
+     path = salt.utils.data.decode(path)
+ 
+     query = "saltenv={}".format(saltenv) if saltenv else ""
+-    url = salt.utils.data.decode(urlunparse(("file", "", path, "", query, "")))
+-    return "salt://{}".format(url[len("file:///") :])
++    return f'salt://{salt.utils.data.decode(urlunsplit(("", "", path, query, "")))}'
+ 
+ 
+ def is_escaped(url):
+-- 
+2.47.0
+
