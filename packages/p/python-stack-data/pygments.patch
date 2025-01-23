@@ -1,0 +1,24 @@
+Index: stack_data-0.6.3/tests/test_core.py
+===================================================================
+--- stack_data-0.6.3.orig/tests/test_core.py
++++ stack_data-0.6.3/tests/test_core.py
+@@ -573,8 +573,8 @@ def test_absolute_filename():
+     [
+         r".c { color: #(999999|ababab); font-style: italic }",
+         r".err { color: #a61717; background-color: #e3d2d2 }",
+-        r".c-ExecutingNode { color: #(999999|ababab); font-style: italic; background-color: #ffff00 }",
+-        r".err-ExecutingNode { color: #a61717; background-color: #ffff00 }",
++        r".c-ExecutingNode { color: #(999999|ababab); font-style: italic; background-color: #(ffff00|FF0) }",
++        r".err-ExecutingNode { color: #A61717; background-color: #(ffff00|FF0) }",
+     ]
+ )
+ def test_executing_style_defs(expected):
+@@ -582,7 +582,7 @@ def test_executing_style_defs(expected):
+     formatter = HtmlFormatter(style=style)
+     style_defs = formatter.get_style_defs()
+ 
+-    assert re.search(expected, style_defs)
++    assert re.search(expected, style_defs, re.IGNORECASE)
+ 
+ 
+ def test_example():
