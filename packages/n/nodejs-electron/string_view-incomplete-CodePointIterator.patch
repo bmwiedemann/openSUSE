@@ -1,0 +1,61 @@
+In file included from /usr/include/c++/15/string:55,
+                 from /usr/include/c++/15/bits/locale_classes.h:42,
+                 from /usr/include/c++/15/bits/ios_base.h:43,
+                 from /usr/include/c++/15/ios:46,
+                 from /usr/include/c++/15/ostream:42,
+                 from /usr/include/c++/15/bits/unique_ptr.h:43,
+                 from /usr/include/c++/15/memory:80,
+                 from ../../base/check.h:9,
+                 from ../../third_party/blink/renderer/platform/wtf/allocator/allocator.h:8,
+                 from ../../third_party/blink/renderer/platform/wtf/text/atomic_string.h:30:
+/usr/include/c++/15/bits/range_access.h: In instantiation of ‘constexpr decltype (__cont.begin()) std::begin(const _Container&) [with _Container = WTF::String; decltype (__cont.begin()) = WTF::CodePointIterator]’:
+../../third_party/perfetto/include/perfetto/tracing/traced_value.h:386:25:   required by substitution of ‘template<class T> typename perfetto::check_traced_value_support<decltype (* std::begin(declval<T&>()))>::type perfetto::internal::WriteImpl(perfetto::base::priority_tag<1>, perfetto::TracedValue, T&&) [with T = const WTF::String&]’
+  386 |     decltype(*std::begin(std::declval<T&>()))>::type
+      |               ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../../third_party/perfetto/include/perfetto/tracing/traced_value.h:427:24:   required by substitution of ‘template<class T, class Result> using perfetto::check_traced_value_support_t = decltype ((perfetto::internal::WriteImpl(std::declval(), std::declval(), declval<T>()), declval<Result>())) [with T = const WTF::String&; Result = int]’
+  427 |     internal::WriteImpl(
+      |     ~~~~~~~~~~~~~~~~~~~^
+  428 |         std::declval<base::priority_tag<internal::kMaxWriteImplPriority>>(),
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  429 |         std::declval<TracedValue>(),
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  430 |         std::declval<T>()),
+      |         ~~~~~~~~~~~~~~~~~~
+../../third_party/perfetto/include/perfetto/tracing/traced_value.h:465:15:   required by substitution of ‘template<class V> static char (& perfetto::internal::has_traced_value_support<const WTF::String&>::check_support(perfetto::check_traced_value_support_t<V, int>))[1] [with V = const WTF::String&]’
+  465 |   static Yes& check_support(check_traced_value_support_t<V, int>);
+      |               ^~~~~~~~~~~~~
+../../third_party/perfetto/include/perfetto/tracing/traced_value.h:470:71:   required from ‘constexpr const bool perfetto::internal::has_traced_value_support<const WTF::String&>::value’
+  470 |   static constexpr bool value = sizeof(Yes) == sizeof(check_support<T>(0));
+      |                                                      ~~~~~~~~~~~~~~~~~^~~~
+../../third_party/perfetto/include/perfetto/tracing/traced_value.h:480:46:   required from ‘void perfetto::WriteIntoTracedValue(TracedValue, T&&) [with T = const WTF::String&]’
+  480 |       internal::has_traced_value_support<T>::value,
+      |                                              ^~~~~
+../../third_party/blink/renderer/platform/wtf/text/atomic_string.cc:127:33:   required from here
+  127 |   perfetto::WriteIntoTracedValue(std::move(context), GetString());
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/15/bits/range_access.h:66:67: error: invalid use of incomplete type ‘class WTF::CodePointIterator’
+   66 |     begin(const _Container& __cont) noexcept(noexcept(__cont.begin()))
+      |                                                       ~~~~~~~~~~~~^~
+In file included from ../../third_party/blink/renderer/platform/wtf/text/atomic_string.h:35:
+../../third_party/blink/renderer/platform/wtf/text/string_view.h:31:7: note: forward declaration of ‘class WTF::CodePointIterator’
+   31 | class CodePointIterator;
+      |       ^~~~~~~~~~~~~~~~~
+
+--- src/third_party/blink/renderer/platform/wtf/text/string_view.h.orig	2025-01-22 21:21:43.120141300 +0100
++++ src/third_party/blink/renderer/platform/wtf/text/string_view.h	2025-01-22 23:39:31.542552700 +0100
+@@ -19,6 +19,7 @@
+ #include "third_party/abseil-cpp/absl/base/attributes.h"
+ #include "third_party/blink/renderer/platform/wtf/allocator/allocator.h"
+ #include "third_party/blink/renderer/platform/wtf/get_ptr.h"
++#include "third_party/blink/renderer/platform/wtf/text/code_point_iterator.h"
+ #include "third_party/blink/renderer/platform/wtf/text/string_impl.h"
+ 
+ #if DCHECK_IS_ON()
+@@ -28,7 +29,6 @@
+ namespace WTF {
+ 
+ class AtomicString;
+-class CodePointIterator;
+ class String;
+ 
+ enum UTF8ConversionMode {
