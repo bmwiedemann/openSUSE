@@ -1,0 +1,24 @@
+---
+ data/bflib/bflib_python_2.3.xml |    2 +-
+ data/json_prettyprint.py        |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/data/bflib/bflib_python_2.3.xml
++++ b/data/bflib/bflib_python_2.3.xml
+@@ -23106,7 +23106,7 @@ file mode should be 0755 octal (use chmo
+ filename). Make sure that the first line of the script contains
+ ! starting in column 1 followed by the pathname of the Python
+ interpreter, for instance:
+-#!/usr/local/bin/python
++#!/usr/local/bin/python3
+ Make sure the Python interpreter exists and is executable by ``others''.
+ Make sure that any files your script needs to read or write are
+ readable or writable, respectively, by ``others'' --- their mode
+--- a/data/json_prettyprint.py
++++ b/data/json_prettyprint.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import json
+ import sys
