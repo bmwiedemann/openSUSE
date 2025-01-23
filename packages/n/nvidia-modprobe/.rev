@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95823561ec3c6f30de3b07ee086eafd3</srcmd5>
+    <version>565.77</version>
+    <time>1737490390</time>
+    <user>anag+factory</user>
+    <comment>bugowner: group:xorg-maintainers
+
+- nvidia-modprobe-restrict-capability-file-path.patch
+  * fixes security issue (bsc#1230950, boo#1231257); patch is new
+    in nvidia-modprobe 550.144.03 release for driver security
+    release 550.144.03 (bsc#1235461, boo#1235871, CVE-2024-0131,
+    CVE-2024-0147, CVE-2024-0149, CVE-2024-0150, CVE-2024-53869)</comment>
+    <requestid>1238490</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33b7e8b2c80bd060e62de5f314b1ab6d</srcmd5>
+    <version>565.77</version>
+    <time>1737651888</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239771</requestid>
+  </revision>
+</revisionlist>
