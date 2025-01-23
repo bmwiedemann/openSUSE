@@ -1,0 +1,8 @@
+<package name="perl-Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref" project="openSUSE:Factory">
+  <title>Don't assign an anonymous arrayref to an array</title>
+  <description>This policy is a fork of Perl::Critic::Policy::ValuesAndExpressions::ProhibitArrayAssignAref. It differs from the original by not having a dependency on List::MoreUtils. It is unfortunately still licensed as GPL3.
+
+It asks you not to assign an anonymous arrayref to an array</description>
+  <devel project="devel:languages:perl" package="perl-Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref"/>
+  <url>https://metacpan.org/pod/Perl::Critic::Policy::Plicease::ProhibitArrayAssignAref</url>
+</package>
