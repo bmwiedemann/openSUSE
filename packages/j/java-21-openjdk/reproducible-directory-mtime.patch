@@ -1,0 +1,17 @@
+diff --git a/src/java.base/share/classes/java/io/File.java b/src/java.base/share/classes/java/io/File.java
+index 652f28074cc..63a6c2f2831 100644
+--- a/src/java.base/share/classes/java/io/File.java
++++ b/src/java.base/share/classes/java/io/File.java
+@@ -1378,7 +1378,11 @@ public class File
+         if (isInvalid()) {
+             return false;
+         }
+-        return FS.createDirectory(this);
++        boolean result = FS.createDirectory(this);
++        if ( result && System.getenv("SOURCE_DATE_EPOCH") != null ) {
++            FS.setLastModifiedTime(this, 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
++        return result;
+     }
+ 
+     /**
