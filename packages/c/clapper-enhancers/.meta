@@ -1,0 +1,5 @@
+<package name="clapper-enhancers" project="openSUSE:Factory">
+  <title>clapper-enhancers</title>
+  <description>Plugins enhancing Clapper library capabilities.</description>
+  <devel project="multimedia:apps" package="clapper-enhancers"/>
+</package>
