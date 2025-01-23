@@ -1,0 +1,26 @@
+Index: pyqt6_sip-13.9.1/PKG-INFO
+===================================================================
+--- pyqt6_sip-13.9.1.orig/PKG-INFO
++++ pyqt6_sip-13.9.1/PKG-INFO
+@@ -5,7 +5,7 @@ Summary: The sip module support for PyQt
+ Home-page: https://github.com/Python-SIP/sip
+ Author: Phil Thompson
+ Author-email: phil@riverbankcomputing.com
+-License: SIP
++License: BSD-2-Clause
+ Platform: X11
+ Platform: macOS
+ Platform: Windows
+Index: pyqt6_sip-13.9.1/setup.py
+===================================================================
+--- pyqt6_sip-13.9.1.orig/setup.py
++++ pyqt6_sip-13.9.1/setup.py
+@@ -17,7 +17,7 @@ module = Extension('PyQt6.sip', module_s
+ setup(
+         name='PyQt6_sip',
+         version='13.9.1',
+-        license='SIP',
++        license='BSD-2-Clause',
+         python_requires='>=3.9',
+         ext_modules=[module]
+      )
