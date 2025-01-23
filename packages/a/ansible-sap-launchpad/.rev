@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67a7afdc68f83f6fbfaa2396cd6920e5</srcmd5>
+    <version>1.1.1</version>
+    <time>1737651973</time>
+    <user>anag+factory</user>
+    <comment>bugowner: marcel.mamula (marcel.mamula@suse.com)
+
+This package contains Ansible Automation for downloading SAP media using API.
+Source is downstream that we are contributing to: https://github.com/sap-linuxlab/community.sap_launchpad</comment>
+    <requestid>1239898</requestid>
+  </revision>
+</revisionlist>
