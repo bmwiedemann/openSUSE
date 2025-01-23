@@ -1,0 +1,5 @@
+<package name="wl-mirror" project="openSUSE:Factory">
+  <title></title>
+  <description>A simple Wayland output mirror client</description>
+  <devel project="X11:Wayland" package="wl-mirror"/>
+</package>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb49b3307afc80ce6961b2bee9ad030b</srcmd5>
+    <version>0.17.0</version>
+    <time>1737651915</time>
+    <user>anag+factory</user>
+    <comment>Hello,
+I want to introduce a new package to factory:
+
+wl-mirror is a Wayland output mirror client.
+It mirrors (in the sense of copying, not swapping left↔right) an output onto a new resizable window.
+https://github.com/Ferdi265/wl-mirror
+
+It is useful for wayland based window managers like hyprland and sway, where no screen mirroring utility is provided by default.
+Therefore it would be important to have the package available in the main repos.</comment>
+    <requestid>1239787</requestid>
+  </revision>
+</revisionlist>
