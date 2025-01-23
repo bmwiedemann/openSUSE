@@ -1,0 +1,22 @@
+From bed5ae7f777e0e4bcb5609622385ee94751c03ce Mon Sep 17 00:00:00 2001
+From: Brett Holman <brett.holman@canonical.com>
+Date: Tue, 5 Dec 2023 13:41:13 -0700
+Subject: [PATCH] fix(python3.13): Fix import error for passlib on Python 3.13
+
+---
+ cloudinit/sources/DataSourceAzure.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: cloud-init-23.3/cloudinit/sources/DataSourceAzure.py
+===================================================================
+--- cloud-init-23.3.orig/cloudinit/sources/DataSourceAzure.py
++++ cloud-init-23.3/cloudinit/sources/DataSourceAzure.py
+@@ -55,7 +55,7 @@ try:
+     )
+ except (ImportError, AttributeError):
+     try:
+-        import passlib
++        import passlib.hash
+ 
+         blowfish_hash = passlib.hash.sha512_crypt.hash
+     except ImportError:

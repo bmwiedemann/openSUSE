@@ -1,0 +1,63 @@
+From c76f9eb0df30ab7c288e5050ed1df85d132c0202 Mon Sep 17 00:00:00 2001
+From: Chad Smith <chad.smith@canonical.com>
+Date: Mon, 28 Aug 2023 10:22:04 -0600
+Subject: [PATCH] pep-594: drop deprecated pipes module import
+
+python3.11 will deprecated pipes module 3.13 will drop it from main.
+
+cloud-init only used the undocumented pipes.quote function,
+which is actually only wrapper around shlex.quote[1].
+
+Use shlex.quote instead.
+
+[1] https://github.com/python/cpython/blob/3.11/Lib/pipes.py#L64-L66
+---
+ cloudinit/distros/parsers/sys_conf.py     | 6 +++---
+ tests/unittests/distros/test_sysconfig.py | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cloudinit/distros/parsers/sys_conf.py b/cloudinit/distros/parsers/sys_conf.py
+index cb6e583e789..1d519ce4ef7 100644
+--- a/cloudinit/distros/parsers/sys_conf.py
++++ b/cloudinit/distros/parsers/sys_conf.py
+@@ -4,8 +4,8 @@
+ #
+ # This file is part of cloud-init. See LICENSE file for license information.
+ 
+-import pipes
+ import re
++import shlex
+ from io import StringIO
+ 
+ # This library is used to parse/write
+@@ -82,7 +82,7 @@ def _quote(self, value, multiline=False):
+                 if re.search(r"[\t\r\n ]", value):
+                     if _contains_shell_variable(value):
+                         # If it contains shell variables then we likely want to
+-                        # leave it alone since the pipes.quote function likes
++                        # leave it alone since the shlex.quote function likes
+                         # to use single quotes which won't get expanded...
+                         if re.search(r"[\n\"']", value):
+                             quot_func = (
+@@ -93,7 +93,7 @@ def _quote(self, value, multiline=False):
+                                 lambda x: self._get_single_quote(x) % x
+                             )  # noqa: E731
+                     else:
+-                        quot_func = pipes.quote
++                        quot_func = shlex.quote
+         if not quot_func:
+             return value
+         return quot_func(value)
+diff --git a/tests/unittests/distros/test_sysconfig.py b/tests/unittests/distros/test_sysconfig.py
+index 9c3a2018edf..9f8d0cc8003 100644
+--- a/tests/unittests/distros/test_sysconfig.py
++++ b/tests/unittests/distros/test_sysconfig.py
+@@ -65,7 +65,7 @@ def test_parse_adjust(self):
+         conf["IPV6TO4_ROUTING"] = "blah \tblah"
+         contents2 = str(conf).strip()
+         # Should be requoted due to whitespace
+-        self.assertRegex(contents2, r"IPV6TO4_ROUTING=[\']blah\s+blah[\']")
++        self.assertRegex(contents2, r"IPV6TO4_ROUTING='blah\s+blah'")
+ 
+     def test_parse_no_adjust_shell(self):
+         conf = SysConf("".splitlines())
