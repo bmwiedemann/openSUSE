@@ -1,0 +1,23 @@
+From 93f36f74ef018b6d12a04a46bb4ff8c83569b9cd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta?= <meggy.calabkova@gmail.com>
+Date: Wed, 22 Jan 2025 14:29:42 +0100
+Subject: [PATCH] adapt to Pygments 2.19
+
+---
+ tests/test_public_api.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_public_api.py b/tests/test_public_api.py
+index a23f091..f0a9d71 100644
+--- a/tests/test_public_api.py
++++ b/tests/test_public_api.py
+@@ -41,7 +41,7 @@ def test_get_pygments_stylesheet(self) -> None:
+         except ImportError:
+             raise unittest.SkipTest("Pygments not available")
+         stylesheet = get_pygments_stylesheet(".selector")
+-        self.assertIn(".selector .nf { color: #0000FF", stylesheet)
++        self.assertIn(".selector .nf { color: #00F", stylesheet)
+         stylesheet = get_pygments_stylesheet(".selector", style="colorful")
+-        self.assertIn(".selector .nf { color: #0066BB", stylesheet)
++        self.assertIn(".selector .nf { color: #06B", stylesheet)
+         self.assertFalse(get_pygments_stylesheet(".selector", style=""))
