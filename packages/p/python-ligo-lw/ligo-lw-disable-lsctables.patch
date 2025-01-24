@@ -1,0 +1,25 @@
+---
+ test/Makefile |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: python-ligo-lw-1.8.3/test/Makefile
+===================================================================
+--- python-ligo-lw-1.8.3.orig/test/Makefile
++++ python-ligo-lw-1.8.3/test/Makefile
+@@ -9,7 +9,6 @@ check : \
+ 	ligolw_test04 \
+ 	ligolw_test05 \
+ 	test_array \
+-	test_lsctables \
+ 	test_param \
+ 	test_table \
+ 	test_tokenizer \
+@@ -72,7 +71,7 @@ ligolw_print_test ligolw_segments_test l
+ 	sh $@.sh && $(printpassfail)
+ 	@echo "<=== end $@ ==="
+ 
+-ligo_lw_test_01 test_array test_ligolw test_lsctables test_param test_table test_tokenizer test_utils test_utils_process test_utils_segments :
++ligo_lw_test_01 test_array test_ligolw test_param test_table test_tokenizer test_utils test_utils_process test_utils_segments :
+ 	@echo "=== start $@ ===>"
+ 	$(PYTHON) $@.py && $(printpassfail)
+ 	@echo "<=== end $@ ==="

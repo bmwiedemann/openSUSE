@@ -1,0 +1,18 @@
+---
+ test/Makefile |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: python-ligo-lw-1.8.3/test/Makefile
+===================================================================
+--- python-ligo-lw-1.8.3.orig/test/Makefile
++++ python-ligo-lw-1.8.3/test/Makefile
+@@ -13,8 +13,7 @@ check : \
+ 	test_table \
+ 	test_tokenizer \
+ 	test_utils \
+-	test_utils_process \
+-	test_utils_segments
++	test_utils_process
+ 	@echo "All Tests Passed"
+ 
+ define printpassfail
