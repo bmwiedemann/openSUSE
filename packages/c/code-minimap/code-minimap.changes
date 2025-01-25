@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Jan 24 15:54:16 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.6.8
+- cleanup spec for new cargo_vendor
+- cleanup _service to use release tarball
+
+-------------------------------------------------------------------
+Wed Nov  8 10:14:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

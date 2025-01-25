@@ -1,0 +1,8 @@
+<package name="code-minimap" project="openSUSE:Factory">
+  <title>A high performance code minimap render</title>
+  <description>Code-minimap is a tool for generating text minimaps at high speed.
+
+</description>
+  <devel project="editors" package="code-minimap"/>
+  <url>https://github.com/wfxr/code-minimap</url>
+</package>
