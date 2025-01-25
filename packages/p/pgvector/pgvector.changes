@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Fri Jan 24 15:07:12 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
+Fri Jan 24 14:10:44 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- set OPTFLAGS on the cmdline on the make cmdline to overwrite the
+  -march=native flag i the make file. %{optflags} is passed via the
+  pgxs handling and taken from postgresql (boo#1236351)
+
+-------------------------------------------------------------------
+Sat Jan 18 10:31:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- split out a devel package with the header files to build
+  extensions on top of pgvector (gh:pgvector/pgvector#759)
+
+-------------------------------------------------------------------
+Thu Jan  9 08:20:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.8.0
+  - Added support for iterative index scans
+  - Added casts for arrays to sparsevec
+  - Improved cost estimation for better index selection when
+    filtering
+  - Improved performance of HNSW index scans
+  - Improved performance of HNSW inserts and on-disk index builds
+  - Dropped support for Postgres 12
+
+-------------------------------------------------------------------
+Sat Sep 28 00:18:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg17
+
+-------------------------------------------------------------------
+Wed Sep  4 13:35:00 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 0.7.4
+  * Fixed locking for parallel HNSW index builds
+  * Fixed compilation error with GCC 14 on i386 when SSE2 is not enabled
+
+- Update to 0.7.3
+  * Fixed failed to add index item error with sparsevec
+  * Fixed compilation error with FreeBSD ARM
+  * Fixed compilation warning with MSVC and Postgres 16
+
+- Update to 0.7.2
+  * Fixed initialization fork for indexes on unlogged tables
+
+- Update to 0.7.1
+  * Improved performance of on-disk HNSW index builds
+  * Fixed undefined symbol error with GCC 8
+  * Fixed compilation warning with Clang < 14
+
+- Fixed download URL
+
+-------------------------------------------------------------------
+Tue May  7 23:32:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.7.0 
+  no changelog provided
+
+-------------------------------------------------------------------
+Thu Sep 28 20:54:14 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 16
+
+-------------------------------------------------------------------
+Mon Sep  4 23:59:12 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

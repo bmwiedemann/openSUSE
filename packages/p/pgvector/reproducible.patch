@@ -1,0 +1,31 @@
+From a2c6813aa0cfca83d6de93aad61a0e2cae084aee Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 24 Jan 2025 04:10:21 +0100
+Subject: [PATCH] Avoid -march=native when reproducible build is wanted
+
+See https://reproducible-builds.org/ for why this is good.
+
+Without this patch, compiling on different machines produced different binaries, which made verification of results difficult.
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ Makefile | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 7a4b88ca..4681d0f7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,11 @@ REGRESS = $(patsubst test/sql/%.sql,%,$(TESTS))
+ REGRESS_OPTS = --inputdir=test --load-extension=$(EXTENSION)
+ 
+ # To compile for portability, run: make OPTFLAGS=""
+-OPTFLAGS = -march=native
++ifdef SOURCE_DATE_EPOCH
++	OPTFLAGS =
++else
++	OPTFLAGS = -march=native
++endif
+ 
+ # Mac ARM doesn't always support -march=native
+ ifeq ($(shell uname -s), Darwin)

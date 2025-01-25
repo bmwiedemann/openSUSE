@@ -1,0 +1,13 @@
+<package name="pgvector" project="openSUSE:Factory">
+  <title>Open-source vector similarity search for Postgres</title>
+  <description>Store your vectors with the rest of your data. Supports:
+
+exact and approximate nearest neighbor search
+L2 distance, inner product, and cosine distance
+any language with a Postgres client
+Plus ACID compliance, point-in-time recovery, JOINs, and all of the other great features of Postgres
+
+</description>
+  <devel project="server:database:postgresql" package="pgvector"/>
+  <url>https://github.com/pgvector/pgvector</url>
+</package>
