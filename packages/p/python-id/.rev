@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60f90b8a601d92f798acf5507985eb8a</srcmd5>
+    <version>1.5.0</version>
+    <time>1737490276</time>
+    <user>anag+factory</user>
+    <comment>New package, required by python-sigstore</comment>
+    <requestid>1239296</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f2a22feca2533c20e9a26338aa159e74</srcmd5>
+    <version>1.5.0</version>
+    <time>1738007539</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240301</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Jan 24 15:43:43 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Jan 21 09:51:58 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Initial version (1.4.0)
