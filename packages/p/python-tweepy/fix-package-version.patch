@@ -1,0 +1,22 @@
+From c1eb4f3f7bfaf5a54db73ae28f7395e8cbf01752 Mon Sep 17 00:00:00 2001
+From: Josh Roesslein <jroesslein@gmail.com>
+Date: Wed, 15 Jan 2025 15:24:21 -0600
+Subject: [PATCH] Bump version number to 4.15.0
+
+---
+ tweepy/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tweepy/__init__.py b/tweepy/__init__.py
+index efe98645b..105189c08 100644
+--- a/tweepy/__init__.py
++++ b/tweepy/__init__.py
+@@ -5,7 +5,7 @@
+ """
+ Tweepy Twitter API library
+ """
+-__version__ = '4.14.0'
++__version__ = '4.15.0'
+ __author__ = 'Joshua Roesslein'
+ __license__ = 'MIT'
+ 
