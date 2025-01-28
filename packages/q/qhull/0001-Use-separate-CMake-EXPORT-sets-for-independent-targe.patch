@@ -1,0 +1,151 @@
+From 548df3c071ae1de850c260c9cf10da401d347730 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 25 Jan 2025 12:56:06 +0100
+Subject: [PATCH] Use separate CMake EXPORT sets for independent targets
+
+---
+ CMakeLists.txt        | 49 ++++++++++++++++++++++++++-----------------
+ build/config.cmake.in | 22 ++++++++++++++++++-
+ 2 files changed, 51 insertions(+), 20 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 553166e..9478a52 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,6 +107,7 @@ check_lfs(WITH_LFS)
+ include(CMakeDependentOption)
+ option(BUILD_STATIC_LIBS "Build static libraries" ON)
+ option(BUILD_SHARED_LIBS "Build shared library" ON)
++option(BUILD_QHULLCPP "Build QHULL C++ library" ON)
+ set(_NO_STATIC_LIBS NOCACHE INTERNAL (NOT ${BUILD_STATIC_LIBS}))
+ cmake_dependent_option(LINK_APPS_SHARED "Use shared library for linking applications"
+     _NO_STATIC_LIBS
+@@ -343,7 +344,7 @@ set(qhull_SHARED libqhull)  # Temporarily avoid name conflict with qhull executa
+ set(qhull_SHAREDP qhull_p)  # libqhull and qhull_p are deprecated, use qhull_r instead
+ 
+ set(qhull_TARGETS_APPLICATIONS qhull rbox qconvex qdelaunay qvoronoi qhalf)
+-set(qhull_TARGETS_STATIC ${qhull_CPP} ${qhull_STATIC} ${qhull_STATICR})
++set(qhull_TARGETS_STATIC ${qhull_STATIC} ${qhull_STATICR})
+ set(qhull_TARGETS_SHARED ${qhull_SHAREDR})
+ 
+ set(
+@@ -466,14 +467,21 @@ set_target_properties(${qhull_CPP} PROPERTIES
+     VERSION ${qhull_VERSION}
+     OUTPUT_NAME "${qhull_CPP}$<$<CONFIG:Debug>:_d>"
+     POSITION_INDEPENDENT_CODE "TRUE")
++if (BUILD_SHARED_LIBS)
++    target_link_libraries(${qhull_CPP} PRIVATE ${qhull_SHAREDR})
++else()
++    target_link_libraries(${qhull_CPP} PRIVATE ${qhull_STATICR})
++endif()
+ 
+ # ---------------------------------------
+-# if BUILD_STATIC_LIBS=OFF or BUILD_SHARED_LIBS=OFF
+-#   Exclude library builds from "make all" 
++# if BUILD_STATIC_LIBS=OFF, BUILD_SHARED_LIBS=OFF, BUILD_QHULLCPP=OFF
++#   Exclude corresponding library builds from "make all" 
+ # ---------------------------------------
+ if(NOT ${BUILD_STATIC_LIBS})
+     set_target_properties(${qhull_STATIC} PROPERTIES EXCLUDE_FROM_ALL TRUE)
+     set_target_properties(${qhull_STATICR} PROPERTIES EXCLUDE_FROM_ALL TRUE)
++endif()
++if(NOT ${BUILD_QHULLCPP})
+     set_target_properties(${qhull_CPP} PROPERTIES EXCLUDE_FROM_ALL TRUE)
+ endif()
+ if(NOT ${BUILD_SHARED_LIBS})
+@@ -677,20 +685,37 @@ endif()
+ # Define install
+ # ---------------------------------------
+ 
++set(ConfigPackageLocation lib/cmake/Qhull)
++
+ install(TARGETS ${qhull_TARGETS_APPLICATIONS} EXPORT
+         RUNTIME DESTINATION ${BIN_INSTALL_DIR})
+ 
+ if (BUILD_SHARED_LIBS)
+-    install(TARGETS ${qhull_TARGETS_SHARED} EXPORT QhullTargets
++    install(TARGETS ${qhull_TARGETS_SHARED} EXPORT QhullTargetsShared
+             LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+             ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+             INCLUDES DESTINATION include)
++    install(EXPORT QhullTargetsShared
++            NAMESPACE Qhull::
++            DESTINATION ${ConfigPackageLocation})
+ endif()
+ if (BUILD_STATIC_LIBS)
+-    install(TARGETS ${qhull_TARGETS_STATIC} EXPORT QhullTargets
++    install(TARGETS ${qhull_TARGETS_STATIC} EXPORT QhullTargetsStatic
++            LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++            ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
++            INCLUDES DESTINATION include)
++    install(EXPORT QhullTargetsStatic
++            NAMESPACE Qhull::
++            DESTINATION ${ConfigPackageLocation})
++endif()
++if (BUILD_QHULLCPP)
++    install(TARGETS ${qhull_CPP} EXPORT QhullTargetsCpp
+             LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+             ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+             INCLUDES DESTINATION include)
++    install(EXPORT QhullTargetsCpp
++            NAMESPACE Qhull::
++            DESTINATION ${ConfigPackageLocation})
+ endif()
+ 
+ include(CMakePackageConfigHelpers)
+@@ -701,25 +726,11 @@ write_basic_package_version_file(
+     COMPATIBILITY AnyNewerVersion
+ )
+ 
+-export(EXPORT QhullTargets
+-  FILE "${CMAKE_CURRENT_BINARY_DIR}/QhullExport/QhullTargets.cmake"
+-  NAMESPACE Qhull:: 
+-)
+-
+ configure_file(${PROJECT_SOURCE_DIR}/build/config.cmake.in
+   "${CMAKE_CURRENT_BINARY_DIR}/QhullExport/QhullConfig.cmake"
+   @ONLY
+ )
+ 
+-set(ConfigPackageLocation lib/cmake/Qhull)
+-install(EXPORT QhullTargets
+-  FILE
+-    QhullTargets.cmake
+-  NAMESPACE
+-    Qhull::
+-  DESTINATION
+-    ${ConfigPackageLocation}
+-)
+ install(
+   FILES
+     "${CMAKE_CURRENT_BINARY_DIR}/QhullExport/QhullConfig.cmake"
+diff --git a/build/config.cmake.in b/build/config.cmake.in
+index 63183ce..3741228 100644
+--- a/build/config.cmake.in
++++ b/build/config.cmake.in
+@@ -1 +1,21 @@
+-include("${CMAKE_CURRENT_LIST_DIR}/QhullTargets.cmake")
++set(_targets)
++
++if (@BUILD_SHARED_LIBS@)
++    include("${CMAKE_CURRENT_LIST_DIR}/QhullTargetsShared.cmake" OPTIONAL)
++    list(APPEND _targets Qhull::@qhull_SHAREDR@)
++endif()
++if (@BUILD_STATIC_LIBS@)
++    include("${CMAKE_CURRENT_LIST_DIR}/QhullTargetsStatic.cmake" OPTIONAL)
++    list(APPEND _targets Qhull::@qhull_STATICR@)
++endif()
++if (@BUILD_QHULLCPP@)
++    include("${CMAKE_CURRENT_LIST_DIR}/QhullTargetsCpp.cmake" OPTIONAL)
++    list(APPEND _targets Qhull::@qhull_CPP@)
++endif()
++
++set(Qhull_FOUND FALSE)
++foreach(_target IN ITEMS ${_targets})
++    if (TARGET ${_target})
++        set(Qhull_FOUND TRUE)
++    endif()
++endforeach()
+-- 
+2.48.1
+
