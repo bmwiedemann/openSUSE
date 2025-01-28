@@ -1,0 +1,23 @@
+# mod_security2 is not activated by default upon installation of the
+# apache module.
+#
+# Use
+#    # a2enmod unique_id
+#    # a2enmod security2
+#
+# to activate security2 module.
+#
+# Configuration directories:
+#      /etc/apache2/mod_security2.d         is read first
+#      /etc/apache2/mod_security2.d/rules   is read second
+#
+# owasp-modsecurity-crs and owasp-modsecurity-crs-apache2 can be installed.
+#    To test:
+W
+#         curl 'http://localhost/?foo=/etc/passwd&bar=/bin/sh'
+#
+#      sholud give 403 with appropriate entry in /var/log/apache2/modsec_audit.log
+#      and /var/log/apache2/error_log.
+#
+# See https://coreruleset.org/docs/1-getting-started/1-1-crs-installation/
+# for details.
