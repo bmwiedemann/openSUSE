@@ -1,0 +1,5 @@
+<package name="ghc-directory-ospath-streaming" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-directory-ospath-streaming"/>
+</package>
