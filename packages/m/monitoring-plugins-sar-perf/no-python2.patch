@@ -1,0 +1,34 @@
+---
+ check_sar_perf.py |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- a/check_sar_perf.py
++++ b/check_sar_perf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # Copyright (c) 2010, Nick Anderson <nick@cmdln.org>
+ # All rights reserved.
+ 
+@@ -121,10 +121,10 @@ def CheckBin(program):
+ def Main(args):
+     # Ensure a profile (aka myOpts) is selected
+     if not len(args) > 1:
+-        print 'ERROR: no profile selected'
++        print('ERROR: no profile selected')
+         sys.exit(ERR_UNKN)
+     if not CheckBin('sar'):
+-        print 'ERROR: sar not found on PATH (%s), install sysstat' %os.environ['PATH']
++        print('ERROR: sar not found on PATH (%s), install sysstat' %os.environ['PATH'])
+         sys.exit(ERR_CRIT)
+   
+     # Profiles may need to be modified for different versions of the sysstat package
+@@ -148,7 +148,7 @@ def Main(args):
+             if len(args) > 2:
+                 sar = SarNRPE(myOpts[args[1]],args[2])
+             else:
+-                print 'ERROR: no device specified'
++                print('ERROR: no device specified')
+                 sys.exit(ERR_UNKN)
+         else:
+             sar = SarNRPE(myOpts[args[1]])
