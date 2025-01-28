@@ -1,0 +1,5 @@
+<package name="readstat" project="openSUSE:Factory">
+  <title></title>
+  <description>Command-line tool (+ C library) for converting SAS, Stata, and SPSS files</description>
+  <devel project="science" package="readstat"/>
+</package>

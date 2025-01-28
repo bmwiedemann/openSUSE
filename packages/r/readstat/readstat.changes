@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Sun Jan 26 09:49:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.9
+  * SAV reader: Improved support for Asian code pages
+  * SAV reader: Improved support for Very Long String records
+  * SAS reader: Improved support for RLE decompression
+  * SAS reader: Support 16MiB page sizes
+  * SAS catalog reader: Fix bugs reading big-endian files
+  * SAS catalog reader: Allow formats with no labels
+  * SAS catalog reader: Check for long names in 64-bit files
+  * Improved compatibility with -Wstrict-prototypes
+  * Replace sprintf with snprintf
+- Add upstream change:
+  * 0001-Fix-use-after-free.patch
+
+-------------------------------------------------------------------
+Sat Feb  4 11:59:19 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.1.8:
+  * XPT reader/writer: Improved support for format strings
+  * DTA writer: Fix off-by-one error in v,o indexing for
+    string refs
+  * SAV/DTA writers: Improved checking of non-ASCII characters
+  * SAS7BDAT reader: Fix use-after-free error
+  * Build: Link to libm on GNU systems
+  * SAS commands: Support more syntax
+  * SPSS commands: Make file names optional
+- Add libcsv and zlib build dependencies where available
+- Enable test suite
+
+-------------------------------------------------------------------
+Wed Jan  5 17:09:25 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix packaging to conform to SLPP guidelines.
+- Set NOCONFIGURE=1 before running autogen.sh to ensure configure
+  only runs once -- at the next step.
+
+-------------------------------------------------------------------
+Sun Nov 28 09:10:23 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.1.7.
+  * SAV writer: Permit missing ranges for integer variables #251
+  * SAV writer: Fix format-truncation warning #247
+  * DTA reader/writer: Improved support for string refs on older
+    platforms
+  * DTA reader: Fix incorrect ordering in StrL comparison
+    functions #248
+  * SAS7BDAT writer: Improved support for tagged missing values on
+    big-endian platforms
+  * SAS readers: Allow header sizes up to 16MiB #249
+  * Visual Studio: Fix paths to make them consistent between x86
+    and x64 archs #242
+- Update to version 1.1.6.
+  * Regenerate parsers with Ragel 7 and update build script
+  * SAS7BDAT reader: Improved large file support on Windows #226
+  * SAV reader: Skip null bytes in UTF-8 data tidyverse/haven#560
+  * SAV reader: Fix hang (oss-fuzz/23485)
+  * DTA reader: Disallow str0 type (fixes hang)
+  * DTA reader: Fix encoding error when garbage values are present
+    beyond the end of a string
+  * Command file readers: Fix integer overflow (oss-fuzz/15778)
+  * extract_metadata: Implement duration support #223
+    (thanks to @basgys)
+  * Support for SAS files created with SAS Visual Forecaster #232
+  * Report format widths for date/time SAS formats #233
+  * Document the meaning of a -1 return value from
+    readstat_get_row_count #234
+
+-------------------------------------------------------------------
+Sun Dec 27 20:04:53 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.

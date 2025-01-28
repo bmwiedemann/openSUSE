@@ -1,0 +1,40 @@
+From 48db2693b0cdc23631ab24f673174ea4494dc66e Mon Sep 17 00:00:00 2001
+From: Stefan Gerlach <stefan.gerlach@uni-konstanz.de>
+Date: Wed, 20 Sep 2023 15:18:07 +0200
+Subject: [PATCH] Fix use after free (#298)
+
+---
+ src/bin/readstat.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/bin/readstat.c b/src/bin/readstat.c
+index aab6c9a..d11a326 100644
+--- a/src/bin/readstat.c
++++ b/src/bin/readstat.c
+@@ -397,8 +397,6 @@ cleanup:
+         module->finish(rs_ctx->module_ctx);
+     }
+ 
+-    free(rs_ctx);
+-
+     if (error != READSTAT_OK) {
+         if (file_exists) {
+             fprintf(stderr, "Error opening %s: File exists (Use -f to overwrite)\n", output_filename);
+@@ -406,9 +404,14 @@ cleanup:
+             fprintf(stderr, "Error processing %s: %s\n", rs_ctx->error_filename, readstat_error_message(error));
+             unlink(output_filename);
+         }
++
++	free(rs_ctx);
++
+         return 1;
+     }
+ 
++    free(rs_ctx);
++
+     return 0;
+ }
+ 
+-- 
+2.48.1
+
