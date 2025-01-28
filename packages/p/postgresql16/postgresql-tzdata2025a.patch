@@ -1,0 +1,26 @@
+--- src/test/regress/expected/timestamptz.out.orig
++++ src/test/regress/expected/timestamptz.out
+@@ -2388,10 +2388,10 @@ SELECT make_timestamptz(2014, 12, 10, 0,
+  Tue Dec 09 23:00:00 2014
+ (1 row)
+ 
+-SELECT make_timestamptz(1846, 12, 10, 0, 0, 0, 'Asia/Manila') AT TIME ZONE 'UTC';
++SELECT make_timestamptz(1881, 12, 10, 0, 0, 0, 'Asia/Singapore') AT TIME ZONE 'UTC';
+          timezone         
+ --------------------------
+- Wed Dec 09 15:56:00 1846
++ Fri Dec 09 17:04:35 1881
+ (1 row)
+ 
+ SELECT make_timestamptz(1881, 12, 10, 0, 0, 0, 'Europe/Paris') AT TIME ZONE 'UTC';
+--- src/test/regress/sql/timestamptz.sql.orig
++++ src/test/regress/sql/timestamptz.sql
+@@ -442,7 +442,7 @@ SELECT make_timestamptz(1973, 07, 15, 08
+ -- full timezone names
+ SELECT make_timestamptz(2014, 12, 10, 0, 0, 0, 'Europe/Prague') = timestamptz '2014-12-10 00:00:00 Europe/Prague';
+ SELECT make_timestamptz(2014, 12, 10, 0, 0, 0, 'Europe/Prague') AT TIME ZONE 'UTC';
+-SELECT make_timestamptz(1846, 12, 10, 0, 0, 0, 'Asia/Manila') AT TIME ZONE 'UTC';
++SELECT make_timestamptz(1881, 12, 10, 0, 0, 0, 'Asia/Singapore') AT TIME ZONE 'UTC';
+ SELECT make_timestamptz(1881, 12, 10, 0, 0, 0, 'Europe/Paris') AT TIME ZONE 'UTC';
+ SELECT make_timestamptz(1910, 12, 24, 0, 0, 0, 'Nehwon/Lankhmar');
+ 
