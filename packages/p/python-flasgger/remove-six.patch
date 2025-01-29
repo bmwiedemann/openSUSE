@@ -1,0 +1,57 @@
+From 0c4f8e15c6a730a20326ba78bf725e49e8682672 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 23 Jan 2025 14:29:09 +1100
+Subject: [PATCH] Remove use of six
+
+Now that Python 2 support has been removed, we can stop using the crutch
+of six to support both versions. StringLike could probably be
+refactored now to be a subclass of str, but I have left that alone to
+make this diff small.
+---
+ flasgger/utils.py | 5 ++---
+ requirements.txt  | 3 +--
+ setup.py          | 1 -
+ 3 files changed, 3 insertions(+), 6 deletions(-)
+
+Index: flasgger-0.9.7.1/flasgger/utils.py
+===================================================================
+--- flasgger-0.9.7.1.orig/flasgger/utils.py
++++ flasgger-0.9.7.1/flasgger/utils.py
+@@ -9,7 +9,6 @@ import re
+ import sys
+ import jsonschema
+ import yaml
+-from six import string_types, text_type
+ from copy import deepcopy
+ from functools import wraps
+ from importlib import import_module
+@@ -269,7 +268,7 @@ def swag_from(
+     def is_path(specs):
+         """ Returns True if specs is a string or pathlib.Path
+         """
+-        is_str_path = isinstance(specs, string_types)
++        is_str_path = isinstance(specs, str)
+         try:
+             from pathlib import Path
+             is_py3_path = isinstance(specs, Path)
+@@ -928,7 +927,7 @@ class StringLike(object):
+ 
+     @property
+     def text_type(self):
+-        return text_type
++        return str
+ 
+ 
+ class LazyString(StringLike):
+Index: flasgger-0.9.7.1/setup.py
+===================================================================
+--- flasgger-0.9.7.1.orig/setup.py
++++ flasgger-0.9.7.1/setup.py
+@@ -54,7 +54,6 @@ setup(
+         'PyYAML>=3.0',
+         'jsonschema>=3.0.1',
+         'mistune',
+-        'six>=1.10.0',
+         'packaging',
+     ],
+     classifiers=[
