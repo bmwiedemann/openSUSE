@@ -1,0 +1,16 @@
+--- /usr/bin/abcde.orig	2024-08-14 08:25:27.000000000 -0700
++++ /usr/bin/abcde	2024-11-23 15:53:06.000732253 -0800
+@@ -3768,10 +3768,10 @@
+ # Builtin defaults
+ 
+ # CDDB
+-# Currently three supported options ("musicbrainz", "cddb" for freedb.org and "cdtext")
++# Currently three supported options ("musicbrainz", "cddb" for gnudb.org and "cdtext")
+ CDDBMETHOD=musicbrainz
+-CDDBURL="http://freedb.freedb.org/~cddb/cddb.cgi"
+-CDDBSUBMIT=freedb-submit@freedb.org
++CDDBURL="http://gnudb.gnudb.org/~cddb/cddb.cgi"
++CDDBSUBMIT=gnudb-submit@gnudb.org
+ CDDBPROTO=6
+ HELLOINFO="$(whoami)@$(hostname)"
+ CDDBCOPYLOCAL="n"
