@@ -1,0 +1,99 @@
+Subject: cli: Support --cpu maximum
+From: Andrea Bolognani abologna@redhat.com Fri Dec 6 22:10:31 2024 +0100
+Date: Tue Dec 10 14:01:32 2024 +0100:
+Git: fca41cfaa970ba5a4e695f482fd599f53572b6c7
+
+This mode has been introduced in libvirt 7.1.0 (March 2021) and
+can be already used today with
+
+  --cpu mode=maximum
+
+This is however slightly inconvenient to type and is not
+consistent with the special treatment that the other modes
+(host-passthrough, host-model) get.
+
+Introduce a proper special mode for it.
+
+Signed-off-by: Andrea Bolognani <abologna@redhat.com>
+
+diff --git a/man/virt-install.rst b/man/virt-install.rst
+index 86152d214..775d7ce70 100644
+--- a/man/virt-install.rst
++++ b/man/virt-install.rst
+@@ -438,6 +438,11 @@ Some examples:
+ ``--cpu host-passthrough,cache.mode=passthrough``
+     Example of passing through the host cpu's cache information.
+ 
++``--cpu maximum``
++    Expose the most feature-rich CPU possible. Useful when running a foreign
++    architecture guest, for example a riscv64 guest on an x86_64 host. Not
++    recommended when using KVM to run a same-architecture guest.
++
+ Use --cpu=? to see a list of all available sub options.
+ Complete details at https://libvirt.org/formatdomain.html#cpu-model-and-topology
+ 
+diff --git a/tests/data/cli/compare/virt-install-linux2020.xml b/tests/data/cli/compare/virt-install-linux2020.xml
+index 5a7d7adf3..b37b87758 100644
+--- a/tests/data/cli/compare/virt-install-linux2020.xml
++++ b/tests/data/cli/compare/virt-install-linux2020.xml
+@@ -19,7 +19,7 @@
+     <apic/>
+     <vmport state="off"/>
+   </features>
+-  <cpu mode="host-passthrough"/>
++  <cpu mode="maximum"/>
+   <clock offset="utc">
+     <timer name="rtc" tickpolicy="catchup"/>
+     <timer name="pit" tickpolicy="delay"/>
+@@ -102,7 +102,7 @@
+     <apic/>
+     <vmport state="off"/>
+   </features>
+-  <cpu mode="host-passthrough"/>
++  <cpu mode="maximum"/>
+   <clock offset="utc">
+     <timer name="rtc" tickpolicy="catchup"/>
+     <timer name="pit" tickpolicy="delay"/>
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index 23ad1cadb..03c3316e1 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -1153,7 +1153,7 @@ c.add_compare("--os-variant http://fedoraproject.org/fedora/20 --disk %(EXISTIMG
+ c.add_compare("--cdrom %(EXISTIMG2)s --file %(EXISTIMG1)s --os-variant win2k3 --sound --controller usb", "kvm-win2k3-cdrom")  # HVM windows install with disk
+ c.add_compare("--os-variant name=ubuntusaucy --nodisks --boot cdrom --virt-type qemu --cpu Penryn --input tablet --boot uefi --graphics vnc", "qemu-plain")  # plain qemu
+ c.add_compare("--os-variant fedora20 --nodisks --boot network --graphics default --arch i686 --rng none", "qemu-32-on-64", prerun_check=has_old_osinfo)  # 32 on 64
+-c.add_compare("--osinfo linux2020 --pxe", "linux2020", prerun_check=no_osinfo_linux2020_virtio)
++c.add_compare("--osinfo linux2020 --pxe --cpu maximum", "linux2020", prerun_check=no_osinfo_linux2020_virtio) # also --cpu maximum
+ c.add_compare("--check disk_size=off --osinfo win11 --cdrom %(EXISTIMG1)s", "win11", prerun_check=no_osinfo_win11)
+ c.add_compare("--check disk_size=off --osinfo win11 --cdrom %(EXISTIMG1)s --boot uefi=off", "win11-no-uefi")
+ c.add_compare("--osinfo generic --disk none --location %(ISO-NO-OS)s,kernel=frib.img,initrd=/frob.img", "location-manual-kernel", prerun_check=missing_xorriso)  # --location with an unknown ISO but manually specified kernel paths
+diff --git a/virtinst/domain/cpu.py b/virtinst/domain/cpu.py
+index df0ca2250..91a9481cf 100644
+--- a/virtinst/domain/cpu.py
++++ b/virtinst/domain/cpu.py
+@@ -267,12 +267,13 @@ class DomainCpu(XMLBuilder):
+     SPECIAL_MODE_HOST_COPY = "host-copy"
+     SPECIAL_MODE_HOST_MODEL = "host-model"
+     SPECIAL_MODE_HOST_PASSTHROUGH = "host-passthrough"
++    SPECIAL_MODE_MAXIMUM = "maximum"
+     SPECIAL_MODE_CLEAR = "clear"
+     SPECIAL_MODE_APP_DEFAULT = "default"
+     SPECIAL_MODES = [SPECIAL_MODE_HOST_MODEL_ONLY, SPECIAL_MODE_HV_DEFAULT,
+                      SPECIAL_MODE_HOST_COPY, SPECIAL_MODE_HOST_MODEL,
+-                     SPECIAL_MODE_HOST_PASSTHROUGH, SPECIAL_MODE_CLEAR,
+-                     SPECIAL_MODE_APP_DEFAULT]
++                     SPECIAL_MODE_HOST_PASSTHROUGH, SPECIAL_MODE_MAXIMUM,
++                     SPECIAL_MODE_CLEAR, SPECIAL_MODE_APP_DEFAULT]
+ 
+     def _get_app_default_mode(self, guest):
+         # Depending on if libvirt+qemu is new enough, we prefer
+@@ -295,7 +296,8 @@ class DomainCpu(XMLBuilder):
+             log.debug("Using default cpu mode=%s", val)
+ 
+         if (val == self.SPECIAL_MODE_HOST_MODEL or
+-            val == self.SPECIAL_MODE_HOST_PASSTHROUGH):
++            val == self.SPECIAL_MODE_HOST_PASSTHROUGH or
++            val == self.SPECIAL_MODE_MAXIMUM):
+             self.model = None
+             self.vendor = None
+             self.model_fallback = None

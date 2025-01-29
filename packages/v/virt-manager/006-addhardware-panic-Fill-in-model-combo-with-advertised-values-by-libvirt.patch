@@ -1,0 +1,29 @@
+Subject: addhardware: panic: Fill in model combo with advertised values by libvirt
+From: Lin Ma lma@suse.de Tue Dec 3 18:46:28 2024 +0800
+Date: Tue Dec 10 14:05:20 2024 +0100:
+Git: f92c25749bcd88bb7412c74119b25802327916e6
+
+The commit c5a46646 asks libvirt to fill in a default panic model for us.
+Now libvirt domcaps can advertise panic models, Let's fill in the panic
+model combo with the advertised values.
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+diff --git a/virtManager/addhardware.py b/virtManager/addhardware.py
+index e6e4ec1d1..0faf30a53 100644
+--- a/virtManager/addhardware.py
++++ b/virtManager/addhardware.py
+@@ -860,8 +860,13 @@ class vmmAddHardware(vmmGObjectUI):
+ 
+ 
+     def _build_panic_model_combo(self):
++        guest = self.vm.get_xmlobj()
+         values = [[None, _("Hypervisor default")]]
++        for m in guest.lookup_domcaps().supported_panic_models():
++            values.append([m, m])
++
+         uiutil.build_simple_combo(self.widget("panic-model"), values)
++        uiutil.set_list_selection(self.widget("panic-model"), None)
+ 
+ 
+     def _build_controller_type_combo(self):

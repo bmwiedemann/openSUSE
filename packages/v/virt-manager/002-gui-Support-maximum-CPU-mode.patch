@@ -1,0 +1,47 @@
+Subject: gui: Support maximum CPU mode
+From: Andrea Bolognani abologna@redhat.com Fri Dec 6 22:28:09 2024 +0100
+Date: Tue Dec 10 14:01:32 2024 +0100:
+Git: 11b70218d3b38efae36db8ba4149702a6d51afc0
+
+Allow the user to set it and recognize it correctly when the
+domain is already using it.
+
+Signed-off-by: Andrea Bolognani <abologna@redhat.com>
+
+diff --git a/virtManager/details/details.py b/virtManager/details/details.py
+index e53c52ef0..0dc9d2d64 100644
+--- a/virtManager/details/details.py
++++ b/virtManager/details/details.py
+@@ -775,6 +775,8 @@ class vmmDetails(vmmGObjectUI):
+             virtinst.DomainCpu.SPECIAL_MODE_HOST_MODEL, False])
+         model.append(["host-passthrough", "05",
+             virtinst.DomainCpu.SPECIAL_MODE_HOST_PASSTHROUGH, False])
++        model.append(["maximum", "06",
++            virtinst.DomainCpu.SPECIAL_MODE_MAXIMUM, False])
+         model.append([None, None, None, True])
+         for name in domcaps.get_cpu_models():
+             model.append([name, name, name, False])
+@@ -1915,7 +1917,8 @@ class vmmDetails(vmmGObjectUI):
+         # CPU model config
+         model = cpu.model or None
+         is_host = (cpu.mode in ["host-model", "host-passthrough"])
+-        if not model and is_host:
++        is_special_mode = (cpu.mode in virtinst.DomainCpu.SPECIAL_MODES)
++        if not model and is_special_mode:
+             model = cpu.mode
+ 
+         if model:
+diff --git a/virtManager/preferences.py b/virtManager/preferences.py
+index 5022f7ed3..df599d044 100644
+--- a/virtManager/preferences.py
++++ b/virtManager/preferences.py
+@@ -172,7 +172,8 @@ class vmmPreferences(vmmGObjectUI):
+             [DomainCpu.SPECIAL_MODE_HOST_MODEL_ONLY,
+                 _("Nearest host CPU model")],
+             [DomainCpu.SPECIAL_MODE_HOST_MODEL, "host-model"],
+-            [DomainCpu.SPECIAL_MODE_HOST_PASSTHROUGH, "host-passthrough"]]:
++            [DomainCpu.SPECIAL_MODE_HOST_PASSTHROUGH, "host-passthrough"],
++            [DomainCpu.SPECIAL_MODE_MAXIMUM, "maximum"]]:
+             model.append(row)
+         combo.set_model(model)
+         uiutil.init_combo_text_column(combo, 1)

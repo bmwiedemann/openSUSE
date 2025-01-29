@@ -1,0 +1,28 @@
+Subject: snapshots: warn users to not mix snapshot modes
+From: Pavel Hrdina phrdina@redhat.com Tue Jan 21 12:11:10 2025 +0100
+Date: Mon Jan 27 22:59:56 2025 +0100:
+Git: 54dc858f79a973242394aa50c4db7c00385e9f5d
+
+Signed-off-by: Pavel Hrdina <phrdina@redhat.com>
+
+diff --git a/virtManager/details/snapshots.py b/virtManager/details/snapshots.py
+index 00aa00708..3da7d5aca 100644
+--- a/virtManager/details/snapshots.py
++++ b/virtManager/details/snapshots.py
+@@ -370,6 +370,16 @@ class vmmSnapshotNew(vmmGObjectUI):
+         self._populate_memory_path()
+ 
+     def _ok_clicked_cb(self, src):
++        current_mode = self._get_current_mode()
++
++        if current_mode and current_mode != self._get_mode():
++            result = self.err.yes_no(_("Mixing external and internal snapshots for "
++                                       "the same VM is not recommended. Are you "
++                                       "sure you want to continue?"))
++
++            if not result:
++                return
++
+         return self._create_new_snapshot()
+ 
+     def _mode_toggled_cb(self, src):

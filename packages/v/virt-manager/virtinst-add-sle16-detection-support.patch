@@ -1,0 +1,13 @@
+--- virt-manager-5.0.0/virtinst/install/urldetect.py.orig	2025-01-17 13:13:11.582745934 -0700
++++ virt-manager-5.0.0/virtinst/install/urldetect.py	2025-01-17 13:15:08.122748711 -0700
+@@ -279,6 +279,10 @@ class _SUSEContent(object):
+             else:
+                 if "SUSE SL Micro" in self.product_name:
+                     sle_version = self.product_name.strip().rsplit(' ')[3]
++                elif "SUSE SLES" in self.product_name:
++                    # For SLES 16
++                    sle_version = self.product_name.strip().rsplit(' ')[2]
++                    sle_version = sle_version.rstrip(".0")
+                 else:
+                     sle_version = self.product_name.strip().rsplit(' ')[4]
+             if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:

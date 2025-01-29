@@ -1,0 +1,131 @@
+Subject: tests: Update capabilities for advertisting panic device models
+From: Lin Ma lma@suse.de Tue Dec 3 18:45:52 2024 +0800
+Date: Tue Dec 10 14:05:20 2024 +0100:
+Git: f9ceec2b14cb4012cb40226f3c0c05ff1ac8f708
+
+Signed-off-by: Lin Ma <lma@suse.de>
+
+diff --git a/tests/data/capabilities/kvm-aarch64-domcaps.xml b/tests/data/capabilities/kvm-aarch64-domcaps.xml
+index eeef1a17a..af8354b08 100644
+--- a/tests/data/capabilities/kvm-aarch64-domcaps.xml
++++ b/tests/data/capabilities/kvm-aarch64-domcaps.xml
+@@ -215,6 +215,11 @@
+         <value>lkcf</value>
+       </enum>
+     </crypto>
++    <panic supported='yes'>
++      <enum name='model'>
++        <value>pvpanic</value>
++      </enum>
++    </panic>
+   </devices>
+   <features>
+     <gic supported='yes'>
+diff --git a/tests/data/capabilities/kvm-loongarch64-domcaps.xml b/tests/data/capabilities/kvm-loongarch64-domcaps.xml
+index e9836fec4..d2b348f4c 100644
+--- a/tests/data/capabilities/kvm-loongarch64-domcaps.xml
++++ b/tests/data/capabilities/kvm-loongarch64-domcaps.xml
+@@ -152,6 +152,11 @@
+         <value>lkcf</value>
+       </enum>
+     </crypto>
++    <panic supported='yes'>
++      <enum name='model'>
++        <value>pvpanic</value>
++      </enum>
++    </panic>
+   </devices>
+   <features>
+     <gic supported='no'/>
+diff --git a/tests/data/capabilities/kvm-ppc64le-domcaps.xml b/tests/data/capabilities/kvm-ppc64le-domcaps.xml
+index 7d40b12ff..46234fd19 100644
+--- a/tests/data/capabilities/kvm-ppc64le-domcaps.xml
++++ b/tests/data/capabilities/kvm-ppc64le-domcaps.xml
+@@ -160,6 +160,12 @@
+         <value>lkcf</value>
+       </enum>
+     </crypto>
++    <panic supported='yes'>
++      <enum name='model'>
++        <value>pseries</value>
++        <value>pvpanic</value>
++      </enum>
++    </panic>
+   </devices>
+   <features>
+     <gic supported='no'/>
+diff --git a/tests/data/capabilities/kvm-x86_64-domcaps-latest.xml b/tests/data/capabilities/kvm-x86_64-domcaps-latest.xml
+index 91fabc5fa..b5e06eda6 100644
+--- a/tests/data/capabilities/kvm-x86_64-domcaps-latest.xml
++++ b/tests/data/capabilities/kvm-x86_64-domcaps-latest.xml
+@@ -259,6 +259,13 @@
+         <value>lkcf</value>
+       </enum>
+     </crypto>
++    <panic supported='yes'>
++      <enum name='model'>
++        <value>isa</value>
++        <value>hyperv</value>
++        <value>pvpanic</value>
++      </enum>
++    </panic>
+   </devices>
+   <features>
+     <gic supported='no'/>
+diff --git a/tests/data/capabilities/qemu-riscv64-domcaps.xml b/tests/data/capabilities/qemu-riscv64-domcaps.xml
+index c8a9e5915..30eca7129 100644
+--- a/tests/data/capabilities/qemu-riscv64-domcaps.xml
++++ b/tests/data/capabilities/qemu-riscv64-domcaps.xml
+@@ -167,6 +167,11 @@
+         <value>lkcf</value>
+       </enum>
+     </crypto>
++    <panic supported='yes'>
++      <enum name='model'>
++        <value>pvpanic</value>
++      </enum>
++    </panic>
+   </devices>
+   <features>
+     <gic supported='no'/>
+diff --git a/tests/test_capabilities.py b/tests/test_capabilities.py
+index 1ebd564d4..5351c8352 100644
+--- a/tests/test_capabilities.py
++++ b/tests/test_capabilities.py
+@@ -101,6 +101,7 @@ def testDomainCapabilitiesx86():
+     assert caps.supports_memorybacking_memfd()
+     assert caps.supports_redirdev_usb()
+     assert caps.supports_channel_spicevmc()
++    assert caps.supported_panic_models() == ["isa", "hyperv", "pvpanic"]
+ 
+     xml = open(DATADIR + "/kvm-x86_64-domcaps-amd-sev.xml").read()
+     caps = DomainCapabilities(utils.URIs.open_testdriver_cached(), xml)
+@@ -119,6 +120,7 @@ def testDomainCapabilitiesAArch64():
+     assert caps.supports_memorybacking_memfd()
+     assert caps.supports_redirdev_usb()
+     assert caps.supports_channel_spicevmc()
++    assert caps.supported_panic_models() == ["pvpanic"]
+ 
+ 
+ def testDomainCapabilitiesPPC64le():
+@@ -137,6 +139,7 @@ def testDomainCapabilitiesPPC64le():
+     assert caps.supports_memorybacking_memfd()
+     assert caps.supports_redirdev_usb()
+     assert not caps.supports_channel_spicevmc()
++    assert caps.supported_panic_models() == ["pseries", "pvpanic"]
+ 
+ 
+ def testDomainCapabilitiesRISCV64():
+@@ -167,6 +170,7 @@ def testDomainCapabilitiesRISCV64():
+     assert caps.supports_memorybacking_memfd()
+     assert caps.supports_redirdev_usb()
+     assert caps.supports_channel_spicevmc()
++    assert caps.supported_panic_models() == ["pvpanic"]
+ 
+ 
+ def testDomainCapabilitiesLoongArch64():
+@@ -197,3 +201,4 @@ def testDomainCapabilitiesLoongArch64():
+     assert caps.supports_memorybacking_memfd()
+     assert caps.supports_redirdev_usb()
+     assert caps.supports_channel_spicevmc()
++    assert caps.supported_panic_models() == ["pvpanic"]
