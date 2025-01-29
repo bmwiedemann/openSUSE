@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Wed Jan 22 21:23:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.360.0 (0.36)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.36    2025-01-15
+          [BUGFIXES]
+           * Handle the new shape of `PL_compiling.cop_features` in perl 5.41.8
+             or above
+
+-------------------------------------------------------------------
+Wed Jan  8 05:34:59 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.350.0 (0.35)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.35    2025-01-07
+          [BUGFIXES]
+           * Restore the original kw/kwlen after a failed `my` prefix hack to
+             avoid confusing other modules that are doing the same thing
+  0.34    2025-01-06
+          [BUGFIXES]
+           * Don't get confused by function names immediately followed by the
+             colon of attribute syntax with no intervening whitespace
+  0.33    2025-01-02
+          [BUGFIXES]
+           * Ensure test .xs files are valid C before C23, by not using unnamed
+             parameters to functions (RT158225)
+  0.32    2024-12-20
+          [BUGFIXES]
+           * Ensure that signature start+finish hooks are run if present even on
+             empty signatures
+  0.31    2024-12-20
+          [CHANGES]
+           * Optionally permit named function declarations in fully-qualified
+             packages if all hooks agree
+           * Added experimental `start_signature` and `finish_signature` hook
+             stages
+           * Added experimental `xps_signature_add_param()` API
+  0.30    2024-10-18
+          [BUGFIXES]
+           * Ensure that named parameter variables are introduced before the
+             next variable's defaulting expression is parsed, just like
+             positional ones already do
+  0.29    2024-10-14
+          [CHANGES]
+           * Allow `Sublike::Extended` to take over core perl's handling of
+             `sub` or `method`, allowing extended sublike syntax without needing
+             the `extended` keyword.
+  0.28    2024-10-08
+          [CHANGES]
+           * Make the subroutine body optional when using `extended` subs
+           * Declare the named parameter and parameter attribute features as
+             non-experimental
+          [BUGFIXES]
+           * Use PTR2UV() properly when making debug values (RT155804)
+           * Avoid compiler warnings about unused var or label on Perl 5.16
+  0.27    2024-09-23
+          [BUGFIXES]
+           * Ensure that signature parameter attribute hook functions can
+             correctly see and modify the optree fragments
+  0.26    2024-09-20
+          [BUGFIXES]
+           * Don't segfault on attempts to use unnamed slurpy variables with
+             named parameters (RT155654)
+  0.25    2024-09-19
+          [BUGFIXES]
+           * Make sure not to introduce signature parameter variables until
+             after their own defaulting expression is parsed (RT155630)
+  0.24    2024-09-18
+          [CHANGES]
+           * Support lexical subs when prefixed with `my`
+           * Rewritten implementation of named parameters to avoid indirection
+             via a slurpy HV for much performance improvement
+           * Support also slurpy AVs along with named parameters
+           * Docs updates for clarity about named params
+          [BUGFIXES]
+           * Avoid some more C99 `for()` loop variable declarations and struct
+             initialisers as they upset some C compilers
+
+-------------------------------------------------------------------
+Fri Aug 16 05:32:22 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.230.0 (0.23)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.23    2024-08-15
+          [CHANGES]
+           * New ABI version 6
+              + Adds a `ver` field to the `XSParseSublikeHooks` structure
+           * Support named parameters using defined-or and true-or defaulting
+             operators
+           * Support positional parameters using defined-or and true-or
+             defaulting operators in extension parser, on Perl version 5.38+
+           * Store the `File::ShareDir` data in the per-module path, not the
+             per-dist path
+
+-------------------------------------------------------------------
+Thu Jul 11 05:30:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.220.0 (0.22)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.22    2024-07-08
+          [CHANGES]
+           * Use `File::ShareDir` for storing .h include file, rather than
+             storing the contents in the `__DATA__` section of the build helper
+
+-------------------------------------------------------------------
+Fri Mar  8 23:12:00 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Fri Oct 13 03:08:23 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.21    2023-10-11
+          [BUGFIXES]
+           * Ensure that exceptions thrown from runtime signature handling
+             appear to come from the callsite and not declaration
+           * Fix signedness of printf format when complaining about
+             mismatched `->ver`
+
+  0.20    2023-09-09
+          [BUGFIXES]
+           * Correct ->VERSION check for Object::Pad or Future::AsyncAwait
+             cross-module tests (RT149700)
+           * Don't upset gcc's -Wformat by passing an unbounded STRLEN into
+             %.*s format (RT133035)
+           * Avoid colons in filename of t/71extended+Object-Pad.t because
+             Windows doesn't like them (RT149712)
+           * Ensure that mixed positional + named params in signatures work
+             properly (thanks alh)
+           * Ensure name shadowing of param names prints the right diagnostic
+             warning (thanks alh)
+
+  0.19    2023-09-07
+          [CHANGES]
+           * Added `Sublike::Extended`, a prefix keyword to enable the extended
+             signature parser for named params and attributes
+           * Beginnings of an (experimental) XS-level API for attributes on
+             parameters
+           * Complain on attempts to register a sublike keyword with neither a
+             permit function nor hinthash key
+
+-------------------------------------------------------------------
+Thu Jun 15 03:11:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.18    2023-06-14
+          [CHANGES]
+           * Swap all the unit tests from Test::More to Test2::V0
+
+          [BUGFIXES]
+           * Remember to set `-std=c99` compiler flag on Perls before v5.36
+
+-------------------------------------------------------------------
+Wed Mar 22 03:09:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.17    2023-03-21
+          [CHANGES]
+           * Experimental support for named param syntax in parse_subsignature()
+           * Support core perl's `method` syntax when available by setting
+             CVf_IsMETHOD (perl >= 5.37.10)
+
+-------------------------------------------------------------------
+Sat Feb  5 14:36:51 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Initial package: perl-XS-Parse-Sublike-0.16.
+

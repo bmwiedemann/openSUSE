@@ -1,0 +1,17 @@
+<package name="perl-XS-Parse-Sublike" project="openSUSE:Factory">
+  <title>XS functions to assist in parsing C&lt;sub&gt;-like syntax</title>
+  <description>This module provides some XS functions to assist in writing parsers for
+'sub'-like syntax, primarily for authors of keyword plugins using the
+'PL_keyword_plugin' hook mechanism. It is unlikely to be of much use to
+anyone else; and highly unlikely to be any use when writing perl code using
+these. Unless you are writing a keyword plugin using XS, this module is not
+for you.
+
+This module is also currently experimental, and the design is still
+evolving and subject to change. Later versions may break ABI compatibility,
+requiring changes or at least a rebuild of any module that depends on it.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-XS-Parse-Sublike"/>
+  <url>https://metacpan.org/release/XS-Parse-Sublike</url>
+</package>
