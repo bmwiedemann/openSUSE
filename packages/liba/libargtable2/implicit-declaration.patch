@@ -1,0 +1,36 @@
+Description: fix multiple implicit function declarations.
+Author: Étienne Mollier <emollier@debian.org>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1066377
+Forwarded: no
+Last-Update: 2024-03-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- src/arg_int.c
++++ src/arg_int.c
+@@ -29,6 +29,7 @@
+ /* #endif */
+ 
+ #include "argtable2.h"
++#include <ctype.h>
+ #include <limits.h>
+ 
+ /* local error codes */
+--- tests/fntests.c
++++ tests/fntests.c
+@@ -1,5 +1,6 @@
+ #include "../src/argtable2.h"
+ #include <assert.h>
++#include <string.h>
+ 
+ /* for memory leak debugging */
+ #ifdef DMALLOC
+--- tests/test_file.c
++++ tests/test_file.c
+@@ -21,6 +21,7 @@
+ 
+ #include "../src/argtable2.h"
+ #include <stdlib.h>
++#include <string.h>
+ 
+ /* for memory leak debugging */
+ #ifdef DMALLOC
