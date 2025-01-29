@@ -1,0 +1,92 @@
+From d2817bb18cd9cc0274460113a97dc87f2613d1ad Mon Sep 17 00:00:00 2001
+From: Roman Bataev <roman@bataev.me>
+Date: Sat, 14 Sep 2024 18:45:46 -0400
+Subject: [PATCH] Make build stable.
+
+Fixes https://github.com/candid82/joker/issues/491
+---
+ core/pack.go | 45 +++++++++++++++++++++++++++++++++++++++++----
+ go.mod       |  2 +-
+ 2 files changed, 42 insertions(+), 5 deletions(-)
+
+diff --git a/core/pack.go b/core/pack.go
+index 01ceac9b0..dea1db5fc 100644
+--- a/core/pack.go
++++ b/core/pack.go
+@@ -4,6 +4,9 @@ import (
+ 	"bytes"
+ 	"encoding/binary"
+ 	"fmt"
++	"maps"
++	"slices"
++	"sort"
+ )
+ 
+ const (
+@@ -77,16 +80,50 @@ func NewPackEnv() *PackEnv {
+ 	}
+ }
+ 
++type BindingPair struct {
++	binding *Binding
++	index   int
++}
++type ByIndex []BindingPair
++
++func (a ByIndex) Len() int      { return len(a) }
++func (a ByIndex) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
++func (a ByIndex) Less(i, j int) bool {
++	return a[i].index < a[j].index
++}
++
++type ByString []*string
++
++func (a ByString) Len() int      { return len(a) }
++func (a ByString) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
++func (a ByString) Less(i, j int) bool {
++	if a[i] == nil {
++		return true
++	}
++	if a[j] == nil {
++		return false
++	}
++	return *a[i] < *a[j]
++}
++
+ func (env *PackEnv) Pack(p []byte) []byte {
+ 	var bp []byte
+ 	bp = appendInt(bp, len(env.Bindings))
++	var bindings []BindingPair
+ 	for k, v := range env.Bindings {
+-		bp = appendInt(bp, v)
+-		bp = k.Pack(bp, env)
++		bindings = append(bindings, BindingPair{k, v})
+ 	}
++	sort.Sort(ByIndex(bindings))
++	for _, pair := range bindings {
++		bp = appendInt(bp, pair.index)
++		bp = pair.binding.Pack(bp, env)
++	}
++
+ 	p = appendInt(p, len(env.Strings))
+-	for k, v := range env.Strings {
+-		p = appendUint16(p, v)
++	stringKeys := slices.Collect(maps.Keys(env.Strings))
++	sort.Sort(ByString(stringKeys))
++	for _, k := range stringKeys {
++		p = appendUint16(p, env.Strings[k])
+ 		if k == nil {
+ 			p = appendInt(p, -1)
+ 		} else {
+diff --git a/go.mod b/go.mod
+index 253fe40e2..74113364b 100644
+--- a/go.mod
++++ b/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/candid82/joker
+ 
+-go 1.20
++go 1.23
+ 
+ require (
+ 	github.com/candid82/liner v1.4.0
