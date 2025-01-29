@@ -1,0 +1,58 @@
+## Path:           Network/Ollama
+## Description:    Ollama server access
+## Type:           string
+## Default:        "http://127.0.0.1:11434"
+## ServiceRestart: ollama
+#
+# set it to 0.0.0.0 for global network access
+#
+OLLAMA_HOST="http://127.0.0.1:11434"
+
+## Type:           string
+## Description:    Ollama default quantization type for the K/V cache
+## Default:        "f16"
+## ServiceRestart: ollama
+OLLAMA_KV_CACHE_TYPE=f16
+
+## Type:           string
+## Description:    Ollama default quantization type for the K/V cache
+## Default:        "f16"
+## ServiceRestart: ollama
+OLLAMA_KEEP_ALIVE=
+
+## Type:           string
+## Description:    Parallel processes
+## Default:        ""
+## ServiceRestart: ollama
+OLLAMA_NUM_PARALLEL=
+
+## Type:           string
+## Description:    Maxmimal memory to be used
+## Default:        ""
+## ServiceRestart: ollama
+OLLAMA_MAX_VRAM=
+
+## Type:           string
+## Description:    Ollama runner directory
+## Default:        ""
+## ServiceRestart: ollama
+OLLAMA_RUNNERS_DIR=
+
+## Type:           string
+## Description:    Ollama temporary directory
+## Default:        ""
+## ServiceRestart: ollama
+OLLAMA_TMPDIR=
+
+## Type:           string
+## Description:    Models to be loaded by default
+## Default:        ""
+## ServiceRestart: ollama
+OLLAMA_MODELS=
+
+## Type:           string
+## Description:    List of allowed remote hosts
+## Default:        ""
+## ServiceRestart: ollama
+OLLAMA_ORIGINS=
+
