@@ -1,0 +1,24 @@
+Index: libime-1.1.10/src/libime/core/decoder.cpp
+===================================================================
+--- libime-1.1.10.orig/src/libime/core/decoder.cpp
++++ libime-1.1.10/src/libime/core/decoder.cpp
+@@ -11,7 +11,6 @@
+ #include "libime/core/segmentgraph.h"
+ #include "utils.h"
+ #include <algorithm>
+-#include <boost/container_hash/hash.hpp>
+ #include <boost/functional/hash.hpp>
+ #include <boost/ptr_container/ptr_vector.hpp>
+ #include <boost/range/adaptor/sliced.hpp>
+Index: libime-1.1.10/src/libime/core/lrucache.h
+===================================================================
+--- libime-1.1.10.orig/src/libime/core/lrucache.h
++++ libime-1.1.10/src/libime/core/lrucache.h
+@@ -6,7 +6,6 @@
+ #ifndef _FCITX_LIBIME_CORE_LRU_H_
+ #define _FCITX_LIBIME_CORE_LRU_H_
+ 
+-#include <boost/container_hash/hash.hpp>
+ #include <boost/unordered_map.hpp>
+ #include <cstddef>
+ #include <list>
