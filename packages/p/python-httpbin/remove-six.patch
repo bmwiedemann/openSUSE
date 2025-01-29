@@ -1,0 +1,57 @@
+From 17d02f215e18df999facc20808f47fcbb72f3a18 Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Fri, 5 Jan 2024 15:21:04 +0100
+Subject: [PATCH] cleanup remaining usage of "six"
+
+---
+ httpbin/filters.py | 2 +-
+ httpbin/helpers.py | 3 ++-
+ pyproject.toml     | 1 -
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/httpbin/filters.py b/httpbin/filters.py
+index 4deeaaad..a656279e 100644
+--- a/httpbin/filters.py
++++ b/httpbin/filters.py
+@@ -12,7 +12,7 @@
+ 
+ import brotlicffi as _brotli
+ 
+-from six import BytesIO
++from io import BytesIO
+ from decimal import Decimal
+ from time import time as now
+ 
+diff --git a/httpbin/helpers.py b/httpbin/helpers.py
+index 836c8026..cdf045c0 100644
+--- a/httpbin/helpers.py
++++ b/httpbin/helpers.py
+@@ -13,6 +13,8 @@
+ import time
+ import os
+ from hashlib import md5, sha256, sha512
++from urllib.parse import urlparse, urlunparse
++
+ from werkzeug.datastructures import WWWAuthenticate
+ from werkzeug.http import dump_header
+ 
+@@ -23,7 +25,6 @@
+     parse_authorization_header = Authorization.from_header
+ 
+ from flask import request, make_response
+-from six.moves.urllib.parse import urlparse, urlunparse
+ 
+ 
+ from .structures import CaseInsensitiveDict
+diff --git a/pyproject.toml b/pyproject.toml
+index c5bdb811..b82f7b6f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -38,7 +38,6 @@ dependencies = [
+     'greenlet < 3.0; python_version<"3.12"',
+     'greenlet >= 3.0.0a1; python_version>="3.12.0rc0"',
+     'importlib-metadata; python_version<"3.8"',
+-    "six",
+     "werkzeug >= 2.2.2",
+ ]
+ 
