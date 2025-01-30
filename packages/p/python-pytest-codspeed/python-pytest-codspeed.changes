@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Jan 30 06:27:34 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make tests work (and also add the patch make_tests_work.patch)
+- Add ExclusiveArch x86_64 and aarch64 (unfortunately the code
+  itself checks for the architecture, so we cannot go with
+  ExcludeArch; gh#CodSpeedHQ/pytest-codspeed#70)
+- Remove broken *.rpmlintrc
+
+-------------------------------------------------------------------
+Thu Jan 16 18:48:11 UTC 2025 - marec <marec@detebe.org>
+
+- initial package
+- needed for python-dbus_fast 2.29
