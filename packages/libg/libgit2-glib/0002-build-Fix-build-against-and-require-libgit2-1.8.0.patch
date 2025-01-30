@@ -1,0 +1,160 @@
+From a6b583f82d13fc48d79f8b8b40a616b28fad3829 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Fri, 5 Apr 2024 10:28:16 +0200
+Subject: [PATCH 2/3] build: Fix build against, and require, libgit2 1.8.0
+
+---
+ libgit2-glib/ggit-clone-options.c        | 7 +++++--
+ libgit2-glib/ggit-cred-ssh-interactive.c | 2 +-
+ libgit2-glib/ggit-remote-callbacks.c     | 7 ++++++-
+ libgit2-glib/ggit-remote-callbacks.h     | 1 +
+ libgit2-glib/ggit-repository.c           | 4 ++--
+ libgit2-glib/ggit-types.h                | 6 ++++++
+ meson.build                              | 2 +-
+ 7 files changed, 22 insertions(+), 7 deletions(-)
+
+diff --git a/libgit2-glib/ggit-clone-options.c b/libgit2-glib/ggit-clone-options.c
+index b47fdb1..70bac69 100644
+--- a/libgit2-glib/ggit-clone-options.c
++++ b/libgit2-glib/ggit-clone-options.c
+@@ -19,6 +19,9 @@
+  */
+ 
+ #include <git2.h>
++#if LIBGIT2_VER_MAJOR > 1 || (LIBGIT2_VER_MAJOR == 1 && LIBGIT2_VER_MINOR >= 8)
++#include <git2/sys/errors.h>
++#endif
+ #include <gio/gio.h>
+ 
+ #include "ggit-clone-options.h"
+@@ -149,7 +152,7 @@ create_repository_wrapper (git_repository **out,
+ 
+ 	if (error != NULL)
+ 	{
+-#if LIBGIT2_VER_MAJOR > 0 || (LIBGIT2_VER_MAJOR == 0 && LIBGIT2_VER_MINOR >= 28)
++#if (LIBGIT2_VER_MAJOR > 0 && LIBGIT2_VER_MINOR < 8) || (LIBGIT2_VER_MAJOR == 0 && LIBGIT2_VER_MINOR >= 28)
+ 		git_error_set_str (GIT_ERROR, error->message);
+ #else
+ 		giterr_set_str (GIT_ERROR, error->message);
+@@ -191,7 +194,7 @@ create_remote_wrapper (git_remote     **out,
+ 
+ 	if (error)
+ 	{
+-#if LIBGIT2_VER_MAJOR > 0 || (LIBGIT2_VER_MAJOR == 0 && LIBGIT2_VER_MINOR >= 28)
++#if (LIBGIT2_VER_MAJOR > 0 && LIBGIT2_VER_MINOR < 8) || (LIBGIT2_VER_MAJOR == 0 && LIBGIT2_VER_MINOR >= 28)
+ 		git_error_set_str (GIT_ERROR, error->message);
+ #else
+ 		giterr_set_str (GIT_ERROR, error->message);
+diff --git a/libgit2-glib/ggit-cred-ssh-interactive.c b/libgit2-glib/ggit-cred-ssh-interactive.c
+index 4f60f8b..0bdca95 100644
+--- a/libgit2-glib/ggit-cred-ssh-interactive.c
++++ b/libgit2-glib/ggit-cred-ssh-interactive.c
+@@ -191,7 +191,7 @@ callback_wrapper (const char                            *name,
+ 	{
+ 		gchar *text;
+ 
+-		text = g_strndup (prompts[i].text, prompts[i].length);
++		text = g_strndup ((const gchar *)prompts[i].text, prompts[i].length);
+ 
+ 		wprompts[i] = ggit_cred_ssh_interactive_prompt_new (wname,
+ 		                                                    winstruction,
+diff --git a/libgit2-glib/ggit-remote-callbacks.c b/libgit2-glib/ggit-remote-callbacks.c
+index a1e7b7d..22e5a79 100644
+--- a/libgit2-glib/ggit-remote-callbacks.c
++++ b/libgit2-glib/ggit-remote-callbacks.c
+@@ -18,6 +18,11 @@
+  * along with libgit2-glib. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <git2.h>
++#if LIBGIT2_VER_MAJOR > 1 || (LIBGIT2_VER_MAJOR == 1 && LIBGIT2_VER_MINOR >= 8)
++#include <git2/sys/errors.h>
++#endif
++
+ #include "ggit-remote-callbacks.h"
+ #include "ggit-cred.h"
+ #include "ggit-transfer-progress.h"
+@@ -160,7 +165,7 @@ credentials_wrap (git_cred     **cred,
+ 		{
+ 			if (error)
+ 			{
+-#if LIBGIT2_VER_MAJOR > 0 || (LIBGIT2_VER_MAJOR == 0 && LIBGIT2_VER_MINOR >= 28)
++#if (LIBGIT2_VER_MAJOR > 0 && LIBGIT2_VER_MINOR < 8) || (LIBGIT2_VER_MAJOR == 0 && LIBGIT2_VER_MINOR >= 28)
+ 				git_error_set_str (GIT_ERROR, error->message);
+ #else
+ 				giterr_set_str (GIT_ERROR, error->message);
+diff --git a/libgit2-glib/ggit-remote-callbacks.h b/libgit2-glib/ggit-remote-callbacks.h
+index 3005ff4..2340712 100644
+--- a/libgit2-glib/ggit-remote-callbacks.h
++++ b/libgit2-glib/ggit-remote-callbacks.h
+@@ -24,6 +24,7 @@
+ 
+ #include <glib-object.h>
+ #include <git2.h>
++#include <git2/sys/errors.h>
+ #include <libgit2-glib/ggit-cred.h>
+ 
+ G_BEGIN_DECLS
+diff --git a/libgit2-glib/ggit-repository.c b/libgit2-glib/ggit-repository.c
+index bf099f6..936c6fc 100644
+--- a/libgit2-glib/ggit-repository.c
++++ b/libgit2-glib/ggit-repository.c
+@@ -3182,7 +3182,7 @@ ggit_repository_create_commit (GgitRepository  *repository,
+ 	                         message,
+ 	                         _ggit_native_get (tree),
+ 	                         parent_count,
+-	                         (const git_commit **)parents_native);
++	                         (gpointer)parents_native);
+ 
+ 	g_free (parents_native);
+ 
+@@ -3323,7 +3323,7 @@ ggit_repository_create_commit_buffer(GgitRepository *repository,
+ 	                                message,
+ 	                                _ggit_tree_get_tree (tree),
+ 	                                parent_count,
+-	                                (git_commit const **)parents_native);
++	                                (gpointer)parents_native);
+ 
+ 	g_free (parents_native);
+ 
+diff --git a/libgit2-glib/ggit-types.h b/libgit2-glib/ggit-types.h
+index 7e28975..e1d7ecf 100644
+--- a/libgit2-glib/ggit-types.h
++++ b/libgit2-glib/ggit-types.h
+@@ -21,6 +21,7 @@
+ #ifndef __GGIT_TYPES_H__
+ #define __GGIT_TYPES_H__
+ 
++#include <git2.h>
+ #include <glib.h>
+ 
+ G_BEGIN_DECLS
+@@ -355,7 +356,12 @@ typedef enum
+ 	GGIT_CONFIG_LEVEL_XDG         = 3,
+ 	GGIT_CONFIG_LEVEL_GLOBAL      = 4,
+ 	GGIT_CONFIG_LEVEL_LOCAL       = 5,
++#if LIBGIT2_VER_MAJOR > 1 || (LIBGIT2_VER_MAJOR == 1 && LIBGIT2_VER_MINOR >= 8)
++	GGIT_CONFIG_LEVEL_WORKTREE    = 6,
++	GGIT_CONFIG_LEVEL_APP         = 7,
++#else
+ 	GGIT_CONFIG_LEVEL_APP         = 6,
++#endif
+ 	GGIT_CONFIG_LEVEL_HIGHEST     = -1
+ } GgitConfigLevel;
+ 
+diff --git a/meson.build b/meson.build
+index e54a8b4..c21107d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -126,7 +126,7 @@ glib_dep = dependency('glib-2.0', version: '>=' + glib_req)
+ gobject_dep = dependency('gobject-2.0', version: '>=' + glib_req)
+ gio_dep = dependency('gio-2.0', version: '>=' + glib_req)
+ 
+-libgit2_dep = dependency('libgit2', version: '>= 0.25.0')
++libgit2_dep = dependency('libgit2', version: '>= 1.8.0')
+ 
+ # XXX: Not nice, but probably our best option
+ enable_gir = get_option('introspection') and find_program('g-ir-scanner', required: false).found()
+-- 
+2.48.1
+

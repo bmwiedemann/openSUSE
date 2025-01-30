@@ -1,0 +1,26 @@
+From 2194e20869f65423555c331a3a71e47b5dad2426 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Wed, 29 Jan 2025 16:54:24 +0100
+Subject: [PATCH 1/3] fix: don't confuse GGIT_MICRO_VERSION and
+ GGIT_MINOR_VERSION
+
+---
+ libgit2-glib/ggit-version.h.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgit2-glib/ggit-version.h.in b/libgit2-glib/ggit-version.h.in
+index 4b25185..642271b 100644
+--- a/libgit2-glib/ggit-version.h.in
++++ b/libgit2-glib/ggit-version.h.in
+@@ -35,7 +35,7 @@
+  *
+  * libgit2-glib micro version component (e.g. 3 if %GGIT_VERSION is 1.2.3)
+  */
+-#define GGIT_MINOR_VERSION (@MICRO_VERSION@)
++#define GGIT_MICRO_VERSION (@MICRO_VERSION@)
+ 
+ #define GGIT_ENCODE_VERSION(major,minor,micro) \
+         ((major) << 24 | (minor) << 16 | (micro) << 8)
+-- 
+2.48.1
+
