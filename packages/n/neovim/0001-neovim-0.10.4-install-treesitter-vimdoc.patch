@@ -1,0 +1,16 @@
+--- a/test/old/testdir/test_breakindent.vim	2025-01-29 15:58:18.945761729 +0100
++++ b/test/old/testdir/test_breakindent.vim	2025-01-29 15:57:30.066524668 +0100
+@@ -1110,6 +1110,13 @@
+ endfunc
+ 
+ func Test_linebreak_list()
++  " Ensure tree-sitter-vimdoc installed from a package is available
++  lua << EOF
++    local vimdoc_path = os.getenv("VIMDOC_PATH")
++    if vimdoc_path then
++      vim.treesitter.language.add("vimdoc", { path = vimdoc_path })
++    end
++EOF
+   " This was setting wlv.c_extra to NUL while wlv.p_extra is NULL
+   filetype plugin on
+   syntax enable
