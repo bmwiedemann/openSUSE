@@ -1,0 +1,24 @@
+# needsrootforbuild
+
+Url:            http://www.suse.com/
+Name:           baseiso-__NAME__
+Summary:        Product Composer Base Images
+Version:        __VERSION__
+Release:        __RELEASE__
+Group:          System/Management
+License:        SUSE-EULA
+Provides:       baseiso(__NAME__)
+
+%define install_dir %_libexecdir/base-isos
+
+%description
+Images to be used by product composer as a base. It is designed
+for Agama Installer in first place.
+
+%install
+mkdir -p %buildroot%{install_dir}
+cp -a /usr/src/packages/KIWI/* %buildroot%install_dir
+
+%files
+%install_dir
+

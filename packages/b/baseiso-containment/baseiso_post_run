@@ -1,0 +1,74 @@
+#!/bin/bash
+
+: ${TOPDIR:=/usr/src/packages}
+
+set -e
+set -u
+
+BUILD_DIR=/usr/lib/build
+BUILD_DISTURL=
+
+# To get BUILD_DISTURL
+test -f /.buildenv && . /.buildenv
+
+IMAGE_DIR=/usr/src/packages/KIWI
+[ -d $IMAGE_DIR ] || exit 0
+cd $IMAGE_DIR
+
+# Setting default for SPEC_IN
+SPEC_IN=$BUILD_DIR/baseiso.spec.in
+
+# Overwrite default for SPEC_IN if _image.spec.in
+# exists in sources dir
+if [ -f $TOPDIR/SOURCES/baseiso.spec.in ];then
+    SPEC_IN=$TOPDIR/SOURCES/baseiso.spec.in
+fi
+
+echo "Using $SPEC_IN as spec file template"
+
+ARCH="$(uname -m)"
+
+# We filter here currently only for agama-installer until we
+# have a clean way to specify it in kiwi build descriptions.
+# Alternative is that kiwi bundler get the containment
+# functionality. Needs to be discussed.
+
+iso_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.iso 2>/dev/null`
+
+# nothing to do for us
+[ -z "$iso_file" ] && exit 0
+
+iso_file="${iso_file##*/}"
+iso_name=${iso_file%.$ARCH*}
+iso_version=${iso_file#*$ARCH-}
+iso_version=${iso_version%.iso}
+iso_build=${iso_version##*-Build}
+iso_version=${iso_version%-Build*}
+iso_flavor=${iso_version#*-}
+iso_version=${iso_version%-*}
+
+
+IMAGE=$iso_name
+
+shopt -s nullglob
+shopt -s extglob
+
+echo "Attempting to wrap $IMAGE in a containment rpm ..."
+
+sed -e "s@__NAME__@$iso_name@g" \
+    -e "s@__VERSION__@$iso_version@g" \
+    -e "s@__RELEASE__@$iso_build@g" \
+    < $SPEC_IN \
+    > $BUILD_DIR/image.spec
+
+if [ -z "$BUILD_DISTURL" ]; then
+  rpmbuild --target $ARCH -ba $BUILD_DIR/image.spec
+else
+  rpmbuild --target $ARCH -ba --define "disturl $BUILD_DISTURL" $BUILD_DIR/image.spec
+fi
+
+# required for the BS to find the rpm, because it is
+# a "non-standard result file for KIWI"
+mkdir -p $TOPDIR/OTHER
+mv $TOPDIR/RPMS/$ARCH/baseiso-$iso_name-$iso_version-$iso_build.$ARCH.rpm $TOPDIR/OTHER/
+mv $TOPDIR/SRPMS/baseiso-$iso_name-$iso_version-$iso_build.src.rpm $TOPDIR/OTHER/

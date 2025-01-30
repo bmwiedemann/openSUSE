@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Jan 30 10:15:16 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- 0.2.1
+  * process only agama-installer iso's for now to avoid problems
+    with other image builds.
+
+-------------------------------------------------------------------
+Wed Jan 29 13:11:41 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- 0.2
+  * add provides baseiso($NAME) to avoid the need to maintain this
+    in build config
+
+-------------------------------------------------------------------
+Fri Jan 24 12:38:49 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- initial package 0.1
+
