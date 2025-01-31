@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-ParseXLSX
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Spreadsheet-ParseXLSX
 Name:           perl-Spreadsheet-ParseXLSX
-Version:        0.350.0
+Version:        0.360.0
 Release:        0
-# 0.35 -> normalize -> 0.350.0
-%define cpan_version 0.35
+# 0.36 -> normalize -> 0.360.0
+%define cpan_version 0.36
 License:        MIT
 Summary:        Parse XLSX files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -68,7 +68,7 @@ Spreadsheet::ParseExcel::Workbook, Spreadsheet::ParseExcel::Worksheet, and
 Spreadsheet::ParseExcel::Cell.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
