@@ -1,0 +1,8 @@
+<package name="perl-Object-Pad" project="openSUSE:Factory">
+  <title>Simple syntax for lexical field-based objects</title>
+  <description>This module provides a simple syntax for creating object classes, which
+uses private variables that look like lexicals as object member fields.
+</description>
+  <devel project="devel:languages:perl" package="perl-Object-Pad"/>
+  <url>https://metacpan.org/release/Object-Pad</url>
+</package>

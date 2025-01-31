@@ -1,0 +1,474 @@
+-------------------------------------------------------------------
+Tue Jan 28 17:59:07 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Fix dependency for Leap 15 (for older perl versions we need the
+  indirect.pm module)
+
+-------------------------------------------------------------------
+Wed Jan 22 21:11:25 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.819.0 (0.819)
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.819   2025-01-10
+          [CHANGES]
+           * Initial experimental attempt to support lexical `my class` syntax
+           * Neater, smaller `hax/` files by squashing out code guarded on
+             versions of Perl before 5.18
+  0.818   2024-12-23
+          [BUGFIXES]
+           * Ensure that `method :common` works with the new `OP_ARGELEM` code
+             in the signature handling code (RT158048)
+  0.817   2024-12-20
+          [CHANGES]
+           * Initial attempt at supporting an `:abstract` attribute on classes.
+             Similar to roles but much simpler and easier to implement
+           * Much internal reärrangement of the way OP_METHSTART is set up, to
+             hopefully allow more seamless integration with upcoming core perl
+             `faster-signatures` branch work
+  0.816   2024-11-25
+          [CHANGES]
+           * Rewrote module introduction documentation, emphasising the relating
+             to core perl 'class' feature and `Feature::Compat::Class`
+           * Added a documentation file, giving a guide to migrating from
+             classical Perl to `Object::Pad`
+          [BUGFIXES]
+           * Fix for t/82devel-mat-dumper-helper.t should require `Devel::MAT`
+             v0.53 or later, in case DMD writes a file in format version 0.6
+             (RT157189)
+  0.815   2024-11-13
+          [CHANGES]
+           * Initial experiment at adding `APPLY` phaser blocks to roles
+  0.814   2024-09-20
+          [CHANGES]
+           * Depend on `XS::Parse::Sublike` v0.25 because of RT155630 bugfix
+           * Document and test the operation of `my method`
+          [BUGFIXES]
+           * Don't segfault when `->get_direct_method` fails to find the
+             requested method
+  0.813   2024-09-03
+          [CHANGES]
+           * Removed the `has` keyword; it now immediately throws a compiletime
+             error
+          [BUGFIXES]
+           * Ensure that the RHS of a field init expression permits any kind of
+             listexpr, including `( VAL ) x COUNT`
+           * Fix some docs typoes (thanks Nick Morrott) (RT155106)
+  0.812   2024-08-29
+          [BUGFIXES]
+           * Fix for perl 5.41.3, when `SAVEt_LONG` was removed
+
+-------------------------------------------------------------------
+Thu Aug 22 05:30:31 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.811.0 (0.811)
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.811   2024-08-21
+          [CHANGES]
+           * Accept requesting additional attributes to the
+             `$classmeta->add_field` MOP method
+           * XS API changes:
+              + `get_obj_fieldsv()` does not need to take a ClassMeta argument
+              + Added `mop_field_get_class()`
+              + Added `get_field_for_padix()`
+
+  0.810   2024-08-10
+          [CHANGES]
+           * Use `File::ShareDir` for storing .h include file, rather than
+             storing the contents in the `__DATA__` section of the build helper
+           * Added field hook function `gen_valueassert_op`
+           * Warn when enabling all experiments at once with an unqualified
+             `:experimental` import
+
+          [BUGFIXES]
+           * Don't attempt to reserve the embedding slot in the pad twice when
+             making roles under composed_adjust (RT154494)
+           * Ensure that field variables are not visible at compiletime of
+             :common methods (RT154639)
+
+-------------------------------------------------------------------
+Mon Jul 15 05:29:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.809.0 (0.809)
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.809   2024-07-14
+          [CHANGES]
+           * Experimental attempt at supporting anonymous `class` syntax
+           * Add an extra debugging aid in the form of "linnets", canary-like
+             values added to every struct and checked on pointer casts
+
+          [BUGFIXES]
+           * Do not create a `new` constructor method for roles, only classes
+           * Ensure perl doesn't attempt to free() a non-malloced pointer when
+             deleting a method of an invokable role (RT152793)
+           * Ensure that `Object::Pad::MOP::Class->for_class` is not confused by
+             non-OP subclasses
+           * Make sure not to embed CVs of `:common` methods because that will
+             upset any lexical or pad temporary at pad index 3
+
+-------------------------------------------------------------------
+Fri Mar  8 22:55:23 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Fri Dec 29 03:08:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.808
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.808   2023-12-28
+          [CHANGES]
+           * Added `Object::Pad::MOP::Class->try_for_class`
+           * Nicer error message when calling `->for_class` on a package not
+             implemented using Object::Pad
+
+  0.807   2023-12-11
+          [CHANGES]
+           * Added `inherit` and `apply` keywords in an attempt to make
+             subclassing and role-application more flexible in future
+           * Experimental new ability to "import" fields from superclasses into
+             subclasses, permitting subclasses to interact with base class
+             fields directly
+           * Allow setting the `OBJECTPAD_FLAG_ATTR_*_VALUE` flags when
+             registering a custom attribute via the Perl-level MOP API
+
+-------------------------------------------------------------------
+Wed Nov 15 03:07:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.806
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.806   2023-11-14
+          [CHANGES]
+           * Allow field initialiser expressions to see the values of other
+             fields already declared
+
+-------------------------------------------------------------------
+Sat Oct 21 03:07:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.805
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.805   2023-10-20
+          [CHANGES]
+           * Added an experimental feature to compose all ADJUST blocks into a
+             single CV
+           * Removed experimental warning from `ADJUST :params`
+
+          [BUGFIXES]
+           * Don't crash the `Devel::MAT::Dumper` helper if a class does not
+             have a parammap (RT150151)
+
+-------------------------------------------------------------------
+Thu Oct  5 03:08:52 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.804
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.804   2023-10-04
+          [CHANGES]
+           * Add `:repr(pvobj)` for Perl 5.38+
+           * Much internal code adjustment to support instances not backed by
+             `SVt_PVAV`
+
+          [BUGFIXES]
+           * Fix the METHSTART_CONTAINS_FIELD_BINDINGS optimisation that had been
+             recently broken, restoring its performance gains
+
+-------------------------------------------------------------------
+Thu Sep 21 03:12:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.803
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.803   2023-09-20
+          [CHANGES]
+           * Add `:repr(keys)` to use one hash key per field
+           * Performance improvements to constructor:
+              + Use `av_*_simple()` functions when operating on internal AVs
+              + Don't bother calling the universal `->BUILDARGS` method if the
+                class doesn't override it
+              + Calculate the argument count just once
+
+-------------------------------------------------------------------
+Wed Aug 23 03:07:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.802
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.802   2023-08-22
+          [CHANGES]
+           * Internal XS-level changes:
+              + Generate the basic accessor ops directly before invoking the
+                gen_accessor_ops chain, ensuring more reliable ordering
+              + Renamed the `post_initfields` field hook to `post_makefields` to
+                better reflect when it actually runs
+           * Removed the special-case warning about `method BUILD`
+           * Added docs to point out that `ADJUST` blocks see method-like field
+             lexicals
+
+-------------------------------------------------------------------
+Fri Aug 11 03:07:52 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.801
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.801   2023-08-10
+          [CHANGES]
+           * Warn at compiletime if `ADJUST` blocks perform out-of-block control
+             flow. This warning will become a compiletime error in a later
+             version
+           * Added `mop_class_get_attribute()` and
+             `mop_class_get_attribute_values()` to C-level API
+           * Removed the old `ClassHook->hookdata` and `FieldHook->hookdata`
+             variable aliases
+
+          [BUGFIXES]
+           * A better `sub VERSION` that works as a more transparent wrapper
+             (RT149357)
+
+  0.800   2023-08-09
+          [CHANGES]
+           * Switched to three-digit version numbering
+           * Removed experimental warnings from non-constant field initialiser
+             expressions
+           * Emit deprecation warnings at compiletime from `has` keyword
+           * Expanded documentation about the implied pragmata changes, which
+             will likely be removed entirely in a later version.
+           * Emit a warning if implied strict/warnings was enabled, conditional
+             on `use Object::Pad` with this version number or later.
+
+-------------------------------------------------------------------
+Wed May 10 03:08:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.79
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.79    2023-05-09
+          [CHANGES]
+           * Swap all unit tests from `Test::More` to `Test2::V0`
+           * Support `goto LABEL` entirely within a field initialiser block
+
+          [BUGFIXES]
+           * Docs fix for implied method names to match names of fields
+             (RT146092)
+           * Hide bleadperl's suspended compcv macros when redefining our own of
+             the same name
+
+-------------------------------------------------------------------
+Fri Jan 13 03:08:42 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.78
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.78    2023-01-12
+          [BUGFIXES]
+           * Don't complain about empty-list field initialisers being
+             non-constant (related to RT145618)
+           * Define more configuration options for `Feature::Compat::Class`
+
+-------------------------------------------------------------------
+Tue Dec 20 03:07:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.77
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.77    2022-12-19
+          [BUGFIXES]
+           * Fix C compiler errors and warnings
+              + Neater handling of OP_NULL in optrees; avoids error of a case
+                label applied to a declaration, which upsets non-gcc compilers
+              + Use PTR2UV / NUM2PTR pairs instead of plain casting
+  0.76    2022-12-16
+          [CHANGES]
+           * No longer consider `field VAR = CONST` experimental for constant
+             expressions
+           * Make field assignment and `ADJUST :params` slightly more efficient
+             by stealing new OP_HELEMEXISTSOR op from upcoming perl version
+           * Defined new ABI version 0.76
+              + Adds `pre_seal` and `post_seal` functions for class hooks
+  0.75    2022-12-14
+          [CHANGES]
+           * Support fields using `//=` and `||=` defaulting operators, to match
+             the core perl `class` feature
+           * Define more configuration options for `Feature::Compat::Class`
+  0.74    2022-12-04
+          [BUGFIXES]
+           * Ensure that all struct fields are initialised after Newx(), by
+             using a C99-style struct assignment, ensuring no uninitialised
+             behaviour (RT145289)
+  0.73    2022-12-03
+          [CHANGES]
+           * Accept `field VAR = EXPR;` syntax; evaluated within constructor
+             similarly to block form
+           * Generally prefer `field` over `has` in docs, unit tests, etc...
+           * Long-deprecated `extends` and `implements` keywords are now
+             immediate compile-time failures
+           * Extended the C-level extension API
+              + Added `get_compclassmeta()`
+              + Added `mop_class_add_method_cv()` and `mop_class_get_name()`
+              + Optional integration with XS::Parse::Keyword via the addition
+                of the `OPXKP_*` macros
+          [BUGFIXES]
+           * Account for bleadperl's slightly changed warning message of
+             "bareword found ..."
+  0.72    2022-11-30
+          [CHANGES]
+           * Accept `//=` and `||=` in named signature-like syntax for
+             `ADJUST :params` blocks
+           * Added `__CLASS__`
+           * Deprecate use of params hashref in `ADJUST` blocks; needs to be
+             written as `ADJUSTPARAMS`, which is not longer exactly synonymous
+             with `ADJUST`
+
+-------------------------------------------------------------------
+Thu Nov  3 03:07:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.71
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.71    2022-11-01
+          [CHANGES]
+           * Add a =head2 heading to docs on `ADJUST :params` for ease of
+             linking
+           * Support latest blead-perl which adds the xV_FROM_REF macros
+          [BUGFIXES]
+           * Make sure to deref the CODE reference to ->add_method before
+             stuffing it into the GV (RT144975)
+           * Avoid C99-style for() loop variable, to keep older MSWin32
+             compilers happy
+  0.70    2022-10-29
+          [CHANGES]
+           * Added `ADJUST :params`, which permits named parameters to ADJUST
+             blocks (currently experimental)
+  0.69    2022-10-25
+          [CHANGES]
+           * Internal tidying to the way the initfields stage of the constructor
+             works
+           * Support for Feature::Compat::Class to enable the :isa class
+             attribute alone
+
+-------------------------------------------------------------------
+Sun Aug 14 03:09:22 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.68
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.68    2022-08-13
+          [BUGFIXES]
+           * Wording fix in new Object::Pad::MetaFunctions docs
+           * Avoid label at end of compound statement (RT144005)
+
+  0.67    2022-08-12
+          [CHANGES]
+           * Added `Object::Pad::MetaFunctions` to contain some introspection
+             and reflection helper functions
+           * Avoid writing the rather silly-sounding `field $field` in docs;
+             use single-letter field names like `$x` or `$f` instead
+
+-------------------------------------------------------------------
+Thu Jul  7 03:07:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.66
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.66    2022-07-07
+          [CHANGES]
+           * Improved performance on perl 5.22 onwards, by merging the operation
+             of the individual pp_fieldpad ops into the main pp_methstart op
+           * Prepare compatibility with core's `use feature 'class'`:
+              + Support `field` keyword as a synonym of `has`, though without
+                immediate EXPR version
+              + Merge meaning of `ADJUST` and `ADJUSTPARAMS`; give all such blocks
+                a params hashref. `ADJUSTPARAMS` is now just a synonym
+           * Print "discouraged" warnings on `requires` keyword
+           * Print deprecation warnings on `isa` and `does` subkeywords
+           * Added list-returning ->get_attribute_values() accessor to
+             Object::Pad::MOP::Field
+           * Deleted legacy XS symbols relating to "slot" from before it was
+             renamed to "field"
+
+-------------------------------------------------------------------
+Wed May 11 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.65
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.65    2022-05-10
+          [CHANGES]
+           * Document the required version for :experimental tags
+           * Mention the new Devel::MAT::Tool::Object::Pad in docs
+
+          [BUGFIXES]
+           * Update cv_copy_flags() for SvPADTMP fix; related to RT142468
+
+-------------------------------------------------------------------
+Wed Apr  6 03:12:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.64
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.64    2022-04-02
+          [CHANGES]
+           * Improvements to `:experimental` import tag (RT141801):
+              + Support multiple experiments at once
+              + Make sure to still enable the default keywords
+           * Much better integration with `Devel::MAT::Dumper`:
+              + Export complete C-level structures and magic VTBL root
+           * Adjusted wording of "MOP API is experimental" so it doesn't refer
+             to a package that doesn't actually exist (RT141801)
+
+-------------------------------------------------------------------
+Tue Mar  8 03:13:32 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.63
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.63    2022-03-07
+          [CHANGES]
+           * Deleted long-deprecated Object::Pad->begin_class
+           * No longer declare the entire module as "experimental"
+           * Add experimental warnings to still-experimental features; recognise
+             `:experimental` import tags to silence them
+          [BUGFIXES]
+           * Ensure that generated accessors work correctly regardless of the
+             prevailing package when they were generated (RT141599)
+           * Ensure that classes and accessors can be generated entirely outside
+             of a BEGIN block (RT141677)
+  0.62    2022-03-01
+          [CHANGES]
+           * Add "common" methods:
+              + Implement `:common` attribute for methods
+              + Take 'common' argument to `$metaclass->add_method`
+              + Added `$metamethod->is_common` accessor
+           * Don't require a terminating semicolon after `has $field { EXPR }`
+          [BUGFIXES]
+           * Better handling of role method embeddings that include lexical
+             captures (RT141483)
+
+-------------------------------------------------------------------
+Thu Feb 17 03:06:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.61
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.61    2022-02-16
+          [CHANGES]
+           * Added Object::Pad::MOP::Class->create_{class,role}
+           * Added $metaclass->seal (RT131294)
+           * Added $metaclass->add_required_method and ->required_method_names
+             (RT141314)
+           * Accept bodyless `method NAME;` declarations to declare a required
+             role method
+
+          [BUGFIXES]
+           * Assert when compclassmeta->name doesn't match PL_curstname (RT131293)
+
+-------------------------------------------------------------------
+Sat Feb  5 17:23:13 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Initial package: perl-Object-Pad-0.60.
+

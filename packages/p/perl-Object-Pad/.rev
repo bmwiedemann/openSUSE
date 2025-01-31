@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66b46f6a02c26cf8b6daf704fb850f16</srcmd5>
+    <version>0.819.0</version>
+    <time>1738163433</time>
+    <user>anag+factory</user>
+    <comment>* Module to try out new perl features ahead of time
+* Needs perl-XS-Parse-Sublike which I'm going to submit as well</comment>
+    <requestid>1240894</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4712d4af78df01a287b54061b1efc25</srcmd5>
+    <version>0.819.0</version>
+    <time>1738335878</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241527</requestid>
+  </revision>
+</revisionlist>
