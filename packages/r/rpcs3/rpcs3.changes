@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Wed Jan 30 14:37:28 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- BuildRequire cmake >= 3.16.9: BUILDING.md documents cmake 3.28.0+
+  as the requirement, but CMakeLists.txt shows 3.16.9.
+
+-------------------------------------------------------------------
+Wed Jan 29 23:37:20 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250128:
+  * Fix Savestates recent regression
+  * PPU LLVM: Fix HLE patches
+  * Update LLVM to 18.1.8
+  * Fix some warnings
+  * Fix segfault on missing firmware
+  * Qt: Fix Recent savestate path
+  * Qt: Add path to recent game/savestate tooltip
+  * Qt: fix recent savestate shortcuts
+  * Qt: Fix recent savestates menu settings
+  * Disable ARM trampolines
+  * Protect RPCS3 from built-in PS2 emulator
+  * Fix Emulator::IsPaused() to allow measurements during module compilation
+  * PPU LLVM: Reduce size of JIT-transition treampolines to 16
+  * JITASM.cpp: add assert for code building
+  * JIT.h: Add option for lowered function size
+  * JIT.h: Use kOptimizeForSize
+  * LLVM: Add explicit resource-freeing at emulation stop
+  * PPU LLVM: Disable an experimental limit
+  * PPU LLVM: Simplify module progress
+  * PPU Analyzer: Report invalid functions
+  * PPU Analyzer: Clean addr_heap from non-relocations (PRX)
+  * PPU Analyzer: Move ppu_function::callers to lower sizeof(ppu_function)
+  * PPU Analyzer: Remove ppu_function::calls to lower sizeof(ppu_function)
+  * PPU Analyzer: Use std::map::extract to reduce peak memory consumption
+  * PPU Analyzer: Remove ppu_function::name to lower sizeof(ppu_function)
+  * Remove ppu_attr::known_addr
+  * LLVM: Slice PPU executable memory
+  * Thread.cpp: Report VM addresses on VM segfault
+  * LLVM: Install error reporting handler
+  * Qt: Fix device notification registration segfault
+  * sys_usbd: Fix emulated devices not being created without a physical device (#16608)
+  * Qt: add savestate manager dialog
+  * libusb: support hotplug (#16580)
+  * Qt: Add Recent savestates menu
+  * Log LLVM version
+  * cellGem: update gun handler connection periodically
+  * cellPad: Send disconnection notification when swapping device class
+  * cellGem: Move the cursor out of the screen (Time Crisis 4 needs this)
+  * cellGem: Set 255 as value for analog_t
+  * cellGem: mark device as not visible at the screen borders
+  * Qt/input: reset gui pad thread when saving pad settings
+
+-------------------------------------------------------------------
+Wed Jan 22 14:48:57 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250122:
+  * cellCamera: move attach event to thread
+  * cellGem: move some locks around wait loops
+  * sys_event: remove unnecessary copy
+  * cellCamera: close Qt camera on error (e.g. when usb is pulled)
+  * cellGem: ignore missing pad handler
+  * cellGem: Fix camera image when loading savestates
+  * cellCamera: start camera when loading savestates
+  * cellGem: improve convert_image_format logging
+  * Decrease log level of config file move error
+
+-------------------------------------------------------------------
+Tue Jan 21 23:18:33 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250121:
+  * input: add vibration multiplier
+  * Update minimum pugixml version to 1.15
+
+-------------------------------------------------------------------
+Mon Jan 20 12:30:12 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250119:
+  * rsx: Fix texcoord transformation bug caused by incorrect BFE usage
+  * vk: Use common pipeline layout in interpreter
+  * vk: Factor out common pipeline layout generator into reusable parts
+  * sys_prx: implement get_module_id_by_name, module_info_v2 (#16573)
+  * windows: Ignore OneDrive in PATH. It leads to false positives
+  * windows: move logs to log dir
+  * windows: move config.yml and games.yml to /config/
+  * input: issue basic mouse move event on window leave
+  * rsx: Fix shader cache loading
+  * vk: Fix out-of-bounds write when emitting MSAA unresolve clear command for NVIDIA fallback
+  * rsx/shaders: Fix MSAA coords wrapping when input is negative
+  * rsx: Fix dynamic constants patching when draw call is skipped
+  * rsx: Improved shader interpreter support when hw instancing is active
+  * windows: check for OneDrive paths
+  * Use string_view in rXml
+  * Update pugixml to 1.15
+  * Update libpng to 1.6.45
+  * Qt/input: allow keypresses in raw mouse handler
+  * cellAtracXdec: use lv2 mutexes + conds
+  * cellGem: ignore intercepted input
+  * input: simplify raw mouse button press handling
+  * Qt/input: fix raw mouse button assignment
+  * cellGem: fix initial tracker done state
+  * cellGem: Use wait_on, fix fake/mouse move tracker wait
+  * cellGem: Use atomic wait instead of wait_for
+  * cellGem: Update controllers at 10 Hz in separate thread
+
+-------------------------------------------------------------------
 Thu Jan 10 05:27:07 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.34~git20250110:
