@@ -1,7 +1,7 @@
 #
 # spec file for package mayavi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source2:        tvtk_doc.desktop
 Patch0:         mayavi-pr1303-cython-np2.patch
 # PATCH-FIX-UPSTREAM mayavi-pr1315-np2tests.patch gh#enthought/mayavi#1315
 Patch1:         mayavi-pr1315-np2tests.patch
+# PATCH-FIX-UPSTREAM mayavi-pr1329-vtk9.4.patch gh#enthought/mayavi#1329 + gh#enthought/mayavi#1330
+Patch2:         mayavi-pr1329-vtk9.4.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -49,7 +51,6 @@ BuildRequires:  python3-traits >= 6.0.0
 BuildRequires:  python3-traitsui >= 7.0.0
 BuildRequires:  python3-vtk
 BuildRequires:  python3-wheel
-BuildRequires:  update-desktop-files
 BuildRequires:  vtk-devel
 # see mayavi/__init__.py
 Requires:       python3-Pygments
@@ -126,7 +127,6 @@ export CFLAGS="%{optflags}"
 
 %install
 %python3_pyproject_install
-
 mkdir -p %{buildroot}/%{_mandir}/man1/
 mv docs/mayavi2.man %{buildroot}/%{_mandir}/man1/mayavi2.1
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/
@@ -136,15 +136,12 @@ install -p -m 644 ./docs/source/mayavi/images/mayavi2-48x48.png \
    %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/tvtk_doc.png
 rm -r %{buildroot}%{python3_sitearch}/tvtk/src
 sed -i '/tvtk\/src/d' %{buildroot}%{python3_sitearch}/mayavi-%{version}.dist-info/RECORD
-
-%suse_update_desktop_file -i mayavi
-%suse_update_desktop_file -i tvtk_doc
-
+install -p -m 644 -D -t %{buildroot}%{_datadir}/applications/ %{SOURCE1} %{SOURCE2}
 %fdupes %{buildroot}%{python3_sitearch}
 %fdupes %{buildroot}%{_datadir}/icons
 
-%ifnarch %ix86 %arm32
 %check
+%ifnarch %ix86 %arm32
 # see .gitub/workflows/headless-tests.yml
 export ETS_TOOLKIT=null
 %pytest_arch -v --pyargs tvtk

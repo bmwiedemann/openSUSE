@@ -89,4 +89,14 @@
     <comment></comment>
     <requestid>1198163</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e6c3ae9ecfc4f0093132559139bf1f2d</srcmd5>
+    <version>4.8.2</version>
+    <time>1738335883</time>
+    <user>anag+factory</user>
+    <comment>- Add mayavi-pr1329-vtk9.4.patch gh#enthought/mayavi#1329
+  + gh#enthought/mayavi#1330
+- Drop suse-update-desktop-files</comment>
+    <requestid>1241520</requestid>
+  </revision>
 </revisionlist>

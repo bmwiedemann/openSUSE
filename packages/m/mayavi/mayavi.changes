@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 19:34:52 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add mayavi-pr1329-vtk9.4.patch gh#enthought/mayavi#1329
+  + gh#enthought/mayavi#1330
+- Drop suse-update-desktop-files
+
+-------------------------------------------------------------------
 Fri Aug 30 17:30:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.8.2

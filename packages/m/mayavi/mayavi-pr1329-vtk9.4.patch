@@ -1,0 +1,365 @@
+From a405de160dd951b77064b92f0b434f4ea3a3143d Mon Sep 17 00:00:00 2001
+From: Prabhu Ramachandran <prabhu@aero.iitb.ac.in>
+Date: Tue, 17 Dec 2024 15:31:20 +0530
+Subject: [PATCH 1/3] BUG: Fix issue with vtkGenericCell.GetCellFaces.
+
+Calling this on an uninitialized object segfaults on Linux.
+---
+ tvtk/vtk_parser.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tvtk/vtk_parser.py b/tvtk/vtk_parser.py
+index 031af8f3..58efcc63 100644
+--- a/tvtk/vtk_parser.py
++++ b/tvtk/vtk_parser.py
+@@ -654,6 +654,9 @@ def _find_get_set_methods(self, klass, methods):
+             # These hang on Windows (and maybe Fedora 34)
+             elif (klass_name in ('vtkDataEncoder', 'vtkWebApplication')):
+                 continue
++            # This crashes on VTK version 9.4.0
++            elif (klass_name == 'vtkGenericCell' and method[3:] == 'CellFaces'):
++                continue
+             # we can actually process it
+             elif ('Get' + method[3:]) in methods:
+                 key = method[3:]
+
+From 74837909d4f6a287080309457d8edf8348e7a163 Mon Sep 17 00:00:00 2001
+From: Prabhu Ramachandran <prabhu@aero.iitb.ac.in>
+Date: Thu, 19 Dec 2024 00:21:36 +0530
+Subject: [PATCH 2/3] MAINT: Fix various VTK-9.4 related issues.
+
+This fixes TVTK build and test issues.
+---
+ docs/source/tvtk/README.txt  | 18 ++++++++----------
+ tvtk/code_gen.py             |  7 ++++---
+ tvtk/messenger.py            | 10 +++++-----
+ tvtk/pipeline/browser.py     |  4 ++--
+ tvtk/tests/test_messenger.py |  4 ++--
+ tvtk/tests/test_tvtk.py      | 27 ++++++++++++++++-----------
+ tvtk/vtk_module.py           | 10 +++++++++-
+ tvtk/wrapper_gen.py          | 18 ++++++++++++++++++
+ 8 files changed, 64 insertions(+), 34 deletions(-)
+
+diff --git a/docs/source/tvtk/README.txt b/docs/source/tvtk/README.txt
+index 8d71456d..0aa39ee5 100644
+--- a/docs/source/tvtk/README.txt
++++ b/docs/source/tvtk/README.txt
+@@ -260,19 +260,17 @@ tvtk wrapper object is created.  The following illustrates this::
+   >>> cs = tvtk.ConeSource()
+   >>> o = cs.output
+   >>> m = tvtk.PolyDataMapper()
+-  >>> m.input = o
+-  >>> print(hash(o))
+-  1109012188
+-  >>> print(hash(m.input))
+-  1109012188
++  >>> m.input_connection = cs.output_port
++  >>> print(id(o))
++  126526931186080
++  >>> print(id(m.input))
++  126526931186080
+   >>> del o
+-  >>> print(hash(m.input))
+-  1119694156
++  >>> print(id(m.input))
++  126526931186080
+ 
+ Thus, after `o` is garbage collected `m.input` no longer refers to the
+-original tvtk object and a new one is created.  This is very similar
+-to VTK's behaviour.  Changing this behaviour is tricky and there are no
+-plans currently to change this.
++original tvtk object the old one is cached and returned.  
+ 
+ 
+ tvtk and traits
+diff --git a/tvtk/code_gen.py b/tvtk/code_gen.py
+index 03f7fc8f..e3a16e58 100644
+--- a/tvtk/code_gen.py
++++ b/tvtk/code_gen.py
+@@ -110,7 +110,7 @@ def generate_code(self):
+             # Write the wrapper files.
+             tree = wrap_gen.get_tree().tree
+ 
+-            classes = []
++            classes = ['vtkObjectBase']
+             # This is another class we should not wrap and exists
+             # in version 8.1.0.
+             ignore = ['vtkOpenGLGL2PSHelperImpl'] + [
+@@ -124,11 +124,12 @@ def generate_code(self):
+                 if (name not in include and not name.startswith('vtk')) or \
+                         name.startswith('vtkQt'):
+                     continue
+-                if not hasattr(vtk, name) or not hasattr(getattr(vtk, name), 'IsA'):  # noqa
++                if not hasattr(vtk, name) or \
++                    not hasattr(getattr(vtk, name), 'AddObserver'):  # noqa
+                     # We need to wrap VTK classes that are derived
+                     # from vtkObjectBase, the others are
+                     # straightforward VTK classes that can be used as
+-                    # such.  All of these have an 'IsA' method so we
++                    # such.  All of these have an 'AddObserver' method so we
+                     # check for that.  Only the vtkObjectBase
+                     # subclasses support observers etc. and hence only
+                     # those make sense to wrap into TVTK.
+diff --git a/tvtk/messenger.py b/tvtk/messenger.py
+index a11f8472..63f49525 100644
+--- a/tvtk/messenger.py
++++ b/tvtk/messenger.py
+@@ -145,7 +145,7 @@ def connect(self, obj, event, callback):
+ 
+         """
+         typ = type(callback)
+-        key = hash(obj)
++        key = id(obj)
+         if not key in self._signals:
+             self._signals[key] = {}
+         signals = self._signals[key]
+@@ -200,7 +200,7 @@ def disconnect(self, obj, event=None, callback=None, obj_is_hash=False):
+         if obj_is_hash:
+             key = obj
+         else:
+-            key = hash(obj)
++            key = id(obj)
+         if not key in signals:
+             return
+         if callback is None:
+@@ -282,11 +282,11 @@ def _get_signals(self, obj):
+         object.
+ 
+         """
+-        ret = self._signals.get(hash(obj))
++        ret = self._signals.get(id(obj))
+         if ret is None:
+             raise MessengerError(
+-                "No such object: %s, has registered itself "\
+-                "with the messenger."%obj
++                "No such object: %s, has registered itself "
++                "with the messenger." % obj
+             )
+         else:
+             return ret
+diff --git a/tvtk/pipeline/browser.py b/tvtk/pipeline/browser.py
+index d2afb5b4..5c8c8a42 100644
+--- a/tvtk/pipeline/browser.py
++++ b/tvtk/pipeline/browser.py
+@@ -447,7 +447,7 @@ class TVTKLeafNode(TreeNodeObject):
+     __ = Python
+ 
+     def __hash__(self):
+-        return hash(tvtk.to_vtk(self.object))
++        return id(tvtk.to_vtk(self.object))
+ 
+     def _get_name(self):
+         return self.object.__class__.__name__
+@@ -496,7 +496,7 @@ def __del__(self):
+             pass
+ 
+     def __hash__(self):
+-        return hash(tvtk.to_vtk(self.object))
++        return id(tvtk.to_vtk(self.object))
+ 
+     def _get_children_from_cache(self):
+         return [x for x in self.children_cache.values() if x is not None]
+diff --git a/tvtk/tests/test_messenger.py b/tvtk/tests/test_messenger.py
+index 66d49795..a92f2344 100644
+--- a/tvtk/tests/test_messenger.py
++++ b/tvtk/tests/test_messenger.py
+@@ -133,12 +133,12 @@ def foo(self, o, e):
+         # Test if things behave sanely if a message was sent and one
+         # of the callbacks has been gc'd.
+         m = messenger.Messenger()
+-        l1 = len(m._signals[hash(c1)]['foo'])
++        l1 = len(m._signals[id(c1)]['foo'])
+         #
+         del c
+         messenger.send(c1, 'foo')
+         #
+-        l2 = len(m._signals[hash(c1)]['foo'])
++        l2 = len(m._signals[id(c1)]['foo'])
+         # Since 'c' is gc'd this callback should have been cleared
+         # out.
+         self.assertEqual(l2, l1 - 1)
+diff --git a/tvtk/tests/test_tvtk.py b/tvtk/tests/test_tvtk.py
+index 3cba92c5..bb37bee2 100644
+--- a/tvtk/tests/test_tvtk.py
++++ b/tvtk/tests/test_tvtk.py
+@@ -202,22 +202,22 @@ def test_help_trait(self):
+     def test_object_cache(self):
+         """Test if object cache works."""
+         cs = tvtk.ConeSource()
+-        hash1 = hash(cs)
++        hash1 = id(cs)
+         o = cs.output
+         if hasattr(o, 'producer_port'):
+             src = o.producer_port.producer
+         else:
+             src = cs.executive.algorithm
+         self.assertEqual(src, cs)
+-        self.assertEqual(hash1, hash(src))
++        self.assertEqual(hash1, id(src))
+         del cs, src
+         gc.collect()
+         # The test sometimes fails as VTK seems to generate objects with the
+-        # same memory address and hash, we try to force it to allocate more
+-        # objects so as to not end up reusing the same address and hash.
++        # same memory address and hash/id, we try to force it to allocate more
++        # objects so as to not end up reusing the same address and id.
+         junk = [tvtk.ConeSource() for i in range(50)]
+ 
+-        # Now get another ConeSource and ensure the hash is different.
++        # Now get another ConeSource and ensure the id is different.
+         cs = tvtk.ConeSource()
+         o = cs.output
+         if hasattr(o, 'producer_port'):
+@@ -230,8 +230,8 @@ def test_object_cache(self):
+         # For VTK 5.x this test is inconsistent, hence skipeed for 5.x
+         # See http://review.source.kitware.com/#/c/15095/
+         ##############################################################
+-        self.assertEqual(hash1 != hash(src), True)
+-        self.assertEqual(hash(cs), hash(src))
++        self.assertEqual(hash1 != id(src), True)
++        self.assertEqual(id(cs), id(src))
+ 
+         # Test for a bug with collections and the object cache.
+         r = tvtk.Renderer()
+@@ -565,7 +565,7 @@ def test_information_keys(self):
+         s = tvtk.StructuredPoints()
+         x = s.FIELD_ARRAY_TYPE()
+         y = tvtk.Information()
+-        x.get(y)
++        y.get(x)
+ 
+     def test_parent_child_bounds(self):
+         """CubeAxesActor2D's bounds should be writable."""
+@@ -858,7 +858,13 @@ def get_min_max_value(vtk_klass, vtk_attr_name):
+         for name in self.names:
+             vtk_klass = getattr(vtk, name)
+             tvtk_klass_name = get_tvtk_name(name)
+-
++            if vtk.vtk_version in [ '9.4.0', '9.4.1' ]:
++                if tvtk_klass_name.endswith('View'):
++                    continue
++                if tvtk_klass_name in ['ImageViewer', 'ImageViewer2',
++                                       'OpenGLRenderWindow',
++                                       'RenderWindow']:
++                    continue
+             try:
+                 obj = getattr(tvtk, tvtk_klass_name)()
+             except Exception:
+@@ -882,8 +888,7 @@ def get_min_max_value(vtk_klass, vtk_attr_name):
+                     # tvtk.tvtk_classes.open_gl_cell_grid_render_request.shapes_to_draw
+                     # uses strings
+                     if isinstance(min_value, str):
+-                        name = "tvtk.tvtk_classes.open_gl_cell_grid_render_request"
+-                        assert name in repr(obj), (obj, trait_name)
++                        assert 'cell_grid_render_request' in repr(obj), (obj, trait_name)
+                         continue
+                     with self.assertRaises(TraitError):
+                         setattr(obj, trait_name, (min_value-1, max_value))
+diff --git a/tvtk/vtk_module.py b/tvtk/vtk_module.py
+index 69dad0eb..36aaa524 100644
+--- a/tvtk/vtk_module.py
++++ b/tvtk/vtk_module.py
+@@ -52,4 +52,12 @@
+     try:
+         del vtkDGBoundsResponder, vtkDGOpenGLRenderer, vtkDGSidesResponder
+     except NameError:
+-        pass
+\ No newline at end of file
++        pass
++
++if vtk_version in [ '9.4.0', '9.4.1' ]:
++    # Instantiating these using TVTK causes a crash on VTK 9.4.0 so skipping.
++    SKIP = ['vtkIOSSReader', 'vtkIOSSCellGridReader']
++    try:
++        del vtkIOSSReader, vtkIOSSCellGridReader
++    except NameError:
++        pass
+diff --git a/tvtk/wrapper_gen.py b/tvtk/wrapper_gen.py
+index 7b3afe02..47cffa08 100644
+--- a/tvtk/wrapper_gen.py
++++ b/tvtk/wrapper_gen.py
+@@ -1654,6 +1654,11 @@ def _write_trait_with_range(self, klass, out, vtk_attr_name):
+         'vtkLineIntegralConvolution2D.MaxNoiseValue$': (
+             True, True, '_write_line_integral_conv_2d_max_noise_value'
+         ),
++        # In VTK 9.4, CellGridSidesQuery's Get/OutputDimensionControl is initialized
++        # to some random value this happens mostly on MacOS.
++        'vtkCellGridSidesQuery.OutputDimensionControl$': (
++            True, True, '_write_cell_grid_sides_query_od_control'
++        ),
+         # In VTK 9.3, vtkCylinderSource's GetLatLongTesselation gives random values
+         # https://gitlab.kitware.com/vtk/vtk/-/issues/19252
+         'vtkCylinderSource.LatLongTessellation$': (
+@@ -1927,6 +1932,19 @@ def _write_line_integral_conv_2d_max_noise_value(
+         vtk_set_meth = getattr(klass, 'Set' + vtk_attr_name)
+         self._write_trait(out, name, t_def, vtk_set_meth, mapped=False)
+ 
++    def _write_cell_grid_sides_query_od_control(self, klass, out, vtk_attr_name):
++        if vtk_attr_name != 'OutputDimensionControl':
++            raise RuntimeError(f"Wrong attribute name: {vtk_attr_name}")
++        if vtk_major_version >= 9:
++            message = ("vtkCellGridSidesQuery: "
++                       "OutputDimensionControl not updatable "
++                       "(VTK 9.4 bug - value not properly initialized)")
++            print(message)
++        t_def = 'tvtk_base.true_bool_trait'
++        name = self._reform_name(vtk_attr_name)
++        vtk_set_meth = getattr(klass, 'Set' + vtk_attr_name)
++        self._write_trait(out, name, t_def, vtk_set_meth, mapped=True)
++
+     def _write_cylinder_source_lat_long_tessellation(
+         self, klass, out, vtk_attr_name
+     ):
+
+From 8d8a9ff96b6de99583e1ee2e861b4daec56d95dd Mon Sep 17 00:00:00 2001
+From: Prabhu Ramachandran <prabhu@aero.iitb.ac.in>
+Date: Thu, 19 Dec 2024 00:52:51 +0530
+Subject: [PATCH 3/3] More fixes to get builds working.
+
+---
+ mayavi/components/actor.py | 9 +--------
+ tvtk/wrapper_gen.py        | 4 ++--
+ 2 files changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/mayavi/components/actor.py b/mayavi/components/actor.py
+index 97bc0632..6fc43c8f 100644
+--- a/mayavi/components/actor.py
++++ b/mayavi/components/actor.py
+@@ -115,14 +115,7 @@ def update_data(self):
+         sends a `data_changed` event.
+         """
+         # Invoke render to update any changes.
+-        from mayavi.modules.outline import Outline
+-        from mayavi.components.glyph import Glyph
+-        #FIXME: A bad hack, but without these checks results in seg fault
+-        input = self.inputs[0]
+-        if isinstance(input, Outline) or isinstance(input, Glyph):
+-            self.mapper.update(0)
+-        else:
+-            self.mapper.update()
++        self.mapper.update()
+         self.render()
+ 
+     ######################################################################
+diff --git a/tvtk/wrapper_gen.py b/tvtk/wrapper_gen.py
+index 47cffa08..b9314e4e 100644
+--- a/tvtk/wrapper_gen.py
++++ b/tvtk/wrapper_gen.py
+@@ -54,7 +54,7 @@ def get_trait_def(value, **kwargs):
+     Example
+     -------
+     >>> get_trait_def([100., 200.], enter_set=True, auto_set=False)
+-    ('traits.Array', '', 'auto_set=False, enter_set=True, shape=(2,), dtype=float, value=[100.0, 200.0], cols=2')
++    ('traits.Array', '', 'auto_set=False, enter_set=True, shape=(None,), dtype=float, value=[100.0, 200.0], cols=2')
+     >>> get_trait_def(100, enter_set=True, auto_set=False)
+     ('traits.Int', '100', 'auto_set=False, enter_set=True')
+     >>> get_trait_def(u'something', enter_set=True, auto_set=False)
+@@ -80,7 +80,7 @@ def get_trait_def(value, **kwargs):
+         return 'traits.String', '{!r}'.format(value), kwargs_code
+ 
+     elif type_ in (tuple, list):
+-        shape = (len(value),)
++        shape = (None,)
+         dtypes = set(type(element) for element in value)
+         dtype = dtypes.pop().__name__ if len(dtypes) == 1 else None
+         if dtype == 'int' and sys.platform.startswith('win'):
