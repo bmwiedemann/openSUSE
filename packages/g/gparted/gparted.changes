@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 31 03:17:48 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 1.7.0:
+  * Recognise NBDs (Network Block Devices)
+  * Add support for Bcachefs (experimental), single device file 
+    systems only
+  * Prevent GParted probe starting LVM Volume Groups
+  * Increase minimum required version of libparted to 3.2
+  * Read exFAT file system usage from exfatprogs >= 1.2.3
+  * Add support for Bcachefs, single device file systems only
+
+-------------------------------------------------------------------
 Wed May 29 07:26:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop xdg-utils Requires: it's been since 2013 that we relied on

@@ -17,7 +17,7 @@
 
 
 Name:           gparted
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Gnome Partition Editor
 License:        GPL-2.0-only
@@ -42,7 +42,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.4.0
-BuildRequires:  pkgconfig(libparted) >= 2.2
+BuildRequires:  pkgconfig(libparted) >= 3.2
 BuildRequires:  pkgconfig(sigc++-2.0) >= 2.5.1
 Requires:       gpart
 Requires:       hdparm
@@ -53,13 +53,14 @@ Requires:       util-linux
 Recommends:     btrfsprogs >= 4.1
 Recommends:     cryptsetup
 Recommends:     e2fsprogs
-Recommends:     exfatprogs
+Recommends:     exfatprogs >= 1.2.3
 Recommends:     hfsutils
 Recommends:     jfsutils
 Recommends:     nilfs-utils
 Recommends:     ntfsprogs
 Recommends:     udftools
 Recommends:     xfsprogs
+Recommends:     bcachefs-tools
 Requires:     /usr/bin/pkexec
 %if !0%{?is_opensuse}
 BuildRequires:  translation-update-upstream
