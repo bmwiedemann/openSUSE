@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 24 05:31:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.003004
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  2.003004 2025-01-23
+
+  * Fix CPAN RT #150252 regarding bdiv() not modifying the invocand object when
+    upgrading/downgrading is enabled.
+
+  * Add hyperoperator method bhyperop(). This method implements succession,
+    addition, multiplication, exponentiation, tetration, pentation ...).
+
+-------------------------------------------------------------------
 Sun Jun 23 16:30:36 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 2.3.3 (2.003003)
