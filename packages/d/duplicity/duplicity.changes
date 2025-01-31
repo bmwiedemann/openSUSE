@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 30 22:51:29 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.3.2:
+  + Changes
+    - Improve round512 method docstring.
+  + Fix
+    - Concurrency without setting verbosity throws exception.
+    - Argument --max-blocksize: invalid round512 value.
+    - Fix handling of zero length files for older librsync versions.
+  + Changes in version 3.0.3:
+  + Changes
+    - Fix docs for --max-blocksize.
+    - Allow Python 3.13 to install.
+    - High memory usage when creating duplicity backup of a single
+      very large file.
+    - Fix problem with reading ".../progress" file after aborted.
+    - Turn off atom for py313.
+    - Only log if backend import failed.
+  + Fix
+    - Typo in max block size doc.
+    - Verbosity setting is broken with concurrency.
+
+-------------------------------------------------------------------
 Fri Aug 16 21:42:22 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.2:
