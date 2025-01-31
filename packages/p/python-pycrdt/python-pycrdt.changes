@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 30 16:54:41 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add pycrdt-pr227-trio0.28.patch gh#jupyter-server/pycrdt#227
+
+-------------------------------------------------------------------
+Wed Jan 29 15:32:57 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.7
+  * Add pycrdt.__version__.
+- Release to 0.10.7 through 0.12.6
+  * Upgrade yrs to v0.22.0
+  * Allow passing a Python timestamp function to an undo manager.
+  * Add TypedArray typed container.
+  * Add TypedDoc and TypedMap typed containers.
+  * Rearrange typing tests and docs.
+  * Drop Python v3.8.
+  * Support type annotations.
+  * Bump pyo3 to v0.23.3.
+  * Fix Array iterator.
+  * Add support for adding XmlFragments to arrays and maps (PR by
+    @ColonelThirtyTwo).
+
+-------------------------------------------------------------------
 Mon Nov  4 20:01:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.6
