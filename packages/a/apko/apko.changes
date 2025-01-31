@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jan 31 05:36:31 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.0:
+  * Allow passing in an http.RoundTripper (#1505)
+  * fix(apk/client): silence request logging (#1497)
+  * Return an if fetching index fails (#1495)
+  * Disallow '/' in key name (#1494)
+  * Revert "Disallow `/` in key names" (#1493)
+  * Disallow `/` in key names
+
+-------------------------------------------------------------------
+Thu Jan 23 06:07:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.0:
+  * fix multi key support in APKINDEX verification (#1490)
+
+-------------------------------------------------------------------
+Wed Jan 22 05:58:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.7:
+  * Guard against os-release panic (#1488)
+  * build(deps): bump actions/setup-go from 5.2.0 to 5.3.0 (#1487)
+  * build(deps): bump google.golang.org/api from 0.216.0 to 0.217.0
+    (#1480)
+  * build(deps): bump go.opentelemetry.io/otel from 1.33.0 to
+    1.34.0 (#1486)
+  * build(deps): bump k8s.io/apimachinery from 0.32.0 to 0.32.1
+    (#1482)
+  * build(deps): bump go.step.sm/crypto from 0.56.0 to 0.57.0
+    (#1479)
+  * build(deps): bump step-security/harden-runner from 2.10.3 to
+    2.10.4 (#1484)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.20.2 to 0.20.3 (#1481)
+  * build(deps): bump golangci/golangci-lint-action from 6.1.1 to
+    6.2.0 (#1483)
+  * Fix package name handling to retain version and strip ‘@’
+    suffix (#1472)
+  * build(deps): bump google.golang.org/api from 0.215.0 to 0.216.0
+    (#1473)
+  * build(deps): bump step-security/harden-runner from 2.10.2 to
+    2.10.3 (#1476)
+  * Improve error graph for failed solve (#1474)
+
+-------------------------------------------------------------------
 Thu Jan 09 06:40:49 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.6:
