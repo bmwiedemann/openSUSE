@@ -1,0 +1,121 @@
+From bbe277f55cd69de23cdd32d277cc30e837ef70b3 Mon Sep 17 00:00:00 2001
+From: Michael Howitz <icemac@gmx.net>
+Date: Thu, 30 Jan 2025 09:14:32 +0100
+Subject: [PATCH] Add tests for minimal dependencies.
+
+Add `copy` extra to include the `zope.copy` dependency.
+
+Fixes #5.
+---
+ .meta.toml                                | 16 +++++++++++++++-
+ CHANGES.rst                               |  3 +++
+ setup.py                                  | 17 ++++++++++++++---
+ src/zope/location/testing.py              | 10 ++++++++++
+ src/zope/location/tests/test_configure.py | 12 +++++++++++-
+ src/zope/location/tests/test_pickling.py  |  3 +++
+ tox.ini                                   | 10 ++++++++++
+ 7 files changed, 66 insertions(+), 5 deletions(-)
+ create mode 100644 src/zope/location/testing.py
+
+diff --git a/setup.py b/setup.py
+index c12779a..f5b72bd 100644
+--- a/setup.py
++++ b/setup.py
+@@ -37,8 +37,11 @@ def read(*rnames):
+     'zope.component >= 4.0.1',
+ ]
+ 
+-TESTS_REQUIRE = ZCML_REQUIRES + COMPONENT_REQUIRES + [
++COPY_REQUIRES = [
+     'zope.copy >= 4.0',
++]
++
++TESTS_REQUIRE = [
+     'zope.testrunner',
+ ]
+ 
+@@ -57,7 +60,7 @@ def read(*rnames):
+           + '\n\n' +
+           read('CHANGES.rst')
+       ),
+-      license='ZPL 2.1',
++      license='ZPL-2.1',
+       keywords=('zope location structural'),
+       classifiers=[
+           'Development Status :: 5 - Production/Stable',
+@@ -93,7 +96,15 @@ def read(*rnames):
+       extras_require={
+           'zcml': ZCML_REQUIRES,
+           'component': COMPONENT_REQUIRES,
+-          'test': TESTS_REQUIRE,
++          'copy': COPY_REQUIRES,
++          'test-minimal': TESTS_REQUIRE,
++          'test-component': TESTS_REQUIRE + COMPONENT_REQUIRES + ZCML_REQUIRES,
++          'test': (
++              TESTS_REQUIRE
++              + ZCML_REQUIRES
++              + COMPONENT_REQUIRES
++              + COPY_REQUIRES
++          ),
+           'docs': DOCS_REQUIRE,
+       },
+       include_package_data=True,
+diff --git a/src/zope/location/testing.py b/src/zope/location/testing.py
+new file mode 100644
+index 0000000..bf28b3f
+--- /dev/null
++++ b/src/zope/location/testing.py
+@@ -0,0 +1,10 @@
++import importlib
++import unittest
++
++
++def skipUnlessImportable(module: str):
++    try:
++        importlib.import_module(module)
++    except ModuleNotFoundError:  # pragma: no cover
++        return unittest.skip(f"{module!r} not importable")
++    return lambda func: func
+diff --git a/src/zope/location/tests/test_configure.py b/src/zope/location/tests/test_configure.py
+index 332faa5..5f1bf4f 100644
+--- a/src/zope/location/tests/test_configure.py
++++ b/src/zope/location/tests/test_configure.py
+@@ -15,12 +15,22 @@
+ """
+ import unittest
+ 
++from zope.location.testing import skipUnlessImportable
+ 
++
++@skipUnlessImportable('zope.component')
+ class Test_ZCML_loads(unittest.TestCase):
+ 
+     def test_it(self):
+         import zope.component  # no registrations made if not present
+-        ADAPTERS_REGISTERED = 4
++
++        try:
++            import zope.copy
++            ADAPTERS_REGISTERED = 4
++        except ModuleNotFoundError:  # pragma: no cover
++            ADAPTERS_REGISTERED = 3
++        else:
++            del zope.copy
+         from zope.configuration.xmlconfig import XMLConfig
+         from zope.configuration.xmlconfig import _clearContext
+         from zope.configuration.xmlconfig import _getContext
+diff --git a/src/zope/location/tests/test_pickling.py b/src/zope/location/tests/test_pickling.py
+index ddcc274..4c19709 100644
+--- a/src/zope/location/tests/test_pickling.py
++++ b/src/zope/location/tests/test_pickling.py
+@@ -13,7 +13,10 @@
+ ##############################################################################
+ import unittest
+ 
++from zope.location.testing import skipUnlessImportable
+ 
++
++@skipUnlessImportable('zope.copy')
+ class LocationCopyHookTests(unittest.TestCase):
+ 
+     def _getTargetClass(self):
