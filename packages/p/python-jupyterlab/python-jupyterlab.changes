@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 30 17:01:04 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.5
+  * Fix scrolling and selection restoration on undo/redo #17158
+    (@krassowski)
+  * Fix windowing crash due to out-of-bounds access #17238
+    (@krassowski)
+  * Increase color contrast of operators in code editor #17173
+    (@hxrshxz)
+  * Fix disabling Fuzzy Filtering in the File Browser #17214
+    (@Darshan808)
+  * Fix display of tooltip/title for terminal and kernel sessions
+    statusbar item #17220 (@MUFFANUJ)
+  * Fix for inconsistent tab closure in "Close All Tabs" operation
+    #17203 (@itsmevichu)
+  * Fix emission of lastCell from notebook run actions #17156
+    (@pawel99k)
+  * Fix "running" prompt state with server-side execution #17195
+    (@krassowski)
+  * Improve contrast for 'Add' button in Keyboard Shortcuts UI in
+    both dark and light theme #17153 (@hxrshxz)
+  * Ensure context menu closes when clicking outside it in the
+    minimap #17128 (@peytondmurray)
+  * Fix sanitizer call in ToC if html data is array of strings
+    #17114 (@martenrichter)
+  * Use bare string proxies parameter for httpx<0.28 #17113
+    (@AmberArr)
+  * Add missing bind(this) to NotebookAdapter's isReady function
+    #17109 (@martenrichter)
+
+-------------------------------------------------------------------
 Thu Jan 16 09:13:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.3.4

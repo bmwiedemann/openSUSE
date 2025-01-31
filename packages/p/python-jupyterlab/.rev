@@ -899,4 +899,38 @@
   * Restore bottom httpx version window #17041 (@bollwyvl)</comment>
     <requestid>1238192</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8dcc2d38a449e86ad2dd0c1c73e35304</srcmd5>
+    <version>4.3.5</version>
+    <time>1738335747</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.3.5
+  * Fix scrolling and selection restoration on undo/redo #17158
+    (@krassowski)
+  * Fix windowing crash due to out-of-bounds access #17238
+    (@krassowski)
+  * Increase color contrast of operators in code editor #17173
+    (@hxrshxz)
+  * Fix disabling Fuzzy Filtering in the File Browser #17214
+    (@Darshan808)
+  * Fix display of tooltip/title for terminal and kernel sessions
+    statusbar item #17220 (@MUFFANUJ)
+  * Fix for inconsistent tab closure in &quot;Close All Tabs&quot; operation
+    #17203 (@itsmevichu)
+  * Fix emission of lastCell from notebook run actions #17156
+    (@pawel99k)
+  * Fix &quot;running&quot; prompt state with server-side execution #17195
+    (@krassowski)
+  * Improve contrast for 'Add' button in Keyboard Shortcuts UI in
+    both dark and light theme #17153 (@hxrshxz)
+  * Ensure context menu closes when clicking outside it in the
+    minimap #17128 (@peytondmurray)
+  * Fix sanitizer call in ToC if html data is array of strings
+    #17114 (@martenrichter)
+  * Use bare string proxies parameter for httpx&lt;0.28 #17113
+    (@AmberArr)
+  * Add missing bind(this) to NotebookAdapter's isReady function
+    #17109 (@martenrichter)</comment>
+    <requestid>1241450</requestid>
+  </revision>
 </revisionlist>
