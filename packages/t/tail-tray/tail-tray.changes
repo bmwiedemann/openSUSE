@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan 31 05:43:01 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.9:
+  * Bump version to 0.2.9
+  * Fix #26 - Be able to toggle davfs dep via cmake and update
+    README (#29)
+
+-------------------------------------------------------------------
+Wed Jan 29 09:05:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.8:
+  * Bump version to 0.2.8 and prepare for new release
+  * remove permission set from cmake-multi-platform.yml
+  * Fix for #27 - BufferedProcessWrapper
+  * Quick workaround to make sure we don't read process output
+    until the process is flagged complete
+  * Tailscale data parsing - More cleanup and fixes
+  * Tailscale data parsing - Better value checking and handling
+  * Add extra Debug output for issue #27
+  * Remove permission definition for tagged release
+  * Make it writeable for pushing release tags
+  * Fix CodeQL scanner alerts for github jobs
+  * Add AUR package to getting started section
+  * README - Add sections for building on Windows
+  * Correctness - Make sure to run completed cleanup in dtor
+  * Windows - Don't use alternating row colors as it looks like ass
+    on Windows
+
+-------------------------------------------------------------------
 Fri Nov 29 23:29:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - set minimum version for various BuildRequires

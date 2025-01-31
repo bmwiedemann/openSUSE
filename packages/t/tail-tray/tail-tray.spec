@@ -1,7 +1,7 @@
 #
 # spec file for package tail-tray
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           tail-tray
-Version:        0.2.7
+Version:        0.2.9
 Release:        0
 Summary:        Tailscale tray menu and UI for the KDE Plasma Desktop
 License:        GPL-3.0-only
 URL:            https://github.com/SneWs/tail-tray
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  clang
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.21
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc14-c++
 %else
@@ -34,8 +34,8 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6Core) >= 6.7
 BuildRequires:  cmake(Qt6Linguist) >= 6.7
 BuildRequires:  cmake(Qt6Network) >= 6.7
-BuildRequires:  cmake(Qt6Widgets) >= 6.7
 BuildRequires:  cmake(Qt6Tools) >= 6.7
+BuildRequires:  cmake(Qt6Widgets) >= 6.7
 BuildRequires:  pkgconfig(openssl)
 Requires:       tailscale
 Suggests:       davfs2
