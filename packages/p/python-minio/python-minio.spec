@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-minio
-Version:        7.2.14
+Version:        7.2.15
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0

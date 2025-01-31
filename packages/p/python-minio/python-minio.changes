@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:06:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 7.2.15:
+  - MinioAdmin: conditionally decrypt response in
+    {attach,detach}_policy APIs by @balamurugana in #1472
+  - xml: prepend namespace for each path in findall() by
+    @balamurugana in #1476
+  - Fix ExcludedPrefixes in set/get bucket versioning config by
+    @vadmeste in #1475
+
+   Full Changelog: 7.2.14...7.2.15
+
+-------------------------------------------------------------------
 Wed Jan  8 15:02:42 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 7.2.14:
