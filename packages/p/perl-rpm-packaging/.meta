@@ -1,0 +1,6 @@
+<package name="perl-rpm-packaging" project="openSUSE:Factory">
+  <title>RPM dependency generator for Perl</title>
+  <description>Tools for packaging Perl projects with rpm</description>
+  <devel project="Base:System" package="perl-rpm-packaging"/>
+  <url>https://github.com/rpm-software-management/perl-rpm-packaging</url>
+</package>

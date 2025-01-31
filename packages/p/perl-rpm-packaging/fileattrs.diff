@@ -1,0 +1,18 @@
+--- fileattrs/perl.attr.orig	2023-09-19 10:10:10.000000000 +0000
++++ fileattrs/perl.attr	2023-10-09 12:58:36.893003334 +0000
+@@ -1,3 +1,4 @@
+-%__perl_requires	%{_rpmconfigdir}/perl.req
++# disabled for now
++#%__perl_requires	%{_rpmconfigdir}/perl.req
+ %__perl_magic		^.*[Pp]erl .*$
+ %__perl_flags		exeonly
+--- fileattrs/perllib.attr.orig	2023-09-19 10:10:10.000000000 +0000
++++ fileattrs/perllib.attr	2023-10-09 12:58:36.893003334 +0000
+@@ -1,5 +1,6 @@
+ %__perllib_provides	%{_rpmconfigdir}/perl.prov
+-%__perllib_requires	%{_rpmconfigdir}/perl.req
++#disabled for now
++#%__perllib_requires	%{_rpmconfigdir}/perl.req
+ %__perllib_magic	^Perl[[:digit:]] module source.*
+ %__perllib_path		\\.pm$
+ %__perllib_flags	magic_and_path
