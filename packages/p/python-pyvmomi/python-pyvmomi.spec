@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvmomi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module testtools >= 0.9.34}
-BuildRequires:  %{python_module tox}
 BuildRequires:  %{python_module vcrpy}
 # /SECTION
 Requires:       python-requests >= 2.3.0

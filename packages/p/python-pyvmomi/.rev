@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>1201616</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7d02bf0700e73809f2756570c6cdcf85</srcmd5>
+    <version>8.0.3.0.1</version>
+    <time>1738335904</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed BuildRequires tox</comment>
+    <requestid>1241609</requestid>
+  </revision>
 </revisionlist>
