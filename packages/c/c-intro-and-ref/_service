@@ -1,0 +1,18 @@
+<!-- -*- xml -*- -->
+<services>
+  <service name="obs_scm" mode="manual">
+	<param name="versionformat">%cd.@TAG_OFFSET@.%h</param>
+    <!-- There's no tag in this repository use the first commit
+         value for the start of the counter. -->
+    <param name="parent-tag">22160549245bb3d1358a48136ae0b8e02db3a5fa</param>
+	<param name="url">https://git.savannah.gnu.org/git/c-intro-and-ref.git</param>
+	<param name="scm">git</param>
+    <param name="revision">trunk</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
