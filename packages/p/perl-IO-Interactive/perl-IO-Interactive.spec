@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Interactive
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,22 @@
 
 %define cpan_name IO-Interactive
 Name:           perl-IO-Interactive
-Version:        1.025
+Version:        1.26.0
 Release:        0
+# 1.026 -> normalize -> 1.26.0
+%define cpan_version 1.026
 License:        Artistic-2.0
 Summary:        Utilities for interactive I/O
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
+Provides:       perl(IO::Interactive) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -99,7 +103,7 @@ A 'busy' block is therefore useful to prevent attempts at input when the
 program is busy at some non-interactive task.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -114,7 +118,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples
+%doc Changes examples SECURITY.md
 %license LICENSE
 
 %changelog
