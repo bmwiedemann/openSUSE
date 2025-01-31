@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 31 05:40:19 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.7:
+  * update the release with bug fix (#602)
+  * fixed the default target in makefile (#601)
+  * v0.1.7 release (#599)
+  * Add disable environment override option. (#594)
+  * Adding an option to disable instance discovery in
+    AcquirePoPTokenConfidential (#595)
+  * Shell completion enhancements (#586)
+  * default codeql does not allow uploading 3rd party scanning
+    result (#591)
+  * use bingo to manage golangci-lint (#590)
+  * Fix install link for golangci-lint (#585)
+  * Update website.yaml (#589)
+  * address codeql issues (#588)
+  * Improve shell completion for convert-config (#582)
+  * chore: bump golang.org/x/net to v0.33.0 to mitigate
+    CVE-2024-45338 (#584)
+
+-------------------------------------------------------------------
 Wed Jan 15 17:51:26 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Enable CGO because of failed s390x build based on disabled CGO
