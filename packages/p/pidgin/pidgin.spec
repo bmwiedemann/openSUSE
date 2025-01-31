@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 %define _name   Pidgin
 %define sover   0
 Name:           pidgin
-Version:        2.14.13
+Version:        2.14.14
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
 URL:            https://pidgin.im/
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2.asc
-Source2:        pidgin.keyring
-Source3:        pidgin-prefs.xml
+Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x40de1dc7288fe3f50ab938c548f66affd9bdb729#/%{name}.keyring
+Source3:        %{name}-prefs.xml
 # PATCH-FIX-OPENSUSE pidgin-nonblock-common.patch
 Patch0:         pidgin-nonblock-common.patch
 # PATCH-FIX-OPENSUSE pidgin-nonblock-gwim.patch

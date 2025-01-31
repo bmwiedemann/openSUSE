@@ -1117,4 +1117,26 @@
     <comment></comment>
     <requestid>1188827</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>165cb165f23979fe1f78b392ac373f40</srcmd5>
+    <version>2.14.14</version>
+    <time>1738335905</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.14:
+  * Update the date in COPYRIGHT as it was a few years behind
+  * Add convey plans for Debian Trixie and Fedora 40
+  * Fix incompatible pointer types for GtkItemFactoryCallbacks on gcc-14
+  * Update the build image for the docs
+  * Fix type mismatch with IOKit usage
+  * Use the result of g_string_free(..., FALSE)
+  * NSS: Load intermediate certificates from the server
+  * Finally add proper support for italics on IRC
+  * Fix some type conversion errors
+  * Use raw strings for Python regular expressions
+  * zephyr: Modernize K&amp;R function prototypes
+  * Fix invalid prototypes that will break with C23
+  * Add the ability to run a custom command for signing the binaries
+- attach a URL to the keyring (forwarded request 1241657 from rrahl0)</comment>
+    <requestid>1241658</requestid>
+  </revision>
 </revisionlist>

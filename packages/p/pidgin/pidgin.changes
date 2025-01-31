@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 31 14:05:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.14.14:
+  * Update the date in COPYRIGHT as it was a few years behind
+  * Add convey plans for Debian Trixie and Fedora 40
+  * Fix incompatible pointer types for GtkItemFactoryCallbacks on gcc-14
+  * Update the build image for the docs
+  * Fix type mismatch with IOKit usage
+  * Use the result of g_string_free(..., FALSE)
+  * NSS: Load intermediate certificates from the server
+  * Finally add proper support for italics on IRC
+  * Fix some type conversion errors
+  * Use raw strings for Python regular expressions
+  * zephyr: Modernize K&R function prototypes
+  * Fix invalid prototypes that will break with C23
+  * Add the ability to run a custom command for signing the binaries
+- attach a URL to the keyring
+
+-------------------------------------------------------------------
 Wed Jul 10 14:33:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.14.13:
