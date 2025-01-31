@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan 30 17:25:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Backwards compatible fix for supporting glib-macros >= 0.20.3
+    (#278 Fails to build with newer glib-macros)
+  + Libadwaita dep relaxed from >=1.6.beta to >=1.6
+  + Requirement for cargo-fmt dropped for build type release
+  + Fix libview header paths
+  + Disable validate URL availability of appstream metadata (no
+    net)
+  + Other bugs fixed in main and picked for 47.2:
+    - Crash with documents dragged and dropped onto Papers
+    - Crash clicking "Expand all under this element"
+    - Text marker in page number entry disappearing
+    - Excessive zooming with continously scrolling mice
+    - Text selection does not copy content for middle mouse button
+    - Miscalculated pointer location
+    - Fetching attachments leaked memory
+    - Potential crash due to race condition in search context and
+      attachment context
+    - Critical on close due to ongoing timeout while scrolling
+    - Annotation windows erroneously made transparent based on
+      annotation's opacity
+    - Help window not shown inside Flatpak's sandbox
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Oct 13 18:15:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add papers-plugin-pdfdocument Recommends: Ensure that at least

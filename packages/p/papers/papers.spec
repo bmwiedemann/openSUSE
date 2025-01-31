@@ -1,7 +1,7 @@
 #
 # spec file for package papers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define plugin_ver 5
 %define appid org.gnome.Papers
 Name:           papers
-Version:        47.0
+Version:        47.3
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later

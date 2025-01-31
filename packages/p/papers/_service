@@ -6,7 +6,7 @@
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="scm">git</param>
-    <param name="revision">47.0</param>
+    <param name="revision">47.3</param>
 <!--    <param name="changesgenerate">enable</param> -->
   </service>
   <service mode="buildtime" name="tar" />
