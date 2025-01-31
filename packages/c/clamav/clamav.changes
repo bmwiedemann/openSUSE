@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 23 17:33:09 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Drop the version dependency on libcurl. Building against versions
+  older than 7.45 does not fail anymore, but disables support for
+  fdpassing in clamonacc. This only affects SLE-12 up to SP3.
+
+-------------------------------------------------------------------
+Wed Jan 22 17:50:49 UTC 2025 - Reinhard Max <max@suse.com>
+
+- New version 1.4.2:
+  * CVE-2025-20128, bsc#1236307: Fixed a possible buffer overflow
+    read bug in the OLE2 file parser that could cause a
+    denial-of-service (DoS) condition.  
+
+-------------------------------------------------------------------
 Fri Jan 10 13:00:11 UTC 2025 - Reinhard Max <max@suse.com>
 
 - bsc#1232242: Start clamonacc with --fdpass to avoid errors due to
@@ -197,12 +212,13 @@ Wed Feb 15 17:26:43 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
     and earlier, 0.105.1 and earlier, and 0.103.7 and earlier.
     (bsc#1208365)
   * Update vendored libmspack library to version 0.11alpha.
+    (bsc#1103032: CVE-2018-14679)
 - Package huge .html documentation in a separate subpackage.
 
 -------------------------------------------------------------------
 Fri Aug  5 06:42:21 UTC 2022 - ecsos <ecsos@opensuse.org>
 
-- Update to 0.103.7
+- Update to 0.103.7 (bsc#1202986)
   - Zip parser: tolerate 2-byte overlap in file entries
   - Fix bug with logical signature Intermediates feature
   - Update to UnRAR v6.1.7
@@ -255,7 +271,7 @@ Wed Jan 12 21:04:58 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
   * CVE-2022-20698: Fix for invalid pointer read that may cause a crash.
     This issue affects 0.104.1, 0.103.4 and prior when ClamAV is compiled
     with libjson-c and the CL_SCAN_GENERAL_COLLECT_METADATA scan option
-    (the clamscan --gen-json option) is enabled.
+    (the clamscan --gen-json option) is enabled. (bsc#1194731)
   * Fixed ability to disable the file size limit with libclamav C API,
     like this:
 
@@ -522,7 +538,7 @@ Thu Jul 16 20:02:03 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
     to trick clamscan, clamdscan, or clamonacc into removing or moving
     a different file (eg. a critical system file). The issue would
     affect users that use the --move or --remove options for clamscan,
-    clamdscan, and clamonacc.
+    clamdscan, and clamonacc. (bsc#1174255)
   * CVE-2020-3327: Fix a vulnerability in the ARJ archive parsing
     module in ClamAV 0.102.3 that could cause a Denial-of-Service
     (DoS) condition. Improper bounds checking results in an
@@ -535,7 +551,7 @@ Thu Jul 16 20:02:03 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
     NULL pointer dereference. This vulnerability is mitigated for
     those using the official ClamAV signature databases because the
     file type signatures in daily.cvd will not enable the EGG archive
-    parser in versions affected by the vulnerability.
+    parser in versions affected by the vulnerability. (bsc#1174250)
 
 -------------------------------------------------------------------
 Tue May 12 17:31:15 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
@@ -549,7 +565,7 @@ Tue May 12 17:31:15 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
     ClamAV 0.101 - 0.102.2 that could cause a Denial-of-Service (DoS)
     condition. Improper size checking of a buffer used to initialize AES
     decryption routines results in an out-of-bounds read which may cause
-    a crash.
+    a crash. (bsc#1171981)
   * Fix "Attempt to allocate 0 bytes" error when parsing some PDF
     documents.
   * Fix a couple of minor memory leaks.
@@ -830,11 +846,11 @@ Thu Apr 26 15:35:15 UTC 2018 - max@suse.com
 Wed Mar  7 13:15:11 UTC 2018 - max@suse.com
 
 - Update to security release 0.99.4 (bsc#1083915):
-  * CVE-2012-6706
-  * CVE-2017-6419
-  * CVE-2017-11423
+  * CVE-2012-6706 (bsc#1045315)
+  * CVE-2017-6419 (bsc#1052449)
+  * CVE-2017-11423 (bsc#1049423)
   * CVE-2018-1000085 (bsc#1082858)
-  * CVE-2018-0202
+  * CVE-2018-0202 (bsc#1083915)
 - Obsolete patches:
   * clamav-CVE-2012-6706.patch
   * clamav-gcc47.patch
@@ -998,7 +1014,7 @@ Fri Jun 17 10:07:51 UTC 2016 - martin.liska@suse.com
 -------------------------------------------------------------------
 Thu Mar  3 11:30:10 UTC 2016 - ecsos@opensuse.org
 
-- Update to version 0.99.1
+- Update to version 0.99.1 (bsc#969814)
  * hwp5.x: fix for streams without names
  * libclamav: yara: avoid unaliged access to 64bit variable
  * patch by Mark Allan to add show-progress option to freshclam.
@@ -1181,6 +1197,7 @@ Wed Nov 19 14:54:58 UTC 2014 - max@suse.com
   * Resolution of many of the warning messages from ClamAV
     compilation.
   * Improved detection of malicious PE files.
+    (bnc#906770, CVE-2014-9050)
   * Security fix for ClamAV crash when using 'clamscan -a'.
   * Security fix for ClamAV crash when scanning maliciously
     crafted yoda's crypter files (bnc#906077, CVE-2013-6497).

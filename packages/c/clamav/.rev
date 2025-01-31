@@ -1258,4 +1258,38 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1238512</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>170d8e904b19e5745183406f5a2162e9</srcmd5>
+    <version>1.4.2</version>
+    <time>1737651780</time>
+    <user>anag+factory</user>
+    <comment>Add missing bug and CVE references
+
+- New version 1.4.2:
+  * CVE-2025-20128, bsc#1236307: Fixed a possible buffer overflow
+    read bug in the OLE2 file parser that could cause a
+    denial-of-service (DoS) condition.  
+
+    (bsc#1103032: CVE-2018-14679)
+- Update to 0.103.7 (bsc#1202986)
+    (the clamscan --gen-json option) is enabled. (bsc#1194731)
+    clamdscan, and clamonacc. (bsc#1174255)
+    parser in versions affected by the vulnerability. (bsc#1174250)
+    a crash. (bsc#1171981)
+  * CVE-2012-6706 (bsc#1045315)
+  * CVE-2017-6419 (bsc#1052449)
+  * CVE-2017-11423 (bsc#1049423)
+  * CVE-2018-0202 (bsc#1083915)
+- Update to version 0.99.1 (bsc#969814)
+    (bnc#906770, CVE-2014-9050)</comment>
+    <requestid>1239891</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>3528a284a6a9110544b299ab6bb68e27</srcmd5>
+    <version>1.4.2</version>
+    <time>1738335895</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1241514</requestid>
+  </revision>
 </revisionlist>

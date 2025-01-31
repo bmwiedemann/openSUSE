@@ -33,7 +33,7 @@
 %global confdir %_prefix%_sysconfdir
 
 Name:           clamav
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -74,7 +74,7 @@ BuildRequires:  sendmail-devel
 BuildRequires:  systemd
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(libcurl) >= 7.45
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.30
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ncurses)
