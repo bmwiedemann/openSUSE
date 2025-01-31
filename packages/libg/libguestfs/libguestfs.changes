@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:29:58 MST 2025 - carnold@suse.com
+
+- Update to version 1.55.3 (jsc#PED-8910)
+  * build: Move baseline OCaml to 4.08
+  * Various translation updates
+
+-------------------------------------------------------------------
 Fri Jan  3 14:09:24 MST 2025 - carnold@suse.com
 
 - Update to version 1.55.2 (jsc#PED-8910)

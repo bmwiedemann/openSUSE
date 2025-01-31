@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.55.2
+Version:        1.55.3
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -50,7 +50,7 @@ BuildRequires:  po4a
 BuildRequires:  readline-devel
 BuildRequires:  supermin >= 5.1.18
 BuildRequires:  zstd
-BuildRequires:  ocaml(ocaml_base_version) >= 4.07
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  perl(Locale::TextDomain)
