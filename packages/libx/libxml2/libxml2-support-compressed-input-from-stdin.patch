@@ -1,0 +1,363 @@
+From 6208f86edd59e31a51a8d9b300d428504adb25a7 Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Tue, 28 Jan 2025 20:13:58 +0100
+Subject: [PATCH] xmllint: Support compressed input from stdin
+
+Another regression related to reading from stdin.
+
+Making a "-" filename read from stdin was deeply baked into the core
+IO code but is inherently insecure. I really want to reenable this
+dangerous feature as sparingly as possible.
+
+Add a new hidden parser option to make xmllint work. This will likely
+turn into a public option that must be opted in later.
+
+Allow compressed stdin in xmlReadFile to support xmlstarlet and older
+versions of xsltproc. So far, these are the only known command-line
+tools that rely on "-" meaning stdin.
+---
+ include/private/io.h     |   3 +
+ include/private/parser.h |   4 +
+ parser.c                 |   9 ++-
+ parserInternals.c        |   9 ++-
+ xmlIO.c                  | 160 +++++++++++++++++++++++----------------
+ xmllint.c                |   9 ++-
+ 6 files changed, 121 insertions(+), 73 deletions(-)
+
+diff --git a/include/private/io.h b/include/private/io.h
+index a2535ae19..d116fadaa 100644
+--- a/include/private/io.h
++++ b/include/private/io.h
+@@ -24,6 +24,9 @@ XML_HIDDEN xmlParserInputBufferPtr
+ xmlNewInputBufferMemory(const void *mem, size_t size, int flags,
+                         xmlCharEncoding enc);
+ 
++XML_HIDDEN int
++xmlInputFromFd(xmlParserInputBufferPtr buf, int fd, int unzip);
++
+ #ifdef LIBXML_OUTPUT_ENABLED
+ XML_HIDDEN xmlOutputBufferPtr
+ xmlAllocOutputBufferInternal(xmlCharEncodingHandlerPtr encoder);
+diff --git a/include/private/parser.h b/include/private/parser.h
+index b14bebf91..4a8004207 100644
+--- a/include/private/parser.h
++++ b/include/private/parser.h
+@@ -90,6 +90,10 @@ xmlParserNsLookupSax(xmlParserCtxtPtr ctxt, const xmlChar *prefix);
+ 
+ #define XML_INPUT_BUF_STATIC		(1u << 1)
+ #define XML_INPUT_BUF_ZERO_TERMINATED	(1u << 2)
++#define XML_INPUT_UNZIP			(1u << 3)
++
++/* Internal parser option */
++#define XML_PARSE_UNZIP     (1 << 24)
+ 
+ XML_HIDDEN xmlParserInputPtr
+ xmlNewInputURL(xmlParserCtxtPtr ctxt, const char *url, const char *publicId,
+diff --git a/parser.c b/parser.c
+index 52ca35652..44467355a 100644
+--- a/parser.c
++++ b/parser.c
+@@ -13890,7 +13890,8 @@ xmlReadFile(const char *filename, const char *encoding, int options)
+      * should be removed at some point.
+      */
+     if ((filename != NULL) && (filename[0] == '-') && (filename[1] == 0))
+-        input = xmlNewInputFd(ctxt, filename, STDIN_FILENO, encoding, 0);
++        input = xmlNewInputFd(ctxt, filename, STDIN_FILENO, encoding,
++                              XML_INPUT_UNZIP);
+     else
+         input = xmlNewInputURL(ctxt, filename, NULL, encoding, 0);
+ 
+@@ -14141,6 +14142,7 @@ xmlCtxtReadFd(xmlParserCtxtPtr ctxt, int fd,
+               const char *URL, const char *encoding, int options)
+ {
+     xmlParserInputPtr input;
++    int inputFlags;
+ 
+     if (ctxt == NULL)
+         return(NULL);
+@@ -14148,7 +14150,10 @@ xmlCtxtReadFd(xmlParserCtxtPtr ctxt, int fd,
+     xmlCtxtReset(ctxt);
+     xmlCtxtUseOptions(ctxt, options);
+ 
+-    input = xmlNewInputFd(ctxt, URL, fd, encoding, 0);
++    inputFlags = 0;
++    if (options & XML_PARSE_UNZIP)
++        inputFlags |= XML_INPUT_UNZIP;
++    input = xmlNewInputFd(ctxt, URL, fd, encoding, inputFlags);
+ 
+     return(xmlCtxtParseDocument(ctxt, input));
+ }
+diff --git a/parserInternals.c b/parserInternals.c
+index 6ddd28e78..c9afe21d1 100644
+--- a/parserInternals.c
++++ b/parserInternals.c
+@@ -1715,18 +1715,23 @@ xmlNewInputString(xmlParserCtxtPtr ctxt, const char *url,
+  */
+ xmlParserInputPtr
+ xmlNewInputFd(xmlParserCtxtPtr ctxt, const char *url,
+-              int fd, const char *encoding, int flags ATTRIBUTE_UNUSED) {
++              int fd, const char *encoding, int flags) {
+     xmlParserInputBufferPtr buf;
+ 
+     if ((ctxt == NULL) || (fd < 0))
+ 	return(NULL);
+ 
+-    buf = xmlParserInputBufferCreateFd(fd, XML_CHAR_ENCODING_NONE);
++    buf = xmlAllocParserInputBuffer(XML_CHAR_ENCODING_NONE);
+     if (buf == NULL) {
+ 	xmlCtxtErrMemory(ctxt);
+         return(NULL);
+     }
+ 
++    if (xmlInputFromFd(buf, fd, (flags & XML_INPUT_UNZIP) != 0) < 0) {
++        xmlFreeParserInputBuffer(buf);
++        return(NULL);
++    }
++
+     return(xmlNewInputInternal(ctxt, buf, url, encoding));
+ }
+ 
+diff --git a/xmlIO.c b/xmlIO.c
+index 746cb3e26..a758caa32 100644
+--- a/xmlIO.c
++++ b/xmlIO.c
+@@ -1158,65 +1158,36 @@ xmlIODefaultMatch(const char *filename ATTRIBUTE_UNUSED) {
+     return(1);
+ }
+ 
+-/**
+- * xmlInputDefaultOpen:
+- * @buf:  input buffer to be filled
+- * @filename:  filename or URI
+- *
+- * Returns an xmlParserErrors code.
+- */
+-static int
+-xmlInputDefaultOpen(xmlParserInputBufferPtr buf, const char *filename) {
+-    int ret;
+-    int fd;
+-
+-#ifdef LIBXML_FTP_ENABLED
+-    if (xmlIOFTPMatch(filename)) {
+-        buf->context = xmlIOFTPOpen(filename);
+-
+-        if (buf->context != NULL) {
+-            buf->readcallback = xmlIOFTPRead;
+-            buf->closecallback = xmlIOFTPClose;
+-            return(XML_ERR_OK);
+-        }
+-    }
+-#endif /* LIBXML_FTP_ENABLED */
+-
+-#ifdef LIBXML_HTTP_ENABLED
+-    if (xmlIOHTTPMatch(filename)) {
+-        buf->context = xmlIOHTTPOpen(filename);
+-
+-        if (buf->context != NULL) {
+-            buf->readcallback = xmlIOHTTPRead;
+-            buf->closecallback = xmlIOHTTPClose;
+-            return(XML_ERR_OK);
+-        }
+-    }
+-#endif /* LIBXML_HTTP_ENABLED */
++int
++xmlInputFromFd(xmlParserInputBufferPtr buf, int fd, int unzip) {
++    int copy;
+ 
+-    if (!xmlFileMatch(filename))
+-        return(XML_IO_ENOENT);
++    (void) unzip;
+ 
+ #ifdef LIBXML_LZMA_ENABLED
+-    {
++    if (unzip) {
+         xzFile xzStream;
++        off_t pos;
+ 
+-        ret = xmlFdOpen(filename, 0, &fd);
+-        if (ret != XML_ERR_OK)
+-            return(ret);
++        pos = lseek(fd, 0, SEEK_CUR);
+ 
+-        xzStream = __libxml2_xzdopen(filename, fd, "rb");
++        copy = dup(fd);
++        if (copy == -1)
++            return(xmlIOErr(0, "dup()"));
++
++        xzStream = __libxml2_xzdopen("?", copy, "rb");
+ 
+         if (xzStream == NULL) {
+-            close(fd);
++            close(copy);
+         } else {
+-            /*
+-             * Non-regular files like pipes can't be reopened.
+-             * If a file isn't seekable, we pipe uncompressed
+-             * input through xzlib.
+-             */
+-            if ((lseek(fd, 0, SEEK_CUR) < 0) ||
+-                (__libxml2_xzcompressed(xzStream) > 0)) {
++            if ((__libxml2_xzcompressed(xzStream) > 0) ||
++                /* Try to rewind if not gzip compressed */
++                (pos < 0) ||
++                (lseek(fd, pos, SEEK_SET) < 0)) {
++                /*
++                 * If a file isn't seekable, we pipe uncompressed
++                 * input through xzlib.
++                 */
+                 buf->context = xzStream;
+                 buf->readcallback = xmlXzfileRead;
+                 buf->closecallback = xmlXzfileClose;
+@@ -1231,25 +1202,29 @@ xmlInputDefaultOpen(xmlParserInputBufferPtr buf, const char *filename) {
+ #endif /* LIBXML_LZMA_ENABLED */
+ 
+ #ifdef LIBXML_ZLIB_ENABLED
+-    {
++    if (unzip) {
+         gzFile gzStream;
++        off_t pos;
+ 
+-        ret = xmlFdOpen(filename, 0, &fd);
+-        if (ret != XML_ERR_OK)
+-            return(ret);
++        pos = lseek(fd, 0, SEEK_CUR);
++
++        copy = dup(fd);
++        if (copy == -1)
++            return(xmlIOErr(0, "dup()"));
+ 
+-        gzStream = gzdopen(fd, "rb");
++        gzStream = gzdopen(copy, "rb");
+ 
+         if (gzStream == NULL) {
+-            close(fd);
++            close(copy);
+         } else {
+-            /*
+-             * Non-regular files like pipes can't be reopened.
+-             * If a file isn't seekable, we pipe uncompressed
+-             * input through zlib.
+-             */
+-            if ((lseek(fd, 0, SEEK_CUR) < 0) ||
+-                (gzdirect(gzStream) == 0)) {
++            if ((gzdirect(gzStream) == 0) ||
++                /* Try to rewind if not gzip compressed */
++                (pos < 0) ||
++                (lseek(fd, pos, SEEK_SET) < 0)) {
++                /*
++                 * If a file isn't seekable, we pipe uncompressed
++                 * input through zlib.
++                 */
+                 buf->context = gzStream;
+                 buf->readcallback = xmlGzfileRead;
+                 buf->closecallback = xmlGzfileClose;
+@@ -1263,16 +1238,67 @@ xmlInputDefaultOpen(xmlParserInputBufferPtr buf, const char *filename) {
+     }
+ #endif /* LIBXML_ZLIB_ENABLED */
+ 
+-    ret = xmlFdOpen(filename, 0, &fd);
+-    if (ret != XML_ERR_OK)
+-        return(ret);
++    copy = dup(fd);
++    if (copy == -1)
++        return(xmlIOErr(0, "dup()"));
+ 
+-    buf->context = (void *) (ptrdiff_t) fd;
++    buf->context = (void *) (ptrdiff_t) copy;
+     buf->readcallback = xmlFdRead;
+     buf->closecallback = xmlFdClose;
++
+     return(XML_ERR_OK);
+ }
+ 
++/**
++ * xmlInputDefaultOpen:
++ * @buf:  input buffer to be filled
++ * @filename:  filename or URI
++ *
++ * Returns an xmlParserErrors code.
++ */
++static int
++xmlInputDefaultOpen(xmlParserInputBufferPtr buf, const char *filename) {
++    int ret;
++    int fd;
++
++#ifdef LIBXML_FTP_ENABLED
++    if (xmlIOFTPMatch(filename)) {
++        buf->context = xmlIOFTPOpen(filename);
++
++        if (buf->context != NULL) {
++            buf->readcallback = xmlIOFTPRead;
++            buf->closecallback = xmlIOFTPClose;
++            return(XML_ERR_OK);
++        }
++    }
++#endif /* LIBXML_FTP_ENABLED */
++
++#ifdef LIBXML_HTTP_ENABLED
++    if (xmlIOHTTPMatch(filename)) {
++        buf->context = xmlIOHTTPOpen(filename);
++
++        if (buf->context != NULL) {
++            buf->readcallback = xmlIOHTTPRead;
++            buf->closecallback = xmlIOHTTPClose;
++            return(XML_ERR_OK);
++        }
++    }
++#endif /* LIBXML_HTTP_ENABLED */
++
++    if (!xmlFileMatch(filename))
++        return(XML_IO_ENOENT);
++
++    ret = xmlFdOpen(filename, 0, &fd);
++    if (ret != XML_ERR_OK)
++        return(ret);
++
++    ret = xmlInputFromFd(buf, fd, /* unzip */ 1);
++
++    close(fd);
++
++    return(ret);
++}
++
+ #ifdef LIBXML_OUTPUT_ENABLED
+ /**
+  * xmlOutputDefaultOpen:
+diff --git a/xmllint.c b/xmllint.c
+index 3a7a8a002..c62734776 100644
+--- a/xmllint.c
++++ b/xmllint.c
+@@ -95,6 +95,9 @@
+   #define STDIN_FILENO 0
+ #endif
+ 
++/* Internal parser option */
++#define XML_PARSE_UNZIP     (1 << 24)
++
+ typedef enum {
+     XMLLINT_RETURN_OK = 0,	    /* No error */
+     XMLLINT_ERR_UNCLASS = 1,	    /* Unclassified */
+@@ -1648,7 +1651,8 @@ testSAX(const char *filename) {
+             xmlCtxtSetMaxAmplification(ctxt, maxAmpl);
+ 
+         if (strcmp(filename, "-") == 0)
+-            xmlCtxtReadFd(ctxt, STDIN_FILENO, "-", NULL, options);
++            xmlCtxtReadFd(ctxt, STDIN_FILENO, "-", NULL,
++                          options | XML_PARSE_UNZIP);
+         else
+             xmlCtxtReadFile(ctxt, filename, NULL, options);
+ 
+@@ -2333,7 +2337,8 @@ parseFile(const char *filename, xmlParserCtxtPtr rectxt) {
+ #endif
+         } else {
+             if (strcmp(filename, "-") == 0)
+-                doc = xmlCtxtReadFd(ctxt, STDIN_FILENO, "-", NULL, options);
++                doc = xmlCtxtReadFd(ctxt, STDIN_FILENO, "-", NULL,
++                                    options | XML_PARSE_UNZIP);
+             else
+                 doc = xmlCtxtReadFile(ctxt, filename, NULL, options);
+         }
+-- 
+GitLab
+
+
