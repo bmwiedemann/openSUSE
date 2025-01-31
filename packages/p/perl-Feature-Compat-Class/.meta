@@ -1,0 +1,10 @@
+<package name="perl-Feature-Compat-Class" project="openSUSE:Factory">
+  <title>make class syntax available</title>
+  <description>This module provides the new class keyword and related others (method, field and ADJUST) in a forward-compatible way.
+
+Perl added such syntax at version 5.38.0, which is enabled by
+
+    use feature 'class';</description>
+  <devel project="devel:languages:perl" package="perl-Feature-Compat-Class"/>
+  <url>https://metacpan.org/dist/Feature-Compat-Class</url>
+</package>
