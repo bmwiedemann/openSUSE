@@ -1,0 +1,27 @@
+From e5f4a3bb82eb64081af16c49d68260233c55396c Mon Sep 17 00:00:00 2001
+From: Gabriel Krisman Bertazi <krisman@suse.de>
+Date: Mon, 27 Jan 2025 16:08:22 -0500
+Subject: [PATCH] tuned/consts: Fix grub.cfg path in SLE
+
+Out of tree patch.  Tuned hardcodes the grub.cfg path to a Red
+Hat-specific symlink.  Replace it with the direct /boot path.
+---
+ tuned/consts.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tuned/consts.py b/tuned/consts.py
+index 4606aee..63ca10f 100644
+--- a/tuned/consts.py
++++ b/tuned/consts.py
+@@ -31,7 +31,7 @@ ERROR_THRESHOLD = 3
+ 
+ # bootloader plugin configuration
+ BOOT_DIR = "/boot"
+-GRUB2_CFG_FILES = ["/etc/grub2.cfg", "/etc/grub2-efi.cfg"]
++GRUB2_CFG_FILES = ["/boot/grub2/grub.cfg", "/etc/grub2-efi.cfg", ]
+ GRUB2_CFG_DIR = "/etc/grub.d"
+ GRUB2_TUNED_TEMPLATE_NAME = "00_tuned"
+ GRUB2_TUNED_TEMPLATE_PATH = GRUB2_CFG_DIR + "/" + GRUB2_TUNED_TEMPLATE_NAME
+-- 
+2.47.0
+

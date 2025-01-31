@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Mon Jan 27 21:33:57 UTC 2025 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
+
+- Fix grub.cfg path (bsc#1236491)
+A 0001-tuned-consts-Fix-grub.cfg-path-in-SLE.patch
+
+-------------------------------------------------------------------
+Wed Jan 22 15:27:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
+Fri Jan 17 07:21:34 UTC 2025 - trenn@suse.de
+
+- Update to version 2.24.1.50+git.13dfc68:
+  * scheduler: updated sched knobs for kernels 6.6+
+  * plugin_cpu: allow raw energy_performance_preference values
+  * Do not initialize kvm low latency if kvm not present
+- Do not conflict with power-profiles-daemon, this is managed via
+  ppd-service in the tuned-ppd subpackage (bsc#1234754)
+
+-------------------------------------------------------------------
+Thu Jan 16 08:31:46 UTC 2025 - trenn@suse.de
+
+- Update to version 2.24.1.44+git.cc168b9:
+  * tuned-ppd: Remove the use of StrEnum
+  * tuned-ppd: Disallow releasing profile holds of other processes
+  * tuned-ppd: Unify polkit policy with power-profiles-daemon
+  * Obsolete power-profiles-daemon
+  * Document new vm plugin options
+  * Adjust profiles to set dirty_(bytes|ratio) via the vm plugin
+  * vm: Add support for dirty_(bytes|ratio) sysctl parameters
+  * tuned-ppd: Support the new UPower PPD namespace
+  * tuned-ppd: Enable changing profile via function keys
+  * tuned-ppd: Use inotify to check for performance degradation
+  * tuned-ppd: Require the presence of the balanced profile
+  * tuned-ppd: Add the version property
+  * tuned-ppd: Add docstrings
+  * tuned-ppd: Keep track of active and base profile
+  * tuned-ppd: Fix UPower signal handler initialization
+  * Add variables to BLS entries only if grub is used
+  * powertop2tuned: use default user profile path from the consts
+  * tuned-ppd: Use effective hold profile when adding profile holds
+  * Bump doc/manual revision date and number
+  * Clean up plugin docstrings
+  * Add a script for generation of plugin docs from docstrings
+  * scheduler: Do not assume that perf events have type attribute
+  * Fix the error in the raise statement of check_positive()
+  * fix: expand variables in Plugin._verify_all_device_commands
+  * Allow shared service drop-in directory
+  * drop support for cpuspeed
+  * Parse no_turbo cpu plugin option using commands.get_bool
+
+-------------------------------------------------------------------
+Tue Dec 17 19:11:54 UTC 2024 - Mel Gorman <mgorman@suse.com>
+
+- Move gobject dependency to gtk package as it is the only utility that
+  imports gi.
+
+-------------------------------------------------------------------
+Tue Dec 17 17:52:42 UTC 2024 - Mel Gorman <mgorman@suse.com>
+
+- Remove unnecessary cpupower dependency, sysfs fallback is used instead.
+
+-------------------------------------------------------------------
+Thu Nov 28 16:27:49 UTC 2024 - trenn@suse.de
+
+- Fix below security issues found by SUSE security review of latest
+  polkit API additions. Kudos go to Matthias Gerstner (bsc#1232412)
+- fixed privileged execution of arbitrary scripts by active local user
+  resolves: CVE-2024-52336
+- added sanity checks for API methods parameters
+   resolves: CVE-2024-52337
+- Update to version 2.24.1.0+git.90c24ee:
+  * new release (2.24.1)
+  * spec: used macro for profiles path and other fixes
+  * realtime: remove leftover use of tuna
+
+-------------------------------------------------------------------
+Sat Oct 26 12:45:09 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Correct service cleanup calls in preun and postun scripts
+- Move tmpfile_create before service_add_post
+- Added python3-pyudev and python3-dbus-python as BuildRequires
+  for added check section
+- Move user defined profiles
+  from /etc/tuned/
+  into subdirs /etc/tuned/PROFILE
+  via spec's %post routine
+- Enable make test in check section
+- Update has at least parts of jsc#PED-10695
+
+-------------------------------------------------------------------
+Sun Aug 25 17:28:21 UTC 2024 - pallaswept@proton.me
+
+- Migrate profiles to /etc/tuned/profiles/ and /usr/lib/tuned/profiles/ 
+  * Per upstream #615 and #609
+
+- Update to version 2.24.0.2+git.c082797:
+  * controller init: set _on_battery before switching profile
+
+- New release (2.24.0)
+  * Clear plugin repository when stopping tuning
+  * man: add description of the balanced-battery profile
+
+- New release (2.24.0-rc.1)
+  * chore: remove dead irqbalance functions
+  * plugin_irqbalance: switch to IRQBALANCE_BANNED_CPULIST
+  * hotplug: wait for device initialization
+  * Add `functions` to the files copied by the release-cp Makefile target
+  * Add package2cpus and packages2uncores matcher functions
+  * uncore: Allow to configure frequency limits using percent
+  * plugin_scheduler: Adjust error logging in _set_affinity
+  * fix: expand variables in plugin_irq
+  * tests: Restore TuneD service after the error messages test
+  * tests: Do not run tunedDisableSystemdRateLimitingStart via rlRun
+  * Enable controller reset for audio by default
+  * tuned-ppd: Adjust log message emitted when battery status changes
+  * tuned-ppd: Refactor daemon initialization
+  * tuned-ppd: Remove magic constant "unknown"
+  * Add support for controlling amd-pstate core performance boost
+  * spec: Start tuned-ppd right away if swapping from active PPD
+  * spec: Add standard systemd scriptlet macros for tuned-ppd
+  * tuned-ppd: Remove PIDFile from the systemd service file
+  * tuned-ppd: Add an option to log to a file
+  * Install script functions and recommend.d to /usr/lib/tuned/
+  * Rename TUNED_PROFILESDIR to TUNED_PROFILES_DIR
+  * CNF-13015: Fix helper function not accessing the correct return result
+  * CNF-13015: Add helper function to run `lscpu` and parse result using regex 
+    parameters - This is similar to the cpuinfo function that reads from 
+    /proc/cpuinfo - Unfortunately that function was insufficient for our needs 
+    as we need to identify both the Vendor and Architecture reliably
+
+-------------------------------------------------------------------
+Sat Jun 22 15:29:45 UTC 2024 - tobi.goergens@gmail.com
+
+- Update to version 2.23.0.2+git.5d5dbfc:
+  * chore: remove use of deprecated Logger.warn()
+  * new release (2.23.0)
+  * Disk plugin: make hdparm device checks lazy
+  * Revert "Video plugin: make hdparm device checks lazy"
+  * Video plugin: make hdparm device checks lazy
+  * Do not check for x86_energy_perf_policy if it won't be used
+  * Check that writes are necessary if they may cause redundant IPIs
+  * Add an option to skip `write_to_file` if the content would not change
+  * Turn on amdgpu panel power savings in balanced-battery
+  * Modify the video plugin for tuning of the amdgpu `panel_power_savings` attribute
+  * video: Don't show error when trying to read radeon files
+  * video: make missing radeon_powersave files quieter
+  * video: Rename _radeon_powersave_files to _files
+  * feat: add plugin_irq
+  * throughput-performance: dropped unused AMD related variable
+  * ppd: Adjust the detection of 'performance-degraded'
+  * ppd: Fix hold releasing
+  * ppd: Add debug logs when changing base profile
+  * Re-check dbus when (re)starting TuneD from tuned-adm profile
+  * functions: added 'log' which helps with debugging
+  * Simplify reading/writing from/to sysctl by using existing functions
+  * Fix logs in `commands.read_file`
+  * plugin_cpu: decrease the severity of _has_pm_qos==False
+  * sap-netweaver: increased vm.max_map_count
+  * daemon: buffer sighup signal
+  * tuned-ppd: Detect battery change events
+  * Migrate profiles to /etc/tuned/profiles/ and /usr/lib/tuned/profiles/
+  * Propagate unexpected exceptions in the wait exception handler
+  * Add an option to configure profile directories
+  * Use get_list to parse unix_socket_signal_path
+  * Add a function to parse lists in the global configuration
+  * Added intel_recommended_pstate builtin function.
+  * dbus: add commands to dynamically create/destroy instances
+  * dbus: ensure that hotplug operations only work on hotplug plugins
+  * instance: add priority as a property
+  * monitor_net: fixed traceback if stats cannot be read
+  * plugin_net: do not read monitors if dynamic tuning is disabled
+  * Allow equal characters in parameter value
+
+-------------------------------------------------------------------
 Thu Feb 29 11:37:09 UTC 2024 - trenn@suse.de
 
 - Update to version 2.22.1.2+git.86ac977:

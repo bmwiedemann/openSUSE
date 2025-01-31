@@ -367,4 +367,48 @@ A tuned_differ_x86_and_other_archs_in_cpu_plugin.patch
     <user>anag+factory</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1234938 and https://bugzilla.opensuse.org/show_bug.cgi?id=1234754</comment>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>677b75e86beefbb7432c8614227d8c2b</srcmd5>
+    <version>2.24.1.50+git.13dfc68</version>
+    <time>1738335898</time>
+    <user>anag+factory</user>
+    <comment>- Fix grub.cfg path (bsc#1236491)
+A 0001-tuned-consts-Fix-grub.cfg-path-in-SLE.patch
+
+polkit changes got reviewed by security:
+https://bugzilla.suse.com/show_bug.cgi?id=1236029
+
+Conflicts with power-profiles-daemon are fixed by this version
+together with latest power-profiles-daemon which already hit
+openSUSE:Factory
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+- Update to version 2.24.1.50+git.13dfc68:
+  * scheduler: updated sched knobs for kernels 6.6+
+  * plugin_cpu: allow raw energy_performance_preference values
+  * Do not initialize kvm low latency if kvm not present
+- Do not conflict with power-profiles-daemon, this is managed via
+  ppd-service in the tuned-ppd subpackage (bsc#1234754)
+
+- Update to version 2.24.1.44+git.cc168b9:
+  * tuned-ppd: Remove the use of StrEnum
+  * tuned-ppd: Disallow releasing profile holds of other processes
+  * tuned-ppd: Unify polkit policy with power-profiles-daemon
+  * Obsolete power-profiles-daemon
+  * Document new vm plugin options
+  * Adjust profiles to set dirty_(bytes|ratio) via the vm plugin
+  * vm: Add support for dirty_(bytes|ratio) sysctl parameters
+  * tuned-ppd: Support the new UPower PPD namespace
+  * tuned-ppd: Enable changing profile via function keys
+  * tuned-ppd: Use inotify to check for performance degradation
+  * tuned-ppd: Require the presence of the balanced profile
+  * tuned-ppd: Add the version property
+  * tuned-ppd: Add docstrings
+  * tuned-ppd: Keep track of active and base profile
+  * tuned-ppd: Fix UPower signal handler initialization
+  * Add variables to BLS entries only if grub is used
+  * powertop2tuned: use default user profile path from the consts</comment>
+    <requestid>1241133</requestid>
+  </revision>
 </revisionlist>
