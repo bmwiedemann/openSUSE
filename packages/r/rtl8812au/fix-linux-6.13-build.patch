@@ -1,0 +1,29 @@
+diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
+index e5176da..939cf04 100644
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -6901,6 +6901,9 @@ static void rtw_get_chbwoff_from_cfg80211_chan_def(
+ 
+ static int cfg80211_rtw_set_monitor_channel(struct wiphy *wiphy
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 13, 0))
++	, struct net_device *netdevice
++#endif
+ 	, struct cfg80211_chan_def *chandef
+ #else
+ 	, struct ieee80211_channel *chan
+diff --git a/os_dep/linux/os_intfs.c b/os_dep/linux/os_intfs.c
+index 1c2fd22..6b1e5b6 100644
+--- a/os_dep/linux/os_intfs.c
++++ b/os_dep/linux/os_intfs.c
+@@ -31,8 +31,8 @@ MODULE_VERSION(DRIVERVERSION);
+  * This declaration was created to resolve an error on Rockchip.
+  * You can modify or add flags in the fs/Makefile.
+  */
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 10, 0)
+-	MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 10, 0) && LINUX_VERSION_CODE < KERNEL_VERSION(6, 13, 0)
++MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
+ #endif
+ 
+ /* module param defaults */

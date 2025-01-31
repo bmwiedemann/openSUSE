@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 01:58:20 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add patch fixing Linux 6.13 build:
+  fix-linux-6.13-build.patch
+- Update to latest revision git20241117 
+
+-------------------------------------------------------------------
 Sun May 26 06:55:40 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Change source to newer version:
