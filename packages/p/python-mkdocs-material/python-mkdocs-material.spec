@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocs-material
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.5.49
+Version:        9.6.1
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT

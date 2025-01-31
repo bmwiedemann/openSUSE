@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jan 31 07:16:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.1:
+  * Fixed #7943: Tags plugin crashing due to merge error
+
+-------------------------------------------------------------------
+Fri Jan 31 05:58:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.0:
+  * Added meta plugin
+  * Rewrite of the tags plugin
+  * Added support for allow lists in tags plugin
+  * Added support for and custom sorting in tags plugin
+  * Added support for related links in blog plugin
+  * Added support for custom index pages in blog plugin
+  * Added support for navigation subtitles
+  * Fixed #7924: Anchors might require two clicks when using
+    instant navigation
+
+-------------------------------------------------------------------
+Sat Jan 18 07:43:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.50:
+  * Fixed #7913: Social plugin renders attribute lists in page
+    title
+
+-------------------------------------------------------------------
 Mon Dec 16 13:53:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.49:
@@ -188,7 +215,7 @@ Thu May 30 10:55:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.25:
   * Fixed #7209 <https://github.com/squidfunk/mkdocs-material/issues/7209>:
-    Tags plugin crashing on numeric tags 
+    Tags plugin crashing on numeric tags
 
 -------------------------------------------------------------------
 Mon May 20 17:19:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
@@ -224,7 +251,7 @@ Sun May  5 07:24:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * Fixed #7133 <https://github.com/squidfunk/mkdocs-material/issues/7133>:
     Ensure latest version of Mermaid.js is used
   * Fixed #7125 <https://github.com/squidfunk/mkdocs-material/issues/7125>:
-    Added warning for dotfiles in info plugin 
+    Added warning for dotfiles in info plugin
 
 -------------------------------------------------------------------
 Tue Apr 30 11:02:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
