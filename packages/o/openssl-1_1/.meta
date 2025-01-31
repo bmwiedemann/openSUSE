@@ -1,5 +1,0 @@
-<package name="openssl-1_1" project="openSUSE:Factory">
-  <title>openssl</title>
-  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
-  <devel project="security:tls" package="openssl-1_1"/>
-</package>
