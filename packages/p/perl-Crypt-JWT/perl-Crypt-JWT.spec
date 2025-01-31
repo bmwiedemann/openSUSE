@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-JWT
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Crypt-JWT
 Name:           perl-Crypt-JWT
-Version:        0.35.0
+Version:        0.36.0
 Release:        0
-%define cpan_version 0.035
+# 0.036 -> normalize -> 0.36.0
+%define cpan_version 0.036
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        JSON Web Token
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,8 +38,8 @@ Requires:       perl(Compress::Raw::Zlib)
 Requires:       perl(CryptX) >= 0.067
 Requires:       perl(JSON)
 Requires:       perl(Test::More) >= 0.88
-Provides:       perl(Crypt::JWT) = 0.35.0
-Provides:       perl(Crypt::KeyWrap) = 0.35.0
+Provides:       perl(Crypt::JWT) = %{version}
+Provides:       perl(Crypt::KeyWrap) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -55,7 +56,7 @@ This module supports *Compact JWS/JWE* and *Flattened JWS/JWE JSON*
 serialization, general JSON serialization is not supported yet.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
