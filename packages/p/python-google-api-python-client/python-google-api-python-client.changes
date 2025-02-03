@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:05:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.160.0
+  * **accesscontextmanager:** Update the api
+  * **adsenseplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **analyticsadmin:** Update the api
+  * **analyticshub:** Update the api
+  * **androidenterprise:** Update the api
+  * **classroom:** Update the api
+  * **cloudbuild:** Update the api
+  * **compute:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **file:** Update the api
+  * **gkehub:** Update the api
+  * **integrations:** Update the api
+  * **merchantapi:** Update the api
+  * **migrationcenter:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networkmanagement:** Update the api
+  * **redis:** Update the api
+  * **spanner:** Update the api
+  * **websecurityscanner:** Update the api
+  * **secretmanager:** Update the api
+
+-------------------------------------------------------------------
+Mon Jan 20 08:59:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.159.0
+  * **adsenseplatform:** Update the api
+  * **alloydb:** Update the api
+  * **authorizedbuyersmarketplace:** Update the api
+  * **cloudasset:** Update the api
+  * **clouddeploy:** Update the api
+  * **cloudfunctions:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dataflow:** Update the api
+  * **datastream:** Update the api
+  * **deploymentmanager:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dns:** Update the api
+  * **eventarc:** Update the api
+  * **firebasedataconnect:** Update the api
+  * **firebasestorage:** Update the api
+  * **gkehub:** Update the api
+  * **iam:** Update the api
+  * **parallelstore:** Update the api
+  * **pubsub:** Update the api
+  * **redis:** Update the api
+  * **retail:** Update the api
+  * **securitycenter:** Update the api
+  * **servicecontrol:** Update the api
+  * **tpu:** Update the api
+  * **workloadmanager:** Update the api
+  * **workstations:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudkms:** Update the api
+
+-------------------------------------------------------------------
 Mon Jan 13 09:21:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.158.0

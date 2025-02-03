@@ -1284,4 +1284,20 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1237374</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8d5848695a14fd2fb0ea1eee2b81c632</srcmd5>
+    <version>2.159.0</version>
+    <time>1737389703</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238982</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>efec700a18b03745fafb7c688ce9c865</srcmd5>
+    <version>2.160.0</version>
+    <time>1738615498</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242790</requestid>
+  </revision>
 </revisionlist>
