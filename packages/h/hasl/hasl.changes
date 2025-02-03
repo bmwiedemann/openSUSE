@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sat Feb  1 12:33:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix install issue with nothing providing hasl-%{version}
+- recommend installing translations when installing library
+
+-------------------------------------------------------------------
+Fri Jan 31 13:08:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.0:
+  * Bump minimum GLib to 2.76
+  * Use g_string_free_and_steal
+  * Add Hasl.Context.done to reset a context
+  * Add Hasl.Context:server-mechanisms
+- switch to the sf mirror, so we have signed tarballs
+
+-------------------------------------------------------------------
+Wed Nov 27 21:58:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
