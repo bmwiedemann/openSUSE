@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb  3 08:11:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.9:
+  * feat altcha.py verify_solution returns False,
+    "Altcha payload expired"
+
+-------------------------------------------------------------------
+Tue Jan 21 10:01:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.1.8
+  * fix: set default number to None (ChallengeOptions)
+
+-------------------------------------------------------------------
 Tue Jan  7 16:09:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v0.1.7), needed by weblate
