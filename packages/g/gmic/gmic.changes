@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jan 31 23:56:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5.2 
+  - New features:
+    - [math-core-351] Add function isfinite() that returns 0 or 1
+      whether the given argument is a finite number or not (i.e.
+      not inf nor NaN).
+    - [math-core-351] Add function isvar(varname) that returns 0 or
+      1 whether the given argument is the name of an already
+      defined variable or not.
+    - [math-core-351] Add function abscut(x,min,max,offset) that
+      returns cut(abs(x) + offset,min,max)*sign(x) (see dedicated
+      post 2 to get an idea why).
+    - [stdlib-351] Add new command matchpatch_alt, a custom
+      re-implementation of command matchpatch that is slower but
+      easier to modify for computing custom correspondence maps
+      between two images.
+  - Improvements / Modifications:
+    - [stdlib-351] Command scale2x_cnn: Implement downscaling
+      fidelity constraint, so that a downscaled version of the
+      upscaled image is closer to the input image.
+    - [stdlib-351] Command denoise_cnn: Changed the network
+      architecture to make it more controllable (add a user-defined
+      parameter for noise level estimation).
+    - [stdlib-351] Management of simultaneous neural networks has
+      been improved in the nn_lib (ML library inside G’MIC). Some
+      of the existing layers have been also improved.
+  - Bugfix:
+    - [core-353] Fix command median when size=3 and selected image
+      is a one-column vector.
+    - [math-core-351] Fix multi-threading issue when forcing the
+      evaluation of math expressions in parallel for images that
+      has less values than the number of threads (including empty
+      images).
+    - [math-core-351] Fix function v(a,b) that was always returning
+      positive random values when a or b were negative.
+    - [stdlib-351] Command display: Fix window title when
+      displaying a single image that has been generated from a math
+      expression.
+    - [packages-352] Fix DLL issue with the G’MIC-Qt for GIMP.
+
+-------------------------------------------------------------------
 Fri Jan 10 21:43:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Use GCC 13 on Leap 15
