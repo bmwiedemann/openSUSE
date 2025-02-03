@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.1
+%define real_version 6.8.2
 %define short_version 6.8
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -44,7 +44,7 @@
 %define pyver python311
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
