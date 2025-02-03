@@ -1,4 +1,219 @@
 -------------------------------------------------------------------
+Sat Feb  1 18:25:18 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to 25.3:
+  * Use become_root_cmd() when running systemd-repart in run_shell() as well
+  * Use shutil.copy() to copy ovmf variables
+  * The dpkg architecture name for loongarch64 is loong64
+  * mkosi-initrd: Add two more modules
+  * Check if list matches are empty if empty string is matched against
+  * opensuse: fix package name: btrfs-progs -> btrfsprogs
+  * Log command line for abnormal signals
+  * zypper: set $releasever variable
+  * Tools tree improvements
+  * mkosi-initrd: handle PermissionError when reading /etc/crypttab
+  * Move want_uki() check out of build_uki_profiles()
+  * mkosi-sandbox: Improve formatting of error messages
+  * Fix verity signature check in case keys are configured
+  * Treat terminal as dumb if either stdout or stderr is not a tty
+  * Various cache fixes
+  * config: add mkosi-addon
+  * Calculate PE section size correctly
+  * Use directory in user's home as output directory if possible
+  * Fix condition when removing duplicate files from the overlay
+  * Make secure boot keys/crts/source config universal
+
+- Update to 25.2:
+  * Only parse profiles from subimages and includes if those are dirs
+  * Use all threads when relabelling files with setfiles
+
+- Update to 25.1:
+  * Remove depmod check in check_tools()
+  * news: fix typo detected by Lintian
+  * Create zipapp for mkosi sandbox like we do in generate-zipapp.sh
+  * man: document kernel baseline for mkosi
+  * sandbox: Show better error on ENOSYS
+  * Add fallback to sudo if run0 is not available
+  * Do not check uid in have_cache() for default tools tree
+  * Use resource_path() to access files in our own module
+  * Fix accessing "name" field in busctl json output
+
+-------------------------------------------------------------------
+Thu Jan 23 15:36:15 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Drop the mkosi-initrd-tukit subpackage.
+  * Since v25 implements its own sandboxing tool and does not use bubblewrap,
+    this is not required anymore.
+
+- Update to 25:
+  * Instead of using bubblewrap, sandboxing is now done with a new tool
+    `mkosi-sandbox`. This tool has a public API and can be used
+    independently of mkosi.
+  * Image builds are now done in a user namespace with a single user when
+    running unprivileged instead of using newuidmap/newgidmap. When
+    running unprivileged, all files and directories in the image will be
+    owned by the invoking user (and by root inside any produced archives).
+    Any attempt to chown files to other users in scripts will fail unless
+    the new environment variable `$MKOSI_CHROOT_SUPPRESS_CHOWN` is set to
+    a true value.
+  * `mkosi` does not drop privileges anymore to the invoking user when
+    running as root for various steps.
+  * A new `cat-config` verb will show all configuration files that were
+    included for each configured image.
+  * Added support for Azure Linux
+  * Added support for Kali Linux
+  * If `mkosi.version` is executable, we now execute it and read the
+    version from stdout.
+  * Added `--wipe-build-dir` to wipe the build directory before rebuilding
+    the image.
+  * Introduced `RepositoryKeyFetch=` to control whether to fetch
+    distribution GPG keys remotely. This setting is **disabled** by
+    default for security reasons except when building rpm based
+    or Arch Linux images on Ubuntu.
+  * We now handle `SIGHUP` gracefully
+  * Universal settings that take a collection of values cannot be
+    appended to anymore in subimages. Usage of package manager trees in
+    subimages will have to be moved to the top level image. Similarly,
+    repositories will have to be enabled in the top level image.
+  * Repository metadata is not copied into images anymore.
+  * Repository metadata from base trees is not used anymore.
+  * Package manager trees are now named sandbox trees.
+  * Package manager trees (sandbox trees) do not use the skeleton trees as
+    their default anymore if unset.
+  * Note to packagers: The manual pages have been moved to resources/man
+    and now include man pages for mkosi-initrd and mkosi-sandbox as
+    well.
+  * `InitrdInclude=` was removed. If you're using `InitrdInclude=`, please
+    build your initrd via a subimage in `mkosi.images` containing
+    `Include=mkosi-initrd` and any customizations you wish to add and use
+    the `Initrds=` setting to use it as the initrd for the main image
+    instead of the default initrd.
+  * Added `History=` to have mkosi save the config used to build the image
+    and reuse it when verbs such as `qemu`, `boot`, … are invoked
+    without `-f`.
+  * Introduced new `[Build]` section and moved various settings to it.
+  * Moved `Include=` to `[Include]` section
+  * Added `sysupdate` verb as a wrapper around `systemd-sysupdate` which
+    invokes it with definitions from `mkosi.sysupdate`.
+  * Added `RuntimeHome=` to mount the current home directory to `/root`
+    when running a command that boots the image
+  * More directories aside from `/etc` and `/usr` are now picked up from
+    sandbox trees (formerly known as package manager trees).
+  * Profile configuration from `mkosi.profiles` is now parsed after
+    `mkosi.conf.d` instead of before it. To set defaults for use in
+    `mkosi.conf.d` based on the configured profile, use an early dropin in
+    `mkosi.conf.d` that matches on the configured profile instead.
+  * `Profile=` is renamed to `Profiles=` and takes a comma separated list of
+    profiles now. Scripts now receive `$PROFILES` with a space-separated list
+    of profiles instead of `$PROFILE`. The `%p` specifier for profiles is
+    removed.
+  * Multiple sync, prepare, build, postinst, finalize, postoutput and clean
+    scripts are now picked up from `mkosi.$SCRIPT.d`.
+  * `run0` is now automatically used to escalate privileges for commands that
+    need it, like the `burn` verb.
+  * `/usr/share/keyrings` and `/usr/share/distribution-gpg-keys` are no longer
+    automatically picked up from the tools tree when `ToolsTreeCertificates=` is
+    set, since they aren't certificates, use a sandbox tree instead. This allows
+    one to override `SignedBy=` keys for APT repositories.
+  * The `agetty.autologin` and `login.noauth` credentials are no longer set
+    unconditionally.
+  * Access to the output directory in build scripts was removed. To put
+    artifacts from the build directory into the output directory, copy them from
+    the build directory to the output directory in a post-installation script
+    which does have access to the build directory and the output directory.
+  * `BuildDirectory=` is no longer available in `PrepareScripts=`. If you
+    need to acquire some files for the build process place them somewhere
+    sensible within `$BUILDROOT` so that they can be cached when building
+    incrementally.
+  * When using a tools tree and a relaxed sandbox is used to run a command
+    (qemu, nspawn, ...), we now keep all entries from `$PATH` outside of
+    `/usr` intact. Note that this may cause issues if a `$PATH` entry
+    contains binaries linked against libraries in `/usr` from the host.
+  * Introduced a new specifier `%I` which resolves to the name of the current
+    subimage when used in a config under `mkosi.images/`. This differs to `%o`
+    as it is always the name of the config file without extension (or the name
+    of the directory).
+  * If `/dev/fuse` is found in the host context, it is made available in the
+    sandbox context too.
+  * Added a `sandbox` verb to run a command within a relaxed mkosi sandbox
+    (the same sandbox that `mkosi vm`, `mkosi boot`, ... run in).
+  * OpenSSL providers are now supported as key sources for the various key
+    settings if a recent enough systemd version (257 or newer) is used.
+  * Added support for loading X.509 certificates from OpenSSL providers if
+    a recent enough systemd version (257 or newer) is used.
+  * Added `ToolsTreePackageDirectories=`
+  * Added `--kernel-image=` to `mkosi-initrd` to specify the kernel image to
+    use when building a UKI.
+  * Setting a collection based setting to the empty string via the CLI and
+    then appending to the same setting will now override the settings
+    coming from configuration files, whereas previously the CLI values
+    would be appended to the values from configuration files.
+  * The `mkosi-initrd` default config now includes various extra kernel
+    modules by default.
+  * The `coredumpctl` and `journalctl` verbs will now always operate on
+    the image, even if `ForwardJournal=` is configured.
+  * Bumped default Fedora release to `41`.
+  * Added `addon` output format to build UKI addons.
+  * Renamed `[Host]` section to `[Runtime]` section.
+  * Renamed various settings from `[Host]`.
+  * Binaries coming from `ExtraSearchPaths=` are now executed with the
+    tools tree mounted if one is configured (unlike before where the tools
+    tree was not mounted). This means that any binaries coming from
+    `ExtraSearchPaths=` have to be linked against libraries from the tools
+    tree (or have to be statically linked). Alternatively, the tools tree
+    distribution and release have to match the host.
+  * Binaries from `ExtraSearchPaths=` are not used anymore when building
+    the default tools tree.
+  * Dropped support for `pesign` as a secure boot signing tool.
+  * Added support for `systemd-sbsign` as a secure boot signing tool.
+  * Added `--register=` to control whether to register containers and VMs
+    with systemd-machined or not.
+  * `mkosi.profiles` is now parsed in subimages as well.
+  * `mkosi-initrd` now uses `dnf5` on systems where it is the default.
+  * Added various packages to the default tools tree.
+  * Dropped support for Ubuntu Focal.
+  * Added `Devicetree=` setting for configuring bootloader device trees
+  * Added systemd-machined registration using varlink for `mkosi qemu` vms,
+    which includes the vsock CID so that `ssh vsock/<cid>` or
+    `ssh machine/<name>` will work on systems running `systemd-machined`
+    257 or newer.
+  * Bumped CentOS Stream default release to 10.
+  * mkosi now manages the pacman keyring itself so `/etc/pacman.d/gnupg`
+    from the host is not used anymore and mkosi will run
+    `pacman-key --init` and `pacman-key --populate` itself.
+  * Added `ToolsTreeRelease=` match
+  * mkosi now enforces that images built with `Overlay=yes` only add files
+    on top of the base tree(s) and don't overwrite any existing files or
+    directories.
+  * Added a `mkosi-addon` tool and accompanying kernel-install plugin that
+    allows building PE addons to extend a vendor provided unified kernel
+    image.
+  * Added `systemd-boot-signed`, `uki-signed` and `grub-signed` variants
+    for the `Bootloader=` option which instruct mkosi to only install
+    pre-signed EFI binaries.
+  * `mkosi.profiles` is now parsed in configuration included with
+    `Include=`.
+  * Any initrds configured with `Initrds=` are now used as fallback when
+    booting with qemu direct kernel boot (`--firmware=linux`) if no split
+    initrd was produced by the image build.
+  * mkosi now makes a greater effort to ensure the crypto-policies are
+    configured to allow GPG keys from older distributions.
+  * We don't pick up pre-signed bootloader binaries anymore when
+    `ShimBootloader=signed` is configured. To force usage of pre-signed
+    EFI binaries, use the new `systemd-boot-signed`, `uki-signed` and
+    `grub-signed` variants for the `Bootloader=` option.
+  * Added a new constant `microsoft-mok` for the `FirmwareVariables=`
+    option. If specified, a firmware variables file with the Microsoft
+    keys enrolled will be extended to include a `MokList` entry that
+    trusts the certificate configured with `SecureBootCertificate=` and
+    passed to `qemu`.
+  * We now use `mkosi.pkgcache` as the package cache directory if the
+    directory exists.
+  * `BuildSourcesEphemeral=` learned a new variant `buildcache` in which
+    case the overlay will be cached in the build directory configured with
+    `BuildDirectory=`.
+
+-------------------------------------------------------------------
 Thu Oct 31 13:26:30 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Build on all architectures, but only man pages on architectures which

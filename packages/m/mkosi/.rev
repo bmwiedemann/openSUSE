@@ -1189,4 +1189,20 @@ Mon Nov  14 08:20:28 UTC 2023 - Fredrik Lönnegren &lt;fredrik.lonnegren@suse.co
     <comment></comment>
     <requestid>1219915</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3ef3093226dc52ce97443dbc9243300f</srcmd5>
+    <version>25</version>
+    <time>1737722479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240114</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>610aa58e43222e1cfe5160c9ed627c80</srcmd5>
+    <version>25.3</version>
+    <time>1738615432</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242148</requestid>
+  </revision>
 </revisionlist>
