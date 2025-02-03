@@ -263,4 +263,20 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228203</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>2dd5a01cb8ee023e2ae8997537195a0c</srcmd5>
+    <version>6.8.1</version>
+    <time>1737828596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240126</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bc98a7366d7d3b1f0a32ce519e022bfe</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615267</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242062</requestid>
+  </revision>
 </revisionlist>
