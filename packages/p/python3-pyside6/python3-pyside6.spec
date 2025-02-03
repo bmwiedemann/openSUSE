@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define tar_version 6.8.1.1
+%define tar_version 6.8.2
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,7 +43,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0

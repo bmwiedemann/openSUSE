@@ -27,11 +27,11 @@ without the first one being processed yet.
 Submitted to upstream in https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
 
 diff --git a/sources/pyside6/libpyside/pysidesignal.cpp b/sources/pyside6/libpyside/pysidesignal.cpp
-index 13d95fa..228f1e3 100644
+index 1e9cd28..7ccf38a 100644
 --- a/sources/pyside6/libpyside/pysidesignal.cpp
 +++ b/sources/pyside6/libpyside/pysidesignal.cpp
-@@ -715,7 +715,7 @@ static PyObject *signalInstanceDisconnect(PyObject *self, PyObject *args)
-         Shiboken::AutoDecRef pyMethod(PyObject_GetAttr(source->d->source,
+@@ -721,7 +721,7 @@ static PyObject *signalInstanceDisconnect(PyObject *self, PyObject *args)
+         Shiboken::AutoDecRef pyMethod(PyObject_GetAttr(source->d->shared->source,
                                                         PySide::PySideName::qtDisconnect()));
          PyObject *result = PyObject_CallObject(pyMethod, tupleArgs);
 -        if (result != Py_True)
