@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-dry-types
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,17 @@
 #
 
 Name:           rubygem-dry-types
-Version:        1.7.1
+Version:        1.8.1
 Release:        0
 %define mod_name dry-types
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.7.0}
+BuildRequires:  %{ruby >= 3.1}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://dry-rb.org/gems/dry-types
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+Source1:        dry-types-1.8.1.gem.sha256
+Source2:        gem2rpm.yml
 Summary:        Type system for Ruby supporting coercions, constraints and complex
 License:        MIT
 

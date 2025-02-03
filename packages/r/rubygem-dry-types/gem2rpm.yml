@@ -26,6 +26,7 @@
 #   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
 :sources:
+  - dry-types-1.8.1.gem.sha256
 # - foo.desktop
 # - bar.desktop
 # :gem_install_args: '....'

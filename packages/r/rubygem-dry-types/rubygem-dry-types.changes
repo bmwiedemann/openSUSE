@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 29 14:55:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.8.1:
+  * Fixed
+    - Warnings about unused block arguments (@flash-gordon, #477)
+- update to 1.8.0:
+  * Added
+    - Added Enum#each_value to iterate over enum values
+      (@CharlieWWW94 in #471)
+  * Fixed
+    - Fixed Default#try to return correct result (@elcuervo +
+      @flash-gordon in #475)
+  * Changed
+    - Set min Ruby version to 3.1 (@flash-gordon)
+    - Better representation of Enum types (@flash-gordon, see #460)
+- update to 1.7.2:
+  * Fixed
+    - Fixed BigDecimal warning due to not being required in gemspec
+      (@bkuhlmann in #464)
+
+-------------------------------------------------------------------
 Thu Nov  2 15:45:51 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 1.7.1 2023-02-17
