@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.90
+Version:        1.11.91
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only or GPL-3.0-only
@@ -32,6 +32,7 @@ Patch1:         7za-path.patch
 Patch2:         cc-link-lib-no-static.patch
 Patch3:         remove-fuses.patch
 Patch4:         no-walrus-operator.patch
+Patch5:         break-esbuild-for-good.patch
 BuildRequires:  element-web = %{version}
 BuildRequires:  app-builder
 BuildRequires:  cargo
@@ -41,6 +42,7 @@ BuildRequires:  jq
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  zstd
+BuildRequires:  esbuild
 %if 0%{?fedora}
 BuildRequires:  rust-srpm-macros
 %else
@@ -49,7 +51,11 @@ BuildRequires:  cargo-auditable
 %endif
 
 BuildRequires:  libsecret-devel
+%if 0%{?sle_version} <= 150600 
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 Requires:       element-web = %{version}
 Requires:       nodejs-electron%{_isa}
 
@@ -88,6 +94,12 @@ export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 export USE_SYSTEM_APP_BUILDER=true
 export OPENSSL_NO_VENDOR=1
+%if 0%{?sle_version} <= 150600 
+mkdir -p /tmp/bin
+ln -sf /usr/bin/gcc-13 /tmp/bin/gcc
+ln -sf /usr/bin/g++-13 /tmp/bin/g++
+export PATH="/tmp/bin:$PATH"
+%endif
 # The `cc` crate tries to be too clever and passes some default cflags when building sqlcipher.
 # Disable these and use only the ones from CFLAGS env. variable
 export CRATE_CC_NO_DEFAULTS=1
@@ -100,6 +112,8 @@ export RUSTC_BOOTSTRAP=1
 export RUSTC_LOG='rustc_codegen_ssa::back::link=info'
 export RUSTFLAGS="%{build_rustflags} --verbose -Cstrip=none"
 export CARGO_TERM_VERBOSE=true
+# break esbuild for good - see https://en.opensuse.org/openSUSE:Packaging_Electron#esbuild and Patch5
+export ESBUILD_BINARY_PATH=/usr/bin/esbuild
 
 %electron_rebuild
 
@@ -122,6 +136,7 @@ popd
 npm run build:ts
 npm run build:res
 npx --no-install electron-builder --linux dir --universal -c.electronDist=%{_libdir}/electron -c.asar=false -c.nodeGypRebuild=false -c.npmRebuild=false
+rm -rf "/tmp/bin"
 
 
 

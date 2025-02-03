@@ -1,0 +1,41 @@
+diff -ru a/node_modules/esbuild/install.js b/node_modules/esbuild/install.js
+--- a/node_modules/esbuild/install.js	2025-02-01 12:49:52.486000000 +0100
++++ b/node_modules/esbuild/install.js	2025-02-02 17:53:44.578575982 +0100
+@@ -27,7 +27,7 @@
+ var os = require("os");
+ var path = require("path");
+ var ESBUILD_BINARY_PATH = process.env.ESBUILD_BINARY_PATH || ESBUILD_BINARY_PATH;
+-var isValidBinaryPath = (x) => !!x && x !== "/usr/bin/esbuild";
++var isValidBinaryPath = (x) => !!x
+ var knownWindowsPackages = {
+   "win32 arm64 LE": "@esbuild/win32-arm64",
+   "win32 ia32 LE": "@esbuild/win32-ia32",
+@@ -94,6 +94,7 @@
+ var toPath = path2.join(__dirname, "bin", "esbuild");
+ var isToPathJS = true;
+ function validateBinaryVersion(...command) {
++  return;
+   command.push("--version");
+   let stdout;
+   try {
+diff -ru a/node_modules/esbuild/lib/main.js b/node_modules/esbuild/lib/main.js
+--- a/node_modules/esbuild/lib/main.js	2025-02-01 12:49:52.486000000 +0100
++++ b/node_modules/esbuild/lib/main.js	2025-02-02 18:05:52.027111771 +0100
+@@ -662,9 +662,6 @@
+     if (isFirstPacket) {
+       isFirstPacket = false;
+       let binaryVersion = String.fromCharCode(...bytes);
+-      if (binaryVersion !== "0.23.1") {
+-        throw new Error(`Cannot start service: Host version "${"0.23.1"}" does not match binary version ${quote(binaryVersion)}`);
+-      }
+       return;
+     }
+     let packet = decodePacket(bytes);
+@@ -1680,6 +1677,7 @@
+   return path.join(esbuildLibDir, `downloaded-${pkg.replace("/", "-")}-${path.basename(subpath)}`);
+ }
+ function generateBinPath() {
++  return { binPath: ESBUILD_BINARY_PATH, isWASM: false };
+   if (isValidBinaryPath(ESBUILD_BINARY_PATH)) {
+     if (!fs.existsSync(ESBUILD_BINARY_PATH)) {
+       console.warn(`[esbuild] Ignoring bad configuration: ESBUILD_BINARY_PATH=${ESBUILD_BINARY_PATH}`);
