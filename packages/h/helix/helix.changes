@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Feb  1 12:51:36 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 25.01.1:
+  Fixes:
+  * Fix blank buffer picker preview on doc with no views
+  * Fix join_selections behavior on tabs
+  * Fix recognition for color LSP completion hex codes for some
+    language servers
+  * Fix offsets to selections updated by open_below/open_above
+    (o/O) in multi-cursor scenarios
+  * Fix offsets to selections updated by insert_newline when
+    trimming whitespace in multi-cursor scenarios
+  * Fix panic in path completion from resolving variables like
+    ${HOME:-$HOME}
+  * Prevent line comment continuation when using change_selection
+    (c) on a line above a comment
+  Usability improvements:
+  * Run external formatters from the document's directory
+  Themes:
+  * Update onelight
+  * Add cursorline color to iceberg themes
+  * Update special, ui.text.directory and ui.virtual.wrap in
+    dark_plus
+  New languages:
+  * CodeQL, Gren
+  Updated languages and queries:
+  * Fix Teal LSP name
+  * Highlight : in Rust as a delimiter
+  * Update Swift highlights
+  * Highlight JSX attributes as @attribute
+  * Improve markdown heading highlights
+  * Add comment tokens configuration for JSONC
+  * Highlight the never type ! as a type in Rust
+  * Expand builtin function highlights for ECMA languages, Rust and
+    Haskell
+  * Recognize .clang-tidy as YAML
+  * Update MATLAB grammar and indent queries
+  * Recognize rockspec as Lua
+  * Add /// to Dart comment tokens configuration
+  * Update Solidity grammar and queries
+  * Update Spade grammar and queries
+  * Re-enable Hare fetching and building by default
+  Packaging:
+  * --version now prints a leading zero for single-digit months,
+    for example 25.01
+
+-------------------------------------------------------------------
 Sat Jan  4 06:58:23 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 25.01:
