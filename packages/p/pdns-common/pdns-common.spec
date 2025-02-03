@@ -1,7 +1,7 @@
 #
 # spec file for package pdns-common
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ install -Dd -m 0755 %{buildroot}%{_sysconfdir}/pdns
 install -D    -m 0644 %{SOURCE0} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 %pre -f pdns.pre
+
 %post
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 

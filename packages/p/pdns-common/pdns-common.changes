@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 19:20:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix typo in user creation (bsc#1234463)
+
+-------------------------------------------------------------------
 Tue Jul 12 08:19:53 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Modernize package:
