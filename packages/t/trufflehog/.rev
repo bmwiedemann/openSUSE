@@ -1830,4 +1830,39 @@
   * [chore] Use static token in GitHub source (#3834) (forwarded request 1237088 from ph03nix)</comment>
     <requestid>1237090</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>1bc7d29f1bb05ea1b29d8988437291db</srcmd5>
+    <version>3.88.3</version>
+    <time>1738335858</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.3:
+  * [Fix] use unrestricted http client only for non-safe requests (#3847)
+  * update jenkins err message (#3855)
+  * use first capture group in custom detector regex if available (#3853)
+  * fix typo (#3846)
+  * fixed sentry auth token detector (#3827)
+  * Removed global variable scanning implementationfor Postman (#3843)
+  * raw (#3845)
+  * fix(ngrok): panic from broken pattern (#3844)
+  * chore(detectors): remove match len check (#2746)
+  * feat(uri): update detector (#3656)
+  * fix import issue (#3842)
+  * create new unrestricted analyzer client to not filter out unsafe success requests (#3841)
+  * issue:3838 - fixed common email pattern (#3840)
+  * Run detector tests from test workflow #3839
+  * chore: run unit tests (#3773)
+  * fixed jirav1 detector email pattern (#3826)
+  * Support for Customize Endpoint in Gitlab Analyzer (#3832) (forwarded request 1241289 from ph03nix)</comment>
+    <requestid>1241434</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b0f8f6711af165577e2d6dbc17043651</srcmd5>
+    <version>3.88.4</version>
+    <time>1738615335</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.4:
+  * Support exclude regexes, excludewords, and entropy filters for custom detectors (#3860)
+  * Update postman metadata (#3852) (forwarded request 1241620 from ph03nix)</comment>
+    <requestid>1241903</requestid>
+  </revision>
 </revisionlist>

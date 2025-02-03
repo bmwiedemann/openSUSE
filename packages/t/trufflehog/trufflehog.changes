@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:48:12 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.4:
+  * Support exclude regexes, excludewords, and entropy filters for custom detectors (#3860)
+  * Update postman metadata (#3852)
+
+-------------------------------------------------------------------
+Thu Jan 30 07:13:22 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 3.88.3:
+  * [Fix] use unrestricted http client only for non-safe requests (#3847)
+  * update jenkins err message (#3855)
+  * use first capture group in custom detector regex if available (#3853)
+  * fix typo (#3846)
+  * fixed sentry auth token detector (#3827)
+  * Removed global variable scanning implementationfor Postman (#3843)
+  * raw (#3845)
+  * fix(ngrok): panic from broken pattern (#3844)
+  * chore(detectors): remove match len check (#2746)
+  * feat(uri): update detector (#3656)
+  * fix import issue (#3842)
+  * create new unrestricted analyzer client to not filter out unsafe success requests (#3841)
+  * issue:3838 - fixed common email pattern (#3840)
+  * Run detector tests from test workflow #3839
+  * chore: run unit tests (#3773)
+  * fixed jirav1 detector email pattern (#3826)
+  * Support for Customize Endpoint in Gitlab Analyzer (#3832)
+
+-------------------------------------------------------------------
 Sat Jan 11 20:58:18 UTC 2025 - felix.niederwanger@suse.com
 
 - Update to version 3.88.2:
