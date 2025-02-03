@@ -1,0 +1,8 @@
+<package name="sipgrep" project="openSUSE:Factory">
+  <title>Display and Troubleshoot SIP signaling over IP networks in console</title>
+  <description>Sipgrep is a powerful pcap-aware tool command line tool to sniff, capture,
+display and troubleshoot SIP signaling over IP networks, allowing the user to
+specify extended regular expressions matching against SIP headers.</description>
+  <devel project="network:telephony" package="sipgrep"/>
+  <url>https://github.com/sipcapture/sipgrep</url>
+</package>

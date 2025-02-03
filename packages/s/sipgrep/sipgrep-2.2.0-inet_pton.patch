@@ -1,0 +1,22 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Sat, 01 Feb 2025 13:10:15 +0000
+Subject: [PATCH] Fix implicit declaration of function 'inet_pton'
+
+[    9s] gcc -DHAVE_CONFIG_H -I.     -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g -c -o transport_hep.o transport_hep.c
+[    9s] transport_hep.c: In function ‘send_hepv3’
+[    9s] transport_hep.c:80:5: error: implicit declaration of function ‘inet_pton’ [-Wimplicit-function-declaration]
+[    9s]    80 |     inet_pton (AF_INET, rcinfo->src_ip, &src_ip4.data);
+[    9s]       |     ^~~~~~~~~
+[
+
+diff -ru sipgrep-2.2.0.orig/src/transport_hep.c sipgrep-2.2.0/src/transport_hep.c
+--- sipgrep-2.2.0.orig/src/transport_hep.c	2025-02-01 13:49:21.496450399 +0100
++++ sipgrep-2.2.0/src/transport_hep.c	2025-02-01 13:50:01.376443300 +0100
+@@ -28,6 +28,7 @@
+ #include <netdb.h>
+ #include <memory.h>
+ #include <unistd.h>
++#include <arpa/inet.h>
+ 
+ #include "include/core_hep.h"
+ #include "include/transport_hep.h"
