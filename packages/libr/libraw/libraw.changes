@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 31 07:03:32 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.21.3:
+  * new compile-time define LIBRAW_CALLOC_RAWSTORE
+    If defined: calloc() will be used for all big buffer allocations
+    to prevent uninitialized heap data leak
+  * Small allocations: calloc() instead of malloc() to prevent
+    uninitialized heap data leak
+  * Support for 4-component JPEG-compressed DNG files
+  * CR3-Qstep table: avoid wrong 64-bit code generation
+  * Fixed several bugs related to specially-crafted files processing
+    (thanks to OSS-Fuzz project)
+
+-------------------------------------------------------------------
 Mon Dec  2 14:38:59 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Limit fdupes to %_libdir
