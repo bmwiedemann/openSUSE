@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:20:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.80.0:
+  * Hostname system policy is added for overriding the device hostname
+    configured by the operating system, using an MDM solution.
+  * Web interface displays a Login button instead of the Reauthenticate button
+    when adding a new device to your tailnet.
+  * Tailscale Funnel configuration on devices displays errors when incoming
+    connections are not permitted and connections are disallowed.
+  * Connections to a custom coordination server that does not support HTTPS
+    will no longer fail when a custom port number is specified.
+  * TLS certificate requests from Let’s Encrypt include the device's DNS name
+    in the CSR’s SAN extension and set the Common Name field.
+  * Tailscale Funnel disabled on a device no longer displays enabled in the
+    admin console.
+  * GitHub username change automatically updates tailnet name
+  * 4via6 subnet routers GA
+  * Auto approvers GA
+  * Node attributes GA
+  * Download invoices GA
+  * Fast user switching GA
+  * Configuration log streaming integration with S3 buckets GA
+  * Network flow log streaming integration with S3 buckets GA
+  * NextDNS profiles per device GA
+  * GitHub secret scanning
+- remove fix-CVE-2024-45337.patch, as it's now included
+
+-------------------------------------------------------------------
 Wed Dec 18 17:33:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch fix-CVE-2024-45337.patch, to circumevent a possibility

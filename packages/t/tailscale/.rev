@@ -194,4 +194,12 @@
   of exploiting the golang-x-crypto security hole. (fix #1234506) (forwarded request 1231943 from rrahl0)</comment>
     <requestid>1231944</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1b5aeb823c26341c984aa6c5d3e903cd</srcmd5>
+    <version>1.80.0</version>
+    <time>1738615343</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241760</requestid>
+  </revision>
 </revisionlist>

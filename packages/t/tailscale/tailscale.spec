@@ -1,7 +1,7 @@
 #
 # spec file for package tailscale
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tailscale
-Version:        1.78.3
+Version:        1.80.0
 Release:        0
 Summary:        The easiest, most secure way to use WireGuard and 2FA
 License:        BSD-3-Clause
@@ -26,10 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}d.service
 Source3:        %{name}d.defaults
-# FIX-CVE-2024-45337
-Patch0:         https://github.com/tailscale/tailscale/commit/73128e25230fda8c82696ed0ffef991bce68cecc.patch#/fix-CVE-2024-45337.patch
-Patch1:         build-verbose.patch
-Patch2:         disable-auto-update.patch
+Patch0:         build-verbose.patch
+Patch1:         disable-auto-update.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  git-core
