@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb  1 12:59:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.9.4
+  * MixManager: Account export: Fix not finishing task when
+    nothing to export
+
+-------------------------------------------------------------------
+Thu Jan 23 22:50:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.9.3
+  * OutgoingClient: Fix ssl connection/setting invalid ssl config
+  * FileEncryption: Fix wrong Cipher::ok() assert
+  * OmemoManager: Fix removing old signed pre key pairs
+  * OmemoManager: Do not try to renew signed pre key pairs
+    while loading
+
+-------------------------------------------------------------------
 Fri Dec 20 14:27:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.9.2
