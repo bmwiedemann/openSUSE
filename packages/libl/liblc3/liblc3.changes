@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 31 21:37:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.2:
+  + math: Remove usage of Infinity that leads to undefined behavior
+  + Rework Python binding
+  + python: remove semicolons
+  + Bump version to 1.1.2
+  + Python wrapper published to PyPi
+
+-------------------------------------------------------------------
 Tue Aug 13 19:55:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.1:
