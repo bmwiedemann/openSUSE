@@ -1499,4 +1499,12 @@ C API
   - CVE-2024-9287-venv_path_unquoted.patch</comment>
     <requestid>1228380</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>cc89f423ca848c38dbb142da2b7f45b3</srcmd5>
+    <version>3.11.11</version>
+    <time>1738615310</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241349</requestid>
+  </revision>
 </revisionlist>

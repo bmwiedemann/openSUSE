@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:00:48 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Configure externally_managed with a bcond
+  https://en.opensuse.org/openSUSE:Python:Externally_managed
+  bsc#1228165
+
+-------------------------------------------------------------------
 Wed Dec  4 21:40:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.11.11:
