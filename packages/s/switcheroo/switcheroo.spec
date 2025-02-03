@@ -1,6 +1,7 @@
 #
 # spec file for package switcheroo
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +18,14 @@
 
 
 %define appid   io.gitlab.adhami3310.Converter
-%define rurl    d9666e26d4a8a183ea1b1ca5d9b6cd1a
+%define rurl    69eeb90b1c2fdb32fa6bb1651b736bec
 Name:           switcheroo
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Convert and manipulate images
 License:        GPL-3.0-only
 URL:            https://gitlab.com/adhami3310/Switcheroo
-Source:         %{url}/uploads/%{rurl}/%{name}-%{version}.tar.xz
+Source:         https://gitlab.com/-/project/41292464/uploads/%{rurl}/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
