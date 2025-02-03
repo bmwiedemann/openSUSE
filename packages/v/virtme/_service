@@ -3,7 +3,7 @@
     <param name="url">https://github.com/arighi/virtme-ng.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">v1.31</param>
+    <param name="revision">v1.32</param>
 	<param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

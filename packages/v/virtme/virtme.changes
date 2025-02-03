@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:21:34 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 1.32:
+  * numa: introduce --numa-distance
+  * virtme-init: Start udev after mounting all filesystems
+  * virtme: enable ssh support
+  * virtme-ng: introduce --console and --ssh shortcuts
+  * sshd: generate a custom sshd_config
+  * virtme-ng v1.32
+  * virtme-init: Enable lvm usage
+  * net: support multiple interfaces
+  * udhcpc: add default route if announced
+  * net: allow to specify the bridge iface
+  * net: option to force net MAC address
+  * github: pylint: new supported versions
+  * feat: vsock support for remote console access
+  * vsock: connect: generate helper script
+  * vsock: connect: pass command to execute
+  * vsock: connect: avoid issues with modified script
+  * make: build virtme-ng-init by default
+  * vsock: connect: support commands without tty
+  * vsock: connect: execute given cmd with right user
+  * vsock: connect: only use 'su' if needed
+  * vng: pass '--user root' to virtme-run
+  * vsock: connect: respect '--user' if defined
+  * vsock: connect: respect '--pwd' and '--cwd' if defined
+  * vsock: 'socat' is required
+  * vsock: rename options to --client/--server
+  * console: port: switch to 2222 by default
+  * console: --client and --server are mutually excl
+  * console: client: support --dry-run
+  * README: mention 'socat' in the requirements
+  * github: restrict builds on push to the main branch
+  * sshd: look for overlayfs before modifying auth keys
+  * setup.py: Do not fail when argparse-manpage is not available
+  * Revert "Merge pull request #184 from hramrach/main"
+  * Restore bash completions
+
+-------------------------------------------------------------------
 Sat Oct 19 07:57:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.31:

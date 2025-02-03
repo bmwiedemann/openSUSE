@@ -1,7 +1,7 @@
 #
 # spec file for package virtme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global pythons python311
 %endif
 Name:           virtme
-Version:        1.31
+Version:        1.32
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
