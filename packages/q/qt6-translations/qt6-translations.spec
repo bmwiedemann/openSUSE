@@ -16,13 +16,13 @@
 #
 
 
-%define real_version 6.8.1
+%define real_version 6.8.2
 %define short_version 6.8
 %define tar_name qttranslations-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-translations
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Qt 6 Translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -40,7 +40,8 @@ Translations for Qt6 libraries and tools.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%cmake_qt6
+%cmake_qt6 \
+  -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
 
