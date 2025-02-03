@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:51:50 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 2.5.3
+  * Bugfixes:
+    + trying to set safe XML features causes SAXExceptions when
+      used with certain XML parsers (jira:IVY-1647[])
+    + some unit tests failed on Java 8 (jira:IVY-1648[])
+    + cached Ivy files were not valid in some scenarios
+      (jira:IVY-1649[], jira:IVY-1650[])
+  * Documentation:
+    + improved to the documentation regarding the use of patterns
+      in the resolvers and retrieve task (jira:IVY-1651[])
+- Update patch files for compatibility with 2.5.3:
+  * apache-ivy-global-settings.patch
+  * apache-ivy-publication-date.patch
+  * apache-ivy-pack200.patch
+
+-------------------------------------------------------------------
 Sun Sep 29 19:45:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

@@ -1,6 +1,6 @@
 --- a/src/java/org/apache/ivy/ant/IvyAntSettings.java
 +++ b/src/java/org/apache/ivy/ant/IvyAntSettings.java
-@@ -345,7 +345,7 @@ public class IvyAntSettings extends DataType {
+@@ -345,7 +345,7 @@ public class IvyAntSettings extends Data
          File[] settingsLocations = new File[] {
                  new File(getProject().getBaseDir(), settingsFileName),
                  new File(getProject().getBaseDir(), "ivyconf.xml"), new File(settingsFileName),

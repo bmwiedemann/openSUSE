@@ -1,5 +1,5 @@
---- apache-ivy-2.5.2/build.xml	2023-10-30 16:09:23.892302634 +0100
-+++ apache-ivy-2.5.2/build.xml	2023-10-30 16:12:01.143389848 +0100
+--- a/build.xml
++++ b/build.xml
 @@ -185,6 +185,7 @@
          <javac srcdir="${src.dir}"
                 destdir="${core.classes.build.dir}"
@@ -8,9 +8,9 @@
                 source="${ivy.minimum.javaversion}"
                 target="${ivy.minimum.javaversion}"
                 debug="${debug.mode}"
---- apache-ivy-2.5.2/src/java/org/apache/ivy/util/FileUtil.java	2023-10-30 16:09:23.928969555 +0100
-+++ apache-ivy-2.5.2/src/java/org/apache/ivy/util/FileUtil.java	2023-10-30 16:13:35.547375897 +0100
-@@ -46,7 +46,7 @@
+--- a/src/java/org/apache/ivy/util/FileUtil.java
++++ b/src/java/org/apache/ivy/util/FileUtil.java
+@@ -46,7 +46,7 @@ import java.util.jar.JarOutputStream;
  import java.util.zip.GZIPInputStream;
  import java.util.zip.ZipInputStream;
  

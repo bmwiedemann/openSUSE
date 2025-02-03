@@ -237,4 +237,12 @@
     <comment>Fix build after removal of the default %%{java_home} define</comment>
     <requestid>1204561</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dfdecc6ac147ec5c13f327281a1417c6</srcmd5>
+    <version>2.5.3</version>
+    <time>1738615236</time>
+    <user>anag+factory</user>
+    <comment>Upgrade to 2.5.3</comment>
+    <requestid>1241596</requestid>
+  </revision>
 </revisionlist>
