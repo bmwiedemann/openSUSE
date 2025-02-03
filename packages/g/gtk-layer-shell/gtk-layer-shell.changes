@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 10 05:45:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * Project: officially place the project in maintenance mode, more
+    details in readme
+  * API: add gtk_layer_try_force_commit()
+  * Fix: unmap tooltips of popups in correct order, fixes #178[1]
+  * Fix: handle xdg_wm_base::ping, don't get labled as unresponsive
+  * Compat: bump supported GTK to v3.24.43
+  * Compat: NOTE: GTK v3.24.44 may break previous versions of
+    gtk-layer-shell and work with this one, but we won't know for
+    sure until it's released
+
+-------------------------------------------------------------------
 Fri Jan  5 07:49:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.2:

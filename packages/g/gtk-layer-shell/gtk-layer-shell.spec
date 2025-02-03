@@ -17,7 +17,7 @@
 
 
 Name:           gtk-layer-shell
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Library to create desktop components for Wayland
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(gdk-broadway-3.0)
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.39
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.44
 BuildRequires:  pkgconfig(gtk+-broadway-3.0)
 BuildRequires:  pkgconfig(gtk+-wayland-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
