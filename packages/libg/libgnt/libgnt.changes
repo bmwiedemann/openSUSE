@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 31 14:20:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.14.4:
+  * Use panel_window instead of directly accessing the window pointer on
+    panels.
+- add a URL for the keyring
+- remove libgnt-ncurses-6.0-accessors.patch, as upstream integrated the patch
+
+-------------------------------------------------------------------
 Fri Jan 28 22:53:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.3:

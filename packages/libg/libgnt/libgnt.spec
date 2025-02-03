@@ -1,7 +1,7 @@
 #
 # spec file for package libgnt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 %define sover   0
 Name:           libgnt
-Version:        2.14.3
+Version:        2.14.4
 Release:        0
 Summary:        TUI toolkit based on GLib and ncurses
 License:        GPL-2.0-or-later
 URL:            https://pidgin.im/
-Source:         http://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz
-Source1:        http://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+Source0:        https://downloads.sf.net/pidgin/%{name}-%{version}-dev.tar.xz
+Source1:        https://downloads.sf.net/pidgin/%{name}-%{version}-dev.tar.xz.asc
+Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x40de1dc7288fe3f50ab938c548f66affd9bdb729#/%{name}.keyring
 Source3:        baselibs.conf
-# PATCH-FIX-OPENSUSE libgnt-ncurses-6.0-accessors.patch pidgin.im#16764 dimstar@opensuse.org -- Fix build with NCurses 6.0 with WINDOW_OPAQUE set to 1.
-Patch0:         libgnt-ncurses-6.0-accessors.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 GNT is an ncurses toolkit for creating text-mode graphical user
@@ -60,7 +58,7 @@ and development tools necessary for compiling and linking
 applications which will use GNT.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}-dev
 
 %build
 %meson -D python2=false
@@ -69,9 +67,7 @@ applications which will use GNT.
 %install
 %meson_install
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
 %license COPYING
@@ -79,10 +75,10 @@ applications which will use GNT.
 %{_libdir}/%{name}.so.%{sover}*
 
 %files -n %{name}-devel
-%{_datadir}/gtk-doc/*/%{name}/
-%{_includedir}/gnt/
+%{_datadir}/gtk-doc/html/%{name}
+%{_includedir}/gnt
 %{_libdir}/%{name}.so
-%{_libdir}/gnt/
+%{_libdir}/gnt
 %{_libdir}/pkgconfig/gnt.pc
 
 %changelog
