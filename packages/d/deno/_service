@@ -8,7 +8,7 @@
    <param name="url">https://github.com/denoland/deno</param>
    <!-- param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param -->
    <param name="versionformat">@PARENT_TAG@</param>
-   <param name="revision">v2.1.6</param>
+   <param name="revision">v2.1.9</param>
    <param name="versionrewrite-pattern">v(.*)</param>
    <param name="versionrewrite-replacement">\1</param>
    <param name="changesgenerate">enable</param>
@@ -22,7 +22,7 @@
  </service>
  <service name="roast" mode="manual">
    <param name="target">deno</param>
-   <param name="outfile">deno-2.1.6.tar.zst</param>
+   <param name="outfile">deno-2.1.9.tar.zst</param>
    <param name="preserve-root">true</param>
    <param name="reproducible">true</param>
  </service>

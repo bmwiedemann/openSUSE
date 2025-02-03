@@ -3491,4 +3491,78 @@
 </comment>
     <requestid>1238679</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>7bc38bdc56b7d737aff4bcc8f3831221</srcmd5>
+    <version>2.1.7</version>
+    <time>1738007635</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.7:
+  * fix: use serde feature for log crate in cli/lib
+  * fix(ext/node): add FileHandle#sync
+  * fix(deps): update yanked crates
+  * fix(install/global): remove importMap field from specified config file
+  * fix(ext/os): pass SignalState to web worker
+  * fix(ext/node): GCM auth tag check on DechiperIv#final
+  * docs(readme): update redirected links
+  * perf(compile): remove swc from denort</comment>
+    <requestid>1240358</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>678aaf89842a48dfd0758bef9bf18e58</srcmd5>
+    <version>2.1.9</version>
+    <time>1738615440</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.9:
+  * perf(crypto): use ring for asm implementations of sha256/sha512
+  * fix(ext/node): add http information support
+  * fix(core): Fix `create_stack_trace` from empty trace
+  * fix(lsp): ignore errors on ambient module imports
+  * fix(init): correct dev task for --lib
+  * fix(ext/node): implement `crypto.hash`
+  * fix(check): better handling of TypeScript in npm packages for type checking
+  * docs: jsdocs for URL web API
+  * fix(check): compiler options from workspace members
+  * fix(process/windows): correct command resolution when PATH env var not uppercase
+  * fix(npmrc): merge `.npmrc` in user's homedir and project
+  * fix(ext/node): clear tz cache when setting process.env.TZ
+  * fix(ext/crypto): fix jwk key_ops validation
+  * fix(ext/node): implement `aes-128-ctr`, `aes-192-ctr`, and `aes-256-ctr`
+  * fix(ext/node): do not apply socket-init-workaround to ipc socket
+  * chore: remove unused npm package fixtures
+  * perf(node_resolver): reduce url to/from path conversions
+  * fix(install/global): warn about not including auto-discovered config file
+  * fix(ext/crypto): export private x25519 JWK key
+  * chore: fix deno_resolver non-sync build
+  * fix(ext/node): implement X509Certificate#checkHost
+  * fix(ext/node): fix panic when invalid AES GCM key size
+  * fix(ext/node): fix async variant of brotliDecompress
+  * chore(ext/node): remove internal/streams/buffer_list.mjs
+  * fix(ext/node): scrypt panic when `log_n` &gt; 64
+  * fix(core): handle dyn imports exceeding call stack size
+  * fix(ext/node): npm:mqtt compatibility
+  * fix(ext/fetch): update h2 to fix sending a PROTOCOL_ERROR instead of REFUSED_STREAM when receiving oversized headers
+  * perf(lsp): cache completion item resolution during request
+  * chore: remove LSP global symbols count tests
+  * fix(node): align type stripping in node_modules error message with Node
+  * fix(types): `Deno.readDirSync`'s type returns an `IteratorObject`
+  * refactor: make PackageJsonCache injectable
+  * chore: update ensure_registry_files_local to handle scoped packages
+  * refactor(tsc): remove TS program creation during snapshotting
+  * chore: trim registry.json files in tests/registry/npm
+  * refactor(node_resolver): remove some allocations and lookups
+  * refactor: add `WorkspaceFactory` and `ResolverFactory`
+  * fix: do not log cache creation failure on readonly file system
+  * fix(publish): unfurl sloppy imports in d.ts files and type imports
+  * refactor(tsc): split TS compiler into multiple files, use ESM
+  * refactor: use DataUrl from deno_media_type
+  * chore: fix hmr build
+  * fix(lsp): silence debug error for 'move to a new file' action
+  * fix(ext/node): reference error in zlib.crc32
+  * feat(unstable): support https otlp endpoints
+  * perf: full LTO in sysroot
+  * fix(ext/node): fix formatting of debug logs
+  * chore: note in flags output that unstable is deprecated
+</comment>
+    <requestid>1242202</requestid>
+  </revision>
 </revisionlist>
