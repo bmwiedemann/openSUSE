@@ -1,7 +1,7 @@
 #
 # spec file for package lowdown
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%global soname liblowdown1
+%global soname liblowdown2
 #%%global version_string VERSION_1_1_0
 
 Name:           lowdown
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        Simple markdown translator
 License:        ISC
@@ -28,6 +28,7 @@ License:        ISC
 URL:            https://github.com/kristapsdz/lowdown
 #Source:         %%{name}-%%{version_string}.tar.gz
 Source:         %{name}-%{version}.tar.gz
+BuildRequires:  bmake
 BuildRequires:  fdupes
 
 %description
@@ -62,11 +63,14 @@ significantly.
 %build
 export CFLAGS="%{optflags}"
 ./configure PREFIX=%{_prefix} MANDIR=%{_mandir} LIBDIR=%{_libdir}
-%make_build
+#%%make_build
+bmake
 
 %install
-%make_install
-%make_install install_libs
+#%%make_install
+bmake install DESTDIR=%{buildroot}
+#%%make_install install_libs
+bmake install DESTDIR=%{buildroot} install_libs
 rm %{buildroot}%{_libdir}/*.a
 chmod a+rx %{buildroot}%{_libdir}/liblowdown.so*
 %fdupes -s %{buildroot}

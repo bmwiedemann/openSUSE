@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 26 21:22:44 UTC 2025 - scott.bradnick@suse.com
+
+- Updating soname from liblowdown1 -> liblowdown2
+- Switching to using bmake vs. make otherwise the following error is thrown:
+  Makefile:131: *** missing separator.  Stop.
+- Update to version 2.0.0:
+  * Add latest version notes.
+  * Tidy -fsanitize options.
+  * Remove white-space.
+  * Fix term test cases with links
+  * term: Close link after closing style
+  * Sync changes from lowdown.1.
+  * Get ready for "semver" version.
+  * Enhance Mac OSX sandbox_init() ignoring.
+  * Allow sandbox_init() errors to be ignored.
+  * Don't use tiny font sizes.
+  * Simplify www page.
+  * Add an sblg template.
+  * Add forgotten template directories.
+
+-------------------------------------------------------------------
 Thu Dec 26 00:53:43 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.4.0:
