@@ -73,4 +73,13 @@
     <comment></comment>
     <requestid>1199146</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ae89c2a6b8a2c71623fc2194d38ea120</srcmd5>
+    <version>1.5.1</version>
+    <time>1738615515</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Make non-uniform rebinning work for Weight() and friends</comment>
+    <requestid>1242833</requestid>
+  </revision>
 </revisionlist>
