@@ -71,4 +71,21 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151645 from dimstar)</comment>
     <requestid>1151700</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5300b9cf815b47c17edc5e66cec41cea</srcmd5>
+    <version>20240910</version>
+    <time>1738615235</time>
+    <user>anag+factory</user>
+    <comment>- update to current state (10th sept 2024)
+  Includes follow security fixes:
+    CVE-2019-13217: heap buffer overflow in start_decoder()
+    CVE-2019-13218: stack buffer overflow in compute_codewords()
+    CVE-2019-13219: uninitialized memory in vorbis_decode_packet_rest()
+    CVE-2019-13220: out-of-range read in draw_line()
+    CVE-2019-13221: issue with large 1D codebooks in lookup1_values()
+    CVE-2019-13222: unchecked NULL returned by get_window()
+    CVE-2019-13223: division by zero in predict_point()
+  boo#1216478</comment>
+    <requestid>1241592</requestid>
+  </revision>
 </revisionlist>

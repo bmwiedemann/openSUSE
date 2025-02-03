@@ -1,7 +1,7 @@
 #
 # spec file for package stb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stb
-Version:        20230129
+Version:        20240910
 Release:        0
 Summary:        Single-File Public Domain Libraries for C/C++
 License:        MIT OR Unlicense
@@ -95,7 +95,7 @@ includedir=%{_includedir}
 
 Name:           %{name}
 Description:    %{summary}
-Version:        %{version}
+Version:        20240910%{version}
 Cflags:         -I\${includedir}/stb
 EOF
 
