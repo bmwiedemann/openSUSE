@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  2 10:54:54 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.8
+  * Updated 'dict' handling for responses without a body and 500
+    responses with a non-JSON body to use an empty dictionary.
+
+-------------------------------------------------------------------
 Tue Dec 24 07:36:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.7
