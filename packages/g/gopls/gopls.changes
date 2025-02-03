@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 31 05:13:20 UTC 2025 - Timothy Brown <stimut@gmail.com>
+
+- Update to version 0.17.1:
+  * gopls: update go.mod for v0.17.1-pre.1
+  * gopls/internal/cache/testfuncs: fix crash with *error argument
+  * gopls/internal/golang/completion: fix crash in instance conversion
+
+-------------------------------------------------------------------
 Wed Dec 11 15:57:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.17.0:

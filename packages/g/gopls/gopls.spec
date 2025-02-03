@@ -1,7 +1,7 @@
 #
 # spec file for package gopls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gopls
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        Go LSP protocol language server
 License:        Apache-2.0 AND MIT AND BSD-3-Clause

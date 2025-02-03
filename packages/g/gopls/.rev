@@ -214,4 +214,15 @@
   * gopls/internal/crash: don't crash in xrefs on out of bound nodes (forwarded request 1230664 from jfkw)</comment>
     <requestid>1230665</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>01e3cd6f8bbb4e400b8119b7b2e381e8</srcmd5>
+    <version>0.17.1</version>
+    <time>1738615334</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.17.1:
+  * gopls: update go.mod for v0.17.1-pre.1
+  * gopls/internal/cache/testfuncs: fix crash with *error argument
+  * gopls/internal/golang/completion: fix crash in instance conversion</comment>
+    <requestid>1241677</requestid>
+  </revision>
 </revisionlist>
