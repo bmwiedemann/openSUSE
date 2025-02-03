@@ -17,4 +17,12 @@
   * List bridges with no interfaces attached</comment>
     <requestid>1237450</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>afdf3f4a0550d77cd3ab2c4c8e9cc471</srcmd5>
+    <version>0.2</version>
+    <time>1738615416</time>
+    <user>anag+factory</user>
+    <comment>- Use no macros in url in .spec for packtrack</comment>
+    <requestid>1242091</requestid>
+  </revision>
 </revisionlist>

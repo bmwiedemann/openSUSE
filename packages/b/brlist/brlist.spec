@@ -23,7 +23,7 @@ Version:        0.2
 Release:        0
 Summary:        Tool for listing linux bridges with their member interfaces
 License:        GPL-3.0-or-later
-URL:            https://github.com/asdil12/%{name}
+URL:            https://github.com/asdil12/brlist
 Source0:        https://github.com/asdil12/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  fdupes
