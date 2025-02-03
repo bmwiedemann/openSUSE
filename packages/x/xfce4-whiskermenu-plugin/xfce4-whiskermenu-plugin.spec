@@ -16,28 +16,29 @@
 #
 
 
-%define panel_version 4.14
+%define panel_version 4.16
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
-Version:        2.8.4
+Version:        2.9.0
 Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.8/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.9/%{name}-%{version}.tar.bz2
+BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.45
-BuildRequires:  pkgconfig(exo-2) >= 0.12
+BuildRequires:  pkgconfig(exo-2) >= 4.16
 BuildRequires:  pkgconfig(garcon-1) >= 0.6.4
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.14
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.16
 # BuildRequires:  xfce4-dev-tools
 Recommends:     %{name}-lang
 # package was renamed in 2019 after Leap 15.1
