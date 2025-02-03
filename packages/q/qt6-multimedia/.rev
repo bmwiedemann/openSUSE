@@ -215,4 +215,20 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228195</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>533b761709fc887f95f1858180a8ff93</srcmd5>
+    <version>6.8.1</version>
+    <time>1738072725</time>
+    <user>anag+factory</user>
+    <comment>- Fix license. (forwarded request 1240583 from alarrosa)</comment>
+    <requestid>1240597</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>170a8eb79a5c25a41a55668e904c17cf</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615256</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242054</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-multimedia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.1
+%define real_version 6.8.2
 %define short_version 6.8
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,10 +28,10 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Qt 6 Multimedia libraries
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt6-multimedia-rpmlintrc
@@ -197,8 +197,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-quick3dspatialaudio-private-devel
 Summary:        Qt 6 Quick3DSpatialAudio library - Development files
 Requires:       libQt6Quick3DSpatialAudio6 = %{version}
-Requires:       cmake(Qt6Quick3D) = %{version}
-Requires:       cmake(Qt6SpatialAudio) = %{version}
+Requires:       cmake(Qt6Quick3D) = %{real_version}
+Requires:       cmake(Qt6SpatialAudio) = %{real_version}
 %requires_eq    qt6-quick3d-private-devel
 
 %description -n qt6-quick3dspatialaudio-private-devel
