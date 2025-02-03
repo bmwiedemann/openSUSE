@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:59:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3.1:
+  + New release to fix 47.3 release not having any tarball
+  + Also revert a string freeze break.
+- Changes from version 47.3:
+  + Bugs fixed:
+    - Cycle through entries in location bar history
+    - Can't import Firefox bookmarks in HTML format
+    - Opening a page from history resets focus, dialog stays on
+      screen
+    - Crash in process_terminated_cb()
+    - Cannot delete web apps with apostrophe in name
+    - ctrl+k crashes in web_app mode
+    - session: fix crash on startup when no tabs are present
+    - Misc. history dialog fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 22 19:57:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:
