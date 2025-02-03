@@ -157,4 +157,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment>Update to 2.33</comment>
     <requestid>1203527</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fd3f0c0f00c5c6c953ae5d938af7523a</srcmd5>
+    <version>25.1.0</version>
+    <time>1738615420</time>
+    <user>anag+factory</user>
+    <comment>Update to 25.1.0</comment>
+    <requestid>1242118</requestid>
+  </revision>
 </revisionlist>

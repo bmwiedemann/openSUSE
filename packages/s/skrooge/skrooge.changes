@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Feb  1 14:20:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.1.0
+  * Correction kde#494197: Shortcut for Setting Status to Checked
+  * Correction kde#494159: Wrong decimal separator in CSV import
+  * Correction kde#494516: Categories "closed" are not displayed
+  * Correction kde#494023: Downloading values from yahoo fails
+    HTTP Error 401: Unauthorized
+  * Correction kde#494077: document History panel and better
+    document viewing transactions modified by an action
+  * Correction kde#498157: Inconsistent icons in the Pages
+    sidebar
+  * Correction: Replace yahoo source (not working) by
+    Boursorama source
+  * Correction: More robust copy of tables
+  * Migration: Support build on qt6/kf6
+  * Correction: Fix performances issue on qt6 due to
+    QDateTime::fromString
+
+-------------------------------------------------------------------
 Wed Sep 25 10:25:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.33:
