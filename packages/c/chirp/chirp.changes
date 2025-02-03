@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Feb  1 17:00:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250131:
+  * Add support for Icom IC-F621, Kenwood TK-981, TK-481 
+  * Updated Spanish and Italian translations
+  * Bug fixes
+
+-------------------------------------------------------------------
+Sat Jan 25 08:01:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250124:
+  * Add TK-880 and TK-780 support
+  * TK690: Add test frequencies to settings, fix power level
+    handling, and fix k3 band limits
+  * tk280: Add mobile-only key definitions
+  * kguv920p: Fix initializing new memories
+  * tk8180: Support key assignments
+  * tk8180: Add battery save, warning, pttid settings
+  * tk8180: Fix loading settings with multiple zones
+  * tk280: Add OST backup and direct settings
+  * Minor UI tweaks and translation updates
+
+-------------------------------------------------------------------
 Sat Jan 18 11:40:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250117:

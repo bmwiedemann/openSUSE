@@ -79,4 +79,20 @@
     <comment>chirp 20250117 (forwarded request 1238675 from AndreasStieger)</comment>
     <requestid>1238677</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5225bb027e98466342aafcd9d2382cd8</srcmd5>
+    <version>20250124</version>
+    <time>1737828785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240240</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>149c1e8731e8a428fab7b2450cba9874</srcmd5>
+    <version>20250131</version>
+    <time>1738615427</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242129</requestid>
+  </revision>
 </revisionlist>
