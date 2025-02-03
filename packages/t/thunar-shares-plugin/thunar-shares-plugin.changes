@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jan 19 08:57:27 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.4.0:
+  * Fix string leaks in tsp_provider_get_menu
+  * Use xfconf channel to toggle contect menu contribution
+  * Context menu contribution to share folder
+  * tsp-page: Fix string leak in tsp_page_set_error
+  * build: Add ACLOCAL_FLAGS to ACLOCAL_AMFLAGS
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Add missing check for bind_textdomain_codeset
+  * I18n: Update po/LINGUAS list
+  * build: Cleanup autotools warning, remove intltool
+  * tsp-page: Replace gnome-fs-share with folder-publicshare icon
+  * Update documentation link
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Jan 11 09:30:55 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Package renamed from thunar-plugin-shares to thunar-shares-plugin to 
