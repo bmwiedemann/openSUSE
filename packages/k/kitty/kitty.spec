@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.39.0
+Version:        0.39.1
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only

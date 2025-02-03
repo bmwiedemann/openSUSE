@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  2 19:51:43 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.39.1:
+  * Splits layout: Allow setting the bias of the current split using
+    `layout_action bias` (#8222)
+  * hints kitten: Workaround for some broken light color themes that make the
+    hints text color too low contrast to read (#7330)
+  * Wayland niri: Fix 250ms delay on startup when using scale 1 (#8236)
+  * Watchers: Add a new event `on_color_scheme_preference_change` (#8246)
+
+-------------------------------------------------------------------
 Thu Jan 16 06:37:26 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.39.0:
