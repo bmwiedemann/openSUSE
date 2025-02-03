@@ -1,7 +1,7 @@
 #
 # spec file for package easy-rsa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 Stefan Jakobs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define         pname EasyRSA
 Name:           easy-rsa
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        CLI utility to build and manage a PKI CA
 License:        GPL-2.0-or-later

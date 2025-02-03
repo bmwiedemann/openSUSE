@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb  1 14:52:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.2.2:
+  * Remove redundant file: index.txt.attr
+  * sign-req: Allow custom X509 Types
+  * Add LibreSSL version 4 to supported SSL Libraries
+  * Revoke remove private inline
+  * Easyrsa disable inline
+  * easyrsa-tools.lib: renew SAN, remove excess word 'Address'
+  * easyrsa-tls.lib: renew, make sed regex for 'IP Address' greedy
+  * Show expire allow zero days
+  * easyrsa-tools.lib: New command 'renew ca'
+  * Improve CRL expiration details
+  * Tools move to easyrsa3
+  * vars.example: Remove $EASYRSA_PKI
+  * Introduce new command revoke-issued
+  * Bugfix renew ca and renew
+  * Always use locate_support_files() after secure_session()
+  * revoke: Make check for conflicting files less intrusive
+  * Forbid a self-signed certificate from being expired/renewed/revoked
+  * V321 minor final
+  * op-test.sh: Disable download ossl3 and shellcheck binaries
+  * Revert: Do not remove index.txt.attr
+  * Fold easyrsa-tools.lib into easyrsa
+
+-------------------------------------------------------------------
 Sat Nov 30 02:54:52 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.2.1:
