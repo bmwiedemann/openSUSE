@@ -1399,4 +1399,21 @@ build with uclibc</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1231347</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>642a2287974c1c8f6461c0918273237f</srcmd5>
+    <version>3.1+20250106</version>
+    <time>1738615525</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1+20250106:
+  * Freestanding fortify implementation
+  * Freestanding intrinsic implementation
+  * Freestanding klee-libc implementation
+  * Freestanding runtime implementation
+  * Freestanding errno implementation (falls back to host when available)
+  * Define _LARGEFILE64_SOURCE at the beginning of necessary files
+  * Add an option to generate XML test cases
+  * fix ASan support for GCC 14 (and modernize it)
+- switch to llvm 14, as llvm 16 is used solely by klee</comment>
+    <requestid>1242811</requestid>
+  </revision>
 </revisionlist>

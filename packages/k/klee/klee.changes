@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 03 12:05:59 UTC 2025 - jslaby@suse.cz
+
+- Update to version 3.1+20250106:
+  * Freestanding fortify implementation
+  * Freestanding intrinsic implementation
+  * Freestanding klee-libc implementation
+  * Freestanding runtime implementation
+  * Freestanding errno implementation (falls back to host when available)
+  * Define _LARGEFILE64_SOURCE at the beginning of necessary files
+  * Add an option to generate XML test cases
+  * fix ASan support for GCC 14 (and modernize it)
+- switch to llvm 14, as llvm 16 is used solely by klee
+
+-------------------------------------------------------------------
 Mon Dec 09 07:10:04 UTC 2024 - jslaby@suse.cz
 
 - Update to version 3.1+20241105:

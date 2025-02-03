@@ -1,7 +1,7 @@
 #
 # spec file for package klee
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version 16
+%define llvm_version 14
 
 %ifarch x86_64
 %define with_uclibc 1
@@ -30,7 +30,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        3.1+20241105
+Version:        3.1+20250106
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
