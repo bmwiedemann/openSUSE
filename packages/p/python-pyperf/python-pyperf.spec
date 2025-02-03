@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyperf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyperf
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Python module to run and analyze benchmarks
 License:        MIT
@@ -44,6 +44,7 @@ Python module to run and analyze benchmarks.
 
 %prep
 %setup -q -n pyperf-%{version}
+sed -i '/\/usr\/bin\/env\ python3/d' pyperf/tests/mult_list_bench.py
 
 %build
 %pyproject_wheel
@@ -66,6 +67,8 @@ Python module to run and analyze benchmarks.
 %doc README.rst
 %license COPYING
 %python_alternative %{_bindir}/pyperf
-%{python_sitelib}/*
+%{python_sitelib}/pyperf
+%{python_sitelib}/pyperf
+%{python_sitelib}/pyperf-%{version}.dist-info
 
 %changelog
