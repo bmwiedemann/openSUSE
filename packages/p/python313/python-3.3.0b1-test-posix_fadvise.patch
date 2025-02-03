@@ -4,7 +4,7 @@
 
 --- a/Lib/test/test_posix.py
 +++ b/Lib/test/test_posix.py
-@@ -435,7 +435,7 @@ class PosixTester(unittest.TestCase):
+@@ -437,7 +437,7 @@ class PosixTester(unittest.TestCase):
      def test_posix_fadvise(self):
          fd = os.open(os_helper.TESTFN, os.O_RDONLY)
          try:

@@ -1,7 +1,7 @@
 #
 # spec file for package python313
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,14 @@
 %endif
 %endif
 
+# Only for Tumbleweed
+# https://en.opensuse.org/openSUSE:Python:Externally_managed
+%if 0%{?suse_version} > 1600
+%bcond_without externally_managed
+%else
+%bcond_with externally_managed
+%endif
+
 %define         python_pkg_name python313
 %if %{without GIL}
 %define         python_pkg_name python313-nogil
@@ -111,7 +119,7 @@
 # %%define tarversion %%{version}
 # %%endif
 # We don't process beta signs well
-%define         folderversion 3.13.0
+%define         folderversion %{version}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
 %define         abi_kind   %{nil}
@@ -149,15 +157,15 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.0
-%define         tarversion 3.13.0
+Version:        3.13.1
+%define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
 URL:            https://www.python.org/
 Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
-Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
+Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.sigstore
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source4:        externally_managed.in
@@ -206,9 +214,9 @@ Patch09:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
-# PATCH-FIX-UPSTREAM CVE-2024-9287-venv_path_unquoted.patch gh#python/cpython#124651 mcepl@suse.com
-# venv should properly quote path names provided when creating a venv
-Patch41:        CVE-2024-9287-venv_path_unquoted.patch
+# PATCH-FIX-UPSTREAM CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch bsc#1234290 mcepl@suse.com
+# prevents exhaustion of memory
+Patch41:        CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -490,8 +498,7 @@ This package contains libpython3.2 shared library for embedding in
 other applications.
 
 %prep
-%setup -q -n %{tarname}
-%autopatch -p1
+%autosetup -p1 -n %{tarname}
 
 # Fix devhelp doc build gh#python/cpython#120150
 echo "master_doc = 'contents'" >> Doc/conf.py
@@ -797,7 +804,7 @@ rm %{buildroot}%{_libdir}/libpython3.so
 rm %{buildroot}%{_libdir}/pkgconfig/{python3,python3-embed}.pc
 %endif
 
-%if %{suse_version} > 1550
+%if %{with externally_managed}
 # PEP-0668 mark this as a distro maintained python
 sed -e 's,__PYTHONPREFIX__,%{python_pkg_name},' -e 's,__PYTHON__,python%{python_version},' < %{SOURCE4} > %{buildroot}%{sitedir}/EXTERNALLY-MANAGED
 %endif
@@ -999,7 +1006,7 @@ fi
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
 %endif
 
-%if %{suse_version} > 1550
+%if %{with externally_managed}
 # PEP-0668
 %{sitedir}/EXTERNALLY-MANAGED
 %endif

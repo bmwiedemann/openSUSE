@@ -24,58 +24,12 @@ Co-authored-by: Miro Hrončok <miro@hroncok.cz>
 Co-authored-by: Michal Cyprian <m.cyprian@gmail.com>
 Co-authored-by: Lumír Balhar <frenzy.madness@gmail.com>
 ---
- Lib/site.py                |  9 ++++++-
- Lib/sysconfig.py           | 49 +++++++++++++++++++++++++++++++++++++-
- Lib/test/test_sysconfig.py | 17 +++++++++++--
- 3 files changed, 71 insertions(+), 4 deletions(-)
+ Lib/sysconfig/__init__.py  |   57 +++++++++++++++++++++++++++++++++++++++++----
+ Lib/test/test_sysconfig.py |   17 +++++++++++--
+ 2 files changed, 67 insertions(+), 7 deletions(-)
 
-Index: Python-3.13.0b4/Lib/test/test_sysconfig.py
-===================================================================
---- Python-3.13.0b4.orig/Lib/test/test_sysconfig.py
-+++ Python-3.13.0b4/Lib/test/test_sysconfig.py
-@@ -121,8 +121,19 @@ class TestSysConfig(unittest.TestCase):
-         for scheme in _INSTALL_SCHEMES:
-             for name in _INSTALL_SCHEMES[scheme]:
-                 expected = _INSTALL_SCHEMES[scheme][name].format(**config_vars)
-+                tested = get_path(name, scheme)
-+                # https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
-+                if tested.startswith('/usr/local'):
-+                    # /usr/local should only be used in posix_prefix
-+                    self.assertEqual(scheme, 'posix_prefix')
-+                    # Fedora CI runs tests for venv and virtualenv that check for other prefixes
-+                    self.assertEqual(sys.prefix, '/usr')
-+                    # When building the RPM of Python, %check runs this with RPM_BUILD_ROOT set
-+                    # Fedora CI runs this with RPM_BUILD_ROOT unset
-+                    self.assertNotIn('RPM_BUILD_ROOT', os.environ)
-+                    tested = tested.replace('/usr/local', '/usr')
-                 self.assertEqual(
--                    os.path.normpath(get_path(name, scheme)),
-+                    os.path.normpath(tested),
-                     os.path.normpath(expected),
-                 )
- 
-@@ -377,7 +388,7 @@ class TestSysConfig(unittest.TestCase):
-         self.assertTrue(os.path.isfile(config_h), config_h)
- 
-     def test_get_scheme_names(self):
--        wanted = ['nt', 'posix_home', 'posix_prefix', 'posix_venv', 'nt_venv', 'venv']
-+        wanted = ['nt', 'posix_home', 'posix_prefix', 'posix_venv', 'nt_venv', 'venv', 'rpm_prefix']
-         if HAS_USER_BASE:
-             wanted.extend(['nt_user', 'osx_framework_user', 'posix_user'])
-         self.assertEqual(get_scheme_names(), tuple(sorted(wanted)))
-@@ -389,6 +400,8 @@ class TestSysConfig(unittest.TestCase):
-             cmd = "-c", "import sysconfig; print(sysconfig.get_platform())"
-             self.assertEqual(py.call_real(*cmd), py.call_link(*cmd))
- 
-+    @unittest.skipIf('RPM_BUILD_ROOT' not in os.environ,
-+                     "Test doesn't expect Fedora's paths")
-     def test_user_similar(self):
-         # Issue #8759: make sure the posix scheme for the users
-         # is similar to the global posix_prefix one
-Index: Python-3.13.0b4/Lib/sysconfig/__init__.py
-===================================================================
---- Python-3.13.0b4.orig/Lib/sysconfig/__init__.py
-+++ Python-3.13.0b4/Lib/sysconfig/__init__.py
+--- a/Lib/sysconfig/__init__.py
++++ b/Lib/sysconfig/__init__.py
 @@ -106,6 +106,11 @@ if os.name == 'nt':
  else:
      _INSTALL_SCHEMES['venv'] = _INSTALL_SCHEMES['posix_venv']
@@ -88,7 +42,7 @@ Index: Python-3.13.0b4/Lib/sysconfig/__init__.py
  def _get_implementation():
      return 'Python'
  
-@@ -167,6 +172,19 @@ if _HAS_USER_BASE:
+@@ -167,13 +172,28 @@ if _HAS_USER_BASE:
              },
      }
  
@@ -108,7 +62,16 @@ Index: Python-3.13.0b4/Lib/sysconfig/__init__.py
  _SCHEME_KEYS = ('stdlib', 'platstdlib', 'purelib', 'platlib', 'include',
                  'scripts', 'data')
  
-@@ -261,11 +279,40 @@ def _extend_dict(target_dict, other_dict
+ _PY_VERSION = sys.version.split()[0]
+ _PY_VERSION_SHORT = f'{sys.version_info[0]}.{sys.version_info[1]}'
+ _PY_VERSION_SHORT_NO_DOT = f'{sys.version_info[0]}{sys.version_info[1]}'
++_PREFIX = os.path.normpath(sys.prefix)
+ _BASE_PREFIX = os.path.normpath(sys.base_prefix)
++_EXEC_PREFIX = os.path.normpath(sys.exec_prefix)
+ _BASE_EXEC_PREFIX = os.path.normpath(sys.base_exec_prefix)
+ # Mutex guarding initialization of _CONFIG_VARS.
+ _CONFIG_VARS_LOCK = threading.RLock()
+@@ -259,11 +279,40 @@ def _extend_dict(target_dict, other_dict
          target_dict[key] = value
  
  
@@ -150,3 +113,57 @@ Index: Python-3.13.0b4/Lib/sysconfig/__init__.py
      if os.name == 'nt':
          # On Windows we want to substitute 'lib' for schemes rather
          # than the native value (without modifying vars, in case it
+@@ -464,10 +513,8 @@ def _init_config_vars():
+     # Normalized versions of prefix and exec_prefix are handy to have;
+     # in fact, these are the standard versions used most places in the
+     # Distutils.
+-    _PREFIX = os.path.normpath(sys.prefix)
+-    _EXEC_PREFIX = os.path.normpath(sys.exec_prefix)
+-    _CONFIG_VARS['prefix'] = _PREFIX  # FIXME: This gets overwriten by _init_posix.
+-    _CONFIG_VARS['exec_prefix'] = _EXEC_PREFIX  # FIXME: This gets overwriten by _init_posix.
++    _CONFIG_VARS['prefix'] = _PREFIX
++    _CONFIG_VARS['exec_prefix'] = _EXEC_PREFIX
+     _CONFIG_VARS['py_version'] = _PY_VERSION
+     _CONFIG_VARS['py_version_short'] = _PY_VERSION_SHORT
+     _CONFIG_VARS['py_version_nodot'] = _PY_VERSION_SHORT_NO_DOT
+--- a/Lib/test/test_sysconfig.py
++++ b/Lib/test/test_sysconfig.py
+@@ -130,8 +130,19 @@ class TestSysConfig(unittest.TestCase):
+         for scheme in _INSTALL_SCHEMES:
+             for name in _INSTALL_SCHEMES[scheme]:
+                 expected = _INSTALL_SCHEMES[scheme][name].format(**config_vars)
++                tested = get_path(name, scheme)
++                # https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++                if tested.startswith('/usr/local'):
++                    # /usr/local should only be used in posix_prefix
++                    self.assertEqual(scheme, 'posix_prefix')
++                    # Fedora CI runs tests for venv and virtualenv that check for other prefixes
++                    self.assertEqual(sys.prefix, '/usr')
++                    # When building the RPM of Python, %check runs this with RPM_BUILD_ROOT set
++                    # Fedora CI runs this with RPM_BUILD_ROOT unset
++                    self.assertNotIn('RPM_BUILD_ROOT', os.environ)
++                    tested = tested.replace('/usr/local', '/usr')
+                 self.assertEqual(
+-                    os.path.normpath(get_path(name, scheme)),
++                    os.path.normpath(tested),
+                     os.path.normpath(expected),
+                 )
+ 
+@@ -386,7 +397,7 @@ class TestSysConfig(unittest.TestCase):
+         self.assertTrue(os.path.isfile(config_h), config_h)
+ 
+     def test_get_scheme_names(self):
+-        wanted = ['nt', 'posix_home', 'posix_prefix', 'posix_venv', 'nt_venv', 'venv']
++        wanted = ['nt', 'posix_home', 'posix_prefix', 'posix_venv', 'nt_venv', 'venv', 'rpm_prefix']
+         if HAS_USER_BASE:
+             wanted.extend(['nt_user', 'osx_framework_user', 'posix_user'])
+         self.assertEqual(get_scheme_names(), tuple(sorted(wanted)))
+@@ -398,6 +409,8 @@ class TestSysConfig(unittest.TestCase):
+             cmd = "-c", "import sysconfig; print(sysconfig.get_platform())"
+             self.assertEqual(py.call_real(*cmd), py.call_link(*cmd))
+ 
++    @unittest.skipIf('RPM_BUILD_ROOT' not in os.environ,
++                     "Test doesn't expect Fedora's paths")
+     def test_user_similar(self):
+         # Issue #8759: make sure the posix scheme for the users
+         # is similar to the global posix_prefix one

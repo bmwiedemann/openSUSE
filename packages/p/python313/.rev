@@ -490,4 +490,49 @@
     <comment></comment>
     <requestid>1227320</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3939dadd6bf1a800644b15d384da5806</srcmd5>
+    <version>3.13.1</version>
+    <time>1737651420</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch
+  preventing exhaustion of memory (gh#python/cpython#127655,
+  bsc#1234290, CVE-2024-12254).
+
+- Update to 3.13.1:
+  - Tools/Demos
+    - gh-126807: Fix extraction warnings in pygettext.py caused
+      by mistaking function definitions for function calls.
+    - gh-126167: The iOS testbed was modified so that it can be
+      used by third-party projects for testing purposes.
+  - Tests
+    - gh-126909: Fix test_os extended attribute tests to work on
+      filesystems with 1 KiB xattr size limit.
+    - gh-125041: Re-enable skipped tests for zlib on the
+      s390x architecture: only skip checks of the compressed
+      bytes, which can be different between zlib’s software
+      implementation and the hardware-accelerated implementation.
+    - gh-124295: Add translation tests to the argparse module.
+  - Security
+    - gh-126623: Upgrade libexpat to 2.6.4
+    - gh-125140: Remove the current directory from sys.path when
+      using PyREPL.
+    - gh-122792: Changed IPv4-mapped ipaddress.IPv6Address to
+      consistently use the mapped IPv4 address value for deciding
+      properties. Properties which have their behavior fixed are
+      is_multicast, is_reserved, is_link_local, is_global, and
+      is_unspecified.
+  - Library
+    - gh-127321: pdb.set_trace() will not stop at an opcode that
+      does not have an associated line number anymore.</comment>
+    <requestid>1228971</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fd4cf91525e5cf9318d7ca477911cab7</srcmd5>
+    <version>3.13.1</version>
+    <time>1738615234</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241509</requestid>
+  </revision>
 </revisionlist>
