@@ -1,7 +1,7 @@
 #
 # spec file for package sane-airscan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sane-airscan
-Version:        0.99.31
+Version:        0.99.32
 Release:        0
 Summary:        Universal driver for Apple AirScan (eSCL) and WSD
 License:        SUSE-GPL-2.0+-with-sane-exception

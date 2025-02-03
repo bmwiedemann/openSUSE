@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/alexpevzner/sane-airscan.git</param>
     <param name="scm">git</param>
-    <param name="revision">0.99.31</param>
+    <param name="revision">0.99.32</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

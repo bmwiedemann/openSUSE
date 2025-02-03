@@ -77,4 +77,16 @@
   * Update README.md: updated Gentoo support status (forwarded request 1233963 from rrahl0)</comment>
     <requestid>1233966</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4026b47fee66637b4b7592135a00b2f5</srcmd5>
+    <version>0.99.32</version>
+    <time>1738615401</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.99.32:
+  * docs: Add Brother ADS-4300N
+  * Added the &quot;pretend-local&quot; configuration option to treat networked scanners
+    as if they were locally attached
+  * sane-airscan.5 is automatically generated from sane-aircan.5.md (forwarded request 1242008 from rrahl0)</comment>
+    <requestid>1242009</requestid>
+  </revision>
 </revisionlist>

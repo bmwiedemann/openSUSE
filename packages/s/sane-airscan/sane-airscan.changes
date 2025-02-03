@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 01 00:18:11 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 0.99.32:
+  * docs: Add Brother ADS-4300N
+  * Added the "pretend-local" configuration option to treat networked scanners
+    as if they were locally attached
+  * sane-airscan.5 is automatically generated from sane-aircan.5.md
+
+-------------------------------------------------------------------
 Mon Dec 30 22:28:33 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 0.99.31:
