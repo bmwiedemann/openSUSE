@@ -378,4 +378,21 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228186</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>52c724667ec7f227636dd298c2881eb2</srcmd5>
+    <version>6.8.1</version>
+    <time>1737490171</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix qmlsc detection:
+  * 0001-CMake-Fix-find_package-call-in-Qt6QmlFindQmlscIntern.patch</comment>
+    <requestid>1238702</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>6fb64c3d00ea64caa3471bcdef7d7ff1</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615251</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242045</requestid>
+  </revision>
 </revisionlist>

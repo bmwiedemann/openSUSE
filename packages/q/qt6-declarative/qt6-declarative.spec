@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.1
+%define real_version 6.8.2
 %define short_version 6.8
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -426,6 +426,7 @@ ABI or API guarantees.
 
 
 ### Private only libraries ###
+
 %package -n libQt6LabsPlatform6
 Summary:        Qt 6 LabsPlatform library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -875,6 +876,7 @@ This library does not have any ABI or API guarantees.
 
 
 ### Static libraries ###
+
 %package -n qt6-packetprotocol-devel-static
 Summary:        Qt6 PacketProtocol static library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only

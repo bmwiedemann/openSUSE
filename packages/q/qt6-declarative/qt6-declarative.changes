@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:22:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  https://www.qt.io/blog/qt-6.8.2-released
+- Drop patch, merged upstream:
+  * 0001-CMake-Fix-find_package-call-in-Qt6QmlFindQmlscIntern.patch
+
+-------------------------------------------------------------------
+Sat Jan 18 15:34:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix qmlsc detection:
+  * 0001-CMake-Fix-find_package-call-in-Qt6QmlFindQmlscIntern.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 13:02:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.1:
