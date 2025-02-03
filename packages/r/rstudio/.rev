@@ -265,4 +265,15 @@ Rebase patches:
     <comment></comment>
     <requestid>1171310</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>33e3fd5dadb35f5bf8d99265196891a7</srcmd5>
+    <version>2024.04.0+735</version>
+    <time>1738615327</time>
+    <user>anag+factory</user>
+    <comment>- Do not link to bundled mathjax since rstudio is using the system
+  version.
+
+- Use %autosetup: all supported openSUSE versions support this by (forwarded request 1241674 from anag+factory)</comment>
+    <requestid>1241758</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 31 12:04:41 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Do not link to bundled mathjax since rstudio is using the system
+  version.
+
+-------------------------------------------------------------------
 Tue Apr 30 21:25:36 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - New upstream release 2024.04.0+735. (boo#1223378)
@@ -89,7 +95,7 @@ Tue Apr 30 21:25:36 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 -------------------------------------------------------------------
 Fri Feb 23 11:41:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- USe %autosetup: all supported openSUSE versions support this by
+- Use %autosetup: all supported openSUSE versions support this by
   now.
 
 -------------------------------------------------------------------

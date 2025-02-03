@@ -1,7 +1,7 @@
 #
 # spec file for package rstudio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -384,8 +384,8 @@ popd
 
 # symlink the location where the bundled mathjax should be to
 # /usr/share/javascript/mathjax as mathjax-%%{bundled_mathjax_short_version}
-ln -sf %{_datadir}/javascript/mathjax \
-    %{buildroot}%{_libexecdir}/%{name}/resources/mathjax-%{bundled_mathjax_short_version}
+#ln -sf %{_datadir}/javascript/mathjax \
+#    %{buildroot}%{_libexecdir}/%{name}/resources/mathjax-%{bundled_mathjax_short_version}
 
 # cleanup
 find %{buildroot}%{_libexecdir}/%{name} -name .gitignore -delete
