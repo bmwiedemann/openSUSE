@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 31 23:39:37 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_radeonsi-disallow-compute-queues-on-Raven-Raven2-due.patch 
+  * Fixes: 58b512ddd6e - radeonsi: execute clears at resource 
+    allocation using compute instead of gfx
+  * Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/12310
+
+-------------------------------------------------------------------
+Wed Jan 22 22:10:01 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 24.3.4
+  --> https://docs.mesa3d.org/relnotes/24.3.4
+
+-------------------------------------------------------------------
 Sun Jan 12 20:38:28 UTC 2025 - Mikhail Paulyshka <me@mixaill.net>
 
 - aarch64: enable build of panvk driver

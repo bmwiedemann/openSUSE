@@ -6102,4 +6102,24 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1237561</requestid>
   </revision>
+  <revision rev="529" vrev="401">
+    <srcmd5>8f0ccd1fe7f991a6fa190e85a21451f4</srcmd5>
+    <version>unknown</version>
+    <time>1737722288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 24.3.4
+  --&gt; https://docs.mesa3d.org/relnotes/24.3.4</comment>
+    <requestid>1239673</requestid>
+  </revision>
+  <revision rev="530" vrev="402">
+    <srcmd5>1bc204cf3dd33804e17da30a80a7faab</srcmd5>
+    <version>unknown</version>
+    <time>1738615243</time>
+    <user>anag+factory</user>
+    <comment>- U_radeonsi-disallow-compute-queues-on-Raven-Raven2-due.patch 
+  * Fixes: 58b512ddd6e - radeonsi: execute clears at resource 
+    allocation using compute instead of gfx
+  * Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/12310</comment>
+    <requestid>1242004</requestid>
+  </revision>
 </revisionlist>

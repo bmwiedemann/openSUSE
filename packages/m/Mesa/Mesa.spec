@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 24.3.3
+%define _version 24.3.4
 %else
 %define _version 24.1.7
 %endif
@@ -150,7 +150,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        24.3.3
+Version:        24.3.4
 %else
 Version:        24.1.7
 %endif
@@ -181,8 +181,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-24.3.3.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-24.3.3.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-24.3.4.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-24.3.4.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -201,6 +201,9 @@ Patch400:       n_stop-iris-flicker.patch
 Patch500:       u_dep_xcb.patch
 %else
 Patch500:       u_dep_xcb-s390x.patch
+%endif
+%ifnarch s390x
+Patch600:       U_radeonsi-disallow-compute-queues-on-Raven-Raven2-due.patch
 %endif
 %ifnarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913.patch
@@ -882,6 +885,9 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 100 -p1
 %patch -P 400 -p1
 %patch -P 500 -p1
+%ifnarch s390x
+%patch -P 600 -p1
+%endif
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
