@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Fri Jan 17 22:45:43 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 2.2.0
+  * New features
+    * /plugins/substitute: Allow the replacement string to use capture groups
+      from the match. It is thus possible to create more general rules,
+      applying to many different artists at once.
+  * Bug fixes
+    * Bring back test files and the manual to the source distribution tarball.
+    * Fix bug where matcher doesn't consider medium number when importing. This
+      makes it difficult to import hybrid SACDs and other releases with
+      duplicate tracks.
+    * Check if running python from the Microsoft Store and provide feedback to
+      install from python.org.
+  * Other changes
+    * Changed bitesize label to good first issue. Our contribute page is now
+      automatically populated with these issues.
+- Update to 2.1.0
+  * New features
+    * Ability to query albums with track db fields and vice-versa, for example
+      beet list -a title:something or beet list artpath:cover. Consequently
+      album queries involving path field have been sped up, like beet list -a
+      path:/path/.
+    * Beets now uses platformdirs to determine the default music directory.
+      This location varies between systems -- for example, users can configure
+      it on Unix systems via user-dirs.dirs(5).
+    * New template function added: %capitalize. Converts the first letter of
+      the text to uppercase and the rest to lowercase.
+    * Plugin autobpm: Add new configuration option beat_track_kwargs which
+      enables adjusting keyword arguments supplied to librosa's beat_track
+      function call.
+    * Plugin ftintitle: New keep_in_artist option for the plugin, which allows
+      keeping the "feat." part in the artist metadata while still changing the
+      title.
+  * Bug fixes
+    * Album flexible fields are now correctly saved. For instance MusicBrainz
+      external links such as bandcamp_album_id will be available on albums in
+      addition to tracks. For albums already in your library, a re-import is
+      required for the fields to be added. Such a re-import can be done with,
+      in this case, beet import -L data_source:=MusicBrainz.
+    * Fix lyrics plugin only getting part of the lyrics from Genius.com
+    * Fix the TypeError when set_fields is provided non-string values.
+    * Fix the auto value for the reflink config option.
+    * Improve naming of temporary files by separating the random part with the
+      file extension.
+    * Plugin autobpm: Fix the TypeError where tempo was being returned as a
+      numpy array. Update librosa dependency constraint to prevent similar
+      issues in the future.
+    * Plugin convert: Fixed the convert plugin no_convert option so that it no
+      longer treats "and" and "or" queries the same. To maintain previous
+      behaviour add commas between your query keywords. For help see
+      combiningqueries.
+    * Plugin discogs: Fix the TypeError when there is no description.
+    * Plugin ftintitle: The detection of a "feat. X" part in a song title does
+      not produce any false positives caused by words like "and" or "with"
+      anymore.
+    * Plugin ftintitle: The detection of a "feat. X" part now also matches such
+      parts if they are in parentheses or brackets.
+    * Plugin lyrics: Update tekstowo backend to fetch lyrics directly since
+      recent updates to their website made it unsearchable.
+    * Use single quotes in all SQL queries
+  * For packagers
+    * The beet script has been removed from the repository.
+    * The typing_extensions is required for Python 3.10 and below.
+    * The minimum supported Python version is now 3.8.
+  * Other changes
+    * Added caching for dependency installation in all CI jobs which speeds
+      them up a bit, especially the tests.
+    * GitHub workflows have been reorganised for clarity: style, linting, type
+      and docs checks now live in separate jobs and are named accordingly.
+    * Installation instructions have been made consistent across plugins
+      documentation. Users should simply install beets with an extra of the
+      corresponding plugin name in order to install extra dependencies for that
+      plugin.
+    * Plugin autobpm: Add plugin dependencies to pyproject.toml under the
+      autobpm extra and update the plugin installation instructions in the
+      docs. Since importing the bpm calculation functionality from librosa
+      takes around 4 seconds, update the plugin to only do so when it actually
+      needs to calculate the bpm. Previously this import was being done
+      immediately, so every beet invocation was being delayed by a couple of
+      seconds.
+    * The linting workflow has been made to run only when Python files or
+      documentation is changed, and they only check the changed files. When
+      dependencies are updated (poetry.lock), then the entire code base is
+      checked.
+    * The long-deprecated beets.util.confit module has been removed. This may
+      cause extremely outdated external plugins to fail to load.
+    * contributing: Since poetry now manages local virtual environments, tox
+      has been replaced by a task runner poethepoet. This change affects beets
+      developers and contributors. Please see updates in the development-tools
+      section for more details. Type poe while in the project directory to see
+      the available commands.
+    * contributing: The project now uses poetry for packaging and dependency
+      management. This change affects project management and mostly affects
+      beets developers. Please see updates in getting-the-source and testing
+      for more information.
+
+-------------------------------------------------------------------
 Tue Jul  9 12:20:21 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - Update to 2.0.0

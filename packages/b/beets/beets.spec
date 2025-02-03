@@ -1,7 +1,7 @@
 #
 # spec file for package beets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,15 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+# Build only one time
+%define pythons %{primary_python}
+%else
+# Build only with python 3.11
+%{?sle15_python_module_pythons}
+%endif
 Name:           beets
-Version:        2.0.0
+Version:        2.2.0
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
@@ -29,11 +36,13 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Unidecode
 BuildRequires:  python3-confuse >= 1.5.0
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.8.0
 BuildRequires:  python3-jellyfish
 BuildRequires:  python3-mediafile >= 0.12.0
 BuildRequires:  python3-munkres
 BuildRequires:  python3-musicbrainzngs >= 0.4
+BuildRequires:  python3-pip
+BuildRequires:  python3-poetry-core
 BuildRequires:  python3-setuptools
 # test requirements
 BuildRequires:  python3-Flask
@@ -55,6 +64,8 @@ Requires:       python3-jellyfish
 Requires:       python3-mediafile >= 0.12.0
 Requires:       python3-munkres
 Requires:       python3-musicbrainzngs >= 0.4
+Requires:       python3-musicbrainzngs >= 0.4
+Requires:       python3-platformdirs
 Recommends:     ffmpeg
 Recommends:     python3-Flask
 Recommends:     python3-Flask-Cors
@@ -106,10 +117,10 @@ Writing additional plugins for beets is possible using Python.
 %setup -q -n beets-%{version}
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
 %fdupes %{buildroot}
 
 %files
