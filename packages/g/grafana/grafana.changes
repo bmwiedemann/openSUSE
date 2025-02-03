@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:43:36 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.3.3:
+  Security:
+  * CVE-2024-11741: Fix the Grafana Alerting VictorOps integration
+    (bsc#1236734)
+  * Chore: Bump dependency golang.org/x/crypto to v0.31.0
+  * Drop 0004-Bump-crypto.patch
+  * Require Go 1.23.5 or newer for building
+
+- Add provisioning directories
+
+-------------------------------------------------------------------
+Wed Jan 22 11:23:26 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require Go 1.23.1 or newer for building
+
+- Update to version 11.3.2:
+  Bug fixes:
+  * Do not fetch Orgs if the user is authenticated by apikey/sa or
+    render key
+  * Alerting: Fix incorrect 500 code on missing alert rule
+    dashboardUID / panelID
+  * Alerting: Fix contact points secure settings migration
+  * DashboardScene: Fix layout issues with repeated panels when
+    repeatDirection is missing
+  * Scenes: Fix angular migrations that are using the targets
+    property on the old panel model
+
+- Update to version 11.3.1:
+  Features and enhancements:
+  * Alerting: Make context deadline on AlertNG service startup
+    configurable
+  * MigrationAssistant: Restrict dashboards, folders and
+    datasources by the org id of the signed in user
+  * User: Check SignedInUser OrgID in RevokeInvite
+  Bug fixes:
+  * Alerting: Fix escaping of silence matchers in utf8 mode
+  * Alerting: Fix overflow for long receiver names
+  * Alerting: Fix saving advanced mode toggle state in the alert
+    rule editor
+  * Alerting: Fix setting datasource uid, when datasource is string
+    in old version
+  * Alerting: Force refetch prom rules when refreshing panel
+  * Anonymous User: Adds validator service for anonymous users
+  * Azure Monitor: Support metric namespaces fallback
+  * Azure: Fix duplicated traces in multi-resource trace query
+  * Azure: Handle namespace request rejection
+  * CloudWatch: Interpolate region in log context query
+  * Dashboard datasource: Return annotations as series when query
+    topic is "annotations"
+  * Dashboard: Append orgId to URL
+  * Dashboards: Fixes performance issue expanding a row
+  * Flame Graph: Fix crash when it receives empty data
+  * Folders: Add admin permissions upon creation of a folder w. SA
+  * Folders: Don't show error pop-up if the user can't fetch the
+    root folder
+  * Migration: Remove table aliasing in delete statement to make it
+    work for mariadb
+  * ServerLock: Fix pg concurrency/locking issue
+  * Service Accounts: Run service account creation in transaction
+  * Table: Fix text wrapping applying to wrong field
+  * Unified Storage: Use ssl_mode instead of sslmode
+
+- Update to version 11.3.0+security-01:
+  Security:
+  * MigrationAssistant: CVE-2024-9476 Fix Migration Assistant issue
+    (bsc#1233343)
+
+-------------------------------------------------------------------
 Fri Jan 17 10:40:22 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Fix incidentally wrongly uploaded source code tarball without

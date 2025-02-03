@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        11.3.0
+Version:        11.3.3
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -37,12 +37,10 @@ Source3:        README
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
 Patch2:         0002-Use-bash-instead-of-env.patch
-# CVE-2024-45337 Bump golang.org/x/crypto
-Patch4:         0004-Bump-crypto.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  wire
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.23.5
 Requires(post): %fillup_prereq
 Requires:       group(grafana)
 Requires:       user(grafana)
@@ -96,6 +94,11 @@ install -d -m0750 %{buildroot}%{_localstatedir}/log/%{name}
 install -d -m0755 %{buildroot}/%{_localstatedir}/lib/%{name}/plugins
 install -d -m0755 %{buildroot}/%{_localstatedir}/lib/%{name}/dashboards
 install -d -m0755 %{buildroot}%{_sysconfdir}/%{name}/provisioning/dashboards
+install -d -m0755 %{buildroot}%{_sysconfdir}/%{name}/provisioning/datasources
+install -d -m0755 %{buildroot}%{_sysconfdir}/%{name}/provisioning/plugins
+install -d -m0755 %{buildroot}%{_sysconfdir}/%{name}/provisioning/notifiers
+install -d -m0755 %{buildroot}%{_sysconfdir}/%{name}/provisioning/access-control
+install -d -m0755 %{buildroot}%{_sysconfdir}/%{name}/provisioning/alerting
 
 install -Dm640 conf/sample.ini %{buildroot}%{_sysconfdir}/%{name}/%{name}.ini
 install -Dm640 {conf/,%{buildroot}%{_sysconfdir}/%{name}/}ldap.toml
@@ -103,6 +106,9 @@ install -Dm644 {conf/,%{buildroot}%{_datadir}/%{name}/conf/}defaults.ini
 install -m644 {conf/,%{buildroot}%{_datadir}/%{name}/conf/}sample.ini
 install -Dm644 {conf/provisioning/dashboards/,%{buildroot}%{_datadir}/%{name}/conf/provisioning/dashboards/}sample.yaml
 install -Dm644 {conf/provisioning/datasources/,%{buildroot}%{_datadir}/%{name}/conf/provisioning/datasources/}sample.yaml
+install -Dm644 {conf/provisioning/plugins/,%{buildroot}%{_datadir}/%{name}/conf/provisioning/plugins/}sample.yaml
+install -Dm644 {conf/provisioning/access-control/,%{buildroot}%{_datadir}/%{name}/conf/provisioning/access-control/}sample.yaml
+install -Dm644 {conf/provisioning/alerting/,%{buildroot}%{_datadir}/%{name}/conf/provisioning/alerting/}sample.yaml
 cp -pr public %{buildroot}%{_datadir}/%{name}/
 install -d -m755 %{buildroot}%{_datadir}/%{name}/vendor
 install -d -m755 %{buildroot}%{_datadir}/%{name}/tools
@@ -141,6 +147,11 @@ install -d -m755 %{buildroot}%{_datadir}/%{name}/tools
 %attr(0755,root,root) %dir %{_sysconfdir}/%{name}
 %attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning
 %attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning/dashboards
+%attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning/datasources
+%attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning/plugins
+%attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning/access-control
+%attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning/alerting
+%attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning/notifiers
 %attr(0755,root,grafana) %dir %{_datadir}/%{name}/conf
 %attr(0640,root,grafana) %config(noreplace) %{_sysconfdir}/%{name}/%{name}.ini
 %attr(0640,root,grafana) %config(noreplace) %{_sysconfdir}/%{name}/ldap.toml
@@ -151,6 +162,9 @@ install -d -m755 %{buildroot}%{_datadir}/%{name}/tools
 %doc %{_datadir}/%{name}/conf/sample.ini
 %doc %{_datadir}/%{name}/conf/provisioning/dashboards/sample.yaml
 %doc %{_datadir}/%{name}/conf/provisioning/datasources/sample.yaml
+%doc %{_datadir}/%{name}/conf/provisioning/plugins/sample.yaml
+%doc %{_datadir}/%{name}/conf/provisioning/access-control/sample.yaml
+%doc %{_datadir}/%{name}/conf/provisioning/alerting/sample.yaml
 %config %{_datadir}/%{name}/conf/defaults.ini
 %{_datadir}/%{name}
 
