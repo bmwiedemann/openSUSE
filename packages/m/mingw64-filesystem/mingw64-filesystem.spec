@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-filesystem
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw64-filesystem
-Version:        20241118
+Version:        20250202
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
