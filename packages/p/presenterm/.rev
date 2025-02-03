@@ -243,4 +243,38 @@
   * Wrap code snippets if they don't fit in terminal (#320).</comment>
     <requestid>1206040</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5fb194eede05dae02f41a63aaf7578a</srcmd5>
+    <version>0.10.0+0</version>
+    <time>1738615474</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.0:
+  New features:
+  * Support for presentation speaker notes (#389) (#419) (#421) (#425)
+  * Add support for colored text via inline span HTML tags (#390).
+  * Add a color palette in themes to allow reusing colors across the theme and using predefined colors inside
+  span tags (#427).
+  * Add support for github/gitlab style markdown alerts (#423) (#430).
+  * Allow using +image on code blocks to consume their output as an image (#429).
+  * Allow multiline comment commands (#424).
+  * Allow auto rendering mermaid/typst/latex code blocks (#418).
+  * Allow capping max columns on presentation (#417).
+  * Automatically detect kitty support, including when running inside tmux (#406).
+  * Use kitty image protocol in ghostty (#405).
+  * Force color output in rust, c, and c++ compiler executions (#401).
+  * Add graphql code highlighting (#385)
+  * Add tcl code highlighting (#387)
+  * Add Haskell executor (#414)
+  * Add C# to code executors (#399)
+  * Add R to executors (#393)
+  Fixes:
+  * Check for term_program before term to determine emulator (#420).
+  * Allow jumping back to column in column layout (#396).
+  * Ignore comments that start with vim: prefix (#395).
+  * Respect +no_background on a +exec_replace block (#383).
+  Docs:
+  * Document tmux active session bug (#402).
+  * Add notes on running bat directly (#397).</comment>
+    <requestid>1242306</requestid>
+  </revision>
 </revisionlist>
