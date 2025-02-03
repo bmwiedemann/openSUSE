@@ -151,4 +151,20 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228210</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>eb58f837f461164a181cfb0ddaf11c51</srcmd5>
+    <version>6.8.1</version>
+    <time>1737828599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240130</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b469f36becc86d88ae17dd33f9528e1a</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615276</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242069</requestid>
+  </revision>
 </revisionlist>
