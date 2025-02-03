@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:41:58 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250127.107d023:
+  * Remove unecessary packagelist status report from SLFO 1.1
+
+-------------------------------------------------------------------
+Tue Jan 21 07:24:47 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250121.32785d6:
+  * devel-project: skip to update reminder repeatedly for particular projects
+
+-------------------------------------------------------------------
+Tue Jan 14 11:08:46 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250114.0d374c1:
+  * gocd: checkers.suse: Drop Marble pipelines and add SLFO checkers.
+
+-------------------------------------------------------------------
+Thu Jan 09 09:32:37 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250109.0f73b87:
+  * Adjust the staging configuration of ALP to maintenance needs
+
+-------------------------------------------------------------------
 Thu Dec 19 08:13:52 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20241219.396fe69:
