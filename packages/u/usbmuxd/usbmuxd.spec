@@ -1,7 +1,7 @@
 #
 # spec file for package usbmuxd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,9 @@ autoreconf -fiv
 
 %install
 %make_install
+%if 0%{?suse_version} < 1600
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+%endif
 install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %pre -f %{name}.pre
@@ -85,7 +87,9 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
 %license COPYING.GPLv2 COPYING.GPLv3
 %doc AUTHORS README.md
 %{_sbindir}/usbmuxd
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rc%{name}
+%endif
 %{_mandir}/man8/usbmuxd.8%{?ext_man}
 %{_udevrulesdir}/39-usbmuxd.rules
 %{_unitdir}/usbmuxd.service
