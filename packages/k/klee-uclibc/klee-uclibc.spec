@@ -1,7 +1,7 @@
 #
 # spec file for package klee-uclibc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version 16
+%define llvm_version 14
 
 Name:           klee-uclibc
 Summary:        Libc library for Klee

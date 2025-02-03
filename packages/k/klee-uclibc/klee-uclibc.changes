@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:04:57 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- switch to llvm 14, as llvm 16 is used solely by klee
+
+-------------------------------------------------------------------
 Mon Dec 09 06:54:14 UTC 2024 - jslaby@suse.cz
 
 - Update to version 1.4+git.20240531:

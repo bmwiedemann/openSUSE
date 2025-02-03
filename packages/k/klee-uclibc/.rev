@@ -231,4 +231,12 @@
 - drop our uClibc-locale-030818.tgz as it is now in the tarball</comment>
     <requestid>1231330</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>b48f21155ac61db6079cfd7386de9c0b</srcmd5>
+    <version>1.4+git.20240531</version>
+    <time>1738615524</time>
+    <user>anag+factory</user>
+    <comment>- switch to llvm 14, as llvm 16 is used solely by klee</comment>
+    <requestid>1242809</requestid>
+  </revision>
 </revisionlist>
