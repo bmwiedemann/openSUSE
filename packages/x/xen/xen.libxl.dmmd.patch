@@ -43,7 +43,7 @@ References: bsc#954872
      case LIBXL_DISK_BACKEND_STANDALONE:
 --- a/tools/libs/light/libxl_dm.c
 +++ b/tools/libs/light/libxl_dm.c
-@@ -1197,6 +1197,30 @@ out:
+@@ -1181,6 +1181,30 @@ out:
      return rc;
  }
  
@@ -74,7 +74,7 @@ References: bsc#954872
  static int libxl__build_device_model_args_new(libxl__gc *gc,
      const char *dm, int guest_domid,
      const libxl_domain_config *guest_config,
-@@ -1891,9 +1915,11 @@ static int libxl__build_device_model_arg
+@@ -1873,9 +1897,11 @@ static int libxl__build_device_model_arg
                  libxl__device_disk_dev_number(disks[i].vdev, &disk, &part);
              const char *format;
              char *drive;

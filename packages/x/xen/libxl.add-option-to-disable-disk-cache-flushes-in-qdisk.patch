@@ -87,7 +87,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
 ===================================================================
 --- xen-4.20.0-testing.orig/tools/libs/light/libxl_dm.c
 +++ xen-4.20.0-testing/tools/libs/light/libxl_dm.c
-@@ -1019,14 +1019,27 @@ enum {
+@@ -1003,14 +1003,27 @@ enum {
      LIBXL__COLO_SECONDARY,
  };
  
@@ -117,7 +117,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
      const char *exportname = disk->colo_export;
      const char *active_disk = disk->active_disk;
      const char *hidden_disk = disk->hidden_disk;
-@@ -1085,8 +1098,8 @@ static char *qemu_disk_ide_drive_string(
+@@ -1069,8 +1082,8 @@ static char *qemu_disk_ide_drive_string(
      switch (colo_mode) {
      case LIBXL__COLO_NONE:
          drive = GCSPRINTF
@@ -128,7 +128,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
          break;
      case LIBXL__COLO_PRIMARY:
          /*
-@@ -1099,13 +1112,14 @@ static char *qemu_disk_ide_drive_string(
+@@ -1083,13 +1096,14 @@ static char *qemu_disk_ide_drive_string(
           *  vote-threshold=1
           */
          drive = GCSPRINTF(
@@ -145,7 +145,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
          break;
      case LIBXL__COLO_SECONDARY:
          /*
-@@ -1119,7 +1133,7 @@ static char *qemu_disk_ide_drive_string(
+@@ -1103,7 +1117,7 @@ static char *qemu_disk_ide_drive_string(
           *  file.backing.backing=exportname,
           */
          drive = GCSPRINTF(
@@ -154,7 +154,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
              "driver=replication,"
              "mode=secondary,"
              "top-id=top-colo,"
-@@ -1128,7 +1142,8 @@ static char *qemu_disk_ide_drive_string(
+@@ -1112,7 +1126,8 @@ static char *qemu_disk_ide_drive_string(
              "file.backing.driver=qcow2,"
              "file.backing.file.filename=%s,"
              "file.backing.backing=%s",
@@ -164,7 +164,7 @@ Index: xen-4.20.0-testing/tools/libs/light/libxl_dm.c
          break;
      default:
           abort();
-@@ -2003,8 +2018,8 @@ static int libxl__build_device_model_arg
+@@ -1985,8 +2000,8 @@ static int libxl__build_device_model_arg
                          return ERROR_INVAL;
                      }
                      flexarray_vappend(dm_args, "-drive",

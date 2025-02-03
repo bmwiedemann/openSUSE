@@ -103,6 +103,7 @@ BuildRequires:  lzo-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(systemd)
 %ifarch x86_64
@@ -124,7 +125,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.0_02
+Version:        4.20.0_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -907,12 +908,15 @@ find %{buildroot} \( \
 	-name "*.dtb" -o \
 	-name "openbios-*" -o \
 	-name "petalogix*" -o \
-	-name "ppc*" -o \
 	-name "*.pyc" -o \
 	-name "s390*" -o \
 	-name "slof*" -o \
 	-name "spapr*" -o \
-	-name "*.egg-info" \) \
+        -name "PKG-INFO" -o \
+        -name "SOURCES.txt" -o \
+        -name "dependency_links.txt" -o \
+        -name "top_level.txt" -o \
+        -name "*.egg-info" \) \
 	-print -delete
 # Wipe empty directories
 if find %{buildroot}/usr -type d -print0 | xargs -0n1 rmdir -p 2>/dev/null

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Jan 31 09:59:45 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.0 RC3 release
+  * x86/HVM: correct MMIO emulation cache bounds check
+  * x86/HVM: allocate emulation cache entries dynamically
+  * x86/HVM: correct read/write split at page boundaries
+  * x86/iommu: check for CMPXCHG16B when enabling IOMMU
+  * iommu/vtd: remove non-CX16 logic from interrupt remapping
+  * x86/iommu: remove non-CX16 logic from DMA remapping
+  * iommu/amd: atomically update IRTE
+  * x86emul: further correct 64-bit mode zero count repeated string
+    insn handling
+  * x86/PV: further harden guest memory accesses against speculative
+    abuse
+  * x86/intel: Fix PERF_GLOBAL fixup when virtualised
+
+-------------------------------------------------------------------
+Fri Jan 31 08:49:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add explicit build dependency on python3-setuptools, needed by python313
+
+-------------------------------------------------------------------
+Mon Jan 20 05:46:51 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.0 RC2 release
+  * xen/arm: Fully initialise struct membanks_hdr fields
+  * build: Set DATE to SOURCE_DATE_EPOCH if available (for 
+    reproducible builds)
+  * x86: Add Support for Paging-Write Feature
+  * x86/time: introduce command line option to select wallclock
+  * x86/time: prefer CMOS over EFI_GET_TIME
+  * xentrace: free CPU mask string before overwriting pointer
+  * xl: properly dispose of vTPM struct instance
+  * xl: properly dispose of libxl_dominfo struct instances
+  * Various documentation fixes and updates (including ppc and
+    riscv additions)
+  * Various MISRA compliance improvements.
+
+-------------------------------------------------------------------
+Fri Jan 10 12:43:42 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.0 RC1 release
+  * x86/amd: Misc setup for Fam1Ah processors
+  * xen/perfc cleanups and adjustments
+  * libxl: drop setting XEN_QEMU_CONSOLE_LIMIT in the environment
+    (XSA-180 / CVE-2014-3672)
+  * x86emul: VCVT{,U}DQ2PD ignores embedded rounding
+  * x86emul: correct put_fpu()'s segment selector handling
+  * xen/flask: Wire up XEN_DOMCTL_dt_overlay and XEN_DOMCTL_set_llc_colors
+  * xen/events: fix race with set_global_virq_handler()
+
+-------------------------------------------------------------------
 Mon Jan  6 06:01:11 MST 2025 - carnold@suse.com
 
 - Update to Xen 4.20.0 pre-release (jsc#PED-8907)

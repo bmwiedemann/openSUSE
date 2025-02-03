@@ -3014,4 +3014,28 @@
     <comment>Update to Xen version 4.20.0</comment>
     <requestid>1235233</requestid>
   </revision>
+  <revision rev="355" vrev="1">
+    <srcmd5>2e3a60f72eb62232bfe144bff00f07a1</srcmd5>
+    <version>4.20.0_04</version>
+    <time>1737389644</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1238570</requestid>
+  </revision>
+  <revision rev="356" vrev="1">
+    <srcmd5>481fe323961fc2b78d4caf0d281dc333</srcmd5>
+    <version>4.20.0_06</version>
+    <time>1737559877</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen version 4.20.0 release candidate 2</comment>
+    <requestid>1239285</requestid>
+  </revision>
+  <revision rev="357" vrev="2">
+    <srcmd5>22a53552f482bd8a243a928f21dd0a51</srcmd5>
+    <version>4.20.0_06</version>
+    <time>1738615304</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen version 4.20.0 release candidate 3</comment>
+    <requestid>1241755</requestid>
+  </revision>
 </revisionlist>
