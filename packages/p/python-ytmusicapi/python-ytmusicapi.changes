@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  2 21:12:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.1
+  * get_playlist: support audio playlists
+  * improved ease of use for OAuthCredentials: now possible to
+    from ytmusicapi import OAuthCredentials
+  * Fixed an issue with get_playlist and related endpoints where
+    no more than 100 items would be returned with limit set to a
+    value >100
+
+-------------------------------------------------------------------
 Fri Dec 27 19:39:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.9.1
