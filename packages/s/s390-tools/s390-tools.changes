@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb  3 07:51:27 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied more additional patches (jsc#PED-11870, jec#PED-11958)
+  * s390-tools-08-rust-pvimg-Fix-flag-parsing-for-allowing-dump.patch
+  * s390-tools-09-rust-pvimg-Document-the-change-from--comm-key-to--cck.patch
+
+-------------------------------------------------------------------
+Thu Jan 30 08:19:47 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied additional patches ( jsc#PED-9561 ( jsc#IBM-1447 ) )
+  * s390-tools-01-zkey-Add-support-for-retrieving-a-list-of-ultravisor-secrets.patch
+  * s390-tools-02-zkey-Add-the--pvsecrets-list-command.patch
+  * s390-tools-03-zkey-Add-PVSECRETS-AES-key-type.patch
+  * s390-tools-04-zkey-Add-the-pvsecrets-import-command.patch
+  * s390-tools-05-zkey-Reject-key-generation-and-APQN-association-for-PVSECRET-AES-keys.patch
+  * s390-tools-06-zkey-Reject-re-enciphering-of-PVSECRET-AES-keys.patch
+  * s390-tools-07-zkey-Support-validation-of-key-of-type-PVSECRET-AES.patch
+- Revendored vendor.tar.gz
+
+-------------------------------------------------------------------
 Thu Jan  9 07:05:53 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied backport patches from s390-tools 2.37 to 2.36  ( jsc#PED-11870 )

@@ -1045,4 +1045,20 @@ Build succeeded on IBS (in a home project).</comment>
     <comment></comment>
     <requestid>1236146</requestid>
   </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>6caf160c1a3840b873885dbab819928c</srcmd5>
+    <version>2.36.0</version>
+    <time>1738245174</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241295</requestid>
+  </revision>
+  <revision rev="90" vrev="6">
+    <srcmd5>50ee70d603e92c21fe79afff359afdb4</srcmd5>
+    <version>2.36.0</version>
+    <time>1738615477</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242320</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,31 @@
+From caaf2b2116235d282c2561f0bf6f62b0033c78c4 Mon Sep 17 00:00:00 2001
+From: Jakob Naucke <naucke@linux.ibm.com>
+Date: Wed, 15 Jan 2025 17:36:01 +0100
+Subject: [PATCH] rust/pvimg: Fix flag parsing for allowing dump
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Parsing of pvimg flags did not pick up allowing dumping correctly.
+
+Fixes: f4cf4ae6ebb1 (rust: Add a new tool called 'pvimg')
+Reviewed-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+Signed-off-by: Jakob Naucke <naucke@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ rust/pvimg/src/cmd/create.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rust/pvimg/src/cmd/create.rs b/rust/pvimg/src/cmd/create.rs
+index 3e2ca655..c9d39745 100644
+--- a/rust/pvimg/src/cmd/create.rs
++++ b/rust/pvimg/src/cmd/create.rs
+@@ -55,7 +55,7 @@ fn parse_flags(
+             .and(Some(PcfV1::all_disabled([PcfV1::AllowDumping]))),
+         lf.enable_dump
+             .filter(|x| *x)
+-            .and(Some(PcfV1::all_disabled([PcfV1::AllowDumping]))),
++            .and(Some(PcfV1::all_enabled([PcfV1::AllowDumping]))),
+         lf.disable_pckmo
+             .filter(|x| *x)
+             .and(Some(PcfV1::all_disabled([

@@ -181,6 +181,16 @@ Patch960:       s390-tools-Support-unencrypted-SE-images-01.patch
 Patch961:       s390-tools-pvimg-info-command-04.patch
 Patch962:       s390-tools-pvimg-additional-01.patch
 ###
+Patch970:       s390-tools-01-zkey-Add-support-for-retrieving-a-list-of-ultravisor-secrets.patch
+Patch971:       s390-tools-02-zkey-Add-the--pvsecrets-list-command.patch
+Patch972:       s390-tools-03-zkey-Add-PVSECRETS-AES-key-type.patch
+Patch973:       s390-tools-04-zkey-Add-the-pvsecrets-import-command.patch
+Patch974:       s390-tools-05-zkey-Reject-key-generation-and-APQN-association-for-PVSECRET-AES-keys.patch
+Patch975:       s390-tools-06-zkey-Reject-re-enciphering-of-PVSECRET-AES-keys.patch
+Patch976:       s390-tools-07-zkey-Support-validation-of-key-of-type-PVSECRET-AES.patch
+Patch977:       s390-tools-08-rust-pvimg-Fix-flag-parsing-for-allowing-dump.patch
+Patch978:       s390-tools-09-rust-pvimg-Document-the-change-from--comm-key-to--cck.patch
+###
 Patch990:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
 
