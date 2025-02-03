@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:15:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with newer RPM where there is also a .specparts
+  directory. Be xplicit in unpacking *.gz instead of *.
+
+-------------------------------------------------------------------
 Sun May  3 12:35:45 UTC 2020 - mbrugger@suse.com
 
 - add first version 

@@ -1,7 +1,7 @@
 #
-# spec file for package raspberrypi-firmware
+# spec file for package bananapir2-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Binary bootloader and firmware files for Banana Pi R2
 
 %prep
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} ./
-gunzip *
+gunzip *.gz
 cp %{SOURCE0} ./
 
 %build
