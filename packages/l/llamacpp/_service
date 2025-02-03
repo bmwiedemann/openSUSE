@@ -4,7 +4,7 @@
     <param name="filename">llamacpp</param>
     <param name="url">https://github.com/ggerganov/llama.cpp.git</param>
     <param name="scm">git</param>
-    <param name="revision">b4501</param>
+    <param name="revision">b4589</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">b(.*)</param>
     <param name="changesgenerate">enable</param>

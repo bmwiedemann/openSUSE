@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Jan 31 14:32:30 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Build with curl support 
+
+-------------------------------------------------------------------
+Thu Jan 30 05:15:28 UTC 2025 - Fei Yang <io@feiyang.eu.org>
+
+- Update to version 4589:
+  * server : add /apply-template endpoint for additional use cases 
+    of Minja functionality
+  * vulkan: implement initial support for IQ2 and IQ3 quantizations
+  * vulkan: Catch pipeline creation failure and print an error
+    message
+  * Parse https://ollama.com/library/ syntax
+  * ggml : add option to not print stack on abort
+  * ggml-cpu : fix ggml_graph_compute_thread did not terminate on a
+    bort.
+  * embedding : enable --no-warmup option
+  * llama: fix missing k_cache store for rwkv6qwen2
+  * Add github protocol pulling and http://
+  * Handle missing model in CLI parameters for llama-run
+  * Add new hf protocol for ollama
+  * AMD: parse the architecture as supplied by gcnArchName
+  * llama : minor fixes for up llama load model speed 
+  * llama: refactor llama_decode_impl 
+  * cmake: add ggml find package
+  * rpc: fix register position 
+  * vulkan: compile shaders on-demand
+  * server : fix cleaning up stream task 
+  * server : (webui) put DeepSeek R1 CoT in a collapsible <details>
+    element
+  * Add -ngl 
+  * server : add more clean up when cancel_tasks is called 
+  * Treat hf.co/ prefix the same as hf:// 
+  * vulkan: sort shaders for more deterministic binary
+  * vulkan: fix diag_mask_inf
+  * server : fix draft context not being released
+  * minja : sync at https://github.com/google/minja/commit/0f5f7f2
+    b3770eb682fbc11763266d45204173686
+  * Adding logprobs to /v1/completions
+  * common : utils to split / join / repeat strings (from json con
+    verter) 
+  * llava : support Minicpm-omni
+  * Add Jinja template support
+  * export-lora : fix tok_embd tensor
+  * rpc : better caching of the base buffer pointer
+  * linenoise.cpp refactoring
+  * common : add -hfd option for the draft model
+  * vulkan: fix coopmat2 validation failures
+  * mmap: add include for cerrno
+  * llama : add support for Deepseek-R1-Qwen distill model
+  * cont : fix whitespaces
+  * llama : re-add LLM_ARCH_PHIMOE
+  * SYCL: Introducing memory host pool
+  * Adding linenoise.cpp to llama-run
+  * server : implement cancellable request
+  * tts : add guide tokens support
+  * vulkan: fix coopmat2 flash attention for non-contiguous inputs 
+    
+- Package ggml cmake scripts
+
+-------------------------------------------------------------------
 Fri Jan 17 15:37:49 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 4501:

@@ -17,7 +17,7 @@
 
 
 Name:           llamacpp
-Version:        4501
+Version:        4589
 Release:        0
 Summary:        llama-cli tool to run inference using the llama.cpp library
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  shaderc
 BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(vulkan)
 # 32bit seems not to be supported anymore
 ExcludeArch:    %{ix86} %{arm}
@@ -131,6 +132,7 @@ that depend on ggml.
     -DGGML_VULKAN=ON \
     -DGGML_OPENCL=ON \
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF \
+    -DLLAMA_CURL=ON
 
 %cmake_build
 
@@ -183,5 +185,6 @@ mv %{buildroot}%{_bindir}/convert_hf_to_gguf.py %{buildroot}%{_bindir}/convert_h
 %files -n ggml-devel
 %{_includedir}/ggml*.h
 %{_includedir}/gguf.h
+%{_libdir}/cmake/ggml
 
 %changelog

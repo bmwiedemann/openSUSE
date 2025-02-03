@@ -7,4 +7,22 @@
     <comment>Useful for LLM inference on consumer HW</comment>
     <requestid>1238533</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8df1e728c373d02e2819b5c3e12ef77a</srcmd5>
+    <version>4589</version>
+    <time>1738335891</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4589:
+- Package ggml cmake scripts
+</comment>
+    <requestid>1241557</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2d7f1feab7584a6e440d31f9dd0b2b21</srcmd5>
+    <version>4589</version>
+    <time>1738615488</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241683</requestid>
+  </revision>
 </revisionlist>
