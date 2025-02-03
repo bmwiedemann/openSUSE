@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:02:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Configure externally_managed with a bcond
+  https://en.opensuse.org/openSUSE:Python:Externally_managed
+  bsc#1228165
+
+-------------------------------------------------------------------
 Fri Dec  6 20:39:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch

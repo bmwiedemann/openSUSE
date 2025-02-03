@@ -1,7 +1,7 @@
 #
 # spec file for package python312
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,14 @@
 %bcond_without profileopt
 %else
 %bcond_with profileopt
+%endif
+
+# Only for Tumbleweed
+# https://en.opensuse.org/openSUSE:Python:Externally_managed
+%if 0%{?suse_version} > 1600
+%bcond_without externally_managed
+%else
+%bcond_with externally_managed
 %endif
 
 %define         python_pkg_name python312
@@ -727,7 +735,7 @@ rm %{buildroot}%{_libdir}/libpython3.so
 rm %{buildroot}%{_libdir}/pkgconfig/{python3,python3-embed}.pc
 %endif
 
-%if %{suse_version} > 1550
+%if %{with externally_managed}
 # PEP-0668 mark this as a distro maintained python
 sed -e 's,__PYTHONPREFIX__,%{python_pkg_name},' -e 's,__PYTHON__,python%{python_version},' < %{SOURCE4} > %{buildroot}%{sitedir}/EXTERNALLY-MANAGED
 %endif
@@ -925,7 +933,7 @@ fi
 %{_mandir}/man1/python3.1%{?ext_man}
 %endif
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
-%if %{suse_version} > 1550
+%if %{with externally_managed}
 # PEP-0668
 %{sitedir}/EXTERNALLY-MANAGED
 %endif
