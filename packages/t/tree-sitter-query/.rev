@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>1229558</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a3c7944dd0b6702b9284bce36538b6b</srcmd5>
+    <version>0.5.0</version>
+    <time>1738615534</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.0:
+  * fix: disallow empty groupings
+  * revert: fix: disallow empty groupings, alternations
+  * Support dot-prefixed predicates and MISSING keyword
+  * fix: allow captures, quantifiers after MISSING keyword (forwarded request 1242859 from rrahl0)</comment>
+    <requestid>1242860</requestid>
+  </revision>
 </revisionlist>

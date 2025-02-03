@@ -18,7 +18,7 @@
 
 %define         _name query
 Name:           tree-sitter-query
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Query grammar for tree-sitter
 License:        Apache-2.0
