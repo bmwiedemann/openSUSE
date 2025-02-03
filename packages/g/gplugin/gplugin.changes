@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Jan 31 20:18:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove a duplicate build dependency
+
+-------------------------------------------------------------------
+Fri Jan 31 13:35:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- switch over to sourceforge, so we have signed tarballs
+- add lua51-lgi as dependency for powerpc
+
+-------------------------------------------------------------------
+Wed Nov 27 12:28:21 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
