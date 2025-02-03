@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           brise
 Version:        20230603+git.5fdd2d6
 Release:        0
@@ -24,7 +23,6 @@ License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/brise
 Source:         brise-%{version}.tar.xz
-Source1:        rime-plum-go-%{version}.tar.xz
 Source99:       README
 BuildRequires:  golang(API) >= 1.17
 
@@ -35,13 +33,6 @@ Its idea comes from ancient Chinese brush and carving art.
 Mainly it's about to express your thinking with your keystrokes.
 
 Brise is the input schemas collection of Rime.
-
-%package -n rime-plum
-Summary:        Rime's configuration manager
-Group:          System/I18n/Chinese
-
-%description -n rime-plum
-Plum is rime's configuration manager.
 
 %package -n rime-schema-default
 Summary:        Default/Preset collection of rime schemas
@@ -329,27 +320,15 @@ wugniu input schema for rime.
 %prep
 %setup -q
 echo %{_builddir}
-mkdir -p %{_builddir}/go/src/github.com/marguerite
-tar -xf %{SOURCE1} -C %{_builddir}/go/src/github.com/marguerite
-cp -r %{_builddir}/go/src/github.com/marguerite/rime-plum-go-%{version}/vendor/* %{_builddir}/go/src/
 
 %build
-pushd %{_builddir}/go/src/github.com/marguerite/rime-plum-go-%{version}
-export GOPATH=%{_builddir}/go
-go build
-popd
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m 0755 %{_builddir}/go/src/github.com/marguerite/rime-plum-go-%{version}/rime-plum-go %{buildroot}%{_bindir}/rime-plum
 mkdir -p %{buildroot}%{_datadir}/rime-data
 cp -r package/rime/custom/*.recipe.yaml %{buildroot}%{_datadir}/rime-data
 rm -rf package
 rm -rf config.txt
 cp -r * %{buildroot}%{_datadir}/rime-data
-
-%files -n rime-plum
-%{_bindir}/rime-plum
 
 %files -n rime-schema-default
 %dir %{_datadir}/rime-data

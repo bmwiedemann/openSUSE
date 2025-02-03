@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  2 18:18:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Split rime-plum-go out of brise:
+  * go-git is rime-plum-go's component, it meet security issue of
+    the argument injection vulnerability, when rime-plum-go deliver
+    under brise's source code, it is hard to update seperately.
+  * rime-plum-go is a separate project and has a different upstream.
+  * I have done my best to keep the original code the same in
+    respect of Marguerite's hard work.
+  (CVE-2025-2161, bsc#1235573)
+
+-------------------------------------------------------------------
 Mon Sep  4 18:18:06 UTC 2023 - Cliff Zhao <qzhao@suse.com>
 
-- Update brise.spec: 
+- Update brise.spec:
   * Add Conflicts condition to insure brise could update successfully
     from brise binary rpm, for SUSE:SLE-SP6 update.
   * Replace rime-schema-all dependence to real package name to
@@ -25,7 +37,7 @@ Mon May 29 13:47:27 UTC 2023 - Marguerite Su <i@marguerite.su>
 -------------------------------------------------------------------
 Tue May 25 04:24:13 UTC 2021 - Marguerite Su <i@marguerite.su>
 
-- don't install .bin files in build 
+- don't install .bin files in build
 
 -------------------------------------------------------------------
 Tue May 25 03:12:08 UTC 2021 - Marguerite Su <i@marguerite.su>
@@ -40,7 +52,7 @@ Tue May 25 03:12:08 UTC 2021 - Marguerite Su <i@marguerite.su>
 -------------------------------------------------------------------
 Sun May  9 02:42:55 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
-- revert "remove rime-plum in package brise and ready to move it into a new package for easier maintenance" 
+- revert "remove rime-plum in package brise and ready to move it into a new package for easier maintenance"
 
 -------------------------------------------------------------------
 Thu May  6 12:33:23 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
@@ -128,7 +140,7 @@ Sat Jun 29 09:46:24 UTC 2013 - i@marguerite.su
 - update version 0.22
   * essay.txt, luna_pinyin, terra_pinyin: lots of bug-fixes.
   * wubi86: auto-commit complete words. (max_code_length: 4)
-  * luna_pinyin*: enable user created custom_phrase.txt (rime>=0.9.9) 
+  * luna_pinyin*: enable user created custom_phrase.txt (rime>=0.9.9)
 
 -------------------------------------------------------------------
 Fri Feb  1 17:01:31 UTC 2013 - i@marguerite.su
@@ -163,4 +175,3 @@ Sat Jul 21 22:37:03 UTC 2012 - i@marguerite.su
   * librime package: include 'brise', a collection of preset schemata in the package.
   * new schema: Middle Chinese Phonetic Transcription.
   * new schema: IPA input method in X-SAMPA.
-
