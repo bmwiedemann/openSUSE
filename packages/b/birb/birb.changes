@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Jan 31 12:46:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.3.1:
+  * Fix C++ extern header bracketing
+- update to 0.3.0:
+  * Create BirbCustomFilter
+  * Update the gi-docgen subproject to 2024.1
+  * Fix a documentation warning about a closure annotation
+  * Clean up some stuff in birbversion.h
+  * Add Birb.StringObject
+  * Add birb_assert_type
+  * Add some helpers for environment search variables
+- switch to sf mirror, so we have signed tarballs
+
+-------------------------------------------------------------------
+Wed Nov 27 10:59:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial package
