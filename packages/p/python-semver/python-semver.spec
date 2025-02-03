@@ -1,7 +1,7 @@
 #
 # spec file for package python-semver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without test
 %{?sle15_python_module_pythons}
 Name:           python-semver
-Version:        3.0.2
+Version:        3.0.4
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
@@ -28,13 +28,15 @@ URL:            https://github.com/python-semver/python-semver
 Source:         https://github.com/python-semver/python-semver/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION tests
+BuildRequires:  %{python_module pytest}
+# /SECTIOn
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # See https://github.com/k-bx/python-semver/issues/67 for why conflicts is needed
 Conflicts:      python-node-semver
 BuildArch:      noarch
@@ -46,7 +48,7 @@ See also http://semver.org/
 
 %prep
 %setup -q -n python-semver-%{version}
-sed -i '/-cov/d' setup.cfg
+sed -i 's/--[^ ]*cov[^ ]*//g' .pytest.ini
 
 %build
 %pyproject_wheel
