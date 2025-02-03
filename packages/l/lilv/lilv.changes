@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jan 19 04:24:55 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Enable development documentation for Tumbleweed
+- Add 001-lilv-docdir.patch fixing docs installation path
+- Update to 0.24.24
+  * Avoid overriding state features passed by the host
+  * Fix null dereference when trying to load state from a missing file
+  * Fix potential null dereferences and conversion warnings
+
+- Version 0.24.22 changes:
+  * Allow LILV_API to be defined by the user
+  * Clean up code
+  * Clean up inconsistent tool command line interfaces
+  * Convert man pages to mdoc
+  * Fix crash when plugins pass NULL to the LV2_State_Retrieve_Function
+  * Fix dependencies in pkg-config file
+  * Fix potential crash when writing state files fails
+  * Order plugin classes by URI
+  * Override pkg-config dependency within meson
+  * Remove junk files from documentation install
+  * Replace duplicated dox_to_sphinx script with sphinxygen dependency
+  * Switch to external zix dependency
+
+-------------------------------------------------------------------
 Wed Mar  6 16:40:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %pycache_only macro for the __pycache__ file to fix build

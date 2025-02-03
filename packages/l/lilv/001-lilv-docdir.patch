@@ -1,0 +1,11 @@
+--- doc/meson.build.orig	2023-10-22 13:15:27.000000000 -0700
++++ doc/meson.build	2023-11-19 01:46:05.871560429 -0800
+@@ -1,7 +1,7 @@
+ # Copyright 2021-2022 David Robillard <d@drobilla.net>
+ # SPDX-License-Identifier: 0BSD OR ISC
+ 
+-docdir = get_option('datadir') / 'doc'
++docdir = get_option('datadir') / 'doc' / 'packages'
+ 
+ # Find required programs
+ doxygen = find_program('doxygen', required: get_option('docs'))

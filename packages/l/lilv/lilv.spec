@@ -1,7 +1,7 @@
 #
 # spec file for package lilv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,15 @@
 #
 
 
-%bcond_with     docs
+%if 0%{?suse_version} > 1600
+%define with_docs 1
+%endif
+
 %define sover 0
 %define sordversion %(pkg-config --modversion sord-0)
 %define serdversion %(pkg-config --modversion serd-0)
 Name:           lilv
-Version:        0.24.20
+Version:        0.24.24
 Release:        0
 Summary:        C library to make use of LV2 plugins
 License:        ISC
@@ -30,6 +33,7 @@ URL:            https://drobilla.net/software/lilv.html
 Source0:        https://download.drobilla.net/lilv-%{version}.tar.xz
 Source99:       lilv-rpmlintrc
 Source98:       baselibs.conf
+Patch0:         001-lilv-docdir.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
@@ -37,7 +41,8 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 %if %{with docs}
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-sphinx_lv2_theme
+BuildRequires:  python3-sphinxygen
+# BuildRequires:  python3-sphinx_lv2_theme
 %endif
 BuildRequires:  python3-devel
 BuildRequires:  swig
@@ -83,11 +88,14 @@ Lilv is a C library to make use of LV2 plugins in applications.
 This subpackage contains the Python 3 bindings for lilv.
 
 %prep
-%setup -q
+%autosetup -p0
 echo %{sordversion}
 
 %build
-%meson -Ddocs=disabled
+%meson \
+%if %{without docs}
+    -Ddocs=disabled \
+%endif
 
 %meson_build
 
@@ -123,7 +131,6 @@ rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 %{_includedir}/lilv-0/
 %if %{with docs}
 %{_defaultdocdir}/lilv-0/
-%{_mandir}/man3/*
 %endif
 
 %files -n python3-lilv
