@@ -1491,4 +1491,12 @@
   (bsc#1234745, CVE-2020-6923)</comment>
     <requestid>1238011</requestid>
   </revision>
+  <revision rev="158" vrev="5">
+    <srcmd5>9d09c4beb439fceca8aa11ac55c3f979</srcmd5>
+    <version>3.24.4</version>
+    <time>1738615238</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1241606</requestid>
+  </revision>
 </revisionlist>

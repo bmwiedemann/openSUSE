@@ -1,0 +1,29 @@
+From 2a13a15b7f533606667e8586ff5ed736f038f2e8 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 23 Jan 2025 12:47:43 +0100
+Subject: [PATCH 1/2] hplip/base: fix error in ConfigBase handling
+
+The code in question was apparently meant to handle the replacement
+of ConfigParser.readfp() by ConfigParser.read_file(). But the code
+is obviously broken, trying read_file() first and then read_file()
+again.
+---
+ base/g.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/base/g.py b/base/g.py
+index 0d1c986..c1f5d24 100644
+--- a/base/g.py
++++ b/base/g.py
+@@ -128,7 +128,7 @@ class ConfigBase(object):
+             try:
+                 fp = open(self.filename, "r")
+                 try:
+-                    self.conf.read_file(fp)
++                    self.conf.readfp(fp)
+                 except AttributeError as e:
+                     log.error(f"Error: {e}. Retrying with read_file")
+                     try:
+-- 
+2.48.1
+

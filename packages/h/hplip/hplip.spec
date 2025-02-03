@@ -115,6 +115,9 @@ Patch602:       hplip-scan-hpaio-include.patch
 Patch603:       hplip-scan-orblite-c99.patch
 Patch604:       hplip-sclpml-strcasestr.patch
 Patch605:       hplip-hpaio-gcc14.patch
+Patch606:       hplip-base-fix-error-in-ConfigBase-handling.patch
+# Compatibility patches for old SUSE releases
+Patch700:       hplip-base-replace-f-string-with-string.format-for-p.patch
 
 %if %use_qt5
 BuildRequires:  %{pymod qt5-devel}
@@ -378,6 +381,12 @@ This sub-package is only required by developers.
 %patch -P 603 -p1
 %patch -P 604 -p1
 %patch -P 605 -p1
+%patch -P 606 -p1
+%if 0%{?suse_version} < 1500
+# python2 compatibility
+%patch -P 700 -p1
+%endif
+
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
     xargs -n 1 sed -i '1s,^#!\(%{_bindir}/env python\|%{_bindir}/python\),#!%{pyexe},'

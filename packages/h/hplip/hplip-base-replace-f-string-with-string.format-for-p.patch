@@ -1,0 +1,32 @@
+From f1fef1ed07951fbc6e81d90ab43172974979eeeb Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 22 Jan 2025 17:44:04 +0100
+Subject: [PATCH 2/2] hplip/base: replace f-string with string.format for
+ python2 compatibility
+
+---
+ base/g.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/base/g.py b/base/g.py
+index c1f5d24..a3b6191 100644
+--- a/base/g.py
++++ b/base/g.py
+@@ -130,12 +130,12 @@ class ConfigBase(object):
+                 try:
+                     self.conf.readfp(fp)
+                 except AttributeError as e:
+-                    log.error(f"Error: {e}. Retrying with read_file")
++                    log.error("Error: {0}. Retrying with read_file".format(e))
+                     try:
+                         # Attempting to use read_file as a fallback
+                         self.conf.read_file(fp)
+                     except Exception as e:
+-                        log.error(f"Reading file with read_file also failed. Error: {e}")
++                        log.error("Reading file with read_file also failed. Error: {0}".format(e))
+                 except configparser.MissingSectionHeaderError:
+                     print("")
+                     log.error("Found No Section in %s. Please set the http proxy for root and try again." % self.filename)
+-- 
+2.48.1
+

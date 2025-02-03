@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:52:26 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Fix error in ConfigBase handling (bsc#1209401)
+  - add hplip-base-fix-error-in-ConfigBase-handling.patch
+
+-------------------------------------------------------------------
+Wed Jan 22 16:52:17 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Fix python error on SLE12-SP3 (bsc#1209401, bsc#1234745)
+  - add hplip-base-replace-f-string-with-string.format-for-p.patch
+
+-------------------------------------------------------------------
 Tue Jan 14 11:34:35 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - hplip.spec: re-introduce macros for SLE12 compatibility, so that
   we can backport security fixes to older releases
-  (bsc#1234745, CVE-2020-6923)
+  (bsc#1234745, CVE-2020-6923, jsc#PED-11978)
 
 -------------------------------------------------------------------
 Mon Jul 15 15:19:58 UTC 2024 - Martin Jambor <mjambor@suse.com>
