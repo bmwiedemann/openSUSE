@@ -1,7 +1,7 @@
 #
 # spec file for package kile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2009 Johannes Engel <jcnengel@googlemail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kile
-Version:        2.9.94git.20240312T011912~078a771
+Version:        2.9.95git.20250201T013505~e5dac14
 Release:        0
 Summary:        A LaTeX Source Editor and TeX Shell
 License:        GPL-2.0-or-later
@@ -117,10 +117,6 @@ The main features are:
 # Packaged with %%doc
 rm -r %{buildroot}%{_kf6_sharedir}/doc/kile
 
-# Wrong place
-mkdir -p %{buildroot}%{_kf6_debugdir}
-mv %{buildroot}%{_kf6_sysconfdir}/xdg/kile.categories %{buildroot}%{_kf6_debugdir}/
-
 %find_lang %{name} --with-html --all-name
 
 %fdupes %{buildroot}
@@ -142,6 +138,7 @@ mv %{buildroot}%{_kf6_sysconfdir}/xdg/kile.categories %{buildroot}%{_kf6_debugdi
 %dir %{_kf6_iconsdir}/hicolor/44x44
 %dir %{_kf6_iconsdir}/hicolor/44x44/apps
 %{_kf6_iconsdir}/hicolor/*/apps/kile.*
+%{_kf6_iconsdir}/hicolor/*/actions/*
 %{_kf6_sharedir}/kconf_update/*
 %{_kf6_sharedir}/kile/
 %{_kf6_sharedir}/mime/packages/kile.xml

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Feb 01 13:51:00 UTC 2025 - christophe@krop.fr
+
+- Update to version 2.9.95git.20250201T013505~e5dac14:
+  * Add BibLaTeX style extension for softwareversion
+  * Adapt coding style to Kile's coding style
+  * Project dependencies: Search for files relative to the master document
+  * Mark constructors with one argument explicit.
+  * Make a couple of pointers const
+  * kiledocmanager.cpp: Use range-based for-loop
+  * [Flatpak] Re-enable
+  * Remove deprecated Qt macros Q_NULLPTR and Q_DECL_OVERRIDE
+  * Fix some issues revealed by static analyzers
+  * Add override to destructor.
+  * Use the correct name for the 'menu_mathbreqnenv' menu
+  * Ensure that all insertion actions are disabled when no document is open
+  * Add "Open Containing Folder" action
+  * Use more range-based for loops
+  * UI files: use notr="true" instead of old comment="KDE::DoNotExtract"
+  * Update forward search shortcut
+  * Use as_const instead of const_cast
+  * Simplify more code flows, e.g. by removing continue's
+  * Add ShowAll tools to Tools/Build config
+  * Simplify code flow, e.g. by removing continue's
+  * Increase kileui.rc version
+  * Add new actions to kileui.rc
+  * Fix deprecation warning for Qt::Key_mu
+  * Work/wraith/add environments
+  * Fix crashes in SelectFrameAction
+  * House-keep range-based for loops
+  * Wrap in QLatin1String and QLatin1Char
+  * editorextension: fix crash in finding bracket and dollar pairs
+  * src/configtester.cpp: Fix Windows build
+  * Wrap in QLatin1String and QLatin1Char
+  * Replace some Qt 6 deprecations
+  * add Shift+Leftclick in editor to forward search
+  * Make warning RegEx non-greedy.
+  * Respect user feedback in AbbreviationView::slotDeleteAbbreviation()
+  * Fix creation of the local abbreviation directory
+  * Remove unused variables found by Clazy
+  * LaTeXOutputParser: Fix invalid regular expression
+  * appstream: replace deprecated developer_name with developer, add launchable
+  * Drop code duplicating what KAboutData::setApplicationData() does
+  * [cmake] Guard use of KF6 Doc Tools as it is optional
+  * appdata: Fix release date of Kile 3.0 beta 4
+  * Raise version to 2.9.95
+  * Ensure that the doc files are compiled and installed
+  * Rework how versions are handled
+  * Fix RTTI with clang Use qobject_cast for runtime-loaded OkularPart to avoid issues with clang
+  * Fix location of logging category install path
+
+-------------------------------------------------------------------
 Tue Mar 12 11:10:22 UTC 2024 - christophe@krop.fr
 
 - Switch to a GIT snapshot

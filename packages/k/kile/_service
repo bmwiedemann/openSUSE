@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://invent.kde.org/office/kile.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">2.9.94git.%ci~%h</param>
+    <param name="versionformat">2.9.95git.%ci~%h</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>
