@@ -1875,4 +1875,16 @@ Changes:
 - Remove leading `go` from `purl` locators</comment>
     <requestid>1237285</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>6c0dd3bbb26c4626204f3b643eb283bd</srcmd5>
+    <version>20250130</version>
+    <time>1738615312</time>
+    <user>anag+factory</user>
+    <comment>- productcompose: support of building against a baseiso
+- preinstallimage: avoid inclusion of build script generated files
+- preserve timestamps on sources copy-in for kiwi and productcompose
+- alpine package support updates
+- tumbleweed config update</comment>
+    <requestid>1241351</requestid>
+  </revision>
 </revisionlist>
