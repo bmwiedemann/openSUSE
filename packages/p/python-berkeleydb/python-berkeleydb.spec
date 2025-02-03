@@ -1,7 +1,7 @@
 #
 # spec file for package python-berkeleydb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-berkeleydb
-Version:        18.1.11
+Version:        18.1.13
 Release:        0
 Summary:        Python bindings for Oracle Berkeley DB
 License:        BSD-3-Clause
@@ -56,6 +57,7 @@ This package contains the development files for %{name}
 
 %prep
 %autosetup -p1 -n berkeleydb-%{version}
+sed -i '/\#\!\/usr\/bin\/env\ python/d' src/berkeleydb/dbshelve.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

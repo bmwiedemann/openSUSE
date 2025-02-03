@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:02:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 18.1.13
+  * WARNING: Being able to compile the bindings on non x86/x86_64 Linux
+    systems (ARM, RISC-V, etc). This improvement required to change the
+    way compilation on Linux worked. If you find any issue with this,
+    please report.
+  * Compile the C module with extra static analysis and be more strict.
+  * Some functions have unused parameters that we would like to preserve.
+  * Different types in different python subinterpreters are tricky under
+    Py_LIMITED_API < Python 3.10. We will delete the workarounds when
+    Python 3.10 be the minimal supported version.
+  * Delete some unused parameters thru all the source code.
+  * Be explicit and complete in the sentinel values.
+  * Be explicit initializing (missing) docstrings.
+  * Rewrite some function prototypes to avoid warning when being strict
+    and to avoid unneeded function castings.
+    + Functions METH_NOARGS require two parameters, although one of them
+      will be ignored.
+  * Be sure we don't wrap an unsigned int operation, bypassing an assertion.
+  * Update copyright to 2025.
+  * Oracle Berkeley DB>=5.3: Beside db.DB_VERSION_STRING we now have
+    db.DB_VERSION_FULL_STRING.
+  * Oracle Berkeley DB>=6.2: Beside db.DB_DBT_BLOB we now have
+    db.DB_DBT_EXT_FILE.
+  * Being able to test against an especific Oracle Berkeley DB release.
+  * Code cleanup:
+    + Remove unnecessary semicolons in Python code.
+    + Remove unused imports.
+    + Split multiple imports in a single line.
+    + Split multiple statements in multiple lines.
+    + Delete dead assignments.
+    + Delete ancient code for verbose and silent in test code.
+      I never used it, and it is maintenance load.
+    + Simplify some assertTrue() and assertFalse().
+    + Imports directly from berkeleydb instead of test_all.
+    + Copyright and license texts should be in comments, not docstrings.
+    + Be more verbose and clear in the comparison test code.
+    + Use isinstance() for type comparison.
+    + Tight some tests.
+    + Change some ambiguous variables.
+    + Solve or silence ruff warnings.
+    + Delete legacy pychecker support.
+    + Delete legacy PyUnit GUI support.
+- from versiom 18.1.12
+  * WARNING - BREAKING CHANGE: berkeleydb._db is now berkeleydb.db.
+    This breaking change should usually require a major and/or minor number
+    update. Since berkeleydb traditional numbering is related to the higher
+    Oracle Berkeley DB supported, I would usually wait until Oracle releases
+    a new version to upgrade my own version and deprecate old Python support
+    at the same time. Given that Oracle has not released a new Oracle Berkeley
+    DB in almost five years, I must break this practice for now.
+    The new name has been available for ages and the change is trivial...
+  * Solved DBEnv.memp_stat() crash when no database was opened yet. Triaged
+    and reported by Rishin Goswami.
+  * Added a new DBError subclass exception: DBNotSupportedError.
+  * Add tests for environment and database encryption.
+  * Document what you should know about your key when using database encryption.
+    Check the docs!
+  * Python 3.14 added to the full test matrix.
+    Experimental Python 3.14 support. Tested under 3.14.0a2.
+  * Export more error codes from Oracle Berkeley DB (which ones depends of what
+    Oracle Berkeley DB version you use): DB_FOREIGN_CONFLICT, DB_LOG_BUFFER_FULL,
+    DB_LOG_VERIFY_BAD, DB_REP_HANDLE_DEAD, DB_REP_LOCKOUT, DB_REP_UNAVAIL,
+    DB_REP_WOULDROLLBACK, DB_SLICE_CORRUPT, DB_VERSION_MISMATCH, DB_REP_INELECT,
+    DB_SYSTEM_MEM_MISSING. Some of those are not actually returned ever, but a
+    generic BerkeleyDB exception is raised. The error codes are available for
+    completion.
+    If you need some specific exception to be raised, let me know.
+  * We export more values from Oracle Berkeley DB (which ones depends of what
+    Oracle Berkeley DB version you use):
+    + DB_LOCK_GET_TIMEOUT, DB_LOCK_PUT_READ, DB_LOCK_TIMEOUT, DB_LOCK_TRADE.
+    + DB_EID_MASTER.
+    + DB_REP_WRITE_FORWARD_TIMEOUT.
+    + DB_EVENT_REP_AUTOTAKEOVER, DB_EVENT_REP_INQUEUE_FULL, DB_EVENT_REP_JOIN_FAILURE,
+      DB_EVENT_REP_WOULD_ROLLBACK, DB_EVENT_MUTEX_DIED, DB_EVENT_FAILCHK_PANIC.
+    + DB_REPMGR_ISELECTABLE, DB_REPMGR_ISPEER, DB_REPMGR_CONF_DISABLE_POLL,
+      DB_REPMGR_CONF_ENABLE_EPOLL, DB_REPMGR_CONF_FORWARD_WRITES, DB_REPMGR_CONF_PREFMAS_CLIENT,
+      DB_REPMGR_CONF_PREFMAS_MASTER, DB_REPMGR_NEED_RESPONSE.
+    + DB_MEM_DATABASE, DB_MEM_DATABASE_LENGTH, DB_MEM_EXTFILE_DATABASE, DB_MEM_REP_SITE.
+    + DB_LOG_EXT_FILE.
+    + DB_SET_MUTEX_FAILCHK_TIMEOUT.
+    + DB_SLICED.
+    + DB_VERB_BACKUP, DB_VERB_REPMGR_SSL_ALL, DB_VERB_REPMGR_SSL_CONN,
+      DB_VERB_REPMGR_SSL_IO, DB_VERB_SLICE.
+    + DB_XA_CREATE.
+  * Oracle Berkeley DB>=5.3: Beside db.DB_VERSION_STRING we now have db.DB_VERSION_FULL_STRING.
+  * Oracle Berkeley DB>=6.2: Beside db.DB_DBT_BLOB we now have db.DB_DBT_EXT_FILE.
+  * Being able to test against an especific Oracle Berkeley DB release.
+  * Code cleanup:
+    + Remove unnecessary semicolons in Python code.
+    + Remove unused imports.
+    + Split multiple imports in a single line.
+    + Split multiple statements in multiple lines.
+    + Delete dead assignments.
+    + Delete ancient code for verbose and silent in test code.
+      I never used it, and it is maintenance load.
+    + Simplify some assertTrue() and assertFalse().
+    + Imports directly from berkeleydb instead of test_all.
+    + Copyright and license texts should be in comments, not docstrings.
+    + Be more verbose and clear in the comparison test code.
+    + Use isinstance() for type comparison.
+    + Tight some tests.
+    + Change some ambiguous variables.
+    + Solve or silence ruff warnings.
+    + Delete legacy pychecker support.
+    + Delete legacy PyUnit GUI support.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue Nov 19 12:52:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.1.11:
