@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  1 10:59:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop the KDStateMachineEditor build dependency.
+  The option is turned off by default and there's currently no
+  way to use the system KDSME.
+
+-------------------------------------------------------------------
 Wed Nov 20 12:12:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

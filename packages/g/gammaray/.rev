@@ -232,4 +232,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226902</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>c9c413c5799c4ddc169bb3eeec979ead</srcmd5>
+    <version>3.1.0</version>
+    <time>1738615373</time>
+    <user>anag+factory</user>
+    <comment>- Drop the KDStateMachineEditor build dependency.
+  The option is turned off by default and there's currently no
+  way to use the system KDSME.</comment>
+    <requestid>1242096</requestid>
+  </revision>
 </revisionlist>

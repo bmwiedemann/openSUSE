@@ -79,8 +79,6 @@ BuildRequires:  libQt5Widgets-private-headers-devel >= %{qt_min_version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{qt_min_version}
 BuildRequires:  libqt5-qtscxml-private-headers-devel >= %{qt_min_version}
 BuildRequires:  libqt5-qttools-doc >= %{qt_min_version}
-# No Qt6 support in current release
-BuildRequires:  cmake(KDSME)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(Qt5AttributionsScannerTools) >= %{qt_min_version}
@@ -106,9 +104,7 @@ BuildRequires:  qt6-scxml-imports >= %{qt_min_version}
 BuildRequires:  qt6-scxml-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-statemachine-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-widgets-private-devel >= %{qt_min_version}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 BuildRequires:  cmake(Qt6Location) >= %{qt_min_version}
-%endif
 BuildRequires:  cmake(Qt6ShaderTools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6StateMachine) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt_min_version}
@@ -165,6 +161,9 @@ frameworks in Qt. Development files.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
+
+# Unused
+rm -r 3rdparty/KDStateMachineEditor
 
 %build
 %define _lto_cflags %{nil}
