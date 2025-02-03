@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Feb  2 20:32:09 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Syntax fix in %_mingw32_debug_package on Leap 15.x 
+
+-------------------------------------------------------------------
+Sun Feb  2 08:30:18 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update version to 20250202
+- Extend mingw32-find-debuginfo.sh: 
+  * Merging debug source package into debug info package is now
+    provided with option '--merge-debug-source-package'
+  * Add option '--no-debug-source-package' to skip building of
+    debug source package used by wine package
+  * Add option '--src-root-dir' to specify a custom directory
+    for installing debug source files
+- mingw32.macros: Add parameter '-e' to %_mingw32_debug_package
+  to exclude BuildArch: noarch
+
+-------------------------------------------------------------------
 Mon Nov 18 09:42:14 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update version to 20241118

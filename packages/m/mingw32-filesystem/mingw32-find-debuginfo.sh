@@ -1,13 +1,23 @@
 #!/bin/bash
-#mingw32-find-debuginfo.sh - automagically generate debug info and file list
-#for inclusion in an rpm spec file for mingw32-* packages.
+# mingw32-find-debuginfo.sh - automatically generate debug info, sources and file list
+# for inclusion in an rpm spec file for mingw32-* packages.
 #
+# syntax: mingw32--find-debuginfo.sh [<options>] [<BUILDDIR>]
+# options:
+#    --merge-debug-source-package  merge debug source package into debug info package
+#    --no-debug-source-package     do not create debug source package
+#    --src-root-dir                root dir for installing debug source files (src/debug is appended)
+# BUILDDIR                         build directory (often $HOME/rpmbuild/BUILD)
+# 
+# environment variables:
+#    ROOT_DIR - directory where to install debug sources (optional, default is <$ROOT_DIR>/src/debug)
+# 
 # $PWD package dir below $BUILDDIR
 
 target="mingw32"
 host="i686-w64-mingw32"
 
-# create for single package as child process
+# extract debug info for a single file as child process
 if [[ -v RUN_SINGLE ]]; then
 	f=$1
 	case $("$host-objdump" -h "$f" 2>/dev/null | egrep -o '(debug[\.a-z_]*|gnu.version)') in
@@ -34,16 +44,29 @@ export MALLOC_CHECK_=0
 export MALLOC_PERTURB_=0
 
 BUILDDIR=.
-if [ -n "$1" ]; then
-	BUILDDIR="$1"
-fi
+MERGE_SOURCE_PACKAGE=0
+SOURCE_PACKAGE=1
 
-# generate separate debuginfo and debugsource or single debug package combining both
-if [ -n "$2" ]; then
-	SINGLE_DEBUG_PACKAGE=1
-else
-	SINGLE_DEBUG_PACKAGE=0
-fi
+while [ $# -gt 0 ]; do
+  case "$1" in
+  --merge-debug-source-package)
+    MERGE_SOURCE_PACKAGE=1
+    ;;
+  --no-debug-source-package)
+    SOURCE_PACKAGE=0
+    ;;
+  --src-root-dir)
+    ROOT_DIR=$2
+    shift
+    ;;
+  *)
+    BUILDDIR=$1
+    shift
+    break
+    ;;
+  esac
+  shift
+done
 
 SOURCEFILE="$BUILDDIR/$target-debugsources.list"
 > "$SOURCEFILE"
@@ -55,13 +78,11 @@ if [ ! -e "$BUILDDIR" ]; then
 	mkdir -p "$BUILDDIR"
 fi
 
+# extract debug info
 find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort | \
 	srcdir=$srcdir SOURCEFILE=$SOURCEFILE BUILDDIR=$BUILDDIR RPM_BUILD_ROOT=$RPM_BUILD_ROOT RUN_SINGLE=1 xargs --max-args=1 --max-procs=0 bash -x $0
 
-ROOT_DIR="/usr/$host/sys-root/mingw"
-SOURCE_DIR="${ROOT_DIR}/src"
-DEBUGSOURCE_DIR="${SOURCE_DIR}/debug"
-    
+# generate debug info file list
 find $RPM_BUILD_ROOT -type f \
 		-name "*.exe.debug" \
 	-or -name "*.dll.debug" \
@@ -70,7 +91,17 @@ find $RPM_BUILD_ROOT -type f \
 | sort \
 | sed -n -e "s#^$RPM_BUILD_ROOT##p" > $BUILDDIR/$target-debugfiles.list
 
-echo creating debugsource file structure
+if [ "$SOURCE_PACKAGE" -eq 0 ]; then
+    echo creating debugsource file structure skipped
+    exit 0
+else
+    echo creating debugsource file structure
+fi
+
+# create debug sources
+ROOT_DIR="${ROOT_DIR:-/usr/$host/sys-root/mingw}"
+SOURCE_DIR="${ROOT_DIR}/src"
+DEBUGSOURCE_DIR="${SOURCE_DIR}/debug"
 
 destdir=${RPM_BUILD_ROOT}${DEBUGSOURCE_DIR}
 if [ ! -e "$destdir" ]; then
@@ -99,7 +130,7 @@ if [ -e "$RPM_BUILD_ROOT/$DEBUGSOURCE_DIR" ]; then
 	echo "$DEBUGSOURCE_DIR" >> $SOURCEFILE
 fi
 
-if test "$SINGLE_DEBUG_PACKAGE" -eq 1; then
+if [ "$MERGE_SOURCE_PACKAGE" -eq 1 ]; then
 	cat $SOURCEFILE >> $BUILDDIR/$target-debugfiles.list
 	rm $SOURCEFILE*
 fi

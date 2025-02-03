@@ -93,15 +93,20 @@
 %_mingw32_find_lang       /usr/lib/rpm/mingw32-find-lang.sh %{buildroot}
 
 %_mingw32_debug_install_post   \
-   /usr/lib/rpm/mingw32-find-debuginfo.sh %{_builddir} 1\
+   /usr/lib/rpm/mingw32-find-debuginfo.sh --merge-debug-source-package %{_builddir} \
 %{nil}
 
+#
 # Template for combined debuginfo and debugsource sub-package.
-%_mingw32_debug_package(n:) \
+# Parameter:
+#    -e exclude BuildArch: noarch
+#    -n package name (-debug will be appended)
+#
+%_mingw32_debug_package(en:) \
 %package %{-n:-n %{-n*}-}debug \
 Summary: Debug information for package %{name} \
 Group: Development/Sources \
-BuildArch: noarch \
+%{!-e:BuildArch: noarch} \
 %description %{-n:-n %{-n*}-}debug \
 This package provides debug information for package %{name}.\
 Debug information is useful when developing applications that use this\
