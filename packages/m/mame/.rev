@@ -229,4 +229,14 @@
   * /usr/share/doc/packages/mame/whatsnew-0.273.txt</comment>
     <requestid>1234558</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8f212750915a83a0c225272b7c702f27</srcmd5>
+    <version>0.274</version>
+    <time>1738615353</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.274
+  * /usr/share/doc/packages/mame/whatsnew-0.274.txt
+  * Removed file mame-0273-only-fix.patch (upstreamed).</comment>
+    <requestid>1242007</requestid>
+  </revision>
 </revisionlist>

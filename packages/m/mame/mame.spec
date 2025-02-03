@@ -16,7 +16,7 @@
 #
 
 
-%define ver     273
+%define ver     274
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -35,7 +35,6 @@ Patch1:         fix-922619.patch
 Patch2:         %{name}-fortify.patch
 Patch3:         %{name}-bgfx.patch
 Patch4:         reproducible.patch
-Patch5:         %{name}-0273-only-fix.patch
 BuildRequires:  asio-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

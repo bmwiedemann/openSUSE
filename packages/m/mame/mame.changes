@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 22:27:03 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.274
+  * /usr/share/doc/packages/mame/whatsnew-0.274.txt
+  * Removed file mame-0273-only-fix.patch (upstreamed).
+
+-------------------------------------------------------------------
 Thu Jan  2 08:57:34 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Used gcc13 for Leap 15.6.
