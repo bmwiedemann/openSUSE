@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jan 31 20:40:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.41.0
+  New Features
+  * ZeroGod Module: Introduced the zerogod module for ZeroConf /
+    Bonjour impersonation attacks.
+  * API Enhancements: api.rest now returns stdout data after
+    executing a session command.
+  * Session Event Handling: Added addSessionEvent function for
+    both DNS and HTTP proxy script environments.
+  * Built-in Functions: Added removeEventListener function.
+  * Named Tickers: Implemented support for named tickers.
+  Improvements
+  * DNS Proxy Enhancements:
+    + Added TLS support.
+    + Implemented backwards-compatible DNS record conversion.
+    + Support for RFC3597 generic/unknown record types if the
+      Rdata field is present.
+  * Blacklist and Whitelist Support: Introduced logic to support
+    blacklists and whitelists.
+  * Wildcard Blacklisting: Allow wildcards in blacklist
+    configurations.
+  * IPv6 Improvements:
+    + Enhanced detection logic.
+    + Added a nil check for interfaces to prevent crashes.
+  * Logging & Debugging:
+    + Improved readability of debug logs.
+    + JS property conversion errors are now printed for better
+      error tracking.
+  Fixes
+  * DNS Proxy Stability:
+    + Catch nil values in DNS records.
+    + Prioritize longer and more explicit hostnames.
+  * UI Asset Handling:
+    + Directly embedded UI assets.
+    + Removed UI submodule.
+  Compatibility:
+  * Improved backwards compatibility for getHandshakeFileFor.
+  Miscellaneous:
+  * Various small fixes and refactorings.
+
+-------------------------------------------------------------------
+Wed Jan 29 23:00:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use `obs_scm` instead of `tar_scm` service
+- Require go >= 1.21 (toolchains support)
+- Update to version 2.40.0:
+  The update from 2.32.0 to 2.4.0 was an incorrect upstream tag.
+  This release just fixes the incorrect version number.
+
+-------------------------------------------------------------------
 Tue Sep 17 06:19:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0:

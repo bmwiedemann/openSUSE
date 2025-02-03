@@ -1,8 +1,8 @@
 #
 # spec file for package bettercap
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           bettercap
-Version:        2.4.0
+Version:        2.41.0
 Release:        0
 Summary:        Swiss army knife for network attacks and monitoring
 License:        GPL-3.0-or-later
@@ -31,7 +31,8 @@ BuildRequires:  golang-packaging
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.9
+# go.mod requires toolchains support (>= 1.21)
+BuildRequires:  golang(API) >= 1.21
 BuildRequires:  pkgconfig(libnetfilter_queue)
 BuildRequires:  pkgconfig(libusb-1.0)
 Requires:       libnetfilter_queue1
