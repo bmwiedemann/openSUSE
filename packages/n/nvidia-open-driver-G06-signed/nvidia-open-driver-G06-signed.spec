@@ -16,8 +16,8 @@
 #
 
 
-%define gfx_version 550.144.03
-%define cuda_version 565.57.01
+%define gfx_version 570.86.16
+%define cuda_version 570.86.15
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -56,24 +56,20 @@ Summary:        NVIDIA open kernel module driver for GeForce 16 series (GTX 16xx
 License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
 URL:            https://github.com/NVIDIA/open-gpu-kernel-modules/
-Source0:        https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{version}.tar.gz#/open-gpu-kernel-modules-%{version}.tar.gz
+#Source0:        https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{version}.tar.gz#/open-gpu-kernel-modules-%{version}.tar.gz
+Source0:        open-gpu-kernel-modules-%{version}.tar.gz
 # This is defined at build, not for 'osc service run download_files` or
 # factory_auto. This both sources are seen outside of the build but only
 # the matching one will be included in the srpm for the respective flavor.
 %if %{undefined linux_arch}
 Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{cuda_version}.tar.gz#/open-gpu-kernel-modules-%{cuda_version}.tar.gz
-Source17:       pci_ids-supported-%{cuda_version}
 Source18:       pci_ids-%{cuda_version}
 %endif
 Source1:        my-find-supplements
 Source2:        pci_ids-%{version}
 Source3:        kmp-filelist
-Source4:        kmp-post.sh
-Source5:        kmp-postun.sh
-Source6:        modprobe.nvidia.install
 Source7:        preamble
 Source8:        json-to-pci-id-list.py
-Source9:        pci_ids-supported-%{version}
 # Generate:
 # CUDA_VER=12.5.1; DRIVER_VER=%version; ARCH=...
 # mkdir tmp
@@ -87,16 +83,6 @@ Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Patch0:         persistent-nvidia-id-string.patch
-%if %{with cuda}
-Patch1:         set-FOP_UNSIGNED_OFFSET-for-nv_drm_fops.fop_flags.patch
-%endif
-%if "%{flavor}" != "cuda"
-%ifarch aarch64
-%if 0%{?suse_version} >= 1600
-Patch2:         aarch64-TW-buildfix.patch
-%endif
-%endif
-%endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -116,13 +102,13 @@ ExclusiveArch:  x86_64 aarch64
 %if 0%{!?kmp_template_name:1}
 %define kmp_template_name /usr/lib/rpm/kernel-module-subpackage
 %endif
-%(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
-%if "%{flavor}" == "cuda"
-%(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- kernel-firmware-nvidia-gspx-G06-cuda = %{version}" >> %_builddir/nvidia-kmp-template)
-%(cat %_sourcedir/kmp-trigger.sh                                                                        >> %_builddir/nvidia-kmp-template)
+%if 0%{!?_builddir:1}
+%define _builddir /home/abuild/rpmbuild/BUILD
 %endif
-%(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- kernel-firmware-nvidia-gspx-G06 = %{version}"      >> %_builddir/nvidia-kmp-template)
-%(cat %_sourcedir/kmp-trigger.sh                                                                        >> %_builddir/nvidia-kmp-template)
+
+%(cat %kmp_template_name > %_builddir/nvidia-kmp-template)
+%(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- nvidia-common-G06 = %{version}"      >> %_builddir/nvidia-kmp-template)
+%(cat %_sourcedir/kmp-trigger.sh                                                          >> %_builddir/nvidia-kmp-template)
 %kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
 %{expand:%(
       for f in %{flavors_to_build}; do \
@@ -193,6 +179,11 @@ mkdir obj
 
 pushd %_sourcedir
 chmod 755 my-find-supplements*
+%if %{with cuda}
+# make sure it's empty for -cuda variant
+rm  pci_ids-%{version}
+touch  pci_ids-%{version}
+%endif
 # symlink the %pci_id_file to the one, that rpmbuild generates, to enable my-find-supplement to succeed properly
 # boo#1190210
 ln -sv pci_ids-%{version} pci_ids-%{version}_k%{kbuildver}
@@ -238,38 +229,11 @@ for flavor in %{flavors_to_build}; do
 	popd
 done
 
-%if 0%{?suse_version} >= 1550
-MODPROBE_DIR=%{buildroot}/usr/lib/modprobe.d
-%else
-MODPROBE_DIR=%{buildroot}%{_sysconfdir}/modprobe.d
-%endif
-
-mkdir -p $MODPROBE_DIR
-for flavor in %flavors_to_build; do
-    cat > $MODPROBE_DIR/61-nvidia-$flavor.conf << EOF
-blacklist nouveau
-options nvidia-drm modeset=1 fbdev=1
-EOF
-    echo -n "install nvidia " > $MODPROBE_DIR/59-nvidia-$flavor.conf
-    tail -n +3 %_sourcedir/modprobe.nvidia.install | awk '{ printf "%s ", $0 }' >> $MODPROBE_DIR/59-nvidia-$flavor.conf
-# otherwise nvidia-uvm is missing in initrd and won't get loaded when nvidia
-# module is loaded in initrd; so better let's load all the nvidia modules
-# later ...
-%if 0%{?suse_version} >= 1550
-  mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d
-  cat  >   %{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-$flavor.conf << EOF
-%else
-  mkdir -p %{buildroot}/etc/dracut.conf.d
-  cat  > %{buildroot}/etc/dracut.conf.d/60-nvidia-$flavor.conf << EOF
-%endif
-omit_drivers+=" nvidia nvidia-drm nvidia-modeset nvidia-uvm "
-EOF
-done
 for flavor in %{flavors_to_build}; do
     mkdir -p %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
     cp -r source/kernel-open/* %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
     echo %dir %{_prefix}/src/kernel-modules > files-${flavor}
-    perl %{S:14} -L %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor} | sed -e "s@%{buildroot}@@" >> files-${flavor}
+    perl %{S:14} -L %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor} | sed -e "s@%{buildroot}@@" | sort -u >> files-${flavor}
     %fdupes -s %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
 done
 

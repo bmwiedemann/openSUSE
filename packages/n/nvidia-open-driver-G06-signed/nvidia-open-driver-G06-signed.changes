@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:27:28 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build against openSUSE:Factory by defining %_builddir
+  if needed (boo#1236746)
+
+-------------------------------------------------------------------
+Mon Feb  3 13:42:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer try to patch %post/%postun; no changes needed any longer
+- trigger script needs to be triggered now by nvidia-common-G06,
+  which replaced kernel-firmware-nvidia-gspx-G06{,-cuda} packages
+
+-------------------------------------------------------------------
+Mon Feb  3 12:28:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed version of 'Provides: nvidia-open-signed-kmp = <version>'
+  of nvidia-open-signed-cuda-kmp in preamble file
+- fixed 
+  warning: File listed twice: /usr/src/kernel-modules/nvidia-570.86.16-default
+
+-------------------------------------------------------------------
+Tue Jan 28 04:18:18 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 570.86.16 (boo#1236658)
+- supersedes aarch64-TW-buildfix.patch
+- supersedes set-FOP_UNSIGNED_OFFSET-for-nv_drm_fops.fop_flags.patch
+
+-------------------------------------------------------------------
+Mon Jan 27 20:39:55 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 565.77
+- non-CUDA variant:
+  * get rid of modproee.d and dracut.cd files and udev magic; 
+    instead require nvidia-common-G06 
+  * Supplements: switch to really supported devices; not only the
+    initially supported ones without graphical output
+- update non-CUDA and CUDA variant to 570.86.15
+
+-------------------------------------------------------------------
+Wed Jan 22 10:28:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble: let -cuda KMP conflict with no-cuda variants < 550.135
+  (bsc#1236191)
+
+-------------------------------------------------------------------
 Tue Jan 14 22:41:54 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 550.144.03 (bsc#1235461, boo#1235871)

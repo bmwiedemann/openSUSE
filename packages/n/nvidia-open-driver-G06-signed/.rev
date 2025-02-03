@@ -626,4 +626,43 @@
     CVE-2024-0150, CVE-2024-53869</comment>
     <requestid>1238477</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>b33742f46648fbabe4a774f1b08d8de2</srcmd5>
+    <version>570.86.16</version>
+    <time>1738335871</time>
+    <user>anag+factory</user>
+    <comment>- update non-CUDA variant to 570.86.16 (boo#1236658)
+- supersedes aarch64-TW-buildfix.patch
+- supersedes set-FOP_UNSIGNED_OFFSET-for-nv_drm_fops.fop_flags.patch
+
+- Update to 565.77
+- non-CUDA variant:
+  * get rid of modproee.d and dracut.cd files and udev magic; 
+    instead require nvidia-common-G06 
+  * Supplements: switch to really supported devices; not only the
+    initially supported ones without graphical output
+- update non-CUDA and CUDA variant to 570.86.15
+
+- preamble: let -cuda KMP conflict with no-cuda variants &lt; 550.135
+  (bsc#1236191)</comment>
+    <requestid>1241541</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>404df06a3cafdb1360d6741eff19e525</srcmd5>
+    <version>570.86.16</version>
+    <time>1738615527</time>
+    <user>anag+factory</user>
+    <comment>- fixed build against openSUSE:Factory by defining %_builddir
+  if needed (boo#1236746)
+
+- no longer try to patch %post/%postun; no changes needed any longer
+- trigger script needs to be triggered now by nvidia-common-G06,
+  which replaced kernel-firmware-nvidia-gspx-G06{,-cuda} packages
+
+- fixed version of 'Provides: nvidia-open-signed-kmp = &lt;version&gt;'
+  of nvidia-open-signed-cuda-kmp in preamble file
+- fixed 
+  warning: File listed twice: /usr/src/kernel-modules/nvidia-570.86.16-default</comment>
+    <requestid>1242857</requestid>
+  </revision>
 </revisionlist>
