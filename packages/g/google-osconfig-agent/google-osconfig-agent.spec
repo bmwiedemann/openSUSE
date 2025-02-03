@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-osconfig-agent
-Version:        20241017.00
+Version:        20250115.01
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -33,7 +33,7 @@ URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) >= 1.22.4
 BuildRequires:  golang-packaging
 Requires:       google-guest-configs
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

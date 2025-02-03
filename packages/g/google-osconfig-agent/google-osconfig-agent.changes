@@ -1,18 +1,83 @@
 -------------------------------------------------------------------
-Tue Oct 22 08:06:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+Mon Jan 27 08:26:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version 20241017.00 (bsc#1231775, bsc#1231776)
+- Update to version 20250115.01 (bsc#1236406, bsc#1236407)
+  * Bump cloud.google.com/go/osconfig from 1.14.2 to 1.14.3 (#772)
+- from version 20250115.00
+  * Bump cloud.google.com/go/auth from 0.10.2 to 0.14.0 (#767)
+  * Bump go.opentelemetry.io/otel from 1.32.0 to 1.33.0 (#771)
+  * Bump google.golang.org/protobuf from 1.35.1 to 1.36.2 (#763)
+- from version 20250114.00
+  * Bump golang.org/x/time from 0.8.0 to 0.9.0 (#770)
+- from version 20250113.01
+  * Bump cloud.google.com/go/auth/oauth2adapt from 0.2.5 to 0.2.7 (#766)
+- from version 20250113.00
+  * Bump golang.org/x/net from 0.31.0 to 0.34.0 (#769)
+- from version 20250110.00
+  * Bump golang.org/x/crypto from 0.29.0 to 0.31.0 in the go_modules group (#760)
+  * Bump cloud.google.com/go/longrunning from 0.6.2 to 0.6.3 (#744)
+- from version 20241218.00
+  * Scanners fixes (#720)
+  * Bump cloud.google.com/go/storage from 1.46.0 to 1.47.0 (#736)
+  * Bump go.opentelemetry.io/contrib/detectors/gcp from 1.29.0 to 1.32.0 (#730)
+  * Bump go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp (#738)
+  * Bump golang.org/x/net from 0.30.0 to 0.31.0 (#731)
+- from version 20241118.01
+  * Bump github.com/googleapis/gax-go/v2 from 2.13.0 to 2.14.0 (#737)
+- from version 20241118.00
+  * move example to appropriate directory (#740)
+- from version 20241115.00
+  * Replace sles-15-sp3-sap old deprecated image in e2e tests (#739)
+  * Bump golang.org/x/time from 0.7.0 to 0.8.0 (#734)
+- from version 20241114.03
+  * Bump github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp (#735)
+- from version 20241114.02
+  * Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc (#729)
+- from version 20241114.01
+  * Remove SLES-15-SP2-SAP from e2e tests and add the new SLES-15-SP6 (#733)
+  * Bump golang.org/x/crypto from 0.28.0 to 0.29.0 (#728)
+  * Bump go.opentelemetry.io/otel/sdk/metric from 1.30.0 to 1.32.0 (#727)
+- from version 20241114.00
+  * Add example to run exec script from the gcs bucket (#732)
+  * Bump cel.dev/expr from 0.16.1 to 0.18.0 (#723)
+- from version 20241112.00
+  * Bump golang.org/x/oauth2 from 0.23.0 to 0.24.0 (#722)
+  * Bump github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric (#721)
+  * Bump google.golang.org/grpc from 1.67.1 to 1.68.0 (#725)
+  * Bump github.com/golang/glog from 1.2.2 to 1.2.3 (#715)
+  * Bump google.golang.org/api from 0.203.0 to 0.205.0 (#716)
+- from version 20241107.01
+  * Bump github.com/envoyproxy/go-control-plane from 0.13.0 to 0.13.1 (#717)
+  * Bump github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping (#718)
+  * Bump cloud.google.com/go/auth from 0.10.0 to 0.10.1 (#719)
+- from version 20241107.00
+  * Bump cloud.google.com/go/logging from 1.11.0 to 1.12.0 (#709)
+  * Bump cloud.google.com/go/iam from 1.2.1 to 1.2.2 (#710)
+  * Bump cloud.google.com/go/storage from 1.43.0 to 1.46.0 (#713)
+  * Bump cloud.google.com/go/osconfig from 1.14.1 to 1.14.2 (#708)
+  * Bump cloud.google.com/go/auth/oauth2adapt from 0.2.4 to 0.2.5 (#712)
+- from version 20241106.00
+  * Update OWNERS (#714)
+- from version 20241029.01
+  * remove toolchain override (#706)
+  * Bump go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp (#701)
+- from version 20241029.00
+  * Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc (#702)
+- from version 20241028.00
+  * Bump cloud.google.com/go/longrunning from 0.6.0 to 0.6.2 (#705)
+- from version 20241017.00
   * Add a new CloudBuild trigger config-file for auto updating the
     presubmit test container image on every new commit (#704)
 - from version 20241004.00
   * Add new packagebuild presubmit that will use cloud-build (#694)
+- from version 20240927.00
+  * Third batch of dependencies upgrade (#690)
+- Bump the golang compiler version to 1.22.4 (CVE-2024-24790)
 
 -------------------------------------------------------------------
-Mon Sep 30 11:22:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+Wed Oct 30 10:54:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version 20240927.00
-  * Third batch of dependencies upgrade (#690)
-- from version 20240926.03
+- Update to version 20240926.03 (bsc#1231775, bsc#1231776)
   * Revert "Bump go.opentelemetry.io/otel from 1.24.0 to 1.30.0 (#679)" (#684)
 - from version 20240926.02
   * Bump go.opentelemetry.io/otel from 1.24.0 to 1.30.0 (#679)
@@ -377,7 +442,7 @@ Thu Aug 31 12:31:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Added burov, dowgird, paulinakania and Gulio to OWNERS (#482)
 
 -------------------------------------------------------------------
->>>>>>> ./google-osconfig-agent.changes.new
+
 Fri Jul  7 09:33:36 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230706.02 (bsc#1212418, bsc#1212759)
