@@ -1,7 +1,7 @@
 #
 # spec file for package jacktrip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        GPL-3.0-only AND MIT AND LGPL-3.0-only
@@ -60,7 +60,7 @@ audio signal streaming.
 
 %build
 mv build .build
-%meson
+%meson -Dlibsamplerate=disabled # https://github.com/jacktrip/jacktrip/issues/1380
 %meson_build
 
 %install

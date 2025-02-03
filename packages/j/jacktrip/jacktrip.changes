@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 29 20:54:35 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.5.0:
+  * (added) New JackTrip Audio Bridge VST3 Plugin
+  * (added) Sample rate conversion for audio interfaces
+  * (added) Dynamic adjustment of PLC queues using OSC messages
+  * (updated) VS Mode remote control for audio quality slider
+  * (updated) VS Mode switch to using cookies for authentication
+  * (updated) PLC mode improvements in auto headroom calculations
+  * (fixed) PLC audio corruption when buffer sizes differ
+  * (fixed) PLC broadcast queue length when buffer sizes differ
+  * (fixed) Support for multiple commas in --audiodevice parameter
+  * (fixed) VS Mode access token expires after running for a day
+  * (fixed) VS Mode session feedback dialog closes on navigation
+  * (fixed) VS Mode deeplinks broken for first run after install
+
+- disabled libsamplerate on build (https://github.com/jacktrip/jacktrip/issues/1380)
+
+-------------------------------------------------------------------
 Mon Sep 30 06:15:01 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.4.1:
