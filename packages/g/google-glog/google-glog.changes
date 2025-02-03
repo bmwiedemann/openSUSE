@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 02 12:38:35 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 0.7.1:
+  * fix(symbolize): format unknown stack frames (#1092);
+  * build(deps): bump codecov/codecov-action from 3 to 4 (#1071);
+  * fix: rework android detection (#1094);
+  * fix(bazel): add missing emscripten defines (#1082);
+  * fix: error message typo;
+  * fix(readme): correct LOG_IF_EVERY_N typo (#1077);
+  * fix(readme): wording;
+
+-------------------------------------------------------------------
 Sun Feb 18 12:38:35 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.7.0:

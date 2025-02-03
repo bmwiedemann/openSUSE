@@ -1,7 +1,7 @@
 #
 # spec file for package google-glog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 2
 Name:           google-glog
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Logging library for C++
 License:        BSD-3-Clause
