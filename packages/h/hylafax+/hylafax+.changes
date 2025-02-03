@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 31 08:54:55 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.10
+  * fix build for GCC v15 on Fedora 42 (23 Jan 2025)
+  * identify a sender as fumbling ECM if they don't get any data through in four
+    attempts at 2400 bps (16 Jan 2025)
+  * extend Phase D reception attempts to at least 4-5 seconds if connected (7 Jan 2025)
+  * ignore DTMF presentation in Class 1 when dialing (27 Dec 2024)
+  * start SSL Fax connection on receive even if DCS is not received (15, 21 Nov 2024)
+  * fix rare conditions where send error messages are omitted (12 Sep, 29 Oct 2024)
+
+-------------------------------------------------------------------
+Tue Oct  8 17:39:20 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- removed comment from spec file 
+
+-------------------------------------------------------------------
 Sun Oct  6 07:49:58 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 7.0.9
