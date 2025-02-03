@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:22:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  https://www.qt.io/blog/qt-6.8.2-released
+- Drop patch, merged upstream:
+  * 0001-QLowEnergyControllerPrivateBluez-guard-against-malfo.patch
+
+-------------------------------------------------------------------
+Wed Jan 22 16:47:21 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix license. It's using GPL-3.0-only not GPL-3.0-or-later
+
+-------------------------------------------------------------------
+Wed Jan 22 09:08:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add security fix (CVE-2025-23050, boo#1236237)
+  * 0001-QLowEnergyControllerPrivateBluez-guard-against-malfo.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 13:01:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.1:

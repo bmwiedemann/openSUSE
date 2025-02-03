@@ -215,4 +215,31 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228184</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>617210e9f149c1c27cc48f99b33c1030</srcmd5>
+    <version>6.8.1</version>
+    <time>1737651401</time>
+    <user>anag+factory</user>
+    <comment>- Add security fix (CVE-2025-23050, boo#1236237)
+  * 0001-QLowEnergyControllerPrivateBluez-guard-against-malfo.patch</comment>
+    <requestid>1239454</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>0b033aaba2f6f00593f084c3ec1ef560</srcmd5>
+    <version>6.8.1</version>
+    <time>1737828592</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1239636 from alarrosa
+
+- Fix license. It's using GPL-3.0-only not GPL-3.0-or-later</comment>
+    <requestid>1240123</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9720f7931b873a3c112bf7a9bf2cf2a5</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615250</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242043</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-connectivity
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.1
+%define real_version 6.8.2
 %define short_version 6.8
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
@@ -27,10 +27,10 @@
 %endif
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-connectivity-rpmlintrc
