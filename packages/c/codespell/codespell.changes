@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Sun Feb  2 11:06:36 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  * Revert hep->heap, help, in dictionary_rare.txt
+
+-------------------------------------------------------------------
+Tue Jan 21 19:07:02 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  * Add equipmnet->equipment.
+  * Additional en-GB → en-US entries.
+  * Consistent error messages.
+  * Add 'driven' as 'drivin' variant.
+  * Add reusing misspelling and variants.
+  * Add typos found in Emacs and elsewhere.
+  * Add typos found in GNU Guile.
+  * Add corrections from Aspell.
+  * Add entries to dictionary_informal.txt.
+  * Add rare typo lien->line.
+  * Add rare typo firs->first.
+  * Add rare typo hep->heap.
+  * Add rare typo brunch->branch.
+  * Add corrections from typos dictionary (A1).
+  * Add timestmp->timestamp and its variations.
+  * Only accept documented choices after -i and -q
+  * Add some typos from Emacs.
+  * Add corrections from typos dictionary (A2).
+  * Add variations for words starting with non-.
+  * Update "Using a config file" README entry.
+  * Add two choices for verision typo fix.
+  * Add trusthworth(y|iness)->trustworth(y|iness) correction.
+  * Add thrustworth(y|iness)->trustworth(y|iness).
+  * add enrol->enroll to en-GB to en-US dictionary.
+  * Add --ignore-multiline-regex option.
+  * Add spelling correction for separately.
+  * Start testing with Python 3.13.
+  * Add enterpris->enterprise spelling correction.
+  * Add spelling correction for proir and variant.
+  * fix issue #3220: interactive model & write-changes.
+  * Add "releaseds->released, releases,".
+  * Add favilitate->facilitate and its variations.
+  * Add seemd -> seemed.
+  * feat: add typo spelling for capabilities.
+  * entirerly -> entirely.
+  * Add stuty -> study and variations.
+  * readibly->readably.
+  * Add clapse->collapse to dictionary.txt.
+  * fix(rare): remove loath->loathe, as loath is as common as
+    loathe.
+  * Add variations of 'symetriy' typo.
+  * Add distriute->distribute (and variations) to dictionary.txt.
+  * Some extra spelling suggestions for the dictionnary
+    (aumatically, ...).
+  * Move hom to code dictionary.
+  * Add realtd->related, prediced->predicted.
+  * Handle CTRL+C by showing a better message.
+  * Move crate->create to code dictionary.
+  * Add cirumvent -> circumvent.
+  * More typos found in numpy.
+  * Add spelling correction for appliance and variants.
+  * Add spelling corrections for remote and variants.
+  * Add spelling correction for revert and variants.
+  * workdlow->workflow.
+  * More typos found in Scipy.
+  * Update ruff settings.
+  * Improve config file documentation in README.
+  * Support Python 3.13.
+  * feat: add typo for override and overridden.
+  * feat: add strring entry for string and stirring.
+  * Add spelling correction for credential and variant.
+  * Typo from filesystem_spec.
+  * Add zarr as a fix for zar.
+  * acceleratored->accelerated.
+  * Add correction for seens->seems, seen, scenes.
+  * Add generaml->general spelling correction.
+  * Add forach->foreach, orach, spelling correction.
+  * Add spelling correction for leadin.
+  * Add pauload->payload and friend.
+  * These typos do not belong to code, do they?.
+  * Add spelling correction for "agos".
+  * If writeable is OK, so is overwriteable.
+  * Add atfer->after and variations.
+  * Add poduce->produce and friends.
+  * Add variations for correction: reurn->return.
+  * Add spelling correction for various variants of everything.
+  * Add "sems->seems, stems, semis, sens, seams," correction.
+  * Add replacements for complasance and complisance.
+  * Add typos found in software projects.
+  * Add distinghish->distinguish and variations.
+  * docs: typo in an example.
+  * Add typos found in various software projects.
+  * Add spelling correction for denila and variant.
+  * Remove socioeconomic entries.
+
+-------------------------------------------------------------------
 Fri Nov 22 10:44:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

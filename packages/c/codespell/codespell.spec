@@ -1,7 +1,7 @@
 #
 # spec file for package codespell
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           codespell
-Version:        2.3.0
+Version:        2.4.1
 Release:        0
 Summary:        Source code checker for common misspellings
 License:        GPL-2.0-only
