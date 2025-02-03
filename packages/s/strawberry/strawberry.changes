@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:45:24 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add missing qt6-gui-private-devel dependency
+
+-------------------------------------------------------------------
+Fri Jan 31 17:27:52 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.7
+  + Bugfixes:
+   + Fixed strawberry exiting when clicking tray icon.
+   + Fixed Clementine import script errors.
+   + Disabled OSD Pretty on Wayland since it's not working properly.
+ +Enhancements:
+   + Only maximize error dialog if Strawberry is the active window (#1627).
+   + Added QPA Platform Native Interface as optional component.
+
+-------------------------------------------------------------------
 Fri Jan 17 11:28:10 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.6

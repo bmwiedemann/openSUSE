@@ -1593,4 +1593,21 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1238472</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>227d2407a75235fe4332ea2ca7131a49</srcmd5>
+    <version>1.2.7</version>
+    <time>1738615339</time>
+    <user>anag+factory</user>
+    <comment>- Add missing qt6-gui-private-devel dependency
+- Update to version 1.2.7
+  + Bugfixes:
+   + Fixed strawberry exiting when clicking tray icon.
+   + Fixed Clementine import script errors.
+   + Disabled OSD Pretty on Wayland since it's not working properly.
+ +Enhancements:
+   + Only maximize error dialog if Strawberry is the active window (#1627).
+   + Added QPA Platform Native Interface as optional component.
+</comment>
+    <requestid>1241767</requestid>
+  </revision>
 </revisionlist>
