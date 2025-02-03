@@ -1398,4 +1398,36 @@ Tue Jan  10 15:30:05 UTC 2017 - maiku.fabian@gmail.com
     <comment></comment>
     <requestid>1238729</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>fd91e503e1670f7c30d35919c5349553</srcmd5>
+    <version>2.27.10</version>
+    <time>1737490223</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239109</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>355e7dd505f8a8b67683d5ab0bf7ff16</srcmd5>
+    <version>2.27.13</version>
+    <time>1737828755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240195</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>278f58d44f2d5e083367f249a7a963cd</srcmd5>
+    <version>2.27.15</version>
+    <time>1738166611</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241200</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>be577f9bb5230c048e332eb89cba1c44</srcmd5>
+    <version>2.27.16</version>
+    <time>1738615535</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242865</requestid>
+  </revision>
 </revisionlist>
