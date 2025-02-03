@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 01 11:23:54 UTC 2025 - smolsheep@opensuse.org
+
+- Update to version 1.7.8+wayland1+git.1737536808.03a3a58:
+  * Fix buffer overflow in rofi -e after reading from stdin
+  * [DRun] Reduce DBus timeout to 1500ms add option to disable
+    DBusActivatable.
+
+-------------------------------------------------------------------
 Tue Jan  7 21:23:59 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.7.7+wayland1+git.1736252691.5df2d3a:
