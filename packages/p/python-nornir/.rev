@@ -49,4 +49,14 @@
     <comment></comment>
     <requestid>1113441</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>89c27f61c4e75cf1a38d2cc34ac96db0</srcmd5>
+    <version>3.5.0</version>
+    <time>1738615483</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.5.0
+  * https://github.com/nornir-automation/nornir/releases/tag/v3.5.0
+</comment>
+    <requestid>1242388</requestid>
+  </revision>
 </revisionlist>
