@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Feb  2 12:05:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.2
+  * Fixed mouse motion while the mouse is grabbed on Linux
+  * Fixed audio gain not applying in some cases
+  * Fixed a potential crash when applying audio gain
+  * Removed audio resampling frequency limit
+  * Fixed a crash on Windows if a tray is created without any menus
+  * Allow the window manager to position windows that do not
+    specify a position on Linux
+
+-------------------------------------------------------------------
+Thu Jan 23 10:11:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Cherry pick change 6cf087f53a05 from SDL2.spec:
+
+  Thu Aug 29 09:07:45 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+  Don't build with fcitx support. fcitx support was just added
+  because of a bug (boo#1025413) that could be fixed by building
+  with fcitx support but upstream SDL2 developers fixed it
+  in 2.0.5 when building without fcitx support too. Also fcitx
+  support has always been disabled in SLE/Leap and in Factory
+  it's built against fcitx 4.2.9.9, not the newer fcitx5 so
+  let's disable it in order to reduce dependencies.
+
+-------------------------------------------------------------------
+Wed Jan 22 10:29:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+  * audio: added ``SDL_AudioDeviceStreamPaused`` function
+  * x11/wl: added support for Mod3 and more esoteric Xkb
+    configurations
+  * keyboard: added some SDL keycodes for common Xkb keys
+  * Use XIM for IME input on X11
+  * Added support for displaying XIM composition strings
+  * Added SDL_ClickTrayEntry()
+  * audio: Allow streams to change the device-side channels maps
+  * Fix incorrect hotspot calculation for cursor positioning
+  * Added support for the 8BitDo Ultimate 2C Wireless in
+    Bluetooth mode
+  * Added Linux evdev mappings for the Wireless HORIPAD For Steam
+  * tray: renamed function ``SDL_HasNoActiveTrays`` to
+    ``SDL_HasActiveTrays``
+  * vulkan: Fixes for swapchain resize crash on X11
+  * render: SDL_HINT_RENDER_DRIVER now accepts a comma-separated
+    list
+
+-------------------------------------------------------------------
 Wed Jan  8 20:52:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.8

@@ -55,4 +55,28 @@
     <comment>- Update to release 3.1.8</comment>
     <requestid>1236051</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4de84a288d79162877a6e83c14607f78</srcmd5>
+    <version>3.2.0</version>
+    <time>1737560310</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.0</comment>
+    <requestid>1239488</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>83a764d0acb91091d732e395d76eb588</srcmd5>
+    <version>3.2.0</version>
+    <time>1737651918</time>
+    <user>anag+factory</user>
+    <comment>deactivate fcitx</comment>
+    <requestid>1239805</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae37ecdf3b834f6a9b0992ade74214f7</srcmd5>
+    <version>3.2.2</version>
+    <time>1738615448</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.2</comment>
+    <requestid>1242217</requestid>
+  </revision>
 </revisionlist>

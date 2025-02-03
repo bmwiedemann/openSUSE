@@ -19,14 +19,15 @@
 %define sle_version 0
 Name:           SDL3
 %define lname   libSDL3-0
-Version:        3.1.8
+Version:        3.2.2
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
 Group:          Development/Libraries/X11
 URL:            https://libsdl.org/
 #Git-Clone:     https://github.com/libsdl-org/SDL
-Source:         https://github.com/libsdl-org/SDL/releases/download/preview-%version/SDL3-%version.tar.gz
+Source:         https://github.com/libsdl-org/SDL/releases/download/release-%version/SDL3-%version.tar.gz
+Source2:        https://github.com/libsdl-org/SDL/releases/download/release-%version/SDL3-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 BuildRequires:  cmake
@@ -35,9 +36,6 @@ BuildRequires:  libdecor-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa) >= 1.0.11
 BuildRequires:  pkgconfig(dbus-1)
-%if !0%{?sle_version}
-BuildRequires:  pkgconfig(fcitx)
-%endif
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
@@ -69,18 +67,20 @@ BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xxf86vm)
 
 %description
-This is the "Simple DirectMedia Layer" library. It provides a generic
-API for access to audio, keyboard, mouse, and display framebuffer
-across multiple platforms.
+Simple DirectMedia Layer (SDL) is a cross-platform library for
+multi-media software, such as games and emulators. It provides a
+generic API for access to audio, keyboard, mouse, and display
+framebuffer.
 
 %package -n %lname
 Summary:        Simple DirectMedia Layer Library
 Group:          System/Libraries
 
 %description -n %lname
-This is the "Simple DirectMedia Layer" library. It provides a generic
-API for access to audio, keyboard, mouse, and display framebuffer
-across multiple platforms.
+Simple DirectMedia Layer (SDL) is a cross-platform library for
+multi-media software, such as games and emulators. It provides a
+generic API for access to audio, keyboard, mouse, and display
+framebuffer.
 
 SDL uses dlopen, so if you experience problems under X11, check
 again that libXrandr2 and libXi6 are in fact installed.
@@ -127,7 +127,7 @@ SDL3 C API.
 	-DSDL_X11_SHARED:BOOL=OFF -DSDL_WAYLAND_SHARED:BOOL=OFF \
 	-DSDL_KMSDRM_SHARED:BOOL=OFF \
 	-DSDL_STATIC:BOOL=OFF -DSDL_STATIC_PIC:BOOL=ON -DSDL_RPATH:BOOL=OFF \
-	-DSDL_TEST_LIBRARY:BOOL=OFF -DSDL_DISABLE_INSTALL_DOCS:BOOL=OFF
+	-DSDL_TEST_LIBRARY:BOOL=OFF -DSDL_INSTALL_DOCS:BOOL=ON
 
 %cmake_build
 
