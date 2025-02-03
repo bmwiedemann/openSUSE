@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  2 13:17:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.19
+  * Improved: show any on-screen keyboard on click into byte
+    array view area
+  * Improved: translations
+  * Fixed: zoom scaling was broken on setting a font with
+    different size (kde#498926)
+
+-------------------------------------------------------------------
 Wed Nov 20 15:57:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

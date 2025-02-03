@@ -708,4 +708,12 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226938</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>00ddb0ddcc5bfc4068a5d86d074a3a4b</srcmd5>
+    <version>0.26.19</version>
+    <time>1738615453</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.26.19</comment>
+    <requestid>1242227</requestid>
+  </revision>
 </revisionlist>

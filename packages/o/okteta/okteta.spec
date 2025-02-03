@@ -20,7 +20,7 @@
 %define Okteta_sover 3
 %bcond_without released
 Name:           okteta
-Version:        0.26.18
+Version:        0.26.19
 Release:        0
 Summary:        Hex Editor
 License:        GFDL-1.2-only AND GPL-2.0-only
@@ -28,6 +28,7 @@ URL:            https://apps.kde.org/okteta
 Source0:        https://download.kde.org/stable/okteta/%{version}/src/okteta-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/okteta/%{version}/src/okteta-%{version}.tar.xz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/kossebau@key1.asc?ref_type=heads
 Source2:        okteta.keyring
 %endif
 Source99:       okteta-rpmlintrc
