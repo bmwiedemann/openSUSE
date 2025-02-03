@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.23.16
+Version:        0.23.17
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -57,6 +57,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(jack)
@@ -71,7 +72,7 @@ BuildRequires:  pkgconfig(libmms)
 BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libmpg123)
-BuildRequires:  pkgconfig(libnfs)
+BuildRequires:  pkgconfig(libnfs) >= 4
 BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libpipewire-0.3)
@@ -104,11 +105,6 @@ Provides:       user(%{name})
 %{?systemd_requires}
 %if %{with faad}
 BuildRequires:  faad2-devel
-%endif
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-BuildRequires:  pkgconfig(fmt)
-%else
-BuildRequires:  pkgconfig(fmt) = 10.2.1
 %endif
 %if %{with mpd_iso9660}
 BuildRequires:  pkgconfig(libiso9660)

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 31 23:08:52 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.23.17
+  * Limited build to libnfs >= 4.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.17/NEWS
+  * protocol
+    * "albumart" tries to send larger chunks if available
+    * explicitly disallow "idle" and "noidle" in command lists
+  * storage: nfs: required libnfs 4.0 or later
+  * database: inotify: trigger update after symlink was created
+  * decoder: ffmpeg: prefer over sndfile and audiofile for its DTS-WAV support
+  * supported libfmt 11.1
+
+-------------------------------------------------------------------
 Sat Jan 18 10:40:15 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Limited build to fmt 10.2.1 for Tumbleweed (fmt 11.1.1 broken).
