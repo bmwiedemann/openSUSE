@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  1 11:18:41 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.12
+  * Libsodium is now an optional dependency. When using the Zig
+    toolchain to compile Minisign, you can specify the
+    -Dwithout-libsodium flag to build and run without libsodium.
+  * Key identifiers are now zero-padded when printed.
+
+-------------------------------------------------------------------
 Mon Jul 22 16:21:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Cleanup spec file

@@ -1,7 +1,7 @@
 #
 # spec file for package minisign
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           minisign
-Version:        0.11
+Version:        0.12
 Release:        0
 License:        ISC
 Summary:        A dead simple tool to sign files and verify signatures
-Url:            https://jedisct1.github.io/minisign/
-Group:          Productivity/Networking/Security 
+URL:            https://jedisct1.github.io/minisign/
+Group:          Productivity/Networking/Security
 Source0:        https://github.com/jedisct1/minisign/archive/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig(libsodium)
