@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Feb  3 07:09:13 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.34.4:
+  * fix: fix bininstall #1744
+  * fix(deps): update dependency @swc/core to v1.10.12 3eea108
+  * chore(deps): update rust crate tempfile to v3.16.0 6939cca
+  * chore(deps): update dependency @types/node to v22.12.0 ea05951
+
+-------------------------------------------------------------------
+Tue Jan 28 13:30:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.34.3:
+  * fix: fix binary command again 2c9034c
+
+-------------------------------------------------------------------
+Tue Jan 28 13:30:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.34.2:
+  * fix: fix binary name for npm #1773
+  * fix: do not publich napi 553f5e5
+
+-------------------------------------------------------------------
+Tue Jan 28 13:29:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.34.1:
+  * fix: fix windows error
+
+-------------------------------------------------------------------
+Tue Jan 28 13:28:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.34.0:
+  * feat: support cargo binstall #1744
+  * feat: add tracing of resolved configuration file path #1755
+  * fix: report error in run with wrong yaml #1768
+  * Breaking change: feat: reduce napi binary size #1759
+  * feat: compile sg as an alias of ast-grep #1757
+  * doc: update readme #574
+  * fix: remove sequel #1743
+  * Breaking change: feat: remove nonsupported language e5a0a55
+  * feat: use macro to simplify code d762257
+  * fix(deps): update dependency @babel/core to v7.26.7 5944dbf
+
+-------------------------------------------------------------------
 Mon Jan 13 15:04:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.33.1:

@@ -735,4 +735,44 @@
   * fix(deps): update dependency tree-sitter to v0.22.4 ec70763</comment>
     <requestid>1237514</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>23796af2dde4bc30718d6be8c9dee857</srcmd5>
+    <version>0.34.3</version>
+    <time>1738080397</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.34.3:
+  * fix: fix binary command again 2c9034c
+
+- Update to 0.34.2:
+  * fix: fix binary name for npm #1773
+  * fix: do not publich napi 553f5e5
+
+- Update to 0.34.1:
+  * fix: fix windows error
+
+- Update to 0.34.0:
+  * feat: support cargo binstall #1744
+  * feat: add tracing of resolved configuration file path #1755
+  * fix: report error in run with wrong yaml #1768
+  * Breaking change: feat: reduce napi binary size #1759
+  * feat: compile sg as an alias of ast-grep #1757
+  * doc: update readme #574
+  * fix: remove sequel #1743
+  * Breaking change: feat: remove nonsupported language e5a0a55
+  * feat: use macro to simplify code d762257
+  * fix(deps): update dependency @babel/core to v7.26.7 5944dbf</comment>
+    <requestid>1240842</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6006e050fd73eab8895504b2b5922162</srcmd5>
+    <version>0.34.4</version>
+    <time>1738615476</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.34.4:
+  * fix: fix bininstall #1744
+  * fix(deps): update dependency @swc/core to v1.10.12 3eea108
+  * chore(deps): update rust crate tempfile to v3.16.0 6939cca
+  * chore(deps): update dependency @types/node to v22.12.0 ea05951</comment>
+    <requestid>1242307</requestid>
+  </revision>
 </revisionlist>
