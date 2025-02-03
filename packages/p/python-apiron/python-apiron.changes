@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:21:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.0.post1:
+  * Modernize package quality tooling and configuration
+  * Add support for Python 3.13
+
+-------------------------------------------------------------------
 Thu Oct 10 15:37:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.0:

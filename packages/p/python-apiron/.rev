@@ -93,4 +93,14 @@
     overridden by any value specified at call time</comment>
     <requestid>1206740</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c451dd93f56b9e0df38ad2c044831ae</srcmd5>
+    <version>8.0.0.post1</version>
+    <time>1738615511</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.0.post1:
+  * Modernize package quality tooling and configuration
+  * Add support for Python 3.13</comment>
+    <requestid>1242829</requestid>
+  </revision>
 </revisionlist>
