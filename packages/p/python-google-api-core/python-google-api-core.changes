@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:50:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.24.1
+  * Memory leak in bidi classes (#770)
+  * Resolve the issue where rpc timeout of 0 is used when timeout expires (#776)
+  * Add warnings regarding consuming externally sourced credentials (#783)
+
+-------------------------------------------------------------------
 Mon Jan  6 15:21:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.24.0
