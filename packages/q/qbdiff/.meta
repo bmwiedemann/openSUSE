@@ -1,0 +1,13 @@
+<package name="qbdiff" project="openSUSE:Factory">
+  <title>Quick Binary Diff for generating and applying binary patches</title>
+  <description>Quick Binary Diff (qbdiff) is a tool for generating and applying binary
+patches. It builds on the general ideas of bsdiff.
+
+It is designed to be faster than bsdiff by taking advantage of multiple CPU
+cores. It is also designed to produce generally smaller patch files, and
+supports only LZMA compression as it performs well on sparse binary data.
+Further it aims to be frugal on memory usage and provides integrity checking
+using BLAKE2B.</description>
+  <devel project="devel:tools" package="qbdiff"/>
+  <url>https://github.com/kspalaiologos/qbdiff</url>
+</package>
