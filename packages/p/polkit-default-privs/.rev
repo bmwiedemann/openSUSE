@@ -2265,4 +2265,37 @@ for 12.3</comment>
 </comment>
     <requestid>1238551</requestid>
   </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>dcfef8f5403b83344a4f938d171147d8</srcmd5>
+    <version>1550+20250121.7deadcd</version>
+    <time>1737559851</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20250121.7deadcd:
+  * profiles: add left out emulation-load action for fwupd (bsc#1235659)
+</comment>
+    <requestid>1239215</requestid>
+  </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>3ed2ac1aa9e52ff556dcedf8b6999ca5</srcmd5>
+    <version>1550+20250128.968956c</version>
+    <time>1738163392</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20250128.968956c:
+  * profiles: add tuned-ppd renames / minor changes (bsc#1236029)</comment>
+    <requestid>1240787</requestid>
+  </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>d0c827622880d8cc0555458d0a13ba12</srcmd5>
+    <version>1550+20250131.f792cce</version>
+    <time>1738615240</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20250131.f792cce:
+  * cleanup: drop veyon (package deleted due to unfixed build issues)
+  * cleanup: drop scap-workbench action (no longer packaged)
+  * cleanup: drop unused org.xfce.power.xfce4-pm-helper
+- Update to version 1550+20250131.70c3c44:
+  * man page polkit-default-privs(5): fix path for local override (bsc#1236538)
+</comment>
+    <requestid>1241656</requestid>
+  </revision>
 </revisionlist>
