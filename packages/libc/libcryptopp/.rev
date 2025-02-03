@@ -361,4 +361,14 @@ Filter out -flto= flag for arm7 see cryptopp issue#865</comment>
     <comment></comment>
     <requestid>1136804</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>d6bdf62d6a5cab8334a2c99544755c78</srcmd5>
+    <version>8.9.0</version>
+    <time>1738617408</time>
+    <user>anag+factory</user>
+    <comment>- Rename patch to patchlevel to avoid confusion on check and avoid:
+  line 75: Patch number not specified: patch
+</comment>
+    <requestid>1242887</requestid>
+  </revision>
 </revisionlist>

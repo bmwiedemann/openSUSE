@@ -18,20 +18,20 @@
 
 %define major 8
 %define minor 9
-%define patch 0
-%define pkg_version %{major}%{minor}%patch
+%define patchlevel 0
+%define pkg_version %{major}%{minor}%{patchlevel}
 # There is no upstream interface version information.
 # Therefore we need unique basenames (see boo#1027192):
-%define sover %{major}_%{minor}_%patch
+%define sover %{major}_%{minor}_%{patchlevel}
 Name:           libcryptopp
 # WARNING: Execute "sh precheckin_baselibs.sh" to update baselibs.conf
 # WARNING: uses source tarball name to create lib name.
-Version:        %{major}.%{minor}.%patch
+Version:        %{major}.%{minor}.%{patchlevel}
 Release:        0
 Summary:        Cryptographic library for C++
 License:        BSL-1.0
 URL:            https://www.cryptopp.com
-Source:         https://github.com/weidai11/cryptopp/archive/CRYPTOPP_%{major}_%{minor}_%patch.tar.gz
+Source:         https://github.com/weidai11/cryptopp/archive/CRYPTOPP_%{major}_%{minor}_%{patchlevel}.tar.gz
 Source1:        precheckin_baselibs.sh
 Source2:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE libcryptopp-shared.patch -- improve shared library creation
@@ -72,7 +72,7 @@ codes, hash functions, PKI crypto, key agreement schemes and elliptic
 curve crypto. This package is used for crypto++ development.
 
 %prep
-%autosetup -p1 -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%patch"
+%autosetup -p1 -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%{patchlevel}"
 
 %build
 %ifarch %{arm} i586

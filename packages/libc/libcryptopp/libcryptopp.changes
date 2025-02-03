@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:09:55 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Rename patch to patchlevel to avoid confusion on check and avoid:
+  line 75: Patch number not specified: patch
+
+-------------------------------------------------------------------
 Thu Jan  4 09:29:41 UTC 2024 - pgajdos@suse.com
 
 - security update
