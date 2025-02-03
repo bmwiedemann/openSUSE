@@ -1,0 +1,24 @@
+[Unit]
+Description=Simple Forgejo instance guardian
+After=network.target forgejo.service
+
+[Service]
+RestartSec=2s
+Type=simple
+Environment=FORGEJO_GUARDIAN_CONFIG=/etc/forgejo-guardian/config.toml
+ExecStart=/usr/bin/forgejo-guardian
+
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sat Feb  1 00:28:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.1:
+  * Enhance ban/sus logs to display the location
+
+-------------------------------------------------------------------
+Tue Jan 28 20:15:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.0:
+  * Ability to check user tokens and oauth2 apps
+  * The minimum value for inactive.req_limit changed to 4
+  * Ability to enter seconds in the interval without s suffix
+  * Make expressions.interval suffixably
+  * Guardian checks all instance users when expressions.only_new_users is false
+  * Prevent async deadlock when Telegram is disabled
+
+-------------------------------------------------------------------
+Wed Jan 22 13:58:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.1:
+  * Add support for including and excluding users
+  * Check for the user activities for more than last 365 days
+  * Exceed inactive.req_limit due to asynchronous user checking
+- update to 0.4.0:
+  * Ability to Enable/disable sus and ban expressions, and Telegram bot
+  * Ability to fetch Forgejo token from environment variables
+  * Clean up instance of inactive users
+  * Move unglobal fields to the expressions section
+
+-------------------------------------------------------------------
+Sat Jan 18 16:29:50 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.3.1:
+  * Ability to suspend the user instead of deleting them permanently
+
+-------------------------------------------------------------------
+Thu Jan 16 13:32:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging

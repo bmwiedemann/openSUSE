@@ -1,0 +1,10 @@
+[forgejo]
+instance_url = "https://forgejo.example"
+token = "your-token"
+
+[expressions.ban]
+usernames = ['^admin.*$']
+websites = ['^https://example\.com$', { re = '^https://example2\.com$', reason = "Example 2 is not allowed" }, '^https://example3\.com$']
+
+[expressions.sus]
+usernames = ['^mod.*$']
