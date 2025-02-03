@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Feb  1 02:46:26 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.25.1:
+  * placesbrowser: renamed SetRow to setRow
+  * [BugFix] Check default dir before add existing directory to
+    'Places'
+  * [BugFix] Quick zoom out & zoom in makes zoom center to image
+    center.
+  * fixed (another) typo in linux_x64 bundle creation in debug mode
+  * fixed typo in linux_x64 bundle creation in debug mode
+  * fixed typo in linux/bundle_ART
+  * linux workflow: added option to build debug versions
+  * Re-center the crop window on mouse click.
+  * fixed typo in bundle_ART scripts
+- Updates from 1.25.0:
+  * fixed image preview when output profile is set to "passthrough"
+  * fixed one more typo
+  * force the use of sRGB as monitor profile when running under
+    wayland
+  * removed obsolete options
+  * further tweaks to the tooltips in the French translation
+  * performance: enable thumbnail caching by default
+  * one more tweak to the French translation
+  * fixed French translation markup errors
+  * updated camera matrices
+  * updated WB presets
+  * updated translations
+  * fixed color management in inspector mode when ART_OS_COLOR_MGMT
+    is defined
+  * updated Italian translation
+  * fixed homepage url in help msg
+  * renamed options.rtdir to options.user_config_dir and argv0 to
+    options.ART_base_dir
+  * refactored code for color management of GUI elements
+  * consider the default monitor profile also when drawing brush
+    strokes and false colors
+  * GUI: consider the default monitor profile when drawing
+    gradients and histograms
+  * avoid noise amplification when applying CAT for WB
+  * added option to override the quartz colorspace with env var
+    (for debugging)
+  * procparams: set the default output profile to RTv2_sRGB
+  * rgb2monitor: do not use openmp if multiThread is false
+  * include GTK immodules in the linux bundle
+  * filecatalog: protect calls to FileCatalog::previewReady with
+    the GUI lock
+  * imagesource: do not use openmp for color space conversions in
+    thumbnails
+  * linux bundle_ART: include gio vfs modules
+  * procparams: support for saving paths relative to the user home
+    dir
+  * filecatalog: protect _refreshProgressBar with a gui lock
+  * updated README
+  * dynamic profiles: added button to reset to default (built-in)
+    rules
+  * colorcorrection: added gamma slider in "HSL factors" mode
+
+-------------------------------------------------------------------
 Mon Jan  6 01:03:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - consistently set CC/CXX variables
