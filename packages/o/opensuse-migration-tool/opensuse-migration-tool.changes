@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 03 14:14:14 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250129.63f1e30:
+  * Check for x86_64-v2 capability prior migrating to 16.0
+  * Use custom dialogrc
+  * Activate green only with 24bit/truecolor
+  * Use same colors for digits as for dialog options
+  * Do not use yellow for title nor active button
+  * Update README.md
+
+-------------------------------------------------------------------
 Mon Dec 09 21:25:27 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20241209.76c6ef8:

@@ -50,4 +50,12 @@ migrations as well as point release upgrades
     <comment></comment>
     <requestid>1229490</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee0f42e4078d7f6ce8c15b4d11d19c4c</srcmd5>
+    <version>20250129.63f1e30</version>
+    <time>1738615537</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242876</requestid>
+  </revision>
 </revisionlist>
