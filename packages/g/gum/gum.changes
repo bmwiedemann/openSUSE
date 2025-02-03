@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Feb  1 02:58:17 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.15.2:
+  Fixes
+  * fix(pager): memory/cpu usage when using soft-wrap
+- Updates from 0.15.1:
+  * Revert "feat(table): set --print if stdout is not a terminal"
+  * fix(confirm): do not print 'not confirmed' on exit 1
+  * fix(filter): wrong highlight when option has grapheme clusters
+  * fix(spin): clear title after finished
+  * fix(viewport): remove extra line in viewport help
+  * fix(write): ctrl+j not making new line
+  * fix: spin when not a tty
+
+-------------------------------------------------------------------
+Sun Jan 19 05:48:24 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.15.0:
+  New
+  * feat(choose): --selected="*" to select all
+  * feat(choose,filter): --input-delimiter --output-delimiter
+  * feat(confirm): add --show-output
+  * feat(file): add --header
+  * feat(file): show permissions and size
+  * feat(filter): --select-if-one returns if single match
+  * feat(filter): allow to focus out of filter
+  * feat(filter): allow to pre-select items with --selected
+  * feat(filter): ctrl+a to toggle select all
+  * feat(log): support setting minimum log level with GUM_LOG_LEVEL
+  * feat(spin): --show-stdout --show-stderr
+  * feat(style): trim line spaces
+  * feat(table): --lazy-quotes and --fields-per-record
+  * feat(table): add help
+  * feat(table): set --print if stdout is not a terminal
+  * feat(version): adds command to check current gum version
+  * feat: adding return column to table command
+  * feat: allow cursor option in file
+  * feat: esc exit 1, ctrl+c exit 130, help arrow order
+  * feat: handle focus/blur events
+  * feat: improve handling ctrl+c and timeouts
+  Fixed
+  * fix(choose): --ordered
+  * fix(choose,confirm,file,filter,input,pager,spin): timeout
+    default unit
+  * fix(confirm) --timeout was ignored, now works as documented
+  * fix(confirm,choose,file,input): timeout handling
+  * fix(filter): --no-strict not working, also weird behavior
+  * fix(filter): abort on ctrl+q
+  * fix(pager): do not strip ansi sequences
+  * fix(pager): use help bubble
+  * fix(spin): if not a tty, only print title, do not open tty for
+    stdin
+  * fix(spin): indenting lines when command is piped
+  * fix(spin): interrupt child process on ctrl+c
+  * fix(stdin): trim space instead of \n
+  * fix(table): grow table rows based on --columns
+  * fix(table): ignore BOM
+  * fix(table): only set height if > 0
+  * fix(table): set widths
+  * fix(write): max height, max chars
+  * fix: clarify filter --sort flag
+  * fix: strip ansi sequences from stdin
+  * fix: quote tmux session name in code sample
+  Other Stuff
+  * refactor: removing huh as a dep
+
+-------------------------------------------------------------------
 Sun Sep 29 23:39:57 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.14.5:

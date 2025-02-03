@@ -1,7 +1,7 @@
 #
 # spec file for package gum
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global _lto_cflags %nil
 Name:           gum
-Version:        0.14.5
+Version:        0.15.2
 Release:        0
 Summary:        Tool for glamorous shell scripts
 License:        MIT
