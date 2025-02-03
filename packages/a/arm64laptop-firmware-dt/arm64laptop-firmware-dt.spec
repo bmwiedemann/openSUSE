@@ -44,7 +44,7 @@ Supplements:    modalias(of:NscmT*Cqcom,scm-sc8280xpCqcom,scm)
 %description -n lenovo-x13s-firmware-dt
 Install DTB on ESP for Lenovo X13s.
 
-%install -n lenovo-x13s-firmware-dt
+%install
 install -m 755 -d %{buildroot}%{instdir}/lenovo-x13s
 install -m 644 /boot/dtb-*/qcom/sc8280xp-lenovo-thinkpad-x13s.dtb %{buildroot}%{instdir}/lenovo-x13s/
 
