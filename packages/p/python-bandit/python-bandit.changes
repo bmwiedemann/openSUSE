@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  3 08:12:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Clarify "getting started" docs (#963)
+  * Remove lxml (B320 & B410) from blacklist (#1212)
+  * Add Mercedes-Benz to sponsor list (#1210)
+  * Remove more leftover OpenStack references (#1195)
+  * Remove Sentry as a sponsor (#1198)
+  * Add a JSON to seek funding from the FLOSS/fund (#1194)
+  * Update project urls with added links (#1193)
+  * Mark Python 3.13 as officially supported (#1192)
+  * No need to check httpx client without timeout defined (#1177)
+  * Add more insecure cryptography cipher algorithms (#1185)
+  * Removal of Python 3.8 support (#1174)
+  * Rename doc file to match proper bandit ID (#1183)
+
+-------------------------------------------------------------------
 Tue Nov 12 17:04:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing BRs and establish Requires according to pyproject.toml.
@@ -303,7 +320,7 @@ Sat Jan 15 16:40:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Clearer message for subprocess module use
   * Specify language\_version in .pre-commit-hooks.yaml
   * Specify output\_file encoding as utf-8
-  
+
 -------------------------------------------------------------------
 Wed Oct 27 12:05:40 UTC 2021 - pgajdos@suse.com
 
@@ -347,13 +364,13 @@ Tue Mar  9 06:13:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix 3.8 errors (#509) @tylerwince
   * Add several ini options for .bandit file (#508) @vuolter
   * get_url returns different urls calling twice (bug #506) (#507) @ehooo
-  * Replace setattr (#493) @tylerwince 
+  * Replace setattr (#493) @tylerwince
 - Refresh remove-non-test-deps.patch
 
 -------------------------------------------------------------------
 Sat Feb 13 10:21:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- cli tool, don't build with multiple python versions 
+- cli tool, don't build with multiple python versions
 
 -------------------------------------------------------------------
 Thu Jun  4 16:15:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>

@@ -293,4 +293,27 @@
 </comment>
     <requestid>1223777</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>eb2bec822ad283ebee640f03a26fe95e</srcmd5>
+    <version>1.8.2</version>
+    <time>1738615492</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.2:
+  * Clarify &quot;getting started&quot; docs (#963)
+  * Remove lxml (B320 &amp; B410) from blacklist (#1212)
+  * Add Mercedes-Benz to sponsor list (#1210)
+  * Remove more leftover OpenStack references (#1195)
+  * Remove Sentry as a sponsor (#1198)
+  * Add a JSON to seek funding from the FLOSS/fund (#1194)
+  * Update project urls with added links (#1193)
+  * Mark Python 3.13 as officially supported (#1192)
+  * No need to check httpx client without timeout defined (#1177)
+  * Add more insecure cryptography cipher algorithms (#1185)
+  * Removal of Python 3.8 support (#1174)
+  * Rename doc file to match proper bandit ID (#1183)
+
+  * Replace setattr (#493) @tylerwince
+- cli tool, don't build with multiple python versions</comment>
+    <requestid>1242593</requestid>
+  </revision>
 </revisionlist>
