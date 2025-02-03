@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:33:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.16.1
+  * Minor fixes following linter recommendations by @MatthieuDartiailh in #154
+  * build(deps): bump codecov/codecov-action from 4 to 5 by @dependabot in #153
+  * Fix flag inference by @MatthieuDartiailh in #157
+
+-------------------------------------------------------------------
 Fri Nov  1 08:33:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.16.0:
