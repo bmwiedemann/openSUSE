@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:16:48 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- 0.6.1
+  * new noobsinfo query parameter
+    (can be used to hide git informations in sources, binaries
+     won't contain them either then).
+
+-------------------------------------------------------------------
+Tue Jan 28 08:58:31 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- 0.6.0
+  * project mode: switching to to track package sources using
+                  git sha sums instead of md5sum via download_assets
+
+-------------------------------------------------------------------
 Wed Dec  4 07:04:33 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - 0.5.4

@@ -130,4 +130,25 @@
     of the git tree. boo#1230469 CVE-2024-22038</comment>
     <requestid>1228162</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9510e752b4d47af2c13a66a6c52899aa</srcmd5>
+    <version>0.6.0</version>
+    <time>1738072797</time>
+    <user>anag+factory</user>
+    <comment>- 0.6.0
+  * project mode: switching to to track package sources using
+                  git sha sums instead of md5sum via download_assets</comment>
+    <requestid>1240796</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>293e34a287a4178c337953ed0fe4cbc1</srcmd5>
+    <version>0.6.1</version>
+    <time>1738615506</time>
+    <user>anag+factory</user>
+    <comment>- 0.6.1
+  * new noobsinfo query parameter
+    (can be used to hide git informations in sources, binaries
+     won't contain them either then).</comment>
+    <requestid>1242816</requestid>
+  </revision>
 </revisionlist>
