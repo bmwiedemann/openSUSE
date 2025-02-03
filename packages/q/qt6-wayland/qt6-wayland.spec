@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.1
+%define real_version 6.8.2
 %define short_version 6.8
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -40,12 +40,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-wayland-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-update-wayland_xml-to-version-1_23_0.patch
-# PATCH-FIX-UPSTREAM
-# fix crash when attach differ shellsurface to the same shellsurfaceitem
-# https://codereview.qt-project.org/c/qt/qtwayland/+/599732
-Patch1:         0001-fix-crash-issue.patch
-# PATCH-FIX-UPSTREAM -- Fix crash when unplugging a graphics tablet
-Patch2:         0001-client-Redo-management-of-tablet-object-proxies.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel

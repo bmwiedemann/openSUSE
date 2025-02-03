@@ -344,4 +344,12 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228215</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4f8d7924e8fbd4099c5a36192dee7b55</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615283</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242074</requestid>
+  </revision>
 </revisionlist>

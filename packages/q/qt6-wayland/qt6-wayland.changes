@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:23:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  https://www.qt.io/blog/qt-6.8.2-released
+- Drop patches, merged upstream:
+  * 0001-fix-crash-issue.patch
+  * 0001-client-Redo-management-of-tablet-object-proxies.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 13:02:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.1:
