@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 31 12:44:42 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- drop hostinfo entries, since the package no longer exists (see sr#1208439)
+
+-------------------------------------------------------------------
 Mon Nov 25 17:57:04 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - enable the supergfxd service for hybrid graphic systems

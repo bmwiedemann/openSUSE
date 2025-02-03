@@ -574,4 +574,13 @@
 </comment>
     <requestid>1226474</requestid>
   </revision>
+  <revision rev="69" vrev="25">
+    <srcmd5>1954de1b6d5d46a4f00e380a70061668</srcmd5>
+    <version>12.2</version>
+    <time>1738615302</time>
+    <user>anag+factory</user>
+    <comment>- drop hostinfo entries, since the package no longer exists (see sr#1208439)
+</comment>
+    <requestid>1241645</requestid>
+  </revision>
 </revisionlist>
