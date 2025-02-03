@@ -317,4 +317,22 @@
     <comment></comment>
     <requestid>1224079</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fedf8ed284dbdff8d6169ececdca8d13</srcmd5>
+    <version>0.34.0</version>
+    <time>1738615440</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.34.0:
+  - Added support for detached (open)SUSE style changelogs
+- Update to 0.33.0:
+  - There is a new convenience method Sections.get_or_create()
+    that allows you to manipulate a section without checking
+    if it exists first. If a section doesn't exist, it will be
+    appended to the end. (#441) For example, this will work
+    properly even on spec files without %changelog:
+      with spec.sections() as sections:
+          changelog = sections.get_or_create(&quot;changelog&quot;)
+          changelog[:] = [&quot;%autochangelog&quot;]</comment>
+    <requestid>1242154</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb  1 22:17:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.34.0:
+  - Added support for detached (open)SUSE style changelogs
+- Update to 0.33.0:
+  - There is a new convenience method Sections.get_or_create()
+    that allows you to manipulate a section without checking
+    if it exists first. If a section doesn't exist, it will be
+    appended to the end. (#441) For example, this will work
+    properly even on spec files without %changelog:
+      with spec.sections() as sections:
+          changelog = sections.get_or_create("changelog")
+          changelog[:] = ["%autochangelog"]
+
+-------------------------------------------------------------------
 Thu Nov 14 05:42:51 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.32.6:
