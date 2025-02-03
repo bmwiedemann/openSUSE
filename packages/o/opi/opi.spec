@@ -20,12 +20,12 @@
 %define pythons %{use_python}
 
 Name:           opi
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
 Group:          System/Packages
-URL:            https://github.com/openSUSE/%{name}
+URL:            https://github.com/openSUSE/opi
 Source0:        https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 

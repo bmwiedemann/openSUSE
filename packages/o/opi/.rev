@@ -674,4 +674,21 @@
   * Update available apps in opi - README.md</comment>
     <requestid>1237861</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b998d9d0e8a0245ec5cd9dfbdddd7d0d</srcmd5>
+    <version>5.6.0</version>
+    <time>1737651981</time>
+    <user>anag+factory</user>
+    <comment>- Version 5.6.0
+  * Add plugin to install vagrant from hashicorp repo</comment>
+    <requestid>1239887</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>3c0e7278a82116e51a22fcfb21942b85</srcmd5>
+    <version>5.6.0</version>
+    <time>1738615415</time>
+    <user>anag+factory</user>
+    <comment>- Use no macros in url in .spec for packtrack</comment>
+    <requestid>1242090</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  1 10:48:08 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Use no macros in url in .spec for packtrack
+
+-------------------------------------------------------------------
+Thu Jan 23 13:53:18 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 5.6.0
+  * Add plugin to install vagrant from hashicorp repo
+
+-------------------------------------------------------------------
 Tue Jan 14 15:35:21 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 5.5.0
