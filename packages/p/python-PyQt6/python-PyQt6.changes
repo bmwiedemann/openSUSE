@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  2 12:00:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add build fix:
+  * 0001-Fix-build-with-Qt-6.8.2.patch
+
+-------------------------------------------------------------------
 Wed Jan  8 15:33:06 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.8.0

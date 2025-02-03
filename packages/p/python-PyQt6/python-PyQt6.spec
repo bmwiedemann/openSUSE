@@ -32,6 +32,8 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{v
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
+# PATCH-FIX-UPSTREAM - fix build failure with Qt 6.8.2
+Patch2:         0001-Fix-build-with-Qt-6.8.2.patch
 BuildRequires:  %{python_module PyQt6-sip >= 13.8}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel >= 3.9}

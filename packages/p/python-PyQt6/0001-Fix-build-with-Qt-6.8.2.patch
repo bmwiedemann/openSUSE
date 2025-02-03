@@ -1,0 +1,30 @@
+From ee6c2c30eca67004e2b05f55ee1d82c3ab44b966 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sun, 2 Feb 2025 12:59:19 +0100
+Subject: [PATCH] Fix build with Qt 6.8.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes:
+/home/abuild/rpmbuild/BUILD/python-PyQt6-6.8.0-build/PyQt6-6.8.0/build/QtCore/sipQtCoreQStringConverterBase.cpp:58:52: error: use of deleted function ‘constexpr QStringConverterBase::QStringConverterBase(const QStringConverterBase&)’
+---
+ sip/QtCore/qstringconverter_base.sip | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sip/QtCore/qstringconverter_base.sip b/sip/QtCore/qstringconverter_base.sip
+index d0c790f..6f7c301 100644
+--- a/sip/QtCore/qstringconverter_base.sip
++++ b/sip/QtCore/qstringconverter_base.sip
+@@ -22,7 +22,7 @@
+ 
+ %If (Qt_6_4_0 -)
+ 
+-class QStringConverterBase
++class QStringConverterBase /NoDefaultCtors/
+ {
+ %TypeHeaderCode
+ #include <qstringconverter_base.h>
+-- 
+2.48.1
+
