@@ -1,0 +1,28 @@
+From 4fcb3f028a8ca15a553faba77f262a3cb75d4a71 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1ritCS@protonmail.com>
+Date: Mon, 27 Jan 2025 18:41:45 +0100
+Subject: [PATCH] disable donation nag popup
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Florian "sp1rit"​ <sp1ritCS@protonmail.com>
+---
+ src/managers/DonationNagManager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/managers/DonationNagManager.cpp b/src/managers/DonationNagManager.cpp
+index d7eab9a..4fc8dc9 100644
+--- a/src/managers/DonationNagManager.cpp
++++ b/src/managers/DonationNagManager.cpp
+@@ -34,6 +34,7 @@ const std::vector<SNagDatePoint> NAG_DATE_POINTS = {
+ // clang-format on
+ 
+ CDonationNagManager::CDonationNagManager() {
++    return;
+     static auto PNONAG = CConfigValue<Hyprlang::INT>("ecosystem:no_donation_nag");
+ 
+     if (g_pVersionKeeperMgr->fired() || *PNONAG)
+-- 
+2.48.1
+

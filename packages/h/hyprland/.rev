@@ -274,4 +274,20 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1232787</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bdfbddeaa95105f90a8fa771ce73d991</srcmd5>
+    <version>0.47.1</version>
+    <time>1738244968</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241310</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7d5cfd64b00bb5b9f91d760802d1db64</srcmd5>
+    <version>0.47.2</version>
+    <time>1738615464</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242264</requestid>
+  </revision>
 </revisionlist>

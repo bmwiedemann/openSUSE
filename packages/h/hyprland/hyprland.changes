@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Sun Feb  2 17:44:00 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.47.2:
+  + A minor update on top of 0.47.1 with some additional fixes and
+    patches.
+  + Fixes backported
+    - xwayland: handle window coords correctly (#9238)
+    - monitor: preferred mode now tries first 3 modes if it fails
+	  before erroring (#9246)
+    - xwayland: prevent invalid window configurations for X11 apps
+	  (#9253)
+    - desktop: fix segfault when destroying a partially created ls
+	  (#9247)
+    - configWatcher: watch both symlinks and canonical paths (#9219)
+    - xwayland: correct pointer coordinate mismatch in X11 windows
+	  (#9259)
+    - animation: don't immediately disconnect active vars during tick
+	  (#9272)
+    - desktop: move popup and subsurface ctors to factories
+    - popup: take xdg geometry into account in input calcs
+    - desktop: move popups to UPs and fix missing subsurface resource
+
+-------------------------------------------------------------------
+Thu Jan 30 09:08:11 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.47.1:
+  + 0.47.1 comes with, as usual, a few fixes backported from main.
+    Some crashes, odd behavior, flickers, etc.
+  + Fixes backported:  
+    * xwayland: send synthetic configure events (#9193)
+    * deps: add libinotify-kqueue on BSDs (#9197)
+    * xwayland: respect window size set by configure requests (#9190)
+    * ikeyboard: free xkbSymState in clearManuallyAllocd
+    * configmgr: properly free glob memory
+    * presentation: log a fixme when there is a feedback leak
+    * renderer: calculate UV using both pixel and monitor dimensions
+    * pass/rect: fix bounding / opaque regions
+    * config/hyprctl: fix keyword not updating autoreload
+    * monitor: round refresh rates in sorting modes
+    * popup: stop refocusing at unmap
+    * subsurface: fix invalid parent typo
+
+-------------------------------------------------------------------
+Mon Jan 27 17:15:02 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.47.0:
+  + New year, new Hyprland release brought to you by Yours Truly.
+    This update is quite large, so you might want to read these patch
+    notes.
+    There have been quite a bunch of internal rewrites, mostly around
+    memory safety, the renderer, and animation system. Although
+    performance shouldn't change much, it should improve stability in
+    edge cases. Please do report any regressions you might find, if
+    they aren't reported already.
+  + Breaking changes:
+    - master:always_center_master has been replaced with a more
+      flexible master:slave_count_for_center_master
+  + New features:
+    - config: add exec(-onec) with rules and execr(-once) (#8953)
+    - core/renderer: Add GPU hotplug support (#8980)
+    - core: Add render:allow_early_buffer_release to make buffer
+      release configurable (#9019)
+    - core: Add support for HDR and color management protocols
+      (#8715)
+    - core: add --verify-config to verify the config with Hyprland
+    - ctm: add an internal fade animation to ctm transitions
+    - debug: add debug:pass for debugging the render pass
+    - hyprpm: add an option to force reload all plugins (#8883)
+    - hyprpm: add glaze dependency FetchContent fallback (#8899)
+    - keybinds: add new window destruction dispatchers (#8962)
+    - keybinds: add visible arg for cyclenext (#9045)
+    - master: add option to show slaves on left in center orientation
+      (#8940)
+    - pluginAPI: add register dispatcher v2
+    - protocols: add hyprland_lock_notify_v1 implementation (#9092)
+    - protocols: add hyprland_surface_v1 implementation (#8877)
+    - protocols: add hyprland_surface_v1.set_visible_region
+      implementation (#9120)
+    - renderer: Add supercircular window corners (#8943)
+    - selectors: add a tag: to for matching window tag(s) by regex
+      (#8985)
+    - socket2: add focusedmonv2 event (#8921)
+    - windowrules: add negative: prefix for negating a regex
+  + Fixes:
+    - animation: fixup adding animvars during ::tick (#9030)
+    - animations: fix XWayland cursor glitch and refactor skill
+      issues (#9033)
+    - animations: fix borderangle once (#9149)
+    - compositor: fix incorrect cast, use lambda capture instead
+      (#9161)
+    - config: fix animations requiring all args
+    - config: fix float animation speeds < 0 (#9123)
+    - config/ConfigWatcher.cpp: add missing include needed for clang
+      (#9166)
+    - configmgr: fix crash on very early plugin loads
+    - core/compositor: fix too early buffer release (#8966)
+    - core: fix custom resolutions (#8897)
+    - core: fix possible crash on null active workspace
+    - data-device: fix edge case crash on null xwm
+    - debug: fix ISDEBUG checking (#8823)
+    - debug: fix overlay not rendering
+    - desktop/DesktopTypes.hpp: fix include (#9104)
+    - dwindle: fix possible crash on null ws
+    - functionHooks: wait for hyprland pages before returning addr
+      for trampo
+    - helpers/Monitor.cpp: fix include path (#9039)
+    - hyprctl: Fix hyprctl batch JSON command (#8749)
+    - hyprctl: fix hyprctl --batch not working with exec rules
+      (#8952)
+    - hyprpm: fix hyrpm sometimes returning 0 despite errors occurring
+      (#8761)
+    - keybinds: fix movefocus fallback for special workspaces (#9040)
+    - keybinds: fix nullptr deref in forcekillactive (#9021)
+    - keybinds: fix previous_per_monitor logic (#9010)
+    - logging: fix Gpu info (#8764)
+    - pass: fixup debug mode rendering of input boxes
+    - protocols: fix alpha-modifier noncompliance (#8929)
+    - protocols: fix compilation error (#8988)
+    - renderer: fix CRendererHintsPassElement reset duplication issue
+      (#8928)
+    - renderer: fix fullscreen hdr check (#9076)
+    - renderer: fix oversized blur precalcs not blurring at all
+    - renderer: fix rare case when a tiled window would be rendered
+      over fs
+    - shaders: fix blank windows when using corner rounding (#8969)
+      (#8971)
+    - window: fixup fade out animation on silent moves
+    - xwayland: fix clipboard mime name and atom mismatch (#9137)
+    - xwayland: fix compile with no xwayland
+    - xwayland: fix crash when trying to initialize without Xwayland
+      installed (#9077)
+    - xwayland: fix dnd including xwayland
+    - xwayland: fix pointer mismatches with multiple monitors (#9179)
+    - xwayland: fix sending large clipboard data (#9134)
+    - xwayland: various window handling fixes
+    - xwm: fixup targets in selection requests
+  + Other:
+    - properly install 'hyprland' symlink (#9091)
+    - Renderer: rewrite render scheduling (#8683)
+    - animation: avoid crashes in ::tick() on mutations
+    - animationmgr: don't warp based on POINTY value (#9000)
+    - binds: cycle within group on single monitor if no window found
+      in the argument direction. (#8714)
+    - config: avoid querying the fs every tick
+    - config: disable borderangle by default (#9165)
+    - config: update animation even if disabled
+    - config/ConfigManager.cpp: add instruction to edit config
+      (#9130)
+    - core: add LIKELY and UNLIKELY macros
+    - core: always use goal size to send to clients
+    - core: avoid activating toplevel-less surfaces
+    - core: cleanup header includes (#9088)
+    - core: fade in windows when they are brought from invisible
+      workspaces
+    - core: guard workspace and monitor in moveWorkspaceToMonitor
+    - core: make persistent workspaces always follow the config
+    - core: move all shared_ptrs from the STL to hyprutils (#9143)
+    - core: move parts of the animation system to hyprutils (#8868)
+    - core: move sendWindowSize off of xwaylandmgr
+    - core: move to inotify for monitoring the config files
+    - core: refactor/improve monitor mode selection (#8804)
+    - core: reserve vector sizes as much as we can (#9118)
+    - core: update groups on movewindow (#9183)
+    - core: use cpu-buffer hw cursors on nvidia by default
+    - core: use readFileAsString instead of cat for os-release
+    - ctm: disable fade animation by default on nvidia
+    - datadevice: do the unfocus surface stuff before dndActive is
+      true (#9157)
+    - datadevice: guard XWayland server against crashes
+    - desktop: move desktop types to memory-safe pointers
+    - dnd/seat: avoid sending button events during a dnd op
+    - foreign-toplevel: update active on null window focus (#8860)
+    - fractional-scale: avoid redundant and duplicate scale events
+    - groupbar: unify title rendering
+    - groups: honor group lock window rule (#8782)
+    - hooksystem: avoid huge include for HANDLE
+    - hyprpm: use glaze to parse hyprctl plugin list (#8812)
+    - input: abord dnd op on escape pressed
+    - input: pass touch events to lock screens (#9129)
+    - internal: Make static analysis more happy (#8767)
+    - internal: added reference to CTimer class in KeybindManager
+      (#8836)
+    - internal: few small monitor improvements (#8890)
+    - internal: update window position/size after changing
+      fullscreenstate (#8865)
+    - keybinds: attempt to wrap around if fallback is allowed in
+      movefocus
+    - layershell: check if layer is valid (#9156)
+    - layershell: return focus to a valid ls on close if possible
+    - layout: apply group rules after window creation (#8779)
+    - layout: damage window properly on float mode changes
+    - layout: force full damage on toggling floating mode
+    - layout: set window size after toggling floating
+    - logging: get broader GPUINFO (#8753)
+    - master: make loop around optional when cycling (#8926)
+    - master: replace always_center_master with
+      slave_count_for_center_master (#8871)
+    - monitor: avoid crashes on no good modes
+    - monitor: bring back old description behavior
+    - opengl: only allocate offMainFB on demand
+    - opengl: use uv to avoid rendering the entire blurbox
+    - pass: allow removing all pass elements of a given type
+    - pass: ignore empty rectangles queued
+    - pass: improve blur region detection
+    - pass: improve pass debug mode
+    - pass: improve pass debugging
+    - pass: mark crucial elements as undiscardable
+    - pass: scale blur region in ::render
+    - pass: scale blur regions properly
+    - pointer: always scale the cpu cursor to the right size
+    - protocols: allow hyprland-toplevel-export to capture hidden
+      windows (#9041)
+    - protocols: do not capture cursor in toplevel without pointer
+      focus (#9042)
+    - protocols: do not destroy screencopy resources before client
+      request (#9048)
+    - protocols: immediately copy toplevel content when ignoreDamage
+      set (#9049)
+    - regex: log an error if regex parsing fails
+    - renderer/internal: stop using box pointers
+    - renderer: Auto enable wide color gamut in HDR mode (#9090)
+    - renderer: Do not set hdr metadata unless needed (#9014)
+    - renderer: allow plugins to know what window was rendered in
+      post
+    - renderer: don't access hdrMetadata optional if it has no value
+      (#8987)
+    - renderer: unload background texture if it's disabled
+    - renderer: use a render pass for render modif in client render
+    - renderer: use cairo for cpu buffer rendering (#9071)
+    - shadow: avoid drawing empty shadows
+    - snap: don't snap to any windows if workspace has a fullscreen
+      window (#8870)
+    - snap: give edge snapping precedence over corner snapping
+      (#8873)
+    - snap: revert #8659, use bounds checking instead of bit mask
+      (#8872)
+    - subsurface: damage the entire parent on size change
+    - tablet: send motions on tip events (#9132)
+    - window: only set m_iMonitorMovedFrom, when moving to a
+      different monitor (#9160)
+    - windowrules: precompute regexes for window/layer rules
+    - windows: honor xdg_toplevel_set_fullscreen output hint (#8965)
+    - windows: minor initial workspace improvements
+    - xwayland: avoid sending value of real size to xwayland
+    - xwayland: don't create an abstract unix domain socket on linux
+      (#8874)
+    - xwayland: don't define atoms on no_xwayland builds
+    - xwayland: support sending clipboard change notification on
+      focus (#9111)
+- Added "disable-donation-nag-popup.patch" to prevent the donation
+  nag popup from spawning.
+
+-------------------------------------------------------------------
 Fri Dec 20 07:58:25 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.46.2:

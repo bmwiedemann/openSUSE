@@ -24,20 +24,16 @@ diff --git a/hyprpm/src/core/DataState.cpp b/hyprpm/src/core/DataState.cpp
 index fb8679d..a1c7026 100644
 --- a/hyprpm/src/core/DataState.cpp
 +++ b/hyprpm/src/core/DataState.cpp
-@@ -21,7 +21,7 @@ std::string DataState::getDataStatePath() {
- }
- 
+@@ -22,3 +22,3 @@ std::string DataState::getHeadersPath() {
  std::string DataState::getHeadersPath() {
--    return getDataStatePath() + "/headersRoot";
+-    return getDataStatePath() / "headersRoot";
 +    return "REPLACE_ME_WITH_PREFIX/";
  }
- 
- void DataState::ensureStateStoreExists() {
 diff --git a/hyprpm/src/core/PluginManager.cpp b/hyprpm/src/core/PluginManager.cpp
 index 48b108c..b0f590b 100644
 --- a/hyprpm/src/core/PluginManager.cpp
 +++ b/hyprpm/src/core/PluginManager.cpp
-@@ -17,6 +17,7 @@
+@@ -15,6 +15,7 @@
  
  #include <sys/types.h>
  #include <sys/stat.h>
@@ -45,7 +41,7 @@ index 48b108c..b0f590b 100644
  #include <pwd.h>
  #include <unistd.h>
  
-@@ -436,141 +437,27 @@ bool CPluginManager::updateHeaders(bool force) {
+@@ -435,141 +436,27 @@ bool CPluginManager::updateHeaders(bool force) {
      const auto HLVER = getHyprlandVersion(false);
  
      if (!hasDeps()) {
@@ -192,7 +188,7 @@ index 48b108c..b0f590b 100644
          progress.m_szCurrentMessage = "Failed";
          progress.print();
  
-@@ -953,6 +840,19 @@ std::string CPluginManager::headerErrorShort(const eHeadersErrors err) {
+@@ -945,6 +832,19 @@ std::string CPluginManager::headerErrorShort(const eHeadersErrors err) {
  }
  
  bool CPluginManager::hasDeps() {
