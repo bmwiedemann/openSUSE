@@ -1,7 +1,7 @@
 #
 # spec file for package dnsproxy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dnsproxy
-Version:        0.73.4
+Version:        0.75.0
 Release:        0
 Summary:        A DNS proxy server
 License:        Apache-2.0
@@ -26,7 +26,7 @@ URL:            https://github.com/AdguardTeam/dnsproxy
 Source:         dnsproxy-%{version}.tar
 Source1:        vendor.tar.zstd
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.23
 
 %description
 A DNS proxy server that supports numerous protocols, including
@@ -35,17 +35,20 @@ it can work as a DNS-over-HTTPS, DNS-over-TLS or DNS-over-QUIC
 server.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -a 1
 
 %build
-go build \
-   -mod=vendor \
-%ifnarch ppc64 # Does not support pie
-   -buildmode=pie
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
 %endif
+go build
 
 %install
-install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
+
+%check
+# Skip tests which require network
+go test -count=1 -short -failfast -shuffle=on -timeout=2m -skip='Test((Udp|Tcp|Tls|Https|Quic|DNSCrypt)Proxy|FilteringHandler|LookupNetIP|ExchangeParallel|Upstream.*|NewUpstreamResolver_validity|Proxy_trustedProxies|ProxyRace|DNSCrypt_Exchange_dialFail|FallbackFromInvalidBootstrap|OneByOneUpstreamsExchange|ExchangeWithReservedDomains|RatelimitingProxy)' ./...
 
 %files
 %license LICENSE

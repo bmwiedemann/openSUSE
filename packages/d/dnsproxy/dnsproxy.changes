@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Feb  3 00:02:55 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Drop autosetup -p 1 arg only needed when package has patches
+  * Use BuildRequires: golang(API) >= 1.23 rather than 1.23.5
+    (three digit) as per go.mod. Currently the Provides:
+    golang(API) expression is major version (two-digit) only. We
+    ship new go releases sufficiently quickly that this has not
+    often been an issue. Consideration is being given to the best
+    way to handle the new three digit go.mod required minimum Go
+    version.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove go build -x output build command verbosity. Use go
+    default arguments absent a clear need.
+  * Remove go build -v output line per package verbosity. Use go
+    default arguments absent a clear need.
+
+-------------------------------------------------------------------
+Sun Feb  2 08:40:25 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Packaging improvements:
+  * _service obs_scm remove param match tag not needed
+  * %check enable tests excluding tests with network access
+
+- Update to version 0.75.0:
+  * Added DNSContext.QueryStatistics method that returns the DNS
+    query statistics for both the upstream and fallback DNS servers
+  * Positional (non-flag) arguments now cause an error instead of
+    beingignored
+  * The upstream.ExchangeParallel function now consistently returns
+    a nil upstream in case of a DNS lookup error
+  * Removed DNSContext.CachedUpstreamAddr and
+    DNSContext.QueryDuration properties
+
+- Update to version 0.74.1:
+  * Fixed issue with locating the system hosts file
+  * Fixed everse DNS lookups for records from the hosts file
+
+- Update to version 0.74.0:
+  * command-line flag --hosts-files now supports both absolute path
+    and relative paths
+
+- Update to version 0.73.5:
+  * Fixed race conditions when using fastest_addr and parallel
+    upstream modes
+
+-------------------------------------------------------------------
 Sat Dec 14 01:59:27 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.73.4:

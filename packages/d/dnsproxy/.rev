@@ -352,4 +352,36 @@
   * Updated golibs dependency (forwarded request 1230950 from VaiTon)</comment>
     <requestid>1230995</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cb0896610b3b4ae981c0cb65b2319579</srcmd5>
+    <version>0.75.0</version>
+    <time>1738615469</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.75.0:
+  * Added DNSContext.QueryStatistics method that returns the DNS
+    query statistics for both the upstream and fallback DNS servers
+  * Positional (non-flag) arguments now cause an error instead of
+    beingignored
+  * The upstream.ExchangeParallel function now consistently returns
+    a nil upstream in case of a DNS lookup error
+  * Removed DNSContext.CachedUpstreamAddr and
+    DNSContext.QueryDuration properties
+- Packaging improvements:
+  * Drop autosetup -p 1 arg only needed when package has patches
+  * Use BuildRequires: golang(API) &gt;= 1.23 rather than 1.23.5
+    (three digit) as per go.mod. Currently the Provides:
+    golang(API) expression is major version (two-digit) only.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove go build -x output build command verbosity. Use go
+    default arguments absent a clear need.
+  * Remove go build -v output line per package verbosity. Use go
+    default arguments absent a clear need.
+  * _service obs_scm remove param match tag not needed
+  * %check enable tests excluding tests with network access (forwarded request 1242290 from jfkw)</comment>
+    <requestid>1242291</requestid>
+  </revision>
 </revisionlist>
