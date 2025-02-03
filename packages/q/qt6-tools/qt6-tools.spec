@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.1
+%define real_version 6.8.2
 %define short_version 6.8
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,16 +27,15 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
-# TODO Check if it's still valid
 # Legal:
 # most src/ subfolders are GPL-3.0-only WITH Qt-GPL-exception-1.0, except:
-# qdoc is GPL-3.0-only WITH Qt-GPL-exception-1.0 + (LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)) == GPL-3.0-only
-# src/shared contains BSD-3-Clause and LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) files. The
+# qdoc is GPL-3.0-only WITH Qt-GPL-exception-1.0 
+# src/shared contains BSD-3-Clause and LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-only) files. The
 # 'GPL-3.0-only WITH Qt-GPL-exception-1.0' files in this folder are only used on Windows.
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
+License:        (LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source10:       org.qt.designer6.desktop
@@ -241,7 +240,7 @@ Command line client for communication over D-Bus.
 
 %package qdoc
 Summary:        Qt 6 Tool used by Qt to generate documentation
-License:        GPL-3.0-only
+License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
 %requires_eq    libclang%{_libclang_sonum}
 # Both qdoc and libclang link against libclang-cpp, so make sure it's compatible.

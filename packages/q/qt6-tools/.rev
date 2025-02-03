@@ -345,4 +345,20 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228212</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>d7d1c8926f6440917b2e33440b9b6de7</srcmd5>
+    <version>6.8.1</version>
+    <time>1737828600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240131</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>23da6a6b49ad9a78ac39cd9fefec5d7e</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615280</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242071</requestid>
+  </revision>
 </revisionlist>
