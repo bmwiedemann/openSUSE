@@ -1,7 +1,7 @@
 #
 # spec file for package tinygo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,8 @@
 # nodebuginfo
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           tinygo
-Version:        0.33.0
+Version:        0.35.0
 Release:        0
 Summary:        Go toolchain targeting embedded devices and webassembly
 License:        Apache-2.0
@@ -32,7 +30,7 @@ Patch0:         go-llvm-makefile-llvm-config.patch
 BuildRequires:  clang18-devel
 BuildRequires:  gcc-c++
 BuildRequires:  llvm18-devel
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.19
 # for test:
 BuildRequires:  nodejs >= 20
 
@@ -51,16 +49,15 @@ family of interfaces.
 https://tinygo.org
 
 %prep
-%setup -q -a 1
-%patch 0 -p1
+%autosetup -p1 -a1
 
 %build
-go build \
-   -mod=vendor \
-   -buildmode=pie
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build
 
 %check
-
 export LDFLAGS="-lLLVM -lclang"
 export CGO_LDFLAGS="-lLLVM -lclang"
 make test || true

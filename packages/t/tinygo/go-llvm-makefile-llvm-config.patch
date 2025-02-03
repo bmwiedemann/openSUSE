@@ -1,7 +1,7 @@
-Index: tinygo-0.33.0/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
+Index: tinygo-0.35.0/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
 ===================================================================
---- tinygo-0.33.0.orig/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
-+++ tinygo-0.33.0/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
+--- tinygo-0.35.0.orig/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
++++ tinygo-0.35.0/vendor/tinygo.org/x/go-llvm/llvm_config_linux_llvm18.go
 @@ -2,9 +2,9 @@
  
  package llvm

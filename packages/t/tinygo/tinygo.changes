@@ -1,8 +1,211 @@
 -------------------------------------------------------------------
+Fri Dec 20 11:09:22 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.35.0. Improved error messages, and also a new
+  HTML size report. Several CGo improvements, such as support for
+  function-like macros. New hardware support for the new RP2350
+  microcontroller, with the Raspberry Pi Pico2 and Pimoroni
+  Tiny2350 boards. And we are excited to bring our first software
+  RISC-V running on FPGA to TinyGo with the newly added Tillitis
+  TKey hardware device.
+  * all: version 0.35.0
+  * builder: show files in size report table
+  * builder: write HTML size report
+  * properly handle unix read on directory
+  * feature: make RNG implementation shared for rp2040/rp2350
+  * reflect: fix incorrect comment on elemType
+  * targets: add support for Pimoroni Tiny2350 board
+  * feature: make SPI implementation shared for rp2040/rp2350
+  * feature: make i2c implementation shared for rp2040/rp2350
+  * Add RP2350 support (#4459)
+  * fix: add build tags to ensure that tkey target has stubs for runtime/interrupt package
+  * feature: modify i2s interface/implementation to better match specification
+  * runtime: make channels parallelism-safe
+  * targets: add implementation for Tillitis TKey device (#4631)
+  * compiler: report error instead of crashing on missing function body
+  * fix: specify ubuntu-22.04 during GH actions transition period to ubuntu-24.04
+  * test: make tests deterministic with -scheduler=threads
+  * sync: make Cond MT-safe
+  * make: modify smoketest for nintendoswitch target to build something that includes the 'os' package
+  * fix: allow nintendoswitch target to compile
+  * sync: implement WaitGroup using a futex
+  * internal/task: add cooperative implementation of Futex
+  * internal/task: add non-atomic atomic operations
+  * runtime: remove Cond
+  * ci: cache the Go cache across builds
+  * mips: fix a bug when scanning the stack
+  * runtime: lock output in print/println
+  * runtime: make signals parallelism-safe
+  * runtime: implement Goexit
+  * examples: use default UART settings in echo example
+  * runtime: use uint32 for the channel state and select index
+  * builder: add testing for -size=full
+  * builder: fix wasi-libc path names on Windows with -size=full
+  * builder: work around bug in DWARF paths in Clang
+  * builder: fix cache paths in -size=full output
+  * cgo: fix build warnings on Windows ARM
+  * Fix invalid assembler syntax from gen-device-svd
+  * Update cmsis-svd library
+  * sync: make Pool thread-safe
+  * sync: only use a lock in the Map implementation when needed
+  * runtime: prepare the leaking GC for concurrent operations
+  * internal/task: implement PMutex
+  * interp: align created globals
+  * runtime: fix regression introduced by merging conflicting PRs
+  * runtime: implement race-free signals using futexes
+  * runtime: use SA_RESTART when registering a signal
+  * fix: add updated test output to match recent changes
+  * runtime: rewrite channel implementation
+  * cgo: add support for `#cgo noescape` lines
+  * compiler: add //go:noescape pragma
+  * runtime: move scheduler code around
+  * cgo: support errno value as second return parameter
+  * compiler: Fix wasmimport -> wasmexport in error message
+  * windows: don't return, exit via exit(0) instead
+  * syscall: use wasi-libc tables for wasm/js target
+  * syscall: refactor environment handling
+  * cgo: support function-like macros
+  * cgo: define idents referenced only from macros
+  * runtime: heapptr only needs to be initialized once
+  * ci: run at least some tests on older Go/LLVM versions
+  * linux: add runtime.fcntl function
+  * builder: whitelist temporary directory env var for Clang invocation
+  * compiler, runtime: move constants into shared package
+  * support to parse devl version
+  * wasm: tidy up wasm_exec.js a bit
+  * ci: use TinyGo version in artifact files
+  * runtime: optimize findHead
+  * targets/wasm_exec: call process.exit() when go.run() returns
+  * reflect: fix Copy of non-pointer array with size > 64bits
+  * reflect: add Value.Clear; support anytype->interface{}, Slice->(*)Array in Value.Convert
+  * goenv: read git hash embedded in the binary
+  * wasm: correctly return from run() in wasm_exec.js
+  * wasm: support `//go:wasmexport` functions after a call to `time.Sleep`
+  * runtime: remove unnecessary check for negative sleepTicks duration
+  * runtime: don't call sleepTicks with a negative duration
+  * os: implement StartProcess
+  * internal/wasm-tools, syscall: update to wasm-tools-go@v0.3.1 (#4577)
+  * goenv: update to new v0.35.0 development version
+  * runtime/trace: stub all public methods
+  * compiler: allow deferred panic
+  * main: parse extldflags early so we can report the error message
+  * interrupt: fix bug in interrupt lowering
+  * test: show output even when a test binary didn't exit cleanly
+  * test: run TestWasmExportJS tests in parallel
+  * tinygo: revise and simplify wasmtime argument handling (#4555)
+  * sync: don't use `volatile` in Mutex
+  * ci: remove 'shell: bash' lines from MacOS build
+
+-------------------------------------------------------------------
 Thu Nov  7 09:18:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildREquire nodejs >= 20 instead of nodejs20: allow also newer
   versions of nodejs to be used.
+
+-------------------------------------------------------------------
+Fri Oct 25 17:22:40 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.34.0. Export WebAssembly functions to the
+  host. Improved garbage collection performance (especially on
+  wasm), Add big-endian MIPS support (GOOS=mips), add two new
+  boards: RAKwireless RAK4631, WaveShare ESP-C3-32S-Kit.
+  * all: version v0.34.0
+  * GNUmakefile: do not use the -v flag in `go test`
+  * runtime: bump markStackSize
+  * machine/usb/adc/midi: fix PitchBend
+  * machine/usb/adc/midi: clarify operator precedence
+  * runtime: add gc layout info for some basic types
+  * runtime: add support for os/signal
+  * wasm: use precise GC for WebAssembly (including WASI)
+  * compiler: conform to latest iteration of wasm types proposal (#4501)
+  * Add sponsor button to key repositories
+  * targets: add WaveShare ESP-C3-32S-Kit
+  * esp32c3: add smoke tests for a few boards
+  * fe310: support GPIO PinInput
+  * goenv: parse patch version, add func Compare to compare two Go version strings (#4536)
+  * runtime: use unsafe.Slice for leveldb code
+  * runtime: use unsafe.Slice in tsip code
+  * runtime: remove minSched hack for wasm
+  * wasm: add test for js.FuncOf
+  * ci: use macos-13 instead of macos-12 for amd64 builds
+  * compiler: mark stringFromRunes as nocapture/readonly
+  * compiler: mark stringFromBytes as nocapture/readonly to help escape analysis
+  * os/file_unix: add runtime function net.NewFile stub
+  * builder: check for Go toolchain version used to compile TinyGo
+  * loader: make sure we always return an error even without type errors
+  * main: make sure typecheck errors are correctly reported
+  * loader: don't panic when main package is not named 'main'
+  * transform: optimize range over []byte(string)
+  * runtime: disallow defer in interrupts
+  * builder: remove environment variables when invoking Clang
+  * wasm: add //go:wasmexport support to js/wasm
+  * main_test: refactor output comparison into separate function
+  * runtime: implement newcoro, coroswitch to support package iter
+  * internal/{cm,wasi}: regenerate WASI 0.2 bindings with wasm-tools-go v0.3.0
+  * internal/wasm-tools: update wasm-tools-go to v0.3.0
+  * nix: use LLVM 18 instead of LLVM 17
+  * runtime: add HeapAlloc to gc_leaking
+  * targets: add bulk memory flags to wasm-unknown target since basically every runtime has it now
+  * crypto/x509/internal/macos: add package stub to build crypto/x509 on macOS
+  * builder: fix sizes
+  * runtime: track Memstats.HeapAlloc for gc_blocks
+  * Added mstats fields
+  * Truly ignore `//export` when `//go:wasmexport` is used (#4500)
+  * compiler, runtime: enable go:wasmexport for wasip2 (#4499)
+  * wasm: add `//go:wasmexport` support (#4451)
+  * GNUmakefile: more stdlib packages
+  * GNUmakefile: add some more passing stdlib tests (#4492)
+  * builder: keep wasm temporary files
+  * TestWebAssembly: use wasm-unknown for panic=trap test
+  * runtime: seed fastrand() with hardware randomness
+  * runtime: add maps.clone
+  * runtime: fix building with -tags=runtime_memhash_tsip
+  * runtime: make map iteration less defined
+  * main: rework usage (#4467)
+  * builder: nits
+  * compiler: support pragmas on generic functions
+  * main: add -ldflags='-extldflags=...' support
+  * support -extldflags
+  * os/File: add stubs for os.File Deadlines (#4465)
+  * Cgo add cbytes implementation (rebased version of #3318) (#4470)
+  * targets/wasip2: add wasmtime -S args to support network interfaces
+  * tinygo: add relative and absolute --dir options to wasmtime args (#4431)
+  * governance: add initial documentation for project governance (#4457)
+  * Fix #4421: Add `-C DIR` flag (#4422)
+  * submodules: remove separate renesas-svd repo in favor of more recent changes.
+  * gitignore: ignore device files generated for Renesas
+  * gen-device: switch generator for Renesas code to use main cmsis-svd repo
+  * GNUmakefile, internal/wasm-tools: s/ydnar/bytecodealliance/g
+  * internal/wasi: regenerated with wit-bindgen-go@v0.20
+  * internal/wasm-tools: update wasm-tools-go to new repo and version
+  * wasip2: do not export the _start function
+  * add board: RAKwireless RAK4631 (#4454)
+  * compiler: fix passing weirdly-padded structs to new goroutines
+  * compiler: move some code around to make the next bugfix easier
+  * reflect: support big-endian systems
+  * interp: support big-endian targets
+  * mips: use MIPS32 (instead of MIPS32R2) as the instruction set
+  * stub runtime_{Before,After}Exec for linkage
+  * darwin: replace custom syscall package with Go native syscall package
+  * version: update to 0.34.0-dev
+  * fix: add missing Truncate() function stub to os/file for bare-metal systems
+  * mips: fix big-endian (GOARCH=mips) support
+  * mips: fix crash with GOMIPS=softfloat
+  * tinygo: detect GOOS=wasip1 for relative WASI paths via config instead of target name (#4423)
+
+-------------------------------------------------------------------
+Fri Oct 18 04:26:49 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service use mode manual replacing deprecated mode disabled
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) >= 1.19 matching go.mod
+  * Use autosetup -a 1 to unpack source and vendored dependencies
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
 
 -------------------------------------------------------------------
 Tue Sep 17 19:31:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>

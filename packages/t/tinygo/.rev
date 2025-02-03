@@ -18,4 +18,36 @@ It reuses libraries used by the Go language tools alongside LLVM to provide an a
   versions of nodejs to be used. (forwarded request 1222061 from dimstar)</comment>
     <requestid>1222479</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f24af6f84661f0a44305ec38470f495</srcmd5>
+    <version>0.35.0</version>
+    <time>1738615389</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.35.0. Improved error messages, and also a new
+  HTML size report. Several CGo improvements, such as support for
+  function-like macros. New hardware support for the new RP2350
+  microcontroller, with the Raspberry Pi Pico2 and Pimoroni
+  Tiny2350 boards. And we are excited to bring our first software
+  RISC-V running on FPGA to TinyGo with the newly added Tillitis
+  TKey hardware device.
+
+- Update to version 0.34.0. Export WebAssembly functions to the
+  host. Improved garbage collection performance (especially on
+  wasm), Add big-endian MIPS support (GOOS=mips), add two new
+  boards: RAKwireless RAK4631, WaveShare ESP-C3-32S-Kit.
+
+- Packaging improvements:
+  * _service use mode manual replacing deprecated mode disabled
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) &gt;= 1.19 matching go.mod
+  * Use autosetup -a 1 to unpack source and vendored dependencies
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+
+- Sort changelog ordering from multiple concurrent changes (forwarded request 1242000 from jfkw)</comment>
+    <requestid>1242001</requestid>
+  </revision>
 </revisionlist>
