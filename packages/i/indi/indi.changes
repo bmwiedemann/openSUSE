@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  1 17:29:14 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.2:
+  * Fix DustCover open/close by @peter-englmaier in #2152
+  * Draft: Reuse calibration after rotation by @escribana in #2153
+  * Use C99 integer types by @brad0 in #2160
+  * Feature for ZWO AM5 - Heavy Duty Mode and Fix slew rate by @pawel-soja in #2161
+  * Add includes to fix build with GCC15-C++23 by @mattiaverga in #2165
+  * Update wanderer rotator lite v1 to latest firmware version and correct a bug when homing with rotator mini and lite v2 by @grm in #2166
+
+-------------------------------------------------------------------
 Mon Dec  9 07:02:04 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.1.1:

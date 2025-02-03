@@ -100,4 +100,19 @@
 </comment>
     <requestid>1229227</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d210a696e20b471083aa8c77ba486da6</srcmd5>
+    <version>2.1.2</version>
+    <time>1738615495</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.2:
+  * Fix DustCover open/close by @peter-englmaier in #2152
+  * Draft: Reuse calibration after rotation by @escribana in #2153
+  * Use C99 integer types by @brad0 in #2160
+  * Feature for ZWO AM5 - Heavy Duty Mode and Fix slew rate by @pawel-soja in #2161
+  * Add includes to fix build with GCC15-C++23 by @mattiaverga in #2165
+  * Update wanderer rotator lite v1 to latest firmware version and correct a bug when homing with rotator mini and lite v2 by @grm in #2166
+</comment>
+    <requestid>1242784</requestid>
+  </revision>
 </revisionlist>

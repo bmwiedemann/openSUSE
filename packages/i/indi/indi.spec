@@ -1,7 +1,7 @@
 #
 # spec file for package indi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %define so_ver 2
 Name:           indi
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
