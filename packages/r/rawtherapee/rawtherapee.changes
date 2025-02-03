@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 31 06:46:32 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap 16.0 and change libraries to pkconfig
+  definition for SUSE.
+
+-------------------------------------------------------------------
 Thu Oct  3 08:05:28 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in by cleanup gcc requirements.

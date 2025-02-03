@@ -1,7 +1,7 @@
 #
 # spec file for package rawtherapee
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,21 +32,21 @@ Group:          Productivity/Graphics/Other
 URL:            https://rawtherapee.com
 Source0:        https://rawtherapee.com/shared/source/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
-BuildRequires:  fftw3-devel
-BuildRequires:  glib2-devel
-BuildRequires:  gtk3-devel
-BuildRequires:  lensfun-devel
-BuildRequires:  libiptcdata-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libjxl-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libraw-devel >= 0.21
-BuildRequires:  libtiff-devel
+BuildRequires:  gtk3-devel >= 3.24.3
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(exiv2) >= 0.24
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtkmm-2.4)
+BuildRequires:  pkgconfig(lensfun)
+BuildRequires:  pkgconfig(libiptcdata)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(libraw) >= 0.21
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(zlib)
 Requires:       %{liblcms2_name} >= 2.6
 Conflicts:      rawtherapee-gtk2
 Conflicts:      rawtherapee-gtk2-nosse
@@ -58,7 +58,7 @@ Conflicts:      rawtherapee-nosse
 Conflicts:      rawtherapee-nosse-unstable
 Conflicts:      rawtherapee-stable-3.x
 Conflicts:      rawtherapee-unstable
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else
@@ -74,11 +74,11 @@ BuildRequires:  libsigc++20-devel
 %if 0%{?mageia}
 BuildRequires:  libsigc++2.0-devel
 %else
-BuildRequires:  libsigc++2-devel
+BuildRequires:  pkgconfig(sigc++-2.0)
 %endif
 %endif
 %if (0%{?suse_version} || 0%{?sles_version})
-BuildRequires:  gtkmm3-devel
+BuildRequires:  pkgconfig(gtkmm-3.0)
 %else
 %if 0%{?mageia}
 BuildRequires:  gtkmm3.0-devel
@@ -87,7 +87,7 @@ BuildRequires:  gtkmm30-devel
 %endif
 %endif
 %if (0%{?suse_version} > 1320 || 0%{?sle_version} > 120100) || 0%{?mageia}
-BuildRequires:  libcanberra-gtk3-devel
+BuildRequires:  pkgconfig(libcanberra-gtk3)
 %else
 BuildRequires:  libcanberra-devel
 %endif
@@ -103,9 +103,9 @@ BuildRequires:  libatomic-devel
 BuildRequires:  fdupes
 %endif
 %if (0%{?suse_version} || 0%{?sles_version})
-BuildRequires:  libexpat-devel
-BuildRequires:  liblcms2-devel >= 2.6
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(lcms2)  >= 2.6
 Requires(post): desktop-file-utils
 Requires(postun):desktop-file-utils
 %else
@@ -116,7 +116,7 @@ BuildRequires:  lcms2-devel >= 2.6
 %if 0%{?fedora_version}
 BuildRequires:  librsvg2-devel
 %else
-BuildRequires:  librsvg-devel
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.52
 %endif
 
 %description
@@ -131,7 +131,7 @@ Latest stable build from "releases" branch.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif
