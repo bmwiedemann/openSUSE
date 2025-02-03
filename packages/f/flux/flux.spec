@@ -1,7 +1,7 @@
 #
 # spec file for package flux
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Patch1:         disable-static-library.patch
 Patch2:         fix-unsigned-char.patch
-BuildRequires:  cargo
-BuildRequires:  rust
+BuildRequires:  cargo1.81
+BuildRequires:  rust1.81
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  2 08:01:45 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Use Rust 1.81 for build since build is known to be broken on 1.82+
+
+-------------------------------------------------------------------
 Sat Aug 17 08:52:34 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 0.195.2, see:
