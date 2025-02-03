@@ -64,4 +64,15 @@
 - Stop skipping tests.</comment>
     <requestid>1164248</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2ddea0267da031a72cae2063b662596f</srcmd5>
+    <version>1.4.2</version>
+    <time>1738615514</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.2:
+  * Fix unindexable map
+  * Update conf dir
+  * Fix use of unknown escape seqeuences</comment>
+    <requestid>1242832</requestid>
+  </revision>
 </revisionlist>

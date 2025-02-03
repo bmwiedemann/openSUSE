@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:29:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Fix unindexable map
+  * Update conf dir
+  * Fix use of unknown escape seqeuences
+
+-------------------------------------------------------------------
 Wed Apr  3 02:27:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing C++ compiler to BuildRequires.
