@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:28:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.1.1:
+  * Improve type hints.
+  * Support Python 3.13.
+
+-------------------------------------------------------------------
 Sun Sep 29 07:38:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.8.28:

@@ -63,4 +63,14 @@
 - Restrict numpy to &lt; 2.</comment>
     <requestid>1204497</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>710ea03169e040640876138fa2ce0ad8</srcmd5>
+    <version>2025.1.1</version>
+    <time>1738615513</time>
+    <user>anag+factory</user>
+    <comment>- update to 2025.1.1:
+  * Improve type hints.
+  * Support Python 3.13.</comment>
+    <requestid>1242831</requestid>
+  </revision>
 </revisionlist>
