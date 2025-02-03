@@ -271,4 +271,22 @@
     <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
     <requestid>1228180</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>02dbf9981bb01598864b95e2741b85cb</srcmd5>
+    <version>6.8.1</version>
+    <time>1737730049</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1239634 from alarrosa
+
+- Fix license. It's using GPL-3.0-only not GPL-3.0-or-later</comment>
+    <requestid>1240121</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2bd935359eb067b2b2c1cc76287f58ee</srcmd5>
+    <version>6.8.2</version>
+    <time>1738615375</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
+    <requestid>1242039</requestid>
+  </revision>
 </revisionlist>
