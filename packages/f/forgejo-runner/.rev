@@ -108,4 +108,32 @@
     <comment></comment>
     <requestid>1238718</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3c5e117c7573ee7345d5c1208c419e4b</srcmd5>
+    <version>6.1.0</version>
+    <time>1737562537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239541</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bb54acf20a64f786d86f74b01d4d49a8</srcmd5>
+    <version>6.2.0</version>
+    <time>1737722404</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.0:
+  * The container.options allows --hostname. (forwarded request 1239917 from rrahl0)</comment>
+    <requestid>1239918</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a7edb8fb4644836cdfa4306c02a526f7</srcmd5>
+    <version>6.2.2</version>
+    <time>1738615398</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.2.2:
+  * LXC systemd service unit example script learned how to upgrade.
+- update to version 6.2.1:
+  * LXC templates are updated if needed. (forwarded request 1242010 from rrahl0)</comment>
+    <requestid>1242011</requestid>
+  </revision>
 </revisionlist>

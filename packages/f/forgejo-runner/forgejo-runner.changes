@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Feb 01 00:22:52 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 6.2.2:
+  * LXC systemd service unit example script learned how to upgrade.
+- update to version 6.2.1:
+  * LXC templates are updated if needed.
+
+-------------------------------------------------------------------
+Thu Jan 23 15:36:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.2.0:
+  * The container.options allows --hostname.
+
+-------------------------------------------------------------------
+Wed Jan 22 13:49:49 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 6.1.0:
+  * chore(release): migrate to invisible.forgejo.org (#444)
+  * Update module google.golang.org/protobuf to v1.36.3 (#440)
+  * Update actions/setup-forgejo action to v2.0.6
+  * fix: upgrade forgejo-build-publish/build@v5.3.1
+  * fix: use data.forgejo.org/oci
+  * New "one shot" type of execution by adding a new command called one-job. (#423)
+  * fix: example uses code.forgejo.org/oci
+  * chore(docs): 6.1.0 release notes (#428)
+  * expose "ForceRebuild" as a config option
+
+-------------------------------------------------------------------
 Sat Jan 18 16:39:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.0.1:
