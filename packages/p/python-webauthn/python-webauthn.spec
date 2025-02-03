@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-webauthn
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Pythonic WebAuthn
 License:        BSD-3-Clause

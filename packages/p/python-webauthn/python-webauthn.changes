@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Feb  2 06:36:35 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 2.5.1
+  * Fix test_verify_attestation_android_key_hardware_authority
+
+-------------------------------------------------------------------
+Mon Jan 20 10:52:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.0
+  * A new `require_user_presence` argument has been added to `verify_registration_response()`
+    to enable verification of WebAuthn responses generated through use of conditional create
+    where the `up` bit in `authData.flags` will be `False` (#236)
+  * `verify_authentication_response()` has been updated to return `user_verified` as well to
+    indicate whether or not the user performed user verification (#235)
+  * Verification of `"android-key"` attestation statements has been modernized in light of
+    Android's latest observable behavior (#240)
+  * Verification of `"android-safetynet"` attestation statements now enforces the `"basicIntegrity"`
+    flag instead of the `"ctsProfileMatch"` flag when determining device integrity (#241)
+  * The list of known TPM manufacturers has been updated (#242)
+
+-------------------------------------------------------------------
 Tue Jan  7 09:34:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.4.0
