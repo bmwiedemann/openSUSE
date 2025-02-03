@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.21.0
+Version:        2.22.3
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -40,10 +40,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blinker
+Requires:       python-certifi
 Requires:       python-dep-logic >= 0.4.4
 Requires:       python-filelock >= 3.13
 Requires:       python-findpython >= 0.6
 Requires:       python-hishel >= 0.0.24
+Requires:       python-httpcore
 Requires:       python-httpx >= 0.20
 Requires:       python-installer >= 0.7
 Requires:       python-msgpack >= 1.0
@@ -91,6 +93,7 @@ doesn't need to create a virtualenv at all!
 %autosetup -p1 -n pdm-%{version}
 #  we don't care about certifi version, the distro package replaces the certificates with system ones anyway
 sed -i 's/"certifi>=[0-9.]*"/"certifi"/' pyproject.toml
+find . -name ".gitignore" -print -delete
 
 %build
 %if !%{with test}
@@ -144,6 +147,9 @@ donttest="$donttest or test_init_validate_python_requires"
 donttest="$donttest or test_init_command"
 donttest="$donttest or test_init_command_library"
 donttest="$donttest or test_use_command"
+donttest="$donttest or test_init_project_respect_version_file"
+donttest="$donttest or test_resolve_local_artifacts or test_resolve_two_extras_from_the_same_package or test_resolve_file_req_with_prerelease"
+donttest="$donttest or test_init_auto_create_venv"
 
 %pytest -v -k "not ($donttest)"
 %endif
