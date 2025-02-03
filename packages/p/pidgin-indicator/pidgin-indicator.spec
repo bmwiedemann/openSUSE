@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin-indicator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,23 @@
 #
 
 
-%define _name   indicator
+%define         _name indicator
 Name:           pidgin-indicator
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        StatusNotifierItem tray icon plugin for Pidgin
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/philipl/pidgin-indicator
-Source:         https://github.com/philipl/pidgin-indicator/releases/download/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE pidgin-indicator-ayatana-appindicator.patch -- Support and prefer Ayatana AppIndicators.
-Patch0:         pidgin-indicator-ayatana-appindicator.patch
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(pidgin)
-%if 0%{?suse_version} == 1500
-BuildRequires:  pkgconfig(ayatana-appindicator-0.1)
-%else
-BuildRequires:  pkgconfig(appindicator-0.1)
-%endif
 
 %description
 This plugin provides a StatusNotifierItem tray icon, for use in
@@ -91,12 +85,12 @@ but not in exactly the same way:
 %lang_package -n pidgin-plugin-indicator
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

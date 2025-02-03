@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:12:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.2:
+  * Support gcc-14
+  * Support ayanta-appindicators
+- remove patch pidgin-indicator-ayatana-appindicator.patch, as upstream
+  integrated the patch
+
+-------------------------------------------------------------------
 Thu Feb 29 15:08:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

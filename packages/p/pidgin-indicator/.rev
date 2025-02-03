@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>1155386</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9090e9be7ee4a28aeb2c141f2e405e2c</srcmd5>
+    <version>1.0.2</version>
+    <time>1738615341</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * Support gcc-14
+  * Support ayanta-appindicators
+- remove patch pidgin-indicator-ayatana-appindicator.patch, as upstream
+  integrated the patch (forwarded request 1241752 from rrahl0)</comment>
+    <requestid>1241753</requestid>
+  </revision>
 </revisionlist>
