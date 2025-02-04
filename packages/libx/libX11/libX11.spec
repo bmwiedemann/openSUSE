@@ -1,7 +1,7 @@
 #
 # spec file for package libX11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.8.10
+Version:        1.8.11
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
