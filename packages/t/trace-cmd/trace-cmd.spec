@@ -1,7 +1,7 @@
 #
 # spec file for package trace-cmd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           trace-cmd
-Version:        3.2
+Version:        3.3.1
 Release:        0
 Summary:        Configuration tool for Ftrace
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 Source0:        trace-cmd-v%{version}.tar.gz
-Patch1:         libtracecmd-add-explicit-meson-thread-dependency.patch
-Patch2:         tracecmd-add-explicit-meson-thread-dependency.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:53:01 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to latest upstream version 3.3.1:
+  * Disable function trace option func_stack_trace before clearing filter
+  * Fix compression algorithm for files greater than 2GB
+  * Update printf format to match unsigned parameters.
+
+- Update to version 3.3.0:
+  * Now by default, the output shows the latency lines:
+  * Add feature to build with meson from using make
+  * Add trace-cmd record --daemonize
+  * Add trace-cmd show --buffer-subbuf-size option
+    This will display the "subbuf-size" of the instance ring buffer.
+    (New Linux kernel featuer added in v6.8)
+  * Add trace-cmd show --buffer_percent option
+    This will display the "buffer_percent" option, added in v5.0.
+  * Add trace-cmd show --hist and --trigger options
+    Add options to trace-cmd show to display the hist and trigger contents
+    of events.
+  * Add new command "sqlhist" that makes trace-cmd do the same work as
+    the sqlhist code in libtracefs.
+  * Show "buffer_subbuf_size" in trace-cmd stat
+  * Add trace-cmd record --subbuf-size option
+  * Allow trace-cmd report to read multiple files without using the -i
+    option. That is, "trace-cmd report trace*.dat" will now work.
+  * Have trace-cmd split work with trace.dat files with multiple instances.
+  * Allow trace-cmd split to split out instance buffers
+  * Allow trace-cmd record to support -m option when recording from an agent.
+  * Fix output file names for trace-cmd split
+  * Fix the way filters were applied to trace-cmd report with multiple trace.dat
+    files.
+  * Fix the trace-cmd reset -d option
+  * Fix meson build issue
+  * Make some man pages clean ups
+  * Fix other minor issues.
+
+- dropped patch: libtracecmd-add-explicit-meson-thread-dependency.patch
+- dropped patch: tracecmd-add-explicit-meson-thread-dependency.patch
+
+-------------------------------------------------------------------
 Fri May 10 09:19:23 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
 
 - Build with support for zlib and zstd compression.
