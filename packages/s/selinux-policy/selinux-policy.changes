@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Feb 04 08:19:29 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250204:
+  * Allow quota_t load its kernel module (bsc#1235805)
+  * Allow apcupsd's apccontrol to send messages using wall (bsc#1235688)
+  * Allow journalctl read messages from /var/lib/machines (bsc#1235829)
+
+-------------------------------------------------------------------
+Fri Jan 24 04:59:40 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250124:
+  * Dontaudit xdm_t wanting to create /root/.cache dir (bsc#1235669)
+
+-------------------------------------------------------------------
+Tue Jan 21 09:33:04 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250121:
+  * wtmpdbd systemd service uses NoNewPrivileges (bsc#1235660)
+  * Transition samba-dcerpcd pid file from smbd_var_run_t to winbind_var_run_t (bsc#1235801)
+  * /run/samba/samba-dcerpcd.pid needs fc type winbind_rpcd_var_run_t (bsc#1235801)
+  * Adjust rpcd_lsad, samba-bgqd, samba-dcerpcd to SUSE-specific part (bsc#1235801)
+  * Transition nmbd pid file from smbd_var_run_t to nmbd_var_run_t (bsc#1235801)
+
+-------------------------------------------------------------------
+Mon Jan 20 08:43:53 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250120:
+  * Allow database rotation for wtmpdbd_t
+  * Allow wtmpdbd to send messages notifications
+  * Introduce policy for wtmpdbd (bsc#1235660)
+  * Label xrdp scripts in /etc as bin_t (bsc#1233738)
+  * introduce unconfined_service_transition_to_unconfined_user boolean (bsc#1233738)
+  * Allow init to manage DOS files (bsc#1232527)
+
+-------------------------------------------------------------------
 Fri Jan 10 10:04:01 UTC 2025 - rfrohl@suse.com
 
 - Update to version 20250109:

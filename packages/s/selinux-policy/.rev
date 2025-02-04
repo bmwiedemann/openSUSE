@@ -1452,4 +1452,47 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment></comment>
     <requestid>1236909</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>cb676fd97578118dd05edddafbf84e09</srcmd5>
+    <version>20250121</version>
+    <time>1737490190</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250121:
+  * wtmpdbd systemd service uses NoNewPrivileges (bsc#1235660)
+  * Transition samba-dcerpcd pid file from smbd_var_run_t to winbind_var_run_t (bsc#1235801)
+  * /run/samba/samba-dcerpcd.pid needs fc type winbind_rpcd_var_run_t (bsc#1235801)
+  * Adjust rpcd_lsad, samba-bgqd, samba-dcerpcd to SUSE-specific part (bsc#1235801)
+  * Transition nmbd pid file from smbd_var_run_t to nmbd_var_run_t (bsc#1235801)
+- Update to version 20250120:
+  * Allow database rotation for wtmpdbd_t
+  * Allow wtmpdbd to send messages notifications
+  * Introduce policy for wtmpdbd (bsc#1235660)
+  * Label xrdp scripts in /etc as bin_t (bsc#1233738)
+  * introduce unconfined_service_transition_to_unconfined_user boolean (bsc#1233738)
+  * Allow init to manage DOS files (bsc#1232527)
+</comment>
+    <requestid>1239232</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>488d59cecee2e5a45f22eff244675dd7</srcmd5>
+    <version>20250124</version>
+    <time>1737828587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250124:
+  * Dontaudit xdm_t wanting to create /root/.cache dir (bsc#1235669)
+</comment>
+    <requestid>1240098</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>a974d27790d8cfda2d09f63849dd1012</srcmd5>
+    <version>20250204</version>
+    <time>1738689063</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250204:
+  * Allow quota_t load its kernel module (bsc#1235805)
+  * Allow apcupsd's apccontrol to send messages using wall (bsc#1235688)
+  * Allow journalctl read messages from /var/lib/machines (bsc#1235829)
+</comment>
+    <requestid>1242987</requestid>
+  </revision>
 </revisionlist>
