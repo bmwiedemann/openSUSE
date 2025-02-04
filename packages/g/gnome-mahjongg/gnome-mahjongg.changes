@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:57:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Various optimizations for game initialization
+  + Tweak background colors
+  + Don't create new game when activating existing instance
+  + Stop leaking game instances
+  + Fix a memory leak in the Scores dialog
+  + Stop using deprecated APIs
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:27:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:
