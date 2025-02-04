@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  2 12:18:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.12
+  * Added support for the 8BitDo Ultimate 2C Wireless in
+    Bluetooth mode
+  * Fixed Steam Deck controller not being visible to games
+    running on Proton 9 and older
+  * Fixed a crash when hot-plugging keyboards and mice on Linux
+
+-------------------------------------------------------------------
 Thu Jan  2 09:55:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.11

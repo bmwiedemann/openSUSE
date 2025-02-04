@@ -580,4 +580,12 @@
     <comment>- Update to release 2.30.11</comment>
     <requestid>1234536</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>a0bd0a5e0c19a3699dd54b9ac6cc060b</srcmd5>
+    <version>2.30.12</version>
+    <time>1738688973</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.30.12</comment>
+    <requestid>1242218</requestid>
+  </revision>
 </revisionlist>
