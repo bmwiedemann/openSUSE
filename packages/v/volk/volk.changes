@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb  4 00:25:00 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.2.0
+  New and improved kernels
+  * add RISC-V Vector extension (RVV) kernels
+  * New AVX512F implementation
+  Improved and modernized CI
+  * ci: Add first native Linux ARM runners
+  * macos: Fix CI dependency error
+  * appveyor: Update to VS 2022/Python 3.12
+  * Update android_build.yml
+  Improved builds
+  * cmake: Fix 64bit host CPU detection
+  * cmake: Suppress invalid escape sequence warnings with Python 3.12
+  * cmake/pkgconfig: use CMAKE_INSTALL_FULL_* variables
+  * cmake: Fix VOLK as a submodule build issue
+  * Adds toolchain file for Raspberry Pi 5
+  New and improved tests
+  * gtest: Start work on new test infrastructure
+  * tests: Add a log info print test
+  * gtest: Make gtest an install dependency
+  * gtest: Enable GTests in CI workflows
+  * tests: Beautify test output
+  Documentation
+  * cpu_features: Update hints in README
+  Code quality
+  * Add const to several args
+  Usability features
+  * feature: add env variable kernel override
+
+-------------------------------------------------------------------
 Mon Feb 26 19:21:24 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.1.2
