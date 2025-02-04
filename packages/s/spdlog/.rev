@@ -586,4 +586,31 @@
     <comment></comment>
     <requestid>1233567</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2616a0c19027008b27473fc175b69939</srcmd5>
+    <version>1.15.1</version>
+    <time>1738689050</time>
+    <user>anag+factory</user>
+    <comment>- Removed Patch 0001-fix-update-to_string_view-function-for-fmt-11.1-3301.patch as it is included in 1.15.1.
+- Updated spdlog to 1.15.1
+- Release notes 1.15.1:
+* Update bundled fmt version to 11.1.3 by @gabime in #3332
+* Use fwrite_unlocked() if available by @gabime in #3276 and #3318
+* On-demand truncation for basic file sinks by @matteodelseppia in #3280
+* Allow manual rotation of rotating_file_sink by @hjs-ast in #3269
+* Make null_sink final by @gabime in #3267
+* Fix: Add explicit fmt:: and std:: to avoid ambiguous calls by @LiAuTraver in #3259
+* Fix: Pass /utf-8 only when the compiler is MSVC by @miyanyan in #3260
+* Fix: Support bin_to_hex() when using std::format by @koniarik in #3315
+* Support custom environment variables for load_env_levels by @ken-matsui in #3327
+* Fix: Added a lock to rotate_now() by @matteodelseppia in #3281
+* Fix: Update to_string_view function for fmt 11.1 by @chenrui333 in #3301
+* Fix: Remove unused to_string_view overload in fmt &gt;= 11.1 by @jdrouhard in #3314
+* Fix: Use string_view_literals to resolve issues #3287 and #3233 by @yalov in #3291
+* Fix: Added a lock to set_color_mode(..) in ansicolor_sink by @gabime in #3323
+* Fix: Corrected comment in daily_file_sink by @F1F88 in #3249
+* Fix: Compatibility with fmtlib 11.1.1 by @yachoor in #3331
+</comment>
+    <requestid>1242938</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package spdlog
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           spdlog
 %define lname	libspdlog1_15
 %define sover	1.15
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        C++ logging library
 License:        MIT
@@ -27,7 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz
 Source99:       baselibs.conf
-Patch1:         0001-fix-update-to_string_view-function-for-fmt-11.1-3301.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 13
