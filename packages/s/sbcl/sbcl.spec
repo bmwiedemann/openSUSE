@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -100,8 +100,6 @@ BuildRequires:  texlive-ec
 %endif
 # PATCH-FIX-OPENSUSE install README.openSUSE and sbclrc.sample
 Patch0:         sbcl-1.1.2-install.patch
-# PATCH-FIX-OPENSUSE  strip -armv5 from CFLAGS
-Patch1:         strip-arm-CFLAGS.patch
 ExcludeArch:    s390x
 Requires:       sbcl-bin
 
