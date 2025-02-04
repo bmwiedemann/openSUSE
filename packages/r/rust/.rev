@@ -865,4 +865,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.83.0 - for details see the rust1.83 package</comment>
     <requestid>1228417</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>4af4aba9cf2849cbdebb7838b2fb2990</srcmd5>
+    <version>1.84.0</version>
+    <time>1738689052</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242945</requestid>
+  </revision>
 </revisionlist>
