@@ -1,7 +1,7 @@
 #
 # spec file for package gtk3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@
 %define __provides_exclude_from ^%{_libdir}/gtk-3.0
 
 Name:           gtk3
-Version:        3.24.43
+Version:        3.24.48
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -488,8 +488,7 @@ fi
 
 %filetriggerpostun tools -- %{_datadir}/icons
 # We ignore upgrades (already handled by the newer package's filetriggerin).
-if [ "$1" -eq 0 ] &&
-   [ -x "%__update_iconcache" ]; then
+if [ -x "%__update_iconcache" ]; then
   for ICON_THEME in $(cut -d / -f 5 | sort -u); do
     if [ -f "%{_datadir}/icons/${ICON_THEME}/index.theme" ]; then
       %__update_iconcache --quiet --force "%{_datadir}/icons/${ICON_THEME}" \

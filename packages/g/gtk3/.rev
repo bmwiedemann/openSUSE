@@ -1770,4 +1770,35 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment></comment>
     <requestid>1208685</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>1faea841d854c77c4c29609fdab096ce</srcmd5>
+    <version>3.24.48</version>
+    <time>1738072691</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240440</requestid>
+  </revision>
+  <revision rev="199" vrev="2">
+    <srcmd5>300e11cff6ff9325bdab3fd63722513d</srcmd5>
+    <version>3.24.48</version>
+    <time>1738335722</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241445</requestid>
+  </revision>
+  <revision rev="200" vrev="3">
+    <srcmd5>1faea841d854c77c4c29609fdab096ce</srcmd5>
+    <version>3.24.48</version>
+    <time>1738386200</time>
+    <user>dimstar_suse</user>
+    <comment>Revert; that ABI break is hurting in both directions</comment>
+  </revision>
+  <revision rev="201" vrev="4">
+    <srcmd5>80fb769b4bc6b9ba41dabc4e316b644f</srcmd5>
+    <version>3.24.48</version>
+    <time>1738689010</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242843</requestid>
+  </revision>
 </revisionlist>
