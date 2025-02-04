@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,13 @@
 %if 0%{?suse_version} >= 1330
 %define use_asciidoctor 1
 %define make_options USE_ASCIIDOCTOR=1
+%endif
+
+# Build criu with nftables default support if available
+%if "%{?default_firewall_backend}" == "nftables"
+    %define prefer_nftables 1
+%else
+    %define prefer_nftables 0
 %endif
 
 # currently broken with LTO, resulting in segfaults (bsc#1203854)
@@ -42,10 +49,12 @@ URL:            https://criu.org/
 Source0:        http://github.com/checkpoint-restore/criu/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # To be generated; we keep a static one for building without pip
 Source1:        crit.py
-Patch1:         criu-py-install-fix.diff
-Patch2:         0002-Fix-build-with-nftables-installed-in-different-direc.patch
-Patch4:         plugin-dir-path.patch
-Patch5:         criu-ns-python3-shebang.patch
+Patch101:       criu-py-install-fix.diff
+Patch102:       0002-Fix-build-with-nftables-installed-in-different-direc.patch
+Patch104:       plugin-dir-path.patch
+Patch105:       criu-ns-python3-shebang.patch
+Patch106:       vdso-handle-vvar_vclock-vma-s.patch
+Patch201:       0001-cr_options-switch-networking-default-backend-to-nfta.patch
 BuildRequires:  libcap-devel
 %if %{with_amdgpu_plugin}
 BuildRequires:  libdrm-devel
@@ -57,6 +66,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  protobuf-devel
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 BuildRequires:  nftables-devel
 %endif
@@ -130,7 +140,16 @@ This package contains all necessary include files and libraries needed
 to develop applications with CRIU library.
 
 %prep
-%autosetup -p1
+%setup -q
+%autopatch -M 200 -p1
+
+%if %{prefer_nftables}
+# build with default nftables support on envs
+# where nftables is the default firewall backend
+# https://github.com/containers/podman/issues/24799
+%patch -P201 -p1
+%endif
+
 # workaround for Leap 15.x
 %if 0%{?suse_version} < 1600
 sed -i -e's/\(^.*-mshstk\)/# \1/' criu/pie/Makefile

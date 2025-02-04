@@ -1,0 +1,32 @@
+From 379373cfd7fc0a5c0541072f82e206b2b5dc10c5 Mon Sep 17 00:00:00 2001
+From: Danish Prakash <contact@danishpraka.sh>
+Date: Fri, 31 Jan 2025 16:17:45 +0530
+Subject: [PATCH] cr_options: switch networking default backend to nftables
+
+criu currently defaults to iptables if network locking method isn't
+passed on to it down the stack for instance, from podman and crun. In
+cases where podman (netavark by extension) used nftables and iptables
+isn't installed, checkpoint/restore fails because it tries to use
+iptables.
+
+Signed-off-by: Danish Prakash <contact@danishpraka.sh>
+---
+ criu/include/cr_options.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/criu/include/cr_options.h b/criu/include/cr_options.h
+index 60cf9437e638..cd7d24302dd8 100644
+--- a/criu/include/cr_options.h
++++ b/criu/include/cr_options.h
+@@ -70,7 +70,7 @@ enum NETWORK_LOCK_METHOD {
+ 	NETWORK_LOCK_SKIP,
+ };
+ 
+-#define NETWORK_LOCK_DEFAULT NETWORK_LOCK_IPTABLES
++#define NETWORK_LOCK_DEFAULT NETWORK_LOCK_NFTABLES
+ 
+ /*
+  * Ghost file size we allow to carry by default.
+-- 
+2.46.0
+

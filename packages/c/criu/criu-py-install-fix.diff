@@ -41,7 +41,7 @@
 +++ b/scripts/crit-setup.py
 @@ -0,0 +1,28 @@
 +import os
-+from distutils.core import setup
++from setuptools import setup
 +
 +def get_version():
 +    version = '0.0.1'
@@ -72,7 +72,7 @@
 +++ b/scripts/pycriu-setup.py
 @@ -0,0 +1,28 @@
 +import os
-+from distutils.core import setup
++from setuptools import setup
 +
 +def get_version():
 +    version = '0.0.1'

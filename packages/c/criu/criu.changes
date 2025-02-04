@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 31 11:28:53 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Build with default nftables support on openSUSE (bsc#1236769)
+  * 0001-cr_options-switch-networking-default-backend-to-nfta.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 15:03:04 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the error "vdso: Unexpected rt vDSO area bounds" (bsc#1236330):
+  taken from the upstream bug tracker
+    https://github.com/checkpoint-restore/criu/pull/2539
+  vdso-handle-vvar_vclock-vma-s.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 10:57:38 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Depend on python3-setuptools for building, distutils is deprecated
+  and it's not available in python > 3.11
+
+-------------------------------------------------------------------
 Thu Oct 31 14:27:35 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to criu 4.0:

@@ -543,4 +543,20 @@
     <comment></comment>
     <requestid>1219895</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>230efd44e2e28390ee20c323c2f65348</srcmd5>
+    <version>4.0</version>
+    <time>1737722328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239913</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>a19c7882c76470dddcbd87b9ce1d0ffc</srcmd5>
+    <version>4.0</version>
+    <time>1738689065</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242992</requestid>
+  </revision>
 </revisionlist>
