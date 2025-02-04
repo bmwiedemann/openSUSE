@@ -3,7 +3,7 @@
     <param name="url">https://github.com/RustSec/rustsec.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">cargo-audit/v0.21.0</param>
+    <param name="revision">cargo-audit/v0.21.1</param>
     <!-- <param name="revision">main</param> -->
     <param name="match-tag">cargo-audit/v*</param>
     <param name="versionrewrite-pattern">.*v(\d+\.\d+\.\d+)</param>

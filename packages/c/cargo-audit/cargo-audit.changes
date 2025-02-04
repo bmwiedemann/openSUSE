@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Feb 04 00:59:28 UTC 2025 - william.brown@suse.com
+
+- Remove 0001-Skip-warnings.patch
+- Update to version 0.21.1~git0.bd6fb0f:
+  * bump cargo-audit version in cargo toml, I forgot
+  * Bump minor version of cargo-lock according to the msrv policy of the crate
+  * Populate changelogs
+  * Bump versions of crates to be published
+  * Documentation tweaks
+  * Move binary scanning into its own top-level module, improve documentation
+  * More informative doc strings on BinaryFormat variants
+  * Fix conditional compilation by always exposing binary format struct in rustsec
+  * cfg-out binary format type only available with binary scanning enabled
+  * Remove binary scanning from rustsec default features
+  * Correctly pass through the binary-scanning feature to rustsec crate
+  * Do not assert in tests that there are no vulnerabilities in our own Cargo.lock
+  * lower cargo-lock MSRV to 1.73, that's all that our locked dependencies require
+  * Bump cargo-lock MSRV to 1.74 following the bump in dependency versions
+  * Bump other dependencies with vulns, preserving MSRV
+  * Upgrade url crate to fix self-audit issue
+  * cargo fmt
+  * Comment out hanging test
+  * allow(lint) for allow(lint), how deep does the rabbit hole go?
+  * Fix typo
+  * Don't fail the build if something in acceptance test code is missing documentation
+  * Suppress useless warnings that break the build due to deny(warnings)
+  * fix: formatting for `*.rs` files
+  * style: simplify some statements for readability
+  * cargo fmt
+  * Fix handling of the database.fetch option
+  * fix(cargo-lock): normalize everything for git-ref in dependencies
+  * test(cargo-lock): show tag in dependencies is not normalized
+  * test(cargo-lock): show branch in dependencies is normalized
+  * test(cargo-lock): make lockfile loading inline
+  * update
+  * move binary-scanning to rustsec api
+  * Additionnal clippy and fmt fixes
+  * Make cargo-audit's binary_deps module public
+  * Do not serialize schema version as 'null' if not set to fix OSV JSON schema compliance
+  * Fix links to CVSS calculator
+  * Wording tweak in README
+  * Document recursive scanning recipe in README.md
+  * Nicer link
+  * Document the changes for 0.20.1
+  * Populate cargo-audit v0.21 changelog
+  * Commit Cargo.lock changes
+  * Bump platforms to v3.5.0 following #1278
+  * chore: regenerate platform support and bump to platforms@3.4.2
+
+-------------------------------------------------------------------
 Tue Jan  7 00:30:30 UTC 2025 - William Brown <william.brown@suse.com>
 
 - add 0001-Skip-warnings.patch to allow building on rust 1.83
