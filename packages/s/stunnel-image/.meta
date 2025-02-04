@@ -1,0 +1,5 @@
+<package name="stunnel-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed Stunnel</title>
+  <description>Stunnel container based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="stunnel-image"/>
+</package>
