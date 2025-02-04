@@ -1,0 +1,12 @@
+diff --git a/tests/run-make/compiler-builtins/rmake.rs b/tests/run-make/compiler-builtins/rmake.rs
+index 10093db2258..ad533f80266 100644
+--- a/tests/run-make/compiler-builtins/rmake.rs
++++ b/tests/run-make/compiler-builtins/rmake.rs
+@@ -11,6 +11,7 @@
+ // wasm and nvptx targets don't produce rlib files that object can parse.
+ //@ ignore-wasm
+ //@ ignore-nvptx64
++//@ only-nightly
+ 
+ #![deny(warnings)]
+ 
