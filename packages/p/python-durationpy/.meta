@@ -1,0 +1,5 @@
+<package name="python-durationpy" project="openSUSE:Factory">
+  <title>python-durationpy</title>
+  <description>Module for converting between datetime.timedelta and Go's time.Duration strings.</description>
+  <devel project="devel:kubic" package="python-durationpy"/>
+</package>
