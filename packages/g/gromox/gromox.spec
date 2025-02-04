@@ -1,7 +1,7 @@
 #
 # spec file for package gromox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.38
+Version:        2.40
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -50,7 +50,6 @@ BuildRequires:  php8-devel
 %else
 BuildRequires:  php-devel >= 7
 %endif
-BuildRequires:  libvmime-devel >= 0.9.2+g175
 BuildRequires:  zstd
 BuildRequires:  group(gromox)
 BuildRequires:  pkgconfig(fmt) >= 8
@@ -68,6 +67,7 @@ BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tinyxml2) >= 8
+BuildRequires:  pkgconfig(wmime) >= 1
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  user(grommunio)
 BuildRequires:  user(gromox)

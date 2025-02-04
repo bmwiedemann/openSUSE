@@ -319,4 +319,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1231170</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0174210c40987fffb57e58beafb242d0</srcmd5>
+    <version>2.39</version>
+    <time>1737559919</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.39</comment>
+    <requestid>1239356</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1cf085e8f0be07cd614df3de3f5a94a2</srcmd5>
+    <version>2.40</version>
+    <time>1738689295</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1243177</requestid>
+  </revision>
 </revisionlist>

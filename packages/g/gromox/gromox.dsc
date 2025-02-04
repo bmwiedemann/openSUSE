@@ -34,7 +34,6 @@ Build-Depends:
  libtinyxml2-dev (>= 8),
  libtool (>= 2),
  libtool-bin (>= 2) | libtool (>= 2),
- libvmime-dev (>= 0.9.2),
  libxml2-dev,
  libxxhash-dev,
  libzstd-dev,
@@ -47,5 +46,6 @@ Build-Depends:
  sed,
  systemd,
  uuid-dev,
+ wmime-dev (>= 1),
  zlib1g-dev
 Files:

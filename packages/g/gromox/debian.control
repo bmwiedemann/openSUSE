@@ -11,7 +11,7 @@ Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends},
  php-cli, php-fpm, php-mysql, php-simplexml, php-soap,
  system-user-grommunio, system-user-gromox (>= 4), w3m,
- libhx32 (>= 4.12)
+ libhx32 (>= 4.19)
 Provides: php-mapi-gromox
 Description: Groupware server (backend) with RPCH, IMAP and Z-MAPI support
  .
