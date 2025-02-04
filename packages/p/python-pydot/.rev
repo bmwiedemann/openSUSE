@@ -151,4 +151,41 @@
 - Switch to autosetup and pyproject macros.</comment>
     <requestid>1150549</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4d52f05e4800e7f0716231fed0d9a6a</srcmd5>
+    <version>3.0.4</version>
+    <time>1738689184</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.4:
+  * Removed:
+    + Breaking change: support for Python 3.7 dropped totally.
+      It was already dropped, but now it's official.
+    + Breaking change (but for nobody): Invalid syntax removed.
+      Removed syntax rules that were never implemented in graphviz's own
+      parser.
+    + Attribute sorting removed.
+      Pydot will preserve the original order of attributes as defined.
+    + Breaking change: Remove `.create_attribute_methods()` from classes.
+      Setters and getters for attributes are now added to class definitions
+      by calls to `pydot.core.__generate_attribute_methods()` immediately
+      after the class is defined, for better compatibility with type-checking
+      and introspection.
+  * Changed:
+    + Fixed quoting of identifiers with dots.
+    + Fixed quoting of leading-numeral strings (strings starting with a
+      number).
+    + Fixed pickling/copying of Dot objects.
+    + Improved handling of temporary files. Temporary files will be cleaned
+      up in all cases, even when exceptions are raised or things exit
+      unexpectedly.
+    + From now on, the license files will be included in the distributed 
+      release as expected.
+    + Fix quoting in `Edge.to_string()`.
+    + Internal storage and lookup of identifiers (names) improved.
+      Pydot now always stores values as they were originally input, and only
+      performs quoting on output.
+    + Quoting for attribute values fixed.
+      Attribute values containing comma-separated strings will now be quoted</comment>
+    <requestid>1242949</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydot
-Version:        2.0.0
+Version:        3.0.4
 Release:        0
 Summary:        Module to create (dot) graphs from Python
 License:        MIT
@@ -26,10 +26,11 @@ URL:            https://github.com/erocarrera/pydot
 Source:         https://files.pythonhosted.org/packages/source/p/pydot/pydot-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing >= 2.1.4}
+BuildRequires:  %{python_module pyparsing >= 3.0.9}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  graphviz
@@ -37,7 +38,7 @@ BuildRequires:  graphviz-gd
 BuildRequires:  python-rpm-macros
 Requires:       graphviz
 Requires:       graphviz-gd
-Requires:       python-pyparsing >= 2.1.4
+Requires:       python-pyparsing >= 3.0.9
 # we need at least some fonts
 Requires:       dejavu-fonts
 BuildArch:      noarch
@@ -59,10 +60,10 @@ Python. All attributes implemented in the Dot language up to Graphviz
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python test/pydot_unittest.py
+%pytest
 
 %files %{python_files}
-%license LICENSE
+%license LICENSES/MIT.txt LICENSES/Python-2.0.txt
 %doc README.md
 %{python_sitelib}/pydot
 %{python_sitelib}/pydot-%{version}.dist-info
