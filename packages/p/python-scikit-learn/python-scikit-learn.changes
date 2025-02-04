@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:39:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.6.1
+  * __sklearn_tags__ was introduced for setting tags in estimators.
+  * Scikit-learn classes and functions can be used while only having 
+    a import sklearn import line.
+  * Many classes now properly handle Matplotlib aliases for style 
+    parameters (e.g., c and color, ls and linestyle, etc).
+  * `utils.validation.validate_data` is introduced and replaces 
+    previously private base.BaseEstimator._validate_data method. 
+    This is intended for third party estimator developers, who should 
+    use this function in most cases instead of `utils.check_array` 
+    and `utils.check_X_y`.
+  * Additional estimators and functions have been updated to include 
+    support for all Array API compliant inputs.
+  * Metadata routing
+  * Dropping support for building with setuptools
+  * Preliminary free-threaded CPython 3.13 support
+  * The tags.input_tags.sparse flag was corrected for a majority of 
+    estimators.
+  * _more_tags, _get_tags, and _safe_tags are now raising a `DeprecationWarning` 
+    instead of a `FutureWarning` to only notify developers instead of end-users.
+- Turn on python313 testing, turn off python310 testing
+- Remove support-pytest-8.3.patch, included upstream
+
+-------------------------------------------------------------------
 Sun Sep  8 13:26:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-learn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,6 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py310"
-%define skip_python310 1
-%endif
 %if "%{flavor}" != "test-py311"
 %define skip_python311 1
 %endif
@@ -48,14 +45,12 @@ ExclusiveArch:  donotbuild
 %bcond_with pytestcolor
 
 Name:           python-scikit-learn%{psuffix}
-Version:        1.5.1
+Version:        1.6.1
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit_learn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM One commit from gh#scikit-learn/scikit-learn#29486
-Patch0:         support-pytest-8.3.patch
 BuildRequires:  %{python_module Cython >= 3.0.10}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module joblib >= 1.2.0}
@@ -114,9 +109,6 @@ rm -rf sklearn/.pytest_cache
 %if !%{with pytestcolor}
 sed -i '/--color=yes/d' setup.cfg
 %endif
-
-# Fix shebang for version, this is used during pyproject_wheel
-sed -i 's|python|python3|' sklearn/_build_utils/version.py
 
 %build
 %if !%{with test}
