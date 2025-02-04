@@ -1,7 +1,0 @@
-<package name="idzebra" project="openSUSE:Factory">
-  <title>Fielded Free Text Engine with a Z39.50 Front-End</title>
-  <description>Zebra is a fielded free text indexing and retrieval engine with a
-Z39.50 front-end. You can use any compatible, commercial, or freeware
-Z39.50 client to access data stored in Zebra.</description>
-  <devel project="network" package="idzebra"/>
-</package>
