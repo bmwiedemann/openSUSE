@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-docklike-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           xfce4-%{plugin}-plugin
 Version:        0.4.3
 Release:        0
 Summary:        Docklike Taskbar
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-docklike-plugin/start
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.4/%{name}-%{version}.tar.bz2
