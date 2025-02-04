@@ -701,4 +701,20 @@ Replaces sr#890404</comment>
     <comment></comment>
     <requestid>1237323</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>911e0d35452551ace528d11d6e245376</srcmd5>
+    <version>2.95.0</version>
+    <time>1738244957</time>
+    <user>anag+factory</user>
+    <comment>Correct wrong version (2.95.0)</comment>
+    <requestid>1241206</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>851786c6827ce0c003b9913dc6c50337</srcmd5>
+    <version>2.95.1</version>
+    <time>1738689060</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242978</requestid>
+  </revision>
 </revisionlist>

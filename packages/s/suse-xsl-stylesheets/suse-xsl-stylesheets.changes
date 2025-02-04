@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:41:57 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.1
+
+- Update to 2.95.1
+  * DOCTEAM-1663: element is not keyboard accessible (#658)
+  * DOCTEAM-1663: Fix "Container element is empty" (#657)
+  * meta.description.base: `<meta name="description">` (#656)
+  * DOCTEAM#1664: Fix aria-label for revhistory link (#655)
+  * Update color contrast in CSS
+ 
+
+-------------------------------------------------------------------
+Wed Jan 29 13:12:59 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.0
+
+- Update 2.95.0
+  * 2024 extended palette and infographics palette (#635)
+  * Fix #649: Provide unique alt attribute for <img> (#651)
+  * Fix DOCTEAM-1670: (A11Y) Empty headings (#652)
+  * Several changes to color contrast (commits 8ee59b8, a44616c,
+    62e535f, d189380, 30d4158)
+- Change spec file
+  * Add suse-fonts as requirements
+
+-------------------------------------------------------------------
 Tue Jan 13 08:44:00 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.8
 
 - Fix bsc#1232694 (spec): Demote some fonts from recommends -> recommends
