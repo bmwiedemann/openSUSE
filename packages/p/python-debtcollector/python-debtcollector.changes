@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 04:51:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded Requires on six, not needed since 2.5.0.
+
+-------------------------------------------------------------------
 Fri May 10 08:39:13 UTC 2024 - cloud-devel@suse.de
 
 - update to version 3.0.0

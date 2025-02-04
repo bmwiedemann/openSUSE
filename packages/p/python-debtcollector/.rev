@@ -277,4 +277,12 @@
   - Update CI to use unversioned jobs template</comment>
     <requestid>1173069</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>87d43a12c152e7f064992d18e3f4b55c</srcmd5>
+    <version>3.0.0</version>
+    <time>1738689182</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242950</requestid>
+  </revision>
 </revisionlist>

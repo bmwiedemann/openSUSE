@@ -1,7 +1,7 @@
 #
 # spec file for package python-debtcollector
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,6 @@ future deprecations.
 Summary:        A collection of Python deprecation patterns and strategies
 Requires:       python3-importlib-metadata
 Requires:       python3-pbr
-Requires:       python3-six
 Requires:       python3-wrapt >= 1.7.0
 
 %description -n python3-debtcollector
