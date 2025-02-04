@@ -44,4 +44,14 @@
   * Fix how setuptools finds the module.</comment>
     <requestid>1216925</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58adefaf0fe1e570f5b840cfc23b7812</srcmd5>
+    <version>1.8.1</version>
+    <time>1738689186</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Use py_modules in setup.py
+- Drop patch specify-modules-correctly.patch, now included.</comment>
+    <requestid>1242951</requestid>
+  </revision>
 </revisionlist>

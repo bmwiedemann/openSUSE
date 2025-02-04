@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-listener
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-listener
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A simple network listener for pytest
 License:        MIT
@@ -25,8 +25,6 @@ URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-listener/pytest-listener-%{version}.tar.gz
 # https://github.com/man-group/pytest-plugins/issues/209
 Patch0:         python-pytest-listener-no-six.patch
-# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#248
-Patch1:         specify-modules-correctly.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}

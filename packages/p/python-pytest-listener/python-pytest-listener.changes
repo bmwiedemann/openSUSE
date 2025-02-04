@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 04:04:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.1:
+  * Use py_modules in setup.py
+- Drop patch specify-modules-correctly.patch, now included.
+
+-------------------------------------------------------------------
 Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.0:
