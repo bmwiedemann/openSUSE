@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:03:34 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.20.2:
+  * autotools-build: Unconditionally add ext-workspace-v1.xml to EXTRA_DIST
+- Version 4.20.1:
+  * Update copyright year
+  * Sanity-check the dimensions of the icon data in _NET_WM_ICON
+  * meson-build: Use meson built-in tests
+  * XfwMonitorX11: Fix connector for virtual output
+  * Use wnck_class_group_get_id() to attempt .desktop file icon fallback
+  * meson-build: Let pkg.generate() fill in required libs
+  * meson-build: Fix pkgdatadir definition
+  * meson-build: Gobject introspection cleanup
+  * meson-build: Use relative path in gtk-doc
+  * meson-build: Improve maintainability of multi-dependency features
+  * Removed extra ';' in source code.
+  * build: Remove ununsed conditional
+  * I18n: Update po/LINGUAS list
+  * docs: Don't run gtkdoc-check
+  * XfwWorkspaceWayland: Ensure active workspace is initialized
+  * XfwWorkspaceManagerWayland: Fix typo
+  * XfwWorkspaceWayland: fix ext-workspace activate
+  * XfwWorkspaceWayland: Store name property
+  * XfwWorkspaceWayland: Properly set id property
+  * XfwWorkspaceGroupWayland: Fix wrong list element removal
+  * Update ext-workspace protocol version
+  * XfwWorkspaceWayland: Add missing sanity check
+  * XfwWorkspaceManagerWayland: Fix typo
+  * XfwWorkspaceGroupWayland: Add missing property and private struct
+  * I18n: Update po/LINGUAS list
+  * Translation Updates
+- Removed obsolete 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Sun Dec 15 10:52:07 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.0
