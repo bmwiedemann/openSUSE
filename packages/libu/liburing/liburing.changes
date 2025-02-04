@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 31 15:47:09 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- disable sqwait.t and nop.t for 15.6
+
+-------------------------------------------------------------------
+Mon Jan 27 09:50:23 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- disable more tests on s390x
+
+-------------------------------------------------------------------
 Mon Jan  6 06:55:31 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - disable some tests for older kernels & strange archs

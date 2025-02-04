@@ -94,7 +94,7 @@ declare -a TEST_EXCLUDE=()
 TEST_EXCLUDE+=( fallocate.t fd-pass.t fixed-buf-merge.t msg-ring-overflow.t nop.t poll-race-mshot.t reg-hint.t sqwait.t wq-aff.t )
 %endif
 %if 0%{?sle_version} == 150600 || 0%{?sle_version} == 150700
-TEST_EXCLUDE+=( fallocate.t )
+TEST_EXCLUDE+=( fallocate.t sqwait.t nop.t )
 %endif
 %if 0%{?suse_version} == 1600
 TEST_EXCLUDE+=( sqwait.t )
@@ -103,7 +103,7 @@ TEST_EXCLUDE+=( sqwait.t )
 %ifarch ppc64le
 TEST_EXCLUDE+=( no-mmap-inval.t recv-multishot.t reg-fd-only.t recvsend_bundle.t recvsend_bundle-inc.t )
 %elifarch s390x
-TEST_EXCLUDE+=( futex.t multicqes_drain.t poll-mshot-update.t read-mshot.t waitid.t )
+TEST_EXCLUDE+=( 7ad0e4b2f83c.t futex.t multicqes_drain.t poll-mshot-update.t read-mshot.t timeout-new.t waitid.t )
 TEST_EXCLUDE+=( link-timeout.t min-timeout-wait.t submit-and-wait.t sync-cancel.t )
 %endif
 

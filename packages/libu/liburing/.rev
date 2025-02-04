@@ -227,4 +227,20 @@
 </comment>
     <requestid>1235113</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>3fa23ab09386e1c1adea179b6fc0b014</srcmd5>
+    <version>2.8</version>
+    <time>1738072705</time>
+    <user>anag+factory</user>
+    <comment>- disable more tests on s390x</comment>
+    <requestid>1240480</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>32489a0a29f25ca8cd46f4971e15d730</srcmd5>
+    <version>2.8</version>
+    <time>1738688978</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242288</requestid>
+  </revision>
 </revisionlist>
