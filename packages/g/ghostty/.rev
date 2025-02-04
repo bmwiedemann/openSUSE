@@ -37,4 +37,35 @@
     files should be dropped from that package now.</comment>
     <requestid>1238239</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b2715f13a5b45feff97d7dff50265bb</srcmd5>
+    <version>1.1.0</version>
+    <time>1738335873</time>
+    <user>anag+factory</user>
+    <comment>- with the gobject-introspection we no longer need python3-nautilus
+  replace the BuildRequites with python-nautilus-common-files 
+
+- add gobject-introspection as BuildRequires to get the GI based
+  dependencies
+
+- Rename the nautilus plugin to just ghostty.py:
+  It looks like the loader interprets the path
+  com.mitchellh.ghostty.py as a python class hierachy and fails to
+  load the plugin because of that.
+
+- Update to 1.1.0 
+  https://ghostty.org/docs/install/release-notes/1-1-0
+- drop https://github.com/ghostty-org/ghostty/commit/f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+- new subpackage for nautilus plugin
+  new BuildRequires python3-nautilus python3-gobject</comment>
+    <requestid>1241547</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>10f6e3e544fee819590b66566ec1d2b4</srcmd5>
+    <version>1.1.0</version>
+    <time>1738694098</time>
+    <user>anag+factory</user>
+    <comment>- fix debuginfo generation by disabling strip in the zig build</comment>
+    <requestid>1243173</requestid>
+  </revision>
 </revisionlist>

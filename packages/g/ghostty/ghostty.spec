@@ -16,12 +16,12 @@
 #
 
 
-%global common_build_flags --system %{_builddir}/%{name}-%{version}/vendor/zig/p -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Dversion-string=%{version} %{?_smp_mflags}
+%global common_build_flags --system %{_builddir}/%{name}-%{version}/vendor/zig/p -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Dstrip=false -Dversion-string=%{version} %{?_smp_mflags}
 
 %bcond_without  standalone_terminfo
 
 Name:           ghostty
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Cross-platform terminal emulator
 License:        MIT
@@ -33,7 +33,7 @@ Source2:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.
 Source1:        vendor.tar.zst
 Source98:       series
 Source99:       vendor.sh
-Patch1:         https://github.com/ghostty-org/ghostty/commit/f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
@@ -47,6 +47,8 @@ BuildRequires:  pkgconfig(bash-completion)
 # BuildRequires:  pkgconfig(spirv-cross-c-shared)
 #
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  python-nautilus-common-files
+BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gtk4)
@@ -62,6 +64,10 @@ Requires:       terminfo-ghostty = %{version}
 BuildRequires:  terminfo
 Requires:       terminfo >= %{terminfo_with_ghostty_version}
 %endif
+
+%description
+Ghostty is a fast, feature-rich, and cross-platform terminal
+emulator that uses platform-native UI and GPU acceleration.
 
 %package        bash-completion
 Summary:        Bash Completion for %{name}
@@ -128,6 +134,18 @@ Optional files for syntax highlighting for %{name} data files in vim.
 Ghostty is a fast, feature-rich, and cross-platform terminal
 emulator that uses platform-native UI and GPU acceleration.
 
+%package -n nautilus-extension-ghostty
+Summary:        Nautilus extension for ghostty
+Requires:       %{name} = %{version}
+Requires:       nautilus
+Requires:       python-nautilus-common-files
+Requires:       python3-gobject
+Supplements:    (%{name} and nautilus)
+BuildArch:      noarch
+
+%description -n nautilus-extension-ghostty
+Nautilus extension for ghostty.
+
 %package -n terminfo-ghostty
 Summary:        Terminfo files for ghostty
 BuildArch:      noarch
@@ -152,6 +170,8 @@ zig build %{common_build_flags} --prefix %{_prefix}
 %if %{without standalone_terminfo}
 rm -rv %{buildroot}%{_datadir}/terminfo/
 %endif
+
+mv %{buildroot}%{_datadir}/nautilus-python/extensions/{com.mitchellh.ghostty,ghostty}.py
 
 %files
 %license LICENSE
@@ -191,15 +211,20 @@ rm -rv %{buildroot}%{_datadir}/terminfo/
 %dir %{_datadir}/kio/servicemenus
 %{_datadir}/kio/servicemenus/com.mitchellh.ghostty.desktop
 
+%files -n nautilus-extension-ghostty
+%{_datadir}/nautilus-python/extensions/ghostty.py
+
 %files neovim
 %{_datadir}/nvim/site/ftdetect/ghostty.vim
 %{_datadir}/nvim/site/ftplugin/ghostty.vim
 %{_datadir}/nvim/site/syntax/ghostty.vim
+%{_datadir}/nvim/site/compiler/ghostty.vim
 %dir %{_datadir}/nvim
 %dir %{_datadir}/nvim/site
 %dir %{_datadir}/nvim/site/ftdetect
 %dir %{_datadir}/nvim/site/ftplugin
 %dir %{_datadir}/nvim/site/syntax
+%dir %{_datadir}/nvim/site/compiler/
 
 %files doc
 %dir %{_datadir}/ghostty/doc
@@ -228,15 +253,15 @@ rm -rv %{buildroot}%{_datadir}/terminfo/
 %dir %{_datadir}/vim/vimfiles/ftdetect
 %dir %{_datadir}/vim/vimfiles/ftplugin
 %dir %{_datadir}/vim/vimfiles/syntax
+%dir %{_datadir}/vim/vimfiles/compiler
 %{_datadir}/vim/vimfiles/ftdetect/ghostty.vim
 %{_datadir}/vim/vimfiles/ftplugin/ghostty.vim
 %{_datadir}/vim/vimfiles/syntax/ghostty.vim
+%{_datadir}/vim/vimfiles/compiler/ghostty.vim
 
 %if %{with standalone_terminfo}
 %files -n terminfo-ghostty
 %{_datadir}/terminfo/g/ghostty
-%{_datadir}/terminfo/ghostty.termcap
-%{_datadir}/terminfo/ghostty.terminfo
 %{_datadir}/terminfo/x/xterm-ghostty
 %endif
 

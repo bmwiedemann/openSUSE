@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Feb  4 15:58:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix debuginfo generation by disabling strip in the zig build
+
+-------------------------------------------------------------------
+Fri Jan 31 00:29:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- with the gobject-introspection we no longer need python3-nautilus
+  replace the BuildRequites with python-nautilus-common-files 
+
+-------------------------------------------------------------------
+Fri Jan 31 00:12:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add gobject-introspection as BuildRequires to get the GI based
+  dependencies
+
+-------------------------------------------------------------------
+Thu Jan 30 23:43:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Rename the nautilus plugin to just ghostty.py:
+  It looks like the loader interprets the path
+  com.mitchellh.ghostty.py as a python class hierachy and fails to
+  load the plugin because of that.
+
+-------------------------------------------------------------------
+Thu Jan 30 22:14:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.1.0 
+  https://ghostty.org/docs/install/release-notes/1-1-0
+- drop https://github.com/ghostty-org/ghostty/commit/f60068eabd94e6784f3b557c7287c49dd36bb24c.diff
+- new subpackage for nautilus plugin
+  new BuildRequires python3-nautilus python3-gobject
+
+-------------------------------------------------------------------
 Thu Jan 16 10:44:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - testing shows that we can not rely on the terminfo files coming
