@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-archive-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 URL:            https://docs.xfce.org/xfce/thunar/archive
 Source0:        https://archive.xfce.org/src/thunar-plugins/%{name}/0.5/%{name}-%{version}.tar.bz2
 Summary:        Thunar Plugin Providing Integration with Archive Managers
-License:        GPL-2.0-or-later
+License:        LGPL-2.0-only
 Group:          System/GUI/XFCE
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(exo-2) >= 0.10.0
