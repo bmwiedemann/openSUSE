@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 28 16:20:18 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.0
+  * added: if present, use multiple cores by default.
+  * added: option --no-threads to force single-threading.
+  * fixed: noise issue in hybrid mode (low bitrate / high sample
+    rate).
+  * improved: all new DNS algorithm for better hybrid mode quality.
+  * improved: "extra" option with multithreading and hybrid modes.
+  * added: TSOC (Composer Sort) added to handled ID3v2 tags.
+  * added: --no-overwrite command-line option to wvunpack.
+  * fixed: handling of 24+ channels (CoolEdit / Audition).
+  * fixed: handling of unpacked samples in WAV files.
+  * fixed: rare command-line option parsing issue.
+
+-------------------------------------------------------------------
 Sat Mar 16 16:38:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 5.7.0:
