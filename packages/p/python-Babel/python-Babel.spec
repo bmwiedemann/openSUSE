@@ -1,7 +1,7 @@
 #
 # spec file for package python-Babel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Babel
-Version:        2.16.0
+Version:        2.17.0
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause

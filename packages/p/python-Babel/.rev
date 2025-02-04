@@ -869,4 +869,41 @@
     <comment>- Clean up {Build,}Requires to match reality.</comment>
     <requestid>1208529</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d239419037dd03c42f24506859dc20a0</srcmd5>
+    <version>2.17.0</version>
+    <time>1738689002</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.17.0:
+  * CLDR: Babel now uses CLDR 46, by @tomasr8 in :gh:`1145`
+  * Dates: Allow specifying an explicit format in
+    parse_date/parse_time by @tomasr8 in :gh:`1131`
+  * Dates: More alternate characters are now supported by
+    format_skeleton. By @tomasr8 in :gh:`1122`
+  * Dates: Support short and narrow formats for format_timedelta
+    when using add_direction, by @akx in :gh:`1163`
+  * Messages: .po files now enclose white spaces in filenames
+    like GNU gettext does. By @Dunedan in :gh:`1105`, and
+    @tomasr8 in :gh:`1120`
+  * Messages: Initial support for Message.python_brace_format, by
+    @tomasr8 in :gh:`1169`
+  * Numbers: LC_MONETARY is now preferred when formatting
+    currencies, by @akx in :gh:`1173`
+  * Dates: Make seconds optional in parse_time time formats by
+    @tomasr8 in :gh:`1141`
+  * Dates: Replace str.index with str.find by @tomasr8 in
+    :gh:`1130`
+  * Dates: Strip extra leading slashes in /etc/localtime by @akx
+    in :gh:`1165`
+  * Dates: Week numbering and formatting of dates with week
+    numbers was repaired by @jun66j5 in :gh:`1179`
+  * General: Improve handling for locale=None by @akx in
+    :gh:`1164`
+  * General: Remove redundant assignment in Catalog.__setitem__
+    by @tomasr8 in :gh:`1167`
+  * Messages: Fix extracted lineno with nested calls, by
+    @dylankiss in :gh:`1126`
+  * Messages: Fix of list index out of range when translations is</comment>
+    <requestid>1242836</requestid>
+  </revision>
 </revisionlist>
