@@ -76,4 +76,14 @@
   * Fix publication of docs.</comment>
     <requestid>1217076</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e45f62e3ee1133319177b585f4b2312d</srcmd5>
+    <version>0.9.0</version>
+    <time>1738689007</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * fix problem with functools.singledispatch
+  * uprev to v0.9</comment>
+    <requestid>1242837</requestid>
+  </revision>
 </revisionlist>

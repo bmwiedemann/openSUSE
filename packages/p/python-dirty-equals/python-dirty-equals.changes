@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:39:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * fix problem with functools.singledispatch
+  * uprev to v0.9
+
+-------------------------------------------------------------------
 Tue Oct 22 15:55:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.0:
