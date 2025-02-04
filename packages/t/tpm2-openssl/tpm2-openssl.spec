@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-openssl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _MODULES_DIR %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           tpm2-openssl
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        OpenSSL 3 Engine for TPM2 devices
 License:        BSD-3-Clause
@@ -27,12 +27,15 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software
 Source0:        %{url}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{url}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        tpm2-openssl.keyring
 BuildRequires:  autoconf-archive
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto) >= 3
-BuildRequires:  pkgconfig(tss2-esys) >= 2.0
+BuildRequires:  pkgconfig(tss2-esys) >= 3.2.0
+BuildRequires:  pkgconfig(tss2-rc) >= 3.2.0
+BuildRequires:  pkgconfig(tss2-tctildr)
 Conflicts:      openssl_tpm2_engine
 
 %description
@@ -40,21 +43,21 @@ Makes the TPM 2.0 accessible via the standard OpenSSL API and command-line tools
 one can add TPM support to (almost) any OpenSSL 3.x based application.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-
 autoreconf -fvi
 %configure
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+# Remove libtool archives
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %doc README.md
 %license LICENSE
-%{_MODULES_DIR}/tpm2.la
 %{_MODULES_DIR}/tpm2.so
 
 %changelog
