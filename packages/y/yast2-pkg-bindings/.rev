@@ -1670,4 +1670,12 @@ package/yast2-pkg-bindings.spec:Version:        3.1.5</comment>
     <comment>submit new version 5.0.4</comment>
     <requestid>1139878</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>fba8f864d5cabe13c88a791e5f45fa8a</srcmd5>
+    <version>5.0.5</version>
+    <time>1738688984</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.5</comment>
+    <requestid>1242488</requestid>
+  </revision>
 </revisionlist>

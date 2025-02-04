@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-pkg-bindings
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-pkg-bindings
-Version:        5.0.4
+Version:        5.0.5
 Release:        0
 Summary:        YaST2 - Package Manager Access
 License:        GPL-2.0-only

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 31 20:19:20 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Deprecated callbacks that is deprecated and no longer used
+  in libzypp (gh#yast/yast-pkg-bindings#191)
+- 5.0.5
+
+-------------------------------------------------------------------
 Thu Jan 18 14:18:02 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed repository and service probing with libzypp 7.31.26
