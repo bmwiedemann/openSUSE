@@ -1,7 +1,7 @@
 #
 # spec file for package python-icoextract
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-icoextract
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        Extract icons from Windows PE files (.exe/.dll)
 License:        MIT
@@ -43,7 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-pefile
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-Pillow
 BuildArch:      noarch
 %python_subpackages
