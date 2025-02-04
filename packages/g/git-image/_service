@@ -1,13 +1,13 @@
 <services>
-  <service mode="buildtime" name="kiwi_label_helper"/>
+  <service mode="buildtime" name="docker_label_helper"/>
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
   <service mode="buildtime" name="replace_using_package_version">
-    <param name="file">git-image.kiwi</param>
+    <param name="file">Dockerfile</param>
     <param name="regex">%%git_version%%</param>
     <param name="package">git-core</param>
   </service>
   <service mode="buildtime" name="replace_using_package_version">
-    <param name="file">git-image.kiwi</param>
+    <param name="file">Dockerfile</param>
     <param name="regex">%%git_major_version%%</param>
     <param name="package">git-core</param>
     <param name="parse-version">major</param>
