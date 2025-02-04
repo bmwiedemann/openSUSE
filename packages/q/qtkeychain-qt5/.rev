@@ -134,4 +134,12 @@ Technically the -lang package needs to be called qtkeychain-qt5-lang for SLPP (o
     <comment></comment>
     <requestid>1157032</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3d3e85453f4caf5d4145108ea2eb1293</srcmd5>
+    <version>0.15.0</version>
+    <time>1738688967</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.15.0</comment>
+    <requestid>1242114</requestid>
+  </revision>
 </revisionlist>

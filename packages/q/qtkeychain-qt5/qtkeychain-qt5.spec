@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           qtkeychain-qt5
-Version:        0.14.2
+Version:        0.15.0
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(libsecret-1)
 
 %description
@@ -61,7 +62,7 @@ This package contains development files for libqtkeychain.
 %autosetup -p1 -n qtkeychain-%{version}
 
 %build
-%cmake -DBUILD_TEST_APPLICATION=OFF ..
+%cmake -DBUILD_TEST_APPLICATION:BOOL=FALSE
 %cmake_build
 
 %install
