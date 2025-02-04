@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:43:04 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 0.76.1:
+  * Fix bug in auto-save on quit
+  * Fix bug with find for pages with table object
+  * Fix bug with undo deleting table object
+  * Fix bug with out-denting verbatim text
+  * Fix issue with linesorter plugin
+  * Fix issue in commandline parsing for quicknote
+  * Fix tray-icon plugin issues
+  * Fix bug for Unix style links on Windows
+  * Merge fixes for Indexed FTS search plugin
+  * Let ToC selection follow cursor
+
+-------------------------------------------------------------------
 Mon Jan 13 10:31:02 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to 0.76.0:

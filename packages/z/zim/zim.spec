@@ -21,7 +21,7 @@
 %define hierarchical_name org.zim_wiki.Zim
 
 Name:           zim
-Version:        0.76.0
+Version:        0.76.1
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
