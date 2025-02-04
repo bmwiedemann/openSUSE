@@ -109,4 +109,17 @@
     <comment></comment>
     <requestid>1198968</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8a56498fa3bab07e19d982e4ca1668fa</srcmd5>
+    <version>0.15.0</version>
+    <time>1738689297</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.0:
+  * enable support for Python 3.13
+  * Query the version and compiler flags of FFTW
+  * always define FFTW_NO_Complex
+  * Fix: fix signatures of fftw{l,,f}_plan_guru_r2r
+  * Require Python &gt;=3.10 and update pdm.lock/CI workflows</comment>
+    <requestid>1243182</requestid>
+  </revision>
 </revisionlist>

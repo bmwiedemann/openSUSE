@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:24:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * enable support for Python 3.13
+  * Query the version and compiler flags of FFTW
+  * always define FFTW_NO_Complex
+  * Fix: fix signatures of fftw{l,,f}_plan_guru_r2r
+  * Require Python >=3.10 and update pdm.lock/CI workflows
+
+-------------------------------------------------------------------
 Thu Sep  5 11:25:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Work around gh#pyFFTW/pyFFTW#378 for GCC14
