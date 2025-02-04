@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb  3 15:12:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 128.7.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 128.7.0
+  https://www.mozilla.org/security/advisories/mfsa2025-09
+  MFSA 2025-09 (boo#1236539)
+  * CVE-2025-1009 (bmo#1936613)
+    Use-after-free in XSLT
+  * CVE-2025-1010 (bmo#1936982)
+    Use-after-free in Custom Highlight
+  * CVE-2025-1011 (bmo#1936454)
+    A bug in WebAssembly code generation could result in a crash
+  * CVE-2025-1012 (bmo#1939710)
+    Use-after-free during concurrent delazification
+  * CVE-2024-11704 (bmo#1899402)
+    Potential double-free vulnerability in PKCS#7 decryption
+    handling
+  * CVE-2025-1013 (bmo#1932555)
+    Potential opening of private browsing tabs in normal browsing
+    windows
+  * CVE-2025-1014 (bmo#1940804)
+    Certificate length was not properly checked
+  * CVE-2025-1016 (bmo#1936601, bmo#1936844, bmo#1937694,
+    bmo#1938469, bmo#1939583, bmo#1940994)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 115.20, Firefox ESR 128.7, Thunderbird 115.20,
+    and Thunderbird 128.7
+  * CVE-2025-1017 (bmo#1926256, bmo#1935471, bmo#1935984)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 128.7, and Thunderbird 128.7
+
+-------------------------------------------------------------------
 Tue Jan  7 09:24:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 128.6.0 ESR
