@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:55:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.0.9
+  * Drop support for Python 2 and <3.7
+  * Fix CVE-2023-26112, ReDoS attack
+- Drop CVE-2023-26112.patch, merged upstream
+- Drop remove_six.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Sep 11 12:08:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Refresh CVE-2023-26112.patch according to the last state of
