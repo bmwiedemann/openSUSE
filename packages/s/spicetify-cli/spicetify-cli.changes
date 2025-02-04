@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 04 13:12:15 UTC 2025 - jan.kuzilek@suse.com
+
+- Update to version 2.38.9:
+  * fix(homeConfig): make it work on Spotify `1.2.56`
+  * fix(GetStateFolder): put files in specific state folder
+  * feat(trashbin): add a working export button (#3268)
+  * refactor: change folder location for `Backup` and `Extracted` (#3282)
+  * fix: use new PlatformAPI in exp features
+  * fix(keyboardShortcut): change called function to skip song (#3273)
+
+-------------------------------------------------------------------
 Fri Dec 27 01:18:15 UTC 2024 - jan.kuzilek@suse.com
 
 - Update to version 2.38.7:

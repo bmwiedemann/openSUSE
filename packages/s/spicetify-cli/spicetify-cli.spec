@@ -1,7 +1,7 @@
 #
 # spec file for package spicetify-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sname cli
 %define binname spicetify
 Name:           spicetify-cli
-Version:        2.38.7
+Version:        2.38.9
 Release:        0
 Summary:        Command-line tool to customize Spotify client
 License:        LGPL-2.1-or-later
