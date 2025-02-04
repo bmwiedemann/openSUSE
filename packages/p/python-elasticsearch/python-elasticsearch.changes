@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:04:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.17.1
+  * Make pyarrow dependency optional for tests (#2733, contributed by @danigm)
+  * Update APIs:
+    - Add Simulate ingest API
+    - Add Get data stream lifecycle stats API
+    - Add Update inference API
+    - Add Create or update, Get and Delete IP geolocation
+      database configuration APIs
+    - Add Bulk update API keys
+    - Add Get and Update Security index settings APIs
+    - Add OpenID Connect prepare authentication, OpenID
+      Connect authenticate and OpenID Connect logout APIs
+    - Add Delegate PKI authentication API
+    - Add Repository analysis API
+    - Add Render Search Application Query API
+    - Add Find field structure and Find messages structure APIs
+    - Add Get Watcher index settings and Update Watcher index settings APIs
+    - Add experimental Check in and Claim connector sync job APIs
+    - Add experimental Set connector sync job errors and Set connector sync job stats APIs
+    - Add experimental Update connector features APIs
+    - Add experimental Post Event to an Analytics Collection API
+    - Add timeout and master_timeout to Snapshot lifecycle management (SLM) APIs
+    - Add allow_partial_search_results to SQL search API
+    - Add throttle_period_in_millis to Create or update watch API
+    - Fix query parameters for CAT APIs
+- Drop 0001-Make-pyarrow-dependency-optional-for-tests.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed Jan  8 08:59:00 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch to do not depend on pyarrow for tests: 0001-Make-pyarrow-dependency-optional-for-tests.patch

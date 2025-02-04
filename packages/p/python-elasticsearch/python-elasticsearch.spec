@@ -20,15 +20,13 @@
 Name:           python-elasticsearch
 # DO NOT UPDATE until the compatible version of
 # python-elasticsearch-dsl is available
-Version:        8.17.0
+Version:        8.17.1
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
 Source:         https://github.com/elastic/elasticsearch-py/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Make-pyarrow-dependency-optional-for-tests.patch gh#elastic/elasticsearch-py#2733
-Patch1:         0001-Make-pyarrow-dependency-optional-for-tests.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module elastic-transport}
 BuildRequires:  %{python_module hatchling}

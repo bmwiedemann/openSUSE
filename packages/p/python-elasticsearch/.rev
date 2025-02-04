@@ -244,4 +244,12 @@
     - Add lifecycle and remove unused data_retention and downsampling parameters from Put data stream lifecycle API</comment>
     <requestid>1235853</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ad52053225ce9d0316fc55c85f213e55</srcmd5>
+    <version>8.17.1</version>
+    <time>1738689069</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243050</requestid>
+  </revision>
 </revisionlist>
