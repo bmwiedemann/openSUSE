@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 04 04:38:07 UTC 2025 - william.brown@suse.com
+
+- Update to version 20250204:
+  * Assigned RUSTSEC-2025-0004 to openssl (#2218)
+  * Add advisory for `openssl ssl::select_next_proto` UAF (#2217)
+  * Add patch version for RUSTSEC-2021-0087.md (#2216)
+  * Assigned RUSTSEC-2025-0002 to fast-float2, RUSTSEC-2025-0003 to fast-float (#2213)
+  * Add advisory for segmentation fault in fast-float and fast-float2 (#2192)
+  * Add global GHSA and references to RUSTSEC-2025-0001 (#2207)
+  * README.md: bump database maintenance year to 2025 (#2208)
+  * Assigned RUSTSEC-2024-0434 to matrix-sdk-crypto (#2205)
+  * Remove listing of unix-likes from advisory (#2206)
+  * Add CVE-2024-52813 for matrix-sdk-crypto (#2204)
+
+-------------------------------------------------------------------
 Wed Oct 30 01:03:16 UTC 2024 - william.brown@suse.com
 
 - Update to version 20241030:
