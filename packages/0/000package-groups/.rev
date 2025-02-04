@@ -2089,4 +2089,12 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <user>dimstar_suse</user>
     <comment>32bit: nodejs-electron no longer supported</comment>
   </revision>
+  <revision rev="293" vrev="291">
+    <srcmd5>42c41d99a7bcaaaa0ee32a064d02e980</srcmd5>
+    <version>unknown</version>
+    <time>1738689073</time>
+    <user>anag+factory</user>
+    <comment>Add isciuio to the DVD - boo#1236772</comment>
+    <requestid>1243062</requestid>
+  </revision>
 </revisionlist>

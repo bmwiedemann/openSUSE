@@ -324,6 +324,8 @@ dvd:
   - fuse3
   - icewm-config-upstream
   - icewm-lite
+  # https://bugzilla.suse.com/show_bug.cgi?id=1236772
+  - iscsiuio
   - lifecycle-data-openSUSE
   - mokutil: [x86_64,aarch64]
   - pcsc-acr38
