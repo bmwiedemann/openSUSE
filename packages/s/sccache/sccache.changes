@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 08 03:14:33 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.9.0~13:
+  * Add experimental concurrent cache support
+  * chore: replace is-terminal with standard library (#2311)
+  * prepare release 0.9.1
+  * Add support for caching target json specs for Rust compilation. (#2269)
+  * Don't use CARGO_REGISTRIES_* configuration in hash keys (#2308)
+  * fix: bring "cargo build -Zprofile" support back (#2306)
+  * deps: Update cc
+  * add test for #2299
+  * fix test_rlib_dep_reader_call failure when $CARGO_HOME isn't in the user's $HOME
+  * Never cache the outer CUDA compilation (because `nvcc -E` can't be trusted). Always decompose via `nvcc --dryrun`, then cache and report the host compiler call as a CUDA compilation
+  * Always use sccache's own jobserver
+  * Adjust placement of crate dependencies and a comment Crates memmap2, object and shlex are not dist-only requirements.
+  * Skip tests when needed features (gcs & s3) are disabled
+
+-------------------------------------------------------------------
 Tue Dec 10 05:57:32 UTC 2024 - william.brown@suse.com
 
 - Update to version 0.9.0~1:
