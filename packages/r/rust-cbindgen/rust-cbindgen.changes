@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Feb 04 04:32:59 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.28.0+git0:
+  * Release 0.28.0
+  * tests: Fix symbol file and tests.
+  * Appease clippy.
+  * tests: Run rustfmt.
+  * Add a way to generate a list of symbols for dynamic linkage, resolves #907
+  * Add `unstable_ir` feature flag that makes the ir pub
+  * Refactor arm64 build to matrix strategy
+  * Add aarch64/arm64 to CI
+  * Fix clippy warnings
+  * newlines for constexpr
+  * replace is_first_field to enumerate
+  * Fix: avoid potential race in tests/profile.rs
+  * Fix: Ignore `CARGO_BUILD_TARGET` in lib tests too
+  * Fix: Ignore `CARGO_BUILD_TARGET` in tests
+  * Add a test for mangling of array generics.
+  * Implement mangling for arrays
+  * ir: add support for UnsafeCell and SyncUnsafeCell
+  * rename: Add a test for rename-all=prefix:
+  * Less clone for rename-all.
+  * Add rename-all=prefix:
+  * Fix local override of enum prefix-with-name
+  * Also update syn in the Cargo.toml.
+  * utilities: Minor clean-up.
+  * Parse `unsafe` attributes
+  * Deduplicate the code that turns transparent structs into typedefs
+  * Bump MSRV again for clap.
+  * Cargo update and version bump.
+  * Update CHANGES since v0.26.0
+  * Output condition for globals.
+  * Add missing parens to log message
+  * Update cython expectations from the previous patch.
+  * Fix variadic arguments when used in function pointer
+  * deps: Update syn to 2.0
+  * Generalize Item to expose documentation and generic params
+  * Used documented method of specifying variadic arguments `va_list` -> `...` * https://en.cppreference.com/w/c/language/variadic * https://en.cppreference.com/w/cpp/language/variadic_arguments
+  * Parse function argument type first so it can be used to determine name
+  * Improved test coverage of va_list
+  * Point out issue with failing builds due to syntax errors
+  * Add support for NonZero<T> and simplify handling of int primitives
+  * support generics with defaulted args
+  * handle constants of nested transparent types
+  * make it a dev dependency only
+  * tests use pretty_assertions for readable diffs
+  * chore: Update dependencies.
+  * revert accidentally committed debug code
+  * Exclude all test crates
+  * Exclude test depfile crates
+  * Rename duplicate crates in workspace
+  * bug fixed, update test and expectations
+  * add panic to check whether parser even sees it
+  * Expand ignored.rs test to cover associated items
+  * chore: Fix clippy lints.
+  * Fix cpplint warnings
+  * Add `cpp_compat` to template.toml
+  * parser: Treat omitted ABI in extern block as "C".
+  * Account for cfg items in foreign mods.
+  * bindgen: More language-backend clean-up.
+  * Remove code duplication for function writing, and other minor clean-ups.
+  * introduce the concept of language backend
+  * ir: Write documentation on static items.
+  * Run CI jobs on the merge queue.
+  * Added support for integrating the package_version information in a comment of the header file.
+  * feat: support #[deprecated] on enum variants
+  * Use `retain` in `ItemMap::filter`
+  * fix: select package for bindgen based on name and manifest path
+  * Update README.md
+  * Update doc link in Readme so it works from docs.rs
+  * Quote envvar to match documentation
+  * ci: Use GITHUB_OUTPUT envvar instead of set-output command
+  * Bump Serial-test
+  * Update clap further
+  * Update dependencies and bump MSRV to 1.70
+  * Fix clippy warning
+  * Fix clap 4 update.
+  * Upgrade clap 3 to clap 4
+  * Fix `..Default::default()` for struct `Config`
+  * Add docs for no-export
+
+-------------------------------------------------------------------
 Wed Sep 13 23:31:17 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.26.0+git0:

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/eqrion/cbindgen.git</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.26.0</param>
+    <param name="revision">v0.28.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
