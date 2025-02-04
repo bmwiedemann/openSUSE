@@ -36,11 +36,11 @@
 %bcond_with fish_support
 %endif
 
-%define shlib_sover  2
+%define shlib_sover  3
 %define docs 0
 
 Name:           fwupd
-Version:        1.9.27
+Version:        2.0.5
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -50,12 +50,6 @@ Source:         %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
-# PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
-Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
-# PATCH-FEATURE-OPENSUSE harden_fwupd-offline-update.service.patch -- Harden services
-Patch3:         harden_fwupd-offline-update.service.patch
-# PATCH-FEATURE-OPENSUSE harden_fwupd-refresh.service.patch -- Harden services
-Patch4:         harden_fwupd-refresh.service.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -76,6 +70,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-cairo
+BuildRequires:  python3-dbusmock
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-xml
@@ -236,7 +231,6 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_uefi_capsule=enabled \
   -Dplugin_uefi_pk=enabled \
   -Defi_binary=false \
-  -Dcompat_cli=true \
 %else
   -Dplugin_uefi_capsule=false \
   -Dplugin_uefi_pk=false \
@@ -259,6 +253,8 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Ddocs=enabled \
   -Dsupported_build=enabled \
   -Dtests=false \
+  -Dvalgrind=disabled \
+  -Dvendor_ids_dir=/usr/share/hwdata \
 %ifarch s390x ppc64le
   -Dplugin_flashrom=disabled \
 %endif
@@ -295,34 +291,27 @@ rm -fr %{buildroot}%{_datadir}/fish
 %ldconfig_scriptlets -n libfwupd%{shlib_sover}
 
 %preun
-%service_del_preun %{name}.service fwupd-offline-update.service fwupd-refresh.service
+%service_del_preun %{name}.service fwupd-refresh.service
 
 %pre
-%service_add_pre %{name}.service fwupd-offline-update.service fwupd-refresh.service
+%service_add_pre %{name}.service fwupd-refresh.service
 
 %post
 %udev_rules_update
-%service_add_post %{name}.service fwupd-offline-update.service fwupd-refresh.service
+%service_add_post %{name}.service fwupd-refresh.service
 
 %postun
-%service_del_postun %{name}.service fwupd-offline-update.service fwupd-refresh.service
+%service_del_postun %{name}.service fwupd-refresh.service
 
 %files
 %license COPYING
 %doc README.md
 %{_unitdir}/fwupd.service
-%{_unitdir}/fwupd-offline-update.service
-%dir %{_unitdir}/system-update.target.wants/
-%{_unitdir}/system-update.target.wants/fwupd-offline-update.service
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
 %{_bindir}/fwupdmgr
 %{_bindir}/fwupdtool
-%if %{with efi_fw_update}
-%{_bindir}/fwupdagent
-%{_bindir}/fwupdate
-%endif
 %{_bindir}/dbxtool
 %{_datadir}/dbus-1/system.d/org.freedesktop.fwupd.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.fwupd.xml
@@ -371,7 +360,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %dir %{_sysconfdir}/grub.d
 %{_sysconfdir}/grub.d/35_fwupd
 %endif
-%{_udevrulesdir}/90-fwupd-devices.rules
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
 %{_datadir}/icons/hicolor/*
@@ -387,14 +375,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/%{name}/quirks.d/builtin.quirk.gz
 %_sysusersdir/fwupd.conf
 
-%if %{with efi_fw_update}
-%files -n dfu-tool
-%{_bindir}/dfu-tool
-%if 0%{?docs}
-%{_mandir}/man1/dfu-tool.1%{?ext_man}
-%endif
-%endif
-
 %files -n libfwupd%{shlib_sover}
 %{_libdir}/libfwupd.so.*
 
@@ -405,7 +385,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_datadir}/gir-1.0/Fwupd-2.0.gir
 %{_datadir}/vala/vapi/fwupd.deps
 %{_datadir}/vala/vapi/fwupd.vapi
-%{_includedir}/fwupd-1/
+%{_includedir}/fwupd-3/
 %{_libdir}/pkgconfig/fwupd.pc
 %{_libdir}/libfwupd.so
 

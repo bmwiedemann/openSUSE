@@ -837,4 +837,20 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
 </comment>
     <requestid>1236122</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7832e09b4e82135994df243d562757d3</srcmd5>
+    <version>2.0.4+4</version>
+    <time>1738072712</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240507</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>e51610afd2b486c3d0f2f098d4c17adc</srcmd5>
+    <version>2.0.5</version>
+    <time>1738689019</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242850</requestid>
+  </revision>
 </revisionlist>

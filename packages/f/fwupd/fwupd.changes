@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:12:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.5:
+  + This release adds the following features:
+    - Allow emulating devices reading EFI keys
+    - Allow skipping device tests by CPU architecture
+  + This release fixes the following bugs:
+    - Cleanup Dell kestrel devices when disconnected
+    - Correctly build binary EFI_SIGNATURE_LIST objects
+    - Do not allow dbx updates when no ESP was found
+    - Ignore BootXXXX entries that do not exist when checking the dbx
+    - Ignore EFI binaries that are zero-sized, or not well formed
+    - Inhibit dbx updates if snapd is not available when using Ubuntu-style FDE
+    - Only match the device checksum if the protocol matches
+    - Raise authentication requirements for emulation-load
+    - Request to upload failed reports for install/downgrade too
+    - Use the kernel architecture when building the dbx instance ID
+    - Write sbatlevel to PE/COFF files correctly
+  + This release adds support for the following hardware:
+    - More ELAN Fingerprint readers
+    - Star Labs StarLite Magnetic Keyboard
+
+-------------------------------------------------------------------
+Mon Jan 20 16:02:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.4+4:
+  + dell-kestrel: cleanup the devices when disconnected
+  + Raise authentication requirements for emulation-load
+  + uefi-dbx: Only list the version in the quirk file key
+- Update to version 2.0.4:
+  + This release adds the following features:
+    - Record the entire USB descriptor in the emulation data
+    - Return defined return code when network metadata refresh
+      fails
+  + This release fixes the following bugs:
+    - Add a new private flag of 'delayed-removal' to remove a
+      footgun
+    - Added a more specific instance ID for qc-s5gen2 USB devices
+    - Add fadvise64 to the systemd syscall allowlist
+    - Add the Unifying bootloader VID/PID as a full instance ID
+    - Allow disabling zero-length packet for modem-manager devices
+    - Allow recovering Logitech Bolt receiver in bootloader mode
+    - Correctly parse CSV streams without trailing NULs
+    - Detect if network is reachable before downloading metadata
+    - Disabling reading the OptionROM device after dumping
+    - Do not claim kernel interface to avoid Parade downstream port
+      resets
+    - Do not save BootOrder when measuring system integrity
+    - Enumerate child nordic-hid devices correctly
+    - Fix a possible critical warning for Mediatek scaler devices
+    - Fix Firehose padding for some modem-manager devices
+    - Fix UEFI capsule updates when using 4096 byte NVME blocksize
+    - Get the Dell dock update package version correctly
+    - Never read more of the composite stream from a partial stream
+    - Notify snapd about DBX updates
+    - Probe sd_mod before starting
+    - Properly handle FU_DEVICE_PRIVATE_FLAG_NO_GENERIC_GUIDS
+    - Remove the test for CSME 18 manufacturing lock
+    - Restore the Logitech compatibility UFY instance IDs
+    - Show the correct version when installing a same-device
+      composite update
+    - Show updates with problems when using 'fwupdmgr get-releases'
+    - Split up the AMD GPU VBIOS P/N for the version
+    - Use attr USB4_TYPE rather than guessing from
+      thunderbolt_domain
+    - Use the ISO date as a dbx version number for the Microsoft
+      KEK
+    - Use the KEK to set the dbx vendor ID
+
+-------------------------------------------------------------------
+Thu Jan  9 14:51:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.3:
+  + This release adds the following features:
+    - Add a power quirk for Framework systems
+    - Speed up writing firmware to the new Dell dock
+  + This release fixes the following bugs:
+    - Deinitialize DRM after getting GPU marketing name to fix Xorg
+      startup
+    - Do not show 'Device has been removed' as a dock device error
+    - Fix a warning about legion-hid2 progress going backwards
+    - Fix some small memory leaks in realtek-mst and dell-kestrel
+    - Only mark supported Logitech devices as updatable
+    - Parse FDTs with missing END tokens to work on more
+      ChromeBooks
+    - Reduce the device emulation RSS requirement by ~40%
+    - Skip checking BootXXXX entries when the partition does not
+      exist
+  + This release adds support for the following hardware:
+    - Primax Ryder Mouse
+- Changes from version 2.0.2:
+  + Add fwupdtool 'get-version-formats' and 'vercmp' commands
+  + Add support for checking AMD HW configuration MSR
+  + Add support for enumerate-only device emulation to increase
+    test coverage
+  + Add support for passing a JSON file for emulation instead of
+    ZIP
+  + Remove support for now-obsolete CSR DFU and Nitrokey devices
+- Changes from version 2.0.1:
+  + Add API so that gnome-firmware can record devices for emulation
+  + Save the emulation-tag devices to the database rather than the
+    config file
+- Changes from version 2.0.0:
+  + Drop legacy signing formats for verification of metadata and
+    firmware
+  + Reduce the runtime memory usage and CPU startup cost
+    significantly
+  + Remove all the long-deprecated legacy CLI tools
+  + Remove libgusb and GUdev from plugins and use libusb and sysfs
+    instead
+  + Stream firmware binaries over a file descriptor rather than
+    into memory
+- Drop harden_fwupd-offline-update.service.patch: offline service
+  no longer exists.
+- Drop harden_fwupd-refresh.service.patch: merged upstream.
+- Drop fwupd-jscSLE-11766-close-efidir-leap-gap.patch: fwupd now
+  falls back to ID_LIKE.
+- Bump shlib_sover to 3, following upstream.
+- Add python3-dbusmock BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Thu Jan  9 06:38:36 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update fwupd-bsc1130056-change-shim-path.patch to correct the
