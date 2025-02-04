@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:24:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.20: referencing ../ in %doc/%license is not
+  guaranteed.
+
+-------------------------------------------------------------------
 Tue Mar  3 16:48:55 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require the python3 certbot package instead of the python2 one.

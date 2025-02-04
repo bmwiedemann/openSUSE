@@ -1,7 +1,7 @@
 #
 # spec file for package certbot-systemd-timer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Requires:       systemd
 Optional systemd timer, which takes care of certbot certificate renewals.
 
 %prep
-:
+cp %{SOURCE13} %{SOURCE14} .
 
 %build
 :
@@ -68,8 +68,8 @@ ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rccertbot-renew
 %service_add_pre certbot-renew.service
 
 %files
-%doc ../SOURCES/README
-%license ../SOURCES/LICENSE.txt
+%doc README
+%license LICENSE.txt
 %{_fillupdir}/sysconfig.certbot
 %{_unitdir}/certbot-renew.service
 %{_unitdir}/certbot-renew.timer
