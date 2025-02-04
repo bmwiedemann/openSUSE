@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:27:25 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 10.14.3:
+  * FIX: Blocks: An empty, raw block type should not cause an error
+
+-------------------------------------------------------------------
+Thu Jan 30 17:10:59 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 10.14.2:
+  * FIX: Blocks: Fix some corner cases with md_in_html.
+
+-------------------------------------------------------------------
+Wed Jan 22 19:33:20 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 10.14.1:
+  * FIX: MagicLink: Ensure that repo names that start with . are
+    handled correctly.
+  * FIX: FancyLists: Fix case were lists could be falsely created
+    when a line started with . or ).
+
+-------------------------------------------------------------------
+Sat Jan 18 15:52:16 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Fix build requires versions.
+
+-------------------------------------------------------------------
+Wed Jan  8 20:08:07 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 10.14:
+  * NEW: Blocks.HTML: Add new custom option to specify tags and the
+    assumed handling for them when automatic mode is assumed. This
+    can also be used to override the handling for recognized tags
+    with automatic handling.
+  * FIX: Fix tests to pass with Pygments 2.19+.
+
+-------------------------------------------------------------------
 Mon Dec 23 19:32:33 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 10.13:
