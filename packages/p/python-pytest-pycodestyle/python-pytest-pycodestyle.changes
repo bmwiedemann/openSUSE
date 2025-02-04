@@ -1,12 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb  4 17:02:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Test with Python 3.14-dev
+  * Update checkout to v4 and setup-python to v5
+  * Update `pytest_collect_file` hook to remove deprecated `path`
+    argument
+- update to 2.4.0:
+  * Test with Python 3.12-dev
+  * Test with Python 3.12 and 3.13-dev
+  * Support Python 3.13
+
+-------------------------------------------------------------------
 Thu Sep 26 22:38:15 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- Enable python-pytest-pycodestyle. 
+- Enable python-pytest-pycodestyle.
 
 -------------------------------------------------------------------
 Wed Nov 30 11:33:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Remove python_module macro definition 
+- Remove python_module macro definition
 - Add python-py dependency
 - More specific python_sitelib in %files
 - Update to 2.3.1:

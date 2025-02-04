@@ -54,4 +54,23 @@
     <comment></comment>
     <requestid>1218370</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>182f5c3480501422047fe5e500e40197</srcmd5>
+    <version>2.4.1</version>
+    <time>1738694104</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.1:
+  * Test with Python 3.14-dev
+  * Update checkout to v4 and setup-python to v5
+  * Update `pytest_collect_file` hook to remove deprecated `path`
+    argument
+- update to 2.4.0:
+  * Test with Python 3.12-dev
+  * Test with Python 3.12 and 3.13-dev
+  * Support Python 3.13
+
+- Enable python-pytest-pycodestyle.
+- Remove python_module macro definition</comment>
+    <requestid>1243190</requestid>
+  </revision>
 </revisionlist>

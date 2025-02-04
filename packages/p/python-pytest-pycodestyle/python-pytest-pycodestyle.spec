@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-pycodestyle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python2 1
 Name:           python-pytest-pycodestyle
-Version:        2.3.1
+Version:        2.4.1
 Release:        0
 Summary:        Pytest plugin to run pycodestyle
 License:        MIT
 URL:            https://github.com/henry0312/pytest-pycodestyle
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-pycodestyle/pytest-pycodestyle-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-pycodestyle/pytest_pycodestyle-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest >= 5.4}
@@ -46,7 +45,7 @@ BuildArch:      noarch
 pytest plugin to run pycodestyle in python tests
 
 %prep
-%setup -q -n pytest-pycodestyle-%{version}
+%setup -q -n pytest_pycodestyle-%{version}
 sed -i -e 's:~=:>=:g' setup.py
 
 %build
