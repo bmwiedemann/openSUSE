@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 31 15:31:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.5:
+  + ci: Update .gitlab-ci.yml to automate and deploy new Zenity
+    tarballs going forward.
+  + forms: set hexpand to make more consistent with behaviour of
+    zenity 3.x.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 31 18:16:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
 Wed Oct 23 20:19:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.0.3:
