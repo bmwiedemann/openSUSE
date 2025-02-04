@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>323f0859bd4e82afbe9d0c2ec609bd16</srcmd5>
+    <version>2.4.0</version>
+    <time>1738245171</time>
+    <user>anag+factory</user>
+    <comment>Initial version
+bugowner: varkoly</comment>
+    <requestid>1241311</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>328e772dc23f4c00e7adf265f884d3f5</srcmd5>
+    <version>2.4.0</version>
+    <time>1738689245</time>
+    <user>anag+factory</user>
+    <comment>- Adapt requirement for dovecot pacakage
+
+- fix rpmlint errors and warnings
+  + dovecot-2.3.17-env_script_interpreter.patch
+  % dovecot-rpmlintrc
+
+- fix build checks and enable by default
+  + dovecot-2.4.0-lua_json.patch
+
+- we no longer need to set LIBS=&quot;-pie&quot; and -fpic/-DPIC in CFLAGS
+  as upstream does it for us.
+
+- Disable 32bit arm and x86 builds:
+  https://dovecot.org/mailman3/archives/list/dovecot@dovecot.org/message/PCUTU3IE6RZXQQMWCAB7UP4XN6SPFPFX/
+
+- Bump BuildRequires for openldap to 2.6.8. The version on code15
+  is not supported anymore.
+
+- drop the LIBS and extra CFLAGS. no longer needed
+
+- drop clucene support. there is no upstream support for it
+  anymore.</comment>
+    <requestid>1243112</requestid>
+  </revision>
+</revisionlist>

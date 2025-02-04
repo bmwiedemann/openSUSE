@@ -1,0 +1,2 @@
+addFilter("binary-or-shlib-calls-gethostbyname")
+addFilter("install-file-in-docs /usr/share/doc/packages/dovecot/dovecot-pigeonhole/INSTALL")

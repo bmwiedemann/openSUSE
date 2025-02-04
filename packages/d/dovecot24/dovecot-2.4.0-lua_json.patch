@@ -1,0 +1,9 @@
+diff -purN a/src/lib-lua/test-lua-http-client.lua b/src/lib-lua/test-lua-http-client.lua
+--- a/src/lib-lua/test-lua-http-client.lua	2025-01-24 08:08:40.000000000 +0100
++++ b/src/lib-lua/test-lua-http-client.lua	2025-01-24 21:08:21.365538312 +0100
+@@ -1,4 +1,4 @@
+-local json = require 'json'
++local json = require 'dkjson'
+ local http_client
+ 
+ function http_request_post(url)

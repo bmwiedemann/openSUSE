@@ -1,0 +1,9 @@
+diff -purN dovecot-2.3.17.orig/src/util/dovecot-sysreport dovecot-2.3.17/src/util/dovecot-sysreport
+--- dovecot-2.3.17.orig/src/util/dovecot-sysreport	2021-10-27 13:09:04.000000000 +0200
++++ dovecot-2.3.17/src/util/dovecot-sysreport	2021-10-29 17:01:45.858459085 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ set -eu
+ 

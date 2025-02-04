@@ -1,0 +1,17 @@
+Index: dovecot-2.4.0/doc/mkcert.sh
+===================================================================
+--- dovecot-2.4.0.orig/doc/mkcert.sh
++++ dovecot-2.4.0/doc/mkcert.sh
+@@ -8,10 +8,10 @@ OPENSSL=${OPENSSL-openssl}
+ SSLDIR=${SSLDIR-/etc/ssl}
+ OPENSSLCONFIG=${OPENSSLCONFIG-dovecot-openssl.cnf}
+ 
+-CERTDIR=$SSLDIR/certs
++CERTDIR=$SSLDIR/private
+ KEYDIR=$SSLDIR/private
+ 
+-CERTFILE=$CERTDIR/dovecot.pem
++CERTFILE=$CERTDIR/dovecot.crt
+ KEYFILE=$KEYDIR/dovecot.pem
+ 
+ if [ ! -d $CERTDIR ]; then
