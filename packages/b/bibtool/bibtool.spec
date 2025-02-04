@@ -1,7 +1,7 @@
 #
 # spec file for package bibtool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,7 +38,7 @@ BibTeX files which goes beyond the possibilities - and intentions - of BibTeX.
 
 %prep
 %setup -q -n BibTool
-# %patch -P 1 -p1
+# %%patch -P 1 -p1
 
 %build
 %configure
