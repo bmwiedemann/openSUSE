@@ -1,7 +1,7 @@
 #
 # spec file for package wtmpdb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.13.0+git.20240814
+Version:        0.71.0+git20250203.86b8442
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause
@@ -28,7 +28,7 @@ BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(audit)
-BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libsystemd) >= 257
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(sqlite3)
 Requires(post): pam-config
@@ -62,7 +62,7 @@ the wtmpdb database.
 %autosetup
 
 %build
-%meson -Dman=true -Dcompat-symlink=true
+%meson -Dman=enabled -Dcompat-symlink=true -Dwtmpdbd=enabled
 %meson_build
 
 %install
@@ -74,14 +74,14 @@ echo ".so man8/wtmpdb.8" > %{buildroot}%{_mandir}/man1/last.1
 %meson_test
 
 %pre
-%service_add_pre wtmpdb-update-boot.service wtmpdb-rotate.timer
+%service_add_pre wtmpdb-update-boot.service wtmpdb-rotate.timer wtmpdbd.socket
 
 %preun
-%service_del_preun wtmpdb-update-boot.service wtmpdb-rotate.timer
+%service_del_preun wtmpdb-update-boot.service wtmpdb-rotate.timer wtmpdbd.socket
 
 %post
 %tmpfiles_create wtmpdb.conf
-%service_add_post wtmpdb-update-boot.service wtmpdb-rotate.timer
+%service_add_post wtmpdb-update-boot.service wtmpdb-rotate.timer wtmpdbd.socket
 pam-config -a --wtmpdb --wtmpdb-skip_if=sshd
 
 %postun
@@ -89,7 +89,7 @@ if [ "$1" -eq 0 ]; then
     pam-config -d --wtmpdb
 fi
 %service_del_postun_without_restart wtmpdb-update-boot.service
-%service_del_postun wtmpdb-rotate.timer
+%service_del_postun wtmpdb-rotate.timer wtmpdbd.socket
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -98,14 +98,20 @@ fi
 %license LICENSE
 %{_bindir}/last
 %{_bindir}/wtmpdb
+%{_libexecdir}/wtmpdbd
 %{_unitdir}/wtmpdb-update-boot.service
 %{_unitdir}/wtmpdb-rotate.service
 %{_unitdir}/wtmpdb-rotate.timer
+%{_prefix}/lib/systemd/system/wtmpdbd.service
+%{_prefix}/lib/systemd/system/wtmpdbd.socket
 %{_tmpfilesdir}/wtmpdb.conf
 %{_pam_moduledir}/pam_wtmpdb.so
 %ghost %{_localstatedir}/lib/wtmpdb
 %{_mandir}/man1/last.1%{?ext_man}
 %{_mandir}/man8/wtmpdb.8%{?ext_man}
+%{_mandir}/man8/wtmpdbd.8%{?ext_man}
+%{_mandir}/man8/wtmpdbd.service.8%{?ext_man}
+%{_mandir}/man8/wtmpdbd.socket.8%{?ext_man}
 %{_mandir}/man8/pam_wtmpdb.8%{?ext_man}
 
 %files -n %{lname}

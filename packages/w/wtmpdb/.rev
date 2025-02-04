@@ -143,4 +143,59 @@
   * wtmpdb-update-boot service requires dbus</comment>
     <requestid>1193868</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cb60146ff9ddb52e74cbc386c0b779b3</srcmd5>
+    <version>0.70.0+git20250121.3e409b5</version>
+    <time>1738072691</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.70.0+git20250121.3e409b5:
+  * Fix installation of all wtmpdbd man page variants
+  * Release version 0.70.0
+  * Add wtmpdbd.8 manual page
+  * wtmpdbd: fix printing help text
+  * wtmpdbd: more fine granular log level filtering
+  * wtmpdbd: implement varlink_event_loop_with_idle
+  * wtmpdbd.socket: fix socket descriptor name
+  * meson: no longer check for v258 sd-varlink function
+
+- Update to version 0.60.0+git20250120.64d23d8:
+  * Release version 0.60.0
+  * Merge reader/write socket to one generic one
+  * wtmpdbd: add Ping, SetLogLevel and GetEnvironment
+
+- Update to version 0.50.0+git20250117.a9b48cf:
+  * wtmpdbd.service: secure more
+  * wtmpdb: Implement json output for last (#20)
+
+- Update to version 0.50.0+git20250110.cbabeb7:
+  * Harden wtmpdbd.service
+  * libwtmpdb: fallback to sqlite if SELinux blocks varlink socket
+
+- Update to version 0.50.0+git20250110.12da60f:
+  * Release version 0.50.0
+  * README: add wtmpdbd
+  * wtmpdbd: Print stopped message
+  * wtmpdbd.service: preset WTMPDBD_OPTS
+  * wtmpdbd: don't call listen if started by a socket
+  * tst-varlink: skip if varlink is not supported (forwarded request 1240436 from kukuk)</comment>
+    <requestid>1240437</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>19001f289af3fefae225d2b9d56c0f3c</srcmd5>
+    <version>0.71.0+git20250203.86b8442</version>
+    <time>1738688996</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.71.0+git20250203.86b8442:
+  * Release version 0.71.0
+  * zero struct tm before calling strptime()
+  * Accept classic 'last -N' form for max entries
+  * tst-varlink: fix order of error checking
+  * CI: use valgrind
+  * Run meson test in verbose mode
+  * tst-varlink works only if run as root
+  * Use meson feature and not combo options
+  * Add CI for openSUSE
+  * CI: make sure sqlite3 devel is installed</comment>
+    <requestid>1242824</requestid>
+  </revision>
 </revisionlist>

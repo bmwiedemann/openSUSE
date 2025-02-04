@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">wtmpdb</param>
     <param name="revision">main</param>
-    <param name="versionformat">0.13.0+git.%cd</param>
+    <param name="versionformat">0.71.0+git%cd.%h</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

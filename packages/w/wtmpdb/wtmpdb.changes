@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Mon Feb 03 12:46:06 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.71.0+git20250203.86b8442:
+  * Release version 0.71.0
+  * zero struct tm before calling strptime()
+  * Accept classic 'last -N' form for max entries
+  * tst-varlink: fix order of error checking
+  * CI: use valgrind
+  * Run meson test in verbose mode
+  * tst-varlink works only if run as root
+  * Use meson feature and not combo options
+  * Add CI for openSUSE
+  * CI: make sure sqlite3 devel is installed
+
+-------------------------------------------------------------------
+Tue Jan 21 15:45:20 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.70.0+git20250121.3e409b5:
+  * Fix installation of all wtmpdbd man page variants
+  * Release version 0.70.0
+  * Add wtmpdbd.8 manual page
+  * wtmpdbd: fix printing help text
+  * wtmpdbd: more fine granular log level filtering
+  * wtmpdbd: implement varlink_event_loop_with_idle
+  * wtmpdbd.socket: fix socket descriptor name
+  * meson: no longer check for v258 sd-varlink function
+
+-------------------------------------------------------------------
+Mon Jan 20 13:52:51 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.60.0+git20250120.64d23d8:
+  * Release version 0.60.0
+  * Merge reader/write socket to one generic one
+  * wtmpdbd: add Ping, SetLogLevel and GetEnvironment
+
+-------------------------------------------------------------------
+Fri Jan 17 10:17:17 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.50.0+git20250117.a9b48cf:
+  * wtmpdbd.service: secure more
+  * wtmpdb: Implement json output for last (#20)
+
+-------------------------------------------------------------------
+Thu Jan 16 14:20:26 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.50.0+git20250110.cbabeb7:
+  * Harden wtmpdbd.service
+  * libwtmpdb: fallback to sqlite if SELinux blocks varlink socket
+
+-------------------------------------------------------------------
+Fri Jan 10 13:02:32 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.50.0+git20250110.12da60f:
+  * Release version 0.50.0
+  * README: add wtmpdbd
+  * wtmpdbd: Print stopped message
+  * wtmpdbd.service: preset WTMPDBD_OPTS
+  * wtmpdbd: don't call listen if started by a socket
+  * tst-varlink: skip if varlink is not supported
+  * libwtmpdb: set varlink_is_active to 0 without systemd
+  * libwtmpdb: always define varlink checks
+  * wtmpdb: define quiet only if we have systemd
+  * libwtmpdb: return error if varlink support is missing
+  * Send sd_notify(STOPPING=1);
+  * Check if systemd has sd_varlink_server_listen_name()
+  * wtmpdbd.service: optional read /etc/default/wtmpdbd
+  * wtmpdbd: simplify creation of varlink sockets
+  * Set umaks with varlink to 0077, improve error reporting
+  * wtmpdbd: enable to start via sockets
+  * libwtmpdb: handle ECONNRESET as wtmpdbd not running
+  * libwtmpdb: fix crash in varlink if error==NULL
+  * Install daemon in libexec directory
+  * tst-get_id: skip if there is no db file
+  * libwtmpdb: improve error return code
+  * db path "varlink" will enforce varlink interface
+  * Add service and socket files
+  * wmtpdb: call wtmpdb_* functions with NULL as path
+  * wtmpdbd: add socket activation
+  * Implement varlink read_all client side
+  * Make wtmpdbd support compiletime config
+  * Add daemon using varlink for communication
+  * Document that openssh is special
+  * libwtmpdb: create wrapper around sqlite functions
+  * Make mkdir_p more robust
+
+-------------------------------------------------------------------
 Wed Aug 14 09:59:01 UTC 2024 - kukuk@suse.com
 
 - Update to version 0.13.0+git.20240814:
