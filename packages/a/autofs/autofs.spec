@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,6 @@ BuildRequires:  dbus-1-devel
 BuildRequires:  e2fsprogs
 BuildRequires:  flex
 BuildRequires:  krb5-devel
-BuildRequires:  libnsl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtirpc-devel
 BuildRequires:  libxml2-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 14 18:14:14 UTC 2025 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Remove libnsl-devel dependency to remove NSL support
+
+-------------------------------------------------------------------
 Tue Nov  5 19:46:13 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - 5.1.8 removed rpcgen dependency, remove it from spec file, too
