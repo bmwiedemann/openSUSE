@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-diskperf-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           xfce4-%{plugin}-plugin
 Version:        2.7.1
 Release:        0
 Summary:        Disk Performance Plugin for the Xfce Panel
-License:        GPL-2.0-or-later
+License:        BSD-2-Clause
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-diskperf-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.7/%{name}-%{version}.tar.bz2
