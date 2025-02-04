@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:28:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.20: %setup0, just like %patch0, is no longer
+  valid.
+
+-------------------------------------------------------------------
 Sat Jan  5 17:28:48 UTC 2013 - ftake@geeko.jp
 
 - remove "locale(ja)" and "scalable-font-ja" since these fonts

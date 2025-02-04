@@ -1,7 +1,7 @@
 #
 # spec file for package ipa-bolditalic-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Yasuhiko Kamata
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        IPAGothic/IPAPGothic Italic (Oblique) / Bold Variants
 License:        IPA
 Group:          System/X11/Fonts
-Url:            http://ossipedia.ipa.go.jp/ipafont/
+URL:            http://ossipedia.ipa.go.jp/ipafont/
 Source0:        IPAFont00302_bolditalic.tar.bz2
 BuildRequires:  fontpackages-devel
 %reconfigure_fonts_prereq
@@ -102,7 +102,7 @@ Bold+Italic variant of "Proportional Gothic" Japanese TrueType font made by IPA
 (Information-technology Promotion Agency).
 
 %prep
-%setup0 -n IPAFont00302_bolditalic
+%setup -n IPAFont00302_bolditalic
 
 %build
 ##### DISABLED due to too long time to complete. #####
