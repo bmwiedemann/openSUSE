@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpydoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,22 +28,20 @@ Source:         https://files.pythonhosted.org/packages/source/n/numpydoc/numpyd
 Source1:        python-objects.inv
 # PATCH-FIX-UPSTREAM numpydoc-pr523-py312deprecation.patch gh#numpy/numpydoc#523
 Patch0:         numpydoc-pr523-py312deprecation.patch
-BuildRequires:  %{python_module Jinja2 >= 2.10}
+# PATCH-FIX-UPSTREAM https://github.com/numpy/numpydoc/pull/586 MAINT: Add _exception_on_warning to MockApp
+Patch1:         mockapp.patch
 BuildRequires:  %{python_module Sphinx >= 5}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate >= 0.8.10}
-BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Requires:       python-Jinja2 >= 2.10
 Requires:       python-Sphinx >= 5
 Requires:       python-tabulate >= 0.8.10
-Requires:       (python-tomli if python-base < 3.11)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}

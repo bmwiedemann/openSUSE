@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 13:30:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add mockapp.patch to fix test failure with Sphinx 8.1
+- Trim dependencies
+
+-------------------------------------------------------------------
 Wed Nov 20 16:21:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0:
