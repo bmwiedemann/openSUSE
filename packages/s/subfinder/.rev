@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>105f31eb54cb913a10bfb8a026b2cc84</srcmd5>
+    <version>2.6.7</version>
+    <time>1738335865</time>
+    <user>anag+factory</user>
+    <comment>new package</comment>
+    <requestid>1241440</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ede0dfb315cbc0a691051608780cb313</srcmd5>
+    <version>2.6.8</version>
+    <time>1738615438</time>
+    <user>anag+factory</user>
+    <comment>- Disable version check
+  * Add disable-version-check.patch (forwarded request 1242172 from dheidler)</comment>
+    <requestid>1242173</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5855ff0917ec608db28036d000bdc1e7</srcmd5>
+    <version>2.6.8</version>
+    <time>1738689171</time>
+    <user>anag+factory</user>
+    <comment>- Still show current version
+  * Update disable-version-check.patch (forwarded request 1242228 from dheidler)</comment>
+    <requestid>1242921</requestid>
+  </revision>
+</revisionlist>

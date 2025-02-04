@@ -1,0 +1,50 @@
+diff --git a/v2/pkg/runner/banners.go b/v2/pkg/runner/banners.go
+index 1e9af43..181013c 100644
+--- a/v2/pkg/runner/banners.go
++++ b/v2/pkg/runner/banners.go
+@@ -2,7 +2,6 @@ package runner
+ 
+ import (
+ 	"github.com/projectdiscovery/gologger"
+-	updateutils "github.com/projectdiscovery/utils/update"
+ )
+ 
+ const banner = `
+@@ -29,6 +28,5 @@ func showBanner() {
+ func GetUpdateCallback() func() {
+ 	return func() {
+ 		showBanner()
+-		updateutils.GetUpdateToolCallback("subfinder", version)()
+ 	}
+ }
+diff --git a/v2/pkg/runner/options.go b/v2/pkg/runner/options.go
+index 5e3d4b1..6068386 100644
+--- a/v2/pkg/runner/options.go
++++ b/v2/pkg/runner/options.go
+@@ -18,7 +18,6 @@ import (
+ 	fileutil "github.com/projectdiscovery/utils/file"
+ 	folderutil "github.com/projectdiscovery/utils/folder"
+ 	logutil "github.com/projectdiscovery/utils/log"
+-	updateutils "github.com/projectdiscovery/utils/update"
+ )
+ 
+ var (
+@@ -180,17 +179,7 @@ func ParseOptions() *Options {
+ 	options.ConfigureOutput()
+ 	showBanner()
+ 
+-	if !options.DisableUpdateCheck {
+-		latestVersion, err := updateutils.GetToolVersionCallback("subfinder", version)()
+-		if err != nil {
+-			if options.Verbose {
+-				gologger.Error().Msgf("subfinder version check failed: %v", err.Error())
+-			}
+-		} else {
+-			gologger.Info().Msgf("Current subfinder version %v %v", version, updateutils.GetVersionDescription(version, latestVersion))
++			gologger.Info().Msgf("Current subfinder version %v", version)
+-		}
+-	}
+-
+ 	if options.ListSources {
+ 		listSources(options)
+ 		os.Exit(0)

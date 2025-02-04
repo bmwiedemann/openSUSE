@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sun Feb  2 13:30:55 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Still show current version
+  * Update disable-version-check.patch
+
+-------------------------------------------------------------------
+Sat Feb  1 23:29:38 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Disable version check
+  * Add disable-version-check.patch
+
+-------------------------------------------------------------------
+Sat Feb  1 10:40:15 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.6.8
+  * Added hudsonrock source by @dogancanbakir in #1481
+  * Fixed negative statistics for sitedossier source by @dogancanbakir in #1432
+  * Fixed GitHub source' performance issue by @dogancanbakir in #1421
+  * Fixed the issue with source initialization to prevent the program from exiting when encountering invalid sources during initialization by @dogancanbakir in #1468
+  * Removed the columbus source due to consistently encountering 502 errors by @dogancanbakir in #1430
+  * Make failing sources non-default and exclude from the tests by @dogancanbakir in #1475
+  * Removed subdomaincenter as its output quality was unsatisfactory by @dogancanbakir in #1500
+  * Updated dnsdumpster source to use its new API by @dogancanbakir in #1484
+  * Improved the usability of the Subfinder SDK by enabling the return of the source map by @mielverkerken in #1466
+
+-------------------------------------------------------------------
+Fri Dec 27 21:54:07 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Initial checkin

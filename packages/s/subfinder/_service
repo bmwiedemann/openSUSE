@@ -1,0 +1,7 @@
+<services>
+ <service name="download_files" mode="manual" />
+ <service name="go_modules" mode="manual">
+   <param name="compression">zstd</param>
+   <param name="subdir">v2</param>
+ </service>
+</services>
