@@ -69,4 +69,15 @@
     <comment>- Remove not needed python-setuptools-git</comment>
     <requestid>1220557</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e7d5b386d7fd888cca003757c2be8a4</srcmd5>
+    <version>1.8.1</version>
+    <time>1738689188</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Added default to install editable packages by using direct_url.json,
+    if it exists
+- Test with all Python versions.</comment>
+    <requestid>1242954</requestid>
+  </revision>
 </revisionlist>
