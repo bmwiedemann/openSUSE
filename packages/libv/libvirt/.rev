@@ -4779,4 +4779,13 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
     https://libvirt.org/news.html#v11-0-0-2025-01-15</comment>
     <requestid>1238337</requestid>
   </revision>
+  <revision rev="415" vrev="2">
+    <srcmd5>fca42cb4d73e414fd335cf840fd2dcf8</srcmd5>
+    <version>11.0.0</version>
+    <time>1738689047</time>
+    <user>anag+factory</user>
+    <comment>- spec: Change hooks dependency from libvirtd to the qemu driver
+  bsc#1236378</comment>
+    <requestid>1242924</requestid>
+  </revision>
 </revisionlist>

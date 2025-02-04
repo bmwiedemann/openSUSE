@@ -209,8 +209,8 @@ BuildRequires:  python3-pytest
 BuildRequires:  readline-devel
 # For pool-build probing for existing pools
 BuildRequires:  libblkid-devel >= 2.17
-BuildRequires:  libjson-c-devel
 BuildRequires:  libpciaccess0-devel >= 0.10.9
+BuildRequires:  libjson-c-devel
 BuildRequires:  pkgconfig(libudev) >= 145
 %if %{with_sanlock}
 BuildRequires:  sanlock-devel >= 2.4
@@ -398,12 +398,12 @@ Server side daemon providing functionality previously provided by
 the monolithic libvirtd
 
 %package daemon-hooks
-Summary:        Hook scripts for the libvirtd daemon
-Requires:       %{name}-daemon = %{version}-%{release}
+Summary:        Hook scripts for QEMU
+Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 Requires:       python3-lxml
 
 %description daemon-hooks
-Default hook scripts for the libvirt daemon
+Hook scripts for the virtqemud daemon
 
 %package daemon-config-network
 Summary:        Default configuration files for the libvirtd daemon
@@ -1117,7 +1117,9 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd %{buildroot}/%{logrotate_dir
 %endif
 
 mkdir -p %{buildroot}/%{_localstatedir}/lib/%{name}
+%if %{with_qemu}
 mkdir -p %{buildroot}/%{_sysconfdir}/%{name}/hooks
+%endif
 %find_lang %{name}
 install -d -m 0755 %{buildroot}/%{_datadir}/%{name}/networks/
 cp %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml \
@@ -1161,7 +1163,9 @@ mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %{S:1} %{buildroot}/usr/lib/supportconfig/plugins/libvirt
 
 # Install qemu hook script
+%if %{with_qemu}
 install -m 755 %{S:2} %{buildroot}/%{_sysconfdir}/%{name}/hooks/qemu
+%endif
 
 %ifarch %{power64} s390x x86_64
 mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_probes.stp \
@@ -1543,8 +1547,10 @@ fi
 %{_datadir}/augeas/lenses/tests/test_virtproxyd.aug
 %doc %{_mandir}/man8/virtproxyd.8*
 
+%if %{with_qemu}
 %files daemon-hooks
 %{_sysconfdir}/%{name}/hooks/qemu
+%endif
 
 %files daemon-config-network
 %dir %{_datadir}/%{name}/networks/

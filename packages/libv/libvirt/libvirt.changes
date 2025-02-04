@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb  3 21:44:39 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- spec: Change hooks dependency from libvirtd to the qemu driver
+  bsc#1236378
+
+-------------------------------------------------------------------
 Thu Jan 16 18:31:32 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.0.0
