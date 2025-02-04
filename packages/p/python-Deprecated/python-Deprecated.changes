@@ -1,4 +1,213 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:19:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.18:
+  * Fix #78: Fix configuration for Packit 1.0.0
+  * Fix #79: Fix the configuration for the intersphinx mapping in
+    the Sphinx documentation. See How to link to other
+    documentation projects with Intersphinx.
+  * Drop support for Python older than 3.7 in GitHub Actions.
+  * Resolve Python 2.7 support issue introduced in v1.2.14 in
+    sphinx.py.
+  * Fix #69: Add extra_stacklevel argument for interoperating
+    with other wrapper functions (refer to #68 for a concrete use
+    case).
+  * Fix #73: Update class method deprecation warnings for Python
+    3.13.
+  * Fix #75: Update GitHub workflows and fix development
+    dependencies for Python 3.12.
+  * Fix #66: discontinue TravisCI and AppVeyor due to end of free
+    support.
+  * Fix #60: return a correctly dedented docstring when long
+    docstring are using the D212 or D213 format.
+  * Add support for Python 3.11.
+  * Drop support for Python older than 3.7 in build systems like
+    pytest and tox, while ensuring the library remains
+    production-compatible.
+  * Update GitHub workflow to run in recent Python versions.
+  * Fix #45: Change the signature of the
+    :func:`~deprecated.sphinx.deprecated` decorator to reflect
+    the valid use cases.
+  * Fix #48: Fix versionadded and versionchanged decorators: do
+    not return a decorator factory, but a Wrapt adapter.
+  * Fix configuration for AppVeyor: simplify the test scripts and
+    set the version format to match the current version.
+  * Change configuration for Tox: change the requirements for pip
+    to "pip >= 9.0.3, < 21" (Python 2.7, 3.4 and 3.5). install
+    typing when building on Python 3.4 (required by
+    Pytest->Attrs). run unit tests on Wrapt 1.13 (release
+    candidate).
+  * change the requirements for pip to "pip >= 9.0.3, < 21"
+    (Python 2.7, 3.4 and 3.5).
+  * install typing when building on Python 3.4 (required by
+    Pytest->Attrs).
+  * run unit tests on Wrapt 1.13 (release candidate).
+  * Migrating project to travis-ci.com.
+  * Avoid "Explicit markup ends without a blank line" when the
+    decorated function has no docstring.
+  * Fix #40: 'version' argument is required in Sphinx directives.
+  * Fix #41: :mod:`deprecated.sphinx`: strip Sphinx cross-
+    referencing syntax from warning message.
+  * Change in Tox and Travis CI configurations: enable unit
+    testing on Python 3.10.
+  * Fix packit configuration: use upstream_tag_template:
+    v{version}.
+  * Fix #33: Change the class
+    :class:`~deprecated.sphinx.SphinxAdapter`: add the
+    line_length keyword argument to the constructor to specify
+    the max line length of the directive text. Sphinx decorators
+    also accept the line_length argument.
+  * Fix #34: versionadded and versionchanged decorators don't
+    emit DeprecationWarning anymore on decorated classes.
+  * Change the Tox configuration to run tests on Python 2.7,
+    Python 3.4 and above (and PyPy 2.7 & 3.6).
+  * Update the classifiers in setup.py.
+  * Replace bumpversion by bump2version in setup.py and
+    documentation.
+  * Update configuration for Black and iSort.
+  * Fix the development requirement versions in setup.py for
+    Python 2.7 EOL.
+  * Fix #25: @deprecated respects global warning filters with
+    actions other than "ignore" and "always" on Python 3.
+  * Change the configuration for TravisCI to build on pypy and
+    pypy3.
+  * Change the configuration for TravisCI and AppVeyor: drop
+    configuration for Python 3.4 and add 3.8.
+  * Fix #20: Set the :func:`warnings.warn` stacklevel to 2 if the
+    Python implementation is PyPy.
+  * Fix packit configuration: use dist-git-branch: fedora-all.
+  * Change the Tox configuration to run tests on PyPy v2.7 and
+    3.6.
+  * Fix #15: The @deprecated decorator doesn't set a warning
+    filter if the action keyword argument is not provided or
+    None. In consequences, the warning messages are only emitted
+    if the global filter allow it. For more information, see The
+    Warning Filter in the Python documentation.
+  * Fix #13: Warning displays the correct filename and line
+    number when decorating a class if wrapt does not have the
+    compiled c extension.
+  * The :ref:`api` documentation and the :ref:`tutorial` is
+    improved to explain how to use custom warning categories and
+    local filtering (warning filtering at function call).
+  * Fix #17: Customize the sidebar to add links to the
+    documentation to the source in GitHub and to the Bug tracker.
+    Add a logo in the sidebar and change the logo in the main
+    page to see the library version.
+  * Add a detailed documentation about :ref:`sphinx_deco`.
+  * Change the Tox configuration to test the library with Wrapt
+    1.12.x.
+  * Fix #13: Warning displays the correct filename and line
+    number when decorating a function if wrapt does not have the
+    compiled c extension.
+  * Support packit for Pull Request tests and sync to Fedora
+    (thanks to Petr Hráček). Supported since v1.2.6.
+  * Add Black configuration file.
+  * Fix #9: Change the project's configuration: reinforce the
+    constraint to the Wrapt requirement.
+  * Upgrade project configuration (setup.py) to add the
+    project_urls property: Documentation, Source and Bug Tracker
+    URLs.
+  * Change the Tox configuration to test the library against
+    different Wrapt versions.
+  * Fix an issue with the AppVeyor build: upgrade setuptools
+    version in appveyor.yml, change the Tox configuration: set
+    py27,py34,py35: pip >= 9.0.3, < 19.2.
+  * Fix #6: Use :func:`inspect.isroutine` to check if the wrapped
+    object is a user-defined or built-in function or method.
+  * Upgrade Tox configuration to add support for Python 3.7.
+    Also, fix PyTest version for Python 2.7 and 3.4 (limited
+    support). Remove dependency 'requests[security]': useless to
+    build documentation.
+  * Upgrade project configuration (setup.py) to add support for
+    Python 3.7.
+  * Fix #4: Correct the class
+    :class:`~deprecated.classic.ClassicAdapter`: Don't pass
+    arguments to :meth:`object.__new__` (other than cls).
+  * Add missing docstring to the classes
+    :class:`~deprecated.classic.ClassicAdapter` and
+    :class:`~deprecated.sphinx.SphinxAdapter`.
+  * Change the configuration for TravisCI and AppVeyor: drop
+    configuration for Python 2.6 and 3.3. add configuration for
+    Python 3.7 (if available).  Note Deprecated is no more tested
+    with Python 2.6 and 3.3. Those Python versions are EOL for
+    some time now and incur incompatibilities with Continuous
+    Integration tools like TravisCI and AppVeyor. However, this
+    library should still work perfectly...
+  * Fix #3: deprecated.sphinx decorators don't update the
+    docstring.
+  * Fix #2: a deprecated class is a class (not a function). Any
+    subclass of a deprecated class is also deprecated.
+  * Minor fix: add missing documentation in
+    :mod:`deprecated.sphinx` module.
+  * Add a MANIFEST.in file to package additional files like
+    "LICENSE.rst" in the source distribution.
+  * Add decorators for Sphinx directive integration:
+    versionadded, versionchanged, deprecated. That way, the
+    developer can document the changes.
+  * Add the version parameter to the @deprecated decorator: used
+    to specify the starting version number of the deprecation.
+  * Add a way to choose a DeprecationWarning subclass.
+  * Deprecated no longer supports Python 2.6 and 3.3. Those
+    Python versions are EOL for some time now and incur
+    maintenance and compatibility costs on the Deprecated core
+    team, and following up with the rest of the community we
+    decided that they will no longer be supported starting on
+    this version. Users which still require those versions should
+    pin Deprecated to < 1.2.
+  * Fix #6: Use :func:`inspect.isroutine` to check if the wrapped
+    object is a user-defined or built-in function or method.
+  * Upgrade Tox configuration to add support for Python 3.7.
+    Also, fix PyTest version for Python 2.7 and 3.4 (limited
+    support). Remove dependency 'requests[security]': useless to
+    build documentation.
+  * Upgrade project configuration (setup.py) to add support for
+    Python 3.7.
+  * Fix #4: Correct the function :func:`~deprecated.deprecated`:
+    Don't pass arguments to :meth:`object.__new__` (other than
+    cls).
+  * Change the configuration for TravisCI and AppVeyor: drop
+    configuration for Python 2.6 and 3.3. add configuration for
+    Python 3.7.  Note Deprecated is no more tested with Python
+    2.6 and 3.3. Those Python versions are EOL for some time now
+    and incur incompatibilities with Continuous Integration tools
+    like TravisCI and AppVeyor. However, this library should
+    still work perfectly...
+  * Fix #2: a deprecated class is a class (not a function). Any
+    subclass of a deprecated class is also deprecated.
+  * Add a MANIFEST.in file to package additional files like
+    "LICENSE.rst" in the source distribution.
+  * Minor correction in CONTRIBUTING.rst for Sphinx builds: add
+    the -d option to put apart the doctrees from the generated
+    documentation and avoid warnings with epub generator.
+  * Fix in documentation configuration: remove hyphens in
+    epub_identifier (ISBN number has no hyphens).
+  * Fix in Tox configuration: set the versions interval of each
+    dependency.
+  * Change in documentation: improve sentence phrasing in the
+    Tutorial.
+  * Restore the epub title to "Python Deprecated Library v1.1
+    Documentation" (required for Lulu.com).
+  * Change in :func:`deprecated.deprecated` decorator: you can
+    give a "reason" message to help the developer choose another
+    class, function or method.
+  * Add support for Universal Wheel (Python versions 2.6, 2.7,
+    3.3, 3.4, 3.5, 3.6 and PyPy).
+  * Add missing __doc__ and __version__ attributes to
+    :mod:`deprecated` module.
+  * Add an extensive documentation of Deprecated Library.
+  * Improve Travis configuration file (compatibility from Python
+    2.6 to 3.7-dev, and PyPy).
+  * Add AppVeyor configuration file.
+  * Add Tox configuration file.
+  * Add BumpVersion configuration file.
+  * Improve project settings: add a long description for the
+    project. Set the license and the development status in the
+    classifiers property.
+  * Add the :file:`CONTRIBUTING.rst` file: "How to contribute to
+    Deprecated Library".
+  * deprecated: Created @deprecated decorator
+
+-------------------------------------------------------------------
 Mon Nov 25 12:43:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.2.15

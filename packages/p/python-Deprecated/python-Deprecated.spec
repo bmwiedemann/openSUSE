@@ -1,7 +1,7 @@
 #
 # spec file for package python-Deprecated
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-Deprecated
-Version:        1.2.15
+Version:        1.2.18
 Release:        0
 Summary:        Python @deprecated decorator
 License:        MIT

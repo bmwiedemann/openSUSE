@@ -120,4 +120,41 @@
     <comment></comment>
     <requestid>1226488</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2b0873334bd387f4ca1f675b4f0eb167</srcmd5>
+    <version>1.2.18</version>
+    <time>1738688999</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.18:
+  * Fix #78: Fix configuration for Packit 1.0.0
+  * Fix #79: Fix the configuration for the intersphinx mapping in
+    the Sphinx documentation. See How to link to other
+    documentation projects with Intersphinx.
+  * Drop support for Python older than 3.7 in GitHub Actions.
+  * Resolve Python 2.7 support issue introduced in v1.2.14 in
+    sphinx.py.
+  * Fix #69: Add extra_stacklevel argument for interoperating
+    with other wrapper functions (refer to #68 for a concrete use
+    case).
+  * Fix #73: Update class method deprecation warnings for Python
+    3.13.
+  * Fix #75: Update GitHub workflows and fix development
+    dependencies for Python 3.12.
+  * Fix #66: discontinue TravisCI and AppVeyor due to end of free
+    support.
+  * Fix #60: return a correctly dedented docstring when long
+    docstring are using the D212 or D213 format.
+  * Add support for Python 3.11.
+  * Drop support for Python older than 3.7 in build systems like
+    pytest and tox, while ensuring the library remains
+    production-compatible.
+  * Update GitHub workflow to run in recent Python versions.
+  * Fix #45: Change the signature of the
+    :func:`~deprecated.sphinx.deprecated` decorator to reflect
+    the valid use cases.
+  * Fix #48: Fix versionadded and versionchanged decorators: do
+    not return a decorator factory, but a Wrapt adapter.
+  * Fix configuration for AppVeyor: simplify the test scripts and</comment>
+    <requestid>1242827</requestid>
+  </revision>
 </revisionlist>
