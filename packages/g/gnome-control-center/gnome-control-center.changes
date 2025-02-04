@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:35:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.4:
+  + Use static hostname instead of pretty hostname (hostnamed) in
+    URLs
+  + Fix a memory leak in CcMaskPaintable (used for illustrations)
+  + Region: Inform accountsservice of all configured languages
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 17 12:48:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend ppd-server instead of power-profiles-daemon: there is
