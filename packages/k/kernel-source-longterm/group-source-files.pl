@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 use File::Spec;
-use Getopt::Long;
+use Getopt::Long qw(:config no_ignore_case);
 use strict;
 
 &main();
@@ -17,6 +17,12 @@ sub main
 
 	my($dev, $ndev) = &scan($loc);
 	&output($dev, $ndev, $dev_output, $ndev_output);
+}
+
+sub rpm_quote_filename
+{
+	# technically should also quote  % -> %%  " -> \"  \ -> \\
+	return map { "\"$_\"" } @_;
 }
 
 sub scan
@@ -53,8 +59,14 @@ sub scan
 		$is_devel ? push(@dev, $abs_path) : push(@ndev, $abs_path);
 	}
 
-	push(@dev, &calc_dirs($abs_loc, \@dev));
-	push(@ndev, &calc_dirs($abs_loc, \@ndev));
+	my @dev_dirs = calc_dirs($abs_loc, \@dev);
+	my @ndev_dirs = calc_dirs($abs_loc, \@ndev);
+	@dev = rpm_quote_filename(@dev);
+	@ndev = rpm_quote_filename(@ndev);
+	@dev_dirs = map { "\%dir $_" } rpm_quote_filename(@dev_dirs);
+	@ndev_dirs = map { "\%dir $_" } rpm_quote_filename(@ndev_dirs);
+	push(@dev, @dev_dirs);
+	push(@ndev, @ndev_dirs);
 	return (\@dev, \@ndev);
 }
 
@@ -75,7 +87,7 @@ sub calc_dirs
 		# This loop also makes sure that $base itself is included.
 	}
 
-	return map { "\%dir $_" } keys %dirs;
+	return keys %dirs;
 }
 
 sub output

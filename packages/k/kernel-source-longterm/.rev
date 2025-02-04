@@ -409,4 +409,44 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.6.71</comment>
     <requestid>1236973</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>fd8819190cd1d77257aaf7cde5fbea92</srcmd5>
+    <version>6.6.72</version>
+    <time>1737389647</time>
+    <user>anag+factory</user>
+    <comment>6.6.72</comment>
+    <requestid>1238638</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1e87d3c912d2a52e74f00c2327eba2b4</srcmd5>
+    <version>6.6.73</version>
+    <time>1737651399</time>
+    <user>anag+factory</user>
+    <comment>6.6.73</comment>
+    <requestid>1239436</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6f3860d14df2b40c39d18c7035fca867</srcmd5>
+    <version>6.6.74</version>
+    <time>1737828604</time>
+    <user>dimstar_suse</user>
+    <comment>6.6.74</comment>
+    <requestid>1240135</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b5ea72972f0e34e15e6148427c599283</srcmd5>
+    <version>6.12.11</version>
+    <time>1738072684</time>
+    <user>anag+factory</user>
+    <comment>Move to 6.12 with 6.12.11</comment>
+    <requestid>1240339</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>ebfbbdb3174d49ceb7448202bf538aca</srcmd5>
+    <version>6.12.12</version>
+    <time>1738688971</time>
+    <user>anag+factory</user>
+    <comment>6.12.12</comment>
+    <requestid>1242196</requestid>
+  </revision>
 </revisionlist>

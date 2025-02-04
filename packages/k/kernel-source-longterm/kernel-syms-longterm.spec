@@ -16,19 +16,16 @@
 #
 
 
-%define git_commit 846f31fa700b72594f4abe2fd49616cdb903b053
+%define git_commit 94d0c9e5fcb45ec6b44fb281eb3a42bf8a559a04
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms-longterm
-Summary:        Kernel Symbol Versions (modversions)
-License:        GPL-2.0-only
-Group:          Development/Sources
-Version:        6.6.71
+Version:        6.12.12
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g846f31f
+Release:        <RELEASE>.g94d0c9e
 %else
 Release:        0
 %endif
@@ -36,24 +33,27 @@ Release:        0
 %define kernel_source_release %(LC_ALL=C rpm -q kernel-devel%variant-%version --qf "%{RELEASE}" | grep -v 'not installed' || echo 0)
 Release:        %kernel_source_release
 %endif
+Summary:        Kernel Symbol Versions (modversions)
+License:        GPL-2.0-only
+Group:          Development/Sources
 URL:            https://www.kernel.org/
-AutoReqProv:    off
 BuildRequires:  coreutils
-%ifarch aarch64 x86_64
-Requires:       kernel-longterm-devel = %version-%source_rel
-%endif
-Requires:       pesign-obs-integration
-Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-%git_commit
-Provides:       multiversion(kernel)
-Source:         README.KSYMS
-Requires:       kernel-devel%variant = %version-%source_rel
 %if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
 ExclusiveArch:  aarch64 x86_64
 %else
 ExclusiveArch:  do_not_build
 %endif
 Prefix:         /usr/src
+AutoReqProv:    off
+Source:         README.KSYMS
+%ifarch aarch64 x86_64
+Requires:       kernel-longterm-devel = %version-%source_rel
+%endif
+Requires:       pesign-obs-integration
+Requires:       kernel-devel%variant = %version-%source_rel
+Provides:       %name = %version-%source_rel
+Provides:       %name-srchash-%git_commit
+Provides:       multiversion(kernel)
 
 # Force bzip2 instead of lzma compression to
 # 1) allow install on older dist versions, and
@@ -70,13 +70,14 @@ package dependencies.
 
 
 %source_timestamp
-%prep
-
-%install
-install -m 644 -D %{SOURCE0} %buildroot/%_docdir/%name/README.SUSE
 
 %files
 %dir %_docdir/%name
 %_docdir/%name/README.SUSE
+
+%prep
+
+%install
+install -m 644 -D %{SOURCE0} %buildroot/%_docdir/%name/README.SUSE
 
 %changelog

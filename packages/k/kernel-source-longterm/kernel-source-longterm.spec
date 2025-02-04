@@ -16,24 +16,19 @@
 #
 
 
-%define srcversion 6.6
-%define patchversion 6.6.71
-%define git_commit 846f31fa700b72594f4abe2fd49616cdb903b053
+%define srcversion 6.12
+%define patchversion 6.12.12
+%define git_commit 94d0c9e5fcb45ec6b44fb281eb3a42bf8a559a04
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
-%define src_install_dir usr/src/linux-%kernelrelease%variant
-
-# if undefined use legacy location of before SLE15
-%if %{undefined _rpmmacrodir}
-%define _rpmmacrodir /etc/rpm
-%endif
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source-longterm
-Version:        6.6.71
+Version:        6.12.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g846f31f
+Release:        <RELEASE>.g94d0c9e
 %else
 Release:        0
 %endif
@@ -48,7 +43,20 @@ BuildRequires:  bash-sh
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  sed
-Requires(post): coreutils sed
+%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
+BuildArch:      noarch
+%else
+ExclusiveArch:  do_not_build
+%endif
+Prefix:         /usr/src
+
+%define src_install_dir usr/src/linux-%kernelrelease%variant
+
+# if undefined use legacy location of before SLE15
+%if %{undefined _rpmmacrodir}
+%define _rpmmacrodir /etc/rpm
+%endif
+
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 %if "https://www.kernel.org/pub/linux/kernel/v6.x/" != ""
 Source1:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.sign
@@ -97,7 +105,6 @@ Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
-Source77:       klp-symbols
 Source78:       modules.fips
 Source79:       splitflist
 Source80:       mergedep
@@ -122,12 +129,7 @@ Source113:      patches.kabi.tar.bz2
 Source114:      patches.drm.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
-BuildArch:      noarch
-%else
-ExclusiveArch:  do_not_build
-%endif
-Prefix:         /usr/src
+Requires(post): coreutils sed
 # Source is only complete with devel files.
 Requires:       kernel-devel%variant = %version-%source_rel
 Provides:       %name = %version-%source_rel
@@ -150,8 +152,6 @@ Recommends:     kernel-install-tools
 %endif
 %obsolete_rebuilds %name
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
-
 # Force bzip2 instead of lzma compression to
 # 1) allow install on older dist versions, and
 # 2) decrease build times (bsc#962356 boo#1175882)
@@ -166,8 +166,15 @@ Linux kernel sources with many fixes and improvements.
 
 
 %source_timestamp
+
+%post
+%relink_function
+
+relink linux-%kernelrelease%variant /usr/src/linux%variant
+
+%files -f nondevel.files
+
 %package -n kernel-devel%variant
-%obsolete_rebuilds kernel-devel%variant
 Summary:        Development files needed for building kernel modules
 Group:          Development/Sources
 AutoReqProv:    off
@@ -175,12 +182,23 @@ Provides:       kernel-devel%variant = %version-%source_rel
 Provides:       multiversion(kernel)
 Requires:       kernel-macros
 Requires(post): coreutils
+%obsolete_rebuilds kernel-devel%variant
 
 %description -n kernel-devel%variant
 Kernel-level headers and Makefiles required for development of
 external kernel modules.
 
+
 %source_timestamp
+
+%post -n kernel-devel%variant
+%relink_function
+
+relink linux-%kernelrelease%variant /usr/src/linux%variant
+
+%files -n kernel-devel%variant -f devel.files
+%ghost /usr/src/linux%variant
+%doc /usr/share/doc/packages/*
 
 # Note: The kernel-macros package intentionally does not provide
 # multiversion(kernel) nor is its name decorated with the variant (-rt)
@@ -192,7 +210,16 @@ Provides:       kernel-subpackage-macros
 %description -n kernel-macros
 This package provides the rpm macros and templates for Kernel Module Packages
 
+
 %source_timestamp
+
+%if "%variant" == ""
+%files -n kernel-macros
+%{_rpmmacrodir}/macros.kernel-source
+/usr/lib/rpm/kernel-*-subpackage
+%dir /usr/lib/rpm/kernel
+/usr/lib/rpm/kernel/*
+%endif
 
 %package vanilla
 %obsolete_rebuilds %name-vanilla
@@ -212,6 +239,11 @@ Vanilla Linux kernel sources with minor build fixes.
 
 
 %source_timestamp
+
+%if %do_vanilla
+%files vanilla
+/usr/src/linux-%kernelrelease-vanilla
+%endif
 
 %prep
 
@@ -293,37 +325,6 @@ done
 # the future and be thus lower than the timestamps of files built from the
 # source (bnc#669669).
 ts="$(head -n1 %_sourcedir/source-timestamp)"
-find %buildroot/usr/src/linux* ! -type l | xargs touch -d "$ts"
-
-%post
-%relink_function
-
-relink linux-%kernelrelease%variant /usr/src/linux%variant
-
-%post -n kernel-devel%variant
-%relink_function
-
-relink linux-%kernelrelease%variant /usr/src/linux%variant
-
-%files -f nondevel.files
-
-%files -n kernel-devel%variant -f devel.files
-%ghost /usr/src/linux%variant
-%doc /usr/share/doc/packages/*
-
-%if "%variant" == ""
-%files -n kernel-macros
-%{_rpmmacrodir}/macros.kernel-source
-/usr/lib/rpm/kernel-*-subpackage
-%dir /usr/lib/rpm/kernel
-/usr/lib/rpm/kernel/*
-%endif
-
-
-%if %do_vanilla
-
-%files vanilla
-/usr/src/linux-%kernelrelease-vanilla
-%endif
+find %buildroot/usr/src/linux* ! -type l -print0 | xargs -0 touch -d "$ts"
 
 %changelog

@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.6
-%define patchversion 6.6.71
-%define git_commit 846f31fa700b72594f4abe2fd49616cdb903b053
+%define srcversion 6.12
+%define patchversion 6.12.12
+%define git_commit 94d0c9e5fcb45ec6b44fb281eb3a42bf8a559a04
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -29,96 +29,23 @@
 %define split_base 0
 %define split_optional 0
 %define supported_modules_check 0
+%define build_flavor longterm
+%define generate_compile_commands 1
 
 %include %_sourcedir/kernel-spec-macros
 
-%define build_flavor	longterm
-%define build_default	("%build_flavor" == "default")
-%define build_vanilla	("%build_flavor" == "vanilla")
-%define vanilla_only    %{lua: if (rpm.expand("%variant") == "-vanilla") then print(1) else print(0) end}
-
-%if ! %build_vanilla
-%define src_install_dir /usr/src/linux-%kernelrelease%variant
-%else
-%define src_install_dir /usr/src/linux-%kernelrelease-vanilla
-%endif
-%define obj_install_dir /usr/src/linux-%kernelrelease%variant-obj
-%define rpm_install_dir %buildroot%obj_install_dir
-%define kernel_build_dir %my_builddir/linux-%srcversion/linux-obj
-
-%if 0%{?_project:1} && ( %(echo %_project | grep -Ex -f %_sourcedir/release-projects | grep -v ^PTF | grep -vc openSUSE) || %(echo %_project | grep -Ec "^(Devel:)?Kernel:") )
-	%define klp_symbols 1
-%endif
-
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
-
-%global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
-%define cpu_arch_flavor %cpu_arch/%build_flavor
-
-%global certs %( for f in %_sourcedir/*.crt; do                                                         \
-    if ! test -e "$f"; then                                                                             \
-        continue                                                                                        \
-    fi                                                                                                  \
-    h=$(openssl x509 -inform PEM -fingerprint -noout -in "$f")                                          \
-    if [ -z "$h" ] ; then                                                                               \
-        echo Cannot parse "$f" >&2                                                                      \
-        confinue                                                                                        \
-    fi                                                                                                  \
-    cert=$(echo "$h" | sed -rn 's/^SHA1 Fingerprint=//; T; s/://g; s/(.{8}).*/\\1/p')                   \
-    echo Found signing certificate "$f" "($cert)" >&2                                                   \
-    cat "$f" >>%_sourcedir/.kernel_signing_key.pem                                                      \
-    mkdir -p %_sourcedir/.kernel_signing_certs                                                          \
-    openssl x509 -inform PEM -in "$f" -outform DER -out %_sourcedir/.kernel_signing_certs/"$cert".crt   \
-    echo -n "$cert" ""                                                                                  \
-done )
-
-%ifarch %ix86 x86_64
-%define image vmlinuz
-%endif
-%ifarch ppc ppc64 ppc64le
-%define image vmlinux
-%endif
-%ifarch s390 s390x
-%define image image
-%endif
-%ifarch %arm
-%define image zImage
-%endif
-%ifarch aarch64 riscv64
-%define image Image
-%endif
-
-# Define some CONFIG variables as rpm macros as well. (rpm cannot handle
-# defining them all at once.)
-%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_MODULE_SIG_HASH CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES CONFIG_DEBUG_INFO_BTF_MODULES CONFIG_PREEMPT_DYNAMIC
-%{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
-%define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
-
-%if "%CONFIG_MODULES" != "y"
-	%define klp_symbols 0
-%endif
-
-%ifarch %ix86 x86_64
-%define install_vdso 1
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
-%define separate_vdso 1
-%endif
-%else
-%define install_vdso 0
-%endif
-
-%define modules_dir %kernel_module_directory/%kernelrelease-%build_flavor
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Summary:        The Linux Kernel
-License:        GPL-2.0-only
-Group:          System/Kernel
-Version:        6.6.71
+Version:        6.12.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g846f31f
+Release:        <RELEASE>.g94d0c9e
 %else
 Release:        0
 %endif
+Summary:        The Linux Kernel
+License:        GPL-2.0-only
+Group:          System/Kernel
 URL:            https://www.kernel.org/
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  bash-sh
@@ -159,6 +86,85 @@ BuildRequires:  u-boot-tools
 # Remove some packages that are installed automatically by the build system,
 # but are not needed to build the kernel
 #!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
+%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
+ExclusiveArch:  aarch64 x86_64
+%else
+ExclusiveArch:  do_not_build
+%endif
+
+%ifarch %ix86 x86_64
+%define image vmlinuz
+%endif
+%ifarch ppc ppc64 ppc64le
+%define image vmlinux
+%endif
+%ifarch s390 s390x
+%define image image
+%endif
+%ifarch %arm
+%define image zImage
+%endif
+%ifarch aarch64 riscv64
+%define image Image
+%endif
+
+%ifarch %ix86 x86_64
+%define install_vdso 1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%define separate_vdso 1
+%endif
+%else
+%define install_vdso 0
+%endif
+
+%define build_default	("%build_flavor" == "default")
+%define build_vanilla	("%build_flavor" == "vanilla")
+%define vanilla_only    %{lua: if (rpm.expand("%variant") == "-vanilla") then print(1) else print(0) end}
+
+%if ! %build_vanilla
+%define src_install_dir /usr/src/linux-%kernelrelease%variant
+%else
+%define src_install_dir /usr/src/linux-%kernelrelease-vanilla
+%endif
+%define obj_install_dir /usr/src/linux-%kernelrelease%variant-obj
+%define rpm_install_dir %buildroot%obj_install_dir
+%define kernel_build_dir %my_builddir/linux-%srcversion/linux-obj
+%define modules_dir %kernel_module_directory/%kernelrelease-%build_flavor
+
+%global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
+%define cpu_arch_flavor %cpu_arch/%build_flavor
+
+%if 0%{?_project:1} && ( %(echo %_project | grep -Ex -f %_sourcedir/release-projects | grep -vc ^PTF) || %(echo %_project | grep -Ec "^(Devel:)?Kernel:") )
+	%define klp_ipa_clones 1
+%endif
+
+# Define some CONFIG variables as rpm macros as well. (rpm cannot handle
+# defining them all at once.)
+%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_MODULE_SIG_HASH CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES CONFIG_DEBUG_INFO_BTF_MODULES CONFIG_PREEMPT_DYNAMIC
+%{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
+%define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
+
+%if "%CONFIG_MODULES" != "y"
+	%define klp_ipa_clones 0
+%endif
+
+%global certs %( space="" ; for f in %_sourcedir/*.crt; do                                              \
+    if ! test -e "$f"; then                                                                             \
+        continue                                                                                        \
+    fi                                                                                                  \
+    h=$(openssl x509 -inform PEM -fingerprint -noout -in "$f")                                          \
+    if [ -z "$h" ] ; then                                                                               \
+        echo Cannot parse "$f" >&2                                                                      \
+        confinue                                                                                        \
+    fi                                                                                                  \
+    cert=$(echo "$h" | sed -rn 's/^SHA1 Fingerprint=//; T; s/://g; s/(.{8}).*/\\1/p')                   \
+    echo Found signing certificate "$f" "($cert)" >&2                                                   \
+    cat "$f" >>%_sourcedir/.kernel_signing_key.pem                                                      \
+    mkdir -p %_sourcedir/.kernel_signing_certs                                                          \
+    openssl x509 -inform PEM -in "$f" -outform DER -out %_sourcedir/.kernel_signing_certs/"$cert".crt   \
+    echo -n "$space$cert" ; space=" "                                                                   \
+done )
+
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
@@ -203,7 +209,6 @@ Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
-Source77:       klp-symbols
 Source78:       modules.fips
 Source79:       splitflist
 Source80:       mergedep
@@ -273,7 +278,6 @@ NoSource:       73
 NoSource:       74
 NoSource:       75
 NoSource:       76
-NoSource:       77
 NoSource:       78
 NoSource:       79
 NoSource:       80
@@ -298,18 +302,13 @@ NoSource:       113
 NoSource:       114
 NoSource:       120
 NoSource:       121
-%if ! 0%{?is_kotd} || ! %{?is_kotd_qa}%{!?is_kotd_qa:0}
-ExclusiveArch:  aarch64 x86_64
-%else
-ExclusiveArch:  do_not_build
-%endif
+
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
 %if ! %build_default
 BuildArch:      i686
 %endif
 %endif
-
 # Force bzip2 instead of lzma compression to
 # 1) allow install on older dist versions, and
 # 2) decrease build times (bsc#962356 boo#1175882)
@@ -367,7 +366,7 @@ Requires(post): dracut
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
 
-%if 0%{?usrmerged}
+%if %{usrmerged}
 # make sure we have a post-usrmerge system
 Conflicts:      filesystem < 16
 %endif
@@ -432,6 +431,759 @@ The Linux Kernel.
 
 
 %source_timestamp
+
+%pre
+%if "%build_flavor" != "zfcpdump"
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+%endif
+%post
+%if "%build_flavor" != "zfcpdump"
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+%endif
+%preun
+%if "%build_flavor" != "zfcpdump"
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+%endif
+%postun
+%if "%build_flavor" != "zfcpdump"
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+%endif
+%posttrans
+%if "%build_flavor" != "zfcpdump"
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+%endif
+%files -f kernel-main.files
+
+%if "%CONFIG_MODULES" == "y" && %split_base
+%package base
+Summary:        The Linux Kernel - base modules
+Group:          System/Kernel
+Url:            http://www.kernel.org/
+Provides:       kernel-base = %version-%source_rel
+Provides:       multiversion(kernel)
+Conflicts:      %name = %version-%source_rel
+Requires(pre):  suse-kernel-rpm-scriptlets
+Requires(post): suse-kernel-rpm-scriptlets
+Requires:       suse-kernel-rpm-scriptlets
+Requires(preun): suse-kernel-rpm-scriptlets
+Requires(postun): suse-kernel-rpm-scriptlets
+Requires(pre):  coreutils awk
+# For /usr/lib/module-init-tools/weak-modules2 and /usr/lib/modprobe.d/*.conf
+Requires(post): suse-module-tools
+Requires:       suse-module-tools
+# For depmod (modutils is a dependency provided by both module-init-tools and
+# kmod-compat)
+Requires(post): modutils
+# This Requires is wrong, because the post/postun scripts have a
+# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
+# But, there is no way to tell rpm or yast to schedule the installation
+# of perl-Bootloader before kernel-binary.rpm if both are in the list of
+# packages to install/update. Likewise, this is true for dracut.
+# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
+Requires(post): perl-Bootloader >= 0.4.15
+Requires(post): dracut
+# Install the package providing /etc/SuSE-release early enough, so that
+# the grub entry has correct title (bnc#757565)
+Requires(post): distribution-release
+
+%if %{usrmerged}
+# make sure we have a post-usrmerge system
+Conflicts:      filesystem < 16
+%endif
+
+Obsoletes:      microcode_ctl < 1.18
+
+%{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
+	if not fd then io.stderr:write(err) end
+	unpack = table.unpack or unpack
+	for l in fd:lines() do
+		if #l > 0 and l:sub(1,1) ~= '#' then
+			words = {} ; for w in l:gmatch("([^%s]+)%s*") do table.insert(words, w) end
+			package, version = unpack(words)
+			print('Conflicts: ' .. package .. ' < '.. version .. '\n')
+		end
+	end
+	fd:close()
+}
+
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+Provides:       kernel = %version-%source_rel
+Provides:       kernel-%build_flavor-base-srchash-%git_commit
+Provides:       kernel-srchash-%git_commit
+
+%obsolete_rebuilds %name-base
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+
+%description base
+The Linux Kernel.
+
+This package contains only the base modules, required in all installs.
+
+
+%source_timestamp
+%pre base
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post base
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun base
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun base
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans base
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files base -f kernel-base.files
+%endif
+
+%package extra
+Summary:        The Linux Kernel - Unsupported kernel modules
+Group:          System/Kernel
+URL:            https://www.kernel.org/
+Provides:       %name-extra_%_target_cpu = %version-%source_rel
+Provides:       kernel-extra = %version-%source_rel
+Provides:       multiversion(kernel)
+Requires:       %{name}_%_target_cpu = %version-%source_rel
+Requires(pre):  coreutils awk
+Requires(post): modutils
+Requires(post): perl-Bootloader
+Requires(post): dracut
+%obsolete_rebuilds %name-extra
+Supplements:    packageand(product(SLED):%{name}_%_target_cpu)
+Supplements:    packageand(product(sle-we):%{name}_%_target_cpu)
+Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kernel-preempt-extra = %version-%release
+Provides:       kernel-preempt-extra_%_target_cpu = %version-%source_rel
+%endif
+%endif
+
+%description extra
+The Linux Kernel.
+
+This package contains additional modules not supported by SUSE.
+
+
+%source_timestamp
+
+%pre extra
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-extra" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post extra
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-extra" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun extra
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-extra" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun extra
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-extra" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans extra
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-extra" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%if %split_extra
+
+%files extra -f kernel-extra.files
+%endif
+
+%if %split_extra && %split_optional
+%package optional
+Summary:        The Linux Kernel - Optional kernel modules
+Group:          System/Kernel
+URL:            https://www.kernel.org/
+Provides:       %name-optional_%_target_cpu = %version-%source_rel
+Provides:       kernel-optional = %version-%source_rel
+Provides:       multiversion(kernel)
+Requires:       %name-extra_%_target_cpu = %version-%source_rel
+Requires(pre):  coreutils awk
+Requires(post): modutils
+Requires(post): perl-Bootloader
+Requires(post): dracut
+%obsolete_rebuilds %name-optional
+Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kernel-preempt-optional = %version-%release
+Provides:       kernel-preempt-optional_%_target_cpu = %version-%source_rel
+%endif
+%endif
+
+%description optional
+The Linux Kernel.
+
+This package contains optional modules only for openSUSE Leap.
+
+
+%source_timestamp
+
+%pre optional
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-optional" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post optional
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-optional" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun optional
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-optional" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun optional
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-optional" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans optional
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-optional" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files optional -f kernel-optional.files
+%endif
+
+%if "%CONFIG_KMSG_IDS" == "y"
+
+%package man
+Summary:        The collection of man pages generated by the kmsg script
+Group:          System/Kernel
+
+%description man
+This package includes the man pages that have been generated from the
+kmsg message documentation comments.
+
+
+%source_timestamp
+%files man
+/usr/share/man/man9/*
+%endif
+
+%if 0%{?separate_vdso}
+%package vdso
+Summary:        vdso binaries for debugging purposes
+Group:          System/Kernel
+
+%description vdso
+This package includes the vdso binaries. They can be used for debugging. The
+actual binary linked to the programs is loaded from the in-memory image, not
+from this package.
+
+
+%source_timestamp
+%files vdso
+%dir %modules_dir
+%modules_dir/vdso/
+%endif
+
+%package devel
+Summary:        Development files necessary for building kernel modules
+Group:          Development/Sources
+Provides:       %name-devel = %version-%source_rel
+Provides:       multiversion(kernel)
+%if ! %build_vanilla && ! %vanilla_only
+Requires:       kernel-devel%variant = %version-%source_rel
+Recommends:     make
+Recommends:     gcc
+Recommends:     perl
+# for objtool
+Requires:	libelf-devel
+Supplements:    packageand(%name:kernel-devel%variant)
+%else
+Requires:       kernel-source-vanilla = %version-%source_rel
+Supplements:    packageand(%name:kernel-source-vanilla)
+%endif
+%if "%CONFIG_DEBUG_INFO_BTF_MODULES" == "y"
+Requires:       dwarves >= 1.22
+%endif
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kernel-preempt-devel = %version-%release
+%endif
+%endif
+%obsolete_rebuilds %name-devel
+PreReq:         coreutils
+
+%description devel
+This package contains files necessary for building kernel modules (and
+kernel module packages) against the %build_flavor flavor of the kernel.
+
+
+%source_timestamp
+
+%if "%CONFIG_MODULES" == "y"
+
+%pre devel
+
+# handle update from an older kernel-source with linux-obj as symlink
+if [ -h /usr/src/linux-obj ]; then
+    rm -vf /usr/src/linux-obj
+fi
+
+%post devel
+%relink_function
+
+relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/linux-obj/"%cpu_arch_flavor"
+
+%files devel -f kernel-devel.files
+%dir /usr/src/linux-obj
+%dir /usr/src/linux-obj/%cpu_arch
+%ghost /usr/src/linux-obj/%cpu_arch_flavor
+%if %generate_compile_commands
+%exclude %obj_install_dir/%cpu_arch_flavor/compile_commands.json
+%endif
+%if "%kmp_target_cpu" != "%cpu_arch"
+%obj_install_dir/%kmp_target_cpu
+/usr/src/linux-obj/%kmp_target_cpu
+%endif
+
+%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%variant" == "-rt" && 0%livepatch_rt))
+%if "%livepatch" == "kgraft"
+%define patch_package %{livepatch}-patch
+%else
+%define patch_package kernel-%{livepatch}
+%endif
+%package %{livepatch}
+Summary:        Metapackage to pull in matching %patch_package package
+Group:          System/Kernel
+Requires:       %{patch_package}-%(echo %{version}-%{source_rel} | sed 'y/\./_/')-%{build_flavor}
+Provides:       multiversion(kernel)
+%if "%variant" != "-rt"
+Provides:	kernel-default-kgraft = %version
+Provides:	kernel-xen-kgraft = %version
+%if "%livepatch" != "kgraft"
+Obsoletes:	kernel-default-kgraft < %version
+Obsoletes:	kernel-xen-kgraft < %version
+%endif
+%endif
+
+%description %{livepatch}
+This is a metapackage that pulls in the matching %patch_package package for a
+given kernel version. The advantage of the metapackage is that its name is
+static, unlike the %{patch_package}-<kernel-version>-flavor package names.
+
+%files %{livepatch}
+# rpmlint complains about empty packages, so lets own something
+%dir %modules_dir
+%endif
+
+%if 0%{?klp_ipa_clones} && "%livepatch" != "" && "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
+%package %{livepatch}-devel
+Summary:	Kernel symbols file used during kGraft patch development
+Group:		System/Kernel
+
+%description %{livepatch}-devel
+This package brings ipa-clones files, which are used to to track
+set of functions where a code from another function can eventually occur.
+
+%files %{livepatch}-devel -f livepatch-files
+%endif
+
+%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
+%package -n cluster-md-kmp-%build_flavor
+Summary:        Clustering support for MD devices
+Group:          System/Kernel
+Requires:       %name = %version-%source_rel
+Provides:       cluster-md-kmp = %version-%source_rel
+Provides:       multiversion(kernel)
+# tell weak-modules2 to ignore this package
+Provides:       kmp_in_kernel
+Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       cluster-md-kmp-preempt = %version-%release
+%endif
+%endif
+Enhances:	%name
+Supplements:	packageand(%name:cluster-md-kmp-%build_flavor)
+Requires:       dlm-kmp-%build_flavor = %version-%release
+
+%description -n cluster-md-kmp-%build_flavor
+Clustering support for MD devices. This enables locking and
+synchronization across multiple systems on the cluster, so all
+nodes in the cluster can access the MD devices simultaneously.
+
+%pre -n cluster-md-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "cluster-md-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post -n cluster-md-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "cluster-md-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun -n cluster-md-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "cluster-md-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun -n cluster-md-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "cluster-md-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans -n cluster-md-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "cluster-md-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files -n cluster-md-kmp-%build_flavor -f cluster-md-kmp.files
+
+%package -n dlm-kmp-%build_flavor
+Summary:        DLM kernel modules
+Group:          System/Kernel
+Requires:       %name = %version-%source_rel
+Provides:       dlm-kmp = %version-%source_rel
+Provides:       multiversion(kernel)
+# tell weak-modules2 to ignore this package
+Provides:       kmp_in_kernel
+Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       dlm-kmp-preempt = %version-%release
+%endif
+%endif
+Enhances:	%name
+Supplements:	packageand(%name:dlm-kmp-%build_flavor)
+
+%description -n dlm-kmp-%build_flavor
+DLM stands for Distributed Lock Manager, a means to synchronize access to
+shared resources over the cluster.
+
+%pre -n dlm-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "dlm-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post -n dlm-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "dlm-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun -n dlm-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "dlm-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun -n dlm-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "dlm-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans -n dlm-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "dlm-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files -n dlm-kmp-%build_flavor -f dlm-kmp.files
+
+%package -n gfs2-kmp-%build_flavor
+Summary:        GFS2 kernel modules
+Group:          System/Kernel
+Requires:       %name = %version-%source_rel
+Provides:       gfs2-kmp = %version-%source_rel
+Provides:       multiversion(kernel)
+# tell weak-modules2 to ignore this package
+Provides:       kmp_in_kernel
+Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       gfs2-kmp-preempt = %version-%release
+%endif
+%endif
+Enhances:	%name
+Supplements:	packageand(%name:gfs2-kmp-%build_flavor)
+Requires:       dlm-kmp-%build_flavor = %version-%release
+
+%description -n gfs2-kmp-%build_flavor
+GFS2 is Global Filesystem, a shared device filesystem.
+
+%pre -n gfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "gfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post -n gfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "gfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun -n gfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "gfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun -n gfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "gfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans -n gfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "gfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files -n gfs2-kmp-%build_flavor -f gfs2-kmp.files
+
+%package -n kselftests-kmp-%build_flavor
+Summary:        Kernel sefltests
+Group:          System/Kernel
+Requires:       %name = %version-%source_rel
+Provides:       kselftests-kmp = %version-%source_rel
+Provides:       multiversion(kernel)
+# tell weak-modules2 to ignore this package
+Provides:       kmp_in_kernel
+Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kselftests-kmp-preempt = %version-%release
+%endif
+%endif
+Enhances:	%name
+Supplements:	packageand(%name:kselftests-kmp-%build_flavor)
+
+%description -n kselftests-kmp-%build_flavor
+This package contains kernel modules which are part of the upstream kernel
+selftest effort. kselftest is the name of the upstream kernel target to build
+and run all selftests. You can also run each test individually from the
+respective upstream tools/testing/selftests/ directory, this package is
+intended to be used using individial upstream selftest scripts given only
+select supported selftest drivers are enabled.
+
+It should always be possible to always run the latest linux-next version of the
+selftest scripts and tests against any older kernel selftest driver.  Certain
+tests facilities may be backported onto older kernels to enable further
+testing.
+
+Selftests also provide for a vehicle or proof of concept issues to be
+reproduced, verified and corrected.
+
+Selftest drivers are intended to be supported only in testing and QA
+environments, they are not intended to be run on production systems.
+
+%pre -n kselftests-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "kselftests-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post -n kselftests-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "kselftests-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun -n kselftests-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "kselftests-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun -n kselftests-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "kselftests-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans -n kselftests-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "kselftests-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files -n kselftests-kmp-%build_flavor -f kselftests-kmp.files
+
+%package -n ocfs2-kmp-%build_flavor
+Summary:        OCFS2 kernel modules
+Group:          System/Kernel
+Requires:       %name = %version-%source_rel
+Provides:       ocfs2-kmp = %version-%source_rel
+Provides:       multiversion(kernel)
+# tell weak-modules2 to ignore this package
+Provides:       kmp_in_kernel
+Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       ocfs2-kmp-preempt = %version-%release
+%endif
+%endif
+Enhances:	%name
+Supplements:	packageand(%name:ocfs2-kmp-%build_flavor)
+Requires:       dlm-kmp-%build_flavor = %version-%release
+
+%description -n ocfs2-kmp-%build_flavor
+OCFS2 is the Oracle Cluster Filesystem, a filesystem for shared devices
+accessible simultaneously from multiple nodes of a cluster.
+
+%pre -n ocfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "ocfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post -n ocfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "ocfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun -n ocfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "ocfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun -n ocfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "ocfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans -n ocfs2-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "ocfs2-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
+
+%package -n reiserfs-kmp-%build_flavor
+Summary:        Reiserfs kernel module
+Group:          System/Kernel
+Requires:       %name = %version-%source_rel
+Provides:       reiserfs-kmp = %version-%source_rel
+Provides:       multiversion(kernel)
+# tell weak-modules2 to ignore this package
+Provides:       kmp_in_kernel
+Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       reiserfs-kmp-preempt = %version-%release
+%endif
+%endif
+Enhances:	%name
+Supplements:	packageand(%name:reiserfs-kmp-%build_flavor)
+
+%description -n reiserfs-kmp-%build_flavor
+The reiserfs file system is no longer supported in SLE15.  This package
+provides the reiserfs module for the installation system.
+
+%pre -n reiserfs-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "reiserfs-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%post -n reiserfs-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "reiserfs-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%preun -n reiserfs-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "reiserfs-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%postun -n reiserfs-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "reiserfs-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%posttrans -n reiserfs-kmp-%build_flavor
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "reiserfs-kmp-%build_flavor" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "%{usrmerged}" --certs "%certs" "$@"
+
+%files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
+
+%endif # %CONFIG_SUSE_KERNEL_SUPPORTED
+%endif # %CONFIG_MODULES
+
 %prep
 if ! [ -e %{S:0} ]; then
     echo "The %name-%version.nosrc.rpm package does not contain the" \
@@ -698,9 +1450,9 @@ while true; do
     fi
 done
 
-# Generate list of symbols that are used to create kernel livepatches
-%if 0%{?klp_symbols}
-	%_sourcedir/klp-symbols . Symbols.list
+%if 0%{?klp_ipa_clones} && %generate_compile_commands
+    # Generate compile_commands.json
+    make compile_commands.json
 %endif
 
 %install
@@ -792,7 +1544,7 @@ add_vmlinux()
 # sign the modules, firmware and possibly the kernel in the buildservice
 BRP_PESIGN_FILES=""
 %if "%CONFIG_EFI_STUB" == "y"
-%if 0%{?usrmerged}
+%if %{usrmerged}
 BRP_PESIGN_FILES="%modules_dir/%image"
 %else
 BRP_PESIGN_FILES="/boot/%image-%kernelrelease-%build_flavor"
@@ -800,7 +1552,7 @@ BRP_PESIGN_FILES="/boot/%image-%kernelrelease-%build_flavor"
 %endif
 %if ! %sb_efi_only
 %ifarch s390x ppc64 ppc64le
-%if 0%{?usrmerged}
+%if %{usrmerged}
 BRP_PESIGN_FILES="%modules_dir/%image"
 %else
 BRP_PESIGN_FILES="/boot/%image-%kernelrelease-%build_flavor"
@@ -889,22 +1641,22 @@ if [ %CONFIG_MODULES = y ]; then
     mkdir -p %rpm_install_dir/%cpu_arch/%build_flavor
     cp Module.symvers %rpm_install_dir/%cpu_arch/%build_flavor
 
-    # List of symbols that are used to generate kernel livepatches
-    %if 0%{?klp_symbols}
-        cp Symbols.list %rpm_install_dir/%cpu_arch/%build_flavor
-        echo %obj_install_dir/%cpu_arch/%build_flavor/Symbols.list > %my_builddir/livepatch-files.no_dir
-
-        %if "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
-            find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' | sort > ipa-clones.list
-            cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
-            echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
-            tar -C %kernel_build_dir \
-%if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
-		    --verbatim-files-from \
-%endif
-		    -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
-            cat ipa-clones.list | sed -e 's|^|%obj_install_dir/%cpu_arch/%build_flavor/|' >> %my_builddir/livepatch-files.no_dir
+    # List of ipa-clones that are used to to track set of functions where a code from another function can eventually occur.
+    %if 0%{?klp_ipa_clones} && "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
+        %if %generate_compile_commands
+		    cp compile_commands.json %rpm_install_dir/%cpu_arch/%build_flavor
+		    echo %obj_install_dir/%cpu_arch/%build_flavor/compile_commands.json >> %my_builddir/livepatch-files.no_dir
         %endif
+
+        find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' | sort > ipa-clones.list
+        cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
+        echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
+        tar -C %kernel_build_dir \
+%if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
+            --verbatim-files-from \
+%endif
+            -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
+        cat ipa-clones.list | sed -e 's|^|%obj_install_dir/%cpu_arch/%build_flavor/|' >> %my_builddir/livepatch-files.no_dir
     %endif
 
     # Table of types used in exported symbols (for modversion debugging).
@@ -1018,7 +1770,8 @@ if [ %CONFIG_MODULES = y ]; then
             %rpm_install_dir/%cpu_arch_flavor \
             $(echo %srcversion | sed -r 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
     else
-       echo include ../../../%{basename:%src_install_dir}/Makefile > %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo "export KBUILD_OUTPUT = %obj_install_dir/%cpu_arch_flavor" > %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo "include ../../../%{basename:%src_install_dir}/Makefile" >> %rpm_install_dir/%cpu_arch_flavor/Makefile
     fi
 fi
 
@@ -1072,7 +1825,7 @@ if [ -f %my_builddir/livepatch-files.no_dir ] ; then
 fi
 
 # does not exist for non-modularized kernels
-%if 0%{?usrmerged}
+%if %{usrmerged}
         mkdir -p %{buildroot}%modules_dir
 %endif
 shopt -s nullglob dotglob
@@ -1082,7 +1835,7 @@ shopt -s nullglob dotglob
     echo "%modules_dir/source"
     cd %buildroot
     for file in boot/symtypes*; do
-%if 0%{?usrmerged}
+%if %{usrmerged}
         l="${file##*/}"
         l="%modules_dir/${l//-%kernelrelease-%build_flavor}"
         mv "$file" "%{buildroot}$l"
@@ -1099,7 +1852,7 @@ shopt -s nullglob dotglob
     fi
 } | add_dirs_to_filelist >%my_builddir/kernel-devel.files
 ( cd %buildroot ; find .%obj_install_dir/%cpu_arch_flavor -type f ; ) | \
-sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/Symbols[.]list$' -e '/ipa-clones[.]list$'| \
+sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/ipa-clones[.]list$'| \
 add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 
 {   echo %ghost /boot/%image
@@ -1127,19 +1880,19 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
                 echo -n "%%ghost "
             fi
             ;;
-%if 0%{?usrmerged}
+%if %{usrmerged}
         boot/vmlinuz-*)
             echo -n "%%attr(0644, root, root) "
             ;;
 %endif
         boot/symtypes*)
-%if 0%{?usrmerged}
+%if %{usrmerged}
             echo "%exclude $l"
 %endif
             continue
             ;;
         esac
-%if 0%{?usrmerged}
+%if %{usrmerged}
         mv "$f" "./$l"
         ln -s "..$l" $f
         # the find in the CONFIG_MODULES condition below also finds the files
@@ -1163,7 +1916,7 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 	     ! -path '*/modules.builtin.modinfo' \) -printf '%%%%ghost /%%p\n' \
 	       -o -name '*.ko' -prune \
 	       -o \( -type f \
-%if 0%{?usrmerged}
+%if %{usrmerged}
 		! -path '*/symtypes*' ! -path '*/vmlinu*' \
 %endif
 		\) -printf '/%%p\n'
@@ -1211,7 +1964,7 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     %if 0%{?sle_version} > 150300
     modprobe_d_dir=/lib/modprobe.d
     %endif
-    %if 0%{?usrmerged}
+    %if %{usrmerged}
     modprobe_d_dir=/usr/lib/modprobe.d
     %endif
 
@@ -1244,757 +1997,5 @@ fi
 # much, but it keeps rpmlint from breaking the package build. Note that we skip
 # /usr/src/linux-obj intentionally, to not accidentally break timestamps there
 %fdupes %buildroot%modules_dir
-
-%pre
-%if "%build_flavor" != "zfcpdump"
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%post
-%if "%build_flavor" != "zfcpdump"
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%preun
-%if "%build_flavor" != "zfcpdump"
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%postun
-%if "%build_flavor" != "zfcpdump"
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%posttrans
-%if "%build_flavor" != "zfcpdump"
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%files -f kernel-main.files
-
-%if "%CONFIG_MODULES" == "y" && %split_base
-%package base
-Summary:        The Linux Kernel - base modules
-Group:          System/Kernel
-Url:            http://www.kernel.org/
-Provides:       kernel-base = %version-%source_rel
-Provides:       multiversion(kernel)
-Conflicts:      %name = %version-%source_rel
-Requires(pre):  suse-kernel-rpm-scriptlets
-Requires(post): suse-kernel-rpm-scriptlets
-Requires:       suse-kernel-rpm-scriptlets
-Requires(preun): suse-kernel-rpm-scriptlets
-Requires(postun): suse-kernel-rpm-scriptlets
-Requires(pre):  coreutils awk
-# For /usr/lib/module-init-tools/weak-modules2 and /usr/lib/modprobe.d/*.conf
-Requires(post): suse-module-tools
-Requires:       suse-module-tools
-# For depmod (modutils is a dependency provided by both module-init-tools and
-# kmod-compat)
-Requires(post): modutils
-# This Requires is wrong, because the post/postun scripts have a
-# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
-# But, there is no way to tell rpm or yast to schedule the installation
-# of perl-Bootloader before kernel-binary.rpm if both are in the list of
-# packages to install/update. Likewise, this is true for dracut.
-# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
-Requires(post): perl-Bootloader >= 0.4.15
-Requires(post): dracut
-# Install the package providing /etc/SuSE-release early enough, so that
-# the grub entry has correct title (bnc#757565)
-Requires(post): distribution-release
-
-%if 0%{?usrmerged}
-# make sure we have a post-usrmerge system
-Conflicts:      filesystem < 16
-%endif
-
-Obsoletes:      microcode_ctl < 1.18
-
-%{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
-	if not fd then io.stderr:write(err) end
-	unpack = table.unpack or unpack
-	for l in fd:lines() do
-		if #l > 0 and l:sub(1,1) ~= '#' then
-			words = {} ; for w in l:gmatch("([^%s]+)%s*") do table.insert(words, w) end
-			package, version = unpack(words)
-			print('Conflicts: ' .. package .. ' < '.. version .. '\n')
-		end
-	end
-	fd:close()
-}
-
-%ifarch %ix86
-Conflicts:      libc.so.6()(64bit)
-%endif
-Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-%git_commit
-Provides:       kernel-srchash-%git_commit
-
-%obsolete_rebuilds %name-base
-%ifarch %ix86
-Conflicts:      libc.so.6()(64bit)
-%endif
-
-%description base
-The Linux Kernel.
-
-This package contains only the base modules, required in all installs.
-
-
-%source_timestamp
-%pre base
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name-base" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post base
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name-base" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun base
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name-base" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun base
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name-base" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans base
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name-base" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files base -f kernel-base.files
-%endif
-
-%package extra
-Summary:        The Linux Kernel - Unsupported kernel modules
-Group:          System/Kernel
-URL:            https://www.kernel.org/
-Provides:       %name-extra_%_target_cpu = %version-%source_rel
-Provides:       kernel-extra = %version-%source_rel
-Provides:       multiversion(kernel)
-Requires:       %{name}_%_target_cpu = %version-%source_rel
-Requires(pre):  coreutils awk
-Requires(post): modutils
-Requires(post): perl-Bootloader
-Requires(post): dracut
-%obsolete_rebuilds %name-extra
-Supplements:    packageand(product(SLED):%{name}_%_target_cpu)
-Supplements:    packageand(product(sle-we):%{name}_%_target_cpu)
-Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
-%ifarch %ix86
-Conflicts:      libc.so.6()(64bit)
-%endif
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       kernel-preempt-extra = %version-%release
-Provides:       kernel-preempt-extra_%_target_cpu = %version-%source_rel
-%endif
-%endif
-
-%description extra
-The Linux Kernel.
-
-This package contains additional modules not supported by SUSE.
-
-
-%source_timestamp
-
-%pre extra
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post extra
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun extra
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun extra
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans extra
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%if %split_extra
-
-%files extra -f kernel-extra.files
-%endif
-
-%if %split_extra && %split_optional
-%package optional
-Summary:        The Linux Kernel - Optional kernel modules
-Group:          System/Kernel
-URL:            https://www.kernel.org/
-Provides:       %name-optional_%_target_cpu = %version-%source_rel
-Provides:       kernel-optional = %version-%source_rel
-Provides:       multiversion(kernel)
-Requires:       %name-extra_%_target_cpu = %version-%source_rel
-Requires(pre):  coreutils awk
-Requires(post): modutils
-Requires(post): perl-Bootloader
-Requires(post): dracut
-%obsolete_rebuilds %name-optional
-Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
-%ifarch %ix86
-Conflicts:      libc.so.6()(64bit)
-%endif
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       kernel-preempt-optional = %version-%release
-Provides:       kernel-preempt-optional_%_target_cpu = %version-%source_rel
-%endif
-%endif
-
-%description optional
-The Linux Kernel.
-
-This package contains optional modules only for openSUSE Leap.
-
-
-%source_timestamp
-
-%pre optional
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post optional
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun optional
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun optional
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans optional
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files optional -f kernel-optional.files
-%endif
-
-%if "%CONFIG_KMSG_IDS" == "y"
-
-%package man
-Summary:        The collection of man pages generated by the kmsg script
-Group:          System/Kernel
-
-%description man
-This package includes the man pages that have been generated from the
-kmsg message documentation comments.
-
-
-%source_timestamp
-%files man
-/usr/share/man/man9/*
-%endif
-
-%if 0%{?separate_vdso}
-%package vdso
-Summary:        vdso binaries for debugging purposes
-Group:          System/Kernel
-
-%description vdso
-This package includes the vdso binaries. They can be used for debugging. The
-actual binary linked to the programs is loaded from the in-memory image, not
-from this package.
-
-
-%source_timestamp
-%files vdso
-/%{?usrmerged:usr/}lib/modules/%kernelrelease-%build_flavor/vdso/
-%endif
-
-%package devel
-Summary:        Development files necessary for building kernel modules
-Group:          Development/Sources
-Provides:       %name-devel = %version-%source_rel
-Provides:       multiversion(kernel)
-%if ! %build_vanilla && ! %vanilla_only
-Requires:       kernel-devel%variant = %version-%source_rel
-Recommends:     make
-Recommends:     gcc
-Recommends:     perl
-# for objtool
-Requires:	libelf-devel
-Supplements:    packageand(%name:kernel-devel%variant)
-%else
-Requires:       kernel-source-vanilla = %version-%source_rel
-Supplements:    packageand(%name:kernel-source-vanilla)
-%endif
-%if "%CONFIG_DEBUG_INFO_BTF_MODULES" == "y"
-Requires:       dwarves >= 1.22
-%endif
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       kernel-preempt-devel = %version-%release
-%endif
-%endif
-%obsolete_rebuilds %name-devel
-PreReq:         coreutils
-
-%description devel
-This package contains files necessary for building kernel modules (and
-kernel module packages) against the %build_flavor flavor of the kernel.
-
-
-%source_timestamp
-
-%if "%CONFIG_MODULES" == "y"
-
-%pre devel
-
-# handle update from an older kernel-source with linux-obj as symlink
-if [ -h /usr/src/linux-obj ]; then
-    rm -vf /usr/src/linux-obj
-fi
-
-%post devel
-%relink_function
-
-relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/linux-obj/"%cpu_arch_flavor"
-
-%files devel -f kernel-devel.files
-%dir /usr/src/linux-obj
-%dir /usr/src/linux-obj/%cpu_arch
-%ghost /usr/src/linux-obj/%cpu_arch_flavor
-%exclude %obj_install_dir/%cpu_arch_flavor/Symbols.list
-%if "%kmp_target_cpu" != "%cpu_arch"
-%obj_install_dir/%kmp_target_cpu
-/usr/src/linux-obj/%kmp_target_cpu
-%endif
-
-%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%variant" == "-rt" && 0%livepatch_rt))
-%if "%livepatch" == "kgraft"
-%define patch_package %{livepatch}-patch
-%else
-%define patch_package kernel-%{livepatch}
-%endif
-%package %{livepatch}
-Summary:        Metapackage to pull in matching %patch_package package
-Group:          System/Kernel
-Requires:       %{patch_package}-%(echo %{version}-%{source_rel} | sed 'y/\./_/')-%{build_flavor}
-Provides:       multiversion(kernel)
-%if "%variant" != "-rt"
-Provides:	kernel-default-kgraft = %version
-Provides:	kernel-xen-kgraft = %version
-%if "%livepatch" != "kgraft"
-Obsoletes:	kernel-default-kgraft < %version
-Obsoletes:	kernel-xen-kgraft < %version
-%endif
-%endif
-
-%description %{livepatch}
-This is a metapackage that pulls in the matching %patch_package package for a
-given kernel version. The advantage of the metapackage is that its name is
-static, unlike the %{patch_package}-<kernel-version>-flavor package names.
-
-%files %{livepatch}
-# rpmlint complains about empty packages, so lets own something
-%dir %modules_dir
-%endif
-
-%if 0%{?klp_symbols} && "%livepatch" != ""
-%package %{livepatch}-devel
-Summary:	Kernel symbols file used during kGraft patch development
-Group:		System/Kernel
-Provides:	klp-symbols = %version
-
-%description %{livepatch}-devel
-This package brings a file named Symbols.list, which contains a list of all
-kernel symbols and its respective kernel object . This list is to be used by
-the klp-convert tool, which helps livepatch developers by enabling automatic
-symbol resolution.
-
-%files %{livepatch}-devel -f livepatch-files
-%endif
-
-%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
-%package -n cluster-md-kmp-%build_flavor
-Summary:        Clustering support for MD devices
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       cluster-md-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       cluster-md-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:cluster-md-kmp-%build_flavor)
-Requires:       dlm-kmp-%build_flavor = %version-%release
-
-%description -n cluster-md-kmp-%build_flavor
-Clustering support for MD devices. This enables locking and
-synchronization across multiple systems on the cluster, so all
-nodes in the cluster can access the MD devices simultaneously.
-
-%pre -n cluster-md-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post -n cluster-md-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n cluster-md-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n cluster-md-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n cluster-md-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files -n cluster-md-kmp-%build_flavor -f cluster-md-kmp.files
-
-%package -n dlm-kmp-%build_flavor
-Summary:        DLM kernel modules
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       dlm-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       dlm-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:dlm-kmp-%build_flavor)
-
-%description -n dlm-kmp-%build_flavor
-DLM stands for Distributed Lock Manager, a means to synchronize access to
-shared resources over the cluster.
-
-%pre -n dlm-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post -n dlm-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n dlm-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n dlm-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n dlm-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files -n dlm-kmp-%build_flavor -f dlm-kmp.files
-
-%package -n gfs2-kmp-%build_flavor
-Summary:        GFS2 kernel modules
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       gfs2-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       gfs2-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:gfs2-kmp-%build_flavor)
-Requires:       dlm-kmp-%build_flavor = %version-%release
-
-%description -n gfs2-kmp-%build_flavor
-GFS2 is Global Filesystem, a shared device filesystem.
-
-%pre -n gfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post -n gfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n gfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n gfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n gfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files -n gfs2-kmp-%build_flavor -f gfs2-kmp.files
-
-%package -n kselftests-kmp-%build_flavor
-Summary:        Kernel sefltests
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       kselftests-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       kselftests-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:kselftests-kmp-%build_flavor)
-
-%description -n kselftests-kmp-%build_flavor
-This package contains kernel modules which are part of the upstream kernel
-selftest effort. kselftest is the name of the upstream kernel target to build
-and run all selftests. You can also run each test individually from the
-respective upstream tools/testing/selftests/ directory, this package is
-intended to be used using individial upstream selftest scripts given only
-select supported selftest drivers are enabled.
-
-It should always be possible to always run the latest linux-next version of the
-selftest scripts and tests against any older kernel selftest driver.  Certain
-tests facilities may be backported onto older kernels to enable further
-testing.
-
-Selftests also provide for a vehicle or proof of concept issues to be
-reproduced, verified and corrected.
-
-Selftest drivers are intended to be supported only in testing and QA
-environments, they are not intended to be run on production systems.
-
-%pre -n kselftests-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post -n kselftests-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n kselftests-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n kselftests-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n kselftests-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files -n kselftests-kmp-%build_flavor -f kselftests-kmp.files
-
-%package -n ocfs2-kmp-%build_flavor
-Summary:        OCFS2 kernel modules
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       ocfs2-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       ocfs2-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:ocfs2-kmp-%build_flavor)
-Requires:       dlm-kmp-%build_flavor = %version-%release
-
-%description -n ocfs2-kmp-%build_flavor
-OCFS2 is the Oracle Cluster Filesystem, a filesystem for shared devices
-accessible simultaneously from multiple nodes of a cluster.
-
-%pre -n ocfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post -n ocfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n ocfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n ocfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n ocfs2-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
-
-%package -n reiserfs-kmp-%build_flavor
-Summary:        Reiserfs kernel module
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       reiserfs-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-%if %build_default
-%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
-Provides:       reiserfs-kmp-preempt = %version-%release
-%endif
-%endif
-Enhances:	%name
-Supplements:	packageand(%name:reiserfs-kmp-%build_flavor)
-
-%description -n reiserfs-kmp-%build_flavor
-The reiserfs file system is no longer supported in SLE15.  This package
-provides the reiserfs module for the installation system.
-
-%pre -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%post -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%posttrans -n reiserfs-kmp-%build_flavor
-%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
-
-%endif # %CONFIG_SUSE_KERNEL_SUPPORTED
-%endif # %CONFIG_MODULES
 
 %changelog

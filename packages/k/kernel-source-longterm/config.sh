@@ -1,5 +1,5 @@
 # The version of the main tarball to use
-SRCVERSION=6.6
+SRCVERSION=6.12
 # variant of the kernel-source package, either empty or "-rt"
 VARIANT=-longterm
 # enable kernel module compression
@@ -21,3 +21,5 @@ BUGZILLA_PRODUCT="openSUSE Tumbleweed"
 BUILD_HTML=Yes
 # build documentation in PDF format
 BUILD_PDF=No
+# Generate compile_commands.json
+GENERATE_COMPILE_COMMANDS=Yes
