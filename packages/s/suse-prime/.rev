@@ -722,4 +722,28 @@ Latest changes:
     issue#96)</comment>
     <requestid>1186790</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>362139ea383d1615bbe2a4b352125885</srcmd5>
+    <version>0.8.18</version>
+    <time>1738615430</time>
+    <user>anag+factory</user>
+    <comment>- SUSEPrime-0.8.18
+  * NVreg_DynamicPowerManagement=0x01 --&gt; NVreg_TemporaryFilePath=/var/tmp
+    + Do not force D3 sleep state (power down) on pre-Ampere GPUs
+    + Allow saving the GPU memory to /var/tmp 
+- no longer install by default together with 5xx/G06 driver package 
+  series (Supplements/modalias line)</comment>
+    <requestid>1242136</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>94e3b879624fb084b901562421bb28ff</srcmd5>
+    <version>0.8.18</version>
+    <time>1738689235</time>
+    <user>anag+factory</user>
+    <comment>- require nvidia-xconfig for NVIDIA driver &gt;= 570.86.15
+  * prime-select uses nvidia-xconfig --query-gpu-info to figure out
+    the PCI ID; we splitted out nvidia-xconfig to an external
+    package beginning with version 570.86.15</comment>
+    <requestid>1243114</requestid>
+  </revision>
 </revisionlist>

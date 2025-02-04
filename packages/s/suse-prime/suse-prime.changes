@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:50:36 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- require nvidia-xconfig for NVIDIA driver >= 570.86.15
+  * prime-select uses nvidia-xconfig --query-gpu-info to figure out
+    the PCI ID; we splitted out nvidia-xconfig to an external
+    package beginning with version 570.86.15
+
+-------------------------------------------------------------------
+Mon Dec  2 21:50:38 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.18
+  * NVreg_DynamicPowerManagement=0x01 --> NVreg_TemporaryFilePath=/var/tmp
+    + Do not force D3 sleep state (power down) on pre-Ampere GPUs
+    + Allow saving the GPU memory to /var/tmp 
+- no longer install by default together with 5xx/G06 driver package 
+  series (Supplements/modalias line)
+
+-------------------------------------------------------------------
 Thu Jul 11 08:37:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.17

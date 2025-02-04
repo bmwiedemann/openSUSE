@@ -1,7 +1,7 @@
 #
 # spec file for package suse-prime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %global modprobe_d_files 09-nvidia-modprobe-bbswitch-G04.conf 09-nvidia-modprobe-pm-G05.conf
 
 Name:           suse-prime
-Version:        0.8.17
+Version:        0.8.18
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
 License:        SUSE-Public-Domain
@@ -31,7 +31,7 @@ Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/SUSEPrime
 Source0:        https://github.com/openSUSE/SUSEPrime/archive/%{version}.tar.gz#/SUSEPrime-%{version}.tar.gz
 Recommends:     nvidia_driver
-Supplements:    modalias(nvidia_driver:pci:v00008086d*sv*sd*bc03sc*i*)
+Supplements:    (modalias(pci:v00008086d*sv*sd*bc03sc*i*) and (nvidia_driver < 550.54.14))
 Conflicts:      suse-prime-alt
 Obsoletes:      suse-prime-bbswitch < %{version}
 Provides:       suse-prime-bbswitch = %{version}
@@ -40,6 +40,10 @@ BuildArch:      noarch
 Requires:       coreutils
 Requires:       pciutils
 Requires:       sudo
+# prime-select uses nvidia-xconfig --query-gpu-info to figure out the
+# PCI ID; we splitted out nvidia-xconfig to an external package
+# beginning with version 570.86.15
+Requires:       (nvidia-xconfig if nvidia-video-G06 >= 570.86.15)
 %{?systemd_ordering}
 
 %description
