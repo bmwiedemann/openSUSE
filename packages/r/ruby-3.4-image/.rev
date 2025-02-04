@@ -7,4 +7,20 @@
     <comment>🤖: initial submission of ruby-3.4-image</comment>
     <requestid>1236893</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c066a4696ed88c79d66d1fdb44f00542</srcmd5>
+    <version>unknown</version>
+    <time>1738163792</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1240998</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b5d19981e671d40a42027e2fadc034ce</srcmd5>
+    <version>unknown</version>
+    <time>1738689088</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1241382</requestid>
+  </revision>
 </revisionlist>
