@@ -1,4 +1,51 @@
 --------------------------------------------------------------------
+Mon Feb 3 12:25:26 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1011
+- improved space info calculation
+- 4.5.229
+
+--------------------------------------------------------------------
+Thu Jan 30 16:10:53 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1010
+- extended parser for df command
+- added unit tests
+- coding style
+- 4.5.228
+
+--------------------------------------------------------------------
+Tue Jan 28 15:15:27 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1009
+- fixed typo
+- 4.5.227
+
+--------------------------------------------------------------------
+Thu Jan 23 16:34:27 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1008
+- add additional udevadm settle call
+- added note
+- mark snapper related functions as deprecated
+- avoid deprecated functions in testsuite
+- 4.5.226
+
+--------------------------------------------------------------------
+Tue Jan 21 10:42:57 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1007
+- avoid deprecated functions in testsuite
+- 4.5.225
+
+--------------------------------------------------------------------
+Mon Jan 20 16:35:59 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1006
+- added include statements (for gcc15)
+- 4.5.224
+
+--------------------------------------------------------------------
 Mon Jan 13 11:37:37 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1005
