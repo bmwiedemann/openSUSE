@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.12
-%define patchversion 6.12.9
+%define srcversion 6.13
+%define patchversion 6.13.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        6.12.9
+Version:        6.13.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0ae2136
+Release:        <RELEASE>.g1918d13
 %else
 Release:        0
 %endif
@@ -655,33 +655,6 @@ cd /boot
 %dir %{dtbdir}/ti
 %dir %{dtbdir}/ti/keystone
 %{dtbdir}/ti/keystone/keystone-*.dtb
-
-%package -n dtb-meson6
-Summary:        Amlogic Meson 6 based systems
-Group:          System/Boot
-Provides:       multiversion(dtb)
-Requires(post): coreutils
-
-%description -n dtb-meson6
-Device Tree files for Amlogic Meson 6 based systems.
-
-%post -n dtb-meson6
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-meson6 -f dtb-meson6.list
-%else
-%files -n dtb-meson6
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/amlogic
-%{dtbdir}/amlogic/meson6-*.dtb
 
 %package -n dtb-meson8
 Summary:        Amlogic Meson 8 based systems
@@ -1382,7 +1355,7 @@ export DTC_FLAGS="-R 4 -p 0x1000"
 DTC_FLAGS="$DTC_FLAGS -@"
 
 cd $source/arch/arm/boot/dts
-for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson6-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
+for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -1391,7 +1364,7 @@ done
 
 %install
 cd pp
-for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson6-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
+for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -1419,7 +1392,6 @@ for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell
       nxp/imx/imx6*.dts) pkgname=dtb-imx6;;
       nxp/imx/imx7*.dts) pkgname=dtb-imx7;;
       ti/keystone/keystone-*.dts) pkgname=dtb-keystone;;
-      amlogic/meson6-*.dts) pkgname=dtb-meson6;;
       amlogic/meson8-*.dts) pkgname=dtb-meson8;;
       amlogic/meson8b-*.dts) pkgname=dtb-meson8b;;
       mediatek/mt76*.dts) pkgname=dtb-mt76;;
