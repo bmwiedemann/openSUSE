@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 14:55:47 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Removed dependency perl(Perl::Critic::Freenode)
+- Added dependency perl(Perl::Critic::Community)
+
+-------------------------------------------------------------------
 Sat Jan 21 03:30:42 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency %{name} = %{version}
