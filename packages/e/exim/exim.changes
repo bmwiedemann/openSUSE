@@ -88,6 +88,7 @@ Wed Jun 29 14:20:50 UTC 2022 - Stefan Schubert <schubi@suse.com>
 - Moved logrotate files from user specific directory /etc/logrotate.d
   to vendor specific directory /usr/etc/logrotate.d.
 
+-------------------------------------------------------------------
 Mon Jun 27 08:33:59 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - update to exim 4.96
