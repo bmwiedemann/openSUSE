@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:34:25 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update version to 4.3.7
+  - This update comprises updates to GitHub Actions used for testing and for
+    building Docker.
+
+- Update version to 4.3.6
+  - Bug fixes
+    - Fix a potential bug (no issues reported) by checking that a buffer is not
+      zero before attempting to deallocate it.
+  - Documentation updates
+    - Show how to use MQTTThing with Homebridge to represent Shairport Sync’s
+      active status.
+    - Correct and clarify the statistics documentation.
+  - Fix a typo in the configuration file. 
+
+-------------------------------------------------------------------
 Mon Dec  2 15:04:13 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update version to 4.3.5
