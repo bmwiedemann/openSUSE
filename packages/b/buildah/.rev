@@ -771,4 +771,20 @@
     <comment></comment>
     <requestid>1225798</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>0027430484f3ab53cb1148b900a9bf63</srcmd5>
+    <version>1.38.1</version>
+    <time>1738007756</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.38.1 (forwarded request 1240479 from mchellamuthu)</comment>
+    <requestid>1240490</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>b8258c1ec30343ddab94c6cfbcfd33a9</srcmd5>
+    <version>1.39.0</version>
+    <time>1738689199</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242982</requestid>
+  </revision>
 </revisionlist>
