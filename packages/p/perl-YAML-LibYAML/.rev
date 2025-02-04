@@ -255,4 +255,12 @@
    - Change from Zilla::Dist to Dist::Zilla (forwarded request 1203093 from tinita)</comment>
     <requestid>1204044</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>28e3e3db13b655e962493e25649d5ac3</srcmd5>
+    <version>0.903.0</version>
+    <time>1738688988</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242805</requestid>
+  </revision>
 </revisionlist>
