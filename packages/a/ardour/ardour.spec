@@ -18,14 +18,14 @@
 
 %define dirbase ardour8
 Name:           ardour
-Version:        8.10.0
+Version:        8.11.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
 #  licensed files (BSD, WTFPL). Use GPL-3.0-only for the compiled package.
 License:        GPL-3.0-only
 URL:            https://ardour.org/
-Source0:        https://community.ardour.org/download/release/598#/Ardour-%{version}.tar.bz2
+Source0:        https://community.ardour.org/download/release/604#/Ardour-%{version}.tar.bz2
 Source99:       ardour-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake

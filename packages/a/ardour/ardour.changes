@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 20:30:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.11.0. Check https://ardour.org/whatsnew.html for the
+  full list of changes
+  * Fix for a critical workflow-blocking bug.
+
+-------------------------------------------------------------------
 Fri Oct 25 12:02:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.10. Check https://ardour.org/whatsnew.html for the
