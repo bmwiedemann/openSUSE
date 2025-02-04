@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jan 31 20:43:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.16.0:
+  + Added:
+    - Added more "go to reference" implementations in the language
+      server
+    - Added semantic token support for flag members in the language
+      server
+    - Added property documentation to the hover tooltip for notify
+      signals
+    - The language server now shows relevant sections of the
+      reference documentation when hovering over keywords and
+      symbols
+    - Added not-swapped flag to signal handlers, which may be
+      needed for signal handlers that specify an object
+    - Added expression literals, which allow you to specify a
+      Gtk.Expression property (as opposed to the existing
+      expression support, which is for property bindings)
+  + Changed:
+    - The formatter adds trailing commas to lists
+    - The formatter removes trailing whitespace from comments
+    - Autocompleting a commonly translated property automatically
+      adds the _("") syntax
+    - Marking a single-quoted string as translatable now generates
+      a warning, since gettext does not recognize it when using the
+      configuration recommended in the blueprint documentation
+  + Fixed:
+    - Added support for libgirepository-2.0 so that blueprint
+      doesn't crash due to import conflicts on newer versions of
+      PyGObject
+    - Fixed a bug when decompiling/porting files with enum values
+    - Fixed several issues where tests would fail with versions of
+      GTK that added new deprecations
+    - Addressed a problem with the language server protocol in some
+      editors
+    - Fixed an issue where the compiler would crash instead of
+      reporting compiler errors
+    - Fixed a crash in the language server that occurred when a
+      detailed signal (e.g. notify::*) was not complete
+    - The language server now properly implements the shutdown
+      command, fixing support for some editors and improving
+      robustness when restarting
+    - Marking a string in an array as translatable now generates an
+      error, since it doesn't work
+  + Documentation:
+    - Added mention of null in the Literal Values section
+    - Add apps to Built with Blueprint section
+    - Corrected and updated many parts of the documentation
+
+-------------------------------------------------------------------
 Sun Aug 25 00:08:31 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.14.0:
