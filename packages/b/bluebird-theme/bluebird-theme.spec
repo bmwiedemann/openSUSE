@@ -1,7 +1,7 @@
 #
 # spec file for package bluebird-theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Version:        1.3
 Release:        0
 URL:            https://github.com/shimmerproject/Bluebird
 Summary:        A Clean Minimalistic Theme for GNOME, XFCE, GTK+ 2 and 3
-License:        GPL-2.0-or-later OR CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 OR GPL-2.0-or-later
 Group:          System/GUI/GNOME
 Source:         https://github.com/shimmerproject/%{_name}/archive/v%{version}/%{_name}-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -80,11 +80,11 @@ This package provides the GTK+ 3 support of Bluebird.
 %endif
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -n %{_name}-%{version}
 
-%build -n shimmerproject-%{_name}-%{_buildnumber}
+%build
 
-%install -n shimmerproject-%{_name}-%{_buildnumber}
+%install
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/themes/%{_name}
 %if 0%{?suse_version} >= 1210
 cp -a gtk-3.0 $RPM_BUILD_ROOT%{_datadir}/themes/%{_name}

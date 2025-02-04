@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb  1 09:25:02 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  features.
+- Don't pass any arguments to %build and %install; rpm-4.20 does
+  not like it!
+
+-------------------------------------------------------------------
 Sat Dec 12 06:33:42 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Updated upstream URL
