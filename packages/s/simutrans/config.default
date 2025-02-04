@@ -87,7 +87,7 @@ USE_FLUIDSYNTH_MIDI = 1
 # In order to use the flags, add a line like this: (-Dxxx)
 # FLAGS = -DUSE_C
 
-FLAGS += -DREVISION="11351"
+FLAGS += -DREVISION="11590"
 
 # Output directories:
 #

@@ -97,4 +97,20 @@ while the Gnu Make in Tumbleweed works correctly.
     <comment></comment>
     <requestid>1230019</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d38654a83c1e24d1818ba42d5fdd8d26</srcmd5>
+    <version>124.3</version>
+    <time>1738335855</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241366</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>09f0971cd0e5ab45f2f29c57817574de</srcmd5>
+    <version>124.3</version>
+    <time>1738689170</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242908</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb  3 18:56:01 UTC 2025 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124.3
+
+- Remove deprecated %suse_update_desktop_file - no need any more thanks to 
+https://forum.simutrans.com/index.php/topic,23253.msg208733.html#msg208733
+- See lots of explanation at https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+
+-------------------------------------------------------------------
+Mon Jan 27 15:18:56 UTC 2025 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124.3
+
+- simutrans failed with: "FATAL ERROR: gui_theme_t::init_gui_themes - Wrong theme loaded". 
+This is caused by the lacking theme pak files in the simutrans src file (as supplied upstream).
+All atempts to build the themes with the supplied build_themes.sh script failed.
+Hence, the needed files were retrieved from the Subversion source.
+- patched the build_themes.sh, reported upstream as: https://forum.simutrans.com/index.php/topic,23401.0.html
+
+-------------------------------------------------------------------
+Mon Jan 13 13:38:13 UTC 2025 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124.3
+
+- update to version 124.3 (r11590 on 10-Jan-2025)
+- see for more information about this release:
+https://forum.simutrans.com/index.php/topic,23369.0.html
+- in the words of prissi: "This release saw lots of bugfixing. 
+It features also two new tools, a pipette tool that lets you build whatever 
+you have clicked on (if allowed) and a marco editor, where you can copy 
+your favorite airport (or whatever layout) and build it again 
+by a single mouse click. Finally, the tutorial saw major rework 
+and is much more stable."
+- Complete history can be found at (unofficial): 
+https://github.com/simutrans/simutrans/blob/master/simutrans/history.txt
+- Some explanation about the new tools is given at 
+https://blog.simutrans.com/?p=2532
+
+-------------------------------------------------------------------
 Wed Dec 11 06:35:24 UTC 2024 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124-2-2
 
 - update to version 124.2.2 (r11400 on 31-August-2024)
