@@ -81,4 +81,21 @@
     <comment></comment>
     <requestid>1045894</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8fe26fbc02afe0cb9ca5a55c06dbddad</srcmd5>
+    <version>1.0.10</version>
+    <time>1738688973</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.10
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * xhost.man: Use .BR markup for all references to other man pages
+  * user2netname expects a MAXNETNAMELEN + 1 buffer, so give it one
+  * Clear trailing whitespace from lines in files
+  * reduce scope of #ifdef'ed variables to reduce #ifdefs
+  * Simplify ifdefs for IPv6 support
+  * if getaddrinfo() is available, use it, even if IPv6 support is disabled
+  * Replace inet_addr()/inet_aton() with a call to inet_pton()</comment>
+    <requestid>1242259</requestid>
+  </revision>
 </revisionlist>

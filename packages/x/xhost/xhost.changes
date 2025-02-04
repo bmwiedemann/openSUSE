@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  2 19:40:22 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.0.10
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Remove "All rights reserved" from Oracle copyright notices
+  * xhost.man: Use .BR markup for all references to other man pages
+  * user2netname expects a MAXNETNAMELEN + 1 buffer, so give it one
+  * Clear trailing whitespace from lines in files
+  * reduce scope of #ifdef'ed variables to reduce #ifdefs
+  * Simplify ifdefs for IPv6 support
+  * if getaddrinfo() is available, use it, even if IPv6 support is disabled
+  * Replace inet_addr()/inet_aton() with a call to inet_pton()
+
+-------------------------------------------------------------------
 Wed Dec 28 12:47:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.9:
