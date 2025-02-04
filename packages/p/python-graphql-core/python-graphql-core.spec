@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphql-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-graphql-core
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        GraphQL implementation for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphql-core
 Source:         https://files.pythonhosted.org/packages/source/g/graphql_core/graphql_core-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest-asyncio >= 0.14}
 BuildRequires:  %{python_module pytest-benchmark >= 3.2}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Conflicts:      python-graphql
@@ -43,10 +43,10 @@ the JavaScript reference implementation for GraphQL.
 %setup -q -n graphql_core-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +55,7 @@ the JavaScript reference implementation for GraphQL.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/graphql
+%{python_sitelib}/graphql_core-%{version}*info
 
 %changelog

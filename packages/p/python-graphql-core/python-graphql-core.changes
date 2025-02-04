@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb  4 11:15:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.6
+  * Alpha release GraphQL-core v3.3.0a7, based on GraphQL.js v17.0.0a3.
+  * Notable improvements since the last alpha release:
+    + This release also supports Python 3.13
+    + New incremental response format using id and subPath and pending notifications
+    + OneOf Input Objects via @oneOf directive
+    + Speedup sorting and building/extending schema
+    + Support for fourfold nested lists in introspection
+    + Transform input objects used as default values (#206)
+    + Support deep copy of schema with directive with arg of custom type (#210)
+    + Allow injecting custom data to custom execution context (#226)
+    + ValidationAbortedError can now be imported (#227)
+    + Benchmarking with CodSpeed (#230)
+
+-------------------------------------------------------------------
 Wed Nov 13 11:03:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.2.5
