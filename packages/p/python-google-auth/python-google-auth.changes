@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 13:30:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.38.0
+  * Adding domain-wide delegation flow in impersonated credential (#1624) (34ee3fe)
+  * Add warnings regarding consuming externally sourced credentials (d049370)
+
+-------------------------------------------------------------------
 Thu Jan  9 11:34:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.37.0
