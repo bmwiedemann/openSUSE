@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:43:29 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Disable LTO on riscv64 due to GCC#110812
+
+-------------------------------------------------------------------
 Thu Jan  2 15:15:51 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Update to version 0.3.27 (jsc#PED-9676):

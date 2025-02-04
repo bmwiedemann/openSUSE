@@ -829,4 +829,13 @@ Currently, openSUSE:Factory:Staging:E.
     + Fixed a flaw in the makefile build that could lead to the (forwarded request 1234589 from eeich)</comment>
     <requestid>1234592</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>bfa9996a045e3d7de7ce51b37db965ec</srcmd5>
+    <version>0.3.28</version>
+    <time>1738689038</time>
+    <user>anag+factory</user>
+    <comment>Disable LTO on riscv64 due to GCC#110812
+</comment>
+    <requestid>1242905</requestid>
+  </revision>
 </revisionlist>

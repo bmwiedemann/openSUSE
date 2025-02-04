@@ -370,6 +370,11 @@ EOF
 %define  _lto_cflags %{nil}
 %endif
 
+%ifarch riscv64
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
+%global _lto_cflags %{nil}
+%endif
+
 %if %{with hpc}
 %hpc_debug
 %hpc_setup_compiler
