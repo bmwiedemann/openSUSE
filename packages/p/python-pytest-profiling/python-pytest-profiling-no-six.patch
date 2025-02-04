@@ -1,7 +1,7 @@
-Index: pytest-profiling-1.8.0/pytest_profiling.py
+Index: pytest-profiling-1.8.1/pytest_profiling.py
 ===================================================================
---- pytest-profiling-1.8.0.orig/pytest_profiling.py
-+++ pytest-profiling-1.8.0/pytest_profiling.py
+--- pytest-profiling-1.8.1.orig/pytest_profiling.py
++++ pytest-profiling-1.8.1/pytest_profiling.py
 @@ -10,7 +10,6 @@ import errno
  from hashlib import md5
  import subprocess
@@ -19,10 +19,10 @@ Index: pytest-profiling-1.8.0/pytest_profiling.py
                                   for c in s))
  
  
-Index: pytest-profiling-1.8.0/tests/unit/test_profile.py
+Index: pytest-profiling-1.8.1/tests/unit/test_profile.py
 ===================================================================
---- pytest-profiling-1.8.0.orig/tests/unit/test_profile.py
-+++ pytest-profiling-1.8.0/tests/unit/test_profile.py
+--- pytest-profiling-1.8.1.orig/tests/unit/test_profile.py
++++ pytest-profiling-1.8.1/tests/unit/test_profile.py
 @@ -3,11 +3,11 @@
  # coverage, so force it to be reloaded within this test unit under coverage
  
@@ -37,12 +37,12 @@ Index: pytest-profiling-1.8.0/tests/unit/test_profile.py
  
  import os
  import subprocess
-Index: pytest-profiling-1.8.0/setup.py
+Index: pytest-profiling-1.8.1/setup.py
 ===================================================================
---- pytest-profiling-1.8.0.orig/setup.py
-+++ pytest-profiling-1.8.0/setup.py
-@@ -17,8 +17,7 @@ classifiers = [
-     'Programming Language :: Python :: 3.7',
+--- pytest-profiling-1.8.1.orig/setup.py
++++ pytest-profiling-1.8.1/setup.py
+@@ -24,8 +24,7 @@ classifiers = [
+     'Programming Language :: Python :: 3.12',
  ]
  
 -install_requires = ['six',

@@ -68,4 +68,18 @@
 - Refreshed python-pytest-profiling-no-six.patch</comment>
     <requestid>1216910</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b63d878a49ff02eb84a9a806cf9c140a</srcmd5>
+    <version>1.8.1</version>
+    <time>1738689186</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Small refactor to make error messages a bit clearer
+  * Fixed tests which were installing from PyPI rather than local
+  * Removed usage of deprecated pytest.yield_fixture.
+  * Removed usage of distutils, where possible.
+- Refreshed python-pytest-profiling-no-six.patch
+- Drop patch fix-type-arguments.patch, now included.</comment>
+    <requestid>1242952</requestid>
+  </revision>
 </revisionlist>

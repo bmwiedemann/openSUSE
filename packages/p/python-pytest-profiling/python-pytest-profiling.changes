@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 04:06:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.1:
+  * Small refactor to make error messages a bit clearer
+  * Fixed tests which were installing from PyPI rather than local
+  * Removed usage of deprecated pytest.yield_fixture.
+  * Removed usage of distutils, where possible.
+- Refreshed python-pytest-profiling-no-six.patch
+- Drop patch fix-type-arguments.patch, now included.
+
+-------------------------------------------------------------------
 Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.0:
