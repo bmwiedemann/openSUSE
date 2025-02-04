@@ -1,7 +1,7 @@
 #
 # spec file for package highway
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,11 @@ Documentation for Highway development.
 
 %prep
 %autosetup -p1
+
+%ifarch riscv64
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
+%global _lto_cflags %{nil}
+%endif
 
 %build
 export CFLAGS="%optflags -DHWY_COMPILE_ALL_ATTAINABLE"

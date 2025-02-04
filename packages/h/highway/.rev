@@ -127,4 +127,12 @@
     <comment>- Update to release 1.2.0</comment>
     <requestid>1178088</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fc40ef6a279ca0975c6269acd4f4d8ae</srcmd5>
+    <version>1.2.0</version>
+    <time>1738689041</time>
+    <user>anag+factory</user>
+    <comment>- Disable LTO on riscv64 due to gcc bug 110812 (forwarded request 1242900 from Andreas_Schwab)</comment>
+    <requestid>1242912</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:40:01 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Disable LTO on riscv64 due to gcc bug 110812
+
+-------------------------------------------------------------------
 Sat Jun  1 21:00:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0
