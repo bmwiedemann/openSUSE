@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 16:27:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.20: remove commented ot setup line. %setup i
+  snow a proper, multi-line macro. Using '#' to comment it out only
+  comments out the first line and does not do what packagers might
+  expect.
+
+-------------------------------------------------------------------
 Sat Apr 30 12:10:14 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - 20220430.1.26 - Major change to theme based off new Dimensions theme.

@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment-theme-openSUSE
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,6 @@ theme
 
 %prep
 %setup -q
-#%setup -q -n enlightenment-theme-openSUSE-%{Version}
 
 %build
 ./build-darkmod.sh --epkg
