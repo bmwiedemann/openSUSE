@@ -1,0 +1,23 @@
+From 7372d710ef6e97a3a9f3027efcf6b5b77bb33777 Mon Sep 17 00:00:00 2001
+From: Jake Bowhay <60778417+j-bowhay@users.noreply.github.com>
+Date: Sun, 19 Jan 2025 07:25:47 -0600
+Subject: [PATCH] TST: bump tolerance on
+ TestHyp2f1.test_region3[hyp2f1_test_case23] (#22364)
+
+---
+ scipy/special/tests/test_hyp2f1.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scipy/special/tests/test_hyp2f1.py b/scipy/special/tests/test_hyp2f1.py
+index aacf978e06dd..4321670e8291 100644
+--- a/scipy/special/tests/test_hyp2f1.py
++++ b/scipy/special/tests/test_hyp2f1.py
+@@ -1135,7 +1135,7 @@ def test_region2(self, hyp2f1_test_case):
+                     c=8.5,
+                     z=(0.7368421052631575+0.5263157894736841j),
+                     expected=(6.468457061368628+24.190040684917374j),
+-                    rtol=5e-16,
++                    rtol=6e-16,
+                 ),
+             ),
+             pytest.param(

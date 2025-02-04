@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb  3 15:44:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add test_hyp2fi-tolerance.patch to fix test failure on i586
+
+-------------------------------------------------------------------
+Fri Jan 31 12:07:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.15.1
+  * This release requires Python 3.10-3.13 and NumPy 1.23.5 or greater.
+  * Sparse arrays are now fully functional for 1-D and 2-D arrays. We recommend
+    that all new code use sparse arrays instead of sparse matrices and that
+    developers start to migrate their existing code from sparse matrix to sparse
+    array: migration_to_sparray. Both sparse.linalg and sparse.csgraph
+    work with either sparse matrix or sparse array and work internally with
+    sparse array.
+  * Sparse arrays now provide basic support for n-D arrays in the COO format
+    including add, subtract, reshape, transpose, matmul,
+    dot, tensordot and others.
+  * Preliminary support for free-threaded Python 3.13.
+  * New probability distribution features in scipy.stats can be used to improve
+    the speed and accuracy of existing continuous distributions and perform new
+    probability calculations.
+  * Several new features support vectorized calculations with Python Array API
+    Standard compatible input
+  * scipy.interpolate.AAA adds the AAA algorithm for barycentric rational
+    approximation of real or complex functions.
+  * scipy.special adds new functions offering improved Legendre function
+    implementations with a more consistent interface.
+- Drop upstreamed patches:
+  * scipy-pr21063-gcc14.patch
+  * scipy-pybind11-2.13.patch
+
+-------------------------------------------------------------------
 Tue Nov 19 19:07:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - relax pythran requirement

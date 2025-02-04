@@ -1359,4 +1359,12 @@ bsc#1130564: Apply update from the openSUSE package
       * The implementation of ``choose_conv_method`` has been updated to reflect the</comment>
     <requestid>1225155</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>b1109ccaba1ac05d597e7e6aaa2ad529</srcmd5>
+    <version>1.15.1</version>
+    <time>1738689044</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242918</requestid>
+  </revision>
 </revisionlist>

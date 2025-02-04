@@ -1,7 +1,7 @@
 #
 # spec file for package python-scipy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_13_1
+%define _ver 1_15_1
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -93,7 +93,7 @@ ExclusiveArch:  do_not_build
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.14.1
+Version:        1.15.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -101,15 +101,13 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
-# PATCH-FIX-UPSTREAM scipy-pr21063-gcc14.patch gh#scipy/scipy#21063 - MAINT: gcc-14 test_region5 tol bump
-Patch0:         https://github.com/scipy/scipy/pull/21063.patch#/scipy-pr21063-gcc14.patch
-# PATCH-FIX-UPSTREAM scipy-pybind11-2.13.patch gh#scipy/scipy#21199 -- commit 1ea9f1dc0ac4e871b7a54a8f3b12a01ac7d5f3d7
-Patch1:         scipy-pybind11-2.13.patch
+# PATCH-FIX-UPSTREAM https://github.com/scipy/scipy/pull/22364 TST: bump tolerance on TestHyp2f1.test_region3[hyp2f1_test_case23]
+Patch0:         test_hyp2fi-tolerance.patch
 BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.1}
-BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.18}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.20}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11-devel >= 2.13.1 with %python-pybind11-devel < 2.14}
+BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 2.14}
 # Upstream's pre-emptive pin to < 0.16 is not necessary
 BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.18}
 BuildRequires:  fdupes
@@ -127,7 +125,7 @@ BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
 %endif
 %if %{without hpc}
-BuildRequires:  %{python_module numpy-devel >= 1.23.5 with %python-numpy-devel < 2.3}
+BuildRequires:  %{python_module numpy-devel >= 1.23.5 with %python-numpy-devel < 2.5}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # The default gcc on SLE15 is gcc7 we need something newer
 BuildRequires:  gcc10-c++
@@ -136,7 +134,7 @@ BuildRequires:  gcc10-fortran
 BuildRequires:  gcc-c++ >= 8
 BuildRequires:  gcc-fortran >= 8
 %endif
-Requires:       (python-numpy >= 1.22.4 with python-numpy < 2.3)
+Requires:       (python-numpy >= 1.23.5 with python-numpy < 2.5)
 Suggests:       python-pooch
  %if %{with openblas}
 BuildRequires:  openblas-devel
@@ -177,8 +175,8 @@ chmod a-x scipy/stats/tests/test_distributions.py
 %if !%{with openblas}
 # Edit the options file until we have a way to provide options to meson-python from command line or environment
 # https://github.com/mesonbuild/meson-python/issues/230 https://github.com/mesonbuild/meson-python/issues/235
-sed -i "s/option('blas', type: 'string', value: 'openblas'/option('blas', type: 'string', value: 'blas'/" meson_options.txt
-sed -i "s/option('lapack', type: 'string', value: 'openblas'/option('lapack', type: 'string', value: 'lapack'/" meson_options.txt
+sed -i "s/option('blas', type: 'string', value: 'openblas'/option('blas', type: 'string', value: 'blas'/" meson.options
+sed -i "s/option('lapack', type: 'string', value: 'openblas'/option('lapack', type: 'string', value: 'lapack'/" meson.options
 %endif
 
 %if !%{with test}
