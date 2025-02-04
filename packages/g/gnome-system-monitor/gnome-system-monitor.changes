@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb  1 13:00:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Ensure search button is only active on processes page
+  + Fix resuming from suspended state
+  + Fix high disk writes during window resize
+  + Fix memory leaks when drawing graps
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:15:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:
