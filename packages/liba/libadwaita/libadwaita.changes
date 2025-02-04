@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 31 19:15:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.4:
+  + AdwBreakpoint: Fix to_string() with locales using comma as
+    decimal separator
+  + AdwComboRow: Fix very short strings not being displayed
+  + AdwDialog:
+    - Fix ::closed emission with window-backed dialogs
+    - Fix a focus-related crash
+  + AdwPreferencesDialog: Document navigation.pop action
+  + AdwTabBox, AdwTabGrid:
+    - Fix scrolling to newly appearing tabs
+    - Fix a copy-paste error
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 10 06:32:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.3:
