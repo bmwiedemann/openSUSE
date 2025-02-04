@@ -152,4 +152,16 @@
   * Removed the obsolete ``Makefile``.</comment>
     <requestid>1170436</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28dd4d4d697547dc8d4f7642f028d79e</srcmd5>
+    <version>1.10.0</version>
+    <time>1738694102</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.0:
+  * Removed support for Python 3.8.
+  * Added support for Python 3.13.
+  * Changed the default encoding name from ``&quot;utf8&quot;`` to
+    ``&quot;utf-8&quot;`` everywhere.</comment>
+    <requestid>1243180</requestid>
+  </revision>
 </revisionlist>

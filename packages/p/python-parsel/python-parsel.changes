@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:21:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Removed support for Python 3.8.
+  * Added support for Python 3.13.
+  * Changed the default encoding name from ``"utf8"`` to
+    ``"utf-8"`` everywhere.
+
+-------------------------------------------------------------------
 Sat Apr 27 07:51:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:
