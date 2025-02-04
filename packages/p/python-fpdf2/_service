@@ -3,8 +3,8 @@
     <param name="url">https://github.com/py-pdf/fpdf2</param>
     <param name="scm">git</param>
     <param name="exclude">test/text_shaping/SBL_Hbrw.ttf</param>
-    <param name="version">2.7.9</param>
-    <param name="revision">2.7.9</param>
+    <param name="version">2.8.2</param>
+    <param name="revision">2.8.2</param>
   </service>
   <service mode="manual" name="set_version" />
   <service mode="buildtime" name="tar" />
