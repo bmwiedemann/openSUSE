@@ -79,6 +79,8 @@ export TMPDIR=/tmp # necessary since 11.0
 %if 0%{?force_gcc_version}
   export CXX="g++-%{?force_gcc_version}"
 %endif
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
 %make_build -C %{name}/Source exeName=FreeFileSync
 %make_build -C %{name}/Source/RealTimeSync exeName=RealTimeSync
 
