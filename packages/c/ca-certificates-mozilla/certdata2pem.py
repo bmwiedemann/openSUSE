@@ -280,7 +280,7 @@ for tobj in objects:
             # obtain certificate information suitable as a comment
             comment_fname = "comment-" + fname
             fcout = open(comment_fname, "w")
-            comment_command = ["openssl", "x509", "-in", cert_fname, "-noout", "-text"]
+            comment_command = ["openssl", "x509", "-in", cert_fname, "-noout", "-text", "-certopt", "no_pubkey,no_sigdump"]
             subprocess.call(comment_command, stdout=fcout)
             fcout.close()
             sed_command = ["sed", "--in-place", "s/^/#/", comment_fname]

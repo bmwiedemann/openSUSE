@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-mozilla
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,9 @@
 %endif
 %endif
 #
+# Taken from p11-kit, to avoid a build cycle
+%define pkidir_static    %{_datadir}/pki
+%define trustdir_static  %{pkidir_static}/trust
 %define certdir %{trustdir_static}
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
@@ -61,11 +64,10 @@ Source11:       %{name}.COPYING
 Source12:       compareoldnew
 BuildRequires:  ca-certificates
 BuildRequires:  openssl
-BuildRequires:  p11-kit-devel
 BuildRequires:  python3-base
 # for update-ca-certificates
 Requires(post): ca-certificates
-Requires(postun):ca-certificates
+Requires(postun): ca-certificates
 #
 # replaces this package from SLE11 times
 Obsoletes:      openssl-certs < %version

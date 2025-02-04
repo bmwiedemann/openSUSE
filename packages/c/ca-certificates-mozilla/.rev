@@ -844,4 +844,23 @@
   subpackage into a package of its own.</comment>
     <requestid>1233132</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>fbc7cf5c968705632da44d1d21ff61eb</srcmd5>
+    <version>2.72</version>
+    <time>1737651441</time>
+    <user>anag+factory</user>
+    <comment>- Define two macros to break a build cycle with p11-kit. (forwarded request 1239757 from StevenK)</comment>
+    <requestid>1239776</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>f79b2006864f2d60904a7830b442b56b</srcmd5>
+    <version>2.72</version>
+    <time>1738689071</time>
+    <user>anag+factory</user>
+    <comment>- remove extensive signature printing in comments of the cert
+  bundle
+
+- Define two macros to break a build cycle with p11-kit. (forwarded request 1243021 from dirkmueller)</comment>
+    <requestid>1243055</requestid>
+  </revision>
 </revisionlist>

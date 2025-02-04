@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:55:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- remove extensive signature printing in comments of the cert
+  bundle
+
+-------------------------------------------------------------------
+Thu Jan 23 08:23:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Define two macros to break a build cycle with p11-kit.
+
+-------------------------------------------------------------------
 Sun Dec 15 21:07:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Updated to 2.72 state of Mozilla SSL root CAs (bsc#1234798)
