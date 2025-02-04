@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:45:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix syntax error to fix build with RPM 4.20.
+
+-------------------------------------------------------------------
 Mon Apr 15 18:00:45 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to avoid build-time race (boo#1102408)

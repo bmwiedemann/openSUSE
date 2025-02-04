@@ -168,4 +168,12 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
     <comment>Add reproducible.patch to avoid build-time race (boo#1102408) (forwarded request 1168496 from bmwiedemann)</comment>
     <requestid>1168528</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>4f0c4174177c3dd56c7db5a0fecf111f</srcmd5>
+    <version>1.13.15</version>
+    <time>1738689262</time>
+    <user>anag+factory</user>
+    <comment>- Fix syntax error to fix build with RPM 4.20. (forwarded request 1243110 from dimstar)</comment>
+    <requestid>1243144</requestid>
+  </revision>
 </revisionlist>
