@@ -57,4 +57,18 @@
   * perf: let EventedSet use clear\(\) method of underlying set</comment>
     <requestid>1172435</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63dbb1c2a954179e1f3884243f72c100</srcmd5>
+    <version>0.12.0</version>
+    <time>1738694095</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.0:
+  * feat: add description to signalinstance \#339 (tlambert03)
+  * perf: add `emit_fast` method for 10x faster emission
+    \(without safety checks\) \#331 (tlambert03)
+  * fix: use safer repr in warning \#353 (tlambert03)
+  * fix: fix use of computed\_field setter with
+    field\_dependencies \#336 (tlambert03)</comment>
+    <requestid>1243179</requestid>
+  </revision>
 </revisionlist>

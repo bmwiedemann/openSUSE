@@ -1,7 +1,7 @@
 #
 # spec file for package python-psygnal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-psygnal
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Fast python callback/event system modeled after Qt Signals
 License:        BSD-3-Clause
