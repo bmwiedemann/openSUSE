@@ -1,7 +1,7 @@
 #
 # spec file for package spectcl
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Interface Builder for Tcl/Tk and Java
 License:        SUSE-Sun-Laboratories
 Group:          Development/Tools/GUI Builders
-Url:            http://spectcl.sourceforge.net/
+URL:            http://spectcl.sourceforge.net/
 Source:         http://optimate.dl.sourceforge.net/project/spectcl/SpecTcl/1.2.2a/SpecTcl.tar.gz
 Patch0:         SpecTcl1.1-dir.patch
 Patch1:         SpecTcl1.1-tk8.4.patch
@@ -58,8 +58,8 @@ Authors:
 
 %prep
 %setup -q -n SpecTcl
-#%patch -P 0
-#%patch -P 1
+#%%patch -P 0
+#%%patch -P 1
 
 %build
 
