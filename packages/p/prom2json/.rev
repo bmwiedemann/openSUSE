@@ -18,4 +18,12 @@
 - Update to BuildRequires: go &gt;= 1.17 per go.mod (forwarded request 1009206 from jfkw)</comment>
     <requestid>1009207</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>47fb5e0caa0b92dabcf07bca289bc293</srcmd5>
+    <version>1.3.2</version>
+    <time>1738689261</time>
+    <user>anag+factory</user>
+    <comment>- Fix syntax to fix build with RPM 4.20. (forwarded request 1243108 from dimstar)</comment>
+    <requestid>1243143</requestid>
+  </revision>
 </revisionlist>

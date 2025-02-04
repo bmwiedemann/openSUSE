@@ -1,7 +1,7 @@
 #
 # spec file for package prom2json
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,7 +91,7 @@ rm %{name}.1
 %doc LICENSE
 %else
 %license LICENSE
-%endif%
+%endif
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}*.1.gz
 

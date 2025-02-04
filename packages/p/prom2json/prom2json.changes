@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:35:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix syntax to fix build with RPM 4.20.
+
+-------------------------------------------------------------------
 Sun Oct 09 21:41:27 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 1.3.2:
