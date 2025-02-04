@@ -141,4 +141,12 @@
     <comment>- Update to 1.7:</comment>
     <requestid>1151350</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7d5abe4a4f767d4b399da573a439ed25</srcmd5>
+    <version>1.8</version>
+    <time>1738688970</time>
+    <user>anag+factory</user>
+    <comment>npth 1.8 (forwarded request 1241908 from AndreasStieger)</comment>
+    <requestid>1242150</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 31 18:36:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.8:
+  * New function npth_get_version
+  * New macros NPTH_VERSION and NPTH_VERSION_NUMBER
+  * Fix INSERT_EXPOSE_RWLOCK_API for musl C library
+  * Return a run-time error if npth_rwlock_timedrdlock is not
+    supported
+
+-------------------------------------------------------------------
 Mon Feb 26 11:09:05 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.7:
