@@ -1,7 +1,7 @@
 #
 # spec file for package virt-what
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           virt-what
-Version:        1.25
+Version:        1.27
 Release:        0
 Summary:        Detect if running in a virtual machine
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Source1:        https://people.redhat.com/~rjones/%{name}/files/%{name}-%{versio
 Source2:        %{name}.keyring
 Requires:       util-linux
 Requires:       which
-%ifarch %{ix86} x86_64 aarch64 %arm
+%ifarch %{ix86} x86_64 aarch64 %{arm}
 Requires:       dmidecode
 %endif
 # for pod2man
@@ -49,19 +49,21 @@ developers and people compiling from source.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
 %license COPYING
 %doc README
 %{_sbindir}/virt-what
+%{_sbindir}/virt-what-cvm
 %{_mandir}/man1/virt-what.1%{?ext_man}
+%{_mandir}/man1/virt-what-cvm.1.gz
 %{_libexecdir}/virt-what-cpuid-helper
 
 %changelog

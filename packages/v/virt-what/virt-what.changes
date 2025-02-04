@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 27 16:08:35 MST 2025 - carnold@suse.com
+
+- update to 1.27:
+  * Detect OCI containers
+  * Add support for UpCloud
+  * Add support for Alibaba cloud on aarch64
+  * Introduce 'virt-what-cvm' program
+  * nutanix: Don't match Nutanix-based baremetal systems
+  * Fix support for Hyper-V on Arm
+  * Fix CVM detection on Azure with TDX
+  * Add support for detecting protected virtualization on s390x
+
+-------------------------------------------------------------------
 Sun Dec  4 22:08:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.25:
