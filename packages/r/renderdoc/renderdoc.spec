@@ -1,7 +1,7 @@
 #
 # spec file for package renderdoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           renderdoc
-Version:        1.34
+Version:        1.36
 Release:        0
 Summary:        A frame-capture based graphics debugger
 License:        MIT
@@ -53,6 +53,7 @@ available for Vulkan, D3D11, D3D12, OpenGL, and OpenGL ES development.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 RenderDoc is a frame-capture based graphics debugger, currently

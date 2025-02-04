@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:46:11 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Set BuildArch to noarch for the devel package
+- Update to version 1.36
+  * DXIL debugging
+  * Raytracing capture
+  * All: Allow pointers to basic types (e.g. float *foo) in
+    buffer formatter instead of requiring a struct as the
+    pointee type.
+  * All: Allow buffer formats to specify an alignment tighter
+    than natural alignment (e.g. 4 byte alignment on a struct
+    with 64-bit integers).
+  * All: Improve some performance during capture for DLL loads
+    that happen at very high frequency.
+  * Images: Add support for tiled and mip-mapped EXR images and
+    improved interpretation of channels.
+  * Images: Improve loading times of EXR files via multithreaded
+    decoding and texel reading optimisations.
+  * D3D12: Display thread group size for MS/AS disassembly.
+  * D3D12: Match undocumented PIX behaviour to recursively
+    search for matching shader debug files within search
+    locations. Selection behaviour when there are multiple
+    matches is not currently defined.
+  * D3D12: Improve reporting of driver version for WARP devices.
+  * D3D12: Improve some aspects of RenderDoc's DXIL disassembly
+    for better readability and displaying more useful
+    information.
+  * D3D12: Improve overhead when idle during capture by removing
+    unnecessary CPU-GPU syncs.
+  * D3D12: Added a custom interface for naming descriptors in a
+    descriptor heap.
+  * Vulkan: Add support for debugging shaders using
+    EXT_shader_object.
+  * Vulkan: Implement support for
+    VK_KHR_dynamic_rendering_local_read.
+  * Vulkan: Add support for debugging mesh shaders, with the
+    same stipulations and restrictions as compute shaders that
+    only one thread is simulated artificially in isolation
+    without any other threads in the group to communciate with.
+  * Vulkan: Physical devices are clamped to the highest
+    supported version (currently 1.3) manually now as the vulkan
+    loader no longer does this or removes the layer
+    automatically.
+-------------------------------------------------------------------
 Wed Aug  7 13:07:35 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.34
