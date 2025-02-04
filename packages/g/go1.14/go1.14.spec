@@ -1,7 +1,7 @@
 #
 # spec file for package go1.14
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -179,8 +179,8 @@ BuildRequires:  rpm >= 4.11.1
 %ifarch %arm aarch64
 BuildRequires:  binutils-gold
 %endif
-Requires(post):	update-alternatives
-Requires(postun):	update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # Needed on arm aarch64 to avoid
 # collect2: fatal error: cannot find 'ld'-
 %ifarch %arm aarch64
@@ -410,7 +410,7 @@ fi
 %doc %{_docdir}/go/%{go_api}/LICENSE
 %else
 %license %{_docdir}/go/%{go_api}/LICENSE
-%endif%
+%endif
 
 # We don't include TSAN in the main Go package.
 %ifarch %{tsan_arch}

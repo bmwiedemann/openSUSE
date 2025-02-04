@@ -272,4 +272,12 @@ while 1-core VM remains at 519 s.
 This patch applies to go1.15, go1.14 and go1.13 packages. (forwarded request 1167936 from bmwiedemann)</comment>
     <requestid>1168336</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>67094114323871a1d6c8d003909e54f6</srcmd5>
+    <version>1.14.15</version>
+    <time>1738689265</time>
+    <user>anag+factory</user>
+    <comment>- Fix syntax error to fix build with RPM 4.20. (forwarded request 1243111 from dimstar)</comment>
+    <requestid>1243145</requestid>
+  </revision>
 </revisionlist>
