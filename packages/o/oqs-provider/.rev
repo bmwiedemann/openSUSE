@@ -102,4 +102,13 @@
   - Reverses keyshares for X25519MLKEM768 and X448-ML-KEM-768 TLS hybrids in line with draft-kwiatkowski-tls-ecdhe-mlkem-02. (forwarded request 1231843 from msmeissn)</comment>
     <requestid>1231844</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>847e69136f3bccf9a24366cf75a28872</srcmd5>
+    <version>0.7.0</version>
+    <time>1738689159</time>
+    <user>anag+factory</user>
+    <comment>- enable tests
+- oqs-provider-disable-test.patch: removed</comment>
+    <requestid>1243137</requestid>
+  </revision>
 </revisionlist>

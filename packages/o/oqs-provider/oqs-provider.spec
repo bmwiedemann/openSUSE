@@ -1,7 +1,7 @@
 #
 # spec file for package oqs-provider
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,6 @@ License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/open-quantum-safe/oqs-provider/
 Source:         https://github.com/open-quantum-safe/oqs-provider/archive/refs/tags/%{version}.tar.gz#/%name-%version.tar.gz
-# currently would need libtestutil.a from openssl-3, so basically a copy of openssl-3 to test.
-Patch1:         oqs-provider-disable-test.patch
 BuildRequires:  cmake
 BuildRequires:  libopenssl-3-devel
 BuildRequires:  pkgconfig(liboqs)
@@ -47,6 +45,9 @@ export RPM_OPT_FLAGS="%optflags -std=gnu11"
 cd build
 cmake -DBUILD_SHARED_LIBS=ON ..
 %cmake_build
+
+%check
+%ctest .
 
 %install
 install -d %buildroot/%{_libdir}/ossl-modules/
