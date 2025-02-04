@@ -42,15 +42,15 @@ BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  schroedinger-devel
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(libavcodec) < 59
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libswscale) < 6
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xv)
 %if 0%{?BUILD_ORIG}
+BuildRequires:  pkgconfig(libavcodec) < 59
+BuildRequires:  pkgconfig(libswscale) < 6
 %if %{with faac}
 BuildRequires:  libfaac-devel
 %endif
@@ -121,8 +121,9 @@ echo 'HTML_TIMESTAMP=NO' >> doc/Doxyfile.in
        --docdir="%{_docdir}/%{name}-devel" \
        --with-libdv \
        --with-cpuflags=none \
-       --without-gtk
-make %{?_smp_mflags}
+       --without-gtk \
+       %{nil}
+%make_build
 
 %install
 %make_install
@@ -130,8 +131,7 @@ ln -s lqt "%{buildroot}%{_includedir}/quicktime"
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libquicktime%{sover} -p /sbin/ldconfig
-%postun -n libquicktime%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libquicktime%{sover}
 
 %files
 %license COPYING
@@ -146,10 +146,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libquicktime/lqt_schroedinger.so
 %{_libdir}/libquicktime/lqt_videocodec.so
 %{_libdir}/libquicktime/lqt_vorbis.so
-%{_libdir}/libquicktime/lqt_ffmpeg.so
 
 %if 0%{?BUILD_ORIG}
 %files orig-addon
+%{_libdir}/libquicktime/lqt_ffmpeg.so
 %if %{with faac}
 %{_libdir}/libquicktime/lqt_faac.so
 %endif
