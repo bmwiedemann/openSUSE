@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%global selinuxtype targeted
+%global modulename vncsession
 %define vncgroup vnc
 %define vncuser vnc
 %define tlskey  %{_sysconfdir}/vnc/tls.key
@@ -27,8 +29,13 @@
 %endif
 %define use_update_alternative 0%{?suse_version} >= 1315 && 0%{?suse_version} < 1600
 %define with_rc_service_symlink 0%{?suse_version} && 0%{?suse_version} < 1600
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1600
 %define _pam_vendordir %{_sysconfdir}/pam.d
+%endif
+%if 0%{?suse_version} >= 1600
+%bcond_without selinux
+%else
+%bcond_with selinux
 %endif
 Name:           tigervnc
 Version:        1.14.1
@@ -141,6 +148,10 @@ BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
+%if %{with selinux}
+BuildRequires:  selinux-policy-%{selinuxtype}
+BuildRequires:  selinux-policy-devel
+%endif
 
 %description
 TigerVNC is an implementation of VNC (Virtual Network Computing), a
@@ -168,6 +179,9 @@ Requires:       xkbcomp
 Requires:       xkeyboard-config
 Requires:       xorg-x11-fonts-core
 Requires:       openssl(cli)
+%if %{with selinux}
+Requires:       (%{name}-selinux if selinux-policy-base)
+%endif
 # For the with-vnc-key.sh script
 Requires:       /bin/hostname
 %{?systemd_requires}
@@ -242,6 +256,17 @@ BuildArch:      noarch
 This is a wrapper that looks like x11vnc, but starts x0vncserver instead.
 It maps common x11vnc arguments to x0vncserver arguments.
 
+%if %{with selinux}
+%package selinux
+Summary:        SELinux module for TigerVNC
+BuildArch:      noarch
+%{selinux_requires}
+
+%description selinux
+This package provides the SELinux policy module to ensure TigerVNC
+runs properly under an environment with SELinux enabled.
+%endif
+
 %prep
 %autosetup -p1
 
@@ -292,6 +317,13 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} .
 %make_build
 popd
 
+# SELinux
+%if %{with selinux}
+pushd unix/vncserver/selinux
+make
+popd
+%endif
+
 %install
 
 %make_install
@@ -310,6 +342,12 @@ mkdir -p %{buildroot}%{_datadir}/vnc/classes
 install -m755 VncViewer.jar %{buildroot}%{_datadir}/vnc/classes
 popd
 
+%if %{with selinux}
+pushd unix/vncserver/selinux
+%make_install
+popd
+%endif
+
 %ifnarch s390x
 install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/10-libvnc.conf
 %endif
@@ -326,7 +364,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.
 cp %{SOURCE4} .
 install -D -m 755 %{SOURCE5} %{buildroot}%{_bindir}/vncpasswd.arg
 install -D -m 644 %{SOURCE6} %{buildroot}%{_pam_vendordir}/vnc
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1600
 mv %{buildroot}%{_sysconfdir}/pam.d/tigervnc %{buildroot}%{_pam_vendordir}
 %endif
 install -D -m 644 %{SOURCE8} %{buildroot}%{_datadir}/vnc/classes
@@ -377,7 +415,7 @@ fi
 
 %pre -n xorg-x11-Xvnc -f xorg-x11-Xvnc.pre
 %service_add_pre xvnc.socket xvnc.target
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1600
 # Prepare for migration to /usr/lib; save any old .rpmsave
 for i in pam.d/vnc pam.d/tigervnc ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
@@ -431,6 +469,21 @@ fi
 
 %post -n libXvnc1 -p /sbin/ldconfig
 %postun -n libXvnc1 -p /sbin/ldconfig
+
+%if %{with selinux}
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post selinux
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
+%selinux_relabel_post -s %{selinuxtype}
+
+%postun selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} %{modulename}
+    %selinux_relabel_post -s %{selinuxtype}
+fi
+%endif
 
 %files -f %{name}.lang
 %license LICENCE.TXT
@@ -516,7 +569,7 @@ fi
 %config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/vnc-httpd
 %endif
 
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1600
 %config %{_sysconfdir}/pam.d/vnc
 %config(noreplace) %{_sysconfdir}/pam.d/tigervnc
 %else
@@ -565,5 +618,11 @@ fi
 
 %files x11vnc
 %{_bindir}/x11vnc
+
+%if %{with selinux}
+%files selinux
+%{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
+%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename}
+%endif
 
 %changelog

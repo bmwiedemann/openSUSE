@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 28 16:43:25 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- Only add selinux on %suse_version >= 1600
+
+-------------------------------------------------------------------
+Mon Jan 27 10:33:08 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Remove wrong %selinux_requires from the main package, it's already
+  in the -selinux subpackage
+
+-------------------------------------------------------------------
+Fri Jan 24 15:39:03 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- Fix and clarify suse_version macros.
+  * %suse_version only defines major versions, e.g. 1500, 1600...
+    using %suse_version < 1550 might look like for version 15.4 
+    is true but it isn't.
+  * Use %sle_version when targeting minor releases.
+
+-------------------------------------------------------------------
+Tue Jan 21 13:08:53 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- Include SELinux module.
+  * Fixes bsc#1235671.
+
+-------------------------------------------------------------------
 Mon Nov  4 11:25:41 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - Update to tigervnc 1.14.1
