@@ -455,4 +455,12 @@
     <comment>Build against the freshest protobuf</comment>
     <requestid>1219713</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1bc69490c21379244295d64e6b47dbb0</srcmd5>
+    <version>9.2.0</version>
+    <time>1738755741</time>
+    <user>anag+factory</user>
+    <comment>9.2.0</comment>
+    <requestid>1243269</requestid>
+  </revision>
 </revisionlist>

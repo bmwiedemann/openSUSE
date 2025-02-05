@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:48:27 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to Version 9.2.0
+  - Fix for Bug#116318 (Bug#37152533), useServerPrepStmts
+    useLocalTransactionState cause first execute rollback failure.
+  - Fix for Bug#116955 (Bug#37383012), Tests fail after server
+    changed cipher for xdevapi.
+  - Fix for Bug#63992 (Bug#14598872), getTables did not return a
+    result for table names with a dot in it.
+  - WL#16558, Upgrade 3rd party libraries and tools.
+  - Fix for Bug#37125271, RPM depends on java-headless 1:1.8.0
+    which makes java8 unnessessarily be installed.
+  - Fix for Bug#115586 (Bug#36850047), When upgrading to mysql
+    connetor/j-8.4.0, creating a connection becomes too slow.
+  - Fix for Bug#116630 (Bug#37272802), Tests fail on Windows if
+    test database has upper/mixed case chars.
+  - Fix for Bug#71143 (Bug#17967091), Calling ResultSet.updateRow
+    should not set all field values in UPDATE.
+  - Fix for Bug#103437 (Bug#32807360), Syntax error when calling
+    PreparedStatement.getMetadata() with LIMIT placeholded.
+  - Fix for Bug#96786 (Bug#30280035), Retrieving streaming result
+    set fails when closeOnCompletion is enabled.
+  - Fix for Bug#21983318, QUERYTIMEOUT VALUE RESETTING TO 0 AFTER
+    PREPSTMT.EXECUTEBATCH() EXECUTION.
+  - Fix for Bug#116113 (Bug#37063728), DatabaseMetaData#getTables
+    doesn't work properly for delimited identifiers.
+
+-------------------------------------------------------------------
 Mon Oct 21 12:20:07 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to Version 9.1.0

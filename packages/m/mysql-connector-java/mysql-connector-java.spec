@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define new_name mysql-connector-j
 Name:           mysql-connector-java
-Version:        9.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
@@ -90,10 +90,10 @@ rm -rf src/main/core-impl/java/com/mysql/cj/otel/OpenTelemetryScope.java
 # extra libs
 mkdir -p lib
 mkdir -p src/lib
-ln -f -s %{_datadir}/java/ant/ant-contrib.jar lib/ant-contrib.jar
-ln -f -s %{_datadir}/java/slf4j/api.jar lib/slf4j-api.jar
-ln -s %{_datadir}/java/javassist.jar lib/javassist.jar
-ln -s %{_datadir}/java/protobuf.jar lib/protobuf.jar
+ln -f -s `find-jar ant/ant-contrib` lib/ant-contrib.jar
+ln -f -s `find-jar slf4j/api` lib/slf4j-api.jar
+ln -s `find-jar javassist` lib/javassist.jar
+ln -s `find-jar protobuf` lib/protobuf.jar
 
 %build
 
