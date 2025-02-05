@@ -1,0 +1,12 @@
+<package name="webrtc-audio-processing-1" project="openSUSE:Factory">
+  <title>Real-Time Communication Library for Web Browsers</title>
+  <description>WebRTC is an open source project that enables web browsers with Real-Time
+Communications (RTC) capabilities via simple Javascript APIs. The WebRTC
+components have been optimized to best serve this purpose.
+
+WebRTC implements the W3C's proposal for video conferencing on the web.
+
+</description>
+  <devel project="multimedia:libs" package="webrtc-audio-processing-1"/>
+  <url>http://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/</url>
+</package>
