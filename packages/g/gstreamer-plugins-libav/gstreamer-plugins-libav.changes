@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:35:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.12:
+  + avaudenc: fix crash in avenc_ac3 if input buffers are
+    insufficiently aligned
+  + avcodecmap: Only use new channel positions when compiling
+    against new enough ffmpeg
+  + gst-libav: 1.24.11: Fails to build with minimum supported
+    ffmpeg version
+
+-------------------------------------------------------------------
 Tue Jan  7 21:50:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.11:
