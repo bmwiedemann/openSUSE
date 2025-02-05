@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:31:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.12:
+  + decklinkvideosink:
+    - Fix handling of caps framerate in auto mode
+    - Don't crash if started without corresponding video sink
+  + d3d12: Fix shaders failing to compile with newer dxc versions
+  + tsdemux: Fix backwards PTS wraparound detection with
+    ignore-pcr=true
+  + vtdec:
+    - fix seeks hangs due to a race condition draining
+    - seeks freeze the pipeline
+  + wayland: Print table split when DMABuf format changes
+  + webrtc: fix duplicate payload types with RTX and multiple video
+    codecs
+  + wpevideosrc: Clear cached SHM buffers after caps re-negotiation
+  + wpe:
+    - Report latency and start-up progress messages
+    - Remove glFlush() when filling buffer
+  + Fix build with gtk3 but not wayland
+  + Various fixes found from adding extra warning flags
+
+-------------------------------------------------------------------
 Tue Jan  7 21:47:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.11:
