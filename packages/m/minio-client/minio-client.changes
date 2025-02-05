@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 04 10:43:49 UTC 2025 - mrueckert@suse.de
+
+- Update to version 20250204T045750Z:
+  * Add "mc support upload" encryption (#5113)
+  * update go deps
+  * Use latest madmin-go for policy content check (#5109)
+  * Improve the error message when trying to add multiple expiry options (#5117)
+  * mc find - allow absolute times (#5118)
+  * fix: cp and mirror commands fail to be executed when the file length is 255 characters (#5114)
+
+-------------------------------------------------------------------
 Sat Jan 18 07:44:18 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20250117T232550Z:
