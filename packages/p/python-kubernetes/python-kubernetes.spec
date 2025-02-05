@@ -1,7 +1,7 @@
 #
 # spec file for package python-kubernetes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kubernetes
-Version:        30.1.0
+Version:        31.0.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
@@ -27,6 +27,7 @@ URL:            https://github.com/kubernetes-client/python
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
+BuildRequires:  %{python_module durationpy >= 0.7}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
@@ -52,6 +53,7 @@ Requires:       python-oauthlib >= 3.2.2
 %endif
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-certifi >= 14.05.14
+Requires:       python-durationpy >= 0.7
 Requires:       python-google-auth >= 1.0.1
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-requests

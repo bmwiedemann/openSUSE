@@ -303,4 +303,13 @@ gh#kubernetes-client/python#2178 - merged upstream and released.
 - Fix formatting of if/else conditional blocks for build/install section</comment>
     <requestid>1221322</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>148de0387498c354c856545b1b30a080</srcmd5>
+    <version>31.0.0</version>
+    <time>1738755591</time>
+    <user>anag+factory</user>
+    <comment>- version update to 31.0.0
+  * please refer to the changelog at https://github.com/kubernetes-client/python/blob/v31.0.0/CHANGELOG.md#v3100 </comment>
+    <requestid>1243096</requestid>
+  </revision>
 </revisionlist>
