@@ -1,6 +1,0 @@
-<package name="rancher-kim" project="openSUSE:Factory">
-  <title>kim - The Kubernetes Image Manager</title>
-  <description>kim is a Kubernetes-aware CLI that will install a small builder backend consisting of a BuildKit daemon bound to the Kubelet's underlying containerd socket (for building images) along with a small server-side agent that the CLI leverages for image management (think push, pull, etc) rather than talking to the backing containerd/CRI directly. kim enables building images locally, natively on your k3s cluster.</description>
-  <devel project="devel:kubic" package="rancher-kim"/>
-  <url>https://github.com/rancher/kim</url>
-</package>
