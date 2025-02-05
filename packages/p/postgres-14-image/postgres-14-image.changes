@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  5 10:30:31 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove handling for outdated postgresql versions
+
+-------------------------------------------------------------------
+Wed Jan 29 14:06:29 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- update README to add hints about the persistent volume requirements
+
+-------------------------------------------------------------------
 Wed Jan  1 14:13:48 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - update copyright year
