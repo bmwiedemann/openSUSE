@@ -1,7 +1,7 @@
 #
 # spec file for package byte-buddy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.15.11
+Version:        1.17.0
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
@@ -76,18 +76,18 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch -P 0 -p1
+%patch -P0 -p1
 
 # Remove Windows-specific resources
-rm -rf byte-buddy-agent/src/main/resources/win32-x86{,-64}
+rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 
 # Don't ship android or benchmark modules
-%pom_disable_module byte-buddy-android
-%pom_disable_module byte-buddy-android-test
-%pom_disable_module byte-buddy-benchmark
+%pom_disable_module %{name}-android
+%pom_disable_module %{name}-android-test
+%pom_disable_module %{name}-benchmark
 
 # Don't ship gradle plugin
-%pom_disable_module byte-buddy-gradle-plugin
+%pom_disable_module %{name}-gradle-plugin
 
 # Remove check plugins unneeded by RPM builds
 %pom_remove_plugin :jacoco-maven-plugin
@@ -100,16 +100,17 @@ rm -rf byte-buddy-agent/src/main/resources/win32-x86{,-64}
 %pom_remove_plugin :nexus-staging-maven-plugin
 
 # Avoid circular dependency
-%pom_remove_plugin :byte-buddy-maven-plugin byte-buddy-dep
+%pom_remove_plugin :byte-buddy-maven-plugin %{name}-dep
 
 # Not interested in shading sources (causes NPE on old versions of shade plugin)
-%pom_xpath_set "pom:createSourcesJar" "false" byte-buddy
+%pom_xpath_set pom:createSourcesJar false %{name}
 
 # Drop build dep on findbugs annotations, used only by the above check plugins
 %pom_remove_dep -r :findbugs-annotations
-%{java_remove_annotations} byte-buddy-agent byte-buddy-dep byte-buddy-maven-plugin -n SuppressFBWarnings
+%{java_remove_annotations} %{name}-{agent,dep,maven-plugin} -n SuppressFBWarnings
 
 %pom_remove_dep org.ow2.asm:asm-deprecated
+%pom_remove_dep codes.rafael.asmjdkbridge:asm-jdk-bridge %{name}-dep
 
 %pom_remove_plugin -r :maven-shade-plugin
 

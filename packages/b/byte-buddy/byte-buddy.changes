@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jan 29 22:22:17 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.17.0
+  * Changes of v1.17.0
+    + Assure that implicit choice for class reader and class writer
+      are always symmetric with regard to internal representation.
+    + Retrofit MemberSubstitution to also allow for intercepting
+      invokedynamic instructions.
+    + Introduce @Handle annotations to allow for injecting constant
+      pool-stored method handle in Advice, MemberSubstitution and
+      MethodDelegation.
+    + Introduce @DynamicConstant annotations to allow for injecting
+      constant pool-stored dynamic constants in Advice,
+      MemberSubstitution and MethodDelegation.
+
+-------------------------------------------------------------------
+Sun Jan 19 10:07:34 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.16.1
+  * Changes of v1.16.1
+    + Correct reflective activation of Class File API.
+    + Reject array descriptors that are not well-formed in
+      TypePool.
+
+-------------------------------------------------------------------
+Sat Jan 18 10:59:07 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.16.0
+  * Changes of v1.16.0
+    + Allow for erasure of types of bootstrapped methods in Advice
+      within instrumented class.
+    + Rework Advice post-processing to allow for erasure of
+      bootstrapped methods.
+    + Fix missing application of hashCode/equals plugin for Java 8
+      code.
+    + Include support for JDK Class File API.
+    + Allow Plugin.Engine to retain folders.
+- Rebase/update patch:
+  * 0001-Avoid-bundling-asm.patch
+
+-------------------------------------------------------------------
 Sun Dec 15 12:21:44 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.15.11
