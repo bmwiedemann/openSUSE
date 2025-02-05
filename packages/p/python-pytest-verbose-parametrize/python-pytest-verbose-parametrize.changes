@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  4 18:57:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Add Ubuntu builds for py3.6-3.13
+  * CircleCI release jobs now depend on both Ubuntu and
+    Windows success.
+
+-------------------------------------------------------------------
 Mon Nov  4 11:31:47 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed dep python-setuptools-git
@@ -34,7 +42,7 @@ Thu Apr 21 20:58:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Mar 11 03:54:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on mock. 
+- Remove unneeded BuildRequires on mock.
 
 -------------------------------------------------------------------
 Mon Jan 10 16:09:01 UTC 2022 - Matej Cepl <mcepl@suse.com>

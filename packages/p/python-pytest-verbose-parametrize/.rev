@@ -82,4 +82,17 @@
     <comment>- Remove not needed dep python-setuptools-git</comment>
     <requestid>1220550</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>29a12940ae25098d5167e48edb7e0098</srcmd5>
+    <version>1.8.1</version>
+    <time>1738755668</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.1:
+  * Add Ubuntu builds for py3.6-3.13
+  * CircleCI release jobs now depend on both Ubuntu and
+    Windows success.
+
+- Remove unneeded BuildRequires on mock.</comment>
+    <requestid>1243207</requestid>
+  </revision>
 </revisionlist>
