@@ -16,7 +16,7 @@ Thu Jun  6 10:36:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Wed Jun  5 15:47:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to 5.6.3
+- Update to 5.6.3 (bsc#1220096, CVE-2024-26134):
   * Fixed decoding of epoch-based dates being affected by the local
     time zone in the C extension
 - from version 5.6.2
