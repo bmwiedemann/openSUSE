@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 4.5.1:
+
+  Fixed
+  * relay: fix crash after /upgrade when relay clients are connected
+  * api: fix creation of empty buffer in function infolist_new_var_buffer
+  * core: fix detection of dl library (#2218)
+  * logger: fix path displayed when the logs directory can not be created
+  * perl: fix build with Perl < 5.7.29 (#2219, #2220)
+
+- Update to version 4.5.0:
+
+  Fixed
+  * core, plugins: fix integer overflow in loops (#2178, CVE-2024-46613)
+  * irc: decode IRC colors only when displaying messages in buffer, store nick info with IRC colors (host, account, real name)
+  * irc: do not strip trailing spaces from incoming IRC messages
+  * irc: fix crash on /list buffer when a filter is set (#2197)
+  * script: fix crash on /script buffer when a filter is set (#2214, #2215)
+  * exec: fix unexpected execution of command with /exec -o when the command starts with two command chars (#2199)
+  * relay/api: fix empty nicklist in remote buffers after connection or reconnection
+  * relay/api: reply HTTP 400 (Bad Request) when the body received is not a dict in websocket data
+  * core: fix too many sorts of hotlist when buffers are moved (#2097)
+  * core: always send the signal "buffer_switch", even when the buffer is opening (#2198)
+  * core, plugins: abort upgrade immediately if any upgrade file fails to be written
+  * core: reload all plugins with command /plugin reload *
+  * relay, xfer: fix letters with actions displayed on top of buffer
+  * perl: fix crash when unloading Perl scripts with Perl 5.38 (#2209, #2213)
+  * lua: fix compilation on Fedora with Lua < 5.2.0 (#2173, #2174)
+  * core: fix build on Darwin (#2216)
+  * core: fix build on Android (#2180)
+  
+  Changed
+  * api: return the buffer input callback return code in functions command and command_options
+  * api: add special value - (hyphen-minus) in options of function command_options to prevent execution of commands
+  * api: add property hotlist_conditions in function buffer_set
+  * api: add support of flags in functions hook_signal_send and hook_hsignal_send
+  * relay/api: allow array with multiple requests in websocket frame received from client
+  * relay/api: support passing authentication in sub protocol header (#2205)
+  * relay/api: combine request headers with the same name (#2206)
+  * core, plugins: simplify help on parameters that can be repeated in commands
+  * core: add optional hook types in command /debug hooks
+  * php: add detection of PHP 8.3 and 8.4
+  * ruby: fix detection of Ruby on macOS 14, require CMake ≥ 3.18 (#1156)
+  * build: require Curl ≥ 7.47.0 (#2195)
+  * build: require GnuTLS ≥ 3.3.0 (#2193)
+  
+  Added
+  * relay: display connection status in input prompt of remote buffers, if not connected or if fetching data from remote
+  * irc: add option irc.look.notice_nicks_disable_notify
+  * irc: add infos "irc_ptr_server", "irc_ptr_channel" and "irc_ptr_nick"
+
+- Update to version 4.4.4:
+  
+  Fixed
+  * script: fix crash on /script buffer when a filter is set (#2214, #2215)
+  * core: fix too many sorts of hotlist when buffers are moved (#2097)
+  * relay, xfer: fix letters with actions displayed on top of buffer
+  * build: fix detection of Ruby on macOS 14, require CMake ≥ 3.18 (#1156)
+  * perl: fix crash when unloading Perl scripts with Perl 5.38 (#2209, #2213)
+
+- Update to version 4.4.3:
+  
+  Fixed
+  * irc: fix crash on /list buffer when a filter is set (#2197)
+  * core: always send the signal "buffer_switch", even when the buffer is opening (#2198)
+  * core: fix build on Android (#2180)
+
+- Update to version 4.4.2:
+
+  Fixed
+  * core, plugins: fix integer overflow in loops (#2178)
+
+- Update to version 4.4.1:
+
+  Fixed
+  * lua: fix compilation on Fedora with Lua < 5.2.0 (#2173, #2174)
+
+- Update to version 4.4.0:
+
+  Changed
+  * breaking: relay/api: flatten JSON event object sent to clients, always set "body_type" and "body" (null if there is no body) in websocket frame, add body types buffers and lines (array), add field "request_id" in websocket frame (request and response)
+  * breaking: core, plugins: force "short_name" in buffers to non-empty value (name by default), remove buffer property "short_name_is_set"
+  * breaking: alias: display an error with /alias add or /alias addcompletion when the alias already exists, add options addreplace and addreplacecompletion in command /alias (#2095)
+  * breaking: irc: rename parameter -re to -raw in command /list (#2124)
+  * breaking: api: add constants for IPv6 and allow force of IPv6 in function hook_connect (#2164)
+  * breaking: irc: convert server option ipv6 from boolean to enum (disable, auto, force) (#2164)
+  * breaking: core: convert proxy option ipv6 from boolean to enum (disable, auto, force), set option to auto by default when creating a new proxy (#2164)
+  * core: add option addreplace in commands /bar and /proxy (#2095)
+  * irc: add option addreplace in commands /ignore, /notify and /server (#2095)
+  * relay: add option addreplace in commands /relay and /remote (#2095)
+  * core: allow buffer id in commands /buffer and /print, in addition to number and name
+  * core: allow mask in command /item refresh
+  * relay: enable websocket extension "permessage-deflate" with "api" relay only (#1549)
+  * relay/api: add automatic reconnection to remote, add remote option "autoreconnect_delay" in remote, add options relay.api.remote_autoreconnect_delay_growing and relay.api.remote_autoreconnect_delay_max (#2166)
+  * relay/api: automatically reconnect to remotes with "autoconnect" enabled after /upgrade
+  * relay/api: add field "hidden" in GET /api/buffers, add support of hidden buffers in remote client (#2159)
+  * relay/api: add field "time_displayed" in GET /api/buffers, add support of time displayed in remote client buffers
+  * relay/weechat: add line id in buffer lines sent to clients
+  * relay: display connection status in output of commands /remote list and /remote listfull
+  * relay: add option reconnect in command /remote (#2160)
+  * irc: add support of message 569 (whois, connecting from) (#2162)
+  * api: allow NULL value for key in hashtable
+  * doc: rename doc "weechat_relay_protocol" to "weechat_relay_weechat"
+  
+  Added
+  * core: add command line option --build-info / -i to display information about build options (#449)
+  * irc: add option -export in command /list, add option irc.look.list_buffer_format_export
+  * relay: add option relay.network.websocket_permessage_deflate (#1549)
+  * relay: add option relay.look.raw_messages_max_length (#2122)
+  * relay: add infos "relay_api_version" and "relay_api_version_number"
+  * relay/api: add event "quit", sent to clients when WeeChat is quitting (#2168)
+  * script: add info "script_info"
+  * core: add hdata count in evaluation of expressions with hdata_count:name[list] or hdata_count:name[pointer]
+  * core: add info "window" (#2141)
+  * core: add completion "bars_items"
+  * core: add signals "layout_buffers_applied" and "layout_windows_applied" (#2167)
+  * core: add signal "buffer_time_for_each_line_changed"
+  * api, relay: send new signal "buffer_line_data_changed" when a line is updated in a buffer via hdata, send event "buffer_line_data_changed" to clients of "api" and "weechat" protocols
+  * api: add hashtable type "longlong"
+  * api: add function line_search_by_id
+  * doc: add doc on "api" relay
+  
+  Fixed
+  * python: fix crash on quit with Python 3.12 (#2046, #2126)
+  * core: fix crash when deleting a bar that has no items (#2138)
+  * relay/api: fix crash when sending data to a remote buffer when the remote has been deleted (#2157)
+  * irc, xfer: fix display of input prompt in IRC private buffers and DCC chat buffers (#2128)
+  * irc: fix send of split messages when server option "anti_flood" set to 0 (#2172)
+  * core: fix generation of TOTP on FreeBSD (#2171)
+  * core: apply buffer properties (options weechat.buffer.*) when a buffer name is changed
+  * irc: fix property "short_name" of channel buffer when the joined channel has a different case than the /join command
+  * irc: close /list buffer when the server buffer is closed (#2121)
+  * irc: clear /list buffer when disconnecting from server (#2133)
+  * irc: display an explicit message on /list buffer when the list of channels is empty (#2133)
+  * xfer: fix send of data on the DCC chat buffer after /upgrade if the buffer was opened before the upgrade (#2092)
+  * core: fix refresh of bar item "scroll" in root bar after /buffer clear (#590)
+  * core, plugins: return "0x0" instead of "(nil)" for pointers formatted in strings
+  * core: send signal "buffer_moved" for all buffers affected by merge/unmerge
+  * ruby: fix builtin functions not available (#2109)
+  * php: fix return value of function hdata_longlong
+  * tcl: fix return value of function hdata_longlong (#2119)
+  * relay/api: fix connection to remote using an IPv6 address with square brackets (#2156)
+  * relay/api: allow clients without authentication when no relay password is defined and option relay.network.allow_empty_password is on (#2158)
+  * relay/api: fix connection to remote without password (#2158)
+  * relay/api: fix timezone of dates sent to clients (#2151)
+  * relay/api: clear lines and nicklist on all remote buffers upon successful connection to the remote (#2161)
+  * relay/api: fix buffers synchronization with existing buffers that have been renamed on remote in the meanwhile (#2169)
+  * relay/api: do not reset input text on existing buffers when reconnecting to the remote
+  * relay/api: close obsolete buffers when reconnecting to the remote
+  * relay/api: fix "body_type" returned when lines or nicks of a buffer are requested
+  * relay/api: fix read of one buffer line
+  * relay/api: automatically disconnect when the command /upgrade is executed on the remote
+  * relay/api: fix send of data to remote after command /upgrade executed in the remote client
+  * relay/api: disconnect from remote in case of error when sending data
+  * relay/api: disconnect cleanly when the remote is quitting (#2168)
+  * relay: fix websocket permessage-deflate extension when the client doesn't send the max window bits parameters (#1549)
+  * relay: fix allocation and reinit of field "client_context_takeover" in websocket deflate structure (#1549)
+  * spell: improve error displayed when a word can not be added to the dictionary (#2144)
+  * core: fix completion of command /item refresh
+  * lua: remote string "Lua" from Lua version in output of /debug libs
+  * core: fix detection of libgcrypt ≥ 1.11 (debian #1071960)
+  * core, relay: fix include directory of libcjson and libzstd
+  * tests: fix relay tests on s390x (#2118)
+  * tests: fix check of php plugin (#2117)
+  * tests: fix compilation of tests on Fedora 40 (#2116)
+  * tests: fix compilation of tests on Rocky 9.4
+
+- Update to version 4.3.6:
+
+  Fixed
+  * core: fix generation of TOTP on FreeBSD (issue #2171)
+  * relay/api: fix crash when sending data to a remote buffer when the remote has been deleted (issue #2157)
+  * relay/api: fix timezone of dates sent to clients (issue #2151)
+
+- Update to version 4.3.5:
+
+  Fixed
+  * ruby: fix crash in plugin initialization (#2163)
+
+- Update to version 4.3.4:
+
+  Fixed
+  * python: fix crash on quit with Python 3.12 (#2046, #2126)
+  * core: fix crash when deleting a bar that has no items (#2138)
+  * ruby: fix builtin functions not available (#2109)
+  * relay/api: fix "body_type" returned when lines or nicks of a buffer are requested
+
+- Update to version 4.3.3:
+
+  Fixed
+  * core, plugins: return "0x0" instead of "(nil)" for pointers formatted in strings
+
+- Update to version 4.3.2:
+
+  Changed
+  * relay: enable websocket extension "permessage-deflate" with "api" relay only (#1549)
+  
+  Added
+  * relay: add option relay.look.raw_messages_max_length (#2122)
+  
+  Fixed
+  * irc, xfer: fix display of input prompt in IRC private buffers and DCC chat buffers (#2128)
+  * irc: don't return pointer to irc server if the channel or nick is not found in info "irc_buffer"
+  * relay: fix websocket permessage-deflate extension when the client doesn't send the max window bits parameters (#1549)
+  * relay: fix allocation and reinit of field "client_context_takeover" in websocket deflate structure (#1549)
+
+-------------------------------------------------------------------
 Sun Jun  2 22:08:20 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Update to version 4.3.1:

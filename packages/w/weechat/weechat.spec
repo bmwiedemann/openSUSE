@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        4.3.1
+Version:        4.5.1
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -29,8 +29,8 @@ Source2:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        %{name}.changes
 BuildRequires:  ca-certificates
-BuildRequires:  cmake
-BuildRequires:  curl-devel
+BuildRequires:  cmake >= 3.18
+BuildRequires:  curl-devel >= 7.47.0
 BuildRequires:  gcc-c++
 BuildRequires:  grep
 BuildRequires:  hicolor-icon-theme
@@ -43,9 +43,8 @@ BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(enchant)
-BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lua)
@@ -58,6 +57,7 @@ Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-perl = %{version}
 Recommends:     %{name}-python = %{version}
 Obsoletes:      %{name}-guile < 2.6
+
 
 %description
 WeeChat (Wee Enhanced Environment for Chat) is a free chat client, fast and light, designed for many operating systems. It is highly customizable and extensible with scripts.
@@ -152,13 +152,12 @@ export CFLAGS="%{optflags}"
 %cmake_install
 
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.desktop"
-%suse_update_desktop_file -r "%{name}" Network IRCClient
 
 %find_lang "%{name}" --with-man
 
 %files
-%doc AUTHORS.adoc ChangeLog.adoc Contributing.adoc
-%doc README.adoc ReleaseNotes.adoc
+%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md
+%doc README.md UPGRADING.md
 %license COPYING
 %{_bindir}/weechat-curses
 %{_bindir}/weechat-headless
