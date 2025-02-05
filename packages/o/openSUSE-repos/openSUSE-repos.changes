@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:32:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.20: the construct %else ifarch … was never
+  valid; anything behing 'else' was simply ignored and now leads to
+  an error.
+
+-------------------------------------------------------------------
 Mon Dec  9 22:17:56 UTC 2024 - Lubos Kocman <Lubos.Kocman+factory@suse.de>
 
 - Disable Leap flavor building on Leap Micro 6.1+

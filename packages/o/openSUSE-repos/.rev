@@ -215,4 +215,12 @@
   * Fixes gh#openSUSE/opensuse-migration-tool#17</comment>
     <requestid>1229496</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>93aa63e0572f4cf2e9090b2b70a937ed</srcmd5>
+    <version>20240712.dd8c2eb</version>
+    <time>1738772485</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243393</requestid>
+  </revision>
 </revisionlist>

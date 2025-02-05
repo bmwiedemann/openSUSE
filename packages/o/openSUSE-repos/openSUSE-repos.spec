@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-repos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -211,7 +211,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/zypp/vars.d/
 %if "%{theme}" == "Tumbleweed"
 %ifarch %{ix86} x86_64
 install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
-%else ifarch aarch64 %{arm} %{power64} ppc s390x riscv64
+%else
 install opensuse-%{branding}-ports-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 %endif
 %endif
