@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 06:38:04 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Work around the fact that %%_libdir is now not defined for noarch
+  builds
+
+-------------------------------------------------------------------
 Wed Mar 23 20:17:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target level 1.8

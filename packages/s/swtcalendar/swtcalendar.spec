@@ -1,7 +1,7 @@
 #
 # spec file for package swtcalendar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ standalone date picker dialog.
 dos2unix *.txt
 
 %build
-export CLASSPATH=%{_libdir}/java/swt.jar
+export CLASSPATH=$(find-jar swt)
 %{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
