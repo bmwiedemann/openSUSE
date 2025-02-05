@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Feb 04 11:32:13 UTC 2025 - matthias.gerstner@suse.com
+
+- Update to version 2.6.1+git20250204.53a229c0:
+  * dbus-services: drop no longer needed temporary sssd-dbus entry
+  * dbus-services: adjust sssd-dbus hash (bsc#1235724)
+
+-------------------------------------------------------------------
+Fri Jan 31 14:06:59 UTC 2025 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20250131.362f064:
+  * dbus-services: drop RemoteDesktop.service which is no longer packages.
+  * dbus-services: drop no longer packaged kcm_sddm service
+  * dbus-services: drop no longer packages scmon Pkcs11Monitor.conf
+
+-------------------------------------------------------------------
+Tue Jan 28 10:27:56 UTC 2025 - matthias.gerstner@suse.com
+
+- Update to version 2.6.1+git20250128.c5fd1e77:
+  * dbus-services: tuned-ppd: add new org.freedesktop.UPower names
+
+-------------------------------------------------------------------
 Thu Jan 09 14:33:30 UTC 2025 - matthias.gerstner@suse.com
 
 - Update to version 2.6.1+git20250109.dfc27180:

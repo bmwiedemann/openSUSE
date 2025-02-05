@@ -5120,4 +5120,35 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * whitelistings: add sssd permissions drop-in file for helper caps (bsc#1233131)</comment>
     <requestid>1236240</requestid>
   </revision>
+  <revision rev="495" vrev="1">
+    <srcmd5>b3cc5ca51db62e3f72e49b62c54f5047</srcmd5>
+    <version>2.6.1+git20250128.c5fd1e77</version>
+    <time>1738244963</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20250128.c5fd1e77:
+  * dbus-services: tuned-ppd: add new org.freedesktop.UPower names</comment>
+    <requestid>1240788</requestid>
+  </revision>
+  <revision rev="496" vrev="1">
+    <srcmd5>02cce7fa7bcb4cd8f12b67f61cdfa9a5</srcmd5>
+    <version>2.6.1+git20250131.362f064</version>
+    <time>1738615306</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20250131.362f064:
+  * dbus-services: drop RemoteDesktop.service which is no longer packages.
+  * dbus-services: drop no longer packaged kcm_sddm service
+  * dbus-services: drop no longer packages scmon Pkcs11Monitor.conf
+</comment>
+    <requestid>1241655</requestid>
+  </revision>
+  <revision rev="497" vrev="1">
+    <srcmd5>969769716e453d3f1e0ca78645dd410c</srcmd5>
+    <version>2.6.1+git20250204.53a229c0</version>
+    <time>1738788934</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20250204.53a229c0:
+  * dbus-services: drop no longer needed temporary sssd-dbus entry
+  * dbus-services: adjust sssd-dbus hash (bsc#1235724)</comment>
+    <requestid>1243069</requestid>
+  </revision>
 </revisionlist>
