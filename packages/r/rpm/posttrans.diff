@@ -1,5 +1,5 @@
---- include/rpm/rpmcli.h.orig	2023-09-19 10:10:10.000000000 +0000
-+++ include/rpm/rpmcli.h	2023-10-12 11:43:59.662617302 +0000
+--- include/rpm/rpmcli.h.orig	2024-10-07 09:35:46.000000000 +0000
++++ include/rpm/rpmcli.h	2024-12-16 09:31:12.446494695 +0000
 @@ -306,6 +306,7 @@ enum rpmInstallFlags_e {
      INSTALL_ALLMATCHES	= (1 << 9),	/*!< from --allmatches */
      INSTALL_REINSTALL	= (1 << 10),	/*!< from --reinstall */
@@ -24,8 +24,8 @@
   */
  extern struct rpmInstallArguments_s rpmIArgs;
  
---- include/rpm/rpmts.h.orig	2023-10-12 11:43:35.870664176 +0000
-+++ include/rpm/rpmts.h	2023-10-12 11:43:59.662617302 +0000
+--- include/rpm/rpmts.h.orig	2024-12-16 09:30:58.714522978 +0000
++++ include/rpm/rpmts.h	2024-12-16 09:31:12.446494695 +0000
 @@ -253,6 +253,15 @@ int rpmtsOrder(rpmts ts);
  int rpmtsRun(rpmts ts, rpmps okProbs, rpmprobFilterFlags ignoreSet);
  
@@ -42,8 +42,8 @@
   * Reference a transaction set instance.
   * @param ts		transaction set
   * @return		new transaction set reference
---- lib/poptI.c.orig	2023-09-19 10:10:10.000000000 +0000
-+++ lib/poptI.c	2023-10-12 11:43:59.662617302 +0000
+--- lib/poptI.c.orig	2024-10-07 09:35:46.000000000 +0000
++++ lib/poptI.c	2024-12-16 09:31:12.446494695 +0000
 @@ -283,6 +283,10 @@ struct poptOption rpmInstallPoptTable[]
  	&rpmIArgs.installInterfaceFlags, (INSTALL_RESTORE),
  	N_("restore package(s)"),
@@ -55,9 +55,9 @@
  
     POPT_TABLEEND
  };
---- lib/psm.c.orig	2023-10-12 11:43:35.850664215 +0000
-+++ lib/psm.c	2023-10-12 11:43:59.662617302 +0000
-@@ -1001,7 +1001,7 @@ static rpmRC rpmPackageErase(rpmts ts, r
+--- lib/psm.c.orig	2024-12-16 09:30:58.694523019 +0000
++++ lib/psm.c	2024-12-16 09:31:12.446494695 +0000
+@@ -1000,7 +1000,7 @@ static rpmRC rpmPackageErase(rpmts ts, r
  	}
  	if (rc) break;
  
@@ -66,8 +66,8 @@
  	    /* Prepare post transaction uninstall triggers */
  	    rpmtriggersPrepPostUnTransFileTrigs(psm->ts, psm->te);
  	}
---- lib/rpminstall.c.orig	2023-09-19 10:10:10.000000000 +0000
-+++ lib/rpminstall.c	2023-10-12 11:43:59.662617302 +0000
+--- lib/rpminstall.c.orig	2024-10-07 09:35:46.000000000 +0000
++++ lib/rpminstall.c	2024-12-16 09:31:12.446494695 +0000
 @@ -6,6 +6,8 @@
  
  #include <string.h>
@@ -98,7 +98,7 @@
 +	goto exit;
 +    }
 +    while ((s = fgets(line, sizeof(line) - 1, f)) != 0) {
-+	if (p = strrchr(s, '\n'))
++	if ((p = strrchr(s, '\n')) != 0)
 +	    *p = 0;
 +	argvAdd(&manifest, s);
 +    }
@@ -110,8 +110,8 @@
 +    argvFree(manifest);
 +    return rc;
 +}
---- lib/rpmtriggers.c.orig	2023-09-19 10:10:10.000000000 +0000
-+++ lib/rpmtriggers.c	2023-10-12 11:43:59.662617302 +0000
+--- lib/rpmtriggers.c.orig	2024-10-07 09:35:46.000000000 +0000
++++ lib/rpmtriggers.c	2024-12-16 09:31:12.446494695 +0000
 @@ -1,5 +1,6 @@
  #include "system.h"
  
@@ -128,7 +128,7 @@
  			    unsigned int tix, unsigned int priority)
  {
      if (trigs->count == trigs->alloced) {
-@@ -178,6 +179,14 @@ int runPostUnTransFileTrigs(rpmts ts)
+@@ -190,6 +191,14 @@ int runPostUnTransFileTrigs(rpmts ts)
  	if (trigH == NULL)
  	    continue;
  
@@ -143,7 +143,7 @@
  	/* Prepare and run script */
  	script = rpmScriptFromTriggerTag(trigH,
  		triggertag(RPMSENSE_TRIGGERPOSTUN),
-@@ -587,6 +596,16 @@ rpmRC runImmedFileTriggers(rpmts ts, rpm
+@@ -610,6 +619,16 @@ rpmRC runImmedFileTriggers(rpmts ts, rpm
      rpmTagVal priorityTag;
      rpmtriggers triggers;
  
@@ -160,9 +160,9 @@
      if (tm == RPMSCRIPT_FILETRIGGER) {
  	priorityTag = RPMTAG_FILETRIGGERPRIORITIES;
      } else {
---- lib/rpmtriggers.h.orig	2023-09-19 10:10:10.000000000 +0000
-+++ lib/rpmtriggers.h	2023-10-12 11:43:59.662617302 +0000
-@@ -27,6 +27,10 @@ rpmtriggers rpmtriggersCreate(unsigned i
+--- lib/rpmtriggers.h.orig	2024-10-07 09:35:46.000000000 +0000
++++ lib/rpmtriggers.h	2024-12-16 09:31:12.446494695 +0000
+@@ -24,6 +24,10 @@ rpmtriggers rpmtriggersCreate(unsigned i
  RPM_GNUC_INTERNAL
  rpmtriggers rpmtriggersFree(rpmtriggers triggers);
  
@@ -173,9 +173,9 @@
  /*
   * Prepare post trans uninstall file triggers. After transcation uninstalled
   * files are not saved anywhere. So we need during uninstalation of every
---- lib/rpmts_internal.h.orig	2023-09-19 10:10:10.000000000 +0000
-+++ lib/rpmts_internal.h	2023-10-12 11:43:59.662617302 +0000
-@@ -94,6 +94,8 @@ struct rpmts_s {
+--- lib/rpmts_internal.h.orig	2024-10-07 09:35:46.000000000 +0000
++++ lib/rpmts_internal.h	2024-12-16 09:31:12.446494695 +0000
+@@ -83,6 +83,8 @@ struct rpmts_s {
      int min_writes;             /*!< macro minimize_writes used */
  
      time_t overrideTime;	/*!< Time value used when overriding system clock. */
@@ -183,9 +183,9 @@
 +    int dump_posttrans;		/*!< macro dump_posttrans used */
  };
  
- #ifdef __cplusplus
---- lib/transaction.c.orig	2023-09-19 10:10:10.000000000 +0000
-+++ lib/transaction.c	2023-10-12 11:44:28.398560689 +0000
+ /** \ingroup rpmts
+--- lib/transaction.c.orig	2024-10-07 09:35:46.000000000 +0000
++++ lib/transaction.c	2024-12-16 09:37:17.425742632 +0000
 @@ -1475,6 +1475,8 @@ static int rpmtsSetup(rpmts ts, rpmprobF
      /* Get available space on mounted file systems. */
      (void) rpmtsInitDSI(ts);
@@ -195,44 +195,23 @@
      return 0;
  }
  
-@@ -1858,27 +1860,31 @@ int rpmtsRun(rpmts ts, rpmps okProbs, rp
+@@ -1858,6 +1860,15 @@ int rpmtsRun(rpmts ts, rpmps okProbs, rp
      /* Actually install and remove packages */
      nfailed = rpmtsProcess(ts);
  
 +    if (ts->dump_posttrans) {
 +	rpmlog(RPMLOG_NOTICE, "dump_posttrans: enabled\n");
++	runPostUnTransFileTrigs(ts);
++	runTransScripts(ts, PKG_TRANSFILETRIGGERIN);
++	/* Final exit code */
++	rc = nfailed ? -1 : 0;
++	goto exit;
 +    }
 +
      /* Run %posttrans scripts unless disabled */
--    if (!(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS))) {
-+    if (!ts->dump_posttrans && !(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS))) {
+     if (!(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS))) {
  	rpmlog(RPMLOG_DEBUG, "running %%posttrans scripts\n");
- 	runTransScripts(ts, PKG_POSTTRANS);
-     }
-     /* Run %postuntrans scripts unless disabled */
--    if (!(rpmtsFlags(ts) & RPMTRANS_FLAG_NOPOSTUNTRANS)) {
-+    if (!ts->dump_posttrans && !(rpmtsFlags(ts) & RPMTRANS_FLAG_NOPOSTUNTRANS)) {
- 	rpmlog(RPMLOG_DEBUG, "running %%postuntrans scripts\n");
- 	runTransScripts(ts, PKG_POSTUNTRANS);
-     }
- 
-     /* Run %transfiletriggerpostun scripts unless disabled */
--    if (!(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS|RPMTRANS_FLAG_NOTRIGGERIN))) {
-+    if (!ts->dump_posttrans && !(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS|RPMTRANS_FLAG_NOTRIGGERIN))) {
- 	runFileTriggers(ts, NULL, RPMSENSE_TRIGGERIN, RPMSCRIPT_TRANSFILETRIGGER, 0);
-     }
--    if (!(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS|RPMTRANS_FLAG_NOTRIGGERPOSTUN))) {
-+    if (ts->dump_posttrans || !(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS|RPMTRANS_FLAG_NOTRIGGERPOSTUN))) {
- 	runPostUnTransFileTrigs(ts);
-     }
- 
-     /* Run %transfiletriggerin scripts unless disabled */
--    if (!(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS|RPMTRANS_FLAG_NOTRIGGERIN))) {
-+    if (ts->dump_posttrans || !(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOSTTRANS|RPMTRANS_FLAG_NOTRIGGERIN))) {
- 	runTransScripts(ts, PKG_TRANSFILETRIGGERIN);
-     }
-     /* Final exit code */
-@@ -1901,3 +1907,117 @@ exit:
+@@ -1901,3 +1912,117 @@ exit:
      sigaction(SIGPIPE, &oact, NULL);
      return rc;
  }
@@ -336,7 +315,7 @@
 +    runTransScripts(ts, PKG_POSTTRANS);
 +    runTransScripts(ts, PKG_POSTUNTRANS);
 +    /* run %transfiletriggerin scripts */
-+    runFileTriggers(ts, NULL, RPMSENSE_TRIGGERIN, RPMSCRIPT_TRANSFILETRIGGER, 0);
++    runFileTriggers(ts, NULL, -1, RPMSENSE_TRIGGERIN, RPMSCRIPT_TRANSFILETRIGGER, 0);
 +    /* run %transfiletriggerpostun scrips */
 +    runPostUnTransFileTrigs(ts);
 +    /* Run immed %transfiletriggerin scripts */
@@ -350,8 +329,8 @@
 +    rpmtsEmpty(ts);
 +    return rc;
 +}
---- tools/rpm.c.orig	2023-09-19 10:10:10.000000000 +0000
-+++ tools/rpm.c	2023-10-12 11:43:59.662617302 +0000
+--- tools/rpm.c.orig	2024-10-07 09:35:46.000000000 +0000
++++ tools/rpm.c	2024-12-16 09:31:12.446494695 +0000
 @@ -21,6 +21,7 @@ enum modes {
      MODE_ERASE		= (1 <<  2),
      MODE_RESTORE	= (1 <<  4),

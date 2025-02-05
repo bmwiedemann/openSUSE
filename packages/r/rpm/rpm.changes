@@ -1,7 +1,82 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:13:27 CET 2025 - mls@suse.de
+
+- allow to have the primary binding signature in the unhashed area
+  * updated rpmpgp_legacy-1.0.tar.gz to rpmpgp_legacy-1.1.tar.gz
+
+-------------------------------------------------------------------
+Thu Jan 30 12:17:34 CET 2025 - mls@suse.de
+
+- Split unshare plugin configuration into a new "rpm-plugin-unshare"
+  subpackage. This disables the plugin unless the new package
+  is installed.
+
+-------------------------------------------------------------------
+Thu Jan 30 12:03:40 CET 2025 - Adrian Schröter <adrian@suse.de>
+
+- enable config.guess/sub update also for loongarch64 architecture
+- update config.guess/sub files to current state from autoconf-2.72
+
+-------------------------------------------------------------------
+Tue Jan  7 10:58:17 CET 2025 - mls@suse.de
+
+- make misuses of %global with %buildroot work again
+  * new patch: undefbuildroot.diff
+
+-------------------------------------------------------------------
+Thu Dec 19 14:29:49 CET 2024 - mls@suse.de
+
+- backport debug_package regression fix from upstream
+  * new patch: debugpackage.diff
+- fix segfault in rpmtsNextFiles
+  * new patch: nextfiles.diff
+
+-------------------------------------------------------------------
+Tue Dec 17 10:59:26 CET 2024 - mls@suse.de
+
+- allow the buildroot to be a symbolic link in check-files
+  (needed for pesign-obs-integration)
+  * new patch: buildroot-symlink.diff
+
+-------------------------------------------------------------------
+Mon Dec 16 11:55:23 CET 2024 - mls@suse.de
+
+- update to rpm-4.20.0
+  * new BuildSystem directive
+  * support for build scriptley augmenting
+  * per-package build directory available as %builddir
+  * --build-in-place automatically sets --noprep
+  * new -C option for autosetup
+  * better support for reproducible builds
+  * support for group membership lines
+  * new rpm.spawn() lua function
+  * support indentation in spec tags
+  * new rpmdump tool
+- switch to rpmpgp-legacy-1.0
+- disable buildroot check in rpmlintrc for now
+- refreshed patches:
+  * brp.diff macrosin.diff rpmqpack.diff specfilemacro.diff
+  * noprereqdeprec.diff fileattrs.diff assumeexec.diff
+  * enable-postin-scripts-error.diff findsupplements.diff
+  * db_conversion.diff canongnu.diff cmake_python_version.diff
+  * zstdpool.diff posttrans.diff
+  * auto-config-update-aarch64-ppc64le.diff
+  * 0002-log-build-time-if-it-is-set-from-SOURCE_DATE_EPOCH.patch
+  * 0003-Error-out-on-a-missing-changelog-date.patch
+- add compatibility %buildroot definition
+- backport unshare fix from upstream and extend it a bit
+  * new patch: unshare.diff
+
+-------------------------------------------------------------------
 Mon Nov 11 08:43:56 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Bump debugedit version (bsc#1233156)
+
+-------------------------------------------------------------------
+Wed Sep  4 09:27:50 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- move perl packaging to own package
+  adapt fileattrs.diff
 
 -------------------------------------------------------------------
 Fri Mar  1 12:55:27 UTC 2024 - Marcus Meissner <meissner@suse.com>
@@ -4818,4 +4893,3 @@ Thu Jun 26 19:10:48 MEST 1997 - ma@suse.de
 
 - introducing rpm, version 2.4.1
 - documentation (ascii,html) in usr/doc/packages/rpm
-

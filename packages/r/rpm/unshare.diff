@@ -1,0 +1,65 @@
+--- docs/man/rpm-plugin-unshare.8.md.orig	2024-10-07 09:35:46.000000000 +0000
++++ docs/man/rpm-plugin-unshare.8.md	2024-12-16 13:28:44.597787315 +0000
+@@ -27,6 +27,11 @@ This plugin implements the following con
+     execution. Typical examples would be `/tmp` to protect against
+     insecure temporary file usage inside scriptlets, and `/home` to
+     prevent scriptlets from accessing user home directories.
++    When path unsharing is enabled, any mounts made from scriptlets
++    are also private to the scriptlet (and vice versa, mount changes
++    on the host are not visible to the scriptlet).
++
++    Private mounts in chroot-operations is unimplemented.
+ 
+ `%__transaction_unshare_nonet`
+ 
+--- plugins/unshare.c.orig	2024-10-07 09:35:46.000000000 +0000
++++ plugins/unshare.c	2024-12-16 13:52:31.530793880 +0000
+@@ -15,12 +15,32 @@
+ static ARGV_t private_mounts = NULL;
+ static int unshare_flags = 0;
+ 
++static int in_chroot()
++{
++    struct stat sta, stb;
++    if (stat("/", &sta))
++	return 0;
++    if (stat("/proc/1/root", &stb))
++	return 1;	/* proc not mounted, assume chroot */
++    return sta.st_dev == stb.st_dev && sta.st_ino == stb.st_ino ? 0 : 1;
++}
++
+ static rpmRC unshare_init(rpmPlugin plugin, rpmts ts)
+ {
+     char *paths = rpmExpand("%{?__transaction_unshare_paths}", NULL);
+     private_mounts = argvSplitString(paths, ":", ARGV_SKIPEMPTY);
+-    if (private_mounts)
+-	unshare_flags |= CLONE_NEWNS;
++    if (private_mounts) {
++	/*
++	 * Changing mount propagation from inside a chroot fails if the root
++	 * is not also a mount point, disable for now.
++	 */
++	if (strcmp(rpmtsRootDir(ts), "/") || in_chroot()) {
++	    rpmlog(RPMLOG_WARNING,
++			"private mounts in chroot not implemented\n");
++	} else {
++	    unshare_flags |= CLONE_NEWNS;
++	}
++    }
+     free(paths);
+ 
+     if (rpmExpandNumeric("%{?__transaction_unshare_nonet}"))
+@@ -47,9 +67,10 @@ static rpmRC unshare_scriptlet_fork_post
+ 	goto exit;
+     }
+ 
+-    if (private_mounts) {
+-	if (mount("/", "/", NULL, MS_REC | MS_PRIVATE, NULL) == -1) {
+-	    rpmlog(RPMLOG_ERR, _("failed to mount private %s: %s\n"),
++    if (unshare_flags & CLONE_NEWNS) {
++	if (mount(NULL, "/", NULL, MS_REC | MS_PRIVATE, NULL) == -1) {
++	    rpmlog(RPMLOG_ERR,
++		    _("failed to change mount propagation %s: %s\n"),
+ 		    "/", strerror(errno));
+ 	    goto exit;
+ 	}

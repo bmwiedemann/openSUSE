@@ -1,0 +1,40 @@
+--- lib/rpmtriggers.c.orig	2024-12-19 14:05:56.403437646 +0000
++++ lib/rpmtriggers.c	2024-12-19 14:11:56.646774439 +0000
+@@ -239,31 +239,33 @@ typedef struct matchFilesIter_s {
+ static rpmfiles rpmtsNextFiles(matchFilesIter mfi)
+ {
+     Header h;
+-    rpmte *te;
+     rpmfiles files = NULL;
++    const char *pkgname = NULL;
+     rpmstrPool pool = mfi->ts->members->pool;
+     int ix;
+-    unsigned int offset;
+ 
+     ix = rpmdbGetIteratorIndex(mfi->pi);
+     if (ix < rpmdbGetIteratorCount(mfi->pi)) {
+-	offset = rpmdbGetIteratorOffsetFor(mfi->pi, ix);
++	unsigned int offset = rpmdbGetIteratorOffsetFor(mfi->pi, ix);
++	rpmte *te;
+ 	if (packageHashGetEntry(mfi->ts->members->removedPackages, offset,
+ 				&te, NULL, NULL)) {
+ 	    /* Files are available in memory */
+ 	    files  = rpmteFiles(te[0]);
++	    pkgname = rpmteN(te[0]);
+ 	}
+ 
+ 	if (packageHashGetEntry(mfi->ts->members->installedPackages, offset,
+ 				&te, NULL, NULL)) {
+ 	    /* Files are available in memory */
+ 	    files  = rpmteFiles(te[0]);
++	    pkgname = rpmteN(te[0]);
+ 	}
+     }
+ 
+     if (files) {
+ 	rpmdbSetIteratorIndex(mfi->pi, ix + 1);
+-	mfi->pkgname = rpmteN(te[0]);
++	mfi->pkgname = pkgname;
+     } else {
+ 	/* Files are not available in memory. Read them from rpmdb */
+ 	h = rpmdbNextIterator(mfi->pi);

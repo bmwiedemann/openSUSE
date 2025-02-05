@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  gzip
 BuildRequires:  libacl-devel
+BuildRequires:  libarchive-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libdw-devel
@@ -57,11 +58,13 @@ Requires:       rpm-config-SUSE
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.19.1.1
+Version:        4.20.0
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
 Source:         https://ftp.osuosl.org/pub/rpm/releases/rpm-4.19.x/rpm-%{version}.tar.bz2
+#Git-Clone:     https://github.com/rpm-software-management/rpmpgp_legacy
+Source1:        rpmpgp_legacy-1.1.tar.gz
 Source5:        rpmsort
 Source8:        rpmconfigcheck
 Source9:        sysconfig.services-rpm
@@ -116,6 +119,11 @@ Patch139:       cmake_python_version.diff
 Patch140:       0001-Add-option-to-set-mtime-of-files-in-rpms.patch
 Patch141:       0002-log-build-time-if-it-is-set-from-SOURCE_DATE_EPOCH.patch
 Patch142:       0003-Error-out-on-a-missing-changelog-date.patch
+Patch150:       unshare.diff
+Patch151:       buildroot-symlink.diff
+Patch152:       debugpackage.diff
+Patch153:       nextfiles.diff
+Patch154:       undefbuildroot.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -201,19 +209,22 @@ Conflicts:      rpm < 4.15.0
 If you want to build a rpm, you need this package. It provides rpmbuild
 and requires some packages that are usually required.
 
-%package build-perl
-Summary:        RPM dependency generator for Perl
-Group:          Development/Languages/Perl
-Requires:       perl-base
+%package plugin-unshare
+Summary:        Rpm plugin for Linux namespace isolation functionality
+Requires:       rpm = %{version}
 
-%description build-perl
-Provides and requires generator for .pl files and modules.
+%description plugin-unshare
+Rpm plugin for Linux namespace isolation functionality.
 
 %prep
 %setup -q -n rpm-%{version}
-%ifarch aarch64 ppc64le riscv64
+%ifarch aarch64 ppc64le riscv64 loongarch64
 tar xf %{SOURCE14}
 %endif
+pushd rpmio
+tar xf %{SOURCE1}
+ln -s rpmpgp_legacy-* rpmpgp_legacy
+popd
 
 rm -rf sqlite
 %patch -P  5      -P 12 -P 13                         -P 18
@@ -230,9 +241,13 @@ rm -rf sqlite
 %patch -P 122 -P 123
 %patch -P 131          -P 133 -P 134 -P 135 -P 136        -P 138
 %patch -P 139
-%patch -P 140 -P 141 -P 142 -p1
+%if 0
+%patch -P 140
+%endif
+%patch -P 141 -P 142
+%patch -P 150 -P 151 -P 152 -P 153 -P 154
 
-%ifarch aarch64 ppc64le riscv64
+%ifarch aarch64 ppc64le riscv64 loongarch64
 %patch -P 6464
 %endif
 
@@ -270,10 +285,11 @@ cmake .. \
   -DCMAKE_INSTALL_FULL_SHAREDSTATEDIR:PATH=/var/lib \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DRPM_VENDOR=suse \
-  -DWITH_ARCHIVE=OFF \
+  -DWITH_ARCHIVE=ON \
   -DWITH_READLINE=OFF \
   -DWITH_SELINUX=ON \
-  -DWITH_INTERNAL_OPENPGP=ON \
+  -DWITH_SEQUOIA=OFF \
+  -DWITH_LEGACY_OPENPGP=ON \
   -DENABLE_NDB=ON \
   -DENABLE_BDB_RO=ON \
   -DENABLE_SQLITE=OFF \
@@ -345,7 +361,7 @@ for i in /usr/share/automake-*/*; do
   fi
 done
 popd
-%ifarch aarch64 ppc64le riscv64
+%ifarch aarch64 ppc64le riscv64 loongarch64
 install -m 755 build-aux/config.guess %{buildroot}/usr/lib/rpm
 install -m 755 build-aux/config.sub %{buildroot}/usr/lib/rpm
 %endif
@@ -404,12 +420,15 @@ fi
 %license 	COPYING
 %doc	%{_datadir}/doc/packages/rpm
 %exclude %{_datadir}/doc/packages/rpm/API
+%exclude /usr/lib/rpm/macros.d/macros.transaction_unshare
+%exclude %{_mandir}/man8/rpm-plugin-unshare*
 	/etc/rpm
 %if 0%{?suse_version} < 1550
 	/bin/rpm
 %endif
 	%{_bindir}/gendiff
 	%{_bindir}/rpm
+	%{_bindir}/rpm2archive
 	%{_bindir}/rpm2cpio
 	%{_bindir}/rpmdb
 	%{_bindir}/rpmgraph
@@ -432,6 +451,7 @@ fi
 	/usr/lib/rpm/rpmrc
 	/usr/lib/rpm/rpmsort
 	/usr/lib/rpm/rpmuncompress
+	/usr/lib/rpm/rpmdump
 	/usr/lib/rpm/suse
 	/usr/lib/rpm/tgpg
 	%{_libdir}/rpm-plugins
@@ -468,21 +488,12 @@ fi
 /usr/lib/rpm/check-*
 /usr/lib/rpm/*find*
 /usr/lib/rpm/fileattrs/
-%exclude /usr/lib/rpm/fileattrs/perl*.attr
 /usr/lib/rpm/*.prov
-%exclude /usr/lib/rpm/perl.prov
 /usr/lib/rpm/*.req
-%exclude /usr/lib/rpm/perl.req
-%ifarch aarch64 ppc64le riscv64
+%ifarch aarch64 ppc64le riscv64 loongarch64
 /usr/lib/rpm/config.guess
 /usr/lib/rpm/config.sub
 %endif
-
-%files build-perl
-%defattr(-,root,root)
-/usr/lib/rpm/fileattrs/perl*.attr
-/usr/lib/rpm/perl.prov
-/usr/lib/rpm/perl.req
 
 %files devel
 %defattr(644,root,root,755)
@@ -494,5 +505,10 @@ fi
 %{_libdir}/pkgconfig/rpm.pc
 %{_libdir}/cmake/rpm
 %doc	%{_datadir}/doc/packages/rpm/API
+
+%files plugin-unshare
+%defattr(-,root,root)
+/usr/lib/rpm/macros.d/macros.transaction_unshare
+%doc %{_mandir}/man8/rpm-plugin-unshare*
 
 %changelog

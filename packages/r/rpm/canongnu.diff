@@ -1,6 +1,6 @@
---- CMakeLists.txt.orig	2024-02-07 09:57:31.944781372 +0000
-+++ CMakeLists.txt	2024-02-07 09:57:51.924739495 +0000
-@@ -138,14 +138,26 @@ function(makemacros)
+--- CMakeLists.txt.orig	2024-10-07 09:35:46.000000000 +0000
++++ CMakeLists.txt	2024-12-16 09:42:51.221054406 +0000
+@@ -153,14 +153,26 @@ function(makemacros)
  
  	list(GET db_backends 0 DB_BACKEND)
  
@@ -28,5 +28,5 @@
 +	    set(RPMCANONGNU -gnu)
 +	endif()
  
- 	if (ENABLE_CUTF8)
- 		set(C_LOCALE "C.UTF-8")
+ 	configure_file(platform.in platform @ONLY)
+ 	configure_file(rpmrc.in rpmrc @ONLY)

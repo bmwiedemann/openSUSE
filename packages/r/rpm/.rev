@@ -2546,4 +2546,20 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- Bump debugedit version (bsc#1233156)</comment>
     <requestid>1223657</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>c09c19cd68cc39bbde3ebb395c037d97</srcmd5>
+    <version>4.20.0</version>
+    <time>1738335714</time>
+    <user>anag+factory</user>
+    <comment>update to rpm-4.20.0</comment>
+    <requestid>1241327</requestid>
+  </revision>
+  <revision rev="318" vrev="2">
+    <srcmd5>013581b3552a77a16d86d2fc5ca54c9b</srcmd5>
+    <version>4.20.0</version>
+    <time>1738755566</time>
+    <user>anag+factory</user>
+    <comment>- allow to have the primary binding signature in the unhashed area</comment>
+    <requestid>1242814</requestid>
+  </revision>
 </revisionlist>

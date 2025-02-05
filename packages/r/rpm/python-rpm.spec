@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 # Enable Python build sourced from rpm spec
 %global with_python 1
 Name:           python-rpm
-Version:        4.19.1.1
+Version:        4.20.0
 Release:        0
 Summary:        Python Bindings for Manipulating RPM Packages
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  libacl-devel
+BuildRequires:  libarchive-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libdw-devel

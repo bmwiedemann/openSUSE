@@ -1,36 +1,31 @@
-Index: build/parseSpec.c
-===================================================================
---- build/parseSpec.c.orig
-+++ build/parseSpec.c
-@@ -942,7 +942,30 @@ static rpmSpec parseSpec(const char *spe
- 					  &(spec->buildrequires));
- 	    break;
- 	case PART_BUILD:
--	    parsePart = parseSimpleScript(spec, "%build", &(spec->build));
-+	    if (spec->build) {
-+		rpmlog(RPMLOG_ERR, _("line %d: second %s\n"), spec->lineNum, "%build");
-+		parsePart = PART_ERROR;
-+		break;
-+	    }
-+	    spec->build = newStringBuf();
-+	    appendLineStringBuf(spec->build,
-+		"ref=/usr/lib/rpm\n"
-+		"mints=0\n"
-+		"case $(uname -m) in\n"
-+		"    aarch64) mints=20120610;;\n"
-+		"    ppc64le) mints=20130610;;\n"
-+		"    riscv64) mints=20160911;;\n"
-+		"esac\n"
-+		"for s in guess sub; do\n"
-+		"    for c in $(find -maxdepth 8 -name \"config.$s\"); do\n"
-+		"         grep -q config-patches@ $c || continue\n"
-+		"         timestamp=$(sed -n \"/^timestamp=/{s///;s/[-'\\\"]//g;p;q;}\" $c)\n"
-+		"         test -n \"$timestamp\" || timestamp=0\n"
-+		"         test $timestamp -ge $mints || install -m 755 $ref/config.$s $c\n"
-+		"     done\n"
-+		"done\n"
-+	    );
-+	    parsePart = parseLines(spec, STRIP_NOTHING, NULL, &(spec->build));
- 	    break;
- 	case PART_INSTALL:
- 	    parsePart = parseSimpleScript(spec, "%install", &(spec->install));
+--- build/parseSimpleScript.c.orig	2024-12-16 09:59:01.199053527 +0000
++++ build/parseSimpleScript.c	2024-12-16 10:08:22.389914963 +0000
+@@ -59,6 +59,28 @@ int parseSimpleScript(rpmSpec spec, cons
+ 	target = &buf;
+     }
+ 
++    if (!mode && !*target && !strcmp(name, "build")) {
++	*target = newStringBuf();
++	appendLineStringBuf(*target,
++            "ref=/usr/lib/rpm\n"
++            "mints=0\n"
++            "case $(uname -m) in\n"
++            "    aarch64) mints=20120610;;\n"
++            "    ppc64le) mints=20130610;;\n"
++            "    riscv64) mints=20160911;;\n"
++            "    loongarch64) mints=20201222;;\n"
++            "esac\n"
++            "for s in guess sub; do\n"
++            "    for c in $(find -maxdepth 8 -name \"config.$s\"); do\n"
++            "         grep -q config-patches@ $c || continue\n"
++            "         timestamp=$(sed -n \"/^timestamp=/{s///;s/[-'\\\"]//g;p;q;}\" $c)\n"
++            "         test -n \"$timestamp\" || timestamp=0\n"
++            "         test $timestamp -ge $mints || install -m 755 $ref/config.$s $c\n"
++            "     done\n"
++            "done\n"
++	);
++    }
++
+     res = parseLines(spec, STRIP_NOTHING, NULL, target);
+ 
+     if (buf) {

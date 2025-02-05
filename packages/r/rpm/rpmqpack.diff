@@ -1,5 +1,5 @@
---- docs/man/CMakeLists.txt.orig	2024-02-07 13:36:51.000000000 +0000
-+++ docs/man/CMakeLists.txt	2024-02-09 10:36:43.300952115 +0000
+--- docs/man/CMakeLists.txt.orig	2024-10-07 09:35:46.000000000 +0000
++++ docs/man/CMakeLists.txt	2024-12-16 09:17:15.684229047 +0000
 @@ -2,6 +2,7 @@ set(core
  	gendiff.1 rpm2cpio.8
  	rpm.8 rpmbuild.8 rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8
@@ -8,8 +8,8 @@
  )
  set(extra
  	rpm2archive.8 rpm-plugins.8 rpm-plugin-prioreset.8 rpm-plugin-syslog.8
---- docs/man/rpmqpack.8.orig	2024-02-09 10:36:43.300952115 +0000
-+++ docs/man/rpmqpack.8	2024-02-09 10:36:43.300952115 +0000
+--- docs/man/rpmqpack.8.orig	2024-12-16 09:17:15.684229047 +0000
++++ docs/man/rpmqpack.8	2024-12-16 09:17:15.684229047 +0000
 @@ -0,0 +1,25 @@
 +.TH RPMQPACK 8 "Mar 2002"
 +.SH NAME
@@ -36,9 +36,9 @@
 +
 +.SH AUTHOR
 +Michael Schroeder <mls@suse.de>
---- tools/CMakeLists.txt.orig	2024-02-07 13:36:51.000000000 +0000
-+++ tools/CMakeLists.txt	2024-02-09 10:37:32.932875459 +0000
-@@ -7,6 +7,7 @@ add_executable(rpm2cpio rpm2cpio.c cliut
+--- tools/CMakeLists.txt.orig	2024-10-07 09:35:46.000000000 +0000
++++ tools/CMakeLists.txt	2024-12-16 09:18:57.764016162 +0000
+@@ -6,6 +6,7 @@ add_executable(rpmkeys rpmkeys.c cliutil
  add_executable(rpmsign rpmsign.c cliutils)
  add_executable(rpmbuild rpmbuild.c cliutils)
  add_executable(rpmspec rpmspec.c cliutils)
@@ -46,17 +46,17 @@
  
  add_executable(rpmdeps rpmdeps.c)
  add_executable(rpmgraph rpmgraph.c)
-@@ -60,7 +61,7 @@ foreach(cmd rpmverify rpmquery)
- endforeach()
+@@ -77,7 +78,7 @@ endif()
+ 
  install(TARGETS
- 	rpm rpmdb rpmkeys rpm2cpio rpmsign rpmbuild rpmspec
+ 	rpm rpmdb rpmkeys rpmsign rpmbuild rpmspec
 -	rpmlua rpmgraph
 +	rpmlua rpmgraph rpmqpack
  )
- install(TARGETS rpmdeps rpmuncompress DESTINATION ${RPM_CONFIGDIR})
+ install(TARGETS rpmdeps rpmdump rpmuncompress DESTINATION ${RPM_CONFIGDIR})
  
---- tools/rpmqpack.c.orig	2024-02-09 10:36:43.300952115 +0000
-+++ tools/rpmqpack.c	2024-02-09 10:36:43.300952115 +0000
+--- tools/rpmqpack.c.orig	2024-12-16 09:17:15.688229038 +0000
++++ tools/rpmqpack.c	2024-12-16 09:17:15.688229038 +0000
 @@ -0,0 +1,60 @@
 +#include <sys/types.h>
 +#include <limits.h>

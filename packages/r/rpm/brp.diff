@@ -1,5 +1,5 @@
---- scripts/brp-strip-comment-note.orig	2023-09-19 10:10:10.000000000 +0000
-+++ scripts/brp-strip-comment-note	2023-10-09 12:22:27.504732553 +0000
+--- scripts/brp-strip-comment-note.orig	2024-10-07 09:35:46.000000000 +0000
++++ scripts/brp-strip-comment-note	2024-12-16 09:15:41.572425334 +0000
 @@ -15,7 +15,7 @@ esac
  
  # Strip .comment and .note sections (the latter only if it is not allocated)
@@ -9,10 +9,10 @@
  	note="-R .note"
  	if $OBJDUMP -h $f | grep '^[ 	]*[0-9]*[ 	]*.note[ 	]' -A 1 | \
  		grep ALLOC >/dev/null; then
---- scripts/brp-strip.orig	2023-09-19 10:10:10.000000000 +0000
-+++ scripts/brp-strip	2023-10-09 12:24:36.920521652 +0000
-@@ -35,6 +35,7 @@ strip_elf_binaries()
-     ! -regex "${RPM_BUILD_ROOT}/*usr/lib/debug.*" \
+--- scripts/brp-strip.orig	2024-10-07 09:35:46.000000000 +0000
++++ scripts/brp-strip	2024-12-16 09:15:41.572425334 +0000
+@@ -37,6 +37,7 @@ strip_elf_binaries()
+     ! -name "*.py" ! -name "*.js" ! -name "*.rb" \
      ! -name "*.go" -links "${nlinks}" -print0 | \
      xargs -0 -r -P${nprocs} -n${MAX_ARGS} sh -c "file \"\$@\" | \
 +    grep -v ' shared object,' | grep -v '/lib/modules/ | \

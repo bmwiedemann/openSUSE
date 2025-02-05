@@ -1,26 +1,9 @@
---- fileattrs/elf.attr.orig	2023-09-19 10:10:10.000000000 +0000
-+++ fileattrs/elf.attr	2023-10-09 13:07:09.252042587 +0000
-@@ -1,4 +1,4 @@
- %__elf_provides		%{_rpmconfigdir}/elfdeps --provides
- %__elf_requires		%{_rpmconfigdir}/elfdeps --requires
+--- fileattrs/elf.attr.orig	2024-10-07 09:35:46.000000000 +0000
++++ fileattrs/elf.attr	2024-12-16 09:23:29.831448715 +0000
+@@ -1,5 +1,5 @@
+ %__elf_provides		%{_rpmconfigdir}/elfdeps --provides --multifile
+ %__elf_requires		%{_rpmconfigdir}/elfdeps --requires --multifile
  %__elf_magic		^(setuid,? )?(setgid,? )?(sticky )?ELF (32|64)-bit.*$
--%__elf_exclude_path	^/lib/modules/.*\.ko?(\.[[:alnum:]]*)$
-+%__elf_exclude_path	(^/usr/lib/debug/)|(^/lib/modules/.*\.ko?(\.[[:alnum:]]*)$)
---- fileattrs/perl.attr.orig	2023-09-19 10:10:10.000000000 +0000
-+++ fileattrs/perl.attr	2023-10-09 12:58:36.893003334 +0000
-@@ -1,3 +1,4 @@
--%__perl_requires	%{_rpmconfigdir}/perl.req
-+# disabled for now
-+#%__perl_requires	%{_rpmconfigdir}/perl.req
- %__perl_magic		^.*[Pp]erl .*$
- %__perl_flags		exeonly
---- fileattrs/perllib.attr.orig	2023-09-19 10:10:10.000000000 +0000
-+++ fileattrs/perllib.attr	2023-10-09 12:58:36.893003334 +0000
-@@ -1,5 +1,6 @@
- %__perllib_provides	%{_rpmconfigdir}/perl.prov
--%__perllib_requires	%{_rpmconfigdir}/perl.req
-+#disabled for now
-+#%__perllib_requires	%{_rpmconfigdir}/perl.req
- %__perllib_magic	^Perl[[:digit:]] module source.*
- %__perllib_path		\\.pm$
- %__perllib_flags	magic_and_path
+-%__elf_exclude_path	^/lib/modules/.*\\.ko?(\\.[[:alnum:]]*)$
++%__elf_exclude_path	(^/usr/lib/debug/)|(^/lib/modules/.*\\.ko?(\\.[[:alnum:]]*)$)
+ %__elf_protocol		multifile
