@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>1141476</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce77647f49a0c18b9e874f385ad5f025</srcmd5>
+    <version>1.5.2</version>
+    <time>1738755673</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.2:
+  * Corrected platform support for MacOS Arm64 based systems in
+    function is_aarch64
+  * Dropped support for Python 3.7</comment>
+    <requestid>1243208</requestid>
+  </revision>
 </revisionlist>

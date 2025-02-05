@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb  4 18:58:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Corrected platform support for MacOS Arm64 based systems in
+    function is_aarch64
+  * Dropped support for Python 3.7
+
+-------------------------------------------------------------------
 Wed Jan 24 13:41:10 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

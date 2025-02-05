@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-skip-markers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-skip-markers
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Pytest plugin for conditionally skipping tests
 License:        Apache-2.0
 URL:            https://github.com/saltstack/pytest-skip-markers
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-skip-markers/pytest-skip-markers-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-skip-markers/pytest_skip_markers-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 50.3.2}
 BuildRequires:  %{python_module setuptools-declarative-requirements}
@@ -51,7 +51,7 @@ required to skip tests in some common scenarios, for example, platform specific
 tests.
 
 %prep
-%setup -q -n pytest-skip-markers-%{version}
+%setup -q -n pytest_skip_markers-%{version}
 
 %build
 %pyproject_wheel
