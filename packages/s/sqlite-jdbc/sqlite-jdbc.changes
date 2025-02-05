@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jan 16 06:23:01 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.48.0.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.48.0 (c0f66af)
+  * Build
+    ~ deps
+      + bump org.jreleaser:jreleaser-maven-plugin (302a600)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.14.2 to 5.15.2
+        (a7dd7d4)
+      + bump org.assertj:assertj-core from 3.27.0 to 3.27.2
+        (3c267ae)
+
+-------------------------------------------------------------------
+Fri Jan  3 06:15:41 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.47.2.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.47.2 (0bd2f8f)
+  * Fixes
+    ~ jdbc
+      + getColumns doesn't correctly parse precision/scale with
+        whitespace (8455468), closes #1215
+  * Build
+    ~ deps
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (533efae)
+      + bump org.graalvm.buildtools:native-maven-plugin (bbe5e1e)
+    ~ deps-dev
+      + bump org.assertj:assertj-core from 3.26.3 to 3.27.0
+        (8283aa7)
+      + bump org.junit.jupiter:junit-jupiter (80e51ea)
+
+-------------------------------------------------------------------
 Tue Nov 26 04:06:23 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.47.1.0
