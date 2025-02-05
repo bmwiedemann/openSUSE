@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Feb  5 04:53:16 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.102.0:
+  * Changes:
+    + Additions:
+      - New command: `version check`.
+      - generate `with input`.
+      - New operators: `has` and `not-has`.
+      - User autoload directories.
+      - Custom completers fall back to file completions.
+      - `get` is now const.
+      - `format number` (renamed from `fmt`).
+      - `chunks` supports binary input.
+      - New command: `bytes split`.
+      - New command: `help pipe-and-redirect`.
+      - The `start` command now works with non-HTTP URIs.
+      - Duration value output from `debug profile`.
+      - Several `into` commands can now operate on their own type.
+      - `touch` now supports globbing.
+      - `source null`/`use null`.
+      - `run-external` and `exec` now support list spreading.
+      - New config option: `use_ansi_coloring: 'auto'`.
+      - New config option: `banner: 'short'`.
+      - `move --first`/`--list` flags.
+      - `find --no-highlight` switch.
+      - `seq date` enhancements.
+      - `content_type` metadata is now assigned to known filetypes 
+         that don't have a `from` convertor.
+  + Breaking changes:
+    - `$env.config.filesize` changes.
+    - `format filesize`.
+    - `ENV_CONVERSIONS` take effect immediately.
+    - External completers fall back to file completions only 
+      on `null`.
+    - Custom completions inherit `case_sensitive` option from config.
+    - Command pipeline input/output type changes.
+    - N-dots tweak.
+  + Deprecations:
+    - `into bits`.
+    - `range`.
+    - `fmt`.
+  + Removals:
+    - `utouch`.
+    - `split-by`.
+    - `date to-record`.
+    - `date to-table`.
+  + Bug fixes and other changes:
+    - Immediate error return.
+    - `config reset` fix.
+    - Fix empty list display when using `print`.
+    - Internal changes to `PipelineData` spans.
+    - Range related bug fixes.
+    - `std` enhancements.
+    - Nuon conversions of range values now keep step size.
+    - `explore` command panic when viewing small binary files.
+    - Convert Path to `list` in main and preserve case.
+    - Fix improperly escaped strings in `stor update`.
+    - Fix: Auto `cd` should not canonicalize symbolic path.
+    - Fix: Pressing `Esc` or `Q` was not closing `explore`.
+    - Custom values are now expanded in tables.
+    - Change how `and` and `or` operations are compiled to IR 
+      to support custom values.
+    - Fix `stor reset` when there are foreign keys.
+    - New, improved `grid` icons.
+    - SHLVL decrement on `exec`.
+    - Fix root directory traversal issue.
+    - Fix `table` panic.
+    - Parser fixes.
+    - Streaming improvements.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-02-04-nushell_0_102_0.html
+
+-------------------------------------------------------------------
 Mon Dec 23 04:57:13 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.101.0:
