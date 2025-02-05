@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:33:53 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Only build for x86_64
+- 0001-Fix-include-of-prandom.patch
+  * Fixes a build failure due to changes in kernel 
+
+-------------------------------------------------------------------
 Wed Jun  5 11:54:09 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 0.6.8.2

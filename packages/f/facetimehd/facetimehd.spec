@@ -1,7 +1,7 @@
 #
 # spec file for package facetimehd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,9 @@ URL:            https://github.com/patjak/facetimehd
 Source0:        https://github.com/patjak/facetimehd/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        preamble
 Patch0:         Remove-use-of-linux-pci-aspm.h-since-it-s-not-in-the.patch
+Patch1:         0001-Fix-include-of-prandom.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
-ExcludeArch:    s390x
+ExclusiveArch:  x86_64
 %kernel_module_package -p %{_sourcedir}/preamble
 
 %description
@@ -37,6 +38,9 @@ Reverse engineered Linux driver for the FacetimeHD PCIe webcam
 %setup -q
 %if 0%{?sle_version} == 150300
 %patch -P 0 -p1
+%endif
+%if 0%{?sle_version} >= 150300 || 0%{?suse_version} >= 1600
+%patch -P 1 -p1
 %endif
 
 set -- *

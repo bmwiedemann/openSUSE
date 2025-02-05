@@ -1,0 +1,26 @@
+From 7b4f5a6b1a5e65ca19886851091a3d05d1e6b9f1 Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Date: Mon, 3 Feb 2025 12:37:35 +0100
+Subject: [PATCH] Fix include of prandom
+
+Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
+---
+ fthd_ddr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fthd_ddr.c b/fthd_ddr.c
+index 80fc0ce..bdbaa1f 100644
+--- a/fthd_ddr.c
++++ b/fthd_ddr.c
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <linux/random.h>
++#include <linux/prandom.h>
+ #include "fthd_drv.h"
+ #include "fthd_hw.h"
+ #include "fthd_ddr.h"
+-- 
+2.48.1
+
