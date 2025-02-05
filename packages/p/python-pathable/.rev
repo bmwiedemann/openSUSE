@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1093033</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>362d04d93c9a3961c3a23bc9630d088a</srcmd5>
+    <version>0.4.4</version>
+    <time>1738755663</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.4:
+  * Use valid licence registry identifier for Apache-2.0 licence</comment>
+    <requestid>1243209</requestid>
+  </revision>
 </revisionlist>
