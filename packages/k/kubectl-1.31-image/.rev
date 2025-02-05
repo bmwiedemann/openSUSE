@@ -7,4 +7,28 @@
     <comment>🤖: initial submission of kubectl-1.31-image</comment>
     <requestid>1237448</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1fa0db786a5f544fa08f01297227b9d</srcmd5>
+    <version>unknown</version>
+    <time>1738163726</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1240945</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>71ca18e28ec09212e27874b1e06bd31e</srcmd5>
+    <version>unknown</version>
+    <time>1738689132</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1241417</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>55f481ff360ba1cb9e67ce0c0471094d</srcmd5>
+    <version>unknown</version>
+    <time>1738755653</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1243199</requestid>
+  </revision>
 </revisionlist>

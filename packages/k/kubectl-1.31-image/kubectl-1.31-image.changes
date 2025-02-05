@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 31 13:55:15 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- set exclusivearch to exclude 32bit platforms from building
+
+-------------------------------------------------------------------
 Mon Jan 13 11:29:05 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the kubectl 1.31 BCI
