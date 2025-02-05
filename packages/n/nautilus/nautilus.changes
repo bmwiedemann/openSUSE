@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:53:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Enhancements:
+    - Adopt CI release workflow
+    - Speed up batch file deletions
+    - Speed up simple recursive search through mount monitors
+  + Bugfixes:
+    - Fix thumbnails for changed files
+    - Fix parent path URIs for remote path
+    - Fix potential crashes in directory callbacks
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Dec  9 12:18:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

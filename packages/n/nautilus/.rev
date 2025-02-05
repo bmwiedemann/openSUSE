@@ -1707,4 +1707,12 @@ Hence, recommended to be added to 12.3</comment>
   * file-utilities: Ignore extension when making new name for directories (forwarded request 1229341 from iznogood)</comment>
     <requestid>1229730</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>65d3164c6ee0e86dc395075991896001</srcmd5>
+    <version>47.2</version>
+    <time>1738755596</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243153</requestid>
+  </revision>
 </revisionlist>
