@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Feb 05 14:13:10 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738731942.8426c5d4:
+  * Dependency cron 2025-02-05
+
+-------------------------------------------------------------------
+Tue Feb 04 18:10:29 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738687327.a95b31e5:
+  * Avoid unhandled output in Git command tests
+  * Improve logging of Git commands invoked to check something
+  * Improve info message about mismatching Git remote URLs
+  * Improve error message when Git checkout is dirty and thus not updated
+  * Return and log the correct return code in `run_cmd_…` function
+
+-------------------------------------------------------------------
+Tue Feb 04 14:29:16 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738661963.c8916d87:
+  * Bump @eslint/config-array from 0.19.1 to 0.19.2
+
+-------------------------------------------------------------------
+Mon Feb 03 14:20:42 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738588761.0324b68b:
+  * Bump import-fresh from 3.3.0 to 3.3.1
+  * Bump @eslint/object-schema from 2.1.5 to 2.1.6
+  * Fix typo in example usage for post_run_hook
+  * Slightly improve generate-docs help
+  * Set GIT_ASKPASS to empty string
+  * Add link to docs if git push failed
+  * Avoid restricting `/tests/…/asset/…` needlessly
+  * Remove unused param from run_cmd_with_log_return_error
+  * Add docs about automatically using git ssh urls for pushing
+  * Prevent git from prompting for credentials
+  * git: Rename ssh_batchmode to batchmode
+
+-------------------------------------------------------------------
+Mon Jan 27 19:11:06 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1737988986.b7aa7737:
+  * Report actual server errors in via JS
+  * Bump eslint from 9.18.0 to 9.19.0
+  * Precede unavailability error with "Unavailable: " to ease log grepping
+  * Dependency cron 2025-01-25
+  * Allow openQA worker to execute check_qemu_oom script in apparmor
+  * Track the relevant scheduled product when a job is obsoleted
+  * Replace Perl::Critic::Freenode with Perl::Critic::Community
+
+-------------------------------------------------------------------
+Wed Jan 22 15:15:24 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1737550093.3fc00710:
+  * Fix repairing half-assigned clusters with PARALLEL_ONE_HOST_ONLY
+  * Improve test of failure behavior for multiple parallel children
+  * Use local variable consistently in `cluster_jobs`
+  * Add jobs API option "follow" to return latest clone of queried job
+  * Bump eslint-plugin-prettier from 5.2.2 to 5.2.3
+  * Improve help texts of `openqa-cli`
+  * Extract os-autoinst basepath using enviromental variable
+
+-------------------------------------------------------------------
 Fri Jan 17 17:16:38 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1737122167.8637e820:
