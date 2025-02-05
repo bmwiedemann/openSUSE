@@ -8,7 +8,7 @@
 # livepatching is defined in the spec file.
 %cflags_livepatching %{lua: if rpm.expand("%livepatchable") == "1" then \
   if rpm.expand("%_arch") == "x86_64"  then print("-fpatchable-function-entry=16,14 -fdump-ipa-clones") end \
-  if rpm.expand("%_arch") == "ppc64le" then print("-fpatchable-function-entry=17,16 -fdump-ipa-clones") end \
+  if rpm.expand("%_arch") == "ppc64le" then print("-fpatchable-function-entry=14,13 -fdump-ipa-clones") end \
 end }
 
 %tar_lp_basename %{name}-livepatch-%{version}-%{release}
