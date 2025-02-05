@@ -1,7 +1,7 @@
 #
 # spec file for package scirenderer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,9 +62,9 @@ This package contains the documentation for SciRenderer.
 
 # Update path according to the openSUSE
 tee scirenderer-libs.properties << EOF
-jogl2.jar=%{_jnidir}/jogl2.jar
-gluegen2-rt.jar=%{_javadir}/gluegen2-rt.jar
-jlatexmath.jar=%{_javadir}/jlatexmath.jar
+jogl2.jar=$(find-jar jogl2)
+gluegen2-rt.jar=$(find-jar gluegen2-rt)
+jlatexmath.jar=$(find-jar jlatexmath)
 EOF
 
 # fix class-path-in-manifest

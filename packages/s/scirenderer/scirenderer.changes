@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 06:42:00 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Work around the fact that some arch-dependent defines are not
+  defined for noarch builds
+
+-------------------------------------------------------------------
 Wed Feb 21 17:52:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
