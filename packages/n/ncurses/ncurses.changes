@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Feb  3 07:50:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250201
+  + add <new> to the possible headers declaring the C++ std::bad_alloc
+    (report by Carl Hansen).
+  + modify check for stdbool.h to be more conservative in case the
+    headers are used with a compiler other than that which was used to
+    configure (Redhat #2342514).
+  + improve MKlib_gen.sh handling of "bool" type, for building link_test
+  + improve formatting/style of manpages (patches by Branden Robinson).
+
+-------------------------------------------------------------------
+Mon Jan 27 07:15:34 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250125
+  + improve error-handling in c++ binding (report by Mingjie Shen).
+  + strict compiler-warning fixes for upcoming gcc15
+- Install missed ticw.pc
+- Update README.devel
+
+-------------------------------------------------------------------
+Fri Jan 24 11:27:42 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Drop support of build ncurses applications with ABI 5 but leave
+  the shared libraries for older applications using ABI 5
+- Add new package libncurses6-compat with the shared libraries
+  without weak (p)thread support for foreign ncurses applications.
+  Use with LD_LIBRARY_PATH=/usr/lib64/ncurses6nt (boo#1132282)
+
+-------------------------------------------------------------------
+Mon Jan 20 07:15:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250118
+  + improve pattern used for configure --with-xterm-kbs option (report by
+    Mingyu Wang)
+  + update configure macros, from work on cdk and dialog.
+  + change a parameter name in curs_sp_funcs.3x, for consistency (patch
+    by "WHR").
+  > patches by Branden Robinson:
+  + improve formatting/style of manpages
+  + change winwstr() to a generated function, using the macro definition,
+    moving its handling of negative length parameter into winnwstr().
+  + correct actual-function name in a few trace calls.
+
+-------------------------------------------------------------------
 Thu Jan 16 12:03:11 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Drop all ghostty terminfo entries as ghostty read also its own

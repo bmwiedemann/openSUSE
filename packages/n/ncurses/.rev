@@ -4895,4 +4895,55 @@
   termcap files even with terminfo (boo#1235689)</comment>
     <requestid>1238238</requestid>
   </revision>
+  <revision rev="282" vrev="55">
+    <srcmd5>a13b42a6cfac45e64d9d80944fa52a70</srcmd5>
+    <version>unknown</version>
+    <time>1737490195</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20250118
+  + improve pattern used for configure --with-xterm-kbs option (report by
+    Mingyu Wang)
+  + update configure macros, from work on cdk and dialog.
+  + change a parameter name in curs_sp_funcs.3x, for consistency (patch
+    by &quot;WHR&quot;).
+  &gt; patches by Branden Robinson:
+  + improve formatting/style of manpages
+  + change winwstr() to a generated function, using the macro definition,
+    moving its handling of negative length parameter into winnwstr().
+  + correct actual-function name in a few trace calls.</comment>
+    <requestid>1238972</requestid>
+  </revision>
+  <revision rev="283" vrev="56">
+    <srcmd5>7eee6594b6a97b81735f84b82b59d5a8</srcmd5>
+    <version>unknown</version>
+    <time>1738615308</time>
+    <user>anag+factory</user>
+    <comment>- Drop support of build ncurses applications with ABI 5 but leave
+  the shared libraries for older applications using ABI 5
+- Add new package libncurses6-compat with the shared libraries
+  without weak (p)thread support for foreign ncurses applications.
+  Use with LD_LIBRARY_PATH=/usr/lib64/ncurses6nt (boo#1132282)</comment>
+    <requestid>1240151</requestid>
+  </revision>
+  <revision rev="284" vrev="57">
+    <srcmd5>146bd9488cb203c71cf6859464f5c2f3</srcmd5>
+    <version>unknown</version>
+    <time>1738755569</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20250201
+  + add &lt;new&gt; to the possible headers declaring the C++ std::bad_alloc
+    (report by Carl Hansen).
+  + modify check for stdbool.h to be more conservative in case the
+    headers are used with a compiler other than that which was used to
+    configure (Redhat #2342514).
+  + improve MKlib_gen.sh handling of &quot;bool&quot; type, for building link_test
+  + improve formatting/style of manpages (patches by Branden Robinson).
+
+- Add ncurses patch 20250125
+  + improve error-handling in c++ binding (report by Mingjie Shen).
+  + strict compiler-warning fixes for upcoming gcc15
+- Install missed ticw.pc
+- Update README.devel</comment>
+    <requestid>1242979</requestid>
+  </revision>
 </revisionlist>

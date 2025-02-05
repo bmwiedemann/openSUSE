@@ -2,65 +2,37 @@
   =============================
 
 There are several Ncurses Libraries which can be used for building
-with an terminal based application.  The standard Ncurses Libraries
-is given with ABI 5.9
+with an terminal based application.
+Those are by default thread safe version (also known as `reentrant')
+with the libraries with ABI 6.0
 
-       /usr/include/ncurses/*.h
+       /usr/include/ncurses/ncurses/*.h
        /usr/lib/libncurses.so  or /usr/lib64/libncurses.so
        /usr/lib/libform.so     or /usr/lib64/libform.so
        /usr/lib/libmenu.so     or /usr/lib64/libmenu.so
        /usr/lib/libpanel.so    or /usr/lib64/libpanel.so
+       /usr/lib/libtic.so      or /usr/lib64/libtic.so
+       /usr/lib/libtinfo.so    or /usr/lib64/libtinfo.so
 
-and its header are installed in /usr/include/ncurses/ e.g.
-ncurses.h.  For backward compatibility with simply older
-programs the headers curses.h, ncurses.h, and term.h
-will be also found in /usr/include/.  Use the output of
+together with the header files found at /usr/include/ncurses/
+e.g. ncurses.h. For backward compatibility with simply older programs
+the headers curses.h, ncurses.h, and term.h will be also found in
+/usr/include/.  Use the output of
 
-       ncurses5-config --cflags  for CFLAGS
-       ncurses5-config --libs    for LDFLAGS
+       ncurses6-config --cflags  for CFLAGS
+       ncurses6-config --libs    for LDFLAGS
 
 to extend the CFLAGS and the LDFLAGS.
-For a version with wide character support please use the
-libraries with old ABI 5.9
+The version with both wide character support and thread safe
+please use the libraries with ABI 6.0
 
        /usr/include/ncursesw/*.h
        /usr/lib/libncursesw.so or /usr/lib64/libncursesw.so
        /usr/lib/libformw.so    or /usr/lib64/libformw.so
        /usr/lib/libmenuw.so    or /usr/lib64/libmenuw.so
        /usr/lib/libpanelw.so   or /usr/lib64/libpanelw.so
-
-Use the output of
-
-       ncursesw5-config --cflags for CFLAGS
-       ncursesw5-config --libs   for LDFLAGS
-
-to extend the CFLAGS and the LDFLAGS.
-For a thread safe version (also known as `reentrant') please
-use the libraries with ABI 6.0
-
-       /usr/include/ncurses6/ncurses/*.h
-       /usr/lib/ncurses6/libncurses.so  or /usr/lib64/ncurses6/libncurses.so
-       /usr/lib/ncurses6/libform.so     or /usr/lib64/ncurses6/libform.so
-       /usr/lib/ncurses6/libmenu.so     or /usr/lib64/ncurses6/libmenu.so
-       /usr/lib/ncurses6/libpanel.so    or /usr/lib64/ncurses6/libpanel.so
-
-together with the header files found at /usr/include/ncurses6/ncurses/
-e.g. ncurses.h. For backward compatibility with simply older programs
-the headers curses.h, ncurses.h, and term.h will be also found in
-/usr/include/ncurses6/.  Use the output of
-
-       ncurses6-config --cflags  for CFLAGS
-       ncurses6-config --libs    for LDFLAGS
-
-to extend the CFLAGS and the LDFLAGS.
-For a version with both wide character support and thread safe
-please use the libraries with ABI 6.0
-
-       /usr/include/ncurses6/ncursesw/*.h
-       /usr/lib/ncurses6/libncursesw.so or /usr/lib64/ncurses6/libncursesw.so
-       /usr/lib/ncurses6/libformw.so    or /usr/lib64/ncurses6/libformw.so
-       /usr/lib/ncurses6/libmenuw.so    or /usr/lib64/ncurses6/libmenuw.so
-       /usr/lib/ncurses6/libpanelw.so   or /usr/lib64/ncurses6/libpanelw.so
+       /usr/lib/libticw.so     or /usr/lib64/libticw.so
+       /usr/lib/libtinfo.so    or /usr/lib64/libtinfo.so
 
 Use the output of
 

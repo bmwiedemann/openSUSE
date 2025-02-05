@@ -1,0 +1,9 @@
+#!/bin/bash
+libtinfo=($(ldd /bin/bash | grep -E 'libtinfow?\.so'))
+libdir=${libtinfo[2]}
+libdir=${libdir%/*}
+test -d ${libdir}/ncurses6nt || { echo ${0##*/}: Missing ${libdir}/ncurses6nt 1>&2; exit 1; }
+LD_LIBRARY_PATH=${libdir}/ncurses6nt${LD_LIBRARY_PATH+":${LD_LIBRARY_PATH}"}
+export LD_LIBRARY_PATH
+unset libtinfo libdir
+exec -a ${1##*/} ${1+"$@"}

@@ -24,6 +24,7 @@
 %endif
 %bcond_with     memleakck
 %bcond_without  onlytinfo
+%bcond_without  abi5
 %bcond_with     ada
 %bcond_with     libbsd
 %bcond_with     usepcre2
@@ -33,6 +34,11 @@
 %global soname_tinfo tinfo
 %else
 %global soname_tinfo tinfow
+%endif
+%ifarch s390x s390
+%global fallback unknown,dumb,xterm,xterm-256color,ibm327x,ms-terminal,vt100,vt102,vt220
+%else
+%global fallback unknown,dumb,xterm,xterm-256color,linux,ms-terminal,vt100,vt102,vt220
 %endif
 
 %global patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
@@ -64,11 +70,7 @@ BuildRequires:  screen
 %if %{with usepcre2}
 BuildRequires:  pkgconfig(libpcre2-8)
 %endif
-%if 0%{?suse_version} > 1130
 BuildRequires:  gpm-devel
-%else
-BuildRequires:  gpm
-%endif
 BuildRequires:  makedepend
 %define terminfo() %{_datadir}/%{0}/%{1}
 %define tabset()   %{_datadir}/%{0}/%{1}
@@ -101,6 +103,7 @@ Source8:        cursescheck
 Source9:        https://www.invisible-island.net/archives/ncurses/ncurses-%{basevers}.tar.gz.asc
 Source10:       https://www.invisible-island.net/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz.asc
 Source11:       ncurses.keyring
+Source12:       ncursesnt
 Patch0:         ncurses-6.4.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
@@ -217,12 +220,31 @@ Group:          System/Libraries
 Requires:       terminfo-base
 Provides:       ncurses = %{version}
 Recommends:     ncurses-utils = %{version}
+Suggests:       libncurses6-compat
 
 %description -n libncurses6
 The ncurses library is used by many terminal applications for
 controlling output to the screen and input from the user.
 
 This package contains the library built with the version 6 ABI.
+
+%package -n libncurses6-compat
+Summary:        Terminal control library without weak threading support
+License:        MIT
+Group:          System/Libraries
+Requires:       libncurses6 >= %{version}
+Requires:       terminfo-base
+Recommends:     ncurses-utils = %{version}
+
+%description -n libncurses6-compat
+The ncurses library is used by many terminal applications for
+controlling output to the screen and input from the user.
+
+This package contains the library built with the version 6 ABI
+but build without weak threading support.
+
+Use with environment variable LD_LIBRARY_PATH=/usr/lib64/ncurses6nt
+or the wrapper script ncursesnt .
 
 %package -n terminfo
 Summary:        A terminal descriptions database
@@ -284,44 +306,6 @@ Requires:       ncurses-devel = %{version}-%{release}
 %description -n ncurses-devel-static
 This package contains the static library files for
 the ncurses library in its ABI version 6 form.
-
-%package -n ncurses5-devel
-Summary:        Development files for the ncurses5 terminal control library
-License:        MIT
-Group:          Development/Libraries/C and C++
-Provides:       ncurses:%{_incdir}/ncurses5/ncurses.h
-Requires:       %{_bindir}/tack
-Requires:       libncurses5 = %{version}-%{release}
-Requires:       ncurses = %{version}-%{release}
-Requires:       ncurses-devel = %{version}-%{release}
-
-%description -n ncurses5-devel
-This package contains the headers needed to build against
-the ncurses library in its ABI version 5 form.
-
-%package -n ncurses5-devel-static
-Summary:        Static libraries for the ncurses5 terminal control library
-License:        MIT
-Group:          Development/Libraries/C and C++
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libform.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libformw.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libmenu.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libmenuw.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libncurses++.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libncurses++w.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libncurses.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libncurses.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libncursesw.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libpanel.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libpanelw.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libtic.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libticw.a
-Provides:       ncurses5-devel:%{_libdir}/ncurses5/libtinfo.a
-Requires:       ncurses5-devel = %{version}-%{release}
-
-%description -n ncurses5-devel-static
-This package contains the static library files for
-the ncurses library in its ABI version 5 form.
 
 %package -n tack
 Version:        %{tackvers}.%{tacklvl}
@@ -386,7 +370,7 @@ mv tack-* tack
 #
 CFLAGS_SHARED="%{_lto_cflags_shared}"
 export CFLAGS_SHARED
-%global configtack	%configure
+%global configback	%configure
 %global _configure	screen -D -m ./configure
     SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
     SCREENRC=${SCREENDIR}/ncurses
@@ -437,11 +421,6 @@ export CFLAGS_SHARED
 
     test ! -f /.buildenv || . /.buildenv
        OPATH=$PATH
-%ifarch s390x s390
-      FALLBK="unknown,dumb,xterm,xterm-256color,ibm327x,ms-terminal,vt100,vt102,vt220"
-%else
-      FALLBK="unknown,dumb,xterm,xterm-256color,linux,ms-terminal,vt100,vt102,vt220"
-%endif
 	  CC=gcc
 	 CXX=g++
     CFLAGS="${RPM_OPT_FLAGS} -pipe -D_REENTRANT"
@@ -496,10 +475,6 @@ export CFLAGS_SHARED
     trap 'rm -rf ${TMPDIR}' EXIT
     export TMPDIR
     #
-    # getttynam(3) as well as /etc/ttys are not used under Linux
-    # (obsolate with patch 6.3 20211204)
-    #   sed -ri '/^getttynam\s*\\$/d' configure
-    #
     # No --enable-term-driver as this had crashed last time
     # in ncurses/tinfo/lib_setup.c due to the fact that
     # _nc_globals.term_driver was a NULL function pointer as
@@ -517,15 +492,9 @@ export CFLAGS_SHARED
     # No --enable-hard-tabs for users which have disabled
     # the use of tabs
     #
-    touch --reference=README config.sub config.guess
-    > $SCREENLOG
-    tail -q -s 0.5 -f $SCREENLOG & pid=$!
-    %configure \
-%if %{with ada}
-	--with-ada		\
-%else
-	--without-ada		\
-%endif
+
+    common="\
+	--with%{?!with_ada:out}-ada \
 	--without-debug		\
 	--without-profile	\
 	--without-manpage-tbl	\
@@ -536,18 +505,12 @@ export CFLAGS_SHARED
 	--with-manpage-aliases	\
 	--with-manpage-symlinks	\
 	--with-ospeed=speed_t	\
-%if 0%{?suse_version} > 1310
-	--with-gpm=$(readlink %{_libdir}/libgpm.so) \
-%else
-	--with-gpm		\
-%endif
 	--with-dlsym		\
+	--with-gpm=$(readlink -f %{_libdir}/libgpm.so | sed -r 's/(\.so.[0-9]+)\..*/\1/') \
 	--with-default-terminfo-dir=%{_datadir}/terminfo \
 	--with-terminfo-dirs=%{_sysconfdir}/terminfo:%{_datadir}/terminfo \
 	--with-xterm-kbs=DEL	\
-%if %{with usepcre2}
-	--with-pcre2		\
-%endif
+	--with%{?!with_usepcre2:out}-pcre2 \
 	--with-install-prefix=%{root} \
 	--disable-stripping	\
 	--disable-root-access	\
@@ -557,9 +520,7 @@ export CFLAGS_SHARED
 	--disable-overwrite	\
 	--disable-rpath		\
 	--disable-rpath-hack	\
-%if %{with memleakck}
-	--disable-leaks		\
-%endif
+	%{?with_memleakck:--disable-leaks} \
 	--disable-xmc-glitch	\
 	--enable-symlinks	\
 	--enable-big-core	\
@@ -570,26 +531,9 @@ export CFLAGS_SHARED
 	--enable-colorfgbg	\
 	--enable-sp-funcs	\
 	--enable-interop	\
-	--with-pthread		\
-	--enable-reentrant	\
-%if 0%{?suse_version} > 1500
-	--enable-opaque-curses	\
-	--enable-opaque-form	\
-	--enable-opaque-menu	\
-	--enable-opaque-panel	\
-%endif
-	--enable-ext-mouse	\
-	--enable-widec		\
-	--enable-wattr-macros	\
 	--with-termlib=%{soname_tinfo}	\
-	--with-ticlib=ticw	\
-%if %{with symversion}
-	--with-versioned-syms=${PWD}/package/ncursestw.map \
-%endif
 	--enable-ext-colors	\
-	--enable-weak-symbols	\
 	--disable-wgetch-events	\
-	--enable-pthreads-eintr	\
 	--enable-string-hacks	\
 	--enable-check-size	\
 	--prefix=%{_prefix}	\
@@ -603,393 +547,241 @@ export CFLAGS_SHARED
 	--with-cxx-shared	\
 	--with-pc-suffix	\
 	--enable-pc-files	\
-%if 0%{?_crossbuild}
-	--with-fallbacks="$FALLBK" \
-%else
-	--with-fallbacks=""	\
-%endif
-%if %{with hasheddb}
-	--with-hashed-db	\
-%endif
-	--with-pkg-config-libdir=%{_libdir}/pkgconfig
-    sleep 1
-    kill $pid
-    #
-    #  The configure line used above.  Note that we override
-    #  several options later with other configurations.
-    #  It has been verified several times that this works.
-    #
-    c=$(grep '^ *$ *\./configure' config.log)
-    make depend
-    make -C c++ etip.h
-    make %{?_smp_mflags}
-    #
-    # Refresh second install path
-    #
-    rm -rf %{root}
-    mkdir  %{root}
-%if !0%{?_crossbuild}
-    #
-    # This is a hack to be able to boot strap libncurses with
-    # our preferred fallback.c.  For this we need the appropiate
-    # tools list infocmp(1) and tic(1).  The first step was with
-    # an empty fallback.c, now we include the latest terminfo
-    # of our preferred fallback terminfo list into the final
-    # fallback.c.
-    #
-    mkdir lib/.build
-    cp -p progs/tic progs/tic.build
-    cp -p progs/infocmp progs/infocmp.build
-    cp -p lib/*.so* lib/.build/
-    PATH=$PWD/progs:$OPATH
-    export PATH
-    (cat > ${PWD}/.build_tic)<<-EOF
-	export LD_LIBRARY_PATH=$PWD/lib/.build
-	export BUILD_TIC=$PWD/progs/tic.build
-	export BUILD_INFOCMP=$PWD/progs/infocmp.build
-	EOF
-    pushd ncurses/
-	. ${PWD}/../.build_tic
-	$BUILD_TIC -I -r -e $FALLBK ../misc/terminfo.src > terminfo.src
-	$BUILD_TIC -o $TERMINFO -s terminfo.src
-	bash -e ./tinfo/MKfallback.sh $PWD/tmp_info ../misc/terminfo.src $BUILD_TIC $BUILD_INFOCMP ${FALLBK//,/ } > fallback.c
-	rm -rf $TERMINFO
-	unset  TERMINFO
-	cp -p fallback.c ../fallback.c.build
-	unset LD_LIBRARY_PATH
-    popd
-    PATH=$OPATH
-    #
-    # Now rebuild libncurses and do the rest of this job
-    #
-    find -name fallback.o -print -delete
-    cp fallback.c.build ncurses/fallback.c
-    make depend
-    make -C c++ etip.h
-    make %{?_smp_mflags}
-%else
-    (cat > ${PWD}/.build_tic)<<-EOF
-	export BUILD_TIC=/usr/bin/tic
-	export BUILD_INFOCMP=/usr/bin/infocmp
-	EOF
-%endif
+	--with-fallbacks="%{?_crossbuild:%{fallback}}" \
+	--with%{?!with_hasheddb:out}-hashed-db \
+	--with-pkg-config-libdir=%{_libdir}/pkgconfig \
+    "
+
+    touch --reference=README config.sub config.guess
+
     # must not use %jobs here (would lead to: ln: ncurses.h already exists)
     find man/ -name '*.[1-8]x.*' -print -delete
-    make install DESTDIR=%{root} includedir=%{_incdir}/ includesubdir=/ncursesw libdir=%{_libdir}
-%if %{with onlytinfo}
-    # This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
-    gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,--auxiliary=libtinfo.so.6,-soname,libtinfow.so.6,-stats,-lc \
-	 -Wl,--version-script,ncurses/resulting.map -o %{root}%{_libdir}/libtinfow.so.%{basevers}
-    cp -p %{root}%{_libdir}/libtinfo.so.%{basevers}  libtinfo.so.%{basevers}.back
-    cp -p %{root}%{_libdir}/libtinfow.so.%{basevers} libtinfow.so.%{basevers}.back
-%endif
-    ln -sf %{_incdir}/ncurses/{curses,ncurses,term,termcap}.h %{root}%{_incdir}
     mkdir pc
+
     PKG_CONFIG_PATH=$PWD/pc:$(pkg-config --variable pc_path pkg-config)
     export PKG_CONFIG_PATH
-    rm -vf %{root}%{_libdir}/pkgconfig/tic.pc
-    rm -vf %{root}%{_libdir}/pkgconfig/tinfo.pc
-    mv -vf %{root}%{_libdir}/pkgconfig/*.pc pc/
-    sed -ri 's@^(Requires.private:).*@\1@'  pc/*.pc
-    echo $PKG_CONFIG_PATH
-    what=ncursesw
-    cflags="$(pkg-config --cflags $what)"
-      libs="$(pkg-config --libs   $what)"
-    test -n "$cflags" -a -n "$libs" || exit 1
-    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}6-config
+    echo PKG_CONFIG_PATH=$PKG_CONFIG_PATH
 
-    #
-    # Some tests
-    #
-%if 0%{?_crossbuild}
-	echo "Skipping tests due to cross-building"
-%else
-    #
-    # Check for tack program on base of above ncurses
-    #
-    LD_LIBRARY_PATH=$PWD/lib
-    export LD_LIBRARY_PATH PATH
-    pushd tack/
-	OCFLAGS="$CFLAGS"
-	OLDFLAGS="$LDFLAGS"
-	OPKG_CONFIG_PATH="$PKG_CONFIG_PATH"
-	CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/ -fPIE" \
-	LDFLAGS="$LDFLAGS  -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir} -pie" \
-	PKG_CONFIG_PATH=${PWD}/../pc/ \
-	%configtack --with-ncursesw --disable-rpath-hack
-	make %{?_smp_mflags}
-	CFLAGS="$OCFLAGS"
-	LDFLAGS="$OLDFLAGS"
-	PKG_CONFIG_PATH="$OPKG_CONFIG_PATH"
-	ldd ./tack
-    popd
-    unset LD_LIBRARY_PATH
-%if 0%{?suse_version} > 1500
-    #
-    # Make the test suite for ncursesw6
-    #
-    pushd test
-	CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/" \
-	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
-	LIBS="$LDFLAGS" \
-	./configure --with-ncursesw --with-screen=ncursesw --enable-widec --enable-wattr-macros --prefix=%{_prefix} --datadir=%{_datadir}/ncurses
-
-	LD_LIBRARY_PATH=%{root}%{_libdir} \
-%if %{with usepcre2}
-	make %{?_smp_mflags} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
-	make install DESTDIR=${PWD} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
-%else
-	make %{?_smp_mflags} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
-	make install DESTDIR=${PWD} INSTALL_PROG=install TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
-%endif
-	mv usr usr.back
-	cp Makefile Makefile.back
-	make distclean
-    popd
-%endif
-%endif
-    pushd tack/
-        make install DESTDIR=%{root} INSTALL_PROG=install
-    popd
-    test ! -L tack || rm -f tack
-    make clean
-    #
-    # Now use --without-pthread to disable pthread support (abi == 5).
-    #
-    > $SCREENLOG
-    tail -q -s 0.5 -f $SCREENLOG & pid=$!
-
-    eval screen -D -m ./${c#*./} --with-abi-version=5		\
-				    --without-manpages		\
-				    --without-progs		\
-				    --without-tack		\
-				    --without-pthread		\
-				    --disable-reentrant		\
-				    --disable-opaque-curses	\
-				    --disable-opaque-form	\
-				    --disable-opaque-menu	\
-				    --disable-opaque-panel	\
-				    --disable-ext-mouse		\
-				    --disable-widec		\
-				    --disable-wattr-macros	\
-%if %{with usepcre2}
-				    --without-pcre2		\
-%endif
-				    --with-termlib=tinfo	\
-				    --with-ticlib=tic		\
-%if %{with symversion}
-				    --with-versioned-syms=${PWD}/package/ncurses.map \
-%endif
-				    --disable-ext-colors	\
-				    --disable-overwrite		\
-				    --without-progs
-    sleep 1
-    kill $pid
-%if !0%{?_crossbuild}
-    find -name fallback.o -print -delete
-    cp fallback.c.build ncurses/fallback.c
-%endif
-    make depend
-    make -C c++ etip.h
-    make %{?_smp_mflags}
-    sed -ri 's@^(LDFLAGS=)$@\1-L\\${libdir}@
-	     s@^(libdir=).show_libdir@\1%{_libdir}/ncurses5@
-	     s@^(includedir=).show_includedir@\1%{_incdir}/ncurses5@' misc/gen-pkgconfig
-    # must not use %jobs here (would lead to: ln: ncurses.h already exists)
-    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ncurses5/ includesubdir=/ncurses libdir=%{_libdir}/ncurses5
-    ln -sf %{_incdir}/ncurses5/ncurses/{curses,ncurses,term}.h %{root}%{_incdir}/ncurses5/
-    pushd man
-	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses5-config.1
-    popd
-    for pc in %{root}%{_libdir}/pkgconfig/*.pc
+    for abi in 6 %{?with_abi5:5}
     do
-	test -e "$pc" || break
-	base=${pc%%.pc}
-	base=${base##*/}
-	sed -ri '\@includedir=@i\
-includedir5=%{_incdir}/ncurses5' "$pc"
-	sed -ri 's@^(includedir=).*@\1${includedir5}/ncurses@' "$pc"
-	sed -ri 's@^(libdir=).*@\1%{_libdir}/ncurses5@' "$pc"
-	sed -ri 's@^(Libs: )(.*)@\1-L${libdir}\2@' "$pc"
-	mv -f $pc pc/${base}5.pc
-	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
-	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
-    done
-    echo $PKG_CONFIG_PATH
-    what=ncurses5
-    cflags="$(pkg-config --cflags $what)"
-      libs="$(pkg-config --libs   $what)"
-    test -n "$cflags" -a -n "$libs" || exit 1
-    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}-config
+	for wide in w ""
+	do
+	    for pthreads in t ""
+	    do
+		test "$abi" = 5 -a -n "$pthreads" && continue || :
 
-    #
-    # Now use --disable-widec for narrow character support.
-    # The libs with 16 bit wide characters are binary incompatible
-    # to the normal 8bit wide character libs.
-    #
-    make clean
-    > $SCREENLOG
-    tail -q -s 0.5 -f $SCREENLOG & pid=$!
-    eval screen -D -m ./${c#*./} --with-pthread			\
-				    --without-manpages		\
-				    --without-progs		\
-				    --without-tack		\
-				    --enable-reentrant		\
-				    --enable-opaque-curses	\
-				    --enable-opaque-form	\
-				    --enable-opaque-menu	\
-				    --enable-opaque-panel	\
-				    --enable-ext-mouse		\
-				    --disable-widec		\
-				    --disable-wattr-macros	\
-				    --with-termlib=tinfo	\
-				    --with-ticlib=tic		\
-%if %{with symversion}
-				    --with-versioned-syms=${PWD}/package/ncursest.map \
-%endif
-				    --enable-ext-colors		\
-				    --disable-overwrite		\
-				    --without-progs
-    sleep 1
-    kill $pid
+		mkdir build.${wide}${pthreads}${abi}
+		pushd build.${wide}${pthreads}${abi}
+		ln -sf ../configure .
+		ln -sf ../package .
+		ln -sf ../pc .
+
+		map=ncurses${pthreads}${wide}
+		tic=tic${wide}
+		test "$abi" = 6 -a -n "$pthreads" -a -n "$wide" && progs=with || progs=without
+
+		configure="${common} $(
+		    echo --with-abi-version=$abi
+		    echo --with-versioned-syms=${PWD}/package/${map}.map --with-ticlib=${tic}
+		    echo --${progs}-manpages --${progs}-progs --${progs}-tack
+		    test "$abi" = 6 && \
+			echo  --enable-opaque-curses  --enable-opaque-form  --enable-opaque-menu  --enable-opaque-panel  --enable-ext-mouse  --enable-ext-colors || \
+			echo --disable-opaque-curses --disable-opaque-form --disable-opaque-menu --disable-opaque-panel --disable-ext-mouse --disable-ext-colors
+		    #
+		    # If threaded then use pthreads and weak symbols as this avoids four different libraries
+		    # Side effect is that the the threaded libraries a binary incompatible with none threaded
+		    #
+		    test -n "$pthreads" && \
+			echo    --with-pthread  --enable-pthreads-eintr  --enable-reentrant  --enable-weak-symbols || \
+			echo --without-pthread --disable-pthreads-eintr --disable-reentrant --disable-weak-symbols
+		    test -n "$wide" && \
+			echo  --enable-widec  --enable-wattr-macros || \
+			echo --disable-widec --disable-wattr-macros
+		    test -z "$pthreads" -a "$abi" = 6 && echo --libdir=%{_libdir}/%{name}${wide} || :
+		    test "$abi" = 5 && echo --includedir=%{_incdir}/%{name}${abi} || :
+		)"
+
+		> $SCREENLOG
+		tail -q -s 0.5 -f $SCREENLOG & pid=$!
+		%configure $configure
+		sleep 1
+		kill $pid
+
+		test -s ../fallback.c.build && cp ../fallback.c.build ncurses/fallback.c
+
+		%make_build libs
+		# This is for abi == 6 with wide characters and threads as
+		# required by the ncurses GUI of YaST2
+		if test "$progs" = with
+		then
+		    %make_build -C progs
+		    #
+		    # Refresh second install path
+		    #
+		    rm -rf %{root}
+		    mkdir  %{root}
 %if !0%{?_crossbuild}
-    find -name fallback.o -print -delete
-    cp fallback.c.build ncurses/fallback.c
-%endif
-    make depend
-    make -C c++ etip.h
-    make %{?_smp_mflags}
-    # must not use %jobs here (would lead to: ln: ncurses.h already exists)
-    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ includesubdir=/ncurses libdir=%{_libdir}
-%if %{with onlytinfo}
-    # This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
-    cp -p libtinfo.so.%{basevers}.back  %{root}%{_libdir}/libtinfo.so.%{basevers}
-    cp -p libtinfow.so.%{basevers}.back %{root}%{_libdir}/libtinfow.so.%{basevers}
-%endif
-    pushd man
-	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
-    popd
-    mv -f %{root}%{_libdir}/pkgconfig/*.pc pc/
-    sed -ri 's@^(Requires.private:).*@\1@' pc/*.pc
-    echo $PKG_CONFIG_PATH
-    what=ncurses
-    cflags="$(pkg-config --cflags $what)"
-      libs="$(pkg-config --libs   $what)"
-    test -n "$cflags" -a -n "$libs" || exit 1
-    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}6-config
-
-    #
-    # Some tests
-    #
-%if 0%{?_crossbuild} || 0%{?suse_version} <= 1500
-	echo "Skipping tests due to cross-building"
+		    #
+		    # This is a hack to be able to boot strap libncurses with
+		    # our preferred fallback.c.  For this we need the appropiate
+		    # tools list infocmp(1) and tic(1).  The first step was with
+		    # an empty fallback.c, now we include the latest terminfo
+		    # of our preferred fallback terminfo list into the final
+		    # fallback.c.
+		    #
+		    mkdir lib/.build
+		    cp -p progs/tic progs/tic.build
+		    cp -p progs/infocmp progs/infocmp.build
+		    cp -p lib/*.so* lib/.build/
+		    PATH=$PWD/progs:$OPATH
+		    export PATH
+		    (cat > ${PWD}/../.build_tic)<<-EOF
+			export LD_LIBRARY_PATH=$PWD/lib/.build
+			export BUILD_TIC=$PWD/progs/tic.build
+			export BUILD_INFOCMP=$PWD/progs/infocmp.build
+			EOF
+		    pushd ncurses/
+			ln -sf ../../ncurses/tinfo .
+			. ${PWD}/../../.build_tic
+			$BUILD_TIC -I -r -e "%{fallback}" ../../misc/terminfo.src > terminfo.src
+			$BUILD_TIC -o $TERMINFO -s terminfo.src
+			bash -e ./tinfo/MKfallback.sh $PWD/tmp_info ../../misc/terminfo.src $BUILD_TIC $BUILD_INFOCMP $(echo %{fallback}|sed 's/,/ /g') > fallback.c
+			rm -rf $TERMINFO
+			unset  TERMINFO
+			cp -p fallback.c ../../fallback.c.build
+			unset LD_LIBRARY_PATH
+		    popd
+		    PATH=$OPATH
+		    #
+		    # Now rebuild libncurses and do the rest of this job
+		    #
+		    find -name fallback.o -print -delete
+		    cp ../fallback.c.build ncurses/fallback.c
+		    %make_build libs
 %else
-    #
-    # Make the test suite for ncurses6
-    #
-    pushd test
-	CFLAGS="$CFLAGS -I%{root}%{_incdir}ncurses/ -I%{root}%{_incdir}/" \
-	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
-	LIBS="$LDFLAGS" \
-	./configure --with-ncurses --with-screen=ncurses --disable-widec --disable-wattr-macros --prefix=%{_prefix} --datadir=%{_datadir}/ncurses
-	LD_LIBRARY_PATH=%{root}%{_libdir} \
-%if %{with usepcre2}
-	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
-	make install DESTDIR=${PWD} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
-%else
-	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
-	make install DESTDIR=${PWD} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
+		    (cat > ${PWD}/.build_tic)<<-EOF
+			export BUILD_TIC=/usr/bin/tic
+			export BUILD_INFOCMP=/usr/bin/infocmp
+			EOF
 %endif
-	rm -rf usr/
-	make distclean
-    popd
-%endif
-    test ! -L tack || rm -f tack
-    make clean
-    #
-    # ABI == 5
-    #
-    > $SCREENLOG
-    tail -q -s 0.5 -f $SCREENLOG & pid=$!
-
-    #
-    # Now use --without-pthread to disable pthread support (abi == 5).
-    #
-    eval screen -D -m ./${c#*./} --with-abi-version=5		\
-				    --without-manpages		\
-				    --without-progs		\
-				    --without-tack		\
-				    --without-pthread		\
-				    --disable-reentrant		\
-				    --disable-opaque-curses	\
-				    --disable-opaque-form	\
-				    --disable-opaque-menu	\
-				    --disable-opaque-panel	\
-				    --disable-ext-mouse		\
-				    --enable-widec		\
-				    --enable-wattr-macros	\
-%if %{with usepcre2}
-				    --without-pcre2		\
-%endif
-				    --with-termlib=%{soname_tinfo}	\
-				    --with-ticlib=ticw		\
-%if %{with symversion}
-				    --with-versioned-syms=${PWD}/package/ncursesw.map \
-%endif
-				    --disable-ext-colors	\
-				    --disable-overwrite		\
-				    --without-progs
-    sleep 1
-    kill $pid
-%if !0%{?_crossbuild}
-    find -name fallback.o -print -delete
-    cp fallback.c.build ncurses/fallback.c
-%endif
-    make depend
-    make -C c++ etip.h
-    make %{?_smp_mflags}
-    sed -ri 's@^(LDFLAGS=)$@\1-L\\${libdir}@
-	     s@^(libdir=).show_libdir@\1%{_libdir}/ncurses5@
-	     s@^(includedir=).show_includedir@\1%{_incdir}/ncurses5/ncursesw@' misc/gen-pkgconfig
-    # must not use %jobs here (would lead to: ln: ncurses.h already exists)
-    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ncurses5/ includesubdir=/ncursesw libdir=%{_libdir}/ncurses5
-%if %{with onlytinfo}
-    gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,--auxiliary=libtinfo.so.5,-soname,libtinfow.so.5,-stats,-lc \
-	-Wl,--version-script,package/ncursesw.map -o %{root}%{_libdir}/libtinfow.so.5.9
-%endif
-    pushd man
-	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncursesw5-config.1
-    popd
-    rm -vf %{root}%{_libdir}/pkgconfig/tic.pc
-    rm -vf %{root}%{_libdir}/pkgconfig/tinfo.pc
-    for pc in %{root}%{_libdir}/pkgconfig/*.pc
-    do
-	test -e "$pc" || break
-	base=${pc%%.pc}
-	base=${base##*/}
-	sed -ri '\@includedir=@i\
-includedir5=%{_incdir}/ncurses5' "$pc"
-	sed -ri 's@^(includedir=).*@\1${includedir5}/ncursesw@' "$pc"
-	sed -ri 's@^(libdir=).*@\1%{_libdir}/ncurses5@' "$pc"
-	sed -ri 's@^(Libs: )(.*)@\1-L${libdir}\2@' "$pc"
-	mv -f $pc pc/${base}5.pc
-	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
-	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
+		else
+		    #
+		    # Now rebuild libncurses and do the rest of this job
+		    #
+		    %make_build libs
+		fi
+		popd
+	    done
+	done
     done
-    echo $PKG_CONFIG_PATH
-    what=ncursesw5
-    cflags="$(pkg-config --cflags $what)"
-      libs="$(pkg-config --libs   $what)"
-    test -n "$cflags" -a -n "$libs" || exit 1
-    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}-config
+
+    pushd build.wt6
+	make install DESTDIR=%{root} includesubdir=/ncursesw
+%if %{with onlytinfo}
+	# This ensures that we get an auxiliary libtinfow *with* _nc_read_entry2 symbol as well
+	gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,--auxiliary=libtinfo.so.6,-soname,libtinfow.so.6,-stats,-lc \
+		-Wl,--version-script,ncurses/resulting.map -o %{root}%{_libdir}/libtinfow.so.%{basevers}
+	cp -p %{root}%{_libdir}/libtinfo.so.%{basevers}  libtinfo.so.%{basevers}.back
+	cp -p %{root}%{_libdir}/libtinfow.so.%{basevers} libtinfow.so.%{basevers}.back
+%endif
+	ln -sf %{_incdir}/ncurses/{curses,ncurses,term,termcap}.h %{root}%{_incdir}
+	pushd man
+	    bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
+	popd
+	install -m 0644 misc/ticw.pc %{root}%{_libdir}/pkgconfig/
+	rm -vf %{root}%{_libdir}/pkgconfig/tic.pc
+	rm -vf %{root}%{_libdir}/pkgconfig/tinfo.pc
+	mv -vf %{root}%{_libdir}/pkgconfig/*.pc pc/
+	sed -ri 's@^(Requires.private:).*@\1@'  pc/*.pc
+	cflags="$(pkg-config --cflags ncursesw)"
+	libs="$(pkg-config --libs   ncursesw)"
+	test -n "$cflags" -a -n "$libs" || exit 1
+	bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/ncursesw6-config
+	#
+	# Check for tack program on base of above ncurses
+	#
+	LD_LIBRARY_PATH=$PWD/lib
+	export LD_LIBRARY_PATH PATH
+	pushd ../tack/
+	    OCFLAGS="$CFLAGS"
+	    OLDFLAGS="$LDFLAGS"
+	    CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/ -fPIE" \
+	    LDFLAGS="$LDFLAGS  -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir} -pie" \
+	    %configback --with-ncursesw --disable-rpath-hack
+	    make %{?_smp_mflags}
+	    CFLAGS="$OCFLAGS"
+	    LDFLAGS="$OLDFLAGS"
+	    ldd ./tack
+	    make install DESTDIR=%{root} INSTALL_PROG=install
+	popd
+%if !0%{?_crossbuild}
+	#
+	# Include the various ncurses tests here
+	#
+	pushd ../test/
+	    CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/" \
+	    LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
+	    LIBS="$LDFLAGS" \
+	    %configback --with-ncursesw --with-screen=ncursesw --enable-widec --enable-wattr-macros --datadir=%{_datadir}/ncurses
+	    make %{?_smp_mflags} \
+		TEST_ARGS="-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed" \
+		TEST_LIBS="-lutil -lpthread %{?with_usepcre2:-lpcre2-posix -lpcre2-8}"
+	    make install DESTDIR=%{root} INSTALL_PROG=install \
+		TEST_ARGS="-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed" \
+		TEST_LIBS="-lutil -lpthread %{?with_usepcre2:-lpcre2-posix -lpcre2-8}"
+	    CFLAGS="$OCFLAGS"
+	    LDFLAGS="$OLDFLAGS"
+	    mkdir -p %{root}%{_mandir}/man6
+	    for man in *.6
+	    do
+		install -m 0644 $man %{root}%{_mandir}/man6/
+	    done
+	    install -m 0755 %{S:8} %{root}%{_libexecdir}/ncurses-examples/
+	popd
+%endif
+	unset LD_LIBRARY_PATH
+    popd
+    pushd build.t6
+	make install.libs DESTDIR=%{root} includesubdir=/ncurses
+%if %{with onlytinfo}
+	# This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
+	cp -p ../build.wt6/libtinfo.so.%{basevers}.back  %{root}%{_libdir}/libtinfo.so.%{basevers}
+	cp -p ../build.wt6/libtinfow.so.%{basevers}.back %{root}%{_libdir}/libtinfow.so.%{basevers}
+%endif
+	pushd man
+	    bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
+	popd
+	mv -f %{root}%{_libdir}/pkgconfig/*.pc pc/
+	sed -ri 's@^(Requires.private:).*@\1@' pc/*.pc
+	cflags="$(pkg-config --cflags ncurses)"
+	  libs="$(pkg-config --libs   ncurses)"
+	test -n "$cflags" -a -n "$libs" || exit 1
+	bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/ncurses6-config
+    popd
 
 %install
-%if %{with usepcre2}
-    pcre2="-lpcre2-posix -lpcre2-8"
-%else
-    pcre2=""
+    make -C build.5  install.libs DESTDIR=%{buildroot}
+    make -C build.w5 install.libs DESTDIR=%{buildroot}
+    make -C build.6  install.libs DESTDIR=%{buildroot} libdir=%{_libdir}/ncurses6nt
+    make -C build.w6 install.libs DESTDIR=%{buildroot} libdir=%{_libdir}/ncurses6nt
+    rm -rvf %{buildroot}%{_bindir}
+    rm -rvf %{buildroot}%{_libdir}/pkgconfig
+    rm -rvf %{buildroot}%{_incdir}
+    rm -vf  %{buildroot}%{_libdir}/*.{so,a}
+    rm -vf  %{buildroot}%{_libdir}/ncurses6nt/*.{so,a}
+    pushd build.t6/man
+	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
+    popd
+    make -C build.t6 install.{libs,includes} DESTDIR=%{buildroot} DESTDIR=%{buildroot} includesubdir=/ncurses
+%if %{with onlytinfo}
+    gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,--auxiliary=libtinfo.so.5,-soname,libtinfow.so.5,-stats,-lc \
+	-Wl,--version-script,build.w5/package/ncursesw.map -o %{buildroot}%{_libdir}/libtinfow.so.5.9
+    gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,-rpath-link=%{buildroot}%{_libdir}/ncurses6nt \
+	-Wl,--auxiliary=libtinfo.so.6,-soname,libtinfow.so.6,-stats,-lc \
+	-Wl,--version-script,build.w6/package/ncursesw.map -o %{buildroot}%{_libdir}/ncurses6nt/libtinfow.so.%{basevers}
 %endif
     PATH=$PWD/gzip:$PATH
+    # this is build.wt6
     (cd %{root}/; tar -cpSf - *)|tar -xpsSf - -C %{buildroot}/
     rm -rf %{root}
     for model in libncurses libncursest libncursesw libncursestw libtinfo libtinfow libtic libticw
@@ -1007,12 +799,12 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	    libncursesw*)
 		rm -f ${lnk}
 		echo '/* GNU ld script */'			>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo} -ldl $pcre2))" >> ${lnk}
+		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo} -ldl %{?with_usepcre2:-lpcre2-posix -lpcre2-8}))" >> ${lnk}
 		;;
 	    libncurses*)
 		rm -f ${lnk}
 		echo '/* GNU ld script */'			>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-ltinfo -ldl $pcre2))" >> ${lnk}
+		echo "INPUT(${lib} AS_NEEDED(-ltinfo -ldl %{?with_usepcre2:-lpcre2-posix -lpcre2-8}))" >> ${lnk}
 		;;
 	    *)	ln -sf ${lib} %{buildroot}%{_libdir}/${model}.so
 	    esac
@@ -1211,33 +1003,25 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     cp -p pc/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
 #
-# Install test binaries and, if exists, the manual pages
+# Install ncursesnt wrapper script
 #
-pushd test
-    mv usr.back usr
-    mkdir -p ./%{_mandir}/man6
-    cp -p $(find -name '*.6') .%{_mandir}/man6/
-    (cd usr/; tar -cpSf - .) | tar -xpsSf - -C %{buildroot}%{_prefix}
-    install -m 0755 %{S:8} %{buildroot}%{_libexecdir}/ncurses-examples/
-popd
-
-%if 0%{?_crossbuild}
-# No test here
-%else
+    install -m 0755 %{S:12} %{buildroot}%{_bindir}/ncursesnt
 
 %check
+%if 0%{?_crossbuild}
+echo No test here
+%else
 LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH
 nm -D %{buildroot}%{_libdir}/libncursesw.so.%{basevers} | grep -q in_wch
 %if %{with onlytinfo}
 nm -D %{buildroot}%{_libdir}/libtinfo.so.%{basevers} | grep -q _nc_read_entry2
 %endif
-%if 0%{?suse_version} > 1500
 pushd test
     expect -d <<-'EOF'
 	set env(TERM) xterm
 	set timeout 20
-	spawn -noecho ".%{_libexecdir}/ncurses-examples/newdemo"
+	spawn -noecho "%{buildroot}%{_libexecdir}/ncurses-examples/newdemo"
 	send -- "x"
 	sleep 5
 	send -- "x"
@@ -1248,7 +1032,6 @@ pushd test
 	wait -nowait
 	EOF
 popd
-%endif
 %endif
 
 %post   -n libncurses5 -p /sbin/ldconfig
@@ -1312,6 +1095,12 @@ popd
 %defattr(-,root,root)
 %{_libdir}/lib*.so.6*
 
+%files -n libncurses6-compat
+%defattr(-,root,root)
+%{_bindir}/ncursesnt
+%dir %{_libdir}/ncurses6nt/
+%{_libdir}/ncurses6nt/lib*.so.6*
+
 %files -n ncurses-devel
 %defattr(-,root,root)
 %dir %{_defaultdocdir}/ncurses/
@@ -1336,23 +1125,6 @@ popd
 
 %files -n ncurses-devel-static
 %{_libdir}/lib*.a
-
-%files -n ncurses5-devel
-%defattr(-,root,root)
-%{_bindir}/ncurses*5-config
-%dir %{_incdir}/ncurses5/
-%dir %{_incdir}/ncurses5/ncurses/
-%dir %{_incdir}/ncurses5/ncursesw/
-%{_incdir}/ncurses5/*.h
-%{_incdir}/ncurses5/ncurses/*.h
-%{_incdir}/ncurses5/ncursesw/*.h
-%dir %{_libdir}/ncurses5/
-%{_libdir}/ncurses5/lib*.so
-%{_libdir}/pkgconfig/*5.pc
-%doc %{_mandir}/man1/ncurses*5-config.1%{ext_man}
-
-%files -n ncurses5-devel-static
-%{_libdir}/ncurses5/lib*.a
 
 %files -n tack
 %defattr(-,root,root)

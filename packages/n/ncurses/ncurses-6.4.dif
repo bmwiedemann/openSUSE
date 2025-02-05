@@ -18,8 +18,8 @@
  16 files changed, 202 insertions(+), 72 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2025-01-07 10:22:55.391579394 +0000
-@@ -6185,12 +6185,12 @@ cat >>$cf_edit_man <<CF_EOF
++++ aclocal.m4	2025-02-03 07:51:27.295207512 +0000
+@@ -6183,12 +6183,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -34,7 +34,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -6200,7 +6200,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6198,7 +6198,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -43,7 +43,7 @@
  CF_EOF
  fi
  
-@@ -6243,7 +6243,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6241,7 +6241,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -52,7 +52,7 @@
  CF_EOF
  fi
  
-@@ -6252,31 +6252,31 @@ case "$MANPAGE_FORMAT" in
+@@ -6250,31 +6250,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -91,7 +91,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6286,7 +6286,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6284,7 +6284,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -100,7 +100,7 @@
  							then
  								continue
  							fi
-@@ -6296,18 +6296,18 @@ CF_EOF
+@@ -6294,18 +6294,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -122,7 +122,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -6327,9 +6327,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6325,9 +6325,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -135,7 +135,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6350,6 +6350,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6348,6 +6348,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -144,8 +144,8 @@
  esac
  done
 --- configure
-+++ configure	2025-01-07 10:22:55.395579321 +0000
-@@ -6787,7 +6787,7 @@ echo $ECHO_N "checking for an rpath opti
++++ configure	2025-01-20 07:16:39.818905917 +0000
+@@ -6788,7 +6788,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -154,7 +154,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -7160,8 +7160,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
+@@ -7161,8 +7161,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
  	else
  		cf_cv_shared_soname='`basename $@`'
  	fi
@@ -165,7 +165,7 @@
  		;;
  	(mingw*msvc*)
  		cf_cv_shlib_version=msvcdll
-@@ -8403,7 +8403,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -8409,7 +8409,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -174,7 +174,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15634,12 +15634,12 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15654,12 +15654,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -189,7 +189,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15649,7 +15649,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15669,7 +15669,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -198,7 +198,7 @@
  CF_EOF
  fi
  
-@@ -15692,7 +15692,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15712,7 +15712,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -207,7 +207,7 @@
  CF_EOF
  fi
  
-@@ -15701,31 +15701,31 @@ case "$MANPAGE_FORMAT" in
+@@ -15721,31 +15721,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -246,7 +246,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15735,7 +15735,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15755,7 +15755,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -255,7 +255,7 @@
  							then
  								continue
  							fi
-@@ -15745,18 +15745,18 @@ CF_EOF
+@@ -15765,18 +15765,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -277,7 +277,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15776,9 +15776,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15796,9 +15796,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -290,7 +290,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15799,6 +15799,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15819,6 +15819,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -349,7 +349,7 @@
  
 --- man/man_db.renames.in
 +++ man/man_db.renames.in	2024-12-16 08:23:36.331179843 +0000
-@@ -302,6 +302,7 @@ wtimeout.3x			wtimeout.3ncurses
+@@ -305,6 +305,7 @@ wtimeout.3x			wtimeout.3ncurses
  wunctrl.3x			wunctrl.3ncurses
  #
  # Other:
@@ -771,14 +771,14 @@
  	done
  
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2024-12-16 08:23:36.335179769 +0000
++++ ncurses/tinfo/lib_setup.c	2025-01-20 07:22:44.332156044 +0000
 @@ -800,6 +800,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
-     } else if ((value = tigetnum("U8")) >= 0) {
+     } else if ((value = tigetnum(UserCap(U8))) >= 0) {
  	result = value;		/* use extension feature */
      } else if ((env = getenv("TERM")) != NULL) {
 +	char *yast = getenv("YAST_DOES_ACS");
 +	if (yast != NULL)
-+	    return 0;		/* YaST uses always correct font mappings */
++	    returnCode(result); /* YaST uses always correct font mappings */
  	if (strstr(env, "linux")) {
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != NULL
@@ -804,7 +804,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2024-12-16 08:23:36.335179769 +0000
-@@ -1156,12 +1156,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1162,12 +1162,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */

@@ -1,6 +1,4 @@
 addFilter(".*files-duplicate.*")
 addFilter(".*non-etc-or-var-file-marked-as-conffile.*")
 addFilter(".*macro-in-comment.*jobs.*")
-addFilter(".*E:.*no-library-dependency-for.*/usr/lib.*/ncurses5/\.\./libform\.so\.5.*")
-addFilter(".*E:.*obsolete-suse-version-check.*")
 addFilter(".*terminfo.*E:.no-binary.*")
