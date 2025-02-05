@@ -1,6 +1,7 @@
---- a/test/test_hpack.py
-+++ b/test/test_hpack.py
-@@ -2,7 +2,7 @@
+diff -Nru hpack-4.1.0.orig/tests/test_hpack.py hpack-4.1.0/tests/test_hpack.py
+--- hpack-4.1.0.orig/tests/test_hpack.py	2024-11-23 09:35:36.000000000 +0100
++++ hpack-4.1.0/tests/test_hpack.py	2025-02-04 12:22:54.679696648 +0100
+@@ -1,7 +1,7 @@
  import itertools
  import pytest
  
@@ -9,7 +10,7 @@
  from hypothesis.strategies import text, binary, sets, one_of
  
  from hpack import (
-@@ -760,6 +760,7 @@ class TestDictToIterable:
+@@ -767,6 +767,7 @@
          binary().filter(lambda k: k and not k.startswith(b':'))
      )
  
@@ -17,7 +18,7 @@
      @given(
          special_keys=sets(keys),
          boring_keys=sets(keys),
-@@ -797,6 +798,7 @@ class TestDictToIterable:
+@@ -804,6 +805,7 @@
          assert special_keys == received_special
          assert boring_keys == received_boring
  

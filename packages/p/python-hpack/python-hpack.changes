@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb  4 11:51:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.1.0
+  * API Changes (Backward Incompatible)**
+    - Support for Python 3.6 has been removed.
+    - Support for Python 3.7 has been removed.
+    - Support for Python 3.8 has been removed.
+    - Renamed `InvalidTableIndex` exception to `InvalidTableIndexError`.
+  * API Changes (Backward Compatible)**
+    - Support for Python 3.9 has been added.
+    - Support for Python 3.10 has been added.
+    - Support for Python 3.11 has been added.
+    - Support for Python 3.12 has been added.
+    - Support for Python 3.13 has been added.
+    - Optimized bytes encoding of headers.
+    - Updated packaging and testing infrastructure.
+    - Code cleanup and linting.
+    - Added type hints.
+- Refresh healthcheck.patch
+- Refresh test_fixtures.tar.xz
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-hpack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-hpack
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Pure-Python HPACK header compression
 License:        MIT
@@ -29,8 +29,10 @@ Source0:        https://files.pythonhosted.org/packages/source/h/hpack/hpack-%{v
 Source1:        test_fixtures.tar.xz
 Patch0:         healthcheck.patch
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -46,11 +48,11 @@ automatically enables the use of nghttp2 if it’s available.
 
 %build
 export LC_ALL="en_US.UTF-8"
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL="en_US.UTF-8"
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +62,6 @@ export LC_ALL="en_US.UTF-8"
 %license LICENSE
 %doc CHANGELOG.rst CONTRIBUTORS.rst README.rst
 %{python_sitelib}/hpack
-%{python_sitelib}/hpack-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/hpack-%{version}.dist-info
 
 %changelog
