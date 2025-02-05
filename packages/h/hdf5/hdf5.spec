@@ -336,6 +336,7 @@ Patch104:       Report-error-if-dimensions-of-chunked-storage-in-data-layout-2.p
 Patch105:       When-evicting-driver-info-block-NULL-the-corresponding-entry.patch
 Patch107:       Validate-location-offset-of-the-accumulated-metadata-when-comparing.patch
 Patch109:       Hot-fix-for-CVE-2020-10812.patch
+Patch110:       reproducible.patch
 
 BuildRequires:  fdupes
 BuildRequires:  hostname
@@ -600,6 +601,7 @@ hdf5%{?my_suffix}-devel
    requires "libhdf5_hl_cpp%{sonum_HL_CXX}%{?my_suffix}-<targettype> = <version>"
 EOF
 %endif
+%patch -P110 -p1
 
 %build
 
