@@ -104,4 +104,13 @@
   &quot;-key</comment>
     <requestid>1225316</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b4b4d4ee74a89068e1c19990a406e4f2</srcmd5>
+    <version>25.1.0</version>
+    <time>1738755659</time>
+    <user>anag+factory</user>
+    <comment>- update to 25.1.0:
+  * https://github.com/mk-fg/pretty-yaml/compare/24.9.0...25.1.0</comment>
+    <requestid>1243206</requestid>
+  </revision>
 </revisionlist>
