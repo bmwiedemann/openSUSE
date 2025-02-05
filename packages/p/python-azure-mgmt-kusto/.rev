@@ -187,4 +187,18 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164812 from glaubitz)</comment>
     <requestid>1165208</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>291fe6705ea9b0850237221f3e26e6e2</srcmd5>
+    <version>3.4.0</version>
+    <time>1738755729</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 3.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section</comment>
+    <requestid>1243246</requestid>
+  </revision>
 </revisionlist>
