@@ -1,8 +1,8 @@
 #
 # spec file for package nestopia
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2018-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2018-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
 Name:           nestopia
 Version:        1.53.0
 Release:        0
@@ -30,7 +32,7 @@ BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fltk-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -49,6 +51,10 @@ rate and support for many peripherals and input devices.
 sed -i 's/\r$//' ChangeLog
 
 %build
+%if 0%{?force_gcc_version}
+export CXX="g++-%{?force_gcc_version}"
+%endif
+
 autoreconf -fiv
 %configure \
   --docdir=%{_docdir}/%{name} \
