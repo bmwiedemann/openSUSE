@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:26:07 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.7.0
+  MFSA 2025-10 (bsc#1236539)
+  * CVE-2025-1009 (bmo#1936613)
+    Use-after-free in XSLT
+  * CVE-2025-1010 (bmo#1936982)
+    Use-after-free in Custom Highlight
+  * CVE-2025-1011 (bmo#1936454)
+    A bug in WebAssembly code generation could result in a crash
+  * CVE-2025-1012 (bmo#1939710)
+    Use-after-free during concurrent delazification
+  * CVE-2024-11704 (bmo#1899402)
+    Potential double-free vulnerability in PKCS#7 decryption
+    handling
+  * CVE-2025-1013 (bmo#1932555)
+    Potential opening of private browsing tabs in normal browsing
+    windows
+  * CVE-2025-1014 (bmo#1940804)
+    Certificate length was not properly checked
+  * CVE-2025-1015 (bmo#1939458)
+    Unsanitized address book fields
+  * CVE-2025-0510 (bmo#1940570)
+    Address of e-mail sender can be spoofed by malicious email
+  * CVE-2025-1016 (bmo#1936601, bmo#1936844, bmo#1937694,
+    bmo#1938469, bmo#1939583, bmo#1940994)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 115.20, Firefox ESR 128.7, Thunderbird 115.20,
+    and Thunderbird 128.7
+  * CVE-2025-1017 (bmo#1926256, bmo#1935471, bmo#1935984)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 128.7, and Thunderbird 128.7
+
+-------------------------------------------------------------------
+Mon Jan 27 07:58:55 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.6.1
+  * fixed: Link at about:rights pointed to Firefox privacy policy
+    instead of Thunderbird's (bmo#1941998)
+  * fixed: POP3 'fetch headers only' and 'get selected messages'
+    could delete messages (bmo#1930847)
+  * fixed: 'Search Online' checkbox in saved search properties
+    was incorrectly disabled (bmo#1937642)
+  * fixed: POP3 status message showed incorrect download count
+    when messages were deleted (bmo#1935800)
+  * fixed: Space bar did not always advance to the next unread
+    message (bmo#1468925)
+  * fixed: Folder creation or renaming failed due to incorrect
+    preference settings (bmo#1911225)
+  * fixed: Forwarding/editing S/MIME drafts/templates unusable
+    due to regression (bmo#1940605, boo#1236411)
+  * fixed: Sort order in 'Search Messages' panel reset after
+    search or on first launch (bmo#1935073)
+  * fixed: Reply window added an unnecessary third blank line at
+    the top (bmo#1935938)
+  * fixed: Thunderbird spell check box did not allow ENTER to
+    accept suggested changes (bmo#1935401)
+  * fixed: Long email subject lines could overlap window control
+    buttons on macOS (bmo#1940201)
+  * fixed: Flathub manifest link was not correct (bmo#1907695)
+  * fixed: 'Prefer client-side email scheduling' needed to be
+    selected twice (bmo#1862400)
+  * fixed: Duplicate invitations were sent if CALDAV calendar
+    email case did not match (bmo#1889607)
+  * fixed: Visual and UX improvements
+    (bmo#1875325,bmo#1901846,bmo#1939603,bmo#1855276)
+
+-------------------------------------------------------------------
 Wed Jan  8 08:12:38 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.6.0

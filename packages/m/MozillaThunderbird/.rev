@@ -5715,4 +5715,49 @@ I cannot test locally unfortunately.
     Memory safety bugs fixed in Firefox 134, Thunderbird 134,</comment>
     <requestid>1237936</requestid>
   </revision>
+  <revision rev="353" vrev="1">
+    <srcmd5>9a7484ab80ba7cdeb6cfdc0fb9a4a726</srcmd5>
+    <version>128.6.1</version>
+    <time>1738072751</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240635</requestid>
+  </revision>
+  <revision rev="354" vrev="1">
+    <srcmd5>1d25a93647ed075d753ae7be5e640d2c</srcmd5>
+    <version>128.7.0</version>
+    <time>1738788997</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.7.0
+  MFSA 2025-10 (bsc#1236539)
+  * CVE-2025-1009 (bmo#1936613)
+    Use-after-free in XSLT
+  * CVE-2025-1010 (bmo#1936982)
+    Use-after-free in Custom Highlight
+  * CVE-2025-1011 (bmo#1936454)
+    A bug in WebAssembly code generation could result in a crash
+  * CVE-2025-1012 (bmo#1939710)
+    Use-after-free during concurrent delazification
+  * CVE-2024-11704 (bmo#1899402)
+    Potential double-free vulnerability in PKCS#7 decryption
+    handling
+  * CVE-2025-1013 (bmo#1932555)
+    Potential opening of private browsing tabs in normal browsing
+    windows
+  * CVE-2025-1014 (bmo#1940804)
+    Certificate length was not properly checked
+  * CVE-2025-1015 (bmo#1939458)
+    Unsanitized address book fields
+  * CVE-2025-0510 (bmo#1940570)
+    Address of e-mail sender can be spoofed by malicious email
+  * CVE-2025-1016 (bmo#1936601, bmo#1936844, bmo#1937694,
+    bmo#1938469, bmo#1939583, bmo#1940994)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 115.20, Firefox ESR 128.7, Thunderbird 115.20,
+    and Thunderbird 128.7
+  * CVE-2025-1017 (bmo#1926256, bmo#1935471, bmo#1935984)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 128.7, and Thunderbird 128.7</comment>
+    <requestid>1243477</requestid>
+  </revision>
 </revisionlist>
