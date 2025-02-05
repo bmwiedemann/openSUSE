@@ -116,7 +116,7 @@ rm %{buildroot}%{_prefix}/lib/%{name}/jameica-macos64.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-macos-aarch64.jar
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-openbsd.jar
 
-%if %{bits} > 32
+%if "%{bits}" == "64"
 rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linux.jar
   %ifarch aarch64 armv7l arm64
   rm %{buildroot}%{_prefix}/lib/%{name}/jameica-linux64.jar

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:00:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with recent Factory macro changes
+
+-------------------------------------------------------------------
 Thu Jan 16 10:17:35 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add missing require libgtread-2_0-0.

@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>1238210</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>5a5c442f2e76d8a4865c4a28b34349e1</srcmd5>
+    <version>2.10.4</version>
+    <time>1738755722</time>
+    <user>anag+factory</user>
+    <comment>fix build</comment>
+    <requestid>1243256</requestid>
+  </revision>
 </revisionlist>
