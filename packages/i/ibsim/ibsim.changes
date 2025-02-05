@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 15:33:06 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Fix new line issues in changelog
+
+-------------------------------------------------------------------
 Thu Feb 22 13:33:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -23,6 +28,7 @@ Mon Aug 23 15:12:43 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@su
 - Drop patches fixed upstream:
   - ibsim-fix_type_punning.patch
   - typo-scrips.patch
+
 -------------------------------------------------------------------
 Wed Apr 28 07:49:11 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
@@ -96,7 +102,6 @@ Thu Jun  8 08:40:42 UTC 2017 - nmoreychaisemartin@suse.com
   * Invalidate PerformanceSet commands with no port number
   * Fix parsing of port number in PerformanceSet command
   * Allocate MFT according to number of switch ports
-
 
 -------------------------------------------------------------------
 Wed Mar 29 08:02:00 CEST 2017 - pth@suse.de
