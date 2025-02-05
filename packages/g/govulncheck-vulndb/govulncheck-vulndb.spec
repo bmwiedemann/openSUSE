@@ -19,7 +19,7 @@
 %define shortname vulndb
 
 Name:           govulncheck-vulndb
-Version:        0.0.20250115T172141
+Version:        0.0.20250204T220613
 Release:        0
 Summary:        Local copy of Go vulnerability database
 License:        CC-BY-4.0
@@ -42,13 +42,13 @@ Usage:
 govulncheck -db file:///usr/share/vulndb
 
 %prep
-unzip %{SOURCE0} -d %{shortname}
+%setup -c -n %{shortname}
 
 %build
 
 %install
 install -d %{buildroot}%{_datadir}/%{shortname}
-find . -name "*.json" -exec install -Dm644 \{\} %{buildroot}%{_datadir}/\{\} \;
+find . -name "*.json" -exec install -Dm644 \{\} %{buildroot}%{_datadir}/%{shortname}/\{\} \;
 
 %check
 

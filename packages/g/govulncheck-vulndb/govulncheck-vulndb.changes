@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Feb  4 22:06:13 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250204T220613 2025-02-04T22:06:13Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3431 CVE-2025-24884 GHSA-hcr5-wv4p-h2g2
+  * GO-2025-3433 CVE-2025-23216 GHSA-47g2-qmh2-749v
+  * GO-2025-3434 CVE-2025-24376 GHSA-fc89-jghx-8pvg
+  * GO-2025-3435 CVE-2025-24784 GHSA-756x-m4mj-q96c
+  * GO-2025-3436 CVE-2025-24883 GHSA-q26p-9cq4-7fc2
+  * GO-2025-3437 GHSA-274v-mgcv-cm8j
+  * GO-2025-3438 CVE-2024-11741 GHSA-wxcc-2f3q-4h58
+  * GO-2025-3442 CVE-2025-24371 GHSA-22qq-3xwm-r5x4
+  * GO-2025-3443 GHSA-r3r4-g7hq-pq4f
+  * GO-2025-3444 CVE-2024-35177
+  * GO-2025-3445 CVE-2024-47770
+
+-------------------------------------------------------------------
+Tue Feb  4 12:14:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use standard RPM macros to unpack the source and populate a
+  working directory. Fixes build with RPM 4.20.
+
+-------------------------------------------------------------------
+Thu Jan 30 18:58:58 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250130T185858 2025-01-30T18:58:58Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-2842 CVE-2024-3727 GHSA-6wvf-f2vw-3425
+  * GO-2024-3181 CVE-2024-9313 GHSA-x5q3-c8rm-w787
+  * GO-2024-3188 CVE-2024-9312 GHSA-4gfw-wf7c-w6g2
+  * GO-2025-3372 CVE-2024-45339 GHSA-6wxm-mpqj-6jpf
+  * GO-2025-3373 CVE-2024-45341
+  * GO-2025-3383 CVE-2024-45340
+  * GO-2025-3408
+  * GO-2025-3412 CVE-2024-10846 GHSA-36gq-35j3-p9r9
+  * GO-2025-3420 CVE-2024-45336
+  * GO-2025-3421 CVE-2025-22865
+  * GO-2025-3424 CVE-2025-24369
+  * GO-2025-3426 CVE-2025-0750 GHSA-hp5j-2585-qx6g
+  * GO-2025-3427 CVE-2024-13484 GHSA-58fx-7v9q-3g56
+
+-------------------------------------------------------------------
+Tue Jan 28 15:01:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250128T150132 2025-01-28T15:01:32Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3409 CVE-2025-23208 GHSA-c9p4-xwr9-rfhx
+  * GO-2025-3410 CVE-2025-24337 GHSA-3qc3-mx6x-267h
+  * GO-2025-3413 CVE-2025-0377 GHSA-wpfp-cm49-9m9q
+  * GO-2025-3414 CVE-2024-11218 GHSA-5vpc-35f4-r8w6
+  * GO-2025-3415 CVE-2025-23028 GHSA-9m5p-c77c-f9j7
+  * GO-2025-3416 CVE-2025-23047 GHSA-h78m-j95m-5356
+  * GO-2025-3418 CVE-2025-24030 GHSA-j777-63hf-hx76
+  * GO-2025-3419 CVE-2025-24355 GHSA-v34r-vj4r-38j6
+  * GO-2025-3422 CVE-2025-24354
+
+-------------------------------------------------------------------
+Tue Jan 28 00:47:30 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250128T004730 2025-01-28T00:47:30Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3372 CVE-2024-45339
+  * GO-2025-3373 CVE-2024-45341
+  * GO-2025-3383 CVE-2024-45340
+  * GO-2025-3420 CVE-2024-45336
+  * GO-2025-3421 CVE-2025-22865
+
+-------------------------------------------------------------------
+Fri Jan 17 21:48:34 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20250117T214834 2025-01-17T21:48:34Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3392 CVE-2025-20086 GHSA-5m7j-6gc4-ff5g
+  * GO-2025-3393 CVE-2025-21088 GHSA-8j3q-gc9x-7972
+  * GO-2025-3394 CVE-2025-20088 GHSA-45v9-w9fh-33j6
+  * GO-2025-3396 CVE-2024-52594
+  * GO-2025-3397 CVE-2024-36402 GHSA-8vmr-h7h5-cqhg
+  * GO-2025-3398 CVE-2024-52791 GHSA-gp86-q8hg-fpxj
+  * GO-2025-3399 CVE-2024-52602 GHSA-r6jg-jfv6-2fjv
+  * GO-2025-3400 CVE-2024-56515 GHSA-rcxc-wjgw-579r
+  * GO-2025-3401 CVE-2024-36403 GHSA-vc2m-hw89-qjxf
+  * GO-2025-3407 CVE-2025-20621 GHSA-w6xh-c82w-h997
+
+-------------------------------------------------------------------
 Wed Jan 15 17:21:41 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20250115T172141 2025-01-15T17:21:41Z.
