@@ -96,4 +96,13 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Hard break if found data after last boundary on MultipartParser #189</comment>
     <requestid>1228255</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>75286df8eee830ff7d2be386ca41b93a</srcmd5>
+    <version>0.0.20</version>
+    <time>1738755602</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.20:
+  * Handle messages containing only end boundary #142.</comment>
+    <requestid>1243192</requestid>
+  </revision>
 </revisionlist>
