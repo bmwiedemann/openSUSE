@@ -88,4 +88,48 @@
   * build: Add OBS integration (forwarded request 1229116 from pjbgf)</comment>
     <requestid>1229429</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d4539622928dc44ef2d2c8ce68130811</srcmd5>
+    <version>0.0.8</version>
+    <time>1738615438</time>
+    <user>anag+factory</user>
+    <comment>Fix build with rpm-4.20 (forwarded request 1242142 from bmwiedemann)</comment>
+    <requestid>1242151</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>231f4e25edeff2a0725b854242b487df</srcmd5>
+    <version>0.0.9</version>
+    <time>1738755677</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.9:
+  * build: Remove .obs integration
+  * build: Bump go-git to latest from main
+  * Fix inception startup stutter During profile startup an inception server is initiated, with a socket file created at ~/.qubesome/run/&lt;profile&gt;/qube.sock. The profile dir was not present at the first attempt of starting a profile, which meant that a profile would need to be started, closed and started again for it to work.
+  * start: Expand GITDIR for local execution When running locally, users are not required to provide a -giturl. In such cases, the GITDIR should still be expanded based on the -local path provided.
+  * start: Warn users when mounting dirs that don't exist
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump the github-actions-updates group with 4 updates
+  * build(deps): bump google.golang.org/grpc from 1.69.4 to 1.70.0
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.1 to 5.13.2
+  * build(deps): bump google.golang.org/protobuf from 1.36.3 to 1.36.4
+  * build(deps): bump google.golang.org/protobuf from 1.36.2 to 1.36.3
+  * build(deps): bump google.golang.org/grpc from 1.69.2 to 1.69.4
+  * build(deps): bump google.golang.org/protobuf from 1.36.1 to 1.36.2
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.13.0 to 5.13.1
+  * build(deps): bump golang.org/x/sys in the golang-org group
+  * build(deps): bump github.com/go-git/go-git/v5
+  * build(deps): bump google.golang.org/protobuf from 1.36.0 to 1.36.1
+  * build(deps): bump google.golang.org/grpc from 1.69.0 to 1.69.2
+  * build(deps): bump google.golang.org/protobuf from 1.35.2 to 1.36.0
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * Add Leap to README
+  * Add support for AMD GPU sharing AMD GPU sharing is based on ROCm, for Tumbleweed the installation can be done via:
+  * build(deps): bump golang.org/x/crypto in the go_modules group
+  * build(deps): bump google.golang.org/grpc from 1.68.1 to 1.69.0
+  * build(deps): bump google.golang.org/grpc from 1.68.0 to 1.68.1
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump actions/attest-build-provenance (forwarded request 1243217 from pjbgf)</comment>
+    <requestid>1243218</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package qubesome
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qubesome
-Version:        0.0.8
+Version:        0.0.9
 Release:        0
 Summary:        Containerize Window Managers, apps and config from a declarative state in Git
 License:        Apache-2.0
@@ -33,7 +33,7 @@ Define your Window Manager and Workloads in Git and run them as containers. Just
 %prep
 %autosetup -a 1
 
-%build -n %{project}-%{version}
+%build
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
