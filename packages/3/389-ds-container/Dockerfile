@@ -14,7 +14,7 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!UseOBSRepositories
-
+#!ExclusiveArch: aarch64 ppc64le s390x x86_64
 #!BuildTag: opensuse/389-ds:%%389ds_version%%-%RELEASE%
 #!BuildTag: opensuse/389-ds:%%389ds_version%%
 #!BuildTag: opensuse/389-ds:latest
