@@ -15,7 +15,7 @@
     <package name="compat-usrmerge-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dbus-1-common" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dbus-1-tools" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -37,6 +37,7 @@
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libalternatives1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="libarchive13" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -64,13 +65,14 @@
     <package name="libkfont0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="liblua5_4-5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
+    <package name="liblz4-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="liblzma5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libpkgconf5" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
@@ -83,6 +85,7 @@
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="libxml2-2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
