@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jan 31 10:21:07 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 2.1:
+  * Build-system fixups to install more headers
+  * add a missing absl dependency
+  * forward port some missing patches to fix Windows builds.
+
+- Update to version 2.0:
+  * Bump to code from WebRTC M131 version.
+  * Minor (breaking) API changes upstream
+  * Various improvements to the AEC implementation
+  * Transient suppression is removed
+  * ExperimentalAgc and ExperimentalNs are removed
+  * iSAC and the webrtc-audio-coding library were removed
+  * abseil-cpp dependency bumped to 20240722
+  * NEON runtime detection dropped following upstream
+  * Fixes for building on i686 and MIPS
+  * Support for BSDs is added
+  * Other build-system cleanups
+  * Patches to upstream are now also tracked in patches/
+
+- Do not generate libwebrtc-audio-coding-* subpackages
+  since the library was removed by upstream.
+
+- Drop patches that aren't needed anymore:
+  * big_endian_support.patch
+  * big_endian_support_2.patch
+  * fix-i586.patch
+  * reduce-meson-dep.patch
+  * webrtc-ppc64.patch
+  * webrtc-s390x.patch
+- Rebase patch to fix build with the new sources:
+  * fix-build.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:14:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
