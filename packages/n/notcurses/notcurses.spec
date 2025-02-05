@@ -1,8 +1,8 @@
 #
 # spec file for package notcurses
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_without  pandoc
 %endif
 Name:           notcurses
-Version:        3.0.11
+Version:        3.0.13
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -294,6 +294,6 @@ cd build
 
 %files -n python3-notcurses
 %{python3_sitearch}/notcurses
-%{python3_sitearch}/notcurses-3.0.10*-info
+%{python3_sitearch}/notcurses-%{version}*-py*.egg-info
 
 %changelog
