@@ -19,7 +19,7 @@
 %define         gst_branch      1.0
 
 Name:           gstreamer-docs
-Version:        1.24.11
+Version:        1.24.12
 Release:        0
 Summary:        GStreamer documentation
 License:        (BSD-2-Clause OR LGPL-2.1-or-later OR MIT) AND OPL-1.0 AND CC-BY-SA-4.0
