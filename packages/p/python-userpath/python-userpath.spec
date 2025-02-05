@@ -1,7 +1,7 @@
 #
 # spec file for package python-userpath
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,16 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-userpath
+Name:           python-userpath%{psuffix}
 Version:        1.9.2
 Release:        0
 Summary:        Tool for adding locations to the user PATH
@@ -33,9 +41,12 @@ Requires:       python-click
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module userpath = %{version}}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -47,17 +58,24 @@ with no elevated privileges required.
 %autosetup -p1 -n userpath-%{version}
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/userpath
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LC_ALL=C.UTF-8
 %pytest
+%endif
 
+%if !%{with test}
 %post
 %python_install_alternative userpath
 
@@ -70,5 +88,6 @@ export LC_ALL=C.UTF-8
 %python_alternative %{_bindir}/userpath
 %{python_sitelib}/userpath
 %{python_sitelib}/userpath-%{version}*-info
+%endif
 
 %changelog

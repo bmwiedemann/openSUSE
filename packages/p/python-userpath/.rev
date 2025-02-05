@@ -67,4 +67,12 @@
   * Fix import error on Windows</comment>
     <requestid>1158496</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>332f86b5642ae22d8f2d1282080cafab</srcmd5>
+    <version>1.9.2</version>
+    <time>1738773281</time>
+    <user>anag+factory</user>
+    <comment>- Use multibuild for tests</comment>
+    <requestid>1243367</requestid>
+  </revision>
 </revisionlist>
