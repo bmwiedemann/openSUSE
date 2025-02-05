@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  2 10:34:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 6.15.0
+  * Starting with version 6.15.0, check_smart.pl additionally
+    checks for errors in the so-called SMART Error Log by default.
+  * To skip checking the SMART Error Log, the new parameter
+    --skip-error-log can be used.
+  * Another new parameter is the -O/--oldage parameter. If this
+    parameter is used, certain attributes of type "Oldage" are
+    ignored. Right now these attributes are
+    202,Percent_Lifetime_Used for ATA drives and when the
+    Critical_Warning attribute of NVMe drives has the value 0x04.
+
+-------------------------------------------------------------------
 Tue Sep 10 16:53:07 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 6.14.3
