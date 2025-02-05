@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:33:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.12:
+  + x264enc: add missing data to AvcDecoderConfigurationRecord, and
+    switch to GstByteWriter
+
+-------------------------------------------------------------------
 Tue Jan  7 21:49:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.11:
