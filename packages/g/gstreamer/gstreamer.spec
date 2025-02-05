@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.24.11
+Version:        1.24.12
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
