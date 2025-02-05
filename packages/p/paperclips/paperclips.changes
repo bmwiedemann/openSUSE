@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 06:45:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Work around the fact that %%_libdir is now not defined for noarch
+  builds
+
+-------------------------------------------------------------------
 Sun Sep 29 19:55:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

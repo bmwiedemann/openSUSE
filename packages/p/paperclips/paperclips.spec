@@ -1,7 +1,7 @@
 #
 # spec file for package paperclips
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,7 @@ and the layout is up to you.
 %patch -P 0 -p1
 
 %build
-export CLASSPATH=%{_libdir}/java/swt.jar
+export CLASSPATH=$(find-jar swt)
 
 pushd src
   javac -source 1.8 -target 1.8 -g -encoding UTF-8 $(find . -type f -name "*.java")
