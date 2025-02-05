@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 20 10:09:15 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.33.0
+  * Support for kernel up to 6.12
+  * Add new bcc tool numasched
+  * syms: Initialize ModulePath::fd_ to invalid FD
+  * libbpf-tools/memleak: Fix off-by-one error
+  * libbpf-tools/slabratetop: Fix failed to create kprobe error
+  * libbpf_tools/profile: Support PID namespace mapping
+  * libbpf-tools/mountsnoop: Support fsopen,fsconfig,fsmount,move_mount syscalls
+  * tools/oomkill: get application level stack trace
+  * tools/profile: Add additional information to backtrace
+  * tools/mountsnoop: Fix fsmount printing wrong flags
+  * tools/compactsnoop: Add aarch64 support
+  * doc update, other bug fixes and tools improvement.
+
+-------------------------------------------------------------------
 Thu Dec 19 06:46:58 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Default to LLVM 19 in Factory and SLE15-SP7
