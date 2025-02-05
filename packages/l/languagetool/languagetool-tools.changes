@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 06:11:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Make languagetool-core archful, because it requires system
+  hunspell library
+
+-------------------------------------------------------------------
 Mon Nov  4 21:30:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix conflict/choice of providers

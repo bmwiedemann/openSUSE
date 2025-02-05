@@ -1,7 +1,7 @@
 #
 # spec file for package languagetool-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,6 @@ Requires:       glassfish-jaxb-runtime
 %requires_eq    %{hunspell_library}
 %requires_ge    lucene-backward-codecs
 %requires_ge    lucene-core
-BuildArch:      noarch
 
 %description
 LanguageTool is a free and open-source grammar checker.
@@ -79,6 +78,7 @@ This package contains the core library
 
 %package tests
 Summary:        Style and Grammar Checker for 25+ Languages - Core package
+BuildArch:      noarch
 
 %description tests
 LanguageTool is a free and open-source grammar checker.
@@ -86,6 +86,7 @@ This package contains the test-jar for core library
 
 %package javadoc
 Summary:        Javadoc for %{name}
+BuildArch:      noarch
 
 %description javadoc
 This package contains javadoc for %{name}.

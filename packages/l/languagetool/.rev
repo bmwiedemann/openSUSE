@@ -71,4 +71,12 @@
     <comment>Fix conflict/choice of providers</comment>
     <requestid>1221268</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>6bcbbf7e94245aeae859d1f8d6d95970</srcmd5>
+    <version>4.8</version>
+    <time>1738755707</time>
+    <user>anag+factory</user>
+    <comment>make core package archful</comment>
+    <requestid>1243244</requestid>
+  </revision>
 </revisionlist>
