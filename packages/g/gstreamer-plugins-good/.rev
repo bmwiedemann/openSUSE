@@ -955,4 +955,20 @@ From the patch header
     <comment></comment>
     <requestid>1235937</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>e91cf17b5f670636c9467616a29ef464</srcmd5>
+    <version>1.24.11</version>
+    <time>1738007682</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240599</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>f9abba5ae3b6c6462d2a1aa467c8d12c</srcmd5>
+    <version>1.24.12</version>
+    <time>1738755577</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243073</requestid>
+  </revision>
 </revisionlist>
