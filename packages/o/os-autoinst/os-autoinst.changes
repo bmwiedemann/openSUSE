@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Feb 05 14:45:06 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738752967.6623798:
+  * Modify connect_and_login() test to catch multiline carp warning
+  * Apply suggestions from code review
+  * Add unit tests for consoles/s3270.pm
+  * t: Use more simple prototyped Test::Exceptions functions
+  * t: Focus on using Test::Exception only instead of Test::Fatal
+  * t: Ensure we use implicit Test::Exception in all places
+  * Fix race condition when autotest terminates
+
+-------------------------------------------------------------------
+Tue Feb 04 14:42:26 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738604220.30e658a:
+  * t: Use more simple prototyped Test::Exceptions functions
+  * t: Focus on using Test::Exception only instead of Test::Fatal
+  * t: Ensure we use implicit Test::Exception in all places
+  * Fix race condition when autotest terminates
+  * Make it obvious when autotest receives SIGTERM in any case
+  * Increase vnctest script coverage
+
+-------------------------------------------------------------------
+Mon Feb 03 14:31:52 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738587296.1a8261d:
+  * Fix race condition when autotest terminates
+  * Make it obvious when autotest receives SIGTERM in any case
+  * Increase vnctest script coverage
+  * Remove call to unmock from code review suggestion
+  * Fix error handling when reading output of SSH commands after 0d09ec97e
+
+-------------------------------------------------------------------
+Tue Jan 28 15:56:09 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738076220.6b39995:
+  * Add unit tests for consoles/sshXtermIPMI.pm
+  * Extend documentation of SSH related timeout parameters
+  * Allow specifying the timeout on `get_cmd_output` calls
+  * Avoid endless loop in case of SSH read errors in `check_ssh_serial`
+  * Add more code coverage for video_stream.pm
+  * Clone the disk image with nvram for vmware guest
+
+-------------------------------------------------------------------
+Mon Jan 27 20:34:38 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1737980001.69ac906:
+  * Add more code coverage for video_stream.pm
+  * Clone the disk image with nvram for vmware guest
+  * Update loadtestdir with correct paths
+  * Fix passing of variables
+  * Extract method in OpenQA::Isotovideo::Dewebsockify
+  * t: Fix 'The signatures feature is experimental' in t/39-dewebsockify.t
+
+-------------------------------------------------------------------
+Wed Jan 22 15:25:14 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1737544150.75887b5:
+  * Update loadtestdir with correct paths
+  * Fix passing of variables
+  * Extract method in OpenQA::Isotovideo::Dewebsockify
+  * t: Fix 'The signatures feature is experimental' in t/39-dewebsockify.t
+  * Add coverage for tags subroutine when called with more than 2
+  * Add test covering dewebsockify modulino
+  * Make script/dewebsockify a Modulino
+  * Improve test for websocket error handling
+  * Drop some orphaned lines about gocrbin
+
+-------------------------------------------------------------------
 Fri Jan 17 17:28:20 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1737129853.8e8f463:
