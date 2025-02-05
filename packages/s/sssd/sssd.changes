@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 30 14:24:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.10.2
+  * If the ssh responder is not running, sss_ssh_knownhosts will
+    not fail (but it will not return the keys).
+  * SSSD is now capable of handling multiple services associated
+    with the same port.
+  * sssd_pam, being a privileged binary, now clears the
+    environment and does not allow configuration of the
+    PR_SET_DUMPABLE flag as a precaution.
+
+-------------------------------------------------------------------
+Wed Jan 22 09:21:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop build dependency on ncsd, which has been deprecated
+  (boo#1239262).
+
+-------------------------------------------------------------------
+Tue Jan 21 16:33:00 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Migrate away from update-alternatives, replaced by package
+  conflicts; (bsc#1235789); (bsc#1216739);
+
+-------------------------------------------------------------------
 Tue Dec 10 20:17:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.10.1

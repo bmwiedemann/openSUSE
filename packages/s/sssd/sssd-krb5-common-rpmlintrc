@@ -1,0 +1,2 @@
+# See https://github.com/SSSD/sssd/pull/7794 for details
+addFilter("E: missing-call-to-setgroups-before-setuid")

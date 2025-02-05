@@ -1241,4 +1241,23 @@ goes in line with 946250</comment>
     <comment>- Update to release 2.10.1</comment>
     <requestid>1236927</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>1c90cc1bfa1783de8218747e7c7e436d</srcmd5>
+    <version>2.10.1</version>
+    <time>1737722382</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop build dependency on ncsd, which has been deprecated
+  (boo#1239262).
+- Migrate away from update-alternatives, replaced by package
+  conflicts; (bsc#1235789); (bsc#1216739);</comment>
+    <requestid>1239477</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>6995f3900315bd6b79070a0c31ee0a3a</srcmd5>
+    <version>2.10.2</version>
+    <time>1738788936</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.10.2</comment>
+    <requestid>1243227</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sssd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.10.1
+Version:        2.10.2
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -50,7 +50,6 @@ BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  libopenssl-3-devel
-BuildRequires:  nscd
 BuildRequires:  nss_wrapper
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
@@ -130,16 +129,8 @@ Obsoletes:      sssd-common < %version-%release
 %define permissions_path %_sysconfdir/permissions.d/
 %endif
 
-# Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
-# %%_sysconfdir/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
-# * cifs-utils one is the default (priority 20)
-# * installing SSSD should NOT switch to SSSD plugin (priority 10)
 %define cifs_idmap_plugin       %_sysconfdir/cifs-utils/idmap-plugin
 %define cifs_idmap_lib          %_libdir/cifs-utils/cifs_idmap_sss.so
-%define cifs_idmap_name         cifs-idmap-plugin
-%define cifs_idmap_priority     10
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 
 %description
 A set of daemons to manage access to remote directories and
@@ -252,6 +243,23 @@ Group:          System/Libraries
 %description winbind-idmap
 The idmap_sss module provides a way for Winbind to call SSSD to map
 UIDs/GIDs and SIDs.
+
+%package cifs-idmap-plugin
+Summary:        The sssd idmap plugin for cifs.idmap
+Group:          System/Libraries
+# Conflict as per https://bugzilla.suse.com/1235789
+Provides:       cifs-idmap-plugin
+Conflicts:      cifs-idmap-plugin
+
+%description cifs-idmap-plugin
+The cifs.idmap(8) userspace helper relies on a plugin to handle the
+ID mapping. This package contains the ID mapping plugin that will use
+sssd.
+
+In SUSE systems, only one such plugin can be installed at a time
+(either the one from sssd, or from cifs-utils).
+Without the plugin, file objects in a mounted share have UID/GID of
+the original mounting process.
 
 %package -n libsss_certmap0
 Summary:        FreeIPA ID mapping library
@@ -408,9 +416,6 @@ Security Services Daemon (sssd).
 %autosetup -p1
 
 %build
-# help configure find nscd
-export PATH="$PATH:/usr/sbin"
-
 autoreconf -fiv
 %configure \
 	--with-db-path="%dbpath" \
@@ -473,8 +478,9 @@ find "$b" -type f -name "*.la" -print -delete
 %find_lang %name --all-name
 
 # dummy target for cifs-idmap-plugin
-mkdir -pv "$b/%_sysconfdir/alternatives" "$b/%_sysconfdir/cifs-utils"
-ln -sfv "%_sysconfdir/alternatives/%cifs_idmap_name" "$b/%cifs_idmap_plugin"
+mkdir -p %{buildroot}%{_sysconfdir}/cifs-utils
+ln -s -f %{cifs_idmap_lib} %{buildroot}%{cifs_idmap_plugin}
+
 %python3_fix_shebang
 %if 0%{?suse_version} > 1600
 %python3_fix_shebang_path %buildroot/%_libexecdir/%name/sss_analyze
@@ -530,9 +536,6 @@ fi
 %tmpfiles_create %name.conf
 %set_permissions %_libexecdir/%name/selinux_child %_libexecdir/%name/sssd_pam
 
-# install SSSD cifs-idmap plugin as an alternative
-update-alternatives --install %cifs_idmap_plugin %cifs_idmap_name %cifs_idmap_lib %cifs_idmap_priority
-
 %preun
 %service_del_preun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
@@ -544,9 +547,6 @@ fi
 # del_postun includes a try-restart
 %service_del_postun sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
 
-if [ ! -f "%cifs_idmap_lib" ]; then
-	update-alternatives --remove %cifs_idmap_name %cifs_idmap_lib
-fi
 
 %ldconfig_scriptlets -n libsss_certmap0
 %ldconfig_scriptlets -n libipa_hbac0
@@ -781,12 +781,7 @@ fi
 %_mandir/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/??/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
-# cifs idmap plugin
-%dir %_sysconfdir/cifs-utils
-%cifs_idmap_plugin
-%dir %_libdir/cifs-utils
-%cifs_idmap_lib
-%ghost %_sysconfdir/alternatives/%cifs_idmap_name
+
 
 %files ad
 %dir %_libdir/%name/
@@ -891,6 +886,12 @@ fi
 %dir %_libdir/samba/
 %_libdir/samba/idmap/
 %_mandir/man8/idmap_sss.8*
+
+%files cifs-idmap-plugin
+%dir %_sysconfdir/cifs-utils
+%cifs_idmap_plugin
+%dir %_libdir/cifs-utils
+%cifs_idmap_lib
 
 %files -n libipa_hbac0
 %_libdir/libipa_hbac.so.0*
