@@ -140,4 +140,19 @@
 (🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/7 by mcepl)</comment>
     <requestid>1235851</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4fa45599071ce8fbb9943ba3c1f6ff5e</srcmd5>
+    <version>9.3.19</version>
+    <time>1738765245</time>
+    <user>anag+factory</user>
+    <comment>Update to 9.3.19
+
+Complete changelog is
+https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=9.3.18&amp;to=9.3.19
+and upstream still doesn’t provide any abbreviated version, and
+the list of changes is still too long to enumerate here.
+
+(🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/8 by mcepl)</comment>
+    <requestid>1243301</requestid>
+  </revision>
 </revisionlist>
