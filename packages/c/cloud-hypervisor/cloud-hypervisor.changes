@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 22:13:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 44.0:
+  * Configurable virtio-iommu Address Width
+  * Notable Performance Improvements
+  * New Fuzzers
+  * Fix short read and short write that impact QCOW and VHDX support
+  * Various bug fixes on VHDX support
+
+-------------------------------------------------------------------
 Fri Dec 20 02:30:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 43.0:

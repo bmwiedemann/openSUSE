@@ -1,7 +1,7 @@
 #
 # spec file for package cloud-hypervisor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cloud-hypervisor
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        A Virtual Machine Monitor
 License:        Apache-2.0 AND BSD-3-Clause
