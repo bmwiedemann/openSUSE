@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:55:18 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 135.0
+  https://www.mozilla.org/en-US/firefox/135.0/releasenotes
+  MFSA 2025-07 (bsc#1236539)
+  * CVE-2025-1009 (bmo#1936613)
+    Use-after-free in XSLT
+  * CVE-2025-1010 (bmo#1936982)
+    Use-after-free in Custom Highlight
+  * CVE-2025-1018 (bmo#1910818)
+    Fullscreen notification is not displayed when fullscreen is
+    re-requested
+  * CVE-2025-1011 (bmo#1936454)
+    A bug in WebAssembly code generation could result in a crash
+  * CVE-2025-1012 (bmo#1939710)
+    Use-after-free during concurrent delazification
+  * CVE-2025-1019 (bmo#1940162)
+    Fullscreen notification not properly displayed
+  * CVE-2025-1013 (bmo#1932555)
+    Potential opening of private browsing tabs in normal browsing windows
+  * CVE-2025-1014 (bmo#1940804)
+    Certificate length was not properly checked
+  * CVE-2025-1016 (bmo#1936601, bmo#1936844, bmo#1937694, bmo#1938469,
+    bmo#1939583, bmo#1940994)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 115.20, Firefox ESR 128.7, Thunderbird 115.20,
+    and Thunderbird 128.7
+  * CVE-2025-1017 (bmo#1926256, bmo#1935471, bmo#1935984)
+    Memory safety bugs fixed in Firefox 135, Thunderbird 135,
+    Firefox ESR 128.7, and Thunderbird 128.7
+  * CVE-2025-1020 (bmo#1939063, bmo#1942169)
+    Memory safety bugs fixed in Firefox 135 and Thunderbird 135
+- requires rust 1.83
+
+-------------------------------------------------------------------
+Thu Jan 23 12:00:05 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 134.0.2
+  * Fixed a regression in Firefox 134 where anchored links in HTML
+    framesets pointing to local files did not work (bmo#1934807)
+  * Fixed an issue in developer tools preventing the resending of
+    network requests when debugging extensions (bmo#1934478)
+  * Fixed an issue where data consumption from service workers may
+    unexpectedly halt (bmo#1941210)
+
+-------------------------------------------------------------------
 Fri Jan 17 09:31:32 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 134.0.1

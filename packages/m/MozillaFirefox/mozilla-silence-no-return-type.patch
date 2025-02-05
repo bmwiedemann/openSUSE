@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  03aaaefd3c5a3eec8be9b323cd1a799ca33fa13e
+# Parent  9307259332078ad93f044dc64f06462d66d80aef
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -337,7 +337,7 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
 diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
 --- a/js/src/irregexp/imported/regexp-parser.cc
 +++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2779,16 +2779,17 @@ bool MayContainStrings(ClassSetOperandTy
+@@ -2780,16 +2780,17 @@ bool MayContainStrings(ClassSetOperandTy
        return false;
      case ClassSetOperandType::kCharacterClassEscape:
      case ClassSetOperandType::kClassStringDisjunction:
@@ -599,27 +599,27 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
  VideoSendStream::StreamStats::~StreamStats() = default;
  
  std::string VideoSendStream::StreamStats::ToString() const {
-diff --git a/third_party/libwebrtc/media/base/codec.cc b/third_party/libwebrtc/media/base/codec.cc
---- a/third_party/libwebrtc/media/base/codec.cc
-+++ b/third_party/libwebrtc/media/base/codec.cc
-@@ -267,16 +267,17 @@ bool Codec::Matches(const Codec& codec) 
-                (codec.bitrate == 0 || bitrate <= 0 ||
-                 bitrate == codec.bitrate) &&
-                ((codec.channels < 2 && channels < 2) ||
-                 channels == codec.channels);
+diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/libwebrtc/media/base/codec_comparators.cc
+--- a/third_party/libwebrtc/media/base/codec_comparators.cc
++++ b/third_party/libwebrtc/media/base/codec_comparators.cc
+@@ -189,16 +189,17 @@ bool MatchesWithCodecRules(const Codec& 
+                 left_codec.bitrate == right_codec.bitrate) &&
+                ((right_codec.channels < 2 && left_codec.channels < 2) ||
+                 left_codec.channels == right_codec.channels);
  
-       case Type::kVideo:
-         return IsSameCodecSpecific(name, params, codec.name, codec.params);
+       case Codec::Type::kVideo:
+         return IsSameCodecSpecific(left_codec.name, left_codec.params,
+                                    right_codec.name, right_codec.params);
      }
-+    return false; // unreached
++    return false;
    };
  
    return matches_id && matches_type_specific();
  }
  
- bool Codec::MatchesRtpCodec(const webrtc::RtpCodec& codec_capability) const {
-   webrtc::RtpCodecParameters codec_parameters = ToCodecParameters();
- 
+ // Finds a codec in `codecs2` that matches `codec_to_match`, which is
+ // a member of `codecs1`. If `codec_to_match` is an RED or RTX codec, both
+ // the codecs themselves and their associated codecs must match.
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
@@ -738,27 +738,6 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
          cfg, proc_sample_rate_hz(), num_proc_channels());
    }
  }
-diff --git a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
---- a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
-+++ b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
-@@ -48,16 +48,17 @@ std::string GetVadModeLabel(TransientSup
-   switch (vad_mode) {
-     case TransientSuppressor::VadMode::kDefault:
-       return "default";
-     case TransientSuppressor::VadMode::kRnnVad:
-       return "RNN VAD";
-     case TransientSuppressor::VadMode::kNoVad:
-       return "no VAD";
-   }
-+  RTC_CHECK_NOTREACHED();
- }
- 
- }  // namespace
- 
- TransientSuppressorImpl::TransientSuppressorImpl(VadMode vad_mode,
-                                                  int sample_rate_hz,
-                                                  int detector_rate_hz,
-                                                  int num_channels)
 diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 --- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 +++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc

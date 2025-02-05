@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          134
-%define mainver        %major.0.1
-%define orig_version   134.0.1
+%define major          135
+%define mainver        %major.0
+%define orig_version   135.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -103,8 +103,8 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo1.81
-BuildRequires:  rust1.81
+BuildRequires:  cargo1.83
+BuildRequires:  rust1.83
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
