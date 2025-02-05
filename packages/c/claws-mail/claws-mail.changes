@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:03:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
+  BuildRequires. Current version support webkit built against soup 3.
+- Drop pkgconfig(libsoup-2.4) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
 Mon Jun 10 12:08:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.3.0:

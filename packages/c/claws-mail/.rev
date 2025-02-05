@@ -972,4 +972,14 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>1179912</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>a3f4020e0fc89541886b30c0a01d23a3</srcmd5>
+    <version>4.3.0</version>
+    <time>1738772761</time>
+    <user>anag+factory</user>
+    <comment>- Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
+  BuildRequires. Current version support webkit built against soup 3.
+- Drop pkgconfig(libsoup-2.4) BuildRequires: No longer needed.</comment>
+    <requestid>1243387</requestid>
+  </revision>
 </revisionlist>

@@ -71,11 +71,10 @@ BuildRequires:  pkgconfig(gnutls) >= 2.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 #
 Requires:       pinentry-dialog
 Suggests:       pinentry-gtk2
