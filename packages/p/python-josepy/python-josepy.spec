@@ -1,7 +1,7 @@
 #
 # spec file for package python-josepy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define libname josepy
 %{?sle15_python_module_pythons}
 Name:           python-%{libname}
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
 URL:            https://github.com/certbot/josepy
 Source0:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{libname}-%{version}.tar.gz
 Source2:        %{name}.keyring
-Patch1:         https://github.com/certbot/josepy/commit/350410fc1d38c4ac8422816b6865ac8cd9c60fc7.patch#/ignore-pyopenssl-warnings.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module cryptography >= 1.5}
