@@ -1,7 +1,7 @@
 #
 # spec file for package helm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm
-Version:        3.16.4
+Version:        3.17.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/helm/helm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.23
 %{go_provides}
 
 %description

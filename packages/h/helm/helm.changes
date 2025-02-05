@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 16 05:57:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 3.17.0 (bsc#1235318, CVE-2024-45338):
+  Full changelog:
+  https://github.com/helm/helm/releases/tag/v3.17.0
+  * Notable Changes
+    - Allow pulling and installation by OCI digest
+    - Annotations and dependencies are now in chart metadata output
+    - New --take-ownership flag for install and upgrade commands
+    - SDK: Authorizer and registry authorizer are now configurable
+    - Removed the Kubernetes configuration file permissions check
+    - Added username/password to helm push and dependency
+      build/update subcommands
+    - Added toYamlPretty template function
+
+-------------------------------------------------------------------
 Mon Dec 16 21:45:40 UTC 2024 - dmueller@suse.com
 
 - Update to version 3.16.4 (bsc#1234482, CVE-2024-45337):
@@ -92,7 +108,10 @@ Thu May 23 19:45:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 -------------------------------------------------------------------
 Sat May 18 09:20:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
-- Update to version 3.15.0:
+- Update to version 3.15.0 (bsc#1220207, CVE-2024-26147,
+  bsc#1219969, CVE-2024-25620):
+  - obsoletes CVE-2024-26147.patch in older distributions
+  - obsoletes CVE-2024-25620.patch in odler distributions
   Helm v3.15.0 is a feature release. Users are encouraged to
   upgrade for the best experience.
   * Updating to k8s 1.30 c4e37b3 (Matt Farina)

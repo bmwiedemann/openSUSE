@@ -778,4 +778,31 @@ See changelog in:
   * Bump the k8s-io group with 7 updates</comment>
     <requestid>1231582</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>fc4f381ed3e47738c381d7fa6ce33141</srcmd5>
+    <version>3.17.0</version>
+    <time>1738007660</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240369</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>c3a686b863e88983d9dbcc6ac2a90fbf</srcmd5>
+    <version>3.17.0</version>
+    <time>1738615348</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.17.0 (bsc#1235318, CVE-2024-45338):</comment>
+    <requestid>1242770</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>0ec0ef85af81a7515303e55bac5dd1ae</srcmd5>
+    <version>3.17.0</version>
+    <time>1738772479</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.15.0 (bsc#1220207, CVE-2024-26147,
+  bsc#1219969, CVE-2024-25620):
+  - obsoletes CVE-2024-26147.patch in older distributions
+  - obsoletes CVE-2024-25620.patch in odler distributions</comment>
+    <requestid>1243331</requestid>
+  </revision>
 </revisionlist>
