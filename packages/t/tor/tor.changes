@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  5 18:26:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.8.14
+  * bugfix for onion service directory cache
+  * test-network now unconditionally includes IPv6
+  * Regenerate fallback directories 2025-02-05
+  * Update the geoip files to 2025-02-05
+  * Fix a pointer free
+
+-------------------------------------------------------------------
 Fri Dec 27 21:55:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.8.13

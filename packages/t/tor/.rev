@@ -1132,4 +1132,17 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1234472</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>4ccaadb5d2ece34bf87c761d765b909b</srcmd5>
+    <version>0.4.8.14</version>
+    <time>1738789023</time>
+    <user>anag+factory</user>
+    <comment>tor 0.4.8.14
+  * bugfix for onion service directory cache
+  * test-network now unconditionally includes IPv6
+  * Regenerate fallback directories 2025-02-05
+  * Update the geoip files to 2025-02-05
+  * Fix a pointer free</comment>
+    <requestid>1243500</requestid>
+  </revision>
 </revisionlist>
