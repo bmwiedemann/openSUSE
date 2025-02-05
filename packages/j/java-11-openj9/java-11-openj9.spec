@@ -1,7 +1,7 @@
 #
 # spec file for package java-11-openj9
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -152,7 +152,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  xprop
 BuildRequires:  zip
 # Requires rest of java
