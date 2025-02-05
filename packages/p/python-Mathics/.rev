@@ -159,4 +159,24 @@
     <comment></comment>
     <requestid>1205184</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0bb2066979750a95a48d0a419fbaf775</srcmd5>
+    <version>7.0.0</version>
+    <time>1738773213</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 7.0.0:
+- Disable whole swathe of failing tests
+  (gh#Mathics3/mathics-core#1346).
+- Add python-Mathics-sympy1_13.patch -- Add compatibility for
+  tests against sympy &gt;= 1.13 (upstream commits).
+- Drop python-Mathics-relax-numpy-versions.patch: upstreamed.
+- Switch to pyproject_* macros for build.
+- Require numpy &lt; 2 as numpy2 is not supported yet.
+- BuildArch: noarch as there are no arch dependent binaries in
+  package.
+- Enable Python 3.11, 3.12.
+- Disable Python 3.13.
+- Drop old compatibility macro redefinition.</comment>
+    <requestid>1243369</requestid>
+  </revision>
 </revisionlist>
