@@ -16,9 +16,9 @@
 #
 
 
-%define         somajor 0_24
+%define         somajor 0_25
 Name:           tree-sitter
-Version:        0.24.7
+Version:        0.25.1
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        GPL-2.0-only AND MIT
@@ -34,7 +34,7 @@ Source24:       compile-macros.sh
 Source25:       treesitter_grammar.attr
 Source26:       treesitter_grammar.req
 BuildRequires:  cargo-packaging
-BuildRequires:  rust > 1.74.1
+BuildRequires:  rust > 1.82.0
 Requires:       lib%{name}%{somajor} = %{version}
 Requires:       nodejs
 %{?suse_build_hwcaps_libs}

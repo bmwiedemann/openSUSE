@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:43:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.25.1:
+  * cli: Specify abi version via env var
+  * bindings: Correct Zig bindings to expose a language function
+  * lib: Prevent finished_tree assertion failure
+  * Correct build steps for WASM files
+  * rust: Correct doc comments
+
+-------------------------------------------------------------------
+Sat Feb  1 15:06:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.25.0:
+  Full changelog: https://github.com/tree-sitter/tree-sitter/releases/tag/v0.25.0
+  Notices:
+    * web-tree-sitter was rewritten in TypeScript
+    * Parsing and Querying should be cancelled using the "progress callback",
+      rather than setting a timeout or a cancellation flag
+    * MISSING nodes can now be queried
+    * The ts_node_child_containing_descendant function was removed; use
+      ts_node_child_with_descendant
+    * TSInput now includes a (mandatory) new field DecodeFunction
+  Breaking:
+    * Properly handle UTF-16 endianness encoding
+    * Bump internal abi to 15
+    * Update playground with new web bindings
+    * bindings: Update swift bindings
+    * cli: Remove migration code for tree-sitter.json
+    * generate: Use regex_syntax::Hir for expanding regexes
+    * lib: Remove ts_node_child_containing_descendant
+    * lib: Add the ability to specify a custom decode function
+    * web: Rewrite the library in TypeScript
+    * web: Use the WASM module in the bindings, and not the other way around
+    * web: Rename pattern to patternIndex in QueryMatch
+    * web: Deprecate Language.query in favor of new Query
+- increase minimum rust version
+
+-------------------------------------------------------------------
 Fri Jan 17 03:31:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.24.7:
