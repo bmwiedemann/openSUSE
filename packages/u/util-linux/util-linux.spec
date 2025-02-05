@@ -614,7 +614,9 @@ fi
 %if "%ulbuild" == "base"
 %make_install
 mkdir -p %{buildroot}{%{_distconfdir}/default,%{_pam_vendordir},%{_sysconfdir}/issue.d}
-install -m 644 %{SOURCE51} %{buildroot}%{_sysconfdir}/blkid.conf
+install -m 644 %{SOURCE51} %{buildroot}%{_distconfdir}/blkid.conf
+touch %{buildroot}%{_sysconfdir}/blkid.conf
+mkdir %{buildroot}%{_sysconfdir}/blkid.conf.d %{buildroot}%{_distconfdir}/blkid.conf.d
 install -m 644 %{SOURCE8} %{buildroot}%{_pam_vendordir}/login
 install -m 644 %{SOURCE9} %{buildroot}%{_pam_vendordir}/remote
 %if 0%{?suse_version} <= 1500
@@ -977,7 +979,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 # defined no_config
 
 %config %dir %{_sysconfdir}/issue.d
-
 %if %{ul_extra_bin_sbin}
 %core /bin/kill
 %core %verify(not mode) %attr(%ul_suid,root,root) /bin/su
@@ -1366,8 +1367,10 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %license README.licensing
 %license COPYING
 %license Documentation/licenses/*
-%config(noreplace) %{_sysconfdir}/blkid.conf
-
+%ghost %config(missingok) %{_sysconfdir}/blkid.conf
+%config %dir %{_sysconfdir}/blkid.conf.d
+%{_distconfdir}/blkid.conf
+%dir %{_distconfdir}/blkid.conf.d
 %{_datadir}/bash-completion/completions/*
 %exclude %{_datadir}/bash-completion/completions/findmnt
 %exclude %{_datadir}/bash-completion/completions/logger
@@ -1392,10 +1395,11 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 # Systemd files #
 #################
 %if "%ulsubset" == "systemd"
-%exclude %config(noreplace) %{_sysconfdir}/blkid.conf
-
+%exclude %{_distconfdir}/blkid.conf
+%exclude %dir %{_distconfdir}/blkid.conf.d
+%exclude %config(missingok) %{_sysconfdir}/blkid.conf
+%exclude %config %{_sysconfdir}/blkid.conf.d
 %exclude %config %dir %{_sysconfdir}/issue.d
-
 %if %{ul_extra_bin_sbin}
 /bin/findmnt
 /bin/logger

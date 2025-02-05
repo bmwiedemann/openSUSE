@@ -2668,4 +2668,20 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Update to version 2.40.4...</comment>
     <requestid>1237948</requestid>
   </revision>
+  <revision rev="293" vrev="2">
+    <srcmd5>73bd2b8d6fbc3f8d1cd580d7039d3ba5</srcmd5>
+    <version>2.40.4</version>
+    <time>1737722380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239319</requestid>
+  </revision>
+  <revision rev="294" vrev="3">
+    <srcmd5>9684e2a236360d42f8e144339d62ca9b</srcmd5>
+    <version>2.40.4</version>
+    <time>1738755564</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1242132</requestid>
+  </revision>
 </revisionlist>

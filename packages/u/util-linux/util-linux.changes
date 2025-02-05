@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 28 23:05:38 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Create and own directories /etc/blkid.conf.d and
+  /usr/etc/blkid.conf.d (boo#1235887#c3).
+- Add missingok for /etc/blkid.conf.
+
+-------------------------------------------------------------------
+Mon Jan 20 18:12:46 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Move blkid.conf to /usr/etc (boo#1235887).
+
+-------------------------------------------------------------------
 Tue Jan 14 22:29:47 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.40.4:
