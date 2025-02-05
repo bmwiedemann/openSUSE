@@ -631,4 +631,17 @@ Prompted by an error of 'osc service localrun download_files'.
     <comment></comment>
     <requestid>1178093</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>d6e14f8fcddc130daeb21e352e1fc839</srcmd5>
+    <version>4.10.0</version>
+    <time>1738755622</time>
+    <user>anag+factory</user>
+    <comment>- do not crash when file system loop was encountered [bsc#1231472]
+- added patches
+  fix https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=e5d6eb919b9
+  + findutils-avoid-crash-system-loop.patch
+- modified patches
+  % findutils-xautofs.patch (p1)</comment>
+    <requestid>1243066</requestid>
+  </revision>
 </revisionlist>

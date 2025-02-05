@@ -1,0 +1,56 @@
+Index: findutils-4.10.0/find/ftsfind.c
+===================================================================
+--- findutils-4.10.0.orig/find/ftsfind.c
++++ findutils-4.10.0/find/ftsfind.c
+@@ -188,27 +188,6 @@ visit (FTS *p, FTSENT *ent, struct stat
+     }
+ }
+ 
+-static const char*
+-partial_quotearg_n (int n, char *s, size_t len, enum quoting_style style)
+-{
+-  if (0 == len)
+-    {
+-      return quotearg_n_style (n, style, "");
+-    }
+-  else
+-    {
+-      char saved;
+-      const char *result;
+-
+-      saved = s[len];
+-      s[len] = 0;
+-      result = quotearg_n_style (n, style, s);
+-      s[len] = saved;
+-      return result;
+-    }
+-}
+-
+-
+ /* We've detected a file system loop.   This is caused by one of
+  * two things:
+  *
+@@ -218,7 +197,7 @@ partial_quotearg_n (int n, char *s, size
+  *
+  * 2. We have hit a real cycle in the directory hierarchy.  In this
+  *    case, we issue a diagnostic message (POSIX requires this) and we
+- *    skip that directory entry.
++ *    will skip that directory entry.
+  */
+ static void
+ issue_loop_warning (FTSENT * ent)
+@@ -241,12 +220,8 @@ issue_loop_warning (FTSENT * ent)
+        */
+       error (0, 0,
+ 	     _("File system loop detected; "
+-	       "%s is part of the same file system loop as %s."),
+-	     safely_quote_err_filename (0, ent->fts_path),
+-	     partial_quotearg_n (1,
+-				 ent->fts_cycle->fts_path,
+-				 ent->fts_cycle->fts_pathlen,
+-				 options.err_quoting_style));
++               "the following directory is part of the cycle: %s"),
++             safely_quote_err_filename (0, ent->fts_path));
+     }
+ }
+ 

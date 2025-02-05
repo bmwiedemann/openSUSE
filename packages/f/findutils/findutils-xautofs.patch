@@ -9,8 +9,8 @@
 
 Index: doc/find.texi
 ===================================================================
---- doc/find.texi.orig
-+++ doc/find.texi
+--- a/doc/find.texi.orig
++++ b/doc/find.texi
 @@ -1607,6 +1607,10 @@ them.
  There are two ways to avoid searching certain filesystems.  One way is
  to tell @code{find} to only search one filesystem:
@@ -24,8 +24,8 @@ Index: doc/find.texi
  Don't descend directories on other filesystems.  These options are
 Index: find/defs.h
 ===================================================================
---- find/defs.h.orig
-+++ find/defs.h
+--- a/find/defs.h.orig
++++ b/find/defs.h
 @@ -557,6 +557,9 @@ struct options
    /* If true, don't cross filesystem boundaries. */
    bool stay_on_filesystem;
@@ -38,8 +38,8 @@ Index: find/defs.h
     */
 Index: find/find.1
 ===================================================================
---- find/find.1.orig
-+++ find/find.1
+--- a/find/find.1.orig
++++ b/find/find.1
 @@ -654,6 +654,9 @@ to stat them; this gives a significant i
  .IP "\-version, \-\-version"
  Print the \fBfind\fR version number and exit.
@@ -52,8 +52,8 @@ Index: find/find.1
  
 Index: find/ftsfind.c
 ===================================================================
---- find/ftsfind.c.orig
-+++ find/ftsfind.c
+--- a/find/ftsfind.c.orig
++++ b/find/ftsfind.c
 @@ -433,6 +433,12 @@ consider_visiting (FTS *p, FTSENT *ent)
  	}
      }
@@ -69,8 +69,8 @@ Index: find/ftsfind.c
        /* this is the preorder visit, but user said -depth */
 Index: find/parser.c
 ===================================================================
---- find/parser.c.orig
-+++ find/parser.c
+--- a/find/parser.c.orig
++++ b/find/parser.c
 @@ -150,6 +150,7 @@ static bool parse_used          (const s
  static bool parse_user          (const struct parser_table*, char *argv[], int *arg_ptr);
  static bool parse_wholename     (const struct parser_table*, char *argv[], int *arg_ptr);
@@ -106,8 +106,8 @@ Index: find/parser.c
    options.ignore_readdir_race = true;
 Index: find/util.c
 ===================================================================
---- find/util.c.orig
-+++ find/util.c
+--- a/find/util.c.orig
++++ b/find/util.c
 @@ -181,7 +181,8 @@ Positional options (always true):\n\
    HTL (_("\n\
  Normal options (always true, specified before other expressions):\n\

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 08:37:08 UTC 2025 - pgajdos@suse.com
+
+- do not crash when file system loop was encountered [bsc#1231472]
+- added patches
+  fix https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=e5d6eb919b9
+  + findutils-avoid-crash-system-loop.patch
+- modified patches
+  % findutils-xautofs.patch (p1)
+
+-------------------------------------------------------------------
 Sat Jun  1 20:37:18 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to 4.10.0.
