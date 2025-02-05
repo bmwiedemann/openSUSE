@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 31 13:55:15 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- set exclusivearch to exclude 32bit platforms from building
+
+-------------------------------------------------------------------
+Tue Jan 28 17:09:19 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- adjust for new version
+
+-------------------------------------------------------------------
 Wed Jan  1 14:13:48 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - update copyright year

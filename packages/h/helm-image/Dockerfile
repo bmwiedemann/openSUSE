@@ -14,10 +14,10 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!UseOBSRepositories
-
+#!ExclusiveArch: aarch64 ppc64le s390x x86_64
 #!BuildTag: opensuse/helm:%%helm_version%%-%RELEASE%
 #!BuildTag: opensuse/helm:%%helm_version%%
-#!BuildTag: opensuse/helm:3.16
+#!BuildTag: opensuse/helm:3.17
 #!BuildTag: opensuse/helm:3
 #!BuildTag: opensuse/helm:latest
 
@@ -32,7 +32,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of helm that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' helm | \
-    cut -d '.' -f -2)" = "3.16" ]
+    cut -d '.' -f -2)" = "3.17" ]
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
