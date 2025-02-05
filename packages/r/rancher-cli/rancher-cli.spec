@@ -34,7 +34,7 @@ For usage information see: https://rancher.com/docs/rancher/v2.x/en/cli/
 %prep
 %autosetup -p 1 -a 1
 
-%build -n cli-%{version}
+%build
 go build \
    -mod=vendor \
    -buildmode=pie \
