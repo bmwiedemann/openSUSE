@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 06:29:06 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * openmarkup-1.1-nojavaws.patch
+    + remove reference to unused javaws.jar in the build.xml
+
+-------------------------------------------------------------------
 Sun Sep 29 19:49:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

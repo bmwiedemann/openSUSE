@@ -1,0 +1,29 @@
+--- openmarkup-1.1/make/build.xml	2025-02-05 07:26:04.109248388 +0100
++++ openmarkup-1.1/make/build.xml	2025-02-05 07:26:46.361680537 +0100
+@@ -37,18 +37,6 @@
+ 	<!-- docs directory -->
+ 	<property name="docs.dir" location="docs"/>
+ 	<property name="javadoc.dir" location="${docs.dir}/javadoc"/>
+-	<!-- java web start -->
+-	<condition property="javaws.dir" value="${java.home}/lib/">
+-		<equals arg1="${java.specification.version}" arg2="1.5"/>
+-	</condition>
+-	<condition property="javaws.dir" value="/Applications/Utilities/Java/Java\ Web\ Start.app/Contents/MacOS/">
+-		<os family="mac"/>
+-	</condition>
+-	<condition property="javaws.dir" value="${java.home}/javaws/">
+-		<not>
+-			<isset property="javaws.dir"/>
+-		</not>
+-	</condition>
+ 	<!-- test directory -->
+ 	<property name="test.dir" location="${build.dir}/test"/>
+ 	<property name="test.classes.dir" location="${test.dir}/classes"/>
+@@ -61,7 +49,6 @@
+ 	<!-- Paths                                                        -->
+ 	<!-- ============================================================ -->
+ 	<path id="compile.classpath">
+-		<fileset dir="${javaws.dir}" includes="**/javaws*.jar"/>
+ 		<fileset dir="${lib.dir}" includes="**/*.jar"/>
+ 	</path>
+ 	<path id="test.classpath">

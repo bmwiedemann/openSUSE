@@ -111,4 +111,12 @@
     <comment>Fix build after removal of the default %%{java_home} define</comment>
     <requestid>1204566</requestid>
   </revision>
+  <revision rev="17" vrev="27">
+    <srcmd5>f4165fa554e5536cb57518bd645897db</srcmd5>
+    <version>1.1</version>
+    <time>1738755711</time>
+    <user>anag+factory</user>
+    <comment>fix build</comment>
+    <requestid>1243245</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package openmarkup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        AsyncClients.pdf
 Source2:        XMLContentHandlers.pdf
 Patch0:         openmarkup-1.1-nosource.patch
+Patch1:         openmarkup-1.1-nojavaws.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -83,10 +84,11 @@ cp %{SOURCE1} %{SOURCE2} .
 # wrong end of line encoding
 sed -i -e 's/.$//' doc/javadoc/stylesheet.css doc/javadoc/package-list Copyright.txt LICENSE.txt
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 ant \
-    -f make/build.xml -Djavaws.dir=%{_jvmdir}/java/bin \
+    -f make/build.xml \
     -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8
 
 %install
