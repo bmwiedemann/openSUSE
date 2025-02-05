@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  2 11:33:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.1
+  * fixes #2092 nng_close may hang on Windows.
+- Update to version 1.10.0
+  * Mark some interfaces deprecated, fix version number.
+  * Integer sign extension bug in socket.c.
+  * Introduce new API for subscription.
+  * Fix for seg fault (issue #1959), backport fix into stable
+    branch.
+  * Adding nng_socket_close.
+  * Adding new 2.0 transition APIs.
+
+-------------------------------------------------------------------
 Sun Nov 10 19:26:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.9.0
