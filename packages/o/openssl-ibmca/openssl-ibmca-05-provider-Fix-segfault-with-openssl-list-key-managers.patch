@@ -1,0 +1,170 @@
+From e544577b41f22533d6e6188fc7fad22845d5e6ee Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Mon, 3 Feb 2025 13:36:47 +0100
+Subject: [PATCH] provider: Fix segfault with 'openssl list -key-managers
+ -verbose'
+
+Command 'openssl list -key-managers -verbose' calls OpenSSL function
+EVP_KEYMGMT_gen_settable_params() which in turn calls the provider's
+gen_settable_params() function, but with NULL for the keygen operation
+context. This causes segfaults in IBMCAs gen_settable_params() functions,
+as they assume that the keygen operation context is not NULL.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ src/provider/dh_keymgmt.c  | 51 ++++++++++++++++++++++++++++++++++----
+ src/provider/rsa_keymgmt.c | 31 +++++++++++++++++------
+ 2 files changed, 70 insertions(+), 12 deletions(-)
+
+diff --git a/src/provider/dh_keymgmt.c b/src/provider/dh_keymgmt.c
+index d4d68bf..5e7e952 100644
+--- a/src/provider/dh_keymgmt.c
++++ b/src/provider/dh_keymgmt.c
+@@ -43,6 +43,8 @@ static OSSL_FUNC_keymgmt_gen_set_template_fn ibmca_keymgmt_dh_gen_set_template;
+ static OSSL_FUNC_keymgmt_gen_set_params_fn ibmca_keymgmt_dh_gen_set_params;
+ static OSSL_FUNC_keymgmt_gen_settable_params_fn
+                                         ibmca_keymgmt_dh_gen_settable_params;
++static OSSL_FUNC_keymgmt_gen_settable_params_fn
++                                        ibmca_keymgmt_dhx_gen_settable_params;
+ static OSSL_FUNC_keymgmt_gen_fn ibmca_keymgmt_dh_gen;
+ static OSSL_FUNC_keymgmt_has_fn ibmca_keymgmt_dh_has;
+ static OSSL_FUNC_keymgmt_match_fn ibmca_keymgmt_dh_match;
+@@ -529,23 +531,62 @@ static int ibmca_keymgmt_dh_gen_set_params(void *vgenctx,
+     return 1;
+ }
+ 
++static const OSSL_PARAM ibmca_dh_op_ctx_settable_params[] = {
++    OSSL_PARAM_utf8_string(OSSL_PKEY_PARAM_FFC_TYPE, NULL, 0),
++    OSSL_PARAM_utf8_string(OSSL_PKEY_PARAM_GROUP_NAME, NULL, 0),
++    OSSL_PARAM_int(OSSL_PKEY_PARAM_DH_PRIV_LEN, NULL),
++    OSSL_PARAM_size_t(OSSL_PKEY_PARAM_FFC_PBITS, NULL),
++    OSSL_PARAM_int(OSSL_PKEY_PARAM_DH_GENERATOR, NULL),
++    OSSL_PARAM_END
++};
++
++static const OSSL_PARAM ibmca_dhx_op_ctx_settable_params[] = {
++    OSSL_PARAM_utf8_string(OSSL_PKEY_PARAM_FFC_TYPE, NULL, 0),
++    OSSL_PARAM_utf8_string(OSSL_PKEY_PARAM_GROUP_NAME, NULL, 0),
++    OSSL_PARAM_int(OSSL_PKEY_PARAM_DH_PRIV_LEN, NULL),
++    OSSL_PARAM_size_t(OSSL_PKEY_PARAM_FFC_PBITS, NULL),
++    OSSL_PARAM_size_t(OSSL_PKEY_PARAM_FFC_QBITS, NULL),
++    OSSL_PARAM_utf8_string(OSSL_PKEY_PARAM_FFC_DIGEST, NULL, 0),
++    OSSL_PARAM_utf8_string(OSSL_PKEY_PARAM_FFC_DIGEST_PROPS, NULL, 0),
++    OSSL_PARAM_int(OSSL_PKEY_PARAM_FFC_GINDEX, NULL),
++    OSSL_PARAM_octet_string(OSSL_PKEY_PARAM_FFC_SEED, NULL, 0),
++    OSSL_PARAM_int(OSSL_PKEY_PARAM_FFC_PCOUNTER, NULL),
++    OSSL_PARAM_int(OSSL_PKEY_PARAM_FFC_H, NULL),
++    OSSL_PARAM_END
++};
++
+ static const OSSL_PARAM *ibmca_keymgmt_dh_gen_settable_params(void *vgenctx,
+                                                               void *vprovctx)
+ {
+     const struct ibmca_op_ctx *genctx = vgenctx;
+     const struct ibmca_prov_ctx *provctx = vprovctx;
+-    const OSSL_PARAM *p, *params;
++    const OSSL_PARAM *params, *p;
+ 
+     UNUSED(genctx);
+ 
+     if (provctx == NULL)
+         return NULL;
+ 
+-    if (genctx->dh.gen.pctx == NULL)
+-        return NULL;
++    params = ibmca_dh_op_ctx_settable_params;
++    for (p = params; p != NULL && p->key != NULL; p++)
++        ibmca_debug_ctx(provctx, "param: %s", p->key);
+ 
+-    params = EVP_PKEY_CTX_settable_params(genctx->dh.gen.pctx);
++    return params;
++}
+ 
++static const OSSL_PARAM *ibmca_keymgmt_dhx_gen_settable_params(void *vgenctx,
++                                                               void *vprovctx)
++{
++    const struct ibmca_op_ctx *genctx = vgenctx;
++    const struct ibmca_prov_ctx *provctx = vprovctx;
++    const OSSL_PARAM *params, *p;
++
++    UNUSED(genctx);
++
++    if (provctx == NULL)
++        return NULL;
++
++    params = ibmca_dhx_op_ctx_settable_params;
+     for (p = params; p != NULL && p->key != NULL; p++)
+         ibmca_debug_ctx(provctx, "param: %s", p->key);
+ 
+@@ -1964,7 +2005,7 @@ static const OSSL_DISPATCH ibmca_dhx_keymgmt_functions[] = {
+     { OSSL_FUNC_KEYMGMT_GEN_SET_PARAMS,
+             (void (*)(void))ibmca_keymgmt_dh_gen_set_params },
+     { OSSL_FUNC_KEYMGMT_GEN_SETTABLE_PARAMS,
+-            (void (*)(void))ibmca_keymgmt_dh_gen_settable_params },
++            (void (*)(void))ibmca_keymgmt_dhx_gen_settable_params },
+     { OSSL_FUNC_KEYMGMT_GEN, (void (*)(void))ibmca_keymgmt_dh_gen },
+     { OSSL_FUNC_KEYMGMT_GEN_CLEANUP,
+               (void (*)(void))ibmca_keymgmt_gen_cleanup },
+diff --git a/src/provider/rsa_keymgmt.c b/src/provider/rsa_keymgmt.c
+index ce49c88..2d7570a 100644
+--- a/src/provider/rsa_keymgmt.c
++++ b/src/provider/rsa_keymgmt.c
+@@ -53,6 +53,8 @@ static OSSL_FUNC_keymgmt_gen_set_template_fn ibmca_keymgmt_rsa_gen_set_template;
+ static OSSL_FUNC_keymgmt_gen_set_params_fn ibmca_keymgmt_rsa_gen_set_params;
+ static OSSL_FUNC_keymgmt_gen_settable_params_fn
+                                         ibmca_keymgmt_rsa_gen_settable_params;
++static OSSL_FUNC_keymgmt_gen_settable_params_fn
++                                    ibmca_keymgmt_rsa_pss_gen_settable_params;
+ static OSSL_FUNC_keymgmt_gen_fn ibmca_keymgmt_rsa_gen;
+ static OSSL_FUNC_keymgmt_has_fn ibmca_keymgmt_rsa_has;
+ static OSSL_FUNC_keymgmt_match_fn ibmca_keymgmt_rsa_match;
+@@ -1071,19 +1073,34 @@ static const OSSL_PARAM *ibmca_keymgmt_rsa_gen_settable_params(void *vgenctx,
+ {
+     const struct ibmca_op_ctx *genctx = vgenctx;
+     const struct ibmca_prov_ctx *provctx = vprovctx;
+-
+     const OSSL_PARAM *params, *p;
+ 
++    UNUSED(genctx);
++
+     if (provctx == NULL)
+         return NULL;
+ 
+-    ibmca_debug_ctx(provctx, "type: %d", genctx->type);
++    params = ibmca_rsa_op_ctx_settable_params;
++    for (p = params; p != NULL && p->key != NULL; p++)
++        ibmca_debug_ctx(provctx, "param: %s", p->key);
+ 
+-    if (genctx->type == EVP_PKEY_RSA_PSS)
+-        params = ibmca_rsa_pss_op_ctx_settable_params;
+-    else
+-        params = ibmca_rsa_op_ctx_settable_params;
++    return params;
++}
+ 
++static const OSSL_PARAM *ibmca_keymgmt_rsa_pss_gen_settable_params(
++                                                               void *vgenctx,
++                                                               void *vprovctx)
++{
++    const struct ibmca_op_ctx *genctx = vgenctx;
++    const struct ibmca_prov_ctx *provctx = vprovctx;
++    const OSSL_PARAM *params, *p;
++
++    UNUSED(genctx);
++
++    if (provctx == NULL)
++        return NULL;
++
++    params = ibmca_rsa_pss_op_ctx_settable_params;
+     for (p = params; p != NULL && p->key != NULL; p++)
+         ibmca_debug_ctx(provctx, "param: %s", p->key);
+ 
+@@ -2256,7 +2273,7 @@ static const OSSL_DISPATCH ibmca_rsapss_keymgmt_functions[] = {
+     { OSSL_FUNC_KEYMGMT_GEN_SET_PARAMS,
+             (void (*)(void))ibmca_keymgmt_rsa_gen_set_params },
+     { OSSL_FUNC_KEYMGMT_GEN_SETTABLE_PARAMS,
+-            (void (*)(void))ibmca_keymgmt_rsa_gen_settable_params },
++            (void (*)(void))ibmca_keymgmt_rsa_pss_gen_settable_params },
+     { OSSL_FUNC_KEYMGMT_GEN, (void (*)(void))ibmca_keymgmt_rsa_gen },
+     { OSSL_FUNC_KEYMGMT_GEN_CLEANUP,
+             (void (*)(void))ibmca_keymgmt_gen_cleanup },

@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-ibmca
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,8 @@ Patch10:        openssl-ibmca-01-engine-Enable-external-AES-GCM-IV-when-libica-i
 Patch11:        openssl-ibmca-02-test-provider-Do-not-link-against-libica-use-dlopen-instead.patch
 Patch12:        openssl-ibmca-03-test-provider-Explicitly-initialize-OpenSSL-after-setting-env-vars.patch
 Patch13:        openssl-ibmca-04-engine-Fix-compile-error.patch
+Patch14:        openssl-ibmca-05-provider-Fix-segfault-with-openssl-list-key-managers.patch
+Patch15:        openssl-ibmca-06-Provider-Fix-segfault-with-openssl-list-signature-algorithms-verbose.patch
 ###
 
 %description

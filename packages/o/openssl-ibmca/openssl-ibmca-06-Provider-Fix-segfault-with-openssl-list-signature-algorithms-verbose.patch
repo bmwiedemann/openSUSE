@@ -1,0 +1,80 @@
+From 85b8c528759df2ef09028bc49a5ec103142820fb Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Wed, 5 Feb 2025 10:16:17 +0100
+Subject: [PATCH] provider: Fix segfault with 'openssl list
+ -signature-algorithms -verbose'
+
+Command 'openssl list -signature-algorithms -verbose' calls OpenSSL function
+EVP_SIGNATURE_settable_ctx_params() which in turn calls the provider's
+settable_ctx_params() function, but with NULL for the operation
+context. This causes segfaults in IBMCAs settable_ctx_params() functions,
+as they assume that the operation context is not NULL.
+
+While at it, make sure that the settable/gettable_ctx_md_params() functions
+do not crash if called with a NULL context.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ src/provider/ec_signature.c  |  2 +-
+ src/provider/p_context.c     | 14 ++++++++------
+ src/provider/rsa_signature.c |  2 +-
+ 3 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/src/provider/ec_signature.c b/src/provider/ec_signature.c
+index 8d87ddd9..069601e3 100644
+--- a/src/provider/ec_signature.c
++++ b/src/provider/ec_signature.c
+@@ -823,7 +823,7 @@ static const OSSL_PARAM *ibmca_signature_ec_settable_ctx_params(
+ 
+     ibmca_debug_ctx(provctx, "ctx: %p", ctx);
+ 
+-    if (ctx->ec.signature.set_md_allowed)
++    if (ctx == NULL || ctx->ec.signature.set_md_allowed)
+         params = ibmca_signature_ec_settable_params;
+     else
+         params = ibmca_signature_ec_settable_params_no_digest;
+diff --git a/src/provider/p_context.c b/src/provider/p_context.c
+index 135690e7..58285ba9 100644
+--- a/src/provider/p_context.c
++++ b/src/provider/p_context.c
+@@ -392,9 +392,10 @@ const OSSL_PARAM *ibmca_gettable_ctx_md_params(const struct ibmca_op_ctx *ctx,
+     ibmca_debug_op_ctx(ctx, "ctx: %p", ctx);
+ 
+     if (md == NULL) {
+-        put_error_op_ctx(ctx, IBMCA_ERR_INVALID_PARAM,
+-                         "Digest sign/verify context not initialized");
+-        return 0;
++        if (ctx != NULL)
++            put_error_op_ctx(ctx, IBMCA_ERR_INVALID_PARAM,
++                             "Digest sign/verify context not initialized");
++        return NULL;
+     }
+ 
+     params = EVP_MD_gettable_ctx_params(md);
+@@ -413,9 +414,10 @@ const OSSL_PARAM *ibmca_settable_ctx_md_params(const struct ibmca_op_ctx *ctx,
+     ibmca_debug_op_ctx(ctx, "ctx: %p", ctx);
+ 
+     if (md == NULL) {
+-        put_error_op_ctx(ctx, IBMCA_ERR_INVALID_PARAM,
+-                         "Digest sign/verify context not initialized");
+-        return 0;
++        if (ctx != NULL)
++            put_error_op_ctx(ctx, IBMCA_ERR_INVALID_PARAM,
++                            "Digest sign/verify context not initialized");
++        return NULL;
+     }
+ 
+     params = EVP_MD_settable_ctx_params(md);
+diff --git a/src/provider/rsa_signature.c b/src/provider/rsa_signature.c
+index f7a0a91b..617bb999 100644
+--- a/src/provider/rsa_signature.c
++++ b/src/provider/rsa_signature.c
+@@ -1814,7 +1814,7 @@ static const OSSL_PARAM *ibmca_signature_rsa_settable_ctx_params(
+ 
+     ibmca_debug_ctx(provctx, "ctx: %p", ctx);
+ 
+-    if (ctx->rsa.signature.set_md_allowed)
++    if (ctx == NULL || ctx->rsa.signature.set_md_allowed)
+         params = ibmca_signature_rsa_settable_params;
+     else
+         params = ibmca_signature_rsa_settable_params_no_digest;

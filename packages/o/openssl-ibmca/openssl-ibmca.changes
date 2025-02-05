@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Feb  5 10:28:31 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied additional patch (bsc#1236770)
+ * openssl-ibmca-06-Provider-Fix-segfault-with-openssl-list-signature-algorithms-verbose.patch
+   for Provider: Fix segfault with 'openssl list  -signature-algorithms -verbose'
+
+-------------------------------------------------------------------
+Tue Feb  4 09:00:25 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1236770) 
+  * openssl-ibmca-05-provider-Fix-segfault-with-openssl-list-key-managers.patch 
+    for openssl list -key-managers -verbose causes core dump
+
+-------------------------------------------------------------------
 Wed Oct 30 08:35:12 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Adapted the openssl-ibmca package for the openssl-1_1 removal(bsc#1232570)
