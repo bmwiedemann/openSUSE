@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:14:24 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250205.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250205
+  * Added 3.2.7
+
+-------------------------------------------------------------------
+Thu Jan 30 00:08:59 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250130.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250130
+  * Add JRuby 9.4.11.0 by @headius in #2506
+
+-------------------------------------------------------------------
+Mon Jan 27 15:52:32 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250127.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250127
+  * Allow "nonexistent version" test to work without brew by @piperswe in #2432
+  * rbenv install: fix substituting $HOME with "~" by @mislav in #2501
+  * compute_sha2: drop support for OS X Leopard by @mislav in #2502
+  * Add TruffleRuby and TruffleRuby GraalVM 24.1.2 by @eregon in #2505
+- Remove fix-test-requiring-git-repository.patch.
+- Use %fdupes on the installed files.
+
+-------------------------------------------------------------------
+Tue Jan 21 22:56:44 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250121.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250121
+  * Simplify logic for rpath, the comma syntax is supported by all compilers by @eregon in #2497
+  * Improve test output for failed stubs by @mislav in #2498
+  * Add JRuby 9.4.10.0 by @headius in #2500
+
+-------------------------------------------------------------------
 Sun Jan 19 04:39:27 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250115.

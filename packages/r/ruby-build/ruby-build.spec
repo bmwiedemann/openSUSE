@@ -24,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20250115
+Version:        20250205
 Release:        0
 BuildArch:      noarch
 License:        MIT
@@ -32,7 +32,7 @@ Group:          Development/Languages/Ruby
 URL:            https://github.com/rbenv/ruby-build
 Summary:        Compile and install Ruby
 Source0:        https://github.com/rbenv/ruby-build/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-test-requiring-git-repository.patch
+BuildRequires:  fdupes
 %if %{with test}
 BuildRequires:  bats
 %endif
@@ -105,6 +105,8 @@ Meta package for ruby-build dependencies to build PicoRuby.
 PREFIX="%{buildroot}%{_prefix}" ./install.sh
 
 sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' %{buildroot}%{_bindir}/*
+
+%fdupes %{buildroot}%{_datadir}/ruby-build
 
 %check
 %if %{with test}
