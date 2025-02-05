@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Feb  4 15:44:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-stopit-ulong-for-thread-id.patch: Use ulong for
+  thread id on Python >= 3.7, upstream commit dda4bd1
+  (gh#glenfant/stopit#31).
+
+-------------------------------------------------------------------
+Tue Feb  4 11:50:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch to pyproject macros for build.
+- Add LICENSE and tests.py as additional sources.
+- Run tests as part of a %check section.
+- Improved package Summary and Description.
+- Fix License tag: MIT instead of GPL-3.0.
+- Drop outdated macro redefintions.
+- More fine-grained file list.
+
+-------------------------------------------------------------------
+Thu Aug 13 09:54:14 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.2
