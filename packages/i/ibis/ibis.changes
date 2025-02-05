@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Feb  4 22:10:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.11.2:
+  * Update POTFILES and mark string in ibis-cli for translation
+  * cli: Add a command line argument for commands to run at startup
+  * Update Ibis.Client:active-nick when we get a NICK message for ourselves
+  * Remove the capability wait when we've run out of SASL mechanisms to try
+
+-------------------------------------------------------------------
+Sat Feb  1 14:47:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.11.1:
+  * Add a library version
+  * Use variables for our gir paths when building the docs
+  * Add support for attempting the alt_nick
+  * Don't set error if already cancelled
+  * Avoid double-free when stopping client
+  * Ensure IbisClient stays alive during its I/O callbacks
+- use the shorter sourceforge urls
+
+-------------------------------------------------------------------
+Fri Jan 31 13:15:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.11.0:
+  * Add the client as a parameter to the new and del signals of capabilities
+  * Use g_string_free_and_steal one more time
+  * Track the nickname that the server says we have
+  * Add support for SASL v3.2
+  * Use tarballs for the subprojects
+- switch to sf mirror, so we have signed tarballs
+
+-------------------------------------------------------------------
+Thu Nov 28 21:41:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
