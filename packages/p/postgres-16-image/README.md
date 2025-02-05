@@ -24,6 +24,10 @@ $ podman run -it --rm -p 5432:5432 -e POSTGRES_PASSWORD=my-password -v /path/to/
 
 PostgreSQL data directory location.
 
+**Note 1:** The directory must be empty for `initdb` to create a new database.
+
+**Note 2:** If the volume points either to a file system mount point, a remote folder that cannot be owned by the `postgres` user, or a location that already contains files (including `lost+found` and dotfiles), a new subdirectory for storing the PostgreSQL data must be created within the `PGDATA` volume.
+
 ## Environment variables
 
 The PostgreSQL image uses several environment variables to configure the database initialization.
