@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf87456f17eddd1f4971680a9bb88939</srcmd5>
+    <version>1.2.2</version>
+    <time>1738755750</time>
+    <user>anag+factory</user>
+    <comment>Hello,
+I want to re-introduce a package to factory:
+
+ncspot is a ncurses spotify client written in rust using librespot
+https://github.com/hrkfdn/ncspot
+
+It is useful for terminal users, because allows to listen to spotify using only the terminal.
+Therefore it would be important to have the package available in the main repos.</comment>
+    <requestid>1243266</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">ncspot</param>
+    <param name="url">https://github.com/hrkfdn/ncspot.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">v1.2.2</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">lorenzholzbauer@ikmail.com</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">ncspot</param>
+  </service>
+</services>

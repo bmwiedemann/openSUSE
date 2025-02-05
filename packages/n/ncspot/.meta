@@ -1,0 +1,9 @@
+<package name="ncspot" project="openSUSE:Factory">
+  <title>Ncurses Spotify client</title>
+  <description>Cross-platform ncurses Spotify client written in Rust, inspired
+by ncmpc and the likes.
+
+</description>
+  <devel project="multimedia:apps" package="ncspot"/>
+  <url>https://github.com/hrkfdn/ncspot</url>
+</package>
