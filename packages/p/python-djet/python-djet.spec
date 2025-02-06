@@ -1,7 +1,7 @@
 #
 # spec file for package python-djet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-djet
 Version:        0.3.0
@@ -31,13 +29,13 @@ Patch0:         support-public-httpresponse.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module djangorestframework}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
 Requires:       python-Pillow
-Requires:       python-six
 Suggests:       python-djangorestframework
 BuildArch:      noarch
 %python_subpackages
@@ -49,10 +47,10 @@ Set of helpers for easy testing of Django apps.
 %autosetup -p1 -n djet-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +64,7 @@ export DJANGO_SETTINGS_MODULE=settings
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/djet
+%{python_sitelib}/djet-%{version}.dist-info
 
 %changelog

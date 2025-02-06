@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 08:34:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Drop unneeded Requires on six.
+
+-------------------------------------------------------------------
 Thu Mar 21 07:53:59 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}
