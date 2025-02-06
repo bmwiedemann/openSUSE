@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:38:27 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 3.0.7:
+
+- Reverted - Don’t force cable.yml config by @jkostolansky in https://github.com/rails/solid_cable/pull/55
+**Full Changelog**: https://github.com/rails/solid_cable/compare/v3.0.6...v3.0.7
+
+3.0.6:
+
+## What's Changed
+* Don’t force cable.yml config by @jkostolansky in https://github.com/rails/solid_cable/pull/55
+* Rework concurrency control to avoid thread locks by @jorgemanrubia in https://github.com/rails/solid_cable/pull/54
+
+## New Contributors
+* @jkostolansky made their first contribution in https://github.com/rails/solid_cable/pull/55
+
+**Full Changelog**: https://github.com/rails/solid_cable/compare/v3.0.5...v3.0.6
+
+3.0.5:
+
+## What's Changed
+* Add interruptible sleep to avoid deadlocking by @npezza93 in https://github.com/rails/solid_cable/pull/53
+
+
+**Full Changelog**: https://github.com/rails/solid_cable/compare/v3.0.4...v3.0.5
+
+3.0.4:
+
+## What's Changed
+* Swap executor for reloader to fix dev server hanging on code changes by @npezza93 in https://github.com/rails/solid_cable/pull/51
+
+
+**Full Changelog**: https://github.com/rails/solid_cable/compare/v3.0.3...v3.0.4
+
+3.0.3:
+
+## What's Changed
+* Remove duplicate routes for rooms by @SadMadLad in https://github.com/rails/solid_cable/pull/40
+* Fix irreversible upgrade migration by @thiagoyoussef in https://github.com/rails/solid_cable/pull/44
+* Fix the homepage url by @y-yagi in https://github.com/rails/solid_cable/pull/46
+* Wrap application code in Rails executor to prevent autoloading problems by @jorgemanrubia in https://github.com/rails/solid_cable/pull/50
+
+## New Contributors
+* @SadMadLad made their first contribution in https://github.com/rails/solid_cable/pull/40
+* @thiagoyoussef made their first contribution in https://github.com/rails/solid_cable/pull/44
+* @y-yagi made their first contribution in https://github.com/rails/solid_cable/pull/46
+* @jorgemanrubia made their first contribution in https://github.com/rails/solid_cable/pull/50
+
+**Full Changelog**: https://github.com/rails/solid_cable/compare/v3.0.2...v3.0.3
+
+
+
+-------------------------------------------------------------------
 Thu Nov  7 23:18:07 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - initial package

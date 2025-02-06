@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-solid_cable
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 #
 
 Name:           rubygem-solid_cable
-Version:        3.0.2
+Version:        3.0.7
 Release:        0
 %define mod_name solid_cable
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 3.1.0}
 BuildRequires:  %{rubygem gem2rpm}
-URL:            http://github.com/npezza93/solid_cable
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/rails/solid_cable
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Database-backed Action Cable backend
