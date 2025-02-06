@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:38:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(webkit2gtk-4.0) BuildRequires, we are not passing
+  webview=on to cmake, hence unused and nobody complained.
+
+-------------------------------------------------------------------
 Sun Dec 29 23:10:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.10.3:
