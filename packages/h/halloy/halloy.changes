@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb  5 17:56:27 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.1:
+  + Added:
+    - Image and card previews for url links
+    - Ability to disable dimming of usernames when away
+    - Ability to customize autocomplete sorting direction and
+      completion suffixes
+    - Ability to hide command descriptions
+    - Ability to set delay before triggering notifications
+    - Ability to toggle fullscreen
+    - Ability to exclude and include notifications.
+    - New IRCv3 extensions support
+      + chathistory
+      + setname
+      + Standard Replies
+    - Case mapping support via ISUPPORT
+    - Restore last known window position and size at launch
+    - Date separators in buffers when day changes
+    - Show nickname in user-context menu
+    - Tor support as a proxy option
+  + Fixed:
+    - Long username & password combinations could cause SASL
+      authentication to fail
+    - nick_password_command is now working as intended
+    - Don't add suffix (: ) to prompt if there is no valid nick to
+      autocomplete
+    - Highlight notifications are correctly triggered for /me
+      actions
+- Removed cargo_audit from _service due that contains vendor now
+
+-------------------------------------------------------------------
 Tue Oct 29 19:05:21 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2024.14:

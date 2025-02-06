@@ -1,7 +1,7 @@
 #
 # spec file for package halloy
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define appid   org.squidowl.halloy
 Name:           halloy
-Version:        2024.14
+Version:        2025.1
 Release:        0
 Summary:        IRC application written in Rust
 License:        GPL-3.0-or-later
