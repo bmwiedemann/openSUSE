@@ -87,7 +87,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.7
 BuildRequires:  unzip
 BuildRequires:  wayland-devel
-BuildRequires:  webkit2gtk3-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  yasm
@@ -174,7 +173,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)

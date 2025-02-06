@@ -1364,4 +1364,13 @@
   * 0002-tg_owt-h264-dlopen.patch</comment>
     <requestid>1238761</requestid>
   </revision>
+  <revision rev="130" vrev="3">
+    <srcmd5>57392a0ba60868205b1a15aa735a31d5</srcmd5>
+    <version>5.10.3</version>
+    <time>1738876082</time>
+    <user>anag+factory</user>
+    <comment>- Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
+  and drop superfluous webkit2gtk3-devel BuildRequires.</comment>
+    <requestid>1243539</requestid>
+  </revision>
 </revisionlist>

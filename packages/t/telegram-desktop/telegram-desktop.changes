@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:15:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
+  and drop superfluous webkit2gtk3-devel BuildRequires.
+
+-------------------------------------------------------------------
 Sat Jan 18 12:50:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace ffmpeg-6-*-devel with ffmpeg-7-*-devel BuildRequires.
