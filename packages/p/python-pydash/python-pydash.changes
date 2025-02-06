@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:06:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.0.5
+  * Fix bug that could result in passing too many arguments to
+    callback functions when the callback contained a var-keyword
+    or keyword-only arguments.
+- from version 8.0.4
+  * Fix bug in ``zip_object`` and ``zip_object_deep`` where an
+    empty list for keys/values would cause an exception instead
+    of returning an empty dict.
+
+-------------------------------------------------------------------
 Sun Aug 18 17:19:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.3:
