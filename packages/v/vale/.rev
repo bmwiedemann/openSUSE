@@ -816,4 +816,17 @@
   * feat: add support for JSON, YAML, and TOML (forwarded request 1239923 from jfkw)</comment>
     <requestid>1239924</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>688b024e6ac6731d4072c0d7b78dd941</srcmd5>
+    <version>3.9.5</version>
+    <time>1738876120</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.9.5:
+  * refactor: remove testify
+  * chore: upgrade twine
+  * fix: revert baseStyles merge
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.23 matching go.mod (forwarded request 1243568 from jfkw)</comment>
+    <requestid>1243572</requestid>
+  </revision>
 </revisionlist>

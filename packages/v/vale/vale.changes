@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 06 07:52:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.9.5:
+  * refactor: remove testify
+  * chore: upgrade twine
+  * fix: revert baseStyles merge
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.23 matching go.mod
+
+-------------------------------------------------------------------
 Thu Jan 23 15:20:15 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.9.4. There have been reports that the vale
