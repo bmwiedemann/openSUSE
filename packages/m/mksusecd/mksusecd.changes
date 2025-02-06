@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Feb 6 16:10:24 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#78
+- make a more determined attempt to create the UEFI boot image if
+  it is missing (bsc#1236828)
+- 3.2
+
+--------------------------------------------------------------------
 Tue Feb 4 13:00:44 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#77
