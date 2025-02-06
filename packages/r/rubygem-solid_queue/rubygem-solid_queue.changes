@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:38:51 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.1.3:
+
+## What's Changed
+* Bump rails-html-sanitizer from 1.6.0 to 1.6.1 by @dependabot in https://github.com/rails/solid_queue/pull/471
+* Bump actionpack from 7.1.4.1 to 7.1.5.1 by @dependabot in https://github.com/rails/solid_queue/pull/472
+* Simplify upgrade instructions in `post_install_message` by @mjankowski in https://github.com/rails/solid_queue/pull/469
+* Fix case where a recurring task key is empty in the config by @rosa in https://github.com/rails/solid_queue/pull/475
+* chore: Updates README to include small addition of plus for development multi db by @aquaflamingo in https://github.com/rails/solid_queue/pull/477
+* Update Pool from Future to Concurrent::Promises by @hms in https://github.com/rails/solid_queue/pull/459
+* Require Ruby v3.1+ by @allard in https://github.com/rails/solid_queue/pull/498
+* Add lifecycle hooks to Dispatcher and Scheduler by @hms in https://github.com/rails/solid_queue/pull/486
+* Fix issue 482 by @hms in https://github.com/rails/solid_queue/pull/496
+* Some minor fixes and simplifications by @rosa in https://github.com/rails/solid_queue/pull/499
+
+## New Contributors
+* @mjankowski made their first contribution in https://github.com/rails/solid_queue/pull/469
+* @aquaflamingo made their first contribution in https://github.com/rails/solid_queue/pull/477
+* @allard made their first contribution in https://github.com/rails/solid_queue/pull/498
+
+**Full Changelog**: https://github.com/rails/solid_queue/compare/v1.1.2...v1.1.3
+
+1.1.2:
+
+## What's Changed
+* Don't fail when recurring tasks are defined for another environment by @rosa in https://github.com/rails/solid_queue/pull/470
+
+
+**Full Changelog**: https://github.com/rails/solid_queue/compare/v1.1.1...v1.1.2
+
+1.1.1:
+
+## What's Changed
+* Specify `source` of SolidQueue to ErrorReporter by @tmimura39 in https://github.com/rails/solid_queue/pull/447
+* Skip warning when replacing missing fork if supervisor has PID 1 by @rosa in https://github.com/rails/solid_queue/pull/450
+* Error When an Invalid Recurring Task is Configured by @jherdman in https://github.com/rails/solid_queue/pull/427
+* Add a note about `threads` by @genya0407 in https://github.com/rails/solid_queue/pull/452
+* Validate DB connection pool before starting supervisor by @rosa in https://github.com/rails/solid_queue/pull/457
+* Specialize Dispatcher and Worker looping by @hms in https://github.com/rails/solid_queue/pull/444
+* Add an option to sleep between deleted batches when clearing jobs by @rosa in https://github.com/rails/solid_queue/pull/462
+* Add explicit development instructions to the README. by @evdevdev in https://github.com/rails/solid_queue/pull/390
+* Add `last_enqueued_time` and `previous_time` to `RecurringTask` by @rosa in https://github.com/rails/solid_queue/pull/463
+* fix typo on README.md by @buncis in https://github.com/rails/solid_queue/pull/466
+* Fixed README.md sentence by @pedroFP in https://github.com/rails/solid_queue/pull/465
+* Use Ruby 3.4 for Rubocop and update Nokogiri by @rosa in https://github.com/rails/solid_queue/pull/467
+
+## New Contributors
+* @genya0407 made their first contribution in https://github.com/rails/solid_queue/pull/452
+* @evdevdev made their first contribution in https://github.com/rails/solid_queue/pull/390
+* @buncis made their first contribution in https://github.com/rails/solid_queue/pull/466
+* @pedroFP made their first contribution in https://github.com/rails/solid_queue/pull/465
+
+**Full Changelog**: https://github.com/rails/solid_queue/compare/v1.1.0...v1.1.1
+
+1.1.0:
+
+## What's Changed
+* Remove deprecated adapter specific deferred enqueueing of jobs by @bakku in https://github.com/rails/solid_queue/pull/412
+* Bump actionpack from 7.1.3.4 to 7.1.4.1 by @dependabot in https://github.com/rails/solid_queue/pull/437
+* Bump puma from 6.4.2 to 6.4.3 by @dependabot in https://github.com/rails/solid_queue/pull/436
+* Upgrade mysql2 gem by @jherdman in https://github.com/rails/solid_queue/pull/426
+* Add helper method to query the latency on the Queue object by @andersonkrs in https://github.com/rails/solid_queue/pull/415
+* Delete static recurring tasks before loading them again by @rosa in https://github.com/rails/solid_queue/pull/433
+* Update debug gem by @jherdman in https://github.com/rails/solid_queue/pull/438
+* Don't add `solid_queue.connects_to` configuration more than once by @rosa in https://github.com/rails/solid_queue/pull/439
+* Reimplement Interruptible by @hms in https://github.com/rails/solid_queue/pull/417
+
+## New Contributors
+* @bakku made their first contribution in https://github.com/rails/solid_queue/pull/412
+* @jherdman made their first contribution in https://github.com/rails/solid_queue/pull/426
+* @andersonkrs made their first contribution in https://github.com/rails/solid_queue/pull/415
+
+**Full Changelog**: https://github.com/rails/solid_queue/compare/v1.0.2...v1.1.0
+
+1.0.2:
+
+## What's Changed
+* Address Ruby warnings by @yahonda in https://github.com/rails/solid_queue/pull/368
+* Remove redundant `run` methods in `SolidQueue::Processes` by @yahonda in https://github.com/rails/solid_queue/pull/367
+* Return enqueued active job from `RecurringTask#enqueue` by @rosa in https://github.com/rails/solid_queue/pull/404
+* Bump .ruby_version to latest Ruby version (3.3.5) by @berkos in https://github.com/rails/solid_queue/pull/381
+* Report errors to the Rails error reporter by @npezza93 in https://github.com/rails/solid_queue/pull/373
+* Fix queue order when combining multiple prefixes or prefixes and names  by @rosa in https://github.com/rails/solid_queue/pull/410
+
+## New Contributors
+* @yahonda made their first contribution in https://github.com/rails/solid_queue/pull/368
+* @berkos made their first contribution in https://github.com/rails/solid_queue/pull/381
+* @npezza93 made their first contribution in https://github.com/rails/solid_queue/pull/373
+
+**Full Changelog**: https://github.com/rails/solid_queue/compare/v1.0.0...v1.0.2
+
+1.0.1:
+
+## What's Changed
+* Address Ruby warnings by @yahonda in https://github.com/rails/solid_queue/pull/368
+* Remove redundant `run` methods in `SolidQueue::Processes` by @yahonda in https://github.com/rails/solid_queue/pull/367
+* Return enqueued active job from `RecurringTask#enqueue` by @rosa in https://github.com/rails/solid_queue/pull/404
+
+## New Contributors
+* @yahonda made their first contribution in https://github.com/rails/solid_queue/pull/368
+
+**Full Changelog**: https://github.com/rails/solid_queue/compare/v1.0.0...v1.0.1
+
+
+
+-------------------------------------------------------------------
 Thu Nov  7 23:17:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - initial package
