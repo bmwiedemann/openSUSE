@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:22:36 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.6.0:
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.6.0 -->
+
+## What's Changed
+### 🐛 Bug Fixes
+* Fix RELINE_TEST_ENCODING by @ima1zumi in https://github.com/ruby/reline/pull/743
+* Don't skip start_with check on encoding-incompatible candidates by @tompng in https://github.com/ruby/reline/pull/787
+* Call user defined sigwinch and sigcont handler by @tompng in https://github.com/ruby/reline/pull/788
+* Fix line wrapped cursor position by @tompng in https://github.com/ruby/reline/pull/791
+* Undo and redo should restore indentation by @tompng in https://github.com/ruby/reline/pull/793
+### 🛠 Other Changes
+* Fix tests failing when INPUTRC is defined by @pterjan in https://github.com/ruby/reline/pull/789
+* Implement buffered output to Reline::ANSI by @tompng in https://github.com/ruby/reline/pull/790
+* Merge key mapping with key bindings by @tompng in https://github.com/ruby/reline/pull/715
+* Refactor Reline::Unicode ed_ vi_ em_ methods by @tompng in https://github.com/ruby/reline/pull/720
+* Change quoted_insert and bracketed_paste to a single key input by @tompng in https://github.com/ruby/reline/pull/792
+* Bump version to 0.6.0 by @ima1zumi in https://github.com/ruby/reline/pull/795
+
+## New Contributors
+* @pterjan made their first contribution in https://github.com/ruby/reline/pull/789
+
+**Full Changelog**: https://github.com/ruby/reline/compare/v0.5.12...v0.6.0
+
+0.5.12:
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.5.12 -->
+
+## What's Changed
+### 🐛 Bug Fixes
+* Fix completion quote, preposing and target calculation bug by @tompng in https://github.com/ruby/reline/pull/763
+* Fix tab completion appending quote by @tompng in https://github.com/ruby/reline/pull/782
+* Fix io_gate.encoding raises IOError in ruby <= 3.0 by @tompng in https://github.com/ruby/reline/pull/785
+### 🛠 Other Changes
+* Remove unused things from reline/unicode.rb by @tompng in https://github.com/ruby/reline/pull/759
+* Refactor perform_completon by @tompng in https://github.com/ruby/reline/pull/778
+* Remove terminfo.rb by @tompng in https://github.com/ruby/reline/pull/769
+* Removed redundant argument at Reline::LineEditor::CompletionBlockTest by @hsbt in https://github.com/ruby/reline/pull/781
+* Handle multibyte character input by KeyStroke by @tompng in https://github.com/ruby/reline/pull/713
+* fix/omit test that fail in encoding=US_ASCII by @tompng in https://github.com/ruby/reline/pull/784
+* Extract TruffleRuby workflow from reline.yml by @ima1zumi in https://github.com/ruby/reline/pull/783
+* Bump version to 0.5.12 by @ima1zumi in https://github.com/ruby/reline/pull/786
+
+
+**Full Changelog**: https://github.com/ruby/reline/compare/v0.5.11...v0.5.12
+
+0.5.11:
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.5.11 -->
+
+## What's Changed
+### ✨ Enhancements
+* Allow utf-8 safe meta key mapping in inputrc by @tompng in https://github.com/ruby/reline/pull/723
+* Support continuous tab completion by @tompng in https://github.com/ruby/reline/pull/761
+* Use IO's encoding instead of Encoding.default_external by @monkeyWzr in https://github.com/ruby/reline/pull/765
+### 🐛 Bug Fixes
+* Fix Reline crash with invalid encoding history by @tompng in https://github.com/ruby/reline/pull/751
+* Fix incremental search cancel bug by @tompng in https://github.com/ruby/reline/pull/748
+* append completion_append_character only when continous completion is … by @monkeyWzr in https://github.com/ruby/reline/pull/764
+* nonprinting_start and nonprinting_end should be removed before print by @tompng in https://github.com/ruby/reline/pull/771
+### 🛠 Other Changes
+* Specify commit hash of yamatanooroti by @tompng in https://github.com/ruby/reline/pull/746
+* Add a timeout to cursor_pos by @tompng in https://github.com/ruby/reline/pull/750
+* Fix FD leaks by @nobu in https://github.com/ruby/reline/pull/752
+* Rename `matches?` as `match?` by @nobu in https://github.com/ruby/reline/pull/753
+* Make rendering test faster using updated yamatanooroti by @tompng in https://github.com/ruby/reline/pull/747
+* Concatenate some rendeing test by @tompng in https://github.com/ruby/reline/pull/749
+* Hash#inspect style has changed in ruby 3.4 by @nobu in https://github.com/ruby/reline/pull/758
+* Fix tempfile leaks by @nobu in https://github.com/ruby/reline/pull/757
+* Add cursor keys for application keypad mode to default key bindings by @tompng in https://github.com/ruby/reline/pull/719
+* Add completion_append_character test by @tompng in https://github.com/ruby/reline/pull/773
+* Add TruffleRuby in CI by @eregon in https://github.com/ruby/reline/pull/768
+* Windows fix by @YO4 in https://github.com/ruby/reline/pull/775
+* Bump version to 0.5.11 by @ima1zumi in https://github.com/ruby/reline/pull/777
+
+## New Contributors
+* @eregon made their first contribution in https://github.com/ruby/reline/pull/768
+
+**Full Changelog**: https://github.com/ruby/reline/compare/v0.5.10...v0.5.11
+
+
+
+-------------------------------------------------------------------
 Mon Nov  4 17:23:31 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 0.5.10:
