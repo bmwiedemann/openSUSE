@@ -979,4 +979,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1241068</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>fb30db090a33831fce26b2e12a987358</srcmd5>
+    <version>13.18</version>
+    <time>1738876104</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243562</requestid>
+  </revision>
 </revisionlist>

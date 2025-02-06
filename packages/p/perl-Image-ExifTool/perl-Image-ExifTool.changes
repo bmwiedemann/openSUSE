@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:15:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.18:
+  * Decode a number of new GoPro tags
+  * Enhanced -geotag option to set Geotime from either SubSecDateTimeOriginal
+    (preferentially) or DateTimeOriginal if not otherwise specified
+  * Don't allow ICC_Profile to be deleted from QuickTime-based files
+    (specifically HEIC, to avoid problem where Apple Preview wouldn't
+    display the resulting file)
+  * Improved decoding of AF points for Nikon D3400 and D7500
+  * Patched issue introduced in 13.13 which could give a "No data reference"
+    error when writing MP4 videos from some Google phones
+  * Fixed problem writing XMP-iptcExt:LocationCreatedGPSAltitudeRef with
+    an incorrect namespace
+
+-------------------------------------------------------------------
+Wed Feb  5 08:15:05 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.17:
+  * Added support for reading more embedded images and videos written
+    in the JPEG trailer by some phones
+  * Added support for reading JPEG trailer written by some OnePlus phones
+  * Added a -validate warning for QuickTime 'wide' atoms with an invalid size
+  * Added a new CanonLensType
+  * Avoid decoding Sony 0x9050 data for the ILCE-1M2 because the encoding
+    has changed since the ILCE-1 and the new encoding is not yet known (github #310)
+  * Fixed issue that could cause runtime warning when using -j with -b
+  * Fixed some issues decoding AFPointsUsed for some newer Nikon models
+  * Fixed problem corrupting QuickTime-format videos when writing if they
+    contain a 'wide' atom with an invalid size
+
+-------------------------------------------------------------------
 Tue Jan 28 13:27:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.16:
