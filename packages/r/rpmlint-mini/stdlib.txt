@@ -1,7 +1,9 @@
 __future__.py
 _collections_abc.py
+_colorize.py
 _compat_pickle.py
 _compression.py
+_opcode_metadata.py
 _pydecimal.py
 _sitebuiltins.py
 _strptime.py
@@ -188,6 +190,7 @@ functools.py
 fnmatch.py
 genericpath.py
 gettext.py
+glob.py
 gzip.py
 hashlib.py
 heapq.py
@@ -205,9 +208,10 @@ importlib/metadata/_itertools.py
 importlib/metadata/_meta.py
 importlib/metadata/_text.py
 importlib/readers.py
+importlib/resources/__init__.py
 importlib/resources/_adapters.py
 importlib/resources/_common.py
-importlib/resources/__init__.py
+importlib/resources/_functional.py
 importlib/resources/_itertools.py
 importlib/resources/_legacy.py
 importlib/resources/abc.py
@@ -218,6 +222,11 @@ importlib/util.py
 inspect.py
 ipaddress.py
 io.py
+json/__init__.py
+json/decoder.py
+json/encoder.py
+json/scanner.py
+json/tool.py
 keyword.py
 lib-dynload/array.cpython*.so
 lib-dynload/_asyncio.cpython*.so
@@ -292,6 +301,9 @@ numbers.py
 opcode.py
 operator.py
 pathlib.py
+pathlib/__init__.py
+pathlib/_local.py
+pathlib/_abc.py
 pickle.py
 pkgutil.py
 platform.py
@@ -324,6 +336,8 @@ string.py
 struct.py
 subprocess.py
 sysconfig.py
+sysconfig/__init__.py
+sysconfig/__main__.py
 tempfile.py
 textwrap.py
 threading.py
@@ -364,4 +378,8 @@ xml/sax/__init__.py
 xml/sax/saxutils.py
 xml/sax/xmlreader.py
 zipfile.py
+zipfile/__init__.py
+zipfile/__main__.py
+zipfile/_path/__init__.py
+zipfile/_path/glob.py
 zipimport.py

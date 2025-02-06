@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:14:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use %primary_python macro instead hardcode python version
+- Make it compatible with python313
+
+-------------------------------------------------------------------
 Wed Jan 15 12:17:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Include tar and gzip, as rpmlint relies on those tools to unpack

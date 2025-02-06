@@ -18,7 +18,7 @@
 
 # This works regardless of the primary python3 flavor. The stdlib.txt and
 # install section depend on the python 3.11 layout.
-%define python_flavor python311
+%define python_flavor %{primary_python}
 %define my_python %{expand:%{__%{python_flavor}}}
 
 Name:           rpmlint-mini
@@ -42,6 +42,7 @@ Patch3:         0002-validate-Support-version-1.5.patch
 BuildRequires:  checkbashisms
 # the main package rpmlint's python3 runtime requirements do not necessarily match our target flavor
 BuildRequires:  %{python_flavor}-base
+BuildRequires:  %{python_flavor}-importlib-metadata
 BuildRequires:  %{python_flavor}-packaging
 BuildRequires:  %{python_flavor}-pybeam
 BuildRequires:  %{python_flavor}-pyenchant
@@ -103,8 +104,11 @@ rm -f %{buildroot}/opt/testing/share/rpmlint/*.override.toml
 # Python standard library, rpmlint dependencies, and the interpreter
 pushd %{_libdir}/python%{python_version}
 for file in $(cat %{SOURCE1}); do
-  exp=$(ls -1 $file)
-  install -D -m 644 $exp %{buildroot}/opt/testing/lib/python%{python_version}/$exp
+  if [ -f $file ]
+  then
+      exp=$(ls -1 $file)
+      install -D -m 644 $exp %{buildroot}/opt/testing/lib/python%{python_version}/$exp
+  fi
 done
 popd
 ldd %{python_sitearch}/rpm/*.so | while read L T R A
