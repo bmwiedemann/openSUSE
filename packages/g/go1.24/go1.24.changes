@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 20:35:01 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24rc3 (released 2024-02-05) is a release candidate version of
+  go1.24 cut from the master branch at the revision tagged
+  go1.24rc3.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-22866 CVE-2025-22867
+  * go#71423 go#71383 boo#1236801 security: fix CVE-2025-22866 crypto/internal/fips140/nistec: p256NegCond is variable time on ppc64le
+  * go#71476 boo#1236839 security: fix CVE-2025-22867 cmd/go: arbitrary code execution during build on darwin
+
+-------------------------------------------------------------------
 Thu Jan 16 20:13:48 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24rc2 (released 2024-01-16) is a release candidate version of

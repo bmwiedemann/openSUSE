@@ -25,4 +25,18 @@
   Refs boo#1236217 go1.24 release tracking (forwarded request 1240018 from jfkw)</comment>
     <requestid>1240021</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>488f9cf26eab7f5e282fe061be0f44ea</srcmd5>
+    <version>1.24rc3</version>
+    <time>1738876069</time>
+    <user>anag+factory</user>
+    <comment>- go1.24rc3 (released 2024-02-05) is a release candidate version of
+  go1.24 cut from the master branch at the revision tagged
+  go1.24rc3.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-22866 CVE-2025-22867
+  * go#71423 go#71383 boo#1236801 security: fix CVE-2025-22866 crypto/internal/fips140/nistec: p256NegCond is variable time on ppc64le
+  * go#71476 boo#1236839 security: fix CVE-2025-22867 cmd/go: arbitrary code execution during build on darwin (forwarded request 1243515 from jfkw)</comment>
+    <requestid>1243516</requestid>
+  </revision>
 </revisionlist>
