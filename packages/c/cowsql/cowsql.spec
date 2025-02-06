@@ -1,6 +1,7 @@
 #
 # spec file for package cowsql
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define lname libcowsql0
 Name:           cowsql
-Version:        1.15.6
+Version:        1.15.8
 Release:        0
 Summary:        Embeddable, replicated and fault tolerant SQL engine
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception

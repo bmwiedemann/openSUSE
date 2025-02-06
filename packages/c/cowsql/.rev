@@ -16,4 +16,14 @@
     <comment></comment>
     <requestid>1163774</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>749dfeedccaf05c98af9a4efbd63c8e8</srcmd5>
+    <version>1.15.8</version>
+    <time>1738876098</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.15.8:
+  * disable flaky tests
+</comment>
+    <requestid>1243556</requestid>
+  </revision>
 </revisionlist>
