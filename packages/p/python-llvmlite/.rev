@@ -296,4 +296,25 @@ This version works with llvm 4.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186081</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>02c52591b9efd821eb9bf7d0f0b441f7</srcmd5>
+    <version>0.44.0</version>
+    <time>1738876264</time>
+    <user>anag+factory</user>
+    <comment>REQUIRED FOR SR#1243942
+
+- Update to 0.44.0:
+  - Official support for Python 3.13.
+  - Dropped official support for Python 3.9, the minimum
+    supported Python version is 3.10.
+  - LLVM 15 is now the default LLVM.
+  - Added support for LLVM’s new PassManager.
+  - Support for LLVM based target triple partitioning.
+  - llvmlite.binding.TypeRef now roundtrips back into
+    llvmlite.ir.Type.
+  - API updates to accommodate packed Literal Structs.
+  - Added NetBSD support.
+  - Support for opaque pointers.</comment>
+    <requestid>1243943</requestid>
+  </revision>
 </revisionlist>

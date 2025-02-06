@@ -1,7 +1,7 @@
 #
 # spec file for package python-llvmlite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 %define modname llvmlite
-%define         llvm_major 14
+%define         llvm_major 15
 %{?sle15_python_module_pythons}
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
-Version:        0.43.0
+Version:        0.44.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
 URL:            https://llvmlite.pydata.org
 Source:         https://github.com/numba/llvmlite/archive/v%{version}.tar.gz#/llvmlite-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
