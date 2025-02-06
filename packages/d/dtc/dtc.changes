@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:27:13 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Mark assembler output as noexecstack
+
+-------------------------------------------------------------------
 Tue Oct 22 07:24:23 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.7.1:

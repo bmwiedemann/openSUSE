@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,7 @@ rm -f %{buildroot}/%{_libdir}/*.a
 
 %check
 export EXTRA_CFLAGS="%{optflags}"
+export CC="gcc -Wa,--noexecstack"
 %make_build check
 
 %files
