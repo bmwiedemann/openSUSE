@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,11 @@
 %define longarch riscv64
 %define arch riscv64
 %endif
-%ifarch ppc64le aarch64 riscv64
+%ifarch loongarch64
+%define longarch loongarch64
+%define arch loongarch64
+%endif
+%ifarch ppc64le aarch64 riscv64 loongarch64
 %define sysname unknown
 %endif
 Name:           ghc-bootstrap
@@ -56,6 +60,7 @@ Source14:       ghc-%{version}-x86_64-unknown-linux.tar.xz
 Source16:       ghc-%{version}-s390x-ibm-linux.tar.xz
 Source17:       ghc-%{version}-aarch64-unknown-linux.tar.xz
 Source19:       ghc-%{version}-riscv64-unknown-linux.tar.xz
+Source20:       ghc-%{version}-loongarch64-unknown-linux.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-PIE
@@ -74,7 +79,7 @@ Conflicts:      ghc-base
 Requires:       this-is-only-for-build-envs
 Requires:       pkgconfig(libffi)
 Provides:       ghc-bootstrap-devel
-ExclusiveArch:  ppc64le x86_64 s390x aarch64 riscv64
+ExclusiveArch:  ppc64le x86_64 s390x aarch64 riscv64 loongarch64
 AutoReq:        off
 %ifnarch s390x
 BuildRequires:  libnuma-devel
@@ -103,6 +108,7 @@ cp %{SOURCE14} .
 cp %{SOURCE16} .
 cp %{SOURCE17} .
 cp %{SOURCE19} .
+cp %{SOURCE20} .
 
 %build
 tar Jxf ghc-%{version}-%{longarch}-%{sysname}-linux.tar.xz
