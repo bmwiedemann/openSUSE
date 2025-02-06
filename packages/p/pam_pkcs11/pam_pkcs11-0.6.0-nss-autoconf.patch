@@ -1,6 +1,8 @@
---- pam_pkcs11-0.6.1/src/pam_pkcs11/pam_config.c
-+++ pam_pkcs11-0.6.1/src/pam_pkcs11/pam_config.c
-@@ -45,7 +45,7 @@
+Index: pam_pkcs11-pam_pkcs11-0.6.13/src/pam_pkcs11/pam_config.c
+===================================================================
+--- pam_pkcs11-pam_pkcs11-0.6.13.orig/src/pam_pkcs11/pam_config.c
++++ pam_pkcs11-pam_pkcs11-0.6.13/src/pam_pkcs11/pam_config.c
+@@ -47,7 +47,7 @@ struct configuration_st configuration =
          0,				/* int card_only; */
          0,				/* int wait_for_card; */
          "default", 			/* const char *pkcs11_module; */
@@ -8,4 +10,4 @@
 +        NULL,				/* const char *pkcs11_module_path; */
          NULL,                           /* screen savers */
          NULL,			/* slot_description */
-         -1,				/* int slot_num; */
+         0,				/* int slot_num; */

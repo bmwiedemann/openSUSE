@@ -1,7 +1,7 @@
-Index: pam_pkcs11-pam_pkcs11-0.6.12/etc/pam_pkcs11.conf.example.in
+Index: pam_pkcs11-pam_pkcs11-0.6.13/etc/pam_pkcs11.conf.example.in
 ===================================================================
---- pam_pkcs11-pam_pkcs11-0.6.12.orig/etc/pam_pkcs11.conf.example.in
-+++ pam_pkcs11-pam_pkcs11-0.6.12/etc/pam_pkcs11.conf.example.in
+--- pam_pkcs11-pam_pkcs11-0.6.13.orig/etc/pam_pkcs11.conf.example.in
++++ pam_pkcs11-pam_pkcs11-0.6.13/etc/pam_pkcs11.conf.example.in
 @@ -9,7 +9,7 @@ pam_pkcs11 {
    nullok = true;
  
@@ -24,8 +24,8 @@ Index: pam_pkcs11-pam_pkcs11-0.6.12/etc/pam_pkcs11.conf.example.in
 +  }
  
    pkcs11_module opensc {
-     module = /usr/lib/opensc-pkcs11.so;
-@@ -162,7 +167,7 @@ pam_pkcs11 {
+     module = @libdir@/opensc-pkcs11.so;
+@@ -164,7 +169,7 @@ pam_pkcs11 {
    # If used null mapper should be the last in the list :-)
    # Also you should select at least one mapper, otherwise
    # certificate will not match :-)

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb  6 16:04:09 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 0.6.13
+    * Added pkcs11-eventmgr systemd service unit.
+    * Updated Russian translations for pam_pkcs11 (thx Max Kosmach      and Andrey Cherepanov).
+    * Fixed possible authentication bypass (CVE-2025-24032):
+    * Use signatures to verify authentication by default      (thx Frank Morgner).
+    * Fixed possible authentication bypass (CVE-2025-24531):
+    * Restoring the original card_only / wait_for_card behavior      (thx Matthias Gerstner, Frank Morgner).
+    * Move pam_securetty.so upward in the example PAM config.
+    * Set 'slot_num' configuration parameter to 0 by default     (thx Jpereyra316).
+    * Print details about configuration parse errors (thx Jpereyra316).
+    * Add Chinese (Simplified) translation.
+    * Capitalize all PAM messages (thx Alynx Zhou).
+    * Made pkcs11_make_hash_link support whitespaces in file names
+  * Drop 0001-Set-slot_num-configuration-parameter-to-0-by-default.patch
+  * Drop 0001-memory-leak-fixes.patch
+  * Rebase pam_pkcs11-0.5.3-nss-conf.patch
+  * Rebase pam_pkcs11-0.6.0-nss-autoconf.patch
+
+
+-------------------------------------------------------------------
 Wed Jan 22 16:07:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

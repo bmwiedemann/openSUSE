@@ -19,7 +19,7 @@
 # It seems to be an upstream naming bug:
 %define _name pam_pkcs11-pam_pkcs11
 Name:           pam_pkcs11
-Version:        0.6.12
+Version:        0.6.13
 Release:        0
 Summary:        PKCS #11 PAM Module
 License:        LGPL-2.1-or-later
@@ -34,9 +34,7 @@ Source4:        pkcs11_eventmgr.service
 Patch0:         %{name}-fsf-address.patch
 Patch1:         %{name}-0.5.3-nss-conf.patch
 Patch3:         %{name}-0.6.0-nss-autoconf.patch
-Patch4:         0001-Set-slot_num-configuration-parameter-to-0-by-default.patch
-# 0001-memory-leak-fixes.patch - Fix memory leaks and issues with kscreenlocker (boo#1230870) - adapted from https://github.com/OpenSC/pam_pkcs11/commit/f8e7d85aa3ca4fd2e2a8c2dfe601d1224debe372.patch
-Patch6:         0001-memory-leak-fixes.patch
+
 BuildRequires:  curl-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
@@ -50,10 +48,8 @@ BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
-%{?systemd_requires}
-%if 0%{?suse_version} >= 1210
 BuildRequires:  systemd-rpm-macros
-%endif
+%{?systemd_requires}
 
 %description
 This Linux PAM module allows X.509 a certificate-based user
@@ -79,6 +75,7 @@ Summary:        PKCS #11 API PAM Documentation
 # File conflict. devel-doc split was done with 0.6.9 upgrade, after SLE 12 SP3, Leap 42.3.
 Group:          Documentation/HTML
 Conflicts:      pam_pkcs11 < 0.6.9
+BuildArch:      noarch
 
 %description devel-doc
 API documentation for pam_pkcs11
@@ -107,6 +104,9 @@ sed -i '/^HTML_TIMESTAMP/s/YES/NO/' doc/doxygen.conf.in
 # Generate documentation: This sounds like an upstream bug while making an upstream source tarball.
 %make_build dist
 
+%check
+%make_build check
+
 %install
 %make_install
 %if 0%{?suse_version} <= 1500
@@ -132,6 +132,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 cp common-auth-smartcard %{buildroot}%{_sysconfdir}/pam.d/
 %endif
 install -D -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/pkcs11_eventmgr.service
+rm %{buildroot}%{_unitdir}/pkcs11-eventmgr.service
 %if 0%{?suse_version} < 1600
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rcpkcs11_eventmgr
