@@ -1,7 +1,7 @@
 #
 # spec file for package python-xkcdpass
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           python-xkcdpass
-Version:        1.19.8
+Version:        1.19.9
 Release:        0
 Summary:        A flexible and scriptable password generator which generates strong passphrases
 License:        BSD-3-Clause
 URL:            https://github.com/redacted/XKCD-password-generator
 Source:         https://files.pythonhosted.org/packages/source/x/xkcdpass/xkcdpass-%{version}.tar.gz
-Patch0:         fix-test-assertion-methods.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

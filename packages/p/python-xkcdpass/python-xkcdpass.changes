@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 11:42:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.9
+  * Remove usage of deprecated assertEquals
+- Drop fix-test-assertion-methods.patch, fixed upstream
+
+-------------------------------------------------------------------
 Fri Mar 15 00:00:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-test-assertion-methods.patch, use correct assertion
