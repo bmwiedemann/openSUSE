@@ -295,4 +295,12 @@
     <comment>- Update to release 2.17</comment>
     <requestid>1225642</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cd760a524e6fdf88a40b1e404e4077ec</srcmd5>
+    <version>2.17.1</version>
+    <time>1738875999</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.17.1</comment>
+    <requestid>1243478</requestid>
+  </revision>
 </revisionlist>

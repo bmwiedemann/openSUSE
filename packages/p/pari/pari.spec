@@ -1,7 +1,7 @@
 #
 # spec file for package pari
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global sover 9
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.17.0
+Version:        2.17.1
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
@@ -42,7 +42,6 @@ BuildRequires:  texlive-luatex
 BuildRequires:  texlive-luatex-bin
 BuildRequires:  texlive-luatexbase
 BuildRequires:  texlive-tex-bin
-BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  tex(amsmath.sty)
 
