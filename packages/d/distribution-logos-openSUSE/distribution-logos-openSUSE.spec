@@ -1,7 +1,7 @@
 #
 # spec file for package distribution-logos-openSUSE
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Sasi Olin <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           distribution-logos-openSUSE
-Version:        20241022
+Version:        20250203
 Release:        0
 Summary:        Logos for openSUSE Distros
 License:        CC-BY-SA-4.0
@@ -112,6 +112,18 @@ BuildArch:      noarch
 %description Aeon
 Logos for openSUSE Aeon
 
+%package Kalpa
+Summary:        Logos for openSUSE Kalpa
+Conflicts:      distribution-logos
+Obsoletes:      distribution-logos
+Provides:       distribution-logos
+Removepathpostfixes: .Kalpa
+BuildArch:      noarch
+
+%description Kalpa
+Logos for openSUSE Kalpa
+
+
 %endif
 
 %package icons
@@ -139,7 +151,7 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{scalable,symbolic}/apps
 %if 0%{?sle_version} || 0%{?suse_version} == 1600
 for distro in Leap LeapMicro; do \
 %else
-for distro in Tumbleweed Slowroll Kubic MicroOS Aeon; do \
+for distro in Tumbleweed Slowroll Kubic MicroOS Aeon Kalpa; do \
 %endif
 for file in `ls ${distro}`; do \
 cp -r ${distro}/${file} %{buildroot}%{_datadir}/pixmaps/distribution-logos/${file}.${distro}; \
@@ -176,6 +188,9 @@ ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{
 
 %files Aeon
 %{_datadir}/pixmaps/distribution-logos/*.Aeon
+
+%files Kalpa
+%{_datadir}/pixmaps/distribution-logos/*.Kalpa
 
 %endif
 
