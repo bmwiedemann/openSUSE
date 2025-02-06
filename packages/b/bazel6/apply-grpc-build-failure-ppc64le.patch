@@ -1,0 +1,10 @@
+--- distdir_deps.bzl
++++ distdir_deps.bzl
+@@ -123,6 +123,7 @@
+         "patches": [
+             "//third_party/grpc:grpc_1.47.0.patch",
+             "//third_party/grpc:grpc_1.47.0.win_arm64.patch",
++            "//:grpc-fix-compile-failuare-in-ppc64le.patch",
+         ],
+         "used_in": [
+             "additional_distfiles",

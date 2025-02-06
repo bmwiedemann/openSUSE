@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Feb  5 15:02:13 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 6.5.0
+  * General
+    Fix tree file materialized as symlink to another file when building
+    without the bytes. (#20409)
+    Fix bootstrapped Bazel binary (#20804)
+    Ignore read-only errors when updating the mtime of the install_base
+    (#20568)
+  * C++ / Objective-C
+    Fix versioned shared libraries for macOS toolchain (#20847)
+  * Configurability
+    Flip --incompatible_visibility_private_attributes_at_definition
+    (#20520)
+    Implemented --incompatible_enable_proto_toolchain_resolution
+    (#20925)
+  * External Dependencies
+    Fix extraction of tar archives containing sparse files. (#20531)
+    Restart at most once when prepopulating repository rule environment
+    (#20667)
+  * Java
+    Don't pass --add-opens= to javac (#20472)
+  * Remote Execution
+    RemoteSpawnRunner: record inbetween phases in timing profile
+    (#20550)
+    Add profiling to remoteActionBuildingSemaphore.acquire()
+    (#20549)
+    Add flag experimental_throttle_remote_action_building (#20861)
+  * Starlark / Build API
+    Various methods and fields related to labels and repos are
+    deprecated in favor of new options with clearer naming and intent.
+    The deprecated APIs can be disabled by setting
+    --noincompatible_enable_deprecated_label_apis. (#20590)
+- Add Source grpc-fix-compile-failuare-in-ppc64le.patch:
+  Add Patch apply-grpc-build-failure-ppc64le.patch:
+  Fix bazel-6.3.1 build failure on ppc64 platform. With this update,
+  Mozc could successfully update in SUSE:SLE-15-SP6.
+  (jsc#PED-12066, bsc#1221311)
+
+-------------------------------------------------------------------
 Thu Feb 22 10:07:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package bazel6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define shortver 6
 
 Name:           bazel%{shortver}
-Version:        6.3.1
+Version:        6.5.0
 Release:        0
 Summary:        Tool for the automation of building and testing of software
 License:        Apache-2.0
@@ -31,8 +31,11 @@ URL:            https://bazel.build/
 Source0:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip
 Source1:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip.sig
 Source2:        abseil-missing-stdint.patch
+Source3:        grpc-fix-compile-failuare-in-ppc64le.patch
 # PATCH-FIX-OPENSUSE apply-abseil-missing-stdint.patch
 Patch0:         apply-abseil-missing-stdint.patch
+# PATCH-FIX-OPENSUSE apply-grpc-build-failure-ppc64le.patch
+Patch1:         apply-grpc-build-failure-ppc64le.patch
 BuildRequires:  gcc-c++
 BuildRequires:  java-11-openjdk-devel
 BuildRequires:  pkgconfig
@@ -42,7 +45,7 @@ BuildRequires:  zip
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # Bazel6.0 does not support Java 8 and 17
 Requires:       java-11-openjdk-devel
 Provides:       bazel = %{version}
@@ -59,6 +62,7 @@ as mobile operating systems.
 chmod 0644 AUTHORS CHANGELOG.md CONTRIBUTORS LICENSE
 
 cp %{SOURCE2} .
+cp %{SOURCE3} .
 
 %build
 %ifarch aarch64 %arm

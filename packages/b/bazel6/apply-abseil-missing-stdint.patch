@@ -1,13 +1,13 @@
---- distdir_deps.bzl.org	2023-04-28 08:13:57.023479154 +0900
-+++ distdir_deps.bzl	2023-05-09 10:00:40.719979952 +0900
+--- distdir_deps.bzl
++++ distdir_deps.bzl
 @@ -230,6 +230,10 @@
      },
      "com_google_absl": {
-         "archive": "20211102.0.tar.gz",
+         "archive": "20230802.0.tar.gz",
 +        "patch_args": ["-p1"],
 +        "patches": [
 +            "//:abseil-missing-stdint.patch"
 +        ],
-         "sha256": "dcf71b9cba8dc0ca9940c4b316a0c796be8fab42b070bb6b7cab62b48f0e66c4",
+         "sha256": "59d2976af9d6ecf001a81a35749a6e551a335b949d34918cfade07737b9d93c5",
          "urls": [
-             "https://mirror.bazel.build/github.com/abseil/abseil-cpp/archive/refs/tags/20211102.0.tar.gz",
+             "https://github.com/abseil/abseil-cpp/archive/refs/tags/20230802.0.tar.gz",
