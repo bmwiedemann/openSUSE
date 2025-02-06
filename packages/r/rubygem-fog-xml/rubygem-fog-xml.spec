@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-fog-xml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-fog-xml
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 %define mod_name fog-xml
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        XML parsing for fog providers
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Extraction of the XML parsing tools shared between a
