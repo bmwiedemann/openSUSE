@@ -1,7 +1,7 @@
 #
 # spec file for package python-cryptography
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
 # ALWAYS KEEP IN SYNC WITH python-cryptography-vectors!
-Version:        43.0.3
+Version:        44.0.0
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -93,13 +93,6 @@ export CARGO_PROFILE_RELEASE_DEBUG=true
 export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
 # https://pyo3.rs/main/building-and-distribution#configuring-the-python-version
 %python_expand export PYO3_PYTHON="%{_bindir}/$python"
-cd src/rust
-tar xfv %{S:2}
-rm -v Cargo.lock
-%cargo_build
-cd -
-
-# https://github.com/pyca/cryptography/issues/9023
 %global _lto_cflags %{nil}
 export RUSTFLAGS=%{rustflags}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -122,6 +115,7 @@ find . -name .keep -print -delete
 # fails with OverflowError on 32bit platform
 %ifarch %ix86 %arm ppc
 rm -v tests/hazmat/primitives/test_aead.py
+rm -v tests/hazmat/primitives/test_ciphers.py
 # imports test_aead so we need to remove also these
 rm -v tests/wycheproof/test_aes.py
 rm -v tests/wycheproof/test_chacha20poly1305.py
@@ -134,6 +128,7 @@ rm -v tests/wycheproof/test_chacha20poly1305.py
 %license LICENSE LICENSE.APACHE LICENSE.BSD
 %doc CONTRIBUTING.rst CHANGELOG.rst README.rst
 %{python_sitearch}/cryptography
+%{python_sitearch}/rust
 %{python_sitearch}/cryptography-%{version}.dist-info
 %endif
 

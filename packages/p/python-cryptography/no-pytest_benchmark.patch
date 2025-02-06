@@ -1,26 +1,16 @@
----
- pyproject.toml                         |   31 -------------------------
- tests/bench/test_aead.py               |   40 ++++++++++++++++-----------------
- tests/bench/test_ec_load.py            |    8 +++---
- tests/bench/test_hashes.py             |    4 +--
- tests/bench/test_hmac.py               |    4 +--
- tests/bench/test_x509.py               |   16 ++++++-------
- 7 files changed, 37 insertions(+), 68 deletions(-)
-
-Index: cryptography-43.0.3/pyproject.toml
-===================================================================
---- cryptography-43.0.3.orig/pyproject.toml
-+++ cryptography-43.0.3/pyproject.toml
-@@ -66,8 +66,6 @@ nox = ["nox"]
+diff -ruN cryptography-44.0.0.orig/pyproject.toml cryptography-44.0.0/pyproject.toml
+--- cryptography-44.0.0.orig/pyproject.toml	2025-01-26 18:48:58.157318687 +0800
++++ cryptography-44.0.0/pyproject.toml	2025-01-26 18:56:46.010819868 +0800
+@@ -67,8 +67,6 @@
  test = [
-     "cryptography_vectors==43.0.3",
-     "pytest >=6.2.0",
--    "pytest-benchmark",
--    "pytest-cov",
-     "pytest-xdist",
-     "pretend",
-     "certifi",
-@@ -117,7 +115,7 @@ exclude = [
+     "cryptography_vectors==44.0.0",
+     "pytest >=7.4.0",
+-    "pytest-benchmark >=4.0",
+-    "pytest-cov >=2.10.1",
+     "pytest-xdist >=3.5.0",
+     "pretend >=0.7",
+     "certifi >=2024",
+@@ -118,7 +116,7 @@
  ]
  
  [tool.pytest.ini_options]
@@ -29,7 +19,7 @@ Index: cryptography-43.0.3/pyproject.toml
  console_output_style = "progress-even-when-capture-no"
  markers = [
      "skip_fips: this test is not executed in FIPS mode",
-@@ -139,33 +137,6 @@ module = [
+@@ -140,33 +138,6 @@
  ]
  ignore_missing_imports = true
  
@@ -43,14 +33,14 @@ Index: cryptography-43.0.3/pyproject.toml
 -
 -[tool.coverage.paths]
 -source = [
--   "src/cryptography",
--   "*.nox/*/lib*/python*/site-packages/cryptography",
--   "*.nox\\*\\Lib\\site-packages\\cryptography",
--   "*.nox/pypy/site-packages/cryptography",
+-    "src/cryptography",
+-    "*.nox/*/lib*/python*/site-packages/cryptography",
+-    "*.nox\\*\\Lib\\site-packages\\cryptography",
+-    "*.nox/pypy/site-packages/cryptography",
 -]
--tests =[
--   "tests/",
--   "*tests\\",
+-tests = [
+-    "tests/",
+-    "*tests\\",
 -]
 -
 -[tool.coverage.report]
@@ -63,11 +53,10 @@ Index: cryptography-43.0.3/pyproject.toml
  [tool.ruff]
  line-length = 79
  
-Index: cryptography-43.0.3/tests/bench/test_aead.py
-===================================================================
---- cryptography-43.0.3.orig/tests/bench/test_aead.py
-+++ cryptography-43.0.3/tests/bench/test_aead.py
-@@ -26,84 +26,84 @@ def _aead_supported(cls):
+diff -ruN cryptography-44.0.0.orig/tests/bench/test_aead.py cryptography-44.0.0/tests/bench/test_aead.py
+--- cryptography-44.0.0.orig/tests/bench/test_aead.py	2025-01-26 18:48:58.218037106 +0800
++++ cryptography-44.0.0/tests/bench/test_aead.py	2025-01-26 18:57:45.747649958 +0800
+@@ -26,84 +26,84 @@
      not _aead_supported(ChaCha20Poly1305),
      reason="Requires OpenSSL with ChaCha20Poly1305 support",
  )
@@ -172,10 +161,9 @@ Index: cryptography-43.0.3/tests/bench/test_aead.py
      ct = aes.encrypt(b"\x00" * 12, b"hello world plaintext", None)
 -    benchmark(aes.decrypt, b"\x00" * 12, ct, None)
 +    aes.decrypt(b"\x00" * 12, ct, None)
-Index: cryptography-43.0.3/tests/bench/test_ec_load.py
-===================================================================
---- cryptography-43.0.3.orig/tests/bench/test_ec_load.py
-+++ cryptography-43.0.3/tests/bench/test_ec_load.py
+diff -ruN cryptography-44.0.0.orig/tests/bench/test_ec_load.py cryptography-44.0.0/tests/bench/test_ec_load.py
+--- cryptography-44.0.0.orig/tests/bench/test_ec_load.py	2025-01-26 18:48:58.218037106 +0800
++++ cryptography-44.0.0/tests/bench/test_ec_load.py	2025-01-26 18:57:45.748641371 +0800
 @@ -5,9 +5,9 @@
  from ..hazmat.primitives.fixtures_ec import EC_KEY_SECP256R1
  
@@ -190,10 +178,9 @@ Index: cryptography-43.0.3/tests/bench/test_ec_load.py
 -    benchmark(EC_KEY_SECP256R1.private_key)
 +def test_load_ec_private_numbers():
 +    EC_KEY_SECP256R1.private_key()
-Index: cryptography-43.0.3/tests/bench/test_hashes.py
-===================================================================
---- cryptography-43.0.3.orig/tests/bench/test_hashes.py
-+++ cryptography-43.0.3/tests/bench/test_hashes.py
+diff -ruN cryptography-44.0.0.orig/tests/bench/test_hashes.py cryptography-44.0.0/tests/bench/test_hashes.py
+--- cryptography-44.0.0.orig/tests/bench/test_hashes.py	2025-01-26 18:48:58.218037106 +0800
++++ cryptography-44.0.0/tests/bench/test_hashes.py	2025-01-26 18:57:45.748943321 +0800
 @@ -5,10 +5,10 @@
  from cryptography.hazmat.primitives import hashes
  
@@ -207,10 +194,9 @@ Index: cryptography-43.0.3/tests/bench/test_hashes.py
  
 -    benchmark(bench)
 +    bench()
-Index: cryptography-43.0.3/tests/bench/test_hmac.py
-===================================================================
---- cryptography-43.0.3.orig/tests/bench/test_hmac.py
-+++ cryptography-43.0.3/tests/bench/test_hmac.py
+diff -ruN cryptography-44.0.0.orig/tests/bench/test_hmac.py cryptography-44.0.0/tests/bench/test_hmac.py
+--- cryptography-44.0.0.orig/tests/bench/test_hmac.py	2025-01-26 18:48:58.218037106 +0800
++++ cryptography-44.0.0/tests/bench/test_hmac.py	2025-01-26 18:57:45.749219559 +0800
 @@ -5,10 +5,10 @@
  from cryptography.hazmat.primitives import hashes, hmac
  
@@ -224,11 +210,10 @@ Index: cryptography-43.0.3/tests/bench/test_hmac.py
  
 -    benchmark(bench)
 +    bench()
-Index: cryptography-43.0.3/tests/bench/test_x509.py
-===================================================================
---- cryptography-43.0.3.orig/tests/bench/test_x509.py
-+++ cryptography-43.0.3/tests/bench/test_x509.py
-@@ -13,40 +13,40 @@ from cryptography import x509
+diff -ruN cryptography-44.0.0.orig/tests/bench/test_x509.py cryptography-44.0.0/tests/bench/test_x509.py
+--- cryptography-44.0.0.orig/tests/bench/test_x509.py	2025-01-26 18:48:58.218037106 +0800
++++ cryptography-44.0.0/tests/bench/test_x509.py	2025-01-26 18:57:45.749471922 +0800
+@@ -13,40 +13,40 @@
  from ..utils import load_vectors_from_file
  
  
@@ -278,7 +263,7 @@ Index: cryptography-43.0.3/tests/bench/test_x509.py
      limbo_root = pytestconfig.getoption("--x509-limbo-root", skip=True)
      with open(os.path.join(limbo_root, "limbo.json"), "rb") as f:
          [testcase] = [
-@@ -78,4 +78,4 @@ def test_verify_docs_python_org(benchmar
+@@ -78,4 +78,4 @@
          )
          verifier.verify(leaf, intermediates)
  

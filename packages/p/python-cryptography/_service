@@ -2,7 +2,6 @@
   <service name="download_files" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">cryptography-*</param>
-    <param name="cargotoml">src/rust/Cargo.toml</param>
     <param name="compression">zst</param>
   </service>
 </services>
