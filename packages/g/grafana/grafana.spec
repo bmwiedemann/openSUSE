@@ -61,6 +61,8 @@ dashboards and data with teams.
 %prep
 %setup -q -n grafana-%{version}
 %autosetup -T -D -a 1 -p1 -n grafana-%{version}
+# Check if frontend assets have been built
+test -d public/build
 
 %build
 %ifnarch ppc64
@@ -119,7 +121,8 @@ install -d -m755 %{buildroot}%{_datadir}/%{name}/tools
 %fdupes %{buildroot}/%{_datadir}
 
 %check
-#gotest github.com/grafana/grafana/pkg...
+./grafana server -v
+./grafana cli -v
 
 %pre
 %service_add_pre %{name}-server.service
