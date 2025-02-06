@@ -56,4 +56,21 @@
     <comment></comment>
     <requestid>1218375</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1a7cc471307b54e99a302cc75e1e9d9c</srcmd5>
+    <version>0.12.1</version>
+    <time>1738875930</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.12.1
+  * A bunch of CMake fixes by @graebm in (#379)
+- from version 0.12.0
+  * chore: Modified bug issue template to add checkbox to
+    report potential regression. by @ashishdhingra in (#373)
+  * MQTT5 options logging conformity by @sbSteveK in (#377)
+  * Switch CI to roles by @DmitriyMusatkin in (#378)
+  * Add topic argument to publish callback in request-response
+    stream client by @sfod in (#380)
+- Drop acm_fix-cmake-modules-path.patch, fixed upstream</comment>
+    <requestid>1243475</requestid>
+  </revision>
 </revisionlist>

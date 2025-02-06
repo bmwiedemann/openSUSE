@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-mqtt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %global library_version 1_0_0
 Name:           aws-c-mqtt
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        AWS C99 implementation of the MQTT 3.1.1 specification
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-mqtt
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         acm_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
