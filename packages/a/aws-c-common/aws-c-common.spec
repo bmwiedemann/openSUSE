@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-common
-Version:        0.10.8
+Version:        0.11.0
 Release:        0
 Summary:        Core C99 package for AWS SDK for C
 License:        Apache-2.0
@@ -72,12 +72,6 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 
 %install
 %cmake_install
-
-# Move cmake files to correct installation path
-mkdir -p %{buildroot}%{_libdir}/cmake/aws-c-common
-mv %{buildroot}%{_libdir}/aws-c-common/cmake/* %{buildroot}%{_libdir}/cmake/aws-c-common/
-mv %{buildroot}%{_libdir}/cmake/Aws* %{buildroot}%{_libdir}/cmake/aws-c-common/
-rm -rf %{buildroot}%{_libdir}/aws-c-common
 
 %ldconfig_scriptlets -n lib%{name}%{library_soversion}
 

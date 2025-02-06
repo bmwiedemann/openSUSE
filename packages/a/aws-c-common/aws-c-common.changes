@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:31:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.0
+  * A bunch of CMake fixes by @graebm in (#1178)
+- from version 0.10.9
+  * Fix heap overflow on uri parsing by @TingDaoK in (#1185)
+- Remove workaround to move cmake files to correct installation path
+
+-------------------------------------------------------------------
 Mon Jan 27 15:38:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.8
