@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  5 16:26:35 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update test/test_directory.c not to fail on big-endian machines.
+  * Add tiff-4.7.0-test_directory.patch
+    Fix memory leaks (fixes issue #652)
+  * Resolves bsc#1236834
+    fix build fail on s390x
+
+-------------------------------------------------------------------
 Mon Jan 13 10:51:52 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Fix versioning of tiff-docs under Recommends

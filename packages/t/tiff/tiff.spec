@@ -1,7 +1,7 @@
 #
 # spec file for package tiff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ Source2:        README.SUSE
 Source3:        baselibs.conf
 Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
+# PATCH-FIX-UPSTREAM tiff-4.7.0-test_directory.patch based on commit ea6f6bd7bccb bsc#1236834
+Patch1:         tiff-4.7.0-test_directory.patch
 %if %{with tiff_manpages}
 BuildRequires:  %{primary_python}-Sphinx
 %endif

@@ -1011,4 +1011,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment></comment>
     <requestid>1237432</requestid>
   </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>c99753aac2e0dba2894fbabb3233306e</srcmd5>
+    <version>4.7.0</version>
+    <time>1738875751</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243575</requestid>
+  </revision>
 </revisionlist>
