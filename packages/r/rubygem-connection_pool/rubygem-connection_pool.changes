@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:30:35 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.5.0
+------
+
+- Reap idle connections [#187]
+```ruby
+idle_timeout = 60
+pool = ConnectionPool.new ...
+pool.reap(idle_timeout, &:close)
+```
+- `ConnectionPool#idle` returns the count of connections not in use [#187]
+
+
+-------------------------------------------------------------------
 Thu Nov  2 15:42:47 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 2.4.1

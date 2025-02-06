@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-connection_pool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 #
 
 Name:           rubygem-connection_pool
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 %define mod_name connection_pool
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/mperham/connection_pool
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/mperham/connection_pool
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Generic connection pool for Ruby
