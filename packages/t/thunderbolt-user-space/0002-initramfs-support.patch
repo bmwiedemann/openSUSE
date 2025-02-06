@@ -87,8 +87,8 @@ Index: thunderbolt-software-user-space-0.9.3/dracut-module/module-setup.sh
 +    inst_binary /usr/bin/grep
 +    inst_binary /usr/bin/logger
 +    # end of dependencies
-+    inst_script /lib/udev/tbtacl
-+    inst_rules /lib/udev/rules.d/60-tbtacl.rules
++    inst_script /usr/lib/udev/tbtacl
++    inst_rules /usr/lib/udev/rules.d/60-tbtacl.rules
 +	# Install auth data
 +    for auth_file in $(find "$_tbt_auth_data" -type f)
 +    do :

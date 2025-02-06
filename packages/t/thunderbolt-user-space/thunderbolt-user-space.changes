@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:52:00 UTC 2025 - Frederik Möllers <frederik@die-sinlosen.de>
+
+- Fix paths for tbtacl and udev rules in the initramfs support script (Fixes boo#1229107)
+
+-------------------------------------------------------------------
 Mon Feb 26 14:44:07 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
