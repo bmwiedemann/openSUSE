@@ -74,7 +74,8 @@ This library simplifies using Google’s various server-to-server authentication
 
 %check
 # don't test deprecated oauth2client utilities if we don't have it anymore
-%pytest --ignore tests/test__oauth2client.py
+# deprecated OpenSSL.crypto started dropping functionality: https://github.com/googleapis/google-auth-library-python/issues/1665
+%pytest --ignore tests/test__oauth2client.py -k "not (TestDecryptPrivateKey and test_success)"
 
 %files %{python_files}
 %license LICENSE

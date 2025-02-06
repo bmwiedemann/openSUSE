@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:24:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip test broken with new pyOpenSSL
+  * as pyOpenSSL should not be used anymore and continues deprecating 
+    functionality, this library should really be migrated to cryptography,
+    otherwise we are facing serious problems in the future
+  * https://github.com/googleapis/google-auth-library-python/issues/1665
+
+-------------------------------------------------------------------
 Thu Jan 30 13:30:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.38.0
