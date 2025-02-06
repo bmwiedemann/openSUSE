@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:44:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.3
+  * Switch CI to use roles by @DmitriyMusatkin in (#100)
+  * A bunch of CMake fixes by @graebm in (#101)
+- Drop ac_fix-cmake-modules-path.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Nov 21 11:06:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.2

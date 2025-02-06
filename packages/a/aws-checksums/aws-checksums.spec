@@ -19,15 +19,14 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-checksums
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-checksums
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         ac_fix-cmake-modules-path.patch
-Patch1:         ac_re-add-so-version.patch
+Patch0:         ac_re-add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
