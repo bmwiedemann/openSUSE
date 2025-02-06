@@ -42,7 +42,7 @@ An attempt to create Hare bindings for libnotify.
 %autosetup
 
 %build
-make
+%make_build
 
 %install
 # Hare does not have a way to get the envs so you have to

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  6 07:49:52 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of %make_build macro
+
+-------------------------------------------------------------------
 Mon Jan 20 13:55:18 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Don't link as PIE
