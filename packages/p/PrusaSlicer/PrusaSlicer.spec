@@ -35,6 +35,10 @@ Patch11:        PrusaSlicer-2.6.0-octoprint-name-fix.patch
 Patch12:        PrusaSlicer-2.9.0-pr13896-static-libs.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch gh#prusa3d/PrusaSlicer#13885
 Patch13:        PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr14010-fix-curl.patch gh#prusa3d/PrusaSlicer#14010
+Patch14:        PrusaSlicer-2.9.0-pr14010-fix-curl.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13081-cgal6.0.patch gh#prusa3d/PrusaSlicer#13081
+Patch15:        PrusaSlicer-2.9.0-pr13081-cgal6.0.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -106,8 +110,6 @@ sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.
 rm resources/udev/90-3dconnexion.rules
 # adjust the qhull version requirement
 sed -i "s|find_package(Qhull 7.2 REQUIRED)|find_package(Qhull 8.0.2 REQUIRED)|" src/CMakeLists.txt
-# fix qhull link with static lib issue
-sed -i 's#INTERFACE Qhull::qhullcpp#INTERFACE -lqhullcpp#' src/CMakeLists.txt
 # Disable slic3r_jobs_tests.cpp as the test fails sometimes
 sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
 

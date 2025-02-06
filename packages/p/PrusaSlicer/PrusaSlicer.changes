@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb  6 10:50:53 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building with CGAL 6.0+
+- Added PrusaSlicer-2.9.0-pr13081-cgal6.0.patch
+  gh#prusa3d/PrusaSlicer#13081
+
+-------------------------------------------------------------------
+Tue Jan 21 11:00:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fixed printables.com integration
+- Added PrusaSlicer-2.9.0-pr14010-fix-curl.patch
+  gh#prusa3d/PrusaSlicer#14010
+
+-------------------------------------------------------------------
+Wed Jan  8 08:18:03 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Remove obsolete qhull linking workaround
+
+-------------------------------------------------------------------
 Fri Dec 20 18:27:35 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.9.0

@@ -1,0 +1,40 @@
+From cdc3db58f9002778a0ca74517865527f50ade4c3 Mon Sep 17 00:00:00 2001
+From: Adam Dinwoodie <adam@dinwoodie.org>
+Date: Sat, 18 Jan 2025 15:28:30 +0000
+Subject: [PATCH] Handle libcurl v8+
+
+The tests for curl versions in Http.cpp are intended to check if libcurl
+is at least a given version, but they don't account for the fact that
+the minor version will reset when the major version increments.
+
+Fix this by testing LIBCURL_VERSION_NUM, which encodes the full version
+as a single three-byte number, with bytes corresponding to the major,
+minor and patch numbers.
+
+Fixes #14009
+---
+ src/slic3r/Utils/Http.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/slic3r/Utils/Http.cpp b/src/slic3r/Utils/Http.cpp
+index 5b1ddfc7ec..de2785bc78 100644
+--- a/src/slic3r/Utils/Http.cpp
++++ b/src/slic3r/Utils/Http.cpp
+@@ -200,7 +200,7 @@ bool Http::priv::ca_file_supported(::CURL *curl)
+ 
+ 	if (curl == nullptr) { return res; }
+ 
+-#if LIBCURL_VERSION_MAJOR >= 7 && LIBCURL_VERSION_MINOR >= 48
++#if LIBCURL_VERSION_NUM >= 0x073000 // equivalent to v7.48 or greater
+ 	::curl_tlssessioninfo *tls;
+ 	if (::curl_easy_getinfo(curl, CURLINFO_TLS_SSL_PTR, &tls) == CURLE_OK) {
+ 		if (tls->backend == CURLSSLBACKEND_SCHANNEL || tls->backend == CURLSSLBACKEND_DARWINSSL) {
+@@ -364,7 +364,7 @@ void Http::priv::http_perform(const HttpRetryOpt& retry_opts)
+ 	::curl_easy_setopt(curl, CURLOPT_READFUNCTION, form_file_read_cb);
+ 
+ 	::curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
+-#if LIBCURL_VERSION_MAJOR >= 7 && LIBCURL_VERSION_MINOR >= 32
++#if LIBCURL_VERSION_NUM >= 0x072000 // equivalent to v7.32 or higher
+ 	::curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, xfercb);
+ 	::curl_easy_setopt(curl, CURLOPT_XFERINFODATA, static_cast<void*>(this));
+ #ifndef _WIN32
