@@ -1,7 +1,7 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011-2024 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -84,6 +84,9 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 
 # Mesa: new cachedir in Mesa 24.2.2 (merged upstream 2024-09-30 https://gitlab.com/apparmor/apparmor/-/merge_requests/1333)
 Patch10:        mesa-cachedir.diff
+
+# add python 3.13 fixes/workarounds
+Patch11:        python313.patch
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -353,6 +356,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 7
 %endif
 %patch -p1 -P 10
+%patch -p1 -P 11
 
 %build
 export SUSE_ASNEEDED=0

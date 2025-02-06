@@ -1,0 +1,50 @@
+From https://gitlab.com/apparmor/apparmor/-/merge_requests/1439/diffs?commit_id=434e34bb510b4cab04e64cd5b21d635c6be8c8ea
+
+diff --git a/utils/apparmor/fail.py b/utils/apparmor/fail.py
+index ece6efc43409fcfbfd8470985fb46c70f385796d..a71ceb66a2326789561c33f1ef0abcd7bc58e966 100644
+--- a/utils/apparmor/fail.py
++++ b/utils/apparmor/fail.py
+@@ -8,7 +8,11 @@
+ #
+ # ------------------------------------------------------------------
+ 
+-import cgitb
++try:
++    import cgitb
++except ImportError:
++    cgitb = None
++    pass
+ import sys
+ import traceback
+ from tempfile import NamedTemporaryFile
+@@ -32,20 +36,21 @@ def handle_exception(*exc_info):
+         print('', file=sys.stderr)
+         error(ex.value)
+     else:
+-        with NamedTemporaryFile('w', prefix='apparmor-bugreport-', suffix='.txt', delete=False) as file:
+-            cgitb_hook = cgitb.Hook(display=1, file=file, format='text', context=10)
+-            cgitb_hook.handle(exc_info)
+-
+-            file.write('Please consider reporting a bug at https://gitlab.com/apparmor/apparmor/-/issues\n')
+-            file.write('and attach this file.\n')
++        if cgitb:
++            with NamedTemporaryFile('w', prefix='apparmor-bugreport-', suffix='.txt', delete=False) as file:
++                cgitb_hook = cgitb.Hook(display=1, file=file, format='text', context=10)
++                cgitb_hook.handle(exc_info)
++                file.write('Please consider reporting a bug at https://gitlab.com/apparmor/apparmor/-/issues\n')
++                file.write('and attach this file.\n')
+ 
+         print(''.join(traceback.format_exception(*exc_info)), file=sys.stderr)
+-        print('', file=sys.stderr)
+         print('An unexpected error occurred!', file=sys.stderr)
+         print('', file=sys.stderr)
+-        print('For details, see %s' % file.name, file=sys.stderr)
++        if cgitb:
++            print('For details, see %s' % file.name, file=sys.stderr)
+         print('Please consider reporting a bug at https://gitlab.com/apparmor/apparmor/-/issues', file=sys.stderr)
+-        print('and attach this file.', file=sys.stderr)
++        if cgitb:
++            print('and attach this file.', file=sys.stderr)
+ 
+ 
+ def enable_aa_exception_handler():

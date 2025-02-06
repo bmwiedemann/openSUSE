@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:40:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add python313.patch to fix build with python 3.13
+
+-------------------------------------------------------------------
 Tue Oct  1 20:11:06 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - add mesa-cachedir.diff: new cachedir in Mesa 24.2.2
@@ -1573,7 +1578,7 @@ Sat Oct 18 09:43:19 UTC 2014 - opensuse@cboltz.de
   - change aa-mergeprof to the final commandline syntax
   - lots of bugfixes in the aa-* tools (bnc#900163, lp#1328707 and several
     bugs without a formal bugreport)
-  - small additions to gnome, freedesktop.org, ubuntu-browsers.d/java 
+  - small additions to gnome, freedesktop.org, ubuntu-browsers.d/java
     and user-mail abstractions
   - fix mod_apparmor to not break basic auth
   - update perl modules to support signal, unix and ptrace rules (bnc#900013)
@@ -1603,7 +1608,7 @@ Sun Oct  5 18:53:43 UTC 2014 - opensuse@cboltz.de
 - update to AppArmor 2.8.97 (aka 2.9 beta3 aka r2721)
   - several bugfixes in python and C tools
   - rename "__unused" to "unused" in apparmor_parser to fix compilation
-    on openSUSE <= 13.1 x86_64 (bnc#895495) 
+    on openSUSE <= 13.1 x86_64 (bnc#895495)
   - usr.lib.dovecot.auth profile: allow access to auth-token-secret.dat
   - various small profile improvements
   - update and add several testcases
@@ -1656,7 +1661,7 @@ Fri Sep  5 12:34:56 UTC 2014 - opensuse@cboltz.de
   - apparmor-2.8.2-nm-dnsmasq-config.patch
 - add %bcond_with perl and disable the perl subpackage temporarily (the perl
   modules will be back in beta2)
-- drop the apparmorapplet-gnome, apparmor-dbus and profile-editor subpackages 
+- drop the apparmorapplet-gnome, apparmor-dbus and profile-editor subpackages
   (they were disabled since a long time, and upstream no longer ships their code)
   and the apparmor-profile-editor.desktop and apparmor-profile-editor.png files
 - drop apparmor-utils-subdomain-compat patch (was only included for <= 12.1)
@@ -1750,7 +1755,7 @@ Mon Feb 17 11:40:36 UTC 2014 - opensuse@cboltz.de
   - fix some cache clearing bugs in apparmor_parser
   - various fixes in mod_apparmor
   - several profile updates, most of them were already included as patches
-    (except abstractions/winbind (bnc#863226), abstractions/fonts and 
+    (except abstractions/winbind (bnc#863226), abstractions/fonts and
     abstractions/p11-kit)
   - see http://wiki.apparmor.net/index.php/ReleaseNotes_2_8_3 for all details
 - update partially upstreamed apparmor-2.8.2-nm-dnsmasq-config.patch
@@ -1780,7 +1785,7 @@ Sun Jan 26 14:46:43 UTC 2014 - opensuse@cboltz.de
   and supplemental config directory (by develop7)
 - update apparmor-profiles-dovecot-bnc851984.diff:
   - do not add access to @{DOVECOT_MAILSTORE} - not required by the main binary
-  - add abstractions/mysql 
+  - add abstractions/mysql
   - allow execution of some more /usr/lib/dovecot/* binaries
   - better restrict access to /var/spool/postfix/private/
 - update usr.lib.dovecot.auth to allow to read mysql config files
@@ -1791,15 +1796,15 @@ Sun Jan 26 14:46:43 UTC 2014 - opensuse@cboltz.de
 Sun Jan 19 14:51:33 UTC 2014 - opensuse@cboltz.de
 
 - add Recommends: net-tools to apparmor-utils (needed by aa-unconfined)
-- update usr.lib.dovecot.lmtp (add /proc/*/mounts, /tmp/dovecot.lmtp.*, 
+- update usr.lib.dovecot.lmtp (add /proc/*/mounts, /tmp/dovecot.lmtp.*,
   /{var/,}run/dovecot/mounts, deny capability block_suspend)
 
 -------------------------------------------------------------------
 Fri Jan 17 16:29:54 UTC 2014 - develop7@develop7.info
 
-- add apparmor-2.8.2-nm-dnsmasq-config.patch - allow dnsmasq read config 
-  created by recent NetworkManager (see 
-  http://cgit.freedesktop.org/NetworkManager/NetworkManager/commit/?id=d82669d3fdaa7ec70ef1b64941c101ac810c394b 
+- add apparmor-2.8.2-nm-dnsmasq-config.patch - allow dnsmasq read config
+  created by recent NetworkManager (see
+  http://cgit.freedesktop.org/NetworkManager/NetworkManager/commit/?id=d82669d3fdaa7ec70ef1b64941c101ac810c394b
   for update details)
 
 -------------------------------------------------------------------
@@ -1819,15 +1824,15 @@ Sat Jan  4 12:04:25 UTC 2014 - opensuse@cboltz.de
   the systemd wrapper, which removes AppArmor protection from running
   processes. Fixed by using a custom script instead (bnc#853019)
   NOTE: The %postun from the previously installed apparmor-parser package
-  will remove AppArmor protection from running processes a last time. 
-  Run aa-status to get a list of processes you need to restart, or reboot 
+  will remove AppArmor protection from running processes a last time.
+  Run aa-status to get a list of processes you need to restart, or reboot
   your computer.
 - reload profiles in %post of the apparmor-profiles package
 
 -------------------------------------------------------------------
 Mon Nov 25 23:44:40 UTC 2013 - opensuse@cboltz.de
 
-- add apparmor-abstractions-ssl_certs.diff to allow access to 
+- add apparmor-abstractions-ssl_certs.diff to allow access to
   certificates in /var/lib/ca-certificates/ (bnc#852018)
 
 -------------------------------------------------------------------
@@ -1857,7 +1862,7 @@ Sun Oct 20 11:59:28 UTC 2013 - opensuse@cboltz.de
 -------------------------------------------------------------------
 Tue Oct 15 20:10:49 UTC 2013 - opensuse@cboltz.de
 
-- add apparmor-profiles-samba4.diff - various profile additions for 
+- add apparmor-profiles-samba4.diff - various profile additions for
   samba 4.x (bnc#845867, bnc#846054)
 - update usr.sbin.winbindd for samba 4.x (bnc#845867, bnc#846054)
 
@@ -1869,7 +1874,7 @@ Sun Sep 29 15:00:20 UTC 2013 - opensuse@cboltz.de
 -------------------------------------------------------------------
 Fri Sep 20 11:28:20 UTC 2013 - opensuse@cboltz.de
 
-- add apparmor-fix-url-in-manpages-r2093.diff: fix URL in manpages 
+- add apparmor-fix-url-in-manpages-r2093.diff: fix URL in manpages
 - add apparmor-unconfined-lang-r2094.diff: fix aa-unconfined to work
   in all languages
 
@@ -1923,13 +1928,13 @@ Fri Aug 16 18:26:20 UTC 2013 - opensuse@cboltz.de
 -------------------------------------------------------------------
 Thu Aug 15 18:59:41 UTC 2013 - opensuse@cboltz.de
 
-- swig for python3 is broken on openSUSE 12.2 - build python-apparmor 
+- swig for python3 is broken on openSUSE 12.2 - build python-apparmor
   (for python2) instead on 12.2
 
 -------------------------------------------------------------------
 Thu Aug 15 00:01:46 UTC 2013 - opensuse@cboltz.de
 
-- add python3-apparmor subpackage (currently py2 OR py3 package can be 
+- add python3-apparmor subpackage (currently py2 OR py3 package can be
   build, but not both at the same time)
 - add upstream apparmor-python3-r2052.diff to fix various python3 issues
 
@@ -1978,7 +1983,7 @@ Thu Jan 10 10:57:40 UTC 2013 - opensuse@cboltz.de
   Bugfix release, http://wiki.apparmor.net/index.php/ReleaseNotes_2_8_1
   Most important changes are:
   - add various missing parts to profiles and abstractions
-  - fix a possible x conflict with hats or child profiles in 
+  - fix a possible x conflict with hats or child profiles in
     apparmor_parser
   - fix and speedup stdin handling in aa-decode
   - various other bugfixes
@@ -2070,7 +2075,7 @@ Fri Apr  6 13:38:11 CEST 2012 - mszeredi@suse.cz
 -------------------------------------------------------------------
 Thu Feb  9 19:01:07 UTC 2012 - opensuse@cboltz.de
 
-- add 0001-fix-for-lp929531.patch to allow reading 
+- add 0001-fix-for-lp929531.patch to allow reading
   /sys/devices/system/cpu/online in abstractions/base (lp#929531)
 
 -------------------------------------------------------------------
@@ -2139,7 +2144,7 @@ Sat Nov 26 21:52:31 UTC 2011 - opensuse@cboltz.de
 - package libapparmor.so and libimmunix.so only in libapparmor-devel,
   not in libapparmor1
 - make Provides for perl-libapparmor versioned to avoid self-Obsoletes
-- move libapparmor.a and libimmunix.a from libapparmor1 to 
+- move libapparmor.a and libimmunix.a from libapparmor1 to
   libapparmor-devel package
 
 -------------------------------------------------------------------
@@ -2161,7 +2166,7 @@ Thu Nov 10 20:16:24 UTC 2011 - opensuse@cboltz.de
 Tue Nov  1 17:39:29 UTC 2011 - opensuse@cboltz.de
 
 - make abstractions/winbind working on 64bit systems
-- allow loading the libraries for samba "vfs objects" also on 32bit 
+- allow loading the libraries for samba "vfs objects" also on 32bit
   systems (bnc#725967)
 
 -------------------------------------------------------------------
@@ -2213,7 +2218,7 @@ Fri Sep 16 15:25:19 UTC 2011 - opensuse@cboltz.de
 -------------------------------------------------------------------
 Tue Sep 13 18:47:36 UTC 2011 - opensuse@cboltz.de
 
-- update to AppArmor 2.7.0 beta1, for details see 
+- update to AppArmor 2.7.0 beta1, for details see
   http://wiki.apparmor.net/index.php/ReleaseNotes_2_7
 - removed lots of patches I pushed upstream
 - disabled apparmor-2.5.1-unified-build (patch to use automake,
@@ -2228,7 +2233,7 @@ Wed Sep  7 10:35:12 MDT 2011 - jfehlig@suse.com
 
 - Update patch apparmor-profiles-usr.sbin.dnsmasq to include
   /var/lib/libvirt/dnsmasq/*.leases (bnc#694197).
-  
+
 -------------------------------------------------------------------
 Mon Aug 22 11:54:21 UTC 2011 - opensuse@cboltz.de
 
@@ -2257,9 +2262,9 @@ Tue Aug  2 09:19:45 UTC 2011 - fcrozat@suse.com
 
 -------------------------------------------------------------------
 Sun Jul 17 20:04:18 UTC 2011 - andrea.turrini@gmail.com
- 
+
 - Fixed typos in descriptions and summaries of apparmor.spec
- 
+
 -------------------------------------------------------------------
 Fri Jun 24 16:02:21 CEST 2011 - jeffm@suse.de
 

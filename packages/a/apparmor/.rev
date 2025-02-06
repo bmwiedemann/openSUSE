@@ -2901,4 +2901,34 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
     for the full release notes (forwarded request 1204990 from cboltz)</comment>
     <requestid>1204991</requestid>
   </revision>
+  <revision rev="217" vrev="2">
+    <srcmd5>1d16ef2ac16bd8fe3168b35179bb6199</srcmd5>
+    <version>4.0.3</version>
+    <time>1738875739</time>
+    <user>anag+factory</user>
+    <comment>- add python313.patch to fix build with python 3.13
+
+  - small additions to gnome, freedesktop.org, ubuntu-browsers.d/java
+    on openSUSE &lt;= 13.1 x86_64 (bnc#895495)
+- drop the apparmorapplet-gnome, apparmor-dbus and profile-editor subpackages
+    (except abstractions/winbind (bnc#863226), abstractions/fonts and
+  - add abstractions/mysql
+- update usr.lib.dovecot.lmtp (add /proc/*/mounts, /tmp/dovecot.lmtp.*,
+- add apparmor-2.8.2-nm-dnsmasq-config.patch - allow dnsmasq read config
+  created by recent NetworkManager (see
+  http://cgit.freedesktop.org/NetworkManager/NetworkManager/commit/?id=d82669d3fdaa7ec70ef1b64941c101ac810c394b
+  will remove AppArmor protection from running processes a last time.
+  Run aa-status to get a list of processes you need to restart, or reboot
+- add apparmor-abstractions-ssl_certs.diff to allow access to
+- add apparmor-profiles-samba4.diff - various profile additions for
+- add apparmor-fix-url-in-manpages-r2093.diff: fix URL in manpages
+- swig for python3 is broken on openSUSE 12.2 - build python-apparmor
+- add python3-apparmor subpackage (currently py2 OR py3 package can be
+  - fix a possible x conflict with hats or child profiles in
+- add 0001-fix-for-lp929531.patch to allow reading
+- move libapparmor.a and libimmunix.a from libapparmor1 to
+- allow loading the libraries for samba &quot;vfs objects&quot; also on 32bit
+- update to AppArmor 2.7.0 beta1, for details see (forwarded request 1243410 from dirkmueller)</comment>
+    <requestid>1243514</requestid>
+  </revision>
 </revisionlist>
