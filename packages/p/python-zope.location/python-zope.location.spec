@@ -27,15 +27,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.location%{psuffix}
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://www.python.org/pypi/zope.location
-Source:         https://files.pythonhosted.org/packages/source/z/zope.location/zope.location-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/zopefoundation/zope.location/pull/14 Add tests for minimal dependencies.
-Patch:          minimal-dependencies.patch
+Source:         https://files.pythonhosted.org/packages/source/z/zope_location/zope_location-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.schema >= 4.2.2}
@@ -58,7 +56,7 @@ BuildRequires:  %{python_module zope.testrunner}
 In Zope3, location are special objects that has a structural location.
 
 %prep
-%autosetup -p1 -n zope.location-%{version}
+%autosetup -p1 -n zope_location-%{version}
 rm -rf src/zope.location.egg-info
 
 %build

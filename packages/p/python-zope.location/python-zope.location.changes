@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:01:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.1
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7, 3.8.
+  * Add tests for minimal dependencies.
+  * Add ``copy`` extra to include the ``zope.copy`` dependency.
+- Adjust upstream source name in spec file
+- Drop minimal-dependencies.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Jan 30 12:35:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add minimal-dependencies.patch fixing the issue with test.
