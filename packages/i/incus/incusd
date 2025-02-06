@@ -16,7 +16,7 @@
 set -Eeuo pipefail
 
 export INCUS_SOCKET=/run/incus/unix.socket
-export INCUS_EDK2_PATH=/usr/share/incus/ovmf
+export INCUS_EDK2_PATH=/usr/share/lxd/ovmf
 export PATH="$PATH:@SUSE_LIBEXEC@/incus"
 # Should we use INCUS_AGENT_PATH?
 
