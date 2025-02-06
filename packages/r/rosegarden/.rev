@@ -476,4 +476,12 @@ Only recommend jack to allow pipewire jack to be installed.
     <comment>fix patch names</comment>
     <requestid>1230782</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>deec7588340af2b2be53aa6023c35a96</srcmd5>
+    <version>24.12.1</version>
+    <time>1738876139</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243596</requestid>
+  </revision>
 </revisionlist>

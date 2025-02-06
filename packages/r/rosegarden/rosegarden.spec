@@ -1,7 +1,7 @@
 #
 # spec file for package rosegarden
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define vers    24.12
 
 Name:           rosegarden
-Version:        24.12
+Version:        24.12.1
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
