@@ -31,4 +31,12 @@ See more on the repo: https://github.com/gnif/vendor-reset</comment>
   * [amd] add support for AMD Instinct MI100</comment>
     <requestid>1171919</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f4e6fc5479f412c54ab9437645c8cb07</srcmd5>
+    <version>0.1.0+084881c</version>
+    <time>1738875985</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243409</requestid>
+  </revision>
 </revisionlist>

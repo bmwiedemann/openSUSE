@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 20 04:27:59 UTC 2025 - munix9@googlemail.com
+
+- Add fix-kernel-6_12-include.patch: Fix build on kernel 6.12+
+- Add vendor-reset-preamble
+- Build module for longterm kernel on Factory/TW
+
+-------------------------------------------------------------------
 Sat May 04 04:04:04 UTC 2024 - olaf@aepfle.de
 
 - Update to version 0.1.0+084881c:

@@ -1,7 +1,7 @@
 #
 # spec file for package vendor-reset
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%ifarch x86_64
+%if 0%{?suse_version} > 1600
+%define kmp_longterm 1
+%endif
+%endif
+
 Name:           vendor-reset
 Version:        0.1.0+084881c
 Release:        0
@@ -23,7 +29,9 @@ Summary:        Kernel module for resetting devices used by VFIO
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/gnif/vendor-reset
-Source:         %name-%version.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-preamble
+Patch0:         fix-kernel-6_12-include.patch
 ExclusiveArch:  %{ix86} x86_64
 
 %description
@@ -37,8 +45,11 @@ as a quirk (ie AMD Vega 10).
 Summary:        Kernel module for resetting devices used by VFIO
 Group:          System/Kernel
 BuildRequires:  %{kernel_module_package_buildreqs}
+%if 0%{?kmp_longterm}
+BuildRequires:  kernel-syms-longterm
+%endif
 Conflicts:      vendor-reset-any-kmp
-%kernel_module_package
+%kernel_module_package -p %{SOURCE1}
 
 %description kmp
 A kernel module that is capable of resetting hardware devices into a state
@@ -56,17 +67,17 @@ for flavor in %{flavors_to_build}; do
 done
 
 %install
-export INSTALL_MOD_PATH=%buildroot
+export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
 for flavor in %{flavors_to_build}; do
     make -C %{kernel_source $flavor} %{?linux_make_arch} modules_install M=$PWD
 done
-install -dm755 %buildroot%_modulesloaddir
-echo "vendor-reset" >> %buildroot%_modulesloaddir/%name.conf
+install -dm755 %{buildroot}%{_modulesloaddir}
+echo "vendor-reset" >> %{buildroot}%{_modulesloaddir}/%{name}.conf
 
 %files kmp
 %license LICENSE
 %doc README.md
-%_modulesloaddir
+%{_modulesloaddir}
 
 %changelog
