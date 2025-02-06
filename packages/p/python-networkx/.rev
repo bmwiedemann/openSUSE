@@ -416,4 +416,41 @@
     <comment></comment>
     <requestid>1170766</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>914ece42b713da19e253d5702735e197</srcmd5>
+    <version>3.4.2</version>
+    <time>1738876076</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.4.2:
+  * API Changes
+    + Expires the forest_str deprecation.
+    + [ENH, BUG]: added colliders and v_structures and deprecated
+      compute_v_structures in dag.py.
+    + Expires the random_tree deprecation.
+    + Expire deprecation for strongly_connected_components_recursive.
+    + Expire deprecated sort_neighbors param in generic_bfs_edges.
+    + Rm deprecated normalized param from s_metric.
+    + Expire deprecated nx.join in favor of join_trees.
+    + Remove depercated Edmonds class for 3.4.
+    + Remove deprecated MultiDiGraph_EdgeKey for 3.4.
+    + Add edges keyword/deprecate link keyword arguments in JSON input-output.
+    + Revert breaking change to node_link_* link defaults.
+  * Enhancements
+    + Add a nodelist feature to from_numpy_array.
+    + Prioritize edgelist representations in to_networkx_graph.
+    + Adds initial debug logging calls to _dispatchable.
+    + add: nodes attribute is modifiable.
+    + Enable config to be used as context manager.
+    + Added code to handle multi-graph in mst.
+    + Enable caching by default.
+    + Fix weakly_connected_components() performance on graph view.
+    + avoid iteration and use boolean indexing.
+    + Hide edges with a weight of None in simple_paths.
+    + Improved running time for harmonic centrality.
+    + Add remove attribute functions.
+    + Log &quot;can/should run&quot; and caching in dispatch machinery.
+    + Individualize drawing attributes.
+    + Allow dispatch machinery to fall back to networkx.</comment>
+    <requestid>1243534</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-networkx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-networkx
-Version:        3.3
+Version:        3.4.2
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ Requires:       python-numpy >= 1.19
 Requires:       python-pandas >= 1.3
 Requires:       python-scipy >= 1.8
 Recommends:     python-PyYAML
-Recommends:     python-pydot >= 1.4.2
+Recommends:     python-pydot >= 3.0.1
 Recommends:     python-pygraphviz
 Recommends:     python-pyparsing
 BuildArch:      noarch
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module lxml >= 4.6}
 BuildRequires:  %{python_module matplotlib >= 3.4}
 BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module pandas >= 1.3}
-BuildRequires:  %{python_module pydot >= 1.4.2}
+BuildRequires:  %{python_module pydot >= 3.0.1}
 BuildRequires:  %{python_module pygraphviz >= 1.9}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest-xdist}
@@ -104,6 +104,6 @@ rm -v networkx/drawing/tests/test_pydot.py
 %license LICENSE.txt
 %doc README.rst CONTRIBUTING.rst
 %{python_sitelib}/networkx/
-%{python_sitelib}/networkx-%{version}*info
+%{python_sitelib}/networkx-%{version}.dist-info
 
 %changelog
