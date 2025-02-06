@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-kamal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-kamal
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 %define mod_name kamal
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://github.com/basecamp/kamal
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
