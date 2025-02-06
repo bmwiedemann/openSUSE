@@ -1,7 +1,7 @@
 #
 # spec file for package gap-browse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Source:         https://www.math.rwth-aachen.de/homes/Browse/Browse-%version.tar
 BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel >= 4.12
 BuildRequires:  gmp-devel
-BuildRequires:  ncurses5-devel
+BuildRequires:  ncurses-devel
 Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.6
 Suggests:       gap-atlasrep >= 2.0
