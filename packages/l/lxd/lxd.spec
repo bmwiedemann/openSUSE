@@ -22,12 +22,8 @@
 %define _buildshell /bin/bash
 %define import_path github.com/canonical/lxd
 
-%define lxd_datadir %{_datadir}/lxd
-%define lxd_ovmfdir %{lxd_datadir}/ovmf
-
-# We need OVMF in order to support VMs with LXD. At the moment this means we
-# can only support it on x86_64.
-%ifarch x86_64
+# We need OVMF in order to support VMs with LXD.
+%ifarch x86_64 aarch64
 %define arch_vm_support 1
 %else
 %define arch_vm_support 0
@@ -84,8 +80,12 @@ Requires:       tar
 Requires:       xz
 %if 0%{arch_vm_support} != 0
 # Needed for VM support.
-Requires:       qemu-ovmf-x86_64
-BuildRequires:  qemu-ovmf-x86_64
+%ifarch x86_64
+Requires:       lxd-ovmf-setup-x86_64
+%endif
+%ifarch aarch64
+Requires:       lxd-ovmf-setup-aarch64
+%endif
 # QEMU spice became a separate package for QEMU 5.2, which is not in Leap 15.2.
 # But it exists in Tumbleweed so only require this in Tumbleweed.
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150300
@@ -361,16 +361,6 @@ install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 # sysusers.d
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 
-%if 0%{arch_vm_support} != 0
-# In order for VM support in LXD to function, you need to have OVMF configured
-# in the way it expects. In particular, LXD depends on specific filenames for
-# the firmware files so we create fake ones with symlinks.
-mkdir -p %{buildroot}%{lxd_ovmfdir}
-ln -s %{_datarootdir}/qemu/ovmf-x86_64-code.bin %{buildroot}%{lxd_ovmfdir}/OVMF_CODE.fd
-ln -s %{_datarootdir}/qemu/ovmf-x86_64-vars.bin %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.fd
-ln -s OVMF_VARS.fd %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.ms.fd
-%endif
-
 %fdupes %{buildroot}
 
 %pre -f %{name}.pre
@@ -424,10 +414,6 @@ grep -q '^root:' /etc/subgid || \
 %dir /etc/lxd
 %config(noreplace) /etc/lxd/config.yml
 %dir /etc/lxd/servercerts
-
-%if 0%{arch_vm_support} != 0
-%{lxd_datadir}
-%endif
 
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service

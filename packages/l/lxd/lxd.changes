@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 25 20:17:42 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Migrate to single LXD/Incus OVMF handling (lxd-ovmf-setup):
+  * Allow aarch64 arch_vm_support
+  * Remove OVMF symlinks
+  * Require the new lxd-ovmf-setup packages
+
+-------------------------------------------------------------------
 Tue Jun 11 11:27:33 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Change license to AGPL-3.0-only AND Apache-2.0:
