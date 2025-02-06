@@ -69,4 +69,12 @@
 - Add patch support-new-scipy.patch, support new scipy changes.</comment>
     <requestid>1208244</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b70e8eda2ed6b11cb6a77434c45c99aa</srcmd5>
+    <version>0.11.1</version>
+    <time>1738876233</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243925</requestid>
+  </revision>
 </revisionlist>

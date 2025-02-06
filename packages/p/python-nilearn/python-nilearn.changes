@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb  6 12:28:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.11.1
+  * Support for Python 3.8 has been dropped.
+  * We recommend upgrading to Python 3.11 or above.
+  * This version is the first one to support Python 3.13.
+  * This version includes a new “surface” API that allow to represent 
+    surface meshes and data.
+  * PolyMesh (and PolyData) can be used to instantiate mesh (and 
+    respectively data) objects with both hemisphere.
+  * SurfaceImage are objects that hold meshes and data for both hemispheres.
+  * Surface plotting functions have been adapted to work with SurfaceImage 
+    object.
+  * Remove the unused argument url from fetch_localizer_contrasts, 
+    fetch_localizer_calculation_task and fetch_localizer_button_task
+  * Remove the unused argument rank from the constructor of LikelihoodModelResults
+  * Remove the unused arguments upper_cutoff and exclude_zeros for 
+    compute_multi_background_mask
+  * The parameter tr for Repetition time will be replaced by t_r in the “HRF” 
+    functions in version 0.13.0.
+  * The parameter ax will be replaced by axes in plot_contrast_matrix and 
+    plot_design_matrix in release 0.13.0.
+  * For more changes see upstream changelog.
+- Drop support-new-scipy.patch, not needed anymore.
+- Add upstream patch sklearn-1.16.1.patch to fix tests
+
+-------------------------------------------------------------------
 Wed Oct 16 02:30:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.10.4:
