@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 05 21:31:41 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738778868.fe51f65:
+  * Remove unused module Test::MockModule from 01-test-needle
+  * Remove Test::Fatal dependency
+  * Modify connect_and_login() test to catch multiline carp warning
+  * Apply suggestions from code review
+  * Add unit tests for consoles/s3270.pm
+  * t: Use more simple prototyped Test::Exceptions functions
+
+-------------------------------------------------------------------
 Wed Feb 05 14:45:06 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1738752967.6623798:
