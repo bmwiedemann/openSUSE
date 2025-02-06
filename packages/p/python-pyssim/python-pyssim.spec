@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyssim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,31 @@
 #
 
 
-%global skip_python36 1
 Name:           python-pyssim
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Structured Similarity Image Metric (SSIM)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jterrace/pyssim
 Source:         https://files.pythonhosted.org/packages/source/p/pyssim/pyssim-%{version}.tar.gz
 Patch0:         Pillow-imports.patch
-# PATCH-FIX-UPSTREAM https://github.com/jterrace/pyssim/commit/db4296c12ca9c027eb9cd61b52195a78dfcc6711 Replace Image.ANTIALIAS with Image.LANCZOS
-Patch1:         pillow10.patch
+# PATCH-FIX-UPSTREAM Use PyWavelets rather than scipy.signal gh#jterrace/pyssim#49
+Patch1:         use-pywavelets.patch
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
+Requires:       python-PyWavelets
 Requires:       python-numpy
 Requires:       python-scipy
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyWavelets}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module scipy}
 # /SECTION
@@ -51,10 +53,10 @@ Module for computing Structured Similarity Image Metric (SSIM) in Python.
 %autosetup -p1 -n pyssim-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyssim
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -78,6 +80,6 @@ $python -m ssim --cw --width 128 --height 128 test-images/test3-orig.jpg test-im
 %doc README.md
 %python_alternative %{_bindir}/pyssim
 %{python_sitelib}/ssim
-%{python_sitelib}/pyssim-%{version}*-info
+%{python_sitelib}/pyssim-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb  6 03:38:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7:
+  * Drop Python 3.7 support.
+  * Add Python 3.12 support.
+  * Update support for newer versions of PIL/Pillow.
+- Drop patch pillow10.patch, included upstream.
+- Add patch use-pywavelets.patch:
+  * Use PyWavelets rather scipy.signal for CWT.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Oct  5 08:53:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.6

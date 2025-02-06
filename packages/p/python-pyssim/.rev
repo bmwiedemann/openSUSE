@@ -42,4 +42,19 @@
     <comment></comment>
     <requestid>1115888</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a5a90a898ef6d29046057b2f882145b4</srcmd5>
+    <version>0.7</version>
+    <time>1738876078</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7:
+  * Drop Python 3.7 support.
+  * Add Python 3.12 support.
+  * Update support for newer versions of PIL/Pillow.
+- Drop patch pillow10.patch, included upstream.
+- Add patch use-pywavelets.patch:
+  * Use PyWavelets rather scipy.signal for CWT.
+- Switch to pyproject macros.</comment>
+    <requestid>1243538</requestid>
+  </revision>
 </revisionlist>

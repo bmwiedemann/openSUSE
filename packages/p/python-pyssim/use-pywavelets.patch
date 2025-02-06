@@ -1,0 +1,52 @@
+From 64a58687f261eb397e9c22609b5d48497ef02762 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 6 Feb 2025 14:23:17 +1100
+Subject: [PATCH] Use PyWavelets for continuous wavelet transform
+
+scipy 1.15.0 has been released, and with it, signal.cwt has been
+removed[1]. The suggested recommendation is to use PyWavelets.
+
+1: https://docs.scipy.org/doc/scipy-1.12.0/reference/generated/scipy.signal.cwt.html
+---
+ requirements.txt | 1 +
+ setup.py         | 2 +-
+ ssim/ssimlib.py  | 6 +++---
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index bee0d6f..6ad4008 100644
+--- a/setup.py
++++ b/setup.py
+@@ -12,7 +12,7 @@
+     author_email='jterrace@gmail.com',
+     platforms=['any'],
+     license='MIT License',
+-    install_requires=['numpy', 'pillow', 'scipy'],
++    install_requires=['numpy', 'pillow', 'scipy', 'PyWavelets'],
+     url='https://github.com/jterrace/pyssim',
+     entry_points={
+         'console_scripts': [
+diff --git a/ssim/ssimlib.py b/ssim/ssimlib.py
+index b40a8d4..46bde93 100644
+--- a/ssim/ssimlib.py
++++ b/ssim/ssimlib.py
+@@ -7,7 +7,7 @@
+ import sys
+ 
+ import numpy as np
+-from scipy import signal
++import pywt
+ 
+ from ssim import compat
+ from ssim.compat import Image, ImageOps
+@@ -168,8 +168,8 @@ def cw_ssim_value(self, target, width=30):
+         sig2 = np.asarray(target.img_gray.getdata())
+ 
+         # Convolution
+-        cwtmatr1 = signal.cwt(sig1, signal.ricker, widths)
+-        cwtmatr2 = signal.cwt(sig2, signal.ricker, widths)
++        cwtmatr1, freqs1 = pywt.cwt(sig1, widths, 'mexh')
++        cwtmatr2, freqs2 = pywt.cwt(sig2, widths, 'mexh')
+ 
+         # Compute the first term
+         c1c2 = np.multiply(abs(cwtmatr1), abs(cwtmatr2))
