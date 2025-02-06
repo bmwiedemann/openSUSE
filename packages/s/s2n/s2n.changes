@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:32:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.11
+  * fix: add build specs to copyright check (#5025)
+  * chore: run more checks on pushes to main (#4963)
+  * feature: remove openssl-1.0.2-fips fips mode support (#5030)
+  * tests: make integV2 locally runnable (#5029)
+  * chore: improve the dashboard comment query (#5016)
+  * refactor(bin): remove references to FIPS_mode_set (#5026)
+  * ci: improve output of validate_start_codebuild_script (#5031)
+  * chore: remove unused test utils (#5005)
+  * ci: keep start_codebuild.sh up-to-date (#5023)
+  * ci: commit integrationv2 small batch spec (#5020)
+  * fix(bindings/bench): Prevent IO from going out of scope (#5007)
+  * chore: remove unused imports (#5017)
+  * fix: don't prefix empty string when interning (#5015)
+  * Migrate PQ Python code to TLS 1.3 (#4999)
+  * ci: config logging for integration tests (#4751)
+  * ci: add script to help launch stuck codebuild jobs (#5004)
+  * chore(s2n-tls-hyper): Publish s2n-tls-hyper (#5000)
+  * chore: add new team member (#5006)
+  * Migrate PQ Rust code to TLS 1.3 (#4998)
+  * ci: remove S2N_TEST_IN_FIPS_MODE (#4994)
+  * ci: remove openssl-1.0.2-fips builds (#4995)
+  * ci: correctly read environment variable from CodeBuild
+    configuration for scheduled fuzz test (#4990)
+  * fix: add coverage for all ticket formats (#4997)
+  * ci: fix regression test paths (#4996)
+  * ci: run fuzz tests in parallel and generate coverage report (#4960)
+  * chore: move hyper to a newer MSRV (#4983)
+  * chore: remove toidiu from teams.yml (#4985)
+  * feat(s2n-tls-hyper): Allow plain HTTP connections (#4978)
+  * chore(binding): release 0.3.9 (#4982)
+  * refactor(bindings/bench): make harness own IO (#4847)
+  * refactor(s2n-tls-hyper): Add HttpsConnector builder (#4976)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:19:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.10
