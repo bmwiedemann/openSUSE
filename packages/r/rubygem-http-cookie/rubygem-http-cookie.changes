@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:50:56 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 1.0.8 (2024-12-05)
+
+- `Cookie#expires=` accepts `DateTime` objects. (#52) @luke-hill @flavorjones
+
+
+-------------------------------------------------------------------
 Mon Nov  4 16:52:37 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 1.0.7 (2024-06-06)
