@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jan 30 01:28:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Add typing-extensions to Requires for 3.11 and 3.12.
+
+-------------------------------------------------------------------
+Wed Jan 29 15:05:24 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 25.0.0
+  * Backward-incompatible changes: -
+  * Deprecations: -
+  * Changes:
+    - Corrected type annotations on Context.set_alpn_select_callback,
+      Context.set_session_cache_mode, Context.set_options, Context.set_mode,
+      X509.subject_name_hash, and X509Store.load_locations.
+    - Deprecated APIs are now marked using warnings.deprecated. mypy will emit deprecation notices
+      for them when used with --enable-error-code deprecated.
+- Changes from 24.3.0
+  * Backward-incompatible changes:
+    - Removed the deprecated OpenSSL.crypto.CRL, OpenSSL.crypto.Revoked, OpenSSL.crypto.dump_crl,
+      and OpenSSL.crypto.load_crl. cryptography.x509's CRL functionality should be used instead.
+    - Removed the deprecated OpenSSL.crypto.sign and OpenSSL.crypto.verify.
+      cryptography.hazmat.primitives.asymmetric's signature APIs should be used instead.
+  * Deprecations:
+    - Deprecated OpenSSL.rand - callers should use os.urandom() instead.
+    - Deprecated add_extensions and get_extensions on OpenSSL.crypto.X509Req and OpenSSL.crypto.X509.
+      These should have been deprecated at the same time X509Extension was. Users should use pyca/cryptography's X.509 APIs instead.
+    - Deprecated OpenSSL.crypto.get_elliptic_curves and OpenSSL.crypto.get_elliptic_curve,
+      as well as passing the reult of them to OpenSSL.SSL.Context.set_tmp_ecdh,
+      users should instead pass curves from cryptography.
+    - Deprecated passing X509 objects to OpenSSL.SSL.Context.use_certificate, OpenSSL.SSL.Connection.use_certificate,
+      OpenSSL.SSL.Context.add_extra_chain_cert, and OpenSSL.SSL.Context.add_client_ca, users should instead
+      pass cryptography.x509.Certificate instances. This is in preparation for deprecating pyOpenSSL's X509 entirely.
+    - Deprecated passing PKey objects to OpenSSL.SSL.Context.use_privatekey and OpenSSL.SSL.Connection.use_privatekey,
+      users should instead pass cryptography priate key instances. This is in preparation for deprecating pyOpenSSL's PKey entirely.
+  * Changes:
+    - cryptography maximum version has been increased to 44.0.x.
+    - OpenSSL.SSL.Connection.get_certificate, OpenSSL.SSL.Connection.get_peer_certificate,
+      OpenSSL.SSL.Connection.get_peer_cert_chain, and OpenSSL.SSL.Connection.get_verified_chain
+      now take an as_cryptography keyword-argument. When True is passed then
+      cryptography.x509.Certificate are returned, instead of OpenSSL.crypto.X509.
+      In the future, passing False (the default) will be deprecated.
+- Rebase skip-networked-test.patch.
+
+-------------------------------------------------------------------
 Mon Jan 13 22:33:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build tests noarch: they refer to %__isa, which differs
