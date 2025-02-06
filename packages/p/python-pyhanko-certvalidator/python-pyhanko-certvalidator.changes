@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:26:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.26.5
+  * Future-proofing against an upcoming `asn1crypto`
+    that is already being shipped in some distro
+    packages.
+  * Address some timing issues in tests.
+- Drop 5dd5ff95b7b104667eb4f39367eb4f4c00fcedd5.patch, merged upstream
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Nov 13 06:13:51 UTC 2024 - Bernhard M. Demo2 Wiedemann <opensusedemo+test2@lsmod.de>
 
 - Add 5dd5ff95b7b104667eb4f39367eb4f4c00fcedd5.patch to fix future tests (boo#1102840)
