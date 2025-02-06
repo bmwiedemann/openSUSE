@@ -1,7 +1,7 @@
 #
 # spec file for package python-matplotlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.9.2
+Version:        3.10.0
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
