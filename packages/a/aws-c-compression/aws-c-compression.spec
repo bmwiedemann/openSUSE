@@ -19,14 +19,13 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-compression
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        C99 implementation of Huffman encoding/decoding
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-compression
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         acc_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  cmake(aws-c-common)
