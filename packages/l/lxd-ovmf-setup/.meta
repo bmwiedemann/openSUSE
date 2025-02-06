@@ -1,0 +1,5 @@
+<package name="lxd-ovmf-setup" project="openSUSE:Factory">
+  <title>OVMF links for LXD</title>
+  <description>A package which provides the 'expected' names and locations of OVMF when they don't use the firmware files</description>
+  <devel project="Virtualization:containers" package="lxd-ovmf-setup"/>
+</package>
