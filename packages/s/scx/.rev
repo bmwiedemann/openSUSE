@@ -17,4 +17,12 @@ This version excludes the scx_loader service because of the dbus lints that fail
 Looking forward to any feedback!</comment>
     <requestid>1236851</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>643d2793ae7675543f8962ca60f0a7e0</srcmd5>
+    <version>1.0.9</version>
+    <time>1738875883</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243435</requestid>
+  </revision>
 </revisionlist>

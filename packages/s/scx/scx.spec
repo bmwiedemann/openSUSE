@@ -19,7 +19,7 @@
 %define libbpf_min_ver 1.5.0
 
 Name:           scx
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -59,9 +59,6 @@ meson compile -C build -v
 
 %install
 meson install -C build --destdir=%{buildroot}
-
-# move lib into scx folder
-mv %{buildroot}/%{_prefix}/include/lib %{buildroot}/%{_prefix}/include/scx/
 
 %pre
 %service_add_pre scx.service

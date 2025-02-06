@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Feb 05 08:41:57 UTC 2025 - fredrik.lonnegren@suse.com
+
+- Update to version 1.0.9:
+  * versions: Synchronize crate versions to the latest used
+  * scx_lavd: Use BPF CO-RE for SCX_ENQ_CPU_SELECTED
+  * scx_layered: make gpu poll interval configurable
+  * scx_prev: a simple scheduler tested on OLTP workloads
+  * scx_lavd: Don't try preemption for greedy tasks
+  * scxtop: Add trace options
+  * scx_central: alert for 'silly' values for the chosen cpu from command line.
+  * scx_lavd: Preemption when ops.select_cpu() was skipped
+  * scxtop: Add support for generating perfetto traces
+  * scx_bpfland: enable task preemption
+  * scx_layered: add gpu matcher
+  * rust schedulers: for sibling cpu using static dispatch instead.
+  * scx_bpfland: reduce heap allocation with energy profile/primary domain.
+  * scx_bpfland: Mark --local-kthreads/-k as experimental
+  * scx_loader: Update performance profiles for scx_bpfland
+  * scxtop: Fix layout for sparklines
+  * scxtop: Add scx_stats support
+  * scx_lavd: Conder the hardware resource sharing level in CPU ordering
+  * scxtop: Fill render area by setting max events
+  * scxtop: Add event to default list after selection
+  * scx_layered: fixes for MATCH_SCXCMD_JOIN
+  * scxtop: Fix scroll on page up
+  * scxtop: update help display with last changes (perf event scrolling).
+  * scx_bpfland: Introduce --cpufreq to enable CPU frequency scaling
+  * scx_bpfland: Introduce --local-pcpu to prioritize per-CPU tasks
+  * scx_bpfland: Get rid of the interactive task classification via nvcsw
+  * scx_bpfland: Allow tasks to overflow primary domain more aggressively
+  * scx_bpfland: Virtual deadline with partial execution vruntime
+  * scx_bpfland: Do not scale slice lag with the task weight
+  * scx_bpfland: Set max performance level with balance_performance
+  * scx_lavd: Direct dispatch at ops.enqueue()
+  * scx_lavd: Do not reserve an idle cpu at ops.enqueue()
+  * scx_loader: Avoid race condition with start_scheduler
+  * scx_lavd: Use time_delta() for clock difference calculation
+  * scxtop: Add ability to select perf events
+  * scxtop: proposing to add bus-cycles event.
+  * scx_layered: add 'join layer' command
+  * scx_central: fix cpu affinity corrupted allocation (glibc).
+  * scx_rusty: fix custom PartialOrd implementation build warning.
+  * scx_layered: Fix dump_layer_cpumask()
+  * scx_rustland_core: fix static mutable reference usage warning (BUF).
+  * scxtop: Collect uncore frequency
+  * scx_rusty: use lb_domain naming for load balancing domains
+  * scxtop: Fix node barchart
+  * scx_bpfland: avoid starvation of per-CPU tasks
+  * scxtop: Fix attach on newer kernels
+  * scxtop: Add CPU frequency to default sparkline view
+  * scxtop: Add barchart to node view
+  * scx_bpfland: re-enqueue tasks when a CPU is taken by a higher sched class
+  * scx_bpfland: give queued tasks a chance to run on the same CPU
+  * scx_bpfland: do not dispatch per-CPU kthreads directly by default
+  * scx_bpfland: proactively wake idle CPUs after task enqueue
+  * scx_layered: Add pid namespace layer matching
+  * scx_bpfland: do not allow per-CPU kthread to preempt other tasks
+  * scxtop: Add scheduler view to llc/node views
+  * scx_lavd: Add a fast path for a migration-disabled task in pick_idle_cpu()
+  * scxtop: Add scxtop tui
+  * scx_flash: prevent scheduling bubbles on kernels >= 6.12
+  * scx_rusty: prevent scheduling bubbles on kernels >= 6.12
+  * scx_bpfland: use nvcsw metrics only for cpufreq scaling
+  * scx_bpfland: evaluate deadline based on vruntime and task's sum_vruntime
+  * scx_bpfland: consider sum_runtime instead of avg_runtime
+  * scx_bpfland: never actively wake-up idle CPUs
+  * scx_flash: Option for userspace lock boosting
+  * scx_bpfland: support !CONFIG_SMP kernels
+  * scx_rusty: use arena allocations instead of maps for tasks
+  * scx_rusty: use map to manage task masks
+  * scx_layered: Fix multplication overflows
+  * scx_layered: Improve open layer prot[_preempt] accounting
+  * scx_layered: Don't apply preempt protection between two open layers
+  * scx_layered: Disable owner protection for preempt layers
+  * scx_rusty: remove per-task temp mask and replace with per-CPU singleton
+  * scx_layered: Implement layer property disallow_preempt_after_us
+  * scx_lavd: Prioritize a migration-disabled task
+  * scx_lavd: Ensure to check all compute domains when task stealing
+  * scx_lavd: Kick an idle cpu as early as possible on ops.select_cpu()
+  * scx_lavd: Change the default time slice to 5 msec
+  * scx_lavd: Add a fast path to pick_idle_cpu() when overloaded
+  * scx_lavd: Turn on frequency scaling in performance mode
+  * scx_lavd: Properly reinitialize cpumask for autopilot mode
+  * scx_rustland_core: Select any idle CPU when task affinity changes
+
+-------------------------------------------------------------------
 Tue Dec 17 09:35:57 UTC 2024 - fredrik.lonnegren@suse.com
 
 - Update to version 1.0.8:
