@@ -1,11 +1,11 @@
-diff -Nru aws-c-io-0.7.0.orig/CMakeLists.txt aws-c-io-0.7.0/CMakeLists.txt
---- aws-c-io-0.7.0.orig/CMakeLists.txt	2020-11-20 01:33:59.000000000 +0100
-+++ aws-c-io-0.7.0/CMakeLists.txt	2020-11-26 16:49:35.762120326 +0100
-@@ -185,6 +185,7 @@
+diff -Nru aws-c-io-0.15.4.orig/CMakeLists.txt aws-c-io-0.15.4/CMakeLists.txt
+--- aws-c-io-0.15.4.orig/CMakeLists.txt	2025-01-28 23:10:24.000000000 +0000
++++ aws-c-io-0.15.4/CMakeLists.txt	2025-01-30 11:57:19.446194584 +0000
+@@ -176,6 +176,7 @@
  
  # We are not ABI stable yet
  set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 1.0.0)
 +set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SOVERSION 0unstable)
  
- target_compile_definitions(${PROJECT_NAME} PUBLIC "-DAWS_USE_${EVENT_LOOP_DEFINE}")
- 
+ if (NOT EVENT_LOOP_DEFINES)
+     message(FATAL_ERROR "Event Loop is not setup on the platform.")

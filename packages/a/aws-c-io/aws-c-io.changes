@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:58:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.15.4
+  * Switch CI to use roles by @DmitriyMusatkin in (#698)
+  * Fix CI for GCC-13 on Ubuntu-18 by @waahm7 in (#700)
+  * fix typo in log message by @graebm in (#702)
+  * Event Loop & Socket Type Multi-Support by @xiazhvera in (#692)
+  * A bunch of CMake fixes by @graebm in (#701)
+- Drop aci_fix-cmake-modules-path.patch, fixed upstream
+- Refresh aci_add-so-version.patch
+
+-------------------------------------------------------------------
 Thu Nov 14 12:30:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.15.3

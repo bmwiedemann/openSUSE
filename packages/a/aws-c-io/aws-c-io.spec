@@ -21,15 +21,14 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-io
-Version:        0.15.3
+Version:        0.15.4
 Release:        0
 Summary:        I/O and TLS package AWS SDK for C
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-io
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         aci_fix-cmake-modules-path.patch
-Patch1:         aci_add-so-version.patch
+Patch0:         aci_add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
