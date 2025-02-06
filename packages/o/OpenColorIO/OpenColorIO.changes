@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Feb  1 22:20:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Lock OpenImageIO to < 3
+
+-------------------------------------------------------------------
+Fri Dec 13 00:15:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparently the 2.4.0 tarball for a moment had the version set to
+  2.5.0 when i grabbed it. now it was fixed down to 2.4.x again.
+  so the soversion is downgraded again to 2.4
+
+  https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/2073
+
+-------------------------------------------------------------------
+Thu Dec 12 23:56:48 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.4.1
+  This is an ABI-compatible update for the 2.4.x series that
+  includes all fixes since the 2.4.0 release.
+
+  The ACES 2 implementation is still considered a Preview Release.
+  OCIO contributors are working closely with the ACES 2 Output
+  Transforms working group and a 2.4.2 release is planned for early
+  March to finalize the ACES 2 algorithm implementation. A preview
+  of the ACES 2 config files (compatible with OCIO 2.4.1) is
+  available here.
+
+  - Bug fixes and minor enhancements:
+    - PR #2068, Fix views/display sub-menus in OCIO Display app for
+      ACES 2 compatibility
+    - PR #2095, Add "DISPLAY - CIE-XYZ-D65_to_DisplayP3-HDR"
+      built-in transform
+    - PR #2104, Optimizer detects pair inverses before combining
+      multiple op pairs
+    - PR #2074, Text format (e.g., Iridas cube) parsing
+      optimizations
+    - PR #2106, Fix Python wheel macOS workflow and make
+      OCIO_PYTHON_LOAD_DLLS_FROM_PATH opt-in
+    - PR #2090, Fix bit-depth attribute for inverse LUTs when
+      writing CTFs
+    - PR #2078, Added more accurate DX11 HLSL shading language enum
+      name
+    - PR #2077, Match ACES 2.0 shader resource suffix format to
+      regular LUTs
+    - PR #2096, Fixed range function error in nuke colorlookup
+      examples
+  - Build, documentation, and website enhancements:
+    - PR #2072, Enable parallel source file compilation on MSVC
+    - PR #2085, Update doc building instructions
+    - PR #2084, Photoshop now supports OCIO
+    - PR #2088, Add Disguise to list of supported applications
+    - PR #2069, Move GPU LUT files into the tests dir
+    - PR #2102, Fix broken Linux and Mac CI workflow
+
+-------------------------------------------------------------------
 Tue Oct  1 09:24:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.4.0

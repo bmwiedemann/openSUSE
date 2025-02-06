@@ -1,7 +1,7 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,14 @@
 # Ensure that libyaml-cpp version is the one that is built against
 # See boo#1160171
 %define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml || echo aaa_base)
-%define so_ver 2_5
+%define so_ver 2_4
 %define pkg_name OpenColorIO
 %if %{without ocio_tools}
 Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause
@@ -54,8 +54,6 @@ BuildRequires:  yaml-cpp-devel >= 0.6.3
 BuildRequires:  pkgconfig(minizip-ng) >= 4.0.4
 Recommends:     %{pkg_name}-doc = %{version}
 %if %{with ocio_tools}
-BuildRequires:  OpenImageIO >= 2.1.9
-BuildRequires:  OpenImageIO-devel >= 2.1.9
 BuildRequires:  OpenImageIO-plugin-osl
 BuildRequires:  OpenShadingLanguage-devel
 BuildRequires:  python3-MarkupSafe
@@ -67,6 +65,8 @@ BuildRequires:  python3-six
 BuildRequires:  python3-sphinx-tabs
 BuildRequires:  python3-sphinx_press_theme
 BuildRequires:  python3-testresources
+BuildRequires:  (OpenImageIO >= 2.1.9 with OpenImageIO < 3)
+BuildRequires:  (OpenImageIO-devel >= 2.1.9 with OpenImageIO-devel < 3)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glut)
