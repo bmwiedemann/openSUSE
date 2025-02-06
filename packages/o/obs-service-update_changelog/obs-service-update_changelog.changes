@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Jan 24 11:36:37 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Update to version 0.6.1
+  * Sort mentioned patches based on their commit time.
+  * Enhance spec file and prepare for 0.6.1 release.
+
+-------------------------------------------------------------------
+Wed Jan 22 16:37:07 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Initial version of the package
