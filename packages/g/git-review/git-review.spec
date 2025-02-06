@@ -28,11 +28,9 @@ BuildRequires:  fdupes
 # it is not a library but a plain CLI tool, and it doesn't make sense to
 # build a python2.x version of it anymore in 2019.
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-fixtures >= 0.3.14
 BuildRequires:  python3-pbr
 BuildRequires:  python3-pip
 BuildRequires:  python3-requests >= 1.1
-BuildRequires:  python3-stestr
 BuildRequires:  python3-wheel
 Requires:       python3-requests >= 1.1
 Provides:       python3-git-review = %{version}

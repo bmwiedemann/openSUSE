@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 13 13:25:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Drop test dependencies when the tests are not run
+
+-------------------------------------------------------------------
 Sun Mar 24 13:27:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:

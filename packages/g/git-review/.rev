@@ -288,4 +288,12 @@
   * Improved version string parsing for Git</comment>
     <requestid>1161122</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0f322330f5ca6441ce87d8612ae16a0a</srcmd5>
+    <version>2.4.0</version>
+    <time>1738875976</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243463</requestid>
+  </revision>
 </revisionlist>
