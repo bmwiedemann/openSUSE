@@ -1,7 +1,7 @@
 #
 # spec file for package grommunio-index
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           grommunio-index
-Version:        1.0.6.f40d25b
+Version:        1.3
 Release:        0
 Summary:        Generator for grommunio-web search indexes
 License:        AGPL-3.0-or-later
 Group:          Productivity/Networking/Email/Servers
 URL:            https://grommunio.com/
-Source:         %name-%version.tar.xz
+Source:         https://github.com/grommunio/grommunio-index/archive/refs/tags/%version.tar.gz
 BuildRequires:  cmake
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-BuildRequires:  gcc11-c++
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -38,6 +38,7 @@ BuildRequires:  mariadb-devel >= 5.6
 BuildRequires:  libexmdbpp-devel >= 1.8.0
 BuildRequires:  libexmdbpp0 >= 1.8.0
 BuildRequires:  pkgconfig(libHX) >= 3.27
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 Requires:       libexmdbpp0 >= 1.8.0
@@ -53,6 +54,11 @@ Requires(pre):  group(gromoxcf)
 Requires:       group(gromoxcf)
 Requires:       group(groweb)
 Requires:       user(groindex)
+%if 0%{?rhel} || 0%{?fedora_version}
+Requires:       gr-sqlite-libs >= 3.42
+%else
+Requires:       libsqlite3-0 >= 3.42
+%endif
 %define services grommunio-index.service grommunio-index.timer
 
 %description
@@ -68,11 +74,18 @@ A C++17 program for the generation of grommunio-web fulltext search indexes.
 %endif
 
 pushd .
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-%cmake -DCMAKE_CXX_COMPILER=%_bindir/g++-11
-%else
-%cmake
+wl="%optflags -DENABLE_TRACE"
+%if 0%{?rhel} || 0%{?fedora_version}
+wl="-Wl,-rpath,/usr/lib/gr-sqlite/%_lib"
 %endif
+%cmake \
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+	-DCMAKE_CXX_COMPILER=%_bindir/g++-12 \
+%endif
+	-DCMAKE_C_FLAGS="%optflags $wl" \
+	-DCMAKE_CXX_FLAGS="%optflags $wl" \
+	-DCMAKE_C_FLAGS_RELWITHDEBINFO="$wl" \
+	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$wl"
 %cmake_build
 popd
 
@@ -85,6 +98,8 @@ mkdir -p "%buildroot/%_datadir/%name"
 %pre -f user.pre
 %if 0%{?rhel} || 0%{?fedora_version}
 getent group groindex >/dev/null || %_sbindir/groupadd -r groindex
+getent group groweb >/dev/null || %_sbindir/groupadd -r groweb
+getent group gromoxcf >/dev/null || %_sbindir/groupadd -r gromoxcf
 getent passwd groindex >/dev/null || %_sbindir/useradd -g groindex -s /bin/false \
         -r -c "user for %name" -d / groindex
 usermod groindex -aG groweb
@@ -95,8 +110,6 @@ usermod groindex -aG gromoxcf
 %endif
 
 %post
-find /var/lib/grommunio-web/sqlite-index/ -mindepth 1 "(" -type d -o -type f ")" -exec chmod g+w,o-w {} + || :
-find /var/lib/grommunio-web/sqlite-index/ -mindepth 1 "(" -type d -o -type f ")" -exec chgrp -h groweb {} + || :
 %if 0%{?service_add_post:1}
 %service_add_post %services
 %else

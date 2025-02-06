@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb  5 12:53:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3
+  * Prevent indexing of users without mailbox
+  * Index HTML body
+  * Evaluate PR_MESSAGE_DELIVERY_TIME before
+    PR_LAST_MODIFICATION_TIME
+  * Stop considering inline attachments
+  * Add trace logging for message updates
+
+-------------------------------------------------------------------
+Wed Sep  4 08:16:24 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable building with %optflags
+
+-------------------------------------------------------------------
 Fri Jun  7 12:32:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.0.6
