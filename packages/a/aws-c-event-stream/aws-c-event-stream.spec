@@ -21,15 +21,14 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-event-stream
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-event-stream
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         aces_fix-cmake-modules-path.patch
-Patch1:         aces_re-add-so-version.patch
+Patch0:         aces_re-add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja

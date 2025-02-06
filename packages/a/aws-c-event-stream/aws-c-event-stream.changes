@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:22:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.1
+  * chore: Modified bug issue template to add checkbox to
+    report potential regression. by @ashishdhingra in (#116)
+  * Switch CI to use roles by @DmitriyMusatkin in (#118)
+  * A bunch of CMake fixes by @graebm in (#119)
+- Drop aces_fix-cmake-modules-path.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Oct 24 12:13:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.0
