@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-qthelp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-qthelp%{psuffix}
-Version:        1.0.8
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx extension which outputs QtHelp
 License:        BSD-2-Clause
@@ -71,8 +71,8 @@ sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document.
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst CHANGES
-%license LICENSE
+%doc README.rst CHANGES.rst
+%license LICENCE.rst
 %dir %{python_sitelib}/sphinxcontrib
 %{python_sitelib}/sphinxcontrib/qthelp
 %{python_sitelib}/sphinxcontrib_qthelp-%{version}*-info

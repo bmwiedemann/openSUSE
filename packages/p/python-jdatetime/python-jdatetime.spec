@@ -1,7 +1,7 @@
 #
 # spec file for package python-jdatetime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jdatetime
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Jalali datetime binding for python
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/slashmili/python-jalali
 Source:         https://github.com/slashmili/python-jalali/archive/v%{version}.tar.gz
-Patch1:         https://github.com/slashmili/python-jalali/commit/ac6c2052e41462714431946cf13cee28967082b4.patch#/py313-support.patch
 BuildRequires:  %{python_module jalali-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytzdata}

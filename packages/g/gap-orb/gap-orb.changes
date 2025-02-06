@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:14:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.0
+  * Remove legacy APIs `InitHT`, `NewHT`, `AddHT`, `ValueHT`,
+    `GrowHT`. Instead use `HTCreate`, `HTAdd`, `HTValue`,
+    `HTDelete` and `HTUpdate`.
+
+-------------------------------------------------------------------
 Fri Jan  3 13:16:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.9.2

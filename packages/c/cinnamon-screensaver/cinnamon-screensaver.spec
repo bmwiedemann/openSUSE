@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-screensaver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid org.cinnamon.ScreenSaver
 Name:           cinnamon-screensaver
-Version:        6.2.0
+Version:        6.4.0
 Release:        0
 Summary:        Cinnamon screensaver and locker
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ BuildRequires:  libtool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.4
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -61,14 +60,6 @@ cinnamon-screensaver is a screensaver and locker that aims to have
 simple, sane and secure defaults, and be well integrated with the
 Cinnamon Desktop.
 
-%package -n libcscreensaver-0_0_0
-Summary:        Library files for %{name}
-
-%description -n libcscreensaver-0_0_0
-%{summary}.
-
-This package ships the library files for %{name}.
-
 %package -n typelib-1_0-CScreensaver-1_0
 Summary:        Typelib for %{name}
 
@@ -79,7 +70,6 @@ This package ships the typelib for %{name}.
 
 %package devel
 Summary:        Development files for %{name}
-Requires:       libcscreensaver-0_0_0
 Requires:       typelib-1_0-CScreensaver-1_0
 
 %description devel
@@ -103,10 +93,13 @@ Development files for %{name}.
 %meson_install
 
 %fdupes %{buildroot}
-%suse_update_desktop_file %{appid}
 
 mkdir -p %{buildroot}%{_pam_vendordir}
 mv %{buildroot}%{_sysconfdir}/pam.d/%{name} %{buildroot}%{_pam_vendordir}/%{name}
+mkdir -p %{buildroot}%{_libdir}/girepository-1.0
+mv %{buildroot}%{_libexecdir}/%{name}/girepository-1.0/CScreensaver-1.0.typelib \
+   %{buildroot}%{_libdir}/girepository-1.0/
+rm -rf %{buildroot}%{_libexecdir}/%{name}/girepository-1.0
 
 # Fix missing shabang
 chmod a+x %{buildroot}%{_datadir}/%{name}/*.py
@@ -127,28 +120,23 @@ for i in pam.d/cinnamon-screensaver ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 
-%ldconfig_scriptlets -n libcscreensaver-0_0_0
-
 %files
 %license COPYING COPYING.LIB
 %doc AUTHORS README.md HACKING
+%dir %{_libexecdir}/%{name}
 %{_bindir}/{%{name}{,-command},cinnamon-unlock-desktop}
 %{_datadir}/applications/%{appid}.desktop
-%{_libexecdir}/{%{name}-pam-helper,cs-backup-locker}
+%{_libexecdir}/%{name}/{%{name}-pam-helper,cs-backup-locker,libcscreensaver.so}
 %{_datadir}/%{name}
 %{_datadir}/dbus-1/services/%{appid}.service
 %{_datadir}/icons/hicolor/scalable/{actions,apps,status}/*.svg
 %{_pam_vendordir}/%{name}
 
 %files -n typelib-1_0-CScreensaver-1_0
+%dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/CScreensaver-1.0.typelib
-
-%files -n libcscreensaver-0_0_0
-%{_libdir}/libcscreensaver.so.*
 
 %files devel
 %{_datadir}/gir-1.0/CScreensaver-1.0.gir
-%{_libdir}/pkgconfig/cscreensaver.pc
-%{_libdir}/libcscreensaver.so
 
 %changelog

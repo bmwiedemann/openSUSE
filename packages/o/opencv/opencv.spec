@@ -1,7 +1,7 @@
 #
 # spec file for package opencv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 %define libname lib%{name}
-%define soname 410
+%define soname 411
 # disabled by default as many fail
 %bcond_with    tests
 %bcond_without gapi
@@ -35,7 +35,7 @@
 %endif
 
 Name:           opencv
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -45,6 +45,7 @@ URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Several modules from the opencv_contrib package
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
+Source99:       opencv-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel

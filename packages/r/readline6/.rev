@@ -31,4 +31,17 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149873 from dimstar)</comment>
     <requestid>1149880</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>95dff353f799c185c43cb04aeba6a319</srcmd5>
+    <version>6.3</version>
+    <time>1738072804</time>
+    <user>anag+factory</user>
+    <comment>- Rename readline-6.2-endpw.dif to readline-6.2-endpw.nodif
+
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.</comment>
+    <requestid>1240810</requestid>
+  </revision>
 </revisionlist>

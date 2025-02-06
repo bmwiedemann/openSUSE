@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 28 12:10:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Rename packages-cvs-sumo-2002-09-19-comint.patch to
+  packages-cvs-sumo-2002-09-19-comint.nopatch
+
+-------------------------------------------------------------------
+Tue Jan 14 13:16:51 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.
+
+-------------------------------------------------------------------
 Tue Jul  9 08:48:21 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Drop dependency on fwnndev, fwnn is dead and unmaintained.

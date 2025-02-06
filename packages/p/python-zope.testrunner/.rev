@@ -240,4 +240,12 @@
   * Drop support for Python 3.7.</comment>
     <requestid>1218876</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a68fcc0f5eeffd79c36f78dba96ad557</srcmd5>
+    <version>6.6.1</version>
+    <time>1737389718</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239001</requestid>
+  </revision>
 </revisionlist>

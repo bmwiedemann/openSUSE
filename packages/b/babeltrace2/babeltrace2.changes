@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:42:35 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 2.1.0
+  Changelog changed to a verbose format, see ChangeLog file or
+  https://babeltrace.org/docs/release-notes/babeltrace-2.1.0-release-notes.html
+
+-------------------------------------------------------------------
+Wed Jan 22 09:48:40 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 2.0.6:
+  * bt2: disable some warnings for `native_bt.c`
+  * bt2: compile `native_bt.c` with `-Wno-undef`
+  * Fix: src.ctf.lttng-live: expect NEW_STREAM/METADATA for inactive streams
+  * Fix: `babeltrace2 convert`: don't consider the `--plugin-path` opt.
+  * include/babeltrace2/plugin/plugin-dev.h: "define" -> "definition
+  * Fix: doc: escape double quote in bt_p alias
+  * Fix: bt2: pass _TraceClassConst to destruction listeners
+  * fix: 'load_module()' deprecated in Python 3.12
+  * tests: retry os.rename on PermissionError failure in lttng_live_server.py
+  * doc: fix uptream -> upstream typos
+  * fix: test_message_iterator.py hangs on Python 3.12
+  * plugin-dev: mark symbols meant to be public with __attribute__((visibility("default")))
+  * Silence -Wunused-but-set-variable error with clang
+  * Fix: Windows DLL path lookup with Python >= 3.8
+  * doc/man: make default values of boolean init. params. clearer
+  * RFC: docs: fix: Match stated automake requirement
+  * fix: make flake8 6.x happy
+  * fix: running black on python 3.11
+  * bt_query_executor_create_with_method_data(): fix docs note
+  * Fix: ctf-writer: null dereference in bt_ctf_trace_common_add_stream_class
+  * Update working version to Babeltrace v2.0.6
+
+-------------------------------------------------------------------
 Thu Aug  3 20:41:04 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 2.0.5:

@@ -17,7 +17,7 @@
 
 
 Name:           fswatch
-Version:        1.18.0
+Version:        1.18.2
 Release:        0
 Summary:        Multi platform file change monitor
 License:        GPL-3.0-or-later
@@ -25,7 +25,7 @@ URL:            https://github.com/emcrisostomo/fswatch
 Source:         https://github.com/emcrisostomo/fswatch/releases/download/%{version}/fswatch-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ > 7
 BuildRequires:  libtool
 
 %package -n lib%{name}13
@@ -70,9 +70,11 @@ monitors based on:
 %autosetup
 
 %build
-./autogen.sh
 %configure
 %make_build
+
+%check
+%{__make} check
 
 %install
 %make_install

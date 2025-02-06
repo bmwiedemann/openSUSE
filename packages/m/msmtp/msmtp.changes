@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 14 19:59:42 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.28:
+  * Detect SMTPUTF8 server capability and use it if available.
+  * Add IDN support to --configure (build with libidn2 to enable
+    this).
+  * Add special value 'none' to logfile_time_format to suppress
+    time output.
+
+-------------------------------------------------------------------
 Fri Nov 15 20:31:53 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - stop requiring vim at runtime just for the syntax file

@@ -27,6 +27,8 @@ Source0:        %{url}/1.0/%{version}/+download/%{name}-%{version}.tar.xz
 Source1:        %{url}/1.0/%{version}/+download/%{name}-%{version}.tar.xz.asc
 Source3:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xe4884aeede4cc02043c3d8045decdba89270e723#/%{name}.keyring
 Patch1:         0001_changed-plank-positioning-according-to-workarea.patch
+# PATCH-FIX-OPENSUSE trash-menu-header-workaround.patch -- workaround for lp#1679883
+Patch2:         trash-menu-header-workaround.patch
 BuildRequires:  autoconf >= 2.65
 BuildRequires:  automake >= 1.11
 BuildRequires:  hicolor-icon-theme

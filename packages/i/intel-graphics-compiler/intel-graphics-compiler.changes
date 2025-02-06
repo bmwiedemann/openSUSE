@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 15 08:48:35 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Don't include versioned libs in devel packages 
+- Create missing .so links
+
+-------------------------------------------------------------------
+Thu Jan  9 11:48:07 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 2.5.6
+  * No changelog was made available
+- Update opencl_clang to 470cf0018e1ef6fc92eda1356f5f31f7da452abc
+- Update spirv_llvm_translator to efbedd32b700c01a15d44121fca862625c2594ac
+- Update vc_intrinsics to v0.21.0
+- Removed 0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch
+  * No longer needed
+
+-------------------------------------------------------------------
 Tue Aug 13 06:57:12 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.0.17193.4

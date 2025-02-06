@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Jan 23 19:34:31 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.0:
+  Large update, please see the full changelog at
+  https://github.com/GoogleContainerTools/skaffold/releases/tag/v2.14.0
+  * New Features and Additions:
+    - feat: default to ADC when gcloud cred helper is configured in
+      docker/config.json when using docker go library #9469
+    - feat: added retry on files sync error #9261
+    - Use bazel info workspace to get workspace, check for
+      MODULE.bazel #9445
+    - feat(git): added commit hash support to git.ref #9430
+    - feat(kaniko): Add kaniko cache run layers flag #9465
+    - feat: new gcs client using cloud client libraries #9518
+    - feat(sync): Add pod filter using FieldSelector #9493
+    - feat(cluster): Add labels to cluster config #9553
+    - feat(bin): Add graceful shutdown for helm command #9520
+    - feat: Optimize helm deploy by using goroutines #9451
+    - feat: transform imagePullPolicy when using local cluster
+      #9495
+    - Support TemplateField for build.artifacts.docker.cliFlags
+      #9582
+    - feat(kaniko): Optimize kaniko build by 50% using compression
+      and add progress #9476
+    - feat(verify.go): Add pod fail reason and message to output
+      #9589
+    - feat(helm): Add helm dependencies support #9624
+    - feat: implement kaniko.imagePullSecret for pulling images
+      from private registry w/ auth #9665
+  * Fixes:
+    - fix: send maxRetries property when it is specified by the
+      user in a cloud run job manifest #9475
+    - fix: keep the original template if template expansion fails
+      #9503
+    - fix(wait): Add panic prevent WaitForPodInitialized #9511
+    - fix(kaniko): replaces kaniko --snapshotMode argument with
+      --snapshot-mode #9458
+    - fix: emit CloudRunServiceReady event even if default url is
+      disabled #9523
+    - fix: Set the client DialContext to the connhelper dialer
+      DOCKER_HOST is present #9521
+    - fix(config): Replace json tag with yaml for VerifyEnvVar
+      #9558
+    - fix: Continue deployment even if ContainerRemove call returns
+      error #9561
+    - fix: Wrap errors when unmarshal Cloud Run deploy manifests
+      fail. #9578
+    - fix: Handle StandalonePods Succeeded case when checking
+      status #9580
+    - fix(sync): log a warning for empty pods #9599
+    - fix: kustomize render should support components #9636
+    - fix: Update the k8s Job container logic for custom actions to
+      match v… #9584
+    - fix: Helm deploy was not working with variable templatinging
+      chart path #9600
+    - fix: retry on errors when watching pods #9373
+    - fix: Make defaultNamespace warning more useful #9669
+    - fix: Add Dockerfile for digest calculation #9666
+    - fix: make IMAGE_TAG available in buildArgs when used in
+      docker FROM 9664
+
+-------------------------------------------------------------------
 Fri Sep 13 18:47:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.2:

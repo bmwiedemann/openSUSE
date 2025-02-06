@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 24 19:20:26 UTC 2025 - Torsten Duwe <duwe@suse.com>
+
+- Add NanoPC T6 and Rock Pi 5B (both rk3588 based) as targets
+
+-------------------------------------------------------------------
+Wed Jan 15 14:23:49 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2025.01:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2024.10...v2025.01
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2025.01
+* Patches dropped:
+  0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+  0017-riscv-dts-jh7110-Update-qspi-node-w.patch
+  0018-Revert-riscv-dts-jh7110-Update-qspi.patch
+  0019-scripts-dtc-pylibfdt-libfdt.i_shipp.patch
+
+-------------------------------------------------------------------
 Wed Jan 15 13:00:50 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add support for orangepi-zero2w

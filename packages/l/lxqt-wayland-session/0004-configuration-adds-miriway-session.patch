@@ -1,4 +1,4 @@
-From 0f6ac090dfa3767fec272fed0f1391db3b859ab8 Mon Sep 17 00:00:00 2001
+From b9fd6f144daae4f1b23fda0e4e515677eafd1610 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Thu, 16 Jan 2025 16:12:51 -0800
 Subject: [PATCH 4/4] configuration adds miriway session
@@ -104,7 +104,7 @@ index 0000000..9f4cf9e
 +ctrl-alt=BackSpace:@exit
 +
 diff --git a/startlxqtwayland.in b/startlxqtwayland.in
-index 64a2986..dd91eb4 100644
+index d46c317..e3df50b 100644
 --- a/startlxqtwayland.in
 +++ b/startlxqtwayland.in
 @@ -140,6 +140,16 @@ elif [ "$COMPOSITOR" = "kwin_wayland" ]; then
@@ -125,5 +125,5 @@ index 64a2986..dd91eb4 100644
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-wayfire.ini" ]; then
          cp "$share_dir"/lxqt/wayland/lxqt-wayfire.ini "$XDG_CONFIG_HOME"/lxqt/wayland/
 -- 
-2.48.0
+2.48.1
 

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 13 19:33:18 UTC 2025 - rjschwei@suse.com
+
+- Update to version 20241209.01: (bsc#1235664)
+  * readme: add notes about plugin manager (#476)
+  * Update metadata script runner to honor cloud logging config flag (#475)
+  * Fixing fallback from systemd-networkd to dhclient (#471)
+  * network: fix nmcli check pattern (#472)
+  * Update readme with guest agent manager (#469)
+  * Add missing packaging spec (#466)
+  * Bring back side-by-side packaging (#464)
+  * Avoid changing permissions of directory if parent is / (#463)
+  * network: force NetworkManager to connect to primary nic (#461)
+  * Revert plugin manager packaging (#460)
+  * Add GOPATH to PATH in debian build (#459)
+  * Add plugin manager to debian build (#457)
+  * rpm packaging: fix plugin manager assumptions (#458)
+  * packaging: add plugin manager to rhel packaging (#454)
+
+-------------------------------------------------------------------
 Tue Oct 22 06:30:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20241018.01 (bsc#1231775, bsc#1231776)

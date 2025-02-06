@@ -1,7 +1,7 @@
 #
 # spec file for package python-typepy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typepy
-Version:        1.3.2
+Version:        1.3.4
 Release:        0
 Summary:        Python library for run time variable type checker
 License:        MIT

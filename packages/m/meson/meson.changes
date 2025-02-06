@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:03:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.7.0:
+  + Call for testing for next release
+  + New custom dependency for atomic
+  + `--cap-lints allow` used for Cargo subprojects
+  + Cargo features are resolved globally
+  + Meson can run "clippy" on Rust projects
+  + Devenv support in external project module
+  + Fixed `sizeof` and `find_library` methods for Fortran compilers
+  + format command now accept stdin argument
+  + "machine" entry in target introspection data
+  + Add new language Linear Asm
+  + Control the number of child processes with an environment variable
+  + Support for Rust 2024
+  + Support TASKING VX-Toolset
+  + Test targets no longer built by default
+  + Install vcs_tag() output
+- Rebase extend-test-timeout-on-qemu-builds.patch.
+
+-------------------------------------------------------------------
 Thu Jan 16 04:16:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop the bcond on setuptools, its primary flavor will live in Ring 0.

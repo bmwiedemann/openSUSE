@@ -96,4 +96,13 @@
     <comment></comment>
     <requestid>1204968</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>aedfd938e478a12f1959b57bdc1a5b61</srcmd5>
+    <version>0.10.2</version>
+    <time>1738163386</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-six.patch:
+  * Remove use of six.</comment>
+    <requestid>1240684</requestid>
+  </revision>
 </revisionlist>

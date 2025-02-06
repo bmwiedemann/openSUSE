@@ -1,7 +1,7 @@
 #
 # spec file for package glab
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021-2022 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           glab
-Version:        1.51.0
+Version:        1.52.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -33,9 +31,12 @@ Patch0:         glab-disable_update_check.patch
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
 BuildRequires:  golang >= 1.23.0
 %else
-BuildRequires:  go1.23 >= 1.23.0
+BuildRequires:  go1.23 >= 1.23.3
 BuildRequires:  golang-packaging
 %endif
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  zsh
 Suggests:       glab-doc
 
 %description
@@ -134,15 +135,12 @@ install -D -m0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completio
 %exclude %{_docdir}/%{name}/README.md
 
 %files bash-completion
-%dir %{_datadir}/bash-completion/
-%{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/%{name}
 
 %files fish-completion
-%dir %{_datadir}/fish/
-%{_datadir}/fish/vendor_completions.d/
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %files zsh-completion
-%dir %{_datadir}/zsh/
-%{_datadir}/zsh/site-functions/
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog

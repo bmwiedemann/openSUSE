@@ -15,46 +15,65 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define hicolor_dir_list {{actions,\
+animations,apps,categories,devices,emblems,emotes,filesystems,\
+intl,mimetypes,places,status,\
+stock,stock/chart,stock/code,stock/data,stock/form,\
+stock/image,stock/io,stock/media,stock/navigation,\
+stock/net,stock/object,stock/table,stock/text}} %{nil}
 
 Name:           hicolor-icon-theme
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        Fallback Icon Theme
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://freedesktop.org/wiki/Software/icon-theme/
-Source:         http://icon-theme.freedesktop.org/releases/%{name}-%{version}.tar.xz
+Source0:        https://icon-theme.freedesktop.org/releases/%{name}-%{version}.tar.xz
 Source1:        macros.hicolor
 Source99:       %{name}-rpmlintrc
+BuildRequires:  meson
 BuildArch:      noarch
 
 %description
 This is the default fallback theme used by implementations of the icon
 theme specification.
 
+%package devel
+Summary:        Development files for hicolor-icon-theme
+Group:          Development/Libraries/Other
+Requires:       %{name} = %{version}
+
+%description devel
+A package containing the development files for hicolor-icon-theme
+Currently, there is only a pkgconfig file
+
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 touch %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
 chmod -x COPYING
 # Install rpm macros
-install -D -m644 %{SOURCE1} %{buildroot}%_rpmmacrodir/macros.hicolor
-# Add 1024x1024 directory for package ownership [default-icon-theme#3]
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/1024x1024/{actions,\
-animations,apps,categories,devices,emblems,emotes,filesystems,\
-intl,mimetypes,places,status,stock}
+install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.hicolor
+# Add 1024x1024 (+HiDPI) directory for package ownership [default-icon-theme#3]
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{1024x1024,1024x1024@2}/%{hicolor_dir_list}
+# Make symbolic reflect scalable
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/symbolic/%{hicolor_dir_list}
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc NEWS README.md
 %ghost %{_datadir}/icons/hicolor/icon-theme.cache
 %{_datadir}/icons/hicolor/
-%_rpmmacrodir/macros.hicolor
+%{_rpmmacrodir}/macros.hicolor
+
+%files devel
+%{_datadir}/pkgconfig/default-icon-theme.pc
 
 %changelog

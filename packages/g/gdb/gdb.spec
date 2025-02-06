@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package gdb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 RedHat
 #
 # All modifications and additions to the file contributed by third parties
@@ -341,6 +341,7 @@ Patch2075:      gdb-python-make-gdb.unwindinfo.add_saved_register-mo-fixup.patch
 Patch2076:      gdb-exp-redo-cast-handling-for-indirection.patch
 Patch2077:      s390-provide-ibm-z16-arch14-instruction-descriptions.patch
 Patch2078:      gdb-s390-add-arch14-record-replay-support.patch
+Patch2079:      riscv-lrsc.patch
 
 # Backports from master, not yet available in next release (GDB 16).
 
@@ -830,6 +831,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2076 -p1
 %patch -P 2077 -p1
 %patch -P 2078 -p1
+%patch -P 2079 -p1
 
 %patch -P 2090 -p1
 %patch -P 2091 -p1

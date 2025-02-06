@@ -63,7 +63,7 @@ mkdir build
 pushd build/
 ../configure --prefix="%_prefix" --bindir="%_bindir" --datadir="%_datadir" \
 	--infodir="%_infodir" --mandir="%_mandir" --sysconfdir="%_sysconfdir" \
-	CFLAGS="%optflags"
+	CXXFLAGS="%optflags"
 %make_build
 popd
 

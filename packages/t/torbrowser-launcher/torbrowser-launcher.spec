@@ -38,9 +38,7 @@ BuildRequires:  python3-qt5
 BuildRequires:  update-desktop-files
 Requires:       gpg2
 Requires:       hicolor-icon-theme
-Requires:       python3-Parsley
 Requires:       python3-PySocks
-Requires:       python3-distro
 Requires:       python3-gpg
 Requires:       python3-packaging
 Requires:       python3-qt5

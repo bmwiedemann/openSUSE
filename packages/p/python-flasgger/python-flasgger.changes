@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 03:51:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup macro.
+- Clean up BuildRequires for test flavor.
+- Add patch remove-six.patch:
+  * Remove use of six.
+
+-------------------------------------------------------------------
 Fri Aug 23 08:51:03 UTC 2024 - pgajdos@suse.com
 
 - drop dependency on python-flex

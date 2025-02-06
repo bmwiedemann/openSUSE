@@ -17,14 +17,12 @@
 
 
 Name:           xdg-desktop-portal-gnome
-Version:        47.1+3
+Version:        47.2
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 Source:         %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM -- https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/merge_requests/189
-Patch0:         xdg-desktop-portal-gnome-gtk_init.patch
 # PATCH-FIX-UPSTREAM notification-null-icon-pointer.patch -- Fix build with xdg-desktop-portal >= 1.19.1
 Patch1:         notification-null-icon-pointer.patch
 

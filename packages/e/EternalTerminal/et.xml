@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>ET</short>
-  <description>Eternal Terminal (ET) is a remote shell that automatically reconnects without interrupting the session.</description>
-  <port protocol="tcp" port="2022"/>
-</service>

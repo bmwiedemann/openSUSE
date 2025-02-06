@@ -17,7 +17,7 @@
 
 
 Name:           rqlite
-Version:        8.36.5
+Version:        8.36.10
 Release:        0
 Summary:        Distributed relational database built on SQLite
 License:        MIT
@@ -48,6 +48,9 @@ go build -mod=vendor -buildmode=pie ./cmd/rqbench
 install -D -m0755 rqlite %{buildroot}%{_bindir}/rqlite
 install -D -m0755 rqlited %{buildroot}%{_bindir}/rqlited
 install -D -m0755 rqbench %{buildroot}%{_bindir}/rqbench
+install -D -m0644 tools/bash-completions/rqlite.sh %{buildroot}%{_datadir}/bash-completion/completions/rqlite
+install -D -m0644 tools/bash-completions/rqlited.sh %{buildroot}%{_datadir}/bash-completion/completions/rqlited
+install -D -m0644 tools/bash-completions/rqbench.sh %{buildroot}%{_datadir}/bash-completion/completions/rqbench
 
 %files
 %license LICENSE
@@ -55,5 +58,6 @@ install -D -m0755 rqbench %{buildroot}%{_bindir}/rqbench
 %{_bindir}/rqbench
 %{_bindir}/rqlite
 %{_bindir}/rqlited
+%{_datadir}/bash-completion/completions/*
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 26 18:31:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20240722.1 (boo#1236438)
+  * potential integer overflow in hash container create/resize
+
+-------------------------------------------------------------------
 Wed Jan 15 02:02:17 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Extend options-cxx17.patch and options-old.patch

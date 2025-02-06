@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:17:50 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add missing runtime dependency for libgwengui-cpp to
+  the development package
+
+-------------------------------------------------------------------
+Wed Jan  1 18:41:47 UTC 2025 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 5.12.0
+  + Add GWEN_MSG convenience functions
+  + Use pkgconf for gpg-error build flags
+  + Bugfixes
+
+-------------------------------------------------------------------
 Sun Nov 24 12:48:48 UTC 2024 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 5.11.2 (beta)

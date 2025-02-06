@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Jan 24 06:07:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.0:
+  * build(deps): bump codecov/codecov-action to 5.2.0 (#4362)
+  * build(deps): bump docker/setup-qemu-action (#4361)
+  * build(deps):
+    github.com/Azure/azure-sdk-for-go/sdk/storage/azblob (#4360)
+  * fix(server): ensure server uploads "repodiag" blobs (#4358)
+  * chore(general): reduce verbosity for noisy log message (#4357)
+  * build(deps): bump google.golang.org/api (#4356)
+  * build(deps): drop Go patch version to 1.22.0 (#4353)
+  * build(deps): upgrade grpc and opentelemetry dependencies
+    (#4354)
+  * feat(kopiaui): support for desktop notifications (#4352)
+  * build(deps): bump the telemetry-dependencies group with 4
+    updates (#4350)
+  * build(deps): bump the common-golang-dependencies group with 3
+    updates (#4349)
+  * test(general): cleanup symlink tests (#4347)
+  * build(deps): bump github.com/sanity-io/litter from 1.5.5 to
+    1.5.6 (#4344)
+  * build(deps): bump github.com/mattn/go-colorable from 0.1.13 to
+    0.1.14 (#4343)
+  * build(deps): bump cloud.google.com/go/storage (#4342)
+  * build(deps): bump github.com/minio/minio-go/v7 from 7.0.82 to
+    7.0.83 in the common-golang-dependencies group (#4337)
+  * feat(notifications): tweak snapshot report template (#4338)
+  * Update command_benchmark_compression.go (#4339)
+  * build(deps): bump the kopia-ui-npm-dependencies group (#4327)
+  * build(deps): bump codecov/codecov-action from 5.0.7 to 5.1.2
+    (#4330)
+  * build(deps): bump docker/setup-buildx-action in the docker
+    group (#4329)
+  * build(deps): bump the github-actions group with 3 updates
+    (#4328)
+  * build(deps): bump github.com/studio-b12/gowebdav from 0.9.0 to
+    0.10.0 (#4315)
+  * build(deps): bump the common-golang-dependencies group across 1
+    directory with 8 updates (#4336)
+  * feat(server): emit notifications as JSON to stderr when running
+    under KopiaUI (#4322)
+  * feat(notifications): emit snapshot report notifications in the
+    UI/server (#4323)
+  * feat(notifications): improved notification templates (#4321)
+  * feat(general): misc notifications improvements (#4319)
+  * build(deps): bump the common-golang-dependencies group with 4
+    updates (#4314)
+  * build(deps): bump the telemetry-dependencies group with 4
+    updates (#4312)
+  * feat(ui): upgraded htmlui to the latest version (#4317)
+  * feat(kopiaui): support for AppArmor on Ubuntu 24.04 (#4318)
+  * build(deps): bump the common-golang-dependencies group with 4
+    updates (#4311)
+  * feat(ui): upgraded htmlui to the latest version (#4301)
+  * feat(ui): upgraded htmlui to the latest version (#4300)
+  * build(deps): bump the common-golang-dependencies group across 1
+    directory with 3 updates (#4299)
+  * build(deps): bump github.com/prometheus/common (#4298)
+  * build(deps): bump github/codeql-action in the github-actions
+    group (#4286)
+  * build(deps): bump github.com/mocktools/go-smtp-mock/v2 (#4277)
+  * build(deps): bump codecov/codecov-action from 4.6.0 to 5.0.7
+    (#4287)
+  * build(deps): bump the kopia-ui-npm-dependencies group (#4288)
+  * build(deps): bump github.com/hanwen/go-fuse/v2 from 2.6.4 to
+    2.7.2 (#4291)
+  * feat(server): only log successful authentication events when
+    --log-server-requests is enabled (#4296)
+  * build(deps): bump github.com/minio/minio-go/v7 (#4290)
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#4275)
+  * build(deps): bump google.golang.org/api (#4274)
+
+-------------------------------------------------------------------
 Thu Nov 21 07:54:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.2:

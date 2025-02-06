@@ -3,11 +3,11 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/libsecret.git</param>
-    <param name="revision">0.21.5</param>
+    <param name="revision">37d3912f25d81942984ab1d90db5f1cc469a879a</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-<!--    <param name="changesgenerate">enable</param> -->
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

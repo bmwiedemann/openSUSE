@@ -624,4 +624,20 @@
     <comment>Add support for SUSE SL Micro 6.1. Drop non-existent Leap 15.7 support</comment>
     <requestid>1201849</requestid>
   </revision>
+  <revision rev="79" vrev="6">
+    <srcmd5>8f17df38b81a7846351e74ac31348dd9</srcmd5>
+    <version>20240701</version>
+    <time>1737828616</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for openSUSE Leap 16.0 to the database</comment>
+    <requestid>1240207</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7cb3c8b10ac30275e3ebd72ac77b12d5</srcmd5>
+    <version>20250124</version>
+    <time>1738072726</time>
+    <user>anag+factory</user>
+    <comment>Update osinfo-db database version to 20250124</comment>
+    <requestid>1240612</requestid>
+  </revision>
 </revisionlist>

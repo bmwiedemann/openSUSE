@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 23 17:42:59 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 3.3.0:
+  * Improving docs for image sequences
+  * Change default theme to 'Cosmic Dusk'
+  * Adding chat badge to README.md
+  * Allow word-wrap on About dialog, for translations which are much wider than English
+  * Bump version to 3.3.0 (minimum libopenshot 0.4.0, minimum libopenshot-audio 0.4.0)
+  * Updating supporters / credits for all donors and supporters
+  * Updating all translations
+  * Support left and right arrows on tutorial dock, depending on screen/monitor size and widget position.
+  * Adding Window Title to color picker. Works in all languages. "OpenShot: Pick Screen Color"
+  * Fix High DPI issues with new color picker
+  * Adding new Wayland compatible color picker, which allows color picking only from the OpenShot main window.
+  * Small adjustment to Cosmic Dusk top toolbar padding.
+  * Adding "Copy Version Info" context menu to About dialog.
+  * New design and layout for the About dialog to match Cosmic Dusk design.
+
+-------------------------------------------------------------------
 Tue Jun 25 12:15:48 UTC 2024 - info@paolostivanin.com
 
 - Update to version 3.2.0:

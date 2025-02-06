@@ -1,6 +1,7 @@
 #
 # spec file for package soapy-bladerf
 #
+# Copyright (c) 2025, SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,19 +20,18 @@
 %define soapy_modname soapysdr%{soapy_modver}-module-bladerf
 
 Name:           soapy-bladerf
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        SoapySDR BladeRF module
 License:        LGPL-2.1
 Group:          Hardware/Other
 Url:            https://github.com/pothosware/SoapyBladeRF/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyBladeRF.git
-Source:         https://github.com/pothosware/SoapyBladeRF/archive/%{name}-%{version}.tar.gz
+Source:         https://github.com/pothosware/SoapyBladeRF/archive/%{name}-%{version}.tar.gz#/SoapyBladeRF-%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(SoapySDR)
-BuildRequires:  pkgconfig(libbladeRF)
+BuildRequires:  soapy-sdr-devel
+BuildRequires:  bladeRF-devel
 
 %description
 Soapy BladeRF - BladeRF device support for Soapy SDR.
@@ -50,10 +50,12 @@ A Soapy module that supports BladeRF devices within the Soapy API.
 
 %build
 %cmake
-make VERBOSE=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
+
+%check
 
 %files -n %{soapy_modname}
 %license LICENSE.LGPLv2.1

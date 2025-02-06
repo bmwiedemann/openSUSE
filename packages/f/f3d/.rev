@@ -98,4 +98,41 @@
   * Fix build compatibility with vtk v9.4.0</comment>
     <requestid>1234490</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3288164fb26a95893866a3c92c2991f5</srcmd5>
+    <version>3.0.0</version>
+    <time>1737490244</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0:
+  For F3D users:
+  * BREAKING CHANGE: Configuration files have changed syntax
+  * BREAKING CHANGE: Removed all deprecated options
+  * BREAKING CHANGE: --scalars have been split into --scalar-coloring and --coloring-array CLI options
+  * BREAKING CHANGE: = must be used for CLI Options, --option value is not supported anymore
+  * BREAKING CHANGE: Removed geometry-only and group-geometries and added multi-file-mode option for more flexible loading of multiple files
+  * BREAKING CHANGE: There is no headless specific binary release anymore, just use the standard binary with --rendering-backend=egl
+  * BREAKING CHANGE: --dry-run has been renamed --no-config
+  * BREAKING CHANGE: Esc to quit the app has been changed to Ctrl+Q
+  * BREAKING CHANGE: --animation-frame-rate has been replaced by --frame-rate
+  * BREAKING CHANGE: Renamed --bg-color into --background-color
+  * BREAKING CHANGE: Renamed --comp into --coloring-component
+  * BREAKING CHANGE: Removed the ? interaction to dump info, use commands instead
+  * BREAKING CHANGE: Renamed --progress into --loading-progress
+  * BREAKING CHANGE: Renamed --cells into --coloring-by-cells
+  * BREAKING CHANGE: Renamed --range into --coloring-range
+  * BREAKING CHANGE: Renamed --bar into --coloring-scalar-bar
+  * BREAKING CHANGE: Renamed --inverse into --volume-inverse
+  * BREAKING CHANGE: Renamed --samples into --raytracing-samples
+  * BREAKING CHANGE: Renamed --denoise into --raytracing-denoise
+  * BREAKING CHANGE: Renamed --ref into --reference and --ref-threshold into --reference-threshold
+  * BREAKING CHANGE: Renamed --readers-list into --list-readers
+  * BREAKING CHANGE: F3D binary release is now built with GCC9
+  * Changed the logo!
+  * Reworked the UI using ImGui
+  * Added support for specifying interactions in config files, see doc
+  * Added a --command-script CLI option
+  * Added a tiny file dialog, just press Ctrl+O
+  * Added support for armature visualization with --armature CLI option (glTF only)</comment>
+    <requestid>1239157</requestid>
+  </revision>
 </revisionlist>

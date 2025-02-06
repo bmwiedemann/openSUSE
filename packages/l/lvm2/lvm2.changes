@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:28:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Mon Dec 16 05:58:47 UTC 2024 - Glass Su <glass.su@suse.com>
 
 - Update lvm2 from LVM2.2.03.24 to LVM2.2.03.29

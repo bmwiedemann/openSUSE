@@ -1,7 +1,7 @@
 #
 # spec file for package chrony
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -261,9 +261,11 @@ install -Dpm 0644 %{SOURCE6} \
 install -Dpm 0644 %{SOURCE11} \
   %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
+%if 0%{?suse_version} < 1600
 install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcchronyd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcchrony-wait
+%endif
 
 install -d %{buildroot}%{_systemdutildir}/ntp-units.d
 echo 'chronyd.service' > \
@@ -361,7 +363,9 @@ done
 %{_systemdutildir}/ntp-units.d/*.list
 %{_unitdir}/chrony*.service
 %{_unitdir}/chrony*.timer
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcchrony*
+%endif
 %{_tmpfilesdir}/%{name}.conf
 %{_fillupdir}/sysconfig.chronyd
 %dir %attr(750,chrony,chrony) %{_localstatedir}/lib/chrony

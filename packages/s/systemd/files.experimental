@@ -1,6 +1,10 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
+
+# the ssh proxy will likely be promoted to systemd-container
+%dir %{_distconfdir}/ssh
+%dir %{_distconfdir}/ssh/ssh_config.d
 %dir %{_prefix}/lib/pcrlock.d
 %dir %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d
 %dir %{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d
@@ -13,6 +17,9 @@
 %ghost %{_sysconfdir}/systemd/oomd.conf
 %{_bindir}/oomctl
 %{_bindir}/run0
+%if %{with upstream}
+%{_bindir}/systemd-pty-forward
+%endif
 %{_bindir}/systemd-vmspawn
 %if %{with sd_boot}
 %{_bindir}/ukify
@@ -27,9 +34,16 @@
 %{_datadir}/dbus-1/system.d/org.freedesktop.oom1.conf
 %{_datadir}/zsh/site-functions/_oomctl
 %{_datadir}/zsh/site-functions/_run0
+%{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
 %{_mandir}/man1/oomctl.1.gz
 %{_mandir}/man1/run0.1.gz
+%{_mandir}/man1/systemd-keyutil.1.gz
 %{_mandir}/man1/systemd-measure.1.gz
+%if %{with upstream}
+%{_mandir}/man1/systemd-pty-forward.1.gz
+%endif
+%{_mandir}/man1/systemd-sbsign.1.gz
+%{_mandir}/man1/systemd-ssh-proxy.1.gz
 %{_mandir}/man1/systemd-vmspawn.1.gz
 %if %{with sd_boot}
 %{_mandir}/man1/ukify.1.gz
@@ -40,6 +54,7 @@
 %{_mandir}/man5/systemd.pcrlock.5.gz
 %{_mandir}/man5/systemd.pcrlock.d.5.gz
 %{_mandir}/man5/sysupdate.d.5.gz
+%{_mandir}/man5/sysupdate.features.5.gz
 %{_mandir}/man8/systemd-bsod.8.gz
 %{_mandir}/man8/systemd-bsod.service.8.gz
 %{_mandir}/man8/systemd-oomd.8.gz
@@ -61,6 +76,7 @@
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
 %{_mandir}/man8/systemd-pcrphase.service.8.gz
 %endif
+%{_mandir}/man8/systemd-ssh-generator.8.gz
 %{_mandir}/man8/systemd-storagetm.8.gz
 %{_mandir}/man8/systemd-storagetm.service.8.gz
 %{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
@@ -73,9 +89,12 @@
 %{_mandir}/man8/systemd-tpm2-setup-early.service.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.service.8.gz
-%{_prefix}/lib/kernel/install.d/60-ukify.install
 %endif
 %{_pam_vendordir}/systemd-run0
+%if %{with sd_boot}
+%{_prefix}/lib/kernel/install.d/60-ukify.install
+%endif
+%{_prefix}/lib/kernel/uki.conf
 %{_prefix}/lib/pcrlock.d/350-action-efi-application.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/300-0x00000000.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/600-0xffffffff.pcrlock
@@ -91,12 +110,15 @@
 %{_prefix}/lib/pcrlock.d/990-final.pcrlock
 %{_systemd_util_dir}/oomd.conf
 %{_systemd_util_dir}/systemd-bsod
+%{_systemd_util_dir}/systemd-keyutil
 %{_systemd_util_dir}/systemd-measure
 %{_systemd_util_dir}/systemd-oomd
 %if %{with sd_boot}
 %{_systemd_util_dir}/systemd-pcrextend
 %endif
 %{_systemd_util_dir}/systemd-pcrlock
+%{_systemd_util_dir}/systemd-sbsign
+%{_systemd_util_dir}/systemd-ssh-proxy
 %{_systemd_util_dir}/systemd-storagetm
 %{_systemd_util_dir}/systemd-sysupdate
 %if %{with sd_boot}
@@ -106,6 +128,8 @@
 %if %{with sd_boot}
 %{_systemd_util_dir}/ukify
 %endif
+# ssh-generator: in the futur to be moved to the main package
+%{_systemdgeneratordir}/systemd-ssh-generator
 %{_systemdgeneratordir}/systemd-tpm2-generator
 %{_sysusersdir}/systemd-oom.conf
 %{_unitdir}/initrd.target.wants/systemd-bsod.service
@@ -154,17 +178,3 @@
 %{_unitdir}/systemd-tpm2-setup.service
 %endif
 %{_unitdir}/systemd-vmspawn@.service
-
-# ssh-generator: in the futur to be moved to the main package
-%{_systemdgeneratordir}/systemd-ssh-generator
-%if %{without bootstrap}
-%{_mandir}/man8/systemd-ssh-generator.8.gz
-%endif
-# the ssh proxy will likely be promoted to systemd-container
-%dir %{_distconfdir}/ssh
-%dir %{_distconfdir}/ssh/ssh_config.d
-%{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
-%{_systemd_util_dir}/systemd-ssh-proxy
-%if %{without bootstrap}
-%{_mandir}/man1/systemd-ssh-proxy.1.gz
-%endif

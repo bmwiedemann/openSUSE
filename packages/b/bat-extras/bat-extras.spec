@@ -1,7 +1,7 @@
 #
 # spec file for package bat-extras
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/eth-p/bat-extras
 Source0:        https://github.com/eth-p/bat-extras/archive/v%{version}.tar.gz
 Source1:        https://github.com/eth-p/best/archive/%{testsuite_version}.tar.gz
+Patch0:         recreate-snapshots-with-bat-v0.25.0.patch
 Requires:       bash
 Requires:       bat
 BuildRequires:  bat
@@ -44,6 +45,7 @@ Bash scripts that integrate bat with various command line tools.
 %setup -q -a 1
 rm -r '.test-framework'
 mv best-%{testsuite_version}/ '.test-framework'
+%patch 0
 
 %build
 

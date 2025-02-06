@@ -86,7 +86,7 @@
 %define rockchip_idb 1
 %define binext .itb
 %endif
-%if "%target" == "sige7-rk3588"
+%if "%target" == "nanopc-t6-rk3588" || "%target" == "rock5b-rk3588" || "%target" == "sige7-rk3588"
 %define is_rk3588 1
 %define is_armv8 1
 %define rockchip_idb 1
@@ -197,7 +197,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2024.10
+%define archive_version 2025.01
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -227,7 +227,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2024.10
+Version:        2025.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -236,8 +236,10 @@ URL:            http://www.denx.de/wiki/U-Boot
 Source:         http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2
 Source1:        http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.sig
 Source2:        arndale-bl1.img
-Source3:        https://github.com/JeffyCN/rockchip_mirrors/blob/6186debcac95553f6b311cee10669e12c9c9963d/bin/rk35/rk3568_bl31_v1.28.elf?raw=true#/rk3568_bl31_v1.28.elf
-Source4:        https://github.com/JeffyCN/rockchip_mirrors/blob/ddf03c1d80b33dac72a33c4f732fc5849b47ff99/bin/rk35/rk3568_ddr_1056MHz_v1.13.bin?raw=true#/rk3568_ddr_1056MHz_v1.13.bin
+#Source3:        https://github.com/JeffyCN/rockchip_mirrors/blob/6186debcac95553f6b311cee10669e12c9c9963d/bin/rk35/rk3568_bl31_v1.28.elf?raw=true#/rk3568_bl31_v1.28.elf
+Source3:        rk3568_bl31_v1.28.elf
+#Source4:        https://github.com/JeffyCN/rockchip_mirrors/blob/ddf03c1d80b33dac72a33c4f732fc5849b47ff99/bin/rk35/rk3568_ddr_1056MHz_v1.13.bin?raw=true#/rk3568_ddr_1056MHz_v1.13.bin
+Source4:        rk3568_ddr_1056MHz_v1.13.bin
 Source5:        https://github.com/armbian/rkbin/blob/fdb0feeb23c3b709383e4a43e3f3a166942de763/rk35/rk3588_bl31_v1.45.elf?raw=true#/rk3588_bl31_v1.45.elf
 Source6:        https://github.com/armbian/rkbin/blob/d5a9069ba7fe71ba76d0a4c63f05515136c27b9c/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.15.bin?raw=true#/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.15.bin
 Source99:       u-boot.keyring
@@ -259,10 +261,6 @@ Patch0012:      0012-riscv-enable-CMD_BTRFS.patch
 Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
-Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
-Patch0017:      0017-riscv-dts-jh7110-Update-qspi-node-w.patch
-Patch0018:      0018-Revert-riscv-dts-jh7110-Update-qspi.patch
-Patch0019:      0019-scripts-dtc-pylibfdt-libfdt.i_shipp.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

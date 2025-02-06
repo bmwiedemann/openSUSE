@@ -1,7 +1,7 @@
 #
 # spec file for package libspelling
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define api_ver 1
 
 Name:           libspelling
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        A spellcheck library for GTK 4
 License:        LGPL-2.1-or-later

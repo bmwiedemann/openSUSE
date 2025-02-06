@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 27 14:26:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 26.2
+* Added release info to appstream file.
+- Update to version 26.1
+* Added developer id to appstream file.
+
+-------------------------------------------------------------------
+Fri Jan 24 19:06:15 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 26.0
+  * French translation of the manual.
+  * Fixed default window size.
+  * Mobile layout is now used by default on devices with small
+    screens.
+  * New option --desktop.
+  * Minimum required Qt version is now 6.5.
+
+-------------------------------------------------------------------
 Fri Nov 15 13:44:42 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 25.2

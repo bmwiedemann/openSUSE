@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 20 09:51:09 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.18.3:
+  * Bug fixes:
+    - Regression: Client keep-alive subsequent requests very slow #1997
+    - 304 Not Modified response stalls until timeout #1998
+
+- Update to 0.18.2:
+  * Bug fixes:
+    - Fix the problem that CreateFile2 in mmap::open fails to... #1973
+    - Default Accept-Encoding header for the client #1975
+    - SSLClientReconnection fails on Windows #1980
+    - delay in keep_alive due to sleep #1969
+    - missing query pararm in httplib::Client::send #1985
+
+-------------------------------------------------------------------
 Wed Oct 30 11:21:07 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.18.1:

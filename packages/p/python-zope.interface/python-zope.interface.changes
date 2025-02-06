@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 20 10:32:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.2
+  * Add preliminary support for Python 3.14a2, this means that
+    ``.common.builtins.IByteString`` and ``.common.collections.IByteString`` are
+    no longer available from this Python version onwards as Python 3.14 dropped
+    ``collections.abc.ByteString``.
+
+-------------------------------------------------------------------
 Wed Oct 30 13:49:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.1.1

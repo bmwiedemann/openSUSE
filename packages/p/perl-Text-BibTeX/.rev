@@ -131,4 +131,15 @@
 </comment>
     <requestid>1156517</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed8de46def32e65ab19fc75e73127df1</srcmd5>
+    <version>0.900.0</version>
+    <time>1737722296</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.900.0 (0.90)
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+  0.90 2025-01-06
+   * Added support to Haiku OS (thanks to Joachim Mairböc (forwarded request 1239659 from tinita)</comment>
+    <requestid>1239744</requestid>
+  </revision>
 </revisionlist>

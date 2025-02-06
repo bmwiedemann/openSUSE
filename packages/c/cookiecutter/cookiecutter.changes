@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 07:06:26 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Add python3-sphinx_rtd_theme as build dependency to fix the doc build fail.
+
+-------------------------------------------------------------------
 Fri Jan 17 01:30:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unneeded BuildRequires on recommonmark, it was dropped back in
@@ -132,7 +137,7 @@ Wed May 10 08:40:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 - add sle15_python_module_pythons
 
 -------------------------------------------------------------------
-Tue Jun 21 09:02:36 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Jun 21 09:02:36 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - remove obsolete patch cookiecutter-fix-setup.patch
 - update to version 2.1.1:
@@ -164,12 +169,12 @@ Sun Apr 24 16:57:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
 - Sync rpm requirements metadata to setuptools generated metadata
 
 -------------------------------------------------------------------
-Mon Apr  4 10:07:33 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Apr  4 10:07:33 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - add fix-setup-version.patch to fix the version in setup.py
 
 -------------------------------------------------------------------
-Mon Mar 28 09:52:12 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Mar 28 09:52:12 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.0.2:
   - Fix Python version number in cookiecutter --version and test on Python 3.10 (#1621) @ozer550
@@ -256,7 +261,7 @@ Sat May 15 11:11:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 - Make cookiecutter usable by all python3X flavors
 
 -------------------------------------------------------------------
-Fri May 14 16:19:48 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri May 14 16:19:48 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 1.7.3:
  - Fixed jinja2 and markupsafe dependencies
@@ -269,7 +274,7 @@ Wed Jan 20 08:32:20 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 - Use fdupes
 
 -------------------------------------------------------------------
-Wed Apr 22 18:05:41 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Apr 22 18:05:41 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - add python3-python-slugify as new dependency, fixes build.
 - update to version 1.7.2:
@@ -322,12 +327,12 @@ Wed Apr 22 18:05:41 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 - remove patch fix-click-711.patch, merged upstream.
 
 -------------------------------------------------------------------
-Fri Apr  3 19:47:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Apr  3 19:47:20 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - add fix-click-711.patch to fix compatibility with click 7.1.1 which fixes the tests which fixes the build.
 
 -------------------------------------------------------------------
-Wed Jan  1 10:54:34 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Jan  1 10:54:34 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - remove obsolete patch fix-python-invocation-tests.diff
 - remove obsolete patch cookiecutter-click7.patch
@@ -379,7 +384,7 @@ Wed Jan  2 09:55:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 - Add patch to build with new click cookiecutter-click7.patch
 
 -------------------------------------------------------------------
-Wed Feb 21 10:37:20 UTC 2018 - sebix+novell.com@sebix.at
+Wed Feb 21 10:37:20 UTC 2018 - sebix@sebix.at
 
 -  update to version 1.6.0:
  * Include template path or template URL in cookiecutter context under _template

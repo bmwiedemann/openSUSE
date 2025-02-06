@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
 Source4:        conncheck-disabled.conf
+Source5:        00-server.conf
 Source98:       macros.NetworkManager
 Source99:       NetworkManager-rpmlintrc
 
@@ -289,6 +290,18 @@ Installs a nm-cloud-setup tool that can automatically configure
 NetworkManager in cloud setups. Currently only EC2 is supported.
 This tool is still experimental.
 
+%package config-server
+Summary:        NetworkManager config file for "server-like" defualts
+Group:          System Environment/Base
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description config-server
+This package adds a configuration file to disable automatic (DHCP/SLAAC)
+configuration on ethernet devices with no other matching connections.
+
+This package is intended to be installed by default for server deployments.
+
 %lang_package
 
 %prep
@@ -369,6 +382,7 @@ install -m 0755 %{SOURCE1} %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.
 install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/NetworkManager/
 chmod 0644 %{buildroot}%{_prefix}/lib/NetworkManager/NetworkManager.conf
 install -m 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/NetworkManager/conf.d
+install -m 0644 %{SOURCE5} %{buildroot}%{_prefix}/lib/NetworkManager/conf.d
 # Install RPM macros to be consumed by plugins
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 0644 %{SOURCE98} %{buildroot}%{_rpmmacrodir}/
@@ -523,5 +537,8 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_prefix}/lib/NetworkManager/dispatcher.d/90-nm-cloud-setup.sh
 %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d/90-nm-cloud-setup.sh
 %{_mandir}/man8/nm-cloud-setup.8%{?ext_man}
+
+%files config-server
+%{_prefix}/lib/NetworkManager/conf.d/00-server.conf
 
 %changelog

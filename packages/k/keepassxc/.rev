@@ -520,4 +520,12 @@
     <comment>- drop runtime dependency on update-desktop-files</comment>
     <requestid>1220583</requestid>
   </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>5c664a8fadcde8fdb4db8de7c6d216f2</srcmd5>
+    <version>2.7.9</version>
+    <time>1737490256</time>
+    <user>anag+factory</user>
+    <comment>- build with Botan 3 on Leap 16</comment>
+    <requestid>1239237</requestid>
+  </revision>
 </revisionlist>

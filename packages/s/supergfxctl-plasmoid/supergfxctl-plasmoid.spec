@@ -1,7 +1,7 @@
 #
 # spec file for package supergfxctl-plasmoid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ Summary:        KDE Plasma plasmoid for supergfxctl
 License:        MPL-2.0
 URL:            https://gitlab.com/Jhyub/supergfxctl-plasmoid
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
@@ -36,7 +36,7 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
-Requires:       hicolor-icon-theme = 0.17
+Requires:       hicolor-icon-theme >= 0.17
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-ksvg-imports >= %{kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}

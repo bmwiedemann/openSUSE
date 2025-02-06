@@ -139,4 +139,71 @@
     <comment></comment>
     <requestid>1116890</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>34c47a798bf6f302e95fb3fae1fcdb1c</srcmd5>
+    <version>1.12.1</version>
+    <time>1737389807</time>
+    <user>anag+factory</user>
+    <comment>## 1.12.1 -- 2024-12-17
+### Changed
+- Improve man pages and add `dunstify(1)`
+- Accept old `height` syntax again (with notice) (#1412)
+- Add `history-clear` and `history-rm` zsh completions (#1418)
+### Fixed
+- Memory corruption when reloading (#1413)
+- Fix height calculation regression (#1411)
+- Handle correctly file uri icons (#1409)
+- Fix typos in docs (#1415)
+## 1.12.0 -- 2024-11-30
+### Added
+- Export rules via dbus with `dunstctl rules [--json]` (#1212)
+- Added checks and messages for missing DBUS\_SESSION\_BUS\_ADDRESS (#1389)
+- Add `-e/--exit` flag to `dunstctl is-paused` to exit with 1 when paused (#1378)
+- Add color gradients for the progress bar (by providing a list of colors instead of one) (#1370)
+- Use TESTDIR env var as the base for the test program (#1376)
+- Add `dunstctl reload` to hot reload the configuration (#1350)
+- Add an optional id to `dunstctl close` (#1351)
+- Print compile-time options in `dunst --version` (#1336)
+### Changed
+- BREAKING: Implement dynamic height (changes the the `height` setting, see manual) (#1342)
+- Change the preferred syntax of `offset` from `NxN` to `(N,N)` (#1330)
+- Install the systemd service file in the session.slice (#1397)
+- Open url with `dunstctl action` if no action is present (#1345,#1395)
+- Remove default icons (now no icons are hard-coded) (#1365,#1358)
+- Various updates to documentation and test suite
+### Fixed
+- Order of context menu was reversed (#1394,#1375)
+- Resolve ~ and $HOME in `icon_path` (#1383,#1371)
+- Fix broken link to freedesktop's notification specs in man page (#1381)
+- Remove the message about shortcuts deprecation (#1353)
+- Fix vertical padding behaviour (#1342)
+- Fix bash completion (#1347)
+- Fix file suffix for fish completions during installation (#1339)
+- Enable tests
+- main package is a dependency of shell completion packages
+- update to 1.11.0:
+  * Add corners, progress_bar_corners and icon_corners options 
+    to control which corners to round (#1268)
+  * Support GTK/CSS cursor names on Wayland 
+  * Print detected monitors names (X11) 
+  * Make X11 optional in build (this allows wayland-only dunst) 
+  * Shell completions are now official 
+  * Don’t search for icon path if icons are disabled 
+  * Eagerly parse and cache colors 
+  * Update dunstctl manpage and documentation
+  * Fix settings initialization (this prevented –print and –startup_notification from working) 
+  * Rework timer logic and fix error about Glib source ID for good 
+  * Prevent memory corruption in XrmSetDatabase 
+  * Don’t try to print NULL strings 
+  * Do not resolve icon paths twice 
+  * Don’t crash the test suite if librsvg is not present 
+  * Fix memory leak in DBus RuleEnable
+  * Fix dunstctl rule (#1281)
+  * Remove newlines from icon logging 
+  * Prevent make from failing if git tags are not found 
+  * Fix some typos (#1324, #1325, #1279)
+- provide sub-packages for shell completions
+</comment>
+    <requestid>1239055</requestid>
+  </revision>
 </revisionlist>

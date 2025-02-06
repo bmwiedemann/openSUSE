@@ -1,5 +1,5 @@
 diff --git a/config/tenant.conf b/config/tenant.conf
-index ead02b8..1b3d921 100644
+index 717f686..7cf5a49 100644
 --- a/config/tenant.conf
 +++ b/config/tenant.conf
 @@ -106,7 +106,8 @@ request_timeout = 60

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-debian
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Free Software Foundation Europe e.V.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,20 +17,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-debian
-Version:        0.1.49
+Version:        0.1.52
 Release:        0
 Summary:        Debian package related modules
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://salsa.debian.org/python-debian-team/python-debian
-Source:         https://files.pythonhosted.org/packages/source/p/python-debian/python-debian-%{version}.tar.gz
+Source:         https://salsa.debian.org/python-debian-team/python-debian/-/archive/%{version}/python-debian-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  gpg2
 BuildRequires:  python-rpm-macros
-Requires:       python-chardet
-Requires:       python-six
+Requires:       python-charset-normalizer
 Requires:       zstd
 BuildArch:      noarch
 Provides:       python-debian = %{version}-%{release}
@@ -54,14 +55,18 @@ data. Currently handled are:
 %setup -q -n python-debian-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/debian
+%{python_sitelib}/python_debian-%{version}.dist-info
 
 %changelog

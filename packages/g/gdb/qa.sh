@@ -644,8 +644,12 @@ kfail_powerpc64le=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31827
     "FAIL: gdb.base/gnu_vector.exp: call add_structvecs"
 
-    # Failures on opensuse Leap 15.6.  To be reproduced and investigated.
+    # GLIBC problem with prctl on ppc64le.  Fixed in 2.40.
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29770
+    # https://bugzilla.suse.com/show_bug.cgi?id=1234665
     "FAIL: gdb.ada/tasks.exp: info threads"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31229
     "FAIL: gdb.linespec/explicit.exp: complete after -qualified -source: cmd complete .b -qualified -source thr."
     "FAIL: gdb.linespec/explicit.exp: complete after -qualified -source: tab complete .b -qualified -source thr."
     "FAIL: gdb.linespec/explicit.exp: complete after -source: cmd complete .b -source thr."

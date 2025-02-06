@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:20:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- sphinx_rtd_theme is now an optional dependency for Sphinx
+- split HTML docs to the doc subpackage
+
+-------------------------------------------------------------------
 Wed Nov 20 16:01:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.6:

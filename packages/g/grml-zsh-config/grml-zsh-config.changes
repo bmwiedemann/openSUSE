@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:31:34 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.4:
+  * zshrc: deprecate xunfunction
+  * zshrc: remove "hbp" alias
+
+-------------------------------------------------------------------
+Wed Jan 22 11:21:47 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.13:
+  * zsh aliases: add afs(apt-file search)
+  * zshenv: drop live-cd only hacks
+  * zsh: drop solaris support
+
+-------------------------------------------------------------------
 Thu Jan  2 15:46:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.12:

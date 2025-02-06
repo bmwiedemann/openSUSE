@@ -83,4 +83,20 @@
 - Add 71.patch to fix build with glib 2.82</comment>
     <requestid>1201744</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>71572f78c269e2841c0e7e3559d52f68</srcmd5>
+    <version>0.8.0</version>
+    <time>1737651992</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239955</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a91e903d9e47f379657cadea0d19cb58</srcmd5>
+    <version>0.8.0</version>
+    <time>1737722406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239974</requestid>
+  </revision>
 </revisionlist>

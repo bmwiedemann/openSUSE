@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 29 06:10:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 132.0.6834.159 (boo#1236586)
+  * CVE-2025-0762: Use after free in DevTools
+
+-------------------------------------------------------------------
+Thu Jan 23 08:01:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 132.0.6834.110 (boo#1236306)
+  * CVE-2025-0611: Object corruption in V8
+  * CVE-2025-0612: Out of bounds memory access in V8
+
+-------------------------------------------------------------------
 Mon Jan 13 13:21:48 CET 2025 - ro@suse.de
 
 - Chromium 132.0.6834.83

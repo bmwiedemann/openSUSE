@@ -1152,4 +1152,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226483</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>fb4670fb8e5c5b869103056ebdc8f166</srcmd5>
+    <version>4.16.0+git.1735891853.256a570a</version>
+    <time>1737560328</time>
+    <user>anag+factory</user>
+    <comment>- ERROR: stonith:fence_sbd: got no meta-data, does this RA exist?
+  (bsc#1236184)
+  Build package without azurei-arm to be able to submit to SLE16
+  until azure-arm stop use deprecated python packages
+
+- Update to version 4.16.0+git.1735891853.256a570a:
+  * fence_sbd: get devices from SBD_DEVICE env variable if devices parameter isnt set (#591)
+  * fence_raritan_px3: fix syntax warnings</comment>
+    <requestid>1239493</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>65824b2c642160c051eafd3adbeca977</srcmd5>
+    <version>4.16.0+git.1735891853.256a570a</version>
+    <time>1738010000</time>
+    <user>anag+factory</user>
+    <comment>- Remove not supported agents:
+  compute, docker, ldom, openstack, rhevm, xenapi</comment>
+    <requestid>1240620</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>2bd5eee34827918896f92085b942718a</srcmd5>
+    <version>4.16.0+git.1738070632.02141bfa</version>
+    <time>1738163905</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.16.0+git.1738070632.02141bfa:
+  * fence_azure_arm: use azure-identity instead of msrestazure, which has been deprecated (#603)</comment>
+    <requestid>1241168</requestid>
+  </revision>
 </revisionlist>

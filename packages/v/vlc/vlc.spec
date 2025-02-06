@@ -206,7 +206,6 @@ BuildRequires:  pkgconfig(xi)
 %endif
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libupnp)
-BuildRequires:  pkgconfig(opencv) > 2.0
 %ifarch %{ix86} x86_64
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 BuildRequires:  pkgconfig(libprojectM-qt5) >= 2.0.0
@@ -391,22 +390,6 @@ Conflicts:      %{conflicts}-qt
 This subpackage provides a Qt interface for VLC and selects it by
 default when `vlc` is invoked from an X session.
 
-%package opencv
-Summary:        OpenCV plugins for VLC media player
-Group:          Productivity/Multimedia/Video/Players
-Requires:       %{name}-noX = %{version}-%{release}
-# We need the noX package first, as it contains vlc-cache-gen
-Requires(post): %{name}-noX
-# Package split
-Provides:       %{name}:%{_libdir}/vlc/plugins/video_filter/libopencv_example_plugin.so
-Conflicts:      %{name} < %{version}-%{release}
-Supplements:    packageand(%{name}-noX:opencv3)
-# Data required for face detection
-Recommends:     opencv3
-
-%description opencv
-This subpackage provides a wrapper plugin for OpenCV for
-OpenCV based video filters and a face detection example.
 
 %prep
 %setup -q
@@ -504,9 +487,6 @@ autoreconf -fiv
    --with-default-monospace-font=%{_datadir}/fonts/truetype/FreeMono.ttf \
 %if %{with opengles}
   --enable-gles2                        \
-%endif
-%if 0%{?is_opensuse}
-   --enable-opencv                      \
 %endif
 %if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
   --enable-wayland                      \
@@ -636,16 +616,6 @@ if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
 fi
 
 %postun -n %{name}-vdpau
-if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
-  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
-fi
-
-%post -n %{name}-opencv
-if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
-  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
-fi
-
-%postun -n %{name}-opencv
 if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
   %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
 fi
@@ -1226,12 +1196,6 @@ fi
 %{_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
 %{_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
 %{_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
-
-%if 0%{?is_opensuse}
-%files opencv
-%{_libdir}/vlc/plugins/video_filter/libopencv_example_plugin.so
-%{_libdir}/vlc/plugins/video_filter/libopencv_wrapper_plugin.so
-%endif
 
 %files -n libvlc%{libvlc}
 %{_libdir}/libvlc.so.%{libvlc}*

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 23 06:14:32 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add config-server subpackage (bsc#1224868).
+
+-------------------------------------------------------------------
 Thu Oct  3 06:25:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.50.0:

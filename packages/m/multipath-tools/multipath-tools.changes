@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Jan 24 15:06:55 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.11.0+164+suse.24eeee7
+
+- Reviewed Upstream changes from 0.12 development
+
+  * Continued rework of the path checker loop
+  * multipathd now sets the port_state of Fibre Channel remote ports to
+    "marginal" for NVMe devices, too (with nvme_core.multipath=N only).
+  * Make sure maps are reloaded in the path checker loop after detecting an
+    inconsistent or wrong kernel state (bsc#1236392)
+  * Make sure udev and systemd notice changes in multipath path state
+    when devices are added to or removed from multipath maps (bsc#1236321)
+  * Fix path grouping if a path device is added while offline with group_by_tpg
+    and group_by_serial path grouping policy
+    (gh#opensvc/multipath-tools#108, bsc#1236392)
+  * Fix the problem that `group_by_tpg` might be disabled if one or more
+    paths were offline during initial configuration (bsc#1236392)
+  * Fix multipathd crash because of invalid path group index value, for example
+    if an invalid path device was removed from a map.
+    (gh#opensvc/multipath-tools#105, bsc#1236392)
+
+- Changes in Upstream 0.11.0 (see also NEWS.md)
+
+  * multipathd: set rport port_state to marginal for NVMe devices
+  * Fixed a memory leak in the nvme foreign library.
+  * Fixed a problem in the marginal path detection algorithm that could cause
+    the io error check for a recently failed path to be delayed.
+    (bsc#1236390)
+  * multipath-tools: add HPE MSA Gen7 (2070/2072) to hwtable
+  * multipath-tools: add SCST to hwtable
+  * Add defaults for SCST and HPE MSA Gen7 to hwtable
+  * Reduce log level of harmless "map ... doesn't exist" message
+    (bsc#1236390)
+  * Fixes for handling empty or incompletely created multipath maps
+    (bsc#1236390)
+  * During map creation, fixed the case where a map with different name, but
+    matching UUID and matching type was already present. multipathd
+    previously failed to set up such maps. Now it will reload them with the
+    correct content. (bsc#1236390)
+
+-------------------------------------------------------------------
+Wed Jan 22 16:18:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Thu Nov 21 20:13:36 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.11.0~1+118+suse.4a51b1a

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:35:55 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 1.25.4:
+  * Add common Noto font name lookup function.
+  * Improve font Ascent/Descent handling.
+  * Allow fz_store_size to be customised in Java.
+  * Add fz_atoz() convenience function to parse size_t.
+  * Add and use convenience function for loading user CSS.
+  * Fix valgrind error seen with saving pdfs with garbage collection.
+  * Process both widgets and annotations when rewriting images.
+  * Adjust vector handling in page segmentation.
+  * Only include latest object versions when gathering object streams.
+  * Add AFRelationship property.
+  * Minimise size of softmasks before rendering.
+  * Fix bug where mutool clean produced object 0 with invalid gen num.
+  * Fix bbox calculation in segmentation.
+  * Improve exception messages from tesseract.
+  * When deleting widget fields, compare the objects, not their pointers.
+  * Fix for JBIG2 data not having the correct filter attached.
+  * Fix concerning renumbered PDF encryption dictionaries. 
+
+-------------------------------------------------------------------
+Thu Jan 23 10:15:49 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 1.25.3:
+  * Fix bug where structure trees were always kept.
+  * Add option to drop/keep structure trees when rearranging or subsetting pages.
+
+-------------------------------------------------------------------
 Thu Jan  2 16:39:15 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 1.25.2:

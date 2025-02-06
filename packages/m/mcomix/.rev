@@ -99,4 +99,15 @@
 </comment>
     <requestid>1175872</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b0cca2f7a94523efa63fbea59109f7fe</srcmd5>
+    <version>3.1.0</version>
+    <time>1738166610</time>
+    <user>anag+factory</user>
+    <comment>- for Leap 16.0 requires python3 instead of python311
+- fix Requires
+- adjust spec file for Leap 16.0
+</comment>
+    <requestid>1241196</requestid>
+  </revision>
 </revisionlist>

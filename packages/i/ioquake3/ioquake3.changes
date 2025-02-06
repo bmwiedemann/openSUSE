@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jan 26 06:24:31 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add ioquake3-drop-build-date-from-generated-file.patch, 
+  https://github.com/ioquake/ioq3/pull/704
+  Fix reproducible builds 
+
+-------------------------------------------------------------------
+Sat Jan 25 15:45:40 UTC 2025 - mardnh@gmx.de
+
+- Unbundle more libs
+  * build with USE_INTERNAL_LIBS=0
+- Use pkgconfig-syste BuildRequires
+- Update to version 1.36+git.20241224:
+  * Prevent SV_DropClient() from being called recursively if the
+    client is dropped by a kick or timeout and has too many
+    reliable commands.
+  * Fix reading non-sequential lumps in AAS files in pk3 files.
+  * OpenGL2: Increase flare limit to match opengl1.
+  * Show fs_homepath in Flatpak missing pk3 error.
+  * Make Team Arena pk3 error show when missing all pk3 files.
+  * Add better directions/error for missing default pk3 files.
+  * OpenGL2: Fix still projecting sun shadows onto nothing.
+  * OpenGL2: Don't project sun shadows onto nothing.
+  * Add BUILD_RENDERER_OPENGL1 to disable opengl1.
+  * OpenGL2: Fallback to OpenGL ES if OpenGL fails.
+  * OpenGL2: Use CPU vertex animation if too few vertex attributes.
+  * OpenGL2: Add run-time support for unsigned short indexes.
+  * OpenGL2: Add OpenGL ES 2.0+ support.
+  * Use nanosleep(2) instead of usleep(3).
+  * opengl1: Fix skybox in OpenGL 1.1.
+  * OpenGL2: Don't mix drawing to default framebuffer and FBO.
+  * OpenGL2: Fix flares behind mirror being visible.
+  * OpenGL2: Fix hack for tcMod transform on merged lightmaps.
+  * OpenGL2: Fix using merged lightmaps with tcGen environment.
+  * OpenGL2: Fix merged lightmap hacks to have real lightmap index.
+  * OpenGL2: Fix sun rays being affected by the viewport size.
+  * OpenGL2: Fix applying tcMod turb.
+
+-------------------------------------------------------------------
 Thu Dec 28 20:20:53 UTC 2023 - lnussel@suse.com
 
 - Update to version 1.36+git.20231226:

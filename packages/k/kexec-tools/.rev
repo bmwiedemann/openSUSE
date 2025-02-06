@@ -1159,4 +1159,12 @@ installer uses kexec to boot into second stage..
     <comment></comment>
     <requestid>1237061</requestid>
   </revision>
+  <revision rev="158" vrev="3">
+    <srcmd5>07373a30f8dbb34b70e4f803c155ef45</srcmd5>
+    <version>2.0.30</version>
+    <time>1737722302</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop rcFOO symlinks for CODE16 (PED-266). (forwarded request 1239610 from dimstar)</comment>
+    <requestid>1239755</requestid>
+  </revision>
 </revisionlist>

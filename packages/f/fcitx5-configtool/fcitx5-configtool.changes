@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:01:09 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update version 5.1.8
+  * refactor: replace non-empty QString constructors with QStringLiteral
+  * Add null check in list option prettify
+  * Add unique app support
+  * Port away from SwipeListItem due to some bug
+
+-------------------------------------------------------------------
 Mon Jan  6 10:12:24 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - use lua macro to distinguish older kcm locations from newer ones,

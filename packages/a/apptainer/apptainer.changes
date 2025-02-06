@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 29 09:47:49 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Update golang.org/x/net to v0.23 to fix CVE-2023-45288
+  (bnc#1236528).
+
+-------------------------------------------------------------------
 Fri Jan  3 16:11:01 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Update to version 1.3.6

@@ -34,7 +34,7 @@ Name:           qgis
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 
-Version:        3.40.2
+Version:        3.40.3
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only

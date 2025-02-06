@@ -102,4 +102,14 @@
 </comment>
     <requestid>1221611</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b0d650837451ab19c2d24a75e0dc5c25</srcmd5>
+    <version>1.15.0</version>
+    <time>1738007533</time>
+    <user>anag+factory</user>
+    <comment>- skip test_using_pager_when_rows_too_high, test_using_pager_works_for_help, test_pager_works_for_peek, test_using_pager_from_config, test_using_pager_from_config_when_env_config_both_set because of https://github.com/laixintao/iredis/i
+ssues/495
+- run tests test_peek_zset_fetch_all, test_peek_zset_fetch_part again</comment>
+    <requestid>1240291</requestid>
+  </revision>
 </revisionlist>

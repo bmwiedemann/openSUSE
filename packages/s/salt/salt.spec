@@ -498,6 +498,11 @@ Patch146:       handle-logger-flushing-already-closed-file-686.patch
 Patch147:       make-minion-reconnecting-on-changing-master-ip-bsc-1.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/690
 Patch148:       revert-setting-selinux-context-for-minion-service-bs.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66899
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/698
+Patch149:       fix-issues-that-break-salt-in-python-3.12-and-3.13-6.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67181
+Patch150:       fix-virtual-grains-for-vms-running-on-nutanix-ahv-bs.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

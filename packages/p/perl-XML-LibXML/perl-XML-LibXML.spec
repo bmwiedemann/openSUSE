@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-LibXML
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Interface to Gnome libxml2 xml parsing and DOM library
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch1:         perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::Base::Wrapper)
@@ -93,7 +94,7 @@ split into several packages which are not described in this section; unless
 stated otherwise, you only need to 'use XML::LibXML;' in your programs.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

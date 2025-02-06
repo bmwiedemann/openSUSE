@@ -1,7 +1,7 @@
 #
 # spec file for package lsb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -162,7 +162,6 @@ Requires:       gzip
 Requires:       lsb-release
 Requires:       pax
 Requires:       perl-base >= 5.8.8
-Requires:       python >= 2.7.3
 Obsoletes:      lsb-desktop
 Obsoletes:      lsb-runtime
 Provides:       lsb = 2.0

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 02:11:44 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to v0.10.1:
+  * Set symbol versions 0.10 in def/map files
+  * Fix: remove incorrect assert in utils_align_ptr_up_size_down()
+  * Add strings with UMF version and useful CMake options
+  * Extended error messages, when providers are disabled
+ 
+-------------------------------------------------------------------
 Fri Jan  3 23:43:49 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Initial packaging at v0.10.0 

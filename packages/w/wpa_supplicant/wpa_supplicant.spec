@@ -1,7 +1,7 @@
 #
 # spec file for package wpa_supplicant
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,7 +108,9 @@ install -m 755 wpa_supplicant/wpa_gui-qt4/wpa_gui %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_unitdir}
 install -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}
 install -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}
+%if 0%{?suse_version} < 1600
 ln -s service %{buildroot}/%{_sbindir}/rcwpa_supplicant
+%endif
 # avoid spurious dependency on /usr/bin/python
 chmod -x wpa_supplicant/examples/*.py
 # dbus auto activation boo#966535
@@ -145,7 +147,9 @@ done
 %license COPYING
 %doc wpa_supplicant/ChangeLog README wpa_supplicant/todo.txt wpa_supplicant/examples wpa_supplicant/wpa_supplicant.conf
 %{_sbindir}/eapol_test
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcwpa_supplicant
+%endif
 %{_sbindir}/wpa_cli
 %{_sbindir}/wpa_passphrase
 %{_sbindir}/wpa_supplicant

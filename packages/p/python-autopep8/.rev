@@ -325,4 +325,12 @@
 - drop python312-skip-tests.patch (upstream)</comment>
     <requestid>1225057</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3a94e9f3a71d74369d58f4c4cd80ac37</srcmd5>
+    <version>2.3.2</version>
+    <time>1737651950</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239863</requestid>
+  </revision>
 </revisionlist>

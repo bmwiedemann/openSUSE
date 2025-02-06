@@ -18,7 +18,7 @@
 
 
 Name:           aerc
-Version:        0.19.0
+Version:        0.20.1
 Release:        0
 Summary:        An email client for terminals
 License:        GPL-3.0-or-later

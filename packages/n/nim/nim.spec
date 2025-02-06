@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _sat_commit faf1617f44d7632ee9601ebc13887644925dcc01
 
 Name:           nim
-Version:        2.0.12
+Version:        2.0.14
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT

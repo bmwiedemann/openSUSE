@@ -1,7 +1,7 @@
 #
 # spec file for package open-iscsi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -158,11 +158,13 @@ the libopeniscsiusr library.
 # create brcm_iscsiuio symlink if needed
 [ -e %{buildroot}%{_iscsi_sbindir}/brcm_iscsiuio ] || \
     ln -s %{_iscsi_sbindir}/iscsiuio %{buildroot}%{_iscsi_sbindir}/brcm_iscsiuio
+%if 0%{?suse_version} < 1600
 # create rc symlinks
 ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsi
 ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsid
 ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsiuio
 ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsi-init
+%endif
 (cd %{buildroot}/etc; ln -sf iscsi/iscsid.conf iscsid.conf)
 # create an empty initiatorname file, as a package place holder
 echo > %{buildroot}%{_home_dir}/initiatorname.iscsi
@@ -238,9 +240,11 @@ done
 %attr(0644,root,root) %{_unitdir}/iscsi-init.service
 %attr(0644,root,root) %{_unitdir}/iscsi.service
 %{_systemdgeneratordir}/ibft-rule-generator
+%if 0%{?suse_version} < 1600
 %{_iscsi_sbindir}/rciscsi
 %{_iscsi_sbindir}/rciscsid
 %{_iscsi_sbindir}/rciscsi-init
+%endif
 %{_iscsi_sbindir}/iscsid
 %{_iscsi_sbindir}/iscsiadm
 %{_iscsi_sbindir}/iscsi-iname
@@ -275,7 +279,9 @@ done
 %endif
 %attr(0644,root,root) %{_unitdir}/iscsiuio.service
 %attr(0644,root,root) %{_unitdir}/iscsiuio.socket
+%if 0%{?suse_version} < 1600
 %{_iscsi_sbindir}/rciscsiuio
+%endif
 
 %files devel
 %{_includedir}/libopeniscsiusr*.h

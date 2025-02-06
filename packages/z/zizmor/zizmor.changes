@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Jan 29 06:28:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.3.0:
+  * chore: prep for 1.3.0 release (#500)
+  * docs: bump trophies (#499)
+  * deps: bump indicatif from 0.17.9 to 0.17.11 (#498)
+  * Downgrade tracing-indicatif (#496)
+  * docs: bump trophies (#495)
+  * ci: attempt to fix arm build (#494)
+  * chore(deps): bump the github-actions group with 3 updates
+    (#493)
+  * chore(deps): bump the cargo group with 2 updates (#492)
+  * refactor: improve context handling (#491)
+  * feat(cli): add naches mode (#490)
+  * release-notes: record #485 (#489)
+  * feat: "raw" audit support + `overprovisioned-secrets` (#485)
+  * cli: reduce warning to info when skipping audits (#488)
+  * deps: bump github-actions-models (#487)
+  * docs: bump trophies (#486)
+  * docs: bump trophies (#484)
+  * Fix syntax in docs for bot-condition (#483)
+  * feat: improve parse error slightly (#482)
+  * docs: bump trophies (#481)
+  * chore(deps): bump the cargo group with 3 updates (#480)
+  * Add slash to avoid redirect (#478)
+  * bugfix: collect actions from subdirectories of
+    .github/workflows (#477)
+
+-------------------------------------------------------------------
+Mon Jan 20 06:16:20 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.2:
+  * chore: prep for 1.2.2 release (#476)
+  * feat: improve error message when repo fetch fails (#475)
+  * bugfix: special-case workflow_call in excessive-permissions
+    (#473)
+
+-------------------------------------------------------------------
+Mon Jan 20 06:05:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.1:
+  * chore: prep 1.2.1 (#470)
+  * bugfix: generalize path prefix handling (#469)
+  * chore(deps): bump astral-sh/setup-uv from 5.1.0 to 5.2.1 in the
+    github-actions group (#467)
+  * docs: try to fix the site (#466)
+  * chore: remove site-requirements.txt (#465)
+
+-------------------------------------------------------------------
+Mon Jan 20 06:00:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.0:
+  * chore: prep 1.2.0 (#464)
+  * bugfix: bump github-actions-models (#463)
+  * bugfix: parse multi-line expressions correctly (#461)
+  * feat: bot-conditions (#460)
+  * ci: pypi: try enabling aarch64 on an ARM runner (#457)
+  * docs: typo (#456)
+  * docs: add sponsors to README and site (#454)
+  * bugfix: sarif: use absolute physical locations only (#453)
+  * chore(docs): bump trophies (#451)
+  * chore(docs): bump trophies (#450)
+  * refactor: reduce invalid states in job APIs (#449)
+  * fix: artipacked: check for stringy bools (#448)
+  * docs: bump trophies (#446)
+  * bugfix: mark another context as safe during injections (#445)
+  * docs: bump trophies (#444)
+  * docs: bump trophies (#443)
+  * docs: bump trophies (#442)
+  * refactor: make excessive-permissions more correct (#441)
+  * docs: bump trophies (#440)
+  * fix: don't flag local workflows in unpinned-uses (#439)
+
+-------------------------------------------------------------------
 Tue Jan 14 05:42:08 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.1.1:

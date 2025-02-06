@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 29 14:42:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove libgit2-glib-include.patch and replace it with series of
+  patches from the upstream issue tracker:
+  + 0001-fix-don-t-confuse-GGIT_MICRO_VERSION-and-GGIT_MINOR_.patch
+  + 0002-build-Fix-build-against-and-require-libgit2-1.8.0.patch
+  + 0003-chore-support-libgit2-1.9.patch
+
+-------------------------------------------------------------------
 Wed Apr  3 07:32:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libgit2-glib-include.patch: Fix build against libgit2 1.8.0.

@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu Jan 23 06:04:20 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.202.0:
+  * Revert dependencies changes that are making release workflow
+    fail (#8157)
+  * Add release notes for v0.202.0 (#8142)
+  * Adding support for us-isof and eu-isoe regions (#8151)
+  * Bump github.com/gofrs/flock from 0.8.1 to 0.12.1 (#8024)
+  * Bump github.com/github-release/github-release from 0.10.0 to
+    0.10.1 (#8107)
+  * Migrate `goformation` under `pkg/` as a local package and
+    remove location re-write (#8153)
+  * Upgrade to go 1.22 (#8125)
+  * Wait for vpccni to become active before updating it to use IRSA
+    (#8152)
+  * Remove `xtables.lock` which should be managed by the VPC CNI
+    (#8134)
+  * Use `DescribeClusterVersions` API instead of hardcoding EKS
+    version data (#8144)
+  * Fix e2e integration tests (#8149)
+  * Update import path of local goformation fork, fixing `go mod
+    verify` (#8148)
+  * Disable metrics-server default addon creation for unsupported
+    regions (#8146)
+  * Enable default addon creation for auto mode clusters (#8140)
+  * Remove SSM install script from AL2; SSM is pre-installed on EKS
+    AL based AMIs (#8135)
+  * Prepare for next development iteration (#8143)
+
+-------------------------------------------------------------------
+Wed Jan 15 07:05:27 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.201.0:
+  * Add release notes for v0.201.0 (#8115)
+  * Fix E2E tests (#8139)
+  * Update nvidia-device-plugin to v0.17.0 (#7918)
+  * Update aws-node to v1.19.2 (#7899)
+  * Update coredns (#7901)
+  * Bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.1
+    (#8047)
+  * Bump github.com/aws/aws-sdk-go-v2/config from 1.27.11 to 1.28.9
+    (#8131)
+  * Bump
+    github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2
+    from 1.43.3 to 1.43.4 (#8129)
+  * Bump github.com/aws/aws-sdk-go-v2/service/cloudformation from
+    1.56.3 to 1.56.4 (#8127)
+  * Bump
+    github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider
+    from 1.36.3 to 1.48.4 (#8130)
+  * Bump github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing
+    from 1.28.8 to 1.28.9 (#8132)
+  * Bump github.com/aws/aws-sdk-go-v2/service/outposts from 1.48.0
+    to 1.48.1 (#8133)
+  * Remove EFA installation scripts; EFA is installed by default on
+    EKS AL2 GPU, EKS Al2023 NVIDIA, and EKS AL2023 Neuron AMIs
+    (#8113)
+  * Ubuntu 24.04 support (#8094)
+  * chore: Add diff created by running `make build` (#8121)
+  * Bump docker/build-push-action from 5.3.0 to 6.11.0 (#8124)
+  * Bump goreleaser/goreleaser-action from 5.0.0 to 6.1.0 (#8055)
+  * Bump actions/setup-python from 5.1.0 to 5.3.0 (#8022)
+  * Bump actions/checkout from 4.1.2 to 4.2.2 (#8021)
+  * Bump docker/metadata-action from 5.5.1 to 5.6.1
+  * Bump actions/setup-go from 5.0.0 to 5.2.0
+  * Bump peter-evans/create-pull-request from 6.0.2 to 7.0.6
+  * Bump actions/cache from 4.0.2 to 4.2.0
+  * Update doc dependencies and supported Python runtime to publish
+    latest doc updates (#8119)
+  * Repair AL2023 with IPv6 node creation (#8120)
+  * Support create cluster default addon metrics-server
+  * Prepare for next development iteration (#8116)
+  * support mx-central-1 region
+
+-------------------------------------------------------------------
+Thu Jan 09 06:47:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.200.0:
+  * Add release notes for v0.200.0 (#8093)
+  * Support for Bangkok region (`ap-southeast-7`) (#8114)
+  * Update excluded contributors from release notes (#8092)
+  * Prepare for next development iteration (#8088)
+
+-------------------------------------------------------------------
+Tue Dec 17 09:07:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.199.0:
+  * Add release notes for v0.199.0 (#8079)
+  * Support EKS managed nodegroup node repair config (#8087)
+  * Add support for C8g and R8g instance types (#8041)
+  * Allow importing subnets with IPv6 only (#8086)
+  * EKS Auto Mode should not require setting default addons or OIDC
+    (#8082)
+  * Migrate dependent goformation module to a local fork (#8081)
+  * Add support for `overrideBootstrapCommand` in AL2023 (#8078)
+  * Prepare for next development iteration (#8080)
+
+-------------------------------------------------------------------
 Tue Dec 10 15:23:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.198.0:

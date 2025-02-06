@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 21:12:48 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.900.0 (0.90)
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+
+  0.90 2025-01-06
+   * Added support to Haiku OS (thanks to Joachim Mairböc
+
+-------------------------------------------------------------------
 Fri Mar  8 23:06:17 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

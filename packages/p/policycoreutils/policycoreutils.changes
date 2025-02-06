@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 21 11:14:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop manually generated typelib(Gtk) Requires: this was the
+  minimal fix to eliminate usage of pythonj-gtk, but the python
+  code references more typelibs; hence add gobject-introspection
+  BuildRequires in order to inspect the code for typelib()
+  dependencies.
+- Replace python3-gobject Requires for python3-gobject-Gdk: as this
+  is a GUI application, we do need to Gdk bridge too.
+
+-------------------------------------------------------------------
+Tue Jan 21 04:36:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Replace python-gtk Requires for -gui with introspection typelib for Gtk 3
+
+-------------------------------------------------------------------
 Mon Jul  1 08:10:53 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.7

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Class
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name DBIx-Class
 Name:           perl-DBIx-Class
-Version:        0.082843
+Version:        0.082844
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extensible and flexible object <-> relational mapper
@@ -49,7 +49,7 @@ BuildRequires:  perl(SQL::Abstract::Classic) >= 1.91
 BuildRequires:  perl(Scope::Guard) >= 0.03
 BuildRequires:  perl(Sub::Name) >= 0.04
 BuildRequires:  perl(Test::Deep) >= 0.101
-BuildRequires:  perl(Test::Exception) >= 0.310000
+BuildRequires:  perl(Test::Exception) >= 0.31
 BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(Test::Warn) >= 0.21
 BuildRequires:  perl(Text::Balanced) >= 2.00
@@ -114,8 +114,9 @@ generally made to CPAN before the branch for the next release is merged
 back to trunk for a major release.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END

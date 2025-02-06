@@ -82,7 +82,7 @@ Index: etc/login.defs
  # System accounts
 -SYS_UID_MIN		  101
 -SYS_UID_MAX		  999
-+SYS_UID_MIN		  100
++SYS_UID_MIN		  201
 +SYS_UID_MAX		  499
  # Extra per user uids
  SUB_UID_MIN		   100000
@@ -93,7 +93,7 @@ Index: etc/login.defs
  # System accounts
 -SYS_GID_MIN		  101
 -SYS_GID_MAX		  999
-+SYS_GID_MIN		  100
++SYS_GID_MIN		  201
 +SYS_GID_MAX		  499
  # Extra per user group ids
  SUB_GID_MIN		   100000

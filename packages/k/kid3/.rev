@@ -359,4 +359,13 @@
     <comment></comment>
     <requestid>1220689</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>1c66108cf73636ec20c6a3ff564f7c2d</srcmd5>
+    <version>3.9.6</version>
+    <time>1737828789</time>
+    <user>dimstar_suse</user>
+    <comment>- Force to build with ffmpeg-7
+</comment>
+    <requestid>1240250</requestid>
+  </revision>
 </revisionlist>

@@ -137,4 +137,12 @@ source URL fixed</comment>
   * Add ability to do variable substitution from environment</comment>
     <requestid>1218884</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8f530bd46f98a6d4a4b769543260efda</srcmd5>
+    <version>4.2</version>
+    <time>1737490264</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239258</requestid>
+  </revision>
 </revisionlist>

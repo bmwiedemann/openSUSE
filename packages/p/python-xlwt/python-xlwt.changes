@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 18 11:40:45 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri May 29 10:43:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Replace nose with pytest

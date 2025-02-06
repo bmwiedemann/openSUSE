@@ -1,7 +1,7 @@
 #
 # spec file for package python-boto3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-boto3
-Version:        1.35.77
+Version:        1.36.2
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
 URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
-BuildRequires:  %{python_module botocore >= 1.35.77 with %python-botocore < 1.36.0}
+BuildRequires:  %{python_module botocore >= 1.36.2 with %python-botocore < 1.37.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module s3transfer >= 0.10.0 with %python-s3transfer < 0.11.0}
+BuildRequires:  %{python_module s3transfer >= 0.11.0 with %python-s3transfer < 0.12.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-botocore >= 1.35.77 with python-botocore < 1.36.0)
+Requires:       (python-botocore >= 1.36.2 with python-botocore < 1.37.0)
 Requires:       (python-jmespath >= 0.7.1 with python-jmespath < 2.0.0)
-Requires:       (python-s3transfer >= 0.10.0 with python-s3transfer < 0.11.0)
+Requires:       (python-s3transfer >= 0.11.0 with python-s3transfer < 0.12.0)
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-boto3 < %{version}
@@ -61,10 +61,10 @@ http://boto3.readthedocs.org/en/latest/
 
 
 
+
 # Note to maintainers also familia with python-boto:
 # The documentation generation requires access to AWS, thus it is not
 # possible to generate the documentation in OBS
-
 %prep
 %setup -q -n boto3-%{version}
 

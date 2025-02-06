@@ -481,4 +481,13 @@
       * Fix install issue (issue #168) (forwarded request 1237593 from tinita)</comment>
     <requestid>1237723</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>32329064c2c509e5ed32930989202236</srcmd5>
+    <version>1.647.0</version>
+    <time>1737722299</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.647.0 (1.647)
+   see /usr/share/doc/packages/perl-DBI/ChangeLog (forwarded request 1239663 from tinita)</comment>
+    <requestid>1239746</requestid>
+  </revision>
 </revisionlist>

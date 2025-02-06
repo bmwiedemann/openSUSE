@@ -1,7 +1,7 @@
 #
 # spec file for package sord
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           sord
-Version:        0.16.14
+Version:        0.16.16
 Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
@@ -28,8 +28,6 @@ Source0:        https://download.drobilla.net/sord-%{version}.tar.xz
 Source1:        https://download.drobilla.net/sord-%{version}.tar.xz.sig
 Source2:        sord.keyring
 Source3:        baselibs.conf
-# https://github.com/drobilla/sord/commit/67bcd63bda9d7b095489a09b9880aa730ddb5488
-Patch0:         67bcd63bda9d7b095489a09b9880aa730ddb5488.patch
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  meson
@@ -37,6 +35,7 @@ BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(serd-0) >= 0.30.10
+BuildRequires:  pkgconfig(zix-0) >= 0.4.0
 
 %description
 Utilities to work with RDF data.
@@ -65,15 +64,15 @@ Sord is a lightweight C library for storing RDF data in memory.
 %autosetup -p1
 
 %build
-%{meson} -Ddocs=enabled -Dtests=enabled
-%{meson_build}
+%meson -Ddocs=enabled -Dtests=enabled
+%meson_build
 
 %install
-%{meson_install}
+%meson_install
 rm -rf %{buildroot}%{_datadir}/doc/sord-0/html
 
 %check
-%{meson_test}
+%meson_test
 
 %post -n libsord-0-%{sover} -p /sbin/ldconfig
 %postun -n libsord-0-%{sover} -p /sbin/ldconfig

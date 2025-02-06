@@ -2110,4 +2110,12 @@
     <comment>Fix for bsc#1234215 str object has no attribute removeprefix</comment>
     <requestid>1228558</requestid>
   </revision>
+  <revision rev="267" vrev="3">
+    <srcmd5>1e187fc174744d34624775c2d62936ab</srcmd5>
+    <version>5.0.0</version>
+    <time>1738163372</time>
+    <user>anag+factory</user>
+    <comment>Includes various upstream features and bug fixes on top of virt-manager version 5.0.0</comment>
+    <requestid>1241008</requestid>
+  </revision>
 </revisionlist>

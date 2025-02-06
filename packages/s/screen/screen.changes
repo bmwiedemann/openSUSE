@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 10:49:16 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind and only creates error messages
+
+-------------------------------------------------------------------
 Mon Feb 26 13:12:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

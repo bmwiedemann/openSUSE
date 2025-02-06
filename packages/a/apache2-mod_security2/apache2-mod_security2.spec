@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_security2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,18 @@
 #
 
 
-%define modname       mod_security2
-%define tarballname   modsecurity-%{version}
-%define usrsharedir %{_datadir}/%{name}
 Name:           apache2-mod_security2
-Version:        2.9.7
+Version:        2.9.8
 Release:        0
-Summary:        Web Application Firewall for apache httpd
+Summary:        Web Application Firewall for Apache httpd
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://www.modsecurity.org/
-Source:         https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-%{version}.tar.gz
-Source1:        https://github.com/SpiderLabs/owasp-modsecurity-crs/tarball/master//SpiderLabs-owasp-modsecurity-crs-2.2.9-5-gebe8790.tar.gz
-Source2:        mod_security2.conf
-Source6:        README-SUSE-mod_security2.txt
-Source7:        empty.conf
+Source0:        https://github.com/owasp-modsecurity/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
+Source1:        https://github.com/owasp-modsecurity/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz.asc
+Source2:        apache2-mod_security2.keyring
+Source3:        mod_security2.conf
+Source4:        README_SUSE
 Patch0:         apache2-mod_security2-no_rpath.diff
 Patch1:         modsecurity-fixes.patch
 Patch2:         apache2-mod_security2_tests_conf.patch
@@ -54,6 +51,7 @@ BuildRequires:  pkgconfig
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
 Requires:       apache2
+Recommends:     owasp-modsecurity-crs-apache2
 
 %description
 ModSecurity is an intrusion detection and prevention
@@ -63,10 +61,8 @@ ModSecurity is to increase web application security, protecting web
 applications from known and unknown attacks.
 
 %prep
-%setup -q -n %{tarballname}
-%setup -q -D -T -a 1 -n %{tarballname}
-mv -v SpiderLabs* rules
-%autopatch -p1
+%autosetup -p1 -n modsecurity-v%{version}
+cp %{SOURCE4} .
 
 %build
 aclocal
@@ -77,41 +73,23 @@ CFLAGS="%{optflags}" make %{?_smp_mflags}
 %install
 pushd apache2
   install -d -m 0755 %{buildroot}%{apache_libexecdir}
-  install .libs/mod_security2.so %{buildroot}%{apache_libexecdir}/%{modname}.so
+  install .libs/mod_security2.so %{buildroot}%{apache_libexecdir}/mod_security2.so
 popd
-install -D -m 0644 %{SOURCE2} %{buildroot}%{apache_sysconfdir}/conf.d/%{modname}.conf
-install -d -m 0755 %{buildroot}%{apache_sysconfdir}/mod_security2.d
-install -D -m 0644 %{SOURCE6} %{buildroot}%{apache_sysconfdir}/mod_security2.d
-install -D -m 0644 %{SOURCE7} %{buildroot}%{apache_sysconfdir}/mod_security2.d
-cp -a %{SOURCE6} doc
-install -d -m 0755 %{buildroot}/%{usrsharedir}
-install -d -m 0755 %{buildroot}/%{usrsharedir}/tools
-rm -f rules/.gitignore rules/LICENSE
-cp -a rules/util/README %{buildroot}/%{usrsharedir}/tools/README-rules-updater.txt
-cp -a tools/rules-updater.pl tools/rules-updater-example.conf %{buildroot}/%{usrsharedir}/tools
-find rules -type f -exec chmod 644 {} +
-cp -a rules %{buildroot}/%{usrsharedir}
-rm -rf %{buildroot}/%{usrsharedir}/rules/util
-rm -rf %{buildroot}/%{usrsharedir}/rules/lua
-rm -f %{buildroot}/%{usrsharedir}/rules/READM*
-rm -f %{buildroot}/%{usrsharedir}/rules/INSTALL %{buildroot}/%{usrsharedir}/rules/CHANGELOG
+mkdir -p %{buildroot}%{apache_sysconfdir}/mod_security2.d
+mkdir -p %{buildroot}%{apache_sysconfdir}/mod_security2.d/rules
+mkdir -p %{buildroot}%{apache_sysconfdir}/conf.d/
+cp -a %{SOURCE3} %{buildroot}%{apache_sysconfdir}/conf.d/
 
-# Temporarily disable test suite as there are some failures that need to be solved
 %check
 make test
-# make test-regression
 
 %files
-%{apache_libexecdir}/%{modname}.so
-%config(noreplace) %{apache_sysconfdir}/conf.d/%{modname}.conf
-%dir %{apache_sysconfdir}/mod_security2.d
-%{apache_sysconfdir}/mod_security2.d/README-SUSE-mod_security2.txt
-%{apache_sysconfdir}/mod_security2.d/empty.conf
-%{usrsharedir}
+%{apache_libexecdir}/mod_security2.so
 %license LICENSE
-%doc README.md CHANGES NOTICE authors.txt
-%doc doc/README.txt
-%doc doc/README-SUSE-mod_security2.txt
-%doc rules/util/regression-tests
+%dir %{apache_sysconfdir}/mod_security2.d
+%dir %{apache_sysconfdir}/mod_security2.d/rules
+%dir %{apache_sysconfdir}/conf.d/
+%config(noreplace) %{apache_sysconfdir}/conf.d/mod_security2.conf
+%doc README.md CHANGES NOTICE authors.txt README_SUSE
 
 %changelog

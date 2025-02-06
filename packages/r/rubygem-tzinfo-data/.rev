@@ -231,4 +231,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221921</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bcaf4eed7583a8a562c70377ec2dadb5</srcmd5>
+    <version>1.2025.1</version>
+    <time>1738163436</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1240392 from AndreasStieger
+
+rubygem-tzinfo-data v1.2025.1</comment>
+    <requestid>1240901</requestid>
+  </revision>
 </revisionlist>

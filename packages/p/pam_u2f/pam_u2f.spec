@@ -19,7 +19,7 @@
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           pam_u2f
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        U2F authentication integration into PAM
 License:        BSD-2-Clause

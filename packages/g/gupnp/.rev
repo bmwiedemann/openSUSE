@@ -702,4 +702,806 @@ New stable rel</comment>
     <comment> (forwarded request 1202736 from iznogood)</comment>
     <requestid>1203316</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fefae95e2fd84c4da60f1e33088b312d</srcmd5>
+    <version>1.6.8</version>
+    <time>1737559856</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.6.8:
+  + ServiceProxyAction: Remove some left-over debug output.
+  + ServiceProxyAction: Stop leaking the HTTP response.
+  + Docs: Fix various issues.
+  + ServiceProxyAction: Add get_value_as().
+  + Linux-CM: Silence a false-positive with scan-build.
+- Switch to source service for tarball/sources.
+- Add check section and meson_test macro, run test-suite during
+  build.
+- Update to version 1.6.7:
+  + Fix compatiblity with libxml2 2.12.x
+  + Improve reproducability
+  + ControlPoint: Fix re-scan
+  + ContextManager: Fix boot-id update
+  + Context: Fix crash if served URI is not an IP address
+- Drop 00514fb6.patch: Fixed upstream.
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+- Add 00514fb6.patch: Fix compatibility with libxml2 2.12.x.
+- Update to version 1.6.6:
+  + NetworkManager: Drop manual creation of lo contexts
+  + ServiceProxy: Add new API for creating actions
+  + Introspection: Be more resilient against weird formatting
+  + Acl: Improve introspectability
+  + ServiceProxy: Add result iterator for Action
+  + Plug various smaller leaks
+- Update to version 1.6.5:
+  + Fix build with meson 1.2
+- Drop patches fixed upstream:
+  + a10c57bd.patch
+  + 884639bd.patch
+- Add upstream patches to fix build with meson 1.2.0:
+  + a10c57bd.patch: Add missing &quot;s&quot; to wrap file syntax.
+  + 884639bd.patch: properly spell [provide] in *.wrap files.
+- Update to version 1.6.4:
+  + Keep a weak reference to proxy in action.
+  + Add API to provide HTTP credentials for simple authentication.
+  + Remove xmlRecoverMemory usage.
+- Drop 80e68995.patch: Fixed upstream.
+- Add upstream patch: 80e68995.patch: all: Drop xmlRecoverMemory.
+  Use xmlReadMemory, also use NONET flat.
+- Update license tag to LGPL-2.1-or-later.
+- Update to version 1.6.3:
+  + Fix handling of deprecated and tentative v6 addresses.
+  + Bugs fixed in this release:
+    - https://gitlab.gnome.org/GNOME/gupnp/issues/82
+    - https://gitlab.gnome.org/GNOME/gupnp/issues/83
+- Update to version 1.6.2:
+  + Add test for issue 81.
+  + Bugs fixed in this release:
+    - https://gitlab.gnome.org/GNOME/gupnp/issues/81
+- Update to version 1.6.1:
+  + ControlPoint:
+    - Fix error handling if description download fails.
+    - Do not leak cancellable.
+  + Use proper method for detecting IFA_FLAGS availability.
+  + ContextManager:
+    - Do not leak filtered contexts.
+    - Fix freeing unavailable contexts.
+  + Network ContextManager: Do not leak list parts of context
+    lists.
+  + Introspection: Properly chain up to parent class.
+  + Service: Fix crash if subscription callback is points
+    unreachable host.
+- Update to version 1.6.0:
+  + Re-release of 1.5.4, no functional change.
+- Update to version 1.5.4:
+  + Fix build against libsoup 3.1.2 or later
+  + Do not rely on a log message from libsoup in tests
+  + Use Docbook 4.5 for manpage
+  + Do not use env in binding generator
+  + Add missing libxml2 dependency for test
+- Drop 1296d10eda308792d2924f141d72b8b6818878bd.patch: Fixed
+  upstream.
+- Update to version 1.5.3:
+  + Linux context manager: Do not filter out v6 global addresses
+  + Context: Add new convenience constructors
+  + Examples: Fix browse.js for new API
+  + NetworkManager: Create v4 and v6 contexts if no family is
+    specified
+  + Connman: Create v4 and v6 contexts if no family is specified
+- Changes from version 1.5.2:
+  + Minor doc improvements
+  + Minor example fixes
+  + Fix pkg-config dependencies
+  + Fix issues found by coverity
+  + Deprecate internal UUID generator function
+  + Set log domains everywhere
+  + Support IPv6 in all context managers (Windows still broken)
+  + ServiceProxy:
+    - Fix error handling in sync call
+    - Fix a memory leak in subscribe()
+    - Change subscribtion timeout handling
+  + ServiceInfo: Remove deprecated callback
+  + ContextFilter:
+    - Fix it
+    - Notify only if content changes
+  + DeviceInfo: Set task names
+  + ContextManager:
+    - Add tests for filtering
+    - Fix behaviour of filter. Now the filter acts as if the
+      context is appearing/disappearing
+  + Vala: Fix ownership of XML doc
+  + Bugs fixed: glgo#GNOME#gupnp#10, glgo#GNOME#gupnp#10,
+    glgo#GNOME#gupnp#10, glgo#GNOME#gupnp#36, glgo#GNOME#gupnp#37,
+    glgo#GNOME#gupnp#70.
+- Changes from version 1.5.1:
+  + Minor doc fixes
+  + Remove left-overs from WhiteList renaming
+  + Make tests a little friendlier if there is no ipv6
+  + Fix a couple of issues from scan-build
+  + DeviceInfo:
+    - Make DeviceInfo:document accessible
+    - Offer convenience function DeviceInfo:get_icon_async to
+      combine icon lookup and icon download
+  + ServiceAction:
+    - Potential fix for running g_clear_pointer on an uninitialized
+      value
+    - Fix getting parameters from action
+  + ServiceInfo:
+    - Do not free an error that was propagated
+    - Fix introspection on IPv6 devices
+  + Service: Fix critical if Soup error other than
+    G_IO_ERROR_CANCELLED occured
+- Changes from version 1.5.0:
+  + Port to libsoup3
+  + API bump (1.6)
+  + Improved test coverage
+  + All _valist functions have been removed
+  + The documentation is now provided by gi-docgen
+  + All API that was marked as deprecated up until 1.4 has been
+    removed
+  + ServiceIntrospection: is now a GInitable
+  + Context:
+    - Uses GSSDP.Client:port
+    - Fix reference leak when using ACL
+  + DeviceInfo: The get_device() and get_service() virtual
+    functions have been renamed
+  + ServiceAction:
+    - ServiceAction::return() was renamed to
+      ServiceAction::return_success() to avoid issues with
+      languages such as python.
+  + ServiceInfo: Non-gio style introspection functions are now
+    deprecated
+  + Service: Returns a proper error instead of calling g_error when
+    autoconnect fails
+  + ServiceProxy:
+    - Fixes an issue with M-POST fall-back if POST calls failed
+    - There is no need anymore to call ServiceProxyAction::get() to
+      get SOAP transport errors; those will now be already
+      presented by the ServiceProxy::call_action_finish() call.
+  + Bugs fixed: glgo#GNOME#gupnp#58, glgo#GNOME#gupnp#42,
+    glgo#GNOME#gupnp#52, glgo#GNOME#gupnp#53, glgo#GNOME#gupnp#54,
+    glgo#GNOME#gupnp#58, glgo#GNOME#gupnp#60, glgo#GNOME#gupnp#61,
+    glgo#GNOME#gupnp#63.
+- Replace gtk-doc, pkgconfig(gssdp-1.2) and pkgconfig(libsoup-2.4)
+  with docbook-xsl-stylesheets, xsltproc, pkgconfig(gi-docgen),
+  pkgconfig(gssdp-1.6) and pkgconfig(libsoup-3.0) BuildRequires
+  following upstream changes.
+- Bump soname and sover following upstream changes, also in
+  baselibs.conf.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Drop gupnp-build-man-pages.patch: Fixed upstream.
+- Add 1296d10eda308792d2924f141d72b8b6818878bd.patch: Fix build
+  against Soup 3.1.2 and later
+- Package docs in default docdir ref openSUSE standard and split it
+  out in a doc subpackage.
+- Update to version 1.4.3:
+  + ServiceProxy:
+    - Properly propagate cancelled actions in deprecated calls.
+    - Fix deprecated async calls, again.
+- Update to version 1.4.2:
+  + Context: Fix a memory leak if ACL was used
+  + RootDevice: Deprecate get_relative_location call
+  + RootDevice, Device &amp; Service: Fix use-after-free if Service
+    lives longer than RootDevice
+  + Service: Declare _valist functions deprecated
+  + ServiceAction: Deprecate _return() call
+  + ServiceProxy:
+    - Fix re-queueing the message if POST fails
+    - Fix double-free on ProxyAction
+  + ServiceProxyAction: add _set() to the public API
+  + ControlPoint: Deprecate get_context() call
+  + Doc:
+    - Add missing ContextFilter description
+    - Add note regarding ACL and host_path()
+    - Add note regarding error handling of call API
+- Add gupnp-build-man-pages.patch: Build and install the manpage.
+- Update to version 1.4.1:
+  + Fix regression in async deprecated API.
+  + Fix context creation not failing if the HTTP server fails to
+    bind.
+- Bump soname to 1_2-1 reflecting real the library version. Obsolete
+  packages had the mismatched version number.
+- Update to version 1.4.0:
+  + Fix fallback option for GSSDP dependency.
+  + Linux CM: Fix address family filtering.
+  + Linux CM: Fix a typo.
+- Changes from version 1.3.1:
+  + Add ContextFilter class, deprecate WhiteList.
+  + Fix several reference leaks.
+  + Fix broken boot-id logic.
+Changes from version 1.3.0:
+  + Service: name Tasks.
+  + Doc: Some grammaer fixes.
+  + Dead and deprecated code clean-up.
+  + Move tests that are actually examples into examples.
+  + Move tests from gtest to test.
+  + Doc: General clean-up.
+  + Fix some introspection annotations.
+  + Build: Make gupnp usable as a subproject (more or less).
+  + Make it possible to re-use a ServiceProxyAction.
+  + Service: Validate &quot;Host&quot; header for GENA actions.
+- Drop patches fixed upstream on SLE and Leap 15.4
+  gupnp-validate-host-header.patch.
+- Add gupnp-validate-host-header.patch: validate host header
+  (boo#1186590 glgo#GNOME/gupnp#24 CVE-2021-33516).
+- Update to version 1.2.7:
+  + Fix build with -Wformat-security=error
+  + Bump required GLib version to 2.66
+  + Fix some introspection annotations
+  + Add missing varargs functions to vapi
+  + Revert fix from 1.2.5 which causes managed control points to
+    live too long
+- Update to version 1.2.6
+  + Fix CVE-2021-33516 ( boo#1186590 )
+  + Fix potential fd leak in linux CM
+  + Fix potential NULL pointer dereference when evaluating unset
+    ServiceProxyActions
+  + Fix leaking the message string if an action is never sent
+  + Fix leaking the ServiceProxyAction if sending fails in
+    call_action
+  + Fix potential use-after-free if service proxy is
+    destroxed before libsoup request finishes in control point
+  + Fix potential data leak due to being vulnerable to DNS
+    rebind attacs
+  + Fix introspection annotation for send_action and
+    call_action_finish to prevent a double-free
+  + Fix introspection annotation for send_action_list
+  + Make ServiceIntrospection usable from gobject-introspection
+- Fix dependencies
+- Update to version 1.2.6:
+  + Fix wrong dependency on GSSDP 1.2.4
+- Changes from version 1.2.5:
+  + Fix introspection annotation for send_action_list
+  + Fix potential fd leak in linux CM
+  + Fix potential NULL pointer dereference when evaluating unset
+    ServiceProxyActions
+  + Fix leaking the message string if an action is never sent
+  + Fix leaking the ServiceProxyAction if sending fails in
+    call_action
+  + Fix introspection annotation for send_action and
+    call_action_finish to prevent a double-free
+  + Make ServiceIntrospection usable from gobject-introspection
+  + Add Python example
+  + Add C example
+  + Fix JavaScript example
+  + Fix potential use-after-free if service proxy is destroxed
+    before libsoup request finishes in control point
+  + Fix potential data leak due to being vulnerable to DNS rebind
+    attacks
+- Update to version 1.2.4:
+  + Fix subscription check on V6 link-local addresses.
+  + Add autofree function for GUPnPServiceProxyAction.
+- Update to version 1.2.3:
+  + Requires GSSDP 1.2.3
+  + Always build the gupnp-binding-tool manpage
+  + Fix static linking issue caused by libguul subproject
+  + Add mitigations for CVE-2020-12695 
+  + Implement UDA 2.0 April 17 2020 Addendum 
+- Update to version 1.2.2:
+  + Fix macOS dylib versioning.
+  + Fix endless loop on early notify.
+  + Several documentation fixes.
+  + Implement version-independent type registration in
+    ResourceFactory.
+  + Fix an issue with implementation of the depracted functions.
+  + Fix an issue with including net/if.h and linux/if.h.
+  + Add async introspection functions matching the usual GIO
+    function pattern.
+  + Go through main loop if introspection fails before the actual
+    network request.
+  + Bump required GLib version to 2.58.
+- Update to version 1.2.1:
+  + Fix a deadlock when cancelling an action.
+  + Do not call-back a cancelled action.
+  + Fix public dependencies.
+- Update to version 1.2.0:
+  + Stable release version bump.
+- Update to version 1.1.2:
+  + Use python3 in binding tool.
+  + Avoid a static buffer in the linux context manager.
+  + Add UDA version and address family to linux context manager.
+  + Implement ssdp:update in context manager.
+  + Update documentation.
+  + Introduce new sync/async service proxy call API.
+- Update to version 1.1.1:
+  + Fix issue when building VAPI.
+  + Pass on network mask from linux CM.
+  + Properly rewrite v6 link-local urls when accessing.
+  + Minor introspection annotation fixes.
+  + Properly filter v6 scopes in linux CM.
+  + Fix compile issues with linux CM when there is no wireless.h.
+  + Fix doble-free in linux CM.
+  + Simplify build tests a bit.
+- Changes from version 1.1.0:
+  + Bump API and ABI version.
+  + GUPnPRootDevice implements GInitable.
+  + Clean-up functions added for GObject-Introspection
+    compatibility.
+  + Remove all deprecated functions from GUPnP 1.0 API.
+  + Switch build to Meson.
+  + Port everything to new GLib type macros.
+  + Add IPv6 support to Linux context manager.
+  + Fix IPv6 LL support for context.
+  + Add gupnp_context_manager_create_full for specifying the socket
+    family.
+  + Bugs fixed: bgo#654446, bgo#770318, bgo#777491, bgo#780640,
+    bgo#780715, bgo#793955.
+- Switch to meson buildsystem, add meson and gtk-doc BuildRequires
+  and macros.
+- Add pkgconfig(gio-2.0), pkgconfig(glib-2.0),
+  pkgconfig(gmodule-2.0) and pkgconfig(gobject-2.0) BuildRequires:
+  align with what meson checks for.
+- Replace pkgconfig(gssdp-1.0) with pkgconfig(gssdp-1.2)
+  BuildRequires following upstreams changes.
+- Add soname and sover defines and set them to 1_2-0 and 1.2, make
+  future API and ABI bumps easier.
+- Update to version 1.0.4:
+  + Fix some win32-specific warnings.
+  + Backport meson support form master.
+  + Fix introspection annotations for get_icon_url
+  + Avoid static buffer in linux context manager.
+  + Fix wrong include in ACL header.
+  + Fix endless loop in service proxy.
+- Update to version 1.0.3:
+  + Avoid a crash in gupnp_root_device_constructor.
+  + Propagage User-Agent from Cache.
+  + Fix potential issue with boolean vs. bitwise evaluation.
+  + Fix a crash in GUPnPServiceProxy::subscription_expire.
+  + Accept broken Action header without the &quot;.
+  + Fix issue with strcpy destination buffer size in linux context
+    manager.
+  + Bugs fixed: bgo#780640, bgo#780715, bgo#793955.
+- Drop NetworkManager recommends from libgupn-1_0-4: There is no
+  reason to pollute a system with NM just because something pulls
+  in libgupnp (boo#1082090).
+- Modernize spec-file by calling spec-cleaner
+- Update to version 1.0.2:
+  + Fix a potential crash of GUPnPProxy when trying to access a
+    dangling GUPnPServiceProxy pointer of a server handler
+    (bgo#777491).
+- Update to version 1.0.1:
+  + Connman CM: Various fixes.
+  + Linux CM: Fix compiler warning about negative shift.
+  + Documentation:
+    - Fix FSF address.
+    - Fix references.
+  + Build: Update ax_append_link_flags.
+  + Bugs fixed: bgo#770318.
+- Update to version 1.0.0:
+  + No changes.
+- Update to version 0.99.0:
+  + Fix build on OS X.
+- Update to version 0.20.18:
+  + Retry description URL on failure.
+  + Bugs fixed: bgo#694450.
+- Update to GNOME 3.20.2  Fate#318572.
+- Update to version 0.20.17:
+  + Update autogen.sh from GNOME template.
+  + Cache user agents by IP.
+  + Remove intltool.
+  + Use newTargetValue in light example.
+  + Bugs fixed: bgo#653894, bgo#763945, bgo#764050.
+- Update to GNOME 3.20  Fate#318572
+- Update to version 0.20.16:
+  + Don't hardcode python path in gupnp-binding-tool.
+  + Check for IFA_FLAGS to not bind ourselves to a recent kernel
+    version.
+  + Add missing m4 files.
+  + Fix issues with introspection.
+  + Make GUPnPServiceAction boxed.
+  + Some JavaScript examples.
+  + Distribute VAPI file in tarball.
+  + Bugs fixed: bgo#760217, bgo#760430, bgo#761265.
+- Update to version 0.20.15:
+  + Remove gnome-common
+  + Fix issue with gupnp_service_signals_autoconnect() blocking
+    endlessly.
+  + Fix return type for BIN_HEX.
+  + Update some m4 macros.
+  + Fix typos in API docs.
+  + NetworkManager context manager:
+    - Fix use-after-free issue.
+    - Fix various static code analysis findings.
+  + Netlink context manager:
+    - Use proper macros for RTM_*ADDRESS messages.
+    - Use device name from netlink.
+    - Add possibility to dump received netlink packets for
+      debugging.
+    - Fix issues with losing contexts after DHCP renew happens.
+    - Some style fixes.
+  + Bugs fixed: bgo#736365, bgo#741257, bgo#750936, bgo#752490,
+    bgo#759000.
+- Update to version 0.20.14:
+  + Simplify UUID handling.
+  + Bugs fixed: bgo#743072, bgo#744221.
+- Update to version 0.20.13:
+  + Fix cyclic includes.
+  + Avoid redefinition of symbols.
+  + Fix missing function declaration.
+  + Don't check for connman.pc.
+  + Allow actions without arguments.
+  + Respect &quot;prefer_bigger&quot; even if there is no icon size.
+  + DOAP fixes.
+  + Fix VAPI generation.
+  + Fix reference counting.
+  + Port to new libsoup API.
+  + Bugs fixed: bgo#722696, bgo#731209, bgo#731457, bgo#733241,
+    bgo#740267, bgo#742075.
+- Add baselibs.conf: provide multi-arch packages.
+- Update to version 0.20.12:
+  + Several documentation fixes.
+  + Fix warning from clang.
+  + Prevent a critical if there's no DBus available and a
+    DBus-based context manager is used.
+  + Don't try to use a DBus context manager if we don't have a
+    system bus.
+  + Use g_return_val_if_fail.
+  + Fix a small leak of CallbackData in GUPnPServiceProxy.
+  + Add a gupnp_service_proxy_add_notify_full variant to be nice to
+    gobject-introspection.
+  + Several code cleanups.
+  + Fix a reference leak in ACL.
+  + Make &quot;document&quot; property of GUPnPDeviceInfo readable.
+  + Add gupnp_service_proxy_add_raw_notify which can be used to get
+    the raw xmlDoc received through notification.
+  + Bugs fixed: bgo#701446, bgo#706123, bgo#706127, bgo#727709,
+    bgo#729827, bgo#730359, bgo#730690.
+- Update to version 0.20.11:
+  + Disable the Unix context manager on Android.
+  + Fix Windows compilation.
+  + Fix a memory leak in Linux context manager.
+  + Fix libuuid dependencies in pkg-config files.
+  + Implement a simple ACL infrastructure.
+  + Bugs fixed: bgo#711027, bgo#723715, bgo#727539, bgo#728889.
+- Update to version 0.20.10:
+  + Make sure ResourceFactory creates proxies with the correct
+    GType.
+  + Make it possible to unsubscribe from a service proxy during a
+    call-back.
+  + Disable managed RootDevices on WL change in addition to
+    ControlPoints.
+  + Bugs fixed: bgo#678701, bgo#690400, bgo#711332.
+- Update to version 0.20.9:
+  + Enforce HTTP 1.1 for device description requests.
+  + Add libuuid to Requires.private of pkg-config file.
+  + Deprecate gupnp_service_proxy_{begin,send}_action_hash as they
+    cannot guarantee the argument order.
+  + Add gupnp_service_info_get_introspection_async_full() that
+    makes it possible to cancel an introspcetion request using
+    GCancellable.
+  + Fix a crash when running with GSSDP &lt; 0.14.6.
+  + Bugs fixed: bgo#704867, bgo#710491, bgo#711027, bgo#711167,
+    bgo#720369, bgo#720372.
+- Update to version 0.20.8 (bnc#849913):
+  + Minor compilation and style fixes in the Linux CM.
+  + Add gupnp_white_list_add_entryv utility function.
+  + Use &quot;port&quot; property to set &quot;msearch-port&quot; property on base
+    class.
+  + Other style fixes.
+  + Bugs fixed: bgo#711015.
+- Update to version 0.20.7:
+  + Fix GCC warnings about local includes.
+  + Do not hand out libxml2-allocated strings.
+  + Fix a crash when a notification host was not available.
+  + Always call action call-back asynchronously, even when there
+    was an error.
+  + Add performance measurement options to light-server/-client.
+  + Bugs fixed: bgo#669729, bgo#703263, bgo#708162, bgo#708575,
+    bgo#708751.
+- Update to version 0.20.6:
+  + Don't do excessive network rescans (bgo#706996).
+- Update to version 0.20.5:
+  + Add some missing G_{BEGIN,END}_DECLS guards.
+  + Fix uninitialized variable use introduced in previous version.
+  + Add simple network device whitelisting infrastructure.
+  + Port gupnp-binding-tool so it's usable with python3.
+  + Minor code fixes.
+  + Fix crashes in NetworkManager context manager during some async
+    calls.
+  + Fix a small memory leak in the unix and windows CM.
+  + Always enable GTest tests.
+  + Upgrade gtk-doc stuff.
+  + Fix the service example in documentation.
+  + Remove the test for inverted arguments in the GUPnPContext
+    tests.
+  + Bugs fixed: bgo#694454, bgo#704094, bgo#704383, bgo#705712,
+    bgo#706326.
+- Update to version 0.20.4:
+  + Fix warnings in gtk-doc run.
+  + Some minor improvements to the documentation.
+  + Make the user-agent ASCII-only to fix issues with discovery
+    when g_get_application_name () returned a translated string.
+  + Force HTTP version to be 1.1 in SOAP requests.
+  + Fix potential crashes in XML parsing.
+  + Fix potential memory leak in
+    gupnp_service_proxy_send_action_valist.
+  + Some codestyle fixes.
+  + Add gupnp_device_info_list_dlna_device_class_identifier () to
+    retrieve the content of &lt;dlna:X_DLNADOC&gt; nodes.
+  + Bugs fixed: bgo#704953, bgo#702555, bgo#704094, bgo#700947.
+- Update to version 0.20.3:
+  + Add a gupnp_context_manager_rescan_control_points feature.
+  + Fix VAPI generation if g-i version is &gt;= 1.36.
+  + Some internal documentation updates.
+  + Check SID and return a proper error.
+  + Fix error code returned on invalid NT and NTS headers.
+  + Fix SEQ to be a uint32.
+  + Fall-back to unix static CM if netlink sockets are not availabe
+    on runtime.
+  + Prevent some C++ name mangling in the examples.
+  + Fix compiling with -Wall -Wextra.
+  + Bugs fixed: bgo#697314, bgo#696289, bgo#698192, bgo#698125.
+- Update to version 0.20.2:
+  + Fix some typos in docs and warning messages.
+  + Fix argument order issue introduced with the va_list fix in
+    0.20.1.
+  + Add some tests for this bug.
+  + Bugs fixed: bgo#695591, bgo#696762.
+- Update to version 0.20.1:
+  + Fix suspicious use of va_list in the code.
+  + Bugs fixed: bgo#689813.
+- Update to version 0.20.0:
+  + Fix Accept-Language header generation.
+  + Fix some issues with Windows support on mingw64.
+  + Bugs fixed: bgo#683199.
+- Update to version 0.19.4:
+  + Shuffle around some test data.
+  + Fix a GError leak in the linux cm.
+  + Fix a leak in variable notification.
+  + Clarify usage of gupnp_service_proxy_remove_notify.
+- Update to version 0.19.3:
+  + Work-around missing notification messages.
+- Changes from version 0.19.1:
+  + Support Windows.
+  + Fix searching for services in ControlPoint.
+  + Drop deprecated calls to g_type_init on glib &gt;= 2.35.
+  + Fix LD_LIBRARY_PATH in make check.
+  + Explicitly use IPv4 in tests.
+  + Allow autogen.sh to be run out-of-tree.
+  + Expose GSSDPResourceGroup of a root device.
+  + Bugs fixed: bgo#687320, bgo#687621, bgo#689028, bgo#688411,
+    bgo#685643, bgo#682580, bgo#672830.
+- Update to version 0.19.1:
+  + Include m4 macro for finding vapigen.
+  + Run introspection with make distcheck.
+  + Lower G-I requirement again.
+  + Add gupnp_context_manager_get_port.
+  + Don't stop configure if vapigen can't be found.
+  + Drop some deprecated stuff from VAPI.
+- Update to version 0.19.0:
+  + Add an abstract base class for simple context managers.
+  + Clean-up pkg-config files to not leak libraries.
+  + Generate VAPI from GIR file.
+  + Bugs fixed: bgo#680322, bgo#681963, bgo#673100, bgo#673933,
+    bgo#676803, bgo#682005, bgo#679204.
+- Add pkgconfig(vapigen) BuildRequires, needed to build the new
+  vala bindings.
+- Replace gobject-introspection-devel, libgssdp-devel,
+  libsoup-devel, libuuid-devel and libxml2-devel BuildRequires for
+  their pkgconfig counterparts, gobject-introspection-1.0,
+  gssdp-1.0, libsoup-2.4, libxml-2.0, uuid.
+ 
+- Update to version 0.18.4:
+  + Make sure that subscribtion timeouts are always removed.
+  + Update tutorial to use correct upnp.org links.
+  + Add missing includes.
+  + Remove deprecated g_thread_init() calls.
+  + Don't leak internal functions from context managers.
+  + Make &quot;linux&quot; context manager the default context manager when
+    building on Linux.
+  + Fix some more deprecation warnings.
+  + Connman and NM context managers fall back to linux context
+    manager now if available.
+  + Add support for device aliases (such as eth0:1) in the linux
+    context manager.
+  + Really report a bug on faulty device descripton XMLs.
+  + Silence libxml2 console output.
+  + Bugs fixed: bgo#673100, bgo#673933, bgo#676803, bgo#679204,
+    bgo#680322, bgo#681963, bgo#682005.
+- Update to version 0.18.3:
+  + Add a Connman context manager.
+  + Add a work-around for one of the lock-ups in bgo#667494.
+  + Don't leak private symbols.
+  + Don't leak DBus proxies in network-manager context-manager.
+  + Fix some g-i annotations.
+  + Bugs fixed: bgo#672998, bgo#673933, bgo#674410.
+- Update to version 0.18.2:
+  + Revert the charset quoting patch from 0.18.1. Apparently this
+    issue was only present in a special version of libsoup.
+  + Fix subscription timeout calculation.
+  + Minor fixes from static code analysis.
+  + Fix byte-range requests.
+  + Add a unit-test for byte-range requests.
+  + Bugs fixed: bgo#670518
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Add explicit pkgconfig(glib-2.0) BuildRequires so it can be
+  versioned.
+- Update to version 0.18.1:
+  + Properly quote charset in SOAP requests.
+  + Fix GUPnPContextManager documentation.
+  + Fix several build warnings.
+  + Several documentation fixes.
+  + Error handling fix in gupnp-binding-tool.
+  + Always send the initial event after a subscribtion even if the
+    client immediately unsubscribes.
+  + Some minor code clean-up.
+  + Bugs fixed: bgo#658633, bgo#658486.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that...
+  See bnc#697467 for more details.
+- Split typelib file into typelib-1_0-GUPnP-1_0 subpackage.
+- Add typelib-1_0-GUPnP-1_0 Requires to devel subpackage.
+- Update to version 0.18.0:
+  + Fix a crash in Linux context manager if the USB cable is
+    unplugged from a USB network device interface.
+- Update to version 0.17.2:
+  + Drop main-context property
+  + Fix a small leak from the default-language property.
+  + Refactor and clean-up internals of GUPnPContextManager.
+- Do not package ChangeLog: It's an empty file.
+- Update to version 0.17.1:
+  + Drop deprecated conic support.
+  + A Linux context manager. Unlike the generic static unix
+    context-manager, the Linux context-manager can dynamically
+    react to device and address changes, similar to the
+    NetworkManager-based context-manager, but without depending on
+    DBus or NetworkManager.
+  + Fix for a SOAP action parameter validation regression.
+  + Updates to the build system such as:
+    - Modernized autotools.
+    - xz tarballs as default.
+  + Improved OpenBSD support.
+  + More stable RootDevice URIs.
+- Pass --with-context-manager=network-manager: this will make gupnp
+  try to use NetworkManager if available at runtime, and will
+  fallback on the old code otherwise.
+- Add NetworkManager Recommends to libgupnp-1_0-4 to have
+  NetworkManager available at runtime.
+- Remove libsoup-devel, libgssdp-devel, libxml2-devel Requires from
+  devel subpackage: they will automatically get added the
+  pkgconfig()-way.
+- Update to version 0.17.0:
+  + Fix several crashes during initial introspection.
+  + Several fixes regarding SOAP action parameter validation.
+  + Always append a Content-Language header if the client has an
+    Accept-Language header.
+  + Always append an Ext header in SOAP responses.
+  + Improve introspection support:
+    - Classes that throw an error during construction implement
+      GInitable.
+    - Update gobject-introspection autotools integration.
+    - Many annotation fixes.
+  + Tutorial improvements.
+- Rename libgupnp-1_0-3 to libgupnp-1_0-4, following the sonum
+  change.
+- Remove service usage, following the new consensus on Factory
+  packaging.
+- Update to 0.16.1:
+  + Port to new (0.9) NetworkManager APIs.
+  + Correction to 'Content-Type' HTTP header values.
+  + Satisfy strict compiler checks.
+- Update to 0.16.0:
+  + Set the thread context before doing GDBus operations.
+  + Use the default timeout on DBus calls.
+  + Fix documentation of gupnp_context_manager_new().
+  + Remove redundant code.
+  + Clear the (obsolete) ChangeLog file.
+  + Add some checks on variants.
+  + Don't use uninitialized pointer.
+  + Some coding-style fixes.
+- Changes from version 0.15.1:
+  + Set 'ESSID' on WiFi contexts.
+  + Fix a crasher bug.
+  + Fix some leaks.
+  + Remove a cyclic-reference
+  + Fix logic to find service from list and therefore the issue of
+    wrongly ignoring new services.
+  + Remove all hosted paths from SoupServer before unrefing it.
+- Changes from version 0.15.0:
+  + Port from dbus-glib to GDBus.
+  + Enable gzip compression for large action response bodies.
+  + Fix gupnp-binding-tool to generate headers usable in C++.
+- Use source services: download_url, recompress and set_version.
+- Update to version 0.14.1:
+  + Add sanity checks to GUPnPServiceProxyAction API.
+  + Fix handling of accepted locales.
+  + Handle unavailability of URL base.
+- Move gir files to devel subpackage.
+- Update to version 0.14.0:
+  + Don't use deprecated glib, gobject and libsoup APIs.
+  + Check for libuuid only on platforms where we need it.
+  + Explicitly link example apps to needed libraries.
+  + Fix some potential crashes and leaks.
+  + Fix pointer to/from integer conversion on 64-bit machines.
+  + Fix parsing of unsigned integers.
+  + Use locale-independent float &lt;-&gt; string conversions.
+  + Remove some redundant functions and variables.
+  + Remove some unused variables noticed.
+  + Use correct mime-type for XML data.
+  + Various non-functional improvements.
+- Drop gir-repository BuildRequires and Requires: the introspection
+  files that were needed from there are now directly with the
+  appropriate libraries.
+- Update to version 0.13.5:
+  + Chain up in GUPnPXMLDoc's finalize().
+  + Correct transfer annotation for gupnp_context_get_session().
+  + Prefer g_strcmp0() over strcmp().
+  + Check for body length rather than Content-Length in SOAP
+    requests so we can satsify DLNA CTT test 7.2.5.7.
+  + Explicitly link test apps to needed libraries.
+  + Missing annotation for context_get_session
+  + Updated translations.  
+- Update to version 0.13.4:
+  + GUPnPService should remove all handlers installed on the shared
+    SoupServer instance when it is disposed.
+  + Fixate subscription timeout to be 300s as per DLNA requirement
+  + Correct type of action argument of GUPnPService::action-invoked
+  + Remove redundant copying of GValue content in a few places.
+  + Handle multiple variables inside property node in event
+    notifications to be compatible with server-side implementations
+    using older GUPnP
+  + Fix syntax of event notifications with multiple properties.
+  + Add/fix gobject-introspection annotations for various functions.
+  + Some non-functional improvements.
+- Update to version 0.13.3:
+  + Include the Content-Type header in the HTTP messages. This
+    satisfies DLNA CTT test cases 7.2.5.9 and 7.2.29.1.
+  + Use g_message instead of g_warning if we can't connect to DBus.
+  + Make the HTTP server listen on the context's interface only.
+  + Fix some potential crashes in GUPnPServiceProxy and
+    GUPnPContextManager code.
+  + Fix build issues in jhbuild environment.
+  + Fix some gcc warnings.
+  + Add new API to host path for specific user-agent(s).
+  + Add gobject-introspection support:
+    - Provide gobject-introspection GIR and typelib.
+    - Add needed annotations to doc comments.
+    - Add GList variants of action-related functions to satisfy
+      PyGI.
+  + A few non-functional improvments.
+- Add gir-repository and gobject-introspection-devel BuildRequires,
+  and add gir-repository Requires to libgupnp-1_0-3.
+- Update to version 0.13.2:
+  + Utilize libconic (Maemo5) if available.
+  + Unix context manager must signal the unavailibility of all
+    contexts when disposed.
+  + Enable silent build rules if they are available.
+  + Fix race-conditions in client-side notification handling.
+  + Unix context manager ignores point-to-point interfaces.
+  + Context manager ignores interfaces without IP addresses.
+  + Don't require timeouts to be specified in subscription
+    requests.
+  + Fix build against gcc 4.[1,2].
+  + Make network manager thread-safe.
+  + Remove idle source on dispose in context manager
+    implementations.
+  + Warn in docs that gupnp_service_info_get_introspection() is
+    evil and why.
+  + Service retrieves introspection data in truly async way.
+  + Fix some leaks.
+  + A bunch of code clean-ups.
+- Update to version 0.13.1:
+  + Use unix context manager if NetworkManager service is not
+    available
+  + Fix some minor leaks.
+- Rename libgupnp-1_0-2 to libgupnp-1_0-3 since the version of the
+  library was changed.
+- Update to version 0.13.0:
+  + Print reason when fail to fetch description doc
+  + Support for dynamic/multiple networks through a new class,
+    ContextManager.
+  + Gracefully handle 'no root element in description' scenerio.
+  + &quot;host-ip&quot; property moved from GUPnPContext to parent
+    GSSDPClient.
+  + ControlPoint set itself inactive before getting disposed.
+  + New function to retrieve the capabilities of a DLNA device as
+    announced in the device description.
+  + New function to retrieve the content of arbitrary elements in
+    the device description.
+  + Many other minor fixes.
+- Initial package.
+</comment>
+    <requestid>1239346</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rtl8188gu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   commit          c2b79fc1c085d9fc4a70ac0f5bc730ec929c562b
 %define   shortcommit     c2b79fc
@@ -22,17 +23,19 @@ Name:           rtl8188gu
 Version:        0.0.0+git20230112.%{shortcommit}
 Release:        0
 Summary:        Driver for Linux RTL8188GU
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            https://github.com/McMCCRU/rtl8188gu
+URL:            https://github.com/McMCCRU/rtl8188gu
 Source0:        https://github.com/McMCCRU/rtl8188gu/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 Source1:        LICENSE
 # PATCH-FIX-UPSTREAM fix-build-on-kernel-6_4.patch hillwood@opensuse.org - Support Kernel 6.5+
 Patch0:         fix-build-on-kernel-6_4.patch
 # PATCH-FIX-UPSTREAM fix-build-on-kernel-6_5.patch hillwood@opensuse.org - Support Kernel 6.5+
 Patch1:         fix-build-on-kernel-6_5.patch
-# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_5.patch hillwood@opensuse.org - Support Kernel 6.8+
+# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_8.patch hillwood@opensuse.org - Support Kernel 6.8+
 Patch2:         fix-build-on-kernel-6_8.patch
+# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_13.patch hillwood@opensuse.org - Support Kernel 6.13+
+Patch3:         fix-build-on-kernel-6_13.patch
 BuildRequires:  bc
 BuildRequires:  binutils
 BuildRequires:  fdupes
@@ -104,4 +107,3 @@ done
 %license LICENSE
 
 %changelog
-

@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -224,9 +224,11 @@ chrpath --delete %{buildroot}/%{_bindir}/udisksctl
 chrpath --delete %{buildroot}/%{_libexecdir}/udisks2/udisksd
 %find_lang udisks2
 
+%if 0%{?suse_version} < 1600
 # Create udisks2 rclink
 mkdir -p %{buildroot}/%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
+%endif
 
 # Move example config file to docs
 mkdir -p %{buildroot}%{_docdir}/%{name}
@@ -263,7 +265,9 @@ mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example \
 %{_unitdir}/udisks2.service
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/80-udisks2.rules
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rc%{name}
+%endif
 %{_sbindir}/umount.udisks2
 %dir %{_libexecdir}/udisks2
 %{_libexecdir}/udisks2/udisksd

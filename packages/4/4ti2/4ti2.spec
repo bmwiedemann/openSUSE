@@ -84,10 +84,8 @@ for i in *; do
 done
 %fdupes -s %buildroot/%_prefix
 
-%post   -n lib4ti2-0 -p /sbin/ldconfig
-%postun -n lib4ti2-0 -p /sbin/ldconfig
-%post   -n libzsolve0 -p /sbin/ldconfig
-%postun -n libzsolve0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib4ti2-0
+%ldconfig_scriptlets -n libzsolve0
 
 %files
 %license COPYING

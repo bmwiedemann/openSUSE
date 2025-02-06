@@ -406,4 +406,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1224082 from glaubitz)</comment>
     <requestid>1224136</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fb6c963823ab2f92c1e346e7ea5384aa</srcmd5>
+    <version>12.24.1</version>
+    <time>1737651901</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.24.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1239769 from glaubitz)</comment>
+    <requestid>1239775</requestid>
+  </revision>
 </revisionlist>

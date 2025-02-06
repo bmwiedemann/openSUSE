@@ -1463,4 +1463,28 @@
     <comment></comment>
     <requestid>1238399</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>0504bf1d64906f5d513c7d799593929c</srcmd5>
+    <version>0.72.3</version>
+    <time>1737559945</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239385</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>09f312b92ab4ab3b5d4eea85bbffa9f8</srcmd5>
+    <version>0.72.4</version>
+    <time>1737722425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239981</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>0fb28ead7a18c44742e7bc71c180e574</srcmd5>
+    <version>0.72.5</version>
+    <time>1738007895</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240613</requestid>
+  </revision>
 </revisionlist>

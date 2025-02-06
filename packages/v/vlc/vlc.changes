@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:32:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop opencv sub-package, and hence no longer needed
+  pkgconfig(opencv) BuildRequires and various provides, Supplements
+  and Conflicts.
+
+-------------------------------------------------------------------
 Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
 
 - Convert BuildRequires from libfaad-devel to pkgconfig(faad2)

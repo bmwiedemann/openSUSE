@@ -1,7 +1,7 @@
 #
 # spec file for package sway
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define contribver 1.10
 
 Name:           sway
-Version:        1.10
+Version:        1.10.1
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -31,8 +31,6 @@ Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rk
 Source3:        sway-portals.conf
 Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{contribver}-contrib.0.tar.gz#/sway-contrib-%{contribver}.tar.gz
 Source5:        sway.rpmlintrc
-Patch1:         https://github.com/swaywm/sway/pull/8470.patch#/libinput-drag-lock-enabled-sticky.patch
-Patch2:         https://github.com/swaywm/sway/pull/8491.patch#/libinput-drag-lock-enabled-sticky-fix-condition.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel

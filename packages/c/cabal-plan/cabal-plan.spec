@@ -1,7 +1,7 @@
 #
 # spec file for package cabal-plan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name cabal-plan
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        0.7.4.0
+Version:        0.7.5.0
 Release:        0
 Summary:        Library and utility for processing cabal's plan.json file
 License:        GPL-2.0-or-later

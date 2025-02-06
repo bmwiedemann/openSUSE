@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 15 10:56:47 UTC 2025 - ddiss@suse.de
+
+- Update to version 1.13.0:
+  * Bump version to v1.13.0
+  * Add and use openat_verbose() where reasonable
+  * Revert "openat: Always annotate errors with filename"
+  * Add --readonly flag
+  * Add PassthroughFsRo as read-only variant
+  * Add a note about the required FD state for --fd
+
+-------------------------------------------------------------------
 Wed Oct 16 17:24:41 UTC 2024 - caleb.crane@suse.com
 
 - Update to version 1.12.0:

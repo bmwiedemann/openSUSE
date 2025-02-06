@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 14:09:50 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Add support for Power11 in diag_nvme (bsc#1234980 ltc#210823)
+  * Added-Power11-support-for-diag_nvme.patch
+
+-------------------------------------------------------------------
 Tue Sep 17 14:28:38 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Version 2.6.10 (jsc#PED-9918).

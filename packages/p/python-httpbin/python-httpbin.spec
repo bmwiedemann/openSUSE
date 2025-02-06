@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpbin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        HTTP Request and Response Service
 License:        MIT
 URL:            https://github.com/psf/httpbin
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#psf/httpbin#40
+Patch0:         remove-six.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask >= 2.2.4}
 BuildRequires:  %{python_module Werkzeug >= 2.0}
@@ -43,7 +45,6 @@ Requires:       python-Werkzeug >= 2.2.2
 Requires:       python-decorator
 Requires:       python-flasgger
 Requires:       python-gevent
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -78,6 +79,6 @@ export LANG=en_US.UTF-8
 %doc README.md
 %license LICENSE
 %{python_sitelib}/httpbin
-%{python_sitelib}/httpbin-%{version}*-info
+%{python_sitelib}/httpbin-%{version}.dist-info
 
 %changelog

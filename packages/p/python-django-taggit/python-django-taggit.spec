@@ -17,6 +17,7 @@
 
 
 %define mod_name django-taggit
+%{?sle15_python_module_pythons}
 BuildArch:      noarch
 Name:           python-%{mod_name}
 Version:        5.0.1
@@ -29,6 +30,7 @@ Source:         https://pypi.python.org/packages/source/d/django-taggit/%{mod_na
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 4.2

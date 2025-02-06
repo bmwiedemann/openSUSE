@@ -566,4 +566,13 @@ Changelog updated and bug reported upstream here: https://savannah.gnu.org/bugs/
     <comment></comment>
     <requestid>1153236</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>ca377b88cc8df2f5fa8fdaac46569317</srcmd5>
+    <version>4.9.1</version>
+    <time>1738335736</time>
+    <user>anag+factory</user>
+    <comment>- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind and only creates error messages (forwarded request 1238457 from kukuk)</comment>
+    <requestid>1241316</requestid>
+  </revision>
 </revisionlist>

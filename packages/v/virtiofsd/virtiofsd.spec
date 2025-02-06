@@ -1,7 +1,7 @@
 #
 # spec file for package virtiofsd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           virtiofsd
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        A vhost-user virtio-fs device backend written in Rust
 Group:          Development/Libraries/Rust

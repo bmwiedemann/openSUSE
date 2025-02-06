@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 28 04:36:16 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update network-control to version 0.1.4.
+  ## 0.1.4
+
+  * Using Integer instead of Int in LRUCache.
+
+-------------------------------------------------------------------
 Thu Jul 18 22:56:21 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update network-control to version 0.1.3.

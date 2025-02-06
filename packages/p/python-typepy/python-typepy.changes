@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 28 09:45:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.3.4
+  * Update README
+  * Refactor release process to use Tox
+    for better environment management
+- from version 1.3.3
+  * Replace deprecated abctractproperty
+  * Drop support for Python 3.7/3.8
+  * Add support for Python 3.13
+  * Add GitHub Actions workflow for building
+    and publishing to PyPI
+  * Update copyright years
+  * Bump actions/setup-python from 4 to 5
+
+-------------------------------------------------------------------
 Mon Dec  4 10:42:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.2:

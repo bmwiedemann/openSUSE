@@ -3,7 +3,7 @@
     <param name="url">https://github.com/kubernetes-sigs/cluster-api</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.9.3</param>
+    <param name="revision">v1.9.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

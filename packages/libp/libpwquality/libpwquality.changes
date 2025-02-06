@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 24 14:46:02 UTC 2025 - Stefan Schubert <schubi@suse.com>
+
+- pwquality.conf moved from /etc/security to /usr/lib/security
+
+-------------------------------------------------------------------
 Fri Jan 10 10:52:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libpwquality-fix-python-install.patch: Fix installation of

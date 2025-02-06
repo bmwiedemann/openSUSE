@@ -1,7 +1,7 @@
 #
 # spec file for package policycoreutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,7 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gettext
+BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libbz2-devel
 BuildRequires:  libcap-devel
@@ -179,8 +180,7 @@ Group:          Productivity/Security
 Requires:       %{name}-dbus = %{version}
 Requires:       %{python_for_executables}
 Requires:       %{python_for_executables}-%{name} = %{version}
-Requires:       %{python_for_executables}-gobject
-Requires:       python-gtk
+Requires:       %{python_for_executables}-gobject-Gdk
 Requires:       selinux-policy
 Requires:       setools-console
 BuildArch:      noarch

@@ -1,57 +1,57 @@
-diff --git a/bin_PL/_build_docs b/bin_PL/_build_docs
-index 30b4b09..fab4d1d 100755
---- a/bin_PL/_build_docs
-+++ b/bin_PL/_build_docs
+Index: clusterssh-4.18/bin_PL/_build_docs
+===================================================================
+--- clusterssh-4.18.orig/bin_PL/_build_docs
++++ clusterssh-4.18/bin_PL/_build_docs
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  use 5.008.004;
  use strict;
  use warnings;
-diff --git a/bin_PL/ccon b/bin_PL/ccon
-index 0a49778..eef4ddb 100755
---- a/bin_PL/ccon
-+++ b/bin_PL/ccon
+Index: clusterssh-4.18/bin_PL/ccon
+===================================================================
+--- clusterssh-4.18.orig/bin_PL/ccon
++++ clusterssh-4.18/bin_PL/ccon
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  use 5.008.004;
  use strict;
  use warnings;
-diff --git a/bin_PL/crsh b/bin_PL/crsh
-index 3a95cfc..12a74ff 100755
---- a/bin_PL/crsh
-+++ b/bin_PL/crsh
+Index: clusterssh-4.18/bin_PL/crsh
+===================================================================
+--- clusterssh-4.18.orig/bin_PL/crsh
++++ clusterssh-4.18/bin_PL/crsh
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  use 5.008.004;
  use strict;
  use warnings;
-diff --git a/bin_PL/csftp b/bin_PL/csftp
-index 3a95cfc..12a74ff 100755
---- a/bin_PL/csftp
-+++ b/bin_PL/csftp
+Index: clusterssh-4.18/bin_PL/csftp
+===================================================================
+--- clusterssh-4.18.orig/bin_PL/csftp
++++ clusterssh-4.18/bin_PL/csftp
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  use 5.008.004;
  use strict;
  use warnings;
-diff --git a/bin_PL/cssh b/bin_PL/cssh
-index 3a95cfc..12a74ff 100755
---- a/bin_PL/cssh
-+++ b/bin_PL/cssh
+Index: clusterssh-4.18/bin_PL/cssh
+===================================================================
+--- clusterssh-4.18.orig/bin_PL/cssh
++++ clusterssh-4.18/bin_PL/cssh
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  use 5.008.004;
  use strict;
  use warnings;
-diff --git a/bin_PL/ctel b/bin_PL/ctel
-index 9c3d11c..c0490e3 100755
---- a/bin_PL/ctel
-+++ b/bin_PL/ctel
+Index: clusterssh-4.18/bin_PL/ctel
+===================================================================
+--- clusterssh-4.18.orig/bin_PL/ctel
++++ clusterssh-4.18/bin_PL/ctel
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl

@@ -92,4 +92,12 @@
   * use SVG format for generating images</comment>
     <requestid>1183922</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1732284e0056180bb06d62552e125d12</srcmd5>
+    <version>0.30</version>
+    <time>1737722442</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow testsuite to fail due to Python 3.13 issues.</comment>
+    <requestid>1240002</requestid>
+  </revision>
 </revisionlist>

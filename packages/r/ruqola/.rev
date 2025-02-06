@@ -179,4 +179,12 @@
     <comment>Update to 2.4.0</comment>
     <requestid>1231912</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5860c67b1078f843b711f8044e75175c</srcmd5>
+    <version>2.4.1</version>
+    <time>1737722458</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.4.1</comment>
+    <requestid>1240028</requestid>
+  </revision>
 </revisionlist>

@@ -79,6 +79,7 @@
 %{_mandir}/man5/integritytab.5.gz
 %{_mandir}/man5/iocost.conf.5.gz
 %{_mandir}/man5/modules-load.d.5.gz
+%{_mandir}/man5/org.freedesktop.timesync1.5.gz
 %{_mandir}/man5/pstore.conf.5.gz
 %{_mandir}/man5/pstore.conf.d.5.gz
 %{_mandir}/man5/repart.d.5.gz
@@ -150,6 +151,9 @@
 %{_mandir}/man8/systemd-udev-settle.service.8.gz
 %{_mandir}/man8/systemd-udevd-control.socket.8.gz
 %{_mandir}/man8/systemd-udevd-kernel.socket.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-udevd-varlink.socket.8.gz
+%endif
 %{_mandir}/man8/systemd-udevd.8.gz
 %{_mandir}/man8/systemd-udevd.service.8.gz
 %{_mandir}/man8/systemd-vconsole-setup.8.gz
@@ -167,7 +171,7 @@
 %endif
 %{_prefix}/lib/udev/ata_id
 %{_prefix}/lib/udev/cdrom_id
-%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
+%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips riscv64
 # dmi_memory_id is only relevant on arches with DMI
 %{_prefix}/lib/udev/dmi_memory_id
 %endif
@@ -282,6 +286,9 @@
 %{_udevrulesdir}/60-infiniband.rules
 %{_udevrulesdir}/60-input-id.rules
 %{_udevrulesdir}/60-persistent-alsa.rules
+%if %{with upstream}
+%{_udevrulesdir}/60-persistent-hidraw.rules
+%endif
 %{_udevrulesdir}/60-persistent-input.rules
 %{_udevrulesdir}/60-persistent-storage-mtd.rules
 %{_udevrulesdir}/60-persistent-storage-tape.rules
@@ -292,7 +299,7 @@
 %{_udevrulesdir}/64-btrfs.rules
 %{_udevrulesdir}/70-camera.rules
 %{_udevrulesdir}/70-joystick.rules
-%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
+%ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips riscv64
 %{_udevrulesdir}/70-memory.rules
 %endif
 %{_udevrulesdir}/70-mouse.rules
@@ -305,6 +312,9 @@
 %{_udevrulesdir}/80-drivers.rules
 %endif
 %{_udevrulesdir}/80-net-setup-link.rules
+%if %{with upstream}
+%{_udevrulesdir}/81-net-bridge.rules
+%endif
 %{_udevrulesdir}/81-net-dhcp.rules
 %{_udevrulesdir}/90-iocost.rules
 %{_udevrulesdir}/90-vconsole.rules
@@ -337,6 +347,9 @@
 %endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
+%if %{with upstream}
+%{_unitdir}/sockets.target.wants/systemd-udevd-varlink.socket
+%endif
 %{_unitdir}/suspend-then-hibernate.target
 %{_unitdir}/suspend.target
 %if %{without bootstrap}
@@ -404,6 +417,9 @@
 %{_unitdir}/systemd-udevd-control.socket
 %{_unitdir}/systemd-udevd-kernel.socket
 %{_unitdir}/systemd-udevd.service
+%if %{with upstream}
+%{_unitdir}/systemd-udevd-varlink.socket
+%endif
 %{_unitdir}/systemd-vconsole-setup.service
 %{_unitdir}/systemd-volatile-root.service
 %{_unitdir}/tpm2.target

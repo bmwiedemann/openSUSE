@@ -220,4 +220,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205494</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1a76497632abf821f5b7eaea83b64299</srcmd5>
+    <version>0.14</version>
+    <time>1737559846</time>
+    <user>anag+factory</user>
+    <comment>Yet a new release (forwarded request 1238786 from iznogood)</comment>
+    <requestid>1239208</requestid>
+  </revision>
 </revisionlist>

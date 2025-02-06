@@ -861,4 +861,14 @@
     <comment></comment>
     <requestid>1225470</requestid>
   </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>86978351cb16368d78fbe1445eccae53</srcmd5>
+    <version>5.9.4</version>
+    <time>1738163368</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1239592 from dimstar
+
+- Drop rcFOO symlinks for CODE16 (PED-266).</comment>
+    <requestid>1240896</requestid>
+  </revision>
 </revisionlist>

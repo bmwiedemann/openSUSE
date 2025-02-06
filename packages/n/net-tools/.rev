@@ -424,4 +424,14 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
     <comment></comment>
     <requestid>1073279</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>08fba3b8e41c6c44a03afaf54d8e5d7e</srcmd5>
+    <version>2.10</version>
+    <time>1738163366</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1238963 from kukuk
+
+- hostname is not required anymore [bsc#1236061]</comment>
+    <requestid>1240893</requestid>
+  </revision>
 </revisionlist>

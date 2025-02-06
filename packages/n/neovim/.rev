@@ -1465,4 +1465,20 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1233145</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>121c3271d9a67cc398447c0fa8c83746</srcmd5>
+    <version>0.10.4</version>
+    <time>1738245131</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.4
+- Bug Fixes
+ * checkhealth: Failed if 'lua' in plugin name
+ ...
+- Packaging changes:
+ * add a %check section with make oldtest
+ * require tree-sitter module vimdoc for a build
+ * add 0001-neovim-0.10.4-install-treesitter-vimdoc.patch ensuring
+   tested nvim has installed tree sitter plugin enabled. (forwarded request 1241216 from mvyskocil)</comment>
+    <requestid>1241252</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jan 30 05:54:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.23.3:
+  * Don't exit with error if git repacking is required (#1711)
+  * refactor(config): use non-capture groups for allowlists (#1735)
+  * chore: Enhance `curl-auth-user` to detect empty usernames or
+    passwords (#1726)
+  * fix(cmd): read log-opts before GitLogCmd (#1730)
+
+-------------------------------------------------------------------
+Sat Jan 25 08:05:24 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.23.2:
+  * facebook keyword
+  * fix(meraki): restrict keyword case (#1722)
+  * feat(generic-api-key): detect base64 (#1598)
+  * great branch name (#1721)
+  * fix(git): remove .git suffix for links (#1716)
+  * chore: refine generic-api-key fps + trace logging (#1720)
+  * fix(generate): move newline out of char range (#1719)
+  * newline literal (#1718)
+  * build: support either stdlib or 3rd-party regexp (#1706)
+  * chore(detect): update trace logging (#1713)
+  * feat(git): redact passwords from remote URL (#1709)
+  * feat(git): include link in report (#1698)
+  * chore: reduce generic-api-key fps (#1707)
+  * blorp
+  * added new rule for cisco meraki api key (#1700)
+  * feat: general fp tweaks (#1703)
+  * chore(generate): use \x60 instead of literal (#1702)
+  * chore(regex): simplify secretPrefix, suffix (#1620)
+  * update version for pre-commit in README.md (#1699)
+
+-------------------------------------------------------------------
 Wed Jan 15 13:21:15 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.23.1:

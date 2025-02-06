@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 25 15:42:28 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.0.4:
+  + Bug fixes
+- Changes from version 3.0.3:
+  + Bug fixes
+- Changes from version 3.0.2:
+  + Bug fixes
+  + Do not use intltool to build Grisbi
+- Changes from version version 3.0.1:
+  + Bug fixes
+- Changes from version 3.0.0:
+  + Changing the payee search
+  + Adding new type of consumer loan
+  + Adding the all transactions in archive when the account is closed
+  + Bug fixes
+  + Code cleanup
+  + Preparing for the transition to gtk4
+
+-------------------------------------------------------------------
 Wed Mar 13 19:40:32 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Move install commands into %install section

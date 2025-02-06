@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Wed Jan 29 10:25:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Bump-the-go_modules-group-across-1-directory-with-2-.patch
+  to bump net/html dependencies (bsc#1235332, CVE-2024-45338)
+
+-------------------------------------------------------------------
+Mon Jan 27 19:30:58 UTC 2025 - dmueller@suse.com
+
+- Update to version 1.1.1:
+  * fixed cli desc for store env var (#374)
+  * updated versions for go/k8s/helm (#373)
+  * updated version flag to internal/flags (#369)
+  * renamed incorrectly named consts (#371)
+  * added store env var (#370)
+  * adding ignore errors and retries for continue on error/fail on error (#368)
+  * updated/fixed hauler directory (#354)
+  * standardize consts (#353)
+  * removed cachedir code (#355)
+  * removed k3s code (#352)
+  * updated dependencies for go, helm, and k8s (#351)
+  * [feature] build with boring crypto where available (#344)
+  * updated workflow to goreleaser builds (#341)
+  * added timeout to goreleaser workflow (#340)
+  * trying new workflow build processes (#337)
+  * improved workflow performance (#336)
+  * have extract use proper ref (#335)
+  * yet another workflow goreleaser fix (#334)
+  * even more workflow fixes (#333)
+  * added more fixes to github workflow (#332)
+  * fixed typo in hauler store save (#331)
+  * updates to fix build processes (#330)
+  * added integration tests for non hauler tarballs (#325)
+  * bump: golang >= 1.23.1 (#328)
+  * add platform flag to store save (#329)
+  * Update feature_request.md
+  * updated/standardize command descriptions (#313)
+  * use new annotation for 'store save' manifest.json (#324)
+  * enable docker load for hauler tarballs (#320)
+  * bump to cosign v2.2.3-carbide.3 for new annotation (#322)
+  * continue on error when adding images to store (#317)
+  * Update README.md (#318)
+  * fixed completion commands (#312)
+  * github.com/rancherfederal/hauler => hauler.dev/go/hauler (#311)
+  * pages: enable go install hauler.dev/go/hauler (#310)
+  * Create CNAME
+  * pages: initial workflow (#309)
+  * testing and linting updates (#305)
+  * feat-273: TLS Flags (#303)
+  * added list-repos flag (#298)
+  * fixed hauler login typo (#299)
+  * updated cobra function for shell completion (#304)
+  * updated install.sh to remove github api (#293)
+  * fix image ref keys getting squashed when containing sigs/atts (#291)
+  * fix missing versin info in release build (#283)
+  * bump github.com/docker/docker in the go_modules group across 1 directory (#281)
+  * updated install script (`install.sh`) (#280)
+  * fix digest images being lost on load of hauls (Signed). (#259)
+  * feat: add readonly flag (#277)
+  * fixed makefile for goreleaser v2 changes (#278)
+  * updated goreleaser versioning defaults (#279)
+  * update feature_request.md (#274)
+  * updated old references
+  * updated actions workflow user
+  * added dockerhub to github actions workflow
+  * removed helm chart
+  * added debug container and workflow
+  * updated products flag description
+  * updated chart for release
+  * fixed workflow errors/warnings
+  * fixed permissions on testdata
+  * updated chart versions (will need to update again)
+  * last bit of fixes to workflow
+  * updated unit test workflow
+  * updated goreleaser deprecations
+  * added helm chart release job
+  * updated github template names
+  * updated imports (and go fmt)
+  * formatted gitignore to match dockerignore
+  * formatted all code (go fmt)
+  * updated chart tests for new features
+  * Adding the timeout flag for fileserver command
+  * Configure chart commands to use helm clients for OCI and private registry support
+  * Added some documentation text to sync command
+  * Bump golang.org/x/net from 0.17.0 to 0.23.0
+  * fix for dup digest smashing in cosign
+  * removed vagrant scripts
+  * last bit of updates and formatting of chart
+  * updated hauler testdata
+  * adding functionality and cleaning up
+  * added initial helm chart
+  * removed tag in release workflow
+  * updated/fixed image ref in release workflow
+  * updated/fixed platforms in release workflow
+  * updated/cleaned github actions (#222)
+  * Make Product Registry configurable (#194)
+  * updated fileserver directory name (#219)
+  * fix logging for files
+  * add extra info for the tempdir override flag
+  * tempdir override flag for load
+  * deprecate the cache flag instead of remove
+  * switch to using bci-golang as builder image
+  * fix: ensure /tmp for hauler store load
+  * added the copy back for now
+  * remove copy at the image sync not needed with cosign update
+  * removed misleading cache flag
+  * better logging when adding to store
+  * update to v2.2.3 of our cosign fork
+  * add: dockerignore
+  * add: Dockerfile
+  * Bump google.golang.org/protobuf from 1.31.0 to 1.33.0
+  * Bump github.com/docker/docker
+  * updated and added new logos
+  * updated github files
+
+-------------------------------------------------------------------
 Tue Apr  2 14:55:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:

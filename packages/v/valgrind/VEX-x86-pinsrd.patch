@@ -1,10 +1,10 @@
-Index: valgrind-3.23.0/VEX/priv/guest_x86_toIR.c
+Index: valgrind-3.24.0/VEX/priv/guest_x86_toIR.c
 ===================================================================
---- valgrind-3.23.0.orig/VEX/priv/guest_x86_toIR.c
-+++ valgrind-3.23.0/VEX/priv/guest_x86_toIR.c
-@@ -12941,6 +12941,62 @@ DisResult disInstr_X86_WRK (
-    /* --- start of the SSE4 decoder                    --- */
-    /* ---------------------------------------------------- */
+--- valgrind-3.24.0.orig/VEX/priv/guest_x86_toIR.c
++++ valgrind-3.24.0/VEX/priv/guest_x86_toIR.c
+@@ -12997,6 +12997,62 @@ DisResult disInstr_X86_WRK (
+       goto decode_success;
+    }
  
 +   /* 66 0F 3A 22 /r ib = PINSRD xmm1, r/m32, imm8
 +      Extract Doubleword int from gen.reg/mem32 and insert into xmm1 */

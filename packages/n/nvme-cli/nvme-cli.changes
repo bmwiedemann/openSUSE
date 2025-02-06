@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:42:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Thu Oct 31 13:11:48 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.11:

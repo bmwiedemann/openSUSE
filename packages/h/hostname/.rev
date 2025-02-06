@@ -97,4 +97,14 @@ With dimstar's build cycle fix</comment>
     <comment></comment>
     <requestid>1073275</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>feba63911e46793858b3e032e8e8a4da</srcmd5>
+    <version>3.25</version>
+    <time>1738163407</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1228133 from simonlm
+
+Update to version 3.25</comment>
+    <requestid>1240891</requestid>
+  </revision>
 </revisionlist>

@@ -270,4 +270,19 @@
     <comment></comment>
     <requestid>1183790</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>570094e136bdbe4c04db535c9afea024</srcmd5>
+    <version>22.0.0</version>
+    <time>1737490270</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 22.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1239201 from glaubitz)</comment>
+    <requestid>1239291</requestid>
+  </revision>
 </revisionlist>

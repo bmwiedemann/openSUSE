@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:08:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.1
+  * Various fixes to support for Python 3.14. (PR #545)
+
+-------------------------------------------------------------------
 Wed Nov 27 08:42:54 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.0

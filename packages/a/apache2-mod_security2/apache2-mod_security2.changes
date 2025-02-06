@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Jan 21 13:28:24 UTC 2025 - pgajdos@suse.com
+
+- package cleanup, coordinated with owasp-modsecurity-crs cleanup
+- version update to 2.9.8 (changed upstream: Trustwave -> OWASP)
+  * Fixed ap_log_perror() usage
+  * Memory leaks + enhanced logging
+  * CI improvement: First check syntax & always display error/audit logs
+  * Fixed assert() usage
+  * Removed useless code
+  * feat: Check if the MP header contains invalid character
+  * Use standard httpd logging format in error log
+  * fix msc_regexec() != PCRE_ERROR_NOMATCH strict check
+  * Move xmlFree() call to the right place
+  * Add collection size in log in case of writing error
+  * Passing address of lock instead of lock in acquire_global_lock()
+  * Invalid pointer access in case rule id == NOT_SET_P
+  * Show error.log after httpd start in CI
+  * chore: add pull request template
+  * chore: add gitignore file
+  * Possible double free
+  * Set 'jit' variable's initial value
+  * Missing null byte + optimization
+  * fix: remove usage of insecure tmpname
+  * docs: update copyright
+  * Enhanced logging [Issue #3107]
+  * Check for null pointer dereference (almost) everywhere
+  * Fix possible segfault in collection_unpack
+  * fix: Replace obsolete macros
+  * chore: update bug-report-for-version-2-x.md
+  * feat: Add more steps: install built module and restart the server
+  * Add new flag: --without-lua
+  * Initial release of CI worklow
+  * V2/fixbuildissue
+  * ; incorrectly replaced by space in cmdline
+  * Detailed error message when writing collections
+  * docs: Fix organization name in references and security e-mail (v2)
+  * ctl:ruleRemoveByTag isn't executed if no rule id is present in the rule
+  * Suppress useless loop on tag matching
+  * Optimization: Avoid last loop and storing an empty value in case nothing
+      after last %{..} macro
+  * Ignore (consistently) empty actions
+  * Add context info to error message
+  * Implement msre_action_phase_validate()
+  * Avoid some useless code and memory allocation in case no macro is present
+  * 'jit' variable not initialized when WITH_PCRE2 is defined
+  * Configure: do not check for pcre1 if pcre2 requested
+  * Double memory allocation
+  * Fix for DEBUG_CONF compile flag
+  * Enhance logging
+  * Fix possible segfault in collection_unpack
+  * Set the minimum security protocol version for SecRemoteRules
+  * Allow lua version 5.4
+  * Configure: do not check for pcre1 if pcre2 requested
+  * Check return code of apr_procattr_io_set()
+  * Do not escape special chars in rx pattern with macro
+  * Substitute two equals-equals operators in build
+- modified patches
+  % apache2-mod_security2-no_rpath.diff (refreshed)
+  % modsecurity-2.9.3-input_filtering_errors.patch (refreshed)
+  % modsecurity-fixes.patch (refreshed)
+- added sources
+  + apache2-mod_security2.keyring
+
+-------------------------------------------------------------------
 Tue Jun  4 12:14:51 UTC 2024 - pgajdos@suse.com
 
 - %autopatch instead of %patchN
@@ -59,6 +123,7 @@ Sat Jul 15 17:09:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
     recommended
   * IIS: Update dependencies for Windows build as of v2.9.5
   * Support configurable limit on depth of JSON parsing
+- fixes CVE-2022-48279 [bsc#1207378], CVE-2023-24021 [bsc#1207379]
 
 -------------------------------------------------------------------
 Mon Jul 19 09:37:45 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>

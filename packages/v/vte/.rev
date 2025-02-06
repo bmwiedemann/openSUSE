@@ -1335,4 +1335,12 @@ New upstream release</comment>
     - Use correct termprop name (forwarded request 1226128 from iznogood)</comment>
     <requestid>1226295</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>8452312d420cd9fdbf07de483da9491d</srcmd5>
+    <version>0.78.3</version>
+    <time>1738072701</time>
+    <user>anag+factory</user>
+    <comment>new_stable (forwarded request 1240287 from iznogood)</comment>
+    <requestid>1240450</requestid>
+  </revision>
 </revisionlist>

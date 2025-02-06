@@ -2396,4 +2396,12 @@ New stable release</comment>
     <comment></comment>
     <requestid>1206270</requestid>
   </revision>
+  <revision rev="277" vrev="2">
+    <srcmd5>67f1fc591bcba4e2ea159d4ebfe75c8e</srcmd5>
+    <version>1.50.0</version>
+    <time>1737722336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239882</requestid>
+  </revision>
 </revisionlist>

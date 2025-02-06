@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 17:34:47 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Drop sysvinit service use (bsc#1236480 jsc#-264).
+
+-------------------------------------------------------------------
 Thu Nov 21 08:10:24 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 1.3.13 (jsc#PED-9917)

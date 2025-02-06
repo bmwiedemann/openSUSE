@@ -15,4 +15,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1230938</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da3e26927bd92a3ce77471c6808ca834</srcmd5>
+    <version>8.0.1</version>
+    <time>1737490206</time>
+    <user>anag+factory</user>
+    <comment>- disable the my_apps handling
+
+- Update to version 8.0.1:
+  https://rubyonrails.org/2024/12/13/Rails-Version-8-0-1-has-been-released
+
+- Update to version 8.0.0.1: (CVE-2024-54133 CVE-2024-53847)</comment>
+    <requestid>1239083</requestid>
+  </revision>
 </revisionlist>

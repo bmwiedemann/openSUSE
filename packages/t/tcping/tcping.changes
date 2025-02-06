@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan 26 11:57:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.1
+  * bug: fix name resolution in static builds with -4 flag causing
+    name resolution failures due to IPv4-mapped IPv6 addresses.
+
+-------------------------------------------------------------------
+Sat Jan 18 12:39:21 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.0
+  * new feature: implement csv output through --csv <filename> flag
+  * new feature: implement plain (color-less) output through
+    --no-color flag.
+  * new feature: implement display of source IP address and port
+    used to create TCP connections through --show-source-address
+    flag.
+  * fix: crash on database writes when hostname includes a hyphen.
+  * documents: add Chinese translation.
+  * tests: add new tests for printProbeSuccess and printProbeFail.
+  * tests: add tests for show-local-address flag.
+
+-------------------------------------------------------------------
 Sun Oct  6 12:57:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.0

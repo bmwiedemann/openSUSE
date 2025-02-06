@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:20:10 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.19.3:
+  * Don't leak VirtualInputDevice keyboards (#3720)
+  * kms: skip simple-framebuffer devices (#3721)
+- Add:
+  * 0002-remove-use-of-env-to-call-bash.patch
+  
+-------------------------------------------------------------------
 Wed Dec 25 18:44:49 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added Requires: for libmirserver, without them, you end up with
@@ -30,7 +39,7 @@ Mon Dec  2 22:13:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
   * Initial atomic-kms platform
   * [Wayland] Add support for xdg_activation_v1
   * Do not default window size (especially to weird values)
-  * DesktopFileManager::resolve_app_id no longer returns an app id with a 
+  * DesktopFileManager::resolve_app_id no longer returns an app id with a
     .desktop file suffix
   * [Configuration] Split options into global and per-module configuration
   * Ensure we always send an initial output enter
@@ -38,7 +47,7 @@ Mon Dec  2 22:13:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
   * Fix rendering of resized XWayland applications with client side decorations
   * Aspect ratios shouldn't contain zero
   * Use PkgConfig to find development headers
-  * Fix the inotify event handling in 
+  * Fix the inotify event handling in
     ReloadingYamlFileDisplayConfig::auto_reload()
   * The miral::ConfigFile "Watcher" can be destroyed before the main loop
   * [xwayland] Don't allow clients to place X11 windows

@@ -18,14 +18,14 @@
 
 %define cpan_name DBI
 Name:           perl-DBI
-Version:        1.646.0
+Version:        1.647.0
 Release:        0
-# 1.646 -> normalize -> 1.646.0
-%define cpan_version 1.646
+# 1.647 -> normalize -> 1.647.0
+%define cpan_version 1.647
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Database independent interface for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
 Source1:        perl-DBI.rpmlintrc
 Source2:        cpanspec.yml
 BuildRequires:  perl
@@ -135,7 +135,7 @@ at least the following perl manuals first: perlreftut, perldsc, perllol,
 and perlboot.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
@@ -152,7 +152,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes Driver.xst README.md
+%doc ChangeLog Driver.xst README.md
 %license LICENSE
 
 %changelog

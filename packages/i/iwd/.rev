@@ -499,4 +499,12 @@
     <comment></comment>
     <requestid>1235366</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>0dd4ea4bdfbf30d38967f250c4cb0c27</srcmd5>
+    <version>3.3</version>
+    <time>1738072709</time>
+    <user>anag+factory</user>
+    <comment>Fix date format to be parseable (forwarded request 1240710 from bmwiedemann)</comment>
+    <requestid>1240732</requestid>
+  </revision>
 </revisionlist>

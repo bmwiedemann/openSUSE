@@ -1,7 +1,7 @@
 #
 # spec file for package net-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ Patch4:         0004-By-default-do-not-fopen-anything-in-netrom_gr.patch
 Patch6:         0006-Allow-interface-stacking.patch
 Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
 BuildRequires:  help2man
-Requires:       hostname
 Recommends:     traceroute >= 2.0.0
 Provides:       net_tool = %{version}
 Obsoletes:      net_tool < %{version}

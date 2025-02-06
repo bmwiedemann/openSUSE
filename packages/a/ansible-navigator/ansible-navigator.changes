@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 22 06:21:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 25.1.0:
+  * Fix build with newer tox-extra (#1883)
+  * Bump the dependencies group across 1 directory with 22 updates
+    (#1908)
+  * Bump codecov/codecov-action from 5.1.1 to 5.1.2 (#1901)
+  * Compatibility with ansible-core 2.18 (#1882)
+  * [pre-commit.ci] pre-commit autoupdate (#1898)
+  * Bump the dependencies group in /.config with 2 updates (#1897)
+
+-------------------------------------------------------------------
 Thu Dec 12 06:10:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.12.0:

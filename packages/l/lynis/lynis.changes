@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 28 12:22:48 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.1.4:
+  * Changed
+    - Update of translations: Portuguese
+    - Add macOS Sequoia
+    - Update of EOL database
+    - Bugfix for using slashes in parameters (SafeInput function)
+    - Simplified copyright line and meta data in files
+    - Support for powerpc64le in authentication section
+    - Don't show error "kadmin.local: unable to get default realm"
+
+-------------------------------------------------------------------
 Mon Dec 16 10:16:18 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.1.3:
@@ -12,7 +25,6 @@ Mon Dec 16 10:16:18 UTC 2024 - Robert Frohl <rfrohl@suse.com>
     - KRNL-5622 - Test if systemctl binary is set
     - Several improvements for busybox
     - Update of translations: Italian, Russian, Spanish
-
 
 -------------------------------------------------------------------
 Thu Sep 26 15:14:10 UTC 2024 - Robert Frohl <rfrohl@suse.com>

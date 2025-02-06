@@ -28,4 +28,52 @@
   * add license to project metadata and some other fixes in pyproject.toml (#104)</comment>
     <requestid>1218960</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>233a2a6c48ed974619b81e22f34d6a8a</srcmd5>
+    <version>0.19.3</version>
+    <time>1737389671</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.3:
+  * Added
+    + added the optional inline-snapshot[dirty-equals] dependency to depend
+      on the dirty-equals version which works in combination with
+      inline-snapshot.
+    + You can now specify which tool you want to use to format your code by
+      setting a format-command in your configuration.
+    + Support for a new storage-dir configuration option, to tell
+      inline-snapshot where to store data files such as external snapshots.
+    + attrs can now contain unmanaged values
+    + inline_snapshot.extra.warns to captures warnings and compares them
+      against expected warnings.
+    + snapshots inside snapshots are now supported.
+    + runtime values can now be part of snapshots.
+    + f-strings can now also be used within snapshots, but are currently not
+      fixed by inline-snapshot.
+  * Changed
+    + BREAKING-CHANGE you have to install inline-snapshot[black] now if you
+      want to format your code like in the previous versions. This option is
+      not required if you use a format-command.
+    + dirty-equals expressions are now treated like runtime values or
+      snapshots within snapshots and are not modified by inline-snapshot.
+  * Fixed
+    + raise no assertion for positional arguments inside constructor methods.
+    + fixed a crash when you changed the snapshot to use a custom constructoro
+      method for dataclass/pydantic models.
+    + snapshots with pydantic models can now be compared multiple times
+    + Load default config values even if [tool.inline-snapshot] is missing.
+    + use '.model_fields' on pydantic model class and not instance.
+    + pydantic v1 is supported again.</comment>
+    <requestid>1238877</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b5715f80a048fdeb6deccd846476849e</srcmd5>
+    <version>0.19.3</version>
+    <time>1738163382</time>
+    <user>anag+factory</user>
+    <comment>- Inject multibuild to break a build cycle. 
+
+Please stage with python-pydantic, python-pydantic-core
+and python-pydantic-settings</comment>
+    <requestid>1241019</requestid>
+  </revision>
 </revisionlist>

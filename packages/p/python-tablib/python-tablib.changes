@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 20 20:14:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Fix dependencies: None of the supported packages are hard
+  requirements.
+- Remove xlwt from build set: Not maintained for 7+ years
+  * Add tablib-tests-noxls.patch
+
+-------------------------------------------------------------------
+Sat Jan 18 11:31:03 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Nov 13 01:55:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.7.0:

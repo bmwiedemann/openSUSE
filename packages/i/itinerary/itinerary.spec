@@ -1,7 +1,7 @@
 #
 # spec file for package itinerary
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,9 +33,9 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  shared-mime-info
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
+BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -69,21 +69,30 @@ BuildRequires:  pkgconfig(zlib)
 # itinerary uses icons from the breeze theme
 Requires:       kf6-breeze-icons
 # Upstream insists in having these as build dependencies...
-BuildRequires:       kf6-kirigami-imports >= %{kf6_version}
-BuildRequires:       kf6-prison-imports >= %{kf6_version}
-BuildRequires:       kf6-ki18n-imports >= %{kf6_version}
-BuildRequires:       qt6qmlimport(QtPositioning)
-BuildRequires:       qt6qmlimport(QtLocation)
-BuildRequires:       qt6qmlimport(org.kde.kosmindoormap)
-BuildRequires:       qt6qmlimport(org.kde.kopeninghours)
+BuildRequires:  kf6-kirigami-imports >= %{kf6_version}
+BuildRequires:  kf6-ki18n-imports >= %{kf6_version}
+BuildRequires:  kf6-prison-imports >= %{kf6_version}
+BuildRequires:  qt6qmlimport(QtLocation)
+BuildRequires:  qt6qmlimport(QtPositioning)
+BuildRequires:  qt6qmlimport(org.kde.kopeninghours)
+BuildRequires:  qt6qmlimport(org.kde.kosmindoormap)
 # QML imports
-Requires:       kf6-kirigami-imports >= %{kf6_version}
-Requires:       kf6-prison-imports >= %{kf6_version}
+Requires:       kf6-kcalendarcore-imports >= %{kf6_version}
+Requires:       kf6-kcontacts-imports >= %{kf6_version}
 Requires:       kf6-ki18n-imports >= %{kf6_version}
-# Runtime dependencies (itinerary won't start without these packages)
-Requires:       kpublictransport-imports
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-kitemmodels-imports >= %{kf6_version}
+Requires:       kf6-knotifications-imports >= %{kf6_version}
+Requires:       kf6-prison-imports >= %{kf6_version}
+Requires:       khealthcertificate-imports
+Requires:       kirigami-addons6
 Requires:       kopeninghours-imports
 Requires:       kosmindoormap-imports
+Requires:       kpublictransport-imports
+Requires:       qt6-declarative-imports
+Requires:       qt6-location
+Requires:       qt6-multimedia-imports
+Requires:       qt6-positioning-imports
 
 %description
 Itinerary and boarding pass management application.

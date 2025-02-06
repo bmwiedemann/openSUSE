@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:14:46 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Don't link as PIE
+
+-------------------------------------------------------------------
 Sat Dec 21 05:08:52 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Initial package for hare-libnotify-tools. Moved as a separate package because

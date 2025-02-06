@@ -2,4 +2,9 @@
   <service name="cargo_vendor" mode="manual">
     <param name="src">breezy-*.tar.gz</param>
   </service>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">breezy-*.tar.gz</param>
+     <param name="cargotoml">lib-rio/Cargo.toml</param>
+     <param name="tag">lib-rio</param>
+  </service>
 </services>

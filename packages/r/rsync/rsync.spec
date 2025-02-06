@@ -162,7 +162,9 @@ install -m 600 %{SOURCE6} %{buildroot}%{_sysconfdir}/rsyncd.secrets
 install -D -m 0644 %{SOURCE9} %{buildroot}%{_unitdir}/rsyncd@.service
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_unitdir}/rsyncd.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/rsyncd.socket
+%if 0%{?suse_version} < 1600
 ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
+%endif
 chmod -x support/*
 
 %pre
@@ -206,7 +208,9 @@ done
 %config(noreplace) %{_sysconfdir}/rsyncd.conf
 %config(noreplace) %{_sysconfdir}/rsyncd.secrets
 %endif
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcrsyncd
+%endif
 %{_sbindir}/rsyncd
 %{_bindir}/rsyncstats
 %{_bindir}/rsync

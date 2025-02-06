@@ -47,4 +47,41 @@
     <comment>- Remove azure BuildRequires</comment>
     <requestid>1218762</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb1d5a5145b59d79b6e26375f177aaeb</srcmd5>
+    <version>2.7.1</version>
+    <time>1738163381</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.7.1:
+  * Move preferred alias resolution to private method
+  * Fix test_protected_namespace_defaults with -Wdefault
+  * Make tests more robust to the running environment
+  * Fix rendering of annotations in code example
+  * Fix alias resolution for default settings source.
+  * Use the class name in the __repr__ implementations
+  * Fix default help text for union of submodels.
+  * Add support for CliMutuallyExclusiveGroup.
+  * Disable abbreviations on internal parser.
+  * Fix Secret field parsing
+  * Fix alias resolution to use preferred key.
+  * Strip annotated when getting submodels during CLI parsing.
+  * Removing return type from the function in test
+  * Relax default protected_namespaces
+  * Add support for CLI kebab case flag.
+  * Change reference of default values validation in documentation
+  * Improve field value parsing by adding NoDecode and ForceDecode
+    annotations
+  * Fix attribute error on Python 3.9 with typing.Sequence
+  * Add Python 3.13 support
+  * Adding support for populate_by_name
+  * Refactor path_type_label
+  * Fix nested model field with alias parsing
+  * Fix PathType typing in case of sequence
+  * Add cli_ignore_unknown_args config option.
+  * Fix AzureKeyVaultSettingsSource problem in case of field with underscore
+  * Add cli_flag_prefix_char config option.
+  * Fix nested model AliasChoices in validation alias
+  * Add CLI App Support</comment>
+    <requestid>1240690</requestid>
+  </revision>
 </revisionlist>

@@ -1,17 +1,19 @@
-diff -Nru aws-cli-1.36.18.orig/setup.py aws-cli-1.36.18/setup.py
---- aws-cli-1.36.18.orig/setup.py	2024-12-09 20:31:21.000000000 +0100
-+++ aws-cli-1.36.18/setup.py	2024-12-11 09:53:00.742420072 +0100
-@@ -25,11 +25,11 @@
+diff -Nru aws-cli-1.37.2.orig/setup.py aws-cli-1.37.2/setup.py
+--- aws-cli-1.37.2.orig/setup.py	2025-01-17 20:10:57.000000000 +0100
++++ aws-cli-1.37.2/setup.py	2025-01-22 11:12:03.215683385 +0100
+@@ -24,12 +24,12 @@
+ 
  
  install_requires = [
-     'botocore==1.35.77',
+-    'botocore==1.36.2',
 -    'docutils>=0.10,<0.17',
--    's3transfer>=0.10.0,<0.11.0',
+-    's3transfer>=0.11.0,<0.12.0',
 -    'PyYAML>=3.10,<6.1',
 -    'colorama>=0.2.5,<0.4.7',
 -    'rsa>=3.1.2,<4.8',
++    'botocore>=1.36.2',
 +    'docutils>=0.10',
-+    's3transfer>=0.10.0',
++    's3transfer>=0.11.0',
 +    'PyYAML>=3.10',
 +    'colorama>=0.2.5',
 +    'rsa>=3.1.2',

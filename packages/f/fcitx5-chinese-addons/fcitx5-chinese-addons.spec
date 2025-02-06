@@ -19,7 +19,7 @@
 %define build_qt5 1
 %define build_qt6 1
 Name:           fcitx5-chinese-addons
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

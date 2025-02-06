@@ -46,7 +46,11 @@ else
 				fi
 			fi
 		;;
-		u)
+		u|u\!)
+			if [ "${1}" = "u!" ]; then
+			    EXPIRE_DATE="1970-01-02"
+			fi
+
 			shift
 			ARGUMENTS="$1"
 
@@ -89,6 +93,9 @@ else
 			    fi
 
 			    run /usr/sbin/useradd -r -c "$3" -d "${homedir}" $ARGUMENTS
+			    if [ -n "$EXPIRE_DATE" ]; then
+				TZ=UTC chage -E "$EXPIRE_DATE" "$1"
+			    fi
 			elif [ -x "$busybox" ]; then
 			    if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "-" ]; then
 				run $busybox adduser -S -H -g "$3" -G "GROUP_ID" -h "${homedir}" $ARGUMENTS

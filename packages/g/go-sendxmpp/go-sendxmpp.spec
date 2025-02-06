@@ -1,7 +1,7 @@
 #
 # spec file for package go-sendxmpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           go-sendxmpp
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        A little tool to send messages to an XMPP contact or MUC
 License:        BSD-2-Clause

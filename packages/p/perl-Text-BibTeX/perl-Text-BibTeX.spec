@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-BibTeX
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Text-BibTeX
 Name:           perl-Text-BibTeX
-Version:        0.890.0
+Version:        0.900.0
 Release:        0
-%define cpan_version 0.89
+# 0.90 -> normalize -> 0.900.0
+%define cpan_version 0.90
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to read and parse BibTeX files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,11 +33,11 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.06
 BuildRequires:  perl(Config::AutoConf) >= 0.320
 BuildRequires:  perl(ExtUtils::CBuilder) >= 0.27
-BuildRequires:  perl(ExtUtils::LibBuilder) >= 0.02
+BuildRequires:  perl(ExtUtils::LibBuilder) >= 0.90.0
 BuildRequires:  perl(Module::Build) >= 0.3603
 BuildRequires:  perl(Scalar::Util) >= 1.42
 Requires:       perl(Scalar::Util) >= 1.42
-Provides:       perl(Text::BibTeX) = 0.890.0
+Provides:       perl(Text::BibTeX) = %{version}
 Provides:       perl(Text::BibTeX::BibEntry) = 0.88
 Provides:       perl(Text::BibTeX::BibFormat) = 0.88
 Provides:       perl(Text::BibTeX::BibSort) = 0.88
@@ -64,7 +65,6 @@ The libbtparse is a C library for parsing and processing BibTeX files.
 Note that the interface provided by libbtparse, while complete, is fairly
 low-level.  If you have more sophisticated needs, you might be interested
 the "Text::BibTeX" module for Perl.
-
 
 
 # MANUAL END

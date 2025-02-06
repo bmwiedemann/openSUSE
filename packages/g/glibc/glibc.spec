@@ -1,7 +1,7 @@
 #
 # spec file for package glibc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,15 +57,14 @@
 %bcond_with usrmerged
 %endif
 
-%if 0%{?gcc_version} < 13
-%define with_gcc 13
+%if 0%{?suse_version} >= 1600
+%bcond_with nscd
+%else
+%bcond_without nscd
 %endif
 
-# Enable support for livepatching.
-%ifarch x86_64
-%bcond_without livepatching
-%else
-%bcond_with livepatching
+%if 0%{?gcc_version} < 13
+%define with_gcc 13
 %endif
 
 %bcond_with build_all
@@ -95,12 +94,31 @@ ExclusiveArch:  do_not_build
 %define build_testsuite 0
 %define build_cross 1
 %undefine _build_create_debug
+%define _enable_debug_packages 0
 ExcludeArch:    %{cross_arch}
 %if 0%{?suse_version} < 1600
 ExclusiveArch:  do_not_build
 %endif
 %endif
 %define host_arch %{?cross_cpu}%{!?cross_cpu:%{_target_cpu}}
+
+# Enable support for livepatching.
+%define have_livepatching_support 0
+%if %{build_cross}
+%if "%{cross_arch}" == "x86_64"
+%define have_livepatching_support 1
+%endif
+%else
+%ifarch x86_64
+%define have_livepatching_support 1
+%endif
+%endif
+
+%if %{have_livepatching_support}
+%bcond_without livepatching
+%else
+%bcond_with livepatching
+%endif
 
 %if %{build_main}
 %define name_suffix %{nil}
@@ -147,6 +165,16 @@ ExclusiveArch:  do_not_build
 %ifarch riscv64
 %define enablekernel 4.15
 %endif
+%ifarch loongarch64
+%define enablekernel 5.19
+%endif
+
+# Before 2.29
+%define libnsl_archs %ix86 %alpha hppa m68k %mips32 %mips64 %sparc ppc ppc64 ppc64le x86_64 s390 s390x %arm aarch64 riscv64
+# Before 2.34
+%define libutil_archs %libnsl_archs
+# Before 2.35
+%define libanl_archs %libutil_archs
 
 Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
@@ -184,6 +212,9 @@ Obsoletes:      ngpt < 2.2.2
 Obsoletes:      ngpt-devel < 2.2.2
 Provides:       ngpt = 2.2.2
 Provides:       ngpt-devel = 2.2.2
+%if %{without nscd}
+Obsoletes:      nscd <= %{version}
+%endif
 Conflicts:      kernel < %{enablekernel}
 %if %{with usrmerged}
 # make sure we have post-usrmerge filesystem package
@@ -703,8 +734,12 @@ profile="--disable-profile"
 %if %{with livepatching}
 	--enable-userspace-livepatch \
 %endif
-	--disable-crypt || \
-  {
+	--disable-crypt \
+%if %{without nscd}
+        --disable-build-nscd \
+        --disable-nscd \
+%endif
+  || {
     rc=$?;
     echo "------- BEGIN config.log ------";
     %{__cat} config.log;
@@ -729,8 +764,10 @@ cd ..
 make %{?_smp_mflags} %{?make_output_sync} -C cc-base html
 %endif
 
+%if %{with nscd}
 # sysusers.d
 %sysusers_generate_pre %{SOURCE22} nscd nscd.conf
+%endif
 
 %check
 %if %{build_testsuite}
@@ -811,6 +848,9 @@ make %{?_smp_mflags} %{?make_output_sync} -C cc-base test t=elf/check-localplt
 %ifarch riscv64
 %define rtldlib lib
 %define rtld_name ld-linux-riscv64-lp64d.so.1
+%endif
+%ifarch loongarch64
+%define rtld_name ld-linux-loongarch-lp64d.so.1
 %endif
 
 %if %{with usrmerged}
@@ -929,6 +969,7 @@ cp -p cc-base/manual/libc/*.html %{buildroot}%{_datadir}/doc/glibc
 
 cd manpages; make install_root=%{buildroot} install; cd ..
 
+%if %{with nscd}
 # nscd tools:
 
 %ifnarch i686
@@ -937,6 +978,7 @@ mkdir -p %{buildroot}/etc/init.d
 ln -sf %{rootsbindir}/service %{buildroot}%{_sbindir}/rcnscd
 mkdir -p %{buildroot}/run/nscd
 mkdir -p %{buildroot}/var/lib/nscd
+%endif
 %endif
 
 #
@@ -966,6 +1008,7 @@ chmod 644 %{buildroot}%{_bindir}/ldd
 
 rm -f %{buildroot}%{rootsbindir}/sln
 
+%if %{with nscd}
 %ifnarch i686
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d/
 install -m 644 %{SOURCE20} %{buildroot}/usr/lib/tmpfiles.d/
@@ -973,6 +1016,7 @@ mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 644 %{SOURCE21} %{buildroot}/usr/lib/systemd/system
 mkdir -p %{buildroot}/usr/lib/sysusers.d/
 install -m 644 %{SOURCE22} %{buildroot}/usr/lib/sysusers.d/nscd.conf
+%endif
 %endif
 
 %if 0%{?rtld_oldname:1}
@@ -1000,7 +1044,9 @@ rm -rf %{buildroot}%{_libdir}/audit
 # Remove files from glibc-{extra,info,i18ndata}, nscd
 rm -rf %{buildroot}%{_infodir} %{buildroot}%{_prefix}/share/i18n
 rm -f %{buildroot}%{_bindir}/makedb %{buildroot}/var/lib/misc/Makefile
+%if %{with nscd}
 rm -f %{buildroot}%{_sbindir}/nscd
+%endif
 %endif
 
 %ifnarch i686
@@ -1219,7 +1265,9 @@ exit 0
 %endif
 
 %{slibdir}/libBrokenLocale.so.1
+%ifarch %libanl_archs
 %{slibdir}/libanl.so.1
+%endif
 %{slibdir}/libc.so.6*
 %{slibdir}/libc_malloc_debug.so.0
 %{slibdir}/libdl.so.2*
@@ -1236,7 +1284,9 @@ exit 0
 %{slibdir}/libresolv.so.2
 %{slibdir}/librt.so.1
 %{slibdir}/libthread_db.so.1
+%ifarch %libutil_archs
 %{slibdir}/libutil.so.1
+%endif
 %dir %attr(0700,root,root) /var/cache/ldconfig
 %{rootsbindir}/ldconfig
 %{_bindir}/gencat
@@ -1316,7 +1366,9 @@ exit 0
 %{_includedir}/*
 %{_libdir}/*.o
 %{_libdir}/libBrokenLocale.so
+%ifarch %libanl_archs
 %{_libdir}/libanl.so
+%endif
 %{_libdir}/libc.so
 %{_libdir}/libc_malloc_debug.so
 %{_libdir}/libm.so
@@ -1344,7 +1396,9 @@ exit 0
 %files devel-static
 %defattr(-,root,root)
 %{_libdir}/libBrokenLocale.a
+%ifarch %libanl_archs
 %{_libdir}/libanl.a
+%endif
 %{_libdir}/libc.a
 %{_libdir}/libm.a
 %ifarch x86_64 aarch64
@@ -1370,6 +1424,7 @@ exit 0
 %defattr(-,root,root)
 %{_prefix}/share/i18n
 
+%if %{with nscd}
 %files -n nscd
 %defattr(-,root,root)
 %config(noreplace) /etc/nscd.conf
@@ -1390,13 +1445,16 @@ exit 0
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/services
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/netgroup
 %endif
+%endif
 
 %if %{build_profile}
 %files profile
 %defattr(-,root,root)
 %{_libdir}/libc_p.a
 %{_libdir}/libBrokenLocale_p.a
+%ifarch %libanl_archs
 %{_libdir}/libanl_p.a
+%endif
 %{_libdir}/libm_p.a
 %ifarch x86_64 aarch64
 %{_libdir}/libmvec_p.a
@@ -1404,7 +1462,9 @@ exit 0
 %{_libdir}/libpthread_p.a
 %{_libdir}/libresolv_p.a
 %{_libdir}/librt_p.a
+%ifarch %libutil_archs
 %{_libdir}/libutil_p.a
+%endif
 %{_libdir}/libdl_p.a
 %endif
 
@@ -1418,7 +1478,7 @@ exit 0
 %files lang -f libc.lang
 %endif
 
-%ifarch %ix86 %alpha hppa m68k %mips32 %mips64 %sparc ppc ppc64 ppc64le x86_64 s390 s390x %arm aarch64 riscv64
+%ifarch %libnsl_archs
 %files -n libnsl1
 %{slibdir}/libnsl.so.1
 %endif

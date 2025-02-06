@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:33:37 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for deterministic output order
+
+-------------------------------------------------------------------
 Mon Sep 30 10:14:54 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to verson 1.4.0

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 21 09:17:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.2
+  * Fix typing of and_raise (exception instances are allowed).
+  * Fix teardown for spying on derived class methods.
+  * Remove python 3.6 mentions and add py-version config to pylint.
+- Adjust URL to upstream source tarball on Github
+
+-------------------------------------------------------------------
 Fri Jul  5 13:21:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Replace deprecated %setup with %autosetup

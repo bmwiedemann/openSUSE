@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 21:52:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable notify support for the unit file. New BR
+  pkgconfig(libsystemd)
+
+-------------------------------------------------------------------
 Thu Nov 21 08:29:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add dovecot-link-icu76.patch: configure: Explicitly check for icu-uc

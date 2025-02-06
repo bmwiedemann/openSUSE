@@ -66,12 +66,11 @@
 #     :post: |-
 #       /bin/echo foo
 ---
+#:preamble: |-
+#    %define rb_build_versions     %{my_apps_rb_build_versions}
+#    %define rb_build_ruby_abis    %{my_apps_rb_build_abi}
+:disable_docs: true
 :patches:
   #  gemspec_remove_pem.patch: -p1
 :sources:
   - series
-:preamble: |-
-    %if 0%{?suse_version} < 1500
-    %define rb_build_versions     ruby27
-    %define rb_build_ruby_abis    ruby:2.7.0
-    %endif

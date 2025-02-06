@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%define _secconfdir /usr/lib/security
+%else
 %define _secconfdir %{_sysconfdir}/security
+%endif
 %define libname libpwquality1
 
 Name:           libpwquality
@@ -85,7 +89,7 @@ Summary:        PAM module to disallow weak new passwords
 Group:          System/Libraries
 Requires:       pam
 Requires(post): pam-config
-Requires(postun): pam-config
+Requires(postun):pam-config
 
 %description -n pam_pwquality
 The pam_pwquality PAM module can be used instead of pam_cracklib to
@@ -123,6 +127,24 @@ make -O %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}/%{_secconfdir}
+mv %{buildroot}/%{_sysconfdir}/security/pwquality.conf %{buildroot}/%{_secconfdir}/pwquality.conf
+%endif
+
+%if 0%{?suse_version} > 1550
+%pre -n %{libname}
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in security/pwquality.conf; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans -n %{libname}
+# Migration to /usr/lib, restore just created .rpmsave
+for i in security/pwquality.conf; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -141,7 +163,12 @@ fi
 %license COPYING
 %doc AUTHORS NEWS README
 %{_libdir}/libpwquality.so.*
+%if 0%{?suse_version} >= 1550
+%dir %{_secconfdir}
+%{_secconfdir}/pwquality.conf
+%else
 %config(noreplace) %{_secconfdir}/pwquality.conf
+%endif
 %{_mandir}/man3/pwquality.3%{?ext_man}
 %{_mandir}/man5/pwquality.conf.5%{?ext_man}
 

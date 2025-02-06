@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Jan 24 15:08:26 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 2.18.0
+  * New features
+    + Add @FunctionalInterface to ClassNameMatcher.
+    + Add ValidatingObjectInputStream.Builder and
+      ValidatingObjectInputStream.builder().
+    + Add a "Safe Deserialization" section to the User Guide for
+      the site.
+    + Add IORandomAccessFile.
+    + Add RandomAccessFileMode.io(String).
+    + Add FileAlterationObserver.Builder() and deprecate most
+      constructors.
+    + Add IOUtils.readLines(CharSequence).
+    + Add ValidatingObjectInputStream.ObjectStreamClassPredicate to
+      allow configuration reuse.
+    + Add RandomAccessFileMode.accept(Path,
+      IOConsumer<RandomAccessFile>).
+    + Add RandomAccessFileMode.apply(Path,
+      IOFunction<RandomAccessFile>, T).
+    + Add IOIntConsumer.
+    + Add ProxyInputStream.AbstractBuilder. Supports setting a
+      consumer for ProxyInputStream.afterRead(int).
+    + Add support to AutoCloseInputStream for setting a consumer
+      for ProxyInputStream.afterRead(int).
+    + Add support to BOMInputStream for setting a consumer for
+      ProxyInputStream.afterRead(int).
+    + Add support to BoundedInputStream for setting a consumer for
+      ProxyInputStream.afterRead(int).
+    + Add support to BoundedInputStream for setting a consumer for
+      BoundedInputStream.onMaxLength(long, long).
+    + Add support to ChecksumInputStream for setting a consumer for
+      ProxyInputStream.afterRead(int).
+    + Add support to ThrottledInputStream for setting a consumer
+      for ProxyInputStream.afterRead(int).
+    + Add support to ObservableInputStream for setting a consumer
+      for ProxyInputStream.afterRead(int).
+    + Add support to MessageDigestCalculatingInputStream for
+      setting a consumer for ProxyInputStream.afterRead(int).
+    + Add support to MessageDigestInputStream for setting a
+      consumer for ProxyInputStream.afterRead(int).
+  * Fixed Bugs
+    + Clean ups in unit tests.
+    + Fix some Javadoc issues.
+    + RandomAccessFileMode.toString() is more helpful for debugging
+      when it inherits from Enum.
+    + Fix implicit narrowing conversion in compound assignment in
+      UnsynchronizedBufferedReader.skip(long).
+    + IO-860:  Missing reserved file names in FileSystem.WINDOWS
+      (superscript digits for COM and LPT).
+    + IO-856:  FileUtils.listFiles(final File, String[], boolean)
+      can throw NoSuchFileException #697, #699.
+    + IO-859:  FileUtils.forceDelete on non-existent file on Windows
+      throws IOException rather than FileNotFoundException.
+    + Use Unicode escapes for superscript characters. #701.
+    + IO-863:  Recent incompatible change to FileUtils.listFiles re
+      extensions, see also IO-856.
+    + IO-857:  Javadoc: Update details for PathUtils "clean"
+      behavior.
+  * Changes
+    + Bump org.apache.commons:commons-parent from 74 to 78 #670,
+      #676, #679, #688.
+    + Bump commons.bytebuddy.version from 1.15.1 to 1.15.10 #672,
+      #673, #685, #686, #694, #696, #698.
+    + Update AbstractStreamBuilder getters from protected to
+      public.
+
+
+-------------------------------------------------------------------
 Fri Oct  4 19:23:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.17.0

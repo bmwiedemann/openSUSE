@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:20:15 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.9.4. There have been reports that the vale
+  config file has changed in a recent release. The CLI utility
+  could exit with panic in some config cases. Calling the vale
+  subcommand "vale sync" wil "Download and install external
+  configuration sources" and restore normal CLI tool operation.
+  * test: update `dicpath`
+  * refactor: use default location when `dicpath` is not set
+  * test: add JSON example
+  * refactor: restrict spell check to word bounded tokens
+  * fix: only use on-disk file extension for config-matching
+  * docs: update widget
+  * test: add real YAML example
+  * refactor: use new `system` pkg
+  * refactor: fix golangci
+  * refactor: create test case for symlinks
+  * fix: handle empty replacements
+  * chore: update vulnerable go dependencies (#938)
+  * refactor: remove `allowedScopes`
+  * feat: support custom scopes with `engine: tree-stitter`
+  * refactor: support assigning markup type per-scope
+  * refactor: re-name struct fields
+  * Update accept.txt
+  * Introducing Vale Guru on Gurubase.io (#924)
+  * refactor: operation -> query
+  * chore: upgrade /x/crypto and /x/net
+  * refactor: fix golangci
+  * fix: #944
+  * feat: add support for JSON, YAML, and TOML
+
+-------------------------------------------------------------------
 Thu Jan 02 04:04:08 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.9.3:

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:24:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.2:
+  * chore(backport release-1.2): docs: Added Advanced installation
+    with Argo CD doc (#3381)
+  * chore(backport release-1.2): docs: cli instructions doc (#3380)
+  * chore(backport release-1.2): fix: fix faulty logic for handling
+    possible double-encoding of github app private key (#3379)
+  * chore(backport release-1.2): chore(cli): fix update command
+    example (#3375)
+  * chore(backport release-1.2): fix(ui): tolerate entra id RFC8414
+    deviation (#3362)
+  * chore(backport release-1.2): docs: add common chart
+    configuration options (#3361)
+  * chore(backport release-1.2): docs: fix incorrect callback url
+    in oidc docs (#3360)
+  * chore(backport release-1.2): docs: add/update roadmap (#3357)
+  * chore(backport release-1.2): docs: add operator guide >
+    security > oidc (#3354)
+  * chore(backport release-1.2): docs: operator >  security >
+    secure configuration (#3351)
+
+-------------------------------------------------------------------
+Thu Jan 23 20:03:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.1:
+  * chore(backport release-1.2): refactor: change generic secret
+    label (#3350)
+  * chore(backport release-1.2): fix(cmd): improve Argo integration
+    checks (#3349)
+  * chore(backport release-1.2): docs: improve Argo CD integration
+    document (#3344)
+  * chore(backport release-1.2): docs: move promotion steps index
+    to document (#3343)
+  * chore(backport release-1.2): docs: make old and new docs live
+    side by side (#3341)
+  * chore(backport release-1.2): fix(directives): HTTP repo cache
+    `helm-chart-update` (#3330)
+  * chore(backport release-1.2): fix: Indent typo in 15-concepts.md
+    (#3325)
+  * chore(backport release-1.2): feat: versioned docs dropdown
+    (#3280)
+  * chore(backport release-1.2): docs: working with stages
+    documentation (#3277)
+
+-------------------------------------------------------------------
 Wed Jan 15 06:55:42 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.2.0:

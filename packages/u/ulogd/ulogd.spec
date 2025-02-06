@@ -1,7 +1,7 @@
 #
 # spec file for package ulogd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch4:         ulogd-conf.diff
 
 BuildRequires:  autoconf >= 2.50
 BuildRequires:  automake >= 1.11
+BuildRequires:  libjansson-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libtool
@@ -90,6 +91,14 @@ Requires:       %name = %version-%release
 
 %description sqlite3
 SQLite3 output target for ulogd.
+
+%package json
+Summary:        JSON output target for ulogd
+Group:          Productivity/Networking/Security
+Requires:       %name = %version-%release
+
+%description json
+JSON output target for ulogd.
 
 %prep
 %autosetup -p1
@@ -157,5 +166,8 @@ install -m 644 %{SOURCE5} "$b/%_sysusersdir/"
 
 %files sqlite3
 %_libdir/%name/ulogd_output_SQLITE3.so*
+
+%files json
+%_libdir/%name/ulogd_output_JSON.so*
 
 %changelog

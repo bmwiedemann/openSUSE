@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:37:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.5.1
+  * Add documentation regarding caching of exceptions.
+  * Officially support Python 3.13.
+  * Update CI environment.
+
+-------------------------------------------------------------------
 Sat Sep 28 19:57:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.0:

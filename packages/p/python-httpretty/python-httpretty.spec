@@ -85,7 +85,7 @@ export EVENTLET_NO_GREENDNS=yes
 #  needs internet connection to httpbin.org
 donttest="test_http_passthrough or test_https_passthrough"
 # flaky (too slow) on obs
-donttest="$donttest or test_httpretty_should_allow_forcing_headers_urllib2 or test_httpretty_should_allow_registering_regexes_with_streaming_responses"
+donttest="$donttest or test_httpretty_should_allow_forcing_headers_urllib2 or test_httpretty_should_allow_registering_regexes_with_streaming_responses or test_httpretty_provides_easy_access_to_querystrings"
 # gh#gabrielfalcao/HTTPretty#457
 donttest="$donttest or test_httpretty_should_handle_paths_starting_with_two_slashes"
 %pytest -k "not (${donttest})"

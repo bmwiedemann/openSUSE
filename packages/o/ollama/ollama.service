@@ -8,6 +8,7 @@ User=ollama
 Group=ollama
 Restart=always
 RestartSec=3
+EnvironmentFile=-/etc/sysconfig/ollama
 
 [Install]
 WantedBy=default.target

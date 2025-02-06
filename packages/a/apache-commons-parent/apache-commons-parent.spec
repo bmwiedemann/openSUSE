@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-parent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name       parent
 %define short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        78
+Version:        79
 Release:        0
 Summary:        Apache Commons Parent Pom
 License:        Apache-2.0
@@ -54,6 +54,7 @@ The Project Object Model files for the apache-commons packages.
 %pom_remove_plugin :cyclonedx-maven-plugin
 %pom_remove_plugin :spdx-maven-plugin
 %pom_remove_plugin :moditect-maven-plugin
+%pom_remove_plugin org.apache.maven.plugins:maven-changes-plugin
 
 # Plugins useless in package builds
 %pom_remove_plugin :apache-rat-plugin

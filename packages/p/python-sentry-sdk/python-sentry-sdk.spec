@@ -1,7 +1,7 @@
 #
 # spec file for package python-sentry-sdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.19.0
+Version:        2.20.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module SQLAlchemy >= 1.2}
 BuildRequires:  %{python_module aiohttp >= 3.5}
 BuildRequires:  %{python_module asttokens}
 BuildRequires:  %{python_module asyncpg >= 0.23}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module blinker >= 1.1}
 BuildRequires:  %{python_module bottle >= 0.12.13}
 BuildRequires:  %{python_module celery >= 4}

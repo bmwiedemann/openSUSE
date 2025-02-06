@@ -193,4 +193,20 @@ update to 0.33.0</comment>
     <comment></comment>
     <requestid>1171252</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4c470baccbddd6d18d4a43385361e55e</srcmd5>
+    <version>0.36.1</version>
+    <time>1737490183</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238976</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1a11df9e919575021ae3d6e5df5ae093</srcmd5>
+    <version>0.36.2</version>
+    <time>1738072698</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240446</requestid>
+  </revision>
 </revisionlist>

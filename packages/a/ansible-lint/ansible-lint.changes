@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:35:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.1:
+  * Bugfixes
+    - Update compat and pre-commit versions (#4495) @audgirka
+    - Fix output terminal colors error for black on black (#4490)
+      @audgirka
+  * Other
+    - Add documentation about how to use private repositories with
+      the github action (#4491) @umglurf
+
+-------------------------------------------------------------------
+Tue Jan 21 06:12:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.0 (there is no 25.0.0):
+  * Enhancements
+    - Update requires_ansible default require >=2.16 (#4479)
+      @samccann
+    - Bump the dependencies group in /.config with 6 updates
+      (#4482) @dependabot[bot]
+    - Add write_exclude_list config option (#4256) @frq-asgard-josi
+  * Bugfixes
+    - Remove dependency hack that prevents installation on Windows
+      (#4487) @ssbarnea
+    - Allow ansible-lint action to be used from composite workflows
+      (#4481) @drew-viles
+    - Fix WARN on empty/template meta/main.yaml (#4379) @GElkayam
+    - Move octal example code next to octals definition (#4475)
+      @branic
+    - Refactor use of app instance (#4478) @ssbarnea
+    - Fix constraints with uv and update min requirements (#4485)
+      @ssbarnea
+    - Require ansible-core>=2.16 (#4483) @ssbarnea
+    - Add EL 10 as a platform in the metadata schema (#4464)
+      @antonc42
+    - Catch ansible-compat initialization warnings (#4463)
+      @ssbarnea
+    - Avoid ruamel.yaml 0.18.7-0.18.8 due to regression (#4462)
+      @ssbarnea
+  * Other
+    - Bump codecov/codecov-action from 5.1.1 to 5.1.2 (#4457)
+      @dependabot[bot]
+
+-------------------------------------------------------------------
 Thu Dec 12 14:47:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.12.2:

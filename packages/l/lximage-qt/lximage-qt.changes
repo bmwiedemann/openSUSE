@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:43:38 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.1:
+  * Don't set a limit for image size (Qt6 had set an allocation limit of 256 MiB).
+  * Fixed invalid nullptr parameter in QObject::connect (and so, silenced a warning).
+  * Fixed a small miscalculation in the selection screenshot.
+  * Ensure the current thumbnail is in the visible part of the thumbnail bar.
+  * Fixed a problem in rectangular annotations.
+
+-------------------------------------------------------------------
 Wed Nov  6 21:21:57 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.1.0:

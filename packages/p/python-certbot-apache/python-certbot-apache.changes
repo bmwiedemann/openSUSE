@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 14:35:36 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 3.1.0
+  * sync with the main certbot package
+- convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Dec  3 14:52:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to version 3.0.1

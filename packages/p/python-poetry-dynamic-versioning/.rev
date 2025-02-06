@@ -74,4 +74,13 @@
     <comment></comment>
     <requestid>1238720</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>77e88ade3757b135b074a3017e0768a6</srcmd5>
+    <version>1.7.1</version>
+    <time>1737651990</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.1:
+  * There was an intermittent ValueError in PEP 621 mode (forwarded request 1239921 from rrahl0)</comment>
+    <requestid>1239922</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-fasteners
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-more-itertools
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -63,6 +62,7 @@ It includes the following.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/fasteners
+%{python_sitelib}/fasteners-%{version}.dist-info
 
 %changelog

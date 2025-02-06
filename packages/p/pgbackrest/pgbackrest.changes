@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:46:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.54.2
+  - Fix issue after disabling bundling with block incremental
+    enabled. (Reviewed by David Christensen.)
+  - Clarify behavior of multiple configuration files. (Reviewed by
+    Paul Bierly. Suggested by Paul Bierly.)
+
+-------------------------------------------------------------------
 Mon Dec 23 15:27:18 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.54.1

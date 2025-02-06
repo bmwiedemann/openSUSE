@@ -98,4 +98,13 @@
     <comment></comment>
     <requestid>1166861</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>39ebfce8a98b2cb07523efb9d46743bc</srcmd5>
+    <version>1.0</version>
+    <time>1737651418</time>
+    <user>anag+factory</user>
+    <comment>- Change to python3: ansible moved to python 3 back in 2018. We
+  should be good to go by now. (forwarded request 1239809 from dimstar)</comment>
+    <requestid>1239843</requestid>
+  </revision>
 </revisionlist>

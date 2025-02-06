@@ -1,7 +1,7 @@
 #
 # spec file for package opencl-cpp-headers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,12 +24,22 @@ Summary:        OpenCL C++ headers
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/registry/OpenCL/
-Source:         https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v%{version}.tar.gz
+Source:         https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  findutils
+BuildRequires:  gcc-c++
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(OpenCL-Headers)
+%else
+BuildRequires:  ocl-icd-devel
+BuildRequires:  opencl-headers
+%endif
+Requires:       opencl-headers
 Conflicts:      opencl-headers-1_2
 BuildArch:      noarch
-Requires:       opencl-headers
 
 %description
 OpenCL is a royalty-free standard for cross-platform, parallel programming
@@ -40,19 +50,24 @@ This package provides the official C++ headers for OpenCL, which are wrappers
 around the C headers.
 
 %prep
-%setup -q -n OpenCL-CLHPP-%{version}
+%autosetup -n OpenCL-CLHPP-%{version}
 
 %build
 # Fix line endings
 find -type f -exec dos2unix {} \;
 
+%cmake -DBUILD_DOCS=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF
+
+%cmake_build
+
 %install
-install -d -m 0755 %{buildroot}%{_includedir}/CL
-install -p -m 0644 include/CL/* %{buildroot}%{_includedir}/CL
+%cmake_install
 
 %files
 %dir %{_includedir}/CL
 %{_includedir}/CL/cl2.hpp
 %{_includedir}/CL/opencl.hpp
+%{_datadir}/cmake/OpenCLHeadersCpp/
+%{_datadir}/pkgconfig/OpenCL-CLHPP.pc
 
 %changelog

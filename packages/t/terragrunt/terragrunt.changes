@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jan 27 16:28:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.5:
+  * Fix confusing error message gcp (#3756)
+  * Dependencies update (#3803)
+  * build(deps): bump github.com/zclconf/go-cty from 1.16.0 to
+    1.16.1 (#3790)
+  * build(deps): bump go.opentelemetry.io/otel from 1.33.0 to
+    1.34.0 (#3789)
+
+-------------------------------------------------------------------
+Thu Jan 23 19:35:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.4:
+  * Improved errors retry/ignore (#3795)
+  * Code spell issues fixes (#3799)
+
+-------------------------------------------------------------------
+Wed Jan 22 06:08:52 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.3:
+  * fix #3784 add support for using `h`,`j`,`k`,`l` in catalog
+    command. (#3797)
+  * feat: Adjusting Getting Started docs (#3788)
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.6 to
+    1.7.8 (#3786)
+  * build(deps): bump github.com/ProtonMail/go-crypto from 1.1.3 to
+    1.1.5 (#3785)
+  * docs: Adding testing docs for contributors (#3787)
+  * docs: Adding linting docs to the contribution page (#3783)
+  * build(deps): bump golang.org/x/oauth2 from 0.24.0 to 0.25.0
+    (#3754)
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.1.0
+    to 1.2.4 (#3755)
+  * fix: Fixing notification truncation (#3781)
+  * fix: Adding truncation to release announcement (#3780)
+  * Add stack run * documentation (#3778)
+  * fix: Revert accidental early removal of `--terragrunt` prefix
+    from log formatting (#3779)
+  * docs: Shuffling docs ordering with permalinks (#3777)
+
+-------------------------------------------------------------------
 Fri Jan 17 06:19:46 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.72.2:

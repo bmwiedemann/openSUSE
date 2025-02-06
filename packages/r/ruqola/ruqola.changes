@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 24 07:17:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.4.1
+  * Fix typing support (new API)
+  * Exclude string starting with /* or // as Rocket chat
+    command (avoid error)
+  * Don't copy text when preview is hidden
+  * Fix Market apps support
+  * Fix search user (Allow to use '@') when inviting users in Room
+  * Inform when we don't have database history for a specific Room
+  * Fix clicking in url in text in preview url
+  * Don't allow to create two tokens with same name
+  * Don't show clear button in lineedit when it's readonly
+
+-------------------------------------------------------------------
 Wed Dec 18 14:35:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.4.0

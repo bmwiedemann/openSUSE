@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Jan 25 21:08:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing Requires.
+
+-------------------------------------------------------------------
+Fri Jan 24 15:30:25 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.1.0
+  * Features
+    - Twine now has preliminary built-in support for Trusted Publishing as an authentication mechanism. (#1194)
+  * Deprecations and Removals
+    - Remove support for egg and wininst distribution types.
+      These are not accepted by PyPI and not produced by any modern build-backends. (#1195)
+    - Twine no longer supports .tar.bz2 source distributions. (#1200)
+  * Misc
+    - packaging is used instead of pkginfo for parsing and validating metadata.
+      This aligns metadata validation to the one performed by PyPI.
+      packaging  version 24.0 or later is required. Support for metadata version 2.4
+      requires packaging 24.2 or later. pkginfo is not a dependency anymore. (#1180)
+    - Use "source" instead of None as pyversion for sdist uploads. This is what PyPI (and most likely other package indexes) expects. (#1191)
+- Changes from 6.0.1
+  * Bugfixes
+    - Fixed a regression where twine check would fail to expand wildcards, e.g. twine check 'dist/*'. (#1188)
+  * Misc
+    #1184
+- Changes from 6.0.0
+  * Bugfixes
+    - Restore support for pkginfo 1.11 (#1116)
+  * Deprecations and Removals
+    - Username for PyPI and Test PyPI now defaults to __token__ but no longer overrides a username
+      configured in the environment or supplied on the command line. Workflows still supplying
+      anything other than __token__ for the username when uploading to PyPI or Test PyPI will now fail.
+      Either supply __token__ or do not supply a username at all. (#1121)
+  * Misc
+    #1024
+
+-------------------------------------------------------------------
 Thu Nov 14 03:51:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a test broken by importlib_metadata 8.5+. 

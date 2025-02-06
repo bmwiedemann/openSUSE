@@ -81,15 +81,14 @@ replace-with = "vendored-sources"
 [source.vendored-sources]
 directory = "vendor"
 EOF
-cmake --preset rust-with-sqlite-release --install-prefix %{buildroot}%{_prefix}
+cmake --preset rust-with-sqlite-release --install-prefix %{_prefix}
 cmake --build build
 
 %check
 cmake --build build -t test
 
 %install
-sed -i "s|prefix=%{buildroot}%{_prefix}|prefix=%{_prefix}|" build/chewing.pc
-cmake --build build -t install
+cmake --install build --prefix %{buildroot}%{_prefix}
 
 %fdupes %{buildroot}%{_includedir}
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 06:24:17 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to release 6.13
+  * ip rule: added DSCP support
+  * ip: added "down" filter for ``ip addr/link show``
+  * rdma: added support for ``monitor`` subcommand
+  * tc: added support for Hold/Release mechanism in TSN as per
+    IEEE 802.1Q-2018
+  * vdpa: added support for setting the MAC address in vDPA tool
+
+-------------------------------------------------------------------
 Fri Aug 16 09:06:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.10

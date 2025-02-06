@@ -1,7 +1,7 @@
 #
 # spec file for package python-grpc-google-iam-v1
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-grpc-google-iam-v1
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        GRPC library for the google-iam-v1 service
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/python-grpc-google-iam-v1
-Source:         https://files.pythonhosted.org/packages/source/g/grpc-google-iam-v1/grpc-google-iam-v1-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/grpc_google_iam_v1/grpc_google_iam_v1-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module grpcio >= 1.44.0}
 GRPC library for the google-iam-v1 service
 
 %prep
-%setup -q -n grpc-google-iam-v1-%{version}
+%setup -q -n grpc_google_iam_v1-%{version}
 
 %build
 %pyproject_wheel

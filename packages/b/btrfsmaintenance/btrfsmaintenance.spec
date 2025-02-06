@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsmaintenance
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,8 +70,10 @@ install -m 644 -D btrfs-balance.timer %{buildroot}%{_unitdir}
 install -m 644 -D btrfs-defrag.timer %{buildroot}%{_unitdir}
 install -m 644 -D btrfs-scrub.timer %{buildroot}%{_unitdir}
 install -m 644 -D btrfs-trim.timer %{buildroot}%{_unitdir}
+%if 0%{?suse_version} < 1600
 install -m 755 -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcbtrfsmaintenance-refresh
+%endif
 
 # zypp plugin
 install -m 755 -d %{buildroot}%{_prefix}/lib/zypp/plugins/commit
@@ -117,6 +119,8 @@ install -m 644 -D sysconfig.btrfsmaintenance %{buildroot}%{_fillupdir}
 %{_unitdir}/btrfs-defrag.timer
 %{_unitdir}/btrfs-scrub.timer
 %{_unitdir}/btrfs-trim.timer
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcbtrfsmaintenance-refresh
+%endif
 
 %changelog

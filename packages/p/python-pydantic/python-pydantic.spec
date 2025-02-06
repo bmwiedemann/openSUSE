@@ -1,7 +1,7 @@
 #
-# spec file for package python-pydantic
+# spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.9.2
+Version:        2.10.6
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pydantic-core >= 2.27.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,7 +59,7 @@ Requires:       python-annotated-types >= 0.4.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-eval-type-backport
 %endif
-Requires:       python-pydantic-core = 2.23.4
+Requires:       python-pydantic-core >= 2.27.2
 Requires:       python-typing-extensions >= 4.6.1
 BuildArch:      noarch
 %python_subpackages

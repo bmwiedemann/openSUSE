@@ -1,7 +1,7 @@
 #
 # spec file for package keylime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        7.11.0
+Version:        7.12.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
@@ -165,6 +165,7 @@ patch -s --fuzz=0 config/tenant.conf < %{SOURCE12}
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ca
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_convert_runtime_policy
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_create_policy
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}-policy
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_sign_runtime_policy
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_tenant
@@ -199,6 +200,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_install_alternative %{srcname}_ca
 %python_install_alternative %{srcname}_convert_runtime_policy
 %python_install_alternative %{srcname}_create_policy
+%python_install_alternative %{srcname}-policy
 %python_install_alternative %{srcname}_registrar
 %python_install_alternative %{srcname}_sign_runtime_policy
 %python_install_alternative %{srcname}_tenant
@@ -211,6 +213,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_uninstall_alternative %{srcname}_ca
 %python_uninstall_alternative %{srcname}_convert_runtime_policy
 %python_uninstall_alternative %{srcname}_create_policy
+%python_uninstall_alternative %{srcname}-policy
 %python_uninstall_alternative %{srcname}_registrar
 %python_uninstall_alternative %{srcname}_sign_runtime_policy
 %python_uninstall_alternative %{srcname}_tenant
@@ -257,6 +260,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_ca
 %python_alternative %{_bindir}/%{srcname}_convert_runtime_policy
 %python_alternative %{_bindir}/%{srcname}_create_policy
+%python_alternative %{_bindir}/%{srcname}-policy
 %python_alternative %{_bindir}/%{srcname}_registrar
 %python_alternative %{_bindir}/%{srcname}_sign_runtime_policy
 %python_alternative %{_bindir}/%{srcname}_tenant

@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:29:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.29:
+  * chore(deps): bump codecov/codecov-action from 3 to 5
+
+-------------------------------------------------------------------
+Tue Jan 28 14:21:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.28:
+  * chore(deps): bump jenkins-x-plugins/jx-release-version
+
+-------------------------------------------------------------------
+Thu Jan 23 06:06:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.27:
+  * chore(deps): upgrade to version 0.3.5
+
+-------------------------------------------------------------------
+Thu Jan 23 06:04:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.26:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.13
+
+-------------------------------------------------------------------
+Tue Jan 21 14:06:50 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.25:
+  * chore(deps): upgrade to version 0.23.13
+
+-------------------------------------------------------------------
+Mon Jan 20 14:42:33 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.24:
+  * chore(deps): bump anchore/sbom-action from 0.17.5 to 0.17.9
+
+-------------------------------------------------------------------
+Mon Jan 20 14:40:52 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.23:
+  * chore(deps): bump jenkins-x-plugins/jx-release-version
+
+-------------------------------------------------------------------
+Mon Jan 20 13:51:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.22:
+  * chore(deps): upgrade to version 0.7.17
+
+-------------------------------------------------------------------
+Mon Jan 20 06:14:14 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.21:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.12
+- Update to version 3.11.20:
+  * chore(deps): bump golang.org/x/net from 0.30.0 to 0.33.0
+- Update to version 3.11.19:
+  * chore(deps): bump docker/build-push-action from 4 to 6
+- Update to version 3.11.18:
+  * chore(deps): bump github/codeql-action from 2 to 3
+- Update to version 3.11.17:
+  * chore(deps): bump sigstore/cosign-installer from 2.8.1 to 3.7.0
+- Update to version 3.11.16:
+  * chore(deps): bump docker/login-action from 2 to 3
+- Update to version 3.11.15:
+  * chore(deps): bump docker/setup-qemu-action from 2 to 3
+- Update to version 3.11.14:
+  * chore(deps): upgrade to version 0.2.70
+- Update to version 3.11.13:
+  * chore(deps): upgrade to version 0.7.16
+- Update to version 3.11.12:
+  * chore(deps): upgrade to version 0.23.12
+- Update to version 3.11.11:
+  * chore(deps): upgrade to version 0.4.11
+- Update to version 3.11.10:
+  * chore(deps): upgrade to version 0.10.11
+
+-------------------------------------------------------------------
 Thu Jan 16 06:01:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11.9:

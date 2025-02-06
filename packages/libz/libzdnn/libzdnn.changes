@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:38:44 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Changed BuildRequires from gcc13-c++ to gcc14-c++ (jsc#PED-10257)
+- Exporting CC and CXX to gcc-14 and g++-14
+
+-------------------------------------------------------------------
 Mon Nov 25 07:38:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file

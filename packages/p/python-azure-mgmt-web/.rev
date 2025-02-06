@@ -229,4 +229,18 @@
     <comment></comment>
     <requestid>1196184</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9a346d2b5621b325bc4c8145f5ac9361</srcmd5>
+    <version>8.0.0</version>
+    <time>1737828759</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1240030 from glaubitz)</comment>
+    <requestid>1240210</requestid>
+  </revision>
 </revisionlist>

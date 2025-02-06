@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1159002</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>13ba0adeb80b1bc3d5ace8dc894644e7</srcmd5>
+    <version>1.0</version>
+    <time>1738311162</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase size limits:
+  * Rescue to max 1GB (give up on CD-R media; smallest sticks
+    people will find are 1GB).
+  * KDE/GNOME/XFCE upped to 1.5GB: we were limitting to 1.2GB so
+    far, but that implies a 2G drive anyway. Not jumping right away
+    to 2GB to force ourselves to limit the content.</comment>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libzdnn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ URL:            https://github.com/IBM/zDNN
 Source:         zDNN-1.1.1.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
-%if %{gcc_version} < 13
-BuildRequires:  gcc13-c++
+%if %{gcc_version} < 14
+BuildRequires:  gcc14-c++
 %else
 BuildRequires:  gcc%{gcc_version}-c++
 %endif
@@ -73,9 +73,9 @@ shared library for the libzdnn (zDNN) RPM.
 export CC=gcc-%{gcc_version}
 export CXX=g++-%{gcc_version}
 
-%if %{gcc_version} < 13
-export CC=gcc-13
-export CXX=g++-13
+%if %{gcc_version} < 14
+export CC=gcc-14
+export CXX=g++-14
 %endif
 
 autoconf

@@ -2520,4 +2520,15 @@
   + Updated translations. (forwarded request 1226129 from iznogood)</comment>
     <requestid>1226296</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>7ce112c2e42e1b026df7417c38f224d7</srcmd5>
+    <version>3.54.3</version>
+    <time>1738072702</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.54.3:
+  + ci: Add CI.
+- Drop obsolete and unused update-desktop-files BuildRequires: the
+  corresponding macro is already removed in the past. (forwarded request 1240384 from iznogood)</comment>
+    <requestid>1240452</requestid>
+  </revision>
 </revisionlist>

@@ -2,7 +2,7 @@
   <service mode="manual" name="download_files" />
   <service name="cargo_vendor" mode="manual">
      <param name="srctar">gitui-*.tar.gz</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
 </services>
 

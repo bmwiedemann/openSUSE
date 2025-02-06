@@ -1,5 +1,17 @@
+From 492f92f0675ead707b91f5b8a58c4dc4aa6c2fc0 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Tue, 14 Jan 2025 14:56:35 +0800
+Subject: [PATCH 2/2] ovmf ignore spurious GCC 12 warning
+
+---
+ BaseTools/Source/C/DevicePath/DevicePathUtilities.c | 4 ++++
+ BaseTools/Source/C/GenFfs/GenFfs.c                  | 4 ++++
+ BaseTools/Source/C/GenSec/GenSec.c                  | 4 ++++
+ BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c     | 4 ++++
+ 4 files changed, 16 insertions(+)
+
 diff --git a/BaseTools/Source/C/DevicePath/DevicePathUtilities.c b/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
-index 2ffefa8..c9fb432 100644
+index 49078aac8c..f5f14541ed 100644
 --- a/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
 +++ b/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
 @@ -16,6 +16,10 @@
@@ -14,10 +26,10 @@ index 2ffefa8..c9fb432 100644
  // Template for an end-of-device path node.
  //
 diff --git a/BaseTools/Source/C/GenFfs/GenFfs.c b/BaseTools/Source/C/GenFfs/GenFfs.c
-index 949025c..be55a52 100644
+index 4c2e93e6f4..eb12a8cb8b 100644
 --- a/BaseTools/Source/C/GenFfs/GenFfs.c
 +++ b/BaseTools/Source/C/GenFfs/GenFfs.c
-@@ -36,6 +36,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+@@ -38,6 +38,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
  #define UTILITY_MAJOR_VERSION   0
  #define UTILITY_MINOR_VERSION   1
  
@@ -29,10 +41,10 @@ index 949025c..be55a52 100644
    NULL,                                   // 0x00
    "EFI_FV_FILETYPE_RAW",                  // 0x01
 diff --git a/BaseTools/Source/C/GenSec/GenSec.c b/BaseTools/Source/C/GenSec/GenSec.c
-index d54a4f9..fb40ad3 100644
+index d9d2efeca7..09d05f1828 100644
 --- a/BaseTools/Source/C/GenSec/GenSec.c
 +++ b/BaseTools/Source/C/GenSec/GenSec.c
-@@ -37,6 +37,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+@@ -39,6 +39,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
  #define UTILITY_MAJOR_VERSION   0
  #define UTILITY_MINOR_VERSION   1
  
@@ -44,7 +56,7 @@ index d54a4f9..fb40ad3 100644
    NULL,                                 // 0x00 - reserved
    "EFI_SECTION_COMPRESSION",            // 0x01
 diff --git a/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c b/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
-index 4e9b499..ab9b7cc 100644
+index 4b9f5fa692..0ffe42580f 100644
 --- a/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
 +++ b/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
 @@ -40,6 +40,10 @@ static unsigned g_STAT_OFFSET = 0;
@@ -58,3 +70,6 @@ index 4e9b499..ab9b7cc 100644
  void LzmaEncProps_Init(CLzmaEncProps *p)
  {
    p->level = 5;
+-- 
+2.43.0
+

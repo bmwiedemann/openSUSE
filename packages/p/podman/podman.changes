@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 22 06:22:49 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.3.2:
+  * Bump to v5.3.2
+  * Update release notes for v5.3.2
+  * [v5.3] Bump Buildah to v1.38.1 with CVE-2024-11218
+  * [v5.3] Bump c/storage v1.56.1, c/image v5.33.1, c/common
+    v0.61.1
+  * Revert "win-installer test: revert to v5.3.0"
+  * Avoid rebooting twice when installing WSL
+  * Avoid rebooting on Windows when upgrading and WSL isn't
+    installed
+  * Add win installer patch
+  * Bump WiX toolset version to 5.0.2
+  * Add man pages to Mac installer
+  * Replace ExclusiveArch with ifarch
+  * Fixes missing binary in systemd.
+  * Packit: remove epel and re-enable c9s
+  * Packit/copr: switch to fedora-all
+  * Quadlet - Use = sign when setting the pull arg for build
+  * win-installer test: revert to v5.3.0
+  * Bump to v5.3.2-dev
+
+-------------------------------------------------------------------
 Fri Dec  6 11:50:30 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Re-add iptables temporarily

@@ -1,7 +1,7 @@
 #
 # spec file for package irqbalance
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,9 @@ sed -ie "s|After=syslog.target||g" misc/irqbalance.service
 # Remove ProtectKernelTunables=yes. See https://github.com/Irqbalance/irqbalance/issues/308
 sed -ie "s|ProtectKernelTunables=yes||g" misc/irqbalance.service
 install -D -m 0644 misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalance.service
+%if 0%{?suse_version} < 1600
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
+%endif
 
 %check
 %make_build check
@@ -108,7 +110,9 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
 %license COPYING
 %doc AUTHORS README.md
 %{_sbindir}/irqbalance
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcirqbalance
+%endif
 %{_unitdir}/irqbalance.service
 %{_mandir}/man1/irqbalance.1%{?ext_man}
 %{_fillupdir}/sysconfig.irqbalance

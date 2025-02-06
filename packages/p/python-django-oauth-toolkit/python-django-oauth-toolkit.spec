@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-oauth-toolkit
 Version:        1.7.0
 Release:        0
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module jwcrypto >= 0.8.0}
 BuildRequires:  %{python_module oauthlib >= 3.1.0}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-mock}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:27:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- do not generate unversioned conflicts
+
+-------------------------------------------------------------------
 Tue Oct  8 00:27:46 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update gem_packages.spec.erb by syncing with gem2rpm

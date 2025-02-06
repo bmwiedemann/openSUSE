@@ -17,7 +17,7 @@
 
 
 Name:           batctl
-Version:        2024.0
+Version:        2024.1
 Release:        0
 Summary:        B.A.T.M.A.N. advanced control and management tool
 License:        GPL-2.0-only AND MIT

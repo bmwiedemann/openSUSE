@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jan 29 02:19:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Inject multibuild to break a build cycle. 
+
+-------------------------------------------------------------------
+Thu Jan 16 05:40:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.19.3:
+  * Added
+    + added the optional inline-snapshot[dirty-equals] dependency to depend
+      on the dirty-equals version which works in combination with
+      inline-snapshot.
+    + You can now specify which tool you want to use to format your code by
+      setting a format-command in your configuration.
+    + Support for a new storage-dir configuration option, to tell
+      inline-snapshot where to store data files such as external snapshots.
+    + attrs can now contain unmanaged values
+    + inline_snapshot.extra.warns to captures warnings and compares them
+      against expected warnings.
+    + snapshots inside snapshots are now supported.
+    + runtime values can now be part of snapshots.
+    + f-strings can now also be used within snapshots, but are currently not
+      fixed by inline-snapshot.
+  * Changed
+    + BREAKING-CHANGE you have to install inline-snapshot[black] now if you
+      want to format your code like in the previous versions. This option is
+      not required if you use a format-command.
+    + dirty-equals expressions are now treated like runtime values or
+      snapshots within snapshots and are not modified by inline-snapshot.
+  * Fixed
+    + raise no assertion for positional arguments inside constructor methods.
+    + fixed a crash when you changed the snapshot to use a custom constructoro
+      method for dataclass/pydantic models.
+    + snapshots with pydantic models can now be compared multiple times
+    + Load default config values even if [tool.inline-snapshot] is missing.
+    + use '.model_fields' on pydantic model class and not instance.
+    + pydantic v1 is supported again.
+    + Code generation for sets is now deterministic.
+    + solved a bug caused by a variable inside a snapshot
+    + inline-snapshot checks now if the given command line flags
+      (--inline-snapshot=...) are valid
+    + do not crash when handling raw f-strings (rf"",RF"",...)
+    + Don't crash for snapshots like snapshot(f"")
+    + skip formatting if black returns an error
+
+-------------------------------------------------------------------
+Wed Nov 13 15:46:47 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.0
+  * Removed the "Programming Language :: Python :: Implementation :: PyPy"
+    classifier which was incorrect, because inline-snapshot can not fix
+    snapshots on pypy. inline-snapshot now enforces --inline-snapshot=disable
+    when used with an implementation other than cpython, which allows
+    it to be used in packages that want to support pypy.
+  * Command line shortcuts can be defined to simplify your workflows.
+    --review and --fix are defined by default. See the documentation
+    for details.
+  * --inline-snapshot=create/fix/trim/update will no longer show reports
+    for other categories. You can use --inline-snapshot=create,report
+    if you want to use the old behaviour.
+- from version to 0.13.4
+  * Use tomli instead of toml
+
+-------------------------------------------------------------------
 Tue Oct 29 08:12:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.3:

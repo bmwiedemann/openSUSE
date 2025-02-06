@@ -40,6 +40,8 @@ Patch1:         dirty-hack-remove-assert.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/commit/3426a5c33c36266af42128ee9eca4921e68ea876 Refs #34900 -- Fixed (...) test on Python 3.13+.
 # sadly, it was not backported to 4.2.x branch
 Patch2:         py313.patch
+# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/16459 fix tests afte r year 2038
+Patch3:         fix2038.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}

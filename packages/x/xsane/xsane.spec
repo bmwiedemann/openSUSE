@@ -1,7 +1,7 @@
 #
 # spec file for package xsane
 #
-# Copyright (c) 2023 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} <= 1600
+%bcond_without gimp
+%else
+%bcond_with gimp
+%endif
 
 Name:           xsane
 Version:        0.999
 Release:        0
 Summary:        A GTK-Based Graphical Scanning Front-End for SANE
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Scanner
-Url:            http://www.xsane.org/
+URL:            http://www.xsane.org/
 # URL for Source0: http://www.xsane.org/download/xsane-0.998.tar.gz
 Source0:        http://www.xsane.org/download/xsane-%{version}.tar.gz
 Patch0:         xsane-memory-leak.diff
@@ -46,7 +52,11 @@ Patch21:        0005-m4.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
+%if %{with gimp}
 BuildRequires:  gimp-devel
+%else
+BuildRequires:  gtk2-devel
+%endif
 BuildRequires:  libgphoto2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
@@ -88,7 +98,11 @@ mv configure.in configure.ac
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 ACLOCAL="aclocal -I m4" autoreconf -f -i
 %configure\
+%if %{with gimp}
 	--enable-gimp
+%else
+	--disable-gimp
+%endif
 make %{?_smp_mflags}
 
 %install

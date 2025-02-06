@@ -1,7 +1,7 @@
 #
 # spec file for package buildkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
 %global import_path     %{provider_prefix}
 Name:           buildkit
-Version:        0.18.2
+Version:        0.19.0
 Release:        0
 Summary:        Toolkit for converting source code to build artifacts
 License:        Apache-2.0

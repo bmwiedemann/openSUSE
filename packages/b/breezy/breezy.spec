@@ -1,7 +1,7 @@
 #
 # spec file for package breezy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,20 @@ Version:        3.3.9
 Release:        0
 Summary:        Distributed version control system with multi-format support
 License:        GPL-2.0-or-later
+# Upstream website https://launchpad.net/brz
 URL:            https://www.breezy-vcs.org/
 Source0:        https://files.pythonhosted.org/packages/source/b/breezy/breezy-%{version}.tar.gz
-Source98:       vendor-lib-rio.tar.xz
+Source98:       vendor-lib-rio.tar.zst
 Source99:       vendor.tar.zst
+# PATCH-FIX-UPSTREAM 03_spurious_test_failure.patch mcepl@suse.com
+# fix some spurious test failures
+Patch1:         03_spurious_test_failure.patch
+# PATCH-FIX-UPSTREAM 08_disable_sphinx_epytext.patch mcepl@suse.com
+# don't depend on sphinx_epytext
+Patch2:         08_disable_sphinx_epytext.patch
+# PATCH-FIX-UPSTREAM 16_generate_ids.patch mcepl@suse.com
+Patch3:         16_generate_ids.patch
+
 BuildRequires:  cargo >= 1.41.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -70,6 +80,18 @@ Breezy is a version control system implemented in Python with
 multi-format support. Breezy has built-in support for the Git and
 Bazaar file formats and network protocols.
 
+%package bash-completion
+Summary:        Bash completion for breezy
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (breezy and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash shell completions for breezy
+
+%lang_package
+
 %prep
 %autosetup -p1 -a 98 -a 99 -n breezy-%{version}
 
@@ -83,43 +105,37 @@ sed -i '1{\@^#!i[[:blank:]]*%{_bindir}/env python@d}' \
 %build
 export RUSTFLAGS=%{rustflags}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python3_build
+%python3_pyproject_wheel
+# generates brz.1
+python3 tools/generate_docs.py man
+# generates brz.bash_completion
+python3 tools/generate_docs.py bash_completion
 
 %install
 export RUSTFLAGS=%{rustflags}
-%python3_install
+%python3_pyproject_install
+
+# shell completions
+install -Dm0644 brz.bash_completion  \
+    %{buildroot}%{_datadir}/bash-completion/completions/brz
+
 %fdupes %{buildroot}%{python3_sitearch}
+
+# install manpage
+install -D -m 0644 brz.1 %{buildroot}%{_mandir}/man1/brz.1
+install -m 0644 breezy/git/git-remote-bzr.1 %{buildroot}%{_mandir}/man1/git-remote-bzr.1
 
 # backwards compatible symbolic links
 ln -s brz %{buildroot}%{_bindir}/bzr
 echo ".so man1/brz.1" > %{buildroot}%{_mandir}/man1/bzr.1
 
+%find_lang %{name}
+
 %check
 export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export LANG=en_US.UTF8
-# log_C log_BOGUS - borked with py3.8+ as you can't change encoding
-# test_ancient_{ctime,mtime} - broken on aarch64 %%arm ppc ppc64le
-# test_distant_{ctime,mtime} - broken on %%arm
-# test_plugins lp#1927523
-# test_simple_local_git - pulls in forbidden modules with 3.10+
 %{buildroot}%{_bindir}/bzr selftest -v --parallel=fork \
-  -Oselftest.timeout=6000 -x bash_completion \
-  -x breezy.tests.test_transport.TestSSHConnections.test_bzr_connect_to_bzr_ssh -x test_export_pot \
-  -x test_log_C -x test_log_BOGUS \
-%ifnarch %{ix86} x86_64 ppc64
-  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_ancient_ctime \
-  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_ancient_mtime \
-%endif
-%ifarch %{arm}
-  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_ctime \
-  -x breezy.tests.test__dirstate_helpers.TestPackStat.test_distant_mtime \
-%endif
-  -x breezy.tests.test_xml.TestSerializer.test_revision_text_v8 \
-  -x breezy.tests.test_xml.TestSerializer.test_revision_text_v7 \
-  -x breezy.tests.test_xml.TestSerializer.test_revision_text_v6 \
-  -x breezy.tests.test_plugins.TestPlugins \
-  -x breezy.tests.test_plugins.TestLoadingPlugins.test_plugin_with_error \
-  -x breezy.tests.test_import_tariff.TestImportTariffs.test_simple_local_git
+  -Oselftest.timeout=6000
 
 %files
 %doc NEWS README.rst
@@ -133,8 +149,10 @@ export LANG=en_US.UTF8
 %{_mandir}/man1/brz.1%{?ext_man}
 %{_mandir}/man1/bzr.1%{?ext_man}
 %{_mandir}/man1/git-remote-bzr.1%{?ext_man}
-%dir %{_datadir}/locale/{ckb,fo,ku,my,sco}
-%dir %{_datadir}/locale/{ckb,fo,ku,my,sco}/LC_MESSAGES
-%{_datadir}/locale/*/*/breezy.mo
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/brz
+
+%files lang -f %{name}.lang
 
 %changelog

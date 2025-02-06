@@ -204,4 +204,16 @@
     <comment></comment>
     <requestid>1230764</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>692dbf63e5af02eb98d351fa8e35a838</srcmd5>
+    <version>1.5.1+git.20221217</version>
+    <time>1737828618</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0005-Fix-compatibility-with-ffmpeg-7.0.patch and force build
+  with ffmpeg-7 libraries
+- Update to git snapshot 1.5.1+git.20221217 to allow build against
+  ffmpeg-5 libraries. No other major changes.
+</comment>
+    <requestid>1240252</requestid>
+  </revision>
 </revisionlist>

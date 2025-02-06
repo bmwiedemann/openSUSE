@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 29 17:14:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add default /etc/dict.conf so that dict client works by default
+  as it used to (rh#2342818).
+
+-------------------------------------------------------------------
 Mon Nov 18 11:00:22 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.13.3:
-  - dictd: fix buffer overflow in first/last search strategies.
+  - dictd: fix buffer overflow in first/last search strategies
+    (bsc#1233442).
 - Remove upstreamed index-buf-ovrflw.patch.
 
 -------------------------------------------------------------------

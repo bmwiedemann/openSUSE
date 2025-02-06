@@ -557,4 +557,14 @@
       and executing `zsh -l`. (forwarded request 1234730 from eeich)</comment>
     <requestid>1234733</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>94110427e1cdb6c276180f0ad8f14e44</srcmd5>
+    <version>8.7.55</version>
+    <time>1738007759</time>
+    <user>anag+factory</user>
+    <comment>- Add /usr/share/lmod/%{version}/libexec/addto to the `bash`
+  Apparmor abstraction to allow it to be executed when setting the
+  environment when starting non-interactive shells (boo#1236365). (forwarded request 1240494 from eeich)</comment>
+    <requestid>1240496</requestid>
+  </revision>
 </revisionlist>

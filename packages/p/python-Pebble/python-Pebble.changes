@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 24 13:34:44 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 5.1.0:
+  * issue #140: expose internal constants to allow changing default
+    timeouts and polling intervals.
+  * issue #141: add PID of expired process to ProcessExpired exception.
+  * Add pool decorators parameter allowing to provide a PebblePool
+    as executor for the decorated functions.
+  * issue #137: reset SIGTERM default handler to child processes.
+  * Include concurrent and asynchronous modules as top-level packages.
+  * Improve type hinting logic.
+  * Refactor internal logic: remove code duplication.
+
+-------------------------------------------------------------------
 Fri Mar 22 21:01:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.7:

@@ -1,13 +1,25 @@
-Index: edk2-edk2-stable202305/ArmVirtPkg/ArmVirt.dsc.inc
-===================================================================
---- edk2-edk2-stable202305.orig/ArmVirtPkg/ArmVirt.dsc.inc
-+++ edk2-edk2-stable202305/ArmVirtPkg/ArmVirt.dsc.inc
-@@ -365,7 +365,7 @@
-   # reserved ones, with the exception of LoaderData regions, of which OS loaders
-   # (i.e., GRUB) may assume that its contents are executable.
+From e7c3fe92910503f97fba775ebe9cf78fcf96479a Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Tue, 14 Jan 2025 15:05:35 +0800
+Subject: [PATCH] ovmf Revert ArmVirtPkg make EFI_LOADER_DATA non-executable
+
+---
+ ArmVirtPkg/ArmVirt.dsc.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ArmVirtPkg/ArmVirt.dsc.inc b/ArmVirtPkg/ArmVirt.dsc.inc
+index 23d2fcf450..10271c51fc 100644
+--- a/ArmVirtPkg/ArmVirt.dsc.inc
++++ b/ArmVirtPkg/ArmVirt.dsc.inc
+@@ -385,7 +385,7 @@
+   # build command line you can allow code execution in EfiLoaderData. This is
+   # required when using some outdated GRUB versions.
    #
 -  gEfiMdeModulePkgTokenSpaceGuid.PcdDxeNxMemoryProtectionPolicy|0xC000000000007FD5
 +  gEfiMdeModulePkgTokenSpaceGuid.PcdDxeNxMemoryProtectionPolicy|0xC000000000007FD1
  
    gEfiMdeModulePkgTokenSpaceGuid.PcdCpuStackGuard|TRUE
  
+-- 
+2.43.0
+

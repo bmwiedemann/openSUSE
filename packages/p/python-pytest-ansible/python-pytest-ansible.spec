@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-ansible
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        24.12.0
+Version:        25.1.0
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 15 08:39:02 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Disable integration tests with libyui
+  (gh#yast/yast-ruby-bindings#293)
+- 5.0.2
+
+-------------------------------------------------------------------
 Fri Dec 20 16:01:56 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt to ruby 3.4 (gh#yast/yast-ruby-bindings#292)

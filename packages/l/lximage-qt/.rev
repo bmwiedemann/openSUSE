@@ -440,4 +440,17 @@
   * Weblate commits (#678) (forwarded request 1221986 from AndnoVember)</comment>
     <requestid>1223240</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c9acf2b0a4f733a4c47c90e1be7758a7</srcmd5>
+    <version>2.1.1</version>
+    <time>1738245117</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.1:
+  * Don't set a limit for image size (Qt6 had set an allocation limit of 256 MiB).
+  * Fixed invalid nullptr parameter in QObject::connect (and so, silenced a warning).
+  * Fixed a small miscalculation in the selection screenshot.
+  * Ensure the current thumbnail is in the visible part of the thumbnail bar.
+  * Fixed a problem in rectangular annotations.</comment>
+    <requestid>1241221</requestid>
+  </revision>
 </revisionlist>

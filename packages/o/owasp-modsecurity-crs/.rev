@@ -69,4 +69,28 @@ Wed Sep 19 14:45:05 UTC 2012 - Thomas.Worm@DATEV.de
     <comment></comment>
     <requestid>1108448</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>18bd1877baa3c2694ee1b1053db1d6e8</srcmd5>
+    <version>4.9.0</version>
+    <time>1738080376</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1240848</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e0719f05c4c5ec07e0f625011fd042d8</srcmd5>
+    <version>4.10.0</version>
+    <time>1738245176</time>
+    <user>anag+factory</user>
+    <comment>- package cleanup, coordinated with apache2-mod_security2
+  cleanup
+- version update to 4.10.0
+  * New features and detections
+    - feat: block CVE-2023-5003 by @azurit in https://github.com/coreruleset/coreruleset/pull/3955
+    - feat: prevent accessing PHP variables by @azurit in https://github.com/coreruleset/coreruleset/pull/3965
+  * Other Changes
+    - fix: FP against `pattern` with `=` following at arbitrary position by @theseion in 
+      https://github.com/coreruleset/coreruleset/pull/3963 (forwarded request 1240839 from pgajdos)</comment>
+    <requestid>1241296</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 28 07:27:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 20.1.0
+  * Upgrade workflow python versions
+  * Upgrade dependency actions
+  * Upgrade python version trove classifiers
+  * Add `BinFile.as_microchip_hex`
+  * Version 20.1.0.
+  * Fix publish?
+
+-------------------------------------------------------------------
 Sat Dec  2 16:47:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.0.0:

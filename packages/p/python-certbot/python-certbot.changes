@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 27 14:08:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.1.0
+  * Python 3.8 support was removed.
+  * Our runtime dependency on setuptools has been dropped from all 
+    Certbot components.
+  * Certbot's packages no longer depend on library importlib_resources.
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Dec  3 14:46:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.0.1

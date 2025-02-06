@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Jan 22 06:03:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.1.52:
+  * Add build-dependency on gpgv.
+  * Tweaks to match changes in Python-land tooling:
+    - Fix some stylistic things that the newly uploaded pylint 2.16 complains
+      about.
+    - Fix testing with wine to adapt to changes in wine packaging.
+    - Fix tests to work with recent changes to pip that prevent installation
+      outside of a venv.
+    - Change version generation to be PEP440 compatible to satisfy new
+      requirements from setuptools, python-packaging etc. This change is
+      needed for any uploads outside of Debian sid (derivatives, Debian
+      backports, Debian security/stable-updates, etc).
+  * Fix file extraction from DebFile for cases where the .deb is generated
+    from control or data tarballs without the optional entry for "." and the
+    "./" prefix on all members; this isn't needed for dpkg-generated packages,
+    but is needed for other tools such as 'cargo deb' (Closes: #1031674).
+  * Demote Recommends to Suggests; it is up to the calling code to know what
+    optional features of python-debian it is using rather than dragging in an
+    ever-increasing list of optional extra packages (Closes: #1029727).
+  * Drop shims for pre-PEP8 API after 14 years of deprecation.
+  * Replace setup.py and config for pylint, mypy, pytest with pyproject.toml.
+  * Switch package build system to use pyproject.toml.
+  * Relocate tests and test data out of module; they are no longer included
+    in the binary package or in the wheel.
+  * Relocate module source from 'lib' to 'src' in line with current practice.
+  * Change handling of package version to use setuptools_scm during
+    development (but not at run time).
+  * Update code to build pypi uploads (sdist and wheel).
+  * Update copyright statements throughout.
+  * Tweak pytest configuration for pytest 8.1.1 changes.
+  * Fix test suite harness that runs tests under wine.
+  * Update Standards-Version to 4.7.0 (no changes required).
+  * Fix handling of whitespace-separated file lists in Copyright files with
+    thanks to Lasse Collin for the suggested fix (Closes: #1062437).
+  * Parse source field to extract source version in .deb packages from
+    binNMUs (Closes: #1082838).
+  * Switch to from chardet to charset-normalizer and make it in the code
+    (demoted to Suggests), with thanks to Michal Čihař for the initial work.
+  * Update Standards-Version to 4.7.0 (no changes required).
+  * Make 'Package-List' a multiline field for Dsc objects, thanks to Philipp
+    Hahn for the patch (Closes: #1052154).
+  * Use valid SPDX identified in python package metadata.
+  * Fix version number to be PEP440 compliant.
+  * Drop debian_bundle and top-level deb822 modules after 13 years of
+    deprecation.
+  * Fix typing errors from newer mypy in deb822.PkgRelation.
+  * Changelog parsing speed improvements.
+  * Add support for file location finding (line, col) in Deb822 files.
+  * Change some type annotations from Python 2 to Python 3 format.
+  * Clean up some old Python 2 methods.
+  * Fixes for pylint 3.1.
+- Switch to salsa tarball to run the testsuite.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sat Dec  3 21:28:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.1.49 

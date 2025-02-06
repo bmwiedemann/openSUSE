@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 29 23:09:40 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 5.8.7.1+git20250126.efe396c:
+  * Add additional argument to cfg80211_rtw_set_monitor_channel
+
+- Update to version 5.8.7.1+git20241216.45ca59c:
+  * Add v6.10.3 to compatibility list
+
+-------------------------------------------------------------------
 Wed May 22 20:23:30 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 5.8.7.1+git20240521.287e766:

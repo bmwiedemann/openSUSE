@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  4 21:20:39 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update sop-core to version 0.5.0.2 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon May 13 17:10:44 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update sop-core to version 0.5.0.2 revision 4.

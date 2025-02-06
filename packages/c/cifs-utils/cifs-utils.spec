@@ -1,7 +1,7 @@
 #
 # spec file for package cifs-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,16 +39,11 @@ Source1:        cifs.init
 Patch1:         fix-sbin-install-error.patch
 
 # Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
-# /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
-# * cifs-utils one is the default (priority 20)
-# * installing SSSD should NOT switch to SSSD plugin (priority 10)
+# %%_sysconfdir/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins,
+# cifs-utils or sssd. The plugins are individually packaged and conflicts with each other
+# (https://bugzilla.suse.com/show_bug.cgi?id=1235789).
 %define cifs_idmap_plugin       %{_sysconfdir}/cifs-utils/idmap-plugin
 %define cifs_idmap_lib          %{_libdir}/cifs-utils/idmapwb.so
-%define cifs_idmap_name         cifs-idmap-plugin
-%define cifs_idmap_priority     20
-BuildRequires:  update-alternatives
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
@@ -89,7 +84,9 @@ BuildRequires:  fdupes
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(wbclient)
+Requires:       cifs-idmap-plugin
 Requires:       keyutils
+Suggests:       wb-cifs-idmap-plugin
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
@@ -120,6 +117,16 @@ When a cifs filesystem is mounted with the "multiuser" option, and does
 not use krb5 authentication, it needs to be able to get the credentials
 for each user from somewhere. The pam_cifscreds module can be used to
 provide these credentials to the kernel automatically at login.
+
+%package -n wb-cifs-idmap-plugin
+Summary:        The Winbind plugin for cifs.idmap
+Group:          System/Libraries
+Provides:       cifs-idmap-plugin
+Conflicts:      cifs-idmap-plugin
+
+%description -n wb-cifs-idmap-plugin
+The cifs.idmap(8) userspace helper relies on a plugin to handle the ID mapping.
+This package contains the Winbind ID mapping plugin.
 
 %prep
 %setup -q
@@ -166,8 +173,8 @@ ln -s service %{buildroot}/%{_sbindir}/rccifs
 %endif
 
 # dummy target for cifs-idmap-plugin
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives %{buildroot}%{_sysconfdir}/cifs-utils
-ln -s -f %{_sysconfdir}/alternatives/%{cifs_idmap_name} %{buildroot}%{cifs_idmap_plugin}
+mkdir -p %{buildroot}%{_sysconfdir}/cifs-utils
+ln -s -f %{cifs_idmap_lib} %{buildroot}%{cifs_idmap_plugin}
 
 touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 	%{buildroot}%{_rundir}/cifs
@@ -180,13 +187,8 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %python3_fix_shebang
 
 %post
-# install cifs-utils cifs-idmap plugin using alternatives system
-update-alternatives --install %{cifs_idmap_plugin} %{cifs_idmap_name} %{cifs_idmap_lib} %{cifs_idmap_priority}
 
 %postun
-if [ ! -f %{cifs_idmap_lib} ] ; then
-   update-alternatives --remove %{cifs_idmap_name} %{cifs_idmap_lib}
-fi
 
 %files
 %if 0%{?suse_version} >= 1550
@@ -218,12 +220,6 @@ fi
 %config(noreplace) %{_sysconfdir}/request-key.d/cifs.idmap.conf
 %config(noreplace) %{_sysconfdir}/request-key.d/cifs.spnego.conf
 
-# idmap plugin
-%dir %_sysconfdir/cifs-utils
-%{cifs_idmap_plugin}
-%dir %_libdir/cifs-utils
-%{cifs_idmap_lib}
-%ghost %_sysconfdir/alternatives/%{cifs_idmap_name}
 %{_mandir}/man8/idmapwb.8%{ext_man}
 
 %if 0%{?suse_version} > 1221
@@ -235,6 +231,12 @@ fi
 %ghost %{_rundir}/cifs
 %endif
 %doc README.cifstab.migration
+
+%files -n wb-cifs-idmap-plugin
+%dir %_sysconfdir/cifs-utils
+%cifs_idmap_plugin
+%dir %_libdir/cifs-utils
+%cifs_idmap_lib
 
 %files devel
 %{_includedir}/cifsidmap.h

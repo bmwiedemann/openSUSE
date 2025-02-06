@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:11:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable the my_apps handling
+
+-------------------------------------------------------------------
+Fri Dec 13 21:43:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 8.0.1:
+  https://rubyonrails.org/2024/12/13/Rails-Version-8-0-1-has-been-released
+
+-------------------------------------------------------------------
 Wed Dec 11 00:48:10 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 8.0.0.1:
+- Update to version 8.0.0.1: (CVE-2024-54133 CVE-2024-53847)
   https://rubyonrails.org/2024/12/10/Rails-Versions-8-0-0-1-7-2-2-1-7-1-5-1-7-0-8-7-have-been-released
 
 -------------------------------------------------------------------

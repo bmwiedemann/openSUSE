@@ -1965,4 +1965,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>1236148</requestid>
   </revision>
+  <revision rev="230" vrev="2">
+    <srcmd5>4c18a5d6144c8986acf2e0f26b32e4b2</srcmd5>
+    <version>4.4.3</version>
+    <time>1738163398</time>
+    <user>anag+factory</user>
+    <comment>improve qt5/6; hopfully making it easier to understand</comment>
+    <requestid>1240813</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-tzinfo-data
-Version:        1.2024.2
+Version:        1.2025.1
 Release:        0
 %define mod_name tzinfo-data
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 28 07:51:12 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop python2 requirement
+
+-------------------------------------------------------------------
 Thu Feb 15 19:27:12 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add texworks-python-plugin-buildfix.patch to fix building python

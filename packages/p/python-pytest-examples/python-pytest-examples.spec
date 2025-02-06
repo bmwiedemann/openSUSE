@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-examples
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-examples
-Version:        0.0.13
+Version:        0.0.15
 Release:        0
 Summary:        Pytest plugin for testing examples in docstrings and markdown files
 License:        MIT
 URL:            https://github.com/pydantic/pytest-examples
 # sdist without tests
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-examples/pytest_examples-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pydantic/pytest-examples/pull/54 adapt tests to pytest 8.3.4
+Patch:          newline.patch
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 26 15:47:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.27.0:
+  * New feature: manage remotes
+  * use default shell instead of bash on Unix-like OS
+  * add popups for viewing, adding, updating and removing remotes
+  * support for Copy Path action in WSL
+  * help popup scrollbar
+  * respect env vars like GIT_CONFIG_GLOBAL
+
+-------------------------------------------------------------------
 Sat Nov  2 13:07:53 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update outdated source service configuration

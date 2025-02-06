@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot-audio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 9
+%define sover 10
 
 Name:           libopenshot-audio
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Audio library for the OpenShot video editor
 License:        GPL-3.0-or-later

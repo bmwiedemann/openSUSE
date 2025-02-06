@@ -1,7 +1,7 @@
 #
 # spec file for package cni-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni-plugins
 Name:           cni-plugins
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0

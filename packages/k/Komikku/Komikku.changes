@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 27 10:49:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.68.0:
+  * [Reader] Webtoon pager: Fixed pages jumping on initialization
+  * [Servers] Added Poseidon Scans (FR)
+  * [Servers] Mangago (EN): Update
+  * [L10n] Added Tamil translation
+  * [L10n] Updated Chinese (Simplified) and Finnish translations
+
+-------------------------------------------------------------------
 Fri Jan 17 13:28:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build without %check (boo#1227364)

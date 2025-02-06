@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 18 16:50:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.8:
+  + ServiceProxyAction: Remove some left-over debug output.
+  + ServiceProxyAction: Stop leaking the HTTP response.
+  + Docs: Fix various issues.
+  + ServiceProxyAction: Add get_value_as().
+  + Linux-CM: Silence a false-positive with scan-build.
+- Switch to source service for tarball/sources.
+- Add check section and meson_test macro, run test-suite during
+  build.
+
+-------------------------------------------------------------------
 Mon Sep 23 18:49:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.7:
@@ -74,7 +87,7 @@ Fri Dec 16 19:39:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix handling of deprecated and tentative v6 addresses.
   + Bugs fixed in this release:
     - https://gitlab.gnome.org/GNOME/gupnp/issues/82
-    - https://gitlab.gnome.org/GNOME/gupnp/issues/83
+    - https://gitlab.gnome.org/GNOME/gupnp/issues/83
 
 -------------------------------------------------------------------
 Sun Nov 20 20:41:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

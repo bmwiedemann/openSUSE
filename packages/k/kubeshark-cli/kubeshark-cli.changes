@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 25 08:06:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.96:
+  * :bookmark: Bump the Helm chart version to 52.3.96
+  * Changed two errors to warnings.
+  * Add dns config (#1698)
+  * add diameter protocol support (#1696)
+  * Make node selector component specific (#1694)
+  * added `-disable-tracer` option (#1695)
+  * #528 Remove pcap src from configMap (#1693)
+  * Add helm variable to disable live config-map user actions
+    (#1689)
+  * Fix error on getting namespaces for pcap target files (#1691)
+  * Fix err when using dest arg (#1688)
+
+-------------------------------------------------------------------
 Sat Jan 11 16:46:45 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.95:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 23 03:41:55 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update hashtables to version 1.4.2.
+  ## 1.4.2
+
+   - Fix C compile errors in cbits.
+   - Bump lower bound for QuickCheck.
+
+-------------------------------------------------------------------
 Tue Nov 26 22:13:09 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hashtables to version 1.4.1.

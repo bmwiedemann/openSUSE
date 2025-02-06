@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 29 06:30:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 11.2.0:
+  Ansible 11.2.0 includes ansible-core 2.18.2 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 11
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/11/CHANGELOG-v11.rst
+
+-------------------------------------------------------------------
 Wed Dec  4 06:37:17 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 11.1.0

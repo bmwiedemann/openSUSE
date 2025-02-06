@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:34:13 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250121.4f2c8e7:
+  * vhost_user: Drop packet with unsupported iovec array
+  * tcp: Set PSH flag for last incoming packets in a batch
+  * tcp: Set ACK flag on *all* RST segments, even for client in SYN-SENT state
+  * tcp: Disable Nagle's algorithm (set TCP_NODELAY) on all sockets
+  * tcp: Buffer sizes are *not* inherited on accept()/accept4()
+  * vhost_user: remove ASSERT() on iovec number
+  * vhost-user: Report to front-end we support VHOST_USER_PROTOCOL_F_DEVICE_STATE
+  * vhost-user: add VHOST_USER_SET_DEVICE_STATE_FD command
+  * vhost-user: add VHOST_USER_CHECK_DEVICE_STATE command
+  * vhost-user: Report to front-end we support VHOST_USER_PROTOCOL_F_LOG_SHMFD
+  * vhost-user: add VHOST_USER_SET_LOG_BASE command
+  * vhost-user: Pass vu_dev to more virtio functions
+  * vhost-user: add VHOST_USER_SET_LOG_FD command
+  * vhost-user: update protocol features and commands list
+  * tcp: Mask EPOLLIN altogether if we're blocked waiting on an ACK from the guest
+  * tcp: Set EPOLLET when when reading from a socket fails with EAGAIN
+  * tcp: Don't subscribe to EPOLLOUT events on STALLED
+  * tcp: Fix ACK sequence getting out of sync on EPOLLOUT wake-up
+  * vhost_user: fix multibuffer from linux
+  * test/pasta_podman: Run Podman tests on a single CPU thread
+  * checksum: fix checksum with odd base address
+  * tcp_splice: Set (again) TCP_NODELAY on both sides
+  * seccomp: Unconditionally allow accept(2) even if accept4(2) is present
+  * virtio: Use const pointer for vu_dev
+  * udp_flow: Don't block multicast and broadcast messages
+  * Makefile: Report error and stop if we can't set TARGET
+  * README: Mark vhost-user as supported
+
+-------------------------------------------------------------------
 Thu Dec 12 13:41:51 UTC 2024 - dcermak@suse.com
 
 - Update to version 20241211.09478d5:

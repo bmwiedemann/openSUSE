@@ -1,7 +1,7 @@
 #
 # spec file for package kvm_stat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,8 +107,10 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/logrotate.d/kvm_stat
 install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/kvm_stat
 %endif
 install -D -m 644 tools/kvm/kvm_stat/kvm_stat.service %{buildroot}%{_unitdir}/kvm_stat.service
+%if 0%{?suse_version} < 1600
 install -d %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rckvm_stat
+%endif
 
 %pre
 %service_add_pre kvm_stat.service
@@ -145,7 +147,9 @@ done
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/kvm_stat
 %endif
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rckvm_stat
+%endif
 %{_bindir}/kvm_stat
 %{_mandir}/man1/kvm_stat*
 

@@ -17,24 +17,24 @@ Subject: [PATCH] coreutils-i18n.patch
  src/expand-common.c         |  114 ++++++
  src/expand-common.h         |   12 
  src/expand.c                |   90 ++++-
- src/fold.c                  |  312 +++++++++++++++--
+ src/fold.c                  |  311 +++++++++++++++--
  src/local.mk                |    4 
  src/pr.c                    |  443 ++++++++++++++++++++++--
  src/sort.c                  |  792 +++++++++++++++++++++++++++++++++++++++++---
- src/unexpand.c              |  102 ++++-
+ src/unexpand.c              |  101 ++++-
  tests/Coreutils.pm          |    3 
  tests/expand/mb.sh          |  183 ++++++++++
  tests/i18n/sort.sh          |   29 +
  tests/local.mk              |    4 
  tests/misc/expand.pl        |   42 ++
- tests/misc/fold.pl          |   50 ++
+ tests/misc/fold.pl          |   51 ++
  tests/misc/sort-mb-tests.sh |   45 ++
  tests/misc/unexpand.pl      |   39 ++
  tests/pr/pr-tests.pl        |   49 ++
  tests/sort/sort-merge.pl    |   42 ++
  tests/sort/sort.pl          |   40 ++
  tests/unexpand/mb.sh        |  172 +++++++++
- 30 files changed, 3605 insertions(+), 196 deletions(-)
+ 30 files changed, 3603 insertions(+), 197 deletions(-)
  create mode 100644 lib/mbfile.c
  create mode 100644 lib/mbfile.h
  create mode 100644 m4/mbfile.m4
@@ -43,11 +43,11 @@ Subject: [PATCH] coreutils-i18n.patch
  create mode 100755 tests/misc/sort-mb-tests.sh
  create mode 100755 tests/unexpand/mb.sh
 
-Index: coreutils-9.5/bootstrap.conf
+Index: coreutils-9.6/bootstrap.conf
 ===================================================================
---- coreutils-9.5.orig/bootstrap.conf
-+++ coreutils-9.5/bootstrap.conf
-@@ -163,6 +163,8 @@ gnulib_modules="
+--- coreutils-9.6.orig/bootstrap.conf
++++ coreutils-9.6/bootstrap.conf
+@@ -165,6 +165,8 @@ gnulib_modules="
    maintainer-makefile
    malloc-gnu
    manywarnings
@@ -56,11 +56,11 @@ Index: coreutils-9.5/bootstrap.conf
    mbrlen
    mbrtoc32
    mbrtowc
-Index: coreutils-9.5/configure.ac
+Index: coreutils-9.6/configure.ac
 ===================================================================
---- coreutils-9.5.orig/configure.ac
-+++ coreutils-9.5/configure.ac
-@@ -504,6 +504,12 @@ fi
+--- coreutils-9.6.orig/configure.ac
++++ coreutils-9.6/configure.ac
+@@ -505,6 +505,12 @@ fi
  # I'm leaving it here for now.  This whole thing needs to be modernized...
  gl_WINSIZE_IN_PTEM
  
@@ -73,13 +73,13 @@ Index: coreutils-9.5/configure.ac
  gl_HEADER_TIOCGWINSZ_IN_TERMIOS_H
  
  if test $gl_cv_sys_tiocgwinsz_needs_termios_h = no && \
-Index: coreutils-9.5/lib/linebuffer.h
+Index: coreutils-9.6/lib/linebuffer.h
 ===================================================================
---- coreutils-9.5.orig/lib/linebuffer.h
-+++ coreutils-9.5/lib/linebuffer.h
-@@ -22,6 +22,11 @@
- # include "idx.h"
- # include <stdio.h>
+--- coreutils-9.6.orig/lib/linebuffer.h
++++ coreutils-9.6/lib/linebuffer.h
+@@ -27,6 +27,11 @@ extern "C" {
+ #endif
+ 
  
 +/* Get mbstate_t.  */
 +# if HAVE_WCHAR_H
@@ -89,7 +89,7 @@ Index: coreutils-9.5/lib/linebuffer.h
  /* A 'struct linebuffer' holds a line of text. */
  
  struct linebuffer
-@@ -29,6 +34,9 @@ struct linebuffer
+@@ -34,6 +39,9 @@ struct linebuffer
    idx_t size;                  /* Allocated. */
    idx_t length;                /* Used. */
    char *buffer;
@@ -99,10 +99,10 @@ Index: coreutils-9.5/lib/linebuffer.h
  };
  
  /* Initialize linebuffer LINEBUFFER for use. */
-Index: coreutils-9.5/lib/mbfile.c
+Index: coreutils-9.6/lib/mbfile.c
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/lib/mbfile.c
++++ coreutils-9.6/lib/mbfile.c
 @@ -0,0 +1,20 @@
 +/* Multibyte character I/O: macros for multi-byte encodings.
 +   Copyright (C) 2012-2023 Free Software Foundation, Inc.
@@ -124,10 +124,10 @@ Index: coreutils-9.5/lib/mbfile.c
 +
 +#define MBFILE_INLINE _GL_EXTERN_INLINE
 +#include "mbfile.h"
-Index: coreutils-9.5/lib/mbfile.h
+Index: coreutils-9.6/lib/mbfile.h
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/lib/mbfile.h
++++ coreutils-9.6/lib/mbfile.h
 @@ -0,0 +1,267 @@
 +/* Multibyte character I/O: macros for multi-byte encodings.
 +   Copyright (C) 2001, 2005, 2009-2023 Free Software Foundation, Inc.
@@ -396,10 +396,10 @@ Index: coreutils-9.5/lib/mbfile.h
 +_GL_INLINE_HEADER_END
 +
 +#endif /* _MBFILE_H */
-Index: coreutils-9.5/m4/mbfile.m4
+Index: coreutils-9.6/m4/mbfile.m4
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/m4/mbfile.m4
++++ coreutils-9.6/m4/mbfile.m4
 @@ -0,0 +1,14 @@
 +# mbfile.m4 serial 7
 +dnl Copyright (C) 2005, 2008-2023 Free Software Foundation, Inc.
@@ -415,10 +415,10 @@ Index: coreutils-9.5/m4/mbfile.m4
 +  AC_REQUIRE([AC_TYPE_MBSTATE_T])
 +  :
 +])
-Index: coreutils-9.5/src/cut.c
+Index: coreutils-9.6/src/cut.c
 ===================================================================
---- coreutils-9.5.orig/src/cut.c
-+++ coreutils-9.5/src/cut.c
+--- coreutils-9.6.orig/src/cut.c
++++ coreutils-9.6/src/cut.c
 @@ -27,6 +27,11 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -1075,19 +1075,19 @@ Index: coreutils-9.5/src/cut.c
  
  
    if (have_read_stdin && fclose (stdin) == EOF)
-Index: coreutils-9.5/src/expand-common.c
+Index: coreutils-9.6/src/expand-common.c
 ===================================================================
---- coreutils-9.5.orig/src/expand-common.c
-+++ coreutils-9.5/src/expand-common.c
+--- coreutils-9.6.orig/src/expand-common.c
++++ coreutils-9.6/src/expand-common.c
 @@ -19,6 +19,7 @@
  #include <ctype.h>
  #include <stdio.h>
  #include <sys/types.h>
 +#include <mbfile.h>
  #include "system.h"
+ #include "c-ctype.h"
  #include "fadvise.h"
- #include "quote.h"
-@@ -123,6 +124,119 @@ set_increment_size (uintmax_t tabval)
+@@ -123,6 +124,119 @@ set_increment_size (colno tabval)
    return ok;
  }
  
@@ -1207,11 +1207,11 @@ Index: coreutils-9.5/src/expand-common.c
  /* Add the comma or blank separated list of tab stops STOPS
     to the list of tab stops.  */
  extern void
-Index: coreutils-9.5/src/expand-common.h
+Index: coreutils-9.6/src/expand-common.h
 ===================================================================
---- coreutils-9.5.orig/src/expand-common.h
-+++ coreutils-9.5/src/expand-common.h
-@@ -25,6 +25,18 @@ extern size_t max_column_width;
+--- coreutils-9.6.orig/src/expand-common.h
++++ coreutils-9.6/src/expand-common.h
+@@ -29,6 +29,18 @@ extern idx_t max_column_width;
  /* The desired exit status.  */
  extern int exit_status;
  
@@ -1229,11 +1229,11 @@ Index: coreutils-9.5/src/expand-common.h
 +
  /* Add tab stop TABVAL to the end of 'tab_list'.  */
  extern void
- add_tab_stop (uintmax_t tabval);
-Index: coreutils-9.5/src/expand.c
+ add_tab_stop (colno tabval);
+Index: coreutils-9.6/src/expand.c
 ===================================================================
---- coreutils-9.5.orig/src/expand.c
-+++ coreutils-9.5/src/expand.c
+--- coreutils-9.6.orig/src/expand.c
++++ coreutils-9.6/src/expand.c
 @@ -38,6 +38,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -1292,7 +1292,7 @@ Index: coreutils-9.5/src/expand.c
  
 @@ -118,17 +143,48 @@ expand (void)
        /* Index in TAB_LIST of next tab stop to examine.  */
-       size_t tab_index = 0;
+       idx_t tab_index = 0;
  
 -
        /* Convert a line of text.  */
@@ -1342,8 +1342,8 @@ Index: coreutils-9.5/src/expand.c
 +              if (mb_iseq (c, '\t'))
                  {
                    /* Column the next input tab stop is on.  */
-                   uintmax_t next_tab_column;
-@@ -147,32 +203,34 @@ expand (void)
+                   bool last_tab;
+@@ -139,31 +195,33 @@ expand (void)
                      if (putchar (' ') < 0)
                        write_error ();
  
@@ -1362,14 +1362,13 @@ Index: coreutils-9.5/src/expand.c
 +              /* A leading control character could make us trip over.  */
 +              else if (!mb_iscntrl (c))
                  {
--                  column++;
-+                  column += mb_width (c);
-                   if (!column)
+-                  if (ckd_add (&column, column, 1))
++                  if (ckd_add (&column, column, mb_width (c)))
                      error (EXIT_FAILURE, 0, _("input line is too long"));
                  }
  
 -              convert &= convert_entire_line || !! isblank (c);
-+              convert &= convert_entire_line || mb_isblank (c);
++              convert &= convert_entire_line || !! mb_isblank (c);
              }
  
 -          if (c < 0)
@@ -1386,10 +1385,10 @@ Index: coreutils-9.5/src/expand.c
      }
  }
  
-Index: coreutils-9.5/src/fold.c
+Index: coreutils-9.6/src/fold.c
 ===================================================================
---- coreutils-9.5.orig/src/fold.c
-+++ coreutils-9.5/src/fold.c
+--- coreutils-9.6.orig/src/fold.c
++++ coreutils-9.6/src/fold.c
 @@ -23,10 +23,32 @@
  #include <getopt.h>
  #include <sys/types.h>
@@ -1498,9 +1497,9 @@ Index: coreutils-9.5/src/fold.c
 -  FILE *istream;
    int c;
    size_t column = 0;		/* Screen column where next char will go. */
-   size_t offset_out = 0;	/* Index in 'line_out' for next char. */
+   idx_t offset_out = 0;		/* Index in 'line_out' for next char. */
    static char *line_out = nullptr;
-   static size_t allocated_out = 0;
+   static idx_t allocated_out = 0;
 -  int saved_errno;
 -
 -  if (STREQ (filename, "-"))
@@ -1521,7 +1520,7 @@ Index: coreutils-9.5/src/fold.c
  
 @@ -168,6 +196,15 @@ fold_file (char const *filename, size_t
                bool found_blank = false;
-               size_t logical_end = offset_out;
+               idx_t logical_end = offset_out;
  
 +              /* If LINE_OUT has no wide character,
 +                 put a new wide character in LINE_OUT
@@ -1535,7 +1534,7 @@ Index: coreutils-9.5/src/fold.c
                /* Look for the last blank. */
                while (logical_end)
                  {
-@@ -214,13 +251,224 @@ fold_file (char const *filename, size_t
+@@ -212,13 +249,224 @@ fold_file (char const *filename, size_t
        line_out[offset_out++] = c;
      }
  
@@ -1545,7 +1544,7 @@ Index: coreutils-9.5/src/fold.c
 +    *saved_errno = 0;
 +
 +  if (offset_out)
-+    fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
++    fwrite (line_out, sizeof (char), offset_out, stdout);
 +
 +}
 +
@@ -1563,8 +1562,8 @@ Index: coreutils-9.5/src/fold.c
 +  int convfail = 0;                /* 1, when conversion is failed. Otherwise 0. */
 +
 +  static char *line_out = NULL;
-+  size_t offset_out = 0;        /* Index in `line_out' for next char. */
-+  static size_t allocated_out = 0;
++  idx_t offset_out = 0;        /* Index in `line_out' for next char. */
++  static idx_t allocated_out = 0;
 +
 +  int increment;
 +  size_t column = 0;
@@ -1687,9 +1686,9 @@ Index: coreutils-9.5/src/fold.c
 +          goto rescan;
 +        }
 +
-+      if (allocated_out < offset_out + mblength)
++      if (allocated_out - offset_out <= mblength)
 +        {
-+          line_out = X2REALLOC (line_out, &allocated_out);
++          line_out = xpalloc (line_out, &allocated_out, 1, -1, sizeof *line_out);
 +        }
 +
 +      memcpy (line_out + offset_out, bufpos, mblength);
@@ -1722,7 +1721,7 @@ Index: coreutils-9.5/src/fold.c
 +    *saved_errno = 0;
  
    if (offset_out)
-     fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
+     fwrite (line_out, sizeof (char), offset_out, stdout);
  
 +}
 +#endif
@@ -1762,7 +1761,7 @@ Index: coreutils-9.5/src/fold.c
    if (STREQ (filename, "-"))
      clearerr (istream);
    else if (fclose (istream) != 0 && !saved_errno)
-@@ -251,7 +499,8 @@ main (int argc, char **argv)
+@@ -249,7 +497,8 @@ main (int argc, char **argv)
  
    atexit (close_stdout);
  
@@ -1772,7 +1771,7 @@ Index: coreutils-9.5/src/fold.c
  
    while ((optc = getopt_long (argc, argv, shortopts, longopts, nullptr)) != -1)
      {
-@@ -260,7 +509,15 @@ main (int argc, char **argv)
+@@ -258,7 +507,15 @@ main (int argc, char **argv)
        switch (optc)
          {
          case 'b':		/* Count bytes rather than columns. */
@@ -1789,11 +1788,11 @@ Index: coreutils-9.5/src/fold.c
            break;
  
          case 's':		/* Break at word boundaries. */
-Index: coreutils-9.5/src/local.mk
+Index: coreutils-9.6/src/local.mk
 ===================================================================
---- coreutils-9.5.orig/src/local.mk
-+++ coreutils-9.5/src/local.mk
-@@ -450,8 +450,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
+--- coreutils-9.6.orig/src/local.mk
++++ coreutils-9.6/src/local.mk
+@@ -476,8 +476,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
  src_basenc_SOURCES = src/basenc.c
  src_basenc_CPPFLAGS = -DBASE_TYPE=42 $(AM_CPPFLAGS)
  
@@ -1804,10 +1803,10 @@ Index: coreutils-9.5/src/local.mk
  
  src_wc_SOURCES = src/wc.c
  if USE_AVX2_WC_LINECOUNT
-Index: coreutils-9.5/src/pr.c
+Index: coreutils-9.6/src/pr.c
 ===================================================================
---- coreutils-9.5.orig/src/pr.c
-+++ coreutils-9.5/src/pr.c
+--- coreutils-9.6.orig/src/pr.c
++++ coreutils-9.6/src/pr.c
 @@ -312,6 +312,24 @@
  #include <ctype.h>
  #include <getopt.h>
@@ -1831,9 +1830,9 @@ Index: coreutils-9.5/src/pr.c
 +#endif
 +
  #include "system.h"
+ #include "c-ctype.h"
  #include "fadvise.h"
- #include "hard-locale.h"
-@@ -324,6 +342,18 @@
+@@ -325,6 +343,18 @@
  #include "xstrtol-error.h"
  #include "xdectoint.h"
  
@@ -1852,7 +1851,7 @@ Index: coreutils-9.5/src/pr.c
  /* The official name of this program (e.g., no 'g' prefix).  */
  #define PROGRAM_NAME "pr"
  
-@@ -416,7 +446,20 @@ struct COLUMN
+@@ -417,7 +447,20 @@ struct COLUMN
  
  typedef struct COLUMN COLUMN;
  
@@ -1874,9 +1873,9 @@ Index: coreutils-9.5/src/pr.c
  static bool read_line (COLUMN *p);
  static bool print_page (void);
  static bool print_stored (COLUMN *p);
-@@ -428,6 +471,7 @@ static void add_line_number (COLUMN *p);
- static void getoptnum (char const *n_str, int min, int *num,
-                        char const *errfmt);
+@@ -428,6 +471,7 @@ static void pad_across_to (int position)
+ static void add_line_number (COLUMN *p);
+ static int getoptnum (char const *n_str, int min, char const *errfmt);
  static void getoptarg (char *arg, char switch_char, char *character,
 +                       int *character_length, int *character_width,
                         int *number);
@@ -2009,7 +2008,7 @@ Index: coreutils-9.5/src/pr.c
            /* Could check tab width > 0. */
            tabify_output = true;
            break;
-@@ -985,8 +1068,8 @@ main (int argc, char **argv)
+@@ -986,8 +1069,8 @@ main (int argc, char **argv)
          case 'n':
            numbered_lines = true;
            if (optarg)
@@ -2020,7 +2019,7 @@ Index: coreutils-9.5/src/pr.c
            break;
          case 'N':
            skip_count = false;
-@@ -1011,6 +1094,7 @@ main (int argc, char **argv)
+@@ -1013,6 +1096,7 @@ main (int argc, char **argv)
            /* Reset an additional input of -s, -S dominates -s */
            col_sep_string = "";
            col_sep_length = 0;
@@ -2028,7 +2027,7 @@ Index: coreutils-9.5/src/pr.c
            use_col_separator = true;
            if (optarg)
              separator_string (optarg);
-@@ -1165,7 +1249,8 @@ getoptnum (char const *n_str, int min, i
+@@ -1168,7 +1252,8 @@ getoptnum (char const *n_str, int min, c
     a number. */
  
  static void
@@ -2038,10 +2037,10 @@ Index: coreutils-9.5/src/pr.c
  {
    if (!*arg)
      {
-@@ -1174,7 +1259,41 @@ getoptarg (char *arg, char switch_char,
+@@ -1177,7 +1262,41 @@ getoptarg (char *arg, char switch_char,
      }
  
-   if (!ISDIGIT (*arg))
+   if (!c_isdigit (*arg))
 -    *character = *arg++;
 +    {
 +#ifdef HAVE_MBRTOWC
@@ -2081,7 +2080,7 @@ Index: coreutils-9.5/src/pr.c
    if (*arg)
      {
        long int tmp_long;
-@@ -1203,6 +1322,11 @@ static void
+@@ -1206,6 +1325,11 @@ static void
  init_parameters (int number_of_files)
  {
    int chars_used_by_number = 0;
@@ -2093,7 +2092,7 @@ Index: coreutils-9.5/src/pr.c
  
    lines_per_body = lines_per_page - lines_per_header - lines_per_footer;
    if (lines_per_body <= 0)
-@@ -1240,7 +1364,7 @@ init_parameters (int number_of_files)
+@@ -1243,7 +1367,7 @@ init_parameters (int number_of_files)
            else
              col_sep_string = column_separator;
  
@@ -2102,7 +2101,7 @@ Index: coreutils-9.5/src/pr.c
            use_col_separator = true;
          }
        /* It's rather pointless to define a TAB separator with column
-@@ -1272,11 +1396,11 @@ init_parameters (int number_of_files)
+@@ -1275,11 +1399,11 @@ init_parameters (int number_of_files)
               + TAB_WIDTH (chars_per_input_tab, chars_per_number);   */
  
        /* Estimate chars_per_text without any margin and keep it constant. */
@@ -2116,7 +2115,7 @@ Index: coreutils-9.5/src/pr.c
  
        /* The number is part of the column width unless we are
           printing files in parallel. */
-@@ -1285,7 +1409,7 @@ init_parameters (int number_of_files)
+@@ -1288,7 +1412,7 @@ init_parameters (int number_of_files)
      }
  
    int sep_chars, useful_chars;
@@ -2125,7 +2124,7 @@ Index: coreutils-9.5/src/pr.c
      sep_chars = INT_MAX;
    if (ckd_sub (&useful_chars, chars_per_line - chars_used_by_number,
                 sep_chars))
-@@ -1308,7 +1432,7 @@ init_parameters (int number_of_files)
+@@ -1311,7 +1435,7 @@ init_parameters (int number_of_files)
       We've to use 8 as the lower limit, if we use chars_per_default_tab = 8
       to expand a tab which is not an input_tab-char. */
    free (clump_buff);
@@ -2134,7 +2133,7 @@ Index: coreutils-9.5/src/pr.c
  }
  
  /* Open the necessary files,
-@@ -1414,7 +1538,7 @@ init_funcs (void)
+@@ -1417,7 +1541,7 @@ init_funcs (void)
  
    /* Enlarge p->start_position of first column to use the same form of
       padding_not_printed with all columns. */
@@ -2143,7 +2142,7 @@ Index: coreutils-9.5/src/pr.c
  
    /* This loop takes care of all but the rightmost column. */
  
-@@ -1448,7 +1572,7 @@ init_funcs (void)
+@@ -1451,7 +1575,7 @@ init_funcs (void)
          }
        else
          {
@@ -2152,7 +2151,7 @@ Index: coreutils-9.5/src/pr.c
            h_next = h + chars_per_column;
          }
      }
-@@ -1745,9 +1869,9 @@ static void
+@@ -1748,9 +1872,9 @@ static void
  align_column (COLUMN *p)
  {
    padding_not_printed = p->start_position;
@@ -2164,9 +2163,9 @@ Index: coreutils-9.5/src/pr.c
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2021,13 +2145,13 @@ store_char (char c)
+@@ -2024,13 +2148,13 @@ store_char (char c)
        /* May be too generous. */
-       buff = X2REALLOC (buff, &buff_allocated);
+       buff = xpalloc (buff, &buff_allocated, 1, -1, sizeof *buff);
      }
 -  buff[buff_current++] = c;
 +  buff[buff_current++] = (unsigned char) c;
@@ -2180,7 +2179,7 @@ Index: coreutils-9.5/src/pr.c
    char *s;
    int num_width;
  
-@@ -2044,22 +2168,24 @@ add_line_number (COLUMN *p)
+@@ -2047,22 +2171,24 @@ add_line_number (COLUMN *p)
        /* Tabification is assumed for multiple columns, also for n-separators,
           but 'default n-separator = TAB' hasn't been given priority over
           equal column_width also specified by POSIX. */
@@ -2209,7 +2208,7 @@ Index: coreutils-9.5/src/pr.c
          output_position = POS_AFTER_TAB (chars_per_output_tab,
                            output_position);
      }
-@@ -2218,7 +2344,7 @@ print_white_space (void)
+@@ -2221,7 +2347,7 @@ print_white_space (void)
    while (goal - h_old > 1
           && (h_new = POS_AFTER_TAB (chars_per_output_tab, h_old)) <= goal)
      {
@@ -2218,7 +2217,7 @@ Index: coreutils-9.5/src/pr.c
        h_old = h_new;
      }
    while (++h_old <= goal)
-@@ -2238,6 +2364,7 @@ print_sep_string (void)
+@@ -2241,6 +2367,7 @@ print_sep_string (void)
  {
    char const *s = col_sep_string;
    int l = col_sep_length;
@@ -2226,7 +2225,7 @@ Index: coreutils-9.5/src/pr.c
  
    if (separators_not_printed <= 0)
      {
-@@ -2249,6 +2376,7 @@ print_sep_string (void)
+@@ -2252,6 +2379,7 @@ print_sep_string (void)
      {
        for (; separators_not_printed > 0; --separators_not_printed)
          {
@@ -2234,7 +2233,7 @@ Index: coreutils-9.5/src/pr.c
            while (l-- > 0)
              {
                /* 3 types of sep_strings: spaces only, spaces and chars,
-@@ -2262,12 +2390,15 @@ print_sep_string (void)
+@@ -2265,12 +2393,15 @@ print_sep_string (void)
                  }
                else
                  {
@@ -2251,7 +2250,7 @@ Index: coreutils-9.5/src/pr.c
            /* sep_string ends with some spaces */
            if (spaces_not_printed > 0)
              print_white_space ();
-@@ -2295,7 +2426,7 @@ print_clump (COLUMN *p, int n, char *clu
+@@ -2298,7 +2429,7 @@ print_clump (COLUMN *p, int n, char *clu
     required number of tabs and spaces. */
  
  static void
@@ -2260,7 +2259,7 @@ Index: coreutils-9.5/src/pr.c
  {
    if (tabify_output)
      {
-@@ -2319,6 +2450,74 @@ print_char (char c)
+@@ -2322,6 +2453,74 @@ print_char (char c)
    putchar (c);
  }
  
@@ -2335,7 +2334,7 @@ Index: coreutils-9.5/src/pr.c
  /* Skip to page PAGE before printing.
     PAGE may be larger than total number of pages. */
  
-@@ -2495,9 +2694,9 @@ read_line (COLUMN *p)
+@@ -2498,9 +2697,9 @@ read_line (COLUMN *p)
            align_empty_cols = false;
          }
  
@@ -2347,7 +2346,7 @@ Index: coreutils-9.5/src/pr.c
            padding_not_printed = ANYWHERE;
          }
  
-@@ -2566,7 +2765,7 @@ print_stored (COLUMN *p)
+@@ -2569,7 +2768,7 @@ print_stored (COLUMN *p)
    COLUMN *q;
  
    int line = p->current_line++;
@@ -2356,7 +2355,7 @@ Index: coreutils-9.5/src/pr.c
    /* FIXME
       UMR: Uninitialized memory read:
       * This is occurring while in:
-@@ -2578,7 +2777,7 @@ print_stored (COLUMN *p)
+@@ -2581,7 +2780,7 @@ print_stored (COLUMN *p)
       xmalloc        [xmalloc.c:94]
       init_store_cols [pr.c:1648]
       */
@@ -2365,7 +2364,7 @@ Index: coreutils-9.5/src/pr.c
  
    pad_vertically = true;
  
-@@ -2598,9 +2797,9 @@ print_stored (COLUMN *p)
+@@ -2601,9 +2800,9 @@ print_stored (COLUMN *p)
          }
      }
  
@@ -2377,7 +2376,7 @@ Index: coreutils-9.5/src/pr.c
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2613,8 +2812,8 @@ print_stored (COLUMN *p)
+@@ -2616,8 +2815,8 @@ print_stored (COLUMN *p)
    if (spaces_not_printed == 0)
      {
        output_position = p->start_position + end_vector[line];
@@ -2388,7 +2387,7 @@ Index: coreutils-9.5/src/pr.c
      }
  
    return true;
-@@ -2633,7 +2832,7 @@ print_stored (COLUMN *p)
+@@ -2636,7 +2835,7 @@ print_stored (COLUMN *p)
     number of characters is 1.) */
  
  static int
@@ -2397,7 +2396,7 @@ Index: coreutils-9.5/src/pr.c
  {
    unsigned char uc = c;
    char *s = clump_buff;
-@@ -2643,10 +2842,10 @@ char_to_clump (char c)
+@@ -2646,10 +2845,10 @@ char_to_clump (char c)
    int chars;
    int chars_per_c = 8;
  
@@ -2410,7 +2409,7 @@ Index: coreutils-9.5/src/pr.c
      {
        width = TAB_WIDTH (chars_per_c, input_position);
  
-@@ -2727,6 +2926,164 @@ char_to_clump (char c)
+@@ -2730,6 +2929,164 @@ char_to_clump (char c)
    return chars;
  }
  
@@ -2575,10 +2574,10 @@ Index: coreutils-9.5/src/pr.c
  /* We've just printed some files and need to clean up things before
     looking for more options and printing the next batch of files.
  
-Index: coreutils-9.5/src/sort.c
+Index: coreutils-9.6/src/sort.c
 ===================================================================
---- coreutils-9.5.orig/src/sort.c
-+++ coreutils-9.5/src/sort.c
+--- coreutils-9.6.orig/src/sort.c
++++ coreutils-9.6/src/sort.c
 @@ -29,6 +29,14 @@
  #include <sys/types.h>
  #include <sys/wait.h>
@@ -2594,7 +2593,7 @@ Index: coreutils-9.5/src/sort.c
  #include "system.h"
  #include "argmatch.h"
  #include "assure.h"
-@@ -157,14 +165,39 @@ static int thousands_sep;
+@@ -158,14 +166,39 @@ static int thousands_sep;
  /* We currently ignore multi-byte grouping chars.  */
  static bool thousands_sep_ignored;
  
@@ -2635,7 +2634,7 @@ Index: coreutils-9.5/src/sort.c
  /* The kind of blanks for '-b' to skip in various options. */
  enum blanktype { bl_start, bl_end, bl_both };
  
-@@ -341,13 +374,11 @@ static bool stable;
+@@ -342,13 +375,11 @@ static bool stable;
  /* An int value outside char range.  */
  enum { NON_CHAR = CHAR_MAX + 1 };
  
@@ -2652,7 +2651,7 @@ Index: coreutils-9.5/src/sort.c
  
  /* Flag to remove consecutive duplicate lines from the output.
     Only the last of a sequence of equal lines will be output. */
-@@ -804,6 +835,46 @@ reap_all (void)
+@@ -807,6 +838,46 @@ reap_all (void)
      reap (-1);
  }
  
@@ -2699,7 +2698,7 @@ Index: coreutils-9.5/src/sort.c
  /* Clean up any remaining temporary files.  */
  
  static void
-@@ -1271,7 +1342,7 @@ zaptemp (char const *name)
+@@ -1274,7 +1345,7 @@ zaptemp (char const *name)
    free (node);
  }
  
@@ -2708,7 +2707,7 @@ Index: coreutils-9.5/src/sort.c
  
  static int
  struct_month_cmp (void const *m1, void const *m2)
-@@ -1286,7 +1357,7 @@ struct_month_cmp (void const *m1, void c
+@@ -1289,7 +1360,7 @@ struct_month_cmp (void const *m1, void c
  /* Initialize the character class tables. */
  
  static void
@@ -2717,7 +2716,7 @@ Index: coreutils-9.5/src/sort.c
  {
    size_t i;
  
-@@ -1298,7 +1369,7 @@ inittables (void)
+@@ -1301,7 +1372,7 @@ inittables (void)
        fold_toupper[i] = toupper (i);
      }
  
@@ -2726,7 +2725,7 @@ Index: coreutils-9.5/src/sort.c
    /* If we're not in the "C" locale, read different names for months.  */
    if (hard_LC_TIME)
      {
-@@ -1380,6 +1451,84 @@ specify_nmerge (int oi, char c, char con
+@@ -1381,6 +1452,84 @@ specify_nmerge (int oi, char c, char con
      xstrtol_fatal (e, oi, c, long_options, s);
  }
  
@@ -2811,7 +2810,7 @@ Index: coreutils-9.5/src/sort.c
  /* Specify the amount of main memory to use when sorting.  */
  static void
  specify_sort_size (int oi, char c, char const *s)
-@@ -1611,7 +1760,7 @@ buffer_linelim (struct buffer const *buf
+@@ -1612,7 +1761,7 @@ buffer_linelim (struct buffer const *buf
     by KEY in LINE. */
  
  static char *
@@ -2820,7 +2819,7 @@ Index: coreutils-9.5/src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t sword = key->sword;
-@@ -1620,10 +1769,10 @@ begfield (struct line const *line, struc
+@@ -1621,10 +1770,10 @@ begfield (struct line const *line, struc
    /* The leading field separator itself is included in a field when -t
       is absent.  */
  
@@ -2833,7 +2832,7 @@ Index: coreutils-9.5/src/sort.c
            ++ptr;
          if (ptr < lim)
            ++ptr;
-@@ -1649,12 +1798,71 @@ begfield (struct line const *line, struc
+@@ -1650,12 +1799,71 @@ begfield (struct line const *line, struc
    return ptr;
  }
  
@@ -2906,7 +2905,7 @@ Index: coreutils-9.5/src/sort.c
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t eword = key->eword, echar = key->echar;
-@@ -1669,10 +1877,10 @@ limfield (struct line const *line, struc
+@@ -1670,10 +1878,10 @@ limfield (struct line const *line, struc
       'beginning' is the first character following the delimiting TAB.
       Otherwise, leave PTR pointing at the first 'blank' character after
       the preceding field.  */
@@ -2919,7 +2918,7 @@ Index: coreutils-9.5/src/sort.c
            ++ptr;
          if (ptr < lim && (eword || echar))
            ++ptr;
-@@ -1718,10 +1926,10 @@ limfield (struct line const *line, struc
+@@ -1719,10 +1927,10 @@ limfield (struct line const *line, struc
       */
  
    /* Make LIM point to the end of (one byte past) the current field.  */
@@ -2932,7 +2931,7 @@ Index: coreutils-9.5/src/sort.c
        if (newlim)
          lim = newlim;
      }
-@@ -1752,6 +1960,130 @@ limfield (struct line const *line, struc
+@@ -1753,6 +1961,130 @@ limfield (struct line const *line, struc
    return ptr;
  }
  
@@ -3063,7 +3062,7 @@ Index: coreutils-9.5/src/sort.c
  /* Fill BUF reading from FP, moving buf->left bytes from the end
     of buf->buf to the beginning first.  If EOF is reached and the
     file wasn't terminated by a newline, supply one.  Set up BUF's line
-@@ -1838,8 +2170,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
+@@ -1839,8 +2171,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
                    else
                      {
                        if (key->skipsblanks)
@@ -3088,7 +3087,7 @@ Index: coreutils-9.5/src/sort.c
                        line->keybeg = line_start;
                      }
                  }
-@@ -1977,12 +2323,10 @@ find_unit_order (char const *number)
+@@ -1978,12 +2324,10 @@ find_unit_order (char const *number)
  
  ATTRIBUTE_PURE
  static int
@@ -3104,7 +3103,7 @@ Index: coreutils-9.5/src/sort.c
  
    int diff = find_unit_order (a) - find_unit_order (b);
    return (diff ? diff : strnumcmp (a, b, decimal_point, thousands_sep));
-@@ -1994,7 +2338,7 @@ human_numcompare (char const *a, char co
+@@ -1995,7 +2339,7 @@ human_numcompare (char const *a, char co
  
  ATTRIBUTE_PURE
  static int
@@ -3113,7 +3112,7 @@ Index: coreutils-9.5/src/sort.c
  {
    while (blanks[to_uchar (*a)])
      a++;
-@@ -2004,6 +2348,25 @@ numcompare (char const *a, char const *b
+@@ -2005,6 +2349,25 @@ numcompare (char const *a, char const *b
    return strnumcmp (a, b, decimal_point, thousands_sep);
  }
  
@@ -3139,7 +3138,7 @@ Index: coreutils-9.5/src/sort.c
  static int
  nan_compare (long double a, long double b)
  {
-@@ -2045,7 +2408,7 @@ general_numcompare (char const *sa, char
+@@ -2046,7 +2409,7 @@ general_numcompare (char const *sa, char
     Return 0 if the name in S is not recognized.  */
  
  static int
@@ -3148,7 +3147,7 @@ Index: coreutils-9.5/src/sort.c
  {
    size_t lo = 0;
    size_t hi = MONTHS_PER_YEAR;
-@@ -2372,15 +2735,14 @@ debug_key (struct line const *line, stru
+@@ -2385,15 +2748,14 @@ debug_key (struct line const *line, stru
            char saved = *lim;
            *lim = '\0';
  
@@ -3166,7 +3165,7 @@ Index: coreutils-9.5/src/sort.c
            else if (key->general_numeric)
              ignore_value (strtold (beg, &tighter_lim));
            else if (key->numeric || key->human_numeric)
-@@ -2526,7 +2888,7 @@ key_warnings (struct keyfield const *gke
+@@ -2539,7 +2901,7 @@ key_warnings (struct keyfield const *gke
        /* Warn about significant leading blanks.  */
        bool implicit_skip = key_numeric (key) || key->month;
        bool line_offset = key->eword == 0 && key->echar != 0; /* -k1.x,1.y  */
@@ -3175,7 +3174,7 @@ Index: coreutils-9.5/src/sort.c
            && ((!key->skipsblanks && !implicit_skip)
                || (!key->skipsblanks && key->schar)
                || (!key->skipeblanks && key->echar)))
-@@ -2574,9 +2936,9 @@ key_warnings (struct keyfield const *gke
+@@ -2587,9 +2949,9 @@ key_warnings (struct keyfield const *gke
    bool number_locale_warned = false;
    if (basic_numeric_field_span)
      {
@@ -3188,7 +3187,7 @@ Index: coreutils-9.5/src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2587,9 +2949,9 @@ key_warnings (struct keyfield const *gke
+@@ -2600,9 +2962,9 @@ key_warnings (struct keyfield const *gke
      }
    if (basic_numeric_field_span || general_numeric_field_span)
      {
@@ -3201,7 +3200,7 @@ Index: coreutils-9.5/src/sort.c
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2597,19 +2959,19 @@ key_warnings (struct keyfield const *gke
+@@ -2610,19 +2972,19 @@ key_warnings (struct keyfield const *gke
                   quote (((char []) {decimal_point, 0})));
            number_locale_warned = true;
          }
@@ -3225,7 +3224,7 @@ Index: coreutils-9.5/src/sort.c
          }
      }
  
-@@ -2620,7 +2982,7 @@ key_warnings (struct keyfield const *gke
+@@ -2633,7 +2995,7 @@ key_warnings (struct keyfield const *gke
      {
        error (0, 0,
               _("%snumbers use %s as a decimal point in this locale"),
@@ -3234,7 +3233,7 @@ Index: coreutils-9.5/src/sort.c
               quote (((char []) {decimal_point, 0})));
  
      }
-@@ -2662,11 +3024,87 @@ diff_reversed (int diff, bool reversed)
+@@ -2675,11 +3037,87 @@ diff_reversed (int diff, bool reversed)
    return reversed ? (diff < 0) - (diff > 0) : diff;
  }
  
@@ -3323,7 +3322,7 @@ Index: coreutils-9.5/src/sort.c
  {
    struct keyfield *key = keylist;
  
-@@ -2747,7 +3185,7 @@ keycompare (struct line const *a, struct
+@@ -2760,7 +3198,7 @@ keycompare (struct line const *a, struct
            else if (key->human_numeric)
              diff = human_numcompare (ta, tb);
            else if (key->month)
@@ -3332,7 +3331,7 @@ Index: coreutils-9.5/src/sort.c
            else if (key->random)
              diff = compare_random (ta, tlena, tb, tlenb);
            else if (key->version)
-@@ -2857,6 +3295,211 @@ keycompare (struct line const *a, struct
+@@ -2870,6 +3308,211 @@ keycompare (struct line const *a, struct
    return diff_reversed (diff, key->reverse);
  }
  
@@ -3544,7 +3543,7 @@ Index: coreutils-9.5/src/sort.c
  /* Compare two lines A and B, returning negative, zero, or positive
     depending on whether A compares less than, equal to, or greater than B. */
  
-@@ -2884,7 +3527,7 @@ compare (struct line const *a, struct li
+@@ -2897,7 +3540,7 @@ compare (struct line const *a, struct li
      diff = - NONZERO (blen);
    else if (blen == 0)
      diff = 1;
@@ -3553,7 +3552,7 @@ Index: coreutils-9.5/src/sort.c
      {
        /* xmemcoll0 is a performance enhancement as
           it will not unconditionally write '\0' after the
-@@ -4272,6 +4915,7 @@ set_ordering (char const *s, struct keyf
+@@ -4285,6 +4928,7 @@ set_ordering (char const *s, struct keyf
            break;
          case 'f':
            key->translate = fold_toupper;
@@ -3561,7 +3560,7 @@ Index: coreutils-9.5/src/sort.c
            break;
          case 'g':
            key->general_numeric = true;
-@@ -4351,7 +4995,7 @@ main (int argc, char **argv)
+@@ -4364,7 +5008,7 @@ main (int argc, char **argv)
    initialize_exit_failure (SORT_FAILURE);
  
    hard_LC_COLLATE = hard_locale (LC_COLLATE);
@@ -3570,7 +3569,7 @@ Index: coreutils-9.5/src/sort.c
    hard_LC_TIME = hard_locale (LC_TIME);
  #endif
  
-@@ -4374,6 +5018,29 @@ main (int argc, char **argv)
+@@ -4387,6 +5031,29 @@ main (int argc, char **argv)
        thousands_sep = NON_CHAR;
    }
  
@@ -3600,7 +3599,7 @@ Index: coreutils-9.5/src/sort.c
    have_read_stdin = false;
    inittables ();
  
-@@ -4644,13 +5311,34 @@ main (int argc, char **argv)
+@@ -4657,13 +5324,34 @@ main (int argc, char **argv)
  
          case 't':
            {
@@ -3639,7 +3638,7 @@ Index: coreutils-9.5/src/sort.c
                  else
                    {
                      /* Provoke with 'sort -txx'.  Complain about
-@@ -4661,9 +5349,11 @@ main (int argc, char **argv)
+@@ -4674,9 +5362,11 @@ main (int argc, char **argv)
                             quote (optarg));
                    }
                }
@@ -3653,10 +3652,10 @@ Index: coreutils-9.5/src/sort.c
            }
            break;
  
-Index: coreutils-9.5/src/unexpand.c
+Index: coreutils-9.6/src/unexpand.c
 ===================================================================
---- coreutils-9.5.orig/src/unexpand.c
-+++ coreutils-9.5/src/unexpand.c
+--- coreutils-9.6.orig/src/unexpand.c
++++ coreutils-9.6/src/unexpand.c
 @@ -39,6 +39,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -3667,7 +3666,7 @@ Index: coreutils-9.5/src/unexpand.c
  #include "system.h"
  #include "expand-common.h"
  
-@@ -105,24 +108,47 @@ unexpand (void)
+@@ -105,24 +108,46 @@ unexpand (void)
  {
    /* Input stream.  */
    FILE *fp = next_file (nullptr);
@@ -3687,28 +3686,27 @@ Index: coreutils-9.5/src/unexpand.c
  
    if (!fp)
      return;
+ 
 +  mbf_init (mbf, fp);
 +  found_bom=check_bom(fp,&mbf);
- 
-+  if (using_utf_locale == false && found_bom == true)
-+  {
-+    /*try using some predefined locale */
 +
-+    if (set_utf_locale () != 0)
++  if (using_utf_locale == false && found_bom == true)
 +    {
-+      error (EXIT_FAILURE, errno, _("cannot set UTF-8 locale"));
++      /* Try using some predefined locale */
++      if (set_utf_locale () != 0)
++        {
++          error (EXIT_FAILURE, errno, _("cannot set UTF-8 locale"));
++        }
 +    }
-+  }
++
    /* The worst case is a non-blank character, then one blank, then a
       tab stop, then MAX_COLUMN_WIDTH - 1 blanks, then a non-blank; so
       allocate MAX_COLUMN_WIDTH bytes to store the blanks.  */
--  pending_blank = xmalloc (max_column_width);
-+  pending_blank = xmalloc (max_column_width * sizeof (mbf_char_t));
+-  pending_blank = ximalloc (max_column_width);
++  pending_blank = ximalloc (max_column_width * sizeof (mbf_char_t));
 +
 +  if (found_bom == true)
-+  {
 +    print_bom();
-+  }
  
    while (true)
      {
@@ -3718,7 +3716,7 @@ Index: coreutils-9.5/src/unexpand.c
  
        /* If true, perform translations.  */
        bool convert = true;
-@@ -156,12 +182,44 @@ unexpand (void)
+@@ -156,12 +181,44 @@ unexpand (void)
  
        do
          {
@@ -3766,10 +3764,10 @@ Index: coreutils-9.5/src/unexpand.c
  
                if (blank)
                  {
-@@ -178,16 +236,16 @@ unexpand (void)
-                       if (next_tab_column < column)
-                         error (EXIT_FAILURE, 0, _("input line is too long"));
+@@ -175,16 +232,16 @@ unexpand (void)
  
+                   if (convert)
+                     {
 -                      if (c == '\t')
 +                      if (mb_iseq (c, '\t'))
                          {
@@ -3786,7 +3784,7 @@ Index: coreutils-9.5/src/unexpand.c
  
                            if (! (prev_blank && column == next_tab_column))
                              {
-@@ -195,13 +253,14 @@ unexpand (void)
+@@ -192,13 +249,14 @@ unexpand (void)
                                   will be replaced by tabs.  */
                                if (column == next_tab_column)
                                  one_blank_before_tab_stop = true;
@@ -3803,7 +3801,7 @@ Index: coreutils-9.5/src/unexpand.c
                          }
  
                        /* Discard pending blanks, unless it was a single
-@@ -209,7 +268,7 @@ unexpand (void)
+@@ -206,7 +264,7 @@ unexpand (void)
                        pending = one_blank_before_tab_stop;
                      }
                  }
@@ -3812,7 +3810,7 @@ Index: coreutils-9.5/src/unexpand.c
                  {
                    /* Go back one column, and force recalculation of the
                       next tab stop.  */
-@@ -219,16 +278,20 @@ unexpand (void)
+@@ -216,16 +274,20 @@ unexpand (void)
                  }
                else
                  {
@@ -3837,7 +3835,7 @@ Index: coreutils-9.5/src/unexpand.c
                      write_error ();
                    pending = 0;
                    one_blank_before_tab_stop = false;
-@@ -238,16 +301,17 @@ unexpand (void)
+@@ -235,16 +297,17 @@ unexpand (void)
                convert &= convert_entire_line || blank;
              }
  
@@ -3858,10 +3856,10 @@ Index: coreutils-9.5/src/unexpand.c
      }
  }
  
-Index: coreutils-9.5/tests/Coreutils.pm
+Index: coreutils-9.6/tests/Coreutils.pm
 ===================================================================
---- coreutils-9.5.orig/tests/Coreutils.pm
-+++ coreutils-9.5/tests/Coreutils.pm
+--- coreutils-9.6.orig/tests/Coreutils.pm
++++ coreutils-9.6/tests/Coreutils.pm
 @@ -269,6 +269,9 @@ sub run_tests ($$$$$)
        # Yes, this is an arbitrary limit.  If it causes trouble,
        # consider removing it.
@@ -3872,10 +3870,10 @@ Index: coreutils-9.5/tests/Coreutils.pm
        if ($max < length $test_name)
          {
            warn "$program_name: $test_name: test name is too long (> $max)\n";
-Index: coreutils-9.5/tests/expand/mb.sh
+Index: coreutils-9.6/tests/expand/mb.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/tests/expand/mb.sh
++++ coreutils-9.6/tests/expand/mb.sh
 @@ -0,0 +1,183 @@
 +#!/bin/sh
 +
@@ -4060,10 +4058,10 @@ Index: coreutils-9.5/tests/expand/mb.sh
 +compare exp out > /dev/null 2>&1 || fail=1
 +
 +exit $fail
-Index: coreutils-9.5/tests/i18n/sort.sh
+Index: coreutils-9.6/tests/i18n/sort.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/tests/i18n/sort.sh
++++ coreutils-9.6/tests/i18n/sort.sh
 @@ -0,0 +1,29 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -4094,11 +4092,11 @@ Index: coreutils-9.5/tests/i18n/sort.sh
 +
 +
 +Exit $fail
-Index: coreutils-9.5/tests/local.mk
+Index: coreutils-9.6/tests/local.mk
 ===================================================================
---- coreutils-9.5.orig/tests/local.mk
-+++ coreutils-9.5/tests/local.mk
-@@ -387,6 +387,8 @@ all_tests =					\
+--- coreutils-9.6.orig/tests/local.mk
++++ coreutils-9.6/tests/local.mk
+@@ -390,6 +390,8 @@ all_tests =					\
    tests/sort/sort-discrim.sh			\
    tests/sort/sort-files0-from.pl		\
    tests/sort/sort-float.sh			\
@@ -4107,7 +4105,7 @@ Index: coreutils-9.5/tests/local.mk
    tests/sort/sort-h-thousands-sep.sh		\
    tests/sort/sort-merge.pl			\
    tests/sort/sort-merge-fdlimit.sh		\
-@@ -590,6 +592,7 @@ all_tests =					\
+@@ -593,6 +595,7 @@ all_tests =					\
    tests/du/threshold.sh				\
    tests/du/trailing-slash.sh			\
    tests/du/two-args.sh				\
@@ -4115,7 +4113,7 @@ Index: coreutils-9.5/tests/local.mk
    tests/id/gnu-zero-uids.sh			\
    tests/id/no-context.sh			\
    tests/id/context.sh				\
-@@ -746,6 +749,7 @@ all_tests =					\
+@@ -749,6 +752,7 @@ all_tests =					\
    tests/touch/read-only.sh			\
    tests/touch/relative.sh			\
    tests/touch/trailing-slash.sh			\
@@ -4123,10 +4121,10 @@ Index: coreutils-9.5/tests/local.mk
    $(all_root_tests)
  
  # See tests/factor/create-test.sh.
-Index: coreutils-9.5/tests/misc/expand.pl
+Index: coreutils-9.6/tests/misc/expand.pl
 ===================================================================
---- coreutils-9.5.orig/tests/misc/expand.pl
-+++ coreutils-9.5/tests/misc/expand.pl
+--- coreutils-9.6.orig/tests/misc/expand.pl
++++ coreutils-9.6/tests/misc/expand.pl
 @@ -27,6 +27,15 @@ my $prog = 'expand';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4190,96 +4188,10 @@ Index: coreutils-9.5/tests/misc/expand.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.5/tests/misc/fold.pl
-===================================================================
---- coreutils-9.5.orig/tests/misc/fold.pl
-+++ coreutils-9.5/tests/misc/fold.pl
-@@ -20,20 +20,80 @@ use strict;
- 
- (my $program_name = $0) =~ s|.*/||;
- 
-+my $prog = 'fold';
-+my $try = "Try \`$prog --help' for more information.\n";
-+my $inval = "$prog: invalid byte, character or field list\n$try";
-+
- # Turn off localization of executable's output.
- @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
- 
-+# uncommented to enable multibyte paths
-+my $mb_locale = $ENV{LOCALE_FR_UTF8};
-+! defined $mb_locale || $mb_locale eq 'none'
-+ and $mb_locale = 'C';
-+
- my @Tests =
-   (
-    ['s1', '-w2 -s', {IN=>"a\t"}, {OUT=>"a\n\t"}],
-    ['s2', '-w4 -s', {IN=>"abcdef d\n"}, {OUT=>"abcd\nef d\n"}],
-    ['s3', '-w4 -s', {IN=>"a cd fgh\n"}, {OUT=>"a \ncd \nfgh\n"}],
-    ['s4', '-w4 -s', {IN=>"abc ef\n"}, {OUT=>"abc \nef\n"}],
-+
-+   # The downstream I18N patch made fold(1) exit with success for non-existing
-+   # files since v5.2.1-1158-g3d3030da6 (2004) changed int to bool for booleans.
-+   # The I18N patch was fixed only in July 2024.  (rhbz#2296201).
-+   ['enoent', 'enoent', {EXIT => 1},
-+     {ERR=>"$prog: enoent: No such file or directory\n"}],
-+
-+   # The downstream I18N patch made 'fold -b' mishandled newlines in UTF locales.
-+   # The I18N patch was fixed only in Sep 2024.  (RHEL-60295)
-+   ['bw1', '-b -w 4', {IN=>"abcdef\nghijkl"}, {OUT=>"abcd\nef\nghij\nkl"}],
-+   ['bw2', '-b -w 6', {IN=>"1234567890\nabcdefghij\n1234567890"},
-+     {OUT=>"123456\n7890\nabcdef\nghij\n123456\n7890"}],
-   );
- 
-+# Add _POSIX2_VERSION=199209 to the environment of each test
-+# that uses an old-style option like +1.
-+if ($mb_locale ne 'C')
-+  {
-+    # Duplicate each test vector, appending "-mb" to the test name and
-+    # inserting {ENV => "LC_ALL=$mb_locale"} in the copy, so that we
-+    # provide coverage for the distro-added multi-byte code paths.
-+    my @new;
-+    foreach my $t (@Tests)
-+      {
-+        my @new_t = @$t;
-+        my $test_name = shift @new_t;
-+
-+        # Depending on whether fold is multi-byte-patched,
-+        # it emits different diagnostics:
-+        #   non-MB: invalid byte or field list
-+        #   MB:     invalid byte, character or field list
-+        # Adjust the expected error output accordingly.
-+        if (grep {ref $_ eq 'HASH' && exists $_->{ERR} && $_->{ERR} eq $inval}
-+            (@new_t))
-+          {
-+            my $sub = {ERR_SUBST => 's/, character//'};
-+            push @new_t, $sub;
-+            push @$t, $sub;
-+          }
-+        push @new, ["$test_name-mb", @new_t, {ENV => "LC_ALL=$mb_locale"}];
-+      }
-+    push @Tests, @new;
-+  }
-+
-+@Tests = triple_test \@Tests;
-+
-+# Remember that triple_test creates from each test with exactly one "IN"
-+# file two more tests (.p and .r suffix on name) corresponding to reading
-+# input from a file and from a pipe.  The pipe-reading test would fail
-+# due to a race condition about 1 in 20 times.
-+# Remove the IN_PIPE version of the "output-is-input" test above.
-+# The others aren't susceptible because they have three inputs each.
-+@Tests = grep {$_->[0] ne 'output-is-input.p'} @Tests;
-+
- my $save_temps = $ENV{DEBUG};
- my $verbose = $ENV{VERBOSE};
- 
--my $prog = 'fold';
- my $fail = run_tests ($program_name, $prog, \@Tests, $save_temps, $verbose);
- exit $fail;
-Index: coreutils-9.5/tests/misc/sort-mb-tests.sh
+Index: coreutils-9.6/tests/misc/sort-mb-tests.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/tests/misc/sort-mb-tests.sh
++++ coreutils-9.6/tests/misc/sort-mb-tests.sh
 @@ -0,0 +1,45 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -4326,10 +4238,10 @@ Index: coreutils-9.5/tests/misc/sort-mb-tests.sh
 +compare exp out || { fail=1; cat out; }
 +
 +Exit $fail
-Index: coreutils-9.5/tests/misc/unexpand.pl
+Index: coreutils-9.6/tests/misc/unexpand.pl
 ===================================================================
---- coreutils-9.5.orig/tests/misc/unexpand.pl
-+++ coreutils-9.5/tests/misc/unexpand.pl
+--- coreutils-9.6.orig/tests/misc/unexpand.pl
++++ coreutils-9.6/tests/misc/unexpand.pl
 @@ -27,6 +27,14 @@ my $limits = getlimits ();
  
  my $prog = 'unexpand';
@@ -4383,10 +4295,10 @@ Index: coreutils-9.5/tests/misc/unexpand.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.5/tests/pr/pr-tests.pl
+Index: coreutils-9.6/tests/pr/pr-tests.pl
 ===================================================================
---- coreutils-9.5.orig/tests/pr/pr-tests.pl
-+++ coreutils-9.5/tests/pr/pr-tests.pl
+--- coreutils-9.6.orig/tests/pr/pr-tests.pl
++++ coreutils-9.6/tests/pr/pr-tests.pl
 @@ -24,6 +24,15 @@ use strict;
  my $prog = 'pr';
  my $normalize_strerror = "s/': .*/'/";
@@ -4452,10 +4364,10 @@ Index: coreutils-9.5/tests/pr/pr-tests.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.5/tests/sort/sort-merge.pl
+Index: coreutils-9.6/tests/sort/sort-merge.pl
 ===================================================================
---- coreutils-9.5.orig/tests/sort/sort-merge.pl
-+++ coreutils-9.5/tests/sort/sort-merge.pl
+--- coreutils-9.6.orig/tests/sort/sort-merge.pl
++++ coreutils-9.6/tests/sort/sort-merge.pl
 @@ -26,6 +26,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4512,10 +4424,10 @@ Index: coreutils-9.5/tests/sort/sort-merge.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.5/tests/sort/sort.pl
+Index: coreutils-9.6/tests/sort/sort.pl
 ===================================================================
---- coreutils-9.5.orig/tests/sort/sort.pl
-+++ coreutils-9.5/tests/sort/sort.pl
+--- coreutils-9.6.orig/tests/sort/sort.pl
++++ coreutils-9.6/tests/sort/sort.pl
 @@ -24,10 +24,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4580,10 +4492,10 @@ Index: coreutils-9.5/tests/sort/sort.pl
  
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
-Index: coreutils-9.5/tests/unexpand/mb.sh
+Index: coreutils-9.6/tests/unexpand/mb.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/tests/unexpand/mb.sh
++++ coreutils-9.6/tests/unexpand/mb.sh
 @@ -0,0 +1,172 @@
 +#!/bin/sh
 +
@@ -4757,10 +4669,10 @@ Index: coreutils-9.5/tests/unexpand/mb.sh
 +
 +LC_ALL=C unexpand in in > out || fail=1
 +compare exp out > /dev/null 2>&1 || fail=1
-Index: coreutils-9.5/lib/mbchar.c
+Index: coreutils-9.6/lib/mbchar.c
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/lib/mbchar.c
++++ coreutils-9.6/lib/mbchar.c
 @@ -0,0 +1,23 @@
 +/* Copyright (C) 2001, 2006, 2009-2024 Free Software Foundation, Inc.
 +
@@ -4785,10 +4697,10 @@ Index: coreutils-9.5/lib/mbchar.c
 +#include <limits.h>
 +
 +#include "mbchar.h"
-Index: coreutils-9.5/lib/mbchar.h
+Index: coreutils-9.6/lib/mbchar.h
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/lib/mbchar.h
++++ coreutils-9.6/lib/mbchar.h
 @@ -0,0 +1,373 @@
 +/* Multibyte character data type.
 +   Copyright (C) 2001, 2005-2007, 2009-2024 Free Software Foundation, Inc.
@@ -5163,10 +5075,10 @@ Index: coreutils-9.5/lib/mbchar.h
 +_GL_INLINE_HEADER_END
 +
 +#endif /* _MBCHAR_H */
-Index: coreutils-9.5/m4/mbchar.m4
+Index: coreutils-9.6/m4/mbchar.m4
 ===================================================================
 --- /dev/null
-+++ coreutils-9.5/m4/mbchar.m4
++++ coreutils-9.6/m4/mbchar.m4
 @@ -0,0 +1,13 @@
 +# mbchar.m4 serial 9
 +dnl Copyright (C) 2005-2007, 2009-2024 Free Software Foundation, Inc.
@@ -5181,3 +5093,76 @@ Index: coreutils-9.5/m4/mbchar.m4
 +[
 +  AC_REQUIRE([AC_USE_SYSTEM_EXTENSIONS])
 +])
+Index: coreutils-9.6/tests/misc/fold.pl
+===================================================================
+--- coreutils-9.6.orig/tests/misc/fold.pl
++++ coreutils-9.6/tests/misc/fold.pl
+@@ -20,9 +20,17 @@ use strict;
+ 
+ (my $program_name = $0) =~ s|.*/||;
+ 
++my $prog = 'fold';
++my $try = "Try \`$prog --help' for more information.\n";
++my $inval = "$prog: invalid byte, character or field list\n$try";
++
+ # Turn off localization of executable's output.
+ @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
+-my $prog = 'fold';
++
++# uncommented to enable multibyte paths
++my $mb_locale = $ENV{LOCALE_FR_UTF8};
++! defined $mb_locale || $mb_locale eq 'none'
++ and $mb_locale = 'C';
+ 
+ my @Tests =
+   (
+@@ -44,9 +52,48 @@ my @Tests =
+      {OUT=>"123456\n7890\nabcdef\nghij\n123456\n7890"}],
+   );
+ 
++# Add _POSIX2_VERSION=199209 to the environment of each test
++# that uses an old-style option like +1.
++if ($mb_locale ne 'C')
++  {
++    # Duplicate each test vector, appending "-mb" to the test name and
++    # inserting {ENV => "LC_ALL=$mb_locale"} in the copy, so that we
++    # provide coverage for the distro-added multi-byte code paths.
++    my @new;
++    foreach my $t (@Tests)
++      {
++        my @new_t = @$t;
++        my $test_name = shift @new_t;
++
++        # Depending on whether fold is multi-byte-patched,
++        # it emits different diagnostics:
++        #   non-MB: invalid byte or field list
++        #   MB:     invalid byte, character or field list
++        # Adjust the expected error output accordingly.
++        if (grep {ref $_ eq 'HASH' && exists $_->{ERR} && $_->{ERR} eq $inval}
++            (@new_t))
++          {
++            my $sub = {ERR_SUBST => 's/, character//'};
++            push @new_t, $sub;
++            push @$t, $sub;
++          }
++        push @new, ["$test_name-mb", @new_t, {ENV => "LC_ALL=$mb_locale"}];
++      }
++    push @Tests, @new;
++  }
++
++@Tests = triple_test \@Tests;
++
++# Remember that triple_test creates from each test with exactly one "IN"
++# file two more tests (.p and .r suffix on name) corresponding to reading
++# input from a file and from a pipe.  The pipe-reading test would fail
++# due to a race condition about 1 in 20 times.
++# Remove the IN_PIPE version of the "output-is-input" test above.
++# The others aren't susceptible because they have three inputs each.
++@Tests = grep {$_->[0] ne 'output-is-input.p'} @Tests;
++
+ my $save_temps = $ENV{DEBUG};
+ my $verbose = $ENV{VERBOSE};
+ 
+-my $prog = 'fold';
+ my $fail = run_tests ($program_name, $prog, \@Tests, $save_temps, $verbose);
+ exit $fail;

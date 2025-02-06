@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:43:30 UTC 2025 - aplanas@suse.com
+
+- Update to version 0.2.7+1:
+  * dist: Enable logging for keylime library in the service
+  * Bump version to 0.2.7
+  * scripts: Download coverage data from Testing Farm directly
+  * main: Remove unnecessary lifetime
+  * cargo: Bump pretty_env_logger to version 0.5.0
+  * scripts: Fix regex in download_packit_coverage.sh
+  * cargo: Bump clap crate to version 4.5.23
+  * cargo: Bump base64 crate to version 0.22.1
+  * build(deps): bump log from 0.4.22 to 0.4.25
+  * build(deps): bump serde_json from 1.0.133 to 1.0.135
+  * cargo: Bump tokio crate to version 1.42.0
+  * packit: Fix RPM builds on copr
+  * cargo: Bump thiserror crate to version 0.2.9
+  * cargo: Update reqwest to version 0.12.12
+  * build(deps): bump libc from 0.2.168 to 0.2.169
+  * build(deps): bump glob from 0.3.1 to 0.3.2
+  * version: Implement API version validation and ordering
+  * main: Support using multiple API versions for registration
+  * keylime: Introduce the registrar_client module
+  * Provide endpoints under multiple API versions
+  * Move 'serialization' module to the keylime library
+  * Drop unnecessary dependency on common::API_VERSION
+  * keylime-agent.conf: Bump version to 2.3
+  * build(deps): bump serde from 1.0.210 to 1.0.217
+  * build(deps): bump pest_derive from 2.7.14 to 2.7.15
+  * build(deps): bump pest from 2.7.14 to 2.7.15
+  * build(deps): bump libc from 0.2.167 to 0.2.168
+  * config: Make IAK and IDevID certificates optional
+  * Fix warnings reported by clippy
+  * workflows: Run job in the CI container directly
+  * tests: Add unit test for device ID builder
+  * main: Move IAK/IDevID related code to dedicated module
+  * tests: Add script to generate IAK and IDevID certificates
+  * build(deps): bump openssl from 0.10.66 to 0.10.68
+  * build(deps): bump uuid from 1.10.0 to 1.11.0
+  * build(deps): bump serde_json from 1.0.128 to 1.0.133
+  * build(deps): bump actix-web from 4.5.1 to 4.9.0
+  * build(deps): bump reqwest from 0.12.7 to 0.12.9
+  * tests/setup_swtpm.sh: Add script to setup temporary TPM
+  * Use a single TPM context and avoid race conditions during tests
+  * config: Enable passing a hostname instead of IP
+  * build(deps): bump clap from 4.3.11 to 4.5.21
+  * build(deps): bump tempfile from 3.10.1 to 3.14.0
+  * build(deps): bump pest_derive from 2.7.6 to 2.7.14
+  * build(deps): bump pest from 2.7.6 to 2.7.14
+  * build(deps): bump codecov/codecov-action from 4 to 5
+  * workflows: Submit the coverage for merged PR from Fedora 41
+  * tests: Use Fedora 41 to generate code coverage
+  * api: Make API configuration modular
+  * agent_handler: Move the /agent scope configuration
+  * notifications_handler: Move the /notifications scope configuration
+  * quotes_handler: Move the /quotes scope configuration to quotes_handler
+  * keys_handler: Move /keys scope configuration to keys_handler
+  * Use ${DESTDIR} for config
+  * Fix showing wrong UUID
+  * build(deps): bump actix-rt from 2.9.0 to 2.10.0
+  * config: Refactor AgentConfig Source trait implementation
+  * build(deps): bump log from 0.4.21 to 0.4.22
+  * build(deps): bump serde_json from 1.0.120 to 1.0.128
+  * tpm: check if EK certificate has valid ASN.1 DER encoding
+  * build(deps): bump futures from 0.3.27 to 0.3.31
+  * cargo: Bump reqwest to version 0.12.7
+  * build(deps): bump serde from 1.0.203 to 1.0.210
+  * tests: Add more tests to Packit CI
+  * build(deps): bump docker/build-push-action from 5 to 6
+  * tests: apply workarounds to known bugs
+
+-------------------------------------------------------------------
 Mon Sep 02 11:53:27 UTC 2024 - aplanas@suse.com
 
 - Update vendored crates (bsc#1229952, bsc#1230029)

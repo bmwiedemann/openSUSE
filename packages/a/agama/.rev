@@ -153,4 +153,39 @@
     <comment>- Version 11</comment>
     <requestid>1237709</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>5033cba6e85f93ddc525cb5906d3caf1</srcmd5>
+    <version>0</version>
+    <time>1737490217</time>
+    <user>anag+factory</user>
+    <comment>- The web server provides /api/software/repositories endpoint
+  for reading the currently configured repositories,
+  related to (gh#agama-project/agama#1894)
+
+- Add support for specifying a license for each product
+  (jsc#PED-11987).
+
+- Stop the WebSocket handler when the client is disconnected
+  (gh#agama-project/agama#1909).
+- Log the events.
+
+- Fix typo in `agama profile import --help` (bsc#1235827)</comment>
+    <requestid>1239315</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>92add55597af6069cd3ec79b7ae579c8</srcmd5>
+    <version>0</version>
+    <time>1737828743</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce a new installation phase &quot;finish&quot;
+  (gh#agama-project/agama#1616).
+
+- Change the registration property in a product's definition to a
+  boolean (gh#agama-project/agama#1938).
+
+- Added a workaround for stuck web UI when importing auto
+  installation profile with unreachable software repository
+  (gh#agama-project/agama#1933)</comment>
+    <requestid>1240159</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,12 @@
 
 %bcond_without     test
 Name:           python-bpython
-Version:        0.24
+Version:        0.25
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
 URL:            https://www.bpython-interpreter.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bpython/bpython-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-python313-tests.patch from commits: gh#bbdff64 and gh#45f4117
-Patch0:         fix-python313-tests.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
@@ -101,14 +99,8 @@ sphinx-build -b man doc/sphinx/source build/sphinx/man
 
 %install
 %pyproject_install
-# install manual pages by hand, for now: gh#bpython/bpython/issues/987
-mkdir -p %{buildroot}%{_mandir}/man1
-mkdir %{buildroot}%{_mandir}/man5
-mv build/sphinx/man/bpython.1 %{buildroot}/%{_mandir}/man1
-mv build/sphinx/man/bpython-config.5 %{buildroot}/%{_mandir}/man5
 
 %python_clone -a %{buildroot}%{_bindir}/bpython
-%python_clone -a %{buildroot}%{_bindir}/bpython-curses
 %python_clone -a %{buildroot}%{_bindir}/bpython-urwid
 %python_clone -a %{buildroot}%{_bindir}/bpdb
 %python_clone -a %{buildroot}%{_mandir}/man1/bpython.1
@@ -140,7 +132,7 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 %endif
 
 %post
-%{python_install_alternative bpython bpython-curses bpython-urwid bpdb bpython.1%{ext_man} bpython-config.5%{ext_man}}
+%{python_install_alternative bpython bpython-urwid bpdb bpython.1%{ext_man} bpython-config.5%{ext_man}}
 
 %postun
 %python_uninstall_alternative bpython
@@ -155,7 +147,6 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 %dir %{python_sitelib}/bpython-%{version}*-info
 %{python_sitelib}/bpython-%{version}*-info/*
 %python_alternative %{_bindir}/bpython
-%python_alternative %{_bindir}/bpython-curses
 %python_alternative %{_bindir}/bpython-urwid
 %python_alternative %{_bindir}/bpdb
 %python_alternative %{_mandir}/man1/bpython.1%{ext_man}

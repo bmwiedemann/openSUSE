@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-git-versioning
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-git-versioning
-Version:        1.13.5
+Version:        2.1.0
 Release:        0
 Summary:        Use git repo data for building a version number according PEP-440
 License:        MIT
 URL:            https://setuptools-git-versioning.readthedocs.io
 # SourceDist:    https://github.com/dolfinus/setuptools-git-versioning
-# the sdist on PyPI does not have the tests, we needs full git metadata for bootstrap, run osc service runall to update
-Source:         setuptools-git-versioning-%{version}.tar.xz
+Source:         https://github.com/dolfinus/setuptools-git-versioning/archive/refs/tags/v2.1.0.tar.gz#/setuptools-git-versioning-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -35,12 +34,9 @@ Requires:       git-core
 Requires:       python-packaging
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-setuptools_git_versioning = %{version}-%{release}
 BuildArch:      noarch
-%if 0%{python_version_nodots} < 311
-Requires:       python-toml >= 0.10.2
-%endif
 # SECTION test
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module coverage}
@@ -65,10 +61,9 @@ version number according PEP440.
   - Templates support a lot of substitutions including git and environment information
 
 %prep
-%setup -q -n setuptools-git-versioning-%{version}
-# avoid dirty version
-echo '_build*' >> .git/info/exclude
-echo _current_flavor >> .git/info/exclude
+%autosetup -p1 -n setuptools-git-versioning-%{version}
+# Set version
+echo "Version: %{version}" > PKG-INFO
 
 %build
 %pyproject_wheel
@@ -94,7 +89,7 @@ donttest="test_substitution_env"
 %files %{python_files}
 %python_alternative %{_bindir}/setuptools-git-versioning
 %{python_sitelib}/setuptools_git_versioning.py*
-%{python_sitelib}/setuptools_git_versioning-%{version}*-info
+%{python_sitelib}/setuptools_git_versioning-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__/setuptools_git_versioning*.pyc
 
 %changelog

@@ -15,4 +15,16 @@
     <comment>- Update to release 2.6.0</comment>
     <requestid>1196359</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e6e736891bf56c6b56eefe5dfeadbdc4</srcmd5>
+    <version>2.6.0</version>
+    <time>1737563072</time>
+    <user>anag+factory</user>
+    <comment>- BuildRequire python-rpm-macros: required for the
+  python3_fix_shebang macro.
+
+- Fix shebang of …/FlameGraph/stackcollapse-chrome-tracing.py to
+  not pull in python2.</comment>
+    <requestid>1239544</requestid>
+  </revision>
 </revisionlist>

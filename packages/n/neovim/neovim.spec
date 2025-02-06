@@ -1,7 +1,7 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without luajit
 %endif
 Name:           neovim
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -31,6 +31,8 @@ Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{v
 Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
+# PATCH-FIX-OPENSUSE: ensure installed tree-sitter-vimdoc is enabled in order to test to succeed
+Patch1:         0001-neovim-0.10.4-install-treesitter-vimdoc.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -61,6 +63,8 @@ BuildRequires:  pkgconfig(termkey)
 BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
 BuildRequires:  pkgconfig(unibilium) >= 2.0.0
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
+# for oldtest
+BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
 Requires:       lua51-bit32
@@ -95,7 +99,7 @@ excisions, Neovim is Vim. It is built for users who want the good
 parts of Vim, without compromise, and more.
 
 %prep
-%autosetup
+%autosetup -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
@@ -121,6 +125,11 @@ USERNAME=OBS
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
 
 %make_build
+
+%check
+# oldtest
+VIMDOC_PATH=$(readlink -f %{_libdir}/tree_sitter/vimdoc.so) \
+make -C test/old/testdir NVIM_PRG=$(realpath build)/bin/nvim
 
 %install
 %cmake_install

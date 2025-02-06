@@ -1,7 +1,7 @@
 #
 # spec file for package bluefish
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bluefish
-Version:        2.2.15
+Version:        2.2.16
 Release:        0
 Summary:        A feature-Rich HTML Editor
 License:        GPL-3.0-or-later
@@ -27,6 +27,9 @@ Source1:        https://www.bennewitz.com/bluefish/stable/source/%{name}-%{versi
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE remove-python-class-shebang.patch - Remove unneeded shebang from python class files.
 Patch0:         remove-python-class-shebang.patch
+# PATCH-FIX-UPSTREAM no-python2.patch bsc#[0-9]+ mcepl@suse.com
+# Remove all shebangs which may point to Python 2
+Patch1:         no-python2.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  intltool
@@ -35,7 +38,6 @@ BuildRequires:  man
 BuildRequires:  pkgconfig
 BuildRequires:  sgml-skel
 BuildRequires:  tidy
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -80,6 +82,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
              bflangsampledir="%{_docdir}/%{name}" \
              UPDATE_DESKTOP=echo \
              UPDATE_MIME=echo
+
+%python3_fix_shebang_path %{buildroot}%{_datadir}/bluefish/*
 
 %fdupes %{buildroot}%{_datadir}
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 19 10:06:41 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5
+  * Updated OHIF to 3.9.2
+  * In "dicom-web" data source, fixed the default "app-config.js"
+    configuration to enable display of PDFs.
+  * Updated cached "dicom-json" version to 2. This implies that, when using
+    the "dicom-json" source, the cached metadata will have to be recomputed
+    the first time you open a study.
+
+-------------------------------------------------------------------
 Sun Dec  8 14:50:32 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - license string corrected

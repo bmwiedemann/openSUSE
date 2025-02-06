@@ -16,7 +16,7 @@ Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
  2 files changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/jinx-mod.c b/jinx-mod.c
-index 4c1c42f6247bba04ff543481a5a0f611559996f3..0a33c48de83ae6c727f5c7253704675e7f0141bb 100644
+index d08c86fb05e7ee6f666437a551fa15981521e2c0..7d7e02829f3983ab205c5b9d683bf74c2c4ef082 100644
 --- a/jinx-mod.c
 +++ b/jinx-mod.c
 @@ -21,10 +21,25 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
@@ -46,7 +46,7 @@ index 4c1c42f6247bba04ff543481a5a0f611559996f3..0a33c48de83ae6c727f5c7253704675e
  
  static EnchantBroker* broker = 0;
  static emacs_value Qt, Qnil, Qcons;
-@@ -173,7 +188,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
+@@ -175,7 +190,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
      return list;
  }
  
@@ -56,15 +56,15 @@ index 4c1c42f6247bba04ff543481a5a0f611559996f3..0a33c48de83ae6c727f5c7253704675e
          return 1; // Require Emacs binary compatibility
      emacs_env* env = runtime->get_environment(runtime);
 diff --git a/jinx.el b/jinx.el
-index f44192d69eee3ca323fcf0f7564f1f2409e25874..b9e1fba234731c5d03895fe7acd60784dfb701f4 100644
+index e6180d12743e5a2d8a1c437fbb767eb334addc27..5e4c780ce5ebef0d0dde7a9ea2b635831152fe9f 100644
 --- a/jinx.el
 +++ b/jinx.el
-@@ -601,7 +601,7 @@ If CHECK is non-nil, always check first."
-                                    (or (locate-library c-name t)
-                                        (error "Jinx: %s not found" c-name))))
-                (command
--                `(,cc "-I." "-O2" "-Wall" "-Wextra" "-fPIC" "-shared"
-+                `(,cc "-I." "-O2" "-Wall" "-Wextra" "-fPIC" "-shared" "-fvisibility=hidden"
-                   "-o" ,mod-name ,c-name
-                   ,@(split-string-and-unquote
-                      (condition-case nil
+@@ -264,7 +264,7 @@ (easy-menu-define jinx-mode-menu jinx-mode-map
+ ;;;; Internal variables
+ 
+ (defvar jinx--compile-flags
+-  '("-I." "-O2" "-Wall" "-Wextra" "-fPIC" "-shared")
++  '("-I." "-O2" "-Wall" "-Wextra" "-fPIC" "-shared -fvisibility=hidden")
+   "List of compile flags passed to the C compiler.")
+ 
+ (defvar jinx--reschedule-hooks

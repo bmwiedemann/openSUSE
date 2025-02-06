@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan  2 01:31:43 UTC 2025 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 6.6.0
+  + Improved im/exporter script for CAMT 053.001.02
+  + csv: added profile for comdirect depot status reports
+  + add pain.001.001.09 profile to xml imexporter
+  + add pain.001.001.03 profile as SEPA profile
+  + Bugfixes
+
+-------------------------------------------------------------------
+Mon Dec  2 14:02:45 UTC 2024 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 6.5.12 (beta)
+
+-------------------------------------------------------------------
 Sun Nov 24 12:38:43 UTC 2024 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 6.5.9 (beta)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 31 08:10:29 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Increase size limits:
+  * Rescue to max 1GB (give up on CD-R media; smallest sticks
+    people will find are 1GB).
+  * KDE/GNOME/XFCE upped to 1.5GB: we were limitting to 1.2GB so
+    far, but that implies a 2G drive anyway. Not jumping right away
+    to 2GB to force ourselves to limit the content.
+
+-------------------------------------------------------------------
 Mon Mar 18 10:56:17 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase size limit for GNOME|KDE|XFCE live images from 1G to 1.2G

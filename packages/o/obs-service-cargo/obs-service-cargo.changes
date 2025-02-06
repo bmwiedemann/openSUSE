@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 30 07:06:07 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.5.0:
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * toolchain: add most used components for rust development
+- Set rust toolchain to version 1.83
+
+-------------------------------------------------------------------
 Fri Dec 20 03:27:35 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 4.4.1:

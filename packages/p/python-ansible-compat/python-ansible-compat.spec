@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        25.0.0
+Version:        25.1.1
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -96,6 +96,8 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_get_cache_dir_relative"
 # tests that need network connectivity
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[0]"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[1]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[disabled]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[enabled]"
 # Disable checks on test names: https://github.com/pytest-dev/pytest-plus#user-content-avoiding-problematic-test-identifiers https://github.com/ansible/ansible-compat/issues/340
 export PYTEST_CHECK_TEST_ID_REGEX=0
 %pytest -k "not (${IGNORED_CHECKS})"

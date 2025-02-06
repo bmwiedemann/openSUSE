@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Critic-Community
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,28 @@
 
 %define cpan_name Perl-Critic-Community
 Name:           perl-Perl-Critic-Community
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
+# v1.0.4 -> normalize -> 1.0.4
+%define cpan_version v1.0.4
 License:        Artistic-2.0
 Summary:        Community-inspired Perl::Critic policies
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-v%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(List::Util) >= 1.33
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(PPI) >= 1.254
 BuildRequires:  perl(Path::Tiny) >= 0.101
 BuildRequires:  perl(Perl::Critic) >= 1.126
 BuildRequires:  perl(Perl::Critic::Policy::Objects::ProhibitIndirectSyntax) >= 1.126
+BuildRequires:  perl(Perl::Critic::Policy::Plicease::ProhibitArrayAssignAref) >= 100.0.0
 BuildRequires:  perl(Perl::Critic::Policy::Subroutines::ProhibitAmpersandSigils) >= 1.126
-BuildRequires:  perl(Perl::Critic::Policy::ValuesAndExpressions::ProhibitArrayAssignAref) >= 90
 BuildRequires:  perl(Perl::Critic::Policy::Variables::ProhibitConditionalDeclarations) >= 1.126
 BuildRequires:  perl(Perl::Critic::Policy::Variables::ProhibitLoopOnHash) >= 0.005
 BuildRequires:  perl(Perl::Critic::Policy::Variables::RequireLexicalLoopIterators) >= 1.126
@@ -47,8 +50,8 @@ Requires:       perl(PPI) >= 1.254
 Requires:       perl(Path::Tiny) >= 0.101
 Requires:       perl(Perl::Critic) >= 1.126
 Requires:       perl(Perl::Critic::Policy::Objects::ProhibitIndirectSyntax) >= 1.126
+Requires:       perl(Perl::Critic::Policy::Plicease::ProhibitArrayAssignAref) >= 100.0.0
 Requires:       perl(Perl::Critic::Policy::Subroutines::ProhibitAmpersandSigils) >= 1.126
-Requires:       perl(Perl::Critic::Policy::ValuesAndExpressions::ProhibitArrayAssignAref) >= 90
 Requires:       perl(Perl::Critic::Policy::Variables::ProhibitConditionalDeclarations) >= 1.126
 Requires:       perl(Perl::Critic::Policy::Variables::ProhibitLoopOnHash) >= 0.005
 Requires:       perl(Perl::Critic::Policy::Variables::RequireLexicalLoopIterators) >= 1.126
@@ -67,7 +70,7 @@ be used with zero configuration on the command line, some duplication will
 occur if it is used in combination with core Perl::Critic policies.
 
 %prep
-%autosetup  -n %{cpan_name}-v%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
@@ -81,7 +84,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md prereqs.yml README
+%doc Changes CONTRIBUTING.md README
 %license LICENSE
 
 %changelog

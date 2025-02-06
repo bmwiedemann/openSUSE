@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-pandoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later

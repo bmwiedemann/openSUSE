@@ -44,4 +44,50 @@
     registry specified in its name.</comment>
     <requestid>1164155</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5476a9bf8b241fac0fd78a907fe8340b</srcmd5>
+    <version>1.1.1</version>
+    <time>1738072735</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.1:
+  * fixed cli desc for store env var (#374)
+  * updated versions for go/k8s/helm (#373)
+  * updated version flag to internal/flags (#369)
+  * renamed incorrectly named consts (#371)
+  * added store env var (#370)
+  * adding ignore errors and retries for continue on error/fail on error (#368)
+  * updated/fixed hauler directory (#354)
+  * standardize consts (#353)
+  * removed cachedir code (#355)
+  * removed k3s code (#352)
+  * updated dependencies for go, helm, and k8s (#351)
+  * [feature] build with boring crypto where available (#344)
+  * updated workflow to goreleaser builds (#341)
+  * added timeout to goreleaser workflow (#340)
+  * trying new workflow build processes (#337)
+  * improved workflow performance (#336)
+  * have extract use proper ref (#335)
+  * yet another workflow goreleaser fix (#334)
+  * even more workflow fixes (#333)
+  * added more fixes to github workflow (#332)
+  * fixed typo in hauler store save (#331)
+  * updates to fix build processes (#330)
+  * added integration tests for non hauler tarballs (#325)
+  * bump: golang &gt;= 1.23.1 (#328)
+  * add platform flag to store save (#329)
+  * Update feature_request.md
+  * updated/standardize command descriptions (#313)
+  * use new annotation for 'store save' manifest.json (#324)
+  * enable docker load for hauler tarballs (#320)</comment>
+    <requestid>1240632</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>624483616c49e6e2fcc11e6e0a762aa5</srcmd5>
+    <version>1.1.1</version>
+    <time>1738163908</time>
+    <user>anag+factory</user>
+    <comment>- add 0001-Bump-the-go_modules-group-across-1-directory-with-2-.patch
+  to bump net/html dependencies (bsc#1235332, CVE-2024-45338)</comment>
+    <requestid>1241176</requestid>
+  </revision>
 </revisionlist>

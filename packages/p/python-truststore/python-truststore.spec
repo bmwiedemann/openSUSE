@@ -1,7 +1,7 @@
 #
 # spec file for package python-truststore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-truststore
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        Verify certificates using OS trust stores
 License:        MIT
@@ -58,7 +58,7 @@ considered experimental.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -s -k 'not internet'
+%pytest -s -k 'not internet and not test_wrong_host_succeeds_with_hostname_verification_disabled'
 
 %files %{python_files}
 %doc README.md

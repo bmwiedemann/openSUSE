@@ -92,9 +92,9 @@
         <package name="kernel-default"/>
         <package name="timezone"/>
 
-        <!-- FIXME: change this to python3 once Ansible switches to it -->
-        <package name="python"/>
-        <package name="python-xml"/>
+        <!-- For Ansible's zypper module -->
+        <package name="python3"/>
+        <package name="python3-xml"/>
 
         <!-- for dracut -->
         <package name="keyutils"/>

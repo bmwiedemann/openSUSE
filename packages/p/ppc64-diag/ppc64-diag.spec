@@ -1,7 +1,7 @@
 #
 # spec file for package ppc64-diag
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source3:        ppc64-diag-nvme.service
 Source4:        ppc64-diag-nvme.timer
 #PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
 Patch1:         ppc64-diag.varunused.patch
+#PATCH-FIX-UPSTREAM - Added-Power11-support-for-diag_nvme.patch
+Patch2:         Added-Power11-support-for-diag_nvme.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

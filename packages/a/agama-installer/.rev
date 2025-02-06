@@ -99,4 +99,17 @@
     <comment>- Version 11</comment>
     <requestid>1237726</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a5484aafe80a0263c337efae2931a6f6</srcmd5>
+    <version>11.0.0</version>
+    <time>1737490209</time>
+    <user>anag+factory</user>
+    <comment>- Add SUSE licenses (jsc#PED-11987).
+
+- Drop patterns-yast-yast2_basis requirement
+  yast packages should be installed per package and not as
+  a whole pattern.
+  (gh#agama-project/agama#1893).</comment>
+    <requestid>1239075</requestid>
+  </revision>
 </revisionlist>

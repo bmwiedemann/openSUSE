@@ -99,4 +99,15 @@
     <comment></comment>
     <requestid>1197743</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>ff23ddf995143a8a74632c4b67fefcc8</srcmd5>
+    <version>0.9.7.1</version>
+    <time>1738163385</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup macro.
+- Clean up BuildRequires for test flavor.
+- Add patch remove-six.patch:
+  * Remove use of six.</comment>
+    <requestid>1239689</requestid>
+  </revision>
 </revisionlist>

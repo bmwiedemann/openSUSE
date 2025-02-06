@@ -201,7 +201,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        33.3.1
+Version:        33.3.2
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -389,6 +389,7 @@ Patch3182:      css_attr_value_tainting-missing-once_flag.patch
 Patch3183:      vtt_scanner-missing-variant.patch
 Patch3184:      electron_usb_delegate-incomplete-UsbDeviceInfo.patch
 Patch3185:      bsc1224178-font-gc.patch
+Patch3186:      string_view-incomplete-CodePointIterator.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -1001,7 +1002,7 @@ export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 %ifarch aarch64
 %if %{with lto}
 # Out of memory: Killed process 4016 (lto1-wpa)
-export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g0 /g' -e 's/-g$/-g0/g')"
+export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 %endif
 %endif
 
@@ -1054,7 +1055,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto}
 %ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=2 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=auto --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"
@@ -1195,10 +1196,9 @@ myconf_gn+=" v8_symbol_level=0"
 %endif
 %ifarch aarch64
 %if %{with lto}
-# linker OOM, sorry.
-myconf_gn+=' symbol_level=0'
-myconf_gn+=' blink_symbol_level=0'
-myconf_gn+=' v8_symbol_level=0'
+myconf_gn+=' symbol_level=1'
+myconf_gn+=' blink_symbol_level=1'
+myconf_gn+=' v8_symbol_level=1'
 %else
 myconf_gn+=' symbol_level=2'
 myconf_gn+=' blink_symbol_level=1'

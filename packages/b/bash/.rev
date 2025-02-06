@@ -2047,4 +2047,14 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1233142</requestid>
   </revision>
+  <revision rev="195" vrev="16">
+    <srcmd5>35479b36f28c1204a92c1edb7f3be455</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1737828609</time>
+    <user>dimstar_suse</user>
+    <comment>- As in bash-sh there is only a symbolic link avoid to require a version
+
+- Move (/etc/skel/.bashrc) and (/etc/skel/.profile) to (/usr/etc/skel/).</comment>
+    <requestid>1240150</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 26 05:31:04 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.40.0 (0.04)
+   see /usr/share/doc/packages/perl-Mock-Config/Changes
+
+  0.04    2025-01-25 10:45:08 rurban
+          Regenerate GPG sig with latest Module::Signature
+          add make release target
+
+-------------------------------------------------------------------
 Mon Oct 16 10:34:06 UTC 2017 - coolo@suse.com
 
 - initial package 0.03

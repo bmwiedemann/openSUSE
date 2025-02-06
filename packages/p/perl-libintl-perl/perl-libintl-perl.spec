@@ -18,10 +18,10 @@
 
 %define cpan_name libintl-perl
 Name:           perl-libintl-perl
-Version:        1.340.0
+Version:        1.350.0
 Release:        0
-# 1.34 -> normalize -> 1.340.0
-%define cpan_version 1.34
+# 1.35 -> normalize -> 1.350.0
+%define cpan_version 1.35
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 License:        GPL-3.0-or-later
 Summary:        High-Level Interface to Uniforum Message Translation
@@ -195,7 +195,7 @@ compatible with the Uniforum message translations system as implemented
 for example in GNU gettext.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

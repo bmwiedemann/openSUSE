@@ -1,7 +1,7 @@
 #
 # spec file for package sdbootutil
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sdbootutil
-Version:        1+git20241217.5aeb4e9
+Version:        1+git20250130.2bcbf46
 Release:        0
 Summary:        bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -94,6 +94,17 @@ JEOS module for full disk encryption enrollment. The module
 present the different options and delegate into sdbootutil-enroll
 service the effective enrollment.
 
+%package bash-completion
+Summary:        Bash completions for sdbootutil
+Requires:       bash
+Requires:       bash-completion
+Requires:       sdbootutil >= %{version}-%{release}
+
+%description bash-completion
+Bash completions script for sdbootutil.
+Allows the user to press TAB to see available commands,
+options and parameters.
+
 %prep
 %setup -q
 
@@ -123,6 +134,9 @@ install -D -m 755 10-%{name}.tukit %{buildroot}%{_prefix}/lib/tukit/plugins/10-%
 
 # kernel-install
 install -D -m 755 50-%{name}.install %{buildroot}%{_prefix}/lib/kernel/install.d/50-%{name}.install
+
+#bash completions
+install -D -m 755 completions/bash_sdbootutil %{buildroot}%{_datadir}/bash-completion/completions/sdbootutil
 
 # tmpfiles
 install -D -m 755 kernel-install-%{name}.conf \
@@ -194,5 +208,10 @@ sdbootutil update
 %{_datadir}/jeos-firstboot/modules/enroll
 %dir %{_unitdir}/jeos-firstboot.service.d
 %{_unitdir}/jeos-firstboot.service.d/jeos-firstboot-enroll-override.conf
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/sdbootutil
 
 %changelog

@@ -1,8 +1,8 @@
-Index: apache2/Makefile.am
+Index: modsecurity-v2.9.8/apache2/Makefile.am
 ===================================================================
---- a/apache2/Makefile.am.orig
-+++ b/apache2/Makefile.am
-@@ -118,7 +118,7 @@ mod_security2_la_LDFLAGS = -module -avoi
+--- modsecurity-v2.9.8.orig/apache2/Makefile.am
++++ modsecurity-v2.9.8/apache2/Makefile.am
+@@ -125,7 +125,7 @@ mod_security2_la_LDFLAGS = -module -avoi
  endif
  
  if LINUX
@@ -11,11 +11,11 @@ Index: apache2/Makefile.am
      @APR_LDFLAGS@ \
      @APU_LDFLAGS@ \
      @APXS_LDFLAGS@ \
-Index: apache2/Makefile.in
+Index: modsecurity-v2.9.8/apache2/Makefile.in
 ===================================================================
---- a/apache2/Makefile.in.orig
-+++ b/apache2/Makefile.in
-@@ -691,7 +691,7 @@ libinjection/mod_security2_la-libinjecti
+--- modsecurity-v2.9.8.orig/apache2/Makefile.in
++++ modsecurity-v2.9.8/apache2/Makefile.in
+@@ -743,7 +743,7 @@ libinjection/mod_security2_la-libinjecti
  	libinjection/$(DEPDIR)/$(am__dirstamp)
  
  mod_security2.la: $(mod_security2_la_OBJECTS) $(mod_security2_la_DEPENDENCIES) $(EXTRA_mod_security2_la_DEPENDENCIES) 
@@ -24,11 +24,11 @@ Index: apache2/Makefile.in
  
  mostlyclean-compile:
  	-rm -f *.$(OBJEXT)
-Index: build/libtool.m4
+Index: modsecurity-v2.9.8/build/libtool.m4
 ===================================================================
---- a/build/libtool.m4.orig
-+++ b/build/libtool.m4
-@@ -5053,7 +5053,7 @@ dnl Note also adjust exclude_expsyms for
+--- modsecurity-v2.9.8.orig/build/libtool.m4
++++ modsecurity-v2.9.8/build/libtool.m4
+@@ -5079,7 +5079,7 @@ dnl Note also adjust exclude_expsyms for
      # are reset later if shared libraries are not supported. Putting them
      # here allows them to be overridden if necessary.
      runpath_var=LD_RUN_PATH
@@ -37,7 +37,7 @@ Index: build/libtool.m4
      _LT_TAGVAR(export_dynamic_flag_spec, $1)='$wl--export-dynamic'
      # ancient GNU ld didn't support --whole-archive et. al.
      if $LD --help 2>&1 | $GREP 'no-whole-archive' > /dev/null; then
-@@ -5322,7 +5322,7 @@ _LT_EOF
+@@ -5350,7 +5350,7 @@ _LT_EOF
  	  # DT_RUNPATH tag from executables and libraries.  But doing so
  	  # requires that you compile everything twice, which is a pain.
  	  if $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
@@ -46,7 +46,7 @@ Index: build/libtool.m4
  	    _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
  	    _LT_TAGVAR(archive_expsym_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname $wl-retain-symbols-file $wl$export_symbols -o $lib'
  	  else
-@@ -6409,7 +6409,7 @@ if test yes != "$_lt_caught_CXX_error";
+@@ -6439,7 +6439,7 @@ if test yes != "$_lt_caught_CXX_error";
          _LT_TAGVAR(archive_cmds, $1)='$CC $pic_flag -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags $wl-soname $wl$soname -o $lib'
          _LT_TAGVAR(archive_expsym_cmds, $1)='$CC $pic_flag -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags $wl-soname $wl$soname $wl-retain-symbols-file $wl$export_symbols -o $lib'
  

@@ -1,7 +1,7 @@
 #
 # spec file for package clusterssh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
+%define dullver 4.18
 Name:           clusterssh
-%define dullver 4.16
-Version:        4.16
+Version:        4.18
 Release:        0
 Summary:        Multiplex SSH sessions onto many hosts using multiple terminals
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Productivity/Networking/SSH
 URL:            https://github.com/duncs/clusterssh/wiki
-Source:         https://github.com/duncs/clusterssh/archive/v%dullver.tar.gz
-Source2:        %name-rpmlintrc
+Source:         https://github.com/duncs/clusterssh/archive/v%{dullver}.tar.gz
+Source2:        %{name}-rpmlintrc
 Patch1:         perl_shebang.patch
-Patch2:         https://patch-diff.githubusercontent.com/raw/duncs/clusterssh/pull/150.patch
-BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -50,39 +48,33 @@ BuildRequires:  perl(Tk)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(X11::Protocol)
 BuildRequires:  perl(X11::Protocol::WM)
+# Test::PerlTidy not available atm
+Requires:       perl(Test::PerlTidy)
+Requires:       xorg-x11-fonts-100dpi
+Requires:       xorg-x11-fonts-75dpi
+Requires:       xterm
 Requires:       perl(CPAN::Changes)
 Requires:       perl(Carp)
 Requires:       perl(English)
-Requires:       perl(Exception::Class)
 Requires:       perl(Exception::Class)
 Requires:       perl(Fcntl)
 Requires:       perl(File::Basename)
 Requires:       perl(File::Path)
 Requires:       perl(File::Slurp)
 Requires:       perl(File::Temp)
-Requires:       perl(File::Temp)
-Requires:       perl(File::Which)
 Requires:       perl(File::Which)
 Requires:       perl(FindBin)
 Requires:       perl(Getopt::Long)
-Requires:       perl(Getopt::Long)
-Requires:       perl(Locale::Maketext)
 Requires:       perl(Locale::Maketext)
 Requires:       perl(Module::Build)
 Requires:       perl(Net::hostent)
 Requires:       perl(POSIX)
 Requires:       perl(Pod::Usage)
 Requires:       perl(Readonly)
-Requires:       perl(Readonly)
 Requires:       perl(Socket)
 Requires:       perl(Sort::Naturally)
 Requires:       perl(Sys::Hostname)
 Requires:       perl(Test::Differences)
-# Test::PerlTidy not available atm
-# Requires:       perl(Test::PerlTidy)
-Requires:       xorg-x11-fonts-100dpi
-Requires:       xorg-x11-fonts-75dpi
-Requires:       xterm
 Requires:       perl(Test::Pod)
 Requires:       perl(Test::Pod::Coverage)
 Requires:       perl(Test::Trap)
@@ -94,7 +86,8 @@ Requires:       perl(X11::Keysyms)
 Requires:       perl(X11::Protocol)
 Requires:       perl(X11::Protocol::Constants)
 Requires:       perl(X11::Protocol::WM)
-%perl_requires
+BuildArch:      noarch
+%{perl_requires}
 
 %description
 Cluster SSH opens terminal windows with connections to specified
@@ -106,7 +99,7 @@ be run on each node within the cluster. Performing these commands all
 at once via this tool ensures all nodes are kept in sync.
 
 %prep
-%autosetup -n %name-%dullver -p1
+%autosetup -n %{name}-%{dullver} -p1
 
 %build
 perl Build.PL installdirs=vendor
@@ -122,19 +115,19 @@ rm t/boilerplate.t
 ./Build test
 
 %install
-./Build install destdir="%buildroot" create_packlist=0
+./Build install destdir=%{buildroot} create_packlist=0
 %perl_gen_filelist
 
-install -D -m 0644 %buildroot/%_bindir/clusterssh_bash_completion.dist \
-        %buildroot/%_datadir/bash-completion/completions/clusterssh
-rm %buildroot/%_bindir/clusterssh_bash_completion.dist
+install -D -m 0644 %{buildroot}/%{_bindir}/clusterssh_bash_completion.dist \
+        %{buildroot}/%{_datadir}/bash-completion/completions/clusterssh
+rm %{buildroot}/%{_bindir}/clusterssh_bash_completion.dist
 
 %files
 %doc AUTHORS Changes THANKS TODO
-%_bindir/c*
-%_datadir/bash-completion/
-%_mandir/man1/*
-%_mandir/man3/*
-%perl_vendorlib/*
+%{_bindir}/c*
+%{_datadir}/bash-completion/
+%{_mandir}/man1/*
+%{_mandir}/man3/*
+%{perl_vendorlib}/*
 
 %changelog

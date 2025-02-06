@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 14:39:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 3.1.0
+  * Our runtime dependency on setuptools has been dropped from all 
+    Certbot components.
+
+-------------------------------------------------------------------
 Tue Dec  3 14:52:54 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to version 3.0.1

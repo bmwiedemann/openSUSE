@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with werror
 
 Name:           yast2-core
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 URL:            https://github.com/yast/yast-core
 

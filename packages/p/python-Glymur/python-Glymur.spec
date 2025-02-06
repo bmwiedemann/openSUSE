@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glymur
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-Glymur
-Version:        0.13.6
+Version:        0.13.8
 Release:        0
 Summary:        Tools for accessing JPEG2000 files
 License:        MIT

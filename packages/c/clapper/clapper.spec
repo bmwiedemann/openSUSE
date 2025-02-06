@@ -1,7 +1,7 @@
 #
 # spec file for package clapper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %global uuid com.github.rafostar.Clapper
 %global libver 0.0
-%global libsuffix 0.6.1
+%global libsuffix 0.8.0
 %global sover 0
 %global gstlib Clapper
 
-%global gst_version 1.20.0
+%global gst_version 1.24.0
 %global gtk4_version 4.10.0
 %global meson_version 0.64
 %global glib2_version 2.76.0
 %global adw_version 1.4.0
 
+%bcond_without enhancers
 %bcond_without server
 
 Name:           clapper
-Version:        0.6.1
+Version:        0.8.0
 Release:        0
 Summary:        A GNOME media player built using GJS with GTK4
 Group:          Productivity/Multimedia/Video/Players
@@ -61,6 +62,15 @@ BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= %{gst_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gst_version}
 BuildRequires:  pkgconfig(gtk4) >= %{gtk4_version}
 BuildRequires:  pkgconfig(libadwaita-1) >= %{adw_version}
+
+%if %{with enhancers}
+BuildRequires:  pkgconfig(libpeas-2)
+
+%define enhancers_version %{version}
+Recommends:     clapper-enhancers-lbry >= %{enhancers_version}
+Recommends:     clapper-enhancers-peertube >= %{enhancers_version}
+Recommends:     clapper-enhancers-yt-dlp >= %{enhancers_version}
+%endif
 
 %if %{with server}
 BuildRequires:  pkgconfig(libsoup-3.0)
@@ -143,6 +153,7 @@ lib%{name}.
 
 %build
 %meson \
+    -Denhancers-loader=%{?with_enhancers:enabled}%{!?with_enhancers:disabled} \
 	-Dserver=%{?with_server:enabled}%{!?with_server:disabled} \
 	%{nil}
 %meson_build

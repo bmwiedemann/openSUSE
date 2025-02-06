@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 22 11:37:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.0:
+  * Use cluster.StorageType() for ValidateEtcdMembers phase (#823)
+  * Fix multidoc smoke-test retry (#822)
+  * Bump github.com/go-playground/validator/v10 from 10.23.0 to
+    10.24.0 (#821)
+  * Bump k8s.io/client-go from 0.32.0 to 0.32.1 (#820)
+  * Bump github.com/bmatcuk/doublestar/v4 from 4.7.1 to 4.8.0
+    (#819)
+  * Bump golang.org/x/net from 0.30.0 to 0.33.0 (#818)
+  * Apply additional kube manifests from configs to cluster (#817)
+  * Do not set etcd peerAddress when cluster storage type is kine
+    (#816)
+  * Allow reading k0s config from a separate or multidoc YAML
+    document (#814)
+
+-------------------------------------------------------------------
 Thu Dec 19 07:35:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.21.0:

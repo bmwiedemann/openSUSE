@@ -477,4 +477,17 @@
     <comment></comment>
     <requestid>1164290</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>1355d26b1c24df7c25c37f1ad0342bda</srcmd5>
+    <version>1.2.0</version>
+    <time>1738245126</time>
+    <user>anag+factory</user>
+    <comment>- Remove libgit2-glib-include.patch and replace it with series of
+  patches from the upstream issue tracker:
+  + 0001-fix-don-t-confuse-GGIT_MICRO_VERSION-and-GGIT_MINOR_.patch
+  + 0002-build-Fix-build-against-and-require-libgit2-1.8.0.patch
+  + 0003-chore-support-libgit2-1.9.patch
+</comment>
+    <requestid>1241250</requestid>
+  </revision>
 </revisionlist>

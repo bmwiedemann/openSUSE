@@ -71,4 +71,20 @@
     <comment></comment>
     <requestid>1135704</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2b12d91c77510bb7b26bfb7e3f5f4280</srcmd5>
+    <version>1.36+git.20241224</version>
+    <time>1737835529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240284</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e2a5f68a856290b9190ce562cae16857</srcmd5>
+    <version>1.36+git.20241224</version>
+    <time>1738007604</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240333</requestid>
+  </revision>
 </revisionlist>

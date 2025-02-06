@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 29 00:41:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Feb 15 15:28:02 UTC 2024 - pgajdos@suse.com
 
 - align license tag with COPYING

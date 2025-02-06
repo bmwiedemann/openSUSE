@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 20 10:31:04 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to verison 2.53.7
+  * Time remaining, when over 24h, shown as days and HMS instead of
+    just HMS.
+  * Stop using deprecated [GdkPixbuf.from_xpm_data] (avoids problems
+    with some versions of gdkpixbuf). Attempt to avoid soundness
+    issues with lablgtk while doing so.
+  * Deprecation warning: support for external rsync will be removed
+
+-------------------------------------------------------------------
 Tue May  7 07:07:07 UTC 2024 - ohering@suse.de
 
 - Update to version 2.53.5

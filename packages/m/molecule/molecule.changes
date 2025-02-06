@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:34:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.2.0:
+  * Major
+    - Remove code that modifies ansible import paths (#4380)
+      @ssbarnea
+  * Enhancements
+    - Change location of ephemeral directory (#4362) @ssbarnea
+  * Bugfixes
+    - Update ansible-compat to v25.1.0 (#4381) @audgirka
+    - Improve docker backend detection under linux during testing
+      (#4378) @ssbarnea
+    - Drop code related to unsupported ansible versions (#4376)
+      @ssbarnea
+    - Validate docker installation before running docker tests
+      (#4375) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Jan 22 06:13:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.0:
+  * Enhancements
+    - Make molecule collection-aware (#4340) @Qalthos
+  * Bugfixes
+    - Avoid including check-jsonschema in test dependencies (#4370)
+      @ssbarnea
+    - Update linters (#4369) @ssbarnea
+    - Fix constraints use with uv (#4367) @ssbarnea
+    - Make run_command part of App class (#4359) @ssbarnea
+    - Fix side_effect arguments (#4356) @Qalthos
+    - Ensure we catch warnings before logger is initialized (#4351)
+      @ssbarnea
+    - Return absolute path without resolving symlinks (#4341)
+      @rpluem-vf
+
+-------------------------------------------------------------------
 Fri Dec  6 06:04:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.12.0:

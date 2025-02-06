@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:31:35 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Try to load the iscsi_ibft module in ARM arch as it should be 
+  available for getting the iBFT configuration (bsc#1233802).
+- 5.0.6
+
+-------------------------------------------------------------------
 Thu Nov 14 09:13:29 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix typo introduced by previous change (bsc#1231385, bsc#1233351)

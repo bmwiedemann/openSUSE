@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:26:57 CET 2025 - ro@suse.de
+
+- add Provides: may-perform-usrmerge (bsc#1236481) 
+
+-------------------------------------------------------------------
+Mon Jan 27 08:13:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add support for loongarch64
+
+-------------------------------------------------------------------
+Sun Dec 29 18:21:25 UTC 2024 - Heitor Moreira da Silva <heitor@opensuse.org>
+
+- Remove /usr/etc/skel/bin/
+
+-------------------------------------------------------------------
 Fri Dec 27 12:59:34 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Add /usr/$march directories for HPPA. Will be packaging both

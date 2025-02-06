@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:29:09 CET 2025 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.20:
+  * Fix an overrun in sparse block detection.
+  * Fix an off-by-one memory handling issue in ddr_lzo, resulting
+    in breakage on s390x. (Surprisingly, glibc memory allocator
+    was graceful on most architectures.)
+  * Better test coverage, including chains with sparse files.
+  * Documented (and somewhat cleaner) design of handling sparse
+    files through chains of plugins.
+  * Test and support compression+encryption (and reverse
+    decryption+decompression) chains.
+  * Improved debug output, including numbering plugins.
+
+-------------------------------------------------------------------
+Mon Jan  6 14:45:13 CET 2025 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.19:
+  * ddr_crypt: Clean hole support with and without skiphole.
+    (This works cleanly only for CTR and ECB modes.)
+  * ddr_crypt: Fix backwards copies including holes. Note that
+    this could result in different files from the forward copies
+    before (bug). Add test case for the latter.
+  * Many more testcases for sparse files with plugins: Also use
+    odd sizes and holes at the beginning and end of the file.
+  * Also skip over holes with -a when copying in reverse dir.
+  * Allow setting unsparse and some other flags for ddr_null for
+    testing.
+  * Fix lzma compression with hole at the end.
+  * Warn on lzma buf error (was debug msg only before).
+
+-------------------------------------------------------------------
 Sun Dec 29 17:45:37 CET 2024 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.18:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 17 15:55:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch ffmpeg-5 with ffmpeg-4 BuildRequires: python-librosa is
+  the last package depending on ffmepeg-5, and it's only used for
+  testsuite, so using ffmepeg-4 is fine, and will allow us to drop
+  ffmpeg-5 from distro.
+
+-------------------------------------------------------------------
 Wed Oct  2 20:59:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add csr_matrix-attr-H.patch making the package compatible with

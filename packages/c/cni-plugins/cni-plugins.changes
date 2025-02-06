@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:06:21 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 1.6.2:
+  * portmap: fix iptables conditions detection
+  * build(deps): bump the golang group across 1 directory with 7 updates
+  * ipmasq: fix nftables backend
+  * portmap: fix nftables backend
+
+-------------------------------------------------------------------
 Tue Oct 22 12:13:41 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Require iptables (bsc#1231424)

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 21 10:00:00 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Reserve 1GiB boot partition for grub2-bls bootloader (jsc#PED-10703).
+- 5.0.24
+
+-------------------------------------------------------------------
+Tue Jan 21 09:43:35 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Pervasive encryption: support for AES-CIPHER and EP11 and better
+  user interface at Partitioner (jsc#IBM-1444, jsc#PED-9558).
+- 5.0.23
+
+-------------------------------------------------------------------
 Fri Nov 29 10:23:28 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Mount '/mnt/run' as private to avoid mount points propagation
@@ -2288,7 +2301,7 @@ Fri Oct 26 11:37:48 UTC 2018 - snwint@suse.com
   partitioner
 
 -------------------------------------------------------------------
-Sat Oct 20 22:10:48 WEST 2018 - igonzalezsosa@suse.com
+Sat Oct 20 21:10:48 UTC 2018 - igonzalezsosa@suse.com
 
 - Fixes and improvements to AutoYaST partitioning:
   - Improve support to reuse a disk as a PV (bsc#1107298).

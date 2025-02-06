@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:40:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.7.0
+  * Fix fragment argument usage (issue #81)
+  * Fix constructors nud() to skip argument check
+    with XP31+ arrow operator (issue #83)
+
+-------------------------------------------------------------------
 Mon Oct 28 11:35:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.0:

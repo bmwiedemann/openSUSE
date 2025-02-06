@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 16:35:55 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update bundled dependencies:
+  * curl 8.10.1 -> 8.11.1
+  * gpgme 1.23.2 -> 1.24.0
+  * libgpg-error 1.50 -> 1.51
+
+-------------------------------------------------------------------
 Tue Dec 31 23:01:19 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 24.8.4.2 (24.8.4 final)

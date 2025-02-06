@@ -1,7 +1,7 @@
 #
 # spec file for package logrotate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,9 @@ install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/logrotate.conf
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 755 %{SOURCE4} %{buildroot}%{_sbindir}/logrotate-all
 install -D -m 0644 examples/%{name}.timer %{buildroot}%{_unitdir}/%{name}.timer
+%if 0%{?suse_version} < 1600
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
+%endif
 
 %pre
 #only the timer can be enabled/disabled/masked !
@@ -103,7 +105,9 @@ fi
 %doc ChangeLog.md README.md
 %{_sbindir}/logrotate
 %{_sbindir}/logrotate-all
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rc%{name}
+%endif
 %{_mandir}/man8/logrotate.8%{?ext_man}
 %{_mandir}/man5/logrotate.conf.5%{?ext_man}
 %{_distconfdir}/logrotate.conf

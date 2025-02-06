@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 28 11:45:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2.1:
+  + Fix AppStream metadata
+  + Fix key events in fullscreen mode
+  + Fix scrolling for VNC connections
+  + Start using GNOME Release Service
+  + Add GIT_SUBMODULE_STRATEGY recursive to bundle subprojects
+  + Switch to master gnome release service branch
+  + Update gtk-frdp: Queue drawing of the area from the main thread
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct  5 13:29:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(freerdp2) with pkgconfig(freerdp3)

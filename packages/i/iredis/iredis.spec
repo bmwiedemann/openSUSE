@@ -1,7 +1,7 @@
 #
 # spec file for package iredis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,6 +82,7 @@ running dangerous commands.
 # increase the timeouts
 sed -i 's/timeout=1/timeout=5/' tests/cli_tests/test_*.py
 sed -i 's/timeout=2/timeout=5/' tests/cli_tests/test_*.py
+sed -i 's/timeout=3/timeout=8/' tests/cli_tests/test_*.py
 sed -i 's/timeout=10/timeout=20/' tests/cli_tests/test_*.py
 # the tests are extremely flaky on i586 (hitting timeouts), as long as x86_64 succeeds, we don't care as this is noarch
 %ifnarch %ix86
@@ -91,11 +92,11 @@ sleep 2
 # disable snapshots
 redis-cli CONFIG SET save ""
 # skip test_abort_reading_connection as it fails frequently (timeout) on OBS for no apparent reason, others are bugs upstream: https://github.com/laixintao/iredis/issues/417
-# skip test_peek_zset_fetch_all, test_peek_zset_fetch_part, reported upstream: https://github.com/laixintao/iredis/issues/432
 # skip test_auto_select_db_and_auth_for_reconnect_only_6 needs further inspection
 # skip test_timer and test_command_completion_when_a_command_is_another_command_substring and test_trasaction_syntax_error and test_subscribe because of timeouts (too slow) on s390x
 # skip test_render_time and test_render_unixtime_config_raw because of timezone offsets
-REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not (test_abort_reading_connection or test_peek_set_fetch_part or test_peek_stream or test_timestamp_completer_humanize_time_completion or test_peek_zset_fetch_all or test_peek_zset_fetch_part or test_auto_select_db_and_auth_for_reconnect_only_6 or test_timer or test_command_completion_when_a_command_is_another_command_substring or test_trasaction_syntax_error or test_subscribe or test_render_time or test_render_unixtime_config_raw)'
+# skip test_using_pager_when_rows_too_high, test_using_pager_works_for_help, test_pager_works_for_peek, test_using_pager_from_config, test_using_pager_from_config_when_env_config_both_set because of https://github.com/laixintao/iredis/issues/495
+REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not (test_abort_reading_connection or test_peek_set_fetch_part or test_peek_stream or test_timestamp_completer_humanize_time_completion or test_auto_select_db_and_auth_for_reconnect_only_6 or test_timer or test_command_completion_when_a_command_is_another_command_substring or test_trasaction_syntax_error or test_subscribe or test_render_time or test_render_unixtime_config_raw or test_using_pager_when_rows_too_high or test_using_pager_works_for_help or test_pager_works_for_peek or test_using_pager_from_config or test_using_pager_from_config_when_env_config_both_set)'
 killall redis-server
 %endif
 

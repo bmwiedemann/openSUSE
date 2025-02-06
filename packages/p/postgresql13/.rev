@@ -435,4 +435,12 @@
   * https://www.postgresql.org/docs/release/13.18/</comment>
     <requestid>1225752</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>fac52100f0e165dbd79ca3e2f3814e4b</srcmd5>
+    <version>13.18</version>
+    <time>1738080592</time>
+    <user>anag+factory</user>
+    <comment>- Fix build, add postgresql-tzdata2025a.patch</comment>
+    <requestid>1240824</requestid>
+  </revision>
 </revisionlist>

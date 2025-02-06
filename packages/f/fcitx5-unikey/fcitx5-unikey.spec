@@ -25,7 +25,7 @@
 %endif
 
 Name:           %{pname}
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later

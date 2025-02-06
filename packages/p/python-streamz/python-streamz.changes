@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 20 16:35:18 UTC 2025 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/python-streamz/streamz/commit/33f49417b415deb7ea3c495a404b78c9d3743c03
+  + python-streamz-no-six.patch
+
+-------------------------------------------------------------------
 Thu Sep  5 20:23:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix test collection with new pytest

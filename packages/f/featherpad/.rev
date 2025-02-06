@@ -611,4 +611,17 @@
  * Small fixes and enhancements.</comment>
     <requestid>1226435</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6bb3f4b0901defc7ecdea2d0647a898f</srcmd5>
+    <version>1.6.0</version>
+    <time>1738079078</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.0:
+  * Support column selection now. See Help → Column Selection.
+  * A rare issue is fixed in finding/highlighting whole words.
+  * The position number on the status-bar is localized.
+  * The support for translating the Help file is dropped because
+    it wasn't practical (an online translation service can be used instead).</comment>
+    <requestid>1240826</requestid>
+  </revision>
 </revisionlist>

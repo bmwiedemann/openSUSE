@@ -209,12 +209,12 @@ FileProvides: /bin/fuser busybox-psmisc psmisc
 FileProvides: /bin/gawk gawk
 FileProvides: /bin/grep busybox-grep grep
 FileProvides: /bin/hostname busybox-hostname hostname
+FileProvides: /bin/ksh mksh
 FileProvides: /bin/ln busybox-coreutils coreutils coreutils-single
 FileProvides: /bin/logger busybox-util-linux util-linux-systemd
 FileProvides: /bin/ls busybox-coreutils coreutils coreutils-single
 FileProvides: /bin/mkdir busybox-coreutils coreutils coreutils-single
 FileProvides: /bin/mktemp busybox-coreutils coreutils coreutils-single
-FileProvides: /bin/ping busybox-iputils iputils
 FileProvides: /bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /bin/sed busybox-sed sed
 FileProvides: /bin/sh bash-legacybin bash-sh busybox-sh dash-sh zsh-sh
@@ -236,7 +236,6 @@ FileProvides: /sbin/startproc sysvinit-tools
 FileProvides: /sbin/unix2_chkpwd pam
 FileProvides: /usr/bin/7z 7zip
 FileProvides: /usr/bin/Xvnc xorg-x11-Xvnc
-FileProvides: /usr/bin/appstream-compose appstream-glib
 FileProvides: /usr/bin/appstreamcli AppStream
 FileProvides: /usr/bin/ar binutils busybox-misc
 FileProvides: /usr/bin/at at
@@ -254,7 +253,7 @@ FileProvides: /usr/bin/cat busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/cdda2wav cdda2wav
 FileProvides: /usr/bin/cdrdao cdrdao
 FileProvides: /usr/bin/cdrecord cdrecord
-FileProvides: /usr/bin/chardetect python310-chardet python311-chardet python312-chardet python313-chardet
+FileProvides: /usr/bin/chardetect python311-chardet python312-chardet python313-chardet
 FileProvides: /usr/bin/chfn shadow
 FileProvides: /usr/bin/chgrp busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chmod busybox-coreutils coreutils coreutils-single
@@ -270,31 +269,31 @@ FileProvides: /usr/bin/comm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/convert ImageMagick
 FileProvides: /usr/bin/cp busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/cpan perl
-FileProvides: /usr/bin/cpio cpio
+FileProvides: /usr/bin/cpio busybox-cpio cpio
 FileProvides: /usr/bin/crontab cronie
 FileProvides: /usr/bin/csh tcsh
 FileProvides: /usr/bin/csplit coreutils coreutils-single
+FileProvides: /usr/bin/ctags ctags etags universal-ctags
 FileProvides: /usr/bin/cut busybox-coreutils coreutils coreutils-single
+FileProvides: /usr/bin/cwebp libwebp-tools
 FileProvides: /usr/bin/date busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/dbus-daemon dbus-1-daemon
 FileProvides: /usr/bin/dbus-launch dbus-1 dbus-1-x11
 FileProvides: /usr/bin/dbus-run-session dbus-1-daemon
-FileProvides: /usr/bin/dbus-send dbus-1-tools
 FileProvides: /usr/bin/dd busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/df busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/dialog dialog
 FileProvides: /usr/bin/diff busybox-diffutils diffutils
 FileProvides: /usr/bin/dig bind-utils
 FileProvides: /usr/bin/dirname busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/docker docker podman-docker
-FileProvides: /usr/bin/dos2unix busybox-dos2unix dos2unix
+FileProvides: /usr/bin/docker docker docker-stable podman-docker
 FileProvides: /usr/bin/du busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/echo busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/ed busybox-ed ed
 FileProvides: /usr/bin/edit-xml-catalog sgml-skel
 FileProvides: /usr/bin/enc2xs perl
 FileProvides: /usr/bin/env busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/eremaeactl python310-django-eremaea2 python311-django-eremaea2 python312-django-eremaea2 python313-django-eremaea2
+FileProvides: /usr/bin/eremaeactl python311-django-eremaea2 python312-django-eremaea2 python313-django-eremaea2
 FileProvides: /usr/bin/escript erlang
 FileProvides: /usr/bin/eu-strip elfutils
 FileProvides: /usr/bin/expand busybox-coreutils coreutils coreutils-single
@@ -303,6 +302,7 @@ FileProvides: /usr/bin/expr busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/false busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/file file
 FileProvides: /usr/bin/find busybox-findutils findutils
+FileProvides: /usr/bin/findmnt util-linux-systemd
 FileProvides: /usr/bin/fipscheck fipscheck
 FileProvides: /usr/bin/fold busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/fontforge fontforge
@@ -316,7 +316,7 @@ FileProvides: /usr/bin/get_kernel_version aaa_base
 FileProvides: /usr/bin/getconf glibc
 FileProvides: /usr/bin/getent glibc
 FileProvides: /usr/bin/getopt busybox-util-linux util-linux
-FileProvides: /usr/bin/gettext gettext-runtime
+FileProvides: /usr/bin/gettext gettext-runtime gettext-runtime-mini
 FileProvides: /usr/bin/git git-core
 FileProvides: /usr/bin/gjs gjs
 FileProvides: /usr/bin/gjs-console gjs
@@ -327,9 +327,7 @@ FileProvides: /usr/bin/grep busybox-grep grep
 FileProvides: /usr/bin/groups busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/gs ghostscript gswrap
 FileProvides: /usr/bin/gs.bin ghostscript
-FileProvides: /usr/bin/gtk-update-icon-cache gtk3-tools
 FileProvides: /usr/bin/guile guile
-FileProvides: /usr/bin/guile1 guile1
 FileProvides: /usr/bin/gunzip busybox-gzip gzip zstd-gzip
 FileProvides: /usr/bin/gzip busybox-gzip gzip zstd-gzip
 FileProvides: /usr/bin/head busybox-coreutils coreutils coreutils-single
@@ -341,14 +339,15 @@ FileProvides: /usr/bin/install-catalog sgml-skel
 FileProvides: /usr/bin/instantfpc fpc
 FileProvides: /usr/bin/ipcrm busybox-util-linux util-linux
 FileProvides: /usr/bin/ipcs busybox-util-linux util-linux
+FileProvides: /usr/bin/ipmitool ipmitool
 FileProvides: /usr/bin/join coreutils coreutils-single
+FileProvides: /usr/bin/jpegoptim jpegoptim
 FileProvides: /usr/bin/jpegtran libjpeg-turbo
 FileProvides: /usr/bin/julia julia julia-compat juliaup
-FileProvides: /usr/bin/kernel-install udev
 FileProvides: /usr/bin/kill busybox-util-linux util-linux
 FileProvides: /usr/bin/killall busybox-psmisc psmisc
 FileProvides: /usr/bin/ksh93 ksh
-FileProvides: /usr/bin/less less busybox-less
+FileProvides: /usr/bin/less busybox-less less
 FileProvides: /usr/bin/ln busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/locale glibc
 FileProvides: /usr/bin/localedef glibc
@@ -377,7 +376,7 @@ FileProvides: /usr/bin/mktemp busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/mogrify ImageMagick
 FileProvides: /usr/bin/more busybox-util-linux util-linux
 FileProvides: /usr/bin/mount busybox-util-linux util-linux
-FileProvides: /usr/bin/msgfmt gettext-runtime
+FileProvides: /usr/bin/msgfmt gettext-runtime gettext-runtime-mini
 FileProvides: /usr/bin/mv busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/newaliases exim postfix postfix-bdb sendmail
 FileProvides: /usr/bin/newgrp shadow
@@ -386,7 +385,6 @@ FileProvides: /usr/bin/nl busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/nm binutils
 FileProvides: /usr/bin/nmtui NetworkManager-tui
 FileProvides: /usr/bin/node nodejs-common
-FileProvides: /usr/bin/node20 nodejs20
 FileProvides: /usr/bin/node22 nodejs22
 FileProvides: /usr/bin/nohup busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/nslookup bind-utils busybox-bind-utils
@@ -395,11 +393,13 @@ FileProvides: /usr/bin/ocamlrun ocaml-runtime
 FileProvides: /usr/bin/octave octave-cli
 FileProvides: /usr/bin/od busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/odbcinst unixODBC
-FileProvides: /usr/bin/openssl libressl openssl-1_0_0 openssl-3
+FileProvides: /usr/bin/openssl libressl openssl-3
+FileProvides: /usr/bin/oxipng oxipng
 FileProvides: /usr/bin/passwd busybox-adduser shadow
 FileProvides: /usr/bin/paste busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/patch busybox-patch patch
 FileProvides: /usr/bin/pathchk coreutils coreutils-single
+FileProvides: /usr/bin/pdflatex texlive-latex-bin-bin
 FileProvides: /usr/bin/perl perl-base
 FileProvides: /usr/bin/php php8-cli
 FileProvides: /usr/bin/php8 php8-cli
@@ -421,7 +421,9 @@ FileProvides: /usr/bin/python3.10 python310-base
 FileProvides: /usr/bin/python3.11 python311-base
 FileProvides: /usr/bin/python3.12 python312-base
 FileProvides: /usr/bin/python3.13 python313-base
-FileProvides: /usr/bin/python3.8 python38-base
+FileProvides: /usr/bin/python3.13t python313-nogil-base
+FileProvides: /usr/bin/python3.14 python314-base
+FileProvides: /usr/bin/python3.14t python314-nogil-base
 FileProvides: /usr/bin/python3.9 python39-base
 FileProvides: /usr/bin/qemu-img qemu-img
 FileProvides: /usr/bin/qemu-nbd qemu-img
@@ -430,16 +432,15 @@ FileProvides: /usr/bin/qrencode qrencode
 FileProvides: /usr/bin/readcd readcd
 FileProvides: /usr/bin/readlink busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/renice busybox-util-linux util-linux
-FileProvides: /usr/bin/rep librep
 FileProvides: /usr/bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/ronn ruby3.4-rubygem-ronn-ng
 FileProvides: /usr/bin/rsync rsync
 FileProvides: /usr/bin/ruby ruby3.4
 FileProvides: /usr/bin/ruby.ruby3.4 ruby3.4
 FileProvides: /usr/bin/runawk runawk
-FileProvides: /usr/bin/sbcl sbcl
+FileProvides: /usr/bin/sbcl sbcl-bin
 FileProvides: /usr/bin/scheme-srfi-7 scheme48
+FileProvides: /usr/bin/scour python311-scour python312-scour python313-scour
 FileProvides: /usr/bin/sed busybox-sed sed
 FileProvides: /usr/bin/sgml-register-catalog sgml-skel
 FileProvides: /usr/bin/sh bash-sh busybox-sh dash-sh zsh-sh
@@ -451,7 +452,6 @@ FileProvides: /usr/bin/snobol4 snobol4
 FileProvides: /usr/bin/sort busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/split busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/squeue slurm
-FileProvides: /usr/bin/ssh openssh-clients
 FileProvides: /usr/bin/ssh-keygen openssh-common
 FileProvides: /usr/bin/stap systemtap
 FileProvides: /usr/bin/stat busybox-coreutils coreutils coreutils-single
@@ -484,12 +484,10 @@ FileProvides: /usr/bin/uniq busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/unzip busybox-unzip unzip unzip-rcc
 FileProvides: /usr/bin/updmap texlive-scripts-bin
 FileProvides: /usr/bin/virsh libvirt-client
-FileProvides: /usr/bin/vmstat procps
 FileProvides: /usr/bin/vulkaninfo vulkan-tools
 FileProvides: /usr/bin/wayland-info wayland-utils
 FileProvides: /usr/bin/wc busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/which busybox-which which
-FileProvides: /usr/bin/who coreutils-systemd
 FileProvides: /usr/bin/wish tk
 FileProvides: /usr/bin/xargs busybox-findutils findutils
 FileProvides: /usr/bin/xdg-desktop-icon xdg-utils
@@ -498,7 +496,7 @@ FileProvides: /usr/bin/xdg-email xdg-utils
 FileProvides: /usr/bin/xdg-icon-resource xdg-utils
 FileProvides: /usr/bin/xdg-mime xdg-utils
 FileProvides: /usr/bin/xdg-open xdg-utils
-FileProvides: /usr/bin/xdg-screensaver xdg-utils
+FileProvides: /usr/bin/xdg-screensaver xdg-utils-screensaver
 FileProvides: /usr/bin/xdg-su xdg-utils
 FileProvides: /usr/bin/xdpyinfo xdpyinfo
 FileProvides: /usr/bin/xkbcomp xkbcomp
@@ -517,10 +515,8 @@ FileProvides: /usr/sbin/groupdel shadow
 FileProvides: /usr/sbin/groupmod shadow
 FileProvides: /usr/sbin/iconvconfig glibc
 FileProvides: /usr/sbin/ipsec strongswan-ipsec
-FileProvides: /usr/sbin/ldconfig glibc
 FileProvides: /usr/sbin/lpadmin cups-client
-FileProvides: /usr/sbin/modprobe busybox-kmod kmod
-FileProvides: /usr/sbin/mysqld mariadb
+FileProvides: /usr/sbin/nbdkit nbdkit-server
 FileProvides: /usr/sbin/nologin busybox-util-linux util-linux
 FileProvides: /usr/sbin/sendmail busybox-sendmail exim msmtp-mta postfix postfix-bdb sendmail
 FileProvides: /usr/sbin/service aaa_base
@@ -531,7 +527,6 @@ FileProvides: /usr/sbin/useradd shadow
 FileProvides: /usr/sbin/userdel shadow
 FileProvides: /usr/sbin/usermod shadow
 
-FileProvides: /usr/bin/findmnt util-linux-systemd
 
 # Files which are provided and required by the same package only
 # are not part of primary.xml.gz, thus missing in the section above.
@@ -546,6 +541,11 @@ FileProvides: /usr/bin/chattr e2fsprogs
 FileProvides: /usr/bin/regina Regina-REXX
 FileProvides: /usr/bin/rexx Regina-REXX
 FileProvides: /usr/bin/festival festival
+FileProvides: /usr/bin/ronn ruby3.4-rubygem-ronn-ng
+FileProvides: /usr/bin/gtk-update-icon-cache gtk3-tools
+FileProvides: /usr/bin/who coreutils-systemd
+FileProvides: /usr/bin/guile1 guile1
+
 
 # Set preferences for above list - work with negative prefers, in order to be able to catch no-longer existing ones
 Prefer: bash-sh
@@ -553,6 +553,7 @@ Prefer: -bash-legacybin
 Prefer: -busybox-bc
 Prefer: -busybox-bzip2
 Prefer: -busybox-coreutils -coreutils-single
+Prefer: -busybox-cpio
 Prefer: -busybox-diffutils
 Prefer: -busybox-dos2unix
 Prefer: -busybox-ed
@@ -596,15 +597,12 @@ Prefer: -ansible-core-2.16
 # choice for MozillaThunderbird-openpgp needed by MozillaThunderbird: MozillaThunderbird-openpgp-librnp sequoia-octopus-librnp
 Prefer: -sequoia-octopus-librnp
 
-# have choice for thunar-plugin-archive needed by patterns-xfce-xfce: thunar-archive-plugin thunar-plugin-archive, have choice for thunar-plugin-media-tags needed by patterns-xfce-xfce: thunar-media-tags-plugin thunar-plugin-media-tags
-Prefer: -thunar-plugin-archive thunar-plugin-media-tags
-
 # have choice for (gdm-xdm-integration or gdm-systemd) needed by gdm: gdm-systemd gdm-xdm-integration
 # gdm-systems is the standalong systemd service, but for now we stick to the xdm integration
 Prefer: -gdm-systemd
 
 # have choice for uv needed by python310-hatch: python310-uv python311-uv python312-uv uv, have choice for uv needed by python312-hatch: python310-uv python311-uv python312-uv uv, have choice for uv needed by python311-hatch: python310-uv python311-uv python312-uv uv
-Prefer: -python310-uv -python312-uv -python313-uv
+Prefer: -python312-uv -python313-uv
 
 # have choice for python311-markdown-math needed by python311-Markups: python311-markdown-math python311-python-markdown-math
 Prefer: -python311-markdown-math
@@ -613,28 +611,29 @@ Prefer: -python311-markdown-math
 Prefer: -python311-pysnmp
 
 # have choice for python3-numpy-devel: python311-numpy-devel python311-numpy1-devel
-Prefer: -python310-numpy1-devel -python311-numpy1-devel -python312-numpy1-devel -python313-numpy1-devel
-Prefer: -python311-numpy1 -python310-numpy1 -python312-numpy1 -python313-numpy1
+Prefer: -python311-numpy1-devel -python312-numpy1-devel -python313-numpy1-devel
+Prefer: -python311-numpy1 -python312-numpy1 -python313-numpy1
 
 # have choice for python3-PyPDF2 >= 2.1.1: python310-pypdf python311-PyPDF2 python311-pypdf python312-pypdf
-Prefer: -python310-pypdf -python311-pypdf -python312-pypdf -python313-pypdf
+Prefer: -python311-pypdf -python312-pypdf -python313-pypdf
 
 # unresolvable: have choice for translate-toolkit >= 3.14.4: python311-translate-toolkit python311-translate-toolkit-man
 Prefer: -python311-translate-toolkit-man
 
+# unresolvable: have choice for libyui_pkg needed by yast2-packager: libyui-ncurses-pkg16 libyui-qt-pkg16
+Prefer: -libyui-ncurses-pkg16
+
+# have choice for libtinfo.so.6()(64bit) needed by libreadline8: libncurses6 libncurses6-compat
+Prefer: -libncurses6-compat
+
 # have choice for pkgconfig(libmarkdown): libmarkdown-devel libmarkdown2-devel
 Prefer: -libmarkdown2-devel
 
-# have choice for rubygem(ruby:3.3.0:puma) >= 5.0: ruby3.3-rubygem-puma ruby3.3-rubygem-puma-5, have choice for rubygem(ruby:3.3.0:rack-test) >= 0.6.3 needed by ruby3.3-rubygem-actionpack-7.0: ruby3.3-rubygem-rack-test ruby3.3-rubygem-rack-test-0_6
-Prefer: -ruby3.3-rubygem-puma-5 -ruby3.3-rubygem-rack-test-0_6
+# have choice for rubygem(ruby:*:puma) >= 5.0: ruby*-rubygem-puma ruby*-rubygem-puma-5, have choice for rubygem(ruby:*:rack-test) >= 0.6.3 needed by ruby*-rubygem-actionpack-7.0: ruby*-rubygem-rack-test ruby*-rubygem-rack-test-0_6
 Prefer: -ruby3.4-rubygem-puma-5 -ruby3.4-rubygem-rack-test-0_6
 
-# have choice for rubygem(ruby:3.3.0:activejob) >= 7.0: ruby3.3-rubygem-activejob-7.0 ruby3.3-rubygem-activejob-8.0
-Prefer: -ruby3.3-rubygem-activejob-7.0
+# have choice for rubygem(ruby:*:activejob) >= 7.0: ruby*-rubygem-activejob-7.0 ruby*-rubygem-activejob-8.0
 Prefer: -ruby3.4-rubygem-activejob-7.0
-
-# unresolvable: have choice for cmake(lxqt-build-tools) >= 0.8.0: lxqt-build-tools-devel lxqt-build-tools-qt5-devel
-Prefer: -lxqt-build-tools-devel
 
 # have choice for mvn
 Prefer: -tomcat10 -tomcat10-lib tomcat tomcat-lib
@@ -644,13 +643,11 @@ Prefer: -tomcat10-servlet-6_0-api tomcat-servlet-4_0-api
 Prefer: -libxkbregistry-devel-32bit
 
 # have choice for python311-anyio needed by python311-httpx: python311-anyio python311-anyio3, have choice for (python311-anyio >= 3 with python311-anyio < 5) needed by python311-httpcore: python311-anyio python311-anyio3
-Prefer: -python310-anyio3
 Prefer: -python311-anyio3
 Prefer: -python312-anyio3
 Prefer: -python313-anyio3
 
 # have choice for python311-django >= 1.11: python311-Django python311-Django4, have choice for python311-Django needed by python311-pytest-django: python311-Django python311-Django4
-Prefer: -python310-Django4
 Prefer: -python311-Django4
 Prefer: -python312-Django4
 Prefer: -python313-Django4
@@ -659,16 +656,10 @@ Prefer: -python313-Django4
 Prefer: -dbus-broker-allow-restart
 
 # have choice for fonttools: python310-FontTools python311-FontTools
-Prefer: -python310-FontTools -python311-FontTools
+Prefer: -python311-FontTools
 
 # have choice for (python311-qt5 or python311-pyside2 or python311-PyQt6 or python311-pyside6) needed by python311-qtconsole: python311-pyside6 python311-qt5
 Prefer: -python311-pyside6
-
-# Remove when SR#1229168 is accepted. Ana
-# have choice for (python312-nntplib if python312-base >= 3.12): python312-nntplib python312-pynntp
-Prefer: -python312-nntplib
-# have choice for (python313-nntplib if python313-base >= 3.12): python313-nntplib python313-pynntp
-Prefer: -python313-nntplib
 
 # have choice for libsundials_core.so.7()(64bit) needed by libsundials_ida7: libsundials_core7 libsundials_core7-mvapich2 libsundials_core7-openmpi4,
 Prefer: -libsundials_core7-mvapich2 -libsundials_core7-openmpi4
@@ -709,6 +700,12 @@ Prefer: -libz-ng-compat1-32bit
 
 # have choice for pkgconfig(capi20): libcapi20-devel libcapi20-devel-32bit
 Prefer: -libcapi20-devel-32bit
+
+# have choice for selinux-policy-base needed by patterns-base-selinux: selinux-policy-minimum selinux-policy-targeted
+Prefer: -selinux-policy-minimum
+
+# have choice for cifs-idmap-plugin needed by cifs-utils: sssd-cifs-idmap-plugin wb-cifs-idmap-plugin
+Prefer: -wb-cifs-idmap-plugin
 
 #---
 
@@ -793,6 +790,7 @@ ExportFilter: ^qemu-edk2.*\.noarch\.rpm$ .    i586 armv7l aarch64 ppc ppc64 ppc6
 ExportFilter: ^qemu-microvm.*\.noarch\.rpm$ . i586 armv7l aarch64 ppc ppc64 ppc64le s390x riscv64
 
 Required: rpm-build
+
 # Build all packages with -pie enabled
 Required: gcc-PIE
 
@@ -961,7 +959,6 @@ Conflict: systemd-mini-devel:systemd
 Prefer: cmake-mini
 
 # python-pip inside OBS never connects to the net, so we don't use certs
-Ignore: python310-pip:ca-certificates
 Ignore: python311-pip:ca-certificates
 Ignore: python312-pip:ca-certificates
 Ignore: python313-pip:ca-certificates
@@ -983,20 +980,18 @@ Prefer: -Catch2-2-devel
 Prefer: -urw-base35-fonts
 
 # Python3 exists in multiple versions - we currently favor 3.11 (our default):
-Prefer: -python310-txt2tags -python312-txt2tags -python313-txt2tags
+Prefer: -python312-txt2tags -python313-txt2tags
 
 # unresolvable: have choice for libcontainers-policy >= 20230214 needed by libcontainers-common: libcontainers-default-policy libcontainers-openSUSE-policy
 Prefer: -libcontainers-default-policy
 
 # have choice for python3-jsonschema: python311-jsonschema python311-jsonschema417
-Prefer: -python310-jsonschema417 -python311-jsonschema417 -python312-jsonschema417 -python313-jsonschema417
-Prefer: -python310-jsonschema417-format-nongpl
+Prefer: -python311-jsonschema417 -python312-jsonschema417 -python313-jsonschema417
 Prefer: -python311-jsonschema417-format-nongpl
 Prefer: -python312-jsonschema417-format-nongpl
 Prefer: -python313-jsonschema417-format-nongpl
 
 # have choice for python-mistune after rename to python-mistune2
-Prefer: -python310-mistune
 Prefer: -python311-mistune
 Prefer: -python312-mistune
 Prefer: -python313-mistune
@@ -1004,24 +999,24 @@ Prefer: -python313-mistune
 
 Prefer: -protobuf21-devel
 
-Prefer: -python310-urllib3_1 -python311-urllib3_1 -python312-urllib3_1 -python313-urllib3_1
+Prefer: -python311-urllib3_1 -python312-urllib3_1 -python313-urllib3_1
 # have choice for python3-magic: python38-magic python38-python-magic
-Prefer: -python310-magic -python312-magic -python313-magic
+Prefer: -python312-magic -python313-magic
 
 # have choice for gcr-ssh-agent needed by libgcr-3-1: gcr-ssh-agent gcr3-ssh-agent
 Prefer: -gcr3-ssh-agent -gcr3-viewer
 
 # have choice for python3-Cython: python310-Cython python310-Cython3
-Prefer: -python310-Cython0 -python311-Cython0 -python312-Cython0 -python313-Cython0
+Prefer: -python311-Cython0 -python312-Cython0 -python313-Cython0
 
 # have choice for ntp-daemon: chrony ntp ntpsec
 Prefer: chrony
 
 # have choice for python-sqlalchemy >= 1.4: python-SQLAlchemy python-SQLAlchemy1
-Prefer: -python310-SQLAlchemy1 -python311-SQLAlchemy1 -python312-SQLAlchemy1 -python313-SQLAlchemy1
+Prefer: -python311-SQLAlchemy1 -python312-SQLAlchemy1 -python313-SQLAlchemy1
 
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
-Prefer: -python310-PyQt6 -python3-pyside2
+Prefer: -python3-pyside2
 Prefer: -python311-PyQt6
 Prefer: -python312-PyQt6
 Prefer: -python313-PyQt6
@@ -1051,7 +1046,6 @@ Prefer: python311-html2text
 Prefer: -budgie-desktop
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: python310-tornado
 Prefer: python311-tornado
 Prefer: python312-tornado
 Prefer: python313-tornado
@@ -1064,11 +1058,9 @@ Prefer: -gnome-bluetooth-1
 Prefer: PackageKit-backend-zypp
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
-Prefer: -python310-sip6-devel -python311-sip6-devel
-Prefer: -python310-sip4 -python310-sip4-devel
+Prefer: -python311-sip6-devel
+Prefer: -python310-sip4-devel
 Prefer: -python311-sip4 -python311-sip4-devel
-
-Prefer: python310-Shapely:geos
 
 # pipewire has a jack compatible implementation - but for now we prefer the real jack
 Prefer: -pipewire-libjack-0_3-devel libjack0
@@ -1104,9 +1096,8 @@ Prefer: php8:php8-cli
 Prefer: -libomp15-devel -libomp16-devel -libomp17-devel -libomp18-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
-Prefer: -python310-jupyterlab
-Prefer: -python310-nbclassic -python312-nbclassic -python313-nbclassic
-prefer: -python310-notebook -python312-notebook -python313-notebook
+Prefer: -python312-nbclassic -python313-nbclassic
+prefer: -python312-notebook -python313-notebook
 
 # have choice for (sysvinit(network) or service(network)) needed by sysconfig: NetworkManager wicked-service
 Prefer: -NetworkManager
@@ -1146,7 +1137,6 @@ Prefer: -virtualbox-kmp-longterm
 Prefer: -nunit3-devel
 
 # have choice for python39-pytest-asyncio: python39-pytest-asyncio python39-pytest-asyncio0.21
-Prefer: -python310-pytest-asyncio0.21
 Prefer: -python311-pytest-asyncio0.21
 Prefer: -python312-pytest-asyncio0.21
 Prefer: -python313-pytest-asyncio0.21
@@ -1431,16 +1421,11 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-Prefer: ruby3.3-rubygem-fast_gettext
 Prefer: ruby3.4-rubygem-fast_gettext
-Prefer: -ruby3.3-rubygem-public_suffix-3.1
 Prefer: -ruby3.4-rubygem-public_suffix-3.1
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
-
-# python3-pytest should win over the other python3-pytest<n> variants
-Prefer: python310-pytest
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
@@ -1539,7 +1524,7 @@ Prefer: libclang13 libc++1 libc++abi1 libc++-devel libc++abi-devel
 Prefer: clang19-devel clang18-devel clang17-devel clang16-devel clang15-devel clang14-devel clang13-devel
 Prefer: llvm19-devel llvm18-devel llvm17-devel llvm16-devel llvm15-devel llvm14-devel llvm13-devel
 
-Prefer: -wxWidgets-3_0-devel wxWidgets-3_2-devel
+Prefer: wxWidgets-3_2-devel
 Prefer: -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
 Prefer: libopenssl-devel
 
@@ -1775,6 +1760,7 @@ BuildFlags: onlybuild:Modules
 BuildFlags: onlybuild:NetworkManager
 BuildFlags: onlybuild:NetworkManager-branding:openSUSE
 BuildFlags: onlybuild:SDL2
+BuildFlags: onlybuild:SDL3
 BuildFlags: onlybuild:SDL_gfx
 BuildFlags: onlybuild:a52dec
 BuildFlags: onlybuild:aaa_base
@@ -2816,6 +2802,8 @@ BuildFlags: onlybuild:perl-libwww-perl
 BuildFlags: onlybuild:perl-libxml-perl
 BuildFlags: onlybuild:perl-namespace-autoclean
 BuildFlags: onlybuild:perl-namespace-clean
+BuildFlags: onlybuild:perl-rpm-packaging
+BuildFlags: onlybuild:perl-rpm-packaging-AGGR
 BuildFlags: onlybuild:permissions
 BuildFlags: onlybuild:pesign
 BuildFlags: onlybuild:pesign-obs-integration
@@ -3029,6 +3017,7 @@ BuildFlags: onlybuild:python-sniffio
 BuildFlags: onlybuild:python-snowballstemmer
 BuildFlags: onlybuild:python-sortedcontainers
 BuildFlags: onlybuild:python-sphinx_rtd_theme
+BuildFlags: onlybuild:python-sphinxygen
 BuildFlags: onlybuild:python-sphinxcontrib-applehelp
 BuildFlags: onlybuild:python-sphinxcontrib-devhelp
 BuildFlags: onlybuild:python-sphinxcontrib-htmlhelp
@@ -3111,7 +3100,6 @@ BuildFlags: onlybuild:rtkit
 BuildFlags: onlybuild:ruby
 BuildFlags: onlybuild:ruby-bundled-gems-rpmhelper
 BuildFlags: onlybuild:ruby-common
-BuildFlags: onlybuild:ruby3.3
 BuildFlags: onlybuild:ruby3.4
 BuildFlags: onlybuild:rubygem-asciidoctor
 BuildFlags: onlybuild:rubygem-gem2rpm
@@ -3125,9 +3113,7 @@ BuildFlags: onlybuild:rubygem-ronn-ng
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
 BuildFlags: onlybuild:rust-cbindgen
-BuildFlags: onlybuild:rust1.81
-BuildFlags: onlybuild:rust1.82
-BuildFlags: onlybuild:rust1.83
+BuildFlags: onlybuild:rust1.84
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sassc
@@ -3307,6 +3293,7 @@ BuildFlags: onlybuild:wayland
 BuildFlags: onlybuild:wayland-protocols
 BuildFlags: onlybuild:webkit2gtk3:gtk3
 BuildFlags: onlybuild:webrtc-audio-processing
+BuildFlags: onlybuild:webrtc-audio-processing-1
 BuildFlags: onlybuild:wget
 BuildFlags: onlybuild:which
 BuildFlags: onlybuild:wine
@@ -3370,6 +3357,7 @@ BuildFlags: onlybuild:zchunk
 BuildFlags: onlybuild:zeromq
 BuildFlags: onlybuild:zimg
 BuildFlags: onlybuild:zip
+BuildFlags: onlybuild:zix
 BuildFlags: onlybuild:zlib
 BuildFlags: onlybuild:zlib-ng:compat
 BuildFlags: onlybuild:zsh
@@ -3416,28 +3404,6 @@ Macros:
 #
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
-
-### And now Ruby 3.2
-
-%rubygemsruby32() rubygem(ruby:3.2.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
-%rubygemsxruby32() %{expand:%%{rubygemsx%*}}
-
-%rubyruby32() ruby3.2 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
-%rubyxruby32() %{expand:%%{rubyx%*}}
-
-%rubydevelruby32() ruby3.2-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
-%rubydevelxruby32() %{expand:%%{rubydevelx%*}}
-
-### And now Ruby 3.3
-
-%rubygemsruby33() rubygem(ruby:3.3.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
-%rubygemsxruby33() %{expand:%%{rubygemsx%*}}
-
-%rubyruby33() ruby3.3 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
-%rubyxruby33() %{expand:%%{rubyx%*}}
-
-%rubydevelruby33() ruby3.3-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
-%rubydevelxruby33() %{expand:%%{rubydevelx%*}}
 
 ### And now Ruby 3.4
 

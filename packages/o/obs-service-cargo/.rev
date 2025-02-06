@@ -463,4 +463,18 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1232729</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9fbfa393f1cdc8e3aee4e44f5f3f079a</srcmd5>
+    <version>4.5.0</version>
+    <time>1738245163</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.5.0:
+  * test: update sources for roast.
+  * security: update gix-worktree-state to 0.17.0
+  * fix(doc): missing last double quote now added.
+  * toolchain: add most used components for rust development
+- Set rust toolchain to version 1.83
+</comment>
+    <requestid>1241290</requestid>
+  </revision>
 </revisionlist>

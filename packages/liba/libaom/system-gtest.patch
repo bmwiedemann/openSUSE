@@ -1,7 +1,7 @@
-Index: libaom-3.9.1/test/test.cmake
+Index: libaom-3.11.0/test/test.cmake
 ===================================================================
---- libaom-3.9.1.orig/test/test.cmake
-+++ libaom-3.9.1/test/test.cmake
+--- libaom-3.11.0.orig/test/test.cmake
++++ libaom-3.11.0/test/test.cmake
 @@ -14,6 +14,7 @@ endif() # AOM_TEST_TEST_CMAKE_
  set(AOM_TEST_TEST_CMAKE_ 1)
  
@@ -10,7 +10,7 @@ Index: libaom-3.9.1/test/test.cmake
  
  include("${AOM_ROOT}/test/test_data_util.cmake")
  
-@@ -402,34 +403,21 @@ if(ENABLE_TESTS)
+@@ -411,27 +412,21 @@ if(ENABLE_TESTS)
      set(CMAKE_MACOSX_RPATH 1)
    endif()
  
@@ -18,8 +18,11 @@ Index: libaom-3.9.1/test/test.cmake
 -    aom_gtest STATIC
 -    "${AOM_ROOT}/third_party/googletest/src/googletest/src/gtest-all.cc")
 -  set_property(TARGET aom_gtest PROPERTY FOLDER ${AOM_IDE_TEST_FOLDER})
+-  # There are -Wundef warnings in the gtest headers. Tell the compiler to treat
+-  # the gtest include directories as system include directories and suppress
+-  # compiler warnings in the gtest headers.
 -  target_include_directories(
--    aom_gtest
+-    aom_gtest SYSTEM
 -    PUBLIC "${AOM_ROOT}/third_party/googletest/src/googletest/include"
 -    PRIVATE "${AOM_ROOT}/third_party/googletest/src/googletest")
 -
@@ -32,16 +35,6 @@ Index: libaom-3.9.1/test/test.cmake
 -      target_compile_definitions(aom_gtest PUBLIC GTEST_HAS_PTHREAD=0)
 -    endif()
 -  endif()
--
--  add_library(
--    aom_gmock STATIC
--    "${AOM_ROOT}/third_party/googletest/src/googlemock/src/gmock-all.cc")
--  set_property(TARGET aom_gmock PROPERTY FOLDER ${AOM_IDE_TEST_FOLDER})
--  target_include_directories(
--    aom_gmock
--    PUBLIC "${AOM_ROOT}/third_party/googletest/src/googlemock/include"
--    PRIVATE "${AOM_ROOT}/third_party/googletest/src/googlemock")
--  target_link_libraries(aom_gmock ${AOM_LIB_LINK_TYPE} aom_gtest)
 +  pkg_check_modules(gtest REQUIRED gtest)
 +  add_library(aom_gtest INTERFACE)
 +  target_link_libraries(aom_gtest INTERFACE ${gtest_LIBRARIES})

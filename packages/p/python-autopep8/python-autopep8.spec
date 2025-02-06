@@ -1,7 +1,7 @@
 #
 # spec file for package python-autopep8
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-autopep8
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Automatic generated to pep8 checked code
 License:        MIT

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/dbrgn/tealdeer.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.7.0</param>
+    <param name="revision">v1.7.1</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

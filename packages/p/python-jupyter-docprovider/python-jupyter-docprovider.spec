@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-docprovider
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 1
+%define distversion 1.1
 Name:           python-jupyter-docprovider
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Jupyter extension integrating collaborative shared models
 License:        BSD-3-Clause
@@ -69,7 +69,6 @@ This package provides the jupyter components.
 
 #%%check
 # tests are in the python-jupyter-collaboration metapackage
-
 
 %files %{python_files}
 %{python_sitelib}/jupyter_docprovider

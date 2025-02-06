@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 09:46:57 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Remove nscd-related code (bsc#1236308)
+- 5.0.4
+
+-------------------------------------------------------------------
 Tue Oct  1 13:31:05 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Removed obsolete USERADD_CMD, USERDEL_PRECMD, USERDEL_POSTCMD, 

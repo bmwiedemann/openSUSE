@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 22 14:06:33 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python-rpm-macros: required for the
+  python3_fix_shebang macro.
+
+-------------------------------------------------------------------
+Wed Jan 22 12:30:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix shebang of …/FlameGraph/stackcollapse-chrome-tracing.py to
+  not pull in python2.
+
+-------------------------------------------------------------------
 Tue Aug 27 19:37:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.0

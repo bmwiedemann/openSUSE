@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-hatch_nodejs_version
 Version:        0.3.2
 Release:        0

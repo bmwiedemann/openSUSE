@@ -187,7 +187,9 @@ install -d -m 0755 %{buildroot}/srv/tftpboot
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %endif
+%if 0%{?suse_version} < 1600
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdnsmasq
+%endif
 install -d -m 755 %{buildroot}/%{_sysconfdir}/dnsmasq.d
 install -m 644 trust-anchors.conf %{buildroot}/%{_sysconfdir}/dnsmasq.d/trust-anchors.conf
 
@@ -214,7 +216,9 @@ rm -rf contrib/MacOSX-launchd
 %doc CHANGELOG FAQ doc.html setup.html dnsmasq.conf.example contrib dbus
 %config(noreplace) %{_sysconfdir}/dnsmasq.conf
 %{_sbindir}/dnsmasq
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcdnsmasq
+%endif
 %{_mandir}/man8/dnsmasq.8%{?ext_man}
 %{_datadir}/dbus-1/system.d/dnsmasq.conf
 %{_unitdir}/dnsmasq.service

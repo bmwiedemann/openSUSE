@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 28 11:00:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable wtmpdbd.socket to start wtmpdbd via socket activation.
+  A seperate daemon for wtmpdb access is required to solve
+  https://sourceware.org/bugzilla/show_bug.cgi?id=24492
+
+-------------------------------------------------------------------
 Tue Jan  7 09:43:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove enable nscd, nscd doesn't work anymore with systemd 257

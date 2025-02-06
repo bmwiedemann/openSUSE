@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 24 21:01:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit 4ti2-handle-prefix.diff [boo#1233672]
+  * Avoid eagerly following %fdupes-created symlinks when
+    determining what final program to call.
+  * Handle being called as /usr/bin/4ti2_circuits.
+
+-------------------------------------------------------------------
 Wed Apr 26 08:33:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.10

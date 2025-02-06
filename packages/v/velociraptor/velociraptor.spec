@@ -52,7 +52,7 @@
 %endif
 
 %if %{with bpf} && 0%{?suse_version}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150600 || (0%{?sle_version} == 150500 && 0%{?is_opensuse})
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600 || (0%{?sle_version} == 150500 && 0%{?is_opensuse})
 %global llvm_version 17
 %else
 %if 0%{?sle_version} >= 150300
@@ -235,7 +235,7 @@ https://docs.velociraptor.app/
 This package contains only the endpoint agent.  For the full server and GUI
 console, please install the 'velociraptor' package.
 
-%if 0%{?suse_version}
+%if 0%{?suse_version} && !0%{?pre_create_group}
 %package -n system-user-velociraptor
 Summary:        System user and group 'velociraptor'
 Version:        1.0.0
@@ -320,7 +320,7 @@ sysconfig_file_source=%{SOURCE7}
 config_file=server.config
 
 %else
-%if 0%{?suse_version}
+%if 0%{?suse_version} && !0%{?pre_create_group}
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-velociraptor.conf
 %endif
 service_file_source=%{SOURCE5}
@@ -362,7 +362,7 @@ install -D -m 0755 output/velociraptor-v%{VERSION}-linux-* %buildroot/%{_bindir}
 %dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/tmp
 
 %if %{build_client}
-%if 0%{?suse_version}
+%if 0%{?suse_version} && !0%{?pre_create_group}
 %files -n system-user-velociraptor
 %defattr(-, root, root)
 %{_sysusersdir}/system-user-velociraptor.conf

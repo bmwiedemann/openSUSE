@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 %undefine _build_create_debug
-%global openssl_version 3.0.9
+%global openssl_version 3.0.15
 %global softfloat_version b64af41c3276f
 %if 0%{?suse_version} < 1599
 %bcond_with build_riscv64
@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202408
+Version:        202411
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -69,8 +69,9 @@ Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.pat
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
-# Bug 1230425 - Using shorter name of build root folder can build out a smaller ovmf image
-Patch10:        %{name}-MdePkg-DebugLib-Enable-FILE-NAME-as-DEBUG-ASSERT-for.patch
+# Bug 1236009 - Build failure on Leap 15.5/15.6 due to unsupported GCC flag -mstack-protector-guard for aarch64 cross-compiler
+Patch10:        %{name}-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
+
 %ifarch x86_64
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
 Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
@@ -90,6 +91,7 @@ BuildRequires:  gcc12-c++
 %endif
 %endif
 BuildRequires:  iasl
+BuildRequires:  libbpf1
 BuildRequires:  libuuid-devel
 BuildRequires:  mkisofs
 BuildRequires:  mtools

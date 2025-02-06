@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:57:41 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- drop HA package cluster-glue and Linux-HA style fence agents in FrameworkOne
+  (jsc#PED-8498) 
+  Remove dependency: cluster-glue-devel. As a result of this sfex_init, sfex_stat,
+  resource-agents-deps.target and ldirectord.service were removed also.
+- Update to version 4.16.0+git38.da9ef4e2:
+  * storage-mon: log "storage_mon is already running" in start-action
+  * storage-mon: check if daemon is already running during start-action
+  * storage-mon: replace dashes with underscores in functions
+  * ocf-binaries: add FGREP
+  * Filesystem: dont report warnings when creating a Filesystem resource
+  * ibm-cloud-vpc-move-fip: new resource agent (#2008)
+  * ibm-cloud-vpc-cr-vip: fix ImportError logging
+  * All agents: use detected grep -E/-F instead of egrep/fgrep when detected
+  * ibm-cloud-vpc-cr-vip: dont build if ibm_cloud_fail_over is not installed
+  * nfsserver: dont use init-scripts if systemd is running
+  * ibm-cloud-vpc-cr-vip: new resource agent (#2002)
+  * ocf-shellfuncs: fixed bash systax error added at a25f08cf98d784894df9c52960eff5ccef059393
+  * openstack-cinder-volume: fix detach not working during start-action after #2000
+  * openstack-cinder-volume: wait for volume to be available
+  * spec: update Requires paths for RHEL10/CentOS 10
+  * awsvip: let user specify which interface to use, and make the parameter optional in aws-vpc-move-ip
+  * aws.sh: add get_interface_mac()
+  * Mid: storage-mon RA: Wait until monitor confirms the startup pid according to the OCF resource specification.
+  * High: storage-mon: Correct the timing of setting notification values to storage-mon(RA) clients.
+  * aws.sh/ocf-shellfuncs: add ability to fresh token if it's invalid
+  * aws.sh: chmod 600 $TOKEN_FILE, add get_instance_id() with DMI support, and use get_instance_id() in AWS agents
+
+-------------------------------------------------------------------
 Tue Nov 19 10:50:14 UTC 2024 - varkoly@suse.com
 
 - Update to version 4.16.0+git2.20a433c3:

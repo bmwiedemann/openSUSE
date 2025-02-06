@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 15.0.0
+%define real_version 15.0.1
 %define short_version 15.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        15.0.0
+Version:        15.0.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -63,8 +63,6 @@ Source1:        qt-creator-rpmlintrc
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
-# Waiting for upstream fix
-Patch13:        0001-Revert-Autotools-Make-the-BuildSystem-per-BuildConfi.patch
 ##
 BuildRequires:  cmake
 # clang-devel in Leap 15 points to clang7...

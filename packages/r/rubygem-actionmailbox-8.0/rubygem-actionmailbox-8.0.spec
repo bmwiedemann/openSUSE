@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-actionmailbox-8.0
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 #
 
 Name:           rubygem-actionmailbox-8.0
-Version:        8.0.0.1
+Version:        8.0.1
 Release:        0
 %define mod_name actionmailbox
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -8.0
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 3.2.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml

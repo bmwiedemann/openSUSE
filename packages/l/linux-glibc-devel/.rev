@@ -788,4 +788,12 @@
     <comment>- Add loongarch64 as new target (forwarded request 1226471 from glaubitz)</comment>
     <requestid>1227778</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>c934a20dbb4c7211cc2a08ff81dc56ce</srcmd5>
+    <version>6.13</version>
+    <time>1737651386</time>
+    <user>anag+factory</user>
+    <comment>- Update to kernel headers 6.13 (forwarded request 1239202 from Andreas_Schwab)</comment>
+    <requestid>1239203</requestid>
+  </revision>
 </revisionlist>

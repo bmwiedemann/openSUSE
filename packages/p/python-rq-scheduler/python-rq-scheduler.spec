@@ -17,6 +17,7 @@
 
 
 %define long_version 0.14.0
+%{?sle15_python_module_pythons}
 Name:           python-rq-scheduler
 Version:        0.14
 Release:        0

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 26 08:02:10 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Mark /etc/xdg/autostart/onboard-autostart.desktop as conffile.
+- Manually install /etc/xdg/autostart/onboard-autostart.desktop on
+  SUSE versions below v16.
+
+-------------------------------------------------------------------
+Thu Apr 25 20:52:45 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Add patch: onboard-Onboard-Config.py-Check-desktop-env-before-requestin.patch.
+  Don't warn about GNOME a11y toolkit if not in a GNOME derived desktop
+  environment.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:52:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: patchN -> patch -P N.

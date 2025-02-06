@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:01:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change to python3: ansible moved to python 3 back in 2018. We
+  should be good to go by now.
+
+-------------------------------------------------------------------
 Fri Aug 12 10:46:23 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop virtualbox-guest-x11 dependency from virtualbox flavor: this

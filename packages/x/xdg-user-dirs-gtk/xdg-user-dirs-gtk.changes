@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jan 19 08:56:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14:
+  + build: Respect directory options in post install script
+  + desktop: Fix translatable string merging
+  + meson:
+    - Bump minimum version to 1.0.0
+    - Use SPDX for license
+- Rebase patch with quilt.
+
+-------------------------------------------------------------------
+Sat Jan 18 11:51:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.13:
+  + meson:
+    - Do not fail if destdir isn't set
+    - Install user-dirs-update-gtk.desktop in the correct datadir
+- Drop fix-desktop-file-install-dir.patch: Fixed upstream.
+- Add desktop-file-utils and check section: Validate desktop files
+  during build.
+- Mark autostart desktop file as config.
+
+-------------------------------------------------------------------
+Mon Jan 13 12:57:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12:
+  + Replace autotools with meson
+  + update: Set wm_class to match .desktop file name
+  + data: Also install desktop file into datadir
+  + Updated translations.
+- Add meson BuildRequires and macros, clean up old macros and
+  exports.
+- Drop gnome-common and intltool BuildRequires: No longer needed
+  nor used.
+- Add fix-desktop-file-install-dir.patch: Install desktop file in
+  correct dir.
+
+-------------------------------------------------------------------
 Tue Jul 16 16:52:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.11+11:

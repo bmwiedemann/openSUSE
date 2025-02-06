@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pygments
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,15 @@
 %else
 %bcond_with libalternatives
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-Pygments
-Version:        2.18.0
+Version:        2.19.1
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://pygments.org
-Source:         https://files.pythonhosted.org/packages/source/P/Pygments/pygments-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pygments/pygments-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip-wcag-contrast-ratio.patch gh#pygments/pygments!2564 mcepl@suse.com
 # Don't make wcag-contrast-ratio mandatory for testing
 Patch0:         skip-wcag-contrast-ratio.patch
@@ -42,16 +41,18 @@ BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
+#!BuildIgnore:  ca-certificates:p11-kit
+#!BuildIgnore:  ca-certificates:p11-kit-tools
+Provides:       python-pygments = %{version}
+Obsoletes:      python-pygments < %{version}
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-Provides:       python-pygments = %{version}
-Obsoletes:      python-pygments < %{version}
-BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -22,7 +22,7 @@
 %bcond_with opencl_adapter
 %endif
 Name:           unified-runtime
-Version:        0.11.2
+Version:        0.11.4
 Release:        0
 Summary:        oneAPI Unified Runtime (UR)
 License:        Apache-2.0
@@ -32,8 +32,8 @@ Patch1:         remove-link.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  unified-memory-framework-devel
 BuildRequires:  pkgconfig
+BuildRequires:  unified-memory-framework-devel
 %if %{with opencl_adapter}
 BuildRequires:  pkgconfig(OpenCL)
 %endif
@@ -133,25 +133,22 @@ rm %{buildroot}%{_includedir}/.clang-format
 %{_prefix}/lib/cmake/unified-runtime/
 %{_libdir}/libur_loader.so
 %{_libdir}/libur_adapter_native_cpu.so
+# The cmake file looks for .a unconditionally, so splitting to -devel-static seems to have no benefit presently
 %{_libdir}/libur_common.a
 
 %if %{with opencl_adapter}
 %{_libdir}/libur_adapter_opencl.so
 %endif
 
-
 %files -n libur_loader0
-%{_libdir}/libur_loader.so.0
-%{_libdir}/libur_loader.so.0.11.2
+%{_libdir}/libur_loader.so.0*
 
 %files -n libur_adapter_native_cpu0
-%{_libdir}/libur_adapter_native_cpu.so.0
-%{_libdir}/libur_adapter_native_cpu.so.0.11.2
+%{_libdir}/libur_adapter_native_cpu.so.0*
 
 %if %{with opencl_adapter}
 %files -n libur_adapter_opencl0
-%{_libdir}/libur_adapter_opencl.so.0
-%{_libdir}/libur_adapter_opencl.so.0.11.2
+%{_libdir}/libur_adapter_opencl.so.0*
 %endif
 
 %changelog

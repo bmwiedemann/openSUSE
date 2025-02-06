@@ -263,4 +263,13 @@
 </comment>
     <requestid>1228824</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1428871b429faef60176d034b687b5a2</srcmd5>
+    <version>4.17.0</version>
+    <time>1738163807</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-pytest-8.3.4.patch:
+  * Support pytest 8.3.4 changes.</comment>
+    <requestid>1241023</requestid>
+  </revision>
 </revisionlist>

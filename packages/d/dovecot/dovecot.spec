@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dovecot
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
@@ -41,6 +41,8 @@ Source10:       %{name}-2.1-pigeonhole.configfiles
 Source11:       %{name}-2.2-pigeonhole.configfiles
 Source12:       %{name}-2.3.configfiles
 Source13:       %{name}-2.3-pigeonhole.configfiles
+Source14:       %{name}-2.4.configfiles
+Source15:       %{name}-2.4-pigeonhole.configfiles
 
 %description
 Dovecot is an IMAP and POP3 server for Linux and UNIX-like systems,

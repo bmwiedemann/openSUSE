@@ -1,7 +1,7 @@
 #
 # spec file for package rtkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,9 @@ make %{?_smp_mflags}
 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%if 0%{?suse_version} < 1600
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcrtkit-daemon
+%endif
 install -D -m 0644 org.freedesktop.RealtimeKit1.xml %{buildroot}/%{_datadir}/dbus-1/interfaces/org.freedesktop.RealtimeKit1.xml
 install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/rtkit.conf
 
@@ -100,7 +102,9 @@ dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesk
 %{_datadir}/polkit-1/actions/org.freedesktop.RealtimeKit1.policy
 %{_datadir}/dbus-1/system.d/org.freedesktop.RealtimeKit1.conf
 %{_mandir}/man8/rtkitctl.8%{ext_man}
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcrtkit-daemon
+%endif
 %{_unitdir}/rtkit-daemon.service
 %{_sysusersdir}/rtkit.conf
 

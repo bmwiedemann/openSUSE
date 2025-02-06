@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 21 12:54:55 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Change license to just BSD-2-Clause. Since all files are using
+  this license and it's the only LICENSE file included I contacted
+  upstream (Phil Thompson) and he confirmed that it's licensed
+  just as BSD-2-Clause and setup.py needs fixing, so I added the
+  following patch to change it:
+  * fix-license-in-setup_py.patch
+
+-------------------------------------------------------------------
 Wed Jan  8 16:19:41 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 13.9.1

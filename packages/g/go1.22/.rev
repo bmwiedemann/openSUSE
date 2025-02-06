@@ -277,4 +277,20 @@ the go metapackage to version 1.22.</comment>
     <comment>- Enable loongarch64 builds (forwarded request 1229907 from jfkw)</comment>
     <requestid>1229908</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3ccf3c6d4c483facc18f514191cbc6c7</srcmd5>
+    <version>1.22.11</version>
+    <time>1737828582</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.22.11 (released 2025-01-16) includes security fixes to the
+  crypto/x509 and net/http packages, as well as bug fixes to the
+  runtime.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2024-45341 CVE-2024-45336
+  * go#71207 go#71156 boo#1236045 security: fix CVE-2024-45341 crypto/x509: usage of IPv6 zone IDs can bypass URI name constraints
+  * go#71210 go#70530 boo#1236046 security: fix CVE-2024-45336 net/http: sensitive headers incorrectly sent after cross-domain redirect
+  * go#71103 crypto/tls: TestVerifyConnection/TLSv12 failures
+  * go#71146 internal/trace: TestTraceCPUProfile/Stress failures (forwarded request 1240016 from jfkw)</comment>
+    <requestid>1240019</requestid>
+  </revision>
 </revisionlist>

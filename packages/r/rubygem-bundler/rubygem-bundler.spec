@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bundler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,19 +24,13 @@
 #
 
 Name:           rubygem-bundler
-Version:        2.4.22
+Version:        2.6.3
 Release:        0
 %define mod_name bundler
 %define mod_full_name %{mod_name}-%{version}
-# MANUAL
-%if 0%{?suse_version} < 1500
-%define rb_build_versions     ruby27
-%define rb_build_ruby_abis    ruby:2.7.0
-%endif
-# /MANUAL
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby >= 2.6.0}
+BuildRequires:  %{ruby >= 3.1.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://bundler.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
@@ -44,7 +38,6 @@ Source1:        series
 Source2:        gem2rpm.yml
 Summary:        The best way to manage your application's dependencies
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Bundler manages an application's dependencies through its entire life, across
@@ -56,6 +49,7 @@ many machines, systematically and repeatably.
 
 %install
 %gem_install \
+  --no-rdoc --no-ri \
   --symlink-binaries \
   --doc-files="CHANGELOG.md LICENSE.md README.md" \
   -f

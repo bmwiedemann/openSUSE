@@ -791,4 +791,14 @@
     our next planned release.</comment>
     <requestid>1228064</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ac28e97ccfa39fac246b9c231745650b</srcmd5>
+    <version>3.1.0</version>
+    <time>1738007814</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.0
+  * Python 3.8 support was removed.
+- Convert to pip-based build</comment>
+    <requestid>1240554</requestid>
+  </revision>
 </revisionlist>

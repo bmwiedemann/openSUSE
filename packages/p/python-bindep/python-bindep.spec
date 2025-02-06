@@ -1,7 +1,7 @@
 #
 # spec file for package python-bindep
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bindep
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        Binary dependency utility
 License:        Apache-2.0
 URL:            https://docs.opendev.org/opendev/bindep
 Source:         https://files.pythonhosted.org/packages/source/b/bindep/bindep-%{version}.tar.gz
-Patch0:         remove-mock.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

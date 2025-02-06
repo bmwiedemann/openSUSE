@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql14
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -190,6 +190,7 @@ Patch9:         postgresql-var-run-socket.patch
 Patch10:        postgresql-llvm-optional.patch
 Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
 %endif
+Patch12:        postgresql-tzdata2025a.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -523,6 +524,7 @@ touch -r configure tmp
 %if %{with llvm}
 %patch -P 10
 %patch -P 11
+%patch -P 12
 %endif
 touch -r tmp configure
 rm tmp

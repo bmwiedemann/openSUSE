@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Jan 24 07:57:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix dependencies for fish and zsh completion subpackages
+
+-------------------------------------------------------------------
+Thu Jan 16 06:04:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove minikube-rpmlintrc to silence warnings regarding unused
+  filters
+- refactor spec file to build position-independent executables
+- refactor spec to fix builds errors
+- add completion subpackages for fish and zsh
+- add %check section to check version output
+- update to 1.35.0:
+  * Features:
+    - Add support for AMD GPUs via --gpus=amd #19749
+    - publish & download kicbase image in github release assets
+      #19464
+    - Support latest Kubernetes v1.32.0 #20091
+    - Adds support for kubeadm.k8s.io/v1beta4 available since k8s
+      v1.31 #19790
+  * Improvements:
+    - Merge nvidia-gpu-device-plugin and nvidia-device-plugin.
+      #19545
+    - cilium: remove appArmorProfile for k8s<v1.30.0 #19888
+    - auto-pause: restart service after configuration #19900
+    - Revert "Change MINIKUBE_HOME logic" #20045
+    - HA (multi-control plane): Update kube-vip from v0.8.6 to
+      v0.8.7 #20053
+    - don't pollute minikube profile list with errors if exitcode
+      is absent #19728
+    - unified minikube cluster status query #18998
+    - Vfkit driver: fix TestMachineType failing on macOS #19726
+    - No more arch restriction on nerdctld #19730
+    - remove helm-tiller addon #19636
+    - More robust MAC address matching #19750
+    - Add instructions to resolve docker context error #19197
+  * Bug fixes:
+    - fix --wait's failure to work on coredns pods #19748
+    - Fix panic when no services in namespace with --all specified
+      #19957
+    - fix timeout when stopping KVM machine with CRI-O container
+      runtime #19758
+    - Fix long lines in lastStart.txt not outputting in log outputs
+      #19740
+    - Fix wrongly detecting kicbase arch as incorrect #19664
+  * Breaking Changes:
+    - skip building kvm2-arm64 till 19959 is resolved #20062
+    - remove arm64 kvm #19985
+  * Languages:
+    - Add more Chinese translations #19490
+    - Add more Chinese translations #19508
+    - Fix chinnese translation on wrong line #19718
+    - Add more chinnese translations #19962
+    - Add more chinnese translations #19772
+    - Fix french translation #19978
+    - Improve french translation #19654
+  * - Version Updates:
+    - Please see the full changelog
+    - https://github.com/kubernetes/minikube/releases/tag/v0.35.0
+
+-------------------------------------------------------------------
 Tue Sep 10 12:25:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.34.0 (boo#1227017 boo#1227049 boo#1227005):

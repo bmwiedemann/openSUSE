@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:41:08 UTC 2025 - mrueckert@suse.de
+
+- Update to version 3.1.3+git0.929bedf83:
+  * [RELEASE] Released version 3.1.3
+  * BUILD: ssl: more cleaner approach to WolfSSL without renegotiation
+  * BUILD: ssl: allow to build without the renegotiation API of WolfSSL
+  * CLEANUP: quic: remove unused prototype
+  * BUG/MINOR: stream: Properly handle "on-marked-up shutdown-backup-sessions"
+  * BUG/MINOR: ssl: put ssl_sock_load_ca under SSL_NO_GENERATE_CERTIFICATES
+  * BUG/MINOR: quic: do not increase congestion window if app limited
+  * BUG/MEDIUM: mux-h1: Properly close H1C if an error is reported before sending data
+  * BUILD: quic: Move an ASSUME_NONNULL() for variable which is not null
+  * MINOR: quic: Add a BUG_ON() on quic_tx_packet refcount
+  * BUG/MINOR: quic: ensure a detached coalesced packet can't access its neighbours
+  * BUG/MINOR: init: set HAPROXY_STARTUP_VERSION from the variable, not the macro
+  * BUG/MAJOR: log/sink: possible sink collision in sink_new_from_srv()
+  * BUG/MAJOR: quic: reject too large CRYPTO frames
+  * BUG/MEDIUM: promex: Use right context pointers to dump backends extra-counters
+  * BUG/MEDIUM: stktable: fix missing lock on some table converters
+  * BUG/MINOR: quic: reject NEW_TOKEN frames from clients
+  * BUG/MINOR: stktable: fix big-endian compatiblity in smp_to_stkey()
+
+-------------------------------------------------------------------
+Wed Jan 29 15:40:52 UTC 2025 - mrueckert@suse.de
+
+- Update to version 3.1.2+git0.cda631a79:
+  * [RELEASE] Released version 3.1.2
+  * BUG/MEDIUM: h1-htx: Properly handle bodyless messages
+  * BUG/MEDIUM: promex/resolvers: Don't dump metrics if no nameserver is defined
+  * BUG/MINOR: mux-quic: handle closure of uni-stream
+  * MINOR: mux-quic: change return value of qcs_attach_sc()
+  * MINOR: mux-quic: add traces on sd attach
+  * BUG/MINOR: mux-quic: fix wakeup on qcc_set_error()
+  * MINOR: config: Alert about extra arguments for errorfile and errorloc
+  * BUG/MINOR: log: Allow to use if/unless conditionnals for do-log action
+  * BUG/MEDIUM: mux-quic: do not attach on already closed stream
+  * BUG/MAJOR: mux-quic: properly fix BUG_ON on empty STREAM emission
+  * Revert "BUG/MAJOR: mux-quic: fix BUG_ON on empty STREAM emission"
+  * BUG/MEDIUM: mux-h2: Count copied data when looping on RX bufs in h2_rcv_buf()
+  * BUG/MAJOR: mux-quic: fix BUG_ON on empty STREAM emission
+  * DOC: config: add missing "track-sc0" in action keywords matrix
+  * BUG/MINOR: stats: fix segfault caused by uninitialized value in "show schema json"
+  * BUG/MEDIUM: queue: Make process_srv_queue return the number of streams
+  * MINOR: hlua: rename "tune.lua.preserve-smp-bool" to "tune.lua.bool-sample-conversion"
+  * BUG/MINOR: h2/rhttp: fix HTTP2 conn counters on reverse
+  * CLEANUP: mux-quic: remove dead err label in qcc_build_frms()
+  * BUG/MEDIUM: mux-quic: prevent BUG_ON() by refreshing frms on MAX_DATA
+  * REGTESTS: fix lua-based regtests using tune.lua.smp-preserve-bool
+  * MINOR: hlua: add option to preserve bool type from smp to lua
+  * DOC: config: add "tune.lua.burst-timeout" to the list of global parameters
+  * DOC: config: reorder "tune.lua.*" keywords by alphabetical order
+  * DOC: config: add example for server "track" keyword
+  * MINOR: mux-quic: hide traces when woken up on pacing only
+  * MINOR: trace: implement tracing disabling API
+  * MEDIUM: mux-quic: remove pacing specific code on qcc_io_cb
+  * MEDIUM/OPTIM: mux-quic: do not rebuild frms list on every send
+  * MINOR: mux-quic: split STREAM and RS/SS emission
+  * MINOR: mux-quic: extract code to build STREAM frames list
+  * MEDIUM/OPTIM: mux-quic: implement purg_list
+  * MEDIUM/OPTIM: mux-quic: define a recv_list for demux resumption
+  * MINOR: mux-quic: refactor wait-for-handshake support
+  * MINOR: quic: add traces
+  * CLEANUP: mux-quic: remove unused qcc member send_retry_list
+  * BUG/MEDIUM: mux-quic: do not mix qcc_io_send() return codes with pacing
+  * BUILD: debug: only dump/reset glitch counters when really defined
+  * BUG/MEDIUM: queues: Do not use pendconn_grab_from_px().
+  * BUG/MEDIUM: queues: Make sure we call process_srv_queue() when leaving
+  * BUG/MEDIUM: stconn: Only consider I/O timers to update stream's expiration date
+  * CLEANUP: quic: Rename some BBR functions in relation with bw probing
+  * BUG/MINOR: quic: missing Startup accelerating probing bw states
+  * REGTESTS: ssl: add a PEM with mix of LF and CRLF line endings
+  * BUG/MINOR: cli: cli_snd_buf: preserve \r\n for payload lines
+  * BUG/MINOR: quic: too permissive exit condition for high loss detection in Startup (BBR)
+  * BUG/MINOR: quic: fix the wrong tracked recovery start time value
+  * CLEANUP: quic: remove a wrong comment about ->app_limited (drs)
+  * MINOR: quic: reduce the private data size of QUIC cc algos
+  * BUG/MINOR: quic: reduce packet losses at least during ProbeBW_CRUISE (BBR)
+  * BUG/MINOR: quic: underflow issue for bbr_inflight_hi_from_lost_packet()
+  * BUG/MINOR: quic: remove max_bw filter from delivery rate sampling
+  * BUG/MINOR: quic: wrong bbr_target_inflight() implementation
+  * BUG/MINOR: quic: fix BBB max bandwidth oscillation issue.
+  * BUG/MINOR: quic: wrong logical statement in in_recovery_period() (BBR)
+  * MINOR: window_filter: rely on the time to update the filter samples (QUIC/BBR)
+
+-------------------------------------------------------------------
 Thu Dec 12 15:13:23 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.1.1+git0.717960de0:

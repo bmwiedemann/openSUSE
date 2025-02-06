@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 16:19:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add pytest.patch to fix compatibility with new pytest
+
+-------------------------------------------------------------------
 Wed Oct 23 13:02:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove ipython dependency for Leap

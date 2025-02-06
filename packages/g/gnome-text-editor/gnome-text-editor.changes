@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:01:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Ensure search context is disposed to help avoid background work
+    after a tab has been closed
+  + Use weak refs when searching asynchronously to ensure tabs may
+    be disposed during background work
+  + Close language dialong when Escape is pressed
+  + Fix a potentially NULL tooltip
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 22 20:06:45 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:

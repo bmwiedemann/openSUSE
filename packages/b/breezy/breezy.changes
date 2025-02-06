@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 21 23:29:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix vendoring in _service && revendor
+- Fix packaging bugs (make rpmlint more happy and switch to wheel
+  workflow)
+- Add Debian patches:
+  - 03_spurious_test_failure.patch
+  - 08_disable_sphinx_epytext.patch
+  - 16_generate_ids.patch
+- Add bash completion
+
+-------------------------------------------------------------------
 Thu Nov  7 22:57:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.3.9:

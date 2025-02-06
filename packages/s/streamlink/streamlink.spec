@@ -1,7 +1,7 @@
 #
 # spec file for package streamlink
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           streamlink%{psuffix}
-Version:        7.0.0
+Version:        7.1.2
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -47,7 +47,6 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-trio >= 0.25.0
 BuildRequires:  python3-trio-typing
 BuildRequires:  python3-trio-websocket >= 0.9.0
-BuildRequires:  python3-typing_extensions >= 4.0.0
 BuildRequires:  python3-urllib3 >= 1.26.0
 BuildRequires:  python3-versioningit >= 2.0.0
 BuildRequires:  python3-websocket-client >= 1.2.1
@@ -70,7 +69,6 @@ Requires:       python3-pycryptodome >= 3.4.3
 Requires:       python3-requests >= 2.26
 Requires:       python3-trio >= 0.22.0
 Requires:       python3-trio-websocket >= 0.9.0
-Requires:       python3-typing-extensions >= 4.0.0
 Requires:       python3-urllib3 >= 1.26.0
 Requires:       python3-websocket-client >= 1.2.1
 Conflicts:      python3-PySocks = 1.5.7

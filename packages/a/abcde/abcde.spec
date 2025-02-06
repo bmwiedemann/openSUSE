@@ -1,7 +1,7 @@
 #
 # spec file for package abcde
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source99:       %{name}.keyring
 Patch0:         use-cddbmethod.patch
 # PATCH-FIX-OPENSUSE abcde.bug.204.patch -- https://abcde.einval.com/bugzilla/show_bug.cgi?id=204
 Patch1:         abcde.bug.204.patch
+Patch2:         abcde-use-gnudb.patch
 Requires:       cd-discid
 Requires:       cdparanoia
 Requires:       wget
@@ -60,6 +61,7 @@ tags to each file.
 %patch -P 0 -p1
 %endif
 %patch -P 1 -p0
+%patch -P 2 -p3
 
 %build
 

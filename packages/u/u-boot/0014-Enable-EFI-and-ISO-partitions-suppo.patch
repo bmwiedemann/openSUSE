@@ -1,4 +1,4 @@
-From b0d5bbd5c82b3d88bbc10f41fb1ef357ff46a8b8 Mon Sep 17 00:00:00 2001
+From 198a7c14de72a1ed4eac82e82c44342a965c7621 Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Thu, 21 Oct 2021 09:55:50 +0200
 Subject: [PATCH] Enable EFI and ISO partitions support on socfpga_de0_nano_soc
@@ -10,7 +10,7 @@ Subject: [PATCH] Enable EFI and ISO partitions support on socfpga_de0_nano_soc
  1 file changed, 2 deletions(-)
 
 diff --git a/configs/socfpga_de0_nano_soc_defconfig b/configs/socfpga_de0_nano_soc_defconfig
-index c16004fc29..13b55f38c2 100644
+index 04b051cea9..9ede10f98e 100644
 --- a/configs/socfpga_de0_nano_soc_defconfig
 +++ b/configs/socfpga_de0_nano_soc_defconfig
 @@ -44,8 +44,6 @@ CONFIG_CMD_EXT4_WRITE=y

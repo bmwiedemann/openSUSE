@@ -269,4 +269,20 @@
     <comment></comment>
     <requestid>1195086</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6a5229f92e69bfed89a6520ede2718a1</srcmd5>
+    <version>6.4.0</version>
+    <time>1737389669</time>
+    <user>anag+factory</user>
+    <comment>- move typelib back to the right location
+- update to 6.4.0
+  * libscreensaver: fix detection of monitor hotplug
+  * keybindings: Ignore shift-f10
+  * fix executable libraries
+  * Simplify authClient.py pam helper path
+  * unlock dialog: Allow password visibility to be toggled
+  * cs-backup-locker.c: Exit gracefully if incorrect arguments are given
+</comment>
+    <requestid>1238868</requestid>
+  </revision>
 </revisionlist>

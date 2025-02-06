@@ -1223,4 +1223,14 @@
     <comment></comment>
     <requestid>1148992</requestid>
   </revision>
+  <revision rev="143" vrev="3">
+    <srcmd5>e2bb40eea9812616827667aaa9b3fc14</srcmd5>
+    <version>3.6</version>
+    <time>1737651403</time>
+    <user>anag+factory</user>
+    <comment>- fixed build with gcc15
+  added patches:
+  - parted-do-version.patch</comment>
+    <requestid>1239472</requestid>
+  </revision>
 </revisionlist>

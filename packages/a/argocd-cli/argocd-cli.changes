@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 30 05:54:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.4:
+  * Bump version to 2.13.4 on release-2.13 branch (#21709)
+  * Merge commit from fork
+  * fix: oras-go client should fallback to docker config if no
+    credentials specified (cherry-pick 2.13 #18133) (#20872)
+  * fix: Policy/policy.open-cluster-management.io stuck in
+    progressing status when no clusters match the policy (#21296)
+    (cherry-pick #21297) (#21594)
+  * docs: add mkdocs configuration stanza to .readthedocs.yaml
+    (cherry-pick #21475) (#21609)
+  * fix: resolve the failing e2e appset tests for ksonnet
+    applications (cherry-pick #21580) (#21605)
+  * fix: login return_url doesn't work with custom server paths
+    (cherry-pick #21588) (#21603)
+  * chore(deps): bump go-git version to go-git/v5 5.13.1 (#21551)
+  * fix(appset): events not honouring configured namespaces
+    (#21219) (#21241) (#21520)
+  * Fix application url for custom base href (#21377) (#21515)
+  * docs: Update Screenshot in Orphaned Resources Monitoring
+    Section #20510 (cherry-pick #20533) (#21489)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.12.0 to
+    5.13.0 (cherry-pick #21329) (#21401)
+
+-------------------------------------------------------------------
 Fri Jan 03 20:14:22 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.3:

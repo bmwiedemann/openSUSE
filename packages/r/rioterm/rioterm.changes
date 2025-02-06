@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Tue Jan 28 17:33:09 UTC 2025 - nf@ioa.pm
+
+- Update to version 0.2.4:
+  * Breaking: Rio now doesn't allow anymore disable kitty keyboard
+    protocol.
+  * Fullwidth semantic escape characters.
+  * Fix: report of Enter/Tab/Backspace in kitty keyboard.
+  * Fix: use-kitty-keyboard-protocol = true doesn't work with tmux
+    #599.
+  * Fix: use-kitty-keyboard-protocol breaks F[5-12] on macOS #904.
+  * Rio now allows you to configure window title through
+    configuration via template.
+  * Perf improvement on text selection #898 by @marc2332.
+  * Window title is now updated regardless the Navigation Mode.
+  * Performance: Background and foreground data are only retrieved
+    if is asked (either color automation is enabled or window.title
+    contains any request for it).
+  * Support to window.macos-use-shadow (enable or disable shadow
+    on MacOS).
+  * Support to window.windows-corner-preference (options: Default,
+    DoNotRound,Round and RoundSmall).
+  * Support to window.windows-use-undecorated-shadow (default is
+    enabled).
+  * Support to window.windows-use-no-redirection-bitmap (This sets
+    WS_EX_NOREDIRECTIONBITMAP).
+  * Support for Unicode 16 characters.
+  * Support to line height.
+  * Renamed --title to --title-placeholder on CLI.
+  * Fixed: Unremovable bottom padding when using line-height #449.
+  * Introduce SwitchCurrentTabToPrev and SwitchCurrentTabToNext
+    actions #854 by @agjini.
+  * On X11, Wayland, Windows and macOS, improved scancode
+    conversions for more obscure key codes.
+  * Kitty keyboard protocol is now enabled by default.
+  * Allow Renderer to be configured cross-platform by Platform
+    property.
+  * Add ToggleFullscreen to configurable actions.
+  * Escape sequence to move cursor forward tabs ( CSI Ps I ).
+  * Always emit 1 for the first parameter when having modifiers in
+    kitty keyboard protocol.
+  * Microsoft Windows: fix the event loop not waking on
+    accessibility requests.
+  * Wayland: disable title text drawn with crossfont crate, use
+    ab_glyph crate instead.
+  * Fix iterm2 image protocol.
+  * Allow setting initial window title #806 by @xsadia.
+  * Fix runtime error after changing to a specific retroarch shader
+    on windows #788 by @chyyran.
+  * Makes editor.args and shell.args optional in config.toml #801
+    by @Nylme.
+  * Introduce navigation.open-config-with-split.
+  * Fix: Search seems broken in 0.2.0 #785.
+  * Regular font is now 400 as default weight.
+  * Support to chooseing font width #507.
+  * Support to multiconfiguration. Rio now allows you to have
+    different configurations per OS, you can write ovewrite Shell,
+    Navigation and Window.
+  * Fix: Grey triangle in the titlebar #778
+  * Update window title straight away (#779 by @hunger)
+  * Always update the title on windows and MacOS (#780 by @hunger)
+  * Note: The migration from 0.1.x to v0.2.x changed considerably
+    the renderer source code, although it was tested for 3 weeks
+    it's entirely possible that introduced bugs (hopefully not!).
+  * Sugarloaf: Major rewrite of font glyph logic.
+  * Sugarloaf: Removal of some unnecessary processing on shaping
+    logic.
+  * Sugarloaf: Rewrite/Change of render architecture, now sugarloaf
+    does not have any reference to column/lines logic.
+  * Breaking: Minimum MacOS version went from El Captain to Big Sur
+    on ARM64 and Catalina on Intel x86.
+  * Microsoft Windows: Rio terminal is now available on WinGet
+    packages.
+  * Microsoft Windows: Rio terminal is now available on MINGW
+    packages.
+  * Microsoft Windows: Rio support on ARM architecture by
+    @andreban.
+  * Support disable font hinting: fonts.hinting = false.
+  * Fix: Configuration updates triggered multiple times on one
+    save.
+  * Support to RetroArch shaders @igorsaux.
+  * Fix: Set notepad as a default editor on Windows by @igorsaux.
+  * Increased Linux font fallbacks list.
+  * Early initial split support (this feature is not yet stable).
+  * Fix: Preserve current working directory when opening new tabs
+    #725.
+  * Added SplitDown, SplitRight, CloseSplitOrTab, SelectNextSplit
+    and SelectPrevSplit actions.
+  * Fix: Window doesn't receive mouse events on Windows 11 by
+    @igorsaux.
+  * Support to hex RGBA (example: #43ff64d9) on colors/theme by
+    @bio on #696.
+  * Introduced renderer.strategy, options are Events and
+    Continuous.
+  * Fix: Window output lost when rio loses focus #706.
+  * VI Mode now supports search by @orhun.
+  * Use max frame per seconds based on the current monitor refresh
+    rate.
+  * breaking renderer.max-fps has been changed to
+    renderer.target-fps.
+  * Fix background color for underline and beam cursors when using
+    transparent window.
+  * Fix IME color for underline and beam cursors.
+  * Add default for Style property on Sugarloaf font.
+
+-------------------------------------------------------------------
 Wed Sep 25 13:24:45 UTC 2024 - Nico Fischer <nf@ioa.pm>
 
 - Update to version 0.1.16

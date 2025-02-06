@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:30:43 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 2.0.3:
+  * update BuildKit (0.19.0)
+  * update containerd-fuse-overlayfs (2.1.1)
+  * update bypass4netns (0.4.2)
+  * update RootlessKit (2.3.2)
+  * update containerd (2.0.2)
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * [doc] AppArmor profile setup for rootlesskit
+  * Correct `compose logs` command reference
+  * fix: save multiple images for the same image id to a tar archive
+  * build(deps): bump golangci/golangci-lint-action from 6.1.1 to 6.2.0
+  * reset spec if update returned error
+  * build(deps): bump docker/build-push-action from 6.11.0 to 6.12.0
+  * test: Add an test for added logic to TestRunWithInvalidPortThenCleanUp
+  * fix: Add the logic to clean up an orphaned etchosts directory
+  * test: refactor TestRunWithInvalidPortThenCleanUp
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump the docker group with 2 updates
+  * build(deps): bump github.com/containerd/platforms
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * Update containerd (1.7.25) in CI
+  * docs: Fix incorrect parameter description in documentation of nydus
+  * move vagrant CI to ubuntu 24.04
+  * bump up github.com/containerd/go-cni to 1.1.12
+  * build(deps): bump docker/build-push-action from 6.10.0 to 6.11.0
+  * build(deps): bump docker/setup-qemu-action from 3.2.0 to 3.3.0
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * remove old cni 1.6.1 checksum file
+  * update runc (1.2.4)
+  * build(deps): bump the golang-x group with 4 updates
+  * update CNI plugins (1.6.2)
+  * build(deps): bump github.com/moby/term from 0.5.0 to 0.5.2
+  * Refactor: Change function loadNetOpts from public to private
+  * Refactor: Encapsulate net opts loading in internalLabels
+  * Fix image inspect exit code on image not found error
+  * update:fix update pids-limit=0 error
+  * Fix duplicate image entries in k8s.io namespaces
+  * Add nerdctl build --add-host option support
+  * doc:add some doc for ulimit
+  * fix pull image process output from stderr to stdout
+  * build(deps): bump github.com/containerd/cgroups/v3 from 3.0.4 to 3.0.5
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * build(deps): bump the docker group with 2 updates
+  * Fix wrong commit sha for golangci action
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * update containerd (2.0.1), runc (1.2.3), buildKit (0.18.2), stargz-snapshotter (0.16.3)
+  * build(deps): bump docker/setup-buildx-action from 3.7.1 to 3.8.0
+  * build(deps): bump golangci/golangci-lint-action
+  * build(deps): bump github.com/containerd/imgcrypt/v2
+  * build(deps): bump github.com/containerd/containerd/v2
+  * When the port is 443, also save credentials without port
+  * Remove spurious cache true, default for action/go
+  * Switch github actions to commit sha
+  * build(deps): bump the stargz group with 3 updates
+  * cp integration tests
+  * Rewrite cp
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump golang.org/x/crypto in the golang-x group
+  * docs: add faq tips for buildkit cache folder
+  * 3432: Support --pull flag in nerdctl compose up
+  * build(deps): bump github.com/containerd/go-cni from 1.1.10 to 1.1.11
+  * build(deps): bump tonistiigi/xx from 1.6.0 to 1.6.1
+
+-------------------------------------------------------------------
 Mon Dec 16 08:31:13 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 2.0.2:

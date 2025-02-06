@@ -284,6 +284,7 @@ cat <<EOF > %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/bash.d/lmod
    abi <abi/3.0>,
 
    %_datadir/lmod/%{version}/init/*    r,
+   %_datadir/lmod/%{version}/libexec/addto ix,
 EOF
 
 mkdir -p %{buildroot}/%{_mandir}/man1

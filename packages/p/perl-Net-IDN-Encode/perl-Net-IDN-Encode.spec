@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-IDN-Encode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
+%define cpan_name Net-IDN-Encode
 Name:           perl-Net-IDN-Encode
 Version:        2.500
 Release:        0
-%define cpan_name Net-IDN-Encode
-Summary:        Internationalizing Domain Names in Applications (IDNA)
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Internationalizing Domain Names in Applications (UTS #46)
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CF/CFAERBER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=149108
+Patch0:         use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Module::Build) >= 0.42
 BuildRequires:  perl(Test::NoWarnings)
 %{perl_requires}
 
@@ -51,22 +51,22 @@ correctly encoded input. See perlunitut, perluniintro and perlunicode for
 details.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

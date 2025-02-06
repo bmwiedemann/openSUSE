@@ -4,6 +4,11 @@ Wed Dec 18 10:28:48 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 - Normalize jar mtimes for reproducible builds (boo#1134568)
 
 -------------------------------------------------------------------
+Tue Dec 17 08:38:10 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add epics plugin
+
+-------------------------------------------------------------------
 Sat Dec 14 13:55:55 UTC 2024 - matwey.kornilov@gmail.com
 
 - Update to version 5.12.0.348.g93f9bdcb:

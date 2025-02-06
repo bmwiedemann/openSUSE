@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 23 03:25:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.8.0:
+  * Improvements:
+    - Added std::initializer_list overloads for
+      (Unordered)RangeEquals matcher (gh#catchorg/Catch2#2915,
+      gh#catchorg/Catch2#2919).
+    - Added explicit casts to silence GCC's Wconversion
+      (gh#catchorg/Catch2#2875).
+    - Made the use of builtin_constant_p tricks in assertion
+      macros configurable (gh#catchorg/Catch2#2925) .
+    - Cleaned out Clang-Tidy's performance-enum-size warnings.
+    - Added support for using from_range generator with iterators
+      with value_type = const T (gh#catchorg/Catch2#2926).
+  * Bug fixes:
+    - Fixed crash when stringifying pre-1970 (epoch) dates on
+      Windows (gh#catchorg/Catch2#2944).
+    - Fixes and improvements for catch_discover_tests CMake
+      helper.
+    - Bumped up the minimum required CMake version to build Catch2
+      to 3.16.
+    - Meson build now provides option to avoid installing Catch2.
+
+-------------------------------------------------------------------
 Mon Sep 23 23:19:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.7.1:

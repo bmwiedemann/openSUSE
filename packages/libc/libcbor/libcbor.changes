@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 21 00:44:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Explicitly BuildRequire sphinx_rtd_theme. 
+
+-------------------------------------------------------------------
 Mon Sep 16 09:29:46 UTC 2024 - Eric Schirra <ecsos@opensuse.org>
 
 - The doc fails to build with an assert in sphinx in 15sp6 also.

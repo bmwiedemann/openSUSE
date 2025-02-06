@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:33:28 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Allow libmilter to be installed without local MTA as it can be
+  used with a remote MTA as well
+
+-------------------------------------------------------------------
+Tue Jan 28 09:22:40 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- reduce requires smtp_daemon to recommends, to allow e.g. smaller
+  clamav footprints.
+
+-------------------------------------------------------------------
 Tue Dec 17 12:20:45 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add sendmail.8.18.1-reproducibleuname.patch to not embed

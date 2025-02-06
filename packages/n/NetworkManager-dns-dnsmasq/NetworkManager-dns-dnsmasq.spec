@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package NetworkManager-dns-dnsmasq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           NetworkManager-dns-dnsmasq
 Version:        1.0
 Release:        0
@@ -26,6 +27,8 @@ Source0:        dns-dnsmasq.sh
 Source1:        NetworkManager-dns-dnsmasq-COPYING
 BuildRequires:  NetworkManager
 Requires:       NetworkManager
+Requires:       dnsmasq
+Requires:       sysconfig
 Supplements:    (NetworkManager and dnsmasq)
 BuildArch:      noarch
 

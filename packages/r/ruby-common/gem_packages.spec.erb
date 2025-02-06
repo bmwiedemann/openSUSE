@@ -159,7 +159,7 @@ Requires(preun): update-alternatives
 Requires(post): update-alternatives
 <% end -%>
 <% if has_plugins -%>
-Conflicts:      rubygem(<%= rb_pkg_abi %>)
+Conflicts:      rubygem(<%= rb_pkg_abi %>) = %{version}
 <% end -%>
 Enhances:       <%= rb_pkgname %>
 

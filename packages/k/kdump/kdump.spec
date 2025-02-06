@@ -57,7 +57,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        2.0.13
+Version:        2.0.14
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -92,6 +92,7 @@ BuildRequires:  qemu-vgabios
 %endif
 Requires:       /usr/bin/sed
 Requires:       dracut >= 047
+Requires:       ethtool
 Requires:       kexec-tools
 Requires:       makedumpfile
 %ifarch ppc64 ppc64le

@@ -451,4 +451,20 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment></comment>
     <requestid>1233958</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>869e5d322e72f97a793996a26e5a6b25</srcmd5>
+    <version>2025.1</version>
+    <time>1737559889</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2025.1:
+  + Add a new --kexec flag to ostree admin upgrade which will cause
+    the deployment to be loaded into kexec after the upgrade
+    completes
+  + If composefs is enabled at build time, always generate a
+    composefs blob at deployment time
+  + Configuring the prepare-root config now mostly only affects the
+    runtime state
+</comment>
+    <requestid>1239329</requestid>
+  </revision>
 </revisionlist>

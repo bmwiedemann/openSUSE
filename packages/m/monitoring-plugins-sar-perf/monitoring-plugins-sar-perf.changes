@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:50:00 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Requires Python3 and not old Python2 
+
+-------------------------------------------------------------------
+Mon Jan 27 09:28:18 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix version number, we don't want to downgrade this package.
+
+-------------------------------------------------------------------
+Fri Jan 24 09:58:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Conversion to _service pulled source from upstream
+- Add no-python2.patch to make script python3 compatible
+
+-------------------------------------------------------------------
 Wed Jul 24 12:24:59 CEST 2024 - ro@suse.de
 
 - check_iostat: report as critical and as "stuck" if read and

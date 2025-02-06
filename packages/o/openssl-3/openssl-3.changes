@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 13:15:51 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- bsc#1236136 CVE-2024-13176: Fix timing side-channel in ECDSA signature computation
+  * Add patch openssl-CVE-2024-13176.patch
+
+-------------------------------------------------------------------
 Mon Dec 23 20:14:08 UTC 2024 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Add support for userspace livepatching on ppc64le (jsc#PED-11850).

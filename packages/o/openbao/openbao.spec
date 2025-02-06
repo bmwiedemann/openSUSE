@@ -1,7 +1,7 @@
 #
 # spec file for package openbao
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define statedir_name openbao
 
 Name:           openbao
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0

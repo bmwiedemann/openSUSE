@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:55:01 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.0.0
+  * Move blurb test subcommand into test suite by @hugovk in #37
+  * Add support for Python 3.14 by @ezio-melotti in #40
+  * Validate gh-issue is int before checking range, and that gh-issue or bpo exists by @hugovk in #35
+  * Replace safe_mkdir(path) with os.makedirs(path, exist_ok=True) by @hugovk in #38
+  * Test version handling functions by @hugovk in #36
+  * Test textwrap_body, current_date and sortable_datetime by @hugovk in #42
+  * CI: Lint and test via uv by @hugovk in #32
+
+-------------------------------------------------------------------
 Wed Dec 11 10:16:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.3.0

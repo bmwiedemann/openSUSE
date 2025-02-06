@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 19:33:55 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- fix build on tumbleweed
+  * disable gimp plugin (gimp3 not supported)
+
+-------------------------------------------------------------------
 Sun May 14 06:53:37 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Rebase 0010-fix_missing_sane-config.patch with

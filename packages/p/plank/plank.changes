@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 09:29:39 UTC 2025 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Add trash-menu-header-workaround.patch with a workaround for
+  excessively large menu headers which get clipped (lp#1679883)
+
+-------------------------------------------------------------------
 Sun Sep  8 23:11:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update spec file to newer standards

@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-ccid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           pcsc-ccid
 %define _name ccid
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        PCSC Driver for CCID Based Smart Card Readers and GemPC Twin Serial Reader
 License:        LGPL-2.1-or-later
@@ -33,7 +33,7 @@ BuildRequires:  flex
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  meson
 BuildRequires:  pcsc-lite-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(udev)
@@ -74,7 +74,6 @@ cp -a src/towitoko/README README.towitoko
 
 %install
 %meson_install
-## make DESTDIR=%{buildroot} install %{?_smp_mflags}
 # Copied elsewhere:
 mkdir -p %{buildroot}/%{_udevrulesdir}
 sed 's:GROUP="pcscd":GROUP="scard":' <src/92_pcscd_ccid.rules >%{buildroot}/%{_udevrulesdir}/92_pcscd_ccid.rules

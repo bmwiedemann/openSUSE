@@ -3749,4 +3749,20 @@
     <comment>Softwarestack update</comment>
     <requestid>1231970</requestid>
   </revision>
+  <revision rev="505" vrev="1">
+    <srcmd5>0de5a53a8e7b905355d97d305f0b9cae</srcmd5>
+    <version>17.35.18</version>
+    <time>1737490188</time>
+    <user>anag+factory</user>
+    <comment>Softwarestack update</comment>
+    <requestid>1239105</requestid>
+  </revision>
+  <revision rev="506" vrev="1">
+    <srcmd5>be35452c236c10ba73e774585fb45652</srcmd5>
+    <version>17.35.19</version>
+    <time>1737722282</time>
+    <user>dimstar_suse</user>
+    <comment>Softwarestack update</comment>
+    <requestid>1239629</requestid>
+  </revision>
 </revisionlist>

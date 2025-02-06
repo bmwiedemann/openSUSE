@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sun Jan 26 19:18:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.3
+  Bugfixes
+  * It was discovered, that exclusive class note terminations were
+    too slow.
+  * Fix a regression introduced in 2.4.0 that allowed the
+    amplitude of a voice playing in delay phase to rise infinitely.
+  * MSGS drum-style note-cut has been converted to an opt-in
+    setting synth.note-cut.
+  * Support for SDL2 has been disabled by default.
+  * Fix a regression introduced in 2.4.1 that could have caused
+    infinite audio gain output for some MIDI files under certain
+    configurations.
+  * Silence a warning issued by Systemd v254+
+- Update to version 2.4.2
+  * Fix audible clicks when turning off voices while using a high
+    filter resonance.
+  * Restore discovery of libsndfile.
+  * Fix a race condition when loading SF3 files containing
+    multiple uncompressed samples.
+- Update to version 2.4.1
+  * Fix clicks and pops caused when changing parameters of the
+    lowpass filter.
+  * Minor adjustment to AWE32 NRPN behavior.
+- Update to version 2.4.0
+  New Features
+  * Implement MSGS-style Drum Note Cut.
+  * Add support for AWE32 NRPNs.
+  * Add support for Polyphone's sample loop mode release.
+  * Add support for SF2.04 absolute value modulators.
+  Breaking Changes
+  * LASH support has been removed.
+  Musically Breaking changes
+  * The default settings for reverb and chorus have been tuned to
+    provide a more natural perception.
+  * The behavior of the volume envelope's delay phase was
+    previously incorrect.
+  * The ModLfoToVolume generator was not able to increase the
+    volume.
+  * Fluidsynth's default device-id was changed, allowing it to
+    process (most) SysEX events without further configuration.
+  * Previously, some modulators were treated in a non-standard way
+  Bug Fixes
+  * The former linear interpolation of IIR filter coefficients
+    could have caused audible clicks and cracks (#1345) - yet
+    there is still a potential for clicks and cracks, see #1415
+- Update to version 2.3.7
+  * Fix SF3 decoder producing crackling sound for loud samples.
+  * MIDI Format 2 is now rejected correctly since it was never
+    supported.
+  * Fix a regression introduced in 2.3.2 causing fluidsynth to
+    fail discovering Oboe.
+- Update to version 2.3.6
+  * Fix discovery of gobject by CMake.
+  * Fix a numerical instability that caused the chorus effect to
+    stop working correctly when fluidsynth was compiled in single
+    precision mode.
+  * Fix timing issues in MIDI player related to incorrect handling
+    of running status.
+  * Fix ignoring LSB for RPN Pitch bend range events.
+
+-------------------------------------------------------------------
 Thu Apr  4 09:08:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.5:

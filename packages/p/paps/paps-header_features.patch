@@ -1,10 +1,10 @@
 ---
- src/paps.1  |   10 ++++++++++
+ src/paps.1  |   12 ++++++++++++
  src/paps.cc |   28 +++++++++++++++++++++-------
- 2 files changed, 31 insertions(+), 7 deletions(-)
+ 2 files changed, 33 insertions(+), 7 deletions(-)
 
---- src/paps.1
-+++ src/paps.1	2024-09-18 08:22:10.442089458 +0000
+--- a/src/paps.1
++++ b/src/paps.1
 @@ -300,6 +300,18 @@ Sets the formatting for the center of th
  Use \fItext\fR as the title string for page header. By default the input
  filename or "stdin" is used.
@@ -13,7 +13,7 @@
 +Set the header font description. Default is Monospace Bold 12.
 +.TP
 +.B \-\-header\-date\-format=fmt
-+Set the header date format. Default is %c (see 
++Set the header date format. Default is %c (see
 +.BR strftime (3)).
 +.TP
 +.B \-\-header\-rule\-thickness=val
@@ -24,8 +24,8 @@
  .B \-\-markup
  Interpret input as pango markup. Pango Text Attribute Markup Language allows
  marking parts of the text with tags defining additional attributes such as font
---- src/paps.cc
-+++ src/paps.cc	2024-09-18 08:31:28.428495814 +0000
+--- a/src/paps.cc
++++ b/src/paps.cc
 @@ -71,6 +71,8 @@ using namespace fmt;
  #define DEFAULT_FONT_SIZE       "12"
  #define HEADER_FONT_FAMILY      "Monospace Bold"

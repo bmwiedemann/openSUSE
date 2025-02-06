@@ -134,4 +134,22 @@
   + rabbitmq-c-default-cacert-location.patch</comment>
     <requestid>1222118</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e0ac46ec1ef3bc377f0a1652c904da75</srcmd5>
+    <version>0.15.0</version>
+    <time>1737389685</time>
+    <user>anag+factory</user>
+    <comment>- version update to 0.15.0
+  ## v0.15.0 - 2024-11-19
+  ## Fixed
+  - Warning on MacOS about incompatible function declaration
+  - Logic when decoding AMQP data after bad data may cause crash (#837)
+  - Use SSL_get1_peer_certificate when compiling against OpenSSL 3+
+  ## Changed
+  - Updates to various github actions.
+  ## Added
+  - Add amqp_publisher_confirm_wait function (#841)
+  - Add amqp_literal_bytes macro (#844) (forwarded request 1238855 from elimat)</comment>
+    <requestid>1238931</requestid>
+  </revision>
 </revisionlist>

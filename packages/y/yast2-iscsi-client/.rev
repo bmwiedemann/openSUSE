@@ -1432,4 +1432,12 @@
     <comment>submit new version 5.0.5</comment>
     <requestid>1224148</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>27caacb1660a7dedb35a7b037d8d56cd</srcmd5>
+    <version>5.0.6</version>
+    <time>1737722307</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.6</comment>
+    <requestid>1239780</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 22 02:29:28 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to v0.11.4:
+  * Bug fixes
+  * https://github.com/oneapi-src/unified-runtime/pull/2579
+
+- Update to v0.11.3:
+  * Update usage of zeCommandListImmediateAppendCommandListsExp to
+	use dlsym
+  * DeviceMSAN and DeviceASAN improvements
+  * Bug fixes
+  * https://github.com/oneapi-src/unified-runtime/pull/2526 
+
+-------------------------------------------------------------------
 Fri Jan 10 18:46:12 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Added the static library to the devel package

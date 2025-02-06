@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQRCode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,10 +37,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
 Provides:       python-PyQRCodeNG = %{version}-%{release}
 Provides:       python-pyqrcodeng = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

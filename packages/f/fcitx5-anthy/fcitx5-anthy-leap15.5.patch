@@ -1,30 +1,30 @@
-Index: fcitx5-anthy-5.1.4/CMakeLists.txt
+Index: fcitx5-anthy-5.1.6/CMakeLists.txt
 ===================================================================
---- fcitx5-anthy-5.1.4.orig/CMakeLists.txt
-+++ fcitx5-anthy-5.1.4/CMakeLists.txt
-@@ -11,7 +11,7 @@ include(ECMUninstallTarget)
- option(ENABLE_TEST "Build Test" On)
- option(ENABLE_COVERAGE "Build the project with gcov support (Need ENABLE_TEST=On)" Off)
+--- fcitx5-anthy-5.1.6.orig/CMakeLists.txt
++++ fcitx5-anthy-5.1.6/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
  
--find_package(Fcitx5Core 5.1.2 REQUIRED)
-+find_package(Fcitx5Core 5.0.18 REQUIRED)
- find_package(Fcitx5Module REQUIRED COMPONENTS Clipboard)
- find_package(Gettext REQUIRED)
- find_package(PkgConfig REQUIRED)
-Index: fcitx5-anthy-5.1.4/src/engine.cpp
+ project(fcitx5-anthy VERSION 5.1.6)
+ 
+-set(REQUIRED_FCITX_VERSION 5.1.12)
++set(REQUIRED_FCITX_VERSION 5.0.18)
+ find_package(ECM 1.0.0 REQUIRED)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+ include(FeatureSummary)
+Index: fcitx5-anthy-5.1.6/src/engine.cpp
 ===================================================================
---- fcitx5-anthy-5.1.4.orig/src/engine.cpp
-+++ fcitx5-anthy-5.1.4/src/engine.cpp
+--- fcitx5-anthy-5.1.6.orig/src/engine.cpp
++++ fcitx5-anthy-5.1.6/src/engine.cpp
 @@ -276,7 +276,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
              FCITX_ANTHY_INFO() << "Anthy: " << msg;
          },
          0);
--    if constexpr (fcitx::isAndroid() || fcitx::isApple()) {
-+    /*if constexpr (fcitx::isAndroid() || fcitx::isApple()) {
+-    if constexpr (fcitx::isAndroid() || fcitx::isApple() ||
++    /*if constexpr (fcitx::isAndroid() || fcitx::isApple() ||
+                   fcitx::isEmscripten()) {
          const auto &sp = fcitx::StandardPath::global();
          std::string anthy_conf = sp.locate(fcitx::StandardPath::Type::Data,
-                                            "anthy/anthy-unicode.conf");
-@@ -292,7 +292,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
+@@ -293,7 +293,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
          anthy_conf_override(
              "XDG_CONFIG_HOME",
              sp.userDirectory(fcitx::StandardPath::Type::Data).c_str());

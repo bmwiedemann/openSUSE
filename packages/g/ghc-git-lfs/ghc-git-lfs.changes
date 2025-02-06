@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 20 20:22:43 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-lfs to version 1.2.3.
+  haskell-git-lfs (1.2.3) unstable; urgency=medium
+
+    * Expand containers bounds to allow 0.7
+
+   -- Joey Hess <id@joeyh.name>  Mon, 20 Jan 2025 16:08:14 -0400
+
+-------------------------------------------------------------------
 Mon Dec 16 07:55:05 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Jailbreak version constraint on containers to fix the build.

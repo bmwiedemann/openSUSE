@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 22 22:41:56 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.3.2
+  * Updated Chromium to 130.0.6723.191
+  * fix yellow background of composition text with wayland text-input-v3
+  * The avoidClosingConnections option for session.clearData now properly
+    defaults to false when the dataTypes option is not set.
+  * Fixed an issue where drag-dropping two directories would cause
+    getAsFileSystemHandle to never resolve.
+  * Fixed a potential crash in chrome.tabs.update().
+  * security fixes for CVE-2025-0434 CVE-2025-0436 CVE-2025-0437 (bsc#1235892)
+- Add string_view-incomplete-CodePointIterator.patch to fix build error
+
+-------------------------------------------------------------------
 Tue Jan 14 18:51:39 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add MakeSbixTypeface-null-pointer-call.patch

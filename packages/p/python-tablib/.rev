@@ -173,4 +173,20 @@
   * Move more setup stuff to pyproject.toml</comment>
     <requestid>1223822</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e8a05b987242b2bf06a8246f7406e340</srcmd5>
+    <version>3.7.0</version>
+    <time>1737389693</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238964</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>3682b611464219f94065ac3beb3b6337</srcmd5>
+    <version>3.7.0</version>
+    <time>1737490230</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239134</requestid>
+  </revision>
 </revisionlist>

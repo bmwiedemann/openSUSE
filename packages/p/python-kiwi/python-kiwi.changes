@@ -1,4 +1,230 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:47:55 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.7 → 10.2.8
+
+-------------------------------------------------------------------
+Sat Jan 25 17:55:15 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase size for agama integration test build
+
+  Agama needs more space to build now
+
+-------------------------------------------------------------------
+Sat Jan 25 17:41:59 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed agama integration test
+
+  rubygem-byebug and rubygem-agama-yast seems to
+  no longer exist
+
+-------------------------------------------------------------------
+Sat Jan 25 17:38:01 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update TW integration tests
+
+  Package nscd was dropped from TW
+
+-------------------------------------------------------------------
+Wed Jan 22 10:38:09 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix documentation regarding URI styles
+
+  In reference to commit 760a65558f9e2e91d3eaa3a2f9503ff596984b48
+  the support for iso:// URI types was dropped some time ago.
+  However, the documentation was not properly updated. This
+  commit fixes it
+
+-------------------------------------------------------------------
+Tue Jan 21 10:39:32 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix return value of grub helper methods
+
+  The grub helper methods to find grub tools returns a
+  None value if the tool cannot be found. This None value
+  could be used later in a Command call where it will be
+  used in a join() command to log the resulting commandline.
+  This join() call then fails and raises an unhandled error
+  causing a stack trace in the application. This commit
+  fixes it
+
+-------------------------------------------------------------------
+Mon Jan 20 17:54:08 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added disk validation for duplicate installs
+
+  Installing the same image to different storage disks on the
+  same machine creates device conflicts with unexpected side
+  effects. This commit adds a validation based on the PTUUID
+  of the disk image to check if another device on the system
+  has the same ID and if yes, does not allow to install the
+  image again including a message which device takes the same
+  identifier. This references bsc#1228741
+
+-------------------------------------------------------------------
+Mon Jan 20 09:13:22 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed documentation for signing key attribute
+
+  The source locator name for local files was incorrect
+
+-------------------------------------------------------------------
+Sat Jan 18 17:58:02 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.6 → 10.2.7
+
+-------------------------------------------------------------------
+Sat Jan 18 17:53:07 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Added a new troubleshooting chapter as subsection to
+  the Build Host Constraints named Package Manager Behavior.
+  It serves the purpose to describe options for the customer
+  to change the default package manager behavior which
+  we from the kiwi side do not influence intentionally.
+  This is a followup change to bsc#1235448
+
+-------------------------------------------------------------------
+Tue Jan 14 10:52:43 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop still present tox artifacts
+
+  There were still some left over tox files and the
+  documentation contribution chapter was also wrong at
+  several places
+
+-------------------------------------------------------------------
+Mon Jan 13 14:45:55 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for reading optional pkgmgr env file
+
+  If there is a file .kiwi.package_manager.env in the root of
+  the image tree it will be read and put into the caller environment for
+  the selected package and repository manager. There are features
+  in e.g zypper which can only be used via env variables.
+  This Fixes bsc#1235448
+
+-------------------------------------------------------------------
+Mon Jan 13 10:18:49 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Auto convert unit test XML data to schema v8.3
+
+-------------------------------------------------------------------
+Mon Jan 13 09:45:32 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Rename btrfs_root_is_snapshot
+
+  Rename btrfs_root_is_snapshot to btrfs_root_is_snapper_snapshot.
+  This happens in preparation for the changes suggested in #2697
+  where we want to get rid of snapper specific btrfs code which
+  will be available in snapper natively soon. To make sure a btrfs
+  layout specific to snapper(and SUSE), the implicitly used attribute
+  named btrfs_root_is_snapshot now becomes explicit and its new
+  name will indicate that snapper sits behind it. Along with the
+  rename a XSLT stylesheet to automatically convert the old name
+  into the new name for schema v8.3 will be performed.
+
+-------------------------------------------------------------------
+Mon Jan 13 09:25:29 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.5 → 10.2.6
+
+-------------------------------------------------------------------
+Fri Jan 10 16:49:03 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed donate button target
+
+-------------------------------------------------------------------
+Wed Jan 08 21:51:57 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added LUKS reencryption support
+
+  Added rd.kiwi.oem.luks.reencrypt boot option consumed by the
+  kiwi-repart dracut module. For OEM LUKS2 encrypted disk images.
+  If set, reencrypts the disk prior an eventual resize and therefore
+  creates a new key pool and master key. The reencryption is advisable
+  if the image binary is not protected. With access to the image
+  binary it's possible to extract the luks header which then allows to
+  decrypt the data unless it was reencrypted. The reencryption process
+  only runs if the checksum of the luks header still matches the one
+  from the original disk image. Be aware that the reencryption will
+  ask for the passphrase if the image has been built with an initial
+  luks passphrase.
+
+-------------------------------------------------------------------
+Wed Jan 08 09:51:06 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed arm/tumbleweed/test-image-rpi
+
+  No ruby required for this integration test build
+
+-------------------------------------------------------------------
+Tue Jan 07 09:58:22 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Plain zipl loader needs boot partition
+
+  If the rootfs is something zipl cannot read, we need an
+  extra boot partition using a supported filesystem
+
+-------------------------------------------------------------------
+Tue Jan 07 09:44:06 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed IBM-Cloud-Standard profile
+
+  The test-image-MicroOS integration test builds an IBM-Cloud-Standard
+  profile as encrypted variant with a random key that is not protected
+  by an encrypted boot image. This doesn't make sense. Thus the
+  encryption setup for the IBM cloud standard build got removed.
+  Use the IBM-Cloud-Secure-Execution profile to test encrypted
+  secure linux builds
+
+-------------------------------------------------------------------
+Tue Jan 07 09:18:55 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-qcow-openstack
+
+  rsh package was dropped from TW
+
+-------------------------------------------------------------------
+Tue Dec 31 11:28:49 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix genprotimg for s390 builds
+
+  A recent change on genprotimg now forbids to use --cert in
+  combination with --no-verify, even though this was allowed
+  before.
+
+-------------------------------------------------------------------
+Fri Dec 20 12:57:29 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix documentation for repo, package gpg settings
+
+  In contrast to the documentation, kiwi sets default values
+  for any gpg setting if not explicitly specified differently.
+  We want to avoid to inherit a behavior from how the distribution
+  packages the package manager. This commit fixes the documentation
+  to be in line with the implementation
+
+-------------------------------------------------------------------
+Thu Dec 19 11:26:07 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop insecure and unsupported md5 digest
+
+  Decommission the Checksum.md5() method and move all places
+  in code to sha256(). The md5 digest is considered insecure
+  and has also been removed from hashlib as a supported digest.
+  This Fixes #2696
+
+-------------------------------------------------------------------
+Thu Dec 19 10:48:43 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix config functions action
+
+  The action failed on the setup of the runtime because the upgrade
+  of pip failed.
+
+-------------------------------------------------------------------
 Thu Dec 19 10:35:24 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.4 → 10.2.5

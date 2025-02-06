@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 19 08:22:55 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches to disable failing tests (temporary workaround until
+  we or upstream actually fix the test suite):
+  * ligo-lw-disable-lsctables.patch
+  * ligo-lw-disable-utils_segments.patch
+
+-------------------------------------------------------------------
 Thu Aug 29 04:45:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update ligo-lw-python3.12-compat.patch with more

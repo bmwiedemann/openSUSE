@@ -314,4 +314,14 @@ For staging:n</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219472</requestid>
   </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>d9b5ddae3935ff23fbc4a5edae921fdf</srcmd5>
+    <version>3.2.1</version>
+    <time>1737651404</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1239482 from darix
+
+- do not generate unversioned conflicts</comment>
+    <requestid>1239483</requestid>
+  </revision>
 </revisionlist>

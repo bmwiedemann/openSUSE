@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan 13 21:00:07 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.4.0
+  * Add: option [auth] cache_logins/cache_successful_logins_expiry/cache_failed_logins for caching logins
+  * Improve: [auth] log used hash method and result on debug for htpasswd authentication
+  * Improve: [auth] htpasswd file now read and verified on start
+  * Add: option [auth] htpasswd_cache to automatic re-read triggered on change (mtime or size) instead reading on each request
+  * Improve: [auth] htpasswd: module 'bcrypt' is no longer mandatory in case digest method not used in file
+  * Improve: [auth] successful/failed login logs now type and whether result was taken from cache
+  * Improve: [auth] constant execution time for failed logins independent of external backend or by htpasswd used digest method
+  * Drop: support for Python 3.8
+  * Add: option [auth] ldap_user_attribute
+  * Add: option [auth] ldap_groups_attribute as a more flexible replacement of removed ldap_load_groups
+
+- Update to 3.3.3
+  * Add: display mtime_ns precision of storage folder with condition warning if too less
+  * Improve: disable fsync during storage verification
+  * Improve: suppress duplicate log lines on startup
+  * Contrib: logwatch config and script
+  * Improve: log precondition result on PUT request
+
+- Update to 3.3.2
+  * Fix: debug logging in rights/from_file
+  * Fix: ignore empty RRULESET in item
+  * Fix: also remove 'item' from cache on delete
+  * Fix: set PRODID on collection upload (instead of vobject is inserting default one)
+  * Fix: buggy cache file content creation on collection upload
+  * Add: option [storage] use_cache_subfolder_for_item for storing 'item' cache outside collection-root
+  * Add: option [storage] filesystem_cache_folder for defining location of cache outside collection-root
+  * Add: option [storage] use_cache_subfolder_for_history for storing 'history' cache outside collection-root
+  * Add: option [storage] use_cache_subfolder_for_synctoken for storing 'sync-token' cache outside collection-root
+  * Add: option [storage] folder_umask for configuration of umask (overwrite system-default)
+  * Add: option [storage] use_mtime_and_size_for_item_cache for changing cache lookup from SHA256 to mtime_ns + size
+  * Add: option [auth] uc_username for uppercase conversion (similar to existing lc_username)
+  * Add: option [logging] storage_cache_action_on_debug for conditional logging
+  * Improve: avoid automatically invalid cache on upgrade in case no change on cache structure
+  * Improve: log important module versions on startup
+  * Improve: auth.ldap config shown on startup, terminate in case no password is supplied for bind user
+
+-------------------------------------------------------------------
 Wed Nov 27 14:00:09 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.3.1
@@ -9,6 +49,7 @@ Wed Nov 27 14:00:09 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * Fix: expand does not take timezones into account
   * Fix: expand does not support overridden recurring events
   * Fix: expand does not honor start and end times
+
 - Update to 3.3.0
   * Adjustment: option [auth] htpasswd_encryption change default from "md5" to "autodetect"
   * Adjustment: switch from setup.py to pyproject.toml (but keep files for legacy packaging)

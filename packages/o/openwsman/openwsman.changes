@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 22 14:54:01 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 2.8.1
+  - openssl 3 requires 2048 bits as minimal key size, adapt key
+    generation accordingly
+  - Refresh README.md to reflect current options
+  - revert minimal cmake version to 3.12 (Alexander Usyskin)
+  - support reproducible builds (Bernhard Wiedemann)
+  - properly report errors from openssl 3
+
+-------------------------------------------------------------------
+Sat Dec  7 02:02:41 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use strip-nondeterminism to normalize jar mtimes for reproducible builds
+
+-------------------------------------------------------------------
 Thu Nov 28 12:36:35 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
 
 - Update to 2.8.0

@@ -1637,4 +1637,21 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     restart_syscall mechanism. (forwarded request 1225012 from Andreas_Schwab)</comment>
     <requestid>1225014</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>6a9b65379416e0c92e0b1f548a6e9a6a</srcmd5>
+    <version>6.13</version>
+    <time>1737651388</time>
+    <user>anag+factory</user>
+    <comment>- Update to strace 6.13
+  * Implemented decoding of getxattrat, setxattrat, listxattrat,
+    and removexattrat syscalls.
+  * Updated decoding of struct io_uring_clone_buffers, struct io_uring_napi,
+    and struct perf_event_attr.
+  * Updated decoding of crypto_user_alg netlink attributes of NETLINK_CRYPTO.
+  * Implemented decoding of IFLA_MCTP_PHYS_BINDING netlink attribute.
+  * Updated lists of AT_*, BPF_*, FAN_*, IORING_*, MADV_*, NT_*, and SCM_*
+    constants.
+  * Updated lists of ioctl commands from Linux 6.13. (forwarded request 1239874 from Andreas_Schwab)</comment>
+    <requestid>1239875</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-From 68ce5d43980b817fcf2759144d14bcead3689378 Mon Sep 17 00:00:00 2001
+From 388118cd1bf1bb902212fe98bb2b2a6b3ec8e013 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Wed, 8 Jan 2025 10:51:06 -0800
 Subject: [PATCH 3/4] configuration changes for default niri session
@@ -22,5 +22,5 @@ index 845a4d0..883eeac 100644
          // accel-profile "flat"
          // scroll-method "two-finger"
 -- 
-2.47.1
+2.48.1
 

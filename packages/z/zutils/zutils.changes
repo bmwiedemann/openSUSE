@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 19 13:32:23 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.14:
+  * zupdate.cc: '-r -d' now keeps last component of dir arguments.
+  * zutils.texi: New chapter 'Syntax of command-line arguments'.
+  * check.sh: Use 'cp' instead of 'cat'.
+
+-------------------------------------------------------------------
 Sat Feb 10 16:37:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.13:

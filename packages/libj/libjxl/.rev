@@ -201,4 +201,12 @@ Leap 15.5
   on big-endian architectures.</comment>
     <requestid>1237050</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>103b2a1016e1186a5b28c03bf5e65d49</srcmd5>
+    <version>0.11.1</version>
+    <time>1737722292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239682</requestid>
+  </revision>
 </revisionlist>

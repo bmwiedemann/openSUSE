@@ -1,7 +1,7 @@
 #
 # spec file for package python-geoip2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-geoip2
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/maxmind/GeoIP2-python
 Source:         https://files.pythonhosted.org/packages/source/g/geoip2/geoip2-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -37,9 +39,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-magic >= 0.4.18}
 BuildRequires:  %{python_module requests >= 2.14.0}
 # /SECTION
-Recommends:     python-aiohttp >= 3.6.2
+Requires:       python-aiohttp >= 3.6.2
 Requires:       python-maxminddb >= 2.0.0
 Requires:       python-requests >= 2.14.0
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,10 +54,10 @@ The API also works with MaxMind's free GeoLite2 databases.
 %setup -q -n geoip2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

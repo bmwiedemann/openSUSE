@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:31:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (jsc#PED-266).
+
+-------------------------------------------------------------------
 Fri Feb 23 11:56:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

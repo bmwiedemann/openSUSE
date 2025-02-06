@@ -1004,4 +1004,20 @@ behaviour fixing bsc#941569</comment>
 - Replace over-the-top `find -exec rm` by just -delete (forwarded request 1232791 from jengelh)</comment>
     <requestid>1233845</requestid>
   </revision>
+  <revision rev="118" vrev="4">
+    <srcmd5>d1c5741e454c1ac00de4d68f00266aef</srcmd5>
+    <version>2.6.10</version>
+    <time>1737651705</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239621</requestid>
+  </revision>
+  <revision rev="119" vrev="5">
+    <srcmd5>404a02d128110f8f42924b22cc6952bb</srcmd5>
+    <version>2.6.10</version>
+    <time>1738072685</time>
+    <user>anag+factory</user>
+    <comment>bugowner:rjain openvpn-CVE-2024-5594 Patch applied for the submission by rjain (forwarded request 1239460 from rjain)</comment>
+    <requestid>1240409</requestid>
+  </revision>
 </revisionlist>

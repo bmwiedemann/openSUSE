@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 27 14:39:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 3.1.0
+  * certbot-dns-rfc2136's minimum required version of dnspython is 
+    now 2.6.1.
+- convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Dec  3 14:52:57 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to version 3.0.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tweepy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           python-tweepy
-Version:        4.14.0
+Version:        4.15.0
 Release:        0
 Summary:        Twitter library for python
 License:        MIT
 URL:            https://github.com/tweepy/tweepy
 Source:         https://github.com/tweepy/tweepy/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#tweepy/tweepy#2205
-Patch0:         support-python-313.patch
-# PATCH-FIX-UPSTREAM gh#tweepy/tweepy#2179
-Patch1:         loosen-requests-oauthlib.patch
+# PATCH-FIX-UPSTREAM: Bump version number to 4.15.0
+Patch:          https://github.com/tweepy/tweepy/commit/c1eb4f3f7bfaf5a54db73ae28f7395e8cbf01752.patch#/fix-package-version.patch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module async-lru}
 BuildRequires:  %{python_module pip}

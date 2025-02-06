@@ -304,4 +304,12 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/docs/release/14.15/</comment>
     <requestid>1225751</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7d230fdd344ca5cb8f18d4761e01099e</srcmd5>
+    <version>14.15</version>
+    <time>1738080591</time>
+    <user>anag+factory</user>
+    <comment>- Fix build, add postgresql-tzdata2025a.patch</comment>
+    <requestid>1240823</requestid>
+  </revision>
 </revisionlist>

@@ -53,6 +53,7 @@ BuildArch:      noarch
 # SECTION BuildRequires for documentation
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-reno
+BuildRequires:  python311-sphinx_rtd_theme
 BuildRequires:  python311-sphinxcontrib-programoutput
 # /SECTION
 

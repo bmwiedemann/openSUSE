@@ -36,8 +36,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.0-rc5
-Version:        10.0~rc5
+%define downloadver  10.0
+Version:        10.0
 Release:        0
 Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later

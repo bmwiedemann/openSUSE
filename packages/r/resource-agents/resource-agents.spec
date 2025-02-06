@@ -1,7 +1,7 @@
 #
 # spec file for package resource-agents
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.16.0+git2.20a433c3
+Version:        4.16.0+git38.da9ef4e2
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -47,7 +47,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  cluster-glue-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
 BuildRequires:  libqb-devel
@@ -213,10 +212,7 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %{_prefix}/lib/ocf/lib/heartbeat
 %{_sbindir}/ocf-tester
 %{_sbindir}/ocft
-%{_sbindir}/sfex_init
-%{_sbindir}/sfex_stat
 %{_includedir}/heartbeat
-%{_unitdir}/resource-agents-deps.target
 %ghost %dir %attr (1755, root, root) %{_rundir}/resource-agents
 %doc AUTHORS
 %license COPYING
@@ -226,7 +222,6 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %{_mandir}/man7/*.7*
 %exclude %{_mandir}/man7/ocf_heartbeat_ZFS.*
 %{_mandir}/man8/ocf-tester.8*
-%{_mandir}/man8/sfex_init.8*
 %doc doc/README.webapps
 # For compatability with pre-existing agents
 %dir %{_sysconfdir}/ha.d
@@ -246,7 +241,6 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %dir %{_sysconfdir}/ha.d/resource.d
 %{_sbindir}/ldirectord
 %{_sbindir}/rcldirectord
-%{_unitdir}/ldirectord.service
 %exclude %{_sysconfdir}/init.d/ldirectord
 %{_sysconfdir}/ha.d/resource.d/ldirectord
 %config(noreplace) %{_sysconfdir}/logrotate.d/ldirectord

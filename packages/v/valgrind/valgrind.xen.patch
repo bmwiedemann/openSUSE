@@ -19,10 +19,10 @@ bz#390553
  coregrind/m_syswrap/syswrap-xen.c | 71 +++++++++++++++++++++++++++++++
  1 file changed, 71 insertions(+)
 
-Index: valgrind-3.23.0/coregrind/m_syswrap/syswrap-xen.c
+Index: valgrind-3.24.0/coregrind/m_syswrap/syswrap-xen.c
 ===================================================================
---- valgrind-3.23.0.orig/coregrind/m_syswrap/syswrap-xen.c
-+++ valgrind-3.23.0/coregrind/m_syswrap/syswrap-xen.c
+--- valgrind-3.24.0.orig/coregrind/m_syswrap/syswrap-xen.c
++++ valgrind-3.24.0/coregrind/m_syswrap/syswrap-xen.c
 @@ -60,6 +60,57 @@
  
  #include <inttypes.h>
@@ -1520,10 +1520,10 @@ Index: valgrind-3.23.0/coregrind/m_syswrap/syswrap-xen.c
  };
  
  static void bad_before ( ThreadId              tid,
-Index: valgrind-3.23.0/include/vki/vki-xen-domctl.h
+Index: valgrind-3.24.0/include/vki/vki-xen-domctl.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-domctl.h
-+++ valgrind-3.23.0/include/vki/vki-xen-domctl.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-domctl.h
++++ valgrind-3.24.0/include/vki/vki-xen-domctl.h
 @@ -28,21 +28,31 @@
  
  /*
@@ -2032,10 +2032,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-domctl.h
          vki_uint8_t                         pad[128];
      } u;
  };
-Index: valgrind-3.23.0/include/vki/vki-xen-sysctl.h
+Index: valgrind-3.24.0/include/vki/vki-xen-sysctl.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-sysctl.h
-+++ valgrind-3.23.0/include/vki/vki-xen-sysctl.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-sysctl.h
++++ valgrind-3.24.0/include/vki/vki-xen-sysctl.h
 @@ -3,19 +3,31 @@
  
  /*
@@ -2254,10 +2254,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-sysctl.h
  
          vki_uint8_t                             pad[128];
      } u;
-Index: valgrind-3.23.0/include/vki/vki-xen-hvm.h
+Index: valgrind-3.24.0/include/vki/vki-xen-hvm.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-hvm.h
-+++ valgrind-3.23.0/include/vki/vki-xen-hvm.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-hvm.h
++++ valgrind-3.24.0/include/vki/vki-xen-hvm.h
 @@ -95,7 +95,16 @@ struct vki_xen_hvm_get_mem_access {
  typedef struct vki_xen_hvm_get_mem_access vki_xen_hvm_get_mem_access_t;
  
@@ -2285,10 +2285,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-hvm.h
  
  #define VKI_XEN_HVMOP_altp2m 25
  #define VKI_XEN_HVMOP_altp2m_get_domain_state     1
-Index: valgrind-3.23.0/include/vki/vki-xen.h
+Index: valgrind-3.24.0/include/vki/vki-xen.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen.h
-+++ valgrind-3.23.0/include/vki/vki-xen.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen.h
++++ valgrind-3.24.0/include/vki/vki-xen.h
 @@ -67,6 +67,8 @@
  #define __VKI_XEN_kexec_op             37
  #define __VKI_XEN_tmem_op              38
@@ -2314,11 +2314,11 @@ Index: valgrind-3.23.0/include/vki/vki-xen.h
  
  #endif // __VKI_XEN_H
  
-Index: valgrind-3.23.0/coregrind/m_syswrap/syswrap-linux.c
+Index: valgrind-3.24.0/coregrind/m_syswrap/syswrap-linux.c
 ===================================================================
---- valgrind-3.23.0.orig/coregrind/m_syswrap/syswrap-linux.c
-+++ valgrind-3.23.0/coregrind/m_syswrap/syswrap-linux.c
-@@ -9111,6 +9111,38 @@ PRE(sys_ioctl)
+--- valgrind-3.24.0.orig/coregrind/m_syswrap/syswrap-linux.c
++++ valgrind-3.24.0/coregrind/m_syswrap/syswrap-linux.c
+@@ -9158,6 +9158,38 @@ PRE(sys_ioctl)
                      (Addr)args->arr, sizeof(*(args->arr)) * args->num);
        break;
     }
@@ -2357,7 +2357,7 @@ Index: valgrind-3.23.0/coregrind/m_syswrap/syswrap-linux.c
  
     case VKI_XEN_IOCTL_EVTCHN_BIND_VIRQ: {
           struct vki_xen_ioctl_evtchn_bind_virq *args =
-@@ -9152,6 +9184,80 @@ PRE(sys_ioctl)
+@@ -9199,6 +9231,80 @@ PRE(sys_ioctl)
     case VKI_XEN_IOCTL_EVTCHN_RESET:
        /* No input*/
        break;
@@ -2438,7 +2438,7 @@ Index: valgrind-3.23.0/coregrind/m_syswrap/syswrap-linux.c
  #endif
  
     /* Lustre */
-@@ -11778,6 +11884,16 @@ POST(sys_ioctl)
+@@ -11864,6 +11970,16 @@ POST(sys_ioctl)
         POST_MEM_WRITE((Addr)args->err, sizeof(*(args->err)) * args->num);
        }
        break;
@@ -2455,7 +2455,7 @@ Index: valgrind-3.23.0/coregrind/m_syswrap/syswrap-linux.c
  
     case VKI_XEN_IOCTL_EVTCHN_BIND_VIRQ:
     case VKI_XEN_IOCTL_EVTCHN_BIND_INTERDOMAIN:
-@@ -11787,6 +11903,44 @@ POST(sys_ioctl)
+@@ -11873,6 +11989,44 @@ POST(sys_ioctl)
     case VKI_XEN_IOCTL_EVTCHN_RESET:
        /* No output */
        break;
@@ -2500,11 +2500,11 @@ Index: valgrind-3.23.0/coregrind/m_syswrap/syswrap-linux.c
  #endif
  
     /* Lustre */
-Index: valgrind-3.23.0/include/vki/vki-linux.h
+Index: valgrind-3.24.0/include/vki/vki-linux.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-linux.h
-+++ valgrind-3.23.0/include/vki/vki-linux.h
-@@ -3547,12 +3547,37 @@ struct vki_xen_privcmd_mmapbatch_v2 {
+--- valgrind-3.24.0.orig/include/vki/vki-linux.h
++++ valgrind-3.24.0/include/vki/vki-linux.h
+@@ -3552,12 +3552,37 @@ struct vki_xen_privcmd_mmapbatch_v2 {
          int __user *err;  /* array of error codes */
  };
  
@@ -2542,7 +2542,7 @@ Index: valgrind-3.23.0/include/vki/vki-linux.h
  //----------------------------------------------------------------------
  // Xen evtchn IOCTL
  //----------------------------------------------------------------------
-@@ -3591,6 +3616,91 @@ struct vki_xen_ioctl_evtchn_notify {
+@@ -3596,6 +3621,91 @@ struct vki_xen_ioctl_evtchn_notify {
  #define VKI_XEN_IOCTL_EVTCHN_RESET				\
  	_VKI_IOC(_VKI_IOC_NONE, 'E', 5, 0)
  
@@ -2634,10 +2634,10 @@ Index: valgrind-3.23.0/include/vki/vki-linux.h
  
  //----------------------------------------------------------------------
  // From linux-3.4.0/include/linux/fs.h
-Index: valgrind-3.23.0/include/vki/vki-xen-memory.h
+Index: valgrind-3.24.0/include/vki/vki-xen-memory.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-memory.h
-+++ valgrind-3.23.0/include/vki/vki-xen-memory.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-memory.h
++++ valgrind-3.24.0/include/vki/vki-xen-memory.h
 @@ -45,9 +45,14 @@
  #define VKI_XENMEM_get_pod_target       17
  #define VKI_XENMEM_get_sharing_freed_pages    18
@@ -2668,10 +2668,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-memory.h
  struct vki_xen_mem_event_op {
      vki_uint8_t     op;
      vki_xen_domid_t     domain;
-Index: valgrind-3.23.0/include/vki/vki-xen-gnttab.h
+Index: valgrind-3.24.0/include/vki/vki-xen-gnttab.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-gnttab.h
-+++ valgrind-3.23.0/include/vki/vki-xen-gnttab.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-gnttab.h
++++ valgrind-3.24.0/include/vki/vki-xen-gnttab.h
 @@ -40,6 +40,7 @@ typedef vki_uint32_t vki_xen_grant_ref_t
  #define VKI_XEN_GNTTABOP_get_status_frames    9
  #define VKI_XEN_GNTTABOP_get_version          10
@@ -2680,10 +2680,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-gnttab.h
  
  struct vki_xen_gnttab_setup_table {
      /* IN parameters. */
-Index: valgrind-3.23.0/include/vki/vki-xen-physdev.h
+Index: valgrind-3.24.0/include/vki/vki-xen-physdev.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-physdev.h
-+++ valgrind-3.23.0/include/vki/vki-xen-physdev.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-physdev.h
++++ valgrind-3.24.0/include/vki/vki-xen-physdev.h
 @@ -58,6 +58,15 @@ struct vki_xen_physdev_unmap_pirq {
      int pirq;
  };
@@ -2700,10 +2700,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-physdev.h
  #endif // __VKI_XEN_PHYSDEV_H
  
  /*--------------------------------------------------------------------*/
-Index: valgrind-3.23.0/include/vki/vki-xen-schedop.h
+Index: valgrind-3.24.0/include/vki/vki-xen-schedop.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-schedop.h
-+++ valgrind-3.23.0/include/vki/vki-xen-schedop.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-schedop.h
++++ valgrind-3.24.0/include/vki/vki-xen-schedop.h
 @@ -45,4 +45,6 @@ typedef struct vki_xen_remote_shutdown v
  
  #define VKI_XEN_SCHEDOP_watchdog        6
@@ -2711,10 +2711,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-schedop.h
 +#define VKI_XEN_SCHEDOP_pin_override    7
 +
  #endif /* __VKI_XEN_SCHED_OP_H */
-Index: valgrind-3.23.0/include/vki/vki-xen-version.h
+Index: valgrind-3.24.0/include/vki/vki-xen-version.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-version.h
-+++ valgrind-3.23.0/include/vki/vki-xen-version.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-version.h
++++ valgrind-3.24.0/include/vki/vki-xen-version.h
 @@ -36,6 +36,7 @@
  #define VKI_XENVER_pagesize 7
  #define VKI_XENVER_guest_handle 8
@@ -2740,10 +2740,10 @@ Index: valgrind-3.23.0/include/vki/vki-xen-version.h
  #endif // __VKI_XEN_VERSION_H
  
  /*--------------------------------------------------------------------*/
-Index: valgrind-3.23.0/include/vki/vki-xen-x86.h
+Index: valgrind-3.24.0/include/vki/vki-xen-x86.h
 ===================================================================
---- valgrind-3.23.0.orig/include/vki/vki-xen-x86.h
-+++ valgrind-3.23.0/include/vki/vki-xen-x86.h
+--- valgrind-3.24.0.orig/include/vki/vki-xen-x86.h
++++ valgrind-3.24.0/include/vki/vki-xen-x86.h
 @@ -281,6 +281,20 @@ struct vki_hvm_hw_mtrr {
  
  VKI_DECLARE_HVM_SAVE_TYPE(MTRR, 14, struct vki_hvm_hw_mtrr);

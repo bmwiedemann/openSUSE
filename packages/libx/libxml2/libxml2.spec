@@ -1,7 +1,7 @@
 #
 # spec file for package libxml2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 
 %{?sle15allpythons}
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.12.9
+Version:        2.13.5
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files
 URL:            https://gitlab.gnome.org/GNOME/libxml2
-Source0:        https://download.gnome.org/sources/%{name}/2.12/libxml2-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/2.13/libxml2-%{version}.tar.xz
 Source1:        baselibs.conf
 # W3C Conformance tests
 Source2:        https://www.w3.org/XML/Test/xmlts20080827.tar.gz
@@ -54,6 +54,8 @@ Patch1:         libxml2-python3-string-null-check.patch
 ## SUSE-specific? If so, shouldn't it be applied only for SLE distributions?
 # PATCH-FIX-SUSE bsc#1135123 Added a new configurable variable XPATH_DEFAULT_MAX_NODESET_LENGTH to avoid nodeset limit
 Patch2000:      libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
+# https://gitlab.gnome.org/nwellnhof/libxml2/-/commit/6208f86edd59e31a51a8d9b300d428504adb25a7
+Patch2001:      libxml2-support-compressed-input-from-stdin.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -167,9 +169,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --disable-silent-rules \
     --disable-static \
     --docdir=%{_docdir}/%{base_name} \
-    --with-html-dir=%{_docdir}/%{base_name}/html \
     --without-python \
-    --with-fexceptions \
     --with-history \
     --enable-ipv6 \
     --with-sax1 \
@@ -252,8 +252,6 @@ rm -rf xmlconf/ # remove the conformance tests afterwards
 
 %files -n %{base_name}-doc
 %{_datadir}/gtk-doc/html/*
-%doc %{_docdir}/%{base_name}/examples
-%doc %{_docdir}/%{base_name}/tutorial
 %doc %{_docdir}/%{base_name}/*.html
 # owning these directories prevents gtk-doc <-> libxml2 build loop:
 %dir %{_datadir}/gtk-doc

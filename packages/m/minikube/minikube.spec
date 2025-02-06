@@ -1,7 +1,7 @@
 #
 # spec file for package minikube
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,22 @@
 
 
 Name:           minikube
-Version:        1.34.0
+Version:        1.35.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes/minikube
-Source0:        https://github.com/kubernetes/minikube/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        %{name}-rpmlintrc
+BuildRequires:  bash-completion
+BuildRequires:  fdupes
+BuildRequires:  fish
 BuildRequires:  git-core
-BuildRequires:  golang-github-jteeuwen-go-bindata
-BuildRequires:  golang-packaging
 BuildRequires:  libvirt-devel >= 1.2.14
-BuildRequires:  pkgconfig
-BuildRequires:  python3
-BuildRequires:  wget
+BuildRequires:  zsh
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.23
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt
@@ -62,8 +60,6 @@ virtual machines with Docker.
 %package        bash-completion
 Summary:        Minikube bash completion
 Group:          System/Management
-BuildRequires:  bash
-BuildRequires:  bash-completion
 Requires:       bash
 Requires:       bash-completion
 Requires:       minikube = %{version}
@@ -73,44 +69,54 @@ BuildArch:      noarch
 %description    bash-completion
 Optional bash completion for minikube.
 
+%package        fish-completion
+Summary:        Minikube fish completion
+Group:          System/Management
+Requires:       fish
+Requires:       minikube = %{version}
+Supplements:    (minikube and fish)
+BuildArch:      noarch
+
+%description    fish-completion
+Optional fish completion for minikube.
+
+%package        zsh-completion
+Summary:        Minikube zsh completion
+Group:          System/Management
+Requires:       minikube = %{version}
+Requires:       zsh
+Supplements:    (minikube and zsh)
+BuildArch:      noarch
+
+%description    zsh-completion
+Optional zsh completion for minikube.
+
 %prep
-%autosetup
-tar -xf %{SOURCE1}
-sed -i -e "s|GO111MODULE := on|GO111MODULE := off|" Makefile
+%autosetup -p 1 -a 1
 
 %build
-%{goprep} k8s.io/minikube
-export GOPATH=%{_builddir}/go
-cd $GOPATH/src/k8s.io/minikube
-mkdir $GOPATH/bin
-ln -s %{_bindir}/go-bindata $GOPATH/bin/go-bindata
-export IN_DOCKER=0
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-git init
-echo '*' > .gitignore
-touch .dummy
-git add -f .dummy .gitignore
-d=$(date "-d@${SOURCE_DATE_EPOCH:-$(date +%%s)}" +"%%Y-%%m-%%d %%H:%%M:%%S")
-GIT_COMMITTER_DATE="$d" git commit --date="$d" -m "trick hack/get_k8s_version.py"
+export GOFLAGS="-buildmode=pie"
 %make_build out/minikube
 %ifnarch i586
 %ifarch aarch64
-%make_build out/docker-machine-driver-kvm2-arm64
+# do not use make, as it would skip due to
+# https://github.com/kubernetes/minikube/issues/19959
+go build \
+	-buildvcs=false \
+	-installsuffix "static" \
+	-ldflags="-X k8s.io/minikube/pkg/drivers/kvm.version=v%{version} -X k8s.io/minikube/pkg/drivers/kvm.gitCommitID=v%{version}" \
+	-tags "libvirt_without_lxc" \
+	-o out/docker-machine-driver-kvm2-arm64 k8s.io/minikube/cmd/drivers/kvm
 %else
 %make_build out/docker-machine-driver-kvm2
 %endif
 %endif
 
-%{_builddir}/go/src/k8s.io/minikube/out/%{name} completion bash > %{_builddir}/%{name}-bash-completions
-
 %install
-output_path="%{_builddir}/go/src/k8s.io/minikube/out/"
-binaries=(minikube)
 install -m 755 -d %{buildroot}%{_bindir}
-install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/minikube
+install -p -m 755 -t %{buildroot}%{_bindir} out/minikube
 %ifnarch i586
-install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/docker-machine-driver-kvm2*
+install -p -m 755 -t %{buildroot}%{_bindir} out/docker-machine-driver-kvm2*
 %ifarch aarch64
 # Add a symlink without '-arm64' suffix
 pushd %{buildroot}%{_bindir}
@@ -119,8 +125,22 @@ popd
 %endif
 %endif
 
-install -D -m 0644 %{_builddir}/%{name}-bash-completions \
-    %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+%fdupes %{buildroot}%{_bindir}
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} version | grep v%{version}
 
 %files
 %license LICENSE
@@ -133,7 +153,13 @@ install -D -m 0644 %{_builddir}/%{name}-bash-completions \
 %{_bindir}/docker-machine-driver-kvm2*
 %endif
 
-%files bash-completion
+%files -n %{name}-bash-completion
 %{_datadir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

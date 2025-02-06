@@ -1,7 +1,7 @@
 Cabal-Version: >= 1.10
 Name: HTTP
 Version: 4000.4.1
-x-revision: 4
+x-revision: 5
 Build-type: Simple
 License: BSD3
 License-file: LICENSE
@@ -58,9 +58,10 @@ Description:
 Extra-Source-Files: CHANGES
 
 tested-with:
-  GHC == 9.10.0
-  GHC == 9.8.2
-  GHC == 9.6.4
+  GHC == 9.12.1
+  GHC == 9.10.1
+  GHC == 9.8.4
+  GHC == 9.6.6
   GHC == 9.4.8
   GHC == 9.2.8
   GHC == 9.0.2
@@ -69,13 +70,8 @@ tested-with:
   GHC == 8.6.5
   GHC == 8.4.4
   GHC == 8.2.2
-  GHC == 8.0.2
-  -- 2024-04-15: Dropping GHC 7.10 from CI because it does not install with ghcup on ubuntu-22.04
-  -- GHC == 7.10.3
-  -- 2023-10-04: Dropping GHC < 7.10 from CI
-  -- because they need the ubuntu-18.04 image incompatible with latest 'node'
-  -- GHC == 7.8.4
-  -- GHC == 7.6.3
+  -- CI failing for GHC 8.0 because of https://github.com/haskell/cabal/issues/10379
+  -- GHC == 8.0.2
 
 Source-Repository head
   type: git
@@ -125,7 +121,7 @@ Library
   -- note the test harness constraints should be kept in sync with these
   -- where dependencies are shared
   build-depends:
-      base          >= 4.6.0.0   && < 4.21
+      base          >= 4.6.0.0   && < 4.22
     , array         >= 0.3.0.2   && < 0.6
     , bytestring    >= 0.9.1.5   && < 0.13
     , parsec        >= 2.0       && < 3.2

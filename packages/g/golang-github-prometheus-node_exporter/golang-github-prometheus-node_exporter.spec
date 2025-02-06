@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-node_exporter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,6 @@
 #
 
 
-%{go_nostrip}
-
 Name:           golang-github-prometheus-node_exporter
 Version:        1.8.2
 Release:        0
@@ -33,12 +31,11 @@ Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 %{?systemd_ordering}
 Requires(post): %fillup_prereq
-Requires(pre):  shadow
-%{go_provides}
+Requires(pre):  user(prometheus)
+Requires(pre):  group(prometheus)
 Provides:       node_exporter
 Provides:       prometheus(node_exporter)
 ExcludeArch:    s390
@@ -54,24 +51,24 @@ Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written
 %autosetup -a1 -p1 -n node_exporter-%{version}
 
 %build
-%goprep github.com/prometheus/node_exporter
-export BUILDFLAGS="-v -p 4 -x -buildmode=pie -mod=vendor"
-GOPATH=%{_builddir}/go promu build
+%ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+export BUILD_CGO_FLAG="--cgo"
+%endif
+export GOFLAGS="-buildmode=pie"
+promu build -v $BUILD_CGO_FLAG
 
 %install
-%goinstall
 install -D -m 0755 %{_builddir}/node_exporter-%{version}/node_exporter %{buildroot}/%{_bindir}/node_exporter
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-node_exporter.service
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus-node_exporter
 %fdupes %{buildroot}
 
 %check
-%gotest github.com/prometheus/node_exporter -mod=vendor
+go test -x .
+./node_exporter --version
 
 %pre
 %service_add_pre prometheus-node_exporter.service
-getent group prometheus >/dev/null || %{_sbindir}/groupadd -r prometheus
-getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %{_localstatedir}/lib/prometheus -M -s /sbin/nologin prometheus
 
 %post
 %service_add_post prometheus-node_exporter.service

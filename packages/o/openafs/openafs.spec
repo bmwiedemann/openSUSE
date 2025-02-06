@@ -1,7 +1,7 @@
 #
 # spec file for package openafs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@
 
 Name:           openafs
 
-Version:        1.8.13.g20241116
+Version:        1.8.13.g20250116
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0

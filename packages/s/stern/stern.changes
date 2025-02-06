@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 21 06:10:13 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.32.0:
+  * Update CHANGELOG for v1.32.0 (#334)
+  * Fix a typo `toUTC` (#333)
+  * Update dependencies for Kubernetes 1.32 (#332)
+  * Add `--condition` (#276)
+  * Add check for when `--no-follow` is set with `--tail=0` (#331)
+  * Implement JSON pretty print (#324)
+  * Fix descriptions of `extjson` and `ppextjson` (#325)
+  * Allow `levelColor` template function to parse numbers (#321)
+
+-------------------------------------------------------------------
 Fri Oct 11 07:18:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.31.0:

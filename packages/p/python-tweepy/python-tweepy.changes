@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 28 09:08:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.15.0
+  * Fix error "No module named 'imghdr'" due to removed
+    package in Python 3.13+
+  * Bump requests-oauthlib to allow v2
+  * Drop support for Python 3.7 and 3.8
+- Cherry-pick upstream patch to fix package version
+  * fix-package-version.patch
+- Drop loosen-requests-oauthlib.patch, merged upstream
+- Drop support-python-313.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Dec 17 00:36:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:

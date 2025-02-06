@@ -1,7 +1,7 @@
 #
 # spec file for package libstoragemgmt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define python3 0
 %endif
 Name:           libstoragemgmt
-Version:        1.9.8
+Version:        1.10.2
 Release:        0
 Summary:        Storage array management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -37,7 +37,9 @@ Source1:        system-user-libstoragemgmt.conf
 Patch0:         move_to_run.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  ledmon-devel
 BuildRequires:  libconfig-devel
+BuildRequires:  libsgutils-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
@@ -300,7 +302,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %fdupes -s %{buildroot}%{python_sitelib}
 %fdupes -s %{buildroot}%{python_sitearch}
 
-%python3_fix_shebang
+%{python3_fix_shebang}
 %if 0%{?suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}%{_libexecdir}/lsm.d/*
 %endif

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bincopy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bincopy
-Version:        20.0.0
+Version:        20.1.0
 Release:        0
 Summary:        Mangling of various file formats that conveys binary information
 License:        MIT
@@ -39,7 +39,7 @@ Requires:       fdupes
 Requires:       python-humanfriendly
 Requires:       python-pyelftools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 15 09:14:32 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Code refactoring (gh#agama-project/integration-tests#1)
+  - Moved to a separate GitHub repository
+  - Use Webpack for bundling Puppeteer
+  - Switched from plain JavaScript to TypeScript
+  - Split the tests into smaller reusable parts
+
+-------------------------------------------------------------------
 Fri Sep 20 11:29:10 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Change the license to GPL-2.0-or-later (gh#openSUSE/agama#1621).

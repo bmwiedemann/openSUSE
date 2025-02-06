@@ -102,4 +102,16 @@
     <comment></comment>
     <requestid>1199147</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>a486eb8d5aadf0fd63a5d548e3ccf6e4</srcmd5>
+    <version>0.6.4</version>
+    <time>1737560370</time>
+    <user>anag+factory</user>
+    <comment>- do not require six
+- added patches
+  fix https://github.com/python-streamz/streamz/commit/33f49417b415deb7ea3c495a404b78c9d3743c03
+  + python-streamz-no-six.patch
+</comment>
+    <requestid>1239518</requestid>
+  </revision>
 </revisionlist>

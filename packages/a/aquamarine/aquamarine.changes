@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jan 30 08:49:15 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to aquamarine-0.7.2:
+  * A minor update with fixes to headless displays in general, with a
+    fix to headless buffers and presentation feedback.
+  * Fixes:
+    - headless/wayland: emit present events after commit
+    - fix headless supported formats
+  * Other:
+    - Core: add clang-tidy
+
+- Changes from aquamarine-0.7.1:
+  * A minor update with some small fixes.
+  * Fixes:
+    - remove wrong property settings
+
+- Changes from aquamarine-0.7.0:
+  * Another major release because we broke ABI again.
+    From better news, optimization and GPU hotplug infrastructure
+    thanks to our wonderful community contributors.
+  * Additions:
+    - GPU hotplug support
+  * Fixes:
+    - Avoid excessive atomic properties updates
+
+- Changes from aquamarine-0.6.0:
+  * A new major release with various fixes, but also shiny new HDR
+    support.
+    Please note this release does break ABI.
+  * Additions:
+    - HDR Support
+  * Fixes:
+    - udev scan only cards (drm_minor), not connectors
+      (drm_connector)
+    - drm: moved null check for renderer to shouldBlit()
+    - only fail INVALID format when it's set as that
+    - only clear buffers when fullReconfigure succeeds
+  * Others:
+    - log errno set by drmModeAtomicCommit
+
+-------------------------------------------------------------------
 Tue Dec 17 13:24:25 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to aquamarine-0.5.1:

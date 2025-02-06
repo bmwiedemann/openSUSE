@@ -2496,4 +2496,16 @@ let build start it or we will get libvirt errors.
   * make-minion-reconnecting-on-changing-master-ip-bsc-1.patch</comment>
     <requestid>1236216</requestid>
   </revision>
+  <revision rev="164" vrev="28">
+    <srcmd5>e4e34009ce5b1bbb81a31246d82bc2fa</srcmd5>
+    <version>3006.0</version>
+    <time>1737651720</time>
+    <user>anag+factory</user>
+    <comment>- Fix virtual grains for VMs running on Nutanix AHV (bsc#1234022)
+- Fix issues running on Python 3.12 and 3.13
+- Added:
+  * fix-virtual-grains-for-vms-running-on-nutanix-ahv-bs.patch
+  * fix-issues-that-break-salt-in-python-3.12-and-3.13-6.patch</comment>
+    <requestid>1239626</requestid>
+  </revision>
 </revisionlist>

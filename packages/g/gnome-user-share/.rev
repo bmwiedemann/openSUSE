@@ -531,4 +531,12 @@
   + Fix a compiling issue for non-gnu C toolchain. (forwarded request 1226278 from dimstar)</comment>
     <requestid>1226299</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>cd7efedb500b183080b0727d29927c66</srcmd5>
+    <version>47.2</version>
+    <time>1737722334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1239877</requestid>
+  </revision>
 </revisionlist>

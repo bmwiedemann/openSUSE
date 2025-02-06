@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 12:35:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.1.0
+  * Fix compare datetime with diffrent timezones #159
+  * Drop Python 3.8 support
+  * Add support for Python 3.13
+- Drop py313-support.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Nov 21 09:48:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313-support.patch to fix tests with python 3.13

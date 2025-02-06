@@ -1,7 +1,7 @@
 #
 # spec file for package python-apprise
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Paolo Panto <munix9@googlemail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,15 @@
 #
 
 
-%define skip_python2 1
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with    libalternatives
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-apprise
-Version:        1.9.0
+Version:        1.9.2
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today

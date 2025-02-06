@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:33:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Version 1.6.1
+  * fix 'parse' build issues on some systems (pthread & strlcpy)
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Wed Jun  5 10:25:22 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.6.0

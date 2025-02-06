@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Jan 23 05:36:33 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.87.0:
+  * chore(deps): update anchore dependencies (#2388)
+  * external-sources: throttle requests to maven central to avoid
+    being rate limited for large sets of java dependencies (#2384)
+  * chore(deps): bump github.com/aquasecurity/go-pep440-version
+    (#2391)
+  * chore(deps): bump github/codeql-action from 3.28.1 to 3.28.2
+    (#2390)
+  * chore(deps): bump github.com/anchore/stereoscope from 0.0.12 to
+    0.0.13 (#2392)
+  * chore(deps): update tools to latest versions (#2389)
+  * chore(deps): bump github.com/invopop/jsonschema from 0.7.0 to
+    0.13.0 (#2378)
+  * chore(deps): update tools to latest versions (#2381)
+  * chore(deps): bump actions/setup-go from 5.2.0 to 5.3.0 (#2386)
+  * remove db debug statements for v6 (#2387)
+  * chore: disable v1 images in quality tests (#2385)
+  * Add package spec alias + case insensitivity for v6 DBs (#2376)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#2377)
+  * chore(deps): bump golang.org/x/tools from 0.23.0 to 0.29.0
+    (#2379)
+  * fix: upstream match for linux-.*-headers-.* (#2320)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.12.0 to
+    5.13.0 (#2371)
+  * chore(deps): bump actions/upload-artifact from 4.5.0 to 4.6.0
+    (#2370)
+  * chore(deps): bump github.com/anchore/stereoscope from 0.0.11 to
+    0.0.12 (#2369)
+  * chore(deps): bump github.com/spf13/afero from 1.11.0 to 1.12.0
+    (#2368)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.6 to
+    1.7.8 (#2374)
+  * Enhance v6 search command (#2303)
+  * chore(deps): bump github/codeql-action from 3.28.0 to 3.28.1
+    (#2372)
+  * feat: add OpenVEX matching on local package name + tags (#2355)
+  * use v6 vuln status enum (#2366)
+  * Clean up config help text (#2347)
+  * have aliases for non standard names (#2352)
+  * chore(deps): update tools to latest versions (#2364)
+  * chore(deps): update tools to latest versions (#2362)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.7
+    to 1.4.8 (#2363)
+  * chore(deps): update tools to latest versions (#2361)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.7 to
+    0.5.8 (#2353)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.5 to
+    7.0.6 (#2354)
+  * test: update quality gate db to latest version (#2358)
+  * chore(deps): update tools to latest versions (#2359)
+  * have aliases for non standard names (#2351)
+  * finalize label version and add release id to OS model (#2349)
+  * chore(deps): update tools to latest versions (#2346)
+  * chore(deps): bump github/codeql-action from 3.27.9 to 3.28.0
+    (#2350)
+  * do not warn if DB missing (#2341)
+  * Allow v6 store to support multiple qualifiers (#2338)
+  * chore(deps): bump github.com/docker/docker (#2339)
+  * chore(deps): bump actions/upload-artifact from 4.4.3 to 4.5.0
+    (#2340)
+  * Drop DB v6 indexes on close (#2335)
+  * chore(deps): bump anchore/sbom-action from 0.17.8 to 0.17.9
+    (#2334)
+
+-------------------------------------------------------------------
 Sat Dec 14 21:22:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.86.1:

@@ -136,4 +136,16 @@ The package has 2 maintainers/bugowner and the binary has shown its stability du
     <comment></comment>
     <requestid>1233238</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>210a470eee7b9ce7ab0d42809e2b6cac</srcmd5>
+    <version>2.54.2</version>
+    <time>1737490219</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.54.2
+  - Fix issue after disabling bundling with block incremental
+    enabled. (Reviewed by David Christensen.)
+  - Clarify behavior of multiple configuration files. (Reviewed by
+    Paul Bierly. Suggested by Paul Bierly.)</comment>
+    <requestid>1239085</requestid>
+  </revision>
 </revisionlist>

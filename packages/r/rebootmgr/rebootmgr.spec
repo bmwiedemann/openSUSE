@@ -1,7 +1,7 @@
 #
 # spec file for package rebootmgr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rebootmgr
-Version:        2.6+git20241108.fc0c103
+Version:        3.0+git20250129.eed876f
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -27,8 +27,9 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(libeconf)
+BuildRequires:  timezone
+BuildRequires:  pkgconfig(libeconf) >= 0.7.6
+BuildRequires:  pkgconfig(libsystemd) >= 257
 
 %description
 RebootManager is a dbus service to execute a controlled reboot after updates in a defined maintenance window.
@@ -44,13 +45,16 @@ If you updated a system with e.g. transactional updates or a kernel update was a
 
 %install
 %meson_install
-ln -sf ../bin/rebootmgrctl %{buildroot}%{_sbindir}/rebootmgrctl
 
-#%check
-#meson_test
+%check
+%meson_test
 
 %pre
 %service_add_pre rebootmgr.service
+if [ -f /etc/rebootmgr.conf ] && [ ! -f /etc/rebootmgr/rebootmgr.conf.d/20-old-rebootmgr.conf ]; then
+    mkdir -p /etc/rebootmgr/rebootmgr.conf.d ||:
+    mv /etc/rebootmgr.conf /etc/rebootmgr/rebootmgr.conf.d/20-old-rebootmgr.conf
+fi
 
 %post
 %service_add_post rebootmgr.service
@@ -68,14 +72,11 @@ ln -sf ../bin/rebootmgrctl %{buildroot}%{_sbindir}/rebootmgrctl
 %{_datadir}/rebootmgr/rebootmgr.conf
 %{_unitdir}/rebootmgr.service
 %{_bindir}/rebootmgrctl
-%{_sbindir}/rebootmgrctl
-%{_sbindir}/rebootmgrd
-%{_datadir}/dbus-1/interfaces/org.opensuse.RebootMgr.xml
-%{_datadir}/dbus-1/system.d/org.opensuse.RebootMgr.conf
+%{_libexecdir}/rebootmgrd
+%{_datadir}/bash-completion/completions/rebootmgrctl
 %{_mandir}/man1/rebootmgrctl.1%{?ext_man}
 %{_mandir}/man5/rebootmgr.conf.5%{?ext_man}
 %{_mandir}/man8/rebootmgrd.8%{?ext_man}
-%{_mandir}/man8/org.opensuse.RebootMgr.conf.8%{?ext_man}
 %{_mandir}/man8/rebootmgr.service.8%{?ext_man}
 
 %changelog

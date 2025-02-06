@@ -1520,4 +1520,41 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- update to 3.23.0 (jsc#PED-10260):</comment>
     <requestid>1221731</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>8ed40ee3cb874b3df1fed94f29870164</srcmd5>
+    <version>3.24.0</version>
+    <time>1738335719</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.24.0 (jsc#PED-10260):
+  * Bad file descriptor usage now generates a real error with
+    --track-fds=yes that is suppressible and shows up in the
+    xml output with full execution backtrace. The warnings
+    shown without using the option are deprecated and will be
+    removed in a future valgrind version.
+  * Ada name demangling is now supported in error messages.
+- Bugs fixed:
+  * 202770  open fd at exit --log-socket=127.0.0.1:1500 with
+    --track-fds=yes
+  * 276780  An instruction in fftw (Fast Fourier Transform) is
+    unhandled by valgrind: vex x86-&gt;IR: unhandled instruction bytes:
+    0x66 0xF 0x3A 0x2
+  * 311655  --log-file=FILE leads to apparent fd leak
+  * 317127  Fedora18/x86_64 --sanity-level=3 : aspacem segment
+    mismatch
+  * 337388  fcntl works on Valgrind's own file descriptors
+  * 377966  arm64 unhandled instruction dc zva392146  aarch64:
+    unhandled instruction 0xD5380001 (MRS rT, midr_el1)
+  * 391148  Unhandled AVX instruction vmovq %xmm9,%xmm1
+  * 392146  aarch64: unhandled instruction 0xD5380001 (MRS rT,
+    midr_el1)
+  * 412377  SIGILL on cache flushes on arm64
+  * 417572  vex amd64-&gt;IR: unhandled instruction bytes: 0xC5 0x79
+    0xD6 0xED 0xC5
+  * 440180  s390x: Failed assertion in disassembler
+  * 444781  MIPS: wrong syscall numbers used
+  * 447989  Support Armv8.2 SHA-512 instructions
+  * 445235  Java/Ada/D demangling is probably broken
+  * 453044  gbserver_tests failures in aarch64</comment>
+    <requestid>1241367</requestid>
+  </revision>
 </revisionlist>

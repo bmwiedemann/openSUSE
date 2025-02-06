@@ -933,4 +933,15 @@
 - Drop fix_compile_against_qt_6_8.patch contained in release</comment>
     <requestid>1237060</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d77901a8b11957935b7ac89747c47b54</srcmd5>
+    <version>1.11.2</version>
+    <time>1738081204</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.2:
+  * YY plugin: Fixed compatibility with GameMaker 2024 (#4132)
+  * Fixed crash while handling file reloads without any files opened
+  * Fixed crash when closing the last file with multiple custom properties selected</comment>
+    <requestid>1240822</requestid>
+  </revision>
 </revisionlist>

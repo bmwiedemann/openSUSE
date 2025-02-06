@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 27 12:29:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.14.1
+  * Modified SQLite’s dialect to render “ALTER TABLE <t> RENAME COLUMN”
+    when Operations.alter_column() is used with a straight rename,
+    supporting SQLite’s recently added column rename feature.
+  * Added tzdata to tz extras, which is required on some platforms
+    such as Windows. Pull request courtesy Danipulok.
+  * Fixed bug where autogen render of a “variant” type would fail to
+    catch the variants if the leading type were a dialect-specific type,
+    rather than a generic type.
+
+-------------------------------------------------------------------
 Tue Nov 19 12:31:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to el_1_14_0:

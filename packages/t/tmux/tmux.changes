@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 15 12:59:57 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind
+
+-------------------------------------------------------------------
 Sat Oct  5 07:38:40 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - tmux 3.5a:

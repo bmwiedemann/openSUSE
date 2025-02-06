@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sat Jan 25 10:32:49 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update ot 2.27.2
+  - fix linux PGO wheel build in #1557
+  - Forward default_value calls to the underlying schema for DefinitionRefValidator in #1573
+  - Include JSON Schema input core schema in function schemas in #1572
+  - fix ValueError on year zero in #1583
+- Changes from 2.27.1
+  - Simplify shared union serializer logic in #1538
+  - Tidy up some uses of Bound<'_, PyString>::to_str in #1544
+  - Fix serialization inference for complex types in python in #1549
+  - Bump to PyO3 v0.22.6 in #1550
+  - Fix performance regression for JSON tagged union in #1552
+- Changes from 2.27.0
+  - Remove Url and MultiHostUrl docstrings, we moved them to pydantic in #1531
+  - Fix panic in validate_assignment when field has gone missing in #1532
+  - Fix for Union serializer: do not raise warnings in nested unions in #1513
+  - Fix _IncEx type alias to be compatible with mypy in #1537
+  - More union serialization tidying in #1536
+  - Fix wrap serializer breaking union serialization in presence of extra fields in #1530
+  - Support trailing-strings with allow_partial in #1539
+- Changes from 2.26.0
+  * Fixes
+    - Revert changes to url schemas that support cls, the 2x validation isn't worth it (and is breaking) in #1514
+    - Fix when coerce_numbers_to_str enabled and string has invalid unicode character in #1515
+    - Fix serializing complex values in enums in #1524
+  * Packaging
+    - Bump serde from 1.0.213 to 1.0.214 in #1519
+    - Bump regex from 1.11.0 to 1.11.1 in #1520
+    - Bump jiter from 0.6.1 to 0.7.0 in #1521
+    - bump speedate to 0.15 in #1526
+  * New Features
+    - Add allow_partial in #1512
+- Changes from 2.25.1
+  - Bump jiter from 0.5.0 to 0.6.1 in #1498
+  - Update Pyodide to v0.26.3 in #1507
+  - Allow subclassing ValidationError and PydanticCustomError in #1413
+  - Revert "feat: add 'millisecond' option to ser_json_timedelta" in #1503
+  - Support subclass inits for Url and MultiHostUrl in #1508
+- Changes from 2.25.0
+  - Properly enforce host_required for URLs in #1488
+  - Support revalidation of parametrized generics in #1489
+  - Support default factories taking validated data as an argument in #1491
+- Changes from 2.24.2
+  - Add serialization key to InvalidSchema in #1482
+- Changes from 2.24.1
+  * Packaging
+    - Restore Windows aarch64 builds in #1464
+    - Limit windows builds to Rust 1.77 (to keep Windows 7 support) in #1463
+    - Bump pyo3 from 0.22.2 to 0.22.3 in #1472
+    - Bump serde from 1.0.209 to 1.0.210 in #1471
+    - Bump regex from 1.10.6 to 1.11.0 in #1470
+  * Fixes
+    - Fix equality checks for primitives in literals in #1459
+  * Changes
+    - Add invalid schema placeholder in #1469
+    - Relax intensity of error for issubclass and isinstance schemas from json in #1479
+- Changes from 2.24.0
+  * Features
+    - Add milliseconds option to ser_json_timedelta config parameterin #1427
+    - Add support for unpacked TypedDict to type hint variadic keyword arguments in ArgumentsValidator in #1451
+  * Fixes
+    - Do not require padding when decoding base64 bytes in #1448
+    - Support wider variety of enum validation cases in #1456
+
+-------------------------------------------------------------------
 Wed Oct  2 21:42:30 UTC 2024 - Meera Belur <mbelur@suse.com>
 
 - update 2.23.4

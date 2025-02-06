@@ -14,9 +14,11 @@ change now to get ahead of it.
 
 Signed-off-by: Cole Robinson <crobinso@redhat.com>
 
---- a/man/virt-install.rst
-+++ b/man/virt-install.rst
-@@ -1062,8 +1062,8 @@ all other settings off or unset.
+Index: virt-manager-5.0.0/man/virt-install.rst
+===================================================================
+--- virt-manager-5.0.0.orig/man/virt-install.rst
++++ virt-manager-5.0.0/man/virt-install.rst
+@@ -1067,8 +1067,8 @@ all other settings off or unset.
  
  By default, virt-install will always attempt ``--osinfo detect=on``
  for appropriate install media. If no OS is detected, we will fail
@@ -27,18 +29,22 @@ Signed-off-by: Cole Robinson <crobinso@redhat.com>
  above, or disabling the ``require`` option. If you just need to get back
  to the old non-fatal behavior ASAP, set the environment variable
  VIRTINSTALL_OSINFO_DISABLE_REQUIRE=1.
---- a/tests/test_cli.py
-+++ b/tests/test_cli.py
+Index: virt-manager-5.0.0/tests/test_cli.py
+===================================================================
+--- virt-manager-5.0.0.orig/tests/test_cli.py
++++ virt-manager-5.0.0/tests/test_cli.py
 @@ -1246,7 +1246,6 @@ c.add_compare("--connect %(URI-KVM-ARMV7
  #################
  
  c.add_valid("--arch aarch64 --osinfo fedora19 --nodisks --pxe --connect " + utils.URIs.kvm_x86_nodomcaps, grep="Libvirt version does not support UEFI")  # attempt to default to aarch64 UEFI, but it fails, but should only print warnings
 -c.add_invalid("--arch aarch64 --nodisks --pxe --connect " + utils.URIs.kvm_x86, grep="OS name is required")  # catch missing osinfo for non-x86
- c.add_compare("--arch aarch64 --osinfo fedora19 --machine virt --boot kernel=/f19-arm.kernel,initrd=/f19-arm.initrd,kernel_args=\"console=ttyAMA0,1234 rw root=/dev/vda3\" --disk %(EXISTIMG1)s", "aarch64-machvirt")
+ c.add_compare("--arch aarch64 --osinfo fedora19 --machine virt --cpu default --boot kernel=/f19-arm.kernel,initrd=/f19-arm.initrd,kernel_args=\"console=ttyAMA0,1234 rw root=/dev/vda3\" --disk %(EXISTIMG1)s", "aarch64-machvirt")
  c.add_compare("--arch aarch64 --osinfo fedora19 --boot kernel=/f19-arm.kernel,initrd=/f19-arm.initrd,kernel_args=\"console=ttyAMA0,1234 rw root=/dev/vda3\" --disk %(EXISTIMG1)s", "aarch64-machdefault")
  c.add_compare("--arch aarch64 --cdrom %(ISO-F26-NETINST)s --boot loader=CODE.fd,nvram.template=VARS.fd --disk %(EXISTIMG1)s --cpu none --events on_crash=preserve,on_reboot=destroy,on_poweroff=restart", "aarch64-cdrom")  # cdrom test, but also --cpu none override, --events override, and headless
---- a/virtinst/virtinstall.py
-+++ b/virtinst/virtinstall.py
+Index: virt-manager-5.0.0/virtinst/virtinstall.py
+===================================================================
+--- virt-manager-5.0.0.orig/virtinst/virtinstall.py
++++ virt-manager-5.0.0/virtinst/virtinstall.py
 @@ -355,13 +355,9 @@ def _show_memory_warnings(guest):
  
  

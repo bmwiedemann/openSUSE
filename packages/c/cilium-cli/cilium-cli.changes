@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 30 05:54:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.24:
+  * Prepare for v0.16.24 release
+  * chore(deps): update aws-actions/configure-aws-credentials
+    action to v4.0.3
+  * chore(deps): update docker/build-push-action action to v6.13.0
+  * renovate: convert double quotes to single quotes
+  * renovate: apply migration changes
+  * renovate: reformat using json5format
+  * renovate: remove old go dependency matchers
+  * renovate: remove defaults/defaults.go
+  * renovate: remove busybox
+  * chore(deps): update dependency cilium/cilium to v1.16.6
+  * chore(deps): update all github action dependencies
+  * chore(deps): update dependency go to v1.23.5
+  * chore(deps): update golangci/golangci-lint-action action to
+    v6.2.0
+  * chore(deps): update docker/build-push-action action to v6.12.0
+  * chore(deps): update actions/upload-artifact action to v4.6.0
+  * chore(deps): update docker/build-push-action action to v6.11.0
+  * Update stable release to v0.16.23
+
+-------------------------------------------------------------------
 Thu Jan 09 06:40:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.23:

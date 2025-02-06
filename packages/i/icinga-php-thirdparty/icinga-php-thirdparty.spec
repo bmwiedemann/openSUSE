@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global module_name icinga-php-thirdparty
 %global basedir %{_datadir}/icinga-php/vendor
 Name:           %{module_name}
-Version:        0.12.0
+Version:        0.12.1
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Thirdparty for Icinga Web 2
 License:        MIT

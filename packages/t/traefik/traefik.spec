@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -111,11 +111,18 @@ mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 %post
 %service_add_post %{name}.service
 %{fillup_only -n %{name}}
-# fix ownership for config and logging directory
-chown -R traefik: %{_sysconfdir}/%{name} %{_localstatedir}/log/%{name}
 
-# try to move acme.json file from old directory to new
+# prepare ownership for operations as root user
+chown -R root: %{_sysconfdir}/%{name}
+chown root: %{_localstatedir}/lib/%{name}
+
 if [ -e "%{_sysconfdir}/%{name}/acme.json" ] ; then
+	# try to move acme.json file from old directory to the new location
+	if [ -L "%{_sysconfdir}/%{name}/acme.json" ] ; then
+		echo "Delete the symbolic link %{_sysconfdir}/%{name}/acme.json" 1>&2
+		echo "The ACME file must be placed in %{_localstatedir}/lib/traefik" 1>&2
+		exit 0
+	fi
 	if [ -s "%{_sysconfdir}/%{name}/acme.json" ] ; then
 		if [ -s "%{_localstatedir}/lib/%{name}/acme.json" ] ; then
 			# if not-empty acme.json files exists on old and new location, write warning
@@ -125,7 +132,7 @@ if [ -e "%{_sysconfdir}/%{name}/acme.json" ] ; then
 		else
 			# if not-empty acme.json exists on old location and no file or empty file exists on new location
 			# move it to the new location
-			mv "%{_sysconfdir}/%{name}/acme.json" "%{_localstatedir}/lib/%{name}/acme.json"
+			mv %{_sysconfdir}/%{name}/acme.json %{_localstatedir}/lib/%{name}/acme.json
 			sed -i -e 's|%{_sysconfdir}/traefik/acme.json|%{_localstatedir}/lib/traefik/acme.json|' %{_sysconfdir}/%{name}/%{name}.yml
 		fi
 	else
@@ -134,9 +141,18 @@ if [ -e "%{_sysconfdir}/%{name}/acme.json" ] ; then
 		sed -i -e 's|%{_sysconfdir}/traefik/acme.json|%{_localstatedir}/lib/traefik/acme.json|' %{_sysconfdir}/%{name}/%{name}.yml
 	fi
 fi
+# set correct permissions
+chmod 0750 %{_sysconfdir}/%{name} %{_sysconfdir}/%{name}/conf.d
+find %{_sysconfdir}/%{name} -type d -exec chmod 0750 {} \;
+find %{_sysconfdir}/%{name} -type f -exec chmod 0640 {} \;
 
-# fix ownership for acme file
-chown -R traefik: %{_localstatedir}/lib/%{name}/*
+chmod 0700 %{_localstatedir}/lib/%{name}
+chmod 0600 %{_localstatedir}/lib/%{name}/*
+
+# set ownership for normal operation
+chown -R root:traefik %{_sysconfdir}/%{name}
+chown -R traefik: %{_localstatedir}/lib/%{name}
+chown -R traefik: %{_localstatedir}/log/%{name}
 
 %preun
 %service_del_preun %{name}.service
@@ -155,14 +171,17 @@ chown -R traefik: %{_localstatedir}/lib/%{name}/*
 %{_sbindir}/rc%{name}
 %{_prefix}/lib/sysctl.d/90-%{name}.conf
 
-%defattr(0600, traefik, traefik, 0700)
+# config files are owned by root but can be read by traefik
+%defattr(0640, root, traefik, 0750)
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/conf.d
+%config(noreplace) %{_sysconfdir}/%{name}/%{name}.yml
 
+# certificates are visible for traefik only
+%defattr(0600, traefik, traefik, 0700)
 %dir %{_localstatedir}/lib/%{name}
 %config(noreplace) %{_localstatedir}/lib/%{name}/acme.json
 
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}.yml
 %dir %{_localstatedir}/log/%{name}
 
 %changelog

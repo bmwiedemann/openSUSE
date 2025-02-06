@@ -1,7 +1,7 @@
 #
 # spec file for package libvarlink
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global _lto_cflags %nil
 %global _somajor 0
 Name:           libvarlink
-Version:        23
+Version:        24
 Release:        0
 Summary:        A C implementation of Varlink, a protocol for creating APIs
 License:        MIT
@@ -32,8 +32,8 @@ BuildRequires:  glibc-locale
 BuildRequires:  glibc-locale-base
 BuildRequires:  meson
 BuildRequires:  ninja
-BuildRequires:  python3-base
 BuildRequires:  pkg-config
+BuildRequires:  python3-base
 %{?suse_build_hwcaps_libs}
 
 %description

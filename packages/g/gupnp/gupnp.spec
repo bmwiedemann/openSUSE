@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define sover 1.6
 
 Name:           gupnp
-Version:        1.6.7
+Version:        1.6.8
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source0:        https://download.gnome.org/sources/gupnp/1.6/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets
@@ -126,6 +126,9 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{sover} %{buildroot}%{_docdir}
 %python3_fix_shebang
 
 %ldconfig_scriptlets -n libgupnp-%{soname}
+
+%check
+%meson_test
 
 %files -n libgupnp-%{soname}
 %license COPYING

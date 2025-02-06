@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,7 +113,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        132.0.6834.83
+Version:        132.0.6834.159
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later

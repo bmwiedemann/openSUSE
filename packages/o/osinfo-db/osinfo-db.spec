@@ -1,7 +1,7 @@
 #
 # spec file for package osinfo-db
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20240701
+Version:        20250124
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -29,12 +29,11 @@ Patch22:        add-caasp40-support.patch
 Patch23:        add-win-2k19-media-info.patch
 Patch24:        fix-tumbleweed-order.patch
 Patch25:        adjust-tumbleweed-hardware-requirements.patch
-Patch26:        add-slem5.5-support.patch
-Patch27:        add-sle15sp6-support.patch
 Patch28:        add-sle15sp7-support.patch
-Patch29:        add-opensuse-leap-15.6-support.patch
 Patch30:        add-slem6.0-support.patch
 Patch31:        add-slem6.1-support.patch
+Patch32:        add-sles16-support.patch
+Patch33:        add-opensuse-leap-16.0-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 BuildArch:      noarch

@@ -85,4 +85,29 @@
     <comment>- Update also base product from SLES-SAP to SLES_SAP(bsc#1235956)</comment>
     <requestid>1238295</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b05749ccb310476cbd2aae6f82f7ff59</srcmd5>
+    <version>0</version>
+    <time>1737490209</time>
+    <user>anag+factory</user>
+    <comment>- Set the license for SLES and SLES4SAP (jsc#PED-11987).
+
+- Add pattern sles_minimal_sap to the user selectable patterns list
+  of the SLES product to give the admin the chance to get a minimal
+  preparation of the operating system to run SAP workloads on plain
+  SLES.</comment>
+    <requestid>1239080</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>085787c47056c97d80488d75758a6fc2</srcmd5>
+    <version>0</version>
+    <time>1737828749</time>
+    <user>dimstar_suse</user>
+    <comment>- Change the registration property in a product's definition to a
+  boolean (gh#agama-project/agama#1938).
+
+- Set installation labels for SLES and SLES4SAP
+  (gh#agama-project/agama#1937)</comment>
+    <requestid>1240161</requestid>
+  </revision>
 </revisionlist>

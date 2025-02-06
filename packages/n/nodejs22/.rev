@@ -127,4 +127,18 @@
 - linker_lto_jobs.patch: refreshed</comment>
     <requestid>1238489</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ca8b5285dec6c34275c0f6a1c11f4f43</srcmd5>
+    <version>22.13.1</version>
+    <time>1738072724</time>
+    <user>anag+factory</user>
+    <comment>- Update to 22.13.1:
+  * src,loader,permission: throw on InternalWorker use when
+    permission model is enabled (bsc#1236251, CVE-2025-23083)
+  * src: fix HTTP2 mem leak on premature close and ERR_PROTO
+    (bsc#1236250, CVE-2025-23085)
+  * deps: Use of Insufficiently Random Values in undici fetch()
+    (bsc#1236258, CVE-2025-22150)</comment>
+    <requestid>1239494</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 20 11:34:51 CET 2024 - mls@suse.de
+
+- undefine %_enable_debug_packages to fix building with rpm-4.20
+
+-------------------------------------------------------------------
 Thu Sep 19 06:27:27 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim-install to limit the scope of the 'removable'

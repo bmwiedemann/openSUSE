@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 11 03:18:18 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Require system-user-nobody for nfs-client as the statd user relies
+  on `nogroup` from this package
+
+-------------------------------------------------------------------
 Tue Oct 29 10:05:55 UTC 2024 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 2.8.1

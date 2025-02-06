@@ -145,4 +145,12 @@
 - this allows us to reenable opencv-devel (forwarded request 1183563 from darix)</comment>
     <requestid>1183565</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e4c267278ae7c73c32aca05aadf23bfe</srcmd5>
+    <version>0.4.0</version>
+    <time>1737651926</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239793</requestid>
+  </revision>
 </revisionlist>

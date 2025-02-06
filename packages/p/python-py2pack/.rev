@@ -570,4 +570,27 @@
     <comment></comment>
     <requestid>1091724</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>7c8aeb2b2ca43178845d2f72de652f7d</srcmd5>
+    <version>0.9.1</version>
+    <time>1738007799</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.1:
+  * Don't crash on missing urls
+  * fix: sanitize summary only if it exists
+  * Use platformdirs module to find template directory paths.
+  * fix bug: AttributeError: 'Namespace' object has no attribute 'localfile' for fetch command
+  * Use build.project_wheel_metadata to extract metadata
+  * Fix no esp variable (utils.py)
+  * Fix new argument access and tests
+  * Add ability to generate .spec files from local PKG-INFO file
+  * Support project.urls.Repository to get homepage
+  * Replace deprecated PyPI XML API with Simple API
+  * close all connections: replace urllib with requests
+  * remove pkg_resources
+  * Migrate update spdx command from setuptools hook to hatch script, execute
+  * Migrate spdx file from pickle to json
+  * Switch from setuptools+pbr to hatch</comment>
+    <requestid>1240544</requestid>
+  </revision>
 </revisionlist>

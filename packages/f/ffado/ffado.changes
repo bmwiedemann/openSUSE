@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:11:14 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- BuildRequires python3-setuptools, distutils is deprecated and is
+  removed for python > 3.11
+
+-------------------------------------------------------------------
 Sun Aug 18 09:04:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.4.9

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tldextract
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        5.1.3
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/john-kurkowski/tldextract
 Source:         https://files.pythonhosted.org/packages/source/t/tldextract/tldextract-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
@@ -37,7 +36,6 @@ BuildRequires:  %{python_module requests-file >= 1.4}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module syrupy}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -82,7 +80,8 @@ as well.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/tldextract*
+%{python_sitelib}/tldextract
+%{python_sitelib}/tldextract-%{version}.dist-info
 %python_alternative %{_bindir}/tldextract
 
 %changelog

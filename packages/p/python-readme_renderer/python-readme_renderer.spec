@@ -1,7 +1,7 @@
 #
 # spec file for package python-readme_renderer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0
 URL:            https://github.com/pypa/readme_renderer
 Source:         https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pypa/readme_renderer/pull/325 fix: update test outputs to fix tests fail
+Patch:          pygments.patch
 BuildRequires:  %{python_module Pygments >= 2.5.1}
 BuildRequires:  %{python_module cmarkgfm >= 0.7.0}
 BuildRequires:  %{python_module docutils >= 0.13.1}

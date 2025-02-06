@@ -18,7 +18,7 @@
 
 
 Name:           mupdf
-Version:        1.25.2
+Version:        1.25.4
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later

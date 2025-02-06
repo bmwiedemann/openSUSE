@@ -7833,4 +7833,41 @@ always built-in because vim has direct perl dependencies anyway.
  * 9.1.0981: tests: typo in test_filetype.vim</comment>
     <requestid>1235700</requestid>
   </revision>
+  <revision rev="377" vrev="1">
+    <srcmd5>4c21f9876519778a3741c13ec32d0ae0</srcmd5>
+    <version>9.1.1043</version>
+    <time>1737559860</time>
+    <user>anag+factory</user>
+    <comment>- updade to 9.1.1043
+ * [security]: segfault in win_line()
+ * update helptags
+ * filetype: just files are not recognized
+ * Update base-syntax, match ternary and falsy operators
+ * Vim9: out-of-bound access when echoing an enum
+ * Vim9: imported type cannot be used as func return type
+ * runtime(kconfig): updated ftplugin and syntax script
+ * runtime(doc): rename last t_BG reference to t_RB
+ * Vim9: comments are outdated
+ * tests: test_channel.py fails with IPv6
+ * runtime(vim): Update base-syntax, fix is/isnot operator matching
+ * Vim9: confusing error when using abstract method via super
+ * make install fails when using shadowdir
+ * Vim9: memory leak with blob2str()
+ * runtime(tex): add texEmphStyle to texMatchGroup in syntax script
+ * runtime(netrw): upstream snapshot of v175
+ * Vim9: compiling abstract method fails without return
+ * runtime(c): add new constexpr keyword to syntax file (C23)
+ * tests: shaderslang was removed from test_filetype erroneously
+ * link error when FEAT_SPELL not defined
+ * Coverity complains about insecure data handling
+ * runtime(sh): update syntax script
+ * runtime(c): Add missing syntax test files
+ * filetype: setting bash filetype is backwards incompatible
+ * runtime(c): Update syntax and ftplugin files
+ * the installer can be improved
+ * too many strlen() calls in screen.c
+ * no sanitize check when running linematch
+ * filetype: swc configuration files are not recognized</comment>
+    <requestid>1239263</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Jan 23 09:46:04 UTC 2025 - tiwai@suse.com
+
+- Update to version 20250122 (git commit 0e16f416fa29):
+  * amdgpu: revert DMCUB 3.1.4 firmware (bsc#1236196)
+  * amlogic: update firmware for w265s2
+
+-------------------------------------------------------------------
+Tue Jan 21 12:35:45 UTC 2025 - tiwai@suse.com
+
+- Update to version 20250120 (git commit 634d0a0aa07b):
+  * mediatek MT7925: update bluetooth firmware to 20250113153307
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * amdgpu: update psp 13.0.10 firmware
+  * amdgpu: update gc 11.0.3 firmware
+  * amdgpu: update psp 13.0.8 firmware
+  * amdgpu: update psp 13.0.5 firmware
+  * amdgpu: update vcn 4.0.0 firmware
+  * amdgpu: update psp 13.0.0 firmware
+  * amdgpu: update gc 11.0.0 firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update smu 14.0.3 firmware
+  * amdgpu: update psp 14.0.3 firmware
+  * amdgpu: update gc 12.0.1 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update smu 14.0.2 firmware
+  * amdgpu: update psp 14.0.2 firmware
+  * amdgpu: update gc 12.0.0 firmware
+  * amdgpu: update gc 9.4.3 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update vcn 4.0.4 firmware
+  * amdgpu: update psp 13.0.7 firmware
+  * amdgpu: update gc 11.0.2 firmware
+  * amdgpu: update yellow carp firmware
+  * qcom: correct licence information for SA8775P binaries
+  * qcom: update SLPI firmware for RB5 board
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+  * qcom: add DSP firmware for SA8775p platform
+  * qcom: correct venus firmware versions
+  * qcom: add missing version information
+  * linux-firmware: Update firmware (v10) for mt7988 internal
+  * iwlwifi: add Bz FW for core90-93 release
+  * linux-firmware: wilc3000: add firmware for WILC3000 WiFi device
+  * rtw89: 8852b: update fw to v0.29.29.8
+  * rtw89: 8852c: update fw to v0.27.122.0
+  * rtw89: 8922a: update fw to v0.35.54.0
+  * rtw89: 8922a: update fw to v0.35.52.1 and stuffs
+  * rtw89: 8852bt: update fw to v0.29.110.0
+  * rtw89: 8852b: update fw to v0.29.29.7
+- Fix license for qcom_q6v5_pas
+- Update aliases from 6.13
+
+-------------------------------------------------------------------
 Mon Jan 13 11:21:24 UTC 2025 - tiwai@suse.com
 
 - Update to version 20250111 (git commit b3049665a5d0):

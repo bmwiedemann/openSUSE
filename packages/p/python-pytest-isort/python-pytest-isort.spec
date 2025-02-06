@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-isort
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,10 +47,7 @@ This is a pytest plugin to check import ordering using isort.
 
 %install
 %pyproject_install
-%{python_expand #
-rm %{buildroot}%{$python_sitelib}/LICENSE.rst
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
@@ -59,6 +56,6 @@ rm %{buildroot}%{$python_sitelib}/LICENSE.rst
 %doc CHANGELOG.rst README.rst
 %license LICENSE.rst
 %{python_sitelib}/pytest_isort
-%{python_sitelib}/pytest_isort-%{version}*-info
+%{python_sitelib}/pytest_isort-%{version}.dist-info
 
 %changelog

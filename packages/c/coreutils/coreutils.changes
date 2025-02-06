@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Fri Jan 17 22:22:08 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 9.6:
+  Bug fixes
+  * cp fixes support for --update=none-fail, which would have been
+    rejected as an invalid option.
+    [bug introduced in coreutils-9.5]
+  * cp,mv --update no longer overrides --interactive or --force.
+    [bug introduced in coreutils-9.3]
+  * csplit no longer creates empty files given empty input.
+    [This bug was present in "the beginning".]
+  * ls and printf fix shell quoted output in the edge case of escaped
+    first and last characters, and single quotes in the string.
+    [bug introduced in coreutils-8.26]
+  * ls -l no longer outputs "Permission denied" errors on NFS
+    which may happen with files without read permission, and which resulted
+    in inaccurate indication of ACLs (missing '+' flag after mode).
+    [bug introduced in coreutils-9.4]
+  * ls -l no longer outputs "Not supported" errors on virtiofs.
+    [bug introduced in coreutils-9.4]
+  * mv works again with macFUSE file systems.  Previously it would
+    have exited with a "Function not implemented" error.
+    [bug introduced in coreutils-8.28]
+  * nproc gives more consistent results on systems with more than 1024 CPUs.
+    Previously it would have ignored the affinity mask on such systems.
+    [bug introduced with nproc in coreutils-8.1]
+  * numfmt --from=iec-i now works with numbers without a suffix.
+    Previously such numbers were rejected with an error.
+    [bug introduced with numfmt in coreutils-8.21]
+  * printf now diagnoses attempts to treat empty strings as numbers,
+    as per POSIX. For example, "printf '%d' ''" now issues a diagnostic
+    and fails instead of silently succeeding.
+    [This bug was present in "the beginning".]
+  * pwd no longer outputs an erroneous double slash on systems
+    where the system getcwd() was completely replaced.
+    [bug introduced in coreutils-9.2]
+  * 'shuf' generates more-random output when the output is small.
+    [bug introduced in coreutils-8.6]
+  * `tail --follow=name` no longer waits indefinitely for watched
+    file names that are moved elsewhere within the same file system.
+    [bug introduced in coreutils-8.24]
+  * `tail --follow` without --retry, will consistently exit with failure status
+    where inotify is not used, when all followed files become inaccessible.
+    [This bug was present in "the beginning".]
+  * `tail --follow --pid=PID` will now exit when the PID dies,
+    even in the presence of blocking inputs like unopened fifos.
+    [This bug was present in "the beginning".]
+  * 'tail -c 4096 /dev/zero' no longer loops forever.
+    [This bug was present in "the beginning".]
+  Changes in behavior
+  * 'factor' now buffers output more efficiently in some cases.
+  * install -C now dereferences symlink sources when comparing,
+    rather than always treating as different and performing the copy.
+  * kill -l and -t now list signal 0, as it's a valid signal to send.
+  * ls's -f option now simply acts like -aU, instead of also ignoring
+    some earlier options.  For example 'ls -fl' and 'ls -lf' are now
+    equivalent because -f no longer ignores an earlier -l.  The new
+    behavior is more orthogonal and is compatible with FreeBSD.
+  * stat -f -c%T now reports the "fuseblk" file system type as "fuse",
+    given that there is no longer a distinct "ctl" fuse variant file system.
+  New Features
+  * cksum -a now supports the "crc32b" option, which calculates the CRC
+    of the input as defined by ITU V.42, as used by gzip for example.
+    For performance pclmul instructions are used where supported.
+  * ls now supports the --sort=name option,
+    to explicitly select the default operation of sorting by file name.
+  * printf now supports indexed arguments, using the POSIX:2024 specified
+    %<i>$ format, where '<i>' is an integer referencing a particular argument,
+    thus allowing repetition or reordering of printf arguments.
+  * test supports the POSIX:2024 specified '<' and '>' operators with strings,
+    to compare the string locale collating order.
+  * timeout now supports the POSIX:2024 specified -f, and -p short options,
+    corresponding to --foreground, and --preserve-status respectively.
+  Improvements
+  * cksum -a crc, makes use of AVX2, AVX512, and ARMv8 SIMD extensions
+    for time reductions of up to 40%, 60%, and 80% respectively.
+  * 'head -c NUM', 'head -n NUM', 'nl -l NUM', 'nproc --ignore NUM',
+    'tail -c NUM', 'tail -n NUM', and 'tail --max-unchanged-stats NUM’
+    no longer fail merely because NUM stands for 2**64 or more.
+  * sort operates more efficiently when used on pseudo files with
+    an apparent size of 0, like those in /proc.
+  * stat and tail now know about the "bcachefs", and "pidfs" file system types.
+    stat -f -c%T now reports the file system type,
+    and tail -f uses inotify for these file systems.
+  * wc now reads a minimum of 256KiB at a time.
+    This was previously 16KiB and increasing to 256KiB was seen to increase
+    wc -l performance by about 10% when reading cached files on modern systems.
+- coreutils-fix-gnulib-time_r-tests.patch: Remove now-upstream patch.
+- coreutils-9.6-ls-Z-crash-fix.patch: Add upstream patch from after the release.
+- coreutils.spec (Patch920): Exchange names of above patch files accordingly.
+- coreutils-i18n.patch: Refresh patch, manually porting some upstream fixes
+  into the i18n chunks for expand.c, fold.c and unexpand.c.
+- Refresh all other patches:
+  * coreutils-disable_tests.patch
+  * coreutils-remove_hostname_documentation.patch
+  * coreutils-remove_kill_documentation.patch
+  * coreutils-skip-gnulib-test-tls.patch
+  * coreutils-tests-shorten-extreme-factor-tests.patch
+  * coreutils-tests-workaround-make-fdleak.patch
+
+-------------------------------------------------------------------
 Sun Sep 29 14:36:55 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-i18n.patch: fold(1): fix fold -b with UTF8 locale.

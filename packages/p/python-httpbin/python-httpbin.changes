@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 01:22:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-six.patch:
+  * Remove use of six.
+
+-------------------------------------------------------------------
 Tue Oct  1 14:35:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.2

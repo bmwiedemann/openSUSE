@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 24 06:15:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.50.1:
+  * Merge pull request #2584 from perses/nexucis/release
+  * [IGNORE] CI: e2e: bump actions/upload-artifact to v4 (#2564)
+  * [FEATURE] Label metrics in stat chart (#2574)
+  * [BUGFIX] Inject API prefix in all UI assets (#2576)
+  * [BUGFIX] Login from percli (method not allowed) (#2577)
+  * [FEATURE] Value mapping settings for Status History and Stat
+    Chart (#2462)
+  * [IGNORE] Add error boundary around recent dashboard on home
+    page (#2560)
+  * [BUGFIX] ListVariable: fix autocomplete when 'All' is selected
+    (#2554)
+
+-------------------------------------------------------------------
 Wed Jan 15 13:21:42 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.50.0:

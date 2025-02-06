@@ -63,4 +63,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1198347</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dbde1cca0bccd9a5fefa6a289859eff5</srcmd5>
+    <version>0.2.8.0</version>
+    <time>1738007485</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1239821</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>daa5ef85bd3fcffbd7652e056cfe39cf</srcmd5>
+    <version>0.2.8.1</version>
+    <time>1738078868</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1240781</requestid>
+  </revision>
 </revisionlist>

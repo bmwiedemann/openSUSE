@@ -350,4 +350,13 @@
     <comment>    [CVE-2024-3727](https://bugzilla.suse.com/show_bug.cgi?id=1224114)</comment>
     <requestid>1237414</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>dee6cd2c226f5fdb02ce08ba3affeb69</srcmd5>
+    <version>1.3.6</version>
+    <time>1738245188</time>
+    <user>anag+factory</user>
+    <comment>- Update golang.org/x/net to v0.23 to fix CVE-2023-45288
+  (bnc#1236528). (forwarded request 1241243 from eeich)</comment>
+    <requestid>1241325</requestid>
+  </revision>
 </revisionlist>

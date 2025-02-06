@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:57:14 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.3
+  * Fix missing nbformat version #304 (@fcollonval)
+  * Increase pycrdt compatible version range #307 (@davidbrochart)
+  * Fix stream output #294 (@davidbrochart)
+  * Fix tests #288 (@davidbrochart)
+
+-------------------------------------------------------------------
 Thu Dec  5 16:01:23 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - refresh node modules

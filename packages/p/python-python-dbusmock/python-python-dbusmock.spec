@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dbusmock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,12 @@
 %bcond_with test
 %endif
 Name:           python-python-dbusmock%{psuffix}
-Version:        0.32.1
+Version:        0.34.2
 Release:        0
 Summary:        Python library for creating mock D-Bus objects
 License:        LGPL-3.0-or-later
 URL:            https://github.com/martinpitt/python-dbusmock
-Source:         https://files.pythonhosted.org/packages/source/p/python-dbusmock/python-dbusmock-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-dbusmock/python_dbusmock-%{version}.tar.gz
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
@@ -66,7 +66,7 @@ such as upower, systemd, logind, gnome-session or others, and it is hard
 to what one may expect in tests.
 
 %prep
-%autosetup -p1 -n python-dbusmock-%{version}
+%autosetup -p1 -n python_dbusmock-%{version}
 
 %build
 %pyproject_wheel

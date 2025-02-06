@@ -1,7 +1,7 @@
 #
 # spec file for package python-executing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/alexmojaki/executing/pull/86 fix: backward compatibility fix for changed source positions in 3.12.6
 Patch0:         new-python-312.patch
+# PATCH-FIX-UPSTREAM https://github.com/alexmojaki/executing/pull/94 fix: check for pytest compatibility
+Patch1:         pytest.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 4.0.0}

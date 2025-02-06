@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Jan 30 07:56:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.9
+  * Add shortcuts to bezier curve and freehand path
+  * Fix original offsets not being accounted for when copying
+    from another document (kde#490998)
+  * Fix updates when copy-pasting multiple nodes into a new document
+  * Fix infinite loop when trying to update pass-through nodes
+    (kde#493774, kde#493830, kde#493837)
+  * Fix Photobash Crash
+  * Bug fix: Added A1 and A2 sizes when creating a document
+  * Fix a crash when trying to merge down a layer created after
+    a reference image addition
+  * Possibly fix saving EXR files with extremely low alpha values
+  * Fix infinite loop when a clone layer is connected to a
+    group with clones
+  * Dynamic brush tool shouldn't load the saved smoothing
+    configuration (kde#493249)
+  * Fix bogus offset when saving EXR with moved layers
+  * Try to keep color space profile when saving EXR of
+    incompatible type
+  * Fix crash when re-importing the same resource, but changed
+    (kde#484796)
+  * Fix range of Saturation and Value brush options (kde#487469)
+  * Check pointer before dereferencing. (kde#479405)
+  * Fix loading .kpp files with embedded top-level resources
+    (kde#487866, kde#456586, kde#456197)
+  * Fix a crash when trying to clear scratchpad while it is busy
+    (kde#488800)
+  * Fix the current preset thumbnail to be present in the preset
+    save dialog (kde#488673, kde#446792)
+  * JPEG XL: Fix potential lockup when loading multipage images
+  * Set the correct shortcut for zoom in in the action file
+    (kde#484365)
+  * Fixed: some tools is interrupted by recorder. (kde#488472,
+    kde#477715, kde#484783)
+  * Make sure that the text tool is not interrupted by the
+    recorder (kde#495768)
+  * Recover "Clean Up" button in the Krita's Recordings Manager
+    (kde#455207)
+  * Fix a possible saving lockout due to incorrect ownership of
+    the saving mutex (kde#496018)
+  * Fixes to the unit spinboxes, a new context menu has been
+    added to change the unit.
+  * Make vector and raster selections to behave in the same way
+    when creating tiny selections (kde#445935)
+  * Fix unclosed paths when intersecting two rectangular
+    selections (kde#408369)
+  * Fix crash when closing Krita while Calligraphy Tool is
+    active (kde#496257)
+  * Fix following existing shape in the Calligraphy Tool
+    (kde#433288)
+  * Fix "Copy into new Layer" action when working with vector
+    layers (kde#418317)
+  * Make sure that eraser button is properly initialized on
+    Krita start (kde#408440)
+  * Fix focus issues in Canvas Size dialog (kde#474809)
+  * Disable snapping to image center by default (kde#466718)
+  * Make sure that point-based snap points have higher priority
+    than line-based ones (kde#492434)
+  * Implement canvas decorations for Snap-to-guides feature
+    -Don't allow lowering/raising a mask into a locked layer
+  * Fix display profile conversion flags to be updated on
+    settings change (kde#496388)
+  * Switch color history in the popup palette to use last-used
+    sorting (kde#441900)
+  * Add Unify Layers Color Space action
+  * Fix incorrect action text for "Paste Shape Style"
+    (kde#497035)
+  * Fix backward compatibility of Per-Channel filter (kde#497336)
+  * Fix rendering of the warning icon in the composite op
+    selector
+  * Simplify path point and control point move strategies.
+  * Fix an assert when modifying Mesh Gradient on a shape
+    (kde#496519)
+  * Fix aspect ratio of Resource Manager tooltips
+  * Improve rendering of pattern thumbnails
+  * Fix artifacts when painting under a gaussian blus layer in
+    WA-mode (kde#434938)
+  * Fix an assert when undoing merging of locked layers
+    (kde#497389)
+  * Remove ignoring of the mouse events in KoPathTool (kde#411855)
+  * Use traceback instead of cgitb (kde#497859)
+  * Fix ambiguous "break path" shortcut in Shape Edit Tool
+    (kde#429503)
+  * Add position indepndent property to libraqm
+  * Fix python Py_SetPath() deprecation by always using qputenv()
+  * JPEG XL export: Fix unable to set EPF value to -1 (encoder
+    chooses)
+  * G'Mic has been updated to 3.5.0 stable.
+
+-------------------------------------------------------------------
 Wed Nov 20 17:17:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

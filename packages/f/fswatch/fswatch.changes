@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 27 21:47:32 UTC 2025 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 1.18.2
+  * Added event flag CloseWrite: file open for write has been closed.
+  * inotify_monitor: added support for CloseWrite, adding support for events of
+    type IN_CLOSE_WRITE.
+  * Issue #337: fswatch exits on non-existing paths.
+- Update to 1.18.1
+  * Issue #333: Handle non-ASCII characters in file paths to prevent segmentation
+    faults in FSEvents callback.
+- require gcc > 7, as build fail in this version
+
+-------------------------------------------------------------------
 Sun Jan  5 10:35:58 UTC 2025 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Update to 1.18.0

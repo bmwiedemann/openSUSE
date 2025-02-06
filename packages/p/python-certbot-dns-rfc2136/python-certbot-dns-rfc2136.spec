@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-dns-rfc2136
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-rfc2136
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        RFC 2136 DNS Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-rfc2136/certbot_dns_rfc2136-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
-BuildRequires:  %{python_module dnspython >= 1.15.0}
+BuildRequires:  %{python_module dnspython >= 2.6.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-acme >= %{version}
 Requires:       python-certbot >= %{version}
-Requires:       python-dnspython >= 1.15.0
+Requires:       python-dnspython >= 2.6.1
 BuildArch:      noarch
 
 %python_subpackages
@@ -44,10 +45,10 @@ RFC 2136 DNS Authenticator plugin for Certbot.
 %setup -q -n certbot_dns_rfc2136-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ RFC 2136 DNS Authenticator plugin for Certbot.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/certbot_dns_rfc2136
+%{python_sitelib}/certbot_dns_rfc2136-%{version}*info
 
 %changelog

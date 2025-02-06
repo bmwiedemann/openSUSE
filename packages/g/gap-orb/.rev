@@ -23,4 +23,12 @@
     <comment>- Update to release 4.9.2</comment>
     <requestid>1234732</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0cab52e9a110c7e814a5d0302356470</srcmd5>
+    <version>5.0.0</version>
+    <time>1737560288</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 5.0.0</comment>
+    <requestid>1239481</requestid>
+  </revision>
 </revisionlist>

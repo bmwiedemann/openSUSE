@@ -2,10 +2,10 @@ References:
 When a particular firmware is selected, read the json file for a description.
 Add a tooltip of the json description when the mouse move overs the selected firmware.
 
-Index: virt-manager-4.1.0/virtManager/details/details.py
+Index: virt-manager-5.0.0/virtManager/details/details.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtManager/details/details.py
-+++ virt-manager-4.1.0/virtManager/details/details.py
+--- virt-manager-5.0.0.orig/virtManager/details/details.py
++++ virt-manager-5.0.0/virtManager/details/details.py
 @@ -4,6 +4,10 @@
  # This work is licensed under the GNU GPLv2 or later.
  # See the COPYING file in the top-level directory.
@@ -26,7 +26,7 @@ Index: virt-manager-4.1.0/virtManager/details/details.py
              "on_overview_chipset_changed": _e(EDIT_MACHTYPE),
  
              "on_details_inspection_refresh_clicked": self._inspection_refresh_clicked_cb,
-@@ -1098,6 +1102,52 @@ class vmmDetails(vmmGObjectUI):
+@@ -1100,6 +1104,52 @@ class vmmDetails(vmmGObjectUI):
          self.storage_browser.set_browse_reason(reason)
          self.storage_browser.show(self.topwin)
  

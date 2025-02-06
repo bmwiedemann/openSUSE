@@ -87,4 +87,12 @@
     <comment>- Update to release 1.25</comment>
     <requestid>1238837</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>244f511aa6900db402148b445b41edd4</srcmd5>
+    <version>1.25</version>
+    <time>1737389800</time>
+    <user>anag+factory</user>
+    <comment>- Build with %optflags</comment>
+    <requestid>1239027</requestid>
+  </revision>
 </revisionlist>

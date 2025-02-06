@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-lite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,7 +135,9 @@ cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 mkdir -p %{buildroot}%{ifddir}
 mkdir -p %{buildroot}%{_sysconfdir}/reader.conf.d/
 sed s:@ifddir@:%{ifddir}: <pcsc-lite-reader-conf >%{buildroot}%{_sysconfdir}/reader.conf.d/reader.conf
+%if 0%{?suse_version} < 1600
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpcscd
+%endif
 mkdir -p %{buildroot}%{_fillupdir}
 cp %{name}.sysconfig %{buildroot}%{_fillupdir}/sysconfig.pcscd
 mkdir -p %{buildroot}%{_docdir}/%{name}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 00:59:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Explicitly BuildRequire sphinx_rtd_theme. 
+
+-------------------------------------------------------------------
 Mon Oct 28 21:49:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0:

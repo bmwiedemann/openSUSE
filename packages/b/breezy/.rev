@@ -151,4 +151,23 @@ This requires https://build.opensuse.org/request/show/790036 to build (already a
 </comment>
     <requestid>1222608</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c932f2f885e98df2cb1da23334af32d9</srcmd5>
+    <version>3.3.9</version>
+    <time>1737651729</time>
+    <user>anag+factory</user>
+    <comment>Fix vendoring in _service &amp;&amp; revendor
+
+- Fix packaging bugs (make rpmlint more happy and switch to wheel  workflow)
+- Add Debian patches:
+  - 03_spurious_test_failure.patch
+  - 08_disable_sphinx_epytext.patch
+  - 16_generate_ids.patch
+- Add bash completion
+
+Signed-off-by: Matěj Cepl &lt;mcepl@cepl.eu&gt;
+
+(🤖: Submission of breezy via https://src.opensuse.org/pool/breezy/pulls/1 by mcepl)</comment>
+    <requestid>1239585</requestid>
+  </revision>
 </revisionlist>

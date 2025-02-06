@@ -254,4 +254,12 @@
   * https://www.postgresql.org/docs/release/15.10/</comment>
     <requestid>1225750</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0e88e65c0fbac2a18963a3da63bd1985</srcmd5>
+    <version>15.10</version>
+    <time>1738080590</time>
+    <user>anag+factory</user>
+    <comment>- Fix build, add postgresql-tzdata2025a.patch</comment>
+    <requestid>1240821</requestid>
+  </revision>
 </revisionlist>

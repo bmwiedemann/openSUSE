@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 10:40:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.6.1
+  * Make signatures in ``tb_format`` Python 3.12+ compatible (#186)
+
+-------------------------------------------------------------------
 Mon Oct 28 21:53:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6:

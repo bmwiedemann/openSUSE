@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 10:37:38 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind
+
+-------------------------------------------------------------------
 Wed Jun 12 08:10:35 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - remove package name based perl requires

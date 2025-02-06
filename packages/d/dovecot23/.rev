@@ -720,4 +720,13 @@
   build system.</comment>
     <requestid>1225498</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>f5bd8cb7e204d07d84d4c6197dc81471</srcmd5>
+    <version>2.3.21.1</version>
+    <time>1738245172</time>
+    <user>anag+factory</user>
+    <comment>- Enable notify support for the unit file. New BR
+  pkgconfig(libsystemd)</comment>
+    <requestid>1241315</requestid>
+  </revision>
 </revisionlist>

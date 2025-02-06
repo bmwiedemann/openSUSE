@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 24 15:03:39 UTC 2025 - Dave Plater <davejplater@gmail.com>
+
+- Force to build with ffmpeg-7
+
+-------------------------------------------------------------------
 Thu Oct 31 05:57:28 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - build with qt6 (the default in upstream provided binaries)

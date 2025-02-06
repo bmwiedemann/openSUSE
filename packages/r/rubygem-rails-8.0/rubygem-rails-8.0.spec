@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rails-8.0
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,27 +24,27 @@
 #
 
 Name:           rubygem-rails-8.0
-Version:        8.0.0.1
+Version:        8.0.1
 Release:        0
 %define mod_name rails
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -8.0
 # MANUAL
-#define rb_build_versions     %{my_apps_rb_build_versions}
-#define rb_build_ruby_abis    %{my_apps_rb_build_abi}
+# define rb_build_versions     %{my_apps_rb_build_versions}
+# define rb_build_ruby_abis    %{my_apps_rb_build_abi}
 BuildRequires:  %{rubygem activesupport = %{version}}
+BuildRequires:  %{rubygem actioncable = %{version}}
+BuildRequires:  %{rubygem actionmailbox = %{version}}
+BuildRequires:  %{rubygem actionmailer = %{version}}
 BuildRequires:  %{rubygem actionpack = %{version}}
+BuildRequires:  %{rubygem actiontext = %{version}}
 BuildRequires:  %{rubygem actionview = %{version}}
+BuildRequires:  %{rubygem activejob = %{version}}
 BuildRequires:  %{rubygem activemodel = %{version}}
 BuildRequires:  %{rubygem activerecord = %{version}}
-BuildRequires:  %{rubygem actionmailer = %{version}}
-BuildRequires:  %{rubygem activejob = %{version}}
-BuildRequires:  %{rubygem actioncable = %{version}}
 BuildRequires:  %{rubygem activestorage = %{version}}
-BuildRequires:  %{rubygem actionmailbox = %{version}}
-BuildRequires:  %{rubygem actiontext = %{version}}
-BuildRequires:  %{rubygem railties = %{version}}
 BuildRequires:  %{rubygem bundler >= 1.15.0}
+BuildRequires:  %{rubygem railties = %{version}}
 
 # help scheduler
 BuildRequires:  %{rubygem rack-session >= 2}
@@ -55,30 +55,30 @@ BuildRequires:  %{rubygem mini_mime >= 1.1.5}
 %if %{with ensure_default_gemfile_works}
 # keep in sync with below
 BuildRequires:  %{rubygem propshaft}
-BuildRequires:  %{rubygem sqlite3 >= 2.1}
-BuildRequires:  %{rubygem puma >= 6.0}
+BuildRequires:  %{rubygem bootsnap}
 BuildRequires:  %{rubygem importmap-rails}
-BuildRequires:  %{rubygem jsbundling-rails}
-BuildRequires:  %{rubygem turbo-rails}
-BuildRequires:  %{rubygem stimulus-rails}
 BuildRequires:  %{rubygem jbuilder >= 2.13}
+BuildRequires:  %{rubygem jsbundling-rails}
+BuildRequires:  %{rubygem kamal}
+BuildRequires:  %{rubygem puma >= 6.0}
 BuildRequires:  %{rubygem solid_cable}
 BuildRequires:  %{rubygem solid_cache}
 BuildRequires:  %{rubygem solid_queue}
-BuildRequires:  %{rubygem bootsnap}
-BuildRequires:  %{rubygem kamal}
+BuildRequires:  %{rubygem sqlite3 >= 2.1}
+BuildRequires:  %{rubygem stimulus-rails}
+BuildRequires:  %{rubygem turbo-rails}
 # BuildRequires:  %{rubygem thruster}
 BuildRequires:  %{rubygem debug}
 BuildRequires:  %{rubygem brakeman}
-BuildRequires:  %{rubygem web-console}
 BuildRequires:  %{rubygem rack-mini-profiler}
 BuildRequires:  %{rubygem redis >= 5.0}
+BuildRequires:  %{rubygem web-console}
 
-BuildRequires:  %{rubygem redis:5 >= 5.0.0}
-BuildRequires:  %{rubygem kredis}
 BuildRequires:  %{rubygem bcrypt:3.1 >= 3.1.7}
 BuildRequires:  %{rubygem image_processing:1 >= 1.2}
+BuildRequires:  %{rubygem kredis}
 BuildRequires:  %{rubygem rack-cors}
+BuildRequires:  %{rubygem redis:5 >= 5.0.0}
 # BuildRequires:  %{rubygem rubocop-rails-omakase}
 
 # help the scheduler

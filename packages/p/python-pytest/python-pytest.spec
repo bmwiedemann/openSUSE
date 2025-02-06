@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,12 +33,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        8.3.3
+Version:        8.3.4
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest/pull/13113 Fix selftests with Pygments >= 2.19.0
+# fresh from the oven at the time of patching, may need refresh
+Patch:          pygments.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6}

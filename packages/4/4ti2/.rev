@@ -62,4 +62,15 @@
     <comment>- Update to release 1.6.10</comment>
     <requestid>1082911</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0e9e5bc495c88587a175e38e77b7548d</srcmd5>
+    <version>1.6.10</version>
+    <time>1737828770</time>
+    <user>dimstar_suse</user>
+    <comment>- Edit 4ti2-handle-prefix.diff [boo#1233672]
+  * Avoid eagerly following %fdupes-created symlinks when
+    determining what final program to call.
+  * Handle being called as /usr/bin/4ti2_circuits.</comment>
+    <requestid>1240220</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-gphoto2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,20 @@
 
 
 Name:           python-gphoto2
-Version:        2.2.4
+Version:        2.5.1
 Release:        0
 Summary:        Python interface to libgphoto2
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-or-later
 URL:            https://github.com/jim-easterbrook/python-gphoto2
-Source0:        https://files.pythonhosted.org/packages/source/g/gphoto2/gphoto2-%{version}.tar.gz
+Source0:        https://github.com/jim-easterbrook/python-gphoto2/archive/refs/tags/v%{version}.tar.gz#/gphoto2-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE python-gphoto2-do_not_install_data.patch
 Patch0:         %{name}-do_not_install_data.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml if %python-setuptools < 61}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -40,7 +44,7 @@ access to nearly all of the libgphoto2 functions, although sometimes
 in a nonstandard manner.
 
 %prep
-%autosetup -p1 -n gphoto2-%{version}
+%autosetup -p1 -n python-gphoto2-%{version}
 # remove unwanted shebang
 sed -e '1d' -i examples/*.py
 
@@ -48,16 +52,22 @@ sed -e '1d' -i examples/*.py
 chmod -x examples/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+export IOLIBS=%{_libdir}/libgphoto2_port/$(pkg-config --variable=VERSION libgphoto2_port)
+export CAMLIBS=%{_libdir}/libgphoto2/$(pkg-config --variable=VERSION libgphoto2)
+# Large portions of the testsuite fail with gphoto2.GPhoto2Error: [-105] Unknown model
+%pytest_arch -k 'TestList'
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGELOG.txt README.rst examples
+%doc README.rst examples
 %{python_sitearch}/gphoto2
-%{python_sitearch}/gphoto2-%{version}*-info
+%{python_sitearch}/gphoto2-%{version}.dist-info
 
 %changelog

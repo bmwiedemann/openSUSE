@@ -28,6 +28,7 @@ Source:         http://launchpad.net/%{name}/%{series}/%{version}/+download/%{na
 Source1:        onboard-defaults.conf
 # PATCH-FIX-SLE onboard-remove-dep-typelib-appindicator3.patch fate#326794 yfjiang@suse.com -- remove the typelib(Appindicator3) dependency because SLE does not ship it
 Patch0:         onboard-remove-dep-typelib-appindicator3.patch
+Patch1:         onboard-Onboard-Config.py-Check-desktop-env-before-requestin.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Needed for typelib() - Requires.
@@ -96,6 +97,7 @@ This GNOME Shell extension integrates the onboard keyboard with the GNOME Shell.
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150200
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p1
 
 %build
 python3 setup.py build
@@ -111,6 +113,13 @@ python3 ./setup.py install -O1 --skip-build \
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/%{name}/
 rm -rf %{buildroot}%{_datadir}/%{name}/{docs,AUTHORS,CHANGELOG,COPYING*,HACKING,NEWS,README}
 rm -rf %{buildroot}%{_datadir}/icons/ubuntu-mono-*
+
+%if 0%{?suse_version} < 1600
+# Manually install onboard-autostart.desktop if distutils.extra is too old...
+# Currently, onboard-autostart.desktop installation only works on openSUSE:Factory.
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
+cp -a build/share/autostart/onboard-autostart.desktop %{buildroot}%{_sysconfdir}/xdg/autostart
+%endif
 
 rm -fr %{buildroot}%{_datadir}/icons/hicolor/28x28/apps/onboard.png
 
@@ -170,7 +179,7 @@ sed -i "1,4{/#!\/usr\/bin/d}" \
 %{_datadir}/icons/hicolor/*/apps/onboard.png
 %{_mandir}/man1/onboard.1%{?ext_man}
 %{_mandir}/man1/onboard-settings.1%{?ext_man}
-%{_sysconfdir}/xdg/autostart/%{name}-autostart.desktop
+%config %{_sysconfdir}/xdg/autostart/%{name}-autostart.desktop
 
 %files lang -f %{name}.lang
 

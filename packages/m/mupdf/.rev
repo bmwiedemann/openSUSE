@@ -745,4 +745,20 @@
     <comment></comment>
     <requestid>1234698</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e86a51c02d95eaa2c990ee21210f7bcd</srcmd5>
+    <version>1.25.3</version>
+    <time>1737651963</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239880</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>7f19828f38d2b9234571422b0c48fb7e</srcmd5>
+    <version>1.25.4</version>
+    <time>1738163836</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241070</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.21.5
+Version:        0.21.6+5
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
@@ -38,6 +38,7 @@ BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.17.2.12
 BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -75,6 +76,18 @@ Provides:       libsecret-tools = %{version}
 %description -n secret-tool
 Secret-tool is a command line tool that can be used to store and
 retrieve passwords.
+
+%package -n secret-tool-bash-completion
+Summary:        Secret-tool bash completion support
+Requires:       bash-completion
+Requires:       secret-tool
+Supplements:    (secret-tool and bash-completion)
+BuildArch:      noarch
+
+%description -n secret-tool-bash-completion
+Secret-tool is a command line tool that can be used to store and
+retrieve passwords.
+This package provides the bash-completion-support
 
 %package devel
 Summary:        Development files for the Secret Service API library
@@ -123,6 +136,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n secret-tool
 %{_bindir}/secret-tool
 %{_mandir}/man1/secret-tool.1%{?ext_man}
+
+%files -n secret-tool-bash-completion
+%{_datadir}/bash-completion/completions/secret-tool
 
 %files devel
 %{_libdir}/libsecret-1.so

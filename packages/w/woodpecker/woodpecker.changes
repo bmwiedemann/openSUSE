@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 21 06:11:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.1:
+  * Bug Fixes
+    - Only show visited repos and hide at all if less than 4 repos
+      [#4753]
+    - Fix sql identifier escaping in datastore feed [#4746]
+    - Fix log folder permissions [#4749]
+    - Add missing error message for org_access_denied [#4744]
+    - Fix package configs [#4741]
+  * Documentation
+    - chore(deps): lock file maintenance [#4751]
+  * Dependency
+    - fix(deps): update golang-packages [#4750]
+    - fix(deps): update dependency simple-icons to v14.3.0 [#4739]
+    - chore(deps): update dependency vitest to v3 [#4736]
+  * Misc
+    - fix minor tag creation for server scratch image [#4748]
+    - use v3 woodpecker libs [#4742]
+
+-------------------------------------------------------------------
 Sun Jan 19 14:37:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.0:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 17 16:49:17 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.0.15
+  * Adopt uv
+  * support for calling a function/coroutine
+  * Fix for single line docstrings
+  * Typechecking
+  * Allow matching prefix with curly braces
+- add newline.patch to adapt tests to pytest 8.3.4
+
+-------------------------------------------------------------------
 Sun Aug 18 16:50:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.13:

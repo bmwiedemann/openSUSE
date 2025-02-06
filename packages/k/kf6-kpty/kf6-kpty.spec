@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kpty
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ Source2:        frameworks.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
-BuildRequires:  utempter-devel
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}

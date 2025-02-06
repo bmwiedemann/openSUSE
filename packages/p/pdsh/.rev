@@ -469,4 +469,20 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
   builds for s390x or 32bit. (forwarded request 1237536 from eeich)</comment>
     <requestid>1237651</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>054d0b1e4e0e397e0e7b1dfd8eac503e</srcmd5>
+    <version>2.35</version>
+    <time>1737389714</time>
+    <user>anag+factory</user>
+    <comment>- Do not build Slurm flavors if we don't build for Slurm. (forwarded request 1238990 from eeich)</comment>
+    <requestid>1238991</requestid>
+  </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>a977378e379d0a6078f56e0fe11f638a</srcmd5>
+    <version>2.35</version>
+    <time>1737490254</time>
+    <user>anag+factory</user>
+    <comment>- Fix version test for munge build (bsc#1236156). (forwarded request 1239224 from eeich)</comment>
+    <requestid>1239225</requestid>
+  </revision>
 </revisionlist>

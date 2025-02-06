@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 21 08:39:57 UTC 2025 - Max Lin <mlin@suse.com>
+
+- build with Botan 3 on Leap 16
+
+-------------------------------------------------------------------
 Mon Nov  4 13:02:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - drop runtime dependency on update-desktop-files

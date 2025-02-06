@@ -1,7 +1,7 @@
 #
 # spec file for package grisbi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,24 @@
 
 
 Name:           grisbi
-Version:        2.0.5
+Version:        3.0.4
 Release:        0
 Summary:        Personal Accounting Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            http://www.grisbi.org
-Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/%{version}/%{name}-%{version}.tar.bz2.asc
+Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.bz2.asc
 
 BuildRequires:  fdupes
-BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(libcrypto) >= 1.0.0
 BuildRequires:  pkgconfig(libgoffice-0.10) >= 0.10.0
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14
 BuildRequires:  pkgconfig(libofx) >= 0.9
+BuildRequires:  pkgconfig(libssl) >= 1.0.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(zlib)
 ExcludeArch:    %{ix86}
@@ -75,13 +75,13 @@ rm %{buildroot}%{_datadir}/mime-info/grisbi.{keys,mime}
 %doc AUTHORS NEWS README
 %{_bindir}/grisbi
 %{_mandir}/man1/grisbi.1%{?ext_man}
-%{_datadir}/applications/grisbi.desktop
+%{_datadir}/applications/org.grisbi.Grisbi.desktop
 %{_datadir}/doc/grisbi/
-%{_datadir}/glib-2.0/schemas/org.gtk.grisbi.gschema.xml
 %{_datadir}/grisbi/
 %{_datadir}/icons/*/*/*/*grisbi.*
 %{_datadir}/mime/packages/grisbi.xml
 %{_datadir}/pixmaps/grisbi/
+%{_datadir}/metainfo/%{name}.metainfo.xml
 
 %files lang -f %{name}.lang
 

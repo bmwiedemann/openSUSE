@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 12 14:01:47 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 4.8.0:
+ - The ``is_anycast`` attribute was added to ``geoip2.record.Traits``.
+   This returns ``True`` if the IP address belongs to an
+   `anycast network <https://en.wikipedia.org/wiki/Anycast>`_.
+   This is available for the GeoIP2 Country, City Plus, and Insights web services
+   and the GeoIP2 Country, City, and Enterprise databases.
+
+-------------------------------------------------------------------
 Sun Nov 26 10:29:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7.0:

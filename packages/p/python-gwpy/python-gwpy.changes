@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jan 15 15:32:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.11:
+  * [!1799] Fix version comparisons in gwpy.plot
+  * [!1802] Drop support for Python 3.8
+  * [!1819] Migrate from ligo-segments to igwn-segments
+  * [!1821] Remove all use of CVMFS for data in tests
+- Switch BuildRequires: python-ligo-segments out for
+  python-igwn-segments (upstream change).
+- Restore gwpy/segments/test_flag.py: issues fixed by upstream.
+- Restore test test_to_dqflag: test fixed by upstream.
+
+-------------------------------------------------------------------
+Wed Dec 18 13:14:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.10:
+  * [!1775] Skip ReadTimeout errors as standard for network tests.
+  * [!1772] Fix a few minor warnings emitted by Sphinx builds.
+  * [!1782] Fix use of numpy types for v2.0.
+  * [!1784] Fix man warnings in tests.
+  * [!1783] Use ID tokens for PyPI upload.
+  * [!1774] Skip tests that fail with 502 Bad Gateway errors from
+    Zenodo.org.
+  * [!1780] Fix implicit array to scalar conversion in filter
+    design.
+  * [!1779] Modify coherence unit to be an alias for
+    dimensionless_unscaled.
+  * [!1770] Update import of interactive_bk for Matplotlib 3.9.
+  * [!1786] Use release-branch-semver scheme with setuptools-scm.
+  * [!1787] Raise NotImplementedError from
+    StateTimeSeries.override_unit.
+  * [!1773] Update all references to github.com.
+  * [!1789] Add K1_HOFT_C00 frametype description in
+    documentation.
+- Drop gwpy-numpy-2.0-types.patch: upstreamed.
+- Disable additional tests:
+  * Delete gwpy/segments/test_flag.py: causes 'SystemError: error
+    return without exception set'; cannot be avoided without
+    deleting file
+  * test_find_urls*: require network
+  * test_to_dqflag: 'SystemError: error return without exception
+    set'
+
+-------------------------------------------------------------------
+Tue Dec 17 13:13:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable test causing build failures with python 3.12.
+
+-------------------------------------------------------------------
 Sun Sep 15 22:37:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.9:

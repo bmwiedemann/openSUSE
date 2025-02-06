@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-user-share
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
-Suggests:       apache2-mod_dnssd
 Suggests:       apache2-prefork
 Suggests:       apache2-worker
 

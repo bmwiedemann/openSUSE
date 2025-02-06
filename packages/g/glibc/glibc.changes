@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:33:58 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Disable nscd support (bsc#1235247)
+
+-------------------------------------------------------------------
+Tue Jan  7 10:28:36 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Correctly determine livepatching support
+
+-------------------------------------------------------------------
+Sun Jan  5 11:43:47 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Define _enable_debug_packages for rpm 4.20
+
+-------------------------------------------------------------------
+Mon Dec  2 14:02:08 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Add support for loongarch64
+
+-------------------------------------------------------------------
 Mon Sep 30 20:56:18 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - langpacks are no more used. Drop glibc-2.3.90-langpackdir.diff.

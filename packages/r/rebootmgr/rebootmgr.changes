@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jan 29 09:56:49 UTC 2025 - kukuk@suse.com
+
+- Update to version 3.0+git20250129.eed876f:
+  * Release version 3.1
+  * rebootmgrd: fix check if new strategy is valid
+
+-------------------------------------------------------------------
+Tue Jan 28 15:05:30 UTC 2025 - kukuk@suse.com
+
+- Update to version 3.0+git20250128.8fa577c:
+  * Import version 3.0 based on sd-varlink
+
+-------------------------------------------------------------------
+Mon Jan 27 13:25:24 UTC 2025 - kukuk@suse.com
+
+- Update to version 3.0+git20250127.73667d7:
+  * rebootmgrctl: implement verbose dump-config verb
+  * Fix search path for vendor config file
+  * Add CI with openSUSE container
+  * Add new methods and use UID auth
+- Add timezone to BuildRequires for test suite
+
+-------------------------------------------------------------------
+Wed Jan 15 11:05:37 UTC 2025 - kukuk@suse.com
+
+- Update to version 3.0+git20250114.f74a9d5:
+  * Add bash-completion for rebootmgrctl
+
+-------------------------------------------------------------------
+Thu Dec 19 15:28:20 UTC 2024 - kukuk@suse.com
+
+- Update to version 3.0+git20241219.7166827:
+  * Remove left overs from dbus related manual page
+  * Use int64 to parse JSON for time_t
+  * Set varlink info
+  * Move announce_ready() call to a later place
+  * Require libeconf 0.7.5
+  * Free event loop in destroy context.
+  * Add missing error reply
+  * Remove unused log_type variable
+  * Add internal error to varlink interface
+  * Move varlink definition into own file
+  * Update manual pages
+
+-------------------------------------------------------------------
 Mon Nov 11 06:03:16 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add compatibility symlink for rebootmgrctl to sbin

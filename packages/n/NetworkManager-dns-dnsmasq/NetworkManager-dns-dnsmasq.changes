@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 21 08:03:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require dnsmasq and sysconfig: the script explicitly targets
+  integration between NetworkManager and dnsmasq, so it makes sense
+  to require both components. Additionally, sysconfig is used to
+  detect if the configuration is done properly for this
+  (boo#1236047).
+
+-------------------------------------------------------------------
 Wed Oct  5 12:31:29 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Initial: NetworkManager dispatcher script for DNS dnsmasq configuration.

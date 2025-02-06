@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,11 @@
 %global __python %{__python3}
 %global with_guestfs               0
 %global default_hvs                "qemu,xen,lxc"
+%if 0%{?suse_version} < 1600
+    %define have_spice 1
+%else
+    %define have_spice 0
+%endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -41,6 +46,15 @@ Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
+Patch1:         001-cli-Support-cpu-maximum.patch
+Patch2:         002-gui-Support-maximum-CPU-mode.patch
+Patch3:         003-cpu-Prefer-maximum-mode-for-many-emulated-guests.patch
+Patch4:         004-domcaps-get-list-of-supported-panic-device-models.patch
+Patch5:         005-tests-Update-capabilities-for-advertisting-panic-device-models.patch
+Patch6:         006-addhardware-panic-Fill-in-model-combo-with-advertised-values-by-libvirt.patch
+Patch7:         007-cli-man-Always-list-osinfo-before-os-variant.patch
+Patch8:         008-snapshots-default-to-same-snapshot-mode-as-currently-used-snapshot.patch
+Patch9:         009-snapshots-warn-users-to-not-mix-snapshot-modes.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
@@ -80,7 +94,6 @@ Patch272:       virtinst-refresh_before_fetch_pool.patch
 Patch273:       virtinst-use-xenpae-kernel-for-32bit.patch
 Patch274:       virtinst-use-qemu-for-cdrom-device.patch
 Patch275:       virtinst-keep-install-iso-attached.patch
-Patch276:       virtinst-dont-use-special-copy-cpu-features.patch
 Patch277:       virtinst-set-default-nic.patch
 Patch278:       virtinst-sap-detection.patch
 Patch279:       virtinst-smbios-unsupported-for-xenpv.patch
@@ -91,6 +104,7 @@ Patch283:       virtinst-add-oracle-linux-support.patch
 Patch284:       virtinst-add-slem60-detection-support.patch
 Patch285:       virtinst-windows-server-detection.patch
 Patch286:       virtinst-drop-removeprefix-usage.patch
+Patch287:       virtinst-add-sle16-detection-support.patch
 
 BuildArch:      noarch
 
@@ -104,7 +118,9 @@ Requires:       python3-cairo
 Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
+%if %{have_spice}
 Recommends:     python3-SpiceClientGtk
+%endif
 Requires:       virt-install
 Requires:       virt-manager-common = %{verrel}
 Requires:       typelib(GtkSource)
@@ -123,6 +139,7 @@ BuildRequires:  python3-argcomplete
 BuildRequires:  python3-pytest
 BuildRequires:  virt-install = %{version}
 BuildRequires:  virt-manager = %{version}
+BuildRequires:  pkgconfig(vte-2.91)
 %endif
 
 %description
@@ -179,8 +196,14 @@ machine).
 %if %{default_hvs}
 %global _default_hvs --default-hvs %{default_hvs}
 %endif
+%if ! %{have_spice}
+%global _default_graphics -Ddefault-graphics=vnc
+%else
+%global _default_graphics -Ddefault-graphics=spice
+%endif
 %meson \
     -Ddefault-hvs=%{default_hvs} \
+    %{?_default_graphics} \
     -Dupdate-icon-cache=false \
     -Dcompile-schemas=false \
     -Dtests=disabled
@@ -255,6 +278,7 @@ donttest="$donttest or testCLI0458virt_clone"
 donttest="$donttest or testCLI0460virt_clone"
 donttest="$donttest or testCLI0461virt_clone"
 donttest="$donttest or testCLI0468virt_clone"
+donttest="$donttest or test_virtinstall_no_testsuite"
 donttest="$donttest or testCheckXMLBuilderProps"
 donttest="$donttest or testCheckCLISuboptions"
 #

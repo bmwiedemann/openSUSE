@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-c
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012-2015 Remi Collet
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global libname     librabbitmq
 %global majsonum    4
 Name:           rabbitmq-c
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Client library for AMQP
 License:        MIT

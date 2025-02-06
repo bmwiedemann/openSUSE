@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jan 30 09:08:34 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250130.2bcbf46:
+  * Recognize set-timeout -1 in systemd-boot (bsc#1236578)
+  * Drop unused parameters
+  * Remove interactive leftover
+  * Add bash completions
+  * Export options definition to function
+  * Export command definition to function
+  * Export bootctl evaluation to function
+  * export image name setting to function
+  * Remove UI command help
+  * Mount devices and subvolumes for chroot
+  * Set permission for new keys
+  * Regenerate initrd if missing
+  * Remove old initrd
+  * Accept spaces or tabs when parsing crypttab
+  * add info to --help about how to ignore devices
+  * Do not include command line parameters before initrd= and
+    BOOT_IMAGE= This is necessary because the kernel can inject
+    command line options that are placed in front of these
+    parameters. sdbootutil then picks these up on the next run and
+    causes duplication of them, as the kernel will again inject the
+    option. Now sdbootutil ignores these injected parameters.
+  * Do not fail if the parent is missing
+  * Drop extra echo
+  * Fix 'if' expression
+  * Fix enrollment method variable
+  * Drop unused variables for TUI
+  * Remove TUI components
+  * Add --removable as alias for --portable
+  * Show dracut output in verbose mode
+  * Make if-else case statement
+  * Add --pcr cli option
+
+-------------------------------------------------------------------
 Tue Dec 17 11:50:04 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20241217.5aeb4e9:

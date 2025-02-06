@@ -1,7 +1,7 @@
 #
 # spec file for package python-twine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-twine
-Version:        5.1.1
+Version:        6.1.0
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0
@@ -28,11 +28,13 @@ Patch0:         0001-remove-disable-socket-pytest-opt.patch
 # PATCH-FIX-UPSTREAM skip-unsupported-Metadata-Version-test.patch gh#pypa/twine#1071 mcepl@suse.com
 # Skip failing test case
 Patch1:         skip-unsupported-Metadata-Version-test.patch
+BuildRequires:  %{python_module id}
 BuildRequires:  %{python_module importlib-metadata >= 3.6}
 BuildRequires:  %{python_module jaraco.envs}
 BuildRequires:  %{python_module jaraco.packaging >= 9}
 BuildRequires:  %{python_module keyring >= 15.1}
 BuildRequires:  %{python_module munch}
+BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkginfo >= 1.8.1}
 BuildRequires:  %{python_module portend}
@@ -49,9 +51,9 @@ BuildRequires:  %{python_module urllib3 >= 1.26.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata >= 3.6
+Requires:       python-id
 Requires:       python-keyring >= 15.1
-Requires:       python-pkginfo >= 1.8.1
+Requires:       python-packaging
 Requires:       python-readme_renderer >= 35.0
 Requires:       python-requests >= 2.20
 Requires:       python-requests-toolbelt >= 0.8.0

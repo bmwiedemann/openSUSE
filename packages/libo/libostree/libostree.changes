@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 19 16:40:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2025.1:
+  + Add a new --kexec flag to ostree admin upgrade which will cause
+    the deployment to be loaded into kexec after the upgrade
+    completes
+  + If composefs is enabled at build time, always generate a
+    composefs blob at deployment time
+  + Configuring the prepare-root config now mostly only affects the
+    runtime state
+
+-------------------------------------------------------------------
 Sat Dec 21 18:40:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2024.10:

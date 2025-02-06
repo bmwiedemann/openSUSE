@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:36:36 UTC 2025 - dfaggioli@suse.com
+
+- CPU model for new IBM Z HW (jsc#PED-10266):
+  * s390x/cpumodel: gen17 model
+  * s390x/cpumodel: Add PLO-extension facility
+  * s390x/cpumodel: correct PLO feature wording
+  * s390x/cpumodel: Add Sequential-Instruction-Fetching facility
+  * s390x/cpumodel: add Ineffective-nonconstrained-transaction facility
+  * s390x/cpumodel: add Vector-Packed-Decimal-Enhancement facility 3
+  * s390x/cpumodel: add Miscellaneous-Instruction-Extensions Facility 4
+  * s390x/cpumodel: add Vector Enhancements facility 3
+  * s390x/cpumodel: add Concurrent-functions facility support
+  * linux-headers: Update to Linux 6.13-rc1
+  * s390x/cpumodel: Add ptff Query Time-Stamp Event (QTSE) support
+  * s390x/cpumodel: add msa13 subfunctions
+  * s390x/cpumodel: add msa12 changes
+  * s390x/cpumodel: add msa11 subfunctions
+  * s390x/cpumodel: add msa10 subfunctions
+
+-------------------------------------------------------------------
+Wed Jan 22 15:04:53 UTC 2025 - dfaggioli@suse.com
+
+- Build properly with the latest version of Sphinx:
+  * [openSUSE][RPM] Fix the build with the latest Sphinx
+
+-------------------------------------------------------------------
 Fri Dec 20 08:03:35 UTC 2024 - dfaggioli@suse.com
 
 - Update to latest upstream release, 9.2.0:

@@ -1,7 +1,7 @@
 cabal-version:       2.2
 name:                unicode-collation
 version:             0.1.3.6
-x-revision: 1
+x-revision: 2
 synopsis:            Haskell implementation of the Unicode Collation Algorithm
 description:         This library provides a pure Haskell implementation of
                      the Unicode Collation Algorithm described at
@@ -51,7 +51,7 @@ flag executable
   Default:             False
 
 common common-options
-  build-depends:       base >= 4.11 && < 4.21
+  build-depends:       base >= 4.11 && < 4.22
 
   ghc-options:         -Wall
                        -Wcompat

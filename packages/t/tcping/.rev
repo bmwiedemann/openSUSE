@@ -59,4 +59,20 @@
     <comment></comment>
     <requestid>1206327</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>803f87c3a16539f9902ec0a51775e26f</srcmd5>
+    <version>2.7.0</version>
+    <time>1737828763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240208</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c0b0fa51e067921c1ed7fdd8de9a169</srcmd5>
+    <version>2.7.1</version>
+    <time>1738007808</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240551</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 %bcond_with magpie
 %endif
 Name:           budgie-desktop
-Version:        10.9.1+9
+Version:        10.9.2+5
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -71,20 +71,24 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.3
+BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.7
 BuildRequires:  pkgconfig(upower-glib) >= 1.0
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
 # remove old applet
 Provides:       budgie-trash-applet = 1.7.0
 Obsoletes:      budgie-trash-applet
 # flatpak/snap
+BuildRequires:  xdg-desktop-portal
+Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-gtk
 # https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
 Conflicts:      gnome-shell
 #
 # rebrand and gnome porting
-Requires:       budgie-desktop-view >= 1.3+0
+Requires:       (budgie-desktop-view >= 1.3+0 or nemo or desktopfolder)
+Suggests:       budgie-desktop-view >= 1.3+0
 Requires:       budgie-screensaver >= 5.1.0+0
-Requires:       typelib-1_0-Budgie-1_0 >= %{version}
+Requires:       typelib-1_0-Budgie-2_0 >= %{version}
 Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20240412.1
 Requires:       budgie-control-center >= 1.4.0+2
@@ -118,12 +122,12 @@ Requires(postun):update-alternatives
 %description
 Budgie Desktop is the flagship desktop for the Solus Operating System.
 
-%package -n typelib-1_0-Budgie-1_0
+%package -n typelib-1_0-Budgie-2_0
 Summary:        Main Introspection bindings for the Budgie Desktop
 Group:          System/Libraries
 Requires:       typelib-1_0-PeasGtk-1_0
 
-%description -n typelib-1_0-Budgie-1_0
+%description -n typelib-1_0-Budgie-2_0
 This package provides GObject Introspection files required for
 developing Budgie Applets using interpreted languages, such as Python
 GObject Introspection bindings.
@@ -253,10 +257,10 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopSc
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/glib-2.0/schemas/*.gschema.override
 %{_datadir}/icons/hicolor/scalable/*/*.svg
+%{_datadir}/icons/hicolor/symbolic/*/*.svg
 %{_datadir}/gnome-session
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
-%dir %{_datadir}/xdg-desktop-portal
 %{_datadir}/xdg-desktop-portal/budgie-portals.conf
 %{_libdir}/budgie-desktop
 %{_distconfdir}/xdg/autostart/*.desktop
@@ -287,13 +291,13 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopSc
 %{_includedir}/budgie-desktop
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
-%{_datadir}/gir-1.0/Budgie-1.0.gir
+%{_datadir}/gir-1.0/Budgie-2.0.gir
 %{_datadir}/gir-1.0/BudgieRaven-1.0.gir
-%{_datadir}/vala/vapi/budgie-1.0.*
+%{_datadir}/vala/vapi/budgie-2.0.*
 %{_datadir}/vala/vapi/budgie-raven-plugin-1.0.*
 
-%files -n typelib-1_0-Budgie-1_0
-%{_libdir}/girepository-1.0/Budgie-1.0.typelib
+%files -n typelib-1_0-Budgie-2_0
+%{_libdir}/girepository-1.0/Budgie-2.0.typelib
 
 %files -n typelib-1_0-BudgieRaven-1_0
 %{_libdir}/girepository-1.0/BudgieRaven-1.0.typelib

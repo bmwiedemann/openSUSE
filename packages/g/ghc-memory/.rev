@@ -215,4 +215,12 @@ new dep of securemem lib</comment>
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075953</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>ef839993e6c4cb3a052d389b8282b37e</srcmd5>
+    <version>0.18.0</version>
+    <time>1738007470</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1239818</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libmlt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.28.0
+%define lversion 7.30.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.28.0
+%define lversion_pp 7.30.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without Qt6
 %bcond_without rtaudio
 Name:           %{libname}
-Version:        7.28.0
+Version:        7.30.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later

@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Jan 21 12:23:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- updade to 9.1.1043
+ * [security]: segfault in win_line()
+ * update helptags
+ * filetype: just files are not recognized
+ * Update base-syntax, match ternary and falsy operators
+ * Vim9: out-of-bound access when echoing an enum
+ * Vim9: imported type cannot be used as func return type
+ * runtime(kconfig): updated ftplugin and syntax script
+ * runtime(doc): rename last t_BG reference to t_RB
+ * Vim9: comments are outdated
+ * tests: test_channel.py fails with IPv6
+ * runtime(vim): Update base-syntax, fix is/isnot operator matching
+ * Vim9: confusing error when using abstract method via super
+ * make install fails when using shadowdir
+ * Vim9: memory leak with blob2str()
+ * runtime(tex): add texEmphStyle to texMatchGroup in syntax script
+ * runtime(netrw): upstream snapshot of v175
+ * Vim9: compiling abstract method fails without return
+ * runtime(c): add new constexpr keyword to syntax file (C23)
+ * tests: shaderslang was removed from test_filetype erroneously
+ * link error when FEAT_SPELL not defined
+ * Coverity complains about insecure data handling
+ * runtime(sh): update syntax script
+ * runtime(c): Add missing syntax test files
+ * filetype: setting bash filetype is backwards incompatible
+ * runtime(c): Update syntax and ftplugin files
+ * the installer can be improved
+ * too many strlen() calls in screen.c
+ * no sanitize check when running linematch
+ * filetype: swc configuration files are not recognized
+ * runtime(netrw): change netrw maintainer
+ * wrong return type of blob2str()
+ * blob2str/str2blob() do not support list of strings
+ * runtime(doc): fix typo in usr_02.txt
+ * Coverity complains about dereferencing NULL pointer
+ * linematch option value not completed
+ * string might be used without a trailing NUL
+ * no way to get current selected item in a async context
+ * filetype: fd ignore files are not recognized
+ * v9.1.0743 causes regression with diff mode
+ * runtime(doc): fix base64 encode/decode examples
+ * Vim9: Patch 9.1.1013 causes a few problems
+ * Not possible to convert string2blob and blob2string
+ * Coverity complains about dereferencing NULL value
+ * Vim9: variable not found in transitive import
+ * runtime(colors): Update colorschemes, include new unokai colorscheme
+ * Vim9: Regression caused by patch v9.1.0646
+ * runtime(lyrics): support milliseconds in syntax script
+ * runtime(vim): Split Vim legacy and Vim9 script indent tests
+ * Vim9: class interface inheritance not correctly working
+ * popupmenu internal error with some abbr in completion item
+ * filetype: VisualCode setting file not recognized
+ * diff feature can be improved
+ * tests: test for patch 9.1.1006 doesn't fail without the patch
+ * filetype: various ignore are not recognized
+ * tests: Load screendump files with "git vimdumps"
+ * PmenuMatch completion highlight can be combined
+ * completion text is highlighted even with no pattern found
+ * tests: a few termdebug tests are flaky
+ * [security]: heap-buffer-overflow with visual mode
+ * runtime(doc): add package-<name> helptags for included packages
+ * Vim9: unknown func error with interface declaring func var
+ * runtime(filetype): don't detect string interpolation as angular
+ * ComplMatchIns highlight hard to read on light background
+ * runtime(vim): Update base-syntax, highlight literal string quote escape
+ * runtime(editorconfig): set omnifunc to syntaxcomplete func
+ * tests: ruby tests fail with Ruby 3.4
+ * Vim9: leaking finished exception
+ * runtime(tiasm):  use correct syntax name tiasm in syntax script
+ * filetype: TI assembly files are not recognized
+ * too many strlen() calls in drawscreen.c
+ * runtime(xf86conf): add section name OutputClass to syntax script
+ * ComplMatchIns may highlight wrong text
+ * runtime(vim): Update base-syntax, improve ex-bang matching
+ * runtime(doc): clarify buffer deletion on popup_close()
+ * filetype: shaderslang files are not detected
+ * Vim9: not able to use comment after opening curly brace
+
+-------------------------------------------------------------------
 Tue Jan  7 18:13:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0993

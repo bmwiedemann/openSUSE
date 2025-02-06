@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 22 14:08:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add pygments.patch to fix test failure with new pygments
+
+-------------------------------------------------------------------
+Wed Jan 22 12:50:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.1.0
+  * Incompatible change: Python 3.9 is no longer supported
+  * Made the order of Markdown extensions deterministic
+  * Adopted ruff for code quality checks and auto-formatting
+
+-------------------------------------------------------------------
 Tue Nov 12 14:39:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.0.0:

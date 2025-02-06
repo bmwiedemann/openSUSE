@@ -1394,4 +1394,13 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
  * allow negative KDUMP_KEEP_OLD_DUMPS (bsc#1234845)</comment>
     <requestid>1235309</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>4be175fa64b198693bf3718e02a7751c</srcmd5>
+    <version>2.0.14</version>
+    <time>1737828611</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 2.0.14
+ * spec: add dependency on ethtool</comment>
+    <requestid>1240171</requestid>
+  </revision>
 </revisionlist>

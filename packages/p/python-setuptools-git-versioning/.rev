@@ -69,4 +69,28 @@
     <comment></comment>
     <requestid>1135270</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6a614c23c5faaded968e9c22ad66037</srcmd5>
+    <version>2.1.0</version>
+    <time>1738072776</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.0:
+  * [breaking] Drop get_branch_tags function which was deprecated
+    since 1.8.0.
+  * [breaking] version_file option now have precedence over any tags in
+    the current branch.
+  * [breaking] Drop version_config keyword from setup.py, which was
+    deprecated since 1.8.0.
+  * [breaking] Does not allow passing setuptools_git_versioning=False
+    and setuptools_git_versioning=True to config. Always use
+    setuptools_git_versioning={&quot;enabled&quot;: True}.
+  * [feature] Test Python 3.13 compatibility
+  * [feature] Test Python 3.12 compatibility
+  * [feature] Remove useless warning if tag_filter, tag_formatter or
+    branch_formatter is a regexp instead of function reference.
+  * [bugfix] Replace outdated toml package with modern tomli.
+- Rip out _service and all of its gubbins, we can successfully test with
+  the GitHub tarball, so switch to that.</comment>
+    <requestid>1240725</requestid>
+  </revision>
 </revisionlist>

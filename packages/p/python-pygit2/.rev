@@ -496,4 +496,18 @@
 (🤖: Submission of python-pygit2 via https://src.opensuse.org/pool/python-pygit2/pulls/2 by mcepl)</comment>
     <requestid>1221428</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>24b4531d01e2839bd20e2c1859e67da5</srcmd5>
+    <version>1.17.0</version>
+    <time>1738245124</time>
+    <user>anag+factory</user>
+    <comment>update_to_1.17.0
+
+Update to pygit2 1.17.0 and make sure it builds with libgit2 1.9.
+
+(Depends on sr#1241223 and relates to sr#1241224).
+
+(🤖: Submission of python-pygit2 via https://src.opensuse.org/pool/python-pygit2/pulls/3 by mcepl)</comment>
+    <requestid>1241225</requestid>
+  </revision>
 </revisionlist>

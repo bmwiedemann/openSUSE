@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1238363</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>edb7f0f013b2d50e0bb5c5bf4cf7f6fd</srcmd5>
+    <version>0.1.1</version>
+    <time>1737490285</time>
+    <user>anag+factory</user>
+    <comment>- Rework 0001 labwc patch, to move user labwc configs to a location
+  that doesn't conflict with the labwc defaults</comment>
+    <requestid>1239327</requestid>
+  </revision>
 </revisionlist>

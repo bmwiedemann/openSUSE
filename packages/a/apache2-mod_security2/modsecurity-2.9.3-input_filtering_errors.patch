@@ -1,7 +1,8 @@
-diff -ru modsecurity-2.9.3.old/apache2/apache2_io.c modsecurity-2.9.3.new/apache2/apache2_io.c
---- modsecurity-2.9.3.old/apache2/apache2_io.c	2018-12-04 19:49:37.000000000 +0100
-+++ modsecurity-2.9.3.new/apache2/apache2_io.c	2021-02-12 13:28:27.739749566 +0100
-@@ -209,6 +209,10 @@
+Index: modsecurity-v2.9.8/apache2/apache2_io.c
+===================================================================
+--- modsecurity-v2.9.8.orig/apache2/apache2_io.c
++++ modsecurity-v2.9.8/apache2/apache2_io.c
+@@ -222,6 +222,10 @@ apr_status_t read_request_body(modsec_re
               *      too large and APR_EGENERAL when the client disconnects.
               */
              switch(rc) {
@@ -12,7 +13,7 @@ diff -ru modsecurity-2.9.3.old/apache2/apache2_io.c modsecurity-2.9.3.new/apache
                  case APR_INCOMPLETE :
                      *error_msg = apr_psprintf(msr->mp, "Error reading request body: %s", get_apr_error(msr->mp, rc));
                      return -7;
-@@ -218,7 +222,7 @@
+@@ -231,7 +235,7 @@ apr_status_t read_request_body(modsec_re
                  case APR_TIMEUP :
                      *error_msg = apr_psprintf(msr->mp, "Error reading request body: %s", get_apr_error(msr->mp, rc));
                      return -4;
@@ -21,10 +22,11 @@ diff -ru modsecurity-2.9.3.old/apache2/apache2_io.c modsecurity-2.9.3.new/apache
                      *error_msg = apr_psprintf(msr->mp, "Error reading request body: HTTP Error 413 - Request entity too large. (Most likely.)");
                      return -3;
                  case APR_EGENERAL :
-diff -ru modsecurity-2.9.3.old/apache2/mod_security2.c modsecurity-2.9.3.new/apache2/mod_security2.c
---- modsecurity-2.9.3.old/apache2/mod_security2.c	2018-12-04 19:49:37.000000000 +0100
-+++ modsecurity-2.9.3.new/apache2/mod_security2.c	2021-02-12 13:34:22.940428406 +0100
-@@ -1013,7 +1013,7 @@
+Index: modsecurity-v2.9.8/apache2/mod_security2.c
+===================================================================
+--- modsecurity-v2.9.8.orig/apache2/mod_security2.c
++++ modsecurity-v2.9.8/apache2/mod_security2.c
+@@ -1032,7 +1032,7 @@ static int hook_request_late(request_rec
      }
  
      rc = read_request_body(msr, &my_error_msg);
@@ -33,7 +35,7 @@ diff -ru modsecurity-2.9.3.old/apache2/mod_security2.c modsecurity-2.9.3.new/apa
          switch(rc) {
              case -1 :
                  if (my_error_msg != NULL) {
-@@ -1021,6 +1021,21 @@
+@@ -1040,6 +1040,21 @@ static int hook_request_late(request_rec
                  }
                  return HTTP_INTERNAL_SERVER_ERROR;
                  break;
@@ -55,7 +57,7 @@ diff -ru modsecurity-2.9.3.old/apache2/mod_security2.c modsecurity-2.9.3.new/apa
              case -4 : /* Timeout. */
                  if (my_error_msg != NULL) {
                      msr_log(msr, 4, "%s", my_error_msg);
-@@ -1042,19 +1057,11 @@
+@@ -1061,19 +1076,11 @@ static int hook_request_late(request_rec
                      }
                  }
                  break;

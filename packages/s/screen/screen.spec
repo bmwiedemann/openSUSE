@@ -1,7 +1,7 @@
 #
 # spec file for package screen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,9 @@ BuildRequires:  automake
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 BuildRequires:  pam-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
+%endif
 Requires:       terminfo-base
 Requires(post): permissions
 %systemd_ordering

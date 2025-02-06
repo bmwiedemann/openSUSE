@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lvm2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,7 +108,7 @@ Requires:       modutils
 Requires:       (udev >= 255.7 if udev)
 Requires:       (multipath-tools >= 0.9.9 if multipath-tools)
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}
@@ -240,7 +240,9 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
       install_device-mapper \
       install_systemd_units
 
+%if 0%{?suse_version} < 1600
   ln -s service %{buildroot}/%{_sbindir}/rcdm-event
+%endif
 
   # provide 1.02 compat links for the shared libraries
   # this is needed for various binary packages
@@ -279,9 +281,11 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     install -m0644 -D man/lvmlockd.8 %{buildroot}%{_mandir}/man8/lvmlockd.8
     install -m0644 -D man/lvmlockctl.8 %{buildroot}%{_mandir}/man8/lvmlockctl.8
 
+%if 0%{?suse_version} < 1600
     # rc services symlinks
     ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlockd
     ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmlocking
+%endif
 
     # remove files from lvm2 split due to systemd_generators picking them up
     rm %{buildroot}%{_unitdir}/blk-availability.service
@@ -312,10 +316,12 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     done
     popd
 
+%if 0%{?suse_version} < 1600
     #rc compat symlinks
     ln -s service %{buildroot}%{_sbindir}/rcblk-availability
     ln -s service %{buildroot}%{_sbindir}/rclvm2-monitor
     ln -s service %{buildroot}%{_sbindir}/rclvm2-lvmpolld
+%endif
 
     # Remove devicemapper binaries, plain rm so we fail if something change
     rm %{buildroot}%{_sbindir}/dmsetup
@@ -404,7 +410,9 @@ Programs and man pages for configuring and using the device mapper.
 %{_udevrulesdir}/13-dm-disk.rules
 %{_udevrulesdir}/95-dm-notify.rules
 %{_unitdir}/dm-event.socket
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcdm-event
+%endif
 %{_unitdir}/dm-event.service
 
 %package -n %{libname}
@@ -512,8 +520,10 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_mandir}/man8/lvmlockctl.8%{?ext_man}
 %{_unitdir}/lvmlockd.service
 %{_unitdir}/lvmlocks.service
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rclvm2-lvmlockd
 %{_sbindir}/rclvm2-lvmlocking
+%endif
 
 %else
 
@@ -597,9 +607,11 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/vgs
 %{_sbindir}/vgscan
 %{_sbindir}/vgsplit
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcblk-availability
 %{_sbindir}/rclvm2-lvmpolld
 %{_sbindir}/rclvm2-monitor
+%endif
 # compat symlinks in /sbin
 %if 0%{?suse_version} < 1550
 /sbin/lvm

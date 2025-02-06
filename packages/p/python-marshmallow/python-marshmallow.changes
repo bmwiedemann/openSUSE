@@ -246,7 +246,7 @@ Wed Sep 11 12:45:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Mon Aug 26 14:10:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
-- Update to 3.0.1
+- Update to 3.0.1 (bsc#1109179, CVE-2018-17175):
   * Many changes, some of them breaking. For example:
   * Remove support for Python 2 (#1120). Only Python>=3.5 is supported.
   * Allow input value to be included in error messages for a number of fields.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 19 12:26:36 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update streaming-commons to version 0.2.3.0.
+  ## 0.2.3.0
+
+  * Allow Unix sockets on Windows (https://github.com/fpco/streaming-commons/pull/80)
+
+-------------------------------------------------------------------
 Wed Oct 11 17:49:06 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update streaming-commons to version 0.2.2.6 revision 1.

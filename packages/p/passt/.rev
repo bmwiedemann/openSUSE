@@ -160,4 +160,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>new upstream release 20241211.09478d5 (forwarded request 1230600 from dancermak)</comment>
     <requestid>1231541</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>71fa2392e5c6b704d6090a4f0853182b</srcmd5>
+    <version>20250121.4f2c8e7</version>
+    <time>1737651699</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239598</requestid>
+  </revision>
 </revisionlist>

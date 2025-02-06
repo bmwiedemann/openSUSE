@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:38:31 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.33:
+  * Add way to hold/ignore images when upgrading compose/charts
+
+-------------------------------------------------------------------
+Tue Jan 21 06:07:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.32:
+  * Update go.mod dependencies and Go version to 1.23
+  * Minor refactoring
+
+-------------------------------------------------------------------
 Tue Nov 12 07:44:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.31:

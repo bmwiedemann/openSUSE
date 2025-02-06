@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:57:29 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Fri Jun 14 13:40:42 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

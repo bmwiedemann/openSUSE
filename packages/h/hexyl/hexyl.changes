@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 26 16:48:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.16.0
+  * new --print-color-table option
+  * bugfix: Throw an error when try to view a directory
+
+- addded %check section
+
+-------------------------------------------------------------------
 Wed Oct 30 07:05:02 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.15.0

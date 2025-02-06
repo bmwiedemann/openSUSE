@@ -491,4 +491,12 @@ Upgrade to version 12.6:
   * https://www.postgresql.org/docs/release/12.22/</comment>
     <requestid>1225753</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>16c9e8262e18c84c0c578e0cb19321ec</srcmd5>
+    <version>12.22</version>
+    <time>1738080593</time>
+    <user>anag+factory</user>
+    <comment>- Fix build, add postgresql-tzdata2025a.patch</comment>
+    <requestid>1240825</requestid>
+  </revision>
 </revisionlist>

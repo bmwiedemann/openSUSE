@@ -3401,4 +3401,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1235613</requestid>
   </revision>
+  <revision rev="354" vrev="1">
+    <srcmd5>1a9b03b53725a4744a948ce444c5ca4a</srcmd5>
+    <version>5.0.0+20250123.155bd2c2</version>
+    <time>1737651883</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239758</requestid>
+  </revision>
 </revisionlist>

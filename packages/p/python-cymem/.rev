@@ -26,4 +26,17 @@
     Python v3.13</comment>
     <requestid>1228548</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>795175374b6d52c0a9005a90df65ab05</srcmd5>
+    <version>2.0.11</version>
+    <time>1737559925</time>
+    <user>anag+factory</user>
+    <comment>- Fix fdupes macro, files are installed to sitearch.
+- Actually run the test suite.
+
+- Update to 2.0.11
+  * Github put up the Linux ARM runners for public repos now,
+    so we can have Linux ARM wheels again</comment>
+    <requestid>1239364</requestid>
+  </revision>
 </revisionlist>

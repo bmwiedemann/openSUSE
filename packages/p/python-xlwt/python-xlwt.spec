@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without tests
+%{?sle15_python_module_pythons}
 Name:           python-xlwt
 Version:        1.3.0
 Release:        0

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan 13 01:59:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.5.1:
+  * Add '__version_tuple__' for easy runtime version checking.
+  * API change: gp_log_add_func callback is passed str instead of bytes
+  * Add some GPPort methods. This allows a port to be reset when an error
+    occurs.
+  * Pass CameraFile to gp_camera_capture_preview & gp_camera_file_get.
+    Optional - one will be created if needed.
+  * Remove Context::camera_autodetect method deprecated 3 years ago.
+  * Rename Context, PortInfo & PortInfoList. Add aliases of old names.
+  * Update libgphoto2 to v2.5.31.
+  * API change! gp_file_open no longer creates CameraFile object. It is now
+    consistent with the C API.
+  * Deprecated functions: gp_abilities_list_append, gp_list_populate,
+    gp_port_info_list_append, gp_widget_add_choice, gp_widget_set_info,
+    gp_widget_set_name, gp_widget_set_range, gp_widget_set_readonly.
+    These will be removed in a future release.
+  * Change licence from GPLv3+ to LGPLv3+.
+  * CameraList behaves like a cross between Python list and dict types.
+  * Added unit tests to check most libgphoto2 functions.
+  * Add Python 3.11 binary wheels.
+  * Drop support for libgphoto2 before version v2.5.10
+  * Clearer installation documentation.
+  * Modernised Python package build system.
+  * Update libgphoto2 to v2.5.30.
+  * Include localisation files in Python package.
+- Rebase python-gphoto2-do_not_install_data.patch to support upstream
+  changes.
+- Switch to pyproject macros.
+- Move to the GitHub tarball.
+- Run a portion of the (new!) testsuite.
+
+-------------------------------------------------------------------
 Mon Mar  6 16:04:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't use fdupes -s, it hurts.

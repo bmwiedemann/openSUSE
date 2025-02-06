@@ -12,6 +12,7 @@ branch. Currently, these active maintenance branches are:
 - SLE-15-SP5_Update     -> SLE 15 SP5 (based on SUSE/055 plus some specific patches)
 - SLE-15-SP6_Update     -> SLE 15 SP6
 - SL-Micro-6.0_Update   -> SL Micro 6.0
+- SL-Micro-6.1_Update   -> SL Micro 6.1
 - SLFO_Main             -> SUSE Linux Framework One
 - SUSE/059              -> Tumbleweed
 
@@ -389,3 +390,6 @@ ad36b61e fix(dracut.sh): omit compressed kernel modules from find searching exec
 bfa00c2a fix(pcsc): add libpcsclite_real.so.*
 0df92885 fix(systemd-tmpfiles): copy 20-systemd-stub.conf into the initrd
 c79fc8fd fix(dracut): rework timeout for devices added via --mount and --add-device
+93df9ad2 feat(livenet): get live image size from TFTP servers
+cc2c48a0 fix(iscsi): don't require network setup for bnx2i
+f30cf46e fix(iscsi): attempt iSCSI login before all interfaces are up

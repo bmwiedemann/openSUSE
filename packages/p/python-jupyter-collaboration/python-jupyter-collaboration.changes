@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:39:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.0
+  * Update with jupyter-ydoc v3.0.2 #412 (@davidbrochart)
+  * Add fork API #410 (@trungleduc)
+- Release 3.0.1
+  ## Bugs fixed
+  * Fix timeline feature error when base url is set #402
+    (@Meriem-BenIsmail)
+  * Fix open path error with timeline feature #401
+    (@Meriem-BenIsmail)
+  ## Maintenance and upkeep improvements
+  * Replace flake8, pyupgrade, isort and black with ruff #407
+    (@davidbrochart)
+  * Fix tests #404 (@davidbrochart)
+  * Update CI #396 (@trungleduc)
+
+-------------------------------------------------------------------
 Thu Nov  7 17:16:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.0

@@ -1,7 +1,7 @@
 #
 # spec file for package ffado-mixer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ BuildRequires:  libraw1394-devel >= 1.3.0
 BuildRequires:  pkg-config
 BuildRequires:  python3-dbus-python-devel
 BuildRequires:  python3-qt5-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  scons
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils

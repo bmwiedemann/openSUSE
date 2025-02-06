@@ -87,4 +87,12 @@
     <comment>new upstream release 2.3.1 (forwarded request 1198959 from dancermak)</comment>
     <requestid>1201510</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>50bbf4f68e5ffead13352ca68de67a2f</srcmd5>
+    <version>2.3.2</version>
+    <time>1737490182</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238919</requestid>
+  </revision>
 </revisionlist>

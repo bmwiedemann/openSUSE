@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 20 14:21:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Support python 3.13:
+  + pep-594-drop-pipes.patch, gh#canonical/cloud-init#4392
+  + cloud-init-fix-python313.patch, gh#canonical/cloud-init#4669
+  + cloud-init-dont-assume-ordering-of-ThreadPoolExecutor.patch gh#canonical/cloud-init#5052
+
+-------------------------------------------------------------------
 Mon Jan  6 13:17:05 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-wait-for-net.patch (bsc#1227237)

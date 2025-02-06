@@ -1,7 +1,7 @@
 #
 # spec file for package sendmail
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,7 @@ Requires:       procmail
 %if 0%{?suse_version} <= 1140
 Requires(pre):  %insserv_prereq
 Requires(post): %insserv_prereq
-Requires(postun):%insserv_prereq
+Requires(postun): %insserv_prereq
 %endif
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(daemon)
@@ -110,19 +110,19 @@ Requires(post): permissions
 Requires(post): sed
 Requires(post): /usr/bin/openssl
 Requires(post): /usr/bin/timeout
-Requires(posttrans):ca-certificates
-Requires(posttrans):coreutils
-Requires(posttrans):findutils
-Requires(posttrans):permissions
-Requires(posttrans):m4
-Requires(posttrans):sed
-Requires(posttrans):/usr/bin/openssl
-Requires(posttrans):/usr/bin/timeout
+Requires(posttrans): ca-certificates
+Requires(posttrans): coreutils
+Requires(posttrans): findutils
+Requires(posttrans): permissions
+Requires(posttrans): m4
+Requires(posttrans): sed
+Requires(posttrans): /usr/bin/openssl
+Requires(posttrans): /usr/bin/timeout
 %if 0%{?suse_version} >= 1330
-Requires(verify):group(mail)
-Requires(verify):user(mail)
+Requires(verify): group(mail)
+Requires(verify): user(mail)
 %endif
-Requires(verify):permissions
+Requires(verify): permissions
 %{?systemd_ordering}
 Conflicts:      postfix
 Conflicts:      postfix-tls
@@ -187,9 +187,10 @@ access sendmail features.
 
 %package -n libmilter%{libmilter_somajor}_%{libmilter_sominor}
 Summary:        BSD Sendmail Content Management API (milter)
-# To be exact: a MTA with libmilter support *is* required
 Group:          System/Libraries
-Requires:       smtp_daemon
+# To be exact: a MTA with libmilter support *is* required (but also a remote one)
+Suggests:       smtp_daemon
+Suggests:       libmilter-doc
 
 %description -n libmilter%{libmilter_somajor}_%{libmilter_sominor}
 Sendmail's Content Management API (milter) provides third-party programs to

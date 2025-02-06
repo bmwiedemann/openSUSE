@@ -218,4 +218,24 @@
     behave like Python - not immediately testing as bool</comment>
     <requestid>1206742</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dd67b297ddbc44e0a3ce957340c963c6</srcmd5>
+    <version>1.0.6</version>
+    <time>1738007853</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.6
+  * drop testing and support for Python3.8, add Python 3.13,
+    change document to reflect this.
+  * implement safe_getattr and safe_format functions; fix bugs
+    in UNSAFE_ATTRS and UNSAFE_ATTRS_DTYPES usage (bsc#1236405,
+    CVE-2025-24359)
+  * make all procedure attributes private to curb access to AST
+    nodes, which can be exploited
+  * improvements to error messages, including use ast functions
+    to construct better error messages
+  * remove import of numpy.linalg, as documented
+  * update doc description for security advisory
+</comment>
+    <requestid>1240582</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package texmath
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.8.12
+Version:        0.12.8.13
 Release:        0
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:35:48 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.3
+  * Fix compatibility with libpinyin 2.9.92
+  * Rename icon from fcitx-zhuyin to fcitx-bopomofo
+  * Use addon factory v2
+
+-------------------------------------------------------------------
 Sun Jan  5 08:21:57 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.2

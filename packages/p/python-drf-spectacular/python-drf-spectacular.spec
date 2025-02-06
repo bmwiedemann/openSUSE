@@ -18,6 +18,7 @@
 
 # python 3.13 not supported yet
 %define skip_python313 1
+%{?sle15_python_module_pythons}
 Name:           python-drf-spectacular
 Version:        0.28.0
 Release:        0

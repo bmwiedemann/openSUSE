@@ -1,19 +1,21 @@
-Index: check_sar_perf.py
-===================================================================
---- check_sar_perf.py.orig
-+++ check_sar_perf.py
+---
+ check_sar_perf.py |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+--- a/check_sar_perf.py
++++ b/check_sar_perf.py
 @@ -153,11 +153,12 @@ def Main(args):
          else:
              sar = SarNRPE(myOpts[args[1]])
      else:
 -        print 'ERROR: option not defined'
-+        print 'ERROR: option ',args[1],' not defined'
++        print('ERROR: option ',args[1],' not defined')
          sys.exit(ERR_UNKN)
  
      # Output in NRPE format
 -    print 'sar OK|', ' '.join(sar.stats)
 +    args[0]=''
-+    print 'sar OK: ',' '.join(args),'|', ' '.join(sar.stats)
++    print('sar OK: ',' '.join(args),'|', ' '.join(sar.stats))
  
  if __name__ == '__main__':
      Main(sys.argv)

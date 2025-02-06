@@ -30,7 +30,9 @@ Source1:        bash_completion_tmux.sh
 Patch0:         tmux-socket-path.patch
 BuildRequires:  bison
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} < 1599
 BuildRequires:  utempter-devel
+%endif
 BuildRequires:  pkgconfig(libevent) >= 2.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ncurses)

@@ -611,4 +611,21 @@
     <comment>bugix version (forwarded request 1233002 from DocB)</comment>
     <requestid>1233004</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>2bc24b08b4fd352676bf9fd1d999048d</srcmd5>
+    <version>1.12.5</version>
+    <time>1737389663</time>
+    <user>anag+factory</user>
+    <comment>- changed dcmtk.diff to fix TW build error
+</comment>
+    <requestid>1239028</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4bff4068e10239cf6c8a39b85825fe37</srcmd5>
+    <version>1.12.6</version>
+    <time>1738072732</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240629</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:08:24 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.5
+  * use addon factory v2
+  * do not include keysymgen.h
+
+-------------------------------------------------------------------
 Sun Jan  5 06:09:40 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.4

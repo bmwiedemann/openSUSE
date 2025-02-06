@@ -1,7 +1,7 @@
 #
 # spec file for package framel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define python_subpackage_only 1
 %define shlib lib%{name}8
 Name:           framel
-Version:        8.47.3
+Version:        8.48.4
 Release:        0
 Summary:        Library to manipulate Gravitational Wave Detector data in frame format
 License:        LGPL-2.1-or-later

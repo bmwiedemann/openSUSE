@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-cuda
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define         _name cuda
 Name:           tree-sitter-cuda
-Version:        0.20.5+16
+Version:        0.20.7
 Release:        0
 Summary:        CUDA grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-cuda
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-cpp)
 %treesitter_grammars %{_name}
@@ -57,4 +57,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-

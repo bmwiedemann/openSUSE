@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:17:59 MST 2025 - carnold@suse.com
+
+- Update to database version 20250124 (jsc#PED-8910)
+  osinfo-db-20250124.tar.xz
+- Drop patches contained in new tarball
+  add-opensuse-leap-15.6-support.patch
+  add-sle15sp6-support.patch
+  add-slem5.5-support.patch
+
+-------------------------------------------------------------------
+Fri Jan 24 11:19:07 MST 2025 - carnold@suse.com
+
+- Add support for openSUSE Leap 16.0 (jsc#PED-8910)
+  add-opensuse-leap-16.0-support.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 13:52:17 MST 2025 - carnold@suse.com
+
+- Add support for SLES-16 (bsc#1236252) (jsc#PED-8910)
+  add-sles16-support.patch
+
+-------------------------------------------------------------------
 Tue Sep 17 07:21:53 MDT 2024 - carnold@suse.com
 
 - Add support for SLE Micro 6.1 (jsc#PED-8910)

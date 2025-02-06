@@ -1,7 +1,7 @@
 #
 # spec file for package shotcut
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
 Name:           shotcut
-Version:        24.11.17
+Version:        25.01.25
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
@@ -57,7 +57,7 @@ BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
-BuildRequires:  pkgconfig(mlt++-7) >= 7.22.0
+BuildRequires:  pkgconfig(mlt++-7) >= 7.3
 BuildRequires:  pkgconfig(mlt-framework-7)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vpx)

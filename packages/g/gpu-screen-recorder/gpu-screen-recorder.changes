@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jan 26 21:54:53 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250125:
+  * Fix microphone volume being low when merging audio devices
+  * Dont normalize audio for mixed audio.
+
+-------------------------------------------------------------------
+Tue Jan 21 05:02:34 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250118:
+  * Add a workaround for amd recording performance issue on wayland
+    with a 10-bit monitor when recording a monitor instead of
+    desktop portal. This is fixed in mesa version 25.0.0
+  * Workaround possibly incorrect opengl setup and buggy nvidia
+    driver (uses glx instead of egl).
+  * Workaround teamspeak bug causing teamspeak to crash when
+    recording application audio.
+  * Fix possibility of monitor capture changing to another monitor
+    on wayland when monitors are reconfigured.
+
+-------------------------------------------------------------------
 Fri Jan 03 04:11:20 UTC 2025 - mantarimay@pm.me
 
 - Update to version 20250102:

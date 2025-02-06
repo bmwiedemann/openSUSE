@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 29 13:52:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove upstreamed const-parents.patch.
+
+-------------------------------------------------------------------
+Tue Jan 28 09:21:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.17.0
+  * Upgrade to libgit2 1.9
+  * Add certificate_check callback to Remote.ls_remotes(...)
+  * Fix build with GCC 14
+  * Documentation: fix typo in Repository.status(...) docstring
+  * Fix tests with Python 3.13.1
+
+-------------------------------------------------------------------
 Tue Nov  5 10:50:38 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.16.0:

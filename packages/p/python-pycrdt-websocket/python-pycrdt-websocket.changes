@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:52:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.4
+  * Increase pycrdt compatible version range #104 (@fcollonval)
+- Release 0.15.2
+  * Remove client on failure #94 (@darabos)
+  * Dead code #89 (@fcollonval)
+
+-------------------------------------------------------------------
 Mon Nov  4 20:05:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.15.1

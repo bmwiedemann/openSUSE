@@ -1423,4 +1423,12 @@ Add python version constraints to Requires &amp; BuildRequires</comment>
     to pre-commit hooks.</comment>
     <requestid>1217929</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e4777216ecd4ec46041a5c6059a9acb7</srcmd5>
+    <version>8.3.4</version>
+    <time>1737490179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1235856</requestid>
+  </revision>
 </revisionlist>

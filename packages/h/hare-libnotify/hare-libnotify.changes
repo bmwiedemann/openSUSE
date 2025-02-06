@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:55:18 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Don't link as PIE
+
+-------------------------------------------------------------------
 Sat Dec 21 05:06:27 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Remove the binary. The binary will be moved out as a separate package.

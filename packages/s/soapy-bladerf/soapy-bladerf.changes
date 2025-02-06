@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 24 21:00:11 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.4.2 (2024-12-22)
+  * Added support for PLL reference clock
+  * Added uninstall target
+  * Updates for dual channel streaming
+  * Added biastee_tx and biastee_rx options
+  * Added saveQuickTune and reuseQuickTune args to setFrequency
+  * Added flags for BLADERF_META_FLAG_RX_HW_MINIEXP1&2
+  * Print gain mode on config
+  * Allow turning bias tee off
+- Specfile update, add empty %check section
+- Do not require pkgconfig for build
+
+-------------------------------------------------------------------
 Tue Jul  6 11:54:46 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - SoapySDR version bumped to 0.8

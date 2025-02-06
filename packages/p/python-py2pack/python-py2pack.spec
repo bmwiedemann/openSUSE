@@ -1,7 +1,7 @@
 #
 # spec file for package python-py2pack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-py2pack
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Script for generating distribution packages from Python packages on PyPI
 License:        Apache-2.0
@@ -25,12 +25,19 @@ Group:          Development/Languages/Python
 URL:            https://github.com/openSUSE/py2pack
 Source:         https://files.pythonhosted.org/packages/source/p/py2pack/py2pack-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module backports.entry_points_selectable}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module metaextract}
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pypi-search}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tomli if %python_base < 3.11}
 BuildRequires:  %{python_module wheel}
 # SECTION doc requirements
 BuildRequires:  python3-Sphinx
@@ -39,14 +46,17 @@ BuildRequires:  python3-sphinxcontrib-programoutput
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
+Requires:       python-backports.entry_points_selectable
+Requires:       python-build
 Requires:       python-metaextract
-Requires:       python-pbr
+Requires:       python-packaging
+Requires:       python-platformdirs
 Requires:       python-pypi-search
 Requires:       python-requests
 Requires:       python-setuptools
-Requires:       python-tomli
+Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -68,6 +78,7 @@ Documentation and help files for %{name}.
 %setup -q -n py2pack-%{version}
 # remove shebang
 sed -i '1{/#!/d}' py2pack/__init__.py
+chmod -x py2pack/__init__.py
 
 %build
 export PBR_VERSION=0.9.0
@@ -94,6 +105,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %python_clone -a %{buildroot}%{_bindir}/py2pack
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# Requires network
+donttest="test_list or test_newest_download_url or test_search or test_show or test_template"
+%pytest -k "not ($donttest)"
+
 %post
 %python_install_alternative py2pack
 
@@ -107,7 +123,6 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %files -n %{name}-doc
 %license LICENSE
-# %doc AUTHORS
 %doc doc/build/html/
 
 %changelog

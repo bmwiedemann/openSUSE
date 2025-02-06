@@ -126,4 +126,35 @@
 - Version 11</comment>
     <requestid>1237711</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>5c1346ee7fca4a43717b1988a8114516</srcmd5>
+    <version>0</version>
+    <time>1737490210</time>
+    <user>anag+factory</user>
+    <comment>- Do not crash at the end of the installation when using a legacy
+  AutoYaST mode (gh#agama-project/agama#1927).
+
+- The software page displays a link for reloading the repositories
+  again if some repository failed to load
+  (gh#agama-project/agama#1894)
+
+- Add support for displaying and accepting a product license
+  (jsc#PED-11987).
+
+- Display error messages during package installation
+  (gh#agama-project/agama#1909).</comment>
+    <requestid>1239221</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>dd6a953b6e0ce723f97c226b54cdfd06</srcmd5>
+    <version>0</version>
+    <time>1737828745</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the &quot;finish&quot; to decide whether to navigate to the
+  congratulations screen (gh#agama-project/agama#1616).
+
+- Use the &quot;missing_registration&quot; issue to determine whether to show
+  the registration alert (gh#agama-project/agama#1938).</comment>
+    <requestid>1240160</requestid>
+  </revision>
 </revisionlist>

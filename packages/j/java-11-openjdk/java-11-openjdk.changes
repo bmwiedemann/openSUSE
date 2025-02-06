@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Jan 22 12:36:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.26+4 (January 2025 CPU)
+  * Security fix
+    + JDK-8330045, CVE-2025-21502, bsc#1236278: Enhance array
+      handling
+  * Changes
+    + JDK-8224624: Inefficiencies in CodeStrings::add_comment cause
+      timeouts
+    + JDK-8225045: javax/swing/JInternalFrame/8146321/
+      /JInternalFrameIconTest.java fails on linux-x64
+    + JDK-8232367: Update Reactive Streams to 1.0.3 -- tests only
+    + JDK-8247706: Unintentional use of new Date(year...) with
+      absolute year
+    + JDK-8299254: Support dealing with standard assert macro
+    + JDK-8303920: Avoid calling out to python in
+      DataDescriptorSignatureMissing test
+    + JDK-8315936: Parallelize gc/stress/TestStressG1Humongous.java
+      test
+    + JDK-8316193: jdk/jfr/event/oldobject/TestListenerLeak.java
+      java.lang.Exception: Could not find leak
+    + JDK-8328300: Convert PrintDialogsTest.java from Applet to
+      main program
+    + JDK-8328642: Convert applet test
+      MouseDraggedOutCauseScrollingTest.html to main
+    + JDK-8334332: TestIOException.java fails if run by root
+    + JDK-8335428: Enhanced Building of Processes
+    + JDK-8335801: [11u] Backport of 8210988 to 11u removes gcc
+      warnings
+    + JDK-8335912, JDK-8337499: Add an operation mode to the jar
+      command when extracting to not overwriting existing files
+    + JDK-8336564: Enhance mask blit functionality redux
+    + JDK-8338402: GHA: some of bundles may not get removed
+    + JDK-8339082: Bump update version for OpenJDK: jdk-11.0.26
+    + JDK-8339180: Enhanced Building of Processes: Follow-on Issue
+    + JDK-8339470: [17u] More defensive fix for 8163921
+    + JDK-8339637: (tz) Update Timezone Data to 2024b
+    + JDK-8339644: Improve parsing of Day/Month in tzdata rules
+    + JDK-8339803: Acknowledge case insensitive unambiguous
+      keywords in tzdata files
+    + JDK-8340552: Harden TzdbZoneRulesCompiler against missing
+      zone names
+    + JDK-8340671: GHA: Bump macOS and Xcode versions to macos-12
+      and XCode 13.4.1
+    + JDK-8340815: Add SECURITY.md file
+    + JDK-8342426: [11u] javax/naming/module/RunBasic.java javac
+      compile fails
+    + JDK-8342629: [11u] Properly message out that shenandoah is
+      disabled
+    + JDK-8347483: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.26
+
+-------------------------------------------------------------------
 Mon Oct 28 07:22:16 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.25+9 (October 2024 CPU)

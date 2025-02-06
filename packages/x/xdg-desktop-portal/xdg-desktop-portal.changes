@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 21 11:56:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.19.2:
+  + Bug Fixes:
+    - Fix permission check for host system apps in the Camera
+      portal.
+    - Do not expose the Settings portal if there are no backends
+      available.
+    - Disable sounds-related notification tests if the project is
+      built without wavparse.
+  + Enhancements:
+    - Start porting the test suite to Python tests. Once finished,
+      this should break the cyclic dependency between
+      xdg-desktop-portal and libportal.
+    - Install Python-based tests. This is mostly useful for
+      distributions to run tests as part of their packaging
+      process.
+- Drop fix-test-dependencies.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jan  9 14:28:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.19.1 (boo#1235025):

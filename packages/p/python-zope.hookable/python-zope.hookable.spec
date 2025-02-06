@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.hookable
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION documentation requirements
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
 # /SECTION
 # SECTION testing requirements
 %if %{with test}
@@ -99,7 +100,7 @@ pushd src
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/hookable
-%{python_sitearch}/zope.hookable-%{version}*-info
+%{python_sitearch}/zope.hookable-%{version}.dist-info
 %{python_sitearch}/zope.hookable-%{version}*-nspkg.pth
 %endif
 

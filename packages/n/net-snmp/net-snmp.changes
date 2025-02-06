@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:48:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Fri Nov 15 07:20:59 UTC 2024 - Alexander Bergmann <abergmann@suse.com>
 
 - logrotate should use reload instead of restart (bsc#1232030) 

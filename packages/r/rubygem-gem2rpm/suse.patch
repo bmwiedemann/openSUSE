@@ -103,10 +103,10 @@ index 736a645..a794436 100755
      end
 diff --git a/gem2rpm.yml.documentation b/gem2rpm.yml.documentation
 new file mode 100644
-index 0000000..2d4adf0
+index 0000000..ba7bc0f
 --- /dev/null
 +++ b/gem2rpm.yml.documentation
-@@ -0,0 +1,76 @@
+@@ -0,0 +1,81 @@
 +# ---
 +# ## used by gem2rpm
 +# :summary: this is a custom summary
@@ -129,6 +129,11 @@ index 0000000..2d4adf0
 +# :preamble: |-
 +#   BuildRequires: foobar
 +#   Requires: foobar
++# ## used by gem2rpm
++# ## adds runtime deps of the gem as buildrequires to check if the package is installable
++# ## only use this with leaf packages, if you enable it for everything it will slow down building
++# ## as not as many packages can be be build in parallel
++# :runtime_deps_as_buildrequires: true
 +# ## used by gem2rpm
 +# :patches:
 +#   foo.patch: -p1
@@ -578,7 +583,7 @@ index 0000000..10b1d70
 +   end
 +-%>
 diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
-index 37de592..eb7e84c 100644
+index 37de592..dba198a 100644
 --- a/templates/opensuse.spec.erb
 +++ b/templates/opensuse.spec.erb
 @@ -1,7 +1,12 @@
@@ -660,7 +665,7 @@ index 37de592..eb7e84c 100644
 +<%   end -%>
 +<% end -%>
 +<% for d in spec.runtime_dependencies -%>
-+<% if ['rdoc'].include? d.name.to_s -%>
++<% if ['rdoc'].include?(d.name.to_s) or config[:runtime_deps_as_buildrequires] -%>
 +# <%= d.name %> <%= d.__getobj__().requirement %>
  <% for req in d.requirement -%>
 -BuildRequires:  rubygem-<%= d.name %> <%= req %>

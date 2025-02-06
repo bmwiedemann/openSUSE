@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:23:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Tue Jan 14 09:53:47 UTC 2025 - Reinhard Max <max@suse.com>
 
 - bsc#1235834: Don't let compile time options change silently.

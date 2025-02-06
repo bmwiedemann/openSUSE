@@ -477,7 +477,6 @@ BuildRequires:  plymouth-theme-tribar
 %endif
 BuildRequires:  klogd
 BuildRequires:  ltrace
-BuildRequires:  nscd
 BuildRequires:  polkit
 BuildRequires:  popt-devel
 BuildRequires:  pothana2000
@@ -687,7 +686,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.148
+Version:        17.152
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

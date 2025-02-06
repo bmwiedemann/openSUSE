@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:13:39 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 8.31
+  * #14594 Fix completion in tuples, where the completion was suggesting
+    tuples methods instead of methods and attributes of the current element.
+  * #14598 Fix pdb issue with Python 3.13.1, this fix is not perfect
+    (see #14620) but should be sufficient for now. 
+- Drop py3131.patch as it is included in 8.31
+
+-------------------------------------------------------------------
 Tue Dec 10 11:41:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 8.30

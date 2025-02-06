@@ -25,7 +25,7 @@
 %endif
 
 Name:           %{pname}
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        Libkkc input method support for Fcitx5
 License:        GPL-3.0-or-later

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:34:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Fri Sep 20 10:37:22 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Revert "Mark authorization completed on driver indication

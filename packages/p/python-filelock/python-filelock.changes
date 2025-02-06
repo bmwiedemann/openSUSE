@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:22:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.17.0
+  * Drop support for Python 3.8
+  * Update README.md
+
+-------------------------------------------------------------------
 Wed Oct  9 07:27:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.16.1

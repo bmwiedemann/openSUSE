@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 13 04:45:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.0
+  * update TLS cipher selection to match the "compatibility" cipher
+    suite settings as documented by Mozilla.
+  * blame API now contains committer information and commit
+    summaries for blame hunks, and the ability to get information
+    about the line of text that was modified
+  * add blame, init commands to CLI
+  * ABI-breaking changes in blame hunk, checkout, configuration,
+    update_refs
+  * new API: git_signature_default_from_env
+  * packbuilder can now be interrupted from a callback
+  * honor the preciousObject repository extension
+  * Push status will be reported even when a push fails
+  * support generating think packs from a mempack instanct
+  * New LIBGIT2_VERSION_CHECK macro for version checking
+  * Custom X509 certificates can be added to OpenSSL's certificate
+    store using the GIT_OPT_ADD_SSL_X509_CERT option
+  * Bug fixes and documentation updates
+
+-------------------------------------------------------------------
 Thu Oct 31 19:25:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.8.4:

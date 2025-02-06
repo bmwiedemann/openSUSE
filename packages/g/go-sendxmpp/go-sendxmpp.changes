@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:22:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * Use prettier date format for error messages.
+  * Update XEP-0474 to version 0.4.0 (requires go-xmpp >= 0.2.10).
+
+-------------------------------------------------------------------
 Mon Dec 30 11:04:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:

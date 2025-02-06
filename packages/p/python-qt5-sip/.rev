@@ -97,4 +97,12 @@
     <comment>Fix gcc14</comment>
     <requestid>1155828</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2cdb1177d5011271d2823c3e512e2bfe</srcmd5>
+    <version>12.16.1</version>
+    <time>1737559858</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239513</requestid>
+  </revision>
 </revisionlist>

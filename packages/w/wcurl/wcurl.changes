@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 18 20:19:52 UTC 2025 - Samuel Henrique <samueloph@debian.org>
+
+- new upstream release 2024.12.08
+  * new parameter "-o|-O|--output|output=" which allows the user to choose the output filename.
+  * default to "index.html' as filename if none can be inferred from the URL.
+  * percent-decode output filenames by default.
+  * new option to disable percent-decoding of output filenames: "--no-decode-filename".
+  * fix typo in the list of features of the manpage.
+  * README/manpage: Point to the curl issue tracker.
+  * README:
+    - Add a missing dash to the "--dry-run" command.
+    - Add a logo.
+    - Add a brief section explaining about our testsuite.
+    - Remove HTML "<a name>" anchors.
+  * symlink LICENSE to LICENSES/curl.txt.
+  * update AUTHORS.
+- update package description with new features
+- only buildrequires shunit2 on releases that have it
+
+-------------------------------------------------------------------
 Thu Sep  5 21:18:13 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - make tests dependent on shunit2 >= 2.1.8 

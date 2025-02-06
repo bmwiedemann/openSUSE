@@ -92,4 +92,12 @@
     <comment></comment>
     <requestid>1130383</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>a5b879404182196495344d072f4328cb</srcmd5>
+    <version>1.3.6</version>
+    <time>1737559921</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly BuildRequire sphinx_rtd_theme.</comment>
+    <requestid>1239358</requestid>
+  </revision>
 </revisionlist>

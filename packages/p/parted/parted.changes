@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:35:05 CET 2025 - aschnell@suse.com
+
+- fixed build with gcc15
+  added patches:
+  - parted-do-version.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 10:19:59 CET 2024 - aschnell@suse.com
 
 - avoid deprecated rpm syntax

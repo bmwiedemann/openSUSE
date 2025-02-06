@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-navigator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-navigator
-Version:        24.12.0
+Version:        25.1.0
 Release:        0
 Summary:        A text-based user interface (TUI) for Ansible
 License:        Apache-2.0

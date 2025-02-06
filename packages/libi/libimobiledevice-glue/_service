@@ -1,12 +1,12 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">git@github.com:libimobiledevice/libimobiledevice-glue.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">libimobiledevice-glue</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%cd</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>

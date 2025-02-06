@@ -17,4 +17,12 @@
     <comment>- Change the license to GPL-2.0-or-later (gh#openSUSE/agama#1621).</comment>
     <requestid>1203028</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8f24c19ea8ce4ea0b7b519e544dc7f39</srcmd5>
+    <version>0</version>
+    <time>1738007752</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1240487</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:18:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  * Updates from 0.10.0 release #85
+  * Fix STL file selection filter #92
+  * Add arc-ball mechanism to mouse control #99
+  * Set application icon, so it will appear in about window and in dock f… #100
+  * Add the option to reset or not the rotation when loading a new stl file. #103
+  * Add fullscreen option in View menu associated with key F11 #104
+  * wait to load the stl file until file size does not change anymore #106
+  * Clean commit c4dd685 #108
+  * Wait for the STL file size to stop changing. #107
+  * Revert "wait to load the stl file until file size does not change anymore (#106)
+  * Will dev customizable shader #102
+  * Common Viewpoints #110
+  * Support standard Close shortcut #115
+  * Add xdg directory for linux desktop file and app icons. #101
+  * Add Viewpoint shortcuts and isometric view #118
+  * Minor fix, update version and copyright years #125
+  * Feature/open external #126
+
+-------------------------------------------------------------------
 Sun Jul 24 10:35:31 UTC 2022 - Mike Chikov <mike.chikov@gmail.com>
 
 - Remove fstl-mimeinfo.xml

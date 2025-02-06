@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 20 15:59:34 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Packaging improvements:
+  * Use systemd-sysusers to configure the user in a dedicated
+    'system-user-prometheus' subpackage (bsc#1235516)
+  * Remove systemd and shadow hard requirements
+  * Require Go 1.22 or newer for building
+  * Drop BuildRequires: golang-packaging
+  * Drop mod=vendor
+  * Run `node_exporter --version` in the %check phase
+
+-------------------------------------------------------------------
 Sun Jul 14 15:22:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.8.2:

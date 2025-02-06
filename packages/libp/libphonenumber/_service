@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/google/libphonenumber.git</param>
     <param name="scm">git</param>
-    <param name="revision">v8.13.40</param>
+    <param name="revision">v8.13.53</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <!-- Contains binary .jars with legally questionable content -->

@@ -1,7 +1,7 @@
 #
 # spec file for package intel-graphics-compiler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 %global llvm_commit llvmorg-14.0.5
-%global opencl_clang_commit 66a54cbef6726c4e791986779a60d7a45b09c9c9
-%global spirv_llvm_translator_commit 62f5b09b11b1da42274371b1f7535f6f2ab11485
-%global vc_intrinsics_commit v0.18.0
+%global opencl_clang_commit 470cf0018e1ef6fc92eda1356f5f31f7da452abc
+%global spirv_llvm_translator_commit efbedd32b700c01a15d44121fca862625c2594ac
+%global vc_intrinsics_commit v0.21.0
+%global so_version 2.5.0
 Name:           intel-graphics-compiler
-Version:        1.0.17193.4
+Version:        2.5.6
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/intel/intel-graphics-compile
-Source0:        https://github.com/intel/intel-graphics-compiler/archive/igc-%{version}.tar.gz
+URL:            http://github.com/intel/intel-graphics-compile
+Source0:        https://github.com/intel/intel-graphics-compiler/archive/v%{version}.tar.gz
 Source1:        https://github.com/intel/opencl-clang/archive/%{opencl_clang_commit}/intel-opencl-clang.tar.gz
 Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{spirv_llvm_translator_commit}/spirv-llvm-translator.tar.gz
 Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm-project.tar.gz
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
-Patch0:         0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -44,6 +44,7 @@ BuildRequires:  patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-Mako
+BuildRequires:  python3-PyYAML
 BuildRequires:  spirv-headers
 BuildRequires:  spirv-tools-devel
 BuildRequires:  unzip
@@ -52,16 +53,16 @@ ExclusiveArch:  x86_64
 %description
 Intel Graphics Compiler for OpenCL.
 
-%package -n libigc1
+%package -n libigc2
 Summary:        Library for Intel Graphics Compiler
 Group:          System/Libraries
 
-%description -n libigc1
+%description -n libigc2
 An LLVM based compiler for OpenCL targeting Intel Gen graphics hardware architecture.
 
 %package -n libigc-devel
 Summary:        Headers for the Intel Graphics Compiler library
-Requires:       libigc1 = %{version}-%{release}
+Requires:       libigc2 = %{version}-%{release}
 
 %description -n libigc-devel
 This package contains development files for libigc.
@@ -73,30 +74,30 @@ Group:          Development/Tools/Building
 %description -n iga
 Assembler and disassembler for OpenCL kernels.
 
-%package -n libiga64-1
+%package -n libiga64-2
 Summary:        Library for Intel Graphics Assembler
 Group:          System/Libraries
 
-%description -n libiga64-1
+%description -n libiga64-2
 Library files for Intel Graphics Assembler.
 
 %package -n libiga-devel
 Summary:        Headers for the Intel Graphics Assembler library
-Requires:       libiga64-1 = %{version}-%{release}
+Requires:       libiga64-2 = %{version}-%{release}
 
 %description -n libiga-devel
 This package contains development files for libiga
 
-%package -n libigdfcl1
+%package -n libigdfcl2
 Summary:        Intel Graphics Frontend Compiler library
 Group:          System/Libraries
 
-%description -n libigdfcl1
+%description -n libigdfcl2
 Library files for the Intel Graphics Frontend Compiler.
 
 %package -n libigdfcl-devel
 Summary:        Headers for the Intel Graphics Frontend Compiler library
-Requires:       libigdfcl1 = %{version}-%{release}
+Requires:       libigdfcl2 = %{version}-%{release}
 
 %description -n libigdfcl-devel
 This package contains development files for libigdfcl.
@@ -120,14 +121,11 @@ mv vc-intrinsics* vc-intrinsics
 pushd llvm-project/llvm/projects
 mkdir opencl-clang llvm-spirv
 tar -xzf %{_sourcedir}/intel-opencl-clang.tar.gz -C opencl-clang --strip-components=1
-pushd opencl-clang
-%patch -P 0 -p1
-popd
 tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
 popd
 
 mkdir igc
-tar -xzf %{_sourcedir}/igc-%{version}.tar.gz -C igc --strip-components=1
+tar -xzf %{_sourcedir}/v%{version}.tar.gz -C igc --strip-components=1
 pushd igc
 popd
 
@@ -163,36 +161,39 @@ rm -fv %{buildroot}%{_bindir}/GenX_IR \
 	%{buildroot}%{_includedir}/opencl-c-base.h \
 	%{buildroot}%{_prefix}/lib/debug
 chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.14
+ln -s %{_libdir}/libiga64.so.%{so_version} %{buildroot}%{_libdir}/libiga64.so
+ln -s %{_libdir}/libigc.so.%{so_version} %{buildroot}%{_libdir}/libigc.so
+ln -s %{_libdir}/libigdfcl.so.%{so_version} %{buildroot}%{_libdir}/libigdfcl.so
 
-%post -n libigc1 -p /sbin/ldconfig
-%postun -n libigc1 -p /sbin/ldconfig
-%post -n libiga64-1 -p /sbin/ldconfig
-%postun -n libiga64-1 -p /sbin/ldconfig
-%post -n libigdfcl1 -p /sbin/ldconfig
-%postun -n libigdfcl1 -p /sbin/ldconfig
+%post -n libigc2 -p /sbin/ldconfig
+%postun -n libigc2 -p /sbin/ldconfig
+%post -n libiga64-2 -p /sbin/ldconfig
+%postun -n libiga64-2 -p /sbin/ldconfig
+%post -n libigdfcl2 -p /sbin/ldconfig
+%postun -n libigdfcl2 -p /sbin/ldconfig
 %post -n libopencl-clang14 -p /sbin/ldconfig
 %postun -n libopencl-clang14 -p /sbin/ldconfig
 
 %files -n iga
 %{_bindir}/iga64
 
-%files -n libiga64-1
+%files -n libiga64-2
 %{_libdir}/libiga64.so.*
 
 %files -n libiga-devel
 %{_libdir}/libiga64.so
 %{_includedir}/iga
 
-%files -n libigc1
+%files -n libigc2
 %{_libdir}/libigc.so.*
-%dir %{_libdir}/igc
-%license %{_libdir}/igc/NOTICES.txt
+%dir %{_libdir}/igc2
+%license %{_libdir}/igc2/NOTICES.txt
 
 %files -n libigc-devel
 %{_libdir}/libigc.so
 %{_includedir}/igc
 
-%files -n libigdfcl1
+%files -n libigdfcl2
 %{_libdir}/libigdfcl.so.*
 
 %files -n libigdfcl-devel

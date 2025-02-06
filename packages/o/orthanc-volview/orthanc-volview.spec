@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-volview
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2023-2024 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2023-2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,11 @@ Name:           orthanc-volview
 Summary:        VolView plugin for Orthanc
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.1
+Version:        1.2
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancVolView-%{version}.tar.gz
-Source1:        https://lsb.orthanc-server.com/plugin-volview/%{version}/dist.zip
-# https://orthanc.uclouvain.be/hg/orthanc-ohif/rev/154cb76a042f
-Patch0:         reproducible.patch
+Source1:        https://orthanc.uclouvain.be/downloads/linux-standard-base/orthanc-volview/%{version}/dist.zip
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
@@ -68,7 +66,7 @@ The source code of VolView is available at:
 https://github.com/Kitware/VolView
 
 %prep
-%autosetup -p1 -n OrthancVolView-%{version}
+%autosetup -n OrthancVolView-%{version}
 
 #OrthanPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web

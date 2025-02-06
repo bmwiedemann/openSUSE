@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 04:42:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded BuildRequires on six.
+- Specify dist-info directory in %files.
+
+-------------------------------------------------------------------
 Sat Nov  9 16:17:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.3:

@@ -4,8 +4,8 @@ description_paragraphs: 1
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch: -p1
 #  bar.patch:
 preamble: |-
  BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0

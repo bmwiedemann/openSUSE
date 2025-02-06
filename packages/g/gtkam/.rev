@@ -180,4 +180,12 @@
     <comment></comment>
     <requestid>1225464</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>aba8cf5cd19752e305e92ccc213fc921</srcmd5>
+    <version>1.1</version>
+    <time>1737722398</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gimp plugin: gtkam does not (yet) support gimp 3. (forwarded request 1239905 from dimstar)</comment>
+    <requestid>1239908</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic-settings
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,20 +26,20 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings%{psuffix}
-Version:        2.4.0
+Version:        2.7.1
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
 URL:            https://github.com/pydantic/pydantic-settings
 Source:         https://files.pythonhosted.org/packages/source/p/pydantic-settings/pydantic_settings-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Clear the environment before two test cases
-Patch0:         clear-environment.patch
+# PATCH-FIX-OPENSUSE Support Pydantic 2.10 changes.
+Patch0:         fix-settings-dump.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module pydantic-settings == %{version}}
+BuildRequires:  %{python_module pydantic-settings = %{version}}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -71,9 +71,7 @@ Settings management using Pydantic, this is the new official home of Pydantic's 
 %check
 %if %{with test}
 # This test requires azure
-skiptest="test_docs_examples[docs/index.md:1212-1256]"
-# Failing test, not raising the same warning
-skiptest+=" or test_protected_namespace_defaults"
+skiptest="test_docs_examples[docs/index.md:1680-1724]"
 %pytest -k "not ($skiptest)"
 %endif
 

@@ -644,4 +644,14 @@ newSVpvn() call. (forwarded request 122259 from k0da)</comment>
     <comment></comment>
     <requestid>1155817</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>a2e520c49b0472ac6515a46a836812bf</srcmd5>
+    <version>2.0210</version>
+    <time>1737490193</time>
+    <user>anag+factory</user>
+    <comment>- Fix the testsuite with libxml2 version 2.13.0 and up:
+  * github.com/shlomif/perl-XML-LibXML/pull/87
+  * Add perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch (forwarded request 1239241 from pmonrealgonzalez)</comment>
+    <requestid>1239251</requestid>
+  </revision>
 </revisionlist>

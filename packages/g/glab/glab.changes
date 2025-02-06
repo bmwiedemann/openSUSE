@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:51:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.52.0:
+  * feat(release): add --no-close-milestone flag for release
+    creation
+  * chore(deps): update module github.com/briandowns/spinner to
+    v1.23.2
+  * chore: roll docs linting tooling forward
+  * feat(release): Add --no-update to release create
+  * chore(deps): update module k8s.io/apimachinery to v0.32.1
+  * chore(deps): update module github.com/mattn/go-colorable to
+    v0.1.14
+  * fix: update path where config.yml is displayed
+  * feat: Add reordering of stacks
+  * fix(docs): change toc to show actual contents
+  * chore: Post-merge review of UI strings
+  * docs: Fix missing period in display
+  * chore(deps): update golang to v1.23.4
+  * docs: add command for previewing release commits
+  * chore(deps): update module golang.org/x/crypto to v0.32.0
+  * chore(deps): update module golang.org/x/term to v0.28.0
+  * chore(deps): update module github.com/otiai10/copy to v1.14.1
+  * chore(deps): update module golang.org/x/oauth2 to v0.25.0
+  * feat: add support for setting issue weight in glab issue update
+  * chore(dep): update x/net
+  * chore(deps): update golang to v1.23.3
+
+-------------------------------------------------------------------
 Fri Dec 20 07:49:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.51.0:

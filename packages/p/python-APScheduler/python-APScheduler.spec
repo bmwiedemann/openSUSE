@@ -1,7 +1,7 @@
 #
 # spec file for package python-APScheduler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-APScheduler
-Version:        3.10.4
+Version:        3.11.0
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
 URL:            https://github.com/agronholm/apscheduler
-Source:         https://files.pythonhosted.org/packages/source/A/APScheduler/APScheduler-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/apscheduler/apscheduler-%{version}.tar.gz
 BuildRequires:  %{python_module SQLAlchemy >= 1.4}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytest}
@@ -36,6 +37,7 @@ BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module tzlocal >= 2.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytz
@@ -84,14 +86,14 @@ APscheduler provides multiple job stores.
   * MongoDB
 
 %prep
-%setup -q -n APScheduler-%{version}
+%setup -q -n apscheduler-%{version}
 sed -i 's/--cov//' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

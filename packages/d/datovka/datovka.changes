@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jan 14 08:54:55 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.25.0
+ * Added a dedicated session keeping thread. By default the thread keeps alive
+   session using HOTP, TOTP a MEP login methods. Sessions failing to connect
+   to ISDS are automatically closed.
+ * Rewritten status bar connection status widget. By clicking on it a list of
+   active sessions can be displayed. From here active sessions can be closed.
+ * INI configuration file is only written when something related is modified in
+   the application. It isn't automatically written when application exits.
+ * INI configuration file is written in three stages. A copy is written then
+   the original is removed and finally the copy replaces the original.
+ * On application start-up when INI configuration is missing the application
+   searches for a copy before creating a blank INI file.
+ * Replaced old icons with a new SVG-based set of icons.
+ * Fixed export format selection in correspondence overview dialogue when
+   using Qt-6.
+ * Fixed segmentation faults when running tests with Qt-6.
+ * Records management communication timeout is managed by internal
+   preferences. Its default value has been set to match the ISDS communication
+   timeout.
+ * Using dedicated redirection URL to access donation page.
+ * Additional option 'sender' has been added to the --compose command-line
+   parameter. It can be used to select the sender of the message. Data-box
+   identifier of username can be used as the value.
+ * In the send message dialogue the recipient list isn't automatically cleared
+   when changing the sender. The user is asked whether to keep the recipients.
+ * Added custom application themes a light and a dark one. Themes can be
+   chosen in the preferences dialogue.
+
+-------------------------------------------------------------------
 Mon Sep 30 05:42:23 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.24.2:

@@ -272,4 +272,14 @@
     verification by default.</comment>
     <requestid>1225331</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8ae512685cdde99087dc36c0820d30dd</srcmd5>
+    <version>2.2.6</version>
+    <time>1737651433</time>
+    <user>anag+factory</user>
+    <comment>- sphinx_rtd_theme is now an optional dependency for Sphinx
+- split HTML docs to the doc subpackage
+</comment>
+    <requestid>1239229</requestid>
+  </revision>
 </revisionlist>

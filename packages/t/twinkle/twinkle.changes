@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 11 11:28:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update home page link to a working page
+- remove ZRTP support (bdo#797554, bsc#1219884)
+
+-------------------------------------------------------------------
 Mon Feb 26 16:24:41 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

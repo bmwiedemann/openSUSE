@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 26 18:02:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.01.26
+  * bilibili: Support space video list extraction without login
+  * crunchyroll: Remove extractors
+  * youtube: Download tv client Innertube config
+  * youtube: Use different PO token for GVS and Player
+
+-------------------------------------------------------------------
 Thu Jan 16 21:28:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.01.15

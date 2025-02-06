@@ -1,7 +1,7 @@
 #
 # spec file for package gtkam
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source:         https://github.com/gphoto/gtkam/releases/download/v%{version}/gt
 Source1:        https://github.com/gphoto/gtkam/releases/download/v%{version}/gtkam-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
-BuildRequires:  gimp-devel
 BuildRequires:  intltool
 BuildRequires:  libexif-gtk-devel
 BuildRequires:  update-desktop-files
@@ -76,7 +75,6 @@ rm -r %{buildroot}%{_datadir}/doc/gtkam
 %{_datadir}/images/gtkam
 %{_datadir}/pixmaps/gtkam.png
 %{_datadir}/pixmaps/gtkam-camera.png
-%{_libdir}/gimp/2.0/plug-ins/gtkam-gimp
 
 %files lang -f %{name}.lang
 

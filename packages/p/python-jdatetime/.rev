@@ -84,4 +84,12 @@
     <comment>- add py313-support.patch to fix tests with python 3.13</comment>
     <requestid>1225505</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c7e39801b730d8224b6b21e24c5e3d7</srcmd5>
+    <version>5.1.0</version>
+    <time>1737560365</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239519</requestid>
+  </revision>
 </revisionlist>

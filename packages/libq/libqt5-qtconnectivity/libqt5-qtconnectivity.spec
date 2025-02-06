@@ -26,7 +26,7 @@
 %define so_version 5.15.16
 %define tar_version qtconnectivity-everywhere-src-%{version}
 Name:           libqt5-qtconnectivity
-Version:        5.15.16+kde1
+Version:        5.15.16+kde2
 Release:        0
 Summary:        Qt 5 Nfc Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)

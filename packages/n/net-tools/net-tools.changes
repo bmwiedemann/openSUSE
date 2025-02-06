@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 09:41:44 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- hostname is not required anymore [bsc#1236061]
+
+-------------------------------------------------------------------
 Tue Dec 27 13:12:55 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

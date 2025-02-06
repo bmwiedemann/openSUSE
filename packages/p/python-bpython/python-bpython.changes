@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 21 12:13:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.25
+  * The `bpython-cli` rendering backend has been removed
+    following deprecation in version 0.19.
+  * This release is focused on Python 3.13 support.
+  * Fix __signature__ support
+  * #995: Fix handling of `SystemExit`
+  * #996: Improve order of completion results
+  * Fix build of documentation and manpages with Sphinx >= 7
+  * #1001: Do not fail if modules don't have __version__
+  * Remove use of distutils
+  * Support for Python 3.12 and 3.13 has been added.
+    Support for Python 3.7 and 3.8 has been dropped.
+- Drop bpython-curses binary which was removed upstream
+- Drop fix-python313-tests.patch, merged upstream
+- Remove workaround for installing manpages from %install section
+
+-------------------------------------------------------------------
 Thu Jan  2 16:18:30 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add fix-python313-tests.patch to fix tests under Python 3.13 

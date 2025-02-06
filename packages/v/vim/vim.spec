@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.1
-%define patchlevel 0993
+%define patchlevel 1043
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
@@ -414,6 +414,10 @@ install -D -m 0644 \
     vimrc_example1 vimrc_example2 suse.vimrc \
     README.txt READMEdir/README_src.txt READMEdir/README_unix.txt \
   %{buildroot}%{_docdir}/vim/
+
+rm -f %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/LICENSE
+rm -f %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/README.txt
+
 # gvim
 install -D -m 0644 \
     README.Japanese-XIM runtime/gvimrc_example.vim suse.gvimrc \

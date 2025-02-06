@@ -277,4 +277,12 @@
   systemd-sysuser instead again without --replace.</comment>
     <requestid>1232687</requestid>
   </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>3d091025a2bc9b37c2f3626823ae3de0</srcmd5>
+    <version>3.3</version>
+    <time>1738163406</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240735</requestid>
+  </revision>
 </revisionlist>

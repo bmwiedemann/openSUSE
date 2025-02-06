@@ -1339,4 +1339,20 @@
     <comment>submit new version 5.0.22</comment>
     <requestid>1227299</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>088f437da953dae01b376ab00648bf65</srcmd5>
+    <version>5.0.23</version>
+    <time>1737559886</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.23</comment>
+    <requestid>1239324</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>43aa88c9e7fcef946c320931e2ec7eb5</srcmd5>
+    <version>5.0.24</version>
+    <time>1738335716</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.24</comment>
+    <requestid>1241334</requestid>
+  </revision>
 </revisionlist>

@@ -155,4 +155,30 @@
     <comment></comment>
     <requestid>1204415</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7e5a129f5161f37c3829e4e4c243fe9e</srcmd5>
+    <version>2.2.15</version>
+    <time>1737564847</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239560</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>587e740651997b5ffbd91e0e2ac6e8d0</srcmd5>
+    <version>2.2.16</version>
+    <time>1737651936</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.16:
+  - Mostly a maintenance release, with new features for the
+    bookmarks function.
+  - Bookmarks can now be generated from external commands such as
+    ctags.
+  - The old built-in javascript beautifier has been removed,
+    Bluefish now uses the jsbeautify from your system (if
+    available).
+  - The word-wrap function has been fixed.
+- Add no-python2.patch to remove all traces of Python 2 from the
+  codebase. (forwarded request 1239840 from mcepl)</comment>
+    <requestid>1239846</requestid>
+  </revision>
 </revisionlist>

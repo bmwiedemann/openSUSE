@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Jan 18 10:20:18 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the test_bad regression test that fails with old libxml2
+  as suggested by upstream devs:
+  * https://gitlab.gnome.org/GNOME/libxslt/-/issues/126
+
+-------------------------------------------------------------------
+Sat Jan 18 10:00:30 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Allow building with older libxml2 versions:
+  * tests: Make runtest compile with older libxml2 versions
+  * https://gitlab.gnome.org/GNOME/libxslt/issues/125
+  * Add libxslt-test-compile-with-older-libxml2-versions.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 15:53:19 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.1.42:
+  * Regressions:
+    - extensions: Readd call to xmlCheckFilename with older libxml2
+  * Improvments:
+    - utils: Don't use deprecated xmlCharEncodingHandler member
+    - transform: Handle filesystem paths after libxml2 changes
+    - locale: Work around issue with FreeBSD's strxfrm_l
+  * Build systems:
+    - cmake: Add LIBXSLT_WITH_PROGRAMS option (Don Olmstead)
+    - cmake: Fix HAVE_GCRYPT check
+
+- Update to 1.1.41:
+  * Removals:
+    - autotools: Stop installing libxslt.m4
+    - autotools: Remove RPM build
+  * Improvements:
+    - libxslt: Set _FILE_OFFSET_BITS to 64
+    - xsltproc: Remove unneeded includes
+    - include: Don't define ATTRIBUTE_UNUSED in public header
+    - xsltproc: Make "-" read from stdin
+  * Build systems:
+    - cmake: Adjust paths for UNIX or UNIX-like target systems (Daniel E)
+  * Tests:
+    - cmake: Link testplugin with libxml2
+    - tests: Link testplugin with libxml2
+    - tests: Fix expected error after libxml2 change
+    - runtest: Switch to xmlFormatError
+    - fuzz: Avoid accessing internal struct members
+
+- Update to 1.1.40:
+  * Removals:
+    - xsltproc: remove maxparserdepth option (Mike Dalessio)
+  * Improvements:
+    - functions: xmlXPtrNewContext is deprecated
+    - xsltproc: Stop calling xmlMemoryDump
+    - xsltproc: Prefer XML_PARSE_NONET over xmlNoNetEntityLoader
+    - functions: Fix build if libxml2 modules are disabled
+    - extensions: Don't call deprecated xmlCheckFilename
+    - documents: Don't set ctxt->directory
+    - exslt: Fix EXSLT functions without parameters
+  * Build systems:
+    - build: Remove mem-debug option
+  * Remove patches upstream:
+    - gcc14-runtest-no-const.patch
+    - 0001-tests-Fix-build-with-older-libxml2.patch
+
+-------------------------------------------------------------------
 Fri Sep 20 14:27:35 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add libxslt-reproducible.patch to make xml output deterministic (boo#1062303)

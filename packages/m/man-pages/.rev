@@ -2140,4 +2140,41 @@
   * remove broken .so link</comment>
     <requestid>1181447</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>13411d14fd40a1a6ac36162de00a3d24</srcmd5>
+    <version>6.10</version>
+    <time>1737722294</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 6.10
+  New and rewritten pages
+  -----------------------
+  man1/
+          diffman-git.1
+          mansect.1
+          pdfman.1
+          sortman.1
+  man2/
+          keyctl.2                                (split into many pages)
+          listmount.2
+          statmount.2
+          uretprobe.2
+  man2const/
+          KEYCTL_*.2const          (previously, keyctl.2)
+          PR_RISCV_SET_ICACHE_FLUSH_CTX.2const
+  man3/
+          __riscv_flush_icache.3
+          timespec_get.3
+          wcscasecmp.3                            (merged wcsncasecmp.3 with it)
+          wcsncasecmp.3                           (merged into wcsncasecmp.3)
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          io_submit.2
+                  RWF_ATOMIC
+                  RWF_NOAPPEND
+          landlock_add_rule.2
+                  Landlock ABI v4
+          landlock_create_ruleset.2</comment>
+    <requestid>1239743</requestid>
+  </revision>
 </revisionlist>

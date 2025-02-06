@@ -20,4 +20,12 @@
   * Remove junk SQS implementation I was testing out.</comment>
     <requestid>1219207</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a2ac12b90d7918f7ad14bd52f9e4519a</srcmd5>
+    <version>2.5.2</version>
+    <time>1737560319</time>
+    <user>anag+factory</user>
+    <comment>- Fix shebang for $python_sitelib/huey/bin/huey_consumer.py</comment>
+    <requestid>1239489</requestid>
+  </revision>
 </revisionlist>

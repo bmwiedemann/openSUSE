@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:17:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Drop unneeded runtime dependencies
+
+-------------------------------------------------------------------
 Tue Jan  7 19:54:54 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - Load/reload AppArmor profiles when installing the package (boo#1235080)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-tabs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ License:        MIT
 URL:            https://github.com/executablebooks/sphinx-tabs
 # Use the github tag instead of the pythonhosted.org to get the tests folder
 Source:         https://github.com/executablebooks/sphinx-tabs/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#executablebooks/sphinx-tabs#200
+Patch0:         support-sphinx-8.1.patch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
@@ -81,6 +83,8 @@ Create tabbed content in Sphinx documentation when building HTML.
 
 %if !%{with test}
 %files %{python_files}
+%doc README.md
+%license LICENSE
 %{python_sitelib}/sphinx_tabs
 %{python_sitelib}/sphinx_tabs-%{version}.dist-info
 %endif

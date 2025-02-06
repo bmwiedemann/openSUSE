@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:56:38 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 6.13
+  * Implemented decoding of getxattrat, setxattrat, listxattrat,
+    and removexattrat syscalls.
+  * Updated decoding of struct io_uring_clone_buffers, struct io_uring_napi,
+    and struct perf_event_attr.
+  * Updated decoding of crypto_user_alg netlink attributes of NETLINK_CRYPTO.
+  * Implemented decoding of IFLA_MCTP_PHYS_BINDING netlink attribute.
+  * Updated lists of AT_*, BPF_*, FAN_*, IORING_*, MADV_*, NT_*, and SCM_*
+    constants.
+  * Updated lists of ioctl commands from Linux 6.13.
+
+-------------------------------------------------------------------
 Mon Nov 18 15:58:54 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update to strace 6.12

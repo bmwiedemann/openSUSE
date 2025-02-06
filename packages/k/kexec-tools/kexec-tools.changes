@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:24:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Wed Jan  1 01:01:01 UTC 2025 - olaf@aepfle.de
 
 - force -std=gnu99 because C99 because the code uses features 

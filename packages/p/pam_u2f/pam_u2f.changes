@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 21 13:52:59 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
+
+- update to 1.3.2:
+  * Relax authfile permission check to a warning instead of an error to prevent
+    a breaking change locking existing users out of their systems. 
+
+-------------------------------------------------------------------
 Wed Jan 15 10:02:56 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
 
 - update to 1.3.1:

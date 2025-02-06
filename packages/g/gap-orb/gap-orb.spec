@@ -17,7 +17,7 @@
 
 
 Name:           gap-orb
-Version:        4.9.2
+Version:        5.0.0
 Release:        0
 Summary:        GAP: Methods to enumerate Orbits
 License:        GPL-3.0-or-later

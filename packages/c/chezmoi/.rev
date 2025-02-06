@@ -695,4 +695,23 @@
 </comment>
     <requestid>1237545</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>46358c0e58360e246efd2103daa9de97</srcmd5>
+    <version>2.59.0</version>
+    <time>1738163443</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.59.0:
+  - Features
+    * feat: Add git-auto-commit and git-auto-push hooks
+    * feat: Add warnf template function
+    * feat: Show original URL in HTTP progress bars
+    * feat: Support filenames containing # in ignore and remove files
+  - Fixes
+    * fix: Fix persistent state mode for commands that execute templates
+    * fix: Warn, don't error, when generating git commit messages for unknown states
+  - Documentation updates
+    * docs: Update pruneEmptyDicts example
+</comment>
+    <requestid>1240887</requestid>
+  </revision>
 </revisionlist>

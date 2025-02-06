@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan 27 04:18:43 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 7.1.2:
+  * Updated plugins:
+    + various: fixed access of URL matcher regex capture groups, affecting abematv, ard_mediathek, bbiplayer, dailymotion, picarto, streann (#6364, #6368)
+    + chzzk: added support for clips (#6389)
+    + dailymotion: added support for lequipe.fr (#6372)
+    + kick: fixed 403 HTTP errors, fixed VOD URL matcher (#6384)
+    + nicolive: fixed authentication (#6378)
+    + tiktok: rewritten plugin, fixed live streams, added VODs (#6381)
+  * Fixed: --show-matchers=pluginname not working when plugins are loaded lazily (#6361)
+  * Added: --show-matchers=pluginname CLI argument (#6287)
+  * Updated: Streamlink and Plugin constructors to allow both Mapping and Options as options types (#6311)
+  * Fixed: uncaught DASH errors if FFmpeg is unavailable (#6306)
+  * As a side effect, if FFmpeg is unavailable, DASH streams will only return one sub-stream of the video and/or audio streams that would be muxed otherwise.
+  * Fixed: incorrect DASH segment duration in timeline manifests (#6323)
+  * Fixed: dynamic DASH streams incorrectly requiring the publishTime and availabilityStartTime attributes (#6324)
+  * Fixed: incorrect DASH segment and manifest base-URL joining (#6328, #6338)
+  * Fixed: matchers and arguments objects being shared in inherited Plugin classes (#6297, #6298)
+  * Updated plugins:
+    + various: replaced verbose URL matcher regexes of most plugins with multiple simple ones (#6285)
+    + bilibili: updated schema to include MPEG-TS HLS streams (#6332)
+    + bilibili: added back high-res HTTPStream streams from the v1 API with higher priority (#5782)
+    + mangomolo: replaced media.gov.kw with 51.com.kw (#6353)
+    + soop: rewritten authentication (#6321)
+    + vkplay: renamed to vkvideo and updated matcher (#6319)
+    + welt: fixed schema (#6301)
+  * Build: removed typing-extensions from runtime dependencies (#6314)
+
+-------------------------------------------------------------------
 Mon Nov  4 17:52:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.0.0:

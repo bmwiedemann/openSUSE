@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jan 27 16:02:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.0:
+  * fix(follow): file handling of artifacts with directories
+  * chore(deps): Bump the actions group with 2 updates
+  * chore(deps): Bump the gomod group with 2 updates
+  * chore(deps): Bump the gomod group with 5 updates
+  * chore(deps): Bump the actions group with 5 updates
+  * chore(deps): Bump the gomod group across 1 directory with 5
+    updates
+  * chore(deps): Bump cloud.google.com/go/storage from 1.49.0 to
+    1.50.0
+  * chore(deps): Bump golang.org/x/net from 0.33.0 to 0.34.0
+  * chore(deps): Bump k8s.io/client-go from 0.31.3 to 0.32.0
+  * chore(deps): Bump k8s.io/apimachinery from 0.31.3 to 0.32.0
+  * chore(go.mod): bump go version to 1.23.4
+  * chore(deps): Bump golang.org/x/oauth2 from 0.24.0 to 0.25.0
+  * chore(deps): Bump golang.org/x/term from 0.27.0 to 0.28.0
+  * chore(deps): Bump golang.org/x/sys from 0.28.0 to 0.29.0
+  * chore(deps): Bump github.com/onsi/ginkgo/v2 in the gomod group
+  * chore(deps): Bump github.com/onsi/gomega in the gomod group
+  * chore(deps): Bump cloud.google.com/go/storage from 1.48.0 to
+    1.49.0
+  * chore(deps): Bump github.com/distribution/distribution/v3
+  * chore(deps): Bump github.com/cilium/ebpf from 0.16.0 to 0.17.1
+  * chore(deps): Bump the gomod group with 2 updates
+  * chore(deps): Bump golang.org/x/net from 0.32.0 to 0.33.0
+  * chore(deps): Bump github.com/docker/cli
+  * chore(deps): Bump google.golang.org/api from 0.210.0 to 0.211.0
+  * chore(deps): Bump github.com/docker/docker
+  * chore(deps): Bump actions/setup-go in the actions group
+  * chore(deps): Bump the gomod group with 6 updates
+  * chore(deps): Bump golang.org/x/crypto from 0.30.0 to 0.31.0
+  * update(linter): remove deprecated linters
+  * update(ci/linter): bump golangci-lint to v1.62.2
+  * update(makefile): bump golangci-lint to v1.62.2
+  * fix(mediaType): do not omit the original media type if not a
+    well-known media type
+  * chore(deps): Bump github.com/falcosecurity/driverkit in the
+    gomod group
+  * chore(deps): Bump golang.org/x/net from 0.31.0 to 0.32.0
+  * chore(deps): Bump golang.org/x/term from 0.26.0 to 0.27.0
+  * chore(deps): Bump cloud.google.com/go/storage from 1.47.0 to
+    1.48.0
+  * chore(deps): Bump golang.org/x/sys from 0.27.0 to 0.28.0
+  * chore(deps): Bump docker/build-push-action in the actions group
+  * chore(deps): Bump github.com/pterm/pterm in the gomod group
+  * chore(deps): Bump github.com/onsi/gomega from 1.35.1 to 1.36.0
+  * chore(deps): Bump docker/metadata-action in the actions group
+  * chore(deps): Bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0
+  * chore(deps): Bump github.com/onsi/ginkgo/v2 from 2.21.0 to
+    2.22.0
+  * chore(deps): Bump google.golang.org/api from 0.206.0 to 0.209.0
+  * chore(deps): Bump the gomod group with 3 updates
+  * fix(auth/gcp): ensure correct OAuth scope for Artifact Registry
+    with service account
+
+-------------------------------------------------------------------
 Thu Nov 21 13:30:05 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.10.1:

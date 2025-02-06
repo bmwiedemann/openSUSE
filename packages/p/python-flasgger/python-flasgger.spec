@@ -1,7 +1,7 @@
 #
 # spec file for package python-flasgger
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Summary:        Tool to extract swagger specs from Flask projects
 License:        MIT
 URL:            https://github.com/flasgger/flasgger/
 Source:         https://files.pythonhosted.org/packages/source/f/flasgger/flasgger-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#flasgger/flasgger#629
+Patch0:         remove-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -43,19 +45,12 @@ Requires:       python-PyYAML >= 3.0
 Requires:       python-jsonschema >= 3.0.1
 Requires:       python-mistune >= 3
 Requires:       python-packaging
-Requires:       python-six >= 1.10
 BuildArch:      noarch
-
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module flasgger = %{version}}
-BuildRequires:  %{python_module Flask >= 0.10}
-BuildRequires:  %{python_module PyYAML >= 3.0}
-BuildRequires:  %{python_module jsonschema >= 3.0.1}
 BuildRequires:  %{python_module marshmallow}
-BuildRequires:  %{python_module mistune >= 3}
 BuildRequires:  %{python_module pytest >= 3.0.7}
-BuildRequires:  %{python_module six >= 1.10}
 # /SECTION
 %endif
 
@@ -65,7 +60,7 @@ BuildRequires:  %{python_module six >= 1.10}
 Flasgger is a Flask extension to extract OpenAPI=Specification from all Flask views registered in an API.
 
 %prep
-%setup -q -n flasgger-%{version}
+%autosetup -p1 -n flasgger-%{version}
 
 # Examples directory is not included in PyPI release
 rm tests/test_examples.py

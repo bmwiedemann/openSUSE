@@ -251,4 +251,20 @@ fix build
     <comment></comment>
     <requestid>1238167</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>54dee2d92f32ba4636bbca8b0c91ae50</srcmd5>
+    <version>25.1.0</version>
+    <time>1738007921</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240616</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>34bfaa62e55a6bfb8b2847ec549a64a5</srcmd5>
+    <version>25.1.1</version>
+    <time>1738163477</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240922</requestid>
+  </revision>
 </revisionlist>

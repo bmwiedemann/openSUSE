@@ -1,7 +1,7 @@
 #
 # spec file for package python-huey
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,8 +50,12 @@ huey, a little task queue
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/huey_consumer.py
 %python_clone -a %{buildroot}%{_bindir}/huey_consumer
-%python_expand sed -i 's/env python/python/' %{buildroot}%{$python_sitelib}/huey/bin/huey_consumer.py
-%python_expand chmod 755 %{buildroot}%{$python_sitelib}/huey/bin/huey_consumer.py
+
+%{python_expand #
+chmod 755 %{buildroot}%{$python_sitelib}/huey/bin/huey_consumer.py
+%{$python_fix_shebang_path %{buildroot}%{$python_sitelib}/huey/bin/huey_consumer.py}
+}
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # all checks need a running REDIS instance

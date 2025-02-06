@@ -894,4 +894,38 @@ varienvironment able.
     <comment></comment>
     <requestid>1233599</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5369d7117f879e468b839ef162e44d2b</srcmd5>
+    <version>0.58.0</version>
+    <time>1737490225</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.58.0:
+  * This version introduces three new border types, --list-border,
+    --input-border, and --header-border, offering much greater
+    flexibility for customizing the user interface.
+  * fzf now offers &quot;style presets&quot; for quick customization,
+    which can be activated using the --style option.
+  * Style presets (#4160)
+  * Border and label for the list section (#4148)
+  * Border and label for the input section (prompt line and info line) (#4154)
+  * Border and label for the header section (#4159)
+  * Added --preview-border[=STYLE] as short for --preview-window=border[-STYLE]
+  * Added new preview border style line which draws a single
+    separator line between the preview window and the rest of the interface
+  * fzf will now render a dashed line (┈┈) in each --gap for better visual separation.
+  * You can specify border-native to --tmux so that native tmux
+    border is used instead of --border. This can be useful if you
+    start a different program from inside the popup.
+  * Added toggle-multi-line action
+  * Added toggle-hscroll action
+  * Added change-nth action for dynamically changing the value of
+    the --nth option
+  * --nth parts of each line can now be rendered in a different text style
+  * A single-character delimiter is now treated as a plain string
+    delimiter rather than a regular expression delimiter, even if
+    it's a regular expression meta-character.
+  * Bug fixes and improvements in fish scripts
+</comment>
+    <requestid>1239113</requestid>
+  </revision>
 </revisionlist>

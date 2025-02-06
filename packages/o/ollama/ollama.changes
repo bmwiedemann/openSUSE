@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Jan 27 14:21:42 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- Make ollama configurable by the admin via /etc/sysconfig/ollama
+  (boo#1236008)
+- cleanup reproducible.patch
+
+-------------------------------------------------------------------
+Thu Jan 16 23:52:45 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Removed 01-build-verbose.patch: embedded GOFLAG into .spec file
+- Disabled reproducible.patch: should be not needed, as .gz is
+  not produced anymore
+
+- Update to version 0.5.7:
+  * Fixed issue where using two FROM commands in Modelfile
+  * Support importing Command R and Command R+ architectures
+    from safetensors
+
+- Update to version 0.5.6:
+  * Fixed errors that would occur when running ollama create on
+    Windows and when using absolute paths
+
+- Update to version 0.5.5:
+  * New models:
+    ~ Phi-4
+    ~ Command R7B
+    ~ DeepSeek-V3
+    ~ OLMo 2
+    ~ Dolphin 3
+    ~ SmallThinker:
+    ~ Granite 3.1 Dense
+    ~ Granite 3.1 MoE
+  * The /api/create API endpoint that powers ollama create has
+    been changed to improve conversion time and also accept a JSON
+    object.
+  * Fixed runtime error that would occur when filling the model's
+    context window
+  * Fixed crash that would occur when quotes were used in /save
+  * Fixed errors that would occur when sending x-stainless headers
+    from OpenAI clients
+
+- Update to version 0.5.4:
+  * New model: Falcon3
+  * Fixed issue where providing null to format would result in
+    an error
+
+- Update to version 0.5.3:
+  * Fixed runtime errors on older Intel Macs
+  * Fixed issue where setting the format field to "" would cause
+    an error
+
+
+- Update to version 0.5.2:
+  * New model: EXAONE 3.5
+  * Fixed issue where whitespace would get trimmed from prompt
+    when images were provided
+  * Improved memory estimation when scheduling models
+  * OLLAMA_ORIGINS will now check hosts in a case insensitive
+    manner
+
+-------------------------------------------------------------------
 Thu Dec 12 14:00:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for deterministic .gz creation (boo#1047218)

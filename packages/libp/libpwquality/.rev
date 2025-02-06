@@ -211,4 +211,14 @@ Fixed bugref (forwarded request 922054 from dimstar)</comment>
     <comment></comment>
     <requestid>1236840</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>ba9c43cfd524f30b35680c6d22ac2ae7</srcmd5>
+    <version>1.4.5</version>
+    <time>1738072700</time>
+    <user>anag+factory</user>
+    <comment>- pwquality.conf moved from /etc/security to /usr/lib/security
+This is already supported. I have updated the docu upstream:
+https://github.com/libpwquality/libpwquality/pull/95 (forwarded request 1240176 from schubi2)</comment>
+    <requestid>1240449</requestid>
+  </revision>
 </revisionlist>

@@ -137,4 +137,15 @@
 </comment>
     <requestid>954323</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ae9b6bee94fce940595602b01de83e26</srcmd5>
+    <version>2.4</version>
+    <time>1738163841</time>
+    <user>anag+factory</user>
+    <comment>- Add config files for dovecot 2.4
+
+- update to 2.4
+  Add unit files from 2.4</comment>
+    <requestid>1241073</requestid>
+  </revision>
 </revisionlist>

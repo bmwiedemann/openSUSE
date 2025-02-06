@@ -1839,4 +1839,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment>Mercurial 6.9 (forwarded request 1225322 from develop7)</comment>
     <requestid>1225323</requestid>
   </revision>
+  <revision rev="207" vrev="2">
+    <srcmd5>4f0ab2264ce9749ff63aed8c4ef7081e</srcmd5>
+    <version>6.9</version>
+    <time>1738335718</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241361</requestid>
+  </revision>
 </revisionlist>

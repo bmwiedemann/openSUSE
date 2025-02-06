@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 28 11:14:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.2
+  * Update note about which version we backported from
+  * [pre-commit.ci] pre-commit autoupdate
+  * Restore support for 3.8
+  * Update news for 0.2.2
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Dec 18 04:36:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.2.1. 

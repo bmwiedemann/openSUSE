@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 17 10:51:20 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove libutempter, it doesn't work anymore with the switch
+  from utmp to systemd-logind
+
+-------------------------------------------------------------------
 Mon May  6 11:33:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0

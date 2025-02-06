@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-jetson-36_3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if %{undefined kernel_module_directory}
 %if 0%{?usrmerged}
@@ -90,6 +91,7 @@ nvidia-open-driver-G06-signed-kmp) due to kernel module name conflicts.
 
 ### needs to be set in preamble-extra
 #Summary:        Open-Source NVIDIA Jetson Orin drivers
+
 %description -n nvidia-jetson-36_3-extra-kmp-default
 This package provides additional Open-Source NVIDIA Jetson Orin drivers,
 which are also required by the NVIDIA Jetson Orin graphics drivers
@@ -97,6 +99,7 @@ which are also required by the NVIDIA Jetson Orin graphics drivers
 
 ### needs to be set in preamble-extra
 #Summary:        Open-Source NVIDIA Jetson Orin drivers
+
 %description -n nvidia-jetson-36_3-extra-kmp-64kb
 This package provides additional Open-Source NVIDIA Jetson Orin drivers,
 which are also required by the NVIDIA Jetson Orin graphics drivers
@@ -118,7 +121,7 @@ echo sle_version: %sle_version
 echo "kver: %kver"
 %setup -q -n src -c src -a 22 -a 23 -a 24 -a 26 -a 27
 pushd nvidia-oot/drivers/net/ethernet/nvidia/nvethernet
-tar xf %{SOURCE25} 
+tar xf %{SOURCE25}
 popd
 cp $RPM_SOURCE_DIR/Makefile-NVIDIA-BUG-4460318 Makefile
 # needed for SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0) Kernel, but not for
@@ -148,9 +151,9 @@ done
 mkdir obj
 
 pushd ..
-#tar xf %{SOURCE30} 
+#tar xf %{SOURCE30}
 #cd Linux_for_Tegra
-#%patch3 -p1
+#%%patch3 -p1
 #./nv_tools/scripts/nv_repackager.sh -o ./nv_tegra/l4t_tar_packages --convert-all
 #popd
 
@@ -200,20 +203,20 @@ EOF
     cat > ${dracutfile} << EOF
 add_drivers+=" nvidia-drm nvidia-modeset nvidia "
 EOF
-    cat > ${dracutfile_extra} 
-# SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0) 
+    cat > ${dracutfile_extra}
+# SL Micro 6.0 (SUSE:ALP:Source:Standard:1.0)
 %if 0%{?suse_version} == 1600
     drivers=$(find %{buildroot}/usr/lib/modules/*-${flavor}/updates -name "*.ko*"|grep -v -E "nvidia-drm.ko|nvidia-modeset.ko|nvidia.ko")
 %else
     drivers=$(find %{buildroot}/lib/modules/*-${flavor}/updates -name "*.ko*"|grep -v -E "nvidia-drm.ko|nvidia-modeset.ko|nvidia.ko")
 %endif
-    for driver in ${drivers}; do 
+    for driver in ${drivers}; do
         dname=$(basename $driver|sed 's/.ko.*//g')
         if [ "$dname" == "tegra-drm" ]; then
             echo "add_drivers+=${dname}" >> ${dracutfile_extra}
         else
             echo "omit_drivers+=${dname}" >> ${dracutfile_extra}
-        fi 
+        fi
     done
     mkdir -p %{buildroot}/usr/lib/modules-load.d/
     cat > %{buildroot}/usr/lib/modules-load.d/nvidia-load-${flavor}.conf << EOF
@@ -246,7 +249,7 @@ popd
 %fdupes -s %{buildroot}/lib/firmware
 
 %files -n kernel-firmware-nvidia-jetson-36_3
-%doc /usr/share/doc/packages/kernel-firmware-nvidia-jetson-36_3/ 
+%doc /usr/share/doc/packages/kernel-firmware-nvidia-jetson-36_3/
 /lib/firmware/
 /usr/lib/systemd/
 /usr/sbin/brcm_patchram_plus

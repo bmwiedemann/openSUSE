@@ -1,7 +1,7 @@
 #
 # spec file for package tsung
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ BuildRequires:  erlang
 BuildRequires:  fdupes
 Requires:       bash
 Requires:       erlang
-Requires:       python2
 Requires:       perl(Template)
 
 %description
@@ -46,6 +45,7 @@ More information is available at http://tsung.erlang-projects.org/ .
 
 %prep
 %setup -q
+sed -i "s,^#! /usr/bin/env python3$,#!/usr/bin/python3," src/tsung-plotter/tsplot.py.in
 
 %build
 %configure \

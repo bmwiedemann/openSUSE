@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:22:45 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update copyright year 
+
+-------------------------------------------------------------------
 Mon Jan 13 10:06:09 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Remove conditionals around systemd as all versions use systemd now. 

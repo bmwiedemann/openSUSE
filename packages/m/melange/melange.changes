@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 27 15:58:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.3:
+  * disallow uses: with a nested pipeline
+
+-------------------------------------------------------------------
+Mon Jan 20 05:59:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.2:
+  * move some spammy logs to debug
+  * docs
+  * fix lint, use 22.04 where needed
+  * try ubuntu-22.04
+  * remove 'melange convert gem'
+  * remove 'melange convert python'
+
+-------------------------------------------------------------------
 Fri Jan 17 06:19:20 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.1:

@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.20250106
+Version:        5.20250120
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
@@ -39,7 +39,7 @@ This is static data, but newer versions of this module will be made
 available as new releases of 'perl' are uploaded to CPAN.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

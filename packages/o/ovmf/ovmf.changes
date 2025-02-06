@@ -1,4 +1,507 @@
 -------------------------------------------------------------------
+Tue Jan 14 02:11:28 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Update to edk2-stable202411
+    - Features (https://github.com/tianocore/edk2/releases):
+        - MdeModulePkg: Added PPI support in UFS PEI driver
+        - DynamicTablesPkg: Adds SPMI table generator
+        - MdeModulePkg: PeiMain: Add Delayed Dispatch PPI Implementation
+        - UefiPayloadPkg: Add Secure Boot support
+        - MdeModulePkg/TerminalDxe: Add VTUTF8 to Putty function key map
+        - DynamicTablesPkg: Adds ACPI HPET table generator
+        - Update Openssl 3.0.15
+        - DynamicTablesPkg: Adds WSMT generator for X64
+        - Enable UPL support for RISC-V
+    - Patches (git log --oneline --date-order edk2-stable202408..edk2-stable202411):
+        0f3867fa6e UefiPayloadPkg/UefiPayloadEntry: Fix PT protection in 5 level paging
+        c28721484d MedModulePkg/DxeIplPeim: Fix pagetable protection region in 5 level paging
+        13fad60156 UefiCpuPkg: Fix unchecked returns and potential integer overflows
+        843f0c129e Maintainers.txt: Update M and R for UefiCpuPkg and StandaloneMmPkg
+        fe1272dc57 NetworkPkg/DxeNetLib: make mSecureHashAlgorithms static
+        cd681f5f6a MdePkg/DxeRngLib: make mSecureHashAlgorithms static
+        d1c8a88e3b Maintainers.txt: update Leif's email address
+        cb87aada97 ArmPlatformPkg: Honour RES1 fields in CPTR_EL2
+        1bd09ad193 MdePkg: Define AARCH64_CPTR_RES1 and AARCH64_CPTR_DEFAULT
+        ef35863880 ArmPlatformPkg,MdePkg: Rename AARCH64 CPACR_CP_FULL_ACCESS
+        6f07aeb49c ArmPlatformPkg: Document that we don't support HCR_EL2.E2H being set
+        3299c36ba1 EmulatorPkg WinThunk: Use Win32 API to get Performance Frequency and Count
+        e12a8d83fa FatPkg/FatPei: Simplify the GPT Header Check
+        ef4f3aa3f7 MdePkg: MdeLibs.dsc.inc: Apwhich are merged to edk2-stable202408:e public Architectural MSRs from MdePkg
+        5a73776156 UefiCpuPkg: Use public Architectural MSRs from MdePkg
+        961a9e1d76 MdePkg: Added definition of AMD specific public MSRs
+        b904377d0d EmbeddedPkg/PrePiHobLib: Remove Non-RT Types from Mem Type Info HOB
+        d1372720a8 ArmVirtPkg/MemoryInitPei: Remove Non-RT Types from Mem Type Info HOB
+        7da3dcd45d ArmPlatformPkg/MemoryInitPei: Remove Non-RT Types from Mem Type Info HOB
+        d8984e86c7 ArmVirtPkg: mark fixed network PCDs
+        2ffd6d2e82 OvmfPkg: mark fixed network PCDs
+        fc9f06de6f NetworkPkg: mark fixed network PCDs
+        9cab9905af ArmVirtPkg: use NetworkDynamicPcds include file
+        7ccda1a0b3 OvmfPkg: use NetworkDynamicPcds include file
+        1db5895c39 NetworkPkg: introduce include file for dynamic PCDs
+        599c8309a5 NetworkPkg/Dhcp6Dxe: Fix sanitizer issues
+        171335e34e UefiCpuPkg/MtrrLib: Fix unit test read overflow
+        fadf4f377e MdePkg/Test/DevicePathLib: Remove FreePool(NULL)
+        d5600f4f5a CryptoPkg/BaseCryptLib: Fix serial number read overrun
+        12e1b1f8ef UefiCpuPkg/SecCore: Consume PcdMaxMappingAddressBeforeTempRamExit
+        e1b09dfca4 UefiCpuPkg/UefiCpuPkg.dec: Add PcdMaxMappingAddressBeforeTempRamExit
+        836942fbad StandaloneMmPkg/MemLib: remove unnecessary check
+        da8fd23dbb StandaloneMmPkg/Core: Check Resource HOB and Mmram ranges
+        3adb507175 StandaloneMmPkg/Core: add a new InitializeMmHobList()
+        d24bb10b1d StandaloneMmPkg/MemLib: Check if the non-MMRAM buffer is valid
+        025cec183d StandaloneMmPkg/MemLib: Add an internal header file
+        b19f1311d6 StandaloneMmPkg/Core: Remove unneeded check
+        734406184f StandaloneMmPkg/MmIpl: Optimize hob pointer check flow
+        6f17fe30bf CryptoPkg: Added MM_STANDALONE support in CryptoPkg.
+        ccbe6f5030 CryptoPkg: Increase ScratchMemory buffer for openssl 3.0.15
+        95d8a1c255 UnitTestFrameworkPkg: Use TianoCore mirror of subhook submodule
+        47ba459fc1 CryptoPkg: Updated the missed architectures.
+        03d8907321 UefiCpuPkg: Remove AMD 32-bit SMRAM save state map
+        b7735a087a MdePkg: CodeQL Fixes.
+        a9901a7748 MdeModulePkg: SataControllerSupported checks DevicePath Protocol
+        d13f31c3fe UefiPayloadPkg ：ACPI memory node
+        60c6486f79 UefiPayloadPkg：Add SMBIOS node.
+        de19273e89 UefiPayloadPkg: Modify PCI root reg .
+        aac5b3eca3 StandaloneMmPkg/MmIpl: Max physical address bits if disable 5 page level
+        79ad703b55 ArmPlatformPkg: CodeQL Fixes.
+        7327089f63 ArmVirtPkg: KvmTool: Fix clang linker error
+        b72d3495ee MdePkg: Add Google Mock Library for PostCodeLib
+        fc6a8bb131 Maintainers: Revert "Remove Ard Biesheuvel from all packages"
+        004232c6af UefiCpuPkg/MmUnblockMemoryLib: Check if buffer range is valid
+        acce74762b MdeModulePkg: Adding support for authenticated variable storage data format
+        56dfab9a8a StandaloneMmPkg/Core: Shadow Standalone BFV into MMRAM
+        11d4edc7c6 UefiCpuPkg/PiSmmCpuDxeSmm: Fix extraneous parentheses
+        8d74a37944 StandaloneMmPkg/Core: RUpdate openssl library to 3.0.15a in-place option
+        8af71632d6 DynamicTablesPkg: Drop the unnecessary comparision of UINT8 max value
+        9e56b4373b EmbeddedPkg: Add MDEPKG_NDEBUG to RELEASE build
+        8f04804593 EmbeddedPkg: Remove non-needed MDEPKG_NDEBUG dependent code
+        051ef932bd BaseTools/GenFw X64: Detect GOTCPRELX relaxations applied by LLD
+        9c557575a1 MdePkg/Include/Guid: Fix EFI_CXL_COMPONENT_EVENT_LOG in Cper.h
+        4ab8c3cf99 ShellPkg: Updated Type 4 Info as per Smbios 3.8.0
+        9dc7fb819c MdePkg: Updated Type 4 Info as per Smbios 3.8.0
+        ad522d9609 DynamicTablesPkg: Update X64 FADT XPm1aEvtBlk
+        11bd2fa072 Update CI config following CompilerIntrinsicsLib move from ArmPkg
+        cb1db8b9b9 DynamicTablesPkg: Update creator id for WSMT table
+        7b3969c951 MdeModulePkg UsbNetwork: Use USB class definition from MdePkg
+        e2ab098e65 ShellPkg/SmbiosView: Correct wrong length offset usage in SMBIOS Type4
+        a19f50bb95 MdePkg/Include/Guid: Rename CXL definitions in Cper.h
+        8f84eb0e76 BaseTools: Remove -Wno-unneeded-internal-declaration from CLANGDWARF
+        ae83c6b7fd MdePkg: Fix null macros for XCODE5 and CLANG
+        6e197a8ba5 MdePkg: Add Google Test Library and Protocol
+        866abb2338 MdeModulePkg: Replace rwhich are merged to edk2-stable202408: missing CXL definitions to Cper.h
+        79598f34fa MdeModulePkg: PeiMain: Updated dispatcher for delayed dispatch
+        d64d1e195c MdeModulePkg: PeiMain: Introduce implementation of delayed dispatch
+        b3f36e151d MdePkg: Update Delayed Dispatch PPI as per PI 1.8 A Spec
+        e19cc32bce edksetup.sh: Fix the Issue of PYTHON_COMMAND Un-Configurable
+        b7342074a6 UnitTestFrameworkPkg: VS2022 Support on UnitTest.
+        1b19ccfdfa Add USB Association Descriptor definitions
+        d44b82270b ArmPkg: CodeQL Fixes.
+        a232e0cd2f UefiCpuPkg/PiSmmCpuDxeSmm: Save and restore CR2 only if SmiProfile enable
+        92c1274467 MdePkg: Describe storage location of config tables as per PI 1.7 A spec
+        caec6089cf MdePkg: Clarify EFI_MM_SX_DISPATCH_PROTOCOL.Register() as per PI 1.7 A spec
+        c80f456ef4 MdePkg: Define PI Specification Version Macro
+        b3efbda166 NetworkPkg/HttpBootDxe: Report download error when resume attempts fail
+        081cf576a2 DynamicTablesPkg: Update FADT fixed feature flags validation
+        21767dcf4e RedfishPkg/RedfishCredentialDxe: Fix 'too many arguments' error
+        fcd9570c8d UefiCpuPkg/PiSmmCpuDxeSmm: Consume SmmCpuPlatformHookBeforeMmiHandler func
+        e34460c8b2 OvmfPkg/Library: Impl SmmCpuPlatformHookBeforeMmiHandler func
+        7d4da670ea UefiCpuPkg: Add SmmCpuPlatformHookBeforeMmiHandler
+        2351165f1b UefiCpuPkg/PiSmmCpuDxeSmm: Clarification for BSP & APs Sync Flow
+        d2a41d1a7a Maintainers.txt: Update GitHub username for myself
+        0bae161fed UefiCpuPkg/MpLib: Remove NotifyOnS3SmmInitDonePpi
+        6f17bd5eaf UefiCpuPkg/S3: Skip CR3 modification in S3Resume for 64-bit PEI
+        da1c6dd62a UefiPayloadPkg: Add Secure Boot support
+        7bac0a940e BaseTools/SetupGit.py: Fix invalid choice 'edk2-test'
+        fd619ec460 BaseTools/CodeQl: Give preference to Plugin settings
+        06da7daab1 FmpDevicePkg/FmpDependencyLib: Fix potential overflow in loop
+        550c38a299 UefiPayloadPkg : Roll back the sequence of gEfiEndOfPeiSignalPpiGuid.
+        2ee050d1d5 UnitTestFrameworkPkg: UnitTestLib: Support Failure Strings of 512 Chars
+        d99045f392 MdePkg: DebugLib: Check Signature in CR in Release Builds
+        77c070b1a7 EmulatorPkg: Add Signature to Graphics Structure
+        596773f5e3 DynamicTablesPkg: AmlLib: Fix CodeQL Issue
+        80d9b44491 Maintainers.txt: Add myself as UefiPayloadPkg maintainer
+        8cce048d48 DynamicTablesPkg: Correct _PSD package format
+        54469a6918 ShellPkg: Fix Optional Data rewriting with bcfg
+        b21cf3bd5b ShellPkg: ShellLevel2StripQuotes: Strip consecutive quotes
+        df884297fd ShellPkg/AcpiView: RASF Parser
+        c82bf392c5 ShellPkg/AcpiView: RAS2 Parser - Remove unused define
+        91d806917f OvmfPkg: RiscV64: build BaseRiscVFpuLib
+        f8c738577f UefiCpuPkg: RiscV64: initialize FPU
+        28dd588ca8 MdePkg/BaseLib: RISC-V: Add FPU CSR constants
+        7123940665 MdePkg: MdeLibs.dsc.inc: Introduce CUSTOM_STACK_CHECK_LIB Macro
+        2fdc39d09d MdeModulePkg/UefiBootManagerLib: Build proper SD/MMC boot descriptions
+        f962adc8a0 DynamicTablesPkg: Adds SPMI table generator
+        0958b762fb MdePkg/IndustryStandard: Adds SPMI macros
+        d2e8118461 StandaloneMmPkg: CodeQL Fixes.
+        e73ec56942 MdePkg: Improving readability of CVE patch for PeCoffLoaderRelocateImage
+        cac73c45c4 ArmVirtPkg/ArmVirtQemu: avoid unnecessary use of $(ARCH) conditional
+        3297be20bb Maintainers.txt: add Leif Lindholm as additional BaseFdtLib maintainer
+        eac33b88f4 Maintainers.txt: add all files in BaseFdtLib to component
+        9a1d54665c MdePkg: add various additional functions to BaseFdtLib
+        450a001c09 MdePkg: export additional Property functions from BaseFdtLib
+        5bad560935 MdePkg: export FdtAddressCells/FdtSizeCells from BaseFdtLib
+        9ba11ee131 MdePkg: export FdtOpenInto/FdtPack from BaseFdtLib
+        9dc9a4bae6 MdePkg: export some additional macros from BaseFdtLib
+        0cc9963cc9 MdePkg: align BaseFdtLib function prototypes
+        8292296893 MdePkg: add FdtStrerror wrapper to BaseFdtLib
+        8040fdbb8b MdePkg: consistently use "Property" in BaseFdtLib
+        bf7dbf6380 MdePkg,UefiPayloadPkg: improve BaseFdtLib memreserve helper style
+        4f4673846f .github/GitHub.py: Update bot in redundant comment check
+        c95233b852 MdePkg: Fix overflow issue in BasePeCoffLib
+        517019a553 .gitignore: Ignore Python venv files
+        a6b472131e IntelFsp2Pkg : Refactor BaseFspCommonLib to reduce binary size
+        21e1fc5400 BaseTools: LinuxGcc5ToolChain: Run for GCC Toolchain
+        10783187dd .pytool/UncrustifyCheck: Show errors in output
+        48b5815d77 RedfishPkg/Include: add common RedfishPkg header file.
+        8b295e0aad NetworkPkg/Dhcp6Dxe: Fix extraneous parentheses
+        e548e1cd73 CryptoPkg: Fix unused variable in CryptX509.c
+        90fb3c6cfc CryptoPkg/OpensslLib: Fix build on XCODE5
+        95292a0f24 MdeModulePkg/VariablePolicyLib: Fix extraneous parentheses
+        0aa93aecb7 MdePkg: Fix DEBUG_CODE and PERF_CODE macros for XCODE5
+        cc47e82703 BaseTools: Fix redefinition of UINT8_MAX in Decompress.c on XCODE5
+        ded3ae2cf4 ArmPkg: drop FdtLib resolution from .dsc
+        0693c66f76 EmbeddedPkg: add missing BaseLib/BaseMemoryLib declarations
+        dab548a51b ArmVirtPkg: add QemuVirtMemInfoLib missing dependency/includes
+        fe93b3745f DynamicTablesPkg/FdtHwInfoParserLib: add missing resolutions/includes
+        3ed4f43f83 CryptoPkg: Update generated files based on openssl 3.0.15
+        c13f9de56d CryptoPkg: Update openssl submodule to 3.0.15
+        2936b7d162 ArmVirtPkg: Correct PcdDxeNxMemoryProtectionPolicy comment
+        39462fcd99 openssl: add Library/OpensslLib/openssl to includes, drop e_os.h hack
+        67c303cb5f CrtLibSupport: add intptr_t
+        c371460cb4 CrtLibSupport: add timezone
+        0ec54d8d0c CrtLibSupport: add mktime()
+        af73d37741 CrtLibSupport: factor out EFI_TIME -> time_t calculation to new function
+        ebf7daa583 CrtLibSupport: fix gettimeofday()
+        609c7e8679 CrtLibSupport: add sleep()
+        b8122cc9d8 ShellPkg: add missing linefeed in reset message
+        a131839a3d FatPkg: Improvements to Fat to Fix File Corruption
+        3ef6a71ed1 FatPkg: Check BlockIo Device Has Supported BlockSize
+        4c3bffaeb3 UefiPayloadPkg: Enhance ReadMe.md for ELF and FIT
+        1a89c690a1 CryptoPkg/OpensslLib: Create SM3-only version of the library
+        1815f35b87 CryptoPkg: Add unit testcase for SM3
+        89309fee81 CryptoPkg/MbedTls CLANGDWARF: Replace outdated CLANG3x references
+        6820004b3e BaseTools: Fix multiple 'invalid escape sequence' warnings in tests
+        0354e89fc9 UefiPayloadPkg: Add LOCKBOX_SUPPORT in UPL and set it as FALSE in default
+        14bfcc4021 UefiPayloadPkg: Align relocation item with spec
+        222e2854fe BaseTools: Update RETURN_ERROR Macro in BaseTypes.h
+        c358009352 Set PcdSerialClockRate from SerialPortInfo in UefiPayloadEntry
+        3a3b12cbda UefiCpuPkg/MtrrLib: MtrrLibIsMtrrSupported always return FALSE in TD-Guest
+        ff8a7d101f Maintainers.txt: Add Sami Mujawar as maintainer for Arm modules
+        5901f19a87 DynamicTablesPkg: Adds ACPI SSDT HPET table generator
+        fada1cea46 DynamicTablesPkg: Adds ACPI HPET table generator
+        21e8a85653 MdeModulePkg/TerminalDxe: Add VTUTF8 to Putty function key map
+        170fa8ecd4 BaseTools/tools_def ARM: Disable stack protector with CLANGDWARF
+        779642283a Maintainers: Remove Ard Biesheuvel from all packages
+        b0d1cb59c7 UefiCpuPkg/AmdSmmCpuFeaturesLib: Skip SMBASE configuration
+        670e263419 UefiPayloadPkg: Move FADT check to consumer coode.
+        7843c8da06 RedfishPkg/Include: move protocol version definition to protocol header
+        be36ddb234 ArmPkg: Avoid building ArmCrashDumpDxe on ARM
+        73dbb68006 NetworkPkg/HttpBootDxe: Correctly uninstall HttpBootCallbackProtocol
+        1f32b5a30e UefiPayloadPkg: Handle simple reserved ranges from DT
+        043045cd6e MdePkg: Add reserved mem fdt helpers
+        099aff9137 UefiPayloadPkg: Add support for Root bridge parser
+        c511663cfa UefiPayloadPkg: Add support for Special Purpose memory
+        5cd9e7ce87 UefiPayloadPkg: Remove unnecessary ACPI checks
+        7fdb360046 UefiPayloadPkg: Enable RiscV64 entry point to UPL
+        1f4ae34f13 UniversalPayload: Add RISC-V support for UPL PCDs
+        9fff9912fd UefiPayloadPkg: Parse fdt and create smbios table
+        4d35077048 UefiPayloadPkg: Bugfix: Do not parse NULL nodes
+        ed665ef38c UefiPayloadPkg: Handle ordering issue with option node
+        121af960e2 OvmfPkg/CpuHotplugSmm: delay SMM exit
+        ec18fa81d3 OvmfPkg: Use TdInfo instead of fw_cfg to get cpu count in TDVF
+        262ab6259f OvmfPkg/RiscVVirtQemu: Remove non-needed !include line
+        273f43cec9 MdePkg/DxeRngLib: Add gEfiRngAlgorithmArmRndr to the secure algorithms
+        5ed8f64647 MdePkg/DxeRngLib: Use PcdEnforceSecureRngAlgorithms for default algorithm
+        c04c4534c4 MdePkg/DxeRngLib: Refactor Rng algorithm selection
+        bc02b255a8 MdePkg: Move PcdEnforceSecureRngAlgorithms from NetworkPkg
+        5c8bdb190f MdePkg DebugLib: Enable FILE NAME as DEBUG ASSERT for GCC12
+        69139e39bc NetworkPkg/HttpBootDxe: Resume an interrupted boot file download.
+        5262108822 MdePkg/Http11.h: Add HTTP header definitions.
+        964c22b8ea MdeModulePkg: Fix buffer overflow in MergeMemoryMap
+        a9b38305b6 MdePkg: Remove Old Stack Check Lib Implementation
+        f53f029122 BaseTools: Add Stack Cookie Support to MSVC and GCC IA32/X64/ARM/AARCH64
+        cac0955658 BaseTools: Update Stack Cookie Logic
+        5e07b97094 UnitTestFrameworkPkg: Add StackCheckLib
+        17744fc9ce UefiPayloadPkg: Add StackCheckLib
+        dfc397133b UefiCpuPkg: Add StackCheckLib
+        7b4b1d2bd3 StandaloneMmPkg: Add StackCheckLib
+        d7a0a7ae4a SourceLevelDebugPkg: Add StackCheckLib
+        2e8fb6b406 ShellPkg: Add StackCheckLib
+        ce347727a0 SignedCapsulePkg: Add StackCheckLibNull
+        7ca87dcc6a SecurityPkg: Add StackCheckLibNull
+        78d5d27470 RedfishPkg: Add StackCheckLibNull
+        e4c3c3eb65 PrmPkg: Add StackCheckLibNull
+        a275f10186 PcAtChipsetPkg: Add StackCheckLib
+        538b10f157 OvmfPkg: Add StackCheckLibNull
+        fefd017851 NetworkPkg: Add StackCheckLib
+        000b61eff8 MdeModulePkg: Add StackCheckLib
+        847561eb53 IntelFsp2WrapperPkg: Add StackCheckLib
+        254e4cfa8c IntelFsp2Pkg: Add StackCheckLibNull
+        715a695c3d FmpDevicePkg: Add StackCheckLibNull
+        6f0ba20471 FatPkg: Add StackCheckLibNull
+        ae5953dea0 EmulatorPkg: Add StackCheckLibNull
+        e7c0ad3661 EmbeddedPkg: Add StackCheckLibNull
+        8c21bc7157 DynamicTablesPkg: Add StackCheckLibNull
+        c9320adf22 CryptoPkg: Add StackCheckLib
+        02e6c73a99 ArmVirtPkg: Add Null Stack Check Lib
+        acab6dbf87 ArmPlatformPkg: Add Null Stack Check Lib
+        d1faaa8eae ArmPkg: Remove Deprecated Stack Check Lib
+        5000568969 MdePkg: Create Stack Check Lib
+        ac43bbacde MdePkg: Create Stack Check Null Libs
+        3a9da5f329 MdePkg: Add Stack Cookie Interrupt Vector PCD
+        26c3818011 UnitTestFrameworkPkg: Move common includes to their own file
+        837bb62661 NetworkPkg: PxeBcDhcp6GoogleTest: Fix Stack Smashing Unit Test
+        6706fe6e23 ArmPkg/ArmLib: Drop set/way Dcache operations
+        bec02ea9de MdePkg/ArmLib: Drop routines that maintain the entire D-cache
+        bb403511d4 ArmVirtPkg: Fix unable to build with -D NETWORK_ENABLE=0
+        14d7ae94bc OvmfPkg: Fix unable to build OVMF with -D NETWORK_ENABLE=0
+        af60615f0e NetworkPkg: Fix unable to build OVMF with -D NETWORK_ENABLE=0
+        8f74b95a21 MdePkg: Move CompilerIntrinsicsLib from ArmPkg
+        734e71f428 MdePkg: Move AsmMacroIoLib*.h from ArmPkg
+        656665d289 ArmPkg: CompilerIntrinsicsLib: Use AsmMacroIoLibV8.h for AARCH64 ASM
+        fe6b6feca7 OvmfPkg/LoongArchVirt: Modify loongarch uefi firmware size
+        1197fb3383 ShellPkg/AcpiView: RAS2 Parser
+        dfc242c2dd MdePkg/Acpi65.h: Add RAS2 table defs and signature as in ACPI 6.5
+        babccb841d MdeModulePkg: Enable Data Terminal at end of serial
+        bacee5113e MdePkg/IpmiNetFnGroupExtension.h: Enforce structure alignment
+        e41e728c16 Refactor SetMemWrapper to reduce binary size
+        03c8ec6ce2 MdeModulePkg/DxeCapsuleLibFmp: Check BootService Status to Use ESRT Cache
+        dadd8c7a95 MdeModulePkg/DxeCapsuleLibFmp: Change the Event Notify to Cache ESRT Table
+        f2557032d6 NetworkPkg/MnpDxe: Convert TX buffer allocation messages to DEBUG_VERBOSE
+        589304e67f Support Report Status Code in the UefiPxe driver.
+        58b4bf7b7e StandaloneMmPkg/MmIpl: Correct unblocked memory regions attribute
+        14c9ba1a2c IntelFsp2Pkg: Support FSP API to save and restore page table
+        9a4088777f .pytool/EccCheck: Trim leading path to modified directory
+        1328938560 MdeModulePkg/VariableRuntimeDxe: Fix VariablePolicyProtocol PRODUCES
+        b1ce2e1b67 ArmPkg/ArmPsciMpServices: GetProcessorInfo copies incorrect structure
+        61f9695f20 BaseTools: Remove Pip BaseTools
+        3885a3edad NetworkPkg/DxeNetLib: Update misleading comment
+        e5715711a4 OvmfPkg/QemuFwCfgS3Lib: Disable S3 detection in TDVF
+        043615ae8b MdePkg/BaseLib: Add NULL version Tdx functions for other architectures
+        b437b5ca4c UefiCpuPkg/PiSmmCpuDxeSmm: Remove RestrictedMemoryAccess check for MM CPU
+        b4820f2d65 UefiCpuPkg/PiSmmCpuDxeSmm: Clean mCpuSmmRestrictedMemoryAccess
+        633a755d99 UefiCpuPkg/PiSmmCpuDxeSmm: Update IfReadOnlyPageTableNeeded
+        4f6614fc18 UefiCpuPkg/PiSmmCpuDxeSmm: Correct SetPageTableAttributes func usage
+        f6eb069e17 UefiCpuPkg/PiSmmCpuDxeSmm: Deadloop if PFAddr is not supported by system
+        c8ce84d067 UefiCpuPkg/PiSmmCpuDxeSmm: Always save and restore CR2
+        897284d47d UefiCpuPkg/PiSmmCpuDxeSmm: Fix IsSmmCommBufferForbiddenAddress check
+        c047353a12 UefiCpuPkg/PiSmmCpuDxeSmm: Avoid to access MCA_CAP if CPU does not support
+        253b3d678a MdeModulePkg/Core/Pei: Add error handling for Section Length
+        9dabe005f0 MdePkg/IndustryStandard: Add definitions for IPMI Boot Progress Code
+        bfb33c0e09 BaseTools: Disable MSVC volatileMetadata for VS2019 and VS2022 for X64
+        013d51771a EmbeddedPkg/PrePiHobLib: Fix SetBootMode return value
+        1204de7b50 EmbeddedPkg/PrePiHobLib: Align Doxygen comment between code and header
+        3151798123 ShellPkg: Acpiview: Add GICC field parsing
+        f0dc9e1504 MdeModulePkg: UefiBootManagerLib: Update assert condition
+        03bc4252fb XhciDxe: Fail the start of malfunctioning XHCI controllers
+        7b9f2018d1 RedfishPkg: PlatformHostInterfaceBmcUsbNicLib: use credential protocol
+        7acd8c9bd2 RedfishPkg: PlatformHostInterfaceBmcUsbNicLib: fix compilation warning
+        c9a59facd8 RedfishPkg: RedfishDiscoverDxe: fix compilation warning
+        2ddce71142 EmulatorPkg: fix X64 Unix/Host segfault with GCC toolchain profile
+        99d60cbd39 ArmVirtPkg ARM: Move to MbedTls for crypto
+        1240a722f8 SecurityPkg: Tcg2Acpi: Remove _DSM Memory Clear and _PTS
+        a4245b265d SecurityPkg: Tcg2Smm: Remove Memory Clear SMI Handler
+        559affab2e MdeModulePkg: Fix redundant call to RestoreTpl()
+        b17ac09cc4 MdeModulePkg: Add extra RestoreTpl() call in DiskIo
+        afba5358c8 ArmVirtPkg: Resolve RngLib via RngDxe for TRNG support
+        8504d2be17 MdeModulePkg/FaultTolerantWriteDxe: Fix buffer overrun issue
+        1a89d9887f MdePkg:Update Return Error Macro in Base.h
+        5bb4f9694a OvmfPkg/PlatformPei: Build gCcEventEntryHobGuid at First
+        d997d3c62f OvmfPkg: Use TdHob instead of e820tables to get memory info in TDVF
+        e48acc0fa9 ShellPkg/SmbiosView: Add new Socket Type for SMBIOS Type4
+        aebe9625c9 MdePkg/SmBios.h: Add new Processor Upgrade definition for SMBIOS Type4
+        7f505d377b MdePkg/SmBios.h: Add new Socket Type for SMBIOS Type4
+        72cf76868c NetworkPkg/WifiConnectionManagerDxe: Fix Connection Manager HII errors
+        cb9bdf3753 SecurityPkg: Optimization by moving PeiServicesLocatePpi outside loop
+        a859f4fc03 MdePkg: Fix a buffer overread.
+        909849be87 pip-requirements.txt: Bump versions of several packages and fix URL
+        f0f14aac3d FatPkg/EnhancedFatDxe: Downgrade debug level for no media found
+        5b6ec1a7f4 UefiPayloadPkg/UefiPayloadPkg.ci.yaml: Add PrEval CI config
+        d214d75be0 UefiCpuPkg/UefiCpuPkg.ci.yaml: Add PrEval CI config
+        6e727ed9dd StandaloneMmPkg/StandaloneMmPkg.ci.yaml: Add PrEval CI config
+        7c10472983 SourceLevelDebugPkg/SourceLevelDebugPkg.ci.yaml: Add PrEval CI config
+        abf21d76e7 SignedCapsulePkg/SignedCapsulePkg.ci.yaml: Add PrEval CI config
+        0cfed09674 ShellPkg/ShellPkg.ci.yaml: Add PrEval CI config
+        6ead9a8b80 SecurityPkg/SecurityPkg.ci.yaml: Add PrEval CI config
+        89bad0726c PcAtChipsetPkg/PcAtChipsetPkg.ci.yaml: Add PrEval CI config
+        ea5581186e NetworkPkg/NetworkPkg.ci.yaml: Add PrEval CI config
+        c79487605a EmulatorPkg/EmulatorPkg.ci.yaml: Add PrEval CI config
+        2ccf94d37b ArmPlatformPkg/ArmPlatformPkg.ci.yaml: Add PrEval CI config
+        715200ea60 ArmPkg/ArmPkg.ci.yaml: Add PrEval CI config
+        814470b834 NetworkPkg/SnpDxe: return error for unsupported parameter
+        82c5cacd13 NetworkPkg: DxeHttpLib: Use HTTP error 429
+        829f773e5c MdePkg: Add HTTP error 429
+        eaf78e43f2 MdeModulePkg: Enable VarCheckHiiLibStandaloneMm.
+        df58def118 MdeModulePkg: Add VarCheckHiiLibStandaloneMm.
+        02f6774803 MdeModulePkg: Move DUMP_VAR_CHECK_HII in common file
+        45cf57ce79 MdeModulePkg: Relocate VarCheckHiiInternalDumpHex, VarCheckHiiQuestion
+        3956f4e392 MdeModulePkg: Wrap SetVariableCheckHandlerHii as a common API
+        db43a80c10 MdeModulePkg: Rename VarCheckHiiLibNullClass as VarCheckHiiLib.
+        5718c9b06f MdeModulePkg: Modified BuildVarCheckHiiBin parameter to IN OUT.
+        ee1e163a2f MdeModulePkg: Enable VarCheckHiiLibMmDependency
+        6b3ac9cbf8 MdeModulePkg: Add VarCheckHiiLibMmDependency library.
+        4aea90ea53 MdeModulePkg: Relocation of mVarCheckHiiBin declaration
+        238ccc5944 DynamicTablesPkg: Adds generic ACPI Creator ID
+        5dafa13d62 DynamicTablesPkg: Adds WSMT generator for X64
+        a5f5432728 SecurityPkg: Fix break missing at TPM_ALG_KEYEDHASH case
+        50871ee0ec BaseTools: GenMake: FIx missing logs from GenMake.py
+        91853ca6a5 MdeModulePkg/VariableStandaloneMm: Notify variable write ready in MM
+        af15e4535d ArmPkg: Fix timer wrap-around
+        4ef87f455b MdePkg: Add Reset Reason definitions
+        f7abf6af2d SecurityPkg: Fix exponent unmarshaled as 16 bits
+        96b90e150c SecurityPkg: Measure Invoke EBS even in failure case
+        baecba68a3 MdePkg: Remove duplicate source from BaseMemoryLib INF files
+        95ee7f3ef7 BaseTools: Trim: Add header/footer for ASL include
+        90d861f63d CryptoPkg/BaseCryptLibMbedTls: Fix uninitialized variable errors
+        468a36b22f CryptoPkg/OpensslLib CLANGDWARF: Use gnu99 C dialect for asm() support
+        5c63e22a9f OvmfPkg: Move kernel hashes section to end
+        662272ef41 Sync AARCH64 GCD Capabilities with Page Table
+        2069a63a8e OvmfPkg/PlatformInitLib: allow switching to 4-level paging
+        f6092b5e2b MdePkg: Remove the old name of LoongArch CSR 0x20
+        bc518f81fd OvmfPkg: Using the new name of LoongArch CSR 0x20 register
+        2fe24171ac UefiCpuPkg: Using the new name of LoongArch CSR 0x20 register
+        a066ca16d3 MdePkg: Rename the LoongArch CSR 0x20 register
+        d5c7bba504 StandaloneMmPkg: Restart dispatcher once MM entry is registered for X64
+        0b0b7041cc OvmfPkg/OvmfXen: Introduce Xen's ResetSystemLib, to use xen hypercall
+        6ed258d89d OvmfPkg/XenHypercallLib: Add SchedOp hypercall
+        043eab84e5 OvmfPkg/XenPlatformPei: Remove Hypercall Page
+        0e6f6c715c OvmfPkg/XenHypercallLib: Use direct hypercalls
+        9d5a9940e4 OvmfPkg: Refactor PcdSetNxForStack usage in TDVF
+        a1b0703e8e EmbeddedPkg: Improve LocateAndInstallAcpiFromFvConditional
+        5aa6842715 MdeModulePkg/VariableStandaloneMm: Fix TCG MOR secure feature issue
+        f31aa47dee MdePkg: CoreValidateHandle Optimization
+        0596e5fa05 MdeModulePkg: CoreValidateHandle Optimization
+        a63a7dbf85 ArmVirtPkg: Drop incorrect reference to LzmaDecompressLib
+        0a6d41ba0a ArmPlatformPkg/ArmPlatformLib: Drop unused MPCore routines
+        5c566abb12 ArmVirtPkg/ArmPlatformLib: Drop unused MPCore routines
+        5749b70b5a ArmPlatformPkg: Retire PrePi
+        029c7a2829 ArmPlatformPkg: Retire PrePeiCore
+        76c5f035a1 ArmPlatformPkg: Retire ArmPlatformStackLib
+        391666da2c OvmfPkg/QemuVideoDxe: ignore display resolutions smaller than 640x480
+        58035e8b5e OvmfPkg/VirtioGpuDxe: ignore display resolutions smaller than 640x480
+        6a7be5a841 DynamicTablesPkg: AML code generation for IO resouce descriptor.
+        b6c4708c4d MdeModulePkg/Bus/Pci/NvmExpressDxe: Nvm Express Media Sanitize Protocol.
+        7801fe428b MdePkg Nvme.h: Update fields from 1.4c specification.
+        1169122c6f MdeModulePkg NonDiscoverablePciDeviceIo: MMIO Memory XP By Default
+        01735bbe4a MdeModulePkg: Gcd: Only Update gMemoryMap Attributes if Correct GCD Type
+        bb248a9509 MdeModulePkg: MAT Set RO/XP on Code/Data Sections Outside Image Memory
+        254641f342 MdeModulePkg: MAT: Do Not Set EfiMemoryMappedIo[PortSpace] Attrs
+        31f0225005 RedfishPkg/RedfishHttpDxe: check response content type.
+        14e6c48103 RedfishPkg/RedfishHttpDxe: add status code check for modification request
+        2fe9b6c22f MdePkg:BaseArmTrngLibNull: Assert causing FVP stalling
+        383f729ac0 OvmfPkg/PlatformInitLib: Reserve Sec Page Tables in TDVF
+        9cd66aca1a CryptoPkg:  Support BrainpoolP512r1 algorithm
+        41a51d1735 ArmPkg/GenericWatchdogDxe: Disable WDOG before the protocol installed
+        7cde720e51 ShellPkg: Correct smbiosview strings and conditions for SMBIOS Type9
+        319835abb8 UefiCpuPkg/MpInitLib: Skip X2APIC enabling when BSP in X2APIC already
+        7ed3989166 UefiCpuPkg/MpInitLib: Sync BSP's APIC mode to APs in InitConfig path
+        94f68d0b56 UefiCpuPkg/MpInitLib: Separate X2APIC enabling to subfunction
+        84e7b74c8c UefiCpuPkg/UefiCpuPkg.dsc: Include PiSmmCpuStandaloneMm and required Libs
+        0de7882b46 UefiCpuPkg/PiSmmCpuDxeSmm: Simplify SMM Profile Size Calculation
+        2e6ca59e33 UefiCpuPkg/PiSmmCpuDxeSmm: Avoid PcdCpuSmmProfileEnable check in MM
+        ae0d54cd43 UefiCpuPkg/PiSmmCpuDxeSmm: Cleanup SMM_CPU_SYNC_MODE
+        1816c78f43 UefiCpuPkg/PiSmmCpuDxeSmm: Refine DxeSmm PageTable update logic
+        5bcf6049f2 UefiCpuPkg/PiSmmCpuDxeSmm: Add PiSmmCpuStandaloneMm.inf
+        3690d30a6e UefiCpuPkg/PiSmmCpuDxeSmm: Check logging PF address for MM
+        0593183d76 UefiCpuPkg/PiSmmCpuDxeSmm: Start SMM Profile early for MM
+        79468b58c3 UefiCpuPkg/PiSmmCpuDxeSmm: Differentiate PerformRemainingTasks
+        268397a892 UefiCpuPkg/PiSmmCpuDxeSmm: Enable CodeAccessCheck in MM Entry Point
+        1c19ccd510 UefiCpuPkg/PiSmmCpuDxeSmm: Refactor code to create default Page Table
+        14cb36685b UefiCpuPkg/PiSmmCpuDxeSmm: Add PiCpuStandaloneMmEntry for MM
+        7b9b4ed57f UefiCpuPkg/PiSmmCpuDxeSmm: Add GetSupportedMaxLogicalProcessorNumber
+        167e902624 UefiCpuPkg/PiSmmCpuDxeSmm: Impl IsSmmCommBufferForbiddenAddress for MM
+        9ee5334796 UefiCpuPkg/PiSmmCpuDxeSmm: Define mIsStandaloneMm to indicate SMM or MM
+        5f88a44637 UefiCpuPkg/PiSmmCpuDxeSmm: Impl GetSmiCommandPort for MM
+        ee54bda382 UefiCpuPkg/PiSmmCpuDxeSmm: Impl CreateExtendedProtectionRange for MM
+        614d6c91bf UefiCpuPkg/PiSmmCpuDxeSmm: Impl GetSmmCpuSyncConfigData for MM
+        1f22b96b11 UefiCpuPkg/PiSmmCpuDxeSmm: Impl GetAcpiS3EnableFlag for MM
+        502a9122a4 UefiCpuPkg/PiSmmCpuDxeSmm: Impl GetSmmProfileData for MM
+        cc996831bd UefiCpuPkg/PiSmmCpuDxeSmm: Add empty .c for MM CPU specific impl
+        9d9bbb6f5f UefiCpuPkg/PiSmmCpuDxeSmm: Move GetSmiCommandPort into DxeSmm Code
+        abc2f59523 UefiCpuPkg/PiSmmCpuDxeSmm: Move GetUefiMemoryMap into DxeSmm code
+        0c037b5fa7 UefiCpuPkg/PiSmmCpuDxeSmm: Create extended protection MemRegion in func
+        d480f106a6 UefiCpuPkg/PiSmmCpuDxeSmm: Get SmmCpuSyncConfig data from func
+        23c5ee6e23 UefiCpuPkg/PiSmmCpuDxeSmm: Move GetAcpiS3EnableFlag into DxeSmm code
+        5547d1487c UefiCpuPkg/PiSmmCpuDxeSmm: Move SMM profile data allocation into func
+        89fe9c5d79 UefiCpuPkg/PiSmmCpuDxeSmm: Use SMM Variable to set SmmProfileBase
+        c8a1295d3e UefiCpuPkg/PiSmmCpuDxeSmm: Get SMRAM info from gEfiSmmSmramMemoryGuid
+        8ccf7f65e5 UefiCpuPkg/PiSmmCpuDxeSmm: Centralize Non-Mmram Mem Management Code
+        cc5df45eb6 UefiCpuPkg/PiSmmCpuDxeSmm: Move common code into PiSmmCpuCommon.c
+        cd29383f77 UefiCpuPkg/PiSmmCpuDxeSmm: Rename PiSmmCpuDxeSmm.h to PiSmmCpuCommon.h
+        2a15750b79 UefiCpuPkg/PiSmmCpuDxeSmm: Update gSmst to gMmst
+        cfaccc89a2 StandaloneMmPkg/Core: Migrate Memory Allocation Hob into MMRAM
+        6b69f564a9 StandaloneMmPkg/Core: Add MemoryAttributes support
+        b7931cafea StandaloneMmPkg/Core: Install protocol to notify MmEndOfPei event
+        c8df60801f StandaloneMmPkg: Support using gEfiSmmSmramMemoryGuid to get MMRAM range
+        487fa274c4 StandaloneMmPkg/Core: Restart dispatcher once MmEntryPoint is registered
+        003a4d4ef4 StandaloneMmPkg/Core: Remove unused mMmramRanges and mMmramRangeCount
+        f0254c9a1c StandaloneMmPkg: Remove definition for MM_CORE_PRIVATE_DATA
+        0f89005d71 StandaloneMmMemLib: Drop MM_CORE_PRIVATE_DATA
+        189398dcf8 StandaloneMmCoreMemoryAllocationLib: Drop MM_CORE_PRIVATE_DATA
+        18591343b2 StandaloneMmPkg/Core: Drop MM_CORE_PRIVATE_DATA
+        24e41d1fa3 StandaloneMmPkg/Core: Introduce MM Communication Buffer
+        68487b4736 StandaloneMmPkg/Core: Switch to MM HobList after MM HostList is ready
+        dd775aa4d4 StandaloneMmPkg/Core: Install Loaded Image Protocol for MM Core
+        a44830727a StandaloneMmPkg/Core: Install Loaded Image Protocol for MM drivers
+        6dc14fb5b4 StandaloneMmPkg/Core: Remove traditional MM driver support
+        6855567d52 StandaloneMmPkg/MmIpl: Create memory resource HOBs
+        378aff173c StandaloneMmPkg/MmIpl: Create MM profile data HOBs
+        c775cc762e StandaloneMmPkg/MmIpl: Create misc HOBs for CPU
+        0d91ebd96f StandaloneMmPkg/MmIpl: Create standalone MM foundation related HOBs
+        5aa5ecd5ff StandaloneMmPkg/MmIpl: Dispatch StandaloneMm drivers in MM
+        3ac296def1 StandaloneMmPkg/MmIpl: Install end of PEI notify PPI
+        e98eca076a StandaloneMmPkg/MmIpl: Install MmCommunicationPpi
+        8d764088ea StandaloneMmPkg/MmIpl: load MM Core and execute MM Core in MM RAM
+        d7e6b863a1 StandaloneMmPkg/MmIpl: build MM communication buffer HOB
+        e363c0b729 StandaloneMmPkg/MmIpl: StandaloneMmIplPei driver entrypoint
+        82d2f6b3c3 MdeModulePkg/SmmCommunicationBufferDxe: Re-use FixedCommBuffer
+        d64766bde6 StandaloneMmPkg: Create some notification of protocol and Event
+        a2a8558958 StandaloneMmPkg: Install gEfiMmCommunicationProtocolGuid
+        cf9b568405 StandaloneMmPkg: Install gEfiMmCommunication2ProtocolGuid
+        eef29d5100 StandaloneMmPkg: Add a new MmCommunicationDxe driver
+        0806fb60d4 StandaloneMmPkg: Create null instance for MmPlatformHobProducerLib
+        c0b1ad64e4 UefiCpuPkg: Enable MmUnblockMemoryLib
+        8f21911951 UefiCpuPkg: Add MM Unblock Page Library
+        630e819bf3 StandaloneMmPkg/StandaloneMmPkg.ci.yaml: Add UefiCpuPkg dependency
+        56908fd4be StandaloneMmPkg/StandaloneMmPkg.dec: Add gEventMmDispatchGuid
+        43e8801410 StandaloneMmPkg: Add MmPlatformHobProducerLib library class
+        0f36b5fa0a UefiCpuPkg: Add ACPI S3 Enable HOB definition
+        39d9e15a9e UefiCpuPkg: Add MM CPU Sync Config definitions
+        2c5d329e20 UefiCpuPkg: Add MM Profile related definitions
+        21a2c8ae2a UefiCpuPkg: Add Unblock Region HOB definition
+        45098bf1b8 MdeModulePkg/MdeModulePkg.dec: Add PcdMmCommBufferPages PCD
+        ff04469d33 MdeModulePkg: Add MM Communication Buffer definition
+        82b1f69196 MdePkg/MdePkg.dec: Add gEfiMmEndOfPeiProtocol definition
+        1fd2f9ec8f IntelFsp2Pkg: Align FSP global data pointer for X64 build
+        a0ac7cf67a UefiPayloadPkg: Update UefiPayload driver for FDT support.
+        0c4d6bb405 UefiPayloadPkg: Update PayloadLoader to suport FDT.
+        b0c6b049c4 UefiPayloadPkg: Add FDT Paser relative LIBs.
+        a297b81b62 UefiPayloadPkg: Support Debug function when Hob was not available.
+        04d8d94a42 UefiPayloadPkg: Addd header files for FDT structure and function.
+        c3997e329a MdePkg: Fix build error after enable FDT support.
+        90d0ec17e7 MdePkg/BaseFdtLib: Add FdtNodeOffsetByCompatible()
+        99e4c8ea93 OvmfPkg/LoongArchVirt: Clear the PGD series registers
+        25da777d95 Maintainers.txt: Cleanup inactive maintainers.
+        39a999eb1d ArmPlatformPkg: Initialize Serial Port Before Writing
+        ded4191e10 Maintainers.txt: Remove Susovan Mohapatra
+        cc7bb9a86e IntelFsp2Pkg: Correcting Data Region Length of MCUD section
+        a0594ca403 GitHub Action: Bump github/issue-labeler from 3.1 to 3.4
+        b2a431868c UefiCpuPkg: CpuPageTableLibTestHost: Disable Random Test Suite
+        efaf8931bb OvmfPkg/TdTcg2Dxe: Fix the SeparatorEvent issue in RTMRs
+        ccda91c286 MdePkg: Define BrainpoolP512r1
+        5a06afa7dd SecurityPkg: Allocate EfiACPIMemoryNVS buffer for TCG2
+        fadb9dcb9d SecurityPkg: Correct Pages for TCG2 communication buffer
+        0e8af88034 NetworkPkg: Improve GetBootFile() code flow
+        f3040bed3c .mergify: Fix pull_request_rules deprecation
+        1cc0fae8d9 MdeModulePkg/RamDiskDxe: fix memory leak on error path.
+    - Add libbpf1 (libbpf.so.1) as a BuildRequires to satisfy build dependencies.
+    - Add ovmf-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch (bsc#1236009) 
+        f53f029122d4 BaseTools: Add Stack Cookie Support to MSVC and GCC IA32/X64/ARM/AARCH64
+    - Update openssl library to 3.0.15
+    - Remove patch which are merged to edk2-stable202411:
+        - ovmf-MdePkg-DebugLib-Enable-FILE-NAME-as-DEBUG-ASSERT-for.patch 
+            5c8bdb190f MdePkg DebugLib: Enable FILE NAME as DEBUG ASSERT for GCC12
+
+-------------------------------------------------------------------
 Wed Nov 13 08:26:42 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-x86_64-sev-code.bin and ovmf-x86_64-sev-vars.bin back

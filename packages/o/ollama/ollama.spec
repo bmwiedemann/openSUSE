@@ -1,7 +1,7 @@
 #
 # spec file for package ollama
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.5.1
+Version:        0.5.7
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -26,8 +26,7 @@ Source:         %{name}-%{version}.tar
 Source1:        vendor.tar.zstd
 Source2:        ollama.service
 Source3:        %{name}-user.conf
-Patch1:         01-build-verbose.patch
-Patch2:         reproducible.patch
+Source4:        sysconfig.ollama
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git
 BuildRequires:  sysuser-tools
@@ -42,6 +41,7 @@ BuildRequires:  libstdc++6-gcc12
 %else
 BuildRequires:  gcc-c++ >= 11.4.0
 %endif
+Requires(pre):  %{fillup_prereq}
 
 %description
 Ollama is a tool for running AI models on one's own hardware.
@@ -67,15 +67,16 @@ export CC=gcc-12
 export GOFLAGS="-mod=vendor"
 %endif
 
-export OLLAMA_SKIP_PATCHING=1
+export GOFLAGS="${GOFLAGS} -v"
 
-go generate ./...
-go build -v .
+%make_build
 
 %install
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-user.conf
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%name
 install -d %{buildroot}%{_localstatedir}/lib/%{name}
 
 mkdir -p "%{buildroot}/%{_docdir}/%{name}"
@@ -95,6 +96,7 @@ go test -v ./...
 
 %post
 %service_add_post %{name}.service
+%fillup_only
 
 %preun
 %service_del_preun %{name}.service
@@ -109,6 +111,7 @@ go test -v ./...
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}-user.conf
+%{_fillupdir}/sysconfig.%name
 %attr(-, ollama, ollama) %{_localstatedir}/lib/%{name}
 
 %changelog

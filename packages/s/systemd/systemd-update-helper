@@ -12,6 +12,8 @@ shift
 
 command -v systemctl >/dev/null || exit 0
 
+UPDATE_HELPER_USER_TIMEOUT_SEC=15
+
 case "$command" in
     mark-install-system-units)
         mkdir -p /run/systemd/rpm/needs-preset
@@ -76,7 +78,7 @@ case "$command" in
 
         users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
         for user in $users; do
-            SYSTEMD_BUS_TIMEOUT=15s \
+            SYSTEMD_BUS_TIMEOUT=${UPDATE_HELPER_USER_TIMEOUT_SEC}s \
                     systemctl --user -M "$user@" disable --now --no-warn "$@" &
         done
         wait
@@ -97,7 +99,7 @@ case "$command" in
         users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
         for user in $users; do
             for unit in "$@"; do
-                SYSTEMD_BUS_TIMEOUT=15s \
+                SYSTEMD_BUS_TIMEOUT=${UPDATE_HELPER_USER_TIMEOUT_SEC}s \
                         systemctl --user -M "$user@" set-property "$unit" Markers=+needs-restart &
             done
         done
@@ -121,7 +123,7 @@ case "$command" in
         fi
         ;;
 
-    user-reexec)
+    user-reload-restart|user-reload|user-restart|user-reexec)
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
@@ -129,36 +131,15 @@ case "$command" in
 
         [ -d /run/systemd/system ] || exit 0
 
-        # Reexecute user manager instances (if any). It is asynchronous but it
-        # shouldn't be a problem in practice because systemd main package is not
-        # shipping any user services currently. A problem would arise only if a
-        # new version of a user service relied on an option that would be only
-        # understood by the latest version of the user manager and the user unit
-        # would be restarted before the user manager get reexecuted.
-        systemctl kill --kill-who=main --signal=SIGRTMIN+25 "user@*.service"
-        ;;
-
-    user-reload-restart|user-reload|user-restart)
-        if [ -n "$*" ]; then
-            echo >&2 "Unexpected arguments for '$command': $*"
-            exit 2
-        fi
-
-        [ -d /run/systemd/system ] || exit 0
-
-        users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
-
-        if [[ "$command" =~ reload ]]; then
-            for user in $users; do
-                SYSTEMD_BUS_TIMEOUT=15s \
-                        systemctl --user -M "$user@" daemon-reload &
-            done
-            wait
+        if [[ "$command" =~ reexec|reload ]]; then
+            SYSTEMD_BUS_TIMEOUT=${UPDATE_HELPER_USER_TIMEOUT_SEC}s systemctl reload "user@*.service"
         fi
 
         if [[ "$command" =~ restart ]]; then
+            users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
+
             for user in $users; do
-                SYSTEMD_BUS_TIMEOUT=15s \
+                SYSTEMD_BUS_TIMEOUT=${UPDATE_HELPER_USER_TIMEOUT_SEC}s \
                         systemctl --user -M "$user@" reload-or-restart --marked &
             done
             wait

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 22 07:01:32 UTC 2025 - Timothy Brown <stimut@gmail.com>
+
+- Update to version 3.11.0:
+  * This release includes perceptual quality improvements, binary
+    size reduction under certain configurations, new codec interfaces,
+    speedup and memory optimizations, and many bug fixes.
+  * Default encoder configuration changed for the
+    AOM_USAGE_REALTIME mode
+- See https://aomedia.googlesource.com/aom/+/refs/tags/v3.11.0/CHANGELOG
+  for detailed changes since version 3.9.1
+- Updated patches
+
+-------------------------------------------------------------------
 Mon Sep 16 10:46:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.9.1:

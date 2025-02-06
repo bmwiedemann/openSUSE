@@ -1156,4 +1156,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     - Fix a bug preventing the admin redaction endpoint from</comment>
     <requestid>1237892</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>117b1bde298c0c200bbd85797247fa74</srcmd5>
+    <version>1.123.0</version>
+    <time>1738163427</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1240870 from darix
+
+- Update to 1.123.0</comment>
+    <requestid>1240872</requestid>
+  </revision>
 </revisionlist>

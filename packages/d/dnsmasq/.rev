@@ -951,4 +951,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
 - bsc#1235517: Reintroduce nogroup for SLE-15-SP3 and older.</comment>
     <requestid>1237778</requestid>
   </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>c3e6c79dc136de86631ae6be9ce95315</srcmd5>
+    <version>2.90</version>
+    <time>1737651676</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239578</requestid>
+  </revision>
 </revisionlist>

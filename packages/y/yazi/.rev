@@ -120,4 +120,12 @@ Changes from last request:
   * feat: add `is_exec` and `is_sticky` to `Cha` bindings (#875)</comment>
     <requestid>1170288</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>abb047686c0ec7bb3465f709b283b55b</srcmd5>
+    <version>0.4.2</version>
+    <time>1738163812</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241025</requestid>
+  </revision>
 </revisionlist>

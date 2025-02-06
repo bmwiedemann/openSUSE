@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:24:45 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 8.16.0
+  * Signed Distance Fields
+  * Better file format support
+  * General improvements
+  * for details check out https://www.libvips.org/2024/10/10/What's-new-in-8.16.html
+
+-------------------------------------------------------------------
 Sun Jan 28 20:44:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 8.15.1:

@@ -32,4 +32,28 @@
     <comment>rqlite 8.36.5</comment>
     <requestid>1237155</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0e96114786ed7bc4adeeea4853ff8e0a</srcmd5>
+    <version>8.36.6</version>
+    <time>1737389667</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238862</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3a5272bc784b23ff71dbfcb34c7261a</srcmd5>
+    <version>8.36.8</version>
+    <time>1737722435</time>
+    <user>dimstar_suse</user>
+    <comment>rqlite 8.36.8</comment>
+    <requestid>1239986</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b33fa1844fac07585d342e1edf72c390</srcmd5>
+    <version>8.36.10</version>
+    <time>1738072770</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240716</requestid>
+  </revision>
 </revisionlist>

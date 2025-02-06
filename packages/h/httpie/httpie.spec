@@ -32,35 +32,24 @@ URL:            https://httpie.org/
 Source:         cli-%{version}.%{_mtime}.%{_commit}.tar.gz
 Source1:        http.1
 BuildRequires:  %{primary_python}
-BuildRequires:  %{primary_python}-Jinja2
-BuildRequires:  %{primary_python}-PySocks
-BuildRequires:  %{primary_python}-PyYAML
 BuildRequires:  %{primary_python}-Pygments >= 2.5.2
 BuildRequires:  %{primary_python}-Werkzeug
 BuildRequires:  %{primary_python}-charset-normalizer >= 2.0.0
 BuildRequires:  %{primary_python}-defusedxml >= 0.6.0
-BuildRequires:  %{primary_python}-flake8
-BuildRequires:  %{primary_python}-flake8-comprehensions
-BuildRequires:  %{primary_python}-flake8-deprecated
 BuildRequires:  %{primary_python}-multidict >= 4.7.0
 BuildRequires:  %{primary_python}-pip
-BuildRequires:  %{primary_python}-pyOpenSSL
 BuildRequires:  %{primary_python}-pytest
-BuildRequires:  %{primary_python}-pytest-cov
 BuildRequires:  %{primary_python}-pytest-httpbin >= 0.0.6
-BuildRequires:  %{primary_python}-pytest-lazy-fixture >= 0.0.6
 BuildRequires:  %{primary_python}-pytest-mock
 BuildRequires:  %{primary_python}-requests >= 2.22.0
 BuildRequires:  %{primary_python}-requests-toolbelt >= 0.9.1
 BuildRequires:  %{primary_python}-responses
 BuildRequires:  %{primary_python}-rich >= 9.10.0
 BuildRequires:  %{primary_python}-setuptools
-BuildRequires:  %{primary_python}-twine
 BuildRequires:  %{primary_python}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{primary_python}
-Requires:       %{primary_python}-PySocks
 Requires:       %{primary_python}-Pygments >= 2.5.2
 Requires:       %{primary_python}-charset-normalizer >= 2.0.0
 Requires:       %{primary_python}-defusedxml >= 0.6.0
@@ -120,7 +109,7 @@ pytest --deselect=tests/test_uploads.py --deselect=tests/test_plugins_cli.py --d
 %{_bindir}/http
 %{_bindir}/https
 %{_bindir}/%{name}
-%{python_sitelib}/httpie*
+%{_prefix}/lib/python%{python_version}/site-packages/httpie*
 %{_mandir}/man1/http.1%{?ext_man}
 %{_mandir}/man1/https.1%{?ext_man}
 %{_mandir}/man1/%{name}.1%{?ext_man}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 27 16:46:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Tweak support-python-313.patch to adapt to yet another change
+  in argparse
+
+-------------------------------------------------------------------
 Tue Jan  7 03:37:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Rejig patch support-python-313.patch to also cope with other argparse

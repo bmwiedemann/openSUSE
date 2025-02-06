@@ -1,7 +1,7 @@
 #
 # spec file for package babeltrace2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbabeltrace2
 %define sover   0
 Name:           babeltrace2
-Version:        2.0.5
+Version:        2.1.0
 Release:        0
 Summary:        Common Trace Format Babel Tower
 License:        GPL-2.0-only AND MIT
@@ -29,12 +29,12 @@ Source1:        https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libdw) >= 0.154
 BuildRequires:  pkgconfig(libelf) >= 0.154
-BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(uuid)
 ExclusiveArch:  %ix86 x86_64 aarch64 ppc64le ppc64 riscv64 s390x
@@ -86,7 +86,7 @@ export PYTHON_CONFIG="$PYTHON-config"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # Remove licences from doc.
-rm %{buildroot}%{_docdir}/%{name}/{LICENSE,mit-license.txt,gpl-2.0.txt}
+rm %{buildroot}%{_docdir}/%{name}/LICENSE
 
 %post -p /sbin/ldconfig
 
@@ -94,7 +94,7 @@ rm %{buildroot}%{_docdir}/%{name}/{LICENSE,mit-license.txt,gpl-2.0.txt}
 
 %files
 %doc %{_docdir}/%{name}/
-%license LICENSE mit-license.txt gpl-2.0.txt
+%license LICENSE LICENSES/*
 %{_bindir}/%{name}*
 %{_libdir}/%{name}/
 %{_libdir}/%{soname}*.so.%{sover}*

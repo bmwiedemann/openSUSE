@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan 27 12:52:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.12.0
+  * Basic support for PopOS is now included.
+  * Python 2.7 and 3.5 are no longer supported.
+  * Bindep now depends on the distro python library to determine
+    details about the current platform. This library looks at both
+    /etc/os-release and lsb_release to find platform info. The
+    os-release file data is preferred and at times has slightly
+    different data than lsb_release. Every effort has been made
+    to make this transition backward compatible but some things
+    may have been missed. The motivation for this change is that
+    not all distros have lsb_release available and we can let the
+    distro library sort that out for us.
+- Drop remove-mock.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri May  5 11:04:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

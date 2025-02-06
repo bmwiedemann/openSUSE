@@ -1,7 +1,7 @@
 #
 # spec file for package qemu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -161,6 +161,7 @@ BuildRequires:  libcbor-devel
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-base >= 3.8
+BuildRequires:  python3-sphinx_rtd_theme
 %else
 BuildRequires:  python311-Sphinx
 BuildRequires:  python311-base

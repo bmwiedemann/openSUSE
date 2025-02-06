@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-jinx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Björn Bidar
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global _name    jinx
 
 Name:           emacs-%{_name}
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Enchanted Spell Checker for Emacs
 License:        GPL-3.0-or-later

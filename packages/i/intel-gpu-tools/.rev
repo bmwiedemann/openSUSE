@@ -97,4 +97,12 @@
     <comment></comment>
     <requestid>1235457</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e3913af87fb5935c47b3594c28acd1fd</srcmd5>
+    <version>1.30</version>
+    <time>1738007699</time>
+    <user>anag+factory</user>
+    <comment>- Remove dependency on liboping, remove lazy link arg (fixed upstream)</comment>
+    <requestid>1240421</requestid>
+  </revision>
 </revisionlist>

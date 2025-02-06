@@ -300,4 +300,14 @@
 </comment>
     <requestid>1188744</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>d077e41230b7fc75aea9d598fb190ee2</srcmd5>
+    <version>4.35.0</version>
+    <time>1737389648</time>
+    <user>anag+factory</user>
+    <comment>- Add support-sphinx-7.4.patch (gh#breathe-doc/breathe!1007)
+  fixing tests with Sphinx 7.4.
+</comment>
+    <requestid>1238662</requestid>
+  </revision>
 </revisionlist>

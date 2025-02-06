@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kalpa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -282,7 +282,6 @@ Requires:       breeze6-wallpapers
 Requires:       dolphin
 Requires:       kde-print-manager
 Requires:       kgamma6
-Requires:       kwrited6
 Requires:       phonon-vlc-qt6
 Requires:       plasma6-nm
 Requires:       plasma6-workspace-wallpapers

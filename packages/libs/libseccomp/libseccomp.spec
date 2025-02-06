@@ -1,7 +1,7 @@
 #
 # spec file for package python3-seccomp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global pname libseccomp
 %global lname   libseccomp2
-%global flavor @BUILD_FLAVOR@%{nil}
+%global flavor @BUILD_FLAVOR@%nil
 
-%if "%{flavor}" == "python3"
+%if "%flavor" == "python3"
 Name:           python3-seccomp
 Summary:        Python 3 bindings for seccomp
 Group:          Development/Tools/Debuggers
@@ -29,7 +29,7 @@ Name:           libseccomp
 Summary:        A Seccomp (mode 2) helper library
 Group:          Development/Libraries/C and C++
 %endif
-Version:        2.5.5
+Version:        2.6.0
 Release:        0
 License:        LGPL-2.1-only
 URL:            https://github.com/seccomp/libseccomp
@@ -43,9 +43,10 @@ BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig
-%if "%{flavor}" == "python3"
+%if "%flavor" == "python3"
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 0.29
+BuildRequires:  python3-setuptools
 %endif
 
 %description
@@ -54,7 +55,7 @@ syscall filtering mechanism, seccomp. The libseccomp API abstracts
 away the underlying BPF-based syscall filter language and presents a
 more conventional function-call based filtering interface.
 
-%if "%{flavor}" == "python3"
+%if "%flavor" == "python3"
 This subpackage contains the python3 bindings for seccomp.
 %endif
 
@@ -92,7 +93,7 @@ syscall filtering mechanism, seccomp.
 This subpackage contains debug utilities for the seccomp interface.
 
 %prep
-%autosetup -p1 -n %{pname}-%{version}
+%autosetup -p1 -n %pname-%version
 
 %if 0%{?qemu_user_space_build}
 # The qemu linux-user emulation does not allow executing
@@ -105,7 +106,7 @@ echo 'int main () { return 0; }' >tests/52-basic-load.c
 autoreconf -fiv
 %configure \
 	 --includedir="%_includedir/%pname" \
-%if "%{flavor}" == "python3"
+%if "%flavor" == "python3"
 	 --enable-python \
 %endif
 	 --disable-static \
@@ -117,7 +118,7 @@ autoreconf -fiv
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
 rm -fv %buildroot/%python3_sitearch/install_files.txt
-%if "%{flavor}" == "python3"
+%if "%flavor" == "python3"
 rm %buildroot/%_libdir/%pname.so*
 rm -r %buildroot/%_mandir/
 rm -r %buildroot/%_includedir/%pname/
@@ -126,17 +127,17 @@ rm -r %buildroot/%_bindir/
 %endif
 %fdupes %buildroot/%_prefix
 
+%if "%flavor" != "python3"
 %check
 export LD_LIBRARY_PATH="$PWD/src/.libs"
 make check
+%endif
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
-%if "%{flavor}" == "python3"
+%if "%flavor" == "python3"
 %files
-%python3_sitearch/seccomp-%version-py*.egg-info
-%python3_sitearch/seccomp.cpython*.so
+%python3_sitearch/seccomp*
 %else
 
 %files -n %lname

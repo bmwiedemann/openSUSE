@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ Patch0:         mercurial-hgk-path-fix.diff
 # PATCH-FIX-OPENSUSE mercurial-locale-path-fix.patch saschpe@suse.de -- locales are found in /usr/share/locale
 Patch2:         mercurial-locale-path-fix.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes

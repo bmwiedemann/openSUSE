@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-movie
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?is_opensuse}
     %define  distribution  openSUSE-Edition
 %else
@@ -24,13 +25,13 @@
 %define sover 0_1
 
 Name:           deepin-movie
-Version:        6.0.10
+Version:        6.0.11
 Release:        0
 Summary:        Deepin Video Players
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/linuxdeepin/deepin-movie-reborn
-Source:         https://github.com/linuxdeepin/deepin-movie-reborn/archive/%{version}/%{name}-reborn-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{name}-reborn-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM Fix-library-link.patch hillwood@opensuse.org
 # fix library link error and add this includedir for ffmpeg
 Patch0:         Fix-library-link.patch
@@ -38,6 +39,8 @@ Patch0:         Fix-library-link.patch
 # PATCH-FIX-UPSTEAM fix-build-on-ARM.patch hillwood@opensuse.org
 Patch1:         fix-build-on-ARM.patch
 %endif
+# PATCH-FIX-UPSTEAM fix-ftbfs-ffmpeg7.patch
+Patch2:         fix-ftbfs-ffmpeg7.patch
 BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -48,26 +51,31 @@ BuildRequires:  deepin-manual
 %endif
 BuildRequires:  glslang-devel
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(dbusextended-qt5)
 BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
 BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dvdnav)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gsettings-qt)
-BuildRequires:  (pkgconfig(libavcodec) with pkgconfig(libavcodec) < 61)
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libffmpegthumbnailer)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(mpris-qt5)
 BuildRequires:  pkgconfig(mpv)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xcb-aux)
@@ -76,16 +84,9 @@ BuildRequires:  pkgconfig(xcb-proto)
 BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(mpris-qt5)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  cmake(Qt5MultimediaWidgets)
-BuildRequires:  pkgconfig(dbusextended-qt5)
 %if 0%{?suse_version} <= 1500
 BuildRequires:  qtdbusextended-devel < 3.1.2
 BuildRequires:  qtmpris-devel < 3.1.2
-%else
-BuildRequires:  ffmpeg-6-libavcodec-devel
 %endif
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

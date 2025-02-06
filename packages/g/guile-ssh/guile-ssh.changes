@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec  4 22:33:21 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 0.18.0
+  * Change (ssh popen) procedures behavior
+  * make-session now handles #:config set to #f properly
+  * session-func.c: Fix compile error caused by bool identifier
+  * session-func.c: Fix compilation with libssh < 0.8.3
+  * session-func.c: Add compilation warnings for missing options
+  * Drop support for libssh versions older than 0.8.0
+- Update to 0.17.0
+  * make-session now loads config file before setting options
+  * session-set! now allows to set rsa-min-size
+- Update to 0.16.4:
+  * private-key-from-file now allows to read encrypted keys
+
+-------------------------------------------------------------------
 Sun Jun 18 20:43:12 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.16.3:

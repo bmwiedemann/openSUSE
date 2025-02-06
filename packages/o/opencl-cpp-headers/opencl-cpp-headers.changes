@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:18:48 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Install pkg-config and CMake files
+- Use CMake setup
+- Use %autosetup macro 
+
+-------------------------------------------------------------------
 Thu Nov 14 22:31:46 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2024.10.24.

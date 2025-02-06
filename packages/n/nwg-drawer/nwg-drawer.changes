@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 30 00:09:38 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.6.3.
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.6.3
+  - Fixed crash when deleting or backspacing all text from the search field #152 (only happened with the `-nocats` flag).
+
+-------------------------------------------------------------------
+Wed Jan 22 23:02:33 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.6.2.
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.6.2
+  * Fixed crash on entering a :command in the search box while running with the -nocats argument; closes #151.
+- Changes from version 0.6.1:
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.6.1
+  * Added the ability to run shell commands directly from the search box - just use colon (:) as the first character; #143 by @rienovie;
+  * added optional close button for touch devices (use the -closebtn left|right flag); #148 by @caffeine01;
+  * added size request for powerButtonsWrapper; closes #149;
+  * dependencies updated.
+
+-------------------------------------------------------------------
 Mon Dec  2 13:18:45 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.6.0.

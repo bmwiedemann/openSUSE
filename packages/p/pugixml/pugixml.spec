@@ -18,7 +18,7 @@
 
 %define _libname libpugixml1
 Name:           pugixml
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Light-weight C++ XML Processing Library
 License:        MIT

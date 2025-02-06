@@ -69,4 +69,5 @@ enable vmtoolsd.service
 enable vgauthd.service
 enable wtmpdb-update-boot.service
 enable wtmpdb-rotate.timer
+enable wtmpdbd.socket
 enable xencommons.service

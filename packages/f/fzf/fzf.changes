@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan 20 20:08:59 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 0.58.0:
+  * This version introduces three new border types, --list-border,
+    --input-border, and --header-border, offering much greater
+    flexibility for customizing the user interface.
+  * fzf now offers "style presets" for quick customization,
+    which can be activated using the --style option.
+  * Style presets (#4160)
+  * Border and label for the list section (#4148)
+  * Border and label for the input section (prompt line and info line) (#4154)
+  * Border and label for the header section (#4159)
+  * Added --preview-border[=STYLE] as short for --preview-window=border[-STYLE]
+  * Added new preview border style line which draws a single
+    separator line between the preview window and the rest of the interface
+  * fzf will now render a dashed line (┈┈) in each --gap for better visual separation.
+  * You can specify border-native to --tmux so that native tmux
+    border is used instead of --border. This can be useful if you
+    start a different program from inside the popup.
+  * Added toggle-multi-line action
+  * Added toggle-hscroll action
+  * Added change-nth action for dynamically changing the value of
+    the --nth option
+  * --nth parts of each line can now be rendered in a different text style
+  * A single-character delimiter is now treated as a plain string
+    delimiter rather than a regular expression delimiter, even if
+    it's a regular expression meta-character.
+  * Bug fixes and improvements in fish scripts
+
+-------------------------------------------------------------------
 Fri Dec 27 09:56:57 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - Update to 0.57.0:

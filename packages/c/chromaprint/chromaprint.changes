@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 25 08:50:23 UTC 2025 - Dave Plater <davejplater@gmail.com>
+
+- Add 0005-Fix-compatibility-with-ffmpeg-7.0.patch and force build
+  with ffmpeg-7 libraries
+
+-------------------------------------------------------------------
+Fri Jan 24 13:45:25 UTC 2025 - Dave Plater <davejplater@gmail.com>
+
+- Update to git snapshot 1.5.1+git.20221217 to allow build against
+  ffmpeg-5 libraries. No other major changes.
+
+-------------------------------------------------------------------
 Wed Dec 11 12:25:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Use kissfft for shared library, ffmpeg is only needed for the

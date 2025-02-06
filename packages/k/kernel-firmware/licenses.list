@@ -185,7 +185,7 @@ venus:		media		LICENSE.qcom qcom/NOTICE.txt
 iris:		media		LICENSE.qcom qcom/NOTICE.txt
 imx-sdma:	platform	LICENSE.sdma_firmware
 adreno:		qcom		LICENSE.qcom qcom/NOTICE.txt
-qcom_q6v5_pas:	qcom		LICENSE.qcom qcom/NOTICE.txt
+qcom_q6v5_pas:	qcom		LICENSE.qcom-2 qcom/NOTICE.txt
 qcom_q6v5_mss:	qcom		LICENSE.qcom qcom/NOTICE.txt
 mlxsw_spectrum:	mellanox
 cdns-mhdp:	platform	LICENCE.cadence

@@ -212,4 +212,27 @@
     <comment></comment>
     <requestid>1157984</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b341ec0ff01dd7d2b7c4e75a13924046</srcmd5>
+    <version>3.0.4</version>
+    <time>1738007710</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.4:
+  + Bug fixes
+- Changes from version 3.0.3:
+  + Bug fixes
+- Changes from version 3.0.2:
+  + Bug fixes
+  + Do not use intltool to build Grisbi
+- Changes from version version 3.0.1:
+  + Bug fixes
+- Changes from version 3.0.0:
+  + Changing the payee search
+  + Adding new type of consumer loan
+  + Adding the all transactions in archive when the account is closed
+  + Bug fixes
+  + Code cleanup
+  + Preparing for the transition to gtk4 (forwarded request 1240282 from amanzini)</comment>
+    <requestid>1240453</requestid>
+  </revision>
 </revisionlist>

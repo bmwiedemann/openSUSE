@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:21:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Tue Aug 13 08:52:59 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Fix SELinux sbin/bin merge (bsc#1229047)

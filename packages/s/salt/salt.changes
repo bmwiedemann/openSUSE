@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 22 13:11:21 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Fix virtual grains for VMs running on Nutanix AHV (bsc#1234022)
+- Fix issues running on Python 3.12 and 3.13
+
+- Added:
+  * fix-virtual-grains-for-vms-running-on-nutanix-ahv-bs.patch
+  * fix-issues-that-break-salt-in-python-3.12-and-3.13-6.patch
+
+-------------------------------------------------------------------
 Thu Jan  9 12:57:12 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - Revert setting SELinux context for minion service (bsc#1233667)

@@ -28,7 +28,7 @@
 %define oname xdg-desktop-portal
 
 Name:           %{oname}%{?psuffix}
-Version:        1.19.1
+Version:        1.19.2
 Release:        0
 %if "%{flavor}" == ""
 Summary:        A portal frontend service for Flatpak
@@ -41,8 +41,6 @@ Supplements:    (%{oname}-devel and patterns-base-documentation)
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{oname}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-test-dependencies.patch -- build/tests: Check for python found and version in single require call
-Patch:          fix-test-dependencies.patch
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.58

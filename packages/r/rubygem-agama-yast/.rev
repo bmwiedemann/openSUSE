@@ -150,4 +150,49 @@
   (gh#agama-project/agama#1899).</comment>
     <requestid>1238330</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>18ac023350fed6b90fe68f2ae6cf3f4c</srcmd5>
+    <version>11.devel61</version>
+    <time>1737490219</time>
+    <user>anag+factory</user>
+    <comment>- The software service provides DBus API for reading the currently
+  configured repositories, related to (gh#agama-project/agama#1894)
+
+- Add support for specifying a license for each product
+  (jsc#PED-11987).
+-------------------------------------------------------------------  
+- Relax gems version in the gemspec file
+  (gh#agama-project/agama#1917)</comment>
+    <requestid>1239337</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a2ea93038115a79c27f6a36648627fb7</srcmd5>
+    <version>11.devel68</version>
+    <time>1737560380</time>
+    <user>anag+factory</user>
+    <comment>- Fix the ListRepositories D-Bus method to return the proper value
+  instead of crashing the service (gh#agama-project/agama#1930).</comment>
+    <requestid>1239537</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c63636221f68b9560b26b07f0afe62f6</srcmd5>
+    <version>11.devel99</version>
+    <time>1737828742</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce a new installation phase &quot;finish&quot;
+  (gh#agama-project/agama#1616).
+
+- Use the availability of the base product to determine whether a
+  product requires to be registered (gh#agama-project/agama#1938).</comment>
+    <requestid>1240158</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aa3664d6a9873debcb0ed4b4019bd683</srcmd5>
+    <version>11.devel105</version>
+    <time>1738245122</time>
+    <user>anag+factory</user>
+    <comment>- Allow reading repository in /install directory on iso
+  (jsc#PED-10405)</comment>
+    <requestid>1241226</requestid>
+  </revision>
 </revisionlist>

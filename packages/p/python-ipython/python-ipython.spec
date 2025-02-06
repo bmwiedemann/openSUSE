@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,15 +33,13 @@
 %bcond_with localtest
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        8.30.0
+Version:        8.31.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
-# PATCH-FIX-UPSTREAM https://github.com/ipython/ipython/pull/14598 Fix pdb issues in Python 3.13.1
-Patch0:         py3131.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}

@@ -1,7 +1,7 @@
 #
 # spec file for package wcurl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           wcurl
-Version:        2024.07.10
+Version:        2024.12.08
 Release:        0
 Summary:        A simple wrapper around curl to easily download files
 License:        curl
 URL:            https://github.com/curl/wcurl
 Source:         https://github.com/curl/wcurl/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  curl >= 7.46.0
+%if 0%{?sle_version} > 150500 || 0%{?suse_version} >= 1600
 BuildRequires:  shunit2
+%endif
 Requires:       curl >= 7.46.0
 BuildArch:      noarch
 
@@ -40,18 +42,21 @@ that you likely should be using curl directly if your use case is
 not covered.
 
 By default, wcurl will:
- * Encode whitespaces in URLs.
+ * Percent-encode whitespaces in URLs;
  * Download multiple URLs in parallel if the installed curl's
-   version is >= 7.66.0
- * Follow redirects.
- * Automatically choose a filename as output
+   version is >= 7.66.0;
+ * Follow redirects;
+ * Automatically choose a filename as output;
  * Avoid overwriting files if the installed curl's version
-   is >= 7.83.0 (--no-clobber).
- * Perform retries.
+   is >= 7.83.0 (--no-clobber);
+ * Perform retries;
  * Set the downloaded file timestamp to the value provided by the
-   server, if available.
+   server, if available;
  * Disable curl's URL globbing parser so {} and [] characters in
-   URLs are not treated specially.
+   URLs are not treated specially;
+ * Percent-decode the resulting filename;
+ * Use "index.html" as default filename if there's none in the
+   URL.
 
 %prep
 %autosetup
@@ -64,7 +69,7 @@ install -Dm 644 wcurl.1 %{buildroot}%{_mandir}/man1/wcurl.1
 
 %check
 #---tests.sh needs shunit2 version >= 2.1.8 to be able to run all tests
-%if 0%{?suse_version}
+%if 0%{?sle_version} > 150500 || 0%{?suse_version} >= 1600
 %if %{pkg_vcmp shunit2 >= 2.1.8}
 tests/tests.sh
 %endif

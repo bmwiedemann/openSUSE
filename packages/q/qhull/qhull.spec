@@ -29,6 +29,8 @@ URL:            http://www.qhull.org
 Source0:        http://www.qhull.org/download/qhull-%{srcyear}-src-%{srcver}.tgz
 # PATCH-FIX-OPENSUSE
 Patch1:         0002-Remove-tools-from-CMake-exported-targets.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Use-separate-CMake-EXPORT-sets-for-independent-targe.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -95,12 +97,13 @@ export CXXFLAGS+=" -ffat-lto-objects"
 
 # Don't assume LIB_INSTALL_DIR is relative
 sed -i 's#@LIB_INSTALL_DIR@#%{_lib}#' build/qhull.pc.in
-
+# Neither is INCLUDE_INSTALL_DIR
+sed -i 's#@INCLUDE_INSTALL_DIR@#include#' build/qhull.pc.in
 # Neither is INCLUDE_INSTALL_DIR
 sed -i 's#@INCLUDE_INSTALL_DIR@#include#' build/qhull.pc.in
 
-# Only build static qhull_CPP
-sed -i 's#set(qhull_TARGETS_STATIC .*)#set(qhull_TARGETS_STATIC ${qhull_CPP})#' CMakeLists.txt
+# Fix CMake/Pkgconfig directories
+sed -i '/Location/ s@lib/@${LIB_INSTALL_DIR}/@' CMakeLists.txt
 
 %cmake \
         -DDOC_INSTALL_DIR="%{_docdir}/%{name}" \
@@ -109,24 +112,20 @@ sed -i 's#set(qhull_TARGETS_STATIC .*)#set(qhull_TARGETS_STATIC ${qhull_CPP})#' 
         -DBIN_INSTALL_DIR="%{_bindir}" \
         -DMAN_INSTALL_DIR="%{_mandir}/man1/" \
         -DBUILD_SHARED_LIBS=ON \
-        -DBUILD_STATIC_LIBS=ON \
+        -DBUILD_QHULLCPP=ON \
         -DLINK_APPS_SHARED=ON
-%cmake_build qhullcpp
+%cmake_build
 
 %install
 %cmake_install
-# Fixup wrong location
-%if "%{_lib}" != "lib"
-mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
-mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_libdir}/
-%endif
-rm %{buildroot}%{_docdir}/%{name}/COPYING.txt
 
-# Fix rpmlint warning: E: double-slash-in-pkgconfig-path
-sed -i 's#//#/#' %{buildroot}%{_libdir}/pkgconfig/*.pc
+rm %{buildroot}%{_docdir}/%{name}/COPYING.txt
 
 # We don't install static libs for qhull, so don't install the corresponding pkgconfig files either
 rm %{buildroot}%{_libdir}/pkgconfig/qhullstatic*.pc
+
+# Fix rpmlint warning: E: double-slash-in-pkgconfig-path
+sed -i 's#//#/#' %{buildroot}%{_libdir}/pkgconfig/*.pc
 
 # Remove deprecated qhull headers
 rm -r %{buildroot}%{_includedir}/libqhull
@@ -152,12 +151,15 @@ rm -r %{buildroot}%{_includedir}/libqhull
 %files -n qhull_r-devel
 %{_includedir}/libqhull_r/
 %{_libdir}/libqhull_r.so
-%{_libdir}/cmake/Qhull
+%dir %{_libdir}/cmake/Qhull
+%{_libdir}/cmake/Qhull/QhullConfig*.cmake
+%{_libdir}/cmake/Qhull/QhullTargetsShared*.cmake
 %{_libdir}/pkgconfig/qhull_r.pc
 
 %files -n qhullcpp-devel-static
 %{_includedir}/libqhullcpp/
 %{_libdir}/libqhullcpp.a
 %{_libdir}/pkgconfig/qhullcpp.pc
+%{_libdir}/cmake/Qhull/QhullTargetsCpp*.cmake
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package python-mypy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define types_psutil_version 6.0.0.20241011
 %define types_setuptools_version 75.1.0.20241014
 Name:           python-mypy
-Version:        1.12.0
+Version:        1.14.1
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -47,7 +47,7 @@ Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-typing_extensions >= 3.10
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       mypy = %{version}
 Obsoletes:      mypy < %{version}

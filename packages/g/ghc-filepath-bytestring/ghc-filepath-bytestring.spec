@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-filepath-bytestring
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.2.0.0
+Version:        1.5.2.0.2
 Release:        0
 Summary:        Library for manipulating RawFilePaths in a cross platform way
 License:        BSD-3-Clause
@@ -92,7 +92,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver base '< 4.20' '< 5'
 
 %build
 %ghc_lib_build

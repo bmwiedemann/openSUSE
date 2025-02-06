@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:53:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.24.0 (jsc#PED-10260):
+  * Bad file descriptor usage now generates a real error with
+    --track-fds=yes that is suppressible and shows up in the
+    xml output with full execution backtrace. The warnings
+    shown without using the option are deprecated and will be
+    removed in a future valgrind version.
+  * Ada name demangling is now supported in error messages.
+- Bugs fixed:
+  * 202770  open fd at exit --log-socket=127.0.0.1:1500 with
+    --track-fds=yes
+  * 276780  An instruction in fftw (Fast Fourier Transform) is
+    unhandled by valgrind: vex x86->IR: unhandled instruction bytes:
+    0x66 0xF 0x3A 0x2
+  * 311655  --log-file=FILE leads to apparent fd leak
+  * 317127  Fedora18/x86_64 --sanity-level=3 : aspacem segment
+    mismatch
+  * 337388  fcntl works on Valgrind's own file descriptors
+  * 377966  arm64 unhandled instruction dc zva392146  aarch64:
+    unhandled instruction 0xD5380001 (MRS rT, midr_el1)
+  * 391148  Unhandled AVX instruction vmovq %xmm9,%xmm1
+  * 392146  aarch64: unhandled instruction 0xD5380001 (MRS rT,
+    midr_el1)
+  * 412377  SIGILL on cache flushes on arm64
+  * 417572  vex amd64->IR: unhandled instruction bytes: 0xC5 0x79
+    0xD6 0xED 0xC5
+  * 440180  s390x: Failed assertion in disassembler
+  * 444781  MIPS: wrong syscall numbers used
+  * 447989  Support Armv8.2 SHA-512 instructions
+  * 445235  Java/Ada/D demangling is probably broken
+  * 453044  gbserver_tests failures in aarch64
+  * 479661  Valgrind leaks file descriptors
+  * 486180  [Valgrind][MIPS] 'VexGuestArchState' has no member
+    named 'guest_IP_AT_SYSCALL'
+  * 486293  memccpy false positives
+  * 486569  linux inotify_init syscall wrapper missing POST entry
+    in syscall_table
+  * 487439  SIGILL in JDK11, JDK17
+  * 487993  Alignment error when using Eigen with Valgrind and
+    -m32
+  * 488026  Use of `sizeof` instead of `strlen
+  * 488379  --track-fds=yes errors that cannot be suppressed with
+    --xml-file=
+  * 488441  Add tests for --track-fds=yes --xml=yes and fd
+    suppression tests
+  * 489040  massif trace change to show the location increasing
+    the stack
+  * 489088  Valgrind throws unhandled instruction bytes: 0xC5
+    0x79 0xD6 0xE0 0xC5
+  * 489338  arm64: Instruction fcvtas should round 322.5 to 323,
+    but result is 322.
+  * 489676  vgdb handle EINTR and EAGAIN more consistently
+  * 490651  Stop using -flto-partition=one
+  * 491394  (vgModuleLocal_addDiCfSI): Assertion
+    'di->fsm.have_rx_map &&
+  *         di->fsm.rw_map_count' failed
+  * 492210  False positive on x86/amd64 with ZF taken directly
+    from addition
+  * 492214  statx(fd, NULL, AT_EMPTY_PATH) is supported since
+    Linux 6.11
+  *         but not supported in valgrind
+  * 492422  Please support DRM_IOCTL_SYNCOBJ_HANDLE_TO_FD
+  * 492663  Valgrind ignores debug info for some binaries
+  * 493418  Add bad fd usage errors for --track-fds in
+    ML_(fd_allowed)
+  * 493454  Missing FUSE_COMPATIBLE_MAY_BLOCK markers
+  * 493507  direct readlink syscall from PRE handler is
+            incompatible with FUSE_COMPATIBLE_MAY_BLOCK
+  * 493959  s390x: Fix regtest failure for none/tests/s390x/op00
+  * 493970  s390x: Store/restore FPC upon helper call causes
+            slowdown
+  * 494252  s390x: incorrect disassembly for LOCHI and friends
+  * 494960  Fixes and tweaks for gsl19test
+  * 495278  PowerPC instruction dcbf should allow the L field
+            values of 4, 6 on ISA 3.0 and earlier, just ignore
+            the value
+  * 495469  aligned_alloc and posix_memalign missing MALLOC_TRACE
+            with returned pointer
+  * 495470  s390x: 3.24.0.RC1 missing file and regtest failure
+- parallel-lto.patch: drop, obsolete
+
+-------------------------------------------------------------------
 Sun Apr 28 15:47:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.23.0 (jsc#PED-10260):

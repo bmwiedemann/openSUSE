@@ -132,4 +132,16 @@
 - Update manpage to version 3.2.4</comment>
     <requestid>1237388</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>57c7d79d26ac5dc1e156fcc2be55090c</srcmd5>
+    <version>3.2.4</version>
+    <time>1738163442</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1239284 from mcalabkova
+
+- Drop unneeded build dependencies
+  * upstream [dev] section is not needed for us
+- Rewrite %{python_sitelib} in %files to respect %primary_python</comment>
+    <requestid>1240895</requestid>
+  </revision>
 </revisionlist>

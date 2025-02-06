@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 26 15:03:59 UTC 2025 - Mariusz Laczak <mruz@poczta.onet.pl>
+
+- Ice 1.11.0
+ * PHP 7.4, dropp support
+ * PHP 8.3 and PHP 8.4, add support #314
+ * Update zephir parser to 1.7.0
+ * Update zephir-lang/zephir@c79b710
+
+-------------------------------------------------------------------
 Thu Aug 29 19:47:25 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build with GCC14

@@ -209,4 +209,16 @@
     <comment>- Update to release 2.3.0</comment>
     <requestid>1219223</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>97a9c9f97956caa6938663e339a0a7b7</srcmd5>
+    <version>2.3.0</version>
+    <time>1737389652</time>
+    <user>anag+factory</user>
+    <comment>- Added optimzation flags to Cmake
+- Santitized thired party folder
+  * Deleted bechmarking folders
+  * Renamed conflicting license files
+  * Switced to system libcpuinfo</comment>
+    <requestid>1238706</requestid>
+  </revision>
 </revisionlist>

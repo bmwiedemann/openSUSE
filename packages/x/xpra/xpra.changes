@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Tue Jan 14 15:09:46 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20250114.17113d02:
+  * #4472 never write bytecode in installer path
+  * #4472 don't zip up 'asyncio' and 'certifi'
+  * apt can't handle ORing package names
+  * derp: this module does not exist
+  * #4449 use setting-change message for ibus layouts
+  * stronger type hints
+  * avoid logging loop when LOG_PACKET_TYPE is enabled
+  * show what we exclude and why
+  * never include any modules in the exclude list
+  * convert remaining toggle_modules to use toggle_packages
+  * avoid 'command not found' warnings when probing with 'rpmspec'
+  * simplify: just always build all the client packages
+  * we should always be able to build pyglet and tk clients
+  * don't build python modules for default python
+  * remove debug logging
+  * #4449 add dependencies
+  * convert ValueError to ImportError, makes more sense
+  * #4449 expose dbus layouts in system tray
+  * more consistent packet handler naming
+  * looser type hint fixes cythonized strict mode error
+  * always refresh when xshape changes
+  * cosmetic
+  * simplify
+  * record delay after using the last one
+  * avoid damage storms: switch to full frames earlier
+  * log time in milliseconds
+  * rate limit the xshape queries
+  * simplify: always call progress()
+  * #4446 avoid using rgb encoding for xshape windows
+  * also save the raw rgb data
+  * add save-to-file support to argb encoder
+  * 'algo' logged was always set to 'not'
+  * add specific debug flag for argb encoder
+  * make it possible to locate other pages
+  * simplify
+  * #4309 normalize smooth scroll wheel values on macos
+  * #3060 0 and 1 are not refresh rates but special values
+  * better patching of the vfb command's geometry
+  * packaging for pyglet and tk backends
+  * #4469 add PoC tk client
+  * #4467 PoC test pyglet client
+  * add 'set' alias for 'setting'
+  * fixup fcb734ab6cf8b98225fb2871addd4393e89619e2
+  * add type hints
+  * don't lower video quality for 'text' content type
+  * #4397 avoid subsampled or downscaled video options for quality=100
+  * #4397 really avoid scaled and subsampled video when quality=100
+  * extract save_video_frame function
+  * use a new invite for the discord channel
+  * #4456 more links to new 'xvfb' feature
+  * #4461 refer to the new subcommands
+  * handle missing argument more gracefully
+  * typo
+  * replace __import__ with importlib
+  * fix erroneously inverted condition
+  * #4461 add type validation and 'unset' subcommand
+  * #4461 add 'setting' subcommand for modifying config
+  * #4459 simplify and refactor
+  * #4459 remote selections should default to 'ALL'
+  * #4459 'ALL_CLIPBOARDS' should not use platform specific values
+  * move parsing and validation to utility function
+  * clipboard refactoring, cleanup and type hints
+  * remove outdated message: we have clipboard support for Wayland using the Gtk backend
+  * #4432 remember the last start dialog selection
+  * doh: auto-refresh-delay is stored as a float
+  * make config access more generic: add filename argument
+  * ignore pointless warning
+  * add debug logging
+  * we may need to initialize X11 to use the bindings
+  * move generic config access functions out of gtk module
+  * #3735 honour the refresh rate with gstreamer
+  * #3735 update batch config with refresh rate
+  * #3735 allow slightly higher refresh rate
+  * add type hints / stronger type
+  * make it easier to debug substitution issues
+  * must escape '%' as it is used for substitutions
+  * #3735 support specifying refresh-rate as a range
+  * missed API update in scaling via libyuv
+  * add type hint
+  * remove unused var
+  * simplify: run examples via main script
+  * derp: only convert booleans to yes/no strings
+  * derp: should have been moved with 712f82fc29fbe8dd3ec37643a1b0c0e4cca7760c
+  * #4456 add 'xvfb' subcommand for starting a standalone vfb
+  * make it easier to show the xvfb command
+  * derp: fixup 49b33c44cd04fd5d90aa4ac4f10d19619ce10529
+  * #4458 handle yet another NM API error
+  * specify the display on the command line
+  * no need to support older python versions here
+  * #4457 block numpy import if not needed
+  * fix packaging of gnome-shell extension
+  * #4450 add wayland code to wait for display
+  * #4456 support simple aliases for xvfb command option
+  * avoid more warnings running rpmspec without PYTHON3 installed
+  * #4384 move screen init to init_randr()
+  * #4384 tell the screen model if it can be resized
+  * #4384 don't set default resolution here
+  * #4454 we need .xpm support for some xdg menu entries
+  * don't print CC / CPP until we need to use it
+  * derp: also revert share path
+  * undo most of the latest setuptools workarounds
+  * prefer setuptools on Python 3.12
+  * unbreak unittests
+  * also use our own code of /bin
+  * handle etc prefix correctly when we handle datafiles ourselves
+  * #4282 workaround newer versions of setuptools
+  * avoid warnings when probing with rpmspec
+  * remove old address
+  * #4455 remove copyright end years
+  * hide 'configure shadow server' on light builds
+  * 'configure' subcommand does not need network init
+  * avoid warnings when probing with rpmspec
+  * more type hints
+  * remove spurious whitespace
+  * delay import
+  * #4454 fixup eecb02cf11372b33e93083185d30b455f0d93878
+  * #4454 prevent pillow from loading plugins we don't need
+  * add type hints
+  * we patch numpy out, so no need to have it as a build dep
+  * don't duplicate the method, use an alias
+  * derp: unclosed %if
+  * pillow 11.1.0
+  * derp: typo
+  * fix 'exe' subcommand: missing argument
+  * remove another unused variable
+  * silence linter warning: unused attribute
+  * silence linter warning by adding debug statement
+  * simplify
+  * #4282 also build pyopengl for centos stream10
+  * #4282 build pyopengl
+  * match refactoring in 47b0b95c014fbfc063163b04b6ec37b56bb9ff3c
+  * also update callers
+  * move icon patching to the function
+  * add type hints, stronger types
+  * move python related function where it belongs
+  * delay import
+  * find glob icon from desktop entry attributes
+  * 'apps' is a category, not a name to match
+  * use correct type for function
+  * #4282 add package list for AlmaLinux 10-kitten
+  * fix bogus date
+  * bump release no
+  * correct license tag
+  * #4282 replace 'noopenh264'
+  * #4450 add example to config
+  * Fix a tiny typo
+  * #4282 use the same package list as 'development' version
+  * simplify
+  * #4450 add debug logging
+  * #4282 don't try to build dummy driver on RHEL10
+  * we build the qt6 client on RHEL 10
+  * #4282 use weston + Xwayland as Xvfb on RHEL 10
+  * #4450 add wrapper that immitates Xvfb using weston + Xwayland
+  * log all error details using 'error' level
+  * #4445 and 'keyboard-model' option
+  * #4445 and env var overrides for xkb defaults
+  * #3618 ensure the quic headers are validated
+  * simplify: the clones have diverged
+  * #4449 fix debug logging
+  * add debug logging to websocket close events
+  * prevent division by zero errors
+  * don't queue empty websocket payloads, but do log a warning
+  * add type hints
+  * #4442 fix manifest creation
+  * handle challenge validation errors more gracefully
+  * #4314 add test xpra-client-qt6 deb package
+  * #4442 Fix manifest and embed it
+  * Fix language issues of ir and ku layouts.py
+  * don't transfer portal stuff
+  * simplify: remove alias used once
+  * move generic code to a re-usable location
+  * cosmetic: constify + type hints
+  * #4441 re-claim the clipboard selection whenever we get a token
+  * #4441 always emit a token on 'owner-changed'
+  * #4383 incomplete installations can throw a 'AttributeError'
+  * include version in 'id' info
+  * prettify + indicate next step
+  * help users configure RHEL dev-env systems
+  * cosmetic: add gap in output between light and std builds
+  * no need to hex the salt
+
+-------------------------------------------------------------------
 Wed Dec 11 15:57:23 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.3.0+git20241211.e4692fa2:

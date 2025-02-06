@@ -1,7 +1,7 @@
 #
 # spec file for package afl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ Source:         https://github.com/AFLplusplus/AFLplusplus/archive/v%{version}.t
 Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
 BuildRequires:  gcc-c++
-BuildRequires:  (clang < 16 or clang15)
+BuildRequires:  (clang >= 17)
 %ifarch x86_64
 BuildRequires:  gcc-32bit
 %endif
@@ -45,8 +45,8 @@ BuildRequires:  gcc-32bit
 BuildRequires:  gcc-devel
 %endif
 BuildRequires:  lld
+BuildRequires:  llvm-devel >= 17
 BuildRequires:  python3-devel
-BuildRequires:  ((llvm-devel >= 11.0.0 with llvm-devel < 16) or llvm15-devel)
 Requires:       lld
 
 %package devel

@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-microos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -621,7 +621,6 @@ Requires:       breeze6-wallpapers
 Requires:       dolphin
 Requires:       kde-print-manager
 Requires:       kgamma6
-Requires:       kwrited6
 Requires:       phonon-vlc-qt6
 Requires:       plasma6-nm
 
@@ -770,6 +769,9 @@ Group:          Metapackages
 Provides:       pattern-category() = MicroOS
 %ifnarch s390 s390x
 Requires:       kernel-default-base
+%endif
+%ifarch %ix86 x86_64 %x86_64
+Requires:       grub2-i386-efi
 %endif
 Provides:       pattern() = microos_alt_onlyDVD
 Provides:       pattern-icon() = pattern-generic

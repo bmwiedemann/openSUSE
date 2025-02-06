@@ -1,4 +1,28 @@
 --------------------------------------------------------------------
+Fri Jan 24 17:03:35 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#190
+- re-add --refresh option (bsc#1236393)
+- update tests
+- 1.24
+
+--------------------------------------------------------------------
+Mon Jan 20 18:39:00 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#189
+- make update-bootloader an alias for pbl and re-add still in-use
+  legacy options (bsc#1235320)
+- update tests
+- 1.23
+
+--------------------------------------------------------------------
+Mon Jan 20 11:39:02 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#188
+- really enforce bash everywhere now (bsc#1231018)
+- 1.22
+
+--------------------------------------------------------------------
 Tue Dec 3 12:23:38 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#185

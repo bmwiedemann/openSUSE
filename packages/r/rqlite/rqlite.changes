@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jan 28 06:52:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.10:
+  * Further consistent use of HTTP client in rqlite shell
+
+-------------------------------------------------------------------
+Mon Jan 27 20:48:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.9:
+  * Use configured HTTP client consistently in rqlite shell
+
+-------------------------------------------------------------------
+Thu Jan 23 20:08:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.8:
+  * Fix CLI panic when no hosts are available
+  * Preupdate hook complex data testing
+  * Support preupdate hook for row ID values only
+  * Further improvements to preupdate hook code
+  * Improve preupdate hook stats and error handling
+  * Basic preupdate hook support at DB level
+- add bash completions
+
+-------------------------------------------------------------------
+Mon Jan 20 00:32:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.6:
+  * Recover from any panic during SQL parsing
+  * Optimize need-to-parse logic
+
+-------------------------------------------------------------------
 Sun Jan 12 09:50:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.36.5:

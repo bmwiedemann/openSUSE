@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 10:07:57 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Bump BuildRequires to llvm >= 17
+  - This fixes afl-clang-fast and afl-clang-lto on Tumbleweed (boo#1236169)
+
+-------------------------------------------------------------------
 Tue Dec  3 14:59:59 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.30c

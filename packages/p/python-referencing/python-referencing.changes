@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jan 25 16:17:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.2:
+  * Release using the newer twine release to preserve PEP 639
+    license metadata.
+
+-------------------------------------------------------------------
+Fri Jan 17 08:15:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.1:
+  * Add a lower pin on typing-extensions for the version we depend
+    on.
+
+-------------------------------------------------------------------
+Fri Jan 17 06:59:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.0:
+  * Declare support for Python 3.13.
+
+-------------------------------------------------------------------
 Thu May 02 06:16:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.35.1:

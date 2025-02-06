@@ -74,4 +74,12 @@
 - Add typing-extensions to BuildRequires.</comment>
     <requestid>1193583</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d058345978d183715238f81e388a1249</srcmd5>
+    <version>1.4.2</version>
+    <time>1738072803</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240808</requestid>
+  </revision>
 </revisionlist>

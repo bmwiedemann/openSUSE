@@ -7,4 +7,12 @@
     <comment>new package python-tree-sitter, optional runtime dependency of and required by tests in python-textual</comment>
     <requestid>1227995</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f7d9716ac271744fb3e86ab8e0d304a5</srcmd5>
+    <version>0.24.0</version>
+    <time>1738072790</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240757</requestid>
+  </revision>
 </revisionlist>

@@ -4,8 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  encodeoffbyone.diff: 
+patches:
+  use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch: -p1 PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=149108
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

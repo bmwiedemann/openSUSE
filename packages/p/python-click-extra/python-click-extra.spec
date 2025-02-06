@@ -19,14 +19,12 @@
 %define module_name click-extra
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        4.11.7
+Version:        4.13.2
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/click-extra
 Source:         https://github.com/kdeldycke/click-extra/archive/v%{version}.tar.gz#/%{module_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/kdeldycke/click-extra/commit/ab9cff085aefff5787a2c9c7def8e71c9d3ed379 Fix 8.1.8 tests
-Patch:          click818.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -35,9 +33,9 @@ BuildRequires:  %{python_module wheel}
 # https://github.com/kdeldycke/click-extra/blob/v4.8.3/pyproject.toml#L67
 BuildRequires:  %{python_module PyYAML >= 6.0.0}
 BuildRequires:  %{python_module boltons >= 24.1.0}
-BuildRequires:  %{python_module click >= 8.1.4}
+BuildRequires:  %{python_module click >= 8.1.8}
 BuildRequires:  %{python_module cloup >= 3.0.5}
-BuildRequires:  %{python_module extra-platforms >= 1.6.0}
+BuildRequires:  %{python_module extra-platforms >= 2.0.0}
 BuildRequires:  %{python_module mergedeep >= 1.3.4}
 BuildRequires:  %{python_module requests >= 2.32.3}
 BuildRequires:  %{python_module tabulate >= 0.9}
@@ -89,9 +87,7 @@ BuildArch:      noarch
 
 %check
 # remove coverage configuration
-sed -i '/cov=/d' pyproject.toml
-sed -i '/cov-report=/d' pyproject.toml
-sed -i '/cov-config=pyproject.toml/d' pyproject.toml
+sed -i '/--cov.*",/d' pyproject.toml
 # ignore test that requires network connectivity
 %pytest -k 'not (test_ansi_lexers_candidates)'
 

@@ -1,11 +1,12 @@
 diff -U 3 -dHrN -- a/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake b/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake
 --- a/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake	2024-01-31 12:33:17.000000000 +0100
 +++ b/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake	2024-02-07 18:49:46.121815912 +0100
-@@ -302,6 +302,7 @@
+@@ -302,6 +302,8 @@
        /usr/share/libdcmtk18
        /usr/share/libdcmtk19
        /usr/share/libdcmtk20
 +      /usr/share/dcmtk-3.6.8      
++      /usr/share/dcmtk-3.6.9
        /usr/local/share/dcmtk
        /usr/local/share/dcmtk-3.6.8
        )

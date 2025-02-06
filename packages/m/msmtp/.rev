@@ -533,4 +533,12 @@ update to version 1.8.24</comment>
     <comment></comment>
     <requestid>1225958</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>2e79d1a507a6fca3731fc3e02e9812c5</srcmd5>
+    <version>1.8.28</version>
+    <time>1737730055</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1240149</requestid>
+  </revision>
 </revisionlist>

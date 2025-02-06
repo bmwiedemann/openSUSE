@@ -1,7 +1,7 @@
 #
 # spec file for package unison
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 
 %define     pkg unison
 Name:           %pkg%nsuffix
-Version:        2.53.5
+Version:        2.53.7
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://github.com/bcpierce00/unison
@@ -60,8 +60,9 @@ replica to the other.
 
 %package text
 Summary:        File synchronization tool
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
+
 %description text
 Text based userinterface for Unison.
 

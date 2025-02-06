@@ -1126,4 +1126,52 @@
 - use %python_build and %python_install for 15</comment>
     <requestid>1223912</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>3fe86e02971ea3bb0ffd65e5fb81f1da</srcmd5>
+    <version>2.13.5</version>
+    <time>1737490192</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.13.5:
+  * Regressions:
+    - xmlIO: Fix reading from non-regular files like pipes
+    - xmlreader: Fix return value of xmlTextReaderReadString
+    - parser: Fix loading of parameter entities in external DTDs
+    - parser: Fix downstream code that swaps DTDs
+    - parser: Fix detection of duplicate attributes
+    - string: Fix va_copy fallback
+  * Bug fixes:
+    - xpath: Fix parsing of non-ASCII names
+- Update to 2.13.4:
+  * Regressions:
+    - parser: Make unsupported encodings an error in declarations
+    - io: don't set the executable bit when creating files
+    - xmlcatalog: Improved fix for #699
+    - Revert &quot;catalog: Fetch XML catalog before dumping&quot;
+    - io: Add missing calls to xmlInitParser
+    - tree: Restore return value of xmlNodeListGetString with NULL list
+    - parser: Fix error handling after reaching limit
+    - parser: Make xmlParseChunk return an error if parser was stopped
+  * Bug fixes:
+    - python: Fix SAX driver with character streams
+  * Improvements:
+    - xpath: Make recursion check work with xmlXPathCompile
+    - parser: Report at least one fatal error
+- Update to 2.13.3:
+  * Security:
+    - [bsc#1234812, CVE-2024-40896] Fix XXE protection in downstream code
+  * Regressions:
+    - autotools: Use AC_CHECK_DECL to check for getentropy (forwarded request 1238553 from pmonrealgonzalez)</comment>
+    <requestid>1238933</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>7b7ccb4c1409101f4771220dd0f93abd</srcmd5>
+    <version>2.13.5</version>
+    <time>1738335735</time>
+    <user>anag+factory</user>
+    <comment>- fix decompression from stdin [bsc#1236346]
+- added patches
+  fix https://gitlab.gnome.org/nwellnhof/libxml2/-/commit/6208f86edd59e31a51a8d9b300d428504adb25a7
+  + libxml2-support-compressed-input-from-stdin.patch</comment>
+    <requestid>1241297</requestid>
+  </revision>
 </revisionlist>

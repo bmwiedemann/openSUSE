@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 22 21:09:00 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.620.0 (0.62)
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+
+  0.62	- 2025-01-13, H.Merijn Brand
+      * doc should not be part of test
+
+  0.61	- 2025-01-13, H.Merijn Brand
+      * Replace "use vars" with "our" (James Raspass: PR #9)
+      * Specify recommended versions based on known CVE's
+      * Update doc for groff-1.24
+      * It's 2024
+      * Tested with perl-5.40.0
+      * It's 2025
+      * Add SECURITY.md
+
+-------------------------------------------------------------------
 Sat Jan  7 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.60

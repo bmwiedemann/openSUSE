@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 30 16:25:58 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to version 1.40:
+  * ext-idle-notify: Allow for the ignoring of idle inhibitors
+- Update to version 1.39:
+  * This release contains two new protocols:
+    - ext-data-control
+    - ext-workspace
+
+-------------------------------------------------------------------
 Sat Oct 12 14:09:31 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update to version 1.38:

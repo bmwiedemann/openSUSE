@@ -466,4 +466,12 @@ Reduce dependencies from 260MiB to 14MiB.
   * Additional integrations will now be activated automatically if</comment>
     <requestid>1225980</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>507a7a54cd41548110c4f986415867cf</srcmd5>
+    <version>2.20.0</version>
+    <time>1738007554</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240306</requestid>
+  </revision>
 </revisionlist>

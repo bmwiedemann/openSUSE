@@ -54,4 +54,19 @@
   + Update name for dist directory in %files section (forwarded request 1164684 from glaubitz)</comment>
     <requestid>1165081</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9a5be6914a2508a95cab77c2c5e7dc1f</srcmd5>
+    <version>1.0.1</version>
+    <time>1737490268</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1239199 from glaubitz)</comment>
+    <requestid>1239283</requestid>
+  </revision>
 </revisionlist>

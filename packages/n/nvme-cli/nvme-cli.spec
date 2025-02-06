@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,6 +111,7 @@ rm %{buildroot}%{_sysconfdir}/dracut/dracut.conf.d/70-nvmf-autoconnect.conf
 # for subpackage nvme-cli-regress-script:
 install -m 744 -D scripts/regress %{buildroot}%{_sbindir}/nvme-regress
 
+%if 0%{?suse_version} < 1600
 mkdir -p %{buildroot}%{_sbindir}
 pushd %{buildroot}%{_sbindir}
 ln -s service rcnvmefc-boot-connections
@@ -118,6 +119,7 @@ ln -s service rcnvmf-autoconnect
 ln -s service rcnvmf-connect
 ln -s service rcnvmf-connect-nbft
 popd
+%endif
 
 %define services nvmefc-boot-connections.service nvmf-autoconnect.service nvmf-connect.target nvmf-connect-nbft.service
 
@@ -154,10 +156,12 @@ fi
 %license LICENSE
 %doc README.md
 %{_sbindir}/nvme
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcnvmefc-boot-connections
 %{_sbindir}/rcnvmf-autoconnect
 %{_sbindir}/rcnvmf-connect
 %{_sbindir}/rcnvmf-connect-nbft
+%endif
 %{_mandir}/man1/nvme*.1*%{?ext_man}
 %{_udevrulesdir}/65-persistent-net-nbft.rules
 %{_udevrulesdir}/70-nvmf-keys.rules

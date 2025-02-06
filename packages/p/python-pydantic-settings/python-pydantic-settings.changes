@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Jan 28 02:23:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.7.1:
+  * Move preferred alias resolution to private method
+  * Fix test_protected_namespace_defaults with -Wdefault
+  * Make tests more robust to the running environment
+  * Fix rendering of annotations in code example
+  * Fix alias resolution for default settings source.
+  * Use the class name in the __repr__ implementations
+  * Fix default help text for union of submodels.
+  * Add support for CliMutuallyExclusiveGroup.
+  * Disable abbreviations on internal parser.
+  * Fix Secret field parsing
+  * Fix alias resolution to use preferred key.
+  * Strip annotated when getting submodels during CLI parsing.
+  * Removing return type from the function in test
+  * Relax default protected_namespaces
+  * Add support for CLI kebab case flag.
+  * Change reference of default values validation in documentation
+  * Improve field value parsing by adding NoDecode and ForceDecode
+    annotations
+  * Fix attribute error on Python 3.9 with typing.Sequence
+  * Add Python 3.13 support
+  * Adding support for populate_by_name
+  * Refactor path_type_label
+  * Fix nested model field with alias parsing
+  * Fix PathType typing in case of sequence
+  * Add cli_ignore_unknown_args config option.
+  * Fix AzureKeyVaultSettingsSource problem in case of field with underscore
+  * Add cli_flag_prefix_char config option.
+  * Fix nested model AliasChoices in validation alias
+  * Add CLI App Support
+  * Fix a regression in dotenv optional nested field
+  * Put tests for non-default sources in separate files
+  * Update nested model partial update docs example.
+  * Add support for suppressing fields from CLI help.
+  * Fix bug in dotenv source when there is env with and without prefix
+  * Fix a bug in nested vanila dataclass
+  * CLI Improve Docstring Help Text
+  * Cli fix default or none object help text
+  * Determine RootModel complexity from root type
+  * Add CLI bool flags
+  * CLI arg list whitespaces fix.
+  * Add nested_model_default_partial_update flag and DefaultSettingsSource
+  * Parse enum fixes.
+  * Fixes CLI help text for function types
+  * Add get_subcommand function.
+  * Cli prefix validation alias fix
+  * CLI ignore external parser list fix
+  * Enable multiple secrets dirs
+  * Add CLI subcommand union and alias support
+  * Fix dotenv settings source problem in handling extra variables with
+    same prefix in name
+- Drop patch clear-environment.patch, fixed by upstream in a different way.
+- Add patch fix-settings-dump.patch:
+  * Support changes introduced by Pydantic 2.10.
+
+-------------------------------------------------------------------
 Mon Oct 28 09:52:17 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove azure BuildRequires

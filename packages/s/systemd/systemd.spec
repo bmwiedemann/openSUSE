@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package systemd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,10 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    256.10
+%define systemd_version    257.2
 %define systemd_release    0
-%define archive_version    +suse.13.gf962392e1e
+%define archive_version    %{nil}
 %endif
-
-%define systemd_major      %{sub %systemd_version 1 3}
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir  %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -182,7 +180,7 @@ Provides:       systemd-analyze = %{version}-%{release}
 Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
 Obsoletes:      systemd-analyze < 201
-Source0:        systemd-v%{version}%{archive_version}.tar.xz
+Source0:        systemd-%{version}%{archive_version}.tar.xz
 Source1:        systemd-rpmlintrc
 Source3:        systemd-update-helper
 %if %{with sysvcompat}
@@ -216,30 +214,35 @@ Source213:      files.devel-doc
 # All changes backported from upstream are tracked by the git repository, which
 # can be found at:  https://github.com/openSUSE/systemd.
 #
-# Patches listed below are openSUSE specific ones and should be kept at its
-# minimum. We try hard to push our changes to upstream but sometimes they are
-# only relevant for SUSE distros. Special rewards for those who will manage to
-# get rid of one of them !
+# The patches listed below are specific to openSUSE and should be kept to a
+# minimum.  We strive to push our changes upstream, but sometimes they are only
+# relevant for SUSE distributions. Special rewards for those who manage to
+# eliminate any of them!
 #
+# Upstream CI builds run from latest upstream main, and as such patches will not
+# apply due to fuzz, so skip all of them. Ensure all patches are always listed
+# inside the following if block.
+#
+%if %{without upstream}
 Patch:          0001-Drop-support-for-efivar-SystemdOptions.patch
 %if %{with sysvcompat}
 Patch:          0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 %endif
-
-%if %{without upstream}
 Patch:          0009-pid1-handle-console-specificities-weirdness-for-s390.patch
-# Patches listed below are put in quarantine. Normally all changes must go to
-# upstream first and then are cherry-picked in the SUSE git repository. But for
-# very few cases, some stuff might be broken in upstream and need to be fixed or
-# worked around quickly. In these cases, the patches are added temporarily and
-# will be removed as soon as a proper fix will be merged by upstream.
+# The patches listed below are in quarantine. Normally, all changes must be
+# pushed to upstream first and then cherry-picked into the SUSE git
+# repository. However, in few cases, some issues might take too much time to be
+# solved by upstream. In these cases, these patches are temporarily added here
+# and will be removed as soon as a proper fix is merged by upstream.
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
-Patch:          5004-disable-session-freeze.patch
-Patch:          5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
-Patch:          5006-tpm2-util-Also-retry-unsealing-after-policy_pcr-retu.patch
 %endif
+
+# When building on OBS with version substitution, the version field will be updated, but not the intermediary
+# defines, so define systemd_major here after Version has been set, rather than using systemd_version, which
+# will be empty (and thus break files.systemd which uses it)
+%define systemd_major      %{sub %version 1 3}
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -341,7 +344,7 @@ Requires:       group(lp)
 Requires(pre):  group(kvm)
 Requires(post): sed
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 # 'regenerate_initrd_post' macro is expanded during build, hence this BR.
 BuildRequires:  suse-module-tools
 %if %{without bootstrap}
@@ -616,7 +619,6 @@ Requires:       libcap-progs
 Requires:       lz4
 Requires:       make
 Requires:       mtools
-Requires:       netcat
 Requires:       python3-pexpect
 Requires:       qemu
 Requires:       quota
@@ -729,12 +731,15 @@ for the C APIs.
 %endif
 
 %prep
-%autosetup -p1 -n systemd-v%{version}%{archive_version}
+%autosetup -p1 -n systemd-%{version}%{archive_version}
 
 %build
 %meson \
         -Dmode=release \
         -Dversion-tag=%{version}%{archive_version} \
+%if %{with upstream}
+        -Dshared-lib-tag=%{systemd_major} \
+%endif
         -Ddocdir=%{_docdir}/systemd \
         -Dconfigfiledir=/usr/lib \
         -Dsplit-bin=true \
@@ -749,6 +754,7 @@ for the C APIs.
         -Ddefault-kill-user-processes=false \
         -Dpamconfdir=no \
         -Dpamlibdir=%{_pam_moduledir} \
+        -Dshellprofiledir=%{_distconfdir}/profile.d \
         -Dxinitrcdir=%{xinitconfdir}/xinitrc.d \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
@@ -876,6 +882,11 @@ for the C APIs.
 %if %{with sd_boot}
 %ifarch x86_64
 export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootx64.efi"
+%endif
+%if %{with upstream}
+%ifarch aarch64
+export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootaa64.efi"
+%endif
 %endif
 %endif
 
@@ -1425,7 +1436,7 @@ fi
 
 %if %{with testsuite}
 %files testsuite
-%doc %{_testsuitedir}/integration-tests/README.testsuite
+%doc %{_testsuitedir}/integration-tests/README.*
 %{_testsuitedir}
 %endif
 

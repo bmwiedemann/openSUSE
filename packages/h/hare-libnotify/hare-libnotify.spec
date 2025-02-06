@@ -1,7 +1,7 @@
 #
 # spec file for package hare-libnotify
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global haredir  %{_usrsrc}/hare
 
@@ -31,10 +32,11 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
 BuildArch:      noarch
 Recommends:     notification-daemon
+# harec cannot produce PIE compatible code
+#!BuildIgnore:  gcc-PIE
 
 %description
 An attempt to create Hare bindings for libnotify.
-
 
 %prep
 %autosetup

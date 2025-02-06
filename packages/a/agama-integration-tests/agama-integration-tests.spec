@@ -1,7 +1,7 @@
 #
 # spec file for package agama-integration-tests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,53 +19,46 @@
 Name:           agama-integration-tests
 Version:        0
 Release:        0
-Summary:        Support for running Agama integration tests
+Summary:        Example Agama integration tests
 License:        GPL-2.0-or-later
-URL:            https://github.com/openSUSE/agama
+URL:            https://github.com/agama-project/agama-integration-tests
 # source_validator insists that if obscpio has no version then
 # tarball must neither
-Source0:        agama.tar
+Source0:        agama-integration-tests.tar
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
 BuildArch:      noarch
-BuildRequires:  fdupes
 BuildRequires:  local-npm-registry
+BuildRequires:  nodejs-devel
 Requires:       nodejs(engine) >= 18
 
 %description
-This package provides infrastructure and tooling needed to run the Agama
-integration tests. It includes the Puppeteer framework with all dependencies.
-
-The package includes only one example test, the real tests should be added from
+This package provides only few example integration tests, the real tests should be added from
 outside.
 
+All needed NPM dependencies are bundled into the tests themselves, there are no external
+dependencies.
+
 %prep
-%autosetup -p1 -n agama
+%autosetup -p1 -n agama-integration-tests
 
 %build
 rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --omit=optional --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 
-# node_modules cleanup
-%{_builddir}/agama/node-prune.sh
+# The --ignore-scripts option disables all NPM preinstall/postinstall scripts. It skips possible
+# rebuilds of the binary plugins in the dependent "bufferutil" and "utf-8-validate" NPM packages.
+# For some reason the rebuilds fail in OBS. But Webpack does not use the binaries in the final
+# bundle anyway (and the code falls back to a native JavaScript implementation) so we can disable
+# the rebuild scripts and then the package builds fine in OBS.
+local-npm-registry %{_sourcedir} install --ignore-scripts --with=dev || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 
-# extra cleanup for the Puppeteer NPM packages
-%{_builddir}/agama/node-puppeteer-prune.sh
+ESLINT=0 npm run build
 
 %install
 install -D -d -m 0755 %{buildroot}%{_datadir}/agama/integration-tests
-cp -aR node_modules %{buildroot}%{_datadir}/agama/integration-tests
-cp -aR %{_builddir}/agama/tests %{buildroot}%{_datadir}/agama/integration-tests
-cp -a %{_builddir}/agama/package.json %{buildroot}%{_datadir}/agama/integration-tests
-install -D -d -m 0755 %{buildroot}%{_bindir}
-cp -a %{_builddir}/agama/agama-integration-tests %{buildroot}%{_bindir}
-
-rm %{buildroot}%{_datadir}/agama/integration-tests/node_modules/.package-lock.json
-
-# symlink duplicate files
-%fdupes -s %{buildroot}/%{_datadir}/agama/integration-tests
+cp -aR %{_builddir}/agama-integration-tests/dist/* %{buildroot}%{_datadir}/agama/integration-tests
 
 %files
 %defattr(-,root,root,-)
@@ -73,6 +66,5 @@ rm %{buildroot}%{_datadir}/agama/integration-tests/node_modules/.package-lock.js
 %license LICENSE
 %dir %{_datadir}/agama
 %{_datadir}/agama/integration-tests
-%attr(0755,root,root) %{_bindir}/agama-integration-tests
 
 %changelog

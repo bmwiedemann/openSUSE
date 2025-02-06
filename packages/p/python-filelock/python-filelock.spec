@@ -1,7 +1,7 @@
 #
 # spec file for package python-filelock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-filelock%{?pkg_suffix}
-Version:        3.16.1
+Version:        3.17.0
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense

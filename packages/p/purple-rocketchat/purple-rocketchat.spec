@@ -1,7 +1,7 @@
 #
 # spec file for package purple-rocketchat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,6 @@ RocketChat protocol plugin for libpurple-based applications.
 %package -n pidgin-plugin-%{_name}
 Summary:        RocketChat protocol plugin for Pidgin
 Requires:       libpurple-plugin-%{_name} = %{version}
-%requires_ge    pidgin
 Supplements:    (libpurple-plugin-%{_name} and pidgin)
 BuildArch:      noarch
 

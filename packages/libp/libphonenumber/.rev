@@ -78,4 +78,17 @@
 - Use mode=&quot;manual&quot; in _service (forwarded request 1185721 from favogt)</comment>
     <requestid>1185722</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9bc2f2035916e5b4a83161159216ea10</srcmd5>
+    <version>8.13.53</version>
+    <time>1738072717</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.13.53:
+  * Fixed a bug where the extension was appended twice in
+    formatOutOfCountryKeepingAlphaChars in the Java version and
+    updated FormatOutOfCountryKeepingAlphaChars in the C++ version
+    to format the extension.
+  * Updated metadata (forwarded request 1240579 from favogt)</comment>
+    <requestid>1240580</requestid>
+  </revision>
 </revisionlist>

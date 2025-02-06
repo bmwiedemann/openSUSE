@@ -1,7 +1,7 @@
 #
 # spec file for package libargtable2
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,11 +25,12 @@ Name:           libargtable2
 Version:        2.13
 Release:        0
 Summary:        ANSI C Command line parser library
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://argtable.sourceforge.net/
+URL:            http://argtable.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name1}/%{version}/%{name2}-%{oversion}.tar.gz
 Patch0:         %{name}-Makefile.in.patch
+Patch1:         implicit-declaration.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -43,7 +44,7 @@ minimum of fuss. It enables a program's command line syntax to be defined in the
 source code as an array of argtable structs. The command line is then parsed
 according to that specification and the resulting values are returned in those same
 structs where they are accessible to the main program. Both tagged (-v, --verbose,
---foo=bar) and untagged arguments are supported, as are multiple instances of each 
+--foo=bar) and untagged arguments are supported, as are multiple instances of each
 argument. Syntax error handling is automatic and the library also provides the means
 for generating a textual description of the command line syntax.
 

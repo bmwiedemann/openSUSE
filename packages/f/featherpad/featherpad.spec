@@ -1,7 +1,7 @@
 #
 # spec file for package featherpad
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           featherpad
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
-Summary:        Qt5-based plaintext editor
+Summary:        Qt-based plaintext editor
 License:        GPL-3.0-only
 Group:          Productivity/Text/Editors
 URL:            https://github.com/tsujan/FeatherPad
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(x11)
 
 %description
-FeatherPad is a Qt5-based plain-text editor. It is independent of any desktop environment and has:
+FeatherPad is a plain-text editor. It is independent of any desktop environment and has:
 * Drag-and-drop support, including tab detachment and attachment;
 * X11 virtual desktop awareness (using tabs on current desktop but opening a new window on another);
 * An optional permanent search bar with a different search entry for each tab;

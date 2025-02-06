@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 30 08:46:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python-setuptools: Mandatory when building against
+  Python 3.13.
+
+-------------------------------------------------------------------
 Wed Nov 20 15:03:51 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.9

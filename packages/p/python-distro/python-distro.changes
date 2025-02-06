@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 24 12:35:25 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1235785
+
+-------------------------------------------------------------------
 Fri Feb 23 00:52:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup macro. 

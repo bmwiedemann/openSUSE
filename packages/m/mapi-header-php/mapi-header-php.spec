@@ -1,7 +1,7 @@
 #
 # spec file for package mapi-header-php
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define _empty_manifest_terminate_build 0
 
 Name:           mapi-header-php
-Version:        1.4.0.db15bd0
+Version:        1.5
 Release:        0
 Summary:        Common PHP MAPI header files for grommunio
 License:        AGPL-3.0-or-later
 Group:          Productivity/Networking/Email/Servers
 URL:            https://grommunio.com/
 #Git-Clone:     https://github.com/grommunio/mapi-header-php
-Source:         %name-%version.tar.xz
+Source:         https://github.com/grommunio/mapi-header-php/archive/refs/tags/%version.tar.gz
 BuildArch:      noarch
 
 %description
@@ -34,7 +34,7 @@ PHP files shared between grommunio-web, grommunio-sync and other PHP
 applications from the groupware suite.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 

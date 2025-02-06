@@ -55,6 +55,12 @@ Patch14:       cloud-init-usr-sudoers.patch
 Patch15:       cloud-init-skip-rename.patch
 # FIXME https://github.com/canonical/cloud-init/pull/5947
 Patch16:       cloud-init-wait-for-net.patch
+# FIXME https://github.com/canonical/cloud-init/pull/4392
+Patch17:       pep-594-drop-pipes.patch
+# FIXME https://github.com/canonical/cloud-init/pull/4669
+Patch18:       cloud-init-fix-python313.patch
+# FIXME https://github.com/canonical/cloud-init/pull/5052
+Patch19:       cloud-init-dont-assume-ordering-of-ThreadPoolExecutor.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -169,6 +175,9 @@ Documentation and examples for cloud-init tools
 %patch -P 14
 %patch -P 15
 %patch -P 16
+%patch -p1 -P 17
+%patch -p1 -P 18
+%patch -p1 -P 19
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)

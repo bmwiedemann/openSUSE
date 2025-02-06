@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 29 09:16:09 UTC 2025 - varkoly@suse.com
+
+- Update to version 4.16.0+git.1738070632.02141bfa:
+  * fence_azure_arm: use azure-identity instead of msrestazure, which has been deprecated (#603)
+
+-------------------------------------------------------------------
+Mon Jan 27 16:41:35 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Remove not supported agents:
+  compute, docker, ldom, openstack, rhevm, xenapi
+
+-------------------------------------------------------------------
+Wed Jan 22 10:59:17 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- ERROR: stonith:fence_sbd: got no meta-data, does this RA exist?
+  (bsc#1236184)
+  Build package without azurei-arm to be able to submit to SLE16
+  until azure-arm stop use deprecated python packages
+
+-------------------------------------------------------------------
+Wed Jan 22 10:58:23 UTC 2025 - varkoly@suse.com
+
+- Update to version 4.16.0+git.1735891853.256a570a:
+  * fence_sbd: get devices from SBD_DEVICE env variable if devices parameter isnt set (#591)
+  * fence_raritan_px3: fix syntax warnings
+
+-------------------------------------------------------------------
 Tue Nov 19 10:48:42 UTC 2024 - varkoly@suse.com
 
 - Update to version 4.15.0+git.1731052905.05fd299e:

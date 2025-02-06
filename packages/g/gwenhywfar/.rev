@@ -963,4 +963,20 @@
     <comment></comment>
     <requestid>1226106</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>4ec5849e86d8686c5a23910486d8abfa</srcmd5>
+    <version>5.12.0</version>
+    <time>1737490227</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239117</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>f34e7e8ee70a626353eb54169a4ea2f8</srcmd5>
+    <version>5.12.0</version>
+    <time>1737828826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240285</requestid>
+  </revision>
 </revisionlist>

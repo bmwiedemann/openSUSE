@@ -354,4 +354,18 @@
     <comment>- Drop dependency on fwnndev, fwnn is dead and unmaintained. (forwarded request 1186336 from anag+factory)</comment>
     <requestid>1186380</requestid>
   </revision>
+  <revision rev="48" vrev="16">
+    <srcmd5>fbb9345cb60a09e83885f41f22ec8624</srcmd5>
+    <version>20130822</version>
+    <time>1738072804</time>
+    <user>anag+factory</user>
+    <comment>- Rename packages-cvs-sumo-2002-09-19-comint.patch to
+  packages-cvs-sumo-2002-09-19-comint.nopatch
+
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.</comment>
+    <requestid>1240809</requestid>
+  </revision>
 </revisionlist>

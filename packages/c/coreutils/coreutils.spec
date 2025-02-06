@@ -1,7 +1,7 @@
 #
 # spec file for package coreutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.5
+Version:        9.6
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -64,8 +64,10 @@ Patch501:       coreutils-test_without_valgrind.patch
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
-# Upstream gnulib patch for coreutils-9.5.
-Patch920:       coreutils-fix-gnulib-time_r-tests.patch
+# Upstream coreutils patch right after the release was done:
+#   `ls -Z dir` would crash. [bug introduced in coreutils-9.6]
+#   see <https://lists.gnu.org/r/coreutils/2025-01/msg00054.html>
+Patch920:       coreutils-9.6-ls-Z-crash-fix.patch
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  hostname
@@ -167,7 +169,7 @@ This package contains the documentation for the GNU Core Utilities.
 
 %patch -P 810
 %patch -P 900
-%patch -P 920
+%patch -P 920 -p1
 
 # ================================================
 %build

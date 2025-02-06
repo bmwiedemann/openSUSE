@@ -394,4 +394,16 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
 - enable ruby3.4 support</comment>
     <requestid>1233482</requestid>
   </revision>
+  <revision rev="37" vrev="26">
+    <srcmd5>841d7a37c3a1d365e40622c7f3a6b603</srcmd5>
+    <version>0.10.1</version>
+    <time>1738163374</time>
+    <user>anag+factory</user>
+    <comment>- add new gem2rpm.yml setting to have the runtime deps as
+  buildrequires:
+  :runtime_deps_as_buildrequires: true
+  disabled by default
+  implements https://github.com/openSUSE/gem2rpm/issues/20</comment>
+    <requestid>1241127</requestid>
+  </revision>
 </revisionlist>

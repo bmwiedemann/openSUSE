@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:07:12 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.6
+  * use addon factory v2
+  * do not include keysymgen.h
+
+-------------------------------------------------------------------
 Sat Jan 11 11:38:03 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - fix leap 15.6 build

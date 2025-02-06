@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:46:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop kwrited, only worked with utmp
+
+-------------------------------------------------------------------
 Thu Oct 17 17:56:09 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add Requires: plasma6-workspace-wallpapers to better follow

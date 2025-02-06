@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-io
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name  io
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0

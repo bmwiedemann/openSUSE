@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 12:27:34 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Enable JSON output plugin in separate subpackage
+
+-------------------------------------------------------------------
 Wed Nov  2 12:29:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.8

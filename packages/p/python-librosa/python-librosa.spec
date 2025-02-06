@@ -79,7 +79,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module resampy >= 0.2.2}
 BuildRequires:  %{python_module samplerate}
-BuildRequires:  ffmpeg-5
+BuildRequires:  ffmpeg-4
 # /SECTION
 %python_subpackages
 

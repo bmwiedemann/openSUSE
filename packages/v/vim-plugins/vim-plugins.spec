@@ -1,7 +1,7 @@
 #
 # spec file for package vim-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define align_version		37.43
 %define a_version		2.18
 %define bats_version    0.10.0
-%define bufexplorer_version	7.4.26
+%define bufexplorer_version	7.4.27
 %define calendar_version	2.5
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
@@ -42,7 +42,7 @@
 %define multiplesearch_version	1.3
 %define neomutt_version		20220612
 %define NERDcommenter_version	2.7.0
-%define NERDtree_version	7.1.0
+%define NERDtree_version	7.1.3
 %define project_version		1.4.1
 %define quilt_version		0.9.7
 %define rails_version		5.2
@@ -763,6 +763,10 @@ chmod -v 644 taglist-%{taglist_version}/doc/taglist.txt
 # BEGIN EXCLUDES
 cat > ale-%{ale_version}/.rsync-filter <<EOF
 - /supported-tools.md
+EOF
+
+cat > bufexplorer-%{bufexplorer_version}/.rsync-filter <<EOF
+- /how_to_release.txt
 EOF
 
 cat > editorconfig-vim-%{editorconfig_version}/.rsync-filter <<EOF

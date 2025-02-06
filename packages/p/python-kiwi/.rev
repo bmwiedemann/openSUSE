@@ -2758,4 +2758,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1233432</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>01994acdf35af68a823f3095c76521fa</srcmd5>
+    <version>10.2.8</version>
+    <time>1738072711</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.2.7 → 10.2.8
+
+- Increase size for agama integration test build
+  Agama needs more space to build now
+
+- Fixed agama integration test
+  rubygem-byebug and rubygem-agama-yast seems to
+  no longer exist
+
+- Update TW integration tests
+  Package nscd was dropped from TW
+
+- Fix documentation regarding URI styles
+  In reference to commit 760a65558f9e2e91d3eaa3a2f9503ff596984b48
+  the support for iso:// URI types was dropped some time ago.
+  However, the documentation was not properly updated. This
+  commit fixes it
+
+- Fix return value of grub helper methods
+  The grub helper methods to find grub tools returns a
+  None value if the tool cannot be found. This None value
+  could be used later in a Command call where it will be
+  used in a join() command to log the resulting commandline.
+  This join() call then fails and raises an unhandled error
+  causing a stack trace in the application. This commit
+  fixes it
+
+- Added disk validation for duplicate installs
+  Installing the same image to different storage disks on the
+  same machine creates device conflicts with unexpected side</comment>
+    <requestid>1240498</requestid>
+  </revision>
 </revisionlist>

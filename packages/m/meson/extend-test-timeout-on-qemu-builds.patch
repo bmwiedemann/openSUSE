@@ -1,10 +1,12 @@
-Index: b/data/macros.meson
+Index: meson-1.7.0/data/macros.meson
 ===================================================================
---- a/data/macros.meson
-+++ b/data/macros.meson
-@@ -42,4 +42,5 @@
+--- meson-1.7.0.orig/data/macros.meson
++++ meson-1.7.0/data/macros.meson
+@@ -44,6 +44,7 @@
          -C %{_vpath_builddir} \
          --num-processes %{_smp_build_ncpus} \
          --print-errorlogs \
 +        %{?qemu_user_space_build: -t 10} \
          %{nil}}
+ 
+ # Declarative buildsystem, requires RPM 4.20+ to work

@@ -7,4 +7,16 @@
     <comment>New package</comment>
     <requestid>1042396</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8750005a0d4f8518006077f115022c55</srcmd5>
+    <version>1.0</version>
+    <time>1737490250</time>
+    <user>anag+factory</user>
+    <comment>- Require dnsmasq and sysconfig: the script explicitly targets
+  integration between NetworkManager and dnsmasq, so it makes sense
+  to require both components. Additionally, sysconfig is used to
+  detect if the configuration is done properly for this
+  (boo#1236047). (forwarded request 1239179 from dimstar)</comment>
+    <requestid>1239210</requestid>
+  </revision>
 </revisionlist>

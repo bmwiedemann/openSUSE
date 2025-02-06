@@ -4194,4 +4194,30 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1232880</requestid>
   </revision>
+  <revision rev="284" vrev="2">
+    <srcmd5>a2dd9d0edceac53bcc2f96b61730e6a7</srcmd5>
+    <version>9.2.0</version>
+    <time>1737651445</time>
+    <user>anag+factory</user>
+    <comment>- CPU model for new IBM Z HW (jsc#PED-10266):
+  * s390x/cpumodel: gen17 model
+  * s390x/cpumodel: Add PLO-extension facility
+  * s390x/cpumodel: correct PLO feature wording
+  * s390x/cpumodel: Add Sequential-Instruction-Fetching facility
+  * s390x/cpumodel: add Ineffective-nonconstrained-transaction facility
+  * s390x/cpumodel: add Vector-Packed-Decimal-Enhancement facility 3
+  * s390x/cpumodel: add Miscellaneous-Instruction-Extensions Facility 4
+  * s390x/cpumodel: add Vector Enhancements facility 3
+  * s390x/cpumodel: add Concurrent-functions facility support
+  * linux-headers: Update to Linux 6.13-rc1
+  * s390x/cpumodel: Add ptff Query Time-Stamp Event (QTSE) support
+  * s390x/cpumodel: add msa13 subfunctions
+  * s390x/cpumodel: add msa12 changes
+  * s390x/cpumodel: add msa11 subfunctions
+  * s390x/cpumodel: add msa10 subfunctions
+- Build properly with the latest version of Sphinx:
+  * [openSUSE][RPM] Fix the build with the latest Sphinx
+</comment>
+    <requestid>1239873</requestid>
+  </revision>
 </revisionlist>

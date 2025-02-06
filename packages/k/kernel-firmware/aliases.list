@@ -3497,6 +3497,8 @@ qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp0-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp0-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp1-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp1-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sar2130p-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sar2130p-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pas

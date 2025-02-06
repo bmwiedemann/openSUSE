@@ -1,7 +1,7 @@
 #
 # spec file for package xsimd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source0:        https://github.com/xtensor-stack/xsimd/archive/refs/tags/%{versi
 Patch0:         0001-Fix-xsimd-available_architectures-.has-for-sve-and-r.patch
 Patch1:         0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch
 BuildRequires:  %{python_module breathe}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen

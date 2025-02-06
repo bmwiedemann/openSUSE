@@ -77,4 +77,12 @@ Upstream doesn't have a solution yet, but I'll follow the issue there...
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1095260</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23599dba719a49f0561fda11d2ef6d13</srcmd5>
+    <version>0.18.0</version>
+    <time>1737389701</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238974</requestid>
+  </revision>
 </revisionlist>

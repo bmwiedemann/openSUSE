@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 20 21:06:57 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Test suite: tablib extras need to be installed explicitly
+- Add python-django-tables2-tests-noxls.patch
+  * Remove xlwt related tests
+- Build PEP517
+- Find lang
+
+-------------------------------------------------------------------
 Thu Oct 31 13:46:43 UTC 2024 - pgajdos@suse.com
 
 - does not require python-fudge for build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:21:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.10
+  * Don't fail when glibc is not found
+
+-------------------------------------------------------------------
 Fri Sep 27 05:05:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.9:

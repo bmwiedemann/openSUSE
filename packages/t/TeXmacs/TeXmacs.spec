@@ -1,7 +1,7 @@
 #
 # spec file for package TeXmacs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 8/2011 - now  open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2009 - 7/2011 Sascha Manns <saigkill@opensuse.org>
 #
@@ -25,8 +25,12 @@ Summary:        A Structured WYSIWYG Scientific Text Editor
 License:        GPL-3.0-or-later
 URL:            https://www.texmacs.org/
 Source:         %{name}-%{version}.tar.gz
+Patch1:         Reproducibility.patch
 BuildRequires:  fdupes
+BuildRequires:  fontpackages-devel
+BuildRequires:  libtool-ltdl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  png++-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(Qt5Core)
@@ -34,7 +38,17 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(guile-1.8)
+BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xaw7)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xmu)
+BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xt)
 
 %description
 GNU TeXmacs is a free scientific text editor, inspired by TeX and GNU
@@ -69,7 +83,7 @@ extension language, so that you may customize the interface and write
 your own extensions to the editor.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 ARCH_FLAGS="`echo %{optflags} | sed -e 's|-Werror=return-type||g'`"
@@ -104,8 +118,15 @@ install -m 0644 TeXmacs/misc/mime/texmacs.xml %{buildroot}%{_datadir}/mime/packa
 %{_datadir}/applications/*.desktop
 %{_datadir}/mime/packages/texmacs.xml
 %dir %{_datadir}/TeXmacs
-%{_libexecdir}/TeXmacs/bin/*
-%{_libexecdir}/TeXmacs/
+%dir %{_libexecdir}/TeXmacs
+%dir %{_libexecdir}/TeXmacs/bin
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%dir %{_datadir}/icons/hicolor/scalable/mimetypes
+%dir %{_datadir}/icons/hicolor/*x*/
+%dir %{_datadir}/icons/hicolor/*x*/apps
+%dir %{_datadir}/icons/hicolor/*x*/mimetypes
 %{_libexecdir}/TeXmacs/bin
 %{_datadir}/TeXmacs/fonts
 %{_datadir}/TeXmacs/langs
@@ -114,6 +135,5 @@ install -m 0644 TeXmacs/misc/mime/texmacs.xml %{buildroot}%{_datadir}/mime/packa
 %{_datadir}/TeXmacs/plugins
 %{_datadir}/TeXmacs/progs
 %{_datadir}/TeXmacs/styles
-%{_datadir}/icons/hicolor
 
 %changelog

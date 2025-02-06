@@ -70,7 +70,7 @@ Tue Jan  9 16:12:57 UTC 2024 - Martin Wilck <mwilck@suse.com>
   * del 0003-tlshd-add-delay-configuration-parameter.patch
 
 -------------------------------------------------------------------
-Wed 16 Aug 2023 08:21:59 PM CEST - Hannes Reinecke <hare@suse.de>
+Wed Aug 16 20:21:59 CEST 2023 - Hannes Reinecke <hare@suse.de>
 
 - Reshuffle patches to match upstream submission:
   * Remove 0001-netlink-de-constify-nla_policy
@@ -81,7 +81,7 @@ Wed 16 Aug 2023 08:21:59 PM CEST - Hannes Reinecke <hare@suse.de>
   * Add 0003-tlshd-add-delay-configuration-parameter.patch
 
 -------------------------------------------------------------------
-Wed 16 Aug 2023 07:55:46 AM CEST - Hannes Reinecke <hare@suse.de>
+Wed Aug 16 07:55:46 CEST 2023 - Hannes Reinecke <hare@suse.de>
 
 - Add patch to exercise handshake timeout
   * 0001-Add-tlshd_delay-configuration-option.patch
@@ -89,7 +89,7 @@ Wed 16 Aug 2023 07:55:46 AM CEST - Hannes Reinecke <hare@suse.de>
   * 0001-Check-for-gnutls_get_system_config_file.patch
 
 -------------------------------------------------------------------
-Sat 01 Jul 2023 10:40:46 AM CEST - Hannes Reinecke <hare@suse.de>
+Sat Jul 01 10:40:46 CEST 2023 - Hannes Reinecke <hare@suse.de>
 
 - Add patch for older libnl versions
   + 0001-netlink-de-constify-nla_policy.patch
@@ -97,7 +97,7 @@ Sat 01 Jul 2023 10:40:46 AM CEST - Hannes Reinecke <hare@suse.de>
   + 0001-tlshd-fix-max-config-file-size-comparison.patch
 
 -------------------------------------------------------------------
-Fri 30 Jun 2023 12:58:27 PM CEST - Hannes Reinecke <hare@suse.de>
+Fri Jun 30 12:58:27 CEST 2023 - Hannes Reinecke <hare@suse.de>
 
 - Initial package, version 0.9
 

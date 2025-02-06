@@ -162,4 +162,12 @@
     <comment></comment>
     <requestid>1092151</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>28e8b2ab83af06394e68bca70f3353c0</srcmd5>
+    <version>2.0.0</version>
+    <time>1737389671</time>
+    <user>anag+factory</user>
+    <comment>- Drop unneeded Requires on six.</comment>
+    <requestid>1238875</requestid>
+  </revision>
 </revisionlist>

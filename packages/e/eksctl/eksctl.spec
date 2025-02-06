@@ -1,7 +1,7 @@
 #
 # spec file for package eksctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           eksctl
-Version:        0.198.0
+Version:        0.202.0
 Release:        0
 Summary:        The official CLI for Amazon EKS
 License:        Apache-2.0

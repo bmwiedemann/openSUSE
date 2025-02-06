@@ -69,8 +69,8 @@
 #       bar
 #     :post: |-
 #       /bin/echo foo
-# :preamble: |-
-#    %define rb_build_versions     %{my_apps_rb_build_versions}
-#    %define rb_build_ruby_abis    %{my_apps_rb_build_abi}
+#:preamble: |-
+#   %define rb_build_versions     %{my_apps_rb_build_versions}
+#   %define rb_build_ruby_abis    %{my_apps_rb_build_abi}
 :disable_docs: true
 :version_suffix: '-8.0'

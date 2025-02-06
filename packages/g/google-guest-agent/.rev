@@ -550,4 +550,12 @@
   * network: Restore Debian 12 netplan configuration. (#433) (forwarded request 1217002 from glaubitz)</comment>
     <requestid>1217007</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>96b8cd46ec82383a1d968049b64321ec</srcmd5>
+    <version>20241209.01</version>
+    <time>1737490222</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1239111</requestid>
+  </revision>
 </revisionlist>

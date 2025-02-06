@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.18.1
+Version:        2.18.2
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later

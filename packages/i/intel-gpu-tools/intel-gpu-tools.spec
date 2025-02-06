@@ -44,7 +44,8 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdrm_intel) >= 2.4.82
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libkmod)
-BuildRequires:  pkgconfig(liboping)
+# This is only for tests
+#BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
@@ -79,9 +80,7 @@ Development files and library headers for %{name}
 %autosetup -n igt-gpu-tools-%{version} -p1
 
 %build
-# Tests fail on x86_64 with -z now
-# https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/102
-%meson -Dc_link_args="-z lazy"
+%meson -Doping="disabled"
 %meson_build
 # build documentation
 ninja -C %{_vpath_builddir} igt-gpu-tools-doc

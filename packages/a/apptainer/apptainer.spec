@@ -33,7 +33,8 @@ Obsoletes:      singularity <= 3.8.5
 Conflicts:      singularity
 Conflicts:      singularity-ce
 Conflicts:      singularity-runtime
-Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
+#Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
+Source0:        apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
 Source2:        SUSE.def
 Source3:        SLE-15SP5.def

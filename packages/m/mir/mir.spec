@@ -36,7 +36,7 @@
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.19.2
+Version:        2.19.3
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -44,6 +44,8 @@ URL:            https://mir-server.io
 Source:         https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 0001-Fix-include-paths.patch
 Patch0:         0001-Fix-include-paths.patch
+# PATCH-FIX-OPENSUSE 0002-remove-use-of-env-to-call-bash.patch
+Patch1:         0002-remove-use-of-env-to-call-bash.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -157,10 +159,8 @@ Component library of the Mir compositing stack
 %package -n libmirserver%{mirserversover}
 Summary:        Mir server library
 License:        GPL-2.0-only OR GPL-3.0-only
-Requires:       libmirevdev%{mirevdevsover} = %{version}
-Requires:       libmirserverplatform%{mirserverplatformsover} = %{version}
-Conflicts:      libmirserver61 <= %{version}
-Obsoletes:      libmirserver61 <= %{version}
+Requires:       libmirserverplatform%{mirserverplatformsover}
+Requires:       libmirevdev%{mirevdevsover}
 
 %description -n libmirserver%{mirserversover}
 Component library of the Mir compositing stack
@@ -175,8 +175,6 @@ Component library of the Mir compositing stack
 %package -n libmirserverplatform%{mirserverplatformsover}
 Summary:        Mir Server Platform Library
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Conflicts:      libmirserver61 <= %{version}
-Obsoletes:      libmirserver61 <= %{version}
 
 %description -n libmirserverplatform%{mirserverplatformsover}
 Component library of the Mir server platform
@@ -184,8 +182,6 @@ Component library of the Mir server platform
 %package -n libmirevdev%{mirevdevsover}
 Summary:        Evdev support for Mir
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Conflicts:      libmirserver61 <= %{version}
-Obsoletes:      libmirserver61 <= %{version}
 
 %description -n libmirevdev%{mirevdevsover}
 evdev support library for the Mir server platform
@@ -205,6 +201,7 @@ This package provides tools for testing Mir
 %package demos
 Summary:        Demonstration applications using Mir
 License:        GPL-2.0-only OR GPL-3.0-only
+Requires:       bash
 Requires:       gnu-free-fonts
 Requires:       hicolor-icon-theme
 Requires:       inotify-tools

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 29 06:59:56 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.7
+  * Use addon factory v2
+  * Do not include keysymgen.h
+
+-------------------------------------------------------------------
 Sat Jan 11 07:46:18 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - remove dropped Requires: chewing-utils

@@ -1,7 +1,7 @@
 #
 # spec file for package python-acme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define libname acme
 Name:           python-%{libname}
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -27,12 +27,14 @@ URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 3.2.1}
 BuildRequires:  %{python_module josepy >= 1.13.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 17.5.0}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2019.3}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 3.2.1
@@ -55,10 +57,10 @@ Python library implementing the Automatic Certificate Management Environment
 %setup -q -n %{libname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # remove duplicates
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{libname}
 
@@ -69,6 +71,6 @@ Python library implementing the Automatic Certificate Management Environment
 %license LICENSE.txt
 %pycache_only %{python_sitelib}/%{libname}/__pycache__
 %{python_sitelib}/%{libname}
-%{python_sitelib}/%{libname}-%{version}*.egg-info
+%{python_sitelib}/%{libname}-%{version}*info
 
 %changelog

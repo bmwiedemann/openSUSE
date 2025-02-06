@@ -219,4 +219,12 @@ http://lists.opensuse.org/opensuse-factory/2014-10/msg00153.html</comment>
     <comment>- update to version 0.5.2 (forwarded request 1185447 from dsterba)</comment>
     <requestid>1185448</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>ca297b74441244f9a50b32f757a3c6f2</srcmd5>
+    <version>0.5.2</version>
+    <time>1737651710</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239622</requestid>
+  </revision>
 </revisionlist>

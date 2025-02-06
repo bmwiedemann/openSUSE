@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-poppler
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 LISA GmbH ,Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,28 +17,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-python-poppler
-Version:        0.2.2
+Version:        0.4.1
 Release:        0
 Summary:        Python binding to the poppler-cpp library
 License:        GPL-2.0-only
-Group:          Development/Libraries/Python
 URL:            https://github.com/cbrunet/python-poppler
-Source:         python-poppler-%{version}.tar.xz
-Patch:          use-system-pybind11.patch
-Patch1:         fix-image-argb.patch
-BuildRequires:  %{python_module devel}
+Source:         https://github.com/cbrunet/python-poppler/archive/refs/tags/v%{version}.tar.gz#/python-poppler-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE Build against system pybind11
+Patch0:         use-system-pybind11.patch
+# PATCH-FIX-UPSTREAM gh#cbrunet/python-poppler#92
+Patch1:         support-poppler-25.01.patch
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  ninja
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3
 BuildRequires:  pkgconfig(poppler)
 # some tests require this
 BuildRequires:  poppler-data
@@ -58,25 +58,23 @@ to:
 
 %prep
 %autosetup -p1 -n python-poppler-%version
-sed -i -e "s/-j2/%{?_smp_mflags}/" setup.py
+rm -rf subprojects
 
 %build
 export CXXFLAGS="%{optflags}"
-%python_build --debug
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# gh#cbrunet/python-poppler#39
-donttest="test_get_pdf_version_of_locked_document"
-%pytest_arch tests -k "not ($donttest)"
+%pytest_arch tests
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
 %{python_sitearch}/poppler
-%{python_sitearch}/python_poppler-%{version}*-info
+%{python_sitearch}/python_poppler-%{version}.dist-info
 
 %changelog

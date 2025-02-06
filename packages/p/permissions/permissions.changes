@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 09:00:54 UTC 2025 - wolfgang.frisch@suse.com
+
+- Update to version 1699_20250120:
+  * profiles: whitelist nvidia-modprobe (bsc#1230950)
+
+-------------------------------------------------------------------
 Tue Oct 29 15:11:37 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 1699_20241029:

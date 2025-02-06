@@ -1815,4 +1815,13 @@
     <comment></comment>
     <requestid>1220464</requestid>
   </revision>
+  <revision rev="184" vrev="45">
+    <srcmd5>3bcf61ed0ee932bb4d7ceae98418372d</srcmd5>
+    <version>unknown</version>
+    <time>1738335732</time>
+    <user>anag+factory</user>
+    <comment>- Require system-user-nobody for nfs-client as the statd user relies
+  on `nogroup` from this package (forwarded request 1229984 from firstyear)</comment>
+    <requestid>1229985</requestid>
+  </revision>
 </revisionlist>

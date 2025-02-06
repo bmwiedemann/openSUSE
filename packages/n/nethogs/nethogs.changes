@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec 10 11:40:19 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.8.8
+  * Fix that on ubuntu 20.04, the current version of the code does not compile as a python package by @molysgaard in #224
+  * Add -std=c++14 for application build by @msbit in #228
+  * Hide cursor during initialization and restore at exit by @zevweiss in #231
+  * Capabilities for reading process names by @qouoq in #233
+  * Additional useful capabilities by @qouoq in #234
+  * Add -std=c++14 for application build by @NeilZhy in #236
+  * Use s instead of sec for units of seconds by @a1346054 in #242
+  * Add Arch Linux instructions to README.md by @orhun in #250
+  * Fix wrong extern declaration of pidsToWatch by @sgtcortez in #251
+  * fix get_devlen function from being pointless by @DiedByDisgust in #255
+  * fix python bindings by @AndreasGocht in #258
+  * Report only changes of send and received data by @AndreasGocht in #260
+  * Clarify units by @hramrach in #262
+  * fix an copy-and-paste error in the bindings by @AndreasGocht in #263
+  * Report pcap stas by @AndreasGocht in #264
+  * Fix nethogsmonitor_loop_devices_py to accept more than one device by @AndreasGocht in #267
+  * allow the library to enable UDP recording by @AndreasGocht in #269
+  * Add meson buildsystem by @lleon95 in #275
+  * determineVersion.sh: prevent traversing into outer git repo for git-describe call by @BubuOT in #279
+
+-------------------------------------------------------------------
 Sun Apr 10 13:37:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.7:

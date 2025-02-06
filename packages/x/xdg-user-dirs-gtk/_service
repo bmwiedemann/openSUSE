@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/xdg-user-dirs-gtk.git</param>
     <param name="scm">git</param>
-    <param name="revision">7f84944fb8f00091e223cfce81c5bb349a3ea7de</param>
+    <param name="revision">0.14</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 10:30:33 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Drop kwrited, only worked with utmp
+- Add grub2-i386-efi to the DVD (boo#1226727)
+
+-------------------------------------------------------------------
 Wed Oct 23 16:28:24 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove outdated tftpboot-installation package

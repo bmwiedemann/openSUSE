@@ -246,4 +246,16 @@
     <comment></comment>
     <requestid>1205597</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>28c1b8b8338939eee958b5015aadb910</srcmd5>
+    <version>3.8</version>
+    <time>1737490261</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8:
+  * This is a bugfix release for which no seperate release notes were
+    published. The previous release notes still apply:
+    https://wiki.freepascal.org/Lazarus_3.0_release_notes
+</comment>
+    <requestid>1239255</requestid>
+  </revision>
 </revisionlist>

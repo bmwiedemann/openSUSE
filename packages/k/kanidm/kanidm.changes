@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 23 23:42:52 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.4.6~git0.3ce4e0f:
+  * Release 1.4.6
+  * Small UI updates. (#3361)
+  * Allow modification of password minimum length (#3345)
+  * Ignore anonymous in oauth2 read allow access (#3336)
+  * Resolve passkey regression (#3343)
+  * Renaming "TOTP" in the login flow (#3338)
+  * cookies don't clear unless you set domain (#3332)
+
+-------------------------------------------------------------------
 Sat Dec 21 07:57:16 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.4.5~git0.a7fabde:

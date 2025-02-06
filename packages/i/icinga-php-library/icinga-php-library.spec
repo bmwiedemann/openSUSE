@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global module_name icinga-php-library
 %global basedir %{_datadir}/icinga-php/ipl
 Name:           %{module_name}
-Version:        0.13.0
+Version:        0.14.1
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Library for Icinga Web 2
 License:        MIT

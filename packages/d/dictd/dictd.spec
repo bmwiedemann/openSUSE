@@ -107,6 +107,11 @@ database_exit
 
 EOF
 
+cat <<EOF >%{buildroot}/%{_sysconfdir}/dict.conf
+# This is an example, you should define your own servers
+server dict.org
+EOF
+
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/dictd.service
 
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdictd
@@ -151,6 +156,7 @@ chmod 644 %{_localstatedir}/log/dictd
 %attr(0644,root,root) %{_unitdir}/dictd.service
 %config(noreplace) %{_sysconfdir}/colorit.conf
 %config(noreplace) %{_sysconfdir}/dictd.conf
+%config(noreplace) %{_sysconfdir}/dict.conf
 
 %files devel
 %license COPYING

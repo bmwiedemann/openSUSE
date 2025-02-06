@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-WebTest
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT

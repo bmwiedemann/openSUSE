@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 17:55:14 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.14
+ * spec: add dependency on ethtool
+
+-------------------------------------------------------------------
 Mon Jan  6 16:56:36 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.13

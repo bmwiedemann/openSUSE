@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 29 08:48:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add new gem2rpm.yml setting to have the runtime deps as
+  buildrequires:
+
+  :runtime_deps_as_buildrequires: true
+
+  disabled by default
+
+  implements https://github.com/openSUSE/gem2rpm/issues/20
+
+-------------------------------------------------------------------
 Fri Dec 27 04:49:23 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update filelist for the final 3.4.0 api_version

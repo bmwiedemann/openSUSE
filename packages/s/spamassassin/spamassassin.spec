@@ -1,7 +1,7 @@
 #
 # spec file for package spamassassin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %bcond_without test
 
-%define ix_version 4.00
 %define spd_version 2.61
 %define sa_version 4.0.1
 %define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
 %define perl_float %(echo %{perl_version} | awk -F. '{ printf "%d.%03d", $1, $2 }')
 %define rules_revision 1916528
 
-%define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}
 
 Name:           spamassassin
@@ -37,7 +35,6 @@ Group:          Productivity/Networking/Email/Utilities
 URL:            https://spamassassin.apache.org/
 Source0:        https://downloads.apache.org/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2
 Source1:        https://downloads.apache.org/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz
-Source2:        https://mailfud.org/iXhash2/%{IXHASH}.tar.gz
 Source3:        https://github.com/mpaperno/spampd/archive/%{spd_version}.tar.gz#/%{SPAMPD}.tar.gz
 Source10:       local.cf
 Source11:       README.SUSE
@@ -57,8 +54,6 @@ Patch1:         patch-PgSQL
 Patch2:         patch-URIDNSBL
 Patch6:         bnc#582111.diff
 Patch7:         basic-lint-without-sandbox.patch
-# PATCH-FIX-OPENSUSE adapt ixHash config to RPM package
-Patch10:        iXhash2-meta-rules.patch
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 # optional, but want them for build (test)
@@ -200,35 +195,13 @@ This package contains the perl modules for the spamassassin, including
 the filter rules. This package is required for the package
 "spamassassin", the commandline tool.
 
-%package -n perl-Mail-SpamAssassin-Plugin-iXhash2
-Version:        %{ix_version}
-Release:        0
-Summary:        The iXhash plugin for SpamAssassin
-Group:          Development/Libraries/Perl
-Requires:       perl(Digest::MD5)
-Requires:       perl(Mail::SpamAssassin) = %{sa_float}
-Provides:       perl-Mail-SpamAssassin-Plugin-iXhash = %{ix_version}
-Obsoletes:      perl-Mail-SpamAssassin-Plugin-iXhash < %{ix_version}
-BuildArch:      noarch
-%{perl_requires}
-
-%description -n perl-Mail-SpamAssassin-Plugin-iXhash2
-This archive contains the iXhash2 plugin for the SpamAssassin spam filtering
-software, along with an example config file.
-
-Basically the plugin provides a network-based test just as razor2, pyzor
-and DCC do. Working solely on the body of an email, it removes parts of it
-and computes a hash value from the rest. These values will then be looked up
-via DNS using the domains given in the config file(s).
-
 %prep
-%setup -q -n Mail-SpamAssassin-%{sa_version} -a 2 -a 3
+%setup -q -n Mail-SpamAssassin-%{sa_version} -a 3
 tar -zxf %{SOURCE1} -C rules
 %patch -P 1
 %patch -P 2 -p1
 %patch -P 6
 %patch -P 7 -p1
-%patch -P 10 -p0
 cp %{SOURCE11} ./
 
 %build
@@ -261,15 +234,11 @@ sed -i -e "/\/usr\/bin/d" %{name}.files
 # package only %%{_mandir}/man3
 sed -i -e "s,%{_mandir}/man?,%{_mandir}/man3," %{name}.files
 #
-## perl-Mail-SpamAssassin-Plugin-iXhash2 stuff
-install -d %{buildroot}%{_sysconfdir}/mail/spamassassin
-cp %{IXHASH}/iXhash2.pm %{buildroot}%{perl_vendorlib}/Mail/SpamAssassin/Plugin
-cp %{IXHASH}/iXhash2.cf %{buildroot}%{_sysconfdir}/mail/spamassassin/iXhash2.cf
-#
 ## spamassassin stuff
 install -D -m0755 %{SPAMPD}/spampd.pl %{buildroot}%{_sbindir}/spampd
 install -m 0755 %{SOURCE15} %{buildroot}%{_sbindir}/
 mv %{buildroot}%{_bindir}/spamd %{buildroot}%{_sbindir}/
+install -d %{buildroot}%{_sysconfdir}/mail/spamassassin
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/mail/spamassassin/local.cf
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcspamd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcspampd
@@ -354,15 +323,8 @@ fi
 %doc ldap sql
 %dir %{_sysconfdir}/mail
 %config(noreplace) %{_sysconfdir}/mail/spamassassin
-%exclude %{_sysconfdir}/mail/spamassassin/iXhash2.cf
 %exclude %{perl_vendorarch}
 %dir %{_datadir}/spamassassin
 %{_datadir}/spamassassin/*
-
-%files -n perl-Mail-SpamAssassin-Plugin-iXhash2
-%license %{IXHASH}/LICENSE
-%doc %{IXHASH}/CHANGELOG %{IXHASH}/README
-%config(noreplace) %{_sysconfdir}/mail/spamassassin/iXhash2.cf
-%{perl_vendorlib}/Mail/SpamAssassin/Plugin/iXhash2.pm
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 17:07:24 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+  * Fix "initrd: file not found" error in sd-boot setup
+    (gh#openSUSE/suse-module-tools#113, gh#openSUSE/sdbootutil#122)
+
+-------------------------------------------------------------------
 Fri Jan 17 15:49:05 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.56:

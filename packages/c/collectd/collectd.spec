@@ -58,6 +58,7 @@
 %else
 %bcond_with nut
 %endif
+%bcond_with epics
 Name:           collectd
 Version:        5.12.0.348.g93f9bdcb
 Release:        0
@@ -171,6 +172,9 @@ BuildRequires:  pkgconfig(libnutclient)
 BuildRequires:  sensors
 Requires:       sensors
 %endif
+%if %{with epics}
+BuildRequires:  epics-devel
+%endif
 
 %description
 collectd is a daemon (written in C) that reads various system
@@ -225,6 +229,17 @@ Requires:       %{name} = %{version}-%{release}
 %description plugin-amqp
 The AMQP plugin transmits or receives values collected by collectd via the
 Advanced Message Queuing Protocol (AMQP).
+%endif
+
+%if %{with epics}
+%package plugin-epics
+Summary:        EPICS CA Plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+Recommends:     epics-caRepeater
+
+%description plugin-epics
+EPICS CA for %{name} allow you to receive variables updates from the bus.
 %endif
 
 %package plugin-notify-desktop
@@ -828,6 +843,12 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files plugin-amqp
 %{_libdir}/collectd/amqp.so
 %{_libdir}/collectd/amqp.la
+%endif
+
+%if %{with epics}
+%files plugin-epics
+%{_libdir}/collectd/epics.so
+%{_libdir}/collectd/epics.la
 %endif
 
 %files plugin-notify-desktop

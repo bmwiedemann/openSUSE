@@ -1,7 +1,7 @@
 #
 # spec file for package parted
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,7 @@ Patch34:        libparted-canonicalize-dev-md-paths.patch
 Patch36:        libparted-linux-pmem-path.patch
 # bsc#1164260
 Patch37:        parted-print-max-partitions-for-yast.patch
+Patch38:        parted-do-version.patch
 # bsc#1164907
 # Fatresize
 Patch100:       parted-fatresize-autoconf.patch

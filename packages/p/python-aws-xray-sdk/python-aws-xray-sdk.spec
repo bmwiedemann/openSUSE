@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-aws-xray-sdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aws-xray-sdk%{?psuffix}
-Version:        2.12.0
+Version:        2.14.0
 Release:        0
 Summary:        The AWS X-Ray SDK for Python
 License:        Apache-2.0
@@ -44,6 +44,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/aws/aws-xray-sdk-python
 Source:         https://github.com/aws/aws-xray-sdk-python/archive/refs/tags/%{version}.tar.gz#/aws-xray-sdk-python-%{version}-gh.tar.gz
 Source9:        python-aws-xray-sdk-rpmlintrc
+# revert of https://github.com/aws/aws-xray-sdk-python/commit/7ec8c59e2d61d13cb223f50f6a4973c51f8c5da5
+Patch:          revert-trace.patch
 %if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -113,6 +115,7 @@ Recommends:     %{name}-bottle = %{version}
 Recommends:     %{name}-mysql-connector = %{version}
 Recommends:     %{name}-psycopg2 = %{version}
 Recommends:     %{name}-pymongo = %{version}
+Recommends:     %{name}-pymysql = %{version}
 Recommends:     %{name}-pynamodb = %{version}
 Recommends:     %{name}-requests = %{version}
 
@@ -271,8 +274,20 @@ emit information from within their applications to the AWS X-Ray service.
 
 This package provides the aiohttp backend for %{name}.
 
+%package        pymysql
+Summary:        pymysql backend for the AWS X-Ray Python SDK
+Group:          Development/Languages/Python
+Requires:       %{name} = %{version}
+Requires:       python-PyMySQL >= 1.0.0
+
+%description    pymysql
+The AWS X-Ray SDK for Python enables Python developers to record and
+emit information from within their applications to the AWS X-Ray service.
+
+This package provides the pymysql backend for %{name}.
+
 %prep
-%setup -q -n aws-xray-sdk-python-%{version}
+%autosetup -p1 -n aws-xray-sdk-python-%{version}
 
 %if !%{with test}
 %build
@@ -302,8 +317,6 @@ ignore_tests+=" --ignore tests/ext/aiobotocore/test_aiobotocore.py"
 #
 # See tox.ini:
 #
-# incompatibe pytest-aiohttp
-ignore_tests+=" --ignore tests/ext/aiohttp"
 # not packaged
 ignore_tests+=" --ignore tests/ext/pg8000/test_pg8000.py"
 # no testing.postgresql package
@@ -323,9 +336,11 @@ ignore_tests+=" --ignore tests/ext/pynamodb/test_pynamodb.py"
 %if !%{with flask_sqlalchemy}
 ignore_tests+=" --ignore tests/ext/flask_sqlalchemy/test_query.py"
 %endif
+# needs a running PyMySQL instance
+donttest="test_db_url_with_special_char"
 # https://github.com/aws/aws-xray-sdk-python/issues/321
-python310_donttest=("-k" "not test_localstorage_isolation")
-%pytest $ignore_tests "${$python_donttest[@]}"
+python310_donttest+="or test_localstorage_isolation"
+%pytest $ignore_tests -k "not ($donttest ${$python_donttest})"
 %endif
 
 %if !%{with test}
@@ -346,6 +361,7 @@ python310_donttest=("-k" "not test_localstorage_isolation")
 %exclude %{python_sitelib}/aws_xray_sdk/ext/pynamodb/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/requests/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/sqlalchemy/
+%exclude %{python_sitelib}/aws_xray_sdk/ext/pymysql/
 
 %files %{python_files all}
 %license LICENSE
@@ -401,6 +417,10 @@ python310_donttest=("-k" "not test_localstorage_isolation")
 %files %{python_files aiohttp}
 %license LICENSE
 %{python_sitelib}/aws_xray_sdk/ext/aiohttp/
+
+%files %{python_files pymysql}
+%license LICENSE
+%{python_sitelib}/aws_xray_sdk/ext/pymysql/
 %endif
 
 %changelog

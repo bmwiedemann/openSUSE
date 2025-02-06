@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 07:47:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Use %{SOURCE2} macro instead of hardcoding the source file name/path.
+  This makes the spec file compatible with rpmbuild.
+
+-------------------------------------------------------------------
 Mon Feb 26 08:07:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

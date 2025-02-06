@@ -42,4 +42,13 @@
     <comment></comment>
     <requestid>1128094</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d1096c7674fb306d5007fd6e83a542a1</srcmd5>
+    <version>1.8.0</version>
+    <time>1738163839</time>
+    <user>anag+factory</user>
+    <comment>- Drop python2 Requires, rely on automatic shebang Requires.
+- Fix Python shebang to not use env. (forwarded request 1241013 from StevenK)</comment>
+    <requestid>1241075</requestid>
+  </revision>
 </revisionlist>

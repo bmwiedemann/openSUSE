@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysqlclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,11 +35,10 @@ URL:            https://github.com/PyMySQL/mysqlclient-python
 Source:         https://files.pythonhosted.org/packages/source/m/mysqlclient/mysqlclient-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-attrs
 BuildRequires:  unzip
 Recommends:     mariadb
 Provides:       python-mysql = %{version}
@@ -64,9 +63,23 @@ MySQLdb is an interface to the popular MySQL database server for Python.
 
 This package adds Python 3 support and bug fixes to MySQLdb1.
 
+%package -n python-mysqlclient-doc
+Summary:        HTML documentation for python-mysqlclient
+Group:          Documentation/Other
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-attrs
+BuildRequires:  python3-sphinx_rtd_theme
+Requires:       python3-mysqlclient = %{version}
+BuildArch:      noarch
+
+%description -n python-mysqlclient-doc
+This package contains HTML docs for python-mysqlclient.
+
 %prep
 %setup -q -n mysqlclient-%{version}
 %autopatch -p1
+# wrong end-of-line encoding
+dos2unix doc/*.rst README.md MANIFEST.in HISTORY.rst
 
 %build
 %if !%{with test}
@@ -103,13 +116,23 @@ exit $exit_code
 %if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+mkdir -p %{buildroot}%{_docdir}/python-mysqlclient/
+mv build/sphinx/html %{buildroot}%{_docdir}/python-mysqlclient/
+%fdupes %{buildroot}%{_docdir}/python-mysqlclient
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc HISTORY.rst MANIFEST.in README.md build/sphinx/html
-%{python_sitearch}/*
+%doc HISTORY.rst MANIFEST.in README.md
+%{python_sitearch}/MySQLdb
+%{python_sitearch}/mysqlclient-%{version}*-info
+
+%files -n python-mysqlclient-doc
+%license LICENSE
+%dir %{_docdir}/python-mysqlclient
+%{_docdir}/python-mysqlclient/html/
 %endif
 
 %changelog

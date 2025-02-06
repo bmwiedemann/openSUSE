@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:32:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Sat Dec 07 00:18:22 UTC 2024 - trenn@suse.de
 
 - Update to version 202:
   * mcelog: Wire up model-specific decoding for Clearwater Forest
   * mcelog: New model number for Clearwater Forest
-- PED-10052
+- jsc#PED-10052
 
 -------------------------------------------------------------------
 Thu Nov 28 08:46:31 UTC 2024 - trenn@suse.de

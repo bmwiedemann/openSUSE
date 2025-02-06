@@ -18,14 +18,13 @@
 
 %define sover   11
 Name:           fmt
-Version:        11.1.1
+Version:        11.1.3
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
 URL:            http://fmtlib.net/
 Source:         https://github.com/fmtlib/fmt/archive/%version.tar.gz
 Source1:        baselibs.conf
-Patch1:         0001-Restore-ABI-compatibility.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkg-config

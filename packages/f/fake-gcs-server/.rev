@@ -44,4 +44,48 @@ Also put packaging files under the control of git.
 (🤖: Submission of fake-gcs-server via https://src.opensuse.org/pool/fake-gcs-server/pulls/1 by mcepl)</comment>
     <requestid>1188434</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16ef77c951a489b6c6ae963464f642fc</srcmd5>
+    <version>1.52.1</version>
+    <time>1738163797</time>
+    <user>anag+factory</user>
+    <comment>update_1.52.1
+
+Tue Jan 28 22:48:18 UTC 2025 - Matej Cepl &lt;mcepl@cepl.eu&gt;
+
+- Update to v1.52.1
+    - backend: always set StorageClass
+- Update to v1.52.0
+    - feat: Add _internal/delete_all to delete all data
+    - Add disposition and language to ComposeObject
+- Update to v1.51.0
+    - Disallow uppercase in bucket names
+    - Add POST workaround for clients which cannot PATCH
+    - Add support for getObjectACL and deleteObjectACL
+    - internal/backend: support OpenBSD to get file status last
+      changed info
+    - Persist created and updated time in compose
+    - fix: avoid IncompleteRead on completed partial reads
+    - Add support for StorageClass
+    - Add support for Content-Language
+    - Add support for canceling resumable uploads
+    - Add support for MaxResults when listing objects
+    - Upgrade deps
+- Update to v1.50.2
+    - Revert &quot;fakestorage: remove unused type&quot;
+- Update to v1.50.1
+    - internal/grpc: use the generated proto provided by Google
+- Update to v1.50.0
+    - github/workflows: add job to validate cross-compilation and
+      fix build on freebsd
+    - ci: fix goreleaser config
+    - Support content-disposition
+    - Support setting cache-control of object
+    - add aliases to support specifying EventOptions
+- Update to v1.49.3
+    - Go 1.23 is out, adopt it (CVE-2023-45288, bsc#1236521)
+
+(🤖: Submission of fake-gcs-server via https://src.opensuse.org/pool/fake-gcs-server/pulls/2 by mcepl)</comment>
+    <requestid>1241010</requestid>
+  </revision>
 </revisionlist>

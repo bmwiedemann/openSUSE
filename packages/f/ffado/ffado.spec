@@ -1,7 +1,7 @@
 #
 # spec file for package ffado
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch5:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+BuildRequires:  python3-setuptools
 BuildRequires:  scons >= 3.0.2
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1) >= 1.0

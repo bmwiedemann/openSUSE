@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:02:04 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.2:
+  * YY plugin: Fixed compatibility with GameMaker 2024 (#4132)
+  * Fixed crash while handling file reloads without any files opened
+  * Fixed crash when closing the last file with multiple custom properties selected
+
+-------------------------------------------------------------------
 Sat Jan 11 16:46:05 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.1:

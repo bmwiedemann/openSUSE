@@ -1,7 +1,7 @@
 #
 # spec file for package lynis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2009-2013 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,13 +23,13 @@
 %define _pluginsdir       %{_datadir}/lynis/plugins
 %define _dbdir            %{_datadir}/lynis/db
 Name:           lynis
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        Security and System auditing tool
 License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://cisofy.com/lynis/
-Source0:        https://cisofy.com/files/%{name}-%{version}.tar.gz
+Source0:        https://downloads.cisofy.com/%{name}/%{name}-%{version}.tar.gz
 Source2:        tests_binary_rpath
 Source3:        tests_file_permissionsDB
 Source4:        tests_file_permissions_ww

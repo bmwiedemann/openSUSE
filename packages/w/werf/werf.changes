@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:37:13 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.23.1:
+  * chore: release 2.23.1
+  * fix(deploy): `bundle publish` panics if remote dependencies
+    cache not up to date
+  * refactor(deploy): move bundles code out of chart_extender pkg
+  * fix(deploy): deploy.helmChartConfig.appVersion in werf.yaml
+    ignored for bundles
+  * chore(release): 2 alpha,ea,stable,rock-solid
+
+-------------------------------------------------------------------
+Tue Jan 28 18:41:15 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.23.0:
+  * chore: release 2.23.0 (#6562)
+  * refactor(deploy): move some deploy-related code to Nelm/Helm
+  * test(build): fix WERF_FORCE_STAGED_DOCKERFILE support
+  * chore: fix lint
+  * refactor(test): simplify cleanup suite
+  * test(cleanup): test kubernetes based policy with imports
+  * fix(cleanup): handle --keep-stages-built-within-last-n-hours=0
+    properly
+  * refactor(build): fix log message
+  * refactor(build): remove unused import metadata field
+  * feat(cleanup): keep import source images
+  * refactor(build, stapel, imports): use source stage id instead
+    of image ID
+  * docs: update the installation link
+  * docs(deploy): add separate "Authentication" section (#6569)
+  * fix(docs): replace latest with main
+  * feat(build): add global staged directive
+  * fix(build): try to fix response body closed error
+  * refactor(build): update backoff
+  * chore(release, builder): update go@1.22.7 up to go@1.23.5
+    (#6568)
+  * feat(release): add channel version images (#6565)
+  * chore(ci, release): update workflows (#6560)
+  * fix(deploy): plan should not require --repo
+  * chore(channels): bump channels
+  * docs(deploy): small improvements
+  * feat(build): fix typo
+  * feat(build): retry 429 err for docker cli push/pull
+  * feat(build): retry 429 err for "werf cr login <registry>"
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Wed Jan 22 11:37:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.22.0:
+  * chore: release 2.22.0
+  * docs: regen cli reference
+  * feat(deploy): add --skip-tls-verify-kube, --kube-api-server,
+    --kube-ca-path, --kube-tls-server, --kube-token,
+    --skip-tls-verify-helm-dependencies options to bundles
+  * docs: regen cli reference
+  * feat(deploy): add --kube-qps-limit and --kube-burst-limit
+    flags, increase default QPS/Burst
+  * feat(kube-run): support %container_image% in overrides (#6553)
+  * chore(ci): pin ubuntu version
+
+-------------------------------------------------------------------
+Tue Jan 21 06:07:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.21.0:
+  * chore: release 2.21.0
+  * feat(deploy): add --skip-tls-verify-kube, --kube-api-server,
+    --kube-ca-path, --kube-tls-server, --kube-token,
+    --skip-tls-verify-helm-dependencies options (retrigger CI)
+  * chore(channels): bump alpha
+  * docs: regen cli reference
+  * feat(deploy): add --skip-tls-verify-kube, --kube-api-server,
+    --kube-ca-path, --kube-tls-server, --kube-token,
+    --skip-tls-verify-helm-dependencies options
+
+-------------------------------------------------------------------
+Mon Jan 20 14:38:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.20.0:
+  * docs: regen cli reference
+  * chore: release 2.20.0
+  * feat(deploy): add `--kube-context`, `--kube-config`,
+    `--kube-config-base64` flags to `bundle apply`
+  * feat(build): add field final to build report
+  * docs(contributing): small improvement
+  * chore(release): 2 alpha,beta
+
+-------------------------------------------------------------------
 Thu Jan 16 13:55:56 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.19.0:

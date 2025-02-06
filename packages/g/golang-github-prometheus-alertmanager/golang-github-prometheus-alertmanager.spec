@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-alertmanager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           golang-github-prometheus-alertmanager
-Version:        0.27.0
+Version:        0.28.0
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
@@ -29,12 +29,10 @@ Source2:        prometheus-alertmanager.service
 Source3:        alertmanager.yml
 # Lifted from Debian's alertmanager package
 Patch1:         0001-Default-settings.patch
-# Build as position independent executables (PIE)
-Patch2:         0002-Set-build-flags.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.23
 Requires(pre):  group(prometheus)
 Requires(pre):  user(prometheus)
 Provides:       prometheus-alertmanager = %{version}
@@ -57,7 +55,12 @@ OpsGenie. It also takes care of silencing and inhibition of alerts.
 
 %build
 %goprep github.com/prometheus/alertmanager
+export GOFLAGS="-buildmode=pie"
+%ifarch %{ix86} armv7l armv7hl s390x
+GOPATH=%{_builddir}/go promu build -v --cgo
+%else
 GOPATH=%{_builddir}/go promu build -v
+%endif
 
 %install
 %goinstall

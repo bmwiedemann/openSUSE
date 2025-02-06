@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 17 10:01:41 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update
+  * bufexplorer    7.4.27
+  * NERDtree       7.1.3
+
+-------------------------------------------------------------------
 Tue Feb 20 13:25:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -7,8 +14,8 @@ Tue Feb 20 13:25:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Fri Jan  5 07:44:32 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - update
-  * NERDtree_version       7.1.0
-  * table_mode_version     4.8.1
+  * NERDtree       7.1.0
+  * table_mode     4.8.1
   * cscope_maps.vim
 
 -------------------------------------------------------------------

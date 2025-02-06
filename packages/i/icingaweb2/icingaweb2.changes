@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 26 10:29:40 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Set right version for icinga-php-library.
+
+-------------------------------------------------------------------
 Mon Nov 18 15:55:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix usage of %requires_eq: invalid syntax previosly resulted in

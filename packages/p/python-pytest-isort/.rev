@@ -93,4 +93,12 @@
   * Add support for isort &gt;= 5</comment>
     <requestid>1193899</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>022fb389d9fdcf0f24d1ec98fbb5c6df</srcmd5>
+    <version>4.0.0</version>
+    <time>1737389670</time>
+    <user>anag+factory</user>
+    <comment>- Don't remove installed LICENSE, new poetry doesn't install it.</comment>
+    <requestid>1238865</requestid>
+  </revision>
 </revisionlist>

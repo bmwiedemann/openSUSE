@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-terminal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.54.2
+Version:        3.54.3
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -37,7 +37,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gnome-shell
 BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dconf) >= 0.14.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52.0

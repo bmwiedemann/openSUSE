@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jan  7 14:12:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream pygments.patch to fix compatibility with new Pygments
+
+-------------------------------------------------------------------
+Thu Dec  5 18:03:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3.4:
+  * #12592: Fixed :class:`KeyError` crash when using --import-
+    mode=importlib in a directory layout where a directory
+    contains a child directory with the same name.
+  * #12818: Assertion rewriting now preserves the source ranges
+    of the original instructions, making it play well with tools
+    that deal with the AST, like executing.
+  * #12849: ANSI escape codes for colored output now handled
+    correctly in :func:`pytest.fail` with pytrace=False.
+  * #9353: :func:`pytest.approx` now uses strict equality when
+    given booleans.
+  * #10558: Fix ambiguous docstring of
+    :func:`pytest.Config.getoption`.
+  * #10829: Improve documentation on the current handling of the
+    --basetemp option and its lack of retention functionality
+    (:ref:`temporary directory location and retention`).
+  * #12866: Improved cross-references concerning the
+    :fixture:`recwarn` fixture.
+  * #12966: Clarify :ref:`filterwarnings` docs on filter
+    precedence/order when using multiple
+    :ref:`@pytest.mark.filterwarnings <pytest.mark.filterwarnings
+    ref>` marks.
+  * #12497: Fixed two failing pdb-related tests on Python 3.13.
+
+-------------------------------------------------------------------
 Thu Oct 24 07:24:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.3.3:

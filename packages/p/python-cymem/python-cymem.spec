@@ -1,7 +1,7 @@
 #
 # spec file for package python-cymem
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cymem
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 Summary:        Manage calls to calloc/free through Cython
 License:        MIT
@@ -69,9 +69,16 @@ expires.
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# Avoid the topdir, which means we can't import cymem.cymem
+tmpdir=$(mktemp -d)
+cp cymem/tests/* $tmpdir
+pushd $tmpdir
+%pytest_arch
+popd
+rm -r $tmpdir
 
 %files %{python_files}
 %doc README.md

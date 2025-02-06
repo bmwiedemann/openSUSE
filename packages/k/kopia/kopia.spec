@@ -1,7 +1,7 @@
 #
 # spec file for package kopia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kopia
-Version:        0.18.2
+Version:        0.19.0
 Release:        0
 Summary:        Cross-platform backup tool with fast incremental backups
 License:        Apache-2.0

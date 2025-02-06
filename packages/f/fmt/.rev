@@ -544,4 +544,12 @@
     <comment>- Add 0001-Restore-ABI-compatibility.patch [boo#1235078]</comment>
     <requestid>1237052</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e5fc41b6af9396a3f8552dc17bc124fc</srcmd5>
+    <version>11.1.3</version>
+    <time>1738072689</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 11.3</comment>
+    <requestid>1240381</requestid>
+  </revision>
 </revisionlist>

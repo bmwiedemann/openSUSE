@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jan 26 21:54:57 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250126:
+  * Fix hotkeys not working on some keyboards (usually laptops)
+  * Make hotkeys configurable, fix hotkey keyboard layout issues
+    and add option to save replay with (ps4) controller
+  * Make notification smoother on wayland and other wayland fixes
+  * Improve startup time (fixes key getting grabbed for too long)
+
+-------------------------------------------------------------------
+Tue Jan 21 05:02:33 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250118:
+  * Fix streaming not working in the new UI.
+  * Open the running new UI when trying to launch it again instead
+    of showing an error, to allow switching back to the ol
+  * Fix overlay background not being transparent on sway (and other
+    wlroots based wayland compositors) when opening the ui when a
+    wayland window is focused.
+  * Fix global hotkeys not working in the new UI on some older
+    systems.
+  * Fix UI opening on the wrong monitor on gnome and sometimes not
+    being properly fullscreen.
+  * Fix unable to open the UI on some kde plasma wayland systems
+    when a wayland native application is focused.
+  * Fix some applications receiving mouse input when gpu screen
+    recorder UI is open. Please report if this causes issues for
+    you.
+  * Make the old UIs popup menu text selectable to allow copying
+    commands from it.
+  * Fix regression: incorrect window resulting in incorrect game
+    name for video, and background for uncomposited x11.
+  * Support different keyboard layouts where Z is switched to
+    another location on the keyboard.
+  * Only grab left alt for global hotkeys to allow AltGr+Z to be
+    pressed to allow some characters to be typed on some keyboards,
+    such as ż on a polish keyboard.
+
+-------------------------------------------------------------------
 Fri Jan 03 04:11:10 UTC 2025 - mantarimay@pm.me
 
 - Update to version 20250102:

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 19 19:31:11 UTC 2025 - Matthias Eliasson <elimat@opensuse.org>
+
+- version update to 0.15.0
+  ## v0.15.0 - 2024-11-19
+  ## Fixed
+  - Warning on MacOS about incompatible function declaration
+  - Logic when decoding AMQP data after bad data may cause crash (#837)
+  - Use SSL_get1_peer_certificate when compiling against OpenSSL 3+
+  ## Changed
+  - Updates to various github actions.
+  ## Added
+  - Add amqp_publisher_confirm_wait function (#841)
+  - Add amqp_literal_bytes macro (#844)
+
+-------------------------------------------------------------------
 Wed Nov  6 11:49:17 UTC 2024 - pgajdos@suse.com
 
 - tools: fix default cacert location

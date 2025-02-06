@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:38:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Thu Oct 10 08:39:02 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to rdma-core v54.0

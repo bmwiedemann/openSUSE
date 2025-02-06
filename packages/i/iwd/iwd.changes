@@ -405,14 +405,14 @@ Wed Jun 17 12:54:24 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
   * Add support for a P2P feature and API.
 
 -------------------------------------------------------------------
-Wed 15 Apr 08:46:02 CEST 2020 - Harry ten Berge <htenberge@gmail.com>
+Wed Apr 15 08:46:02 CEST 2020 - Harry ten Berge <htenberge@gmail.com>
 
 - ver 1.7:
   * Fix issue with APs that send IGTK falsely in big endian.
   * Fix issue with setting linkmode & operstate for open networks.
 
 -------------------------------------------------------------------
-Thu 26 Mar 10:18:24 CET 2020 - Harry ten Berge <htenberge@gmail.com>
+Thu Mar 26 10:18:24 CET 2020 - Harry ten Berge <htenberge@gmail.com>
 
 - ver 1.6:
   * Fix issue with handling missing AP stop events.
@@ -425,7 +425,7 @@ Thu 26 Mar 10:18:24 CET 2020 - Harry ten Berge <htenberge@gmail.com>
   * Add support for per-network MAC addresses.
 
 -------------------------------------------------------------------
-Mon 10 Feb 10:02:45 CET 2020 - Harry ten Berge <htenberge@gmail.com>
+Mon Feb 10 10:02:45 CET 2020 - Harry ten Berge <htenberge@gmail.com>
 
 - ver 1.5:
   * Fix issue with handling missing NEW_WIPHY events.

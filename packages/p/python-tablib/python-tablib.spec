@@ -1,7 +1,7 @@
 #
 # spec file for package python-tablib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 # I get syntax errors in the brp-python-bytecompile step...
 %define _python_bytecompile_errors_terminate_build 0
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-tablib
 Version:        3.7.0
 Release:        0
@@ -27,6 +28,8 @@ Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT
 URL:            https://github.com/jazzband/tablib
 Source:         https://files.pythonhosted.org/packages/source/t/tablib/tablib-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE tablib-tests-noxls.patch -- disable tests that require xlwt, code@bnavigator.de
+Patch0:         tablib-tests-noxls.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module odfpy}
@@ -39,15 +42,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xlrd}
-BuildRequires:  %{python_module xlwt}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
-Requires:       python-odfpy
-Requires:       python-openpyxl >= 2.6.0
-Requires:       python-tabulate
-Requires:       python-xlrd
-Requires:       python-xlwt
+Suggests:       python-PyYAML
+Suggests:       python-odfpy
+Suggests:       python-openpyxl >= 2.6.0
+Suggests:       python-tabulate
+Suggests:       python-xlrd
+Suggests:       python-xlwt
 Suggests:       python-pandas
 BuildArch:      noarch
 %python_subpackages
@@ -65,7 +67,7 @@ Output formats supported:
 - CSV (Sets)
 
 %prep
-%setup -q -n tablib-%{version}
+%autosetup -p1 -n tablib-%{version}
 # Remove shebang lines from non-executable scripts:
 find src -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 sed -i '/addopts/ d' pytest.ini
@@ -79,7 +81,8 @@ sed -i '/addopts/ d' pytest.ini
 
 %check
 # v3.2.1: test_cli_export_github fails on Leap 15.3 & .4 due to minor differences in output
-%pytest -k 'not test_cli_export_github'
+donttest="test_cli_export_github"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

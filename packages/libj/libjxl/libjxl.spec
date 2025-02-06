@@ -17,11 +17,6 @@
 
 
 %define lname   libjxl0_11
-%if "@BUILD_FLAVOR@" == "gtk" && 0%{?is_opensuse}
-%bcond_without gimp
-%else
-%bcond_with gimp
-%endif
 %if "@BUILD_FLAVOR@" == "gtk"
 Name:           libjxl-gtk
 %bcond_without gtk
@@ -45,10 +40,7 @@ BuildRequires:  cmake
 BuildRequires:  pkg-config
 %if %{with gtk}
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36
-%if %{with gimp}
-BuildRequires:  pkgconfig(gimp-2.0) >= 2.10
-BuildRequires:  pkgconfig(gimpui-2.0) >= 2.10
-%endif
+BuildRequires:  pkgconfig(lcms2) >= 2.12
 %endif
 BuildRequires:  giflib-devel >= 5.1
 BuildRequires:  pkgconfig(OpenEXR)
@@ -109,13 +101,6 @@ Supplements:    (%lname and gdk-pixbuf)
 
 %description -n gdk-pixbuf-loader-jxl
 This package provides a libjxl-based gdk-pixbuf loader for JPEG XL files.
-
-%package -n gimp-plugin-jxl
-Summary:        Plugin for GIMP to enable working with JPEG XL files
-Supplements:    (%lname and gimp)
-
-%description -n gimp-plugin-jxl
-This package provides a plugin for GIMP 2.0 to enable it to work with JPEG XL files.
 
 %package -n jxl-thumbnailer
 Summary:        Generate thumbnails for JPEG XL files
@@ -181,11 +166,6 @@ rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgcon
 %files -n gdk-pixbuf-loader-jxl
 %_datadir/mime/packages/*
 %_libdir/gdk-pixbuf-2.0/*/loaders/libpixbufloader-jxl.so
-
-%if %{with gimp}
-%files -n gimp-plugin-jxl
-%_libdir/gimp/2.0/plug-ins/file-jxl/
-%endif
 
 %files -n jxl-thumbnailer
 %dir %_datadir/thumbnailers

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:47:55 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix license in setup.py and PKG-INFO files. I
+  contacted upstream (Phil Thompson) and he confirmed that
+  pyqt6-sip is now licensed just as BSD-2-Clause and setup.py needs
+  fixing. Considering the sources of pyqt6-sip and pyqt5-sip had
+  the same license related changes, I added the following patch
+  to fix this here too:
+  * fix-license-in-setup_py.patch
+- Rebase patch:
+  * support-python3.6.patch
+
+-------------------------------------------------------------------
+Tue Jan 21 10:53:06 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 12.16.1
+  No changelog provided
+  * fix-build-gcc14.patch (fixed upstream)
+  * refresh support-python3.6.patch
+
+-------------------------------------------------------------------
 Thu Mar  7 07:49:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add fix-build-gcc14.patch to fix build with GCC14 (boo#1221016)

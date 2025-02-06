@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 21 14:20:55 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 0.4.0:
+  * Version Upgrade to 0.4.0: Major version bump with enhanced
+    stability and compatibility for OpenShot 3.3.
+  * JUCE Upgrade: Upgraded to JUCE 7.0.10, resolving critical timer
+    issues on Windows 32-bit platforms.
+  * WASAPI Device Support: Re-added support for WASAPI audio
+    devices, improving compatibility on Windows systems.
+  * MacOS Compatibility: Targeted Mac builds now use the 10.14 SDK
+    for better cross-version support.
+  * Security Enhancements: Linked the Security framework to the
+    libopenshot library on macOS, enhancing app security.
+  * C++17 Enforcement: Forced JUCE to use the C++17 standard for
+    improved modern compatibility and features.
+  * CI Improvements: Refined GitLab CI pipelines to ensure builds
+    only trigger if all configurations succeed.
+- Bump so name define to 10.
+
+-------------------------------------------------------------------
 Thu Dec 28 17:07:49 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.3.2:

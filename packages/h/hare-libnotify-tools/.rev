@@ -7,4 +7,12 @@
     <comment>I want to add hare-libnotify-tools to openSUSE:Factory</comment>
     <requestid>1233277</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6a17d51ca846d49747962ce365a090c1</srcmd5>
+    <version>1.0.0</version>
+    <time>1738007778</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240506</requestid>
+  </revision>
 </revisionlist>

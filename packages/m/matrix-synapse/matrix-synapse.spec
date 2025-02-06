@@ -21,8 +21,8 @@
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
 %global Twisted_version               24.7.0
-%global Jinja2_version                3.1.4
-%global Pillow_version                11.0.0
+%global Jinja2_version                3.1.5
+%global Pillow_version                11.1.0
 %global PyYAML_version                6.0.2
 %global attrs_version                 23.2.0
 %global bcrypt_version                4.2.0
@@ -36,12 +36,11 @@
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 %global msgpack_version               1.1.0
-# TODO 1.3.0
-%global netaddr_version               1.2.1
-# TODO 8.13.50
-%global phonenumbers_version          8.13.49
+%global netaddr_version               1.3.0
+%global phonenumbers_version          8.13.52
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
+# TODO: 24.3.0
 %global pyOpenSSL_version             24.2.1
 %global pyasn1_version                0.6.0
 %global pyasn1_modules_version        0.3.0
@@ -156,7 +155,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.122.0
+Version:        1.123.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

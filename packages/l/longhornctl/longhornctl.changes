@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Wed Jan 22 08:57:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  * release: update version file for v1.8.0
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    ec79818
+  * fix(deps): update module github.com/otiai10/copy to v1.14.1
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    5a6ca24
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    3f84afe
+  * chore(deps): update docker/dockerfile docker tag to v1.12.1
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    5bad87d
+  * fix(deps): update minor dependencies to v0.32.0
+  * fix(deps): update k8s.io/utils digest to 24370be
+  * fix(preflight): check the system default NFS version in mount
+    config
+  * feat(checker): check dmsetup package
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    e1932c6
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    6a06a48
+  * fix(deps): update patch digest dependencies
+  * fix(preflight): check package install by status flag
+  * Update .coderabbit.yaml
+  * fix(dep): not found transitive dependencies in go.mod
+  * chore(deps): update docker/dockerfile docker tag to v1.12.0
+  * feat(checker): add deployments to clusterrole
+  * feat(checker): check Kube DNS has more than 2 replicas
+  * chore: update vendor
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    d622157
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    b6fce15
+  * fix(deps): update patch digest dependencies to v0.31.3
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    5685d80
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    614ae31
+  * chore(deps): update patch digest dependencies
+  * chore(deps): update docker/dockerfile docker tag to v1.11.1
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    43901cc
+  * chore(deps): update docker/dockerfile docker tag to v1.11.0
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    deb5e95
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update patch digest dependencies
+  * chore(coderabbit): disable collapse and high_level_summary
+  * fix(install/preflight): cos
+  * fix(vendor): update sigs.k8s.io/kustomize/api to v0.18.0
+  * fix(deps): update module sigs.k8s.io/kustomize/kyaml to v0.18.1
+  * chore(dockerfile): update golangci-lint to v1.60.3
+  * chore(deps): update docker dependencies
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    4c71f1c
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    a019530
+  * docs: update docs
+  * chore(build): support darwin platform
+  * chore(vendor): update dependencies
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    797b589
+  * fix(deps): update k8s.io/utils digest to 49e7df5
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    928beb3
+  * fix(deps): update patch digest dependencies to v0.31.1
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    7060fef
+  * fix(deps): update patch digest dependencies
+  * fix(preflight): check and install the package `cryptsetup`
+  * style(import): rename lhgo* alias to common*
+  * fix(deps): update module github.com/longhorn/longhorn-manager
+    to v1.7.0
+  * fix(deps): update patch digest dependencies
+  * fix(install): enable module `dm_crypt`
+  * fix(check): check if module `dm_crypt` is enabled
+  * fix(install): install packages before starting services
+  * fix(deps): update module sigs.k8s.io/kustomize/kyaml to v0.17.2
+  * fix(deps): update minor dependencies to v0.31.0
+  * fix(ci): only set vx.y.z to latest release
+  * fix(workflow): add missing tag for pull request action
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    b6ddc3e
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    f043d8c
+  * fix(os): add `amazon linux` and `sle-micro` supports
+  * fix(spdk): enable uio_pci_generic and vfio_pci kernel modules
+  * chore(ci): add Conventional Commits GitHub Action
+  * fix(deps): update github.com/longhorn/go-common-libs digest to
+    9e1e0e6
+  * chore(docs): regenerate documents
+  * feat(spdk): replace uio_pci_generic with vfio_pci
+  * vendor: update dependencies
+  * chore(readme): update "Prebuilt Binary"
+  * fix(deps): update patch digest dependencies
+  * chore: generate doc
+  * feat(longhornctl): add example to help menu
+  * fix(log): adjust log level to wait for DaemonSet container
+  * chore(docs): update READMD.md
+  * chore(docs): generate documents
+  * feat(docs): add subcommand doc for generating documents
+  * vendor: update dependencies
+  * fix(command): duplicated other commands in help menu
+  * build: down size binary
+  * chore(image): rename image to longhorn-cli
+  * fix(install): the check for spdk environment shoud be set to
+    2048 MiB
+  * fix(deps): update minor dependencies to v0.30.2
+  * chore(deps): update docker/dockerfile docker tag to v1.9.0
+  * fix(deps): update patch digest dependencies
+  * fix(dockerfile): fix "/spdk not found" error
+  * feat: add version subcommand
+  * fix(dockerfile): fix missing spdk and longhornctl
+  * chore(version): update version file to v1.8.0-dev
+  * feat(ci): collect and release binaries and image
+
+-------------------------------------------------------------------
 Fri Oct 18 06:03:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.2:

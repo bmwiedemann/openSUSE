@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 29 06:48:13 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.8
+  * Allow "@" & "/" to entry quick phrase mode and also allow
+    restore to original mode
+  * New PageSize=0 behavior for table engine
+  * Quickphrase trigger is now uses regular expression
+  * Preliminary Correction for shuangpin
+
+-------------------------------------------------------------------
 Sun Jan  5 05:47:50 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.7

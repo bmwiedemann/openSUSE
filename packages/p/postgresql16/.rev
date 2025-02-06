@@ -156,4 +156,12 @@
   * https://www.postgresql.org/docs/release/16.6/</comment>
     <requestid>1225749</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>54d70b1f10ab871bcd2020ab3936b232</srcmd5>
+    <version>16.6</version>
+    <time>1738080588</time>
+    <user>anag+factory</user>
+    <comment>- Fix build, add postgresql-tzdata2025a.patch</comment>
+    <requestid>1240820</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan 27 22:27:28 UTC 2025 - Hannes Braun <apple.hannes@gmail.com> - 0.20.1
+
+- Update to upstream version 0.20.1
+  * Fixed: :sign and :encrypt descriptions overflow the review screen.
+  * Fixed: some messages are hidden when using client side threading.
+
+-------------------------------------------------------------------
+Sat Jan 25 23:44:42 UTC 2025 - Hannes Braun <apple.hannes@gmail.com> - 0.20.0
+
+- Update to upstream version 0.20.0
+  * copy-to now supports multiple destination folders.
+  * All commands that involve composing messages (:compose, :reply, :recall,
+    :unsubscribe and :forward) now have a new -s flag to skip opening the text
+    editor and go directly to the review screen. Previously, this flag was
+    restricted to calendar invitations response commands (:accept,
+    :accept-tentative and :decline).
+  * copy-to-replied now properly works without having copy-to also set.
+  * copy-to-replied creates empty messages when copy-to is also set.
+  * The address-book completion popovers now again appear under the field being
+    completed.
+  * The new-message bell is now rung again for threaded directories as well.
+  * The "default" styleset status line background has been reset to the default
+    color (light or dark, depending on your terminal color scheme) in order to
+    make error, warning or success messages more readable.
+  * Key bindings in the compose review screen are now displayed in the order in
+    which they are defined in the [compose::review] section of binds.conf.
+  * It is now possible to explicitly hide key bindings from the compose review
+    screen by using a special " # -" annotation.
+
+-------------------------------------------------------------------
 Tue Jan 14 23:37:03 UTC 2025 - Hannes Braun <apple.hannes@gmail.com> - 0.19.0
 
 - Update to upstream version 0.19.0

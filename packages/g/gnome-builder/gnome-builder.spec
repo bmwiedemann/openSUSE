@@ -42,6 +42,7 @@ BuildRequires:  llvm-clang-devel >= 3.5
 BuildRequires:  meson >= 0.60
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-gobject
 BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
 BuildRequires:  pkgconfig(dspy-1) >= 1.4.0

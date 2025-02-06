@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 26 06:22:12 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 3.54.3:
+  + ci: Add CI.
+- Drop obsolete and unused update-desktop-files BuildRequires: the
+  corresponding macro is already removed in the past.
+
+-------------------------------------------------------------------
 Sun Nov 24 20:37:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.2:

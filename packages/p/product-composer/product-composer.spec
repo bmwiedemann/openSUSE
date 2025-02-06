@@ -1,7 +1,7 @@
 #
 # spec file for package product-composer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           product-composer
-Version:        0.4.20
+Version:        0.5.2
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -47,6 +47,7 @@ Requires:       createrepo_c
 Requires:       inst-source-utils
 Requires:       libsolv-tools
 Requires:       mkisofs
+Requires:       mksusecd
 BuildArch:      noarch
 
 %description

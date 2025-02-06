@@ -1,7 +1,7 @@
 #
 # spec file for package nwg-drawer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           nwg-drawer
-Version:        0.6.0
+Version:        0.6.3
 Release:        0
 Summary:        Wlroots application drawer
 License:        MIT
 URL:            https://github.com/nwg-piotr/nwg-drawer
-Source:         https://github.com/nwg-piotr/nwg-drawer/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/nwg-piotr/nwg-drawer/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  make

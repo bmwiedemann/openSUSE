@@ -1,7 +1,7 @@
 #
 # spec file for package python-linux-procfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-linux-procfs
 Version:        0.7.3
 Release:        0
 Summary:        Linux /proc abstraction classes
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://rt.wiki.kernel.org/index.php/Tuna
 Source:         https://cdn.kernel.org/pub/software/libs/python/%{name}/%{name}-%{version}.tar.xz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -42,10 +41,10 @@ Abstractions to extract information from the Linux kernel /proc files.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pflags
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -59,8 +58,9 @@ Abstractions to extract information from the Linux kernel /proc files.
 %python_uninstall_alternative pflags
 
 %files %{python_files}
-%{python_sitelib}/*
-%python_alternative %{_bindir}/pflags
 %license COPYING
+%python_alternative %{_bindir}/pflags
+%{python_sitelib}/procfs
+%{python_sitelib}/python_linux_procfs-%{version}.dist-info
 
 %changelog

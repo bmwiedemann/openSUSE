@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 21 10:52:50 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the testsuite with libxml2 version 2.13.0 and up:
+  * github.com/shlomif/perl-XML-LibXML/pull/87
+  * Add perl-XML-LibXML-fix-testsuite-with-libxml2-2.13.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 11:33:51 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - updated to 2.0210 [bsc#1221013]

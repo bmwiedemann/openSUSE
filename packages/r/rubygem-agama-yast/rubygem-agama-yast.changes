@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jan 29 16:28:32 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow reading repository in /install directory on iso
+  (jsc#PED-10405)
+
+-------------------------------------------------------------------
+Fri Jan 24 09:33:27 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Introduce a new installation phase "finish"
+  (gh#agama-project/agama#1616).
+
+-------------------------------------------------------------------
+Fri Jan 24 06:42:00 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use the availability of the base product to determine whether a
+  product requires to be registered (gh#agama-project/agama#1938).
+
+-------------------------------------------------------------------
+Tue Jan 21 19:11:04 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the ListRepositories D-Bus method to return the proper value
+  instead of crashing the service (gh#agama-project/agama#1930).
+
+-------------------------------------------------------------------
+Mon Jan 20 16:44:45 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- The software service provides DBus API for reading the currently
+  configured repositories, related to (gh#agama-project/agama#1894)
+
+-------------------------------------------------------------------
+Mon Jan 20 10:35:35 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for specifying a license for each product
+  (jsc#PED-11987).
+
+-------------------------------------------------------------------  
+Fri Jan 17 20:42:58 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Relax gems version in the gemspec file
+  (gh#agama-project/agama#1917)
+
+-------------------------------------------------------------------
 Thu Jan 16 17:30:03 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
 
 - Correctly select the base product to install (bsc#1235931)

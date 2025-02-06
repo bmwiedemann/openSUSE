@@ -1,7 +1,7 @@
 #
 # spec file for package gwenhywfar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.11
+%define devrelease 5.12
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
-%define releasenumber 518
-%define checksumreleasenumber 517
+%define releasenumber 529
+%define checksumreleasenumber 528
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.11.2beta
+Version:        5.12.0
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -183,6 +183,7 @@ Summary:        Header files for the Gwenhywfar multi-platform helper library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
+Requires:       libgwengui-cpp%{libversion} >= %{version}
 Requires:       libgwengui-fox16-%{libversion} >= %{version}
 Requires:       libgwengui-gtk2-%{libversion} >= %{version}
 Requires:       libgwengui-gtk3-%{libversion} >= %{version}

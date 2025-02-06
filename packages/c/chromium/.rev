@@ -5323,4 +5323,21 @@ boo#1224178</comment>
   * Cr122-ffmpeg-new-channel-layout.patch</comment>
     <requestid>1238043</requestid>
   </revision>
+  <revision rev="445" vrev="1">
+    <srcmd5>083cd123817d96349c68208640d92449</srcmd5>
+    <version>132.0.6834.110</version>
+    <time>1737828619</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 132.0.6834.110 (boo#1236306) (forwarded request 1239799 from AndreasStieger)</comment>
+    <requestid>1239871</requestid>
+  </revision>
+  <revision rev="446" vrev="1">
+    <srcmd5>2422aff8509287e2df1d71dbf68b2683</srcmd5>
+    <version>132.0.6834.159</version>
+    <time>1738244970</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 132.0.6834.159 (boo#1236586)
+  * CVE-2025-0762: Use after free in DevTools (forwarded request 1241069 from AndreasStieger)</comment>
+    <requestid>1241144</requestid>
+  </revision>
 </revisionlist>

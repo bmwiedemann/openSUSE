@@ -1,7 +1,7 @@
 #
 # spec file for package python-quicktions
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-quicktions
-Version:        1.18
+Version:        1.19
 Release:        0
 Summary:        Fast fractions data type for rational numbers
 License:        Python-2.0

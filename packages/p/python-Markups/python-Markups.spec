@@ -1,7 +1,7 @@
 #
 # spec file for package python-Markups
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           python-Markups
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        A wrapper around various text markups
 License:        BSD-3-Clause
 URL:            https://github.com/mitya57/pymarkups
-Source:         https://files.pythonhosted.org/packages/source/M/Markups/Markups-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/markups/markups-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/retext-project/pymarkups/pull/20 adapt to Pygments 2.19
+Patch:          pygments.patch
 BuildRequires:  %{python_module Markdown >= 3}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pygments}
@@ -45,7 +47,7 @@ This module provides a wrapper around the various text markup languages,
 such as Markdown and reStructuredText (these two are supported by default).
 
 %prep
-%autosetup -p1 -n Markups-%{version}
+%autosetup -p1 -n markups-%{version}
 
 %build
 %pyproject_wheel

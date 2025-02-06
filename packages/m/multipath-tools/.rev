@@ -2040,4 +2040,41 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * multipathd: fix deferred_failback_tick for reload removes (forwarded request 1225652 from mwilck)</comment>
     <requestid>1225653</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>365d9fdf4b76749f089d5b2aec2a8e4c</srcmd5>
+    <version>0.11.0+164+suse.24eeee7</version>
+    <time>1737828613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0+164+suse.24eeee7
+- Reviewed Upstream changes from 0.12 development
+  * Continued rework of the path checker loop
+  * multipathd now sets the port_state of Fibre Channel remote ports to
+    &quot;marginal&quot; for NVMe devices, too (with nvme_core.multipath=N only).
+  * Make sure maps are reloaded in the path checker loop after detecting an
+    inconsistent or wrong kernel state (bsc#1236392)
+  * Make sure udev and systemd notice changes in multipath path state
+    when devices are added to or removed from multipath maps (bsc#1236321)
+  * Fix path grouping if a path device is added while offline with group_by_tpg
+    and group_by_serial path grouping policy
+    (gh#opensvc/multipath-tools#108, bsc#1236392)
+  * Fix the problem that `group_by_tpg` might be disabled if one or more
+    paths were offline during initial configuration (bsc#1236392)
+  * Fix multipathd crash because of invalid path group index value, for example
+    if an invalid path device was removed from a map.
+    (gh#opensvc/multipath-tools#105, bsc#1236392)
+- Changes in Upstream 0.11.0 (see also NEWS.md)
+  * multipathd: set rport port_state to marginal for NVMe devices
+  * Fixed a memory leak in the nvme foreign library.
+  * Fixed a problem in the marginal path detection algorithm that could cause
+    the io error check for a recently failed path to be delayed.
+    (bsc#1236390)
+  * multipath-tools: add HPE MSA Gen7 (2070/2072) to hwtable
+  * multipath-tools: add SCST to hwtable
+  * Add defaults for SCST and HPE MSA Gen7 to hwtable
+  * Reduce log level of harmless &quot;map ... doesn't exist&quot; message
+    (bsc#1236390)
+  * Fixes for handling empty or incompletely created multipath maps
+    (bsc#1236390) (forwarded request 1240182 from mwilck)</comment>
+    <requestid>1240184</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,0 @@
-<package name="kwrited6" project="openSUSE:Factory">
-  <title>Daemon listening for wall and write messages</title>
-  <description>KDE daemon listening for wall and write messages.
-
-</description>
-  <devel project="KDE:Frameworks" package="kwrited6"/>
-  <url>https://www.kde.org</url>
-</package>

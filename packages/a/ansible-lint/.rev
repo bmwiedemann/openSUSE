@@ -449,4 +449,20 @@ Fixes the failing builds for ansible-lint (see SR#1006256)</comment>
     <comment></comment>
     <requestid>1230612</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>db1fbc3b1ea7807434f2095124a0cfa6</srcmd5>
+    <version>25.1.0</version>
+    <time>1737490246</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239155</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d0fa866635b7ffd14404ea0040a948f5</srcmd5>
+    <version>25.1.1</version>
+    <time>1738163474</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240911</requestid>
+  </revision>
 </revisionlist>

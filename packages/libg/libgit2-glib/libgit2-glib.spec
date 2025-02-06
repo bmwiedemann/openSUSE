@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2-glib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,9 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/Libgit2-glib
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         libgit2-glib-include.patch
+Patch0:         0001-fix-don-t-confuse-GGIT_MICRO_VERSION-and-GGIT_MINOR_.patch
+Patch1:         0002-build-Fix-build-against-and-require-libgit2-1.8.0.patch
+Patch2:         0003-chore-support-libgit2-1.9.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

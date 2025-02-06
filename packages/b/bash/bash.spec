@@ -1,7 +1,7 @@
 #
 # spec file for package bash
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,7 +109,7 @@ BuildRequires:  pkgconfig(readline) >= %{rl_version}
 %if %{with alternatives}
 Requires(post): update-alternatives
 Requires(post): libreadline%{rl_major} >= %{rl_version}
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %endif
 Requires:       libreadline%{rl_major} >= %{rl_version}
 Suggests:       bash-doc = %{version}
@@ -148,7 +148,7 @@ Group:          System/Shells
 Provides:       alternative(sh)
 Conflicts:      alternative(sh)
 Provides:       bash:%{_bindir}/sh
-PreReq:         bash = %{version}
+PreReq:         bash
 BuildArch:      noarch
 
 %description sh
@@ -567,11 +567,9 @@ set in %{_sysconfdir}/inputrc or $HOME/.inputrc avoids this
 but disables multi byte handling.
 EOF
   # remove unpackaged files
-  mkdir -p %{buildroot}%{_sysconfdir}/skel
-  install -m 644 %{SOURCE5}    %{buildroot}%{_sysconfdir}/skel/.bashrc
-  install -m 644 %{SOURCE6}    %{buildroot}%{_sysconfdir}/skel/.profile
-  touch -t 199605181720.50 %{buildroot}%{_sysconfdir}/skel/.bash_history
-  chmod 600                %{buildroot}%{_sysconfdir}/skel/.bash_history
+  mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}/skel
+  install -m 640 %{SOURCE5} %{buildroot}%{_prefix}%{_sysconfdir}/skel/.bashrc
+  install -m 640 %{SOURCE6} %{buildroot}%{_prefix}%{_sysconfdir}/skel/.profile
   %find_lang bash
   %fdupes -s %{buildroot}%{_datadir}/bash/helpfiles
   sed -ri '1{ s@/bin/sh@/bin/bash@ }' %{buildroot}%{_bindir}/bashbug
@@ -589,9 +587,8 @@ fi
 
 %files
 %license COPYING
-%config %attr(600,root,root) %{_sysconfdir}/skel/.bash_history
-%config %attr(644,root,root) %{_sysconfdir}/skel/.bashrc
-%config %attr(644,root,root) %{_sysconfdir}/skel/.profile
+%{_prefix}%{_sysconfdir}/skel/.bashrc
+%{_prefix}%{_sysconfdir}/skel/.profile
 %if %{with alternatives}
 %ghost %config %{_sysconfdir}/alternatives/sh
 %endif

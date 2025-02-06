@@ -63,4 +63,14 @@ exported symbols and update the symbol version linker script accordingly.</comme
     <comment></comment>
     <requestid>940011</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>7ff2d67017b6cb06c5efed05a4cb0bef</srcmd5>
+    <version>0.3.2</version>
+    <time>1737559920</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+- Explicitly BuildRequire sphinx_rtd_theme.</comment>
+    <requestid>1239357</requestid>
+  </revision>
 </revisionlist>

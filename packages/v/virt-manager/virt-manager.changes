@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:24:44 MST 2025 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942) (jsc#PED-8910)
+  001-cli-Support-cpu-maximum.patch
+  002-gui-Support-maximum-CPU-mode.patch
+  003-cpu-Prefer-maximum-mode-for-many-emulated-guests.patch
+  004-domcaps-get-list-of-supported-panic-device-models.patch
+  005-tests-Update-capabilities-for-advertisting-panic-device-models.patch
+  006-addhardware-panic-Fill-in-model-combo-with-advertised-values-by-libvirt.patch
+  007-cli-man-Always-list-osinfo-before-os-variant.patch
+  008-snapshots-default-to-same-snapshot-mode-as-currently-used-snapshot.patch
+  009-snapshots-warn-users-to-not-mix-snapshot-modes.patch
+- Drop virtinst-dont-use-special-copy-cpu-features.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 13:16:07 MST 2025 - carnold@suse.com
+
+- Fix issue being able to detect SLES 16 media (jsc#PED-8910)
+  See also bsc#1236252
+  virtinst-add-sle16-detection-support.patch
+
+-------------------------------------------------------------------
 Thu Dec  5 07:25:57 MST 2024 - carnold@suse.com
 
 - bsc#1234215 - fail to install a guest with virt-install and

@@ -718,4 +718,16 @@
     changes to current or future zones, only historical changes.</comment>
     <requestid>1204045</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>375ff8de4cdaaf9037445ed490b70cd0</srcmd5>
+    <version>2.640.0</version>
+    <time>1737722300</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.640.0 (2.64)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.64    2025-01-16
+  - This release is based on version 2024a of the Olson database. This release includes contemporary
+    changes for Paraguay. (forwarded request 1239665 from tinita)</comment>
+    <requestid>1239748</requestid>
+  </revision>
 </revisionlist>

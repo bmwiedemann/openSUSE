@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-ydoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyter-ydoc
-Version:        3.0.0
+Version:        3.0.3
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
@@ -36,16 +36,17 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
-Requires:       (python-pycrdt >= 0.10.1 with python-pycrdt < 0.11)
+Requires:       (python-pycrdt >= 0.10.1 with python-pycrdt < 0.13)
 Provides:       python-jupyter_ydoc = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
-BuildRequires:  %{python_module pycrdt >= 0.10.1 with %python-pycrdt < 0.11}
+BuildRequires:  %{python_module httpx-ws >= 0.5.2}
+BuildRequires:  %{python_module hypercorn >= 0.16}
+BuildRequires:  %{python_module pycrdt >= 0.10.1 with %python-pycrdt < 0.13}
 BuildRequires:  %{python_module pycrdt-websocket >= 0.15.0 with %python-pycrdt-websocket < 0.16}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module websockets >= 10.0}
 BuildRequires:  nodejs
 BuildRequires:  procps
 BuildRequires:  yarn

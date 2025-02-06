@@ -1,7 +1,7 @@
 #
 # spec file for package python-cytoolz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-cytoolz
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        High performance python functional utilities in Cython
 License:        BSD-3-Clause
@@ -26,9 +26,11 @@ URL:            https://github.com/pytoolz/cytoolz
 Source:         https://files.pythonhosted.org/packages/source/c/cytoolz/cytoolz-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toolz}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-toolz
@@ -44,10 +46,10 @@ dictionaries.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitearch}/cytoolz/tests
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 

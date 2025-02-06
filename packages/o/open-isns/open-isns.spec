@@ -1,7 +1,7 @@
 #
 # spec file for package open-isns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,7 +79,9 @@ Files to develop an application using the open-isns library.
 
 %install
 %meson_install
+%if 0%{?suse_version} < 1600
 ln -sf /usr/sbin/service %{buildroot}/usr/sbin/rcisnsd
+%endif
 
 %post
 %{run_ldconfig}
@@ -107,7 +109,9 @@ ln -sf /usr/sbin/service %{buildroot}/usr/sbin/rcisnsd
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsd.conf
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsadm.conf
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsdd.conf
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcisnsd
+%endif
 %license COPYING
 %doc HACKING README.md TODO
 %doc %{_mandir}/man8/isnsd.8%{?ext_man}

@@ -3119,4 +3119,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- langpacks are no more used. Drop glibc-2.3.90-langpackdir.diff. (forwarded request 1204838 from sbrabec)</comment>
     <requestid>1204897</requestid>
   </revision>
+  <revision rev="296" vrev="3">
+    <srcmd5>f3909dec9a9d23654c46580a51ad612e</srcmd5>
+    <version>2.40</version>
+    <time>1737722378</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable nscd support (bsc#1235247) (forwarded request 1239261 from Andreas_Schwab)</comment>
+    <requestid>1239262</requestid>
+  </revision>
 </revisionlist>

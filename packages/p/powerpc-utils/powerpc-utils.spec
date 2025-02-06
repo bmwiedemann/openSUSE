@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,9 @@ Requires:       findutils
 Requires:       gawk
 Requires:       grep
 Requires:       kmod-compat
+%if 0%{?suse_version} < 1550
 Requires:       systemd-sysvinit
+%endif
 Requires:       udev
 Requires:       util-linux
 Recommends:     powerpc-utils-python
@@ -71,6 +73,7 @@ make CFLAGS="%{optflags}" %{?_smp_mflags}
 %if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -sf %{_sbindir}/lsprop %{buildroot}/sbin/lsprop
+ln -s service %{buildroot}%{_sbindir}/rcsmt_off
 %endif
 install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/nvsetenv
 ln -sf serv_config %{buildroot}%{_sbindir}/uspchrp
@@ -82,8 +85,6 @@ ln -sf drmgr %{buildroot}%{_sbindir}/drslot_chrp_phb
 ln -sf drmgr %{buildroot}%{_sbindir}/drslot_chrp_mem
 ln -sf drmgr %{buildroot}%{_sbindir}/drslot_chrp_hea
 ln -sf drmgr %{buildroot}%{_sbindir}/drmig_chrp_pmig
-
-ln -s service %{buildroot}%{_sbindir}/rcsmt_off
 
 # remove docu installed by make_install as we hand-install them in %%files
 rm -rf %{buildroot}%{_docdir}/%{name}/*

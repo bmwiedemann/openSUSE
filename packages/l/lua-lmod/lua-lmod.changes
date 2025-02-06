@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 10:27:04 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Add /usr/share/lmod/%{version}/libexec/addto to the `bash`
+  Apparmor abstraction to allow it to be executed when setting the
+  environment when starting non-interactive shells (boo#1236365).
+
+-------------------------------------------------------------------
 Fri Jan  3 12:10:22 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Update to version 8.7.55:

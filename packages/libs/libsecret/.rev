@@ -298,4 +298,12 @@
     <comment></comment>
     <requestid>1238101</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2fbfd51ea6b3240fd89991137379cc45</srcmd5>
+    <version>0.21.6+5</version>
+    <time>1738244955</time>
+    <user>anag+factory</user>
+    <comment>Re-submit, as bash-completion is now submitted</comment>
+    <requestid>1241181</requestid>
+  </revision>
 </revisionlist>

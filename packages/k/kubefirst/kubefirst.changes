@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 29 06:28:26 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.0:
+  * set next macro chart for kubefirst - 2.8.0
+  * chore: remove the codeql workflow in favor of gocilint (#2365)
+  * fix: kubeconfigfile creation (#2398)
+  * ci: add azure to bug template (#2394)
+  * feat: remove beta (#2366)
+  * docs: move providers out of beta (#2368)
+  * Generate app scaffold from CLI (#2364)
+  * feat(azure): promote azure to general availability (#2367)
+  * Update cmd/k3d/create.go
+  * Housekeeping: delete barely used flags.
+  * fix: label for api (#2356)
+  * feat: add bottlerocket ami types (#2352)
+  * fix(azure): change GCP ref in CLI docs to Azure (#2353)
+  * remove vultr and google out of beta (#2351)
+  * fix: pass CF_ORIGIN_CA_ISSUER_API_TOKEN to API (#2347)
+
+-------------------------------------------------------------------
 Fri Dec 13 06:17:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.7.9:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 24 12:09:40 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- As in bash-sh there is only a symbolic link avoid to require a version
+
+-------------------------------------------------------------------
+Sat Dec 28 20:38:43 UTC 2024 - Heitor Moreira da Silva <heitor@opensuse.org>
+
+- Move (/etc/skel/.bashrc) and (/etc/skel/.profile) to (/usr/etc/skel/).
+
+-------------------------------------------------------------------
 Mon Dec 16 12:47:07 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Remove bash-4.3-winch.dif as this is the (current) default

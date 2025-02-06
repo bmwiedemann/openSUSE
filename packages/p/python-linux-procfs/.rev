@@ -60,4 +60,13 @@
 - align license tag with COPYING</comment>
     <requestid>1147120</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>545048fdf5c411502a76c368870f637b</srcmd5>
+    <version>0.7.3</version>
+    <time>1738163800</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1241014</requestid>
+  </revision>
 </revisionlist>

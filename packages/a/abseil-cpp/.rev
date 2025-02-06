@@ -353,4 +353,14 @@
     <comment></comment>
     <requestid>1237987</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>abbcc857c593ce1f1e9edaed2b2757b2</srcmd5>
+    <version>20240722.1</version>
+    <time>1738072690</time>
+    <user>anag+factory</user>
+    <comment>- update to 20240722.1 (boo#1236438)
+  * potential integer overflow in hash container create/resize
+</comment>
+    <requestid>1240386</requestid>
+  </revision>
 </revisionlist>

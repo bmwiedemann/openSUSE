@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 16:37:27 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add support for file permissions check (CVE pending), add
+  add_NasalIORulesChecker.patch
+
+-------------------------------------------------------------------
 Mon Nov 13 22:26:04 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Update to 2020.3.19

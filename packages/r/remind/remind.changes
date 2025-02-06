@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jan 23 10:16:29 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.2 Patch 3 - 2025-01-22
+
+- NEW FEATURE: remind: Add "TRANSLATE GENERATE" command for generating
+  a skeleton set of TRANSLATE commands to make it easier to localize
+  Remind.
+
+- NEW FEATURE: remind: Add "q" debug flag for tracing calls to _()
+  or %(...) in the substitution filter; this will help with localizing
+  reminder files.
+
+- NEW FILES: remind: Add holidays/lgbtq.rem for LGBTQ holidays.  Add
+  country-specific files in holidays/lgbtq/*.rem
+
+- IMPROVEMENT: TkRemind: use "info patchlevel" to display full Tcl/Tk
+  version.
+
+- IMPROVEMENT: remind: The DEBUG command issues a warning if given an
+  unknown debug flag.
+
+- BUG FIX: remind: "make test" will now succeed even if run between
+  23:55 and 00:00 UTC.  This is done with a new --test flag for remind.
+
+- BUG FIX: remind: Avoid potential buffer overflow if someone supplies
+  ridiculously-long translations for "am" or "pm".
+
+-------------------------------------------------------------------
 Tue Jan  7 08:57:57 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.2 Patch 2 - 2025-01-06

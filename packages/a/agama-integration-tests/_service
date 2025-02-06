@@ -1,11 +1,20 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="url">https://github.com/openSUSE/agama.git</param>
+    <!-- FIXME: there is no version tag yet, update the versioning after
+    creating the first version tag -->
+    <!--  -->
+    <!-- <param name="versionrewrite-pattern">v(.*)</param> -->
+    
+    <!-- the URL is modified by the
+    https://github.com/agama-project/agama/.github/workflows/obs-staging-shared.yml
+    action when submitting to OBS -->
+    <param name="url">https://github.com/agama-project/integration-tests.git</param>
     <param name="scm">git</param>
-    <param name="revision">master</param>
-    <param name="subdir">puppeteer</param>
+    <!-- the revision might be changed to "release" branch or a git tag by the
+    https://github.com/agama-project/agama/.github/workflows/obs-staging-shared.yml
+    action when submitting to OBS -->
+    <param name="revision">main</param>
+    <param name="filename">agama-integration-tests</param>
     <param name="without-version">enable</param>
     <param name="extract">package-lock.json</param>
     <param name="extract">package/agama-integration-tests.changes</param>
@@ -17,10 +26,10 @@
     <param name="source-offset">1000</param>
   </service>
   <service mode="buildtime" name="tar">
-    <param name="obsinfo">agama.obsinfo</param>
-    <param name="filename">agama</param>
+    <param name="obsinfo">agama-integration-tests.obsinfo</param>
+    <param name="filename">agama-integration-tests</param>
   </service>
   <service mode="buildtime" name="set_version">
-    <param name="basename">agama</param>
+    <param name="basename">agama-integration-tests</param>
   </service>
 </services>

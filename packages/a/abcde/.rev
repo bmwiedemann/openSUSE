@@ -244,4 +244,13 @@
   * add abcde.bug.204.patch</comment>
     <requestid>1195278</requestid>
   </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>155ae232b34dfc785ee8dda84020e8d4</srcmd5>
+    <version>2.9.3</version>
+    <time>1738163897</time>
+    <user>anag+factory</user>
+    <comment>- Replace freedb by gnudb for cddb search (boo#1233688)
+  * add abcde-use-gnudb.patch (forwarded request 1241159 from mwilck)</comment>
+    <requestid>1241160</requestid>
+  </revision>
 </revisionlist>

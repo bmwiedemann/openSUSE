@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jan 27 16:12:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.6.1:
+  * Resolve issue with Beyla not starting. (1.6.0 regression)
+
+-------------------------------------------------------------------
+Mon Jan 27 16:06:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.6.0:
+  * Breaking changes
+    - Upgrade to OpenTelemetry Collector v0.116.0:
+      otelcol.processor.tailsampling: Change decision precedence
+      when using and_sub_policy and invert_match. For more
+      information, see the release notes for Alloy 1.6.
+  * Features
+    - Add otelcol.receiver.syslog component to receive otel logs in
+      syslog format (@dehaansa)
+    - Add support for metrics in otelcol.exporter.loadbalancing
+      (@madaraszg-tulip)
+    - Add add_cloudwatch_timestamp to
+      prometheus.exporter.cloudwatch metrics. (@captncraig)
+    - Add support to prometheus.operator.servicemonitors to allow
+      endpointslice role. (@yoyosir)
+    - Add otelcol.exporter.splunkhec allowing to export otel data
+      to Splunk HEC (@adlotsof)
+    - Add otelcol.receiver.solace component to receive traces from
+      a Solace broker. (@wildum)
+    - Add otelcol.exporter.syslog component to export logs in
+      syslog format (@dehaansa)
+    - (Experimental) Add a database_observability.mysql component
+      to collect mysql performance data. (@cristiangreco &
+      @matthewnolf)
+    - Add otelcol.receiver.influxdb to convert influx metric into
+      OTEL. (@EHSchmitt4395)
+    - Add a new /-/healthy endpoint which returns HTTP 500 if one
+      or more components are unhealthy. (@ptodev)
+
+-------------------------------------------------------------------
 Wed Dec  4 06:39:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.5.1:

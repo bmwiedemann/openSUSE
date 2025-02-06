@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 21 12:23:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Avoid the webassets dependency on Leap 16
+
+-------------------------------------------------------------------
 Tue Nov 12 11:15:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.0

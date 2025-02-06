@@ -1,7 +1,7 @@
 #
 # spec file for package mcelog
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,7 +83,9 @@ install -m 644 %{SOURCE6} %{buildroot}/%{_docdir}/%{name}/README.email_setup
 install -m 644 lk10-mcelog.pdf %{buildroot}/%{_docdir}/%{name}/lk10-mcelog.pdf
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/mcelog.service
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/mcelog.conf
+%if 0%{?suse_version} < 1600
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcmcelog
+%endif
 
 %pre
 %service_add_pre %{name}.service
@@ -112,7 +114,9 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcmcelog
 %{_unitdir}/mcelog.service
 %{_tmpfilesdir}/mcelog.conf
 %{_docdir}/%{name}
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcmcelog
+%endif
 %ghost /run/mcelog
 
 %changelog

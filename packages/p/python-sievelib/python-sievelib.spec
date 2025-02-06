@@ -1,7 +1,7 @@
 #
 # spec file for package python-sievelib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 Aeneas Jaissle <aj@ajaissle.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define modname sievelib
 Name:           python-%{modname}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Client-side Sieve and Managesieve library written in Python
 License:        MIT

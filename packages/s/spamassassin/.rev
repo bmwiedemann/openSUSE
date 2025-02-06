@@ -799,4 +799,15 @@
 </comment>
     <requestid>1166601</requestid>
   </revision>
+  <revision rev="93" vrev="78">
+    <srcmd5>11d9a45fdc9e52f84b36b875205e109b</srcmd5>
+    <version>4.0.1</version>
+    <time>1737490186</time>
+    <user>anag+factory</user>
+    <comment>- drop iXHash plugin (last provider stopped operation)
+  * remove iXhash2-4.00.tar.gz
+  * remove iXhash2-meta-rules.patch
+</comment>
+    <requestid>1239052</requestid>
+  </revision>
 </revisionlist>

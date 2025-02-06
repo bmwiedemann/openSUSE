@@ -1,3 +1,6 @@
 ---
 patches:
   pr-15.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/gfx/mousex-getopt/pull/15
+post_prep: |-
+  # https://github.com/gfx/mousex-getopt/pull/16 Test fails with Getopt-Long-Descriptive 0.116
+  rm t/106_no_ignore_case.t

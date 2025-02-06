@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 28 10:07:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.0
+  * Added support for macOS 10.13 and earlier using the `SecTrustEvaluate`
+    API. Note that this API doesn't return fine-grained errors like
+    `SecTrustEvaluateWithError` (requires macOS 10.14+).
+  * Added `SSLContext.set_default_verify_paths()` method.
+  * Changed method for disabling hostname verification for macOS and
+    Windows. Previously would ignore hostname verification errors if
+    `SSLContext.check_hostname` was `False`.
+    Now for both macOS and Windows the certificate verification policy
+    is configured to not check certificate hostname. This should have
+    no effect on users.
+- from version 0.9.2
+  * Fixed an issue where implementations supporting Python 3.10 but not
+    the peer certificate chain APIs would fail during the handshake instead
+    of when importing the `truststore` module. The module now raises an error
+    immediately instead of on first handshake. This was added for the GraalPy
+    implementation specifically, but there may be others.
+- Skip test_wrong_host_succeeds_with_hostname_verification_disabled test
+
+-------------------------------------------------------------------
 Thu Oct  3 05:43:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pyOpenSSL for the testsuite, rather than

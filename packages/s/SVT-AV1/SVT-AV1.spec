@@ -30,7 +30,12 @@ BuildRequires:  gcc-c++ >= 5.4.0
 BuildRequires:  help2man
 BuildRequires:  pkg-config
 BuildRequires:  yasm >= 1.2.0
+# broken package
+# BuildRequires:  cpuinfo-devel
+Provides: bundled(fastfeat)
+Provides: bundled(safestringlib)
 ExclusiveArch:  aarch64 riscv64 x86_64
+
 
 %description
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
@@ -63,8 +68,24 @@ This package contains the header files for svt-av1.
 %prep
 %autosetup -p1 -n %name-v%version
 
+#mitigate name collisions
+mv third_party/safestringlib/LICENSE third_party/safestringlib/LICENSE.safestringlib
+mv third_party/fastfeat/LICENSE third_party/fastfeat/LICENSE.fastfeat
+
+#sanitize third_party
+# rm -rf  third_party/cpuinfo
+rm -rf  third_party/aom*
+rm -rf  third_party/googletest
+
+
 %build
-%cmake -DNATIVE=OFF
+%cmake \
+        -DNATIVE=OFF \
+        -DSVT_AV1_LTO=ON \
+        -DENABLE_AVX512=ON \
+        -DSVT_AV1_PGO=ON 
+        # -DUSE_EXTERNAL_CPUINFO=ON \
+        # cpuinfo cmake is broken, force fallback to pkg-config
 %cmake_build
 
 %install
@@ -84,7 +105,7 @@ cp -a Docs README.md "$b/"
 %ldconfig_scriptlets -n libSvtAv1Enc2
 
 %files -n libSvtAv1Enc2
-%license LICENSE.md PATENTS.md
+%license LICENSE.md PATENTS.md third_party/fastfeat/LICENSE.fastfeat third_party/safestringlib/LICENSE.safestringlib
 %_libdir/libSvtAv1Enc.so.*
 
 %files

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 29 05:28:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.3.4.patch:
+  * Support pytest 8.3.4 changes.
+
+-------------------------------------------------------------------
 Fri Dec  6 12:40:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.17.0

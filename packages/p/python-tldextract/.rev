@@ -377,4 +377,13 @@ Features:
   * Update bundled snapshot</comment>
     <requestid>1222993</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2817f43e99cd7f579572c5b34d987928</srcmd5>
+    <version>5.1.3</version>
+    <time>1737651807</time>
+    <user>anag+factory</user>
+    <comment>- Drop unneeded BuildRequires on six.
+- Specify dist-info directory in %files.</comment>
+    <requestid>1239691</requestid>
+  </revision>
 </revisionlist>

@@ -46,7 +46,7 @@ Index: calmjs-3.4.4/src/calmjs/tests/test_argparse.py
  
 -        self.assertIn("(choose from '1', '2', '3')", sys.stderr.getvalue())
 +        msg = "(choose from '1', '2', '3')"
-+        if sys.version_info[:2] == (3, 12):
++        if sys.version_info[:2] >= (3, 12):
 +            msg = "(choose from 1, 2, 3)"
 +        self.assertIn(msg, sys.stderr.getvalue())
  

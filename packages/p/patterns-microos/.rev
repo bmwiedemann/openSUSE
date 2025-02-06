@@ -879,4 +879,13 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1218000</requestid>
   </revision>
+  <revision rev="94" vrev="94">
+    <srcmd5>a54d261dd7a15d21fe58cd449fd25ea5</srcmd5>
+    <version>5.0</version>
+    <time>1737828604</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop kwrited, only worked with utmp
+- Add grub2-i386-efi to the DVD (boo#1226727) (forwarded request 1240136 from favogt)</comment>
+    <requestid>1240137</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 28 18:41:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.31.5+rke2r1:
+  * This release updates Kubernetes to v1.31.5, and fixes a number
+    of issues.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.31.5+rke2r1
+
+-------------------------------------------------------------------
 Fri Jan  3 07:39:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package rke2-1.31 for the 1.31.x series of rke2

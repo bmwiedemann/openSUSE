@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1230929</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cc1fdd9349d69dae058e8182678bdb9</srcmd5>
+    <version>8.0.1</version>
+    <time>1737490199</time>
+    <user>anag+factory</user>
+    <comment>disable my_apps handling again</comment>
+    <requestid>1239067</requestid>
+  </revision>
 </revisionlist>

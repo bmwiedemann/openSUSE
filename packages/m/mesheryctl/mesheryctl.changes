@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:28:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.25:
+  * no CLI-related changes in this release
+- update to 0.8.24:
+  * General
+    - fix alias relationships @aabidsofi19 (#13369)
+    - leecalcote/go/deps @leecalcote (#13362)
+  * Features
+    - chore: Enhance registry update error displayed to user
+      @lekaf974 (#13359)
+  * Meshery CLI
+    - chore: Enhance registry update error displayed to user
+      @lekaf974 (#13359)
+- update to 0.8.23:
+  * no CLI-related changes in this release
+- update to 0.8.22:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Fri Jan 24 08:04:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.21:
+  * General
+    - Optimize and enhance matchlabel policy and general evaluation
+      @aabidsofi19 (#13341)
+    - Enhancement - custom docker image to be used in tutorials
+      @sangramrath (#13342)
+  * Meshery CLI
+    - [mesheryctl] fix: remove arguments check that break
+      functionality @lekaf974 (#13338)
+    - [mesheryctl] Fix unreachable code and unused variable
+      warnings in system/start.go @Tharanishwaran (#13336)
+    - fix(meshreyctl): design view tests fail @lekaf974 (#13043)
+    - [mesheryctl] Improve mesheryctl registry generate command by
+      applying argument check @riyaa14 (#13255)
+
+-------------------------------------------------------------------
+Wed Jan 22 07:29:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.20:
+  * Meshery CLI
+    - fix: golanci-lint failed @lekaf974 (#13327)
+    - [mesheryctl] add layout and item-type frontmatter to models
+      @vishalvivekm (#13319)
+    - [mesheryctl] update models output path @vishalvivekm (#13318)
+
+-------------------------------------------------------------------
+Wed Jan 22 06:55:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.19:
+  * General
+    - add: endpoints to set and get log levels while server is
+      running @souvikinator (#13290)
+    - Support for K8s manifest kind list while importing
+      @souvikinator (#13233)
+  * Meshery CLI
+    - feat: enhance registry publish cmd to send models to
+      mesheryio @vishalvivekm (#13222)
+- update to 0.8.18:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Sat Jan 18 08:08:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.17:

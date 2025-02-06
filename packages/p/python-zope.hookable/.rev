@@ -168,4 +168,12 @@ New dependency of python-Pyramid</comment>
   * Build windows wheels on GHA.</comment>
     <requestid>1218873</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>45d8442e5e149a5bfbd0ed86ee766103</srcmd5>
+    <version>7.0</version>
+    <time>1737559922</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly BuildRequire sphinx_rtd_theme.</comment>
+    <requestid>1239359</requestid>
+  </revision>
 </revisionlist>

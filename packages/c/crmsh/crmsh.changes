@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan 23 08:08:43 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250123.155bd2c2:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: sbd: Check if fence_sbd command exists before initializing device (bsc#1236184)
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: report: Check if mounted.ocfs2 command exists before using it (bsc#1236220)
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Remove the 'devices' parameter for fence_sbd agent
+
+-------------------------------------------------------------------
+Mon Jan 20 07:52:49 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250120.024e86c6:
+  * Fix: ui_context: Don't complete for unknown argument
+  * Fix: ui_context: Don't complete for unknown command
+
+-------------------------------------------------------------------
+Fri Jan 17 03:40:43 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250117.dddbde52:
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: bootstrap: Option -N should require option -y
+
+-------------------------------------------------------------------
+Thu Jan 16 08:59:50 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250116.32f6a518:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: report: Check corosync.service status before querying quorum status (bsc#1235930)
+
+-------------------------------------------------------------------
 Mon Jan 06 04:16:07 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250106.9dcea10f:

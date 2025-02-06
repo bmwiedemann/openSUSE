@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ruby-bindings
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ruby-bindings
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 URL:            https://github.com/yast/yast-ruby-bindings
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -47,13 +47,6 @@ BuildRequires:  glibc-locale
 BuildRequires:  s390-tools
 Requires:       s390-tools
 %endif
-
-# The test suite includes a regression test (std_streams_spec.rb) for a
-# libyui-ncurses bug fixed in 2.47.3
-BuildRequires:  libyui-ncurses >= 2.47.3
-# The mentioned test requires tmux in order to be executed in headless systems
-# Also many other libyui tests to come
-BuildRequires:  tmux
 
 # only a soft dependency, the Ruby debugger is optional
 Suggests:       rubygem(%{rb_default_ruby_abi}:byebug)
@@ -95,9 +88,6 @@ make install DESTDIR=$RPM_BUILD_ROOT
 cd -
 
 %check
-# Build workers are set up without systemd so the default /run/tmux dir
-# will not be present (unless clamav pulls systemd in, on SLE)
-export TMUX_TMPDIR=/tmp
 cd build
 make test ARGS=-V
 cd -

@@ -1,8 +1,0 @@
-<package name="python-gtk" project="openSUSE:Factory">
-  <title>Python bindings for the GTK+ widget set</title>
-  <description>PyGTK is an extension module for python that gives you access to the
-GTK+ widget set.  Just about anything you can write in C with GTK+ you
-can write in python with PyGTK (within reason), but with all of
-python's benefits.</description>
-  <devel project="GNOME:Factory" package="python-gtk"/>
-</package>

@@ -161,8 +161,8 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.11.0.tar.xz
-Provides:       bundled(curl) = 8.11.0
+Source2013:     %{external_url}/curl-8.11.1.tar.xz
+Provides:       bundled(curl) = 8.11.1
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -362,12 +362,12 @@ BuildRequires:  python-rpm-macros
 %if %{with system_gpgme}
 BuildRequires:  libgpgmepp-devel >= 1.14
 %else
-Source1000:     %{external_url}/gpgme-1.23.2.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.50.tar.bz2
+Source1000:     %{external_url}/gpgme-1.24.0.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.51.tar.bz2
 Source1002:     %{external_url}/libassuan-3.0.1.tar.bz2
-Provides:       bundled(gpgme) = 1.23.2
+Provides:       bundled(gpgme) = 1.24.0
 Provides:       bundled(libassuan) = 3.0.1
-Provides:       bundled(libgpg-error) = 1.50
+Provides:       bundled(libgpg-error) = 1.51
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)

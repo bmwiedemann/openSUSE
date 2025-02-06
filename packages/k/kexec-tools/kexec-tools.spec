@@ -1,7 +1,7 @@
 #
 # spec file for package kexec-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,8 +77,10 @@ export LDFLAGS="-pie"
 %make_install
 mkdir -p %{buildroot}/%{_unitdir}
 install -m644 %{SOURCE3} %{buildroot}/%{_unitdir}
+%if 0%{?suse_version} < 1600
 mkdir -p %{buildroot}/%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rckexec-load
+%endif
 %if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 ln -s %{_sbindir}/kexec %{buildroot}/sbin
@@ -120,7 +122,9 @@ ln -s %{_sbindir}/kexec %{buildroot}/sbin
 %if 0%{?suse_version} < 1550
 /sbin/kexec
 %endif
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rckexec-load
+%endif
 %{_sbindir}/kexec
 %{_sbindir}/vmcore-dmesg
 %{_unitdir}/kexec-load.service

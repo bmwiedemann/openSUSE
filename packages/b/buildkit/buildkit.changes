@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:25:43 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.19.0:
+  * remove security prompt from issue selection prompt
+  * Remove legacy issue template markdown, add new YAML-based issue template config and forms
+  * ci: switch jobs using emulation to native arm64 runners
+  * Dockerfile: update RootlessKit to v2.3.2
+  * fix git http_proxy ignored
+  * contenthash: clear ModeIrregular before sending to archive/tar
+  * llbsolver: take copy of history record to avoid marshal race
+  * docs: clarify leading and trailing slashes in add/copy source path
+  * chore: annotate errors returned from NewFromStat() with the file path
+  * vendor: kernel.org/pub/linux/libs/security/libcap/cap v1.2.73
+  * ci: pin action-gh-release
+  * build(deps): bump softprops/action-gh-release from 2.2.0 to 2.2.1
+  * test: missing direct push check feature compat
+  * testing: use env var for configuring debugaddress for tests
+  * cmd/buildkitd: move reexec.Init to non-Linux files
+  * github: update action-gh-release to v2.2.1
+  * tests: add validation that config has OSVersion set
+  * downgrade go-difflib and go-spew to tagged releases
+  * Support OS version in platform string
+  * vendor: google.golang.org/protobuf v1.35.2
+  * vendor: github.com/containerd/containerd v2.0.2
+  * vendor: github.com/stretchr/testify v1.10.0
+  * vendor: github.com/containerd/platforms v1.0.0-rc.1
+  * vendor: golang.org/x/net v0.33.0
+  * dockerfile: update containerd to 2.0.2 and 1.7.25
+  * vendor: update fsutil to b14e27f4
+  * vendor: update nydus-snapshotter to v0.15
+  * Upgrade to containerd 2
+  * Drop schema v1 test
+  * dockerfile: don't allow non-Dockerfile syntax for directives
+  * vendor: github.com/docker/cli v27.5.0
+  * vendor: github.com/docker/docker v27.5.0
+  * cache: convert prune loop from recursive invocation to iterative
+  * vendor: github.com/vishvananda/netlink v1.3.1-0.20240922070040-084abd93d350
+  * dockerfile: fix syntax forwarding for files with BOM
+  * vendor: github.com/tonistiigi/go-actions-cache 017636a73805
+  * vendor: github.com/opencontainers/selinux v1.11.1
+  * dockerfile: update runc to 1.2.4
+  * update bake-action to v6
+  * ociindex: fix handling multiple names per descriptor
+  * ociindex: add unit test coverage before changes
+  * util(disk): unit test
+  * util(disk): freebsd and netbsd support
+  * Implement llb.Symlink
+  * buildkitd: remove sync.Once from isRootlessConfig
+  * dockerfile: fix copy non-octal build tag
+  * vendor: go.opentelemetry.io/otel/exporters/otlp/... v1.28.0
+  * vendor: go.opentelemetry.io/contrib/instrumentation/.. v0.53.0
+  * vendor: github.com/prometheus/client_golang v1.20.5
+  * vendor: github.com/docker/cli v27.4.1
+  * vendor: github.com/docker/docker v27.4.1
+  * test: allow testing frontends from different version
+  * build(deps): bump golang.org/x/crypto from 0.27.0 to 0.31.0
+  * add OCI artifact version of attestation manifest
+  * util/resolver: rename vars that shadowed imports
+
+-------------------------------------------------------------------
 Mon Dec 23 07:45:52 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.18.2:

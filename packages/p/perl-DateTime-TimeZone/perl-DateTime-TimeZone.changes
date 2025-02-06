@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 21:20:58 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.640.0 (2.64)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.64    2025-01-16
+
+  - This release is based on version 2024a of the Olson database. This release includes contemporary
+    changes for Paraguay.
+
+-------------------------------------------------------------------
 Sun Sep  8 05:31:11 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.630.0 (2.63)

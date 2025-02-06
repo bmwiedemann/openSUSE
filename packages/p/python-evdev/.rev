@@ -149,4 +149,25 @@
   * Wait up to two seconds for uinput devices to appear.</comment>
     <requestid>1172973</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6ce133e40d951fd4481aa1934c678023</srcmd5>
+    <version>1.8.0</version>
+    <time>1738245135</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0
+  * The evdev.ecodes module is now generated at install time and
+    contains only constants. This allows type checking and
+    introspection of the evdev.ecodes module, without having to
+    execute it first. The old module is available as
+    evdev.ecodes_runtime.
+  * Reverse mappings in evdev.ecodes that point to more than one
+    value are now tuples instead of lists.
+  * Fix keyboard delay and repeat being swapped.
+  * Move the syn() convenience method from InputDevice to EventIO.
+- Add fix-tests.patch to pull in test fixes that upstream only
+  included after tagging their release.
+- Switch source download during packaging from disabledrun to
+  manualrun.</comment>
+    <requestid>1241259</requestid>
+  </revision>
 </revisionlist>

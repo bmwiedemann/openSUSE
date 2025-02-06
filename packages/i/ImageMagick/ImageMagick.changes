@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:34:51 UTC 2025 - pgajdos@suse.com
+
+- fix [bsc#1235113]:
+  https://github.com/ImageMagick/Usage/issues/8
+  https://github.com/ImageMagick/Usage/issues/9
+- added patches
+  fix https://github.com/ImageMagick/ImageMagick/commit/be3b73da674520ad3eab52ade2a3cda62af66d15
+  + ImageMagick-0-1-are-special-cases-for-pow.patch
+  fix https://github.com/ImageMagick/ImageMagick/commit/1afa38ae2fa87cf4eb48040e47d410aa729ce21e
+  + ImageMagick-check-for-pow-zero.patch
+  fix https://github.com/ImageMagick/ImageMagick/commit/056ccdbeac41c9b24b625e0139cd25a4cdffb22a
+  + ImageMagick-gamma-should-call-GammaImage.patch
+
+-------------------------------------------------------------------
 Mon Dec 23 14:47:14 UTC 2024 - pgajdos@suse.com
 
 - version update to 7.1.1.43

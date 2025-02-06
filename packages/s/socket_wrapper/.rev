@@ -250,4 +250,14 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>1180654</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b0a05ca4fc659a357a35127c997dc155</srcmd5>
+    <version>1.4.4</version>
+    <time>1737722325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.4
+  * Fixed setsockopt(SO_REUSEPORT) with glibc 2.40
+</comment>
+    <requestid>1239849</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 23 06:03:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.6:
+  * chore: update token to use oss tooling; (#173)
+  * chore(deps): update anchore dependencies (#172)
+  * chore(deps): bump github.com/anchore/stereoscope from 0.0.12 to
+    0.0.13 (#171)
+  * chore(deps): bump github.com/anchore/stereoscope from 0.0.11 to
+    0.0.12 (#170)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.7 to
+    0.5.8 (#169)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.4 to
+    6.6.5 (#168)
+
+-------------------------------------------------------------------
 Sun Dec 15 15:33:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.5:

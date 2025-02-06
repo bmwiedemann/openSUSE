@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -30,9 +30,9 @@ BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 3.2.1}
 BuildRequires:  %{python_module distro >= 1.0.1}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
-BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module josepy >= 1.13.0}
 BuildRequires:  %{python_module parsedatetime >= 2.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2019.3}
@@ -48,14 +48,10 @@ Requires:       python-josepy >= 1.9.0
 Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
 Requires:       python-pytz >= 2019.3
-Requires:       python-setuptools >= 41.6.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %if %{python_version_nodots} < 310
 Requires:       python-importlib-metadata
-%endif
-%if %{python_version_nodots} < 39
-Requires:       python-importlib-resources
 %endif
 Provides:       certbot = %{version}
 Obsoletes:      certbot < %{version}
@@ -71,10 +67,10 @@ to lower the barriers to entry for encrypting all HTTP traffic on the internet.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/certbot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -97,7 +93,8 @@ fi
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/certbot
+%{python_sitelib}/certbot-%{version}*info
 %python_alternative %{_bindir}/certbot
 
 %changelog

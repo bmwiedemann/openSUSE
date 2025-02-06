@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-canonicaljson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Version:        2.0.0
 Release:        0
 Summary:        Canonical JSON for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/python-canonicaljson
 Source:         https://github.com/matrix-org/python-canonicaljson/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
@@ -46,7 +45,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-frozendict >= 1.0
 Requires:       python-simplejson >= 3.14.0
-Requires:       python-six
 Requires:       python-typing_extensions
 BuildArch:      noarch
 %if %{with test}
@@ -88,7 +86,7 @@ RFC 7159.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/%{short_name}
-%{python_sitelib}/%{short_name}-%{version}*-info
+%{python_sitelib}/%{short_name}-%{version}.dist-info
 %endif
 
 %changelog

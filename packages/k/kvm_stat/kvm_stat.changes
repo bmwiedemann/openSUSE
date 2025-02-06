@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:12:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Tue Oct 29 10:17:19 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add a patch that makes it possible to use kvm_stat from scripts

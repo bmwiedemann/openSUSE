@@ -65,4 +65,26 @@
   + Mark mosh/mosh-client as &quot;remote&quot; processes. (forwarded request 1228588 from iznogood)</comment>
     <requestid>1229722</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ccf9c19ee77c513ab14816e9beace30</srcmd5>
+    <version>47.7</version>
+    <time>1737490249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.7:
+  + Fixes to tracking podman-based containers.
+  + Add support for setting CursorForeground in palette files.
+  + Improve fullscreen mode to use the same interaction model as
+    Epiphany which animate into view based on mouse pointer.
+  + Add a High Contrast oriented palette based on GNOME palette.
+  + Set PWD when spawning shells to improve usage within symlinks. (forwarded request 1238678 from iznogood)</comment>
+    <requestid>1239206</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>10a5236860f54746fce9179676887caf</srcmd5>
+    <version>47.8</version>
+    <time>1738163890</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241135</requestid>
+  </revision>
 </revisionlist>

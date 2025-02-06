@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jan 27 09:25:24 UTC 2025 - gmbr3@opensuse.org
+
+- Update to version 10.9.2+5:
+  * Adapt to xf4w v4.19.8
+  * feat: implement initial wayland support in panel,
+    panel manager, popovers, and Raven
+  * fix tasklist indicator line on right panel
+  * chore: update default background for 10.9.2 to
+    piazza-gae-aulenti from budgie-backgrounds
+  * feat: bump to 10.9.2
+  * icon-tasklist: Fix some pinned launchers not properly'
+    updating when opened
+  * icons: Use the correct name for the reboot icon
+  * Fix end session dialog blocking authentication dialog
+  * Don't show tabswitcher if window is empty
+  * budgie-menu: Show terminal applications in the menu
+  * windowing: Set a new last active window when the last
+    active window is closed
+  * feat: cli option for focus_quit field
+  * fix: inability for popover pin button to be themed
+  * New windowing tracker and large refactor of IconTasklist
+  * Disable C compiler warnings entirely
+  * daemon/notifications: Fix default notification action being
+    performed
+  * Use Enum DOWN instead of LEFT to scroll in a left-wards
+    direction
+
+-------------------------------------------------------------------
+Mon Jan 20 16:06:53 UTC 2025 - asdhio <asdhio@tuta.io>
+
+- budgie-desktop-view is not a hard dependency
+  it should be possible to remove it if the user chooses
+  to use nemo-desktop or desktopfolder instead
+
+-------------------------------------------------------------------
 Wed Apr 10 15:21:11 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 10.9.1+9:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 26 17:49:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.3
+  * Readded `args()` to `fmt::format_context`
+- Delete 0001-Restore-ABI-compatibility.patch (merged)
+
+-------------------------------------------------------------------
 Sat Jan 11 14:49:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Restore-ABI-compatibility.patch [boo#1235078]

@@ -1,7 +1,7 @@
 #
 # spec file for package rioterm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Nicolas Lorin <androw95220@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rioterm
-Version:        0.1.16
+Version:        0.2.4
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
@@ -29,6 +29,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  freetype2-devel
+BuildRequires:  gcc-c++
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  make

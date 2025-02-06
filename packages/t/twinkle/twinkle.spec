@@ -22,8 +22,9 @@ Release:        0
 Summary:        A SIP Soft Phone
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/SIP/Clients
-URL:            https://twinkle.dolezel.info/
+URL:            https://github.com/LubosD/twinkle
 Source:         https://github.com/LubosD/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch1:         Add-support-for-the-new-bcg729-API-introduced-in-ver.patch
 BuildRequires:  alsa-devel
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -35,20 +36,18 @@ BuildRequires:  libgsm-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qttools-devel
 BuildRequires:  libsndfile-devel
-BuildRequires:  libzrtpcpp-devel >= 2.0.0
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(commoncpp)
 BuildRequires:  pkgconfig(libbcg729)
+BuildRequires:  pkgconfig(libccrtp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
-
-Patch1:         Add-support-for-the-new-bcg729-API-introduced-in-ver.patch
 
 %description
 Twinkle is a SIP-based soft phone for making telephone calls over IP
@@ -59,14 +58,14 @@ networks.
 
 %build
 %cmake \
-  -DWITH_ZRTP=ON \
+  -DWITH_ZRTP=OFF \
   -DWITH_SPEEX=ON \
   -DWITH_ILBC=ON \
   -DWITH_GSM=ON \
   -DWITH_G729=ON \
   -DWITH_ALSA=ON \
   -DWITH_QT5=ON
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -81,7 +80,6 @@ install -d 755 %{buildroot}%{_datadir}/pixmaps
 %desktop_database_postun
 
 %files
-%defattr(-, root, root)
 %doc AUTHORS README.md
 %license COPYING
 %{_bindir}/twinkle
@@ -90,6 +88,6 @@ install -d 755 %{buildroot}%{_datadir}/pixmaps
 %{_datadir}/pixmaps/twinkle.png
 %{_datadir}/icons/hicolor
 %{_datadir}/applications/twinkle.desktop
-%{_mandir}/man1/twinkle.1.gz
+%{_mandir}/man1/twinkle.1%{?ext_man}
 
 %changelog

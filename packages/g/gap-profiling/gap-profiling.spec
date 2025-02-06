@@ -1,7 +1,7 @@
 #
 # spec file for package gap-profiling
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://github.com/gap-packages/profiling/releases/download/v%ve
 BuildRequires:  c++_compiler
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
+BuildRequires:  python-rpm-macros
 Requires:       gap-core >= 4.10
 Requires:       gap-gapdoc >= 1.5
 Requires:       gap-io >= 4.4.4
@@ -45,6 +46,7 @@ Line by line profiling and code coverage for GAP.
 pushd "%buildroot/$moddir"
 rm -Rf src
 popd
+%python3_fix_shebang_path %{buildroot}%{_libdir}/gap/pkg/profiling-%{version}/FlameGraph/*
 
 %files -f %name.files
 

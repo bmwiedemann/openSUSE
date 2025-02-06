@@ -1,7 +1,7 @@
 #
 # spec file for package python-wxPython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -98,6 +98,8 @@ Patch15:        CVE-2024-50602-no-crash-XML_ResumeParser.patch
 # PATCH-FIX-OPENSUSE - Test fixes/additions:
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 Patch114:       wxwidgets-3.2.5.patch
+# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2678 Fix test with Python 3.13.1
+Patch115:       python-3.13.1.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}

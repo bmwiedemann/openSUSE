@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 23 13:41:30 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize jar mtimes for reproducible builds (boo#1134568)
+
+-------------------------------------------------------------------
 Tue Mar 29 14:00:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with Java 11, since tycho is not knowing about any

@@ -1,7 +1,7 @@
 #
 # spec file for package rdma-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -525,7 +525,9 @@ cd build
 LD_LIBRARY_PATH=./lib bin/ib_acme -D . -O
 install -D -m0644 ibacm_opts.cfg %{buildroot}%{_sysconfdir}/rdma/
 
+%if 0%{?suse_version} < 1600
 for service in rdma rdma-ndd ibacm iwpmd srp_daemon; do ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc${service}; done
+%endif
 
 # Delete the package's init.d scripts
 rm -rf %{buildroot}/%{_initddir}/
@@ -679,7 +681,9 @@ done
 %{_libexecdir}/mlx4-setup.sh
 %{_libexecdir}/truescale-serdes.cmds
 %license COPYING.*
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcrdma
+%endif
 
 %files devel
 %doc %{_docdir}/%{name}-%{version}/MAINTAINERS
@@ -764,7 +768,9 @@ done
 %{_unitdir}/ibacm.socket
 %dir %{_libdir}/ibacm
 %{_libdir}/ibacm/*
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcibacm
+%endif
 %doc %{_docdir}/%{name}-%{version}/ibacm.md
 
 %files -n infiniband-diags
@@ -837,7 +843,9 @@ done
 %dir %{_sysconfdir}/rdma
 %dir %{_sysconfdir}/rdma/modules
 %{_sbindir}/iwpmd
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rciwpmd
+%endif
 %{_unitdir}/iwpmd.service
 %config(noreplace) %{_sysconfdir}/rdma/modules/iwpmd.conf
 %config(noreplace) %{_sysconfdir}/iwpmd.conf
@@ -898,7 +906,9 @@ done
 %{_sbindir}/ibsrpdm
 %{_sbindir}/srp_daemon
 %{_sbindir}/run_srp_daemon
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcsrp_daemon
+%endif
 %{_mandir}/man5/srp_daemon.service.5*
 %{_mandir}/man5/srp_daemon_port@.service.5*
 %{_mandir}/man8/ibsrpdm.8*
@@ -907,7 +917,9 @@ done
 
 %files -n rdma-ndd
 %{_sbindir}/rdma-ndd
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcrdma-ndd
+%endif
 %{_unitdir}/rdma-ndd.service
 %{_mandir}/man8/rdma-ndd.8*
 %{_udevrulesdir}/60-rdma-ndd.rules

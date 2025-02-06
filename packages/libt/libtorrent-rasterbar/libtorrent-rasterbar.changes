@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:10:35 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.11
+  * bump version for future release
+  * torrent_status::num_pieces counts pieces passed hash check
+  * Updated numerous action revisions
+  * fix setup.py to not use distutils
+  * fix integer overflow in piece picker
+  * Send read_piece_alert after piece passes
+  * test for set_piece_deadline()
+  * Make anti-leech choker never increase score for dishonesty
+  * fix the compilation failure caused
+  * bump libsimulator submodule
+  * assume copy_file_range() exists on linux (unless old glibc)
+  * rely on the openssl version already installed on the runner
+  * remove aligned storage, as it's deprecated in C++23
+  * apply DSCP setting to peers before connecting
+  * check settings_pack::max_out_request_queue before alert
+    outstanding_r…
+  * improve debug facilities of swarm simulations
+  * Improve simulator determinism
+  * fix issue when closing a uTP connection
+  * fix test_copy_file to recognize overlayfs as supporting
+    sparse files.
+  * Fix some typos
+  * don't discard netlink messages for previously seen addresses
+  * fix pre-allocation when changing priority
+  * limit the piece size in create_torrent constructor
+  * Updated numerous pre-commit hook revs.
+  * fix BEP-40 peer priority for IPv6
+  * minor fix on documentation
+  * allow connections while checking resume data if
+    no_verify_files flag is set
+  * don't hint POSIX_FADV_RANDOM
+  * fix tests to work on linux ZFS
+  * fix bug where file_progress could sometimes be reported as
+    >100%
+  * Move construct std::shared_ptr objects
+  * Bump libsimulator submodule
+  * fix performance bug in the file pool
+  * piece_picker updates
+  * Add announce_port support
+  * fix race condition when cancelling requests after becoming a
+    seed
+  * abort_download() is OK in any state
+  * Bump some pre-commit-hook revs
+  * Fix mmap error when reading empty file during resume check
+    on Linux
+  * homebrew uses standard name for pre-built boost_system now
+  * remove use of std::aligned_union
+  * bump version
+  * Fix typos
+  * add some possible values to the documentation for
+    dht_bootstrap_nodes
+  * fix applying IP filter to DHT traffic (HanabishiRecca)
+  * add invariant check to socks5_stream
+  * fix fcntl.h warning
+  * use stricter rules for what filenames are valid on Android
+  * validate add_torrent_params::save_path at run-time
+
+-------------------------------------------------------------------
 Fri Apr 19 12:59:53 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Build against boost175 on Leap15

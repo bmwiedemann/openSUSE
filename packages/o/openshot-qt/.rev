@@ -113,4 +113,12 @@
   * Improved FFmpegReader audio processing performance</comment>
     <requestid>1183485</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f58f361e0512ef2b82dba3492be32b6c</srcmd5>
+    <version>3.3.0</version>
+    <time>1738007787</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240531</requestid>
+  </revision>
 </revisionlist>

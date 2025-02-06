@@ -19,6 +19,7 @@
 
 %undefine _debuginfo_subpackages
 %undefine _build_create_debug
+%undefine _enable_debug_packages
 %ifarch aarch64
 %define grubplatform arm64-efi
 %else

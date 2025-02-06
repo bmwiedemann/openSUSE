@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan 27 17:55:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18 (bsc#1234705, CVE-2024-53580):
+  * SECURITY NOTE: Thanks to Leonid Krolle Bi.Zone for
+    discovering a JSON type security vulnerability that caused a
+    segmentation fault in the server. (CVE-2024-53580)
+    This has now been fixed. (PR#1810)
+  * UDP packets per second now reports the correct number of
+    packets, by reporting NET_SOFTERROR if there's a EAGAIN/EINTR
+    errno if no data was sent (#1367/PR#1379).
+  * Several segmentation faults related to threading were fixed.
+    One where `pthread_cancel` was called on an improperly
+    initialized thread (#1801), another where threads were being
+    recycled (#1760/PR#1761), and another where threads were
+    improperly handling signals (#1750/PR#1752).
+  * A segmentation fault from calling `freeaddrinfo` with `NULL`
+    was fixed (PR#1755).
+  * Some JSON options were fixed, including checking the size for
+    `json_read` (PR#1709), but the size limit was removed for
+    received server output (PR#1779).
+  * A rcv-timeout error has been fixed. The Nread timeout was
+    hardcoded and timed out before the `--rcv-timeout` option
+  * There is no longer a limit on the omit time period
+  * Fixed an output crash under 32-bit big-endian systems
+  * An issue was fixed where CPU utilization was unexpectedly
+    high during limited baud rate tests. The `--pacing-timer`
+    option was removed, but it is still available in the library
+  * Add SCTP information to `--json` output and fixed compile
+    error when SCTP is not supported (#1731).
+  * `--fq-rate` was changed from a uint to a uint64 to allow
+    pacing above 32G.  Not yet tested on big-endian systems
+
+-------------------------------------------------------------------
 Fri Nov 15 14:49:57 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Build with OpenSSL for key based authentication support

@@ -138,6 +138,9 @@ fi
 # the new, optional nvidia gsp firmware blobs are huge - ~ 70MB
 find /lib/firmware/nvidia -name gsp | xargs -r rm -rf 
 
+# Remove the mellanox kernel drivers (firmware is removed too)
+rm -rf /usr/lib*/modules/*/kernel/drivers/net/ethernet/mellanox
+
 # The gems are unpackaged already, no need to store them twice
 rm -rf /usr/lib*/ruby/gems/*/cache/
 

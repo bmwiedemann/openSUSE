@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:14:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.1
+  * chore: Modified bug issue template to add checkbox to report
+    potential regression. by @ashishdhingra in (#252)
+  * Switch CI to use roles by @DmitriyMusatkin in (#256)
+  * Fix Retries for ECSCredentialsProvider by @waahm7 in (#259)
+
+-------------------------------------------------------------------
 Thu Oct 24 12:02:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.0

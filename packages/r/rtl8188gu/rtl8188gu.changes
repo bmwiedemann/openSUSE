@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 26 11:36:55 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-build-on-kernel-6_13.patch, support kernel 6.13+ 
+
+-------------------------------------------------------------------
 Sat Jun  8 11:36:30 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Initial package for version 0.0.0+git20230112.c2b79fc

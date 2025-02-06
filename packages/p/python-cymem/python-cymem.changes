@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 22 03:07:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Fix fdupes macro, files are installed to sitearch.
+- Actually run the test suite.
+
+-------------------------------------------------------------------
+Tue Jan 21 09:53:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.11
+  * Github put up the Linux ARM runners for public repos now,
+    so we can have Linux ARM wheels again
+
+-------------------------------------------------------------------
 Thu Dec  5 14:54:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.10:

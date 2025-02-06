@@ -41,6 +41,8 @@ BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libsystemd)
+# The rpc user relies on the group `nobody`
+Requires:       system-user-nobody
 Requires(post): %fillup_prereq
 Provides:       portmap
 %{?systemd_ordering}

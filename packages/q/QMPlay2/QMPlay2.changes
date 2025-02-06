@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 19 21:25:19 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 25.01.19:
+  * store maximized state when closing from full screen,
+  * pass 'yt-dlp' URL argument as 'referer',
+  * improve still image stream detection,
+  * allow for local stream recording,
+  * show left panel in compact view,
+  * fix YouTube live streams,
+  * other minor fixes.
+- Adjusted 0001-add-opensuse-customizations.patch for the new
+  version
+
+-------------------------------------------------------------------
 Tue Jan 14 13:34:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix escaping of commented out patch: with RPM 4.20, %patch

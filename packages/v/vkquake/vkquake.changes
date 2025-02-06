@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jan 12 10:08:24 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.32.0
+  * Fixes:
+    - #755: A VERY important, long-standing bug in the GPU Memory
+      allocator fixed by @Novum, that could create all kinds of
+      graphics corruption and even random crashes
+    - #747: Fix Vulkan crashes when taking screenshots
+    - #752, #761: MD5 models now manage 32bit textures correctly
+      for both skins and fullbrights
+  * Improvements:
+    - #753: Add external WAD, WAD3, and Half-life format support.
+      This great addition was brought by @Toodles2You, many thanks.
+      This feature was also added to Quakespasm !
+    - Removed most of the size limits for models, the one remaining
+      is a 32K limit on model vertices. (from Ironwail)
+    - Code cleanups
+    - Library updates
+
+-------------------------------------------------------------------
 Fri Nov  8 17:34:51 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.31.3

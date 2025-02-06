@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan 26 00:56:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix2038.patch to let tests pass after year 2038 (boo#1102840)
+
+-------------------------------------------------------------------
 Wed Jan 15 08:11:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.18 (bsc#1235856)

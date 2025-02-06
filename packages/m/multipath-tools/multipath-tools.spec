@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.11.0~1+118+suse.4a51b1a
+Version:        0.11.0+164+suse.24eeee7
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
@@ -61,9 +61,9 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(liburcu)
+BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-BuildRequires:  pkgconfig(mount)
 %if 0%{?with_check} == 1
 BuildRequires:  pkgconfig(cmocka)
 %endif
@@ -86,6 +86,7 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
 
 # Currently, it makes no sense to split out libmpathpersist and libmpathcmd
 # separately. libmultipath has no stable API at all, and it depends
@@ -158,7 +159,6 @@ This package provides development files and documentation for libdmmp.
 %define libdir  %{_libdir}
 %endif
 
-
 %prep
 %setup -q -n multipath-tools-%{version}
 cp %{SOURCE4} .
@@ -184,7 +184,9 @@ for x in mpathutil multipath mpathpersist mpathcmd mpathvalid; do
     ln -sf /%{_lib}/lib$x.so.0  %{buildroot}/usr/%{_lib}/lib$x.so
 done
 %endif
+%if 0%{?suse_version} < 1600
 ln -sf service %{buildroot}/usr/sbin/rcmultipathd
+%endif
 install -m 644 -D %{SOURCE1} %{buildroot}/usr/lib/modprobe.d/90-scsi_dh.conf
 install -m 644 %{SOURCE2} %{buildroot}%{_udevrulesdir}/00-dont-del-part-nodes.rules
 install -m 644 -D %{SOURCE3} %{buildroot}/usr/lib/dracut/dracut.conf.d/dm-parts.conf
@@ -231,7 +233,9 @@ exit 0
 %{sbindir}/multipathd
 %{sbindir}/multipathc
 %{sbindir}/mpathpersist
+%if 0%{?suse_version} < 1600
 /usr/sbin/rcmultipathd
+%endif
 %{_unitdir}/multipathd.service
 %{_unitdir}/multipathd.socket
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 26 10:45:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.41
+  * Fix an endless loop in the OpenGL 1.4 renderer crashing the
+    game and blocking further progress under some circumstances.
+  * Don't force a platform dependend, hard coded SDL audio driver,
+    let SDL choose the driver instead. This may fix the SDL audio
+    backend on some platforms. The driver can still be overridden
+    by setting `s_sdldriver` to something else than `auto`.
+    Under Windows `s_sdldriver` defaults `directsound` because
+    `auto` may choose an incompatible driver.
+
+-------------------------------------------------------------------
 Sat Jul 27 17:10:23 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.40

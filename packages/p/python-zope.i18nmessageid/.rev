@@ -182,4 +182,12 @@ New dependecy of python-Pyramid</comment>
 - drop fix-intersphinx-mapping.patch (obsolete)</comment>
     <requestid>1218874</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>c74a82bd27f39c546d0bd12268ef2be6</srcmd5>
+    <version>7.0</version>
+    <time>1737559923</time>
+    <user>anag+factory</user>
+    <comment>- Explicitly BuildRequire sphinx_rtd_theme.</comment>
+    <requestid>1239360</requestid>
+  </revision>
 </revisionlist>

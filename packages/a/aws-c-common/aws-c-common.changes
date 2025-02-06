@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 27 15:38:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.8
+  * Fixup IPv6 validation logic by @DmitriyMusatkin in (#1180)
+  * (take 2) Detect when AVX is disabled via OSXSAVE by @graebm in (#1184)
+- from version 0.10.7
+  * Change PR template to ask for clearer wording by @jmklix in (#1177)
+  * proof_ci.yaml must use latest upload-artifact by @graebm in (#1183)
+  * Detect when AVX is disabled via OSXSAVE by @graebm in (#1182)
+
+-------------------------------------------------------------------
 Mon Jan 13 08:48:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - exclude s390x as upstream does not support this platform

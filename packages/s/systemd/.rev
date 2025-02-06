@@ -7446,4 +7446,48 @@ handle manual pages that consist only of a .so directive such as
     <user>anag+factory</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1234904</comment>
   </revision>
+  <revision rev="438" vrev="1">
+    <srcmd5>97ff8623f170a5665dc0ef0104a29784</srcmd5>
+    <version>257.2</version>
+    <time>1737828612</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 7fa3b5018bfffa176c77a2a5794dce792eebadcb (merge of v257.2)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/47eea9ee9f46537bc18d6a64fa21fd9c50538e13...7fa3b5018bfffa176c77a2a5794dce792eebadcb
+
+- systemd-update-helper: backport commit 2d0af8bc354f4a1429ce
+  Since user@.service has `Type=notify-reload` (making the reloading process
+  synchronous) and reloading implies reexecuting with `ReloadSignal=RTMIN+25`,
+  reexecuting user managers synchronously can be achieved with `systemctl reload
+  user@*.service&quot; now.
+
+- Upgrade to v257.1 (commit 47eea9ee9f46537bc18d6a64fa21fd9c50538e13)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v257/NEWS for details.
+  - This upgrade includes the following bug fixes:
+    - commit 9258e27f4a1ddf2834d0cadd66770ad65e55e066 (boo#1233752, bsc#1234313)
+    - commit 423de11f046cc2c9b6904e4eff71d6a48cd661c9 (boo#1233752, bsc#1234313)
+    - commit 2ae79a31b7c7947e2c16e18eb85ac5607ebc40b6 (bsc#1232844)
+- Drop 5006-tpm2-util-Also-retry-unsealing-after-policy_pcr-retu.patch and
+  5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
+  These two patches have bee merged upstream and are included in v257.1, see
+  above.
+- Our testsuite sub-package has been broken by upstream after they decided to
+  remove the bash test runner, see https://github.com/systemd/systemd/pull/34271
+  for details. For running the testsuite, the systemd git repository has to be
+  cloned for now. We'll try to adapt the testsuite sub-package these changes.
+
+    - commit c072860593329293e19580b337504adb52248462 (bsc#1229518)
+    - commit cfbf7538d87023840c5574fa5b0452e5b0f42149 (bsc#1229228)</comment>
+    <requestid>1240175</requestid>
+  </revision>
+  <revision rev="439" vrev="2">
+    <srcmd5>0d0898a10781fc0dc776fb21a384765b</srcmd5>
+    <version>257.2</version>
+    <time>1738335720</time>
+    <user>anag+factory</user>
+    <comment>- Drop 5004-disable-session-freeze.patch since the kernel fix commit
+  d96c77bd4eeba (&quot;KVM: x86: switch hugepage recovery thread to vhost_task&quot;)
+  v6.13-rc1~97^2~3 is in Tumbleweed kernel</comment>
+    <requestid>1241438</requestid>
+  </revision>
 </revisionlist>

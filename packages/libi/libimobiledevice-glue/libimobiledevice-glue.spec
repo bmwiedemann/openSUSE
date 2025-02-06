@@ -1,7 +1,7 @@
 #
 # spec file for package libimobiledevice-glue
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define clamp_mtime_to_source_date_epoch 1
 %define use_source_date_epoch_as_buildtime 1
 Name:           libimobiledevice-glue
-Version:        1.1.0+git0.20240222
+Version:        1.3.1+git11.20241227
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later

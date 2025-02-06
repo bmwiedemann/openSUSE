@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 20 09:18:20 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.679.g7559201e:
+
+  Fixes for booting from iSCSI offload with bnx2i (bsc#1228086, bsc#1234134):
+  * fix(iscsi): attempt iSCSI login before all interfaces are up
+  * fix(iscsi): don't require network setup for bnx2i
+
+  Other:
+  * feat(livenet): get live image size from TFTP servers
+
+-------------------------------------------------------------------
 Tue Jan 07 14:21:37 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.672.gcd143fd0:

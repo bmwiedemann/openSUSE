@@ -32,6 +32,7 @@ BuildRequires:  eclipse-license2
 BuildRequires:  eclipse-platform-bootstrap
 BuildRequires:  fdupes
 BuildRequires:  maven-antrun-plugin
+BuildRequires:  strip-nondeterminism
 BuildRequires:  tycho
 BuildConflicts: java >= 12
 BuildConflicts: java-devel >= 12
@@ -89,7 +90,8 @@ sed -i -e '/jsch/a<import plugin="org.apache.sshd.osgi"/>' org.eclipse.egit-feat
 
 %install
 %mvn_install
-%fdupes -s %{buildroot}%{_datadir}/eclipse/droplets
+strip-all-nondeterminism %{buildroot}%{_datadir}/eclipse/droplets/egit-egit/plugins
+%fdupes %{buildroot}%{_datadir}/eclipse/droplets
 
 %files -f .mfiles-egit
 %license LICENSE

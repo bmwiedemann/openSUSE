@@ -1,7 +1,7 @@
 #
 # spec file for package hare-libnotify-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global haredir  %{_usrsrc}/hare
 
 Name:           hare-libnotify-tools
@@ -25,11 +26,13 @@ Version:        1.0.0
 Release:        0
 Source0:        https://git.sr.ht/~uncomfy/hare-libnotify/archive/%{version}.tar.gz
 BuildRequires:  hare
+BuildRequires:  hare-libnotify = %{version}
 BuildRequires:  make
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  hare-libnotify = %{version}
 Recommends:     notification-daemon
+# harec cannot produce PIE compatible code
+#!BuildIgnore:  gcc-PIE
 
 %description
 An attempt to create Hare bindings for libnotify. This contains a clone of the notify-send tool.

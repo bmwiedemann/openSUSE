@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package bash-completion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -140,6 +140,8 @@ rm -vf %{buildroot}%{_datadir}/bash-completion/completions/su
 rm -vf %{buildroot}%{_datadir}/bash-completion/completions/umount
 # shipping in devscripts now
 rm -vf %{buildroot}%{_datadir}/bash-completion/completions/bts
+# shipped as part of libsecret
+rm -vf %{buildroot}%{_datadir}/bash-completion/completions/secret-tool
 # Seems to be broken (boo#1161136)
 rm -vf %{buildroot}%{_datadir}/bash-completion/completions/_adb
 %endif

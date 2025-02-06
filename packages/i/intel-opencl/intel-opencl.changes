@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 23 09:42:26 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Don't explicitly require libigc2 for libze_intel_gpu
+- Simplify exclusion of level_zero includes
+
+-------------------------------------------------------------------
+Fri Jan 10 13:29:37 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 24.52.32224.5
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
 Tue Aug 13 07:06:59 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 24.26.30049.6

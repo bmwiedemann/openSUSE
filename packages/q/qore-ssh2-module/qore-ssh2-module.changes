@@ -48,6 +48,11 @@ Wed Apr 14 09:53:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 - Fix build on aarch64
 
 -------------------------------------------------------------------
+Fri Dec 11 16:35:40 UTC 2020 - sarah.kriesch@ibm.com
+
+- Fix s390x build
+
+-------------------------------------------------------------------
 Fri Aug  1 21:54:53 UTC 2014 - dvlaeev@suse.com
 
 - Fix ppc64le build 
@@ -56,8 +61,3 @@ Fri Aug  1 21:54:53 UTC 2014 - dvlaeev@suse.com
 Tue Jul 30 14:20:50 UTC 2014 - petr@yarpen.cz
 
 - migrated to OBS file layout
-
--------------------------------------------------------------------
-Fri Dez 11 16:35:40 UTC 2020 - sarah.kriesch@ibm.com
-
-- Fix s390x build

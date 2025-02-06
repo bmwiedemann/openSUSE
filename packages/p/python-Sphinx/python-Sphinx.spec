@@ -1,7 +1,7 @@
 #
 # spec file for package python-Sphinx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        8.0.2
+Version:        8.1.3
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -42,6 +42,8 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/5ff3740063c1ac57f17ecd697bcd06cc1de4e75c Adapt tests for Pygments 2.19
+Patch:          pygments.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
@@ -61,23 +63,19 @@ Requires:       python-imagesize
 Requires:       python-packaging
 Requires:       python-requests >= 2.5.0
 Requires:       python-snowballstemmer >= 1.1
-Requires:       python-sphinx_rtd_theme
 Requires:       python-sphinxcontrib-applehelp
 Requires:       python-sphinxcontrib-devhelp
 Requires:       python-sphinxcontrib-htmlhelp >= 2.0.0
 Requires:       python-sphinxcontrib-jsmath
 Requires:       python-sphinxcontrib-qthelp >= 1.0.2
 Requires:       python-sphinxcontrib-serializinghtml >= 1.1.9
-Requires:       python-sphinxcontrib-websupport
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-SQLAlchemy >= 0.9
 Recommends:     python-Sphinx-doc-man
 Recommends:     python-Whoosh >= 2.0
+Suggests:       python-sphinx_rtd_theme
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 4.4
-%endif
 %if %{with test}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx = %{version}}

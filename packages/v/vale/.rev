@@ -781,4 +781,39 @@
   * refactor: support storing filters in `config` (forwarded request 1234475 from jfkw)</comment>
     <requestid>1234573</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>060b9fba72b9647472ffeee44406b671</srcmd5>
+    <version>3.9.4</version>
+    <time>1737722402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9.4. There have been reports that the vale
+  config file has changed in a recent release. The CLI utility
+  could exit with panic in some config cases. Calling the vale
+  subcommand &quot;vale sync&quot; wil &quot;Download and install external
+  configuration sources&quot; and restore normal CLI tool operation.
+  * test: update `dicpath`
+  * refactor: use default location when `dicpath` is not set
+  * test: add JSON example
+  * refactor: restrict spell check to word bounded tokens
+  * fix: only use on-disk file extension for config-matching
+  * docs: update widget
+  * test: add real YAML example
+  * refactor: use new `system` pkg
+  * refactor: fix golangci
+  * refactor: create test case for symlinks
+  * fix: handle empty replacements
+  * chore: update vulnerable go dependencies (#938)
+  * refactor: remove `allowedScopes`
+  * feat: support custom scopes with `engine: tree-stitter`
+  * refactor: support assigning markup type per-scope
+  * refactor: re-name struct fields
+  * Update accept.txt
+  * Introducing Vale Guru on Gurubase.io (#924)
+  * refactor: operation -&gt; query
+  * chore: upgrade /x/crypto and /x/net
+  * refactor: fix golangci
+  * fix: #944
+  * feat: add support for JSON, YAML, and TOML (forwarded request 1239923 from jfkw)</comment>
+    <requestid>1239924</requestid>
+  </revision>
 </revisionlist>

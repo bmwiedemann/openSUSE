@@ -224,4 +224,14 @@
     <comment></comment>
     <requestid>928407</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>3d0c78af02b5c2528e1def598f48c7fe</srcmd5>
+    <version>4.0.fake</version>
+    <time>1738072738</time>
+    <user>anag+factory</user>
+    <comment>- No longer require python: the peak time of LSB is over, we mainly
+  carry it for obscure 3rd-parties. But even those should no longer
+  depend on python 2. (forwarded request 1240719 from dimstar)</comment>
+    <requestid>1240724</requestid>
+  </revision>
 </revisionlist>

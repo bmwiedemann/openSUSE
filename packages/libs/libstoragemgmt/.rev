@@ -350,4 +350,28 @@
     <comment></comment>
     <requestid>1157914</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>df4a8e57596f5bc9f1d39cbb08859038</srcmd5>
+    <version>1.10.2</version>
+    <time>1738163402</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.2:
+  * Correct a failure to build with gcc 15+ compiler tool chain.
+- We waited for SR#1174101 to have libled1-devel but in the end
+  it was named ledmon-devel. So adjust the name
+- Add BR on libsgutils-devel as well
+
+- Update to 1.10.1:
+  * Correct 32 bit arch. issues
+  * Fix cppcheck error
+
+- Update to 1.10.0:
+  * Fix hashlib.md5 usage
+  * Fix megaraid plugin for hba-mode
+  * Use ledmon library for controlling LEDs
+  * Add LED API interface for LED slot identifiers
+  * Fix megaraid plugin when no disks are attached
+  * smi-s plugin fix error message</comment>
+    <requestid>1240841</requestid>
+  </revision>
 </revisionlist>

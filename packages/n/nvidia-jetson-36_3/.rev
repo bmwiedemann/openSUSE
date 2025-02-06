@@ -9,4 +9,12 @@
 - provides/obsoletes old packages without &quot;-36_3&quot; suffix</comment>
     <requestid>1218693</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>435808c882b868c7fbc5a750ddf317c1</srcmd5>
+    <version>36.3.1_20240516220919</version>
+    <time>1737490268</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1239287</requestid>
+  </revision>
 </revisionlist>

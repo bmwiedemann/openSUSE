@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jan 21 07:20:06 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.comi> - 2.5.1
+
+- Update 2.5.1
+  * CI: use Ubuntu 24.04; use ubuntu-latest for the ubuntu_build check
+    by @native-api in #3144
+  * Fix: mistake in configuration hints in pyenv init and manpage
+    by @ChristianFredrikJohnsen in #3145
+  * README: Add recommended curl arguments to suggested installer invocation
+    by @JayBazuzi in #3155
+  * Add miniforge3-24.11.2-0, miniforge3-24.11.2-1 by @native-api in #3163
+  * Fix "Unsupported options" error building bundled OpenSSL <3.2.0
+    by @native-api in #3164
+  * Add CPython 3.14.0a4 by @nedbat in #3168
+
+-------------------------------------------------------------------
+Tue Jan 21 07:18:54 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.0
+
+- Update 2.5.0
+  * pyenv init - performance improvements; recommend using 
+    "pyenv init - <shell>" by @ChristianFredrikJohnsen in #3136
+  * Add miniconda3-24.11.1-0 by @binbjz in #3138
+  * Add miniconda3-24.3.0-0 by @native-api in #3139
+  * CI: only run macos_build_bundled_dependencies and ubuntu_build_tar_gz for
+    CPython by @native-api in #3141
+  * Add miniforge3 and mambaforge3 24.1.2-0, 24.3.0-0, 24.5.0-0, 24.7.1-0,
+    24.7.1-1, 24.7.1-2, 24.9.0-0, 24.9.2-0, 24.11.0-0, 24.11.0-1 by @native-api in #3142
+  * Skip broken miniforge3/mambaforge3 22.11.0-0, 22.11.0-1, 22.11.0-2 in
+    the generation script by @native-api in #3143
+
+-------------------------------------------------------------------
 Thu Dec 19 08:25:43 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.23
 
 - Update 2.4.23

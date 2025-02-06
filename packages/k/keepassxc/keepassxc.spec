@@ -77,7 +77,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib) >= 1.2.0
 BuildRequires:  readline-devel
-%if (0%{?suse_version} > 1600) || (0%{?sle_version} >= 150700 && 0%{?is_opensuse})
+%if (0%{?suse_version} >= 1600) || (0%{?sle_version} >= 150700 && 0%{?is_opensuse})
 BuildRequires:  pkgconfig(botan-3)
 %else
 BuildRequires:  pkgconfig(botan-2) >= 2.11.0

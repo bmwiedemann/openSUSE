@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 16 14:32:56 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch
+  to build after uvuni_to_utf8_flags was deprecated in Perl 5.36.0
+
+-------------------------------------------------------------------
 Mon Oct 21 15:16:27 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Remove patch encodeoffbyone.diff

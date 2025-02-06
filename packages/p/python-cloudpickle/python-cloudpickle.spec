@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudpickle
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cloudpickle
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause

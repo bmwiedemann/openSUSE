@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 18 15:20:48 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Add missing build require python-pytz.
+
+-------------------------------------------------------------------
 Thu Feb  3 05:55:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.0:

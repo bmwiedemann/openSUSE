@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 23 14:27:33 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+-  Fix multiple implicit function declarations. Add patch
+   implicit-declaration.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 15:21:39 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

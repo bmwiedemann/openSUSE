@@ -1416,4 +1416,20 @@
     <comment></comment>
     <requestid>1228797</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>cf6d18abcbc5f7a95d928bdac7fc8d35</srcmd5>
+    <version>2.8.0</version>
+    <time>1737490289</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1239336</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>2025b4e366be3178effb24f80b3a47ba</srcmd5>
+    <version>2.8.1</version>
+    <time>1737560387</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239566</requestid>
+  </revision>
 </revisionlist>

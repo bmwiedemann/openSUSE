@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan 27 13:51:49 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.9.1:
+  * Don't crash on missing urls
+  * fix: sanitize summary only if it exists
+  * Use platformdirs module to find template directory paths.
+  * fix bug: AttributeError: 'Namespace' object has no attribute 'localfile' for fetch command
+  * Use build.project_wheel_metadata to extract metadata
+  * Fix no esp variable (utils.py)
+  * Fix new argument access and tests
+  * Add ability to generate .spec files from local PKG-INFO file
+  * Support project.urls.Repository to get homepage
+  * Replace deprecated PyPI XML API with Simple API
+  * close all connections: replace urllib with requests
+  * remove pkg_resources
+  * Migrate update spdx command from setuptools hook to hatch script, execute
+  * Migrate spdx file from pickle to json
+  * Switch from setuptools+pbr to hatch
+
+-------------------------------------------------------------------
 Thu Jun  8 12:11:21 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add some forgotten requirements

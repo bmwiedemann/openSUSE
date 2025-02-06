@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs-packages
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,7 @@ Patch5:         edict-utf-8.patch
 Patch6:         packages-cvs-xemacs-sumo-2005-12-08-diff-mode.patch
 Patch7:         gnus-utf-8.patch
 Patch11:        packages-cvs-xemacs-sumo-2002-03-29-ps-print.patch
-Patch15:        packages-cvs-sumo-2002-09-19-comint.patch
+Source15:       packages-cvs-sumo-2002-09-19-comint.nopatch
 Patch17:        packages-cvs-sumo-2004-02-02-awk.patch
 Patch18:        dinbrief.patch
 Patch19:        disable-skk.patch
@@ -163,7 +163,7 @@ chmod -R u+rw,g+r,o+r .
 %patch -P 6   -p1 -b .diff-mode
 %patch -P 7   -p1 -b .gnus-utf-8
 %patch -P 11  -p1 -b .psprint
-#%patch -P 15 -p1 -b .comint
+#%%patch -P 15 -p1 -b .comint
 %patch -P 17  -p1 -b .awk
 %patch -P 18  -p1 -b .dinbrief
 %patch -P 19  -p1 -b .disable-skk

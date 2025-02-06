@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 27 03:41:04 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Remove dependency on liboping, remove lazy link arg (fixed upstream)
+
+-------------------------------------------------------------------
 Thu Jan  2 10:24:19 UTC 2025 - munix9@googlemail.com
 
 - Update to version 1.30:

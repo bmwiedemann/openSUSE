@@ -1,7 +1,7 @@
 #
 # spec file for package ioquake3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,24 @@
 # Some arch have no VM (aarch64, ...)
 %define arch_with_vm  %{ix86} x86_64 ppc ppc64 armv7l armv7hl
 Name:           ioquake3
-Version:        1.36+git.20231226
+Version:        1.36+git.20241224
 Release:        0
 Summary:        Quake III
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://ioquake3.org
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  Mesa-devel
-BuildRequires:  curl-devel
-BuildRequires:  openal-soft-devel
+# PATCH-FIX-UPSTREAM ioquake3-drop-build-date-from-generated-file.patch -- Fix reproducible builds -- https://github.com/ioquake/ioq3/pull/704
+Patch0:         ioquake3-drop-build-date-from-generated-file.patch
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vorbisfile)
 ExcludeArch:    armv6l armv6hl
 
 %package devel
@@ -48,8 +54,8 @@ Quake III development tools for creating mods: q3lcc, q3rcc, q3cpp,
 q3asm
 
 %prep
-%setup -q
-rm -rf code/SDL2 code/libs code/AL
+%autosetup -p1
+rm -Rf code/SDL2 code/libs code/AL code/curl* code/jpeg-8c code/libogg* code/libvorbis* code/opus* code/zlib
 
 %build
 cat > dobuild <<'EOF'
@@ -67,6 +73,7 @@ cat > dobuild <<'EOF'
 	TOOLS_OPTIMIZE="%{optflags} -fno-strict-aliasing" \
 	GENERATE_DEPENDENCIES=0 \
 	USE_LOCAL_HEADERS=0 \
+        USE_INTERNAL_LIBS=0 \
 	V=1 \
 	"$@"
 EOF

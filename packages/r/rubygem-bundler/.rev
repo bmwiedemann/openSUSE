@@ -714,4 +714,20 @@
     <comment></comment>
     <requestid>1126248</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>cb104f9acc0dc4d68ffe446f21c38e10</srcmd5>
+    <version>2.6.3</version>
+    <time>1738163829</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 2.6.3, see bundled CHANGELOG.md
+
+- New upstream release 2.6.2, see bundled CHANGELOG.md
+
+- New upstream release 2.5.18, see bundled CHANGELOG.md
+
+- New upstream release 2.5.16, see bundled CHANGELOG.md
+
+- New upstream release 2.5.5, see bundled CHANGELOG.md</comment>
+    <requestid>1241145</requestid>
+  </revision>
 </revisionlist>

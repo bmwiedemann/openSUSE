@@ -1,4 +1,4 @@
-From 3a261f72d8b0c47ae98363445f93ff7ba81f6c0f Mon Sep 17 00:00:00 2001
+From 14452144c96be7504b54d8346faa809f5ec4a7a1 Mon Sep 17 00:00:00 2001
 From: Guillaume GARDET <guillaume.gardet@free.fr>
 Date: Wed, 13 Apr 2016 13:44:29 +0200
 Subject: [PATCH] XXX openSUSE XXX: Prepend partition 3 (and 4 for chromebook
@@ -12,7 +12,7 @@ Subject: [PATCH] XXX openSUSE XXX: Prepend partition 3 (and 4 for chromebook
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index 2a136b96a6..f2d2c76161 100644
+index 0a4e4b8ff8..5fdb4e61de 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
 @@ -166,7 +166,7 @@

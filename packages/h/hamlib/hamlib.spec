@@ -19,7 +19,7 @@
 
 %define sover   4
 Name:           hamlib
-Version:        4.6
+Version:        4.6.1
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
@@ -30,11 +30,6 @@ Source2:        https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{
 # taken from debian
 Source3:        %{name}.keyring
 Patch0:         hamlib-3.0-perl_install.patch
-Patch1:         0001-Change-rig_list_foreach-back-to-using-const-argument.patch
-Patch2:         0002-Fix-testrigopen.c-rig_list_foreach.patch
-Patch3:         0003-Fix-listrigs.s-rig_list_foreach.patch
-Patch4:         0004-Fix-rig_list_foreach-in-hamlibmodels.c.patch
-Patch5:         0005-Fix-rig_list_foreach-in-testmW2power.c.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

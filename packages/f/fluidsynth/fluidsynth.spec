@@ -1,7 +1,7 @@
 #
 # spec file for package fluidsynth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           fluidsynth
-Version:        2.3.5
+Version:        2.4.3
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
@@ -73,8 +73,7 @@ This package contains the shared library for Fluidsynth.
 %build
 %cmake \
     -DFLUID_DAEMON_ENV_FILE=%{_fillupdir}/sysconfig.%{name} \
-    -DDEFAULT_SOUNDFONT=/usr/share/sounds/sf2/FluidR3_GM.sf2 \
-    -Denable-lash=0
+    -DDEFAULT_SOUNDFONT=/usr/share/sounds/sf2/FluidR3_GM.sf2
 %cmake_build
 
 %check
@@ -108,7 +107,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %files
 %license LICENSE
-%doc AUTHORS ChangeLog README.md THANKS TODO
+%doc AUTHORS ChangeLog.old README.md THANKS TODO
 %{_bindir}/%{name}
 %{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}

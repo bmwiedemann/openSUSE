@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 23 10:32:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.2.16:
+  - Mostly a maintenance release, with new features for the
+    bookmarks function.
+  - Bookmarks can now be generated from external commands such as
+    ctags.
+  - The old built-in javascript beautifier has been removed,
+    Bluefish now uses the jsbeautify from your system (if
+    available).
+  - The word-wrap function has been fixed.
+- Add no-python2.patch to remove all traces of Python 2 from the
+  codebase.
+
+-------------------------------------------------------------------
+Wed Jan 22 11:10:58 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix shebang of file in /usr/share/bluefish. Some files were still
+  pulling in /usr/bin/python (aka python2).
+
+-------------------------------------------------------------------
 Sun Sep  8 20:41:15 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.15:

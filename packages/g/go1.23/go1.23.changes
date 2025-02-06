@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 16 20:07:56 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.23.5 (released 2025-01-16) includes security fixes to the
+  crypto/x509 and net/http packages, as well as bug fixes to the
+  compiler, the runtime, and the net package.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2024-45341 CVE-2024-45336
+  * go#71208 go#71156 boo#1236045 security: fix CVE-2024-45341 crypto/x509: usage of IPv6 zone IDs can bypass URI name constraints
+  * go#71211 go#70530 boo#1236046 security: fix CVE-2024-45336 net/http: sensitive headers incorrectly sent after cross-domain redirect
+  * go#69988 runtime: severe performance drop for cgo calls in go1.22.5
+  * go#70517 cmd/compile/internal/importer: flip enable alias to true
+  * go#70789 os: io.Copy(net.Conn, os.Stdin) on MacOS terminate immediately without waiting for input
+  * go#71104 crypto/tls: TestVerifyConnection/TLSv12 failures
+  * go#71147 internal/trace: TestTraceCPUProfile/Stress failures
+
+-------------------------------------------------------------------
 Thu Dec  5 08:01:10 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Enable loongarch64 builds

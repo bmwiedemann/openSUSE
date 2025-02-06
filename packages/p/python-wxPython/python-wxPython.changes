@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 20 17:58:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add patch python-3.13.1.patch to fix tests with Python 3.13.1
+- Factory is not built on Python 3.10 anymore
+
+-------------------------------------------------------------------
 Sun Nov 17 13:31:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Disable python3 (=3.6) flavor for 15.X

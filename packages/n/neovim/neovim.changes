@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan 29 12:34:08 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to 0.10.4
+- Bug Fixes
+ * checkhealth: Failed if 'lua' in plugin name
+ * decor: Set invalid flag for end of invalidated paired marks
+ * inspect: Use correct default highlight
+ * jobs: Do not block UI when jobwait() doesn't block (#31803)
+ * lsp: Minimum height for floating popup #31990
+ * lua: Prevent SIGSEGV when lua error is NULL in libuv_worker (#32091)
+ * marks: Revise metadata for start mark of revalidated pair #32017
+ * mpack: Remove invalid bool definition
+ * runtime: Let matchit and matchparen skips fallback on treesitter captures
+ * search: Avoid quadratic time complexity when computing fuzzy score (#32153)
+ * treesitter: Uv_dlclose after uv_dlerror
+ * treesitter: Don't open fold when o/O adds a line below #28709
+ * treesitter.foldexpr: Robustness against ctrl-c
+ * treesitter.foldexpr: Refresh in the buffers affected by OptionSet
+ * treesitter.foldexpr: Only refresh valid buffers
+ * ui: Ensure screen update before waiting for input #30576
+- Packaging changes:
+ * add a %check section with make oldtest
+ * require tree-sitter module vimdoc for a build
+ * add 0001-neovim-0.10.4-install-treesitter-vimdoc.patch ensuring
+   tested nvim has installed tree sitter plugin enabled.
+
+-------------------------------------------------------------------
 Mon Dec 23 13:31:15 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - Update to 0.10.3

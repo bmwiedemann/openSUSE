@@ -293,4 +293,40 @@
     <comment>- Add compatibility symlink for rebootmgrctl to sbin</comment>
     <requestid>1223279</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a8a8c5351a70453077332a06cb34b51f</srcmd5>
+    <version>3.0+git20250129.eed876f</version>
+    <time>1738244951</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0+git20250129.eed876f:
+  * Release version 3.1
+  * rebootmgrd: fix check if new strategy is valid
+
+- Update to version 3.0+git20250128.8fa577c:
+  * Import version 3.0 based on sd-varlink
+
+- Update to version 3.0+git20250127.73667d7:
+  * rebootmgrctl: implement verbose dump-config verb
+  * Fix search path for vendor config file
+  * Add CI with openSUSE container
+  * Add new methods and use UID auth
+- Add timezone to BuildRequires for test suite
+
+- Update to version 3.0+git20250114.f74a9d5:
+  * Add bash-completion for rebootmgrctl
+
+- Update to version 3.0+git20241219.7166827:
+  * Remove left overs from dbus related manual page
+  * Use int64 to parse JSON for time_t
+  * Set varlink info
+  * Move announce_ready() call to a later place
+  * Require libeconf 0.7.5
+  * Free event loop in destroy context.
+  * Add missing error reply
+  * Remove unused log_type variable
+  * Add internal error to varlink interface
+  * Move varlink definition into own file
+  * Update manual pages</comment>
+    <requestid>1241153</requestid>
+  </revision>
 </revisionlist>

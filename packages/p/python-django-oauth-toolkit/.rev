@@ -113,4 +113,12 @@
   * Use direct object references to fix a truculent test.</comment>
     <requestid>950877</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e2f7cd7a1170b81020875707641390d2</srcmd5>
+    <version>1.7.0</version>
+    <time>1737389698</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238967</requestid>
+  </revision>
 </revisionlist>

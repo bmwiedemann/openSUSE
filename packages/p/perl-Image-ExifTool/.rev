@@ -963,4 +963,20 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1237647</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c48bd3685641d47030516ce0073caa82</srcmd5>
+    <version>13.14</version>
+    <time>1737651967</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239879</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>5bbc1eecee319a0c0a44254935103191</srcmd5>
+    <version>13.16</version>
+    <time>1738163840</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1241068</requestid>
+  </revision>
 </revisionlist>

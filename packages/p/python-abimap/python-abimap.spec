@@ -1,7 +1,7 @@
 #
 # spec file for package python-abimap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-abimap
 Version:        0.3.2
 Release:        0
 Summary:        A helper for library maintainers to use symbol versioning
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ansasaki/abimap
 Source:         https://files.pythonhosted.org/packages/source/a/abimap/abimap-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -49,7 +49,6 @@ exported symbols and update the symbol version linker script accordingly.
 
 %package doc
 Summary:        Symbol versioning helper (Documentation)
-Group:          Documentation/HTML
 
 %description doc
 Documentation for the symbol versioning helper %{name}
@@ -60,13 +59,13 @@ Documentation for the symbol versioning helper %{name}
 sed -i 's:pytest-runner::' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 PYTHONPATH=${PWD}/src:${PWD}/tests sphinx-build docs html
 PYTHONPATH=${PWD}/src:${PWD}/tests sphinx-build -E -b man docs man
 
 %install
-%python_install
+%pyproject_install
 
 rm -rf html/.{doctrees,buildinfo}
 
@@ -93,7 +92,8 @@ install -m 0644 man/abimap.1 %{buildroot}%{_mandir}/man1/
 %license LICENSE
 %python_alternative %{_bindir}/abimap
 %python_alternative %{_mandir}/man1/abimap.1%{?ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/abimap
+%{python_sitelib}/abimap-%{version}.dist-info
 
 %files %{python_files doc}
 %doc html

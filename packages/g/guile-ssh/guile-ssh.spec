@@ -1,7 +1,7 @@
 #
 # spec file for package guile-ssh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define         libsoname lib%{name}14
+%define         libsoname lib%{name}18
 
 Name:           guile-ssh
-Version:        0.16.3
+Version:        0.18.0
 Release:        0
 Summary:        SSH protocol access from Guile
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  guile-devel
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libssh) >= 0.6.4
+BuildRequires:  pkgconfig(libssh) >= 0.8.0
 Requires:       guile >= 2.0.9
 Requires:       libssh
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

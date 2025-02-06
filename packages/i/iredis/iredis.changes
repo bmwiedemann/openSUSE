@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 25 17:55:07 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- skip test_using_pager_when_rows_too_high, test_using_pager_works_for_help, test_pager_works_for_peek, test_using_pager_from_config, test_using_pager_from_config_when_env_config_both_set because of https://github.com/laixintao/iredis/i
+ssues/495
+- run tests test_peek_zset_fetch_all, test_peek_zset_fetch_part again
+
+-------------------------------------------------------------------
 Tue Nov  5 21:20:03 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.15.0:
@@ -54,7 +61,7 @@ Mon Jan  2 15:45:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
     URL parameter ssl_cert_reqs 
 
 -------------------------------------------------------------------
-Wed Aug 31 19:09:37 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Aug 31 19:09:37 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.12.1:
  - support HRANDFIELD. by @laixintao in #431
@@ -66,12 +73,12 @@ Wed Aug 31 19:09:37 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - support prompt in iredisrc config file by @laixintao in #441
 
 -------------------------------------------------------------------
-Wed Jun 29 08:48:41 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Jun 29 08:48:41 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - disable some failing tests (reported upstream) to fix the build.
 
 -------------------------------------------------------------------
-Wed Jun 29 08:36:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Jun 29 08:36:26 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 1.12:
  - Feature: CLIENT KILL now support LADDR argument.
@@ -96,19 +103,19 @@ Wed Jun 29 08:36:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Bugfix: Switch distutils.version to packaging.version to fix the version parse for windows. (new dependency: pypi's python-packaging.
 
 -------------------------------------------------------------------
-Fri Jan 28 16:08:08 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Jan 28 16:08:08 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Skip a few failings tests (bugs upstream).
 
 -------------------------------------------------------------------
-Tue Jan 25 16:25:16 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Jan 25 16:25:16 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.11.0:
  - Introduce codespell to find typos by @tssujt in #411
   - upgrade mistune to ^2.0 by @laixintao in #416
 
 -------------------------------------------------------------------
-Mon Jan 10 21:44:27 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Jan 10 21:44:27 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.10.0:
  - Feature: more human readable output for HELP command like ACL HELP and MEMORY HELP.
@@ -122,6 +129,6 @@ Mon Nov 22 08:28:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 - Trim filler wording from description.
 
 -------------------------------------------------------------------
-Sun Nov 21 15:24:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Nov 21 15:24:39 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - initial package for version 1.9.4.

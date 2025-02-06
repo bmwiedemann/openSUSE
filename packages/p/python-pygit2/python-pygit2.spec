@@ -19,15 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygit2
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM const-parents.patch gh#libgit2/pygit2!1324 mcepl@suse.com
-# use correct type of git_commit_create() function
-Patch0:         const-parents.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.17.0}

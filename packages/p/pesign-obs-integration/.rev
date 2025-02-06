@@ -475,4 +475,20 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>1189175</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>089aafeb80ddc497db873ae06aa7a346</srcmd5>
+    <version>10.2+git20241221.c85eada</version>
+    <time>1738335714</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 10.2+git20241221.c85eada:
+  * Move the rpm-420 compatibility section from %install to %build
+  * Fix README reference after a17ffb01430468f411acc5488cc9a6d27ceb1428
+
+- Update to version 10.2+git20241220.e0461ad:
+  * Fix repackaging of scriptlets with rpm-4.20
+
+- Update to version 10.2+git20241219.042a454:
+  * Make the repackage work with rpm-4.20</comment>
+    <requestid>1232942</requestid>
+  </revision>
 </revisionlist>

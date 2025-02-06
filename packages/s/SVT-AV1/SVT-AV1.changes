@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 17 12:27:35 UTC 2025 - Yoong Jin <solomoncyj@gmail.com>
+
+- Added optimzation flags to Cmake
+- Santitized thired party folder
+  * Deleted bechmarking folders
+  * Renamed conflicting license files
+  * Switced to system libcpuinfo
+
+-------------------------------------------------------------------
 Tue Oct 29 22:11:44 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.0

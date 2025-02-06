@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 19 00:15:11 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove 67bcd63bda9d7b095489a09b9880aa730ddb5488.patch now upstream
+- update to 0.16.16
+  * Allow SORD_API to be defined by the user
+  * Fix command line help interface of sord_validate
+  * Fix dependencies in pkg-config file
+  * Override pkg-config dependency within meson
+  * Port sord_validate to pcre2
+  * Switch to external zix dependency 
+
+-------------------------------------------------------------------
 Mon Feb 26 13:42:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

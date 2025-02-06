@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Jan 23 07:09:04 UTC 2025 - pgajdos@suse.com
+
+- version update to 6.10
+  New and rewritten pages
+  -----------------------
+  man1/
+          diffman-git.1
+          mansect.1
+          pdfman.1
+          sortman.1
+  man2/
+          keyctl.2                                (split into many pages)
+          listmount.2
+          statmount.2
+          uretprobe.2
+  man2const/
+          KEYCTL_*.2const          (previously, keyctl.2)
+          PR_RISCV_SET_ICACHE_FLUSH_CTX.2const
+  man3/
+          __riscv_flush_icache.3
+          timespec_get.3
+          wcscasecmp.3                            (merged wcsncasecmp.3 with it)
+          wcsncasecmp.3                           (merged into wcsncasecmp.3)
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          io_submit.2
+                  RWF_ATOMIC
+                  RWF_NOAPPEND
+          landlock_add_rule.2
+                  Landlock ABI v4
+          landlock_create_ruleset.2
+                  Landlock ABI v4
+          madvise.2
+                  MADV_GUARD_INSTALL
+                  MADV_GUARD_REMOVE
+          perf_event_open.2
+                  struct perf_event_attr::inherit && cpus=-1
+          posix_fadvise.2
+                  POSIX_FADV_NOREUSE
+          prctl.2
+                  PR_RISCV_SET_ICACHE_FLUSH_CTX
+          process_madvise.2
+                  All flags permitted for calling process
+          readv.2
+                  RWF_ATOMIC
+                  RWF_NOAPPEND
+          stat.2
+                  AT_EMPTY_PATH && NULL
+          statx.2
+                  AT_EMPTY_PATH && NULL
+                  STATX_DIO_READ_ALIGN
+                  STATX_MNT_ID_UNIQUE
+                  STATX_SUBVOL
+                  STATX_WRITE_ATOMIC
+  man3/
+          dlinfo.3
+                  RTLD_DI_PHDR
+          fnmatch.3
+                  FNM_IGNORECASE
+  man7/
+          landlock.7
+                  Landlock ABI v4
+                  Landlock ABI v5
+          rtnetlink.7
+                  struct ifa_cacheinfo
+
+-------------------------------------------------------------------
 Tue Jun 18 09:28:18 UTC 2024 - pgajdos@suse.com
 
 - version update to 6.9.1

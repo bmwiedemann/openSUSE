@@ -3,8 +3,8 @@
     <param name="url">https://github.com/argoproj/argo-cd</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.13.3</param>
-    <param name="match-tag">v2.13.3</param>
+    <param name="revision">v2.13.4</param>
+    <param name="match-tag">v2.13.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

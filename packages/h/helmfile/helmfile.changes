@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Jan 23 09:45:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.170.1:
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.14 to
+    1.15.15 by @dependabot in #1882
+  * build(deps): bump github.com/hashicorp/go-slug from 0.15.0 to
+    0.16.3 by @dependabot in #1886 (CVE-2025-0377)
+  * Ensure 'helm repo add' is also not pollute on helmfile template
+    by @baurmatt in #1887
+  * build(deps): bump github.com/zclconf/go-cty from 1.16.1 to
+    1.16.2 by @dependabot in #1888
+  * fix: using correct option for takeOwnership flag by @blaskoa
+    in #1892
+  * fix typo in docs by @adamab48 in #1889
+
+-------------------------------------------------------------------
+Tue Jan 21 09:20:53 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.170.0:
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.6 to 1.15.7
+    by @dependabot in #1818
+  * build(deps): bump golang.org/x/term from 0.26.0 to 0.27.0 by
+    @dependabot in #1817
+  * chore(doc): fix the indent of the selector usage sample yaml by
+    @Ladicle in #1819
+  * feat(state): add support for setString in ReleaseSpec and
+    HelmState by @yxxhero in #1821
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.7 to 1.15.8
+    by @dependabot in #1822
+  * test(state): add TestHelmState_setStringFlags for setStringFlags
+    method by @yxxhero in #1823
+  * build(deps): bump k8s.io/apimachinery from 0.31.3 to 0.31.4 by
+    @dependabot in #1826
+  * build(deps): bump golang.org/x/crypto from 0.29.0 to 0.31.0 by
+    @dependabot in #1828
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.8 to
+    1.15.9 by @dependabot in #1831
+  * build(deps): bump k8s.io/apimachinery from 0.31.4 to 0.32.0 by
+    @dependabot in #1830
+  * feat: updating sops version to 3.9.2 by @zhaque44 in #1834
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.9 to
+    1.15.10 by @dependabot in #1835
+  * build(deps): bump helm.sh/helm/v3 from 3.16.3 to 3.16.4 by
+    @dependabot in #1836
+  * build: update Helm version to v3.16.4 in CI and Dockerfiles by
+    @yxxhero in #1837
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.10 to
+    1.15.11 by @dependabot in #1838
+  * build(deps): bump filippo.io/age from 1.2.0 to 1.2.1 by
+    @dependabot in #1840
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.11 to
+    1.15.12 by @dependabot in #1843
+  * build: update helm-diff to v3.9.13 in Dockerfiles and init.go
+    by @yxxhero in #1841
+  * build(deps): bump github.com/helmfile/chartify from 0.20.4 to
+    0.20.5 by @dependabot in #1845
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.12 to
+    1.15.13 by @dependabot in #1844
+  * build(deps): bump jinja2 from 3.1.4 to 3.1.5 in /docs by
+    @dependabot in #1846
+  * CVE-2024-45338: updating golang.org/x/net: to version: v0.33.0
+    by @zhaque44 in #1849
+  * build(deps): bump github.com/zclconf/go-cty from 1.15.1 to
+    1.16.0 by @dependabot in #1851
+  * build(deps): bump golang.org/x/term from 0.27.0 to 0.28.0
+    by @dependabot in #1852
+  * update sops versions to 3.9.3 by @zhaque44 in #1861
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.6
+    to 1.7.7 by @dependabot in #1862
+  * feat: add --take-ownership flag to apply and sync commands by
+    @yxxhero in #1863
+  * fix: ensure plain http is supported across all helmfile
+    commands by @purpleclay in #1858
+  * fix: ensure development versions of charts can be used across
+    helmfile commands by @purpleclay in #1865
+  * build(deps): bump github.com/helmfile/chartify from 0.20.5 to
+    0.20.6 by @dependabot in #1866
+  * update kubectl version (1.30) to stay up to date with new
+    releases by @zhaque44 in #1867
+  * build(deps): bump github.com/zclconf/go-cty from 1.16.0 to
+    1.16.1 by @dependabot in #1870
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.7 to
+    1.7.8 by @dependabot in #1869
+  * feat: Add "--no-hooks" to helmfile template by @jwlai in #1813
+  * update helm and k8s versions in ci, dockerfiles, and go.mod by
+    @yxxhero in #1872
+  * build(deps): bump github.com/helmfile/vals from 0.38.0 to 0.39.0
+    by @dependabot in #1876
+  * build(deps): bump k8s.io/apimachinery from 0.32.0 to 0.32.1 by
+    @dependabot in #1873
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.13 to
+    1.15.14 by @dependabot in #1874
+  * build: update helm-diff to v3.9.14 in Dockerfiles and init.go
+    by @yxxhero in #1877
+
+-------------------------------------------------------------------
 Fri Dec  6 06:54:25 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.169.2:

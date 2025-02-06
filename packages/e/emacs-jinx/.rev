@@ -99,4 +99,20 @@
   * Add jinx--syntax-overrides to override syntax table</comment>
     <requestid>1191443</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>73653e75fc48453bd08ccf52fe8ef99a</srcmd5>
+    <version>1.11</version>
+    <time>1738007687</time>
+    <user>anag+factory</user>
+    <comment>- Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.11
+- Update to version 1.11:
+  * Add tsx-ts-mode to jinx-camel-modes (gh#minad/jinx#219)
+  * Extract jinx--compile-flags (Fix gh#minad/jinx#218)
+  * Remove org-fold code to improve performance in Org-mode buffers.
+  * Customization group: Add link to the wiki
+  * Remove with-delayed-message workaround (Emacs#63253)
+  * Workaround broken :predicate keyword in Emacs 28 and older</comment>
+    <requestid>1240407</requestid>
+  </revision>
 </revisionlist>

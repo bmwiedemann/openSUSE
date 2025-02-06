@@ -3,7 +3,7 @@
     <param name="url">https://github.com/moby/buildkit.git</param>
     <param name="scm">git</param>
     <param name="filename">buildkit</param>
-    <param name="version">v0.18.2</param>
+    <param name="version">v0.19.0</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

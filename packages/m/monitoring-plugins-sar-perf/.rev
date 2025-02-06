@@ -113,4 +113,23 @@
     <comment></comment>
     <requestid>1194088</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>36a04e1fff678214eeae864b3149bac1</srcmd5>
+    <version>0.1+git.1272298931.4878d0c</version>
+    <time>1738007781</time>
+    <user>anag+factory</user>
+    <comment>- Fix version number, we don't want to downgrade this package.
+
+- Conversion to _service pulled source from upstream
+- Add no-python2.patch to make script python3 compatible (forwarded request 1240508 from mcepl)</comment>
+    <requestid>1240516</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e848cd6cfbf057abc1f55d61918844dc</srcmd5>
+    <version>0.1+git.1272298931.4878d0c</version>
+    <time>1738080605</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240863</requestid>
+  </revision>
 </revisionlist>

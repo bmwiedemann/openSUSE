@@ -1,14 +1,25 @@
-Index: libaom-3.8.1/CMakeLists.txt
+Index: libaom-3.11.0/CMakeLists.txt
 ===================================================================
---- libaom-3.8.1.orig/CMakeLists.txt
-+++ libaom-3.8.1/CMakeLists.txt
-@@ -451,11 +451,14 @@ if(CONFIG_AV1_DECODER AND ENABLE_EXAMPLE
+--- libaom-3.11.0.orig/CMakeLists.txt
++++ libaom-3.11.0/CMakeLists.txt
+@@ -469,22 +469,14 @@ if(CONFIG_AV1_DECODER AND ENABLE_EXAMPLE
  endif()
  
  if(CONFIG_LIBYUV OR CONFIG_TUNE_BUTTERAUGLI)
 -  add_library(yuv OBJECT ${AOM_LIBYUV_SOURCES})
 -  if(NOT MSVC)
 -    target_compile_options(yuv PRIVATE -Wno-shadow)
+-    # Many functions in libyuv trigger this warning when enabled with gcc and
+-    # clang.
+-    is_flag_present(AOM_CXX_FLAGS "-Wmissing-declarations" flag_present)
+-    if(flag_present)
+-      target_compile_options(yuv PRIVATE -Wno-missing-declarations)
+-    endif()
+-    # Many functions in libyuv trigger this warning when enabled with clang.
+-    is_flag_present(AOM_CXX_FLAGS "-Wmissing-prototypes" flag_present)
+-    if(flag_present)
+-      target_compile_options(yuv PRIVATE -Wno-missing-prototypes)
+-    endif()
 -  endif()
 -  include_directories("${AOM_ROOT}/third_party/libyuv/include")
 +  find_package(PkgConfig REQUIRED)
@@ -22,7 +33,7 @@ Index: libaom-3.8.1/CMakeLists.txt
  endif()
  
  if(CONFIG_AV1_ENCODER)
-@@ -577,10 +580,10 @@ if(CONFIG_AV1_ENCODER)
+@@ -610,10 +602,10 @@ if(CONFIG_AV1_ENCODER)
        set_target_properties(aom_static PROPERTIES LINKER_LANGUAGE CXX)
      endif()
  
@@ -36,7 +47,7 @@ Index: libaom-3.8.1/CMakeLists.txt
      endif()
    endif()
  
-@@ -730,7 +733,7 @@ if(ENABLE_EXAMPLES OR ENABLE_TESTS OR EN
+@@ -759,7 +751,7 @@ if(ENABLE_EXAMPLES OR ENABLE_TESTS OR EN
    if(CONFIG_LIBYUV)
      # Add to existing targets.
      foreach(aom_app ${AOM_APP_TARGETS})
@@ -45,10 +56,10 @@ Index: libaom-3.8.1/CMakeLists.txt
        set_property(TARGET ${aom_app} PROPERTY LINKER_LANGUAGE CXX)
      endforeach()
    endif()
-Index: libaom-3.8.1/apps/aomdec.c
+Index: libaom-3.11.0/apps/aomdec.c
 ===================================================================
---- libaom-3.8.1.orig/apps/aomdec.c
-+++ libaom-3.8.1/apps/aomdec.c
+--- libaom-3.11.0.orig/apps/aomdec.c
++++ libaom-3.11.0/apps/aomdec.c
 @@ -43,7 +43,7 @@
  #include "common/y4menc.h"
  
@@ -58,10 +69,10 @@ Index: libaom-3.8.1/apps/aomdec.c
  #endif
  
  static const char *exec_name;
-Index: libaom-3.8.1/apps/aomenc.c
+Index: libaom-3.11.0/apps/aomenc.c
 ===================================================================
---- libaom-3.8.1.orig/apps/aomenc.c
-+++ libaom-3.8.1/apps/aomenc.c
+--- libaom-3.11.0.orig/apps/aomenc.c
++++ libaom-3.11.0/apps/aomenc.c
 @@ -47,7 +47,7 @@
  #include "stats/rate_hist.h"
  

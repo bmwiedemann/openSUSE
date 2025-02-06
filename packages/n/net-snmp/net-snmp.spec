@@ -1,7 +1,7 @@
 #
 # spec file for package net-snmp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -302,8 +302,10 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/net-snmp
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/net-snmp
 %endif
 install -m 0744 %{SOURCE4} testing/
+%if 0%{?suse_version} < 1600
 ln -sf service %{buildroot}%{_sbindir}/rcsnmpd
 ln -sf service %{buildroot}%{_sbindir}/rcsnmptrapd
+%endif
 install -m 0644 /dev/null  %{buildroot}%{netsnmp_logfile}
 pushd perl
     %perl_make_install

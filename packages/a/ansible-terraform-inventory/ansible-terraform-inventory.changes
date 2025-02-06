@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 21 19:38:16 UTC 2025 - Holger Rauch <holger.rauch@posteo.de>
+
+- Enable cgo on s390x 
+
+-------------------------------------------------------------------
 Mon Dec 16 11:43:46 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Enable cgo on riscv64

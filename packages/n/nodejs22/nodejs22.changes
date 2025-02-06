@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:10:36 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.13.1:
+  * src,loader,permission: throw on InternalWorker use when
+    permission model is enabled (bsc#1236251, CVE-2025-23083)
+  * src: fix HTTP2 mem leak on premature close and ERR_PROTO
+    (bsc#1236250, CVE-2025-23085)
+  * deps: Use of Insufficiently Random Values in undici fetch()
+    (bsc#1236258, CVE-2025-22150)
+
+-------------------------------------------------------------------
 Thu Jan 16 15:00:55 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Update to 22.13.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-abrmd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,7 +122,9 @@ export LDFLAGS="$LDFLAGS -pie"
 %make_install
 # don't package libtool files as is best practice
 find %{buildroot} -type f -name "*.la" -delete -print
+%if 0%{?suse_version} < 1600
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rctpm2-abrmd
+%endif
 # don't install the systemd preset, our presets are handled by
 # systemd-presets-* packages
 rm %{buildroot}%{_prefix}/lib*/systemd/system-preset/tpm2-abrmd.preset
@@ -170,7 +172,9 @@ fi
 %{_mandir}/man7/tss2-*
 %{_mandir}/man8/tpm2-*
 %{_sbindir}/tpm2-abrmd
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rctpm2-abrmd
+%endif
 %{_unitdir}/tpm2-abrmd.service
 %if 0%{?install_dbus_files}
 # the auto activation is not whitelisted for <= SLE12-SP3

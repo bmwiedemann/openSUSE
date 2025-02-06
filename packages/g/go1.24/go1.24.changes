@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 16 20:13:48 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24rc2 (released 2024-01-16) is a release candidate version of
+  go1.24 cut from the master branch at the revision tagged
+  go1.24rc2.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2024-45341 CVE-2024-45336 CVE-2025-22865 CVE-2024-45340
+  * go#71209 go#71156 boo#1236045 security: fix CVE-2024-45341 crypto/x509: properly check for IPv6 hosts in URIs
+  * go#71212 go#70530 boo#1236046 security: fix CVE-2024-45336 net/http: persist header stripping across repeated redirects
+  * go#71216 boo#1236361 security: fix CVE-2025-22865 crypto/x509: avoid panic when parsing partial PKCS#1 private keys
+  * go#71249 boo#1236360 security: fix CVE-2024-45340 cmd/go: restore netrc preferences for GOAUTH and fix domain lookup
+
+-------------------------------------------------------------------
 Fri Dec 13 16:52:10 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24rc1 (released 2024-12-13) is a release candidate version of
   go1.24 cut from the master branch at the revision tagged
   go1.24rc1.
+  Refs boo#1236217 go1.24 release tracking
   * go1.24 requires the final point release of go1.22 or later
     for bootstrap.

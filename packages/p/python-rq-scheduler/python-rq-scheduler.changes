@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 18 11:29:45 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Nov 15 15:04:44 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.14

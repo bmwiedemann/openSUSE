@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 01:29:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't remove installed LICENSE, new poetry doesn't install it. 
+
+-------------------------------------------------------------------
 Wed Aug 14 14:54:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15

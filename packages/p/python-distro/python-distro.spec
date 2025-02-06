@@ -1,7 +1,7 @@
 #
 # spec file for package python-distro
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 %{!?license: %global license %doc}
 %bcond_without test
@@ -24,15 +30,20 @@ Version:        1.9.0
 Release:        0
 Summary:        Linux Distribution - a Linux OS platform information API
 License:        Apache-2.0
-URL:            https://github.com/nir0s/distro
+URL:            https://github.com/python-distro/distro
 Source:         https://files.pythonhosted.org/packages/source/d/distro/distro-%{version}.tar.gz
 Patch0:         assert_locale.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 # SECTION test
 %if %{with test}
@@ -64,6 +75,10 @@ sed -i '1{/\/usr\/bin\/env python/d;}' src/distro/distro.py
 export LANG=C.UTF-8
 %pytest
 %endif
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative distro
 
 %post
 %python_install_alternative distro

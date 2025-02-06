@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 23 11:53:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19
+  * Support for Python 2.7 as well as 3.7 and earlier has been removed.
+  * Generally use ``.as_integer_ratio()`` in the constructor if available.
+  * Add a classmethod ``.from_number()`` that requires a number argument,
+    not a string.
+  * Mixed calculations with other ``Rational`` classes could return the
+    wrong type.
+  * In mixed calculations with ``complex``, the Fraction is now converted
+    to ``float`` instead of ``complex`` to avoid certain corner cases in
+    complex calculation.
+  * Using ``complex`` numbers in division shows better tracebacks.
+  * Subclass instantiations and calculations could fail in some cases.
+
+-------------------------------------------------------------------
 Mon Jun 10 09:45:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18:

@@ -23,17 +23,21 @@
 %define _slurm_version _%{slurm_version}
 %endif
 
-%if %{suse_version >= 1600}
+%if 0%{?suse_version} >= 1600
 %{bcond_with munge}
 %else
 %{bcond_without munge}
 %endif
-%ifarch s390x i586
+%ifarch s390 s390x i586
 %{bcond_with slurm}
 %else
 %{bcond_without slurm}
 %endif
 %{bcond_without genders}
+
+%if 0%{?_slurm_version:1} && %{without slurm}
+ExclusiveArch:  do_not_build
+%endif
 
 %if 0%{?suse_version} >= 1550 || "%{?slurm_version}" != "18_08"
  %ifarch %ix86 %arm ppc s390

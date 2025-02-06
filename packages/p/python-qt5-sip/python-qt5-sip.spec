@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-qt5-sip
-Version:        12.13.0
+Version:        12.16.1
 Release:        0
-License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
+License:        BSD-2-Clause
 Summary:        The sip module support for PyQt5
-URL:            https://www.riverbankcomputing.com/software/sip/
+URL:            https://github.com/Python-SIP/sip
 Group:          Development/Languages/Python
-Source0:        https://files.pythonhosted.org/packages/source/P/PyQt5-sip/PyQt5_sip-%{version}.tar.gz
-Patch0:         fix-build-gcc14.patch
+Source0:        https://files.pythonhosted.org/packages/source/P/PyQt5-sip/pyqt5_sip-%{version}.tar.gz
+Patch0:         fix-license-in-setup_py.patch
+# PATCH-FIX-OPENSUSE Set minimum python version to 3.6 to support Leap distribution
 Patch100:       support-python3.6.patch
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools >= 30.3}
@@ -45,7 +46,7 @@ bindings for any C or C++ library. For example, it is also used to
 create wxPython, the Python bindings for the wxWidget toolkit.
 
 %prep
-%autosetup -p1 -n PyQt5_sip-%{version}
+%autosetup -p1 -n pyqt5_sip-%{version}
 
 %build
 %python_build
@@ -55,7 +56,7 @@ create wxPython, the Python bindings for the wxWidget toolkit.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%license LICENSE LICENSE-GPL2 LICENSE-GPL3
+%license LICENSE
 %dir %{python_sitearch}/PyQt5
 %{python_sitearch}/PyQt5/sip*
 %{python_sitearch}/PyQt5_sip-%{version}*info

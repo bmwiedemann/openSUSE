@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 23 05:32:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302209
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302209  2025-01-22 08:17:20-08:00 America/Los_Angeles
+      - #1021 don't use base (Thanks Haarg)
+      - #1022 use PerlIO::get_layers without loading PerlIO.pm (Thanks Haarg)
+      - #1023 move try_sig_mask to separate file to avoid always loading POSIX (Thanks Haarg)
+  1.302208  2025-01-21 10:19:33-08:00 America/Los_Angeles
+      - avoid closing over values in string eval when comparing values #1018 (Thanks Haarg)
+
+-------------------------------------------------------------------
 Sat Dec 28 05:33:39 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302207

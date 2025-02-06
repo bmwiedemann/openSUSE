@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 26 19:09:22 UTC 2025 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.11
+- Update to version 1.11:
+  * Add tsx-ts-mode to jinx-camel-modes (gh#minad/jinx#219)
+  * Extract jinx--compile-flags (Fix gh#minad/jinx#218)
+  * Remove org-fold code to improve performance in Org-mode buffers.
+  * Customization group: Add link to the wiki
+  * Remove with-delayed-message workaround (Emacs#63253)
+  * Workaround broken :predicate keyword in Emacs 28 and older
+
+-------------------------------------------------------------------
 Sat Aug 03 16:43:27 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
@@ -14,10 +27,10 @@ Sun Jul 07 13:16:50 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 - Update to version 1.9:
   * Expose (jinx-correct-all t) via C-u C-u C-u M-x jinx-correct
   * jinx-correct-all: Add ONLY-CHECK argument.
-  * A better fix for #156
-  * Revert "Fix bug in jinx--find-visible-pending (See #156)"
-  * Fix bug in jinx--find-visible-pending (See #156)
-  * correct link to enchant manual (#185)
+  * A better fix for gh#minad/jinx#156
+  * Revert "Fix bug in jinx--find-visible-pending (See gh#minad/jinx#156)"
+  * Fix bug in jinx--find-visible-pending (See gh#minad/jinx#156)
+  * correct link to enchant manual (gh#minad/jinx#185)
 
 -------------------------------------------------------------------
 Wed Jun 26 19:05:01 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
@@ -25,11 +38,11 @@ Wed Jun 26 19:05:01 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 - Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
   against version 1.8.
 - Update to version 1.8:
-  * Fix wrong-type-argument (Fix #175)
+  * Fix wrong-type-argument (Fix gh#minad/jinx#175)
   * README: Fix grammatical mistake
   * Ignore message-separator
   * Add jinx-save-languages
-  * jinx--word-valid-p: Do not error on invalid characters (Fix #93, #164)
+  * jinx--word-valid-p: Do not error on invalid characters (Fix gh#minad/jinx#93, gh#minad/jinx#164)
 
 -------------------------------------------------------------------
 Sat Apr 13 00:28:28 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
@@ -54,7 +67,7 @@ Mon Mar 25 18:16:35 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
   * Remove TeX-mode alias
   * jinx-exclude/include-faces, jinx-exclude-regexps: Support mode aliases
   * jinx-correct-all: Restrict corrections to marked region
-  * jinx-correct: Ensure that word is saved without text properties (Fix #140)
+  * jinx-correct: Ensure that word is saved without text properties (Fix gh#minad/jinx#140)
 
 -------------------------------------------------------------------
 Mon Feb 26 21:13:55 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
@@ -70,7 +83,7 @@ Mon Feb 26 17:34:45 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
   * Fix interaction bug with the newest version of AUCTeX, where the major mode
     got changed unexpectedly.
   * No need to use hashed symbol as argument for derived-mode-p
-  * Fix deadlock on macOS during Jinx startup (Fix #91, #113)
+  * Fix deadlock on macOS during Jinx startup (Fix gh#minad/jinx#91, gh#minad/jinx#113)
   * Revert "Simplify rescheduling"
   * timer-activate-when-idle: Pass DONT-WAIT=t
 
@@ -79,7 +92,7 @@ Wed Jan 31 08:37:20 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Rebase patches and remove those no longer required
 - Update to version 1.2:
-  * Fix deadlock on macOS during Jinx startup (Fix #91, #113)
+  * Fix deadlock on macOS during Jinx startup (Fix gh#minad/jinx#91, gh#minad/jinx#113)
   * Revert "Simplify rescheduling"
   * timer-activate-when-idle: Pass DONT-WAIT=t
   * jinx--base-syntax-table: Exclude private use areas
@@ -97,20 +110,20 @@ Wed Jan 31 08:37:20 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
   * New function jinx--session-suggestions
   * jinx-mode: Extract jinx--reschedule-hooks variable
   * derived-mode-p: Calling convention change
-  * Handle LANG=C or LANG=POSIX environment variables (Fix #116)
+  * Handle LANG=C or LANG=POSIX environment variables (Fix gh#minad/jinx#116)
   * Fix some package-lint warnings
-  * Revert "jinx-correct: Setup minibuffer keymaps later (Fix #112)"
-  * jinx-correct: Setup minibuffer keymaps later (Fix #112)
-  * Module initialization: Print a message for outdated Enchant (Fix #111)
+  * Revert "jinx-correct: Setup minibuffer keymaps later (Fix gh#minad/jinx#112)"
+  * jinx-correct: Setup minibuffer keymaps later (Fix gh#minad/jinx#112)
+  * Module initialization: Print a message for outdated Enchant (Fix gh#minad/jinx#111)
   * Require libenchant 2.3.1 or newer
   * Exclude Gnus cite faces inside message mode
   * jinx-mode: Support disabling via file-local variable
   * Update face list
-  * Exclude cite faces inside message mode (#108)
+  * Exclude cite faces inside message mode (gh#minad/jinx#108)
   * README: Mention NixOS
   * Update jinx-exclude-regexps
   * Update Org exclude faces
-  * Update Org excluded faces, add org-drawer (Fix #99)
+  * Update Org excluded faces, add org-drawer (Fix gh#minad/jinx#99)
   * Use quotes in comment
   * Fix docstring
   * Improve jinx-correct docstring
@@ -119,21 +132,21 @@ Wed Jan 31 08:37:20 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
   * Improve jinx-correct-at-point
   * Code cleanup, use save-excursion
   * jinx-correct: Add dispatching to jinx-correct-at-point
-  * Implement jinx-correct-at-point by faking an overlay (#89)
+  * Implement jinx-correct-at-point by faking an overlay (gh#minad/jinx#89)
   * Use without-restriction
-  * jinx-correct: Add prefix keys to session word suggestions (See #96, #97)
-  * jinx-correct: Suggestion from session words (Fix #97)
+  * jinx-correct: Add prefix keys to session word suggestions (See gh#minad/jinx#96, gh#minad/jinx#97)
+  * jinx-correct: Suggestion from session words (Fix gh#minad/jinx#97)
   * Remove unused variable
   * Fix condition
   * Replace jinx-include-modes with global-jinx-modes
   * jinx--word-valid-p: Simplify
   * jinx--word-valid-p: More restrictive check of capitalized words
-  * jinx--word-valid-p: Allow capitalized words (See #96)
+  * jinx--word-valid-p: Allow capitalized words (See gh#minad/jinx#96)
   * Simplify jinx-correct
   * jinx-correct: Refontify should not be necessary
   * jinx-languages: Ensure that jinx-mode is enabled
   * jinx-next/previous: Add command-modes
-  * jinx-exclude-regexps: Ignore hyphens used as bullet points (Fix #87)
+  * jinx-exclude-regexps: Ignore hyphens used as bullet points (Fix gh#minad/jinx#87)
 
 -------------------------------------------------------------------
 Sun Oct  1 00:12:19 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>

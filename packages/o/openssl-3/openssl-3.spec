@@ -144,6 +144,8 @@ Patch64:        openssl-3-fix-memleak-s390x_HMAC_CTX_copy.patch
 # PATCH-FIX-UPSTREAM: Fix failing tests on ppc64 jsc#PED-10280
 Patch65:        openssl-3-fix-sha3-squeeze-ppc64.patch
 Patch66:        openssl-3-fix-quic_multistream_test.patch
+# PATCH-FIX-UPSTREAM: bsc#1236136 CVE-2024-13176: Fix timing side-channel in ECDSA signature computation
+Patch67:        openssl-CVE-2024-13176.patch
 
 BuildRequires:  pkgconfig
 

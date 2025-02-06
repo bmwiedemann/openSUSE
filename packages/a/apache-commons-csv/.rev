@@ -71,4 +71,12 @@
     <comment>1.12.0</comment>
     <requestid>1208204</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>833f2f2e3dfdbcc30e4c242d13dd3c5b</srcmd5>
+    <version>1.13.0</version>
+    <time>1738007735</time>
+    <user>anag+factory</user>
+    <comment>Upgrade to 1.13.0</comment>
+    <requestid>1240470</requestid>
+  </revision>
 </revisionlist>

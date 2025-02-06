@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 14:46:01 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip test_httpretty_provides_easy_access_to_querystrings as it is
+  flaky on OBS workers
+
+-------------------------------------------------------------------
 Thu May 23 09:37:54 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing with requests 2.32.X

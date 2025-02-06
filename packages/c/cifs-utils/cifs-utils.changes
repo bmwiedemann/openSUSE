@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 28 09:10:24 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Require a cifs.idmap plugin, suggest wb-cifs-idmap-plugin as
+  default (idmapwb.so) 
+
+-------------------------------------------------------------------
+Tue Jan 21 16:13:31 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Migrate away from update-alternatives, replaced by package
+  conflicts (bsc#1235788);
+
+-------------------------------------------------------------------
 Fri Oct 11 12:53:30 UTC 2024 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update to version 7.1:

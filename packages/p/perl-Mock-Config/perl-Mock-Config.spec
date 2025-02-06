@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mock-Config
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Mock-Config
-Version:        0.03
-Release:        0
 %define cpan_name Mock-Config
-Summary:        Temporarily Set Config or Xsconfig Values
+Name:           perl-Mock-Config
+Version:        0.40.0
+Release:        0
+# 0.04 -> normalize -> 0.40.0
+%define cpan_version 0.04
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Mock-Config/
-Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{version}.tar.gz
+Summary:        Temporarily set Config or XSConfig values
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Mock::Config) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 temporarily set Config or XSConfig values
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -50,7 +52,6 @@ temporarily set Config or XSConfig values
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

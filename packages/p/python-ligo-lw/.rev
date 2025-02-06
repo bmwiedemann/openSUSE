@@ -63,4 +63,12 @@
     <comment>Add ligo-lw-python3.12-compat.patch: Change `PyObject_HEAD_INIT`  to `PyVarObject_HEAD_INIT` for compatibilty with python 3.12 and GCC 14 (https://git.ligo.org/kipp/python-ligo-lw/-/issues/29).</comment>
     <requestid>1197322</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c59f906504f1066599d2123ab178e1c8</srcmd5>
+    <version>1.8.3</version>
+    <time>1737722477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240101</requestid>
+  </revision>
 </revisionlist>

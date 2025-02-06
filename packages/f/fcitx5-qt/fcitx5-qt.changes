@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:10:40 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.9
+  * refactor: use range-based for loop to enhance readability
+  * refactory: replace non-empty QString constructors with
+    QStringLiteral
+
+-------------------------------------------------------------------
 Sun Jan  5 05:42:10 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.8

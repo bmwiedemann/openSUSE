@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:39:03 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.39.0:
+  * Add which() and require() for finding executables
+  * Add no-exit-message Setting and [exit-message] attribute
+  * Configure alias style in --list with --alias-style
+  * Add regex mismatch conditional operator
+  * Add read_to_string(path) function
+  * Rename read_to_string() to read()
+  * Keep [private] attribute when formatting assignments
+  * Format if … else if … without superfluous braces
+  * Fix error when lexing ! at end-of-file
+  * Handle recipes in submodules in fish completion script
+  * Add tests for require()
+  * Evaluate concatenations and joins from left to right
+  * Disable links to empty chapters in book
+  * Clarify that trim_*_match functions take subtrings
+  * Check attributes in parser instead of analyzer
+  * Ignore I/O errors when writing changelog to stdout
+  * Add quiet setting and fix typos in readme
+  * Update readme to use env() instead of env_var*()
+  * Document using || to provide default for empty environment variable
+  * Refactor Line predicates
+  * Fix typos in README.md
+  * Add full example getting XDG user directory to readme
+  * Document weird behavior of duplicate definitions in imports
+  * Update readme to reflect actual behavior of user directory functions
+  * Document running python recipes with uv
+  * Sort functions alphabetically
+  * Fix truncated bang operator error message
+  * Include source path in dump JSON
+  * Add attribute set
+
+-------------------------------------------------------------------
 Fri Dec 20 02:33:31 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Cleanup specfile

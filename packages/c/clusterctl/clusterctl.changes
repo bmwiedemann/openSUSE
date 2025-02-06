@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jan 22 06:07:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.4:
+  * Update CAPO quick-start docs
+  * More comments
+  * More feedback
+  * Address comments
+  * Fix unit test
+  * Add k/v pairs describing the overall status of the control
+    plane
+  * Improve Machine create and delete logs
+  * [release-1.9] 🌱 inmemory: fix watch to continue serving based
+    on resourceVersion parameter (#11710)
+  * clustercache: Prevent concurrent map read/write when creating a
+    cache
+  * Address comments
+  * Improve Machine remediation logs
+  * Sort providers A-Z
+  * Adds RKE2 to list of providers
+  * Also patch external refs if the UID differs
+  * Bump coredns support in docs
+  * Bump github.com/coredns/corefile-migration to v1.0.25
+  * patch: Call patchHelper only if necessary when reconciling
+    external refs
+  * patchHelper: call toUnstructured only if necessary
+  * KCP: stop recreating logger for etcd client
+  * Fix resync in in-memory provider
+  * Fix formatting of blocking lifecycle hook condition message
+  * Reduce log level of noisy logs in ExtensionConfig and topology
+    Cluster controller
+  * [release-1.9] 🌱 Add Infrastructure provider Harvester (#11653)
+  * Fix broken links in the release team handbooks
+  * Bump to controller-runtime v0.19.4
+  * Bump envtest to v1.32.0
+  * Fix log messages in Cluster set status code + some minor unit
+    test fixes
+  * fix a link for Cluster API videos and tutorials
+  * Machine: sort list of pre-drain hooks for stable condition
+    messages
+
+-------------------------------------------------------------------
 Mon Dec 23 14:08:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.3:

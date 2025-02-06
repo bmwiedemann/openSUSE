@@ -1,4 +1,33 @@
 --------------------------------------------------------------------
+Thu Jan 30 16:23:22 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#755
+- system-user-nobody needed by latest rpcbind package (bsc#1236617)
+- 17.152
+
+--------------------------------------------------------------------
+Thu Jan 23 15:44:46 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#754
+- allow arch-dependent module list (bsc#1213879)
+- remove some modules on ppc64le (bsc#1213879)
+- 17.151
+
+--------------------------------------------------------------------
+Wed Jan 22 16:43:11 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#753
+- remove obsolete nscd (bsc#1236238)
+- 17.150
+
+--------------------------------------------------------------------
+Thu Jan 16 12:54:51 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#751
+- rpm2cpio is symlink to rpm2archive in rpm 4.20 (bsc#1235897)
+- 17.149
+
+--------------------------------------------------------------------
 Wed Jan 8 12:37:51 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#749

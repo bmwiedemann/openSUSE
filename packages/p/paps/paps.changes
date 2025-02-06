@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 23 18:28:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing python-rpm-macros BR.
+
+-------------------------------------------------------------------
+Thu Jan 23 15:41:45 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add no-python2.patch to remove Python 2 shebangs, so they don’t
+  create false Requires (gh#dov/paps!75).
+
+-------------------------------------------------------------------
+Wed Jan 22 12:20:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix shebangs of binaries: src-to-paps referenced /usr/bin/python,
+  which is python2.
+
+-------------------------------------------------------------------
 Wed Sep 18 08:59:21 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to paps 0.8.0

@@ -16,9 +16,9 @@
 #
 
 
-%define c_lib   libf3d2
+%define c_lib   libf3d3
 Name:           f3d
-Version:        2.5.1
+Version:        3.0.0
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause
@@ -111,7 +111,7 @@ Library for f3d.
     -DBUILD_TESTING=OFF \
     -DF3D_BINDINGS_JAVA=OFF \
     -DF3D_BINDINGS_PYTHON=OFF \
-    -DF3D_LINUX_APPLICATION_LINK_FILESYSTEM=ON \
+    -DF3D_LINUX_LINK_FILESYSTEM=ON \
     -DF3D_LINUX_GENERATE_MAN=ON \
     -DF3D_LINUX_INSTALL_DEFAULT_CONFIGURATION_FILE_IN_PREFIX=ON \
     -DF3D_MODULE_EXTERNAL_RENDERING=OFF \
@@ -153,6 +153,10 @@ install -Dm644 plugins/occt/configs/config.d/10_occt.json %{buildroot}%{_sysconf
 %dir %{_datadir}/%{name}/plugins
 %{_datadir}/%{name}/plugins/*.json
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%dir %{_datadir}/icons/HighContrast
+%dir %{_datadir}/icons/HighContrast/scalable
+%dir %{_datadir}/icons/HighContrast/scalable/apps
+%{_datadir}/icons/HighContrast/scalable/apps/f3d.svg
 %{_datadir}/metainfo/app.%{name}.F3D.metainfo.xml
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/%{name}*.thumbnailer

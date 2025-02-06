@@ -1,7 +1,7 @@
 #
 # spec file for package falcoctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           falcoctl
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        CLI / Administrative tooling for Falco
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         falcoctl-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23.4
 BuildRequires:  zsh
 
 %description

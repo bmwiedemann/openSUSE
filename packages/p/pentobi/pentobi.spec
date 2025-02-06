@@ -1,7 +1,7 @@
 #
 # spec file for package pentobi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pentobi
-Version:        25.2
+Version:        26.2
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
@@ -34,10 +34,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-linguist-devel
 BuildRequires:  rsvg-convert
 BuildRequires:  pkgconfig(Qt6Concurrent)
-BuildRequires:  pkgconfig(Qt6Core) >= 6.4
+BuildRequires:  pkgconfig(Qt6Core) >= 6.5
 BuildRequires:  pkgconfig(Qt6QuickControls2)
 BuildRequires:  pkgconfig(Qt6WebView)
 BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(appstream)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files

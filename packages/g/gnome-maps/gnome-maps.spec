@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        47.3
+Version:        47.4
 Release:        0
 Summary:        Maps Application for GNOME
 License:        Apache-2.0 AND CC-BY-3.0 AND GPL-2.0-or-later AND BSD-3-Clause AND ISC AND MIT

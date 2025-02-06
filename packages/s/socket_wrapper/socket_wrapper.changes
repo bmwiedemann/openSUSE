@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:12:45 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.4.4
+  * Fixed setsockopt(SO_REUSEPORT) with glibc 2.40
+
+-------------------------------------------------------------------
 Thu Jun 13 05:50:23 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.4.3

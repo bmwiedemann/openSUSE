@@ -1,7 +1,7 @@
 #
 # spec file for package readline6
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ Patch21:        readline-6.3-input.dif
 Patch22:        readline-6.1-wrap.patch
 Patch23:        readline-5.2-conf.patch
 Patch24:        readline-6.2-metamode.patch
-Patch25:        readline-6.2-endpw.dif
+Source25:       readline-6.2-endpw.nodif
 Patch27:        readline-6.2-xmalloc.dif
 Patch30:        readline-6.3-destdir.patch
 Patch31:        readline-6.3-rltrace.patch
@@ -103,7 +103,7 @@ done
 %patch -P 22 -p2 -b .wrap
 %patch -P 23 -p2 -b .conf
 %patch -P 24 -p2 -b .metamode
-#%patch -P 25 -p2 -b .endpw
+#%%patch -P 25 -p2 -b .endpw
 %patch -P 31 -p2 -b .tmp
 %patch -P 27 -p0 -b .xm
 %patch -P 30 -p0 -b .destdir

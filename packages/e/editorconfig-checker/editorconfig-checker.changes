@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:26:03 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.2.0:
+  * chore(main): release 3.2.0 (#426)
+  * feat: add support for env var NO_COLOR (#429)
+  * chore(deps): bump anchore/sbom-action from 0.17.9 to 0.18.0
+    (#431)
+  * chore: replace token bound to a human by one bound to a bot
+    (#422)
+  * fix: improve default excludes (#427)
+  * feat: only output "0 errors found" when verbose output is
+    enabled (#423)
+  * chore: replace DOCKER_USERNAME secret by a variable (#421)
+  * chore: remove VERSION file (#419)
+  * chore: remove old build-binary-in-docker Dockerfile (#418)
+  * chore(deps): bump wagoid/commitlint-github-action from 6.2.0 to
+    6.2.1 (#424)
+
+-------------------------------------------------------------------
 Mon Jan 13 06:11:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.1.2:

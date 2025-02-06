@@ -292,4 +292,49 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
   deprecated %patchN.</comment>
     <requestid>1178493</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f2d930f079e516e73bd714eeb25dc174</srcmd5>
+    <version>2.9.8</version>
+    <time>1738007730</time>
+    <user>anag+factory</user>
+    <comment>- package cleanup, coordinated with owasp-modsecurity-crs cleanup
+- version update to 2.9.8 (changed upstream: Trustwave -&gt; OWASP)
+  * Fixed ap_log_perror() usage
+  * Memory leaks + enhanced logging
+  * CI improvement: First check syntax &amp; always display error/audit logs
+  * Fixed assert() usage
+  * Removed useless code
+  * feat: Check if the MP header contains invalid character
+  * Use standard httpd logging format in error log
+  * fix msc_regexec() != PCRE_ERROR_NOMATCH strict check
+  * Move xmlFree() call to the right place
+  * Add collection size in log in case of writing error
+  * Passing address of lock instead of lock in acquire_global_lock()
+  * Invalid pointer access in case rule id == NOT_SET_P
+  * Show error.log after httpd start in CI
+  * chore: add pull request template
+  * chore: add gitignore file
+  * Possible double free
+  * Set 'jit' variable's initial value
+  * Missing null byte + optimization
+  * fix: remove usage of insecure tmpname
+  * docs: update copyright
+  * Enhanced logging [Issue #3107]
+  * Check for null pointer dereference (almost) everywhere
+  * Fix possible segfault in collection_unpack
+  * fix: Replace obsolete macros
+  * chore: update bug-report-for-version-2-x.md
+  * feat: Add more steps: install built module and restart the server
+  * Add new flag: --without-lua
+  * Initial release of CI worklow (forwarded request 1239893 from pgajdos)</comment>
+    <requestid>1240477</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>c45e7ccb060345cb252a9988d596c781</srcmd5>
+    <version>2.9.8</version>
+    <time>1738072783</time>
+    <user>anag+factory</user>
+    <comment>- fixes CVE-2022-48279 [bsc#1207378], CVE-2023-24021 [bsc#1207379]</comment>
+    <requestid>1240740</requestid>
+  </revision>
 </revisionlist>

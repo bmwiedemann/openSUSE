@@ -161,4 +161,12 @@
   * Fix bugs (forwarded request 1194133 from hillwood)</comment>
     <requestid>1194134</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd1e1d4d29a801f08d127da023a91fd8</srcmd5>
+    <version>6.0.11</version>
+    <time>1737560325</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239495</requestid>
+  </revision>
 </revisionlist>

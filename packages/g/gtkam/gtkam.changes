@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 23 14:58:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gimp plugin: gtkam does not (yet) support gimp 3.
+
+-------------------------------------------------------------------
 Mon Nov 18 15:48:44 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - gtkam 1.1 release

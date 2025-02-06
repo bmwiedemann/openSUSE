@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deprecation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.deprecation
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Zope Deprecation Infrastructure
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.deprecation
-Source:         https://files.pythonhosted.org/packages/source/z/zope.deprecation/zope.deprecation-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.deprecation/zope_deprecation-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,8 +49,8 @@ Provides:       %{python_module zope.deprecation-doc = %{version}}
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n zope.deprecation-%{version}
-rm -rf zope.deprecation.egg-info
+%setup -q -n zope_deprecation-%{version}
+rm -rf zope_deprecation.egg-info
 
 %build
 %python_build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 29 06:45:37 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.12
+  * new addon factory mechanism to allow static link
+  * modifier only key timeout
+  * improve virtual keyboard object handling for zwp_input_method_v2
+
+-------------------------------------------------------------------
 Sat Jan  4 11:19:52 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.11

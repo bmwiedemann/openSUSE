@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 28 18:45:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.1:
+  * Bugfixes
+    - Ensure that cache directory is writable (#453) @ssbarnea
+
+-------------------------------------------------------------------
+Mon Jan 27 16:42:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.0:
+  * Major
+    - Inject venv site-packages at the top of collection path (test
+      isolation) (#447) @ssbarnea
+    - Fail if old ANSIBLE_COLLECTIONS_PATHS is detected (#449)
+      @ssbarnea
+  * Bugfixes
+    - Patch #449 to use ANSIBLE_COLLECTIONS_PATH (#450) @ssbarnea
+
+-------------------------------------------------------------------
 Wed Jan 15 07:12:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.0.0:

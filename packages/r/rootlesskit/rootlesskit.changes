@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 20 06:40:39 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 2.3.2:
+  * v2.3.2
+  * CI: update Docker (27.5.0)
+  * go.mod: github.com/insomniacslk/dhcp v0.0.0-20250109001534-8abf58130905
+  * Build(deps): Bump actions/attest-build-provenance from 1 to 2
+  * dependabot: add github-actions
+  * CI: update pasta (2024_12_11.09478d5)
+  * pasta: set `--host-lo-to-ns-lo`
+  * go fmt
+  * Build(deps): Bump golang.org/x/net from 0.28.0 to 0.33.0
+  * Build(deps): Bump golang.org/x/sys from 0.28.0 to 0.29.0
+  * fix: allow to propagate the address specified in -p option
+  * Build(deps): Bump golang.org/x/sys from 0.27.0 to 0.28.0
+  * Build(deps): Bump golang.org/x/sys from 0.25.0 to 0.27.0
+  * Build(deps): Bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1
+  * Build(deps): Bump github.com/urfave/cli/v2 from 2.27.4 to 2.27.5
+  * Build(deps): Bump golang.org/x/sys from 0.24.0 to 0.25.0
+  * port/builtin: return proper error for sctp
+  * Build(deps): Bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.0
+  * docs/network: Mention that pasta won't work with some Ubuntu package versions
+  * docs/network: Don't suggest removing AppArmor rules for pasta
+  * pasta: Update comment about issue with AppArmor and creation of user namespace
+  * v2.3.1+dev
+
+-------------------------------------------------------------------
 Thu Sep 05 10:58:24 UTC 2024 - dcermak@suse.com
 
 - Update to version 2.3.1:

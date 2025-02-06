@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:24:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.0
+  * Add `google.iam.v1.resource_policy_member_pb2` (2e1af7c)
+  * Add support for Python 3.13 (2e1af7c)
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Mon Jul 15 13:33:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.13.1

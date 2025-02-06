@@ -1,7 +1,7 @@
 #
 # spec file for package nethogs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nethogs
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        Network Bandwidth Usage Monitor
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ which PID is causing this. This makes it easy to indentify programs that have
 gone wild and are suddenly taking up your bandwidth.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build \

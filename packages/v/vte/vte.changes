@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 25 16:25:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.78.3:
+  + widget: Guard signal disconnect on non-null object
+  + widget: Scroll the alternate screen into the viewport
+
+-------------------------------------------------------------------
 Sun Nov 24 20:29:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.78.2:

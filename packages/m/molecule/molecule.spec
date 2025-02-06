@@ -1,7 +1,7 @@
 #
 # spec file for package molecule
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 
 %bcond_without test
 Name:           molecule
-Version:        24.12.0
+Version:        25.2.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
@@ -56,10 +56,11 @@ BuildRequires:  ansible-lint >= 6.12.1
 BuildRequires:  %{ansible_python}-ansi2html >= 1.8.0
 BuildRequires:  %{ansible_python}-coverage >= 7.0.3
 BuildRequires:  %{ansible_python}-filelock >= 3.9.0
-BuildRequires:  %{ansible_python}-pexpect >= 4.8.0
+BuildRequires:  %{ansible_python}-pexpect >= 4.9.0
 BuildRequires:  %{ansible_python}-pytest >= 7.2.0
+BuildRequires:  %{ansible_python}-pytest-instafail
 BuildRequires:  %{ansible_python}-pytest-mock >= 3.10.0
-BuildRequires:  %{ansible_python}-pytest-plus >= 0.4.0
+BuildRequires:  %{ansible_python}-pytest-plus >= 0.7.0
 BuildRequires:  %{ansible_python}-pytest-xdist >= 3.1.0
 BuildRequires:  %{ansible_python}-yamllint
 %endif
@@ -67,7 +68,7 @@ BuildRequires:  %{ansible_python}-yamllint
 # https://github.com/ansible/molecule/blob/main/.config/requirements.in
 BuildRequires:  %{ansible_python}-base >= 3.9
 BuildRequires:  ansible-core >= 2.12.10
-BuildRequires:  %{ansible_python}-ansible-compat >= 24.6.1
+BuildRequires:  %{ansible_python}-ansible-compat >= 25.1.0
 BuildRequires:  %{ansible_python}-click >= 8.0
 BuildRequires:  %{ansible_python}-click-help-colors >= 0.9
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
@@ -81,7 +82,7 @@ BuildRequires:  %{ansible_python}-wcmatch >= 8.1.2
 BuildRequires:  fdupes
 # https://github.com/ansible/molecule/blob/main/.config/requirements.in
 Requires:       %{ansible_python}-base >= 3.9
-Requires:       %{ansible_python}-ansible-compat >= 24.6.1
+Requires:       %{ansible_python}-ansible-compat >= 25.1.0
 Requires:       ansible-core >= 2.12.10
 Requires:       %{ansible_python}-click >= 8.0
 Requires:       %{ansible_python}-click-help-colors >= 0.9

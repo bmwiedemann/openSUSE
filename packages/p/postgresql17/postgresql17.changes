@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 29 10:20:21 UTC 2025 - JS <obs.coke518@passinbox.com>
+
+- Apply postgresql-tzdata2025a.patch regardless of
+  whether LLVM JIT is enabled
+
+-------------------------------------------------------------------
+Tue Jan 28 12:23:29 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Fix build, add postgresql-tzdata2025a.patch
+
+-------------------------------------------------------------------
 Thu Dec 26 07:51:33 UTC 2024 - JS <obs.coke518@passinbox.com>
 
 - Disable LLVM JIT on loongarch64

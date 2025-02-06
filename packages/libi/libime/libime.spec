@@ -17,7 +17,7 @@
 
 
 Name:           libime
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
@@ -26,7 +26,7 @@ URL:            https://github.com/fcitx/libime
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 #PATCH-FIX-UPSTREAM boost 1.66 in leap 15.5 doesn't have container_hash/hash.hpp, it was splitted
 # from functional/hash.hpp since boost 1.67
-Patch:          %{name}-1.1.9-boost166.patch
+Patch:          %{name}-1.1.10-boost166.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules

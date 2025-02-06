@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 28 07:44:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer require python: the peak time of LSB is over, we mainly
+  carry it for obscure 3rd-parties. But even those should no longer
+  depend on python 2.
+
+-------------------------------------------------------------------
 Thu Oct 28 08:51:24 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Change all requires to be in /usr (bsc#1191073)

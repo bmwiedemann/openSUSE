@@ -2,7 +2,7 @@
 # spec file for package libostree
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_without     ed25519
 %bcond_with        tests
 Name:           libostree
-Version:        2024.10
+Version:        2025.1
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later

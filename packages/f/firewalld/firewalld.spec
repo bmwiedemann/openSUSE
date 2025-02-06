@@ -1,7 +1,7 @@
 #
 # spec file for package firewalld
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -182,7 +182,9 @@ desktop-file-install --delete-original \
 %{_bindir}/install -c -D -m 600 %{buildroot}%{_sysconfdir}/sysconfig/firewalld %{buildroot}%{_fillupdir}/sysconfig.%{name}
 rm %{buildroot}%{_sysconfdir}/sysconfig/firewalld
 
+%if 0%{?suse_version} < 1600
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcfirewalld
+%endif
 
 # add firewalld zone (rhbz#1817022)
 install -dp %{buildroot}%{_prefix}/lib/firewalld/zones
@@ -277,7 +279,9 @@ fi
 %doc README.md
 %license COPYING
 %{_sbindir}/firewalld
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcfirewalld
+%endif
 %{_bindir}/firewall-cmd
 %{_bindir}/firewall-offline-cmd
 %dir %{_prefix}/lib/firewalld

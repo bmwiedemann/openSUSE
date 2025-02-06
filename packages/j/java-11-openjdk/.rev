@@ -599,4 +599,12 @@
     <comment>October 2024 CPU changes</comment>
     <requestid>1218723</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>3d399ea444d69f8ac55a0c3c075912f9</srcmd5>
+    <version>11.0.26.0</version>
+    <time>1737651410</time>
+    <user>anag+factory</user>
+    <comment>January 2025 CPU</comment>
+    <requestid>1239547</requestid>
+  </revision>
 </revisionlist>

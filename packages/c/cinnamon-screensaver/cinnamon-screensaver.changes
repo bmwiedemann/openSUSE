@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 20 01:59:07 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- move typelib back to the right location
+
+-------------------------------------------------------------------
+Sun Jan 12 04:10:37 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 6.4.0
+  * libscreensaver: fix detection of monitor hotplug
+  * keybindings: Ignore shift-f10
+  * fix executable libraries
+  * Simplify authClient.py pam helper path
+  * unlock dialog: Allow password visibility to be toggled
+  * cs-backup-locker.c: Exit gracefully if incorrect arguments are given
+
+-------------------------------------------------------------------
 Thu Aug 15 08:47:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.2.0:

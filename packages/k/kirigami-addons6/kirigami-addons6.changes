@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan 19 09:46:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.0
+  https://carlschwan.eu/2025/01/16/kirigami-addons-1.7.0/
+  * New component: ConvergentContextMenu
+  * Kirigami Addons’ shortcut editor can now be embedded in
+    normal ConfigurationView via a new
+    ConfigurationModule: ShortcutsConfigurationModule
+  * The FormCardPage now uses a slighly less grey to get more
+    contrasts with the sidebar
+
+-------------------------------------------------------------------
 Mon Dec  2 08:11:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.6.0

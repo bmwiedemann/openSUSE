@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:03:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.24.1
+  * server: use single line pasv response (fix #142)
+- from versiom 0.24.0
+  * remove documentation dependencies from pyproject.toml
+    (moved to docs/requirements.txt)
+  * include symlink destination in path info for unix legacy mode (#169)
+  * update documentation links (#180)
+
+-------------------------------------------------------------------
 Wed Oct 23 11:58:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.23.1

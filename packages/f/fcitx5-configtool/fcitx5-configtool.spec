@@ -28,7 +28,7 @@
 %define is_old_kcm %{lua: if posix.access("%{_datadir}/kservices5") then print(1) else print(0) end}
 
 Name:           %pname
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later

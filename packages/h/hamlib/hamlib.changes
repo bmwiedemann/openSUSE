@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:28:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.6.1:
+  * Fix C++ builds failing on rig_list_foreach function
+  * Fix IC9100 rigctld startup to end up on VFOA
+  * Fix grig build by removing sys/socket.h -- apparently not needed
+  * Add new QMX entry to fix incompability with QDX
+  * Fix IC746/PROT to not use data byte
+  * FLRig to add DATA-U DATA-L modes
+  * Fix TS570 RIG_LEVEL_STRENGTH with cal table
+  * Remove get_powerstat from IC785X -- not supported
+  * Fix SDRConsole by removing lots of things it does not have
+- drop patches:
+  * 0001-Change-rig_list_foreach-back-to-using-const-argument.patch
+  * 0002-Fix-testrigopen.c-rig_list_foreach.patch
+  * 0003-Fix-listrigs.s-rig_list_foreach.patch
+  * 0004-Fix-rig_list_foreach-in-hamlibmodels.c.patch
+  * 0005-Fix-rig_list_foreach-in-testmW2power.c.patch
+
+-------------------------------------------------------------------
 Sat Jan 11 17:26:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add patches from upstream fixing Tucnak build:

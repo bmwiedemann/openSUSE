@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-dns-route53
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-route53
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Route53 DNS Authenticator plugin for Certbot
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-rou
 BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module boto3 >= 1.15.15}
 BuildRequires:  %{python_module certbot >= %{version}}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,10 +47,10 @@ records using AWS Route53.
 %setup -q -n certbot_dns_route53-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

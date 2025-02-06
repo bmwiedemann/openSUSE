@@ -242,4 +242,42 @@
   * fix logic of installcheck fatality</comment>
     <requestid>1204743</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fd0ebc0fe46899f080b184bc88d21bc0</srcmd5>
+    <version>0.4.21</version>
+    <time>1738009993</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.21
+  * Use generate_sbom from OBS server instance if available</comment>
+    <requestid>1240573</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b504f03cd3a6b15e9125b717a33c698a</srcmd5>
+    <version>0.5.1</version>
+    <time>1738163423</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.5.1
+  * use mksusecd instead of xorriso, fixes boot partition, requires root
+
+- update to version 0.5.0
+  * New option to add generated rpm-md tree to a base image.
+    Can be used to create an agama based offline installer image.</comment>
+    <requestid>1241188</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5f6cf8c1cd58cca6be113a1b2cc9d1fb</srcmd5>
+    <version>0.5.2</version>
+    <time>1738245178</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.5.2
+  Handle baseisos like meta packages
+  
+  This means we don't expect them deployed in the build host system
+  anymore. Instead we search for them in the given repositories for
+  the product and unpack the containment rpm.
+  
+  The wanted side effect of this is that products will get rebuild,
+  when the baseiso has changed now.</comment>
+    <requestid>1241306</requestid>
+  </revision>
 </revisionlist>

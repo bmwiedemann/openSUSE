@@ -1,7 +1,7 @@
 #
 # spec file for package hexyl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           hexyl
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        A command-line hex viewer
 License:        Apache-2.0
@@ -44,6 +44,9 @@ install -D -m 0644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
+
+%check
+%{cargo_test}
 
 %install
 cargo install --no-track --root=%{buildroot}%{_prefix} --path .

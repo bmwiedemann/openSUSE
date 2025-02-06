@@ -1,7 +1,7 @@
 #
 # spec file for package SimGear
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main
 Source99:       SimGear-rpmlintrc
 # PATCH-FIX-UPSTREAM simgear-boost-1.81.patch - fix building with boost >= 1.81
 Patch0:         simgear-boost-1.81.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.com/flightgear/simgear/-/commit/5bb023647114267141a7610e8f1ca7d6f4f5a5a8.patch#/add_NasalIORulesChecker.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libOpenSceneGraph-devel

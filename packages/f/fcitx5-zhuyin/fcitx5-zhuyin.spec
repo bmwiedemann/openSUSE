@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-zhuyin
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Libzhuyin Wrapper for Fcitx5
 License:        GPL-2.0-or-later
@@ -62,8 +62,8 @@ Libzhuyin Wrapper for Fcitx5.
 %{_fcitx5_addondir}/zhuyin.conf
 %{_fcitx5_imconfdir}/zhuyin.conf
 %{_fcitx5_datadir}/zhuyin
-%{_datadir}/icons/hicolor/*/apps/fcitx-zhuyin*
-%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-zhuyin*
+%{_datadir}/icons/hicolor/*/apps/fcitx-bopomofo*
+%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-bopomofo*
 %{_fcitx5_datadir}/lua/imeapi/extensions/zhuyin.lua
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Zhuyin.metainfo.xml
 

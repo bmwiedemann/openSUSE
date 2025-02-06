@@ -100,4 +100,12 @@
 - requires python-pytz for build</comment>
     <requestid>1219950</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>732f7637ac80bbed30bc574935abd00f</srcmd5>
+    <version>2.7.0</version>
+    <time>1737490283</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239308</requestid>
+  </revision>
 </revisionlist>

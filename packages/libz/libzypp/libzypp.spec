@@ -57,7 +57,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.35.16
+Version:        17.35.19
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -90,7 +90,7 @@ Recommends:     logrotate
 # lsof is used for 'zypper ps':
 Recommends:     lsof
 %endif
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.10
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(libudev)
 %if 0%{?suse_version} >= 1330
@@ -428,9 +428,9 @@ done
 
 %files devel
 %defattr(-,root,root)
+%{_libdir}/cmake/Zypp
 %{_libdir}/libzypp.so
 %{_libdir}/libzypp-tui.a
-%{_datadir}/cmake/Modules/*
 %{_includedir}/zypp
 %{_includedir}/zypp-core
 %{_includedir}/zypp-media

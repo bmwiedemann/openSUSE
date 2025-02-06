@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:16:48 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.2:
+  * Correct a failure to build with gcc 15+ compiler tool chain.
+- We waited for SR#1174101 to have libled1-devel but in the end
+  it was named ledmon-devel. So adjust the name
+- Add BR on libsgutils-devel as well
+
+-------------------------------------------------------------------
+Tue Jul 16 05:06:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.1:
+  * Correct 32 bit arch. issues
+  * Fix cppcheck error
+
+-------------------------------------------------------------------
+Tue May 14 06:05:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.0:
+  * Fix hashlib.md5 usage
+  * Fix megaraid plugin for hba-mode
+  * Use ledmon library for controlling LEDs
+  * Add LED API interface for LED slot identifiers
+  * Fix megaraid plugin when no disks are attached
+  * smi-s plugin fix error message
+
+-------------------------------------------------------------------
 Thu Mar 14 08:34:53 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

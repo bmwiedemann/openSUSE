@@ -113,4 +113,13 @@
     <comment></comment>
     <requestid>1114014</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d160e8f4bbdaa3d92c685c9ee48c8cf0</srcmd5>
+    <version>0.19</version>
+    <time>1737490176</time>
+    <user>anag+factory</user>
+    <comment>- Drop unneeded Requires on six.
+- No more greedy globs in %files.</comment>
+    <requestid>1238874</requestid>
+  </revision>
 </revisionlist>

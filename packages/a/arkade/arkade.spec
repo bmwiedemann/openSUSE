@@ -1,7 +1,7 @@
 #
 # spec file for package arkade
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           arkade
-Version:        0.11.31
+Version:        0.11.33
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
@@ -25,7 +25,7 @@ URL:            https://github.com/alexellis/arkade
 Source:         arkade-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23
 BuildRequires:  zsh
 
 %description

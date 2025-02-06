@@ -1,7 +1,7 @@
 #
 # spec file for package yamagi-quake2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,13 @@
 
 
 Name:           yamagi-quake2
-Version:        8.40
+Version:        8.41
 Release:        0
 Summary:        Enhanced Quake 2 Source Port
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Shoot
 URL:            https://www.yamagi.org/quake2/
+#Git-Clone:     https://github.com/yquake2/yquake2.git
 Source:         https://deponie.yamagi.org/quake2/quake2-%{version}.tar.xz
 Source100:      yamagi-quake2.appdata.xml
 # PATCH-FIX-OPENSUSE set correct path
@@ -32,12 +33,9 @@ BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libcurl-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libvorbis-devel
-BuildRequires:  openal-soft-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
 
 %description
@@ -54,8 +52,10 @@ retexturing packs and HUD scaling.
 %build
 export SOURCE_DATE_EPOCH=$(date +%s -r CHANGELOG)
 %cmake \
-    -DSYSTEMWIDE_SUPPORT=ON
-make %{_smp_mflags}
+  -DSYSTEMWIDE_SUPPORT=ON \
+  -DCURL_SUPPORT=ON \
+  -DOPENAL_SUPPORT=ON
+%cmake_build
 
 %install
 q2dir="%{buildroot}%{_libexecdir}/%{name}"

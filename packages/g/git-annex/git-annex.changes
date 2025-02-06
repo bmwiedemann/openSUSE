@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Jan 15 16:38:16 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250115.
+
+    * Improve handing of ssh connection problems during
+      remote annex.uuid discovery.
+    * log: Support --key, as well as --branch and --unused.
+    * Avoid verification error when addurl --verifiable is used
+      with an url claimed by a special remote other than the web.
+    * Fix installation on Android.
+    * Allow enableremote of an existing webdav special remote that has
+      read-only access.
+    * git-remote-annex: Use enableremote rather than initremote.
+    * Windows: Fix permission denied error when dropping files that
+      have the readonly attribute set.
+    * Added freezecontent-annex and thawcontent-annex hooks that
+      correspond to the git configs annex.freezecontent and
+      annex.thawcontent.
+    * Added secure-erase-annex hook that corresponds to the git config
+      annex.secure-erase-command.
+    * Added commitmessage-annex hook that corresponds to the git config
+      annex.commitmessage-command.
+    * Added http-headers-annex hook that corresponds to the git config
+      annex.http-headers-command.
+    * Added git configs annex.post-update-command and annex.pre-commit-command
+      that correspond to the post-update-annex and pre-commit-annex hooks.
+    * Added annex.pre-init-command git config and pre-init-annex hook
+      that is run before git-annex repository initialization.
+    * Linux standalone builds' bundled rsync updated to fix security holes.
+
+-------------------------------------------------------------------
+Thu Jan  2 16:32:11 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250102.
+
+    * Added config `url.<base>.annexInsteadOf` corresponding to git's
+      `url.<base>.pushInsteadOf`, to configure the urls to use for accessing
+      the git-annex repositories on a server without needing to configure
+      remote.name.annexUrl in each repository.
+    * Work around git hash-object --stdin-paths's odd stripping of carriage
+      return from the end of the line (some windows infection), avoiding
+      crashing when the repo contains a filename ending in a carriage return.
+    * Document that settting preferred content to "" is the same as the
+      default unset behavior.
+    * sync: Avoid misleading warning about future preferred content
+      transition when preferred content is set to "".
+    * Honor annex.addunlocked configuration when importing a tree from a
+      special remote.
+    * Removed the i386ancient standalone tarball build for linux, which
+      was increasingly unable to support new git-annex features.
+    * Removed support for building with ghc older than 9.0.2,
+      and with older versions of haskell libraries than are in current Debian
+      stable.
+    * stack.yaml: Update to lts-23.2.
+
+- Refresh "0001-persistent-2.12.0.1-include-the-code-from-persistent.patch".
+  Most patches to git-annex itself are now unnecessary. We only need to drop
+  persistent-templates from the list of build dependencies.
+
+-------------------------------------------------------------------
 Mon Dec  2 16:37:14 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20241202.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 24 08:00:04 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix build with python 3.13, remove distributed python.m4 to use the
+  system one that's up to date.
+
+-------------------------------------------------------------------
 Thu Aug 22 18:11:49 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

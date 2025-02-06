@@ -1,12 +1,14 @@
-From 5e3fcc09ed57313292ca76fd8d88196940d0c261 Mon Sep 17 00:00:00 2001
+From 9e7d2d41325fd09e89308101c67fd791a50c98c5 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Tue, 29 Oct 2024 17:57:08 -0700
-Subject: [PATCH] Fix include paths
+Subject: [PATCH 1/2] Fix include paths
 
 ---
  tests/include/mir/test/doubles/mock_libinput.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/tests/include/mir/test/doubles/mock_libinput.h b/tests/include/mir/test/doubles/mock_libinput.h
-index 4487f8290d..b59a4386d6 100644
+index 4487f82..b59a438 100644
 --- a/tests/include/mir/test/doubles/mock_libinput.h
 +++ b/tests/include/mir/test/doubles/mock_libinput.h
 @@ -21,7 +21,7 @@
@@ -18,3 +20,6 @@ index 4487f8290d..b59a4386d6 100644
  
  namespace mir
  {
+-- 
+2.48.1
+

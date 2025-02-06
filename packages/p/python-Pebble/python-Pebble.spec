@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pebble
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-Pebble
-Version:        5.0.7
+Version:        5.1.0
 Release:        0
 Summary:        Threading and multiprocessing eye-candy for Python
 License:        LGPL-3.0-only
@@ -54,6 +54,7 @@ It wraps Python’s standard library threading and multiprocessing objects.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pebble
+%{python_sitelib}/Pebble-%{version}*
 
 %changelog

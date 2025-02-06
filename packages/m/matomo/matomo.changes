@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 24 12:07:53 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.2.2
+  Matomo 5.2.2 is a patch release that includes several high-impact security fixes
+  - #22916 Update the code to ensure the API.getBulkRequest check is implemented correctly and functions as intended.
+  - #22943 Validate the Matomo URL when managing user opt-outs (OptOutManager).
+  - #22944 Modify log message to encode special control characters to display as plain text.
+  - #22966 Update user permissions to be handled sequentially and not simultaneously to avoid conflicts and ensure data integrity.
+
+-------------------------------------------------------------------
 Sat Dec 21 12:29:16 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.2.1

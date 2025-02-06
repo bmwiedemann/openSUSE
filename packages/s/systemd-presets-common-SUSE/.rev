@@ -308,4 +308,15 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1238126</requestid>
   </revision>
+  <revision rev="37" vrev="37">
+    <srcmd5>1fb572dff1deb78ddf36f2d3f11ae39e</srcmd5>
+    <version>15</version>
+    <time>1738163401</time>
+    <user>anag+factory</user>
+    <comment>- Enable wtmpdbd.socket to start wtmpdbd via socket activation.
+  A separate daemon for wtmpdb access is required to solve
+  https://sourceware.org/bugzilla/show_bug.cgi?id=24492
+</comment>
+    <requestid>1240837</requestid>
+  </revision>
 </revisionlist>

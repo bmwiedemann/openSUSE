@@ -898,4 +898,13 @@ source service setup which messed up my spec file.
     (bsc#1234275, bsc#1234759) (forwarded request 1238534 from mwilck)</comment>
     <requestid>1238535</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e65de6ee521cb1b66a567d9b0000f626</srcmd5>
+    <version>16.0.57</version>
+    <time>1737559895</time>
+    <user>anag+factory</user>
+    <comment>* Fix &quot;initrd: file not found&quot; error in sd-boot setup
+    (gh#openSUSE/suse-module-tools#113, gh#openSUSE/sdbootutil#122) (forwarded request 1239333 from mwilck)</comment>
+    <requestid>1239335</requestid>
+  </revision>
 </revisionlist>

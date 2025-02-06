@@ -243,4 +243,12 @@
     <comment></comment>
     <requestid>1218776</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>31c7f8f041c1edc1e039febfe7223b93</srcmd5>
+    <version>3.20.2</version>
+    <time>1738244955</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.1 (bsc#1109179, CVE-2018-17175):</comment>
+    <requestid>1241185</requestid>
+  </revision>
 </revisionlist>

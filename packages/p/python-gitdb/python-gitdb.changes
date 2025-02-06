@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 22 11:05:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.0.12
+  * Never add a vendored smmap directory to sys.path
+  * Revise and update the readme
+  * Set Dependabot submodule update cadence to weekly
+  * Add missing asserts in test_base.py
+  * Use contextlib.suppress instead of except: pass
+  * Add support for Python 3.13
+  * Potential Race Condition Fix - OS Rename & Chmod - PermissionError
+  * Bump gitdb/ext/smmap from 256c5a2 to 04dd210
+  * Bump actions/setup-python from 4 to 5
+
+-------------------------------------------------------------------
 Mon Nov 27 19:00:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.11:

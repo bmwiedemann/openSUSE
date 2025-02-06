@@ -1411,4 +1411,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1235500</requestid>
   </revision>
+  <revision rev="175" vrev="18">
+    <srcmd5>38699cb6076917b23ca096dff77d52db</srcmd5>
+    <version>84.87</version>
+    <time>1738072728</time>
+    <user>anag+factory</user>
+    <comment>- add Provides: may-perform-usrmerge (bsc#1236481) 
+
+- Add support for loongarch64
+
+- Remove /usr/etc/skel/bin/</comment>
+    <requestid>1240741</requestid>
+  </revision>
 </revisionlist>

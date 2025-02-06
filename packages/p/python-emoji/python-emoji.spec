@@ -1,7 +1,7 @@
 #
 # spec file for package python-emoji
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-emoji
-Version:        2.14.0
+Version:        2.14.1
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause

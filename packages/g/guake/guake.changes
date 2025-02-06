@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 23 20:17:20 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- add python311-sphinx_rtd_theme as build dep to fix doc build on ARM
+
+-------------------------------------------------------------------
 Fri Jan 17 12:53:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable libutempter, it doesn't work anymore with the switch
@@ -116,7 +121,7 @@ Mon Feb 14 17:38:06 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 - Drop a useless placeholder dir from docs.
 
 -------------------------------------------------------------------
-Fri Feb  4 10:56:32 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Feb  4 10:56:32 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - add new patch remove_setuptools_scm.patch to remove the dependency on setuptools_scm
 - write the version guake/_version.py in prep step.
@@ -163,7 +168,7 @@ Wed Nov 10 15:13:28 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 - Drop guake-follow-focus-with-dual-monitors.patch: Incorporated
   upstream.
 
--------------------------------------------------------------------
+/nov-------------------------------------------------------------------
 Wed Nov 10 14:50:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add guake-follow-focus-with-dual-monitors.patch: Fix issue where
@@ -387,12 +392,12 @@ Mon Apr 30 20:39:34 UTC 2018 - badshah400@gmail.com
   * Updated translations.
 
 -------------------------------------------------------------------
-Mon Apr 16 18:15:06 UTC 2018 - sebix+novell.com@sebix.at
+Mon Apr 16 18:15:06 UTC 2018 - sebix@sebix.at
 
 - Use gobject-introspection for typelib library detection.
 
 -------------------------------------------------------------------
-Sat Apr 14 08:35:04 UTC 2018 - sebix+novell.com@sebix.at
+Sat Apr 14 08:35:04 UTC 2018 - sebix@sebix.at
 
 - update to version 3.1.1:
  * New Features
@@ -432,7 +437,7 @@ Sat Apr 14 08:35:04 UTC 2018 - sebix+novell.com@sebix.at
 - remove fix-simplegladeapp.patch, merged upstream
 
 -------------------------------------------------------------------
-Fri Mar 30 18:27:32 UTC 2018 - sebix+novell.com@sebix.at
+Fri Mar 30 18:27:32 UTC 2018 - sebix@sebix.at
 
 - initial package for version 3.0.5
 - add fix-simplegladeapp.patch to fix runtime bug

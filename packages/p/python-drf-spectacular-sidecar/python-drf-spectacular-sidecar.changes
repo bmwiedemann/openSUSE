@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 18 15:19:03 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Jan  7 13:24:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Initial release (v2024.12.1), needed by Weblate

@@ -31,4 +31,32 @@
     <comment></comment>
     <requestid>1105465</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f0c0fb4d4d5d01719a5b2fa6dc0bf7f7</srcmd5>
+    <version>0.4.1</version>
+    <time>1737389668</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-poppler-25.01.patch:
+  * Support Poppler 25.01 changes.
+
+- Update to 0.4.1:
+  * Fix non-pure build for meson-python
+  * Tested with Python 3.11 and Poppler 23.04.0
+  * Minimal supported Python version is now 3.7
+  * Tested with Python 3.11 and Poppler 23.03.0
+  * Build system is now meson, and package is PEP-517 compliant
+  * Tested with Python 3.10 and Poppler 22.04.0
+  * EmbeddedFile data() and checksum() now return bytes
+  * Bugfix: Fixed typos in EmbeddedFile.modification_date and
+    EmbeddedFile.is_valid
+  * Bugfix: Fixed typo in page.search
+  * Bugfix: Fix underscore position in two attributes of the Rotation Enum
+  * Bugfix: Reading pdf_version now requires unlocked document
+  * Bugfix: Ensure document was loaded before creating Document object
+- Drop patch fix-image-argb.patch, no longer required.
+- No longer use disabled service to update, we don't need to clean up
+  pybind11 sources, switch to the GitHub tarball to keep the testsuite.
+- Refresh patch use-system-pybind11.patch to work with meson.</comment>
+    <requestid>1238866</requestid>
+  </revision>
 </revisionlist>

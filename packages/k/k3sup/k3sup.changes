@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 21 06:07:59 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.8:
+  * Update Go version, GitHub Actions and vendor
+
+-------------------------------------------------------------------
+Tue Jan 21 06:07:42 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.7:
+  * Support ssh-key for k3sup plan
+
+-------------------------------------------------------------------
 Mon Jun 10 19:33:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.6:

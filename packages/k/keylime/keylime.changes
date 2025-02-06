@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Mon Jan 27 08:32:00 UTC 2025 - aplanas@suse.com
+
+- Update to version v7.12.0:
+  * Bump version to 7.12.0
+  * API: Add /version endpoint to registrar
+  * Remove unused registrar_common.py file
+  * scripts: Download coverage data directly from Testing Farm
+  * docs: Add separate documentation for each API version
+  * scripts/create_runtime_policy.sh: fix path for the exclude list
+  * docs: add documentation for keylime-policy
+  * [Automatic] Update Keylime base image 2025-01-02
+  * templates: Add the new agent.conf option 'api_versions'
+  * Enable autocompletion using argcomplete
+  * build(deps): bump codecov/codecov-action from 5.1.1 to 5.1.2
+  * test: remove typed-ast from test-requirements.txt
+  * tests: fix rpm tests to account for older createrepo_c versions
+  * Configure EPEL-10 repo in packit-ci.fmf
+  * packit: Fix typo to run keylime-policy-commands test
+  * build(deps): bump codecov/codecov-action from 5.0.2 to 5.1.1
+  * build(deps): bump pypa/gh-action-pypi-publish from 1.12.0 to 1.12.3
+  * docker/ci: Add xxd to the CI image
+  * docker/ci: Fix CI image build for dnf5
+  * build(deps): bump docker/metadata-action from 5.5.1 to 5.6.1
+  * build(deps): bump docker/build-push-action from 6.9.0 to 6.10.0
+  * keylime-policy: improve error handling when provided a bad key (sign)
+  * keylime-policy: exit with status 1 when the commands failed
+  * keylime-policy: use Certificate() from models.base to validate certs
+  * keylime-policy: check for valid cert file when using x509 backend (sign)
+  * keylime-policy: fix help for "keylime-policy sign" verb
+  * tenant: Correctly log number of tries when deleting
+  * tests: Use Fedora 41 to generate code coverage
+  * [Automatic] Update Keylime base image 2024-12-02
+  * update TCTI environment variable usage
+  * build(deps): bump codecov/codecov-action from 4.6.0 to 5.0.2
+  * keylime-policy: add `create measured-boot' subcommand
+  * keylime-policy: add `sign runtime' subcommand
+  * keylime-policy: add logger to use with the policy tool
+  * docker/release/build_locally.sh: Fail if skopeo is not installed
+  * installer.sh: Restore execution permission
+  * installer: Fix string comparison
+  * build(deps): bump docker/build-push-action from 6.7.0 to 6.9.0
+  * build(deps): bump codecov/codecov-action from 4.5.0 to 4.6.0
+  * build(deps): bump pypa/gh-action-pypi-publish from 1.11.0 to 1.12.0
+  * build(deps): bump actions/setup-python from 5.2.0 to 5.3.0
+  * installer.sh: updated EPEL, PEP668 Fix, logic fix
+  * build(deps): bump pypa/gh-action-pypi-publish from 1.10.3 to 1.11.0
+  * build(deps): bump actions/checkout from 4.2.1 to 4.2.2
+  * postgresql support for docker using psycopg2
+  * [Automatic] Update Keylime base image 2024-11-04
+  * End of term for @maugustosilva + propose @ansasaki
+  * installer.sh: update package list, add workaround for PEP 668
+  * build(deps): bump actions/checkout from 4.2.0 to 4.2.1
+  * keylime.conf: full removal
+  * Drop pending SPDX-License-Identifier headers
+  * create_runtime_policy: Validate algorithm from IMA measurement log
+  * test_create_runtime_policy: Add test for mismatching algorithms
+  * create-runtime-policy: Deal with SHA-256 and SM3_256 ambiguity
+  * create_runtime_policy: drop commment with test data
+  * create_runtime_policy: Use a common method to guess algorithm
+  * keylime-policy: rename tool to keylime-policy instead of keylime_policy
+  * keylime_policy: create runtime: remove --use-ima-measurement-list
+  * keylime_policy: use consistent arg names for create_runtime_policy
+  * tests: Add more tests to Packit CI
+  * build(deps): bump pypa/gh-action-pypi-publish from 1.10.2 to 1.10.3
+  * build(deps): bump actions/checkout from 4.1.7 to 4.2.0
+  * [Automatic] Update Keylime base image 2024-10-01
+  * elchecking/example: workaround empty PK, KEK, db and dbx
+  * elchecking: add handling for EV_EFI_PLATFORM_FIRMWARE_BLOB2
+  * create_runtime_policy: Fix log level for debug messages
+  * build(deps): bump pypa/gh-action-pypi-publish from 1.10.1 to 1.10.2
+  * build(deps): bump peter-evans/create-pull-request from 6.1.0 to 7.0.5
+  * pylintrc: Ignore too-many-positional-arguments check
+  * keylime/web/base/controller: Move TypeAlias definition out of class
+  * test_create_runtime_policy: Add tests for algorithm priority
+  * test_create_runtime_policy: Add test case for symbolic links
+  * create_runtime_policy: Calculate digests in multiple threads
+  * create_runtime_policy: Allow rootfs to be in any directory
+  * keylime_policy: Calculate digests from each source separately
+  * create_runtime_policy: Simplify boot_aggregate parsing
+  * ima: Validate JSON when loading IMA Keyring from string
+  * docs: include IDevID page also in the sidebar
+  * docs: point to installation guide from RHEL and SLE Micro
+  * build(deps): bump actions/setup-python from 5.1.1 to 5.2.0
+  * build(deps): bump pypa/gh-action-pypi-publish from 1.9.0 to 1.10.1
+  * change check_tpm_origin_check to a warning that does not prevent registration
+  * docs: Fix Runtime Policy JSON schema to reflect the reality
+  * README: update meeting time to 16:00 UK time
+  * [Automatic] Update Keylime base image 2024-09-11
+  * Sets absolute path for files inside a rootfs dir
+  * policy/create_runtime_policy: fix handling of empty lines in exclude list
+  * keylime_policy: setting 'log_hash_alg' to 'sha1' (template-hash algo)
+  * tests: apply workarounds to known bugs
+  * codestyle: Assign CERTIFICATE_PRIVATE_KEY_TYPES directly (pyright)
+  * codestyle: convert bytearrays to bytes to get expected type (pyright)
+  * codestyle: Use new variables after changing datatype (pyright)
+  * Revert "DO NOT MERGE, TEMPORARY COMMIT"
+  * [Automatic] Update Keylime base image 2024-08-16
+  * Lint: ignore reportArgumentType and reportInvalidTypeForm errors
+  * docker: Install latest Keylime during image build
+  * cert_utils: add description why loading using cryptography might fail
+  * Enable test functional/iak-idevid-persisted-and-protected
+  * ima: list names of the runtime policies
+  * tests: Enable test /sanity/opened-conf-files
+  * build(deps): bump docker/build-push-action from 6.6.1 to 6.7.0
+  * DO NOT MERGE, TEMPORARY COMMIT
+  * tox: Use python 3.10 instead of 3.6
+  * revocation_notifier: Use web_util to generate TLS context
+  * mba: Add a skip custom policies option when loading mba.
+  * build(deps): bump docker/build-push-action from 6.5.0 to 6.6.1
+  * build(deps): bump docker/metadata-action from 4.6.0 to 5.5.1
+  * workflows/base-image: Add latest tag to the CI image build
+  * test: add setuptools to test-requirements.txt
+  * keylime/models/registrar: attempt to make pylint happy
+  * test: update green version in test/test-requirements.txt
+  * test/run_tests.sh: take into account non-zero exit status from pytest
+  * cmd/keylime_policy: add tool to handle keylime policies
+  * cert_utils: add is_x509_cert()
+  * common/algorithms: transform Encrypt and Sign class into enums
+  * common/algorithms: add method to calculate digest of a file
+  * [Automatic] Update Keylime base image 2024-08-02
+  * workflows/base-image: Fix CI image build context
+  * docker/ci: Add test dependency needed for PR#1568
+  * workflow/base-image: Drop duplicated job ID
+  * [Automatic] Update Keylime base image 2024-07-31
+  * docker: Build CI image together with the base image
+  * build(deps): bump docker/build-push-action from 4.2.1 to 6.5.0
+  * build(deps): bump docker/login-action from 3.2.0 to 3.3.0
+  * build(deps): bump docker/metadata-action from 4.6.0 to 5.5.1
+  * workflows/update-base-image: Add a signoff to the automatic PR
+  * workflows/container: Fix typo on sed command
+  * docker: Build base image separately
+  * build(deps): bump docker/login-action from 3.2.0 to 3.3.0
+  * build(deps): bump docker/build-push-action from 6.4.1 to 6.5.0
+  * build(deps): bump docker/build-push-action from 4.2.1 to 6.4.1
+  * build(deps): bump docker/metadata-action from 4.6.0 to 5.5.1
+  * build(deps): bump pre-commit/action from 3.0.0 to 3.0.1
+  * tpm: Replace KDFs and ECDH implementations with python-cryptography
+  * build(deps): bump codecov/codecov-action from 2.1.0 to 4.5.0
+  * build(deps): bump docker/login-action from 2.2.0 to 3.2.0
+  * Update .github/workflows/pypi-release.yml
+  * Update .github/workflows/test.yml
+  * build(deps): bump actions/setup-python from 2.3.4 to 5.1.1
+  * ci: disable Packit testing for Rawhide
+  * docker/release/base: Explicitly add the registry for base
+  * ci: use CODECOV_TOKEN for coverage file upload
+  * build(deps): bump actions/first-interaction
+  * build(deps): bump actions/checkout from 2.7.0 to 4.1.7
+  * docker/ci: Add test dependencies from #1568
+  * docker: Update images to use Fedora 40
+  * Added limit by mistake for dependabot
+  * Adds dependabot
+  * Add Frizbee Action
+  * Change Docker and Action Tags to Digests
+  * revocation_notifier: Explicitly add CA certificate bundle
+  * Introduce new REST API framework and refactor registrar implementation
+  * mba: Support named measured boot policies
+  * tenant: add friendlier error message if mTLS CA is wrongly configured
+  * ca_impl_openssl: Mark extensions as critical following RFC 5280
+  * Include Authority Key Identifier in KL-generated certs
+  * verifier, tenant: make payload for agent completely optional
+
+-------------------------------------------------------------------
 Fri Jun 14 08:04:48 UTC 2024 - aplanas@suse.com
 
 - Update to version v7.11.0:

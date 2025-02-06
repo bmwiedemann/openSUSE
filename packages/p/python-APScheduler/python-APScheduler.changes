@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan 24 07:28:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.11.0
+  * Dropped support for Python 3.6 and 3.7
+  * Added support for ZoneInfo time zones and deprecated support
+    for pytz time zones
+  * Added CalendarIntervalTrigger, backported from the 4.x series
+  * Added the ability to export and import jobs via
+    scheduler.export_jobs() and scheduler.import_jobs(),
+    respectively
+  * Removed the dependency on six
+  * Changed ProcessPoolExecutor to spawn new subprocesses from scratch
+    instead of forking on all platform
+  * Fixed AsyncIOScheduler inadvertently creating a defunct event loop at
+    start, leading to the scheduler not working at all
+  * Fixed ProcessPoolExecutor not respecting the passed keyword arguments
+    when a broken pool was being replaced
+- Adjust upstream source name in spec file
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Mon Sep 18 19:32:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.4:

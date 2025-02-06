@@ -1,7 +1,7 @@
 #
 # spec file for package openwsman
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %endif
 
 Name:           openwsman
-BuildRequires:  cmake >= 3.27
+BuildRequires:  cmake >= 3.12
 BuildRequires:  cunit-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
@@ -105,6 +105,9 @@ BuildRequires:  java-devel
 #BuildRequires:  update-alternatives
 #%%endif
 
+%if 0%{?suse_version} > 1500
+BuildRequires:  strip-nondeterminism
+%endif
 %if 0%{?suse_version} > 1010
 BuildRequires:  fdupes
 BuildRequires:  libcurl-devel
@@ -143,7 +146,7 @@ BuildRequires:  firewall-macros
 %endif
 
 Requires(pre):  sed coreutils grep /bin/hostname
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 # Mandriva:
 # Release %%mkrel 1
@@ -337,7 +340,8 @@ BuildArch:      noarch
 This package provides HTML documentation for the OpenWSMAN Ruby
 bindings.
 
-%endif # not rhel7
+# - endif not rhel7
+%endif
 
 %package perl
 %if 0%{?fedora}
@@ -443,29 +447,39 @@ rm -f %{buildroot}/%{_libdir}/%{name}/plugins/*.la
 rm -f %{buildroot}/%{_libdir}/%{name}/authenticators/*.la
 [ -d %{buildroot}/%{ruby_sitelib} ] && rm -f %{buildroot}/%{ruby_sitelib}/openwsmanplugin.rb
 [ -d %{buildroot}/%{ruby_vendorlib} ] && rm -f %{buildroot}/%{ruby_vendorlib}/openwsmanplugin.rb
+
 %if 0%{?has_systemd}
 install -D -m 644 %{S:4} %{buildroot}/%{_unitdir}/%{name}.service
+%if 0%{?suse_version} < 1600
 # rcopenwsman
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
+%endif
 %else
+# no systemd, assume sysv style init
 mkdir -p %{buildroot}/%{_sysconfdir}/init.d
 install -m 755 build/etc/init/openwsmand.sh %{buildroot}/%{_sysconfdir}/init.d/openwsmand
 ln -sf %{_sysconfdir}/init.d/openwsmand %{buildroot}/%{_sbindir}/rcopenwsmand
 %endif
+
 %if 0%{?has_firewalld}
 mkdir -p %{buildroot}/%{_prefix}/lib/firewalld/services
 install -D -m 644 %{S:5} %{buildroot}/%{_prefix}/lib/firewalld/services/%{name}.xml
 %else
 install -D -m 644 %{S:3} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
 %endif
+
 #install -m 644 etc/%{name}.conf %{buildroot}/%{_sysconfdir}/%{name}
 #install -m 644 etc/openwsman_client.conf %{buildroot}/%{_sysconfdir}/%{name}
 #install -m 644 etc/ssleay.cnf %{buildroot}/%{_sysconfdir}/%{name}
 #install -m 644 %{pamfile} %{buildroot}/%{_sysconfdir}/pam.d/%{name}
+
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_pam_vendordir}
 mv %{buildroot}/%{_sysconfdir}/pam.d/%{name} %{buildroot}/%{_pam_vendordir}
+# for reproducible build:
+strip-nondeterminism %{buildroot}/%{_javadir}/*jar
 %endif
+
 %if 0%{?rhel_version} == 700
 rm -f %{buildroot}/%{_bindir}/winrs
 %endif
@@ -493,6 +507,7 @@ done
 for i in pam.d/%{name} ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
+echo Server certificates length must be 2048 bits or more. Check and recreate certificates if needed.
 %endif
 
 %post server
@@ -595,7 +610,8 @@ rm -f /var/log/wsmand.log
 %defattr(-,root,root)
 %dir %{_docdir}/%{name}-ruby-docs
 %{_docdir}/%{name}-ruby-docs
-%endif # not rhel-7
+# - endif not rhel-7
+%endif
 
 %files perl
 %defattr(-,root,root)
@@ -629,7 +645,9 @@ rm -f /var/log/wsmand.log
 %endif
 %if 0%{?has_systemd}
 %{_unitdir}/%{name}.service
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rc%{name}
+%endif
 %else
 %attr(0755,root,root) %{_sysconfdir}/init.d/openwsmand
 %{_sbindir}/rc%{name}d

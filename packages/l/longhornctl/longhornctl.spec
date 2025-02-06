@@ -1,7 +1,7 @@
 #
 # spec file for package longhornctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           longhornctl
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        CLI for the Longhorn cloud native distributed block storage
 License:        Apache-2.0

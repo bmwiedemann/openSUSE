@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tasty
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name tasty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Modern and extensible testing framework
 License:        MIT

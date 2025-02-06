@@ -1485,4 +1485,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219481</requestid>
   </revision>
+  <revision rev="124" vrev="10">
+    <srcmd5>c2d1d49309fa916dc6f59d9de49cd986</srcmd5>
+    <version>15.8</version>
+    <time>1738335713</time>
+    <user>anag+factory</user>
+    <comment>undefine %_enable_debug_packages to fix building with rpm-4.20</comment>
+    <requestid>1232808</requestid>
+  </revision>
 </revisionlist>

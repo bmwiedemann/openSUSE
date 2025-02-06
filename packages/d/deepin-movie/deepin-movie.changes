@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 21 13:52:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 6.0.11
+  * Fix bugs
+- Add fix-ftbfs-ffmpeg7.patch: Fix build with ffmpeg 7.
+
+-------------------------------------------------------------------
 Thu Aug 15 12:23:55 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 6.0.10

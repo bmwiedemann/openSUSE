@@ -91,4 +91,25 @@
   * Revert &quot;fix(zshrc): keep existing history restrictions&quot; #169 #160</comment>
     <requestid>1234584</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b0faba587c6323b54d28fafcbef1ef2</srcmd5>
+    <version>0.19.13</version>
+    <time>1737560330</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.13:
+  * zsh aliases: add afs(apt-file search)
+  * zshenv: drop live-cd only hacks
+  * zsh: drop solaris support</comment>
+    <requestid>1239498</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ecc3a624c7625b85f195cddddc041aa8</srcmd5>
+    <version>0.19.14</version>
+    <time>1738079732</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.4:
+  * zshrc: deprecate xunfunction
+  * zshrc: remove &quot;hbp&quot; alias</comment>
+    <requestid>1240838</requestid>
+  </revision>
 </revisionlist>

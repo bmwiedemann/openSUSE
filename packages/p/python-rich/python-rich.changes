@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 17 14:55:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add pygments.patch to fix tests with Pygments 2.19
+
+-------------------------------------------------------------------
 Thu Dec  5 01:45:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to GitHub tarball so we can run the testsuite.

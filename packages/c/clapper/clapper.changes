@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jan 20 21:34:47 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.8.0:
+  + Notice:
+    This release also introduces a brand new libpeas based plugin
+	system for the Clapper library. The idea is to enhance it with
+	new capabilities that do stuff outside of GStreamer scope of
+	things. To avoid confusion with term plugins that GStreamer uses,
+	they are called "enhancers" instead. They'll be expanded in the
+	future.
+  + What's Changed:
+    * clapper: Player now uses playbin3 by default
+    * clapper: Add APIs for media caching via download to local
+	  storage
+    * Add more command line options (including ability to set custom
+	  GStreamer filter and sink elements)
+    * Add "New Window" functionality in UI
+    * Added menu option to clear playback queue
+    * Resize app window to match aspect ratio with middle click or
+	  keyboard shortcut
+    * clapper: Add media item creation with cached file
+    * clapper-app: Add unfullscreen keyboard shortcut
+    * Support libpeas based plugin system
+    * Add adaptive streaming bitrate control to Clapper API
+    * clapper-app: Remember and restore optimal bitrate (video
+	  quality) starting adaptive streaming
+    * Make dektop file i18n.
+    * clapper-gtk: Add video placeholder widget
+    * Other various improvements and bug fixes
+    * Updated translations
+
+-------------------------------------------------------------------
 Fri Jul 12 08:55:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - add the forgotten typelib packages to devel (as a requirement)

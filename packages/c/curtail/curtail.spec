@@ -1,7 +1,7 @@
 #
 # spec file for package curtail
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later

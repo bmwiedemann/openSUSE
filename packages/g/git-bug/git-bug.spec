@@ -62,6 +62,7 @@ git-bug is a bug tracker that:
 %package bash-completion
 Summary:        Bash completion for git-bug
 Requires:       bash-completion
+Requires:       %{name} = %{version}
 Supplements:    (git-bug and bash-completion)
 BuildArch:      noarch
 
@@ -71,6 +72,7 @@ Bash shell completions for git-bug
 %package fish-completion
 Summary:        Fish completion for git-bug
 Requires:       fish
+Requires:       %{name} = %{version}
 Supplements:    (git-bug and fish)
 BuildArch:      noarch
 
@@ -80,6 +82,8 @@ Fish shell completions for git-bug
 %package zsh-completion
 Summary:        ZSH completion for git-bug
 Group:          Productivity/File utilities
+Requires:       zsh
+Requires:       %{name} = %{version}
 Supplements:    (git-bug and zsh)
 BuildArch:      noarch
 

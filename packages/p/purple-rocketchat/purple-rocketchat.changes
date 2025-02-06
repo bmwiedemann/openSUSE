@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:05:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop requires_ge pidgin: as pidgin has not been in the buildroot,
+  that line silently was a no-op. requires_ge now returns errors in
+  those situations. As it as a ho-op so far, we seem to be fine
+  without it.
+
+-------------------------------------------------------------------
 Wed Mar 20 02:20:57 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Require pkgconfig(libmarkdown) >= 3.0.0 for oS >= 1650 to avoid

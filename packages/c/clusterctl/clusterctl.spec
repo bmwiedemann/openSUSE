@@ -1,7 +1,7 @@
 #
 # spec file for package clusterctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define version_git_minor 8
 
 Name:           clusterctl
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        CLI tool to handle the lifecycle of a Cluster API management cluster
 License:        Apache-2.0

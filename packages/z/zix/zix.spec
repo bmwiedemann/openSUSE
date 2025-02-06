@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define sover 0
 Name:           zix
 Version:        0.6.2
@@ -25,6 +24,7 @@ License:        ISC
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.com/drobilla/zix
 Source0:        https://gitlab.com/drobilla/zix/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++

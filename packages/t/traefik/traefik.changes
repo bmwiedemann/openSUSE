@@ -1,5 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 21 13:30:26 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Fix possible privilege escalation when mofing the acme.json file to the new
+  location. Thanks Johannes Segitz (fix for boo#1235408)
+
+- Version 3.3.2
+  - fastproxy
+    * Do not read response body for HEAD requests (gh#traefik/traefik#11442)
+  - metrics,tracing,accesslogs
+    * Fix observability configuration on EntryPoints (gh#traefik/traefik#11446)
+  - webui
+    * Set content-type when serving webui index  (gh#traefik/traefik#11428)
+
+-------------------------------------------------------------------
 Sun Jan 12 16:50:31 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
 - Version 3.3.1 changes
   - acme
     * Add options to control ACME propagation checks (#11241 by ldez)

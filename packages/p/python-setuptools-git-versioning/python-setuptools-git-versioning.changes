@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 28 08:08:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.0:
+  * [breaking] Drop get_branch_tags function which was deprecated
+    since 1.8.0.
+  * [breaking] version_file option now have precedence over any tags in
+    the current branch.
+  * [breaking] Drop version_config keyword from setup.py, which was
+    deprecated since 1.8.0.
+  * [breaking] Does not allow passing setuptools_git_versioning=False
+    and setuptools_git_versioning=True to config. Always use
+    setuptools_git_versioning={"enabled": True}.
+  * [feature] Test Python 3.13 compatibility
+  * [feature] Test Python 3.12 compatibility
+  * [feature] Remove useless warning if tag_filter, tag_formatter or
+    branch_formatter is a regexp instead of function reference.
+  * [bugfix] Replace outdated toml package with modern tomli.
+- Rip out _service and all of its gubbins, we can successfully test with
+  the GitHub tarball, so switch to that.
+
+-------------------------------------------------------------------
 Mon Dec 25 11:20:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.13.5

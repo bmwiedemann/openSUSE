@@ -1,7 +1,7 @@
 #
 # spec file for package kid3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ URL:            https://kid3.kde.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 BuildRequires:  extra-cmake-modules
+BuildRequires:  ffmpeg-7-libavcodec-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
 BuildRequires:  kf%{qt_version}-filesystem
@@ -58,9 +59,7 @@ BuildRequires:  cmake(Qt%{qt_version}Xml)
 BuildRequires:  config(docbook-xsl-stylesheets)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libswresample)

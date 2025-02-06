@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:06:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.20.7:
+  * Add highlight.scm
+- move from obs_scm to download_files, to copy the other grammars
+
+-------------------------------------------------------------------
 Thu Dec  5 00:55:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

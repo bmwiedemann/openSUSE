@@ -1,7 +1,7 @@
 #
 # spec file for package python-breathe
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define modname breathe
 %{?sle15_python_module_pythons}
 Name:           python-breathe
 Version:        4.35.0
@@ -24,8 +23,11 @@ Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 URL:            https://github.com/michaeljones/breathe
-Source:         https://github.com/michaeljones/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz#/breathe-%{version}.tar.gz
 Patch0:         support-sphinx-7.2.patch
+# PATCH-FIX-UPSTREAM support-sphinx-7.4.patch gh#breathe-doc/breathe!1007 mcepl@suse.com
+# fix the test suite
+Patch1:         support-sphinx-7.4.patch
 BuildRequires:  %{python_module Sphinx >= 4.0}
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module pip}
@@ -54,8 +56,7 @@ able to read and  render Doxygen xml output.
 %pyproject_wheel
 
 %check
-# Tests fail because of gh#breathe-doc/breathe#987
-# %%pytest
+%pytest
 
 %install
 %pyproject_install
@@ -73,6 +74,6 @@ able to read and  render Doxygen xml output.
 %license LICENSE
 %python_alternative %{_bindir}/breathe-apidoc
 %{python_sitelib}/breathe
-%{python_sitelib}/breathe-%{version}.dist-info
+%{python_sitelib}/breathe-%{version}*-info
 
 %changelog

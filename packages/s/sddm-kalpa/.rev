@@ -16,4 +16,14 @@
   fixes pam failures</comment>
     <requestid>1233709</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>78b0d7f62a030b3c006696171cb04fb9</srcmd5>
+    <version>0.21.0</version>
+    <time>1738163419</time>
+    <user>anag+factory</user>
+    <comment>- Add:
+  * 10-weston.conf
+  * 10-kwin.conf</comment>
+    <requestid>1240856</requestid>
+  </revision>
 </revisionlist>

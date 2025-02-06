@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:44:36 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.2:
+  * Fixed a regression that broke case-insensitive filtering in some cases.
+
+-------------------------------------------------------------------
 Sat Jan 11 21:34:22 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.1.1:

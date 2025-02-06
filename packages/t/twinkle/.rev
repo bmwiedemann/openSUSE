@@ -349,4 +349,15 @@
   %patchN</comment>
     <requestid>1175765</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>d174ff830c27a83b83a76c16d7f74e64</srcmd5>
+    <version>1.10.3</version>
+    <time>1738163437</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1186846 from dirkmueller
+
+- update home page link to a working page
+- remove ZRTP support (bdo#797554, bsc#1219884)</comment>
+    <requestid>1240902</requestid>
+  </revision>
 </revisionlist>

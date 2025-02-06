@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-dns-digitalocean
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-digitalocean
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        DigitalOcean Authenticator plugin for Certbot
 License:        Apache-2.0
@@ -26,6 +26,7 @@ URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-digitalocean/certbot_dns_digitalocean-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
 BuildRequires:  %{python_module digitalocean >= 1.11}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,10 +44,10 @@ Digitalocean DNS Authenticator plugin for Certbot.
 %setup -q -n certbot_dns_digitalocean-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

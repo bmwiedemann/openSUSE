@@ -1,14 +1,28 @@
-Index: check_sar_perf.py
-===================================================================
---- check_sar_perf.py.orig
-+++ check_sar_perf.py
-@@ -99,7 +99,8 @@ class SarNRPE:
+---
+ check_sar_perf.py |   15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+--- a/check_sar_perf.py
++++ b/check_sar_perf.py
+@@ -99,13 +99,14 @@ class SarNRPE:
          # Create dictionary
          for i in range(len(columns)):
              # Remove first column if data contains only letters
 -            if i != 0 or not search.match(data[i]):
+-                # Remove characters that cause issues (%/)
+-                badchars=['%','/']
+-                columns[i] = ''.join(j for j in columns[i] if j not in badchars)
+-                string = "%s=%s" %(columns[i].strip('%/'), data[i].strip())
+-                self.stats.append(string)
+-                #print "Appended data: ", data[i]
 +            #if i != 0 or not search.match(data[i]):
-+             if (i != 0 or not search.match(data[i])) and (columns[i] != "DEV"):
-                 # Remove characters that cause issues (%/)
-                 badchars=['%','/']
-                 columns[i] = ''.join(j for j in columns[i] if j not in badchars)
++            if (i != 0 or not search.match(data[i])) and (columns[i] != "DEV"):
++               # Remove characters that cause issues (%/)
++               badchars=['%','/']
++               columns[i] = ''.join(j for j in columns[i] if j not in badchars)
++               string = "%s=%s" %(columns[i].strip('%/'), data[i].strip())
++               self.stats.append(string)
++               #print "Appended data: ", data[i]
+ 
+ def CheckBin(program):
+     '''Ensure the program exists in the PATH'''

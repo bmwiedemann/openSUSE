@@ -40,4 +40,59 @@ Will be a requirement for forthcoming miriway submission</comment>
   a non-functional Mir after install.</comment>
     <requestid>1233391</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9172866d1d6374719244517130f7f629</srcmd5>
+    <version>2.19.3</version>
+    <time>1737490220</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.19.3:
+  * Don't leak VirtualInputDevice keyboards (#3720)
+  * kms: skip simple-framebuffer devices (#3721)
+- Add:
+  * 0002-remove-use-of-env-to-call-bash.patch
+  
+- Added Requires: for libmirserver, without them, you end up with
+  a non-functional Mir after install.
+- Created libmirserverplatform22 and libmirevdev10 subpackages to
+  align with shlib packaging policy, and clear conflicts with
+  libmirserver61
+- Update to 2.19.2:
+  * Fix: mirserver ABI should have been bumped to 62 in 2.19.0
+  * v2.19.1 was burned/skipped
+- update to 2.19.0:
+  * mirplatform ABI bumped to 30
+  * mirserver ABI bumped to 61
+  * [x11-kiosk] defer fullscreening of applications until they are placed once
+  * [x11-kiosk] Ensure windows are placed and repainted on X11 &quot;CONFIGURE&quot;
+  * [x11-kiosk] change enable-x11 default to true
+  * Initial atomic-kms platform
+  * [Wayland] Add support for xdg_activation_v1
+  * Do not default window size (especially to weird values)
+  * DesktopFileManager::resolve_app_id no longer returns an app id with a
+    .desktop file suffix
+  * [Configuration] Split options into global and per-module configuration
+  * Ensure we always send an initial output enter
+  * Fix stuck-frame-after-mode-switch bug
+  * Fix rendering of resized XWayland applications with client side decorations
+  * Aspect ratios shouldn't contain zero
+  * Use PkgConfig to find development headers
+  * Fix the inotify event handling in
+    ReloadingYamlFileDisplayConfig::auto_reload()
+  * The miral::ConfigFile &quot;Watcher&quot; can be destroyed before the main loop
+  * [xwayland] Don't allow clients to place X11 windows
+  * Surfaces track scale changes on outputs they appear on
+  * New attached windows need to be placed
+- switch to new upstream url
+- use only the default Pillow package as BR, not all versions
+- adapt 0001-Fix-include-paths.patch
+- Refactor packaging to conform with openSUSE shared library
+  packaging practices
+- Move some stuff around, so we don't have 30 subpackages
+- Update descriptions
+- Added:
+  * 0001-Fix-include-paths.patch
+- Initial commit
+</comment>
+    <requestid>1239100</requestid>
+  </revision>
 </revisionlist>

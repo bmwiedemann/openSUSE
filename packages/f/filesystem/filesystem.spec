@@ -1,7 +1,7 @@
 #
 # spec file for package filesystem
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  compat-usrmerge-tools
 Requires:       group(root)
 Requires:       user(root)
+Provides:       may-perform-usrmerge
 URL:            https://build.opensuse.org/package/show/openSUSE:Factory/filesystem
 Source0:        directory.list
 Source1:        filesystem.links
@@ -53,7 +54,7 @@ the home directories of system users.
 cp %{SOURCE0} .
 cp %{SOURCE1} .
 cp %{SOURCE3} .
-%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 loongarch64
 cat %{SOURCE66} >> ghost.list
 %endif
 
@@ -123,7 +124,7 @@ cat > pre.lua <<'EOF'
 needmigrate = false
 local dirs = {"/bin",
   "/sbin",
-%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 hppa64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 loongarch64 hppa64
   "/lib64",
 %endif
   "/lib" }
@@ -191,7 +192,7 @@ function create_dir () {
 mkdir -p $RPM_BUILD_ROOT
 # generic directories first
 echo "%%defattr(-,root,root)" > filesystem.list
-%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 loongarch64
 cat %{SOURCE64} >> directory.list
 %endif
 %ifarch x86_64 %x86_64
@@ -201,7 +202,7 @@ cat >> filesystem.links << EOF
 usr/bin   /bin
 usr/sbin  /sbin
 usr/lib   /lib
-%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 hppa64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64 loongarch64 hppa64
 usr/lib64 /lib64
 %endif
 EOF

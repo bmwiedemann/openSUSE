@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 25 05:30:34 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.38.1 (v0.38.1)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  v0.38.1 2025-01-25 00:30:13+01:00
+
+      - Add --duplicate-keys commandline flag
+      - Forbid unknown tags by default
+      - Add a 'Catchall' schema to allow unknen tags
+      - Add a --catchall commandline flag
+
+-------------------------------------------------------------------
 Tue Jan 30 03:09:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.38.0

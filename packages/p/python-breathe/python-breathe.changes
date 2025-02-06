@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 18 10:37:41 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add support-sphinx-7.4.patch (gh#breathe-doc/breathe!1007)
+  fixing tests with Sphinx 7.4.
+
+-------------------------------------------------------------------
 Sat Jul 20 01:45:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip test suite because of gh#breathe-doc/breathe#987

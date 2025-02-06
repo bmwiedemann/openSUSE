@@ -1,7 +1,7 @@
 #
 # spec file for package java-21-openjdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      21
 %global interimver      0
-%global updatever       5
-%global buildver        11
+%global updatever       6
+%global buildver        7
 %global openjdk_repo    jdk21u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -152,6 +152,7 @@ Patch3:         java-atk-wrapper-security.patch
 Patch4:         PStack-808293.patch
 # Allow multiple initialization of PKCS11 libraries
 Patch5:         multiple-pkcs11-library-init.patch
+Patch7:         reproducible-directory-mtime.patch
 # Fix instantiation of VM on ZERO
 Patch8:         zero-ranges.patch
 Patch9:         reproducible-javadoc-timestamp.patch
@@ -389,6 +390,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1

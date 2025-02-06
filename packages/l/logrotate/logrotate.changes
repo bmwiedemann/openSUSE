@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:52:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Fri Nov 29 13:01:12 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Skip test-0110.sh which fails after update in the build chroot 

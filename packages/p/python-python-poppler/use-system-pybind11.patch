@@ -1,41 +1,17 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 936467d..0f97a75 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -6,8 +6,8 @@ list(APPEND Targets "page_renderer" "page_transition")
- list(APPEND Targets "embedded_file" "destination" "toc" "font")
+Index: python-poppler-0.4.1/meson.build
+===================================================================
+--- python-poppler-0.4.1.orig/meson.build
++++ python-poppler-0.4.1/meson.build
+@@ -13,7 +13,10 @@ poppler_dep = dependency('poppler-cpp',
+ python_mod = import('python')
+ python3 = python_mod.find_installation('python3', pure: false)
  
+-pybind11_proj = subproject('pybind11')
+-pybind11_dep = pybind11_proj.get_variable('pybind11_dep')
++pybind11_config = find_program('pybind11-config')
++pybind11_config_ret = run_command(pybind11_config, ['--includes'], check: true)
++pybind11_dep = declare_dependency(
++    include_directories: [pybind11_config_ret.stdout().split('-I')[-1].strip()],
++)
  
--# find_package(pybind11)
--add_subdirectory(pybind11)
-+find_package(pybind11)
-+# add_subdirectory(pybind11)
- 
- 
- find_package(PkgConfig REQUIRED)
-diff --git a/setup.py b/setup.py
-index c1ba5f6..34f6ac3 100644
---- a/setup.py
-+++ b/setup.py
-@@ -43,6 +43,7 @@ class CMakeBuild(build_ext):
-         cmake_args = [
-             "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=" + extdir,
-             "-DPYTHON_EXECUTABLE=" + sys.executable,
-+            "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
-         ]
- 
-         cfg = "Debug" if self.debug else "Release"
-@@ -65,9 +66,13 @@ class CMakeBuild(build_ext):
-         )
-         if not os.path.exists(self.build_temp):
-             os.makedirs(self.build_temp)
-+        from pprint import pformat
-+        print("Env: {}\n".format(pformat(env)))
-+        print("Run: {} in {}\n".format(["cmake", ext.sourcedir] + cmake_args, self.build_temp))
-         subprocess.check_call(
-             ["cmake", ext.sourcedir] + cmake_args, cwd=self.build_temp, env=env
-         )
-+        print("Run: {} in {}\n".format(["cmake", "--build", "."] + build_args, self.build_temp))
-         subprocess.check_call(
-             ["cmake", "--build", "."] + build_args, cwd=self.build_temp
-         )
+ subdir('src')

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 20 05:06:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded Requires on six.
+
+-------------------------------------------------------------------
 Fri Jun  9 13:35:52 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

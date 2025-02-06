@@ -7,4 +7,13 @@
     <comment>Package the Python version of squilt, which is more maintainable</comment>
     <requestid>1099470</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>af965080563a1c10be7e2449946fc7e6</srcmd5>
+    <version>20230719.dde2b0b</version>
+    <time>1738072737</time>
+    <user>anag+factory</user>
+    <comment>- Require python3 (bsc#1219306)
+</comment>
+    <requestid>1240721</requestid>
+  </revision>
 </revisionlist>

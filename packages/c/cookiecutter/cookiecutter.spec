@@ -65,6 +65,7 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-myst-parser
 BuildRequires:  python3-sphinx-autodoc-typehints
 BuildRequires:  python3-sphinx-click
+BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-sphinxcontrib-apidoc
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"

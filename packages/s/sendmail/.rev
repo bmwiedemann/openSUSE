@@ -1286,4 +1286,16 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>Add sendmail.8.18.1-reproducibleuname.patch to not embed the build machine's kernel version in debuginfo (boo#1234629) (forwarded request 1231685 from bmwiedemann)</comment>
     <requestid>1231690</requestid>
   </revision>
+  <revision rev="125" vrev="4">
+    <srcmd5>1042249e9c4deed2b82082b76dcc2265</srcmd5>
+    <version>8.18.1</version>
+    <time>1738163394</time>
+    <user>anag+factory</user>
+    <comment>- Allow libmilter to be installed without local MTA as it can be
+  used with a remote MTA as well
+
+- reduce requires smtp_daemon to recommends, to allow e.g. smaller
+  clamav footprints.</comment>
+    <requestid>1240791</requestid>
+  </revision>
 </revisionlist>

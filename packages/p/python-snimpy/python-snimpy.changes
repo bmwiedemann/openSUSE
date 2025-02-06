@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 29 05:33:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip another test. 
+
+-------------------------------------------------------------------
 Thu Nov 14 19:15:19 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests affected by too new pyasn1 for now

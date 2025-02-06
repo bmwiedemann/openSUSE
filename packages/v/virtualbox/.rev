@@ -2688,4 +2688,12 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment>- Remove bogus ExecCondition= from vboxclient.service. [boo#1234870]</comment>
     <requestid>1234839</requestid>
   </revision>
+  <revision rev="286" vrev="6">
+    <srcmd5>ed8991b0a8b7dbe08edc75f7df79b955</srcmd5>
+    <version>7.1.4</version>
+    <time>1737559841</time>
+    <user>anag+factory</user>
+    <comment>- add: kernel-6-13.patch (bsc#1235146)</comment>
+    <requestid>1239250</requestid>
+  </revision>
 </revisionlist>

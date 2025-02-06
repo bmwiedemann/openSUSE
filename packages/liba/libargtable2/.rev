@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1156112</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5c740248e8e0273e632a98c29071eea4</srcmd5>
+    <version>2.13</version>
+    <time>1738163907</time>
+    <user>anag+factory</user>
+    <comment>-  Fix multiple implicit function declarations. Add patch
+   implicit-declaration.patch
+</comment>
+    <requestid>1241174</requestid>
+  </revision>
 </revisionlist>

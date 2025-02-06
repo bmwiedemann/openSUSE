@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycrdt-websocket
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pycrdt-websocket
-Version:        0.15.1
+Version:        0.15.4
 Release:        0
 Summary:        WebSocket connector for pycrdt
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.6.2
-Requires:       (python-pycrdt >= 0.10.3 with python-pycrdt < 0.11)
+Requires:       (python-pycrdt >= 0.10.3 with python-pycrdt < 0.13)
 Requires:       (python-sqlite-anyio >= 0.2.3 with python-sqlite-anyio < 0.3.0)
 Provides:       python-pycrdt_websocket = %{version}-%{release}
 BuildArch:      noarch
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module sqlite-anyio >= 0.2.3 with %python-sqlite-anyio 
 BuildRequires:  %{python_module anyio >= 3.6.2}
 BuildRequires:  %{python_module httpx-ws >= 0.5.2}
 BuildRequires:  %{python_module hypercorn if %python-base >= 3.11}
-BuildRequires:  %{python_module pycrdt >= 0.10.3 with %python-pycrdt < 0.11}
+BuildRequires:  %{python_module pycrdt >= 0.10.3 with %python-pycrdt < 0.13}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio}

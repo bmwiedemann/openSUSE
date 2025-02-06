@@ -1,7 +1,7 @@
 #
 # spec file for package python-sherpa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        https://github.com/sherpa/sherpa-test-data/archive/refs/tags/%{v
 Patch0:         https://github.com/sherpa/sherpa/pull/2188.patch#/sherpa-pr2188-np2docstrings.patch
 # PATCH-FIX-OPENSUSE sherpa-suse-libdir.patch -- UPSTREAM struggles with library paths, see e.g. gh#sherpa/sherpa#2159 code@bnavigator.de
 Patch1:         sherpa-suse-libdir.patch
+# PATCH-FIX-UPSTREAM gh#sherpa/sherpa#2203
+Patch2:         support-pytest-8.3.4.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
@@ -103,6 +105,7 @@ donttest+=" or test_integrate1d_basic_epsabs"
 # flaky
 donttest+=" or test_scaling_staterr"
 donttest+=" or (test_Shekel7 and montecarlo)"
+donttest+=" or (test_Shekel5 and montecarlo)"
 # docstring mismatches
 python313_donttest=" or test_show_fit or test_modify_doctring or test_modelwrapper_str_with_doc"
 %pytest_arch --pyargs sherpa -n auto --dist=loadgroup -r fE -k "not ($donttest ${$python_donttest})"

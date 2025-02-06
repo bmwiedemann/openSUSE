@@ -617,4 +617,14 @@
     the shell function _comp_compgen_split (boo#1221414)</comment>
     <requestid>1160694</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>f95d0115707b6bade2ffc49bf1bbe817</srcmd5>
+    <version>2.12.0</version>
+    <time>1738244953</time>
+    <user>anag+factory</user>
+    <comment>- No longer ship completion for secret-tool, which belongs to
+  libsecret and newly brings the completions by itself.
+  https://github.com/scop/bash-completion/issues/1317 (forwarded request 1239033 from dimstar)</comment>
+    <requestid>1241180</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libexif
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libexif
-Version:        0.6.24
+Version:        0.6.25
 Release:        0
 URL:            http://libexif.sourceforge.net
 Summary:        An EXIF Tag Parsing Library for Digital Cameras
@@ -59,7 +59,7 @@ Requires:       glibc-devel
 This library is used to parse EXIF information from JPEGs created by
 digital cameras.
 
-%prep 
+%prep
 %setup -q
 
 %build

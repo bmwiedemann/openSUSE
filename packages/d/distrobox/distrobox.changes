@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Jan 25 18:24:09 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.8.1.2:
+  * Nvidia hotfixes:
+    - init: improve nvidia symlinks resolution (#1668)
+    - init: mask systemd-resolved in case we use host's network
+- Changes from 1.8.1 -> 1.8.1.1
+  * Update install (#1664)
+  * init: improve nvidia integration, avoid directory mounts and
+    possible mount loops
+  * Revert "export: potential improvements to pull-request
+    #1102"(#1608)
+
+-------------------------------------------------------------------
+Tue Jan 21 10:15:10 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.8.1:
+  * assemble: add clone in distrobox assemble by @PawsFunctions in #1618
+  * completions: zsh reworked. fixed not completing container names. by @fredricocalamari in #1603
+  * create: better check clone support
+  * create: properly handle platform specification for alien architectures. Fix #1644
+  * distrobox-enter: improve cmd composition speed by @TigerGorilla2 in #1649
+  * docs: Cut 80% of the source package size by optimizing/cleaning doc images by @eugenesan in #1586
+  * docs: Fix misspelling in Useful tips section by @brandondong in #1645
+  * docs: Update compatibility list
+  * docs: Update compatibility.md for fedora toolbox images by @ImBearChild in #1637
+  * docs: add deepin 23 docker image by @chenchongbiao in #1632
+  * docs: fix nvidia container toolkit commands. Fix #1654
+  * docs: update Podman inside Distrobox by @alexandrevicenzi in #1597
+  * enter: Replace tac with awk to be more portable by @shtayerc in #1591
+  * enter: Stop importing zsh FPATH into container by @jgroman in #1636
+  * enter: fix additional flags composition, Fix #1594
+  * export: potential improvement to pull-request #1102 by @AbduEhab in #1608
+  * fix:repeat trigger update locale when locale exists by @heysion in #1614
+  * init: Strip single quotes when parsing locale.conf by @catgirlconspiracy in #1605
+  * init: add timeout to systemd bringup wait. Fix #1641
+  * init: fix missing hooks in pacman, Fix #1595, Fix #1602, Fix #1610, Fix #1619
+  * init: fix prompt not sourcing on some distros
+  * init: fix runtime sync fallback by @xz-dev in #1622
+  * init: improve nvidia integration, skip files when directory is already a ro-mountpoint, log with warnings
+  * init: move pkg manager exclude lists to separate step, always run them.
+  * init: provide default prompt for fish shell by @Boria138 in #1588
+  * init: simplify nvidia 32bit dir detection
+  * rm: fix redundant print with quotes. Fix #1634
+
+-------------------------------------------------------------------
 Wed Oct 16 10:14:35 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to 1.8.0

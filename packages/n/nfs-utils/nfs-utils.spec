@@ -75,6 +75,8 @@ Group:          Productivity/Networking/NFS
 Requires:       keyutils
 Requires:       netcfg
 Requires:       rpcbind
+# The statd user relies on 'nogroup' from system-user-nobody
+Requires:       system-user-nobody
 Requires(post): %fillup_prereq
 Requires(pre):  permissions
 Obsoletes:      nfs-utils < 1.1.0

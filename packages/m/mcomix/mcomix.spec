@@ -1,7 +1,7 @@
 #
 # spec file for package mcomix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%{?sle15_python_module_pythons}
-
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1600
 %define pythons python3
+%else
+%define pythons python311
 %endif
 
 Name:           mcomix
@@ -34,12 +34,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  gobject-introspection
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1600
 Requires:       python3-PyMuPDF
-%endif
-%if 0%{?sle_version} >= 0150400
+%else
 Requires:       mupdf
 %endif
+Requires:       %{pythons}
 Requires:       %{pythons}-Pillow
 Requires:       %{pythons}-gobject-Gdk
 Requires:       %{pythons}-pycairo

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 22 05:59:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.1.1:
+  * Add changelog for v2.1.1 (#932)
+  * Update all keys and certs to TTL 100 years (#793) (#931)
+  * Fix expired cert auth test-fixture (#892) (#930)
+  * Bump to latest Go 1.23.5 version (#912) (#929)
+  * Bump alpine from 3.20 to 3.21 (#831) (#928)
+  * Bump extended standard library dependencies (#927)
+
+-------------------------------------------------------------------
 Fri Nov 29 20:20:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.1.0:

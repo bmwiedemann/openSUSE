@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 28 13:05:46 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.1:
+  * container: Properly constrain title bar padding
+  * swaybar: Handle opaque region properly
+  * input/libinput: fix builtin device detection logic
+  * Explain that the title bar always shows
+  * swaybar: Emit property changes for SNI watcher
+  * desktop/output: Store output config on request_state
+  * desktop/output: Add missing output config allocation checks
+  * config/output: Update output position in two passes
+  * desktop/output: Clean up output state if build_state fails
+  * desktop/output: Clear frame_pending even output is disabled
+  * config: Force modeset before running deferred configs
+  * ipc-server: Force modeset if needed after executing commands
+  * desktop/output: Clear repaint timer earlier in destroy
+  * swaynag: fix null dereference on scale change
+  * release.sh: read meson-rewrite output from stdout
+  * ipc-json: handle LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
+  * config/output: don't hardcode DMA-BUF in search_render_format()
+  * build: bump version to 1.10.1
+  * layer_shell: cleanup new_popup listener when destroying node
+  * config/output: don't leak background_fallback
+  * desktop/transaction: clamp vertical border length to 0
+  * config/output: skip format checks if all are supported
+- Drop libinput-drag-lock-enabled-sticky-fix-condition.patch
+  and libinput-drag-lock-enabled-sticky.patch
+
+-------------------------------------------------------------------
 Mon Dec 16 21:26:44 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Add libinput-drag-lock-enabled-sticky-fix-condition.patch.

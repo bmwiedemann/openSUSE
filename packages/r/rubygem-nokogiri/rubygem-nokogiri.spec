@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nokogiri
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.16.7
+Version:        1.18.2
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
@@ -36,7 +36,7 @@ BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{rubydevel >= 3.0.0}
+BuildRequires:  %{rubydevel >= 3.1.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  update-alternatives

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 20 17:34:10 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.18:
+  * Provide a pkgconfig file
+  * Create HiDPI directories
+  * Port build system to Meson
+- Create devel subpackage for pkgconfig file
+- Create all directories under symbolic
+  (needed by budgie-desktop)
+- Create 1024x1024 HiDPI directories
+
+-------------------------------------------------------------------
 Mon Nov 21 13:49:48 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
 
 - Add 1024x1024 directory for package ownership

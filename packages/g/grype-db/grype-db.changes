@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Jan 25 08:05:52 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.28.0:
+  * skip release gate for unexpected acceptance tests (#481)
+  * fix gate threshold (#480)
+  * chore(deps): Bump actions/cache in /.github/actions/bootstrap
+    (#479)
+  * fix gate threshold (#478)
+  * Add DB v6 support to grype-db-manager (#446)
+  * Rework usage instructions with working code, step-by-step
+    (#468)
+  * chore(deps): Bump actions/setup-go in
+    /.github/actions/bootstrap (#477)
+  * chore(deps): Bump actions/setup-python in
+    /.github/actions/bootstrap (#476)
+  * chore(deps): Bump actions/cache in /.github/actions/bootstrap
+    (#475)
+  * chore(deps): Bump abatilo/actions-poetry in
+    /.github/actions/bootstrap (#474)
+  * chore(ci): fix composite GitHub action path in dependabot
+    config (#473)
+  * chore(deps): Bump github.com/spf13/afero from 1.11.0 to 1.12.0
+    (#461)
+  * chore(deps): Bump github.com/hashicorp/go-getter from 1.7.6 to
+    1.7.8 (#464)
+  * chore(deps): Bump actions/setup-go from 5.2.0 to 5.3.0 (#471)
+  * chore(ci): add crane to binny (#470)
+  * chore(ci): bootstrap oras for use in ci (#469)
+  * chore(deps-dev): Bump jinja2 from 3.1.4 to 3.1.5 (#467)
+  * chore(deps): Bump github.com/go-git/go-git/v5 from 5.12.0 to
+    5.13.0 (#465)
+  * Loosen vunnel schema version check (#463)
+  * pin vunnel providers (#458)
+  * chore(deps): Bump peter-evans/create-pull-request from 7.0.5 to
+    7.0.6 (#459)
+  * Update grype-db bootstrap tools to latest versions. (#460)
+  * Add release ID to OS models (#457)
+  * Pull in more v6 schema changes (#456)
+
+-------------------------------------------------------------------
 Sat Dec 14 21:22:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.27.4:

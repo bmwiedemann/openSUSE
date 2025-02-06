@@ -1,7 +1,7 @@
 #
 # spec file for package python-stack-data
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM https://github.com/alexmojaki/stack_data/pull/58 Modify test_executing_style_defs to work with Pygments 2.19
+Patch0:         pygments.patch
 Requires:       python-asttokens
 Requires:       python-executing
 Requires:       python-pure-eval
@@ -62,8 +64,8 @@ Extract data from python stack frames and tracebacks for informative displays
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# incompatibility with Pygments
-%pytest -k 'not (test_pygments_example or test_example)'
+# incompatibility with even older Pygments
+%pytest -k 'not ((test_core and test_pygments_example) or (test_serializer and test_example))'
 
 %files %{python_files}
 %{python_sitelib}/stack_data

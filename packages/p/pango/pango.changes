@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 19 09:21:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.56.1:
+  + Avoid criticals when there are no fonts
+  + fontconfig:
+    - Handle lack of FC_FONT_WRAPPER in font cache
+    - Prefer application fonts even if they are older
+
+-------------------------------------------------------------------
 Thu Jan 16 09:11:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.56.0+12:

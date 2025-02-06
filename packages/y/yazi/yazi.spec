@@ -1,7 +1,7 @@
 #
 # spec file for package yazi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yazi
-Version:        0.2.5
+Version:        0.4.2
 Release:        0
 Summary:        Blazing fast terminal file manager written in Rust, based on async I/O
 License:        MIT
@@ -25,25 +25,22 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/sxyazi/yazi
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         0001-use-system-jit.patch
 Requires:       file
 BuildRequires:  cargo-packaging
 BuildRequires:  lua54-devel
 
-# Override "-C debuginfo=2" from cargo-packaging, to solve rustc SIGSEGV exception:
-#   error: rustc interrupted by SIGSEGV, printing backtrace
-#   /usr/lib/librustc_driver-16d66626a1fefc07.so(+0x7aafa6)[0x7fbd6ffaafa6]
-# Tested with rustc 1.75.0 (82e1608df 2023-12-21) by xtexChooser
-%global build_rustflags %build_rustflags -C debuginfo=0
-
 Suggests:       ffmpegthumbnailer
-Suggests:       unar
+Suggests:       7zip
 Suggests:       jq
 Suggests:       poppler
 Suggests:       fd
 Suggests:       ripgrep
 Suggests:       fzf
 Suggests:       zoxide
+Suggests:       ImageMagick
+Suggests:       chafa
+
+%define __cargo_common_opts --no-default-features --locked
 
 %description
 Yazi (means "duck") is a terminal file manager written in Rust, based on non-blocking async I/O. It aims to provide an efficient, user-friendly, and customizable file management experience.
@@ -92,15 +89,20 @@ The official zsh completion script for %{name}.
 
 %prep
 %autosetup -a1 -p0
+%ifarch i586 armv7l
+sed -i '/lto           = true/d' Cargo.toml
+sed -i '/codegen-units = 1/d' Cargo.toml
+%endif
 
 %build
 export YAZI_GEN_COMPLETIONS=true
-export VERGEN_GIT_SHA='OpenSUSE'
+export VERGEN_GIT_SHA='openSUSE'
 %{cargo_build}
 
 %install
-export VERGEN_GIT_SHA='OpenSUSE'
+export VERGEN_GIT_SHA='openSUSE'
 %{cargo_install -p yazi-fm}
+%{cargo_install -p yazi-cli}
 install -Dm 644 yazi-boot/completions/yazi.bash %{buildroot}%{_datadir}/bash-completion/completions/yazi
 install -Dm 644 yazi-boot/completions/yazi.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/yazi.fish
 install -Dm 644 yazi-boot/completions/_yazi %{buildroot}%{_datadir}/zsh/site-functions/_yazi
@@ -112,6 +114,7 @@ install -Dm 644 yazi-boot/completions/_yazi %{buildroot}%{_datadir}/zsh/site-fun
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_bindir}/ya
 
 %files bash-completion
 %{_datadir}/bash-completion

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server-ydoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@
 %bcond_with test
 %endif
 
-%define distversion 1
+%define distversion 1.1
 Name:           python-jupyter-server-ydoc%{psuffix}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Jupyter server extension integrating collaborative shared models
 License:        BSD-3-Clause
@@ -76,17 +76,14 @@ This package provides the common jupyter configuration file.
 
 %package test
 Summary:        The jupyter_server_ydoc[test] extra
-Requires:       python-jupyter-server-ydoc = %{version}
-Requires:       python-jsonschema >= 4.18.0
-Requires:       python-jupyter-server-fileid >= 0.7
+Requires:       python-anyio
+Requires:       python-dirty-equals
+Requires:       python-httpx-ws >= 0.5.2
+Requires:       python-jupyter-server-fileid
 Requires:       python-jupyter-server-test >= 2.11.1
-Requires:       python-jupyter_events >= 0.10.0
-Requires:       python-jupyter_ydoc >= 2.1.2
-Requires:       python-pycrdt-websocket >= 0.15.0
-Requires:       python-pycrdt
+Requires:       python-jupyter-server-ydoc = %{version}
 Requires:       python-pytest >= 7.0
-Requires:       python-pytest-jupyter
-Requires:       python-websockets
+Requires:       (python-importlib_metadata >= 4.8.3 if python-base < 3.10)
 
 %description test
 Metapackage for the jupyter_server_ydoc[test] extra requirements

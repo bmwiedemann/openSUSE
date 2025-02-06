@@ -46,17 +46,10 @@ arch="$(uname -m)"
 
 case "${flavor}" in
 	GNOME|KDE|XFCE)
-		msize=1200000000
+		msize=1500000000
 		;;
 	Rescue)
-		case "${arch}" in
-			aarch64)
-				msize=1000000000
-				;;
-			*)
-				msize=680000000
-				;;
-		esac
+		msize=1000000000
 		;;
 	*)
 		echo "Unknown flavor ${flavor}" >&2

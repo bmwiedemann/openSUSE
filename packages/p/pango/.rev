@@ -1247,4 +1247,16 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
     <comment></comment>
     <requestid>1238322</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>f307a24e0668b7b7b91a1f6e8ed91b5c</srcmd5>
+    <version>1.56.1</version>
+    <time>1737559848</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.56.1:
+  + Avoid criticals when there are no fonts
+  + fontconfig:
+    - Handle lack of FC_FONT_WRAPPER in font cache
+    - Prefer application fonts even if they are older (forwarded request 1238795 from iznogood)</comment>
+    <requestid>1239209</requestid>
+  </revision>
 </revisionlist>

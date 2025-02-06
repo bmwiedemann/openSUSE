@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 24 18:21:06 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.4.0
+  * Fix id_token decoding when kid is null. :pr:`659`
+  * Support for Python 3.13. :pr:`682`
+  * Force login if the prompt parameter value is login. :pr:`637`
+  * Support for httpx 0.28, :pr:`695`
+  * Breaking changes:
+    - Stop support for Python 3.8. :pr:`682`
+- Drop py313-tests.patch, because now in upstream.
+- Drop httpx028.patch, because now in upstream.
+
+-------------------------------------------------------------------
 Thu Dec 19 13:57:51 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add httpx028.patch to add compatibility with new httpx

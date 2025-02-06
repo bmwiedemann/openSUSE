@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1182738</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f1e3d48b15997ca35bf25f3f3532827</srcmd5>
+    <version>0.0.0+git20230112.c2b79fc</version>
+    <time>1738007646</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-build-on-kernel-6_13.patch, support kernel 6.13+ (forwarded request 1240359 from hillwood)</comment>
+    <requestid>1240360</requestid>
+  </revision>
 </revisionlist>

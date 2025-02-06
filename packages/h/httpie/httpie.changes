@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 21 13:32:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Drop unneeded build dependencies
+  * upstream [dev] section is not needed for us
+- Rewrite %{python_sitelib} in %files to respect %primary_python
+
+-------------------------------------------------------------------
 Tue Dec 23 02:36:08 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Change python version back to 3.11 because too many tests fail

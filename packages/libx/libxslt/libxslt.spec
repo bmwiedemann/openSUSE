@@ -1,7 +1,7 @@
 #
 # spec file for package libxslt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libexver    0
 
 Name:           libxslt
-Version:        1.1.39
+Version:        1.1.42
 Release:        0
 Summary:        XSL Transformation Library
 License:        GPL-2.0-or-later AND MIT
@@ -40,11 +40,10 @@ Patch0:         libxslt-1.1.24-no-net-autobuild.patch
 #   Initialize the random seed to ensure libxslt's math.random() function
 #   produces unpredictable outputs.
 Patch1:         libxslt-random-seed.patch
-# PATCH-FIX_UPSTREAM -- gcc14-runtest-no-const.patch
-Patch2:         gcc14-runtest-no-const.patch
-# PATCH-FIX-UPSTREAM -- 0001-tests-Fix-build-with-older-libxml2.patch
-Patch3:         0001-tests-Fix-build-with-older-libxml2.patch
-Patch4:         libxslt-reproducible.patch
+Patch2:         libxslt-reproducible.patch
+# PATCH-FIX-UPSTREAM -- libxslt-test-compile-with-older-libxml2-versions.patch
+#   https://gitlab.gnome.org/GNOME/libxslt/-/issues/125
+Patch3:         libxslt-test-compile-with-older-libxml2-versions.patch
 #
 ### SUSE patches starts on 1000
 # PATCH-FIX-SUSE
@@ -133,6 +132,7 @@ xtend the
 %make_build
 
 %check
+find -type f -name "test_bad*" -delete -print
 %make_build check
 
 %install
@@ -176,7 +176,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/cmake/libxslt/FindGcrypt.cmake
 %{_libdir}/cmake/libxslt/libxslt-config.cmake
 %{_includedir}/*
-%{_datadir}/aclocal/*
 %{_bindir}/xslt-config
 %{_mandir}/man1/xslt-config.1%{?ext_man}
 %{_mandir}/man3/*

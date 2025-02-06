@@ -1,4 +1,4 @@
-From 38f2d4080029bf38c452c176bc675a2b1bd2c818 Mon Sep 17 00:00:00 2001
+From 5a84a1fdcbe2dd833cc04a6398b92eca4187ed71 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Wed, 8 Jan 2025 10:47:45 -0800
 Subject: [PATCH 2/4] configuration changes for default wayfire session
@@ -22,5 +22,5 @@ index edcbab3..3e531ef 100644
  
  # Output configuration
 -- 
-2.47.1
+2.48.1
 

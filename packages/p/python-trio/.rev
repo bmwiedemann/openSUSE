@@ -253,4 +253,12 @@
     strict=False is now in flatten_subgroups=True.</comment>
     <requestid>1199467</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fd631e558684bf055216e2639ad726c1</srcmd5>
+    <version>0.28.0</version>
+    <time>1738163397</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1240800</requestid>
+  </revision>
 </revisionlist>

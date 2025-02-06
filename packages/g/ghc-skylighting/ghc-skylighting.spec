@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-skylighting
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name skylighting
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.14.5
+Version:        0.14.6
 Release:        0
 Summary:        Syntax highlighting library
 License:        GPL-2.0-or-later
@@ -45,6 +45,8 @@ BuildRequires:  ghc-skylighting-format-context-devel
 BuildRequires:  ghc-skylighting-format-context-prof
 BuildRequires:  ghc-skylighting-format-latex-devel
 BuildRequires:  ghc-skylighting-format-latex-prof
+BuildRequires:  ghc-skylighting-format-typst-devel
+BuildRequires:  ghc-skylighting-format-typst-prof
 ExcludeArch:    %{ix86}
 
 %description

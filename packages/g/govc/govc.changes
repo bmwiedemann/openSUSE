@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan 28 14:21:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.48.0:
+  * chore: Update version.go for v0.48.0
+  * Add ResourcePool.resourceConfigSpecDetailed to missingSet
+    filter
+  * add delete flag for CnsContainerCluster type
+  * vcsim: add env var for use with ssoadmin GetTrustedCertificates
+  * govc: sha256 for session cache
+  * api: add vlsm.GlobalObjectManager.List method
+  * vcsim: add disk query and metadata support
+  * govc: add disk.metadata ls and update commands
+  * fix: add DirectPathProfileManager to mo registry
+  * vcsim: fix save+load of Alarm objects
+  * govc: enhance VAPI for vSphere Supervisor Services
+  * vcsim: add ssoadmin GetTrustedCertificates method
+  * vcsim: fix lookup service deferred registration
+  * vcsim: add vslm VStorageObjectManager (aka FCD Global Catalog)
+    support
+  * fix: support multiple property.Collector.Retrieve base type
+    fields
+  * fix: Add session lookup fallback for soap header auth
+  * vcsim: add DatastoreNamespaceManager Create/Delete directory
+    methods
+  * fix: govc: import.ovf remote support regression
+  * goreleaser: remove brew tap setup
+
+-------------------------------------------------------------------
 Fri Jan 03 08:45:00 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.47.0:

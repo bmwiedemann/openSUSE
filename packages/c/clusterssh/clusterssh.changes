@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 25 14:45:43 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to new upstream release v4.18
+  * Re-release due to poor release upload to CPAN
+
+- Update to new upstream release v4.17
+  * Swap the hostname lookup macro from DNS to using the system hostname
+  * Swap from using Travis-CI to Github Actions
+  * Fix tests on perl 5.38 and 5.40
+
+- Drop 150.patch as already included in upstream
+- ran spec-cleaner 
+
+-------------------------------------------------------------------
 Tue Aug  8 07:06:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 150.patch: Fix build with Perl 5.38.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 11:03:56 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix shebang for $python_sitelib/huey/bin/huey_consumer.py
+
+-------------------------------------------------------------------
 Tue Oct 29 21:50:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.2:

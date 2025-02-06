@@ -24,6 +24,8 @@ License:        EPL-1.0
 URL:            https://joker-lang.org
 Source0:        https://github.com/candid82/joker/archive/refs/tags/v%{version}.tar.gz#/joker-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/candid82/joker/issues/491
+Patch0:         reproducible.patch
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?mageia}
 BuildRequires:  go-rpm-macros
 %else
@@ -35,7 +37,7 @@ BuildRequires:  golang(API) >= 1.18
 Joker is a small Clojure interpreter, linter and formatter written in Go.
 
 %prep
-%setup -q
+%autosetup -p1
 tar -zxf %{SOURCE1}
 
 %build

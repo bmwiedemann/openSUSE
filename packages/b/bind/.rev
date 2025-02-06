@@ -2447,4 +2447,22 @@ New Features
 - Update to release 9.20.4</comment>
     <requestid>1236154</requestid>
   </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>a1276895bfd56ec142edc8de5ab4c68b</srcmd5>
+    <version>9.20.4</version>
+    <time>1737651438</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1239536</requestid>
+  </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>81d47ad112f20d86fef38fbd14c98a51</srcmd5>
+    <version>9.20.5</version>
+    <time>1738335717</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to release 9.20.5
+- Remove desktop file and BuildRequires: update-desktop-files
+</comment>
+    <requestid>1241343</requestid>
+  </revision>
 </revisionlist>

@@ -7,4 +7,23 @@
     <comment>New package.</comment>
     <requestid>1181340</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba9c9e3cd3c55d2a95af5402feb13aa4</srcmd5>
+    <version>2.1.4</version>
+    <time>1737828772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1240230</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3ca972311610089f4a4f8682969836c8</srcmd5>
+    <version>2.1.4</version>
+    <time>1738072730</time>
+    <user>anag+factory</user>
+    <comment>- Added reproducibility Reproducibility.patch 
+  (gh#texmacs/texmacs#77)
+- Added native pdf export dependency (boo#1235794)
+</comment>
+    <requestid>1240691</requestid>
+  </revision>
 </revisionlist>

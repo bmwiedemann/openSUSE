@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-sar-perf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,21 +20,24 @@ Name:           monitoring-plugins-sar-perf
 Summary:        Get performance data from sar
 License:        BSD-2-Clause
 Group:          System/Monitoring
-Version:        0.1
+Version:        0.1+git.1272298931.4878d0c
 Release:        0
 URL:            https://github.com/nickanderson/check-sar-perf
-Source0:        nickanderson-check-sar-perf-4878d0c.tar.gz
+Source0:        check-sar-perf-%{version}.tar.xz
 Source1:        check_iostat
 Source2:        usr.lib.nagios.plugins.check_iostat
 Patch0:         monitoring-plugins-sar-perf-output.patch
 Patch1:         monitoring-plugins-sar-perf-stdout.patch
+# PATCH-FIX-UPSTREAM no-python2.patch gh#nickanderson/check-sar-perf!3 mcepl@suse.com
+# make the script Python 3 compatible
+Patch2:         no-python2.patch
 BuildRequires:  nagios-rpm-macros
 %if 0%{?suse_version}
 Recommends:     apparmor-profiles
 %endif
 Provides:       nagios-plugins-sar-perf = %{version}-%{release}
 Obsoletes:      nagios-plugins-sar-perf < %{version}-%{release}
-Requires:       python
+Requires:       python3
 Requires:       sysstat
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -54,7 +57,7 @@ sar OK| DEV=sda tps=0.00 rd_sec/s=0.00 wr_sec/s=0.00 avgrq-sz=0.00
   avgqu-sz=0.00 await=0.00 svctm=0.00 util=0.00
 
 %prep
-%autosetup -p0 -n nickanderson-check-sar-perf-4878d0c
+%autosetup -p1 -n check-sar-perf-%{version}
 
 %build
 

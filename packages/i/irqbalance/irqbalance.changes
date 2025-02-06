@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:42:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Thu Jul 11 09:59:18 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed ProtectKernelTunables=yes from irqbalance.service to

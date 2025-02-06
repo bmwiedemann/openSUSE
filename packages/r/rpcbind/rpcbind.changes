@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 11 03:20:26 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Require system-user-nobody for as the rpc user relies on `nobody`
+  from this package
+
+-------------------------------------------------------------------
 Thu Aug 22 20:26:41 UTC 2024 - Petr Vorel <pvorel@suse.cz>
 
 - Update to rpcbind 1.2.7

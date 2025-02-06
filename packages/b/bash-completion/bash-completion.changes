@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:30:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer ship completion for secret-tool, which belongs to
+  libsecret and newly brings the completions by itself.
+  https://github.com/scop/bash-completion/issues/1317
+
+-------------------------------------------------------------------
 Fri Mar 22 13:31:54 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch boo1221414-scp.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           python-gwpy
-Version:        3.0.9
+Version:        3.0.11
 Release:        0
 Summary:        A python package for gravitational-wave astrophysics
 License:        GPL-3.0-only
 URL:            https://gwpy.github.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwpy/gwpy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://gitlab.com/gwpy/gwpy/-/merge_requests/1782
-Patch0:         gwpy-numpy-2.0-types.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -37,7 +35,7 @@ Requires:       python-dqsegdb2
 Requires:       python-gwdatafind >= 1.1.0
 Requires:       python-gwosc >= 0.5.3
 Requires:       python-h5py >= 3
-Requires:       python-ligo-segments >= 1.0.0
+Requires:       python-igwn-segments
 Requires:       python-ligotimegps >= 1.2.1
 Requires:       python-matplotlib >= 3.3.0
 Requires:       python-numpy >= 1.17
@@ -60,7 +58,7 @@ BuildRequires:  %{python_module dqsegdb2}
 BuildRequires:  %{python_module gwdatafind >= 1.1.0}
 BuildRequires:  %{python_module gwosc >= 0.5.3}
 BuildRequires:  %{python_module h5py >= 3}
-BuildRequires:  %{python_module ligo-segments >= 1.0.0}
+BuildRequires:  %{python_module igwn-segments}
 BuildRequires:  %{python_module ligotimegps >= 1.2.1}
 BuildRequires:  %{python_module lscsoft-glue}
 BuildRequires:  %{python_module matplotlib >= 3.3.0}
@@ -125,7 +123,7 @@ or test_coherence or test_get_data or test_gravityspy \
 or test_gwf or test_gwpy_plot_timeseries or test_io_losc \
 or test_qtransform or test_range or test_run or test_spectrogram \
 or test_spectrum or test_table or test_time \
-or test_to_from_pycbc"
+or test_to_from_pycbc or test_find_urls"
 
 # examples are not installed into buildroot: test via pyargs
 %pytest --pyargs gwpy -k "not ($DISABLE_TESTS)"

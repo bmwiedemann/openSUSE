@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-cargo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE-Rust/%{name}
-Version:        4.4.1
+Version:        4.5.0
 Release:        0
 Source0:        https://github.com/openSUSE-Rust/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  cargo1.83
 BuildRequires:  pkgconfig(libzstd)
 # Version with fixed vendor filterer
 Requires:       cargo-vendor-filterer >= 0.5.16

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 27 15:29:44 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.8.3+git.5.1510f5a:
+  * Decrease CI build time
+  * Fix CI failure caused by package revision
+  * Version 0.8.4
+  * Fix libutf8proc dependency issue on Ubuntu 22.04
+  * Version 0.8.3
+  * Fix Credentials leaking in the debug log
+
+-------------------------------------------------------------------
 Fri Jan 17 15:58:08 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.8.2+git.0.553c632:

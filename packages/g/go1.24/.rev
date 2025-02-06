@@ -7,4 +7,22 @@
     <comment>go1.24rc1 (released 2024-12-13) is a release candidate version of go1.24 cut from the master branch at the revision tagged go1.24rc1.</comment>
     <requestid>1231292</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb6f1dc9a04cd3341264d5bec1cc0087</srcmd5>
+    <version>1.24rc2</version>
+    <time>1737722451</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.24rc2 (released 2024-01-16) is a release candidate version of
+  go1.24 cut from the master branch at the revision tagged
+  go1.24rc2.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2024-45341 CVE-2024-45336 CVE-2025-22865 CVE-2024-45340
+  * go#71209 go#71156 boo#1236045 security: fix CVE-2024-45341 crypto/x509: properly check for IPv6 hosts in URIs
+  * go#71212 go#70530 boo#1236046 security: fix CVE-2024-45336 net/http: persist header stripping across repeated redirects
+  * go#71216 boo#1236361 security: fix CVE-2025-22865 crypto/x509: avoid panic when parsing partial PKCS#1 private keys
+  * go#71249 boo#1236360 security: fix CVE-2024-45340 cmd/go: restore netrc preferences for GOAUTH and fix domain lookup
+
+  Refs boo#1236217 go1.24 release tracking (forwarded request 1240018 from jfkw)</comment>
+    <requestid>1240021</requestid>
+  </revision>
 </revisionlist>

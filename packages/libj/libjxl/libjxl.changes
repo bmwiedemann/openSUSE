@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 22 17:29:34 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Remove the gimp plugin. It is for 2.10, and factory now has gimp
+  3.0.
+
+-------------------------------------------------------------------
+Wed Jan 22 15:56:09 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Always require lcms2 for the gtk build. It is needed when
+  building plugins, and, if gimp is disabled, it needs to be
+  specified explicitly.
+
+-------------------------------------------------------------------
 Fri Jan 10 21:34:13 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Disable gimp plugin on SLFO. Gimp is currently unavailable there.

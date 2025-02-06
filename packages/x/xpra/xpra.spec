@@ -32,7 +32,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.3.0+git20241211.e4692fa2
+Version:        6.3.0+git20250114.17113d02
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -325,6 +325,7 @@ done
 %{_libexecdir}/xpra/xdg-open
 %{_libexecdir}/xpra/xpra_signal_listener
 %{_libexecdir}/xpra/xpra_udev_product_version
+%{_libexecdir}/xpra/xpra_weston_xvfb
 %{_sbindir}/rc%{name}
 ### Leap 15.[5,6] need to use >= Python3.10, so these have to be called out directly.
 #%%{python3_sitearch}/xpra

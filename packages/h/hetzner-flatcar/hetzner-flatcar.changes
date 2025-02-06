@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 20 06:16:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.0:
+  * Fix goreleaser args
+  * Fix goreleaser action args
+  * Update goreleaser configuration for v2
+  * Use go version from go.mod in action
+  * Update dependencies and go version
+  * Bump goreleaser/goreleaser-action from 2 to 6
+  * Bump docker/login-action from 1 to 3
+  * Add dependabot configuration
+  * Bump actions/checkout from 2 to 4
+  * Use go version from go.mod
+  * Update dependencies and bump go
+  * Add dependabot configuration
+  * Update README.md - fix URL typo
+
+-------------------------------------------------------------------
 Sat Aug  3 09:04:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package hetzner-flatcar: a tool to deploy Flatcar Linux on

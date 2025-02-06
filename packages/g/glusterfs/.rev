@@ -330,4 +330,13 @@
   %python3_fix_shebang{,_path} macros, [bsc#1212476]</comment>
     <requestid>1197454</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>43d562d1091ef498a69e7ed06efd3557</srcmd5>
+    <version>11.1</version>
+    <time>1737828589</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with python 3.13, remove distributed python.m4 to use the
+  system one that's up to date.</comment>
+    <requestid>1240112</requestid>
+  </revision>
 </revisionlist>

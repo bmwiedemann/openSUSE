@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 24 01:01:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * Multiplexed syscall support for ppc
+  * Add support for the SECCOMP_FILTER_FLAG_WAIT_KILLABLE_RECV flag
+  * Add support for transactions with the
+    seccomp_transaction_start(), seccomp_transaction_commit(), and
+    seccomp_transaction_reject() APIs
+  * Add support for binary tree filters without syscalls
+  * Add support for the kernel’s implementation change of
+    SECCOMP_IOCTL_NOTIF_ID_VALID
+
+-------------------------------------------------------------------
 Sat Dec  2 05:44:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.5

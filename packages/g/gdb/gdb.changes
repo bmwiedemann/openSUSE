@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 20 14:22:22 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- riscv-lrsc.patch: Fix stepping over atomic sequences
+
+-------------------------------------------------------------------
+Tue Dec 17 16:11:55 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR29770 xfail (glibc).
+  * Add PR31229 kfail.
+
+-------------------------------------------------------------------
 Wed Dec 11 18:13:33 UTC 2024 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:

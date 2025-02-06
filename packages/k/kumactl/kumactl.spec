@@ -1,7 +1,7 @@
 #
 # spec file for package kumactl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define envoy_version 1.30.4-k.1
-
 Name:           kumactl
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        CLI for the Kuma service mesh
 License:        Apache-2.0
@@ -28,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23.5
 BuildRequires:  zsh
 
 %description
@@ -95,6 +93,8 @@ COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
+ENVOY_VERSION="$(awk -F '= ' '/^ENVOY_VERSION/ {print $2}' mk/dev.mk)"
+
 go build \
    -mod=vendor \
    -buildmode=pie \
@@ -103,7 +103,7 @@ go build \
    -X github.com/kumahq/kuma/pkg/version.gitTag=%{version} \
    -X github.com/kumahq/kuma/pkg/version.gitCommit=${COMMIT_HASH} \
    -X github.com/kumahq/kuma/pkg/version.buildDate=${BUILD_DATE} \
-   -X github.com/kumahq/kuma/pkg/version.Envoy=%{envoy_version}" \
+   -X github.com/kumahq/kuma/pkg/version.Envoy=${ENVOY_VERSION}" \
    -o bin/%{name} ./app/%{name}
 
 %install

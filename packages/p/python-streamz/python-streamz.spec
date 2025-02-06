@@ -1,7 +1,7 @@
 #
 # spec file for package python-streamz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/streamz/streamz
 Patch0:         streamz-pr455-ci-fixes.patch
 # PATCH-FIX-OPENSUSE streamz-opensuse-python-exec.patch -- call tests with correct flavor
 Patch1:         streamz-opensuse-python-exec.patch
+# PATCH-FIX-UPSTREAM python-streamz-no-six.patch gh#python-streamz/streamz/commit/33f49417b415deb7ea3c495a404b78c9d3743c03
+Patch2:         python-streamz-no-six.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -35,7 +37,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Setuptools is a runtime requirement because of pkg_resources usage
 Requires:       python-setuptools
-Requires:       python-six
 Requires:       python-toolz
 Requires:       python-tornado
 Requires:       python-zict
@@ -63,7 +64,6 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module zict}

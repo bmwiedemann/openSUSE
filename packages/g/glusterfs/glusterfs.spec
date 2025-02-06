@@ -147,6 +147,8 @@ links.
 
 %prep
 %autosetup -p1
+# Remove old python.m4 to use system default. Makes it compatible with python3.13
+rm contrib/aclocal/python.m4
 
 %build
 %define _lto_cflags %nil

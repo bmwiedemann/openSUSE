@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ruqola
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later

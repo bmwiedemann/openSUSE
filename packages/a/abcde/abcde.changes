@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 21 12:03:19 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Replace freedb by gnudb for cddb search (boo#1233688)
+  * add abcde-use-gnudb.patch
+
+-------------------------------------------------------------------
 Wed Aug 14 15:14:01 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Fix arithmetic on non-octal track numbers (boo#1219527)

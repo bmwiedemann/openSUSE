@@ -1,7 +1,7 @@
 #
 # spec file for package mosh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Flavio Castelli.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
+%endif
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)

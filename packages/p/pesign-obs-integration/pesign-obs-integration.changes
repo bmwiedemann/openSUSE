@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 21 13:05:34 UTC 2024 - dmueller@suse.com
+
+- Update to version 10.2+git20241221.c85eada:
+  * Move the rpm-420 compatibility section from %install to %build
+  * Fix README reference after a17ffb01430468f411acc5488cc9a6d27ceb1428
+
+-------------------------------------------------------------------
+Fri Dec 20 10:33:11 UTC 2024 - dmueller@suse.com
+
+- Update to version 10.2+git20241220.e0461ad:
+  * Fix repackaging of scriptlets with rpm-4.20
+
+-------------------------------------------------------------------
+Thu Dec 19 14:48:51 UTC 2024 - dmueller@suse.com
+
+- Update to version 10.2+git20241219.042a454:
+  * Make the repackage work with rpm-4.20
+
+-------------------------------------------------------------------
 Tue Jul 23 06:05:14 UTC 2024 - jlee@suse.com
 
 - Update to version 10.2+git20240723.d344d91:

@@ -1156,4 +1156,19 @@
   * Add Romanian translation #1176</comment>
     <requestid>1237059</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>ec840a648f1196d69aa16c9d7155066b</srcmd5>
+    <version>4.17.2</version>
+    <time>1737490196</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1235453: Set SYS_{UID,GID}_MIN to 201:
+  After repeated similar requests to change the ID ranges we set the
+  above mentioned value to 201. The max value will stay at 499.
+  This range should be sufficient and will give us leeway for the
+  future.
+  It's not straightforward to find out which static UIDs/GIDs are
+  used in all packages.
+  Update shadow-login_defs-suse.patch</comment>
+    <requestid>1238984</requestid>
+  </revision>
 </revisionlist>

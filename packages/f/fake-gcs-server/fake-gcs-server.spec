@@ -21,7 +21,7 @@
 %global provider_prefix github.com/fsouza/fake-gcs-server/fakestorage
 %global import_path     %{provider_prefix}
 Name:           fake-gcs-server
-Version:        1.49.2
+Version:        1.52.1
 Release:        0
 Summary:        Google Cloud Storage emulator & testing library
 License:        BSD-2-Clause
@@ -29,6 +29,7 @@ URL:            https://github.com/fsouza/fake-gcs-server
 Source0:        https://github.com/fsouza/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  go >= 1.23.0
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 %{go_nostrip}

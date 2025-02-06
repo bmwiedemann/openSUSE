@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-drf-spectacular-sidecar
 Version:        2024.12.1
 Release:        0

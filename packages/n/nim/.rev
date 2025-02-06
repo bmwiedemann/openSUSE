@@ -267,4 +267,14 @@
     <comment></comment>
     <requestid>1230624</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1a0a397a0c4c8a0f691d7b22306a278a</srcmd5>
+    <version>2.0.14</version>
+    <time>1738072773</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.14
+  See https://nim-lang.org/blog/2024/12/24/nim-2014-released.html
+</comment>
+    <requestid>1240680</requestid>
+  </revision>
 </revisionlist>

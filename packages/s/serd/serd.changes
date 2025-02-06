@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Jan 19 00:25:07 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 0.32.2
+  * Enable clang nullability checks
+  * Fix writing empty list objects within blank nodes
+
+-------------------------------------------------------------------
+Mon Oct 30 04:13:33 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Set build docs for TW only as it requires sphixygen since now
+- Refresh 001-serd-docdir.patch
+- Update to 0.32.0
+  * Add Windows path separator support to serd_node_new_file_uri()
+  * Add long "help" and "version" options to serdi
+  * Add options to disable html or singlehtml documentation
+  * Add serd_reader_skip_until_byte() to public API
+  * Allow SERD_API to be defined by the user
+  * Avoid creating test files in the current directory
+  * Avoid using ASCII grave as a quote
+  * Check for POSIX features with the build system
+  * Clean up and improve test suite
+  * Clean up code
+  * Fix crash when trying to read chunks without starting
+  * Fix hang when skipping an error at EOF when lax parsing
+  * Fix incorrect parsing of strange quote escape patterns
+  * Fix possible hang when writing nested Turtle lists
+  * Fix potential memory leaks when a write is aborted
+  * Fix relative URI creation
+  * Gracefully handle bad characters in Turtle blank node syntax
+  * Gracefully handle bad characters in Turtle datatype syntax
+  * Improve TriG pretty-printing and remove trailing newlines
+  * Improve pretty-printing of lists and inline subjects
+  * Improve serdi man page
+  * Improve writer error handling
+  * Make URI writing stricter by default
+  * Make serd_reader_read_chunk() work with NQuads
+  * Override pkg-config dependency within meson
+  * Remove junk files from documentation install
+  * Remove support for writing Turtle named inline nodes extension
+  * Replace duplicated dox_to_sphinx script with sphinxygen dependency
+  * Test header for warnings more strictly
+  * Update standard test suites
+
+-------------------------------------------------------------------
 Mon Dec 26 12:54:01 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 0.30.16

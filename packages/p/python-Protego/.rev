@@ -56,4 +56,16 @@
     scenarios where patterns included query strings.</comment>
     <requestid>1170438</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fdbd7615b026d3d70e74a2f20b98647a</srcmd5>
+    <version>0.4.0</version>
+    <time>1738007718</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.0:
+  * Dropped Python 3.8 support, added official Python 3.13 support.
+  * Added support for //-prefixed URLs.
+  * Improved the rendering of the README.rst code snippets in GitHub.
+</comment>
+    <requestid>1240471</requestid>
+  </revision>
 </revisionlist>

@@ -546,4 +546,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1222668 from glaubitz)</comment>
     <requestid>1222859</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>701bc5a9fe371063dd942b5ff8b9be92</srcmd5>
+    <version>34.0.0</version>
+    <time>1737490272</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 34.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1238922 from glaubitz)</comment>
+    <requestid>1239294</requestid>
+  </revision>
 </revisionlist>

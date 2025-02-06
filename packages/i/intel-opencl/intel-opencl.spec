@@ -1,7 +1,7 @@
 #
 # spec file for package intel-opencl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           intel-opencl
-Version:        24.26.30049.6
+Version:        24.52.32224.5
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
@@ -41,8 +41,8 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(igc-opencl)
 BuildRequires:  pkgconfig(libva)
-Requires:       libigc1
-Requires:       libigdfcl1
+Requires:       libigc2
+Requires:       libigdfcl2
 Requires:       libopencl-clang14
 Recommends:     libOpenCL1
 ExclusiveArch:  x86_64
@@ -61,7 +61,6 @@ Development package for Intel Graphics Compute Runtime for OpenCL.
 %package -n libze_intel_gpu1
 Summary:        Intel GPU support for oneAPI level zero
 Requires:       level-zero
-Requires:       libigc1
 
 %description -n libze_intel_gpu1
 This package provides offloading to an Intel GPU via the oneAPI level zero interface.
@@ -102,7 +101,7 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %files
 %{_libdir}/intel-opencl/libigdrcl.so
 %{_libdir}/libocloc.so
-%{_bindir}/ocloc
+%{_bindir}/ocloc-24.52.1
 %{_libdir}/intel-opencl
 %if 0%{?suse_version} > 1600
 %{_datadir}/OpenCL
@@ -120,8 +119,8 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %if %{with level_zero}
 %files -n libze_intel_gpu1
 %{_libdir}/libze_intel_gpu.so.1
-%{_libdir}/libze_intel_gpu.so.1.3.*
-%exclude %{_includedir}/level_zero/zet_intel_gpu_debug.h
+%{_libdir}/libze_intel_gpu.so.1.6.*
+%exclude %{_includedir}/level_zero/
 %endif
 
 %changelog

@@ -331,4 +331,14 @@
   * Show error when FAST creds are stored but non-FAST mechanism is requested.</comment>
     <requestid>1233909</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>72b5b8bb1b03042f2250207832974f35</srcmd5>
+    <version>0.14.1</version>
+    <time>1738079716</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.1:
+  * Use prettier date format for error messages.
+  * Update XEP-0474 to version 0.4.0 (requires go-xmpp &gt;= 0.2.10).</comment>
+    <requestid>1240835</requestid>
+  </revision>
 </revisionlist>

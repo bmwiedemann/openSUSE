@@ -9,14 +9,12 @@ https://gitlab.gnome.org/GNOME/glib/-/merge_requests/4016
 
 Signed-off-by: Yaakov Selkowitz <yselkowi@redhat.com>
 ---
- src/paps.cc | 6 +++---
+ src/paps.cc |    6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/src/paps.cc b/src/paps.cc
-index fde04d1..3ab9a7c 100644
 --- a/src/paps.cc
 +++ b/src/paps.cc
-@@ -1107,7 +1107,7 @@ split_text_into_paragraphs (PangoContext *pango_context,
+@@ -1129,7 +1129,7 @@ split_text_into_paragraphs (PangoContext
        while (p != nullptr && *p)
          {
            wc = g_utf8_get_char (p);
@@ -25,7 +23,7 @@ index fde04d1..3ab9a7c 100644
            if (wc == (gunichar)-1)
              {
                fprintf (stderr, _("%s: Invalid character in input\n"), g_get_prgname ());
-@@ -1122,7 +1122,7 @@ split_text_into_paragraphs (PangoContext *pango_context,
+@@ -1144,7 +1144,7 @@ split_text_into_paragraphs (PangoContext
                para->length = p - last_para;
                /* handle dos line breaks */
                if (wc == '\r' && *next == '\n')
@@ -34,7 +32,7 @@ index fde04d1..3ab9a7c 100644
                para->layout = pango_layout_new (pango_context);
  
                if (page_layout->cpi > 0.0L)
-@@ -1193,7 +1193,7 @@ split_text_into_paragraphs (PangoContext *pango_context,
+@@ -1215,7 +1215,7 @@ split_text_into_paragraphs (PangoContext
                        g_free (newtext);
  
                        para->length = i;

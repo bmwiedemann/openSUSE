@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 21 12:02:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.2
+  * Drop support for Python 3.7, 3.8.
+  * Add support for Python 3.13.
+- Drop py313.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Oct 28 22:21:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1:

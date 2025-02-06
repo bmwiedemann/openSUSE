@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jan 24 12:08:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.9.2
+  * discord:// now supports the kwarg of 'botname'
+  * Better support for reverse-url construction containing whitespace
+  * Updated reference to BSDv2 clause in RPM
+  * Resolved chanify:// naming confusion
+- from version 1.9.1
+  * Plivo Support Added
+  * Support for PGP Email Support (DeltaChat Compatible)
+  * Seven (SMS Provider) Added
+  * Matrix Well Known URI Server Discovery
+  * Eliminated non-essential warning log in mailto:// parsing
+  * Improved voipms:// phone number parsing
+  * CLI environment variable over-ride support
+  * Unpin paho-mqtt version
+  * Improved hostname verification
+  * Bark - add critical level alert plus ?volume= argument
+  * Refactored Office 365 Plugin
+  * Refactored Apprise mailto:// and apprise.utils module
+  * feat: Add support for latest MSTeams webhook URL format
+  * mmost:// supports legacy url webhooks (http://)
+  * Added disclaimer for AES-CBC-128 weakness with simplepush://
+  * Fix print statement in test run function
+  * Dropped Python v3.7 GH Action Test Support (deprecated)
+  * Removed python-xdist development dependency due to it not being used
+  * Remove Boxcar due to it no longer being available upstream
+  * Remove duplicate entry for Burst SMS
+  * Matrix: Allow token only client API authorization with token
+    parameter
+  * Matrix Long Lived Token: Don't logout, and use UUIDv4 for
+    transactionIds
+  * miskey:// visibility flags updated
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+
+-------------------------------------------------------------------
 Mon Sep  9 20:11:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove fix-test_plugin_glib.patch -- Fixed upstream

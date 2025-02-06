@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 28 09:15:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.24.0
+  * Additions:
+    - Language.copy()
+    - Language.node_kind_is_supertype(id)
+    - Language.__copy__()
+    - LogType (enum)
+    - Node.child_with_descendant(descendant)
+    - Node.field_name_for_named_child(descendant)
+    - Parser.print_dot_graphs(file)
+    - Parser.logger (getter + setter)
+    - Tree.copy()
+    - Tree.print_dot_graph(file)
+    - Tree.__copy__()
+  * Deprecations:
+    - Language(ptr: int)
+    - Node.child_containing_descendant(descendant):
+      use Node.child_with_descendant(descendant)
+
+-------------------------------------------------------------------
 Tue Dec  3 13:45:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - It is really not possible to run the test suite right now. Make

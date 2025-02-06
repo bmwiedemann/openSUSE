@@ -59,7 +59,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.20.4
+Version:        9.20.5
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -89,7 +89,7 @@ BuildRequires:  protobuf-c
 BuildRequires:  python3
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-ply
-BuildRequires:  update-desktop-files
+BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(krb5)
@@ -394,7 +394,6 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 install -m 0644 %{_sourcedir}/named.root %{buildroot}%{_localstatedir}/lib/named/root.hint
 mv vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_localstatedir}/lib/named
 install -m 0755 vendor-files/tools/bind.genDDNSkey %{buildroot}/%{_bindir}/genDDNSkey
-cp -a vendor-files/docu/BIND.desktop %{buildroot}/%{_datadir}/susehelp/meta/Administration/System
 cp -p %{_sourcedir}/dnszone-schema.txt %{buildroot}/%{_sysconfdir}/openldap/schema/dnszone.schema
 cp -p "%{SOURCE60}" "%{buildroot}/%{_sysconfdir}/openldap/schema/dlz.schema"
 install -m 0754 vendor-files/tools/ldapdump %{buildroot}/%{_datadir}/bind

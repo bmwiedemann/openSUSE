@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 13:35:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.29.9
+  * Flaky test pass1 by @bretambrose in (#693)
+  * Latest submodules copy_source_uri Change by @waahm7 in (#696)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:22:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.29.8

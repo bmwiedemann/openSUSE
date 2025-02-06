@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.5
+Version:        2.1.7
 Release:        0
 Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
@@ -62,6 +62,8 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-time-devel
 BuildRequires:  ghc-unix-time-prof
+BuildRequires:  ghc-zlib-devel
+BuildRequires:  ghc-zlib-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel

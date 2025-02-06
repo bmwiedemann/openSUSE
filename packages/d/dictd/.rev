@@ -97,4 +97,17 @@ Remove upstreamed patch gcc-14.patch.
 (🤖: Submission of dictd via https://src.opensuse.org/pool/dictd/pulls/2 by mcepl)</comment>
     <requestid>1224878</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3478513ec5c747edb0e60b1e71549e4e</srcmd5>
+    <version>1.13.3</version>
+    <time>1738245129</time>
+    <user>anag+factory</user>
+    <comment>factory
+
+Add default `/etc/dict.conf` so that dict client works by default as it used to (rh#2342818).
+
+
+(🤖: Submission of dictd via https://src.opensuse.org/pool/dictd/pulls/3 by mcepl)</comment>
+    <requestid>1241242</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package kpty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  utempter-devel
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}

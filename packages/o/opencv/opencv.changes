@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Sat Jan 18 09:20:42 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.11.0,  highlights below, for details check
+  https://github.com/opencv/opencv/wiki/OpenCV-Change-Logs#version4110
+  * Generic:
+    + Internal C API cleanup and back-ports for 5.x.
+    + RISC-V/AArch64: disable CPU features detection
+    + Support C++20 standard
+    + algoHint parameter for some functions to allow potentially
+      faster, but not bit-exact implementation
+  * Core Module:
+    + Added int64 data type support for FileStorage
+    + Fixed invalid attribute value handling in FileStorage
+    + Extended LUT for FP16 support
+    + Fixed stdDev tail filling with zeros with HAL in meanStdDev
+    + Set and check allocator pointer for all cv::Mat instances
+    + Improved accuracy of Rect::contains
+    + Fixed result offset in minMaxIdx with HAL in some cases
+    + Replaced C++ operators with wrapper functions on universal
+      intrinsics backends
+    + Extended cv::TickMeter
+    + Rewrote OpenCL-OpenGL-interop device discovery routine
+      without extensions and with Apple support
+    + Marked cv::Mat(Mat&&) as noexcept
+    + Multiple Eigen library interop improvements
+  * Calib3d module:
+    + Multiple chessboard detector improvements
+    + Enabled checkerboard detection with a central / corner
+      marker on a black tile
+    + Fixed Rodrigues CV_32F and CV_64F type mismatch in
+      projectPoints
+    + Added fisheye::distort with non-identity projection matrix
+    + SQPnP solver updates
+    + Fixed vector access in USAC
+  * Imgproc Module:
+    + Added a new function that approximates the polygon bounding
+      a convex hull with a certain number of sides
+    + Added Weighted Hough Transform
+    + Fixed bug in contours approximation
+    + Fixed bug in divSpectrums
+    + Fixed result buffer overflow in intersectConvexConvex_ for
+      non-convex input
+    + Added flag to GaussianBlur for faster but not bit-exact
+      implementation
+    + Added flag to cvtColor for faster but not bit-exact
+      implementation
+    + Fixed fillPoly drawing over boundaries
+  * DNN Module:
+    + [GSoC] Blockwise quantization support
+    + Faster implementation of blobFromImages for cpu nchw output
+    + DNN optimization with RISC-V RVV
+    + Added DepthToSpace and SpaceToDepth
+    + Yolo v10 support and related samples
+    + Parallel implementation of nary elementwise operations
+    + Support for Unflatten operation required by Attention layer
+    + Erf and GELU layers optimization
+    + Activations optimization with v_exp
+    + Fixed compilation errors with different OpenVINO versions
+    + Fixed matmul crash with CuDNN
+    + Fixed CuDNN runtime version check for CuDNN 9+
+    + Added ONNX TopK
+    + Fixed buffer allocation in einsum (fixed random crash on
+      32-bit platforms)
+    + Added Leaky RELU support for TFLite
+    + Switched to run-time dispatcher for Winograd
+  * Objdetect module:
+    + Properly check markers when none are provided
+    + Fixed invalid vector access in QR decoder and encoder
+  * Highgui module:
+    + Added new Highgui backend on top of Framebuffer
+    + Fixed HWND_TOP window handling on Windows
+    + [GSoC] Added OpenGL support with GTK3
+    + Several OpenGL related fixed on Linux
+    + Fixed leak in cvGetWindowRect_COCOA
+  * Imgcodecs module:
+    + [GSoC] New API for Animations with WEBP, AVIF and Animated
+      PNG support
+    + [GSoC] Add GIF decode and encode for imgcodecs
+    + Added experimental JPEG XL (jxl) codec support
+    + Initial RGB layout support in imread and imdecode
+    + Fixed imread output type for some cases
+    + Fixed file descriptor leak in HDR decoder
+    + Fixed corrupted JPEG decoding
+    + Improved error handling in image codecs
+    + Fixed Bayer2Gray SIMD for U8
+    + Avoid uninitialized value read in AVIF
+    + Implemented imencodemulti()
+    + Fixed compatibility with different OpenEXR versions
+  * VideoIO module:
+    + Added VideoCapture constructor for in-memory data stream
+    + Fixed bugs in native video encoding on Android
+    + Added BGRA streams support in GStreamer back-end
+    + Updated materials for Orbbec cameras support
+    + Fixed cv::VideoWriter with FFmpeg timestamps encapsulation
+    + Fixed memory leak in Dshow back-end
+    + Fixed V4L NV12 color conversion
+    + Android native camera feature enhancements
+    + AndroidMediaNdkCapture pixel format enhancement
+    + Fixed VideoCapture fails to read single image with digits
+      in name
+    + Fixed writer setProperty with FFmpeg plugin
+  * Video module:
+    + Fixed VitTrack in the case where crop size grows until
+      out-of-memory when the input is black
+  * Features2d:
+    + Fixed out of bounds access in SIFT
+  * G-API module:
+    + Fixed input buffer read overflow in vectorized G-API
+      convertTo implementation
+    + Extended G-API onnx::Params to pass arbitrary session
+      options
+    + Handling I32/I64 data types in G-API ONNX back-end
+    + G-API: Introduce level optimization flag for ONNXRT backend
+  * Optimizations:
+    + New FastCV-based HAL for Qualcomm SoCs (-DWITH_FASTCV=ON
+      CMake option)
+    + Added own vectorized version of v_expv_log, v_erf, v_sin
+      and v_cos
+    + KleidiCV HAL for ARM updated to KleidiCV 0.3
+    + Initial version of HAL for RISC-V RVV 1.0 and RISC-V RVV
+      0.7.1 extensions
+    + Used LMUL=2 in the RISC-V Vector (RVV) backend of Universal
+      Intrinsic.
+    + More functions in NDSRVP HAL for RISC-V P extension
+    + Updated built-in IPP to version 2021.12. Fixed build issues
+      with old and new Intel IPP layouts
+  * Platforms:
+    + HWAsan support on Android
+    + Several CUDA fixes for old GPUs without FP16 support
+    + Added getStdAllocator() to cv::cuda::GpuMat
+    + Updated NPP calls to use the new NppStreamContext API if
+      available
+    + More convenient GpuMatND constructor
+    + Added run-time GPU check to haveCUDA
+    + Add support for QNX
+  * OpenCV.js
+    + Extended API white-list and added more tests
+    + Split white-list per module. Added opportunity to cover
+      opencv_contrib modules
+    + Fix incorrect string format in js build script
+    + Emscripten build fixes with SIMD intrinsics
+    + Added more public types for USAC support
+    + Rename Mat::clone binding because it is used in Emscripten
+    + Fixed C preprocessor stringification
+    + Fix enum generation issues
+    + Multiple test improvements
+
+-------------------------------------------------------------------
 Sat Nov 23 16:54:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix build with python 3.13 (needs python-setuptools)

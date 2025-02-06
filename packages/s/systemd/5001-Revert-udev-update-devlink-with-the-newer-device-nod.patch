@@ -1,4 +1,4 @@
-From d624ceb7f2e6e286cf876f2ff9bf90532166c7f9 Mon Sep 17 00:00:00 2001
+From f847d3d3b73c22c674bb713f179522cef8ddabb7 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 12 Jan 2024 10:54:57 +0100
 Subject: [PATCH 5001/5002] Revert "udev: update devlink with the newer device
@@ -10,10 +10,10 @@ This reverts commit 277cb24ffb7a520f640eb36d11340f11bf0c7c4f.
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/src/udev/udev-node.c b/src/udev/udev-node.c
-index e12c26ce5a..6ba38087dc 100644
+index 673f723ff2..6e2fff72e9 100644
 --- a/src/udev/udev-node.c
 +++ b/src/udev/udev-node.c
-@@ -467,13 +467,13 @@ static int link_update(sd_device *dev, const char *slink, bool add) {
+@@ -457,13 +457,13 @@ static int link_update(sd_device *dev, const char *slink, bool add) {
                                  /* The devlink priority is downgraded. Another device may have a higher
                                   * priority now. Let's find the device node with the highest priority. */
                          } else {
@@ -29,9 +29,9 @@ index e12c26ce5a..6ba38087dc 100644
 -                                 * create the devlink to our device node. */
 +                                /* This device has a higher priority than the current. Let's create the
 +                                 * devlink to our device node. */
-                                 return node_symlink(dev, NULL, slink);
+                                 return node_create_symlink(dev, /* devnode = */ NULL, slink);
                          }
  
 -- 
-2.35.3
+2.43.0
 

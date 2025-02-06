@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  7 23:19:41 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.14.6.
+  ## 0.14.6
+
+    * Export Skylighting.Format.Typst from Skylighting [API change] (#201).
+      Allow typst as an output format in the cli executable.
+
+-------------------------------------------------------------------
 Mon Dec 23 06:56:27 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-core to version 0.14.5.

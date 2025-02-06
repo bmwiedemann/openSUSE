@@ -79,7 +79,7 @@ environment) that is modeled on Dick Koch's TeXShop for Mac OS X.
 Summary:        Plugins to add python scripting to texworks
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
-Requires:       python
+Requires:       python3
 
 %description plugin-python
 The TeXworks project is a simple TeX front-end program (working

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 24 23:35:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add config files for dovecot 2.4
+
+-------------------------------------------------------------------
+Fri Jan 24 21:54:11 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.4
+  Add unit files from 2.4
+
+-------------------------------------------------------------------
 Mon Feb 14 10:04:47 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix changelog and permissions

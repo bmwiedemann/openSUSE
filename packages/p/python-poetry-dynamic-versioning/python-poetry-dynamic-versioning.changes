@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 23 15:32:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.7.1:
+  * There was an intermittent ValueError in PEP 621 mode
+
+-------------------------------------------------------------------
 Sat Jan 18 16:14:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.7.0:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 28 15:46:54 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
+
+- Use llvm17 for SLE15SP6+
+
+-------------------------------------------------------------------
+Mon Jan 27 15:40:56 UTC 2025 - Darragh O'Reilly <doreilly@suse.com>
+
+- Don't try to build or use system-user-velociraptor on SLE12
+
+-------------------------------------------------------------------
 Fri Jan 17 17:37:39 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Reorganize llvm dependency version conditionals

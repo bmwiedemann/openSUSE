@@ -18,7 +18,7 @@
 
 %define libname libumf0
 Name:           unified-memory-framework
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        oneAPI Unified Memory Framework (UMF)
 License:        Apache-2.0

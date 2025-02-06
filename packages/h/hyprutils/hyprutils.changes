@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jan 28 18:38:47 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.5.0:
+  + This is another major update breaking ABI.
+    Thanks to the ABI break though, we fixed crashes and improved
+    performance around the animation manager.
+  + Fixes:
+    - add missing nullptr comparison operators for WeakPtr
+    - animation: fix crashes and cleanup of active vars
+
+- Changes from version 0.4.0:
+  + This is a major update with fixes, new stuff, and an ABI break
+    (as such, sover bump)
+  + New stuff:
+    - memory: Added UniquePointer
+  + Fixes:
+    - animation: don't fire update events if the avar is not being
+      animated
+    - animations: fix adding/removing vars during ::tick
+    - fix CRegion::scale using x scale as y scale by
+  + Other:
+    - animation: add virtual dtor to AnimationManager
+
+- Changes from version 0.3.3:
+  + A small update mostly because I forgot to bump VERSION for 0.3.2
+
+- Changes from version 0.3.2:
+  + Another small update to add the new AnimationConfigTree.
+  + Additions:
+    - animation: add CAnimationConfigTree
+
+- Changes from version 0.3.1:
+  + A small update with new animation stuff
+  + Additions:
+    - animation: add BezierCurve, AnimationManager and
+      AnimatedVariable
+  + Fixes:
+    - fix: compile warnings
+
+- Changes from version 0.3.0:
+  + This is a breaking update. API is unbroken, but ABI is.
+    The previous 0.2.6 update also was breaking. Sorry for that!
+  + New stuff:
+    - os/process: add pid()
+    - add filedescriptor class
+  + Fixes:
+    - region: fix header path
+
+-------------------------------------------------------------------
 Tue Dec 17 15:13:30 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.2.6:

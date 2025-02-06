@@ -1,7 +1,7 @@
 #
 # spec file for package pam_pkcs11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -132,8 +132,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 cp common-auth-smartcard %{buildroot}%{_sysconfdir}/pam.d/
 %endif
 install -D -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/pkcs11_eventmgr.service
+%if 0%{?suse_version} < 1600
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rcpkcs11_eventmgr
+%endif
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_docdir}/%{name}
 
@@ -178,7 +180,9 @@ done
 %config(noreplace) %{_sysconfdir}/pam.d/common-auth-smartcard
 %endif
 %{_prefix}/lib/systemd/system/pkcs11_eventmgr.service
-%{_sbindir}/*
+%if 0%{?suse_version} < 1600
+%{_sbindir}/rc*
+%endif
 
 %files devel-doc
 %doc %{_docdir}/%{name}/api

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Dec 20 08:42:02 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add reverted upstream patch revert-trace.patch to fix tests
+
+-------------------------------------------------------------------
+Fri Dec 20 07:07:32 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.14.0
+  * bugfix: Fix warning message condition for subsegment ending #434
+  * improvement: Bump idna from 3.6 to 3.7 in /sample-apps/flask #425
+  * bugfix: Fix end_time param type docstring from int to float #426
+  * improvement:  Bump werkzeug from 3.0.1 to 3.0.3 in /sample-apps/flask #428
+  * improvement: [LambdaContext] Create dummy segment when trace header is incomplete #429
+  * bugfix: [LambdaContext] Fix logging to only happen inside lambda function #431
+  * bugfix: Fix passing multiple values in testenv.passenv in tox.ini #399
+  * improvement: Pin flask < 3.x for flask sqlalchemy tests #412
+  * improvement: Bump werkzeug from 2.2.3 to 3.0.1 in /sample-apps/flask #413
+  * improvement: Fix typo in docs #419
+  * bugfix: Fix sqlalchemy_core patch errors for unencoded special characters in db url #418
+  * bugfix: Fix EB platform version for integration test #420
+  * bugfix: set_trace_entity() in lambda adds segment to thread PR409 #409
+  * bugfix: Cleanup after drop of support for Python PR387 #387
+
+-------------------------------------------------------------------
 Tue Jun 13 10:59:56 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

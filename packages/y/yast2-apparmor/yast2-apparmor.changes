@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 09:59:39 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Removed nscd-related code (bsc#1236308)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

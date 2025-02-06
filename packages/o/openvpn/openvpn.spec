@@ -1,7 +1,7 @@
 #
 # spec file for package openvpn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
 Patch2:         openvpn-CVE-2024-28882.patch
+Patch3:         openvpn-CVE-2024-5594.patch
 BuildRequires:  iproute2
 BuildRequires:  libcap-ng-devel
 BuildRequires:  liblz4-devel
@@ -169,7 +170,9 @@ rm %{buildroot}%{_libdir}/systemd/system/openvpn-server@.service
 rm %{buildroot}%{_libdir}/tmpfiles.d/openvpn.conf
 install -D -m 644 %{name}.service %{buildroot}/%{_unitdir}/%{name}@.service
 install -D -m 644 %{SOURCE9} %{buildroot}/%{_unitdir}/%{name}.target
+%if 0%{?suse_version} < 1600
 install -D -m 755 %{SOURCE11} %{buildroot}%{_sbindir}/rc%{name}
+%endif
 # tmpfiles.d
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 0644 %{SOURCE10} %{buildroot}%{_tmpfilesdir}/%{name}.conf
@@ -212,7 +215,9 @@ find sample -name .gitignore -delete
 %{_unitdir}/%{name}.target
 %{_tmpfilesdir}/%{name}.conf
 %dir %attr(0750,root,root) %ghost %{_rundir}/openvpn/
+%if 0%{?suse_version} < 1600
 %{_sbindir}/rcopenvpn
+%endif
 %{_sbindir}/openvpn
 
 %files down-root-plugin

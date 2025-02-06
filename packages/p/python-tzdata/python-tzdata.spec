@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tzdata
-Version:        2024.2
+Version:        2025.1
 Release:        0
 Summary:        Provider of IANA time zone data
 License:        Apache-2.0

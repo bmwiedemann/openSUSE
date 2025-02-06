@@ -1,107 +1,154 @@
 -------------------------------------------------------------------
+Mon Jan 20 13:39:46 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix changelog line widths
+
+-------------------------------------------------------------------
 Tue Jan 14 12:27:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.9.5
-  * #418: Backup and restore databases that have the same name but with different ports, hostnames,
-    or hooks.
-  * #947: To avoid a hang in the database hooks, error and exit when the borgmatic runtime
-    directory overlaps with the configured excludes.
-  * #954: Fix a findmnt command error in the Btrfs hook by switching to parsing JSON output.
-  * #956: Fix the printing of a color reset code even when color is disabled.
+  * #418: Backup and restore databases that have the same name but
+    with different ports, hostnames, or hooks.
+  * #947: To avoid a hang in the database hooks, error and exit
+    when the borgmatic runtime directory overlaps with the
+    configured excludes.
+  * #954: Fix a findmnt command error in the Btrfs hook by
+    switching to parsing JSON output.
+  * #956: Fix the printing of a color reset code even when color
+    is disabled.
   * #958: Drop colorama as a library dependency.
-  * When the ZFS, Btrfs, or LVM hooks aren't configured, don't try to cleanup snapshots for them.
-  * #80 (beta): Add an LVM hook for snapshotting and backing up LVM logical volumes. See the
-    documentation for more information:
+  * When the ZFS, Btrfs, or LVM hooks aren't configured, don't try
+    to cleanup snapshots for them.
+  * #80 (beta): Add an LVM hook for snapshotting and backing up LVM
+    logical volumes. See the documentation for more information:
     https://torsion.org/borgmatic/docs/how-to/snapshot-your-filesystems/
-  * #251 (beta): Add a Btrfs hook for snapshotting and backing up Btrfs subvolumes. See the
-    documentation for more information:
+  * #251 (beta): Add a Btrfs hook for snapshotting and backing up
+    Btrfs subvolumes. See the documentation for more information:
     https://torsion.org/borgmatic/docs/how-to/snapshot-your-filesystems/
-  * #926: Fix a library error when running within a PyInstaller bundle.
-  * #950: Fix a snapshot unmount error in the ZFS hook when using nested datasets.
-  * Update the ZFS hook to discover and snapshot ZFS datasets even if they are parent/grandparent
-    directories of your source directories.
-  * Reorganize data source and monitoring hooks to make developing new hooks easier.
-  * #261 (beta): Add a ZFS hook for snapshotting and backing up ZFS datasets. See the documentation
-    for more information: https://torsion.org/borgmatic/docs/how-to/snapshot-your-filesystems/
-  * Remove any temporary copies of the manifest file created in support of the "bootstrap" action.
-  * Deprecate the "store_config_files" option at the global scope and move it under the "bootstrap"
-    hook. See the documentation for more information:
+  * #926: Fix a library error when running within a PyInstaller
+    bundle.
+  * #950: Fix a snapshot unmount error in the ZFS hook when using
+    nested datasets.
+  * Update the ZFS hook to discover and snapshot ZFS datasets even
+    if they are parent/grandparent directories of your source
+    directories.
+  * Reorganize data source and monitoring hooks to make developing
+    new hooks easier.
+  * #261 (beta): Add a ZFS hook for snapshotting and backing up ZFS
+    datasets. See the documentation for more information:
+    https://torsion.org/borgmatic/docs/how-to/snapshot-your-filesystems/
+  * Remove any temporary copies of the manifest file created in
+    support of the "bootstrap" action.
+  * Deprecate the "store_config_files" option at the global scope
+    and move it under the "bootstrap" hook. See the documentation
+    for more information:
     https://torsion.org/borgmatic/docs/how-to/extract-a-backup/#extract-the-configuration-files-used-to-create-an-archive
   * Require the runtime directory to be an absolute path.
-  * Add a "--deleted" flag to the "repo-list" action for listing deleted archives that haven't
-    yet been compacted (Borg 2 only).
+  * Add a "--deleted" flag to the "repo-list" action for listing
+    deleted archives that haven't yet been compacted (Borg 2 only).
   * Promote the "spot" check from a beta feature to stable.
-  * #441: Apply the "umask" option to all relevant actions, not just some of them.
-  * #722: Remove the restriction that the "extract" and "mount" actions must match a single
-    repository. Now they work more like other actions, where each repository is applied in turn.
-  * #932: Fix the missing build backend setting in pyproject.toml to allow Fedora builds.
-  * #934: Update the logic that probes for the borgmatic streaming database dump, bootstrap
-    metadata, and check state directories to support more platforms and use cases. See the
-    documentation for more information:
+  * #441: Apply the "umask" option to all relevant actions, not
+    just some of them.
+  * #722: Remove the restriction that the "extract" and "mount"
+    actions must match a single  repository. Now they work more
+    like other actions, where each repository is applied in turn.
+  * #932: Fix the missing build backend setting in pyproject.toml
+    to allow Fedora builds.
+  * #934: Update the logic that probes for the borgmatic streaming
+    database dump, bootstrap metadata, and check state directories
+    to support more platforms and use cases. See the documentation
+    for more information:
     https://torsion.org/borgmatic/docs/how-to/backup-your-databases/#runtime-directory
-  * #934: Add the "RuntimeDirectory" and "StateDirectory" options to the sample systemd service
-    file to support the new runtime and state directory logic.
-  * #939: Fix borgmatic ignoring the "BORG_RELOCATED_REPO_ACCESS_IS_OK" and
-    "BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK" environment variables.
-  * Add a Pushover monitoring hook. See the documentation for more information:
+  * #934: Add the "RuntimeDirectory" and "StateDirectory" options
+    to the sample systemd service file to support the new runtime
+    and state directory logic.
+  * #939: Fix borgmatic ignoring the
+    "BORG_RELOCATED_REPO_ACCESS_IS_OK" and
+    "BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK" environment
+    variables.
+  * Add a Pushover monitoring hook. See the documentation for more
+    information:
     https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#pushover-hook
-  * #928: Fix the user runtime directory location on macOS (and possibly Cygwin).
-  * #930: Fix an error with the sample systemd service when no credentials are configured.
-  * #931: Fix an error when implicitly upgrading the check state directory from ~/.borgmatic to
-    ~/.local/state/borgmatic across filesystems.
-  * #609: Fix the glob expansion of "source_directories" values to respect the "working_directory"
-    option.
-  * #609: BREAKING: Apply the "working_directory" option to all actions, not just "create". This
-    includes repository paths, destination paths, mount points, etc.
-  * #562: Deprecate the "borgmatic_source_directory" option in favor of "user_runtime_directory"
-    and "user_state_directory".
-  * #562: BREAKING: Move the default borgmatic streaming database dump and bootstrap metadata
-    directory from ~/.borgmatic to /run/user/$UID/borgmatic, which is more XDG-compliant. You can
-    override this location with the new "user_runtime_directory" option. Existing archives with
-    database dumps at the old location are still restorable. 
-  * #562, #638: Move the default check state directory from ~/.borgmatic to 
-    ~/.local/state/borgmatic. This is more XDG-compliant and also prevents these state files from
-    getting backed up (unless you explicitly include them). You can override this location with the
-    new "user_state_directory" option. After the first time you run the "check" action with borgmatic
-    1.9.0, you can safely delete the ~/.borgmatic directory.
-  * #838: BREAKING: With Borg 1.4+, store database dumps and bootstrap metadata in a "/borgmatic"
-    directory within a backup archive, so the path doesn't depend on the current user. This means
-    that you can now backup as one user and restore or bootstrap as another user, among other use
-    cases.
-  * #902: Add loading of encrypted systemd credentials. See the documentation for more information:
+  * #928: Fix the user runtime directory location on macOS (and
+    possibly Cygwin).
+  * #930: Fix an error with the sample systemd service when no
+    credentials are configured.
+  * #931: Fix an error when implicitly upgrading the check state
+    directory from ~/.borgmatic to ~/.local/state/borgmatic across
+    filesystems.
+  * #609: Fix the glob expansion of "source_directories" values to
+    respect the "working_directory" option.
+  * #609: BREAKING: Apply the "working_directory" option to all
+    actions, not just "create". This includes repository paths,
+    destination paths, mount points, etc.
+  * #562: Deprecate the "borgmatic_source_directory" option in
+    favor of "user_runtime_directory" and "user_state_directory".
+  * #562: BREAKING: Move the default borgmatic streaming database
+    dump and bootstrap metadata directory from ~/.borgmatic to
+    /run/user/$UID/borgmatic, which is more XDG-compliant. You can
+    override this location with the new "user_runtime_directory"
+    option. Existing archives with database dumps at the old
+    location are still restorable. 
+  * #562, #638: Move the default check state directory from
+    ~/.borgmatic to ~/.local/state/borgmatic. This is more
+    XDG-compliant and also prevents these state files from getting
+    backed up (unless you explicitly include them). You can
+    override this location with the new "user_state_directory"
+    option. After the first time you run the "check" action with
+    borgmatic 1.9.0, you can safely delete the ~/.borgmatic
+    directory.
+  * #838: BREAKING: With Borg 1.4+, store database dumps and
+    bootstrap metadata in a "/borgmatic" directory within a backup
+    archive, so the path doesn't depend on the current user. This
+    means that you can now backup as one user and restore or
+    bootstrap as another user, among other use cases.
+  * #902: Add loading of encrypted systemd credentials. See the
+    documentation for more information:
     https://torsion.org/borgmatic/docs/how-to/provide-your-passwords/#using-systemd-service-credentials
-  * #911: Add a "key change-passphrase" action to change the passphrase protecting a repository key.
-  * #914: Fix a confusing apparent hang when when the repository location changes, and instead
-    show a helpful error message.
-  * #915: BREAKING: Rename repository actions like "rcreate" to more explicit names like
-    "repo-create" for compatibility with recent changes in Borg 2.0.0b10.
-  * #918: BREAKING: When databases are configured, don't auto-enable the "one_file_system" option,
-    as existing auto-excludes of special files should be sufficient to prevent Borg from hanging on
-    them. But if this change causes problems for you, you can always enable "one_file_system"
-    explicitly.
+  * #911: Add a "key change-passphrase" action to change the
+    passphrase protecting a repository key.
+  * #914: Fix a confusing apparent hang when when the repository
+    location changes, and instead show a helpful error message.
+  * #915: BREAKING: Rename repository actions like "rcreate" to
+    more explicit names like "repo-create" for compatibility with
+    recent changes in Borg 2.0.0b10.
+  * #918: BREAKING: When databases are configured, don't
+    auto-enable the "one_file_system" option, as existing
+    auto-excludes of special files should be sufficient to prevent
+    Borg from hanging on them. But if this change causes problems
+    for you, you can always enable "one_file_system" explicitly.
   * #919: Clarify the command-line help for the "--config" flag.
   * #919: Document a policy for versioning and breaking changes:
     https://torsion.org/borgmatic/docs/how-to/upgrade/#versioning-and-breaking-changes
-  * #921: BREAKING: Change soft failure command hooks to skip only the current repository rather than
-    all repositories in the configuration file.
-  * #922: Replace setup.py (Python packaging metadata) with the more modern pyproject.toml.
-  * When using Borg 2, default the "archive_name_format" option to just "{hostname}", as Borg 2 does
-    not require unique archive names; identical archive names form a common "series" that can be
-    targeted together. See the Borg 2 documentation for more information:
+  * #921: BREAKING: Change soft failure command hooks to skip only
+    the current repository rather than all repositories in the
+    configuration file.
+  * #922: Replace setup.py (Python packaging metadata) with the
+    more modern pyproject.toml.
+  * When using Borg 2, default the "archive_name_format" option to
+    just "{hostname}", as Borg 2 does not require unique archive
+    names; identical archive names form a common "series" that can
+    be targeted together. See the Borg 2 documentation for more
+    information:
     https://borgbackup.readthedocs.io/en/2.0.0b13/changes.html#borg-1-2-x-1-4-x-to-borg-2-0
-  * Add support for Borg 2's "rclone:" repository URLs, so you can backup to 70+ cloud storage
-    services whether or not they support Borg explicitly.
+  * Add support for Borg 2's "rclone:" repository URLs, so you can
+    backup to 70+ cloud storage services whether or not they
+    support Borg explicitly.
   * Add support for Borg 2's "sftp://" repository URLs.
-  * Update the "--match-archives" and "--archive" flags to support Borg 2 series names or archive
-    hashes.
+  * Update the "--match-archives" and "--archive" flags to support
+    Borg 2 series names or archive hashes.
   * Add a "--match-archives" flag to the "prune" action.
-  * Add "--local-path" and "--remote-path" flags to the "config bootstrap" action for setting the
-    Borg executable paths used for bootstrapping.
-  * Add a "--user-runtime-directory" flag to the "config bootstrap" action for helping borgmatic
-    locate the bootstrap metadata stored in an archive.
-  * Add a Zabbix monitoring hook. See the documentation for more information:
+  * Add "--local-path" and "--remote-path" flags to the "config
+    bootstrap" action for setting the Borg executable paths used
+    for bootstrapping.
+  * Add a "--user-runtime-directory" flag to the "config bootstrap"
+    action for helping borgmatic locate the bootstrap metadata
+    stored in an archive.
+  * Add a Zabbix monitoring hook. See the documentation for more
+    information:
     https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#zabbix-hook
-  * Add a tarball of borgmatic's HTML documentation to the packages on the project page.
+  * Add a tarball of borgmatic's HTML documentation to the packages
+    on the project page.
 - Refresh dependencies
 - Update packaging to the modern python standard
 
@@ -109,73 +156,87 @@ Tue Jan 14 12:27:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 Fri Sep 20 10:16:06 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - Update to 1.8.14:
-  * Fix an error in borgmatic rcreate/init on an empty repository directory
-    with Borg 1.4.
-  * Add glob ("*") support to the "--repository" flag. Just quote any values
-    containing globs so your shell doesn't interpret them.
-  * Fix for a "bad character" Borg error in which the "spot" check fed Borg an
-    invalid pattern.
-  * Fix for a potential traceback (TypeError) during the handling of another
-    error.
-  * Clarify the configuration reference about the "spot" check options:
+  * Fix an error in borgmatic rcreate/init on an empty repository
+    directory with Borg 1.4.
+  * Add glob ("*") support to the "--repository" flag. Just quote
+    any values containing globs so your shell doesn't interpret
+    them.
+  * Fix for a "bad character" Borg error in which the "spot" check
+    fed Borg an invalid pattern.
+  * Fix for a potential traceback (TypeError) during the handling
+    of another error.
+  * Clarify the configuration reference about the "spot" check
+    options:
     https://torsion.org/borgmatic/docs/reference/configuration/
-  * Fix the "source_directories_must_exist" option to work with relative
-    "source_directories" paths when a "working_directory" is set.
-  * Add documentation details for how to run custom database dump commands
-    using binaries from running containers:
+  * Fix the "source_directories_must_exist" option to work with
+    relative "source_directories" paths when a "working_directory"
+    is set.
+  * Add documentation details for how to run custom database dump
+    commands using binaries from running containers:
     https://torsion.org/borgmatic/docs/how-to/backup-your-databases/#containers
   * Fix a regression in which the "color" option had no effect.
-  * Add a recent contributors section to the documentation, because credit
-    where credit's due! See: https://torsion.org/borgmatic/#recent-contributors
-  * Add "delete" and "rdelete" actions to delete archives or entire repositories.
-  * Add an "only_run_on" option to consistency checks so you can limit a check
-    to running on particular days of the week. See the documentation for more
-    information:
+  * Add a recent contributors section to the documentation, because
+    credit  where credit's due! See:
+    https://torsion.org/borgmatic/#recent-contributors
+  * Add "delete" and "rdelete" actions to delete archives or entire
+    repositories.
+  * Add an "only_run_on" option to consistency checks so you can
+    limit a check to running on particular days of the week. See
+    the documentation for more information:
     https://torsion.org/borgmatic/docs/how-to/deal-with-very-large-backups/#check-days
-  * Add an Uptime Kuma monitoring hook. See the documentation for more
-    information:
+  * Add an Uptime Kuma monitoring hook. See the documentation for
+    more information:
     https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#uptime-kuma-hook
   * Fix a PagerDuty hook traceback with Python < 3.10.
-  * Fix the Healthchecks ping body size limit, restoring it to the documented
-    100,000 bytes.
-  * Add a "--max-duration" flag to the "check" action and a "max_duration"
-    option to the repository check configuration. This tells Borg to interrupt
-    a repository check after a certain duration.
-  * Fix interaction between environment variable interpolation in constants and
-    shell escaping.
-  * When color output is disabled (explicitly or implicitly), don't prefix each
-    log line with the log level.
-  * Add an "upload_buffer_size" option to set the size of the upload buffer
-    used in "create" action.
-  * Fix "Argument list too long" error in the "spot" check when checking
-    hundreds of thousands of files at once.
-  * Add the configured repository label as "repository_label" to the
-    interpolated variables passed to before/after command hooks.
-  * Fix "Unrecognized argument" error when the same value is used with
-    different command-line flags.
+  * Fix the Healthchecks ping body size limit, restoring it to the
+    documented 100,000 bytes.
+  * Add a "--max-duration" flag to the "check" action and a
+    "max_duration" option to the repository check configuration.
+    This tells Borg to interrupt a repository check after a certain
+    duration.
+  * Fix interaction between environment variable interpolation in
+    constants and shell escaping.
+  * When color output is disabled (explicitly or implicitly), don't
+    prefix each log line with the log level.
+  * Add an "upload_buffer_size" option to set the size of the
+    upload buffer used in "create" action.
+  * Fix "Argument list too long" error in the "spot" check when
+    checking hundreds of thousands of files at once.
+  * Add the configured repository label as "repository_label" to
+    the interpolated variables passed to before/after command
+    hooks.
+  * Fix "Unrecognized argument" error when the same value is used
+    with different command-line flags.
   * In the "spot" check, don't try to hash symlinked directories.
-  * Add optional Healthchecks auto-provisioning via "create_slug" option.
-  * Fix lack of file extraction when using "extract --strip-components all" on
-    a path with a leading slash.
+  * Add optional Healthchecks auto-provisioning via "create_slug"
+    option.
+  * Fix lack of file extraction when using "extract
+    --strip-components all" on a path with a leading slash.
   * Fix a traceback when the "data" consistency check is used.
-  * Fix a traceback with "check --only spot" when the "spot" check is unconfigured.
-  * Add a "spot" consistency check that compares file counts and contents
-    between your source files and the latest archive, ensuring they fall within
-    configured tolerances. This can catch problems like incorrect excludes,
-    inadvertent deletes, files changed by malware, etc. See the documentation
-    for more information:
+  * Fix a traceback with "check --only spot" when the "spot" check
+    is unconfigured.
+  * Add a "spot" consistency check that compares file counts and
+    contents between your source files and the latest archive,
+    ensuring they fall within configured tolerances. This can catch
+    problems like incorrect excludes, inadvertent deletes, files
+    changed by malware, etc. See the documentation for more
+    information:
     https://torsion.org/borgmatic/docs/how-to/deal-with-very-large-backups/#spot-check
-  * When "--match-archives *" is used with "check" action, don't skip Borg's
-    orphaned objects check.
-  * When a command hook exits with a soft failure, ping the log and finish
-    states for any configured monitoring hooks.
+  * When "--match-archives *" is used with "check" action, don't
+    skip Borg's orphaned objects check.
+  * When a command hook exits with a soft failure, ping the log and
+    finish states for any configured monitoring hooks.
   * Add documentation link to Loki dashboard for borgmatic:
     https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#loki-hook
-  * Fix "--json" error when Borg includes non-JSON warnings in JSON output.
-  * SECURITY: Mask the password when logging a MongoDB dump or restore command.
-  * Fix handling of the NO_COLOR environment variable to ignore an empty value.
-  * Add documentation about backing up containerized databases by configuring
-    borgmatic to exec into a container to run a dump command:
+  * Fix "--json" error when Borg includes non-JSON warnings in JSON
+    output.
+  * SECURITY: Mask the password when logging a MongoDB dump or
+    restore command.
+  * Fix handling of the NO_COLOR environment variable to ignore an
+    empty value.
+  * Add documentation about backing up containerized databases by
+    configuring borgmatic to exec into a container to run a dump
+    command:
     https://torsion.org/borgmatic/docs/how-to/backup-your-databases/#containers
 - remove skip-tests.patch
 - remove borgmatic.rpmlintrc
@@ -189,21 +250,25 @@ Wed Mar 13 13:27:02 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
     authenticating without username/password.
   * When the "--json" flag is given, suppress console escape codes
     so as not to interfere with JSON output.
-  * Fix "--override" values containing deprecated section headers not
-    actually overriding configuration options under deprecated section headers.
+  * Fix "--override" values containing deprecated section headers
+    not actually overriding configuration options under deprecated
+    section headers.
   * Add support for the NO_COLOR environment variable.
     See the documentation for more information:
     https://torsion.org/borgmatic/docs/how-to/set-up-backups/#colored-output
-  * Add log sending for the Apprise logging hook, enabled by default.
-    See the documentation for more information:
+  * Add log sending for the Apprise logging hook, enabled by
+    default. See the documentation for more information:
     https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#apprise-hook
-  * Document a potentially breaking shell quoting edge case within error hooks:
+  * Document a potentially breaking shell quoting edge case within
+    error hooks:
     https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#error-hooks
-  * When running the "rcreate" action and the repository already exists
-    but with a different encryption mode than requested, error.
+  * When running the "rcreate" action and the repository already
+    exists but with a different encryption mode than requested,
+    error.
   * Switch from Drone to Gitea Actions for continuous integration.
-  * Rename scripts/run-end-to-end-dev-tests to scripts/run-end-to-end-tests
-    and use it in both dev and CI for better dev-CI parity.
+  * Rename scripts/run-end-to-end-dev-tests to
+    scripts/run-end-to-end-tests and use it in both dev and CI for
+    better dev-CI parity.
   * Clarify documentation about restoring a database:
     borgmatic does not create the database upon restore. 
 
@@ -223,8 +288,8 @@ Wed Feb 14 07:20:22 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
     Borg 1.4. The issue did not occur with other versions of Borg.
   * Fix broken escaping logic in the PostgreSQL hook's
     "pg_dump_command" option.
-  * SECURITY: Prevent additional shell injection attacks within the
-    PostgreSQL hook.
+  * SECURITY: Prevent additional shell injection attacks within
+    the PostgreSQL hook.
 
 - Updates from 1.8.7:
   * Store included configuration files within each backup archive
@@ -317,16 +382,21 @@ Wed Feb 14 07:20:22 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 Fri Sep 29 07:20:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8.2:
-  * Add "key export" action to export a copy of the repository key for safekeeping in case the original 
-    goes missing or gets damaged.
-  * Add a MariaDB database hook that uses native MariaDB commands instead of the deprecated
-    MySQL ones. Be aware though that any existing backups made with the "mysql_databases:" hook are
+  * Add "key export" action to export a copy of the repository key
+    for safekeeping in case the original goes missing or gets
+    damaged.
+  * Add a MariaDB database hook that uses native MariaDB commands
+    instead of the deprecated MySQL ones. Be aware though that any
+    existing backups made with the "mysql_databases:" hook are
     only restorable with a "mysql_databases:" configuration.
-  * Fix for potential data loss (data not getting restored) in which the database "restore"
-    action didn't actually restore anything and indicated success anyway.
-  * Remove the deprecated use of the MongoDB hook's "--db" flag for database restoration.
-  * Add source code reference documentation for getting oriented with the borgmatic code as a
-    developer: https://torsion.org/borgmatic/docs/reference/source-code/
+  * Fix for potential data loss (data not getting restored) in
+    which the database "restore" action didn't actually restore
+    anything and indicated success anyway.
+  * Remove the deprecated use of the MongoDB hook's "--db" flag for
+    database restoration.
+  * Add source code reference documentation for getting oriented
+    with the borgmatic code as a developer:
+    https://torsion.org/borgmatic/docs/reference/source-code/
 
 -------------------------------------------------------------------
 Fri Jul 21 06:57:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
@@ -373,34 +443,39 @@ Fri Jul 21 06:57:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 Thu Jun 29 07:57:14 UTC 2023 - Jan Baier <jbaier@suse.com>
 
 - update to 1.7.15
-  * Add configuration options and command-line flags for backing up a database
-    from one location while restoring it somewhere else.
-  * Add a documentation troubleshooting note for MySQL/MariaDB authentication
-    errors.
-  * Remove upgrade-borgmatic-config command for upgrading borgmatic 1.1.0
-    INI-style configuration.
-  * Deprecate generate-borgmatic-config in favor of new "config generate"
-    action.
-  * Deprecate validate-borgmatic-config in favor of new "config validate"
-    action.
-  * Extract borgmatic configuration from backup via new "config bootstrap"
-    action—even when borgmatic has no configuration yet!
-  * Add sample systemd user service for running borgmatic as a non-root user.
-  * Fix an error when "data" check time files are accessed without getting
-    upgraded first.
+  * Add configuration options and command-line flags for backing up
+    a database from one location while restoring it somewhere else.
+  * Add a documentation troubleshooting note for MySQL/MariaDB
+    authentication errors.
+  * Remove upgrade-borgmatic-config command for upgrading borgmatic
+    1.1.0 INI-style configuration.
+  * Deprecate generate-borgmatic-config in favor of new
+    "config generate" action.
+  * Deprecate validate-borgmatic-config in favor of new
+    "config validate" action.
+  * Extract borgmatic configuration from backup via new
+    "config bootstrap" action—even when borgmatic has no
+    configuration yet!
+  * Add sample systemd user service for running borgmatic as a
+    non-root user.
+  * Fix an error when "data" check time files are accessed without
+    getting upgraded first.
 
 - update to 1.7.14:
-  * Add a new verbosity level (-2) to disable output entirely (for console,
-    syslog, log file, or monitoring), so not even errors are shown.
-  * Tweak archive check probing logic to use the newest timestamp found when
-    multiple exist.
-  * Add Borg 2 date-based matching flags to various actions for archive
-    selection.
-  * Fix an error when loading the configuration schema on Fedora Linux.
-  * Fix "check" action error when repository and archive checks are configured
-    but the archive gets skipped due to the configured frequency.
-  * Fix "--archive latest" on "list" and "info" actions that only worked on the
-    first of multiple configured repositories.
+  * Add a new verbosity level (-2) to disable output entirely (for
+    console, syslog, log file, or monitoring), so not even errors
+    are shown.
+  * Tweak archive check probing logic to use the newest timestamp
+    found when multiple exist.
+  * Add Borg 2 date-based matching flags to various actions for
+    archive selection.
+  * Fix an error when loading the configuration schema on Fedora
+    Linux.
+  * Fix "check" action error when repository and archive checks are
+    configured but the archive gets skipped due to the configured
+    frequency.
+  * Fix "--archive latest" on "list" and "info" actions that only
+    worked on the first of multiple configured repositories.
 
 -------------------------------------------------------------------
 Fri Jun  2 21:25:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -478,26 +553,38 @@ Fri Jun  2 21:19:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Thu Mar 30 14:18:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.7.10:
-  * #396: When a database command errors, display and log the error message instead of swallowing it.
-  * #501: Optionally error if a source directory does not exist via "source_directories_must_exist"
-    option in borgmatic's location configuration.
-  * #576: Add support for "file://" paths within "repositories" option.
-  * #612: Define and use custom constants in borgmatic configuration files. See the documentation for
-    more information:
+  * #396: When a database command errors, display and log the error
+    message instead of swallowing it.
+  * #501: Optionally error if a source directory does not exist via
+    "source_directories_must_exist" option in borgmatic's location
+    configuration.
+  * #576: Add support for "file://" paths within "repositories"
+    option.
+  * #612: Define and use custom constants in borgmatic
+    configuration files. See the documentation for more
+    information:
     https://torsion.org/borgmatic/docs/how-to/make-per-application-backups/#constant-interpolation
-  * #618: Add support for BORG_FILES_CACHE_TTL environment variable via "borg_files_cache_ttl" option
-    in borgmatic's storage configuration.
-  * #623: Fix confusing message when an error occurs running actions for a configuration file.
-  * #635: Add optional repository labels so you can select a repository via "--repository yourlabel"
-    at the command-line. See the configuration reference for more information:
+  * #618: Add support for BORG_FILES_CACHE_TTL environment variable
+    via "borg_files_cache_ttl" option in borgmatic's storage
+    configuration.
+  * #623: Fix confusing message when an error occurs running
+    actions for a configuration file.
+  * #635: Add optional repository labels so you can select a
+    repository via "--repository yourlabel" at the command-line.
+    See the configuration reference for more information:
     https://torsion.org/borgmatic/docs/reference/configuration/
-  * #649: Add documentation on backing up a database running in a container:
+  * #649: Add documentation on backing up a database running in a
+    container:
     https://torsion.org/borgmatic/docs/how-to/backup-your-databases/#containers
-  * #655: Fix error when databases are configured and a source directory doesn't exist.
-  * Add code style plugins to enforce use of Python f-strings and prevent single-letter variables.
-    To join in the pedantry, refresh your test environment with "tox --recreate".
-  * Rename scripts/run-full-dev-tests to scripts/run-end-to-end-dev-tests and make it run end-to-end
-    tests only. Continue using tox to run unit and integration tests.
+  * #655: Fix error when databases are configured and a source
+    directory doesn't exist.
+  * Add code style plugins to enforce use of Python f-strings and
+    prevent single-letter variables. To join in the pedantry,
+    refresh your test environment with "tox --recreate".
+  * Rename scripts/run-full-dev-tests to
+    scripts/run-end-to-end-dev-tests and make it run end-to-end
+    tests only. Continue using tox to run unit and integration
+    tests.
 
 -------------------------------------------------------------------
 Tue Mar  7 20:08:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -527,24 +614,34 @@ Tue Mar  7 20:08:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Tue Feb 21 07:41:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.7.7:
-  * #642: Add MySQL database hook "add_drop_database" configuration option to control whether dumped
-    MySQL databases get dropped right before restore.
-  * #643: Fix for potential data loss (data not getting backed up) when dumping large "directory"
-    format PostgreSQL/MongoDB databases. Prior to the fix, these dumps would not finish writing to
-    disk before Borg consumed them. Now, the dumping process completes before Borg starts. This only
-    applies to "directory" format databases; other formats still stream to Borg without using
-    temporary disk space.
-  * Fix MongoDB "directory" format to work with mongodump/mongorestore without error. Prior to this
-    fix, only the "archive" format worked.
-  * #393, #438, #560: Optionally dump "all" PostgreSQL/MySQL databases to separate files instead of one
-    combined dump file, allowing more convenient restores of individual databases. You can enable
-    this by specifying the database dump "format" option when the database is named "all".
-  * #602: Fix logs that interfere with JSON output by making warnings go to stderr instead of stdout.
-  * #622: Fix traceback when include merging configuration files on ARM64.
-  * #629: Skip warning about excluded special files when no special files have been excluded.
-  * #630: Add configuration options for database command customization: "list_options",
-    "restore_options", and "analyze_options" for PostgreSQL, "restore_options" for MySQL, and
-    "restore_options" for MongoDB.
+  * #642: Add MySQL database hook "add_drop_database" configuration
+    option to control whether dumped MySQL databases get dropped
+    right before restore.
+  * #643: Fix for potential data loss (data not getting backed up)
+    when dumping large "directory" format PostgreSQL/MongoDB
+    databases. Prior to the fix, these dumps would not finish
+    writing to disk before Borg consumed them. Now, the dumping
+    process completes before Borg starts. This only applies to
+    "directory" format databases; other formats still stream to
+    Borg without using temporary disk space.
+  * Fix MongoDB "directory" format to work with
+    mongodump/mongorestore without error. Prior to this fix, only
+    the "archive" format worked.
+  * #393, #438, #560: Optionally dump "all" PostgreSQL/MySQL
+    databases to separate files instead of one combined dump file,
+    allowing more convenient restores of individual databases. You
+    can enable this by specifying the database dump "format" option
+    when the database is named "all".
+  * #602: Fix logs that interfere with JSON output by making
+    warnings go to stderr instead of stdout.
+  * #622: Fix traceback when include merging configuration files on
+    ARM64.
+  * #629: Skip warning about excluded special files when no special
+    files have been excluded.
+  * #630: Add configuration options for database command
+    customization: "list_options", "restore_options", and
+    "analyze_options" for PostgreSQL, "restore_options" for MySQL,
+    and "restore_options" for MongoDB.
 
 -------------------------------------------------------------------
 Wed Jan 25 11:11:01 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
@@ -558,58 +655,80 @@ Wed Jan 25 11:11:01 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 Mon Nov 28 10:07:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.7.5:
- * #463: Add "before_actions" and "after_actions" command hooks that run before/after all the
-   actions for each repository. These new hooks are a good place to run per-repository steps like
+ * #463: Add "before_actions" and "after_actions" command hooks
+   that run before/after all the actions for each repository. These
+   new hooks are a good place to run per-repository steps like
    mounting/unmounting a remote filesystem.
- * #463: Update documentation to cover per-repository configurations:
+ * #463: Update documentation to cover per-repository
+   configurations:
    https://torsion.org/borgmatic/docs/how-to/make-per-application-backups/
- * #557: Support for Borg 2 while still working with Borg 1. This includes new borgmatic actions
-   like "rcreate" (replaces "init"), "rlist" (list archives in repository), "rinfo" (show repository
-   info), and "transfer" (for upgrading Borg repositories). For the most part, borgmatic tries to
-   smooth over differences between Borg 1 and 2 to make your upgrade process easier. However, there
-   are still a few cases where Borg made breaking changes. See the Borg 2.0 changelog for more
-   information: https://www.borgbackup.org/releases/borg-2.0.html
- * #557: If you install Borg 2, you'll need to manually upgrade your existing Borg 1 repositories
-   before use. Note that Borg 2 stable is not yet released as of this borgmatic release, so don't
-   use Borg 2 for production until it is! See the documentation for more information:
+ * #557: Support for Borg 2 while still working with Borg 1. This
+   includes new borgmatic actions like "rcreate" (replaces "init"),
+   "rlist" (list archives in repository), "rinfo" (show repository
+   info), and "transfer" (for upgrading Borg repositories). For the
+   most part, borgmatic tries to smooth over differences between
+   Borg 1 and 2 to make your upgrade process easier. However, there
+   are still a few cases where Borg made breaking changes. See the
+   Borg 2.0 changelog for more information:
+   https://www.borgbackup.org/releases/borg-2.0.html
+ * #557: If you install Borg 2, you'll need to manually upgrade
+   your existing Borg 1 repositories before use. Note that Borg 2
+   stable is not yet released as of this borgmatic release, so
+   don't use Borg 2 for production until it is! See the
+   documentation for more information:
    https://torsion.org/borgmatic/docs/how-to/upgrade/#upgrading-borg
- * #557: Rename several configuration options to match Borg 2: "remote_rate_limit" is now
-   "upload_rate_limit", "numeric_owner" is "numeric_ids", and "bsd_flags" is "flags". borgmatic
-   still works with the old options.
- * #557: Remote repository paths without the "ssh://" syntax are deprecated but still supported for
-   now. Remote repository paths containing "~" are deprecated in borgmatic and no longer work in
+ * #557: Rename several configuration options to match Borg 2:
+   "remote_rate_limit" is now "upload_rate_limit", "numeric_owner"
+   is "numeric_ids", and "bsd_flags" is "flags". borgmatic still
+   works with the old options.
+ * #557: Remote repository paths without the "ssh://" syntax are
+   deprecated but still supported for now. Remote repository paths
+   containing "~" are deprecated in borgmatic and no longer work in
    Borg 2.
- * #557: Omitting the "--archive" flag on the "list" action is deprecated when using Borg 2. Use
-   the new "rlist" action instead.
- * #557: The "--dry-run" flag can now be used with the "rcreate"/"init" action.
- * #565: Fix handling of "repository" and "data" consistency checks to prevent invalid Borg flags.
- * #566: Modify "mount" and "extract" actions to require the "--repository" flag when multiple
-   repositories are configured.
- * #571: BREAKING: Remove old-style command-line action flags like "--create, "--list", etc. If
-   you're already using actions like "create" and "list" instead, this change should not affect you.
- * #571: BREAKING: Rename "--files" flag on "prune" action to "--list", as it lists archives, not
-   files.
- * #571: Add "--list" as alias for "--files" flag on "create" and "export-tar" actions.
- * Add support for disabling TLS verification in Healthchecks monitoring hook with "verify_tls"
-   option.
- * #381: BREAKING: Greatly simplify configuration file reuse by deep merging when including common
-   configuration. See the documentation for more information:
+ * #557: Omitting the "--archive" flag on the "list" action is
+   deprecated when using Borg 2. Use the new "rlist" action
+   instead.
+ * #557: The "--dry-run" flag can now be used with the
+   "rcreate"/"init" action.
+ * #565: Fix handling of "repository" and "data" consistency checks
+   to prevent invalid Borg flags.
+ * #566: Modify "mount" and "extract" actions to require the
+   "--repository" flag when multiple repositories are configured.
+ * #571: BREAKING: Remove old-style command-line action flags like
+   "--create, "--list", etc. If you're already using actions like
+   "create" and "list" instead, this change should not affect you.
+ * #571: BREAKING: Rename "--files" flag on "prune" action to
+   "--list", as it lists archives, not files.
+ * #571: Add "--list" as alias for "--files" flag on "create" and
+   "export-tar" actions.
+ * Add support for disabling TLS verification in Healthchecks
+   monitoring hook with "verify_tls" option.
+ * #381: BREAKING: Greatly simplify configuration file reuse by
+   deep merging when including common configuration. See the
+   documentation for more information:
    https://torsion.org/borgmatic/docs/how-to/make-per-application-backups/#include-merging
- * #473: BREAKING: Instead of executing "before" command hooks before all borgmatic actions run (and
-   "after" hooks after), execute these hooks right before/after the corresponding action. E.g.,
-   "before_check" now runs immediately before the "check" action. This better supports running
-   timing-sensitive tasks like pausing containers. Side effect: before/after command hooks now run
-   once for each configured repository instead of once per configuration file. Additionally, the
-   "repositories" interpolated variable has been changed to "repository", containing the path to the
-   current repository for the hook. See the documentation for more information:
+ * #473: BREAKING: Instead of executing "before" command hooks
+   before all borgmatic actions run (and "after" hooks after),
+   execute these hooks right before/after the corresponding action.
+   E.g., "before_check" now runs immediately before the "check"
+   action. This better supports running timing-sensitive tasks like
+   pausing containers. Side effect: before/after command hooks now
+   run once for each configured repository instead of once per
+   configuration file. Additionally, the "repositories"
+   interpolated variable has been changed to "repository",
+   containing the path to the current repository for the hook. See
+   the documentation for more information:
    https://torsion.org/borgmatic/docs/how-to/add-preparation-and-cleanup-steps-to-backups/
- * #513: Add mention of sudo's "secure_path" option to borgmatic installation documentation.
- * #515: Fix "borgmatic borg key ..." to pass parameters to Borg in the correct order.
- * #516: Fix handling of TERM signal to exit borgmatic, not just forward the signal to Borg.
- * #517: Fix borgmatic exit code (so it's zero) when initial Borg calls fail but later retries
-   succeed.
- * Change Healthchecks logs truncation size from 10k bytes to 100k bytes, corresponding to that
-   same change on Healthchecks.io.
+ * #513: Add mention of sudo's "secure_path" option to borgmatic
+   installation documentation.
+ * #515: Fix "borgmatic borg key ..." to pass parameters to Borg in
+   the correct order.
+ * #516: Fix handling of TERM signal to exit borgmatic, not just
+   forward the signal to Borg.
+ * #517: Fix borgmatic exit code (so it's zero) when initial Borg
+   calls fail but later retries succeed.
+ * Change Healthchecks logs truncation size from 10k bytes to 100k
+   bytes, corresponding to that same change on Healthchecks.io.
 
 -------------------------------------------------------------------
 Tue Oct 18 13:26:05 UTC 2022 - pgajdos@suse.com
@@ -621,30 +740,40 @@ Tue Oct 18 13:26:05 UTC 2022 - pgajdos@suse.com
 Mon Aug 15 19:52:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.24:
-  * #431: Add "working_directory" option to support source directories with relative paths.
-  * #444: When loading a configuration file that is unreadable due to file permissions, warn instead
-    of erroring. This supports running borgmatic as a non-root user with configuration in ~/.config
-    even if there is an unreadable global configuration file in /etc.
-  * #469: Add "repositories" context to "before_" and "after_" command action hooks. See the
-    documentation for more information:
+  * #431: Add "working_directory" option to support source
+    directories with relative paths.
+  * #444: When loading a configuration file that is unreadable due
+    to file permissions, warn instead of erroring. This supports
+    running borgmatic as a non-root user with configuration in
+    ~/.config even if there is an unreadable global configuration
+    file in /etc.
+  * #469: Add "repositories" context to "before_" and "after_"
+    command action hooks. See the documentation for more
+    information:
     https://torsion.org/borgmatic/docs/how-to/add-preparation-and-cleanup-steps-to-backups/
-  * #486: Fix handling of "patterns_from" and "exclude_from" options to error instead of warning when
-    referencing unreadable files and "create" action is run.
-  * #507: Fix Borg usage error in the "compact" action when running "borgmatic --dry-run". Now, skip
-    "compact" entirely during a dry run.
-  * #394: Compact repository segments and free space with new "borgmatic compact" action. Borg 1.2+
-    only. Also run "compact" by default when no actions are specified, as "prune" in Borg 1.2 no
-    longer frees up space unless "compact" is run.
-  * #394: When using the "atime", "bsd_flags", "numeric_owner", or "remote_rate_limit" options,
-    tailor the flags passed to Borg depending on the Borg version.
+  * #486: Fix handling of "patterns_from" and "exclude_from"
+    options to error instead of warning when referencing unreadable
+    files and "create" action is run.
+  * #507: Fix Borg usage error in the "compact" action when running
+    "borgmatic --dry-run". Now, skip "compact" entirely during a
+    dry run.
+  * #394: Compact repository segments and free space with new
+    "borgmatic compact" action. Borg 1.2+ only. Also run "compact"
+    by default when no actions are specified, as "prune" in
+    Borg 1.2 no longer frees up space unless "compact" is run.
+  * #394: When using the "atime", "bsd_flags", "numeric_owner",
+    or "remote_rate_limit" options, tailor the flags passed to Borg
+    depending on the Borg version.
   * #480, #482: Fix traceback when a YAML validation error occurs.
   * #288: Add database dump hook for MongoDB.
-  * #470: Move mysqldump options to the beginning of the command due to MySQL bug 30994.
-  * #471: When command-line configuration override produces a parse error, error cleanly instead of
-    tracebacking.
-  * #476: Fix unicode error when restoring particular MySQL databases.
-    Drop support for Python 3.6, which has been end-of-lifed.
-    Add support for Python 3.10.
+  * #470: Move mysqldump options to the beginning of the command
+    due to MySQL bug 30994.
+  * #471: When command-line configuration override produces a parse
+    error, error cleanly instead of tracebacking.
+  * #476: Fix unicode error when restoring particular MySQL
+    databases.
+  * Drop support for Python 3.6, which has been end-of-lifed.
+  * Add support for Python 3.10.
 - avoid bashism in post scripts (bsc#1195391)
 - light modernization of spec file 
 
@@ -652,18 +781,21 @@ Mon Aug 15 19:52:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Wed Mar 16 06:36:36 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Update 1.5.21 which is last that supports Python 3.6
-  *  #28: Optionally retry failing backups via "retries" and "retry_wait" configuration options.
-  *  #306: Add "list_options" MySQL configuration option for passing additional arguments to MySQL
-     list command.
-  *  #459: Add support for old version (2.x) of jsonschema library.
-  *  #387: Fix error when configured source directories are not present on the filesystem at the time
-     of backup. Now, Borg will complain, but the backup will still continue.
-  *  #455: Mention changing borgmatic path in cron documentation.
-     Update sample systemd service file with more granular read-only filesystem settings.
-  *  Move Gitea and GitHub hosting from a personal namespace to an organization for better
-     collaboration with related projects.
-  *  #389: Fix "message too long" error when logging to rsyslog.
-  *  #440: Fix traceback that can occur when dumping a database.
+  * #28: Optionally retry failing backups via "retries" and
+    "retry_wait" configuration options.
+  * #306: Add "list_options" MySQL configuration option for passing
+    additional arguments to MySQL list command.
+  * #459: Add support for old version (2.x) of jsonschema library.
+  * #387: Fix error when configured source directories are not
+    present on the filesystem at the time of backup. Now, Borg will
+    complain, but the backup will still continue.
+  * #455: Mention changing borgmatic path in cron documentation.
+    Update sample systemd service file with more granular read-only
+    filesystem settings.
+  * Move Gitea and GitHub hosting from a personal namespace to an
+    organization for better collaboration with related projects.
+  * #389: Fix "message too long" error when logging to rsyslog.
+  * #440: Fix traceback that can occur when dumping a database.
 
 -------------------------------------------------------------------
 Fri Sep 10 11:30:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -683,7 +815,8 @@ Wed Jul 28 11:46:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
   * Suppress console output in sample crontab and
     systemd service files.
   * Fix syslog logging on FreeBSD.
-  * Fix hang when restoring a PostgreSQL "tar" format database dump.
+  * Fix hang when restoring a PostgreSQL "tar" format database
+    dump.
   * Better error messages! Switch the library used
     for validating configuration files
   * Link borgmatic Ansible role from installation documentation:
@@ -831,38 +964,51 @@ Mon Jun 15 17:22:18 UTC 2020 - Martin Rey <mrey@suse.com>
 Wed May 27 08:58:21 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.5
-  * #314: Fix regression in support for PostgreSQL's "directory" dump format. Unlike other dump
-    formats, the "directory" dump format does not stream directly to/from Borg.
-  * #315: Fix enabled database hooks to implicitly set one_file_system configuration option to true.
-  * This prevents Borg from reading devices like /dev/zero and hanging.
-  * #316: Fix hang when streaming a database dump to Borg with implicit duplicate source directories
-    by deduplicating them first.
-  * #319: Fix error message when there are no MySQL databases to dump for "all" databases.
-  * Improve documentation around the installation process. Specifically, making borgmatic commands
-    runnable via the system PATH and offering a global install option.
+  * #314: Fix regression in support for PostgreSQL's "directory"
+    dump format. Unlike other dump formats, the "directory" dump
+    format does not stream directly to/from Borg.
+  * #315: Fix enabled database hooks to implicitly set
+    one_file_system configuration option to true.
+  * This prevents Borg from reading devices like /dev/zero and
+    hanging.
+  * #316: Fix hang when streaming a database dump to Borg with
+    implicit duplicate source directories by deduplicating them
+    first.
+  * #319: Fix error message when there are no MySQL databases to
+    dump for "all" databases.
+  * Improve documentation around the installation process.
+    Specifically, making borgmatic commands runnable via the system
+    PATH and offering a global install option.
 - Update to 1.5.4
-  * #310: Fix legitimate database dump command errors (exit code 1) not being treated as errors by
-    borgmatic.
-  * For database dumps, replace the named pipe on every borgmatic run. This prevent hangs on stale
-    pipes left over from previous runs.
-  * Fix error handling to handle more edge cases when executing commands.
+  * #310: Fix legitimate database dump command errors (exit code 1)
+    not being treated as errors by borgmatic.
+  * For database dumps, replace the named pipe on every borgmatic
+    run. This prevent hangs on stale pipes left over from previous
+    runs.
+  * Fix error handling to handle more edge cases when executing
+    commands.
 - Update to 1.5.3
-  * #258: Stream database dumps and restores directly to/from Borg without using any additional
-    filesystem space. This feature is automatic, and works even on restores from archives made with
+  * #258: Stream database dumps and restores directly to/from Borg
+    without using any additional filesystem space. This feature is
+    automatic, and works even on restores from archives made with
     previous versions of borgmatic.
-  * #293: Documentation on macOS launchd permissions issues with work-around for Full Disk Access.
-  * Remove "borgmatic restore --progress" flag, as it now conflicts with streaming database restores.
+  * #293: Documentation on macOS launchd permissions issues with
+    work-around for Full Disk Access.
+  * Remove "borgmatic restore --progress" flag, as it now conflicts
+    with streaming database restores.
 - Update to 1.5.2
-  * #301: Fix MySQL restore error on "all" database dump by excluding system tables.
-  * Fix PostgreSQL restore error on "all" database dump by using "psql" for the restore instead of
-    "pg_restore".
+  * #301: Fix MySQL restore error on "all" database dump by
+    excluding system tables.
+  * Fix PostgreSQL restore error on "all" database dump by using
+    "psql" for the restore instead of "pg_restore".
 - Add skip-tests.patch
 
 -------------------------------------------------------------------
 Mon May 25 17:13:21 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Comment the LogRateLimitIntervalSec option in the systemd service
-  when building for SLE/Leap since systemd < 240 doesn't support it.
+  when building for SLE/Leap since systemd < 240 doesn't support
+  it.
 
 -------------------------------------------------------------------
 Mon May 25 16:58:20 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
@@ -880,8 +1026,8 @@ Mon May  4 10:09:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Sat Mar 14 09:59:41 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
-- Use `python3 -m venv` instead of invoking pyvenv which doesn't seem
-  to exist anymore with python 3.8.
+- Use `python3 -m venv` instead of invoking pyvenv which doesn't
+  seem to exist anymore with python 3.8.
 
 -------------------------------------------------------------------
 Sun Feb 23 19:17:52 UTC 2020 - simmphonie@opensuse.org
@@ -934,78 +1080,84 @@ Tue Jan 28 01:01:39 UTC 2020 - Martin Rey <mrey@suse.com>
 Wed Jan 22 10:33:11 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to 1.4.2
- * Extract files to a particular directory via "borgmatic extract --destination" flag.
- * Rename "borgmatic extract --restore-path" flag to "--path" to reduce confusion with the separate
-   "borgmatic restore" action. Any uses of "--restore-path" will continue working.
-
+ * Extract files to a particular directory via "borgmatic extract
+   --destination" flag.
+ * Rename "borgmatic extract --restore-path" flag to "--path" to
+   reduce confusion with the separate "borgmatic restore" action.
+   Any uses of "--restore-path" will continue working.
 - Update to 1.4.1
- * #229: Restore backed up PostgreSQL databases via "borgmatic restore" action. See the
-   documentation for more information:
+ * #229: Restore backed up PostgreSQL databases via "borgmatic
+   restore" action. See the documentation for more information:
    https://torsion.org/borgmatic/docs/how-to/backup-your-databases/
  * Documentation on how to develop borgmatic's documentation:
    https://torsion.org/borgmatic/docs/how-to/develop-on-borgmatic/#documentation-development
-
 - Update to 1.4.0
- * #225: Database dump hooks for PostgreSQL, so you can easily dump your databases before backups
-   run.
- * #230: Rename "borgmatic list --pattern-from" flag to "--patterns-from" to match Borg.
-
+ * #225: Database dump hooks for PostgreSQL, so you can easily dump
+   your databases before backups run.
+ * #230: Rename "borgmatic list --pattern-from" flag to
+   "--patterns-from" to match Borg.
 - Update to 1.3.26
- * #224: Fix "borgmatic list --successful" with a slightly better heuristic for listing successful
-   (non-checkpoint) archives.
-
+ * #224: Fix "borgmatic list --successful" with a slightly better
+   heuristic for listing successful (non-checkpoint) archives.
 - Update to 1.3.25
- * #223: Dead man's switch to detect when backups start failing silently, implemented via
-   healthchecks.io hook integration. See the documentation for more information:
+ * #223: Dead man's switch to detect when backups start failing
+   silently, implemented via healthchecks.io hook integration. See
+   the documentation for more information:
    https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/#healthchecks-hook
- * Documentation on monitoring and alerting options for borgmatic backups:
+ * Documentation on monitoring and alerting options for borgmatic
+   backups:
    https://torsion.org/borgmatic/docs/how-to/monitor-your-backups/
- * Automatically rewrite links when developing on documentation locally.
-
+ * Automatically rewrite links when developing on documentation
+   locally.
 - Update to 1.3.24
- * #86: Add "borgmatic list --successful" flag to only list successful (non-checkpoint) archives.
- * Add a suggestion form to all documentation pages, so users can submit ideas for improving the
-   documentation.
- * Update documentation link to community Arch Linux borgmatic package.
-
+ * #86: Add "borgmatic list --successful" flag to only list
+   successful (non-checkpoint) archives.
+ * Add a suggestion form to all documentation pages, so users can
+   submit ideas for improving the documentation.
+ * Update documentation link to community Arch Linux borgmatic
+   package.
 - Update to 1.3.23
- * #174: More detailed error alerting via runtime context available in "on_error" hook.
-
+ * #174: More detailed error alerting via runtime context available
+   in "on_error" hook.
 - Update to 1.3.22
- * #144: When backups to one of several repositories fails, keep backing up to the other
-   repositories and report errors afterwards.
-
+ * #144: When backups to one of several repositories fails, keep
+   backing up to the other repositories and report errors
+   afterwards.
 - Update to 1.3.21
- * #192: User-defined hooks for global setup or cleanup that run before/after all actions. See the
-   documentation for more information:
+ * #192: User-defined hooks for global setup or cleanup that run
+   before/after all actions. See the documentation for more
+   information:
    https://torsion.org/borgmatic/docs/how-to/add-preparation-and-cleanup-steps-to-backups/
-
 - Update to 1.3.20
- * #205: More robust sample systemd service: boot delay, network dependency, lowered CPU/IO
-   priority, etc.
- * #221: Fix "borgmatic create --progress" output so that it updates on the console in real-time.
-
+ * #205: More robust sample systemd service: boot delay, network
+   dependency, lowered CPU/IO priority, etc.
+ * #221: Fix "borgmatic create --progress" output so that it
+   updates on the console in real-time.
 - Update to 1.3.19
  * #219: Fix visibility of "borgmatic prune --stats" output.
-
 - Update to 1.3.18
  * #220: Fix regression of argument parsing for default actions.
-
 - Update to 1.3.17
- * #217: Fix error with "borgmatic check --only" command-line flag with "extract" consistency check.
-
+ * #217: Fix error with "borgmatic check --only" command-line flag
+   with "extract" consistency check.
 - Update to 1.3.16
- * #210: Support for Borg check --verify-data flag via borgmatic "data" consistency check.
- * #210: Override configured consistency checks via "borgmatic check --only" command-line flag.
- * When generating sample configuration with generate-borgmatic-config, add a space after each "#"
-   comment indicator.
-
+ * #210: Support for Borg check --verify-data flag via borgmatic
+   "data" consistency check.
+ * #210: Override configured consistency checks via
+   "borgmatic check --only" command-line flag.
+ * When generating sample configuration with
+   generate-borgmatic-config, add a space after each "#" comment
+   indicator.
 - Update to 1.3.15
- * #208: Fix for traceback when the "checks" option has an empty value.
- * #209: Bypass Borg error about a moved repository via "relocated_repo_access_is_ok" option in
-   borgmatic storage configuration section.
- * #213: Reorder arguments passed to Borg to fix duplicate directories when using Borg patterns.
- * #214: Fix for hook erroring with exit code 1 not being interpreted as an error.
+ * #208: Fix for traceback when the "checks" option has an empty
+   value.
+ * #209: Bypass Borg error about a moved repository via
+   "relocated_repo_access_is_ok" option in borgmatic storage
+   configuration section.
+ * #213: Reorder arguments passed to Borg to fix duplicate
+   directories when using Borg patterns.
+ * #214: Fix for hook erroring with exit code 1 not being
+   interpreted as an error.
 
 -------------------------------------------------------------------
 Thu Dec 19 14:55:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -1016,9 +1168,10 @@ Thu Dec 19 14:55:02 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Tue Sep  3 09:07:52 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
-- Fix regexes in spec file now that upstream changed the default borgmatic
-  location in the cron and systemd sample files, so we replace them correctly
-  with the /usr/bin locations we need for borgmatic to be found.
+- Fix regexes in spec file now that upstream changed the default
+  borgmatic location in the cron and systemd sample files, so we
+  replace them correctly with the /usr/bin locations we need for
+  borgmatic to be found.
 - Add missing python3-colorama runtime dependency
 
 -------------------------------------------------------------------
@@ -1026,224 +1179,241 @@ Wed Aug 21 19:55:56 UTC 2019 - simmphonie@opensuse.org
 
 - Update to 1.3.14
  * #204: Do not treat Borg warnings (exit code 1) as failures.
- * When validating configuration files, require strings instead of allowing any scalar type.
-
+ * When validating configuration files, require strings instead of
+   allowing any scalar type.
 - Update to 1.3.13
- * #199: Add note to documentation about using spaces instead of tabs for indentation, as YAML does
-   not allow tabs.
+ * #199: Add note to documentation about using spaces instead of
+   tabs for indentation, as YAML does not allow tabs.
  * #203: Fix compatibility with ruamel.yaml 0.16.x.
- * If a "prefix" option in borgmatic's configuration has an empty value (blank or ""), then disable
-   default prefix.
-
+ * If a "prefix" option in borgmatic's configuration has an empty
+   value (blank or ""), then disable default prefix.
 - Update to 1.3.12
- * Only log to syslog when run from a non-interactive console (e.g. a cron job).
- * Remove unicode byte order mark from syslog output so it doesn't show up as a literal in rsyslog
-   output. See discussion on #197.
-
+ * Only log to syslog when run from a non-interactive console
+   (e.g. a cron job).
+ * Remove unicode byte order mark from syslog output so it doesn't
+   show up as a literal in rsyslog output. See discussion on #197.
 - Update to 1.3.11
- * #193: Pass through several "borg list" and "borg info" flags like --short, --format, --sort-by,
-   --first, --last, etc. via borgmatic command-line flags.
- * Add borgmatic info --repository and --archive command-line flags to display info for individual
-   repositories or archives.
- * Support for Borg --noatime, --noctime, and --nobirthtime flags via corresponding options in
-   borgmatic configuration location section.
-
+ * #193: Pass through several "borg list" and "borg info" flags
+   like --short, --format, --sort-by, --first, --last, etc. via
+   borgmatic command-line flags.
+ * Add borgmatic info --repository and --archive command-line flags
+   to display info for individual repositories or archives.
+ * Support for Borg --noatime, --noctime, and --nobirthtime flags
+   via corresponding options in borgmatic configuration location
+   section.
 - Update to 1.3.10
- * #198: Fix for Borg create error output not showing up at borgmatic verbosity level zero.
-
+ * #198: Fix for Borg create error output not showing up at
+   borgmatic verbosity level zero.
 - Update to 1.3.9
- * #195: Switch to command-line actions as more traditional sub-commands, e.g. "borgmatic create",
-   "borgmatic prune", etc. However, the classic dashed options like "--create" still work!
-
+ * #195: Switch to command-line actions as more traditional
+   sub-commands, e.g. "borgmatic create", "borgmatic prune", etc.
+   However, the classic dashed options like "--create" still work!
 - Update to 1.3.8
- * #191: Disable console color via "color" option in borgmatic configuration output section.
-
+ * #191: Disable console color via "color" option in borgmatic
+   configuration output section.
 - Update to 1.3.7
- * #196: Fix for unclear error message for invalid YAML merge include.
+ * #196: Fix for unclear error message for invalid YAML merge
+   include.
  * #197: Don't color syslog output.
  * Change default syslog verbosity to show errors only.
-
 - Update to 1.3.6
- * #53: Log to syslog in addition to existing console logging. Add --syslog-verbosity flag to
-   customize the log level. See the documentation for more information:
+ * #53: Log to syslog in addition to existing console logging. Add
+   --syslog-verbosity flag to customize the log level. See the
+   documentation for more information:
    https://torsion.org/borgmatic/docs/how-to/inspect-your-backups/
- * #178: Look for .yml configuration file extension in addition to .yaml.
- * #189: Set umask used when executing hooks via "umask" option in borgmatic hooks section.
+ * #178: Look for .yml configuration file extension in addition
+   to .yaml.
+ * #189: Set umask used when executing hooks via "umask" option in
+   borgmatic hooks section.
  * Remove Python cache files before each Tox run.
  * Add #borgmatic Freenode IRC channel to documentation.
  * Add Borg/borgmatic hosting providers section to documentation.
- * Add files for building documentation into a Docker image for web serving.
+ * Add files for building documentation into a Docker image for
+   web serving.
  * Upgrade project build server from Drone 0.8 to 1.1.
  * Build borgmatic documentation during continuous integration.
  * We're nearly at 500 ★s on GitHub. We can do this!
-
 - Update to 1.3.5
- * #153: Support for various Borg directory environment variables (BORG_CONFIG_DIR, BORG_CACHE_DIR,
-   etc.) via options in borgmatic's storage configuration.
+ * #153: Support for various Borg directory environment variables
+   (BORG_CONFIG_DIR, BORG_CACHE_DIR, etc.) via options in
+   borgmatic's storage configuration.
  * #177: Fix for regression with missing verbose log entries.
-
 - Update to 1.3.4
- * Part of #125: Color borgmatic (but not Borg) output when using an interactive terminal.
+ * Part of #125: Color borgmatic (but not Borg) output when using
+   an interactive terminal.
  * #166: Run tests for all installed versions of Python.
  * #168: Update README with continuous integration badge.
  * #169: Automatically sort Python imports in code.
- * Document installing borgmatic with pip install --user instead of a system Python install.
- * Get more reproducible builds by pinning the versions of pip and tox used to run tests.
+ * Document installing borgmatic with pip install --user instead
+   of a system Python install.
+ * Get more reproducible builds by pinning the versions of pip and
+   tox used to run tests.
  * Factor out build/test configuration from tox.ini file.
-
 - Update to 1.3.3
- * Add validate-borgmatic-config command, useful for validating borgmatic config generated by
-   configuration management or even edited by hand.
-
+ * Add validate-borgmatic-config command, useful for validating
+   borgmatic config generated by configuration management or even
+   edited by hand.
 - Update to 1.3.2
- * #160: Fix for hooks executing when using --dry-run. Now hooks are skipped during a dry run.
+ * #160: Fix for hooks executing when using --dry-run. Now hooks
+   are skipped during a dry run.
 
 -------------------------------------------------------------------
 Sun May  5 19:04:54 UTC 2019 - Torsten Gruner <t.gruner@katodev.de>
 
 - Update to 1.3.1
-  * #155: Fix for invalid JSON output when using multiple borgmatic configuration files.
-  * #157: Fix for seemingly random filename ordering when running through a directory of
+  * #155: Fix for invalid JSON output when using multiple borgmatic
     configuration files.
+  * #157: Fix for seemingly random filename ordering when running
+    through a directory of configuration files.
   * Fix for empty JSON output when using --create --json.
-  * Now capturing Borg output only when --json flag is used. Previously, borgmatic delayed Borg
-    output even without the --json flag.
-
+  * Now capturing Borg output only when --json flag is used.
+    Previously, borgmatic delayed Borg output even without the
+    --json flag.
 - Update to 1.3.0
-  * #148: Configuration file includes and merging via "!include" tag to support reuse of common
-    options across configuration files.
-
+  * #148: Configuration file includes and merging via "!include"
+    tag to support reuse of common options across configuration
+    files.
 - Update to 1.2.18
-  * #147: Support for Borg create/extract --numeric-owner flag via "numeric_owner" option in
-    borgmatic's location section.
-
+  * #147: Support for Borg create/extract --numeric-owner flag
+    via "numeric_owner" option in borgmatic's location section.
 - Update to 1.2.17
-  * #140: List the files within an archive via --list --archive option.
-
+  * #140: List the files within an archive via --list --archive
+    option.
 - Update to 1.2.16
-  * #119: Include a sample borgmatic configuration file in the documentation.
-  * #123: Support for Borg archive restoration via borgmatic --extract command-line flag.
-  * Refactor documentation into multiple separate pages for clarity and findability.
+  * #119: Include a sample borgmatic configuration file in the
+    documentation.
+  * #123: Support for Borg archive restoration via borgmatic
+    --extract command-line flag.
+  * Refactor documentation into multiple separate pages for clarity
+    and findability.
   * Organize options within command-line help into logical groups.
   * Exclude tests from distribution packages.
-
 - Update to 1.2.15
-  * #127: Remove date echo from schema example, as it's not a substitute for real logging.
-  * #132: Leave exclude_patterns glob expansion to Borg, since doing it in borgmatic leads to
-    confusing behavior.
-  * #136: Handle and format validation errors raised during argument parsing.
-  * #138: Allow use of --stats flag when --create or --prune flags are implied.
+  * #127: Remove date echo from schema example, as it's not a
+    substitute for real logging.
+  * #132: Leave exclude_patterns glob expansion to Borg, since
+    doing it in borgmatic leads to confusing behavior.
+  * #136: Handle and format validation errors raised during
+    argument parsing.
+  * #138: Allow use of --stats flag when --create or --prune flags
+    are implied.
 
 -------------------------------------------------------------------
 Mon Jan 21 12:00:14 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.2.14
-  * When generating sample configuration with generate-borgmatic-config,
-    document the defaults for each option.
-  * When running multiple configuration files, attempt all configuration
-    files even if one of them errors. Log a summary of results at the end.
-  * Add borgmatic --version command-line flag to get the current installed
-    version number.
-
+  * When generating sample configuration with
+    generate-borgmatic-config, document the defaults for each
+    option.
+  * When running multiple configuration files, attempt all
+    configuration files even if one of them errors. Log a summary
+    of results at the end.
+  * Add borgmatic --version command-line flag to get the current
+    installed version number.
 - Update to 1.2.13
-  * Support for --stats command-line flag independent of --verbosity.
-  * With borgmatic --init command-line flag, proceed without erroring if a
-    repository already exists.
-
+  * Support for --stats command-line flag independent of
+    --verbosity.
+  * With borgmatic --init command-line flag, proceed without
+    erroring if a repository already exists.
 - Update to 1.2.12
   * Support for Borg repository initialization via borgmatic --init
     command-line flag.
-  * Update Borg create --filter values so a dry run lists files to back up.
+  * Update Borg create --filter values so a dry run lists files to
+    back up.
   * Update README with link to a new/forked Docker image.
-  * Prevent deprecated --excludes command-line option from being used.
+  * Prevent deprecated --excludes command-line option from being
+    used.
   * Refactor README a bit to flow better for first-time users.
-  * Update README with a few additional borgmatic packages (Debian and Ubuntu).
-
+  * Update README with a few additional borgmatic packages (Debian
+    and Ubuntu).
 - Update to 1.2.11
-  * Support for Borg create --progress via borgmatic command-line flag.
-
+  * Support for Borg create --progress via borgmatic command-line
+    flag.
 - Update to 1.2.10
-  * Support for Borg --chunker-params create option via "chunker_params"
-    in borgmatic's storage section.
-
+  * Support for Borg --chunker-params create option via
+    "chunker_params" in borgmatic's storage section.
 - Update to 1.2.9
   * Fix for syntax error that occurred in Python 3.5 and below.
   * Make automated tests support running in Python 3.5.
-
 - Update to 1.2.8
   * Enable consistency checks for only certain repositories via
     "check_repositories" option in borgmatic's consistency
-    configuration. Handy for large repositories that take forever to check.
+    configuration. Handy for large repositories that take forever
+    to check.
   * Include link to issue tracker within various command output.
   * Run continuous integration tests on a matrix of Python and Borg
     versions.
-
 - Update to 1.2.7
   * Support for Borg --keep-secondly prune option.
-  * Use Black code formatter and Flake8 code checker as part of running
-    automated tests.
-  * Add an end-to-end automated test that actually integrates with Borg.
+  * Use Black code formatter and Flake8 code checker as part of
+    running automated tests.
+  * Add an end-to-end automated test that actually integrates with
+    Borg.
   * Set up continuous integration for borgmatic automated tests
-
 - Update to 1.2.6
-  * Fix generated configuration to also include a "keep_daily" value so
-    pruning works out of the box.
-
+  * Fix generated configuration to also include a "keep_daily"
+    value so pruning works out of the box.
 - Update to 1.2.5
   * Fix various warnings.
-
 - Update to 1.2.4
   * Bump version.
-
 - Update to 1.2.3
   * Set to release version.
-
-
 
 -------------------------------------------------------------------
 Fri Sep 14 17:46:56 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.2.2
- * #85: Fix compatibility issue between pykwalify and ruamel.yaml 0.15.52, which manifested in
-   borgmatic as a pykwalify RuleError.
-
+ * #85: Fix compatibility issue between pykwalify and ruamel.yaml
+   0.15.52, which manifested in borgmatic as a pykwalify RuleError.
 - Update to 1.2.1
- * Skip before/after backup hooks when only doing --prune, --check, --list, and/or --info.
- * #71: Support for XDG_CONFIG_HOME environment variable for specifying alternate user ~/.config/
-   path.
- * #74, #83: Support for Borg --json option via borgmatic command-line to --list archives or show
-   archive --info in JSON format, ideal for programmatic consumption.
- * #38, #76: Upgrade ruamel.yaml compatibility version range and fix support for Python 3.7.
- * #77: Skip non-"*.yaml" config filenames in /etc/borgmatic.d/ so as not to parse backup files,
-   editor swap files, etc.
- * #81: Document user-defined hooks run before/after backup, or on error.
+ * Skip before/after backup hooks when only doing --prune, --check,
+   --list, and/or --info.
+ * #71: Support for XDG_CONFIG_HOME environment variable for
+   specifying alternate user ~/.config/ path.
+ * #74, #83: Support for Borg --json option via borgmatic
+   command-line to --list archives or show archive --info in JSON
+   format, ideal for programmatic consumption.
+ * #38, #76: Upgrade ruamel.yaml compatibility version range and
+   fix support for Python 3.7.
+ * #77: Skip non-"*.yaml" config filenames in /etc/borgmatic.d/ so
+   as not to parse backup files, editor swap files, etc.
+ * #81: Document user-defined hooks run before/after backup, or on
+   error.
  * Add code style guidelines to the documention.
 
 -------------------------------------------------------------------
 Sat Jul  7 10:36:25 UTC 2018 - alarrosa@suse.com
 
-- Use %{version} in the Source line instead of explicitly writing it.
-- Use %license for LICENSE and change the license in the spec file to
-  GPL-3.0-only
+- Use %{version} in the Source line instead of explicitly writing
+  it.
+- Use %license for LICENSE and change the license in the spec file
+  to GPL-3.0-only
 
 -------------------------------------------------------------------
 Fri Jul  6 20:38:38 UTC 2018 - t.gruner@katodev.de
 
 - update to 1.2.0
- * #61: Support for Borg --list option via borgmatic command-line to list all archives.
- * #61: Support for Borg --info option via borgmatic command-line to display summary information.
- * #62: Update README to mention other ways of installing borgmatic.
- * Support for Borg --prefix option for consistency checks via "prefix" option in borgmatic's
-   consistency configuration.
+ * #61: Support for Borg --list option via borgmatic command-line
+   to list all archives.
+ * #61: Support for Borg --info option via borgmatic command-line
+   to display summary information.
+ * #62: Update README to mention other ways of installing
+   borgmatic.
+ * Support for Borg --prefix option for consistency checks via
+   "prefix" option in borgmatic's consistency configuration.
  * Add introductory screencast link to documentation.
- * #59: Ignore "check_last" and consistency "prefix" when "archives" not in consistency checks.
+ * #59: Ignore "check_last" and consistency "prefix" when
+   "archives" not in consistency checks.
  * #60: Add "Persistent" flag to systemd timer example.
- * #63: Support for Borg --nobsdflags option to skip recording bsdflags (e.g. NODUMP, IMMUTABLE) in
-   archive.
- * #69: Support for Borg prune --umask option using value of existing "umask" option in borgmatic's
-   storage configuration.
- * Update tox.ini to only assume Python 3.x instead of Python 3.4 specifically.
- * Add ~/.config/borgmatic/config.yaml to default configuration path probing.
+ * #63: Support for Borg --nobsdflags option to skip recording
+   bsdflags (e.g. NODUMP, IMMUTABLE) in archive.
+ * #69: Support for Borg prune --umask option using value of
+   existing "umask" option in borgmatic's storage configuration.
+ * Update tox.ini to only assume Python 3.x instead of Python 3.4
+   specifically.
+ * Add ~/.config/borgmatic/config.yaml to default configuration
+   path probing.
  * Document how to develop on and contribute to borgmatic.
 
 -------------------------------------------------------------------
@@ -1253,108 +1423,126 @@ Tue Mar 27 12:54:40 UTC 2018 - t.gruner@katodev.de
 - Add borgmatic.d folder in /etc for config files
 
 - Update to 1.1.15
- * Support for Borg BORG_PASSCOMMAND environment variable to read a password from an external file.
- * Fix for Borg create error when using borgmatic's --dry-run and --verbosity options together.
-   Work-around for behavior introduced in Borg 1.1.3: https://github.com/borgbackup/borg/issues/3298
- * #55: Fix for missing tags/releases on Gitea and GitHub project hosting.
- * #56: Support for Borg --lock-wait option for the maximum wait for a repository/cache lock.
- * #58: Support for using tilde in exclude_patterns to reference home directory.
+ * Support for Borg BORG_PASSCOMMAND environment variable to read a
+   password from an external file.
+ * Fix for Borg create error when using borgmatic's --dry-run and
+   --verbosity options together. Work-around for behavior
+   introduced in Borg 1.1.3:
+   https://github.com/borgbackup/borg/issues/3298
+ * #55: Fix for missing tags/releases on Gitea and GitHub project
+   hosting.
+ * #56: Support for Borg --lock-wait option for the maximum wait
+   for a repository/cache lock.
+ * #58: Support for using tilde in exclude_patterns to reference
+   home directory.
 
 -------------------------------------------------------------------
 Tue Jan 30 18:01:13 UTC 2018 - alarrosa@suse.com
 
-- Removed _service file. Borgmatic uses to have frequent releases these days.
-
+- Removed _service file. Borgmatic uses to have frequent releases
+  these days.
 - Update to 1.1.14
   * Fix for typo in --patterns-from option.
   * Support for Borg --dry-run option via borgmatic command-line.
-
 - Update to 1.1.13
-  * Fix for incorrect consistency check flags passed to Borg when all three checks ("repository",
-    "archives", and "extract") are specified in borgmatic configuration.
-  * Add "local_path" to configuration for specifying an alternative Borg executable path.
-  * Support for Borg experimental --patterns-from and --patterns options for specifying mixed
-    includes/excludes.
+  * Fix for incorrect consistency check flags passed to Borg when
+    all three checks ("repository", "archives", and "extract") are
+    specified in borgmatic configuration.
+  * Add "local_path" to configuration for specifying an alternative
+    Borg executable path.
+  * Support for Borg experimental --patterns-from and --patterns
+    options for specifying mixed includes/excludes.
   * Moved issue tracker from Taiga to integrated Gitea tracker at
     https://projects.torsion.org/witten/borgmatic/issues
-
 - Update to 1.1.12
-  * Declare dependency on pykwalify 1.6 or above, as older versions yield "Unknown key: version"
-    rule errors.
+  * Declare dependency on pykwalify 1.6 or above, as older versions
+    yield "Unknown key: version" rule errors.
   * Support for Borg --keep-minutely prune option.
-
 - Update to 1.1.11
-  * Add "ssh_command" to configuration for specifying a custom SSH command or options.
-  * Fix for incorrect /etc/borgmatic.d/ configuration path probing on macOS. This problem manifested
-    as an error on startup: "[Errno 2] No such file or directory: '/etc/borgmatic.d'".
-
+  * Add "ssh_command" to configuration for specifying a custom SSH
+    command or options.
+  * Fix for incorrect /etc/borgmatic.d/ configuration path probing
+    on macOS. This problem manifested as an error on startup:
+    "[Errno 2] No such file or directory: '/etc/borgmatic.d'".
 - Update to 1.1.10
-  * Pass several Unix signals through to child processes like Borg. This means that Borg now properly
-    shuts down if borgmatic is terminated (e.g. due to a system suspend).
-  * Support for using tilde in repository paths to reference home directory.
-  * Support for Borg --files-cache option for setting the files cache operation mode.
-  * Support for Borg --remote-ratelimit option for limiting upload rate.
+  * Pass several Unix signals through to child processes like Borg.
+    This means that Borg now properly shuts down if borgmatic is
+    terminated (e.g. due to a system suspend).
+  * Support for using tilde in repository paths to reference home
+    directory.
+  * Support for Borg --files-cache option for setting the files
+    cache operation mode.
+  * Support for Borg --remote-ratelimit option for limiting upload
+    rate.
   * Log invoked Borg commands when at highest verbosity level.
 
 -------------------------------------------------------------------
 Sun Oct 29 09:16:34 UTC 2017 - alarrosa@suse.com
 
-- Upstream moved from mercurial to git, so updated _service accordingly,
-  updated source code to 6e9e7c4 and set all services mode to disabled.
+- Upstream moved from mercurial to git, so updated _service
+  accordingly, updated source code to 6e9e7c4 and set all services
+  mode to disabled.
 - Fixed a too restrictive python3-ruamel.yaml version requirement
   in the source code
-- Add a rcborgmatic symlink as required by the suse-missing-rclink rpmlint check
+- Add a rcborgmatic symlink as required by the suse-missing-rclink
+  rpmlint check
 
 -------------------------------------------------------------------
 Wed Sep 20 15:00:11 UTC 2017 - alarrosa@suse.com
 
 - Update to 1.1.9dev0-201
-  * #29: Support for using tilde in source directory path to reference home directory.
-
+  * #29: Support for using tilde in source directory path to
+    reference home directory.
 - python3-ruamel.yaml and python3-pykwalify are now required
-  
 - Update to 1.1.8
-  * #39: Fix to make /etc/borgmatic/config.yaml optional rather than required when using the default
-     config paths.
-   
+  * #39: Fix to make /etc/borgmatic/config.yaml optional rather
+    than required when using the default config paths.
 - Update to 1.1.7
-  * #28: Add "archive_name_format" to configuration for customizing archive names.
-  * Fix for traceback when "exclude_from" value is empty in configuration file.
-  * When pruning, make highest verbosity level list archives kept and pruned.
+  * #28: Add "archive_name_format" to configuration for customizing
+    archive names.
+  * Fix for traceback when "exclude_from" value is empty in
+    configuration file.
+  * When pruning, make highest verbosity level list archives kept
+    and pruned.
   * Clarification of Python 3 pip usage in documentation.
-  
 - Update to 1.1.6
-  * #12, #35: Support for Borg --exclude-from, --exclude-caches, and --exclude-if-present options.
-  
+  * #12, #35: Support for Borg --exclude-from, --exclude-caches,
+    and --exclude-if-present options.
 - Update to 1.1.5
-  * #34: New "extract" consistency check that performs a dry-run extraction of the most recent
-    archive.
-  
+  * #34: New "extract" consistency check that performs a dry-run
+    extraction of the most recent archive.
 - Update to 1.1.4
-  * #17: Added command-line flags for performing a borgmatic run with only pruning, creating, or
-    checking enabled. This supports use cases like running consistency checks from a different cron
-    job with a different frequency, or running pruning with a different verbosity level.
-  
+  * #17: Added command-line flags for performing a borgmatic run
+    with only pruning, creating, or checking enabled. This supports
+    use cases like running consistency checks from a different cron
+    job with a different frequency, or running pruning with a
+    different verbosity level.
 - Update to 1.1.3
-  * #14: Support for running multiple config files in /etc/borgmatic.d/ from a single borgmatic run.
-  * Fix for generate-borgmatic-config writing config with invalid one_file_system value.
-  
+  * #14: Support for running multiple config files in
+    /etc/borgmatic.d/ from a single borgmatic run.
+  * Fix for generate-borgmatic-config writing config with invalid
+    one_file_system value.
 - Update to 1.1.2
-  * #32: Fix for passing check_last as integer to subprocess when calling Borg.
-  
+  * #32: Fix for passing check_last as integer to subprocess when
+    calling Borg.
 - Update to 1.1.1
-  * Part of #32: Fix for upgrade-borgmatic-config converting check_last option as a string instead of
-    an integer.
-  * Fix for upgrade-borgmatic-config erroring when consistency checks option is not present.
-  
+  * Part of #32: Fix for upgrade-borgmatic-config converting
+    check_last option as a string instead of an integer.
+  * Fix for upgrade-borgmatic-config erroring when consistency
+    checks option is not present.
 - Update to 1.1.0
-  * Switched config file format to YAML. Run upgrade-borgmatic-config to upgrade.
-  * Added generate-borgmatic-config command for initial config creation.
+  * Switched config file format to YAML. Run
+    upgrade-borgmatic-config to upgrade.
+  * Added generate-borgmatic-config command for initial config
+    creation.
   * Dropped Python 2 support. Now Python 3 only.
-  * #18: Fix for README mention of sample files not included in package.
-  * #22: Sample files for triggering borgmatic from a systemd timer.
+  * #18: Fix for README mention of sample files not included in
+    package.
+  * #22: Sample files for triggering borgmatic from a systemd
+    timer.
   * Support for backing up to multiple repositories.
-  * To free up space, now pruning backups prior to creating a new backup.
+  * To free up space, now pruning backups prior to creating a new
+    backup.
   * Enabled test coverage output during tox runs.
   * Added logo.
 

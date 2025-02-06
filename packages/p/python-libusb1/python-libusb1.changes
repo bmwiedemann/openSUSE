@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 22 12:50:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.0
+  * Add example for scanning the complete device tree
+  * Fix CRLF problem
+  * testUSB1: Fix python 3.13 support
+- Drop py313.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Dec  2 12:43:40 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream py313.patch to fix build with new python

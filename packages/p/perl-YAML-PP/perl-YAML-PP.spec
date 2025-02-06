@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-PP
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name YAML-PP
 Name:           perl-YAML-PP
-Version:        0.38.0
+Version:        0.38.1
 Release:        0
+# v0.38.1 -> normalize -> 0.38.1
+%define cpan_version v0.38.1
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML 1.2 Processor
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-v%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -59,7 +61,7 @@ You can check out all current parse and load results from the
 yaml-test-suite here: https://perlpunk.github.io/YAML-PP-p5/test-suite.html
 
 %prep
-%autosetup  -n %{cpan_name}-v%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

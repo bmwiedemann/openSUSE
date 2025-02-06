@@ -296,4 +296,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149883 from dimstar)</comment>
     <requestid>1149918</requestid>
   </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>2434ba00862051d90b8f7b780050ef0a</srcmd5>
+    <version>0.13</version>
+    <time>1737722322</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop rcFOO symlinks for CODE16 (jsc#PED-266). (forwarded request 1239782 from dimstar)</comment>
+    <requestid>1239798</requestid>
+  </revision>
 </revisionlist>

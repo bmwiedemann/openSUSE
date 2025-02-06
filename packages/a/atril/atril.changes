@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 19 14:48:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.1:
+  * Update CBR library to libarchive in README.md
+  * ci: fix travis build failures caused by recent travis changes
+  * Cleanup icons Makefile
+  * icons: Include higher resolution icons
+  * Updated translations.
+- Drop pkgconfig(libpst) BuildRequires: No longer required nor used
+
+-------------------------------------------------------------------
 Mon Mar 25 07:09:10 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.28.0

@@ -1,7 +1,7 @@
 #
 # spec file for package java-17-openjdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       13
-%global buildver        11
+%global updatever       14
+%global buildver        7
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -170,6 +170,7 @@ Patch17:        reproducible-jlink.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch21:        reproducible-javadoc-timestamp.patch
+Patch22:        reproducible-directory-mtime.patch
 #
 # OpenJDK specific patches
 #
@@ -415,6 +416,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 20 -p1
 
 %patch -P 21 -p1
+%patch -P 22 -p1
 
 %patch -P 200 -p1
 

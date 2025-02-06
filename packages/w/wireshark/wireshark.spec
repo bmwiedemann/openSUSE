@@ -1,7 +1,7 @@
 #
 # spec file for package wireshark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,8 @@
 %else
 %bcond_with lz4
 %endif
-%bcond_without qt5
+# have an option to still build with qt5
+%bcond_without qt6
 Name:           wireshark
 Version:        4.4.3
 Release:        0
@@ -79,16 +80,7 @@ Requires(pre):  permissions
 Requires(pre):  shadow
 Recommends:     wireshark-ui = %{version}
 Provides:       group(wireshark)
-%if %{with qt5}
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5Core) >= 5.3.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-%else
+%if %{with qt6}
 BuildRequires:  qt6-linguist-devel
 BuildRequires:  qt6-qt5compat-devel
 BuildRequires:  pkgconfig(Qt6Concurrent)
@@ -98,6 +90,15 @@ BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6PrintSupport)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
+%else
+BuildRequires:  libqt5-linguist-devel
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.3.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.3.0
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
 # enable ITU G.729 Annex A/B speech codec only in Tumbleweed

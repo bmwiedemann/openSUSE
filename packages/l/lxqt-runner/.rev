@@ -369,4 +369,13 @@
     <comment></comment>
     <requestid>1237108</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f23a63266e064c50d3b2c783987b8131</srcmd5>
+    <version>2.1.2</version>
+    <time>1738245118</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.2:
+  * Fixed a regression that broke case-insensitive filtering in some cases.</comment>
+    <requestid>1241222</requestid>
+  </revision>
 </revisionlist>

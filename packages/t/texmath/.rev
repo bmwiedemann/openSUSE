@@ -574,4 +574,12 @@ texmath changes:
     <comment>version update for ghc-9.10.1</comment>
     <requestid>1231501</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c739fd29e216bb1cc7aa0a40fea82ba2</srcmd5>
+    <version>0.12.8.13</version>
+    <time>1738007529</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1239836</requestid>
+  </revision>
 </revisionlist>

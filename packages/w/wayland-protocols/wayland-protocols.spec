@@ -1,7 +1,7 @@
 #
 # spec file for package wayland-protocols
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           wayland-protocols
-Version:        1.38
+Version:        1.40
 Release:        0
 Summary:        Wayland protocols that add functionality not available in the core protocol
 License:        MIT

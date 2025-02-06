@@ -1,7 +1,7 @@
 #
 # spec file for package sddm-kalpa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Neal Gompa
 # Copyright (c) 2024 Shawn W Dunn
 #
@@ -41,6 +41,8 @@ Source5:        sddm-x11.conf
 # see: https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/thread/TFDMAU7KLMSQTKPJELHSM6PFVXIZ56GK/
 Source6:        sddm-systemd-sysusers.conf
 Source7:        sddm-greeter.pam
+Source8:        10-weston.conf
+Source9:        10-kwin.conf
 
 Provides:       sddm = %{version}
 Conflicts:      sddm-qt6
@@ -103,8 +105,10 @@ designer the ability to create smooth, animated user interfaces.
 %package wayland-generic
 Summary:        Generic Wayland SDDM greeter configuration
 Provides:       sddm-greeter-displayserver
+Conflicts:      %{name}-kwin
 Conflicts:      sddm-greeter-displayserver
 Requires:       %{name} = %{version}
+Requires:       qt6-wayland
 Requires:       weston
 BuildArch:      noarch
 
@@ -113,6 +117,20 @@ This package contains configuration and dependencies for SDDM to use Weston
 for the greeter display server.
 
 This is the generic default Wayland configuration provided by SDDM.
+
+%package kwin
+Summary:        SDDM Greeter configuration using kwin_wayland
+Provides:       sddm-greeter-displayserver
+Conflicts:      %{name}-wayland-generic
+Conflicts:      sddm-greeter-displayserver
+Requires:       %{name} = %{version}
+Requires:       breeze6-cursors
+Requires:       kwin6
+BuildArch:      noarch
+
+%description kwin
+This package contains configuration and dependencies for SDDM to use the
+kwin_wayland compositor
 
 %if %{with x11}
 %package x11
@@ -172,6 +190,9 @@ install -Dm 0644 %{SOURCE7} %{buildroot}${pam_dest}/sddm-greeter
 
 install -Dpm 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/sddm.conf
 install -Dpm 644 %{SOURCE4} %{buildroot}%{_datadir}/sddm/scripts/README.scripts
+install -Dpm 644 %{SOURCE8} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-weston.conf
+install -Dpm 644 %{SOURCE9} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-kwin.conf
+
 %if %{with x11}
 install -Dpm 644 %{SOURCE5} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/x11.conf
 %endif
@@ -243,7 +264,10 @@ ln -sr %{buildroot}%{_bindir}/sddm-greeter-qt6 %{buildroot}%{_bindir}/sddm-greet
 %{_mandir}/man?/sddm*
 
 %files wayland-generic
-# No files since default configuration
+%{_prefix}/lib/sddm/sddm.conf.d/10-weston.conf
+
+%files kwin
+%{_prefix}/lib/sddm/sddm.conf.d/10-kwin.conf
 
 %if %{with x11}
 %files x11

@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2011, Sascha Peilicke <saschpe@gmx.de>
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 #
 
 
-%define sover 1_8
+%define sover 1_9
 Name:           libgit2
-Version:        1.8.4
+Version:        1.9.0
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0
@@ -96,6 +96,8 @@ find examples -type f -name ".gitignore" -print -delete
 %{_libdir}/%{name}.so
 %{_includedir}/git2*
 %{_libdir}/pkgconfig/libgit2.pc
+%dir %{_prefix}/lib/cmake
+%{_prefix}/lib/cmake/libgit2
 
 %files tools
 %license COPYING

@@ -1,7 +1,7 @@
 #
 # spec file for package fence-agents
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
+%define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump lpar mpath netio powerman pve raritan rcd_serial redfish rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti zvm
 Name:           fence-agents
 Summary:        Set of unified programs capable of host isolation ("fencing")
-Version:        4.15.0+git.1731052905.05fd299e
+Version:        4.16.0+git.1738070632.02141bfa
 Release:        0
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/HA
@@ -28,9 +28,6 @@ Source0:        %{name}-%{version}.tar.xz
 
 %define boto3_br 1
 
-# skipped: pve, raritan, rcd-serial, virsh
-# Removed sle15->sle16 evacuate, ironic, openstack,  pve, raritan, rcd_serial
-# fence-agents-azure-arm has special requirements
 %global allfenceagents %(cat <<EOF
 fence-agents-alom \\
 fence-agents-apc \\
@@ -40,7 +37,6 @@ fence-agents-bladecenter \\
 fence-agents-brocade \\
 fence-agents-cisco-mds \\
 fence-agents-cisco-ucs \\
-fence-agents-docker \\
 fence-agents-drac5 \\
 fence-agents-eaton-snmp \\
 fence-agents-eaton-ssh \\
@@ -62,12 +58,10 @@ fence-agents-intelmodular \\
 fence-agents-ipdu \\
 fence-agents-ipmilan \\
 fence-agents-kdump \\
-fence-agents-ldom \\
 fence-agents-lpar \\
 fence-agents-mpath \\
 fence-agents-netio \\
 fence-agents-redfish \\
-fence-agents-rhevm \\
 fence-agents-rsa \\
 fence-agents-rsb \\
 fence-agents-sanbox2 \\
@@ -77,7 +71,6 @@ fence-agents-vbox \\
 fence-agents-vmware \\
 fence-agents-vmware-rest \\
 fence-agents-wti \\
-fence-agents-xenapi \\
 fence-agents-zvm \\
 
 EOF)
@@ -100,10 +93,9 @@ EOF)
 %global allfenceagents %(cat <<EOF
 %{allfenceagents} \\
 fence-agents-aws \\
-fence-agents-compute \\
+fence-agents-azure-arm \\
 fence-agents-gce \\
-fence-agents-ironic \\
-fence-agents-openstack
+fence-agents-ironic
 
 EOF)
 %endif
@@ -395,11 +387,10 @@ Requires:       fence-agents-common = %{version}-%{release}
 %if 0%{?rhel} && 0%{?rhel} < 9
 Requires:       python3-azure-sdk
 %else
-Requires:       python311-azure-common
+Requires:       python311-azure-core
 Requires:       python311-azure-identity
 Requires:       python311-azure-mgmt-compute
 Requires:       python311-azure-mgmt-network
-Requires:       python311-msrestazure
 Requires:       python311-pexpect
 Requires:       python311-pycurl
 %endif
@@ -489,41 +480,6 @@ via the SNMP protocol.
 %files cisco-ucs
 %{_sbindir}/fence_cisco_ucs
 %{_mandir}/man8/fence_cisco_ucs.8*
-
-%ifarch x86_64 ppc64le
-%package compute
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Summary:        Fence agent for Nova compute nodes
-Requires:       fence-agents-common = %{version}-%{release}
-Requires:       python3-novaclient
-Requires:       python3-requests
-Conflicts:      %{name} < %{version}-%{release}
-BuildArch:      noarch
-
-%description compute
-Fence agent for Nova compute nodes.
-
-%files compute
-%{_sbindir}/fence_compute
-%{_sbindir}/fence_evacuate
-%{_mandir}/man8/fence_compute.8*
-%{_mandir}/man8/fence_evacuate.8*
-%endif
-
-%package docker
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Summary:        Fence agent for Docker
-Requires:       fence-agents-common = %{version}-%{release}
-Requires:       python3-pycurl
-Conflicts:      %{name} < %{version}-%{release}
-BuildArch:      noarch
-
-%description docker
-Fence agent for Docker images that are accessed over HTTP.
-
-%files docker
-%{_sbindir}/fence_docker
-%{_mandir}/man8/fence_docker.8*
 
 %package drac5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -925,24 +881,6 @@ Fence agent for use with kdump crash recovery service.
 %{_mandir}/man8/fence_kdump.8*
 %{_mandir}/man8/fence_kdump_send.8*
 
-%package ldom
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Summary:        Fence agent for Sun LDom virtual machines
-Requires:       openssh-clients
-%if 0%{?fedora} < 33 || (0%{?rhel} && 0%{?rhel} < 9) || (0%{?centos} && 0%{?centos} < 9) || 0%{?suse_version}
-Recommends:     telnet
-%endif
-Requires:       fence-agents-common = %{version}-%{release}
-Conflicts:      %{name} < %{version}-%{release}
-BuildArch:      noarch
-
-%description ldom
-Fence agent for APC devices that are accessed via telnet or SSH.
-
-%files ldom
-%{_sbindir}/fence_ldom
-%{_mandir}/man8/fence_ldom.8*
-
 %package lpar
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Summary:        Fence agent for IBM LPAR
@@ -999,23 +937,6 @@ via telnet or SSH.
 %files netio
 %{_sbindir}/fence_netio
 %{_mandir}/man8/fence_netio.8*
-
-%ifarch x86_64 ppc64le
-%package openstack
-Conflicts:      %{name} < %{version}-%{release}
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Summary:        Fence agent for OpenStack's Nova service
-Requires:       fence-agents-common = %{version}-%{release}
-Requires:       python3-requests
-BuildArch:      noarch
-
-%description openstack
-Fence agent for OpenStack's Nova service.
-
-%files openstack
-%{_sbindir}/fence_openstack
-%{_mandir}/man8/fence_openstack.8*
-%endif
 
 # skipped from allfenceagents
 %package pve
@@ -1079,20 +1000,6 @@ The fence-agents-redfish package contains a fence agent for Redfish
 %defattr(-,root,root,-)
 %{_sbindir}/fence_redfish
 %{_mandir}/man8/fence_redfish.8*
-
-%package rhevm
-Conflicts:      %{name} < %{version}-%{release}
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Summary:        Fence agent for RHEV-M
-Requires:       fence-agents-common = %{version}-%{release}
-BuildArch:      noarch
-
-%description rhevm
-Fence agent for RHEV-M via REST API.
-
-%files rhevm
-%{_sbindir}/fence_rhevm
-%{_mandir}/man8/fence_rhevm.8*
 
 %package rsa
 Conflicts:      %{name} < %{version}-%{release}
@@ -1259,25 +1166,6 @@ via telnet or SSH.
 %files wti
 %{_sbindir}/fence_wti
 %{_mandir}/man8/fence_wti.8*
-
-%package xenapi
-Conflicts:      %{name} < %{version}-%{release}
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Summary:        Fence agent for Citrix XenServer over XenAPI
-Requires:       fence-agents-common = %{version}-%{release}
-Requires:       python3-pexpect
-BuildArch:      noarch
-
-%description xenapi
-Fence agent for Citrix XenServer accessed over XenAPI.
-
-%files xenapi
-%{_sbindir}/fence_xenapi
-%{_datadir}/fence/XenAPI.py*
-%if 0%{?fedora} || 0%{?centos} || 0%{?rhel}
-%{_datadir}/fence/__pycache__/XenAPI.*
-%endif
-%{_mandir}/man8/fence_xenapi.8*
 
 %package zvm
 Conflicts:      %{name} < %{version}-%{release}

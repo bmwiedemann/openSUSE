@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 19 10:09:39 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.2
+  * Upgrade to VolView tag 4.3.0 (commit a76e8fb).
+    Note that the VolView "About" box still displays version 4.2.0.
+  * Patch to make the build of static assets reproducible, following a
+    suggestion by Bernhard M. Wiedemann (bwiedemann@suse.de)
+
+-------------------------------------------------------------------
 Thu Nov  7 09:19:14 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - licence tag adjusted ( see SR 1208945)
@@ -7,11 +16,6 @@ Thu Nov  7 09:19:14 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 Wed Oct 16 10:36:26 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - force python 3.11 to fix Leap build 
-
--------------------------------------------------------------------
-Thu Mar 21 14:28:55 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
-
-- Add reproducible.patch for reproducible builds of static assets
 
 -------------------------------------------------------------------
 Wed Mar 13 13:42:41 UTC 2024 - Axel Braun <axel.braun@gmx.de>

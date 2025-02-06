@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Dec  4 05:20:54 UTC 2024 - ming li <mli@suse.com>
+
+- update to 3.25:
+  * Removed old rule that moved file from /usr/bin to /bin.
+    (Closes: #1056978)
+
+ hostname 3.24:
+  [ Gioele Barabucci ]
+  * d/control: Add VCS URLs (Closes: #1050091)
+  * Makefile: Adopt GNU/debhelper conventions
+  * d/rules: Simplify using debhelper 13 (Closes: #1050093)
+  * d/rules: Extract program version using sed
+  * d/control: Update standards version to 4.6.2, no changes needed
+  * d/control: Specify Rules-Requires-Root: no
+  [ binlingyu ]
+  * Fix memory leak
+  [ lingyu bin ]
+  * Update .gitlab-ci.yml file
+  [ Michael Meskes ]
+  * Fixed VCS information
+  * Enable build with ubuntu suffixes.
+    Thanks to Matthias Klose <doko@ubuntu.com> (Closes: #995889)
+  * Update standards version to 4.7.0, no changes needed
+  * Release 3.24
+
+ hostname 3.23+nmu1:
+  * Non-maintainer upload.
+  * Convert d/copyright to machine-readable format. (Closes: #1013131)
+  * Upgrade to 3.0 source format. (Closes: #1007059) 
+
+-------------------------------------------------------------------
 Tue Dec 27 12:26:47 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
