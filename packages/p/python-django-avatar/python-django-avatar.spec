@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-avatar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ BuildRequires:  %{python_module Django >= 4.0}
 BuildRequires:  %{python_module Pillow >= 8.4}
 BuildRequires:  %{python_module django-appconf >= 1.0.5}
 BuildRequires:  %{python_module dnspython >= 2.3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,10 +50,10 @@ file storage backend for retrieval later.
 %autosetup -p1 -n django-avatar-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,7 @@ file storage backend for retrieval later.
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/avatar
+%{python_sitelib}/django_avatar-%{version}.dist-info
 
 %changelog

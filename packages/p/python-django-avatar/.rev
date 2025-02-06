@@ -153,4 +153,13 @@
     saving succeeds.</comment>
     <requestid>1217031</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>67996114b93f48006b42cd7485db42fa</srcmd5>
+    <version>8.0.1</version>
+    <time>1738876129</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1243580</requestid>
+  </revision>
 </revisionlist>
