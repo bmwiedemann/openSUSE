@@ -1,7 +1,7 @@
 #
 # spec file for package uhd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname libuhd4_7_0
+%define libname libuhd4_8_0
 Name:           uhd
-Version:        4.7.0.0
+Version:        4.8.0.0
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ Group:          Hardware/Other
 URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
+Patch0:         reproducible.patch
 # PATCH-FIX-UPSTREAM fix-boost1.85-one.patch -- https://github.com/EttusResearch/uhd/commit/ea586168c596d13d05d145832519755794649ba0
 # Patch0:         fix-boost1.85-one.patch
 # PATCH-FIX-UPSTREAM fix-boost1.85-two.patch -- https://github.com/EttusResearch/uhd/commit/c4863b9b9f8b639260f7797157e8ac4dd81fef93
@@ -77,7 +78,9 @@ UHD driver standalone or with 3rd party applications.
 %package        utils
 Summary:        Utility programs for USRP hardware
 Group:          Hardware/Other
+%if 0%{?suse_version} >= 1600
 Requires:       python3-%{name} >= %{version}
+%endif
 
 %description    utils
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -190,8 +193,8 @@ mkdir -p  %{buildroot}%{_docdir}/uhd
 mv %{buildroot}%{_datadir}/doc/uhd %{buildroot}%{_docdir}/
 mv %{buildroot}%{_libdir}/uhd/utils/*[!.rules] %{buildroot}%{_bindir}
 mv %{buildroot}%{_libdir}/uhd/examples/* %{buildroot}%{_bindir}
-mv %{buildroot}%{_bindir}/python/* %{buildroot}%{_bindir}
-rm -R %{buildroot}%{_bindir}/python
+#mv %{buildroot}%{_bindir}/python/* %{buildroot}%{_bindir}
+#rm -R %{buildroot}%{_bindir}/python
 #mv %%{buildroot}%%{_libdir}/uhd/tests/*_test %%{buildroot}%%{_bindir}
 #
 #rm -R %%{buildroot}%%{_libdir}/uhd/tests
@@ -234,9 +237,11 @@ getent group usrp >/dev/null || %{_sbindir}/groupadd -r usrp
 %{_datadir}/uhd/rfnoc
 %{_mandir}/man1/*
 
+%if 0%{?suse_version} >= 1600
 %files -n python3-%{name}
 %{python3_sitearch}/uhd
 %{python3_sitearch}/usrp_mpm
+%endif
 
 %files udev
 %{_udevrulesdir}/10-usrp-uhd.rules
