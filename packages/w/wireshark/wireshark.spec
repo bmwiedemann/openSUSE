@@ -42,6 +42,13 @@ Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.g
 # PATCH-FEATURE-SLE wireshark-0010-dumpcap-permission-denied.patch bsc#1180102
 Patch10:        wireshark-0010-dumpcap-permission-denied.patch
 BuildRequires:  %{rb_default_ruby_suffix}-rubygem-asciidoctor
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glib2-devel >= 2.32
@@ -177,6 +184,10 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut 
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %if %{with qt5}
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/' -DUSE_qt6=OFF
 %else

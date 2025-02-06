@@ -1973,4 +1973,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>improve qt5/6; hopfully making it easier to understand</comment>
     <requestid>1240813</requestid>
   </revision>
+  <revision rev="231" vrev="3">
+    <srcmd5>f31fec3d2e9dafbb3cbf4a17d45b53c3</srcmd5>
+    <version>4.4.3</version>
+    <time>1738875723</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243433</requestid>
+  </revision>
 </revisionlist>
