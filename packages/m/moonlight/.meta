@@ -1,0 +1,6 @@
+<package name="moonlight" project="openSUSE:Factory">
+  <title>GameStream client for PCs</title>
+  <description>Moonlight PC is an open source PC client for NVIDIA GameStream and Sunshine.</description>
+  <devel project="X11:RemoteDesktop" package="moonlight"/>
+  <url>https://moonlight-stream.org/</url>
+</package>
