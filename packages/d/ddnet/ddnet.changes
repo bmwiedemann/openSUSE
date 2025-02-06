@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Feb  2 18:03:06 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.9.1:
+  * [Client] Rework name plates
+  * [Client] Run server on Android
+  * [Client] Support reading demo files larger than 2 GiB
+  * [Client] Add 'sv_maps_base_url' to support map download
+    https urls
+  * [Client] Fix Tele Commands during Dyncam Zoom and Make Aiming
+    Consistent across Zoom Levels
+  * [Client] Use remote tee angle when spectating
+  * [Client] Send camera type flag to prevent unexpected viewpos
+    and target update
+  * [Client] Fix console behavior when pasting multiple lines
+    of text
+  * [Client] Reset color in RenderLoading
+  * [Client] Translations for graphics errors
+  * [Client] Make client/graphics warnings thread-safe
+  * [Client] Support double quotes in translations
+  * [Client] Don't merge diffrent colored client msgs
+  * [Client] Minor improvement of entities background map settings
+  * [Client] Improve entities/menu background map loading
+  * [Client] Makes winter_night menu theme background can display
+    properly on a wider resolution
+  * [Client] Make Rendering the angle used by the hookcoll be
+    fixed when spectating
+  * [Client] Fix jump effect opacity
+  * [Client] Improve key & main menu hotkey handling
+  * [Client] Fix Android crash in release build due to ProGuard
+  * [Client] Minor improvements to random skin generation
+  * [Client] Add button to open Touch controls wiki page to
+    controls editor
+  * [Client] Fix tuning velramp graphs not being updated when
+    tuning changed
+  * [Client] Improve sound sample thread-safety
+  * [Client] Fix current server's community information not
+    being set
+  * [Client] Don't count fire if spec menu is opened
+  * [Client] Fix incorrect loading progress due to 0.7 images
+  * [Client&Server] Set a recursion limit for config files
+  * [Editor] Revert Tele popup
+  * [Editor] Allow invalid commands too if unknown commands
+    are allowed
+  * [Server] Ignore case when map voting with full match
+  * [Server] Fix server handling when vote creator leaves
+  * [Server] Add death sounds/particles on spike in practice
+  * [Server] Spikes freeze instead of kill in practice
+  * [Server] Disable auto rescue in spike in practice
+  * [Tooling] Fix stack-overflow in demo_extract_chat tool
+
+-------------------------------------------------------------------
 Sat Jan 11 19:14:57 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.9:
