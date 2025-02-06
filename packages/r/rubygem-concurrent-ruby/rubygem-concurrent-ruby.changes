@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:30:07 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.3.5:
+
+## What's Changed
+* Remove dependency on logger by @eregon in https://github.com/ruby-concurrency/concurrent-ruby/pull/1062
+* Avoid error when member is present on ancestor class by @francesmcmullin in https://github.com/ruby-concurrency/concurrent-ruby/pull/1068
+* Set rake-compiler source and target to Java 8 by @headius in https://github.com/ruby-concurrency/concurrent-ruby/pull/1071
+* chore: fix typos by @chenrui333 in https://github.com/ruby-concurrency/concurrent-ruby/pull/1076
+
+## New Contributors
+* @francesmcmullin made their first contribution in https://github.com/ruby-concurrency/concurrent-ruby/pull/1068
+* @chenrui333 made their first contribution in https://github.com/ruby-concurrency/concurrent-ruby/pull/1076
+
+**Full Changelog**: https://github.com/ruby-concurrency/concurrent-ruby/compare/v1.3.4...v1.3.5
+
+
+
+-------------------------------------------------------------------
 Mon Nov  4 16:27:28 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## Release v1.3.4 (10 August 2024)
