@@ -63,7 +63,6 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       libX11-devel
-Requires:       xorg-x11-proto-devel
 
 %description devel
 libXbgi is a Borland Graphics Interface (BGI) emulation library for

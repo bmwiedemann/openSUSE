@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:33:02 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed unneeded xorg-x11-proto-devel BuildRequires (bsc#1236804)
+
+-------------------------------------------------------------------
 Thu Sep  5 17:01:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Rectify xbgi-automake.diff to feature current version

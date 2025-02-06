@@ -23,4 +23,12 @@
     <comment>- Add xbgi-gcc14.diff</comment>
     <requestid>1199028</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>aba178285c46f0d31b963dd262a77e75</srcmd5>
+    <version>365</version>
+    <time>1738875996</time>
+    <user>anag+factory</user>
+    <comment>- removed unneeded xorg-x11-proto-devel BuildRequires (bsc#1236804)</comment>
+    <requestid>1243480</requestid>
+  </revision>
 </revisionlist>
