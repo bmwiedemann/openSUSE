@@ -249,4 +249,15 @@
 </comment>
     <requestid>1228459</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>69fc226273f15b1b34880ef5a3223ee7</srcmd5>
+    <version>1.2.6</version>
+    <time>1738876115</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.6:
+  * Fixed sign error in Messier catalog
+  * Fixed Save As feature 
+</comment>
+    <requestid>1243565</requestid>
+  </revision>
 </revisionlist>
