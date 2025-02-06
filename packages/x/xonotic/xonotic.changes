@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:45:03 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed unneeded xorg-x11-proto-devel BuildRequires (bsc#1236804)
+
+-------------------------------------------------------------------
 Tue Feb  6 16:24:34 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Provide user/group xonotic as required by RPM 4.19

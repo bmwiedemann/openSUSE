@@ -1,7 +1,7 @@
 #
 # spec file for package xonotic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXext-devel
 BuildRequires:  xorg-x11-libXpm
-BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  zlib-devel
 Requires:       logrotate
 Requires:       xonotic-data = %{version}
