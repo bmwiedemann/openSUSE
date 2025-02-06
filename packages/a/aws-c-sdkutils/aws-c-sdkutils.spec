@@ -20,14 +20,13 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-sdkutils
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        AWS C SDK Utils
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-sdkutils
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         acs_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
