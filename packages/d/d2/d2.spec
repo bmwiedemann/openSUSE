@@ -17,7 +17,7 @@
 
 
 Name:           d2
-Version:        0.6.8
+Version:        0.6.9
 Release:        0
 Summary:        CLI tool and modern declarative language that turns text to diagrams
 License:        Apache-2.0 AND MIT AND MPL-2.0 AND EPL-2.0 AND GPL-2.0-or-later AND BSD-3-Clause
@@ -25,7 +25,7 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/terrastruct/d2
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.23
 
 %description
 A modern declarative diagramming language that turns text to diagrams. Create
@@ -37,8 +37,10 @@ then make edits with your team.
 %autosetup -a 1
 
 %build
-go build \
-   -buildmode=pie
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build
 
 %check
 # execute the binary as a basic check

@@ -165,4 +165,39 @@
     (or its own) lifeline edges #2050 (forwarded request 1235047 from amanzini)</comment>
     <requestid>1235063</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>33914874bcc89c04a11968af95a49cf0</srcmd5>
+    <version>0.6.9</version>
+    <time>1738876123</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.9:
+  * Animations: style.animated: true is supported on shapes #2250
+  * Connections now support link #1955
+  * Vars: vars in markdown blocks are substituted #2218
+  * Markdown: Github-flavored tables work in md blocks #2221
+  * Render: adds box arrowheads #2227
+  * d2 fmt now supports a --check flag #2253
+  * CLI: PNG output to stdout is supported using --stdout-format png - #2291
+  * Globs: &amp;connected and &amp;leaf filters are implemented #2299
+  * CLI: add --no-xml-tag for direct HTML embedding #2302
+  * CLI: play cmd added for opening d2 input in online playground #2242
+  * Composition: links pointing to own board are purged #2203
+  * Syntax: reserved keywords must be unquoted #2231
+  * Latex: Backslashes in Latex blocks do not escape #2232
+    This is a breaking change. Previously Latex blocks required
+    escaping the backslash. So for older D2 versions, you should
+    remove the excess backslashes.
+  * Links: non-http url scheme links are supported (e.g. x.link: vscode://file/) #2237
+  * Compiler: reserved keywords with missing values error instead of silently doing nothing #2251
+  * Render: SVG outputs conform to stricter HTML standards, e.g. no duplicate ids #2273
+  * Themes: theme names are consistently cased #2322
+  * Nears: constant nears avoid collision with edge routes #2327
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.23 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time. (forwarded request 1243573 from jfkw)</comment>
+    <requestid>1243578</requestid>
+  </revision>
 </revisionlist>
