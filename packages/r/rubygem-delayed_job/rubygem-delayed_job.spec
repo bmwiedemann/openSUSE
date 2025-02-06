@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-delayed_job
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-delayed_job
-Version:        4.1.12
+Version:        4.1.13
 Release:        0
 %define mod_name delayed_job
 %define mod_full_name %{mod_name}-%{version}
