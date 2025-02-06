@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 16 11:20:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.1
+  * Update from deprecated pyOpenSSL APIs to non-deprecated
+    cryptography APIs. (#670)
+
+-------------------------------------------------------------------
 Tue Nov  5 15:14:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.2.0
