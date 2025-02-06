@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-timeout
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,18 @@
 #
 
 Name:           rubygem-timeout
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 %define mod_name timeout
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/ruby/timeout
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/ruby/timeout
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Auto-terminate potentially long-running operations in Ruby
-License:        Ruby and BSD-2-Clause
+License:        BSD-2-Clause AND Ruby
 
 %description
 Auto-terminate potentially long-running operations in Ruby.
@@ -46,7 +46,7 @@ Auto-terminate potentially long-running operations in Ruby.
 
 %install
 %gem_install \
-  --doc-files="LICENSE.txt README.md" \
+  --doc-files="COPYING README.md" \
   -f
 
 %gem_packages

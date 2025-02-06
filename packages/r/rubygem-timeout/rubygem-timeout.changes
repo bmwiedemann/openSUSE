@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Feb  3 10:44:03 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.4.3:
+
+## What's Changed
+* Bump rubygems/release-gem from 612653d273a73bdae1df8453e090060bb4db5f31 to 9e85cb11501bebc2ae661c1500176316d3987059 by @dependabot in https://github.com/ruby/timeout/pull/54
+* Bump step-security/harden-runner from 2.10.1 to 2.10.2 by @dependabot in https://github.com/ruby/timeout/pull/55
+* added the check for negative sec by @Cosmicoppai in https://github.com/ruby/timeout/pull/51
+
+## New Contributors
+* @Cosmicoppai made their first contribution in https://github.com/ruby/timeout/pull/51
+
+**Full Changelog**: https://github.com/ruby/timeout/compare/v0.4.2...v0.4.3
+
+0.4.2:
+
+## What's Changed
+* fixed check for error bubble up test by @jjb in https://github.com/ruby/timeout/pull/43
+* [DOC] Missing documents by @nobu in https://github.com/ruby/timeout/pull/45
+* Provide a 'Changelog' link on rubygems.org/gems/timeout by @mark-young-atg in https://github.com/ruby/timeout/pull/46
+* Global #timeout was removed 5 years ago by @jpcamara in https://github.com/ruby/timeout/pull/49
+* timeout.rb: Update documentation to match README by @olleolleolle in https://github.com/ruby/timeout/pull/50
+
+## New Contributors
+* @mark-young-atg made their first contribution in https://github.com/ruby/timeout/pull/46
+* @jpcamara made their first contribution in https://github.com/ruby/timeout/pull/49
+
+**Full Changelog**: https://github.com/ruby/timeout/compare/v0.4.1...v0.4.2
+
+
+
+-------------------------------------------------------------------
 Tue Nov 14 18:41:48 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 0.4.1:
