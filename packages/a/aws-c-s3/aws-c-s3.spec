@@ -19,14 +19,13 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-s3
-Version:        0.7.9
+Version:        0.7.11
 Release:        0
 Summary:        AWS Cross-Platform, C99 wrapper for cryptography primitives
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-s3
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         acs_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja

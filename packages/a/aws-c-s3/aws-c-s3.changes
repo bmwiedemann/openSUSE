@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:41:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.11
+  * A bunch of CMake fixes by @graebm in (#480)
+- from version 0.7.10
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#491)
+  * S3Express CreateSession Allowlist Headers by @waahm7 in (#492)
+- Drop acs_fix-cmake-modules-path.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Jan 16 13:47:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.9
