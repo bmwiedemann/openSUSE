@@ -432,4 +432,25 @@
   * GO-2025-3445 CVE-2024-47770 (forwarded request 1243263 from jfkw)</comment>
     <requestid>1243264</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>32d87f5de6d06c41630897f28d9bfc7a</srcmd5>
+    <version>0.0.20250205T232745</version>
+    <time>1738876101</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20250205T232745 2025-02-05T23:27:45Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3408
+  * GO-2025-3448 GHSA-23qp-3c2m-xx6w
+  * GO-2025-3449 GHSA-mx2j-7cmv-353c
+  * GO-2025-3450 GHSA-w7wm-2425-7p2h
+  * GO-2025-3454 GHSA-mj4v-hp69-27x5
+  * GO-2025-3455 GHSA-vqv5-385r-2hf8
+
+- Update to version 0.0.20250205T003520 2025-02-05T00:35:20Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3451 (forwarded request 1243557 from jfkw)</comment>
+    <requestid>1243559</requestid>
+  </revision>
 </revisionlist>
