@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  6 12:38:45 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh opencensus-pr1002-remove-mock.patch with latest code
+- Add python313.patch to make it compatible with python313,
+  gh#census-instrumentation/opencensus-python#1248
+- Update to 1.1.14
+  * Remove status code 206 from retry code + only count batch level for statsbeat (#1247)
+- from version 1.1.13
+  * Changed bit-mapping for httpx and fastapi integrations
+- from version 1.1.12
+  * Fix missing/None fields in ExceptionDetails (#1232)
+  * Fix missing/None typeName field in ExceptionDetails (#1234)
+- from version 1.1.11
+  * Add str fallback to envelope serialization (#1196)
+  * Remove outerId from exceptiondata (#1221)
+- from version 1.1.10
+  * Various bug fixes
+- from version 1.1.9
+  * Fix export of exception information in traces (#1187)
+  * Modify metrics exporter to include setting export interval to 60s
+- from version 1.1.8
+  * Disable storage for statsbeat if storage is disabled for exporter (#1155)
+  * Add UK to eu statsbeats (#1181)
+- from version 1.1.7
+  * Add storage existence checks to storing and transmitting in exporter (#1150)
+  * Add 502 and 504 status codes as retriable (#1153)
+  * Fix statsbeat bug - exporting zero values for network statsbeat
+
+-------------------------------------------------------------------
 Tue May 21 10:36:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace %patchN with %patch -P N: %patchN is deprecated.

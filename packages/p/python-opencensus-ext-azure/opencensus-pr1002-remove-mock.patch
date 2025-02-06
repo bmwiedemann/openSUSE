@@ -1,7 +1,8 @@
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py	2022-10-18 12:21:17.337064412 +0200
-@@ -17,7 +17,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py
+@@ -17,7 +17,10 @@ import os
  import shutil
  import unittest
  
@@ -13,10 +14,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_
  
  from opencensus.ext.azure import log_exporter
  from opencensus.ext.azure.common.transport import TransportStatusCode
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py	2022-10-18 12:21:17.337064412 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py
+@@ -16,7 +16,10 @@ import shutil
  import unittest
  from datetime import datetime
  
@@ -28,10 +30,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_
  
  from opencensus.common import utils
  from opencensus.ext.azure.common.protocol import DataPoint
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py	2022-10-18 12:21:17.337064412 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py
+@@ -16,7 +16,10 @@ import collections
  import sys
  import unittest
  
@@ -43,10 +46,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_
  import requests
  
  from opencensus.ext.azure.metrics_exporter import standard_metrics
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py	2022-10-18 12:21:17.337064412 +0200
-@@ -17,7 +17,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py
+@@ -17,7 +17,10 @@ import os
  import platform
  import unittest
  
@@ -58,10 +62,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_
  import requests
  
  from opencensus.ext.azure.common import Options
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py	2022-10-18 12:21:17.337064412 +0200
-@@ -17,7 +17,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py
+@@ -17,7 +17,10 @@ import os
  import shutil
  import unittest
  
@@ -73,10 +78,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_
  
  from opencensus.ext.azure import trace_exporter
  from opencensus.ext.azure.common.transport import TransportStatusCode
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_storage.py opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_storage.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_storage.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_storage.py	2022-10-18 12:21:17.337064412 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_storage.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/tests/test_storage.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_storage.py
+@@ -16,7 +16,10 @@ import os
  import shutil
  import unittest
  
@@ -88,10 +94,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_
  
  from opencensus.ext.azure.common.storage import (
      LocalFileBlob,
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_transport_mixin.py opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_transport_mixin.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_transport_mixin.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-azure/tests/test_transport_mixin.py	2022-10-18 12:21:17.341064455 +0200
-@@ -17,7 +17,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_transport_mixin.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/tests/test_transport_mixin.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/tests/test_transport_mixin.py
+@@ -17,7 +17,10 @@ import os
  import shutil
  import unittest
  
@@ -103,9 +110,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-azure/tests/test_
  import requests
  from azure.core.exceptions import ClientAuthenticationError
  from azure.identity._exceptions import CredentialUnavailableError
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -118,10 +126,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-dbapi/tests/test_
  
  from opencensus.ext.dbapi import trace
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-django/tests/test_django_db_middleware.py opencensus-python-0.11.0/contrib/opencensus-ext-django/tests/test_django_db_middleware.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-django/tests/test_django_db_middleware.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-django/tests/test_django_db_middleware.py	2022-10-18 12:21:17.341064455 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-django/tests/test_django_db_middleware.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-django/tests/test_django_db_middleware.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-django/tests/test_django_db_middleware.py
+@@ -16,7 +16,10 @@ import unittest
  from collections import namedtuple
  
  import django
@@ -131,12 +140,13 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-django/tests/test
 +except ImportError:
 +    import mock
  import pytest
+ from django.http import HttpResponse
  from django.test.utils import teardown_test_environment
- 
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-django/tests/test_django_middleware.py opencensus-python-0.11.0/contrib/opencensus-ext-django/tests/test_django_middleware.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-django/tests/test_django_middleware.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-django/tests/test_django_middleware.py	2022-10-18 12:21:17.341064455 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-django/tests/test_django_middleware.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-django/tests/test_django_middleware.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-django/tests/test_django_middleware.py
+@@ -16,7 +16,10 @@ import sys
  import traceback
  import unittest
  
@@ -145,12 +155,13 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-django/tests/test
 +    from unittest import mock
 +except ImportError:
 +    import mock
+ from django.http import HttpResponse
  from django.test import RequestFactory
  from django.test.utils import teardown_test_environment
- 
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-flask/tests/test_flask_middleware.py opencensus-python-0.11.0/contrib/opencensus-ext-flask/tests/test_flask_middleware.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-flask/tests/test_flask_middleware.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-flask/tests/test_flask_middleware.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-flask/tests/test_flask_middleware.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-flask/tests/test_flask_middleware.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-flask/tests/test_flask_middleware.py
 @@ -18,7 +18,10 @@
  import unittest
  
@@ -163,9 +174,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-flask/tests/test_
  from google.rpc import code_pb2
  from werkzeug.exceptions import NotFound
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py
 @@ -15,7 +15,10 @@
  import unittest
  
@@ -178,10 +190,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-google-cloud-clie
  
  from opencensus.ext.google_cloud_clientlibs import trace
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py opencensus-python-0.11.0/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py	2022-10-18 12:21:17.341064455 +0200
-@@ -17,7 +17,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py
+@@ -17,7 +17,10 @@ import threading
  import unittest
  
  import grpc
@@ -193,13 +206,14 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-grpc/tests/test_c
  from google.api_core import bidi
  from google.protobuf import proto_builder
  from grpc.framework.foundation import logging_pool
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py opencensus-python-0.11.0/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py	2022-10-18 12:21:17.341064455 +0200
-@@ -14,7 +14,10 @@
- 
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py
+@@ -15,7 +15,10 @@
  import unittest
  
+ import grpc
 -import mock
 +try:
 +    from unittest import mock
@@ -208,9 +222,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-grpc/tests/test_s
  from google.rpc import code_pb2
  
  from opencensus.ext.grpc import server_interceptor
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -223,9 +238,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-httplib/tests/tes
  
  from opencensus.ext.httplib import trace
  from opencensus.trace import span as span_module
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -238,9 +254,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-jaeger/tests/test
  
  from opencensus.ext.jaeger import trace_exporter
  from opencensus.ext.jaeger.trace_exporter.gen.jaeger import jaeger
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -253,10 +270,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-mysql/tests/test_
  
  from opencensus.ext.mysql import trace
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py	2022-10-18 12:21:17.341064455 +0200
-@@ -21,7 +21,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py
+@@ -21,7 +21,10 @@ from concurrent import futures
  from datetime import datetime
  
  import grpc
@@ -268,10 +286,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-ocagent/tests/tes
  from google.protobuf import timestamp_pb2
  
  from opencensus.common import resource, utils
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py	2022-10-18 12:21:17.341064455 +0200
-@@ -18,7 +18,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py
+@@ -18,7 +18,10 @@ import socket
  import unittest
  
  import grpc
@@ -283,9 +302,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-ocagent/tests/tes
  
  from opencensus.common.version import __version__
  from opencensus.ext.ocagent.trace_exporter import TraceExporter
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -298,9 +318,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-postgresql/tests/
  
  from opencensus.ext.postgresql import trace
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py opencensus-python-0.11.0/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py
 @@ -15,7 +15,10 @@
  import unittest
  from datetime import datetime
@@ -313,9 +334,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-prometheus/tests/
  from prometheus_client.core import Sample
  
  from opencensus.ext.prometheus import stats_exporter as prometheus
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -328,9 +350,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pymongo/tests/tes
  
  from opencensus.ext.pymongo import trace
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -343,9 +366,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pymysql/tests/tes
  
  from opencensus.ext.pymysql import trace
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py opencensus-python-0.11.0/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -358,9 +382,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pyramid/tests/tes
  
  from opencensus.ext.pyramid import config
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py opencensus-python-0.11.0/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py
 @@ -17,7 +17,10 @@
  
  import unittest
@@ -373,9 +398,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-pyramid/tests/tes
  from pyramid.registry import Registry
  from pyramid.response import Response
  from pyramid.testing import DummyRequest
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-requests/tests/test_requests_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-requests/tests/test_requests_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-requests/tests/test_requests_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-requests/tests/test_requests_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-requests/tests/test_requests_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-requests/tests/test_requests_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-requests/tests/test_requests_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -388,9 +414,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-requests/tests/te
  import requests
  
  from opencensus.ext.requests import trace
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -403,9 +430,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-sqlalchemy/tests/
  
  from opencensus.ext.sqlalchemy import trace
  from opencensus.trace import span as span_module
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -418,10 +446,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-stackdriver/tests
  
  from opencensus.common.version import __version__
  from opencensus.ext.stackdriver import trace_exporter
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py opencensus-python-0.11.0/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py	2022-10-18 12:21:17.341064455 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py
+@@ -16,7 +16,10 @@ import unittest
  from datetime import datetime, timedelta
  
  import google.auth
@@ -433,10 +462,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-stackdriver/tests
  from google.api import metric_pb2
  from google.cloud import monitoring_v3
  
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-threading/tests/test_threading_trace.py opencensus-python-0.11.0/contrib/opencensus-ext-threading/tests/test_threading_trace.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-threading/tests/test_threading_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-threading/tests/test_threading_trace.py	2022-10-18 12:21:17.341064455 +0200
-@@ -17,7 +17,10 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-threading/tests/test_threading_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-threading/tests/test_threading_trace.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-threading/tests/test_threading_trace.py
+@@ -17,7 +17,10 @@ import unittest
  from concurrent.futures import ThreadPoolExecutor
  from multiprocessing.pool import Pool
  
@@ -448,9 +478,10 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-threading/tests/t
  
  from opencensus.ext.threading import trace
  from opencensus.trace import execution_context, tracer
-diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py opencensus-python-0.11.0/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py
---- opencensus-python-0.11.0.orig/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py
 @@ -15,7 +15,10 @@
  import unittest
  from datetime import datetime
@@ -463,10 +494,11 @@ diff -Nru opencensus-python-0.11.0.orig/contrib/opencensus-ext-zipkin/tests/test
  
  from opencensus.ext.zipkin import trace_exporter
  from opencensus.trace import span_context
-diff -Nru opencensus-python-0.11.0.orig/tests/system/stats/stackdriver/stackdriver_stats_test.py opencensus-python-0.11.0/tests/system/stats/stackdriver/stackdriver_stats_test.py
---- opencensus-python-0.11.0.orig/tests/system/stats/stackdriver/stackdriver_stats_test.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/system/stats/stackdriver/stackdriver_stats_test.py	2022-10-18 12:21:17.341064455 +0200
-@@ -17,7 +17,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/system/stats/stackdriver/stackdriver_stats_test.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/system/stats/stackdriver/stackdriver_stats_test.py
++++ opencensus-python-0.11.4-1.1.14/tests/system/stats/stackdriver/stackdriver_stats_test.py
+@@ -17,7 +17,10 @@ import random
  import sys
  import time
  
@@ -478,9 +510,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/system/stats/stackdriver/stackdriv
  from google.cloud import monitoring_v3
  
  from opencensus.ext.stackdriver import stats_exporter as stackdriver
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py
---- opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py	2022-10-18 12:21:17.341064455 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py
 @@ -15,7 +15,10 @@
  import json
  import unittest
@@ -493,9 +526,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_uti
  
  from opencensus.common.monitored_resource import aws_identity_doc_utils
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py
---- opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py
 @@ -15,7 +15,10 @@
  import os
  import unittest
@@ -508,9 +542,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_uti
  
  from opencensus.common.monitored_resource import gcp_metadata_config
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_k8s_utils.py opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_k8s_utils.py
---- opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_k8s_utils.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_k8s_utils.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_k8s_utils.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/monitored_resource_util/test_k8s_utils.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_k8s_utils.py
 @@ -15,7 +15,10 @@
  import os
  import unittest
@@ -523,10 +558,11 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_uti
  
  from opencensus.common.monitored_resource import k8s_utils
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_monitored_resource.py opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_monitored_resource.py
---- opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_util/test_monitored_resource.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/monitored_resource_util/test_monitored_resource.py	2022-10-18 12:21:17.345064497 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_monitored_resource.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/monitored_resource_util/test_monitored_resource.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/monitored_resource_util/test_monitored_resource.py
+@@ -16,7 +16,10 @@ import os
  import sys
  from contextlib import contextmanager
  
@@ -538,10 +574,11 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/monitored_resource_uti
  
  from opencensus.common.monitored_resource import monitored_resource
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/test_http_handler.py opencensus-python-0.11.0/tests/unit/common/test_http_handler.py
---- opencensus-python-0.11.0.orig/tests/unit/common/test_http_handler.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/test_http_handler.py	2022-10-18 12:21:17.345064497 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/test_http_handler.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/test_http_handler.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/test_http_handler.py
+@@ -16,7 +16,10 @@ import json
  import socket
  import unittest
  
@@ -553,9 +590,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/test_http_handler.py o
  
  from opencensus.common.http_handler import get_request
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/test_resource.py opencensus-python-0.11.0/tests/unit/common/test_resource.py
---- opencensus-python-0.11.0.orig/tests/unit/common/test_resource.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/test_resource.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/test_resource.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/test_resource.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/test_resource.py
 @@ -17,7 +17,10 @@
  import os
  import unittest
@@ -568,10 +606,11 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/test_resource.py openc
  
  from opencensus.common import resource as resource_module
  from opencensus.common.resource import Resource
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/test_utils.py opencensus-python-0.11.0/tests/unit/common/test_utils.py
---- opencensus-python-0.11.0.orig/tests/unit/common/test_utils.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/test_utils.py	2022-10-18 12:21:17.345064497 +0200
-@@ -29,7 +29,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/test_utils.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/test_utils.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/test_utils.py
+@@ -29,7 +29,10 @@ import gc
  import unittest
  import weakref
  
@@ -583,9 +622,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/test_utils.py opencens
  
  from opencensus.common import utils
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/transports/test_async.py opencensus-python-0.11.0/tests/unit/common/transports/test_async.py
---- opencensus-python-0.11.0.orig/tests/unit/common/transports/test_async.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/transports/test_async.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/transports/test_async.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/transports/test_async.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/transports/test_async.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -598,9 +638,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/transports/test_async.
  
  from opencensus.common.transports import async_
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/transports/test_sync.py opencensus-python-0.11.0/tests/unit/common/transports/test_sync.py
---- opencensus-python-0.11.0.orig/tests/unit/common/transports/test_sync.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/common/transports/test_sync.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/common/transports/test_sync.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/common/transports/test_sync.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/common/transports/test_sync.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -613,10 +654,11 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/common/transports/test_sync.p
  
  from opencensus.common.transports import sync
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/log/test_log.py opencensus-python-0.11.0/tests/unit/log/test_log.py
---- opencensus-python-0.11.0.orig/tests/unit/log/test_log.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/log/test_log.py	2022-10-18 12:21:17.345064497 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/log/test_log.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/log/test_log.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/log/test_log.py
+@@ -16,7 +16,10 @@ import logging
  import sys
  from contextlib import contextmanager
  
@@ -628,9 +670,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/log/test_log.py opencensus-py
  
  from opencensus import log
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/metrics/export/test_cumulative.py opencensus-python-0.11.0/tests/unit/metrics/export/test_cumulative.py
---- opencensus-python-0.11.0.orig/tests/unit/metrics/export/test_cumulative.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/metrics/export/test_cumulative.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/metrics/export/test_cumulative.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/metrics/export/test_cumulative.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/metrics/export/test_cumulative.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -643,9 +686,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/metrics/export/test_cumulativ
  
  from opencensus.metrics.export import cumulative, gauge, metric_descriptor
  from opencensus.metrics.export import value as value_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/metrics/export/test_gauge.py opencensus-python-0.11.0/tests/unit/metrics/export/test_gauge.py
---- opencensus-python-0.11.0.orig/tests/unit/metrics/export/test_gauge.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/metrics/export/test_gauge.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/metrics/export/test_gauge.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/metrics/export/test_gauge.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/metrics/export/test_gauge.py
 @@ -15,7 +15,10 @@
  import gc
  import unittest
@@ -658,10 +702,11 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/metrics/export/test_gauge.py 
  
  from opencensus.metrics.export import gauge, metric_descriptor
  from opencensus.metrics.export import value as value_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/metrics/test_transport.py opencensus-python-0.11.0/tests/unit/metrics/test_transport.py
---- opencensus-python-0.11.0.orig/tests/unit/metrics/test_transport.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/metrics/test_transport.py	2022-10-18 12:21:17.345064497 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/metrics/test_transport.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/metrics/test_transport.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/metrics/test_transport.py
+@@ -16,7 +16,10 @@ import gc
  import sys
  import time
  
@@ -673,10 +718,11 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/metrics/test_transport.py ope
  
  from opencensus.metrics import transport
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_aggregation_data.py opencensus-python-0.11.0/tests/unit/stats/test_aggregation_data.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_aggregation_data.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_aggregation_data.py	2022-10-18 12:21:17.345064497 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_aggregation_data.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_aggregation_data.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_aggregation_data.py
+@@ -16,7 +16,10 @@ import time
  import unittest
  from datetime import datetime
  
@@ -688,9 +734,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_aggregation_data.p
  
  from opencensus.metrics.export import point
  from opencensus.metrics.export import value as value_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_aggregation.py opencensus-python-0.11.0/tests/unit/stats/test_aggregation.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_aggregation.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_aggregation.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_aggregation.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_aggregation.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_aggregation.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -703,9 +750,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_aggregation.py ope
  
  from opencensus.metrics.export import value
  from opencensus.stats import aggregation as aggregation_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_base_stats.py opencensus-python-0.11.0/tests/unit/stats/test_base_stats.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_base_stats.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_base_stats.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_base_stats.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_base_stats.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_base_stats.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -718,9 +766,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_base_stats.py open
  
  from opencensus.stats import base_exporter
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_measurement_map.py opencensus-python-0.11.0/tests/unit/stats/test_measurement_map.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_measurement_map.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_measurement_map.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_measurement_map.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_measurement_map.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_measurement_map.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -733,9 +782,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_measurement_map.py
  
  from opencensus.stats import measurement_map as measurement_map_module
  from opencensus.tags import Tag, TagContext, TagMap
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_measure_to_view_map.py opencensus-python-0.11.0/tests/unit/stats/test_measure_to_view_map.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_measure_to_view_map.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_measure_to_view_map.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_measure_to_view_map.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_measure_to_view_map.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_measure_to_view_map.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -748,9 +798,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_measure_to_view_ma
  
  from opencensus.stats import measure_to_view_map as measure_to_view_map_module
  from opencensus.stats.aggregation import CountAggregation
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_metric_utils.py opencensus-python-0.11.0/tests/unit/stats/test_metric_utils.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_metric_utils.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_metric_utils.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_metric_utils.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_metric_utils.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_metric_utils.py
 @@ -15,7 +15,10 @@
  import datetime
  import unittest
@@ -763,9 +814,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_metric_utils.py op
  
  from opencensus.metrics.export import metric_descriptor, point, value
  from opencensus.stats import (
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_stats_recorder.py opencensus-python-0.11.0/tests/unit/stats/test_stats_recorder.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_stats_recorder.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_stats_recorder.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_stats_recorder.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_stats_recorder.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_stats_recorder.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -778,9 +830,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_stats_recorder.py 
  
  from opencensus.stats import execution_context
  from opencensus.stats import stats_recorder as stats_recorder_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_view_data.py opencensus-python-0.11.0/tests/unit/stats/test_view_data.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_view_data.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_view_data.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_view_data.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_view_data.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_view_data.py
 @@ -15,7 +15,10 @@
  import unittest
  from datetime import datetime
@@ -793,9 +846,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_view_data.py openc
  
  from opencensus.common import utils
  from opencensus.stats import aggregation as aggregation_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_view_manager.py opencensus-python-0.11.0/tests/unit/stats/test_view_manager.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_view_manager.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_view_manager.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_view_manager.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_view_manager.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_view_manager.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -808,9 +862,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_view_manager.py op
  
  from opencensus.stats import execution_context
  from opencensus.stats import view_manager as view_manager_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_view.py opencensus-python-0.11.0/tests/unit/stats/test_view.py
---- opencensus-python-0.11.0.orig/tests/unit/stats/test_view.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/stats/test_view.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_view.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/stats/test_view.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/stats/test_view.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -823,9 +878,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/stats/test_view.py opencensus
  
  from opencensus.metrics.export import metric_descriptor
  from opencensus.stats import aggregation, measure
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/exporters/test_logging_exporter.py opencensus-python-0.11.0/tests/unit/trace/exporters/test_logging_exporter.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/exporters/test_logging_exporter.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/exporters/test_logging_exporter.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/exporters/test_logging_exporter.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/exporters/test_logging_exporter.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/exporters/test_logging_exporter.py
 @@ -15,7 +15,10 @@
  import logging
  import unittest
@@ -838,9 +894,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/exporters/test_logging_
  
  from opencensus.trace import logging_exporter, span_context
  from opencensus.trace import span_data as span_data_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_b3_format.py opencensus-python-0.11.0/tests/unit/trace/propagation/test_b3_format.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_b3_format.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/propagation/test_b3_format.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/propagation/test_b3_format.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/propagation/test_b3_format.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/propagation/test_b3_format.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -853,9 +910,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_b3_for
  
  from opencensus.trace.propagation import b3_format
  from opencensus.trace.span_context import INVALID_SPAN_ID
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_binary_format.py opencensus-python-0.11.0/tests/unit/trace/propagation/test_binary_format.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_binary_format.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/propagation/test_binary_format.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/propagation/test_binary_format.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/propagation/test_binary_format.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/propagation/test_binary_format.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -868,9 +926,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_binary
  
  from opencensus.trace.propagation import binary_format
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_text_format.py opencensus-python-0.11.0/tests/unit/trace/propagation/test_text_format.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_text_format.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/propagation/test_text_format.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/propagation/test_text_format.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/propagation/test_text_format.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/propagation/test_text_format.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -883,9 +942,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/propagation/test_text_f
  
  from opencensus.trace.propagation import text_format
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_always_off.py opencensus-python-0.11.0/tests/unit/trace/samplers/test_always_off.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_always_off.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/samplers/test_always_off.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_always_off.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/samplers/test_always_off.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_always_off.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -898,9 +958,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_always_of
  
  
  class TestAlwaysOffSampler(unittest.TestCase):
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_always_on.py opencensus-python-0.11.0/tests/unit/trace/samplers/test_always_on.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_always_on.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/samplers/test_always_on.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_always_on.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/samplers/test_always_on.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_always_on.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -913,9 +974,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_always_on
  
  
  class TestAlwaysOnSampler(unittest.TestCase):
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_base_sampler.py opencensus-python-0.11.0/tests/unit/trace/samplers/test_base_sampler.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_base_sampler.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/samplers/test_base_sampler.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_base_sampler.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/samplers/test_base_sampler.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_base_sampler.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -928,9 +990,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_base_samp
  
  
  class TestBaseSampler(unittest.TestCase):
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_probability.py opencensus-python-0.11.0/tests/unit/trace/samplers/test_probability.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_probability.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/samplers/test_probability.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_probability.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/samplers/test_probability.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/samplers/test_probability.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -943,9 +1006,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/samplers/test_probabili
  
  from opencensus.trace import samplers
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_attributes.py opencensus-python-0.11.0/tests/unit/trace/test_attributes.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_attributes.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_attributes.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_attributes.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_attributes.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_attributes.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -958,9 +1022,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_attributes.py open
  
  from opencensus.trace import attributes as attributes_module
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_base_span.py opencensus-python-0.11.0/tests/unit/trace/test_base_span.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_base_span.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_base_span.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_base_span.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_base_span.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_base_span.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -973,9 +1038,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_base_span.py openc
  
  from opencensus.trace.base_span import BaseSpan
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_blank_span.py opencensus-python-0.11.0/tests/unit/trace/test_blank_span.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_blank_span.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_blank_span.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_blank_span.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_blank_span.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_blank_span.py
 @@ -15,7 +15,10 @@
  import datetime
  import unittest
@@ -988,9 +1054,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_blank_span.py open
  
  from opencensus.common import utils
  from opencensus.trace.link import Link
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_config_integration.py opencensus-python-0.11.0/tests/unit/trace/test_config_integration.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_config_integration.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_config_integration.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_config_integration.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_config_integration.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_config_integration.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -1003,9 +1070,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_config_integration
  
  from opencensus.trace import config_integration
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_execution_context.py opencensus-python-0.11.0/tests/unit/trace/test_execution_context.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_execution_context.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_execution_context.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_execution_context.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_execution_context.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_execution_context.py
 @@ -15,7 +15,10 @@
  import threading
  import unittest
@@ -1018,9 +1086,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_execution_context.
  
  from opencensus.trace import execution_context
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_ext_utils.py opencensus-python-0.11.0/tests/unit/trace/test_ext_utils.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_ext_utils.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_ext_utils.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_ext_utils.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_ext_utils.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_ext_utils.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -1033,9 +1102,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_ext_utils.py openc
  from google.rpc import code_pb2
  
  from opencensus.trace import utils
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_link.py opencensus-python-0.11.0/tests/unit/trace/test_link.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_link.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_link.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_link.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_link.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_link.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -1048,10 +1118,11 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_link.py opencensus
  
  from opencensus.trace import link as link_module
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_span.py opencensus-python-0.11.0/tests/unit/trace/test_span.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_span.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_span.py	2022-10-18 12:21:17.345064497 +0200
-@@ -16,7 +16,10 @@
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_span.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_span.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_span.py
+@@ -16,7 +16,10 @@ import datetime
  import unittest
  from collections import OrderedDict
  
@@ -1063,9 +1134,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_span.py opencensus
  from google.rpc import code_pb2
  
  from opencensus.common import utils
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_stack_trace.py opencensus-python-0.11.0/tests/unit/trace/test_stack_trace.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_stack_trace.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_stack_trace.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_stack_trace.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_stack_trace.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_stack_trace.py
 @@ -15,7 +15,10 @@
  import sys
  import unittest
@@ -1078,9 +1150,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_stack_trace.py ope
  
  from opencensus.trace import stack_trace as stack_trace_module
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_time_event.py opencensus-python-0.11.0/tests/unit/trace/test_time_event.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_time_event.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_time_event.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_time_event.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_time_event.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_time_event.py
 @@ -15,7 +15,10 @@
  import unittest
  from datetime import datetime
@@ -1093,9 +1166,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_time_event.py open
  
  from opencensus.trace import time_event as time_event_module
  
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_tracer.py opencensus-python-0.11.0/tests/unit/trace/test_tracer.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/test_tracer.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/test_tracer.py	2022-10-18 12:21:17.345064497 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_tracer.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/test_tracer.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/test_tracer.py
 @@ -14,7 +14,10 @@
  
  import unittest
@@ -1108,9 +1182,10 @@ diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/test_tracer.py opencens
  
  from opencensus.trace import samplers, span_data
  from opencensus.trace import tracer as tracer_module
-diff -Nru opencensus-python-0.11.0.orig/tests/unit/trace/tracers/test_context_tracer.py opencensus-python-0.11.0/tests/unit/trace/tracers/test_context_tracer.py
---- opencensus-python-0.11.0.orig/tests/unit/trace/tracers/test_context_tracer.py	2022-08-04 00:05:51.000000000 +0200
-+++ opencensus-python-0.11.0/tests/unit/trace/tracers/test_context_tracer.py	2022-10-18 12:21:17.349064540 +0200
+Index: opencensus-python-0.11.4-1.1.14/tests/unit/trace/tracers/test_context_tracer.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/tests/unit/trace/tracers/test_context_tracer.py
++++ opencensus-python-0.11.4-1.1.14/tests/unit/trace/tracers/test_context_tracer.py
 @@ -14,7 +14,10 @@
  
  import unittest

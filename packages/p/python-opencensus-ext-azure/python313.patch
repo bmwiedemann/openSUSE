@@ -1,0 +1,14 @@
+Index: opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/opencensus/ext/azure/log_exporter/__init__.py
+===================================================================
+--- opencensus-python-0.11.4-1.1.14.orig/contrib/opencensus-ext-azure/opencensus/ext/azure/log_exporter/__init__.py
++++ opencensus-python-0.11.4-1.1.14/contrib/opencensus-ext-azure/opencensus/ext/azure/log_exporter/__init__.py
+@@ -102,9 +102,6 @@ class BaseLogHandler(logging.Handler):
+             self._worker.stop(timeout)
+         super(BaseLogHandler, self).close()
+ 
+-    def createLock(self):
+-        self.lock = None
+-
+     def emit(self, record):
+         self._queue.put(record, block=False)
+ 
