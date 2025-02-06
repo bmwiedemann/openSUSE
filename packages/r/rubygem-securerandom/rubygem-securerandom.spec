@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-securerandom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+#
+# This file was generated with a gem2rpm.yml and not just plain gem2rpm.
+# All sections marked as MANUAL, license headers, summaries and descriptions
+# can be maintained in that file. Please consult this file before editing any
+# of those fields
+#
+
 Name:           rubygem-securerandom
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 %define mod_name securerandom
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 3.1.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby/securerandom
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 Summary:        Interface for secure random number generator
-License:        Ruby and BSD-2-Clause
+License:        BSD-2-Clause AND Ruby
 
 %description
 Interface for secure random number generator.
