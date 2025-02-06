@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-font-awesome-rails
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-font-awesome-rails
-Version:        4.7.0.8
+Version:        4.7.0.9
 Release:        0
 %define mod_name font-awesome-rails
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 1.9.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        an asset gemification of the font-awesome icon font library
 License:        MIT AND OFL-1.1
-Group:          Development/Languages/Ruby
 
 %description
 font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a
