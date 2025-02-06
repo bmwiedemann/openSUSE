@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb  6 04:45:46 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Changed URL's from nginx.org to github.com .
+- Updated to 1.27.4
+  * https://nginx.org/en/CHANGES
+  * Fixed insufficient check in virtual servers handling with TLSv1.3
+    SNI allowed to reuse SSL sessions in a different virtual server, to
+    bypass client SSL certificates verification (CVE-2025-23419).
+  * Added the "ssl_object_cache_inheritable", "ssl_certificate_cache",
+    "proxy_ssl_certificate_cache", "grpc_ssl_certificate_cache", and
+    "uwsgi_ssl_certificate_cache", "keepalive_min_timeout" directives.
+  * Fixed nginx could not build libatomic library using the library
+    sources if the --with-libatomic=DIR option was used.
+
+-------------------------------------------------------------------
 Wed Nov 27 04:14:02 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.27.3

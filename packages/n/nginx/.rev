@@ -1179,4 +1179,22 @@
   * Fixed ngx_http_mp4_module and &quot;proxy_store&quot; directive.</comment>
     <requestid>1226763</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>720c9c0c75a5ea5e4b0ace21e8e157c8</srcmd5>
+    <version>1.27.4</version>
+    <time>1738875744</time>
+    <user>anag+factory</user>
+    <comment>- Changed URL's from nginx.org to github.com .
+- Updated to 1.27.4
+  * https://nginx.org/en/CHANGES
+  * Fixed insufficient check in virtual servers handling with TLSv1.3
+    SNI allowed to reuse SSL sessions in a different virtual server, to
+    bypass client SSL certificates verification (CVE-2025-23419).
+  * Added the &quot;ssl_object_cache_inheritable&quot;, &quot;ssl_certificate_cache&quot;,
+    &quot;proxy_ssl_certificate_cache&quot;, &quot;grpc_ssl_certificate_cache&quot;, and
+    &quot;uwsgi_ssl_certificate_cache&quot;, &quot;keepalive_min_timeout&quot; directives.
+  * Fixed nginx could not build libatomic library using the library
+    sources if the --with-libatomic=DIR option was used.</comment>
+    <requestid>1243543</requestid>
+  </revision>
 </revisionlist>
