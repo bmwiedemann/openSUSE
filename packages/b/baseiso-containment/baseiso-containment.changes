@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 31 11:13:04 UTC 2025 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- 0.2.2
+  * fix baseiso_post_run for Minimal VMs
+
+-------------------------------------------------------------------
 Thu Jan 30 10:15:16 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - 0.2.1

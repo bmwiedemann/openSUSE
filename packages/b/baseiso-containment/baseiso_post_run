@@ -33,7 +33,9 @@ ARCH="$(uname -m)"
 # Alternative is that kiwi bundler get the containment
 # functionality. Needs to be discussed.
 
+set +e # we have set -e, so on Minimal VMs this needs to fail silently
 iso_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.iso 2>/dev/null`
+set -e
 
 # nothing to do for us
 [ -z "$iso_file" ] && exit 0
