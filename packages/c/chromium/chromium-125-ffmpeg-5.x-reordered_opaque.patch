@@ -54,7 +54,7 @@ index bd75477feeabb..8a658a58caac5 100644
    auto video_frame = VideoFrame::WrapExternalDataWithLayout(
        opaque->layout, visible_rect, natural_size, opaque->data, opaque->size,
        pts);
-@@ -498,8 +505,10 @@ bool FFmpegVideoDecoder::ConfigureDecoder(const VideoDecoderConfig& config,
+@@ -482,8 +482,10 @@ bool FFmpegVideoDecoder::ConfigureDecoder(const VideoDecoderConfig& config,
    codec_context_->thread_count = GetFFmpegVideoDecoderThreadCount(config);
    codec_context_->thread_type =
        FF_THREAD_SLICE | (low_delay ? 0 : FF_THREAD_FRAME);
@@ -63,8 +63,8 @@ index bd75477feeabb..8a658a58caac5 100644
    codec_context_->get_buffer2 = GetVideoBufferImpl;
 +  codec_context_->flags |= AV_CODEC_FLAG_COPY_OPAQUE;
  
-   if (base::FeatureList::IsEnabled(kFFmpegAllowLists)) {
-     // Note: FFmpeg will try to free this string, so we must duplicate it.
+   if (decode_nalus_) {
+     codec_context_->flags2 |= AV_CODEC_FLAG2_CHUNKS;
 diff --git a/media/filters/ffmpeg_video_decoder.h b/media/filters/ffmpeg_video_decoder.h
 index d02cb89c3ddf7..0a2de1c623fff 100644
 --- a/media/filters/ffmpeg_video_decoder.h

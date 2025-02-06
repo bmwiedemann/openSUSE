@@ -5340,4 +5340,41 @@ boo#1224178</comment>
   * CVE-2025-0762: Use after free in DevTools (forwarded request 1241069 from AndreasStieger)</comment>
     <requestid>1241144</requestid>
   </revision>
+  <revision rev="447" vrev="1">
+    <srcmd5>5949d89ddcee3886d4bc3c69710687e4</srcmd5>
+    <version>133.0.6943.53</version>
+    <time>1738875763</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 133.0.6943.53 
+  (stable released 2024-02-04) (bsc#1236806)
+  * CVE-2025-0444: Use after free in Skia
+  * CVE-2025-0445: Use after free in V8
+  * CVE-2025-0451: Inappropriate implementation in Extensions API
+
+- dropped patches: (obsolete with recent llvm)
+  chromium-130-no-hardware_destructive_interference_size.patch
+
+- Chromium 133.0.6943.35
+  (beta released 2025-01-29)
+- use llvm19 also on 15.6/SLE-15-SP6
+- dropped patches:
+  chromium-125-disable-FFmpegAllowLists.patch
+  chromium-119-assert.patch
+  (code dropped upstream)
+- modified patches
+  chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
+  (rest of code is gone upstream, see commit
+   574c1e6678da435efb2ea9dba5dd890c2704b8af)
+- update context in
+  chromium-102-regex_pattern-array.patch
+  chromium-125-ffmpeg-5.x-reordered_opaque.patch
+- add to keeplibs:
+  third_party/simdutf
+  third_party/wasm_tts_engine (needed by tools/grit)
+  v8/third_party/siphash (moved inside of v8)
+  v8/third_party/utf8-decoder (moved inside of v8)
+  v8/third_party/valgrind (moved inside of v8)
+- drop from keeplibs (gone in source):</comment>
+    <requestid>1243304</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Feb  5 10:36:43 CET 2025 - ro@suse.de
+
+- Chromium 133.0.6943.53 
+  (stable released 2024-02-04) (bsc#1236806)
+  * CVE-2025-0444: Use after free in Skia
+  * CVE-2025-0445: Use after free in V8
+  * CVE-2025-0451: Inappropriate implementation in Extensions API
+
+-------------------------------------------------------------------
+Thu Jan 30 18:17:42 CET 2025 - ro@suse.de
+
+- dropped patches: (obsolete with recent llvm)
+  chromium-130-no-hardware_destructive_interference_size.patch
+
+-------------------------------------------------------------------
+Thu Jan 30 18:08:11 CET 2025 - ro@suse.de
+
+- Chromium 133.0.6943.35
+  (beta released 2025-01-29)
+- use llvm19 also on 15.6/SLE-15-SP6
+- dropped patches:
+  chromium-125-disable-FFmpegAllowLists.patch
+  chromium-119-assert.patch
+  (code dropped upstream)
+- modified patches
+  chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
+  (rest of code is gone upstream, see commit
+   574c1e6678da435efb2ea9dba5dd890c2704b8af)
+- update context in
+  chromium-102-regex_pattern-array.patch
+  chromium-125-ffmpeg-5.x-reordered_opaque.patch
+- add to keeplibs:
+  third_party/simdutf
+  third_party/wasm_tts_engine (needed by tools/grit)
+  v8/third_party/siphash (moved inside of v8)
+  v8/third_party/utf8-decoder (moved inside of v8)
+  v8/third_party/valgrind (moved inside of v8)
+- drop from keeplibs (gone in source):
+  third_party/jstemplate does not exist
+  third_party/qcms does not exist
+- drop buildreq for libevent and libevent from system libs
+  as the lib was dropped upstream
+- added patches (as revert for llvm17 in sp6):
+  chromium-add-atomicops.patch
+  (upstream commit d29b01737a841b5627249d50f007dcdc7e26462b)
+  (upstream commit 780efe38034cfdc1bdf4c74e82e7ca7c14e8ac5b
+   does not seem to be in 133 yet)
+  chromium-133-string_view.patch
+  (one more place to use string_view, also only llvm17)
+- update INSTALL.sh to generate appdata.xml from template
+
+-------------------------------------------------------------------
+Thu Jan 30 18:06:26 CET 2025 - ro@suse.de
+
+- drop chromium-132-old_libdrm.patch
+  obsolete as we are not building for 15.5 anymore 
+
+-------------------------------------------------------------------
 Wed Jan 29 06:10:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 132.0.6834.159 (boo#1236586)
@@ -29,7 +87,6 @@ Mon Jan 13 13:21:48 CET 2025 - ro@suse.de
   * CVE-2025-0446: Inappropriate implementation in Extensions
   * CVE-2025-0447: Inappropriate implementation in Navigation
   * CVE-2025-0448: Inappropriate implementation in Compositing
-
 - dropped patches:
   * chromium-131-unbundle-enable-freetype.patch (upstream)
 - added patches:

@@ -1,0 +1,11 @@
+--- chromium-133.0.6943.16/chrome/browser/task_manager/task_manager_metrics_recorder.cc	2025/01/22 14:22:01	1.1
++++ chromium-133.0.6943.16/chrome/browser/task_manager/task_manager_metrics_recorder.cc	2025/01/22 14:22:21
+@@ -27,7 +27,7 @@
+ void RecordEndProcessEvent(const base::TimeTicks& start_time,
+                            const base::TimeTicks& end_time,
+                            size_t end_process_count) {
+-  constexpr static std::array<std::string, 5> kEndProcessCountToString = {
++  constexpr static std::array<std::string_view, 5> kEndProcessCountToString = {
+       "First", "Second", "Third", "Fourth", "Fifth"};
+ 
+   // Only record the first five end process events per task manager session.

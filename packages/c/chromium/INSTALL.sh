@@ -12,6 +12,24 @@ done
 SHLIB_PERMS="755"
 PROGNAME="chrome"
 PACKAGE="chromium-browser"
+MAINTMAIL="chromium-dev@chromium.org"
+PROJECT_LICENSE="BSD-3-Clause and LGPL-2.1+ and Apache-2.0 and IJG and MIT and GPL-2.0+ and ISC and OpenSSL and (MPL-1.1 or GPL-2.0 or LGPL-2.0)"
+SHORTDESC="The web browser from Chromium project"
+FULLDESC="    Chromium is an open-source browser project that aims to build a safer, faster,\
+    and more stable way to experience the web.\
+    </p>\
+    <p>\
+    We invite you to join our effort to build a powerful platform for developing a\
+    new generation of web applications.\
+    </p>\
+    <p>\
+    Chromium supports Vorbis, Theora, WebM and HTML5 audio and video standards, but\
+    does not include the non-free AAC, H.264, MP3 or Adobe Flash code that is found\
+    in Chrome."
+PRODUCTURL="https://www.chromium.org/Home"
+DEVELOPER_NAME="The Chromium Authors"
+BUGTRACKERURL="https://www.chromium.org/for-testers/bug-reporting-guidelines"
+HELPURL="https://chromium.googlesource.com/chromium/src/+/main/docs/linux/debugging.md"
 MENUNAME="Chromium Web Browser"
 CHANNEL="stable"
 INSTALLDIR="${LIBDIR}/chromium"
@@ -133,8 +151,18 @@ done
 
 # desktop integration
 ## AppData
-install -m 644 "chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml" \
-"${STAGEDIR}/usr/share/metainfo/${PACKAGE}.appdata.xml"
+sed \
+    -e "s#@@PACKAGE@@#${PACKAGE}#g" \
+    -e "s#@@MAINTMAIL@@#${MAINTMAIL}#g" \
+    -e "s#@@PROJECT_LICENSE@@#${PROJECT_LICENSE}#g" \
+    -e "s#@@MENUNAME@@#${MENUNAME}#g" \
+    -e "s#@@SHORTDESC@@#${SHORTDESC}#g" \
+    -e "s#@@FULLDESC@@#${FULLDESC}#g" \
+    -e "s#@@PRODUCTURL@@#${PRODUCTURL}#g" \
+    -e "s#@@DEVELOPER_NAME@@#${DEVELOPER_NAME}#g" \
+    -e "s#@@BUGTRACKERURL@@#${BUGTRACKERURL}#g" \
+    -e "s#@@HELPURL@@#${HELPURL}#g" \
+    "chrome/installer/linux/common/appdata.xml.template" > "${STAGEDIR}/usr/share/metainfo/${PACKAGE}.appdata.xml"
 
 ## Desktop file
 sed \

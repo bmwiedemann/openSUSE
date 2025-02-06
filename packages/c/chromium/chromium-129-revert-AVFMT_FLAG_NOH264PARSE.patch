@@ -1,24 +1,12 @@
-diff --git a/media/filters/ffmpeg_glue.cc b/media/filters/ffmpeg_glue.cc
-index eaabc740e710e..229818059dc2c 100644
---- a/media/filters/ffmpeg_glue.cc
-+++ b/media/filters/ffmpeg_glue.cc
-@@ -21,7 +21,7 @@ namespace media {
- // TODO(crbug.com/355485812): Re-enable this flag.
- BASE_FEATURE(kAllowOnlyAudioCodecsDuringDemuxing,
-              "AllowOnlyAudioCodecsDuringDemuxing",
--             base::FEATURE_ENABLED_BY_DEFAULT);
-+             base::FEATURE_DISABLED_BY_DEFAULT);
- BASE_FEATURE(kForbidH264ParsingDuringDemuxing,
-              "ForbidH264ParsingDuringDemuxing",
-              base::FEATURE_ENABLED_BY_DEFAULT);
-@@ -121,7 +121,8 @@ FFmpegGlue::FFmpegGlue(FFmpegURLProtocol* protocol) {
+--- chromium-133.0.6943.16/media/filters/ffmpeg_glue.cc	2025/01/20 15:06:56	1.1
++++ chromium-133.0.6943.16/media/filters/ffmpeg_glue.cc	2025/01/20 15:07:32
+@@ -111,7 +111,8 @@
+ 
    // We don't allow H.264 parsing during demuxing since we have our own parser
    // and the ffmpeg one increases memory usage unnecessarily.
-   if (base::FeatureList::IsEnabled(kForbidH264ParsingDuringDemuxing)) {
--    format_context_->flags |= AVFMT_FLAG_NOH264PARSE;
-+    // TODO(crbug.com/355485812): Re-enable this flag.
-+    // format_context_->flags |= AVFMT_FLAG_NOH264PARSE;
-   }
+-  format_context_->flags |= AVFMT_FLAG_NOH264PARSE;
++  // TODO(crbug.com/355485812): Re-enable this flag.
++  // format_context_->flags |= AVFMT_FLAG_NOH264PARSE;
  
    // Ensures format parsing errors will bail out. From an audit on 11/2017, all
-
+   // instances were real failures. Solves bugs like http://crbug.com/710791.

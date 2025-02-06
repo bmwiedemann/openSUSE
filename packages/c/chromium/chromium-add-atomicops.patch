@@ -1,0 +1,188 @@
+From d29b01737a841b5627249d50f007dcdc7e26462b Mon Sep 17 00:00:00 2001
+From: Eugene Zemtsov <eugene@chromium.org>
+Date: Thu, 19 Dec 2024 13:20:12 -0800
+Subject: [PATCH] Introducing base::RelaxedAtomicWriteMemcpy
+
+This is an analogue of `WTF::AtomicWriteMemcpy` and it should be used
+for copying data into buffers owned by `SharedArrayBuffer`.
+While the copy is being done, JS and WASM code can access the `dst` buffer
+on a different thread. The data observed by JS may not be consistent
+from application point of view (which is always the case with
+`SharedArrayBuffer`), but it won't trigger C++ UB and won't upset TSAN.
+Reads from the `src` buffer are not atomic and should be `src` access
+should be synchronized via other means.
+
+Bug: 340606792
+Change-Id: I95fd92d344dce4d463fa281b68b266bb0a8053a8
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6065639
+Reviewed-by: Shu-yu Guo <syg@chromium.org>
+Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+Reviewed-by: Gabriel Charette <gab@chromium.org>
+Commit-Queue: Eugene Zemtsov <eugene@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1398823}
+
+diff --git a/base/BUILD.gn b/base/BUILD.gn
+index 0b0d3c262a1d4..97bec1f29bc3b 100644
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -186,6 +186,7 @@ component("base") {
+     "at_exit.h",
+     "atomic_ref_count.h",
+     "atomic_sequence_num.h",
++    "atomicops.cc",
+     "atomicops.h",
+     "atomicops_internals_atomicword_compat.h",
+     "atomicops_internals_portable.h",
+diff --git a/base/atomicops.cc b/base/atomicops.cc
+new file mode 100644
+index 0000000000000..7b6aca4d6c3c3
+--- /dev/null
++++ b/base/atomicops.cc
+@@ -0,0 +1,65 @@
++// Copyright 2024 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "base/atomicops.h"
++
++#include <atomic>
++
++#include "base/memory/aligned_memory.h"
++
++namespace base::subtle {
++
++void RelaxedAtomicWriteMemcpy(base::span<uint8_t> dst,
++                              base::span<const uint8_t> src) {
++  CHECK_EQ(dst.size(), src.size());
++  size_t bytes = dst.size();
++  uint8_t* dst_byte_ptr = dst.data();
++  const uint8_t* src_byte_ptr = src.data();
++  // Make sure that we can at least copy byte by byte with atomics.
++  static_assert(std::atomic_ref<uint8_t>::required_alignment == 1);
++
++  // Alignment for uintmax_t atomics that we use in the happy case.
++  constexpr size_t kDesiredAlignment =
++      std::atomic_ref<uintmax_t>::required_alignment;
++
++  // Copy byte-by-byte until `dst_byte_ptr` is not properly aligned for
++  // the happy case.
++  while (bytes > 0 && !IsAligned(dst_byte_ptr, kDesiredAlignment)) {
++    std::atomic_ref<uint8_t>(*dst_byte_ptr)
++        .store(*src_byte_ptr, std::memory_order_relaxed);
++    // SAFETY: We check above that `dst_byte_ptr` and `src_byte_ptr` point
++    // to spans of sufficient size.
++    UNSAFE_BUFFERS(++dst_byte_ptr);
++    UNSAFE_BUFFERS(++src_byte_ptr);
++    --bytes;
++  }
++
++  // Happy case where both `src_byte_ptr` and `dst_byte_ptr` are both properly
++  // aligned and the largest possible atomic is used for copying.
++  if (IsAligned(src_byte_ptr, kDesiredAlignment)) {
++    while (bytes >= sizeof(uintmax_t)) {
++      std::atomic_ref<uintmax_t>(*reinterpret_cast<uintmax_t*>(dst_byte_ptr))
++          .store(*reinterpret_cast<const uintmax_t*>(src_byte_ptr),
++                 std::memory_order_relaxed);
++      // SAFETY: We check above that `dst_byte_ptr` and `src_byte_ptr` point
++      // to spans of sufficient size.
++      UNSAFE_BUFFERS(dst_byte_ptr += sizeof(uintmax_t));
++      UNSAFE_BUFFERS(src_byte_ptr += sizeof(uintmax_t));
++      bytes -= sizeof(uintmax_t);
++    }
++  }
++
++  // Copy what's left after the happy-case byte-by-byte.
++  while (bytes > 0) {
++    std::atomic_ref<uint8_t>(*dst_byte_ptr)
++        .store(*src_byte_ptr, std::memory_order_relaxed);
++    // SAFETY: We check above that `dst_byte_ptr` and `src_byte_ptr` point
++    // to spans of sufficient size.
++    UNSAFE_BUFFERS(++dst_byte_ptr);
++    UNSAFE_BUFFERS(++src_byte_ptr);
++    --bytes;
++  }
++}
++
++}  // namespace base::subtle
+diff --git a/base/atomicops.h b/base/atomicops.h
+index 47a10e65e7ac7..33b17dae4aaa9 100644
+--- a/base/atomicops.h
++++ b/base/atomicops.h
+@@ -51,6 +51,9 @@
+ // - libstdc++: captures bits/c++config.h for __GLIBCXX__
+ #include <cstddef>
+ 
++#include "base/base_export.h"
++#include "base/compiler_specific.h"
++#include "base/containers/span.h"
+ #include "build/build_config.h"
+ 
+ namespace base {
+@@ -139,6 +142,28 @@ Atomic64 NoBarrier_Load(volatile const Atomic64* ptr);
+ Atomic64 Acquire_Load(volatile const Atomic64* ptr);
+ #endif  // ARCH_CPU_64_BITS
+ 
++// Copies non-overlapping spans of the same size. Writes are done using C++
++// atomics with `std::memory_order_relaxed`.
++//
++// This is an analogue of `WTF::AtomicWriteMemcpy` and it should be used
++// for copying data into buffers that are accessible from another
++// thread while the copy is being done. The buffer will appear inconsistent,
++// but it won't trigger C++ UB and won't upset TSAN. The end of copy needs to
++// be signaled through a synchronization mechanism like fence, after
++// which the `dst` buffer will be observed as consistent.
++//
++// Notable example is a buffer owned by `SharedArrayBuffer`.
++// While the copy is being done, JS and WASM code can access the `dst` buffer
++// on a different thread. The data observed by JS may not be consistent
++// from application point of view (which is always the case with
++// `SharedArrayBuffer`).
++//
++// Reads from the `src` buffer are not atomic and `src` access
++// should be synchronized via other means.
++// More info: crbug.com/340606792
++BASE_EXPORT void RelaxedAtomicWriteMemcpy(base::span<uint8_t> dst,
++                                          base::span<const uint8_t> src);
++
+ }  // namespace subtle
+ }  // namespace base
+ 
+diff --git a/base/atomicops_unittest.cc b/base/atomicops_unittest.cc
+index b494bd136bc15..1227dc3b2e053 100644
+--- a/base/atomicops_unittest.cc
++++ b/base/atomicops_unittest.cc
+@@ -6,7 +6,9 @@
+ 
+ #include <stdint.h>
+ #include <string.h>
++
+ #include <type_traits>
++#include <vector>
+ 
+ #include "testing/gtest/include/gtest/gtest.h"
+ 
+@@ -239,3 +241,24 @@ TEST(AtomicOpsTest, Load) {
+   TestLoad<base::subtle::Atomic32>();
+   TestLoad<base::subtle::AtomicWord>();
+ }
++
++TEST(AtomicOpsTest, RelaxedAtomicWriteMemcpy) {
++  std::vector<uint8_t> src(17);
++  for (size_t i = 0; i < src.size(); i++) {
++    src[i] = i + 1;
++  }
++
++  for (size_t i = 0; i < src.size(); i++) {
++    std::vector<uint8_t> dst(src.size());
++    size_t bytes_to_copy = src.size() - i;
++    base::subtle::RelaxedAtomicWriteMemcpy(
++        base::span(dst).first(bytes_to_copy),
++        base::span(src).subspan(i, bytes_to_copy));
++    for (size_t j = 0; j < bytes_to_copy; j++) {
++      EXPECT_EQ(src[i + j], dst[j]);
++    }
++    for (size_t j = bytes_to_copy; j < dst.size(); j++) {
++      EXPECT_EQ(0, dst[j]);
++    }
++  }
++}

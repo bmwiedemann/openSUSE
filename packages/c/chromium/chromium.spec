@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@
 %define ffmpeg_version 58
 %endif
 %bcond_with system_zstd
-%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150700
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
 # LLVM version
 %define llvm_version 19
 # RUST version
@@ -99,11 +99,6 @@
 %else
 %bcond_with libxml2_2_12
 %endif
-%if %{pkg_vcmp libdrm-devel >= 2.4.115}
-%bcond_without libdrm_2_4_115
-%else
-%bcond_with libdrm_2_4_115
-%endif
 # Package names
 %if %{with is_beta}
 %define chromedriver_name %{name}-chromedriver
@@ -113,7 +108,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        132.0.6834.159
+Version:        133.0.6943.53
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -150,17 +145,14 @@ Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch240:       chromium-117-string-convert.patch
-Patch248:       chromium-119-assert.patch
 Patch256:       chromium-120-make_unique-struct.patch
 Patch261:       chromium-121-rust-clang_lib.patch
-Patch311:       chromium-125-disable-FFmpegAllowLists.patch
 Patch337:       chromium-123-missing-QtGui.patch
 Patch359:       chromium-126-quiche-interator.patch
 Patch360:       chromium-127-bindgen.patch
 Patch361:       chromium-127-rust-clanglib.patch
 Patch363:       chromium-127-constexpr.patch
 Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
-Patch366:       chromium-130-no-hardware_destructive_interference_size.patch
 Patch368:       chromium-131-clang-stack-protector.patch
 Patch369:       chromium-132-pdfium-explicit-template.patch
 # conditionally applied patches
@@ -173,10 +165,10 @@ Patch1005:      chromium-106-ffmpeg-duration.patch
 Patch1006:      chromium-93-ffmpeg-4.4-rest.patch
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
-# patch where libdrm < 2.4.115
-Patch1015:      chromium-132-old_libdrm.patch
 # patch where llvm < 19
 Patch1020:      chromium-127-clang17-traitors.patch
+Patch1021:      chromium-add-atomicops.patch
+Patch1022:      chromium-133-string_view.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -243,7 +235,6 @@ BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libevdev)
-BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpci)
@@ -450,14 +441,11 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -P 1010
 %endif
 
-# apply only on 15.5 with libdrm < 2.4.116
-%if 0%{?sle_version} <= 150500
-%patch -p1 -P 1015
-%endif
-
 %if 0%{?llvm_version} == 17
 # chromium-127-clang17-traitors.patch only needed for older clang
 %patch -p1 -P 1020
+%patch -p1 -R -P 1021
+%patch -p1 -R -P 1022
 %endif
 
 %build
@@ -622,7 +610,6 @@ keeplibs=(
     third_party/ipcz
     third_party/jinja2
     third_party/jsoncpp
-    third_party/jstemplate
     third_party/khronos
     third_party/lens_server_proto
     third_party/leveldatabase
@@ -685,7 +672,6 @@ keeplibs=(
     third_party/puffin
     third_party/pyjson5
     third_party/pyyaml
-    third_party/qcms
     third_party/rapidhash
     third_party/rnnoise
     third_party/rust
@@ -696,6 +682,7 @@ keeplibs=(
     third_party/sentencepiece
     third_party/sentencepiece/src/third_party/darts_clone
     third_party/shell-encryption
+    third_party/simdutf
     third_party/simplejson
     third_party/skia
     third_party/skia/include/third_party/vulkan/
@@ -723,6 +710,7 @@ keeplibs=(
     third_party/utf
     third_party/vulkan
     third_party/wayland
+    third_party/wasm_tts_engine
     third_party/webdriver
     third_party/webgpu-cts
     third_party/webrtc
@@ -743,11 +731,11 @@ keeplibs=(
     third_party/zlib/google
     third_party/zxcvbn-cpp
     url/third_party/mozilla
-    v8/src/third_party/siphash
-    v8/src/third_party/utf8-decoder
-    v8/src/third_party/valgrind
     v8/third_party/glibc
     v8/third_party/inspector_protocol
+    v8/third_party/siphash
+    v8/third_party/utf8-decoder
+    v8/third_party/valgrind
     v8/third_party/v8/builtins
     v8/third_party/v8/codegen
 )
@@ -892,7 +880,6 @@ gn_system_libraries=(
     flac
     fontconfig
     libdrm
-    libevent
     libjpeg
     libpng
     libusb
