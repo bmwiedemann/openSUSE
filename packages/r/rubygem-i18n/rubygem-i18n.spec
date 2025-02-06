@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-i18n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-i18n
-Version:        1.14.6
+Version:        1.14.7
 Release:        0
 %define mod_name i18n
 %define mod_full_name %{mod_name}-%{version}

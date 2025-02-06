@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:51:38 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.14.7:
+
+## What's Changed
+* Ruby 3.4 `Hash#inspect` compatibility. by @voxik in https://github.com/ruby-i18n/i18n/pull/709
+* Removed (annoying) post-install message that was triggering on _all_ Rubies, rather than the specified versions.
+
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.14.6...v1.14.7
+
+
+
+-------------------------------------------------------------------
 Mon Nov  4 16:53:26 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.14.6:
