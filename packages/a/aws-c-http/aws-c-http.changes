@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 30 11:43:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.3
+  * Switch CI to use roles by @DmitriyMusatkin in (#494)
+  * Fix CI for GCC-13 on Ubuntu-18 by @waahm7 in (#496)
+  * A bunch of CMake fixes by @graebm in (#497)
+- Drop ach_fix-cmake-modules-path.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Nov 14 12:36:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.2

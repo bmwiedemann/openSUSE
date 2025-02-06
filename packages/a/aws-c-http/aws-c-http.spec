@@ -19,14 +19,13 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-http
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-http
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         ach_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  cmake(aws-checksums)
