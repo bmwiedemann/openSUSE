@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-benchmark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-benchmark
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 %define mod_name benchmark
 %define mod_full_name %{mod_name}-%{version}
+BuildRequires:  %{ruby >= 2.1.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby/benchmark
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
@@ -54,7 +54,7 @@ find -type f -print0 | xargs -0 touch -r %{S:0}
 
 %install
 %gem_install \
-  --doc-files="LICENSE.txt README.md" \
+  --doc-files="COPYING README.md" \
   -f
 # MANUAL
 find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml \) | xargs rm

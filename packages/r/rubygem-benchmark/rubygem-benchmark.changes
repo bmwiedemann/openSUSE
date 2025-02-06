@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb  3 09:23:13 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
+
+- 0.4.0:
+
+## What's Changed
+* Exclude older than 2.6 on macos-14 by @nobu in https://github.com/ruby/benchmark/pull/21
+* Set required_ruby_version = ">= 2.1.0" by @Earlopain in https://github.com/ruby/benchmark/pull/24
+* Improve docs for Benchmark.realtime by @nithinbekal in https://github.com/ruby/benchmark/pull/25
+* Adjust ljust by @kaiquekandykoga in https://github.com/ruby/benchmark/pull/16
+
+## New Contributors
+* @nobu made their first contribution in https://github.com/ruby/benchmark/pull/21
+* @Earlopain made their first contribution in https://github.com/ruby/benchmark/pull/24
+* @nithinbekal made their first contribution in https://github.com/ruby/benchmark/pull/25
+* @kaiquekandykoga made their first contribution in https://github.com/ruby/benchmark/pull/16
+
+**Full Changelog**: https://github.com/ruby/benchmark/compare/v0.3.0...v0.4.0
+
+
+
+-------------------------------------------------------------------
 Tue May 21 10:24:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace %patchN with %patch -P N: %patchN is deprecated.

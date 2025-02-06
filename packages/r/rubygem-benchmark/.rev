@@ -49,4 +49,12 @@
     <comment>- Replace %patchN with %patch -P N: %patchN is deprecated. (forwarded request 1175505 from dimstar)</comment>
     <requestid>1175510</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c63c90d16390b77c888be04f1906893f</srcmd5>
+    <version>0.4.0</version>
+    <time>1738876172</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1243894</requestid>
+  </revision>
 </revisionlist>
