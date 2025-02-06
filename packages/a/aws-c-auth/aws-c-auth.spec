@@ -20,14 +20,13 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-auth
-Version:        0.8.1
+Version:        0.8.4
 Release:        0
 Summary:        AWS C99 library implementation of AWS client-side authentication
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-auth
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         aca_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  cmake(aws-c-common)

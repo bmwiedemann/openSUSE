@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 30 12:02:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.4
+  * A bunch of CMake fixes by @graebm in (#258)
+- from version 0.8.3
+  * Add Account Id to Credentials by @waahm7 in (#260)
+- from version 0.8.2
+  * Skip Transfer-Encoding from signing by @DmitriyMusatkin in (#261)
+- Drop aca_fix-cmake-modules-path.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Jan 22 16:14:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.1
