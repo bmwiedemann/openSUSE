@@ -1,0 +1,17 @@
+Index: duperemove-0.15/results-tree.h
+===================================================================
+--- duperemove-0.15.orig/results-tree.h
++++ duperemove-0.15/results-tree.h
+@@ -20,11 +20,7 @@
+ #include <glib.h>
+ 
+ #include "csum.h"
+-
+-// TODO: delete this
+-struct list_head {
+-	struct list_head *next, *prev;
+-};
++#include "list.h"
+ 
+ struct results_tree {
+ 	struct rb_root	root;
