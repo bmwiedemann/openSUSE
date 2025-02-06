@@ -280,4 +280,15 @@
   when the baseiso has changed now.</comment>
     <requestid>1241306</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>01bab0f7cdbfe17066156f2127b9da63</srcmd5>
+    <version>0.5.3</version>
+    <time>1738876144</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.5.3
+  Adding skip_updateinfos build option to pass issue #14
+
+    (boo#1231141)</comment>
+    <requestid>1243615</requestid>
+  </revision>
 </revisionlist>

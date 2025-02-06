@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 09:11:29 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.3
+
+  Adding skip_updateinfos build option to pass issue #14
+
+-------------------------------------------------------------------
 Thu Jan 30 09:14:14 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.2
@@ -30,6 +37,7 @@ Fri Jan 24 09:29:41 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.21
   * Use generate_sbom from OBS server instance if available
+    (boo#1231141)
 
 -------------------------------------------------------------------
 Mon Sep 30 10:22:13 UTC 2024 - Adrian Schröter <adrian@suse.de>
