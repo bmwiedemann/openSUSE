@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:01:12 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Prevent overflow when calculating ulog block size. An authenticated
+  attacker can cause kadmind to write beyond the end of the mapped
+  region for the iprop log file, likely causing a process crash;
+  (CVE-2025-24528); (bsc#1236619).
+- Add patch 0010-CVE-2025-24528.patch
+
+-------------------------------------------------------------------
 Mon Jul  1 07:50:59 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.21.3
