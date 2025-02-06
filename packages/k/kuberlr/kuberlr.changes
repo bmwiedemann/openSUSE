@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Fri Jan 31 17:34:04 UTC 2025 - Earl Sampson <esampson@suse.com>
+
+- BuildRequire go 1.22.3 or higher
+
+-------------------------------------------------------------------
+Fri Jan 31 15:34:02 UTC 2025 - esampson@suse.com
+
+- Update to version 0.5.2:
+  * automation: switch to release-drafter
+  * refactor: small improvements to tests
+  * test: update to latest version of golangci
+  * refactor: improve tests
+  * chore(deps): Bump actions/attest-build-provenance from 1.4.1 to 1.4.2
+  * Fix typo and add tests
+  * Small refactoring
+  * Fix infinite recursion loop with kube login
+  * chore(deps): Bump docker/build-push-action from 6.6.1 to 6.7.0
+  * chore(deps): Bump k8s.io/client-go from 0.30.3 to 0.31.0
+  * chore(deps): Bump actions/attest-build-provenance from 1.4.0 to 1.4.1
+  * chore(deps): Bump sigstore/cosign-installer from 3.5.0 to 3.6.0
+  * chore(deps): Bump docker/build-push-action from 5.3.0 to 6.6.1
+  * automation: fix release action
+  * Tag all actions by sha
+  * Remove goreleaser config comments
+  * Make machine name more generic
+  * seed bash completion at build time
+  * add attestation settings and step
+  * Add kuberlr completion
+  * Update release to publish docker image too
+  * Add dockerfile with local make script
+  * update goreleaser config with version
+  * chore(deps): Bump github.com/schollz/progressbar/v3
+  * chore(deps): Bump github.com/schollz/progressbar/v3
+  * chore(deps): Bump k8s.io/client-go from 0.30.2 to 0.30.3
+  * chore(deps): Bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * chore(deps): Bump k8s.io/client-go from 0.30.1 to 0.30.2
+  * chore(deps): Bump github.com/schollz/progressbar/v3
+  * chore(deps): Bump goreleaser/goreleaser-action from 5.1.0 to 6.0.0
+  * chore(deps): Bump github.com/spf13/viper from 1.18.2 to 1.19.0
+  * chore(deps): update go, golangci, gorelease
+  * chore(deps): run go mod tidy
+  * --- updated-dependencies: - dependency-name: github.com/schollz/progressbar/v3   dependency-type: direct:production   update-type: version-update:semver-patch ...
+  * build(deps): bump k8s.io/client-go from 0.29.3 to 0.30.1
+  * build(deps): bump goreleaser/goreleaser-action from 5.0.0 to 5.1.0
+  * build(deps): bump golangci/golangci-lint-action from 4 to 6
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.6 to 6.5.9
+  * build(deps): bump golang.org/x/net from 0.19.0 to 0.23.0
+  * refactor: cleanup checksum code
+  * skip gosec in linting, verify old binaries with sha1
+  * fix lint
+  * fix typo
+  * add types for download args
+  * update shaURLToGet
+  * fix typo
+  * use sha512 checksum for ver>=1.12, and sha1 for old versions
+  * Update README
+  * set DisableFlagParsing to true for NewKubectlWrapperCmd
+  * format code
+  * DisableFlagParsing for NewKubectlWrapperCmd
+  * remove unused lint directive
+  * add kubectl subcommand
+  * Small fixes to Kubernetes mirror patch
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.5 to 6.5.6
+  * remove unused lint directive
+  * fix getKbReleaseURL
+  * add config key KbReleaseUrl for custom download mirror
+  * build(deps): bump k8s.io/client-go from 0.29.2 to 0.29.3
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.4 to 6.5.5
+  * build(deps): bump google.golang.org/protobuf from 1.31.0 to 1.33.0
+  * build(deps): bump github.com/schollz/progressbar/v3
+  * build(deps): bump k8s.io/client-go from 0.29.1 to 0.29.2
+  * build(deps): bump golangci/golangci-lint-action from 3 to 4
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.3 to 6.5.4
+  * build(deps): bump k8s.io/client-go from 0.29.0 to 0.29.1
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.2 to 6.5.3
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.1 to 6.5.2
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.9 to 6.5.1
+  * Use context passed via the commandline when discovering cluster version
+  * build(deps): bump github.com/spf13/viper from 1.18.1 to 1.18.2
+  * build(deps): bump github.com/spf13/viper from 1.16.0 to 1.18.1
+  * chore(deps): update to latest version of golangci
+  * build(deps): bump k8s.io/client-go from 0.28.4 to 0.29.0
+  * build(deps): bump actions/setup-go from 4 to 5
+  * build(deps): bump k8s.io/client-go from 0.28.3 to 0.28.4
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+  * build(deps): bump github.com/schollz/progressbar/v3
+  * build(deps): bump github.com/schollz/progressbar/v3
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.8 to 6.4.9
+  * build(deps): bump k8s.io/client-go from 0.28.2 to 0.28.3
+  * build(deps): bump golang.org/x/net from 0.13.0 to 0.17.0
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.7 to 6.4.8
+  * build(deps): bump k8s.io/client-go from 0.28.1 to 0.28.2
+  * fix: support global kubectl options
+  * Remove changelog file
+  * fix: goreleaser grant the right privileges
+  * automation: fix goreleaser config
+  * automation: remove release-drafter
+  * automation: enable cosign
+  * chore(deps): update k8s.io/client
+  * test: fix broken GH action
+  * test: refactor GH action
+  * test: update go version used by GH actions
+  * test: fix linter warnings
+  * test: switch to golangci
+  * chore(deps): bump go version
+  * chore: cleanup Makefile
+  * Bump github.com/schollz/progressbar/v3 from 3.3.1 to 3.13.1
+  * Bump github.com/spf13/viper from 1.4.0 to 1.16.0
+  * Bump github.com/spf13/cobra from 1.0.0 to 1.7.0
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.0.4 to 6.4.7
+  * Bump actions/setup-go from 2 to 4
+  * Bump actions/checkout from 2 to 4
+  * chore(automation): configure dependabot
+  * chore: update release actions
+  * fix: release-drafter enable master branch
+  * chore: add release-drafter
+  * Added the s390x architecture
+  * Bump golang.org/x/net from 0.0.0-20220722155237-a158d28d115b to 0.7.0
+  * Bump k8s.io/client-go from 0.17.0 to 0.20.0
+  * Enable building universal binaries for macos
+  * Fix go vet
+  * Fix go fmt errors
+  * GitHub Action test workflow: update go version
+  * Fixes the command output when the Kubernetes server is unreachable.
+  * Fix BiDi rendering issue for asterisk
+  * Downloader: don't shadow err
+  * Switch go version from 1.13 to 1.17 to support darwin/arm64 builds
+
+-------------------------------------------------------------------
 Fri Jan 07 15:40:49 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.4.1:

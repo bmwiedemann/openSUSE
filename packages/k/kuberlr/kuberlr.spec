@@ -1,7 +1,7 @@
 #
 # spec file for package kuberlr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kuberlr
-Version:        0.4.1
+Version:        0.5.2
 Release:        0
 Summary:        A tool that simplifies the management of multiple versions of kubectl
 License:        Apache-2.0
@@ -28,10 +28,10 @@ URL:            https://github.com/flavio/kuberlr
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.23
 Requires(post): %fillup_prereq
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if 0%{?suse_version} <= 1500
 Conflicts:      kubernetes-client
 %endif
