@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  5 16:11:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- switch to manual service runs
+
+-------------------------------------------------------------------
+Thu Jan 30 11:17:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add unittest-drop-makeSuite.patch to adapt the testsuite to Python 3.13
+
+-------------------------------------------------------------------
 Thu Mar 14 10:53:06 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using
@@ -41,10 +51,10 @@ Fri Jan 10 21:44:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 Wed Nov 21 13:49:06 UTC 2018 - Enno Gotthold <egotthold@suse.com>
 
 - Fixed build through adding a recrompress at buildtime and changing the
-  Source in the specfile. 
+  Source in the specfile.
 
 -------------------------------------------------------------------
-Fri Nov 09 10:37:47 UTC 2018 - egotthold@suse.de 
+Fri Nov 09 10:37:47 UTC 2018 - egotthold@suse.de
 
 - Updated _service file to the modern obs_scm, so that the maintenance
   is less time cosuming and the obs needs less space to store the sources.
@@ -217,7 +227,7 @@ Fri May 13 20:23:47 UTC 2011 - asterios.dramis@gmail.com
 -------------------------------------------------------------------
 Tue May 10 02:55:25 UTC 2011 - crrodriguez@opensuse.org
 
-- Fix build with GCC 4.6 
+- Fix build with GCC 4.6
 
 -------------------------------------------------------------------
 Fri Mar 18 20:55:11 UTC 2011 - asterios.dramis@gmail.com
@@ -246,24 +256,24 @@ Fri Mar 18 20:55:11 UTC 2011 - asterios.dramis@gmail.com
 -------------------------------------------------------------------
 Wed Oct 28 17:28:59 UTC 2009 - crrodriguez@opensuse.org
 
-- libsmbios-devel Requires libstdc++-devel 
+- libsmbios-devel Requires libstdc++-devel
 
 -------------------------------------------------------------------
 Mon Mar  2 17:15:14 CET 2009 - crrodriguez@suse.de
 
-- fix build with GCC 4.4 
+- fix build with GCC 4.4
 
 -------------------------------------------------------------------
 Fri Nov  7 11:44:16 CET 2008 - dkukawka@suse.de
 
-- fixed spec: 
+- fixed spec:
   - added Supplements: modalias(dmi:*:[bs]vnD[Ee][Ll][Ll]*:*) for
     libsmbios2 and libsmbios-bin to fix bnc#440814
 
 -------------------------------------------------------------------
 Wed Aug 13 18:16:16 CEST 2008 - ro@suse.de
 
-- change ExcludeArch to ExclusiveArch 
+- change ExcludeArch to ExclusiveArch
 
 -------------------------------------------------------------------
 Tue Jul 29 09:45:25 CEST 2008 - coolo@suse.de
@@ -273,7 +283,7 @@ Tue Jul 29 09:45:25 CEST 2008 - coolo@suse.de
 -------------------------------------------------------------------
 Mon Jul  7 20:19:32 CEST 2008 - dkukawka@suse.de
 
-- change naming of the lib package because of 'Shared Library 
+- change naming of the lib package because of 'Shared Library
   Packaging Policy' and rpmlint
 - updated to latest version v2.0.2
 
@@ -287,7 +297,7 @@ Mon Jun  2 17:53:10 CEST 2008 - dkukawka@suse.de
 -------------------------------------------------------------------
 Mon Mar 10 01:53:00 CET 2008 - crrodriguez@suse.de
 
-- dont buildrequire libxml, only libxml2 is used 
+- dont buildrequire libxml, only libxml2 is used
 
 -------------------------------------------------------------------
 Fri Mar  7 14:53:54 CET 2008 - dmueller@suse.de
@@ -303,7 +313,7 @@ Tue Jan  8 19:00:09 CET 2008 - dkukawka@suse.de
 -------------------------------------------------------------------
 Sat Dec 29 10:04:52 CET 2007 - crrodriguez@suse.de
 
-- fix library-without-ldconfig-postun errors 
+- fix library-without-ldconfig-postun errors
 
 -------------------------------------------------------------------
 Wed Dec 19 18:47:41 CET 2007 - dkukawka@suse.de
@@ -316,22 +326,22 @@ Sun Nov  4 15:34:03 CET 2007 - dkukawka@suse.de
 - updated to new version 0.13.12:
 - removed upstream gone patch:
   - libsmbios-fix-includes.diff
-- fixed spec-file: 
+- fixed spec-file:
   - binaries moved from /usr/bin to /usr/sbin
 
 -------------------------------------------------------------------
 Tue Oct 16 14:08:56 CEST 2007 - dkukawka@suse.de
 
 - updated to new version 0.13.10:
-  - Fix a couple of failure-to-check-return on fopen. most were 
+  - Fix a couple of failure-to-check-return on fopen. most were
     unit-test code only, but two or three were in regular code.
-  - Add hinting to the memory class, so that it can intelligently 
-    close /dev/mem file handle when it is not needed (which is 
-    most of the time). it only leaves it open when it is scanning, 
+  - Add hinting to the memory class, so that it can intelligently
+    close /dev/mem file handle when it is not needed (which is
+    most of the time). it only leaves it open when it is scanning,
     so speed is not impacted.
   - new upstream
 - added patches:
-  - libsmbios-fix-includes.diff: fix missing includes (needed to 
+  - libsmbios-fix-includes.diff: fix missing includes (needed to
     build in beta tree)
 
 -------------------------------------------------------------------
@@ -354,10 +364,10 @@ Wed May  2 13:55:51 CEST 2007 - dkukawka@suse.de
 -------------------------------------------------------------------
 Mon Mar 26 14:56:54 CEST 2007 - dkukawka@suse.de
 
-- updated to new version 0.13.4 as requested by DELL maintainer 
+- updated to new version 0.13.4 as requested by DELL maintainer
   - autotools conversion
-  - new util dellWirelessCtl to control builtin wireless on Dell 
-    laptops 
+  - new util dellWirelessCtl to control builtin wireless on Dell
+    laptops
 
 -------------------------------------------------------------------
 Sun Mar  4 00:37:22 CET 2007 - dkukawka@suse.de
@@ -370,7 +380,7 @@ Sun Mar  4 00:37:22 CET 2007 - dkukawka@suse.de
 Wed Feb 28 20:58:32 CET 2007 - dkukawka@suse.de
 
 - updated to new version 0.12.4:
-  * the package no longer provide bios_update_tools subpackage, 
+  * the package no longer provide bios_update_tools subpackage,
     since they are no longer part of the source
 
 -------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package libsmbios
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later OR OSL-2.1
 Group:          Hardware/Other
 URL:            https://github.com/dell/libsmbios
 Source:         %{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/dell/libsmbios/pull/149 drop unittest.makeSuite (dropped in python 3.13)
+Patch:          unittest-drop-makeSuite.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen

@@ -354,4 +354,34 @@ SPDX format (http://www.spdx.org/licenses) (forwarded request 116746 from babelw
     <comment></comment>
     <requestid>1161468</requestid>
   </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>1e5107b6bc2a286838fb3f94330981ba</srcmd5>
+    <version>2.4.3.3.gf01a217</version>
+    <time>1738875731</time>
+    <user>anag+factory</user>
+    <comment>- switch to manual service runs
+
+- Add unittest-drop-makeSuite.patch to adapt the testsuite to Python 3.13
+
+  Source in the specfile.
+- Fix build with GCC 4.6
+- libsmbios-devel Requires libstdc++-devel
+- fix build with GCC 4.4
+- fixed spec:
+- change ExcludeArch to ExclusiveArch
+- change naming of the lib package because of 'Shared Library
+- dont buildrequire libxml, only libxml2 is used
+- fix library-without-ldconfig-postun errors
+- fixed spec-file:
+  - Fix a couple of failure-to-check-return on fopen. most were
+  - Add hinting to the memory class, so that it can intelligently
+    close /dev/mem file handle when it is not needed (which is
+    most of the time). it only leaves it open when it is scanning,
+  - libsmbios-fix-includes.diff: fix missing includes (needed to
+- updated to new version 0.13.4 as requested by DELL maintainer
+  - new util dellWirelessCtl to control builtin wireless on Dell
+    laptops
+  * the package no longer provide bios_update_tools subpackage,</comment>
+    <requestid>1243458</requestid>
+  </revision>
 </revisionlist>

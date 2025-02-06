@@ -1,0 +1,18 @@
+Index: libsmbios-2.4.3.3.gf01a217/src/pyunit/TestLib.py
+===================================================================
+--- libsmbios-2.4.3.3.gf01a217.orig/src/pyunit/TestLib.py
++++ libsmbios-2.4.3.3.gf01a217/src/pyunit/TestLib.py
+@@ -21,12 +21,10 @@ def parseOptions(*args):
+     pass
+ 
+ def runTests( testCase ):
+-    testToRun = 'test'
+-
+     myTestSuite = unittest.TestSuite()
+     for i in testCase:
+         try:
+-            temp = unittest.makeSuite( i, testToRun )
++            temp = unittest.defaultTestLoader.loadTestsFromTestCase( i )
+             myTestSuite.addTest(temp)
+         except ValueError:
+             pass
