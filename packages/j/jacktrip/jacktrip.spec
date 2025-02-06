@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        GPL-3.0-only AND MIT AND LGPL-3.0-only
@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(rtaudio)
+BuildRequires:  pkgconfig(samplerate)
 
 %description
 JackTrip is a system used for multi-machine network performance over the

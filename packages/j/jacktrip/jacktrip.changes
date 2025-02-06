@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  3 12:49:39 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.5.1:
+  * Ensure that studio data is fresh before connecting 
+  * Fix regression with reconnecting JackTrip audio during live session
+  * Fix for display of failed message screen during startup on Linux
+
+- fixed build by temporary disabling libsamplerate, 
+  see https://github.com/jacktrip/jacktrip/issues/1380
+
+-------------------------------------------------------------------
 Wed Jan 29 20:54:35 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.5.0:
