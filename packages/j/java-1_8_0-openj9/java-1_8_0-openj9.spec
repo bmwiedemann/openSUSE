@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openj9
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       422
-%global buildver        b05
+%global updatever       442
+%global buildver        b06
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   a75ff73ce586d4105f89e83f0b3a80ca922e0d6f
-%global root_branch     v0.46.0-release
+%global root_revision   61f83383b828adad10eb631374bb04c3a21eb1e9
+%global root_branch     v0.49.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    840a9adba4548aa546e36c97a1150b7306a7e07b
-%global omr_branch      v0.46.0-release
+%global omr_revision    e49875871c2862e0d132e3695d55273bfbac08b6
+%global omr_branch      v0.49.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 1a6f6128aa2f639de1e33cae77a31f474ba6b1a9
-%global openj9_branch   v0.46.0-release
-%global openj9_tag      openj9-0.46.0
+%global openj9_revision 3c3d179854a524d7f95225999169ee09fda46033
+%global openj9_branch   v0.49.0-release
+%global openj9_tag      openj9-0.49.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -122,6 +122,7 @@ Patch202:       system-libpng.patch
 Patch203:       system-lcms.patch
 Patch210:       openj9-no-werror.patch
 Patch211:       openj9-openssl.patch
+Patch212:       openssl-OSSL_LIB_CTX.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -353,6 +354,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 
 %patch -P 210
 %patch -P 211 -p1
+%patch -P 212 -p1
 
 %patch -P 1 -p1
 %patch -P 2 -p1

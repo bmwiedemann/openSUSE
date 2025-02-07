@@ -1,0 +1,15 @@
+diff --git a/closed/adds/jdk/src/share/native/jdk/crypto/jniprovider/NativeCrypto.c b/closed/adds/jdk/src/share/native/jdk/crypto/jniprovider/NativeCrypto.c
+index ebe447bd95..9d1a7e930b 100644
+--- a/closed/adds/jdk/src/share/native/jdk/crypto/jniprovider/NativeCrypto.c
++++ b/closed/adds/jdk/src/share/native/jdk/crypto/jniprovider/NativeCrypto.c
+@@ -64,6 +64,10 @@
+ # include <pthread.h>
+ #endif /* defined(WINDOWS) */
+ 
++#if OPENSSL_VERSION_MAJOR < 3
++typedef struct ossl_lib_ctx_st OSSL_LIB_CTX;
++#endif
++
+ /* Header for RSA algorithm using 1.0.2 OpenSSL */
+ int OSSL102_RSA_set0_key(RSA *, BIGNUM *, BIGNUM *, BIGNUM *);
+ int OSSL102_RSA_set0_factors(RSA *, BIGNUM *, BIGNUM *);
