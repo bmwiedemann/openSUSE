@@ -48,6 +48,8 @@ Source10:       apparmor_ghostscript
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 Patch101:       ijs_exec_server_dont_use_sh.patch
+Patch102:       reproducible.patch
+Patch103:       2010_add_build_timestamp_setting.patch
 # Build Requirements:
 BuildRequires:  freetype2-devel
 BuildRequires:  libjpeg-devel
@@ -170,6 +172,8 @@ rm -rf freetype jpeg libpng lcms2art zlib tiff
 %if 0%{?suse_version} >= 1550
 rm -rf openjpeg
 %endif
+%patch -P102 -p1
+%patch -P103 -p1
 
 %build
 # Derive build timestamp from latest changelog entry

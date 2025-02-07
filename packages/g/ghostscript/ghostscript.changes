@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 09:42:47 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to not embed timestamp in .h file
+- Add 2010_add_build_timestamp_setting.patch to allow overriding
+  timestamp in generated pdf (boo#1236773)
+
+-------------------------------------------------------------------
 Wed Oct 30 12:27:04 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Enhanced entry below dated "Wed Oct 23 08:54:59 UTC 2024"

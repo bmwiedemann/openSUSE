@@ -1,0 +1,20 @@
+Date: 2024-09-20
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+
+Drop build date from generated .h file
+so that openSUSE's ghostscript-debugsource package
+does not vary between builds.
+
+Index: ghostscript-10.03.1/base/pack_ps.c
+===================================================================
+--- ghostscript-10.03.1.orig/base/pack_ps.c
++++ ghostscript-10.03.1/base/pack_ps.c
+@@ -344,7 +344,7 @@ main(int argc, char *argv[])
+     if (!buildtime) {
+         buildtime = time(NULL);
+     }
+-    fprintf(outfile,"/* Auto-generated from PostScript file \"%s\" at time %ld */\n", infilename, (long)buildtime);
++    fprintf(outfile,"/* Auto-generated from PostScript file \"%s\" */\n", infilename);
+ 
+     while (readline(infile, inputline, INPUT_LINE_LENGTH_MAX)) {
+ 

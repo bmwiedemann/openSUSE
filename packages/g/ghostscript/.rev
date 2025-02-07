@@ -627,4 +627,12 @@
     <comment>Ghostscript spec file cleanup and enhanced previous changes entry related to bsc#1232173 (forwarded request 1219570 from jsmeix)</comment>
     <requestid>1219571</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>65f4c4784d4fb1657b8c7d1c58f4e312</srcmd5>
+    <version>10.04.0</version>
+    <time>1738965394</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243309</requestid>
+  </revision>
 </revisionlist>
