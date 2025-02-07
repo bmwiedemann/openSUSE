@@ -1,7 +1,7 @@
 #
 # spec file for package perl-common-sense
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,26 @@
 #
 
 
-Name:           perl-common-sense
-Version:        3.75
-Release:        0
-#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name common-sense
+Name:           perl-common-sense
+Version:        3.750.0
+Release:        0
+# 3.75 -> normalize -> 3.750.0
+%define cpan_version 3.75
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Save a tree AND a kitten, use common::sense!
-License:        GPL-1.0-or-later OR Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 # MANUAL
 #BuildArch:     noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
+# MANUAL BEGIN
+Provides:       perl(common::sense) = %{version}
+# MANUAL END
 
 %description
    “Nothing is more fairly distributed than common sense: no one thinks
@@ -80,12 +83,13 @@ why it does it, and what the advantages (and disadvantages) of this
 approach are.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -96,7 +100,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
