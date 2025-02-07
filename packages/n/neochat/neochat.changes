@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:30:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Fix crash when trying to view Security settings in an invited room
+  * Only build 0.9.2 tag in Flatpak manifest
+  * CI: add frameworks/kiconthemes to .kde-ci.yaml
+  * fix: no icon under Windows
+  * Make sure space drawer icons are available for android
+  * add missing icons on Android
+  * Always open the user details dialog in the focused window
+  * Don't spam pending invites every time NeoChat is started
+  * Disable TextHandlerTest on CI
+  * Improve handling of DonwloadAction
+  * Expose ProgressInfoRole also for other type of attachments
+  * Fix right clicking on NeoChatMaximizedComponent
+  * Set explicitely parent in MaximizeComponent
+
+-------------------------------------------------------------------
 Tue Jan  7 18:53:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1
