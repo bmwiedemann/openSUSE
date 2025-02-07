@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 07 17:02:33 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.9:
+  * chore: chart bump pre 0.5.9 release (#405)
+  * Fix: ephemeral pvcs (#403)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.32.0 to
+    0.32.1 (#398)
+
+-------------------------------------------------------------------
 Mon Jan 13 06:11:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.8:
