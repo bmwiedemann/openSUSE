@@ -137,4 +137,15 @@
     <comment></comment>
     <requestid>1148270</requestid>
   </revision>
+  <revision rev="21" vrev="262">
+    <srcmd5>697f92547e8d2ce53dd05737666067a7</srcmd5>
+    <version>0.5.20</version>
+    <time>1738966098</time>
+    <user>anag+factory</user>
+    <comment>- Drop obsolete build dependency on mininews (usenet is dead).
+- Drop unneeded build dependency on postfix.
+- Add a soft runtime dependency on /sbin/sendmail.
+- Remove obsolete split-provides for sharutils.</comment>
+    <requestid>1244197</requestid>
+  </revision>
 </revisionlist>

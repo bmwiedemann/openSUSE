@@ -1,7 +1,7 @@
 #
 # spec file for package uudeview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,10 @@
 
 Name:           uudeview
 BuildRequires:  autoconf
-BuildRequires:  mininews
-BuildRequires:  postfix
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
-Url:            http://www.fpx.de/fp/Software/UUDeview
-Provides:       sharutils:/usr/bin/uudeview
+URL:            http://www.fpx.de/fp/Software/UUDeview
+Suggests:       /sbin/sendmail
 Version:        0.5.20
 Release:        0
 Summary:        The Nice and Friendly Decoder
@@ -41,7 +39,7 @@ ultimate goal is to fully replace the "standard", but dumb uudecode and
 uuencode utilities.
 
 %prep
-%setup -q 
+%setup -q
 %patch -P 0
 %patch -P 1 -p2
 
@@ -52,6 +50,7 @@ CFLAGS="$RPM_OPT_FLAGS -fPIC -DUSE_NON_CONST" \
 ./configure --prefix=%_prefix \
 	--libdir=%_libdir \
 	--disable-minews \
+	--enable-sendmail=/sbin/sendmail \
 	--enable-tcl=%_libdir \
 	--enable-tk=%_libdir
 make
@@ -63,9 +62,6 @@ mkdir -p %buildroot%_includedir
 cp -pf uulib/libuu.a %buildroot%_libdir
 cp -pf uulib/uudeview.h %buildroot%_includedir
 
-%clean
-test $RPM_BUILD_ROOT -ef / || rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(-,root,root)
 %_libdir/lib*
@@ -74,7 +70,7 @@ test $RPM_BUILD_ROOT -ef / || rm -rf $RPM_BUILD_ROOT
 /usr/bin/uuenview
 /usr/bin/uuwish
 /usr/bin/xdeview
-%doc HISTORY README 
+%doc HISTORY README
 %doc %{_mandir}/man1/uudeview.1.gz
 %doc %{_mandir}/man1/uuenview.1.gz
 %doc %{_mandir}/man1/xdeview.1.gz
