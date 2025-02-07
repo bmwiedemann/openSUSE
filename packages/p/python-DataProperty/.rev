@@ -101,4 +101,12 @@
   * Remove `is_multibyte_str` function</comment>
     <requestid>1101109</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1a4da31155c9c565d0f0891def928186</srcmd5>
+    <version>1.1.0</version>
+    <time>1738966032</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244115</requestid>
+  </revision>
 </revisionlist>

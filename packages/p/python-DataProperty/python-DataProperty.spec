@@ -1,7 +1,7 @@
 #
 # spec file for package python-DataProperty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-DataProperty
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Python library for extract property from data
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/DataProperty
-Source:         https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/dataproperty/dataproperty-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module typepy >= 1.1.0}
 Python library for extract property from data.
 
 %prep
-%setup -q -n DataProperty-%{version}
+%setup -q -n dataproperty-%{version}
 
 %build
 %python_build

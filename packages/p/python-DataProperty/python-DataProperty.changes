@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  6 12:04:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1.0
+  * Add set_type_value method to DataPropertyExtractor class
+  * Change type annotation of TypeValueMap to use dict instead of Mapping
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Thu Jul 27 16:44:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:
