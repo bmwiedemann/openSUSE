@@ -125,4 +125,12 @@
     <comment></comment>
     <requestid>1165679</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e2e091e732fa0e6450a025021d2663d6</srcmd5>
+    <version>2.13.6</version>
+    <time>1738965425</time>
+    <user>anag+factory</user>
+    <comment>- Add python3-setuptools BuildRequires, needed for Python 3.13. (forwarded request 1241312 from mcalabkova)</comment>
+    <requestid>1243383</requestid>
+  </revision>
 </revisionlist>

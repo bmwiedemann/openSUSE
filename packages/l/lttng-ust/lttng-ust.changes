@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 30 10:10:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add python3-setuptools BuildRequires, needed for Python 3.13.
+
+-------------------------------------------------------------------
 Tue Mar 26 08:02:10 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

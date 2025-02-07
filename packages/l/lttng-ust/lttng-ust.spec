@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-ust
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libnuma-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(liburcu) >= 0.12
 BuildRequires:  pkgconfig(uuid)
 ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
