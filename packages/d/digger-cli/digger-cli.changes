@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 07 17:04:20 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.84:
+  * fix env variable interpolation for backendless mode (#1880)
+  * allow cache values to be overridable for terraform and
+    terragrunt (#1873)
+
+-------------------------------------------------------------------
 Sun Jan 12 06:51:41 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.83:
