@@ -15,15 +15,6 @@
 
 --- config_f.h
 +++ config_f.h	2024-11-28 09:55:11.062052907 +0000
-@@ -64,7 +64,7 @@
-  */
- #if defined (SHORT_STRINGS) && defined (NLS) && !defined (WINNT_NATIVE) && !defined(_OSD_POSIX) && SIZEOF_WCHAR_T > 1
- # define WIDE_STRINGS
--# if SIZEOF_WCHAR_T <= 4
-+# if (SIZEOF_WCHAR_T <= 4) && !defined(__linux__)
- #  define UTF16_STRINGS
- # endif
- #endif
 @@ -72,7 +72,12 @@
  /*
   * LOGINFIRST   Source ~/.login before ~/.cshrc

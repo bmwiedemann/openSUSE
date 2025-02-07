@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  5 07:25:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.15 - 2025-02-04
+  * This release provides fixes for some compilation failures
+    introduced in the previous release
+- Port patch tcsh-6.21.00.dif means remove temporary fix now upstream
+
+-------------------------------------------------------------------
 Thu Nov 28 08:44:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.14 - 2024-11-26

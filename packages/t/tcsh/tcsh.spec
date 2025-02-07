@@ -1,7 +1,7 @@
 #
 # spec file for package tcsh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tcsh
-Version:        6.24.14
+Version:        6.24.15
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  screen
 Requires:       gawk
+Requires:       hostname
 Requires:       textutils
 Recommends:     tcsh-lang = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

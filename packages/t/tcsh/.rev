@@ -1132,4 +1132,15 @@
     !?foo&lt;tab&gt; (christos)</comment>
     <requestid>1227089</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>e0b4c5d52638db00756e18ab815f0339</srcmd5>
+    <version>6.24.15</version>
+    <time>1738965375</time>
+    <user>anag+factory</user>
+    <comment>- Update to tcsh 6.24.15 - 2025-02-04
+  * This release provides fixes for some compilation failures
+    introduced in the previous release
+- Port patch tcsh-6.21.00.dif means remove temporary fix now upstream</comment>
+    <requestid>1243276</requestid>
+  </revision>
 </revisionlist>
