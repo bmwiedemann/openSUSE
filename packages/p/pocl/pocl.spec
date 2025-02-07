@@ -1,7 +1,7 @@
 #
 # spec file for package pocl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,16 @@
 
 
 %define sover  2
+%if 0%{?suse_version} >= 1600
+%bcond_without  spirv
+%else
+%bcond_with     spirv
+%endif
+%if 0%{?suse_version} >= 1600
+%bcond_without  ttb
+%else
+%bcond_with     ttb
+%endif
 Name:           pocl
 Version:        6.0
 Release:        0
@@ -28,12 +38,12 @@ License:        MIT
 Group:          Development/Tools/Other
 URL:            https://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source98:       maint.README
 Source99:       pocl-rpmlintrc
 # Version 6.0: Supports LLVM versions 14.0 to 18.0
 BuildRequires:  ((clang-devel >= 14 with clang-devel < 19) or clang18-devel)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libLLVMSPIRVLib-devel
 BuildRequires:  ninja
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
@@ -42,6 +52,12 @@ BuildRequires:  pkgconfig(hwloc)
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+%if %{with ttb}
+BuildRequires:  tbb-devel
+%endif
+%if %{with spirv}
+BuildRequires:  libLLVMSPIRVLib-devel
+%endif
 
 %description
 Portable Computing Language (pocl) is an implementation of the OpenCL standard
@@ -60,6 +76,7 @@ and multithread.
 %package -n libpocl%{sover}
 Summary:        Shared Library part of pocl
 Group:          System/Libraries
+Recommends:     libpocl-devices-tbb = %{version}
 
 %description -n libpocl%{sover}
 Portable Computing Language (pocl) is an implementation of the OpenCL standard
@@ -67,6 +84,19 @@ which can be adapted for new targets and devices, both for homogeneous CPU and
 heterogenous GPUs/accelerators.
 
 This subpackage contains the shared library part of pocl.
+
+%if %{with ttb}
+%package -n libpocl-devices-tbb
+Summary:        TBB device for pocl
+Group:          System/Libraries
+
+%description -n libpocl-devices-tbb
+Portable Computing Language (pocl) is an implementation of the OpenCL standard
+which can be adapted for new targets and devices, both for homogeneous CPU and
+heterogenous GPUs/accelerators.
+
+This subpackage contains the Thread Building Blocks (TBB) device for pocl.
+%endif
 
 %package devel
 Summary:        Development files for the Portable Computing Language
@@ -89,8 +119,13 @@ This subpackage provides the development files needed for pocl.
 %define __builder ninja
 %cmake \
   -DENABLE_CUDA=OFF \
+%if %{with spirv}
   -DENABLE_SPIRV=ON \
+%endif
   -DENABLE_ICD=ON \
+%if %{with ttb}
+  -DENABLE_TBB_DEVICE=ON \
+%endif
   -DPOCL_INSTALL_ICD_VENDORDIR=%{_datadir}/OpenCL/vendors \
 %ifarch %{ix86} x86_64
   -DKERNELLIB_HOST_CPU_VARIANTS=distro \
@@ -135,5 +170,10 @@ This subpackage provides the development files needed for pocl.
 %files devel
 %{_libdir}/libpocl.so
 %{_libdir}/pkgconfig/pocl.pc
+
+%if %{with ttb}
+%files -n libpocl-devices-tbb
+%{_libdir}/pocl/libpocl-devices-tbb.so
+%endif
 
 %changelog

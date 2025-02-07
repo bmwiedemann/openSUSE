@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  6 13:30:37 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Disable SPIR-V Support on Leap 15.x (missing llvm-spirv)
+- Enable CPU TBB driver
+- Add note for users/packagers in maint.README.
+
+-------------------------------------------------------------------
 Sat Dec 28 01:52:48 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use _service file to create tarball from git

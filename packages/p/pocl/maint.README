@@ -1,0 +1,2 @@
+By default POCL uses the TBB backend. If libpocl-devices-tbb is not installed, the OpenCL runtime will not be able to find any devices.
+To force POCl to use the CPU backend, set the environment variable POCL_DEVICES=cpu.
