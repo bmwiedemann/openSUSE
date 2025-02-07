@@ -3,7 +3,7 @@
     <param name="url">https://github.com/falcosecurity/falcosidekick</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">2.30.0</param>
+    <param name="revision">2.31.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

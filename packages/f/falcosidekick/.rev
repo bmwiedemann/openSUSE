@@ -7,4 +7,12 @@
     <comment>new package falcosidekick: simple daemon for connecting Falco to your ecosystem</comment>
     <requestid>1227326</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fdc1538e03686d378a11ffadbcc26851</srcmd5>
+    <version>2.31.1</version>
+    <time>1738966128</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244209</requestid>
+  </revision>
 </revisionlist>

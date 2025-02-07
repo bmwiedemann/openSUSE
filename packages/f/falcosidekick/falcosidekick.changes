@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Feb 07 16:58:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.31.1:
+  * prepare v2.31.1
+  * Adding scope ScopeReadWrite for uploading file for GCS Bucket
+  * build(deps): bump the actions group with 3 updates
+  * build(deps): bump cloud.google.com/go/pubsub from 1.45.3 to
+    1.47.0
+
+-------------------------------------------------------------------
+Fri Feb 07 16:55:25 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.31.0:
+  * prepare v2.31.0
+  * add new output OTLP Logs + improve the OTLP Traces/Metrics
+  * fix typo
+  * Update handlers to match stats_prometheus.go
+  * fix custom headers not added to loki output http/s requests
+  * fix Falcosidekick name for consistency
+  * change the printer for the logs
+  * allow to set the format for the value in Loki log lines
+  * replace dots . by underscores . in Loki labels for consistency
+  * add templated fields in Loki and Prometheus outputs
+  * use a global method for the logs
+  * fix the failing creation of the cluster policy report
+  * allow to set a template for the nats/stan subjects
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.33.0 to
+    1.34.0
+  * build(deps): bump the gomod group with 2 updates
+  * build(deps): bump golangci/golangci-lint-action in the actions
+    group
+  * :bug: Removed size allocation for the loki map
+  * :art: Go fmt
+  * :wrench: Add NS and pod by default in loki output
+  * build(deps): bump docker/setup-qemu-action in the actions group
+  * remove debug line -_-
+  * build(deps): bump golang.org/x/oauth2 from 0.24.0 to 0.25.0
+  * build(deps): bump google.golang.org/api from 0.211.0 to 0.214.0
+  * build(deps): bump github.com/nats-io/nats.go from 1.37.0 to
+    1.38.0
+  * build(deps): bump go.opentelemetry.io/otel/sdk/metric
+  * build(deps): bump the gomod group with 3 updates
+  * build(deps): bump golang.org/x/crypto from 0.29.0 to 0.31.0
+  * build(deps): bump the actions group with 3 updates
+  * build(deps): bump golang.org/x/text from 0.20.0 to 0.21.0
+  * build(deps): bump go.opentelemetry.io/otel/metric from 1.32.0
+    to 1.33.0
+  * build(deps): bump golang.org/x/sync from 0.9.0 to 0.10.0
+  * build(deps): bump cloud.google.com/go/pubsub
+  * build(deps): bump cloud.google.com/go/storage from 1.47.0 to
+    1.48.0
+  * remove the log line for OTLP Metrics (too noisy)
+
+-------------------------------------------------------------------
 Fri Nov 29 12:16:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.30.0:

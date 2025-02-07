@@ -1,7 +1,7 @@
 #
 # spec file for package falcosidekick
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           falcosidekick
-Version:        2.30.0
+Version:        2.31.1
 Release:        0
 Summary:        A simple daemon for connecting Falco to your ecosystem
 License:        Apache-2.0
@@ -28,7 +26,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # taken from https://github.com/falcosecurity/falcosidekick?tab=readme-ov-file#with-systemd
 Source2:        %{name}.service
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23
 
 %description
 A simple daemon for connecting Falco to your ecosystem. It takes a Falco events
