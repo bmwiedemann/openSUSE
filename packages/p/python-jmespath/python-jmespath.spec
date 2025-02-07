@@ -1,7 +1,7 @@
 #
 # spec file for package python-jmespath
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-jmespath
@@ -34,8 +40,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply >= 3.4
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -85,6 +96,10 @@ mv %{buildroot}%{_bindir}/jp.py %{buildroot}%{_bindir}/jp
 %check
 # hangs on python 3.8 with pytest
 %pyunittest discover -v
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jp
 
 %post
 %python_install_alternative jp

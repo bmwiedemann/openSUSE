@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 24 14:57:30 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1235786
+
+-------------------------------------------------------------------
 Mon Feb 26 12:47:18 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Remove the forced switch to Python 3.11 in SLE 15 SP4 and
