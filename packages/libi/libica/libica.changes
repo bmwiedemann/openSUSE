@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  7 06:58:32 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (jsc#PED-10289, jsc#PED-3277) 
+  * libica-fips-update-Fix-bug-in-condition-logic.patch
+
+-------------------------------------------------------------------
 Tue Dec 31 10:44:31 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade libica to version 4.4.0 (jsc#PED-3277, jsc#PED-10289)

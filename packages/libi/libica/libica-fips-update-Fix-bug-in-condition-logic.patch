@@ -1,0 +1,30 @@
+From ff35d0226e72251ae495913aeb758bd141a3db19 Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Wed, 18 Dec 2024 17:09:33 +0100
+Subject: [PATCH] Fix bug in condition logic
+
+This bug causes an incorrect indication of the availability of algos
+in fips mode.
+
+Fixes: https://github.com/opencryptoki/libica/commit/a9288f578b402851d41da579a78e3cbd9d1bab98
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/s390_crypto.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/s390_crypto.c b/src/s390_crypto.c
+index 58e082a..e05c7e7 100644
+--- a/src/s390_crypto.c
++++ b/src/s390_crypto.c
+@@ -709,8 +709,8 @@ int s390_get_functionlist(libica_func_list_element *pmech_list,
+ 	 *   approved.
+ 	 * - We are in an error state.
+ 	 * */
+-	if (((fips & ICA_FIPS_MODE) && !fips_approved(pmech_list[x].mech_mode_id &&
+-		!fips_override(pmech_list[x].mech_mode_id)))
++	if (((fips & ICA_FIPS_MODE) && !fips_approved(pmech_list[x].mech_mode_id) &&
++		!fips_override(pmech_list[x].mech_mode_id))
+ 	    || fips >> 1) {
+ 		pmech_list[x].flags = 0;
+ 		pmech_list[x].property = 0;

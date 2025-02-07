@@ -596,4 +596,12 @@ Changed Jira reference to the Epic and not the Team task.</comment>
     <comment></comment>
     <requestid>1234137</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>5cde02cb1e9aff6c9e5787557c94babb</srcmd5>
+    <version>4.4.0</version>
+    <time>1738965925</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244061</requestid>
+  </revision>
 </revisionlist>

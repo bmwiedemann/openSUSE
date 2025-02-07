@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,8 @@ Source4:        z90crypt.service
 Source5:        %{name}-rpmlintrc
 ###
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
-Patch99:        libica-sles15sp5-FIPS-hmac-key.patch
+Patch02:        libica-sles15sp5-FIPS-hmac-key.patch
+Patch03:        libica-fips-update-Fix-bug-in-condition-logic.patch
 ###
 
 BuildRequires:  autoconf
