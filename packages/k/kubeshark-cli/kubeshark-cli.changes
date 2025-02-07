@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:25:50 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.4.0:
+  * :bookmark: Bump the Helm chart version to 52.4.0
+  * Worker component security context refactoring  (#1707)
+  * Remove init container; remove -disable-ebpf option (#1706)
+  * Readme updated (#1705)
+  * Fix pull secret aligning (#1703)
+  * Refactor and simplify pcapdump logic (#1701)
+  * Add `PortMapping` to `TapConfig` for port number based
+    dissector prioritization (#1700)
+  * Automatic patch updates
+  * Moving to eBPF as a default packet capture method. Making
+    default packet capture method eBPF, defaulting to AF_PACKET in
+    case eBPF is not available
+
+-------------------------------------------------------------------
 Sat Jan 25 08:06:35 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.96:
