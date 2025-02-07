@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 07 10:39:37 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 3.88.5:
+  * fix(deps): update github.com/tailscale/depaware digest to b748de0 (#3883)
+  * Feature: Airtable OAuth Detector (#3868)
+  * disable noisy detector (#3876)
+  * Compress release with UPX (#3456)
+  * Use smaller array to count commits in the GHA action (#3864)
+  * [SCAN-165] Use Err Reporting (#3862)
+  * [Feat] PrivateKey Analyzer (#3854)
+  * fix base on initial commits (#3586)
+  * feat(detectors): create azure refresh token (#2978)
+  * Enable Auth0 (#3857)
+
+-------------------------------------------------------------------
 Fri Jan 31 10:48:12 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 3.88.4:
