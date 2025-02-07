@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  7 18:49:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.11:
+  * Upgrade dependencies including DNS disco
+  * improve logging when failing to resolve a name
+
+-------------------------------------------------------------------
 Tue Jan 28 06:52:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.36.10:
