@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  7 09:00:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.4
+  * Fixed decoding 4-bit RLE encoded BMP files
+  * Fixed setting the position of X11 windows before they are shown
+  * Fixed D-Pad not working when using SDL2 controller mappings
+  * Fixed SDL_OpenHapticFromJoystick() not returning a valid
+    haptic handle
+  * Added SDL_StretchSurface() as a replacement for SDL2
+    SDL_SoftStretch() and SDL_SoftStretchLinear()
+  * Fixed several memory leaks
+
+-------------------------------------------------------------------
 Sun Feb  2 12:05:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.2
