@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:38:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- diffutils 3.11:
+  * quote file names more consistently in diagnostics
+  * diff now outputs more information when symbolic links differ
+  * diff's --ignore-case (-i) and --ignore-file-name-case options
+    now support multi-byte characters
+  * diff now supports multi-byte characters when treating white
+    space
+  * In options like --expand-tabs (-t), --ignore-space-change (-b)
+    and --ignore-tab-expansion (-E), diff now recognizes non-ASCII
+    space characters and counts columns for non-ASCII characters.
+  * cmp -bl no longer omits "M-" from bytes with the high bit set
+    in single-byte locales like en_US.iso8859-1
+  * cmp -i N and -n N no longer fail merely because N is enormous.
+  * cmp -s no longer mishandles /proc files
+  * diff -E no longer mishandles some input lines containing '\a',
+    '\b', '\f', '\r', '\v', or '\0'.
+  * diff -ly no longer mishandles non-ASCII input.
+  * diff - A/B now works correctly when standard input is a
+    directory, by reading a file named B in that directory.
+  * diff no longer suffers from race conditions in some cases when
+    comparing files in a mutating file system
+
+-------------------------------------------------------------------
 Mon May 22 19:14:42 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - diffutils 3.10:

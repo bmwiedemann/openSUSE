@@ -2,6 +2,7 @@
 # spec file for package diffutils
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           diffutils
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        GNU diff Utilities
 License:        GFDL-1.2-only AND GPL-3.0-or-later
@@ -41,8 +42,12 @@ make source code patches, for instance.
 %build
 %configure \
   --with-packager="openSUSE" \
-  --with-packager-bug-reports="http://bugs.opensuse.org/"
+  --with-packager-bug-reports="https://bugs.opensuse.org/"
 %make_build
+
+%install
+%make_install
+%find_lang %{name}
 
 %check
 %if 0%{?qemu_user_space_build}
@@ -55,10 +60,6 @@ echo 'int main() { return 77; }' > gnulib-tests/test-free.c
 %endif
 %make_build check
 
-%install
-%make_install
-%find_lang %{name}
-
 %files
 %license COPYING
 %doc AUTHORS NEWS README THANKS
@@ -67,5 +68,6 @@ echo 'int main() { return 77; }' > gnulib-tests/test-free.c
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
