@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:08:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.2
+  * Remove the <4 Python requirement
+
+-------------------------------------------------------------------
 Sun Nov  3 14:53:59 UTC 2024 - eccsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
