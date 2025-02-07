@@ -4110,7 +4110,7 @@ BR.22.2413904	Taipu	Taipu	6320246
 BR.22.2414001	Tangará	Tangara	6320247
 BR.22.2414100	Tenente Ananias	Tenente Ananias	6320248
 BR.22.2414159	Tenente Laurentino Cruz	Tenente Laurentino Cruz	6320249
-BR.22.2414209	Tibau do Sul	Tibau Do Sul	6320250
+BR.22.2414209	Tibau do Sul	Tibau do Sul	6320250
 BR.22.2414308	Timbaúba dos Batistas	Timbauba Dos Batistas	6320251
 BR.22.2414456	Triunfo Potiguar	Triunfo Potiguar	6320252
 BR.22.2414506	Umarizal	Umarizal	6320253
@@ -10762,7 +10762,7 @@ CN.14.5425	Ngari Diqu	Ngari Diqu	1280456
 CN.14.5406	Nagqu Shi	Nagqu Shi	1280515
 CN.14.5401	Lhasa Shi	Lhasa Shi	1280735
 CN.13.6530	Kezilesu	Kezilesu	1280828
-CN.13.6531	Kaxgar Diqu	Kaxgar Diqu	1280848
+CN.13.6531	Kashi Diqu	Kashi Diqu	1280848
 CN.15.6209	Jiuquan Shi	Jiuquan Shi	1280931
 CN.15.6202	Jiayuguan Shi	Jiayuguan Shi	1280956
 CN.13.6532	Hetian	Hetian	1281018
@@ -10772,15 +10772,15 @@ CN.29.5334	Dêqên Tibetan Autonomous Prefecture	Deqen Tibetan Autonomous Prefec
 CN.29.5331	Dehong Daizu Jingpozu Zizhizhou	Dehong Daizu Jingpozu Zizhizhou	1281381
 CN.29.5305	Baoshan Shi	Baoshan Shi	1281672
 CN.13.6501	Urumqi Shi	Urumqi Shi	1529101
-CN.13.6504	Turpan Diqu	Turpan Diqu	1529113
+CN.13.6504	Tulufan	Tulufan	1529113
 CN.13.6542	Tacheng Diqu	Tacheng Diqu	1529166
-CN.13.6502	Karamay Shi	Karamay Shi	1529400
-CN.13.6540	Ili Kazak Zizhizhou	Ili Kazak Zizhizhou	1529434
-CN.13.6505	Kumul Diqu	Kumul Diqu	1529483
+CN.13.6502	Kelamayi Shi	Kelamayi Shi	1529400
+CN.13.6540	Yili	Yili	1529434
+CN.13.6505	Hami	Hami	1529483
 CN.13.6523	Changji Huizu Zizhizhou	Changji Huizu Zizhizhou	1529568
-CN.13.6527	Bortala Mongol Zizhizhou	Bortala Mongol Zizhizhou	1529581
-CN.13.6528	Bayingolin Mongol Zizhizhou	Bayingolin Mongol Zizhizhou	1529604
-CN.13.6543	Altay Diqu	Altay Diqu	1529650
+CN.13.6527	Bortala	Bortala	1529581
+CN.13.6528	Bayinguoleng Menggu Zizhizhou	Bayinguoleng Menggu Zizhizhou	1529604
+CN.13.6543	Aletai Diqu	Aletai Diqu	1529650
 CN.13.6529	Aksu Diqu	Aksu Diqu	1529658
 CN.18.5203	Zunyi Shi	Zunyi Shi	1783620
 CN.32.5103	Zigong Shi	Zigong Shi	1783744
@@ -15068,7 +15068,6 @@ GB.ENG.J9	Nottinghamshire	Nottinghamshire	2641169
 GB.ENG.J7	North Yorkshire	North Yorkshire	2641209
 GB.ENG.J6	Northumberland	Northumberland	2641235
 GB.ENG.J5	North Tyneside	North Tyneside	2641238
-GB.ENG.J1	Northamptonshire	Northamptonshire	2641429
 GB.ENG.I9	Norfolk	Norfolk	2641455
 GB.SCT.V6	Moray	Moray	2642240
 GB.SCT.V5	Midlothian	Midlothian	2642559
@@ -15223,6 +15222,8 @@ GB.NIR.N09000002	Armagh City Banbridge and Craigavon	Armagh City Banbridge and C
 GB.NIR.N09000010	Newry Mourne and Down	Newry Mourne and Down	11353077
 GB.NIR.N09000008	Mid and East Antrim	Mid and East Antrim	11353078
 GB.ENG.AA	Bournemouth, Christchurch and Poole Council	Bournemouth, Christchurch and Poole Council	12165737
+GB.ENG.WNH	West Northamptonshire	West Northamptonshire	13192427
+GB.ENG.NNH	North Northamptonshire	North Northamptonshire	13192429
 GE.71.610823	Zugdidis Munitsip’alit’et’i	Zugdidis Munitsip'alit'et'i	610823
 GE.66.610865	Zest’aponis Munitsip’alit’et’i	Zest'aponis Munitsip'alit'et'i	610865
 GE.70.611068	Zavodskoy Rayon	Zavodskoy Rayon	611068
@@ -20091,7 +20092,7 @@ JO.15.8621684	Liwā’ ar Ruwayshid	Liwa' ar Ruwayshid	8621684
 JO.02.8621685	Liwā’ ash Shūnah al Janūbīyah	Liwa' ash Shunah al Janubiyah	8621685
 JO.02.8621686	Liwā’ Dayr ‘Allā	Liwa' Dayr `Alla	8621686
 JO.02.8621687	Liwā’ ‘Ayn al Bāshā	Liwa' `Ayn al Basha	8621687
-JO.02.8621688	Liwā’ Māḩiş wa al Fuḩayş	Liwa' Mahis wa al Fuhays	8621688
+JO.02.8621688	Liwa Mahis wa-al-Fuhays	Liwa Mahis wa-al-Fuhays	8621688
 JO.17.8621689	Liwā’ Qaşabat az Zarqā’	Liwa' Qasabat az Zarqa'	8621689
 JO.17.8621690	Liwā’ ar Ruşayfah	Liwa' ar Rusayfah	8621690
 JO.17.8621691	Liwā’ al Hāshimīyah	Liwa' al Hashimiyah	8621691
@@ -28871,11 +28872,9 @@ NL.03.0294	Gemeente Winterswijk	Gemeente Winterswijk	2744331
 NL.09.0352	Gemeente Wijk bij Duurstede	Gemeente Wijk bij Duurstede	2744482
 NL.03.0296	Gemeente Wijchen	Gemeente Wijchen	2744513
 NL.15.0189	Gemeente Wierden	Gemeente Wierden	2744548
-NL.11.0614	Gemeente Westvoorne	Gemeente Westvoorne	2744605
 NL.02.0098	Gemeente Weststellingwerf	Gemeente Weststellingwerf	2744609
 NL.03.0293	Gemeente Westervoort	Gemeente Westervoort	2744674
 NL.04.1969	Westerkwartier	Westerkwartier	2744721
-NL.07.0457	Gemeente Weesp	Gemeente Weesp	2744903
 NL.05.0988	Gemeente Weert	Gemeente Weert	2744910
 NL.11.0629	Gemeente Wassenaar	Gemeente Wassenaar	2744989
 NL.03.0289	Gemeente Wageningen	Gemeente Wageningen	2745087
@@ -29009,7 +29008,6 @@ NL.03.0252	Gemeente Heumen	Gemeente Heumen	2754146
 NL.15.0164	Gemeente Hengelo	Gemeente Hengelo	2754392
 NL.11.0531	Gemeente Hendrik-Ido-Ambacht	Gemeente Hendrik-Ido-Ambacht	2754407
 NL.06.0794	Gemeente Helmond	Gemeente Helmond	2754446
-NL.11.0530	Gemeente Hellevoetsluis	Gemeente Hellevoetsluis	2754453
 NL.15.0163	Gemeente Hellendoorn	Gemeente Hellendoorn	2754456
 NL.07.0399	Gemeente Heiloo	Gemeente Heiloo	2754515
 NL.05.0917	Gemeente Heerlen	Gemeente Heerlen	2754651
@@ -29073,7 +29071,6 @@ NL.09.0312	Gemeente Bunnik	Gemeente Bunnik	2758105
 NL.05.0899	Gemeente Brunssum	Gemeente Brunssum	2758173
 NL.03.0213	Gemeente Brummen	Gemeente Brummen	2758176
 NL.07.0852	Gemeente Waterland	Gemeente Waterland	2758257
-NL.11.0501	Gemeente Brielle	Gemeente Brielle	2758325
 NL.06.0758	Gemeente Breda	Gemeente Breda	2758400
 NL.06.0757	Gemeente Boxtel	Gemeente Boxtel	2758459
 NL.10.0654	Gemeente Borsele	Gemeente Borsele	2758588
@@ -29197,6 +29194,7 @@ NL.04.1979	Eemsdelta	Eemsdelta	12253550
 NL.06.1982	Land van Cuijk	Land van Cuijk	12494993
 NL.06.1991	Maashorst	Maashorst	12494996
 NL.07.1980	Dijk en Waard	Dijk en Waard	12494997
+NL.11.1992	Voorne aan Zee	Voorne aan Zee	13192441
 NO.05.5628	Tana	Tana	777197
 NO.18.5538	Storfjord	Storfjord	777394
 NO.05.5605	Sør-Varanger	Sor-Varanger	777554
@@ -38011,7 +38009,7 @@ RU.55.13130799	Gorodskoy Okrug Orenburg	Gorodskoy Okrug Orenburg	13130799
 RU.55.13130800	Gayskiy Gorodskoy Okrug	Gayskiy Gorodskoy Okrug	13130800
 RU.61.13130801	Gorodskoy Okrug Buzuluk	Gorodskoy Okrug Buzuluk	13130801
 RU.55.13130802	Kuvandykskiy Gorodskoy Okrug	Kuvandykskiy Gorodskoy Okrug	13130802
-RU.55.13130803	Sol'-Iletskiy Gorodskoky Okrug	Sol'-Iletskiy Gorodskoky Okrug	13130803
+RU.55.13130803	Sol'-Iletskiy Gorodskoy Okrug	Sol'-Iletskiy Gorodskoy Okrug	13130803
 RU.55.13130804	Gorodskoy Okrug Orsk	Gorodskoy Okrug Orsk	13130804
 RU.55.13130805	Abdulinskiy Gorodskoy Okrug	Abdulinskiy Gorodskoy Okrug	13130805
 RU.63.13131637	Gorodskoy Okrug Zhatay	Gorodskoy Okrug Zhatay	13131637
@@ -38185,6 +38183,9 @@ SA.19.10972382	Tabūk	Tabuk	10972382
 SA.19.10972383	Taymā’	Tayma'	10972383
 SA.19.10972384	Umluj	Umluj	10972384
 SA.14.11906054	Ghran	Ghran	11906054
+SA.17.13191966	Harub	Harub	13191966
+SA.17.13191967	At-Tuwal	At-Tuwal	13191967
+SA.17.13191968	Fayfa	Fayfa	13191968
 SB.11.0215	Munda	Munda	8987088
 SB.11.0225	Noro	Noro	9035073
 SB.14.1001	Nggosi	Nggosi	12041744
@@ -46678,7 +46679,7 @@ VN.75.719	Huyện Bàu Bàng	Huyen Bau Bang	9091202
 VN.75.724	Thành Phố Dĩ An	Thanh Pho Di An	9091481
 VN.75.720	Huyện Dầu Tiêng	Huyen Dau Tieng	9091482
 VN.24.795	Thị Xã Kiến Tường	Thi Xa Kien Tuong	9101340
-VN.37.817	Thị Xã Cai Lậy	Thi Xa Cai Lay	9113513
+VN.37.817	Thị xã Cai Lậy	Thi xa Cai Lay	9113513
 VN.37.825	Huyện Tân Phú Đông	Huyen Tan Phu GJong	9113514
 VN.21.913	Huyện U Minh Thượng	Huyen U Minh Thuong	9280591
 VN.09.868	Thị Xã Hồng Ngự	Thi Xa Hong Ngu	9289553
