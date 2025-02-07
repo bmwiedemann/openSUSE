@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Feb  3 21:14:42 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.80:
+  * Defects Fixed:
+    - A splitting issue for ML-KEM led to an incorrect size for kemct
+      in KEMRecipientInfos. This has been fixed.
+    - The PKCS12 KeyStore has been adjusted to prevent accidental doubling
+      of the Oracle trusted certificate attribute (results in an IOException
+      when used with the JVM PKCS12 implementation).
+    - The SignerInfoGenerator copy constructor was ignoring the certHolder field.
+    - The getAlgorithm() method return value for a CompositePrivateKey was
+      not consistent with the corresponding getAlgorithm() return value for
+      the CompositePrivateKey. This has been fixed.
+    - The international property files were missing from the bcjmail distribution.
+    - Issues with ElephantEngine failing on processing large/multi-block messages
+      have been addressed.
+    - GCFB mode now fully resets on a reset.
+    - The lightweight algorithm contestants: Elephant, ISAP, PhotonBeetle,
+      Xoodyak now support the use of the AEADParameters class and provide
+      accurate update/doFinal output lengths.
+    - An unnecessary downcast in CertPathValidatorUtilities was resulting
+      in the ignoring of URLs for FTP based CRLs.
+    - A regression in the OpenPGP API could cause NoSuchAlgorithmException
+      to be thrown when attempting to use SHA-256 in some contexts.
+    - EtsiTs1029411TypesAuthorization was missing an extension field.
+    - Interoperability issues with single depth LMS keys have been addressed.
+  * Additional Features and Functionality:
+    - CompositeSignatures now updated to draft-ietf-lamps-pq-composite-sigs-03.
+    - ML-KEM, ML-DSA, SLH-DSA, and Composite private keys now use raw encodings
+      as per the latest drafts from IETF 121: draft-ietf-lamps-kyber-certificates-06,
+      draft-ietf-lamps-dilithium-certificates-05, and draft-ietf-lamps-x509-slhdsa.
+    - Initial support has been added for RFC 9579 PBMAC1 in the PKCS API.
+    - Support has been added for EC-JPAKE to the lightweight API.
+    - Support has been added for the direct construction of S/MIME AuthEnvelopedData
+      objects, via the SMIMEAuthEnvelopedData class.
+    - An override "org.bouncycastle.asn1.allow_wrong_oid_enc" property has been
+      added to disable new OID encoding checks (use with caution).
+    - Support has been added for the PBEParemeterSpec.getParameterSpec()
+      method where supported by the JVM.
+    - ML-DSA/SLH-DSA now return null for Signature.getParameters() if no context
+      is provided. This allows the algorithms to be used with the existing Java key tool.
+    - HQC has been updated to reflect the reference implementation released on 2024-10-30.
+    - Support has been added to the low-level APIs for the OASIS Shamir Secret
+      Splitting algorithms.
+    - BCJSSE: System property "org.bouncycastle.jsse.fips.allowGCMCiphersIn12"
+      no longer used. FIPS TLS 1.2 GCM suites can now be enabled according to
+      JcaTlsCrypto#getFipsGCMNonceGeneratorFactory (see JavaDoc for details) if
+      done in alignment with FIPS requirements.
+    - Support has been added for OpenPGP V6 PKESK and message encryption.
+    - PGPSecretKey.copyWithNewPassword() now includes AEAD support.
+    - The ASCON family of algorithms have been updated in accordance with the
+      published FIPS SP 800-232 draft.
+
+-------------------------------------------------------------------
 Mon Nov  4 10:49:54 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.79:

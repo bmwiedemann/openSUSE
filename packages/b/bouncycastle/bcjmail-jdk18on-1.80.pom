@@ -2,12 +2,12 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bouncycastle</groupId>
-  <artifactId>bctls-jdk18on</artifactId>
+  <artifactId>bcjmail-jdk18on</artifactId>
   <packaging>jar</packaging>
-  <name>Bouncy Castle JSSE provider and TLS/DTLS API</name>
-  <version>1.79</version>
-  <description>The Bouncy Castle Java APIs for TLS and DTLS, including a provider for the JSSE.</description>
-  <url>https://www.bouncycastle.org/java.html</url>
+  <name>Bouncy Castle JavaMail Jakarta S/MIME APIs</name>
+  <version>1.80</version>
+  <description>The Bouncy Castle Java APIs for doing S/MIME with the Jakarta Mail APIs. The APIs are designed primarily to be used in conjunction with the BC Java provider.</description>
+  <url>https://www.bouncycastle.org/download/bouncy-castle-java/</url>
   <licenses>
     <license>
       <name>Bouncy Castle Licence</name>
@@ -32,14 +32,8 @@
   <dependencies>
     <dependency>
       <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk18on</artifactId>
-      <version>1.79</version>
-      <type>jar</type>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcutil-jdk18on</artifactId>
-      <version>1.79</version>
+      <artifactId>bcpkix-jdk18on</artifactId>
+      <version>[1.80,1.81)</version>
       <type>jar</type>
     </dependency>
   </dependencies>

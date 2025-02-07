@@ -2,12 +2,12 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bouncycastle</groupId>
-  <artifactId>bcutil-jdk18on</artifactId>
+  <artifactId>bcprov-jdk18on</artifactId>
   <packaging>jar</packaging>
-  <name>Bouncy Castle ASN.1 Extension and Utility APIs</name>
-  <version>1.79</version>
-  <description>The Bouncy Castle Java APIs for ASN.1 extension and utility APIs used to support bcpkix and bctls. This jar contains APIs for JDK 1.8 and up.</description>
-  <url>https://www.bouncycastle.org/java.html</url>
+  <name>Bouncy Castle Provider</name>
+  <version>1.80</version>
+  <description>The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains the JCA/JCE provider and low-level API for the BC Java version 1.80 for Java 8 and later.</description>
+  <url>https://www.bouncycastle.org/download/bouncy-castle-java/</url>
   <licenses>
     <license>
       <name>Bouncy Castle Licence</name>
@@ -29,12 +29,4 @@
       <email>feedback-crypto@bouncycastle.org</email>
     </developer>
   </developers>
-  <dependencies>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk18on</artifactId>
-      <version>1.79</version>
-      <type>jar</type>
-    </dependency>
-  </dependencies>
 </project>
