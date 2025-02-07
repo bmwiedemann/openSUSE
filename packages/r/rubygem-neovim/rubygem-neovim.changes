@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Sun Dec 15 21:17:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix rpmlint, so we can ship it to Factory
+
+-------------------------------------------------------------------
+Fri Jun 21 10:17:29 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- # 0.10.0
+
+- Add `Neovim.start_remote` helper for remote module support
+  (https://github.com/neovim/neovim-ruby/pull/107)
+
+
+-------------------------------------------------------------------
+Fri Nov  3 07:47:02 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- # 0.9.1
+
+- Fix bug where `Buffer#[]` with `0` returned the last line of the buffer
+  (https://github.com/neovim/neovim-ruby/issues/97)
+
+
+-------------------------------------------------------------------
+Tue Jan 25 07:14:36 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.9.0
+ see installed CHANGELOG.md
+
+  # 0.9.0
+  
+  - Add RPC support for `:rubyeval`.
+  - Add `Neovim::Session#next`.
+  - Rename `Neovim::Session::Exited` -> `Neovim::Session::Disconnected`.
+  
+
+-------------------------------------------------------------------
+Fri Jul 19 09:25:20 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.8.1
+ see installed CHANGELOG.md
+
+  # 0.8.1
+  
+  - Set client info on host and client startup
+  - Add `Client#channel_id`
+
+-------------------------------------------------------------------
+Mon Jan 14 13:47:53 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.8.0
+ see installed CHANGELOG.md
+
+  # 0.8.0
+  
+  - Allow `Buffer#append` to take a string with newlines
+  - Use non-strict line indexing in `:rubydo` to prevent line deletions from
+    throwing exceptions
+  - Performance optimizations:
+    - Cache RPC method lookups and store them in a set
+    - Only flush writes before reading in the event loop
+    - Delete request handlers after invoking them
+    - Refresh provider globals in a single RPC request
+
+-------------------------------------------------------------------
+Mon Mar  5 05:30:24 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.7.1
+ see installed CHANGELOG.md
+
+  # 0.7.1
+  
+  - Fix `uninitialized constant Neovim::RubyProvider::StringIO`
+  - Various backwards-compatible style changes to satisfy Rubocop rules
+
+-------------------------------------------------------------------
+Thu Feb  8 06:14:31 UTC 2018 - coolo@suse.com
+
+- updated to version 0.7.0
+ see installed CHANGELOG.md
+
+  # 0.7.0
+  
+  - Drop support for Ruby < 2.2.0, update syntax accordingly
+  - Use msgpack gem for all reading/writing
+  - Make provider std stream capturing more robust
+  - Lazily instantiate Host client on 'poll' request
+  - Fix windows by setting all IOs to binmode
+  - Refactor/simplify session and event loop logic
+
+-------------------------------------------------------------------
+Wed Jan  3 14:59:43 UTC 2018 - dkang@suse.com
+
+- Updated to version 0.6.2
+
+  - Put IOs into binary mode (fixes windows bugs)
+  - Various build fixes for appveyor
+  - Update generated docs to v0.2.2
+
+-------------------------------------------------------------------
+Wed Jan  3 14:55:56 UTC 2018 - dkang@suse.com
+
+- initial package
