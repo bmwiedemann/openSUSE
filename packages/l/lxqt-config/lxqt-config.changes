@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb  7 18:17:21 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.1:
+  * Fixed the "Set Position" page in lxqt-config-monitor.
+  * Fixed clicking zones as well as text drawing in Configuration Center.
+  * Use iso-flags-svg for flags in Locale Config if existing.
+  * Cleaned up man pages.
+  * Made the monitor info selectable.
+  * Prevented redundant writing to config files.
+  * Removed ending dots from tooltips.
+  * Improved locale setting in LXQt Locale Config and optimized it.
+  * Add colons to remaining labels of lxqt-config-appearance.
+  * Better layout for Appearance → GTK Style.
+
+-------------------------------------------------------------------
 Mon Nov 11 16:55:26 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Removed Recommends: for -lang package, not needed

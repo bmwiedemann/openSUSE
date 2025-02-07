@@ -637,4 +637,22 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
     <comment>- Removed Recommends: for -lang package, not needed</comment>
     <requestid>1223407</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bf9a3b037ea8388243d8afb033b3b594</srcmd5>
+    <version>2.1.1</version>
+    <time>1738966143</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.1:
+  * Fixed the &quot;Set Position&quot; page in lxqt-config-monitor.
+  * Fixed clicking zones as well as text drawing in Configuration Center.
+  * Use iso-flags-svg for flags in Locale Config if existing.
+  * Cleaned up man pages.
+  * Made the monitor info selectable.
+  * Prevented redundant writing to config files.
+  * Removed ending dots from tooltips.
+  * Improved locale setting in LXQt Locale Config and optimized it.
+  * Add colons to remaining labels of lxqt-config-appearance.
+  * Better layout for Appearance → GTK Style.</comment>
+    <requestid>1244246</requestid>
+  </revision>
 </revisionlist>

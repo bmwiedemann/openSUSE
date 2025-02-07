@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-config
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define mainver 2.1.0
 Name:           lxqt-config
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,9 +39,9 @@ BuildRequires:  cmake(Qt6DBus) >= 6.6
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
 BuildRequires:  cmake(Qt6Svg) >= 6.6
 BuildRequires:  cmake(Qt6Xml) >= 6.6
-BuildRequires:  cmake(lxqt) >= %{version}
-BuildRequires:  cmake(lxqt-menu-data) >= %{version}
-BuildRequires:  cmake(lxqt2-build-tools) >= %{version}
+BuildRequires:  cmake(lxqt) >= %{mainver}
+BuildRequires:  cmake(lxqt-menu-data) >= %{mainver}
+BuildRequires:  cmake(lxqt2-build-tools) >= %{mainver}
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(x11)
