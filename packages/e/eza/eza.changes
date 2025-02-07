@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb  7 07:19:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.20:
+  Bug Fixes:
+  * Make flake.lock icon the nix logo
+
+-------------------------------------------------------------------
 Thu Jan 30 10:37:44 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.19:

@@ -983,4 +983,14 @@
   * Fix and unify msrv and add matrix to free/netbsd</comment>
     <requestid>1241318</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>f9e2ddcbd3b601935344e9000a78731a</srcmd5>
+    <version>0.20.20</version>
+    <time>1738965903</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.20:
+  Bug Fixes:
+  * Make flake.lock icon the nix logo</comment>
+    <requestid>1244063</requestid>
+  </revision>
 </revisionlist>
