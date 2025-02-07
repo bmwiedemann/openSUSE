@@ -1,54 +1,12 @@
 ---
+ numba/tests/test_cli.py            |    1 +
+ numba/tests/test_mathlib.py        |    1 +
  numba/tests/test_parfors.py        |    5 +++--
  numba/tests/test_parfors_passes.py |    1 +
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ 4 files changed, 6 insertions(+), 2 deletions(-)
 
-Index: numba-0.59.1/numba/tests/test_parfors.py
-===================================================================
---- numba-0.59.1.orig/numba/tests/test_parfors.py
-+++ numba-0.59.1/numba/tests/test_parfors.py
-@@ -1199,6 +1199,7 @@ class TestParforNumPy(TestParforsBase):
-         self.check_variants(test_impl2, data_gen)
-         self.count_parfors_variants(test_impl2, data_gen)
- 
-+    @unittest.skip("Fails on type check in OBS")
-     def test_ndarray_fill(self):
-         def test_impl(x):
-             x.fill(7.0)
-@@ -4659,7 +4660,7 @@ class TestParforsVectorizer(TestPrangeBa
- 
-             return asm
- 
--    @linux_only
-+    @unittest.skip("Our x86_64 asm is most probably different from the upstream one.")
-     @TestCase.run_test_in_subprocess
-     def test_vectorizer_fastmath_asm(self):
-         """ This checks that if fastmath is set and the underlying hardware
-@@ -4700,7 +4701,7 @@ class TestParforsVectorizer(TestPrangeBa
-             # check no zmm addressing is present
-             self.assertTrue('zmm' not in v)
- 
--    @linux_only
-+    @unittest.skip("Our x86_64 asm is most probably different from the upstream one.")
-     @TestCase.run_test_in_subprocess(envvars={'NUMBA_BOUNDSCHECK': '0'})
-     def test_unsigned_refusal_to_vectorize(self):
-         """ This checks that if fastmath is set and the underlying hardware
-Index: numba-0.59.1/numba/tests/test_parfors_passes.py
-===================================================================
---- numba-0.59.1.orig/numba/tests/test_parfors_passes.py
-+++ numba-0.59.1/numba/tests/test_parfors_passes.py
-@@ -514,6 +514,7 @@ class TestConvertLoopPass(BaseTest):
-             str(raises.exception),
-         )
- 
-+    @unittest.skip("Fails on type check in OBS")
-     def test_init_prange(self):
-         def test_impl():
-             n = 20
-Index: numba-0.59.1/numba/tests/test_cli.py
-===================================================================
---- numba-0.59.1.orig/numba/tests/test_cli.py
-+++ numba-0.59.1/numba/tests/test_cli.py
+--- a/numba/tests/test_cli.py
++++ b/numba/tests/test_cli.py
 @@ -264,6 +264,7 @@ class TestGDBCLIInfoBrokenGdbs(TestCase)
              self.assertIn("No such file or directory", stdout)
              self.assertIn(path, stdout)
@@ -57,11 +15,9 @@ Index: numba-0.59.1/numba/tests/test_cli.py
      def test_nonsense_gdb_binary(self):
          # Tests that a nonsense binary specified as gdb it picked up ok
          env = os.environ.copy()
-Index: numba-0.59.1/numba/tests/test_mathlib.py
-===================================================================
---- numba-0.59.1.orig/numba/tests/test_mathlib.py
-+++ numba-0.59.1/numba/tests/test_mathlib.py
-@@ -508,6 +508,7 @@ class TestMathLib(TestCase):
+--- a/numba/tests/test_mathlib.py
++++ b/numba/tests/test_mathlib.py
+@@ -543,6 +543,7 @@ class TestMathLib(TestCase):
                      float('-inf'), float('inf'), float('nan')]
          self.run_unary(pyfunc, x_types, x_values, prec='exact')
  
@@ -69,3 +25,41 @@ Index: numba-0.59.1/numba/tests/test_mathlib.py
      def test_ldexp(self):
          pyfunc = ldexp
          cfunc = njit(pyfunc)
+--- a/numba/tests/test_parfors.py
++++ b/numba/tests/test_parfors.py
+@@ -1205,6 +1205,7 @@ class TestParforNumPy(TestParforsBase):
+         self.check_variants(test_impl2, data_gen)
+         self.count_parfors_variants(test_impl2, data_gen)
+ 
++    @unittest.skip("Fails on type check in OBS")
+     def test_ndarray_fill(self):
+         def test_impl(x):
+             x.fill(7.0)
+@@ -4725,7 +4726,7 @@ class TestParforsVectorizer(TestPrangeBa
+ 
+             return asm
+ 
+-    @linux_only
++    @unittest.skip("Our x86_64 asm is most probably different from the upstream one.")
+     @TestCase.run_test_in_subprocess
+     def test_vectorizer_fastmath_asm(self):
+         """ This checks that if fastmath is set and the underlying hardware
+@@ -4766,7 +4767,7 @@ class TestParforsVectorizer(TestPrangeBa
+             # check no zmm addressing is present
+             self.assertTrue('zmm' not in v)
+ 
+-    @linux_only
++    @unittest.skip("Our x86_64 asm is most probably different from the upstream one.")
+     @TestCase.run_test_in_subprocess(envvars={'NUMBA_BOUNDSCHECK': '0'})
+     def test_unsigned_refusal_to_vectorize(self):
+         """ This checks that if fastmath is set and the underlying hardware
+--- a/numba/tests/test_parfors_passes.py
++++ b/numba/tests/test_parfors_passes.py
+@@ -514,6 +514,7 @@ class TestConvertLoopPass(BaseTest):
+             str(raises.exception),
+         )
+ 
++    @unittest.skip("Fails on type check in OBS")
+     def test_init_prange(self):
+         def test_impl():
+             n = 20

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Feb  6 19:21:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove bogus skip-test_noinline_on_main_call.patch, it was fixed
+  upstream in 0.61
+- Handle c++ development files for devel package
+
+-------------------------------------------------------------------
+Wed Feb  5 17:01:37 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.61.0:
+  Major Numba release adding Python 3.13 and NumPy 2.1 support.
+  Detailed changelog at https://numba.readthedocs.io/en/stable/release/0.61.0-notes.html
+  Highlights:
+  - Add initial implementation for a new type system
+  - Python 3.13 support
+  - Dropped support for Python 3.9
+  - Update the minimum supported NumPy version to 1.24
+  - Added Support for NumPy 2.1
+- Remove upstreamed patches:
+  - numpy21.patch
+  - py313.patch
+- Add skip-test_noinline_on_main_call.patch to skip
+  test_noinline_on_main_call (gh#numba/numba#9658).
+
+-------------------------------------------------------------------
 Fri Nov 22 09:42:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream py313.patch to support Python 3.13

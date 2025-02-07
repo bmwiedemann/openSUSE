@@ -1,7 +1,7 @@
 #
 # spec file for package python-numba
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,9 +32,6 @@ ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %else
 %bcond_without test
 %define psuffix -%{flavor}
-%if "%{flavor}" != "test-py39"
-%define skip_python39 1
-%endif
 %if "%{flavor}" != "test-py310"
 %define skip_python310 1
 %endif
@@ -57,7 +54,7 @@ ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
 Name:           python-numba%{?psuffix}
-Version:        0.60.0
+Version:        0.61.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -66,11 +63,7 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
-# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9741 Add Support for NumPy 2.1
-Patch4:         numpy21.patch
-# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9682 Python 3.13 support
-Patch5:         py313.patch
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -79,7 +72,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.43 with python-llvmlite < 0.44)
+Requires:       (python-llvmlite >= 0.44 with python-llvmlite < 0.45)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -151,7 +144,7 @@ export CFLAGS="%{optflags} -fPIC"
 %pyproject_install
 %{python_expand #
 %fdupes %{buildroot}%{$python_sitearch}
-find %{buildroot}%{$python_sitearch} -name '*.[ch]' > devel-files0-%{$python_bin_suffix}.files
+find %{buildroot}%{$python_sitearch} -name '*.[ch]' -o -name '*.[ch]pp' > devel-files0-%{$python_bin_suffix}.files
 sed 's|^%{buildroot}||' devel-files0-%{$python_bin_suffix}.files > devel-files-%{$python_bin_suffix}.files
 sed 's|^%{buildroot}|%%exclude |' devel-files0-%{$python_bin_suffix}.files > devel-files-exclude-%{$python_bin_suffix}.files
 }
