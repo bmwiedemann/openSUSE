@@ -153,4 +153,19 @@
   * go#71147 internal/trace: TestTraceCPUProfile/Stress failures (forwarded request 1240017 from jfkw)</comment>
     <requestid>1240020</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>537ed560ecb5ff120418db534f0d093d</srcmd5>
+    <version>1.23.6</version>
+    <time>1738965345</time>
+    <user>anag+factory</user>
+    <comment>- go1.23.6 (released 2025-02-04) includes security fixes to the
+  crypto/elliptic package, as well as bug fixes to the compiler and
+  the go command.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2025-22866
+  * go#71423 go#71383 boo#1236801 security: fix CVE-2025-22866 crypto/internal/fips140/nistec: p256NegCond is variable time on ppc64le
+  * go#71263 cmd/go/internal/modfetch/codehost: test fails with git 2.47.1
+  * go#71230 cmd/compile: broken write barrier (forwarded request 1243260 from jfkw)</comment>
+    <requestid>1243262</requestid>
+  </revision>
 </revisionlist>
