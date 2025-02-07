@@ -1,7 +1,7 @@
 #
 # spec file for package kubeone
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define KUBERNETES_STABLE_VERSION v1.31.3
 
 Name:           kubeone
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        CLI for the kubeone cluster automation
 License:        Apache-2.0

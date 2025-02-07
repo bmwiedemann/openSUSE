@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:25:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.2:
+  * Add changelog for v1.9.2 (#3551)
+  * include the infra namespace as a pod namespace for machine
+    controller webhook (#3549)
+  * [release/v1.9] Cherry-pick the required fixes for the
+    `release/v1.9` branch (#3547)
+  * [release/v1.9] Synchronize OWNERS_ALIASES file with Github
+    teams (#3543)
+  * [release/v1.9] Synchronize OWNERS_ALIASES file with Github
+    teams (#3532)
+  * [release/v1.9] Fix APT/RPM PGP key expiration issue for old
+    kubernetes versiosn (#3526)
+  * Update codegen with copyright YEAR (#3527)
+
+-------------------------------------------------------------------
 Mon Dec 23 14:36:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.1:
