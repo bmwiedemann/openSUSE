@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -116,8 +116,13 @@ use import path with pkg.deepin.io/dde/api prefix.
 
 %prep
 %autosetup -p1 -a1 -n %{repo}-%{version}
+%if 0%{?suse_version} > 1500
+mkdir -p $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/
+cp vendor/* $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/ -r
+%else
 mkdir -p $HOME/rpmbuild/BUILD/go/src/
 cp vendor/* $HOME/rpmbuild/BUILD/go/src/ -r
+%endif
 rm -rf vendor
 
 %build
@@ -127,11 +132,19 @@ export GO111MODULE=off
 %make_build
 
 %install
+%if 0%{?suse_version} > 1500
+mv $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com/linuxdeepin .
+rm -rf $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com/*\
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/golang.org \
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/gopkg.in
+mv linuxdeepin $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com/
+%else
 mv $HOME/rpmbuild/BUILD/go/src/github.com/linuxdeepin .
 rm -rf $HOME/rpmbuild/BUILD/go/src/github.com/*\
        $HOME/rpmbuild/BUILD/go/src/golang.org \
        $HOME/rpmbuild/BUILD/go/src/gopkg.in
 mv linuxdeepin $HOME/rpmbuild/BUILD/go/src/github.com/
+%endif
 %goinstall
 %gosrc
 install -m0644 themes/*.c %{buildroot}%{go_contribsrcdir}/%{import_path}/themes/

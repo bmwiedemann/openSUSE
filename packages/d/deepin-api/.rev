@@ -91,4 +91,12 @@
     <comment> (forwarded request 1119993 from hillwood)</comment>
     <requestid>1119994</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>dc946ccc9aa808e0d96ed66dc7fd299c</srcmd5>
+    <version>5.5.25</version>
+    <time>1738965910</time>
+    <user>anag+factory</user>
+    <comment>- Update gopath for Tumbleweed. (forwarded request 1244066 from hillwood)</comment>
+    <requestid>1244067</requestid>
+  </revision>
 </revisionlist>
