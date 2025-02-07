@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:21:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.4:
+  * patch: expose fuzz flag value
+  * sbom: update copyrightText from "/n" to "NOASSERTION"
+  * Fix some white space issues
+  * Add ${{subpkg.name}} string substitution
+  * lint: Add linter for usrmerge
+  * Fix documentation update
+  * Update the documentation for the new linter
+  * Fix a linting error
+  * Add a linter which checks for pkgconfig files
+  * patch: add --verbose flag to patch pipeline
+
+-------------------------------------------------------------------
 Mon Jan 27 15:58:37 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.3:
