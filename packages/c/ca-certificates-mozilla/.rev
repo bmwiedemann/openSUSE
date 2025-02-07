@@ -863,4 +863,14 @@
 - Define two macros to break a build cycle with p11-kit. (forwarded request 1243021 from dirkmueller)</comment>
     <requestid>1243055</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>72af2c21c26064b264f9da5c9e02daab</srcmd5>
+    <version>2.74</version>
+    <time>1738965368</time>
+    <user>anag+factory</user>
+    <comment>- test for a concretely missing certificate rather than
+  just the directory, as the latter is now also provided by
+  openssl-3 (forwarded request 1243202 from dirkmueller)</comment>
+    <requestid>1243275</requestid>
+  </revision>
 </revisionlist>

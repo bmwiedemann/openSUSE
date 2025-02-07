@@ -16,7 +16,7 @@ trap cleanup EXIT
 mkdir old new
 cd old
 echo old...
-ln -s ../.osc/certdata.txt
+ln -s ../.osc/sources/certdata.txt
 python3 ../certdata2pem.py > stdout 2> stderr
 ls -1 cert-* | sort > ../old.files
 cd ..

@@ -71,7 +71,7 @@ echo "C /var/lib/ca-certificates" > %{buildroot}%{_tmpfilesdir}/%{name}.conf
 if [ -z "${TRANSACTIONAL_UPDATE}" ]; then
   if [ -x /usr/bin/systemd-tmpfiles ]; then
     /usr/bin/systemd-tmpfiles --create %{_tmpfilesdir}/ca-certificates-mozilla-prebuilt.conf || :
-  elif [ -x /bin/cp ] && [ ! -e /var/lib/ca-certificates ]; then
+  elif [ -x /bin/cp ] && [ ! -e /var/lib/ca-certificates/openssl/002c0b4f.0 ]; then
     /bin/cp -as /usr/share/factory/var/lib/ca-certificates /var/lib || :
   fi
 fi

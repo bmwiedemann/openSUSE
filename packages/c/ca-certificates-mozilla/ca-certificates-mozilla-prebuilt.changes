@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 15:48:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- test for a concretely missing certificate rather than
+  just the directory, as the latter is now also provided by
+  openssl-3
+
+-------------------------------------------------------------------
 Thu Aug  8 12:16:30 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Re-create java-cacerts with SOURCE_DATE_EPOCH set

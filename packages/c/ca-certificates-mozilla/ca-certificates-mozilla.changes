@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 15:24:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.74 state of Mozilla SSL root CAs:
+  Removed:
+  * SwissSign Silver CA - G2
+  Added:
+  * D-TRUST BR Root CA 2 2023
+  * D-TRUST EV Root CA 2 2023
+
+-------------------------------------------------------------------
 Tue Feb  4 09:55:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - remove extensive signature printing in comments of the cert
