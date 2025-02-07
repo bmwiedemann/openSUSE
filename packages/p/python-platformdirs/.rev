@@ -187,4 +187,12 @@
     an abstract class for other checkers</comment>
     <requestid>1225334</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>045ff0bd4e49241f3a30db32601ca03a</srcmd5>
+    <version>4.3.6</version>
+    <time>1738965418</time>
+    <user>anag+factory</user>
+    <comment>- Use multibuild for test package</comment>
+    <requestid>1243366</requestid>
+  </revision>
 </revisionlist>
