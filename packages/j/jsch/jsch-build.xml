@@ -9,7 +9,7 @@
   <property file="build.properties"/>
 
   <property name="project.artifactId" value="jsch"/>
-  <property name="project.version" value="0.2.9"/>
+  <property name="project.version" value="specify_on_command_line"/>
 
   <property name="spec.version" value="0.2"/>
   <property name="versionWithoutMinus" value="${project.version}"/>
@@ -18,7 +18,7 @@
   <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
-  <property name="build.finalName" value="jsch-${project.version}"/>
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>

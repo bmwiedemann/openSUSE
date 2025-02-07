@@ -1,10 +1,10 @@
 --- a/src/main/java9/module-info.java
 +++ b/src/main/java9/module-info.java
-@@ -3,7 +3,6 @@ module com.jcraft.jsch {
- 
-     requires static java.security.jgss;
-     requires static java.logging;
--    requires static org.apache.logging.log4j;
-     requires static org.slf4j;
-     requires static org.bouncycastle.provider;
-     requires static com.sun.jna;
+@@ -5,7 +5,6 @@ module com.jcraft.jsch {
+   requires static com.sun.jna.platform;
+   requires static java.logging;
+   requires static java.security.jgss;
+-  requires static org.apache.logging.log4j;
+   requires static org.bouncycastle.provider;
+   requires static org.slf4j;
+ }

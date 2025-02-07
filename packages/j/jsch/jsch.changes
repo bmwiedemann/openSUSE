@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jan 14 08:17:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 0.2.22
+  * Changes in 0.2.22
+    + Add support for sntrup761x25519-sha512 KEX algorithm.
+      ° As with sntrup761x25519-sha512@openssh.com, this requires
+        Bouncy Castle
+    + Add support for mlkem768x25519-sha256, mlkem768nistp256-sha256
+      & mlkem1024nistp384-sha384 KEX algorithms.
+      ° As with sntrup761x25519-sha512 &
+        sntrup761x25519-sha512@openssh.com, this requires Bouncy
+        Castle
+    + Run tests on Java 23.
+    + fix(#739) SignatureECDSAN destroying private key
+  * Changes in 0.2.21
+    + Update Deflate.java
+  * Changes in 0.2.20
+    + Fix #648: Incorrect Oid for service name in GSSAPI
+      authentication
+    + Update Hostkey.getFingerprint() method to output more moden
+      format first introduced with OpenSSH 6.8
+    + Add stack trace to log message when an exception occurs during
+      authentication
+  * Changes in 0.2.19
+    + Enforce DHGEX prime modulus bit length meets configured
+      constraints
+    + Fix possible rekeying timeouts
+  * Changes in 0.2.18
+    + Handle negated patterns according to ssh_config(5)
+  * Changes in 0.2.17
+    + Organize imports and remove unused imports
+    + Remove unneeded implements statements
+    + Remove unused local variables
+    + Skip flatten-maven-plugin during CI tests
+    + Expand wildcard imports in order to better adhere to Google
+      Java Style Guide
+    + Add PBKDF2-HMAC-SHA512/256 & PBKDF2-HMAC-SHA512/224, which are
+      both supported as of Java 21
+    + Organize imports
+    + Always embed NoPadding into Cipher string
+    + Import javax.crypto.Cipher instead of com.jcraft.jsch.Cipher
+    + Organize module-info
+    + More formatting corrections to better adhere to Google Java
+      Style Guide
+    + Switch to using java.time classes & make work for dates past
+      2038
+  * Changes of 0.2.16
+    + Add support for sntrup761x25519-sha512@openssh.com KEX
+      algorithm
+    + Switch to bnd-maven-plugin in order to support Multi-Release
+      OSGi bundle JAR's via supplemental manifest files
+    + Introduce JSchProxyException to replace generic JschException
+      in Proxy implementations
+    + Do not falsely log support for ext-info if the server did not
+      return 'ext-info-s'
+- Modified patches:
+  * jsch-junixsocket.patch
+  * jsch-log4j.patch
+    + rediff
+
+-------------------------------------------------------------------
 Mon Apr 29 12:18:36 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8

@@ -1,7 +1,7 @@
 #
 # spec file for package jsch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           jsch
-Version:        0.2.15
+Version:        0.2.22
 Release:        0
 Summary:        Pure Java implementation of SSH2
 License:        BSD-3-Clause
@@ -85,11 +85,11 @@ rm -f \
 %build
 mkdir -p lib
 build-jar-repository -s lib jna jna-platform slf4j/api bcprov
-%{ant} jar javadoc
+%{ant} -Dproject.version=%{version} jar javadoc
 
 %install
 # jars
-install -Dpm 644 target/%{name}-*.jar %{buildroot}%{_javadir}/%{name}.jar
+install -Dpm 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}

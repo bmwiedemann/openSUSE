@@ -217,4 +217,12 @@
     <comment>This runs with java 8 just fine</comment>
     <requestid>1170851</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d3c8b5400e439b8594effe030bc7cf4d</srcmd5>
+    <version>0.2.22</version>
+    <time>1738965295</time>
+    <user>anag+factory</user>
+    <comment>0.2.22</comment>
+    <requestid>1243237</requestid>
+  </revision>
 </revisionlist>
