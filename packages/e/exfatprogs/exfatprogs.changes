@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  5 08:22:57 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.7:
+  NEW FEATURES :
+  * fsck.exfat: support repairing the upcase table.
+  CHANGES :
+  * exfatprogs: make sure to load the tbl preprocessor
+    for man pages.
+  BUG FIXES :
+  * exfatprogs: fix a double free memory error.
+  * dump.exfat: fix a constraint that volume label, bitmap,
+    upcase table must be located at the beginning of a root
+    directory.
+
+-------------------------------------------------------------------
 Wed Nov 27 08:01:54 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.6:

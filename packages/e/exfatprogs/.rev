@@ -233,4 +233,22 @@
     a volume serial or label.</comment>
     <requestid>1226806</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>68c8d2765062d33bdbdf4e3c6dceb44d</srcmd5>
+    <version>1.2.7</version>
+    <time>1738965381</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.7:
+  NEW FEATURES :
+  * fsck.exfat: support repairing the upcase table.
+  CHANGES :
+  * exfatprogs: make sure to load the tbl preprocessor
+    for man pages.
+  BUG FIXES :
+  * exfatprogs: fix a double free memory error.
+  * dump.exfat: fix a constraint that volume label, bitmap,
+    upcase table must be located at the beginning of a root
+    directory.</comment>
+    <requestid>1243278</requestid>
+  </revision>
 </revisionlist>
