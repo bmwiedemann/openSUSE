@@ -170,4 +170,14 @@
     <comment></comment>
     <requestid>1151807</requestid>
   </revision>
+  <revision rev="25" vrev="130">
+    <srcmd5>1507b532ae5ed99b2e4fc376ed05c6a8</srcmd5>
+    <version>0.8.8</version>
+    <time>1738965444</time>
+    <user>anag+factory</user>
+    <comment>- Correct license as since docbook2X 0.8.4 it is MIT
+
+- Correct download path</comment>
+    <requestid>1243574</requestid>
+  </revision>
 </revisionlist>

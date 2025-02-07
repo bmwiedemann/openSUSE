@@ -1,7 +1,7 @@
 #
 # spec file for package docbook2x
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 Name:           docbook2x
 Summary:        DocBook-to-Texinfo Converter
-License:        GPL-2.0-or-later
+License:        MIT
 Group:          Productivity/Publishing/DocBook
 Version:        0.8.8
 Release:        0
-Url:            http://docbook2x.sourceforge.net/
-Source:         http://downloads.sourceforge.net/docbook2x/docbook2X-%{version}.tar.bz2
-#Source:       http://ftp1.sourceforge.net/sourceforge/docbook2x/docbook2X-%%{version}.tar.gz
+URL:            http://docbook2x.sourceforge.net/
+Source0:        https://sourceforge.net/projects/docbook2x/files/docbook2x/%{version}/docbook2X-%{version}.tar.gz/download#/docbook2X-%{version}.tar.gz
 Source1:        docbook2x-README.SUSE
 Patch0:         docbook2X-0.8.8-catalog.diff
 BuildRequires:  automake
@@ -53,7 +52,9 @@ Requires:       sgml-skel
 Requires:       tidy
 %define regcat /usr/bin/sgml-register-catalog
 PreReq:         %{regcat} /usr/bin/xmlcatalog /usr/bin/edit-xml-catalog
-PreReq:         sed grep awk
+PreReq:         awk
+PreReq:         grep
+PreReq:         sed
 
 %description
 A new tool based on Perl modules.

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  6 08:19:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Correct license as since docbook2X 0.8.4 it is MIT
+
+-------------------------------------------------------------------
+Wed Feb  5 14:18:19 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Correct download path
+
+-------------------------------------------------------------------
 Mon Feb 26 08:05:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
