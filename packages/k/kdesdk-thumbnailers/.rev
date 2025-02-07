@@ -1125,4 +1125,12 @@
     <comment>KDE release gear 24.12.1 (forwarded request 1235746 from krop)</comment>
     <requestid>1236461</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>5802d76c911c11b5792795529d86cfab</srcmd5>
+    <version>24.12.2</version>
+    <time>1738965586</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.12.2 (forwarded request 1243167 from krop)</comment>
+    <requestid>1243723</requestid>
+  </revision>
 </revisionlist>
