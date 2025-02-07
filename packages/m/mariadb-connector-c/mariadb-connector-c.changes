@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 14:11:15 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 3.3.13:
+  * https://mariadb.com/kb/en/mariadb-connector-c-3-3-13-release-notes/
+- Fix boo#1236823
+
+-------------------------------------------------------------------
 Mon Jul 29 07:48:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly enable zstd support (new curl brings it in, and we
