@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.1
+%define kpim6_version 6.3.2
 
 %bcond_without released
 Name:           kalarm
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -50,6 +50,7 @@ BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
@@ -112,7 +113,7 @@ Personal alarm message, command and email scheduler by KDE.
 %{_kf6_dbuspolicydir}/org.kde.kalarm.rtcwake.conf
 %{_kf6_debugdir}/kalarm.categories
 %{_kf6_debugdir}/kalarm.renamecategories
-%{_kf6_iconsdir}/hicolor/*/apps/kalarm.png
+%{_kf6_iconsdir}/hicolor/*/*/kalarm*.png
 %{_kf6_libdir}/kconf_update_bin/kalarm-3.10.0-run_mode
 %{_kf6_libdir}/libkalarmcalendar.so.*
 %{_kf6_libdir}/libkalarmplugin.so.*
