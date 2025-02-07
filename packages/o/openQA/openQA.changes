@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 06 21:13:03 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1738861231.e206546d:
+  * Update default config with OAuth2 new "id_from" option
+  * Support OpenID Connect better in the OAuth2 'custom' provider
+  * Add SYNC_ASSETS_HOOK support
+
+-------------------------------------------------------------------
 Wed Feb 05 21:11:52 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1738778990.12e43905:
