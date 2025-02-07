@@ -1363,6 +1363,7 @@ unsorted:
   - bazel-toolchains-source 
   - bazel-workspaces 
   - bazel6 
+  - bazel8 
   - bb 
   - bbe 
   - bbswitch 
@@ -3620,6 +3621,7 @@ unsorted:
   - dunst-fish-completion 
   - dunst-zsh-completion 
   - duperemove 
+  - duperemove-zsh-completion 
   - duplicity 
   - duplicity-lang 
   - duply 
@@ -10969,7 +10971,6 @@ unsorted:
   - latex2html-pngicons 
   - latex2rtf 
   - lato-fonts 
-  - latrace 
   - layer-shell-qt5-devel 
   - layer-shell-qt6-devel 
   - layer-shell-qt6-imports 
@@ -11440,7 +11441,7 @@ unsorted:
   - libOpenCOLLADAFramework0_3 
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
-  - libOpenColorIO2_5 
+  - libOpenColorIO2_4 
   - libOpenEXR-3_2-31-32bit 
   - libOpenEXRCore-3_2-31-32bit 
   - libOpenEXRUtil-3_2-31 
@@ -16817,7 +16818,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_7_0 
+  - libuhd4_8_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -18170,6 +18171,8 @@ unsorted:
   - lxcfs-hooks-lxc 
   - lxd 
   - lxd-bash-completion 
+  - lxd-ovmf-setup-aarch64 
+  - lxd-ovmf-setup-x86_64 
   - lxde-common 
   - lxde-common-branding-openSUSE 
   - lxde-common-branding-upstream 
@@ -19177,6 +19180,7 @@ unsorted:
   - mono-zeroconf-doc 
   - mono-zeroconf-provider-avahi 
   - monodoc-core 
+  - moonlight 
   - mopac7 
   - moreutils 
   - moreutils-parallel 
@@ -19320,6 +19324,7 @@ unsorted:
   - mplus2-variable-fonts 
   - mpop 
   - mpop-doc 
+  - mpremote 
   - mpris-ctl 
   - mpv 
   - mpv-bash-completion 
@@ -24010,7 +24015,6 @@ unsorted:
   - python3-clustershell 
   - python3-coconut 
   - python3-csound 
-  - python3-ctypeslib2 
   - python3-dbus-presage 
   - python3-debtcollector 
   - python3-deltarpm 
@@ -24247,7 +24251,6 @@ unsorted:
   - python3-zbar 
   - python310 
   - python310-32bit 
-  - python310-azure-ai-ml 
   - python310-base 
   - python310-base-32bit 
   - python310-curses 
@@ -24258,7 +24261,6 @@ unsorted:
   - python310-gpt4all 
   - python310-idle 
   - python310-kiwi-keg 
-  - python310-opencensus-ext-azure 
   - python310-testsuite 
   - python310-tk 
   - python310-tools 
@@ -26369,6 +26371,7 @@ unsorted:
   - python311-nwdiag 
   - python311-o2sclpy 
   - python311-objgraph 
+  - python311-obs-service-update_changelog 
   - python311-oci-sdk 
   - python311-octave-kernel 
   - python311-odfpy 
@@ -30039,6 +30042,7 @@ unsorted:
   - python312-o2sclpy 
   - python312-oauthlib 
   - python312-objgraph 
+  - python312-obs-service-update_changelog 
   - python312-oci-sdk 
   - python312-octave-kernel 
   - python312-odfpy 
@@ -32007,6 +32011,7 @@ unsorted:
   - python313-azure-ai-language-nspkg 
   - python313-azure-ai-language-questionanswering 
   - python313-azure-ai-metricsadvisor 
+  - python313-azure-ai-ml 
   - python313-azure-ai-nspkg 
   - python313-azure-ai-textanalytics 
   - python313-azure-ai-translation-document 
@@ -33761,6 +33766,7 @@ unsorted:
   - python313-o2sclpy 
   - python313-oauthlib 
   - python313-objgraph 
+  - python313-obs-service-update_changelog 
   - python313-oci-sdk 
   - python313-octave-kernel 
   - python313-odfpy 
@@ -33787,6 +33793,7 @@ unsorted:
   - python313-openapi-spec-validator 
   - python313-opencensus 
   - python313-opencensus-context 
+  - python313-opencensus-ext-azure 
   - python313-opencensus-ext-threading 
   - python313-opencv 
   - python313-opengl 
@@ -37951,7 +37958,6 @@ unsorted:
   - systemd-status-mail 
   - systemd-sysvcompat 
   - systemd-testsuite 
-  - systemd-ui 
   - systemtap 
   - systemtap-docs 
   - systemtap-dtrace 
@@ -48475,6 +48481,7 @@ unsorted:
   - velum-branding 
   - vendor-reset-kmp 
   - vendor-reset-kmp-default 
+  - vendor-reset-kmp-longterm 
   - vendored_licenses_packager 
   - verdict-devel 
   - verilator 
