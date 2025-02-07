@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:49:49 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.93.1:
+  * deps(go): bump module github.com/goccy/go-yaml (#3760)
+  * deps(go): bump module cuelang.org/go (#3750)
+  * deps(go): bump module github.com/spf13/afero (#3731)
+  * deps(go): bump module github.com/aws/aws-sdk-go (#3737)
+  * deps(go): bump module github.com/goccy/go-yaml (#3723)
+  * fix: autodiscovery precommit not working if default branch of
+    remote hook is not main (#3715)
+  * deps: bump updatecli version to v0.93.0 (#3699)
+
+-------------------------------------------------------------------
+Fri Feb 07 08:44:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.93.0:
+  * deps(go): bump module helm.sh/helm/v3 (#3685)
+  * deps(go): bump module github.com/zclconf/go-cty (#3679)
+  * chore: rewrite autodiscovery dockercompoes plugin comment
+    (#3660)
+  * chore: update conferences in README (#3661)
+  * fix: hide username/password from URL in log message (#3659)
+  * feat: github action autodiscovyer support docker (#3633)
+  * deps(go): bump module github.com/go-git/go-git/v5 (#3638)
+  * deps: Bump Golang version to 1.23.5 (#3616)
+  * deps(go): bump module github.com/zclconf/go-cty (#3602)
+  * deps(go): bump module github.com/goccy/go-yaml (#3606)
+  * deps(go): bump module github.com/google/go-containerregistry
+    (#3591)
+  * deps(go): bump module github.com/goccy/go-yaml (#3584)
+  * fix(githubaction): correctly ignore relative path action
+    (#3562)
+  * fix(gittag): always return lightweight git tag (#3561)
+  * deps(go): bump module
+    github.com/hashicorp/terraform-registry-address (#3547)
+  * deps: bump updatecli version to v0.92.0 (#3539)
+
+-------------------------------------------------------------------
 Mon Jan 13 06:57:36 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.92.0:
