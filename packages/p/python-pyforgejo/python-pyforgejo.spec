@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyforgejo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,42 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyforgejo
-Version:        1.0.4
+Version:        2.0.0
 Release:        0
 Summary:        A client library for accessing the Forgejo API
 License:        MIT
 URL:            https://codeberg.org/harabat/pyforgejo
 Source0:        https://files.pythonhosted.org/packages/source/p/pyforgejo/pyforgejo-%{version}.tar.gz
-BuildRequires:  %{python_module attrs >= 21.3.0}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module httpx >= 0.20}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module pydantic >= 2.9.2}
+BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-annotated-types >= 0.6.0
+Requires:       python-anyio
 Requires:       python-attrs
+Requires:       python-certifi
+Requires:       python-click >= 5.0
+Requires:       python-colorama
+Requires:       python-exceptiongroup
+Requires:       python-h11
+Requires:       python-httpcore
 Requires:       python-httpx
+Requires:       python-idna
+Requires:       python-iniconfig
+Requires:       python-packaging
+Requires:       python-pluggy
+Requires:       python-pydantic
+Requires:       python-pydantic-core
 Requires:       python-python-dateutil
+Requires:       python-python-dotenv
+Requires:       python-sniffio
+Requires:       python-tomli
+Requires:       python-typing-extensions >= 4.12.2
 %python_subpackages
 
 %description
