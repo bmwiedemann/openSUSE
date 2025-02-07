@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  6 11:47:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.2
+  * Fix Oriya dictionary name.
+  * Update documentation.
+- from version 0.17.1
+  * Update Mongolian dictionary.
+  * Add Assamese, Kannada, Sanskrit, Punjabi, Oriya, Marathi dictionaries.
+
+-------------------------------------------------------------------
 Thu Oct 31 11:09:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.0:
