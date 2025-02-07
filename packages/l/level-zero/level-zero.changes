@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:24:27 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.20.2:
+  * Update to spec 1.12
+  * Update to spec v1.12.15
+  * Fix to validation layer param checker for extensions
+  * Fixed pkg-config files generation
+  * fix: potential memory leaks
+  * Fix libddi table query code generation 
+
+-------------------------------------------------------------------
 Sat Jan  4 02:25:47 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Added _service to download files
