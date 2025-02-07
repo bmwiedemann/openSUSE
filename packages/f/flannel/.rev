@@ -224,4 +224,16 @@
     <comment></comment>
     <requestid>1169271</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ccf3e861a0f855c0013a6e2a057902b7</srcmd5>
+    <version>0.26.4</version>
+    <time>1738966041</time>
+    <user>anag+factory</user>
+    <comment>Bump flannel to v0.26.4, which includes `golang.org/x/net/http2` at v0.34.0, fixes bsc#1236522 (CVE-2023-45288)
+
+- add `go-modules` for automated creation of go vendored modules tarball
+- bump go version: `BuildRequires: golang(API) &gt;= 1.23`
+- delete unused `kube-flannel.yaml` source in the spec file, it is directly soured from the flannel source tar ball</comment>
+    <requestid>1244129</requestid>
+  </revision>
 </revisionlist>

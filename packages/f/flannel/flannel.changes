@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Feb  7 11:23:27 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add `go-modules` for automated creation of go vendored modules tarball
+
+- bump go version: `BuildRequires:  golang(API) >= 1.23`
+
+- delete unused `kube-flannel.yaml` source in the spec file, it is directly soured from the flannel source tar ball
+ 
+-------------------------------------------------------------------
+Fri Feb  7 11:16:55 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 0.26.4:
+  * Moved to github container registry
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc
+  * Bump go.etcd.io/etcd/tests/v3 from 3.5.17 to 3.5.18
+  * fix: Fix high CPU usage when losing etcd connection and try to re-establish connection with exponential backoff
+  * Bump github.com/containernetworking/plugins from 1.6.1 to 1.6.2
+  * Bump alpine from 20240923 to 20250108 in /images
+  * Bump golang.org/x/net from 0.31.0 to 0.33.0
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc
+  * Bump github.com/jonboulle/clockwork from 0.4.0 to 0.5.0
+  * feat: add bool to control CNI config installation using Helm
+  * fix: add missing MY_NODE_NAME env in chart
+  * Bump k8s deps to 0.29.12
+  * Don't panic upon shutdown when running in standalone mode
+  * Bump golang.org/x/crypto from 0.29.0 to 0.31.0
+  * Bump alpine from 20240807 to 20240923 in /images
+  * Bump github.com/containernetworking/plugins from 1.6.0 to 1.6.1
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc
+  * Bump github.com/vishvananda/netns from 0.0.4 to 0.0.5
+  * Use the standard context library
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+  * Updated flannel cni image to 1.6.0
+  * Updated CNI plugins version on the README
+  * Bump sigs.k8s.io/knftables from 0.0.17 to 0.0.18
+  * Bump github.com/golang-jwt/jwt/v4 from 4.4.2 to 4.5.1
+  * Bump github.com/Microsoft/hcsshim from 0.12.8 to 0.12.9
+  * Added check to not check br_filter in case of windows
+  * Bumo golangci-lint to latest version
+  * Bump to go 1.23
+  * Added checks for br_netfilter module
+  * Try not to cleanup multiple peers behind same PublicIP
+  * fix trivy check
+  * check that the lease includes an IP address of the requested family before configuring the flannel interface
+  * Fixed IPv6 chosen in case of public-ipv6 configured
+  * add timeout to e2e test pipelines
+  * Update k8s version ine2e tests to v1.29.8
+  * Update netlink to v1.3.0
+  * Fixed values file on flannel chart
+  * Bump k8s.io/klog/v2 from 2.120.1 to 2.130.1
+  * Updated Flannel chart with Netpol containter and removed clustercidr
+  * Fix bug in hostgw-windows
+  * Fix bug in the logic polling the interface
+  * Added node-public-ip annotation
+  * Try several times to contact kube-api before failing
+  * Fixed IPv6 0 initialization
+  * wireguard backend: avoid error message if route already exists
+  * Bump github.com/avast/retry-go/v4 from 4.5.1 to 4.6.0
+  * use wait.PollUntilContextTimeout instead of deprecated wait.Poll
+  * troubleshooting.md: add `ethtool -K flannel.1 tx-checksum-ip-generic off` for NAT
+  * Added configuration for pulic-ip through node annotation
+  * extension/vxlan: remove arp commands from vxlan examples
+  * Refactor TrafficManager windows files to clarify logs
+  * Add persistent-mac option to v6 too
+  * fix comparison with previous networks in SetupAndEnsureMasqRules
+  * show content of stdout and stderr when running iptables-restore returns an error
+  * Add extra check before contacting kube-api
+  * remove unimplemented error in windows trafficmngr
+  * remove --dirty flags in git describe
+  * Added leaseAttr string method with logs on VxLan
+  * remove multiClusterCidr related-code.
+  * Implement nftables masquerading for flannel
+  * fix: ipv6 iptables rules were created even when IPv6 was disabled
+  * Add tolerations to the flannel chart
+  * Added additional check for n.spec.podCIDRs
+  * Remove net-tools since it's an old package that we are not using
+  * fix iptables_windows.go
+  * Clean-up Makefile and use docker buildx locally
+  * Use manual test to ensure iptables-* binaries are present
+  * Bump github.com/containerd/containerd from 1.6.23 to 1.6.26
+  * Bump github.com/joho/godotenv
+  * SubnetManager should use the main context
+  * Simplify TrafficManager interface
+  * refactor iptables package to prepare for nftables-based implementation
+
+- flannel v0.26.4, includes `golang.org/x/net/http2` at v0.34.0, which fixes bsc#1236522 (CVE-2023-45288) 
+
+-------------------------------------------------------------------
 Fri Apr 19 17:51:42 UTC 2024 - Jeff Mahoney <jeffm@suse.com>
 
 - Remove dependency on net-tools-deprecated.  It's not actually used.

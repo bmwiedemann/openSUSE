@@ -24,7 +24,7 @@
 %define flannel_container_path registry.opensuse.org/kubic/flannel
 
 Name:           flannel
-Version:        0.24.2
+Version:        0.26.4
 Release:        0
 Summary:        An etcd backed network fabric for containers
 License:        Apache-2.0
@@ -32,11 +32,10 @@ Group:          System/Management
 Url:            https://github.com/flannel-io/flannel
 Source0:        flannel-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        kube-flannel.yaml
 Requires:       iproute2
 Requires:       iptables
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.23
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390
 %{go_nostrip}
