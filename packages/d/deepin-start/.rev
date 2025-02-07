@@ -83,4 +83,12 @@
     <comment>- Update workaround-dde-kwin-crash.patch, use deepin-kwin (forwarded request 1096139 from hillwood)</comment>
     <requestid>1096140</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0a8e7410644e6905431d358c51cb7e4a</srcmd5>
+    <version>5.9.49</version>
+    <time>1738965942</time>
+    <user>anag+factory</user>
+    <comment>- Fix gopath for Tumbleweed (forwarded request 1244073 from hillwood)</comment>
+    <requestid>1244074</requestid>
+  </revision>
 </revisionlist>

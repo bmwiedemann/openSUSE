@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-start
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,8 +87,13 @@ Provides translations for the "%{name}" package.
 
 %prep
 %autosetup -p1 -a1 -n %{_name}-%{version}
+%if 0%{?suse_version} > 1500
+mkdir -p $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/
+cp vendor/* $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/ -r
+%else
 mkdir -p $HOME/rpmbuild/BUILD/go/src/
 cp vendor/* $HOME/rpmbuild/BUILD/go/src/ -r
+%endif
 rm -rf vendor
 
 # Fix systemd path
@@ -101,11 +106,19 @@ export GO111MODULE=off
 %make_build
 
 %install
+%if 0%{?suse_version} > 1500
+mv $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com/linuxdeepin .
+rm -rf $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com/* \
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/golang.org \
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/gopkg.in
+mv linuxdeepin $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com/
+%else
 mv $HOME/rpmbuild/BUILD/go/src/github.com/linuxdeepin .
 rm -rf $HOME/rpmbuild/BUILD/go/src/github.com/* \
        $HOME/rpmbuild/BUILD/go/src/golang.org \
        $HOME/rpmbuild/BUILD/go/src/gopkg.in
 mv linuxdeepin $HOME/rpmbuild/BUILD/go/src/github.com/
+%endif
 %goinstall
 %gosrc
 %make_install

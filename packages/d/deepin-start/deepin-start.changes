@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  7 08:13:14 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix gopath for Tumbleweed 
+
+-------------------------------------------------------------------
 Fri Jun 30 13:15:08 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update workaround-dde-kwin-crash.patch, use deepin-kwin 
