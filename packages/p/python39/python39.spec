@@ -1,7 +1,7 @@
 #
 # spec file for package python39
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -194,6 +194,9 @@ Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch51:        sphinx-802.patch
+# PATCH-FIX-UPSTREAM CVE-2025-0938-sq-brackets-domain-names.patch bsc#1236705 mcepl@suse.com
+# functions `urllib.parse.urlsplit` and `urlparse` accept domain names including square brackets
+Patch52:        CVE-2025-0938-sq-brackets-domain-names.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -433,39 +436,40 @@ other applications.
 %prep
 %setup -q -n %{tarname}
 
-%patch -P 02 -p1
-%patch -P 06 -p1
-%patch -P 07 -p1
-%patch -P 08 -p1
-%patch -P 09 -p1
-%patch -P 15 -p1
-%patch -P 25 -p1
-%patch -P 29 -p1
-%patch -P 32 -p1
+%patch -p1 -P 02
+%patch -p1 -P 06
+%patch -p1 -P 07
+%patch -p1 -P 08
+%patch -p1 -P 09
+%patch -p1 -P 15
+%patch -p1 -P 25
+%patch -p1 -P 29
+%patch -p1 -P 32
 
 %if 0%{?sle_version}
-%patch -P 33 -p1
-%patch -P 34 -p1
+%patch -p1 -P 33
+%patch -p1 -P 34
 %endif
 %if %{with mpdecimal}
-%patch -P 35 -p1
+%patch -p1 -P 35
 %endif
 
-%patch -P 40 -p1
-%patch -P 41 -p1
-%patch -P 42 -p1
-%patch -P 43 -p1
-%patch -P 44 -p1
-%patch -P 45 -p1
+%patch -p1 -P 40
+%patch -p1 -P 41
+%patch -p1 -P 42
+%patch -p1 -P 43
+%patch -p1 -P 44
+%patch -p1 -P 45
 
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
 %patch -p1 -P 46
 %endif
 
-%patch -P 47 -p1
-%patch -P 48 -p1
-%patch -P 50 -p1
-%patch -P 51 -p1
+%patch -p1 -P 47
+%patch -p1 -P 48
+%patch -p1 -P 50
+%patch -p1 -P 51
+%patch -p1 -P 52
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

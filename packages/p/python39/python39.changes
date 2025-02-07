@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb  4 14:43:13 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-0938-sq-brackets-domain-names.patch which
+  disallows square brackets ([ and ]) in domain names for parsed
+  URLs (bsc#1236705, CVE-2025-0938, gh#python/cpython#105704)
+
+-------------------------------------------------------------------
 Wed Dec  4 19:51:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.9.21:
