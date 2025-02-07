@@ -139,7 +139,7 @@ fi
 find /lib/firmware/nvidia -name gsp | xargs -r rm -rf 
 
 # Remove the mellanox kernel drivers (firmware is removed too)
-rm -rf /usr/lib*/modules/*/kernel/drivers/net/ethernet/mellanox
+rm -rf /lib*/modules/*/kernel/drivers/net/ethernet/mellanox
 
 # The gems are unpackaged already, no need to store them twice
 rm -rf /usr/lib*/ruby/gems/*/cache/

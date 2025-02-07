@@ -502,6 +502,8 @@
     <ignore name="yast2-control-center-qt"/>
     <!-- OBS-IgnorePackage: libyui* -->
     <ignore name="libyui*"/>
+    <!-- OBS-IgnorePackage: zypper-lifecycle-plugin -->
+    <ignore name="zypper-lifecycle-plugin"/>
     <!-- OBS-IgnorePackage: Mesa-libva -->
     <ignore name="Mesa-libva"/>
     <!-- OBS-IgnorePackage: python-base -->
@@ -596,28 +598,6 @@
     <ignore name="plymouth"/>
     <!-- OBS-IgnorePackage: 7zip -->
     <ignore name="7zip"/>
-    <!-- OBS-IgnorePackage: bash-completion -->
-    <ignore name="bash-completion"/>
-    <!-- OBS-IgnorePackage: ethtool-bash-completion -->
-    <ignore name="ethtool-bash-completion"/>
-    <!-- OBS-IgnorePackage: iproute2-bash-completion -->
-    <ignore name="iproute2-bash-completion"/>
-    <!-- OBS-IgnorePackage: cpupower-bash-completion -->
-    <ignore name="cpupower-bash-completion"/>
-    <!-- OBS-IgnorePackage: nvme-cli-bash-completion -->
-    <ignore name="nvme-cli-bash-completion"/>
-    <!-- OBS-IgnorePackage: btrfsprogs-bash-completion -->
-    <ignore name="btrfsprogs-bash-completion"/>
-    <!-- OBS-IgnorePackage: firewalld-bash-completion -->
-    <ignore name="firewalld-bash-completion"/>
-    <!-- OBS-IgnorePackage: kmod-bash-completion -->
-    <ignore name="kmod-bash-completion"/>
-    <!-- OBS-IgnorePackage: pulseaudio-bash-completion -->
-    <ignore name="pulseaudio-bash-completion"/>
-    <!-- OBS-IgnorePackage: udisks2-bash-completion -->
-    <ignore name="udisks2-bash-completion"/>
-    <!-- OBS-IgnorePackage: lightdm-bash-completion -->
-    <ignore name="lightdm-bash-completion"/>
     <!-- OBS-IgnorePackage: bind-utils -->
     <ignore name="bind-utils"/>
     <!-- OBS-IgnorePackage: tumbler -->

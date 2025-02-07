@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  7 14:34:06 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: No longer ignore bash-completion
+
+-------------------------------------------------------------------
+Fri Feb  7 14:08:03 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Fix dropping the mellanox kernel drivers on non-usrmerged Leap 15.x
+- list-x11: Ignore zypper-lifecycle-plugin
+
+-------------------------------------------------------------------
 Thu Jan 23 09:49:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop the mellanox kernel drivers: we already remove the firmware
