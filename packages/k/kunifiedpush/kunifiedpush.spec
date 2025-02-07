@@ -22,7 +22,7 @@
 %define qt6_version 6.5.0
 #
 Name:           kunifiedpush
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        UnifiedPush client components
 License:        LGPL-2.0-or-later
