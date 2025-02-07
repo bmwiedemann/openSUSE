@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Fix locations on Declarations in macro expansions (kde#496985)
+
+-------------------------------------------------------------------
 Tue Jan  7 18:52:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1
