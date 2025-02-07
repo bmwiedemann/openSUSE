@@ -1,5 +1,5 @@
 #
-# spec file for package systemd
+# spec file
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -344,7 +344,7 @@ Requires:       group(lp)
 Requires(pre):  group(kvm)
 Requires(post): sed
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 # 'regenerate_initrd_post' macro is expanded during build, hence this BR.
 BuildRequires:  suse-module-tools
 %if %{without bootstrap}

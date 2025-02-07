@@ -7490,4 +7490,19 @@ handle manual pages that consist only of a .so directive such as
   v6.13-rc1~97^2~3 is in Tumbleweed kernel</comment>
     <requestid>1241438</requestid>
   </revision>
+  <revision rev="440" vrev="3">
+    <srcmd5>ce2a741e4341a92e738e300636e75b5a</srcmd5>
+    <version>257.2</version>
+    <time>1738965391</time>
+    <user>anag+factory</user>
+    <comment>- triggers.systemd: convert posix.fork() and posix.exec() to rpm.execute() (bsc#1236741)
+
+- Update 0009-pid1-handle-console-specificities-weirdness-for-s390.patch to not
+  warn when &quot;conmode=&quot; is not specified on s390x (bsc#1236725).
+
+- Move systemd-userwork from the experimental sub-package to the main package (bsc#1236643)
+  It is likely an oversight from when systemd-userdb was migrated from the
+  experimental package to the main one.</comment>
+    <requestid>1243303</requestid>
+  </revision>
 </revisionlist>

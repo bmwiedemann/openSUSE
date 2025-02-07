@@ -373,11 +373,11 @@
 %{_mandir}/man8/systemd-binfmt.service.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
-%{_mandir}/man8/systemd-confext.8.gz
-%{_mandir}/man8/systemd-confext.service.8.gz
 %if %{with upstream}
 %{_mandir}/man8/systemd-confext-initrd.service.8.gz
 %endif
+%{_mandir}/man8/systemd-confext.8.gz
+%{_mandir}/man8/systemd-confext.service.8.gz
 %{_mandir}/man8/systemd-coredump.8.gz
 %{_mandir}/man8/systemd-coredump.socket.8.gz
 %{_mandir}/man8/systemd-coredump@.service.8.gz
@@ -410,11 +410,11 @@
 %{_mandir}/man8/systemd-soft-reboot.service.8.gz
 %{_mandir}/man8/systemd-sysctl.8.gz
 %{_mandir}/man8/systemd-sysctl.service.8.gz
-%{_mandir}/man8/systemd-sysext.8.gz
-%{_mandir}/man8/systemd-sysext.service.8.gz
 %if %{with upstream}
 %{_mandir}/man8/systemd-sysext-initrd.service.8.gz
 %endif
+%{_mandir}/man8/systemd-sysext.8.gz
+%{_mandir}/man8/systemd-sysext.service.8.gz
 %{_mandir}/man8/systemd-system-update-generator.8.gz
 %{_mandir}/man8/systemd-sysusers.8.gz
 %{_mandir}/man8/systemd-sysusers.service.8.gz
@@ -491,6 +491,7 @@
 %{_systemd_util_dir}/systemd-user-sessions
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-userdbd
+%{_systemd_util_dir}/systemd-userwork
 %endif
 %{_systemd_util_dir}/systemd-xdg-autostart-condition
 %{_systemd_util_dir}/user-preset/90-systemd.preset
@@ -679,10 +680,10 @@
 %endif
 %{_unitdir}/systemd-binfmt.service
 %{_unitdir}/systemd-boot-check-no-failures.service
-%{_unitdir}/systemd-confext.service
 %if %{with upstream}
 %{_unitdir}/systemd-confext-initrd.service
 %endif
+%{_unitdir}/systemd-confext.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-coredump.socket
 %{_unitdir}/systemd-coredump@.service
@@ -711,12 +712,12 @@
 %{_unitdir}/systemd-reboot.service
 %{_unitdir}/systemd-soft-reboot.service
 %{_unitdir}/systemd-sysctl.service
-%{_unitdir}/systemd-sysext.service
-%{_unitdir}/systemd-sysext.socket
-%{_unitdir}/systemd-sysext@.service
 %if %{with upstream}
 %{_unitdir}/systemd-sysext-initrd.service
 %endif
+%{_unitdir}/systemd-sysext.service
+%{_unitdir}/systemd-sysext.socket
+%{_unitdir}/systemd-sysext@.service
 %{_unitdir}/systemd-sysusers.service
 %{_unitdir}/systemd-time-wait-sync.service
 %{_unitdir}/systemd-timedated.service

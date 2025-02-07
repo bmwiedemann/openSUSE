@@ -123,9 +123,6 @@
 %{_systemd_util_dir}/systemd-sysupdate
 %if %{with sd_boot}
 %{_systemd_util_dir}/systemd-tpm2-setup
-%endif
-%{_systemd_util_dir}/systemd-userwork
-%if %{with sd_boot}
 %{_systemd_util_dir}/ukify
 %endif
 # ssh-generator: in the futur to be moved to the main package

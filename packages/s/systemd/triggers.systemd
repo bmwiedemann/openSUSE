@@ -6,27 +6,17 @@
 
 # The contents of this are an example to be copied into systemd.spec.
 #
-# Minimum rpm version supported: 4.14.0
+# Minimum rpm version supported: 4.15.0
 
 %transfiletriggerin -P 900900 -p <lua> -- /usr/lib/systemd/system /etc/systemd/system
 -- This script will run after any package is initially installed or
 -- upgraded. We care about the case where a package is initially
 -- installed, because other cases are covered by the *un scriptlets,
 -- so sometimes we will reload needlessly.
-pid = posix.fork()
-if pid == 0 then
-    assert(posix.exec("/usr/lib/systemd/systemd-update-helper", "system-reload-restart"))
-elseif pid > 0 then
-    posix.wait(pid)
-end
+assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "system-reload-restart"))
 
 %transfiletriggerin -P 900899 -p <lua> -- /usr/lib/systemd/user /etc/systemd/user
-pid = posix.fork()
-if pid == 0 then
-    assert(posix.exec("/usr/lib/systemd/systemd-update-helper", "user-reload-restart"))
-elseif pid > 0 then
-    posix.wait(pid)
-end
+assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "user-reload-restart"))
 
 %transfiletriggerpostun -P 1000100 -p <lua> -- /usr/lib/systemd/system /etc/systemd/system
 -- On removal, we need to run daemon-reload after any units have been
@@ -34,39 +24,19 @@ end
 -- On upgrade, we need to run daemon-reload after any new unit files
 -- have been installed, but before %postun scripts in packages get
 -- executed.
-pid = posix.fork()
-if pid == 0 then
-    assert(posix.exec("/usr/lib/systemd/systemd-update-helper", "system-reload"))
-elseif pid > 0 then
-    posix.wait(pid)
-end
+assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "system-reload"))
 
 %transfiletriggerpostun -P 1000100 -p <lua> -- /usr/lib/systemd/system /etc/systemd/system
 -- Execute daemon-reload in user managers.
-pid = posix.fork()
-if pid == 0 then
-    assert(posix.exec("/usr/lib/systemd/systemd-update-helper", "user-reload"))
-elseif pid > 0 then
-    posix.wait(pid)
-end
+assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "user-reload"))
 
 %transfiletriggerpostun -P 10000 -p <lua> -- /usr/lib/systemd/system /etc/systemd/system
 -- We restart remaining system services that should be restarted here.
-pid = posix.fork()
-if pid == 0 then
-    assert(posix.exec("/usr/lib/systemd/systemd-update-helper", "system-restart"))
-elseif pid > 0 then
-    posix.wait(pid)
-end
+assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "system-restart"))
 
 %transfiletriggerpostun -P 9999 -p <lua> -- /usr/lib/systemd/user /etc/systemd/user
 -- We restart remaining user services that should be restarted here.
-pid = posix.fork()
-if pid == 0 then
-    assert(posix.exec("/usr/lib/systemd/systemd-update-helper", "user-restart"))
-elseif pid > 0 then
-    posix.wait(pid)
-end
+assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "user-restart"))
 
 %transfiletriggerin -P 1000700 -p <lua> -- /usr/lib/sysusers.d
 -- This script will process files installed in /usr/lib/sysusers.d to create
@@ -93,12 +63,7 @@ assert(rpm.execute("journalctl", "--update-catalog"))
 -- This script will automatically apply binfmt rules if files have been
 -- installed or updated in /usr/lib/binfmt.d.
 if posix.access("/run/systemd/system") then
-    pid = posix.fork()
-    if pid == 0 then
-        assert(posix.exec("/usr/lib/systemd/systemd-binfmt"))
-    elseif pid > 0 then
-        posix.wait(pid)
-    end
+    assert(rpm.execute("/usr/lib/systemd/systemd-binfmt"))
 end
 
 %transfiletriggerin -P 1000600 -p <lua> -- /usr/lib/tmpfiles.d

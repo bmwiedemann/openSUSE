@@ -1,4 +1,4 @@
-From b090866bc0e9192224acaeeec875ef4c8846b829 Mon Sep 17 00:00:00 2001
+From 09184a555aec3ef612425ba6fe596cf05383ca09 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 10 Jun 2016 15:19:57 +0200
 Subject: [PATCH 1/1] pid1: handle console specificities/weirdness for s390
@@ -14,26 +14,29 @@ imported from upsteam made them uneeded.
 The remaining bits are probably hackish but at least they are now
 minimal.
 
-It was an attempt to address bnc#860937. And yes turning the console
-color mode off by passing $TERM=dumb via the kernel command line would
-have been much more easier and enough.
-
-This is actually implemented by recent systemd. There's also another
-command line option: systemd.log_color=off.
+It was an attempt to address bnc#860937 to automatically turn the console color
+mode off by passing $TERM=dumb when the specified terminal device is other than
+"3270". For more details, see
+https://www.ibm.com/docs/en/linux-on-systems?topic=setup-kernel-parameters.
 
 See also a short discussion which happened on @systemd-maintainers
 whose $subject is "[PATCH] support conmode setting on command line".
 
 [fbui: fixes bsc#860937]
+
+Don't warn if "conmode=" is missing as this option should not be passed on
+s390x KVM.
+
+[fbui: fixes bsc#1236725]
 ---
- src/basic/terminal-util.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ src/basic/terminal-util.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/src/basic/terminal-util.c b/src/basic/terminal-util.c
-index 878c1ec06a..355ecdc45f 100644
+index 409f2abb45..630fc81836 100644
 --- a/src/basic/terminal-util.c
 +++ b/src/basic/terminal-util.c
-@@ -923,7 +923,20 @@ bool tty_is_vc_resolve(const char *tty) {
+@@ -912,7 +912,19 @@ bool tty_is_vc_resolve(const char *tty) {
  }
  
  const char* default_term_for_tty(const char *tty) {
@@ -45,9 +48,8 @@ index 878c1ec06a..355ecdc45f 100644
 +        if (tty && tty_is_console(tty)) {
 +                _cleanup_free_ char *mode = NULL;
 +
-+                /* Simply return "dumb" in case of OOM. */
++                /* Returns "dumb" in case of OOM. */
 +                (void) proc_cmdline_get_key("conmode", 0, &mode);
-+                (void) proc_cmdline_value_missing("conmode", mode);
 +                return streq_ptr(mode, "3270") ? "ibm327x" : "dumb";
 +        }
 +#endif

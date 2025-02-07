@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb  4 17:12:46 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- triggers.systemd: convert posix.fork() and posix.exec() to rpm.execute() (bsc#1236741)
+
+-------------------------------------------------------------------
+Tue Feb  4 10:51:41 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Update 0009-pid1-handle-console-specificities-weirdness-for-s390.patch to not
+  warn when "conmode=" is not specified on s390x (bsc#1236725).
+
+-------------------------------------------------------------------
+Tue Feb  4 09:05:34 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Move systemd-userwork from the experimental sub-package to the main package (bsc#1236643)
+
+  It is likely an oversight from when systemd-userdb was migrated from the
+  experimental package to the main one. 
+
+-------------------------------------------------------------------
 Thu Jan 30 15:28:33 UTC 2025 - Michal Koutný <mkoutny@suse.com>
 
 - Drop 5004-disable-session-freeze.patch since the kernel fix commit
