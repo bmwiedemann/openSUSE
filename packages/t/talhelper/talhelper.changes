@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:51:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.18:
+  * feat(validate_talconfig): exit with code 1 when issues found
+  * fix(deps): update module golang.org/x/mod to v0.23.0
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.6.7
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.12
+  * chore(schema): update talos-extensions.yaml JSON schema (#835)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.17
+  * feat: update Scoop for talhelper version v3.0.17
+  * feat: update flake (#829)
+
+-------------------------------------------------------------------
+Fri Feb 07 08:46:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.17:
+  * docs: update CLI reference documentation (#828)
+  * chore(deps): update dependency siderolabs/talos to v1.9.3
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.10.0-alpha.1
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.9.3
+  * fix(deps): update module github.com/evanphx/json-patch to
+    v5.9.11+incompatible
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.11
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.9.4
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.9.4
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.6.1
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.6.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#817)
+  * chore(github-action): update actions/setup-go action to v5.3.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.6.6
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.10
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.16
+  * feat: update Scoop for talhelper version v3.0.16
+  * feat: update flake (#811)
+
+-------------------------------------------------------------------
 Sun Jan 19 14:37:37 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.16:
