@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Don't try to update monitor overlay if effect is disabled
+  * Fix crash setting empty name for folder (kde#499070)
+  * Better fix for expand library clips broken with proxies (kde#499171)
+  * Try to fix Whisper models folder on Flatpak
+  * Don't try to delete ui file elements on subtitlemanager close
+  * Fix effect stack widget not properly resizing. Related to #1957
+  * Ensure built-in effects reset button is enabled
+  * Ensure vidstab external files are correctly listed and archived
+  * Added 2 decimals for the rotation parameter (addresses bug #498586)
+  * Rescale 48-apps-kdenlive.png to 48x48
+  * Fix effects layout broken on resize (kde#498749)
+  * Fix possible crash on exit
+  * Reassemble proxy profile elements in the correct order after validation (kde#485356)
+  * Fix the spinbox range for title position and size (kde#487950)
+  * Fix rendering progress not shown when rendering a zone
+  * Fix FFmpeg for STT not found on Mac (kde#498949)
+  * Backport fix for invalid file names in custom effects (kde#498710)
+  * Nightly Flatpak: remove movit dependency
+
+-------------------------------------------------------------------
 Tue Jan  7 18:52:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1

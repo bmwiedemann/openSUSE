@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kdenlive
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
