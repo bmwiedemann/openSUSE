@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-pw-check
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -94,8 +94,13 @@ docs for deepin-pw-check.
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 rm -rf vendor/github.com/stretchr/testify/
 %endif
+%if 0%{?suse_version} > 1500
+mkdir -p $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/
+cp vendor/* $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/ -r
+%else
 mkdir -p $HOME/rpmbuild/BUILD/go/src/
 cp vendor/* $HOME/rpmbuild/BUILD/go/src/ -r
+%endif
 rm -rf vendor
 sed -i 's|<iniparser/|<|g' tool/pwd_conf_update.c lib/deepin_pw_check.c
 sed -i '/<allow_any>/s|no|auth_admin|g' misc/polkit-action/*
@@ -107,9 +112,15 @@ export GO111MODULE=off
 %make_build
 
 %install
+%if 0%{?suse_version} > 1500
+rm -rf $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com \
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/golang.org \
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/gopkg.in
+%else
 rm -rf $HOME/rpmbuild/BUILD/go/src/github.com \
        $HOME/rpmbuild/BUILD/go/src/golang.org \
        $HOME/rpmbuild/BUILD/go/src/gopkg.in
+%endif
 %goinstall
 %gosrc
 cp %{buildroot}%{_bindir}/* out/bin/deepin-pw-check
