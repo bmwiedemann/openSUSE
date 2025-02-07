@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 07 16:58:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.1:
+  * feat: revert "feat: transform imagePullPolicy when using local
+    cluster (#9495)" (#9703) (#9708)
+  * fix(helm): Fix helm package installation order (#9693) (#9709)
+  * fix: (helm) Add expand env template for dependsOn, fix
+    concurrent installation (#9689) (#9707)
+
+-------------------------------------------------------------------
 Thu Jan 23 19:34:31 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.0:
