@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kgraphviewer
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        Graphviz dot graph file viewer
 License:        GPL-2.0-only
