@@ -2508,4 +2508,12 @@ let build start it or we will get libvirt errors.
   * fix-issues-that-break-salt-in-python-3.12-and-3.13-6.patch</comment>
     <requestid>1239626</requestid>
   </revision>
+  <revision rev="165" vrev="29">
+    <srcmd5>b009486f9b61985a2fb10cddddae6f3f</srcmd5>
+    <version>3006.0</version>
+    <time>1738965409</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1243318</requestid>
+  </revision>
 </revisionlist>

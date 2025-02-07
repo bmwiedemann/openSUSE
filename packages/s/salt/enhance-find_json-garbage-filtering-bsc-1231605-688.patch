@@ -1,0 +1,79 @@
+From a9505da8f4bb2f9a9ef4ee6832197f0749a2c2e6 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 23 Jan 2025 17:34:48 +0100
+Subject: [PATCH] Enhance find_json garbage filtering (bsc#1231605)
+ (#688)
+
+* Enhance find_json garbage filtering
+
+* Enhance error handling in transactional_update module
+---
+ salt/modules/transactional_update.py |  2 +-
+ salt/utils/json.py                   | 12 ++++++++++--
+ tests/unit/utils/test_json.py        |  5 +++++
+ 3 files changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/salt/modules/transactional_update.py b/salt/modules/transactional_update.py
+index d6915475f5..32e1eb9cc4 100644
+--- a/salt/modules/transactional_update.py
++++ b/salt/modules/transactional_update.py
+@@ -984,7 +984,7 @@ def call(function, *args, **kwargs):
+                 return local.get("return", local)
+             else:
+                 return local
+-        except ValueError:
++        except (ValueError, AttributeError):
+             return {"result": False, "retcode": 1, "comment": ret_stdout}
+     finally:
+         # Check if reboot is needed
+diff --git a/salt/utils/json.py b/salt/utils/json.py
+index 0845b64694..26cb38cdbe 100644
+--- a/salt/utils/json.py
++++ b/salt/utils/json.py
+@@ -39,6 +39,7 @@ def find_json(raw):
+     # Search for possible starts end ends of the json fragments
+     for ind, _ in enumerate(lines):
+         line = lines[ind].lstrip()
++        line = line[0] if line else line
+         if line == "{" or line == "[":
+             starts.append((ind, line))
+         if line == "}" or line == "]":
+@@ -61,10 +62,17 @@ def find_json(raw):
+         working = "\n".join(lines[start : end + 1])
+         try:
+             ret = json.loads(working)
++            return ret
+         except ValueError:
+-            continue
+-        if ret:
++            pass
++        # Try filtering non-JSON text right after the last closing curly brace
++        end_str = lines[end].lstrip()[0]
++        working = "\n".join(lines[start : end]) + end_str
++        try:
++            ret = json.loads(working)
+             return ret
++        except ValueError:
++            continue
+ 
+     # Fall back to old implementation for backward compatibility
+     # excpecting json after the text
+diff --git a/tests/unit/utils/test_json.py b/tests/unit/utils/test_json.py
+index b123e7e884..5ea409a705 100644
+--- a/tests/unit/utils/test_json.py
++++ b/tests/unit/utils/test_json.py
+@@ -109,6 +109,11 @@ class JSONTestCase(TestCase):
+         ret = salt.utils.json.find_json(garbage_prepend_json)
+         self.assertDictEqual(ret, expected_ret)
+ 
++        # Pre-pend garbage right after closing bracket of the JSON
++        garbage_prepend_json = "{}{}".format(test_sample_json.rstrip(), LOREM_IPSUM)
++        ret = salt.utils.json.find_json(garbage_prepend_json)
++        self.assertDictEqual(ret, expected_ret)
++
+         # Test to see if a ValueError is raised if no JSON is passed in
+         self.assertRaises(ValueError, salt.utils.json.find_json, LOREM_IPSUM)
+ 
+-- 
+2.47.0
+

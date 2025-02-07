@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 29 10:34:28 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Fix error to stat '/root/.gitconfig' on gitfs
+  (bsc#1230944) (bsc#1234881)
+
+- Added:
+  * fix-failed-to-stat-root-.gitconfig-issue-on-gitfs-bs.patch
+
+-------------------------------------------------------------------
+Mon Jan 27 11:04:02 UTC 2025 - Alexander Graul <alexander.graul@suse.com>
+
+- Adapt to removal of hex attribute in pygit2 v1.15.0 (bsc#1230642)
+
+- Added:
+  * update-for-deprecation-of-hex-in-pygit2-1.15.0-and-a.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 16:44:42 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Enhance smart JSON parsing when garbage is present (bsc#1231605)
+
+- Added:
+  * enhance-find_json-garbage-filtering-bsc-1231605-688.patch
+
+-------------------------------------------------------------------
 Wed Jan 22 13:11:21 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - Fix virtual grains for VMs running on Nutanix AHV (bsc#1234022)
@@ -174,6 +199,7 @@ Mon Jul  8 16:02:47 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@s
 Wed Jul  3 11:13:00 UTC 2024 - Flex Liu <fliu@suse.com>
 
 - Fix performance of user.list_groups with many remote groups
+  (bsc#1226964)
 
 - Added:
   * fix-user.list_groups-omits-remote-groups.patch

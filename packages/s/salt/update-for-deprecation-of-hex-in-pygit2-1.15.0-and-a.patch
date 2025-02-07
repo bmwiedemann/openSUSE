@@ -1,0 +1,62 @@
+From 40a7163774879f8291f5d323944a65625a439712 Mon Sep 17 00:00:00 2001
+From: Joyeta Modak <joyeta.modak@suse.com>
+Date: Mon, 27 Jan 2025 16:19:45 +0530
+Subject: [PATCH] Update for deprecation of hex in pygit2 1.15.0 and
+ above (bsc#1230642)
+
+Co-authored-by: David Murphy <damurphy@vmware.com>
+---
+ salt/utils/gitfs.py | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/salt/utils/gitfs.py b/salt/utils/gitfs.py
+index f3902c1f19a..58fa611db89 100644
+--- a/salt/utils/gitfs.py
++++ b/salt/utils/gitfs.py
+@@ -1660,7 +1660,7 @@ class Pygit2(GitProvider):
+             return None
+ 
+         try:
+-            head_sha = self.peel(local_head).hex
++            head_sha = str(self.peel(local_head).id)
+         except AttributeError:
+             # Shouldn't happen, but just in case a future pygit2 API change
+             # breaks things, avoid a traceback and log an error.
+@@ -1721,7 +1721,10 @@ class Pygit2(GitProvider):
+                     self.repo.create_reference(local_ref, pygit2_id)
+ 
+                 try:
+-                    target_sha = self.peel(self.repo.lookup_reference(remote_ref)).hex
++                    target_sha = str(
++                        self.peel(self.repo.lookup_reference(remote_ref)).id
++                    )
++
+                 except KeyError:
+                     log.error(
+                         "pygit2 was unable to get SHA for %s in %s remote '%s'",
+@@ -1802,10 +1805,11 @@ class Pygit2(GitProvider):
+                 else:
+                     try:
+                         # If no AttributeError raised, this is an annotated tag
+-                        tag_sha = tag_obj.target.hex
++                        tag_sha = str(tag_obj.target.id)
++
+                     except AttributeError:
+                         try:
+-                            tag_sha = tag_obj.hex
++                            tag_sha = str(tag_obj.id)
+                         except AttributeError:
+                             # Shouldn't happen, but could if a future pygit2
+                             # API change breaks things.
+@@ -2145,7 +2149,7 @@ class Pygit2(GitProvider):
+                 blob = None
+                 break
+         if isinstance(blob, pygit2.Blob):
+-            return blob, blob.hex, mode
++            return blob, str(blob.id), mode
+         return None, None, None
+ 
+     def get_tree_from_branch(self, ref):
+-- 
+2.48.1
+

@@ -1,0 +1,73 @@
+From 0ef67b3a7ce03335f1bfc6545f851897e11f5795 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 29 Jan 2025 10:08:28 +0000
+Subject: [PATCH] Fix failed to stat '/root/.gitconfig' issue on gitfs
+ (bsc#1230944) (bsc#1234881) (#699)
+
+* Fix failed to stat '/root/.gitconfig' issue on gitfs (bsc#1230944) (bsc#1234881)
+
+This commit ensures the right HOME value is set during Pygit2 remote
+initialization, otherwise there are chances that it gets a wrong value
+depending on the execution stack.
+
+* Add changelog entry file
+
+* Add test_checkout_pygit2_with_home_env_unset unit test
+---
+ changelog/64121.fixed.md               | 1 +
+ salt/utils/gitfs.py                    | 9 +++++----
+ tests/pytests/unit/utils/test_gitfs.py | 1 -
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+ create mode 100644 changelog/64121.fixed.md
+
+diff --git a/changelog/64121.fixed.md b/changelog/64121.fixed.md
+new file mode 100644
+index 0000000000..e78bbd5b7f
+--- /dev/null
++++ b/changelog/64121.fixed.md
+@@ -0,0 +1 @@
++Ensure the right HOME environment value is set during Pygit2 remote initialization.
+diff --git a/salt/utils/gitfs.py b/salt/utils/gitfs.py
+index 58fa611db8..6f691f3869 100644
+--- a/salt/utils/gitfs.py
++++ b/salt/utils/gitfs.py
+@@ -1889,7 +1889,12 @@ class Pygit2(GitProvider):
+         """
+         # https://github.com/libgit2/pygit2/issues/339
+         # https://github.com/libgit2/libgit2/issues/2122
++        # https://github.com/saltstack/salt/issues/64121
+         home = os.path.expanduser("~")
++        if "HOME" not in os.environ:
++            # Make sure $HOME env variable is set to prevent
++            # _pygit2.GitError: error loading known_hosts in some libgit2 versions.
++            os.environ["HOME"] = home
+         pygit2.settings.search_path[pygit2.GIT_CONFIG_LEVEL_GLOBAL] = home
+         new = False
+         if not os.listdir(self._cachedir):
+@@ -1994,10 +1999,6 @@ class Pygit2(GitProvider):
+             # pruning only available in pygit2 >= 0.26.2
+             pass
+         try:
+-            # Make sure $HOME env variable is set to prevent
+-            # _pygit2.GitError: error loading known_hosts in some libgit2 versions.
+-            if "HOME" not in os.environ:
+-                os.environ["HOME"] = salt.syspaths.HOME_DIR
+             fetch_results = origin.fetch(**fetch_kwargs)
+         except GitError as exc:  # pylint: disable=broad-except
+             exc_str = get_error_message(exc).lower()
+diff --git a/tests/pytests/unit/utils/test_gitfs.py b/tests/pytests/unit/utils/test_gitfs.py
+index bd7d74cb2b..3c4a85a856 100644
+--- a/tests/pytests/unit/utils/test_gitfs.py
++++ b/tests/pytests/unit/utils/test_gitfs.py
+@@ -251,7 +251,6 @@ def test_checkout_pygit2_with_home_env_unset(_prepare_provider):
+     with patched_environ(__cleanup__=["HOME"]):
+         assert "HOME" not in os.environ
+         provider.init_remote()
+-        provider.fetch()
+         assert "HOME" in os.environ
+ 
+ 
+-- 
+2.48.1
+
