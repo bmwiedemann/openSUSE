@@ -38,6 +38,7 @@ Source2:        https://github.com/seccomp/libseccomp/releases/download/v%versio
 Source3:        %pname.keyring
 Source99:       baselibs.conf
 Patch1:         make-python-build.patch
+Patch2:         62-sim-arch_transactions-remove-fuzzer.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes

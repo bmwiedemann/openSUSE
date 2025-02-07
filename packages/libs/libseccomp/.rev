@@ -362,4 +362,13 @@
     <comment>- Update to release 2.6.0</comment>
     <requestid>1240145</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>b3753f6a4b0dd37e2df3ee6c058d9f89</srcmd5>
+    <version>2.6.0</version>
+    <time>1738965454</time>
+    <user>anag+factory</user>
+    <comment>- add 62-sim-arch_transactions-remove-fuzzer.patch to fix s390x build
+  (https://github.com/seccomp/libseccomp/issues/455)</comment>
+    <requestid>1243229</requestid>
+  </revision>
 </revisionlist>
