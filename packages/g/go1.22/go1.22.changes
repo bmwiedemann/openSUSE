@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:39:49 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22.12 (released 2025-02-04) includes security fixes to the
+  crypto/elliptic package, as well as bug fixes to the compiler and
+  the go command.
+  Refs boo#1218424 go1.22 release tracking
+  CVE-2025-22866
+  * go#71422 go#71383 boo#1236801 security: fix CVE-2025-22866 crypto/internal/fips140/nistec: p256NegCond is variable time on ppc64le
+  * go#71262 cmd/go/internal/modfetch/codehost: test fails with git 2.47.1
+  * go#71229 cmd/compile: broken write barrier
+
+-------------------------------------------------------------------
 Thu Jan 16 20:07:58 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.11 (released 2025-01-16) includes security fixes to the
