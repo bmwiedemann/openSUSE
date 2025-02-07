@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-daemon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -178,8 +178,13 @@ Provides translations for the "%{name}" package.
 %if 0%{?sle_version} == 150200
 rm -rf vendor/github.com/stretchr/testify/
 %endif
+%if 0%{?suse_version} > 1500
+mkdir -p $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/
+cp vendor/* $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/ -r
+%else
 mkdir -p $HOME/rpmbuild/BUILD/go/src/
 cp vendor/* $HOME/rpmbuild/BUILD/go/src/ -r
+%endif
 rm -rf vendor
 
 sed -i '/systemd/s|lib|usr/lib|' Makefile
@@ -201,9 +206,15 @@ export GO111MODULE=off
 %make_build
 
 %install
+%if 0%{?suse_version} > 1500
+rm -rf $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/github.com \
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/golang.org \
+       $HOME/rpmbuild/BUILD/%{name}-%{version}-build/go/src/gopkg.in
+%else
 rm -rf $HOME/rpmbuild/BUILD/go/src/github.com \
        $HOME/rpmbuild/BUILD/go/src/golang.org \
        $HOME/rpmbuild/BUILD/go/src/gopkg.in
+%endif
 %goinstall
 %gosrc
 %make_install
