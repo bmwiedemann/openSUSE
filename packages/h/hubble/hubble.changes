@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 07 16:40:00 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.17.0:
+  * Prepare for v1.17.0 release
+  * chore(deps): update dependency cilium/cilium to v1.17.0
+  * chore(deps): update actions/setup-go action to v5.3.0
+  * chore(deps): update dependency cilium/cilium to v1.16.6
+  * Update stable release to 1.16.6
+
+-------------------------------------------------------------------
 Thu Jan 23 06:05:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.16.6:

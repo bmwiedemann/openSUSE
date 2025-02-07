@@ -17,7 +17,7 @@
 
 
 Name:           hubble
-Version:        1.16.6
+Version:        1.17.0
 Release:        0
 Summary:        Network, Service & Security Observability for Kubernetes using eBPF
 License:        Apache-2.0
