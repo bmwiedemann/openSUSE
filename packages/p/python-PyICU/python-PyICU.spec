@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyICU
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        2.14
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://gitlab.pyicu.org
 Source0:        https://files.pythonhosted.org/packages/source/P/PyICU/PyICU-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM remove_six.patch mcepl@suse.com
@@ -32,7 +31,6 @@ Patch0:         remove_six.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -73,6 +71,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc CHANGES CREDITS README.md
 %{python_sitearch}/icu
-%{python_sitearch}/PyICU-%{version}*-info
+%{python_sitearch}/PyICU-%{version}.dist-info
 
 %changelog

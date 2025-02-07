@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb  5 02:22:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually drop BuildRequires on six. 
+
+-------------------------------------------------------------------
 Thu Nov  7 10:04:14 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.14
