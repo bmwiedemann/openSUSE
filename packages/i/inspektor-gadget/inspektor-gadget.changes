@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Fri Feb 07 16:40:19 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.37.0:
+  Some relevant changes for this version are:
+    - trace_tcpconnect: Merge into trace_tcp by @burak-ok in #3720
+    - trace exec gadgets: add support for execveat by @alban in
+      #3868
+    - tree-wide: deprecate built in gadgets by
+      @mauriciovasquezbernal in #3931
+  * General Improvements
+    - Artifact Hub: Update gadgets version to v0.36.0 by
+      @github-actions in #3855
+    - trace exec gadgets: add exepath in case of failure by @alban
+      in #3856
+    - tree-wide: Bump golang to 1.23 by @mauriciovasquezbernal in
+      #3859
+    - ebpf: Do not use deprecated RewriteConstants function by
+      @mauriciovasquezbernal in #3797
+    - gadgets: trace_oomkill: Use gadget_process structure. by
+      @eiffel-fl in #3828
+    - Refactor LocalManger to be used from package level variable
+      only by @Sefi4 in #3843
+    - operators/wasm: Add support for array/hash of maps. by
+      @eiffel-fl in #3815
+    - operators/wasm: Add functions to get syscalls names and
+      declarations. by @eiffel-fl in #3756
+    - gadgets: Provide human readable representation of bytes by
+      @KapilSareen in #3867
+    - build: Make ebpf layer optional by @mauriciovasquezbernal in
+      #3819
+    - gha: Disable stale bot by @mauriciovasquezbernal in #3866
+    - Adds dev and inode number field in trace_exec by @KapilSareen
+      in #3848
+    - wasmapi: Bump available map to reflect cilium/ebpf 0.17.1. by
+      @eiffel-fl in #3889
+    - Adding fupper layer field for trace_exec image-based gadget
+      by @Sefi4 in #3869
+    - provide human representation of time by @KapilSareen in #3883
+    - Add runc path of kubeadm cluster running on Debian12 with
+      upstream cri-o by @cjl7 in #3739
+    - Adding support for non unix:// prefix in socket paths by
+      @amitschendel in #3798
+    - container-hook: improve logging by @alban in #3864
+    - Feature/add ptid to exec by @afek854 in #3870
+    - kubectl-gadget: return client version when server not
+      available by @devusb in #3909
+    - operators/wasm: Add functions to interact with perf buffer.
+      by @eiffel-fl in #3725
+    - trace_tcp: Add fd (updated from Burak's #3850) by @alban in
+      #3916
+    - sockerenricher: only insert socket if it doesn't exist by
+      @mqasimsarfraz in #3923
+    - filter: Allow escaping commas by @mqasimsarfraz in #3907
+    - Add additional dns information by @AdvH039 in #3874
+    - tree-wide: Updates to go.mod files by @mauriciovasquezbernal
+      in #3920
+    - WASM: Release handles by @burak-ok in #3702
+    - pkg/oci: Use a file lock to avoid concurrency issues by
+      @mauriciovasquezbernal in #3842
+    - wasm: add kallsymsSymbolExists by @alban in #3871
+  * Security Improvements
+    - gha: Observe GitHub good practice by @mauriciovasquezbernal
+      in #3924
+    - trace_tcp: add option to see only failed connections by
+      @alban in #3928
+    - Added node name to slim pod by @afek854 in #3953
+    - kallsyms: implement just in time lookups without allocations
+      by @alban in #3932
+  * Bug Fixes
+    - fixes DNS trace formatting by @KapilSareen in #3845
+    - oci-service: Fix closing logic by @mauriciovasquezbernal in
+      #3865
+    - gadgetctl/kubectl-gadget: fixes crash when running attach
+      right after run by @KapilSareen in #3852
+    - operators/wasm: Check map type is supported in operation
+      functions. by @eiffel-fl in #3881
+    - oci: Fix image list crash by @mauriciovasquezbernal in #3908
+    - pkg/oci: small fixes by @mauriciovasquezbernal in #3919
+    - pkg/oci: Log errors as warning instead of debug when listing
+      images. by @eiffel-fl in #3917
+    - pkg/operators: Fix getSyscallDeclaration() import in
+      badguest. by @eiffel-fl in #3930
+    - Fix reading loginuid/sessionid in kernels without
+      CONFIG_AUDIT by @Sefi4 in #3961
+    - perf/ring buffer: Continue reading in case of errors by
+      @mqasimsarfraz in #3955
+    - ebpf/tracer: Report lost samples by @mqasimsarfraz in #3956
+  * Documentation Improvements
+    - docs: multiple filters by @mqasimsarfraz in #3899
+    - ADOPTERS.md: Fixes contributing link for retina.sh. by
+      @eiffel-fl in #3947
+    - examples/instance-manifest: Add examples by @mqasimsarfraz in
+      #3849
+    - docs/api: Improve Golang API documentation by
+      @mauriciovasquezbernal in #3948
+  * Testing and Continue Integration
+    - trace_exec: test for execveat by @alban in #3882
+    - CI: static analysis of ig binary size by @KapilSareen in
+      #3915
+    - ci: report memory usage of ig with pprof by @KapilSareen in
+      #3925
+
+-------------------------------------------------------------------
 Tue Jan 21 06:08:18 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.1:
