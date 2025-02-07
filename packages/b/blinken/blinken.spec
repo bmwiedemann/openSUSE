@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           blinken
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        Simon Says Game
 License:        GPL-2.0-or-later
