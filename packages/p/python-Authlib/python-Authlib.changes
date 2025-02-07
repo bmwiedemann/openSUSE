@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 11:41:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.1
+  * Improve garbage collection on OAuth clients. (#698)
+  * Fix client parameters for httpx. (#694)
+
+-------------------------------------------------------------------
 Fri Jan 24 18:21:06 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.4.0
