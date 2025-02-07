@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Add 24.12.2 release notes
+  * Round temperatures before checking whether we need to show a range
+  * Allow transfers to favorite location independent of the next reservation
+  * Retain stop geo coordinates when merging realtime data
+  * Fix QML syntax for partial alternative journey searches
+  * Fix importing passes or other things without an attached trip group
+  * Fix deleting generic pkpass passes
+  * Add Appstream source code and donation links
+  * Add Appstream form factor information
+  * Fix map bounding box computation for path-less journeys
+  * Build 24.12.1 release APK against latest KPublicTransport branch
+  * Remove unused string from Android manifest
+  * Bundle icons needed by the latest Kirigami Addons about dialog
+  * Add 24.12.1 release notes
+
+-------------------------------------------------------------------
 Wed Jan 29 13:03:14 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add additional install dependencies
