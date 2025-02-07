@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Call setNeedsSave(false)
+  * Unbreak the build after 07c5304
+  * Use KORGANIZER_RELEASE_VERSION_DATE
+
+-------------------------------------------------------------------
 Tue Jan  7 18:53:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Add extractor for CitizenM hotel bookings
+  * Add Polregio extractor
+  * Refactor and fix Koleo
+  * Rewrite PKP-app to support both ticket layouts
+  * Simplify PKP Aztec barcode encoding
+  * Adapt to Poppler 25.02 API changes
+  * Fix trainNumber and seatSection if route time doesn't have minutes
+  * Add Universe extractor
+  * Support new/alternative Eurostar-branded Thalys PDF ticket layout
+  * Handle Flixbus tickets in Italian
+  * Extend Koleo for more operators (PL)
+  * Add Southwest reservations parser
+  * Add Brightline train ticket parsing
+  * Add American Airlines reservations parser
+  * Remove leftover debug message from United parser
+  * Handle the (new?) multi-column LH boarding pass layout (kde#498569)
+  * Don't overwrite airport or terminals provided by preceding extractors
+  * Strip empty field indicators from gate, terminal and boarding group fields
+  * Increase upper PDF page limit for extraction (kde#498570)
+  * Modernize booking.com fallback extractor and add Danish language support
+  * Relax SBB trigger pattern a bit
+  * for KD make aztecbin, not qrcode
+  * Add bilkom extractor
+  * Make the reservation-only DB event extractor really only trigger on those
+  * Add files pkp-app files
+  * Initial version of PKP IC app ticket extractor (EN/PL)
+
+-------------------------------------------------------------------
 Tue Jan  7 18:53:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1

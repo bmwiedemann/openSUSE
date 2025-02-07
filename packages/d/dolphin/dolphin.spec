@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           dolphin
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later

@@ -48,7 +48,7 @@ export CFLAGS="%{optflags}"
   %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
   %make_build check
   %make_build clean
-  %make_build CFLAGS="$CFLAGS %{cflags_profile_feedback}" LDFLAGS="-fprofile-arcs"
+  %make_build CFLAGS="$CFLAGS %{cflags_profile_feedback}"
 %else
   %make_build
 %endif

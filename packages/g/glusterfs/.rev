@@ -339,4 +339,12 @@
   system one that's up to date.</comment>
     <requestid>1240112</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>34242809cfb7fb56f062e36d850ba402</srcmd5>
+    <version>11.1</version>
+    <time>1738965017</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on 32-bit arm with a workaround</comment>
+    <requestid>1243228</requestid>
+  </revision>
 </revisionlist>

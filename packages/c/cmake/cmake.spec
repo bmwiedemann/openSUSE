@@ -1,7 +1,7 @@
 #
 # spec file for package cmake
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,7 +52,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        3.31.3
+Version:        3.31.5
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause

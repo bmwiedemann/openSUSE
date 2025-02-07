@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kpimtextedit
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later

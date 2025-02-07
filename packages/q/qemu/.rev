@@ -4220,4 +4220,14 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1239873</requestid>
   </revision>
+  <revision rev="285" vrev="3">
+    <srcmd5>63ebd35d9d3b686c30d01aa154746a06</srcmd5>
+    <version>9.2.0</version>
+    <time>1738965021</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1235709:
+  * target/s390x: Fix MVC not always invalidating translation blocks
+</comment>
+    <requestid>1243232</requestid>
+  </revision>
 </revisionlist>

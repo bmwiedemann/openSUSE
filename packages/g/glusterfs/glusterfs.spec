@@ -152,6 +152,10 @@ rm contrib/aclocal/python.m4
 
 %build
 %define _lto_cflags %nil
+%ifarch %{arm}
+# https://github.com/gluster/glusterfs/issues/2979#issuecomment-976739179
+export CFLAGS="%{optflags} -DUATOMIC_NO_LINK_ERROR"
+%endif
 ./autogen.sh
 %configure \
 	--without-tcmalloc \

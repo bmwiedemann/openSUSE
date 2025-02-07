@@ -2,6 +2,7 @@
 # spec file for package which
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           which
-Version:        2.21
+Version:        2.23
 Release:        0
 Summary:        Displays where a particular program in your path is located
 License:        GPL-3.0-or-later
@@ -25,37 +26,31 @@ Group:          System/Base
 URL:            https://savannah.gnu.org/projects/which/
 Source0:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz.sig
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=3639#/%{name}.keyring
 Provides:       util-linux:%{_bindir}/which
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-The which command shows the full pathname of a specified program, if
-the specified program is in your PATH.
+The which command shows the full pathname of a specified program, if the
+specified program is in your PATH.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
-%post
-%install_info --info-dir="%{_infodir}" "%{_infodir}/which.info.gz"
-
-%preun
-%install_info_delete --info-dir="%{_infodir}" "%{_infodir}/which.info.gz"
+%check
+%make_build check
 
 %files
-%defattr(-,root,root)
-%{_bindir}/which
 %license COPYING
 %doc EXAMPLES README README.alias AUTHORS NEWS
-%{_infodir}/which.info*
-%{_mandir}/man1/which.1*
+%{_bindir}/which
+%{_infodir}/which.info%{?ext_info}
+%{_mandir}/man1/which.1%{?ext_man}
 
 %changelog

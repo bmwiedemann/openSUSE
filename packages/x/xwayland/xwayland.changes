@@ -1,7 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  6 11:54:10 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 24.1.5
+  * os: NextDPMSTimeout: mark intentional fallthroughs in switch
+  * Xi: avoid NULL pointer dereference if GetXTestDevice returns NULL
+  * render: avoid NULL pointer dereference if PictureFindVisual returns NULL
+  * dix: fix button offset when generating DeviceButtonStateNotify events
+  * dix: limit checks to MAX_VALUATORS when generating Xi events
+  * dix-config.h: add HAVE_SOCKLEN_T definition
+  * xwayland: copy repeat settings from the compositor map
+  * xwayland: Don't run key behaviors and actions
+  * xwayland/glamor/gbm: Don't close fence_fd after xwl_glamor_wait_fence
+  * xwayland/present: Check allow_commits in xwl_present_flip
+  * xwayland/glamor: Drop expecting_event bailing from xwl_drm_handle_device
+  * xwayland: Always decrement expecting_event in xwl_output_create
+  * xwayland/glamor: Clean-up GBM's screen private on failure
+  * xwayland: Do not keep the cursor's pixmap around
+  * xkb: Always use MAP_LENGTH keymap size
+  * os/connection: Make sure partial is initialized
+  * xwayland/glamor: Disable GLAMOR after GBM cleanup
+  * glamor: return the result of gbm_format_for_depth
+  * glamor: use gbm_format_for_depth instead of open-coding it
+  * glamor: reject configs using unsupported rgbBits size
+  * xwayland: prevent potential null pointer dereference
+
+-------------------------------------------------------------------
 Tue Oct 29 19:29:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
-- Security update 21.1.14
+- Security update 24.1.4
   This release addresses the following security issue
   * CVE-2024-9632: Heap-based buffer overflow privilege escalation
     in _XkbSetCompatMap (bsc#1231565)

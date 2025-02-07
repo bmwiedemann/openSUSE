@@ -1,9 +1,0 @@
-<services>
-  <service name="format_spec_file" mode="localonly" />
-  <service name="download_files" mode="manual">
-     <param name="enforceupstream">yes</param>
-  </service>
-  <service name="source_validator" mode="localonly" />
-</services>
-
-

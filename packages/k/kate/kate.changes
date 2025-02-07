@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * ensure we always stay in range (kde#498435)
+  * ensure the remove action works without selection, too (kde#498268)
+  * Allow ignoring QSqlQuery prepare failure (kde#498431)
+  * Fix Search MatchExport (kde#499080)
+  * Set path for eslint process
+
+-------------------------------------------------------------------
 Tue Jan  7 18:52:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1

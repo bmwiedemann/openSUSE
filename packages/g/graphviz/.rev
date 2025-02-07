@@ -852,4 +852,12 @@
     also fix incompatible pointer type</comment>
     <requestid>1199143</requestid>
   </revision>
+  <revision rev="104" vrev="12">
+    <srcmd5>07cde39b8a7b9e7ef247c3f508555e65</srcmd5>
+    <version>2.49.3</version>
+    <time>1738964815</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243610</requestid>
+  </revision>
 </revisionlist>

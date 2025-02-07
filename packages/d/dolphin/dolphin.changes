@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Clear forward action popup menu before adding history actions
+  * Icons: when adding overlays pass in the output size (kde#498211)
+  * information panel: scale according dpr (kde#497576)
+
+-------------------------------------------------------------------
 Tue Jan  7 18:52:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1

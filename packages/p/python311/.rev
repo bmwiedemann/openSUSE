@@ -1507,4 +1507,15 @@ C API
     <comment></comment>
     <requestid>1241349</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>3b56dbb52f292db90e108a899373b46d</srcmd5>
+    <version>3.11.11</version>
+    <time>1738964799</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE-2025-0938-sq-brackets-domain-names.patch which
+  disallows square brackets ([ and ]) in domain names for parsed
+  URLs (bsc#1236705, CVE-2025-0938, gh#python/cpython#105704)
+</comment>
+    <requestid>1243983</requestid>
+  </revision>
 </revisionlist>

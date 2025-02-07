@@ -1495,4 +1495,12 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1242987</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>3486118a237b06dd6faf02504218f29d</srcmd5>
+    <version>20250206</version>
+    <time>1738965014</time>
+    <user>anag+factory</user>
+    <comment>Feb 25 policy + optimized semodule logging</comment>
+    <requestid>1244156</requestid>
+  </revision>
 </revisionlist>

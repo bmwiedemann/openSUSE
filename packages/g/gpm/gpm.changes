@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:18:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Tue Feb 27 11:10:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

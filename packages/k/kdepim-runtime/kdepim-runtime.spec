@@ -18,7 +18,7 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.1
+%define kpim6_version 6.3.2
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %bcond_without etebase
@@ -27,7 +27,7 @@
 %bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:30:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Fix apparent hang in files with lots of entries in a choice field (kde#498729)
+  * Only install relevant desktop files for dvi generator
+  * Watch the QEvent::ApplicationPaletteChange in the proper object (kde#498441)
+  * Remove unused string from Android manifest
+
+-------------------------------------------------------------------
 Tue Jan  7 18:53:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1

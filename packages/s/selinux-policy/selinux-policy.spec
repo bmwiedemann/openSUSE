@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20250204
+Version:        20250206
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -225,7 +225,7 @@ fi;
 . %{_sysconfdir}/selinux/config; \
 if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
   rm %{_sysconfdir}/selinux/%2/.rebuild; \
-  /usr/sbin/semodule -B -n -s %2; \
+  /usr/sbin/semodule -B -n -s %2 2> /dev/null; \
 fi; \
 if [ -n "${TRANSACTIONAL_UPDATE}" ]; then \
   touch /etc/selinux/.autorelabel \
@@ -290,7 +290,7 @@ SELinux sandbox policy used for the policycoreutils-sandbox package
 %post sandbox
 rm -f %{_sysconfdir}/selinux/*/modules/active/modules/sandbox.pp.disabled 2>/dev/null
 rm -f %{_sharedstatedir}/selinux/*/active/modules/disabled/sandbox 2>/dev/null
-%{_sbindir}/semodule -n -X 100 -i %{_datadir}/selinux/packages/sandbox.pp
+%{_sbindir}/semodule -n -X 100 -i %{_datadir}/selinux/packages/sandbox.pp 2> /dev/null
 if %{_sbindir}/selinuxenabled ; then
     %{_sbindir}/load_policy
 fi;
@@ -506,7 +506,7 @@ exit 0
 %post_un $1 targeted
 
 %triggerin -- libpcre2-8-0
-%{_sbindir}/selinuxenabled && %{_sbindir}/semodule -nB
+%{_sbindir}/selinuxenabled && %{_sbindir}/semodule -nB 2> /dev/null
 exit 0
 
 %files targeted -f %{buildroot}%{_datadir}/selinux/targeted/nonbasemodules.lst
@@ -555,7 +555,7 @@ login -m  -s unconfined_u -r s0-s0:c0.c1023 __default__
 login -m  -s unconfined_u -r s0-s0:c0.c1023 root
 __eof
     /sbin/restorecon -R /root /var/log /var/run 2> /dev/null
-    %{_sbindir}/semodule -B -s minimum
+    %{_sbindir}/semodule -B -s minimum 2> /dev/null
 else
     instpackages=`cat %{_datadir}/selinux/minimum/instmodules.lst`
     for p in $packages; do
@@ -564,7 +564,7 @@ else
     for p in $instpackages snapper dbus kerberos nscd rtkit; do
 	rm -f %{_sharedstatedir}/selinux/minimum/active/modules/disabled/$p
     done
-    %{_sbindir}/semodule -B -s minimum
+    %{_sbindir}/semodule -B -s minimum 2> /dev/null
     %relabel minimum
 fi
 exit 0

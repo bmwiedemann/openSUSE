@@ -1,7 +1,7 @@
 #
 # spec file for package gpm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -145,7 +145,7 @@ make CC=gcc %{?_smp_mflags}
 gcc %{optflags} -o inputattach %{SOURCE6}
 
 %install
-make install DESTDIR="%buildroot" ROOT="" 
+make install DESTDIR="%buildroot" ROOT=""
 #
 # gpm confings
 install -d %{buildroot}%{_sysconfdir}/${file/conf\/gpm-/gpm\/}
@@ -166,7 +166,9 @@ install -m 755 -d %{buildroot}/usr/sbin
 install -m 755 inputattach %{buildroot}%{_sbindir}
 install -m 644 sysconfig.mouse-%{name} %{buildroot}%{_fillupdir}
 install -m 644 %{S:2} %{buildroot}/%{_unitdir}/gpm.service
+%if 0%{?suse_version} < 1600
 ln -sf %{_sbindir}/service %{buildroot}/usr/sbin/rcgpm
+%endif
 # there were two variables with the same value GPM_PROTOCOL and MOUSETYPE
 # in SuLi 8.2. The MOUSETYPE variable better conforms with with other
 # variable names MOUSEDEVICE and XMOUSETYPE name scheme, so get rid of

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Feb  7 10:03:50 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Improve semodule stderr logging during install/update: Verbose logging
+  will just confuse users and the policy will be rebuild later in the update
+  process correctly, if there was an earlier error. These transient errors
+  are only related to the order in which packages are installed.
+
+-------------------------------------------------------------------
+Thu Feb 06 10:57:17 UTC 2025 - rfrohl@suse.com
+
+- Update to version 20250206:
+  * kanidm_unixd.fc: follow default style for aliased paths
+  * Dontaudit systemd-logind remove all files
+  * Add the files_dontaudit_read_all_dirs() interface
+  * Add the files_dontaudit_delete_all_files() interface
+  * Allow rhsmcertd notify virt-who
+  * Allow irqbalance to run unconfined scripts conditionally
+  * Allow snapperd execute systemctl in the caller domain
+  * Allow svirt_tcg_t to connect to nbdkit over a unix stream socket
+  * Allow iio-sensor-proxy read iio devices
+  * Label /dev/iio:device[0-9]+ devices
+  * Allow systemd-coredump the sys_admin capability
+  * Allow apcupsd's apccontrol to send messages using wall
+  * contrib/thumb: also allow per-user thumbnailers
+  * contrib/thumb: fix thunar thumbnailer (rhbz#2315893)
+  * Allow virt_domain to use pulseaudio - conditional
+  * Allow pcmsensor read nmi_watchdog state information
+  * Allow init_t nnp domain transition to gssproxy_t
+  * Allow systemd-generator connect to syslog over a unix stream socket
+  * Allow virtqemud manage fixed disk device nodes
+  * Allow iio-sensor-proxy connect to syslog over a unix stream socket
+  * Allow virtstoraged write to sysfs files
+  * Allow power-profiles-daemon write sysfs files
+  * Update iiosensorproxy policy
+  * Allow pcmsensor write nmi_watchdog state information
+  * Label /proc/sys/kernel/nmi_watchdog with sysctl_nmi_watchdog_t
+  * Allow virtnodedev create /etc/mdevctl.d/scripts.d with bin_t type
+  * Add the gpg_read_user_secrets() interface
+  * Allow gnome-remote-desktop read resolv.conf
+  * Update switcheroo policy
+  * Allow nfsidmap connect to systemd-homed over a unix socket
+  * Add the auth_write_motd_var_run_files() interface
+  * Add the bind_exec_named_checkconf() interface
+  * Add the virt_exec_virsh() interface
+  * Allow database rotation for wtmpdbd_t
+  * Allow wtmpdbd to send messages notifications
+  * Allow virtqemud domain transition to nbdkit
+  * Add nbdkit interfaces defined conditionally
+  * Allow samba-bgqd connect to cupsd over an unix domain stream socket
+  * Confine the switcheroo-control service
+  * Allow svirt_t read sysfs files
+  * Add rhsmcertd interfaces
+  * Add the ssh_exec_sshd() interface
+  * Add the gpg_domtrans_agent() interface
+  * Label /usr/bin/dnf5 with rpm_exec_t
+  * Label /dev/pmem[0-9]+ with fixed_disk_device_t
+  * allow kdm to create /root/.kde/ with correct label
+  * Change /usr/sbin entries to use /usr/bin or remove them
+  * Allow systemd-homed get filesystem quotas
+  * Allow login_userdomain getattr nsfs files
+  * Allow virtqemud send a generic signal to the ssh client domain
+  * Dontaudit request-key read /etc/passwd
+
+-------------------------------------------------------------------
 Tue Feb 04 08:19:29 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250204:

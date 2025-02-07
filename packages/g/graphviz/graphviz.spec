@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package graphviz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,6 +108,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  perl
+BuildRequires:  python3-setuptools
 BuildRequires:  ruby-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)

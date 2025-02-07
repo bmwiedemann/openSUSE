@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           mobipocket
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        E-book plugin and library
 License:        GPL-2.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  1 19:16:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.23:
+  * The function that decides if a found path is executable
+    (file_status) was updated to that of bash version 5.2.
+- add upstream signing key
+- drop obsolete texinfo packaging macros
+
+-------------------------------------------------------------------
 Tue Apr 19 13:48:33 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - https urls, added signature (but did not find the public key)

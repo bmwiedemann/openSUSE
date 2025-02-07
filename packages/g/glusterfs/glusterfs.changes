@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb  3 08:37:11 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on 32-bit arm with a workaround
+
+-------------------------------------------------------------------
 Fri Jan 24 08:00:04 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix build with python 3.13, remove distributed python.m4 to use the

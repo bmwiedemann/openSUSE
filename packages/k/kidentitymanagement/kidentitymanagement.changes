@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Make sure we do not create new entries when trying to delete some
+
+-------------------------------------------------------------------
 Tue Jan  7 18:53:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1

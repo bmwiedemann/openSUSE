@@ -2,6 +2,7 @@
 # spec file for package xz
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +23,8 @@
 %else
 %bcond_with static
 %endif
-
 Name:           xz
-Version:        5.6.3
+Version:        5.6.4
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -53,7 +53,6 @@ The xz command is a program for compressing files.
   times longer than with bzip2. However, this does not affect
   decompressing speed.
 * Very similar command line interface to what gzip and bzip2 have.
-
 
 %lang_package
 
@@ -135,8 +134,7 @@ install -Dpm 0644 liblzma.a %{buildroot}%{_libdir}/
 %endif
 rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
-%post -n liblzma5 -p /sbin/ldconfig
-%postun -n liblzma5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n liblzma5
 
 %files
 %license COPYING COPYING.GPLv2
@@ -191,6 +189,7 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_mandir}/man1/xznew.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%license COPYING COPYING.GPLv2
 %dir %{_mandir}/fr
 %dir %{_mandir}/de
 %dir %{_mandir}/ko
@@ -200,9 +199,11 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %endif
 
 %files -n liblzma5
+%license COPYING COPYING.GPLv2
 %{_libdir}/liblzma.so.5*
 
 %files devel
+%license COPYING COPYING.GPLv2
 %{_includedir}/lzma.h
 %dir %{_includedir}/lzma/
 %{_includedir}/lzma/*
@@ -211,7 +212,7 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %if %{with static}
 %files static-devel
-%defattr(-, root, root)
+%license COPYING COPYING.GPLv2
 %{_libdir}/liblzma.a
 %endif
 

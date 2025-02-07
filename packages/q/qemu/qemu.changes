@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 05 01:31:02 UTC 2025 - dfaggioli@suse.com
+
+- Fix bsc#1235709:
+  * target/s390x: Fix MVC not always invalidating translation blocks
+
+-------------------------------------------------------------------
 Thu Jan 23 11:36:36 UTC 2025 - dfaggioli@suse.com
 
 - CPU model for new IBM Z HW (jsc#PED-10266):

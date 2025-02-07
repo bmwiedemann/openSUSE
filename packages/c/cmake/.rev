@@ -2359,4 +2359,14 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>1237387</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>ddb3a0128bf40ddc36845630610f3298</srcmd5>
+    <version>3.31.5</version>
+    <time>1738964796</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.31.4
+  * LFortran: Remove hard-coded --generate-object-code flag
+  * FindBoost: Add support for Boost 1.87</comment>
+    <requestid>1243476</requestid>
+  </revision>
 </revisionlist>

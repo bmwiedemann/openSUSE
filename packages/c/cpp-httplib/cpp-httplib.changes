@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb  6 08:51:25 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.18.6
+  * Resolve #2033
+  * Port/Address re-use #2011
+  * Invalid Content-Length values should be rejected #2014
+  * Feature request: ability to check if the connection is still alive #2017
+  * Changed to use non-blocking socket in is_ssl_peer_could_be_closed (258992a)
+  * Treat out-of-range last_pos as the end of the content #2009
+  * fix:set_file_content with range request return 416. #2010
+  * Fix HTTP Response Splitting Vulnerability (9c36aae)
+- added patches
+  fix https://github.com/yhirose/cpp-httplib/issues/2042
+  + cpp-httplib-test-issue2004-online.patch
+
+-------------------------------------------------------------------
 Mon Jan 20 09:51:09 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.18.3:

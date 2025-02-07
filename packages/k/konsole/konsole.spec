@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           konsole
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later

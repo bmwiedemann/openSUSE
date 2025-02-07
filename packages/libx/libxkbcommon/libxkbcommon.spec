@@ -1,7 +1,7 @@
 #
 # spec file for package libxkbcommon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,14 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xkbcommon.org/
-
+URL:            https://xkbcommon.org/
 #Git-Clone:	https://github.com/xkbcommon/libxkbcommon
-Source:         https://xkbcommon.org/download/libxkbcommon-%version.tar.xz
+Source:         https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-%version.tar.gz
 Source2:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  flex
@@ -149,7 +148,7 @@ This is aimed at tools that provide a listing of available keyboard
 layouts to the user.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n libxkbcommon-xkbcommon-%version
 
 %build
 %if %{with x11}
@@ -165,12 +164,9 @@ ef=-Denable-x11=false
 %meson_install
 chmod -x %buildroot/%_datadir/bash-completion/completions/xkbcli*
 
-%post   -n libxkbcommon0 -p /sbin/ldconfig
-%postun -n libxkbcommon0 -p /sbin/ldconfig
-%post   -n libxkbcommon-x11-0 -p /sbin/ldconfig
-%postun -n libxkbcommon-x11-0 -p /sbin/ldconfig
-%post   -n libxkbregistry0 -p /sbin/ldconfig
-%postun -n libxkbregistry0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxkbcommon0
+%ldconfig_scriptlets -n libxkbcommon-x11-0
+%ldconfig_scriptlets -n libxkbregistry0
 
 %files -n libxkbcommon0
 %license LICENSE
