@@ -1,7 +1,7 @@
 #
-# spec file for package perl-Crypt-Rot13 (Version 0.6)
+# spec file for package perl-Crypt-Rot13
 #
-# Copyright (c) 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,59 +12,60 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
-
+%define cpan_name Crypt-Rot13
 Name:           perl-Crypt-Rot13
-Version:        0.6
-Release:        4
-AutoReqProv:    on
-Group:          Development/Libraries/Perl
-License:        GPL-2.0+
-Url:            http://search.cpan.org/dist/Crypt-Rot13/
-Summary:        Rot13 (Caesar) encryption for perl
-Source:         Crypt-Rot13-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{perl_requires}
+Version:        0.600.0
+Release:        0
+# 0.6 -> normalize -> 0.600.0
+%define cpan_version 0.6
+#Upstream:  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+License:        GPL-2.0-or-later
+Summary:        Simple, reversible encryption
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        Crypt-Rot13-0.6.tar.bz2
+Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildArch:      noarch
+%{perl_requires}
 
 %description
-This package provides ROT13 Algorithm (Caesar) as a Perl module.
+rot13 is a simple encryption in which ASCII letters are rotated 13 places
+(see below). This module provides an array object with methods to encrypt
+its string elements by rotating ASCII letters n places down the alphabet.
+
+Think of it this way: all of the letters of the alphabet are arranged in a
+circle like the numbers of a clock. Also like a clock, you have a hand
+pointing at one of the letters: a. Crypt::Rot13 turns the hand clockwise n
+times through 'b', 'c', 'd', etc, and back again to 'a', 26 turns later.
+
+Crypt::Rot13 turns this hand for every letter of every string it contains a
+given number of times, the default of which is 13, or exactly half the
+number of letters in the alphabet.
 
 %prep
-%setup -n Crypt-Rot13-%{version} -q
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Makefile.PL OPTIMIZE="$RPM_OPT_FLAGS -Wall"
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
 make test
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install_vendor
-# remove .packlist file
-%{__rm} -rf $RPM_BUILD_ROOT%perl_vendorarch
-# remove perllocal.pod file
-%{__rm} -rf $RPM_BUILD_ROOT%perl_archlib
-#%perl_gen_filelist
+%perl_make_install
+%perl_process_packlist
+%perl_gen_filelist
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-#%files -f %{name}.files
-
-%files
-%defattr(-,root,root,-)
-%doc COPYING Changes README
-%doc %{_mandir}/man3/Crypt::Rot13.3pm*
-%dir %{perl_vendorlib}/Crypt
-%{perl_vendorlib}/Crypt/Rot13.pm
+%files -f %{name}.files
+%doc Changes README rot13.perl
+%license COPYING
 
 %changelog
