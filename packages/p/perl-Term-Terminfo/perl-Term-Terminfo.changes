@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  6 22:53:46 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Fix build by depending on ncurses-devel instead of ncurses5-devel
+
+-------------------------------------------------------------------
 Thu Nov 26 13:52:20 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - fixed summary 

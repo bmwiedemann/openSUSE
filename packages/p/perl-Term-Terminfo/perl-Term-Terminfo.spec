@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Term-Terminfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  perl(Module::Build::Using::PkgConfig)
 BuildRequires:  perl(Test::More) >= 0.88
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  ncurses5-devel
+BuildRequires:  ncurses-devel
 # MANUAL END
 
 %description
