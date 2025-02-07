@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Thu Feb 6 16:40:04 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1013
+- handle optimal-io-size in RAID topology calculation (bsc#1236687)
+- 4.5.231
+
+--------------------------------------------------------------------
+Wed Feb 5 11:25:09 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1012
+- handle optimal io size when calculating LUKS devices size
+  (bsc#1236687)
+- improved logging
+- 4.5.230
+
+--------------------------------------------------------------------
 Mon Feb 3 12:25:26 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1011
