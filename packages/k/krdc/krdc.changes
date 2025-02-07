@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Fix FreeBSD pipeline
+  * flatpak: Remove duplicate library declarations
+  * Fix crash on settings save when the systray icon is enabled
+-------------------------------------------------------------------
 Tue Jan  7 18:53:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1
