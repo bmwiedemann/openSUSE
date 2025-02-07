@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:23:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.3:
+  * feat: release v1.13.3 (#12105)
+  * replace ghcr.io to reg.kyverno.io (#12031) (#12106)
+  * chore: bump golang.org/x/net to 0.33.0 for release-1.13
+    (#12040)
+  * Fix default value for apiCall context (#11733) (#11988)
+  * log non fatal parsing errors (#11932) (#11949)
+  * feat: update annotations of kyverno images (#11935) (#11938)
+  * chore: bump opa 0.68.0 (#11786)
+  * fix(reports-controller): add a flag to disable reports sanity
+    checks (#11867) (#11875)
+  * remove policy exception dependancy from globalcontext and add
+    some tests (#11788) (#11854)
+  * fix global context error message logic error (#11815) (#11853)
+  * Fix: Policy with failureActionOverrides not applying desired
+    failure actions in desired namespaces (#11811) (#11850)
+  * fix panic when rules are empty (#11821) (#11848)
+  * Fix panic in background controller when updating Generate rule
+    (#11835) (#11846)
+  * fix: [Helm] mergeOverwrite overwrites nested objects #11536
+    (#11584) (#11797)
+  * fix: remove extra line in configmsp (#11762) (#11776)
+  * chore: bump python to 3.13.1 (#11801)
+  * fix: update chainsaw test apply timeout to 30s (cherry-pick
+    #11794) (#11802)
+  * fix: copy all the fields of public keys when splitting (#11770)
+    (#11798)
+  * fix: exemption error caused by convertChecks function (#11780)
+    (#11787)
+  * fix: pin sigstore (#11777)
+  * fix: revert default background scan interval to 1h (#11754)
+    (#11756)
+  * chore: bump golang.org/x/crypto 0.31.0 (#11753)
+
+-------------------------------------------------------------------
 Tue Dec 10 09:10:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.2:
