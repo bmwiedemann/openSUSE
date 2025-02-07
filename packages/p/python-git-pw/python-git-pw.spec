@@ -1,7 +1,7 @@
 #
 # spec file for package python-git-pw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define modname git_pw
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-git-pw
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        A tool for integrating Git with Patchwork
 License:        MIT
@@ -29,11 +29,13 @@ BuildArch:      noarch
 BuildRequires:  %{python_module arrow >= 0.10}
 BuildRequires:  %{python_module click >= 6.0}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyaml >= 5.1}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module requests > 2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate >= 0.8}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
@@ -46,7 +48,7 @@ Requires:       python-tabulate >= 0.8
 Provides:       git-pw = %{version}
 Obsoletes:      git-pw < %{version}
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -57,10 +59,10 @@ tracking system.
 %autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/git-pw
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -79,6 +81,6 @@ export LC_ALL=en_US.UTF-8
 %doc README.rst
 %python_alternative %{_bindir}/git-pw
 %{python_sitelib}/git_pw
-%{python_sitelib}/git_pw-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/git_pw-%{version}.dist-info
 
 %changelog
