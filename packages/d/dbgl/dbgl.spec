@@ -1,7 +1,7 @@
 #
 # spec file for package dbgl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define realver 098
+%define realver 099
 %define java_version 21
 Name:           dbgl
-Version:        0.98
+Version:        0.99
 Release:        0
 Summary:        DOSBox Game Launcher
 License:        GPL-2.0-only
@@ -31,6 +31,7 @@ Source1:        %{name}-wrapper.sh
 Source2:        %{name}.appdata.xml
 Patch0:         fix-swt-color.patch
 BuildRequires:  ant
+BuildRequires:  ant-xz
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
@@ -67,7 +68,7 @@ ant distlinux
 %install
 install -D -m0755 %{SOURCE1} %{buildroot}/%{_bindir}/%{name}
 install -d %{buildroot}%{_javadir}/dbgl
-tar xvf dist/dbgl%{realver}.tar.gz -C %{buildroot}%{_javadir}/dbgl/
+tar xvf dist/dbgl%{realver}.tar.xz -C %{buildroot}%{_javadir}/dbgl/
 # Use symbol links to system libraries
 build-jar-repository -s -p %{buildroot}/%{_javadir}/%{name}/lib commons-io commons-lang3 apache-commons-text swt
 #

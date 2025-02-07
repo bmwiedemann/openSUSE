@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Feb  7 09:53:23 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.99:
+  * Implemented support for special DOSBox 'families' such as
+    DOSBox-X, Staging, ECE and SVN. Please note that you'll have to
+    select the correct family and version when configuring a
+    'DOSBox Version' in DBGL. For DOSBox-X, make sure to use the
+    dosbox-x.reference.full.conf configuration file, or some
+    options might remain disabled in DBGL.
+  * It's recommend to disable any existing DOSBox version-specific
+    options (as shown here), to make full use of the new features
+    for the newly supported DOSBox families/versions, see this.
+  * Rewrote the template/profile editor, now having the settings
+    categories on the left side in a tree structure, allowing for
+    many more configuration options. When hovering over a
+    configuration item, a small tooltip will show the DOSBox
+    configuration [section] & item associated with it.
+  * Added support for importing/converting eXoDOS V6r4, the new
+    Media Pack and eXoDemoScene.
+  * Fixed a possible crash when trying to export the profile list,
+    plus an issue that could lead to duplicate templates and DOSBox
+    versions (Neville).
+  * Fixed an issue where, when editing a profile and changing the
+    associated DOSBox Version, the association would 'stick' after
+    cancelling (in memory, not on disk).
+  * Spanish and German translation update by Neville and Marcel,
+    respectively.
+  * implemented a small tool to renumber all database object IDs,
+    see this (ElTipejoLoco and others).
+  * Updated multiple Java libraries, most importantly SWT (dropping
+    support for Windows versions older than Win7 for the moment)
+
+-------------------------------------------------------------------
 Thu Oct 31 08:13:36 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.98:
