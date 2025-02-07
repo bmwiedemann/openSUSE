@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:30:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * fix option updating after reload more than the state may change, e.g. min/max, valueList etc. (kde#497880)
+
+-------------------------------------------------------------------
 Tue Jan  7 18:54:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1
