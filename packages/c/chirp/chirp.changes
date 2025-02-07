@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  7 17:09:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250207:
+  * tk280: Fix scan/skip setting
+  * tk280: Fix DAT file detection when extension is capitalized
+  * tk690: Expose proper PLL steps for 690,790,890
+  * ft450: Mark as nostep_tuning because 1Hz tuning
+  * icx90: Fix missing tuning steps for TV memories
+  * Add "include cached" toggle for RepeaterBook query
+  * Add accelerator key for RepeaterBook query
+  * UI improvements and translation updates
+  * icf520: Add tuning steps
+  * icf520: Clarify display inhibit and tx inhibit
+  * anytone: Add PTTID setting
+  * fix retevis rb626 support
+  * Added Icom IC-7410
+
+-------------------------------------------------------------------
 Sat Feb  1 17:00:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250131:
