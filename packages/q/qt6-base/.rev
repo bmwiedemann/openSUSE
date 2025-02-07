@@ -541,4 +541,22 @@
     <comment>Qt 6.8.2 + pyside (forwarded request 1241751 from krop)</comment>
     <requestid>1242040</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>b30f67f6241c6eaa206c273a5f9f9313</srcmd5>
+    <version>6.8.2</version>
+    <time>1738965446</time>
+    <user>anag+factory</user>
+    <comment>- Drop patches:
+  * 0001-Revert-QThread-Unix-move-the-pthread_key-to-a-file-s.patch
+  * 0002-Revert-QThread-Unix-revert-to-pthread-destruction-in.patch
+- Add patches (kde#499537, QTBUG-133500, QTBUG-130278)
+  * 0001-QLocale-try-to-survive-being-created-during-applicat.patch
+  * 0001-QSystemLocale-bail-out-if-accessed-post-destruction.patch
+  * 0001-QLibraryInfo-speed-up-checking-if-qt-etc-qt.conf-res.patch
+
+- Add patches to avoid crashes on exit (kde#499537):
+  * 0001-Revert-QThread-Unix-move-the-pthread_key-to-a-file-s.patch
+  * 0002-Revert-QThread-Unix-revert-to-pthread-destruction-in.patch</comment>
+    <requestid>1243888</requestid>
+  </revision>
 </revisionlist>

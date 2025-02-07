@@ -42,6 +42,10 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
+# https://bugs.kde.org/show_bug.cgi?id=499537
+Patch0:       0001-QLocale-try-to-survive-being-created-during-applicat.patch
+Patch1:       0001-QSystemLocale-bail-out-if-accessed-post-destruction.patch
+Patch2:       0001-QLibraryInfo-speed-up-checking-if-qt-etc-qt.conf-res.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch

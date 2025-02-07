@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:44:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Drop patches:
+  * 0001-Revert-QThread-Unix-move-the-pthread_key-to-a-file-s.patch
+  * 0002-Revert-QThread-Unix-revert-to-pthread-destruction-in.patch
+- Add patches (kde#499537, QTBUG-133500, QTBUG-130278)
+  * 0001-QLocale-try-to-survive-being-created-during-applicat.patch
+  * 0001-QSystemLocale-bail-out-if-accessed-post-destruction.patch
+  * 0001-QLibraryInfo-speed-up-checking-if-qt-etc-qt.conf-res.patch
+
+-------------------------------------------------------------------
+Wed Feb  5 09:54:18 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to avoid crashes on exit (kde#499537):
+  * 0001-Revert-QThread-Unix-move-the-pthread_key-to-a-file-s.patch
+  * 0002-Revert-QThread-Unix-revert-to-pthread-destruction-in.patch
+
+-------------------------------------------------------------------
 Fri Jan 31 10:22:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2
