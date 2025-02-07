@@ -30,19 +30,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       24
+%global updatever       26
 %global patchver        0
-%global buildver        8
+%global buildver        4
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   30b62e68b859d4a716ae799da0711722efed53de
-%global root_branch     v0.46.0-release
+%global root_revision   674ad23a805ae5fb2e30642c45918dec3eae257a
+%global root_branch     v0.49.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    840a9adba4548aa546e36c97a1150b7306a7e07b
-%global omr_branch      v0.46.0-release
+%global omr_revision    e49875871c2862e0d132e3695d55273bfbac08b6
+%global omr_branch      v0.49.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 1a6f6128aa2f639de1e33cae77a31f474ba6b1a9
-%global openj9_branch   v0.46.0-release
-%global openj9_tag      openj9-0.46.0
+%global openj9_revision 3c3d179854a524d7f95225999169ee09fda46033
+%global openj9_branch   v0.49.0-release
+%global openj9_tag      openj9-0.49.0
 # priority must be 6 digits in total
 %global priority        2101
 %global javaver         %{featurever}
@@ -102,6 +102,7 @@ Patch4:         libdwarf-fix.patch
 # Allow multiple initialization of PKCS11 libraries
 Patch5:         multiple-pkcs11-library-init.patch
 # Fix build with older openssl
+Patch6:         openssl-OSSL_LIB_CTX.patch
 Patch7:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
@@ -349,6 +350,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 %patch -P 7 -p1
 %patch -P 13 -p1
 
@@ -405,6 +407,7 @@ bash configure \
     --disable-warnings-as-errors-omr \
     --disable-warnings-as-errors-openj9 \
     --disable-keep-packaged-modules \
+    --enable-jfr \
     --with-debug-level=%{debugbuild} \
     --with-conf-name=%{debugbuild} \
     --with-zlib=system \
@@ -735,6 +738,7 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/lib/desktop
 %dir %{_jvmdir}/%{sdkdir}/lib/security
 %dir %{_jvmdir}/%{sdkdir}/lib/j9vm
+%dir %{_jvmdir}/%{sdkdir}/lib/jfr
 %dir %{_jvmdir}/%{sdkdir}/conf
 %dir %{_jvmdir}/%{sdkdir}/conf/security
 %dir %{_jvmdir}/%{sdkdir}/conf/security/policy
@@ -746,6 +750,7 @@ fi
 
 %{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/bin/java
+%{_jvmdir}/%{sdkdir}/bin/jfr
 %{_jvmdir}/%{sdkdir}/bin/jitserver
 %{_jvmdir}/%{sdkdir}/bin/jjs
 %{_jvmdir}/%{sdkdir}/bin/keytool
@@ -800,6 +805,8 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/java*.properties
 %{_jvmdir}/%{sdkdir}/lib/jexec
 %{_jvmdir}/%{sdkdir}/lib/jli/libjli.so
+%{_jvmdir}/%{sdkdir}/lib/jfr/default.jfc
+%{_jvmdir}/%{sdkdir}/lib/jfr/profile.jfc
 %{_jvmdir}/%{sdkdir}/lib/jrt-fs.jar
 %{_jvmdir}/%{sdkdir}/lib/jspawnhelper
 %{_jvmdir}/%{sdkdir}/lib/jvm.cfg
@@ -836,6 +843,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libunpack.so
 %{_jvmdir}/%{sdkdir}/lib/libverify.so
 %{_jvmdir}/%{sdkdir}/lib/libzip.so
+%{_jvmdir}/%{sdkdir}/lib/metadata.blob
 %{_jvmdir}/%{sdkdir}/lib/modules
 #%{_jvmdir}/%{sdkdir}/lib/openj9-notices.html
 %{_jvmdir}/%{sdkdir}/lib/options.default
