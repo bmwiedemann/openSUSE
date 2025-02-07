@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:22:16 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.4.0:
+  * Revert helm upgrade - back to 3.16.4 (#4659) (#4660)
+  * Jlo/fix cves 3.4.0 (#4658)
+  * Don't show warning for newer CLI versions (#4656)
+  * optimise builds during okteto up (#4652)
+  * Resolve platform env for test in remote-run (#4655)
+  * fix divert with docker compose (#4651)
+  * deps: update Syncthing version to 1.29.2 (#4649)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.11.0 to
+    5.13.0 (#4648)
+  * Update Syncthing version to 1.29.0 in Dockerfile and install.go
+    (#4637)
+  * revert: 4568 PR maintaining warnings (#4642)
+  * build(deps): bump jinja2 from 3.1.4 to 3.1.5 in /samples/python
+    (#4639)
+  * remove security context and fsgroup on initialization (#4640)
+  * add validate action to release (#4635)
+  * fix cves (#4636)
+  * Add validation to test section (#4628)
+
+-------------------------------------------------------------------
 Wed Jan 15 06:56:26 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.3.1:
