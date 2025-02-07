@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  7 12:30:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.13.0
+  * Include*.md files in wheel These are needed by the test suite,
+    which is also included in the wheel.
+  * Fix tests on python3.11
+  * Update some web links
+  * Update pyinstaller to 6.1.0 for python >= 3.11 support
+  * doctest: use outputchecker argument also in debug mode. Fixes #38
+  * Remove references to old "six" module
+- Drop python-manuel-no-six.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Feb  6 14:04:47 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Build also on the old python3 (needed by some packages in the Backports).

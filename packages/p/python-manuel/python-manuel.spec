@@ -1,7 +1,7 @@
 #
 # spec file for package python-manuel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2018 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,13 @@
 
 %{?sle15allpythons}
 Name:           python-manuel
-Version:        1.12.4
+Version:        1.13.0
 Release:        0
 Summary:        Python module to build tested documentation
 License:        Apache-2.0
 URL:            https://pypi.org/project/manuel/
 # SourceRepository: https://github.com/benji-york/manuel
 Source:         https://files.pythonhosted.org/packages/source/m/manuel/manuel-%{version}.tar.gz
-# https://github.com/benji-york/manuel/issues/33
-Patch0:         python-manuel-no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
