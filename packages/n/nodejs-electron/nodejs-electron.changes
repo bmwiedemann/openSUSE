@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  6 21:20:53 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.4.0
+  * Added permission support for document.executeCommand("paste").
+  * Fixed crash in gin::wrappable::secondweakcallback.
+
+-------------------------------------------------------------------
 Wed Jan 22 22:41:56 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 33.3.2

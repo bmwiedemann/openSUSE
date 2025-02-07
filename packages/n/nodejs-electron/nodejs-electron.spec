@@ -201,7 +201,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        33.3.2
+Version:        33.4.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -999,13 +999,6 @@ export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
 export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 %endif
 
-%ifarch aarch64
-%if %{with lto}
-# Out of memory: Killed process 4016 (lto1-wpa)
-export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
-%endif
-%endif
-
 
 #The chromium build process passes lots of .o files directly to the linker instead of using static libraries,
 #and relies on the linker eliminating unused sections.
@@ -1195,15 +1188,9 @@ myconf_gn+=" blink_symbol_level=0"
 myconf_gn+=" v8_symbol_level=0"
 %endif
 %ifarch aarch64
-%if %{with lto}
-myconf_gn+=' symbol_level=1'
-myconf_gn+=' blink_symbol_level=1'
-myconf_gn+=' v8_symbol_level=1'
-%else
 myconf_gn+=' symbol_level=2'
 myconf_gn+=' blink_symbol_level=1'
 myconf_gn+=' v8_symbol_level=1'
-%endif
 %endif
 
 #symbol_level should not affect generated code.
