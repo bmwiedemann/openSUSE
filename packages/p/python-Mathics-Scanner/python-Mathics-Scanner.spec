@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics-Scanner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define modname mathics_scanner
 Name:           python-Mathics-Scanner
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Summary:        Character Tables and Tokenizer for Mathics and the Wolfram Language
 License:        GPL-3.0-only
@@ -41,7 +41,7 @@ Requires:       python-PyYAML
 Requires:       python-chardet
 Requires:       python-click
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-ujson
 BuildArch:      noarch
 %python_subpackages
@@ -52,7 +52,7 @@ Character Tables and Tokenizer for Mathics and the Wolfram Language.
 %prep
 %setup -q -n %{modname}-%{version}
 # Fix shbang
-sed -i "s|/usr/bin/env python|/usr/bin/python3|" mathics_scanner/generate/build_tables.py
+sed -i "s|/usr/bin/env python|/usr/bin/python3|" mathics_scanner/generate/build_{,operator_}tables.py
 sed -i "s|/usr/bin/env python3|/usr/bin/python3|" mathics_scanner/generate/rl_inputrc.py
 
 %build
@@ -60,22 +60,30 @@ sed -i "s|/usr/bin/env python3|/usr/bin/python3|" mathics_scanner/generate/rl_in
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/mathics-generate-json-table
+%python_clone -a %{buildroot}%{_bindir}/mathics3-generate-json-table
+%python_clone -a %{buildroot}%{_bindir}/mathics3-generate-operator-json-table
+%python_clone -a %{buildroot}%{_bindir}/mathics3-tokens
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Should be executable
-%python_expand chmod 0755 %{buildroot}%{$python_sitelib}/mathics_scanner/generate/{build_tables,rl_inputrc}.py
+%python_expand chmod 0755 %{buildroot}%{$python_sitelib}/mathics_scanner/generate/{build_tables,build_operator_tables,rl_inputrc}.py
 
 %check
 %pytest
 
 %post
-%python_install_alternative mathics-generate-json-table
+%python_install_alternative mathics3-generate-json-table
+%python_install_alternative mathics3-generate-operator-json-table
+%python_install_alternative mathics3-tokens
 
 %postun
-%python_uninstall_alternative mathics-generate-json-table
+%python_uninstall_alternative mathics3-generate-json-table
+%python_uninstall_alternative mathics3-generate-operator-json-table
+%python_uninstall_alternative mathics3-tokens
 
 %files %{python_files}
-%python_alternative %{_bindir}/mathics-generate-json-table
+%python_alternative %{_bindir}/mathics3-generate-json-table
+%python_alternative %{_bindir}/mathics3-generate-operator-json-table
+%python_alternative %{_bindir}/mathics3-tokens
 %{python_sitelib}/%{modname}/
 %{python_sitelib}/Mathics_Scanner-%{version}*.*-info/
 
