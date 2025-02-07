@@ -1,7 +1,7 @@
 #
 # spec file for package babeltrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  pkgconfig
+BuildRequires:  python3-setuptools
 BuildRequires:  swig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libdw) >= 0.154

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:35:29 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit python3-setuptools BuildRequires: needed when
+  building with Python 3.13.
+
+-------------------------------------------------------------------
 Mon Dec 13 23:31:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - reenable babeltrace on armv6/v7 (switch to excludearch) 
