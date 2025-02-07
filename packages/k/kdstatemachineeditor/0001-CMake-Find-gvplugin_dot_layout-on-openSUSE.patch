@@ -1,0 +1,32 @@
+From dcf2086d5e96ef98e593f639d4c613b863e4f54e Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sat, 1 Feb 2025 11:11:46 +0100
+Subject: [PATCH] CMake - Find gvplugin_dot_layout on openSUSE
+
+KDSME needs the gvplugin_dot_layout plugin to build, but the graphviz spec file
+removes the symlinks for libgvplugin_*.
+
+The build system needs a workaround.
+---
+ cmake/FindGraphviz.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/FindGraphviz.cmake b/cmake/FindGraphviz.cmake
+index fd0e2d4..d19babf 100644
+--- a/cmake/FindGraphviz.cmake
++++ b/cmake/FindGraphviz.cmake
+@@ -120,9 +120,10 @@ find_library(
+     PATH_SUFFIXES ${GRAPHVIZ_LIB_PATH_SUFFIX} ${_GRAPHVIZ_FIND_OPTS}
+ )
+ 
++# Due to how graphviz is packaged in openSUSE, we have to explictly look for libgvplugin_dot_layout.so.6
+ find_library(
+     GRAPHVIZ_PLUGIN_DOT_LAYOUT_LIBRARY
+-    NAMES gvplugin_dot_layout
++    NAMES gvplugin_dot_layout libgvplugin_dot_layout.so.6
+     HINTS ${_GRAPHVIZ_LIBRARY_DIR}
+     PATH_SUFFIXES ${GRAPHVIZ_LIB_PATH_SUFFIX} ${_GRAPHVIZ_FIND_OPTS} graphviz
+ )
+-- 
+2.48.1
+

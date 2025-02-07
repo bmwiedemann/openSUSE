@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb  1 10:15:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.0.0
+  * Supports Qt6 in addition to Qt5 (co-installable)
+  * Buildsystem: increase CMake min version to 3.16.0
+  * Buildsystem: add uninstall target
+  * Buildsystem: generate and install kdsme-version.h
+  * Use official Graphviz from upstream with -DKDSME_INTERNAL_GRAPHVIZ=True
+  * Fix build with more recent graphviz versions
+  * Buildsystem: new Option BUILD_SHARED_LIBS to select between shared or static libraries
+  * Rename the following CMake options:
+  * BUILD_DOCS -> KDSME_DOCS
+  * BUILD_EXAMPLES -> KDSME_EXAMPLES
+  * BUILD_QT6 -> KDSME_QT6
+  * WITH_STATIC_GRAPHVIZ -> KDSME_STATIC_GRAPHVIZ
+  * Use standard cmake options instead of custom ones:
+  * BUILD_TESTS -> BUILD_TESTING
+- Add patch:
+  * 0001-CMake-Find-gvplugin_dot_layout-on-openSUSE.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 07:11:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Install ReadMe.txt instead of ReadMe.md.

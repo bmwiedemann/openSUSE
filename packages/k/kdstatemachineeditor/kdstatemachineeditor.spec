@@ -1,7 +1,7 @@
 #
 # spec file for package kdstatemachineeditor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,39 +15,60 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define sover 1
-%define libnamecore libkdstatemachineeditor_core%{sover}
-%define libnamedebuginterfaceclient libkdstatemachineeditor_debuginterfaceclient%{sover}
-%define libnamedebuginterfacesource libkdstatemachineeditor_debuginterfacesource-static
-%define libnameview libkdstatemachineeditor_view%{sover}
-Name:           kdstatemachineeditor
-Version:        1.2.8
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "qt6"
+%define qt6 1
+%define pkg_suffix -qt6
+%define qt_suffix 6
+%define qt_min_version 6.1
+%else
+%define qt5 1
+%define qt_suffix 5
+%define qt_min_version 5.15
+%endif
+#
+%global sover 2
+%define libnamecore libkdstatemachineeditor_core%{?qt6:%{pkg_suffix}-}%{sover}
+%define libnamedebuginterfaceclient libkdstatemachineeditor_debuginterfaceclient%{?qt6:%{pkg_suffix}-}%{sover}
+%define libnamedebuginterfacesource libkdstatemachineeditor_debuginterfacesource%{?qt6:%{pkg_suffix}}-static
+%define libnameview libkdstatemachineeditor_view%{?qt6:%{pkg_suffix}-}%{sover}
+#
+Name:           kdstatemachineeditor%{?pkg_suffix}
+Version:        2.0.0
 Release:        0
 Summary:        A framework for creating Qt State Machine metacode using a GUI
 # Legal: NOTE the EULA mentioned in LICENSE.txt only applies to "Licensed Product" users.
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://kdab.github.io/KDStateMachineEditor/
-Source:         https://github.com/KDAB/KDStateMachineEditor/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+Source:         https://github.com/KDAB/KDStateMachineEditor/releases/download/v%{version}/KDStateMachineEditor-v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE -- work around build issue caused by graphviz packaging decisions
+Patch0:         0001-CMake-Find-gvplugin_dot_layout-on-openSUSE.patch
+BuildRequires:  cmake >= 3.16.0
 BuildRequires:  doxygen
-BuildRequires:  graphviz-devel
+BuildRequires:  graphviz-devel >= 2.30.1
 BuildRequires:  graphviz-gnome
-BuildRequires:  libQt5Core-private-headers-devel
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libQt5Network-private-headers-devel
-BuildRequires:  libqt5-qtscxml-private-headers-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5RemoteObjects)
-BuildRequires:  cmake(Qt5Scxml)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5XmlPatterns)
+BuildRequires:  cmake(Qt%{qt_suffix}Core) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Gui) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Quick) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}QuickWidgets) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}RemoteObjects) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Scxml) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Test) >= %{qt_min_version}
+BuildRequires:  cmake(Qt%{qt_suffix}Widgets) >= %{qt_min_version}
+%if 0%{?qt5}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{qt_min_version}
+BuildRequires:  libqt5-qtscxml-private-headers-devel >= %{qt_min_version}
+BuildRequires:  cmake(Qt5XmlPatterns) >= %{qt_min_version}
+%endif
+%if 0%{?qt6}
+BuildRequires:  qt6-gui-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-scxml-private-devel >= %{qt_min_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6StateMachine) >= %{qt_min_version}
+%endif
+Requires:       graphviz-plugins-core
 
 %description
 The KDAB State Machine Editor Library is a framework that can be used
@@ -116,55 +137,74 @@ interfaces and tools. Output from such applications is in metacode
 or QML that can then be used in Qt or QtQuick projects.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n KDStateMachineEditor-%{version}
 
 %build
 # libkdstatemachineeditor_debuginterfacesource is a static library
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
+%define build_options -DKDSME_INTERNAL_GRAPHVIZ:BOOL=FALSE
+
+%if 0%{?qt5}
 %cmake \
-  -DECM_MKSPECS_INSTALL_DIR=%{_libdir}/qt5/mkspecs/modules \
-  -DLIB_INSTALL_DIR="%{_lib}"
+  -DECM_MKSPECS_INSTALL_DIR:STRING=%{_libdir}/qt5/mkspecs/modules \
+  %{build_options}
+%{nil}
 
 %cmake_build
+%endif
+
+%if 0%{?qt6}
+%cmake_qt6 \
+  -DKDSME_QT6:BOOL=TRUE \
+  %{build_options}
+%{nil}
+
+%qt6_build
+%endif
 
 %install
+%if 0%{?qt5}
 %cmake_install
+%endif
 
-%post   -n %{libnamecore} -p /sbin/ldconfig
-%postun -n %{libnamecore} -p /sbin/ldconfig
-%post   -n %{libnamedebuginterfaceclient} -p /sbin/ldconfig
-%postun -n %{libnamedebuginterfaceclient} -p /sbin/ldconfig
-%post   -n %{libnameview} -p /sbin/ldconfig
-%postun -n %{libnameview} -p /sbin/ldconfig
+%if 0%{?qt6}
+%qt6_install
+%endif
+
+%ldconfig_scriptlets -n %{libnamecore}
+%ldconfig_scriptlets -n %{libnamedebuginterfaceclient}
+%ldconfig_scriptlets -n %{libnameview}
 
 %files -n %{libnamecore}
 %license LICENSES/*
-%doc CHANGES ReadMe.txt
-%{_libdir}/libkdstatemachineeditor_core.so.%{sover}
+%doc CHANGES README.md
+%{_libdir}/libkdstatemachineeditor_core%{?pkg_suffix}.so.%{sover}
 
 %files -n %{libnamedebuginterfaceclient}
 %license LICENSES/*
-%{_libdir}/libkdstatemachineeditor_debuginterfaceclient.so.%{sover}
+%{_libdir}/libkdstatemachineeditor_debuginterfaceclient%{?pkg_suffix}.so.%{sover}
 
 %files -n %{libnamedebuginterfacesource}
 %license LICENSES/*
-%{_libdir}/libkdstatemachineeditor_debuginterfacesource.a
+%{_libdir}/libkdstatemachineeditor_debuginterfacesource%{?pkg_suffix}.a
 
 %files -n %{libnameview}
 %license LICENSES/*
-%{_libdir}/libkdstatemachineeditor_view.so.%{sover}
+%{_libdir}/libkdstatemachineeditor_view%{?pkg_suffix}.so.%{sover}
 
 %files devel
 %license LICENSES/*
-%{_includedir}/kdstatemachineeditor/
-%{_libdir}/cmake/KDSME/
-%{_libdir}/libkdstatemachineeditor_core.so
-%{_libdir}/libkdstatemachineeditor_debuginterfaceclient.so
-%{_libdir}/libkdstatemachineeditor_view.so
+%{_includedir}/kdstatemachineeditor%{?pkg_suffix}/
+%{_libdir}/cmake/KDSME%{?pkg_suffix}/
+%{_libdir}/libkdstatemachineeditor_core%{?pkg_suffix}.so
+%{_libdir}/libkdstatemachineeditor_debuginterfaceclient%{?pkg_suffix}.so
+%{_libdir}/libkdstatemachineeditor_view%{?pkg_suffix}.so
+%if 0%{?qt5}
 %{_libdir}/qt5/mkspecs/modules/qt_KDSMECore.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KDSMEDebugInterfaceClient.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KDSMEDebugInterfaceSource.pri
 %{_libdir}/qt5/mkspecs/modules/qt_KDSMEView.pri
+%endif
 
 %changelog
