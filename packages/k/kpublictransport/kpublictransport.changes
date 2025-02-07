@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:29:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Set API keys for HSL and Waltti backends as well
+  * Switch to Entur's v3 API
+  * Try harder to determine OTP line modes
+  * Switch Transitous to the new MOTIS v2 API
+  * DB: Handle NS International tickets
+  * Handle transfer sections in the new DB API
+  * Parse occupancy information also for the entire section
+  * Add test for cancelled journeys in the new DB API
+  * Update Rolph endpoint URL
+  * Remove Australian Navitia backend configuration
+  * Restore Digitransit support now that they require an API key
+  * Reduce excessive debug output
+  * Switch to DB's new proxied Hafas API by default
+  * Switch the Hafas request unit tests to use ÖBB instead of DB
+  * EFA: Improve arrival/departure time parsing for intermediate stops
+
+-------------------------------------------------------------------
 Tue Jan  7 18:53:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1
