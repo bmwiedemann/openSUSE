@@ -17,7 +17,7 @@
 
 
 Name:           python-ntc-templates
-Version:        7.5.0
+Version:        7.7.0
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0

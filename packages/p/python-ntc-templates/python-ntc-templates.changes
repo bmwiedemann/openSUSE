@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Feb  6 19:40:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.7.0
+  * Account for member of and active members ellipsis.
+  * modified hp_comware_display_interface.textfsm to account for
+    lowercase "maximum frame length".
+  * Add large_community to eos bgp detail.
+  * add arista eos show ip mroute detail template.
+  * Arista eos show ip bgp summary.
+- Update to version 7.6.0
+  * Adding new command on Alcatel AOS: show linkagg alias.
+  * New template for Alcatel AOS: show linkagg port.
+  * Fixing template for alcatel aos to support R8.9:
+    show mac-address-table.
+  * Adding template for Alcatel AOS (only R8):
+    show interfaces alias.
+  * Alcatel aos show linkagg port.
+  * Added description in cisco_ios_show_ip_bgp_vpnv4_all_neighbors.
+  * Update template Alcatel AOS: show mac-address-table.
+  * Update template Alcatel AOS: show interfaces port.
+  * Updating template for Huawei SmartAX: display ont info
+    summary ont.
+  * Updated Aruba AOSCX show_vsf_detail with additional values.
+  * status regex includes non-whitespace.
+  * Add new templates for Alcatel AOS: show interfaces ethernet.
+  * Handle trailing space after mode in HP Comware display interface
+  * Added support for capturing the "Local Intf service instance"
+    field in the template.
+  * Add IPv6 network and service group support to IOS
+    show object-group.
+  * adding juniper_junos_show_system_processes_summary.textfsm
+    support.
+  * adding juniper_junos_show_system_processes_brief.textfsm support
+  * Fix ios sh int status private vlan (pvlan).
+  * Huawei smartax display ont info summary.
+  * Create cisco_asa_show_running-config_access-group.
+  * Update cisco_asa_show_running-config_object_network.textfsm.
+  * Update cisco_ios_show_ip_interface_brief.
+  * Add Fsas Si-R show system information template.
+  * Augment and simplify regexes in alcatel_aos_sh_int_ethernet.
+  * Added template support for cisco_fxos show system firmware.
+  * Add new template for Fsas Si-R show ether.
+  * Create cisco_asa_show_running-config_object_service.
+
+-------------------------------------------------------------------
 Fri Jan 10 05:28:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.5.0:
