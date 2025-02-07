@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:22:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.203.0:
+  * Add release notes for v0.203.0 (#8154)
+  * Resolve clusterDNS for IPv6 MNG AL2023 with custom AMI (#8170)
+  * [Hybrid Nodes] Make `remoteNetworkConfig.IAM.Provider` field
+    case insensitive (#8169)
+  * [Hybrid Nodes] Remove strict requirement of providing a VGW or
+    TGW during cluster creation (#8168)
+  * Bump golang.org/x/crypto from v0.22.0 to v0.32.0 (#8166)
+  * Prepare for next development iteration (#8159)
+
+-------------------------------------------------------------------
 Thu Jan 23 06:04:20 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.202.0:
