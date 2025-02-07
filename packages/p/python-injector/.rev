@@ -163,4 +163,12 @@
   * Removed unofficial support for injecting into parent class</comment>
     <requestid>1131714</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1afed6e05c4b9fc58fab32da370bcb57</srcmd5>
+    <version>0.21.0</version>
+    <time>1738966056</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244148</requestid>
+  </revision>
 </revisionlist>
