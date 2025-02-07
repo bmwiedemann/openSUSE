@@ -21,7 +21,7 @@
 
 %bcond_without  released
 Name:           krecorder
-Version:        24.12.1
+Version:        24.12.2
 Release:        0
 Summary:        Audio recording application
 License:        GPL-3.0-or-later
