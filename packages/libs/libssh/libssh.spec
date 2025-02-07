@@ -1,7 +1,7 @@
 #
 # spec file for package libssh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,6 @@ Configuration files for the SSH library.
 %package devel
 Summary:        SSH library development headers
 Group:          Development/Libraries/C and C++
-Requires:       cmake
 Requires:       libssh4 = %{version}
 
 %description devel
@@ -158,6 +157,7 @@ sed -i '/^Include/ s|/usr/etc/crypto-policies|/etc/crypto-policies|' %{buildroot
 %{_includedir}/libssh
 %{_libdir}/libssh.so
 %{_libdir}/pkgconfig/libssh.pc
+%dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/libssh
 %{_libdir}/cmake/libssh/libssh-config.cmake
 %{_libdir}/cmake/libssh/libssh-config-relwithdebinfo.cmake

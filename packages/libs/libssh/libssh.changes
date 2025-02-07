@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:26:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not Require cmake from the devel package: there is no
+  requirement that consumers would be using cmake.
+- Own %{_libdir}/cmake to not leave traces when uninstalling the
+  package and being the only one left installing files to that
+  directory.
+
+-------------------------------------------------------------------
 Fri Sep 13 07:42:23 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 0.11.1:
