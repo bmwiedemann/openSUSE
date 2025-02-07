@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 16:00:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Wed Sep 18 15:43:37 UTC 2024 - Coly Li <colyli@suse.de>
 
 - Detail: remove duplicated code (bsc#1226413) 

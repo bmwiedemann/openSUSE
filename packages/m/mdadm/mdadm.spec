@@ -1,7 +1,7 @@
 #
 # spec file for package mdadm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,7 +79,9 @@ install -m 755 misc/mdcheck %{buildroot}/usr/share/mdadm/mdcheck
 install -m 644 %{S:2} %{buildroot}%{_fillupdir}/
 install -d %{buildroot}%{_systemdshutdowndir}
 install -d %{buildroot}%{_sbindir}
+%if 0%{?suse_version} < 1600
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
+%endif
 %if 0%{?suse_version} < 1550
 	mkdir -p %{buildroot}/sbin
 	ln -s %{_sbindir}/mdadm %{buildroot}/sbin/mdadm
