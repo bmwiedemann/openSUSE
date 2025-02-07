@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:30:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.2/
+- Changes since 24.12.1:
+  * Add bottom padding to the sidebar
+  * Better handle failed authentification
+  * Remove unused string from Android manifest
+  * Don't display a visual error when failing to fetch familiar followers
+  * Don't display a visual error when failing to fetch unread count (kde#497562)
+
+-------------------------------------------------------------------
 Tue Jan  7 18:54:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.1
