@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Class-XPath
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
-Name:           perl-Class-XPath
 %define cpan_name Class-XPath
+Name:           perl-Class-XPath
+Version:        1.400.0
+Release:        0
+# 1.4 -> normalize -> 1.400.0
+%define cpan_version 1.4
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Adds xpath matching to object trees
-Version:        1.4
-Release:        144
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Class-XPath/
-#Source:         http://www.cpan.org/authors/id/S/SA/SAMTREGAR/Class-XPath-%{version}.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SA/SAMTREGAR/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.47
-BuildRequires:  perl(HTML::TreeBuilder)
+Provides:       perl(Class::XPath) = %{version}
+Provides:       perl(Simple)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -51,25 +50,21 @@ expect the subset of XPath supported to grow. See the SYNTAX documentation
 for details on the current level of support.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(644,root,root,755)
 %doc Changes README
 
 %changelog
