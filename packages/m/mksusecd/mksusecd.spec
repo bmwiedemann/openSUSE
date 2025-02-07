@@ -18,7 +18,7 @@
 
 
 Name:           mksusecd
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        Tool to create SUSE Linux installation ISOs
 License:        GPL-3.0+

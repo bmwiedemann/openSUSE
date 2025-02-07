@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Feb 7 11:56:42 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#79
+- do not require root permissions to unpack ISO images (bsc#1236828)
+- 3.3
+
+--------------------------------------------------------------------
 Thu Feb 6 16:10:24 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#78
