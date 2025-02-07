@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Feb 07 08:37:21 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.0:
+  * chore(deps): bump github.com/google/cel-go from 0.22.0 to
+    0.23.0 (#606)
+  * chore: explicitly add quotes to error format (#605)
+  * chore(deps): bump the kubernetes group across 1 directory with
+    7 updates (#604)
+  * chore(deps): bump github.com/docker/docker (#603)
+  * [KEP-0009] feat: add expression based assertions (#576)
+  * chore(deps): bump sigs.k8s.io/controller-runtime in the
+    kubernetes group (#600)
+  * chore(deps): bump sigs.k8s.io/controller-tools in the
+    kubernetes group (#599)
+  * chore(deps): bump github.com/docker/docker (#598)
+  * Bump sigs.k8s.io/kind in the kubernetes group across 1
+    directory (#597)
+  * Bump go, k8s deps and linter versions, and some fixes (#596)
+  * refactor: moves kubernetes utilities to `pkg/kubernetes` (#590)
+  * Bump github.com/docker/docker (#594)
+  * Bump sigs.k8s.io/controller-runtime in the kubernetes group
+    (#592)
+  * fix: make sure goreleaser config matches current schema (#588)
+
+-------------------------------------------------------------------
 Wed Dec 04 06:43:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.0:
