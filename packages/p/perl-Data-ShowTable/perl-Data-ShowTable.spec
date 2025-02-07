@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-ShowTable
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Data-ShowTable
-Version:        4.6
-Release:        0
 %define cpan_name Data-ShowTable
-Summary:        routines to display tabular data in several formats.
-License:        GPL-2.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Data-ShowTable/
-Source:         http://www.cpan.org/authors/id/A/AK/AKSTE/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Data-ShowTable
+Version:        4.600.0
+Release:        0
+# 4.6 -> normalize -> 4.600.0
+%define cpan_version 4.6
+#Upstream: SUSE-Public-Domain
+License:        GPL-2.0-or-later
+Summary:        Perl module to automatically format columnar data
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AK/AKSTE/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Data::ShowTable) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,42 +46,41 @@ styles:
 
 * Box
 
-  A tabular format, with the column titles and the entire table surrounded
-  by a "box" of "'+'", "'-'", and "'|'" characters. See the "ShowBoxTable"
-  manpage for details.
+A tabular format, with the column titles and the entire table surrounded by
+a "box" of "'+'", "'-'", and "'|'" characters. See "ShowBoxTable" for
+details.
 
 * Table
 
-  A simple tabular format, with columns automatically aligned, with column
-  titles. See the "ShowSimpleTable" manpage.
+A simple tabular format, with columns automatically aligned, with column
+titles. See "ShowSimpleTable".
 
 * List
 
-  A _list_ style, where columns of data are listed as a _name_:_value_
-  pair, one pair per line, with rows being one or more column values,
-  separated by an empty line. See the "ShowListTable" manpage.
+A _list_ style, where columns of data are listed as a _name_:_value_ pair,
+one pair per line, with rows being one or more column values, separated by
+an empty line. See "ShowListTable".
 
 * HTML
 
-  The data is output as an HTML _TABLE_, suitable for display through a
-  _Web_-client. See the "ShowHTMLTable" manpage. Input can either be plain
-  ASCII text, or text with embedded HTML elements, depending upon an
-  argument or global parameter.
+The data is output as an HTML _TABLE_, suitable for display through a
+_Web_-client. See "ShowHTMLTable". Input can either be plain ASCII text, or
+text with embedded HTML elements, depending upon an argument or global
+parameter.
 
 The subroutines which perform these displays are listed below.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
-rm -f pm_to_blib
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -85,7 +88,6 @@ rm -f pm_to_blib
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc bump-version Changes Copyright gen-html gen-tests GNU-LICENSE MYMETA.json MYMETA.yml README showtable testfile testfile.lst testfile.tabs test.pl.off
+%doc bump-version Changes Copyright gen-html gen-tests GNU-LICENSE README showtable testfile testfile.lst testfile.tabs test.pl.off
 
 %changelog

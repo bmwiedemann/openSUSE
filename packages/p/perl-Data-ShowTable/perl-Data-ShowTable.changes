@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 22:20:30 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Sun Feb  9 13:33:36 UTC 2014 - coolo@suse.com
 
 - updated to 4.6 - most likely the only perl module without changelog
