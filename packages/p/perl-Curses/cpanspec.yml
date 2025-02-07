@@ -11,7 +11,7 @@
 #  foo.patch: -p1
 #  bar.patch:
 preamble: |-
- BuildRequires:  ncurses5-devel
+ BuildRequires:  ncurses-devel
 post_prep: |-
  sed -i '1s| /usr//bin/perl|%{__perl}|' demo.form
  sed -i '1s| /usr/bin/perl|%{__perl}|' demo* gdc testsyms
@@ -23,8 +23,8 @@ post_prep: |-
 license: Perl
 #skip_noarch: 1
 custom_build: |-
- export CURSES_CFLAGS="-I/usr/include/ncurses5/ncursesw"
- export CURSES_LDFLAGS="-L%{_libdir}/ncurses5 -lncursesw"
+ export CURSES_CFLAGS="-I/usr/include/ncursesw"
+ export CURSES_LDFLAGS="-L%{_libdir}/ncurses -lncursesw"
  perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" PANELS MENUS FORMS
  %make_build
 #custom_test: |-

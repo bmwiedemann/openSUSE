@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Curses
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Provides:       perl(Curses::Window)
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  ncurses5-devel
+BuildRequires:  ncurses-devel
 # MANUAL END
 
 %description
@@ -52,7 +52,7 @@ document describes the interface itself, and assumes that you already know
 how your system's curses(3) library works.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
@@ -62,8 +62,8 @@ chmod +x makeConfig
 # MANUAL END
 
 %build
-export CURSES_CFLAGS="-I/usr/include/ncurses5/ncursesw"
-export CURSES_LDFLAGS="-L%{_libdir}/ncurses5 -lncursesw"
+export CURSES_CFLAGS="-I/usr/include/ncursesw"
+export CURSES_LDFLAGS="-L%{_libdir}/ncurses -lncursesw"
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" PANELS MENUS FORMS
 %make_build
 

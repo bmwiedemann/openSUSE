@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb  6 22:48:52 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Fix build by depending on ncurses-devel instead of ncurses5-devel
+
+-------------------------------------------------------------------
 Sun Apr 28 03:09:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.45

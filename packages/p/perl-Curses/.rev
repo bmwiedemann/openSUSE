@@ -253,4 +253,13 @@
     <comment></comment>
     <requestid>1174461</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>239ba9261eb8516b2ba355e044121f7d</srcmd5>
+    <version>1.450.0</version>
+    <time>1738965873</time>
+    <user>anag+factory</user>
+    <comment>- Fix build by depending on ncurses-devel instead of ncurses5-devel
+</comment>
+    <requestid>1244022</requestid>
+  </revision>
 </revisionlist>
