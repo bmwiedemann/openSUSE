@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Feb 07 17:10:44 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.8 (0.72.7 was not released):
+  * Dependencis update (#3855)
+  * feat: Adding Docker Compose for local dev (#3847)
+  * feat: Content parity with prod docs (#3844)
+  * feat: Add office hours banner (#3843)
+  * feat: Add incomplete Starlight rewrite of docs site (#3760)
+  * feat: Adding a `SECURITY.md` file (#3827)
+
+-------------------------------------------------------------------
+Fri Feb 07 17:00:24 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.6:
+  * Dependencies update (#3826)
+  * feat: Improve handling of ExcludeFromCopy configuration in
+    Terragrunt (#3816)
+  * Windows long path enable in CICD (#3819)
+  * Further document `--terragrunt-auth-provider-cmd` and redo the
+    contents. (#3798)
+  * docs: Adding OpenTofu/Terraform debugging guidance (#3813)
+  * docs: Adding more practical example of the exclude block
+    (#3812)
+  * No proxy build fix (#3801)
+  * fix: Adjusting testing for GCS bucket existence check (#3810)
+
+-------------------------------------------------------------------
 Mon Jan 27 16:28:36 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.72.5:
