@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Feb  5 06:34:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.6.1
+  * Fixed indentation logic to also honor blank lines.
+- from version 8.6.0
+  * Add support for rendering metadata where some fields
+    have newlines (python/cpython#119650).
+
+-------------------------------------------------------------------
 Fri Nov  1 06:09:04 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip failing tests (gh#python/importlib_metadata#509).

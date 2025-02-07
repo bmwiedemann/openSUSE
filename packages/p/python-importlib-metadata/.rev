@@ -349,4 +349,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1222646</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5743e071a14d6b831dd7fdea42801e18</srcmd5>
+    <version>8.6.1</version>
+    <time>1738965402</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1243315</requestid>
+  </revision>
 </revisionlist>
