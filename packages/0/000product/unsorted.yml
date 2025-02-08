@@ -10097,6 +10097,7 @@ unsorted:
   - kdsoap-qt6-devel 
   - kdsoap-ws-discovery-client-devel 
   - kdstatemachineeditor-devel 
+  - kdstatemachineeditor-qt6-devel 
   - kdumpid 
   - kea 
   - kea-devel 
@@ -14292,10 +14293,14 @@ unsorted:
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
   - libkdsoap2 
-  - libkdstatemachineeditor_core1 
-  - libkdstatemachineeditor_debuginterfaceclient1 
+  - libkdstatemachineeditor_core-qt6-2 
+  - libkdstatemachineeditor_core2 
+  - libkdstatemachineeditor_debuginterfaceclient-qt6-2 
+  - libkdstatemachineeditor_debuginterfaceclient2 
+  - libkdstatemachineeditor_debuginterfacesource-qt6-static 
   - libkdstatemachineeditor_debuginterfacesource-static 
-  - libkdstatemachineeditor_view1 
+  - libkdstatemachineeditor_view-qt6-2 
+  - libkdstatemachineeditor_view2 
   - libkdumpfile-devel 
   - libkdumpfile12 
   - libkea-asiodns48 
@@ -15505,6 +15510,7 @@ unsorted:
   - libpng16-tools 
   - libpnglite0 
   - libpocketsphinx5 
+  - libpocl-devices-tbb 
   - libpocl2 
   - libpodofo-devel 
   - libpodofo2 
@@ -36642,6 +36648,7 @@ unsorted:
   - ruby3.4-rubygem-mustermann 
   - ruby3.4-rubygem-mustermann-grape 
   - ruby3.4-rubygem-mysql2 
+  - ruby3.4-rubygem-neovim 
   - ruby3.4-rubygem-net-ldap 
   - ruby3.4-rubygem-net-scp 
   - ruby3.4-rubygem-net-sftp 
