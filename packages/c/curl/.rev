@@ -1941,4 +1941,11 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1243598</requestid>
   </revision>
+  <revision rev="208" vrev="2">
+    <srcmd5>eea87dafe251e3ad88a338e4369cb0ff</srcmd5>
+    <version>8.11.1</version>
+    <time>1739003575</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1236912</comment>
+  </revision>
 </revisionlist>
