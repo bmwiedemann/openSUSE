@@ -1887,4 +1887,15 @@ Changes:
 - tumbleweed config update</comment>
     <requestid>1241351</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>3a5e960adf54eecaea97875f1fd92fe8</srcmd5>
+    <version>20250206</version>
+    <time>1739127621</time>
+    <user>dimstar_suse</user>
+    <comment>- mkosi: drop most systemd/build-packages deps and use obs_scm
+         directory as source if present
+- improve source copy handling
+- Introduce --repos-directory and --containers-directory options</comment>
+    <requestid>1243918</requestid>
+  </revision>
 </revisionlist>
