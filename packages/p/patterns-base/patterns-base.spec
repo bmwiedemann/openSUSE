@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-base
-Version:        20200505
+Version:        20241218
 Release:        0
 Summary:        Patterns for Installation (base patterns)
 License:        MIT
@@ -129,37 +129,56 @@ Requires:       pam
 Requires:       pam-config
 Requires:       pattern() = minimal_base
 # Support multiversion(kernel) (jsc#SLE-10162)
-Requires:       purge-kernels-service
+# FIXME remove if opensuse when package is in SLFO
+%if 0%{?is_opensuse}
+%{requires_on_traditional purge-kernels-service}
+%endif
 Requires:       rpm
-Requires:       system-user-nobody
 Requires:       systemd
 Requires:       util-linux
-# Add some static base tool in case system explodes; Recommend only, as users are free to uninstall it
-Recommends:     busybox-static
-Recommends:     elfutils
-Recommends:     glibc-locale-base
-Recommends:     hostname
-Recommends:     iproute2
-Recommends:     issue-generator
-Recommends:     lastlog2
-Recommends:     pam_pwquality
-Recommends:     shadow
-Recommends:     system-group-trusted
-Recommends:     system-group-wheel
-Recommends:     system-user-bin
-Recommends:     system-user-daemon
-Recommends:     terminfo
-Recommends:     terminfo-iterm
-Recommends:     terminfo-screen
-Recommends:     timezone
-Recommends:     wtmpdb
-Recommends:     service(network)
+Requires:       user(nobody)
+# Add some static base tool in case system explodes; Recommend only on traditional systems, as users are free to uninstall it
+%{requires_on_transactional busybox}
+%{recommends_on_traditional busybox-static}
+%{recommends_on_traditional elfutils}
+%{requires_on_transactional_recommends_otherwise glibc-locale-base}
+%{recommends_on_traditional hostname}
+%{requires_on_transactional /usr/bin/hostname}
+%{requires_on_transactional_recommends_otherwise iproute2}
+%{requires_on_transactional_recommends_otherwise issue-generator}
+%{requires_on_transactional_recommends_otherwise lastlog2}
+%if 0%{?sle_version}
+%{requires_on_transactional pam_pwquality}
+%else
+%{recommends_on_traditional pam_pwquality}
+%endif
+%{requires_on_transactional_recommends_otherwise shadow}
+%{recommends_on_traditional system-group-trusted}
+%if 0%{?sle_version}
+%{requires_on_transactional system-group-wheel}
+%else
+%{recommends_on_traditional system-group-wheel}
+%endif
+%{recommends_on_traditional system-user-bin}
+%{recommends_on_traditional system-user-daemon}
+%{requires_on_transactional terminfo-base}
+%{recommends_on_traditional terminfo}
+%{recommends_on_traditional terminfo-iterm}
+%{recommends_on_traditional terminfo-screen}
+%{requires_on_transactional_recommends_otherwise timezone}
+%{requires_on_transactional_recommends_otherwise wtmpdb}
+%{recommends_on_traditional service(network)}
+%{requires_on_transactional NetworkManager}
+%{requires_on_transactional NetworkManager-wifi}
+%if 0%{?is_opensuse}
+%{requires_on_transactional NetworkManager-bluetooth}
+%endif
 # We don't necessarily want zypper in specific minimal environments
 # e.g. buildroots and locked down appliance environments
-Recommends:     zypper
+%{recommends_on_traditional zypper}
 # We don't necessarily want procps but it's highly useful in default
 # installations
-Recommends:     procps
+%{requires_on_transactional_recommends_otherwise procps}
 # If anything requests "kernel", pick the full kernel package by default
 Suggests:       kernel-default
 # we have two providers for 'pkgconfig(jack)' - prefer the real one to the one from pipewire
@@ -589,7 +608,10 @@ Provides:       pattern() = minimal_base
 Provides:       pattern-icon() = pattern-basis
 Provides:       pattern-order() = 5190
 Provides:       pattern-visible()
+# FIXME, to be enabled for SLFO too
+%if 0%{?is_opensuse}
 Requires:       branding
+%endif
 # those packages are actually useless as they don't use
 # %_keyringpath but we need them eg for kiwi
 Requires:       build-key
@@ -722,13 +744,73 @@ Group:          Metapackages
 Provides:       pattern() = transactional_base
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
+Requires:       /usr/bin/gzip
+Requires:       openssh
 Requires:       read-only-root-fs
 Requires:       rebootmgr
-Requires:       systemd-presets-branding-transactional-server
+Requires:       yast2-logs
+Requires:       zypp-boot-plugin
+Requires:       (health-checker if grub2)
+Requires:       (health-checker-plugins-MicroOS if health-checker)
+# FIXME
+%if 0%{?is_opensuse}
+Requires:       MicroOS-release
+Requires:       systemd-presets-branding-MicroOS
+Suggests:       busybox-gzip
+Requires:       less
+Requires:       sudo
+# tpm2 tools are required for FDE+TPM
+Requires:       tpm2-0-tss
+Requires:       libtss2-tcti-device0
+Requires:       tpm2.0-tools
+# probably needed for fsck.fat on efi partitions
+Requires:       dosfstools
+%else
+Requires:       supportutils
+Requires:       systemd-presets-branding-ALP-transactional
+Requires:       toolbox
+Requires:       group(wheel)
+# zypper ps is useless in transactional mode. It also checks for
+# /run/reboot-needed though which is created by transactional-update
+Requires:       zypper-needs-restarting
+# jsc#PED-6478 (2 packages)
+Requires:       mailx
+Requires:       systemd-status-mail
+
+# jsc#SMO-79
+Requires:       tpm2.0-tools
+Requires:       tpm2-0-tss
+Requires:       tpm2-tss-engine
+Requires:       tpm2.0-abrmd
+# jsc#SMO-50
+%ifarch x86_64 aarch64
+Requires:       libmbim
+Requires:       libmbim-glib4
+Requires:       libqmi-glib5
+Requires:       libqmi-tools
+%endif
+# jsc#CSD-121
+Requires:       udica
+# jsc#SMO-120
+Requires:       pam_u2f
+%ifarch s390x
+Requires:       libica
+Requires:       openCryptoki
+Requires:       openssl-ibmca
+%endif
+# bsc#1217991
+#FIXME
+Requires:       crypto-policies-scripts
+
+%endif
 Requires:       transactional-update
 Requires:       transactional-update-zypp-config
 # Useful outside of MicroOS and needed for e.g. SELinux relabelling
 Requires:       microos-tools
+%ifnarch %{arm}
+Requires:       kdump
+%endif
+Requires:       vim-small
 Requires:       pattern() = base
 Suggests:       health-checker
 

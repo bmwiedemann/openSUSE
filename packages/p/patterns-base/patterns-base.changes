@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:55:16 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Merge MicroOS and SL Micro base patterns into existing base
+  patterns.
+
+-------------------------------------------------------------------
 Thu Jan 16 12:52:36 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - selinux: Turn recommends for container-selinux into a hard but
