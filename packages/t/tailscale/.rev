@@ -202,4 +202,13 @@
     <comment></comment>
     <requestid>1241760</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ad7a253ec94b8290c08de2145eff6efd</srcmd5>
+    <version>1.80.1</version>
+    <time>1739127694</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.80.1:
+  * net/netmon: add extra panic guard around ParseRIB (forwarded request 1244262 from rrahl0)</comment>
+    <requestid>1244263</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 19:52:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.80.1:
+  * net/netmon: add extra panic guard around ParseRIB
+
+-------------------------------------------------------------------
 Fri Jan 31 17:20:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.80.0:
