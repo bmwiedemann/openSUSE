@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  8 15:47:16 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.6.5:
+  * Fix a segmentation fault when multiple liberasurecode_rs_vand
+    descriptors have been created then one of them is destroyed
+  *  Fixed several compiler warnings regarding strict prototypes
+- includes changes from 1.6.4:
+  * Fixed a bounds check in get_fragment_partition that could lead
+    to stray writes or segmentation faults
+  * Fixes for on non-Bash shells
+
+-------------------------------------------------------------------
 Thu May  5 06:33:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.6.3

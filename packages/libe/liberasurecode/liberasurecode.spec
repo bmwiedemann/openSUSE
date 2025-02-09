@@ -2,6 +2,7 @@
 # spec file for package liberasurecode
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +19,10 @@
 
 %define libsoname liberasurecode1
 Name:           liberasurecode
-Version:        1.6.3
+Version:        1.6.5
 Release:        0
 Summary:        Erasure Code API library with pluggable Erasure Code backends
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/openstack/liberasurecode
 Source0:        https://github.com/openstack/liberasurecode/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  automake
@@ -36,7 +36,6 @@ pluggable Erasure Code backends.
 
 %package -n %{libsoname}
 Summary:        Erasure Code API library with pluggable Erasure Code backends
-Group:          System/Libraries
 
 %description -n %{libsoname}
 liberasurecode is an Erasure Code API library written in C with
@@ -44,28 +43,30 @@ pluggable Erasure Code backends.
 
 %package devel
 Summary:        Development files for liberasurecode
-Group:          Development/Libraries/C and C++
 Requires:       %{libsoname} = %{version}
 
 %description devel
 Development files for the Unified Erasure Coding interface.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./autogen.sh
-%configure --disable-static --disable-mmi
+%configure \
+	--disable-static \
+	--disable-mmi \
+	%{nil}
 %make_build
 
 %install
 %make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 %make_build test
 
-%post -n %{libsoname} -p /sbin/ldconfig
-%postun -n %{libsoname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libsoname}
 
 %files -n %{libsoname}
 %license COPYING
@@ -76,16 +77,13 @@ Development files for the Unified Erasure Coding interface.
 %{_libdir}/liberasurecode_rs_vand.so.*
 
 %files devel
+%license COPYING
 %{_includedir}/liberasurecode
 %{_includedir}/config_liberasurecode.h
 %{_includedir}/erasurecode*.h
-%{_libdir}/libXorcode.la
 %{_libdir}/libXorcode.so
-%{_libdir}/liberasurecode.la
 %{_libdir}/liberasurecode.so
-%{_libdir}/libnullcode.la
 %{_libdir}/libnullcode.so
-%{_libdir}/liberasurecode_rs_vand.la
 %{_libdir}/liberasurecode_rs_vand.so
 %{_libdir}/pkgconfig/erasurecode-1.pc
 
