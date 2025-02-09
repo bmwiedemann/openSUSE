@@ -7,4 +7,12 @@
     <comment>Needed dep for upcoming new package openVINO</comment>
     <requestid>1172509</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b68ed5522367f9e827b34dbdad91ed3</srcmd5>
+    <version>2025.0.0</version>
+    <time>1739128062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244446</requestid>
+  </revision>
 </revisionlist>
