@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb  5 12:27:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.4:
+  + Fix overlapping tiles in app grid on hover
+  + Fix default user avatar with light style
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan 13 12:50:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.3:
