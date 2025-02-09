@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  9 14:08:22 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.3
+  * PR 530: Correctly process Pdb commands available in cmdqueue,
+    by @ccordoba12
+  * PR 526: Filter frames that come from Spyder-kernels in
+    tracebacks and fix tracebacks in Python 3.8, by @ccordoba12
+- Version 3.0.2
+  * PR 521: Add logic to handle traceback color configuration, by
+    @dalthviz
+
+-------------------------------------------------------------------
 Sun Nov 17 16:32:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.1
