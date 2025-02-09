@@ -283,6 +283,7 @@ Requires(post): %{_sbindir}/a2enmod
 Requires(preun): %{_sbindir}/a2enmod
 Provides:       mod_php_any = %{version}
 Provides:       php-sapi = %{version}
+Obsoletes:      apache2-mod_php7
 Obsoletes:      mod_php_any < %{version}
 
 %description

@@ -1090,4 +1090,12 @@
         Fixed bug GH-17202 (Segmentation fault ext/gettext/gettext.c bindtextdomain()).</comment>
     <requestid>1238427</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>6e870738b3aa96b8907b6b65df91bdef</srcmd5>
+    <version>8.3.16</version>
+    <time>1739127617</time>
+    <user>dimstar_suse</user>
+    <comment>- obsolete also apache2-mod_php7 [bsc#1236850]</comment>
+    <requestid>1244104</requestid>
+  </revision>
 </revisionlist>
