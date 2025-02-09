@@ -267,4 +267,12 @@ fix build
     <comment></comment>
     <requestid>1240922</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3f387c40ffd1a317129dafc7ea9ce9d8</srcmd5>
+    <version>25.1.2</version>
+    <time>1739127672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244229</requestid>
+  </revision>
 </revisionlist>

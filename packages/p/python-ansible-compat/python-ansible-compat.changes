@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  7 17:17:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.2:
+  * Bugfixes
+    - Avoid get_cache_dir errors with read only virtualenvs (#457)
+      @ssbarnea
+    - Simplify module presence testing (#460) @ssbarnea
+    - Fix grammatical error in collection path info message (#456)
+      @bluikko
+
+-------------------------------------------------------------------
 Tue Jan 28 18:45:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.1.1:
