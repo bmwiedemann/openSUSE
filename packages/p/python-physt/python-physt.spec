@@ -1,7 +1,7 @@
 #
 # spec file for package python-physt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-physt
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Python histogram library
 License:        MIT
@@ -51,6 +51,7 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages

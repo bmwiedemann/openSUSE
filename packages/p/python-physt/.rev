@@ -111,4 +111,12 @@
 - Drop physt-pr116-np2.patch</comment>
     <requestid>1228766</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fb14b02be0f5a01437c0deaccbfe9f0a</srcmd5>
+    <version>0.8.5</version>
+    <time>1739127688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244257</requestid>
+  </revision>
 </revisionlist>
