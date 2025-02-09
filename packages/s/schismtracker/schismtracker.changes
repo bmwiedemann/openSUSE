@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  9 09:56:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250208
+  * Fix incorrect handling of Note Cuts (caused some super weird
+    changes in playback)
+  * Fix clicking with Note Cut DNAs
+  * Fix saving stereo and 16-bit XI files
+  * Fix importing and exporting AIFF files (sample rate was
+    always zero)
+  * Fix the Alt-F12 page and spectrum visualizer having weird
+    holes in them
+  * MOD/XM: Load A0F and AF0 as D0E and DE0 respectively to work
+    around playback differences
+
+-------------------------------------------------------------------
 Thu Feb  6 08:21:31 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Drop schism-nodate.diff to make builds reproducible (boo#1047218)
