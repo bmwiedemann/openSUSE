@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-vpnc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://gitlab.gnome.org/GNOME/NetworkManager-vpnc
 Source0:        https://download.gnome.org/sources/NetworkManager-vpnc/1.4/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM nm-vpnc-undefined-symbol.patch glgo#GNOME/NetworkManager-vpnc!18, bsc#1233685 sckang@suse.com -- export nm_vpn_editor_factory_vpnc
+Patch0:         nm-vpnc-undefined-symbol.patch
 
 BuildRequires:  intltool
 BuildRequires:  libxml2-tools

@@ -1,0 +1,38 @@
+From 40ddaa26b8ccfadf2261e498240f7afa2fa2e579 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Thu, 6 Feb 2025 14:59:46 +0800
+Subject: [PATCH] export nm_vpn_editor_factory_vpnc
+
+In commit e2fc2311, the declaration of nm_vpn_editor_factory_vpnc was
+removed, which caused an issue that editor VPN plugin cannot be loaded.
+
+Fix that by adding the declaration back.
+
+https://gitlab.gnome.org/GNOME/NetworkManager-vpnc/-/issues/14
+---
+ properties/nm-vpnc-editor.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/properties/nm-vpnc-editor.c b/properties/nm-vpnc-editor.c
+index a06807d..13e5276 100644
+--- a/properties/nm-vpnc-editor.c
++++ b/properties/nm-vpnc-editor.c
+@@ -1130,3 +1130,15 @@ vpnc_editor_interface_init (NMVpnEditorInterface *iface)
+ 	iface->get_widget = get_widget;
+ 	iface->update_connection = update_connection;
+ }
++
++/*****************************************************************************/
++
++G_MODULE_EXPORT NMVpnEditor *
++nm_vpn_editor_factory_vpnc (NMVpnEditorPlugin *editor_plugin,
++		NMConnection *connection,
++		GError **error)
++{
++	g_return_val_if_fail (!error || !*error, NULL);
++
++	return nm_vpnc_editor_new (connection, error);
++}
+-- 
+2.47.1
+
