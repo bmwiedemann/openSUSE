@@ -384,4 +384,17 @@
     gh#python-lsp/python-lsp-server#605</comment>
     <requestid>1233320</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>36855b89c1ae042bb12de7415f900f84</srcmd5>
+    <version>1.12.1</version>
+    <time>1739128085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.1
+  * Fixes compatibility with Python 3.13 in the test suite.
+  * Handles correctly a null value for ropeFolder in the Rope
+    configuration.
+- Drop pylsp-issues-602-605.patch
+</comment>
+    <requestid>1244499</requestid>
+  </revision>
 </revisionlist>

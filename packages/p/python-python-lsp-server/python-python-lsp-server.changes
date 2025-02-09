@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  9 14:02:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.12.1
+  * Fixes compatibility with Python 3.13 in the test suite.
+  * Handles correctly a null value for ropeFolder in the Rope
+    configuration.
+- Drop pylsp-issues-602-605.patch
+
+-------------------------------------------------------------------
 Wed Dec 25 09:59:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add pylsp-issues-602-605.patch

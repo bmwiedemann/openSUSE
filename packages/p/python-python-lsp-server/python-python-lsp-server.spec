@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 %{?sle15_python_module_pythons}
-
 Name:           python-python-lsp-server
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
 Patch1:         unpin-autopep8.patch
-# PATCH-FIX-UPSTREAM pylsp-issues-602-605.patch gh#python-lsp/python-lsp-server#602 gh#python-lsp/python-lsp-server#605
-Patch2:         pylsp-issues-602-605.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
