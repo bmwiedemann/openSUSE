@@ -7,4 +7,12 @@
     <comment>New dependency for Mojo::Pg which is an openQA requirement</comment>
     <requestid>876205</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f0a318cfec57d375de8b073970c8a4a</srcmd5>
+    <version>1.0.0</version>
+    <time>1739128054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1244437</requestid>
+  </revision>
 </revisionlist>
