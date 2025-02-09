@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb  7 10:04:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.39.0
+  * [fix] Remove monotonic from requirements (#1018)
+  * [fix] wsgi: Clean up some override logic (#999)
+  * [fix] Correct line lookup from inspect.getsourcelines() (#990)
+  * Drop support of Python 3.7 (#967)
+  * [fix] Calling eventlet.sleep(0) isn't really blocking,
+    so don't blow up (#1015)
+
+-------------------------------------------------------------------
 Mon Jan  6 18:25:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.38.2
