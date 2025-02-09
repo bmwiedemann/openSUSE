@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20250122
+%define version_unconverted 20250205
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20250122
+Version:        20250205
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -152,39 +152,39 @@ Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
-Requires:       %{name}-amdgpu = %{version}
-Requires:       %{name}-ath10k = %{version}
-Requires:       %{name}-ath11k = %{version}
-Requires:       %{name}-ath12k = %{version}
-Requires:       %{name}-atheros = %{version}
-Requires:       %{name}-bluetooth = %{version}
-Requires:       %{name}-bnx2 = %{version}
-Requires:       %{name}-brcm = %{version}
-Requires:       %{name}-chelsio = %{version}
-Requires:       %{name}-dpaa2 = %{version}
-Requires:       %{name}-i915 = %{version}
-Requires:       %{name}-intel = %{version}
-Requires:       %{name}-iwlwifi = %{version}
-Requires:       %{name}-liquidio = %{version}
-Requires:       %{name}-marvell = %{version}
-Requires:       %{name}-media = %{version}
-Requires:       %{name}-mediatek = %{version}
-Requires:       %{name}-mellanox = %{version}
-Requires:       %{name}-mwifiex = %{version}
-Requires:       %{name}-network = %{version}
-Requires:       %{name}-nfp = %{version}
-Requires:       %{name}-nvidia = %{version}
-Requires:       %{name}-platform = %{version}
-Requires:       %{name}-prestera = %{version}
-Requires:       %{name}-qcom = %{version}
-Requires:       %{name}-qlogic = %{version}
-Requires:       %{name}-radeon = %{version}
-Requires:       %{name}-realtek = %{version}
-Requires:       %{name}-serial = %{version}
-Requires:       %{name}-sound = %{version}
-Requires:       %{name}-ti = %{version}
-Requires:       %{name}-ueagle = %{version}
-Requires:       %{name}-usb-network = %{version}
+Requires:       %{name}-amdgpu
+Requires:       %{name}-ath10k
+Requires:       %{name}-ath11k
+Requires:       %{name}-ath12k
+Requires:       %{name}-atheros
+Requires:       %{name}-bluetooth
+Requires:       %{name}-bnx2
+Requires:       %{name}-brcm
+Requires:       %{name}-chelsio
+Requires:       %{name}-dpaa2
+Requires:       %{name}-i915
+Requires:       %{name}-intel
+Requires:       %{name}-iwlwifi
+Requires:       %{name}-liquidio
+Requires:       %{name}-marvell
+Requires:       %{name}-media
+Requires:       %{name}-mediatek
+Requires:       %{name}-mellanox
+Requires:       %{name}-mwifiex
+Requires:       %{name}-network
+Requires:       %{name}-nfp
+Requires:       %{name}-nvidia
+Requires:       %{name}-platform
+Requires:       %{name}-prestera
+Requires:       %{name}-qcom
+Requires:       %{name}-qlogic
+Requires:       %{name}-radeon
+Requires:       %{name}-realtek
+Requires:       %{name}-serial
+Requires:       %{name}-sound
+Requires:       %{name}-ti
+Requires:       %{name}-ueagle
+Requires:       %{name}-usb-network
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -4293,8 +4293,14 @@ Supplements:    modalias(of:N*T*Cqcom,msm8909-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8909-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8917-mdp5)
+Supplements:    modalias(of:N*T*Cqcom,msm8917-mdp5C*)
+Supplements:    modalias(of:N*T*Cqcom,msm8937-mdp5)
+Supplements:    modalias(of:N*T*Cqcom,msm8937-mdp5C*)
 Supplements:    modalias(of:N*T*Cqcom,msm8953-adsp-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8953-adsp-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8953-mdp5)
+Supplements:    modalias(of:N*T*Cqcom,msm8953-mdp5C*)
 Supplements:    modalias(of:N*T*Cqcom,msm8953-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8953-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pil)
@@ -4303,6 +4309,8 @@ Supplements:    modalias(of:N*T*Cqcom,msm8974-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8974-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8996-adsp-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8996-adsp-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-mdp5)
+Supplements:    modalias(of:N*T*Cqcom,msm8996-mdp5C*)
 Supplements:    modalias(of:N*T*Cqcom,msm8996-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8996-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8996-slpi-pil)
@@ -4335,10 +4343,16 @@ Supplements:    modalias(of:N*T*Cqcom,sa8775p-cdsp0-pas)
 Supplements:    modalias(of:N*T*Cqcom,sa8775p-cdsp0-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sa8775p-cdsp1-pas)
 Supplements:    modalias(of:N*T*Cqcom,sa8775p-cdsp1-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sa8775p-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sa8775p-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,sa8775p-gpdsp0-pas)
 Supplements:    modalias(of:N*T*Cqcom,sa8775p-gpdsp0-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sa8775p-gpdsp1-pas)
 Supplements:    modalias(of:N*T*Cqcom,sa8775p-gpdsp1-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sa8775p-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sa8775p-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,sar2130p-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sar2130p-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-dpu)
@@ -5651,6 +5665,7 @@ Supplements:    modalias(usb:v050Dp1105d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp110Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp11F1d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp11F2d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v050Dp11F2d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v050Dp120Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp2102d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v050Dp2102d*dc*dsc*dp*icFFiscFFipFFin*)
@@ -5717,6 +5732,7 @@ Supplements:    modalias(usb:v07B8p8178d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8179d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p8179d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8188d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v07B8p8188d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8189d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p8189d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v07B8p8193d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5762,6 +5778,7 @@ Supplements:    modalias(usb:v0846p9041d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9041d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846p9042d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9043d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0846p9043d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846pF001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846pF001d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v08B9p1197d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5855,6 +5872,7 @@ Supplements:    modalias(usb:v0BDAp817Ed*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp817Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp817Fd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp8186d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0BDAp8186d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp818Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0BDAp818Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0BDAp818Bd*dc*dsc*dp*icFFiscFFipFFin*)
@@ -5951,6 +5969,7 @@ Supplements:    modalias(usb:v0DF6p0070d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0076d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0076d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0077d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0DF6p0077d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0DF6p0078d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E0Bp9031d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E0Bp9041d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6013,7 +6032,9 @@ Supplements:    modalias(usb:v13D3p3342d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3357d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3357d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v13D3p3358d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v13D3p3358d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v13D3p3359d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v13D3p3359d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v13D3p3365d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3399d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13D3p3400d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6153,6 +6174,7 @@ Supplements:    modalias(usb:v2001p330Ad*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Bd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p330Dd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2001p330Dd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p330Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p330Fd*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2001p3310d*dc*dsc*dp*ic*isc*ip*in*)
@@ -6274,6 +6296,7 @@ Supplements:    modalias(usb:v8516p3071d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v8516p3072d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v8516p3572d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v9846p9041d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v9846p9041d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:vCDABp8010d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:vF201p5370d*dc*dsc*dp*ic*isc*ip*in*)
 
@@ -6508,6 +6531,8 @@ Supplements:    modalias(of:N*T*Cqcom,sm8550-sndcard)
 Supplements:    modalias(of:N*T*Cqcom,sm8550-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8650-sndcard)
 Supplements:    modalias(of:N*T*Cqcom,sm8650-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8750-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,sm8750-sndcardC*)
 Supplements:    modalias(pci:v00001073d00000004sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001073d0000000Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001073d0000000Csv*sd*bc*sc*i*)
@@ -6807,10 +6832,11 @@ cp %{SOURCE211} .
 mkdir -p %{buildroot}%{_firmwaredir}
 %if "%{flavor}" == "uncompressed"
 sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
+sh %{_sourcedir}/list-license.sh -c < %{_sourcedir}/licenses.list
 %else
 sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
-sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
+sh %{_sourcedir}/list-license.sh -c < %{_sourcedir}/licenses.list
 %endif
 
 %if "%{flavor}" == "uncompressed"
@@ -7181,7 +7207,7 @@ fi
 %if "%{flavor}" == "uncompressed"
 %files
 %doc WHENCE README.md
-%license GPL-2 GPL-3 LICEN[CS]E.*
+%license GPL-2 GPL-3 LICEN[CS]E.* notice*.txt
 %{_firmwaredir}
 %exclude %{_firmwaredir}/amd-ucode
 %exclude %{_firmwaredir}/amd-ucode/*

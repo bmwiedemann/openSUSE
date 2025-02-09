@@ -91,19 +91,25 @@ class FWTopics(object):
                     if self.topics.get(first) == None:
                         print('No matching topic entry for:', t)
                         first = None
-                    elif re.match(r'File:', t):
-                        if first == None:
-                            continue
-                        t = re.sub(r'^File: *', '', t)
-                        t = re.sub('"', '', t)
-                        self.firmwares[t] = first
-                    elif re.match(r'Link:', t):
-                        if first == None:
-                            continue
-                        t = re.sub(r'^Link: *', '', t)
-                        t = re.sub(r' ->.*$', '', t)
-                        t = re.sub('"', '', t)
-                        self.firmwares[t] = first
+                elif re.match(r'File:', t):
+                    if first == None:
+                        continue
+                    t = re.sub(r'^File: *', '', t)
+                    t = re.sub('"', '', t)
+                    self.firmwares[t] = first
+                elif re.match(r'RawFile:', t):
+                    if first == None:
+                        continue
+                    t = re.sub(r'^RawFile: *', '', t)
+                    t = re.sub('"', '', t)
+                    self.firmwares[t] = first
+                elif re.match(r'Link:', t):
+                    if first == None:
+                        continue
+                    t = re.sub(r'^Link: *', '', t)
+                    t = re.sub(r' ->.*$', '', t)
+                    t = re.sub('"', '', t)
+                    self.firmwares[t] = first
 
     def check_module(self):
         def __check_module(ko, name):

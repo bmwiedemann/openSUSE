@@ -120,8 +120,8 @@ DFU:		atheros		LICENCE.atheros_firmware LICENSE.QualcommAtheros_ar3k
 Atheros:	atheros		LICENCE.atheros_firmware
 ath6kl:		atheros		LICENCE.atheros_firmware
 ath10k:		ath10k		ath10k/QCA988X/hw2.0/notice_ath10k_firmware-4.txt ath10k/QCA988X/hw2.0/notice_ath10k_firmware-5.txt ath10k/QCA6174/hw3.0/notice_ath10k_firmware-6.txt ath10k/QCA6174/hw3.0/notice_ath10k_firmware-sdio-6.txt ath10k/QCA9377/hw1.0/notice_ath10k_firmware-sdio-5.txt LICENSE.QualcommAtheros_ath10k
-ath11k:		ath11k		ath11k/IPQ6018/hw1.0/Notice.txt LICENSE.QualcommAtheros_ath10k
-ath12k:		ath12k		ath12k/WCN7850/hw2.0/Notice.txt LICENSE.QualcommAtheros_ath10k
+ath11k:		ath11k		ath11k/IPQ6018/hw1.0/Notice.txt:notice-ath11k.txt LICENSE.QualcommAtheros_ath10k
+ath12k:		ath12k		ath12k/WCN7850/hw2.0/Notice.txt:notice-ath12k.txt LICENSE.QualcommAtheros_ath10k
 myri10ge:	network		LICENCE.myri10ge_firmware
 drxk:		media
 ene-ub6250:	platform	LICENCE.ene_firmware
@@ -154,7 +154,7 @@ smsmdtv:	media		LICENCE.siano
 xhci-tegra:	nvidia		LICENCE.nvidia
 tegra-vic:	nvidia		LICENCE.nvidia
 atusb:		network		GPL-2 GPL-3
-qca:		bluetooth	LICENSE.QualcommAtheros_ath10k qca/NOTICE.txt
+qca:		bluetooth	LICENSE.QualcommAtheros_ath10k qca/NOTICE.txt:notice-qca.txt
 liquidio:	liquidio	LICENCE.cavium_liquidio
 nitrox:		platform	LICENCE.cavium
 i915:		i915		LICENSE.i915
@@ -181,12 +181,12 @@ mt7996e:	mediatek	LICENCE.mediatek
 mtk_wed:	mediatek	LICENCE.mediatek
 nfp:		nfp		LICENCE.Netronome
 wil6210:	atheros		LICENSE.QualcommAtheros_ath10k
-venus:		media		LICENSE.qcom qcom/NOTICE.txt
-iris:		media		LICENSE.qcom qcom/NOTICE.txt
+venus:		media		LICENSE.qcom qcom/NOTICE.txt:notice-qca.txt
+iris:		media		LICENSE.qcom qcom/NOTICE.txt:notice-qca.txt
 imx-sdma:	platform	LICENSE.sdma_firmware
-adreno:		qcom		LICENSE.qcom qcom/NOTICE.txt
-qcom_q6v5_pas:	qcom		LICENSE.qcom-2 qcom/NOTICE.txt
-qcom_q6v5_mss:	qcom		LICENSE.qcom qcom/NOTICE.txt
+adreno:		qcom		LICENSE.qcom qcom/NOTICE.txt:notice-qca.txt
+qcom_q6v5_pas:	qcom		LICENSE.qcom-2 qcom/NOTICE.txt:notice-qca.txt
+qcom_q6v5_mss:	qcom		LICENSE.qcom qcom/NOTICE.txt:notice-qca.txt
 mlxsw_spectrum:	mellanox
 cdns-mhdp:	platform	LICENCE.cadence
 fsl-mc:		dpaa2		LICENSE.nxp_mc_firmware
@@ -214,6 +214,6 @@ ti-tas2563:	sound		GPL-2 GPL-3
 Mont-TSSE:	platform	LICENSE.montage
 panthor:	platform	LICENCE.mali_csffw
 isp:		amdgpu		LICENSE.amdisp
-qaic:		qcom		LICENSE.qcom qcom/NOTICE.txt
+qaic:		qcom		LICENSE.qcom qcom/NOTICE.txt:notice-qca.txt
 ish:		intel		LICENCE.ish
-qdu100:		qcom		LICENSE.qcom qcom/NOTICE.txt
+qdu100:		qcom		LICENSE.qcom qcom/NOTICE.txt:notice-qca.txt

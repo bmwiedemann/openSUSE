@@ -61,7 +61,7 @@ sed -e"s/@@VERSION@@/$version/g" | while read line; do
     fi
     if [ "$line" = "@@SUBPKGLIST@@" ]; then
 	for t in $topics; do
-	    echo "Requires:       %{name}-$t = %{version}"
+	    echo "Requires:       %{name}-$t"
 	done
 	continue
     fi

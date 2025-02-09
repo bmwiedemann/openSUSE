@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -167,10 +167,11 @@ cp %{SOURCE211} .
 mkdir -p %{buildroot}%{_firmwaredir}
 %if "%{flavor}" == "uncompressed"
 sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
+sh %{_sourcedir}/list-license.sh -c < %{_sourcedir}/licenses.list
 %else
 sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
-sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
+sh %{_sourcedir}/list-license.sh -c < %{_sourcedir}/licenses.list
 %endif
 
 %if "%{flavor}" == "uncompressed"
@@ -185,7 +186,7 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %if "%{flavor}" == "uncompressed"
 %files
 %doc WHENCE README.md
-%license GPL-2 GPL-3 LICEN[CS]E.*
+%license GPL-2 GPL-3 LICEN[CS]E.* notice*.txt
 %{_firmwaredir}
 %exclude %{_firmwaredir}/amd-ucode
 %exclude %{_firmwaredir}/amd-ucode/*
