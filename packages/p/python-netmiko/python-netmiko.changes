@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Feb  7 13:04:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.5.0
+  * New Drivers
+    - Vertiv MPH PDUs Driver (#3460)
+    - Garderos GRS Driver (#3429)
+    - Cisco APIC Driver (Linux) (#3461)
+    - Alaxala AX2600s and AX3600s Driver (#3462)
+  * Other Major Changes
+    - Fixes to support PY3.13
+    - Retire PY3.8 Support
+    - Add raise_parsing_error parameter to send_command and send_command_timing
+    - Improve Netmiko cli-tools output formatting behavior
+    - Adding encryption support to Netmiko cli-tools (#3505)
+    - Update Netmiko cli_tools to make them more modular and use concurrent features
+  * Other Improvements and bug fixes
+    - Nokia SRL prompt stripping (#3531)
+    - Lower Cisco ios priority to eliminate conflicts with ios-xe (#3538)
+    - Handle MikroTik press enter to continue issue (#3458)
+    - Add Query Device to ANSI Escape Codes for MikroTik (#3457)
+    - Fix Mikrotik graceful exit command (#3468)
+    - Adding support for pysnmp version6 (#3473)
+    - Linux SSH fix for 'Invalid output from MD5 command' (#3486)
+    - Add support for md-cli only mode in nokia_sros (#3496)
+    - Do not explicitly require secondary dependencies (#3515)
+    - Zyxel fix for next line character in output (#3524)
+    - Fortinet _preferred_kex settings fix (#3530)
+    - Sophos fix to allow to allow user to better navigate the interactive menu prompt
+    - Add bracketed paste mode to ANSI escape codes
+    - Add 'split-task' to possible vdom configs for Fortinet (#3464)
+    - Add Bulk encryption utility for .netmiko.yml file
+    - Documentation and test improvements
+- Add new binaries
+  * netmiko-bulk-encrypt
+  * netmiko-encrypt
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Oct  1 05:35:01 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Fix cffi version specifier, we are shipping a recent enough version.
