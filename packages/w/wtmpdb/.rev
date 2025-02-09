@@ -198,4 +198,15 @@
   * CI: make sure sqlite3 devel is installed</comment>
     <requestid>1242824</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>058290bdbc3ed8752e42353bde5b6dfa</srcmd5>
+    <version>0.71.0+git20250206.608632a</version>
+    <time>1739127618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.71.0+git20250206.608632a:
+  * Fix expected output of wtmpdb_rotate() test
+  * Make header usable from C++
+</comment>
+    <requestid>1244111</requestid>
+  </revision>
 </revisionlist>

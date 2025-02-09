@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 06 10:44:44 UTC 2025 - kukuk@suse.com
+
+- Update to version 0.71.0+git20250206.608632a:
+  * Fix expected output of wtmpdb_rotate() test
+  * Make header usable from C++
+
+-------------------------------------------------------------------
 Mon Feb 03 12:46:06 UTC 2025 - kukuk@suse.com
 
 - Update to version 0.71.0+git20250203.86b8442:
