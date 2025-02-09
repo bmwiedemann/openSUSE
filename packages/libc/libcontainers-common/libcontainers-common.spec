@@ -25,7 +25,7 @@
 # skopeover - version from containers/skopeo
 %define skopeover 1.14.4
 # https://github.com/containers/shortnames
-%define shortnamesver 2023.02.20
+%define shortnamesver 8ce3e7d11ca3425a9899fc7291f4256ba5da225c
 Name:           libcontainers-common
 Version:        20240618
 Release:        0
@@ -48,7 +48,7 @@ Source7:        default.yaml
 Source8:        common-%{commonver}.tar.xz
 Source9:        https://raw.githubusercontent.com/containers/common/v%{commonver}/pkg/config/containers.conf
 Source10:       %{name}.rpmlintrc
-Source11:       https://raw.githubusercontent.com/containers/shortnames/v%{shortnamesver}/shortnames.conf
+Source11:       https://raw.githubusercontent.com/containers/shortnames/%{shortnamesver}/shortnames.conf
 Source12:       openSUSE-policy.json
 Patch100:       0001-containers.conf-SUSE-clear-cni-config-dir-for-ALP.patch
 # Downstream patch to add the commented out storage driver priority list

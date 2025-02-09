@@ -623,4 +623,16 @@
     <comment></comment>
     <requestid>1183279</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>9e664244d4f1e2e4f753d3597440791e</srcmd5>
+    <version>20240618</version>
+    <time>1739127620</time>
+    <user>dimstar_suse</user>
+    <comment>- fix shortnames.config by updating them from upstream
+
+- disable the SUSE registry key validation temporary to switch the key on
+- Create /etc/containers/registries.conf.d and
+- Add missing comma to previous change (forwarded request 1244160 from dirkmueller)</comment>
+    <requestid>1244162</requestid>
+  </revision>
 </revisionlist>

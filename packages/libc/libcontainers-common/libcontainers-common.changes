@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  7 13:31:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix shortnames.config by updating them from upstream
+
+-------------------------------------------------------------------
 Mon Jun 24 13:32:55 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - While migrating config files from /etc/containers/ to /usr/share/containers/,
@@ -56,7 +61,7 @@ Wed Mar 20 10:41:40 UTC 2024 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Fri Mar  1 13:16:28 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
-- disable the SUSE registry key validation temporary to switch the key on 
+- disable the SUSE registry key validation temporary to switch the key on
   registry.suse.com.
 
 -------------------------------------------------------------------
@@ -381,7 +386,7 @@ Tue Aug  9 08:49:18 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 Wed Aug  3 13:19:58 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Resync containers.conf / storage.conf with Fedora
-- Create /etc/containers/registries.conf.d and 
+- Create /etc/containers/registries.conf.d and
   add 000-shortnames.conf to it.
 
 -------------------------------------------------------------------
@@ -398,7 +403,7 @@ Tue Jun 14 13:53:43 UTC 2022 - Dan Čermák <dcermak@suse.com>
 -------------------------------------------------------------------
 Wed Jun  8 12:39:46 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Add missing comma to previous change 
+- Add missing comma to previous change
 
 -------------------------------------------------------------------
 Mon Jun  6 12:56:19 UTC 2022 - Lubos Kocman <lubos.kocman@suse.com>
