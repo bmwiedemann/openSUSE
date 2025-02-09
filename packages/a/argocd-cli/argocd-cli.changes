@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Feb 07 17:53:26 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.2:
+  * Bump version to 2.14.2 on release-2.14 branch (#21797)
+  * fix: Add proxy registry key by dest server + name (cherry-pick
+    #21791) (#21794)
+
+-------------------------------------------------------------------
+Fri Feb 07 17:51:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.1:
+  * Bump version to 2.14.1 on release-2.14 branch (#21758)
+
+-------------------------------------------------------------------
+Fri Feb 07 17:47:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.0:
+  Large update, please find the full changelog at
+  https://github.com/argoproj/argo-cd/releases/tag/v2.14.0
+
+-------------------------------------------------------------------
+Fri Feb 07 17:23:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.5:
+  * Bump version to 2.13.5 on release-2.13 branch (#21795)
+  * fix: Add proxy registry key by dest server + name (cherry-pick
+    #21791) (#21793)
+  * fix(ui): Solve issue with navigating with dropdown from an
+    application's page (cherry-pick #21737) (#21747)
+
+-------------------------------------------------------------------
 Thu Jan 30 05:54:46 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.4:
