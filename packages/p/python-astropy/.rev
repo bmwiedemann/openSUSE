@@ -2291,4 +2291,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1228341</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>2e20baa5b63a30eadb5eb0b5c52d4901</srcmd5>
+    <version>7.0.1</version>
+    <time>1739128082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.1
+  ## API Changes
+  ### astropy.table
+  *  The use of the keyword use_local_files for the js viewer in
+     astropy.table.Table.show_in_browser is now deprecated.
+     Starting in Astropy 7.1 this keyword will be ignored and use
+     of it will issue a warning. The default behavior will be to
+     use the remote versions of jQuery and DataTables from a CDN.
+     [#17480]
+  ## Bugfixes for:
+  * astropy.config
+  * astropy.coordinates
+  * astropy.io.ascii
+  * astropy.io.fits
+  * astropy.io.votable
+  * astropy.modeling
+  * astropy.table
+  * astropy.units
+  * astropy.visualization
+- Major Release 7.0.0
+  * See https://docs.astropy.org/en/stable/whatsnew/7.0.html
+    for a detailed changelog. Headlines include:
+  * Full MaskedQuantity Support in QTable
+  * Coordinate frames can now be stored in tables
+  * Table show_in_notebook is back with ipydatagrid
+  * Ordering of table columns constructed from rows
+  * Table.pformat is now independent of terminal dimensions
+  * Quantity.to_string supports formatter for formatting
+  * NumPy constructor functions with a like argument are now supported with Quantity
+  * Change default type for meta attribute to dict and update ECSV writer</comment>
+    <requestid>1244494</requestid>
+  </revision>
 </revisionlist>

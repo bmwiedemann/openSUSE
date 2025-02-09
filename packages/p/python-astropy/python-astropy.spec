@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        6.1.7
+Version:        7.0.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -59,10 +59,10 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# https://docs.astropy.org/en/v6.1/install.html#requirements
-BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
-BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module extension-helpers >= 1.0}
+# https://docs.astropy.org/en/stable/install.html#requirements
+BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
+BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  %{python_module extension-helpers >= 1.0 with %python-extension-helpers < 2}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
@@ -72,18 +72,18 @@ BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 3.13
-Requires:       python-astropy-iers-data >= 0.2024.10.28.0.34.7
-Requires:       python-numpy >= 1.23
-Requires:       python-packaging >= 19.0
+Requires:       python-PyYAML >= 6
+Requires:       python-astropy-iers-data >= 0.2025.1.31.12.41.4
+Requires:       python-numpy >= 1.23.2
+Requires:       python-packaging >= 22
 Requires:       python-pyerfa >= 2.0.1.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # %%{_bindir}/showtable namespace clash
 Conflicts:      perl-Data-ShowTable
 # [recommended]
-Recommends:     python-scipy >= 1.8
-Recommends:     python-matplotlib >= 3.5
+Recommends:     python-scipy >= 1.9.2
+Recommends:     python-matplotlib >= 3.6
 # [all]
 Suggests:       python-h5py
 Suggests:       python-beautifulsoup4
@@ -113,7 +113,7 @@ BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module asdf-astropy >= 0.3}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module dask-array >= 2022.5.1}
 BuildRequires:  %{python_module fsspec >= 2023.4.0}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module html5lib}
@@ -133,17 +133,17 @@ BuildRequires:  libxml2-tools
 # SECTION [test]
 # We need the compiled package for testing
 BuildRequires:  %{python_module astropy = %{version}}
-BuildRequires:  %{python_module ipython >= 4.2 if %python-base >= 3.10}
+BuildRequires:  %{python_module ipython >= 8}
 BuildRequires:  %{python_module objgraph}
+BuildRequires:  %{python_module pytest >= 7.3}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}
 BuildRequires:  %{python_module pytest-astropy-header >= 0.2.1}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-xdist >= 2.5}
 BuildRequires:  %{python_module sgp4 >= 2.3}
 BuildRequires:  %{python_module skyfield}
-BuildRequires:  %{python_module threadpoolctl}
+BuildRequires:  %{python_module threadpoolctl >= 3}
 # /SECTION
 %endif
 %python_subpackages
