@@ -1403,4 +1403,12 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
  * spec: add dependency on ethtool</comment>
     <requestid>1240171</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>a1c5ebca9b5390f0f07926c1b143dfaa</srcmd5>
+    <version>2.0.16</version>
+    <time>1739127649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244211</requestid>
+  </revision>
 </revisionlist>

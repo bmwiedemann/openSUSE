@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb  7 17:08:23 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.16
+  * fix KDUMP_AUTO_RESIZE
+
+-------------------------------------------------------------------
+Fri Jan 31 17:27:53 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.15
+  * dracut: fix filtering ro keys in kdump_bond_config (bsc#1233137)
+
+-------------------------------------------------------------------
 Wed Jan 22 17:55:14 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.14
