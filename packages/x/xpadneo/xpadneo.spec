@@ -1,7 +1,7 @@
 #
 # spec file for package xpadneo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,11 @@ URL:            https://github.com/atar-axis/xpadneo
 Source0:        https://github.com/atar-axis/xpadneo/archive/v%{version}.tar.gz#/%name-%version.tar.gz
 Source1:        preamble
 BuildRequires:  %{kernel_module_package_buildreqs}
+%if 0%{?suse_version} > 1600
+%ifarch x86_64
+BuildRequires:  kernel-longterm-devel
+%endif
+%endif
 BuildRequires:  pesign-obs-integration
 Requires:       xpadneo-kmp
 %kernel_module_package -n %{name} -x debug -x trace -c %{_sourcedir}/_projectcert.crt -p %{_sourcedir}/preamble
