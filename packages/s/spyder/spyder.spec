@@ -1,7 +1,7 @@
 #
 # spec file for package spyder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.0.2
+Version:        6.0.4
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -80,7 +80,7 @@ Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 Requires:       (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
 Requires:       (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
-Requires:       (python3-spyder-kernels >= 3.0.1 with python3-spyder-kernels < 3.1)
+Requires:       (python3-spyder-kernels >= 3.0.3 with python3-spyder-kernels < 3.1)
 Requires:       (python3-superqt >= 0.6.2 with python3-superqt < 1)
 Recommends:     git-core
 Recommends:     python3-Cython
@@ -181,7 +181,7 @@ BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 BuildRequires:  (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
 BuildRequires:  (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
-BuildRequires:  (python3-spyder-kernels >= 3.0.1 with python3-spyder-kernels < 3.1)
+BuildRequires:  (python3-spyder-kernels >= 3.0.3 with python3-spyder-kernels < 3.1)
 BuildRequires:  (python3-superqt >= 0.6.2 with python3-superqt < 1)
 # /SECTION
 
