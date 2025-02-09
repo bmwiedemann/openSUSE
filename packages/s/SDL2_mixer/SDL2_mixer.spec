@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_mixer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_mixer
 %define lname	libSDL2_mixer-2_0-0
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        SDL2 sound mixer library
 License:        Zlib

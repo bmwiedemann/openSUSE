@@ -67,4 +67,36 @@ https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-f
     + Fix variable scope of binding syntax (forwarded request 1202408 from mnhauke)</comment>
     <requestid>1202507</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e8cd435e10f4fe3b4e88d501f1e8a09</srcmd5>
+    <version>0.14.0</version>
+    <time>1739127981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.0:
+  * More jq compatible debug/0/debug/1 (correct prefix) and
+    stderr/0 (output raw strings).
+  * Fix crash when decoding a file while it's growing.
+  * Clean up some build dependencies.
+  * gojq updates from upstream:
+    + Fix reduce syntax to emit results for each initial value.
+    + Implement skip/2, fix limit/2 to emit error on negative count
+    + Fix last/1 to yield no values when the argument yields no values
+  * av1_obu Decode more fields and derive more values according to spec.
+  * elf Handle section header null better.
+  * markdown Update to latest gomarkdown (Fixes CVE-2024-44337).
+  * matroska Spec update.
+  * midi - Mapped SMPTE frame rates to strings and fixed bug in
+    SMPTE offset metaevent decoding and more refactoring.
+  * toml to_toml/1 now support indent option.
+  * wav Decode fmt chunk a bit better and improve format sym names
+    (implied endian not bit size).
+  * yaml to_yaml/1 now support indent option.
+  * Fixed format 0 filenames in Makefile debug target.
+  * Mapped SMPTE frame rates to strings and fixed bug in SMPTE
+    offset metaevent decoding (cf. #1023 (comment)).
+  * Moved to doc.go into midi.go (cf. transcriptaze#2).
+  * Reworked MIDI decoder to decode 'extra' format 0 tracks as data
+    (cf. transcriptaze#6). (forwarded request 1244370 from jfkw)</comment>
+    <requestid>1244375</requestid>
+  </revision>
 </revisionlist>

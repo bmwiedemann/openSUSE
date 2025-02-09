@@ -1,7 +1,7 @@
 #
 # spec file for package fq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           fq
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        CLI tool and REPL for working with binary data inspired by jq
 License:        MIT

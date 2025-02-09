@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 08 08:33:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.4:
+  * release v1.13.4 (#12126)
+  * Revert "replace ghcr.io to reg.kyverno.io (#12031) (#12106)"
+    (#12125)
+  * chore(deps): bump go dependencies to fix CVEs (#12119)
+
+-------------------------------------------------------------------
 Fri Feb 07 08:23:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.3:

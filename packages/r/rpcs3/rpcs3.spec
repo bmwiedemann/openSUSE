@@ -1,7 +1,7 @@
 #
 # spec file for package rpcs3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.34~git20250128
+Version:        0.0.34~git20250207
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ Patch1:         fix-test-files.patch
 Patch2:         fix-toolbar-color.patch
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-devel >= 17
-BuildRequires:  cmake(x86-64) >= 3.16.9
+BuildRequires:  cmake(x86-64) >= 3.28.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libevdev)

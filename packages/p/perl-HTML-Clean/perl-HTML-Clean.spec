@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Clean
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
-Name:           perl-HTML-Clean
-Version:        1.4
-Release:        0
 %define cpan_name HTML-Clean
-Summary:        Cleans up HTML code for web browsers, not humans
+Name:           perl-HTML-Clean
+Version:        1.400.0
+Release:        0
+# 1.4 -> normalize -> 1.400.0
+%define cpan_version 1.4
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AZ/AZJADFTRE/%{cpan_name}-%{version}.tar.gz
+Summary:        HTML::Clean - Cleans up HTML code for web browsers, not humans
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AZ/AZJADFTRE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(HTML::Clean) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -38,25 +40,25 @@ minimizing the size of HTML files. You can typically save between 10% and
 50% of the size of a HTML file using these methods. It provides the
 following features:
 
-* Remove unneeded whitespace (beginning of line, etc)
+* Remove unneeded whitespace (begining of line, etc)
 
 * Remove unneeded META elements.
 
 * Remove HTML comments (except for styles, javascript and SSI)
 
-* Replace tags with equivalent shorter tags (<strong> --> <b>)
+* Replace tags with equivilant shorter tags (<strong> --> <b>)
 
 * etc.
 
-The entire process is configurable, so you can pick and choose what you want
+The entire proces is configurable, so you can pick and choose what you want
 to clean.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -67,7 +69,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README TODO
 
 %changelog

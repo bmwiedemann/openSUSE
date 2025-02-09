@@ -1,6 +1,6 @@
 <package name="python-proton-client" project="openSUSE:Factory">
   <title>python-proton-client</title>
   <description>Safely login with ProtonVPN credentials to connect to Proton</description>
-  <devel project="devel:languages:python" package="python-proton-client"/>
+  <devel project="network:vpn" package="python-proton-client"/>
   <url>https://github.com/ProtonMail/proton-python-client</url>
 </package>

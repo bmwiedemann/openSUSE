@@ -1,26 +1,67 @@
 -------------------------------------------------------------------
+Sat Feb  8 16:17:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.0:
+  * More jq compatible debug/0/debug/1 (correct prefix) and
+    stderr/0 (output raw strings).
+  * Fix crash when decoding a file while it's growing.
+  * Clean up some build dependencies.
+  * gojq updates from upstream:
+    + Fix reduce syntax to emit results for each initial value.
+    + Implement skip/2, fix limit/2 to emit error on negative count
+    + Fix last/1 to yield no values when the argument yields no values
+  * av1_obu Decode more fields and derive more values according to spec.
+  * elf Handle section header null better.
+  * markdown Update to latest gomarkdown (Fixes CVE-2024-44337).
+  * matroska Spec update.
+  * midi - Mapped SMPTE frame rates to strings and fixed bug in
+    SMPTE offset metaevent decoding and more refactoring.
+  * toml to_toml/1 now support indent option.
+  * wav Decode fmt chunk a bit better and improve format sym names
+    (implied endian not bit size).
+  * yaml to_yaml/1 now support indent option.
+  * Fixed format 0 filenames in Makefile debug target.
+  * Mapped SMPTE frame rates to strings and fixed bug in SMPTE
+    offset metaevent decoding (cf. #1023 (comment)).
+  * Moved to doc.go into midi.go (cf. transcriptaze#2).
+  * Reworked MIDI decoder to decode 'extra' format 0 tracks as data
+    (cf. transcriptaze#6).
+  * Reworked MThd SMPTE field decoding to more closely follow the
+    specification (cf. transcriptaze#4).
+  * av1_obu: Add more derived values.
+  * av1_obu: Decode more of sequence header.
+  * elf: Handle section header null a bit better.
+  * interp: Output raw strings for stderr/0.
+  * interp: debug/* should use DEBUG: not DEBUG.
+  * matroska: Spec update.
+  * midi: adding godoc (cf. transcriptaze#2).
+  * mod: Update github.com/gomarkdown/markdown.
+  * mod: Update golang.org/x/{crypto,sys,term,text,net}.
+  * mod: Update gomarkdown.
+  * progressreaderseeker: Don't index out of bounds for a growing file.
+  * wav: Decode fmt chunk cb_size and bytes.
+  * wav: format 1 and 3 mean LE PCM but no implied bit size.
+  * yaml,toml: Add indent option for to_{toml,yaml}.
+
+-------------------------------------------------------------------
 Sat Sep 21 17:32:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.13.0
-  Changes
   * New format decoders midi, negentropy, tap and txz
   * Add byte_array bits format.
-  Format changes
   * matroska Updated to latest specification.
   * midi MIDI decoder added.
   * negentropy Negentropy message decoder.
   * tap and txz TAP and TXZ tape format for ZX Spectrum computers.
+
 - Update to version 0.12.0
-  Changes
   * Update readline package to fix issue with left/right word jump
     in REPL.
   * Update of version of golang and other dependencies.
-  Format changes
   * jpeg
     + Decode DHT paramaters.
     + Fix EOI description.
 - Update to version 0.11.0
-  Changes
   * Add string_truncate option to configure how to truncate long
     strings when displaying a decode value tree. dd, dv etc set
     truncate length to zero to not truncate.

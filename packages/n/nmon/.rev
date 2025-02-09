@@ -128,4 +128,41 @@
     <comment></comment>
     <requestid>1108846</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b0968cab5b7a64a53058d40f2978cc7</srcmd5>
+    <version>16q</version>
+    <time>1739128030</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 16q:
+  * bugfixes
+
+      will not fit on-scree.
+    HAMA servers) and small fixes
+    snprintf/strncpy.
+  * POWER pool_capacity now correctly divided by 100.
+  * Online view POWER Welcome panel on POWER reports the top MHz
+  Small changes only:
+      mode with &quot;-J&quot;
+    stats (m)
+  * Boottime shown online in the Kernel &quot;k&quot; panel
+  * Utilisation stats: /proc/stat now reports 10 Utilisation stats
+  * Bug caused Seg Faults core dumps fixed while collecting to a
+  * Fix: Improved memory handling for extreme numbers of processes
+    (1000's) or rapid exec of processes  (100's in a millisecond)
+    for large Linux servers. We have examples on Intel of 80 CPU
+  * Online Dot &quot;.&quot; command no longer also changes what is displayed
+    as users said it was confusing.
+  * Minor online start-up flash screen text changes to include C
+    concise CPU stats and U for full  Utilisation stats (all 10 of
+    them) instead of a file.
+  * Copyright and GPL v3 notice in the code plus online &quot;h&quot; and
+  * Source code re-indented.
+  * Fixes for Welcome screen on Mainframe
+  * Fixed for Curses handling when collecting data to file - big
+    bug for main frame and x86.
+  * Fixes for Welcome screen on Mainframe
+  * Fixed for Curses handling when collecting data to file - big
+    bug for main frame and x86.</comment>
+    <requestid>1244407</requestid>
+  </revision>
 </revisionlist>

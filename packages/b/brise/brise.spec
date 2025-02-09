@@ -26,7 +26,6 @@ Source:         brise-%{version}.tar.xz
 Source99:       README
 BuildRequires:  golang(API) >= 1.17
 
-
 %description
 Rime is an Traditional Chinese input method engine.
 Its idea comes from ancient Chinese brush and carving art.

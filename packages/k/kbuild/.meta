@@ -10,5 +10,5 @@
    makefile simplification
 - Tools and SDKs for helping out the templates with flexibility
 - Non-recursive makefile method by using sub-makefiles</description>
-  <devel project="devel:tools:building" package="kbuild"/>
+  <devel project="Virtualization" package="kbuild"/>
 </package>

@@ -36,4 +36,41 @@
 - ensure proper requires/ordering for sysuser/systemd (forwarded request 1234482 from darix)</comment>
     <requestid>1234499</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4fc38256a9802180b45b41fc0d7e08a8</srcmd5>
+    <version>0.24.3</version>
+    <time>1739127702</time>
+    <user>dimstar_suse</user>
+    <comment>- update 0.24.3:
+  * Fix migration error caused by nodes having invalid auth keys
+  * Pre auth keys belonging to a user are no longer deleted with the user
+  * Pre auth keys that are used by a node can no longer be deleted
+- update to 0.24.2:
+  * Fix issue where email and username being equal fails to match in Policy
+  * Delete invalid routes before adding a NOT NULL constraint on node_id
+- update to 0.24.1:
+  * Fix migration issue with user table for PostgreSQL
+  * Relax username validation to allow emails
+  * Remove invalid routes and add stronger constraints for routes to avoid API panic
+  * Fix panic when derp.update_frequency is 0
+- update to 0.24.0:
+  BREAKING:
+    * Remove dns.use_username_in_magic_dns configuration option
+    * Having usernames in magic DNS is no longer possible.
+    * Remove versions older than 1.56
+    * Clean up old code required by old versions
+    * If you depend on a Headscale Web UI, you should wait with this update until
+      the UI have been updated to match the new API.
+    * GET /api/v1/user/{name} and GetUser have been removed in favour of
+      ListUsers with an ID parameter
+    * RenameUser and DeleteUser now require an ID instead of a name.
+  CHANGES:
+    * Improved compatibility of built-in DERP server with clients connecting over WebSocket
+    * Allow nodes to use SSH agent forwarding
+    * Fixed processing of fields in post request in MoveNode rpc
+    * Added conversion of 'Hostname' to 'givenName' in a node with FQDN rules applied
+    * Fixed updating of hostname and givenName when it is updated in HostInfo
+    * Fixed missing stable-debug container tag (forwarded request 1244280 from rrahl0)</comment>
+    <requestid>1244281</requestid>
+  </revision>
 </revisionlist>

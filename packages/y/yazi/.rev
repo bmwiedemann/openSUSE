@@ -128,4 +128,73 @@ Changes from last request:
     <comment></comment>
     <requestid>1241025</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dd72f90a02eb59e048eb6e185ff60d69</srcmd5>
+    <version>25.2.7</version>
+    <time>1739127950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 25.2.7:
+  * chore: bump version to 25.2.7 (#2301)
+  * feat: use positional argument instead of `--args` for the `plugin` command (#2299)
+  * feat: support end of options (`--`) marker for all commands (#2298)
+  * docs: update Windows Terminal image preview support to Stable (#2296)
+  * feat: new `arrow top` and `arrow bot` commands to jump to the top and bottom (#2294)
+  * feat: switch to Calendar Versioning (#2291)
+  * feat: new `@since` plugin annotation to specify the minimum supported Yazi version (#2290)
+  * fix: enable unwinding on Windows release builds (#2286)
+  * docs: Warp sponsorship (#2282)
+  * fix: correct shell quotes for Unicode on Windows (#2285)
+  * fix: squeeze the parent directory offset after terminal size change (#2275)
+  * docs: add Bobcat to the list of VTEs with images preview support (#2269)
+  * feat: `ya pack` supports adding and deleting multiple packages at the same time (#2257)
+  * feat: allow preloaders to return an optional `Error` to describe the failure (#2253)
+  * feat: new `cx.layer` API to determine the current UI layer (#2247)
+  * feat: support `package.toml` as a symlink (#2245)
+  * fix: ensure the selected file list is always ordered (#2244)
+  * feat: wrap long task descriptions (#2243)
+  * fix: JSON value `null` should be deserialized as Lua `nil`, not lightweight userdata `null` (#2242)
+  * feat: apply natural sort to partitions on both Linux and macOS (#2235)
+  * fix: use `u32` for parsing Linux partition blocks (#2234)
+  * fix: unmangle the hexadecimal space strings (`&quot;\x20&quot;`) in Linux partition labels (#2233)
+  * feat: support local `tmux` image preview over SSH (#2229)
+  * fix: ignore completions artifacts (#2226)
+  * fix: sync block execution failed due to `Runtime` mutably borrowed more than once (#2225)
+  * perf: detach the watch registration from the main thread (#2224)
+  * ci(snap): correct arm64 runner OS (#2217)
+  * feat: more complete hovered file cursor tracking (#2218)
+  * fix(nix): rust overlay infinite recursion (#2216)
+  * ci: use GitHub Linux arm64 runners for the snap build (#2214)
+  * feat: mount manager (#2199)
+  * feat: channel and multi-concurrent task join support for the plugin system (#2210)
+  * feat: custom modal component API (#2205)
+  * feat: arm64 Snap package (#2188)
+  * fix: wrong description of the `swipe` command (#2197)
+  * feat: new `ya pack -d` subcommand to delete packages (#2181)
+  * feat: new `--no-cwd-file` option for the `close` command (#2185)
+  * fix: incorrect monorepo sub-plugin path resolution (#2186)
+  * feat: allow `YAZI_LOG` to control the log level of Überzug++ (#2183)
+  * docs: correct the `cargo test` command in the contribution guide (#2182)
+  * feat: replace mode and Vim motions (`W`, `E`, `B`, `^`, `_`) for inputs (#2143)
+  * feat: more decent package locking mechanism (#2168)
+  * feat: support `application/mbox` mimetype (#2173)
+  * feat: sort search results by full URN (#2164)
+  * fix: typo in the argument documentation for the CLI (#2158)
+  * feat: support and hide Windows system files by default (#2149)
+  * fix: correct Vec capacity allocation caused by variable name shadowing (#2139)
+  * fix: `before_ext` should exclude directories since only files have extensions (#2132)
+  * fix: handle broken pipe errors gracefully (#2110)
+  * feat: prompt users without `fzf` for the `zoxide` plugin (#2122)
+  * fix: don't check if has a hovered file in advance, only do so when `--hovered` is explicitly specified (#2105)
+  * docs: update the links in the README (#2103)
+  * fix: add Alacritty to the database as a terminal that doesn't support any image protocol (#2107)
+  * fix: reversed style shouldn't be applied to the entire text block
+  * ci: add new linux targets (#2099)
+  * feat: new `ya.confirm()` API (#2095)
+  * fix: element style of `ui.Text` was not applied to the entire area (#2093)
+  * feat: add `cbr` and `cbz` as valid archive extensions (#2077)
+  * feat: theme support for the spotter border and title (#2002)
+  * chore: bump version to 0.4.3
+</comment>
+    <requestid>1244345</requestid>
+  </revision>
 </revisionlist>

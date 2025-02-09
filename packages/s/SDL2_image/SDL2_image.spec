@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_image
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@ Summary:        Simple DirectMedia Layer 2 image loading library
 License:        Zlib
 Group:          Development/Libraries/X11
 URL:            https://libsdl.org/projects/SDL_image/
-
-#Hg-Clone:	http://hg.libsdl.org/SDL_image/
 Source:         https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz
+Source2:        https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz.sig
+Source9:        %name.keyring
 BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  automake
 BuildRequires:  dos2unix
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 
 %description
-This is a simple library to load images of various formats as SDL
+This is a library to load images of various formats as SDL
 surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
 
@@ -50,7 +50,7 @@ Group:          System/Libraries
 Provides:       SDL2_image = %version-%release
 
 %description -n %lname
-This is a simple library to load images of various formats as SDL
+This is a library to load images of various formats as SDL
 surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
 
@@ -62,7 +62,7 @@ Obsoletes:      libSDL2_image-devel < %version-%release
 Provides:       libSDL2_image-devel = %version-%release
 
 %description devel
-This is a simple library to load images of various formats as SDL
+This is a library to load images of various formats as SDL
 surfaces. This library supports the BMP, PPM, PCX, GIF, JPEG, PNG,
 TIFF and WEBP formats.
 
@@ -83,8 +83,7 @@ autoreconf -fi
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license LICENSE.txt

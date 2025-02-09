@@ -1,6 +1,6 @@
 <package name="python-proton-vpn-logger" project="openSUSE:Factory">
   <title>python-proton-vpn-logger</title>
   <description>Proton VPN logging library</description>
-  <devel project="devel:languages:python" package="python-proton-vpn-logger"/>
+  <devel project="network:vpn" package="python-proton-vpn-logger"/>
   <url>https://github.com/ProtonVPN/python-proton-vpn-logger</url>
 </package>

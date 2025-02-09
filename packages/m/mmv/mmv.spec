@@ -1,7 +1,7 @@
 #
 # spec file for package mmv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mmv
-Version:        2.6
+Version:        2.10
 Release:        0
 Summary:        Move/Copy/Append/Link Multiple Files by Wildcard Patterns
 License:        GPL-1.0-or-later
@@ -25,6 +25,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/rrthomas/mmv/
 Source:         https://github.com/rrthomas/mmv/releases/download/v%{version}/mmv-%{version}.tar.gz
 BuildRequires:  c_compiler
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bdw-gc)
 
 %description
@@ -49,7 +50,13 @@ cp -a COPYING "%{buildroot}/%{_defaultdocdir}/%{name}/"
 
 %files
 %{_defaultdocdir}/%{name}/
-%{_bindir}/*
-%{_mandir}/man1/*
+%{_bindir}/mad
+%{_bindir}/mcp
+%{_bindir}/mln
+%{_bindir}/mmv
+%{_mandir}/man1/mad.1%{?ext_man}
+%{_mandir}/man1/mcp.1%{?ext_man}
+%{_mandir}/man1/mln.1%{?ext_man}
+%{_mandir}/man1/mmv.1%{?ext_man}
 
 %changelog

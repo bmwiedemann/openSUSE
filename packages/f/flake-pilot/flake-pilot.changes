@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Feb 01 22:57:28 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.13 → 3.1.14
+
+-------------------------------------------------------------------
+Sat Feb 01 22:47:35 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use actions/upload-artifact: v4
+
+-------------------------------------------------------------------
+Sat Feb 01 22:46:14 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make clippy happy
+
+-------------------------------------------------------------------
+Sat Feb 01 22:37:25 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix building runtime arguments
+
+  Use get_run_cmdline method everywhere
+
+-------------------------------------------------------------------
+Sat Feb 01 22:14:16 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix container cleanup
+
+  A flake configured to be attached can also be re-started
+  using the same container storage. However, the container
+  was always removed when the command exited. This commit
+  fixes it to avoid removing the container of attach type
+  flakes. In addition a flake option %remove was added to
+  allow removing the container created for resume and attach
+  type flakes
+
+-------------------------------------------------------------------
 Tue Dec 17 14:46:11 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.12 → 3.1.13

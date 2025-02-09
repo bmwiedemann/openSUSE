@@ -453,4 +453,17 @@
   * GO-2025-3451 (forwarded request 1243557 from jfkw)</comment>
     <requestid>1243559</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4cf0bd9dacb733a92c6ae34a97961437</srcmd5>
+    <version>0.0.20250207T224745</version>
+    <time>1739127700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20250207T224745 2025-02-07T22:47:45Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3456 CVE-2025-24786 GHSA-9r4c-jwx3-3j76
+  * GO-2025-3457 CVE-2025-24787 GHSA-c7w4-9wv8-7x7c
+  * GO-2025-3458 CVE-2025-24366 GHSA-vj7w-3m8c-6vpx (forwarded request 1244298 from jfkw)</comment>
+    <requestid>1244300</requestid>
+  </revision>
 </revisionlist>

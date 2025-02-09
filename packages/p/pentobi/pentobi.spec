@@ -17,7 +17,7 @@
 
 
 Name:           pentobi
-Version:        26.2
+Version:        26.3
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only

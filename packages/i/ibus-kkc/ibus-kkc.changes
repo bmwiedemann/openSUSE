@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  7 14:37:02 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- "Fix" build with GCC 14: Inject -Wno-incompatible-pointer-types
+  to CFLAGS and accept the bad code quality.
+- Do not run configure twice: set NOCONFIGURE=1 for
+  gnome-autogen.sh.
+
+-------------------------------------------------------------------
 Sat Jan 20 14:55:34 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)

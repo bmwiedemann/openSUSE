@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  8 22:10:12 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.25.0:
+  * Restrict access to esbuild's development server (GHSA-67mh-4wv8-2f99)
+  * Delete output files when a build fails in watch mode (#3643)
+  * Fix correctness issues with the CSS nesting transform (#3620,
+    #3877, #3933, #3997, #4005, #4037, #4038)
+  * Fix some correctness issues with source maps (#1745, #3183, #3613, #3982)
+  * Fix a minification bug with bitwise operators and bigints (#4065)
+  * Fix esbuild incorrectly rejecting valid TypeScript edge case (#4027)
+  * Transform BigInt values into constructor calls when unsupported (#4049)
+
+-------------------------------------------------------------------
 Sun Dec 22 21:23:07 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.24.2:

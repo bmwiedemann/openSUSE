@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Feb  9 05:24:10 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use strip-nondeterminism to normalize jar mtimes for reproducible builds
+
+-------------------------------------------------------------------
+Thu Feb  6 10:06:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.10.0:
+  * New Java bindings (gh#stevengj/nlopt#578).
+  * Allow disabling exceptions with set_exceptions_enabled
+    (gh#stevengj/nlopt#580).
+  * Configurable tolg tolerance parameter for Luksan gradient
+    stopping condition (gh#stevengj/nlopt#585).
+  * Restored LD_LBFGS_NOCEDAL enum value (dropped in 2.9) to ease
+    backwards compatibility for wrappers in other languages
+    (though this algorithm is currently unimplemented)
+    (gh#stevengj/nlopt#587).
+- Build and install java bindings as part of a newly split
+  nlopt-java package.
+- Bump shlib name in keeping with upstream so version update.
+
+-------------------------------------------------------------------
 Fri Dec 20 10:42:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.9.1:

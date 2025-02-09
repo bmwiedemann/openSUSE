@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 08 17:10:09 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.0:
+  * Update workflow actions
+  * Fix `timoni:generate` header
+  * Adapt tests to CUE v0.12.0
+  * Update `cuelang.org/go` to v0.12.0
+  * Update Kubernetes dependencies
+  * build(deps): bump the ci group across 1 directory with 5
+    updates
+  * Add TIMONI_CACHE_DIR variable as another method to set the
+    cache location
+
+-------------------------------------------------------------------
 Mon Dec 16 14:15:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.0:

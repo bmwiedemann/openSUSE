@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Feb  8 11:00:04 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.12.1:
+  * Bugfix: Fix conan config clean not regenerating every necessary file.
+  * Bugfix: Avoid compatibility.py migration if any of the files are modified 
+    by users.
+
+- Update to version 2.12.0:
+  * Feature: Make public documented (and experimental) the 
+    --build=compatible:[pattern] build mode
+  * Feature: Define new tools.cmake.cmaketoolchain:user_presets to customize 
+    the name of the generated CMakeUserPresets.json
+  * Feature: Serialize in --format=json graph output the original requirements
+    version range, not only the resolved one.
+  * Feature: Add cycloneDX as a Conan tool and implement subgraph for conanfile
+  * Feature: Initial conan workspace build command to build the full workspace,
+    based on the definition of products.
+  * Feature: Allow applying patches on "create" time for conan-center-index
+    like layouts from an external centralized folder.
+  * Feature: Add report progress while unpacking tarball files.
+  * Feature: conan profile show can now select which context's profile to show
+  * Feature: Better logging, printing the username for repositories, successful
+    auth event and trace-level messages including full URL requests.
+  * Feature: Adds conan config clean command that will remove all custom config
+    from conan home, excluding the generated packages.
+  * Feature: Add reinit method to ConanApi, which reinitializes every subapi.
+  * Feature: Allow defining --out-file=file.ext instead of 
+    --format=ext > file.ext to write to files directly and avoid issues 
+    with redirects
+  * Feature: Cache HTTP request sessions between API calls.
+  * Feature: Implement caching in the Remote objects for RemoteManager calls
+  * Fix: Added arch_flag as a public attribute to the MesonToolchain generator.
+  * Fix: Increase sqlite timeout from 10 to 20 seconds for very heavily loaded
+    CI servers.
+  * Fix: Make remotes.json saving transactional to avoid corruption for hard
+    killed processes.
+  * Fix: Improve error message for conan create when test_package has missing
+    binaries.
+  * Fix: Fix Git is_dirty detection of excluded files with paths.
+  * Fix: Allow latest bottle 0.13 release for conan_server to work with
+    Python 3.13.
+  * Fix: GnuToolchain's make_args handle empty values correctly.
+  * Fix: Fix inconsistency in replace_in_file, that returned False if the
+    pattern was not found (with strict off), otherwise None.
+  * Fix: conan profile show does not pollute stdout with information titles.
+  * Fix: Error out when unknown language is used in languages attribute.
+  * Fix: Fix Workspace when using the workspace_api.load() and using self.run()
+    inside set_version().
+  * Bugfix: conf_build does not exist for cli and conanfile.txt contexts.
+  * Bugfix: Make possible to use pattern and strip_root at the same time for
+    conan.tools.files.unzip().
+  * Bugfix: Solve incubating CMakeDeps issues with transitive
+    [replace_requires].
+  * Bugfix: Solve PkgConfigDeps issues with transitive [replace_requires].
+
+-------------------------------------------------------------------
 Sun Dec 22 11:49:21 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.11.0:

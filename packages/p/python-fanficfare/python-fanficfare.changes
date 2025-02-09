@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb  7 22:19:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.42.0:
+  - Update Translations
+  - adapter_fanfictalkcom: Update domain name & match pattern
+  - Remove site: starskyhutcharchive.net, moved to
+    starskyandhutcharchive.net, not eFiction. Nobody's missed it.
+  - Remove site: fastnovels.net - Blog only now, no stories.
+  - Remove site: www.novelupdates.cc - Domain parked somewhere
+    sketchy
+  - Remove site: ponyfictionarchive.net - Moved to AO3
+  - adapter_wwwaneroticstorycom: Update for site changes.
+  - Re-alphabetize defaults.ini
+  - Browser Simple Cache adding orig resp time field & removing
+    browser_cache_simple_header_old option. Fixes Browser Cache
+    failing with Chrome on Mac & Linux.
+  - Strip out unused parts of requests_toolbelt to avoid
+    dependency issues.
+  - Add no_image_processing_regexp option for #1144
+  - adapter_fictionmaniatv: Change to https
+
+-------------------------------------------------------------------
 Wed Jan  1 22:58:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.41.0:

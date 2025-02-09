@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Feb  8 19:51:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 10.0.1:
+  * Verify the ID of Forgejo Actions web endpoints belongs to the repository to
+    prevent the deletion of runners or variables or the modification of
+    variables
+  * Enforce permissions on publicly available user or organizations projects to
+    not leak information from issues and pull requests that belong to private
+    repositories
+  * fix(ui): display verified icon for default gpg key
+  * fix: load settings for valid user and email check
+  * Teach the doctor to remove orphaned two_factor with forgejo doctor check --run check-db-consistency --fix
+  * fix: listing tokens must not require basic auth
+
+-------------------------------------------------------------------
 Thu Jan 16 15:16:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 10.0.0:

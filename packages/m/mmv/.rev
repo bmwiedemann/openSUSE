@@ -167,4 +167,41 @@
   * There is also a build system fix. (forwarded request 1185860 from amanzini)</comment>
     <requestid>1186034</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cfa113e076714262b0512f412364d638</srcmd5>
+    <version>2.10</version>
+    <time>1739128009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10:
+  * This release adds a ‘c’ flag for output patterns that
+    capitalizes words in the output name, similar to ‘u’ and ‘l’
+    for upper and lower casing.
+- update to 2.9.1:
+  * The previous release shipped with a broken man page; this
+    release is just a rebuild. Thanks to the user who promptly
+    notified me of the problem!
+- update to 2.9:
+  * This release make the --rename mode work the same as the
+    default --move, since we can now rename directories freely in
+    any case. The --rename flag is no longer documented, but is
+    still accepted by mmv for backwards compatibility.
+  * Some code that previously tried to drop privileges for most
+    but not all uses was removed, as it served no useful purpose,
+    and triggered static analysis tools that diagnosed a security
+    flaw (setuid without setgroups). mmv is really just a fancy
+    version of mv/cp/ln, which do not drop privileges; this
+    behaviour was neither expected nor desired.
+- update to 2.8:
+  * This release fixes moving directories into newly-created
+    directories. Previously, mmv tried erroneously to copy then
+    move the directory rather than simply rename it.
+  * Also, when a target directory is missing, mmv will now
+    suggest using --makedirs.
+  * This release also adds symlinks to the man page mmv(1) under
+    mmv’s other executable names.
+- update to 2.7:
+  * This release removes the use of libgc, which was fragile,
+    relying on build system shenanigans, and is not that useful</comment>
+    <requestid>1244411</requestid>
+  </revision>
 </revisionlist>

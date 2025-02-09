@@ -2,4 +2,5 @@
   <title>Support Troubleshooting Utilities</title>
   <description>A noarch package that contains supportconfig, chkbin and schealth. These tools are used heavily is troubleshooting system and application issues. Supportconfig gathers system information and organizes it to assist in resolving problems quickly. Chkbin checks and confirms a binary and it's shared library dependencies. Schealth analyzes the basic-health-check.txt file to see of key values are within normal operating expectations.</description>
   <devel project="isv:SUSE:SupportTools:Factory" package="supportutils"/>
+  <group groupid="supportutils-maint" role="bugowner"/>
 </package>

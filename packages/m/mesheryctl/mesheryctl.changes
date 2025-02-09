@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb  8 09:33:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.27:
+  * Meshery CLI
+    - ci/chore/more docker repos @miacycle (#13506)
+    - Update meshery-linkerd references to use the new repository
+      path @miacycle (#13502)
+    - [mesheryctl] nit: improve error logging for registry generate
+      using csv files from local directory @riyaa14 (#13464)
+    - update environment doc links @aabidsofi19 (#13474)
+    - Update vendor links @aabidsofi19 (#13475)
+- update to 0.8.26:
+  * Meshery CLI
+    - [mesheryctl relationship] refactoring tests not stored
+      properly @lekaf974 (#13393)
+    - Add doc functionality to print subcommands list @alphaX86
+      (#12953)
+    - [CLI UX]: mesheryctl registry generate invalid JWT token
+      response @leecalcote (#13358)
+  * Documentation
+    - [mesheryctl relationship] refactoring tests not stored
+      properly @lekaf974 (#13393)
+    - Add doc functionality to print subcommands list @alphaX86
+      (#12953)
+
+-------------------------------------------------------------------
 Tue Jan 28 14:28:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.25:

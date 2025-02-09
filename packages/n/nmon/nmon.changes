@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:10:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 16q:
+  * bugfixes
+
+-------------------------------------------------------------------
 Mon Sep  4 10:32:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 16p:
@@ -6,7 +12,7 @@ Mon Sep  4 10:32:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
     + CLI -B and GUI 'B' to toggle boxes around stats.
     + CLI -^ and '^' to change units for Disk I/O KB/s -> MB/s -> GB/s.
       This happen temporarily too if the size of the statistic
-      will not fit on-scree. 
+      will not fit on-scree.
   * Code changed to ensure clean compile for GCC 12
 
 -------------------------------------------------------------------
@@ -14,7 +20,7 @@ Sun Apr 10 13:41:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 16n:
   * 0 maximum CPUs for the Power10 E1080 (needed for massive Linux running SAP
-    HAMA servers) and small fixes 
+    HAMA servers) and small fixes
 
 -------------------------------------------------------------------
 Tue Nov 12 14:18:32 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
@@ -57,30 +63,30 @@ Thu Jan 10 13:06:47 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 16h:
   * Internal code changes for robustness malloc() and
-    snprintf/strncpy. 
-  * POWER pool_capacity now correctly divided by 100. 
+    snprintf/strncpy.
+  * POWER pool_capacity now correctly divided by 100.
   * Online view ARM lscpu command column format depends on your
     hardware
   * Online view ALL /proc/cpuinfo format depends on your hardware
     and new lines - like MMU: Hash or MMU:
-  * Online view POWER Welcome panel on POWER reports the top MHz 
+  * Online view POWER Welcome panel on POWER reports the top MHz
 - Drop manpage generation
 
 -------------------------------------------------------------------
 Wed Apr 18 12:39:35 UTC 2018 - aloisio@gmx.com
 
 - Update to version 16g
-  Small changes only: 
+  Small changes only:
   * Now cope with 192 physical CPU cores with SMT=8 (for POWER8
     servers)
   * Fixed bug reported with NFS automount in data capture mode
     + Alternatively, completely switch off JFS stats in capture
-      mode with "-J" 
+      mode with "-J"
   * Online view: remove File systems that are "not real" to
     reduce screen space. Hit "j" and then "J" to remove the
     pointless file systems
   * Online view: Small clean up of the titles for the Memory
-    stats (m) 
+    stats (m)
 
 -------------------------------------------------------------------
 Fri Jul  8 17:32:36 UTC 2016 - mpluskal@suse.com
@@ -98,21 +104,21 @@ Sat Jun 18 18:42:06 UTC 2016 - mpluskal@suse.com
 Fri Apr  8 18:44:06 UTC 2016 - mpluskal@suse.com
 
 - Update to 16e (boo#974718)
-  * Boottime shown online in the Kernel "k" panel 
-  * Utilisation stats: /proc/stat now reports 10 Utilisation stats 
+  * Boottime shown online in the Kernel "k" panel
+  * Utilisation stats: /proc/stat now reports 10 Utilisation stats
     including KVM guest VM CPU use = cool.
-  * Bug caused Seg Faults core dumps fixed while collecting to a 
+  * Bug caused Seg Faults core dumps fixed while collecting to a
     file including top process stats.
-  * Fix: Improved memory handling for extreme numbers of processes 
-    (1000's) or rapid exec of processes  (100's in a millisecond) 
-    for large Linux servers. We have examples on Intel of 80 CPU 
+  * Fix: Improved memory handling for extreme numbers of processes
+    (1000's) or rapid exec of processes  (100's in a millisecond)
+    for large Linux servers. We have examples on Intel of 80 CPU
     cores and POWER 160+
-  * Online Dot "." command no longer also changes what is displayed 
-    as users said it was confusing. 
-  * Minor online start-up flash screen text changes to include C 
-    concise CPU stats and U for full  Utilisation stats (all 10 of 
-    them) instead of a file. 
-  * Copyright and GPL v3 notice in the code plus online "h" and 
+  * Online Dot "." command no longer also changes what is displayed
+    as users said it was confusing.
+  * Minor online start-up flash screen text changes to include C
+    concise CPU stats and U for full  Utilisation stats (all 10 of
+    them) instead of a file.
+  * Copyright and GPL v3 notice in the code plus online "h" and
     nmon -h output
 - Improve manpage generation
 
@@ -127,30 +133,30 @@ Fri Mar 18 14:46:15 UTC 2016 - mpluskal@suse.com
 Sat Mar 12 07:54:50 UTC 2016 - mpluskal@suse.com
 
 - Update to 16d
-  * Source code re-indented. 
-  * Fixes for Welcome screen on Mainframe 
-  * Fixed for Curses handling when collecting data to file - big 
-    bug for main frame and x86. 
+  * Source code re-indented.
+  * Fixes for Welcome screen on Mainframe
+  * Fixed for Curses handling when collecting data to file - big
+    bug for main frame and x86.
 - Changes for 16b
-  * Fixes for Welcome screen on Mainframe 
-  * Fixed for Curses handling when collecting data to file - big 
-    bug for main frame and x86. 
+  * Fixes for Welcome screen on Mainframe
+  * Fixed for Curses handling when collecting data to file - big
+    bug for main frame and x86.
 - Changes for 16a
   * Nvidia GPU support - online & saved to file
-    + You need a S822LC With NVIDIA GPU(s) and Nvidia Library 
-      installed libnvidia-ml.so 
-  * CPU Wide View - online view for up to 192 CPUs 
-  * CPU MHz per Core ratings for machine that allow cores with 
-    different MHz - online & saved to file 
-  * lscpu stats capture - online & to file 
-  * Z experiment mode showing CPU interrupts - Renamed U stats in 
-    version 16b - online only 
-  * Online colourising stats to aid usability - online only 
-  * Massive improvement in help information: nmon -? and nmon -h 
-  * Code change to alphabetic order for getopt() and key input 
+    + You need a S822LC With NVIDIA GPU(s) and Nvidia Library
+      installed libnvidia-ml.so
+  * CPU Wide View - online view for up to 192 CPUs
+  * CPU MHz per Core ratings for machine that allow cores with
+    different MHz - online & saved to file
+  * lscpu stats capture - online & to file
+  * Z experiment mode showing CPU interrupts - Renamed U stats in
+    version 16b - online only
+  * Online colourising stats to aid usability - online only
+  * Massive improvement in help information: nmon -? and nmon -h
+  * Code change to alphabetic order for getopt() and key input
     functions - just code clean up
-  * New nmon logo on flash screen - online only 
-  * Extra kernel stats - online only 
+  * New nmon logo on flash screen - online only
+  * Extra kernel stats - online only
 - Drop nmon.1 and genereate manpage during build
 
 -------------------------------------------------------------------

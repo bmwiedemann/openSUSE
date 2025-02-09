@@ -20,7 +20,7 @@
 %define plugin notes
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Note-taking Plugin for the Xfce Panel
 License:        GPL-2.0-or-later

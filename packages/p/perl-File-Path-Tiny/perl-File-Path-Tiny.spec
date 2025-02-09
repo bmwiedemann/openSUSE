@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Path-Tiny
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,22 @@
 
 %define cpan_name File-Path-Tiny
 Name:           perl-File-Path-Tiny
-Version:        1.0
+Version:        1.0.0
 Release:        0
-Summary:        Recursive versions of mkdir() and rmdir() without as much overhead as Fi[cut]
+# 1.0 -> normalize -> 1.0.0
+%define cpan_version 1.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Recursive versions of mkdir() and rmdir() without as much overhead as Fi[cut]
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DM/DMUEY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DM/DMUEY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Exception)
 Requires:       perl(Test::Exception)
+Provides:       perl(File::Path::Tiny) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -85,7 +89,7 @@ Seems like that should just happen, I don't want to worry about
 accidentally removing / when I pass it /tmp
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

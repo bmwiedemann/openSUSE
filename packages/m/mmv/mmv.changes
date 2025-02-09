@@ -1,8 +1,43 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:22:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10:
+  * This release adds a ‘c’ flag for output patterns that
+    capitalizes words in the output name, similar to ‘u’ and ‘l’
+    for upper and lower casing.
+- update to 2.9.1:
+  * The previous release shipped with a broken man page; this
+    release is just a rebuild. Thanks to the user who promptly
+    notified me of the problem!
+- update to 2.9:
+  * This release make the --rename mode work the same as the
+    default --move, since we can now rename directories freely in
+    any case. The --rename flag is no longer documented, but is
+    still accepted by mmv for backwards compatibility.
+  * Some code that previously tried to drop privileges for most
+    but not all uses was removed, as it served no useful purpose,
+    and triggered static analysis tools that diagnosed a security
+    flaw (setuid without setgroups). mmv is really just a fancy
+    version of mv/cp/ln, which do not drop privileges; this
+    behaviour was neither expected nor desired.
+- update to 2.8:
+  * This release fixes moving directories into newly-created
+    directories. Previously, mmv tried erroneously to copy then
+    move the directory rather than simply rename it.
+  * Also, when a target directory is missing, mmv will now
+    suggest using --makedirs.
+  * This release also adds symlinks to the man page mmv(1) under
+    mmv’s other executable names.
+- update to 2.7:
+  * This release removes the use of libgc, which was fragile,
+    relying on build system shenanigans, and is not that useful
+    in a one-shot tool.
+
+-------------------------------------------------------------------
 Sat Jul  6 08:17:50 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.6:
-  * This release re-adds the “mad” (“append”) command, and fixes how 
+  * This release re-adds the “mad” (“append”) command, and fixes how
     the program name is checked when deciding which mode to run in.
   * There is also a build system fix.
 
@@ -52,7 +87,7 @@ Sat Feb  5 14:56:08 UTC 2011 - asterios.dramis@gmail.com
 - Added the copyright file from
   http://packages.debian.org/changelogs/pool/main/m/mmv/current/copyright
 - Spec file updates:
-  * Changed the License to GPL+ based on the copyright file. 
+  * Changed the License to GPL+ based on the copyright file.
   * Changes based on rpmdevtools templates and spec-cleaner run.
   * Updates in Summary: and %description sections.
   * Added description for patches based on openSUSE Patches Guidelines.
@@ -67,7 +102,7 @@ Wed Jan 25 21:38:21 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Tue Dec 13 17:17:42 CET 2005 - anicka@suse.cz
 
-- add LARGEFILE to CFLAGS (bug #137906) 
+- add LARGEFILE to CFLAGS (bug #137906)
 
 -------------------------------------------------------------------
 Tue Apr  5 13:20:26 CEST 2005 - nadvornik@suse.cz
@@ -96,7 +131,7 @@ Wed Sep 25 14:48:21 CEST 2002 - tcrhak@suse.cz
 -------------------------------------------------------------------
 Fri Apr 20 09:33:27 CEST 2001 - cihlar@suse.cz
 
-- use RPM_OPT_FLAGS 
+- use RPM_OPT_FLAGS
 - fixed to compile on s390
 
 -------------------------------------------------------------------
@@ -119,7 +154,7 @@ Thu Nov  9 09:42:46 CET 2000 - cihlar@suse.cz
 Wed May 17 13:00:40 CEST 2000 - cihlar@suse.cz
 
 - added BuildRoot
-- Group sorted 
+- Group sorted
 
 -------------------------------------------------------------------
 Fri May 12 15:13:38 CEST 2000 - schwab@suse.de
@@ -129,7 +164,7 @@ Fri May 12 15:13:38 CEST 2000 - schwab@suse.de
 -------------------------------------------------------------------
 Tue Jan 25 17:31:46 CET 2000 - ro@suse.de
 
-- man to /usr/share using macro 
+- man to /usr/share using macro
 
 -------------------------------------------------------------------
 Sun Dec 19 18:50:34 CET 1999 - kukuk@suse.de
@@ -149,10 +184,10 @@ Wed Aug 25 17:51:06 MEST 1999 - uli@suse.de
 -------------------------------------------------------------------
 Wed Feb  3 00:40:14 MET 1999 - ro@suse.de
 
-- no m486 on alpha 
+- no m486 on alpha
 
 -------------------------------------------------------------------
 Thu Jun 18 13:44:25 MEST 1998 - ro@suse.de
 
-- builds for libc5 and glibc 
+- builds for libc5 and glibc
 

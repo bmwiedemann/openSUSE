@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  7 20:44:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.7
+  * Format source using clang-format.
+  * Reorganize system tests to run without a TTY.
+  * Remove unused X option character.
+
+-------------------------------------------------------------------
 Sun Sep 29 13:27:29 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 5.6

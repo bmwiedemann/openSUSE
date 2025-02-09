@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Mork
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-File-Mork
-Version:        0.4
-Release:        0
 %define cpan_name File-Mork
-Summary:        Module to Read Mozilla Url History Files
+Name:           perl-File-Mork
+Version:        0.400.0
+Release:        0
+# 0.4 -> normalize -> 0.400.0
+%define cpan_version 0.4
+#Upstream: SUSE-Public-Domain
 License:        MIT
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-Mork/
-Source0:        http://www.cpan.org/authors/id/S/SI/SIMONW/%{cpan_name}-%{version}.tar.gz
+Summary:        Module to read Mozilla URL history files
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMONW/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTML::Entities)
-BuildRequires:  perl(Module::Build) >= 0.400000
+BuildRequires:  perl(Module::Build) >= 0.4
 Requires:       perl(HTML::Entities)
+Provides:       perl(File::Mork) = %{version}
+Provides:       perl(File::Mork::Entry)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -45,21 +49,20 @@ has some platform-independent code for finding the profiles of various
 Mozilla-isms (including Firefox, Camino, K-Meleon, etc.).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples
 
 %changelog

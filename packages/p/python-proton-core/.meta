@@ -1,6 +1,6 @@
 <package name="python-proton-core" project="openSUSE:Factory">
   <title>python-proton-core</title>
   <description>Proton core library</description>
-  <devel project="devel:languages:python" package="python-proton-core"/>
+  <devel project="network:vpn" package="python-proton-core"/>
   <url>https://github.com/ProtonVPN/python-proton-core</url>
 </package>

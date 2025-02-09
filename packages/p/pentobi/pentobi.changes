@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  7 12:38:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 26.3
+  * Disabled native text rendering on desktop, which did not work
+    well on some platforms.
+  * Indicate support for mobile devices in metainfo file.
+
+-------------------------------------------------------------------
 Mon Jan 27 14:26:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 26.2

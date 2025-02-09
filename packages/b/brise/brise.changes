@@ -8,7 +8,7 @@ Thu Jan  2 18:18:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
   * rime-plum-go is a separate project and has a different upstream.
   * I have done my best to keep the original code the same in
     respect of Marguerite's hard work.
-  (CVE-2025-2161, bsc#1235573, CVE-2024-45337, bsc#1234597)
+  (CVE-2025-21613, bsc#1235573, CVE-2024-45337, bsc#1234597)
 
 -------------------------------------------------------------------
 Mon Sep  4 18:18:06 UTC 2023 - Cliff Zhao <qzhao@suse.com>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 22:24:15 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Thu Jun  2 05:44:00 UTC 2016 - coolo@suse.com
 
 - track the MIT license also in cpanspec.yml

@@ -1,7 +1,7 @@
 #
 # spec file for package conan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # Note: We only want to build for the default python3
 Name:           conan
-Version:        2.11.0
+Version:        2.12.1
 Release:        0
 Summary:        A C/C++ package manager
 License:        MIT

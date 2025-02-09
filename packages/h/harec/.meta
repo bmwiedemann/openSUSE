@@ -1,6 +1,6 @@
 <package name="harec" project="openSUSE:Factory">
   <title>Bootstrap Compiler of Hare Programming Language</title>
   <description>The bootstrap compiler component of the Hare Programming Language.</description>
-  <devel project="devel:tools:compiler" package="harec"/>
+  <devel project="devel:languages:hare" package="harec"/>
   <url>https://harelang.org</url>
 </package>

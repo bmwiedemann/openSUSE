@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Math-Geometry-Voronoi
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Math-Geometry-Voronoi
-Version:        1.3
-Release:        0
 %define cpan_name Math-Geometry-Voronoi
-Summary:        compute Voronoi diagrams from sets of points
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Math-Geometry-Voronoi/
-Source:         http://www.cpan.org/authors/id/S/SA/SAMTREGAR/%{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:           perl-Math-Geometry-Voronoi
+Version:        1.300.0
+Release:        0
+# 1.3 -> normalize -> 1.300.0
+%define cpan_version 1.3
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Compute Voronoi diagrams from sets of points
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SA/SAMTREGAR/%{cpan_name}-%{cpan_version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Accessor)
 BuildRequires:  perl(Params::Validate)
 Requires:       perl(Class::Accessor)
 Requires:       perl(Params::Validate)
+Provides:       perl(Math::Geometry::Voronoi) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,15 +57,16 @@ use Perl's memory allocator. Finally, I changed all floats to doubles to
 provide better precision and to match Perl's NVs.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -71,7 +74,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README
 
 %changelog

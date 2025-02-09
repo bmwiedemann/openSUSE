@@ -17,7 +17,7 @@
 
 
 Name:           yazi
-Version:        0.4.2
+Version:        25.2.7
 Release:        0
 Summary:        Blazing fast terminal file manager written in Rust, based on async I/O
 License:        MIT

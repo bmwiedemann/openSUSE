@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Feb  4 14:39:45 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.11.2
+  * Add support for checkboxes for to-do lists
+  * Minor fixes
+  * Rewrite the error message on invalid path selection
+  * Add text formatting popup menu
+  * Make text cursor wider
+  * Toggle tag on the whole line if there's no selection
+  * Store tags more compact when saving a note
+  * Add support for text formatting
+  * Fix navigation update if note was added externally
+  * Fix 'make distclean'
+  * Update year in copyright
+  * Don't destroy window if its directory isn't empty
+  * Rename Xnp.WindowMonitor.src_events -> src_external
+  * Fix "note-updated" signal for local changes
+  * Fix note creation if file already exists
+  * Work around buggy annotation for gtk_menu_shell_append()
+  * Use timer instead of idle to handle file events
+  * Get rid of the refresh button
+  * Remove the "window-updated" signal
+  * Reload notes on external file change events
+  * Handle external file creation events
+  * Optimize monitored file events queue
+  * Queue monitored file events
+  * Don't load binary files from notes directory
+  * Always save notes after manual editing
+  * Get rid of Xnp.Window "internal-change" property
+  * Bind Ctrl-Shift-Tab to cycle notes backwards
+  * Make deleting a group of notes more secure
+  * Make Ctrl-Tab cycle through notes
+  * Fix text cursor color in dark themes
+  * Replace $XDG_CONFIG_HOME with ~/.config in gtk.css
+  * Rework access to Xnp.WindowMonitor
+  * Handle external file renaming event
+  * More intensive use of GIO
+  * delete_window: handle case when folder was externally removed
+  * Handle external file deletion event
+  * Don't show arrow buttons when notes tabs are enabled
+  * Fix warnings about hiding inherited methods from Gtk.SourceView
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Jan  6 10:50:01 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.11.1

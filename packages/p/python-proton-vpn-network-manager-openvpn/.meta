@@ -1,6 +1,6 @@
 <package name="python-proton-vpn-network-manager-openvpn" project="openSUSE:Factory">
   <title>python-proton-vpn-network-manager-openvpn</title>
   <description>Proton VPN library for OpenVPN protocol using NetworkManager</description>
-  <devel project="devel:languages:python" package="python-proton-vpn-network-manager-openvpn"/>
+  <devel project="network:vpn" package="python-proton-vpn-network-manager-openvpn"/>
   <url>https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn</url>
 </package>

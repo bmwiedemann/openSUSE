@@ -19,7 +19,7 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 42
 # Make sure to update `upgrades` as well!
-%define ver 24.11.0
+%define ver 24.11.1
 %define _ver _24_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -371,7 +371,7 @@ jobs, partitions, and nodes managed by SLURM.
 %package slurmdbd
 Summary:        SLURM database daemon
 Group:          Productivity/Clustering/Computing
-Requires:       %{name}-config = %{version}
+Requires(pre):  %{name}-config = %{version}
 Requires:       %{name}-plugins = %{version}
 Requires:       %{name}-sql = %{version}
 %if 0%{?suse_version} > 1310
@@ -728,7 +728,7 @@ EOF
 # change slurmdbd.conf for our needs
 sed -i 's@LogFile=/var/log/slurm/slurmdbd.log@LogFile=/var/log/slurmdbd.log@'\
  %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
-sed -i -e "s@PidFile=.*@PidFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
+sed -i -e "s@PidFile=.*@PidFile=%{_localstatedir}/run/slurmdbd/slurmdbd.pid@" \
  %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
 # manage local state dir and a remote states save location
 mkdir -p %{buildroot}/%_localstatedir/lib/slurm
@@ -988,6 +988,7 @@ rm -f %{buildroot}%{_libdir}/slurm/rest_auth_*.so
 %post slurmdbd
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf}
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf.example}
+[ -e %_localstatedir/log/surmdbd.log ] || { touch %_localstatedir/log/slurmdbd.log && chown slurm:slurm %_localstatedir/log/slurmdbd.log; } || true
 %service_add_post slurmdbd.service
 
 %preun slurmdbd
@@ -1197,6 +1198,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man5/slurmdbd.*
 %{_mandir}/man8/slurmdbd.*
 %config(noreplace) %attr(0600,%slurm_u,%slurm_g) %{_sysconfdir}/%{pname}/slurmdbd.conf
+%{?_rundir:%ghost %{_rundir}/slurmdbd}
 %{_unitdir}/slurmdbd.service
 %{_sbindir}/rcslurmdbd
 

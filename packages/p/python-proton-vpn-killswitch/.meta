@@ -1,6 +1,6 @@
 <package name="python-proton-vpn-killswitch" project="openSUSE:Factory">
   <title>python-proton-vpn-killswitch</title>
   <description>Proton VPN kill switch interface</description>
-  <devel project="devel:languages:python" package="python-proton-vpn-killswitch"/>
+  <devel project="network:vpn" package="python-proton-vpn-killswitch"/>
   <url>https://github.com/ProtonVPN/python-proton-vpn-killswitch</url>
 </package>

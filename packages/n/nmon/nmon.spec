@@ -1,7 +1,7 @@
 #
 # spec file for package nmon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nmon
-Version:        16p
+Version:        16q
 Release:        0
 Summary:        Performance Monitor
 License:        GPL-3.0-only

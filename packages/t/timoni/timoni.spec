@@ -1,7 +1,7 @@
 #
 # spec file for package timoni
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           timoni
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        Package manager for Kubernetes, powered by CUE and inspired by Helm
 License:        Apache-2.0

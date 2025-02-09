@@ -372,4 +372,34 @@
 </comment>
     <requestid>1241549</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>175af3fbd47a3b738bbe5609e943bf25</srcmd5>
+    <version>10.2.1</version>
+    <time>1739128014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.2.1:
+  * Don't read a package from side-effects cache if it isn't
+    allowed to be built #9042.
+  * pnpm approve-builds should work, when executed from a
+    subdirectory of a workspace #9042.
+  * pnpm deploy --legacy should work without injected dependencies
+  * Add information about how to deploy without &quot;injected
+    dependencies&quot; to the &quot;pnpm deploy&quot; error message.
+- includes 10.2.0:
+  * Packages executed via pnpm dlx and pnpm create are allowed to
+    be built (run postinstall scripts) by default.
+  * Quote args for scripts with shell-quote to support new lines
+    (on POSIX only) #8980.
+  * Fix a bug in which pnpm deploy fails to read the correct
+    projectId when the deploy source is the same as the workspace directory #9001.
+  * Proxy settings should be respected, when resolving Git-hosted
+    dependencies #6530.
+  * Prevent overrides from adding invalid version ranges to
+    peerDependencies by keeping the peerDependencies and
+    overriding them with prod dependencies #8978.
+  * Sort the package names in the &quot;pnpm.onlyBuiltDependencies&quot;
+    list saved by pnpm approve-builds.
+</comment>
+    <requestid>1244417</requestid>
+  </revision>
 </revisionlist>

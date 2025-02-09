@@ -1,6 +1,6 @@
 <package name="python-proton-vpn-session" project="openSUSE:Factory">
   <title>python-proton-vpn-session</title>
   <description>Proton VPN session library</description>
-  <devel project="devel:languages:python" package="python-proton-vpn-session"/>
+  <devel project="network:vpn" package="python-proton-vpn-session"/>
   <url>https://github.com/ProtonVPN/python-proton-vpn-session</url>
 </package>

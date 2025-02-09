@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:56:30 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fix location of python examples
+
+-------------------------------------------------------------------
 Thu Feb  6 06:53:59 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to drop build date (boo#1047218)

@@ -191,14 +191,17 @@ rm %{buildroot}%{_libdir}/uhd/utils/uhd-usrp.rules
 ## Move documentation to the default docdir
 mkdir -p  %{buildroot}%{_docdir}/uhd
 mv %{buildroot}%{_datadir}/doc/uhd %{buildroot}%{_docdir}/
+
+## Move executable files to the default bindir
 mv %{buildroot}%{_libdir}/uhd/utils/*[!.rules] %{buildroot}%{_bindir}
+%if 0%{?suse_version} >= 1600
+mv %{buildroot}%{_libdir}/uhd/examples/python/* %{buildroot}%{_bindir}
+rm -R %{buildroot}%{_libdir}/uhd/examples/python
+%endif
 mv %{buildroot}%{_libdir}/uhd/examples/* %{buildroot}%{_bindir}
-#mv %{buildroot}%{_bindir}/python/* %{buildroot}%{_bindir}
-#rm -R %{buildroot}%{_bindir}/python
+rm -R %{buildroot}%{_libdir}/uhd/examples
 #mv %%{buildroot}%%{_libdir}/uhd/tests/*_test %%{buildroot}%%{_bindir}
-#
 #rm -R %%{buildroot}%%{_libdir}/uhd/tests
-#rm -R %%{buildroot}%%{_libdir}/uhd/examples
 #
 rm %{buildroot}%{_docdir}/uhd/LICENSE
 rm %{buildroot}%{_docdir}/uhd/README.md

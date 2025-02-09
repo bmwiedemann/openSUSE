@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:01:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * no changes
+
+-------------------------------------------------------------------
 Wed Dec 11 15:47:00 UTC 2024 - Vlastimil Babka <vbabka@suse.com>
 
 - update to version 2.5
@@ -46,7 +52,7 @@ Mon Dec  3 11:35:49 UTC 2018 - Vlastimil Babka <vbabka@suse.com>
 -------------------------------------------------------------------
 Mon Nov 19 20:56:43 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- numatop-ncursesw.patch: Switch to ncursesw6 
+- numatop-ncursesw.patch: Switch to ncursesw6
 
 -------------------------------------------------------------------
 Sat Mar 26 19:31:38 UTC 2016 - mpluskal@suse.com

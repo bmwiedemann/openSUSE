@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Request-AsCGI
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
-Name:           perl-HTTP-Request-AsCGI
-Version:        1.2
-Release:        1
-Summary:        Set up a CGI environment from an HTTP::Request
-License:        GPL-1.0+ or Artistic-1.0
 %define cpan_name HTTP-Request-AsCGI
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTTP-Request-AsCGI/
-#Source:        http://www.cpan.org/modules/by-module/HTTP/HTTP-Request-AsCGI-%{version}.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:           perl-HTTP-Request-AsCGI
+Version:        1.200.0
+Release:        0
+# 1.2 -> normalize -> 1.200.0
+%define cpan_version 1.2
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Set up a CGI environment from an HTTP::Request
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/F/FL/FLORA/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Carp)
 BuildRequires:  perl(Class::Accessor)
 BuildRequires:  perl(HTTP::Request)
-BuildRequires:  perl(HTTP::Response) >= 1.53
-BuildRequires:  perl(IO::File)
+BuildRequires:  perl(HTTP::Response) >= 1.530
 BuildRequires:  perl(URI::Escape)
-Requires:       perl(Carp)
 Requires:       perl(Class::Accessor)
 Requires:       perl(HTTP::Request)
-Requires:       perl(HTTP::Response) >= 1.53
-Requires:       perl(IO::File)
+Requires:       perl(HTTP::Response) >= 1.530
 Requires:       perl(URI::Escape)
+Provides:       perl(HTTP::Request::AsCGI) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,32 +46,22 @@ Provides a convenient way of setting up an CGI environment from an
 HTTP::Request.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
-
-%install
-rm -rf $RPM_BUILD_ROOT
-
-make pure_install PERL_INSTALL_ROOT=$RPM_BUILD_ROOT
-
-find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
-find $RPM_BUILD_ROOT -depth -type d -exec rmdir {} 2>/dev/null \;
-
-%{_fixperms} $RPM_BUILD_ROOT/*
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
 make test
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+%install
+%perl_make_install
+%perl_process_packlist
+%perl_gen_filelist
 
-%files
-%defattr(-,root,root,-)
-%doc Changes dist.ini examples LICENSE README
-%{perl_vendorlib}/*
-%{_mandir}/man3/*
+%files -f %{name}.files
+%doc Changes examples README
+%license LICENSE
 
 %changelog

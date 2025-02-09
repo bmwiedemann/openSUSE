@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 08 17:09:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.72.9:
+  * Stacks: output (#3796)
+  * fix: Cleaning up docs bugs (#3856)
+  * feat: Adding version lookup to engine docs (#3854)
+  * feat: Updating TODO.md with reference to new custom domain for
+    site rewrite (#3853)
+  * feat: Adding site-wide banner to collect feedback (#3852)
+  * feat: Add broken link checking to Starlight docs (#3849)
+  * build(deps): bump ruby/setup-ruby from 1.207.0 to 1.215.0
+    (#3832)
+
+-------------------------------------------------------------------
 Fri Feb 07 17:10:44 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.72.8 (0.72.7 was not released):

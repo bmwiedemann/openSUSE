@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Feb 08 01:15:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.34~git20250207:
+  * PPU Analyzer: GPR-assisted jump table analysis
+  * PPU Analyzer: Opt-out suspected floats from instruction stream
+  * PPU Analyzer: Clean addr_heap fron non-valid code
+  * PPU LLVM: Fix compilation of PRX with no relocations
+  * cellVdec: implement cellVdecOpenExt
+  * win: Add more llvm prebuilt paths
+  * Update docker for llvm 19
+  * mac/llvm: fix libunwind path
+  * Update LLVM to 19.1.7
+  * cellL10n: implement SBCS conversions
+  * Update curl to 8.12.0
+  * cellL10n: fix compilation on linux
+  * cellL10n: Use string_view
+  * cellL10n: implement ucs2/utf8/16/23 conversions
+  * Fixup PPU block unfolding
+  * cellMusic: always select the whole playlist instead of a single track
+  * cellMusic: fix volume. Qt needs a value between 0 and 1
+  * cellMusic: make selection context valid when setting a playlist
+  * Input/DS4: use hid_write instead of hid_write_control
+  * Qt: ignore all game window hotkeys on "disable kb hotkeys"
+  * cellGem: reduce cellCamera log spam by setting some camera features
+  * update_manager: use v3 api for all OS
+  * ppu/arm64: Fix ppu_recompiler_fallback implementation for ARM processors
+  * Update SDL to 2.30.12
+  * Update Fusion to 1.2.8
+  * Update FAudio to 25.02
+  * Update libpng to 1.6.46
+  * Set openal system version to 10.0
+  * Fix some warnings
+  * Re-enable TSC on ryzen CPUs
+  * rsx: Fix graphics corruption when switching between shader interpreter and recompiler at runtime
+  * SPU LLVM: Replace xorsum with simple checksum
+  * Enable Time-based TSC for non-Ryzen CPUs
+  * PPU Analyzer: Fix per-instruction code submission
+  * SPU LLVM: Use 512bit xorsum for SPU verification
+
+-------------------------------------------------------------------
 Wed Jan 30 14:37:28 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - BuildRequire cmake >= 3.16.9: BUILDING.md documents cmake 3.28.0+

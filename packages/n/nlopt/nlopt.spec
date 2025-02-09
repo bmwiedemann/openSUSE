@@ -1,7 +1,7 @@
 #
 # spec file for package nlopt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %define psuffix -main
 %endif
 %define pname nlopt
+%define so_ver 1
 
 Name:           nlopt%{?psuffix}
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 Summary:        A library for nonlinear optimization
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://nlopt.readthedocs.io/en/latest/
 Source0:        https://github.com/stevengj/nlopt/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 BuildRequires:  cmake
@@ -42,6 +42,8 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 %if %{with bindings}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  java-devel > 11
+BuildRequires:  strip-nondeterminism
 BuildRequires:  swig
 BuildRequires:  pkgconfig(octave)
 Requires:       python-numpy
@@ -54,11 +56,10 @@ providing a common interface for a number of different free
 optimization routines available online as well as original
 implementations of various other algorithms.
 
-%package     -n lib%{pname}0
+%package     -n lib%{pname}%{so_ver}
 Summary:        A library for nonlinear optimization
-Group:          System/Libraries
 
-%description -n lib%{pname}0
+%description -n lib%{pname}%{so_ver}
 NLopt is a free/open-source library for nonlinear optimization,
 providing a common interface for a number of different free
 optimization routines available online as well as original
@@ -66,8 +67,7 @@ implementations of various other algorithms.
 
 %package -n     %{pname}-devel
 Summary:        Development files for %{pname}
-Group:          Development/Libraries/C and C++
-Requires:       lib%{pname}0 = %{version}
+Requires:       lib%{pname}%{so_ver} = %{version}
 
 %description -n %{pname}-devel
 The %{pname}-devel package contains libraries and header files for
@@ -75,8 +75,7 @@ developing applications that use NLopt.
 
 %if %{with bindings}
 %package     -n octave-nlopt_optimize
-Summary:        Octave interface to nonlinear optimization libray
-Group:          Productivity/Scientific/Math
+Summary:        Octave interface to nonlinear optimization library
 %requires_eq    octave-cli
 
 %description -n octave-nlopt_optimize
@@ -87,6 +86,14 @@ implementations of various other algorithms.
 
 This package contains the Octave interface for NLopt.
 %endif
+
+%package -n %{pname}-java
+Summary:        Java bindings for NLopt
+BuildArch:      noarch
+
+%description -n %{pname}-java
+This package provides java bindings for NLopt, a nonlinear optimization
+library.
 
 %prep
 %autosetup -p1 -n %{pname}-%{version}
@@ -110,6 +117,7 @@ pushd ../${PYTHON}_build
    -DNLOPT_PYTHON:BOOL=ON \
    -DNLOPT_OCTAVE:BOOL=ON \
    -DNLOPT_SWIG:BOOL=ON \
+   -DNLOPT_JAVA:BOOL=ON \
    -DPython_EXECUTABLE=%{_bindir}/$python \
    %{nil}
 %cmake_build
@@ -141,6 +149,7 @@ pushd ../${PYTHON}_build
 for e in %{_includedir} %{_libdir}/lib\* %{_libdir}/pkgconfig %{_libdir}/cmake %{_mandir} ; do
     rm -R %{buildroot}/${e}
 done
+strip-all-nondeterminism %{buildroot}%{_datadir}/java/%{pname}.jar
 %fdupes %{buildroot}%{$python_sitearch}
 popd
 }
@@ -159,11 +168,11 @@ pushd ../${PYTHON}_build
 %ctest
 %endif
 
-%post -n lib%{pname}0 -p /sbin/ldconfig
-%postun -n lib%{pname}0 -p /sbin/ldconfig
-
 %if "%{flavor}" == "main"
-%files -n lib%{pname}0
+
+%ldconfig_scriptlets -n lib%{pname}%{so_ver}
+
+%files -n lib%{pname}%{so_ver}
 %{_libdir}/*.so.*
 
 %files -n %{pname}-devel
@@ -190,6 +199,10 @@ pushd ../${PYTHON}_build
 %dir %{_libdir}/octave/*/site/oct/*
 %{_libdir}/octave/*/site/oct/*/*.oct
 %{_datadir}/octave/*/site/m/*
+
+%files -n %{pname}-java
+%license COPYING
+%{_datadir}/java/%{pname}.jar
 %endif
 
 %changelog

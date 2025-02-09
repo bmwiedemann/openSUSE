@@ -1667,4 +1667,41 @@
     `GET /slurm/v0.0.42/diag/` (forwarded request 1238576 from eeich)</comment>
     <requestid>1238577</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>fee5753aaa63ee39c2359101fbc36e81</srcmd5>
+    <version>24.11.1</version>
+    <time>1739127719</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 24.11.1:
+  * With client commands `MIN_MEMORY` will show `mem_per_tres` if
+    specified.
+  * Fix errno message about bad constraint.
+  * `slurmctld` - Fix crash and possible split brain issue if the
+    backup controller handles an scontrol reconfigure while in control
+    before the primary resumes operation.
+  * Fix `stepmgr` not getting dynamic node addrs from the controller
+  * `stepmgr` - avoid &quot;`Unexpected missing socket`&quot; errors.
+  * Fix `scontrol show steps` with dynamic stepmgr.
+  * Deny jobs using the &quot;`R:`&quot; option of `--signal` if `PreemptMode=OFF`
+    globally.
+  * Force jobs using the &quot;`R:`&quot; option of `--signal` to be
+    preemptable.
+    by requeue or cancel only. If `PreemptMode` on the partition or
+    QOS is off or suspend, the job will default to using
+    `PreemptMode=cancel`.
+  * If `--mem-per-cpu` exceeds `MaxMemPerCPU`, the number of CPUs
+    per task will always be increased even if --cpus-per-task was
+    specified. This is needed to ensure each task gets the expected
+    amount of memory.
+  * Fix compilation issue on OpenSUSE Leap 15.
+  * Fix jobs using more nodes than needed when not using `-N`.
+  * Fix issue with allocation being allocated less resources.
+    than needed when using `--gres-flags=enforce-binding`.
+  * `select/cons_tres` - Fix errors with `MaxCpusPerSocket`
+    partition limit. Used CPUs/cores weren't counted properly,
+    nor limiting free ones to avail, when the socket was partially
+    allocated, or the job request went beyond this limit.
+  * Fix issue when jobs were preempted for licenses even if there (forwarded request 1244326 from eeich)</comment>
+    <requestid>1244329</requestid>
+  </revision>
 </revisionlist>
