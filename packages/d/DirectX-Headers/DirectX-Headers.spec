@@ -1,7 +1,7 @@
 #
 # spec file for package DirectX-Headers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           DirectX-Headers
-Version:        1.614.1
+Version:        1.615.0
 Release:        0
 Summary:        DirectX Headers for Mesa
 License:        MIT
 URL:            https://github.com/microsoft/DirectX-Headers
-# osc service runall download_files
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-#Patch0:         version-fixup.diff
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
