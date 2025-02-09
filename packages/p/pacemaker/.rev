@@ -2405,4 +2405,41 @@
 - scheduler: Fixed memory leak when searching for unfencing devices. (gh#ClusterLabs/pacemaker#3678) (forwarded request 1228709 from yan_gao)</comment>
     <requestid>1228711</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>fe87288bc085c61770ecb639cbafcb64</srcmd5>
+    <version>3.0.0+20250128.fa492f5181</version>
+    <time>1739127551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0+20250128.fa492f5181:
+- libraries: Update version numbers in so names
+
+- Update to version 3.0.0+20250108.d8340737c4 (Pacemaker-3.0.0):
+- Build: raise minimum GnuTLS dependency to 3.4.6
+
+- Update to version 2.1.9+20241223.2587987be9 (Pacemaker-3.0.0-rc3):
+- agents: Replace the egrep command with the EGREP definition in ping RA
+- libcrmcluster: fix format typos
+- doc: drop Inkscape dependency
+- tools: validate stonith_admin --timeout value
+- libpacemaker: set fail-count to INFINITY for fatal failures (gh#ClusterLabs/pacemaker#3771)
+- libpacemaker: add PCMK__XA_FAILED_START_OFFSET and PCMK__XA_FAILED_STOP_OFFSET (gh#ClusterLabs/pacemaker#3771)
+- OCF: controld.in: Remove gfs_controld command as it's already obsoleted (gh#ClusterLabs/pacemaker#3767)
+
+- Update to version 2.1.9+20241211.4ae3a303e5 (Pacemaker-3.0.0-rc2):
+- sysconfig: Document using certificates for remote nodes.
+- sysconfig: Explain permissions needed on TLS-related files.
+- liblrmd: Enable TLS support for Pacemaker Remote clients.
+- daemons: Enable TLS support for Pacemaker Remote nodes.
+- libcrmcommon: Set *tls = NULL in a few more locations.
+- xml: Warn about post-transform behavior changes for ACLs with xpath
+- libcrmcluster: restore CPG header size compatibility
+- libcrmcluster: improve messages in pcmk__cpg_message_data()
+- libcrmcluster: don't assert for CPG decompression error
+- libcrmcluster: avoid redundant log for invalid CPG messages
+- libcrmcluster: initialize from in pcmk__cpg_message_data()
+- scheduler: avoid memory leak in bundles
+- libcib: Enable TLS certs for remote CIB operations.
+- libs: Log if a TLS certificate is close to expiration. (forwarded request 1243603 from yan_gao)</comment>
+    <requestid>1243604</requestid>
+  </revision>
 </revisionlist>

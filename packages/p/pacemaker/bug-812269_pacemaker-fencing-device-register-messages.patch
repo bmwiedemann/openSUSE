@@ -4,11 +4,11 @@ Date:   Thu Apr 18 16:00:02 2013 +0800
 
     Log: fencing: Drop the severity of the messages on registering a stonith device
 
-Index: pacemaker-2.1.6+20231030.66cc0f083/daemons/fenced/fenced_commands.c
+Index: pacemaker-2.1.9+20241118.394d77ec98/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-2.1.6+20231030.66cc0f083.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-2.1.6+20231030.66cc0f083/daemons/fenced/fenced_commands.c
-@@ -1465,7 +1465,7 @@ stonith_device_register(xmlNode *dev, gb
+--- pacemaker-2.1.9+20241118.394d77ec98.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-2.1.9+20241118.394d77ec98/daemons/fenced/fenced_commands.c
+@@ -1410,7 +1410,7 @@ stonith_device_register(xmlNode *dev, gb
          g_hash_table_replace(device_list, device->id, device);
  
          ndevices = g_hash_table_size(device_list);
@@ -17,16 +17,16 @@ Index: pacemaker-2.1.6+20231030.66cc0f083/daemons/fenced/fenced_commands.c
                     device->id, ndevices, pcmk__plural_s(ndevices));
      }
  
-Index: pacemaker-2.1.6+20231030.66cc0f083/daemons/fenced/fenced_cib.c
+Index: pacemaker-2.1.9+20241118.394d77ec98/daemons/fenced/fenced_cib.c
 ===================================================================
---- pacemaker-2.1.6+20231030.66cc0f083.orig/daemons/fenced/fenced_cib.c
-+++ pacemaker-2.1.6+20231030.66cc0f083/daemons/fenced/fenced_cib.c
-@@ -618,7 +618,7 @@ update_cib_cache_cb(const char *event, x
+--- pacemaker-2.1.9+20241118.394d77ec98.orig/daemons/fenced/fenced_cib.c
++++ pacemaker-2.1.9+20241118.394d77ec98/daemons/fenced/fenced_cib.c
+@@ -496,7 +496,7 @@ update_cib_cache_cb(const char *event, x
                  break;
              case -pcmk_err_diff_resync:
              case -pcmk_err_diff_failed:
 -                crm_notice("[%s] Patch aborted: %s (%d)", event, pcmk_strerror(rc), rc);
 +                crm_info("[%s] Patch aborted: %s (%d)", event, pcmk_strerror(rc), rc);
-                 free_xml(local_cib);
+                 pcmk__xml_free(local_cib);
                  local_cib = NULL;
                  break;

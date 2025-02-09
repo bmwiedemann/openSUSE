@@ -1,8 +1,8 @@
-Index: pacemaker-2.1.6+20231030.66cc0f083/python/pacemaker/_cts/audits.py
+Index: pacemaker-2.1.9+20241118.394d77ec98/python/pacemaker/_cts/audits.py
 ===================================================================
---- pacemaker-2.1.6+20231030.66cc0f083.orig/python/pacemaker/_cts/audits.py
-+++ pacemaker-2.1.6+20231030.66cc0f083/python/pacemaker/_cts/audits.py
-@@ -80,13 +80,9 @@ class LogAudit(ClusterAudit):
+--- pacemaker-2.1.9+20241118.394d77ec98.orig/python/pacemaker/_cts/audits.py
++++ pacemaker-2.1.9+20241118.394d77ec98/python/pacemaker/_cts/audits.py
+@@ -82,13 +82,9 @@ class LogAudit(ClusterAudit):
  
          for node in nodes:
              if self._cm.env["have_systemd"]:
@@ -16,5 +16,5 @@ Index: pacemaker-2.1.6+20231030.66cc0f083/python/pacemaker/_cts/audits.py
 -                    self._cm.log("ERROR: Cannot start 'systemd-journald' on %s" % node)
 +                    self._cm.log("ERROR: Cannot restart 'systemd-journald' on %s" % node)
  
-             (rc, _) = self._cm.rsh(node, "service %s restart" % self._cm.env["syslogd"])
-             if rc != 0:
+             if "syslogd" in self._cm.env:
+                 (rc, _) = self._cm.rsh(node, "service %s restart" % self._cm.env["syslogd"])

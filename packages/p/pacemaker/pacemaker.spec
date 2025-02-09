@@ -1,7 +1,7 @@
 #
 # spec file for package pacemaker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,12 @@
 # Define conditionals so that "rpmbuild --with <feature>" and
 # "rpmbuild --without <feature>" can enable and disable specific features
 
-## Add option to enable support for stonith/external fencing agents
-%bcond_without stonithd
+## Add option for Linux-HA (stonith/external) fencing agent support
+%if 0%{?suse_version} < 1600
+%bcond_without linuxha
+%else
+%bcond_with linuxha
+%endif
 
 ## Add option to enable support for storing sensitive information outside CIB
 %bcond_without cibsecrets
@@ -66,13 +70,6 @@
 ## Add option to turn off hardening of libraries and daemon executables
 %bcond_with hardening
 
-## Add option to disable links for legacy daemon names
-%if 0%{?suse_version} < 1600
-%bcond_without legacy_links
-%else
-%bcond_with legacy_links
-%endif
-
 # Define globals for convenient use later
 
 %if 0%{?suse_version} >= 1560 || 0%{?sle_version} >= 150600
@@ -84,11 +81,6 @@
 %global hacluster_id 90
 
 ## Distro-specific configuration choices
-
-### Use 2.0-style output when other distro packages don't support current output
-%if 0%{?suse_version} < 1600
-%global compat20 --enable-compat-2.0
-%endif
 
 ### Default concurrent-fencing to true when distro prefers that
 %if 0%{?suse_version} >= 1540 || 0%{?sle_version} >= 150400
@@ -129,7 +121,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.9+20241107.c3b66b02d0
+Version:        3.0.0+20250128.fa492f5181
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -141,14 +133,13 @@ Source1:        crm_report.in
 Source100:      pacemaker.rpmlintrc
 Patch1:         bug-806256_pacemaker-log-level-notice.patch
 Patch2:         bug-728579_pacemaker-stonith-dev-id.patch
-Patch3:         pacemaker-nagios-plugin-dir.patch
-Patch4:         bug-812269_pacemaker-fencing-device-register-messages.patch
-Patch5:         pacemaker-Wno-format-signedness.patch
-Patch6:         bug-943295_pacemaker-lrmd-log-notice.patch
-Patch7:         bug-977201_pacemaker-controld-self-fencing.patch
-Patch8:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
-Patch9:         pacemaker-cts-StartCmd.patch
-Patch10:        bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
+Patch3:         bug-812269_pacemaker-fencing-device-register-messages.patch
+Patch4:         pacemaker-Wno-format-signedness.patch
+Patch5:         bug-943295_pacemaker-lrmd-log-notice.patch
+Patch6:         bug-977201_pacemaker-controld-self-fencing.patch
+Patch7:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
+Patch8:         pacemaker-cts-StartCmd.patch
+Patch9:         bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
 # Required basic build tools
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -162,8 +153,9 @@ BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pam-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig >= 0.28
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-psutil
 BuildRequires:  python3-setuptools
 # Required for agent_config.h which specifies the correct scratch directory
 BuildRequires:  resource-agents
@@ -172,13 +164,13 @@ BuildRequires:  pkgconfig(bzip2)
 # Required for "make check"
 BuildRequires:  pkgconfig(cmocka) >= 1.1.0
 BuildRequires:  pkgconfig(corosync) >= 2.0.0
-BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dbus-1) >= 1.5.12
 # Required for core functionality
 BuildRequires:  pkgconfig(glib-2.0) >= 2.42
-BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gnutls) >= 3.4.6
 # Pacemaker requires a minimum libqb functionality
-BuildRequires:  pkgconfig(libqb) >= 0.17.0
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
+BuildRequires:  pkgconfig(libqb) >= 1.0.1
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.2
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(ncurses)
 # Pacemaker requires a minimum Python functionality
@@ -192,7 +184,9 @@ Requires:       %{name}-cluster-libs = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 Requires:       corosync >= 2.0.0
 Requires:       python3
+%if %{with linuxha}
 Requires:       python3-%{name} = %{version}-%{release}
+%endif
 Requires:       resource-agents
 Recommends:     crmsh
 Recommends:     fence-agents
@@ -211,7 +205,7 @@ BuildRequires:  docbook-xsl-stylesheets
 %else
 BuildRequires:  docbook-style-xsl
 %endif
-%if %{with stonithd}
+%if %{with linuxha}
 %if 0%{?suse_version}
 BuildRequires:  cluster-glue-devel
 %else
@@ -220,7 +214,6 @@ BuildRequires:  cluster-glue-libs-devel
 %endif
 %if %{with doc}
 BuildRequires:  asciidoc
-BuildRequires:  inkscape
 BuildRequires:  python3-sphinx
 %endif
 %if %{with_regression_tests}
@@ -328,12 +321,12 @@ Summary:        Pacemaker development package
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-libs = %{version}-%{release}
 Requires:       libtool-ltdl-devel
-Requires:       pkgconfig
+Requires:       pkgconfig >= 0.28
 Requires:       pkgconfig(bzip2)
 Requires:       pkgconfig(corosync) >= 2.0.0
 Requires:       pkgconfig(glib-2.0)
-Requires:       pkgconfig(libqb)
-Requires:       pkgconfig(libxml-2.0) >= 2.6.0
+Requires:       pkgconfig(libqb) >= 1.0.1
+Requires:       pkgconfig(libxml-2.0) >= 2.9.2
 Requires:       pkgconfig(libxslt)
 Requires:       pkgconfig(uuid)
 %if %{enable_cluster_libs_pkg}
@@ -398,7 +391,7 @@ manager
 
 %build
 
-export systemdsystemunitdir=%{?_unitdir}%{!?_unitdir:no}
+export systemdsystemunitdir=%{_unitdir}
 
 %if %{with hardening}
 # prefer distro-provided hardening flags in case they are defined
@@ -428,7 +421,6 @@ autoreconf -fvi
 %endif
         PYTHON=%{python_path}                          \
         %{!?with_hardening:    --disable-hardening}    \
-        %{?with_legacy_links:  --enable-legacy-links}  \
         %{?with_profiling:     --with-profiling}       \
         %{?with_cibsecrets:    --with-cibsecrets}      \
         %{?with_nls:           --enable-nls}           \
@@ -438,7 +430,6 @@ autoreconf -fvi
         %{?ocf_root:           --with-ocfdir=%{ocf_root}} \
         %{?concurrent_fencing}                         \
         %{?resource_stickiness}                        \
-        %{?compat20}                                   \
         --disable-static                               \
         --with-initdir=%{_initddir}                    \
         --with-runstatedir=%{_rundir}                  \
@@ -584,14 +575,12 @@ fi
 %{_unitdir}/pacemaker.service
 %{_sbindir}/rcpacemaker
 
-%exclude %{_libexecdir}/pacemaker/cts-log-watcher
 %exclude %{_libexecdir}/pacemaker/cts-support
 %exclude %{_sbindir}/pacemaker-remoted
-%exclude %{_sbindir}/pacemaker_remoted
 %dir %{_libexecdir}/pacemaker
 %{_libexecdir}/pacemaker/*
 
-%if %{with stonithd}
+%if %{with linuxha}
 %{_sbindir}/fence_legacy
 %endif
 %{_sbindir}/fence_watchdog
@@ -601,9 +590,8 @@ fi
 %{_mandir}/man7/pacemaker-schedulerd.7%{ext_man}
 %{_mandir}/man7/pacemaker-fenced.7%{ext_man}
 %{_mandir}/man7/ocf_pacemaker_controld.7%{ext_man}
-%{_mandir}/man7/ocf_pacemaker_o2cb.7%{ext_man}
 %{_mandir}/man7/ocf_pacemaker_remote.7%{ext_man}
-%if %{with stonithd}
+%if %{with linuxha}
 %{_mandir}/man8/fence_legacy.8%{ext_man}
 %endif
 %{_mandir}/man8/fence_watchdog.8%{ext_man}
@@ -613,12 +601,11 @@ fi
 
 #%license licenses/GPLv2
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/cib
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/pengine
 %{ocf_root}/resource.d/pacemaker/controld
-%{ocf_root}/resource.d/pacemaker/o2cb
 %{ocf_root}/resource.d/pacemaker/remote
 
 %files cli
@@ -654,10 +641,11 @@ fi
 %{_datadir}/pacemaker/report.collector
 %{_datadir}/pacemaker/report.common
 # XXX "dirname" is not owned by any prerequisite
+%dir %{_datadir}/snmp
+%dir %{_datadir}/snmp/mibs
 %{_datadir}/snmp/mibs/PCMK-MIB.txt
 
 %exclude %{ocf_root}/resource.d/pacemaker/controld
-%exclude %{ocf_root}/resource.d/pacemaker/o2cb
 %exclude %{ocf_root}/resource.d/pacemaker/remote
 
 %dir %{ocf_root}
@@ -672,7 +660,6 @@ fi
 %exclude %{_mandir}/man7/pacemaker-schedulerd.*
 %exclude %{_mandir}/man7/pacemaker-fenced.*
 %exclude %{_mandir}/man7/ocf_pacemaker_controld.*
-%exclude %{_mandir}/man7/ocf_pacemaker_o2cb.*
 %exclude %{_mandir}/man7/ocf_pacemaker_remote.*
 %{_mandir}/man8/crm*.8%{ext_man}
 %{_mandir}/man8/attrd_updater.*
@@ -685,7 +672,7 @@ fi
 
 #%license licenses/GPLv2
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/blackbox
@@ -704,7 +691,7 @@ fi
 %{_libdir}/libstonithd.so.*
 #%license licenses/LGPLv2.1
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 %if !%{enable_cluster_libs_pkg}
 %{_libdir}/libcrmcluster.so.*
 %endif
@@ -714,7 +701,7 @@ fi
 %{_libdir}/libcrmcluster.so.*
 #%license licenses/LGPLv2.1
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 %endif
 
 %files -n python3-%{name}
@@ -723,18 +710,17 @@ fi
 %exclude %{python3_sitelib}/pacemaker/_cts/
 #%license licenses/LGPLv2.1
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 
 %files remote
 %{_unitdir}/pacemaker_remote.service
 %{_sbindir}/rcpacemaker_remote
 
 %{_sbindir}/pacemaker-remoted
-%{_sbindir}/pacemaker_remoted
 %{_mandir}/man8/pacemaker-remoted.8%{ext_man}
 #%license licenses/GPLv2
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 
 %if %{with doc}
 %files doc
@@ -746,12 +732,11 @@ fi
 %{python3_sitelib}/pacemaker/_cts/
 %{_datadir}/pacemaker/tests
 
-%{_libexecdir}/pacemaker/cts-log-watcher
 %{_libexecdir}/pacemaker/cts-support
 
 #%license licenses/GPLv2
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 
 %files devel
 %{_includedir}/pacemaker
@@ -767,7 +752,7 @@ fi
 %{_libdir}/pkgconfig/*pacemaker*.pc
 #%license licenses/LGPLv2.1
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog.md
 
 %files schemas
 #%license licenses/GPLv2

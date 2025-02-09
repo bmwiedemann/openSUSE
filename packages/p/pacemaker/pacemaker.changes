@@ -1,4 +1,373 @@
 -------------------------------------------------------------------
+Mon Feb 03 10:44:36 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250128.fa492f5181:
+- libraries: Update version numbers in so names
+
+-------------------------------------------------------------------
+Thu Jan 09 12:12:10 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.0+20250108.d8340737c4 (Pacemaker-3.0.0):
+- Build: raise minimum GnuTLS dependency to 3.4.6
+
+-------------------------------------------------------------------
+Wed Dec 25 09:59:10 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.9+20241223.2587987be9 (Pacemaker-3.0.0-rc3):
+- agents: Replace the egrep command with the EGREP definition in ping RA
+- libcrmcluster: fix format typos
+- doc: drop Inkscape dependency
+- tools: validate stonith_admin --timeout value
+- libpacemaker: set fail-count to INFINITY for fatal failures (gh#ClusterLabs/pacemaker#3771)
+- libpacemaker: add PCMK__XA_FAILED_START_OFFSET and PCMK__XA_FAILED_STOP_OFFSET (gh#ClusterLabs/pacemaker#3771)
+- OCF: controld.in: Remove gfs_controld command as it's already obsoleted (gh#ClusterLabs/pacemaker#3767)
+
+-------------------------------------------------------------------
+Thu Dec 12 10:21:23 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.9+20241211.4ae3a303e5 (Pacemaker-3.0.0-rc2):
+- sysconfig: Document using certificates for remote nodes.
+- sysconfig: Explain permissions needed on TLS-related files.
+- liblrmd: Enable TLS support for Pacemaker Remote clients.
+- daemons: Enable TLS support for Pacemaker Remote nodes.
+- libcrmcommon: Set *tls = NULL in a few more locations.
+- xml: Warn about post-transform behavior changes for ACLs with xpath
+- libcrmcluster: restore CPG header size compatibility
+- libcrmcluster: improve messages in pcmk__cpg_message_data()
+- libcrmcluster: don't assert for CPG decompression error
+- libcrmcluster: avoid redundant log for invalid CPG messages
+- libcrmcluster: initialize from in pcmk__cpg_message_data()
+- scheduler: avoid memory leak in bundles
+- libcib: Enable TLS certs for remote CIB operations.
+- libs: Log if a TLS certificate is close to expiration.
+- libcrmcommon: If the server supports certs, require them...
+- daemons: Set up X509 auth in based if enabled.
+- sysconfig: Add env settings needed for X509 authentication.
+- xml: Preserve ACL reference behavior for replaced constraints
+- xml: Ensure ACL permissions are valid after XSL transformations
+- xml: Warn if schema transformation drops remove-after-stop property
+- xml: Warn if schema transformation drops moon phase
+- xml: Info if schema transformation drops empty groups or clones
+- xml: Warn if schema transformation drops colocation/order lifetimes
+- xml: Warn if schema transformation drops can_fail or...
+- xml: Warn if schema transformation drops restart-type meta-attr
+- xml: Warn if schema transformation drops rkt bundles
+- xml: Warn if schema transformation drops nagios/upstart resources
+- log: Allow CIB upgrade messages to start with W, I, D
+- various: clean up library memory at child exit
+- pacemaker-remoted: improve exit codes for schema failures
+- controller: avoid memory leak when updating join phase
+- scheduler: avoid memory leak when freeing node copies
+
+-------------------------------------------------------------------
+Fri Dec 06 11:41:46 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.9+20241118.394d77ec98 (Pacemaker-3.0.0-rc1):
+- NLS: update translations before 3.0.0-rc1
+- libstonithd: drop unknown agent message
+- controller: downgrade "Not registering" message
+- tools: improve crm_mon "Retrying" message
+- libcrmcluster: improve XML ID logs in pcmk__get_node()
+- scheduler,libcrmservice,tools: compare resource IDs case-sensitively
+- python: Always use generated corosync config in regression tests
+- tools: crm_resource --restart works with master resources
+- tools: crm_resource --set-parameter works with master resources
+- tools: crm_resource --delete-parameter --element works with master
+- libcrmcommon: allow NULL unpack_data in pcmk__cmp_nvpair_blocks()
+- libcrmcommon: ignore NULL first ID in pcmk__cmp_nvpair_blocks()
+- libcrmcommon: bump feature set to 3.20.0
+- rpm: drop no-longer-needed support tests from spec file
+- liblrmd: Perform the API handshake asynchronously.
+- libcrmcommon: always respect overwrite in pcmk__cmp_nvpair_blocks()
+- executor: avoid use-after-free upon shutdown (gh#ClusterLabs/pacemaker#3718)
+- Change
+- tools: Drop crm_resource --set-property option
+- tools: Drop crm_resource --get-property option
+- tools: Drop deprecated crm_resource --xml-file option
+- daemons: execd should read remote client messages async.
+- CIB: deprecate record-pending operation option
+- tools: restore crmadmin default timeout to 30 seconds
+- libcrmcommon: any negative interval is an error
+- agents: always allow attribute agent to show metadata
+- agents: use RESOURCENAME in attribute agent metadata
+- agents: use configured run directory in attribute agent
+- controld: leave xml-src attribute empty when no DC selected #2902
+- schemas: Disallow fencing-level index greater than 9
+- various: Drop support for phase of the moon in rule date_spec
+- schemas: nvpair value should not be optional
+- tools: Define behavior of attrd_updater -Q without -N
+- tools: crm_resource returns error on failed schema upgrade
+- libpe_status: Drop support for role_after_failure op meta-attr
+- libpacemaker: Drop support for can_fail op meta-attribute
+- various: Drop support for restart-type resource meta-attribute
+- schemas: Disallow phase of the moon in rule date_spec
+- libcib: Perform server-side remote CIB reads asynchronously.
+- pacemakerd: combine subdaemon start-up logs
+- libcrmcommon: avoid potential overflow when adding seconds
+- libcib: Perform client-side remote CIB reads asynchronously.
+- schemas: Disallow role_after_failure resource meta-attribute
+- schemas: Disallow can_fail operation meta-attribute
+- schemas: Disallow restart-type resource meta-attribute
+- libcrmcommon: Don't assert on failure to write errors.
+- CIB: ignore node expressions for meta-attributes
+- libpacemaker: don't pass node attributes with fence actions
+- libcrmcommon: Ignore crmd-transition-delay property
+- libcrmcommon: Ignore crmd-finalization-timeout property
+- libcrmcommon: Ignore crmd-integration-timeout property
+- various: Ignore stonith-action=poweroff property
+- various: Ignore remove-after-stop property
+- all: use consistent capitalization in execution status strings
+- tools: crm_shadow --reset now requires --force
+- scheduler: ignore unknown actions for resource state
+- libcrmcommon: bounds-check when adding to years
+- controller: avoid overflow in recheck time
+- libcrmservice: accept no more than around 10MiB stdout/stderr
+- schemas: Disallow crmd-transition-delay property
+- schemas: Disallow crmd-finalization-timeout property
+- schemas: Disallow crmd-integration-timeout property
+- schemas: Disallow stonith-action=poweroff property
+- schemas: Disallow remove-after-stop cluster property
+- libpe_status: Drop support for ping nodes
+- schemas: Disallow ping nodes
+- scheduler: Fixed memory leak when searching for unfencing devices.
+- CIB: drop support for unset or unknown validate-with
+- pacemaker-based,libcib: warn for invalid call options
+- controller,liblrmd: warn for invalid remote proxy IPC flags
+- fencer: warn for invalid call options
+- fencer: warn if device support flags invalid
+- libcrmservice: use proper types with write()
+- libcrmcommon,libcib,scheduler: use unsigned int for CIB sequence number
+- scheduler: avoid overflow in utilization values
+- CIB: drop support for rkt bundles
+- CIB: drop support for nagios-class resources
+- CIB: drop support for Upstart
+- libcrmcommon: handle corner cases better in crm_time_add_days()
+- libcrmcommon: handle too-negative components of ISO8601 durations
+- various: Drop support for masters attribute in bundles
+- various: Drop support for master resources
+- schemas: Disallow rkt bundles
+- schemas: Disallow nagios-class resources
+- schemas: Disallow upstart-class resources
+- cts, xml: New upgrade-3.10-4.xsl XSLT stylesheet
+- controller: avoid memory leak on scheduler API error
+- libcib: treat empty variant variables same as unset
+- pacemaker-based: reject remote users if PAM not available
+- pacemaker-based: compare remote user names case-sensitively
+- pacemaker-based: improve remote client connection messages
+- lrmd: Report the result of add_tls_to_mainloop...
+- cts-lab: Allow running multiple tests with the --choose argument.
+- CIB: do not recover from XML syntax errors
+- libcrmcommon: do not return partially parsed XML
+- CIB: ignore colocation constraints with invalid scores
+- CIB: ignore location constraints if score attribute is unset or invalid
+- CIB: ignore location constraints with invalid scores
+- scheduler: warn for invalid promotion scores
+- scheduler: warn if node score is invalid
+- scheduler: warn if nvpair block score is invalid
+- various: Drop support for lifetime elements in constraints
+- scheduler: warn for invalid fail counts
+- CIB: treat negative migration-threshold as invalid and use default
+- scheduler: warn if resource stickiness is invalid
+- scheduler: warn if resource priority is invalid
+- scheduler: ignore and warn for invalid node health attributes
+- scheduler: warn for invalid health cluster option values
+- controller: improve stonith-max-attempts logs
+- pacemaker-attrd: use pcmk_parse_score() in attrd_expand_value()
+- schemas: Disallow masters attribute in bundle containers
+- schemas: Disallow master resources
+- all: improve messages when parsing long integers
+- pacemaker-based: log cluster-ipc-limit errors
+- libcrmcommon: improve IPC buffer size messages
+- libcrmcommon: Drop xmlRegisterNodeDefault()
+- libcrmcommon: NULL-check pcmk__xml_tree_foreach() argument
+- libpe_rules: Drop support for multiple top-level location rules
+- schemas: Disallow lifetime elements in constraints
+- cts, xml: New upgrade-3.10-3.xsl XSLT stylesheet
+- libcrmcommon: tweak parse_date() validations
+- pacemakerd: fix Corosync support check
+- libcrmcommon: handle out-of-range better when parsing integers
+- CIB: globally-unique defaults to true if clone-node-max > 1
+- fencing: default pcmk_host_argument to "none" if "port" not advertised
+- CIB: deprecate concurrent-fencing cluster property
+- configure: deprecate --with-concurrent-fencing-default and default it to true
+- scheduler: best practices for get_rsc_attributes()
+- schemas: Disallow multiple top-level location rules
+- scheduler: ignore instance attributes in rsc_defaults
+- CTS: Fix cts-lab --list.
+- xml: Drop duplicate nvpairs within a given nvset
+- cts, xml: New upgrade-3.10-2.xsl XSLT stylesheet
+- libpe_rules: Drop support for name with id-ref attribute
+- tools: improve crm_verify error messages
+- alerts: don't send deprecated alert environment variables
+- fencer: rename -c/--stand-alone-w-cpg option
+- fencer: drop support for non-clustered mode in fencer
+- libcrmcommon: add pcmk_cib_node_shutdown()
+- libcrmcommon: bounds-check seconds in pcmk_parse_interval_spec()
+- libcrmcommon: return int from get_ordinal_days()
+- libcrmcommon: use uint32_t in parse_date()
+- libcib: improve error handling in cib_file_new()
+- tools: update terminology in no-quorum-policy status output
+- CIB: allow no-quorum-policy "fence" and deprecate "suicide"
+- fencer: update terminology in trace message
+- scheduler: create local node after unpacking everything
+- libcrmcommon: log panic reason instead of caller name
+- libcrmcommon: don't treat tracing differently for panics
+- sysconfig: improve PCMK_panic_action description
+- libcrmcommon: preserve api dispatch in connect_and_send_attrd_request()
+- libcrmcommon: Detect newly created alerts section
+- schemas: Disallow nvpairs without value attributes
+- xml: Sort nvset elements by score within a given parent
+- xml: Bump validate-with cib attribute in 3.10 XSL transformation
+- cts, xml: New upgrade-3.10-1.xsl XSLT stylesheet
+- schemas: Disallow nvpair name with id-ref attribute
+- lrmd: Perform the TLS handshake asynchronously.
+- lrmd: Report connection failures in tls_handshake_failed.
+- tools: handle orphans when outputting node history in crm_mon
+- libpe_status: Drop support for nodes with invalid type
+- CIB: always compare validate-with schema names case-sensitively
+- CIB: drop support for rsc-instance, with-rsc-instance, first-instance, and then-instance
+- CIB: drop support for validate-with="pacemaker-next"
+- CIB: drop support for pacemaker-0.6, pacemaker-0.7, pacemaker-1.1, and transitional-0.6 schemas
+- libpe_status: Drop support for multiple top-level nvset rules
+- libpe_status: Don't look for value in nvpair with id-ref
+- libpe_status: Ignore nvpair with invalid id-ref
+- xml: Allow previously disallowed primitive meta-attributes
+- xml: Allow previously disallowed "required" op meta-attribute
+- xml: Allow previously disallowed cluster properties
+- xml: New upgrade-3.10-0.xsl XSLT stylesheet
+- Pacemaker Remote: drop "short fuse" shutdown timer
+- scheduler: ignore ticket constraints with invalid roles
+- scheduler: ignore colocation constraints with invalid roles
+- scheduler: ignore invalid location constraints
+- libcrmcommon: compare empty strings correctly in attribute expressions
+- sysconfig: interpret PCMK_panic_action more strictly
+- rpm: Require python3-psutil for running tests.
+- tools: fix crm_rule man page section division
+- schemas: Add additional node types to the crmadmin schema.
+- controller: drop controld_globals.our_nodename
+- tools: return more specific error code for crm_shadow file errors
+- scheduler: ignore groups with no members
+- scheduler: ignore malformed resource history entries
+- tools: drop --text-fancy command-line option
+- scheduler: correct format arguments
+- CIB: treat misconfigured rule as not passing
+- CIB: treat misconfigured operation expression as not passing
+- CIB: treat misconfigured resource expression as not passing
+- CIB: treat misconfigured attribute expression as not passing
+- CIB: treat misconfigured date expression as not passing
+- CIB: treat misconfigured duration as not passing
+- CIB: treat misconfigured date specification as not passing
+- pacemaker-based: client name can be NULL
+- various: ensure there are spaces around QB_XS
+- controller,libpacemaker: transition graph IDs should be positive
+- libcrmcluster: use correct specifier for guint count
+- controller: free cluster object at exit
+- libcrmcluster: assert on election_init() errors
+- tools: crm_ticket should return CRM_EX_UNSAFE with --force warning.
+- lrmd: Remove support for undocumented key loading behavior.
+- libcrmcluster: don't hardcode controller in vote messages
+- libcrmcluster: set appropriate message type in election messages
+- libcrmcommon: use proper message type for node purge requests
+- libcrmcommon: specify "scheduler" as scheduler IPC message protocol
+- libcrmcommon: specify "pacemakerd" as pacemakerd IPC message protocol
+- controller: use pcmk__new_message() to create direct acks
+- controller: use pcmk__new_reply() to create reprobe reply
+- libpacemaker: Don't apply colocation twice for promotion priority
+- libpacemaker: Apply promotion priority to cloned group instance
+- libpe_status: Use first action meta-attr within nvset if duplicates
+- libcib: Don't overwrite property values for CIB config hash
+- various: Don't set cluster-layer node ID as XML ID
+- tools: crm_node -i must initialize nodeid before passing pointer
+- libpacemaker: Log correct score in pcmk__apply_coloc_to_priority()
+- scheduler: store default fencing action timeout as guint
+- crm_verify: Improve checking of fencing level IDs
+- tools: Drop crm_mon --web-cgi option
+- tools: Drop crm_mon --disable-ncurses option
+- tools: Drop crm_mon --simple-status option
+- tools: Drop crm_mon --as-html option
+- sysconfig: drop support for PCMK_dh_min_bits environment variable
+- dependencies: require GnuTLS 3.1.7 or later
+- tools: CIB clients retry signon upon an EAGAIN error (gh#ClusterLabs/pacemaker#3546)
+- libcib: new function cib__signon_attempts() (gh#ClusterLabs/pacemaker#3546)
+- libcrmcluster: Ensure priv is non-NULL in crm_cluster_connect() (gh#ClusterLabs/pacemaker#3548)
+- libcrmcluster: use local hostname for node name if not configured in corosync (gh#ClusterLabs/pacemaker#3547)
+- tools: Don't double-free XML in crm_verify after schema update
+- libcrmcommon: Use glib for calculating MD5 checksums.
+- cts-cli: update expected output for crm_verify to distinguish configuration warnings and errors (gh#ClusterLabs/pacemaker#3538)
+- tools: crm_verify distinguishes configuration warnings and errors (gh#ClusterLabs/pacemaker#3538)
+- libcrmcommon: don't try to add to full string in pcmk__time_format_hr()
+- libcrmcommon: handle formatting errors in pcmk__time_format_hr()
+- libraries: ensure private headers follow usual header conventions
+- libraries: ensure includes are outside extern in public headers
+- scheduler: consider group locations when member is explicit colocation dependent
+- scheduler: consolidate pcmk__apply_location() trace messages
+- libcib: don't bother with pcmk__config_err() for live CIB
+- scheduler: drop incorrect error logs in pcmk__colocation_affects()
+- liblrmd,libstonithd: use standard default timeout (20s) for meta-data actions
+- tools: Don't skip formatting if running crm_simulate interactively.
+- tools: crm_resource rejects invalid timeouts
+- tools: crm_resource --option throws usage error if appropriate
+- tools: crm_resource --delete does not accept clone instances
+- tools: crm_resource --delete exits with CRM_EX_USAGE without -t opt
+- tools: crm_resource --delete now succeeds if resource doesn't exist
+- libpacemaker: Include on_node in injected lrm_rsc_op entries
+- daemons: Clean up memory when attrd exits. (gh#ClusterLabs/pacemaker#3507)
+- libcrmcommon: reject ISO 8601 duration without any values
+- libcrmcommon: bounds-check ISO 8601 duration elements
+- scheduler: improve promotion score message for inactive instances
+- scheduler: use -INFINITY promotion score for inactive instances
+- scheduler: avoid core-dump on trace message
+- pacemakerd: Drop {PCMK,HA}_shutdown_delay environment variable
+- libcrmcommon: Drop {PCMK,HA}_cib_timeout environment variable
+- libcrmcommon: Drop PCMK_mcp and HA_mcp environment variables
+- fencer, libstonithd: Drop support for "action" fencing param
+- tools: cibadmin --md5-sum-versioned no longer prints feature set
+- libcrmcluster: Default remote_state_from_cib() to false
+- libstonithd: prevent to free 'op_reply' repeatedly in 'stonith_send_command'
+- tools: Deprecate cibadmin --local
+- tools: Drop cibadmin --host option
+- tools: Drop cibadmin --no-bcast option
+- doc: Drop support for v1 cluster nodes with v3 remote nodes
+- libpacemaker: correctly retrieve any existing fail-count for increment (gh#ClusterLabs/pacemaker#3510)
+- build: Drop pacemaker_remoted link creation
+- python: Support systems where rsyslog is not installed.
+- libpacemaker: Add spaces back to attrd_updater query output.
+- agents: drop ocf:pacemaker:o2cb resource agent
+- rpm: rename --with-stonithd option to --with-linuxha
+- configure: drop --legacy-links option
+- configure: drop --enable-compat-2.0 option
+- dependencies: require pkg-config 0.28 or later
+- dependencies: require libxml2 2.9.2 or later
+- dependencies: require libqb 1.0.1 or later
+- dependencies: require libdbus 1.5.12 or later
+- libcrmcommon,libpe_status: correct typos
+- libcib,liblrmd: improve TLS handshake error messages
+- attrd: Ensure set ID is non-empty
+- libcrmcommon: Check scan_ll() return value in crm_get_msec()
+- libstonithd: free escaped metadata descriptions with g_free() (gh#ClusterLabs/pacemaker#3492)
+- liblrmd: make TLS handshake error handling consistent
+- libcrmcommon: interpret pcmk__remote_ready() return code correctly
+- pacemakerd: improve subdaemon check messages
+- pacemaker-based: improve local notification messages
+- scheduler: parenthesize arguments in action macros
+- libcrmcommon: support PCMK_panic_action="off" or "sync-off"
+- tools: cibadmin incorrect example for score update
+- libstonithd: avoid use-after-free when retrieving metadata of Linux-HA fence agents (gh#ClusterLabs/pacemaker#3476)
+- NLS: drop removed file from POTFILES
+- libcrmcommon: avoid possible buffer overflow in pcmk__time_format_hr()
+- libcrmcommon: avoid possible buffer overflow in parse_date()
+- tools: Fix spacing in crm_resource help output
+- includes: Bump CRM_FEATURE_SET for iso8601 formatted output.
+- schemas: Add an XML schema for iso8601 output.
+- tools: Convert iso8601 to formatted output.
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+- Drop obsolete:
+  * pacemaker-nagios-plugin-dir.patch
+
+-------------------------------------------------------------------
 Thu Nov 07 15:40:34 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.9+20241107.c3b66b02d0:
