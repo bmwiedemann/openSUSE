@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-promu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ go build
 %if 0%{?rhel}
 rm -f %{buildroot}/usr/lib/debug%{_bindir}/%{shortname}*.debug
 rm -rf %{buildroot}/usr/lib/debug/.build-id/*
+rm -rf %{buildroot}%{_usrsrc}/debug/%{name}-%{version}-*
 %endif
 
 %install
