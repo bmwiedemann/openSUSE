@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  7 12:12:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.5.0
+  * Updated ast classes for Python 3.14 compatibility. (#225)
+
+-------------------------------------------------------------------
 Tue Nov 19 15:09:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not (ever) use %python_modules on runtime requires: it pulls
