@@ -801,4 +801,12 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
     <comment></comment>
     <requestid>1206355</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>7fb4ae348ad399aea01cdaaaac51a6a4</srcmd5>
+    <version>1.6.10</version>
+    <time>1739128100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244513</requestid>
+  </revision>
 </revisionlist>
