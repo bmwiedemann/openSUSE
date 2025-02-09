@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  5 12:32:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.3.1:
+  + gcr: Vala override for CertificateField.get_value
+  + Fix "meson test" failures in FIPS mode
+  + doap: Remove invalid maintainer entry
+  + tests: Replace echo -n by printf
+  + build: Avoid redundant libegg linking into gck tests
+  + build: Fix some GLib/GTK deprecation warnings
+  + ssh-agent: Request rsa-sha2-256 signature in tests
+  + docs: Fix up a bunch of gi-docgen annotations
+  + ci: Use GNOME Release service
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 19 11:30:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to

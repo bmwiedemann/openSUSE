@@ -1,7 +1,7 @@
 #
 # spec file for package gcr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gcr
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-4 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
