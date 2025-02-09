@@ -1,7 +1,7 @@
 #
 # spec file for package python310
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -204,6 +204,9 @@ Patch27:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch28:        sphinx-802.patch
+# PATCH-FIX-UPSTREAM CVE-2025-0938-sq-brackets-domain-names.patch bsc#1236705 mcepl@suse.com
+# functions `urllib.parse.urlsplit` and `urlparse` accept domain names including square brackets
+Patch29:        CVE-2025-0938-sq-brackets-domain-names.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -487,6 +490,7 @@ other applications.
 %patch -p1 -P 24
 %patch -p1 -P 27
 %patch -p1 -P 28
+%patch -p1 -P 29
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
