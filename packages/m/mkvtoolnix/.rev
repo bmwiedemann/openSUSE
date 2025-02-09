@@ -1500,4 +1500,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1233602</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>79493b4f448759812999263db8463e71</srcmd5>
+    <version>90.0</version>
+    <time>1739128064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244474</requestid>
+  </revision>
 </revisionlist>

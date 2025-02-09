@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Feb  9 08:01:05 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 90.0
+  New features and enhancements:
+  * MKVToolNix GUI: header editor: double-clicking on one of the
+    three flag indicators ("Default track", "Forced display",
+    "Enabled") for a track in the tree view will now toggle the
+    corresponding flag.
+  Bug fixes:
+  * mkvmerge: AAC parser: LOAS/LATM streams: fixed use of
+    uninitialized data when the `StreamMuxConfig` element doesn't
+    contain the `audioMuxVersion` element; version 0 must be
+    assumed in such a case. The result was that sometimes certain
+    valid AAC packets were dropped.
+  * mkvmerge: HEVC/H.265 parser: fixed calculation of picture
+    order count calculation that was triggered under rare
+    circumstances.
+  * mkvmerge: Matroska reader: enabled limits for how much data
+    a single Matroksa reader instance might buffer when the
+    muxing core looks for packets for specific tracks, avoiding
+    huge memory consumption in cases where tracks have huge gaps
+    between packets. This might happen when appending files
+    containing forced-only subtitle tracks, for example.
+  * mkvmerge: TrueHD reader: increased the probe range for
+    TrueHD sync frames from 128 KB to 512 KB to avoid
+    mis-detection with certain files with a lot of data between
+    sync frames.
+  * mkvmerge: MP4/QuickTime reader: fixed detection of Big
+    Endian LPCM audio.
+  Build system changes:
+  * The bundled `fmt` library was updated to v11.1.2.
+  * added a new option to `configure` called `--disable-dbus` to
+    disable looking for & using QtDBus even if it's present on
+    the system. Default remains to probe for its existence.
+
+-------------------------------------------------------------------
 Fri Dec 27 19:49:55 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version  89.0
