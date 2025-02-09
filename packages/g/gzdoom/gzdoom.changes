@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb  9 10:11:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Retain modtime of files for reproducibility
+
+-------------------------------------------------------------------
 Wed Dec 18 00:52:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.14.0

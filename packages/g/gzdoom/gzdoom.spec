@@ -1,7 +1,7 @@
 #
 # spec file for package gzdoom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,14 +78,16 @@ SSE2 is a hard requirement even on 32-bit x86.
 
 %prep
 %autosetup -n %name-g%version -p1
-%if 0%{?suse_version} < 1599
+%if 0%{?suse_version} < 1600
 # system lzma-sdk too old, use bundled copy
 %patch -P 5 -R -p1
 %endif
 # osc/rpm always has the version identifier (only has an effect when snapshots are used via _service files)
-perl -i -pe "s{<unknown version>}{%version}g" tools/updaterevision/UpdateRevision.cmake
-# https://en.opensuse.org/openSUSE:Reproducible_Builds
-perl -i -pe 's{__DATE__}{"'"$SOURCE_DATE_EPOCH"'"}g' src/common/platform/posix/sdl/i_main.cpp
+pushd tools/updaterevision/
+savedate=$(stat -c "%y" UpdateRevision.cmake)
+perl -i -pe "s{<unknown version>}{%version}g" UpdateRevision.cmake
+touch -d "$savedate" UpdateRevision.cmake
+popd
 
 %build
 # Disable LTO, which does not like seeing handcrafted assembler
