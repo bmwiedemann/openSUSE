@@ -157,7 +157,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.1
+Version:        3.13.2
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -214,9 +214,9 @@ Patch09:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
-# PATCH-FIX-UPSTREAM CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch bsc#1234290 mcepl@suse.com
-# prevents exhaustion of memory
-Patch41:        CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch
+# PATCH-FIX-SLE doc-py38-to-py36.patch mcepl@suse.com
+# Make documentation extensions working with Python 3.6
+Patch41:        doc-py38-to-py36.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

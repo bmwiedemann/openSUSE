@@ -1,0 +1,468 @@
+---
+ Doc/conf.py                             |   17 ++++++++--
+ Doc/tools/check-warnings.py             |    3 +
+ Doc/tools/extensions/audit_events.py    |   54 ++++++++++++++++----------------
+ Doc/tools/extensions/availability.py    |   15 ++++----
+ Doc/tools/extensions/c_annotations.py   |   45 ++++++++++++++++----------
+ Doc/tools/extensions/glossary_search.py |   10 +----
+ Doc/tools/extensions/patchlevel.py      |    9 ++---
+ 7 files changed, 87 insertions(+), 66 deletions(-)
+
+--- a/Doc/conf.py
++++ b/Doc/conf.py
+@@ -17,6 +17,9 @@ sys.path.append(os.path.abspath('include
+ # Python specific content from Doc/Tools/extensions/pyspecific.py
+ from pyspecific import SOURCE_URI
+ 
++# Needed for fixing extlinks modification
++from sphinx import version_info as sphinx_version
++
+ # General configuration
+ # ---------------------
+ 
+@@ -90,7 +93,7 @@ highlight_language = 'python3'
+ 
+ # Minimum version of sphinx required
+ # Keep this version in sync with ``Doc/requirements.txt``.
+-needs_sphinx = '8.1.3'
++needs_sphinx = '4.2.0'
+ 
+ # Create table of contents entries for domain objects (e.g. functions, classes,
+ # attributes, etc.). Default is True.
+@@ -359,7 +362,7 @@ html_short_title = f'{release} Documenta
+ # (See .readthedocs.yml and https://docs.readthedocs.io/en/stable/reference/environment-variables.html)
+ is_deployment_preview = os.getenv("READTHEDOCS_VERSION_TYPE") == "external"
+ repository_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", "")
+-repository_url = repository_url.removesuffix(".git")
++repository_url = repository_url[:-len(".git")]
+ html_context = {
+     "is_deployment_preview": is_deployment_preview,
+     "repository_url": repository_url or None,
+@@ -604,6 +607,16 @@ extlinks = {
+ }
+ extlinks_detect_hardcoded_links = True
+ 
++if sphinx_version[:2] < (8, 1):
++   # Sphinx 8.1 has in-built CVE and CWE roles.
++   extlinks.update({
++        "cve": (
++            "https://www.cve.org/CVERecord?id=CVE-%s",
++            "CVE-%s",
++        ),
++        "cwe": ("https://cwe.mitre.org/data/definitions/%s.html", "CWE-%s"),
++   })
++
+ # Options for c_annotations extension
+ # -----------------------------------
+ 
+--- a/Doc/tools/check-warnings.py
++++ b/Doc/tools/check-warnings.py
+@@ -228,7 +228,8 @@ def fail_if_regression(
+             print(filename)
+             for warning in warnings:
+                 if filename in warning:
+-                    if match := WARNING_PATTERN.fullmatch(warning):
++                    match = WARNING_PATTERN.fullmatch(warning)
++                    if match:
+                         print("  {line}: {msg}".format_map(match))
+         return -1
+     return 0
+--- a/Doc/tools/extensions/audit_events.py
++++ b/Doc/tools/extensions/audit_events.py
+@@ -1,9 +1,6 @@
+ """Support for documenting audit events."""
+ 
+-from __future__ import annotations
+-
+ import re
+-from typing import TYPE_CHECKING
+ 
+ from docutils import nodes
+ from sphinx.errors import NoUri
+@@ -12,12 +9,11 @@ from sphinx.transforms.post_transforms i
+ from sphinx.util import logging
+ from sphinx.util.docutils import SphinxDirective
+ 
+-if TYPE_CHECKING:
+-    from collections.abc import Iterator
++from typing import Any, List, Tuple
+ 
+-    from sphinx.application import Sphinx
+-    from sphinx.builders import Builder
+-    from sphinx.environment import BuildEnvironment
++from sphinx.application import Sphinx
++from sphinx.builders import Builder
++from sphinx.environment import BuildEnvironment
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -32,16 +28,16 @@ _SYNONYMS = [
+ 
+ class AuditEvents:
+     def __init__(self) -> None:
+-        self.events: dict[str, list[str]] = {}
+-        self.sources: dict[str, list[tuple[str, str]]] = {}
++        self.events: dict[str, List[str]] = {}
++        self.sources: dict[str, List[Tuple[str, str]]] = {}
+ 
+-    def __iter__(self) -> Iterator[tuple[str, list[str], tuple[str, str]]]:
++    def __iter__(self) -> Any:
+         for name, args in self.events.items():
+             for source in self.sources[name]:
+                 yield name, args, source
+ 
+     def add_event(
+-        self, name, args: list[str], source: tuple[str, str]
++        self, name, args: List[str], source: Tuple[str, str]
+     ) -> None:
+         if name in self.events:
+             self._check_args_match(name, args)
+@@ -49,7 +45,7 @@ class AuditEvents:
+             self.events[name] = args
+         self.sources.setdefault(name, []).append(source)
+ 
+-    def _check_args_match(self, name: str, args: list[str]) -> None:
++    def _check_args_match(self, name: str, args: List[str]) -> None:
+         current_args = self.events[name]
+         msg = (
+             f"Mismatched arguments for audit-event {name}: "
+@@ -60,7 +56,7 @@ class AuditEvents:
+         if len(current_args) != len(args):
+             logger.warning(msg)
+             return
+-        for a1, a2 in zip(current_args, args, strict=False):
++        for a1, a2 in zip(current_args, args):
+             if a1 == a2:
+                 continue
+             if any(a1 in s and a2 in s for s in _SYNONYMS):
+@@ -73,7 +69,7 @@ class AuditEvents:
+         name_clean = re.sub(r"\W", "_", name)
+         return f"audit_event_{name_clean}_{source_count}"
+ 
+-    def rows(self) -> Iterator[tuple[str, list[str], list[tuple[str, str]]]]:
++    def rows(self) -> Any:
+         for name in sorted(self.events.keys()):
+             yield name, self.events[name], self.sources[name]
+ 
+@@ -97,7 +93,7 @@ def audit_events_purge(
+ def audit_events_merge(
+     app: Sphinx,
+     env: BuildEnvironment,
+-    docnames: list[str],
++    docnames: List[str],
+     other: BuildEnvironment,
+ ) -> None:
+     """In Sphinx parallel builds, this merges audit_events from subprocesses."""
+@@ -126,14 +122,16 @@ class AuditEvent(SphinxDirective):
+         ),
+     ]
+ 
+-    def run(self) -> list[nodes.paragraph]:
++    def run(self) -> List[nodes.paragraph]:
++        def _no_walrus_op(args):
++            for arg in args.strip("'\"").split(","):
++                aarg = arg.strip()
++                if aarg:
++                    yield aarg
++
+         name = self.arguments[0]
+         if len(self.arguments) >= 2 and self.arguments[1]:
+-            args = [
+-                arg
+-                for argument in self.arguments[1].strip("'\"").split(",")
+-                if (arg := argument.strip())
+-            ]
++            args = list(_no_walrus_op(self.arguments[1]))
+         else:
+             args = []
+         ids = []
+@@ -169,7 +167,7 @@ class audit_event_list(nodes.General, no
+ 
+ 
+ class AuditEventListDirective(SphinxDirective):
+-    def run(self) -> list[audit_event_list]:
++    def run(self) -> List[audit_event_list]:
+         return [audit_event_list()]
+ 
+ 
+@@ -181,7 +179,11 @@ class AuditEventListTransform(SphinxPost
+             return
+ 
+         table = self._make_table(self.app.builder, self.env.docname)
+-        for node in self.document.findall(audit_event_list):
++        try:
++            findall = self.document.findall
++        except AttributeError:
++            findall = self.document.traverse
++        for node in findall(audit_event_list):
+             node.replace_self(table)
+ 
+     def _make_table(self, builder: Builder, docname: str) -> nodes.table:
+@@ -217,8 +219,8 @@ class AuditEventListTransform(SphinxPost
+         builder: Builder,
+         docname: str,
+         name: str,
+-        args: list[str],
+-        sources: list[tuple[str, str]],
++        args: List[str],
++        sources: List[Tuple[str, str]],
+     ) -> nodes.row:
+         row = nodes.row()
+         name_node = nodes.paragraph("", nodes.Text(name))
+--- a/Doc/tools/extensions/availability.py
++++ b/Doc/tools/extensions/availability.py
+@@ -1,8 +1,6 @@
+ """Support for documenting platform availability"""
+ 
+-from __future__ import annotations
+-
+-from typing import TYPE_CHECKING
++from typing import Dict, List, TYPE_CHECKING, Union
+ 
+ from docutils import nodes
+ from sphinx import addnodes
+@@ -55,7 +53,7 @@ class Availability(SphinxDirective):
+     optional_arguments = 0
+     final_argument_whitespace = True
+ 
+-    def run(self) -> list[nodes.container]:
++    def run(self) -> List[nodes.container]:
+         title = sphinx_gettext("Availability")
+         refnode = addnodes.pending_xref(
+             title,
+@@ -79,7 +77,7 @@ class Availability(SphinxDirective):
+ 
+         return [cnode]
+ 
+-    def parse_platforms(self) -> dict[str, str | bool]:
++    def parse_platforms(self) -> Dict[str, Union[str, bool]]:
+         """Parse platform information from arguments
+ 
+         Arguments is a comma-separated string of platforms. A platform may
+@@ -98,12 +96,13 @@ class Availability(SphinxDirective):
+             platform, _, version = arg.partition(" >= ")
+             if platform.startswith("not "):
+                 version = False
+-                platform = platform.removeprefix("not ")
++                platform = platform[len("not "):]
+             elif not version:
+                 version = True
+             platforms[platform] = version
+ 
+-        if unknown := set(platforms).difference(KNOWN_PLATFORMS):
++        unknown = set(platforms).difference(KNOWN_PLATFORMS)
++        if unknown:
+             logger.warning(
+                 "Unknown platform%s or syntax '%s' in '.. availability:: %s', "
+                 "see %s:KNOWN_PLATFORMS for a set of known platforms.",
+@@ -116,7 +115,7 @@ class Availability(SphinxDirective):
+         return platforms
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app):
+     app.add_directive("availability", Availability)
+ 
+     return {
+--- a/Doc/tools/extensions/c_annotations.py
++++ b/Doc/tools/extensions/c_annotations.py
+@@ -9,22 +9,18 @@ Configuration:
+ * Set ``stable_abi_file`` to the path to stable ABI list.
+ """
+ 
+-from __future__ import annotations
+-
+ import csv
+ import dataclasses
+ from pathlib import Path
+-from typing import TYPE_CHECKING
++from typing import Any, Dict, List, TYPE_CHECKING, Union
+ 
+ from docutils import nodes
+ from docutils.statemachine import StringList
+-from sphinx import addnodes
++from sphinx import addnodes, version_info
+ from sphinx.locale import _ as sphinx_gettext
+ from sphinx.util.docutils import SphinxDirective
+ 
+-if TYPE_CHECKING:
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
++from sphinx.application import Sphinx
+ 
+ ROLE_TO_OBJECT_TYPE = {
+     "func": "function",
+@@ -35,20 +31,20 @@ ROLE_TO_OBJECT_TYPE = {
+ }
+ 
+ 
+-@dataclasses.dataclass(slots=True)
++@dataclasses.dataclass()
+ class RefCountEntry:
+     # Name of the function.
+     name: str
+     # List of (argument name, type, refcount effect) tuples.
+     # (Currently not used. If it was, a dataclass might work better.)
+-    args: list = dataclasses.field(default_factory=list)
++    args: List = dataclasses.field(default_factory=list)
+     # Return type of the function.
+     result_type: str = ""
+     # Reference count effect for the return value.
+-    result_refs: int | None = None
++    result_refs: Union[int, None] = None
+ 
+ 
+-@dataclasses.dataclass(frozen=True, slots=True)
++@dataclasses.dataclass(frozen=True)
+ class StableABIEntry:
+     # Role of the object.
+     # Source: Each [item_kind] in stable_abi.toml is mapped to a C Domain role.
+@@ -67,7 +63,7 @@ class StableABIEntry:
+     struct_abi_kind: str
+ 
+ 
+-def read_refcount_data(refcount_filename: Path) -> dict[str, RefCountEntry]:
++def read_refcount_data(refcount_filename: Path) -> Dict[str, RefCountEntry]:
+     refcount_data = {}
+     refcounts = refcount_filename.read_text(encoding="utf8")
+     for line in refcounts.splitlines():
+@@ -103,7 +99,7 @@ def read_refcount_data(refcount_filename
+     return refcount_data
+ 
+ 
+-def read_stable_abi_data(stable_abi_file: Path) -> dict[str, StableABIEntry]:
++def read_stable_abi_data(stable_abi_file: Path) -> Dict[str, StableABIEntry]:
+     stable_abi_data = {}
+     with open(stable_abi_file, encoding="utf8") as fp:
+         for record in csv.DictReader(fp):
+@@ -123,11 +119,14 @@ def add_annotations(app: Sphinx, doctree
+             continue
+         if not par[0].get("ids", None):
+             continue
+-        name = par[0]["ids"][0].removeprefix("c.")
++        name = par[0]["ids"][0]
++        if name.startswith("c."):
++            name = name[len("c."):]
+         objtype = par["objtype"]
+ 
+         # Stable ABI annotation.
+-        if record := stable_abi_data.get(name):
++        record = stable_abi_data.get(name)
++        if record:
+             if ROLE_TO_OBJECT_TYPE[record.role] != objtype:
+                 msg = (
+                     f"Object type mismatch in limited API annotation for {name}: "
+@@ -234,7 +233,7 @@ def _unstable_api_annotation() -> nodes.
+     )
+ 
+ 
+-def _return_value_annotation(result_refs: int | None) -> nodes.emphasis:
++def _return_value_annotation(result_refs: Union[int, None]) -> nodes.emphasis:
+     classes = ["refcount"]
+     if result_refs is None:
+         rc = sphinx_gettext("Return value: Always NULL.")
+@@ -254,7 +253,7 @@ class LimitedAPIList(SphinxDirective):
+     optional_arguments = 0
+     final_argument_whitespace = True
+ 
+-    def run(self) -> list[nodes.Node]:
++    def run(self) -> List[nodes.Node]:
+         state = self.env.domaindata["c_annotations"]
+         content = [
+             f"* :c:{record.role}:`{record.name}`"
+@@ -277,13 +276,23 @@ def init_annotations(app: Sphinx) -> Non
+     )
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx) -> Any:
+     app.add_config_value("refcount_file", "", "env", types={str})
+     app.add_config_value("stable_abi_file", "", "env", types={str})
+     app.add_directive("limited-api-list", LimitedAPIList)
+     app.connect("builder-inited", init_annotations)
+     app.connect("doctree-read", add_annotations)
+ 
++    if version_info[:2] < (7, 2):
++        from docutils.parsers.rst import directives
++        from sphinx.domains.c import CObject
++
++        # monkey-patch C object...
++        CObject.option_spec.update({
++            "no-index-entry": directives.flag,
++            "no-contents-entry": directives.flag,
++        })
++
+     return {
+         "version": "1.0",
+         "parallel_read_safe": True,
+--- a/Doc/tools/extensions/glossary_search.py
++++ b/Doc/tools/extensions/glossary_search.py
+@@ -1,18 +1,14 @@
+ """Feature search results for glossary items prominently."""
+ 
+-from __future__ import annotations
+-
+ import json
+ from pathlib import Path
+-from typing import TYPE_CHECKING
++from typing import Any, TYPE_CHECKING
+ 
+ from docutils import nodes
+ from sphinx.addnodes import glossary
+ from sphinx.util import logging
+ 
+-if TYPE_CHECKING:
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
++from sphinx.application import Sphinx
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -52,7 +48,7 @@ def write_glossary_json(app: Sphinx, _ex
+     dest.write_text(json.dumps(app.env.glossary_terms), encoding='utf-8')
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx) -> Any:
+     app.connect('doctree-resolved', process_glossary_nodes)
+     app.connect('build-finished', write_glossary_json)
+ 
+--- a/Doc/tools/extensions/patchlevel.py
++++ b/Doc/tools/extensions/patchlevel.py
+@@ -3,7 +3,7 @@
+ import re
+ import sys
+ from pathlib import Path
+-from typing import Literal, NamedTuple
++from typing import NamedTuple, Tuple
+ 
+ CPYTHON_ROOT = Path(
+     __file__,  # cpython/Doc/tools/extensions/patchlevel.py
+@@ -26,7 +26,7 @@ class version_info(NamedTuple):  # noqa:
+     major: int  #: Major release number
+     minor: int  #: Minor release number
+     micro: int  #: Patch release number
+-    releaselevel: Literal["alpha", "beta", "candidate", "final"]
++    releaselevel: str
+     serial: int  #: Serial release number
+ 
+ 
+@@ -37,7 +37,8 @@ def get_header_version_info() -> version
+     defines = {}
+     patchlevel_h = PATCHLEVEL_H.read_text(encoding="utf-8")
+     for line in patchlevel_h.splitlines():
+-        if (m := pat.match(line)) is not None:
++        m = pat.match(line)
++        if m is not None:
+             name, value = m.groups()
+             defines[name] = value
+ 
+@@ -50,7 +51,7 @@ def get_header_version_info() -> version
+     )
+ 
+ 
+-def format_version_info(info: version_info) -> tuple[str, str]:
++def format_version_info(info: version_info) -> Tuple[str, str]:
+     version = f"{info.major}.{info.minor}"
+     release = f"{info.major}.{info.minor}.{info.micro}"
+     if info.releaselevel != "final":

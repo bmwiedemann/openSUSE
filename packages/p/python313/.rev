@@ -535,4 +535,41 @@
     <comment></comment>
     <requestid>1241509</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a4e5c994aa27bd66e968be481da9eb4</srcmd5>
+    <version>3.13.2</version>
+    <time>1739127536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.13.2:
+  - Tools/Demos
+    - gh-128152: Fix a bug where Argument Clinic’s C
+      pre-processor parser tried to parse pre-processor
+      directives inside C comments. Patch by Erlend Aasland.
+  - Tests
+    - gh-127906: Test the limited C API in test_cppext. Patch by
+      Victor Stinner.
+    - gh-127637: Add tests for the dis command-line
+      interface. Patch by Bénédikt Tran.
+    - gh-126925: iOS test results are now streamed during test
+      execution, and the deprecated xcresulttool is no longer
+      used.
+  - Security
+    - gh-105704: When using urllib.parse.urlsplit() and
+      urllib.parse.urlparse() host parsing would not reject
+      domain names containing square brackets ([ and ]). Square
+      brackets are only valid for IPv6 and IPvFuture hosts
+      according to RFC 3986 Section 3.2.2. (CVE-2025-0938,
+      bsc#1236705)
+    - gh-127655: Fixed the
+      asyncio.selector_events._SelectorSocketTransport
+      transport not pausing writes for the protocol when
+      the buffer reaches the high water mark when using
+      asyncio.WriteTransport.writelines() (CVE-2024-12254,
+      bsc#1234290).
+    - gh-126108: Fix a possible NULL pointer dereference in
+      PySys_AddWarnOptionUnicode().
+    - gh-80222: Fix bug in the folding of quoted strings
+      when flattening an email message using a modern email</comment>
+    <requestid>1243939</requestid>
+  </revision>
 </revisionlist>
