@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.76
 BuildRequires:  cargo-packaging
+BuildRequires:  git-core
 BuildRequires:  gnupg
 BuildRequires:  openssh-common
 BuildRequires:  openssl-devel
