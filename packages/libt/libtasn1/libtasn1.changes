@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  6 20:31:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libtasn1 4.20.0:
+  * Fix CVE-2024-12133: Potential DoS in handling of numerous
+    SEQUENCE OF or SET OF elements (boo#1236878)
+  * The release tarball is now reproducible
+  * Update gnulib files and various build/maintenance fixes.
+- update upstream signing key
+
+-------------------------------------------------------------------
 Wed Aug 24 18:58:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libtasn1 4.19.0:

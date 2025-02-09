@@ -2,6 +2,7 @@
 # spec file for package libtasn1
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define somajor 6
 Name:           libtasn1
-Version:        4.19.0
+Version:        4.20.0
 Release:        0
 Summary:        ASN.1 parsing library
 License:        GFDL-1.3-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -26,7 +27,7 @@ Group:          Productivity/Networking/Security
 URL:            https://www.gnu.org/software/libtasn1/
 Source0:        http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz.sig
-Source2:        https://josefsson.org/54265e8c.txt#/%{name}.keyring
+Source2:        https://josefsson.org/key-20190320.txt#/%{name}.keyring
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 
@@ -66,7 +67,7 @@ is a standardized data description and serialization language.
 This package contains files required to build against libtasn1.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
@@ -79,21 +80,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post -n libtasn1-%{somajor} -p /sbin/ldconfig
-%postun -n libtasn1-%{somajor} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtasn1-%{somajor}
 
 %files -n libtasn1-%{somajor}
-%license doc/COPYING.LESSER
+%license COPYING.LESSERv2
 %{_libdir}/*.so.%{somajor}*
 
 %files tools
-%license doc/COPYING
+%license COPYING
 %{_bindir}/*
 %{_mandir}/man1/*.1%{?ext_man}
 %{_infodir}/*.info%{?ext_info}
 
 %files devel
-%license doc/COPYING.LESSER
+%license COPYING.LESSERv2
 %doc NEWS README THANKS
 %{_includedir}/*.h
 %{_libdir}/*.so
