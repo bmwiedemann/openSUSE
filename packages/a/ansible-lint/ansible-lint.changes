@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb  7 17:11:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.2:
+  * Bugfixes
+    - Require ansible-compat>=25.1.2 (#4512) @ssbarnea
+    - Improve output with broken multiline playbooks (#4506)
+      @ssbarnea
+    - Avoid broken referencing dependency (#4505) @ssbarnea
+    - Clarify partial-become rule description (#4500) @alisonlhart
+    - Allow linter to capture and display initialization warnings
+      (#4504) @ssbarnea
+    - Update ansible-compat to v25.1.1 (#4499) @audgirka
+
+-------------------------------------------------------------------
 Tue Jan 28 14:35:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.1.1:

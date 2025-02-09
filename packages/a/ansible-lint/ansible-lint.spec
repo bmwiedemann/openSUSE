@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        25.1.1
+Version:        25.1.2
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -69,13 +69,14 @@ BuildRequires:  %{ansible_python}-flake8
 # to make sure this only builds if they are present
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
 BuildRequires:  ansible-core >= 2.16.0
-BuildRequires:  %{ansible_python}-ansible-compat >= 25.1.0
+BuildRequires:  %{ansible_python}-ansible-compat >= 25.1.2
 BuildRequires:  %{ansible_python}-black >= 23.10.1
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
 BuildRequires:  %{ansible_python}-filelock >= 3.8.2
 BuildRequires:  %{ansible_python}-jsonschema >= 4.17.3
 BuildRequires:  %{ansible_python}-packaging >= 23.1
 BuildRequires:  %{ansible_python}-PyYAML >= 6.0.2
+BuildRequires:  %{ansible_python}-referencing >= 0.36.2
 BuildRequires:  %{ansible_python}-requests >= 2.31.0
 BuildRequires:  %{ansible_python}-rich >= 13.5.2
 BuildRequires:  %{ansible_python}-ruamel.yaml >= 0.18.5
@@ -87,7 +88,7 @@ BuildRequires:  %{ansible_python}-yamllint >= 1.34.0
 #
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
 Requires:       ansible-core >= 2.16.0
-Requires:       %{ansible_python}-ansible-compat >= 25.1.0
+Requires:       %{ansible_python}-ansible-compat >= 25.1.2
 Requires:       %{ansible_python}-black >= 23.10.1
 Requires:       %{ansible_python}-bracex >= 2.2.1
 Requires:       %{ansible_python}-enrich >= 1.2.7
@@ -96,6 +97,7 @@ Requires:       %{ansible_python}-importlib-metadata
 Requires:       %{ansible_python}-jsonschema >= 4.17.3
 Requires:       %{ansible_python}-packaging >= 23.1
 Requires:       %{ansible_python}-PyYAML  >= 6.0.2
+Requires:       %{ansible_python}-referencing >= 0.36.2
 Requires:       %{ansible_python}-requests >= 2.31.0
 Requires:       %{ansible_python}-rich >= 13.5.2
 Requires:       %{ansible_python}-ruamel.yaml >= 0.17.31
