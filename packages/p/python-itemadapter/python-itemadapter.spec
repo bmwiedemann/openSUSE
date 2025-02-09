@@ -1,7 +1,7 @@
 #
 # spec file for package python-itemadapter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,14 +27,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-itemadapter%{psuffix}
-Version:        0.9.0
+Version:        0.11.0
 Release:        0
 Summary:        Wrapper for data container objects
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/itemadapter
 Source:         https://github.com/scrapy/itemadapter/archive/v%{version}.tar.gz#/itemadapter-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pydantic2.patch gh#scrapy/itemadapter#76
-Patch0:         pydantic2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.5.0}
 BuildRequires:  %{python_module wheel}
@@ -47,6 +45,7 @@ BuildRequires:  %{python_module itemadapter >= %{version}}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest >= 5.4}
 %endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
