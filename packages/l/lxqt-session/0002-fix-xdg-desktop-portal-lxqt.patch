@@ -1,0 +1,30 @@
+From 80f5eabac1b6f48ec8642b905bab2def40664633 Mon Sep 17 00:00:00 2001
+From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
+Date: Sat, 11 Jan 2025 21:29:09 -0800
+Subject: [PATCH 2/3] fix xdg desktop portal lxqt
+
+xdg-desktop-portal-lxqt isn't being started by xdg-desktop-portal on
+login, running "/usr/libexec/xdg-desktop-portal --replace" after login
+via this desktop file ensures that the lxqt portal is running
+
+See: https://bugzilla.opensuse.org/show_bug.cgi?id=1226394
+---
+ autostart/lxqt-desktop-portal-autostart.desktop.in | 6 ++++++
+ 1 file changed, 6 insertions(+)
+ create mode 100644 autostart/lxqt-desktop-portal-autostart.desktop.in
+
+diff --git a/autostart/lxqt-desktop-portal-autostart.desktop.in b/autostart/lxqt-desktop-portal-autostart.desktop.in
+new file mode 100644
+index 0000000..637ddb4
+--- /dev/null
++++ b/autostart/lxqt-desktop-portal-autostart.desktop.in
+@@ -0,0 +1,6 @@
++[Desktop Entry]
++Type=Application
++Version=1.0
++TryExec=/usr/libexec/xdg-desktop-portal
++Exec=/usr/libexec/xdg-desktop-portal --replace
++OnlyShowIn=LXQt;
+-- 
+2.48.0
+

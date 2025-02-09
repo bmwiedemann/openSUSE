@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-session
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,19 +22,25 @@ Version:        2.1.1
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/lxqt/lxqt-session
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 # mvetter@suse.com bsc#1127043 - Use Openbox as default WM
-Patch1:         %{name}-default_wm.patch
+Patch1:         0001-set-default-wm.patch
+# PATCH-FIX-openSUSE boo#1226394 sfalken@opensuse.org
+Patch2:         0002-fix-xdg-desktop-portal-lxqt.patch
+# PATCH-FEATURE-UPSTREAM https://github.com/lxqt/lxqt-session/pull/571
+Patch3:         0003-add-option-for-miriway.patch
+
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  qtxdg-tools >= 4.1.0
 BuildRequires:  xdg-user-dirs
+
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6DBus)
@@ -42,10 +48,12 @@ BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(qtxdg-tools)
+
 BuildRequires:  pkgconfig(libproc2) >= 4.0.0
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 BuildRequires:  pkgconfig(x11)
+
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Requires:       %{name}-branding = %{version}-%{release}
@@ -73,7 +81,7 @@ BuildArch:      noarch
 This package provides the upstream look and feel for %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -S git_am
 sed -i 's/^\(Type=\).*/\1XSession/' xsession/lxqt.desktop.in
 sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' lxqt-config-session/lxqt-config-session.desktop.in
 
@@ -113,6 +121,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_datadir}/applications/lxqt-*.desktop
 %{_mandir}/man?/lxqt-*%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-xscreensaver-autostart.desktop
+%config %{_sysconfdir}/xdg/autostart/lxqt-desktop-portal-autostart.desktop
 %{_bindir}/startlxqt
 %{_mandir}/man1/startlxqt.1%{?ext_man}
 %{_datadir}/xsessions/lxqt.desktop

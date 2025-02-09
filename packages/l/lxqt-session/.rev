@@ -1419,4 +1419,21 @@ comply with openSUSE policy
     <comment></comment>
     <requestid>1233185</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>5f123870db6c655a80cd46a5c09bed95</srcmd5>
+    <version>2.1.1</version>
+    <time>1739127689</time>
+    <user>dimstar_suse</user>
+    <comment>- Added:
+  * 0003-add-option-for-miriway.patch
+    (https://github.com/lxqt/lxqt-session/pull/571)
+- Dropped:
+  * lxqt-session-default_wm.patch
+- Added:
+  * 0001-set-default-wm.patch (Replaces Dropped Patch)
+  * 0002-fix-xdg-desktop-portal-lxqt.patch (boo#1226394)
+- Updated to git_am style patches
+</comment>
+    <requestid>1244264</requestid>
+  </revision>
 </revisionlist>

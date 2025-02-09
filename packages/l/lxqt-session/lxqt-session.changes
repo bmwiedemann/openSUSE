@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 16 18:45:33 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added:
+  * 0003-add-option-for-miriway.patch
+    (https://github.com/lxqt/lxqt-session/pull/571)
+
+-------------------------------------------------------------------
+Sun Jan 12 05:39:00 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Dropped:
+  * lxqt-session-default_wm.patch
+- Added:
+  * 0001-set-default-wm.patch (Replaces Dropped Patch)
+  * 0002-fix-xdg-desktop-portal-lxqt.patch (boo#1226394)
+- Updated to git_am style patches
+
+-------------------------------------------------------------------
 Mon Dec 23 19:03:33 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated to version 2.1.1:
