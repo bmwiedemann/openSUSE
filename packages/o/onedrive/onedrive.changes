@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Feb 07 18:09:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.4:
+  * Release files for 2.5.4 (#3098)
+  * Add './' sync_list rule check (#3097)
+  * Fix log output when generating a /delta response
+  * Add code to support 'display_processing_time' use (#3095)
+  * Calculate file transfer metrics in a consistent manner (#3091)
+  * Fix testInternetReachability function (#3087)
+  * Update usage.md (#3084)
+  * Add OneDrive Personal Drive ID and Remote Drive ID length check
+    (#3086)
+  * Fix --single-directory Shared Folder DB entry creation (#3082)
+  *  Support the moving of Shared Folder Links to other folders
+     (#3052)
+  * Fix Upload|Download Loop for AIP Protected File in Monitor Mode
+    (#3071)
+  * Add account root id check for Microsoft OneDrive Personal
+    account issue (#3077)
+  * Update install.md
+  * Update install.md
+  * Change dynamic linker to Linux only to correctly support
+    FreeBSD and OpenBSD (#3069)
+  * Fix Alpine Docker build post FreeBSD support (#3068)
+  * Support FreeBSD - Code and documentation changes to support
+    FreeBSD (#3048)
+  * Fix issue #3057 where timestamp is not set when using
+    --disable-download-validation (#3064)
+  * Support adding SharePoint Libraries as Shared Folder Links
+    (#3051)
+  * Fix that the root Personal Shared Folder is not handled due to
+    missing API data (#3047)
+  * Fix that item deleted after events of IN_MOVED_FROM &
+    IN_CLOSE_WRITE (#3045)
+  * Fix moving online files inside directories when using
+    'sync_list' (#3042)
+  * Fix skip_dir logic when reverse traversing folder structure
+    (#3034)
+  * Fix regression in handling uploading new and modified content
+    to OneDrive Business and SharePoint (#3032)
+  * Update Arch Linux instructions (#3036)
+  * Fix regression of --display-config use (#3035)
+  * correct minor typo (#3033)
+  * Update docker.md (#3028)
+  * Update --dry-run authentication message (#3022)
+  * Update .gitignore
+  * Update isValidUTF8 function with further validation (#3016)
+  * feat: optionally use standalone mode for syncing using Docker
+    container (#3018)
+  * Fix download error of an updated file leads to online file
+    deletion (#3017)
+  * Check for no --sync | --monitor earlier to fail fast if not
+    used (#3011)
+  * Implement Feature Request: Support Permanent Delete on OneDrive
+    (#2999)
+  * Add quota status messages based on OneDrive Account API
+    response (#3008)
+  * Cleanup debug logging output (#3007)
+  * Fix regression that sync_list does not traverse shared
+    directories (#3004)
+  * Fix that Business Shared Items shortcuts are skipped (#3001)
+  * Fix --display-config when dealing with empty sync_list (#2998)
+  * Fix import of 'sync_list' and rule application (#2996)
+  * Update usage.md
+  * Update usage.md (#2990)
+  * Add curl bugs to documentation (#2987)
+  * Fix unable to parse SSL version (#2981)
+  * Fix build error on OpenBSD (#2978)
+
+-------------------------------------------------------------------
 Wed Nov 20 09:35:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.5.3:
