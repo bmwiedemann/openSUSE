@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Fri Feb  7 11:00:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.115.8
+  * Fix `OAuth2PasswordRequestForm` and `OAuth2PasswordRequestFormStrict` fixed `grant_type` "password" RegEx.
+  * Simplify tests for body_multiple_params.
+  * Move duplicated code portion to a static method in the `APIKeyBase` super class.
+  * Simplify tests for request_files.
+  * Change the word "unwrap" to "unpack" in `docs/en/docs/tutorial/extra-models.md`.
+  * Update Request Body's `tutorial002` to deal with `tax=0` case.
+  * Update FastAPI People - Experts.
+  * Add Japanese translation for `docs/ja/docs/environment-variables.md`.
+  * Add Russian translation for `docs/ru/docs/advanced/async-tests.md`.
+  * Update Russian translation for `docs/ru/docs/tutorial/dependencies/dependencies-in-path-operation-decorators.md`.
+  * Add Russian translation for `docs/ru/docs/tutorial/bigger-applications.md`.
+  * Add support for Python 3.13.
+  * Upgrade AnyIO max version for tests, new range: `>=3.2.1,<5.0.0`.
+  * Update Sponsors badges.
+  * Fix `notify_translations.py` empty env var handling for PR label events vs workflow_dispatch.
+  * Refactor and move `scripts/notify_translations.py`, no need for a custom GitHub Action.
+  * Update FastAPI People Experts script, refactor and optimize data fetching to handle rate limits.
+  * Bump pypa/gh-action-pypi-publish from 1.12.3 to 1.12.4.
+- from version 0.115.7
+  * Upgrade `python-multipart` to >=0.0.18.
+  * Bump Starlette to allow up to 0.45.0: `>=0.40.0,<0.46.0`.
+  * Upgrade `jinja2` to >=3.1.5.
+  * Simplify tests for websockets.
+  * Simplify tests for request_form_models.
+  * Simplify tests for separate_openapi_schemas.
+  * Simplify tests for security.
+  * Simplify tests for schema_extra_example.
+  * Simplify tests for request_model.
+  * Simplify tests for request_forms_and_files.
+  * Simplify tests for request_forms.
+  * Simplify tests for path_query_params.
+  * Simplify tests for path_operation_configurations.
+  * Simplify tests for header_params.
+  * Simplify tests for extra_models.
+  * Simplify tests for extra_data_types.
+  * Simplify tests for cookie_params.
+  * Simplify tests for dependencies.
+  * Simplify tests for body_updates.
+  * Simplify tests for body_nested_models.
+  * Simplify tests for body_multiple_params.
+  * Simplify tests for body_fields.
+  * Simplify tests for body.
+  * Simplify tests for bigger_applications.
+  * Simplify tests for background_tasks.
+  * Simplify tests for additional_status_codes.
+  * Update Strawberry integration docs.
+  * Remove unused Peewee tutorial files.
+  * Update image in body-nested-model docs.
+  * Update `fastapi-cli` UI examples in docs.
+  * Add new GitHub Action to update contributors, translators, and translation reviewers.
+  * Fix typo in `docs/en/docs/virtual-environments.md`.
+  * Fix error in `docs/en/docs/contributing.md`.
+  * Minor corrections in `docs/en/docs/tutorial/sql-databases.md`.
+  * Update includes in `docs/ru/docs/tutorial/query-param-models.md`.
+  * Fix typo in README installation instructions.
+  * Update docs for `fastapi-cli`.
+  * Update Portuguese Translation for `docs/pt/docs/tutorial/request-forms.md`.
+  * Update Portuguese translation for `docs/pt/docs/advanced/settings.md`.
+  * Add Portuguese translation for `docs/pt/docs/tutorial/security/oauth2-jwt.md`.
+  * Add Indonesian translation for `docs/id/docs/index.md`.
+  * Add Indonesian translation for `docs/id/docs/tutorial/static-files.md`.
+  * Add Portuguese translation for `docs/pt/docs/tutorial/security/get-current-user.md`.
+  * Remove Wrong Portuguese translations location for `docs/pt/docs/advanced/benchmarks.md`.
+  * Update Portuguese translations.
+  * Update Russian translation for `docs/ru/docs/tutorial/security/first-steps.md`.
+  * Delete unnecessary backspace in `docs/ja/docs/tutorial/path-params-numeric-validations.md`.
+  * Update Chinese translation for `docs/zh/docs/fastapi-cli.md`.
+  * Add new Spanish translations for all docs with new LLM-assisted system using PydanticAI.
+  * Update existing Spanish translations using the new LLM-assisted system using PydanticAI.
+  * Update Chinese translation for `docs/zh/docs/advanced/security/oauth2-scopes.md`.
+  * Add Indonesian translation for `docs/id/docs/tutorial/path-params.md`.
+  * Add Korean translation for `docs/ko/docs/tutorial/sql-databases.md`.
+  * Update Chinese translation for `docs/zh/docs/async.md`.
+  * Add Chinese translation for `docs/zh/docs/advanced/openapi-webhooks.md`.
+  * Add Chinese translation for `docs/zh/docs/advanced/async-tests.md`.
+  * Add Ukrainian translation for `docs/uk/docs/fastapi-cli.md`.
+  * Add Chinese translation for `docs/zh/docs/advanced/events.md`.
+  * Add Russian translation for `/docs/ru/docs/tutorial/sql-databases.md`.
+  * Update Chinese translation for `docs/zh/docs/advanced/testing-dependencies.md`.
+  * Update Traditional Chinese translation for `docs/zh-hant/docs/tutorial/index.md`.
+  * Add Chinese translation for `docs/zh/docs/tutorial/sql-databases.md`.
+  * Update Chinese translation for `docs/zh/docs/tutorial/query-params-str-validations.md`.
+  * Add Chinese translation for `docs/zh/docs/tutorial/header-param-models.md`.
+  * Update Chinese translation for `docs/zh/docs/tutorial/path-params.md`.
+  * Update Chinese translation for `docs/zh/docs/tutorial/first-steps.md`.
+  * Update Russian translation for `docs/ru/docs/deployment/docker.md`.
+  * Add Portuguese translation for `docs/pt/docs/advanced/generate-clients.md`.
+  * Add Indonesian translation for `docs/id/docs/tutorial/first-steps.md`.
+  * Add Chinese translation for `docs/zh/docs/tutorial/cookie-param-models.md`.
+  * Add Chinese translation for `docs/zh/docs/tutorial/request-form-models.md`.
+  * Add Russian translation for `docs/ru/docs/virtual-environments.md`.
+  * Add Korean translation for `docs/ko/docs/tutorial/testing.md`.
+  * Add Korean translation for `docs/ko/docs/advanced/async-test.md`.
+  * Add Russian translation for `docs/ru/docs/tutorial/security/oauth2-jwt.md`.
+  * Add Russian translation for `docs/ru/docs/tutorial/security/simple-oauth2.md`.
+  * Add Russian translation for `docs/ru/docs/tutorial/security/get-current-user.md`.
+  * Add Traditional Chinese translation for `docs/zh-hant/docs/features.md`.
+  * Add Traditional Chinese translation for `docs/zh-hant/docs/virtual-environments.md`.
+  * Add Korean translation for `docs/ko/docs/advanced/templates.md`.
+  * Add Russian translation for `docs/ru/docs/fastapi-cli.md`.
+  * Add Korean translation for `docs/ko/docs/tutorial/cookie-param-models.md`.
+  * Add Korean translation for `docs/ko/docs/tutorial/header-param-models.md`.
+  * Add Korean translation for `docs/ko/docs/tutorial/request-form-models.md`.
+  * Add Korean translation for `docs/ko/docs/tutorial/request-forms.md`.
+  * Add Korean translation for `docs/ko/docs/resources/index.md`.
+  * Add Korean translation for `docs/ko/docs/how-to/configure-swagger-ui.md`.
+  * Add Korean translation to `docs/ko/docs/advanced/additional-status-codes.md`.
+  * Add Traditional Chinese translation for `docs/zh-hant/docs/tutorial/first-steps.md`.
+  * Add Pydantic 2 trove classifier.
+  * Update FastAPI People - Sponsors.
+  * Refactor FastAPI People Sponsors to use 2 tokens.
+  * Update token for FastAPI People - Sponsors.
+  * Add independent CI automation for FastAPI People - Sponsors.
+  * Add retries to Smokeshow.
+  * Update Speakeasy sponsor graphic.
+  * Update FastAPI GitHub topic repositories.
+  * Add script for GitHub Topic Repositories and update External Links.
+  * Update FastAPI People - Contributors and Translators.
+  * Bump markdown-include-variants from 0.0.3 to 0.0.4.
+  * Bump inline-snapshot from 0.14.0 to 0.18.1.
+  * Bump mkdocs-macros-plugin from 1.0.5 to 1.3.7.
+  * Add internal scripts to generate language translations with PydanticAI, include Spanish prompt.
+  * Bump astral-sh/setup-uv from 4 to 5.
+  * Update sponsors: rename CryptAPI to BlockBee.
+  * Bump pypa/gh-action-pypi-publish from 1.12.2 to 1.12.3.
+  * Bump types-ujson from 5.7.0.1 to 5.10.0.20240515.
+  * Bump black from 24.3.0 to 24.10.0.
+  * Bump inline-snapshot from 0.13.0 to 0.14.0.
+  * Bump dirty-equals from 0.6.0 to 0.8.0.
+  * Bump cloudflare/wrangler-action from 3.12 to 3.13.
+  * Bump astral-sh/setup-uv from 3 to 4.
+  * Remove duplicate actions/checkout in `notify-translations.yml`.
+  * Update team members.
+  * Update sponsors: remove Codacy.
+- Refresh remove-classifiers.patch
+
+-------------------------------------------------------------------
 Thu Dec 12 14:51:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip a test because httpx 0.28 cosmetically changed the format

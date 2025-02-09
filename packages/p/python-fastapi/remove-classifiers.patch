@@ -1,13 +1,13 @@
-Index: fastapi-0.95.1/pyproject.toml
-===================================================================
---- fastapi-0.95.1.orig/pyproject.toml
-+++ fastapi-0.95.1/pyproject.toml
-@@ -27,8 +27,6 @@ classifiers = [
+diff -Nru fastapi-0.115.8.orig/pyproject.toml fastapi-0.115.8/pyproject.toml
+--- fastapi-0.115.8.orig/pyproject.toml	2025-01-30 15:06:26.874525500 +0100
++++ fastapi-0.115.8/pyproject.toml	2025-02-07 12:00:18.048128044 +0100
+@@ -29,9 +29,6 @@
      "Environment :: Web Environment",
      "Framework :: AsyncIO",
      "Framework :: FastAPI",
 -    "Framework :: Pydantic",
 -    "Framework :: Pydantic :: 1",
+-    "Framework :: Pydantic :: 2",
      "Intended Audience :: Developers",
      "License :: OSI Approved :: MIT License",
      "Programming Language :: Python :: 3 :: Only",

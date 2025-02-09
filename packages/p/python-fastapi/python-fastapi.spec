@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastapi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.115.6
+Version:        0.115.8
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -31,13 +31,13 @@ Patch0:         remove-classifiers.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
-BuildRequires:  %{python_module starlette >= 0.40.0 with %python-starlette < 0.42.0}
+BuildRequires:  %{python_module starlette >= 0.40.0 with %python-starlette < 0.46.0}
 BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.42.0)
+Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.46.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -52,7 +52,7 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-multipart >= 0.0.7}
+BuildRequires:  %{python_module python-multipart >= 0.0.18}
 BuildRequires:  %{python_module trio}
 %if !%{with ringdisabled}
 BuildRequires:  %{python_module aiosqlite}

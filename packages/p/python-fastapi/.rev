@@ -487,4 +487,12 @@
     support httpx 0.28 upstream.</comment>
     <requestid>1230775</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>67fb8a228875c8c00d57ec5919493d69</srcmd5>
+    <version>0.115.8</version>
+    <time>1739127545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244151</requestid>
+  </revision>
 </revisionlist>
