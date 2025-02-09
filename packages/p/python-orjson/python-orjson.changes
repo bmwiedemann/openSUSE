@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  7 12:53:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.10.15
+  * Publish PyPI manylinux aarch64 wheels built and tested on aarch64.
+  * Publish PyPI musllinux aarch64 and arm7l wheels built and tested on aarch64.
+  * Publish PyPI manylinux Python 3.13 wheels for i686, arm7l, ppc64le, and s390x.
+
+-------------------------------------------------------------------
 Fri Jan 10 14:28:05 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.10.14
