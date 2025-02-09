@@ -42,4 +42,41 @@ expertise with the git command line.</comment>
     but none exist at this time. (forwarded request 1161039 from jfkw)</comment>
     <requestid>1161040</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f2f335061a5965584c905ebb1407666</srcmd5>
+    <version>0.45.2</version>
+    <time>1739128093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.45.2:
+  * Bump dependencies
+  * Improve undo action to restore files upon undoing a commit
+  * Collapse/expand all files in tree
+  * Add ability to configure branch color patterns
+  * Remove the automatic coloring of certain branch names
+  * Automatically cut release each month
+  * Standardise on 'screen mode' name
+  * Use interactive shell for running shell commands only if shell is bash or zsh
+  * Fix `micro` editor preset
+  * Add number of commits to cherry-pick confirmation prompt
+  * Adjust line number for working copy when editing a line
+  * Combine GetPathDiff and GetAllDiff into one command (GetDiff)
+  * Cleanup: use the upstream local variable consistently
+  * Fix resetting or rebasing a branch to its upstream when the upstream branch name is different
+  * Extend reset/rebase test to use upstream branch name that is different from local one
+  * Show the &lt;a-enter&gt; keybinding at bottom of commit description view
+  * Disable KeybindingsMenu using a DisabledReason when a panel is open
+  * Don't show error toast for disabled keybindings if DisabledReason text is empty
+  * Tweak file icons
+  * docs: qlarify commit message prefix mechanics
+  * provide section for openLink
+  * Add worktree option to fast forwarding operation
+  * update documentation to describe use of custom commands without keys specified.
+  * Default to half-screen mode when filtering files or using the git-arg CLI arg
+  * Add screen-mode command line argument
+  * Update instructions for using OSC52 with tmux
+  * Set repology table to 3 columns
+  * Use HEX colors on file icons instead of C256 colors
+  * Update chinese translation for pull requests (forwarded request 1244477 from amanzini)</comment>
+    <requestid>1244506</requestid>
+  </revision>
 </revisionlist>
