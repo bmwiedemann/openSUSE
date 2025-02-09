@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Sat Feb 08 11:26:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.3:
+  * test(e2e): force `kubectl delete ns` at the end of complex
+    converge test to be safe
+  * test(e2e): add simple `bundle publish/apply` apply test
+  * chore: release 2.26.3
+  * fix(cleanup): panic in `werf cleanup`
+  * fix(deploy): panics in bundle apply and bundle render
+  * fix(deploy): bundle publish might publish empty bundle
+  * fix(deploy): panic in many commands when
+    `--synchronization=kubernetes://...`
+  * Update trdl_channels.yaml
+
+-------------------------------------------------------------------
+Fri Feb 07 18:24:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.2:
+  * chore: release 2.26.2 (#6621)
+  * fix(build): invalidate imageSpec cache
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Fri Feb 07 18:17:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.1:
+  * chore: release 2.26.1 (#6619)
+  * fix(build): ensure imageSpec.config.env variables are expanded
+    (#6618)
+  * test(e2e): in complex converge test never cleanup CRDs because
+    it breaks parallel runs
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Fri Feb 07 18:14:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.0:
+  * chore: release 2.26.0
+  * feat(build): apply global imageSpec only for final images
+  * refactor(deploy): get rid of ChartExtender and all its
+    implementations
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Fri Feb 07 18:08:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.25.1:
+  * chore: release 2.25.1
+  * fix(build): panic: assignment to entry in nil map
+  * chore(docs): add user option to werf cr login (#6608)
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Fri Feb 07 17:58:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.25.0:
+  * chore: release 2.25.0 (#6595)
+  * fix(build): fix secret config validation not working (#6598)
+  * fix(build): fix no such image error
+  * fix(build): fix incorrect base image when user removes werf
+    labels
+  * refactor(build): dedup code
+  * fix(build): fix incorrect base image when imageSpec used
+  * refactor(deploy): move service values handling out of legacy
+    pre-deploy Nelm hooks
+  * chore(release): 2 alpha
+  * fix(deploy): subcharts rendered incorrectly
+  * refactor(deploy): get rid of subchart ChartExtender
+    implementation
+  * refactor(deploy): update Nelm module
+  * refactor(deploy): clean up pre-deploy hook functions of Nelm
+    actions
+  * refactor(deploy): annotations and labels management moved out
+    of ChartExtender implementations
+  * fix(build): fix ssh auth sock validation (#6599)
+  * refactor(host-cleanup): support container backend (#6573)
+  * docs: regen cli reference
+  * refactor(deploy): minor changes
+  * feat(deploy): add --skip-dependencies-repo-refresh,
+    --show-only, --disable-default-values to `bundle render`
+  * fix(deploy): subchart secret values not disabled via
+    --disable-default-secret-values in `bundle apply`
+  * chore(release): 2 alpha
+  * refactor(deploy): migrate `bundle render` to Nelm actions
+
+-------------------------------------------------------------------
+Fri Feb 07 17:54:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.0:
+  * chore: release 2.24.0
+  * feat(build): add mutate image spec config feature (#6578)
+  * docs: regen cli
+  * feat(deploy): add --disable-default-values and
+    --disable-default-secret-values flags to `bundle apply`
+  * refactor(deploy): migrate `bundle apply` to Nelm actions
+  * feat(deploy): vendor chart dependencies in bundle during
+    `bundle publish`
+  * chore(channels): bump channels
+
+-------------------------------------------------------------------
 Thu Jan 30 12:37:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.23.1:
