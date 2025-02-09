@@ -2097,4 +2097,12 @@ Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</commen
     <comment>Add isciuio to the DVD - boo#1236772</comment>
     <requestid>1243062</requestid>
   </revision>
+  <revision rev="294" vrev="292">
+    <srcmd5>91018af32487ad8116a59f84e5121918</srcmd5>
+    <version>unknown</version>
+    <time>1739127656</time>
+    <user>dimstar_suse</user>
+    <comment>no transactional role on the main dvd</comment>
+    <requestid>1244352</requestid>
+  </revision>
 </revisionlist>

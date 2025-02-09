@@ -112,7 +112,6 @@ dvd:
   - patterns-gnome-sw_management_gnome: [required]
   - patterns-base-basic_desktop: [required]
   - patterns-base-selinux: [required]
-  - patterns-base-transactional_base: [required]
   - patterns-base-x11: [required]
   - patterns-xfce-xfce
   - patterns-xfce-xfce_basis
