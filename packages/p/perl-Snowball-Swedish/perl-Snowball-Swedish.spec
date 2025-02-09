@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Snowball-Swedish
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,48 +12,47 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
-Name:           perl-Snowball-Swedish
-Version:        1.2
-Release:        1
-License:        GPL-1.0+ or Artistic-1.0
 %define cpan_name Snowball-Swedish
-Summary:        Porters stemming algorithm for swedish.
-Url:            http://search.cpan.org/dist/Snowball-Swedish/
-Group:          Development/Libraries/Perl
-Source:         Snowball-Swedish-1.2.tar.gz
+Name:           perl-Snowball-Swedish
+Version:        1.200.0
+Release:        0
+# 1.2 -> normalize -> 1.200.0
+%define cpan_version 1.2
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Porters stemming algorithm for swedish
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AS/ASKSH/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build)
-#BuildRequires: perl(Lingua::Stem::Snowball::Se)
-#BuildRequires: perl(Test::Pod::Coverage)
+Provides:       perl(Lingua::Stem::Snowball::Se) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 Porters stemming algorithm for swedish.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples LICENSE README
+%doc Changes examples README
+%license LICENSE
 
 %changelog
