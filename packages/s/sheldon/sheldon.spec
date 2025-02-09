@@ -1,7 +1,7 @@
 #
 # spec file for package sheldon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sheldon
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Fast, configurable, shell plugin manager
 License:        MIT OR Apache-2.0 AND MIT AND Zlib AND LGPL-2.1-or-later AND CC-BY-SA-4.0 AND Apache-2.0 WITH LLVM-exception AND BSD-4-clause AND OpenSSL AND Unicode AND SUSE-GPL-2.0-with-linking-exception
