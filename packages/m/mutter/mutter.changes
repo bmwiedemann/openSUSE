@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 12:24:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.5:
+  + Synchronize device enabled state when adding device
+  + Do not use modifiers if surface should be sharable
+  + Fix notifying shell about modifier-only keyboard layout
+    switches
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
 Mon Jan 13 12:47:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.4:
