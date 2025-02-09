@@ -1847,4 +1847,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment></comment>
     <requestid>1241361</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>318430088d07a0283a04d006acfe126b</srcmd5>
+    <version>6.9.1</version>
+    <time>1739127654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244276</requestid>
+  </revision>
 </revisionlist>
