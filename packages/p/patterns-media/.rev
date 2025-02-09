@@ -449,4 +449,12 @@
     <comment>- Add required packages for FDE+TPM</comment>
     <requestid>1224839</requestid>
   </revision>
+  <revision rev="54" vrev="54">
+    <srcmd5>dda82f6b6b73b0ca6c4a255467a18e77</srcmd5>
+    <version>20170319</version>
+    <time>1739127657</time>
+    <user>dimstar_suse</user>
+    <comment>no transactional role on the main dvd (forwarded request 1244355 from dimstar)</comment>
+    <requestid>1244356</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Feb  8 13:46:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop transactional_base pattern: the transaction role
+  has been removed a while back.
+
+-------------------------------------------------------------------
 Mon Nov 18 09:49:37 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add required packages for FDE+TPM

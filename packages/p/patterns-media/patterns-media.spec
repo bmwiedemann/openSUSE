@@ -289,7 +289,6 @@ Requires:       pattern() = print_server
 Requires:       pattern() = rest_cd_core
 Requires:       pattern() = sw_management
 Requires:       pattern() = sw_management_gnome
-Requires:       pattern() = transactional_base
 Requires:       pattern() = x11
 %ifarch x86_64
 Requires:       pattern() = x86_64_v3
