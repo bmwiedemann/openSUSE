@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy-iers-data
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-astropy-iers-data%{psuffix}
-Version:        0.2024.11.4.0.33.34
+Version:        0.2025.2.3.0.32.42
 Release:        0
 Summary:        IERS Earth Rotation and Leap Second tables for the astropy core package
 License:        BSD-3-Clause

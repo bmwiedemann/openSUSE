@@ -97,4 +97,13 @@
   * Update IERS Earth rotation and leap second tables</comment>
     <requestid>1222845</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9dad2b9df3379eaeb4d3eeb24dde848c</srcmd5>
+    <version>0.2025.2.3.0.32.42</version>
+    <time>1739128078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2025.2.3.0.32.42
+  * Update IERS Earth rotation and leap second tables</comment>
+    <requestid>1244489</requestid>
+  </revision>
 </revisionlist>
