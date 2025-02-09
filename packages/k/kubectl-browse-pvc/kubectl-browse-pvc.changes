@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Feb 07 17:45:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.0:
+  * add ability to execute commands
+  * add hostname to ps1
+  * forgot to hit save
+  * pull namespace from current context
+
+-------------------------------------------------------------------
+Fri Feb 07 17:13:19 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.8:
+  * create builds for x86 and arm, linux and mac
+  * fix x2
+  * fix path
+  * trying to get windows build, move into src
+  * remove old files
+  * add x86 macos and windows builds
+
+-------------------------------------------------------------------
 Mon Dec 16 11:55:27 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Enable cgo on riscv64

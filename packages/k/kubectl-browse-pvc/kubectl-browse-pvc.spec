@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-browse-pvc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define executable_name kubectl-browse_pvc
 
 Name:           kubectl-browse-pvc
-Version:        1.0.7
+Version:        1.1.0
 Release:        0
 Summary:        Kubectl plugin for browsing PVCs on the command line
 License:        MIT
@@ -45,6 +43,7 @@ cleans up the pod when you disconnect.
 
 %prep
 %autosetup -a 1 -p 1
+mv vendor ./src/
 
 %build
 %ifarch s390x i586 riscv64
@@ -52,11 +51,12 @@ CGO_ENABLED=1 \
 %else
 CGO_ENABLED=0 \
 %endif
+cd src/
 go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X main.Version=v%{version}" \
-   -o bin/%{executable_name} .
+   -o ../bin/%{executable_name} .
 
 %install
 # Install the binary.
