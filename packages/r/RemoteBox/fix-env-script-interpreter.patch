@@ -6,5 +6,5 @@ Index: remotebox
 -#!/usr/bin/env perl
 +#!/usr/bin/perl
  # ^^^ You may need to change this to the location of your perl interpreter
- # RemoteBox v3.3 (c) 2010-2024 Ian Chapman. Licenced under the terms of the GPL
+ # RemoteBox v3.4 (c) 2010-2024 Ian Chapman. Licenced under the terms of the GPL
  use strict;

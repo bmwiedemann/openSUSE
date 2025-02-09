@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  9 15:53:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.4
+  * This release is really to address a major RDP display issue
+  * Set RDP auth method to negotiate when creating new guests 
+    (quick fix for the remote display not opening on newly created guests)
+  * Changes to the xfreerdp, rdesktop and remmina presets to increase 
+    compatibility
+  * IMPORTANT: With RemoteBox 3.4 if you still have a guest that won't open 
+    it's display. Simply Edit it's settings, go to Display->Remote Display 
+    then press save. This will update some internal settings
+
+- renamed RemoteBox-3.3_fix-env-script-interpreter.patch to 
+  fix-env-script-interpreter.patch
+
+- dropped remotebox.pdf as the only official documentation is now the website
+
+-------------------------------------------------------------------
 Mon Sep 30 11:30:58 UTC 2024 - Christian Galeffi <chri@gallochri.com>
 
 -Update to 3.3

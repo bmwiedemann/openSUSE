@@ -229,4 +229,12 @@ reports this as a valid minimum, the guest won't start.
     <comment></comment>
     <requestid>1204877</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d4e7853943d9430a7f7fc9e1abe25d89</srcmd5>
+    <version>3.4</version>
+    <time>1739128092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1244508</requestid>
+  </revision>
 </revisionlist>

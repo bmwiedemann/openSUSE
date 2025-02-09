@@ -1,7 +1,7 @@
 #
 # spec file for package RemoteBox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,14 @@
 # to remotebox so filter it
 %global __provides_exclude ^perl\\(vboxService\\)
 Name:           RemoteBox
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        A VirtualBox client with remote management
 License:        GPL-2.0-or-later
 Group:          System/Emulators/PC
 URL:            http://knobgoblin.org.uk
 Source0:        http://knobgoblin.org.uk/downloads/%{name}-%{version}.tar.bz2
-Source1:        http://knobgoblin.org.uk/docs/remotebox.pdf
-Patch0:         RemoteBox-3.3_fix-env-script-interpreter.patch
+Patch0:         fix-env-script-interpreter.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 Requires:       freerdp
@@ -52,7 +51,6 @@ communicate with and manage a VirtualBox server installation.
 
 %prep
 %autosetup -p0
-install -m 0644 %{SOURCE1} .
 # Set the locations of Remotebox's files
 sed -i 's|\$Bin/share/remotebox|%{_datadir}/%{name}|g' remotebox
 sed -i 's|\$Bin/docs|%{_docdir}/%{name}|g' remotebox
@@ -101,7 +99,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 %files
 %license docs/COPYING
-%doc docs/changelog.txt  remotebox.pdf
+%doc docs/changelog.txt
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
