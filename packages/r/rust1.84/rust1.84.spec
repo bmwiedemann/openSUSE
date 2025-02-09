@@ -1,7 +1,7 @@
 #
-# spec file for package rust1.83
+# spec file for package rust1.84
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -128,7 +128,7 @@ Obsoletes:      %{1}1.62%{?2:-%{2}}
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html
 # tl;dr only aarch64, x86_64 and i686 are guaranteed to work.
 #
-# armv6/7, s390x, ppc[64[le]], riscv are all "guaranteed to build" only
+# armv6/7, s390x, ppc[64[le]], riscv, loongarch64 are all "guaranteed to build" only
 # but may not always work.
 
 # === broken distro llvm ===
@@ -450,6 +450,9 @@ Rust Stanard Library Sources are required for building some types of projects
 %ifarch riscv64
 %setup -q -T -b 109 -n rust-%{version_current}-%{rust_triple}
 %endif
+%ifarch loongarch64
+%setup -q -T -b 110 -n rust-%{version_current}-%{rust_triple}
+%endif
 ./install.sh --components=cargo,rustc,rust-std-%{rust_triple} --prefix=.%{_prefix} --disable-ldconfig
 
 %global rust_root %{_builddir}/rust-%{version_current}-%{rust_triple}%{_prefix}
@@ -465,7 +468,6 @@ rm -rf src/tools/lldb
 # Fix rpmlint error "This script uses 'env' as an interpreter"
 sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/python3|' library/core/src/unicode/printable.py
 chmod +x library/core/src/unicode/printable.py
-
 
 %if %{with wasi}
 # wasi-libc ships it's toolchain as wasm32-wasi, but rust expects it to be wasm32-wasip1.
