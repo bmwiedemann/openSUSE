@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb  7 18:40:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add pandas-pr60584-60586-mpl-vert.patch
+  * Fixes matplotlib deprecation errors in the test suite
+  * gh#pandas-dev/pandas#60584
+  * backported in gh#pandas-dev/pandas#60586
+
+-------------------------------------------------------------------
 Fri Dec 13 06:51:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Change skipped tests to also support Python 3.13. 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,8 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pandas-pr60584-60586-mpl-vert.patch gh#pandas-dev/pandas#60584 gh#pandas-dev/pandas#60586
+Patch0:         https://github.com/pandas-dev/pandas/pull/60586.patch#/pandas-pr60584-60586-mpl-vert.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
