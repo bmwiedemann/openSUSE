@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb  7 17:43:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 21.0.6 with OpenJ9 0.49.0 virtual machine
+- Including Oracle October 2024 and January 2025 CPU changes
+  * CVE-2024-21208 (bsc#1231702), CVE-2024-21210 (bsc#1231711),
+    CVE-2024-21217 (bsc#1231716), CVE-2024-21235 (bsc#1231719),
+    CVE-2025-21502 (bsc#1236278)
+  * OpenJ9 changes, see 
+    https://www.eclipse.org/openj9/docs/version0.49/
+- Added patch:
+  * openssl-OSSL_LIB_CTX.patch
+    + allow building with openssl < 3
+
+-------------------------------------------------------------------
 Tue Aug  6 08:29:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 21.0.4 with OpenJ9 0.46.0 virtual machine
