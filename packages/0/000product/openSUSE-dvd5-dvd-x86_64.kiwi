@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250207" schemaversion="4.1">
+<image name="OBS__openSUSE___20250209" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250207</productvar>
+      <productvar name="VERSION">20250209</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250207,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250209,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250207/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250209/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -362,7 +362,6 @@
       <repopackage name="dosfstools"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-pcr-signature"/>
-      <repopackage name="dracut-transactional-update"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
       <repopackage name="drkonqi6"/>
@@ -828,7 +827,6 @@
       <repopackage name="inkscape-extensions-gimp"/>
       <repopackage name="inkscape-lang"/>
       <repopackage name="inn"/>
-      <repopackage name="inotify-tools"/>
       <repopackage name="intel-vaapi-driver"/>
       <repopackage name="intlfonts-euro-bitmap-fonts"/>
       <repopackage name="inxi"/>
@@ -1811,7 +1809,6 @@
       <repopackage name="libimobiledevice-glue-1_0-0"/>
       <repopackage name="libini_config5"/>
       <repopackage name="libinih0"/>
-      <repopackage name="libinotifytools0"/>
       <repopackage name="libinput-udev"/>
       <repopackage name="libinput10"/>
       <repopackage name="libip4tc2"/>
@@ -2812,7 +2809,6 @@
       <repopackage name="libtss2-tcti-device0"/>
       <repopackage name="libtss2-tcti-tabrmd0"/>
       <repopackage name="libtss2-tctildr0"/>
-      <repopackage name="libtukit4"/>
       <repopackage name="libtumbler-1-0"/>
       <repopackage name="libturbojpeg0"/>
       <repopackage name="libturbojpeg0-x86-64-v3"/>
@@ -3103,7 +3099,6 @@
       <repopackage name="man"/>
       <repopackage name="man-pages-ja"/>
       <repopackage name="man-pages-zh_CN"/>
-      <repopackage name="mandoc-bin"/>
       <repopackage name="manufacturer-PPDs"/>
       <repopackage name="mariadb"/>
       <repopackage name="mariadb-client"/>
@@ -3139,7 +3134,6 @@
       <repopackage name="metatheme-breeze6-common"/>
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="mgopen-fonts"/>
-      <repopackage name="microos-tools"/>
       <repopackage name="milou6"/>
       <repopackage name="milou6-lang"/>
       <repopackage name="mimetreeparser"/>
@@ -3347,7 +3341,6 @@
       <repopackage name="patterns-base-minimal_base"/>
       <repopackage name="patterns-base-selinux"/>
       <repopackage name="patterns-base-sw_management"/>
-      <repopackage name="patterns-base-transactional_base"/>
       <repopackage name="patterns-base-x11"/>
       <repopackage name="patterns-base-x11_enhanced"/>
       <repopackage name="patterns-desktop-books"/>
@@ -3861,8 +3854,6 @@
       <repopackage name="rdma-core"/>
       <repopackage name="rdma-ndd"/>
       <repopackage name="re2c"/>
-      <repopackage name="read-only-root-fs"/>
-      <repopackage name="rebootmgr"/>
       <repopackage name="rgb"/>
       <repopackage name="ristretto"/>
       <repopackage name="ristretto-lang"/>
@@ -3894,7 +3885,6 @@
       <repopackage name="salt"/>
       <repopackage name="salt-master"/>
       <repopackage name="salt-minion"/>
-      <repopackage name="salt-transactional-update"/>
       <repopackage name="samba"/>
       <repopackage name="samba-ad-dc-libs"/>
       <repopackage name="samba-client"/>
@@ -3918,7 +3908,6 @@
       <repopackage name="screen"/>
       <repopackage name="sdbootutil"/>
       <repopackage name="sdbootutil-snapper"/>
-      <repopackage name="sdbootutil-tukit"/>
       <repopackage name="sddm-branding-openSUSE"/>
       <repopackage name="sddm-greeter-qt5"/>
       <repopackage name="sddm-greeter-qt6"/>
@@ -4066,7 +4055,6 @@
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-Aeon"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>
-      <repopackage name="systemd-presets-branding-transactional-server"/>
       <repopackage name="systemd-presets-common-SUSE"/>
       <repopackage name="systemd-rpm-macros"/>
       <repopackage name="systemsettings6"/>
@@ -4125,15 +4113,12 @@
       <repopackage name="tpm2.0-abrmd-selinux"/>
       <repopackage name="tpm2.0-tools"/>
       <repopackage name="traceroute"/>
-      <repopackage name="transactional-update"/>
-      <repopackage name="transactional-update-zypp-config"/>
       <repopackage name="translate-shell"/>
       <repopackage name="transmission-common"/>
       <repopackage name="transmission-gtk"/>
       <repopackage name="transmission-gtk-lang"/>
       <repopackage name="trash_kcm"/>
       <repopackage name="tree"/>
-      <repopackage name="tukit"/>
       <repopackage name="tumbler"/>
       <repopackage name="tumbler-folder-thumbnailer"/>
       <repopackage name="tumbler-lang"/>

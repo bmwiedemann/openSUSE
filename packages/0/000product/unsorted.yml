@@ -9075,6 +9075,7 @@ unsorted:
   - inn-devel 
   - innoextract 
   - innotop 
+  - inotify-tools 
   - inotify-tools-devel 
   - inotify-tools-doc 
   - input-pad 
@@ -14146,6 +14147,7 @@ unsorted:
   - libiniparser-devel 
   - libiniparser1 
   - libinjeqt1 
+  - libinotifytools0 
   - libinput-debug-gui 
   - libinput-devel 
   - libinput-tools 
@@ -14998,7 +15000,7 @@ unsorted:
   - libnl3-200-32bit 
   - libnl3-devel 
   - libnl3-devel-32bit 
-  - libnlopt0 
+  - libnlopt1 
   - libnm0-32bit 
   - libnma-devel 
   - libnma-docs 
@@ -19953,6 +19955,7 @@ unsorted:
   - nload 
   - nlohmann_json-devel 
   - nlopt-devel 
+  - nlopt-java 
   - nm-tray 
   - nm-tray-lang 
   - nmap-parse-output 
@@ -21207,6 +21210,7 @@ unsorted:
   - patterns-base-fips 
   - patterns-base-minimal_base-32bit 
   - patterns-base-sw_management-32bit 
+  - patterns-base-transactional_base 
   - patterns-base-update_test 
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
@@ -36877,6 +36881,7 @@ unsorted:
   - salt-ssh 
   - salt-standalone-formulas-configuration 
   - salt-syndic 
+  - salt-transactional-update 
   - salt-zsh-completion 
   - samba-ad-dc 
   - samba-ad-dc-libs-32bit 
@@ -37959,6 +37964,7 @@ unsorted:
   - systemd-mini-devel 
   - systemd-network 
   - systemd-portable 
+  - systemd-presets-branding-transactional-server 
   - systemd-repart-branding-Aeon 
   - systemd-repart-branding-tik 
   - systemd-repart-dracut 
@@ -49308,6 +49314,7 @@ unsorted:
   - xournalpp-lang 
   - xpadneo 
   - xpadneo-kmp-default 
+  - xpadneo-kmp-longterm 
   - xpadneo-ueficert 
   - xpenguins 
   - xpinguin 
