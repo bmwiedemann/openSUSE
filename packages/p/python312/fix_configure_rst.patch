@@ -21,7 +21,7 @@
     Create a Python.framework rather than a traditional Unix install. Optional
 --- a/Misc/NEWS
 +++ b/Misc/NEWS
-@@ -14575,7 +14575,7 @@ C API
+@@ -14838,7 +14838,7 @@ C API
  - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
  
  - bpo-43795: The list in :ref:`limited-api-list` now shows the public name

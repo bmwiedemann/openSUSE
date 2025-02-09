@@ -6,7 +6,7 @@
 
 --- a/Doc/tools/extensions/c_annotations.py
 +++ b/Doc/tools/extensions/c_annotations.py
-@@ -118,7 +118,11 @@ def add_annotations(app: Sphinx, doctree
+@@ -117,7 +117,11 @@ def add_annotations(app: Sphinx, doctree
      state = app.env.domaindata["c_annotations"]
      refcount_data = state["refcount_data"]
      stable_abi_data = state["stable_abi_data"]
@@ -42,7 +42,7 @@
  
 --- a/Doc/tools/extensions/pyspecific.py
 +++ b/Doc/tools/extensions/pyspecific.py
-@@ -26,7 +26,10 @@ from sphinx.domains.python import PyFunc
+@@ -25,7 +25,10 @@ from sphinx.domains.python import PyFunc
  from sphinx.locale import _ as sphinx_gettext
  from sphinx.util.docutils import SphinxDirective
  from sphinx.writers.text import TextWriter, TextTranslator

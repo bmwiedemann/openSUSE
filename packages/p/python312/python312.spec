@@ -118,16 +118,17 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.8
+Version:        3.12.9
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
 URL:            https://www.python.org/
 Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
 Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
-Source2:        baselibs.conf
-Source3:        README.SUSE
-Source4:        externally_managed.in
+Source2:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.sigstore
+Source3:        baselibs.conf
+Source4:        README.SUSE
+Source5:        externally_managed.in
 Source7:        macros.python3
 Source8:        import_failed.py
 Source9:        import_failed.map
@@ -190,9 +191,6 @@ Patch41:        docs-docutils_014-Sphinx_420.patch
 # PATCH-FIX-SLE doc-py38-to-py36.patch mcepl@suse.com
 # Make documentation extensions working with Python 3.6
 Patch44:        doc-py38-to-py36.patch
-# PATCH-FIX-UPSTREAM CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch bsc#1234290 mcepl@suse.com
-# prevents exhaustion of memory
-Patch45:        CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -757,7 +755,7 @@ rm %{buildroot}%{_bindir}/2to3
 # documentation
 export PDOCS=%{buildroot}%{_docdir}/%{name}
 install -d -m 755 $PDOCS
-install -c -m 644 %{SOURCE3} $PDOCS/
+install -c -m 644 %{SOURCE4} $PDOCS/
 install -c -m 644 README.rst $PDOCS/
 
 # tools
