@@ -64,4 +64,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e9c89d7a6126ab996588bf9764a62aa9</srcmd5>
+    <version>1.700.0</version>
+    <time>1739127636</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1244025</requestid>
+  </revision>
 </revisionlist>
