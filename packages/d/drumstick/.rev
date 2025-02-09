@@ -242,4 +242,12 @@
     <comment>Update to 2.9.1</comment>
     <requestid>1207990</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d6d4fadcc366e923413b9a726a549f79</srcmd5>
+    <version>2.10.0</version>
+    <time>1739128073</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1244479</requestid>
+  </revision>
 </revisionlist>

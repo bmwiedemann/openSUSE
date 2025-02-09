@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Feb  2 11:29:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.10.0
+  * RT: FluidSynth backend, using "audio.jack.autoconnect" when
+    the audio driver is "jack"
+  * ALSA: emitted signal with invalid pointer
+  * RT, Widgets: issues with the new reverb/chorus fluidsynth
+    settings
+  * ALSA: new QDebug output operator accepting SequencerEvent
+    instances
+  * Widgets: revised user interface for the fluidsynth settings
+  * fixed backendmanager usage in vpiano
+
+-------------------------------------------------------------------
 Mon Oct 14 19:35:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.9.1
