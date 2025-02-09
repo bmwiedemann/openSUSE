@@ -1,2 +1,3 @@
 # required to be empty
 addFilter("zero-length .*asdf/_tests/data/frames_ignore_both.diff")
+addFilter("zero-length .*asdf/_tests/test_deprecated.py")

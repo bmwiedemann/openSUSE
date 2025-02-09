@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Feb  9 13:23:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.1.0
+  * fix type and filter docs for search by @braingram in #1880
+  * improve schema info collection combiner handling by @braingram
+    in #1875
+  * pyproject.toml: version_file requires setuptools_scm>=8 by
+    @wdconinc in #1894
+  * Add Converter.to_info to customize info and search by
+    @braingram in #1884
+- Release 4.0.0
+  * This is a major release for asdf that includes removal of
+    deprecated features and changes to some defaults.
+  ## Feature
+  * Switch default ASDF standard to 1.6.0. (#1744)
+  * Raise RuntimeError if a Convert subclass supports multiple tags
+    but doesn't implement select_tag. (#1853)
+  # General
+  * Set memmap=False to default for asdf.open and
+    AsdfFile.__init__. (#1801)
+  ## Removal
+  * remove copy_arrays (replaced by memmap) (#1800)
+  * Remove deprecated API. See docs for full details. (#1852)
+  * Switch default convert_unknown_ndarray_subclasses to False and
+    issue deprecation warning if it is enabled. (#1858)
+
+-------------------------------------------------------------------
 Tue Nov 12 09:33:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:

@@ -345,4 +345,34 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1225035</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f46602a26d7bdeabddaa57ec5162c29f</srcmd5>
+    <version>4.1.0</version>
+    <time>1739128080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0
+  * fix type and filter docs for search by @braingram in #1880
+  * improve schema info collection combiner handling by @braingram
+    in #1875
+  * pyproject.toml: version_file requires setuptools_scm&gt;=8 by
+    @wdconinc in #1894
+  * Add Converter.to_info to customize info and search by
+    @braingram in #1884
+- Release 4.0.0
+  * This is a major release for asdf that includes removal of
+    deprecated features and changes to some defaults.
+  ## Feature
+  * Switch default ASDF standard to 1.6.0. (#1744)
+  * Raise RuntimeError if a Convert subclass supports multiple tags
+    but doesn't implement select_tag. (#1853)
+  # General
+  * Set memmap=False to default for asdf.open and
+    AsdfFile.__init__. (#1801)
+  ## Removal
+  * remove copy_arrays (replaced by memmap) (#1800)
+  * Remove deprecated API. See docs for full details. (#1852)
+  * Switch default convert_unknown_ndarray_subclasses to False and
+    issue deprecation warning if it is enabled. (#1858)</comment>
+    <requestid>1244493</requestid>
+  </revision>
 </revisionlist>
