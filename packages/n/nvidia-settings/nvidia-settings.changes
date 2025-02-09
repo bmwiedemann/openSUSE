@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 28 03:39:35 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 570.86.16
+  --> https://github.com/NVIDIA/nvidia-settings/commit/e55a7ed
+
+-------------------------------------------------------------------
 Fri Dec  6 16:42:34 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - found the official tarball of 565.77; do the update for real 
