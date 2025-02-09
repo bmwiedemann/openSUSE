@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 27 12:52:52 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update openvswitch to 3.3.2. For a list of changes, check
+  https://github.com/openvswitch/ovs/blob/v3.3.2/NEWS
+- Update OVN to 24.03.5. For a list of changes, check
+  https://github.com/ovn-org/ovn/blob/v24.03.5/NEWS
+  - This update fix CVE-2025-0650 ovn: egress ACLs may be bypassed
+    via specially crafted UDP packet (bsc#1236353)
+
+-------------------------------------------------------------------
 Mon Dec 16 15:15:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add proper dependency on /usr/sbin/ipsec on openvswitch-ipsec:
