@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb  6 22:28:01 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Wed Sep 30 10:45:42 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Remove fix-time-local.patch (not needed anymore)
