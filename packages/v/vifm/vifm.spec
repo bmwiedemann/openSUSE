@@ -1,7 +1,7 @@
 #
 # spec file for package vifm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vifm
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Ncurses based file manager with vi like keybindings
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ Source0:        https://github.com/vifm/vifm/releases/download/v%{version}/%{nam
 Source1:        https://github.com/vifm/vifm/releases/download/v%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 BuildRequires:  file-devel
+BuildRequires:  glib2-devel
 BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -53,7 +54,7 @@ sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' src/vifm-convert-dircolors
 %configure \
 	--with-curses \
 	--with-libmagic \
-	--without-gtk \
+	--with-glib \
 	--disable-developer
 %make_build
 gzip -9c ChangeLog > ChangeLog.gz

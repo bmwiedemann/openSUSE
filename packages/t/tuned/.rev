@@ -411,4 +411,12 @@ openSUSE:Factory
   * powertop2tuned: use default user profile path from the consts</comment>
     <requestid>1241133</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7f4f4bd9ca380f9a7f40b081710f2592</srcmd5>
+    <version>2.25.1.0+git.889387b</version>
+    <time>1739204769</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244535</requestid>
+  </revision>
 </revisionlist>

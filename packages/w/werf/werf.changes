@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Feb 10 13:08:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.6:
+  * chore: release 2.26.6
+  * fix(build, image-spec): remove werf SSH_AUTH_SOCK env that
+    persist after build
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Mon Feb 10 12:56:50 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.5:
+  * chore: release 2.26.5
+  * fix(build, image-spec): remove werf envs that persist after
+    build
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Mon Feb 10 07:39:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.26.4:
+  * chore: release 2.26.4
+  * fix(build): account for imagesSpec.clearCmd/clearEntrypoint
+    when generating image tag
+  * fix(build): ensure imageSpec preserves CMD and ENTRYPOINT
+    behavior for compatibility
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
 Sat Feb 08 11:26:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.26.3:

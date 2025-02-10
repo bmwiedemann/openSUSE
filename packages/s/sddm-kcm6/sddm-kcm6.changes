@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:22 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+
+-------------------------------------------------------------------
+Thu Jan 23 13:47:25 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat Jan 11 18:30:59 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * sddmkcm, ui/main: Close dialog on job return Previously if the authentication dialog was cancelled, the KCM dialog would not close.
+  * ui/main: Port dialog to PromptDialog and avoid InlineMessage Ports to PromptDialog, as this is intended as a form of prompt. The InlineMessage is removed, as it's both not contextually appropriate and it animates in which causes poor width changes. Finally, the message has been changed to remove the commas on each list item.
+  * actions: Use imperative descriptions for kauth actions
+  * Fix autologin session value
+  * Resolve and de-duplicate theme paths (kde#482484)
+  * update version for new release
+  * Add option to hide clock in Breeze theme
+  * Drop unused Qt5Compat import
+
+-------------------------------------------------------------------
 Tue Dec 31 20:52:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

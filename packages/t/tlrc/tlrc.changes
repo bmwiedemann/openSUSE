@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 07:37:58 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.0:
+  * Fixed stretched man page rendering when using mandoc
+  * Fixed wrong error messages when the pages.en directory in the
+    cache is empty
+  * The location of the config file can now be overridden using
+    the TLRC_CONFIG environment variable (#89)
+  * Added support for hex color codes (#115)
+
+-------------------------------------------------------------------
 Tue Jul 30 03:54:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.3:

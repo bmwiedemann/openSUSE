@@ -17,7 +17,7 @@
 
 
 Name:           uChmViewer
-Version:        8.3
+Version:        8.4
 Release:        0
 Summary:        CHM and ePub Viewer
 License:        GPL-3.0-only

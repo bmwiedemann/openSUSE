@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  9 19:46:08 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 8.4
+  * Added Polish translation
+  * Fixed a bug causing false detection of an external link
+    and displaying the "Open link in external program" dialog box.
+    This was happening when clicking on the link together with
+    the Ctrl/Shift key or when activating the context menu
+    item "Open in new/background tab".
+
+-------------------------------------------------------------------
 Mon Dec  9 21:25:35 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Switch to uChmViewer fork

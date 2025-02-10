@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Feb 10 07:25:15 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14:
+  * Somewhat incompatible changes
+    This release contains a number of changes which are technically non-backwards
+    compatible. However, all of them should have very little negative impact (i.e.,
+    hard to notice the change without reading the changelog).
+    At the same time, a bug, fixing which is likely to have an impact on user
+    configuration, has been identified but not yet fixed to give a chance to
+    update all affected vifmrc files. If a bug is likely to be relied on by the
+    configuration, a dialog with the explanation and instructions will appear.
+  * Sorting and non-Latin characters
+    Until this release Vifm has always used byte sorting (effectively, sorting
+    of UTF-8 byte sequences). From now on a form of Unicode normalization is
+    applied to strings when sorting views and completion results. The change
+    can be expanded to other cases in future releases. The measured performance
+    impact is negligible (several percent).
+    Practically, this means that characters like a and ä are now grouped
+    together regardless of the way in which diacritic is being encoded. Some
+    characters can still appear in weird non-alphabetic positions because full
+    Unicode normalization results in losing case sensitivity and is therefore
+    not applied.
+  * Addressing some longtime woes
+    For one reason or another some inconvenient peculiarities have accumulated
+    over the years. Time has come to replace workarounds with something better:
+      + global variables (g:var) replace the use of environmental variables
+        for internal purposes, thus avoiding polluting environment of child processes
+      + use of :let to invoke a builtin function discarding its result is
+        superseded by a proper :call command
+      + use of execute 'normal! gl' to run selection now has :open command
+        as a better alternative
+      + size of selection can now be queried via selected() (previous releases
+        required expand('%c') == expand('%f') or an equivalent trick)
+      + %{expression} macro in 'statusline' can now have } embedded as \} (\\ still means two slashes)
+      + dialogs now recognize Enter and Escape keys as "yes" and "no" replies
+  * More useful menus
+    :copen recalled last navigation menu for years, but that's not always
+    enough. Now up to 25 such menus are stored after their use and can be
+    navigated to via :chistory/:colder/:cnewer.
+    In addition, :grep or :find can be rerun on the same set of commands right
+    from the menu which previously required leaving the menu just to get back
+    to it.
+    History of command-line in menus is now also managed and stored, making
+    staying in menu mode for longer a more pleasant experience.
+  * UI improvements
+    Navigation between views/tabs via new :wingo command with optional
+    incremental completion thanks to new 'wildinc' option (applicable to any
+    other command or all of them at once).
+    Ability to highlight a view column (:highlight column:size ...), specify
+    how highlighting applies ('hloptions'), set a separator between miller
+    columns in set fillchars+=millersep:'|', shorten columns in the middle (^
+    in 'viewcolumn').
+    Also, displaying of CJK characters on Windows should have much fewer issues now.
+  * Lua API
+    Slowly adding new functionality. This batch comes with things like
+    primitive file operations, ability to create custom views or menus and
+    handling ranges of :commands.
+  * Other
+    Search matches can be traversed via Tab and Shift-Tab while in the prompt
+    (applies to navigation mode as well).
+    An invalid expression in :if or :elseif no longer just skips that command,
+    now all commands up to and including matching :endif are skipped to avoid
+    executing half-random sequences of commands due to a mistake, which also
+    results in better error messages. Previously, :elseif was also evaluating
+    its expression even some earlier branch was already taken.
+    :rename now asks whether file move is intended instead of assuming a user
+    mistake and refusing to proceed.
+    Support MTP devices by bundled vifm-media script if simple-mtpfs is
+    installed. Also improve what devices are offered for mounting (e.g., don't
+    offer a whole drive if it contains partitions).
+    v:version to branch depending on release.
+  * Fixes
+    Get preview graphics out of the way in more cases (like when opening
+    menus). Terminals with more than 32768 color pairs should not cause visual
+    defects or crashes anymore.
+    Merging of directories was either not asking for confirmation or aborting
+    after skipping a file. Paths with some unreadable characters were not
+    processed due to a regression. Directories weren't counted in estimates of
+    file operations.
+    && operator was always evaluating both branches instead of properly
+    short-circuiting. %a macro of 'statusline' was displaying wrong values on
+    non-Linux Unix-like systems. :compare falsely claimed that files of
+    identical size and with common prefix are identical.
+
+-------------------------------------------------------------------
 Thu Apr  6 08:31:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13:

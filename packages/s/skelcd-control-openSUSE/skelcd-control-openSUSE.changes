@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  3 08:30:52 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Set SELinux as default LSM in enforcing mode instead of AppArmor (bsc#1230118)
+
+-------------------------------------------------------------------
 Wed Jul 31 10:26:00 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Bring back the label "System Role" to the left pane (bsc#1228171)

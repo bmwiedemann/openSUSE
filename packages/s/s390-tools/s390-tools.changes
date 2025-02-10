@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Feb 10 07:36:08 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tools to 2.37 (jsc#PED-9591, jsc#PED-10303, jesc#PED-11870 (jsc#IBM-1062)) 
+  * Changes of existing tools:
+    dbginfo.sh: Add details on CPU-measurement
+    dbginfo.sh: Add new crypto command
+    dbginfo.sh: Add overview commands and crypto update
+    dbginfo.sh: Adding kdump info
+    dbginfo.sh: Removing outdated email references
+    dbginfo.sh: Rework network section
+    dbginfo.sh: Update copyright 2nd year
+    pvimg: Add '--(enable|disable)-image-encryption' flags to 'pvimg create'
+    pvimg: Add '--cck ' command line option and make '--comm-key' an alias
+    pvimg: Add '--hdr-key' command line option to 'pvimg create'
+    pvimg: Rename '--key' into '--hdr-key' and use '--key' as an alias (for 'pvimg info')
+    pvsecret: Add support for retrievable secrets
+    ziorep_config: Add PCHID field to adapter report
+    ziorep_traffic: Add DEVBUSID column to traffic report
+    ziorep_utilization: Add --fcp-device parameter to print virtual adapter report
+    ziorep_utilization: Add PCHID column to physical adapter report
+    ziorep_utilization: Now prints only physical adapter report by default
+    ziorep_utilization: Swap Bus-ID and CHPID columns in virtual adapter report
+    zipl/boot: Increase section size for eckd_mv dumper
+    zkey: Add support for listing and importing protected virtualization secrets
+  * Bug Fixes:
+    chpstat: Fix invalid utilization data on older kernels
+    opticsmon: Fix runaway loop in on_link_change()
+    zipl: Update inline assembly for GCC 15
+    zipl_helper.device-mapper: Add missed step in logical device resolution
+- Revendored vendor.tar.gz
+- Removed obsolete patches:
+  * s390-tools-01-zipl_helper.device-mapper-add-missed-step-in-logical.patch
+  * s390-tools-02-zipl-src-fix-imprecise-check-that-file-is-on-specifi.patch
+  * s390-tools-General-update-01.patch
+  * s390-tools-General-update-02.patch
+  * s390-tools-General-update-03.patch
+  * s390-tools-General-update-04.patch
+  * s390-tools-General-update-05.patch
+  * s390-tools-General-update-06.patch
+  * s390-tools-General-update-07.patch
+  * s390-tools-General-update-08.patch
+  * s390-tools-General-update-09.patch
+  * s390-tools-General-update-10.patch
+  * s390-tools-General-update-11.patch
+  * s390-tools-General-update-12.patch
+  * s390-tools-Additional-update-01.patch
+  * s390-tools-Additional-update-02.patch
+  * s390-tools-pvimg-info-command-01.patch
+  * s390-tools-pvimg-info-command-02.patch
+  * s390-tools-pvimg-info-command-03.patch
+  * s390-tools-Support-unencrypted-SE-images-01.patch
+  * s390-tools-pvimg-info-command-04.patch
+  * s390-tools-pvimg-additional-01.patch
+  * s390-tools-01-zkey-Add-support-for-retrieving-a-list-of-ultravisor-secrets.patch
+  * s390-tools-02-zkey-Add-the--pvsecrets-list-command.patch
+  * s390-tools-03-zkey-Add-PVSECRETS-AES-key-type.patch
+  * s390-tools-04-zkey-Add-the-pvsecrets-import-command.patch
+  * s390-tools-05-zkey-Reject-key-generation-and-APQN-association-for-PVSECRET-AES-keys.patch
+  * s390-tools-06-zkey-Reject-re-enciphering-of-PVSECRET-AES-keys.patch
+  * s390-tools-07-zkey-Support-validation-of-key-of-type-PVSECRET-AES.patch
+  * s390-tools-08-rust-pvimg-Fix-flag-parsing-for-allowing-dump.patch
+  * s390-tools-09-rust-pvimg-Document-the-change-from--comm-key-to--cck.patch
+
+-------------------------------------------------------------------
 Mon Feb  3 07:51:27 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied more additional patches (jsc#PED-11870, jec#PED-11958)

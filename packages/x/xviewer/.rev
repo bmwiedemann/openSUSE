@@ -230,4 +230,18 @@
     <comment></comment>
     <requestid>1195079</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2bd92c6dbd5d2b0c85a14ceb40b4b127</srcmd5>
+    <version>3.4.8</version>
+    <time>1739204804</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.4.8:
+  * Update translations
+
+  * xviewer-window.c: Add missing NULL terminator to mimetype
+  * Make the mouse preferences tab look a bit more consistent with
+- update to 2.6.2
+  * Consistent icon usage in all xapps: help-contents (#72)</comment>
+    <requestid>1244556</requestid>
+  </revision>
 </revisionlist>

@@ -1,30 +1,30 @@
 diff -ru orig/main.cpp mod/main.cpp
---- orig/main.cpp	2024-06-10 22:39:52.000000000 +0200
-+++ mod/main.cpp	2024-06-12 07:44:13.782719909 +0200
-@@ -3,7 +3,7 @@
+--- orig/main.cpp	2025-01-26 16:00:00.000000000 +0100
++++ mod/main.cpp	2025-02-09 17:59:53.335087174 +0100
+@@ -3,6 +3,7 @@
  #include <QSurfaceFormat>
  #include <QTranslator>
  #include <stdlib.h>
--#include "libxisf.h"
 +#include <libxisf.h>
  
  int main(int argc, char *argv[])
  {
 diff -ru orig/scriptengine.cpp mod/scriptengine.cpp
---- orig/scriptengine.cpp	2024-06-10 22:39:52.000000000 +0200
-+++ mod/scriptengine.cpp	2024-06-12 07:44:24.692828986 +0200
+--- orig/scriptengine.cpp	2025-01-26 16:00:00.000000000 +0100
++++ mod/scriptengine.cpp	2025-02-09 17:59:53.338096114 +0100
 @@ -1,4 +1,5 @@
  #include "scriptengine.h"
 +
  #include <QDir>
  #include <QFileInfo>
  #include <QDebug>
-@@ -8,7 +9,7 @@
+@@ -9,7 +10,7 @@
  #include "loadrunable.h"
  #include "batchprocessing.h"
  #include <fitsio2.h>
 -#include "libXISF/libxisf.h"
 +#include <libxisf.h>
- 
- namespace Script
- {
+ #ifdef PLATESOLVER
+ #include "solver.h"
+ #endif // PLATESOLVER
+Only in mod/: scriptengine.cpp.orig

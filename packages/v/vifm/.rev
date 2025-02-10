@@ -220,4 +220,41 @@ for menus;
     hlsearch', 'incsearch' in different modes.</comment>
     <requestid>1077686</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9988c9bcc8daa93fd97f7723ff8ecfe9</srcmd5>
+    <version>0.14</version>
+    <time>1739204948</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14:
+  * Somewhat incompatible changes
+    This release contains a number of changes which are technically non-backwards
+    compatible. However, all of them should have very little negative impact (i.e.,
+    hard to notice the change without reading the changelog).
+    At the same time, a bug, fixing which is likely to have an impact on user
+    configuration, has been identified but not yet fixed to give a chance to
+    update all affected vifmrc files. If a bug is likely to be relied on by the
+    configuration, a dialog with the explanation and instructions will appear.
+  * Sorting and non-Latin characters
+    Until this release Vifm has always used byte sorting (effectively, sorting
+    of UTF-8 byte sequences). From now on a form of Unicode normalization is
+    applied to strings when sorting views and completion results. The change
+    can be expanded to other cases in future releases. The measured performance
+    impact is negligible (several percent).
+    Practically, this means that characters like a and ä are now grouped
+    together regardless of the way in which diacritic is being encoded. Some
+    characters can still appear in weird non-alphabetic positions because full
+    Unicode normalization results in losing case sensitivity and is therefore
+    not applied.
+  * Addressing some longtime woes
+    For one reason or another some inconvenient peculiarities have accumulated
+    over the years. Time has come to replace workarounds with something better:
+      + global variables (g:var) replace the use of environmental variables
+        for internal purposes, thus avoiding polluting environment of child processes
+      + use of :let to invoke a builtin function discarding its result is
+        superseded by a proper :call command
+      + use of execute 'normal! gl' to run selection now has :open command
+        as a better alternative
+      + size of selection can now be queried via selected() (previous releases</comment>
+    <requestid>1244664</requestid>
+  </revision>
 </revisionlist>

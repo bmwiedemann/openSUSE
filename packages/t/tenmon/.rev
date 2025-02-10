@@ -147,4 +147,20 @@
 </comment>
     <requestid>1200846</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44684e264c5786ecf99f8fa0b746700d</srcmd5>
+    <version>20250126</version>
+    <time>1739204754</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20250126:
+  * Support for really big images +50000px
+  * Add setting solver profile in scripts
+  * Plate solving
+  * Open marked files as directory
+  * Improved ICC color profile handling
+  * Add *.fz and *.fts as FITS extension
+- Rename use_system_libxisf.patch to fix-cmakelists.patch
+</comment>
+    <requestid>1244515</requestid>
+  </revision>
 </revisionlist>

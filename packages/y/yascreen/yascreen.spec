@@ -1,7 +1,7 @@
 #
 # spec file for package yascreen
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           yascreen
-Version:        1.99
+Version:        2.06
 Release:        0
 Summary:        A terminal control library (ncurses alternative)
 License:        LGPL-3.0-or-later

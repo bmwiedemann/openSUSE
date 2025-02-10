@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb 04 10:43:48 UTC 2025 - trenn@suse.de
+
+- Add LIBEXECDIR=%{_prefix}/lib to adopt libexecdir and remove
+  the sed hack in spec due to mainline git 410344b8dbc64bada45be
+- Update to version 2.25.1.0+git.889387b:
+  * new release (2.25.1)
+  * disk: Add missing remove parameter
+  * plugins: Add missing instance parameters
+  * Makefile: Add support for installation to custom $LIBEXECDIR
+  * new release (2.25.0)
+  * plugin_scheduler: add switch to disable processing of kthreads
+  * sap-hana: Set transparent_hugepages to madvise
+  * bootloader: export Grub variables to make them available in submenus
+  * functions: Create a new parser object for each string expansion
+  * utils: Rename `PluginLoader` to `ClassLoader`
+  * plugin_net: handle cqe-mode-rx ethtool option
+  * profiles: Correct CPU governor settings
+  * utils.commands: Fix CPU online detection when not present
+  * new release (2.25.0-rc.1)
+  * docs: fixed docs generation on centos-7
+  * plugin_scheduler: fixed API
+  * plugin_scheduler: make perf support optional
+  * plugin_net: added support for hotplug and rename
+  * scheduler: Postpone cgroup blacklist check and double-check after fail
+  * makefile: added support for installation to custom $BINDIR/$SBINDIR
+  * tuned-ppd: Do not always clear holds with TuneD profile change signal
+  * tuned-ppd: Check that TuneD profile change signal is relevant
+  * doc: enable documentation generation on RHEL with asciidoc
+  * scheduler: Log process info when its affinity cannot be changed
+
+-------------------------------------------------------------------
 Mon Jan 27 21:33:57 UTC 2025 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
 
 - Fix grub.cfg path (bsc#1236491)

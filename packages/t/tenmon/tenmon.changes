@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  9 16:54:17 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20250126:
+  * Support for really big images +50000px
+  * Add setting solver profile in scripts
+  * Plate solving
+  * Open marked files as directory
+  * Improved ICC color profile handling
+  * Add *.fz and *.fts as FITS extension
+- Rename use_system_libxisf.patch to fix-cmakelists.patch
+
+-------------------------------------------------------------------
 Fri Sep 13 12:54:08 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20240816:

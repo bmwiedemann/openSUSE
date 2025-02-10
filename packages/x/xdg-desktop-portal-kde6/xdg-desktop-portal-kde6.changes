@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:24 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * access: The dialog need to be modal by default
+  * screenshot: The dialog needs to be modal by default
+  * [AppChooser] Don't use KBuildSycocaProgressDialog to rebuild sycoca (kde#484739)
+
+-------------------------------------------------------------------
+Thu Jan 23 13:47:32 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * account: Always send a valid URI
+  * Guard against session closed while dialogs are shown
+  * inputcapture: Fix crash due to wrong context arg (kde#494410)
+  * Make the component name for GlobalShortcuts only consist of appId if provided (kde#492992)
+  * implement a secondary permission system
+
+-------------------------------------------------------------------
+Sat Jan 11 18:31:07 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * ScreenChooserDialog: Set Accessible.role for Cards
+  * ScreenChooserDialog: make items keyboard-accessible
+  * inputcapture: Show a notification when capture starts
+  * [FileChooser] Don't ignore current_filter parameter with multiple name patterns
+  * Add missing license file
+  * ScreenShot: Don't access the result of a cancelled future
+  * Notification: Allow dbus-activating applications that are not running
+  * Make use of KWindowSystem::setMainWindow
+  * Dont clear shortcuts in GlobalShortcutsSession::setActions
+  * Fix i18nc usage (kde#496633)
+  * Allow restoring virtual outputs
+  * Give virtual outputs a more stable and unique id
+  * Give virtual outputs a better name
+  * screencast: Allow restoring regions
+  * Register list of WindowRestoreInfo as meta type
+  * Don't include quiet packages in feature_summary
+  * add a replace option
+  * Update git blame ignore file
+  * Reformat code with clang-format
+  * [FileChooser] Properly pass along requested current filter
+  * Create region selection window before calling setScreen (kde#493293)
+  * screencast: Improve window stream restoration
+  * update version for new release
+  * AppChooserDialog: allow accepting terminal commands (kde#493150)
+
+-------------------------------------------------------------------
 Tue Dec 31 20:52:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

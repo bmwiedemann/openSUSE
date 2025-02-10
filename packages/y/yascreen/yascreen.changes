@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  9 21:28:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.06:
+  * reduce code duplication
+  * fix a warning about possible loss of precision
+  * handle zero sized tty
+
+-------------------------------------------------------------------
 Sun Jan 21 17:03:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix build for non-SUSE distros

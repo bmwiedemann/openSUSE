@@ -1,0 +1,31 @@
+--- a/CMakeLists.txt	2025-02-09 17:58:04.385856772 +0100
++++ b/CMakeLists.txt	2025-02-09 17:58:49.750855984 +0100
+@@ -26,8 +26,9 @@
+ find_library(WCS_LIB wcs wcslib REQUIRED)
+ find_library(LCMS2_LIB lcms2 REQUIRED)
+ find_library(STELLARSOLVER_LIB stellarsolver)
++find_library(LibXISF_LIBRARY NAMES libXISF XISF REQUIRED)
++find_library(ZSTD_LIB NAMES zstd REQUIRED)
+ 
+-add_subdirectory(libXISF)
+ 
+ set(TENMON_SRC
+     about.cpp about.h
+@@ -74,7 +75,7 @@
+ qt_add_executable(tenmon WIN32 MACOSX_BUNDLE ${tenmon_ICON} ${TENMON_SRC})
+ 
+ find_path(FITS_INCLUDE fitsio2.h PATH_SUFFIXES cfitsio REQUIRED)
+-target_include_directories(tenmon PRIVATE ${FITS_INCLUDE} ${CMAKE_BINARY_DIR} ${libXISF_SOURCE_DIR})
++target_include_directories(tenmon PRIVATE ${FITS_INCLUDE} ${CMAKE_BINARY_DIR})
+ 
+ option(COLOR_MANAGMENT "Enable sRGB framebuffer support for gamma correct images and color profiles support" ON)
+ if(COLOR_MANAGMENT)
+@@ -98,7 +99,7 @@
+     message(STATUS "Found stellarsolver ${STELLARSOLVER_INCLUDE} ${STELLARSOLVER_LIB}")
+ endif(STELLARSOLVER_INCLUDE AND STELLARSOLVER_LIB)
+ 
+-target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml ${GSL_LIB} ${GSLCBLAS_LIB} ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} ${LCMS2_LIB} XISF)
++target_link_libraries(tenmon PRIVATE Qt6::Widgets Qt6::Sql Qt6::OpenGLWidgets Qt6::Qml ${GSL_LIB} ${GSLCBLAS_LIB} ${EXIF_LIB} ${FITS_LIB} ${RAW_LIB} ${WCS_LIB} ${LCMS2_LIB} ${LibXISF_LIBRARY} ${ZSTD_LIB})
+ if(APPLE)
+     target_link_libraries(tenmon PRIVATE Qt6::DBus "-framework CoreFoundation")
+ elseif(UNIX)

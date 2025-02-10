@@ -62,4 +62,18 @@
   * Fixed extraction of files that contain .. in the path from zip archives</comment>
     <requestid>1190369</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>261e7d0c5f95b808429c0d63d92d51fc</srcmd5>
+    <version>1.10.0</version>
+    <time>1739204953</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.0:
+  * Fixed stretched man page rendering when using mandoc
+  * Fixed wrong error messages when the pages.en directory in the
+    cache is empty
+  * The location of the config file can now be overridden using
+    the TLRC_CONFIG environment variable (#89)
+  * Added support for hex color codes (#115)</comment>
+    <requestid>1244672</requestid>
+  </revision>
 </revisionlist>

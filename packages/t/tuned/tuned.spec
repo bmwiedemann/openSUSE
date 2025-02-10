@@ -19,7 +19,7 @@
 %define         system_dir %{_prefix}/lib/%{name}/
 %define         profile_dir %{system_dir}profiles/
 Name:           tuned
-Version:        2.24.1.50+git.13dfc68
+Version:        2.25.1.0+git.889387b
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -190,12 +190,11 @@ to TuneD from power-profiles-daemon (PPD).
 %build
 # The tuned daemon is written in pure Python. Nothing requires to be built.
 # Just a hack to avoid installation in a wrong directory
-sed -i 's|usr/libexec/tuned|%{system_dir}|' Makefile
 sed -i 's|$(SYSCONFDIR)/modprobe.d|%{_modprobedir}|' Makefile
 sed -i 's|$(SYSCONFDIR)/dbus-1/system.d|%{_datadir}/dbus-1/system.d|' Makefile
 
 %install
-%make_install TUNED_PROFILES_DIR=%{profile_dir}
+%make_install LIBEXECDIR=%{_prefix}/lib TUNED_PROFILES_DIR=%{profile_dir}
 make install-ppd DESTDIR=%{buildroot} TUNED_PROFILES_DIR=%{profile_dir}
 # we do not have the python perf module (see bsc #1217758)
 rm %{buildroot}/%{python3_sitelib}/tuned/plugins/plugin_{scheduler,irqbalance}.py

@@ -1,3 +1,4 @@
 addFilter("E: zero-length /etc/tuned/active_profile")
 addFilter("E: zero-length /etc/tuned/profile_mode")
 addFilter("E: zero-length /etc/tuned/post_loaded_profile")
+addFilter("E: zero-length /etc/tuned/ppd_base_profile")
