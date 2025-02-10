@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 14 10:37:09 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- test execution with a simple listing call to ensure we have a
+    working tcl and tcllib installation with correct search paths
+
+-------------------------------------------------------------------
 Mon Jul 29 09:39:11 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to version 15.0:

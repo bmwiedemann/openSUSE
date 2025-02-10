@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          System/Filesystems
 URL:            https://github.com/ianka/xfs_undelete
 Source:         https://github.com/ianka/xfs_undelete/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  tcl >= 8.5
+BuildRequires:  tcllib
 Requires:       coreutils
 Requires:       file
 Requires:       file-magic
@@ -48,9 +50,10 @@ sed -i -e '1 s|/usr/bin/env tclsh|/usr/bin/tclsh|' xfs_undelete
 mkdir -p %{buildroot}%{_sbindir}
 cp -a xfs_undelete %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_mandir}/man8
-gzip -c xfs_undelete.man >%{buildroot}%{_mandir}/man8/xfs_undelete.8.gz
+gzip -9 -c xfs_undelete.man >%{buildroot}%{_mandir}/man8/xfs_undelete.8.gz
 
 %check
+./xfs_undelete -l >/dev/null
 
 %files
 %license LICENSE
