@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb  7 14:28:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add %sysusers_requires to perl-warewulf-common: ensure the
+  infrastructure is ready to generate users.
+
+-------------------------------------------------------------------
 Sat Mar 23 15:48:04 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Make build reproducible (bsc#1217973).

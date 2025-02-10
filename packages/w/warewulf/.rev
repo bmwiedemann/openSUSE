@@ -113,4 +113,12 @@
   * provision-For-reproducible-builds-equalize-time-stamps-in-CPIO-archives.patch</comment>
     <requestid>1162930</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>b192ec554047c38bae3cd5aee93a83f2</srcmd5>
+    <version>3.8.1</version>
+    <time>1739204981</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244705</requestid>
+  </revision>
 </revisionlist>
