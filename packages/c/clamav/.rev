@@ -1292,4 +1292,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1241514</requestid>
   </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>eacdacd92008df293ba06f8837a0fb12</srcmd5>
+    <version>1.4.2</version>
+    <time>1739208178</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1236949: Fix location of license files.</comment>
+    <requestid>1244806</requestid>
+  </revision>
 </revisionlist>

@@ -301,7 +301,7 @@ fi
 %endif
 
 %files
-%license COPYING*
+%license COPYING.txt COPYING/*
 %config(noreplace) %{_sysconfdir}/clamd.conf
 %config(noreplace) %{_sysconfdir}/freshclam.conf
 %{_bindir}/clamav-config

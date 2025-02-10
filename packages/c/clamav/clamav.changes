@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 10 12:12:53 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1236949: Fix location of license files.
+
+-------------------------------------------------------------------
 Thu Jan 23 17:33:09 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Drop the version dependency on libcurl. Building against versions
