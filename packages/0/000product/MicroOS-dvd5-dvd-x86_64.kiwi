@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20250209" schemaversion="4.1">
+<image name="OBS__MicroOS___20250210" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250209</productvar>
+      <productvar name="VERSION">20250210</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250209,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250210,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250209/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250210/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -443,6 +443,7 @@
       <repopackage name="kf6-kfilemetadata"/>
       <repopackage name="kf6-kglobalaccel"/>
       <repopackage name="kf6-kguiaddons"/>
+      <repopackage name="kf6-kguiaddons-imports"/>
       <repopackage name="kf6-kholidays"/>
       <repopackage name="kf6-kholidays-imports"/>
       <repopackage name="kf6-ki18n"/>
@@ -885,8 +886,8 @@
       <repopackage name="libkbdfile1"/>
       <repopackage name="libkdcraw-qt6"/>
       <repopackage name="libKDcrawQt6-5"/>
-      <repopackage name="libkdecorations2-6"/>
-      <repopackage name="libkdecorations2private11"/>
+      <repopackage name="libkdecorations3-6"/>
+      <repopackage name="libkdecorations3private11"/>
       <repopackage name="libkdsoap-qt6-2"/>
       <repopackage name="libKDSoapWSDiscoveryClient0"/>
       <repopackage name="libkexiv2-qt6"/>

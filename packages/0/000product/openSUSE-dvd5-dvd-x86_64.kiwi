@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250209" schemaversion="4.1">
+<image name="OBS__openSUSE___20250210" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250209</productvar>
+      <productvar name="VERSION">20250210</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250209,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250210,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250209/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250210/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1001,6 +1001,7 @@
       <repopackage name="kf6-kfilemetadata-lang"/>
       <repopackage name="kf6-kglobalaccel"/>
       <repopackage name="kf6-kguiaddons"/>
+      <repopackage name="kf6-kguiaddons-imports"/>
       <repopackage name="kf6-kholidays"/>
       <repopackage name="kf6-kholidays-imports"/>
       <repopackage name="kf6-ki18n"/>
@@ -1860,9 +1861,9 @@
       <repopackage name="libKCompactDisc6-5"/>
       <repopackage name="libkdcraw-qt6"/>
       <repopackage name="libKDcrawQt6-5"/>
-      <repopackage name="libkdecorations2-6"/>
-      <repopackage name="libkdecorations2-6-lang"/>
-      <repopackage name="libkdecorations2private11"/>
+      <repopackage name="libkdecorations3-6"/>
+      <repopackage name="libkdecorations3-6-lang"/>
+      <repopackage name="libkdecorations3private11"/>
       <repopackage name="libkdegames"/>
       <repopackage name="libkdegames-imports"/>
       <repopackage name="libkdegames-lang"/>

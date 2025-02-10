@@ -3343,6 +3343,8 @@ unsorted:
   - dhewm3 
   - dhex 
   - dhtest 
+  - di 
+  - di-devel 
   - dia 
   - dia-lang 
   - dialog-devel 
@@ -4600,6 +4602,7 @@ unsorted:
   - freecell-solver-devel 
   - freeciv 
   - freeciv-gtk3 
+  - freeciv-gtk4 
   - freeciv-lang 
   - freeciv-qt 
   - freedoom 
@@ -4868,6 +4871,7 @@ unsorted:
   - gap-liepring 
   - gap-liering 
   - gap-linearalgebraforcap 
+  - gap-lins 
   - gap-localizeringforhomalg 
   - gap-loops 
   - gap-lpres 
@@ -10206,7 +10210,6 @@ unsorted:
   - kf6-kfilemetadata-devel 
   - kf6-kglobalaccel-devel 
   - kf6-kguiaddons-devel 
-  - kf6-kguiaddons-imports 
   - kf6-kholidays-devel 
   - kf6-ki18n-devel 
   - kf6-ki18n-imports 
@@ -10692,6 +10695,7 @@ unsorted:
   - kubectl-retina-bash-completion 
   - kubectl-retina-fish-completion 
   - kubectl-retina-zsh-completion 
+  - kubectl-rook-ceph 
   - kubectl-tree 
   - kubectl-validate 
   - kubectl-view-allocations 
@@ -12918,6 +12922,7 @@ unsorted:
   - libdframeworkdbus-devel 
   - libdframeworkdbus2 
   - libdhash-devel 
+  - libdi5 
   - libdico2 
   - libdict-devel 
   - libdict1_0 
@@ -14598,10 +14603,10 @@ unsorted:
   - libm2pim18-gcc13-32bit 
   - libm2pim19 
   - libm2pim19-32bit 
-  - libm4ri-0_0_20200125 
   - libm4ri-devel 
-  - libm4rie-0_0_20200125 
+  - libm4ri1 
   - libm4rie-devel 
+  - libm4rie1 
   - libmaa-devel 
   - libmaa-doc 
   - libmaa4 
@@ -14875,7 +14880,7 @@ unsorted:
   - libmumps_5_3_5-gnu-mvapich2-hpc 
   - libmumps_5_3_5-gnu-openmpi4-hpc 
   - libmunge2 
-  - libmuparser2_3_4 
+  - libmuparser2_3_5 
   - libmuparserx4_0_12 
   - libmupen64plus-devel 
   - libmupen64plus2 
@@ -14893,7 +14898,7 @@ unsorted:
   - libnanomsg6 
   - libnanosvg0 
   - libnanosvgrast0 
-  - libnauty-2_8_8 
+  - libnauty-2_8_9 
   - libnbcompat-devel 
   - libnbcompat0 
   - libnbd-bash-completion 
@@ -23917,6 +23922,7 @@ unsorted:
   - python-ovsdbapp-doc 
   - python-paramiko-doc 
   - python-peppercorn-doc 
+  - python-pip-requirements-parser-doc 
   - python-ply-doc 
   - python-polib-doc 
   - python-praatio-doc 
@@ -24925,6 +24931,7 @@ unsorted:
   - python311-azure-mgmt-orbital 
   - python311-azure-mgmt-paloaltonetworksngfw 
   - python311-azure-mgmt-peering 
+  - python311-azure-mgmt-pineconevectordb 
   - python311-azure-mgmt-playwrighttesting 
   - python311-azure-mgmt-policyinsights 
   - python311-azure-mgmt-portal 
@@ -25582,6 +25589,7 @@ unsorted:
   - python311-fastparquet 
   - python311-fastremap 
   - python311-fasttext 
+  - python311-fawltydeps 
   - python311-fb-re2 
   - python311-fedora-messaging 
   - python311-feedgen 
@@ -26237,7 +26245,6 @@ unsorted:
   - python311-mistletoe 
   - python311-mistune 
   - python311-mistune2 
-  - python311-mitmproxy 
   - python311-mitmproxy-rs 
   - python311-mitmproxy-wireguard 
   - python311-mizani 
@@ -26555,6 +26562,7 @@ unsorted:
   - python311-pingparsing 
   - python311-pip-api 
   - python311-pip-licenses 
+  - python311-pip-requirements-parser 
   - python311-pip-run 
   - python311-pip-wheel 
   - python311-pipdeptree 
@@ -28535,6 +28543,7 @@ unsorted:
   - python312-azure-mgmt-orbital 
   - python312-azure-mgmt-paloaltonetworksngfw 
   - python312-azure-mgmt-peering 
+  - python312-azure-mgmt-pineconevectordb 
   - python312-azure-mgmt-playwrighttesting 
   - python312-azure-mgmt-policyinsights 
   - python312-azure-mgmt-portal 
@@ -29213,6 +29222,7 @@ unsorted:
   - python312-fastparquet 
   - python312-fastremap 
   - python312-fasttext 
+  - python312-fawltydeps 
   - python312-fb-re2 
   - python312-fedora-messaging 
   - python312-feedgen 
@@ -30231,6 +30241,7 @@ unsorted:
   - python312-pip 
   - python312-pip-api 
   - python312-pip-licenses 
+  - python312-pip-requirements-parser 
   - python312-pip-run 
   - python312-pip-wheel 
   - python312-pipdeptree 
@@ -32255,6 +32266,7 @@ unsorted:
   - python313-azure-mgmt-orbital 
   - python313-azure-mgmt-paloaltonetworksngfw 
   - python313-azure-mgmt-peering 
+  - python313-azure-mgmt-pineconevectordb 
   - python313-azure-mgmt-playwrighttesting 
   - python313-azure-mgmt-policyinsights 
   - python313-azure-mgmt-portal 
@@ -32931,6 +32943,7 @@ unsorted:
   - python313-fastparquet 
   - python313-fastremap 
   - python313-fasttext 
+  - python313-fawltydeps 
   - python313-fb-re2 
   - python313-fedora-messaging 
   - python313-feedgen 
@@ -33954,6 +33967,7 @@ unsorted:
   - python313-pip 
   - python313-pip-api 
   - python313-pip-licenses 
+  - python313-pip-requirements-parser 
   - python313-pip-run 
   - python313-pip-wheel 
   - python313-pipdeptree 
