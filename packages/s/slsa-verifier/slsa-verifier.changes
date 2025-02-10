@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Feb  8 09:17:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.7.0:
+  * chore: v2.6.0: update docs by @ramonpetgrave64 in #789
+  * chore: Update CODEOWNERS to use teams by @haydentherapper in
+    #793
+  * chore(deps): bump github.com/docker/docker from
+    24.0.9+incompatible to 26.1.4+incompatible in the go_modules
+    group by @dependabot in #794
+  * feat: support npm cli provenance v1 attestations by
+    @ramonpetgrave64 in #776
+  * chore: pin yamllint, golangci-lint by @ramonpetgrave64 in #783
+  * feat: refactor: use sigstore-go for fetching TrustedRoot by
+    @ramonpetgrave64 in #791
+  * chore(deps): update golang:1.21 docker digest to f2eb989 by
+    @renovate-bot in #796
+  * chore(deps): bump github.com/docker/docker from
+    26.1.4+incompatible to 26.1.5+incompatible in the go_modules
+    group by @dependabot in #798
+  * chore: fix vuln: override autolinker ^4.0.0 by @ramonpetgrave64
+    in #785
+  * chore(config): migrate renovate config by @renovate-bot in #800
+  * feat: set user-agent header on Rekor requests by @bobcallaway
+    in #801
+  * feat: handle dssev001 tlog entry types by @ramonpetgrave64 in
+    #799
+  * fix(deps): update golang.org/x/exp digest to 225e2ab by
+    @renovate-bot in #803
+  * chore(deps): update dependency pyyaml to v6.0.2 by
+    @renovate-bot in #808
+  * chore(deps): update golang:1.21 docker digest to 4746d26 by
+    @renovate-bot in #802
+  * fix(deps): update dependency org.apache.maven:maven-plugin-api
+    to v3.9.9 by @renovate-bot in #809
+  * chore: update go and golanci lint by @ramonpetgrave64 in #810
+  * feat(action): Updating to Node20 by @IAreKyleW00t in #811
+  * fix(deps): update module github.com/sigstore/sigstore-go to
+    v0.6.1 [security] by @renovate-bot in #805
+  * chore(deps): update gcr.io/distroless/base:nonroot docker
+    digest to e5260be by @renovate-bot in #795
+  * chore(deps): bump github.com/sigstore/sigstore-go from 0.6.1 to
+    0.6.2 in the go_modules group across 1 directory by @dependabot
+    in #812
+  * fix: fix method for getting leaf certs in Bundle v0.3 by
+    @ramonpetgrave64 in #813
+  * chore(deps): update github-actions by @renovate-bot in #817
+  * chore(deps): update golang docker tag to v1.23 by @renovate-bot
+    in #818
+  * fix(deps): update dependency @actions/core to v1.11.1 by
+    @renovate-bot in #819
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2 from
+    2.0.0 to 2.0.1 in the go_modules group by @dependabot in #820
+  * chore(deps): bump golang.org/x/crypto from 0.27.0 to 0.31.0 in
+    the go_modules group by @dependabot in #821
+  * fix(deps): update dependency org.apache.maven:maven-core to
+    v3.9.9 by @renovate-bot in #816
+  * fix(deps): update dependency
+    org.apache.maven.plugin-tools:maven-plugin-annotations to
+    v3.15.1 by @renovate-bot in #824
+  * chore(deps): update github-actions by @renovate-bot in #823
+  * chore(deps): bump golang.org/x/net from 0.27.0 to 0.33.0 in the
+    go_modules group by @dependabot in #826
+  * fix(deps): update go by @renovate-bot in #825
+  * chore(deps): update golang:1.23 docker digest to 51a6466 by
+    @renovate-bot in #822
+  * fix(deps): update golang.org/x/exp digest to 3edf0e9 by
+    @renovate-bot in #815
+  * chore(deps): update gcr.io/distroless/base:nonroot docker
+    digest to 97d1521 by @renovate-bot in #814
+  * chore(deps): bump undici from 5.28.4 to 5.28.5 in
+    /actions/installer in the npm_and_yarn group across 1 directory
+    by @dependabot in #827
+
+-------------------------------------------------------------------
 Fri Aug 16 05:43:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.6.0:
