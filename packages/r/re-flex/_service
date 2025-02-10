@@ -2,7 +2,7 @@
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/Genivia/RE-flex.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v5.1.1</param>
+    <param name="revision">v5.2.1</param>
     <param name="scm">git</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

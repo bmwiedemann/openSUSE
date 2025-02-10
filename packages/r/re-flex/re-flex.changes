@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb  1 16:17:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 5.2.1:
+  * new file encoding type null_data to read NUL as LF and vice
+    versa; supports reading xargs -0 output for example
+
+-------------------------------------------------------------------
 Sat Jan 11 10:24:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 5.1.1:
