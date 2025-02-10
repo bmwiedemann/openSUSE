@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  9 19:00:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.41.8
+  * remove all remaining uses of Omega (and Parker's DFA counting)
+  * support recent versions of clang
+
+-------------------------------------------------------------------
 Sat Jun 24 13:44:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.41.7

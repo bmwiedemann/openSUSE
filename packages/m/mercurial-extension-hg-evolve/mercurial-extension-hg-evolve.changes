@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb  7 21:24:41 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Update to version 11.1.7.post1.
+  * no changes from 11.1.7, only upgraded packaging
+- Changes from version 11.1.7:
+  * evolve: fix version check from 972d98ce3552 for hg 6.8 (issue6958)
+  * obslog: also display patch for rebased changesets (requires Mercurial 5.6
+    or newer for in-memory rebase support)
+
+-------------------------------------------------------------------
 Sun Dec  1 22:02:39 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Reenable test "test-evolve-templates.t".

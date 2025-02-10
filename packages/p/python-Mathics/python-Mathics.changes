@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Feb  8 15:46:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.0.1:
+  * Some work was made on the Mathics3 Kernel to work in Python
+    3.13.
+  * The maximum version of numpy was increased to < 2.3 to allow
+    marimo to work.
+  * Correct for mismatch between ListExpression and tuple in
+    DispatchAtom.
+  * When the result of an evaluation is Symbol`Null, Mathics CLI
+    now does not show an Out[...]= line, following the behavior of
+    the WMA CLI.
+  * Aymptote rendering of platonic solids added.
+  * Document tagging code handles TeX math mode more completely,
+    Image tags in PDF properly.
+  * Updated documentation.
+- Re-enable all tests as they have been fixed upstream.
+- Bump numpy requirement to allow numpy >= 2 in keeping with
+  upstream.
+
+-------------------------------------------------------------------
+Wed Feb  5 09:09:22 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.0.0:
+  * Too many changes to list, see
+    <https://github.com/Mathics3/mathics-core/releases/tag/8.0.0>.
+- Update minimum versions in Requires and BuildRequires.
+- Restore tests that now work: test_home_page, test_gudermannian,
+  test_image.
+- Drop python-Mathics-sympy1_13.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Sun Feb  2 12:44:43 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.0.0:

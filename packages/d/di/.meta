@@ -1,0 +1,13 @@
+<package name="di" project="openSUSE:Factory">
+  <title>Disk Information Utility</title>
+  <description>di is a disk information utility that displays everything that df does and
+more. It features the ability to display your disk usage in whatever format you
+prefer. It also checks the user and group quotas, so that the user sees the
+space available for their use, not the system wide disk space. It is designed
+to be highly portable across many platforms and is great for heterogenous
+networks.
+
+</description>
+  <devel project="utilities" package="di"/>
+  <url>http://www.gentoo.com/di/</url>
+</package>

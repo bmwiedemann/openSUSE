@@ -449,4 +449,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.12</comment>
     <requestid>1242196</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>272eb29ebd4e0365ee50d3f3f731a57e</srcmd5>
+    <version>6.12.13</version>
+    <time>1739204587</time>
+    <user>anag+factory</user>
+    <comment>6.12.13</comment>
+    <requestid>1244471</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  9 04:00:30 UTC 2025 - Glass Su <glass.su@suse.com>
+
+- drbd: fix build error against kernel v6.13 (boo#1236927)
+  * add patch
+      + boo1236927-fix-build_error_against_v6.13.patch
+
+-------------------------------------------------------------------
 Wed Jan  8 07:08:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - fix the warning of blk_validate_limits when running drbdadm down (boo#1235399)

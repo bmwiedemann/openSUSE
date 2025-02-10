@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:27:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Remove extra semicolons
+  * Do not allow '@' in :authority or host field value
+  * Fix compile error with NDEBUG
+  * Port ngtcp2_ksl changes that introduced ngtcp2_ksl_search
+- update to 1.6.0:
+  * Fix cmake export
+  * Fix include export
+  * Fix ARM64 __popcnt intrinsics
+  * Refactor qpack reserve_buf
+  * Fix potential overflow
+  * nghttp3_map: Port ngtcp2 changes
+  * Optimize nghttp3_read_varint
+  * Consistent macro comments
+  * clang-format files under fuzz
+  * ispow2: Better fallback implementation
+  * Refactor http on header
+  * Simplify http_request_on_header and http_response_on_header
+  * qpack: Switch on opcode
+  * Do huffman encoding only when the reduction is more than 25%
+  * Optimize nghttp3_check_header_value
+  * Revert "Optimize nghttp3_check_header_value"
+  * cmake: Remove trailing spaces
+  * Optimize nghttp3_check_header_value
+- update to 1.5.0:
+  * Fix format in nghttp3_macro.h
+  * Bump clang format
+  * cmake: Fix linker warning LNK4291 when linking static lib to
+    the final binary
+  * Ngtcp2 port
+  * nghttp3_idtr: Remove server field
+  * Port ngtcp2 changes
+  * Add examples links
+
+-------------------------------------------------------------------
 Mon Jun 17 18:00:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

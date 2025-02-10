@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:45 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * Add missing !
+  * PipeWireSourceStream::setActive demote assert to warning
+  * PipeWireSourceItem handle stream creation failure
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:25 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * Use ECMDeprecationSettings
+  * Avoid calling pipewire methods on the render thread
+  * Flush encoder queue when streaming doesn't provide an update
+  * Add GIF support
+  * Add animated WebP support
+  * Add metainfo.yaml
+  * libx264encoder: Ensure stream size is always a multiple of 2 (kde#485733)
+  * encoder: Make it possble to override the filter graph used for software encode
+  * PipeWireCore: handle null loop from pw_loop_new gracefully
+  * PipeWireSourceStream: work around crashes for pipewire < 0.3.49 (kde#492400)
+  * produce: Flush remaining frames when we are deactivating (kde#471159)
+  * update version for new release
+  * h264vaapi: Use the proper getter for getting the hardware context
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

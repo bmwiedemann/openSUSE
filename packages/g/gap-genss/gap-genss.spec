@@ -1,7 +1,7 @@
 #
 # spec file for package gap-genss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-genss
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        GAP: generic Schreier-Sims
 License:        GPL-3.0-or-later
@@ -29,8 +29,8 @@ BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.9
 Requires:       gap-gapdoc >= 1.5
-Requires:       gap-io >= 4.2
 Requires:       gap-orb >= 4.5
+Recommends:     gap-io >= 4.2
 
 %description
 The genss package implements the randomised Schreier-Sims algorithm

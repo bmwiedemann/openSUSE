@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:26:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1:
+  * Drop official support for Python 3.8, add support for Python
+    3.13.
+
+-------------------------------------------------------------------
 Thu Aug 22 11:40:10 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - Update to 5.0:

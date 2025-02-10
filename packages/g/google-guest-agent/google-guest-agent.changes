@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 05 12:58:23 UTC 2025 - rjschwei@suse.com
+
+- Update to version 20250116.00: (bsc#1236403, bsc#1234563)
+  * networkd(vlan): remove the interface in addition to config (#468)
+  * Implement support for vlan dynamic removal, update dhclient to remove
+    only if configured (#465)
+  * Update logging library (#479)
+  * Remove Pat from owners file. (#478)
+
+-------------------------------------------------------------------
 Mon Jan 13 19:33:18 UTC 2025 - rjschwei@suse.com
 
 - Update to version 20241209.01: (bsc#1235664)

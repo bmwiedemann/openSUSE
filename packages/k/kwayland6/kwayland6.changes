@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * Drop unused and deprecated CMakeFindFrameworks
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * Provide keys received in wl_keyboard.enter
+  * Emit Registry::interfaceAnnounced after registering the interface
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * dep on latest plasma wayland protocols
+  * update version for new release
+  * It compiles fine without deprecated methods
+  * output: avoid using invalid iterator
+  * update version for new release
+  * Use Plasma Wayland Protocols 1.14
+
+-------------------------------------------------------------------
 Tue Dec 31 20:49:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

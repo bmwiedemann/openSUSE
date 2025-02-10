@@ -1,7 +1,7 @@
 #
 # spec file for package libm4ri
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           libm4ri
-Version:        20200125
-%define lname	libm4ri-0_0_%version
+Version:        20250128
+%define lname	libm4ri1
 Release:        0
 Summary:        Library for linear arithmetic over GF(2)
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://bitbucket.org/malb/m4ri
-
-#Git-Clone:	https://bitbucket.org/malb/m4ri.git
-Source:         https://bitbucket.org/malb/m4ri/downloads/m4ri-%version.tar.gz
+URL:            https://github.com/malb/m4ri
+Source:         https://github.com/malb/m4ri/releases/download/%version/m4ri-%version.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libpng)
 
@@ -72,17 +70,16 @@ applications that want to make use of libm4ri.
 	--disable-sse2 \
 %endif
 	--with-cachesize=32768:131072:131072
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/libm4ri-0.0.%version.so
+%_libdir/libm4ri.so.*
 
 %files devel
 %_libdir/libm4ri.so

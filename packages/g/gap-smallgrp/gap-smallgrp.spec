@@ -1,7 +1,7 @@
 #
 # spec file for package gap-smallgrp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallgrp
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        GAP: Small Groups Library
 License:        Artistic-2.0

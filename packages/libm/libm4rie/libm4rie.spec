@@ -1,7 +1,7 @@
 #
 # spec file for package libm4rie
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           libm4rie
-Version:        20200125
+Version:        20250128
 # Note that libm4rie is not always updated in lockstep with libm4ri,
 # and that is absolutely normal.
-%define lname	libm4rie-0_0_%version
+%define lname	libm4rie1
 Release:        0
 Summary:        Library for linear arithmetic over GF(2^e)
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://bitbucket.org/malb/m4rie
-
-#Git-Clone:	https://bitbucket.org/malb/m4rie.git
-Source:         https://bitbucket.org/malb/m4rie/downloads/m4rie-%version.tar.gz
-BuildRequires:  libm4ri-devel
+URL:            https://github.com/malb/m4rie
+Source:         https://github.com/malb/m4rie/releases/download/%version/m4rie-%version.tar.gz
+BuildRequires:  pkgconfig(m4ri) >= 20240729
 BuildRequires:  pkg-config
 
 %description
@@ -67,11 +65,10 @@ applications that want to make use of libm4rie.
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/libm4rie-0.0.%version.so
+%_libdir/libm4rie.so.*
 
 %files devel
 %_libdir/libm4rie.so

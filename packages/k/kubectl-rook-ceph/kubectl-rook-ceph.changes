@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Jan 28 19:53:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-rook-ceph: provide common management and
+  troubleshooting tools for the Rook Ceph storage provider

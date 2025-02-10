@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:45 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * Make enablement affect Plasma only
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:33 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * rename systemd unit to app- prefix
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * Add ECMDeprecationSettings support
+  * Server: when session is found, close it before erasing
+  * krdpserver: Add dummy clipboard to avoid crashing
+  * kcm: show only on wayland
+  * Add note that usernames are case-sensitive to README (kde#496553)
+  * Hide desktop file for krdpserver
+  * store restoration token in the state config
+  * Drop ecm and kconfig from Flatpak build
+  * Add qtkeychain to kde-ci
+  * Use single config file for krdpserver (kde#495564)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

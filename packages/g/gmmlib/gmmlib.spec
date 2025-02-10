@@ -1,7 +1,7 @@
 #
 # spec file for package gmmlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global somajor 12
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        22.5.5
+Version:        22.6.0
 Release:        0
 Summary:        Intel Graphics Memory Management Library Package
 License:        MIT

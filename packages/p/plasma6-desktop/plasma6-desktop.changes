@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:03 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * kcms/baloo: Keep Play/Pause actions visible in header
+  * applets/taskmanager: don't let tooltip appear while context menu is open (kde#448510)
+  * applets/kicker: fix keyboard navigation between runner columns (kde#482624)
+  * kcms/access use working validator on spinboxes
+  * kcms/workspaceoptions: screen-read helper text
+  * kcms/workspaceoptions: improve helper text position
+  * kcm/landingpage: improve helper text position
+  * applets/taskmanager: prevent empty tooltip items
+  * applets/taskmanager: make vertical tooltip compact
+  * kcms/touchpad: Remove auto-disable functionality from kded
+  * kcms/touchpad: Name backend device methods similar to kcm_mouse
+  * applets/kicker: fix backspace when searching (kde#483253)
+  * applets/taskmanager: only show media controls once
+  * applets/taskmanager: make no-image tooltip clickable
+  * ConfigurationContainmentAppearance: Set buddyFor wallpaper type
+  * kickoff: fix external drag and drop, avoid conflicts with plasmoid dragging (kde#454863,kde#467587)
+  * kcms/ksmserver: remove system restart message
+  * applets/kickoff: make top corners and left/right header paddings perfect (kde#473061)
+  * appiumtests: make kickofftest less flaky
+  * kcms/ksmserver: Fix settings object lifetime management (kde#487028,kde#488292)
+  * kcms/touchpad: Make sure settings fields in X11 are not randomly missing (kde#448953)
+  * applets/folder: Don't use DesktopSchemeHelper::getFileUrl to get title (kde#494430)
+  * Revert "applets/kickoff: change category at most once per frame"
+
+-------------------------------------------------------------------
+Fri Jan 24 10:13:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91.1. Changes since 6.2.91:
+  * kcms/touchpad: Make sure settings fields in X11 are not randomly missing (kde#448953)
+  * applets/folder: Don't use DesktopSchemeHelper::getFileUrl to get title (kde#494430)
+  * Revert "applets/kickoff: change category at most once per frame"
+
+-------------------------------------------------------------------
+Thu Jan 23 13:46:27 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * applets/kickoff: change category at most once per frame (kde#483205)
+  * Make panel settings comboboxes take as much space as their longest element (kde#486901)
+  * kcms/landingpage: fix frequent kcms count (kde#498609)
+  * Fix DesktopSchemeHelper's QML singleton-ness (kde#498783)
+  * containments/desktop: properly map position to find the mouseover item (kde#497498)
+  * [taskmanager] Show full URL if not local
+  * Animate margin changes for applet popups (kde#481533)
+  * [taskmanager] Use KIO::iconNameForUrl instead of homegrown logic
+  * [kaccess] Trigger bell for active window only
+  * [kaccess] Use KWin to show visual bell (kde#488967)
+  * kcms/kded: allow users to enable disabled-by-default services
+  * kcms/access: Remove labels for visual and audible bell
+  * [kcms/access] Notify bell settings
+  * appiumtests: fix kickofftest
+  * kcms/kded: show information instead of warning when a service is skipped
+  * containments/desktop: Execute updatePositionsList only if we know how many icons per stripe (kde#498411)
+  * applets/kicker: tooltip type is Floating (kde#95262)
+  * pplets/kicker: make tooltip text appear (kde#495858)
+  * Revert "applets/taskmanager: enable `retainWhileLoading` for player album art"
+
+-------------------------------------------------------------------
+Sat Jan 11 18:28:24 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Dec 31 20:50:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

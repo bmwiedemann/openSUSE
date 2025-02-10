@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-pa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname plasma-pa
@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-pa
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        The Plasma6 Volume Manager
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -100,6 +100,7 @@ A volume manager plasmoid superseding kmix.
 %doc %{_kf6_htmldir}/en/kcontrol/
 %{_kf6_applicationsdir}/kcm_pulseaudio.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.volume.appdata.xml
+%{_kf6_debugdir}/plasmapa.categories
 %{_kf6_libdir}/libplasma-volume.so.*
 %{_kf6_plasmadir}/plasmoids/org.kde.plasma.volume/
 %{_kf6_plugindir}/kf6/kded/audioshortcutsservice.so

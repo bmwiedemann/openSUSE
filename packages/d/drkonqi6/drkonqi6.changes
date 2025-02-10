@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * reportinterface,coredump: pass tags and extra data from kcrash to sentry
+  * sentry-data: use newline instead of endl and flush
+  * sentry: insert os context on cpp side rather than python
+  * reportinterface: tag sentry events as missing payload
+  * preamble: add tags for trace variable presence
+  * Add mappings for baloorunner and gmenudbusmenuproxy
+  * backtracegenerator: do not cache whether to resolve symbols (kde#495154)
+  * Fix build with qt dev
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * Add mapping for plasma-browser-integration-host
+  * cmake: require systemd unless explicitly opted out of
+  * cmake: remove mingw support code
+
+-------------------------------------------------------------------
+Sat Jan 11 18:26:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * Remember window geometry
+  * Add Merkuro apps to mappings
+  * Make systemd an optional dependency
+  * Remove unimplemented methods
+  * src/qml/SentryPage.qml (ColumnLayout.QQC2.Label) : minor improvement of text
+  * Use separate gui_platform for XWayland
+  * Add kioworker to mappings
+  * add mapping for xembedsniproxy
+  * backtracegenerator: implement a serialization lock
+  * Messages.sh: add some context to comments
+  * connectiontest: log bad requests
+  * connectiontest: fix for qt 6.8
+  * auto starting jobs don't start early
+  * Don't include quiet packages in feature_summary
+  * kwallet: set folder explicitly
+  * update version for new release
+  * sentry: mark incompatible Qt's as such
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

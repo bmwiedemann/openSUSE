@@ -1,7 +1,7 @@
 #
 # spec file for package kactivitymanagerd6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %define rname kactivitymanagerd
 %bcond_without released
 Name:           kactivitymanagerd6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
 URL:            https://invent.kde.org/plasma/kactivitymanagerd
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes

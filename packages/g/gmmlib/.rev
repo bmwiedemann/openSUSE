@@ -317,4 +317,13 @@
     <comment></comment>
     <requestid>1234910</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e32c18a16357133f341a521c347b98e3</srcmd5>
+    <version>22.6.0</version>
+    <time>1739205043</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 22.6.0
+  * Introduce PTL Support  (#225)</comment>
+    <requestid>1244752</requestid>
+  </revision>
 </revisionlist>

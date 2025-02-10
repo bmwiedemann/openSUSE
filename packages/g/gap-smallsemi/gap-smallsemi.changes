@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:53:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.1
+  * A minor release including some refactoring of the code, and
+    some changes for compatibility with changes in GAP.
+
+-------------------------------------------------------------------
 Wed Jun  5 16:34:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.7.0

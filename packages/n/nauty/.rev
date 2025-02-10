@@ -87,4 +87,12 @@
     <comment>- Add autoconf-2.72.patch</comment>
     <requestid>1174769</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>92a69e923d58866d58ee012c29d4019e</srcmd5>
+    <version>2.8.9</version>
+    <time>1739204872</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.8.9</comment>
+    <requestid>1244628</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Feb 10 09:52:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.41:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.5.4
+
+-------------------------------------------------------------------
+Mon Feb 10 09:21:38 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.40:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.5.3
+
+-------------------------------------------------------------------
+Mon Feb 10 08:57:51 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.39:
+  * chore(deps): upgrade to version 0.24.2
+
+-------------------------------------------------------------------
+Mon Feb 10 08:54:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.38:
+  * chore(deps): upgrade to version 0.0.55
+
+-------------------------------------------------------------------
+Mon Feb 10 08:49:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.37:
+  * chore(deps): upgrade to version 0.3.10
+
+-------------------------------------------------------------------
+Mon Feb 10 08:36:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.36:
+  * chore(deps): upgrade to version 0.23.14
+
+-------------------------------------------------------------------
+Mon Feb 10 08:34:16 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.35:
+  * chore(deps): bump anchore/sbom-action from 0.17.9 to 0.18.0
+
+-------------------------------------------------------------------
+Mon Feb 10 08:32:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.34:
+  * fix: clean away codeconv action files
+
+-------------------------------------------------------------------
+Mon Feb 10 08:14:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.33:
+  * fix: set codeconv token
+
+-------------------------------------------------------------------
+Mon Feb 10 08:00:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.32:
+  * chore(deps): upgrade to version 0.10.12
+
+-------------------------------------------------------------------
+Mon Feb 10 07:41:32 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.31:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.14
+
+-------------------------------------------------------------------
+Mon Feb 10 07:39:25 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.30:
+  * chore(deps): bump github.com/golang/glog
+
+-------------------------------------------------------------------
 Tue Jan 28 14:29:56 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11.29:

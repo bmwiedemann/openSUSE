@@ -1,7 +1,7 @@
 #
 # spec file for package kwayland6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname kwayland
 %bcond_without released
 Name:           kwayland6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        KDE Wayland library
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -38,7 +38,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
-BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.9.0
+BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.14.0
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}

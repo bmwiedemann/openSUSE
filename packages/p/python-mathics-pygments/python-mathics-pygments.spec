@@ -1,7 +1,7 @@
 #
 # spec file for package python-mathics-pygments
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Mathics-Scanner does not support python2
 %define skip_python2 1
 Name:           python-mathics-pygments
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Mathematica/Wolfram Language Lexer for Pygments
 License:        MIT

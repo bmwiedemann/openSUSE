@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 27 10:14:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 3.4.20:
+  * Bugfixes, see
+    https://github.com/opencv/opencv/wiki/ChangeLog#version3420
+  * Various bugfixes backported from 4.7 branch see
+    https://github.com/opencv/opencv/compare/3.4.19...3.4.20
+- Drop opencv3-pr19384-tbb2021.patch: Fixed upstream.
+- Rebase/refresh opencv-build-compare.patch with quilt.
+
+-------------------------------------------------------------------
 Tue Apr 18 19:59:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.19:

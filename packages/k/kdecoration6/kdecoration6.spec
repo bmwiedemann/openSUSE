@@ -1,7 +1,7 @@
 #
 # spec file for package kdecoration6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname kdecoration
@@ -25,14 +25,14 @@
 %global private_sover 11
 %bcond_without released
 Name:           kdecoration6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -45,31 +45,29 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 %description
 Plugin based library to create window decorations.
 
-%package -n libkdecorations2-%{sover}
+%package -n libkdecorations3-%{sover}
 Summary:        KDE's window decorations library
-Obsoletes:      libkdecorations2-5-lang
 
-%description -n libkdecorations2-%{sover}
+%description -n libkdecorations3-%{sover}
 Plugin based library to create window decorations.
 
-%package -n libkdecorations2private%{private_sover}
+%package -n libkdecorations3private%{private_sover}
 Summary:        KDE's window decorations library
 
-%description -n libkdecorations2private%{private_sover}
+%description -n libkdecorations3private%{private_sover}
 Plugin based library to create window decorations.
 
 %package devel
 Summary:        KDE's window decorations library (development package)
-Requires:       libkdecorations2-%{sover} = %{version}
-Requires:       libkdecorations2private%{private_sover} = %{version}
+Requires:       libkdecorations3-%{sover} = %{version}
+Requires:       libkdecorations3private%{private_sover} = %{version}
 Requires:       cmake(Qt6Gui)
-Obsoletes:      libkdecoration2-devel < %{version}
 
 %description devel
 Development files belonging to kdecoration,
 plugin based library to create window decorations.
 
-%lang_package -n libkdecorations2-%{sover}
+%lang_package -n libkdecorations3-%{sover}
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
@@ -84,23 +82,23 @@ plugin based library to create window decorations.
 
 %find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libkdecorations2-%{sover}
-%ldconfig_scriptlets -n libkdecorations2private%{private_sover}
+%ldconfig_scriptlets -n libkdecorations3-%{sover}
+%ldconfig_scriptlets -n libkdecorations3private%{private_sover}
 
-%files -n libkdecorations2-%{sover}
+%files -n libkdecorations3-%{sover}
 %license LICENSES/*
-%{_kf6_libdir}/libkdecorations2.so.*
+%{_kf6_libdir}/libkdecorations3.so.*
 
-%files -n libkdecorations2private%{private_sover}
-%{_kf6_libdir}/libkdecorations2private.so.*
+%files -n libkdecorations3private%{private_sover}
+%{_kf6_libdir}/libkdecorations3private.so.*
 
 %files devel
-%{_includedir}/KDecoration2/
-%{_kf6_cmakedir}/KDecoration2/
-%{_kf6_includedir}/kdecoration2_version.h
-%{_kf6_libdir}/libkdecorations2.so
-%{_kf6_libdir}/libkdecorations2private.so
+%{_includedir}/KDecoration3/
+%{_kf6_cmakedir}/KDecoration3/
+%{_kf6_includedir}/kdecoration3_version.h
+%{_kf6_libdir}/libkdecorations3.so
+%{_kf6_libdir}/libkdecorations3private.so
 
-%files -n libkdecorations2-%{sover}-lang -f %{name}.lang
+%files -n libkdecorations3-%{sover}-lang -f %{name}.lang
 
 %changelog

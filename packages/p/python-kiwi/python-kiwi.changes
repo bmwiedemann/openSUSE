@@ -1,7 +1,82 @@
 -------------------------------------------------------------------
+Sat Feb 01 23:13:22 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.8 → 10.2.9
+
+-------------------------------------------------------------------
+Thu Jan 30 23:55:51 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Classify missing chkstat as debug message
+
+  chkstat is a distribution specific tool. If it is
+  present we use it, if not we don't but it's not worth
+  a warning. This Fixes #2711
+
+-------------------------------------------------------------------
+Thu Jan 30 22:50:28 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to run setfiles multi threaded
+
+  Use option -T0 for newer setfiles version.
+  This Fixes #2719
+
+-------------------------------------------------------------------
+Thu Jan 30 22:39:12 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add rd.kiwi.dialog.timeout option
+
+  Allow to configure the timeout value for dialogs displayed
+  by the kiwi dracut code. By default the timeout is set to
+  60 seconds. With the special value "off" the dialog will
+  never timeout. This Fixes #2718
+
+-------------------------------------------------------------------
+Thu Jan 30 22:10:39 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure copy actions does not drop context
+
+  Use shutil.copy2 to copy files preserving their
+  attributes in the grub BootLoader space.
+  This Fixes #2709
+
+-------------------------------------------------------------------
+Thu Jan 30 21:26:00 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve unit test for archive target_dir
+
+  Add a test case with absolute path in the target_dir
+  to make sure we never unpack the archive to the host
+  system. The actual issue was resolved together with
+  the implementation in #1953 and commit
+  78238a993c966d1229cd2fc1f5923673a90de14d
+  This Fixes #2701
+
+-------------------------------------------------------------------
+Thu Jan 30 20:56:53 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed profiled overlay imports
+
+  When building an image for profile: SOME and providing
+  an overlay directory named SOME/... kiwi will sync the
+  contents of this overlay directory to the root tree.
+  However it took the toplevel name SOME/ into account
+  which is unwanted because only the sub data structure
+  should be synced into the new root tree. This
+  Fixes #2690
+
+-------------------------------------------------------------------
 Mon Jan 27 11:47:55 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.7 → 10.2.8
+
+-------------------------------------------------------------------
+Mon Jan 27 11:46:48 CET 2025 - Ondrej Holecek <oholecek@suse.com>
+
+- Use multipath child instead of parent device
+
+  On multipath systems we need to find underlying child device
+  instead of using parent device.
+  This prevents listing all parent devices for a multipath device
 
 -------------------------------------------------------------------
 Sat Jan 25 17:55:15 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>

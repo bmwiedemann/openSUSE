@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:56 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * backends/kwayland: Clean up output device initialization
+  * backends/kwayland: Fix dangling globalRemoved connections
+  * Revert "backends/kwayland: Remove unbalanced unblockSignals()"
+  * backends/kwayland: Don't leak output configuration if it contains no real changes
+  * backends/kwayland: Destroy wayland output configuration resources
+  * backends/kwayland: Fix creating unnecessary output configuration object
+  * backends/kwayland: Remove unbalanced unblockSignals()
+  * backends/kwayland: Reject configs with unknown outputs (kde#498878)
+  * doctor: add dpms to help text (kde#495499)
+  * doctor: fix "--dpms show"
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * Dep on latest Plasma Wayland Protocols
+  * update version for new release
+  * Use QTest directly
+  * Remove unimplemented methods
+  * backends/wayland: plumb through an error message for failing to apply the configuration
+  * output: fix Private's copy constructor
+  * Show headers in qtc6
+  * add dimming multiplier
+  * add color vs power usage preference
+  * Make vendor and model accessible without edid
+  * Fix zsh subcommand completion when list-grouped is false
+  * doctor: clarify the meaning of max. brightness zero (kde#495557)
+  * Update Plasma Wayland Protocols to 1.14
+  * update version for new release
+  * wayland: Drop WaylandOutputDeviceMode::operator==()
+  * wayland: Properly determine whether the current mode has changed
+  * wayland: Correctly compare refresh rates when applying config
+
+-------------------------------------------------------------------
 Tue Dec 31 20:49:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

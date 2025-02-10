@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb  6 16:38:09 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- make apparmor conditional more readable 
+
+-------------------------------------------------------------------
+Wed Feb  5 14:28:06 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Remove apparmor support from SLES
+
+-------------------------------------------------------------------
 Tue Feb  4 11:59:31 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Adapt requirement for dovecot pacakage

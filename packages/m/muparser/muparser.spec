@@ -1,7 +1,7 @@
 #
 # spec file for package muparser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           muparser
-%define lname	libmuparser2_3_4
-Version:        2.3.4
+%define lname	libmuparser2_3_5
+Version:        2.3.5
 Release:        0
 Summary:        A math parser library
 License:        MIT
@@ -66,8 +66,7 @@ precalculating constant parts of the expression.
 %install
 %cmake_install
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libmuparser.so.2*

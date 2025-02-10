@@ -17,8 +17,8 @@
 
 
 Name:           gap-gradedringforhomalg
-Version:        2023.08.01
-%define sillyver 2023.08-01
+Version:        2024.07.01
+%define sillyver 2024.07-01
 Release:        0
 Summary:        GAP: Endow Commutative Rings with an Abelian Grading
 License:        GPL-2.0-only

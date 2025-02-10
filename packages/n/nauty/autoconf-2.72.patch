@@ -5,18 +5,17 @@ AC 2.72 changed the internals of AC_SYS_LARGEFILE. Just always build with largfi
 See also https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=7643b42096da1f4403a501a4a5930dec2d1c88c2
 
 ---
- configure.ac |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure.ac |    1 +
+ 1 file changed, 1 insertion(+)
 
-Index: nauty2_8_8/configure.ac
+Index: nauty2_8_9/configure.ac
 ===================================================================
---- nauty2_8_8.orig/configure.ac
-+++ nauty2_8_8/configure.ac
-@@ -170,7 +170,7 @@ CFLAGS=$user_cflags
- MORECFLAGS=""
- dnl  we need  AC_SYS_LARGEFILE and AC_FUNC_FSEEKO
+--- nauty2_8_9.orig/configure.ac
++++ nauty2_8_9/configure.ac
+@@ -178,6 +178,7 @@ dnl  we need  AC_SYS_LARGEFILE and AC_FU
  AC_SYS_LARGEFILE
--AS_IF([test "x$ac_cv_sys_file_offset_bits" = xno],[ac_cv_sys_file_offset_bits=0])
+ AS_IF([test "x$ac_cv_sys_file_offset_bits" = "xno"],[ac_cv_sys_file_offset_bits=0])
+ AS_IF([test "x$ac_cv_sys_file_offset_bits" = "x"],[ac_cv_sys_file_offset_bits=0])
 +ac_cv_sys_file_offset_bits=64
  AC_SUBST(ac_cv_sys_file_offset_bits)
  

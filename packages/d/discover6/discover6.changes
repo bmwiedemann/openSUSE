@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:37 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * libdiscover: emit reviewsReady when network has error
+  * appstreamutils: use new query icons when available
+  * appstreamutils: fix icon listing (kde#494315)
+  * appstream: Disregard the thumbnail when it's too small (kde#497772)
+  * notifier: add --check-delay option (defaults to 0)
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * libdiscover: always emit reviewsReady to fix crash when there is no review
+  * flatpak: Support flatpak:/ format
+  * use a filter model instead for pagination
+  * ApplicationPage: Fix excessive horizontal flicking
+
+-------------------------------------------------------------------
+Sat Jan 11 18:26:52 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

@@ -1,7 +1,7 @@
 #
 # spec file for package gap-gaussforhomalg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-gaussforhomalg
-Version:        2023.11.01
-%define sillyver 2023.11-01
+Version:        2024.08.01
+%define sillyver 2024.08-01
 Release:        0
 Summary:        GAP: Gauss Functionality for homalg
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ URL:            https://homalg-project.github.io/pkg/GaussForHomalg
 Source:         https://github.com/homalg-project/homalg_project/releases/download/GaussForHomalg-%sillyver/GaussForHomalg-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12.1
 Requires:       gap-gapdoc >= 1.0
 Requires:       gap-gauss >= 2021.04.01
 Requires:       gap-matricesforhomalg >= 2023.10.01

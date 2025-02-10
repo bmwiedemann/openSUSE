@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb  9 17:46:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.97
+  * By default, orthographic projections now use ``center=true``;
+    the camera and target are automatically centered within the
+    scene.
+  * Triangle groups are used for indexed surfaces drawn with the
+    render option tessellate=true.
+  * GLSL error reporting was restored.
+  * New keywords ``autounravel`` and ``using`` were added.
+- Add use-system-libs.patch
+
+-------------------------------------------------------------------
 Thu Jul 18 04:04:22 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.90

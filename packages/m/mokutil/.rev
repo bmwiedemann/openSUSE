@@ -273,4 +273,21 @@ bnc#809703: remove the key from the pending request if necessary (forwarded requ
     <comment></comment>
     <requestid>1154986</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>66594a1f0c4c284c6b5b9652d467db13</srcmd5>
+    <version>0.7.2</version>
+    <time>1739204568</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.2:
+  * mokutil: revert the default listing to the verbose form
+- update to 0.7.1:
+  * Fix an off-by-one reading passwords from a file.
+  * Short certificate listing by default
+
+    + c361087 (HEAD -&gt; master, tag: 0.7.0, origin/ssppolicy-v2-fix, origin/master, origin/HEAD) Rename &quot;previous&quot; revocations to &quot;automatic&quot;
+	  b15e7c4d7 util: add the missing stdio.h
+	  6c9890730 SBAT revocation update support
+- spec file cleanup</comment>
+    <requestid>1244408</requestid>
+  </revision>
 </revisionlist>

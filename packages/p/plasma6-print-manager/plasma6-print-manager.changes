@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:10 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * kcm: Keep header "Add" action visible when space-limited
+
+-------------------------------------------------------------------
+Thu Jan 23 13:46:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat Jan 11 18:28:52 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Too many changes to list here
+- Drop patch, cups >= 2.4 is now actually required:
+  * 0001-Revert-Require-CUPS-version-2.4.x.patch
+
+-------------------------------------------------------------------
 Tue Dec 31 20:50:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

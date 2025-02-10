@@ -68,4 +68,12 @@
     <comment>- Use exact upstream version number (switch from 0~20200125 -&gt; 20200125)</comment>
     <requestid>1036741</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bb8441947c6bf496d66120fd7834d89a</srcmd5>
+    <version>20250128</version>
+    <time>1739204865</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20250128</comment>
+    <requestid>1244559</requestid>
+  </revision>
 </revisionlist>

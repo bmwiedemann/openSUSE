@@ -1,7 +1,7 @@
 #
 # spec file for package livedtd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Authors:
     Robert Stayton <bobs@sagehill.net>
 
 %prep
-%setup0 -q -c -n %{name}
+%setup -q -c -n %{name}
 %patch -P 0 -p 1 -b .catalog
 
 %install

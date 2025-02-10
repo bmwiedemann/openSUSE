@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Sat Feb  8 18:52:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 5 (5.0.5), a new major version:
+  * Code base updated, display processing is entirely new code.
+  * now uses a shared library
+
+-------------------------------------------------------------------
+Tue Nov  9 17:17:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- di 4.51:
+  * Handle EPERM errors
+- di 4.50:
+  * JSON: Exclude extraneous format characters from the json output
+  * JSON: Fix quoting around human-readable values
+  * Totals: Support APFS filesystem
+  * Linux: Put filesytems using 'tmpfs' or 'cgroup' as the
+    device name on the ignore list
+- di 4.49:
+  * Added the -j (--json-output) option to output json data
+- di 4.48:
+  * disable spurious compiler warnings
+  * Various build fixes
+ 
+-------------------------------------------------------------------
+Tue Jun  2 08:48:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.47.3
+  * Fixed missing link flags for clang.
+  version 4.47.2:
+  * Minor makefile cleanup.
+  version 4.47.1:
+  * Update mkconfig to version 2.1.1 (fixes build on 32-bit).
+  * Add configs/config.ms.cl (visual studio definitions).
+
+-------------------------------------------------------------------
+Mon Aug 13 08:28:20 UTC 2018 - mvetter@suse.com
+
+- Update to 4.47:
+  * Fixed bugs located by scan.coverity.com.
+    This should fix a numeric sort bug.
+  * Update mkconfig to version 2.0.0 and make changes to
+    support it.                                                                                                                       
+  * Get perl extension build working again. 
+
+-------------------------------------------------------------------
+Thu Jun 14 08:56:39 UTC 2018 - mvetter@suse.com
+
+- Update to 4.46:
+  * Tcl: Fix bad allocation.
+  * Tcl: Raise errors rather than exiting.
+  * Exit program when incorrect options are specified.
+  * Update mkconfig to version 1.31.
+  * Add missing mkconfig/runtests.sh.
+  * Update mkconfig to version 1.30 to fix modern libintl.h/printf tests.
+
+-------------------------------------------------------------------
+Mon Mar 19 08:42:01 UTC 2018 - aloisio@gmx.com
+
+- Update to version 4.44
+  * Fixed check of exabyte sized filesystems.  The signed check
+    now only checks for -1 and -2; there could still be situations
+    where the overflow exactly matches these values.
+  * Added faster method for windows check for missing removable
+    filesystems.
+  version 4.43
+  * Cleaned up some compiler warnings.
+  * Fixed memory allocation problem.
+  * Tcl interface fixes
+  version 4.42
+  * Fixed a parsing bug in the Tcl interface.
+  * Added a Perl interface.
+  version 4.41
+  * Fixed bug specifying more than one filesystem on the command
+    line.
+  * Added sort by free space, total space.
+  * Updated manual page: missing, new sort options.
+  version 4.40
+  * Updated the Tcl interface to return the 'display' key as a list.
+  version 4.39
+  * Added a Tcl interface.
+  * Fixed CSV header to honor -n flag.
+  * Added -C, --csv-tabs to output CSV with tabs.
+  * Update mkconfig to version 1.27
+  version 4.38
+  * Update mkconfig to version 1.26
+  version 4.37
+  * Fixed a problem when processing the DI_ARGS environment variable.
+  * Hardened compiler options: reference:
+    http://wiki.debian.org/Hardening
+  * Code cleanup to fix compiler warnings.
+  version 4.36
+  * Updated test for NFS remote filesystems.
+  version 4.35
+  * Fixed a bug when -I/-x were specified in addition to a filespec.
+  * Updated build system to mkconfig-1.24
+  version 4.34
+  * When a filename is specified on the command line, attempt to
+    choose the best filesystem to display when there are multiple
+    choices.
+  * Error check realpath() return value.
+  * Only canonicalize device names if it has a trailing uuid.
+  * Add -R (--dont-resolve-symlink) option to turn off
+    canonicalization.
+  * Clean up code to fix clang warnings.
+  version 4.33
+  * Recoded quota handling as information was improperly
+    losing precision.
+  * Added support for hammer-pfs (pooled filesystems).
+  * Exclude rootfs, devfs, procfs, kernfs, ptyfs and devtmpfs by
+    default.
+  * Minor updates to main makefile.
+  * Minor directory rearrangement for os-specific config files.
+  * Fixed possible case of systems with a memcpy macro and
+    no library function.
+  * Make sure D tests are not run.
+  * Updated build system to mkconfig-1.22.
+  version 4.32
+  * Exclude rootfs by default.
+  * Canonicalize the special device name.
+  * Updated build system to mkconfig-1.21.
+  version 4.31
+  * Filesystems that would return a 'Permission Denied'
+    are not displayed at all, even with -a.
+  * Fixed totals with pooled filesystems (when main pool not
+    mounted).
+  * Fixed a very rare divide by 0 condition.
+  * Code cleanup.
+  * Updated build system to mkconfig-1.19.
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Nov 21 18:25:11 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 4.31:
+  * filesystems that would return a 'Permission Denied' no longer generate an
+    error message and are no longer displayed, even with the -a option
+  * bugfixes include fixing the totals for pooled (zfs) filesystems when the
+    main pool is not mounted and a rare divide by 0 condition
+
+-------------------------------------------------------------------
+Fri Oct 14 22:03:31 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 4.30:
+  * support for long commandline options was added
+
+-------------------------------------------------------------------
+Sun Oct  2 19:41:48 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 4.29
+- rewrote spec file to comply with nowadays' style guide and
+  good practices
+- moved to utilities on build.o.o
+
+-------------------------------------------------------------------
+Sun Jan 02 00:00:00 UTC 2011 - detlef@links2linux.de
+
+- new upstream version <4.27>
+  * Rearranged directory structure.
+  * Added support for long double to hold zettas and yottas.
+  * Added support for the windows digital mars c compiler.
+  * Added a fix for windows removable drives.
+  * Rewrote snprintf macros as they didn't work on MacOSX.
+  * Fixed quotactl argument for systems w/o QCMD macro.
+  * Check for type of structure members and call the correct xdr function.
+  * Many minor fixes for compiler warnings.
+  * Fixed Makefiles to redirect 'cd' output (CDPATH).
+  * Updated build system to mkconfig 1.11.
+
+-------------------------------------------------------------------
+Mon Jul 26 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <4.26>
+  * Fix FreeBSD 5 panic when trying to get quotas on devfs.
+  * Updated build system to mkconfig-1.10.
+
+-------------------------------------------------------------------
+Mon Jul  5 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- new upstream version <4.25>
+  * Added support for quotas.
+  * Fix for Tru64 advfs pools.
+  * Fixed loopback filesystem (lofs/none) exclusion; enabled for
+    all systems.
+  * Added an optional DI_LOCALE_DIR environment variable to
+    point to the locale directory where di's messages are installed.
+  * Changed the sort to use strcoll() rather than strcmp().
+  * Updated build system to mkconfig-1.6.
+  * Removed turnoffwinapi.sh, hasnls.sh & turnoffnls.sh and updated
+    to use new build system tools.
+  * Added dioptions.dat to control options.
+  * More fixes for totals in a pooled/non-pooled mix when pooled
+    filesystems are not displayed.
+
+-------------------------------------------------------------------
+Sat May 15 00:00:00 UTC 2010 - detlef@links2linux.de
+
+- initial build for PackMan <4.24>

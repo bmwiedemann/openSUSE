@@ -1,7 +1,7 @@
 #
 # spec file for package python-cx_Freeze
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python313 1
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        7.2.7
+Version:        7.2.9
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0

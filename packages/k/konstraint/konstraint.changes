@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 10 07:41:09 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.39.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.69.0
+    to 1.1.0 (#574)
+  * build(deps): bump golang from 1.23.1-alpine to 1.23.6-alpine
+    (#573)
+  * build(deps): bump golang.org/x/net from 0.29.0 to 0.33.0 (#570)
+  * build(deps): bump alpine from 3.20.3 to 3.21.2 (#571)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.31.1 to
+    0.32.1 (#572)
+  * build(deps): bump golang.org/x/text from 0.18.0 to 0.22.0
+    (#568)
+  * ci: Add --v0-compatible flag to "opa check" (#569)
+  * Use if keyword to satisfy linter requirements (#564)
+  * fix: Sort parameters in docs (#554)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.66.0
+    to 0.69.0 (#541)
+  * chore: Bump Go to 1.23 (#540)
+  * build(deps): bump golang.org/x/text from 0.16.0 to 0.18.0
+    (#534)
+  * build(deps): bump golang from 1.22.5-alpine to 1.23.1-alpine
+    (#536)
+  * build(deps): bump alpine from 3.20.2 to 3.20.3 (#535)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.30.3 to
+    0.31.1 (#539)
+  * added _ as a replacement for kind name (#537)
+  * build(deps): bump alpine from 3.20.1 to 3.20.2 (#525)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.30.2 to
+    0.30.3 (#524)
+  * feat: update .Header.Resources to a string array (#519)
+  * build(deps): bump golang from 1.22.4-alpine to 1.22.5-alpine
+    (#522)
+
+-------------------------------------------------------------------
 Wed Jul 10 19:15:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.38.0:

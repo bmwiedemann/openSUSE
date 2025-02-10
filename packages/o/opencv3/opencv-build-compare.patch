@@ -1,8 +1,8 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c7c76ec..b9257c6 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -960,11 +960,11 @@ endif()
+Index: opencv-3.4.20/CMakeLists.txt
+===================================================================
+--- opencv-3.4.20.orig/CMakeLists.txt
++++ opencv-3.4.20/CMakeLists.txt
+@@ -1053,11 +1053,11 @@ endif()
  if(OPENCV_TIMESTAMP)
    status("    Timestamp:"      ${OPENCV_TIMESTAMP})
  endif()
@@ -16,11 +16,11 @@ index c7c76ec..b9257c6 100644
  status("    CMake generator:"  ${CMAKE_GENERATOR})
  status("    CMake build tool:" ${CMAKE_BUILD_TOOL})
  if(MSVC)
-diff --git a/cmake/OpenCVUtils.cmake b/cmake/OpenCVUtils.cmake
-index fae91c1..89bfd0d 100644
---- a/cmake/OpenCVUtils.cmake
-+++ b/cmake/OpenCVUtils.cmake
-@@ -804,15 +804,18 @@ function(status text)
+Index: opencv-3.4.20/cmake/OpenCVUtils.cmake
+===================================================================
+--- opencv-3.4.20.orig/cmake/OpenCVUtils.cmake
++++ opencv-3.4.20/cmake/OpenCVUtils.cmake
+@@ -1023,15 +1023,18 @@ function(status text)
        if(${status_cond})
          string(REPLACE ";" " " status_then "${status_then}")
          string(REGEX REPLACE "^[ \t]+" "" status_then "${status_then}")

@@ -20,14 +20,13 @@
 %define library_soversion 1
 
 Name:           aws-crt-cpp
-Version:        0.29.9
+Version:        0.30.1
 Release:        0
 Summary:        AWS C++ wrapper for AWS SDK C libraries
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://aws.amazon.com/sdk-for-cpp/
 Source0:        https://github.com/awslabs/aws-crt-cpp/archive/v%{version}.tar.gz
-Patch0:         acc_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc

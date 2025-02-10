@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Feb  9 00:50:00 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.9.5
+ * Preview features
+   * Recognize all symbols named TYPE_CHECKING for in_type_checking_block 
+   * [flake8-comprehensions] Handle builtins at top of file correctly for unnecessary-dict-comprehension-for-iterable (C420) 
+   * [flake8-logging] .exception() and exc_info= outside exception handlers (LOG004, LOG014) 
+   * [flake8-pyi] Fix incorrect behaviour of custom-typevar-return-type preview-mode autofix if typing was already imported (PYI019) 
+   * [flake8-pyi] Fix more complex cases (PYI019) 
+   * [flake8-pyi] Make PYI019 autofixable for .py files in preview mode as well as stubs 
+   * [flake8-pyi] Remove type parameter correctly when it is the last (PYI019) 
+   * [pylint] Fix missing parens in unsafe fix for unnecessary-dunder-call (PLC2801) 
+   * [pyupgrade] Better messages and diagnostic range (UP015) 
+   * [pyupgrade] Rename private type parameters in PEP 695 generics (UP049) 
+   * [refurb] Also report non-name expressions (FURB169) 
+   * [refurb] Mark fix as unsafe if there are comments (FURB171) 
+   * [ruff] Classes with mixed type variable style (RUF053) 
+   * [airflow] BashOperator has been moved to airflow.providers.standard.operators.bash.BashOperator (AIR302) 
+   * [flake8-pyi] Add autofix for unused-private-type-var (PYI018) 
+   * [flake8-pyi] Significantly improve accuracy of PYI019 if preview mode is enabled 
+ * Rule changes
+   * Preserve triple quotes and prefixes for strings 
+   * [flake8-comprehensions] Skip when TypeError present from too many (kw)args for C410,C411, and C418 
+   * [flake8-pyi] Rename PYI019 and improve its diagnostic message 
+   * [pep8-naming] Ignore @override methods (N803) 
+   * [pyupgrade] Reuse replacement logic from UP046 and UP047 to preserve more comments (UP040) 
+   * [ruff] Analyze deferred annotations before enforcing mutable-(data)class-default and function-call-in-dataclass-default-argument (RUF008,RUF009,RUF012) 
+   * [pycodestyle] Exempt sys.path += ... calls (E402) 
+ * Configuration
+   * Config error only when flake8-import-conventions alias conflicts with isort.required-imports bound name 
+   * Workaround Even Better TOML crash related to allOf 
+ * Bug fixes
+   * [flake8-comprehensions] Unnecessary list comprehension (rewrite as a set comprehension) (C403) - Handle extraneous parentheses around list comprehension 
+   * [flake8-comprehensions] Handle trailing comma in fixes for unnecessary-generator-list/set (C400,C401) 
+   * [flake8-pyi] Fix several correctness issues with custom-type-var-return-type (PYI019) 
+   * [pep8-naming] Consider any number of leading underscore for N801 
+   * [pyflakes] Visit forward annotations in TypeAliasType as types (F401) 
+   * [pylint] Correct min/max auto-fix and suggestion for (PL1730) 
+   * [refurb] Handle unparenthesized tuples correctly (FURB122, FURB142) 
+   * [refurb] Avoid None | None as well as better detection and fix (FURB168) 
+ * Documentation
+   * Add deprecation warning for ruff-lsp related settings 
+   * Docs (linter.md): clarify that Python files are always searched for in subdirectories 
+   * Fix a typo in non_pep695_generic_class.rs 
+   * Improve Docs: Pylint subcategories' codes 
+   * Remove non-existing lint.extendIgnore editor setting 
+   * Update black deviations 
+   * Mention UP049 in UP046 and UP047, add See also section to UP040 
+   * Add instance variable examples to RUF012 
+   * Explain precedence for ignore and select config 
+
+-------------------------------------------------------------------
 Wed Feb  5 09:29:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.4

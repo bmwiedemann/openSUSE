@@ -234,4 +234,12 @@
   * module: ModuleHook class to support inheritance</comment>
     <requestid>1229957</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aee3434b384ff8131b9d9f468bd418bc</srcmd5>
+    <version>7.2.9</version>
+    <time>1739205327</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1244783</requestid>
+  </revision>
 </revisionlist>

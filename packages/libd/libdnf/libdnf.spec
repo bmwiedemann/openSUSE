@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2023 Neal Gompa <ngompa@opensuse.org>.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 
 %global libsolv_version 0.7.21
 %global libmodulemd_version 2.13.0
-%global librepo_version 1.15.0
+%global librepo_version 1.18.0
 %global dnf_conflict 4.11.0
 %global swig_version 3.0.12
 
@@ -34,7 +35,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.73.3
+Version:        0.73.4
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -157,6 +158,7 @@ Requires:       (product(SUSE_SLE) or suse-release)
 # Only one instance of this package may be installed at a time...
 Provides:       rpm-repos-openSUSE
 Conflicts:      rpm-repos-openSUSE
+BuildArch:      noarch
 
 %description repo-config-zypp
 This package allows libdnf and all consumers to be able to reuse
@@ -217,22 +219,27 @@ ln -sr %{buildroot}%{_sysconfdir}/zypp/repos.d %{buildroot}%{_sysconfdir}/distro
 %{_libdir}/%{name}/plugins/README
 
 %files -n python3-%{name}
+%license COPYING
 %{python3_sitearch}/%{name}/
 %{python3_sitearch}/%{name}-%{version}.dist-info/
 
 %files -n %{devname}
+%license COPYING
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
 %{_datadir}/gtk-doc/html/%{name}/
 
 %files -n hawkey-man
+%license COPYING
 %{_mandir}/man3/hawkey.3*
 
 %files -n python3-hawkey
+%license COPYING
 %{python3_sitearch}/hawkey/
 
 %files repo-config-zypp
+%license COPYING
 # Co-own the zypp repos dir
 %dir %{_sysconfdir}/zypp
 %dir %{_sysconfdir}/zypp/repos.d

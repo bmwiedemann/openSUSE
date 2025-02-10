@@ -204,4 +204,12 @@
 - Avoid duplicate uefi_mbr inclusion</comment>
     <requestid>1231691</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>8bae8eaa5abd0faf4181ba13a09dc1bc</srcmd5>
+    <version>84.87.1</version>
+    <time>1739204736</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1238201</requestid>
+  </revision>
 </revisionlist>

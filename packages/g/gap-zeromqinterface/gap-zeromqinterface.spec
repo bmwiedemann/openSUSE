@@ -17,7 +17,7 @@
 
 
 Name:           gap-zeromqinterface
-Version:        0.14
+Version:        0.16
 Release:        0
 Summary:        GAP: ZeroMQ bindings
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  c_compiler
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
 BuildRequires:  pkgconfig(libzmq) >= 2
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.6.1
 
 %description

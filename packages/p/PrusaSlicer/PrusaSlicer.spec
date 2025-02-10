@@ -68,6 +68,7 @@ BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
+BuildRequires:  noto-sans-fonts
 BuildRequires:  occt-devel
 BuildRequires:  openexr-devel
 BuildRequires:  openssl-devel
@@ -133,7 +134,8 @@ export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 %cmake_install
 
 #remove stray font file
-rm -rf %{buildroot}%{_datadir}/%{name}/fonts
+rm -rf %{buildroot}%{_datadir}/%{name}/fonts/*
+ln -s %{_datadir}/fonts/truetype/NotoSans-Regular.ttf %{buildroot}%{_datadir}/%{name}/fonts/NotoSans-Regular.ttf
 
 # Copied and adapted from Fedora package:
 # https://src.fedoraproject.org/rpms/prusa-slicer
@@ -175,7 +177,7 @@ find %{buildroot}%{_datadir}/%{name}/localization -type d | sed '
 %{_bindir}/prusa-gcodeviewer
 %{_libdir}/OCCTWrapper.so
 %dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/{icons,models,profiles,shaders,udev,data,shapes,web}/
+%{_datadir}/%{name}/{fonts,icons,models,profiles,shaders,udev,data,shapes,web}/
 %{_datadir}/icons/hicolor/*/apps/%{name}*.png
 %{_datadir}/applications/PrusaSlicer.desktop
 %{_datadir}/applications/PrusaGcodeviewer.desktop

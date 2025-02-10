@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-desktop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.shell\\.panel|org\\.kde\\.plasma\\.private).*
 # %%global __requires_exclude qt6qmlimport\\((org\\.kde\\.private\\.kcms|org\\.kde\\.plasma\\.kcm|org\\.kde\\.desktopsession\\.private|org\\.kde\\.plasma\\.tablet|org\\.kde\\.plasma\\.touchscreen\\.kcm).*
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname plasma-desktop
@@ -31,14 +31,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-desktop
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -116,6 +116,7 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(scim)
 BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(wayland-client)
@@ -367,7 +368,6 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_libexecdir}/kauth/kcmdatetimehelper
 %{_kf6_iconsdir}/hicolor/*/devices/input-touchpad.*
 %{_kf6_sharedir}/kcmmouse/
-%{_kf6_notificationsdir}/kcm_touchpad.notifyrc
 %exclude %{_kf6_plasmadir}/emoji/
 %ifnarch s390 s390x
 %{_kf6_bindir}/kapplymousetheme

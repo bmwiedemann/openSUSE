@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  9 22:43:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.9
+  * There is a new utility uniqg for filtering by isomorphism
+    class. Use `uniqg --help` for full instructions.
+
+-------------------------------------------------------------------
 Fri May 17 06:22:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add autoconf-2.72.patch

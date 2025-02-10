@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Feb  8 20:59:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34.0:
+  * New interfaces and features:
+    - ne_request.h: add ne_get_response_location(),
+      add ne_get_request_target()
+    - ne_redirect.h: adds relative URI resolution per RFC 9110
+    - ne_socket.h: add ne_iaddr_set_scope(),
+      ne_iaddr_get_scope(), ne_sock_getproto()
+    - ne_session.h: add NE_SESSFLAG_STRICT session flag
+    - ne_session.h: ne_session_create() now accepts scoped IPv6
+      link-local literal addresses following the RFC 6874
+      syntax;
+    - ne_session.h: add ne_ssl_set_protovers() to configure TLS
+      protocol version ranges
+    - ne_utils.h: add NE_FEATURE_GSSAPI, NE_FEATURE_LIBPXY
+      feature flags
+    - ne_ssl.h: add ne_ssl_proto_name()
+    - HTTP strictness/compliance updated for RFC 9110/9112;
+      notably stricter in parsing header field line, chunked
+      transfer-coding, status-line.
+   Bug fixes:
+    - auth: the 'realm' string passed to credentials callback is
+    now cleaned of non-printable characters.
+  * Documentation & header updates for RFC 9110/9112.
+  * New NE_MINIMUM_VERSION() autoconf macro for better version
+    handling.
+
+-------------------------------------------------------------------
 Fri May 17 16:53:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.33.0:
@@ -85,7 +114,7 @@ Fri Aug 21 20:39:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Fix OpenSSL build w/o deprecated APIs (Rosen Penev).
   * Fix unnecessary MD5 test for non-Digest auth (Sebastian Reschke).
   * Fix hang on SSL connection close with IIS (issue #11).
-  * Fix ar, ranlib detection when cross-compiling (Sergei Trofimovich). 
+  * Fix ar, ranlib detection when cross-compiling (Sergei Trofimovich).
 
 -------------------------------------------------------------------
 Mon Jun  1 09:04:45 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
@@ -191,13 +220,13 @@ Wed Mar  4 12:50:17 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Wed Aug 21 03:19:07 UTC 2013 - crrodriguez@opensuse.org
 
-- version 0.30.0 
+- version 0.30.0
 * drop neon-openssl-version.patch
 *  API and ABI backwards-compatible with 0.27.x and later
 *  ne_path_escape: fix excessive memory allocation
-*  added  ne_ssl_clicert_import, ne_ssl_context_get_flag, 
+*  added  ne_ssl_clicert_import, ne_ssl_context_get_flag,
   ne_set_addrlist2, added ne_addr_canonical..
-* support chunked bodies with negative length passed to 
+* support chunked bodies with negative length passed to
   ne_set_request_body_provider
 
 -------------------------------------------------------------------
@@ -249,13 +278,13 @@ Tue Oct 18 16:38:07 CEST 2011 - dmueller@suse.de
 -------------------------------------------------------------------
 Mon Sep  5 23:13:56 UTC 2011 - crrodriguez@opensuse.org
 
-- test suite hangs or fails in the OBS, but works locally 
+- test suite hangs or fails in the OBS, but works locally
   disable it.
 
 -------------------------------------------------------------------
 Mon Sep  5 19:48:00 UTC 2011 - crrodriguez@opensuse.org
 
-- Load openssl engines as well, needed to support 
+- Load openssl engines as well, needed to support
   AES-NI, fast/hardware provided hash functions and Ivy bridge's
   RDRAND instruction.
 
@@ -430,21 +459,21 @@ Mon Mar  3 11:26:50 CET 2008 - olh@suse.de
 -------------------------------------------------------------------
 Thu Feb 28 22:06:13 CET 2008 - crrodriguez@suse.de
 
-- run the test suite to detect any possible regression 
+- run the test suite to detect any possible regression
 
 -------------------------------------------------------------------
 Fri Feb 15 01:47:53 CET 2008 - crrodriguez@suse.de
 
 - version 0.28.0
 - Interface changes:
-	* none, API and ABI backwards-compatible with 0.27.x 
+	* none, API and ABI backwards-compatible with 0.27.x
 - New interfaces:
 	* ne_pkcs11.h: added basic PKCS#11 support (requires GnuTLS and pakchois)
 	* ne_auth.h: added NE_AUTH_ALL and NE_AUTH_DEFAULT constants
     * ne_socket.h: added ne_sock_peer(), ne_sock_prebind(), ne_sock_cipher()
     * ne_session.h: NE_SESSFLAG_TLSSNI flag added; TLS SNI support is enabled by default, where supported; ne_set_localaddr() added
     * ne_request.h: added close_conn hooks (Robert J. van der Boon)
-    * ne_basic.h: added ne_options2() 
+    * ne_basic.h: added ne_options2()
 - Other changes:
 	* add Polish (pl) translation (Arfrever Frehtes Taifersar Arahesis)
 	* add support for the 'domain' parameter in Digest authentication
@@ -456,20 +485,20 @@ Fri Feb 15 01:47:53 CET 2008 - crrodriguez@suse.de
     * fix ne_strclean() to be locale-independent and avoid possible Win32 crash
     * fix ne_get_error() to not "clean" localized error strings
     * fix ne_ssl_clicert_read() to fail for client certs missing cert or key
- 
+
 
 -------------------------------------------------------------------
 Mon Nov 26 15:52:13 CET 2007 - crrodriguez@suse.de
 
 - version 0.27.2
  * Fix crash in GSSAPI Negotiate response header verification.
-- Cleanup excessive dependencies on -devel package. 
+- Cleanup excessive dependencies on -devel package.
 
 -------------------------------------------------------------------
 Fri Oct 12 00:34:55 CEST 2007 - ro@suse.de
 
 - add provides/obsoletes for neon-devel in libneon-devel
-  after package rename 
+  after package rename
 
 -------------------------------------------------------------------
 Tue Sep 25 11:52:53 CEST 2007 - prusnak@suse.cz
@@ -487,7 +516,7 @@ Tue Sep 25 11:52:53 CEST 2007 - prusnak@suse.cz
   * Interface changes:
    - ne_set_notifier() replaces ne_set_status(); finer-grained and type-safe
      connection status information now provided; obsoletes ne_set_progress()
-   - ne_xml_dispatch_request() now only invokes the XML parser for 
+   - ne_xml_dispatch_request() now only invokes the XML parser for
      response entities with an XML content-type, following RFC 3023 rules
    - ne_acl_set() now takes a "const" entries array
    - LFS compatibility functions *64 removed: all functions taking an
@@ -524,7 +553,7 @@ Tue Jul 17 10:43:17 CEST 2007 - prusnak@suse.cz
 -------------------------------------------------------------------
 Fri Apr 27 23:14:39 CEST 2007 - dmueller@suse.de
 
-- fix buildrequires 
+- fix buildrequires
 
 -------------------------------------------------------------------
 Tue Apr 17 19:00:40 CEST 2007 - prusnak@suse.cz

@@ -1,7 +1,7 @@
 #
 # spec file for package gap-smallsemi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallsemi
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        GAP data library of semigroups of small size
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/smallsemi/
 Source:         https://github.com/gap-packages/smallsemi/releases/download/v%version/smallsemi-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.10
 Requires:       gzip
 
 %description

@@ -1,7 +1,7 @@
 #
 # spec file for package kscreenlocker6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kscreenlocker6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde

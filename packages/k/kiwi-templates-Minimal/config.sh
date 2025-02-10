@@ -117,6 +117,16 @@ if [ -f /etc/chrony.conf ]; then
 	systemctl enable chronyd
 fi
 
+# Configure SELinux if installed
+# Note: Because of https://github.com/OSInside/kiwi/issues/2709, the root filesystem
+# isn't fully labelled, but the first system snapshot is created after autorelabel
+# so this is never visible.
+if [[ -e /etc/selinux/config ]]; then
+        sed -i -e 's|^SELINUX=.*|SELINUX=enforcing|g' \
+            -e 's|^SELINUXTYPE=.*|SELINUXTYPE=targeted|g' \
+            "/etc/selinux/config"
+fi
+
 #======================================
 # Disable recommends on virtual images (keep hardware supplements, see bsc#1089498)
 #--------------------------------------
@@ -142,7 +152,7 @@ if rpm -q sdbootutil; then
  	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
  	mkdir -p /boot/efi
 
-	echo "rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0" > /etc/kernel/cmdline
+	echo "rw security=selinux selinux=1 quiet systemd.show_status=1 console=ttyS0,115200 console=tty0" > /etc/kernel/cmdline
 
 	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable sdbootutil-enroll.service
 fi

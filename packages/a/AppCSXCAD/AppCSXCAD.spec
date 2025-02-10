@@ -1,7 +1,7 @@
 #
 # spec file for package AppCSXCAD
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Scientific/Other
 URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/thliebig/AppCSXCAD/pull/12
+Patch0:         https://github.com/thliebig/AppCSXCAD/pull/12.patch#/fix-flag-usage.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  QCSXCAD-devel
 BuildRequires:  cmake

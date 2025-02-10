@@ -1,7 +1,7 @@
 #
 # spec file for package nss-pam-ldapd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           nss-pam-ldapd
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        NSS module and daemon for using LDAP as a naming service
 License:        LGPL-2.1-or-later

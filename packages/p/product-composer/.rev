@@ -291,4 +291,14 @@
     (boo#1231141)</comment>
     <requestid>1243615</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2a0877bf9ec067b019c83ca13c2191a7</srcmd5>
+    <version>0.5.4</version>
+    <time>1739205032</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.5.4
+  support source and debug settings per flavor
+  generate sha256 files for install.iso</comment>
+    <requestid>1244745</requestid>
+  </revision>
 </revisionlist>

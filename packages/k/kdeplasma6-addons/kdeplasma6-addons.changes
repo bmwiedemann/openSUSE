@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:42 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * applets/userswitcher: don't highlight user on press
+  * windowswitchers/sidebar: small QML fixes (kde#492506)
+  * applets/notes: don't steal shortcuts to FloderView
+  * windowswitchers: make window titles accessible
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * wallpapers/hunyango: Remove broken accent color handling
+  * Fix highlight not following mouse downwards (kde#485477)
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * It compiles without deprecated methods
+  * applets/weather: Center badge when the icon is smaller
+  * Fixed issue that title was Info. And Author was not correct when a more than one () around text were used.
+  * applets/notes: migrate to default CompactRepresentation
+  * applets/userswitcher: Fit dialog height to content
+  * [applets/keyboardindicator] Show when modifiers are latched/locked (kde#158053)
+  * Don't include quiet packages in feature_summary
+  * Reduce atomic operations when using KPluginMetaData
+  * applets/userswitcher: fix showing other logged-in users' avatars
+  * applet/webbrowser: add persistent storage
+  * applets/webbrowser: fix selecting "Fixed Scale"
+  * update version for new release
+  * runners/converter: Fix thread affinity of currency update timer (kde#488713)
+  * kwin/effects: Mention the cube effect's need for manual activation
+  * kameleon: sync config after writing entry (kde#493262)
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

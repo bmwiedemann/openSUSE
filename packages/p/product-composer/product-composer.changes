@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 10 12:42:11 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.4
+
+  support source and debug settings per flavor
+
+  generate sha256 files for install.iso
+
+-------------------------------------------------------------------
 Thu Feb  6 09:11:29 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.3

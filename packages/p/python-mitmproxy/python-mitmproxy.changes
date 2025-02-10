@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Feb 10 04:57:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 11.1.2:
+  * CVE-2025-23217: mitmweb's API now requires an authentication token by
+    default. The mitmweb API is bound to localhost only, but @gronke found
+    that an attacker can circumvent that restriction by tunneling requests
+    through the proxy server itself in an SSRF-style attack.
+    (fa89055, @mhils)  (bsc#1236890)
+  * Add (optional) password protection for mitmweb. The web_password option
+    replaces the randomly-generated token authentication with a fixed secret
+    that survives mitmproxy restarts. (0bd573a, @mhils)
+  * mitmweb can now be hosted under arbitrary domains, the previously-used
+    DNS rebind protection is not required anymore. (62693af, @mhils)
+  * Security Hardening: mitmweb's xsrf_token cookie is now HttpOnly;
+    SameSite=Strict. (#7491, @mhils)
+  * Fix console freezing due to DNS queries with an empty question
+    section. (#7497, @sujaldev)
+  * Fixed a bug that caused mitmproxy to crash when loading prior knowledge
+    h2 flows. (#7514, @sujaldev)
+  * Fix a bug where mitmproxy would get stuck in secure web proxy mode when
+    using ignore_hosts or allow_hosts. (#7519, @mhils)
+  * Copy request/response data to the clipboard in mitmweb (#7352, @lups2000)
+  * Fix a bug where exporting a curl or httpie command with escaped
+    characters would lead to different data being sent.
+    (#7520, @proteusvacuum)
+  * Local Capture Mode is now available on Linux as well. (#7440, @mhils)
+  * mitmproxy now requires Python 3.12 or above. (#7440, @mhils)
+  * Add cache-busting for mitmweb's front end code. (#7386, @mhils)
+  * Clicking the URL in mitmweb now places the cursor at the current
+    position instead of selecting the entire URL. (#7385, @lups2000)
+  * Add missing status codes (#7455, @jwadolowski)
+  * All filter expressions are now case-insensitive by default. Users can
+    opt into case-sensitive filters by setting
+    MITMPROXY_CASE_SENSITIVE_FILTERS=1 as an environment variable.
+    (#7458, @mhils, @AdityaPatadiya)
+  * Remove filter expression lowercasing in block_list addon
+    (#7456, @jwadolowski)
+  * Remove check for status codes in the blocklist add-on.
+    (#7453, @lups2000, @AdityaPatadiya)
+  * Prompt user before clearing screen (#7445, @errorxyz)
+  * Stop sorting keys in JSON contentview (#7346, @injust)
+  * Fix a bug where a custom CA would raise an error. (#7355, @nneonneo)
+  * Fix a bug where the mitmproxy UI would crash on negative durations.
+    (#7358, @mhils)
+  * Allow technically invalid HTTP transfer encodings in requests if
+    validate_inbound_headers is disabled. (#7361, #7373, @mhils)
+  * Fix a bug in windows management in mitmproxy TUI whereby the help window
+    does not appear if "?" is pressed within the overlay
+    (#6500, @emanuele-em)
+  * Tighten HTTP detection heuristic to better support custom TCP-based
+    protocols. (#7228, @fatanugraha)
+  * Implement stricter validation of HTTP headers to harden against request
+    smuggling attacks. (#7345, @mhils)
+  * Increase HTTP/2 default flow control window size, fixing performance
+    issues. (#7317, @sujaldev)
+  * Fix a bug where mitmproxy would incorrectly report that TLS 1.0 and 1.1
+    are not supported with the current OpenSSL build. (#7241, @mhils)
+  * Add a tun proxy mode that creates a virtual network device on Linux for
+    transparent proxying. (#7278, @mhils)
+  * browser.start command now supports Firefox. (#7239, @sujaldev)
+  * Fix interaction of the modify_headers and stream_large_bodies options.
+    This may break users of modify_headers that rely on filters referencing
+    the message body. We expect this to be uncommon, but please make
+    yourself heard if that's not the case. (#7286, @lukant)
+  * Fix a crash when handling corrupted compressed body in savehar addon and
+    its tests. (#7320, @8192bytes)
+  * Remove dependency on protobuf library as it was no longer being
+    used. (#7327, @matthew16550)
+
+-------------------------------------------------------------------
 Fri Oct 18 00:32:15 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 11.0.0:

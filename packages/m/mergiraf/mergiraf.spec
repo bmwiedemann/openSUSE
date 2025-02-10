@@ -1,6 +1,7 @@
 #
 # spec file for package mergiraf
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           mergiraf
-Version:        0.4.0
+Version:        0.5.1
 Release:        0
 Summary:        A syntax-aware git merge driver
 License:        GPL-3.0-or-later

@@ -1,7 +1,7 @@
 #
 # spec file for package python314
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,14 @@
 %else
 %bcond_with experimental_jit
 %endif
+%endif
+
+# Only for Tumbleweed
+# https://en.opensuse.org/openSUSE:Python:Externally_managed
+%if 0%{?suse_version} > 1600
+%bcond_without externally_managed
+%else
+%bcond_with externally_managed
 %endif
 
 %define         python_pkg_name python314
@@ -149,8 +157,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~a3
-%define         tarversion 3.14.0a3
+Version:        3.14.0~a4
+%define         tarversion 3.14.0a4
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -208,6 +216,12 @@ Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
+# PATCH-FIX-UPSTREAM CVE-2025-0938-sq-brackets-domain-names.patch bsc#1236705 mcepl@suse.com
+# functions `urllib.parse.urlsplit` and `urlparse` accept domain names including square brackets
+Patch41:        CVE-2025-0938-sq-brackets-domain-names.patch
+# PATCH-FIX-UPSTREAM 314a4-no-SO_REUSEPORT.patch gh#python/cpython#128916 mcepl@suse.com
+# changes in kernel break Python tests
+Patch42:        314a4-no-SO_REUSEPORT.patch
 #### Python 3.14 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -794,7 +808,7 @@ rm %{buildroot}%{_libdir}/libpython3.so
 rm %{buildroot}%{_libdir}/pkgconfig/{python3,python3-embed}.pc
 %endif
 
-%if %{suse_version} > 1550
+%if %{with externally_managed}
 # PEP-0668 mark this as a distro maintained python
 sed -e 's,__PYTHONPREFIX__,%{python_pkg_name},' -e 's,__PYTHON__,python%{python_version},' < %{SOURCE4} > %{buildroot}%{sitedir}/EXTERNALLY-MANAGED
 %endif
@@ -996,7 +1010,7 @@ fi
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
 %endif
 
-%if %{suse_version} > 1550
+%if %{with externally_managed}
 # PEP-0668
 %{sitedir}/EXTERNALLY-MANAGED
 %endif

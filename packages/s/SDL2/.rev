@@ -588,4 +588,12 @@
     <comment>- Update to release 2.30.12</comment>
     <requestid>1242218</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>cb772fa4b5f040e5c5ab49cb347cad54</srcmd5>
+    <version>2.32.0</version>
+    <time>1739204561</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.32.0</comment>
+    <requestid>1244399</requestid>
+  </revision>
 </revisionlist>

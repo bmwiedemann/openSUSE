@@ -2,6 +2,7 @@
 # spec file for package freeciv
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +18,40 @@
 
 
 Name:           freeciv
-Version:        3.0.10
+Version:        3.1.4
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.freeciv.org
 Source0:        https://files.freeciv.org/stable/%{name}-%{version}.tar.xz
-Source1:        freeciv-gtk3.desktop
-Source2:        freeciv-qt.desktop
-Source3:        freeciv.png
-Source4:        freeciv-manual
-Source5:        freeciv-manual.desktop
-Source6:        freeciv-manual.png
-BuildRequires:  audiofile-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  curl-devel >= 7.9.7
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  gtk3-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libtool
+BuildRequires:  gtk3-devel >= 3.22.0
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(SDL2_mixer)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(audiofile)
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(gtk4) >= 4.0.0
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(libcurl) >= 7.9.7
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lua) >= 5.4
+BuildRequires:  pkgconfig(sdl2) >= 2.0.0
+BuildRequires:  pkgconfig(sqlite3) >= 3.0.0
+BuildRequires:  pkgconfig(zlib)
 Requires:       freeciv_client-%{version}
-Recommends:     freeciv-lang
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
+%else
+BuildRequires:  libqt5-qtbase-common-devel
+BuildRequires:  libqt5-qtbase-devel
+%endif
+%lang_package
 
 %description
 A clone of the well known game Civilization by Microprose.
@@ -70,15 +72,6 @@ Provides:       freeciv_client-%{version}
 %description qt
 Freeciv executable using Qt library
 
-%package lang
-Summary:        Translation files for freeciv
-Group:          Amusements/Games/Strategy/Turn Based
-Requires:       freeciv = %{version}
-BuildArch:      noarch
-
-%description lang
-Translation files for freeciv main package and clients.
-
 %package gtk3
 Summary:        Gtk3 client for freeciv
 Group:          Amusements/Games/Strategy/Turn Based
@@ -88,28 +81,44 @@ Provides:       freeciv_client-%{version}
 %description gtk3
 Freeciv executable using Gtk3 library
 
+%package gtk4
+Summary:        Gtk4 client for freeciv
+Group:          Amusements/Games/Strategy/Turn Based
+Requires:       freeciv = %{version}
+Provides:       freeciv_client-%{version}
+
+%description gtk4
+Freeciv executable using Gtk4 library
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export MOCCMD="moc-qt5"
-autoreconf -fi
 %configure \
-  --enable-client=gtk3,qt \
-  --with-readline \
-  --disable-static \
-  --docdir=%{_docdir}/freeciv
+	--enable-client=gtk3.22,gtk4,qt \
+	--enable-fcmp=gtk3,gtk4,qt \
+%if 0%{?suse_version} > 1600
+	--with-qtver=qt6 \
+%else
+	--with-qtver=qt5 \
+%endif
+	--enable-fcdb=sqlite3 \
+	--enable-ruleedit \
+	--with-readline \
+	--with-libbz2 \
+	--with-liblzma \
+	--with-libzstd \
+	--enable-sys-lua \
+	--disable-static \
+	--docdir=%{_docdir}/freeciv \
+	%{nil}
 %make_build
 
 %install
 %make_install
-install -m 755 $RPM_SOURCE_DIR/freeciv-manual %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_datadir}/pixmaps/
-install -m 644 $RPM_SOURCE_DIR/*.png %{buildroot}%{_datadir}/pixmaps
-%suse_update_desktop_file -i org.freeciv.gtk3 Game StrategyGame
-%suse_update_desktop_file -i org.freeciv.qt Game StrategyGame
-%suse_update_desktop_file -i freeciv-manual Game StrategyGame
 rm %{buildroot}%{_docdir}/freeciv/COPYING
+find %{buildroot} -type f -name "*.a" -print -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name}-core
 %find_lang %{name}-nations
@@ -121,8 +130,6 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %doc README
 %license COPYING
 %exclude %{_docdir}/freeciv/INSTALL*
-%exclude %{_libdir}/*.a
-%exclude %{_libdir}/*.la
 %{_mandir}/man6/freeciv.6%{?ext_man}
 %{_mandir}/man6/freeciv-*.6%{?ext_man}
 %dir %{_sysconfdir}/%{name}
@@ -131,7 +138,6 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_bindir}/freeciv-ruleup
 %{_bindir}/freeciv-server
 %{_bindir}/freeciv-manual
-%{_datadir}/applications/freeciv-manual.desktop
 %{_datadir}/applications/org.freeciv.server.desktop
 %{_datadir}/applications/org.freeciv.ruledit.desktop
 %{_datadir}/freeciv/
@@ -140,26 +146,39 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %{_datadir}/icons/hicolor/*x*/apps/freeciv-modpack.png
 %{_datadir}/icons/hicolor/*x*/apps/freeciv-ruledit.png
 %{_datadir}/pixmaps/freeciv-client.png
-%{_datadir}/pixmaps/freeciv-manual.png
 %{_datadir}/pixmaps/freeciv-modpack.png
 %{_datadir}/pixmaps/freeciv-ruledit.png
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/metainfo/org.freeciv.server.appdata.xml
-%{_datadir}/metainfo/org.freeciv.ruledit.appdata.xml
+%{_datadir}/metainfo/org.freeciv.server.metainfo.xml
+%{_datadir}/metainfo/org.freeciv.ruledit.metainfo.xml
 
 %files lang -f %{name}-core.lang -f %{name}-nations.lang -f %{name}-ruledit.lang
+%license COPYING
 
 %files gtk3
-%{_bindir}/freeciv-gtk3
+%license COPYING
+%{_bindir}/freeciv-gtk3.22
 %{_bindir}/freeciv-mp-gtk3
-%{_datadir}/applications/org.freeciv.gtk3.desktop
-%{_datadir}/metainfo/org.freeciv.gtk3.appdata.xml
-%{_datadir}/applications/org.freeciv.mp.gtk3.desktop
-%{_datadir}/metainfo/org.freeciv.mp.gtk3.appdata.xml
+%{_datadir}/applications/org.freeciv.gtk322.desktop
+%{_datadir}/applications/org.freeciv.gtk3.mp.desktop
+%{_datadir}/metainfo/org.freeciv.gtk322.metainfo.xml
+%{_datadir}/metainfo/org.freeciv.gtk3.mp.metainfo.xml
+
+%files gtk4
+%license COPYING
+%{_bindir}/freeciv-gtk4
+%{_bindir}/freeciv-mp-gtk4
+%{_datadir}/applications/org.freeciv.gtk4.desktop
+%{_datadir}/applications/org.freeciv.gtk4.mp.desktop
+%{_datadir}/metainfo/org.freeciv.gtk4.metainfo.xml
+%{_datadir}/metainfo/org.freeciv.gtk4.mp.metainfo.xml
 
 %files qt
+%license COPYING
 %{_bindir}/freeciv-qt
+%{_bindir}/freeciv-mp-qt
 %{_datadir}/applications/org.freeciv.qt.desktop
-%{_datadir}/metainfo/org.freeciv.qt.appdata.xml
+%{_datadir}/applications/org.freeciv.qt.mp.desktop
+%{_datadir}/metainfo/org.freeciv.qt.metainfo.xml
+%{_datadir}/metainfo/org.freeciv.qt.mp.metainfo.xml
 
 %changelog

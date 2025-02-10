@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:07 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+
+-------------------------------------------------------------------
+Thu Jan 23 13:46:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * Don't try to set parent of ComboBoxForm's internal dialog
+
+-------------------------------------------------------------------
+Sat Jan 11 18:28:39 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Dec 31 20:50:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

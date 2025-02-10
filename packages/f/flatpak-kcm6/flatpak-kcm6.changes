@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:39 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- No code changes since 6.2.91
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:06 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- No code changes since 6.2.90
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:02 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * Remove unimplemented methods
+  * It compiles fine without deprecated methods
+  * Update selected app when activating the running KCM
+  * Add "Flatseal" to keywords
+  * Don't include quiet packages in feature_summary
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

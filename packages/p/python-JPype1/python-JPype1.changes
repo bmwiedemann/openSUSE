@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 10 10:18:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.2
+  * Roll back agent change due to misbehaving JVM installs.
+  * Correct issues with non-ascii path for jdbc connections and forName.
+
+-------------------------------------------------------------------
 Sun Nov 24 23:13:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.1:

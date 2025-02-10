@@ -1,7 +1,7 @@
 #
 # spec file for package python-mitmproxy-rs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python39 1
 Name:           python-mitmproxy-rs
-Version:        0.9.2
+Version:        0.11.1
 Release:        0
 Summary:        Rust bits for mitmproxy
 License:        MIT

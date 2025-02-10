@@ -1,33 +1,57 @@
-From f0375048f336740dd2239369df7be18a619ec8e8 Mon Sep 17 00:00:00 2001
-From: Luca Beltrame <lbeltrame@kde.org>
-Date: Sun, 11 Aug 2024 21:21:11 +0200
+From c6ff8dcf4ea993bc95aa00ae6f7e499d457a32bc Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 11 Jan 2025 19:21:42 +0100
 Subject: [PATCH] Use the openSUSE wallpaper
 
 This is unfortunately hardcoded. Use our default to more likely match what
 the user sees.
----
- src/qml/mock/MockCard.qml | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
+sed -i "s#wallpapers/Next/contents/images/1920x1080.png#wallpapers/openSUSEdefault/contents/images/1920x1200.png#g" src/qml/mock/*.qml
+---
+ src/qml/mock/MockActivities.qml | 2 +-
+ src/qml/mock/MockCard.qml       | 2 +-
+ src/qml/mock/MockOverview.qml   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/qml/mock/MockActivities.qml b/src/qml/mock/MockActivities.qml
+index 0b9a00b..284fed9 100644
+--- a/src/qml/mock/MockActivities.qml
++++ b/src/qml/mock/MockActivities.qml
+@@ -107,7 +107,7 @@ Item {
+                     // We're intentionally ignoring our 16:10 desktop wallpaper (MockDesktop) - whilst that fits the square
+                     // window, we want to maximise what we can fit in our limited height and be more representative of what
+                     // a user will see - most use a 16:9 display.
+-                    source: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1920x1080.png"
++                    source: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
+                     mipmap: true
+                 }
+ 
 diff --git a/src/qml/mock/MockCard.qml b/src/qml/mock/MockCard.qml
-index 356e96a..cc29eb5 100644
+index c2c9754..c7dbf7d 100644
 --- a/src/qml/mock/MockCard.qml
 +++ b/src/qml/mock/MockCard.qml
-@@ -21,12 +21,12 @@ Kirigami.AbstractCard {
-     property int backgroundAlignment: Qt.AlignRight | Qt.AlignBottom
+@@ -22,7 +22,7 @@ Kirigami.AbstractCard {
+     property double backgroundScale: 1
      property int blurRadius: 32
  
--    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1280x800.png"
-+    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1280x1024.png"
-     readonly property int desktopWidth: wallpaperImage.sourceSize.width
-     readonly property int desktopHeight: wallpaperImage.sourceSize.height
+-    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1920x1080.png"
++    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
+     readonly property int desktopWidth: 1024 * backgroundScale
+     readonly property int desktopHeight: 576 * backgroundScale
  
-     /*
--     * 1280x800 is chosen to look good at normal window sizes: The aspect closely
-+     * 1280x1024 is chosen to look good at normal window sizes: The aspect closely
-      * matches that of the mock as shown in the application and is not too large.
-      *
-      * The background be positioned according to the alignment, and expand to fit
+diff --git a/src/qml/mock/MockOverview.qml b/src/qml/mock/MockOverview.qml
+index 37e3156..9aca7c4 100644
+--- a/src/qml/mock/MockOverview.qml
++++ b/src/qml/mock/MockOverview.qml
+@@ -21,7 +21,7 @@ Item {
+ 
+     // We're intentionally ignoring our 16:10 desktop wallpaper (MockDesktop) - whilst that fits the square
+     // window, we want to be more representative of what a user will see - most use a 16:9 display.
+-    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/Next/contents/images/1920x1080.png"
++    readonly property string wallpaper: "file:" + Controller.installPrefix() + "/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png"
+     readonly property double scale: layout.scale
+ 
+     // Underlay
 -- 
-2.46.0
+2.47.0
 

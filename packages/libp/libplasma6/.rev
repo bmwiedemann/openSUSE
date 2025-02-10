@@ -153,4 +153,12 @@
   fail. Avoid to abort the upgrade process in these cases (bsc#1234904). (forwarded request 1236796 from fbui)</comment>
     <requestid>1236814</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a7da505599e584fff02b14343c5217a</srcmd5>
+    <version>6.3.0</version>
+    <time>1739204660</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.3</comment>
+    <requestid>1244590</requestid>
+  </revision>
 </revisionlist>

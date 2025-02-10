@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:47 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * Remove and add idle timeout when inhibited and unhibited (kde#469687)
+  * X11Locker: always call stayOnTop when receiving XCB_MAP_NOTIFY to fix black screen
+  * Update .gitignore to ignore build folder
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:37 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * globalaccel: whitelist Toggle Keyboard Backlight (kde#483919)
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:33 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * greeter: Don't turn off screen using DPMS in testing mode
+  * greeter: Conditionalise autotests here too
+  * Cleanup unused HAVE_SIGNALFD_H, HAVE_EVENT_H from config-kscreenlocker.h.cmake
+  * cmake: Drop now unused UnixAuth.cmake
+  * Drop obsolete ConfigureChecks.cmake
+  * README.pam: Mention PAM is required and cleanup obsolete bits
+  * Drop unused PAM_REQUIRED cmake option, unconditionally find PAM (kde#455303)
+  * Make it compile without deprecated methods
+  * x11locker: lower m_background when hiding
+  * Don't include quiet packages in feature_summary
+  * update version for new release
+  * ksldapp: don't wait for the screen locker process to exit in the grace lock case
+  * Add missing Q_EMIT
+  * greeter: Fix signal invocation on QNetworkReply
+  * pamtest: Use QStringLiteral
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

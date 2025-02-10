@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * Clean up when a sensor gets destroyed that is currently subscribed
+  * plugins/cpu: Remove "wait" from total CPU usage sensors (kde#497341)
+  * plugins/cpu: Use physical ID to determine number of CPUs (kde#496847)
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:38 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * Fix buffer memory reporting (kde#498373)
+  * Fix integer overflow when computing 'application' memory
+  * update version for new release
+  * Fix CPU temperature reporting for FreeBSD
+  * Create a GPU backend for FreeBSD
+  * Use categorized logging
+  * plugins/cpu: Use simpler names when CPU core info is missing
+  * plugins/cpu: Test for the proper CPU property, skip nonexistent CPUs (kde#495524)
+  * Don't include quiet packages in feature_summary
+  * plugins/pressure: Use ulonglong for storing "total" time information
+  * update version for new release
+  * plugins/cpu: Ignore invalid CPU info when reading /proc/cpuinfo (kde#493093)
+
+-------------------------------------------------------------------
 Tue Dec 31 20:49:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  8 20:01:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.0
+  * Allow destroying a window and its renderer in either order
+  * Added cursor-shape-v1 protocol support on Wayland
+  * Improved event processing latency when gamepad/sensor is open
+  * Fixed conditional effect playback on Moza Racing devices
+  * Fixed input for Thrustmaster PlayStation wheels when
+    hid-tmff2 is installed
+
+-------------------------------------------------------------------
 Sun Feb  2 12:18:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.12

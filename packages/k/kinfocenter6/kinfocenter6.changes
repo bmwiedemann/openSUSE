@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:44 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * CommandOutputKCM: Use correct newlines for HTML-styled content (kde#499069)
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:26 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * cmake: Call cmake_minimum_required before project()
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * Made KDocTools optional
+  * It compiles fine without deprecated methods
+  * update version for new release
+  * energyinfo: Add "Charge Cycles" info
+  * about-distro: align labels top
+  * about-distro: hint gpu type
+  * about-distro: gpu factorization
+  * about-distro: new hint system
+  * about-distro: support multiple GPUs (kde#491527)
+  * Remove obsolete menu category files
+  * update version for new release
+  * appiumtests: fix wayland
+  * Don't include quiet packages in feature_summary
+  * Add "Documentation" as a category
+  * update version for new release
+  * add an edid module (kde#492523)
+  * update version for new release
+  * kcms/memory: use KAuth dmidecode helper
+  * refactor(dmidecode-helper): support multiple methods
+  * kcms: pull dmidecode-helper into a separate dir
+  * tidy appstream version information
+  * update version for new release
+
+- Drop patches, now upstream:
+  * 0001-kcms-pull-dmidecode-helper-into-a-separate-dir.patch
+  * 0002-refactor-dmidecode-helper-support-multiple-methods.patch
+  * 0003-kcms-memory-use-KAuth-dmidecode-helper.patch
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

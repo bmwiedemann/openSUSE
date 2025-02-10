@@ -19,15 +19,14 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-cal
-Version:        0.8.1
+Version:        0.8.3
 Release:        0
 Summary:        AWS C99 wrapper for cryptography primitives
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-cal
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         acc_fix-cmake-modules-path.patch
-Patch1:         acc_add-so-version.patch
+Patch0:         acc_add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  cmake(aws-c-common)

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * add KDecoration 3 porting guide
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:09 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * decoratedwindow: add scale properties and double buffered state
+  * change library name from kdecoration2 to kdecoration3
+  * make (nearly) all geometry floating point
+  * private: remove ApplicationMenuEnabledDecoratedWindowPrivate
+  * rename client to window
+  * decoratedclient: drop windowId and decorationId
+  * Move to KDecoration3
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

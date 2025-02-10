@@ -1,0 +1,195 @@
+From a5b721fcf48b4866c81495d3babbdc7093179f2d Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Mon, 9 Dec 2024 18:43:32 +0000
+Subject: [PATCH 1/5] CMakeLists.txt: guess VTK_QT_VERSION in old VTK.
+
+On old systems, CMake is unable to correctly determine the used
+Qt version - because VTK_QT_VERSION is a new feature added in VTK
+9.1. Before VTK 9.1, it doesn&apos;t exist. Thus, we make a guess and
+hope for the best. Since Qt6 is not officially supported before 9.1,
+we guess Qt5 or Qt4.
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ CMakeLists.txt | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 026848d..4d55c4d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -103,6 +103,23 @@ INCLUDE_DIRECTORIES( ${QCSXCAD_INCLUDE_DIR} )
+ find_package(HDF5 1.8 COMPONENTS C HL REQUIRED)
+ INCLUDE_DIRECTORIES (${HDF5_INCLUDE_DIRS})
+ 
++# Both Qt6 support and the variable VTK_QT_VERSION are introduced in vTK
++# 9.1. Below VTK 9, we don't know the Qt version used by VTK, so we make
++# a guess and hope for the best. Since Qt6 is not officially supported
++# before 9.1, we guess Qt4 or Qt5.
++# https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7483
++if (NOT DEFINED VTK_QT_VERSION)
++    FIND_PACKAGE(Qt4 COMPONENTS Core QUIET)
++    if (Qt4_FOUND)
++        SET(VTK_QT_VERSION "4")
++    else()
++        SET(VTK_QT_VERSION "5")
++    # Probably no need to check for Qt6 here, since Qt6 is only supported by VTK 9.1+
++    # which exposes VTK_QT_VERSION
++    endif()
++    message(STATUS "VTK_QT_VERSION is unsupported before VTK 9.1, a guess has been made.")
++endif()
++
+ # vtk
+ find_package(VTK REQUIRED COMPONENTS vtkIOGeometry NO_MODULE)
+ if (${VTK_VERSION} VERSION_GREATER "9")
+
+From 2be0e63b6de8143724b04e70a26c146c96e7c99f Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Fri, 13 Dec 2024 07:03:51 +0000
+Subject: [PATCH 2/5] CMakeLists.txt: include missing VTK modules.
+
+On CentOS 7, AppCSXCAD produces a ton of undefined reference errors
+due to undefined VTK components. To fix it, list all used VTK components
+in CMakeLists.txt.
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ CMakeLists.txt | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4d55c4d..cba7b75 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -109,7 +109,7 @@ INCLUDE_DIRECTORIES (${HDF5_INCLUDE_DIRS})
+ # before 9.1, we guess Qt4 or Qt5.
+ # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7483
+ if (NOT DEFINED VTK_QT_VERSION)
+-    FIND_PACKAGE(Qt4 COMPONENTS Core QUIET)
++    FIND_PACKAGE(Qt4 COMPONENTS QtCore QUIET)
+     if (Qt4_FOUND)
+         SET(VTK_QT_VERSION "4")
+     else()
+@@ -117,15 +117,26 @@ if (NOT DEFINED VTK_QT_VERSION)
+     # Probably no need to check for Qt6 here, since Qt6 is only supported by VTK 9.1+
+     # which exposes VTK_QT_VERSION
+     endif()
+-    message(STATUS "VTK_QT_VERSION is unsupported before VTK 9.1, a guess has been made.")
++    message(
++      WARNING
++      "VTK_QT_VERSION is unsupported before VTK 9.1, "
++      "a guess has been made: Qt ${VTK_QT_VERSION}. "
++      "Use -DVTK_QT_VERSION=number to override!"
++    )
+ endif()
+ 
+ # vtk
+-find_package(VTK REQUIRED COMPONENTS vtkIOGeometry NO_MODULE)
++find_package(VTK COMPONENTS vtkCommonCore QUIET)
+ if (${VTK_VERSION} VERSION_GREATER "9")
+-    find_package(VTK REQUIRED COMPONENTS CommonCore GUISupportQt NO_MODULE)
++    find_package(VTK REQUIRED COMPONENTS
++      CommonCore IOXML InteractionWidgets RenderingLOD GUISupportQt
++      NO_MODULE
++    )
+ else()
+-    find_package(VTK REQUIRED)
++    find_package(VTK REQUIRED COMPONENTS
++      vtkCommonCore vtkIOXML vtkInteractionWidgets vtkRenderingLOD vtkGUISupportQt
++      NO_MODULE
++    )
+     include(${VTK_USE_FILE})
+ endif()
+ 
+
+From 96275fb9d9459a09848f3016d4038a55d7d1bcf1 Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Fri, 13 Dec 2024 07:46:39 +0000
+Subject: [PATCH 3/5] CMakeLists.txt: add missing Qt4 includes.
+
+With Qt4, AppCSXCAD produces a ton of missing header errors due
+to undefined include paths. To fix it, add Qt4 include paths in
+CMakeLists.txt.
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cba7b75..1ac3b9a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -154,6 +154,7 @@ elseif(${VTK_VERSION} VERSION_GREATER "6" AND VTK_QT_VERSION VERSION_GREATER "4"
+ else()
+     FIND_PACKAGE(Qt4 REQUIRED QtCore QtGui QtXml)
+     INCLUDE( ${QT_USE_FILE} )
++    INCLUDE_DIRECTORIES(${QT_INCLUDES})
+ endif()
+ 
+ message(STATUS "Found package VTK. Using version " ${VTK_VERSION})
+
+From 583bcb83d5632ab3120da63a69c6637364e8316a Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Fri, 13 Dec 2024 08:58:23 +0000
+Subject: [PATCH 4/5] CMakeLists.txt: drop HDF5 version check.
+
+HDF5's CMake rules have a bug when running on FreeBSD and
+macOS, making it to believe HDF5 1.10 is older than HDF5
+1.8 [1], thus CMake fails. Furthermore, implementing a manual
+version check is also problematic since it also has a bug
+on Linux so it doesn't define HDF5_VERSION_MAJOR, worse,
+HDF5_VERSION is only defined in CMake 3.3 so it won't work
+on old systems that actually need this check. To simplify
+the workaround we simply drop the HDF5 version check (since
+HDF 1.8 was released in 2008, while HDF 1.6 was last updated
+in 2011, it's unlikely to cause any issue).
+
+[1] https://gitlab.kitware.com/cmake/cmake/-/issues/25358
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1ac3b9a..6ef6581 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -100,7 +100,7 @@ message(STATUS "QCSXCAD_INCLUDE_DIR: ${QCSXCAD_INCLUDE_DIR}" )
+ INCLUDE_DIRECTORIES( ${QCSXCAD_INCLUDE_DIR} ) 
+ 
+ # hdf5
+-find_package(HDF5 1.8 COMPONENTS C HL REQUIRED)
++find_package(HDF5 COMPONENTS C HL REQUIRED)
+ INCLUDE_DIRECTORIES (${HDF5_INCLUDE_DIRS})
+ 
+ # Both Qt6 support and the variable VTK_QT_VERSION are introduced in vTK
+
+From 6356e7db8d992790dc6a71d74c0ef8b4df36c0b1 Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Fri, 13 Dec 2024 11:16:29 +0000
+Subject: [PATCH 5/5] CMakeLists.txt: avoid overwriting CMAKE_CXX_FLAGS.
+
+The current CMakeLists.txt replaces the string CMAKE_CXX_FLAGS,
+making it impossible to pass CXXFLAGS to the build system. This
+commit appends to the string instead of rewriting it.
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6ef6581..f82d1ea 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@ PROJECT( AppCSXCAD CXX C)
+ cmake_minimum_required(VERSION 2.8)
+ 
+ if (UNIX)
+-    set (CMAKE_CXX_FLAGS -fPIC )
++    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC" )
+ endif()
+ 
+ if(POLICY CMP0020)

@@ -1,7 +1,7 @@
 #
 # spec file for package kmenuedit6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without released
 %define rname kmenuedit
 Name:           kmenuedit6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -31,9 +31,9 @@ Release:        0
 Summary:        Provides the interface and basic tools for the KDE workspace
 License:        GPL-2.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes

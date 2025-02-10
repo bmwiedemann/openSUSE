@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:35:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.0:
+  * Reduced accuracy representations of years when parsing a
+    calendar date are now only allowed to be [YY] (see 31)
+  * No longer specify a Python interpreter version to Black
+  * Cleanup unsupported Pylint configuration options
+  * Fix used-before-assignment errors
+  * Fix coverage issue caused by unreachable conditional in
+    _parse_interval_end
+
+-------------------------------------------------------------------
 Wed Jan  3 09:40:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

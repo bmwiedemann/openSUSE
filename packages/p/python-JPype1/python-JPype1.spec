@@ -1,7 +1,7 @@
 #
 # spec file for package python-JPype1
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_with     test_jdbc
 %{?sle15_python_module_pythons}
 Name:           python-JPype1
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Python to Java bridge
 License:        Apache-2.0

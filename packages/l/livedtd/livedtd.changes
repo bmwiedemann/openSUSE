@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb  4 12:33:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.20: %setup0 is, just like %patch0, no longer
+  valid.
+
+-------------------------------------------------------------------
 Fri Mar  1 10:56:23 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

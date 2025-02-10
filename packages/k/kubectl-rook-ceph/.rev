@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de2dcce59b7ad65bba2200bd93c12884</srcmd5>
+    <version>0.9.3</version>
+    <time>1739205054</time>
+    <user>anag+factory</user>
+    <comment>new package kubectl-rook-ceph: provide common management and troubleshooting tools for the Rook Ceph storage provider</comment>
+    <requestid>1244761</requestid>
+  </revision>
+</revisionlist>

@@ -5,22 +5,22 @@ build: produce shared libraries
 
 Partly based on Debian's upstream-autotoolization.patch.
 ---
- Makefile.am  |  122 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Makefile.am  |  123 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  configure.ac |   11 ++++-
- 2 files changed, 131 insertions(+), 2 deletions(-)
+ 2 files changed, 132 insertions(+), 2 deletions(-)
 
-Index: nauty2_8_8/Makefile.am
+Index: nauty2_8_9/Makefile.am
 ===================================================================
 --- /dev/null
-+++ nauty2_8_8/Makefile.am
-@@ -0,0 +1,122 @@
++++ nauty2_8_9/Makefile.am
+@@ -0,0 +1,123 @@
 +ACLOCAL_AMFLAGS = -I m4
 +bin_PROGRAMS = addedgeg amtog assembleg biplabg catg checks6 complg converseg copyg \
 +	countg countneg cubhamg deledgeg delptg directg dreadnaut dretodot \
 +	dretog edgetransg genbg genbgL geng gengL genktreeg genquarticg \
 +	genrang genspecialg gentourng gentreeg hamheuristic labelg \
 +	linegraphg listg multig newedgeg NRswitchg pickg planarg ranlabg \
-+	ransubg shortg showg subdivideg twohamg underlyingg vcolg \
++	ransubg shortg showg subdivideg twohamg underlyingg uniqg vcolg \
 +	watercluster2
 +
 +nautyA1_flavor_CPPFLAGS = -DMAXN=WORDSIZE
@@ -88,6 +88,7 @@ Index: nauty2_8_8/Makefile.am
 +subdivideg_LDADD = libnauty.la
 +twohamg_LDADD = libnauty.la
 +underlyingg_LDADD = libnauty.la
++uniqg_LDADD = libnauty.la
 +vcolg_LDADD = libnauty.la
 +watercluster2_LDADD = libnauty.la
 +
@@ -136,13 +137,13 @@ Index: nauty2_8_8/Makefile.am
 +libnautyW1_la_SOURCES  = ${libnauty_la_SOURCES}
 +libnautyW1_la_LIBADD   = -lpthread
 +libnautyW1_la_LDFLAGS  = ${libnauty_la_LDFLAGS}
-Index: nauty2_8_8/configure.ac
+Index: nauty2_8_9/configure.ac
 ===================================================================
---- nauty2_8_8.orig/configure.ac
-+++ nauty2_8_8/configure.ac
+--- nauty2_8_9.orig/configure.ac
++++ nauty2_8_9/configure.ac
 @@ -1,6 +1,12 @@
  # Process this file with autoconf to produce a configure script.
- AC_INIT([nauty],[2.8.8])
+ AC_INIT([nauty],[2.8.9],[brendan.mckay@anu.edu.au])
  AC_CONFIG_SRCDIR([nauty-h.in])
 +AC_CONFIG_AUX_DIR([build-aux])
 +AC_CONFIG_MACRO_DIR([m4])
@@ -153,26 +154,26 @@ Index: nauty2_8_8/configure.ac
  
  # ======================================================================
  # First we define some functions
-@@ -28,7 +34,7 @@ AC_DEFUN([CVT_YESNO],[if test "x$$1" = x
+@@ -26,7 +32,7 @@ AC_DEFUN([CVT_YESNO],[if test "x$$1" = x
  else
    $2=0
  fi
 -AC_SUBST($2)])
 +AC_SUBST([$2])])
  
- dnl Check for noreturn attribute
- AC_DEFUN([AX_NORET], [
-@@ -276,6 +282,7 @@ AC_SUBST(runonetestQ)
- AC_SUBST(Qlibs_or_null)
+ dnl Check for noreturn attribute.  Note that this is the attribute for C and
+ dnl might not work for C++. nauty.h does not use it.
+@@ -311,6 +317,7 @@ AC_SUBST(Qlibs_or_null)
+ AC_SUBST(TLSQlibs_or_null)
  AC_SUBST(testprogs)
  AC_SUBST(nautests)
 +AM_CONDITIONAL([HAVE_U128], [test "$ac_cv_sizeof___uint128_t" != "0"])
  
  dnl Checks for library functions.
  AC_CHECK_FUNC(isatty,have_isatty=1,have_isatty=0)
-@@ -517,7 +524,7 @@ AC_CHECK_PROGS(gunzip_prog,[gunzip],none
- AS_IF([test "$gunzip_prog" = "gunzip"],[have_gunzip=1],[have_gunzip=0])
- AC_SUBST(have_gunzip)
+@@ -567,7 +574,7 @@ AC_SUBST(have_gunzip)
+ 
+ LT_INIT
  
 -AC_CONFIG_FILES([makefile:makefile.in nauty.h:nauty-h.in
 +AC_CONFIG_FILES([Makefile nauty.h:nauty-h.in

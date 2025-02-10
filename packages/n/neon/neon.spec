@@ -1,7 +1,7 @@
 #
 # spec file for package neon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 27
 Name:           neon
-Version:        0.33.0
+Version:        0.34.0
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
 License:        GPL-2.0-or-later

@@ -1,7 +1,7 @@
 #
 # spec file for package nghttp3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %global soname  libnghttp3
 %global sover   9
 Name:           nghttp3
-Version:        1.4.0
+Version:        1.7.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 3 in C
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://nghttp2.org/nghttp3/
+URL:            https://github.com/ngtcp2/nghttps
 Source0:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz
 Source1:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz.asc
 Source2:        nghttp3.keyring

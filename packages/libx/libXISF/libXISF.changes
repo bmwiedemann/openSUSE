@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 10 12:41:37 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.13:
+  * Add test for XISFModify
+  * Update pugi, lz4 and zlib
+
+-------------------------------------------------------------------
 Wed Jul  3 06:28:36 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.12+git5.d00de20:

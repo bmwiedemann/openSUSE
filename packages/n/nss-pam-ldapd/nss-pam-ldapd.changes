@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Feb 10 07:35:58 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.13:
+  * add a command line -f, --config option to specify an alternate configuration file
+  * add a command line -t, --test option to check the configuration filevalidity
+  * support passwords with up to 255 characters
+  * fixes for potential memory issues in parsing configuration file
+  * fix NULL pointer deref on out of memory
+  * fix race condition in thread start-up
+  * fix issue with stopping threads on shutdown
+  * provide compatibility with musl libc
+  * fix compilation issues on NetBSD
+  * use closefrom() if available to fix slow invalidation on FreeBSD
+  * fix file descriptor leaking from process starting nslcd
+
+-------------------------------------------------------------------
 Sat Nov 20 18:27:13 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.9.12

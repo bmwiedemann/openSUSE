@@ -1,7 +1,7 @@
 #
 # spec file for package python-cassandra-driver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,14 @@
 #
 
 
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-cassandra-driver
-Version:        3.29.1
+Version:        3.29.2
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0
 URL:            https://github.com/datastax/python-driver
 Source:         https://github.com/datastax/python-driver/archive/%{version}.tar.gz
-# https://datastax-oss.atlassian.net/browse/PYTHON-1299
-Patch0:         python-cassandra-driver-no-mock.patch
-# if CASS_DRIVER_NO_EXTENSIONS=1, import throws DependencyException https://datastax-oss.atlassian.net/browse/PYTHON-1383
-Patch1:         python-cassandra-driver-test_libevreactor-DependencyException.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Twisted}
@@ -35,12 +31,14 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module geomet >= 0.1}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pure-sasl}
 BuildRequires:  %{python_module pyasyncore if %python-base >= 3.12}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sure}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libev-devel
 BuildRequires:  python-rpm-macros
@@ -79,15 +77,17 @@ rm -f tests/unit/test_types.py
 sed -i -e 's:Cython>=0.20,!=0.25,<0.29:Cython:g' setup.py
 # fix tests on Python 3.12
 sed -i 's/assertRaisesRegexp/assertRaisesRegex/' tests/unit/test_response_future.py
+# remove C sources
+rm -f cassandra/cmurmur3.c cassandra/io/libevwrapper.c cassandra/numpyFlags.h
 
 %build
 export CFLAGS="%{optflags}"
 export CASS_DRIVER_NO_EXTENSIONS=1
-%python_build
+%pyproject_wheel
 
 %install
 export CASS_DRIVER_NO_EXTENSIONS=1
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -101,8 +101,8 @@ pytest tests/unit/test_host_connection_pool.py -k "HostConnectionPoolTests"
 %license LICENSE
 %doc README.rst
 %dir %{python_sitearch}/cassandra
-%dir %{python_sitearch}/cassandra_driver-%{version}-py*.egg-info
+%dir %{python_sitearch}/cassandra_driver-%{version}.dist-info
 %{python_sitearch}/cassandra/*
-%{python_sitearch}/cassandra_driver-%{version}-py*.egg-info/*
+%{python_sitearch}/cassandra_driver-%{version}.dist-info/*
 
 %changelog

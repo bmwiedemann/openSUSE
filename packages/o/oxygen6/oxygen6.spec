@@ -1,7 +1,7 @@
 #
 # spec file for package oxygen6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname oxygen
@@ -34,14 +34,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           oxygen6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        Oxygen style, KWin decoration and cursors
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -63,7 +63,7 @@ BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 BuildRequires:  cmake(Qt5X11Extras) >= %{qt5_version}
 %endif
-BuildRequires:  cmake(KDecoration2) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(KDecoration3) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
@@ -116,6 +116,7 @@ Provides:       oxygen5-style = %{version}
 Obsoletes:      oxygen5-style < %{version}
 Obsoletes:      oxygen5-style-lang < %{version}
 # The oxygen desktop theme was moved here in 6.2.0
+Conflicts:      plasma-framework < 6.2.0
 Conflicts:      libplasma6-desktoptheme < 6.2.0
 Conflicts:      plasma-framework-desktoptheme < 6.2.0
 
@@ -189,8 +190,8 @@ This package contains the Oxygen's KWin decoration.
 
 %files decoration
 %license LICENSES/*
-%{_kf6_plugindir}/org.kde.kdecoration2.kcm/
-%{_kf6_plugindir}/org.kde.kdecoration2/
+%{_kf6_plugindir}/org.kde.kdecoration3.kcm/
+%{_kf6_plugindir}/org.kde.kdecoration3/
 
 %files cursors
 %license LICENSES/*

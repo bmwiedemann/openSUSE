@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:30:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2:
+  * exports: Fix referrals when --enable-junction=no
+  * nfsidmap(v2): Add guards around [nfsidmap] usages of [sysconf].
+  * libnsm(v2): fix the safer atomic filenames fix
+  * libnsm: fix the safer atomic filenames fix
+  * nfsd: dump default number of threads to 16
+  * autoconf: don't build nfsdcltrack by default
+  * nfs(5): Update rsize/wsize options
+  * nfsdctl: clarify when versions can be set on the man page
+  * nfsdctl: fix up the help text in version_usage()
+  * libnsm: safer atomic filenames
+  * nfs-utils: fixup statd testing simulator host arg
+  * mount.nfs: retry NFSv3 mount after NFSv4 failure in auto negotiation
+
+-------------------------------------------------------------------
 Wed Dec 11 03:18:18 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Require system-user-nobody for nfs-client as the statd user relies

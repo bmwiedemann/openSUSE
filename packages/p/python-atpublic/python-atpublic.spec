@@ -1,7 +1,7 @@
 #
 # spec file for package python-atpublic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-atpublic
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        @public decorator for populating __all__
 License:        Apache-2.0

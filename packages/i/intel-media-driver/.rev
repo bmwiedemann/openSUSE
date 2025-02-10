@@ -489,4 +489,15 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1234909</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f066664970b06d6dcdaf8185f8759ba5</srcmd5>
+    <version>25.1.1</version>
+    <time>1739205046</time>
+    <user>anag+factory</user>
+    <comment>Update graphics driver stack (bsc#1234325)
+
+- Update to version 25.1.1
+  * bugfixes and support for new hardware</comment>
+    <requestid>1244760</requestid>
+  </revision>
 </revisionlist>

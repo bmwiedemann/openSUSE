@@ -1,7 +1,7 @@
 #
 # spec file for package python-dialite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-dialite
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 Summary:        Python library to show simple dialogs
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://dialite.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/d/dialite/dialite-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     zenity
@@ -47,10 +50,10 @@ platform, or for SSH connections).
 %setup -q -n dialite-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +63,6 @@ platform, or for SSH connections).
 %doc README.md
 %license LICENSE
 %{python_sitelib}/dialite
-%{python_sitelib}/dialite-%{version}*-info
+%{python_sitelib}/dialite-%{version}.dist-info
 
 %changelog

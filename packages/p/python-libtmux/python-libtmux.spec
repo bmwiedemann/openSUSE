@@ -1,7 +1,7 @@
 #
 # spec file for package python-libtmux
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libtmux
-Version:        0.40.1
+Version:        0.42.0
 Release:        0
 Summary:        Python API / wrapper for tmux
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module gp-libs >= 0.0.4}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions}
 # we do not need pytest-watcher for building on OBS
 BuildRequires:  tmux
 # /SECTION

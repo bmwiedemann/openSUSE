@@ -493,4 +493,41 @@
     <comment></comment>
     <requestid>1175702</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4447188272f9c9f43077783c03d739eb</srcmd5>
+    <version>0.34.0</version>
+    <time>1739204565</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.34.0:
+  * New interfaces and features:
+    - ne_request.h: add ne_get_response_location(),
+      add ne_get_request_target()
+    - ne_redirect.h: adds relative URI resolution per RFC 9110
+    - ne_socket.h: add ne_iaddr_set_scope(),
+      ne_iaddr_get_scope(), ne_sock_getproto()
+    - ne_session.h: add NE_SESSFLAG_STRICT session flag
+    - ne_session.h: ne_session_create() now accepts scoped IPv6
+      link-local literal addresses following the RFC 6874
+      syntax;
+    - ne_session.h: add ne_ssl_set_protovers() to configure TLS
+      protocol version ranges
+    - ne_utils.h: add NE_FEATURE_GSSAPI, NE_FEATURE_LIBPXY
+      feature flags
+    - ne_ssl.h: add ne_ssl_proto_name()
+    - HTTP strictness/compliance updated for RFC 9110/9112;
+      notably stricter in parsing header field line, chunked
+      transfer-coding, status-line.
+   Bug fixes:
+    - auth: the 'realm' string passed to credentials callback is
+    now cleaned of non-printable characters.
+  * Documentation &amp; header updates for RFC 9110/9112.
+  * New NE_MINIMUM_VERSION() autoconf macro for better version
+    handling.
+
+  * Fix ar, ranlib detection when cross-compiling (Sergei Trofimovich).
+- version 0.30.0
+*  added  ne_ssl_clicert_import, ne_ssl_context_get_flag,
+* support chunked bodies with negative length passed to</comment>
+    <requestid>1244403</requestid>
+  </revision>
 </revisionlist>

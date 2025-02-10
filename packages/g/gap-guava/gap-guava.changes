@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  9 19:47:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.20
+  * Many changes to the manual were made. Accumulated anachronisms
+    were revealed by manual/example test extraction via AutoDoc.
+  * Adjusted old C code to not define a bool type (the C23 standard
+    will override it soon for gcc).
+  * CoveringRadius() for codes over small non-binary fields was
+    throwing an error.
+
+-------------------------------------------------------------------
 Thu Mar 21 22:05:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.19

@@ -558,4 +558,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1239111</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b74ef5b6d4c08aa1ff68d07a6206f690</srcmd5>
+    <version>20250116.00</version>
+    <time>1739205013</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250116.00: (bsc#1236403, bsc#1234563)
+  * networkd(vlan): remove the interface in addition to config (#468)
+  * Implement support for vlan dynamic removal, update dhclient to remove
+    only if configured (#465)
+  * Update logging library (#479)
+  * Remove Pat from owners file. (#478)</comment>
+    <requestid>1244738</requestid>
+  </revision>
 </revisionlist>

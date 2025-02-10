@@ -1,7 +1,7 @@
 #
 # spec file for package kwin6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.KWin\\.Effect\\.WindowView.*
 
-%global kf6_version 6.5.0
+%global kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname   kwin
@@ -29,14 +29,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -47,7 +47,7 @@ BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(Breeze) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(KDecoration2) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(KDecoration3) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
@@ -92,19 +92,19 @@ BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
-BuildRequires:  pkgconfig(libdisplay-info)
+BuildRequires:  pkgconfig(libdisplay-info) >= 0.2.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.112
 BuildRequires:  pkgconfig(libeis-1.0)
-BuildRequires:  pkgconfig(libinput) >= 1.19
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
-# Leap 15.5 version is too old and 0.3.65 has API breaking changes
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.65
+BuildRequires:  pkgconfig(libinput) >= 1.26
+%if 0%{?suse_version} > 1500
+# Leap 15 version is too old
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.2.0
 %endif
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.22
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.34
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.38
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb) >= 1.10
@@ -295,13 +295,13 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/plugins/KeyNotificationPlugin.so
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin/plugins/nightlight.so
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
+%if 0%{?suse_version} > 1500
 %{_kf6_plugindir}/kwin/plugins/screencast.so
 %endif
-%dir %{_kf6_plugindir}/org.kde.kdecoration2.kcm
-%{_kf6_plugindir}/org.kde.kdecoration2.kcm/kcm_auroraedecoration.so
-%dir %{_kf6_plugindir}/org.kde.kdecoration2
-%{_kf6_plugindir}/org.kde.kdecoration2/org.kde.kwin.aurorae.so
+%dir %{_kf6_plugindir}/org.kde.kdecoration3.kcm
+%{_kf6_plugindir}/org.kde.kdecoration3.kcm/kcm_auroraedecoration.so
+%dir %{_kf6_plugindir}/org.kde.kdecoration3
+%{_kf6_plugindir}/org.kde.kdecoration3/org.kde.kwin.aurorae.so
 %dir %{_kf6_plugindir}/kf6/packagestructure
 %{_kf6_plugindir}/kf6/packagestructure/kwin_aurorae.so
 %{_kf6_plugindir}/kf6/packagestructure/kwin_decoration.so

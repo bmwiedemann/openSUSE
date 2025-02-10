@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+
+-------------------------------------------------------------------
+Thu Jan 23 13:45:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat Jan 11 18:27:07 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * Made KDocTools optional
+  * keditfiletype: Drop unused KMessageBox include
+  * .kde-ci.yml: Drop unused dependencies
+  * keditfiletype: KF6ConfigCore is used, not KF6ConfigWidgets
+  * Don't include quiet packages in feature_summary
+  * kio-open: Also treat slash:// urls specially
+  * kio-open: Special-case thunderlinks
+  * update version for new release
+  * Fix build w/ WITH_X11=OFF when KWindowSystem was built w/ KWINDOWSYSTEM_X11=OFF
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

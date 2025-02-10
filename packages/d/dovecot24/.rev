@@ -37,4 +37,14 @@ bugowner: varkoly</comment>
   anymore.</comment>
     <requestid>1243112</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>56dc7ee88abd46dc399f759fce7e70e0</srcmd5>
+    <version>2.4.0</version>
+    <time>1739204916</time>
+    <user>anag+factory</user>
+    <comment>- make apparmor conditional more readable 
+
+- Remove apparmor support from SLES</comment>
+    <requestid>1244659</requestid>
+  </revision>
 </revisionlist>

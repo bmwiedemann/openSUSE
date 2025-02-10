@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb  9 15:05:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.14.0:
+  * added argpartition() for gh#dpilger26/NumCpp#225.
+- Drop upstreamed or otherwise no longer required patches:
+  * NumCpp-disable-pytest.patch
+  * NumCpp-add-tests.patch
+- Add NumCpp-pytest-link-python.patch: Fix linking to python when
+  building for openSUSE [gh#dpilger26/NumCpp#222].
+
+-------------------------------------------------------------------
 Tue Jan 14 12:39:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.13.0:

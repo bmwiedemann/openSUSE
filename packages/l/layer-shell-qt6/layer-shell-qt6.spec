@@ -1,7 +1,7 @@
 #
 # spec file for package layer-shell-qt6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Fabian Vogt
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -27,14 +27,14 @@
 %define rname layer-shell-qt
 %bcond_without released
 Name:           layer-shell-qt6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}

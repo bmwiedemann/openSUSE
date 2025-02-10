@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Feb  8 10:43:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.1:
+  Bugfix release
+  * The --compact option works again, without needing to supply
+    "--compact=true".
+
+-------------------------------------------------------------------
+Thu Feb  6 18:51:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.0:
+  New languages
+  * PHP
+  * Solidity
+  * TSX
+  * Lua
+  * Kotlin
+  * Devicetree
+  * Ruby
+  Improvements
+  * The histogram diff algorithm is used for line-based merges.
+  * The mgf_dev parse command correctly displays nodes that have
+    a signature and are commutative at the same time.
+  * Don't add a newline at the end of merged / to-be-merged files.
+  * Also parse correctly conflicts with non-newline-terminated
+    sides.
+  * The --keep-output option was added to the mergiraf solve to
+    control the creation of .orig files.
+  * The conflict size marker size can be controlled with option -l
+  * The commutativity of various syntactic elements was restricted
+    to avoid bad merges.
+  * A --timeout option is available in mergiraf merge, to fall
+    back on line-based merging if structured merging takes too
+    long.
+  * A panic when failing to commutatively merge a root node was
+    fixed.
+  Compatibility
+  * Support for the MERGIRAF_DISABLE environment variable was
+    removed, use mergiraf=0 instead.
+  Performance
+  * Many improvements reducing memory allocations.
+
+-------------------------------------------------------------------
 Sun Dec  8 09:30:11 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.0:

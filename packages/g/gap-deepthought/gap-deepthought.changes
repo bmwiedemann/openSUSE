@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:57:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.8
+  * Use designated initializers for StructInitInfo
+
+-------------------------------------------------------------------
 Sat Nov 19 17:15:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 1.0.6) for build.opensuse.org

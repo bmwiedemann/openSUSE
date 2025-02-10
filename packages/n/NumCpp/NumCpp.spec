@@ -18,16 +18,14 @@
 
 %define __builder ninja
 Name:           NumCpp
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        C++ implementation of the Python Numpy library
 License:        MIT
 URL:            https://github.com/dpilger26/NumCpp
 Source:         %{url}/archive/refs/tags/Version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM NumCpp-disable-pytest.patch badshah400@gmail.com -- Disable pytests that are incorrectly setup for pybind11 and enable gtest
-Patch0:         NumCpp-disable-pytest.patch
-# PATCH-FIX-UPSTREAM NumCpp-add-tests.patch badshah400@gmail.com -- Add tests to cmake so that they can be run using ctest
-Patch1:         NumCpp-add-tests.patch
+# PATCH-FEATURE-OPENSUSE NumCpp-pytest-link-python.patch gh#dpilger26/NumCpp#222 badshah400@gmail.com -- Fix python linking on openSUSE for pytest based tests
+Patch0:         NumCpp-pytest-link-python.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  doxygen

@@ -1,7 +1,7 @@
 #
 # spec file for package breeze6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,14 +33,14 @@
 %endif
 %define rname breeze
 Name:           breeze6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -66,7 +66,7 @@ BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 BuildRequires:  cmake(Qt5X11Extras) >= %{qt5_version}
 %endif
-BuildRequires:  cmake(KDecoration2) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(KDecoration3) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -79,6 +79,7 @@ BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       breeze6-cursors >= %{version}
 Requires:       breeze6-style >= %{version}
@@ -216,12 +217,13 @@ mv %{buildroot}%{_kf6_applicationsdir}/kcm_breezedecoration.desktop %{buildroot}
 %files -n breeze6-decoration
 %license LICENSES/*
 %{_kf6_applicationsdir}/kcm_breezedecoration6.desktop
-%dir %{_kf6_plugindir}/org.kde.kdecoration2.kcm
-%{_kf6_plugindir}/org.kde.kdecoration2.kcm/kcm_breezedecoration.so
-%dir %{_kf6_plugindir}/org.kde.kdecoration2
-%{_kf6_plugindir}/org.kde.kdecoration2/org.kde.breeze.so
+%dir %{_kf6_plugindir}/org.kde.kdecoration3.kcm
+%{_kf6_plugindir}/org.kde.kdecoration3.kcm/kcm_breezedecoration.so
+%dir %{_kf6_plugindir}/org.kde.kdecoration3
+%{_kf6_plugindir}/org.kde.kdecoration3/org.kde.breeze.so
 
 %files devel
+%{_kf6_bindir}/kcursorgen
 %{_kf6_cmakedir}/Breeze/
 
 %files -n breeze6-style-lang -f breeze6-style.lang

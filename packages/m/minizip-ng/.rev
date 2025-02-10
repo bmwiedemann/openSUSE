@@ -15,4 +15,39 @@
     <comment></comment>
     <requestid>1217363</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>efe9dc1943ce94ff349bf695aacc3b4d</srcmd5>
+    <version>4.0.8</version>
+    <time>1739204740</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.8:
+  * Fixed disk spanning failures in CI
+  * Group compatibilities per origin
+  * Split compat layer into different source files
+  * Variable 'total_in' set but not used
+  * fix incorrect dos date conversion
+  * Expose zlib constants for backwards compat
+  * FIx typo in `mz_zip_file.md`
+  * missing mz_dos_date defines in unzip.h
+  * align ZEXPORT definitions
+  * Fix and improve fuzzers
+  * ignore number_entry_cd
+  * fix: don't replace slashes on UNIX
+  * Fix Windows Timestamps for Alternate Data Streams
+- update to 4.0.7:
+  * Added definition for zipOpenNewFileInZip64 for backwards
+    compat #787
+  * Upgrade to GoogleTest Framework v1.13.0.
+  * Rename minizip_cmd project to minizip_cli.
+  * Rename cli instead of lib for VS conflicts to prevent linker
+    error. #778
+- update to 4.0.6:
+  * Switch to using zlib-ng stable.
+  * Update liblzma repository to GitHub.
+  * Fixed listing empty zip file. #756
+
+- Fix the soname of the non-compat package
+- Enable signing mode again. Passes testsuite now.</comment>
+    <requestid>1244406</requestid>
+  </revision>
 </revisionlist>

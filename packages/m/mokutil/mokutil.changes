@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:16:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.2:
+  * mokutil: revert the default listing to the verbose form
+- update to 0.7.1:
+  * Fix an off-by-one reading passwords from a file.
+  * Short certificate listing by default
+
+-------------------------------------------------------------------
 Fri Mar  1 08:23:24 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
 
 - Update to 0.7.0
@@ -20,8 +29,8 @@ Fri Mar  1 08:23:24 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
     + 2d6c409 Return 0 after printing help messages
     + c64741d Add support for SSPPolicy, depricate --set-sbat-policy delete
     + 48e3d2a Fix tab alignment for help (set-fallback-verbosity/set-fallback-noreboot)
-    + c361087 (HEAD -> master, tag: 0.7.0, origin/ssppolicy-v2-fix, origin/master, origin/HEAD) Rename "previous" revocations to "automatic" 
-   
+    + c361087 (HEAD -> master, tag: 0.7.0, origin/ssppolicy-v2-fix, origin/master, origin/HEAD) Rename "previous" revocations to "automatic"
+
 -------------------------------------------------------------------
 Fri Feb 23 09:19:54 UTC 2024 - pgajdos@suse.com
 
@@ -35,11 +44,11 @@ Tue Sep 19 08:10:49 UTC 2023 - Joey Lee <jlee@suse.com>
     - Removed the following backported patches because they are merged
       to 0.6.0:
 	- mokutil-fix-missing-header.patch
-	  b15e7c4d7 util: add the missing stdio.h  
+	  b15e7c4d7 util: add the missing stdio.h
 	- mokutil-enable-setting-fallback-verbosity-and-norebo.patch (bsc#1198458)
 	  57bc38582 mokutil: enable setting fallback verbosity and noreboot mode
 	- mokutil-SBAT-revocation-update-support.patch (bsc#1198458)
-	  6c9890730 SBAT revocation update support  
+	  6c9890730 SBAT revocation update support
 
 -------------------------------------------------------------------
 Fri Aug 18 07:07:08 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
@@ -117,7 +126,7 @@ Thu Jul 15 06:39:26 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Tue May  4 06:52:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- spec file cleanup 
+- spec file cleanup
 
 -------------------------------------------------------------------
 Wed Sep 16 09:06:02 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>

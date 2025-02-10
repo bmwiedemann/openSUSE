@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  6 09:12:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.30.1
+  * Temporarily rollback s2n by @DmitriyMusatkin in (#705)
+- from version 0.30.0
+  * Add topic argument to publish callback in request-response
+    stream client by @sfod in (#703)
+  * CMake modules by @sfod in #702
+- from version 0.29.10
+  * Fix segfaults -- CRC64NVME on machines with disabled
+    AVX and uri parsing corner case. by @TingDaoK in (#700)
+- Drop acc_fix-cmake-modules-path.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Jan 16 13:35:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.29.9

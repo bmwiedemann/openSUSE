@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  9 22:33:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.5
+  * Added rnd() function
+  * Bitwise "and" and "or" used the same precedence (now, bitwise
+    "and" priority is higher, like in C++)
+  * Added a SetByteCode function to allow restoring previously
+    extracted bytecode
+
+-------------------------------------------------------------------
 Tue Nov 15 19:31:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.4

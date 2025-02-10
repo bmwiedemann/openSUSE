@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Feb  9 19:01:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.1.4:
+  * not compatible with 3.0.x servers and vice versa.
+  * Player authentication is supported by default
+  * Max number of regular players (not counting barbarians) is now
+    500
+  * Rally Points can be set for the cities
+  * Previously silent generic actions now have event message types,
+    so can show up chat/messages/popup HRM#848791
+  * There has been many changes to what actions each keyboard key
+    does, as required by changes in the actions themselves. See
+    Controls in Help for updated info. Especially; Paradrop now
+    has a key distinct from Pollution cleaning
+  * Adding local nation definitions now works properly
+  * https://freeciv.fandom.com/wiki/NEWS-3.1.0
+- Packaging changes:
+  * Introduce the Gtk4 front-end
+  * Switch the Gtk3 front-end to Gtk3.22 flavor
+  * Switch the Qt front-end to Qt6 on Tumbleweed
+  * Build with system LUA
+  * Use upstream .desktop files and simplify spec file
+
+-------------------------------------------------------------------
 Sat Feb 10 15:06:23 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to version 3.0.10:

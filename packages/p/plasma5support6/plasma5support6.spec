@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5support6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,25 +26,30 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6I18n) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6IdleTime) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6KIO) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6NetworkManagerQt) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Notifications) >= %{_kf6_bugfix_version}
-BuildRequires:  cmake(KF6Package) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Service) >= %{_kf6_bugfix_version}
+BuildRequires:  cmake(KF6Solid) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KSysGuard) >= 6
 BuildRequires:  cmake(Plasma)
@@ -54,6 +59,9 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libgps)
+BuildRequires:  pkgconfig(x11)
 
 %description
 Support components for porting from KF5/Qt5 to KF6/Qt6.
@@ -101,21 +109,36 @@ Development Files for the plasma5support framework.
 %{_kf6_sharedir}/plasma5support/
 %dir %{_kf6_plugindir}/plasma5support
 %dir %{_kf6_plugindir}/plasma5support/dataengine
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_apps.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_devicenotifications.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_favicons.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_geolocation.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_hotplug.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_keystate.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_mouse.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_packagekit.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_powermanagement.so
 %{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_soliddevice.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_filebrowser.so
+%{_kf6_plugindir}/plasma5support/dataengine/plasma_engine_places.so
+%dir %{_kf6_plugindir}/plasma5support/geolocationprovider
+%{_kf6_plugindir}/plasma5support/geolocationprovider/plasma-geolocation-gps.so
+%{_kf6_plugindir}/plasma5support/geolocationprovider/plasma-geolocation-ip.so
 
 %files -n libPlasma5Support6
 %license LICENSES/*
 %doc README.md
 %{_kf6_libdir}/libPlasma5Support.so.*
+%{_kf6_libdir}/libplasma-geolocation-interface.so.*
 
 %files devel
 %doc %{_kf6_qchdir}/Plasma5Support.*
 %{_kf6_cmakedir}/Plasma5Support/
 %{_includedir}/Plasma5Support/
+%dir %{_includedir}/plasma
+%{_includedir}/plasma/geolocation/
 %{_kf6_libdir}/libPlasma5Support.so
+%{_kf6_libdir}/libplasma-geolocation-interface.so
 
 %files -n libPlasma5Support6-lang -f %{name}.lang
 

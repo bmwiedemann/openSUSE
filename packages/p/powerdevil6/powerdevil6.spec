@@ -1,7 +1,7 @@
 #
 # spec file for package powerdevil6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname powerdevil
 %bcond_without released
 Name:           powerdevil6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -31,9 +31,9 @@ Release:        0
 Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -105,7 +105,7 @@ configuring Power settings.
 
 %find_lang %{name} --all-name --with-html
 
-rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevil{core,configcommonprivate}.so
+rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevilcore.so
 
 %post
 %ldconfig
@@ -129,7 +129,7 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevil{core,configcommonprivate}.so
 %{_kf6_dbuspolicydir}/org.kde.powerdevil.discretegpuhelper.conf
 %{_kf6_debugdir}/batterymonitor.categories
 %{_kf6_debugdir}/powerdevil.categories
-%{_kf6_libdir}/libpowerdevilconfigcommonprivate.so.*
+%{_kf6_debugdir}/brightness.categories
 %{_kf6_libdir}/libpowerdevilcore.so.*
 %{_kf6_libexecdir}/kauth/backlighthelper
 %{_kf6_libexecdir}/kauth/chargethresholdhelper

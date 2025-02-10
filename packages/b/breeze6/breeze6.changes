@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:46:34 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * kdecoration: Update titlebar when borders change (kde#499222)
+
+-------------------------------------------------------------------
+Thu Jan 23 13:44:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat Jan 11 18:26:47 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * Compress all wallpapers with oxipng after generation
+  * Update 6.3 wallpaper and add ultrawide versions
+  * Added .vscode folder to .gitignore
+  * Replace wallpaper for Plasma 6.3
+  * kdecoration: render caption vertically centered
+  * kdecoration: adjust to KDecoration changes to fix scaling
+  * adapt to kdecoration changes: make (nearly) all geometry floating point
+  * adjust to kdecoration changes
+  * switch to KDecoration3
+  * Don't include quiet packages in feature_summary
+  * KStyle: Don't dereference nullptr
+  * cursors: add `kcursorgen` command to generate Xcursor from SVG cursor theme
+  * Dont shadow variable
+  * cursors: recommend using the W3C CSS names
+  * KStyle: Don't send absolute path to kconfigwatcher
+  * Reduce compiler warnings
+  * Fix sizing of checkbox without text and icons
+  * Shorten tabbar, separators, and blend with window color not base color
+  * update version for new release
+  * Fix ifdef Windows for QMenu
+  * kstyle: Support registering QMainWindow in tools area manager
+  * Fix crash in Akregator
+  * Fix pixel perfect issues in hover effect
+  * Reimplement drawTabBarTabLabelControl from QCommonStyle
+  * Redesign immutable tab
+
+-------------------------------------------------------------------
 Tue Dec 31 20:48:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

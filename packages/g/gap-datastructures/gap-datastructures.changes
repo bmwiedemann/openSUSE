@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:49:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3.1
+  * Ensure compatibility of source code with future C compilers
+
+-------------------------------------------------------------------
 Sat Nov 19 17:15:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.3.0) for build.opensuse.org

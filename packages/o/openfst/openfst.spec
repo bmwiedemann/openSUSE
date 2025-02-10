@@ -1,7 +1,7 @@
 #
 # spec file for package openfst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define lname libfst26
 Name:           openfst
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Weighted finite-state transducer library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            http://www.openfst.org/
+#https://www.openfst.org/twiki/bin/view/FST/FstDownload tarballs & NEWS
 Source:         http://www.openfst.org/twiki/pub/FST/FstDownload/%name-%version.tar.gz
 Patch1:         i586-80bitfp.patch
-Patch2:         gcc14.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++ >= 8.1.0
 %else

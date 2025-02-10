@@ -42,6 +42,7 @@ Patch0001:  0001-drbd-Fix-memory-leak.patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
 Patch1003:  boo1235399-fix_the_warning_of_blk_validate_limits.patch
+Patch1004:  boo1236927-fix-build_error_against_v6.13.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
@@ -101,7 +102,7 @@ for flavor in %{flavors_to_build}; do
     #make coccicheck
 
     # call make prep to generate drbd build dir
-    make %{?_smp_mflags} -C $flavor KDIR=%{kernel_source $flavor} prep SPAAS=${SPAAS}
+    make %{?_smp_mflags} -C $flavor KDIR=%{kernel_source $flavor} prep SPAAS=${SPAAS} KBUILD_ABS_SRCTREE=1
 
     cp -a %{_sourcedir}/Module.supported ${flavor}/build-current
 

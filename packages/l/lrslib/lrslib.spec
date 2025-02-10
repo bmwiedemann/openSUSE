@@ -1,7 +1,7 @@
 #
 # spec file for package lrslib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define dullver	072
-%define dullver2 072
+%define dullver	073
+%define dullver2 073
 %define lname   liblrs1
 Name:           lrslib
-Version:        7.2
+Version:        7.3
 Release:        0
 Summary:        Reverse Search Vertex Enumeration program
 License:        GPL-2.0-or-later
@@ -73,7 +73,7 @@ applications that want to make use of lrslib.
 %autosetup -n %name-%dullver -p1
 
 %build
-%make_build CFLAGS="%optflags" CXXFLAGS="%optflags" \
+%make_build CFLAGS="%optflags -Ilrsarith-011" CXXFLAGS="%optflags -Ilrsarith-011" \
 	PACKAGE_VERSION="%version" all-shared
 
 %install
@@ -85,8 +85,7 @@ if [ "%_lib" != lib ]; then
 fi
 chmod a-x COPYING README "%buildroot/%_includedir/lrslib"/*.h
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/*

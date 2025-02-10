@@ -112,4 +112,12 @@
 - Drop patch JPype1-numpy2compat.patch, included upstream.</comment>
     <requestid>1226134</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9db99bff5e188f12138b57e42f90677</srcmd5>
+    <version>1.5.2</version>
+    <time>1739205394</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244788</requestid>
+  </revision>
 </revisionlist>

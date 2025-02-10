@@ -1,4 +1,264 @@
 -------------------------------------------------------------------
+Tue Feb  4 14:43:13 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-0938-sq-brackets-domain-names.patch which
+  disallows square brackets ([ and ]) in domain names for parsed
+  URLs (bsc#1236705, CVE-2025-0938, gh#python/cpython#105704)
+- Add 314a4-no-SO_REUSEPORT.patch to fix build on new kernel
+  (gh#python/cpython#128916).
+
+-------------------------------------------------------------------
+Mon Jan 27 09:16:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Configure externally_managed with a bcond
+  https://en.opensuse.org/openSUSE:Python:Externally_managed
+  bsc#1228165
+
+-------------------------------------------------------------------
+Fri Jan 17 21:21:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the fourth development version of 3.14.0:
+  - Tools/Demos
+    - gh-128152: Fix a bug where Argument Clinic’s C
+      pre-processor parser tried to parse pre-processor
+      directives inside C comments. Patch by Erlend Aasland.
+  - Tests
+    - gh-128690: Temporarily do not use test_embed in PGO profile
+      builds until the problem with test_init_pyvenv_cfg failing
+      in some configurations is resolved.
+  - Library
+    - gh-128731: Fix ResourceWarning in
+      urllib.robotparser.RobotFileParser.read().
+    - gh-71339: Add new assertion methods for unittest:
+      assertHasAttr(), assertNotHasAttr(), assertIsSubclass(),
+      assertNotIsSubclass() assertStartsWith(),
+      assertNotStartsWith(), assertEndsWith() and
+      assertNotEndsWith().
+    - gh-118761: Improve import time of pickle by 25% by removing
+      an unnecessary regular expression. As such, re is no more
+      implicitly available as pickle.re. Patch by Bénédikt Tran.
+    - gh-128661: Fixes typing.evaluate_forward_ref() not showing
+      deprecation when type_params arg is not passed.
+    - gh-128562: Fix possible conflicts in generated tkinter
+      widget names if the widget class name ends with a digit.
+    - gh-128559: Improved import time of asyncio.
+    - gh-128552: Fix cyclic garbage introduced
+      by asyncio.loop.create_task() and
+      asyncio.TaskGroup.create_task() holding a reference to the
+      created task if it is eager.
+    - gh-128340: Add internal thread safe handle to be used
+      in asyncio.loop.call_soon_threadsafe() for thread safe
+      cancellation.
+    - gh-128182: Fix crash when using ctypes pointers
+      concurrently on the free threaded build.
+    - gh-128400: Only show the current thread in faulthandler on
+      the free threaded build to prevent races.
+    - gh-128400: Fix crash when using
+      faulthandler.dump_traceback() while other threads are
+      active on the free threaded build.
+    - gh-128388: Fix PyREPL on Windows to support more
+      keybindings, like the Control-← and Control-→ word-skipping
+      keybindings and those with meta (i.e. Alt), e.g. Alt-d to
+      kill-word or Alt-Backspace backward-kill-word.
+    - gh-88834: Unify the instance check for typing.Union and
+      types.UnionType: Union now uses the instance checks against
+      its parameters instead of the subclass checks.
+    - gh-128302: Fix
+      xml.dom.xmlbuilder.DOMEntityResolver.resolveEntity(), which
+      was broken by the Python 3.0 transition.
+    - gh-128317: Highlight today in colour in calendar’s CLI
+      output. Patch by Hugo van Kemenade.
+    - gh-128302: Allow xml.dom.xmlbuilder.DOMParser.parse()
+      to correctly handle xml.dom.xmlbuilder.DOMInputSource
+      instances that only have a systemId attribute set.
+    - gh-128151: Improve generation of UUID objects version 3,
+      4, 5, and 8 via their dedicated functions by 30%. Patch by
+      Bénédikt Tran.
+    - gh-128118: Improve performance of copy.copy() by 30% via a
+      fast path for atomic types and container types.
+    - gh-127946: Fix crash when modifying ctypes._CFuncPtr
+      objects concurrently on the free threaded build.
+    - gh-128062: Revert the font of turtledemo’s menu bar to its
+      default value and display the shortcut keys in the correct
+      position.
+    - gh-128014: Fix resetting the default window icon by passing
+      default='' to the tkinter method wm_iconbitmap().
+    - gh-41872: Fix quick extraction of module docstrings from
+      a file in pydoc. It now supports docstrings with single
+      quotes, escape sequences, raw string literals, and other
+      Python syntax.
+    - gh-127060: Set TERM environment variable to “dumb” to
+      disable traceback colors in IDLE, since IDLE doesn’t
+      understand ANSI escape sequences. Patch by Victor Stinner.
+    - gh-126742: Fix support of localized error messages reported
+      by dlerror(3) and gdbm_strerror in ctypes and dbm.gnu
+      functions respectively. Patch by Bénédikt Tran.
+    - gh-122548: Adds two new local events to sys.monitoring,
+      BRANCH_LEFT and BRANCH_RIGHT. This allows the two arms
+      of the branch to be disabled independently, which should
+      hugely improve performance of branch-level coverage
+      tools. The old branch event, BRANCH is now deprecated.
+    - gh-127847: Fix the position when doing interleaved seeks
+      and reads in uncompressed, unencrypted zip files returned
+      by zipfile.ZipFile.open().
+    - gh-127688: Add the SCHED_DEADLINE and SCHED_NORMAL
+      constants to the os module.
+    - gh-83662: Add missing __class_getitem__ method to the
+      Python implementation of functools.partial(), to make it
+      compatible with the C version. This is mainly relevant for
+      alternative Python implementations like PyPy and GraalPy,
+      because CPython will usually use the C-implementation of
+      that function.
+    - gh-127586: multiprocessing.pool.Pool now properly restores
+      blocked signal handlers of the parent thread when creating
+      processes via either spawn or forkserver.
+    - gh-98188: Fix an issue in
+      email.message.Message.get_payload() where data cannot be
+      decoded if the Content Transfer Encoding mechanism contains
+      trailing whitespaces or additional junk text. Patch by Hui
+      Liu.
+    - gh-127529: Correct behavior of
+      asyncio.selector_events.BaseSelectorEventLoop._accept_connection()
+      in handling ConnectionAbortedError in a loop. This improves
+      performance on OpenBSD.
+    - gh-127360: When a descriptive error message cannot be
+      provided for an ssl.SSLError, the “unknown error” message
+      now shows the internal error code (as retrieved by
+      ERR_get_error and similar OpenSSL functions).
+    - gh-127196: Fix crash when dict with keys in invalid
+      encoding were passed to several functions in _interpreters
+      module.
+    - gh-124130: Fix a bug in matching regular expression \B in
+      empty input string. Now it is always the opposite of \b. To
+      get an old behavior, use (?!\A\Z)\B. To get a new behavior
+      in old Python versions, use (?!\b).
+    - gh-126639: tempfile.NamedTemporaryFile will now issue
+      a ResourceWarning when it is finalized by the garbage
+      collector without being explicitly closed.
+    - gh-126624: Expose error code XML_ERROR_NOT_STARTED of Expat
+      >=2.6.4 in xml.parsers.expat.errors.
+    - gh-126225: getopt and optparse are no longer marked as
+      deprecated. There are legitimate reasons to use one of
+      these modules in preference to argparse, and none of these
+      modules are at risk of being removed from the standard
+      library. Of the three, argparse remains the recommended
+      default choice, unless one of the concerns noted at the top
+      of the optparse module documentation applies.
+    - gh-124761: Add SO_REUSEPORT_LB constant to socket for
+      FreeBSD.
+    - gh-121720: enum.EnumDict can now be used without resorting
+      to private API.
+    - gh-123424: Add zipfile.ZipInfo._for_archive() setting
+      default properties on ZipInfo objects. Patch by Bénédikt
+      Tran and Jason R. Coombs.
+    - gh-121676: Deprecate calling the Python implementation of
+      functools.reduce() with a function or sequence as a keyword
+      argument. This will be forbidden in Python 3.16 in order to
+      match the C implementation.
+    - gh-112015: ctypes.memoryview_at() now exists to create
+      a memoryview object that refers to the supplied pointer
+      and length. This works like ctypes.string_at() except
+      it avoids a buffer copy, and is typically useful when
+      implementing pure Python callback functions that are passed
+      dynamically-sized buffers.
+    - gh-95371: Added support for other image formats (PNG, PGM,
+      and PPM) to the turtle module. Patch by Shin-myoung-serp.
+  - Core and Builtins
+    - gh-128078: Fix a SystemError when using anext() with a
+      default tuple value. Patch by Bénédikt Tran.
+    - gh-128717: Fix a crash when setting the recursion limit
+      while other threads are active on the free threaded build.
+    - gh-124483: Treat Py_DECREF and variants as escaping when
+      generating opcode and uop metadata. This prevents the
+      possibility of a __del__ method causing the JIT to behave
+      incorrectly.
+    - gh-126703: Improve performance of class methods by using a
+      freelist.
+    - gh-128137: Update PyASCIIObject layout to handle interned
+      field with the atomic operation. Patch by Donghee Na.
+    - gh-128192: Upgrade HTTP digest authentication algorithm for
+      urllib.request by supporting SHA-256 digest authentication
+      as specified in RFC 7616.
+    - gh-126868: Increase usage of freelist for int allocation.
+    - gh-114203: Optimize Py_BEGIN_CRITICAL_SECTION for simple
+      recursive calls.
+    - gh-127705: Adds stackref debugging when Py_STACKREF_DEBUG
+      Inis set. Finds all double-closes and leaks, logging the
+      Inorigin and last borrow. spired by HPy’s debug mode.
+      Inhttps://docs.hpyproject.org/en/latest/debug-mode.html
+    - gh-128079: Fix a bug where except* does not properly check
+      the return value of an ExceptionGroup’s split() function,
+      leading to a crash in some cases. Now when split() returns
+      an invalid object, except* raises a TypeError with the
+      original raised ExceptionGroup object chained to it.
+    - gh-128030: Avoid error from calling
+      PyModule_GetFilenameObject on a non-module object when
+      importing a non-existent symbol from a non-module object.
+    - gh-128035: Indicate through ssl.HAS_PHA whether the
+      ssl module supports TLSv1.3 post-handshake client
+      authentication (PHA). Patch by Will Childs-Klein.
+    - gh-127274: Add a new flag, CO_METHOD, to co_flags that
+      indicates whether the code object belongs to a function
+      defined in class scope.
+    - gh-66409: During the path initialization, we now check if
+      base_exec_prefix is the same as base_prefix before falling
+      back to searching the Python interpreter directory.
+    - gh-127970: We now use the location of the libpython
+      runtime library used in the current proccess to determine
+      sys.base_prefix on all platforms implementing the dladdr
+      function defined by the UNIX standard — this includes
+      Linux, Android, macOS, iOS, FreeBSD, etc. This was already
+      the case on Windows and macOS Framework builds.
+    - gh-127773: Do not use the type attribute cache for types
+      with incompatible MRO.
+    - gh-127903: Objects/unicodeobject.c: fix a crash on DEBUG
+      builds in _copy_characters when there is nothing to copy.
+    - gh-127809: Fix an issue where the experimental JIT may
+      infer an incorrect result type for exponentiation (** and
+      **=), leading to bugs or crashes.
+    - gh-126862: Fix a possible overflow when a class inherits
+      from an absurd number of super-classes. Reported by Valery
+      Fedorenko. Patch by Bénédikt Tran.
+  - C API
+    - gh-128400: Py_FatalError() no longer shows all threads on
+      the free threaded build to prevent crashes.
+    - gh-128629: Add macros Py_PACK_VERSION() and
+      Py_PACK_FULL_VERSION() for bit-packing Python version
+      numbers.
+    - gh-128008: Add PyWeakref_IsDead() function, which tests if
+      a weak reference is dead.
+    - gh-127350: Add Py_fopen() function to open a file. Similar
+      to the fopen() function, but the path parameter is a
+      Python object and an exception is set on error. Add also
+      Py_fclose() function to close a file, function needed for
+      Windows support. Patch by Victor Stinner.
+  - Build
+    - gh-128627: For Emscripten builds the function pointer cast
+      call trampoline now uses the wasm-gc ref.test instruction
+      if it’s available instead of Wasm JS type reflection.
+    - gh-128472: Skip BOLT optimization of functions using
+      computed gotos, fixing errors on build with LLVM 19.
+    - gh-115765: GNU Autoconf 2.72 is now required to generate
+      !configure. Patch by Erlend Aasland.
+    - gh-123925: Fix building the curses module on platforms with
+      libncurses but without libncursesw.
+    - gh-90905: Add support for cross-compiling to x86_64 on
+      aarch64/arm64 macOS.
+    - gh-128321: Set LIBS instead of LDFLAGS when checking if
+      sqlite3 library functions are available. This fixes the
+      ordering of linked libraries during checks, which was
+      incorrect when using a statically linked libsqlite3.
+    - gh-100384: Error on unguarded-availability in macOS builds,
+      preventing invalid use of symbols that are not available in
+      older versions of the OS.
+    - gh-128104: Remove Py_STRFTIME_C99_SUPPORT conditions in
+      favor of requiring C99 strftime(3) specifier support at
+      build time. When cross-compiling, there is no build time
+      check and support is assumed.
+    - gh-127951: Add option --pystats to the Windows build to
+      enable performance statistics collection.
+
+-------------------------------------------------------------------
 Wed Dec 18 00:31:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the third development version of 3.14.0:

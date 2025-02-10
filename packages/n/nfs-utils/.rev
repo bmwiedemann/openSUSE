@@ -1824,4 +1824,24 @@
   on `nogroup` from this package (forwarded request 1229984 from firstyear)</comment>
     <requestid>1229985</requestid>
   </revision>
+  <revision rev="185" vrev="46">
+    <srcmd5>833981916e5acd2fb3aafc3f61e12686</srcmd5>
+    <version>unknown</version>
+    <time>1739204572</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.2:
+  * exports: Fix referrals when --enable-junction=no
+  * nfsidmap(v2): Add guards around [nfsidmap] usages of [sysconf].
+  * libnsm(v2): fix the safer atomic filenames fix
+  * libnsm: fix the safer atomic filenames fix
+  * nfsd: dump default number of threads to 16
+  * autoconf: don't build nfsdcltrack by default
+  * nfs(5): Update rsize/wsize options
+  * nfsdctl: clarify when versions can be set on the man page
+  * nfsdctl: fix up the help text in version_usage()
+  * libnsm: safer atomic filenames
+  * nfs-utils: fixup statd testing simulator host arg
+  * mount.nfs: retry NFSv3 mount after NFSv4 failure in auto negotiation</comment>
+    <requestid>1244414</requestid>
+  </revision>
 </revisionlist>

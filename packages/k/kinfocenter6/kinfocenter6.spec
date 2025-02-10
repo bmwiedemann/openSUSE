@@ -1,7 +1,7 @@
 #
 # spec file for package kinfocenter6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
+
+%global __requires_exclude qt6qmlimport\\(org\\.kde\\.kinfocenter\\.private.*
 
 %define rname kinfocenter
 %bcond_without released
@@ -26,20 +28,16 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kinfocenter6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-kcms-pull-dmidecode-helper-into-a-separate-dir.patch
-Patch2:         0002-refactor-dmidecode-helper-support-multiple-methods.patch
-Patch3:         0003-kcms-memory-use-KAuth-dmidecode-helper.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0002-Look-for-binaries-in-Mesa-demos-path-as-well.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -111,8 +109,6 @@ KDE Utility that provides information about a computer system.
 %{_kf6_applicationsdir}/org.kde.kinfocenter.desktop
 %{_kf6_appstreamdir}/org.kde.kinfocenter.appdata.xml
 %{_kf6_bindir}/kinfocenter
-%dir %{_kf6_configdir}/menus
-%{_kf6_configdir}/menus/kinfocenter.menu
 %{_kf6_libdir}/libKInfoCenterInternal.so
 %{_kf6_plugindir}/plasma/kcms/kcm_about-distro.so
 %{_kf6_plugindir}/plasma/kcms/kcm_energyinfo.so
@@ -120,6 +116,7 @@ KDE Utility that provides information about a computer system.
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_audio_information.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_block_devices.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_cpu.so
+%{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_edid.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_egl.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_firmware_security.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_glx.so
@@ -137,12 +134,14 @@ KDE Utility that provides information about a computer system.
 %{_kf6_qmldir}/org/kde/kinfocenter/
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.kinfocenter.dmidecode.service
 %{_kf6_dbuspolicydir}/org.kde.kinfocenter.dmidecode.conf
-%{_kf6_sharedir}/desktop-directories/
 %dir %{_kf6_sharedir}/kinfocenter/
+%dir %{_kf6_sharedir}/kinfocenter/edid
+%{_kf6_sharedir}/kinfocenter/edid/edid.sh
 %{_kf6_sharedir}/kinfocenter/categories/
 %{_kf6_sharedir}/kinfocenter/firmware_security/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kinfocenter.dmidecode.policy
 %{_kf6_libexecdir}/kauth/kinfocenter-dmidecode-helper
+%{_libexecdir}/kinfocenter-opengl-helper
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en

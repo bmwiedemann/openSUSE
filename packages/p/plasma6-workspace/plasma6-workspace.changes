@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:16 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * applets/notification: make the new indicator 1px taller
+  * update version for new release
+  * shell: save containment value in signal slots in PanelView
+  * desktopnotifier: listen trash state changes from trashrc
+  * containmentactions/applauncher: Escape ampersands (kde#499474)
+  * applets/kicker: make submenu follow layoutDirection
+  * [libtaskmanager] Invalidate filter after changing hideActivatedLaunchers (kde#499475)
+  * kicker: remove favorites more reliably (kde#497958)
+  * keyboardlayout: wait for org.kde.keyboard service from kded asynchronously (kde#495684)
+  * Give ActionButton text more horizontal space (kde#499296)
+  * kcms/{autostart,users} Keep "Add" actions visible in headers
+  * kcms/nightlight: Fix dark theme color temperature preview
+  * libkworkspace: fix crash when XRandr extension is not initialized
+  * kcms/wallpaper: Set buddyFor wallpaper type
+  * appiumtests: make clipboardtest less flaky
+  * Watch for changes in session save mode (kde#449077)
+  * kcm/users: make cropper fill largest square within image by default (kde#498989)
+  * kcms/users: fix dialog sizing (kde#481316)
+  * libkmpris: Fix default min/max playback rate
+  * kcms/soundtheme: Allow setting theme with sounds disabled (kde#497355)
+  * applets/notification: limit popup with of inlineReply (kde#498834)
+
+-------------------------------------------------------------------
+Thu Jan 23 13:47:03 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Jan 11 18:29:19 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Dec 31 20:50:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

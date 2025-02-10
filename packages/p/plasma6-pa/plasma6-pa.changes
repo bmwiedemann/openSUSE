@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:09 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * Only show osd on global shortcuts or scrolling the applet
+  * kcm: make inactive detection more robust (kde#496682)
+
+-------------------------------------------------------------------
+Thu Jan 23 13:46:45 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+
+-------------------------------------------------------------------
+Sat Jan 11 18:28:49 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Changes since 6.2.5:
+  * update version for new release
+  * kded: Don't show default sink OSD when coming frm no sink
+  * Made KDocTools optional
+  * Add autogenerate debug category
+  * Add missing include moc
+  * listitemmenu: guard activePort against null
+  * kcm: Fix speaker test layout for Pro-Audio profile (kde#495752)
+  * KCM: Fix QML warnings
+  * Update git blame ignore file
+  * Reformat code with clang-format
+  * rename: set correct device name upon reset (kde#494546)
+  * fix text display for auto_null device (kde#494324)
+  * Update PulseAudio-Qt to 1.6.0
+  * update version for new release
+  * kcm: validate percent input correctly (kde#420416)
+  * rip out the name source changing
+  * use description as per upstream recommendation (kde#487658)
+  * applet: directly set switching sizes (kde#493042)
+  * Port away from deprecated ""_qba
+
+-------------------------------------------------------------------
 Tue Dec 31 20:50:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

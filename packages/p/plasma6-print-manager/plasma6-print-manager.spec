@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-print-manager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 24.9.90 Raymond Wooninck <tittiatcoke@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 
 %define rname print-manager
@@ -27,19 +27,17 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-print-manager
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Require-CUPS-version-2.4.x.patch
-BuildRequires:  cups-devel >= 1.5
+BuildRequires:  cups-devel >= 2.4
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  system-config-printer-dbus-service
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}

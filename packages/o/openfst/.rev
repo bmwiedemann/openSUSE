@@ -23,4 +23,12 @@
     <comment>- Add gcc14.patch</comment>
     <requestid>1220364</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05eddd7d946c69a8c68d4789909872c0</srcmd5>
+    <version>1.8.4</version>
+    <time>1739204876</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.8.4</comment>
+    <requestid>1244630</requestid>
+  </revision>
 </revisionlist>

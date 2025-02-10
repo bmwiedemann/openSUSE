@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 10 11:16:24 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.4.16.7
+  01/29/2025
+  - add OIDCProfile to configure OpenID Connect profile behaviours for, so far "FAPI20" only, which configures:
+    Authentication Request method, DPoP, PKCE, ID token aud values requirements
+    token endpoint JWT authentication "aud" values, "iss" parameter requirement in authentication reponses
+
+-------------------------------------------------------------------
 Wed Dec 11 13:55:46 UTC 2024 - pgajdos@suse.com
 
 - version update to 2.4.16.6

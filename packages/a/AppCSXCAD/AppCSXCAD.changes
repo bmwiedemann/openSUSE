@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 13:50:28 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of distro flags with upstream PR:
+  fix-flag-usage.patch
+  in order to get a package which complies with distro policy,
+  including security features
+
+-------------------------------------------------------------------
 Sun Dec 31 20:50:24 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.2.3

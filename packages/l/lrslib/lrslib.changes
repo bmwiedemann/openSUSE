@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  9 22:24:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.3
+  * lrs is now multithreaded with limited parallelization on a
+    shared memory machine using OpenMP. lrs now evaluates in
+    parallel all children of the root in the search tree.
+  * minrep finds any hidden linearities and removes redundancy
+    giving a H/V description with minimum number of rows.
+  * `mplrs -minrep`: Fully parallelized version of minrep,
+    replaces `mplrs -redund`.
+  * `mplrs -fel` Does a fully parallel LP redundancy removal in
+    one step of Fourier-Motzin elimination.
+  * New features:
+  * Checks equivalency between H/V representations (possibly
+    after projections) using SMT solvers, see the polyv man page
+    for details.
+
+-------------------------------------------------------------------
 Sat Jul 16 20:21:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2

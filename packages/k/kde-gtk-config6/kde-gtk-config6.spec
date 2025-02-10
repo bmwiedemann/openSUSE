@@ -1,7 +1,7 @@
 #
 # spec file for package kde-gtk-config6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 %define rname kde-gtk-config
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -25,21 +25,21 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-gtk-config6
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  cmake(KDecoration2) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(KDecoration3) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -103,6 +103,7 @@ sed -i 's#/usr/bin/env sh$#/usr/bin/sh#' %{buildroot}%{_kf6_sharedir}/kconf_upda
 %license LICENSES/*
 %dir %{_kf6_libdir}/gtk-3.0/
 %dir %{_kf6_libdir}/gtk-3.0/modules/
+%{_kf6_debugdir}/kde-gtk-config.categories
 %{_kf6_libdir}/gtk-3.0/modules/libcolorreload-gtk-module.so
 %{_kf6_libdir}/gtk-3.0/modules/libwindow-decorations-gtk-module.so
 %{_kf6_libdir}/kconf_update_bin/gtk_theme
@@ -111,7 +112,6 @@ sed -i 's#/usr/bin/env sh$#/usr/bin/sh#' %{buildroot}%{_kf6_sharedir}/kconf_upda
 %{_kf6_sharedir}/kcm-gtk-module/
 %{_kf6_sharedir}/kconf_update/gtkconfig.upd
 %{_kf6_sharedir}/kconf_update/remove_window_decorations_from_gtk_css.sh
-%{_kf6_debugdir}/kde-gtk-config.categories
 
 %files gtk3
 %license LICENSES/*

@@ -15,4 +15,23 @@
     <comment></comment>
     <requestid>1207964</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c900d863bf92493b26feb29a2247eff</srcmd5>
+    <version>0.11.1</version>
+    <time>1739204886</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.1:
+  * Add LocalRedirector.unavailable_reason() and
+    TunInterface.unavailable_reason().
+  * Add active_processes() on Linux.
+  * tun mode: disable rp_filter, remove debug logging.
+  * tun mode: re-add debug logging.
+  * tun mode: add default netmask
+  * Remove superfluous debug logs.
+  * Add debug info.
+  * Assign a local IP address to our tun interface for Linux compatibility.
+  * Add tun mode.
+- Switch to srctar for cargo vendoring.</comment>
+    <requestid>1244640</requestid>
+  </revision>
 </revisionlist>

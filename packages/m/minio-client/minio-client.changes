@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 08 22:52:48 UTC 2025 - mrueckert@suse.de
+
+- Update to version 20250208T191421Z:
+  * mirror: add the duration time and beautify the output (#5125)
+  * fix: urls equals nil deref (#5126)
+  * add support for pre-2023 minio deployments (#5122)
+  * Change enable to "enable=" (#5104)
+  * Giving mirror the option to exit early when --remove is not set (#5116)
+
+-------------------------------------------------------------------
 Tue Feb 04 10:43:49 UTC 2025 - mrueckert@suse.de
 
 - Update to version 20250204T045750Z:

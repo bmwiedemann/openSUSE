@@ -1,22 +1,10 @@
 Hide YaST modules from the applications menu. boo#951888
 
 diff --git a/menu/desktop/plasma-applications.menu b/menu/desktop/plasma-applications.menu
-index a5315a718..e71213d10 100644
+index 85f842d6a0..2a4e6b66c0 100644
 --- a/menu/desktop/plasma-applications.menu
 +++ b/menu/desktop/plasma-applications.menu
-@@ -338,7 +338,10 @@
- 		<Name>Settingsmenu</Name>
- 		<Directory>kf5-settingsmenu.directory</Directory>
- 		<Include>
--			<Category>Settings</Category>
-+			<And>
-+				<Category>Settings</Category>
-+				<Not><Category>X-SuSE-YaST</Category></Not>
-+			</And>
- 		</Include>
- 	</Menu>
- 	<Menu>
-@@ -348,6 +351,7 @@
+@@ -342,6 +342,7 @@
  			<And>
  				<Category>System</Category>
  				<Not><Category>X-KDE-More</Category></Not>

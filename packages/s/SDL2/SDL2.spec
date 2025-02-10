@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.30.12
+Version:        2.32.0
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib

@@ -1,0 +1,69 @@
+From 7d77b1b5768253deb4e4fcc645dfe0ab4ff1a292 Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Sun, 9 Feb 2025 11:36:28 +0800
+Subject: [PATCH] fix build error against v6.13
+
+The DRBD build failed on the latest kernel v6.13:
+
+```
+   CHK     build-6.13.1-1-default/compat.patch
+   LN      build-6.13.1-1-default/compat.patch -> ../drbd-kernel-compat/cocci_cache/47e34234767463327c545d4b02432945/compat.patch
+ set -- ./build-6.13.1-1-default/compat.patch ./build-6.13.1-1-default/compat.h;	\
+ test $1 -nt $2 || touch -r $1 $2
+   SPLIT   build-6.13.1-1-default/compat.patch
+ /bin/bash: line 1: build-6.13.1-1-default/compat.patch: No such file or directory
+ make[3]: *** [Kbuild:222: build-6.13.1-1-default/.ts.compat.patch] Error 1
+ make[2]: *** [/usr/src/linux-6.13.1-1/Makefile:2012: .] Error 2
+```
+which is caused by upstream commit:
+
+commit 13b25489b6f8bd73ed65f07928f7c27a481f1820
+Author: Masahiro Yamada <masahiroy@kernel.org>
+Date:   Sun Nov 10 10:34:33 2024 +0900
+
+    kbuild: change working directory to external module directory with M=
+
+The commit changes working directory to /usr/src/packages/BUILD/drbd-9.1.23-build/drbd-9.1.23/64kb.
+
+drbd/Kbuild uses relative path for compat.patch:
+obj.build := $(obj)/$(build-dir)
+...
+compat.patch     := $(obj.build)/compat.patch
+
+When SPLIT is calling, it's in $(build-dir)/.patches directory, thus compat.patch is not found.
+
+Fix it by adding prefix $(srcroot) to obj.build.
+This patch incorporates with make option KBUILD_ABS_SRCTREE=1.
+So the make prep should be:
+
+make -j4 -C default KDIR=/usr/src/linux-obj/x86_64/default prep SPAAS=false KBUILD_ABS_SRCTREE=1
+
+As Linux/Documentation/kbuild/makefiles.rst says:
+
+$(srcroot)
+  $(srcroot) refers to the root of the source you are building, which can be
+  either the kernel source or the external modules source, depending on whether
+  KBUILD_EXTMOD is set. This can be either a relative or an absolute path, but
+  if KBUILD_ABS_SRCTREE=1 is set, it is always an absolute path.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ drbd/Kbuild | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drbd/Kbuild b/drbd/Kbuild
+index 3e1e5681bcea..31535d2a7074 100644
+--- a/drbd/Kbuild
++++ b/drbd/Kbuild
+@@ -18,7 +18,7 @@ else
+ 
+ SHELL := /bin/bash
+ 
+-obj.build := $(obj)/$(build-dir)
++obj.build := $(srcroot)/$(obj)/$(build-dir)
+ PHONY += $(obj.build)
+ 
+ # we don't have an official Kbuild entry point.  This is only used to generate
+-- 
+2.39.5 (Apple Git-154)
+

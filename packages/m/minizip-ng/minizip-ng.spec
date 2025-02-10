@@ -1,7 +1,7 @@
 #
 # spec file for package minizip-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Name:           minizip-ng
 %global         compat_mode OFF
 %endif
 
-Version:        4.0.5
+Version:        4.0.8
 Release:        0
 Summary:        Companion library to zlib-ng for reading and writing ZIP files
 License:        Zlib

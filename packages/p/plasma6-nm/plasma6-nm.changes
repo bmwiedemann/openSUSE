@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb  6 13:47:08 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.0
+- Changes since 6.2.91:
+  * update version for new release
+  * libs: check self is alive after receiving D-Bus reply in Handler
+  * Emit LastUsedRole change when TimeStampRole changes
+
+-------------------------------------------------------------------
+Thu Jan 23 13:46:43 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.91
+- Changes since 6.2.90:
+  * update version for new release
+  * Make openvpn cipher parsing more robust (kde#498791)
+  * update version for new release
+  * ConnectionItem: Show Configure item when there is an Uuid
+  * kded: Silence connection change warning
+
+-------------------------------------------------------------------
+Sat Jan 11 18:28:46 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Dec 31 20:46:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.5:

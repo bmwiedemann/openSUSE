@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb  9 23:37:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.4
+   * Added `NumStatesIfKnown()` method to `FstClass` in script
+     layer and `num_states_if_known()` to `Fst` in Python layer,
+     exposing library-layer `Fst::NumStatesIfKnown()`
+   * Added an option allowing `ArcMapFst` to be an `ExpandedFst`
+     (thus only accepting `ExpandedFst` inputs) rather than
+     always fulfilling just the `Fst` interface, even when it
+     could have provided `NumStates()`
+   * Modest performance optimizations in `SingleShortestPath`
+   * Added `CustomShortestFirstQueue`, a generalization of
+     `NaturalShortestFirstQueue` allowing setting a custom
+     comparator
+   * Removed nominal memory leak in `fstquantize` binary which
+     would occur briefly before exiting
+   * Various properties and flags in script API (as
+     `WeightClass::Properties()`) and Python extension (as
+     `WeightProperties`, `ArcIteratorFlags` and
+     `EncodeMapperFlags`) are now exposed
+- Delete gcc14.patch (obsolete)
+
+-------------------------------------------------------------------
 Sat Nov  2 22:54:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc14.patch

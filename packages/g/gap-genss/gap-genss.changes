@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:47:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.9
+  * Turn IO into an optional dependency
+
+-------------------------------------------------------------------
 Fri Nov 18 23:59:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.8

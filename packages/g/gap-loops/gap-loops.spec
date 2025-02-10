@@ -1,7 +1,7 @@
 #
 # spec file for package gap-loops
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-loops
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        GAP: Computing with quasigroups and loops in GAP
 License:        GPL-3.0-only

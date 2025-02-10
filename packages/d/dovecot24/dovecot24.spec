@@ -37,6 +37,11 @@
 %bcond_without xapian
 %bcond_without libstemmer
 %bcond_without run_tests
+%if %{is_opensuse}
+%bcond_without apparmor
+%else
+%bcond_with apparmor
+%endif
 
 Name:           dovecot24
 Version:        2.4.0
@@ -76,7 +81,9 @@ BuildRequires:  lua-dkjson
 BuildRequires:  pkgconfig
 BuildRequires:  rpcgen
 BuildRequires:  pkgconfig(krb5)
+%if %{with apparmor}
 BuildRequires:  pkgconfig(libapparmor)
+%endif
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(openssl)
@@ -306,7 +313,9 @@ gzip -9v ChangeLog
     --with-pgsql                                    \
     --with-mysql                                    \
     --with-lua=plugin                               \
+%if %{with apparmor}
     --with-apparmor                                 \
+%endif
 %if %{with sqlite}
     --with-sqlite                                   \
 %endif
@@ -511,8 +520,10 @@ fi
 # plugins
 %dir %{_libdir}/%{pkg_name}
 %dir %{_libdir}/%{pkg_name}/modules/
-%{_libdir}/%{pkg_name}/modules/lib01_acl_plugin.so
+%if %{with apparmor}
 %{_libdir}/%{pkg_name}/modules/lib01_apparmor_plugin.so
+%endif
+%{_libdir}/%{pkg_name}/modules/lib01_acl_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib02_lazy_expunge_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib05_mail_crypt_acl_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib05_pop3_migration_plugin.so

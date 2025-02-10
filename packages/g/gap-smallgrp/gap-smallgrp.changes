@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb  9 20:51:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.4
+  * Don't attempt to load non-existent source files (this was
+    harmless so far as it failed silently, but in future GAP
+    versions may result in a scary warning or even an error)
+
+-------------------------------------------------------------------
 Sun Jun 25 10:01:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.3

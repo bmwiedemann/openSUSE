@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  9 19:31:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.4
+  * Do not attempt to read non-existing files
+
+-------------------------------------------------------------------
 Sat Nov 19 00:36:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.3

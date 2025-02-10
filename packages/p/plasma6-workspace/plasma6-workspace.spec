@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-workspace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.plasma\\.workspace|org\\.kde\\.notificationmanager|org\\.kde\\.plasma\\.lookandfeel|org\\.kde\\.plasma\\.wallpapers|org\\.kde\\.taskmanager|org\\.kde\\.holidayeventshelperplugin|org\\.kde\\.kscreenlocker).*
 
-%define kf6_version 6.5.0
+%define kf6_version 6.10.0
 %define qt6_version 6.7.0
 %define rname plasma-workspace
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,14 +30,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.2.5
+Version:        6.3.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        sddm.conf
@@ -133,6 +133,7 @@ BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandCompositor) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(ScreenSaverDBusInterface) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(packagekitqt6)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
@@ -147,6 +148,7 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-composite)
+BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-damage)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-randr)
@@ -491,15 +493,18 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_kxmlguidir}/kfontview
 %{_kf6_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf6_libdir}/kconf_update_bin/krunnerhistory
-%{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-custom-position-of-panels
-%{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels
 %{_kf6_libdir}/kconf_update_bin/plasma6.0-remove-dpi-settings
 %{_kf6_libdir}/kconf_update_bin/plasma6.0-remove-old-shortcuts
+%{_kf6_libdir}/kconf_update_bin/plasma6.3-update-clipboard-database-2-to-3
+%{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-custom-position-of-panels
+%{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels
 %{_kf6_libdir}/libkfontinst.so.*
 %{_kf6_libdir}/libkfontinstui.so.*
 %{_kf6_notificationsdir}/devicenotifications.notifyrc
 %{_kf6_notificationsdir}/donationmessage.notifyrc
 %{_kf6_notificationsdir}/freespacenotifier.notifyrc
+%{_kf6_notificationsdir}/libnotificationmanager.notifyrc
+%{_kf6_notificationsdir}/oom-notifier.notifyrc
 %{_kf6_notificationsdir}/phonon.notifyrc
 %{_kf6_plasmadir}/avatars/
 %{_kf6_plasmadir}/look-and-feel/
@@ -585,7 +590,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_libdir}/libkrdb.so
 %{_kf6_libdir}/libkworkspace6.so.*
 %{_kf6_libdir}/libnotificationmanager.so.*
-%{_kf6_libdir}/libplasma-geolocation-interface.so.*
 %{_kf6_libdir}/libtaskmanager.so.*
 %{_kf6_libdir}/libweather_ion.so.*
 
@@ -595,7 +599,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_includedir}/krdb/
 %{_includedir}/kworkspace6/
 %{_includedir}/notificationmanager/
-%{_includedir}/plasma/
 %{_includedir}/plasma5support/
 %{_includedir}/taskmanager/
 %{_kf6_libdir}/cmake/KRunnerAppDBusInterface/
@@ -607,10 +610,8 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_libdir}/libbatterycontrol.so
 %{_kf6_libdir}/libcolorcorrect.so
 %{_kf6_libdir}/libklipper.so
-%{_kf6_libdir}/libkmpris.so
 %{_kf6_libdir}/libkworkspace6.so
 %{_kf6_libdir}/libnotificationmanager.so
-%{_kf6_libdir}/libplasma-geolocation-interface.so
 %{_kf6_libdir}/libtaskmanager.so
 %{_kf6_libdir}/libweather_ion.so
 %{_kf6_sharedir}/dbus-1/interfaces/
