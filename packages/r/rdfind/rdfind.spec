@@ -1,7 +1,7 @@
 #
 # spec file for package rdfind
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Johannes Kastl
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rdfind
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Find duplicate files and replace them with symlinks or hardlinks
 License:        GPL-2.0-or-later
@@ -26,7 +26,13 @@ Group:          System/Management
 URL:            https://rdfind.pauldreik.se/
 Source0:        https://rdfind.pauldreik.se/%{name}-%{version}.tar.gz
 Source1:        https://rdfind.pauldreik.se/%{name}-%{version}.tar.gz.asc
+# delete once upstream gets rid of autotools or they are fixed
+BuildRequires:  autoconf
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libnettle-devel
 BuildRequires:  make
 
@@ -39,6 +45,13 @@ their content, NOT on their file names.
 %autosetup -p1
 
 %build
+# for this bug: https://savannah.gnu.org/support/?110983
+# tracked upstream at: https://github.com/pauldreik/rdfind/issues/186
+autoconf
+# drop the above, once upstream uses fixed autotools (we do)
+%if 0%{?suse_version} < 1600
+export CXX=g++-13
+%endif
 %configure
 %{make_build}
 
