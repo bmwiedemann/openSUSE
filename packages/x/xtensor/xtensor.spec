@@ -1,7 +1,7 @@
 #
 # spec file for package xtensor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           xtensor
 Version:        0.25.0
 Release:        0
@@ -23,12 +24,14 @@ Summary:        Multi-dimensional arrays with broadcasting and lazy computing
 License:        BSD-3-Clause
 URL:            https://github.com/xtensor-stack/xtensor
 Source0:        https://github.com/xtensor-stack/xtensor/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module breathe}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  make
-BuildRequires:  python3-breathe
 BuildRequires:  xtl-devel >= 0.7.5
 Group:          Development/Libraries/C and C++
 
@@ -89,6 +92,9 @@ make html
 #install documentation
 mkdir -p %{buildroot}/%{_docdir}/%{name}
 cp -r %{_builddir}/%{name}-%{version}/docs/build/html/* %{buildroot}/%{_docdir}/%{name}
+
+%fdupes -s %{buildroot}/%{_docdir}
+%fdupes %{buildroot}/%{_prefix}
 
 %check
 %ctest
