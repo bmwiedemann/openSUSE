@@ -47,6 +47,7 @@ BuildRequires:  notmuch-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sqlite-devel
 BuildRequires:  w3m
 BuildRequires:  xsltproc
 BuildRequires:  zlib-devel
@@ -96,11 +97,12 @@ export CFLAGS="%{optflags}"
 		--lmdb				\
 		--gnutls			\
 		--gpgme				\
+		--autocrypt			\
 		--notmuch			\
 		--sasl				\
 		--gss				\
 		--idn2				\
-		--pcre2         		\
+		--pcre2				\
 		--zlib
 
 make %{?_smp_mflags}
