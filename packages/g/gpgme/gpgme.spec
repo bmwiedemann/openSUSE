@@ -2,6 +2,7 @@
 # spec file for package gpgme
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +43,7 @@
 %endif
 
 Name:           gpgme%{psuffix}
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -57,7 +58,6 @@ Source3:        https://gnupg.org/signature_key.asc#/gpgme.keyring
 Source99:       gpgme.changes
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
 Patch2:         gpgme-suse-nobetasuffix.patch
-Patch3:         python313.patch
 Patch4:         gpgme-fix-python-install.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -258,7 +258,7 @@ This package contains the bindings to use the library in Qt 6 C++ applications.
 %prep
 %autosetup -N -n gpgme-%{version}
 %if %{with replace_distutils}
-%patch -p1 -P2 -P3
+%patch -p1 -P2
 %endif
 %if 0%{suse_version} > 1500
 # Note: rpm in 15.x does not know about the autopatch -m flag.
