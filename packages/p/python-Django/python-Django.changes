@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 11 12:52:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.6
+  * Fixed a regression in Django 5.1.5 that caused validate_ipv6_address()
+    and validate_ipv46_address() to crash when handling non-string values
+  * Fixed a regression in Django 5.1 where password fields, despite being
+    set to required=False, were still treated as required in forms derived
+    from BaseUserCreationForm
+
+-------------------------------------------------------------------
 Wed Jan 15 07:53:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.5 (bsc#1235856)
