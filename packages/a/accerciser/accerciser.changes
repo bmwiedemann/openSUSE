@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Feb 10 07:45:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.2:
+  + WindowManager: Take PID into account when matching window
+  + metainfo: Add more URLs
+  + Fix translations after meson port
+  + Don't force symbolic icons
+  + interface view:
+    - Show process ID
+    - Show expanders in "Relations" tree view
+    - Disable "Show" button unless relation target selected
+    - Don't explicitly set relations view color
+    - Show parent relative position
+    - Show text caret offset
+    - Drop deprecated interfaces
+  + Drop obsolete gail module handling
+  + Drop code for migrating > 12 year old profiles
+  + node: Port from deprecated interfaces
+  + Drop commented GNOME-specific code
+  + ipython: Fix autocompletion with IPython 8.29
+  + Move Wnck logic to a separate helper program
+  + Make check for own app more reliable
+  + treeview: Ignore event about own app added to AT-SPI registry
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 30 05:18:26 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 3.44.1 

@@ -594,4 +594,12 @@ No LGPL-2.1+ licenses found in package (forwarded request 105656 from babelworx)
     <comment>Scripted push of GNOME 47</comment>
     <requestid>1205409</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>0db878ad8db69c2806dc99bdd1c47d14</srcmd5>
+    <version>3.46.2</version>
+    <time>1739305355</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244826</requestid>
+  </revision>
 </revisionlist>
