@@ -1,7 +1,7 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="revision">v4.2.3</param>
-    <param name="version">4.2.3</param>
+    <param name="revision">v4.3.2</param>
+    <param name="version">4.3.2</param>
     <param name="url">https://projects.blender.org/blender/blender-assets.git</param>
     <param name="scm">git</param>
     <param name="lfs">enable</param>

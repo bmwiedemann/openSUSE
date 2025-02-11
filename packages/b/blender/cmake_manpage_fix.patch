@@ -1,8 +1,8 @@
-Index: blender-4.2.3/source/creator/CMakeLists.txt
+Index: blender-4.3.0/source/creator/CMakeLists.txt
 ===================================================================
---- blender-4.2.3.orig/source/creator/CMakeLists.txt
-+++ blender-4.2.3/source/creator/CMakeLists.txt
-@@ -1925,7 +1925,7 @@ detect_leaks=0\"\n\
+--- blender-4.3.0.orig/source/creator/CMakeLists.txt
++++ blender-4.3.0/source/creator/CMakeLists.txt
+@@ -2005,7 +2005,7 @@ detect_leaks=0\"\n\
    execute_process(\n\
      COMMAND\n\
      $\{PYTHON_EXECUTABLE\} $\{MANPAGE_GEN\}\n\

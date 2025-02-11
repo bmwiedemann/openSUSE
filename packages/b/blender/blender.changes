@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Feb 11 16:09:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- For the desktop file we do not need the 2nd copy 
+
+-------------------------------------------------------------------
+Tue Feb 11 14:38:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable update-alternative again. only the main package will have
+  unversioned hardlinks.
+
+-------------------------------------------------------------------
+Mon Feb  3 00:59:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- First attempt in making them parallel installable
+- Add the %ghost %attr() for the alternatives 
+- cleanup filelist 
+
+-------------------------------------------------------------------
+Sat Feb  1 22:17:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.3.2
+  https://www.blender.org/download/releases/4-3/
+  https://developer.blender.org/docs/release_notes/4.3/corrective_releases/
+
+-------------------------------------------------------------------
+Wed Nov 20 09:21:33 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable GHOST_SDL mode, so we can enable IME input
+
+-------------------------------------------------------------------
+Wed Nov 20 08:35:26 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup cmake options
+  - removed unused options:
+    -DWITH_CODEC_AVI
+    -DWITH_COMPOSITOR
+    -DWITH_IMAGE_DDS
+    -DWITH_IMAGE_HDR
+    -DWITH_IMAGE_TIFF
+    -DWITH_CYCLES_CUBIN_COMPILER
+    -DPYTHON_NUMPY_INCLUDE_DIRS
+    -DWITH_SYSTEM_GLEW
+  - add some explicite OFF settings to make the cmake output a bit
+    less noisy
+    -DWITH_XR_OPENXR
+    -DWITH_USD
+    -DWITH_MATERIALX
+- add BuildRequires for vulkan support:
+  pkgconfig(shaderc) pkgconfig(vulkan)
+- add BuildRequires for webp support:
+  pkgconfig(libwebp)
+- add BuildRequires for more renderer API supports:
+  pkgconfig(level-zero)
+
+-------------------------------------------------------------------
+Wed Nov 20 07:53:32 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.3.0
+  https://www.blender.org/download/releases/4-3/
+- refreshed patches:
+  cmake_manpage_fix.patch
+  ffmpeg-7-1.patch
+- drop patches
+  reproducible.patch
+
+-------------------------------------------------------------------
 Thu Nov 14 18:54:56 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - ensure we do not accidently pull openvdb/OpenImageIO versions,

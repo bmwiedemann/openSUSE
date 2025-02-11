@@ -13,10 +13,10 @@ we check directly the return of av_seek_frame.
  source/blender/imbuf/intern/anim_movie.cc | 11 +++++------
  2 files changed, 14 insertions(+), 6 deletions(-)
 
-Index: blender-4.2.3/intern/ffmpeg/ffmpeg_compat.h
+Index: blender-4.3.0/intern/ffmpeg/ffmpeg_compat.h
 ===================================================================
---- blender-4.2.3.orig/intern/ffmpeg/ffmpeg_compat.h
-+++ blender-4.2.3/intern/ffmpeg/ffmpeg_compat.h
+--- blender-4.3.0.orig/intern/ffmpeg/ffmpeg_compat.h
++++ blender-4.3.0/intern/ffmpeg/ffmpeg_compat.h
 @@ -161,6 +161,15 @@ FFMPEG_INLINE size_t ffmpeg_get_buffer_a
    return align;
  }
@@ -33,11 +33,11 @@ Index: blender-4.2.3/intern/ffmpeg/ffmpeg_compat.h
  /* -------------------------------------------------------------------- */
  /** \name Deinterlace code block
   *
-Index: blender-4.2.3/source/blender/imbuf/intern/anim_movie.cc
+Index: blender-4.3.0/source/blender/imbuf/intern/anim_movie.cc
 ===================================================================
---- blender-4.2.3.orig/source/blender/imbuf/intern/anim_movie.cc
-+++ blender-4.2.3/source/blender/imbuf/intern/anim_movie.cc
-@@ -657,7 +657,7 @@ static void ffmpeg_decode_store_frame_pt
+--- blender-4.3.0.orig/source/blender/imbuf/intern/anim_movie.cc
++++ blender-4.3.0/source/blender/imbuf/intern/anim_movie.cc
+@@ -656,7 +656,7 @@ static void ffmpeg_decode_store_frame_pt
  {
    anim->cur_pts = av_get_pts_from_frame(anim->pFrame);
  
@@ -46,7 +46,7 @@ Index: blender-4.2.3/source/blender/imbuf/intern/anim_movie.cc
      anim->cur_key_frame_pts = anim->cur_pts;
    }
  
-@@ -1036,11 +1036,10 @@ static int ffmpeg_seek_to_key_frame(ImBu
+@@ -1035,11 +1035,10 @@ static int ffmpeg_seek_to_key_frame(ImBu
  
      AVFormatContext *format_ctx = anim->pFormatCtx;
  

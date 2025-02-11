@@ -1,7 +1,7 @@
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
-reproducible.patch
+# reproducible.patch -p1
 # PATCH-FIX-OPENSUSE - fix gcc 13 fallout
-Add_missing_system_error_handler.patch
+Add_missing_system_error_handler.patch -p1
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 cmake_manpage_fix.patch
 # PATCH-FIX-UPSTREAM https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/blob/main/ffmpeg-7-1.patch?ref_type=heads

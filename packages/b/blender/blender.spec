@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,6 +52,8 @@
 %bcond_with system_audaspace
 %endif
 
+%bcond_with blender_ua
+
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
 
@@ -76,28 +78,28 @@
 %bcond_with usd
 %bcond_with openxr
 
+%global pkg_name blender
+
 Name:           blender
-Version:        4.2.3
+Version:        4.3.2
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
 # Please leave the source url intact
-Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
-Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
+Source0:        https://download.blender.org/source/%{pkg_name}-%{version}.tar.xz
+Source1:        https://download.blender.org/source/%{pkg_name}-%{version}.tar.xz.md5sum
 # Unfortunately, the "Essentials" library is only availabe using GIT LFS. https://projects.blender.org/blender/blender/issues/128359
 Source2:        blender-assets-%{version}.tar.xz
 Source4:        geeko.blend
 Source5:        geeko.README
 Source6:        geeko_example_scene.blend
 Source7:        geeko_example_scene.README
-Source8:        %{name}-sample
+Source8:        %{pkg_name}-sample
 Source9:        SUSE-NVIDIA-GPU-rendering.txt
 Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
-# PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
-Patch0:         reproducible.patch
 # PATCH-FIX-OPENSUSE - fix gcc 13 fallout
 Patch1:         Add_missing_system_error_handler.patch
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
@@ -161,6 +163,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(level-zero)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
@@ -170,9 +173,12 @@ BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
@@ -197,7 +203,7 @@ Requires(postun): hicolor-icon-theme
 Recommends:     %name-demo = %version
 # current locale handling doesn't create locale(..) provides correctly
 Recommends:     %name-lang = %version
-Provides:       %{name}-%{_suffix} = %{version}
+Provides:       %{pkg_name}-%{_suffix} = %{version}
 BuildRequires:  pkgconfig(OpenEXR)
 %if %{with clang}
 BuildRequires:  clang
@@ -260,10 +266,12 @@ Requires:       audaspace-deviceplugin
 Requires:       audaspace-fileplugin
 %endif
 %ifarch x86_64
-Obsoletes:      %{name}-cycles-devel = %{version}
-Provides:       %{name}-cycles-devel = %{version}
+Obsoletes:      %{pkg_name}-cycles-devel = %{version}
+Provides:       %{pkg_name}-cycles-devel = %{version}
 %endif
 ExcludeArch:    %{ix86} %{arm}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -307,8 +315,8 @@ pushd "%{_sourcedir}"
 md5sum -c %{SOURCE1}
 popd
 
-%autosetup -p1
-%setup -T -D -a 2 -q
+%autosetup -p1 -n %{pkg_name}-%{version}
+%setup -T -D -a 2 -q -n %{pkg_name}-%{version}
 mv blender-assets-%{version} release/datafiles/assets
 
 rm -rf extern/libopenjpeg
@@ -374,12 +382,10 @@ cmake ../ \
 %endif
       -DWITH_BUILDINFO:BOOL=OFF \
       -DWITH_BULLET:BOOL=ON \
-      -DWITH_CODEC_AVI:BOOL=ON \
       -DWITH_CODEC_FFMPEG:BOOL=ON \
       -DFFMPEG_ROOT_DIR:PATH=%{_includedir}/ffmpeg \
       -DWITH_CODEC_SNDFILE:BOOL=ON \
       -DLIBSNDFILE_ROOT_DIR:FILE=%{_prefix} \
-      -DWITH_COMPOSITOR:BOOL=ON \
 %ifarch ppc ppc64 ppc64le
       -DWITH_CYCLES:BOOL=OFF \
       -DWITH_CYCLES_EMBREE:BOOL=OFF \
@@ -403,11 +409,8 @@ cmake ../ \
       -DWITH_IK_ITASC:BOOL=ON \
       -DWITH_IK_SOLVER:BOOL=ON \
       -DWITH_IMAGE_CINEON:BOOL=ON \
-      -DWITH_IMAGE_DDS:BOOL=ON \
-      -DWITH_IMAGE_HDR:BOOL=ON \
       -DWITH_IMAGE_OPENEXR:BOOL=ON \
       -DWITH_IMAGE_OPENJPEG:BOOL=ON \
-      -DWITH_IMAGE_TIFF:BOOL=ON \
       -DWITH_INPUT_NDOF:BOOL=ON \
       -DWITH_INTERNATIONAL:BOOL=ON \
       -DWITH_LIBMV:BOOL=ON \
@@ -453,28 +456,29 @@ cmake ../ \
       -DPYTHON_INCLUDE_DIRS=%{_includedir}/python%{py3ver} \
       -DWITH_PYTHON_INSTALL_NUMPY=OFF \
       -DPYTHON_NUMPY_PATH:PATH=%{_libdir}/python%{py3ver}/site-packages \
-      -DPYTHON_NUMPY_INCLUDE_DIRS:PATH=%{_libdir}/python%{py3ver}/site-packages/numpy/core/include \
       -DWITH_QUADRIFLOW:BOOL=ON \
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
 %if %{with usd}
       -DWITH_USD:BOOL=ON \
+%else
+      -DWITH_USD:BOOL=OFF \
 %endif
+      -DWITH_MATERIALX:BOOL=OFF \
 %if 0%{?is_opensuse} == 1
       -DWITH_MEM_JEMALLOC:BOOL=ON \
 %endif
       -DWITH_JACK:BOOL=ON \
       -DWITH_DOC_MANPAGE:BOOL=ON \
       -DWITH_GHOST_XDND:BOOL=ON \
+      -DWITH_GHOST_SDL:BOOL=OFF \
       -DWITH_X11_XINPUT:BOOL=ON \
       -DWITH_X11_XF86VMODE:BOOL=ON \
-%if %{with system_glew}
-      -DWITH_SYSTEM_GLEW:BOOL=ON \
-%else
-      -DWITH_SYSTEM_GLEW:BOOL=OFF \
-%endif
+      -DWITH_INPUT_IME:BOOL=ON \
 %if %{with openxr}
       -DWITH_XR_OPENXR:BOOL=ON \
+%else
+      -DWITH_XR_OPENXR:BOOL=OFF \
 %endif
 %if %{with optix}
       -DWITH_CYCLES_DEVICE_OPTIX:BOOL=ON \
@@ -482,8 +486,8 @@ cmake ../ \
       -DOPTIX_ROOT_DIR:PATH=/opt/nvidia/optix \
 %endif
       -DWITH_CYCLES_CUDA_BINARIES:BOOL=OFF \
-      -DWITH_CYCLES_CUBIN_COMPILER:BOOL=OFF \
       -DWITH_CYCLES_HIP_BINARIES:BOOL=ON \
+      -DWITH_CYCLES_DEVICE_HIPRT:BOOL=ON \
       -DWITH_CYCLES_DEVICE_ONEAPI:BOOL=ON \
       -DWITH_CYCLES_ONEAPI_BINARIES:BOOL=ON
 
@@ -499,64 +503,144 @@ echo "release version = %{_version}"
 find %{buildroot} -name "*.py" -perm 0644 -print0 | \
 	xargs -0r grep -l '^#!' | xargs -d'\n' chmod -f 0755;
 # Copy text files to correct place.
-mkdir -p %{buildroot}%{_docdir}/%{name}
-mv -v %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{name}/
+mkdir -p %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}
+mv -v %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}/
 rmdir %{buildroot}%{_datadir}/doc/blender
 # install blender sample.
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0644 %{SOURCE6} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0644 %{SOURCE7} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}/
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}/
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}/
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}/
 install -D -m 0755 %{SOURCE8} %{buildroot}%{_bindir}/
 # GPU and OptiX rendering texts
-install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}/
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{pkg_name}-%{_suffix}/
 
-chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
+chmod -f 0644 %{buildroot}%{_datadir}/%{pkg_name}/%{_version}/scripts/modules/console_python.py
 
-%fdupes %{buildroot}%{_datadir}/%{name}/%{_version}/
-%find_lang %{name} %{?no_lang_C}
+%fdupes %{buildroot}%{_datadir}/%{pkg_name}/%{_version}/
+%find_lang %{pkg_name} %{?no_lang_C}
 rm -rf %{buildroot}%{_datadir}/locale/languages
 
 %ifnarch x86_64
-find %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/ -name "*.h" -print -delete
+find %{buildroot}%{_datadir}/%{pkg_name}/%{_version}/scripts/ -name "*.h" -print -delete
 %endif
 
 # distinguishable menu entry
-sed -i 's/^Name=Blender$/Name=Blender %{_version}/g' %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-# don't package thumbnailer
-# rm %{buildroot}%{_bindir}/%{name}-thumbnailer.py
+perl -p -i -e 's/^Name=Blender$/Name=Blender %{_version}/g ; s/^((Exec|Icon)=blender)/$1-%{_version}/g' \
+  %{buildroot}%{_datadir}/applications/%{pkg_name}.desktop
 
 %if 0%{?sles_version}
-%suse_update_desktop_file -i -n %{name}
+%suse_update_desktop_file -i -n %{pkg_name}
 %else
 # Validate blender.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{pkg_name}.desktop
 %endif
 
-%files lang -f %{name}.lang
-%dir %{_datadir}/%{name}/%{_version}/datafiles/locale
-%dir %{_datadir}/%{name}/%{_version}/datafiles/locale/*
-%dir %{_datadir}/%{name}/%{_version}/datafiles/locale/*/LC_MESSAGES
+mv %{buildroot}%{_bindir}/blender{,-%{_version}}
+mv %{buildroot}%{_bindir}/blender-sample{,-%{_version}}
+mv %{buildroot}%{_bindir}/blender-thumbnailer{,-%{_version}}
+mv %{buildroot}%{_datadir}/applications/blender{,-%{_version}}.desktop
+mv %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/blender{,-%{_version}}.svg
+mv %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/blender-symbolic{,-%{_version}}.svg
+mv %{buildroot}%{_mandir}/man1/blender{,-%{_version}}.1
+mv %{buildroot}%{_datadir}/metainfo/org.blender.Blender{,-%{_version}}.metainfo.xml
+
+%if "%{name}" == "blender" && %{without blender_ua}
+ln %{buildroot}%{_bindir}/blender{-%{_version},}
+ln %{buildroot}%{_bindir}/blender-sample{-%{_version},}
+ln %{buildroot}%{_bindir}/blender-thumbnailer{-%{_version},}
+ln %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/blender{-%{_version},}.svg
+ln %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/blender-symbolic{-%{_version},}.svg
+ln %{buildroot}%{_mandir}/man1/blender{-%{_version},}.1
+ln %{buildroot}%{_datadir}/metainfo/org.blender.Blender{-%{_version},}.metainfo.xml
+%endif
+
+%if %{with blender_ua}
+mkdir -p %{buildroot}/etc/alternatives/
+
+%if %{with self_ghosting}
+ln -s blender                          %{buildroot}/etc/alternatives/blender
+ln -s blender-sample                   %{buildroot}/etc/alternatives/blender-sample
+ln -s blender-thumbnailer              %{buildroot}/etc/alternatives/blender-thumbnailer
+ln -s blender.desktop                  %{buildroot}/etc/alternatives/blender.desktop
+ln -s blender.svg                      %{buildroot}/etc/alternatives/blender.svg
+ln -s blender-symbolic.svg             %{buildroot}/etc/alternatives/blender-symbolic.svg
+ln -s blender.1.gz                     %{buildroot}/etc/alternatives/blender.1.gz
+ln -s org.blender.Blender.metainfo.xml %{buildroot}/etc/alternatives/org.blender.Blender.metainfo.xml
+%endif
+
+ln -s /etc/alternatives/blender                          %{buildroot}%{_bindir}/blender
+ln -s /etc/alternatives/blender-sample                   %{buildroot}%{_bindir}/blender-sample
+ln -s /etc/alternatives/blender-thumbnailer              %{buildroot}%{_bindir}/blender-thumbnailer
+ln -s /etc/alternatives/blender.desktop                  %{buildroot}%{_datadir}/applications/blender.desktop
+ln -s /etc/alternatives/blender.svg                      %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/blender.svg
+ln -s /etc/alternatives/blender-symbolic.svg             %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/blender-symbolic.svg
+ln -s /etc/alternatives/blender.1.gz                     %{buildroot}%{_mandir}/man1/blender.1.gz
+ln -s /etc/alternatives/org.blender.Blender.metainfo.xml %{buildroot}%{_datadir}/metainfo/org.blender.Blender.metainfo.xml
+
+%post
+/usr/sbin/update-alternatives --quiet --install \
+  %{_bindir}/blender                                                     blender                          %{_bindir}/blender-%{_version} %{_suffix} \
+    --slave %{_bindir}/blender-sample                                    blender-sample                   %{_bindir}/blender-sample-%{_version} \
+    --slave %{_bindir}/blender-thumbnailer                               blender-thumbnailer              %{_bindir}/blender-thumbnailer-%{_version} \
+    --slave %{_datadir}/applications/blender.desktop                     blender.desktop                  %{_datadir}/applications/blender-%{_version}.desktop \
+    --slave %{_datadir}/icons/hicolor/scalable/apps/blender.svg          blender.svg                      %{_datadir}/icons/hicolor/scalable/apps/blender-%{_version}.svg \
+    --slave %{_datadir}/icons/hicolor/symbolic/apps/blender-symbolic.svg blender-symbolic.svg             %{_datadir}/icons/hicolor/symbolic/apps/blender-symbolic-%{_version}.svg \
+    --slave %{_mandir}/man1/blender.1.gz                                 blender.1.gz                     %{_mandir}/man1/blender-%{_version}.1.gz \
+    --slave %{_datadir}/metainfo/org.blender.Blender.metainfo.xml        org.blender.Blender.metainfo.xml %{_datadir}/metainfo/org.blender.Blender-%{_version}.metainfo.xml
+
+%postun
+if [ ! -f %{_bindir}/blender-%{_version} ] ; then
+  /usr/sbin/update-alternatives --quiet --remove blender %{_bindir}/blender-%{_version}
+fi
+%endif
+
+%files lang -f %{pkg_name}.lang
+%dir %{_datadir}/%{pkg_name}/%{_version}/datafiles/locale
+%dir %{_datadir}/%{pkg_name}/%{_version}/datafiles/locale/*
+%dir %{_datadir}/%{pkg_name}/%{_version}/datafiles/locale/*/LC_MESSAGES
+%{_datadir}/%{pkg_name}/%{_version}/datafiles/locale/languages
 
 %files
-%{_bindir}/*
-%{_mandir}/man1/%{name}.1.gz
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/%{_version}
-%dir %{_datadir}/%{name}/%{_version}/datafiles
-%exclude %{_datadir}/%{name}/%{_version}/datafiles/locale
-%exclude %{_docdir}/%{name}/geeko_example_scene.*
-%{_datadir}/%{name}/%{_version}/extensions/
-%{_datadir}/%{name}/%{_version}/scripts/
-%{_datadir}/%{name}/%{_version}/datafiles/
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}*.svg
-%{_datadir}/metainfo/org.%{name}.Blender.metainfo.xml
-%doc %{_docdir}/%{name}
+%{_bindir}/*-%{_version}
+%{_mandir}/man1/%{pkg_name}-%{_version}.1.gz
+%dir %{_datadir}/%{pkg_name}/
+%dir %{_datadir}/%{pkg_name}/%{_version}/
+%dir %{_datadir}/%{pkg_name}/%{_version}/datafiles/
+%{_datadir}/%{pkg_name}/%{_version}/extensions/
+%{_datadir}/%{pkg_name}/%{_version}/scripts/
+%{_datadir}/%{pkg_name}/%{_version}/datafiles/assets/
+%{_datadir}/%{pkg_name}/%{_version}/datafiles/colormanagement/
+%{_datadir}/%{pkg_name}/%{_version}/datafiles/fonts/
+%{_datadir}/%{pkg_name}/%{_version}/datafiles/icons/
+%{_datadir}/%{pkg_name}/%{_version}/datafiles/studiolights/
+%{_datadir}/applications/%{pkg_name}-%{_version}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{pkg_name}*-%{_version}.svg
+%{_datadir}/metainfo/org.%{pkg_name}.Blender-%{_version}.metainfo.xml
+%doc %{_docdir}/%{pkg_name}-%{_suffix}
+%exclude %{_docdir}/%{pkg_name}-%{_suffix}/geeko_example_scene.*
+%if %{with blender_ua}
+%ghost /etc/alternatives/blender
+%ghost /etc/alternatives/blender-sample
+%ghost /etc/alternatives/blender-thumbnailer
+%ghost /etc/alternatives/blender.desktop
+%ghost /etc/alternatives/blender.svg
+%ghost /etc/alternatives/blender-symbolic.svg
+%ghost /etc/alternatives/blender.1.gz
+%ghost /etc/alternatives/org.blender.Blender.metainfo.xml
+%endif
+%if %{with blender_ua} || "%{name}" == "blender"
+%{_bindir}/blender
+%{_bindir}/blender-sample
+%{_bindir}/blender-thumbnailer
+%{_datadir}/icons/hicolor/scalable/apps/blender.svg
+%{_datadir}/icons/hicolor/symbolic/apps/blender-symbolic.svg
+%{_mandir}/man1/blender.1.gz
+%{_datadir}/metainfo/org.blender.Blender.metainfo.xml
+%endif
 
 %files demo
-%doc %{_docdir}/%{name}/geeko_example_scene.*
+%doc %{_docdir}/%{pkg_name}-%{_suffix}/geeko_example_scene.*
 
 %changelog
