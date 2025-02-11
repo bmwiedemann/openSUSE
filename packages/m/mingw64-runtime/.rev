@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1124755</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80f39bd6df96170d8aa4a15cbe0c3ab8</srcmd5>
+    <version>12.0.0</version>
+    <time>1739305448</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 12
+[synchronization between mingw32/64-* causes changelog edits]</comment>
+    <requestid>1244891</requestid>
+  </revision>
 </revisionlist>

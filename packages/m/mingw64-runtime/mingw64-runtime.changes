@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 28 10:45:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12
+  * C++ overloads for _strdate_s and _strtime_s, _makepath_s,
+    wcsncat_s.
+  * Updated wine header imports.
+  * Many other new win32 APIs.
+  * UCRT configurations now primarily use (faster) math functions
+    from UCRT, rather than libmingwex.
+
+-------------------------------------------------------------------
 Fri Nov  3 12:33:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.0.1
@@ -13,6 +24,11 @@ Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
   * New msvcrt10, 20, 40, 70 and 71 import libraries.
   * Drop x86_64 64-bit crtdll.dll
   * Updated wine imports
+
+-------------------------------------------------------------------
+Tue Sep 21 08:39:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Silence rpmlint2: devel-file-in-non-devel-package
 
 -------------------------------------------------------------------
 Sat Jul  3 10:32:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
@@ -65,24 +81,24 @@ Wed Oct 17 18:50:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Nov 21 11:38:40 UTC 2017 - idonmez@suse.com
 
-- Update to version 5.0.3 
+- Update to version 5.0.3
 - Drop libmsvcrt.a-Added-_create_locale-and-_free_locale-ent.diff,
   fixed upstream.
 
 -------------------------------------------------------------------
 Tue Apr 18 14:12:37 UTC 2017 - idonmez@suse.com
 
-- Add libmsvcrt.a-Added-_create_locale-and-_free_locale-ent.diff  
+- Add libmsvcrt.a-Added-_create_locale-and-_free_locale-ent.diff
 
 -------------------------------------------------------------------
 Tue Mar 28 11:41:07 UTC 2017 - idonmez@suse.com
 
-- Update to version 5.0.2 
+- Update to version 5.0.2
 
 -------------------------------------------------------------------
 Sat Jan 14 20:48:37 UTC 2017 - idonmez@suse.com
 
-- Update to version 5.0.1 
+- Update to version 5.0.1
 
 -------------------------------------------------------------------
 Wed Mar 23 21:07:00 UTC 2016 - jengelh@inai.de
