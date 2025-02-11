@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 11 10:31:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.1
+  * Change attribute name from markdown to md in the Plugin class
+  * Improve ruby plugin
+  * Fix render_toc_url method for rendering empty iterable
+
+-------------------------------------------------------------------
 Wed Jan  8 15:56:07 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 3.1.0:

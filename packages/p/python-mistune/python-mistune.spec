@@ -19,7 +19,7 @@
 %define modname mistune
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause
