@@ -42,4 +42,12 @@ Needed for sr#1161399</comment>
   * Unit tests are now compatible with Python 3.12.</comment>
     <requestid>1218842</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9760964467bfb1d8d3ab48377f50d754</srcmd5>
+    <version>1.4.0</version>
+    <time>1739305925</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1245142</requestid>
+  </revision>
 </revisionlist>
