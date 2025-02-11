@@ -405,4 +405,12 @@
     <comment>Update to 4.3</comment>
     <requestid>1194577</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>144dee90575a7c79a7de1da12da9b6f2</srcmd5>
+    <version>4.3</version>
+    <time>1739305417</time>
+    <user>anag+factory</user>
+    <comment>Fix ppc64le build</comment>
+    <requestid>1244874</requestid>
+  </revision>
 </revisionlist>

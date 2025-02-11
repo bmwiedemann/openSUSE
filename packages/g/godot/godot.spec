@@ -1,7 +1,7 @@
 #
 # spec file for package godot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -93,11 +93,11 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 # Using bundled freetype2 throws build errors, if
 #   we don't use bundled libpng and zlib as well.
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libbrotlicommon)
-BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig(graphite2)
 BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libbrotlicommon)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(miniupnpc)
@@ -361,7 +361,11 @@ suffix=rv64
 %ifarch aarch64
 suffix=arm64
 %else
+%ifarch ppc64 ppc64le
+suffix=ppc64
+%else
 suffix=%{__isa_name}_%{__isa_bits}
+%endif
 %endif
 %endif
 
