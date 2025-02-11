@@ -1,0 +1,178 @@
+diff --git a/lib/dbtexmf/core/dbtex.py b/lib/dbtexmf/core/dbtex.py
+index b3ec732..adac781 100644
+--- a/lib/dbtexmf/core/dbtex.py
++++ b/lib/dbtexmf/core/dbtex.py
+@@ -15,7 +15,7 @@ try:
+ except ImportError:
+     from urllib.request import pathname2url
+ import glob
+-import imp
++import importlib
+ from optparse import OptionParser
+ from io import open
+ 
+@@ -540,15 +540,14 @@ class DbTexCommand:
+ 
+     def load_plugin(self, pathname):
+         moddir, modname = os.path.split(pathname)
+-        try:
+-            filemod, path, descr = imp.find_module(modname, [moddir])
+-        except ImportError:
+-            try:
+-                filemod, path, descr = imp.find_module(modname)
+-            except ImportError:
+-                failed_exit("Error: '%s' module not found" % modname)
+-        mod = imp.load_module(modname, filemod, path, descr)
+-        filemod.close()
++        spec = importlib.machinery.PathFinder.find_spec(modname, [moddir])
++        if not spec:
++            spec = importlib.machinery.PathFinder.find_spec(modname)
++        if not spec:
++            failed_exit("Error: '%s' module not found" % modname)
++        mod = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(mod)
++        sys.modules[modname] = mod
+         return mod
+ 
+     def run_setup(self, options):
+diff --git a/lib/dbtexmf/dblatex/grubber/plugins.py b/lib/dbtexmf/dblatex/grubber/plugins.py
+index 9e333c9..047f2bb 100644
+--- a/lib/dbtexmf/dblatex/grubber/plugins.py
++++ b/lib/dbtexmf/dblatex/grubber/plugins.py
+@@ -4,7 +4,7 @@
+ Mechanisms to dynamically load extra modules to help the LaTeX compilation.
+ All the modules must be derived from the TexModule class.
+ """
+-import imp
++import importlib
+ 
+ from os.path import *
+ from dbtexmf.dblatex.grubber.msg import _, msg
+@@ -108,17 +108,16 @@ class Plugins (object):
+         """
+         if name in self.modules:
+             return 2
+-        try:
+-            file, path, descr = imp.find_module(name, [""])
+-        except ImportError:
++        spec = importlib.machinery.PathFinder.find_spec(name, [""])
++        if not spec:
+             if not self.path:
+                 return 0
+-            try:
+-                file, path, descr = imp.find_module(name, self.path)
+-            except ImportError:
+-                return 0
+-        module = imp.load_module(name, file, path, descr)
+-        file.close()
++            spec = importlib.machinery.PathFinder.find_spec(name, self.path)
++        if not spec:
++            return 0
++        module = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(module)
++        sys.modules[name] = module
+         self.modules[name] = module
+         return 1
+ 
+diff --git a/lib/dbtexmf/xslt/xslt.py b/lib/dbtexmf/xslt/xslt.py
+index 0350e30..57c99a2 100644
+--- a/lib/dbtexmf/xslt/xslt.py
++++ b/lib/dbtexmf/xslt/xslt.py
+@@ -2,20 +2,21 @@
+ # Very simple plugin loader for Xslt classes
+ #
+ import os
+-import imp
++import importlib
+ import glob
++import sys
+ 
+ def load(modname):
+-    try:
+-        file, path, descr = imp.find_module(modname, [""])
+-    except ImportError:
+-        try:
+-            file, path, descr = imp.find_module(modname,
+-                                                [os.path.dirname(__file__)])
+-        except ImportError:
+-            raise ValueError("Xslt '%s' not found" % modname)
+-    mod = imp.load_module(modname, file, path, descr)
+-    file.close()
++    spec = importlib.machinery.PathFinder.find_spec(modname, [""])
++    if not spec:
++        spec = importlib.machinery.PathFinder.find_spec(modname,
++                                                        [os.path.dirname(__file__)])
++    if not spec:
++        raise ValueError("Xslt '%s' not found" % modname)
++
++    mod = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(mod)
++    sys.modules[modname] = mod
+     o = mod.Xslt()
+     return o
+ 
+
+
+From f5ce76603178e5465a744cb4feed4686489bebb9 Mon Sep 17 00:00:00 2001
+Message-ID: <f5ce76603178e5465a744cb4feed4686489bebb9.1688648379.git.github@grubix.eu>
+From: Michael J Gruber <github@grubix.eu>
+Date: Thu, 6 Jul 2023 14:58:03 +0200
+Subject: [PATCH] Python 3.12 compatibility: adjust submodule imports
+
+importlib imports behave differently in py 3.11 and py 3.12: py 3.12
+requires explicit imports of the submodules.
+
+While fixing this, reduce the imports to the used submodules. Currently,
+the base is still imported automatically.
+---
+ lib/dbtexmf/core/dbtex.py              | 3 ++-
+ lib/dbtexmf/dblatex/grubber/plugins.py | 3 ++-
+ lib/dbtexmf/xslt/xslt.py               | 3 ++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/lib/dbtexmf/core/dbtex.py b/lib/dbtexmf/core/dbtex.py
+index adac781..4cf9591 100644
+--- a/lib/dbtexmf/core/dbtex.py
++++ b/lib/dbtexmf/core/dbtex.py
+@@ -15,7 +15,8 @@ try:
+ except ImportError:
+     from urllib.request import pathname2url
+ import glob
+-import importlib
++import importlib.machinery
++import importlib.util
+ from optparse import OptionParser
+ from io import open
+ 
+diff --git a/lib/dbtexmf/dblatex/grubber/plugins.py b/lib/dbtexmf/dblatex/grubber/plugins.py
+index 047f2bb..6b4ecb4 100644
+--- a/lib/dbtexmf/dblatex/grubber/plugins.py
++++ b/lib/dbtexmf/dblatex/grubber/plugins.py
+@@ -4,7 +4,8 @@
+ Mechanisms to dynamically load extra modules to help the LaTeX compilation.
+ All the modules must be derived from the TexModule class.
+ """
+-import importlib
++import importlib.machinery
++import importlib.util
+ 
+ from os.path import *
+ from dbtexmf.dblatex.grubber.msg import _, msg
+diff --git a/lib/dbtexmf/xslt/xslt.py b/lib/dbtexmf/xslt/xslt.py
+index 57c99a2..7cc2038 100644
+--- a/lib/dbtexmf/xslt/xslt.py
++++ b/lib/dbtexmf/xslt/xslt.py
+@@ -2,7 +2,8 @@
+ # Very simple plugin loader for Xslt classes
+ #
+ import os
+-import importlib
++import importlib.machinery
++import importlib.util
+ import glob
+ import sys
+ 
+-- 
+2.41.0.411.gd9071d4297
+
+

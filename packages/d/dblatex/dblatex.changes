@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  5 13:11:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build against Python 3.13:
+  + Add python3-setuptools BuildRequires.
+  + Add dblatex-replace-imp.patch: replace imp by importlib.
+
+-------------------------------------------------------------------
 Fri Oct  1 10:04:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix replacement of "env python" to python3 in dblatex' main

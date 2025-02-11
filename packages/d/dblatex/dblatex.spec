@@ -1,7 +1,7 @@
 #
 # spec file for package dblatex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,12 +37,14 @@ Patch1:         dblatex-0.3.11-replace-inkscape-by-rsvg.patch
 # Filed as https://sourceforge.net/p/dblatex/patches/11
 # No need to use complicated internal functions, when shutil.which exists
 Patch2:         dblatex-0.3.11-which-shutil.patch
+Patch3:         dblatex-replace-imp.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  grep
 BuildRequires:  libxslt-tools
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
+BuildRequires:  python3-setuptools
 BuildRequires:  rsvg-convert
 BuildRequires:  texlive-epstopdf
 BuildRequires:  texlive-latex
