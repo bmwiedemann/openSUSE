@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:43:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.7
+  * [pre-commit.ci] pre-commit autoupdate
+  * Upgrade asottile/workflows
+  * Add `.templ` extension
+  * Add uv to interpreters list
+
+-------------------------------------------------------------------
+Tue Feb  4 12:20:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.6
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add '.asm' file extension as 'asm' filetype
+- from version 2.6.5
+  * feat: identify .psm1 and .psd1 files as powershell
+- from version 2.6.4
+  * feat: identify gleam files
+  * feat: identify bz3 files as bzip3 archives
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add Tiltfile support
+
+-------------------------------------------------------------------
 Mon Dec  9 08:24:58 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.3
