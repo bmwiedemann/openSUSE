@@ -1,7 +1,7 @@
 #
 # spec file for package OpenShadingLanguage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ BuildRequires:  partio-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
-BuildRequires:  cmake(OpenImageIO) >= 2.0
+BuildRequires:  (cmake(OpenImageIO) >= 2.0 with cmake(OpenImageIO) < 3)
 BuildRequires:  cmake(pugixml)
 Requires:       %{name}-common-headers = %{version}
 Recommends:     %{name}-doc = %{version}

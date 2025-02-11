@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  1 22:02:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Also lock the cmake(OpenImageIO) to the version smaller than 3
+
+-------------------------------------------------------------------
 Mon Nov 18 15:40:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Allow newer LLVM. it is no longer restricted to < 15.9
