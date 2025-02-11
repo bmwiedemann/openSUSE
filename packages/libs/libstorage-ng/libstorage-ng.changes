@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Feb 10 17:01:46 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1014
+- protect vg and lv name with two dashes
+- 4.5.232
+
+--------------------------------------------------------------------
 Thu Feb 6 16:40:04 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1013
