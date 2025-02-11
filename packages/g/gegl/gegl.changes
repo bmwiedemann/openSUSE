@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 10 16:48:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.4.54:
+  - Ops:
+    - bump_map: fix typo in property nick
+    - noise_spread: better performance with no-op values
+    - negative_darkroom: more presets, better performance
+    - styles: fix regression of opacirt sliders
+
+-------------------------------------------------------------------
 Tue Jan  7 12:24:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - use https for the url
