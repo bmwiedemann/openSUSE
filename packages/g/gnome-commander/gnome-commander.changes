@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 09:19:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.2:
+  + Segfault when using %D as a format qualifier in the date string
+  + Segfault when unmounting a file system externally while
+    visiting it at the same time
+  + Fix storing the column widths in the file panes
+  + Fix for crash related to plugins
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug  5 06:58:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.18.1:
