@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <service>
   <short>SUSE YaST Cluster</short>
-  <description>This allows you to open various ports related to SUSE YaST Cluster module. Ports are opened for pacemaker-remote, booth, mgmtd, hawk, dlm, csync2 and corosync-qnetd.</description>
-  <port protocol="tcp" port="2224"/>
-  <port protocol="tcp" port="3121"/>
-  <port protocol="tcp" port="5403"/>
-  <port protocol="udp" port="5404"/>
-  <port protocol="udp" port="5405"/>
-  <port protocol="tcp" port="5560"/>
-  <port protocol="tcp" port="7630"/>
-  <port protocol="tcp" port="9929"/>
+  <description>This allows you to open various ports related to SUSE YaST Cluster module. Ports are opened for pacemaker-remote, booth, hawk, dlm, csync2 and corosync-qnetd.</description>
+  <port protocol="tcp" port="3121"/> <!-- pacemaker-remote -->
+  <port protocol="tcp" port="5403"/> <!-- corosync-qnetd -->
+  <port protocol="udp" port="5404"/> <!-- corosync -->
+  <port protocol="udp" port="5405"/> <!-- corosync -->
+  <port protocol="tcp" port="7630"/> <!-- hawk -->
+  <port protocol="tcp" port="9929"/> <!-- booth -->
   <port protocol="udp" port="9929"/>
-  <port protocol="tcp" port="21064"/>
-  <port protocol="tcp" port="30865"/>
+  <port protocol="tcp" port="21064"/> <!-- dlm -->
+  <port protocol="sctp" port="21064"/>
+  <port protocol="tcp" port="30865"/> <!-- csync2 -->
 </service>
 
