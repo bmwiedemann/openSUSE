@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:43:57 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.2.7
+  * MariaDB include paths for Win by @CristiFati in #749
+  * support opentelemetry-instrumentation by @methane in #753
+
+-------------------------------------------------------------------
 Mon Jan 20 13:20:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - sphinx_rtd_theme is now an optional dependency for Sphinx
