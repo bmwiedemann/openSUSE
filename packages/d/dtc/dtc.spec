@@ -18,7 +18,7 @@
 
 %define         sover 1
 Name:           dtc
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
@@ -28,6 +28,8 @@ Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{ver
 Source20:       baselibs.conf
 # From http://gibson.dropbear.id.au/
 Source21:       dtc.keyring
+# PATCH-FIX-UPSTREAM - https://github.com/dgibson/dtc/commit/ce1d858
+Patch1:         ce1d858.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel
@@ -59,7 +61,7 @@ Obsoletes:      libfdt1-devel < %{version}-%{release}
 This package provides development files for libfdt
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build EXTRA_CFLAGS="%{optflags} -pie" LDFLAGS="%{optflags}"
@@ -72,7 +74,6 @@ rm -f %{buildroot}/%{_libdir}/*.a
 
 %check
 export EXTRA_CFLAGS="%{optflags}"
-export CC="gcc -Wa,--noexecstack"
 %make_build check
 
 %files

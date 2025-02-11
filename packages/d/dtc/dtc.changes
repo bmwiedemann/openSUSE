@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  7 15:24:23 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.7.2:
+  * pylibfdt: Don't emit warnings from swig generate C code
+  * fdtoverlay: provide better error message for missing /__symbols__
+  * pylibfdt/libfdt.i: Use SWIG_AppendOutput
+  * Escape spaces in depfile with backslashes.
+  * libfdt.h: whitespace consistency fixups
+  * libfdt.h: typo and consistency fixes
+- Revert previous commit and use upstream fix for glibc 2.41:
+  * ce1d858.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 12:27:13 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Mark assembler output as noexecstack
