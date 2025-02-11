@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 11 16:00:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable CGO on riscv64
+
+-------------------------------------------------------------------
 Fri Jan 31 05:40:19 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.1.7:
