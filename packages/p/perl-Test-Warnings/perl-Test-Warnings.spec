@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Warnings
 Name:           perl-Test-Warnings
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
-# 0.037 -> normalize -> 0.37.0
-%define cpan_version 0.037
+# 0.038 -> normalize -> 0.38.0
+%define cpan_version 0.038
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Test for warnings and the lack of them
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -65,7 +65,7 @@ It can also be used as a replacement for Test::Warn, if you wish to test
 the content of expected warnings; read on to find out how.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

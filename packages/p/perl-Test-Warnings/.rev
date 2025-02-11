@@ -186,4 +186,12 @@
             - Test2::Warnings added as a simple wrapper (for now) (forwarded request 1236704 from tinita)</comment>
     <requestid>1236815</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e5781d8a0802b6b1b75360ebe2d5f268</srcmd5>
+    <version>0.38.0</version>
+    <time>1739305325</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244957</requestid>
+  </revision>
 </revisionlist>

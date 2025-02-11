@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  2 05:29:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.38.0 (0.038)
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.038     2025-02-02 00:27:04Z
+            - no longer swap out done_testing method if :no_end_test is
+              configured
+
+-------------------------------------------------------------------
 Mon Jan  6 05:34:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.37.0 (0.037)
