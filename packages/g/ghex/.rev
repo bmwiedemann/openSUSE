@@ -583,4 +583,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1224842</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>26a4819ebb65753d86f39866b68968d4</srcmd5>
+    <version>46.2</version>
+    <time>1739305346</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244818</requestid>
+  </revision>
 </revisionlist>

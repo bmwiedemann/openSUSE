@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb  8 08:56:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.2:
+  + This release contains a critical stability bugfix for users of
+    some runtimes with usage of the Copy Special function.
+  + build: Don't include gtk-hex-paste-data.c symbols in both lib
+    and binary.
+
+-------------------------------------------------------------------
 Fri Nov 15 07:20:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.1:
