@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 10 18:18:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.6.2:
+  * Add missing levels for IC746/PRO RIG_LEVEL_RFPOWER_METER,
+    RIG_LEVEL_RFPOWER_METER_WATTS,RIG_LEVEL_SWR,RIG_LEVEL_ALC
+  * Fix IC905 for gpredict
+  * Fix potential segfault on QMX 
+  * Fix pmr171
+
+-------------------------------------------------------------------
 Wed Jan 22 16:28:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.6.1:
