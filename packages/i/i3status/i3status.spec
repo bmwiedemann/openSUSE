@@ -1,7 +1,7 @@
 #
 # spec file for package i3status
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Thomas Pfeiffer <email@pfeiffer.pw>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,19 +18,19 @@
 
 
 Name:           i3status
-Version:        2.13
+Version:        2.15
 Release:        0
 Summary:        I3 Status Bar
 License:        BSD-3-Clause
 Group:          System/Monitoring
 URL:            https://i3wm.org/i3status/
-Source0:        %{url}/%{name}-%{version}.tar.bz2
-Source1:        %{url}/%{name}-%{version}.tar.bz2.asc
+Source0:        %{url}/%{name}-%{version}.tar.xz
+Source1:        %{url}/%{name}-%{version}.tar.xz.asc
 # Michael Stapelberg's GPG key:
 # 424E14D703E7C6D43D9D6F364E7160ED4AC8EE1D
 Source2:        %{name}.keyring
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libconfuse)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
@@ -62,16 +62,11 @@ for f in contrib/*pl; do
 done
 
 %build
-autoreconf -fi
-# out of source builds appear mandatory
-mkdir build && pushd build
-ln -s ../configure configure
-%configure
-%make_build
-popd
+%meson
+%meson_build
 
 %install
-%make_install -C build
+%meson_install
 
 %files
 %license LICENSE

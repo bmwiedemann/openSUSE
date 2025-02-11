@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Feb 10 19:55:16 UTC 2025 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to version 2.15:
+  * man: document --run-once flag
+  * meson: replace bashisms
+  * update to clang-format-12
+  * add missing newlines to some error messages
+  * make maybe_escape_markup() memory-safe
+  * fix segfault when read_file lacks a path
+  * ethernet: printer faster speeds in Gbit/s, e.g. 2.5 Gbit/s
+  * wireless: correctly display bitrates > 2147483647 bps
+  * ipv6: add support for %iface placeholder
+  * battery: add status idle (e.g. configured to stop charging)
+  * battery: increase maximum string size to make space for markup
+  * *BSD: fix build, use statvfs
+  * *BSD: use f_bsize for disk_info
+  * OpenBSD: add CPU spin support
+  * OpenBSD: properly print wireless signal strength 
+
+-------------------------------------------------------------------
 Mon Sep  9 08:50:37 UTC 2019 - Dan Čermák <dcermak@suse.com>
 
 - update to version 2.13:
