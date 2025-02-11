@@ -1,7 +1,7 @@
 #
 # spec file for package python-anyio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anyio
-Version:        4.6.2.post1
+Version:        4.8.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module sniffio >= 1.1}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
@@ -41,13 +41,14 @@ BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
 BuildRequires:  %{python_module trio >= 0.26.1}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module uvloop}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
 Requires:       python-sniffio >= 1.1
+Requires:       python-typing_extensions
 %if 0%{?python_version_nodots} < 311
 Requires:       python-exceptiongroup
-Requires:       python-typing_extensions
 %endif
 Suggests:       python-trio >= 0.26.1
 BuildArch:      noarch

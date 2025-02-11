@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Feb 10 09:17:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.8.0:
+  * Added experimental support for running functions in 
+    subinterpreters on Python 3.13 and later
+  * Added support for the copy(), copy_into(), move() and move_into() 
+    methods in anyio.Path, available in Python 3.14
+  * Changed TaskGroup on asyncio to always spawn tasks non-eagerly, 
+    even if using a task factory created 
+    via asyncio.create_eager_task_factory(), to preserve expected 
+    Trio-like task scheduling semantics (PR by @agronholm and @graingert)
+  * Configure SO_RCVBUF, SO_SNDBUF and TCP_NODELAY on the selector 
+    thread waker socket pair (this should improve the performance of 
+    wait_readable() and wait_writable() when using the ProactorEventLoop) 
+    (#836; PR by @graingert)
+  * Fixed AssertionError when using nest-asyncio (#840)
+  * Fixed return type annotation of various context managers' 
+    __exit__ method (#847; PR by @Enegg)
+- from 4.7.0:
+  * Updated TaskGroup to work with asyncio's eager task factories (#764)
+  * Added the wait_readable() and wait_writable() functions which will 
+    accept an object with a .fileno() method or an integer handle, and 
+    deprecated their now obsolete versions (wait_socket_readable() and 
+    wait_socket_writable()) (PR by @davidbrochart)
+  * Changed EventAdapter (an Event with no bound async backend) to allow 
+    set() to work even before an async backend is bound to it (#819)
+  * Added support for wait_readable() and wait_writable() on 
+    ProactorEventLoop (used on asyncio + Windows by default)
+  * Fixed a misleading ValueError in the context of DNS failures 
+    (#815; PR by @graingert)
+  * Fixed the return type annotations of readinto() and readinto1() 
+    methods in the anyio.AsyncFile class (#825)
+  * Fixed TaskInfo.has_pending_cancellation() on asyncio returning 
+    false positives in cleanup code on Python >= 3.11 
+    (#832; PR by @gschaffner)
+  * Fixed cancelled cancel scopes on asyncio calling 
+    asyncio.Task.uncancel when propagating a CancelledError on exit 
+    to a cancelled parent scope (#790; PR by @gschaffner)
+
+-------------------------------------------------------------------
 Tue Oct 22 16:00:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.2:
