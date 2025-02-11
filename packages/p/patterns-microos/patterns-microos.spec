@@ -772,6 +772,8 @@ Requires:       kernel-default-base
 %endif
 %ifarch %ix86 x86_64 %x86_64
 Requires:       grub2-i386-efi
+Requires:       grub2-i386-efi-bls
+Requires:       grub2-x86_64-efi-bls
 %endif
 Provides:       pattern() = microos_alt_onlyDVD
 Provides:       pattern-icon() = pattern-generic

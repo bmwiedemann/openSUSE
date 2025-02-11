@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 11 10:26:26 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add grub2-bls to the DVD
+
+-------------------------------------------------------------------
 Fri Jan 24 10:30:33 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Drop kwrited, only worked with utmp

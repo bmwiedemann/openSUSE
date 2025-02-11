@@ -888,4 +888,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
 - Add grub2-i386-efi to the DVD (boo#1226727) (forwarded request 1240136 from favogt)</comment>
     <requestid>1240137</requestid>
   </revision>
+  <revision rev="95" vrev="95">
+    <srcmd5>2c1ca23a387cf8790c1c1421fd7f387f</srcmd5>
+    <version>5.0</version>
+    <time>1739305335</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245087</requestid>
+  </revision>
 </revisionlist>
