@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-build-cmake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-py-build-cmake
-Version:        0.1.8
+Version:        0.4.1
 Release:        0
 Summary:        Modern, PEP 517 compliant build backend for creating Python packages with
 License:        MIT
@@ -26,19 +26,23 @@ Source:         https://github.com/tttapa/py-build-cmake/archive/refs/tags/%{ver
 BuildRequires:  %{python_module click >= 8.1.3   with %python-click < 8.2}
 BuildRequires:  %{python_module distlib >= 0.3.5 with %python-distlib < 0.4}
 BuildRequires:  %{python_module flit-core >= 3.7 with %python-flit-core < 4}
+BuildRequires:  %{python_module lark}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyproject-metadata}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       cmake
 Requires:       (python-click >= 8.1.3 with python-click < 8.2)
 Requires:       (python-distlib >= 0.3.5 with python-distlib < 0.4)
 Requires:       (python-flit-core >= 3.7 with python-flit-core < 4)
-Requires:       cmake
 %if 0%{?python_version_nodots} < 311
 Requires:       (python-tomli >= 1.2.3 with python-tomli < 3)
 %endif
+Requires:       python-lark
+Requires:       python-pyproject-metadata
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

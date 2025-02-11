@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:32:04 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.1:
+  * Produce a warning when MACOSX_DEPLOYMENT_TARGET is set in the 
+    py-build-cmake config (#43)
+  * Support appending and prepending to environment variables
+- Update to 0.4.0:
+  * MACOSX_DEPLOYMENT_TARGET support:
+    Its value is now used to determine the Wheel platform tag on macOS, 
+    and the target version is passed on to CMake. 
+  * Improved documentation.
+
+-------------------------------------------------------------------
 Mon Dec 25 19:11:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.1.8
