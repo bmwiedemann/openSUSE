@@ -1,11 +1,22 @@
 -------------------------------------------------------------------
+Fri Feb  7 18:41:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.6 (boo#1236946):
+  + Fix a crash when enabling Skia CPU rendering.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2025-24143, CVE-2025-24150, CVE-2025-24158,
+    CVE-2024-24162.
+- Drop 63f7badbada070ebaadd318b2801818ecf7e7ea0.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Fri Dec 27 16:35:15 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.46.5 (boo#1234851):
   + Fix the build with GBM and release logs disabled.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2024-54479, CVE-2024-54502, CVE-2024-54505,
-    CVE-2024-54508.
+    CVE-2024-54508, CVE-2024-54543.
 
 -------------------------------------------------------------------
 Wed Nov 27 21:34:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
@@ -108,7 +119,7 @@ Tue Sep 17 19:04:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
   + Undeprecate console messages API and make it available in 6.0
     API.
   + Security fixes: CVE-2024-40866, CVE-2024-44187, CVE-2024-44185,
-    CVE-2024-54508, CVE-2024-54534.
+    CVE-2024-54534, CVE-2024-27856.
 
 -------------------------------------------------------------------
 Wed Sep 11 16:53:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
@@ -274,7 +285,7 @@ Sat Mar 16 09:36:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
     GTK4.
 + Security fixes: CVE-2024-23252, CVE-2024-23254, CVE-2024-23263,
   CVE-2024-23280, CVE-2024-23284, CVE-2023-42950, CVE-2023-42956,
-  CVE-2023-42843.
+  CVE-2023-42843, CVE-2024-54658.
 - Rebase webkit2gtk3-disable-dmabuf-nvidia.patch.
 
 -------------------------------------------------------------------

@@ -79,7 +79,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.46.5
+Version:        2.46.6
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -92,8 +92,6 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
-# PATCH-FIX-UPSTREAM 63f7badbada070ebaadd318b2801818ecf7e7ea0.patch -- Support ICU 76.1 build
-Patch1:         https://github.com/WebKit/WebKit/commit/63f7badbada070ebaadd318b2801818ecf7e7ea0.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
