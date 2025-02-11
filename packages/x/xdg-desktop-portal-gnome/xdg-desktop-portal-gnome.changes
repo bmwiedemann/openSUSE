@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 10:08:32 UTC 2025 - Tim K <taaem@mailbox.org>
+
+- Add notification-Add-missing-GUnixFDList-argument.patch
+  * Fix crash on notification (bsc#1236435)
+    glgo#GNOME/xdg-desktop-portal-gnome#157
+    glgo#GNOME/xdg-desktop-portal-gnome!210
+
+-------------------------------------------------------------------
 Mon Jan 20 13:09:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:

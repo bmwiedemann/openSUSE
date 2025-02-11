@@ -1,0 +1,26 @@
+From 75b7348bb722ed63400663611d316decdb2b6b0d Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Mon, 3 Feb 2025 10:00:05 -0300
+Subject: notification: Add missing GUnixFDList argument
+
+This currently crashes, since the GUnixFDList argument is interpreted
+as the application id and it's obviously invalid.
+---
+ src/notification.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/notification.c b/src/notification.c
+index 139056f..20bcc3f 100644
+--- a/src/notification.c
++++ b/src/notification.c
+@@ -57,6 +57,7 @@ app_path_for_id (const gchar *app_id)
+ static gboolean
+ handle_add_notification (XdpImplNotification *object,
+                          GDBusMethodInvocation *invocation,
++                         GUnixFDList *fds,
+                          const gchar *arg_app_id,
+                          const gchar *arg_id,
+                          GVariant *arg_notification)
+-- 
+2.48.1
+

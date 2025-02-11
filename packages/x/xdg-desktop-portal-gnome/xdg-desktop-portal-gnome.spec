@@ -25,6 +25,8 @@ URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
 Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM notification-null-icon-pointer.patch -- Fix build with xdg-desktop-portal >= 1.19.1
 Patch1:         notification-null-icon-pointer.patch
+# PATCH-FIX-UPSTREAM notification-Add-missing-GUnixFDList-argument.patch -- Fix build with xdg-desktop-portal >= 1.19.1
+Patch2:         notification-Add-missing-GUnixFDList-argument.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig

@@ -190,4 +190,16 @@ New stable rel</comment>
     <comment>New release</comment>
     <requestid>1239559</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0a4d5323f7e25f9fa97b81f11853aab0</srcmd5>
+    <version>47.2</version>
+    <time>1739305293</time>
+    <user>anag+factory</user>
+    <comment>- Add notification-Add-missing-GUnixFDList-argument.patch
+  * Fix crash on notification (bsc#1236435)
+    glgo#GNOME/xdg-desktop-portal-gnome#157
+    glgo#GNOME/xdg-desktop-portal-gnome!210
+</comment>
+    <requestid>1244834</requestid>
+  </revision>
 </revisionlist>
