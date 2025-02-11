@@ -12,7 +12,7 @@ patches:
 preamble: |-
   BuildRequires:  gcc-c++
   %if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
-  BuildRequires:  wxWidgets-3_0-nostl-devel
+  BuildRequires:  wxWidgets-3_2-nostl-devel
   %else
   BuildRequires:  wxWidgets-ansi-devel
   %endif
