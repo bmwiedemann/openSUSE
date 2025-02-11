@@ -301,4 +301,16 @@
   https://github.com/timescale/timescaledb/releases/tag/2.17.2</comment>
     <requestid>1238462</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>43c026ad9e024b24fd41217ba7d476ab</srcmd5>
+    <version>2.18.1</version>
+    <time>1739305403</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.18.1
+  https://github.com/timescale/timescaledb/releases/tag/2.18.1
+
+- Update to version 2.18.0
+  https://github.com/timescale/timescaledb/releases/tag/2.18.0</comment>
+    <requestid>1244847</requestid>
+  </revision>
 </revisionlist>
