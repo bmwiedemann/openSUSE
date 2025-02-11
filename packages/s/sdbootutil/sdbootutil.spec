@@ -17,7 +17,7 @@
 
 
 Name:           sdbootutil
-Version:        1+git20250130.2bcbf46
+Version:        1+git20250210.45458c4
 Release:        0
 Summary:        bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -28,6 +28,7 @@ Requires:       dialog
 Requires:       dracut-pcr-signature
 Requires:       efibootmgr
 Requires:       jq
+Requires:       keyutils
 Requires:       pcr-oracle
 Requires:       qrencode
 Requires:       sed
