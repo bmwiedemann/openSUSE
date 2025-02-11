@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 18:26:22 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1739204074.6765272:
+  * t: Add reason for undefined Pod::Coverage result
+  * Avoid duplicating common rsync arguments in svirt code
+  * Show download statistics in svirt backend when downloading assets
+  * Use distinct and lower timeout for rsync call in svirt backend
+  * Extend timeout for rsync commands done by the svirt backend to 15 min
+  * Add dependency on Feature::Compat::Try
+
+-------------------------------------------------------------------
 Mon Feb 10 04:23:41 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1739096614.78d097a:
