@@ -665,4 +665,12 @@
   warning: File listed twice: /usr/src/kernel-modules/nvidia-570.86.16-default</comment>
     <requestid>1242857</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>8ecb7fe29e4f33405c624dfd1224c45c</srcmd5>
+    <version>570.86.16</version>
+    <time>1739305794</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1245052</requestid>
+  </revision>
 </revisionlist>

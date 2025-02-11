@@ -216,7 +216,7 @@ done
 export BRP_PESIGN_FILES="*.ko"
 export BRP_PESIGN_COMPRESS_MODULE=%{compress_modules}
 export INSTALL_MOD_PATH=%{buildroot}
-export INSTALL_MOD_DIR=updates
+export INSTALL_MOD_DIR=%{name}-%{version}/%{kernel_module_package_moddir}
 for flavor in %{flavors_to_build}; do
 	pushd obj/$flavor
 	if [ -d /usr/src/linux-$flavor ]; then

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:39:11 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Add a directory identifying the KMP and its version to the module
+  install path - i.e.:
+  <kernel_version>/nvidia-open-driver-G06-signed-<version>/updates
+  instead of:
+  <kernel_version>/updates
+  This avoids conflicts when a new version is built against the
+  same kernel release.
+
+-------------------------------------------------------------------
 Mon Feb  3 14:27:28 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed build against openSUSE:Factory by defining %_builddir

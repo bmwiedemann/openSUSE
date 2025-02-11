@@ -1,4 +1,5 @@
 %defattr (-,root,root)
 %dir %{kernel_module_directory}/%2-%1
-%dir %{kernel_module_directory}/%2-%1/updates
-%{kernel_module_directory}/%2-%1/updates/nvidia*.ko
+%dir %{kernel_module_directory}/%2-%1/%{name}-%{version}
+%dir %{kernel_module_directory}/%2-%1/%{name}-%{version}/updates
+%{kernel_module_directory}/%2-%1/%{name}-%{version}/updates/nvidia*.ko
