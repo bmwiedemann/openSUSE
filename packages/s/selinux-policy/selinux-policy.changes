@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 11 10:02:53 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250211:
+  * Enable postfix_local_write_mail_spool boolean by default
+
+-------------------------------------------------------------------
 Fri Feb  7 10:03:50 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Improve semodule stderr logging during install/update: Verbose logging

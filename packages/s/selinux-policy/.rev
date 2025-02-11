@@ -1503,4 +1503,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment>Feb 25 policy + optimized semodule logging</comment>
     <requestid>1244156</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>08a5373a055fbbb77a8a825b8c90eaab</srcmd5>
+    <version>20250211</version>
+    <time>1739305250</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250211:
+  * Enable postfix_local_write_mail_spool boolean by default
+</comment>
+    <requestid>1245056</requestid>
+  </revision>
 </revisionlist>
