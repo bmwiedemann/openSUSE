@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 11:41:18 UTC 2025 - pgajdos@suse.com
+
+- version update to 20240910
+  * Introducing Unicode 16.0 (libuninameslist=version1.15) and French
+    Unicode 15.1 translation (libuninameslist-fr=version1.7).
+  * Upgraded configure.ac from 2.64 to 2.69.
+
+-------------------------------------------------------------------
 Tue Jul 30 10:34:53 UTC 2024 - pgajdos@suse.com
 
 - version update to 20240524
