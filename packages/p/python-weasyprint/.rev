@@ -304,4 +304,31 @@
     <comment></comment>
     <requestid>1224880</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>838966d6c335651e74b9b4c79afcd7c5</srcmd5>
+    <version>64.0</version>
+    <time>1739305437</time>
+    <user>anag+factory</user>
+    <comment>- update to 64.0:
+  * #2338: Allow custom RDF metadata for PDF/A and eInvoices
+  * #123, #2345: Handle small-caps synthesis
+  * #2343: Support outline-offset
+  * #2361: Support text-underline-offset and text-decoration-
+    thickness
+  * #2296: Don’t crash with tables with rounded corners split
+    between pages
+  * #2360: Fix gradients with non-RGB colors
+  * #2355, #2358: Align png emojis to the surrounding text
+  * #2353: Fix alignment of SVG text with multiple nested text-
+    anchor values
+  * #2350: Fix logging restoration in capture_logs
+  * #2341: Fix page groups
+  * #2314: Use CSS 'image-rendering' attribute for images in SVGs
+  * #2332: Fix opacity for translated SVG elements
+  * #2329: Refactor text.line_break.get_log_attrs
+  * #2325, #2326: Fix table overflow edge cases
+  * #2347, #2364: Improve rendering speed for text
+  * #2352: Add more use cases in documentation, use Furo theme</comment>
+    <requestid>1244903</requestid>
+  </revision>
 </revisionlist>
