@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-man
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-click-man
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Automate generation of man pages for python click applications
 License:        MIT
 URL:            https://github.com/click-contrib/click-man
-Source:         https://files.pythonhosted.org/packages/source/c/click-man/click-man-%{version}.tar.gz
-Patch1:         get-short-help.patch
+Source:         https://files.pythonhosted.org/packages/source/c/click_man/click_man-%{version}.tar.gz
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sure}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,15 +42,15 @@ BuildArch:      noarch
 Automate generation of man pages for Python Click applications.
 
 %prep
-%autosetup -p1 -n click-man-%{version}
+%autosetup -p1 -n click_man-%{version}
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/click-man
 
@@ -65,6 +68,7 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/click-man
-%{python_sitelib}/*
+%{python_sitelib}/click_man
+%{python_sitelib}/click_man-%{version}.dist-info
 
 %changelog

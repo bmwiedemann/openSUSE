@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Feb 10 16:48:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.0
+  * Fix typo
+  * Explicitly require setuptools, __main__.py imports pkg_resources
+  * Fix typos
+  * Update README.md
+  * Fix typo
+  * tests: Switch to pytest
+  * Add GitHub Actions workflow, remove Travis
+  * Fix man generation for CLI with hidden options
+  * Move 'cli()' method to 'click_man.shell'
+  * Add shell unit tests
+  * cli: Expose knobs for date and version
+  * README: Remove references to distutils command
+  * Remove distutils command
+  * Remove use of pkg_resources
+  * Drop support for Python < 3.9
+  * Add ruff configuration
+  * Format with ruff-format
+  * Add pre-commit
+  * Add lint CI job
+  * Migrate to pyproject.toml
+- from version 0.4.2
+  * get_short_help method only exists in Click 7.
+- Add update-alternatives to Requires(post) and Requires(postun)
+- Drop get-short-help.patch, merged upstream
+- Limit Python files matched in %files section
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Thu May 16 14:47:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
