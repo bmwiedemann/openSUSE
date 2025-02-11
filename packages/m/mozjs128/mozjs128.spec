@@ -1,7 +1,7 @@
 #
 # spec file for package mozjs128
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Frantisek Zatloukal <fzatlouk@redhat.com>
 # Copyright (c) 2014 Wolfgang Rosenauer
 #
@@ -41,7 +41,7 @@ BuildArch:      i686
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        128.5.1
+Version:        128.7.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
