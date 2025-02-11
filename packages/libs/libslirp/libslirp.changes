@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:46:24 UTC 2025 - pgajdos@suse.com
+
+- Update to version 4.9.0+5:
+  * meson: add dependency override for libslirp
+  * meson: specify that C++ is only used for host binaries
+  * meson: use boolean defaults for boolean options
+  * Release v4.9.0
+  * Windows target build fixes
+  * Fix assertion
+  * Provide stubs for inet_ntop() and inet_pton()
+  * winver.h: Introduce header that forces defining WINVER and _WIN32_WINNT
+  * ensure that WINVER and _WIN32_WINNT are unconditionally set
+  * sbuf.c: Cleanups
+  * fix for slirp ftp proxying putting slirp placeholder host ip in PORT commands
+  * Prefer g_strerror() to strerror()
+  * vmstate.h: Prefer __typeof__ vice typeof
+  * Review comments.
+  * cksum: NetBSD-adapted cksum()
+  * Introduce SLIRP_PRIsize/ssize_t
+  * arp_table: use size_t to index arrays.
+  * Debugging API
+  * slirp_(un)register_poll_socket: void returning value
+  * Restore SlirpAddPollCb, {,un}register_poll_fd
+  * Fix calling slirp_bind_outbound on tcp_fconnect
+  * fuzz: Fix memory leak inside fuzz-main
+  * socket abstraction: slirp_os_socket
+  * tcp_listen: Missing register_poll_fd
+  * bootp: Fill siaddr with tftp addr as per RFC2131
+  * windows: allow static linking with LIBSLIRP_STATIC macro
+
+-------------------------------------------------------------------
 Tue May 21 13:49:27 UTC 2024 - pgajdos@suse.com
 
 - Update to version 4.8.0+2:
