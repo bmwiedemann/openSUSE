@@ -1,4 +1,228 @@
 -------------------------------------------------------------------
+Tue Feb 11 07:08:44 UTC 2025 - pdostal@suse.com
+
+- Update to version 2.66.1:
+  * Address PR comments
+  * Remove unused ErrNoGitRepository error
+  * Handle error from ParsePRRefs when the selector is provided
+  * Add comment to status recognizing when we require a repo
+  * Refactor finder to work with URL selectors
+  * Add tests for using the pr Finder outside of repo
+  * Update deployment.yml
+  * update tests to account for logic flip
+  * flip bundle fetching logic
+  * Update formatting for autolink output
+  * Rename PRRefs to PullRequestRefs and PR comment cleanup
+  * Remove redundant error check
+  * Keeping autolink IDs the same in all test cases
+  * Expand test case
+  * Remove unused test field
+  * Remove unused test field
+  * Use `defer` instead
+  * Error case test for viewRun
+  * Autolink view HTTP tests
+  * Shorten description
+  * Updates following renaming domain to shared
+  * Partial testing for view
+  * Initial, working implementation
+  * Stop progress indicator on failure (`gh run list --workflow`)
+  * Cleaned up some naming and comments
+  * Minor refactoring autolink create help and logic
+  * Bump github.com/in-toto/attestation from 1.1.0 to 1.1.1
+  * Cleanup comment
+  * Fix pr create tests
+  * Fix breaking changes from sigstore-go v0.7.0 upgrade
+  * go mod tidy
+  * Upgrade sigstore-go to v0.7.0: fixes #10114 formatting issue
+  * Refactor pr status to use the ParsePRRefs helper on the Finder
+  * Moved remote.pushDefault out of ReadBranchConfig and into finder
+  * Remove @{push} from branch config
+  * Add PushDefault method to git client
+  * WIP: push default defaults to simple
+  * Error if push revision doesn't match a remote
+  * Bump google.golang.org/protobuf from 1.36.3 to 1.36.4
+  * Refactor finder.Find and replace parseCurrentBranch with parsePRRefs
+  * Bump actions/attest-build-provenance from 2.1.0 to 2.2.0
+  * remove bolding from bullet point output
+  * Update test to be compatible with latest Glamour v0.8.0
+  * reorder policy enforcement criteria print out
+  * bold bullet point list header text
+  * Enable MSI building for Windows arm64
+  * chore: fix some comments
+  * Bump go module version to 1.23
+  * Bump github.com/google/go-containerregistry from 0.20.2 to 0.20.3
+  * Remove unncessary printf usage
+  * Bump golang ci lint to work with go 1.24
+  * Fix: Ensure constant format strings in fmt and printf calls
+  * Change back to exponential backoff
+  * Linter
+  * Better handling for codespace state polling
+  * Add affected version to bug report form
+  * fix: tiny typo fix
+  * Fix: accidental whitespace in gist edit
+  * Fix: gist edit test name
+  * Fix: gist edit/view tests var name consistency
+  * Fix: Gist edit tests for interactivity
+  * Add small wait to extension update tests
+  * Refactor test based on PR feedback
+  * fixup! Add comments and a bit of code cleanup
+  * Use PushRemoteURL instead of RemoteURL in prSelectorForCurrentBranch
+  * Add comments and a bit of code cleanup
+  * skip check
+  * add tty check
+  * formatting
+  * delete unused function
+  * drop unused handler method
+  * print attestation output info as bullet points instead of table
+  * Bump google.golang.org/protobuf from 1.36.2 to 1.36.3
+  * Fix typo in secret base repo selection comment
+  * Change wording on secret repo prompt
+  * Print informative message before prompting for secret repo
+  * Secret base repo prompting should not use resolved remote
+  * Move secret base repo prompting earlier
+  * Add acceptance test for secrets remote disambiguation
+  * Remove validated TODO and add review warning
+  * Rename secret BaseRepo func
+  * Use smarter base repo funcs for secret commands
+  * Move secret repo validation into secrets subpackage
+  * Always prompt on secret set when multiple remotes
+  * Update setdefault test
+  * Update docs for set-default
+  * Prompt for secret commands
+  * Add tests for secret commands
+  * Add remote check to secret commands
+  * Add missing git stubs to tests
+  * Add tests for deleteGist
+  * Make extension update check non-blocking
+  * Update pkg/cmd/attestation/verify/verify.go
+  * add install instructions for Manjaro Linux
+  * Bump github.com/gabriel-vasile/mimetype from 1.4.7 to 1.4.8
+  * #10042: Attempt to add a new test scenario for handling error messages when TTY is unavailable
+  * Rename domain pkg to shared
+  * #10042: Applied code review suggestions to view_test.go
+  * show error message for rerun workflow older than a month ago
+  * Enhance help docs on ext upgrade notices
+  * fix tests
+  * fix tests
+  * gist delete - check no gists
+  * removed unnecessary space
+  * Update pkg/cmd/gist/edit/edit.go
+  * chore: fix some function names in comment
+  * drop description from prompts, fix tests
+  * Expand docs on cleaning extension update dir
+  * Simplifying cleanExtensionUpdateDir logic
+  * Separate logic for checking updates
+  * Capture greater detail on updaterEnabled
+  * Restore old error functionality of prSelectorForCurrentBranch
+  * Change error handling on ReadBranchConfig to respect git Exit Codes
+  * fix: add back colon that I removed
+  * fix: actually read how MaxFunc work and simplify the code
+  * fix: padded display
+  * Collapse dryrun checks in ext bin upgrade
+  * Bump github.com/mattn/go-colorable from 0.1.13 to 0.1.14
+  * Bump github.com/sigstore/protobuf-specs from 0.3.2 to 0.3.3
+  * gist delete - use  in confirmation and success info
+  * Rename test user in tests
+  * Change pr number in test
+  * Surface and handle error from ReadBranchConfig in parseCurrentBranch
+  * Directly stub headBranchConfig in Test_tryDetermineTrackingRef
+  * Refactor error handling in ReadBranchConfig to avoid panic
+  * Refine error handling of ReadBranchConfig
+  * Add test for empty BranchConfig in prSelectorForCurrentBranch
+  * #10042 removed unnecessary field
+  * Correct help documentation around template use in `gh issue create`
+  * #10042: Add error messages for 'gh gist view/edit' prompts when no TTY is detected
+  * Comment exported functions
+  * fix gist description in tests
+  * gist delete prompt with gist description
+  * Remove shadowed errors from prSelectorForCurrentBranch and cover with tests
+  * Added tests to cover prSelectorForCurrentBranch for confidence in refactor
+  * Refactor prSelectorForCurrentBranch and tests
+  * Add missing test for RemoteURL in parseBranchConfig
+  * update table column headers
+  * Change ReadBranchConfig error message in gh pr create
+  * Remove private readBranchConfig method and remove parseBranchConfig from Client
+  * update test fixtures to include buildConfigURI
+  * add check for invalid attestation
+  * tentative updates for acceptance criteria - pending confirmation re description in prompt
+  * PR review edits
+  * Refactor Test_readGitBranchConfig for easier parsing
+  * update tests to use new function name
+  * Update pkg/cmd/attestation/api/client.go
+  * Update pkg/cmd/attestation/api/client.go
+  * Remove named return values from prSelectorForCurrentBranch
+  * Refactor ReadBranchConfig for test coverage of newly returned erros
+  * Remove named returns from ReadBranchConfig and surface errors
+  * remove old comment
+  * remove commented out code
+  * comment
+  * undo more name chanages
+  * undo other name change
+  * remove spaces
+  * undo name change for now
+  * more mock http client cleanup
+  * Update triage.md to reflect FR experiment outcome
+  * simplify mock http client
+  * use mock to assert number of http calls
+  * add http client test constructors
+  * setup testing struct for test cases
+  * feat: make the extension upgrade fancier
+  * Fix up intra-org fork test setup
+  * Add renamed acceptance tests
+  * Reflect coverage for view and status subcommands
+  * Expand with gh pr status
+  * Add base gh pr view acceptance tests for changes
+  * Find push remote using branch.<name>.pushRemote and remote.pushDefault
+  * Only find PRs w/ branch.<name>.merge if push.default = upstream/tracking
+  * Find PRs using @{push}
+  * add mutex for test field
+  * add test case for bundle url fetch failure
+  * add tests for bundle url fetch and fallback
+  * fetch bundles in parallel
+  * return fetch attestations err directly
+  * provide additional logging and fallback
+  * Update pkg/cmd/auth/login/login.go
+  * Clear up --with-token fine grained PAT usage
+  * Fix typos
+  * feat: Add support for creating autolink references
+  * cleanup
+  * gist delete prompt for confirmation
+  * undo extra move
+  * rearrange struct vals for consistency
+  * add gist delete tests for blank gist id
+  * gh gist delete: prompt for gist id
+  * Escape '.' in version validation regex in deployment workflow
+  * Add job to deployment workflow to validate the tag name for a given release
+  * update verify output table
+  * simplify func params
+  * add more verification integration tests
+  * fix failing tests
+  * add mock http client
+  * update error messages
+  * var naming
+  * go mod tidy
+  * add httpClient field to LiveClient struct
+  * remove unused method
+  * fetch bundles with sas url
+  * Fix failig local extension tests
+  * Implement remaining PR feedback
+  * Implement partial feedback before trunk update
+  * Add build constraint for non-Windows systems
+  * Add build constraint for non-Windows systems
+  * Refactor local installation manager test by OS
+  * #10042 fixed test
+  * fixing gh gist view prompts with no TTY
+  * Remove unnecessary Extension.FullName()
+  * Expand update tests for local extensions
+  * Test whether extension update should be checked
+  * Remove Extension.FullName() from interface
+  * Enhance extension manager and tests
+  * Initial extension update check testing
+  * Refactor extension command testing
+  * Bring extension update check in line with gh check
+  * initial pass at fetching bundles with sas urls
+
+-------------------------------------------------------------------
 Wed Jan 15 08:57:11 UTC 2025 - pdostal@suse.com
 
 - Update to version 2.65.0:
