@@ -1,7 +1,7 @@
 #
 # spec file for package netty-tcnative
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define with_gcc 11
 %endif
 Name:           netty-tcnative
-Version:        2.0.69
+Version:        2.0.70
 Release:        0
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0
