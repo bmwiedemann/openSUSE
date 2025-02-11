@@ -233,28 +233,28 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE*md
 %fdupes -s %{buildroot}
 
 %check
-# Make sure testsuite can find required fonts
-mkdir -p ~/fonts
-ln -sf $(pwd)/src/fonts/Droid_Serif/DroidSerif.ttf ~/fonts/DroidSerif.ttf
-ln -sf $(pwd)/src/fonts/Droid_Sans/DroidSans.ttf ~/fonts/DroidSans.ttf
+# Make sure testsuite can find required fonts. Especially `DroidSerif.ttf` which is not part of our google-droid-fonts package
+# we need
+export OPENIMAGEIO_FONTS="$(dirname $(find ${PWD}/src/fonts/ -type f -name \*.ttf) | sort -u | tr '\n' ':' | sed -e 's|:$||g')"
+./build/bin/oiiotool --echo "{getattribute(font_dir_list)}"
+# without this the python tests can not link the library
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 # used as suffix for python binary
 export PYTHON_VERSION=3
 export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
-# Exclude known broken tests
-# timer tests won't do reliably in OBS
-%define disabled_tests 'cmake-consumer|docs-examples-cpp|oiiotool|oiiotool-copy|oiiotool-subimage|oiiotool-text|texture-udim|texture-udim2|texture-udim.batch|texture-udim2.batch|docs-examples-python|python-texturesys|python-imagebufalgo|heif|ptex-broken|oiiotool|oiiotool-copy|oiiotool-subimage|texture-udim|texture-udim2|texture-udim.batch|texture-udim2.batch|python-texturesys'
-%define texture_tests  'texture-icwrite'
+#
+# https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4615
+#
+# heif -> our libheif does not support h265
+# ptex -> fileformat which we do not support
+# cmake-consumer docs-examples-cpp -> currently failing tests as they assume normal cmake search paths will work to find the OIIO devel files in the final location
+export disabled_tests="heif|ptex|cmake-consumer|docs-examples-cpp"
 %ifarch x86_64
-%ctest '-E' %{disabled_tests}
-%ctest '-R' %{texture_tests} || true
-#%%ctest '-j1' '-R' 'unit_timer'
+%ctest '-E' ${disabled_tests}
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
-%ctest '-E' %{disabled_tests} || true
-%ctest '-R' %{texture_tests} || true
-#%%ctest '-j1' '-R' 'unit_timer'
+%ctest '-E' ${disabled_tests} || true
 %endif
 
 %ldconfig_scriptlets -n libOpenImageIO%{so_ver}

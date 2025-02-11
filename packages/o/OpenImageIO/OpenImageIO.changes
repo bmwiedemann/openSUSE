@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb  2 21:25:39 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Port the fonts handling solution from the OpenImageIO-3 package
+  to this package and also use OPENIMAGEIO_FONTS here:
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4615#issuecomment-2629490500
+
+-------------------------------------------------------------------
+Sun Feb  2 02:10:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup the %check section after the the discussion in
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4615
+  - symlink all fonts to ~abuild/fonts
+  - minimize disabled tests list and document why they are filtered
+    out
+
+-------------------------------------------------------------------
 Wed Jan  1 22:00:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.5.18.0
