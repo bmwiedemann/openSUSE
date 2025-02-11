@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 11 12:48:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.19
+  * Fixed a regression in Django 4.2.18 that caused validate_ipv6_address() 
+    and validate_ipv46_address() to crash when handling non-string values
+
+-------------------------------------------------------------------
 Sun Jan 26 00:56:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix2038.patch to let tests pass after year 2038 (boo#1102840)
@@ -13,7 +20,7 @@ Wed Jan 15 08:11:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Mon Dec  9 09:31:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
-- Update to 4.1.17 (bsc#1234231, CVE-2024-53908, bsc#1234232, CVE-2024-53907)
+- Update to 4.2.17 (bsc#1234231, CVE-2024-53908, bsc#1234232, CVE-2024-53907)
   * CVE-2024-53907: Potential denial-of-service in django.utils.html.strip_tags()
   * CVE-2024-53908: Potential SQL injection in HasKey(lhs, rhs) on Oracle
 

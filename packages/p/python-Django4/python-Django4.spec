@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-Django4
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.2.18
+Version:        4.2.19
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause

@@ -1,0 +1,67 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+This file contains MD5, SHA1, and SHA256 checksums for the source-code
+tarball and wheel files of Django 4.2.19, released February 5, 2025.
+
+To use this file, you will need a working install of PGP or other
+compatible public-key encryption software. You will also need to have
+the Django release manager's public key in your keyring. This key has
+the ID ``2EE82A8D9470983E`` and can be imported from the MIT
+keyserver, for example, if using the open-source GNU Privacy Guard
+implementation of PGP:
+
+    gpg --keyserver pgp.mit.edu --recv-key 2EE82A8D9470983E
+
+or via the GitHub API:
+
+    curl https://github.com/nessita.gpg | gpg --import -
+
+Once the key is imported, verify this file:
+
+    gpg --verify Django-4.2.19.checksum.txt
+
+Once you have verified this file, you can use normal MD5, SHA1, or SHA256
+checksumming applications to generate the checksums of the Django
+package and compare them to the checksums listed below.
+
+Release packages
+================
+
+https://www.djangoproject.com/m/releases/4.2/Django-4.2.19-py3-none-any.whl
+https://www.djangoproject.com/m/releases/4.2/Django-4.2.19.tar.gz
+
+MD5 checksums
+=============
+
+d3e2b00069ad9735bcf59b424dd479b9  Django-4.2.19-py3-none-any.whl
+524150052092063443613400dff99cff  Django-4.2.19.tar.gz
+
+SHA1 checksums
+==============
+
+ac2f436272418b253373ace47ac03680effa3ed6  Django-4.2.19-py3-none-any.whl
+5b4f9cfaf0b1c6eff7ec77c7be9cd99aad8bebce  Django-4.2.19.tar.gz
+
+SHA256 checksums
+================
+
+a104e13f219fc55996a4e416ef7d18ab4eeb44e0aa95174c192f16cda9f94e75  Django-4.2.19-py3-none-any.whl
+6c833be4b0ca614f0a919472a1028a3bbdeb6f056fa04023aeb923346ba2c306  Django-4.2.19.tar.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQJcBAEBCABGFiEEW1sboQ2FrHxcduOPLugqjZRwmD4FAmejbgAoHDEyNDMwNCtu
+ZXNzaXRhQHVzZXJzLm5vcmVwbHkuZ2l0aHViLmNvbQAKCRAu6CqNlHCYPvO7EACm
+UGW2sf1komkKM1rdF1O4hhP3uJT26G+XoF4TDnILAUliPwL+XLAWesnP+OWqshjX
+YCOknZwsOYX8W3VllBK1BQ6891+ysRUlce0PEoblvpGnZ7T1D/5lJYciold8DumM
+nk9Ksn3XCF7hTp0DLCUWrZ/0pYe8zIwSvDV0b2kcZNfiE2V17ALZbwXq52dQiiKv
+Z42NX3LcUiFVazTFcu3nkblLf7Jzb1WyFqBcb1ore3v5DPlRC3SQGnOx5n1y2ZvK
+Xn901+nM65oUoKHz10wnaulEoEryjHYpg2l5l9GcRlLIBWLP66uo6QFwGzJDNp/k
+IHLl45p90TJh+vXjVu/UR28EzkIFMK7Z+OlXzgzAJchog62+RSOD195kVyitlC2e
+yP7cXq7a1ULGBD2iIwsF2qrvA7KAVq4kSCETtrSMTgMjsyG9dScqkaxHFP45SDqe
+bBcVPs1hsfy/h9pNFV8/+Ryx5SQc1X8nHvFgPL0rMQ2Q4kW1v4P+m3HeK5ufcXGv
+U88oHK2+lZSJV4uokcC8QTYutQk/Cx3DTXcHHSOWAJQ81mWAsVbLxyqycptXZVL5
+edG6ppS/DYhW4JLucLY/6XGJhOz/IJ4UllxMRZbgwunI5b3mdagNrV/Cp4MKht3B
+54kAADdOGEkUis4TjKUiTp3HOjoidmk6RV3sk6evBA==
+=X68v
+-----END PGP SIGNATURE-----
