@@ -1,7 +1,7 @@
 #
 # spec file for package slirp4netns
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           slirp4netns
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        User-mode networking for unprivileged network namespaces
 License:        BSD-2-Clause AND GPL-2.0-only AND MIT

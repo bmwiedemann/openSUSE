@@ -153,4 +153,12 @@
     <comment>New upstream release 1.3.1, no relevant source change (forwarded request 1173898 from dancermak)</comment>
     <requestid>1174860</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e05cf3c1a368d722ce9ab1e1464599c0</srcmd5>
+    <version>1.3.2</version>
+    <time>1739305212</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245086</requestid>
+  </revision>
 </revisionlist>
