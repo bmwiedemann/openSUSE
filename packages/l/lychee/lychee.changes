@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 11 17:08:21 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.18.1~0:
+  * chore: release v0.18.1 (#1598)
+  * Fix Porgressbar rendering Checkbox (Fixes #1626) (#1627)
+  * fix: do not fail on empty # and #top fragments (#1609)
+  * Add Checkbox Formatting Option for Markdown Reports (#1623)
+  * Fix new clippy lints (#1625)
+  * Add links to shield and license #1616
+  * Bump the dependencies group with 3 updates (#1604)
+  * Remove exit early "if tag and not from release workflow"
+  * Bump the dependencies group with 3 updates (#1602)
+  * Bump the dependencies group with 6 updates (#1597)
+  * Reuse nixpkgs recipe as suggested by @tirimia
+  * Extract version number programmatically
+  * Fix typo
+  * Move section
+  * Add development section to README
+  * More consistent style
+  * Further simplify flake
+  * Simplify code
+  * `nix build` working
+  * Fix formatting
+  * Remove $RUST_BACKTRACE
+  * Support multiple platforms
+  * Remove .envrc
+  * Update to Rust 1.83.0
+  * Remove unneeded variables
+  * Simplify flake
+  * Specify Rust version explicitly
+  * Ignore direnv cache
+  * Use flake
+  * Add .envrc
+  * Add Nix shell
+  * Remove `publish` step from CI pipeline, which is handled by release-plz
+
+-------------------------------------------------------------------
 Thu Dec 19 13:29:15 UTC 2024 - alessio.biancalana@suse.com
 
 - Update to version 0.18.0~0:
