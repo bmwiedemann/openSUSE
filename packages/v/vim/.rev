@@ -7870,4 +7870,41 @@ always built-in because vim has direct perl dependencies anyway.
  * filetype: swc configuration files are not recognized</comment>
     <requestid>1239263</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>131f876f1f0de420e98984aec73d4807</srcmd5>
+    <version>9.1.1101</version>
+    <time>1739305205</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.1101
+ * insexpand.c hard to read
+ * tests: Test_log_nonexistent only works on Linux
+ * Update base-syntax, improve variable matching
+ * Vim9: import with extends may crash
+ * leaking memory with completing multi lines
+ * --log with non-existent path causes a crash
+ * if_perl: Perl 5.38 adds new symbols causing link failure
+ * tests: matchparen plugin test wrongly named
+ * Vim9: problem finding implemented method in type hierarchy
+ * runtime(qf): Update syntax file, match second delimiter
+ * tests: output of test ...win32_ctrl_z depends on python version
+ * tests: fix expected return code for python 3.13 on Windows
+ * tests: timeout might be a bit too small
+ * tests: test_terminwscroll_topline2 unreliable
+ * tests: No check when tests are run under Github actions
+ * tests: plugin tests are named inconsistently
+ * Vim9: import with extends may crash
+ * completion doesn't work with multi lines
+ * filetype: cmmt files are not recognized
+ * Unable to persistently ignore events in a window and its buffers
+ * improve syntax highlighting
+ * setreg() doesn't correctly handle mbyte chars in blockwise mode
+ * unexpected DCS responses may cause out of bounds reads
+ * has('bsd') is true for GNU/Hurd
+ * filetype: Mill files are not recognized
+ * GUI late startup leads to uninitialized scrollbars
+ * Add support for lz4 to tar &amp; gzip plugin
+ * Terminal ansi colors off by one after tgc reset
+ * included syntax items do not understand contains=TOP</comment>
+    <requestid>1245063</requestid>
+  </revision>
 </revisionlist>

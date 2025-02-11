@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Tue Feb 11 10:35:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1101
+ * insexpand.c hard to read
+ * tests: Test_log_nonexistent only works on Linux
+ * Update base-syntax, improve variable matching
+ * Vim9: import with extends may crash
+ * leaking memory with completing multi lines
+ * --log with non-existent path causes a crash
+ * if_perl: Perl 5.38 adds new symbols causing link failure
+ * tests: matchparen plugin test wrongly named
+ * Vim9: problem finding implemented method in type hierarchy
+ * runtime(qf): Update syntax file, match second delimiter
+ * tests: output of test ...win32_ctrl_z depends on python version
+ * tests: fix expected return code for python 3.13 on Windows
+ * tests: timeout might be a bit too small
+ * tests: test_terminwscroll_topline2 unreliable
+ * tests: No check when tests are run under Github actions
+ * tests: plugin tests are named inconsistently
+ * Vim9: import with extends may crash
+ * completion doesn't work with multi lines
+ * filetype: cmmt files are not recognized
+ * Unable to persistently ignore events in a window and its buffers
+ * improve syntax highlighting
+ * setreg() doesn't correctly handle mbyte chars in blockwise mode
+ * unexpected DCS responses may cause out of bounds reads
+ * has('bsd') is true for GNU/Hurd
+ * filetype: Mill files are not recognized
+ * GUI late startup leads to uninitialized scrollbars
+ * Add support for lz4 to tar & gzip plugin
+ * Terminal ansi colors off by one after tgc reset
+ * included syntax items do not understand contains=TOP
+ * vim_strnchr() is strange and unnecessary
+ * Vim9: len variable not used in compile_load()
+ * runtime(vim): Update base-syntax, match :debuggreedy count prefix
+ * Strange error when heredoc marker starts with "trim"
+ * tests: test_compiler fails on Windows without Maven
+ * 'diffopt' "linematch" cannot be used with {n} less than 10
+ * args missing after failing to redefine a function
+ * Cannot control cursor positioning of getchar()
+ * preinsert text completions not deleted with <C-W>/<C-U>
+ * getchar() can't distinguish between C-I and Tab
+ * tests: Test_termwinscroll_topline2 fails on MacOS
+ * heap-use-after-free and stack-use-after-scope with :14verbose
+ * no digraph for "Approaches the limit"
+ * not possible to use plural forms with gettext()
+ * too many strlen() calls in userfunc.c
+ * terminal: E315 when dragging the terminal with the mouse
+ * runtime(openPlugin): fix unclosed parenthesis in GetWordUnderCursor()
+ * runtime(doc): Tweak documentation style a bit
+ * tests: test_glvs fails when unarchiver not available
+ * Vim always enables 'termguicolors' in a terminal
+ * completion: input text deleted with preinsert when adding leader
+ * translation(sr): Missing Serbian translation for the tutor
+ * Superfluous cleanup steps in test_ins_complete.vim
+ * runtime(netrw): correct wrong version check
+ * Vim doesn't highlight to be inserted text when completing
+ * runtime(netrw): upstream snapshot of v176
+ * runtime(dist/vim9): fix regressions in dist#vim9#Open
+ * runtime(hyprlang): fix string recognition
+ * make install fails because of a missing dependency
+ * runtime(asm): add byte directives to syntax script
+ * Vim doesn't work well with TERM=xterm-direct
+ * runtime(filetype): commit 99181205c5f8284a3 breaks V lang detection
+ * runtime: decouple Open and Launch commands and gx mapping from netrw
+ * "nosort" enables fuzzy filtering even if "fuzzy" isn't in 'completeopt'
+ * runtime(just): fix typo in syntax file
+ * runtime(filetype): Improve Verilog detection by checking for modules definition
+ * tests: off-by-one error in CheckCWD in test_debugger.vim
+ * tests: no support for env variables when running Vim in terminal
+ * too many strlen() calls in os_unix.c
+ * insert-completed items are always sorted
+ * crash after scrolling and pasting in silent Ex mode
+ * Makefiles uses non-portable syntax
+ * fuzzymatching doesn't prefer matching camelcase
+ * filetype: N-Tripels and TriG files are not recognized
+ * Vim9: Patch 9.1.1014 causes regressions
+ * translation(sr): Update Serbian messages translation
+
+-------------------------------------------------------------------
 Tue Jan 21 12:23:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - updade to 9.1.1043
