@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages-zh_CN
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           man-pages-zh_CN
-Version:        1.6.4.0
+Version:        1.6.4.2
 Release:        0
 Summary:        Simplified Chinese Linux man pages
 License:        GFDL-1.3-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/man-pages-zh/manpages-zh
 Source:         %{URL}/archive/v%{version}/manpages-zh-%{version}.tar.gz
-BuildRequires:  libtool
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  opencc
 BuildRequires:  python3
 Provides:       locale(man:zh)
@@ -42,12 +43,14 @@ maintainers.
 %setup -q -n manpages-zh-%{version}
 
 %build
-autoreconf -fiv
-%configure --disable-zhtw
+%cmake
+%cmake_build
 
 %install
-%make_install
-rm -rf %{buildroot}%{_datadir}/doc/manpages-zh
+%cmake_install
+# this is man-pages-zh_CN package, perhaps could be renamed to
+# man-pages-zh with CN and TW multibuild flavors?
+rm -r %{buildroot}%{_mandir}/zh_TW
 
 %files
 %license COPYING

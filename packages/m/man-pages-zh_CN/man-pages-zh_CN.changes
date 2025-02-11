@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 11:50:07 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.6.4.2
+  * environ(7): Retranslate using upstream man page from Linux man-pages
+    6.9.1.
+  * COPYRIGHT: Update information and use more SPDX short license name.
+
+-------------------------------------------------------------------
 Sat Jan  6 13:05:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4.0:
