@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Feb  8 11:52:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.25:
+  * The "fossil ui /" command now works even for repositories that
+    have non-ASCII filenames
+  * Add the fossil tree command.
+  * On case-insensitive filesystems, store files using the
+    filesystem's preferred case rather than the case typed in by
+    the user.
+  * Change the name "fossil cherry-pick" command to "fossil
+    cherrypick", which is more familiar to Git users. Retain the
+    legacy name for compatibility.
+  * Add new query parameters to the /timeline page: d2=, p2=, and
+    dp2=.
+  * Add options to the fossil tag command that will list tag values.
+  * Add the -b|--brief option to the fossil status command.
+  * Add ability to upload unversioned files via the /uvlist page.
+  * Add history search to the /chat page.
+  * Add Unix socket support to the server command.
+  * Take into account zero-width and double-width unicode characters
+    when formatting the command-line timeline.
+- drop patches:
+  * fossil-2.24-17c01c549e73c6b8.patch
+  * fossil-2.24-5ad708085a90365f.patch
+  * fossil-2.24-fb4e90b662803e47.patch
+
+-------------------------------------------------------------------
 Sun Jul 21 06:31:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fossil 2.24:

@@ -2,7 +2,7 @@
 # spec file for package fossil
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,25 @@
 
 
 # From https://fossil-scm.org/home/uv/releases.md
-%define fossil_uuid 8be0372c1051043761320c8ea8669c3cf320c406e5fe18ad36b7be5f844ca73b
+%define fossil_uuid 8f798279d5f7c3288099915f2ea88c57b6d6039f3f05eac5e237897af33376dc
 %bcond_without tests
 Name:           fossil
-Version:        2.24
+Version:        2.25
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://fossil-scm.org/
 Source:         https://fossil-scm.org/home/tarball/%{fossil_uuid}/%{name}-%{version}.tar.gz
-Patch0:         fossil-2.24-5ad708085a90365f.patch
-Patch1:         fossil-2.24-fb4e90b662803e47.patch
-Patch2:         fossil-2.24-17c01c549e73c6b8.patch
 BuildRequires:  pkgconfig
 BuildRequires:  tcl
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  pkgconfig(sqlite3) >= 3.43.0
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(sqlite3) >= 3.46.0
+%endif
 
 %description
 Fossil is a distributed software configuration management system with
@@ -54,15 +53,14 @@ these features:
 grep -qFx %{version} VERSION
 
 %build
-%{?set_build_flags: %{set_build_flags}}
-%{!?set_build_flags: export CFLAGS="%{optflags}"}
-# FIXME: you should use the %%configure macro
-./configure \
-        --prefix=%{_prefix} \
+%configure \
+	--host="" \
         --with-openssl=%{_prefix} \
         --with-zlib=%{_prefix} \
+%if 0%{?suse_version} > 1600
         --disable-internal-sqlite \
 	--with-sqlite=%{_prefix} \
+%endif
 	%{nil}
 %make_build
 
