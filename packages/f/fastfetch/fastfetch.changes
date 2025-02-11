@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 11 10:32:30 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- update to 2.36.1
+  Changes:
+   * To use the native arm64 runner of Github Action, Linux 
+     aarch64 binary is now built with Ubuntu 22.04 (Glibc 2.35, 
+     Debian 12).
+  Bugfixes:
+   * Chimera Linux logo is now displayed correctly 
+     (gh#fastfetch-cli/fastfetch#1554, Logo) 
+     - Regression of 2.36.0
+   * Fix building on Haiku
+  Logo:
+   * Fix ALT Linux
+
+-------------------------------------------------------------------
 Mon Feb 10 13:46:16 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 2.36.0
