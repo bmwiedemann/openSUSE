@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Algorithm-Annotate
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-
-Name:           perl-Algorithm-Annotate
-Version:        0.10
-Release:        1
-License:        GPL-1.0+ or Artistic-1.0
 %define cpan_name Algorithm-Annotate
-Summary:        represent a series of changes in annotate form
-Url:            http://search.cpan.org/dist/Algorithm-Annotate/
-Group:          Development/Libraries/Perl
-Source:         http://www.cpan.org/authors/id/C/CL/CLKAO/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Algorithm-Annotate
+Version:        0.100.0
+Release:        0
+# 0.10 -> normalize -> 0.100.0
+%define cpan_version 0.10
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Represent a series of changes in annotation list
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CL/CLKAO/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Algorithm::Diff) >= 1.15
-Requires:       perl(Algorithm::Diff) >= 1.15
+BuildRequires:  perl(Algorithm::Diff) >= 1.150
+Requires:       perl(Algorithm::Diff) >= 1.150
+Provides:       perl(Algorithm::Annotate) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -39,14 +40,14 @@ Algorithm::Annotate generates a list that is useful for generating output
 simliar to 'cvs annotate'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -54,6 +55,5 @@ simliar to 'cvs annotate'.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 
 %changelog
