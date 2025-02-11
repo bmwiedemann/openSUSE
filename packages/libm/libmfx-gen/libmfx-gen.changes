@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 11 10:44:04 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed tarball to make buildservice happy 
+
+-------------------------------------------------------------------
+Mon Feb 10 15:16:54 UTC 2025 - Matthias Brugger <mbrugger@suse.com>
+
+- Update spec URL
+
+-------------------------------------------------------------------
+Mon Feb 10 12:38:39 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 25.1.1
+  * bugfixes and support for new hardware
+
+-------------------------------------------------------------------
 Thu Sep 12 12:05:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 24.3.3 - changes since 24.1.5 (related: jira#PED-10348)

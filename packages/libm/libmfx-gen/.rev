@@ -163,4 +163,17 @@
   * bugfixes</comment>
     <requestid>1200643</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8a56fad298de68f481f7e533588a2949</srcmd5>
+    <version>25.1.1</version>
+    <time>1739305813</time>
+    <user>anag+factory</user>
+    <comment>- renamed tarball to make buildservice happy 
+
+- Update spec URL
+
+- Update to version 25.1.1
+  * bugfixes and support for new hardware</comment>
+    <requestid>1245065</requestid>
+  </revision>
 </revisionlist>
