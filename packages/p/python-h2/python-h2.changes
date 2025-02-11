@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:03:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.2.0
+  * Support for Python 3.6 has been removed.
+  * Support for Python 3.7 has been removed.
+  * Support for Python 3.8 has been removed.
+  * Remove mistakenly set `max_inbound_frame_size` attribute on `H2Stream`.
+  * Support for Python 3.11 has been added.
+  * Support for Python 3.12 has been added.
+  * Support for Python 3.13 has been added.
+  * Add an ability to send outbound cookies separately to improve headers compression.
+  * Updated packaging and testing infrastructure.
+  * Fix repr() checks for Python 3.11
+  * Fix asyncio / wsgi examples.
+  * Clarify docs on using curl with http2.
+- Adjust path for patching tests/conftest.py
+- Drop fix-repr-checks-for-py311.patch, merged upstream
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

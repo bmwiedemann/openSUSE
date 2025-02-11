@@ -1,7 +1,7 @@
 #
 # spec file for package python-h2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,18 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-h2
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
 URL:            https://github.com/python-hyper/hyper-h2
 Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version}.tar.gz
-# Taken from https://github.com/python-hyper/h2/pull/1274
-Patch1:         fix-repr-checks-for-py311.patch
 BuildRequires:  %{python_module hpack >= 2.3}
 BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis >= 5.49}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-hpack >= 2.3
@@ -56,13 +56,13 @@ hypothesis.settings.register_profile(
     deadline=5000,
     suppress_health_check=[hypothesis.HealthCheck.too_slow]
 )
-" >> test/conftest.py
+" >> tests/conftest.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
