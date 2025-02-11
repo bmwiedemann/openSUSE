@@ -363,4 +363,12 @@
   * [cache_check] Extend the --clear-needs-check-flag option to have auto-repair caps</comment>
     <requestid>1188960</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fcf41ba0612790c473cdc779b506d0ba</srcmd5>
+    <version>1.1.0</version>
+    <time>1739305263</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244790</requestid>
+  </revision>
 </revisionlist>

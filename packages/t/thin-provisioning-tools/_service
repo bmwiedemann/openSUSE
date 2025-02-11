@@ -6,7 +6,7 @@
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/v1.0.13</param>
+    <param name="revision">refs/tags/v1.1.0</param>
   </service>
   <service mode="manual" name="tar" />
   <service mode="manual" name="recompress">
@@ -18,8 +18,5 @@
      <param name="srcdir">thin-provisioning-tools</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
-  </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">thin-provisioning-tools</param>
   </service>
 </services>

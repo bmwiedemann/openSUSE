@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Feb 10 11:02:27 UTC 2025 - Glass Su <glass.su@suse.com>
+
+- thin-provisioning-tools lacks symlinks and related man pages (boo#1236800)
+  * Call make install to generate symbolic links of comamnds
+  * Update %files section to include above symbolic links and man
+
+-------------------------------------------------------------------
+Wed Aug 28 07:22:36 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.0:
+  * Bump version to 1.1.0
+  * [doc] Update CHANGES
+  * [build] Update dependencies
+  * [thin_migrate] Tweak the checking routines
+  * [thin_migrate] Enforce that the source device be read-only
+  * [thin_migrate] Do not open the source device exclusively
+  * [man] Update thin_migrate man page
+  * [man] Update thin_dump man page
+  * v1.0.14
+  * [doc] Update CHANGES
+  * [build] Update Makefile to install thin_migrate
+  * [build] Update dependencies
+  * [thin_migrate] Check file type of the output device
+  * [thin_migrate] Fix suspicious open options suggested by clippy
+  * [doc] Update links in GPLv3
+  * [file_utils] Remove unexpected target_arch 'powerpc64le'
+  * [man] Fix the buffer size descriptions for cache_writeback
+  * [doc] Update TODO list
+  * [doc] Fix typos
+  * [man] Fix man page formatting
+  * [man] Add man page for thin_migrate
+  * [thin_migrate] Fix file size check on the output file
+  * [thin_migrate] Add progress bar
+  * [copier] Make the ProgressReporter reusable
+  * [thin_migrate] Update devicemapper-rs registry
+  * [thin_migrate] Hide unimplemented delta-id option and related code
+  * [thin_migrate] Remove unused code
+  * [thin_migrate] Hide unused --zero-dest option
+  * [thin_migrate] Tweak the value names in help text
+  * [thin_migrate] Fix buffer size settings for the copier
+  * [thin_migrate] Use direct io for better performance and error handling
+  * [copier] Factor out common code
+  * [space_map] Improve error tolerance of ref counting
+  * [thin_check] Fix overriding roots not working if the original one broke
+  * [thin_migrate] Apply cargo fmt, and fix clippy lints
+  * [thin_migrate] Remove unused functions and fields
+  * [thin_migrate] Fix copier parameters
+  * [thin_migrate] Fix mapping stream outputs
+  * [thin_migrate] Fix getting block device file size
+  * [thin_migrate] Temporarily skip progress display
+  * [thin_migrate] Fix opening pool metadata exclusively
+  * Builds but not tested yet
+  * wip
+  * [thin_migrate] wip
+  * [thin_migrate] work in progress
+  * [btree] add lookup function
+  * [thin_migrate] wip
+
+-------------------------------------------------------------------
 Mon Jul 22 08:21:27 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.13:
