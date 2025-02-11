@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Feb 10 10:28:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add iio-sensor-proxy-compass-check-claim-perm.patch: Avoid
+  unauthenticated permissions for compass; patch taken from
+  upstream merge request (bsc#1236290).
+
+-------------------------------------------------------------------
+Thu Jan 23 03:39:45 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.6:
+  * Drop requirement of geoclue user for compass in README.
+  * Evaluate polling drivers before buffering drivers.
+
+-------------------------------------------------------------------
 Wed Jul 26 23:25:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.5:

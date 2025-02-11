@@ -1,0 +1,37 @@
+From ff71a7f1e5d76885138c6df71083b89121884770 Mon Sep 17 00:00:00 2001
+From: Dylan Van Assche <me@dylanvanassche.be>
+Date: Sun, 9 Feb 2025 18:32:23 +0100
+Subject: [PATCH] iio-sensor-proxy: check claim-permission for compass too
+
+Fixes https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/issues/405
+---
+ src/iio-sensor-proxy.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/iio-sensor-proxy.c b/src/iio-sensor-proxy.c
+index 02d9ba5..50b4b45 100644
+--- a/src/iio-sensor-proxy.c
++++ b/src/iio-sensor-proxy.c
+@@ -636,6 +636,7 @@ handle_compass_method_call (GDBusConnection       *connection,
+ 			    gpointer               user_data)
+ {
+ 	SensorData *data = user_data;
++	g_autoptr(GError) error = NULL;
+ 
+ 	if (g_strcmp0 (method_name, "ClaimCompass") != 0 &&
+ 	    g_strcmp0 (method_name, "ReleaseCompass") != 0) {
+@@ -647,6 +648,11 @@ handle_compass_method_call (GDBusConnection       *connection,
+ 		return;
+ 	}
+ 
++	if (!check_claim_permission (data, sender, &error)) {
++		g_dbus_method_invocation_return_gerror (invocation, error);
++		return;
++	}
++
+ 	handle_generic_method_call (data, sender, object_path,
+ 				    interface_name, method_name,
+ 				    parameters, invocation, DRIVER_TYPE_COMPASS);
+-- 
+GitLab
+

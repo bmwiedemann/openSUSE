@@ -1,7 +1,7 @@
 #
 # spec file for package iio-sensor-proxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           iio-sensor-proxy
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://gitlab.freedesktop.org/hadess/iio-sensor-proxy
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM iio-sensor-proxy-compass-check-claim-perm.patch bsc#1236290 badshah400@gmail.com -- avoid unauthenticated permissions for compass
+Patch0:         https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/merge_requests/393.patch#/iio-sensor-proxy-compass-check-claim-perm.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -49,7 +51,7 @@ BuildArch:      noarch
 This package contains the documentation for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson -Dgtk-tests=false \
