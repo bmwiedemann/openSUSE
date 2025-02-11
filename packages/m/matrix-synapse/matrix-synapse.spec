@@ -126,7 +126,11 @@
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
+%if 0%{?suse_version} >= 1600
 %define use_python %{primary_python}
+%else
+%define use_python python311
+%endif
 
 %define pythons %{use_python}
 
@@ -155,7 +159,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.123.0
+Version:        1.124.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
