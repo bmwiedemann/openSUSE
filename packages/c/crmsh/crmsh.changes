@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Feb 10 11:03:40 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250210.db3e9f28:
+  * Dev: Add cancel option when confirming to commit for the pending changes
+
+-------------------------------------------------------------------
+Mon Feb 10 03:19:01 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250210.5c190a8d:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: sbd: Detect if sbd package is missing on peer nodes
+
+-------------------------------------------------------------------
+Sat Feb 08 03:47:46 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250208.0b368d36:
+  * Dev: Refactor: Introduce custom sort order enable/disable functions
+  * Dev: ui_configure: Add completer for 'configure schema' command
+  * Revert "Fix: ui_context: Don't complete for unknown argument"
+
+-------------------------------------------------------------------
+Fri Feb 07 08:34:23 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250207.bbfaace1:
+  * Dev: Replace "stonith:external/<agent>" to fence_agents in multiple places (jsc#PED-8733)
+
+-------------------------------------------------------------------
+Fri Feb 07 04:18:05 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250207.7601cb12:
+  * Fix: bootstrap: Local joining node should be included when merging known_hosts (bsc#1229419)
+
+-------------------------------------------------------------------
+Thu Feb 06 03:37:35 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250206.325350ba:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Check if core packages like corosync/pacemaker are installed
+
+-------------------------------------------------------------------
 Thu Jan 23 08:08:43 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250123.155bd2c2:
