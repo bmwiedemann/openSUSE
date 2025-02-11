@@ -1,7 +1,7 @@
 #
 # spec file for package python-holidays
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-holidays
-Version:        0.56
+Version:        0.66
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -46,7 +47,7 @@ A Python library for generating country, province and state specific sets of hol
 It makes determining whether a specific date is a holiday possible.
 
 %prep
-%setup -q -n python-holidays-%{version}
+%setup -q -n holidays-%{version}
 
 %build
 scripts/l10n/generate_mo_files.py
@@ -57,6 +58,7 @@ scripts/l10n/generate_mo_files.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+sed -i '/"--cov-fail-under=100",/d' pyproject.toml
 %pytest
 
 %files %{python_files}

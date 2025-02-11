@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:27:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.66
+  * Add Sri Lanka holidays
+  * Fix typo in CONTRIBUTING.rst
+  * Update Czechia holidays
+  * Update Germany holidays: add Corpus Christi in CATHOLIC category
+  * Update Iceland holidays: add HALF_DAY holidays
+  * Update Iran holidays
+  * Update PR exclusion logic
+  * Update Slovakia holidays: Constitution Day is working day since 2024
+  * Update Slovenia holidays
+  * Update Sweden holidays: fix All Saints' Day
+  * Update Thailand holidays: refactor Royal Ploughing Ceremony code
+  * Update United Arab Emirates holidays: add `th` l10n, exact 2017-2025 entries
+  * Update Vatican City holidays: add missing holidays, l10n support
+  * Update automatic snapshots update workflow
+  * Update some holidays Ukrainian translations
+  * Add Israel holidays localization: th
+  * Add West Frisian language
+  * Pin CI/CD Ubuntu version
+  * Remove .po files from distribution bundles
+- from version 0.65
+  * Update Afghanistan and Iran holidays: change weekend to FRI-SAT and FRI respectively
+  * Update Afghanistan holidays
+  * Update South Korea holidays: 2025 temporary public holidays
+  * Update ruff from v0.8.6 to v0.9.1
+  * Add faster date parsing from strings in ISO 8601 format
+  * Add signed artifacts path
+- from version 0.64
+  * Introduce `common.WorkingDayTests` class
+  * Refactor XNYS holidays: standardize US market holidays days of mourning entries
+  * Add Afghanistan holidays
+  * Add `HebrewCalendarHolidays` to holidays groups, refactor Israel holidays
+  * Update "Set up Python" to use 3.13
+  * Update Belarus holidays: add ru & th l10n, 2024-2025 substituted holidays
+  * Update El Salvador holidays, add l10n support
+  * Update Montenegro holidays, add l10n support
+  * Update Poland holidays: add Christmas Eve holiday since 2025
+  * Update Ukraine holidays in 1991
+  * Update XNYS: add a Day of Mourning for President Jimmy Carter
+  * Update working days calculation
+  * Add Norway holidays localization: th
+  * Add Russia holidays localization: th
+  * Add Ukraine holidays localization: th
+  * Sign release artifacts using Sigstore
+- from version 0.63
+  * Update CI/CD trigger section
+  * Update KZ holidays: add 2025 special holidays
+  * Update Thailand holidays: extend support year down to 1914
+  * Add French subdivision aliases
+  * Align financial markets MIC codes with ISO 10383
+  * Enforce 100% test coverage
+  * Inline single-use variables, update .py files formatting
+- from version 0.62
+  * Introduce start/end year for entity
+  * Add Guernsey holidays
+  * Update AZ holidays: add 2025 special holidays
+  * Update Argentina holidays: Add 2025 Bridge Public Holidays
+  * Update CA holidays: Nunavut Day is NU public holiday since 2020
+  * Update Finland holidays: fix Independence Day appearing pre-1917
+  * Update Paraguay holidays
+  * Update Timor Leste holidays: Add 2024 Nov 29 Special Holiday
+  * Update pyproject.toml: clarify project summary
+  * Add SECURITY.md
+- from version 0.61
+  * Add financial markets l10n support
+  * Refactor some `if len(container)...` cases to `if container...`
+  * Add "Brasil, Bolsa, Balcão" ([B]³) holidays
+  * Update Brazil holidays, add l10n support
+  * Update Brunei holidays: 1998-2003, 2006-2025 exact dates
+  * Update CH holidays: rename Neujahrestag to Neujahrstag
+  * Update Cambodia holidays: add Peace Day in Cambodia
+  * Update China holidays in 2025
+  * Update Thailand holidays: 2025-2026 Bridge Public Holidays
+  * Update Unites States holidays: remove Columbus Day from countrywide holidays
+  * Update `TestCase::assertLocalizedHolidays`: add subdivisions holidays support
+  * Update helpers::_normalize_arguments, add helpers tests
+  * Update ruff configuration: add Pylint errors check
+  * Add Europe Day to InternationalHolidays
+  * Add Portugal subdivision aliases
+- from version 0.60
+  * Refactor Australia tests
+  * Refactor Cambodia and Laos test cases
+  * Refactor Canada tests
+  * Refactor United States tests
+  * Refactor v1 incompatibility warning
+  * Update the Philippines holidays: add `en_PH`, `en_US`, `fil`, `th` localization
+  * Fix `make l10n` removing loc comment for Asarnha Bucha
+  * Fixed Thai Calendar test case coverage
+  * Improve .po files "Language-Team" header consistency
+  * Update Albania holidays, add l10n support
+  * Update Australia holidays: remove `Adelaide Cup Day` holiday pre-1973 for South Australia
+  * Update CONTRIBUTING.rst
+  * Update Germany holidays: add East German Uprising Day 2028 in Berlin
+  * Update Indonesia holidays: `th` localization, more refractor
+  * Update Indonesia holidays: add 2024 Local Election, exact historic dates from 1963 onwards
+  * Update Spain holidays in 2025
+  * Update Thailand holidays in 2025
+  * Update Timor-Leste holidays
+  * Update United States holidays: Alaska state holidays correction
+  * Simplify PR template
+- from version 0.59
+  * Update Vietnam holidays: add `th` localization
+  * Update Germany holidays: add Liberation from Nazi Regime Day 2025 in Berlin
+  * Update Johor (Malaysia) and United Arab Emirates `weekend` observance, cleanup others
+  * Update Vietnam holidays
+  * Update `InternationalHolidays::_add_world_war_two_victory_day()` method
+  * Update `holidays` package metadata
+  * Update metadata Python versions
+  * Add `EasternCalendarHolidays` to holidays groups
+  * Drop Python 3.8 support
+  * Satisfy mypy requirements
+- from version 0.58
+  * Add Congo holidays
+  * Add Saint Kitts & Nevis holidays
+  * Add Vietnamese translation of VietNam holidays
+  * Update Kazakhstan holidays: add substituted holidays, localization
+  * Update Malaysia holidays: add `th` localization
+  * Update Singapore holidays: add `en_SG`, `en_US`, `th` localization
+  * Update Sweden holidays: add `th` localization
+  * Update Azerbaijan holidays in 2024
+  * Update Curaçao holidays: add HALF_DAY holidays
+  * Update Japan holidays
+  * Update Nicaragua holidays
+  * Update Taiwan holidays
+  * Update US holidays: American Samoa holidays
+  * Update United States holidays: fix Washington's Birthday in GA & IN
+  * Update `ci` label configuration
+  * Update apostrophes: change `’` to `'`
+  * Update working day related calculations
+  * Add @PPsyrius to CODEOWNERS
+  * Move to `holidays` from `python-holidays`
+  * Remove deprecated `fix-encoding-pragma`, add `pyupgrade`
+- from version 0.57
+  * Update Australia holidays: add `en_AU`, `en_US`, `th` localization
+  * Fix some docstrings
+  * Update Australia holidays: fix Christmas Day in ACT
+  * Update Germany holidays: add `th` localization, deprecated non-standard ISO code, add subdivision aliases
+  * Update Jersey holidays
+  * Update South Korea holidays: add Armed Forces Day in 2024
+  * Update examples to reflect recent holidays changes
+  * Add Frances Xavier Cabrini Day for United States, Colorado
+  * Extend `_ThaiLunisolar` calendar support to 2157
+  * Unify en_US Islamic holidays name translation
+- from version 0.56
+  * Refactor Lao New Year holidays
+  * Add 1991-2022 Russian substituted holidays
+  * Add Dominica holidays
+  * Add Haiti holidays
+  * Change "St." to "Saint" in holidays names
+  * Update Brunei Darussalam islamic holidays for 2024
+  * Update Cambodian holidays for 2024
+  * Update Dominican Republic holidays: fix Restoration Day
+  * Update HU: add 2025 substituted holidays
+  * Update Philippines holidays
+  * Update SBOM artifact path
+  * Update Snapshot for 0.55 changes
+  * Update `numpy` test requirements
+  * Update pyproject.toml: remove `target-version` from tool.ruff
+  * Add Easter Tuesday to Christian holidays group
+  * Add New Zealand Subdivision Aliases (`EN`, `MI`, HASC)
+  * Add PR labeler
+  * Add Python 3.13 (beta) to CI/CD
+  * Add automatic snapshots update workflow
+  * Migrate deprecated Bosnia-Herzegovina subdivisions to subdivision aliases
+  * Migrate deprecated Italy subdivisions to subdivision aliases
+  * Migrate deprecated United Kingdom subdivisions to subdivision aliases
+  * Restore Malaysia's 3-letter code as subdivisions aliases
+  * Standardize snapshot names
+- Add sed command to strip "--cov-fail-under=100" from pytest options
+- Adjust upstream source name in spec file
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sun Sep  8 12:43:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.56:
