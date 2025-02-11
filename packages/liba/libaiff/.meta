@@ -1,0 +1,7 @@
+<package name="libaiff" project="openSUSE:Factory">
+  <title>Open-source implementation of the AIFF format</title>
+  <description>LibAiff is a library with support for reading and writing Audio Interchange
+File Format (AIFF) files.</description>
+  <devel project="multimedia:libs" package="libaiff"/>
+  <url>https://github.com/mtszb/libaiff</url>
+</package>
