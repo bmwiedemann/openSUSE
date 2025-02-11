@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 10 21:53:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.1.15.22:
+  * Add CUDA 12.6 classifier
+  * Remove unused licenses
+  * Add upcoming django version
+  * Add term for quantum computing
+  * Add Django trove classifiers for 5 and upcoming 5.2 release
+
+-------------------------------------------------------------------
 Tue Nov 12 01:30:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2024.10.21.16:

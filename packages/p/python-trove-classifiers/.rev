@@ -141,4 +141,17 @@
   * Add Trove classifier for Python 3.14 (#178)</comment>
     <requestid>1223469</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e3726d783efe746a8659c281da14ea53</srcmd5>
+    <version>2025.1.15.22</version>
+    <time>1739305310</time>
+    <user>anag+factory</user>
+    <comment>- update to 2025.1.15.22:
+  * Add CUDA 12.6 classifier
+  * Remove unused licenses
+  * Add upcoming django version
+  * Add term for quantum computing
+  * Add Django trove classifiers for 5 and upcoming 5.2 release</comment>
+    <requestid>1244902</requestid>
+  </revision>
 </revisionlist>
