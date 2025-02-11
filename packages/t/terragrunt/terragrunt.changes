@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Feb 11 07:21:38 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.0:
+  * Breaking Changes
+    - Removal of terragrunt- prefix in flags
+      All Terragrunt CLI flags no longer start with the terragrunt-
+      prefix. This will not immediately break workflows, but will
+      start to emit warnings for users.
+      We will announce removal of support for flags without the
+      terragrunt- prefix well in advance, and it will be done in a
+      future minor release before v1.0.
+      You can opt in to making this a breaking change today via
+      usage of the terragrunt-prefix-flags strict control.
+    - Rename of TERRAGRUNT_ prefixed environment variables
+      All Terragrunt environment variables are no longer prefixed
+      with TERRAGRUNT_, but are now instead prefixed with TG_. This
+      will not immediately break workflows, but will start to emit
+      warnings for users.
+      We do not currently have plans to remove support for
+      environment variables with the TERRAGRUNT_ prefix, and are
+      aiming to support them after the release of v1.0, as we know
+      this can be a more difficult configuration to change.
+      You can opt in to making this a breaking change today via
+      usage of the terragrunt-prefix-env-vars strict control.
+    - Removal of support for the Terragrunt default command
+      Prior to this release, Terragrunt would forward all commands
+      that were not defined in the Terragrunt CLI directly to
+      OpenTofu/Terraform. With the introduction of the new run
+      command, this behavior is no longer necessary, nor desirable.
+      In addition to supporting the new run command, Terragrunt now
+      also supports explicit OpenTofu shortcuts. You can learn more
+      about both below.
+      We will announce removal of support for the default command
+      of Terragrunt well in advance, and it will be done in a
+      future minor release before v1.0.
+      You can opt in to making this a breaking change today via
+      usage of the default-command strict control.
+  * New Features
+    All of the features released in this release require usage of
+    the cli-redesign experiment.
+    - New run command
+      This command replaces what used to be the responsibility of
+      the default command in Terragrunt. Going forward, when users
+      want to explicitly have Terragrunt run an OpenTofu/Terraform
+      command on their behalf, they'll use the run command.
+      In a future release, this command will also gain the two
+      following flags to replace the functionality of the run-all
+      and graph commands:
+        --all: Replaces the run-all command.
+        --graph: Replaces the graph command.
+      You can learn more about the run command here:
+      https://terragrunt.gruntwork.io/docs/reference/cli-options/#run
+    - New exec command
+      This command provides tooling to explicitly execute an
+      arbitrary command using Terragrunt (even if it's not related
+      to OpenTofu/Terraform). It users additional control over
+      exactly what Terragrunt does when it's executing a command,
+      and gives them additional flexibility they wouldn't have
+      otherwise.
+      You can learn more about the exec command here:
+      https://terragrunt.gruntwork.io/docs/reference/cli-options/#exec
+    - New info strict command
+      The new info strict command gives users a quick way to
+      determine which strict controls are available in the
+      Terragrunt CLI using the terminal.
+      We'll be making updates in the near future to update the
+      UI/UX of the command, but we've released an early version for
+      preview via the cli-redesign experiment flag.
+  * What's Changed
+    - fix: Fixing slug for `cli-redesign` migration guide (#3866)
+    - feat: `exec`, `run`, `info strict` commands implementation,
+      flags renaming. (#3723)
+    - fix: Closing gap from CLI Redesign (#3862)
+
+-------------------------------------------------------------------
 Sat Feb 08 17:09:58 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.72.9:
