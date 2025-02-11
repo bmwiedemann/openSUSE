@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb  9 05:30:11 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.85.0 (0.085)
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.085   2025-02-08
+          - fix #114 #113 #112 (improved detection of Apple+x86_64 / AESNI)
+          - fix #115 Crypt::PRNG - fix typo and specify ChaCha20 is the default
+
+-------------------------------------------------------------------
 Thu Oct 17 05:33:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.84.0 (0.084)
