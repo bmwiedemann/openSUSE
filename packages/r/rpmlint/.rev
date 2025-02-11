@@ -5151,4 +5151,18 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * dbus-services: adjust sssd-dbus hash (bsc#1235724)</comment>
     <requestid>1243069</requestid>
   </revision>
+  <revision rev="498" vrev="1">
+    <srcmd5>18670b47ed1a360c722331261ffb48c3</srcmd5>
+    <version>2.6.1+git20250210.a7561ed8</version>
+    <time>1739305244</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20250210.a7561ed8:
+  * dbus-services: adjust iio-sensor-proxy digest (bsc#1236290)
+  * CI: add opensuse-slfo-* branches
+  * Add declarative build support to SpecCheck
+  * FilesCheck: Update FSF address check
+  * Handle the missing buildroot in rpm 4.20 gracefully
+  * %{autochangelog} in the changelog section should not cause a warning</comment>
+    <requestid>1244757</requestid>
+  </revision>
 </revisionlist>
