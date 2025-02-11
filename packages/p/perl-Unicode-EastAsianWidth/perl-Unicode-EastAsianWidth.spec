@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Unicode-EastAsianWidth
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,24 @@
 #
 
 
-Name:           perl-Unicode-EastAsianWidth
-Version:        12.0
-Release:        0
-#Upstream:  This work is under the *CC0 1.0 Universal* license. or neighboring rights to Unicode-EastAsianWidth. This work is published from Taiwan. the http://creativecommons.org/publicdomain/zero/1.0 manpage
 %define cpan_name Unicode-EastAsianWidth
-Summary:        East Asian Width properties
+Name:           perl-Unicode-EastAsianWidth
+Version:        12.0.0
+Release:        0
+# 12.0 -> normalize -> 12.0.0
+%define cpan_version 12.0
+#Upstream:  This work is under the *CC0 1.0 Universal* license. or neighboring rights to Unicode-EastAsianWidth. This work is published from Taiwan. the http://creativecommons.org/publicdomain/zero/1.0 manpage
 License:        CC0-1.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/%{cpan_name}-%{version}.tar.gz
+Summary:        East Asian Width properties
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
+Provides:       perl(Unicode::EastAsianWidth) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -61,11 +64,11 @@ will no longer work on Perl 5.16 and later versions, and hence is not
 recommended.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -76,7 +79,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README README.mkdn
 
 %changelog
