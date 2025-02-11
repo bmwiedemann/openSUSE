@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Acme-Damn
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Acme-Damn
-Version:        0.08
-Release:        0
 %define cpan_name Acme-Damn
+Name:           perl-Acme-Damn
+Version:        0.80.0
+Release:        0
+# 0.08 -> normalize -> 0.80.0
+%define cpan_version 0.08
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        'Unbless' Perl objects
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Acme-Damn/
-Source0:        http://www.cpan.org/authors/id/I/IB/IBB/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/I/IB/IBB/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Exception)
+Provides:       perl(Acme::Damn) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -38,14 +40,14 @@ reference (a Perl object), and _unblesses_ it, to return the original
 reference.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -53,7 +55,6 @@ reference.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
