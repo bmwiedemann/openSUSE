@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside6
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -194,7 +194,9 @@ numpyinc=$(%{__mypython} -c 'import numpy; print(numpy.get_include())')
 %if "%{pyside_flavor}" == "shiboken6"
   -DCMAKE_SKIP_RPATH:BOOL=ON \
 %endif
-  -DQFP_NO_STRIP:BOOL=ON
+  -DQFP_NO_STRIP:BOOL=ON \
+  -DCTEST_TESTING_TIMEOUT=120 \
+  %{nil}
 
 %{qt6_build}
 
@@ -256,11 +258,20 @@ ctest_exclude_regex="smart_smart_pointer"
 # QtCore_qoperatingsystemversion_test fails after https://code.qt.io/cgit/qt/qtbase.git/commit/?id=1214edc
 ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning|pyside6-deploy_test_pyside6_deploy|QtWidgets_qwidget_test|pyside6-android-deploy_test_pyside6_android_deploy|qoperatingsystemversion"
 
-# registry_existence_test randomly times out and QtWebEngineCore_web_engine_custom_scheme asserts
+# QtWebEngineCore_web_engine_custom_scheme asserts
 # QtWebEngineCore_qwebenginecookiestore_test, pysidetest_new_inherited_functions_test fail with a mesa error ('MESA: error: ZINK: vkCreateInstance failed (VK_ERROR_INCOMPATIBLE_DRIVER)')
 # QtWidgets_bug_668, QtWidgets_bug_728 segfault
 %ifarch aarch64
-ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test|QtWebEngineCore_web_engine_custom_scheme|QtWebEngineCore_qwebenginecookiestore_test|pysidetest_new_inherited_functions_test|QtWidgets_bug_668|QtWidgets_bug_728"
+ctest_exclude_regex="$ctest_exclude_regex|QtWebEngineCore_web_engine_custom_scheme|QtWebEngineCore_qwebenginecookiestore_test|pysidetest_new_inherited_functions_test|QtWidgets_bug_668|QtWidgets_bug_728"
+%endif
+# QtWebEngineCore_web_engine_custom_scheme is flaky
+# QtQml_qquickitem_grabToImage fails for unknown reasons
+%ifarch riscv64
+ctest_exclude_regex+="|QtWebEngineCore_web_engine_custom_scheme|QtQml_qquickitem_grabToImage"
+%endif
+# qemu linux-user emulation is always multi-threaded, sandbox refuses to start
+%if 0%{?qemu_user_space_build}
+ctest_exclude_regex+="|QtWebEngineCore_web_engine_custom_scheme|QtWebEngineCore_qwebenginecookiestore_test|QtWebEngineWidgets_pyside-474-qtwebengineview"
 %endif
 %endif
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:43:59 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update test excludes for qemu emulation and riscv64
+- Increase testing timeout to avoid spurious failure of
+  registry_existence_test
+
+-------------------------------------------------------------------
 Fri Jan 31 12:40:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2. Check the installed changes-6.8.2 file for the
