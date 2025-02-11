@@ -729,4 +729,13 @@
   pkgconfig(libsystemd)</comment>
     <requestid>1241315</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>d33a29ace3e01bc16377ee0a8cfe36f4</srcmd5>
+    <version>2.3.21.1</version>
+    <time>1739305498</time>
+    <user>anag+factory</user>
+    <comment>- Fix build problems caused by too long file name.
+  Add patch: dovecot-2.3.21-test-socket-path.patch</comment>
+    <requestid>1244936</requestid>
+  </revision>
 </revisionlist>

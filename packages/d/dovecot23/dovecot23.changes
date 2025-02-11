@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:06:40 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Fix build problems caused by too long file name.
+  Add patch: dovecot-2.3.21-test-socket-path.patch
+
+-------------------------------------------------------------------
 Fri Jan 24 21:52:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Enable notify support for the unit file. New BR

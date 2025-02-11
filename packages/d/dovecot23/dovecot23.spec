@@ -167,6 +167,8 @@ Patch2:         fix-build-with-openssl-3.patch
 Patch3:         fix-strict-aliasing.patch
 # PATCH-FIX-UPSTREAM - https://github.com/dovecot/core/commit/1ccd5b54.patch
 Patch4:         dovecot-link-icu76.patch
+# PATCH-FIX-UPSTREAM - https://src.fedoraproject.org/rpms/dovecot/raw/rawhide/f/dovecot-2.3.21-test-socket-path.patch
+Patch5:         dovecot-2.3.21-test-socket-path.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
