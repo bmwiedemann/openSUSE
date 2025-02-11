@@ -141,4 +141,15 @@
   * Drop support for Python 3.7.</comment>
     <requestid>1183917</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4b12321900e7944d68b1247818f1ccdd</srcmd5>
+    <version>4.1.1</version>
+    <time>1739305439</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.1.1:
+  * Fix NameError which occurred when importing
+    zodbpickle.fastpickle.
+  * Add final support for Python 3.13.</comment>
+    <requestid>1244905</requestid>
+  </revision>
 </revisionlist>
