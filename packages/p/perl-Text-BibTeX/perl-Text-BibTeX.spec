@@ -18,10 +18,10 @@
 
 %define cpan_name Text-BibTeX
 Name:           perl-Text-BibTeX
-Version:        0.900.0
+Version:        0.910.0
 Release:        0
-# 0.90 -> normalize -> 0.900.0
-%define cpan_version 0.90
+# 0.91 -> normalize -> 0.910.0
+%define cpan_version 0.91
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Interface to read and parse BibTeX files
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 31 05:30:56 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.910.0 (0.91)
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+
+  0.91 2025-01-29
+   * Fix compilation issue with btparse code (Colin Mcdonald)
+
+-------------------------------------------------------------------
 Wed Jan 22 21:12:48 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.900.0 (0.90)

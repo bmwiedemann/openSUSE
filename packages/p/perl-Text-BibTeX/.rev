@@ -142,4 +142,12 @@
    * Added support to Haiku OS (thanks to Joachim Mairböc (forwarded request 1239659 from tinita)</comment>
     <requestid>1239744</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4dee96b05c924e59f16665b4ea9e3d33</srcmd5>
+    <version>0.910.0</version>
+    <time>1739305320</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244955</requestid>
+  </revision>
 </revisionlist>
