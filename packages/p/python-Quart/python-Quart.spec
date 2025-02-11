@@ -1,7 +1,7 @@
 #
 # spec file for package python-Quart
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-# Can't build for Python 3.10 due to missing hypercorn
-%define skip_python310 1
+%{?sle15_python_module_pythons}
 Name:           python-Quart
-Version:        0.19.9
+Version:        0.20.0
 Release:        0
 Summary:        A Python ASGI web microframework with the same API as Flask
 License:        MIT
@@ -33,6 +32,7 @@ BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module blinker >= 1.6}
 BuildRequires:  %{python_module click >= 8.0}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module hypercorn >= 0.11.2}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module itsdangerous}
@@ -89,8 +89,8 @@ Quart is an async Python web microframework. Using Quart you can,
 %python_uninstall_alternative quart
 
 %files %{python_files}
-%doc README.rst CHANGES.rst
-%license LICENSE
+%doc README.md CHANGES.md
+%license LICENSE.txt
 %python_alternative %{_bindir}/quart
 %{python_sitelib}/quart
 %{python_sitelib}/quart-%{version}.dist-info
