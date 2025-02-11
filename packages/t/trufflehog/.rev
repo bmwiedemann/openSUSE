@@ -1883,4 +1883,22 @@
   * Enable Auth0 (#3857) (forwarded request 1244122 from ph03nix)</comment>
     <requestid>1244186</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>7ea29c9bf78d8061510a5c51af366669</srcmd5>
+    <version>3.88.6</version>
+    <time>1739305910</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.6:
+  * optimized and updated mailgun analyzer (#3899)
+  * fix(deps): update module github.com/go-ldap/ldap/v3 to v3.4.10 (#3896)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.13.2 (#3895)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.8 (#3894)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.55.6 (#3893)
+  * chore(deps): update dependency go to v1.23.6 (#3889)
+  * fixed square analyzer client error (#3887)
+  * Merge analyze tui with trufflehog tui (#3735)
+  * Exported Ahocorasick core in engine (#3880)
+  * fixed sourcegraph analyzer (#3877) (forwarded request 1244969 from ph03nix)</comment>
+    <requestid>1245132</requestid>
+  </revision>
 </revisionlist>
