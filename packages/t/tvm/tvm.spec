@@ -1,7 +1,7 @@
 #
 # spec file for package tvm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.17.0
+Version:        0.19.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
@@ -82,12 +82,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  gmock
 BuildRequires:  gtest
-%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-# Cannot build with llvm15, so stick with llvm14 for now
-BuildRequires:  llvm14-devel
-%else
 BuildRequires:  llvm-devel
-%endif
 BuildRequires:  memory-constraints
 BuildRequires:  openblas-devel
 BuildRequires:  opencl-headers
@@ -249,7 +244,8 @@ export OMP_NUM_THREADS=1
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 # TextureCopy: no openCL in environment
-ctestflags="-E (TextureCopy|TvmVMMemoryManagerTest)"
+# aarch64 OBS workers do not support SVE or FP16 yet
+ctestflags="-E (TextureCopy|TvmVMMemoryManagerTest|AProfileParser.DefaultSVESupportSVESupport|AProfileParser.DefaultFP16Support)"
 %ctest $ctestflags
 }
 

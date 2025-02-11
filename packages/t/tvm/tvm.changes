@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 11 12:35:15 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.19.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.19.0
+- Skipped 0.18.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.18.0
+- Drop llvm downgrade logic as v0.19.0 supports llvm up to 20
+
+-------------------------------------------------------------------
 Thu Oct 10 13:04:56 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.17.0:
