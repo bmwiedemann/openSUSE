@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb  8 05:30:24 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.370.0 (0.37)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.37    2025-02-07
+          [CHANGES]
+           * Added `xps_signature_query_*()` API
+
+          [BUGFIXES]
+           * Don't store signature parsing state in the `PL_parser->sig_*` vars,
+             so as to cope when Perl v5.41.9 removes them
+
+-------------------------------------------------------------------
 Wed Jan 22 21:23:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.360.0 (0.36)

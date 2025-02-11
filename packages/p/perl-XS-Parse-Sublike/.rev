@@ -7,4 +7,12 @@
     <comment>Dependency for perl-Object-Pad, see https://build.opensuse.org/requests/1240894</comment>
     <requestid>1240897</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5b09dab1393a09d4332e88382744a63</srcmd5>
+    <version>0.370.0</version>
+    <time>1739305475</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244961</requestid>
+  </revision>
 </revisionlist>
