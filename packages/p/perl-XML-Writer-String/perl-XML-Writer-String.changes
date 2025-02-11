@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 10 21:48:36 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Wed May 23 06:50:54 UTC 2012 - cfarrell@suse.com
 
 - license update: Artistic-1.0 or GPL-1.0+
