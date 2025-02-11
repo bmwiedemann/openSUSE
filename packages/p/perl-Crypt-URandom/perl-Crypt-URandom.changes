@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Feb  9 05:29:48 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.530.0 (0.53)
+   see /usr/share/doc/packages/perl-Crypt-URandom/Changes
+
+  0.53  Sat Feb 08 20:03:30 2025
+       - Changes to try and catch CPAN Tester failures on solaris
+
+  0.52  Thu Jan 23 06:33:51 2025
+       - Fixes to test suite.  Thanks to Petr Pisar for GH#17
+
+  0.51  Wed Jan 22 22:18:19 2025
+       - Improvements to handling SIGINT.  Thanks to Leon Timmermans for GH#14
+       - Memory leak fix.  Thanks to Leon Timmermans for GH#15
+       - Using arc4random_buf for OpenBSD/OSX.  Thanks to Leon Timmermans for GH#16
+       - Documentation fixes
+
+-------------------------------------------------------------------
 Thu Jan  9 05:31:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.500.0 (0.50)

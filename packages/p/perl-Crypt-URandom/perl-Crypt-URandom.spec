@@ -18,10 +18,10 @@
 
 %define cpan_name Crypt-URandom
 Name:           perl-Crypt-URandom
-Version:        0.500.0
+Version:        0.530.0
 Release:        0
-# 0.50 -> normalize -> 0.500.0
-%define cpan_version 0.50
+# 0.53 -> normalize -> 0.530.0
+%define cpan_version 0.53
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide non blocking randomness
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -43,7 +43,7 @@ currently supported are anything supporting getrandom(2), /dev/urandom and
 versions of Windows greater than or equal to Windows 2000.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
