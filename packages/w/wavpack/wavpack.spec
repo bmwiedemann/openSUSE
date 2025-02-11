@@ -18,7 +18,7 @@
 
 %define soname  1
 Name:           wavpack
-Version:        5.8.0
+Version:        5.8.1
 Release:        0
 Summary:        Hybrid Lossless Audio Compression Format
 License:        BSD-3-Clause

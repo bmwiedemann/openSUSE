@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb  9 21:33:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.1:
+  * build fixes for cmake build system
+
+-------------------------------------------------------------------
 Tue Jan 28 16:20:18 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8.0
@@ -33,7 +39,7 @@ Sat Mar 16 16:38:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
   * improved: convert the man pages to mdoc(7)
   * improved: cmake & autoconf support
 
-- Build AVX2 enabled hwcaps library for x86_64-v3 
+- Build AVX2 enabled hwcaps library for x86_64-v3
 
 -------------------------------------------------------------------
 Sat Dec  3 16:41:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -46,7 +52,7 @@ Sat Dec  3 16:41:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * fixed: detect and report PCM files having non-zero padding bits
   * fixed: possible crash when displaying long channel assignments
   * fixed: big-endian-sourced "raw" files gave big-endian "wav"s
-  * fixed: numerous minor issues 
+  * fixed: numerous minor issues
 
 -------------------------------------------------------------------
 Mon Jul 11 17:47:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -79,7 +85,7 @@ Wed Mar 16 09:03:47 UTC 2022 - pgajdos@suse.com
 Mon Jan 18 12:40:18 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
 
 - Update to version 5.4.0
-  * CVE-2020-35738: Fixed an out-of-bounds write in WavpackPackSamples (bsc#1180414) 
+  * CVE-2020-35738: Fixed an out-of-bounds write in WavpackPackSamples (bsc#1180414)
   * fixed: disable A32 asm code when building for Apple silicon
   * fixed: issues with Adobe-style floating-point WAV files
   * added: --normalize-floats option to wvunpack for correctly
@@ -250,7 +256,7 @@ Thu Sep  4 13:35:36 CEST 2008 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Aug 13 07:06:33 CEST 2007 - crrodriguez@suse.de
 
-- remove static libraries and useless libtool archive 
+- remove static libraries and useless libtool archive
 
 -------------------------------------------------------------------
 Fri Jul 27 09:49:25 CEST 2007 - sbrabec@suse.cz
