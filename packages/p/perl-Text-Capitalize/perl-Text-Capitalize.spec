@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Capitalize
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,23 @@
 #
 
 
-Name:           perl-Text-Capitalize
-Version:        1.5
-Release:        0
 %define cpan_name Text-Capitalize
-Summary:        Capitalize strings ("to WORK AS titles" becomes "To Work as Titles")
+Name:           perl-Text-Capitalize
+Version:        1.500.0
+Release:        0
+# 1.5 -> normalize -> 1.500.0
+%define cpan_version 1.5
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DO/DOOM/%{cpan_name}-%{version}.tar.gz
+Summary:        Capitalize strings ("to WORK AS titles" becomes "To Work as Titles")
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DO/DOOM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Module::Build) >= 0.42
+Provides:       perl(Text::Capitalize) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -70,21 +72,20 @@ transformation:
   scramble_case:    "gET wHaCkY"  (or something similar)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
