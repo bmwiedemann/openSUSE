@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Patch
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Text-Patch
-Version:        1.8
-Release:        0
 %define cpan_name Text-Patch
+Name:           perl-Text-Patch
+Version:        1.800.0
+Release:        0
+# 1.8 -> normalize -> 1.800.0
+%define cpan_version 1.8
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
+License:        GPL-2.0-or-later
 Summary:        Patches text with given patch
-License:        GPL-2.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Text-Patch/
-Source:         http://www.cpan.org/authors/id/C/CA/CADE/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CA/CADE/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Text::Diff)
 Requires:       perl(Text::Diff)
+Provides:       perl(Text::Patch) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -40,49 +44,15 @@ diff, see -u option).
 
 * patch( $source, $diff, options... )
 
-  First argument is source (original) text. Second is the diff data. Third
-  argument can be either hash reference with options or all the rest
-  arguments will be considered patch options:
-
-      $output = patch( $source, $diff, STYLE => "Unified", ... );
-  
-      $output = patch( $source, $diff, { STYLE => "Unified", ... } );
-
-  Options are:
-
-    STYLE => 'Unified'
-
-  STYLE can be "Unified", "Context" or "OldStyle".
-
-  The 'Unified' diff format looks like this:
-
-    @@ -1,7 +1,6 @@
-    -The Way that can be told of is not the eternal Way;
-    -The name that can be named is not the eternal name.
-     The Nameless is the origin of Heaven and Earth;
-    -The Named is the mother of all things.
-    +The named is the mother of all things.
-    +
-     Therefore let there always be non-being,
-       so we may see their subtlety,
-     And let there always be being,
-    @@ -9,3 +8,6 @@
-     The two are the same,
-     But after they are produced,
-       they have different names.
-    +They both may be called deep and profound.
-    +Deeper and more profound,
-    +The door of all subtleties!
-
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -90,7 +60,7 @@ diff, see -u option).
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc ChangeLog COPYING README
+%doc ChangeLog README
+%license COPYING
 
 %changelog
