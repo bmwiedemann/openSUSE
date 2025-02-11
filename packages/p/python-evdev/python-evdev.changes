@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 10 19:03:30 UTC 2025 - Matthias Bach <marix@marix.org> - 1.9.0
+
+- Update to 1.9.0
+  * Slightly faster reading of events in device.read() and
+    device.read_one().
+  * Drop deprecated InputDevice.fn (use InputDevice.path instead).
+  * Improve type hint coverage and add a py.typed file.
+- Remove fix-tests.patch as it was included upstream.
+
+-------------------------------------------------------------------
 Wed Jan 29 19:36:45 UTC 2025 - Matthias Bach <marix@marix.org> - 1.8.0
 
 - Update to 1.8.0

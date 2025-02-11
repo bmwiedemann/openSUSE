@@ -170,4 +170,17 @@
   manualrun.</comment>
     <requestid>1241259</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2952d6dda731adb79c09d0f7322d4d47</srcmd5>
+    <version>1.9.0</version>
+    <time>1739305406</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.0
+  * Slightly faster reading of events in device.read() and
+    device.read_one().
+  * Drop deprecated InputDevice.fn (use InputDevice.path instead).
+  * Improve type hint coverage and add a py.typed file.
+- Remove fix-tests.patch as it was included upstream.</comment>
+    <requestid>1244849</requestid>
+  </revision>
 </revisionlist>
