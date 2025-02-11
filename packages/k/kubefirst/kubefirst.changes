@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 11 07:23:21 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.2:
+  * feat: tag latest api (#2415)
+  * set next macro chart for kubefirst - 2.8.2
+  * Fix display msg (#2414)
+  * fix: add missing flags (#2413)
+
+-------------------------------------------------------------------
 Fri Feb 07 08:24:52 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.1:
