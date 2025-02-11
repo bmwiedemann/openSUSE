@@ -48,7 +48,7 @@ index e4a6c56..fdb3c75 100644
 --- a/lib/Mozilla/CA.pm
 +++ b/lib/Mozilla/CA.pm
 @@ -5,11 +5,9 @@
- our $VERSION = '20240924';
+ our $VERSION = '20250202';
  
  use File::Spec ();
 -use File::Basename qw(dirname);

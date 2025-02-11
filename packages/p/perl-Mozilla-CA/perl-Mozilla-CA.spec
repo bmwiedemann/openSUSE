@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mozilla-CA
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mozilla-CA
 Name:           perl-Mozilla-CA
-Version:        20240924.0.0
+Version:        20250202.0.0
 Release:        0
-# 20240924 -> normalize -> 20240924.0.0
-%define cpan_version 20240924
+# 20250202 -> normalize -> 20250202.0.0
+%define cpan_version 20250202
 #Upstream: SUSE-Public-Domain
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Summary:        Mozilla's CA cert bundle in PEM format

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 10 20:34:34 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
+
+-------------------------------------------------------------------
+Mon Feb  3 05:31:00 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20250202.0.0 (20250202)
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20250202
+    - Update from Mozilla repository to 2025-02-02
+    - Added certificates:
+      - GLOBALTRUST 2020
+        sha256: 9a296a5182d1d451a2e37f439b74daafa267523329f90f9a0d2007c334e23c9a
+    - Removed certificates:
+      - Entrust Root Certification Authority - G4
+        sha256: db3517d1f6732a2d5ab97c533ec70779ee3270a62fb4ac4238372460e6f01e88
+      - SecureSign RootCA11
+        sha256: bf0feefb9e3a581ad5f9e9db7589985743d261085c4d314f6f5d7259aa421612
+      - Security Communication RootCA3
+        sha256: 24a55c2ab051442d0617766541239a4ad032d7c55175aa34ffde2fbc4f5c5294
+
+-------------------------------------------------------------------
 Tue Dec 31 01:05:18 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
