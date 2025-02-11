@@ -1,7 +1,7 @@
 #
 # spec file for package mangohud
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define implot_ver 0.16
 %define vulkan_ver 1.2.158
 Name:           mangohud
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
@@ -120,8 +120,7 @@ export CXX=g++-12
     -Dwith_xnvctrl=disabled \
     -Dtests=enabled \
     -Dmangoapp=true \
-    -Dmangohudctl=true \
-    -Dmangoapp_layer=true
+    -Dmangohudctl=true
     %{nil}
 %meson_build
 
