@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutmut
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mutmut
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Python mutation testing
 License:        BSD-3-Clause
@@ -89,6 +89,7 @@ sed -i '1{/^#!/d}' mutmut/__main__.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/mutmut
+%exclude %{python_sitelib}/tests
 %{python_sitelib}/mutmut
 %{python_sitelib}/mutmut-%{version}.dist-info
 
