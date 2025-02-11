@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb  9 21:30:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * ykpiv: Fix type casting issues affecting systems using
+    Big-endian architecture
+
+-------------------------------------------------------------------
 Thu Dec 19 14:49:32 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - update to 2.7.0:
@@ -28,14 +35,14 @@ Tue May  7 09:05:14 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - update to 2.5.2:
   * cmd: Fix signing selfsigned certificate for ED25519 key.
-- update cmake-flags-upstream-issue-474.patch 
+- update cmake-flags-upstream-issue-474.patch
 
 -------------------------------------------------------------------
 Wed Feb 14 09:05:14 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - update to 2.5.1:
   * ykpiv: cmd: ykcs11: Fix buffer size for key import.
-- add cmake-flags-upstream-issue-474.patch: 
+- add cmake-flags-upstream-issue-474.patch:
   proper fix for the cmake flags issue
 - remove temporary-cmake-flags-fix.patch
 
