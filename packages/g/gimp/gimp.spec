@@ -46,10 +46,10 @@
 %define freetype2_version       2.1.7
 %define exiv2_version           0.27.4
 %define gdk_pixbuf_version      2.30.8
-%define gegl_version            0.4.52
+%define gegl_version            0.4.54
 %define gexiv2_version          0.14.0
 %define glib_version            2.70.0
-%define gtk3_version            3.24.0
+%define gtk3_version            3.24.48
 %define gudev_version           167
 %define harfbuzz_version        2.8.2
 %define lcms2_version           2.8
@@ -69,9 +69,9 @@
 %define poppler_glib_version    0.69.0
 %define vapigen_version         0.40.0
 %define libvala_version         0.40.0
-%define webkit2gtk_version      2.20.3
 %define libtiff_version         4.0.0
 %define libjxl_version          0.7.0
+%define json_glib_version       1.2.6
 
 # seems lua 5.3 is the latest supported version
 %global lua_lgi lua53-lgi
@@ -89,9 +89,9 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.0.0~RC2
+Version:        3.0.0~RC3
 Release:        0
-%global pkg_version 3.0.0-RC2
+%global pkg_version 3.0.0-RC3
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
@@ -104,8 +104,6 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
-Patch4:         33ab56f55406cc3cbe3cc7c0627340da1c1f2d6a.patch
-Patch5:         gdb.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
@@ -171,6 +169,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= %{gtk3_version}
 BuildRequires:  pkgconfig(gudev-1.0) >= %{gudev_version}
 BuildRequires:  pkgconfig(harfbuzz) >= %{harfbuzz_version}
 BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(json-glib-1.0) >= %{json_glib_version}
 BuildRequires:  pkgconfig(lcms2) >= %{lcms2_version}
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libexif) >= %{libexif_version}
@@ -193,7 +192,6 @@ BuildRequires:  pkgconfig(poppler-data) >= %{poppler_data_version}
 BuildRequires:  pkgconfig(poppler-glib) >= %{poppler_glib_version}
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(vapigen) >= %{vapigen_version}
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= %{webkit2gtk_version}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
@@ -432,10 +430,8 @@ install -m 644 -c macros.gimp \
 %fdupes %{buildroot}%{_libdir}/gimp/3.0/python/
 %fdupes %{buildroot}%{_datadir}/gimp/3.0/
 
-%post -n libgimp-3_0-0 -p /sbin/ldconfig
-%postun -n libgimp-3_0-0 -p /sbin/ldconfig
-%post -n libgimpui-3_0-0 -p /sbin/ldconfig
-%postun -n libgimpui-3_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgimp-3_0-0
+%ldconfig_scriptlets -n libgimpui-3_0-0
 
 %files -f plugins.list
 %license COPYING LICENSE

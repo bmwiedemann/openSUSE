@@ -2181,4 +2181,16 @@ General:
   gimp-2.99.19-external-help-browser.patch</comment>
     <requestid>1237665</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>72a8e31ba7af3c89736f569fc3c38276</srcmd5>
+    <version>3.0.0~RC3</version>
+    <time>1739305273</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0~RC3
+  https://www.gimp.org/news/2025/02/10/gimp-3-0-RC3-released/
+- drop upstream patches:
+  33ab56f55406cc3cbe3cc7c0627340da1c1f2d6a.patch
+  gdb.patch (forwarded request 1244816 from darix)</comment>
+    <requestid>1244820</requestid>
+  </revision>
 </revisionlist>
