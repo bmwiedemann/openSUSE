@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 11 07:21:51 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.4.2:
+  A quick patch release for the v52.4 minor branch.
+  * Fixed Websocket related panic that was due to an oversized
+    message size (#1713).
+  * Removed some redundant warnings from the Workers' logs.
+  * Optimized Workers CPU consumption.
+  * Added KFL selectors the the legend components int he legend
+    section in the Service Map.
+
+-------------------------------------------------------------------
 Fri Feb 07 08:25:50 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.4.0:
