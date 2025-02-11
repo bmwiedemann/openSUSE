@@ -224,4 +224,13 @@
   * boo#1234234 - correct PCR list for Aeon FDE</comment>
     <requestid>1234759</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a71baaf78af232ab2cb257ed240cb51e</srcmd5>
+    <version>1.3.6</version>
+    <time>1739305846</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.6:
+  * Allow skipping backup (boo#1234008)</comment>
+    <requestid>1245097</requestid>
+  </revision>
 </revisionlist>
