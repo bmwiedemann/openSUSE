@@ -1,3 +1,11 @@
+Wed Feb  5 03:18:37 UTC 2025 - Glass Su <glass.su@suse.com>
+
+- thin-provisioning-tools 1.1.0 requires device-mapper-devel, this creates a cycle (boo#1236749)
+  * update lvm2.spec
+    - remove build require dependency thin-provisioning-tools from devicemapper
+    - remove thin-provisioning-tools related configure options from devicemapper
+    - remove a trivial empty line in extra_opts if default_use_devices_file=1
+
 -------------------------------------------------------------------
 Wed Jan 22 16:28:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 

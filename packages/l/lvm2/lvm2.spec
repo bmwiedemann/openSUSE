@@ -99,7 +99,6 @@ BuildRequires:  kmod-compat
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 Requires:       device-mapper >= %{device_mapper_version}
@@ -132,6 +131,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libselinux-devel
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(udev)
+# building lvm2 needs thin-provisioning-tools, see bsc#1236749
+BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
 %endif
 %endif
 
@@ -190,8 +191,17 @@ extra_opts="
 "
 %endif
 
+# see bsc#1236749 for more info
+%if !%{with devicemapper}
+extra_opts="$extra_opts\
+    --with-thin-check=%{_sbindir}/thin_check
+    --with-thin-dump=%{_sbindir}/thin_dump
+    --with-thin-repair=%{_sbindir}/thin_repair
+"
+%endif
+
 %if 0%{?default_use_devices_file} == 1
-extra_opts="$extra_opts
+extra_opts="$extra_opts\
     --with-default-use-devices-file=1
 "
 %endif
@@ -221,9 +231,6 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     --with-device-mode=0640 \
     --with-device-uid=0 \
     --with-dmeventd-path=%{_sbindir}/dmeventd \
-    --with-thin-check=%{_sbindir}/thin_check \
-    --with-thin-dump=%{_sbindir}/thin_dump \
-    --with-thin-repair=%{_sbindir}/thin_repair \
     --disable-silent-rules \
     $extra_opts
 ### COMMON-CONFIG-END ###
