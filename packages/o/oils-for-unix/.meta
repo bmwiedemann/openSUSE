@@ -1,0 +1,5 @@
+<package name="oils-for-unix" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="oils-for-unix"/>
+</package>

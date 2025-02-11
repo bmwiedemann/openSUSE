@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Jan 22 10:15:41 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.26.0:
+  Git changelog is on
+  https://oils.pub/release/0.26.0/changelog.html
+  https://oils.pub/release/0.25.0/changelog.html
+
+-------------------------------------------------------------------
+Mon Sep  9 18:06:36 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.23.0:
+  Git changelog is on
+  https://www.oilshell.org/release/0.23.0/changelog.html, but
+  upstream didn’t provide this time anything less granular.
+
+-------------------------------------------------------------------
+Thu Jul 25 11:14:13 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial packaging of version 0.22.0
+
