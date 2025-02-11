@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 17 05:30:35 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.90.0 (0.09)
+   see /usr/share/doc/packages/perl-Exporter-Tidy/Changes
+
+  0.09  Mon Sep 16 22:02 2024
+          - Remove bundled test modules (RT #154930), provided by JKEENAN
+          - Add more tests, provided by JKEENAN
+          - Update any-OSI license text to Debian-approved version
+
+-------------------------------------------------------------------
 Sat Feb  7 07:21:43 UTC 2015 - coolo@suse.com
 
 - updated to 0.08

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Exporter-Tidy
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Exporter-Tidy
-Version:        0.08
-Release:        0
 %define cpan_name Exporter-Tidy
-Summary:        Another way of exporting symbols
+Name:           perl-Exporter-Tidy
+Version:        0.90.0
+Release:        0
+# 0.09 -> normalize -> 0.90.0
+%define cpan_version 0.09
+#Upstream:  This software may be redistributed under the terms of the GPL, LGPL, modified BSD, or Artistic license, or any of the other OSI approved licenses listed at http://www.opensource.org/licenses/alphabetical. Distribution is allowed under all of these licenses, or any smaller subset of multiple or just one of these licenses. When using a packaged version, please refer to the package metadata to see under which license terms it was distributed. Alternatively, a distributor may choose to replace the LICENSE section of the documentation and/or include a LICENSE file to reflect the license(s) they chose to redistribute under.
 License:        SUSE-Public-Domain
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Exporter-Tidy/
-Source:         http://www.cpan.org/authors/id/J/JU/JUERD/%{cpan_name}-%{version}.tar.gz
+Summary:        Another way of exporting symbols
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JU/JUERD/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Exporter::Tidy) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -40,14 +44,14 @@ With Exporter::Tidy, you don't need to use any package global in your
 module. Even the subs you export can be lexically scoped.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -55,7 +59,6 @@ module. Even the subs you export can be lexically scoped.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
