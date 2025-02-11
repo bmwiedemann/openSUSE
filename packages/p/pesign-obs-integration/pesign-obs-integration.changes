@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 13:57:06 UTC 2025 - dmueller@suse.com
+
+- Update to version 10.2+git20250116.e734a3f:
+  * spec: mozilla-nss-tools is for SUSE distros, on Fedora/etc it's nss-tools
+  * spec: fix Fedora builds
+  * Add Fedora-specific workarounds to pesign-repackage.spec
+  * debian: add Provides dh-sequence-signobs
+  * dh_signobs: fix json input for pre-configured template
+  * dh_signobs: fix parsing of pesign hashing output
+
+-------------------------------------------------------------------
 Sat Dec 21 13:05:34 UTC 2024 - dmueller@suse.com
 
 - Update to version 10.2+git20241221.c85eada:

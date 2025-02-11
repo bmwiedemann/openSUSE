@@ -491,4 +491,18 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
   * Make the repackage work with rpm-4.20</comment>
     <requestid>1232942</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>61d1aa29e31ff8c2d9d46d9710dfb150</srcmd5>
+    <version>10.2+git20250116.e734a3f</version>
+    <time>1739305261</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 10.2+git20250116.e734a3f:
+  * spec: mozilla-nss-tools is for SUSE distros, on Fedora/etc it's nss-tools
+  * spec: fix Fedora builds
+  * Add Fedora-specific workarounds to pesign-repackage.spec
+  * debian: add Provides dh-sequence-signobs
+  * dh_signobs: fix json input for pre-configured template
+  * dh_signobs: fix parsing of pesign hashing output</comment>
+    <requestid>1244777</requestid>
+  </revision>
 </revisionlist>
