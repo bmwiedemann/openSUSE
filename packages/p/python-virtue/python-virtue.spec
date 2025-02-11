@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtue
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-virtue
-Version:        2023.8.2
+Version:        2025.2.1
 Release:        0
 Summary:        After trial comes virtue. A test runner for good
 License:        MIT
@@ -31,21 +31,21 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Twisted >= 23.10.0rc1}
 BuildRequires:  %{python_module attrs >= 19}
-BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module pyrsistent}
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Requires:       python-Twisted
+Requires(postun): update-alternatives
+Requires:       python-Twisted >= 23.10.0rc1
 Requires:       python-attrs >= 19
 Requires:       python-click
 Requires:       python-colorama
 Requires:       python-pyrsistent
 Suggests:       python-importlib_metadata
-Suggests:       python-pkgutil_resolve_name >= 1.3.10
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,6 +62,10 @@ After trial comes virtue. A test runner for good.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/virtue
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export PYTEST_IGNORE="test_foo"
+%pytest -k "not (${PYTEST_IGNORE})"
 
 %post
 %python_install_alternative virtue
