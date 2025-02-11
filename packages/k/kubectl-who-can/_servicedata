@@ -5,4 +5,4 @@
  </service>
 <service name="tar_scm">
                 <param name="url">https://github.com/aquasecurity/kubectl-who-can.git</param>
-              <param name="changesrevision">0275b1644b42b26e8b125f7944006251ac44eac1</param></service></servicedata>
+              <param name="changesrevision">f5b0b3f6c5d141250873526dc7fd46cae63664f6</param></service></servicedata>

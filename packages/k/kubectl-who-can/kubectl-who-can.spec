@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-who-can
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           kubectl-who-can
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Tool to show who has permissions to verbs and resources in Kubernetes
 License:        Apache-2.0

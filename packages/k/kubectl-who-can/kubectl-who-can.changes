@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:05:47 UTC 2025 - dmueller@suse.com
+
+- Update to version 0.4.0:
+  * chore(deps): bump Go from 1.15 to 1.17 (#92)
+  * chore: upgrade GH actions (#91)
+  * chore: add arm64 arch support (#90)
+  * chore: Bump up kubernetes/client-go from v0.17.17 to v0.20.5
+
+-------------------------------------------------------------------
 Mon Apr 19 13:23:06 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.3.0:
