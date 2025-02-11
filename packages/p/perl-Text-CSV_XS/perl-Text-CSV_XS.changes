@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb  1 05:29:30 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.600.0 (1.60)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.60	- 2025-01-29, H.Merijn Brand
+      * Add SECURITY.md
+      * CR/NL/CRNL inside quoted fields not affected by strict_eol
+      * Fix incorrect error 2014 (issue 62)
+
+-------------------------------------------------------------------
 Mon Jan  6 05:35:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.590.0 (1.59)
