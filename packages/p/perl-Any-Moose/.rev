@@ -231,4 +231,14 @@ Added missing Requires:       perl(Moose) (forwarded request 111625 from worldci
     <comment>1</comment>
     <requestid>440993</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c95d38315bd623950cb4a49363343675</srcmd5>
+    <version>0.270.0</version>
+    <time>1739305467</time>
+    <user>anag+factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1244920</requestid>
+  </revision>
 </revisionlist>
