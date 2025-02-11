@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:56:32 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.2
+
+- UPdate 2.5.2
+  * Fix OpenSSL version parsing in python-build script by @threadflow in #3181
+  * Add GraalPy 24.1.2 by @msimacek in #3176
+  * Add CPython 3.12.9 and 3.13.2 by @edgarrmondragon in #3183
+
+-------------------------------------------------------------------
 Tue Jan 21 07:20:06 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.comi> - 2.5.1
 
 - Update 2.5.1
