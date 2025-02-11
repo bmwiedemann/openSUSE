@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 15:07:26 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.16.0
+  * C++ Language Support
+    - GoogleTest requires at least C++14 and follows Google's Foundational C++ Support Policy
+    - The 1.16.x branch will be the last to support C++14. Future development will require at least C++17.
+  * Notable Changes
+    - Bazel BUILD files now reference repositories by their canonical names from the Bazel Central Registry
+    - Testsuite properties as are now exported as XML elements, not attributes (b4aae50).
+
+-------------------------------------------------------------------
 Mon Nov 18 14:31:10 UTC 2024 - Earl Sampson <esampson@suse.com>
 
 - change logic from suse_version > 1500 to suse_version < 1600

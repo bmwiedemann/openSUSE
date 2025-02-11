@@ -1,7 +1,7 @@
 #
 # spec file for package googletest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %define _name   googlemock
 Name:           googletest
-Version:        1.15.2
+Version:        1.16.0
 Release:        0
 Summary:        Google C++ Testing Framework
 License:        BSD-3-Clause
