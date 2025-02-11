@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Feb  8 16:21:08 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.6
+  Bug Fixes
+  * Ensure all timers are cancelled when after staggered race
+    finishes.
+- Update to version 2.4.5
+  Bug Fixes
+  * Keep classifiers in project to avoid automatic enrichment.
+  * Move classifiers to prevent recalculation by Poetry.
+
+-------------------------------------------------------------------
 Tue Dec  3 19:48:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.4
