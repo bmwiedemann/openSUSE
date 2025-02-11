@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-Build-Plugin-Download-GitLab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Alien-Build-Plugin-Download-GitLab
 Name:           perl-Alien-Build-Plugin-Download-GitLab
-Version:        0.01
+Version:        0.10.0
 Release:        0
+# 0.01 -> normalize -> 0.10.0
+%define cpan_version 0.01
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alien::Build plugin to download from GitLab
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -39,13 +41,15 @@ Requires:       perl(JSON::PP)
 Requires:       perl(Path::Tiny)
 Requires:       perl(URI)
 Requires:       perl(URI::Escape)
+Provides:       perl(Alien::Build::Plugin::Download::GitLab) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 This plugin is designed for downloading assets from a GitLab instance.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -60,7 +64,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc author.yml Changes README
+%doc Changes README
 %license LICENSE
 
 %changelog
