@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-winpthreads
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mingw64-winpthreads
-Version:        11.0.1
+Version:        12.0.0
 Release:        0
 Summary:        A pthreads implementation for Windows
 License:        BSD-3-Clause AND MIT
@@ -71,7 +71,6 @@ touch empty.c
 %_mingw64_cc -c empty.c
 %_mingw64_ar rsc libpthread.a empty.o
 popd
-
 # No ssp support in gcc-cross-bootstrap
 # Hence we use dedicated LDFLAGS (without -fstack-protector)
 %_mingw64_configure \
