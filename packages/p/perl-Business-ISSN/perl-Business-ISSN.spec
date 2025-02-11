@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Business-ISSN
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,22 @@
 
 %define cpan_name Business-ISSN
 Name:           perl-Business-ISSN
-Version:        1.005
+Version:        1.8.0
 Release:        0
+# 1.008 -> normalize -> 1.8.0
+%define cpan_version 1.008
 License:        Artistic-2.0
 Summary:        Perl extension for International Standard Serial Numbers
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
+Provides:       perl(Business::ISSN) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -84,8 +88,9 @@ ISSN passed to the constructor was invalid, the error might have been in
 any of the other nine positions.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -100,7 +105,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CITATION.cff examples
+%doc Changes CITATION.cff examples SECURITY.md
 %license LICENSE
 
 %changelog

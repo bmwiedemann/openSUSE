@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 28 05:30:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.8.0 (1.008)
+   see /usr/share/doc/packages/perl-Business-ISSN/Changes
+
+  1.008 2025-01-27T13:08:21Z
+  	* refresh distro and move to BRIANDFOY
+
+  1.007 2025-01-03T23:31:57Z
+  	* refresh distro and move to BRIANDFOY
+
+  1.006 2024-02-10T21:59:55Z
+  	* refresh distro, update email addresses, move to BRIANDFOY
+
+-------------------------------------------------------------------
 Sat Feb 19 03:06:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.005
