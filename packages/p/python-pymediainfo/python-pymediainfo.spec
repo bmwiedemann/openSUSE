@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymediainfo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pymediainfo
-Version:        6.1.0
+Version:        7.0.0
 Release:        0
 Summary:        Python wrapper for the mediainfo library
 License:        MIT
@@ -27,9 +27,10 @@ URL:            https://github.com/sbraz/pymediainfo
 Source0:        https://files.pythonhosted.org/packages/source/p/pymediainfo/pymediainfo-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
+BuildRequires:  %{python_module pdm-backend}
+BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  libmediainfo0
 Requires:       libmediainfo0
 %if 0%{?python_version_nodots} < 38
@@ -44,14 +45,13 @@ BuildArch:      noarch
 This module is a Python wrapper for the mediainfo library.
 
 %prep
-%setup -q -n pymediainfo-%{version}
-rm -rf pymediainfo.egg-info
+%autosetup -p1 -n pymediainfo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +61,6 @@ rm -rf pymediainfo.egg-info
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/pymediainfo
-%{python_sitelib}/pymediainfo-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pymediainfo-%{version}.dist-info
 
 %changelog

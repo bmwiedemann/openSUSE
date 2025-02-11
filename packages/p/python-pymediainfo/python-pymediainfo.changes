@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:12:05 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.0.0
+  Breaking changes:
+  * Make MediaInfo.parse's optional arguments positional-only
+  * Drop support for Python 3.7 and 3.8
+  New features:
+  * Add wheels for Linux x86-64 and ARM64
+  Miscellaneous:
+  * Switch build backend from setuptools to PDM-Backend
+  * Improve code quality with better type hints and many more
+    fixes
+
+-------------------------------------------------------------------
 Sun Oct 29 18:22:02 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.0
