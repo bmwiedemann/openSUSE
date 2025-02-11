@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb  9 23:46:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.1
+  * Order `oneof` union members from largest to smallest
+  * Better compatibility with protobuf >= 26.0
+- Delete 711.patch (merged)
+
+-------------------------------------------------------------------
+Sun Oct 27 11:25:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement naming guidelines and rename libprotobuf-c-devel back
+  to just %name-devel. (The divergence came about on Nov 19 2021
+  as a result of merging two subpackages.)
+
+-------------------------------------------------------------------
 Tue Oct 22 08:48:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

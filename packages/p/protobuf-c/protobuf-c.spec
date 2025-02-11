@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf-c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Pascal Bleser
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -20,14 +20,13 @@
 
 %define sover 1
 Name:           protobuf-c
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        C bindings for Google's Protocol Buffers
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/protobuf-c/protobuf-c
 Source:         https://github.com/protobuf-c/protobuf-c/releases/download/v%version/%name-%version.tar.gz
-Patch0:         711.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -51,15 +50,17 @@ Group:          System/Libraries
 This package provides a code generator and runtime libraries to use Protocol
 Buffers from pure C (not C++).
 
-%package -n libprotobuf-c-devel
-Summary:        C bindings for Google's Protocol Buffers
+%package devel
+Summary:        protobuf generator and headers
 Group:          Development/Libraries/C and C++
 Requires:       libprotobuf-c%sover = %version
 Recommends:     (protobuf-devel >= 2.6.0 with protobuf-devel < 22)
-Provides:       %name = %version
-Obsoletes:      %name <= 1.4.0
+Provides:       protobuf-c = %version-%release
+Obsoletes:      protobuf-c <= %version-%release
+Provides:       libprotobuf-c-devel = %version-%release
+Obsoletes:      libprotobuf-c-devel <= %version-%release
 
-%description -n libprotobuf-c-devel
+%description devel
 This package provides a code generator and runtime libraries to use Protocol
 Buffers from pure C (not C++).
 
@@ -88,7 +89,7 @@ make check
 %_libdir/libprotobuf-c.so.%sover
 %_libdir/libprotobuf-c.so.%sover.*
 
-%files -n libprotobuf-c-devel
+%files devel
 %license LICENSE
 %dir %_includedir/protobuf-c
 %dir %_includedir/google
