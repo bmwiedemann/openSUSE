@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Feb 10 22:37:16 UTC 2025 - mrueckert@suse.de
+
+- Update to version 1.33.2:
+  * Telegraf v1.33.2
+  * Update changelog for v1.33.2
+  * Update build_version.txt for v1.33.2
+  * chore: Make tidy
+  * fix(agent): Set `godebug x509negativeserial=1` as a workaround (#16489)
+  * chore(outputs.sql): Update ClickHouse Docker image for integration test (#16462)
+  * docs(inputs): Add plugin metadata and update description for g* to i* (#16486)
+  * chore(inputs): Fix line-length in READMEs for `t` to `z` (#16485)
+  * docs(outputs.event_hubs): Add metadata and improve description (#16484)
+  * chore(deps): Fix apache arrow dependency, update to v18.1.0 (#16482)
+  * chore(deps): Update ClickHouse SQL driver to v2 (#16423)
+  * fix(agent): Avoid panic by checking for skip_processors_after_aggregators (#16477)
+  * fix(outputs.sql): Fix insert into ClickHouse (#16472)
+  * chore(deps): Bump github.com/go-ldap/ldap/v3 from 3.4.8 to 3.4.10 (#16470)
+  * chore(deps): Bump github.com/yuin/goldmark from 1.6.0 to 1.7.8 (#16467)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/sts from 1.33.10 to 1.33.12 (#16468)
+  * chore(deps): Bump google.golang.org/api from 0.214.0 to 0.219.0 (#16469)
+  * chore(deps): Bump github.com/nats-io/nats-server/v2 from 2.10.17 to 2.10.25 (#16466)
+  * fix(inputs.x509_cert): Add config to left-pad serial number to 128-bits (#16447)
+  * fix(outputs.azure_monitor): Prevent infinite send loop for outdated metrics (#16448)
+  * fix(service): Set address to prevent orphaned dbus-session processes (#16454)
+  * chore(deps): Bump github.com/lxc/incus/v6 from 6.6.0 to 6.9.0 (#16445)
+  * chore(deps): Bump github.com/prometheus/common from 0.61.0 to 0.62.0 (#16453)
+  * chore(outputs.azure_monitor): Cleanup code (#16437)
+  * docs(inputs.dovecot): Document plugin not working for version 2.4+ (#16444)
+  * chore(deps): Bump cloud.google.com/go/storage from 1.47.0 to 1.50.0 (#16442)
+  * chore(deps): Bump github.com/google/cel-go from 0.21.0 to 0.23.0 (#16440)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/sts from 1.33.2 to 1.33.10 (#16439)
+  * docs(processors.filter): Correct tag specification in rule example (#16434)
+  * chore: Update go to v1.23.5 (#16436)
+  * chore: Update copyright year (#16367)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/win*` (#16427)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/webhooks/*` (#16411)
+  * chore(inputs.statsd): Refactor internal stats into their own struct (#16419)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/[t-v]*` (#16408)
+  * chore(deps): Bump github.com/shirou/gopsutil/v4 from v4.24.10 to v4.24.12 (#16369)
+  * chore(deps): Bump github.com/shirou/gopsutil/v4 from 4.24.10 to 4.24.12 (#16417)
+  * chore(deps): Bump github.com/apache/iotdb-client-go from 1.3.2 to 1.3.3 (#16416)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2 from 1.32.8 to 1.33.0 (#16415)
+  * chore(deps): Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.7.0 to 1.8.1 (#16414)
+  * fix(inputs.netflow): Ensure type consistency for sFlow's IP version field (#16403)
+  * chore(linters): Enable `unused-receiver` rule for revive (#16406)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/r*` (#16341)
+  * chore(deps): Bump k8s.io/api from 0.31.3 to 0.32.1 (#16396)
+  * docs(inputs.sql): Add protocol to DSN (#16330)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/s*` (#16363)
+  * chore(deps): Bump github.com/eclipse/paho.golang from 0.21.0 to 0.22.0 (#16395)
+  * chore(deps): Bump github.com/showwin/speedtest-go from 1.7.9 to 1.7.10 (#16397)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs from 1.38.0 to 1.45.3 (#16394)
+  * chore: Fix linter findings for `revive:unused-receiver` in `agent`, `cmd`, `config`, `internal`, `metric`, `migrations`, `models`, `testutils` and `tools` (#16340)
+  * chore: Fix linter findings for `revive:unused-receiver` in `plugins/outputs` (#16338)
+  * chore(deps): Bump golangci-lint from v1.62.2 to v1.63.4 (#16360)
+  * chore: Fix linter findings for `revive:unused-receiver` in `plugins/`: `aggregators`, `common`, `parsers`, `processors`, `secretstores` and `serializers` (#16339)
+  * chore(inputs.kinesis_consumer): Cleanup code (#16267)
+  * fix: Correct version number in build_version.txt for 1.33 releases (#16488)
+
+-------------------------------------------------------------------
 Sat Jan 11 18:42:09 UTC 2025 - mrueckert@suse.de
 
 - Update to version 1.33.1:
