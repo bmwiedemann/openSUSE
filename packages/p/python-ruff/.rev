@@ -1751,4 +1751,39 @@
  * Bug fixes</comment>
     <requestid>1244445</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>fabca03bdbf381b2bd152b7f0f8db275</srcmd5>
+    <version>0.9.6</version>
+    <time>1739305275</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.6 
+ * Preview features
+   * [airflow] Add external_task.{ExternalTaskMarker, ExternalTaskSensor} for AIR302 
+   * [flake8-builtins] Make strict module name comparison optional (A005) 
+   * [flake8-pyi] Extend fix to Python &lt;= 3.9 for redundant-none-literal (PYI061) 
+   * [pylint] Also report when the object isn't a literal (PLE1310) 
+   * [ruff] Implement indented-form-feed (RUF054) 
+   * [ruff] Skip type definitions for missing-f-string-syntax (RUF027) 
+ * Rule changes
+   * [flake8-annotations] Correct syntax for typing.Union in suggested return type fixes for ANN20x rules 
+   * [flake8-builtins] Match upstream module name comparison (A005) 
+   * [flake8-comprehensions] Detect overshadowed list/set/dict, ignore variadics and named expressions (C417) 
+   * [flake8-pie] Remove following comma correctly when the unpacked dictionary is empty (PIE800) 
+   * [flake8-simplify] Only trigger SIM401 on known dictionaries 
+   * [pylint] Do not report calls when object type and argument type mismatch, remove custom escape handling logic (PLE1310) 
+   * [pyupgrade] Comments within parenthesized value ranges should not affect applicability (UP040) 
+   * [pyupgrade] Don't introduce invalid syntax when upgrading old-style type aliases with parenthesized multiline values (UP040) 
+   * [pyupgrade] Ensure we do not rename two type parameters to the same name (UP049) 
+   * [pyupgrade] [ruff] Don't apply renamings if the new name is shadowed in a scope of one of the references to the binding (UP049, RUF052) 
+   * [ruff] Update RUF009 to behave similar to B008 and ignore attributes with immutable types 
+ * Server
+   * Root exclusions in the server to project root 
+ * Bug fixes
+   * [flake8-datetime] Ignore .replace() calls while looking for .astimezone 
+   * [flake8-type-checking] Avoid TC004 false positive where the runtime definition is provided by __getattr__ 
+ * Documentation
+   * Improve ruff-lsp migration document 
+   * Undeprecate ruff.nativeServer</comment>
+    <requestid>1244821</requestid>
+  </revision>
 </revisionlist>
