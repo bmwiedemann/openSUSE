@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyahocorasick
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,35 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-pyahocorasick
-Version:        1.4.4
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+%{?sle15_python_module_pythons}
+Name:           python-pyahocorasick%{?psuffix}
+Version:        2.1.0
 Release:        0
 Summary:        Library for exact or approximate multi-pattern string search
 License:        BSD-3-Clause
 URL:            https://github.com/WojciechMula/pyahocorasick
 Source:         https://files.pythonhosted.org/packages/source/p/pyahocorasick/pyahocorasick-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module pyahocorasick = %{version}}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
+ExclusiveArch:  aarch64 loongarch64 ppc64 ppc64le riscv64 s390x x86_64
 %python_subpackages
 
 %description
@@ -47,23 +61,26 @@ It is implemented in C.
 %autosetup -p1 -n pyahocorasick-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%if !%{with test}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%check
-skip_tests=""
-# gh#WojciechMula/pyahocorasick#142
-%ifarch ppc64 s390x armv7l
-skip_tests+="not (test_iter2 or test_iter3)"
 %endif
-%pytest_arch -k "${skip_tests}" unittests.py
 
+%if %{with test}
+%check
+%pytest
+%endif
+
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/ahocorasick*.so
+%{python_sitearch}/pyahocorasick-%{version}.dist-info
+
+%endif
 
 %changelog
