@@ -20,7 +20,7 @@
 %define qt6_version 6.4.0
 
 Name:           tellico
-Version:        4.1
+Version:        4.1.1
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later

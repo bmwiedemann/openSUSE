@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:35:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.1.1
+  * Updated Filmaffinity and ComicVine data sources.
+  * Added configurable image size to Discogs and Moviemeter data sources.
+  * Fixed ISBN searching with Colnect.
+
+-------------------------------------------------------------------
 Wed Jan 15 09:08:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.1
