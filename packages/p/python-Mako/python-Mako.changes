@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 10:15:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.9
+  * [bug] [tests] Fixed test suite to not rely upon ancient "future division"
+    statement to test the Template.future_imports feature. The test is
+    replaced with one that tests only the rendering, not the ultimate effect.
+
+-------------------------------------------------------------------
 Wed Dec 11 08:28:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.3.8

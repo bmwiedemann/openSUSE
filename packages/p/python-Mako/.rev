@@ -639,4 +639,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     <comment></comment>
     <requestid>1230045</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>4960c77ed0f9636364918c4bd8bb60a0</srcmd5>
+    <version>1.3.9</version>
+    <time>1739305238</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1244766</requestid>
+  </revision>
 </revisionlist>
