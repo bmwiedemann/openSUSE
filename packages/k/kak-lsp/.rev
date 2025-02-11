@@ -300,4 +300,17 @@
 </comment>
     <requestid>1232905</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>70bf919252f0853a9d86d43bf53a47e0</srcmd5>
+    <version>18.1.2</version>
+    <time>1739305853</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 18.1.2:
+  * Silence errors from non-default hooks
+  * Fix languageId for JSX/TSX files
+  * Silence deprecation warning
+  * Add curly underline to DiagnosticError face
+</comment>
+    <requestid>1245108</requestid>
+  </revision>
 </revisionlist>

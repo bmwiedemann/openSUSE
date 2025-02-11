@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Feb 11 13:41:38 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 18.1.2:
+  * Silence errors from non-default hooks
+  * Fix languageId for JSX/TSX files
+  * Silence deprecation warning
+  * Add curly underline to DiagnosticError face
+
+-------------------------------------------------------------------
 Sat Dec 21 00:30:07 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Build now requires openssl because the dependency graph now has
