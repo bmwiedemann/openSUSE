@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb  8 05:29:41 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.270.0 (2.27)
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+
+  version 2.27: Fri  7 Feb 11:08:22 CET 2025
+
+  	Changes:
+  	- iana updates.
+
+  	Fixes:
+  	- explicitly set $/ before reading the file by line [Jan Kratochvil]
+
+-------------------------------------------------------------------
 Fri Mar  8 22:42:07 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
