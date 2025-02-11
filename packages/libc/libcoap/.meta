@@ -1,0 +1,8 @@
+<package name="libcoap" project="openSUSE:Factory">
+  <title>C-Implementation of CoAP</title>
+  <description>libcoap implements a lightweight application-protocol for devices that are
+constrained their resources such as computing power, RF range, memory,
+bandwith, or network packet sizes.</description>
+  <devel project="systemsmanagement" package="libcoap"/>
+  <url>https://libcoap.net/</url>
+</package>
