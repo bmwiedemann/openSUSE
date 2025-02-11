@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 22 15:25:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks for CODE16 (PED-266).
+
+-------------------------------------------------------------------
 Mon Oct 28 11:18:04 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Don't force using gcc11 on SLFO/ALP which have a newer version.

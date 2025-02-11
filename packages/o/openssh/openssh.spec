@@ -434,7 +434,9 @@ install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/slp.reg.d/
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/sshd.service
 install -D -m 0644 %{SOURCE16} %{buildroot}%{_unitdir}/sshd@.service
 install -D -m 0644 %{SOURCE17} %{buildroot}%{_unitdir}/sshd.socket
+%if 0%{?suse_version} < 1600
 ln -s service %{buildroot}%{_sbindir}/rcsshd
+%endif
 install -d -m 755 %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE8} %{buildroot}%{_fillupdir}
 # install shell script to automate the process of adding your public key to a remote machine
@@ -618,7 +620,9 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 
 %files server
 %attr(0755,root,root) %{_sbindir}/sshd
+%if 0%{?suse_version} < 1600
 %attr(0755,root,root) %{_sbindir}/rcsshd
+%endif
 %attr(0755,root,root) %{_sbindir}/sshd-gen-keys-start
 %dir %attr(0755,root,root) %{_localstatedir}/lib/sshd
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/sshd_config.d
