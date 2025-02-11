@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct  7 10:21:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete --enable-secure-api, this is gone since mingw 7.
+
+-------------------------------------------------------------------
+Sun Oct  6 22:13:26 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fixes build errors in other packages due to undefined
+  references of "_imp____sys_nerr" and others caused by
+  this package not being synchronized with the mingw32-runtime
+  package (--with-default-msvcrt=msvcrt must be used).
+
+-------------------------------------------------------------------
+Wed Aug 28 10:45:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12
+  * C++ overloads for _strdate_s and _strtime_s, _makepath_s,
+    wcsncat_s.
+  * Updated wine header imports.
+  * Many other new win32 APIs.
+  * UCRT configurations now primarily use (faster) math functions
+    from UCRT, rather than libmingwex.
+
+-------------------------------------------------------------------
+Sat Nov 11 14:18:28 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Added patch:
+  * mingw-w64-v11.0.1-fix-undefined-interface-type.patch
+    + fix build issue with gcc13: type 'interface' is undefined
+
+-------------------------------------------------------------------
 Fri Nov  3 12:33:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.0.1
@@ -50,7 +81,7 @@ Thu Dec  3 12:18:00 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
   * DirectX SDKs are now always installed
 
 -------------------------------------------------------------------
-Sat Nov 23 14:39:08 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+Sat Nov 23 14:44:49 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to new upstream release 7.0.0
   * _FORTIFY_SOURCE support thanks to Christian Franke.
@@ -73,7 +104,7 @@ Wed Oct 17 18:50:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
   (no longer needed; included upstream)
 
 -------------------------------------------------------------------
-Tue Nov 21 11:37:09 UTC 2017 - idonmez@suse.com
+Wed Nov 22 09:46:44 UTC 2017 - idonmez@suse.com
 
 - Update to version 5.0.3
 
@@ -90,7 +121,7 @@ Tue Mar 28 11:40:03 UTC 2017 - idonmez@suse.com
   * Fix pdh.h function calls to have proper stdcall decorators.
 
 -------------------------------------------------------------------
-Sat Jan 14 20:48:23 UTC 2017 - idonmez@suse.com
+Sat Jan 14 20:48:05 UTC 2017 - idonmez@suse.com
 
 - Update to version 5.0.1 
 
