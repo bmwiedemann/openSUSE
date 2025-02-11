@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sys-Hostname-Long
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,41 +12,46 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Sys-Hostname-Long
-Version:        1.5
-Release:        0
 %define cpan_name Sys-Hostname-Long
+Name:           perl-Sys-Hostname-Long
+Version:        1.500.0
+Release:        0
+# 1.5 -> normalize -> 1.500.0
+%define cpan_version 1.5
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Try every conceivable way to get full hostname
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Sys-Hostname-Long/
-Source:         http://www.cpan.org/authors/id/S/SC/SCOTT/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SC/SCOTT/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# hostname is needed for the test suite
-BuildRequires:  hostname
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Sys::Hostname::Long) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  hostname
+# MANUAL END
 
 %description
 How to get the host full name in perl on multiple operating systems (mac,
 windows, unix* etc)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -54,7 +59,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
