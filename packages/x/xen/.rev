@@ -3038,4 +3038,12 @@
     <comment>Update to Xen version 4.20.0 release candidate 3</comment>
     <requestid>1241755</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>57e364166364069b845a3d9e875ef369</srcmd5>
+    <version>4.20.0_08</version>
+    <time>1739305298</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen version 4.20.0 release candidate 4</comment>
+    <requestid>1244848</requestid>
+  </revision>
 </revisionlist>

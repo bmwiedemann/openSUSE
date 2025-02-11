@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 06:02:04 MST 2025 - carnold@suse.com
+
+- Update to Xen 4.20.0 RC4 release
+  * AMD/IOMMU: log IVHD contents
+  * AMD/IOMMU: drop stray MSI enabling
+  * radix-tree: introduce RADIX_TREE{,_INIT}()
+
+-------------------------------------------------------------------
 Fri Jan 31 09:59:45 MST 2025 - carnold@suse.com
 
 - Update to Xen 4.20.0 RC3 release
@@ -17,7 +25,7 @@ Fri Jan 31 09:59:45 MST 2025 - carnold@suse.com
 
 -------------------------------------------------------------------
 Fri Jan 31 08:49:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
-
+                
 - Add explicit build dependency on python3-setuptools, needed by python313
 
 -------------------------------------------------------------------
