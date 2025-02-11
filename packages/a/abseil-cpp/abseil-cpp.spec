@@ -17,13 +17,13 @@
 #
 
 
-%global soversion so.2407.0.0
-%global lname_suffix 2407_0_0
+%global soversion so.2501.0.0
+%global lname_suffix 2501_0_0
 %if 0%{?gcc_version} < 7
 %global with_gcc 7
 %endif
 Name:           abseil-cpp
-Version:        20240722.1
+Version:        20250127.0
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
@@ -188,6 +188,7 @@ export CXX="g++-%{with_gcc}"
 %{_libdir}/libabsl_log_initialize.%{soversion}
 %{_libdir}/libabsl_log_internal_conditions.%{soversion}
 %{_libdir}/libabsl_log_internal_fnmatch.%{soversion}
+%{_libdir}/libabsl_log_internal_structured_proto.%{soversion}
 %{_libdir}/libabsl_log_severity.%{soversion}
 %{_libdir}/libabsl_periodic_sampler.%{soversion}
 %{_libdir}/libabsl_poison.%{soversion}
@@ -205,6 +206,7 @@ export CXX="g++-%{with_gcc}"
 %{_libdir}/libabsl_scoped_set_env.%{soversion}
 %{_libdir}/libabsl_statusor.%{soversion}
 %{_libdir}/libabsl_status.%{soversion}
+%{_libdir}/libabsl_tracing_internal.%{soversion}
 %{_libdir}/libabsl_utf8_for_code_point.%{soversion}
 %{_libdir}/libabsl_vlog_config_internal.%{soversion}
 
