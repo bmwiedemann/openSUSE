@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 10 05:32:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.39.0 (v0.39.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  v0.39.0 2025-02-10 00:01:45+01:00
+
+      - Allow unknown tags again, reverting the previous change in v0.38.1 which
+        only was supposed to be a dev release
+      - Add new option require_footer
+
+-------------------------------------------------------------------
 Sat Jan 25 05:30:34 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.38.1 (v0.38.1)

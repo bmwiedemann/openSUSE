@@ -18,10 +18,10 @@
 
 %define cpan_name YAML-PP
 Name:           perl-YAML-PP
-Version:        0.38.1
+Version:        0.39.0
 Release:        0
-# v0.38.1 -> normalize -> 0.38.1
-%define cpan_version v0.38.1
+# v0.39.0 -> normalize -> 0.39.0
+%define cpan_version v0.39.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML 1.2 Processor
 URL:            https://metacpan.org/release/%{cpan_name}
