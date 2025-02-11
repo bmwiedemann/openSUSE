@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb  3 14:15:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.3:
+  + Do not close the base stream when using
+    jcat_file_import_stream().
+  + Skip ed25519 part of a test with -Ded25519=false.
+
+-------------------------------------------------------------------
 Mon Oct 14 13:09:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.2:
