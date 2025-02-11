@@ -1,7 +1,7 @@
 #
 # spec file for package gcc13-testresults
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,11 +135,16 @@
 %endif
 
 # Enable plugins just for Tumbleweed, not for SLES
-%if 0%{!?sle_version:1}
+%if 0%{?is_opensuse}
 %define enable_plugins 1
-%define build_jit 1
 %else
 %define enable_plugins 0
+%endif
+
+# Do not enable JIT support on SLE15
+%if %{suse_version} >= 1600
+%define build_jit 1
+%else
 %define build_jit 0
 %endif
 
@@ -407,6 +412,7 @@ Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
 Patch28:        gcc13-pr116657.patch
+Patch29:        gcc13-pr118780.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -554,6 +560,7 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 28 -p1
+%patch -P 29 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1

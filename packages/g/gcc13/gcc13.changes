@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb  6 10:25:01 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Fix condition on whether to enable plugins or JIT support to
+  not check sle_version which is not defined in SLFO but to check
+  is_opensuse and suse_version instead.
+- Add gcc13-pr118780.patch to make the SLFO config work.
+
+-------------------------------------------------------------------
 Tue Oct 22 08:06:21 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Remove epiphany build, newlib no longer builds for it. 

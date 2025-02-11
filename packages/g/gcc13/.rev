@@ -371,4 +371,15 @@
 - Add gcc13-pr116657.patch to fix for parsing tzdata 2024b [gcc#116657]</comment>
     <requestid>1216955</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>9b875ee416d3c1432b3e03822a3470fa</srcmd5>
+    <version>13.3.1+git8964</version>
+    <time>1739305887</time>
+    <user>anag+factory</user>
+    <comment>- Fix condition on whether to enable plugins or JIT support to
+  not check sle_version which is not defined in SLFO but to check
+  is_opensuse and suse_version instead.
+- Add gcc13-pr118780.patch to make the SLFO config work.</comment>
+    <requestid>1245121</requestid>
+  </revision>
 </revisionlist>

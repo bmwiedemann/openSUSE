@@ -1,0 +1,82 @@
+From 0e0157bd29f5d3d8d9a8041b19a0311d5c6fe636 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Fri, 7 Feb 2025 14:42:23 +0100
+Subject: [PATCH] jit/118780 - make sure to include dlfcn.h when plugin support
+ is disabled
+To: gcc-patches@gcc.gnu.org
+
+The following makes the dlfcn.h explicitly requested which avoids
+build failure when JIT is enabled but plugin support disabled as
+currently the include is conditional on plugin support.
+
+	PR jit/118780
+gcc/
+	* system.h: Check INCLUDE_DLFCN_H for including dlfcn.h instead
+	of ENABLE_PLUGIN.
+	* plugin.cc: Define INCLUDE_DLFCN_H.
+
+gcc/jit/
+	* jit-playback.cc: Define INCLUDE_DLFCN_H.
+	* jit-result.cc: Likewise.
+
+(cherry picked from commit e22962538f64bb6e5ac87977ec8a5d86f4ef21cb)
+---
+ gcc/jit/jit-playback.cc | 2 ++
+ gcc/jit/jit-result.cc   | 1 +
+ gcc/plugin.cc           | 1 +
+ gcc/system.h            | 2 +-
+ 4 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/gcc/jit/jit-playback.cc b/gcc/jit/jit-playback.cc
+index e06f161aad9..74903186622 100644
+--- a/gcc/jit/jit-playback.cc
++++ b/gcc/jit/jit-playback.cc
+@@ -20,6 +20,8 @@ along with GCC; see the file COPYING3.  If not see
+ 
+ #include "config.h"
+ #define INCLUDE_MUTEX
++#define INCLUDE_DLFCN_H
++#include "libgccjit.h"
+ #include "system.h"
+ #include "coretypes.h"
+ #include "target.h"
+diff --git a/gcc/jit/jit-result.cc b/gcc/jit/jit-result.cc
+index e00f4d861d8..579c4cb0eb8 100644
+--- a/gcc/jit/jit-result.cc
++++ b/gcc/jit/jit-result.cc
+@@ -19,6 +19,7 @@ along with GCC; see the file COPYING3.  If not see
+ <http://www.gnu.org/licenses/>.  */
+ 
+ #include "config.h"
++#define INCLUDE_DLFCN_H
+ #include "system.h"
+ #include "coretypes.h"
+ 
+diff --git a/gcc/plugin.cc b/gcc/plugin.cc
+index 142f3fa4131..045c18f1a68 100644
+--- a/gcc/plugin.cc
++++ b/gcc/plugin.cc
+@@ -21,6 +21,7 @@ along with GCC; see the file COPYING3.  If not see
+    APIs described in doc/plugin.texi.  */
+ 
+ #include "config.h"
++#define INCLUDE_DLFCN_H
+ #include "system.h"
+ #include "coretypes.h"
+ #include "options.h"
+diff --git a/gcc/system.h b/gcc/system.h
+index 03ab33ac960..0354883ed3f 100644
+--- a/gcc/system.h
++++ b/gcc/system.h
+@@ -690,7 +690,7 @@ extern int vsnprintf (char *, size_t, const char *, va_list);
+ # endif
+ #endif
+ 
+-#if defined (ENABLE_PLUGIN) && defined (HAVE_DLFCN_H)
++#if defined (INCLUDE_DLFCN_H) && defined (HAVE_DLFCN_H)
+ /* If plugin support is enabled, we could use libdl.  */
+ #include <dlfcn.h>
+ #endif
+-- 
+2.43.0
+
