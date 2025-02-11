@@ -163,4 +163,12 @@
     <comment></comment>
     <requestid>1243566</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>7278ae8d5e297b17a588ce1790041bc9</srcmd5>
+    <version>1.24.1</version>
+    <time>1739305365</time>
+    <user>anag+factory</user>
+    <comment>Build mpremote</comment>
+    <requestid>1244833</requestid>
+  </revision>
 </revisionlist>

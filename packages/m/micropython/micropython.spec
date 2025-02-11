@@ -17,6 +17,7 @@
 
 
 %define pythons python3
+%{?sle15_python_module_pythons}
 
 Name:           micropython
 Version:        1.24.1
@@ -37,8 +38,8 @@ ExcludeArch:    %{ix86} %{arm} ppc64 ppc64le
 %package -n mpremote
 Summary:        MicroPython remote control
 BuildArch:      noarch
-BuildRequires:  python3-hatch-requirements-txt
-BuildRequires:  python3-hatchling
+BuildRequires:  %{python_module hatch-requirements-txt}
+BuildRequires:  %{python_module hatchling}
 Requires:       python3-pyserial >= 3.3
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
@@ -78,9 +79,11 @@ install -d %{buildroot}%{_bindir}
 install -t %{buildroot}%{_bindir} ports/unix/build-standard/micropython
 pushd tools/mpremote
 %pyproject_install
-%python3_fix_shebang
-%fdupes %{buildroot}%{python3_sitelib}
 popd
+%python3_fix_shebang
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# remove pycache to get rid of rpmlint "W: python-bytecode-inconsistent-mtime" warnings
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/mpremote/__pycache__
 
 %check
 %ifnarch x86_64
@@ -89,8 +92,8 @@ popd
 rm -f tests/float/float_parse.py
 rm -f tests/float/float_parse_doubleprec.py
 %endif
-export MICROPY_CPYTHON3=python3
-make -C ports/unix PYTHON=%{_bindir}/python3 V=1 test
+export MICROPY_CPYTHON3=python%python_version
+make -C ports/unix PYTHON=%{_bindir}/python%python_version V=1 test
 
 %files
 %license LICENSE
@@ -100,8 +103,8 @@ make -C ports/unix PYTHON=%{_bindir}/python3 V=1 test
 %files -n mpremote
 %license tools/mpremote/LICENSE
 %doc tools/mpremote/README.md
-%{python3_sitelib}/mpremote
-%{python3_sitelib}/mpremote-%{version}.dist-info
+%{_prefix}/lib/python%{python_version}/site-packages/mpremote
+%{_prefix}/lib/python%{python_version}/site-packages/mpremote-%{version}.dist-info
 %{_bindir}/mpremote
 
 %changelog
