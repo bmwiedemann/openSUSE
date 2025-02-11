@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-winpthreads
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        A pthreads implementation for Windows
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://mingw-w64.sf.net/
-Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%{version}.tar.bz2
+Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%version.tar.bz2
 Source9:        %name-rpmlintrc
 BuildRequires:  mingw32-cross-gcc-bootstrap
 BuildRequires:  mingw32-cross-pkg-config
@@ -76,7 +76,7 @@ popd
 %_mingw32_configure \
 	--enable-static \
 	--enable-shared \
-    LDFLAGS="%{_mingw32_ldflags_bootstrap}"
+    LDFLAGS="%_mingw32_ldflags_bootstrap"
 %make_build
 
 %install

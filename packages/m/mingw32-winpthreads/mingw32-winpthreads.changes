@@ -17,7 +17,7 @@ Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
   * New msvcrt10, 20, 40, 70 and 71 import libraries.
 
 -------------------------------------------------------------------
-Wed Sep 22 07:54:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+Wed Sep 22 07:54:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add arch-independent-package-contains-binary-or-object
   to rpmlintrc
@@ -44,21 +44,20 @@ Wed Mar 17 15:52:33 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 -------------------------------------------------------------------
 Mon Nov 25 17:31:02 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
 
-- Use macro _mingw32_ldflags_bootstrap from mingw32-filesystem package
+- Use macro _mingw64_ldflags_bootstrap from mingw64-filesystem package
   for setting LDFLAGS to keep common settings in one place
-- Revert to use mingw32-cross-gcc-bootstrap again
 
 -------------------------------------------------------------------
-Mon Nov 25 09:23:14 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+Mon Nov 25 12:41:38 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Use mingw32-cross-gcc to fix a compile error caused by
-  mingw32-cross-gcc-bootstrap-9.2 does not provide ssp library
+- Disable stack-protector because we don't have ssp support
+  in mingw64-cross-gcc-bootstrap (yet).
 
 -------------------------------------------------------------------
-Sat Nov 23 14:48:55 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+Sat Nov 23 14:39:46 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to new upstream release 7.0.0
-  * No changelog entries specific to winphtreads found.
+  * No changelog entries specific to winpthreads found.
 
 -------------------------------------------------------------------
 Wed Oct 17 19:02:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
@@ -67,9 +66,10 @@ Wed Oct 17 19:02:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
   * No changelog entries specific to winpthreads found.
 
 -------------------------------------------------------------------
-Wed Nov 22 09:51:09 UTC 2017 - idonmez@suse.com
+Tue Nov 21 11:32:43 UTC 2017 - idonmez@suse.com
 
 - Update to version 5.0.3
+- Drop gcc7.patch, fixed upstream.
 
 -------------------------------------------------------------------
 Tue Mar 28 11:43:07 UTC 2017 - idonmez@suse.com
@@ -80,7 +80,7 @@ Tue Mar 28 11:43:07 UTC 2017 - idonmez@suse.com
 - Drop memleak.patch, fixed upstream.
 
 -------------------------------------------------------------------
-Sat Jan 14 20:40:09 UTC 2017 - idonmez@suse.com
+Sat Jan 14 20:49:21 UTC 2017 - idonmez@suse.com
 
 - Update to version 5.0.1
 
@@ -98,7 +98,7 @@ Fri Sep  4 11:58:16 UTC 2015 - idonmez@suse.com
   * Major speed improvements to mutex & spinlock implementation
 
 -------------------------------------------------------------------
-Fri May 29 09:27:48 UTC 2015 - idonmez@suse.com
+Fri May 29 09:26:59 UTC 2015 - idonmez@suse.com
 
 - Enable static libraries
 
