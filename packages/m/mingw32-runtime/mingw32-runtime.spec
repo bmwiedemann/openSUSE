@@ -40,7 +40,7 @@ Requires:       mingw32-headers <= %version
 # longer needed.
 Obsoletes:      mingw32-runtime-bootstrap
 BuildArch:      noarch
-%_mingw32_package_header
+%_mingw32_package_header_debug
 
 %description
 MinGW Win64 cross-compiler runtime, base libraries.

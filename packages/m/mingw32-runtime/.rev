@@ -55,4 +55,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219516</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4958015bfe637d387b4a95133bbf38a4</srcmd5>
+    <version>12.0.0</version>
+    <time>1739305451</time>
+    <user>anag+factory</user>
+    <comment>[changelog synchronization between mingw32/64-*]</comment>
+    <requestid>1244892</requestid>
+  </revision>
 </revisionlist>

@@ -22,6 +22,7 @@ Mon Jun 27 16:37:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10
   * New msvcrt10, 20, 40, 70 and 71 import libraries.
+  * Drop x86_64 64-bit crtdll.dll
   * Updated wine imports
 
 -------------------------------------------------------------------
@@ -55,7 +56,7 @@ Thu Dec  3 12:18:00 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
   * DirectX SDKs are now always installed
 
 -------------------------------------------------------------------
-Sat Nov 23 14:51:10 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+Sat Nov 23 14:40:09 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to new upstream release 7.0.0
   * _FORTIFY_SOURCE support thanks to Christian Franke.
@@ -78,9 +79,11 @@ Wed Oct 17 18:50:03 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
   (no longer needed; included upstream)
 
 -------------------------------------------------------------------
-Wed Nov 22 09:47:44 UTC 2017 - idonmez@suse.com
+Tue Nov 21 11:38:40 UTC 2017 - idonmez@suse.com
 
 - Update to version 5.0.3
+- Drop libmsvcrt.a-Added-_create_locale-and-_free_locale-ent.diff,
+  fixed upstream.
 
 -------------------------------------------------------------------
 Tue Apr 18 14:12:37 UTC 2017 - idonmez@suse.com
@@ -93,9 +96,9 @@ Tue Mar 28 11:41:07 UTC 2017 - idonmez@suse.com
 - Update to version 5.0.2
 
 -------------------------------------------------------------------
-Sat Jan 14 20:41:27 UTC 2017 - idonmez@suse.com
+Sat Jan 14 20:48:37 UTC 2017 - idonmez@suse.com
 
-- Update to version 5.0.1 
+- Update to version 5.0.1
 
 -------------------------------------------------------------------
 Wed Mar 23 21:07:00 UTC 2016 - jengelh@inai.de
@@ -105,7 +108,7 @@ Wed Mar 23 21:07:00 UTC 2016 - jengelh@inai.de
 * gcc-5 support
 
 -------------------------------------------------------------------
-Fri Sep  4 12:08:56 UTC 2015 - idonmez@suse.com
+Fri Sep  4 11:55:01 UTC 2015 - idonmez@suse.com
 
 - Update to version 4.0.4
   * No changelog upstream
