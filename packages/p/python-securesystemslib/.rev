@@ -65,4 +65,19 @@
     <comment></comment>
     <requestid>1237992</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5963fa318f70a429987ddefa6fe6d7bd</srcmd5>
+    <version>1.2.0</version>
+    <time>1739305415</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Small release with mostly internal changes.
+  * SigstoreSigner now has a convenience function for creating a
+    signing identity for GitHub Actions workflow
+  * Linting refactoring, switched to ruff
+  * Modern annotations used in most of the code base
+
+- Actually run the testsuite.</comment>
+    <requestid>1244881</requestid>
+  </revision>
 </revisionlist>

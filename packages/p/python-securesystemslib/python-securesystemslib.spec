@@ -17,12 +17,12 @@
 
 
 Name:           python-securesystemslib
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
-License:        MIT
 Summary:        Cryptographic and general routines for Secure Systems Lab
+License:        MIT
 URL:            https://github.com/secure-systems-lab/securesystemslib
-Source:         securesystemslib-%{version}.tar.xz
+Source:         https://files.pythonhosted.org/packages/source/s/securesystemslib/securesystemslib-%{version}.tar.gz
 BuildRequires:  %{python_module PyKCS11}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cryptography >= 3.3.2}
@@ -31,10 +31,9 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-asn1crypto
-Suggests:       python-cryptography
-Suggests:       python-PyKCS11
-
+Requires:       python-PyKCS11
+Requires:       python-asn1crypto
+Requires:       python-cryptography
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,7 +41,7 @@ BuildArch:      noarch
 Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU
 
 %prep
-%autosetup -p1 -n securesystemslib-%version
+%autosetup -p1 -n securesystemslib-%{version}
 # Remove exec permission from python scripts
 find . -type f -name *.py -exec chmod 0644 {} \;
 
