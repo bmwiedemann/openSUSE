@@ -1,7 +1,7 @@
 #
 # spec file for package ngtcp2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global gnutls_soname libngtcp2_crypto_gnutls
 %global gnutls_sover 8
 Name:           ngtcp2
-Version:        1.6.0
+Version:        1.10.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT

@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:23:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Rename NGTCP2_INITIAL_TABLE_LENBITS to
+    NGTCP2_INITIAL_HASHBITS
+  * Do not extend app-limited period
+  * Fuzz sequences of different received packets
+  * Fuzz timestamp in read_write_pkt fuzzer
+  * Exercise all CC algorithms in read_write_pkt fuzzer
+  * Exercise client in read_write_pkt fuzzer
+  * Fix assertion error when retransmitting 0 length STREAM
+  * Fuzz remote transport params in read_write_pkt fuzzer
+  * Update ksl fuzzer with FuzzedDataProvider
+  * Remove outdated PMTUD probe packet handling when it is lost
+  * Add ngtcp2_rob fuzzer
+- update to 1.9.1:
+  * Fixes CVE-2024-52811
+- update to 1.9.0:
+  * ringbuf: silence superfluous unused function warning on
+    NDEBUG builds
+  * Use REQUIRED when finding a package
+  * Remove extra semicolons
+  * examples: GRO buffer size should be 64KiB
+  * Limit the number of ACK frames per packet
+  * Nothing to acknowledge in a 0RTT packet
+  * Introduce ngtcp2_ksl_search
+  * Update doc
+  * Loosen app-limited condition
+  * Tweak threshold for max_stream_data and max_data transmission
+  * Add note for window auto-tuning
+  * examples/client: Disable window auto-tuning by default
+  * ngtcp2_ksl: Use proper type
+  * Retry token validation with more detailed error reporting
+  * examples: Call getnameinfo only when logging is required
+  * Replace http_parser_parse_url with urlparse
+- update to 1.8.1:
+  * Fix connection stall due to cwnd limited
+- update to 1.8.0:
+  * ngtcp2_cid: Update doc and style
+  * Add const qualifier
+  * ngtcp2_pkt_decode_hd_long: Do not touch dest on error
+  * ngtcp2_pkt_decode_ack_frame: Remove useless initialization
+  * Change clang-format options
+  * Fixing cmake export
+  * Rtb on pkt lost
+  * Rtb refactor
+  * Crypto refactor
+  * ngtcp2_pkt_encode_ack_frame: Make fr const and fix doc
+  * ngtcp2_ppe: Update style
+  * Remove unused NGTCP2_MAX_RX_(INITIAL|HANDSHAKE)_CRYPTO_DATA
+  * ngtcp2_map: Fix hash computation
+  * ngtcp2_map: Rename tablelenbits to hashbits
+  * Map refactor
+  * CUBIC RFC 9438
+  * Amend CUBIC
+  * Hystart++ RFC 9406
+- update to 1.7.0:
+  * Cleanup end of macro comments and clang-format
+  * GHA: Remove EXTRA_LDFLAGS
+  * Bump docker/build-push-action from 5 to 6
+  * Add ngtcp2_tpe, testing packet encoder
+  * Refactor packet writer functions for testing
+  * ngtcp2_gaptr: Cleanup doc and style
+  * ngtcp2_idtr: Clean doc and fix wrong assertions
+  * Added options to command find_package
+
+-------------------------------------------------------------------
 Mon Jul  1 22:03:43 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - make devel package require also gnutls variant of the library

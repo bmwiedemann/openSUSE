@@ -115,4 +115,41 @@
     <comment></comment>
     <requestid>1185323</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71bf92a590762a8a68e4c9288bd37c3c</srcmd5>
+    <version>1.10.0</version>
+    <time>1739305343</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.0:
+  * Rename NGTCP2_INITIAL_TABLE_LENBITS to
+    NGTCP2_INITIAL_HASHBITS
+  * Do not extend app-limited period
+  * Fuzz sequences of different received packets
+  * Fuzz timestamp in read_write_pkt fuzzer
+  * Exercise all CC algorithms in read_write_pkt fuzzer
+  * Exercise client in read_write_pkt fuzzer
+  * Fix assertion error when retransmitting 0 length STREAM
+  * Fuzz remote transport params in read_write_pkt fuzzer
+  * Update ksl fuzzer with FuzzedDataProvider
+  * Remove outdated PMTUD probe packet handling when it is lost
+  * Add ngtcp2_rob fuzzer
+- update to 1.9.1:
+  * Fixes CVE-2024-52811
+- update to 1.9.0:
+  * ringbuf: silence superfluous unused function warning on
+    NDEBUG builds
+  * Use REQUIRED when finding a package
+  * Remove extra semicolons
+  * examples: GRO buffer size should be 64KiB
+  * Limit the number of ACK frames per packet
+  * Nothing to acknowledge in a 0RTT packet
+  * Introduce ngtcp2_ksl_search
+  * Update doc
+  * Loosen app-limited condition
+  * Tweak threshold for max_stream_data and max_data transmission
+  * Add note for window auto-tuning
+  * examples/client: Disable window auto-tuning by default
+  * ngtcp2_ksl: Use proper type</comment>
+    <requestid>1244412</requestid>
+  </revision>
 </revisionlist>
