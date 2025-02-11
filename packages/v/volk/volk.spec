@@ -70,6 +70,11 @@ Group:          Development/Tools/Other
 This package provides volk_modtool, used for creating new
 VOLK kernels.
 
+%ifarch riscv64
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
+%global _lto_cflags %{nil}
+%endif
+
 %prep
 %autosetup
 
