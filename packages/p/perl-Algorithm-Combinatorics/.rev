@@ -7,4 +7,14 @@
     <comment>needed for kensho</comment>
     <requestid>284615</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc2901a9d993deeaebb94083e7359214</srcmd5>
+    <version>0.270.0</version>
+    <time>1739305464</time>
+    <user>anag+factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1244914</requestid>
+  </revision>
 </revisionlist>
