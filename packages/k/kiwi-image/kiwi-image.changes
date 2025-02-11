@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 11 11:49:12 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- switch to replace_using_package_version service to reduce source changes
+
+-------------------------------------------------------------------
 Thu Jan 30 13:34:15 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - update to new version

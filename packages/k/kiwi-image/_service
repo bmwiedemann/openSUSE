@@ -1,4 +1,10 @@
 <services>
   <service mode="buildtime" name="docker_label_helper"/>
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%kiwi_version%%</param>
+    <param name="package">python3-kiwi</param>
+    <param name="parse-version">patch</param>
+  </service>
 </services>
