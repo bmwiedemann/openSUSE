@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 19:34:04 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.24
+- Fix inline completion when option “Yes, without fallback to popup” is chosen
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/626)
+- Don’t spellcheck the preedit if the top priority input method is Japanese or Chinese
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/624)
+- Update UnicodeData.txt, DerivedAge.txt to the Unicode 17.0.0 draft as of 2025-02-10
+- Translation update from Weblate (ko, new 17.1%)
+
+-------------------------------------------------------------------
 Thu Feb 06 19:38:09 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.23
