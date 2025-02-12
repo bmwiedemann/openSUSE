@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 11 21:11:03 UTC 2025 - dmueller@suse.com
+
+- Update to version 10.2+git20250211.88dd0a3:
+  * Add BRP_PESIGN_PACKAGES to filter package(s) to repack
+  * Set Getopt no ignore case
+
+-------------------------------------------------------------------
 Mon Feb 10 13:57:06 UTC 2025 - dmueller@suse.com
 
 - Update to version 10.2+git20250116.e734a3f:

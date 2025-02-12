@@ -505,4 +505,14 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
   * dh_signobs: fix parsing of pesign hashing output</comment>
     <requestid>1244777</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>89a948db240281e9619ce89714fcfbaa</srcmd5>
+    <version>10.2+git20250211.88dd0a3</version>
+    <time>1739392261</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 10.2+git20250211.88dd0a3:
+  * Add BRP_PESIGN_PACKAGES to filter package(s) to repack
+  * Set Getopt no ignore case</comment>
+    <requestid>1245171</requestid>
+  </revision>
 </revisionlist>
