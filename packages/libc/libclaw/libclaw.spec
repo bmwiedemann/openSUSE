@@ -17,7 +17,7 @@
 
 
 Name:           libclaw
-Version:        1.8.2
+Version:        1.9.1
 Release:        0
 Summary:        C++ library of various utility functions
 License:        LGPL-2.1-or-later
