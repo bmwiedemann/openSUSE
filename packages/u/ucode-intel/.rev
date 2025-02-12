@@ -1281,4 +1281,41 @@
   | RPL-S          | H0       | 06-bf-05/07 | 00000036 | 00000037 | Core Gen13/Gen14 (forwarded request 1223910 from msmeissn)</comment>
     <requestid>1223911</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>0d064527b18595a1d9c5d223b4ea3c49</srcmd5>
+    <version>20250211</version>
+    <time>1739392276</time>
+    <user>anag+factory</user>
+    <comment>- Intel CPU Microcode was updated to the 20250211 release (bsc#1237096)
+  - Security updates for INTEL-SA-01166 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01166.html
+    * CVE-2024-31068: Improper Finite State Machines (FSMs) in Hardware
+      Logic for some Intel Processors may allow privileged user to
+      potentially enable denial of service via local access.
+  - Security updates for INTEL-SA-01213 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01213.html
+    * CVE-2024-36293: A potential security vulnerability in some Intel
+      Software Guard Extensions (Intel SGX) Platforms may allow denial
+      of service. Intel is releasing microcode updates to mitigate this
+    potential vulnerability.
+  - Security updates for INTEL-SA-01139 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01139.html
+    * not clear which CVEs are fixed here, and which are in UEFI BIOS updates.
+  - Security updates for INTEL-SA-01228 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01228.html
+    * CVE-2024-39355: A potential security vulnerability in some
+      13th and 14th Generation Intel Core Processors may allow denial
+      of service. Intel is releasing microcode and UEFI reference code
+      updates to mitigate this potential vulnerability.
+  - Security updates for INTEL-SA-01194 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01194.html
+    * CVE-2024-37020: A potential security vulnerability in the Intel
+      Data Streaming Accelerator (Intel DSA) for some Intel Xeon Processors
+      may allow denial of service. Intel is releasing software updates to
+      mitigate this potential vulnerability.
+  - Update for functional issues. Refer to Intel Core Ultra Processor https://cdrdv2.intel.com/v1/dl/getContent/792254 for details.
+  - Update for functional issues. Refer to 13th/14th Generation Intel Core Processor Specification Update https://cdrdv2.intel.com/v1/dl/getContent/740518 for details.
+  - Update for functional issues. Refer to 12th Generation Intel Core Processor Family https://cdrdv2.intel.com/v1/dl/getContent/682436 for details.
+  - Update for functional issues. Refer to 11th Gen Intel Core Processor Specification Update https://cdrdv2.intel.com/v1/dl/getContent/631123 for details.
+  - Update for functional issues. Refer to 8th and 9th Generation Intel Core Processor Family Spec Update https://cdrdv2.intel.com/v1/dl/getContent/337346 for details.
+  - Update for functional issues. Refer to 5th Gen Intel Xeon Scalable Processors Specification Update https://cdrdv2.intel.com/v1/dl/getContent/793902 for details.
+  - Update for functional issues. Refer to 4th Gen Intel Xeon Scalable Processors Specification Update https://cdrdv2.intel.com/v1/dl/getContent/772415 for details.
+  - Update for functional issues. Refer to 3rd Generation Intel Xeon Processor Scalable Family Specification Update https://cdrdv2.intel.com/v1/dl/getContent/637780 for details. (forwarded request 1245387 from msmeissn)</comment>
+    <requestid>1245388</requestid>
+  </revision>
 </revisionlist>

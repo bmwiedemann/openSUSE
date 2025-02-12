@@ -1,7 +1,7 @@
 #
 # spec file for package ucode-intel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _firmwaredir /lib/firmware
 %endif
 Name:           ucode-intel
-Version:        20241112
+Version:        20250211
 Release:        0
 Summary:        Microcode Updates for Intel x86/x86-64 CPUs
 License:        SUSE-Firmware
