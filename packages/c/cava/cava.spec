@@ -1,7 +1,7 @@
 #
 # spec file for package cava
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cava
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Console-based Audio Visualizer for Alsa
 License:        MIT

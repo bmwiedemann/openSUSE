@@ -294,4 +294,13 @@
   * add android source code #552</comment>
     <requestid>1226426</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8982dec1a830ca8e0544228f690cd5d7</srcmd5>
+    <version>0.10.4</version>
+    <time>1739392548</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.4:
+  * feat: Better Windows Support #616</comment>
+    <requestid>1245238</requestid>
+  </revision>
 </revisionlist>
