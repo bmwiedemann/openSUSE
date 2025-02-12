@@ -1,0 +1,6 @@
+<package name="kernel-firmware-radeon" project="openSUSE:Factory">
+  <title>Kernel firmware files for Radeon graphics driver</title>
+  <description>This package contains Linux kernel firmware files for Radeon graphics driver.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-radeon"/>
+</package>
