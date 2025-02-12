@@ -61,6 +61,8 @@ Patch17:       pep-594-drop-pipes.patch
 Patch18:       cloud-init-fix-python313.patch
 # FIXME https://github.com/canonical/cloud-init/pull/5052
 Patch19:       cloud-init-dont-assume-ordering-of-ThreadPoolExecutor.patch
+# FIXME https://github.com/canonical/cloud-init/pull/4938
+Patch20:       cloud-init-direxist.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -178,6 +180,7 @@ Documentation and examples for cloud-init tools
 %patch -p1 -P 17
 %patch -p1 -P 18
 %patch -p1 -P 19
+%patch -P 20
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)

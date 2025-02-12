@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:44:12 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-direxist.patch (bsc#1236720)
+  + Make sure the directory exists, if not create it, before writing in that
+    location.
+
+-------------------------------------------------------------------
 Mon Jan 20 14:21:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Support python 3.13:
+- Support python 3.13 (bsc#1233649):
   + pep-594-drop-pipes.patch, gh#canonical/cloud-init#4392
   + cloud-init-fix-python313.patch, gh#canonical/cloud-init#4669
   + cloud-init-dont-assume-ordering-of-ThreadPoolExecutor.patch gh#canonical/cloud-init#5052
@@ -90,7 +97,7 @@ Fri Dec 15 14:09:36 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 -------------------------------------------------------------------
 Fri Dec  1 23:16:08 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
-- Move fdupes call back to %install (boo#1214169) 
+- Move fdupes call back to %install (boo#1214169)
 
 -------------------------------------------------------------------
 Mon Oct  9 14:26:40 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
@@ -430,7 +437,7 @@ Sun Aug 13 21:02:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Make user/vendor data sensitive and remove log permissions
   * source: Force OpenStack when it is only option (#2045)
   * sources/azure: fix regressions in IMDS behavior
-- drop 
+- drop
   cloud-init-cve-2023-1786-redact-instance-data-json-main.patch (upstream)
 - spec-file cleanups, including dropping flake8 (as build fails
   with newer flake8 versions)
@@ -457,7 +464,7 @@ Thu Apr 27 12:22:11 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 Tue Apr 11 18:48:30 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 - Sensitive data exposure (bsc#1210277, CVE-2023-1786)
-  + Add hidesensitivedata 
+  + Add hidesensitivedata
   + Add cloud-init-cve-2023-1786-redact-inst-data.patch
   + Do not expose sensitive data gathered from the CSP
 
@@ -1458,7 +1465,7 @@ Fri Feb 18 19:08:21 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
   + Azure: Retry dhcp on timeouts when polling reprovisiondata (#998)
     [aswinrajamannar]
   + testing: Fix ssh keys integration test (#992)
-  
+
 - From 21.3
   + Azure: During primary nic detection, check interface status continuously
     before rebinding again (#990) [aswinrajamannar]
@@ -1570,7 +1577,7 @@ Thu Feb 17 18:01:31 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 -------------------------------------------------------------------
 Wed Nov 24 04:17:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on python3-nose. 
+- Remove unneeded BuildRequires on python3-nose.
 
 -------------------------------------------------------------------
 Thu Aug 12 11:27:19 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
@@ -1586,7 +1593,7 @@ Thu Aug 12 11:27:19 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
     - cloud-init-no-pwd-in-log.patch
     - 0001-templater-drop-Jinja-Python-2-compatibility-shim.patch
   + Remove cloud-init-sle12-compat.patch, version in SLE 12 is frozen to 20.2
-  + Remove cloud-init-tests-set-exec.patch no longer needed 
+  + Remove cloud-init-tests-set-exec.patch no longer needed
   + Forward port:
     - cloud-init-write-routes.patch
     - cloud-init-break-resolv-symlink.patch
@@ -2122,7 +2129,7 @@ Wed Apr  7 17:35:46 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 Fri Jan 22 16:27:17 UTC 2021 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Add use_arroba_to_include_sudoers_directory-bsc_1181283.patchfix (bsc#1181283)
-  - Do not including sudoers.d directory twice 
+  - Do not including sudoers.d directory twice
 
 -------------------------------------------------------------------
 Mon Jan  4 22:27:22 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
@@ -2369,7 +2376,7 @@ Fri Jul 24 19:55:40 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
     [Joshua Powers] (LP: #1827021)
   + ci: emit names of tests run in Travis (#120)
 
-  
+
 
 -------------------------------------------------------------------
 Thu Jun 18 12:11:49 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
@@ -2379,9 +2386,9 @@ Thu Jun 18 12:11:49 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 -------------------------------------------------------------------
 Wed May 20 11:23:04 UTC 2020 - Martin Loviska <mloviska@suse.com>
 
-- bsc#1170154: rsyslog warning, '~' is deprecated 
+- bsc#1170154: rsyslog warning, '~' is deprecated
   + replace deprecated syntax '& ~' by '& stop'
-    for more information please see https://www.rsyslog.com/rsyslog-error-2307/ 
+    for more information please see https://www.rsyslog.com/rsyslog-error-2307/
 
 -------------------------------------------------------------------
 Tue May 19 11:51:18 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
@@ -2957,7 +2964,7 @@ Tue Jan 22 13:04:40 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 Mon Jan  7 20:22:39 UTC 2019 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 18.5 (bsc#1121878, boo#1116767)
-  + Remove 
+  + Remove
     0001-Fix-the-service-order-for-SUSE-distributions.patch
     0001-Follow-the-ever-bouncing-ball-for-openSUSE-distribut.patch
     0002-Add-tests-for-additional-openSUSE-distro-condition-m.patch
@@ -3557,7 +3564,7 @@ Thu Sep 21 17:32:55 EDT 2017 - rjschwei@suse.com
   + Remove dataSourceOpenNebula.patch, use upstream implementation
   + Remove setupSUSEsysVInit.diff, included upstream
   + Remove suseSysVInit.diff, included upstream
-  + Remove cloud-init-finalbeforelogin.patch, don't block login 
+  + Remove cloud-init-finalbeforelogin.patch, don't block login
   + Remove cloud-init-handle-not-implemented-query.patch, query option removed
   + Remove cloud-init-spceandtabs-clean.patch, indentation fixed upstream
   + Remove dynamicInitCmd.diff, different solution from upstream
@@ -4186,7 +4193,7 @@ Fri Dec  9 09:50:50 UTC 2016 - jgleissner@suse.com
 
 - Modify suseIntegratedHandler.patch (bsc#998103)
   + Store previous hostname so update_hostname module does not
-    overwrite manually set hostnames 
+    overwrite manually set hostnames
 - cloud-init-python26.patch
   + Compatibility fixes with Python 2.6
 
@@ -4353,7 +4360,7 @@ Tue Sep 13 13:19:51 UTC 2016 - rjschwei@suse.com
 
 - update to version 0.7.8 (bsc#998103)
  + added cloud-init-net-eni.patch based on work by eblock
-   - Using config-drive instead of metadata failed because the network 
+   - Using config-drive instead of metadata failed because the network
      translation to Ubuntu-style did not return gateway information to
      opensuse.py
  + added cloud-init-service.patch based on work by eblock
@@ -4526,7 +4533,7 @@ from 0.7.7:
  + support network rendering to sysconfig (for centos and RHEL)
  + write_files: if no permissions are given, just use default without warn.
  + user_data: fix error when user-data is not utf-8 decodable (LP: #1532072)
- + fix mcollective module with python3 (LP: #1597699) [Sergii Golovatiuk] 
+ + fix mcollective module with python3 (LP: #1597699) [Sergii Golovatiuk]
 
 -------------------------------------------------------------------
 Mon Jun  6 09:43:12 UTC 2016 - joachim.gleissner@suse.com
@@ -4625,9 +4632,9 @@ Mon Apr 13 08:46:40 UTC 2015 - tbechtold@suse.com
 Tue Feb 24 15:52:13 UTC 2015 - rjschwei@suse.com
 
 - Fix (bnc#919305 & bnc#918952)
-  - Properly handle persistent network device names for OpenNebula 
+  - Properly handle persistent network device names for OpenNebula
     + add dataSourceOpenNebula.patch
-  - Properly set up network mode if interface config file 
+  - Properly set up network mode if interface config file
     + modified suseIntegratedHandler.patch
 
 -------------------------------------------------------------------
@@ -4662,7 +4669,7 @@ Sat Aug  9 12:35:16 UTC 2014 - dvlaeev@suse.com
   on architectures where dmidecode is not available.
 
 - Avoid to run dmidecode on PowerPC as well
-  cloud-init-no-dmidecode-on-ppc64.patch 
+  cloud-init-no-dmidecode-on-ppc64.patch
 
 -------------------------------------------------------------------
 Mon Jul 28 15:54:32 UTC 2014 - rschweikert@suse.com
@@ -4678,7 +4685,7 @@ Mon Jul 28 15:14:02 UTC 2014 - rschweikert@suse.com
 -------------------------------------------------------------------
 Tue Jul 22 22:31:17 UTC 2014 - dmueller@suse.com
 
-- fix typo in cloud.cfg (gowpart -> growpart) 
+- fix typo in cloud.cfg (gowpart -> growpart)
 - add cloudinit-datasources.patch: Fixes datasource list
 
 -------------------------------------------------------------------
@@ -4806,7 +4813,7 @@ Mon Mar 17 17:58:23 UTC 2014 - rschweikert@suse.com
 
 -------------------------------------------------------------------
 Mon Jan 20 17:51:24 UTC 2014 - dmueller@suse.com
- 
+
 - add python-jsonpatch, python-pyserial, python-PyYAML requires,
   otherwise it immediately traces on startup
 
@@ -4850,7 +4857,7 @@ Sat Jan  4 16:03:57 UTC 2014 - rschweikert@suse.com
     filesystems.  Useful if attached disks are not formatted (LP: #1218506)
   + Fix usage of libselinux-python when selinux is disabled. [Garrett Holmstrom]
   + multi_log: only write to /dev/console if it exists [Garrett Holmstrom]
-  + config/cloud.cfg: add 'sudo' to list groups for the default user 
+  + config/cloud.cfg: add 'sudo' to list groups for the default user
     (LP: #1228228)
   + documentation fix for use of 'mkpasswd' [Eric Nordlund]
   + respect /etc/growroot-disabled file (LP: #1234331)
@@ -4895,7 +4902,7 @@ Wed Jun 26 15:41:24 UTC 2013 - bwiedemann@suse.com
 -------------------------------------------------------------------
 Wed Jun 26 13:07:41 UTC 2013 - rschweikert@suse.com
 
-- fix stray character in patch introduced by previous changes 
+- fix stray character in patch introduced by previous changes
 
 -------------------------------------------------------------------
 Wed Jun 26 12:37:10 UTC 2013 - rschweikert@suse.com
