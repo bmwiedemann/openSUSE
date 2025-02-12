@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Feb 11 13:16:26 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Explicitly set CGO_ENABLED environment variable for architectures
+  which require it
+- Update to version 11.5.1:
+  Security:
+  * CVE-2024-51744: Fix bad documentation of error handling in
+    ParseWithClaims (bsc#1232975)
+  Bug fixes:
+  * CodeEditor: Fix cursor alignment
+  * TransformationFilter: Include transformation outputs in
+    transformation filtering options: Include transformation
+    outputs in transformation filtering options
+
+- Update to version 11.5.0:
+  Breaking changes:
+  * Loki: Default to /labels API with query param instead of
+    /series API
+  Features and enhancements:
+  * Dashboards: Redesigned filters for dashboards
+  * Dashboards: New regular expression option for Extract fields
+    transformation
+  * Dashboards: Redesigned sharing experience
+  * Dashboards: Customizable shareable dashboard panel images
+  * Datasources: Time series macro support in visual query builder
+    for SQL data sources
+
+- Update to version 11.4.0:
+  Features and enhancements:
+  * Cloudwatch: OpenSearch PPL and SQL support in Logs Insights
+
+-------------------------------------------------------------------
 Thu Feb  6 12:43:40 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add simple testing

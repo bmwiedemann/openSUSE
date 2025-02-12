@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        11.3.3
+Version:        11.5.1
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -67,6 +67,9 @@ test -d public/build
 %build
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
+%ifarch s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+export CGO_ENABLED=1
+%endif
 %endif
 wire gen -tags 'oss' ./pkg/server
 go build -o . -ldflags '-X main.version=%{version}' ./pkg/cmd/...
