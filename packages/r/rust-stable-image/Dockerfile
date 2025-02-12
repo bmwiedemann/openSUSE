@@ -19,20 +19,20 @@
 #!BuildTag: opensuse/bci/rust:stable
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%-1.%RELEASE%
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
-#!BuildTag: opensuse/bci/rust:1.83
+#!BuildTag: opensuse/bci/rust:1.84
 #!BuildTag: opensuse/bci/rust:latest
 
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends rust1.83 cargo1.83; \
+    zypper -n install --no-recommends rust1.84 cargo1.84; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.rust
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.83"
-LABEL org.opencontainers.image.description="Rust 1.83 container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.84"
+LABEL org.opencontainers.image.description="Rust 1.84 container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%RUST_VERSION%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"

@@ -4,11 +4,11 @@
   <service mode="buildtime" name="replace_using_package_version">
     <param name="file">Dockerfile</param>
     <param name="regex">%%RUST_VERSION%%</param>
-    <param name="package">rust1.83</param>
+    <param name="package">rust1.84</param>
   </service>
   <service mode="buildtime" name="replace_using_package_version">
     <param name="file">Dockerfile</param>
     <param name="regex">%%CARGO_VERSION%%</param>
-    <param name="package">cargo1.83</param>
+    <param name="package">cargo1.84</param>
   </service>
 </services>
