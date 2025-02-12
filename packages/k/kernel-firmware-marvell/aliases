@@ -1,0 +1,16 @@
+libertas_sdio: sdio:c*v02DFd9103*
+libertas_sdio: sdio:c*v02DFd9104*
+libertas_tf_usb: usb:v05A3p8388d*dc*dsc*dp*ic*isc*ip*in*
+libertas_tf_usb: usb:v1286p2001d*dc*dsc*dp*ic*isc*ip*in*
+mwl8k: pci:v000011ABd00002A0Asv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A0Csv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A24sv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A2Bsv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A30sv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A40sv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A41sv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A42sv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002A43sv*sd*bc*sc*i*
+mwl8k: pci:v000011ABd00002B36sv*sd*bc*sc*i*
+usb8xxx: usb:v05A3p8388d*dc*dsc*dp*ic*isc*ip*in*
+usb8xxx: usb:v1286p2001d*dc*dsc*dp*ic*isc*ip*in*
