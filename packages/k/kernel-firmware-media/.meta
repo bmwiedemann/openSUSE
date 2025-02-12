@@ -1,0 +1,6 @@
+<package name="kernel-firmware-media" project="openSUSE:Factory">
+  <title>Kernel firmware files for various Video4Linux drivers</title>
+  <description>This package contains Linux kernel firmware files for various Video4Linux drivers.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-media"/>
+</package>
