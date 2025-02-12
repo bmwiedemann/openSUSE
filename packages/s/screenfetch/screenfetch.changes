@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb  9 16:02:30 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Added support for TeArch, Rocky Linux, AlmaLinux, macOS Big Sur
+- many small fixes
+- Added -C option to insert custom (extra) lines
+- This will be the last release of screenFetch 
+  see https://github.com/KittyKatt/screenFetch/discussions/805
+
+-------------------------------------------------------------------
 Wed Nov 27 09:27:57 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Small changelog cleanup

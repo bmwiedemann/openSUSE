@@ -135,4 +135,12 @@
 - Drop screenfetch-empty_fb_fix.patch</comment>
     <requestid>751227</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>94826b02e499b6563d8d27eb67774bab</srcmd5>
+    <version>3.9.9</version>
+    <time>1739392729</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245389</requestid>
+  </revision>
 </revisionlist>
