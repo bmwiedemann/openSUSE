@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-oslogin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define with_selinux 1
+%define selinuxtype targeted
 
 %{!?_pam_moduledir: %define _pam_moduledir %{_pamdir}}
 
@@ -38,6 +41,12 @@ BuildRequires:  libjson-c-devel
 BuildRequires:  make
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
+%if 0%{?with_selinux}
+BuildRequires:  checkpolicy
+BuildRequires:  selinux-policy
+BuildRequires:  selinux-policy-%{selinuxtype}
+BuildRequires:  selinux-policy-devel
+%endif
 Requires:       google-guest-agent >= 20231003
 Requires:       google-guest-configs
 Provides:       google-compute-engine-oslogin = %{version}
@@ -58,7 +67,17 @@ make %{?_smp_mflags} LDLIBS='-lcurl -ljson-c -lboost_regex' VERSION=%{version}
 %endif
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR=/%{_libdir} PAMDIR=%{_pam_moduledir} SYSTEMDDIR=%{_unitdir} PRESETDIR=%{_presetdir} VERSION=%{version}
+make install \
+     DESTDIR=%{buildroot} \
+     LIBDIR=/%{_libdir} \
+     PAMDIR=%{_pam_moduledir} \
+     SYSTEMDDIR=%{_unitdir} \
+     PRESETDIR=%{_presetdir} \
+%if 0%{?with_selinux}
+     INSTALL_SELINUX=y \
+%endif
+     VERSION=%{version}
+
 mkdir -p %{buildroot}%{_sbindir}
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
 
@@ -90,5 +109,8 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %{_presetdir}/*
 %{_sbindir}/*
 %{_unitdir}/*
+%if 0%{?with_selinux}
+%{_datadir}/selinux/packages/oslogin.pp
+%endif
 
 %changelog

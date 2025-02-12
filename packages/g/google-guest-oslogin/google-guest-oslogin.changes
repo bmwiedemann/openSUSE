@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:43:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Build and install SELinux module (bsc#1232553)
+
+-------------------------------------------------------------------
 Tue Oct 22 07:40:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20241021.00 (bsc#1231775, bsc#1231776)
