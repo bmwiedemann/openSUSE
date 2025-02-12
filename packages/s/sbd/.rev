@@ -560,4 +560,13 @@ the sources.</comment>
 - use int for timeouts &amp; latency instead of wild mix and casts (forwarded request 1229468 from yan_gao)</comment>
     <requestid>1229469</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>739ceda17d1ff1ad8c09f1f139a959dd</srcmd5>
+    <version>1.5.2+20241209.5946119</version>
+    <time>1739392770</time>
+    <user>anag+factory</user>
+    <comment>- spec: drop Linux-HA fence agent external/sbd in favor of fence_sbd agent for suse_version &gt;= 1600
+- spec: add systemd to BuildRequires (forwarded request 1245460 from yan_gao)</comment>
+    <requestid>1245461</requestid>
+  </revision>
 </revisionlist>

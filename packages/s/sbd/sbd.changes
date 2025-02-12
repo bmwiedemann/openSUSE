@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 17:32:38 UTC 2025 - Yan Gao <ygao@suse.com>
+
+- spec: drop Linux-HA fence agent external/sbd in favor of fence_sbd agent for suse_version >= 1600
+- spec: add systemd to BuildRequires
+
+-------------------------------------------------------------------
 Mon Dec 09 08:24:47 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.5.2+20241209.5946119:

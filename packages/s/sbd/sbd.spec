@@ -1,7 +1,7 @@
 #
 # spec file for package sbd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Lars Marowsky-Bree
 #
 # All modifications and additions to the file contributed by third parties
@@ -78,6 +78,7 @@ BuildRequires:  pkgconfig(libqb)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pacemaker)
 BuildRequires:  pkgconfig(pacemaker-cib)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
 Requires(post): %fillup_prereq
 Conflicts:      ClusterTools2 < 2.3.2
@@ -126,6 +127,11 @@ make %{?_smp_mflags}
 
 %install
 %make_install LIBDIR=%{_libdir}
+
+%if %{suse_version} >= 1600
+rm -rf %{buildroot}%{_libdir}/stonith
+%endif
+
 install -D -m 0755 src/sbd.sh %{buildroot}%{_datadir}/sbd/sbd.sh
 install -D -m 0755 tests/regressions.sh %{buildroot}%{_datadir}/sbd/regressions.sh
 install -D -m 0644 src/sbd.service %{buildroot}/%{_unitdir}/sbd.service
@@ -162,7 +168,9 @@ fi
 
 %files
 %defattr(-,root,root)
+%if %{suse_version} < 1600
 %{_libdir}/stonith/
+%endif
 %{_sbindir}/sbd
 %{_sbindir}/rcsbd
 %{_sbindir}/rcsbd_remote
