@@ -117,4 +117,15 @@
   * Bind to both emacs and vi-insert keymaps in Bash</comment>
     <requestid>1193823</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6932ea83cff02f84ffc62c35cddfa01d</srcmd5>
+    <version>0.9.3+0</version>
+    <time>1739392555</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.3:
+  * Fix PowerShell VIM key scheme duplicates keypresses
+  * Display more results by default
+  * Hopefully fix occasional sort panics</comment>
+    <requestid>1245240</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb 12 07:41:58 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.3:
+  * Fix PowerShell VIM key scheme duplicates keypresses
+  * Display more results by default
+  * Hopefully fix occasional sort panics
+
+-------------------------------------------------------------------
 Wed Aug 14 06:16:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.2:
