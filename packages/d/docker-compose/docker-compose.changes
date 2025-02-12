@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:56:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove docker-compose-switch dependency
+
+-------------------------------------------------------------------
+Wed Feb 12 07:57:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.33.0:
+  * Important
+    - This release introduce support for Bake to manage builds as
+      an alternative to the internal buildkit client. This new
+      feature can be enabled by setting COMPOSE_BAKE=1 variable.
+      Bake will become the default builder in a future release.
+  * Improvements
+    - let user know bake is now supported by @ndeloof in #12524
+    - support additional_context reference to another service by
+      @ndeloof in #12485
+    - add support for BUILDKIT_PROGRESS by @ndeloof in #12458
+    - add --with-env flag to publish command by @glours in #12482
+    - Update ls --quiet help description by @maxproske in #12541
+    - Publish warn display env vars by @glours in #12486
+  * Fixes
+    - Fix bake support by @ndeloof in #12507
+    - Update link in stats --help output by @maxproske in #12523
+    - Properly handle "builtin" seccomp profile by @r-bk in #12478
+    - manage watch applied to mulitple services by @ndeloof in
+      #12469
+  * Internal
+    - use main branch for docs upstream validation workflow by
+      @crazy-max in #12487
+    - fix provenance for binaries and generate sbom by @crazy-max
+      in #12479
+    - add codeowners file by @glours in #12480
+    - remove exit code per error type used by legacy metrics system
+      by @ndeloof in #12502
+    - Dockerfile: update golangci-lint to v1.63.4 by @thaJeztah in
+      #12546
+    - Full test coverage for compatibility cmd by @maxproske in
+      #12528
+    - don't send raw os.Args to opentelemetry but a pseudo command
+      line by @ndeloof in #12530
+    - add docker engine v28.x to the test-matrix by @thaJeztah in
+      #12539
+    - enable copyloopvar linter by @thaJeztah in #12542
+    - go.mod: remove toolchain directive by @thaJeztah in #12551
+  * Dependencies
+    - bump buildx v0.20.1 by @ndeloof in #12488
+    - bump docker to v27.5.1 by @ndeloof in #12491
+    - bump compose-go v2.4.8 by @ndeloof in #12543
+    - bump golang.org/x/sys from 0.28.0 to 0.30.0 by @dependabot in
+      #12529
+    - bump github.com/moby/term v0.5.2 by @thaJeztah in #12540
+    - bump github.com/otiai10/copy from 1.14.0 to 1.14.1 by
+      @dependabot in #12493
+    - bump github.com/jonboulle/clockwork from 0.4.0 to 0.5.0 by
+      @dependabot in #12430
+    - bump github.com/spf13/pflag from 1.0.5 to 1.0.6 by
+      @dependabot in #12548
+    - bump golang.org/x/sync from 0.10.0 to 0.11.0 by @dependabot
+      in #12547
+    - bump gotest.tools/v3 from 3.5.1 to 3.5.2 by @dependabot in
+      #12549
+
+-------------------------------------------------------------------
 Thu Jan 16 05:55:59 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.4:

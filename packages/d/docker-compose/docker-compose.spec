@@ -17,7 +17,7 @@
 
 
 Name:           docker-compose
-Version:        2.32.4
+Version:        2.33.0
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0
@@ -26,7 +26,6 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) = 1.22
 Requires:       docker
-Requires:       docker-compose-switch
 
 %description
 Docker Compose is a tool for running multi-container applications on Docker
