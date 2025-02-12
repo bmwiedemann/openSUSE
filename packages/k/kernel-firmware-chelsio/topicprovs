@@ -1,0 +1,2 @@
+Provides:       cxgb3-firmware = %{version}
+Obsoletes:      cxgb3-firmware < %{version}
