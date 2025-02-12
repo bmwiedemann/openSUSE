@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 11 14:27:17 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- luajit: enable deterministic bytecode generation (boo#1236871)
+  * add deterministic_luajit.patch
+  * the bcc-lua package should now be reproducible
+
+-------------------------------------------------------------------
 Mon Jan 20 10:09:15 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 0.33.0
