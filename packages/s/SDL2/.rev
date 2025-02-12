@@ -596,4 +596,13 @@
     <comment>- Update to release 2.32.0</comment>
     <requestid>1244399</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>13961e09c9f945f4247c20daeca240db</srcmd5>
+    <version>2.32.0</version>
+    <time>1739392257</time>
+    <user>anag+factory</user>
+    <comment>- Add patch from upstream to fix building with pipewire-1.3.82.
+  * 0001-pipewire-Ensure-that-the-correct-struct-is-used-for.patch</comment>
+    <requestid>1245149</requestid>
+  </revision>
 </revisionlist>

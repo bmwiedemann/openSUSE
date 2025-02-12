@@ -31,6 +31,7 @@ Source2:        https://libsdl.org/release/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
+Patch2:         0001-pipewire-Ensure-that-the-correct-struct-is-used-for.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libdecor-devel
