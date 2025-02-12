@@ -1,0 +1,6 @@
+<package name="kernel-firmware-liquidio" project="openSUSE:Factory">
+  <title>Kernel firmware files for Cavium LiquidIO driver</title>
+  <description>This package contains Linux kernel firmware files for Cavium LiquidIO driver.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-liquidio"/>
+</package>
