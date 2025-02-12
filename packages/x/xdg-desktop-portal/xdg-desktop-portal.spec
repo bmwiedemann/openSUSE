@@ -41,6 +41,8 @@ Supplements:    (%{oname}-devel and patterns-base-documentation)
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{oname}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-Fix-build-with-pipewire-1.3.82.patch gh#flatpak/xdg-desktop-portal#1624 alarrosa@suse.com -- Fix build with pipewire 1.3.82
+Patch0:         0001-Fix-build-with-pipewire-1.3.82.patch
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.58
