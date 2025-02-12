@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6dfc2b6321a9bd5433b130f7b02076af</srcmd5>
+    <version>20250206</version>
+    <time>1739392610</time>
+    <user>anag+factory</user>
+    <comment>This is a rework of the kernel-firmware packaging.
+
+Instead of building all kernel-firwmare-* subpackages from a single repo
+(kernel-firmware), build them individually from the inididual sources,
+to allow the invidiaul updates.
+
+The package names and functionalities remain same.
+
+After this PR, there will be a delete request for kernel-firmware.
+
+</comment>
+    <requestid>1245284</requestid>
+  </revision>
+</revisionlist>
