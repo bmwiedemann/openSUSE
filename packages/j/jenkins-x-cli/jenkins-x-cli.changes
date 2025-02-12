@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb 12 06:01:21 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.44:
+  * chore(deps): upgrade to version 0.7.18
+
+-------------------------------------------------------------------
+Wed Feb 12 05:59:11 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.43:
+  * fix: increase lint timeout
+  * chore(deps): upgrade to version 0.24.3
+
+-------------------------------------------------------------------
+Wed Feb 12 05:54:52 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.11.42:
+  * chore(deps): upgrade to version 0.4.12
+
+-------------------------------------------------------------------
 Mon Feb 10 09:52:48 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.11.41:
