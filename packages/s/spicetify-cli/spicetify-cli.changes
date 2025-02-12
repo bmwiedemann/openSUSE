@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 12 11:11:17 UTC 2025 - jan.kuzilek@suse.com
+
+- Update to version 2.39.2:
+  * fix(preprocess): remove checking spotify ver
+  * chore(lyrics-plus/OptionsMenu): change displayed text
+  * fix: re-render lyrics div when `Translation Display` is changed
+  * feat(lyrics-plus): allow to change display of lyrics translation (#3297)
+  * feat(lyrics-plus): add select language translation for Musixmatch provider (#3288)
+  * feat: patch only `xpui.js` on Spotify `1.2.57` and higher
+  * fix(homeConfig): make the regex work on more versions
+  * feat(wrapper): add smooth scrolling for Spotify 1.2.56
+  * fix(expFeatures): make it work on versions without `RemoteConfigDebugAPI`
+  * feat: migrate state folders
+  * chore(deps): bump github.com/mattn/go-colorable from 0.1.13 to 0.1.14 (#3267)
+  * chore(deps): bump golang.org/x/net from 0.33.0 to 0.34.0 (#3265)
+
+-------------------------------------------------------------------
 Tue Feb 04 13:12:15 UTC 2025 - jan.kuzilek@suse.com
 
 - Update to version 2.38.9:
