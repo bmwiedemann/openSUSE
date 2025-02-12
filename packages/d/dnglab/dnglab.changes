@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Mon Feb  3 11:24:16 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add dnglab-renamed-exec-usage-msg.patch: Adapt usage message to
+  renamed binary.

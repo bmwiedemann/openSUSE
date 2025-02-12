@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55695f193a5049c6fcb5551d752c65b5</srcmd5>
+    <version>0.6.3</version>
+    <time>1739392699</time>
+    <user>anag+factory</user>
+    <comment> Camera RAW to DNG file format converter (fixed missing `fish` shell dependency).</comment>
+    <requestid>1245448</requestid>
+  </revision>
+</revisionlist>

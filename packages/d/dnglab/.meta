@@ -1,0 +1,7 @@
+<package name="dnglab" project="openSUSE:Factory">
+  <title>Camera RAW to DNG file format converter</title>
+  <description>dnglab provides a command line tool to convert camera RAW files to Digital
+Negative Format (DNG).</description>
+  <devel project="graphics" package="dnglab"/>
+  <url>https://github.com/dnglab/dnglab</url>
+</package>

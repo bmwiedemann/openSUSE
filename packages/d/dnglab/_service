@@ -1,0 +1,24 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/dnglab/dnglab</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.6.3</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="buildtime" name="tar"/>
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">dnglab</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+     <!-- We do not build or install the ftp application that requires crates with the following issues -->
+     <param name="i-accept-the-risk">RUSTSEC-2022-0013,RUSTSEC-2022-0006</param>
+  </service>
+</services>
