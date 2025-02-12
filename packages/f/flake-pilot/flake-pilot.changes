@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Feb 11 21:41:40 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.17 → 3.1.18
+
+-------------------------------------------------------------------
+Tue Feb 11 21:41:15 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Style fixes
+
+-------------------------------------------------------------------
+Tue Feb 11 21:30:01 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix error handling for container check methods
+
+  The condition to setup permissions and redo the call
+  was done when the exec of the call was not possible.
+  But this is not the right place to check for a permission
+  denied error. This commit fixes the evaluation of the
+  error data
+
+-------------------------------------------------------------------
+Tue Feb 11 19:17:18 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.16 → 3.1.17
+
+-------------------------------------------------------------------
+Tue Feb 11 19:15:33 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't use perform for bool status methods
+
+  The perform() call checks the status code and raises an
+  ExecutionError. This does not allow us to return a
+  false boolean. Use output() call instead
+
+-------------------------------------------------------------------
+Tue Feb 11 18:38:09 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.15 → 3.1.16
+
+-------------------------------------------------------------------
+Tue Feb 11 18:37:38 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- No error return for bool method
+
+-------------------------------------------------------------------
+Tue Feb 11 18:05:20 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.14 → 3.1.15
+
+-------------------------------------------------------------------
+Tue Feb 11 18:00:48 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix call for podman_setup_permissions
+
+  Make sure podman_setup_permissions is only called if there
+  is a permission problem detected.
+
+-------------------------------------------------------------------
 Sat Feb 01 22:57:28 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.13 → 3.1.14

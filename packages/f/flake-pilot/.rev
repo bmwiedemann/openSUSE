@@ -128,4 +128,38 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1244418</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>814efe025b8e0de83e8b6c0e07088f7c</srcmd5>
+    <version>3.1.18</version>
+    <time>1739392706</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 3.1.17 → 3.1.18
+
+- Style fixes
+
+- Fix error handling for container check methods
+  The condition to setup permissions and redo the call
+  was done when the exec of the call was not possible.
+  But this is not the right place to check for a permission
+  denied error. This commit fixes the evaluation of the
+  error data
+
+- Bump version: 3.1.16 → 3.1.17
+
+- Don't use perform for bool status methods
+  The perform() call checks the status code and raises an
+  ExecutionError. This does not allow us to return a
+  false boolean. Use output() call instead
+
+- Bump version: 3.1.15 → 3.1.16
+
+- No error return for bool method
+
+- Bump version: 3.1.14 → 3.1.15
+
+- Fix call for podman_setup_permissions
+  Make sure podman_setup_permissions is only called if there
+  is a permission problem detected.</comment>
+    <requestid>1245362</requestid>
+  </revision>
 </revisionlist>
