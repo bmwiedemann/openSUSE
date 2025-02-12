@@ -36,7 +36,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-opencv
 BuildRequires:  zeromq-devel
-BuildRequires:  pkgconfig(opencv)
 
 %description
 MJPG-streamer takes JPGs from Linux-UVC compatible webcams, from

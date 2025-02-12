@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 27 11:02:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop optional pkgconfig(opencv) BuildRequires, no longer build
+  opencv support.
+
+-------------------------------------------------------------------
 Thu Feb 22 07:31:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
