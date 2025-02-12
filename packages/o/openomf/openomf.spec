@@ -1,8 +1,8 @@
 #
 # spec file for package openomf
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           openomf
-Version:        0.6.5+git20241030
+Version:        0.7.0
 Release:        0
 Summary:        Open Source remake of "One Must Fall 2097"
 License:        MIT
@@ -89,6 +89,10 @@ install -m0644 %{SOURCE2} README.SUSE
 %{_datadir}/games/%{name}/openomf.bk
 %{_datadir}/games/openomf/gamecontrollerdb.txt
 %{_datadir}/games/openomf/openomf.png
+%{_datadir}/games/openomf/DANISH.LNG
+%{_datadir}/games/openomf/DANISH.LNG2
+%{_datadir}/games/openomf/ENGLISH.DAT2
+%{_datadir}/games/openomf/GERMAN.DAT2
 %dir %{_datadir}/games/openomf/shaders
 %{_datadir}/games/openomf/shaders/palette.*
 %{_datadir}/games/openomf/shaders/rgba.*

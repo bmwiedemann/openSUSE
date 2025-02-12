@@ -1,10 +1,10 @@
 <services>
   <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/omf2097/openomf.git</param>
-    <param name="revision">master</param>
+    <param name="revision">0.7.0</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionformat">0.6.5+git%cd</param>
+    <param name="versionformat">0.7.0</param>
     <param name="package-meta">yes</param>
   </service>
   <service mode="manual" name="recompress">
