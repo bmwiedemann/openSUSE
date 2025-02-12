@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sat Feb  1 19:04:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 3.1.0) for build.opensuse.org
+  * SDL_ttf, but updated for a SDL 3.0 base
+  * Added the concept of a text object and text engine, which is
+    able to efficiently render text for a variety of output
+    methods
+  * Added TTF_CreateSurfaceTextEngine() and TTF_DrawSurfaceText()
+    for drawing text to SDL_Surface output
+  * Added TTF_CreateRendererTextEngine() and
+    TTF_DrawRendererText() for drawing text to SDL_Renderer
+    output
+  * Added TTF_CreateGPUTextEngine() and TTF_GetGPUTextDrawData()
+    for drawing text to SDL_GPU output
+  * Made the text engine API public in
+    <SDL3_ttf/SDL_textengine.h> so you can integrate text objects
+    into custom font display solutions
+  * Added TTF_CopyFont() to allow you to easily make fonts of
+    different sizes
+  * Added TTF_AddFallbackFont() to allow combining fonts with
+    distinct glyph support
+  * Added support for OT-SVG fonts, which are useful as fallback
+    fonts for color emoji support
+  * Updated SDF font support and added an example of using it
+    with the SDL GPU API
