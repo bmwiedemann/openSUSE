@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 15:52:05 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/indexdata/yaz/commit/5bfb9370f45de00203b5bc02f528fd96a832d17a
+  + yaz-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 08:53:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.34.2:

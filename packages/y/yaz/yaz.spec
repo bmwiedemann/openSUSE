@@ -1,7 +1,7 @@
 #
 # spec file for package yaz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.indexdata.com/resources/software/yaz/
 Source:         http://ftp.indexdata.dk/pub/yaz/yaz-%{version}.tar.gz
 Patch0:         yaz-icu-76.patch
+# https://github.com/indexdata/yaz/commit/1eb021946a9603de6c024aa3a5b937e84c5b2270
+# https://github.com/indexdata/yaz/commit/5bfb9370f45de00203b5bc02f528fd96a832d17a
+Patch1:         yaz-gcc15.patch
 BuildRequires:  gnutls-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libpcap-devel

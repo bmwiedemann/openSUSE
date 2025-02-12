@@ -1,0 +1,113 @@
+From 1eb021946a9603de6c024aa3a5b937e84c5b2270 Mon Sep 17 00:00:00 2001
+From: Adam Dickmeiss <adam@indexdata.dk>
+Date: Mon, 27 Jan 2025 14:10:20 +0100
+Subject: [PATCH] Fix compilation with c17 c23 (#136)
+
+Most importanty set _POSIX_C_SOURCE to ensure certain
+calls, fdopen, strerror_r are available.
+
+diff --git a/client/tabcomplete.c b/client/tabcomplete.c
+index 1137e8378..655c1bee5 100644
+--- a/client/tabcomplete.c
++++ b/client/tabcomplete.c
+@@ -6,8 +6,7 @@
+ #include <config.h>
+ #endif
+ 
+-#include <yaz/yconfig.h>
+-
++#include <yaz/matchstr.h>
+ #include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -33,12 +32,7 @@ char *complete_from_list(const char** completions,
+         idx = 0;
+     for(; completions[idx]; ++ idx) {
+         if(!
+-#ifdef WIN32
+-           _strnicmp
+-#else
+-           strncasecmp
+-#endif
+-           (completions[idx],text,strlen(text))) {
++           yaz_strncasecmp(completions[idx],text,strlen(text))) {
+             ++idx; /* skip this entry on the next run */
+             return xstrdup(completions[idx-1]);
+         };
+diff --git a/configure.ac b/configure.ac
+index 3e3e6fd27..997e74dfa 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,6 +8,7 @@ AC_CONFIG_SRCDIR([configure.ac])
+ AC_CONFIG_AUX_DIR([config])
+ AM_INIT_AUTOMAKE([1.9 subdir-objects])
+ dnl
++AC_DEFINE([_POSIX_C_SOURCE],[200809L],[Enable POSIX])
+ AC_SUBST([READLINE_LIBS])
+ AC_SUBST([YAZ_CONF_CFLAGS])
+ dnl ------ Checking programs
+diff --git a/src/errno.c b/src/errno.c
+index 95af15505..e076dc44a 100644
+--- a/src/errno.c
++++ b/src/errno.c
+@@ -18,11 +18,11 @@
+ #define _REENTRANT
+ #endif
+ 
++#include <yaz/errno.h>
++
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+-#include <stddef.h>
+-#include <yaz/errno.h>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+diff --git a/src/yaz/errno.h b/src/yaz/errno.h
+index 00e67df86..ee2bfd808 100644
+--- a/src/yaz/errno.h
++++ b/src/yaz/errno.h
+@@ -33,6 +33,7 @@
+ #define YAZ_ERRNO_H
+ 
+ #include <yaz/yconfig.h>
++#include <stddef.h>
+ 
+ YAZ_BEGIN_CDECL
+ 
+diff --git a/src/cql2ccl.c b/src/cql2ccl.c
+index 4109175c..f74804cd 100644
+--- a/src/cql2ccl.c
++++ b/src/cql2ccl.c
+@@ -83,7 +83,7 @@ static void pr_term(const char **cpp, int stop_at_space,
+     *cpp = cp;
+ }
+ 
+-static int node(struct cql_node *cn,
++static int node_st(struct cql_node *cn,
+                 void (*pr)(const char *buf, void *client_data),
+                 void *client_data)
+ {
+@@ -159,7 +159,7 @@ static int node(struct cql_node *cn,
+ }
+ 
+ 
+-static int bool(struct cql_node *cn,
++static int node_bool(struct cql_node *cn,
+                 void (*pr)(const char *buf, void *client_data),
+                 void *client_data)
+ {
+@@ -237,9 +237,9 @@ static int cql_to_ccl_r(struct cql_node *cn,
+     switch (cn->which)
+     {
+     case CQL_NODE_ST:
+-        return node(cn, pr, client_data);
++        return node_st(cn, pr, client_data);
+     case CQL_NODE_BOOL:
+-        return bool(cn, pr, client_data);
++        return node_bool(cn, pr, client_data);
+     case CQL_NODE_SORT:
+         return cql_to_ccl_r(cn->u.sort.search, pr, client_data);
+     }
+
