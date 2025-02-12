@@ -1,0 +1,6 @@
+<package name="kernel-firmware-ath11k" project="openSUSE:Factory">
+  <title>Kernel firmware files for Atheros Qualcomm WiFi drivers</title>
+  <description>This package contains Linux kernel firmware files for Atheros Qualcomm WiFi drivers.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-ath11k"/>
+</package>
