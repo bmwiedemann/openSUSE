@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Feb 12 14:39:07 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.24.0
+  * Coordinate frames now have a "native" order and then are sorted
+    based on axes_order. [#457]
+  * WCS.numerical_inverse no longer accepts high level objects
+    (with_units= is not supported) use WCS.inverse. [#457]
+  * CoordinateFrame.coordinates has been replaced by
+    CoordinateFrame.to_high_level_coordinates [#457]
+  * CoordinateFrame.to_quantity has been replaced by
+    CoordinateFrame.from_high_level_coordinates. [#457]
+  * Inputs to CelestialFrame, such as axes_names are now explicitly
+    in lon, lat order and will re sorted based on axes_order=.
+    [#457]
+  * Implement code linting and automatic formatting. [#544]
+  * Refactor WCS to use a Pipeline base class which adds basic
+    checks to ensure that the pipeline is valid. These include
+    checking for duplicate frame names and that the last transform
+    is None. [#545]
+  * Bugfix for WCS.invert and WCS.to_fits that prevented evaluation
+    when the attached bounding box happened to have units on its
+    values. [#554]
+- No release 0.23.0 (skipped)
+  * This was skipped to avoid issues with an ongoing JWST release.
+- Release 0.22.0
+  *  Replace usages of copy_arrays with memmap [#503]
+  *  Fix an issue with units in wcs_from_points. [#507]
+  *  Fix incorrect units being returned in the low level WCS API.
+     [#512]
+  *  Synchronize region.py with the copies of it in JWST and
+     Romancal. [#517]
+  *  Add support for compound bounding boxes and ignored bounding
+     box entries. [#519]
+  *  Add gwcs.examples module, based on the examples located in the
+     testing conftest.py. [#521]
+  *  Force bounding_box to always be returned as a F ordered box.
+     [#522]
+  *  Move the bounding box attachment to the forward transform
+     property. [#532]
+  *  Adjust world_to_array_index_values to round to integer
+     coordinates as specified by APE 14. [#525]
+  *  Add warning filter to asdf extension to prevent the
+     bounding_box order warning for gwcs objects originating from a
+     file. [#526]
+  *  Fixed a bug where evaluating the inverse transform did not
+     respect the bounding box. [#498]
+  *  Improved reliability of inside/outside footprint computations
+     when evaluating inverse transform with bounding box. [#536]
+
+-------------------------------------------------------------------
 Sun Apr  7 13:03:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Actually declare the minimum version requirement for
