@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Sat Feb  8 16:39:57 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.0.1:
+  * Adjust and correct packaging (thanks to Atri Bhattacharya for
+    testing and packaging in OpenSUSE) .
+  * Documentation adjusted: Update to newer MathML code and track
+    API changes in Mathics Kernel (Mauricio Matera).
+
+-------------------------------------------------------------------
+Sat Feb  8 16:16:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

@@ -1,0 +1,7 @@
+<package name="python-Mathics-Django" project="openSUSE:Factory">
+  <title>A Django front end for Mathics3</title>
+  <description>python-Mathics-Django provides a Django front end for Mathics3, integrating GUI and help
+browser.</description>
+  <devel project="science" package="python-Mathics-Django"/>
+  <url>https://mathics.org/</url>
+</package>
