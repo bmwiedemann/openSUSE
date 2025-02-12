@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 29 15:21:16 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.10.2
+  * Vendor latest linux/lirc.h and handle lirc overflows.
+  * mode2: support lirc overflows, carrier reports, and timeouts
+  * Lots of fixes for python 3.
+  * irdroid: fix hang after transmit
+  * The deprecated lircd --uinput option is dropped. Use
+    lircd-uinput(8) instead.
+  * The deprecated generation of lirc.hwdb is dropped. Use
+    the configs/*.conf or the python database.py instead.
+  * Added a new lirc-postinstall scripts which updates
+    configuration and docs in final install destination (#286).
+  * Using LIRC_IRDB_CACHE_ID lirc now supports reproducible
+    builds. See #301 and updated irdb-get(1) manpage.
+  * lircd: Support for the GOLDSTAR flag in lircd.conf(5) is dropped.
+  * plugins: srm7500libusb: Major overhaul.
+  * plugins:girs: Drop support for LIRC_SET_REC_TIMEOUT, add new
+    driver option ending_timeout (#302).
+- Drop pyyaml-60-compatibility.patch: merged upstream.
+- Drop lirc-autoconf-py310.patch: no longer needed.
+- Rebase harden_lircd.service.patch and reproducible.patch.
+- Drop rcFOO symlinks.
+
+-------------------------------------------------------------------
 Tue Mar 26 08:47:23 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

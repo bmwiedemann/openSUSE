@@ -1,7 +1,7 @@
 #
 # spec file for package lirc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define _rundir /run
 %endif
 Name:           lirc
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Tools for Infrared Receivers
 License:        GPL-2.0-or-later
@@ -36,11 +36,6 @@ Patch1:         harden_irexec.service.patch
 Patch2:         harden_lircd-uinput.service.patch
 Patch3:         harden_lircd.service.patch
 Patch4:         harden_lircmd.service.patch
-# PATCH-FIX-UPSTREAM pyyaml-60-compatibility.patch sht#lirc#365 mcepl@suse.com
-# Makes the package compatible with PyYAML 6.0+
-Patch5:         pyyaml-60-compatibility.patch
-# PATCH-FIX-OPENSUSE lirc-autoconf-py310.patch, ran autoreconf for finding python 3.10
-Patch6:         lirc-autoconf-py310.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
@@ -223,9 +218,11 @@ make %{?_smp_mflags}
 %install
 %make_install
 chmod a+x %{buildroot}%{_bindir}/pronto2lirc
+%if 0%{?suse_version} < 1600
 # Create backward compatibility symlink
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}d
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}md
+%endif
 mkdir -p %{buildroot}%{_tmpfilesdir}
 echo "d /run/lirc  0755  root  root  10d" \
     > %{buildroot}/%{_tmpfilesdir}/lirc.conf
@@ -242,7 +239,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 #
 #
 # Don't install documentation in a non standard directory
-rm -rf %{buildroot}%{_datadir}/doc
+rm -rf %{buildroot}%{_datadir}/{,%{name}/}doc
 # hide python dependency
 chmod a+x %{buildroot}%{_bindir}/pronto2lirc
 mkdir -p %{buildroot}%{_rundir}
@@ -295,7 +292,7 @@ usermod -a -G input lirc &> /dev/null || :
 %files core
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
-%doc doc/html doc/lirc.hwdb doc/irxevent.keys
+%doc doc/irxevent.keys
 %doc contrib
 %dir %{_datadir}/%{name}
 %dir %{_libdir}/%{name}
@@ -305,12 +302,10 @@ usermod -a -G input lirc &> /dev/null || :
 %exclude %{_bindir}/irxevent
 %exclude %{_bindir}/xmode2
 %{_bindir}/*
-%{_datadir}/%{name}/lirc.hwdb
 %{_sbindir}/*
 %{_udevdir}/rules.d/60-%{name}.rules
 %{_libdir}/%{name}/plugins
 %exclude %{_libdir}/%{name}/plugins/ftdi.so
-%exclude %{_libdir}/%{name}/plugins/audio.so
 %exclude %{_mandir}/man1/irxevent.*
 %exclude %{_mandir}/man1/xmode2.*
 %{_mandir}/man1/*

@@ -1,7 +1,7 @@
-Index: lirc-0.10.1/systemd/lircd.service
+Index: lirc-0.10.2/systemd/lircd.service
 ===================================================================
---- lirc-0.10.1.orig/systemd/lircd.service
-+++ lirc-0.10.1/systemd/lircd.service
+--- lirc-0.10.2.orig/systemd/lircd.service
++++ lirc-0.10.2/systemd/lircd.service
 @@ -6,6 +6,16 @@ Wants=lircd-setup.service
  After=network.target lircd-setup.service
  
@@ -16,6 +16,6 @@ Index: lirc-0.10.1/systemd/lircd.service
 +RestrictRealtime=true
 +# end of automatic additions 
 +#
- Type=simple
+ Type=notify
+ RuntimeDirectory=lirc
  ExecStart=/usr/sbin/lircd --nodaemon
- ; User=lirc

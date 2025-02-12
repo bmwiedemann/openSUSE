@@ -593,4 +593,12 @@
   %python3_fix_shebang{,_path} macros, [bsc#1212476] (forwarded request 1161665 from pgajdos)</comment>
     <requestid>1167656</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>d3cd59b36e4cd9ef32d2f65b98414995</srcmd5>
+    <version>0.10.2</version>
+    <time>1739392270</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245277</requestid>
+  </revision>
 </revisionlist>
