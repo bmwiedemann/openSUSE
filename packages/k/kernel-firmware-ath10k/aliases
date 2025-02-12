@@ -1,0 +1,14 @@
+ath10k_pci: of:N*T*Cqcom,ipq4019-wifi
+ath10k_pci: of:N*T*Cqcom,ipq4019-wifiC*
+ath10k_pci: pci:v00000777d000011ACsv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd0000003Csv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd0000003Esv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd00000040sv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd00000041sv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd00000042sv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd00000046sv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd00000050sv*sd*bc*sc*i*
+ath10k_pci: pci:v0000168Cd00000056sv*sd*bc*sc*i*
+ath10k_sdio: sdio:c*v0271d050A*
+ath10k_sdio: sdio:c*v0271d0701*
+ath10k_usb: usb:v13B1p0042d*dc*dsc*dp*ic*isc*ip*in*
