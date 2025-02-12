@@ -1,7 +1,7 @@
 #
 # spec file for package fractal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{?is_beta:%bcond_without beta_build}%{!?is_beta:%bcond_with beta_build}
 
 Name:           fractal
-Version:        9
+Version:        10.1
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
@@ -38,12 +38,14 @@ BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  clang-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  rust-grass
 BuildRequires:  llvm-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
-#BuildRequires:  pkgconfig(glycin-gtk4-1)
+BuildRequires:  pkgconfig(glycin-gtk4-1)
+BuildRequires:  pkgconfig(gstgtk4)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gstreamer_version}
@@ -51,6 +53,7 @@ BuildRequires:  pkgconfig(gstreamer-play-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gtk4) >= 4.10.0
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.0.0
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(libseccomp)

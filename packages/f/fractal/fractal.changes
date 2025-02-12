@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Feb 11 16:56:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10.1:
+  + Due to a couple of unfortunate but important regressions in
+    Fractal 10, we are releasing Fractal 10.1 so our users don’t
+    have to wait too long for them to be addressed. This minor
+    version fixes the following issues:
+    - Some rooms were stuck in an unread state, even after reading
+      them or marking them as read.
+    - Joining or creating a room would crash the app.
+
+-------------------------------------------------------------------
+Fri Jan 31 22:16:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10:
+  + The QR code scanning code has been ported to libaperture, the
+    library behind GNOME Camera. This should result in better
+    performance and more reliability.
+  + OAuth 2.0 compatibility was added, to make sure that we are
+    ready for the upcoming authentication changes for matrix.org.
+  + Pills for users and rooms mentions show consistently in the
+    right place instead of seemingly random places, getting rid of
+    one of our oldest and most annoying bug.
+  + Attachments go through the send queue, ensuring correct order
+    of all messages and improving the visual feedback.
+  + Videos were often not playing after loading in the room
+    history. This was fixed, and we also show properly when an
+    error occurred.
+  + We were downloading too many different sizes for avatar images,
+    which would fill the media cache needlessly. We now only
+    download a couple of sizes. This has the extra benefit of
+    fixing blurry or missing thumbnails in notifications.
+
+-------------------------------------------------------------------
+Fri Jan 17 10:58:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10.rc:
+  + The most next-gen addition goes to… making Fractal OIDC aware.
+    This ensures compatibility with the upcoming authentication
+    changes for matrix.org.
+  + The most valuable fix goes to… showing consistently pills for
+    users and rooms mentions in the right place instead of
+    seemingly random places, getting rid of one of our oldest and
+    most annoying bug.
+  + The most sensible improvement goes to… using the send queue for
+    attachments, ensuring correct order of all messages and
+    improving the visual feedback.
+  + The most underrated feature goes to… allowing to react to
+    stickers, fixing a crash in the process.
+  + The most obvious tweak goes to… removing the “Open Direct Chat”
+    menu entry from avatar menu and member profile in direct chats.
+  + The clearest enhancement goes to… labelling experimental
+    versions in the room upgrade menu as such.
+  + As usual, this release includes other improvements and fixes.
+  + Updated translations.
+- Add pkgconfig(gstgtk4), pkgconfig(lcms2), rubygem(sass) and
+  rust-grass BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
 Mon Jan  6 19:36:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add explicit gstreamer-plugins-good-gtk Requires: Ensure this
