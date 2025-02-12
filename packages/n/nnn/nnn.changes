@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:02:27 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0:
+  * show relative line numbering when jumping (#1808)
+  * option `-N` to use native prompt when compiled with
+    libreadline
+  * rm improvements
+    - log removed filename
+    - cancel on 'n' or 'N'
+    - show name of the hovered file to be removed
+    - show number of selected files to be removed
+  * new keybind <kbd>X</kbd> to force `rm -rf` always (#1811)
+  * fix sort order getting changed on context switch (#1757)
+  * fix current selection on new file creation, if symlinks exist
+    (#1767)
+  * fix filter toggle with mouse click on last 2 rows (#1765)
+  * fix file creation (#1864)
+  * when handling bookmark, use readlink, not realpath
+  * set `$PWD` on directory switch
+  * add option `-0` to null-separate file paths in picker mode
+  * quitcd.nu (for nushell) now supports modular import (#1806)
+  * add _command as plugin_ example to cd to user input directory
+  * `cbcopy-mac`, `cbpaste-mac`: plugins for integration with
+    macOS clipboard
+  * `fzhist` plugin: add support for zsh history
+  * `preview-tui` plugin: support eza as replacement for exa,
+    multiple fixes
+  * `preview-tui` plugin: add full svg support (#1865)
+  * `preview-tabbed`: show (n)sxiv in thumbnail mode inside
+    "Pictures" directory
+  * mpv sixel/kitty support for preview (#1590)
+
+-------------------------------------------------------------------
 Sun Aug 27 13:21:00 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - nnn v4.9 Elixir release notes.
@@ -69,7 +102,7 @@ Fri Nov 25 20:28:57 UTC 2022 - Nicolas FORMICHELLA <stigpro@outlook.fr>
   * plugin upload: handle selection using ffsend (#1523)
   * add Rust icons (#1502)
 
- 
+
 
 -------------------------------------------------------------------
 Wed Jul 27 05:17:51 UTC 2022 - Nicolas FORMICHELLA <stigpro@outlook.fr>
@@ -146,7 +179,7 @@ Wed Nov 24 06:11:37 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 - pass pts in env var for preview-tui to use in tput (#1235)
 - disable editing file in picker mode (#1183)
 - save session in picker mode (#1190)
-- use nerd icons for gitstatus patch (#1220) 
+- use nerd icons for gitstatus patch (#1220)
 
 -------------------------------------------------------------------
 Wed Nov  3 06:10:57 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
@@ -177,8 +210,8 @@ Wed Nov  3 06:10:57 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 *    legacy macOS (< 10.12.0) support
 *    no redraw during du calculation, show processed dir name
 *    plugin xdgdefault: add dmenu support
-*    user patch restorepreview: close/restore preview-tui for internal edits 
- 
+*    user patch restorepreview: close/restore preview-tui for internal edits
+
 
 -------------------------------------------------------------------
 Wed Jul 21 19:47:01 UTC 2021 - Dilawar Singh <dilawar.s.rajput@gmail.com>
@@ -341,7 +374,7 @@ Tue Mar 16 04:19:42 UTC 2021 - Dilawar Singh <dilawar.s.rajput@gmail.com>
     * show `0 selected` msg on cp/mv with empty selection (#855)
     * fix frozen terminal caused by opener (#858)
     * migrate macOS CI to GitHub workflows, retire Travis
- 
+
 
 -------------------------------------------------------------------
 Tue Nov 17 03:55:29 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
@@ -430,7 +463,7 @@ Wed Jul 15 08:35:21 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
     * fix issue with child window resize (see #656)
     * fix issue with `NNNLVL` on macOS (see #639)
     * fix issue with restoring session with du/au enabled
-     
+
 
 -------------------------------------------------------------------
 Tue May 26 05:12:40 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
@@ -520,7 +553,7 @@ Mon Apr 13 07:54:16 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
     * fix filter lost on context switch in non _type-to-nav_ mode
     * fix broken readline prompt
     * fix long strings treated as action keys in filter prompt
-    * fix `NNNLVL` not reset when spawned shell is exited 
+    * fix `NNNLVL` not reset when spawned shell is exited
 
 -------------------------------------------------------------------
 Mon Feb 17 05:24:51 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
@@ -616,13 +649,13 @@ Sun Jan 19 04:50:57 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 Thu Dec  5 04:58:16 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 - Update to version 2.8.1
-   
+
    * Fixes to regression caused by 2.8.
 
 -------------------------------------------------------------------
 Wed Dec  4 04:22:36 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
-- Update to version 2.8 
+- Update to version 2.8
 
      * sessions (thanks @annagrram)
      * rclone support for remote access (mount any cloud storage!!!)
@@ -735,7 +768,7 @@ Mon Oct  7 10:08:11 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 -------------------------------------------------------------------
 Tue Aug  6 06:43:23 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
-- Update to 2.6 
+- Update to 2.6
     * new plugins
         view image or browse a directory of images in terminal
         show image thumbnails
@@ -772,7 +805,7 @@ Tue Aug  6 06:43:23 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 -------------------------------------------------------------------
 Tue May 28 05:06:30 UTC 2019 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
--  Update to 2.5 
+-  Update to 2.5
    *  plugin support. 19 plugins added. Some are:
         pdfview: view a PDF in pager
         nmount: (un)mount a storage device
@@ -914,7 +947,7 @@ Fri Nov 23 22:19:18 UTC 2018 - dilawar.s.rajput@gmail.com
 -------------------------------------------------------------------
 Fri Oct 19 15:11:55 UTC 2018 - dilawar.s.rajput@gmail.com
 
-- Update to 2.0 
+- Update to 2.0
   * Added mode to show apparent size (key S)
   * Added script to integrate patool instead of atool
   * Added support bashlock (OS X) and lock (BSD) as terminal locker
