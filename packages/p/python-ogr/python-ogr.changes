@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 07:34:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.50.4
+  * Trigger a new release to confirm the correct SPDX licence.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Jan 22 14:21:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.50.3

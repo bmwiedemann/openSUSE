@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ogr
-Version:        0.50.3
+Version:        0.50.4
 Release:        0
 Summary:        One API for multiple git forges
 License:        MIT
