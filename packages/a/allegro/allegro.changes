@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jan  8 08:40:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.10.1:
+  MacOS:
+  * Fix some corner cases in the new keyboard input system
+  * Fix version-based conditional compilation
+  Packaging:
+  * Fix the package script to check for makeinfo, this prevents malformed source
+    achives from being created (as happened in 5.2.10)
+
+-------------------------------------------------------------------
+Wed Jan  8 08:37:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.2.10.0:
+  Core:
+  * Add a compatibility config option, keyboard_version=xx.yy.zz as well as the
+    same but with joystick_version if it is necessary to restore the old
+    behavior. This enables us to fix bugs with the input system, while providing
+    a mechanism to restore old buggy behavior temporarily
+  * Assorted timer improvements
+  * Optimize inverse transformations.
+  * Fix the handling of the new window title in ALLEGRO_STATE (#1562)
+  * Add ALLEGRO_TRACE_LEVEL environment variable. This makes it easier to
+    enable logging on release builds.
+  * Add al_ref_info to convert ALLEGRO_USTR_INFO to ALLEGRO_USTR
+  * Add al_get_display_adapter (#1578)
+  * Add al_get_render_state
+  Linux:
+  * Fix joystick initialization when overriding IO (#1572)
+  * Make sure the bitmap for the initial icon is created as a memory bitmap
+    (#1571)
+  Acodec addon:
+  * Prefill ALLEGRO_AUDIO_STREAMs with data
+  * Add OpenMPT support. This is meant to replace DUMB, as DUMB is not
+    maintained. You can use the compatibility config option acodec_prefer_dumb
+    to temporarily make DUMB the preferred handler for module files, if Allegro
+    is built with both DUMB and OpenMPT. Some modules may sound different under
+    OpenMPT.
+  Native dialog addon:
+  * Add Android support
+  * Auto-scroll the native textlog on MacOS
+  * Fix monospace fonts on MacOS in the native textlog
+  * Improve the patterns arg in al_create_native_file_dialog
+  Video addon:
+  * Make al_is_video_playing return false before al_start_video
+  * Make ALLEGRO_VIDEO work with the automatic destruction system
+  Build system:
+  * Reproducible build support
+  * Fix multiarch install location
+  Examples:
+  * Remove VLAs to improve Visual Studio support
+  * Fix opaque black background pixels in explosion sprites in the Shooter demo
+
+-------------------------------------------------------------------
 Sun Jan 21 07:41:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.2.9.1:

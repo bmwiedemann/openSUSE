@@ -1,7 +1,7 @@
 #
 # spec file for package allegro
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ developers are free to design and structure the program as desired.
 %define allegro_so_nr 5_2
 %define dot_allegro_so_nr %(echo %{allegro_so_nr} | sed s/_/./)
 Name:           allegro
-Version:        5.2.9.1
+Version:        5.2.10.1
 Release:        0
 Summary:        A game programming library
 License:        BSD-3-Clause AND Zlib
@@ -344,12 +344,7 @@ cp -r docs/html/refman/* %{buildroot}%{_datadir}/doc/%{name}
 %exclude %{_includedir}/allegro5/allegro_ttf.h
 %exclude %{_includedir}/allegro5/allegro_video.h
 %{_libdir}/pkgconfig/allegro-5.pc
-%dir %{_prefix}/lib/cmake
-%dir %{_prefix}/lib/cmake/allegro
-%{_prefix}/lib/cmake/allegro/AllegroConfig.cmake
-%{_prefix}/lib/cmake/allegro/AllegroConfigVersion.cmake
-%{_prefix}/lib/cmake/allegro/AllegroTargets-relwithdebinfo.cmake
-%{_prefix}/lib/cmake/allegro/AllegroTargets.cmake
+%{_libdir}/cmake/allegro/
 
 %files -n liballegro-doc
 %{_datadir}/doc/%{name}/
