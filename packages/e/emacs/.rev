@@ -2089,4 +2089,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   bug boo#1234865 with libnvidia-tls.so</comment>
     <requestid>1238087</requestid>
   </revision>
+  <revision rev="199" vrev="14">
+    <srcmd5>1cd7ab142296f8e246b640ea7e3539ff</srcmd5>
+    <version>29.4</version>
+    <time>1739392248</time>
+    <user>anag+factory</user>
+    <comment>- Add patch CVE-2025-1244.patch
+  * Avoid shell injection via custom &quot;man&quot; URI scheme (boo#1237091, CVE-2025-1244)</comment>
+    <requestid>1245402</requestid>
+  </revision>
 </revisionlist>

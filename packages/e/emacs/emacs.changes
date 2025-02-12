@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 12:20:32 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch CVE-2025-1244.patch
+  * Avoid shell injection via custom "man" URI scheme (boo#1237091, CVE-2025-1244)
+
+-------------------------------------------------------------------
 Wed Jan 15 13:53:48 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Try to avoid crash on later loaded shared libraries as seen in
