@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 12 05:55:49 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.48.1:
+  * chore: Update version.go for v0.48.1
+  * build(deps): bump golang.org/x/text from 0.21.0 to 0.22.0
+  * fix: Drop operationID soap header for unsupported endpoints
+  * govc: Rewrite kms.export URL to use the host we connected to
+    vCenter with
+  * govc: Add storage.policy.create '-e' option to enable
+    encryption
+
+-------------------------------------------------------------------
 Tue Jan 28 14:21:30 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.48.0:
