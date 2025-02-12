@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 12 07:44:28 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.19:
+  * Added read/write support for PDF and XMP-pdfx SourceModified
+  * Decode GPS from two more DJI protobuf formats (Matrice 30 and Mini 4 Pro)
+  * Decode timed GPS from Rexing V1-4k dashcam
+  * Decode more information from AAE files
+  * Made a new icon for the Windows EXE application
+  * Changed family 3 groups for ICO files so the first icon is in the Doc1 instead of the Main group
+  * Improved handling of ICC_Profile in HEIC images:
+    + Profiles for sub-images are extracted as sub-documents
+    + Allow only the profile of the main image to be written
+  * Updated Sony decoding for ILCE-1M2 (thanks Jos Roost)
+
+-------------------------------------------------------------------
 Wed Feb  5 08:15:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.18:
