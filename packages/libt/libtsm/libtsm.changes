@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb  4 16:47:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 4.0.2+git24 (69922bde02c7)
+  * Add mouse support (modes: X10, SGR, SGR Pixel)
+  * Fix wrong background color of new cells after resize
+  * Add support for "\e[<num>E" and "\e[<num>F"
+- Delete 0001-Add-new-palette-with-standard-VGA-colors.patch
+  (merged)
+
+-------------------------------------------------------------------
 Mon Aug 29 07:54:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.0.2

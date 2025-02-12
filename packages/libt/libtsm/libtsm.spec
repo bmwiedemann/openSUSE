@@ -1,7 +1,7 @@
 #
 # spec file for package libtsm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,16 @@
 %global sover   4
 %global lname   libtsm%{sover}
 Name:           libtsm
-Version:        4.0.2
+Version:        4.0.2+git24
 Release:        0
 Summary:        DEC-VT terminal emulator state machine
 License:        LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Aetf/libtsm
-Source:         https://github.com/Aetf/libtsm/archive/refs/tags/v%{version}.tar.gz
-Patch1:         0001-Add-new-palette-with-standard-VGA-colors.patch
+%define rev 69922bde02c7af83b4d48a414cc6036af7388626
+Source:         https://github.com/Aetf/libtsm/archive/%rev.tar.gz
 BuildRequires:  cmake
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -67,7 +67,7 @@ This package contains the development headers for the library found
 in %{lname}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n libtsm-%rev
 
 %build
 %cmake
@@ -76,8 +76,7 @@ in %{lname}.
 %install
 %cmake_install
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license COPYING LICENSE_htable
