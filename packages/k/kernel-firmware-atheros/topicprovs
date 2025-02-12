@@ -1,0 +1,2 @@
+Provides:       ath3k-firmware = %{version}
+Obsoletes:      ath3k-firmware < %{version}
