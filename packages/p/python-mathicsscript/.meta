@@ -1,0 +1,8 @@
+<package name="python-mathicsscript" project="openSUSE:Factory">
+  <title>A command line interface to Mathics</title>
+  <description>mathicsscript is a feature-rich command line interface to Mathics.
+
+</description>
+  <devel project="science" package="python-mathicsscript"/>
+  <url>https://mathics.org/</url>
+</package>
