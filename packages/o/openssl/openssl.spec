@@ -1,7 +1,7 @@
 #
 # spec file for package openssl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _sonum  3
 Name:           openssl
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 # Yes there is no license but to not confuse people keep it aligned to the pkg
