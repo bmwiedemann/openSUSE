@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 12 16:47:00 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.2.0
+  * dhcp6: start request when advertise received after IRT
+  * dhcpcd: stdout output sometimes empty when redirected to a file
+  * Fix help text formatting
+  * Apply lastlease behavior to DHCPv6
+  * dhcpcd not ignoring source-based routes on linux
+  * DHCP6: lastlease behavior after Confim non-response
+  * Allow limited RLIMIT_FSIZE when dumping lease
+  * IPv6: Avoid uninitialized ifp state when adding address
+  * DHCPv6: Add support for sending Option 17 (VSIO)
+  * Exit the timesyncd hook if not on systemd and not executable
+  * Add route lifetime from Router Advertisement
+  * revert e3c5de1
+  * Fix using multiple enterprise IDs with vendclass (Option 124
+    DHCP / Option 16 DHCPv6)
+  * Update route if acquired time changes
+  * Always send req for InfoRefreshTime option on Inform-Req
+  * Increase max IPv4 clientid
+  * Update build.yml to fix BSD builds
+
+-------------------------------------------------------------------
 Mon Oct  7 11:51:20 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.1.0
