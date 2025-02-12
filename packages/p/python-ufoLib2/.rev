@@ -107,4 +107,15 @@
   * Added `outputImpliedClosingLine` parameter to Glyph.draw() method</comment>
     <requestid>1225981</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7cb7cc401f7e6aff943b690e7a6a9e1f</srcmd5>
+    <version>0.17.1</version>
+    <time>1739392290</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.17.1:
+  * [converters] Define our own structuring hook for fontTools
+    Transform to workaround bug in cattrs when using `from
+    __future__ import annotations` on NamedTuple</comment>
+    <requestid>1245169</requestid>
+  </revision>
 </revisionlist>
