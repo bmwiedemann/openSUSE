@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Feb 12 08:18:58 UTC 2025 - pdostal@suse.com
+
+- Update to version 2.67.0:
+  * Exit with error if no matching predicate type exists
+  * Fix logic error in contributing docs
+  * Improve http error test cases
+  * Handle non-TTY behavior
+  * Do not try to parse bodies for HEAD requests
+  * Update pkg/cmd/pr/status/status.go
+  * Collapse related instructions
+  * Remove redundant instructions
+  * Update language
+  * [gh pr status] Mention `gh pr checks` in the `Long` section
+  * Update release doc content
+  * Doc: Clarify guidelines for `help wanted` issues and prs
+  * Bump google.golang.org/protobuf from 1.36.4 to 1.36.5
+  * Update tests
+  * [gh project item-edit] Fix number type
+  * Address review comments
+  * Address review comments
+  * Revert breaking change
+  * Revert "[gh repo edit] Allow setting commit message defaults"
+  * Use HTML numeric code instead of escaping with slash
+  * [gh config] Escape pipe symbol in Long desc for website manual
+  * Ensure item iteration field is populated in tests
+  * Drop accidental help text change
+  * Error when `gh repo rename` is used with a new repo name that contains an owner
+  * [gh repo edit] Allow setting commit title defaults
+  * Rename staggler
+  * Formatting
+  * AuoLink -> Autolink
+  * Use http constants
+  * refac and some spacing in output
+  * More consistency
+  * whitespace
+  * clean up
+  * Autolink delete http tests
+  * Revert change to deps
+  * Autolink delete tests
+  * Initial working implementation
+  * remove duplicated Prompter type
+  * revert isEqualSet to private
+  * Revert color changes
+  * [docs/releasing.md] Add basic info for homebrew update flow
+  * consolidate tests around getBundle func when possible
+  * change permanent backoff error condition
+  * Remove unused env var, PRID
+  * dont retry when parsing fails
+  * Update test
+  * [gh issue/pr list] Improve help text
+  * [gh extensions install] Improve help text and error message
+  * [gh api] Fix mutual exclusion messages of `--slurp` flag
+  * Remove v1 project 'add to board' automation from prauto workflow
+  * [gh project item-list] Add `iterationId` field in ProjectV2ItemFieldIterationValue
+  * [gh workflow run] Improve error handling for `--ref` flag
+  * update tests
+  * add missing return statement
+  * method update
+  * update no attestations found err
+  * remove old tests
+  * drop unneeded methods
+  * deduplicate get attestation code
+  * fix tests
+  * update testing
+  * chore: remove unused file
+  * feat: integrate new PRLister into pr list command
+  * issue #2329: create shared PRLister
+  * fix: tab format may break checkout prompts
+  * issue #2329: handle empty list of PR
+  * issue #2329: include PR status in the prompt's options
+  * issue #2329: fix prompt header getting duplicated
+  * issue #2329: simplify the UI of the prompt
+  * issue #2329: update the prompt's format
+  * issue #2329: fix unit tests
+  * issue cli#2329: Fix linter
+  * issue cli#2329: fix unsufficent properties required for PR checkout
+  * issue #2329: move Interactive check to RunE
+  * fix: update the copy
+  * issue #2329: return error when not running interactively
+  * issue #2329: fix missing stub
+  * issue #2329: improve UI/UX
+  * issue #2329: add happy path unit test
+  * issue #2329: fix the linting issue
+  * issue #2329: fix the unit tests issue - ensure its backward compatible
+  * feat: let user select pr to checkout
+
+-------------------------------------------------------------------
 Tue Feb 11 07:08:44 UTC 2025 - pdostal@suse.com
 
 - Update to version 2.66.1:
