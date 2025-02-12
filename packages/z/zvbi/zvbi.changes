@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 11 10:45:18 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.2.43
+  * Fix building and enable testing for Windows platforms.
+  * Fix building for musl.
+  * Add options to disable tests and examples.
+  * Fix for static declaration of ‘sincos’ follows non-static declaration.
+- Drop obsoleted patch:
+  zvbi-gcc14.patch
+
+-------------------------------------------------------------------
 Tue May 14 06:04:33 UTC 2024 - pgajdos@suse.com
 
 - added patches

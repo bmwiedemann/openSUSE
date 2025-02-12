@@ -247,4 +247,18 @@ Use SPDX format and include the LGPL as well (forwarded request 131772 from babe
     <comment></comment>
     <requestid>1173875</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d0f4effc60e87ca451a1af6be6ac74be</srcmd5>
+    <version>0.2.43</version>
+    <time>1739392236</time>
+    <user>anag+factory</user>
+    <comment>- version update to 0.2.43
+  * Fix building and enable testing for Windows platforms.
+  * Fix building for musl.
+  * Add options to disable tests and examples.
+  * Fix for static declaration of ‘sincos’ follows non-static declaration.
+- Drop obsoleted patch:
+  zvbi-gcc14.patch</comment>
+    <requestid>1245342</requestid>
+  </revision>
 </revisionlist>

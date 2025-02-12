@@ -1,7 +1,7 @@
 #
 # spec file for package zvbi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         libname lib%{name}%{sover}
 %define         libchains lib%{name}-chains%{sover}
 Name:           zvbi
-Version:        0.2.42
+Version:        0.2.43
 Release:        0
 Summary:        Linux "VBI proxy"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,8 +28,6 @@ Group:          Productivity/Multimedia/Other
 URL:            https://github.com/zapping-vbi/zvbi/
 Source:         https://github.com/zapping-vbi/zvbi/archive/refs/tags/v%{version}.tar.gz
 Source2:        baselibs.conf
-# https://github.com/zapping-vbi/zvbi/commit/ae74ae513714f81b9b8abdb12e1b235d16fad74e
-Patch0:         zvbi-gcc14.patch
 Patch10:        10_fix_private_libs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
