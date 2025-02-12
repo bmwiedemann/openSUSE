@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan 12 15:28:23 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.9.4
+  * New features:
+    + iwd2 is now fully completable!
+    + iwd2 turn undead, hybrid damage types, Heal Party on Rest
+    + traditional bg2ee GUI is usable and the shaman class works
+    + option to highlight learnable scrolls, draw empty containers
+      gray
+    + option to more easily use GemRB as a library
+    + animfps.2da to set per-animation drawing speed
+  * Improved features:
+    + text encoding, drawing speed, drawing, (stereo) audio,
+      GUI internals
+    + feats, animations
+    + scripting, projectiles, effects, movement speed, pathfinding
+    + bugfixes
+- Update BuildRequires
+- Enable openGL Backend
+- Drop link-ptread-core-explicitly.patch, fixed upstream
+
+-------------------------------------------------------------------
 Sun Jul 14 16:04:36 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.9.3

@@ -1,7 +1,7 @@
 #
 # spec file for package gemrb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           gemrb
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Game engine made with pre-rendered background
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/RPG
 URL:            http://www.gemrb.org/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         link-ptread-core-explicitly.patch
-BuildRequires:  cmake >= 3.19
+BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -34,8 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(freetype2)
-# reenable once OpenGL rendering stops being experimental (same for the cmake flags below)
-# BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(openal)
@@ -63,7 +61,7 @@ rm -Rf CMakeCache.txt CMakeFiles/
     -DPLUGIN_DIR=%{_libdir}/gemrb/plugins \
     -DDISABLE_WERROR=1 \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL="true" \
-#    -DOPENGL_BACKEND=OpenGL
+    -DOPENGL_BACKEND=OpenGL
 
 %make_jobs
 
