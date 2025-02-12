@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  7 10:29:38 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Allow to build GLEW with EGL support for Wayland
+- Build GLEW with cmake
+- Added glew-2.2.0-fix-cmake.patch
+
+-------------------------------------------------------------------
 Wed Mar 20 12:43:24 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch glew-2.2.0-mesa-24.patch

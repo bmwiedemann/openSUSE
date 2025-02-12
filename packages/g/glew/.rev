@@ -364,4 +364,14 @@ http://sourceforge.net/tracker/?func=detail&amp;aid=3466541&amp;group_id=67586&a
     <comment></comment>
     <requestid>1160039</requestid>
   </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>3cb133187d42205f3e5ccf5e8bbe74b8</srcmd5>
+    <version>2.2.0</version>
+    <time>1739392241</time>
+    <user>anag+factory</user>
+    <comment>- Allow to build GLEW with EGL support for Wayland
+- Build GLEW with cmake
+- Added glew-2.2.0-fix-cmake.patch</comment>
+    <requestid>1245351</requestid>
+  </revision>
 </revisionlist>

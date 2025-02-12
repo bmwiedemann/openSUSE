@@ -1,7 +1,7 @@
 #
 # spec file for package glew
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond egl 0
 
 # If you change so_ver, then you have to update baselibs.conf as well.
 %define so_ver 2_2
@@ -30,8 +32,14 @@ Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
 Source1:        baselibs.conf
 Source2:        %{name}.rpmlintrc
 Patch0:         glew-2.2.0-mesa-24.patch
+# PATCH-FIX-UPSTREAM See (cherry picked from) line in the patch file from
+# https://github.com/nigels-com/glew/commits/master/
+Patch1:         glew-2.2.0-fix-cmake.patch
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
+%if %{with egl}
 BuildRequires:  pkgconfig(egl)
+%endif
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -60,7 +68,9 @@ functionality is exposed in a single header file.
 Summary:        Development files for glew
 Group:          Development/Libraries/C and C++
 Requires:       libGLEW%{so_ver} = %{version}
+%if %{with egl}
 Requires:       pkgconfig(egl)
+%endif
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xproto)
 # Don't require GLU, because there is GLEW_NO_GLU option
@@ -77,13 +87,17 @@ functionality is exposed in a single header file.
 %autosetup -p1
 
 %build
-%make_build POPT="%{optflags} -fPIE -pie" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} LDFLAGS.EXTRA= STRIP=
+%define __sourcedir build/cmake
+%cmake \
+%if %{with egl}
+    -DGLEW_EGL=ON \
+%endif
+    -DBUILD_UTILS=ON
+
+%cmake_build
 
 %install
-make DESTDIR=%{buildroot} GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} PKGDIR=%{_libdir}/pkgconfig install.all
-install -m 0644 include/GL/eglew.h "%{buildroot}/%{_includedir}/GL/"
-chmod +x %{buildroot}%{_libdir}/*.so.*
-rm %{buildroot}%{_libdir}/*.a
+%cmake_install
 
 %post -n libGLEW%{so_ver} -p /sbin/ldconfig
 %postun -n libGLEW%{so_ver} -p /sbin/ldconfig
@@ -101,5 +115,6 @@ rm %{buildroot}%{_libdir}/*.a
 %{_includedir}/GL/
 %{_libdir}/libGLEW.so
 %{_libdir}/pkgconfig/glew.pc
+%{_libdir}/cmake/glew/
 
 %changelog

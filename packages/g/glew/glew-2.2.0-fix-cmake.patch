@@ -1,0 +1,891 @@
+From c090f00bb5eabca6830d1fa26b53fb7e851ddeb4 Mon Sep 17 00:00:00 2001
+From: Nigel Stewart <nigels@nigels.com>
+Date: Sun, 10 Jan 2021 11:50:29 +1000
+Subject: [PATCH 01/14] EGLEW: Wayland wl_display and wl_resource declarations
+ for WL_bind_wayland_display
+
+(cherry picked from commit d68cb0314990d375e75a8d5d6692a4d4f0efde7e)
+---
+ auto/src/eglew_head.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/auto/src/eglew_head.h b/auto/src/eglew_head.h
+index 51b1b46..d064baf 100644
+--- a/auto/src/eglew_head.h
++++ b/auto/src/eglew_head.h
+@@ -78,6 +78,10 @@ typedef khronos_stime_nanoseconds_t EGLnsecsANDROID;
+ struct EGLClientPixmapHI;
+ struct AHardwareBuffer;
+ 
++/* Wayland types for WL_bind_wayland_display purposes */
++struct wl_display;
++struct wl_resource;
++
+ #define EGL_DONT_CARE                     ((EGLint)-1)
+ 
+ #define EGL_NO_CONTEXT                    ((EGLContext)0)
+-- 
+2.47.1
+
+
+From 4152444d15e54aedc6152ca120222f5a8bbcc245 Mon Sep 17 00:00:00 2001
+From: Nigel Stewart <nigels@nigels.com>
+Date: Sun, 10 Jan 2021 11:52:31 +1000
+Subject: [PATCH 02/14] EGLEW: Wayland wl_buffer declaration for
+ WL_bind_wayland_display
+
+(cherry picked from commit 8c88a0858f33879ea693f89ef43b3d77c968806e)
+---
+ auto/src/eglew_head.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/auto/src/eglew_head.h b/auto/src/eglew_head.h
+index d064baf..121efaf 100644
+--- a/auto/src/eglew_head.h
++++ b/auto/src/eglew_head.h
+@@ -79,6 +79,7 @@ struct EGLClientPixmapHI;
+ struct AHardwareBuffer;
+ 
+ /* Wayland types for WL_bind_wayland_display purposes */
++struct wl_buffer;
+ struct wl_display;
+ struct wl_resource;
+ 
+-- 
+2.47.1
+
+
+From 064aafb705774a3c950bd201b96d6417e895a42b Mon Sep 17 00:00:00 2001
+From: Danilo Spinella <danyspin97@protonmail.com>
+Date: Mon, 27 May 2019 10:22:51 +0200
+Subject: [PATCH 03/14] GLEW_EGL: Fix EGL library check
+
+(cherry picked from commit 95329dc4a6a5d2ea17e4be6a17255bb23c385c66)
+---
+ build/cmake/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 419c243..a401e03 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -87,9 +87,9 @@ endif ()
+ 
+ if (GLEW_EGL AND UNIX)
+   add_definitions (-DGLEW_EGL)
+-  if (OpenGL::EGL)
++  if (NOT OpenGL_EGL_FOUND)
+     message (FATAL_ERROR "EGL library set but not found.")
+-  endif()
++  endif ()
+   set (GLEW_LIBRARIES ${OPENGL_LIBRARIES} ${OPENGL_egl_LIBRARY})
+ endif ()
+ 
+-- 
+2.47.1
+
+
+From 9487201e72d600f4624e568af99e0ea547946346 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Tue, 2 Mar 2021 14:22:45 +0100
+Subject: [PATCH 04/14] CMake: Add X11/EGL options
+
+(cherry picked from commit e34bb212f65a225e56b8a76234822a29c37ea5cb)
+---
+ build/cmake/CMakeLists.txt | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index a401e03..2649bd0 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -24,6 +24,8 @@ option (GLEW_OSMESA "OSMesa mode" OFF)
+ if (APPLE)
+     option (BUILD_FRAMEWORK "Build Framework bundle for OSX" OFF)
+ endif ()
++option (GLEW_X11 "X11 mode" ON)
++option (GLEW_EGL "EGL mode" OFF)
+ 
+ set (GLEW_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../..)
+ 
+@@ -42,9 +44,12 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
+ find_package (OpenGL REQUIRED)
+ 
++set (GLEW_LIBRARIES ${OPENGL_LIBRARIES})
++
+ # X11 required except for Windows and Apple OSX platforms
+-if (NOT WIN32 AND NOT APPLE)
++if (GLEW_X11 AND NOT WIN32 AND NOT APPLE)
+   find_package (X11)
++  list (APPEND GLEW_LIBRARIES ${X11_LIBRARIES})
+ endif()
+ 
+ if (WIN32)
+@@ -54,8 +59,6 @@ else ()
+   set (DLL_PREFIX lib)
+ endif ()
+ 
+-set (GLEW_LIBRARIES ${OPENGL_LIBRARIES} ${X11_LIBRARIES})
+-
+ add_definitions (-DGLEW_NO_GLU)
+ 
+ #### Regal mode ####
+-- 
+2.47.1
+
+
+From 791be7739865d61675355088a884f483870e9577 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Thu, 18 Mar 2021 16:41:23 +0100
+Subject: [PATCH 05/14] CMake: Add BUILD_SHARED_LIBS option
+
+(cherry picked from commit 2b16160853ed0ab271903ed4a8aaee8399a0de8a)
+---
+ build/cmake/CMakeLists.txt | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 2649bd0..9ff5c9f 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -26,6 +26,7 @@ if (APPLE)
+ endif ()
+ option (GLEW_X11 "X11 mode" ON)
+ option (GLEW_EGL "EGL mode" OFF)
++option (BUILD_SHARED_LIBS "install/link shared instead of static libs" ON)
+ 
+ set (GLEW_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../..)
+ 
+@@ -162,11 +163,9 @@ else()
+ endif()
+ 
+ set(targets_to_install "")
+-if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
++if(BUILD_SHARED_LIBS)
+   list(APPEND targets_to_install glew)
+-endif()
+-
+-if(NOT DEFINED BUILD_SHARED_LIBS OR NOT BUILD_SHARED_LIBS)
++else ()
+   list(APPEND targets_to_install glew_s)
+ endif()
+ 
+@@ -184,7 +183,7 @@ if (BUILD_UTILS)
+     list (APPEND GLEWINFO_SRC_FILES ${GLEW_DIR}/build/glewinfo.rc)
+   endif ()
+   add_executable (glewinfo ${GLEWINFO_SRC_FILES})
+-  if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
++  if(BUILD_SHARED_LIBS)
+      target_link_libraries (glewinfo glew)
+   else()
+      target_link_libraries (glewinfo glew_s)
+@@ -198,7 +197,7 @@ if (BUILD_UTILS)
+     list (APPEND VISUALINFO_SRC_FILES ${GLEW_DIR}/build/visualinfo.rc)
+   endif ()
+   add_executable (visualinfo ${VISUALINFO_SRC_FILES})
+-  if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
++  if(BUILD_SHARED_LIBS)
+      target_link_libraries (visualinfo glew)
+   else()
+      target_link_libraries (visualinfo glew_s)
+-- 
+2.47.1
+
+
+From e44aad980bdaac65ae3ade877c41357c96b0077d Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Wed, 17 Mar 2021 18:37:49 +0100
+Subject: [PATCH 06/14] CMake: Prefer GLVND if available
+
+(cherry picked from commit 2b50f4acd2a21e64ac25c4c910c73362c004580f)
+---
+ build/cmake/CMakeLists.txt | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 9ff5c9f..d04a727 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -16,6 +16,10 @@ if(POLICY CMP0042)
+   cmake_policy (SET CMP0042 NEW)
+ endif()
+ 
++if (POLICY CMP0072)
++  cmake_policy (SET CMP0072 NEW)
++endif(POLICY CMP0072)
++
+ set(CMAKE_DEBUG_POSTFIX d)
+ 
+ option (BUILD_UTILS "utilities" ON)
+@@ -45,7 +49,20 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
+ find_package (OpenGL REQUIRED)
+ 
+-set (GLEW_LIBRARIES ${OPENGL_LIBRARIES})
++# cmake<3.10 doesnt detect EGL/GLX
++if (CMAKE_VERSION VERSION_LESS 3.10)
++  find_library(OPENGL_egl_LIBRARY NAMES EGL)
++  if (OPENGL_egl_LIBRARY)
++    set (OpenGL_EGL_FOUND TRUE)
++  endif ()
++endif ()
++
++# prefer GLVND
++if (OPENGL_opengl_LIBRARY)
++  set (GLEW_LIBRARIES ${OPENGL_opengl_LIBRARY})
++else ()
++  set (GLEW_LIBRARIES ${OPENGL_gl_LIBRARY})
++endif ()
+ 
+ # X11 required except for Windows and Apple OSX platforms
+ if (GLEW_X11 AND NOT WIN32 AND NOT APPLE)
+@@ -83,7 +100,7 @@ if (GLEW_OSMESA)
+     set (OSMESA_LIB_NAME OSMesa)
+   endif ()
+   add_definitions (-DGLEW_OSMESA)
+-  set (GLEW_LIBRARIES ${OSMESA_LIB_NAME} ${OPENGL_LIBRARIES})
++  list (APPEND GLEW_LIBRARIES ${OSMESA_LIB_NAME})
+   set (X11_LIBRARIES)
+ endif ()
+ 
+@@ -94,7 +111,7 @@ if (GLEW_EGL AND UNIX)
+   if (NOT OpenGL_EGL_FOUND)
+     message (FATAL_ERROR "EGL library set but not found.")
+   endif ()
+-  set (GLEW_LIBRARIES ${OPENGL_LIBRARIES} ${OPENGL_egl_LIBRARY})
++  list (APPEND GLEW_LIBRARIES ${OPENGL_egl_LIBRARY})
+ endif ()
+ 
+ #### GLEW ####
+-- 
+2.47.1
+
+
+From 39801d386097807ad7488236b95c55091b1d75eb Mon Sep 17 00:00:00 2001
+From: Dmitry Kalinkin <dmitry.kalinkin@gmail.com>
+Date: Thu, 6 Jan 2022 21:37:57 -0500
+Subject: [PATCH 07/14] CMake: don't hardcode "<prefix>/include" in
+ target_include_directories
+
+(cherry picked from commit 966e53fa153175864e151ec8a8e11f688c3e752d)
+---
+ build/cmake/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index d04a727..871a908 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -174,7 +174,7 @@ if(CMAKE_VERSION VERSION_LESS 2.8.12)
+ else()
+   target_compile_definitions(glew_s INTERFACE "GLEW_STATIC")
+   foreach(t glew glew_s)
+-    target_include_directories(${t} PUBLIC $<INSTALL_INTERFACE:include>)
++    target_include_directories(${t} PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+   endforeach()
+   set(MAYBE_EXPORT EXPORT glew-targets)
+ endif()
+-- 
+2.47.1
+
+
+From 8f51492fad00175b7e695ea8e89210c0fd9f6e99 Mon Sep 17 00:00:00 2001
+From: Marvin Schmidt <marv@exherbo.org>
+Date: Mon, 7 Feb 2022 14:48:40 +0100
+Subject: [PATCH 08/14] cmake: Install eglew.h
+
+The eglew.h header was never installed using the CMake build. Fix this
+by adding it to the list of public headers
+
+(cherry picked from commit 5f57b09c04757e840451063236e9118c1df5ebae)
+---
+ build/cmake/CMakeLists.txt | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 871a908..de66055 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -118,7 +118,12 @@ endif ()
+ 
+ include_directories (${GLEW_DIR}/include ${X11_INCLUDE_DIR})
+ 
+-set (GLEW_PUBLIC_HEADERS_FILES ${GLEW_DIR}/include/GL/wglew.h ${GLEW_DIR}/include/GL/glew.h ${GLEW_DIR}/include/GL/glxew.h)
++set (GLEW_PUBLIC_HEADERS_FILES
++  ${GLEW_DIR}/include/GL/wglew.h
++  ${GLEW_DIR}/include/GL/glew.h
++  ${GLEW_DIR}/include/GL/glxew.h
++  ${GLEW_DIR}/include/GL/eglew.h
++)
+ set (GLEW_SRC_FILES ${GLEW_DIR}/src/glew.c)
+ 
+ if (WIN32)
+@@ -255,10 +260,8 @@ if(WIN32 AND MSVC AND (NOT MSVC_VERSION LESS 1600) AND (NOT CMAKE_VERSION VERSIO
+     )
+ endif()
+ 
+-install (FILES
+-    ${GLEW_DIR}/include/GL/wglew.h
+-    ${GLEW_DIR}/include/GL/glew.h
+-    ${GLEW_DIR}/include/GL/glxew.h
++install (
++    FILES ${GLEW_PUBLIC_HEADERS_FILES}
+     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GL)
+ 
+ if(MAYBE_EXPORT)
+-- 
+2.47.1
+
+
+From a4f7a5b9626b28591daf87744c401f68cc82fab9 Mon Sep 17 00:00:00 2001
+From: Marvin Schmidt <marv@exherbo.org>
+Date: Sun, 10 Apr 2022 10:42:48 +0200
+Subject: [PATCH 09/14] cmake: Link libGLX when X11 support is requested
+
+Using cmake (version 3.23.0) the build fails to link the utils
+```
+[...]
+[ 87%] Linking C executable bin/visualinfo                                                                                                                      [113/5249]
+/usr/x86_64-pc-linux-gnu/bin/cmake -E cmake_link_script CMakeFiles/visualinfo.dir/link.txt --verbose=1
+/usr/host/bin/x86_64-pc-linux-gnu-cc -Wall -g -ggdb3 -O0 -rdynamic CMakeFiles/visualinfo.dir/home/marv/scm/github/glew/src/visualinfo.c.o -o bin/visualinfo  -Wl,-rpath,/h
+ome/marv/scm/github/glew/build-obj/lib: lib/libGLEW.so.2.2.0 -lSM -lICE -lX11 -lXext -lOpenGL -lSM -lICE -lX11 -lXext
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: CMakeFiles/visualinfo.dir/home/marv/scm/github/glew/src/visualinfo.c.o: in function `main':
+/home/marv/scm/github/glew/src/visualinfo.c:198: undefined reference to `glXQueryExtensionsString'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: CMakeFiles/visualinfo.dir/home/marv/scm/github/glew/src/visualinfo.c.o: in function `CreateContext':
+/home/marv/scm/github/glew/src/visualinfo.c:1204: undefined reference to `glXQueryExtension'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: /home/marv/scm/github/glew/src/visualinfo.c:1206: undefined reference to `glXChooseVisual'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: /home/marv/scm/github/glew/src/visualinfo.c:1209: undefined reference to `glXCreateContext'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: /home/marv/scm/github/glew/src/visualinfo.c:1221: undefined reference to `glXMakeCurrent'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: CMakeFiles/visualinfo.dir/home/marv/scm/github/glew/src/visualinfo.c.o: in function `DestroyContext':
+/home/marv/scm/github/glew/src/visualinfo.c:1227: undefined reference to `glXDestroyContext'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: lib/libGLEW.so.2.2.0: undefined reference to `glXGetProcAddressARB'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: lib/libGLEW.so.2.2.0: undefined reference to `glXQueryVersion'
+/usr/x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu-ld: lib/libGLEW.so.2.2.0: undefined reference to `glXGetClientString'
+collect2: error: ld returned 1 exit status
+```
+
+Commit 2b50f4a ("CMake: Prefer GLVND if available") changed the cmake
+policy CMP0072 to `NEW` in order to make the FindOpenGL module prefer the
+GLVND libraries (libOpenGL and libGLX) over the legacy GL library (libGL).
+
+The help of the CMP0072 policy states:
+
+> CMP0072
+> -------
+>
+> .. versionadded:: 3.11
+>
+> ``FindOpenGL`` prefers GLVND by default when available.
+>
+> The ``FindOpenGL`` module provides an ``OpenGL::GL`` target and an
+> ``OPENGL_LIBRARIES`` variable for projects to use for legacy GL interfaces.
+> When both a legacy GL library (e.g. ``libGL.so``) and GLVND libraries
+> for OpenGL and GLX (e.g. ``libOpenGL.so`` and ``libGLX.so``) are available,
+> the module must choose between them.  It documents an ``OpenGL_GL_PREFERENCE``
+> variable that can be used to specify an explicit preference.  When no such
+> preference is set, the module must choose a default preference.
+>
+> CMake 3.11 and above prefer to choose GLVND libraries.  This policy provides
+> compatibility with projects that expect the legacy GL library to be used.
+>
+> The ``OLD`` behavior for this policy is to set ``OpenGL_GL_PREFERENCE`` to
+> ``LEGACY``.  The ``NEW`` behavior for this policy is to set
+> ``OpenGL_GL_PREFERENCE`` to ``GLVND``.
+>
+> This policy was introduced in CMake version 3.11.  CMake version
+> 3.23.0 warns when the policy is not set and uses ``OLD`` behavior.
+> Use the ``cmake_policy()`` command to set it to ``OLD`` or ``NEW``
+> explicitly.
+>
+> .. note::
+>   The ``OLD`` behavior of a policy is
+>   ``deprecated by definition``
+>   and may be removed in a future version of CMake.
+
+The changes from the mentioned commit combined with the new behaviour of
+the FindOpenGL module resulted in the glew library being linked against
+`libOpenGL` instead of `libGL`, but not `libGLX`. Since `libOpenGL`
+doesn't link against GLX compared to `libGL` the linker errors above
+surfaced. Fix this by explicitly linking against libGLX if GLEW_X11 is
+enabled
+
+(cherry picked from commit c8a2ddfbe1739831b78cebc4cdbcd3ed48503872)
+---
+ build/cmake/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index de66055..16a3cc2 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -67,7 +67,7 @@ endif ()
+ # X11 required except for Windows and Apple OSX platforms
+ if (GLEW_X11 AND NOT WIN32 AND NOT APPLE)
+   find_package (X11)
+-  list (APPEND GLEW_LIBRARIES ${X11_LIBRARIES})
++  list (APPEND GLEW_LIBRARIES ${OPENGL_glx_LIBRARY} ${X11_LIBRARIES})
+ endif()
+ 
+ if (WIN32)
+-- 
+2.47.1
+
+
+From 3da063880c347dc72aa3d365426c02ea8d4fdb0f Mon Sep 17 00:00:00 2001
+From: Jean-Christophe Fillion-Robin <jchris.fillionr@kitware.com>
+Date: Thu, 23 Mar 2023 00:36:44 -0400
+Subject: [PATCH 10/14] cmake: Update install rules to support component-based
+ installation
+
+(cherry picked from commit 281c2936f3991800896220eb40fd03a2ea669a33)
+---
+ build/cmake/CMakeLists.txt           | 20 +++++++++++++-------
+ build/cmake/testbuild/CMakeLists.txt |  2 +-
+ 2 files changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 16a3cc2..fbe6fc3 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -193,10 +193,10 @@ endif()
+ 
+ install ( TARGETS ${targets_to_install}
+           ${MAYBE_EXPORT}
+-          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+-          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-          FRAMEWORK DESTINATION ${CMAKE_INSTALL_PREFIX}
++          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
++          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
++          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
++          FRAMEWORK DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT Runtime
+ )
+ 
+ if (BUILD_UTILS)
+@@ -229,7 +229,8 @@ if (BUILD_UTILS)
+   endif ()
+ 
+   install ( TARGETS glewinfo visualinfo
+-            DESTINATION ${CMAKE_INSTALL_BINDIR})
++            DESTINATION ${CMAKE_INSTALL_BINDIR}
++            COMPONENT Runtime)
+ endif ()
+ 
+ set (prefix ${CMAKE_INSTALL_PREFIX})
+@@ -250,6 +251,7 @@ configure_file (${GLEW_DIR}/glew.pc.in ${CMAKE_CURRENT_BINARY_DIR}/glew.pc @ONLY
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glew.pc
+         DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
++        COMPONENT Development
+ )
+ 
+ if(WIN32 AND MSVC AND (NOT MSVC_VERSION LESS 1600) AND (NOT CMAKE_VERSION VERSION_LESS "3.1"))
+@@ -257,20 +259,24 @@ if(WIN32 AND MSVC AND (NOT MSVC_VERSION LESS 1600) AND (NOT CMAKE_VERSION VERSIO
+         FILES $<TARGET_PDB_FILE:glew>
+         DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         CONFIGURATIONS Debug RelWithDebInfo
++        COMPONENT Runtime
+     )
+ endif()
+ 
+ install (
+     FILES ${GLEW_PUBLIC_HEADERS_FILES}
+-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GL)
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GL
++    COMPONENT Development)
+ 
+ if(MAYBE_EXPORT)
+   install(EXPORT glew-targets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
++    COMPONENT Development
+     NAMESPACE GLEW::)
+   install(FILES
+       ${CMAKE_CURRENT_SOURCE_DIR}/glew-config.cmake
+       ${CMAKE_CURRENT_SOURCE_DIR}/CopyImportedTargetProperties.cmake
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew)
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
++    COMPONENT Development)
+ endif()
+ 
+ if(NOT TARGET uninstall)
+diff --git a/build/cmake/testbuild/CMakeLists.txt b/build/cmake/testbuild/CMakeLists.txt
+index 27bcf2d..15b9e52 100644
+--- a/build/cmake/testbuild/CMakeLists.txt
++++ b/build/cmake/testbuild/CMakeLists.txt
+@@ -22,4 +22,4 @@ target_compile_definitions(cmake-test PRIVATE
+     -DGLEW_CMAKE_TEST_TARGET_TYPE=$<TARGET_PROPERTY:GLEW::GLEW,TYPE>
+     )
+ 
+-install(TARGETS cmake-test DESTINATION bin)
++install(TARGETS cmake-test DESTINATION bin COMPONENT Runtime)
+-- 
+2.47.1
+
+
+From b4c8b8706e6d5c6aba06fb44a2a6be26c3c4655f Mon Sep 17 00:00:00 2001
+From: luz paz <luzpaz@users.noreply.github.com>
+Date: Sun, 19 Dec 2021 16:02:37 -0500
+Subject: [PATCH 11/14] Fix various typos
+
+Found via `codespell -q 3 -L ake,extrem,lod,parms`
+
+(cherry picked from commit 4a757ac7c01576cec73f029abd09c63e8d391538)
+---
+ README.md                  | 2 +-
+ auto/bin/parse_spec.pl     | 4 ++--
+ auto/doc/advanced.html     | 2 +-
+ auto/doc/log.html          | 6 +++---
+ build/cmake/CMakeLists.txt | 2 +-
+ doc/advanced.html          | 2 +-
+ doc/log.html               | 6 +++---
+ 7 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/README.md b/README.md
+index bfec306..9a8a0a8 100644
+--- a/README.md
++++ b/README.md
+@@ -108,7 +108,7 @@ _Note: you may need to call `make` in the  **auto** folder first_
+ 
+ #### Using cmake
+ 
+-The cmake build is mostly contributer maintained.
++The cmake build is mostly contributor maintained.
+ Due to the multitude of use cases this is maintained on a _best effort_ basis.
+ Pull requests are welcome.
+ 
+diff --git a/auto/bin/parse_spec.pl b/auto/bin/parse_spec.pl
+index 71d6639..b9c3281 100755
+--- a/auto/bin/parse_spec.pl
++++ b/auto/bin/parse_spec.pl
+@@ -114,7 +114,7 @@ my %taboo_tokens = (
+ );
+ 
+ # list of function definitions to be ignored, unless they are being defined in
+-# the given spec.  This is an ugly hack arround the fact that people writing
++# the given spec.  This is an ugly hack around the fact that people writing
+ # spec files seem to shut down all brain activity while they are at this task.
+ #
+ # This will be moved to its own file eventually.
+@@ -185,7 +185,7 @@ sub normalize_prototype
+     return $_;
+ }
+ 
+-# Ugly hack to work arround the fact that functions are declared in more
++# Ugly hack to work around the fact that functions are declared in more
+ # than one spec file.
+ sub ignore_function($$)
+ {
+diff --git a/auto/doc/advanced.html b/auto/doc/advanced.html
+index 740a797..3e0ad79 100644
+--- a/auto/doc/advanced.html
++++ b/auto/doc/advanced.html
+@@ -88,7 +88,7 @@ terminated with a semicolon.
+ <h3>Custom Code Generation</h3>
+ <p>
+ Starting from GLEW 1.3.0, it is possible to control which extensions
+-to include in the libarary by specifying a list in
++to include in the library by specifying a list in
+ <tt>auto/custom.txt</tt>. This is useful when you do not need all the
+ extensions and would like to reduce the size of the source files.
+ Type <tt>make clean; make custom</tt> in the <tt>auto</tt> directory
+diff --git a/auto/doc/log.html b/auto/doc/log.html
+index a805f98..531b3b2 100644
+--- a/auto/doc/log.html
++++ b/auto/doc/log.html
+@@ -198,7 +198,7 @@
+ <ul>
+ <li> Bug fixes:
+ <ul>
+-<li> Resovled crash when glXGetCurrentDisplay() is NULL
++<li> Resolved crash when glXGetCurrentDisplay() is NULL
+ <li> CMake: only install PDB files with MSVC
+ <li> wglGetProcAddress crash with NOGDI defined 
+ <li> Mac: using -Os rather than -O2
+@@ -927,7 +927,7 @@
+ </ul>
+ <li> Bug fixes:
+ <ul>
+-<li> Incorrent 64-bit type definitions
++<li> Incorrect 64-bit type definitions
+ <li> Do not strip static library on install
+ <li> Missing tokens in GL_ATI_fragment_shader and WGL_{ARB,EXT}_make_current_read
+ <li> Missing tokens in GL_VERSION_2_1
+@@ -975,7 +975,7 @@ corruption of their values
+ <li> Missing include guards in glxew.h
+ <li> Makefile and install problems for Cygwin builds
+ <li> Install problem for Linux AMD64 builds
+-<li> Incorrent token in GL_ATI_texture_compression_3dc
++<li> Incorrect token in GL_ATI_texture_compression_3dc
+ <li> Missing tokens from GL_ATIX_point_sprites
+ </ul>
+ </ul>
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index fbe6fc3..73b2f20 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -49,7 +49,7 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
+ find_package (OpenGL REQUIRED)
+ 
+-# cmake<3.10 doesnt detect EGL/GLX
++# cmake<3.10 doesn't detect EGL/GLX
+ if (CMAKE_VERSION VERSION_LESS 3.10)
+   find_library(OPENGL_egl_LIBRARY NAMES EGL)
+   if (OPENGL_egl_LIBRARY)
+diff --git a/doc/advanced.html b/doc/advanced.html
+index e74f2b6..8119244 100644
+--- a/doc/advanced.html
++++ b/doc/advanced.html
+@@ -186,7 +186,7 @@ terminated with a semicolon.
+ <h3>Custom Code Generation</h3>
+ <p>
+ Starting from GLEW 1.3.0, it is possible to control which extensions
+-to include in the libarary by specifying a list in
++to include in the library by specifying a list in
+ <tt>auto/custom.txt</tt>. This is useful when you do not need all the
+ extensions and would like to reduce the size of the source files.
+ Type <tt>make clean; make custom</tt> in the <tt>auto</tt> directory
+diff --git a/doc/log.html b/doc/log.html
+index c5f8ab7..af8ced7 100644
+--- a/doc/log.html
++++ b/doc/log.html
+@@ -296,7 +296,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ <ul>
+ <li> Bug fixes:
+ <ul>
+-<li> Resovled crash when glXGetCurrentDisplay() is NULL
++<li> Resolved crash when glXGetCurrentDisplay() is NULL
+ <li> CMake: only install PDB files with MSVC
+ <li> wglGetProcAddress crash with NOGDI defined 
+ <li> Mac: using -Os rather than -O2
+@@ -1025,7 +1025,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
+ </ul>
+ <li> Bug fixes:
+ <ul>
+-<li> Incorrent 64-bit type definitions
++<li> Incorrect 64-bit type definitions
+ <li> Do not strip static library on install
+ <li> Missing tokens in GL_ATI_fragment_shader and WGL_{ARB,EXT}_make_current_read
+ <li> Missing tokens in GL_VERSION_2_1
+@@ -1073,7 +1073,7 @@ corruption of their values
+ <li> Missing include guards in glxew.h
+ <li> Makefile and install problems for Cygwin builds
+ <li> Install problem for Linux AMD64 builds
+-<li> Incorrent token in GL_ATI_texture_compression_3dc
++<li> Incorrect token in GL_ATI_texture_compression_3dc
+ <li> Missing tokens from GL_ATIX_point_sprites
+ </ul>
+ </ul>
+-- 
+2.47.1
+
+
+From 2e661eaaa009aff1ec040e6426336416108e2820 Mon Sep 17 00:00:00 2001
+From: grahamreeds <graham.reeds@gmail.com>
+Date: Thu, 21 Sep 2023 12:25:00 +0000
+Subject: [PATCH 12/14] Bump minimum cmake version to 3.16 matching the LTS
+ release of Ubuntu 20.04
+
+(cherry picked from commit a4d8b2a2a30576eb1b984ba5d573702acfc5b92e)
+---
+ build/cmake/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 73b2f20..789c61a 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -4,7 +4,7 @@ endif ()
+ 
+ project (glew C)
+ 
+-cmake_minimum_required (VERSION 2.8.12)
++cmake_minimum_required (VERSION 3.16)
+ 
+ include(GNUInstallDirs)
+ 
+-- 
+2.47.1
+
+
+From b592b7840940329640d2b2a78e03a56e21844f64 Mon Sep 17 00:00:00 2001
+From: SpaceIm <30052553+SpaceIm@users.noreply.github.com>
+Date: Tue, 10 Oct 2023 21:22:32 +0200
+Subject: [PATCH 13/14] fix initialization of CMakeLists and cleanup after bump
+ of min cmake version
+
+(cherry picked from commit f8023b362d1e285e202b29a1d3724eb93c910560)
+---
+ build/cmake/CMakeLists.txt           | 43 ++++++----------------------
+ build/cmake/testbuild/CMakeLists.txt | 12 ++------
+ 2 files changed, 12 insertions(+), 43 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index 789c61a..c4d7581 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -1,25 +1,12 @@
++cmake_minimum_required(VERSION 3.16)
++project(glew LANGUAGES C)
++
+ if ( NOT DEFINED CMAKE_BUILD_TYPE )
+   set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type" )
+ endif ()
+ 
+-project (glew C)
+-
+-cmake_minimum_required (VERSION 3.16)
+-
+ include(GNUInstallDirs)
+ 
+-if(POLICY CMP0003)
+-  cmake_policy (SET CMP0003 NEW)
+-endif()
+-
+-if(POLICY CMP0042)
+-  cmake_policy (SET CMP0042 NEW)
+-endif()
+-
+-if (POLICY CMP0072)
+-  cmake_policy (SET CMP0072 NEW)
+-endif(POLICY CMP0072)
+-
+ set(CMAKE_DEBUG_POSTFIX d)
+ 
+ option (BUILD_UTILS "utilities" ON)
+@@ -49,14 +36,6 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
+ find_package (OpenGL REQUIRED)
+ 
+-# cmake<3.10 doesn't detect EGL/GLX
+-if (CMAKE_VERSION VERSION_LESS 3.10)
+-  find_library(OPENGL_egl_LIBRARY NAMES EGL)
+-  if (OPENGL_egl_LIBRARY)
+-    set (OpenGL_EGL_FOUND TRUE)
+-  endif ()
+-endif ()
+-
+ # prefer GLVND
+ if (OPENGL_opengl_LIBRARY)
+   set (GLEW_LIBRARIES ${OPENGL_opengl_LIBRARY})
+@@ -174,15 +153,11 @@ endif()
+ target_link_libraries (glew LINK_PUBLIC ${GLEW_LIBRARIES})
+ target_link_libraries (glew_s ${GLEW_LIBRARIES})
+ 
+-if(CMAKE_VERSION VERSION_LESS 2.8.12)
+-  set(MAYBE_EXPORT "")
+-else()
+-  target_compile_definitions(glew_s INTERFACE "GLEW_STATIC")
+-  foreach(t glew glew_s)
+-    target_include_directories(${t} PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+-  endforeach()
+-  set(MAYBE_EXPORT EXPORT glew-targets)
+-endif()
++target_compile_definitions(glew_s INTERFACE "GLEW_STATIC")
++foreach(t glew glew_s)
++  target_include_directories(${t} PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
++endforeach()
++set(MAYBE_EXPORT EXPORT glew-targets)
+ 
+ set(targets_to_install "")
+ if(BUILD_SHARED_LIBS)
+@@ -254,7 +229,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glew.pc
+         COMPONENT Development
+ )
+ 
+-if(WIN32 AND MSVC AND (NOT MSVC_VERSION LESS 1600) AND (NOT CMAKE_VERSION VERSION_LESS "3.1"))
++if(WIN32 AND MSVC AND (NOT MSVC_VERSION LESS 1600))
+     install(
+         FILES $<TARGET_PDB_FILE:glew>
+         DESTINATION ${CMAKE_INSTALL_LIBDIR}
+diff --git a/build/cmake/testbuild/CMakeLists.txt b/build/cmake/testbuild/CMakeLists.txt
+index 15b9e52..1243478 100644
+--- a/build/cmake/testbuild/CMakeLists.txt
++++ b/build/cmake/testbuild/CMakeLists.txt
+@@ -1,5 +1,5 @@
+-cmake_minimum_required(VERSION 2.8.12)
+-project(glew-cmake-test)
++cmake_minimum_required(VERSION 3.16)
++project(glew-cmake-test LANGUAGES C)
+ 
+ find_package(GLEW REQUIRED CONFIG)
+ find_package(GLEW REQUIRED CONFIG) # call twice to test multiple call
+@@ -10,14 +10,8 @@ set_target_properties(cmake-test PROPERTIES DEBUG_POSTFIX _d)
+ target_link_libraries(cmake-test PRIVATE GLEW::GLEW ${OPENGL_LIBRARIES})
+ target_include_directories(cmake-test PRIVATE ${OPENGL_INCLUDE_DIR})
+ 
+-if(CMAKE_VERSION VERSION_LESS 3.0)
+-    set(cgex $<CONFIGURATION>)
+-else()
+-    set(cgex $<CONFIG>)
+-endif()
+-
+ target_compile_definitions(cmake-test PRIVATE
+-    -DGLEW_CMAKE_TEST_CONFIG=${cgex}
++    -DGLEW_CMAKE_TEST_CONFIG=$<CONFIG>
+     -DGLEW_CMAKE_TEST_TARGET_FILE_NAME=$<TARGET_FILE_NAME:GLEW::GLEW>
+     -DGLEW_CMAKE_TEST_TARGET_TYPE=$<TARGET_PROPERTY:GLEW::GLEW,TYPE>
+     )
+-- 
+2.47.1
+
+
+From 8916256c21f26f199d71060bbf031cc96bc2ec66 Mon Sep 17 00:00:00 2001
+From: SpaceIm <30052553+SpaceIm@users.noreply.github.com>
+Date: Tue, 10 Oct 2023 21:28:07 +0200
+Subject: [PATCH 14/14] more cleanup
+
+(cherry picked from commit f064fbfcb61ee6b8fc7e420b2d1b07d6b09cc49a)
+---
+ build/cmake/CMakeLists.txt | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
+
+diff --git a/build/cmake/CMakeLists.txt b/build/cmake/CMakeLists.txt
+index c4d7581..5d7c287 100644
+--- a/build/cmake/CMakeLists.txt
++++ b/build/cmake/CMakeLists.txt
+@@ -157,7 +157,6 @@ target_compile_definitions(glew_s INTERFACE "GLEW_STATIC")
+ foreach(t glew glew_s)
+   target_include_directories(${t} PUBLIC $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+ endforeach()
+-set(MAYBE_EXPORT EXPORT glew-targets)
+ 
+ set(targets_to_install "")
+ if(BUILD_SHARED_LIBS)
+@@ -167,7 +166,7 @@ else ()
+ endif()
+ 
+ install ( TARGETS ${targets_to_install}
+-          ${MAYBE_EXPORT}
++          EXPORT glew-targets
+           RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
+           LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
+           ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
+@@ -243,16 +242,14 @@ install (
+     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GL
+     COMPONENT Development)
+ 
+-if(MAYBE_EXPORT)
+-  install(EXPORT glew-targets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
+-    COMPONENT Development
+-    NAMESPACE GLEW::)
+-  install(FILES
+-      ${CMAKE_CURRENT_SOURCE_DIR}/glew-config.cmake
+-      ${CMAKE_CURRENT_SOURCE_DIR}/CopyImportedTargetProperties.cmake
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
+-    COMPONENT Development)
+-endif()
++install(EXPORT glew-targets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
++  COMPONENT Development
++  NAMESPACE GLEW::)
++install(FILES
++    ${CMAKE_CURRENT_SOURCE_DIR}/glew-config.cmake
++    ${CMAKE_CURRENT_SOURCE_DIR}/CopyImportedTargetProperties.cmake
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
++  COMPONENT Development)
+ 
+ if(NOT TARGET uninstall)
+   configure_file(
+-- 
+2.47.1
+
