@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 14:18:00 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1.5
+  * Ensure that pyerfa is only built with the limited API if the
+  environment variable Py_GIL_DISABLED is not set.
+
+-------------------------------------------------------------------
 Fri Apr 19 09:27:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1.4:

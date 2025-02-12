@@ -125,4 +125,14 @@
 - initial package v1.7.0</comment>
     <requestid>1169090</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f1b4fa4c2a8f5445ed4d03492a36ecba</srcmd5>
+    <version>2.0.1.5</version>
+    <time>1739392740</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.1.5
+  * Ensure that pyerfa is only built with the limited API if the
+  environment variable Py_GIL_DISABLED is not set.</comment>
+    <requestid>1245400</requestid>
+  </revision>
 </revisionlist>

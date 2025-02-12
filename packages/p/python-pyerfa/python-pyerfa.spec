@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyerfa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %define erfaversion 2.0.1
 Name:           python-pyerfa
-Version:        2.0.1.4
+Version:        2.0.1.5
 Release:        0
 Summary:        Python bindings for ERFA
 License:        BSD-3-Clause
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.7}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -45,7 +45,7 @@ BuildRequires:  python-rpm-macros
 %if %{with systemlibs}
 BuildRequires:  pkgconfig(erfa) >= %{erfaversion}
 %endif
-Requires:       python-numpy >= 1.19
+Requires:       python-numpy >= 1.19.3
 %python_subpackages
 
 %description
