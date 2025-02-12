@@ -19,7 +19,7 @@
 %define lc3soname liblc3-1
 
 Name:           liblc3
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Low Complexity Communication Codec (LC3)
 License:        Apache-2.0
