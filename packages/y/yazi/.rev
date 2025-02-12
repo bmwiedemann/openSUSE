@@ -197,4 +197,18 @@ Changes from last request:
 </comment>
     <requestid>1244345</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b258dc4857187a5df83894c350f47183</srcmd5>
+    <version>25.2.11</version>
+    <time>1739392701</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 25.2.11:
+  * chore: bump version to 25.2.11 (#2323)
+  * feat: new `overall` option under `[status]` to allow specifying the overall style of the status bar (#2321)
+  * fix: unable to delete sealed files on Windows due to platform differences (#2319)
+  * feat: reduce terminal response wait timeout (#2314)
+  * fix: reverse the order of CSI-based and environment-based terminal detection (#2310)
+</comment>
+    <requestid>1245346</requestid>
+  </revision>
 </revisionlist>
