@@ -1,0 +1,8 @@
+<package name="lpcnet" project="openSUSE:Factory">
+  <title>Experimental Neural Net speech coding for FreeDV</title>
+  <description>Experimental version of LPCNet that has been used to develop FreeDV 2020 - a HF
+radio Digital Voice mode for over the air experimentation with Neural Net
+speech coding. It includes a prebuilt model.</description>
+  <devel project="hamradio" package="lpcnet"/>
+  <url>https://github.com/drowe67/LPCNet</url>
+</package>
