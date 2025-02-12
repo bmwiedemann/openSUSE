@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 12 11:44:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.27.0:
+  * chore(channels): bump channels
+  * refactor(build): improve http retry after header handling logic
+    (#6620)
+  * chore: release 2.27.0
+  * feat(deploy): support `werf_secret_file` Helm function in
+    bundle apply/render
+  * fix(deploy): `inconsistent data, unpad failed` error in bundle
+    apply/render
+  * test(e2e): simplify simple bundle publish/apply test
+  * test(e2e): add complex bundle publish/apply test
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
 Mon Feb 10 13:08:18 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.26.6:
