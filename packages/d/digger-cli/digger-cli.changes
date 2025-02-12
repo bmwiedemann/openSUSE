@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 06:43:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.85:
+  * support encrypted s3 bucket for plan uploads (#1882)
+  * remove unused methods (#1881)
+
+-------------------------------------------------------------------
 Fri Feb 07 17:04:20 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.84:
