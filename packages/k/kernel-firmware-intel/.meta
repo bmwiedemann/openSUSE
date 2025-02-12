@@ -1,0 +1,6 @@
+<package name="kernel-firmware-intel" project="openSUSE:Factory">
+  <title>Kernel firmware files for Intel-platform device drivers</title>
+  <description>This package contains Linux kernel firmware files for Intel-platform device drivers.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-intel"/>
+</package>
