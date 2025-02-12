@@ -1,7 +1,7 @@
 #
 # spec file for package libebur128
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jiixyj/libebur128
 Source0:        https://github.com/jiixyj/libebur128/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  pkgconfig
 
