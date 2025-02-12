@@ -1,0 +1,6 @@
+<package name="ucode-amd" project="openSUSE:Factory">
+  <title>Microcode updates for AMD CPUs</title>
+  <description>This package contains microcode updates for AMD CPUs.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="ucode-amd"/>
+</package>

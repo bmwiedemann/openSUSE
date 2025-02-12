@@ -1,0 +1,4 @@
+# new style (after 3.12 kernel somewhen)
+Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
+# old style (before 3.16 kernel)
+Supplements:    modalias(x86cpu:vendor%%3A0002%%3Afamily%%3A*%%3Amodel%%3A*%%3Afeature%%3A*)
