@@ -1,0 +1,5 @@
+%if 0%{?suse_version} < 1599
+# revive old iwlwifi firmware for compatibility (bsc#1209681)
+cat %{_sourcedir}/extrawhence-sle15 >> WHENCE
+cp %{_sourcedir}/iwlwifi-*.ucode .
+%endif

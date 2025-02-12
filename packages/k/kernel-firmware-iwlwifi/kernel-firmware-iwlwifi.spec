@@ -1,0 +1,576 @@
+#
+# spec file for package kernel-firmware-iwlwifi
+#
+# Copyright (c) 2025 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%if 0%{?suse_version} < 1550
+%define _firmwaredir /lib/firmware
+%endif
+%define __ksyms_path ^%{_firmwaredir}
+%define git_version aaae2fb60f75b07d9c249ebe668524f7ddf51243
+
+Name:           kernel-firmware-iwlwifi
+Version:        20250206
+Release:        0
+Summary:        Kernel firmware files for Intel wireless drivers
+License:        SUSE-Firmware AND GPL-2.0-or-later
+Group:          System/Kernel
+URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
+Source0:        %{name}-%{version}.tar.xz
+# URL:          https://github.com/openSUSE/kernel-firmware-tools/
+Source1:        kernel-firmware-tools-20250211.tar.xz
+Source2:        %{name}-rpmlintrc
+Source3:        git_id
+Source10:       aliases
+Source11:       extrawhence-sle15
+Source12:       iwlwifi-Qu-b0-hr-b0-71.ucode
+Source13:       iwlwifi-Qu-b0-jf-b0-71.ucode
+Source14:       iwlwifi-Qu-c0-hr-b0-71.ucode
+Source15:       iwlwifi-Qu-c0-jf-b0-71.ucode
+Source16:       iwlwifi-QuZ-a0-hr-b0-71.ucode
+Source17:       iwlwifi-QuZ-a0-jf-b0-71.ucode
+Source18:       iwlwifi-cc-a0-71.ucode
+Source19:       iwlwifi-so-a0-gf-a0-71.ucode
+Source20:       iwlwifi-so-a0-gf4-a0-71.ucode
+Source21:       iwlwifi-so-a0-hr-b0-71.ucode
+Source22:       iwlwifi-so-a0-jf-b0-71.ucode
+Source23:       iwlwifi-ty-a0-gf-a0-71.ucode
+Source24:       setup
+Source25:       topicprovs
+BuildRequires:  suse-module-tools
+Requires(post): %{_bindir}/mkdir
+Requires(post): %{_bindir}/touch
+Requires(postun):%{_bindir}/mkdir
+Requires(postun):%{_bindir}/touch
+Requires(post): dracut >= 049
+Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware-uncompressed
+BuildArch:      noarch
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
+Provides:       iwl1000-ucode = %{version}
+Obsoletes:      iwl1000-ucode < %{version}
+Provides:       iwl3945-ucode = %{version}
+Obsoletes:      iwl3945-ucode < %{version}
+Provides:       iwl4965-ucode = %{version}
+Obsoletes:      iwl4965-ucode < %{version}
+Provides:       iwl5000-ucode = %{version}
+Obsoletes:      iwl5000-ucode < %{version}
+Provides:       iwl5150-ucode = %{version}
+Obsoletes:      iwl5150-ucode < %{version}
+Provides:       iwl100-ucode = %{version}
+Obsoletes:      iwl100-ucode < %{version}
+Provides:       iwl6000-ucode = %{version}
+Obsoletes:      iwl6000-ucode < %{version}
+Provides:       iwl6050-ucode = %{version}
+Obsoletes:      iwl6050-ucode < %{version}
+Provides:       iwl6000g2-ucode = %{version}
+Obsoletes:      iwl6000g2-ucode < %{version}
+Supplements:    modalias(pci:v00008086d00004222sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd00001005bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd00001034bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004222sv*sd00001044bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004227sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004227sv*sd00001014bc*sc*i*)
+Supplements:    modalias(iwl4965)
+Supplements:    modalias(pci:v00008086d00004229sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004230sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001301bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001304bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001305bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001306bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001307bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001308bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001321bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001326bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00001328bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd00004820bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000082sv*sd0000C020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001205bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001206bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001225bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001226bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001305bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001306bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001325bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000083sv*sd00001326bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000084sv*sd00001215bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000084sv*sd00001216bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000084sv*sd00001315bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000084sv*sd00001316bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000085sv*sd00001311bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000085sv*sd00001316bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000085sv*sd00001318bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000085sv*sd0000C220bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000085sv*sd0000C228bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000087sv*sd00001301bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000087sv*sd00001306bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000087sv*sd00001321bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000087sv*sd00001326bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000089sv*sd00001311bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000089sv*sd00001316bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000008Asv*sd00005305bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000008Asv*sd00005307bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000008Asv*sd00005325bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000008Asv*sd00005327bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000008Bsv*sd00005315bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000008Bsv*sd00005317bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000090sv*sd00005211bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000090sv*sd00005215bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000090sv*sd00005216bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000091sv*sd00005201bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000091sv*sd00005205bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000091sv*sd00005206bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000091sv*sd00005207bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000091sv*sd00005221bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000091sv*sd00005225bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000091sv*sd00005226bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000002F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000006F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000885sv*sd00001305bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000885sv*sd00001307bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000885sv*sd00001325bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000885sv*sd00001327bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000886sv*sd00001315bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000886sv*sd00001317bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000887sv*sd00004062bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000887sv*sd00004462bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000888sv*sd00004262bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Esv*sd00004060bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Esv*sd0000406Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Esv*sd00004460bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Esv*sd0000446Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Esv*sd00004860bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Fsv*sd00004260bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Fsv*sd0000426Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000088Fsv*sd00005260bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000890sv*sd00004022bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000890sv*sd00004422bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000890sv*sd00004822bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000891sv*sd00004222bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000892sv*sd00000062bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000892sv*sd00000462bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000893sv*sd00000262bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000894sv*sd00000022bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000894sv*sd00000422bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000894sv*sd00000822bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000895sv*sd00000222bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000896sv*sd00005005bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000896sv*sd00005007bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000896sv*sd00005025bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000896sv*sd00005027bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000897sv*sd00005015bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000897sv*sd00005017bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008AEsv*sd00001005bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008AEsv*sd00001007bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008AEsv*sd00001025bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008AEsv*sd00001027bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008AFsv*sd00001015bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008AFsv*sd00001017bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000402Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004060bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004062bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000406Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004070bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004072bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004160bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004162bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004170bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004420bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004460bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004462bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000446Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004470bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004472bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004560bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004570bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000486Ebc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004870bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004A6Cbc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004A6Ebc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004A70bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004C60bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00004C70bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00005070bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00005072bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00005170bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd00005770bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C02Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C060bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C062bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C06Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C070bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C072bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C160bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C162bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C170bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C360bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C420bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C460bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C462bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C470bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C472bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C560bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C570bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C760bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000C770bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000CC60bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B1sv*sd0000CC70bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd00004220bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd00004260bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd00004262bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000426Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd00004270bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd00004272bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd00004360bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd00004370bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000C220bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000C260bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000C262bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000C26Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000C270bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000C272bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B2sv*sd0000C370bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000060bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000062bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000070bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000072bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000170bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000172bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000470bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00000472bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00001070bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00001170bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008060bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008062bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008070bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008072bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008170bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008172bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008470bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B3sv*sd00008570bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B4sv*sd00000270bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B4sv*sd00000272bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B4sv*sd00000370bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B4sv*sd00008270bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B4sv*sd00008272bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000008B4sv*sd00008370bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00001010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005000bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005002bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd0000500Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005012bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd0000502Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005100bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005102bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005190bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005400bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005410bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005412bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005420bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005490bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005510bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005590bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005C10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00005F10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009000bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd0000900Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009012bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009112bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009400bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009410bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009510bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Asv*sd00009E10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00005200bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00005202bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd0000520Abc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00005210bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00005212bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00005290bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00005302bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00005310bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00009200bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00009210bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000095Bsv*sd00009310bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000000bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000004bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000012bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000044bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000130bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000132bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000150bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd000001F0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000250bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000810bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000850bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000910bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000930bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00000950bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00001010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00001012bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00001050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd000010B0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00001110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00001130bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00001132bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00001150bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00004010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00008010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00008050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00008110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00008130bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00008132bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00008150bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00009010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00009050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00009110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00009130bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00009132bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd00009150bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd0000B0B0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd0000C010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd0000C050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd0000C110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd0000D010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd0000D050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F3sv*sd0000D0B0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F4sv*sd00000030bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F4sv*sd00001030bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F4sv*sd00008030bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F4sv*sd00009030bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F4sv*sd0000C030bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F4sv*sd0000D030bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F5sv*sd00000010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024F6sv*sd00000030bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FBsv*sd00000000bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FBsv*sd00002010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FBsv*sd00002050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FBsv*sd00002110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FBsv*sd00002150bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000012bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000014bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000130bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000150bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000810bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000850bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000910bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000930bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00000950bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00001010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00001012bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00001014bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd000010D0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00001110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00001130bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00003E01bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00003E02bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00008010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00008050bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00008110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00008130bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00009010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00009074bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000024FDsv*sd00009110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002526sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000271Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000271Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002723sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002729sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000272Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000272Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000030DCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003165sv*sd00004010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003165sv*sd00004012bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003165sv*sd00004110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003165sv*sd00004410bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003165sv*sd00004510bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003165sv*sd00008010bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003165sv*sd00008110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003166sv*sd00004210bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003166sv*sd00004212bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003166sv*sd00004310bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000031DCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000034F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00003DF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001101bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001108bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001121bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Bsv*sd00001128bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Csv*sd00001301bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Csv*sd00001306bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Csv*sd00001307bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Csv*sd00001321bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000422Csv*sd00001326bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001201bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001204bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001205bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001206bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001221bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001224bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001225bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001226bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001301bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001304bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001305bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001306bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001321bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001324bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001325bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004232sv*sd00001326bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001001bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001004bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001021bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001024bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001101bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001104bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001121bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004235sv*sd00001124bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004236sv*sd00001011bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004236sv*sd00001014bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004236sv*sd00001111bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004236sv*sd00001114bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001211bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001214bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001215bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001216bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001311bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001314bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001315bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004237sv*sd00001316bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004238sv*sd00001111bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004238sv*sd00001118bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004239sv*sd00001311bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004239sv*sd00001316bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Asv*sd00001001bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Asv*sd00001021bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Bsv*sd00001011bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Csv*sd00001201bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Csv*sd00001206bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Csv*sd00001221bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Csv*sd00001301bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Csv*sd00001306bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Csv*sd00001321bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Csv*sd00001326bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001211bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001216bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001311bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000423Dsv*sd00001316bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000043F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004D40sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004DF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051F1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000054F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00006E70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007740sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007A70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007AF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007E40sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007F70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00009DF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A0F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A370sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000000bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000094bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000098bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd0000009Cbc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000C0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000C4bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000E0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000E4bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000E8bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000ECbc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000100bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000114bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000118bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd0000011Cbc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000310bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000314bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000510bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000A10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001671bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001672bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001771bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001772bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001791bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001792bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00004090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000040C4bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000040E0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00004110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00004314bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000D340sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000E340sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000E440sv*sd*bc*sc*i*)
+
+%description
+This package contains kernel firmware files for Intel wireless drivers.
+
+
+%prep
+%autosetup -a1 -p1
+# strip down WHENCE for the topic
+scripts/strip-topic-whence.sh iwlwifi < WHENCE > WHENCE.new
+mv WHENCE.new WHENCE
+%if 0%{?suse_version} < 1599
+# revive old iwlwifi firmware for compatibility (bsc#1209681)
+cat %{_sourcedir}/extrawhence-sle15 >> WHENCE
+cp %{_sourcedir}/iwlwifi-*.ucode .
+%endif
+
+%build
+# nothing to do
+
+%install
+./copy-firmware.sh -v --xz -j1 %{buildroot}%{_firmwaredir}
+scripts/install-licenses.sh iwlwifi %{buildroot}%{_licensedir}/%{name}
+install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
+install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+
+%post
+%{?regenerate_initrd_post}
+
+%postun
+%{?regenerate_initrd_post}
+
+%posttrans
+%{?regenerate_initrd_posttrans}
+
+%files
+%doc %{_docdir}/%{name}
+%license %{_licensedir}/%{name}
+%{_firmwaredir}
+
+%changelog
