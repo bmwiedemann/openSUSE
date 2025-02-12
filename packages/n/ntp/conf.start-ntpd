@@ -80,10 +80,11 @@ function ntpd_is_running() {
 }
 
 function parse_symlink() {
-  if [ -c "$NTP_PARSE_DEVICE" ]; then
-    if [ -n "$NTP_PARSE_LINK" ]; then
-    ln -sf $NTP_PARSE_DEVICE $NTP_PARSE_LINK
+  if [ -c "${CHROOT_PREFIX}$NTP_PARSE_DEVICE" ]; then
+    if [ -n "${CHROOT_PREFIX}$NTP_PARSE_LINK" ]; then
+      ln -sf $NTP_PARSE_DEVICE ${CHROOT_PREFIX}$NTP_PARSE_LINK
     fi
+    chown ntp:ntp ${CHROOT_PREFIX}$NTP_PARSE_DEVICE
   fi
 }
 
@@ -145,10 +146,10 @@ case "$1" in
         ntpd_is_running || $0 ntptimeset
     fi
     echo -n "Starting network time protocol daemon (NTPD)"
-    # do we need a refclock symlink?
-    parse_symlink
     # do we run chrooted?
     test "${NTPD_RUN_CHROOTED}" = "yes" && prepare_chroot
+    # do we need a refclock symlink?
+    parse_symlink
 
     $NTPD_BIN -p ${NTPD_PID#${CHROOT_PREFIX}} $NTPD_OPTIONS -c $NTP_CONF
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb  5 15:20:57 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to 4.2.8p18
+  * obsoletes Get-rid-of-EVP_MD_CTX_FLAG_NON_FIPS_ALLOW.patch
+  * Multiple bug fixes and improvements. For details, see:
+    /usr/share/doc/packages/ntp/ChangeLog
+    http://www.ntp.org/support/securitynotice/4_2_8-series-changelog/  
+- bsc#1233890: chown refclock device to ntp user on startup.
+- ntp-check-argv.patch: Improve the handling of the process name of
+  the forked-off DNS resolver process.
+
+-------------------------------------------------------------------
 Fri May 24 13:38:02 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop initscripts-legacy support [jsc#PED264]

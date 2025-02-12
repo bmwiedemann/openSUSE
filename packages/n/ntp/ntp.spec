@@ -1,7 +1,7 @@
 #
 # spec file for package ntp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %define ntpfaqversion 3.4
 Name:           ntp
-Version:        4.2.8p17
+Version:        4.2.8p18
 Release:        0
 Summary:        Network Time Protocol daemon (version 4)
 License:        BSD-3-Clause AND MIT AND BSD-4-Clause AND GPL-2.0-only
@@ -58,7 +58,7 @@ Patch30:        ntp-move-kod-file.patch
 Patch33:        ntp-sntp-libevent.patch
 Patch34:        testdcf-gude.diff
 Patch35:        ntp-clarify-interface.patch
-Patch36:        Get-rid-of-EVP_MD_CTX_FLAG_NON_FIPS_ALLOW.patch
+Patch36:        ntp-check-argv.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
@@ -145,7 +145,7 @@ cp %{SOURCE12} .
 %patch -P 33
 %patch -P 34 -p1
 %patch -P 35
-%patch -P 36 -p1
+%patch -P 36
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}

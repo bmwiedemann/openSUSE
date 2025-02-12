@@ -1,0 +1,29 @@
+--- libntp/work_fork.c.orig
++++ libntp/work_fork.c
+@@ -543,17 +543,21 @@ fork_blocking_child(
+ 
+ 	/*
+ 	 * Change the process name of the child to avoid confusion
+-	 * about ntpd trunning twice.
++	 * about ntpd running twice.
+ 	 */
+ 	if (saved_argc != 0) {
+ 		int argcc;
+ 		int argvlen = 0;
+-		/* Clear argv */
++		char *end_of_argv = saved_argv[0];
++		/* Check that argv is contiguous, measure and clear it */
+ 		for (argcc = 0; argcc < saved_argc; argcc++) {
+-			int l = strlen(saved_argv[argcc]);
+-			argvlen += l + 1;
+-			memset(saved_argv[argcc], 0, l);
++			if (end_of_argv == saved_argv[argcc]) {
++				end_of_argv += strlen(saved_argv[argcc]) + 1;
++			}
+ 		}
++		argvlen = end_of_argv - saved_argv[0];
++		memset(saved_argv[0], 0, argvlen);
++
+ 		strlcpy(saved_argv[0], "ntpd: asynchronous dns resolver", argvlen);
+ 	}
+ 
