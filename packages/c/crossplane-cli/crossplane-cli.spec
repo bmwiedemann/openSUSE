@@ -1,7 +1,7 @@
 #
 # spec file for package crossplane-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define executable_name crossplane
 
 Name:           crossplane-cli
-Version:        1.18.2
+Version:        1.19.0
 Release:        0
 Summary:        The Cloud Native Control Plane
 License:        Apache-2.0

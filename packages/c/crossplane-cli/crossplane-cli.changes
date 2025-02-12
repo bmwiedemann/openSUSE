@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Feb 12 06:01:16 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.19.0:
+  https://github.com/crossplane/crossplane/releases/tag/v1.19.0
+  CLI-related highlights:
+  * The Crossplane CLI commands such as render and validate that
+    download Crossplane packages now work well with private
+    repositories.
+  CLI-related changelog:
+  * fix(crank): add function as input for extensions in cli for
+    validate by @haarchri in #6087
+  * feat(cli): include status conditions in output of render
+    command by @jbw976 in #6121
+  * feat(cli): Add ability to pull images from private registry by
+    @cychiang in #6227
+  * fix(cli): Resolve duplicate validate results due to multiple
+    version of dependencies in cache by @cychiang in #6205
+
+-------------------------------------------------------------------
+Wed Feb 12 05:55:13 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.18.3:
+  * [Backport release-1.18] Use an uncached client to retrieve
+    composed resources not found in the cache (#6276)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.13.0
+    [security]
+  * fix(deps): update module golang.org/x/net to v0.33.0 [security]
+
+-------------------------------------------------------------------
 Wed Dec 18 06:30:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.18.2:
