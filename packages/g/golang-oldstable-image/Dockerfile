@@ -19,19 +19,19 @@
 #!BuildTag: opensuse/bci/golang:oldstable
 #!BuildTag: opensuse/bci/golang:%%golang_version%%-2.%RELEASE%
 #!BuildTag: opensuse/bci/golang:%%golang_version%%
-#!BuildTag: opensuse/bci/golang:1.22
+#!BuildTag: opensuse/bci/golang:1.23
 
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends go1.22 go1.22-doc make curl findutils gawk git-core procps util-linux; \
+    zypper -n install --no-recommends go1.23 go1.23-doc make curl findutils gawk git-core procps util-linux; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.golang
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.22 development"
-LABEL org.opencontainers.image.description="Go 1.22 development container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.23 development"
+LABEL org.opencontainers.image.description="Go 1.23 development container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%golang_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
@@ -52,7 +52,7 @@ ENV PATH="/go/bin:/usr/local/go/bin:/root/go/bin/:/usr/local/sbin:/usr/local/bin
 
 # only available on go's tsan_arch architectures
 #!ArchExclusiveLine: x86_64 aarch64 s390x ppc64le
-RUN set -euo pipefail; if zypper -n install go1.22-race; then zypper -n clean; fi
+RUN set -euo pipefail; if zypper -n install go1.23-race; then zypper -n clean; fi
 RUN set -euo pipefail; install -m 755 -d /go/bin /go/src
 RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 WORKDIR /go
