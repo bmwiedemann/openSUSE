@@ -1513,4 +1513,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1245056</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>e8080ba2e1dd9404b39a3b1eb91c27a3</srcmd5>
+    <version>20250212</version>
+    <time>1739392266</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250212:
+  * Allow rlimit inheritance for domains transitioning to local_login_t
+</comment>
+    <requestid>1245274</requestid>
+  </revision>
 </revisionlist>

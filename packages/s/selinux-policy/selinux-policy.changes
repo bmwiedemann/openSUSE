@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:15:02 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250212:
+  * Allow rlimit inheritance for domains transitioning to local_login_t
+
+-------------------------------------------------------------------
 Tue Feb 11 10:02:53 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250211:
