@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 12 14:23:25 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1739353778.821904b:
+  * Fix timeout of SSH commands after fc8ab5395 and ca4f085c
+  * Add unit test for code coverage of consoles/s3270.pm
+  * Remove undefined _kill_window() function from consoles/s3270.pm
+  * Use Feature::Compat::Try in testapi
+  * Use Feature::Compat::Try in script/os-autoinst-openvswitch
+  * Use Feature::Compat::Try in script/isotovideo
+  * Ensure a clean swtpm directory
+
+-------------------------------------------------------------------
 Mon Feb 10 18:26:22 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1739204074.6765272:
