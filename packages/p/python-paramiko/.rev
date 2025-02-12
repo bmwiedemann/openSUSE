@@ -797,4 +797,12 @@
     and 9.6, as well as against a number of proprietary appliance SSH servers.</comment>
     <requestid>1225317</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c3b64ed878fe56fe6587986ddac3a5ea</srcmd5>
+    <version>3.5.1</version>
+    <time>1739392238</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245348</requestid>
+  </revision>
 </revisionlist>
