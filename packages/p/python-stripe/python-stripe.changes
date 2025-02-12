@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Feb 12 03:27:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- We must run stripe-mock during check. 
+
+-------------------------------------------------------------------
+Wed Feb  5 05:11:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 11.5.0:
+  * Fix regression when using httpx HTTP client
+  * Change the pinned API version to 2024-12-18.acacia.
+  * Deserialize into correct v2 EventData types
+  * update object tags for meter-related classes
+  * Update the class for ThinEvent to include livemode
+  * Add method to list invoice line items
+  * Bump aiohttp from 3.9.0 to 3.9.4
+  * Use stdlib AsyncMock when available
+  * Add TaxIds API
+  * Remove http client base
+  * Testing: unify http client mock
+  * Remove broken child methods
+  * Move StripeClient usage collection onto StripeService
+  * Measure StripeClient usage
+  * Introduce StripeClient and a service-based call pattern.
+- Do not run stripe-mock during check, the testsuite handles it for us.
+- Drop patch use-sys-executable.patch, included upstream.
+
+-------------------------------------------------------------------
 Fri Jan 19 03:23:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch also-skip-streaming.patch:
