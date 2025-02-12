@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jan 26 06:42:16 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 4.4.0.3:
+  * fixed cave score (tape score) when playing BD games with multiple lives
+  * fixed flickering panel score when playing BD games with multiple lives
+  * fixed fast-forwarding BD game engine when skipping player hatching
+  * fixed pressing Ctrl/Cmd/Meta keys with 0/-/+ keys to change window size
+  * fixed pressing right Alt key with Return/Enter key to toggle fullscreen
+  * added continuing at game end by pressing configured snap or drop key
+  * added support for custom window sizes for most relevant screens
+  * changed positions of “colors” and “engine” tabs in level editor
+- Changes in version 4.4.0.2
+  * fixed adding extra life when playing BD games with multiple lives
+  * fixed clearing touch buttons in off-screen areas on Android
+  * fixed getting file size of BD caveset file inside Android APK file
+  * fixed bad use of function pointers that was breaking Emscripten port
+- Changes in version 4.4.0.1
+  * added support for playing BD games with multiple lives and global score
+  * added support for showing multiple lives for BD games in game panel
+  * added support for showing level set name in game panel
+  * added setup option to save tape without asking
+  * added support for animated BD player with bomb or rocket launcher
+  * added showing color settings in editor also for non-BD engine levels
+  * added support for color gradients for level specific colors
+  * improved (un)covering screen when using BD game engine (GDash style)
+  * fixed black screen flickering when using Metal render driver on Mac
+  * fixed bug with looping death sound when killed by voodoo in BD engine
+  * fixed drawing crumbled graphics when moving diagonally in BD engine
+  * fixed playing sounds for levels with small playfield in BD engine
+  * fixed showing level story when playing without hall of fame after game
+  * fixed bug with sounds not being played in native BD sound engine
+  * fixed multi-line request text overlapping with request buttons
+  * fixed bug with saving BD style snap element in level file
+  * fixed bugs with random level specific colors when loading level
+  * fixed bugs with potentially using off-playfield position
+  * fixed various other errors
+- Changes in version 4.4.0.0
+  Besides the new BD game engine, there are some other new features:
+  * added support for opening level set zip files in Android version
+  * added support for updating level sets installed by drag’n’drop
+  * added support for level specific colors by using specially crafted images
+  * added support for level specific information text messages from main menu
+  * added support for optional level info (“story”) before starting the game
+- Drop update-desktop-files
+
+-------------------------------------------------------------------
 Sun Apr  7 18:23:59 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 4.3.8.2:

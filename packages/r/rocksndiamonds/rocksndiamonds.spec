@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.3.8.2
+Version:        4.4.0.3
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  system-user-games
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_net)
@@ -58,6 +57,7 @@ rm -f %{name}
 %build
 %make_build \
     OPTIONS="%{optflags}" \
+    BASE_PATH=%{_datadir}/%{name} \
     RO_GAME_DIR=%{_datadir}/%{name} \
     RW_GAME_DIR=%{_localstatedir}/games/%{name}
 
@@ -81,8 +81,6 @@ done
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 install -Dm 755 -d %{buildroot}%{_localstatedir}/games/%{name}
-
-%suse_update_desktop_file %{name}
 
 %fdupes -s %{buildroot}%{_prefix}
 
