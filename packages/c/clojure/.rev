@@ -310,4 +310,13 @@
   * Update tools.deps</comment>
     <requestid>1243281</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0c5609989c3ad61da1e7e9beb4811269</srcmd5>
+    <version>1.12.0.1517</version>
+    <time>1739392545</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.0.1517:
+  * Update to tools.deps 0.22.1492</comment>
+    <requestid>1245242</requestid>
+  </revision>
 </revisionlist>
