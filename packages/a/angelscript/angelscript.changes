@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sun Dec 15 16:36:19 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.37.0
+  * Bug fixes
+    + thiscall method with multiple inheritances was not working properly 
+      with composite offset
+    + Fixed compiling the library with AS_NO_CLASS_METHODS
+    + Fixed exception handling not restoring stack pointer in some cases, 
+      leading to buffer overflow and crashes after repetition
+    + Fixed problem with parsing non-terminated heredoc strings
+    + Fixed assert failure on invalid expression with assignment
+    + Fixed assert failure on warning in function argument with ternary operator
+    + Fixed crash in asIScriptContext::GetArgsOnStackCount when using 
+      unsafe references
+    + Fixed bug in IsVarInScope that wouldn't identify an object variable 
+      declared just after a } as being in scope
+    + Fixed problem with funtion overload between Obj@ and const Obj@
+    + Fixed bug in compiler that allowed passing string literal to function as
+      non-const references with unsafe references turned on
+    + Fixed bug in native calling convention for arm64 with ?& arguments
+    + Fixed crash if passing negative value to GetTypeInfoById
+    + asCDataType::GetSizeInMemoryBytes was not returning the correct size of
+      handles
+    + Fixed crash when attempting to use init list with enum type
+    + Fixed assert failure on passing anonymous init list to function argument
+      expecting a handle
+    + Registered copy factories were not properly identified as copy factories
+      if the parameter used &inout instead of &in
+    + Fixed GetLineNumber that could randomly return the last line number of a 
+      function if called between Prepare and Execute
+    + Fixed support for returning structs with 2 doubles in native calling
+      conventions on arm64
+    + Fixed a bug in bytecode serializer that could cause errors if composite
+      properties were used
+  * Library
+    + Added engine property to disable garbage collection for script classes
+    + Improved runtime performance by reducing overhead in script function calls
+    + It is now possible to register factory functions receiving an auxiliary 
+      pointer with asCALL_CDECL_OBJLAST/OBJFIRST
+    + Improved runtime performance with gnuc or clang compilers by using
+      computed goto extension
+    + as_config.h now has configuration to detect Linux with RISC-V 64bit CPU
+    + asEP_ALWAYS_IMPL_DEFAULT_COPY can be set to 1 to tell compiler to always 
+      implement default copy even if other opAssign is declared
+    + asEP_ALWAYS_IMPL_DEFAULT_COPY_CONSTRUCT can be set to 1 to tell compiler 
+      not to always implement default copy constructor even if other copy 
+      constructor is declared
+    + asEP_ALWAYS_IMPL_DEFAULT_CONSTRUCT, DEFAULT_COPY, and 
+      DEFAULT_COPY_CONSTRUCT can now be set to 2 to tell compiler never to 
+      implement these
+    + A new flag asOBJ_APP_CLASS_UNION is added to inform when a registered 
+     class contains unions, needed for Risc-V native ABI
+  * Library interface
+    + Added GetLastFunctionId to the engine, so it is possible to iterate over 
+      all functions with GetFunctionById
+    + Introduced a new JIT compiler interface asIJITCompilerV2, use 
+      asEP_JIT_INTERFACE_VERSION to set which should be used
+    + The new JIT compiler interface can use SetJITFunction to set the JIT 
+      compiled function at a later time, to allow better optimizations
+    + Added asIScriptFunction::GetDeclaredAt
+    + RegisterObjectType now takes a qword for the flags to make room for 
+      asOBJ_APP_CLASS_UNION
+    + asITypeInfo::GetFlags also returns a qword to make room for 
+      asOBJ_APP_CLASS_UNION
+  * Script language
+    + A default copy opAssign method is provided for script classes if none has
+      been explicitly defined
+    + A default copy constructor is provided for script classes unless another 
+      copy constructor is explicitly defined (Thanks Patrick Jeeves)
+    + An implicit conversion to primitive of same type by different size takes
+      precedent over change in sign in function matching
+    + It is now possible to explicitly delete auto generated constructor, copy 
+      constructor, and copy operator if they are not wanted
+    + Templates can now be instantiated with const sub types
+  * Add-ons & Samples
+    + Added thread safety for creating the string factory singleton
+    + filesystem now replaces backslashes for forward slashes in the file path
+    + Added auto wrappers WRAP_MFN_GLOBAL(_PR) for class methods that will be
+      used as global functions
+  * Project
+    + Added support for native calling conventions on Linux with 
+      Risc-V 64bit CPU
+    + Added support for native calling conventions on Apple OS's 
+      with M1/M2 CPUs
+
+-------------------------------------------------------------------
 Sun Dec 10 19:51:45 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.36.1

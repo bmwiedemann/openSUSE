@@ -42,7 +42,7 @@ Index: sdk/angelscript/projects/meson/meson.build
  if host_machine.cpu_family() == 'arm'
    add_languages('c')
    angel_srcs += [
-@@ -55,7 +80,8 @@ angelscript_lib = library(
+@@ -63,7 +88,8 @@ angelscript_lib = library(
    'angelscript',
    sources : angel_srcs,
    dependencies : threads,
@@ -52,7 +52,7 @@ Index: sdk/angelscript/projects/meson/meson.build
    install : true,
  )
  angelscript_inc = include_directories('../../include')
-@@ -65,4 +91,93 @@ angelscript_dep  = declare_dependency(
+@@ -73,4 +99,93 @@ angelscript_dep  = declare_dependency(
    version : meson.project_version(),
  )
  
@@ -151,7 +151,7 @@ Index: sdk/add_on/scriptfile/scriptfilesystem.cpp
 ===================================================================
 --- sdk.orig/add_on/scriptfile/scriptfilesystem.cpp
 +++ sdk/add_on/scriptfile/scriptfilesystem.cpp
-@@ -15,6 +15,8 @@
+@@ -16,6 +16,8 @@
  #endif
  #include <assert.h> // assert
  
