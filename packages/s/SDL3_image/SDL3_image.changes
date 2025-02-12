@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sat Feb  1 18:52:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 3.2.0) for build.opensuse.org
+  * This is the SDL image loading library as before, but updated
+    for SDL 3.0. The API is largely the same, with IMG_Init() and
+    IMG_Quit() no longer necessary and *_RW() functions renamed
+    *_IO().
+
