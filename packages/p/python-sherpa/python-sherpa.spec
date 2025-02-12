@@ -26,10 +26,12 @@ Source0:        https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sher
 Source1:        https://github.com/sherpa/sherpa-test-data/archive/refs/tags/%{version}.tar.gz#/sherpa-test-data-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM sherpa-pr2188-np2docstrings.patch gh#sherpa/sherpa#2188
 Patch0:         https://github.com/sherpa/sherpa/pull/2188.patch#/sherpa-pr2188-np2docstrings.patch
-# PATCH-FIX-OPENSUSE sherpa-suse-libdir.patch -- UPSTREAM struggles with library paths, see e.g. gh#sherpa/sherpa#2159 code@bnavigator.de
-Patch1:         sherpa-suse-libdir.patch
 # PATCH-FIX-UPSTREAM gh#sherpa/sherpa#2203
-Patch2:         support-pytest-8.3.4.patch
+Patch1:         support-pytest-8.3.4.patch
+# PATCH-FIX-UPSTREAM sherpa-pr2207-mpl.patch gh#sherpa/sherpa#2207
+Patch2:         https://github.com/sherpa/sherpa/pull/2207.patch#/sherpa-pr2207-mpl.patch
+# PATCH-FIX-OPENSUSE sherpa-suse-libdir.patch -- UPSTREAM struggles with library paths, see e.g. gh#sherpa/sherpa#2159 code@bnavigator.de
+Patch3:         sherpa-suse-libdir.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}

@@ -272,4 +272,13 @@
   * Support pytest 8.3.4 changes.</comment>
     <requestid>1241023</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>f9d589da72c5882e9ec5ac9a1f1306d3</srcmd5>
+    <version>4.17.0</version>
+    <time>1739392752</time>
+    <user>anag+factory</user>
+    <comment>- Add sherpa-pr2207-mpl.patch for matplotlib 3.10 test
+  compatibility gh#sherpa/sherpa#2207</comment>
+    <requestid>1245410</requestid>
+  </revision>
 </revisionlist>
