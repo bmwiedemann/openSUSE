@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Feb  4 18:56:03 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Updated generated railroad diagrams to make non-terminal
+    elements links to their related sub-diagrams. This _greatly_
+    improves navigation of the diagram, especially for
+    large, complex parsers.
+  * Simplified railroad diagrams emitted for parsers using
+    `infix_notation`, by hiding lookahead terms. Renamed
+    internally generated expressions for clarity, and improved
+    diagramming.
+  * Improved performance of `cpp_style_comment`,
+    `c_style_comment`, `common.fnumber`
+    and `common.ieee_float` Regex expressions.
+  * Add missing type annotations to `match_only_at_col`,
+    `replace_with`, `remove_quotes`, `with_attribute`, and
+    `with_class`. Issue #585 reported by rafrafrek.
+
+-------------------------------------------------------------------
 Mon Oct 28 17:00:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyparsing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ ExclusiveArch:  do-not-build
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-pyparsing%{?psuffix}
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Grammar Parser Library for Python
 License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later

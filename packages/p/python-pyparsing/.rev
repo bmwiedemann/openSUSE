@@ -1526,4 +1526,12 @@ self, run_tests_report, expected_parse_results=None, msg=None)
       some type annotations.</comment>
     <requestid>1225956</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8c0f09aa49c3eada81d0f67370b2368f</srcmd5>
+    <version>3.2.1</version>
+    <time>1739392259</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1245159</requestid>
+  </revision>
 </revisionlist>
