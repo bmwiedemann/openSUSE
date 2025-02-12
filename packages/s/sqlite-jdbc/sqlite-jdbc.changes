@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb  7 02:31:31 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.49.0.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.49.0
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage from 24.1.1 to 24.1.2
+    ~ deps-dev
+      + bump org.assertj:assertj-core from 3.27.2 to 3.27.3
+
+-------------------------------------------------------------------
 Thu Jan 16 06:23:01 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.48.0.0
