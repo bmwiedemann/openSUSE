@@ -1,7 +1,7 @@
 #
 # spec file for package zug
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Transducers for C++
 License:        BSL-1.0
 URL:            https://sinusoid.es/zug/
 Source0:        https://github.com/arximboldi/zug/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/arximboldi/zug/issues/45
+Patch0:         zug-gcc15.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

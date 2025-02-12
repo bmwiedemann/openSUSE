@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 10:18:34 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/arximboldi/zug/issues/45
+  + zug-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Oct 24 07:20:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.1.1:
