@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 05:58:27 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.3:
+  * set next macro chart for kubefirst - 2.8.3
+  * fix: k3d destroy (#2416)
+
+-------------------------------------------------------------------
 Tue Feb 11 07:23:21 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.2:
