@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb  8 18:31:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 397:
+  * add  resource  printRawChars to allow bypassing check in
+    which  omits  Unicode non-characters from printing
+  * add visible-effect for SUB, per DEC 070 page 5-132.
+  * correct a limit-check in private mode 1045.
+  * add  optional feature for block-selection, bound to meta-
+    button-one
+  * if  started  as a VT52, identify the terminal as a real VT52
+    rather than VT52 emulated by VT100.
+  * amend change to VT52 cursor-addressing per DEC 070 (mintty
+    #1299).
+  * correct ctlseqs.ms suffix for XTTITLEPOS
+
+-------------------------------------------------------------------
 Wed Jan 15 14:00:27 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable libutempter, it doesn't work anymore with the switch
@@ -10,7 +26,7 @@ Fri Jul 12 16:03:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 - update to 393:
   * add a check for ANSI SC/RC, to ignore CSI parameters.
   * improve check for missing characters for bitmap-fonts
-  * fix regression in error-recovery for SGR parameters 
+  * fix regression in error-recovery for SGR parameters
   * change default for --enable-imake configure option
   * fixes for wcwidth
   * eliminate maxStringParse limit for SIXEL

@@ -1929,4 +1929,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   from utmp to systemd-logind (forwarded request 1238186 from kukuk)</comment>
     <requestid>1238187</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>64db8b519e2ceb34a5d69e1a092cd6a2</srcmd5>
+    <version>397</version>
+    <time>1739392246</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245395</requestid>
+  </revision>
 </revisionlist>
