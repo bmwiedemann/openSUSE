@@ -1,7 +1,7 @@
 #
 # spec file for package flac
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sover      12
-%define sover_plus 10
+%define sover      14
+%define sover_plus 11
 
 Name:           flac
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        Free Lossless Audio Codec
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.2-only
