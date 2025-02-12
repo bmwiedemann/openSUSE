@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.13
-%define patchversion 6.13.1
+%define patchversion 6.13.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.13.1
+Version:        6.13.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g1918d13
+Release:        <RELEASE>.g306384d
 %else
 Release:        0
 %endif
