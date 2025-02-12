@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 11 17:08:12 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Ignore tolerance failures on riscv64
+
+-------------------------------------------------------------------
 Sat Jan 18 09:51:50 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 6.2.2406

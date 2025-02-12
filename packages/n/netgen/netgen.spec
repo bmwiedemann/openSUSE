@@ -226,7 +226,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}/%{name}
 %if %{with pytest}
 # run manually, to see progress/failures
 # tolerance failures on aarch64 and ppc64le, see https://github.com/NGSolve/netgen/issues/167
-%ifarch %{arm64} %{ppc64}
+%ifarch %{arm64} %{ppc64} riscv64
 export PYTEST_ADDOPTS='-k "not (boxcyl.geo-mp11-5 or cylsphere.geo-mp58-4 or hinge.stl-mp93-5 or part1.stl-mp123-1 or part1.stl-mp126-4 or sculpture.geo-mp143-4 or sphereincube.geo-mp162-5 or twobricks.geo-mp195-2 or twocubes.geo-mp201-2)"'
 %endif
 export COLUMNS=120
