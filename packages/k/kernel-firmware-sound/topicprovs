@@ -1,0 +1,2 @@
+Provides:       avs-topology-firmware = %{version}
+Obsoletes:      avs-topology-firmware <= 2024.02
