@@ -173,6 +173,7 @@ Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{libfreerdp_package} = %{version}-%{release}
 Requires:       lib%{name}-server-proxy%{libfreerdp_package}
 Requires:       winpr-devel = %{version}-%{release}
+Requires:       pkgconfig(fuse3)
 Obsoletes:      %{name}-server-proxy%{libfreerdp_package}-devel < %{version}-%{release}
 Provides:       %{name}-server-proxy%{libfreerdp_package}-devel = %{version}-%{release}
 
