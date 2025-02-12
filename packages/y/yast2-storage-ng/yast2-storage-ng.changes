@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 11:01:03 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Require libstorage bindings for the current Ruby version (bsc#1235598)
+- 5.0.25
+
+-------------------------------------------------------------------
 Tue Jan 21 10:00:00 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Reserve 1GiB boot partition for grub2-bls bootloader (jsc#PED-10703).
