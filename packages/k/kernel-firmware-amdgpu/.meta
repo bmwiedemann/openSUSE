@@ -1,0 +1,6 @@
+<package name="kernel-firmware-amdgpu" project="openSUSE:Factory">
+  <title>Kernel firmware files for AMDGPU graphics driver</title>
+  <description>This package contains Linux kernel firmware files for AMDGPU graphics driver.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-amdgpu"/>
+</package>
