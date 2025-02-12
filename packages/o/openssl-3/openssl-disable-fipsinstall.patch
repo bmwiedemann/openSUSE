@@ -17,11 +17,11 @@ From-dist-git-commit: 9409bc7044cf4b5773639cce20f51399888c45fd
  doc/man7/OSSL_PROVIDER-FIPS.pod     |   1 -
  6 files changed, 10 insertions(+), 375 deletions(-)
 
-Index: openssl-3.1.4/apps/fipsinstall.c
+Index: openssl-3.2.4/apps/fipsinstall.c
 ===================================================================
---- openssl-3.1.4.orig/apps/fipsinstall.c
-+++ openssl-3.1.4/apps/fipsinstall.c
-@@ -375,6 +375,9 @@ int fipsinstall_main(int argc, char **ar
+--- openssl-3.2.4.orig/apps/fipsinstall.c
++++ openssl-3.2.4/apps/fipsinstall.c
+@@ -374,6 +374,9 @@ int fipsinstall_main(int argc, char **ar
      EVP_MAC *mac = NULL;
      CONF *conf = NULL;
  
@@ -31,10 +31,10 @@ Index: openssl-3.1.4/apps/fipsinstall.c
      if ((opts = sk_OPENSSL_STRING_new_null()) == NULL)
          goto end;
  
-Index: openssl-3.1.4/doc/man1/openssl-fipsinstall.pod.in
+Index: openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
 ===================================================================
---- openssl-3.1.4.orig/doc/man1/openssl-fipsinstall.pod.in
-+++ openssl-3.1.4/doc/man1/openssl-fipsinstall.pod.in
+--- openssl-3.2.4.orig/doc/man1/openssl-fipsinstall.pod.in
++++ openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
 @@ -8,275 +8,9 @@ openssl-fipsinstall - perform FIPS confi
  =head1 SYNOPSIS
  
@@ -312,13 +312,13 @@ Index: openssl-3.1.4/doc/man1/openssl-fipsinstall.pod.in
 +Please consult the SUSE/openSUSE documentation to learn how to correctly
 +enable FIPS mode.
  
- =head1 COPYRIGHT
+ =head1 HISTORY
  
-Index: openssl-3.1.4/doc/man1/openssl.pod
+Index: openssl-3.2.4/doc/man1/openssl.pod
 ===================================================================
---- openssl-3.1.4.orig/doc/man1/openssl.pod
-+++ openssl-3.1.4/doc/man1/openssl.pod
-@@ -135,10 +135,6 @@ Engine (loadable module) information and
+--- openssl-3.2.4.orig/doc/man1/openssl.pod
++++ openssl-3.2.4/doc/man1/openssl.pod
+@@ -137,10 +137,6 @@ Engine (loadable module) information and
  
  Error Number to Error String Conversion.
  
@@ -329,10 +329,10 @@ Index: openssl-3.1.4/doc/man1/openssl.pod
  =item B<gendsa>
  
  Generation of DSA Private Key from Parameters. Superseded by
-Index: openssl-3.1.4/doc/man5/config.pod
+Index: openssl-3.2.4/doc/man5/config.pod
 ===================================================================
---- openssl-3.1.4.orig/doc/man5/config.pod
-+++ openssl-3.1.4/doc/man5/config.pod
+--- openssl-3.2.4.orig/doc/man5/config.pod
++++ openssl-3.2.4/doc/man5/config.pod
 @@ -565,7 +565,6 @@ configuration files using that syntax wi
  =head1 SEE ALSO
  
@@ -341,10 +341,10 @@ Index: openssl-3.1.4/doc/man5/config.pod
  L<ASN1_generate_nconf(3)>,
  L<EVP_set_default_properties(3)>,
  L<CONF_modules_load(3)>,
-Index: openssl-3.1.4/doc/man5/fips_config.pod
+Index: openssl-3.2.4/doc/man5/fips_config.pod
 ===================================================================
---- openssl-3.1.4.orig/doc/man5/fips_config.pod
-+++ openssl-3.1.4/doc/man5/fips_config.pod
+--- openssl-3.2.4.orig/doc/man5/fips_config.pod
++++ openssl-3.2.4/doc/man5/fips_config.pod
 @@ -6,106 +6,10 @@ fips_config - OpenSSL FIPS configuration
  
  =head1 DESCRIPTION
@@ -456,11 +456,11 @@ Index: openssl-3.1.4/doc/man5/fips_config.pod
  
  =head1 HISTORY
  
-Index: openssl-3.1.4/doc/man7/OSSL_PROVIDER-FIPS.pod
+Index: openssl-3.2.4/doc/man7/OSSL_PROVIDER-FIPS.pod
 ===================================================================
---- openssl-3.1.4.orig/doc/man7/OSSL_PROVIDER-FIPS.pod
-+++ openssl-3.1.4/doc/man7/OSSL_PROVIDER-FIPS.pod
-@@ -455,7 +455,6 @@ want to operate in a FIPS approved manne
+--- openssl-3.2.4.orig/doc/man7/OSSL_PROVIDER-FIPS.pod
++++ openssl-3.2.4/doc/man7/OSSL_PROVIDER-FIPS.pod
+@@ -489,7 +489,6 @@ want to operate in a FIPS approved manne
  
  =head1 SEE ALSO
  

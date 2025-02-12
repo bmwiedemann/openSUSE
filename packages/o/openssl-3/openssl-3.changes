@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 11 18:21:12 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 3.2.4:
+  * Fixed RFC7250 handshakes with unauthenticated servers don't abort as
+    expected. [bsc#1236599, CVE-2024-12797]
+  * Fixed timing side-channel in ECDSA signature computation. [CVE-2024-13176]
+  * Fixed possible OOB memory access with invalid low-level GF(2^m) elliptic
+    curve parameters. [CVE-2024-9143]
+- Remove patch openssl-CVE-2024-13176.patch
+- Rebase patches:
+  * openssl-3-add_EVP_DigestSqueeze_api.patch
+  * openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
+  * openssl-FIPS-RSA-encapsulate.patch
+  * openssl-disable-fipsinstall.patch
+
+-------------------------------------------------------------------
 Wed Jan 22 13:15:51 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - bsc#1236136 CVE-2024-13176: Fix timing side-channel in ECDSA signature computation

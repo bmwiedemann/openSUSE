@@ -25,7 +25,7 @@
 %define livepatchable 1
 
 Name:           openssl-3
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -144,10 +144,6 @@ Patch64:        openssl-3-fix-memleak-s390x_HMAC_CTX_copy.patch
 # PATCH-FIX-UPSTREAM: Fix failing tests on ppc64 jsc#PED-10280
 Patch65:        openssl-3-fix-sha3-squeeze-ppc64.patch
 Patch66:        openssl-3-fix-quic_multistream_test.patch
-# PATCH-FIX-UPSTREAM: bsc#1236136 CVE-2024-13176: Fix timing side-channel in ECDSA signature computation
-Patch67:        openssl-CVE-2024-13176.patch
-
-BuildRequires:  pkgconfig
 
 # ulp-macros is available according to SUSE version.
 %ifarch x86_64
@@ -161,7 +157,6 @@ BuildRequires:  gcc13
 BuildRequires:  ulp-macros
 %endif
 %endif
-
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}

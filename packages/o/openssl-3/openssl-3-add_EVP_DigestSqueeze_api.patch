@@ -26,10 +26,10 @@ Date:   Fri Jul 21 15:05:38 2023 +1000
     Reviewed-by: Tomas Mraz <tomas@openssl.org>
     (Merged from https://github.com/openssl/openssl/pull/21511)
 
-Index: openssl-3.2.3/crypto/evp/digest.c
+Index: openssl-3.2.4/crypto/evp/digest.c
 ===================================================================
---- openssl-3.2.3.orig/crypto/evp/digest.c
-+++ openssl-3.2.3/crypto/evp/digest.c
+--- openssl-3.2.4.orig/crypto/evp/digest.c
++++ openssl-3.2.4/crypto/evp/digest.c
 @@ -502,6 +502,7 @@ int EVP_DigestFinal_ex(EVP_MD_CTX *ctx,
      return ret;
  }
@@ -105,10 +105,10 @@ Index: openssl-3.2.3/crypto/evp/digest.c
          || (fncnt == 0 && md->digest == NULL)) {
          /*
           * In order to be a consistent set of functions we either need the
-Index: openssl-3.2.3/crypto/evp/legacy_sha.c
+Index: openssl-3.2.4/crypto/evp/legacy_sha.c
 ===================================================================
---- openssl-3.2.3.orig/crypto/evp/legacy_sha.c
-+++ openssl-3.2.3/crypto/evp/legacy_sha.c
+--- openssl-3.2.4.orig/crypto/evp/legacy_sha.c
++++ openssl-3.2.4/crypto/evp/legacy_sha.c
 @@ -37,7 +37,8 @@ static int nm##_update(EVP_MD_CTX *ctx,
  }                                                                              \
  static int nm##_final(EVP_MD_CTX *ctx, unsigned char *md)                      \
@@ -119,10 +119,10 @@ Index: openssl-3.2.3/crypto/evp/legacy_sha.c
  }
  #define IMPLEMENT_LEGACY_EVP_MD_METH_SHAKE(nm, fn, tag)                        \
  static int nm##_init(EVP_MD_CTX *ctx)                                          \
-Index: openssl-3.2.3/crypto/sha/asm/keccak1600-armv4.pl
+Index: openssl-3.2.4/crypto/sha/asm/keccak1600-armv4.pl
 ===================================================================
---- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-armv4.pl
-+++ openssl-3.2.3/crypto/sha/asm/keccak1600-armv4.pl
+--- openssl-3.2.4.orig/crypto/sha/asm/keccak1600-armv4.pl
++++ openssl-3.2.4/crypto/sha/asm/keccak1600-armv4.pl
 @@ -966,6 +966,8 @@ SHA3_squeeze:
  	stmdb	sp!,{r6-r9}
  
@@ -141,10 +141,10 @@ Index: openssl-3.2.3/crypto/sha/asm/keccak1600-armv4.pl
  	mov	r0,r14			@ original $A_flat
  
  	bl	KeccakF1600
-Index: openssl-3.2.3/crypto/sha/asm/keccak1600-armv8.pl
+Index: openssl-3.2.4/crypto/sha/asm/keccak1600-armv8.pl
 ===================================================================
---- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-armv8.pl
-+++ openssl-3.2.3/crypto/sha/asm/keccak1600-armv8.pl
+--- openssl-3.2.4.orig/crypto/sha/asm/keccak1600-armv8.pl
++++ openssl-3.2.4/crypto/sha/asm/keccak1600-armv8.pl
 @@ -483,6 +483,8 @@ SHA3_squeeze:
  	mov	$out,x1
  	mov	$len,x2
@@ -163,10 +163,10 @@ Index: openssl-3.2.3/crypto/sha/asm/keccak1600-armv8.pl
  	mov	x0,$A_flat
  	bl	KeccakF1600
  	mov	x0,$A_flat
-Index: openssl-3.2.3/crypto/sha/asm/keccak1600-ppc64.pl
+Index: openssl-3.2.4/crypto/sha/asm/keccak1600-ppc64.pl
 ===================================================================
---- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-ppc64.pl
-+++ openssl-3.2.3/crypto/sha/asm/keccak1600-ppc64.pl
+--- openssl-3.2.4.orig/crypto/sha/asm/keccak1600-ppc64.pl
++++ openssl-3.2.4/crypto/sha/asm/keccak1600-ppc64.pl
 @@ -668,6 +668,8 @@ SHA3_squeeze:
  	subi	$out,r4,1		; prepare for stbu
  	mr	$len,r5
@@ -184,10 +184,10 @@ Index: openssl-3.2.3/crypto/sha/asm/keccak1600-ppc64.pl
  	mr	r3,$A_flat
  	bl	KeccakF1600
  	subi	r3,$A_flat,8		; prepare for ldu
-Index: openssl-3.2.3/crypto/sha/asm/keccak1600-x86_64.pl
+Index: openssl-3.2.4/crypto/sha/asm/keccak1600-x86_64.pl
 ===================================================================
---- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-x86_64.pl
-+++ openssl-3.2.3/crypto/sha/asm/keccak1600-x86_64.pl
+--- openssl-3.2.4.orig/crypto/sha/asm/keccak1600-x86_64.pl
++++ openssl-3.2.4/crypto/sha/asm/keccak1600-x86_64.pl
 @@ -503,12 +503,12 @@ SHA3_absorb:
  .size	SHA3_absorb,.-SHA3_absorb
  ___
@@ -246,10 +246,10 @@ Index: openssl-3.2.3/crypto/sha/asm/keccak1600-x86_64.pl
  	mov	$out,%rdi
  	mov	$len,%rcx
  	.byte	0xf3,0xa4		# rep	movsb
-Index: openssl-3.2.3/crypto/sha/keccak1600.c
+Index: openssl-3.2.4/crypto/sha/keccak1600.c
 ===================================================================
---- openssl-3.2.3.orig/crypto/sha/keccak1600.c
-+++ openssl-3.2.3/crypto/sha/keccak1600.c
+--- openssl-3.2.4.orig/crypto/sha/keccak1600.c
++++ openssl-3.2.4/crypto/sha/keccak1600.c
 @@ -13,7 +13,7 @@
  
  size_t SHA3_absorb(uint64_t A[5][5], const unsigned char *inp, size_t len,
@@ -298,10 +298,10 @@ Index: openssl-3.2.3/crypto/sha/keccak1600.c
      }
  }
  #endif
-Index: openssl-3.2.3/crypto/sha/sha3.c
+Index: openssl-3.2.4/crypto/sha/sha3.c
 ===================================================================
---- openssl-3.2.3.orig/crypto/sha/sha3.c
-+++ openssl-3.2.3/crypto/sha/sha3.c
+--- openssl-3.2.4.orig/crypto/sha/sha3.c
++++ openssl-3.2.4/crypto/sha/sha3.c
 @@ -10,12 +10,13 @@
  #include <string.h>
  #include "internal/sha3.h"
@@ -440,10 +440,10 @@ Index: openssl-3.2.3/crypto/sha/sha3.c
  
      return 1;
  }
-Index: openssl-3.2.3/doc/life-cycles/digest.dot
+Index: openssl-3.2.4/doc/life-cycles/digest.dot
 ===================================================================
---- openssl-3.2.3.orig/doc/life-cycles/digest.dot
-+++ openssl-3.2.3/doc/life-cycles/digest.dot
+--- openssl-3.2.4.orig/doc/life-cycles/digest.dot
++++ openssl-3.2.4/doc/life-cycles/digest.dot
 @@ -6,28 +6,30 @@ digraph digest {
      initialised [label=initialised, fontcolor="#c94c4c"];
      updated [label=updated, fontcolor="#c94c4c"];
@@ -486,10 +486,10 @@ Index: openssl-3.2.3/doc/life-cycles/digest.dot
 +                            color="#034f84", fontcolor="#034f84"];
  }
 -
-Index: openssl-3.2.3/doc/man3/EVP_DigestInit.pod
+Index: openssl-3.2.4/doc/man3/EVP_DigestInit.pod
 ===================================================================
---- openssl-3.2.3.orig/doc/man3/EVP_DigestInit.pod
-+++ openssl-3.2.3/doc/man3/EVP_DigestInit.pod
+--- openssl-3.2.4.orig/doc/man3/EVP_DigestInit.pod
++++ openssl-3.2.4/doc/man3/EVP_DigestInit.pod
 @@ -12,6 +12,7 @@ EVP_MD_CTX_settable_params, EVP_MD_CTX_g
  EVP_MD_CTX_set_flags, EVP_MD_CTX_clear_flags, EVP_MD_CTX_test_flags,
  EVP_Q_digest, EVP_Digest, EVP_DigestInit_ex2, EVP_DigestInit_ex, EVP_DigestInit,
@@ -548,10 +548,10 @@ Index: openssl-3.2.3/doc/man3/EVP_DigestInit.pod
  
  =head1 COPYRIGHT
  
-Index: openssl-3.2.3/doc/man7/EVP_MD-BLAKE2.pod
+Index: openssl-3.2.4/doc/man7/EVP_MD-BLAKE2.pod
 ===================================================================
---- openssl-3.2.3.orig/doc/man7/EVP_MD-BLAKE2.pod
-+++ openssl-3.2.3/doc/man7/EVP_MD-BLAKE2.pod
+--- openssl-3.2.4.orig/doc/man7/EVP_MD-BLAKE2.pod
++++ openssl-3.2.4/doc/man7/EVP_MD-BLAKE2.pod
 @@ -25,6 +25,17 @@ Known names are "BLAKE2B-512" and "BLAKE
  
  =back
@@ -570,10 +570,10 @@ Index: openssl-3.2.3/doc/man7/EVP_MD-BLAKE2.pod
  =head2 Gettable Parameters
  
  This implementation supports the common gettable parameters described
-Index: openssl-3.2.3/doc/man7/EVP_MD-SHAKE.pod
+Index: openssl-3.2.4/doc/man7/EVP_MD-SHAKE.pod
 ===================================================================
---- openssl-3.2.3.orig/doc/man7/EVP_MD-SHAKE.pod
-+++ openssl-3.2.3/doc/man7/EVP_MD-SHAKE.pod
+--- openssl-3.2.4.orig/doc/man7/EVP_MD-SHAKE.pod
++++ openssl-3.2.4/doc/man7/EVP_MD-SHAKE.pod
 @@ -70,8 +70,21 @@ For backwards compatibility reasons the
  32 (bytes) which results in a security strength of only 128 bits. To ensure the
  maximum security strength of 256 bits, the xoflen should be set to at least 64.
@@ -596,10 +596,10 @@ Index: openssl-3.2.3/doc/man7/EVP_MD-SHAKE.pod
  =head1 SEE ALSO
  
  L<EVP_MD_CTX_set_params(3)>, L<provider-digest(7)>, L<OSSL_PROVIDER-default(7)>
-Index: openssl-3.2.3/doc/man7/life_cycle-digest.pod
+Index: openssl-3.2.4/doc/man7/life_cycle-digest.pod
 ===================================================================
---- openssl-3.2.3.orig/doc/man7/life_cycle-digest.pod
-+++ openssl-3.2.3/doc/man7/life_cycle-digest.pod
+--- openssl-3.2.4.orig/doc/man7/life_cycle-digest.pod
++++ openssl-3.2.4/doc/man7/life_cycle-digest.pod
 @@ -32,6 +32,14 @@ additional input or generating output.
  =item finaled
  
@@ -852,10 +852,10 @@ Index: openssl-3.2.3/doc/man7/life_cycle-digest.pod
  
  Licensed under the Apache License 2.0 (the "License").  You may not use
  this file except in compliance with the License.  You can obtain a copy
-Index: openssl-3.2.3/doc/man7/provider-digest.pod
+Index: openssl-3.2.4/doc/man7/provider-digest.pod
 ===================================================================
---- openssl-3.2.3.orig/doc/man7/provider-digest.pod
-+++ openssl-3.2.3/doc/man7/provider-digest.pod
+--- openssl-3.2.4.orig/doc/man7/provider-digest.pod
++++ openssl-3.2.4/doc/man7/provider-digest.pod
 @@ -198,8 +198,7 @@ This digest method can only handle one b
  
  =item B<EVP_MD_FLAG_XOF>
@@ -866,10 +866,10 @@ Index: openssl-3.2.3/doc/man7/provider-digest.pod
  
  =item B<EVP_MD_FLAG_DIGALGID_NULL>
  
-Index: openssl-3.2.3/include/crypto/evp.h
+Index: openssl-3.2.4/include/crypto/evp.h
 ===================================================================
---- openssl-3.2.3.orig/include/crypto/evp.h
-+++ openssl-3.2.3/include/crypto/evp.h
+--- openssl-3.2.4.orig/include/crypto/evp.h
++++ openssl-3.2.4/include/crypto/evp.h
 @@ -296,6 +296,7 @@ struct evp_md_st {
      OSSL_FUNC_digest_init_fn *dinit;
      OSSL_FUNC_digest_update_fn *dupdate;
@@ -878,10 +878,10 @@ Index: openssl-3.2.3/include/crypto/evp.h
      OSSL_FUNC_digest_digest_fn *digest;
      OSSL_FUNC_digest_freectx_fn *freectx;
      OSSL_FUNC_digest_dupctx_fn *dupctx;
-Index: openssl-3.2.3/include/internal/sha3.h
+Index: openssl-3.2.4/include/internal/sha3.h
 ===================================================================
---- openssl-3.2.3.orig/include/internal/sha3.h
-+++ openssl-3.2.3/include/internal/sha3.h
+--- openssl-3.2.4.orig/include/internal/sha3.h
++++ openssl-3.2.4/include/internal/sha3.h
 @@ -22,23 +22,31 @@
  
  typedef struct keccak_st KECCAK1600_CTX;
@@ -927,10 +927,10 @@ Index: openssl-3.2.3/include/internal/sha3.h
  
  size_t SHA3_absorb(uint64_t A[5][5], const unsigned char *inp, size_t len,
                     size_t r);
-Index: openssl-3.2.3/include/openssl/core_dispatch.h
+Index: openssl-3.2.4/include/openssl/core_dispatch.h
 ===================================================================
---- openssl-3.2.3.orig/include/openssl/core_dispatch.h
-+++ openssl-3.2.3/include/openssl/core_dispatch.h
+--- openssl-3.2.4.orig/include/openssl/core_dispatch.h
++++ openssl-3.2.4/include/openssl/core_dispatch.h
 @@ -300,6 +300,7 @@ OSSL_CORE_MAKE_FUNC(int, provider_self_t
  # define OSSL_FUNC_DIGEST_GETTABLE_PARAMS           11
  # define OSSL_FUNC_DIGEST_SETTABLE_CTX_PARAMS       12
@@ -949,10 +949,10 @@ Index: openssl-3.2.3/include/openssl/core_dispatch.h
  OSSL_CORE_MAKE_FUNC(int, digest_digest,
                      (void *provctx, const unsigned char *in, size_t inl,
                       unsigned char *out, size_t *outl, size_t outsz))
-Index: openssl-3.2.3/include/openssl/evp.h
+Index: openssl-3.2.4/include/openssl/evp.h
 ===================================================================
---- openssl-3.2.3.orig/include/openssl/evp.h
-+++ openssl-3.2.3/include/openssl/evp.h
+--- openssl-3.2.4.orig/include/openssl/evp.h
++++ openssl-3.2.4/include/openssl/evp.h
 @@ -729,8 +729,10 @@ __owur int EVP_MD_CTX_copy(EVP_MD_CTX *o
  __owur int EVP_DigestInit(EVP_MD_CTX *ctx, const EVP_MD *type);
  __owur int EVP_DigestFinal(EVP_MD_CTX *ctx, unsigned char *md,
@@ -966,10 +966,10 @@ Index: openssl-3.2.3/include/openssl/evp.h
  
  __owur EVP_MD *EVP_MD_fetch(OSSL_LIB_CTX *ctx, const char *algorithm,
                              const char *properties);
-Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+Index: openssl-3.2.4/providers/implementations/digests/sha3_prov.c
 ===================================================================
---- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
-+++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+--- openssl-3.2.4.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.4/providers/implementations/digests/sha3_prov.c
 @@ -33,10 +33,12 @@ static OSSL_FUNC_digest_update_fn keccak
  static OSSL_FUNC_digest_final_fn keccak_final;
  static OSSL_FUNC_digest_freectx_fn keccak_freectx;
@@ -1229,16 +1229,16 @@ Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
      PROV_FUNC_SHAKE_DIGEST(shake_##bitlen, bitlen,                             \
                            SHA3_BLOCKSIZE(bitlen), SHA3_MDSIZE(bitlen),         \
                            SHAKE_FLAGS)
-Index: openssl-3.2.3/test/build.info
+Index: openssl-3.2.4/test/build.info
 ===================================================================
---- openssl-3.2.3.orig/test/build.info
-+++ openssl-3.2.3/test/build.info
+--- openssl-3.2.4.orig/test/build.info
++++ openssl-3.2.4/test/build.info
 @@ -63,7 +63,7 @@ IF[{- !$disabled{tests} -}]
            provfetchtest prov_config_test rand_test ca_internals_test \
            bio_tfo_test membio_test bio_dgram_test list_test fips_version_test \
            x509_test hpke_test pairwise_fail_test nodefltctxtest \
--          x509_load_cert_file_test
-+          evp_xof_test x509_load_cert_file_test
+-          x509_load_cert_file_test bio_pw_callback_test
++          evp_xof_test x509_load_cert_file_test bio_pw_callback_test
  
    IF[{- !$disabled{'rpk'} -}]
      PROGRAMS{noinst}=rpktest
@@ -1253,10 +1253,10 @@ Index: openssl-3.2.3/test/build.info
    SOURCE[evp_pkey_dparams_test]=evp_pkey_dparams_test.c
    INCLUDE[evp_pkey_dparams_test]=../include ../apps/include
    DEPEND[evp_pkey_dparams_test]=../libcrypto libtestutil.a
-Index: openssl-3.2.3/test/evp_xof_test.c
+Index: openssl-3.2.4/test/evp_xof_test.c
 ===================================================================
 --- /dev/null
-+++ openssl-3.2.3/test/evp_xof_test.c
++++ openssl-3.2.4/test/evp_xof_test.c
 @@ -0,0 +1,492 @@
 +/*
 + * Copyright 2023 The OpenSSL Project Authors. All Rights Reserved.
@@ -1750,10 +1750,10 @@ Index: openssl-3.2.3/test/evp_xof_test.c
 +    ADD_ALL_TESTS(shake_squeeze_dup_test, OSSL_NELEM(dupoffset_tests));
 +    return 1;
 +}
-Index: openssl-3.2.3/test/recipes/30-test_evp_xof.t
+Index: openssl-3.2.4/test/recipes/30-test_evp_xof.t
 ===================================================================
 --- /dev/null
-+++ openssl-3.2.3/test/recipes/30-test_evp_xof.t
++++ openssl-3.2.4/test/recipes/30-test_evp_xof.t
 @@ -0,0 +1,12 @@
 +#! /usr/bin/env perl
 +# Copyright 2023 The OpenSSL Project Authors. All Rights Reserved.
@@ -1767,10 +1767,10 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_xof.t
 +use OpenSSL::Test::Simple;
 +
 +simple_test("test_evp_xof", "evp_xof_test");
-Index: openssl-3.2.3/util/libcrypto.num
+Index: openssl-3.2.4/util/libcrypto.num
 ===================================================================
---- openssl-3.2.3.orig/util/libcrypto.num
-+++ openssl-3.2.3/util/libcrypto.num
+--- openssl-3.2.4.orig/util/libcrypto.num
++++ openssl-3.2.4/util/libcrypto.num
 @@ -5536,6 +5536,7 @@ X509_STORE_CTX_set_get_crl
  X509_STORE_CTX_set_current_reasons      5664	3_2_0	EXIST::FUNCTION:
  OSSL_STORE_delete                       5665	3_2_0	EXIST::FUNCTION:
