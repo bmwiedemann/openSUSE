@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Feb 12 15:57:23 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.3
+
+- Update to 2.95.3
+  * Fix #639: Disable hyphenation in article/book title
+  * Fix #645: Remove whitespace in title
+  * Fix #646: Remove space in compound terms
+
+
+-------------------------------------------------------------------
+Wed Feb 12 07:15:52 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.2
+
+- Update to 2.95.2
+  * Fix DOCTEAM-1663: Container element is empty (#660)
+  * Fix DOCTEAM-1667: Link missing a text alternative (#662)
+  * Update CSS files (Updated the colour of links in the right nav)
+
+
+-------------------------------------------------------------------
 Tue Feb  4 07:41:57 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.1
 
 - Update to 2.95.1
