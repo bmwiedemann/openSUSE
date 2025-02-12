@@ -16,10 +16,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
  2 files changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/jinx-mod.c b/jinx-mod.c
-index d08c86fb05e7ee6f666437a551fa15981521e2c0..7d7e02829f3983ab205c5b9d683bf74c2c4ef082 100644
+index 33e080d34bc0f53a2e7bc5ff0c3d9ee5bb70eb39..476b8c105985514d2f2870fb50b9bcfe3923abba 100644
 --- a/jinx-mod.c
 +++ b/jinx-mod.c
-@@ -21,10 +21,25 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
+@@ -20,10 +20,25 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
  #include <stdlib.h>
  #include <string.h>
  
@@ -46,17 +46,17 @@ index d08c86fb05e7ee6f666437a551fa15981521e2c0..7d7e02829f3983ab205c5b9d683bf74c
  
  static EnchantBroker* broker = 0;
  static emacs_value Qt, Qnil, Qcons;
-@@ -175,7 +190,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
+@@ -173,7 +188,7 @@ static emacs_value jinx_suggest(emacs_env* env, ptrdiff_t jinx_unused(nargs),
      return list;
  }
  
 -int emacs_module_init(struct emacs_runtime *runtime) {
 +int JINX_EXPORT emacs_module_init(struct emacs_runtime *runtime) {
+     // Require Emacs binary compatibility
      if ((size_t)runtime->size < sizeof (*runtime))
-         return 1; // Require Emacs binary compatibility
-     emacs_env* env = runtime->get_environment(runtime);
+         return 1;
 diff --git a/jinx.el b/jinx.el
-index e6180d12743e5a2d8a1c437fbb767eb334addc27..5e4c780ce5ebef0d0dde7a9ea2b635831152fe9f 100644
+index 289d958d6f886a81b392e9d3a0dd8d53c5506f6f..67db2d93829231cce12aecedcddb56fdcc4606db 100644
 --- a/jinx.el
 +++ b/jinx.el
 @@ -264,7 +264,7 @@ (easy-menu-define jinx-mode-menu jinx-mode-map

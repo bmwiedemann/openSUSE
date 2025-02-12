@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 10 12:07:13 UTC 2025 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.12
+- Update to version 1.12:
+  * Attempt to fix performance problem in folded Org buffers (gh#minad/jinx#187)
+  * lisp-data-mode: Exclude symbols in docstrings
+  * Use next-single-property-change when scanning for jinx--pending
+  * Update README
+  * Add comment regarding eager-display on Emacs 31
+  * Use with-memoization, requires Emacs 29.1 or compat-29
+  * Use weak hash table for loaded dictionaries
+  * Preserve alist of loaded dictionaries (gh#rrthomas/enchant#402)
+
+-------------------------------------------------------------------
 Sun Jan 26 19:09:22 UTC 2025 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch

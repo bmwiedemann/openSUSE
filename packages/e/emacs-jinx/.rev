@@ -115,4 +115,22 @@
   * Workaround broken :predicate keyword in Emacs 28 and older</comment>
     <requestid>1240407</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8ad9b5c8c535fdbea23c0d04d6d0ea3e</srcmd5>
+    <version>1.12</version>
+    <time>1739392747</time>
+    <user>anag+factory</user>
+    <comment>- Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.12
+- Update to version 1.12:
+  * Attempt to fix performance problem in folded Org buffers (gh#minad/jinx#187)
+  * lisp-data-mode: Exclude symbols in docstrings
+  * Use next-single-property-change when scanning for jinx--pending
+  * Update README
+  * Add comment regarding eager-display on Emacs 31
+  * Use with-memoization, requires Emacs 29.1 or compat-29
+  * Use weak hash table for loaded dictionaries
+  * Preserve alist of loaded dictionaries (gh#rrthomas/enchant#402)</comment>
+    <requestid>1245406</requestid>
+  </revision>
 </revisionlist>
