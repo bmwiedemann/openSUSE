@@ -1,7 +1,7 @@
 #
 # spec file for package isl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define islsover 23
 Name:           isl
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        Integer Set Library
 License:        MIT

@@ -243,4 +243,23 @@
   * slightly improved conversion from binary relation to function (forwarded request 1077049 from dirkmueller)</comment>
     <requestid>1078657</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6a158380ab84384d042e8d669ff31b62</srcmd5>
+    <version>0.27</version>
+    <time>1739392226</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.27:
+  * improved modulo detection
+  * remove all unused local variables from affine expressions
+  * minor improvements to coalescing
+  * minor improvements to lexicographic optimization
+  * improved constraint simplification
+  * fix handling of empty piecewise expressions
+
+  - detect bounds on constant polynomials as tight
+  - ignore parameters in isl_union_* hash tables
+- Update to ISL version 0.11
+- Add baselibs.conf, needed by cloog-isl-32bit (forwarded request 1244786 from dirkmueller)</comment>
+    <requestid>1245119</requestid>
+  </revision>
 </revisionlist>

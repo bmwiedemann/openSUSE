@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 10 14:22:27 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27:
+  * improved modulo detection
+  * remove all unused local variables from affine expressions
+  * minor improvements to coalescing
+  * minor improvements to lexicographic optimization
+  * improved constraint simplification
+  * fix handling of empty piecewise expressions
+
+-------------------------------------------------------------------
 Mon Apr  3 18:52:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26:
@@ -24,7 +35,7 @@ Sun May  9 14:05:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 0.24:
   - improved (C++) bindings (inherit methods, renamed exports)
   - initial templated C++ bindings
-  - detect bounds on constant polynomials as tight 
+  - detect bounds on constant polynomials as tight
 
 -------------------------------------------------------------------
 Mon Jan 25 13:53:25 UTC 2021 - Andreas Schwab <schwab@suse.de>
@@ -38,7 +49,7 @@ Tue Dec 29 17:29:04 UTC 2020 - Dirk Müller <dmueller@suse.com>
   - minor improvements to coalescing
   - use build compiler to build extract_interface
   - add some convenience functions
-  - ignore parameters in isl_union_* hash tables 
+  - ignore parameters in isl_union_* hash tables
 
 -------------------------------------------------------------------
 Thu Feb  6 09:22:41 UTC 2020 - Martin Liška <mliska@suse.cz>
@@ -206,14 +217,14 @@ Mon Dec 17 13:20:59 UTC 2012 - rguenther@suse.com
 -------------------------------------------------------------------
 Tue Dec  4 15:37:14 UTC 2012 - rguenther@suse.com
 
-- Update to ISL version 0.11 
+- Update to ISL version 0.11
   * license change to MIT
   * add support for code generation
 
 -------------------------------------------------------------------
 Thu Sep 27 09:13:25 UTC 2012 - idonmez@suse.com
 
-- Add baselibs.conf, needed by cloog-isl-32bit 
+- Add baselibs.conf, needed by cloog-isl-32bit
 
 -------------------------------------------------------------------
 Thu Jun 21 14:45:08 UTC 2012 - rguenther@suse.com
