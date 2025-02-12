@@ -143,4 +143,12 @@
   * Add Python 3.13 to the test matrix</comment>
     <requestid>1224223</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cb2e8f4919cc889f64c794d07deb9f67</srcmd5>
+    <version>1.5.4</version>
+    <time>1739392596</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245329</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 07:08:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.4
+  * Implement defined behavior for `deepcopy` for mocks. (#91)
+
+-------------------------------------------------------------------
 Thu Nov 14 14:19:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.3:
