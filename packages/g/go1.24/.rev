@@ -39,4 +39,20 @@
   * go#71476 boo#1236839 security: fix CVE-2025-22867 cmd/go: arbitrary code execution during build on darwin (forwarded request 1243515 from jfkw)</comment>
     <requestid>1243516</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27328a3fdc2b9c3403e4b0c24455c855</srcmd5>
+    <version>1.24.0</version>
+    <time>1739392291</time>
+    <user>anag+factory</user>
+    <comment>- go1.24 (released 2025-02-11) is a major release of Go.
+  go1.24.x minor releases will be provided through February 2026.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  go1.24 arrives six months after Go 1.23. Most of its changes are
+  in the implementation of the toolchain, runtime, and
+  libraries. As always, the release maintains the Go 1 promise of
+  compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1236217 go1.24 release tracking (forwarded request 1245175 from jfkw)</comment>
+    <requestid>1245176</requestid>
+  </revision>
 </revisionlist>
