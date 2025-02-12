@@ -802,4 +802,12 @@
     <comment>- Use pytest to run tests to do not depend on python-stestr</comment>
     <requestid>1218811</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>64365756844218eedcb66b1eee8b3d2a</srcmd5>
+    <version>6.1.1</version>
+    <time>1739392239</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245349</requestid>
+  </revision>
 </revisionlist>
