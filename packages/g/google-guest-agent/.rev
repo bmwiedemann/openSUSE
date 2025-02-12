@@ -571,4 +571,12 @@
   * Remove Pat from owners file. (#478)</comment>
     <requestid>1244738</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8f7e26d7c3171d7173e86c5123755cfd</srcmd5>
+    <version>20250116.00</version>
+    <time>1739392287</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250116.00: (bsc#1236403)</comment>
+    <requestid>1245168</requestid>
+  </revision>
 </revisionlist>
