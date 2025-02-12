@@ -1,7 +1,7 @@
 #
 # spec file for package pipewire
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,11 @@
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
 %define with_webrtc_audio_processing 1
+%if 0%{?suse_version} >= 1600
+%define webrtc_audio_processing_major_version 2
+%else
+%define webrtc_audio_processing_major_version 1
+%endif
 %else
 %define with_ldacBT 0
 %define with_webrtc_audio_processing 0
@@ -68,7 +73,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.2.7
+Version:        1.3.82
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -104,6 +109,7 @@ BuildRequires:  pkgconfig(dbus-1)
 %if %{with aac}
 BuildRequires:  pkgconfig(fdk-aac)
 %endif
+BuildRequires:  pkgconfig(fftw3f)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
@@ -133,6 +139,7 @@ BuildRequires:  pkgconfig(libapparmor)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libffado)
 %if %{with aptx}
 BuildRequires:  pkgconfig(libfreeaptx)
@@ -151,7 +158,7 @@ BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
 %if %{with_webrtc_audio_processing}
-BuildRequires:  pkgconfig(webrtc-audio-processing-1)
+BuildRequires:  pkgconfig(webrtc-audio-processing-%{webrtc_audio_processing_major_version})
 %endif
 BuildRequires:  pkgconfig(x11)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
@@ -695,8 +702,6 @@ fi
 %{_udevrulesdir}/90-pipewire-alsa.rules
 %{_datadir}/pipewire/client.conf
 %{_datadir}/pipewire/client.conf.avail/
-%{_datadir}/pipewire/client-rt.conf
-%{_datadir}/pipewire/client-rt.conf.avail/
 %{_datadir}/pipewire/minimal.conf
 %{_mandir}/man7/libpipewire-modules.7%{?ext_man}
 %{_mandir}/man7/libpipewire-module-*.7%{?ext_man}
@@ -730,6 +735,14 @@ fi
 %{_libdir}/spa-%{spa_ver}/audiotestsrc/
 %{_libdir}/spa-%{spa_ver}/videotestsrc/
 %{_libdir}/spa-%{spa_ver}/test/
+%dir %{_libdir}/spa-%{spa_ver}/filter-graph
+%{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-builtin.so
+%{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-ebur128.so
+%{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-ladspa.so
+%{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-lv2.so
+%{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph-plugin-sofa.so
+%{_libdir}/spa-%{spa_ver}/filter-graph/libspa-filter-graph.so
+%{_libdir}/spa-%{spa_ver}/libspa.so
 
 %dir %{_datadir}/spa-%{spa_ver}/
 %dir %{_datadir}/spa-%{spa_ver}/bluez5/
@@ -755,6 +768,7 @@ fi
 %if %{with pipewire_jack_devel}
 %{_includedir}/jack/
 %{_libdir}/pkgconfig/jack.pc
+%{_libdir}/pkgconfig/jackserver.pc
 %endif
 
 %files -n gstreamer-plugin-pipewire
