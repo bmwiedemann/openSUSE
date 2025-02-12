@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb 12 05:53:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.1:
+  * Release v0.8.1
+  * Version bump
+  * Version bump
+  * Fix: interval overrides a default schedule
+  * Version bump
+  * Fix: Align log levels with slog
+  * Feat: Add cobra command for documentation
+  * Version bump
+  * Version bump
+  * Fix: Combine known actions for matching repository names in
+    bearerHandler
+  * Feat: Improve regctl arg completion
+  * Fix: Ignore unsupported entries in docker config
+  * Fix: Do not request offline refresh token
+  * Version bump
+  * Version bump
+  * Chore: Adding a logo
+  * Version bump
+  * Version bump
+
+-------------------------------------------------------------------
 Wed Dec 11 06:54:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.0:
