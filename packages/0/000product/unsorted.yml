@@ -8171,13 +8171,11 @@ unsorted:
   - grsync 
   - grsync-lang 
   - grub2-branding-upstream 
-  - grub2-i386-efi-bls 
   - grub2-i386-efi-debug 
   - grub2-i386-efi-extras 
   - grub2-i386-pc-debug 
   - grub2-i386-pc-extras 
   - grub2-theme-breeze 
-  - grub2-x86_64-efi-bls 
   - grub2-x86_64-efi-debug 
   - grub2-x86_64-efi-extras 
   - grub2-x86_64-xen-debug 
@@ -11902,8 +11900,8 @@ unsorted:
   - libabigail4 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl_2407_0_0-32bit 
-  - libabsl_lite_2407_0_0-32bit 
+  - libabsl_2501_0_0-32bit 
+  - libabsl_lite_2501_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -11966,6 +11964,8 @@ unsorted:
   - libagdb-tools 
   - libagdb1 
   - libags7 
+  - libaiff-devel 
+  - libaiff2 
   - libaio-devel 
   - libaio-devel-32bit 
   - libaio1-32bit 
@@ -12697,6 +12697,9 @@ unsorted:
   - libcmuclmtk0 
   - libcnotify-devel 
   - libcnotify1 
+  - libcoap-devel 
+  - libcoap-utils 
+  - libcoap3-3 
   - libcob4 
   - libcodec2-1_2-32bit 
   - libcodecore0 
@@ -14583,24 +14586,24 @@ unsorted:
   - liblz4-devel 
   - liblzma5-32bit 
   - liblzo2-2-32bit 
-  - libm2cor18-gcc13 
-  - libm2cor18-gcc13-32bit 
+  - libm2cor18 
+  - libm2cor18-32bit 
   - libm2cor19 
   - libm2cor19-32bit 
-  - libm2iso18-gcc13 
-  - libm2iso18-gcc13-32bit 
+  - libm2iso18 
+  - libm2iso18-32bit 
   - libm2iso19 
   - libm2iso19-32bit 
-  - libm2log18-gcc13 
-  - libm2log18-gcc13-32bit 
+  - libm2log18 
+  - libm2log18-32bit 
   - libm2log19 
   - libm2log19-32bit 
-  - libm2min18-gcc13 
-  - libm2min18-gcc13-32bit 
+  - libm2min18 
+  - libm2min18-32bit 
   - libm2min19 
   - libm2min19-32bit 
-  - libm2pim18-gcc13 
-  - libm2pim18-gcc13-32bit 
+  - libm2pim18 
+  - libm2pim18-32bit 
   - libm2pim19 
   - libm2pim19-32bit 
   - libm4ri-devel 
@@ -15589,7 +15592,6 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-c-devel 
   - libprotobuf-lite28_3_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
@@ -20434,6 +20436,7 @@ unsorted:
   - ogre-tools 
   - ohcount 
   - oidentd 
+  - oils-for-unix 
   - okteta 
   - okteta-data 
   - okteta-devel 
@@ -23658,6 +23661,7 @@ unsorted:
   - prosody 
   - prosody-community-modules 
   - proteus 
+  - protobuf-c-devel 
   - protobuf-devel 
   - protobuf-java 
   - protobuf-java-bom 
@@ -24122,6 +24126,7 @@ unsorted:
   - python3-libtorrent-rasterbar 
   - python3-libuser 
   - python3-libvoikko 
+  - python3-lieer 
   - python3-lilv 
   - python3-linkchecker 
   - python3-lldb 
