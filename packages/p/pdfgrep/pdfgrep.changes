@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 12 09:07:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.2.0:
+  * --page-number can now take an optional argument label that
+    shows the PDF's page label instead of the page index.
+  * Port to PCRE2
+  * Change default value of --include to *.[Pp][Dd][Ff] to allow
+    for different case variations of *.pdf
+  * Documentation updates
+  * Fix crash with invalid locale setting
+  * Fix --warn-empty with --cache
+
+-------------------------------------------------------------------
 Wed Mar  3 14:47:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Create subpackages for bash- and zsh-completion

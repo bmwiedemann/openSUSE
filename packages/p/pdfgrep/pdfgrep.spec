@@ -2,6 +2,7 @@
 # spec file for package pdfgrep
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           pdfgrep
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Search in pdf files for strings matching a regular expression
 License:        GPL-2.0-or-later
@@ -27,8 +28,8 @@ Source:         https://pdfgrep.org/download/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel >= 1.0.0
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  pkgconfig(libpcre)
-BuildRequires:  pkgconfig(poppler-cpp)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(poppler-cpp) >= 0.36.0
 
 %description
 Pdfgrep is a tool to search text in PDF files. It works similar to `grep'.
@@ -62,7 +63,7 @@ BuildArch:      noarch
 zsh shell completions for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -72,6 +73,9 @@ zsh shell completions for %{name}.
 %install
 %make_install
 
+%check
+%make_build check
+
 %files
 %license COPYING
 %doc AUTHORS NEWS.md README.md
@@ -79,9 +83,11 @@ zsh shell completions for %{name}.
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion
+%license COPYING
 %{_datadir}/bash-completion/completions/%{name}
 
 %files zsh-completion
+%license COPYING
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_%{name}
