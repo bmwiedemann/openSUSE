@@ -1,0 +1,6 @@
+<package name="kernel-firmware-ueagle" project="openSUSE:Factory">
+  <title>Kernel firmware files for Eagle IV USB ADSL modem driver</title>
+  <description>This package contains Linux kernel firmware files for Eagle IV USB ADSL modem driver.
+The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-ueagle"/>
+</package>
