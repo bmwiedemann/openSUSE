@@ -1,7 +1,7 @@
 #
 # spec file for package openrct2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,10 @@
 %endif
 %define title_version 0.4.14
 %define title_version_url %{title_version}
-%define objects_version 1.4.11
+%define objects_version 1.5.1
 %define openmusic_version 1.6
 %define opensound_version 1.0.5
-%define openrct2_version 0.4.17
+%define openrct2_version 0.4.19.1
 
 Name:           openrct2
 Version:        %{openrct2_version}
