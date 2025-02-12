@@ -684,4 +684,41 @@
     <comment>- Skip scikit-image tests for python313</comment>
     <requestid>1228760</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e368bd1c1f72338f087228a4f89fc227</srcmd5>
+    <version>2.1.0</version>
+    <time>1739392746</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.0
+  ## General
+  * The minimum required Python is now 3.11. [#1958]
+  * The minimum required gwcs is now 0.20. [#1961]
+  ## New Features
+  ### photutils.aperture
+  * The aperture_photometry output table will now include a
+    sky_center column if wcs is input, even if the input aperture
+    is not a sky aperture. [#1965]
+  ### photutils.datasets
+  * A params_map keyword was added to make_model_image to allow a
+    custom mapping between model parameter names and columns names
+    in the parameter table. [#1994]
+  ### photutils.detection
+  * The find_peaks border_width keyword can now accept two values,
+    indicating the border width along the the y and x edges,
+    respectively. [#1957]
+  ### photutils.morphology
+  * An optional mask keyword was added to the gini function.
+    [#1979]
+  ### photutils.segmentation
+  * Added deblended_labels, deblended_labels_map, and
+    deblended_labels_inverse_map properties to SegmentationImage to
+    identify and map any deblended labels. [#1988]
+  ## Bug Fixes
+  ### photutils.segmentation
+  * Fixed a bug where the table output from the SourceCatalog
+    to_table method could have column names with a np.str_
+    representation instead of str representation when using NumPy
+    2.0+. [#1956]</comment>
+    <requestid>1245403</requestid>
+  </revision>
 </revisionlist>
