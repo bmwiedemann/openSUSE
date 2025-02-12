@@ -1,7 +1,7 @@
 #
 # spec file for package python-mwclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-mwclient
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        MediaWiki API client
 License:        MIT
-URL:            https://github.com/btongminh/mwclient
+URL:            https://github.com/mwclient/mwclient
 Source:         https://files.pythonhosted.org/packages/source/m/mwclient/mwclient-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM demock.patch gh#mwclient/mwclient#276 mcepl@suse.com
-# Remove dependency on mock
-Patch0:         demock.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module requests-oauthlib}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module responses >= 0.3.0}
+BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module wheel}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-requests-oauthlib
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 

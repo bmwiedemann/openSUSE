@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Feb 12 10:38:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- six is actually not needed anymore
+
+-------------------------------------------------------------------
+Wed Feb 12 07:20:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.0
+  * The Site.writeapi attribute is removed. It has been hardcoded to
+    True and deprecated in upstream mediawiki since 1.32, so code that
+    uses it isn't doing anything useful.
+  * The limit argument to various methods and generators is deprecated.
+    Its name is misleading: it does not limit the total number of items
+    returned, but sets the chunk size in which items are retrieved from
+    the API. It is replaced by two other arguments: api_chunk_size does
+    the same thing as limit but is more accurately named, and max_items
+    does what limit sounds like it should do (caps the number of items
+    that will be returned). limit still works, but will generate a
+    deprecation warning.
+  * The reqs argument to Site.__init__ was renamed to connection_options,
+    which is a clearer name. The old name still works but will generate a
+    deprecation warning.
+  * Support for the clientlogin login method is added. See upstream documentation.
+  * A new Site.patrol method has been added, to patrol a page or revision.
+  * Support for Python 3.5 and earlier has been dropped. These versions of
+    Python are obsolete and not used in any significant supported operating
+    system.
+- Add python-pytest-cov to BuildRequires
+- Drop demock.patch, fixed upstream
+- Update Github project page in URL field
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+
+-------------------------------------------------------------------
 Sat Jul  2 20:59:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for python-mwclient 0.10.1.
