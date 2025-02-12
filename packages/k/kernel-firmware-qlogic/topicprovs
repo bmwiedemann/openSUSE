@@ -1,0 +1,2 @@
+Provides:       qlogic-firmware = %{version}
+Obsoletes:      qlogic-firmware < %{version}
