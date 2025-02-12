@@ -1298,4 +1298,17 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   clamav footprints.</comment>
     <requestid>1240791</requestid>
   </revision>
+  <revision rev="126" vrev="5">
+    <srcmd5>25abd39262c142ef1921d9daadf8486e</srcmd5>
+    <version>8.18.1</version>
+    <time>1739392274</time>
+    <user>anag+factory</user>
+    <comment>- Skip /var/spool/mail/ from  permissons files of sendmail (boo#1236847)
+- Handle Leap 16.0 similar to TW
+
+- Avoid rpmlint warning 
+
+- Skip sysvinit</comment>
+    <requestid>1245380</requestid>
+  </revision>
 </revisionlist>

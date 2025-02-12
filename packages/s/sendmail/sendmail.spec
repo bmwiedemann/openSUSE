@@ -21,14 +21,6 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-#
-# sysvinit -- build for SysVinit and not for systemd
-#
-%if 0%{?suse_version} > 1140
-%bcond_with     sysvinit
-%else
-%bcond_without  sysvinit
-%endif
 %define libmilter_somajor 1
 %define libmilter_sominor 0
 %define libmilter_sopatch 1
@@ -60,13 +52,11 @@ BuildRequires:  mailx
 BuildRequires:  netcfg
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
-%if 0%{?suse_version} >= 1699
+%if 0%{?suse_version} >= 1600
 BuildRequires:  permissions-config
 %endif
+BuildRequires:  permissions
 BuildRequires:  procmail
-%if %{with sysvinit}
-Requires(pre):  sysvinit(network)
-%endif
 BuildRequires:  tcpd-devel
 BuildRequires:  vacation
 URL:            http://www.sendmail.org/
@@ -95,9 +85,10 @@ Requires(pre):  group(daemon)
 Requires(pre):  user(daemon)
 Requires(pre):  group(mail)
 Requires(pre):  user(mail)
-%if 0%{?suse_version} >= 1699
+%if 0%{?suse_version} >= 1600
 Requires(pre):  permissions-config
 %endif
+Requires(pre):  permissions
 Requires(post): group(mail)
 Requires(post): user(mail)
 %endif
@@ -257,12 +248,8 @@ processed mail on to the MTA (e.g. sendmail).
     set -f
     cat <<-EOF > file-list
 	%%defattr(-,root,root)
-%if %{with sysvinit}
-	%%ghost %%dir %%attr(1750,root,root)   %{_localstatedir}/run/sendmail/
-%else
 	%%dir %{_tmpfilesdir}/
 	%{_tmpfilesdir}/sendmail.conf
-%endif
 	%%dir    %%attr(0750,root,root)        %{_localstatedir}/lib/sendmail/
 	%%attr(0600,root,root)                 %{_localstatedir}/lib/sendmail/statistics
 	%%attr(0600,root,root)                 %{_mailcnfdir}/statistics
@@ -271,7 +258,7 @@ processed mail on to the MTA (e.g. sendmail).
 	# Part of filesystem RPM
 	# %%dir    %%attr(0770,root,mail)      %{_localstatedir}/spool/clientmqueue/
 	%%attr(0660,root,mail)                 %{_localstatedir}/spool/clientmqueue/sm-client.st
-%if 0%{?suse_version} >= 1699
+%if 0%{?suse_version} >= 1600
 	%%attr(0755,root,root)        %{_datadir}/permissions/permissions.d/
 	%%attr(0644,root,root)        %{_datadir}/permissions/permissions.d/sendmail
 	%%attr(0644,root,root)        %{_datadir}/permissions/permissions.d/sendmail.paranoid
@@ -292,10 +279,6 @@ processed mail on to the MTA (e.g. sendmail).
 	}
 	EOF
     set +f
-
-%if %{with sysvinit}
-    sed -ri '/SMTPUTF8/,/-licuuc/d' devtools/Site/site.config.m4
-%endif
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
@@ -352,9 +335,6 @@ processed mail on to the MTA (e.g. sendmail).
     mkdir -p %{buildroot}%{_mailcnfdir}/certs/newcerts
     mkdir -p %{buildroot}%{_mailcnfdir}/certs/scripts
     mkdir -p %{buildroot}%{_mailcnfdir}/auth
-%if %{with sysvinit}
-    mkdir -p %{buildroot}%{_sysconfdir}/init.d
-%endif
 
 %if 0%{?suse_version} > 1500
     mkdir -p %{buildroot}%{_pam_vendordir}
@@ -368,7 +348,7 @@ processed mail on to the MTA (e.g. sendmail).
     mkdir -p %{buildroot}%{_includedir}/sm/os
     chmod 0750 %{buildroot}%{_mailcnfdir}/certs
     chmod 0750 %{buildroot}%{_mailcnfdir}/auth
-%if 0%{?suse_version} >= 1699
+%if 0%{?suse_version} >= 1600
     mkdir -p %{buildroot}%{_datadir}/permissions/permissions.d
 %else
     mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
@@ -379,12 +359,10 @@ processed mail on to the MTA (e.g. sendmail).
     mkdir -p %{buildroot}%{_fillupdir}
     mkdir -p %{buildroot}/var/spool/mail
     ln -s spool/mail %{buildroot}/var/mail
-%if %{without sysvinit}
     mkdir -p %{buildroot}%{_unitdir}
     mkdir -p %{buildroot}%{_mailcnfdir}/system
     chmod 0755 %{buildroot}%{_mailcnfdir}/system
     mkdir -p %{buildroot}%{_tmpfilesdir}
-%endif
     make \
 	DESTDIR=%{buildroot} \
 	SUBDIRS="%{SUBDIRS}" \
@@ -414,10 +392,6 @@ processed mail on to the MTA (e.g. sendmail).
     chown -R root:root %{buildroot}%{_localstatedir}/spool/mqueue
     chmod 0700         %{buildroot}%{_localstatedir}/spool/mqueue
     chmod 0700         %{buildroot}%{_localstatedir}/spool/mqueue/.hoststat
-%if %{with sysvinit}
-    mkdir -p           %{buildroot}%{_localstatedir}/run/sendmail
-    chmod 1750         %{buildroot}%{_localstatedir}/run/sendmail
-%endif
     mkdir -p           %{buildroot}%{_localstatedir}/lib/sendmail
     chmod 0750         %{buildroot}%{_localstatedir}/lib/sendmail
     touch              %{buildroot}%{_localstatedir}/lib/sendmail/statistics
@@ -490,23 +464,21 @@ processed mail on to the MTA (e.g. sendmail).
 		    local-host-names %{buildroot}%{_mailcnfdir}/
     install -m 0600 auth-info %{buildroot}%{_mailcnfdir}/auth/
     install -m 0755 sendmail.nissl %{buildroot}%{_sbindir}/
-%if 0%{?suse_version} >= 1699
+echo XXXXX %suse_version
+%if 0%{?suse_version} >= 1600
+    mkdir -p %{buildroot}%{_datadir}/permissions/permissions.d
     install -m 0644 permissions %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
     install -m 0644 permissions.paranoid %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
 %else
+    mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
     install -m 0644 permissions %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     install -m 0644 permissions.paranoid %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
+    test -d /var/spool/mail/ || exit 1
+    test 1777 = "$(stat --printf='%a' /var/spool/mail/)" || exit 1
 %endif
-%if %{with sysvinit}
-    install -m 0755 rc   %{buildroot}%{_sysconfdir}/init.d/sendmail
-    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
-    sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
-    sed -ri 's|@@VARRUN@@|%{_localstatedir}/run|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
-    sed -ri 's|@@VARRUN@@|%{_localstatedir}/run|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
-%else
     mkdir -p %{buildroot}%{_tmpfilesdir}
     install -m 0644 tmpfile %{buildroot}%{_tmpfilesdir}/sendmail.conf
-%if 0%{?suse_version} >= 1699
+%if 0%{?suse_version} >= 1600
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
     sed -ri '\@/etc/init.d/sendmail@d' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail.paranoid
     sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_datadir}/permissions/permissions.d/sendmail
@@ -520,7 +492,6 @@ processed mail on to the MTA (e.g. sendmail).
     sed -ri 's|@@EXECPREFIX@@|%{_libexecdir}|' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
-%endif
 %endif
 %if 0%{?suse_version} > 1500
     install -m 0644 smtp %{buildroot}%{_pam_vendordir}/smtp
@@ -569,12 +540,8 @@ processed mail on to the MTA (e.g. sendmail).
 	chmod 0644 %{_sysconfdir}/sendmail.cf
 	chmod 0644 %{_mailcnfdir}/submit.cf
     fi
-%if %{with sysvinit}
-    ln -sf %{_sysconfdir}/init.d/sendmail %{buildroot}%{_sbindir}/rcsendmail
-%else
     ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsendmail
     ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsendmail-client
-%endif
     ln -sf ../aliases  %{buildroot}%{_mailcnfdir}/aliases
     pushd %{buildroot}%{_mailcnfdir}/
 	OPATH=$PATH
@@ -582,7 +549,6 @@ processed mail on to the MTA (e.g. sendmail).
 	make DESTDIR=%{buildroot} short
 	PATH=$OPATH
     popd
-%if %{without sysvinit}
     #
     # systemd unit conf files
     install -m 0644 %{S:3} %{buildroot}%{_unitdir}/
@@ -590,7 +556,6 @@ processed mail on to the MTA (e.g. sendmail).
     install -m 0644 %{S:5} %{buildroot}%{_unitdir}/
     install -m 0755 %{S:6} %{buildroot}%{_mailcnfdir}/system/sm-client.pre
     install -m 0644 %{S:7} %{buildroot}%{_tmpfilesdir}/sendmail.conf
-%endif
     #
     # Documentation for libmilter
     #
@@ -609,20 +574,16 @@ processed mail on to the MTA (e.g. sendmail).
 
 %if %{defined verify_permissions}
 %verifyscript
-%if %{with sysvinit}
-%verify_permissions -e %{_localstatedir}/run/sendmail
+%verify_permissions -e %{_localstatedir}/spool/clientmqueue/
+%if 0%{?suse_version} < 1600
+%verify_permissions -e %{_localstatedir}/spool/mail/
 %endif
-%verify_permissions -e %{_localstatedir}/spool/clientmqueue
-%verify_permissions -e %{_localstatedir}/spool/mqueue
+%verify_permissions -e %{_localstatedir}/spool/mqueue/
 %verify_permissions -e %{_sysconfdir}/sendmail.cf
-%if %{with sysvinit}
-%verify_permissions -e %{_sysconfdir}/init.d/sendmail
-%else
-%verify_permissions -e %{_mailcnfdir}/system
-%endif
-%verify_permissions -e %{_mailcnfdir}/auth
-%verify_permissions -e %{_mailcnfdir}/certs
-%verify_permissions -e %{_libexecdir}/sendmail.d/bin
+%verify_permissions -e %{_mailcnfdir}/system/
+%verify_permissions -e %{_mailcnfdir}/auth/
+%verify_permissions -e %{_mailcnfdir}/certs/
+%verify_permissions -e %{_libexecdir}/sendmail.d/bin/
 %verify_permissions -e %{_libexecdir}/sendmail.d/bin/mail.local
 %verify_permissions -e %{_libexecdir}/sendmail.d/bin/smrsh
 %verify_permissions -e %{_sbindir}/sendmail
@@ -657,9 +618,6 @@ if test -s /etc/sysconfig/sendmail ; then
   sed -ri '/(SENDMAIL_ARGS|Default:)/{s/-bd/-bD/g}' /etc/sysconfig/sendmail
 fi
 %{fillup_only -an mail}
-%if %{with sysvinit}
-%{fillup_and_insserv -nY sendmail sendmail}
-%else
 %{fillup_only -n sendmail}
 %service_add_post sendmail.service sendmail-client.service sendmail-client.path
 PATH=bin:usr/bin:$PATH
@@ -668,31 +626,24 @@ if type -p systemctl > /dev/null 2>&1 ; then
   systemctl enable sendmail-client.service >/dev/null 2>&1 || :
   systemctl enable sendmail-client.path >/dev/null 2>&1 || :
 fi
-%endif
 %if %{defined set_permissions}
-%if %{with sysvinit}
-%set_permissions %{_localstatedir}/run/sendmail
+%set_permissions %{_localstatedir}/spool/clientmqueue/
+%if 0%{?suse_version} < 1600
+%set_permissions %{_localstatedir}/spool/mail/
 %endif
-%set_permissions %{_localstatedir}/spool/clientmqueue
-%set_permissions %{_localstatedir}/spool/mqueue
+%set_permissions %{_localstatedir}/spool/mqueue/
 %set_permissions %{_sysconfdir}/sendmail.cf
-%if %{with sysvinit}
-%set_permissions %{_sysconfdir}/init.d/sendmail
-%else
-%set_permissions %{_mailcnfdir}/system
-%endif
-%set_permissions %{_mailcnfdir}/auth
-%set_permissions %{_mailcnfdir}/certs
-%set_permissions %{_libexecdir}/sendmail.d/bin
+%set_permissions %{_mailcnfdir}/system/
+%set_permissions %{_mailcnfdir}/auth/
+%set_permissions %{_mailcnfdir}/certs/
+%set_permissions %{_libexecdir}/sendmail.d/bin/
 %set_permissions %{_libexecdir}/sendmail.d/bin/mail.local
 %set_permissions %{_libexecdir}/sendmail.d/bin/smrsh
 %set_permissions %{_sbindir}/sendmail
 %endif
 
 %pre
-%if ! %{with sysvinit}
 %service_add_pre sendmail.service sendmail-client.service sendmail-client.path
-%endif
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in pam.d/smtp ; do
@@ -701,25 +652,14 @@ done
 %endif
 
 %preun
-%if %{with sysvinit}
-%{stop_on_removal sendmail}
-%else
 %service_del_preun sendmail.service sendmail-client.service sendmail-client.path
-%endif
 
 %postun
 if test $1 = 0; then
-%if %{with sysvinit}
-    %{restart_on_update sendmail}
-%endif
     rm -rf %{_localstatedir}/lib/sendmail
     exit 0
 fi
-%if ! %{with sysvinit}
 %service_del_postun sendmail.service sendmail-client.service sendmail-client.path
-%else
-%{insserv_cleanup}
-%endif
 
 %posttrans
 if test -x %{_libexecdir}/sendmail.d/update ; then
@@ -742,10 +682,8 @@ done
 # %dir %attr(0750,root,mail) %{_sysconfdir}/aliases.d/
 %dir %attr(0750,root,root) %{_mailcnfdir}/auth/
 %dir %attr(0750,root,root) %{_mailcnfdir}/certs/
-%if %{without sysvinit}
 %dir %attr(0755,root,root) %{_mailcnfdir}/system/
-%ghost /run/sendmail/
-%endif
+%ghost %attr(0750,root,mail) /run/sendmail/
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sendmail.cf
 # %{_sysconfdir}/aliases is part of netcfg
 # %config(noreplace) %{_sysconfdir}/aliases
@@ -781,18 +719,13 @@ done
 %else
 %config %attr(0644,root,root) %{_sysconfdir}/pam.d/smtp
 %endif
-%if %{with sysvinit}
-%config %attr(0744,root,root) %{_sysconfdir}/init.d/sendmail
-%endif
 %attr(0755,root,root) %{_libexecdir}/sendmail.d/update
 %attr(0755,root,root) %{_sbindir}/config.sendmail
-%if %{without sysvinit}
 %config %attr(0644,root,root) %{_unitdir}/sendmail-client.path
 %config %attr(0644,root,root) %{_unitdir}/sendmail.service
 %config %attr(0644,root,root) %{_unitdir}/sendmail-client.service
 %config %attr(0755,root,root) %{_mailcnfdir}/system/sm-client.pre
 %attr(0644,root,root) %{_tmpfilesdir}/sendmail.conf
-%endif
 %{_bindir}/hoststat
 %{_bindir}/mailq
 %{_bindir}/newaliases
@@ -826,7 +759,7 @@ done
 %attr(2555,root,mail) %{_sbindir}/sendmail
 %{_sbindir}/sendmail.nissl
 %{_sbindir}/rcsendmail*
-%if 0%{?suse_version} > 1140
+%if 0%{?suse_version} >= 1600
 %dir %attr(1777,root,root) /var/spool/mail/
 %endif
 /var/mail

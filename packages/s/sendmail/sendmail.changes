@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Feb 12 11:42:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Skip /var/spool/mail/ from  permissons files of sendmail (boo#1236847)
+- Handle Leap 16.0 similar to TW
+
+-------------------------------------------------------------------
+Thu Feb  6 09:23:52 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid rpmlint warning 
+
+-------------------------------------------------------------------
+Thu Feb  6 07:38:18 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Skip sysvinit 
+
+-------------------------------------------------------------------
 Tue Jan 28 10:33:28 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Allow libmilter to be installed without local MTA as it can be
