@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Feb  5 15:36:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.8.4:
+  - Add "sus" (Among Us crewmate) cow.
+  - Add "actually..." cow.
+  - Add CONTRIBUTORS.md file with contributor credits.
+  - Add notes on contributing a cow, and licensing it, to CONTRIBUTING.md.
+    Require "GPLv1+ and Artistic" licensing for new contributions.
+- Update to 3.8.3:
+  - Remove offensive cows "telebears" and "satanic", sending to
+    cows-offensive. (#46)
+  - Improve Makefile, bringing more in line with GNU conventions,
+    improve configurability, fix some make uninstall problems,
+    etc. (#26) (Thanks, Hans Niedermann!)
+  - Remove leftover "Listing cowfiles in pretty format" debugging
+    output (#50)
+  - Fix "uninitialized value $tail" error in cowsay -l output for
+    empty (zero-cowfile) cow dirs (#50)
+  - Fix installation location ("prefix") detection for cases
+    like user-defined symlinks, and align repo layout with
+    installation prefix dir layout (#49, #55)
+  - Remove broken .pm cows (#54)
+    Support for the .pm cowfile format never got
+    implemented. This keeps non-working cows from appearing in the
+    cowsay -l list and the like.
+  - Expand cowsay --help screen, and the man page a bit
+- Update to 3.8.2:
+  Remove an offensive cow (#46)
+  - It has been put to pasture in the new cows-offensive repo
+- Update to 3.8.1:
+  Small bugfix release.
+  - Fix cowsay -h behavior, which would still wait for stdin
+    input instead of exiting
+  - Fix cowsay -n <args> giving obtuse "undefined subroutine"
+    error
+- Update to 3.8.0:
+  First new release in a couple years. Nothing big here. Sorry,
+  I'm a cow; I move slow.
+  - Add "cupcake", "alpaca", and "fox" cows
+  - Fix "mech-and-cow" cow for file extension issue
+  - Fix "empbrace" typo in kiss.cow
+  - Better installation process, involving symlinks and stuff
+  - Migrate from AsciiDoc to Asciidoctor
+  - Make cowthink a symlink to cowsay
+  - Improve man page organization
+- Readjust chami.patch to use correct directory.
+
+-------------------------------------------------------------------
 Fri Dec  3 17:45:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.7.0

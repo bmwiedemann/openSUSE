@@ -1,7 +1,7 @@
 #
 # spec file for package cowsay
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!perl_requires:%define perl_requires() Requires: perl = %{perl_version}}
 Name:           cowsay
-Version:        3.7.0
+Version:        3.8.4
 Release:        0
 Summary:        Configurable talking cow (and some other creatures)
 License:        GPL-3.0-or-later
@@ -38,20 +38,24 @@ of silliness.
 
 %prep
 %autosetup -p1
-sed -i '1 s/env //' cowsay
+sed -i '1 s/env //' bin/cow*
 
 %build
-perl -c cowsay
+:
 
 %install
 %make_install prefix=%{_prefix}
 
+%check
+# no test suite available at all
+
 %files
 %license LICENSE.txt
-%doc ChangeLog README.md
-%{_bindir}/%{name}
+%doc README.md CONTRIBUTORS.md CHANGELOG.md
+%{_bindir}/cowsay
 %{_bindir}/cowthink
 %{_datadir}/cowsay
-%{_mandir}/man1/*
+%{_mandir}/man1/cowsay.1%{?ext_man}
+%{_mandir}/man1/cowthink.1%{?ext_man}
 
 %changelog
