@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:25:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.25.0:
+  BREAKING:
+    * Authentication flow has been rewritten
+    * Remove support for Tailscale clients older than 1.62 (Capability version 87)
+  CHANGES:
+    * oidc.map_legacy_users is now false by default
+    * Print Tailscale version instead of capability versions for outdated nodes
+    * Do not allow renaming of users from OIDC
+    * Change minimum hostname length to 2
+    * Fix migration error caused by nodes having invalid auth keys
+    * Pre auth keys belonging to a user are no longer deleted with the user
+    * Pre auth keys that are used by a node can no longer be deleted
+    * Rehaul HTTP errors, return better status code and errors to users
+
+-------------------------------------------------------------------
 Fri Feb  7 18:56:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update 0.24.3:
