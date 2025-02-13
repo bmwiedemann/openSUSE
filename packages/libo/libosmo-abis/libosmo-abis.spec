@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-abis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-abis
-Version:        1.6.0
+Version:        2.0.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -30,10 +30,11 @@ BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libosmo-e1d) >= 0.7.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.10.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.10.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.10.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.10.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.11.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.11.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.11.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.11.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.6.0
 BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 
@@ -42,12 +43,12 @@ In GSM, A-bis is a BSS-internal interface link between the BTS and
 BSC. This interface allows control of the radio equipment and radio
 frequency allocation in the BTS.
 
-%package -n libosmoabis13
+%package -n libosmoabis15
 Summary:        Osmocom GSM A-bis interface library
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmoabis13
+%description -n libosmoabis15
 In the GSM system architecture, A-bis is a Base Station
 System-internal interface linking the Base Transceiver Stations (BTS)
 and Base Station Controller (BSC). This interface allows control of
@@ -61,7 +62,7 @@ cards, as well as some A-bis/IP dialects.
 Summary:        Development files for the Osmocom GSM A-bis library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmoabis13 = %version
+Requires:       libosmoabis15 = %version
 Requires:       libosmocore-devel >= 1.4.0
 Requires:       libosmogsm-devel >= 1.4.0
 
@@ -73,12 +74,12 @@ cards, as well as some A-bis/IP dialects.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmoabis.
 
-%package -n libosmotrau10
+%package -n libosmotrau11
 Summary:        Osmocom GSM TRAU (E1/RTP) library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmotrau10
+%description -n libosmotrau11
 This library implements the Transcoder and Rate Adaptation Unit (TRAU) for
 GSM systems.
 The TRAU enables the use of lower rates (32, 16 or 8 kbps) over the
@@ -89,7 +90,7 @@ Switching Center (MSC) is designed.
 Summary:        Development files for the Osmocom TRAU (E1/RTP) library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmotrau10 = %version-%release
+Requires:       libosmotrau11 = %version-%release
 
 %description -n libosmotrau-devel
 This library implements the Transcoder and Rate Adaptation Unit
@@ -121,10 +122,10 @@ if ! %make_build check; then
 %endif
 fi
 
-%ldconfig_scriptlets -n libosmoabis13
-%ldconfig_scriptlets -n libosmotrau10
+%ldconfig_scriptlets -n libosmoabis15
+%ldconfig_scriptlets -n libosmotrau11
 
-%files -n libosmoabis13
+%files -n libosmoabis15
 %_libdir/libosmoabis.so.*
 
 %files -n libosmoabis-devel
@@ -135,7 +136,7 @@ fi
 %_libdir/libosmoabis.so
 %_libdir/pkgconfig/libosmoabis.pc
 
-%files -n libosmotrau10
+%files -n libosmotrau11
 %_libdir/libosmotrau.so.*
 
 %files -n libosmotrau-devel

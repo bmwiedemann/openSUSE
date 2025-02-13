@@ -168,4 +168,12 @@ fix build with ortp 0.27</comment>
     <comment>- Update to release 1.6.0</comment>
     <requestid>1218588</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ee689f2b235b6e2f66340e327d3b02fb</srcmd5>
+    <version>2.0.0</version>
+    <time>1739468411</time>
+    <user>anag+factory</user>
+    <comment>- Update to relase 2.0.0</comment>
+    <requestid>1245656</requestid>
+  </revision>
 </revisionlist>

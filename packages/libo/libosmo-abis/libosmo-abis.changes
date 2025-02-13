@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 13:38:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relase 2.0.0
+  * trau2rtp/rtp2trau: add CSD & EDATA support
+  * trau2rtp FR & EFR: fix uninitialized memory bug
+  * libosmotrau: add CSD RA2 functions
+  * libosmotrau: implement RAA' encoder/decoder functions
+  * trau: detect 8k AMR 7.40k frames correctly for decoding
+  * Drop ipa_proxy
+  * trau: implement TFO frame encoding/decoding functions
+
+-------------------------------------------------------------------
 Sat Oct 26 13:58:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.0
