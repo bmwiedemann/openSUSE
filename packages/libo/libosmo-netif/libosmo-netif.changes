@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 13 13:37:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Add osmo_stream_cli_set_{ip_dscp,priority}() APIs
+  * Add osmo_stream_srv_link_set_{ip_dscp,priority}() APIs
+  * Support destroy object within user callback
+  * Add API osmo_stream_cli_set_tx_queue_max_length()
+  * Add API osmo_stream_srv_link_set_tx_queue_max_length()
+  * Fix discard 1st msg received quick after connect
+  * Introduce osmo_stream_{cli,srv}_set_segmentation_cb2
+  * Add osmo_stream_srv_link_set_msgb_alloc_info()
+
+-------------------------------------------------------------------
 Sat Oct 26 14:09:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.1
