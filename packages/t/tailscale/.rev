@@ -211,4 +211,13 @@
   * net/netmon: add extra panic guard around ParseRIB (forwarded request 1244262 from rrahl0)</comment>
     <requestid>1244263</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>02169ecd783cbab04a2c894e4c34496c</srcmd5>
+    <version>1.80.2</version>
+    <time>1739468875</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.80.2:
+  * Use ip:country as a geolocation device posture attribute (generally available). (forwarded request 1245700 from rrahl0)</comment>
+    <requestid>1245709</requestid>
+  </revision>
 </revisionlist>

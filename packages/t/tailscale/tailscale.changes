@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:30:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.80.2:
+  * Use ip:country as a geolocation device posture attribute (generally available).
+
+-------------------------------------------------------------------
 Thu Feb  6 19:52:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.80.1:
