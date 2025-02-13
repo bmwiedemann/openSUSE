@@ -75,4 +75,41 @@
     <comment></comment>
     <requestid>1188826</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c82b628170df4dc4a14a7555ba076b4a</srcmd5>
+    <version>1.18.0</version>
+    <time>1739468337</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.18.0
+  * Update C++ sources to 3.83 #973
+  * Drop support for Python 3.9 #967
+  * Added lonlat parameter to newprojplot #963
+  * Fix query_disc missing pixels near poles, fixed in C++ #968
+  * Warn users about ud_grade effect on spectra in docstring #960
+  * Update CFITSIO to 4.5.0 and ensure we build it as shared lib
+    #942
+- Release 1.17.3
+  * Rename trapz function to support latest scipy version #953
+- Release 1.17.1
+  * Just fixing an issue in the PyPI publish action
+- Release 1.17.0
+  * The most important modification is that now scipy and
+    matplotlib are optional dependencies, install them with pip
+    install healpy[all]. Also includes a lot of packaging fixes.
+  * Optional dependencies by @swyatt7 in #910
+  * Fix errors with Matplotlib 3.9 by @QuLogic in #944
+  * [doc] pull docstrings from dist2holes and hotspots cython
+    functions by @zonca in #920
+  * Improve docs of read_alm by @zonca in #930
+  * update C++ sources to SVN commit 1238 by @zonca in #917
+  * update healpix sources to r1239 by @zonca in #941
+  * Use alice3 from libhealpix_cxx by @lpsinger in #939
+  * Fix pytest-cython errors by requiring pytest&lt;8 by @lpsinger in
+    #913
+- Drop patches
+  * python-healpy-matplotlib-1_9-compat.patch
+  * python-healpy-scipy-1_14-compat.patch
+- Remove devel package: Unused, the src is no longer in the (forwarded request 1245482 from bnavigator)</comment>
+    <requestid>1245483</requestid>
+  </revision>
 </revisionlist>

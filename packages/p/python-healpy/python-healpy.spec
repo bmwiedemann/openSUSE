@@ -1,7 +1,7 @@
 #
 # spec file for package python-healpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-healpy
-Version:        1.16.6
+Version:        1.18.0
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
 URL:            https://github.com/healpy/healpy
 Source:         https://files.pythonhosted.org/packages/source/h/healpy/healpy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-healpy-scipy-1_14-compat.patch badshah400@gmail.com -- Account for renaming of integrate.trapz to integrate.trapezoidal in scipy 1.14
-Patch0:         python-healpy-scipy-1_14-compat.patch
-# PATCH-FIX-UPSTREAM python-healpy-matplotlib-1_9-compat.patch badshah400@gmail.com -- Compatibility with matplotlib 3.9 via upstream commit 0b1f498 rebased for current version
-Patch1:         python-healpy-matplotlib-1_9-compat.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.13}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 60}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -43,11 +39,11 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(healpix_cxx)
 BuildRequires:  pkgconfig(libsharp)
 Requires:       python-astropy >= 4.0
-Requires:       python-matplotlib
-Requires:       python-numpy >= 1.13
-Requires:       python-scipy
+Requires:       python-numpy >= 1.19
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+Recommends:     python-matplotlib
+Recommends:     python-scipy
 # SECTION Additional test requirements
 # Symbol clashes with astropy < 4.0
 BuildRequires:  %{python_module astropy >= 4.0}
@@ -74,18 +70,9 @@ healpy provides utilities to:
 * transform maps to Spherical Harmonics space and back using multi-threaded C++ routines
 * compute Auto and Cross Power Spectra from maps and create map realizations from spectra
 
-%package devel
-Summary:        C++ header files and source codes for healpy
-Requires:       python-devel
-Requires:       python-numpy-devel
-Requires:       pkgconfig(healpix_cxx)
-
-%description devel
-This package provides the C++ header files and source codes for healpy.
-
 %prep
 %autosetup -p1 -n healpy-%{version}
-chmod -x healpy/data/planck_*cmap.dat
+chmod -x lib/healpy/data/*.dat
 
 %build
 export CFLAGS="%{optflags}"
@@ -99,7 +86,10 @@ export CFLAGS="%{optflags}"
 %check
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 # Skip tests requiring network access
-%pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath)' %{buildroot}%{$python_sitearch}/healpy
+donttest="test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath"
+# Upstream is investigating: gh#healpy/healpy#987
+donttest="$donttest or test_map2alm_lsq"
+%pytest_arch test -k "not ($donttest)"
 
 %post
 %python_install_alternative healpy_get_wmap_maps.sh
@@ -112,10 +102,6 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %license COPYING
 %python_alternative %{_bindir}/healpy_get_wmap_maps.sh
 %{python_sitearch}/healpy/
-%{python_sitearch}/healpy-%{version}*-info/
-%exclude %{python_sitearch}/healpy/src
-
-%files %{python_files devel}
-%{python_sitearch}/healpy/src/
+%{python_sitearch}/healpy-%{version}.dist-info/
 
 %changelog
