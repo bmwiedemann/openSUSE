@@ -1810,4 +1810,12 @@ fixes its regression.
     <comment></comment>
     <requestid>1245369</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>db7c480e303c1fafce0e7e3b19c17dce</srcmd5>
+    <version>3.2.4</version>
+    <time>1739468366</time>
+    <user>anag+factory</user>
+    <comment>Fix typo in changelog</comment>
+    <requestid>1245481</requestid>
+  </revision>
 </revisionlist>
