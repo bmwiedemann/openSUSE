@@ -18,7 +18,7 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        2.97
+Version:        2.99
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 %endif
-BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 BuildRequires:  python-rpm-macros
