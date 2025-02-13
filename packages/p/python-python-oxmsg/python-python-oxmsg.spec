@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-oxmsg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-oxmsg
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Parse Outlook MSG (.msg) files to extract email messages and attachments
 License:        MIT
 URL:            https://github.com/scanny/python-oxmsg
 Source:         %{url}/archive/v%{version}.tar.gz#/python_oxmsg-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0.0}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module olefile}
@@ -38,7 +38,7 @@ Requires:       python-click
 Requires:       python-olefile
 Requires:       python-typing_extensions >= 4.9.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
