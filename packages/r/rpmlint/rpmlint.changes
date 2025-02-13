@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 16:01:16 UTC 2025 - wolfgang.frisch@suse.com
+
+- Update to version 2.6.1+git20250212.0f39729:
+  * dbus-services: whitelist timekpr-next (bsc#1234134)
+
+-------------------------------------------------------------------
 Mon Feb 10 13:17:54 UTC 2025 - matthias.gerstner@suse.com
 
 - Update to version 2.6.1+git20250210.a7561ed8:
