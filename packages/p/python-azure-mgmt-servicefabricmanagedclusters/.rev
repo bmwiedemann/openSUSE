@@ -58,4 +58,17 @@
     <comment></comment>
     <requestid>1189834</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1b890060fd1a5ffd46e7a0316712cc0a</srcmd5>
+    <version>2.1.0~b1</version>
+    <time>1739468400</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.1.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 2.1.0~b1
+- Update Requires from setup.py (forwarded request 1245566 from glaubitz)</comment>
+    <requestid>1245627</requestid>
+  </revision>
 </revisionlist>
