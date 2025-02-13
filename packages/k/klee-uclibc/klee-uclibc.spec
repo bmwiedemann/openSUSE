@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version 14
+%define llvm_version 15
 
 Name:           klee-uclibc
 Summary:        Libc library for Klee

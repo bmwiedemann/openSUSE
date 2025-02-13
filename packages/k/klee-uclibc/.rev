@@ -239,4 +239,12 @@
     <comment>- switch to llvm 14, as llvm 16 is used solely by klee</comment>
     <requestid>1242809</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d8cb2993f311c9544dbb59713d6609ca</srcmd5>
+    <version>1.4+git.20240531</version>
+    <time>1739468364</time>
+    <user>anag+factory</user>
+    <comment>- OK, bump to llvm 15 again, everything moved to 15 in the meantime</comment>
+    <requestid>1245535</requestid>
+  </revision>
 </revisionlist>
