@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 12 15:21:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.11
+  * Cleaned up install
+  * Unicode allowed
+  * Compiling on additional platforms
+- Add Cython to BuildRequires
+- Adjust upstream source name in spec file
+- Drop 159.patch, merged upstream
+- Exclude C++ source and header files in %files section
+
+-------------------------------------------------------------------
 Wed Jun 12 21:37:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14

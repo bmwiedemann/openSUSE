@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-crfsuite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-crfsuite
-Version:        0.9.10
+Version:        0.9.11
 Release:        0
 Summary:        Python binding for CRFsuite
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapinghub/python-crfsuite
-Source:         https://files.pythonhosted.org/packages/source/p/python-crfsuite/python-crfsuite-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - Define _POSIX_C_SOURCE for crfsuite source files
-Patch:          https://github.com/scrapinghub/python-crfsuite/pull/159.patch
+Source:         https://files.pythonhosted.org/packages/source/p/python_crfsuite/python_crfsuite-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -39,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Python-crfsuite is a python binding to CRFsuite_.
 
 %prep
-%autosetup -p1 -n python-crfsuite-%{version}
+%autosetup -p1 -n python_crfsuite-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -58,6 +57,8 @@ mv bak pycrfsuite
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
 %{python_sitearch}/pycrfsuite
+%exclude %{python_sitearch}/pycrfsuite/*.cpp
+%exclude %{python_sitearch}/pycrfsuite/*.hpp
 %{python_sitearch}/python_crfsuite-%{version}*-info
 
 %changelog
