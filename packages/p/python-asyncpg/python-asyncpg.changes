@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 03:28:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch skip-dsn_ipv6_multi_host-parse-test.patch:
+  * Skip a broken testcase.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Oct 23 12:16:37 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove 0001-notice-also-the-MERGE-command.patch not needed anymore.

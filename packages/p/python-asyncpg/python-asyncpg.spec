@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncpg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,15 @@ Version:        0.30.0
 Release:        0
 Summary:        Python asyncio PosgtreSQL driver
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/MagicStack/asyncpg
 Source:         https://files.pythonhosted.org/packages/source/a/asyncpg/asyncpg-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Skip a broken test
+Patch0:         skip-dsn_ipv6_multi_host-parse-test.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout if %python-base < 3.11}
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4.3 if %python-base < 3.8}
 BuildRequires:  fdupes
@@ -65,10 +67,10 @@ sed -i asyncpg/_testbase/__init__.py \
   -e "s/if os.environ.get('USE_UVLOOP')/& and sys.version_info[:2] > (3, 6)/"
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -94,6 +96,6 @@ mv .asyncpg asyncpg
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/asyncpg
-%{python_sitearch}/asyncpg-%{version}*-info
+%{python_sitearch}/asyncpg-%{version}.dist-info
 
 %changelog

@@ -190,4 +190,14 @@
   * Replace obsolete, unsafe Py_TRASHCAN_SAFE_BEGIN/END (#1150)</comment>
     <requestid>1217351</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>22188c38c459c0d3a43eb2984a4b87d8</srcmd5>
+    <version>0.30.0</version>
+    <time>1739468346</time>
+    <user>anag+factory</user>
+    <comment>- Add patch skip-dsn_ipv6_multi_host-parse-test.patch:
+  * Skip a broken testcase.
+- Switch to pyproject macros.</comment>
+    <requestid>1245497</requestid>
+  </revision>
 </revisionlist>

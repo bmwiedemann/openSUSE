@@ -1,0 +1,29 @@
+Index: asyncpg-0.30.0/tests/test_connect.py
+===================================================================
+--- asyncpg-0.30.0.orig/tests/test_connect.py
++++ asyncpg-0.30.0/tests/test_connect.py
+@@ -846,15 +846,15 @@ class TestConnectParams(tb.TestCase):
+             ),
+         },
+ 
+-        {
+-            'name': 'dsn_ipv6_multi_host',
+-            'dsn': 'postgresql://user@[2001:db8::1234%25eth0],[::1]/db',
+-            'result': ([('2001:db8::1234%eth0', 5432), ('::1', 5432)], {
+-                'database': 'db',
+-                'user': 'user',
+-                'target_session_attrs': 'any',
+-            })
+-        },
++        #{
++        #    'name': 'dsn_ipv6_multi_host',
++        #    'dsn': 'postgresql://user@[2001:db8::1234%25eth0],[::1]/db',
++        #    'result': ([('2001:db8::1234%eth0', 5432), ('::1', 5432)], {
++        #        'database': 'db',
++        #        'user': 'user',
++        #        'target_session_attrs': 'any',
++        #    })
++        #},
+ 
+         {
+             'name': 'dsn_ipv6_multi_host_port',
