@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Feb 13 16:12:32 UTC 2025 - okurz@suse.com
+
+- Update to version 4.6.1739396963.cce4587:
+  * Use more Mojo::File operations in baseclass
+  * Use more Mojo::File operations in ocr.pm
+  * Use more Mojo::File operations in testapi.pm
+  * Use more Mojo::File operations in tools/
+  * t: Use Mojo::File in 04-check_vars_docu.t
+  * Add support for newline seperator in SCHEDULE variable
+  * Use Feature::Compat::Try in testapi
+  * Use Feature::Compat::Try in script/os-autoinst-openvswitch
+  * Use Feature::Compat::Try in script/isotovideo
+  * Use Feature::Compat::Try in script/check_qemu_oom
+  * Use Feature::Compat::Try in osutils
+  * Use Feature::Compat::Try in consoles::sshXtermIPMI
+  * Use Feature::Compat::Try in consoles::VNC
+  * Use Feature::Compat::Try in consoles::VMWare
+  * Use Feature::Compat::Try in commands
+  * Use Feature::Compat::Try in bmwqemu
+  * Use Feature::Compat::Try in basetest
+  * Use Feature::Compat::Try in backend::qemu
+  * Use Feature::Compat::Try in backend::ipmi
+  * Use Feature::Compat::Try in backend::generalhw
+  * Use Feature::Compat::Try in backend::baseclass
+  * Use Feature::Compat::Try in autotest
+  * Use Feature::Compat::Try in OpenQA::Isotovideo::Proc
+  * Use Feature::Compat::Try in OpenQA::Isotovideo::Utils
+  * Use Feature::Compat::Try in OpenQA::Isotovideo::Runner
+  * Use Feature::Compat::Try in t
+  * Ensure a clean swtpm directory
+
+-------------------------------------------------------------------
 Wed Feb 12 14:23:25 UTC 2025 - okurz@suse.com
 
 - Update to version 4.6.1739353778.821904b:
