@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:14:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Add support for Python 3.11 and Python 3.11
+  * bad file descriptor error in windows, fix pytest errors
+  * drop Python 3.8 support
+  * ensure poetry works for Python 3.9
+  * fix broken workflow_dispatch CI rule
+  * Remove more references to legacy Python versions
+  * replace requirements.txt files with poetry
+  * update nix flake to fix problems
+  * use Python &gt;= 3.10 for docs
+
+-------------------------------------------------------------------
 Wed Oct 23 08:41:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.2:

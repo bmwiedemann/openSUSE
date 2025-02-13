@@ -220,4 +220,21 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
 - drop fix-pytest.patch: obsolete (added pytest-cov instead)</comment>
     <requestid>1217249</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fc8f0cfbf3f0baaf74bf71a529f59649</srcmd5>
+    <version>1.2.0</version>
+    <time>1739468391</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Add support for Python 3.11 and Python 3.11
+  * bad file descriptor error in windows, fix pytest errors
+  * drop Python 3.8 support
+  * ensure poetry works for Python 3.9
+  * fix broken workflow_dispatch CI rule
+  * Remove more references to legacy Python versions
+  * replace requirements.txt files with poetry
+  * update nix flake to fix problems
+  * use Python &amp;gt;= 3.10 for docs</comment>
+    <requestid>1245590</requestid>
+  </revision>
 </revisionlist>
