@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 12 19:13:10 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.59.1:
+  - Features
+    * feat: Add outputList template function
+  - Fixes
+    * fix: Fix crash when excluding types
+    * fix: Run git auto commit hook before creating commit message
+    * fix: Fix persistent state mode in chattr command
+  - Documentation updates
+    * docs: Update wording in .chezmoidata pages
+
+-------------------------------------------------------------------
 Tue Jan 28 17:24:05 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.59.0:

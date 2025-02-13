@@ -714,4 +714,21 @@
 </comment>
     <requestid>1240887</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>6f6993d81da95ede72f357b26d2da8db</srcmd5>
+    <version>2.59.1</version>
+    <time>1739468331</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.59.1:
+  - Features
+    * feat: Add outputList template function
+  - Fixes
+    * fix: Fix crash when excluding types
+    * fix: Run git auto commit hook before creating commit message
+    * fix: Fix persistent state mode in chattr command
+  - Documentation updates
+    * docs: Update wording in .chezmoidata pages
+</comment>
+    <requestid>1245471</requestid>
+  </revision>
 </revisionlist>
