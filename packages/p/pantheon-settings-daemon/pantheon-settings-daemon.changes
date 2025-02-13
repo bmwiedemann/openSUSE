@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:46:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.2.0:
+  * Progress indicators were added to the system update
+  * Get correct total size for system updates
+
+-------------------------------------------------------------------
 Fri Dec 13 05:39:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.1.1:

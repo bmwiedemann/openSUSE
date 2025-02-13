@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1230702</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b9906419deb1b9352418f82e7e48fcb1</srcmd5>
+    <version>8.2.0</version>
+    <time>1739469290</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.2.0:
+  * Progress indicators were added to the system update
+  * Get correct total size for system updates (forwarded request 1245704 from rrahl0)</comment>
+    <requestid>1245708</requestid>
+  </revision>
 </revisionlist>

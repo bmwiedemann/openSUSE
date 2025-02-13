@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-settings-daemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings-daemon
 Name:           pantheon-settings-daemon
-Version:        8.1.1
+Version:        8.2.0
 Release:        0
 Summary:        A daemon for the Pantheon Desktop
 License:        GPL-3.0-or-later
