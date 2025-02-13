@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 13 08:13:47 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.10
+  * 7zip / iso support
+  * Should compile with gcc 15 
+- deleted patches
+  - ytree-gcc15.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Feb 12 13:34:10 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix fix build with gcc 15, reported to werner[]frolix.han.de
+  + ytree-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Jun  7 11:57:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.09:
