@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Feb 13 09:00:02 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.171.0:
+  * feat: execute templates against postRendererHooks by @allanger
+    in #1839
+  * build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+    by @dependabot in #1897
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.15 to
+    1.15.16 by @dependabot in #1901
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.16 to
+    1.15.17 by @dependabot in #1905
+  * Use a regex to match --state-values-set-string arguments
+    by @gllb in #1902
+  * build(deps): bump golang.org/x/sync from 0.10.0 to 0.11.0
+    by @dependabot in #1911
+  * Chartify v0.20.8 update by @scodeman in #1908
+  * cleanup: remove all about v0.x by @yxxhero in #1903
+  * build(deps): bump golang.org/x/term from 0.28.0 to 0.29.0
+    by @dependabot in #1913
+  * chore: update babel to resolve CVEs by @zhaque44 in #1916
+  * remove deprecated charts.yaml by @yxxhero in #1437
+  * Revert "cleanup: remove all about v0.x" by @yxxhero in #1918
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.17 to
+    1.15.19 by @dependabot in #1920
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.19 to
+    1.15.20 by @dependabot in #1921
+  * feat: Add support for --wait-retries flag. by @connyay in #1922
+  * build: update go-yaml to v1.15.21 by @yxxhero in #1923
+
+-------------------------------------------------------------------
 Thu Jan 23 09:45:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.170.1:
