@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 16.6
+%define pgversion 16.7
 %define pgmajor 16
 %define buildlibs 0
 %define tarversion %{pgversion}
@@ -115,7 +115,7 @@ BuildRequires:  %libpq
 %endif
 
 %if 0%{?suse_version} >= 1500 && %pgmajor >= 11
-%ifarch riscv64
+%ifarch riscv64 loongarch64
 %bcond_with     llvm
 %else
 %bcond_without  llvm
@@ -190,7 +190,6 @@ Patch9:         postgresql-var-run-socket.patch
 Patch10:        postgresql-llvm-optional.patch
 Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
 %endif
-Patch12:        postgresql-tzdata2025a.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -524,7 +523,6 @@ touch -r configure tmp
 %if %{with llvm}
 %patch -P 10
 %patch -P 11
-%patch -P 12
 %endif
 touch -r tmp configure
 rm tmp
