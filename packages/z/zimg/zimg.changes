@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 11:28:14 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/sekrit-twc/zimg/issues/214
+  + zimg-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Jul 14 17:48:12 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 3.0.5

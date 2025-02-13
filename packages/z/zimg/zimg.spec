@@ -27,6 +27,8 @@ URL:            https://github.com/sekrit-twc/zimg
 Source0:        zimg-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         zimg-s390x-unit-tests.patch
+# https://github.com/sekrit-twc/zimg/issues/214
+Patch1:         zimg-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
