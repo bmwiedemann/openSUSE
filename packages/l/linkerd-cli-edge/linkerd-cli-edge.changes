@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 13 06:22:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 25.2.1:
+  * fix(cli): Don't require gateway CRDs in linkerd install
+
+-------------------------------------------------------------------
 Thu Jan 23 19:32:57 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 25.1.2:
