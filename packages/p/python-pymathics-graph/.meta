@@ -1,0 +1,6 @@
+<package name="python-pymathics-graph" project="openSUSE:Factory">
+  <title>Mathics Graph functions using NetworkX and Matplotlib</title>
+  <description>PyMathics-Graph is a Mathics3 Graph Module using NetworkX and Matplotlib.</description>
+  <devel project="science" package="python-pymathics-graph"/>
+  <url>https://github.com/Mathics3/pymathics-graph</url>
+</package>
