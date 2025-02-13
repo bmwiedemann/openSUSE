@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 12 16:03:12 UTC 2025 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20250212.5d3f04e:
+  * profiles: whitelist timekpr-next (bsc#1234134)
+
+-------------------------------------------------------------------
 Fri Jan 31 14:08:18 UTC 2025 - filippo.bonazzi@suse.com
 
 - Update to version 1550+20250131.f792cce:
