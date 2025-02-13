@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Feb  5 02:55:54 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update vector-algorithms to version 0.9.1.0.
+  ## Version 0.9.1.0 (2025-02-05)
+
+  - More inlining for `sort` and `nib` functions.
+
+-------------------------------------------------------------------
 Sun Nov 24 20:23:06 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update vector-algorithms to version 0.9.0.3.
