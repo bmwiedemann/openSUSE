@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Feb 13 06:19:21 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version latest:
+  * Bump version to 0.2.11
+  * Feature - Use tailscale settings reader + fix login / logged
+    out flows (#39)
+  * Bugs/issue 37 (#38)
+  * Update README and include link + info about Windows binaries
+  * Network state checking - Check every 2 minutes
+  * One last try with this crap
+  * God I hate github workflow
+  * Wrap in "" for $PREV_TAG
+  * Reading tag changes - Wrong ordering of commands
+  * And fix git config for pushing tags
+  * Better tag handling for change log
+  * Let's see if changes is updated in Release page now
+  * Forgot to update latest and push it
+  * Only update latest changelog when running on Linux builder
+  * Windows - Fix look & feel - No need for custom style override
+  * Gah, missed one
+  * Windows artifacts - Minor name changes
+  * Update change log for latest release + upload binaries
+  * Missing clobber on windows
+  * No need to create release, just update/upload
+  * Artifacts and build simplifications
+  * Linux fix
+  * And lets try to use gh cli to upload to the release tag
+  * Lets try actions/upload-artifact@v4 instead of
+    marvinpinto/action-automatic-releases@latest
+  * More publishing fixes and trouble shooting
+  * Windows build debug tests
+  * More windows publishing debug
+  * More windows publishing artifact fixes + use 7zip for solid
+    archive mgmt
+  * Publishing fixes for Windows and artifacts
+  * Combined artifacts upload
+  * Re-enable copy of build artifacts for windows
+  * Re-enable and fix up Windows package flow after build
+  * Github runner: Disable windows package & publish for now
+  * Github runner: pwsh for all windows things + cleanups
+  * Github runner: pwsh for all windows things
+  * Github runner: pwsh for all windows things
+  * Github runner: pwsh for all windows things
+  * Try pwsh on windows
+  * Don't install build tools on windows
+  * Github runner: CMake ubuntu fixes
+  * More windows build fixes
+  * VS 2022
+  * Github runner - Try adding windows builds
+  * Fix issue #33 BUG: Automatic reconect after disconecting
+  * Enable compile commands
+
+-------------------------------------------------------------------
 Fri Feb 07 18:07:53 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.10:
