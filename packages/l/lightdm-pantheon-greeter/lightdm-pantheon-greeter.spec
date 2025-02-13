@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-pantheon-greeter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define         appid io.elementary.greeter
 Name:           lightdm-pantheon-greeter
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Pantheon's LightDM Login Screen
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/greeter
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-mutter45.patch
-Patch1:         support-libmutter15.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -56,9 +55,7 @@ Pantheon Greeter is a pantheon-styled Login Screen for LightDM.
 
 %prep
 %autosetup -N -n greeter-%{version}
-%if 0%{?suse_version} >= 1600
-%patch -P1 -p1
-%else
+%if 0%{?suse_version} < 1600
 %patch -P0 -p1
 %endif
 
@@ -77,6 +74,7 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %doc README.md
 %{_bindir}/%{appid}-compositor
 %{_sbindir}/%{appid}
+%{_sbindir}/%{appid}-session-manager
 %{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/glib-2.0/schemas/%{appid}-compositor.gschema.xml
 %{_datadir}/lightdm/lightdm.conf.d/40-%{appid}.conf

@@ -7,4 +7,24 @@
     <comment></comment>
     <requestid>1234463</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a6949f621295e3bf340df5cb49a68e40</srcmd5>
+    <version>8.0.1</version>
+    <time>1739469291</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.1:
+  * Application: subclass Gtk.Application
+  * Create Application.css
+  * MainWindow: use built-in action group for select-session
+  * CapsLockRevealer: GTK4 prep
+  * CSS: specific window.background
+  * Main: don't start settings daemon in installer session
+  * Add Mutter 47 support
+  * Run our session manager as a separate process
+  * Update POTFILES
+  * Metainfo: add 8.0.1 release notes
+- remove patch support-libmutter15.patch, as upstream integrated
+  the support (forwarded request 1245703 from rrahl0)</comment>
+    <requestid>1245710</requestid>
+  </revision>
 </revisionlist>
