@@ -358,6 +358,7 @@ Patch2059:      disable-FFmpegAllowLists.patch
 Patch2060:      chromium-129-disable-H.264-video-parser-during-demuxing.patch
 Patch2061:      private_aggregation_host-uint128.patch
 Patch2062:      wayland_version.patch
+Patch2063:      fix-building-with-pipewire-1.3.82.patch
 
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
