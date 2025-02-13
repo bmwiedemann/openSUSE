@@ -1217,4 +1217,24 @@
   * tpmevlog: Ensure the event log matches the actual TPM PCRs</comment>
     <requestid>1226482</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ed506798804e6b6228de789200a52d81</srcmd5>
+    <version>25.01.00</version>
+    <time>1739468385</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 25.01.00:
+  * lib: fwts_version.h - update to V25.01.00
+  * debian: update changelog
+  * dmicheck: check the config files exist for CONFIG_STRICT_DEVMEM setting
+  * acpi: s3: reading residencyslp_s0_residency_usec for intel platforms
+  * Update copyright year to 2025
+  * ACPICA: Update to version 20241212
+  * acpi/s3 : fix stack smashing crash for s3 test
+  * acpitables: update ACPI table revsion test to ACPI 6.5
+  * acpi: uniqueid: fix the uniqueid test for the CID with package
+  * acpi: acpitables: Correct PCCT revision for ACPI 6.2
+  * dmicheck: fix the wrong size check for type 4
+  * acpi/wmi: Stop directing users to outdated LWN article</comment>
+    <requestid>1245584</requestid>
+  </revision>
 </revisionlist>
