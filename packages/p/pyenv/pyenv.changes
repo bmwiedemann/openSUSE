@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Thu Feb 13 07:33:11 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.3
+
+- Update 2.5.3
+  * Add PyPy v7.3.18 by @dand-oss in #3184
+  * Add Miniconda3 25.1.1-0 by @binbjz in #3190
+  * Add miniforge3-25.1.1-0, miniforge3-24.11.3-0 by @native-api in #3191
+  * Add CPython 3.14.0a5 by @edgarrmondragon in #3194
+  * Add Miniconda3 25.1.1-1 by @binbjz in #3192
+  * Update hashes for Python 3.14.0a5 tarballs by @jsirois in #3196
+  * rehash: Do not execute conda-specific code if conda is not installed by
+    @ChristianFredrikJohnsen in #3151
+
+-------------------------------------------------------------------
 Tue Feb 11 09:56:32 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.2
 
-- UPdate 2.5.2
+- Update 2.5.2
   * Fix OpenSSL version parsing in python-build script by @threadflow in #3181
   * Add GraalPy 24.1.2 by @msimacek in #3176
   * Add CPython 3.12.9 and 3.13.2 by @edgarrmondragon in #3183
