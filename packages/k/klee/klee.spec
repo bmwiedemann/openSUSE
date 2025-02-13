@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version 14
+%define llvm_version 15
 
 %ifarch x86_64
 %define with_uclibc 1
@@ -40,6 +40,9 @@ Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{ll
 
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
+%if 0%{suse_version} < 1600
+BuildRequires:  gcc14-c++
+%endif
 BuildRequires:  gperftools-devel
 %if %{with_uclibc}
 BuildRequires:  klee-uclibc-devel-static(llvm%{llvm_version})

@@ -1416,4 +1416,16 @@ build with uclibc</comment>
 - switch to llvm 14, as llvm 16 is used solely by klee</comment>
     <requestid>1242811</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>6f80237f17e21fc373362ec2c7211b78</srcmd5>
+    <version>3.1+20250106</version>
+    <time>1739468366</time>
+    <user>anag+factory</user>
+    <comment>- OK, bump to llvm 15 again, everything moved to 15 in the meantime
+
+- support old distros
+  * use gcc-14 c++ headers
+  * add rpmlintrc filter for libkleeRuntest1_0</comment>
+    <requestid>1245536</requestid>
+  </revision>
 </revisionlist>
