@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:24:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15
+  * Added support for python 3.13 - Removed ubber bound (#379)
+  * Added parameter to control if files are sorted before being
+    passed to pandoc (#378)
+  * Dropped CI support for older python and pypy versions (#387)
+  * Fix convert_file for Python 3.13 (#384)
+  * allow non-latex intermediaries for pdf generation (#381)
+- Drop remove-py313-upper-bound.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed Nov 20 15:46:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add remove-py313-upper-bound.patch: fix build with python 3.13

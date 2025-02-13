@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypandoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %define base_name pypandoc
 %{?sle15_python_module_pythons}
 Name:           python-pypandoc
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
 URL:            https://github.com/JessicaTegner/pypandoc
 Source:         https://github.com/JessicaTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/JessicaTegner/pypandoc/commit/50f3b0867e82874edfd8828087acb6a52ef2eaef
-Patch1:         remove-py313-upper-bound.patch
 BuildRequires:  %{python_module pandocfilters}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
