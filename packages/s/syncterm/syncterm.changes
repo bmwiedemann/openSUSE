@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Sun Feb  9 13:43:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Switch to CMake
+- Drop not longer needed patches:
+  * ciolib-ncurses.patch
+  * cryptlib-ccopts.patch
+- Update to version 1.5
+  * Support web-based dialing directories.
+  * Alt+Home now centres the window on the screen.
+  * Add setting to invert mouse wheel.
+  * Option to defer telnet negotiation.
+  * Use the SAA5050 font for Prestel mode.
+  * Add BBC Micro Mode 7 mode.
+  * Remove delays when sending login data.
+  * Fix Prestel regressions.
+  * Fix RIP rendering regressions.
+  * Fix 80x43 scrolling bottom line corruption.
+- Update to version 1.4
+  * Add support for JPEG XL graphics in addition to PPM.
+  * Massively improve output performance.
+  * Lower audio output volume by 12dB.
+  * Add option to configure audio output.
+  * Add support for ALT+XXX and ALT+0XXXXX key entry.
+  * Re-order BBS list entry fields.
+  * Fix X11 mode scaling and fullscreen with minimal X servers.
+  * Fix crashes in text modes due to rip code being called.
+  * Better socket disconnect detection in SSH and telnets sessions.
+  * Reimplement status bar code.
+  * Fix various Prestel mode bugs.
+  * Fix error handling with telnets.
+- Update to version 1.3
+  * Fix critical bug when editing a BBS listing.
+
+-------------------------------------------------------------------
+Sun Nov 21 21:39:39 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Enable cryptlib build(it's linked statically)
+- Add cryptlib-ccopts.patch
+  Disable the use of march=native.
+
+-------------------------------------------------------------------
+Sun Nov 21 18:28:10 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to 1.2-20211121
+
+-------------------------------------------------------------------
+Wed Jun  2 16:43:21 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+-  Update to version 1.2
+ * Aspect ratio enforcement
+ * Support internal smooth scaling
+ * Support toggling scaling blocky vs smooth
+ * Support for telnets
+ * Support for SSH "none" auth method
+ * Support for VGA mode
+ * Start of RIP and SkyPix support (incomplete)
+ * Added a comment field to listings
+ * Default connection type changed to SSH
+ * ALT-Left/ALT-Right for window size snapping, ALT-Up/ALT-Down for speed
+ * Use the colodore C64 palette with "most common" adjustments
+ * Prefer X11 mode over SDL mode
+ * Fix scrolling with left/right margins
+ * Resumed ZModem ETA estimation fix
+
+- Packaging changes
+ * Extract the source from upstream sbbs repo until the actual release is cut.
+ * Drop syncterm-fix-implicit-definition.patch and 
+    syncterm-fix-incorrect-fsf-address.patch
+    Issues fixed upstream
+ * Refresh conio-ncurses.patch and rename it to ciolib-ncurses.patch
+-------------------------------------------------------------------
+Wed Aug 12 14:59:54 UTC 2020 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 1.1:
+  * Don't wait for keypress after file transfer completes
+  * Fix Windows bug with the transfer path
+  * Add BinaryText screenshot capabilities to Capture Control menu
+  * Fix logging on Windows
+  * Range check screen width and height, clamp at 255 rows/cols
+  * Add CSI = 1 n and CSI = 2 n ANSI commands (see cterm.txt for details)
+  * Fix CSI ? s and CSI ? n
+  * Update to Cryptlib 3.4.5
+  * Ignore unsupported APC, DCS, OSC, PM, and SOS strings
+  * Add support for the palette redefinition/reset OSC commands from xterm
+  * Use XTerm 256-color palette
+  * Support XTerm style palette color selection
+  * Support Sixel graphics
+  * RLogin using the "current" speed was missing a terminating NUL
+  * Added CSI < Ps c command for extended attributes
+  * Added CSI ? Ps1 ; Ps2 S to query graphics canvas size
+  * Add a new ANSI compliant DCS command for font loading
+  * Support bright background mode in curses when in xterm 88 or 256 color mode
+  * Added support for cached font assets
+  * Support for XTerm and TundraDraw/PabloDraw 24-bit color modes
+  * Some PETSCII keyboard changes
+  * Add support for DECRQSS
+  * Terminal type is now sent as "syncterm", "PETSCII", or "ATASCII"
+  * Menus are now always in cp437, and there is no shadow corruption
+  * Added CSI Pn SP @ to shift the screen left
+  * Added CSI Pn SP A to shift the screen right
+  * Added CSI Pn b to repeat a character multiple times
+  * Added CSI Pn d to change rows
+  * Added CSI Pn a as an alias to CSI Pn C
+  * Added CSI Pn ` as an alias to CSI Pn G
+  * Added ESC H to set a tabstop
+  * Added CSI Pn g to clear tabs
+  * Added CSI 2 $ w to request a tab report
+  * Added ESC M as a reverse linefeed
+  * Added CSI Pn e as an alias to CSI Pn B
+  * Added CSI Pn Y and CSI Pn I to move a specified numer of tab stops
+  * Added CSI Pn SP c to remove a specific tab stop
+  * Added CSI Pn k as an alias to CSI Pn A
+  * Support for a "Custom" video mode added
+  * X/Ymodem progress on Win32 fixed
+  * Enable SSH CTR modes
+  * Fix directory title to reflect changes to list size
+  * Update to SDL2 
+  * Allow snapping to scale using ALT-<arrow-key> in SDL mode
+  * Support XTerm style mouse reporting (except drag and keyboard modbits)
+  * CTRL-F/CTRL-G will now search the listing
+  * Support changing left/right margins the same way xterm does
+  * Implement ESC c to reset the terminal
+  * Implement Character Position Barckward
+  * Add UTF-8 copy/paste support
+  * Use Unicode in curses mode to allow full cp437 emulation
+  * Add -iI for forced ASCII curses mode
+  * Send sequences for backtab, shift/alt/ctrl + Function key
+  * Fix X11 copy/paste
+  * Changed codes used for F1-F5
+  * Speed change keys changed to CTRL up/down
+  * Add support for DEC style macros
+  * Fix X11 handing of non-multiple window sizes
+  * Allow "control characters" in Atari mode
+  * Built-in fonts now have a unicode mapping for copy/paste
+  * Added scrollwheel support
+
+- Package changes:
+  * Switch to SDL2
+  * Remove syncterm-fix-desktop-file.patch  (fixed upstream)
+  * Rename x.patch to conio-ncurses.patch and refresh it.
+
+-------------------------------------------------------------------
+Mon Jun 20 15:25:58 UTC 2016 - malcolmlewis@opensuse.org
+
+- Update to version 1.0:
+  + New ability to use the blink attribute to select alternate
+    font.
+  + Fixes for user font management.
+  + Help text cleanup.
+  + Handle the close window button gracefully.
+  + Allow left/right to switch dir/file columns in file picker.
+  + Allow case-only changes to directory entries.
+  + Translate copies from non-ASCII screens screen modes to ASCII.
+  + Don't conditionally compile shell support, just treat it as
+    disabled.
+  + Support Commodore and Atari fonts when not using their native
+    emulation.
+  + Properly save/restore the RLogin Reversed connection mode.
+  + Properly save/restore the C128 (80col) and Atari XEP80 modes.
+  + Fix separator character in status bar with fonts that don't
+    support lines.
+  + No longer switch font to CP437 when displaying menus.
+  + Workaround SDL bug when resizing on X11.
+  + Fix the "black window" Overlay issue.
+  + Add Topaz and Micro Knight (non-Plus) Amiga fonts.
+  + Fix Function keys with Caps Lock in SDL mode.
+  + SSH stability fixes.
+  + Paginate help output.
+  + Statically link Cryptlib.
+  + Varous crashes at startup and during resize fixed.
+
+-------------------------------------------------------------------
+Sat Jan  3 05:17:26 UTC 2015 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add syncterm-fix-desktop-file.patch: Fix desktop file categories
+  and icon.
+- Add syncterm-fix-desktop-file.patch: Correct FSF address.
+- Add syncterm-fix-implicit-definition.patch: Fix program is using
+  implicit definitions of functions error.

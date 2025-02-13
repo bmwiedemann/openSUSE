@@ -1,0 +1,25 @@
+<package name="syncterm" project="openSUSE:Factory">
+  <title>SyncTERM BBS terminal</title>
+  <description>SyncTERM is a multi-platform BBS terminal program which supports:
+    * X/Y/ZModem up/downloads
+    *  *nix versions will run using SDL2, X11, or {n}curses
+    * Full ANSI-BBS support
+    * Full CGTerm Commodore 64 PETSCII support
+    * Full Atari 8-bit ATASCII support
+    * DoorWay support
+    * Support for IBM low and high ASCII including the face graphics (☺ and ☻) and card symbols (♥, ♦, ♣, and ♠) (may not work in curses mode, depends on the terminal being used).
+    * Phone books
+    * Multiple screen modes (80x25, 80x28, 80x43, 80x50, 80x60, 132x25, 132x28, 132x30, 132x34, 132x43, 132x50, 132x60)
+    * ANSI Music (through the sound card if installed)
+    * Telnet, RLogin, SSH, RAW, modem, shell (*nix only) and direct serial connections
+    * Auto-login with Synchronet RLogin
+    * Large Scrollback
+    * Mouse-driven menus
+    * Copy/Paste
+    * Supports character pacing for ANSI animation as well as the VT500 ESC[*r sequence to allow dynamic speed changes
+    * Comes with 43 standard fonts and allows the BBS to change the current font *and* upload custom fonts.
+    * Supports Operation Overkill ][ Terminal emulation
+
+    https://www.syncterm.net</description>
+  <devel project="X11:terminals" package="syncterm"/>
+</package>
