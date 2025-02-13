@@ -1,7 +1,7 @@
 #
 # spec file for package wsdl4j
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           wsdl4j
 Version:        1.6.3
 Release:        0
 Summary:        Web Services Description Language Toolkit for Java
-License:        IPL-1.0
+License:        CPL-1.0
 Group:          Development/Libraries/Java
 URL:            https://sourceforge.net/projects/wsdl4j
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.zip

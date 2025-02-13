@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 13 06:52:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix license: IPL-1.0 -> CPL-1.0
+
+-------------------------------------------------------------------
 Tue Sep 24 10:35:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds
