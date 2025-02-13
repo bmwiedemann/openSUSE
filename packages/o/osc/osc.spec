@@ -69,7 +69,7 @@
 %endif
 
 Name:           osc
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -122,6 +122,8 @@ Recommends:     %{use_python_pkg}-keyring-keyutils
 Recommends:     %{use_python_pkg}-zstandard
 
 Recommends:     %{obs_build_pkg}
+# need support for --repos-directory option
+Conflicts:      %{obs_build_pkg} < 20250206
 Recommends:     ca-certificates
 Recommends:     diffstat
 Recommends:     powerpc32
