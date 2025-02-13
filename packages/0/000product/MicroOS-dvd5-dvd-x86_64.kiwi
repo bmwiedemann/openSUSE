@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20250211" schemaversion="4.1">
+<image name="OBS__MicroOS___20250212" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250211</productvar>
+      <productvar name="VERSION">20250212</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250211,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250212,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250211/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250212/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -683,6 +683,7 @@
       <repopackage name="libebml5"/>
       <repopackage name="libebook-1_2-21"/>
       <repopackage name="libebook-contacts-1_2-4"/>
+      <repopackage name="libebur128-1"/>
       <repopackage name="libecal-2_0-3"/>
       <repopackage name="libeconf0"/>
       <repopackage name="libedata-book-1_2-27"/>
@@ -713,7 +714,7 @@
       <repopackage name="libffi8"/>
       <repopackage name="libfftw3-3"/>
       <repopackage name="libfido2-1"/>
-      <repopackage name="libFLAC12"/>
+      <repopackage name="libFLAC14"/>
       <repopackage name="libflashrom1"/>
       <repopackage name="libflatpak0"/>
       <repopackage name="libflite1"/>
@@ -1457,6 +1458,7 @@
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc-audio-processing-1-3"/>
+      <repopackage name="libwebrtc-audio-processing-2-1"/>
       <repopackage name="libwireplumber-0_5-0"/>
       <repopackage name="libwoff2common1_0_2"/>
       <repopackage name="libwoff2dec1_0_2"/>

@@ -310,6 +310,8 @@ unsorted:
   - SDL2_ttf-devel 
   - SDL3-devel 
   - SDL3-devel-doc 
+  - SDL3_image-devel 
+  - SDL3_ttf-devel 
   - SDL_Pango-devel 
   - SDL_mixer-devel 
   - SDL_net-devel 
@@ -3443,6 +3445,9 @@ unsorted:
   - dnf5-plugins 
   - dnf5daemon-client 
   - dnf5daemon-server 
+  - dnglab 
+  - dnglab-bash-completion 
+  - dnglab-fish-completion 
   - dns24-update 
   - dnscrypt-proxy 
   - dnsdiag 
@@ -11237,10 +11242,10 @@ unsorted:
   - libEMF1 
   - libFAudio0 
   - libFAudio0-32bit 
-  - libFLAC++10 
-  - libFLAC++10-32bit 
-  - libFLAC++10-x86-64-v3 
-  - libFLAC12-32bit 
+  - libFLAC++11 
+  - libFLAC++11-32bit 
+  - libFLAC++11-x86-64-v3 
+  - libFLAC14-32bit 
   - libFOX-1_6-0 
   - libFcitx5Config6 
   - libFcitx5Core7 
@@ -11726,6 +11731,8 @@ unsorted:
   - libSDL2_ttf-2_0-0 
   - libSDL3-0 
   - libSDL3-0-32bit 
+  - libSDL3_image0 
+  - libSDL3_ttf0 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
   - libSDL_bgi-suse9 
@@ -12013,8 +12020,8 @@ unsorted:
   - libamd-doc 
   - libaml0 
   - libancient2 
-  - libangelscript2_36_1 
-  - libangelscript_addons2_36_1 
+  - libangelscript2_37_0 
+  - libangelscript_addons2_37_0 
   - libansilove-devel 
   - libansilove1 
   - libanthy0 
@@ -13043,7 +13050,6 @@ unsorted:
   - libeantic3 
   - libeb16 
   - libebml-devel 
-  - libebur128-1 
   - libebur128-devel 
   - libecholib-devel 
   - libecholib1_3 
@@ -14537,6 +14543,7 @@ unsorted:
   - liblouis-doc 
   - liblouis-tools 
   - liblowdown2 
+  - liblpcnetfreedv0_5 
   - liblqr-1-0-32bit 
   - liblqr-devel 
   - liblrdf-devel 
@@ -14851,6 +14858,8 @@ unsorted:
   - libmrss0 
   - libmruby3_1_0 
   - libmruby_core3_1_0 
+  - libmseed-devel 
+  - libmseed3 
   - libmsgpack-c2 
   - libmsi-1_0-0 
   - libmsiecf-devel 
@@ -17136,7 +17145,6 @@ unsorted:
   - libwebrtc-audio-processing-1-3-32bit 
   - libwebrtc-audio-processing-1-devel 
   - libwebrtc-audio-processing-1-devel-static 
-  - libwebrtc-audio-processing-2-1 
   - libwebrtc-audio-processing-2-1-32bit 
   - libwebrtc-audio-processing-devel 
   - libwebrtc-audio-processing-devel-static 
@@ -17866,6 +17874,8 @@ unsorted:
   - lowdown-devel 
   - lowfi 
   - lpairs 
+  - lpcnet 
+  - lpcnet-devel 
   - lpe 
   - lpsolve 
   - lpsolve-devel 
@@ -19810,7 +19820,6 @@ unsorted:
   - nemo-lang 
   - neochat 
   - neochat-lang 
-  - neofetch 
   - neomutt 
   - neomutt-contrib 
   - neomutt-doc 
@@ -24374,6 +24383,7 @@ unsorted:
   - python311-MarkupPy 
   - python311-Markups 
   - python311-Mathics 
+  - python311-Mathics-Django 
   - python311-Mathics-Scanner 
   - python311-MechanicalSoup 
   - python311-MiniMock 
@@ -26207,6 +26217,7 @@ unsorted:
   - python311-material-color-utilities-python 
   - python311-mathgl 
   - python311-mathics-pygments 
+  - python311-mathicsscript 
   - python311-matplotlib 
   - python311-matplotlib-cairo 
   - python311-matplotlib-gtk-common 
@@ -27970,6 +27981,7 @@ unsorted:
   - python312-MarkupSafe 
   - python312-Markups 
   - python312-Mathics 
+  - python312-Mathics-Django 
   - python312-Mathics-Scanner 
   - python312-MechanicalSoup 
   - python312-MiniMock 
@@ -29870,6 +29882,7 @@ unsorted:
   - python312-material-color-utilities-python 
   - python312-mathgl 
   - python312-mathics-pygments 
+  - python312-mathicsscript 
   - python312-matplotlib 
   - python312-matplotlib-cairo 
   - python312-matplotlib-gtk-common 
@@ -36828,6 +36841,7 @@ unsorted:
   - rust 
   - rust-bindgen 
   - rust-cbindgen 
+  - rust-grass 
   - rust1.78 
   - rust1.78-src 
   - rust1.79 
