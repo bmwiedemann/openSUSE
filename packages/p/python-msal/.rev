@@ -342,4 +342,15 @@
     had a bug (#762), now fixed in PR (#763) (forwarded request 1229314 from glaubitz)</comment>
     <requestid>1229331</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>09c583c8efa8964359dec595736990a7</srcmd5>
+    <version>1.31.2~b1</version>
+    <time>1739468434</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.31.2b1
+  * acquire_token_interactive(...) supports scope with the shape of
+    &quot;GUID/.default&quot; when running inside Cloud Shell (#784, #785)
+- Override upstream version with 1.31.2~b1 (forwarded request 1245552 from glaubitz)</comment>
+    <requestid>1245727</requestid>
+  </revision>
 </revisionlist>

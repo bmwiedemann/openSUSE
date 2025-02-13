@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 13 07:48:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.31.2b1
+  * acquire_token_interactive(...) supports scope with the shape of
+    "GUID/.default" when running inside Cloud Shell (#784, #785)
+- Override upstream version with 1.31.2~b1
+
+-------------------------------------------------------------------
 Mon Dec  9 10:56:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.31.1
