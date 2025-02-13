@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 13 13:44:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.0
+  * gtp: Allow TX/Store RX Direct Tunnel Flags
+  * gtp: Allow UpdatePDPContext initiated by GGSN
+  * ggsn: Support announcing APN MTU over PCO and over ICMPv6 RA
+  * ggsn: use libosmocore tundev API to create APN TUN device
+  * ggsn: Avoid forwarding IPv6 solicited-node multicast addr to
+    TUN device
+  * doc: Document MTU features in User Manual and example
+    config files
+  * gtp.h: add more GTP cause code from 29.060 v15.3.30
+
+-------------------------------------------------------------------
 Sat Oct 26 14:00:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.0
