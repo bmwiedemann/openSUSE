@@ -1,7 +1,7 @@
 #
 # spec file for package yamagi-quake2-ctf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          Amusements/Games/3D/Shoot
 URL:            https://www.yamagi.org/quake2/
 Source:         http://deponie.yamagi.org/quake2/quake2-ctf-%{version}.tar.xz
 Source1:        yquake2-ctf.desktop
+# https://github.com/yquake2/ctf/issues/20
+Patch0:         yamagi-quake2-ctf-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  update-desktop-files
@@ -37,7 +39,7 @@ This package provides the Three Wave Capture The Flag game mode
 for yamagi-quake2, an enhanced port of the original Quake II.
 
 %prep
-%setup -q -n quake2-ctf-%{version}
+%autosetup -p1 -n quake2-ctf-%{version}
 
 # replace __DATE__ and __TIME__ with date/time of the last specfile changelog
 # entry

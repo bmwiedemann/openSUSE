@@ -1,0 +1,16 @@
+diff -upr quake2-ctf-1.10.orig/src/header/shared.h quake2-ctf-1.10/src/header/shared.h
+--- quake2-ctf-1.10.orig/src/header/shared.h	2025-02-13 11:21:24.568541961 +0100
++++ quake2-ctf-1.10/src/header/shared.h	2025-02-13 11:22:12.890963055 +0100
+@@ -34,10 +34,11 @@
+ #include <stdarg.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <stdbool.h>
+ #include <time.h>
+ 
+ typedef unsigned char byte;
+-typedef enum {false, true}  qboolean;
++typedef bool qboolean;
+ 
+ #ifndef NULL
+  #define NULL ((void *)0)

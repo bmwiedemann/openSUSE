@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:25:56 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/yquake2/ctf/issues/20
+  + yamagi-quake2-ctf-gcc15.patch
+
+-------------------------------------------------------------------
 Sun Dec 17 15:04:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10:
