@@ -592,4 +592,12 @@
   - Include SCT verification failure details in error message (#3799) (forwarded request 1205245 from msmeissn)</comment>
     <requestid>1205246</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6a3611f2fd2c0f270e2182c26c396c78</srcmd5>
+    <version>2.4.2</version>
+    <time>1739468393</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1245604</requestid>
+  </revision>
 </revisionlist>
