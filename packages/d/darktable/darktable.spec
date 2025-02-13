@@ -1,7 +1,7 @@
 #
 # spec file for package darktable
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,7 +119,7 @@
 %endif
 
 Name:           darktable
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
