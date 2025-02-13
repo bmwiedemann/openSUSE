@@ -1,0 +1,8 @@
+<package name="tucnak" project="openSUSE:Factory">
+  <title>VHF and microwave contest log</title>
+  <description>Tucnak is a amateur radio VHF and above contest logging program
+with some useful features as networking, cw keying, ssb voicer,
+sound recorder and more. User interface is based on Taclog.</description>
+  <devel project="hamradio" package="tucnak"/>
+  <url>https://tucnak.nagano.cz/</url>
+</package>
