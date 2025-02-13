@@ -262,4 +262,18 @@
     <comment>- Fix build, add postgresql-tzdata2025a.patch</comment>
     <requestid>1240821</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>83432d5a462cbef8dd241f2ee6376b19</srcmd5>
+    <version>15.11</version>
+    <time>1739468430</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 15.11:
+  * bsc#1237093, CVE-2025-1094: Harden PQescapeString and allied
+    functions against invalidly-encoded input strings.
+  * obsoletes postgresql-tzdata2025a.patch
+  * https://www.postgresql.org/docs/release/15.11/
+  * https://www.postgresql.org/about/news/-3015/
+- Disable LLVM JIT on loongarch64</comment>
+    <requestid>1245714</requestid>
+  </revision>
 </revisionlist>
