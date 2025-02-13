@@ -487,4 +487,22 @@
   * chore(deps): update all dependencies (forwarded request 1236191 from ph03nix)</comment>
     <requestid>1236236</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8a00a05685e266583093eed2cd1fb77e</srcmd5>
+    <version>2.22.1</version>
+    <time>1739468423</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.22.1:
+  * Update cosign to v2.4.2 (#1303)
+  * Add support for go 1.24 and phased out support for go 1.22 (#1302)
+  * chore(deps): update all dependencies (#1300)
+  * Update to go version 1.23.6 and 1.22.12 (#1299)
+  * chore(deps): update module google.golang.org/api to v0.219.0 (#1296)
+  * chore(deps): update module google.golang.org/api to v0.218.0 (#1294)
+  * Add test to conver unit parssing for G115 rule (#1293)
+  * Update to go version 1.23.5 and 1.22.11 (#1291)
+  * chore(deps): update all dependencies (#1290)
+  * Update gosec in github action to 2.22.0 (#1286) (forwarded request 1245688 from ph03nix)</comment>
+    <requestid>1245719</requestid>
+  </revision>
 </revisionlist>

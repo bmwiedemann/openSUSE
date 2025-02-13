@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:18:59 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 2.22.1:
+  * Update cosign to v2.4.2 (#1303)
+  * Add support for go 1.24 and phased out support for go 1.22 (#1302)
+  * chore(deps): update all dependencies (#1300)
+  * Update to go version 1.23.6 and 1.22.12 (#1299)
+  * chore(deps): update module google.golang.org/api to v0.219.0 (#1296)
+  * chore(deps): update module google.golang.org/api to v0.218.0 (#1294)
+  * Add test to conver unit parssing for G115 rule (#1293)
+  * Update to go version 1.23.5 and 1.22.11 (#1291)
+  * chore(deps): update all dependencies (#1290)
+  * Update gosec in github action to 2.22.0 (#1286)
+
+-------------------------------------------------------------------
 Thu Jan 09 12:31:07 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 2.22.0:
