@@ -312,4 +312,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1207989 from glaubitz)</comment>
     <requestid>1207991</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>adb38ac299d83baafc30d798bd5de6ad</srcmd5>
+    <version>1.20.0</version>
+    <time>1739468401</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.20.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1245581 from glaubitz)</comment>
+    <requestid>1245679</requestid>
+  </revision>
 </revisionlist>
