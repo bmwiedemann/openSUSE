@@ -17,7 +17,7 @@
 
 
 Name:           hubble
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        Network, Service & Security Observability for Kubernetes using eBPF
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         hubble-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23.6
 BuildRequires:  zsh
 
 %description

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 13 06:17:57 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.17.1:
+  * Prepare for v1.17.1 release
+  * migrate Renovate config take #2
+  * migrate Renovate config
+  * go.mod: require latest patch version
+  * make: update Go to v1.23.6
+  * Update stable release to 1.17.0
+
+-------------------------------------------------------------------
 Fri Feb 07 16:40:00 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.17.0:
