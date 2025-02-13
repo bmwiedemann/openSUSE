@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Thu Feb 13 07:29:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Get package ready for Factory:
+  * license is GPL-3.0-or-later
+  * some spec files tweaks
+
+-------------------------------------------------------------------
+Wed Sep 15 22:56:37 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 9.5.8
+  * Fftw plan on arm processors is very slow.
+  * made some changes to make it "runnable" on Raspberry Pi.
+- Update to version 9.5.7
+  * switching to DRM was taking more dan 45 seconds on slow cpu's.
+  * changed initialization.
+  * new logging functions
+
+-------------------------------------------------------------------
+Thu Jul 22 21:14:41 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 9.5.6 
+- Update to version 9.5.5 
+  * Added conditional for Qt < 5.11: horizontalAdvance
+- Update to version 9.5.4
+  * Added FILPATHLEN definition when using Hamlib 4
+
+-------------------------------------------------------------------
+Mon Apr 05 12:00:00 UTC 2021 - Mariusz Woźniak <sp6ina@c44.pl>
+
+- Update to version 9.5.3
+  * QSSTV needs at least Qt version 5.11 bugfix target program from
+    qssstv to qsstv
+
+-------------------------------------------------------------------
+Wed Aug 21 22:37:39 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 9.4.4
+  * removed auto declaration in basicgraphicitem.cpp (needs C++11)
+- Update to version 9.4.3
+  * added -Wno-implicit-fallthrough to qsstv.pro
+  * macro text %s (SNR) is now supported in template
+  * change in Test FTP Connections
+  * improved sync detection in SSTV mode
+  * documentation update
+  * lowered audio level of WF ID
+  * a number of small bug fixes
+ 
+-------------------------------------------------------------------
+Tue May 14 23:30:02 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 9.4.2
+  * replaced [[fallthrough]] statements for older compilers.
+- Update to version 9.4.1
+  * redesign of the template editor
+  * fixed template image corruption when image Fit mode was
+    selected.
+  * use of transparent images fixed (imageBackgroundColor (see
+    Config GUI) is used to process transparency)
+  * removed c++11 Config option in qsstv.pro. Eliminated
+    dependencies on c++11 to commpile with older compilers.
+
+-------------------------------------------------------------------
+Sat Apr 20 10:15:04 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 9.3.3
+
+-------------------------------------------------------------------
+Fri Dec 29 15:35:02 UTC 2017 - wk@ire.pw.edu.pl
+
+- Update to version 9.2.6
+
+-------------------------------------------------------------------
+Sun Dec 25 21:35:40 UTC 2016 - dl8fcl@t-online.de
+
+- Update to version 9.1.8
+
+-------------------------------------------------------------------
+Tue May 17 21:40:38 UTC 2016 - dl8fcl@t-online.de
+
+- Update to version 9.1.5
+  Build on top QT 5.x ( and also compatible with Qt 4.8)
+  Better synchronization in SSTV mode
+  New SSTV narrow band modes (MP73-N,MP110-N,MP140-N,MC110-N,MC140-N,MC180-N)
+  Changed GUI layout
+  Gallery window now shows all the rx/tx images.
+  RX and TX images for SSTV and DRM now in separate gallery tab.
+  TX Stock Images for fast selecting preferred TX Images.
+  SSTV Images only saved after a configurable percentage completed
+  Setting and reading frequency via CAT interface
+  Preferred fast frequency selection for SSTV and DRM
+  Editor/templates: multi-line inputs for x,y and z
+  Pulse audio direct interface
+
+-------------------------------------------------------------------
+Fri Jul 17 21:56:18 UTC 2015 - dl8fcl@darc.de
+
+- Update to version 8.2.12
+  Robot mode fix gray image
+
+-------------------------------------------------------------------
+Sun Mar 29 19:11:57 UTC 2015 - dl8fcl@darc.de
+
+- Update to version 8.2.11
+  fixed bug in rigcontrol speed settings
+
+-------------------------------------------------------------------
+Sun Mar  1 23:46:09 UTC 2015 - dl8fcl@darc.de
+
+- Update to version 8.2.10
+  fix for autosave button in rx (enable disable on the fly without
+  restarting, next image will be autosaved if enabled)
+  fix manual save button in rx, is now working
+  when saving file, filename has now hours with leading zeroes
+  hybrid password is now correctly loaded/saved
+  xml interface (flrig) is now working again
+  changed Sensitivity in SSTV
+
+-------------------------------------------------------------------
+Sun Dec 28 20:34:13 UTC 2014 - dl8fcl@darc.de
+
+- Update to version 8.2.9
+  bugfix for problem with reedsolomon type rs4
+  Manual no longer part of the package
+
+-------------------------------------------------------------------
+Sun Oct 12 14:40:44 UTC 2014 - dl8fcl@darc.de
+
+- Update to version 8.2.8
+  update for hybrid mode - compatible with Easypal from October 2014
+  documentation split to separated rpm
+
+-------------------------------------------------------------------
+Tue Jul  8 08:15:43 UTC 2014 - dl8fcl@darc.de
+
+- Update to version 8.2.7
+   bug fixed system segfault when BSR is activated when no BSR was received
+   bug fixed in FTP upload when using Filezilla ftp server
+  8.2.6
+   bug fixed in sound output to file
+   bug fixed in FTP upload of images when using subdirectories
+  8.2.5
+   some versions of compilers made the program crash on startup ->fixed
+   TRUE/FALSE changed to true/false for Qt 5.2 compatibility
+  8.2.4
+   bug fix FTP upload to Image ftp server could hang on server not responding
+   bug fix for partial download of hybrid images
+  8.2.3
+   SSTV sensitivity is now working as specified (Level 3 is most sensitive).
+   FTP upload bug correction.
+  8.2.2
+   Restart of RX after Config change
+   Support of animated gifs (rx)
+   option for ftp upload of received images to cycle image1 to image30
+   update manual
+  8.2.1
+   Added timeout for ftp connections
+   added xmlrpc interface (server side) to flrig
+   added ipc connection for cqrlog
+   added profiles to DRM transmission
+   changed SSTV/DRM switching now simply use TAB's
+
+-------------------------------------------------------------------
+Sat Feb 22 14:30:12 UTC 2014 - dl8fcl@darc.de
+
+- Update to version 8.1.17
+    fixed bug in hybrid mode occuring in version 15 and 16
+  8.1.16
+    bug ifx in encryption module
+    fix enable hybrid mode reception flag now works as an enable instead of a disable
+  8.1.15
+    added %m and %s for text expansion in waterfall
+    updated manual
+    added TX on Delay
+    added +RTS/+DTR -RTS/-DTR
+    added enable/disable hybrid mode reception
+
+-------------------------------------------------------------------
+Fri Jan 31 23:04:12 UTC 2014 - dl8fcl@darc.de
+
+- Update to version 8.1.14 
+   added control for RTS:CTS via Hamlib
+   fixed PTT via serial port
+   changed minimum size of QSSTV window
+
+-------------------------------------------------------------------
+Mon Jan 27 22:34:02 UTC 2014 - dl8fcl@darc.de
+
+- Update to version 8.1.13
+   added hybrid tx
+   changed hybrid mode to make it compatible with Easypal version jan 2014.
+   add FSKId in SSTV TX mode (thanks to Michael(DL3YAP))
+   fixed bug in PTT serial control lines (thanks to Michael(DL3YAP))
+   Added markers for SSTV frequencies and DRM pilot tones
+   Layout changed to accomodate displays down to 1024x600
+   Better DRM sensitivity
+   Rigcontrol bugfix
+   streamline of spec file 
+
+-------------------------------------------------------------------
+Sat Jan  4 16:28:20 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 8.1.12
+  + http://users.telenet.be/on4qz/qsstv/manual/changelog.html for news
+- Add SUSE header to specfile
+- Remove patchs (fixed on upstream release)
+  + Fix-mix-ui-form.patch
+  + qsstv-fix-html-doc-path.patch 
+  + qsstv-fix-target-path.patch 
+- Adapt spec file to upstream changes
+  + documentation is not provided anymore
+  + src/src.pro has been removed
+- Add BuildRequires: libjasper-devel; new dependency
+
+-------------------------------------------------------------------
+Sun Dec 16 18:08:58 UTC 2012 - p.drouand@gmail.com
+
+- Update to 7.1.7 version:
+  * Complete rewrite of 5.3.x versions
+- Remove patchs (fixed on upstream release):
+  * qsstv_config_guess.diff 
+  * qsstv_config_sub.diff 
+  * qsstv_qsstv_repeater_cpp.diff 
+  * qsstv_repeater_2.diff 
+- Added patchs:
+  * Fix-mix-ui-form.patch 
+  * fix-no-return-in-nonvoid-function-logging.cpp.patch 
+  * qsstv-fix-html-doc-path.patch 
+  * qsstv-fix-target-path.patch 
+  * qsstv-gcc47_unistd.patch 
+- Add a man documentation file for qsstv binary
+- Add a desktop file
+- Add a changes file to get more opensuse compliant
+- Clean the specfile
+

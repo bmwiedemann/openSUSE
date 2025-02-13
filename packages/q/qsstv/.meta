@@ -1,0 +1,6 @@
+<package name="qsstv" project="openSUSE:Factory">
+  <title>qsstv is an sstv app</title>
+  <description>QSSTV is a program for receiving and transmitting SSTV and HAMDRM (sometimes
+called DSSTV). It is compatible with most of MmSSTV and EasyPal</description>
+  <devel project="hamradio" package="qsstv"/>
+</package>
