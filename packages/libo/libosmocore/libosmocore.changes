@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 13 12:54:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.0
+  * Add conversion functions for old gprs_ra_id and the new
+    osmo_routing_area_id
+  * gsm 04.08: add GSM48 IE GMM_ADD_IDENTITY/RAI2
+  * gsm 04.08: add P-TMSI type values
+  * gsm_04_08: Add IEs seen during 4G->2G RAU
+  * gsm48: add additional GSM 24.008 IE for GMM
+
+-------------------------------------------------------------------
 Sun Oct 20 21:46:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.10.0

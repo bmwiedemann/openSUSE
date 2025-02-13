@@ -17,7 +17,7 @@
 
 
 Name:           libosmocore
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
