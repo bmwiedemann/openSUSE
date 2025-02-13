@@ -1,7 +1,7 @@
 #
 # spec file for package i2pd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 PurpleI2P team
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -21,7 +21,7 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.52.0
+Version:        2.55.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
@@ -101,8 +101,7 @@ install -Dm0644 %{name}.tmpfile.in %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dm0644 debian/%{name}.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -Dm0644 {debian,%{buildroot}%{_mandir}/man1}/%{name}.1
 
-install -d %{buildroot}%{_sbindir}
-mv %{buildroot}{%{_bindir},%{_sbindir}}/%{name}
+install -d %{buildroot}%{_bindir}
 
 find %{buildroot} -regex ".*\(\.a\|\/src\|LICENSE\)" -exec rm -Rf '{}' +
 
@@ -127,9 +126,9 @@ exit 0
 %files
 %license LICENSE
 %doc ChangeLog README.md
-%{_sbindir}/i2pd
+%{_bindir}/i2pd
 %dir %{_sysconfdir}/apparmor.d
-%config %{_sysconfdir}/apparmor.d/usr.sbin.i2pd
+%config %{_sysconfdir}/apparmor.d/usr.bin.i2pd
 %config %{_sysconfdir}/logrotate.d/i2pd
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/%{name}.service

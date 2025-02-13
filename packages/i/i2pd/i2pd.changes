@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 10 19:30:45 UTC 2025 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 2.55.0:
+  * Support boost 1.87
+  * New RTO and window size calculation and resetting algorithm for streams
+  * Faster LeaseSet amd RouterInfo lookups
+  * Direct link between tunnel and transport to next peer
+  * Separate thread for tunnel build requests
+  * Fixed missing RouterInfo buffer in NetDb
+  * Throttle incoming ECIESx25519 sessions
+  * Check LeaseSet expiration time
+  * Resend HolePunch and RelayResponse messages
+  * Publish 'R' cap for yggdrasil-only routers, and 'U' cap for routers through proxy
+  * New "i2p.streaming.maxConcurrentStreams" tunnel's param to limit number of simultaneous streams
+  * Don't delete routers from NetDb when offline
+  * Save unreachable router's endpoint to use it next time without introducers
+  * Random tunnel rejection when medium congestion
+  * Increased hole punch expiration interval
+  * Handle NTCP2 session handshakes in separate thread
+ - moved binary from /usr/sbin to /usr/bin
+
+-------------------------------------------------------------------
 Wed May 22 19:41:27 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.52.0:
