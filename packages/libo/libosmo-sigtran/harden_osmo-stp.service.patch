@@ -1,0 +1,34 @@
+From: Johannes Segitz <jsegitz@suse.com>
+Date: 2021-10-05 15:27:56 +0000
+
+Automatic systemd hardening effort by the security team. This has not been
+tested. For details please see
+https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+---
+ contrib/systemd/osmo-stp.service |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+Index: libosmo-sccp-1.8.1/contrib/systemd/osmo-stp.service
+===================================================================
+--- libosmo-sccp-1.8.1.orig/contrib/systemd/osmo-stp.service
++++ libosmo-sccp-1.8.1/contrib/systemd/osmo-stp.service
+@@ -5,6 +5,19 @@ After=network-online.target
+ Wants=network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ Restart=always
+ StateDirectory=osmocom

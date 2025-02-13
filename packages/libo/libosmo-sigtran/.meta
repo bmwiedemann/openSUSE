@@ -1,0 +1,5 @@
+<package name="libosmo-sigtran" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="libosmo-sigtran"/>
+</package>

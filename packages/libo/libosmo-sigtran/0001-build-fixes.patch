@@ -1,0 +1,111 @@
+From f34a36b94185f377639c7c997dcdd2453fc23574 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 21 Jul 2014 10:13:00 +0200
+Subject: [PATCH] build: fixes
+
+Find and use system talloc, do not rely on OSMO's bundled copy.
+
+Fix this link error too:
+
+[   12s] libtool: link: gcc -Wall -I/usr/include/libosmo-netif/
+-I/usr/include/libosmocore/ -I/usr/include/libmnl -I/usr/include/libosmocore/
+-I/usr/include/libmnl -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3
+-fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables
+-fstack-clash-protection -Werror=return-type -g -fcommon -std=gnu11 -Wall -o
+xua_test xua_test.o sccp_test_data.o  ../../src/.libs/libosmo-sigtran.so
+-losmogsm -losmoisdn -losmovty -losmocore -ltalloc -lmnl -losmonetif -lsctp
+-pthread -Wl,-rpath
+-Wl,/home/abuild/rpmbuild/BUILD/libosmo-sigtran-2.1.0-build/libosmo-sigtran-2.1.0/src/.libs
+-Wl,-rpath -Wl,/usr/lib64
+[   12s] /usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/bin/ld: xua_test.o: warning: relocation against `xua_dialect_sua' in read-only section `.text.startup'
+[   12s] /usr/lib64/gcc/x86_64-suse-linux/14/../../../../x86_64-suse-linux/bin/ld: xua_test.o: in function `test_helpers':
+[   12s] /home/abuild/rpmbuild/BUILD/libosmo-sigtran-2.1.0-build/libosmo-sigtran-2.1.0/tests/xua/xua_test.c:339:(.text.startup+0x271): undefined reference to `xua_part_add_gt'
+
+---
+ configure.ac           |    1 +
+ src/Makefile.am        |   10 ++++++----
+ tests/m2ua/Makefile.am |    2 +-
+ tests/ss7/Makefile.am  |    4 ++--
+ tests/xua/Makefile.am  |    4 ++--
+ 5 files changed, 12 insertions(+), 9 deletions(-)
+
+Index: libosmo-sigtran-2.1.0/configure.ac
+===================================================================
+--- libosmo-sigtran-2.1.0.orig/configure.ac
++++ libosmo-sigtran-2.1.0/configure.ac
+@@ -51,6 +51,7 @@ AC_SEARCH_LIBS([sctp_recvmsg], [sctp], [
+ 	], [
+ 	AC_MSG_ERROR([sctp_recvmsg not found in searched libs])])
+ LIBS=$old_LIBS
++PKG_CHECK_MODULES([TALLOC], [talloc])
+ 
+ AC_ARG_ENABLE(sanitize,
+ 	[AS_HELP_STRING(
+Index: libosmo-sigtran-2.1.0/src/Makefile.am
+===================================================================
+--- libosmo-sigtran-2.1.0.orig/src/Makefile.am
++++ libosmo-sigtran-2.1.0/src/Makefile.am
+@@ -22,13 +22,11 @@ noinst_HEADERS = \
+ 	xua_types.h \
+ 	$(NULL)
+ 
+-noinst_LIBRARIES = libxua.a
+-
+-libxua_a_SOURCES = xua_msg.c
++libxua_la_SOURCES = xua_msg.c
+ # ensure that the file for the static lib is built with different C
+ # flags, working around automake complaining that xua_msg.o is built
+ # both with libtool (below) and without (here)
+-libxua_a_CPPFLAGS = $(AM_CPPFLAGS) -DDUMMY -UDUMMY
++libxua_la_CPPFLAGS = $(AM_CPPFLAGS) -DDUMMY -UDUMMY
+ 
+ lib_LTLIBRARIES = libosmo-sigtran.la
+ 
+@@ -82,3 +80,7 @@ libosmo_sigtran_la_LIBADD = \
+ 	$(LIBOSMOCORE_LIBS) \
+ 	$(LIBSCTP_LIBS) \
+ 	$(NULL)
++
++noinst_LTLIBRARIES = libxua.la libosmo-sigtran-internal.la
++libosmo_sigtran_internal_la_SOURCES = ${libosmo_sigtran_la_SOURCES}
++libosmo_sigtran_internal_la_LIBADD = ${libosmo_sigtran_la_LIBADD}
+Index: libosmo-sigtran-2.1.0/tests/m2ua/Makefile.am
+===================================================================
+--- libosmo-sigtran-2.1.0.orig/tests/m2ua/Makefile.am
++++ libosmo-sigtran-2.1.0/tests/m2ua/Makefile.am
+@@ -6,4 +6,4 @@ EXTRA_DIST = m2ua_test.ok
+ 
+ check_PROGRAMS = m2ua_test
+ m2ua_test_SOURCES = m2ua_test.c
+-m2ua_test_LDADD = $(top_builddir)/src/libxua.a $(LIBOSMOCORE_LIBS)
++m2ua_test_LDADD = $(top_builddir)/src/libxua.la $(LIBOSMOCORE_LIBS) ${TALLOC_LIBS}
+Index: libosmo-sigtran-2.1.0/tests/ss7/Makefile.am
+===================================================================
+--- libosmo-sigtran-2.1.0.orig/tests/ss7/Makefile.am
++++ libosmo-sigtran-2.1.0/tests/ss7/Makefile.am
+@@ -1,8 +1,8 @@
+ AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include
+ AM_CFLAGS=-Wall $(LIBOSMONETIF_CFLAGS) $(LIBOSMOCORE_CFLAGS) $(LIBOSMOVTY_CFLAGS)
+ 
+-AM_LDFLAGS = -static -no-install
+-LDADD = $(top_builddir)/src/libosmo-sigtran.la \
++AM_LDFLAGS = -no-install
++LDADD = $(top_builddir)/src/libosmo-sigtran-internal.la \
+ 	$(LIBOSMOCORE_LIBS) $(LIBOSMOVTY_LIBS) $(LIBOSMONETIF_LIBS) $(LIBSCTP_LIBS)
+ 
+ EXTRA_DIST = ss7_test.ok ss7_test.err
+Index: libosmo-sigtran-2.1.0/tests/xua/Makefile.am
+===================================================================
+--- libosmo-sigtran-2.1.0.orig/tests/xua/Makefile.am
++++ libosmo-sigtran-2.1.0/tests/xua/Makefile.am
+@@ -1,8 +1,8 @@
+ AM_CPPFLAGS = $(all_includes) -I$(top_srcdir)/include
+ AM_CFLAGS=-Wall $(LIBOSMONETIF_CFLAGS) $(LIBOSMOCORE_CFLAGS) $(LIBOSMOVTY_CFLAGS)
+ 
+-AM_LDFLAGS = -static -no-install
+-LDADD = $(top_builddir)/src/libosmo-sigtran.la \
++AM_LDFLAGS = -no-install
++LDADD = $(top_builddir)/src/libosmo-sigtran-internal.la \
+ 	$(LIBOSMOCORE_LIBS) $(LIBOSMOVTY_LIBS) $(LIBOSMONETIF_LIBS) $(LIBSCTP_LIBS)
+ 
+ EXTRA_DIST = xua_test.ok xua_test.err
