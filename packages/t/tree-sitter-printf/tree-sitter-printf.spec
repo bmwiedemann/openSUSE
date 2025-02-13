@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-printf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _name printf
 Name:           tree-sitter-printf
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Printf format grammar for tree-sitter
 License:        ISC
@@ -56,4 +56,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-
