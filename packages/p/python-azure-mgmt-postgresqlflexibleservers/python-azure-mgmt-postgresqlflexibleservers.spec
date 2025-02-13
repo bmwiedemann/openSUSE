@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-postgresqlflexibleservers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 1.1.0b1
+%define realversion 1.1.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-postgresqlflexibleservers
-Version:        1.1.0~b1
+Version:        1.1.0~b2
 Release:        0
 Summary:        Microsoft Azure Postgresqlflexibleservers Management Client Library for Python
 License:        MIT
