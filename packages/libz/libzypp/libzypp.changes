@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Feb 12 15:58:56 CET 2025 - ma@suse.de
+
+- Don't issue deprecated warnings if -DNDEBUG is set (bsc#1236983)
+  Released libyui packages compile with -Werror=deprecated-declarations
+  so we can't add deprecated warnings without breaking them.
+- make gcc15 happy (fixes #613)
+- version 17.36.1 (35)
+
+-------------------------------------------------------------------
+Mon Feb 10 16:18:10 CET 2025 - ma@suse.de
+
+- Drop zypp-CheckAccessDeleted in favor of 'zypper ps'.
+- Fix Repoverification plugin not being executed (fixes #614)
+- Refresh: Fetch the master index file before key and signature
+  (bsc#1236820)
+- Allow libzypp to compile with C++20.
+- Deprecate RepoReports we do not trigger.
+- version 17.36.0 (35)
+
+-------------------------------------------------------------------
 Wed Jan 22 16:09:09 CET 2025 - ma@suse.de
 
 - Create '.keep_packages' in the package cache dir to enforce
