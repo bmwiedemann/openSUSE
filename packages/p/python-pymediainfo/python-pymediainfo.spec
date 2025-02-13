@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pymediainfo
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 Summary:        Python wrapper for the mediainfo library
 License:        MIT
@@ -58,7 +58,7 @@ This module is a Python wrapper for the mediainfo library.
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/pymediainfo
 %{python_sitelib}/pymediainfo-%{version}.dist-info

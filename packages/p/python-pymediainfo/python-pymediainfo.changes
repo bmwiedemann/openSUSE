@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb 13 05:27:03 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.0.1
+  Miscellaneous:
+  * Improve documentation and README (no changes to the library
+    code itself)
+  * New doc build dependency: myst-parser used to parse Markdown
+
+-------------------------------------------------------------------
 Tue Feb 11 08:12:05 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.0.0
