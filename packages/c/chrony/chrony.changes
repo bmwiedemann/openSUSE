@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb  5 17:16:32 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to version 4.6.1:
+  * Add ntsaeads directive to enable only selected AEAD algorithms
+    for NTS.
+  * Negotiate use of compliant NTS keys with AES-128-GCM-SIV AEAD
+    algorithm.
+  * Switch to compliant NTS keys if first response from server is
+    NTS NAK.
+
+-------------------------------------------------------------------
 Wed Jan 22 15:38:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

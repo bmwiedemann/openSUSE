@@ -41,7 +41,7 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.6
+Version:        4.6.1
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
