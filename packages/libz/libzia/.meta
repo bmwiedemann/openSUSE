@@ -1,0 +1,5 @@
+<package name="libzia" project="openSUSE:Factory">
+  <title>libzia</title>
+  <description>Tucnak v4 requires the libzia library of same version. Libzia contains architecture-dependent code and code usable also in other projects. Currently only released application is Tucnak4.</description>
+  <devel project="hamradio" package="libzia"/>
+</package>

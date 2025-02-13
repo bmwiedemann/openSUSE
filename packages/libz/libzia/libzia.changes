@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Thu Feb 13 07:56:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.67:
+  * companion release to tucnak 4.67, no upstream changelog
+
+-------------------------------------------------------------------
+Sat Jan 11 16:55:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.64
+  * many upstream improvements and bug fixes
+- convert to use SDL2 
+- drop libzia-pc.diff, libzia-zbfd.h.diff
+- fix packaging for openSUSE Factory
+
+-------------------------------------------------------------------
+Sat Jan  29 22:34:47 UTC 2021 - Mariusz Woźniak <sp6ina@c44.pl>
+
+- update to version 4.34
+
+-------------------------------------------------------------------
+Sat Jan  29 22:34:47 UTC 2021 - Mariusz Woźniak <sp6ina@wp.pl>
+
+- update to version 4.25
+
+-------------------------------------------------------------------
+Sat Jun  8 22:34:47 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 4.16
+
+-------------------------------------------------------------------
+Fri Feb 22 21:15:13 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 4.15
+
+-------------------------------------------------------------------
+Sat Feb 18 11:25:52 UTC 2017 - dl8fcl@darc.de
+
+- update to version 4.09
+
+-------------------------------------------------------------------
+Sun Aug 21 11:58:19 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 4.08
+
+-------------------------------------------------------------------
+Wed May 11 22:17:33 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 4.07
+
+-------------------------------------------------------------------
+Tue Feb 23 18:33:03 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 4.05
+
+-------------------------------------------------------------------
+Thu Oct 22 19:26:16 UTC 2015 - dl8fcl@darc.de
+
+- import into build service
+
+
