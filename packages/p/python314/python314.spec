@@ -157,8 +157,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~a4
-%define         tarversion 3.14.0a4
+Version:        3.14.0~a5
+%define         tarversion 3.14.0a5
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -216,12 +216,6 @@ Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
-# PATCH-FIX-UPSTREAM CVE-2025-0938-sq-brackets-domain-names.patch bsc#1236705 mcepl@suse.com
-# functions `urllib.parse.urlsplit` and `urlparse` accept domain names including square brackets
-Patch41:        CVE-2025-0938-sq-brackets-domain-names.patch
-# PATCH-FIX-UPSTREAM 314a4-no-SO_REUSEPORT.patch gh#python/cpython#128916 mcepl@suse.com
-# changes in kernel break Python tests
-Patch42:        314a4-no-SO_REUSEPORT.patch
 #### Python 3.14 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
