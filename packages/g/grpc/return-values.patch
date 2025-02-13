@@ -1,0 +1,54 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-02-09 21:28:54.517217439 +0100
+
+Fix some terrible code.
+
+[   28s] /home/abuild/rpmbuild/BUILD/grpc-1.70.1-build/grpc-1.70.1/src/core/lib/transport/call_state.h:157:3: error: control reaches end of non-void function [-Werror=return-type]
+---
+ src/core/lib/transport/call_state.h |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: grpc-1.70.1/src/core/lib/transport/call_state.h
+===================================================================
+--- grpc-1.70.1.orig/src/core/lib/transport/call_state.h
++++ grpc-1.70.1/src/core/lib/transport/call_state.h
+@@ -154,6 +154,7 @@ class CallState {
+       case ClientToServerPullState::kTerminated:
+         return "Terminated";
+     }
++    return "Undefined";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ClientToServerPullState state) {
+@@ -184,6 +185,7 @@ class CallState {
+       case ClientToServerPushState::kFinished:
+         return "Finished";
+     }
++    return "Undefined";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ClientToServerPushState state) {
+@@ -234,6 +236,7 @@ class CallState {
+       case ServerToClientPullState::kTerminated:
+         return "Terminated";
+     }
++    return "Undefined";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ServerToClientPullState state) {
+@@ -274,6 +277,7 @@ class CallState {
+       case ServerToClientPushState::kFinished:
+         return "Finished";
+     }
++    return "Undefined";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ServerToClientPushState state) {
+@@ -304,6 +308,7 @@ class CallState {
+       case ServerTrailingMetadataState::kPulledCancel:
+         return "PulledCancel";
+     }
++    return "Undefined";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ServerTrailingMetadataState state) {

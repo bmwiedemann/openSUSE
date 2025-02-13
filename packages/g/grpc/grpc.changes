@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Feb 12 14:22:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add telemetry.patch
+
+-------------------------------------------------------------------
+Sun Feb  9 22:37:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.70.1
+  * grpc++ begins to require C++17 or later to build and use it
+  * chttp2_server: fix a race between connection starting and it
+    being orphaned
+  * chttp2Server: fix a race between connection manager updates
+    and handshake
+- Add link-failure.patch, return-values.patch
+
+-------------------------------------------------------------------
+Sat Apr 27 09:40:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release v1.63
+  * OTel C++: Add experimental optional locality label available
+    to client per-attempt metrics.
+  * surface: Add an API to inject connected endpoints into servers.
+  * OTel C++: Add API to set channel scope filter.
+  * EventEngine: Enable the EventEngine DNS Resolver on POSIX.
+
+-------------------------------------------------------------------
 Wed Apr  3 09:05:38 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - abseil-cpp 20240116 in SP5 can't be used with gcc7 when using 

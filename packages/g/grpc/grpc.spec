@@ -16,11 +16,11 @@
 #
 
 
-%define lver 39
-%define lverp 1_62
+%define lver 45
+%define lverp 1_70
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.62.1
+Version:        1.70.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -29,9 +29,12 @@ URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
 Patch1:         terminate.patch
-Patch4:         ARM-Unaligned-access-fixes.patch
-Patch5:         Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
-BuildRequires:  abseil-cpp-devel
+Patch2:         link-failure.patch
+Patch3:         return-values.patch
+Patch4:         telemetry.patch
+Patch14:        ARM-Unaligned-access-fixes.patch
+Patch15:        Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
+BuildRequires:  abseil-cpp-devel >= 20240722
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1550
@@ -84,7 +87,7 @@ Summary:        A small protobuf implementation in C
 Group:          System/Libraries
 
 %description -n libupb%lver
-μpb (often written 'upb') is a small protobuf implementation written in C.
+μpb (often written "upb") is a small protobuf implementation written in C.
 
 upb generates a C API for creating, parsing, and serializing messages as
 declared in .proto files. upb is heavily arena-based: all messages always live
@@ -110,7 +113,7 @@ Group:          Development/Tools/Building
 Requires:       libupb%lver = %version
 
 %description -n upb-devel
-μpb (often written 'upb') is a small protobuf implementation written in C.
+μpb (often written "upb") is a small protobuf implementation written in C.
 
 upb generates a C API for creating, parsing, and serializing messages as
 declared in .proto files. upb is heavily arena-based: all messages always live
@@ -128,7 +131,7 @@ This subpackage contains source code of the gRPC reference implementation.
 
 %prep
 %autosetup -N
-%patch -P 1 -p1
+%patch -P 1 -P 2 -P 3 -P 4 -p1
 find "." -type f -exec grep -l '/usr/bin/python' {} + |
 	xargs -r perl -i -lpe \
 	's{#! ?/usr/bin/python\S*}{#!/usr/bin/python3}g;'
@@ -139,12 +142,12 @@ find "." -type f -exec grep -l '/usr/bin/env ' {} + |
 	 s{#! ?/usr/bin/env bash}{#!/bin/bash}g;
 	 s{#! ?/usr/bin/env }{#!/usr/bin/}g;'
 pushd third_party/xxhash
-%patch -P 4 -P 5 -p1
+%patch -P 14 -P 15 -p1
 popd
 rm -Rf third_party/abseil-cpp/
 
 %build
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif
@@ -201,14 +204,10 @@ cp -r * "%buildroot/%src_install_dir"
 # Checks cannot be run because of `make clean` above
 #%%check
 
-%post   -n libgrpc%lver -p /sbin/ldconfig
-%postun -n libgrpc%lver -p /sbin/ldconfig
-%post   -n libgrpc%lverp -p /sbin/ldconfig
-%postun -n libgrpc%lverp -p /sbin/ldconfig
-%post   -n libgrpc++%lverp -p /sbin/ldconfig
-%postun -n libgrpc++%lverp -p /sbin/ldconfig
-%post   -n libupb%lver -p /sbin/ldconfig
-%postun -n libupb%lver -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgrpc%lver
+%ldconfig_scriptlets -n libgrpc%lverp
+%ldconfig_scriptlets -n libgrpc++%lverp
+%ldconfig_scriptlets -n libupb%lver
 
 %files -n libgrpc%lver
 %_libdir/libaddress_sorting.so.%{lver}*

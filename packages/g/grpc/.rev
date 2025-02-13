@@ -647,4 +647,13 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment></comment>
     <requestid>1165375</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>a3e88239457c131e9a43c3949ae12e6c</srcmd5>
+    <version>1.70.1</version>
+    <time>1739468258</time>
+    <user>anag+factory</user>
+    <comment>- Add telemetry.patch
+- Update to release 1.70.1</comment>
+    <requestid>1245422</requestid>
+  </revision>
 </revisionlist>

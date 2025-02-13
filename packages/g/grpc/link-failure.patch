@@ -1,0 +1,33 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-02-09 18:51:55.470853259 +0100
+
+happened since about 1.63 (last known good 1.62.x)
+
+[    9s] /usr/bin/cc -fPIC -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type  -g -Wno-error  -O2 -g -DNDEBUG -Wl,--dependency-file=CMakeFiles/upb_textformat_lib.dir/link.d  -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now -shared -Wl,-soname,libupb_textformat_lib.so.45 -o libupb_textformat_lib.so.45.0.0 CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/lex/atoi.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/lex/round_trip.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/lex/strtod.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/lex/unicode.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/message/copy.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/message/merge.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/def_pool.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/def_type.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/desc_state.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/enum_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/enum_reserved_range.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/enum_value_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/extension_range.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/field_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/file_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/internal/def_builder.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/internal/strdup2.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/message.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/message_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/message_reserved_range.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/method_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/oneof_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/reflection/service_def.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/text/encode.c.o CMakeFiles/upb_textformat_lib.dir/third_party/upb/upb/text/internal/encode.c.o  -Wl,-rpath,/home/abuild/rpmbuild/BUILD/grpc-1.70.1-build/grpc-1.70.1/build: -ldl -lm -lrt libupb_mini_descriptor_lib.so.45.0.0 libupb_wire_lib.so.45.0.0 libutf8_range_lib.so.45.0.0 libupb_message_lib.so.45.0.0 libupb_base_lib.so.45.0.0 libupb_mem_lib.so.45.0.0 -ldl -lm -lrt
+[    9s] /home/abuild/rpmbuild/BUILD/grpc-1.70.1-build/grpc-1.70.1/src/core/ext/upb-gen/google/protobuf/descriptor.upb.h:5195:(.text+0x3b0): undefined reference to `google__protobuf__ServiceOptions_msg_init'
+[    9s] collect2: error: ld returned 1 exit status
+
+---
+ CMakeLists.txt |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: grpc-1.70.1/CMakeLists.txt
+===================================================================
+--- grpc-1.70.1.orig/CMakeLists.txt
++++ grpc-1.70.1/CMakeLists.txt
+@@ -4091,6 +4091,7 @@ target_link_libraries(upb_json_lib
+   ${_gRPC_ALLTARGETS_LIBRARIES}
+   upb_mini_descriptor_lib
+   upb_wire_lib
++  grpc_unsecure
+ )
+ 
+ 
+@@ -4348,6 +4349,7 @@ target_link_libraries(upb_textformat_lib
+   ${_gRPC_ALLTARGETS_LIBRARIES}
+   upb_mini_descriptor_lib
+   upb_wire_lib
++  grpc_unsecure
+ )
+ 
+ 
