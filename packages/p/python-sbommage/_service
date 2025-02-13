@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/popey/sbommage</param>
+    <param name="scm">git</param>
+    <param name="package-meta">yes</param>
+    <param name="revision">main</param>
+    <param name="versionformat">0.0.1~%ct.%h</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

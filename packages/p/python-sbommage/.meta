@@ -1,0 +1,5 @@
+<package name="python-sbommage" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="python-sbommage"/>
+</package>

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Feb 13 05:59:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- use %python3_fix_shebang to fix the shebang properly
+
+-------------------------------------------------------------------
+Wed Feb 12 06:17:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-sbommage: interactive terminal frontend for
+  viewing Software Bill of Materials (SBOM) files in various
+  formats
