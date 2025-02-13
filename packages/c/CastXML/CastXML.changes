@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:31:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.11:
+  * test: Remove unnecessary space from CXXLiteral case
+  * test: Tolerate predefined __cdecl macro from LLVM/Clang
+  * Port to LLVM 20.
+
+-------------------------------------------------------------------
 Wed Dec 18 11:02:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.10:

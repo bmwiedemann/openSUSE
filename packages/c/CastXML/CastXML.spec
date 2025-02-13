@@ -17,7 +17,7 @@
 
 
 Name:           CastXML
-Version:        0.6.10
+Version:        0.6.11
 Release:        0
 Summary:        C-family Abstract Syntax Tree XML Output
 License:        Apache-2.0
