@@ -1,0 +1,6 @@
+<package name="kernel-firmware-all" project="openSUSE:Factory">
+  <title>A meta package to install all kernel-firmware-* subpackages</title>
+  <description>This is a meta package to install all kernel-firmware-* subpackages.
+It contains no firmware data by itself.</description>
+  <devel project="Kernel:firmware" package="kernel-firmware-all"/>
+</package>

@@ -1,0 +1,14 @@
+kernel-firmware-all
+===================
+
+This package is a catch-all compatibility metapackage for providing
+all files that have been provided by kernel-firmware package.
+
+The actual contents of firmware files are found in kernel-firmware-*
+subpackages in a compressed format.
+
+Note that the version number of this package is almost fixed, and it
+doesn't have much meaning.  For the changes in the firmware files,
+refer to each kernel-firmware-* subpackage, instead.
+
+
