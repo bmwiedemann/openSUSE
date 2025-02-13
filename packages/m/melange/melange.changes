@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 13 06:17:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  * bump to latest apko
+  * fix lint finding
+  * bump apko to get quieter logs
+  * build(deps): bump the gomod group across 1 directory with 5
+    updates
+  * move unnecessary logs from info to debug or error (#1781)
+  * build(deps): bump the actions group across 1 directory with 4
+    updates
+  * build(deps): bump cloud.google.com/go/storage from 1.49.0 to
+    1.50.0
+
+-------------------------------------------------------------------
 Mon Feb 10 07:38:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.5:
