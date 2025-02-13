@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 12 14:42:54 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.1:
+  * Stack: clean (#3871)
+  * feat: Redesign CLI help (#3870)
+  * Fix TestStacksGenerateRemote (#3865)
+  * feat: Adjusting icons for Terragrunt `.hcl` configs and
+    OpenTofu `.tf` configs in the FileTree component (#3868)
+  * fix: Fixing CLI option for `--queue-include-unit-reading`
+    (#3869)
+
+-------------------------------------------------------------------
 Tue Feb 11 07:21:38 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.0:
