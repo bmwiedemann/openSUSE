@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-e1d
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           osmo-e1d
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Osmocom E1 Daemon
 License:        GPL-2.0-or-later
