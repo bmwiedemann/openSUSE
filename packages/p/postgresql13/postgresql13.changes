@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 11 14:27:58 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Upgrade to 13.19:
+  * bsc#1237093, CVE-2025-1094: Harden PQescapeString and allied
+    functions against invalidly-encoded input strings.
+  * obsoletes postgresql-tzdata2025a.patch
+  * https://www.postgresql.org/docs/release/13.19/
+  * https://www.postgresql.org/about/news/-3015/
+- Disable LLVM JIT on loongarch64
+
+-------------------------------------------------------------------
 Tue Jan 28 12:23:29 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Fix build, add postgresql-tzdata2025a.patch
