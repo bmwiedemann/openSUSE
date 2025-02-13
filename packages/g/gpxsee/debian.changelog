@@ -1,3 +1,10 @@
+gpxsee (13.35) stable; urgency=low
+
+  * Added support for geo URIs (RFC 5870).
+  * Significantly improved nautical charts rendering (ENC & IMG).
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 12 Feb 2025 23:10:57 +0100
+
 gpxsee (13.34) stable; urgency=low
 
   * Improved ENC maps style/rendering.

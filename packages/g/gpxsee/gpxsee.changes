@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 23:06:42 CET 2025 - tumic@cbox.cz
+
+- Update to version 13.35
+  * Added support for geo URIs (RFC 5870).
+  * Significantly improved nautical charts rendering (ENC & IMG).
+
+-------------------------------------------------------------------
 Sun Jan  5 09:37:13 CET 2025 - tumic@cbox.cz
 
 - Update to version 13.34
