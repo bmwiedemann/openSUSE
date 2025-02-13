@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Feb 12 01:19:50 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Update to version 1.2.0.
+  * Drop support for Python 3.8.
+- Changes from version 1.2.0b1:
+  * Change the defaults for hggit.usephases; similar to Mercurial,
+    remote repositories now default to publishing.
+  * Add support for a git.blame.ignoreRevsFile configuration
+    setting, that works similarly to the setting for git blame.
+  * Add limited and experimental support for including hg-git metadata
+    in Mercurial bundles and when pulling or pushing from remote
+    Mercurial repositories, see below. (#156)
+  * hg git-cleanup now also removes broken Git refs.
+  * Always pull any annotated tags pointing to any known commits,
+    equivalent to passing the --tags option in Git. Previously, such
+    tags would only be pulled when either not using --rev or
+    similar, or when listing the tag explicitly.
+  * Transparently compress the objects when pushing (or exporting) to
+    Git. This is done in background threads, and by default uses up to
+    either four of them or the system CPU count, whichever is lower. The
+    hggit.threads configuration option allows adjusting the default.
+- Changes from version 1.1.4:
+  * Mark Dulwich 0.22.0 as fully supported; the differences are assumed
+    intentional for now.
+  * Mark Mercurial 6.9 as tested and supported.
+  * Fix tests with Python 3.13.
+
+-------------------------------------------------------------------
 Thu Sep 12 18:51:43 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Use existing python RPM macros instead of custom ones.

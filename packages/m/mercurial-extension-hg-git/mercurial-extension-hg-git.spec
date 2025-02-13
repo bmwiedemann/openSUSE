@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial-extension-hg-git
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 
 Name:           mercurial-extension-hg-git
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Hg-Git Mercurial plugin
 License:        GPL-2.0-only
@@ -38,7 +38,7 @@ Group:          Development/Tools/Version Control
 URL:            http://foss.heptapod.net/mercurial/hg-git
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg_git-%{version}.tar.gz
 Source90:       tests.blacklist
-BuildRequires:  %{python_module dulwich >= 0.19.3}
+BuildRequires:  %{python_module dulwich >= 0.21.6}
 BuildRequires:  %{pythons}
 # python311-gpg is not available on Leap 15.6.
 %if 0%{?suse_version} > 1600
@@ -58,7 +58,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module toml}
 %endif
 BuildRequires:  unzip
-Requires:       %{python_module dulwich >= 0.19.3}
+Requires:       %{python_module dulwich >= 0.21.6}
 Requires:       mercurial
 Provides:       %{python_module hg-git = %{version}-%{release}}
 Obsoletes:      %{python_module hg-git < %{version}-%{release}}
