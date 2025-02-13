@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Wed Feb 12 21:52:20 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.64.4:
+  * gci: fix section parsing (#5407)
+  * docs: update GitHub Action assets (#5406)
+
+-------------------------------------------------------------------
+Wed Feb 12 19:35:06 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.64.3:
+  * dev: update Docker base images (#5405)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.18.4 to 0.19.0 (#5404)
+  * gci: fix standard packages list for go1.24 (#5402)
+  * docs: option name typo inside changelog (#5401)
+  * build(deps): bump github.com/mgechev/revive from 1.6.0 to 1.6.1 (#5399)
+  * build(deps): bump github.com/go-critic/go-critic from 0.11.5 to 0.12.0 (#5400)
+  * docs: update install from sources paragraph (#5397)
+  * dev: fix JSONSchema publication (#5395)
+  * docs: improve linter authors page
+  * dev: fix JSONSchema publication (#5394)
+  * docs: update documentation assets (#5393)
+  * docs: update GitHub Action assets (#5392)
+
+-------------------------------------------------------------------
+Tue Feb 11 21:41:01 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.64.2:
+  * dev: disable chocolatey install
+
+-------------------------------------------------------------------
+Tue Feb 11 21:31:17 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.64.1:
+  * build(deps): bump honnef.co/go/tools from 0.5.1 to 0.6.0 (#5391)
+  * dev: disable chocolateys
+
+-------------------------------------------------------------------
+Tue Feb 11 20:09:34 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.64.0:
+  * go1.24 support (#5224)
+  * build(deps): bump github.com/ldez/exptostd from 0.4.0 to 0.4.1 (#5390)
+  * build(deps): bump golang.org/x/tools from 0.29.0 to 0.30.0 (#5389)
+  * build(deps): bump golangci/golangci-lint-action from 6.2.0 to 6.3.2 in the github-actions group (#5388)
+  * build(deps): bump golang.org/x/oauth2 from 0.25.0 to 0.26.0 in /scripts/gen_github_action_config in the scripts group (#5387)
+  * build(deps): bump github.com/catenacyber/perfsprint from 0.8.0 to 0.8.1 (#5386)
+  * build(deps): bump go-simpler.org/sloglint from 0.7.2 to 0.9.0 (#5384)
+  * dev: remove unused AssetURL from github action assets (#5383)
+  * build(deps): bump 4d63.com/gochecknoglobals from 0.2.1 to 0.2.2 (#5380)
+  * build(deps): bump github.com/catenacyber/perfsprint from 0.7.1 to 0.8.0 (#5382)
+  * build(deps): bump golang.org/x/sys from 0.29.0 to 0.30.0 (#5376)
+  * dev: use HEAD as references (#5377)
+  * build(deps): bump golang.org/x/mod from 0.22.0 to 0.23.0 (#5375)
+  * dev: generate GitHub Actions assets v1 file (#5372)
+  * tenv: deprecation (#5373)
+  * build(deps): bump github.com/polyfloyd/go-errorlint from 1.7.0 to 1.7.1 (#5368)
+  * build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6 (#5367)
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.24.12 to 4.25.1 (#5366)
+  * feat: use run.relative-path-mode for output format paths (#5363)
+  * build(deps): bump the linter-testdata group across 2 directories with 4 updates (#5365)
+  * feat: add new issues.new-from-merge-base option (#5362)
+  * dev: cleanup printers (#5361)
+  * fix: sanitize severities by output format (#5359)
+  * dev: factorize base rule parsing (#5360)
+  * docs: update FAQ about updating linter (#5358)
+  * build(deps): bump github.com/matoous/godox from 0.0.0-20230222163458-006bad1f9d26 to 1.1.0 (#5355)
+  * feat: new linter exclusions system (#5339)
+  * chore: pull request template
+  * docs: improve revive configuration examples (#5351)
+  * fix: fallback on unknown severities for code climate (#5350)
+  * docs: remove "good first issue" mention (#5347)
+  * build(deps): bump github.com/mgechev/revive from 1.5.1 to 1.6.0 (#5346)
+  * docs: update version inside module plugin automatically (#5341)
+  * docs: add default exclusion names to the JSONSchema (#5338)
+  * build(deps): bump github.com/golangci/revgrep from 0.6.1 to 0.7.0 (#5337)
+  * build(deps): bump github.com/golangci/revgrep from 0.6.0 to 0.6.1 (#5336)
+  * build(deps): bump github.com/Crocmagnon/fatcontext from 0.6.0 to 0.7.1 (#5335)
+  * build(deps): bump golangci/golangci-lint-action from 6.1.1 to 6.2.0 in the github-actions group (#5333)
+  * build(deps): bump github.com/ldez/exptostd from 0.3.1 to 0.4.0 (#5330)
+  * build(deps): bump github.com/Crocmagnon/fatcontext from 0.5.3 to 0.6.0 (#5332)
+  * build(deps): bump github.com/ldez/gomoddirectives from 0.6.0 to 0.6.1 (#5329)
+  * dev: move `forbidigo` debug const to const linters group  (#5328)
+  * fix: spancheck default StartSpanMatchersSlice values (#5324)
+  * dev: displays revive rules inside debug logs (#5325)
+  * dev: linter log consistency (#5327)
+  * dev: new processor order (#5322)
+  * dev: processor optimizations (#5316)
+  * chore: remove duplicate linter inside the configuration (#5320)
+  * docs: clarify depguard configuration (#5321)
+  * build(deps): bump github.com/golangci/revgrep from 0.5.3 to 0.6.0 (#5319)
+  * build(deps): bump github.com/mattn/go-colorable from 0.1.13 to 0.1.14 (#5318)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.21.4 to 2.22.0 (#5311)
+  * build(deps): bump github.com/karamaru-alpha/copyloopvar from 1.1.0 to 1.2.1 (#5307)
+  * fix: avoid panic with plugin without description (#5312)
+  * build(deps): bump github.com/uudashr/iface from 1.3.0 to 1.3.1 (#5308)
+  * build(deps): bump github.com/ghostiam/protogetter from 0.3.8 to 0.3.9 (#5306)
+  * build(deps): bump github.com/alingse/nilnesserr from 0.1.1 to 0.1.2 (#5305)
+  * build(deps): bump golang.org/x/tools from 0.28.0 to 0.29.0 (#5309)
+  * dev: avoid string conversion by passing byte slice (#5304)
+  * dev: standardization of the integration of formatters (#5301)
+  * build(deps): bump golang.org/x/oauth2 from 0.24.0 to 0.25.0 in /scripts/gen_github_action_config in the scripts group (#5302)
+  * dev: disable blank issues
+  * dev: temporarily allow blank issues
+  * build(deps): bump github.com/ldez/grignotin from 0.7.0 to 0.8.0 (#5295)
+  * build(deps): bump golang.org/x/sys from 0.28.0 to 0.29.0 (#5293)
+  * docs: update GitHub Action assets (#5292)
+
+-------------------------------------------------------------------
 Fri Jan 03 20:30:25 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.63.4:
