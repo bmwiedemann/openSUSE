@@ -58,6 +58,13 @@
 %define ffmpeg_version 58
 %endif
 %bcond_with system_zstd
+%if 0%{?suse_version} >= 1600
+%define node_ver 22.0
+%define node_ver_next 23.0
+%else
+%define node_ver 20.0
+%define node_ver_next 21.0
+%endif
 %if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
 # LLVM version
 %define llvm_version 19
@@ -108,7 +115,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        133.0.6943.53
+Version:        133.0.6943.98
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -155,6 +162,7 @@ Patch363:       chromium-127-constexpr.patch
 Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
 Patch368:       chromium-131-clang-stack-protector.patch
 Patch369:       chromium-132-pdfium-explicit-template.patch
+Patch370:       fix-build-with-pipewire-1.3.82.patch
 # conditionally applied patches
 # patch where ffmpeg < 5
 Patch1001:      chromium-94-ffmpeg-roll.patch
@@ -192,9 +200,9 @@ BuildRequires:  libpng-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  ninja >= 1.7.2
-BuildRequires:  nodejs >= 20.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  (nodejs >= %node_ver with nodejs < %node_ver_next)
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
