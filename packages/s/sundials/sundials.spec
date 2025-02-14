@@ -1,7 +1,7 @@
 #
 # spec file for package sundials
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,7 +92,7 @@ ExclusiveArch:  do_not_build
 %define shlib_sunnonlin libsundials_sunnonlin4%{?my_suffix}
 
 Name:           %{package_name}
-Version:        7.2.0
+Version:        7.2.1
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.

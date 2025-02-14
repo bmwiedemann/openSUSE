@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 13 11:35:32 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.2.1:
+  * Unit tests were separated from examples.
+  * Fixed a bug in ARKStep where an extra right-hand side
+    evaluation would occur each time step when enabling the
+    ARKodeSetAutonomous option.
+  * Fix using an IMEX method where the DIRK table has an implicit
+    first stage and is not stiffly accurate.
+
+-------------------------------------------------------------------
 Thu Dec 19 11:29:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.2.0:
