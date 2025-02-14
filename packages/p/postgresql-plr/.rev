@@ -160,4 +160,19 @@ Fri Feb  13 13:13:13 UTC 2015 - bruno@ioda-net.ch
     <comment></comment>
     <requestid>1153595</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d2f0cb2a5398baca48f43b14658f8864</srcmd5>
+    <version>8.4.7</version>
+    <time>1739557399</time>
+    <user>anag+factory</user>
+    <comment>- Stop building for EOL postgresql12.
+
+- update patch-Makefile-ldflags.patch 
+- update to bugfix release 8.4.7 adding support to postgresql17
+  - remove calls to tuplestore_donestoring(tupstore) this was a
+    macro which was defined as a no-op it was removed in postgres
+    commit postgres/postgres@75680c3
+  - fix some warnings of uninitialized variables (#158)</comment>
+    <requestid>1245886</requestid>
+  </revision>
 </revisionlist>

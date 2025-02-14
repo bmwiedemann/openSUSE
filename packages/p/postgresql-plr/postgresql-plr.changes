@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:16:18 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Stop building for EOL postgresql12.
+
+-------------------------------------------------------------------
+Sat Sep 28 00:34:50 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update patch-Makefile-ldflags.patch 
+- update to bugfix release 8.4.7 adding support to postgresql17
+  - remove calls to tuplestore_donestoring(tupstore) this was a
+    macro which was defined as a no-op it was removed in postgres
+    commit postgres/postgres@75680c3
+  - fix some warnings of uninitialized variables (#158)
+
+-------------------------------------------------------------------
 Thu Feb 29 15:12:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
