@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 10 10:11:25 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 3.14
+  * Re-introduced DESTDIR flag in src/Makefile to assist building on Arch.
+  * Fixed typo in init.8 manual page.
+  * Expand process length in inittab to allow a command line 253 characters
+    (up from 127). Expand child process structure to accomidate 253
+    and some buffer room for newline/NULL.
+  * Clear buffer when reading long lines from inittab, avoids garbage left
+    over from old lines with long commands or comments.
+  * Drop lines which are too long from inttab conf and log warning rather
+    than truncate.
+
+-------------------------------------------------------------------
 Thu Jan  9 10:50:10 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
-- Update to sysvinit 3.31
+- Update to sysvinit 3.13
   * Adjusted manual page install location. Patch provided
     by Mark Hindley.
   sysvinit (3.12) released; urgency=low

@@ -1604,4 +1604,23 @@ So just for consistency. (forwarded request 875922 from lnussel)</comment>
   * sysvinit-2.90.dif</comment>
     <requestid>1236152</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>63ea02507958573641fba8d364d15f4e</srcmd5>
+    <version>3.14</version>
+    <time>1739557139</time>
+    <user>anag+factory</user>
+    <comment>- Update to sysvinit 3.14
+  * Re-introduced DESTDIR flag in src/Makefile to assist building on Arch.
+  * Fixed typo in init.8 manual page.
+  * Expand process length in inittab to allow a command line 253 characters
+    (up from 127). Expand child process structure to accomidate 253
+    and some buffer room for newline/NULL.
+  * Clear buffer when reading long lines from inittab, avoids garbage left
+    over from old lines with long commands or comments.
+  * Drop lines which are too long from inttab conf and log warning rather
+    than truncate.
+
+- Update to sysvinit 3.13</comment>
+    <requestid>1245592</requestid>
+  </revision>
 </revisionlist>
