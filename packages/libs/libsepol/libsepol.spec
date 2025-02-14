@@ -1,7 +1,7 @@
 #
 # spec file for package libsepol
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libsepol2
 
 Name:           libsepol
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
