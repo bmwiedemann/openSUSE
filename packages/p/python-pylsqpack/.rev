@@ -36,4 +36,12 @@
   * [vendor] update ls-qpack to version 1.0.3</comment>
     <requestid>1198046</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9bbb0be28841e5faa16847ab94527758</srcmd5>
+    <version>0.3.19</version>
+    <time>1739557179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245661</requestid>
+  </revision>
 </revisionlist>

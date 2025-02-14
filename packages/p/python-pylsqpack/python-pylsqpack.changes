@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:03:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.19
+  * Update github actions to their latest versions
+  * Add Read the Docs configuration file
+  * Move docstrings above corresponding method
+  * Reformat code using ruff
+  * Simplify docs and sphinx configuration, remove copyright years
+  * Update GitHub actions to their latest versions
+  * Build aarch64 wheels natively
+  * Adjust `ruff` configuration
+  * Support Python 3.13, drop Python 3.8
+  * Pin macOS versions used for building wheels
+
+-------------------------------------------------------------------
 Sat Aug 31 11:53:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.18:
