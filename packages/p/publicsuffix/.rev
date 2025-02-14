@@ -1675,4 +1675,28 @@ Now with build cycle removed.</comment>
   * Update comments for `.it`, `.jp`, `.se`, `.xn--fiqs8s`, `.xn--fiqz9s` (#2325)</comment>
     <requestid>1235817</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>5625a546b7a1c25a65c1fe4c9d7b5091</srcmd5>
+    <version>20250212</version>
+    <time>1739556901</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250212:
+  * add bubbleapps.io and cdn.bubble.io to public_suffix_list.dat (#2380)
+  * Moved JPRS comment to appropreate position (#2383)
+  * Add laravel.cloud to Public Suffix List (#2381)
+  * Add alibabacloudcs.com to Public Suffix List (#2373)
+  * Add localtonet.com and localto.net (#2237)
+  * Add obj.ag to Public Suffix List (#2374)
+  * Brave Submissions to the Public Suffix List - Q1 2025 (#2375)
+  * Update ug (#2371)
+  * Revert &quot;set label on PR based on check result (#2353)&quot; (#2372)
+  * Update `ml` (#2369)
+  * Bump golang.org/x/net from 0.26.0 to 0.33.0 in /tools (#2370)
+  * set label on PR based on check result (#2353)
+  * Add subsc-pay suffix domain (#2310)
+  * add `edu.vg` (#2367)
+  * AWS Submissions to the Public Suffix List - Q4 2024 (#2212)
+  * Add Liara (#2365)</comment>
+    <requestid>1245570</requestid>
+  </revision>
 </revisionlist>
