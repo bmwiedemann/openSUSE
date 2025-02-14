@@ -68,4 +68,15 @@
     <comment>- fix debuginfo generation by disabling strip in the zig build</comment>
     <requestid>1243173</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c041070ee5908ee6ae8c8523b25e83f</srcmd5>
+    <version>1.1.1</version>
+    <time>1739557247</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.1
+  https://ghostty.org/docs/install/release-notes/1-1-1
+- incorporated fetch-zig-cache.sh into vendor.sh as it was removed
+  upstream</comment>
+    <requestid>1245759</requestid>
+  </revision>
 </revisionlist>

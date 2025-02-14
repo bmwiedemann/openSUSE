@@ -21,7 +21,7 @@
 %bcond_without  standalone_terminfo
 
 Name:           ghostty
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Cross-platform terminal emulator
 License:        MIT
@@ -170,8 +170,6 @@ zig build %{common_build_flags} --prefix %{_prefix}
 %if %{without standalone_terminfo}
 rm -rv %{buildroot}%{_datadir}/terminfo/
 %endif
-
-mv %{buildroot}%{_datadir}/nautilus-python/extensions/{com.mitchellh.ghostty,ghostty}.py
 
 %files
 %license LICENSE
