@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Jan  9 18:43:19 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.03
+  + Numerous fixes
+- Update to version 2.01
+  + Virtual Serial Port not functioning
+  + Various issues with RigCtlD
+  + Missing commands in some rig files.
+
+-------------------------------------------------------------------
+Sun Dec 29 12:48:51 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.00
+  * IP+, NB, NR, Digisel (DS)  on/off controls for main RX
+  * VOX, COMP on/off
+  * rig definition files. Adding a new rig was never so easy
+  * dual scope plus controls
+  * dual rx
+  * Main/Sub swithing
+  * translations
+  * tabs changed into separate windows
+  * scope detach/attach capabilities
+  * rewritten rigctld
+  * experimental TCI support for rig-control/audio
+  * last tuning step store
+  * default usb/lsb selection
+  * band-limit support on scope radios
+  * Tuning by clicking/scrolling on frequency display
+  * improved power on/off handling
+  * admin memory management mode
+  * IC905 support
+  * improved caching
+  * add support for more USB controllers, XKeysXK3, Mirabox
+
+-------------------------------------------------------------------
+Fri Jan 19 20:21:22 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Version 1.64
+- initial specfile

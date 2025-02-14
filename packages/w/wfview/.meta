@@ -1,0 +1,5 @@
+<package name="wfview" project="openSUSE:Factory">
+  <title>Interface for modern Icom transceivers</title>
+  <description>wfview controls modern Icom rigs using either a USB serial connection or OEM network (ethernet or wifi) connection. Live, real-time spectrum analyzer data are displayed, and rig controls are presented. Additional programs may tie into the CIV bus using the pseudo-terminal device (linux and macOS), virtual serial port loopback (windows), or hamlib-compatible rigctld server.</description>
+  <devel project="hamradio" package="wfview"/>
+</package>
