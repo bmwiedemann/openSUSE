@@ -4230,4 +4230,50 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1243232</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>45f8842e64e8bc00f7f905b6e70bcfa5</srcmd5>
+    <version>9.2.1</version>
+    <time>1739556902</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1228343:
+  * tests/acpi: q35: Update host address width in DMAR (bsc#1228343)
+  * intel_iommu: Set default aw_bits to 48 starting from QEMU 9.2 (bsc#1228343)
+  * tests/acpi: q35: allow DMAR acpi table changes (bsc#1228343)
+- Full boot order support (jsc#PED-958):
+  * pc-bios: Update the s390 bios images with the recent changes (jsc#PED-958)
+  * pc-bios/s390-ccw: Abort IPL on invalid loadparm (jsc#PED-958)
+  * pc-bios/s390-ccw/netmain: Fix error messages with regards to the TFTP server (jsc#PED-958)
+  * pc-bios/s390-ccw: Fix boot problem with virtio-net devices (jsc#PED-958)
+  * pc-bios/s390-ccw/virtio: Add a function to reset a virtio device (jsc#PED-958)
+  * hw/s390x: Fix crash that occurs when inspecting older versioned machines types (jsc#PED-958)
+- Update to latest upstream release, 9.2.1:
+  The full list of changes are available at:
+   https://lore.kernel.org/qemu-devel/qemu-stable-9.2.1-20250207102656@cover.tls.msk.ru/
+  Highlights include:
+  * 9pfs: fix regression regarding CVE-2023-2861
+  * tcg: Reset free_temps before tcg_optimize
+  * tcg/riscv: Fix StoreStore barrier generation
+  * x86/loader: only patch linux kernels
+  * roms: re-add edk2-basetools target
+  * pc-bios: add missing riscv64 descriptor
+  * hw/intc/arm_gicv3_its: Zero initialize local DTEntry etc structs
+  * meson.build: Disallow libnfs v6 to fix the broken macOS build
+  * target/i386: Reset TSCs of parked vCPUs too on VM reset
+  * hw/intc/riscv_aplic: Fix APLIC in_clrip and clripnum write emulation
+  * s390x/s390-virtio-ccw: don't crash on weird RAM sizes
+  * target/loongarch: Use actual operand size with vbsrl check
+  * docs: Correct '-runas' and '-fsdev/-virtfs proxy' indentation
+  * docs: Correct release of TCG trace-events removal
+  * target/i386/cpu: Fix notes for CPU models
+  * migration/multifd: Fix compile error caused by page_size usage
+  * migration/multifd: Fix compat with QEMU &lt; 9.0
+  * migration: Add more error handling to analyze-migration.py
+  * migration: Remove unused argument in vmsd_desc_field_end
+  * migration: Fix parsing of s390 stream
+  * s390x: Fix CSS migration
+  * migration: Rename vmstate_info_nullptr
+  * ...
+</comment>
+    <requestid>1245591</requestid>
+  </revision>
 </revisionlist>
