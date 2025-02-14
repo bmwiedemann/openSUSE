@@ -1,7 +1,7 @@
 #
 # spec file for package python-discid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 Johannes Dewender <novell@JonnyJD.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,6 @@ Version:        1.2.0
 Release:        0
 Summary:        Python binding of Libdiscid
 License:        LGPL-3.0-or-later
-Group:          Development/Libraries/Python
 URL:            https://github.com/JonnyJD/python-discid
 Source:         https://files.pythonhosted.org/packages/source/d/discid/discid-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -34,7 +33,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libdiscid) >= 0.2.2
 # no automatic requires since libdiscid is not linked
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libdiscid.so) --qf '%%{NAME} >= %%{VERSION}')
+# Can't use %_libdir due to noarch
+Requires:       %(rpm -qf $(readlink -qne /usr/lib*/libdiscid.so) --qf '%%{NAME} >= %%{VERSION}')
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,6 +72,6 @@ sed -i "s|^#!%{_bindir}/env python$|#!%{_bindir}/python3|" examples.py
 %license COPYING COPYING.LESSER
 %doc CHANGES.rst README.rst
 %{python_sitelib}/discid
-%{python_sitelib}/discid-%{version}*-info
+%{python_sitelib}/discid-%{version}.dist-info
 
 %changelog

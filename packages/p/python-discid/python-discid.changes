@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 14 04:06:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't use %_libdir, it doesn't work for noarch packages
+
+-------------------------------------------------------------------
 Tue Nov 14 11:52:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build for all python versions in sle15

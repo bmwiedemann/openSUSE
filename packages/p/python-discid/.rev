@@ -67,4 +67,12 @@
     <comment>- build for all python versions in sle15</comment>
     <requestid>1125856</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>bc8c8a376359ca8832447d5058e860a2</srcmd5>
+    <version>1.2.0</version>
+    <time>1739557261</time>
+    <user>anag+factory</user>
+    <comment>- Don't use %_libdir, it doesn't work for noarch packages</comment>
+    <requestid>1245778</requestid>
+  </revision>
 </revisionlist>
