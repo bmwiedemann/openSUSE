@@ -2803,4 +2803,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1244422</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>f8d75180e911fdf7dc2c64c7c0dea27c</srcmd5>
+    <version>10.2.10</version>
+    <time>1739557148</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.2.9 → 10.2.10
+
+- Poetry build sdist timestamps set to epoch 0
+  Newer versions of poetry set the timestamp for all source
+  files to epoch 0. Such sources are not accepted by e.g
+  Debian FTP servers and in general I don't like when tools
+  changes their behavior just like that. This commit forces
+  an older version of poetry for the purpose of creating the
+  sdist tarball which then gets published on pypi. The
+  argumentation for reproducible builds by forcing source
+  files to a certain timestamp doesn't fly for me. I'm open
+  for any better solution though. This Fixes #2730</comment>
+    <requestid>1245598</requestid>
+  </revision>
 </revisionlist>

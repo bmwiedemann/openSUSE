@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Feb 09 20:16:13 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.9 → 10.2.10
+
+-------------------------------------------------------------------
+Sun Feb 09 19:36:28 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Poetry build sdist timestamps set to epoch 0
+
+  Newer versions of poetry set the timestamp for all source
+  files to epoch 0. Such sources are not accepted by e.g
+  Debian FTP servers and in general I don't like when tools
+  changes their behavior just like that. This commit forces
+  an older version of poetry for the purpose of creating the
+  sdist tarball which then gets published on pypi. The
+  argumentation for reproducible builds by forcing source
+  files to a certain timestamp doesn't fly for me. I'm open
+  for any better solution though. This Fixes #2730
+
+-------------------------------------------------------------------
 Sat Feb 01 23:13:22 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.8 → 10.2.9
