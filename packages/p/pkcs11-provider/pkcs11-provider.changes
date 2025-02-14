@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 13 16:32:08 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.0:
+  * Improved compatibility with PKCS#11 spec and historical module behavior in
+    interpreting CKA_EC_POINT, thie handled incompatibilities in ECDSA/ECDH
+    keys.
+  * Added full RSA-PSS support
+  * Fixed several issues with using keypairs after generation and loading of
+    related public keys, espcially with the way OpenSSL handles ECDH peer key
+    creation.
+  * Fixed issues with EdDSA signatures
+  * Expanded CI/testsuite with tlsfuzzer and more teting for Ed448 and other
+    key types/operations
+  * We test three different software tokens with 4 different test
+    configurations
+  * For a full list of changes see: https://github.com/latchset/pkcs11-provider/releases/tag/v1.0
+- Remove patch explicit-EC-test-option.patch
+
+-------------------------------------------------------------------
 Tue Dec 17 16:48:03 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
 
-- Update to 0.6
+- Update to 0.6:
   * TLS 1.3 is now supported via token handling (KDFs etc..)
   * A new feature to prevent PIN lockouts when the token correctly signals
     authentication attempts depletion via token info.

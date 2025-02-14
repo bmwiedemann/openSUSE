@@ -1,7 +1,7 @@
 #
 # spec file for package pkcs11-provider
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Luca Boccassi <bluca@debian.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _MODULES_DIR %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           pkcs11-provider
-Version:        0.6
+Version:        1.0
 Release:        0
 Summary:        A PKCS#11 provider for OpenSSL 3.0+
 License:        Apache-2.0
@@ -29,7 +29,6 @@ URL:            https://github.com/latchset
 Source0:        %{url}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch0:         explicit-EC-test-option.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto) >= 3.0.7
@@ -53,16 +52,17 @@ compatible to previous versions as well.
 %autosetup -p1
 
 %build
-%meson -Ddisable_explicit_EC_test=true
+%meson
 %meson_build
 
 %install
 %meson_install
 
+%ifnarch s390x
 %check
 # do not run them in parrallel with %{?_smp_mflags}
 %meson_test --num-processes 1
-rm -f %{buildroot}%{_MODULES_DIR}/pkcs11.la
+%endif
 
 %files
 %license COPYING
