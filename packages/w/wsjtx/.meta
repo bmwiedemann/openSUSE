@@ -1,0 +1,5 @@
+<package name="wsjtx" project="openSUSE:Factory">
+  <title>wsjtx</title>
+  <description>WSJT-X implements JT9, a new mode designed especially for the LF, MF, and HF bands, as well as the popular mode JT65.  Both modes were designed for making reliable, confirmed QSOs under extreme weak-signal conditions.  They use nearly identical message structure and source encoding.  JT65 was designed for EME (“moonbounce”) on the VHF/UHF bands and has also proved very effective for worldwide QRP communication at HF; in contrast, JT9 is optimized for HF and lower frequencies.  JT9 is about 2 dB more sensitive than JT65A while using less than 10% of the bandwidth.  With either mode, world-wide QSOs are possible with power levels of a few watts and compromise antennas.  A 2 kHz slice of spectrum is essentially full when occupied by ten JT65 signals.  As many as 100 JT9 signals can fit into the same space, without overlap.</description>
+  <devel project="hamradio" package="wsjtx"/>
+</package>

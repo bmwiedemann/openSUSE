@@ -1,0 +1,16 @@
+References: https://sourceforge.net/p/wsjt/wsjtx/merge-requests/20/
+
+diff -ru wsjtx.orig/CMakeLists.txt wsjtx/CMakeLists.txt
+--- wsjtx.orig/CMakeLists.txt	2025-02-13 14:43:07.209258803 +0100
++++ wsjtx/CMakeLists.txt	2025-02-14 12:12:14.347873434 +0100
+@@ -1546,10 +1546,6 @@
+     add_subdirectory (manpages)
+     add_dependencies (wsjtx manpages)
+   endif (NOT WSJT_SKIP_MANPAGES)
+-  if (NOT APPLE)
+-    add_subdirectory (debian)
+-    add_dependencies (wsjtx debian)
+-  endif (NOT APPLE)
+ endif (UNIX)
+ 
+ #

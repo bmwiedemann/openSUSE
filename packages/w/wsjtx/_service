@@ -1,0 +1,20 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://git.code.sf.net/p/wsjt/wsjtx</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">wsjtx</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">wsjtx-2.6.1</param>
+    <param name="versionrewrite-pattern">wsjtx-(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime">
+    <param name="exclude">debian</param>
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

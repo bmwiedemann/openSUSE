@@ -1,0 +1,658 @@
+-------------------------------------------------------------------
+Fri Feb 14 11:17:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- reproducible builds: drop debian changelog (reproducible.patch)
+
+-------------------------------------------------------------------
+Thu Feb 13 14:05:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- refresh spec file for inclusion in Tumbleweed
+- restore previous spec file license 
+- drop wsjtx-no-rigctlcom.patch, hamlib now includes rigctl
+
+-------------------------------------------------------------------
+Thu Jun 20 17:08:26 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- New spec file with current URL and source locations
+- Fixed build for for Leap 15.6, Factory and Tumbleweed
+
+-------------------------------------------------------------------
+Wed May  3 09:39:25 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Added a rpmlint file as a workaround for build failing due to
+  executable stack (for Factory/Tumbleweed the badness is 10000)
+
+-------------------------------------------------------------------
+Tue Jan 31 23:38:19 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Updated to version 2.6.1. This is mostly a bug fix release for
+  Q65.
+  * Fix a flaw in Q65 mode that prevented proper display of the
+    T/R period spinner.
+  * Correct the reference to "ARRL International Digital Contest"
+    in the Release Notes.
+  * Make the initialization of the decoded text font more robust.
+  * Better initialization when starting the program in FT8 Hound
+    mode.
+- Patch wsjtx-no-rigctlcom.patch rebased
+- Updated to version 2.6.0, its major enhancements include the
+  following:
+  * Mode selection buttons on main window for FT4, FT8, JT65,
+    MSK144, Q65, and FT8's Hound mode
+  * Support for the ARRL International Digital Contest
+  * Performance enhancements for the FT8 and Q65 modes
+  * New features for EME Echo mode, including calibrated SNR reports
+  * Several new convenience features for Fox operators 
+  * Save/Restore capability, "Preferred" status, and effective date
+    ranges for mode-dependent tables of default frequencies
+  * Improved display features for contest log
+  * Improved calibration of SNR estimates for modes FST4 and FST4W
+- For detailed changes for 2.6.0-rc1 to rc5 see NEWS file
+
+-------------------------------------------------------------------
+Wed Jan 12 23:28:22 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Updated to version 2.5.4
+  * This is a bug fix  release. It has the following changes since
+    release 2.5.3:
+    + WSJTX: Repair a defect that caused occasional crashes when in
+      QSO with stations using nonstandard callsigns.
+    + MAP65: Allow MAP65 "Best-fit Delta phi" solution to be
+      displayed to the user.
+- Updated to version 2.5.3 (not released for Linux)
+  * This release has the following changes since release 2.5.2:
+    + Add a note in memory of G4WJS to the About window
+    + Add a simple $DXCALL macro capability for Tx messages, and
+      update the User Guide accordingly
+    + Ensure that MAIN VFO is used for receiving on rigs that
+      require it
+    + Repair a defect in reporting low-confidence decodes to
+      PskReporter
+    + Updated CTY.DAT database, tnx to Jim AD1C
+
+-------------------------------------------------------------------
+Sun Nov 21 23:33:28 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Updated to version 2.5.2
+  * This is mostly a bug fix  release.  It has the following changes
+    since release 2.5.1:
+    + Repair a longstanding regression that caused signal reports from
+      tail-ended Tx2 messages to be omitted from logged information
+    + Parse "dx-call-1 RR73; dx-call-2 <de-call> +nn" messages (i3=0,
+      n3=1 DXpedition mode) in regular 77-bit modes
+    + Repair a regression associated with setting the main window width
+      on program startup.
+    + Repair a problem with Q65 decodes of type 'q3' for messages of the
+      form "<Call_1> Call_2"
+    + Execute code associated with Q65 decodes of type 'q5' only when the
+      Max Drift control is set to 50. This fix prevents
+      double-incrementing of the message averaging counter on the first
+      decoding sequence.
+    + Polarization offset 'Dpol' from the astronomical data window is now
+      written to file azel.dat if environment variable
+      WSJT_AZEL_EXTRA_LINES has been defined as 1 or greater. Dpol is
+      especially useful for EME on the higher microwave bands.
+    + The Auto Log QSO option in "Settings->Reporting" now behaves the
+      same as the Prompt to log QSO option when not in a special
+      operating context mode.
+    + The Fast/Normal/Deep setting in Q65 mode is now a sticky setting
+      and is no longer reset to Fast on program startup or when Settings
+      has been opened. The user selection is used for automatic decodes,
+      but Deep is used for any subsequent manual decode attempts.
+    + New hamlib code to correct minor flaws in controlling several rigs.
+    + Update the  Chinese and Hong Kong translations of the user
+      interface.
+
+-------------------------------------------------------------------
+Fri Oct 22 18:59:59 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Updated to version 2.5.1
+  * This release mainly contains improvements and defect repairs related
+    to Q65 and JT65 modes when used with non-standard and compound
+    calls. Also included is a new feature for microwave aircraft scatter
+    and repairs for defects detected since the 2.5.0 GA release.
+    + Improved Q65 support for 10GHz Aircraft Scatter contributed
+      by Rex, VK7MO, and Roger, W3SZ.
+    + Repair a defect that failed to pre-load the DE and DX
+      calls to the hash lookup tables in the Q65 decoder.
+    + Repair standard message Tx4 and Tx5 generation in Q65
+      mode when using a non-standard call.
+    + Repair a defect in generation of the standard Tx2 JT65
+      message in EME mode when using a compound call.
+    + Repair a defect when decoding 77-bit type 4 non-standard
+      call message.
+    + Repair a defect that could cause a crash when switching from
+      Q65 to JT65 mode and attempting a double-click decode.
+    + Enable 'q3' AP decoding in Q65 mode for messages containing a
+      non-standard call.
+    + Repair a defect that required a blank DX Grid to achieve Q65
+      'q3' decodes of messages containing a non-standard call.
+    + Repair the logic that sets parameters for Q65 "Deep" decoding.
+    + In Q65 mode, allow 'q2' decodes when MyCall is compound or
+      non-standard.
+    + Repair a long-standing defect that could cause a crash when
+      reference spectrum correction is enabled.
+    + Updated UI translations from Xavi, EA3W, Oba-san, JA7UDE, and
+      a new translation for Traditional Chinese by Steven, BU2EL.
+    + Updated CTY.DAT database, tnx to Jim AD1C
+    + Improved main window layout to ensure TxN messages are fully
+      visible.
+
+-------------------------------------------------------------------
+Sat Oct  2 09:17:30 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Updated to version 2.5.0
+  * WSJT-X in  this release is nearly identical to that in WSJT-X 2.4.0.
+    The Q65 decoder has been enhanced to measure and compensate for linear
+    frequency drift in Q65 signals.
+    + Repair a defect that caused CAT errors when using WSPR band hopping
+      and auto tune-up with some Icom rigs.
+    + Ensure that CALL3.TXT is not deleted while updating the file (this
+      allows sharing using symlinks to work).
+- Release: WSJT-X 2.5.0-rc6
+    + Repair a file handle leak in wsprd (tnx Phil, KA9Q).
+    + Better handling of the Tx1 buttons when changing special operating
+      modes.
+    + Q65 mode now supports contest special operating modes.
+    + Repair an issue when non-ASCII characters used in account names.
+    + Repair a regression that prevented WSPR band-hopping working when
+      the Tx percentage is zero.
+- Release: WSJT-X 2.5.0-rc5
+    + Repair a regression that caused some messages involving compound
+      or nonstandard callsigns to be encoded as free text
+- Release: WSJT-X 2.5.0-rc4
+    + Repair a defect in CALL3.TXT lookups that incorrectly matched
+      partial calls
+    + Instructions in macOS ReadMe.txt to suppress App Nap energy saving
+    + Revised User Guide using FT8 mode for the basic tutorial
+    + Allow contest and FD operating in Q65 mode
+- Release: WSJT-X 2.5.0-rc3
+    + Repair a long standing defect that caused UDP Protocol Heartbeat
+      messages to not be sent when no other intervening messages are
+      sent.
+- Release: WSJT-X 2.5.0-rc2
+    + Increase maximum DT to 5.5 s when EME decoding is enabled in Q65
+    + Fix generation of Tx5 message when "hiscall" has suffix /P or /R.
+    + Improve width management of GUI's band-selection combo box
+    + Restore plotting of Q65 sync curve after a q3 decode
+    + Disable selection of "View | Message Averaging F7" for modes
+      other than JT4 and JT65
+    + Switching to Q65 mode now defaults to "Decode | Fast"
+    + Repair a long standing regression with message generation for
+      72-bit modes when using a compound callsign.
+    + Repair a defect in diagnostic logging that could cause crashes on
+      some platforms.
+    + Repair a defect which failed to strip leading and trailing spaces
+      on input of callsigns during validation.
+    + Hamlib updates including repair of defects with PTT handling on a
+      separate serial port via rigctld, delayed PTT with Elecraft K3
+      series rigs, and support for the Icom IC-575 rig.
+    + Updated CTY.DAT database
+- Release: WSJT-X 2.5.0-rc1
+    + FST4W mode no longer saves .WAV files when "Menu->Save->None" is
+      checked.
+- patch hamlib_ver.diff removed, now WSJT-X will accept any version
+  of hamlib, including 4.3.1
+
+-------------------------------------------------------------------
+Thu May 27 16:43:42 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.4.0:
+  * WSJT-X 2.4.0 General Availability Release adds new Q65 mode
+    functionality and decoder optimizations and repairs several
+    defects and regressions discovered in the RC4 and v2.3.1 GA
+    releases.
+    + Repair a defect with own call decode highlighting when
+      callsigns with a common root are decoded.
+    + Q65 message averaging correctly disabled as be menu option.
+    + Repair a regression with missing timestamps in AlL.TXT for
+      the MSK144 mode.
+    + Repair a defect in the selection of working frequencies
+      matching the current band and mode combination.
+    + WSPR band hopping mode now generates a tune up tone for bands
+      where it is scheduled to transmit.
+    + Repair a long standing defect per band tune and Tx power
+      level memories.
+    + More flexibility for inputting calls into the DX Call field,
+      leading and trailing white space characters are allowed but
+      ignored.
+- Spec file tidy up.
+- Disable lto build flag, needs upstream fixing.
+
+-------------------------------------------------------------------
+Tue Mar 30 19:47:29 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- WSJT-X 2.3.1 General Availability release updates the User Guide
+  to cover the new modes FST4 and FST4W along with sample .WAV files
+  and decoding tutorials. This release also repairs a number of
+  defects and regressions discovered since the v2.3.0  release,
+  including those below.
+  * When sending traffic to a  multicast UDP server ensure that the
+    local loop-back interface is used if no others are selected.
+  * Repair a defect in instance lock file handling that causes an
+    infinite loop on start up.
+  * Invert the PTT serial port sharing default behaviour, and
+    enable sharing when non-Hamlib CAT control is combined with
+    direct serial port PTT control.
+  * Allow the FST4 and FST4W decoders to continue after the first
+    successful decode when using negative NB values to try multiple
+    NB values.
+  * Repair defects in auto-sequencing, particularly with responding
+    to a repeated final message. In general a double-click of the
+    repeated message now does the right thing.
+  * Repair a regression that had inadvertently disabled EU VHF
+    Contest  mode when using the MSK144 mode.
+  * Repair a defect that could caused incorrect log entry fields
+    when using FT4 mode and a priori (AP) decoding.
+  * Repair defects saving .WAV files for periods with decodes.
+
+-------------------------------------------------------------------
+Sat Feb 13 21:28:42 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- WSJT-X 2.3.0 General Availability release adds the new modes FST4
+  and FST4W along with many defect repairs. See summaries below and
+  for the prior release candidates (2.3.0-rc1 through -rc4) of this
+  version for details.
+  * FST4/W: Disable envelope shaping at start and end of transmission
+    when environment variable FST4_NOSHAPING=1. Works for fst4sim too.
+  * Add time stamp to error message boxes to aid diagnosis.
+  * Repair a defect that caused crashes at start up for some macOS Big
+    Sur users.
+  * Repair a defect that could cause the jt9 slow mode decoder process
+    to exit incorrectly with a failure status.
+  * Updated CTY.DAT file.
+  * New modes FST4 and FST4W targeting LF and MF bands.
+  * Improved noise baseline discovery for more reliable SNR estimates.
+  * On the waterfall and 2D spectrum a tool-tip shows the frequency
+    offset under the mouse pointer.
+  * The *On Dx Echo* Doppler compensation method has been modified in
+    response to feedback from Users. Basic functionality is unchanged.
+    See the User Guide (Section 8.1) for more information.
+  * Improved user_hardware script or program initiation for WSPR
+    band-hopping mode.
+  * Decoded  QSO  mode  message   display  narrowed  to  make  appended
+    information easier to view without scrolling the window.
+  * Option to record the propagation mode in logged QSO records.
+  * ADIF v3.1.1 compliance.
+  * Option to connect to PSKReporter using TCP/IP for those with very
+    poor Internet connections.
+  * Major rewrite of the PSKReporter interface to improve efficiency
+    and reduce traffic levels.
+  * Removal of the Tab 2 generated messages.
+  * Accessibility improvements to the UI.
+  * Tweaked decode speed options for a better user experience with
+    lower powered single-board computers like the Raspberry Pi.
+  * Updates to UI translations in Spanish, Italian, Catalan, Chinese,
+    Hong Kong Chinese, Danish, and Japanese.
+  * Audio devices only enumerated when starting up and opening the
+    "Settings->Audio" device lists.
+  * Option to select the default audio device removed to minimize the
+    likelihood of system sounds being transmitted.
+  * Better handling of missing audio devices.
+  * Improved and enhanced meta-data saved to .WAV files.
+  * More reliable multi-instance support.
+  * Included CTY.DAT file moved to installation share directory.
+  * The bundled Hamlib library is updated to the latest available which
+    fixes several regressions, defects, and adds new rig support.
+  * Fixed some edge-case message packing and unpacking defects and
+    ambiguities.
+  * Fix a defect that allowed non-CQ messages to be replied to via the
+    UDP Message Protocol.
+  * Fix a long-standing defect with Tx start timing.
+  * Repair a defect with style sheets when switching configurations.
+  * Repair defects that made the astronomical data window an several
+    main window controls unreadable when using the dark style sheet.
+  * Repair a regression with setting WSPR transmitted power levels.
+  * Repair a regression with newly created ADIF log file's header.
+  * Many other defects repaired.
+
+-------------------------------------------------------------------
+Tue Jun 23 22:55:38 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- WSJT-X v2.2.2 is a bug fix release, mainly to incorporate the new RAC
+  section PE into the FT8/FT4/MSK144 Contest Mode for Field Day.
+  * Stations intending to operate in Field Day (FD) are urged to
+    upgrade to this release, without it you cannot set your section to
+    PE, and of equal importance you cannot decode contest messages from
+    stations who are operating from PE without this upgrade.
+  * FT8 decoder speeded up in Normal and Fast modes. This change gives
+    a speed of decoding closer to that of v2.1.2 without compromising
+    the number of decodes. It is particularly targeted for slower
+    single board computer users such as the Raspberry Pi Model 3 or
+    similar.
+  * Thanks to our user interface language translation contributors for
+    many improvements to the translated strings.
+  * The DX Grid field is now cleared automatically when the DX Call
+    field is changed. Care should be taken to complete entry of a
+    callsign before entering a grid square.
+- WSJT-X v2.2.1 is a bug fix release that fixes regressions found in the
+  prior v2.2.0 release.
+  * Incorporate a revised Hamlib version the address a regression in
+    rig control of some rigs including the Yaesu FT-991 and FT-891.
+  * Repair a defect in 6 character gridsquare lookup from the CALL3.TXT
+    database, and improve "Lookup" button processing.
+  * Repair a defect with selecting Wide Graph 2D spectrum types in
+    translated UIs.
+  * Repair a regression that blocked the Highlight Callsign UDP request
+    from highlighting terms including a '+' character.
+  * Repair a defect that caused hash code lookups of one's own call to
+    fail after an extended period of inactivity, when operating with a
+    non-standard callsign.
+  * Repair  a  regression  where   occasional  Highlight  Callsign  UDP
+    requests with the 'Highlight last'  parameter as true highlighted a
+    match in a prior period. This fix include a performance improvement
+     when  processing any  Highlight  Callsign  request with  'Highlight
+    last' as true.
+  * Include support for the Yaesu FT-920 when controlled by Ham Radio
+    Deluxe. This change inadvertently missed the v2.2.0 GA release.
+  * Correct a documentation issue with the UDP Message Protocol
+    Status(1) message Special Operations Mode enumeration values ("WW
+    DIGI added", Fox, and Hound renumbered). Thanks to Sam, W2JDB, for
+    raising this issue.
+  * Updated Catalan UI translation, tnx Xavi, EA3W.
+  * Italian UI translation, tnx Marco, PY1ZRJ.
+  * Updated Spanish UI translation, tnx Cedric, EA4AC. 
+- WSJT-X 2.2 is a program upgrade that provides a number of new
+  features and capabilities.
+  * Significant improvements to the decoders for FT4, FT8, JT4,
+    JT65 and WSPR.
+  * New format for "EU VHF Contest" Tx2 and Tx3 messages
+  * Keyboard shortcuts have been added as an aid to accessibility:
+    Alt+R sets Tx4 message to RR73, Ctrl+R sets it to RRR.
+  * the "inverted goal posts" marking Rx frequency on the Wide Graph's
+    frequency scale are now rendered in a darker shade of green.
+  * User Interface Translations have been enabled.  Translations are
+    now available for Catalan, Spanish, Japanese, Chinese, and Hong
+    Kong Chinese.
+  * "Save None" now writes no .wav files to disk, even temporarily.
+  * An explicit entry for "WW Digi Contest" has been added to
+    "Special operating activities" on the "Settings | Advanced" tab.
+  * Contest mode FT4 now always uses RR73 for the Tx4 message.
+  * The Status bar now displays the number of decodes found in the
+    most recent Rx sequence.
+  * The "Highlight Callsign" UDP message has been enhanced to allow
+    clearing of old highlighting for a specified callsign. Please note
+    a recommended restriction on the use of this message in the
+    documentation here: https://tinyurl.com/y85nc3tg
+
+------------------------------------------------------------------
+Sat Dec 14 22:29:19 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- WSJT-X 2.1.2 is an emergency bug-fix release to correct errors
+  that crept into the latest hamlib and affected control of certain
+  Icom radios in v2.1.1
+- WSJT-X 2.1.1 is a bug fix only release addressing regressions in
+  the prior v2.1.0 release.
+  * Document rules for the UDP message protocol.
+  * Fix bug that could cause display of a blank Settings window.
+  * Fix message parsing to properly handle 4-character directed CQs
+  * Fix a potential crash in the interface to Omni-Rig.
+  * Improve handling of unexpected rig off line status changes from
+    Omni-Rig.
+  * Add an option to highlight unworked 2-character grid fields
+    rather than 4-character grid squares.
+  * Fix bug that caused unwanted disabling of "Enable Tx" in Fox
+    mode.
+  * Log duplicate contacts in FT8 DXpedition Fox mode.
+  * Regenerate the GFSK Tx waveform if Tx audio frequency is changed.
+  * Fix the behavior of double-clicking on a decoded message with
+    first callsign displayed as an unresolved hash code <...>.
+  * Fix a problem with determining "worked before" status after a
+    band change.
+  * Updates to the WSJT-X 2.1 User Guide.
+
+-------------------------------------------------------------------
+Fri Nov 15 12:43:06 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fixed source to be true 2.1.0 release
+
+-------------------------------------------------------------------
+Sun Mar 17 14:31:02 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * wsjtx-no-rigctlcom.patch
+    Needed until hamlib will make a new release with rigctlcom
+    included.
+
+-------------------------------------------------------------------
+Sun Mar  3 22:17:07 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to WSJT-X v2.0.1 GA release
+  * Remove startup message about importance of upgrading to v2.0.
+  * Relax ADIF log file parsing to allow garbage between records and
+    records with no DX callsign
+  * Fix bug that prevented retention of power and comments in
+    Log QSO window
+  * Updates to User Guide
+  * MSK144 frequency defaults to 50.260 in IARU Regions 2 and 3
+  * Remove hexadecimal RGB values from color-configuration panel
+  * Fix a bounds error by not executing Fox-related code when not
+    in Fox mode
+  * Allow the logQSO dialog to modify "Exch Sent" or "Rcvd" when 
+    operating in RTTY or NA VHF Contest mode, and to have any
+    changes flow through to N1MM Logger.
+  * Fix several problems in handling hashed callsigns
+  * More rigorous quality checking of WSPR decodes from the OSD
+    algorithm
+  * Fix bug that prevented recevied signal reports from
+    compound callsigns to be logged
+  * Improved recognition of callsigns with /P or /R suffixes
+  * Do not waste time trying AP decoding of nonstandard callsigns
+  * Make OSD decoding work with WSPR "type 2" messages
+  * Retain in Tx6 message field any CQ messages like
+   "CQ xxxx K1ABC FN42", where xxxx is 1-4 letters or 1-3 digits
+  * Optional key bindings for F1 through F5, especially for contest use
+  * Include grid in Tx1 messages with hashed callsign, for example
+    "<DF2018ARDF> K1ABC FN42"
+  * Better formatting for the files ALL.TXT and ALL_WSPR.TXT
+  * Correct a flaw in validating contest exchange data when logging
+  * Option to always start new decode periods at top of Band
+    Activity window
+  * New command "Erase WSPR hashtable" on the File menu
+  * Improved validation for ARRL RTTY RU and FD exchange fields
+  * UDP Reference applications join a multicast group on all available
+    multicast capable network interfaces
+  * Minor code changes to support Qt versions >=5.10
+  * Changes to support x64 Windows builds in preparation for Qt v5.12
+  * Add "ADIF Export ..." to Fox Log's contextual popup menu
+  * Use ARRL-required names for VHF+ bands in exported Cabrillo log
+  * New utility program rigctlcom-wsjtx (from Hamlib)
+  * Remove temporary FT8 working frequencies from default frequency list
+  * UDP protocol's Clear (3) message is made two-way, for better
+    communication with DX Lab Suite applications
+  * Reset QSO start time when aborting a QSO or clearing messages by ESC
+    or F4
+  * Correct a logging issue in Fox's ADIF log when Fox sends RR73 to more
+    than one Hound in the same Tx sequence.
+
+-------------------------------------------------------------------
+Sat Dec 22 19:34:02 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to WSJT-X v2.0.0 GA release
+- WSJT-X 2.0 is a major update that introduces new protocols for
+  FT8 and MSK144. The new protocols become the world-wide standards
+  on December 10, 2018. WSJT-X 2.0 cannot communicate in these modes
+  with other stations using WSJT-X v1.9.1 or earlier.
+- New features since WSJT-X v1.9.1:
+1. Compound and nonstandard callsigns are automatically recognized
+   and handled using new message formats.
+2. The new FT8 protocol provides optimized message formats for
+   North American VHF contests, European VHF contests, ARRL Field
+   Day, and ARRL RTTY Roundup.  Similarly, the new MSK144 protocol
+   provides optimized message formats for North American VHF and
+   European VHF contests. Full support is provided for "/R" and
+   "/P" calls in the relevant contests.
+3. The new protocols provide nearly equal (or better) sensitivity
+   compared to the old ones, and lower false decode rates.
+4. New logging features are provided for contesting and for "Fox"
+   (DXpedition) mode.  Logging is optionally integrated with N1MM
+   Logger+ and WriteLog.
+5. Color highlighting of decoded messages provides worked-before
+   status for callsigns, grid locators, DXCC entities, continents,
+   CQ Zones, and ITU zones on a “by band” and “by mode” basis, and
+   for stations that have uploaded their logs to Logbook of the
+   World (LoTW) within a specified time interval.
+6. The WSPR decoder now achieves decodes down to S/N = -31 dB.  For
+   the particular benefit of LF/MF users, an option "No own call
+   decodes" has been added.
+7. The UDP messages sent to companion programs have been expanded
+   and improved.
+
+-------------------------------------------------------------------
+Thu Nov  8 22:50:01 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to WSJT-X v1.9.1 GA release
+1.  New FT8 DXpedition Mode to facilitate high QSO rates in pileup
+    situations: for details see
+    http://physics.princeton.edu/pulsar/k1jt/FT8_DXpedition_Mode.pdf
+2.  Decoding improvements for JT65 mode, including a priori (AP)
+    decoding when VHF/UHF/Microwave features are enabled
+3.  More flexible Doppler control features for EME
+4.  Improved AFC capability for the wider JT65 sub-modes to help with
+    drifting signals
+5.  Optional Auto-Sequencing in JT4, JT9, and JT65 when
+    VHF/UHF/Microwave features are enabled
+6.  Corrected S/N measurements for the JT9 slow/wide submodes
+7.  DX grid locator sent to wsjtx_status.txt, for use by applications
+    like PstRotatorAZ
+8.  Improved decoding performance for WSPR mode, especially effective at
+    LF and MF
+9.  Improved waterfall sensitivity for very weak signals
+10. Optional forwarding of logged information to N1MM Logger+
+11. Expanded and improved UDP messages sent to companion programs
+12. Allow partial processing of incoming UDP Reply messages so that
+    non-CQ/QRZ decodes can be processed. The processing is the same as
+    double-clicking the same decoded message within WSJT-X except that
+    "Enable Tx" will not be enabled.
+13. Adjustable main-window geometry with a "splitter" between the two
+    text panels.
+14. Better support for macOS using hi-DPI Retina displays
+15. Updated Hamlib functionality including changes to the Yaesu FT-817
+    back end that allows the uBITx kit transceiver to be CAT controlled
+    by WSJT-X.
+16. Correct the display of DXCC status of KG4 calls
+17. Decoded CQ calls where a prefix has been used as a suffix should
+    have the DXCC entity name assigned correctly in almost all cases
+18. Hamlib, support for TRX-Manager added.
+19. Hamlib, improved support for FLRIG.
+20. Updated copy of cty.dat
+
+-------------------------------------------------------------------
+Sun Nov 12 11:54:05 UTC 2017 - frede@b1-systems.de
+
+- update to WSJT-X v1.8.0 GA release
+ 1. New mode called FT8: sensitivity down to -20 dB on the AWGN
+    channel; QSOs 4 times faster than JT65 or JT9; auto-sequencing
+    includes an option to respond automatically to first decoded
+    reply to your CQ.
+ 2. New mode for accurate Frequency Calibration of your radio.
+ 3. Improved performance of decoders for JT65, QRA64, and MSK144.
+    MSK144 includes facilities for amplitide and phase equalization
+    and an "SWL" mode for short-format messages.
+ 4. Options to minimize screen space used by Main and Wide Graph
+    windows.
+ 5. Enhanced management scheme for table of operating frequencies, and
+    a new set of default frequencies specific to the three IARU
+    Regions.
+ 6. Improved CAT control for many rigs, including those controlled
+    through Commander or OmniRig.
+ 7. New keyboard shortcuts to set "Tx even/1st" ON or OFF.
+ 8. A number of (mostly minor) bug fixes and tweaks to the user
+    interface.  For example: new behavior for the audio level slider;
+    correctly logged QSO start times in certain situations; correct
+    control of FT-891/991 and some other radios via rigctld.
+
+-------------------------------------------------------------------
+Mon Dec 19 12:40:13 UTC 2016 - dl8fcl@t-online.de
+
+- update to WSJT-X v1.7.0 GA release
+  new features
+  1.  New modes: ISCAT, MSK144, QRA64.
+  2.  Newly implemented submodes: JT65B-C, JT9B-H (wide and fast).
+  3.  FT decoder replaces KV decoder for JT65; KVASD is no longer used.
+  4.  Improvements to JT4, JT9, and JT65 decoders.
+  5.  Multi-pass decoding now implemented for JT65 as well as WSPR.
+  6.  Many improvements to Rig Control.
+  7.  Improved convenience features for EME Doppler tracking.
+  8.  Multiple configurations can be saved and restored.
+  9.  Sample-file download facility.
+  10. Optional auto-sequencing for Fast modes.
+  11. Power settings optionally remembered for Transmit and Tune on a
+      band-by-band basis.
+
+-------------------------------------------------------------------
+Thu Dec 17 11:57:16 UTC 2015 - dl8fcl@t-online.de
+
+- update to WSJT-X v1.6.0 GA release
+
+-------------------------------------------------------------------
+Thu Dec 10 22:52:41 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.6.0.r6259
+  Handle disappearing displays correctly
+
+-------------------------------------------------------------------
+Wed Dec  9 09:46:54 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.6.0.r6251
+  Always start audio from zero angle
+
+-------------------------------------------------------------------
+Sat Dec  5 22:41:42 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.6.0.r6224
+  Allow for broken Kenwood CAT emulations
+  Do not attempt to use Hamlib rig_get_mode() if it will not work
+
+-------------------------------------------------------------------
+Mon Nov 23 17:06:18 UTC 2015 - dl8fcl@t-online.de
+
+- update to version 1.6.0-rc2
+  Gui improved.
+  Mode WSPR-2 added
+
+-------------------------------------------------------------------
+Tue Nov  3 21:47:49 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.5.1-rc1 + svnr6033
+
+-------------------------------------------------------------------
+Mon Oct 26 09:23:40 UTC 2015 - dl8fcl@darc.de
+
+- patch for 42.1, tumbleweed and factory
+
+-------------------------------------------------------------------
+Tue Aug 11 12:37:17 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.5.1-rc1
+
+-------------------------------------------------------------------
+Tue Jun  2 07:11:41 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.5.0-rc2 + svnr5484
+
+-------------------------------------------------------------------
+Sun May 17 18:41:33 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.5.0-rc2 + svnr5394
+
+-------------------------------------------------------------------
+Sat May  9 14:51:57 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.5.0-rc2 + svnr5337
+
+-------------------------------------------------------------------
+Fri May  1 21:39:27 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.5.0-rc2 + svnr5328
+
+-------------------------------------------------------------------
+Mon Apr 27 18:07:54 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.5.0-rc2
+
+-------------------------------------------------------------------
+Sun Apr 26 20:09:00 UTC 2015 - dl8fcl@darc.de
+
+- import into buildservice
+
