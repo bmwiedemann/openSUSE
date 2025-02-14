@@ -1499,4 +1499,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1241606</requestid>
   </revision>
+  <revision rev="159" vrev="6">
+    <srcmd5>899fe8ffc45fa410b7afbb0da0bc988a</srcmd5>
+    <version>3.24.4</version>
+    <time>1739557188</time>
+    <user>anag+factory</user>
+    <comment>- Add python3-setuptools BuildRequires: replaces the fix to
+  manually inject PYTHON_INCLUDEDIR. Fix needed to build against
+  Python 3.13.
+
+Fixes build in Staging_A (python 3.13) - and seems to address the real reaason why PYTHON_INCLUDEDIR needed to be injected (forwarded request 1241212 from dimstar)</comment>
+    <requestid>1245683</requestid>
+  </revision>
 </revisionlist>
