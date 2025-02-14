@@ -1,0 +1,6 @@
+<package name="socket.io-client-cpp" project="openSUSE:Factory">
+  <title>Socket.IO C++ Client</title>
+  <description>C++11 implementation of Socket.IO client</description>
+  <devel project="devel:libraries:c_c++" package="socket.io-client-cpp"/>
+  <url>https://github.com/socketio/socket.io-client-cpp</url>
+</package>
