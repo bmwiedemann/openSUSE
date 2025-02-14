@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:15:44 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Stop building for EOL postgresql12.
+
+-------------------------------------------------------------------
+Sat Sep 28 00:14:26 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg17
+
+-------------------------------------------------------------------
 Mon Sep  9 02:01:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable pg11 builds as we will remove the EOL package soon

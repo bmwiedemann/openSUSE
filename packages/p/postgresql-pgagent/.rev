@@ -81,4 +81,14 @@
 - enable pg 16</comment>
     <requestid>1201375</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>3de1d8219a25fabc8de3661d5bd4918d</srcmd5>
+    <version>4.2.2</version>
+    <time>1739557399</time>
+    <user>anag+factory</user>
+    <comment>- Stop building for EOL postgresql12.
+
+- enable pg17</comment>
+    <requestid>1245885</requestid>
+  </revision>
 </revisionlist>
