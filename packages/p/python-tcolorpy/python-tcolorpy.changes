@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:45:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.1.7
+  * Drop support for Python 3.7/3.8
+  * Add support for Python 3.13
+  * Fix README rendering on PyPI
+  * Refactor type annotations
+  * Update copyright years
+  * Bump sigstore/gh-action-sigstore-python from 2.1.1 to 3.0.0
+    in the actions-dependencies group by @dependabot in #6
+
+-------------------------------------------------------------------
 Thu May  2 22:02:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.6:

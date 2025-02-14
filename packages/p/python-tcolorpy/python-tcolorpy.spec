@@ -1,7 +1,7 @@
 #
 # spec file for package python-tcolorpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tcolorpy
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Python library to apply true color for terminal text
 License:        MIT
