@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Feb 13 14:43:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- use %python3_fix_shebang to fix the shebang properly
+
+-------------------------------------------------------------------
+Wed Feb 12 06:11:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-grype2html: convert Grype vulnerability scan
+  results into interactive HTML reports
