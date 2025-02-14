@@ -1,7 +1,7 @@
 Index: Makefile.in
 ===================================================================
---- Makefile.in.orig
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -4051,7 +4051,7 @@ version.mac: genversion$(EXEEXT)
  	$(top_builddir)/genversion$(EXEEXT) $@
  
@@ -31,8 +31,8 @@ Index: Makefile.in
  # Otherwise a system limit (for SysV at least) may be exceeded.
 Index: Makefile.am
 ===================================================================
---- Makefile.am.orig
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -158,5 +158,5 @@ genstring_LDADD = genstring.$(OBJEXT)
  genstring_LINK = $(CCLD_FOR_BUILD) -o $@
  
@@ -42,8 +42,8 @@ Index: Makefile.am
  
 Index: libyasm/Makefile.inc
 ===================================================================
---- libyasm/Makefile.inc.orig
-+++ libyasm/Makefile.inc
+--- a/libyasm/Makefile.inc
++++ b/libyasm/Makefile.inc
 @@ -41,7 +41,7 @@ genmodule_LDADD = genmodule.$(OBJEXT)
  genmodule_LINK = $(CCLD_FOR_BUILD) -o $@
  
@@ -55,8 +55,8 @@ Index: libyasm/Makefile.inc
  
 Index: modules/preprocs/nasm/Makefile.inc
 ===================================================================
---- modules/preprocs/nasm/Makefile.inc.orig
-+++ modules/preprocs/nasm/Makefile.inc
+--- a/modules/preprocs/nasm/Makefile.inc.orig
++++ b/modules/preprocs/nasm/Makefile.inc
 @@ -31,7 +31,7 @@ genversion_LDADD = genversion.$(OBJEXT)
  genversion_LINK = $(CCLD_FOR_BUILD) -o $@
  

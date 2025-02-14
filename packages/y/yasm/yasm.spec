@@ -1,7 +1,7 @@
 #
 # spec file for package yasm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,14 @@ Release:        0
 Summary:        A complete rewrite of the NASM assembler
 License:        Artistic-1.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Languages/Other
-URL:            http://www.tortall.net/projects/yasm/
+URL:            https://github.com/yasm/yasm
 Source:         http://www.tortall.net/projects/yasm/releases/yasm-%{version}.tar.gz
-Patch0:         %{name}-no-build-date.patch
-Patch1:         %{name}-no-rpm-opt-flags.patch
+Patch0:         yasm-no-build-date.patch
+Patch1:         yasm-no-rpm-opt-flags.patch
 Patch2:         yasm-re2c-nogendate.patch
 Patch3:         yasm-Update-elf-objfmt.c.patch
+# https://github.com/yasm/yasm/issues/283
+Patch4:         yasm-gcc15.patch
 BuildRequires:  python3-devel
 BuildRequires:  xmlto
 
@@ -48,11 +50,7 @@ This package includes everything needed to develop programs that use
 libyasm.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1
-%patch -P 2 -p1
-%patch -P 3 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
