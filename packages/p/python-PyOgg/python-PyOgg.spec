@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyOgg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyOgg
 Version:        0.6.14a1
 Release:        0
 Summary:        Python bindings for Xiphorg's Ogg Vorbis, Opus and FLAC
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/Zuzu-Typ/PyOgg
 Source:         https://files.pythonhosted.org/packages/source/P/PyOgg/PyOgg-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -36,14 +35,14 @@ BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 # Automatically get so numbers
-Recommends:     %( ls %{_libdir}/libogg.so.*.*.* | sed -r 's/.*(libogg)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls /usr/lib*/libogg.so.*.*.* | sed -r 's/.*(libogg)\.so\.([0-9]*)\..*/\1\2/g' )
 Recommends:     libflac
 Recommends:     libvorbis
-Recommends:     %( ls %{_libdir}/libopus.so.*.*.* | sed -r 's/.*(libopus)\.so\.([0-9]*)\..*/\1\2/g' )
-Recommends:     %( ls %{_libdir}/libopusenc.so.*.*.* | sed -r 's/.*(libopusenc)\.so\.([0-9]*)\..*/\1\2/g' )
-Recommends:     %( ls %{_libdir}/libopusfile.so.*.*.* | sed -r 's/.*(libopusfile)\.so\.([0-9]*)\..*/\1\2/g' )
-Recommends:     %( ls %{_libdir}/libvorbisenc.so.*.*.* | sed -r 's/.*(libvorbisenc)\.so\.([0-9]*)\..*/\1\2/g' )
-Recommends:     %( ls %{_libdir}/libvorbisfile.so.*.*.* | sed -r 's/.*(libvorbisfile)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls /usr/lib*/libopus.so.*.*.* | sed -r 's/.*(libopus)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls /usr/lib*/libopusenc.so.*.*.* | sed -r 's/.*(libopusenc)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls /usr/lib*/libopusfile.so.*.*.* | sed -r 's/.*(libopusfile)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls /usr/lib*/libvorbisenc.so.*.*.* | sed -r 's/.*(libvorbisenc)\.so\.([0-9]*)\..*/\1\2/g' )
+Recommends:     %( ls /usr/lib*/libvorbisfile.so.*.*.* | sed -r 's/.*(libvorbisfile)\.so\.([0-9]*)\..*/\1\2/g' )
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,15 +56,16 @@ audio file formats.
 sed -i 's/\r$//' README.md README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md README.rst
 %license COPYING LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pyogg
+%{python_sitelib}/PyOgg-%{version}.dist-info
 
 %changelog

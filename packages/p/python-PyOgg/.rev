@@ -67,4 +67,14 @@
     <comment></comment>
     <requestid>999910</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>153e4a71692f2995f1b5c267e56292bb</srcmd5>
+    <version>0.6.14a1</version>
+    <time>1739557259</time>
+    <user>anag+factory</user>
+    <comment>- Don't use %_libdir, it doesn't work for noarch packages
+- No more greedy globs in %files.
+- Switch to pyproject macros.</comment>
+    <requestid>1245777</requestid>
+  </revision>
 </revisionlist>

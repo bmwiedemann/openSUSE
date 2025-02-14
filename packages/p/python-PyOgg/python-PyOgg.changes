@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 03:56:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't use %_libdir, it doesn't work for noarch packages
+- No more greedy globs in %files.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sun Aug 28 23:07:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 0.6.14a1 
