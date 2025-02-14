@@ -1,0 +1,10 @@
+<package name="paralleloverhead" project="openSUSE:Factory">
+  <title>An endless runner game</title>
+  <description>Parallel Overhead is a colorful endless runner game where you take control of
+the ships Truth and Beauty on a groundbreaking trip through hyperspace. A
+stable hyperspace tunnel has finally been achieved with the two ships
+supporting it on opposite walls of the tunnel. Well, almost stable...
+It's up to you to keep the ships from falling through the cracks!</description>
+  <devel project="games" package="paralleloverhead"/>
+  <url>https://huitsi.net/ParallelOverhead/</url>
+</package>
