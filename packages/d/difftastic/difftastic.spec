@@ -1,7 +1,7 @@
 #
 # spec file for package difftastic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 munix9@googlemail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,21 +18,18 @@
 
 
 Name:           difftastic
-Version:        0.62.0
+Version:        0.63.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
 URL:            https://difftastic.wilfred.me.uk/
-Source0:        https://github.com/Wilfred/difftastic/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/Wilfred/difftastic/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  jq
 BuildRequires:  libstdc++6-devel-gcc13
-%if 0%{?suse_version} >= 1600
-BuildRequires:  mdbook
-%endif
 BuildRequires:  rust >= 1.74.1
 BuildRequires:  shared-mime-info
 Requires:       shared-mime-info
@@ -47,6 +44,7 @@ Difftastic is a structural diff tool that compares files based on their syntax.
 %if 0%{?suse_version} >= 1600
 %package doc
 Summary:        Documentation for difftastic
+BuildRequires:  mdbook
 BuildArch:      noarch
 
 %description doc
