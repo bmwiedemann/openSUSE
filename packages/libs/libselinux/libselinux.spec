@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.7
+%define libsepol_ver 3.8
 Name:           libselinux
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
@@ -36,9 +36,6 @@ Patch5:         skip_cycles.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
-# Fixes segfault in 3.7, please remove once this is upstream:
-# https://lore.kernel.org/selinux/CAP+JOzQCu0srfss921Ew42oHxsaqRYGiTs56_h9j2Yfw0cYGjg@mail.gmail.com/T/#t
-Patch8:         libselinux-set-free-d-data-to-NULL.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
@@ -139,6 +136,7 @@ install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready
 %{_sbindir}/selabel_digest
 %{_sbindir}/selabel_lookup
 %{_sbindir}/selinux_check_access
+%{_sbindir}/selabel_compare
 %{_sbindir}/selabel_lookup_best_match
 %{_sbindir}/selabel_partial_match
 %{_sbindir}/selinuxconlist

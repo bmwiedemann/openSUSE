@@ -1,7 +1,7 @@
 #
 # spec file for package libselinux-bindings
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?sle15allpythons}
 %define python_subpackage_only 1
-%define libsepol_ver 3.7
+%define libsepol_ver 3.8
 %define upname libselinux
 Name:           libselinux-bindings
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
@@ -39,9 +39,6 @@ Patch5:         skip_cycles.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
-%if %{pkg_vcmp swig > 4.2.1}
-Patch8:         1231587-build-libselinux-with-swig-4.3.0.patch
-%endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
