@@ -33,6 +33,8 @@ Source2:        x3270.desktop
 Patch0:         mknod.patch
 Patch100:       usr_local_bin.patch
 Patch102:       x026-offset.diff
+# fix build with gcc 15
+Patch103:       x3270-gcc15.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -111,6 +113,7 @@ x026 is a fun toy which emulates an x026 puncher.
 %patch -P 0
 %patch -P 100
 %patch -P 102
+%patch -P 103
 
 find . -name ".gitignore" -delete
 

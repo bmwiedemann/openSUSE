@@ -1,0 +1,12 @@
+--- x026-1.2/x026.c	2025-02-14 11:59:47.781340989 +0000
++++ x026-1.2/x026.c	2025-02-14 11:57:47.954597116 +0000
+@@ -603,7 +603,7 @@ struct button {
+ 	char *label;
+ 	void (*callback)(int);
+ } button[] = {
+-	{ "Off", (void (*)())exit },
++	{ "Off", (void (*)(int))exit },
+ 	{ "Save", save },
+ 	{ NULL, NULL },
+ };
+
