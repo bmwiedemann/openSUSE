@@ -1,0 +1,12 @@
+diff -ru cwstudio-0.9.7.orig/src/play.c cwstudio-0.9.7/src/play.c
+--- cwstudio-0.9.7.orig/src/play.c	2025-02-02 19:45:26.359265458 +0100
++++ cwstudio-0.9.7/src/play.c	2025-02-02 19:46:57.538250503 +0100
+@@ -325,6 +325,7 @@
+ #else
+ 	return(NULL);
+ #endif
++	return(NULL);
+ }
+ #endif
+ #ifdef __DJGPP__
+Only in cwstudio-0.9.7/src: .play.c.swp

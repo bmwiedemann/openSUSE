@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 12 19:07:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.7:
+  * multiple correctness fixes handling output samples
+  * Fixes for PulseAudio output
+  * Fixes to handling bitrates in ncurses version
+  * Fixes to updating Gui comboboxes upon events
+- fix audio output, use pulseaudio
+- split off a -gui package to avoid pulling in dependencies
+- add cwstudio-0.9.7-nonvoid-return.patch to fix build
+
+-------------------------------------------------------------------
 Sat Dec 21 17:05:10 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Specfile cleanup
@@ -7,4 +19,3 @@ Sat Dec 21 17:05:10 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 Mon Jan  2 00:00:00 UTC 2017 - Lukasz Komsta <luqqe@users.sourceforge.net>
 
 - Initial version of the package
-
