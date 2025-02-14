@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Feb 14 06:40:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.19:
+  * docs: update CLI reference documentation (#856)
+  * chore(deps): update dependency siderolabs/talos to v1.9.4
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.64.5
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.9.4
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.32.2
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.64.4
+  * chore(devcontainer): Swap kubectl install image to use
+    registry.k8s.io instead of bitnami (#848)
+  * chore(schema): update talos-extensions.yaml JSON schema (#850)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.64.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#847)
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.7.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#844)
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.13
+  * chore(schema): update talconfig.yaml JSON schema (#842)
+  * feat(code): add test for content substitution
+  * feat(config): add `inlineManifests`
+  * feat(config): allow `machineFiles` to be not envsubst-ed
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.18
+  * feat: update Scoop for talhelper version v3.0.18
+  * feat: update flake (#839)
+
+-------------------------------------------------------------------
 Fri Feb 07 08:51:41 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.18:
