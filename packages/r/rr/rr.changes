@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 14 08:25:25 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.9.0:
+  * As usual there are lots of small improvements and bugfixes.
+    The main feature of this release is that in kernels >= 6.10,
+    rr now works with perf_event_paranoid set to 2, which is the
+    default for most distributions. This requires a kernel bug fix
+    by Kyle Huey that only shipped in 6.10. rr is slightly more
+    efficient with perf_event_paranoid set to 1, but that won't
+    matter in practice.
+
+-------------------------------------------------------------------
 Tue May 21 05:59:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.8.0:

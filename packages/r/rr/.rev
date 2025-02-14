@@ -106,4 +106,19 @@
     recording as many times as you need to.)</comment>
     <requestid>1175434</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a14f25c13659378af89b8d6560793638</srcmd5>
+    <version>5.9.0</version>
+    <time>1739557328</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.9.0:
+  * As usual there are lots of small improvements and bugfixes.
+    The main feature of this release is that in kernels &gt;= 6.10,
+    rr now works with perf_event_paranoid set to 2, which is the
+    default for most distributions. This requires a kernel bug fix
+    by Kyle Huey that only shipped in 6.10. rr is slightly more
+    efficient with perf_event_paranoid set to 1, but that won't
+    matter in practice.</comment>
+    <requestid>1245844</requestid>
+  </revision>
 </revisionlist>

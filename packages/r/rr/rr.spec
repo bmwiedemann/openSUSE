@@ -1,7 +1,7 @@
 #
 # spec file for package rr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rr
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        Records nondeterministic executions and debugs them deterministically
 License:        MIT
@@ -29,6 +29,7 @@ BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
 BuildRequires:  libcapnp-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  patchelf
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -39,6 +40,17 @@ ExclusiveArch:  x86_64 aarch64
 %ifarch x86_64
 BuildRequires:  gcc-c++-32bit
 %endif
+
+%package zsh-completion
+Summary:        Zsh completion for %{name}
+Group:          Development/Tools/Version Control
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
 
 %description
 This program aspires to be your primary debugging tool, enhancing gdb. It
@@ -57,7 +69,7 @@ sed -i "s|%{_bindir}/bash|/bin/bash|g" ./scripts/signal-rr-recording.sh
   -Ddisable32bit=true \
 %endif
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CXX_STANDARD=14
+  -DCMAKE_CXX_STANDARD=17
 %cmake_build
 
 %install
@@ -82,5 +94,8 @@ sed -i "s|%{_bindir}/bash|/bin/bash|g" ./scripts/signal-rr-recording.sh
 %{_libdir}/rr/librrpage.so
 %{_datadir}/rr/*
 %{_datadir}/bash-completion/completions/rr
+
+%files zsh-completion
+%{_datadir}/zsh
 
 %changelog
