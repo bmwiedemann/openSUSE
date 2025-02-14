@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Fri Feb 14 09:38:24 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1016
+- provide function to generate LVM devices file (jsc#PED-7355)
+- 4.5.234
+
+--------------------------------------------------------------------
+Thu Feb 13 13:30:10 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1015
+- extended documentation
+- 4.5.233
+
+--------------------------------------------------------------------
 Mon Feb 10 17:01:46 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1014
