@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:12:46 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Stop building for EOL postgresql12.
+
+-------------------------------------------------------------------
+Thu Dec 12 17:51:11 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.6.5
+  - Fix superuser check before adding job to CronJobHash by
+    @CyberDem0n in #367
+  - Fix leap year scheduling problem by @zhjwpku in #365
+  - Fix possible buffer underflow issue in cron parsing by
+    @marcoslot in 5c10a8a
+  - Fix compilation warnings by @reshke in #363
+
+-------------------------------------------------------------------
+Sat Sep 28 00:25:58 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg17
+
+-------------------------------------------------------------------
 Mon Sep  9 02:01:13 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable pg11 builds as we will remove the EOL package soon

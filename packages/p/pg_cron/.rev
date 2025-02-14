@@ -202,4 +202,22 @@
     worker by @marcocitus in #286</comment>
     <requestid>1201374</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>310eaa85502154afc8dda6e58e93bc7a</srcmd5>
+    <version>1.6.5</version>
+    <time>1739557396</time>
+    <user>anag+factory</user>
+    <comment>- Stop building for EOL postgresql12.
+
+- update to 1.6.5
+  - Fix superuser check before adding job to CronJobHash by
+    @CyberDem0n in #367
+  - Fix leap year scheduling problem by @zhjwpku in #365
+  - Fix possible buffer underflow issue in cron parsing by
+    @marcoslot in 5c10a8a
+  - Fix compilation warnings by @reshke in #363
+
+- enable pg17</comment>
+    <requestid>1245882</requestid>
+  </revision>
 </revisionlist>
