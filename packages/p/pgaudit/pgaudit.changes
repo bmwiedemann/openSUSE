@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:13:36 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Stop building for EOL postgresql12.
+
+-------------------------------------------------------------------
+Sat Sep 28 00:28:44 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added version 17 for postgresql 17 
+  https://github.com/pgaudit/pgaudit/releases/tag/16.0
+
+-------------------------------------------------------------------
 Fri May 17 15:25:32 UTC 2024 - Reinhard Max <max@suse.com>
 
 - PostgreSQL 11 is EOL.

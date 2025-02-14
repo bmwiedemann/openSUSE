@@ -69,4 +69,15 @@
   https://github.com/pgaudit/pgaudit/releases/tag/16.0</comment>
     <requestid>1174918</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c679f1d4084423eba7b6ecdf7fc29bb1</srcmd5>
+    <version>unknown</version>
+    <time>1739557401</time>
+    <user>anag+factory</user>
+    <comment>- Stop building for EOL postgresql12.
+
+- Added version 17 for postgresql 17 
+  https://github.com/pgaudit/pgaudit/releases/tag/16.0</comment>
+    <requestid>1245893</requestid>
+  </revision>
 </revisionlist>
