@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 14 06:42:58 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.2:
+  * fix: Correct displaying deprecated flag warnings (#3880)
+  * fix: Fixing excessive warning for dependency input usage
+    (#3879)
+
+-------------------------------------------------------------------
 Wed Feb 12 14:42:54 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.1:
