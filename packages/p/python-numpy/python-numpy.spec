@@ -204,6 +204,7 @@ chmod -x \
 rm -f PKG-INFO
 
 %build
+export PYTHONDONTWRITEBYTECODE=1
 %define _lto_cflags %{nil}
 %if %{with hpc}
 %hpc_setup
