@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 13 20:48:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.0.32
+  * Update build.yaml
+  * Updates
+  * Bump publish
+  * Update publish with 3.10 (quotes)
+- from version 0.0.31
+  * Create LICENSE
+  * Replace import of “src.pycomposefile” in a test
+  * Resolved error when environment variable value contains equal sign
+- Refresh p_fix-version-number.patch
+
+-------------------------------------------------------------------
 Wed Mar  6 14:58:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
