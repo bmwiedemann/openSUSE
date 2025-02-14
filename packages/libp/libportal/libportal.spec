@@ -1,7 +1,7 @@
 #
 # spec file for package libportal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libportal
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A GIO-style async API for most Flatpak portals
 License:        LGPL-3.0-or-later
@@ -28,7 +28,7 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  pkgconfig(Qt5Core)

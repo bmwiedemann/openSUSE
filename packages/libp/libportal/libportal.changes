@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 12 12:52:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.9.1:
+  + Fix memory management in the Input Capture portal code
+  + Correct the type used for GObject signal connections
+  + Remove wrong (closure) annotations, fixing
+    GObject-Introspection warnings
+  + Don't require a C++ compiler for the build architecture
+  + Fix Meson warnings
+  + Consistently use #pragma once
+  + Initialize all g_autoptr variables
+
+-------------------------------------------------------------------
 Sat Dec 21 09:33:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.9.0:
