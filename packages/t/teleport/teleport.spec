@@ -17,7 +17,7 @@
 
 
 Name:           teleport
-Version:        17.2.1
+Version:        17.2.7
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
