@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 12:51:50 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc 15
+- added patches
+  + xquarto-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 12:25:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

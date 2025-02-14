@@ -1,7 +1,7 @@
 #
 # spec file for package xquarto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Amusements/Games/Board/Puzzle
 URL:            ftp://ftp.ac-grenoble.fr/ge/educational_games/
 Source:         ftp://ftp.ac-grenoble.fr/ge/educational_games/%name-%version.tar.bz2
 Patch0:         xquarto-2.5-imake_font.patch
+Patch1:         xquarto-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  imake
 BuildRequires:  pkgconfig(x11)

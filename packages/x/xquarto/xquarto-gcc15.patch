@@ -1,0 +1,101 @@
+--- xquarto.c	2025-02-13 13:49:45.199173189 +0100
++++ xquarto.c	2025-02-13 13:50:09.895343460 +0100
+@@ -47,30 +47,32 @@ static void RandomPivots();
+ static void SetMessages(int i, int j);
+ static void ShowStatus();
+ static void InitGame();
+-static void PosProc();
+-static void PieceProc();
++static void PosProc(Widget widget,XtPointer posp,XtPointer call_data);
++static void PieceProc(Widget widget,XtPointer piecep,XtPointer call_data);
+ static void HilightProc();
+-static void GametypeProc();
+-static void LevelProc();
+-static void GeometryProc();
+-static void StartHumanProc();
+-static void StartComputerProc();
+-static void StartTwohumansProc();
+-static void StartNetworkProc();
+-static void CloseNetworkProc();
++static void GametypeProc(Widget widget,XtPointer gametypep,XtPointer call_data);
++static void LevelProc(Widget widget,XtPointer levelp,XtPointer call_data);
++static void GeometryProc(Widget widget,XtPointer geometryp,XtPointer call_data);
++static void StartHumanProc(Widget widget,XtPointer client_data,XtPointer call_data);
++static void StartComputerProc(Widget widget,XtPointer client_data,XtPointer call_data);
++static void StartTwohumansProc(Widget widget,XtPointer client_data,XtPointer call_data);
++static void StartNetworkProc(Widget w, XtPointer client_data, XtPointer call_data);
++static void CloseNetworkProc(Widget w, XtPointer client_data, XtPointer call_data);
+ static void StartNetworkProc2();
+-static void MessageProc();
+-static void HelpProc();
+-static void CloseHelpProc();
+-static void HelpProc2();
+-static void CloseHelpProc2();
+-static void QuitProc();
+-static void QuitProc2();
+-static void NewProc2();
+-static void SaveProc();
+-static void LoadProc();
+-static void HintProc();
+-static void UndoProc();
++static void HelpProc(Widget w, XtPointer client_data, XtPointer call_data);
++static void CloseHelpProc(Widget w, XtPointer client_data, XtPointer call_data);
++static void HelpProc2(Widget w, XtPointer client_data, XtPointer call_data);
++static void CloseHelpProc2(Widget w, XtPointer client_data, XtPointer call_data);
++static void QuitProc(Widget widget,XtPointer client_data,XtPointer call_data);
++static void NewProc2(struct _WidgetRec *, void *, void *);
++static void QuitProc2(struct _WidgetRec *, void *, void *);
++static void SaveProc(struct _WidgetRec *, void *, void *);
++static void ProcessRecord();
++static void LoadProc(struct _WidgetRec *, void *, void *);
++static void UndoProc(Widget widget,XtPointer posp,XtPointer call_data);
++static void HintProc(struct _WidgetRec *, void *, void *);
++static void MessageProc(Widget widget,XtPointer client_data,
++  XtPointer call_data);
+ 
+ Display       *dpy, *dpy2=NULL;
+ XtAppContext  app_cont;
+@@ -1207,14 +1209,14 @@ static void QuitProc(Widget widget,XtPoi
+   exit(0);
+ }
+ 
+-static void NewProc2()
++static void NewProc2(struct _WidgetRec *, void *, void *)
+ {
+   firstplayer=NETWORK1;
+   InitGame();
+   SetMessages(14,4);
+ }
+ 
+-static void QuitProc2()
++static void QuitProc2(struct _WidgetRec *, void *, void *)
+ {
+   if (top2)
+     XtDestroyWidget(top2);
+@@ -1235,7 +1237,7 @@ static void QuitProc2()
+   ShowStatus();
+ }
+ 
+-static void SaveProc()
++static void SaveProc(struct _WidgetRec *, void *, void *)
+ {
+ FILE *fd;
+ int  i;
+@@ -1299,7 +1301,7 @@ int i, j, k;
+     if (board[NPIECEPOS]==NPIECES) SetMessages(0,13);
+ }
+ 
+-static void LoadProc()
++static void LoadProc(struct _WidgetRec *, void *, void *)
+ {
+ FILE *fd;
+ char *ptr, c, d, line[512];
+@@ -1412,7 +1414,7 @@ int i,j,k;
+   ProcessRecord();
+ }
+ 
+-static void HintProc()
++static void HintProc(struct _WidgetRec *, void *, void *)
+ {
+   int inpiece, outpiece, outpos, i;
+ 
