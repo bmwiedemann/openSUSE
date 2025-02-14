@@ -500,4 +500,19 @@
     <comment></comment>
     <requestid>1227113</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>1505c3fe02620c19027d95988ad0f03d</srcmd5>
+    <version>5.2.1</version>
+    <time>1739557163</time>
+    <user>anag+factory</user>
+    <comment>- Add pytest-asyncio-045.patch to make tests compatible with latest
+  python-pytest-asyncio
+- Update to 5.2.1:
+  * Fixed unsecured tempfile.mktemp() command usage (#3446)
+  * Fixed bug with SLOWLOG GET response parsing on Redis Software (#3441)
+  * Fixed issue with invoking _close() on closed event loop (#3438)
+  * Migrate test infrastructure to new custom docker images (#3415)
+  * Fixed flacky test with HEXPIREAT command (#3437)</comment>
+    <requestid>1245617</requestid>
+  </revision>
 </revisionlist>

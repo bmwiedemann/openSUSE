@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-redis
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
@@ -28,12 +28,14 @@ URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 Source1:        https://github.com/redis/redis-py/raw/refs/tags/v%{version}/pytest.ini
 Patch0:         increase-test-timeout.patch
+# PATCH-FIX-OPENSUSE pytest-asyncio-045.patch
+Patch1:         pytest-asyncio-045.patch
 BuildRequires:  %{python_module async-timeout >= 4.0.2 if %python-base < 3.11.3}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-asyncio < 0.24}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -60,6 +62,7 @@ sed /coverage/d  %SOURCE1 > pytest.ini
 %ifarch s390x
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p2
 
 # These tests pass locally but fail in obs with different
 # environment, like ALP build...
@@ -105,7 +108,7 @@ donttest="test_geopos or test_georadius"
 donttest="$donttest or test_xautoclaim"
 # gh#redis/redis-py#2679
 donttest+=" or test_acl_getuser_setuser or test_acl_log"
-%pytest -m 'not (onlycluster or redismod or ssl)' -k "not ($donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
+%pytest -m 'not (onlycluster or redismod or ssl or graph)' -k "not ($donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
 %endif
 
 %files %{python_files}

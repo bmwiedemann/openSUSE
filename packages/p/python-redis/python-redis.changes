@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:59:14 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pytest-asyncio-045.patch to make tests compatible with latest
+  python-pytest-asyncio
+- Update to 5.2.1:
+  * Fixed unsecured tempfile.mktemp() command usage (#3446)
+  * Fixed bug with SLOWLOG GET response parsing on Redis Software (#3441)
+  * Fixed issue with invoking _close() on closed event loop (#3438)
+  * Migrate test infrastructure to new custom docker images (#3415)
+  * Fixed flacky test with HEXPIREAT command (#3437)
+
+-------------------------------------------------------------------
 Thu Nov 28 10:52:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Pin tests to pytest-asyncio < 0.24
