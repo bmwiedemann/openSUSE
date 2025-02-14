@@ -10,3 +10,9 @@ Index: py-moneyed-3.0/src/moneyed/classes.py
  XDR = add_currency("XDR", "960")
  XFO = add_currency("XFO", None)
  XFU = add_currency("XFU", None)
+@@ -744,4 +745,5 @@ XXX = add_currency(
+ YER = add_currency("YER", "886", 100)
+ ZAR = add_currency("ZAR", "710", 100)
+ ZMW = add_currency("ZMW", "967", 100)
++ZWG = add_currency("ZWG", "924", 100)
+ ZWN = add_currency("ZWN", "942", 100)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-moneyed
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/limist/py-moneyed
 Source:         https://github.com/py-moneyed/py-moneyed/archive/refs/tags/v%{version}.tar.gz#/py-moneyed-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Add XCG -- Caribbean guilder
-Patch0:         add-missing-xcg.patch
+#                        ZWG -- Zimbabwean ZiG
+Patch0:         add-missing-currencies.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

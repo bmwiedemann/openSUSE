@@ -64,4 +64,14 @@
 - Switch to pyproject macros.</comment>
     <requestid>1229977</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>92e37ceac7c4793e59a38736b7d342a0</srcmd5>
+    <version>3.0</version>
+    <time>1739557263</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch add-missing-xcg.patch, subsumed into:
+- Add patch add-missing-currencies.patch:
+  * Support the Zimbabwean ZiG (ZWG) as well.</comment>
+    <requestid>1245779</requestid>
+  </revision>
 </revisionlist>

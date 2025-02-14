@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 04:29:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch add-missing-xcg.patch, subsumed into:
+- Add patch add-missing-currencies.patch:
+  * Support the Zimbabwean ZiG (ZWG) as well.
+
+-------------------------------------------------------------------
 Wed Dec 11 01:37:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch add-missing-xcg.patch:
