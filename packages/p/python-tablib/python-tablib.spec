@@ -22,7 +22,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tablib
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:32:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.8.0
+  * Add support for exporting XLSX with column width (#516)
+  * Remove redundant check from `Dataset.load()` (#604)
+
+-------------------------------------------------------------------
 Mon Jan 20 20:14:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies: None of the supported packages are hard
