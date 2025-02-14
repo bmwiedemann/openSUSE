@@ -18,9 +18,9 @@
 
 %define _major 2
 %define _minor 10
-%define _micro 4
-%define _build 487
-%define _buildreleases 487
+%define _micro 5
+%define _build 488
+%define _buildreleases 488
 %define _version %{_major}.%{_minor}.%{_micro}
 %define _tag V_%{_major}_%{_minor}_%{_micro}_BUILD_%{_build}
 
@@ -36,10 +36,10 @@ BuildArch:      noarch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 11
+BuildRequires:  java-devel >= 17
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-apis
-Requires:       java >= 11
+Requires:       java >= 17
 Requires:       libgthread-2_0-0
 
 %ifarch %{ix86} ppc s390
