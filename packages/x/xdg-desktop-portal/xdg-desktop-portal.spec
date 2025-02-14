@@ -28,7 +28,7 @@
 %define oname xdg-desktop-portal
 
 Name:           %{oname}%{?psuffix}
-Version:        1.19.2
+Version:        1.19.3
 Release:        0
 %if "%{flavor}" == ""
 Summary:        A portal frontend service for Flatpak
@@ -41,8 +41,6 @@ Supplements:    (%{oname}-devel and patterns-base-documentation)
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{oname}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-Fix-build-with-pipewire-1.3.82.patch gh#flatpak/xdg-desktop-portal#1624 alarrosa@suse.com -- Fix build with pipewire 1.3.82
-Patch0:         0001-Fix-build-with-pipewire-1.3.82.patch
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.58
@@ -116,7 +114,7 @@ This package contains convenience documentation for developers.
 
 %build
 %meson %{!?with_docs:-Ddocumentation=disabled} \
-	-Dpytest=disabled \
+	-Dtests=disabled \
 	%{nil}
 %meson_build
 
