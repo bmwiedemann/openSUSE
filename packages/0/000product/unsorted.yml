@@ -2239,9 +2239,6 @@ unsorted:
   - clang-devel 
   - clang-doc 
   - clang-extract 
-  - clang13 
-  - clang13-devel 
-  - clang13-doc 
   - clang14 
   - clang14-devel 
   - clang14-doc 
@@ -11385,7 +11382,6 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_4 
-  - libLLVM13 
   - libLLVM14 
   - libLLVM15 
   - libLLVM15-32bit 
@@ -11396,7 +11392,6 @@ unsorted:
   - libLLVM19-32bit 
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib19 
-  - libLTO13 
   - libLTO14 
   - libLTO15 
   - libLTO16 
@@ -12653,7 +12648,6 @@ unsorted:
   - libckteec0 
   - libclBLAS2 
   - libclFFT2 
-  - libclang-cpp13 
   - libclang-cpp14 
   - libclang-cpp15 
   - libclang-cpp15-32bit 
@@ -13780,9 +13774,9 @@ unsorted:
   - libgretl-1_0-48 
   - libgromacs9 
   - libgromacs_mpi9 
-  - libgrpc++1_62 
-  - libgrpc1_62 
-  - libgrpc39 
+  - libgrpc++1_70 
+  - libgrpc1_70 
+  - libgrpc45 
   - libgsequencer0 
   - libgsettings-qt1 
   - libgsf-devel 
@@ -13867,7 +13861,7 @@ unsorted:
   - libgtop-devel 
   - libgtop-doc 
   - libgtp-devel 
-  - libgtp10 
+  - libgtp11 
   - libgtpnl-devel 
   - libgtpnl-tools 
   - libgtpnl0 
@@ -14504,7 +14498,6 @@ unsorted:
   - liblirc_driver0-32bit 
   - liblittleb0 
   - libllama 
-  - liblldb13 
   - liblldb14 
   - liblldb15 
   - liblldb16 
@@ -15134,7 +15127,6 @@ unsorted:
   - libomniORB4-3 
   - libomnithread4 
   - libomp-devel 
-  - libomp13-devel 
   - libomp14-devel 
   - libomp15-devel 
   - libomp16-devel 
@@ -15305,12 +15297,13 @@ unsorted:
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran10 
+  - libosmo-sigtran11 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
   - libosmo-xua-1_9_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
-  - libosmoabis13 
+  - libosmoabis15 
   - libosmocodec-devel 
   - libosmocodec4 
   - libosmocoding-devel 
@@ -15333,7 +15326,7 @@ unsorted:
   - libosmosim-devel 
   - libosmosim2 
   - libosmotrau-devel 
-  - libosmotrau10 
+  - libosmotrau11 
   - libosmousb-devel 
   - libosmousb0 
   - libosmovty-devel 
@@ -16878,7 +16871,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb39 
+  - libupb45 
   - libupnp-devel 
   - libupnpp-devel 
   - libupnpp16 
@@ -17520,6 +17513,8 @@ unsorted:
   - libzen-devel 
   - libzen0 
   - libzfp1 
+  - libzia-4_67 
+  - libzia-devel 
   - libzim-devel 
   - libzim9 
   - libzimg2-32bit 
@@ -17676,7 +17671,6 @@ unsorted:
   - llamacpp-devel 
   - llcbench 
   - lld 
-  - lld13 
   - lld14 
   - lld15 
   - lld16 
@@ -17689,8 +17683,6 @@ unsorted:
   - lldap-set-password 
   - lldb 
   - lldb-devel 
-  - lldb13 
-  - lldb13-devel 
   - lldb14 
   - lldb14-devel 
   - lldb15 
@@ -17714,19 +17706,6 @@ unsorted:
   - llvm-polly 
   - llvm-polly-devel 
   - llvm-vim-plugins 
-  - llvm13 
-  - llvm13-devel 
-  - llvm13-doc 
-  - llvm13-gold 
-  - llvm13-libc++-devel 
-  - llvm13-libc++1 
-  - llvm13-libc++abi-devel 
-  - llvm13-libc++abi1 
-  - llvm13-libclang13 
-  - llvm13-opt-viewer 
-  - llvm13-polly 
-  - llvm13-polly-devel 
-  - llvm13-vim-plugins 
   - llvm14 
   - llvm14-devel 
   - llvm14-doc 
@@ -24033,7 +24012,6 @@ unsorted:
   - python3-cephfs 
   - python3-cinderclient 
   - python3-clang 
-  - python3-clang13 
   - python3-clang14 
   - python3-clang15 
   - python3-clang16 
@@ -24140,7 +24118,6 @@ unsorted:
   - python3-lilv 
   - python3-linkchecker 
   - python3-lldb 
-  - python3-lldb13 
   - python3-lldb14 
   - python3-lldb15 
   - python3-lldb16 
@@ -24247,6 +24224,7 @@ unsorted:
   - python3-rrdtool 
   - python3-saharaclient 
   - python3-satyr 
+  - python3-sbommage 
   - python3-seccomp 
   - python3-senlinclient 
   - python3-smbus 
@@ -25824,7 +25802,6 @@ unsorted:
   - python311-hdf5plugin 
   - python311-hdf5storage 
   - python311-healpy 
-  - python311-healpy-devel 
   - python311-helpdev 
   - python311-hepunits 
   - python311-hetzner 
@@ -26821,6 +26798,7 @@ unsorted:
   - python311-pymacaroons 
   - python311-pymad 
   - python311-pymarc 
+  - python311-pymathics-graph 
   - python311-pymavlink 
   - python311-pymdown-extensions 
   - python311-pymediainfo 
@@ -29467,7 +29445,6 @@ unsorted:
   - python312-hdf5plugin 
   - python312-hdf5storage 
   - python312-healpy 
-  - python312-healpy-devel 
   - python312-helpdev 
   - python312-hepunits 
   - python312-hetzner 
@@ -30517,6 +30494,7 @@ unsorted:
   - python312-pymacaroons 
   - python312-pymad 
   - python312-pymarc 
+  - python312-pymathics-graph 
   - python312-pymavlink 
   - python312-pymdown-extensions 
   - python312-pymediainfo 
@@ -33189,7 +33167,6 @@ unsorted:
   - python313-hdf5plugin 
   - python313-hdf5storage 
   - python313-healpy 
-  - python313-healpy-devel 
   - python313-helpdev 
   - python313-hepunits 
   - python313-hetzner 
@@ -35542,6 +35519,7 @@ unsorted:
   - qscintilla-qt5-devel 
   - qscintilla-qt6 
   - qscintilla-qt6-devel 
+  - qsstv 
   - qsyncthingtray 
   - qsynergy 
   - qsynth 
@@ -37914,6 +37892,7 @@ unsorted:
   - syncplay-client 
   - syncplay-common 
   - syncplay-server 
+  - syncterm 
   - syncthing 
   - syncthing-relaysrv 
   - syndication-devel 
@@ -47851,6 +47830,7 @@ unsorted:
   - ttyplot 
   - tuba 
   - tuba-lang 
+  - tucnak 
   - tudu 
   - tui-journal 
   - tuigreet 
