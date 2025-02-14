@@ -277,4 +277,12 @@
 </comment>
     <requestid>1185749</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d86207a710380c3906882021dfb8aadc</srcmd5>
+    <version>3.8</version>
+    <time>1739557323</time>
+    <user>anag+factory</user>
+    <comment>update selinux userspace to 3.8</comment>
+    <requestid>1245834</requestid>
+  </revision>
 </revisionlist>
