@@ -7,4 +7,12 @@
     <comment>Initial submission of lieer 1.6 for openSUSE</comment>
     <requestid>1245107</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>651c43c1e5bf893724688822592b097a</srcmd5>
+    <version>1.6</version>
+    <time>1739557240</time>
+    <user>anag+factory</user>
+    <comment>Add 0002-Import-notmuch-instead-of-notmuch2.patch</comment>
+    <requestid>1245744</requestid>
+  </revision>
 </revisionlist>

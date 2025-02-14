@@ -1,6 +1,7 @@
 #
 # spec file for package lieer
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Ricardo B. Marlière <rbm@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,31 +16,34 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define pythons python3
 
-Name:             lieer
-Version:          1.6
-Release:          1
-Summary:          Email-fetching, sending, and two-way tag sync between notmuch and GMail
-License:          GPL-3.0-or-later
-Group:            Productivity/Networking/Email/Utilities
-URL:              http://lieer.gaute.vetsj.com/
-Source:           https://github.com/gauteh/lieer/archive/v%{version}.tar.gz
+Name:           lieer
+Version:        1.6
+Release:        0
+Summary:        Email-fetching, sending, and two-way tag sync between notmuch and GMail
+License:        GPL-3.0-or-later
+Group:          Productivity/Networking/Email/Utilities
+URL:            http://lieer.gaute.vetsj.com/
+Source:         https://github.com/gauteh/lieer/archive/v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Remove usage of /usr/bin/env shebangs
-Patch1:           0001-Fix-shebangs-to-remove-env-dependency.patch
-BuildRequires:    python-rpm-macros
-BuildRequires:    %{python_module base}
-BuildRequires:    %{python_module google-api-python-client}
-BuildRequires:    %{python_module google-auth-oauthlib}
-BuildRequires:    %{python_module pip}
-BuildRequires:    %{python_module setuptools}
-BuildRequires:    %{python_module tqdm}
-BuildRequires:    fdupes
-Requires:         %{python_module google-api-python-client}
-Requires:         %{python_module google-auth-oauthlib}
-Requires:         %{python_module tqdm}
-Requires:         notmuch
-BuildArch:        noarch
+Patch1:         0001-Fix-shebangs-to-remove-env-dependency.patch
+# PATCH-FIX-OPENSUSE Import the correct python binding
+Patch2:         0002-Import-notmuch-instead-of-notmuch2.patch
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module google-api-python-client}
+BuildRequires:  %{python_module google-auth-oauthlib}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tqdm}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       %{python_module google-api-python-client}
+Requires:       %{python_module google-auth-oauthlib}
+Requires:       %{python_module tqdm}
+Requires:       notmuch
+BuildArch:      noarch
 %python_subpackages
 
 %description
