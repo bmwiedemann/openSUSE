@@ -1,6 +1,7 @@
 #
 # spec file for package postgresql-libversion
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties

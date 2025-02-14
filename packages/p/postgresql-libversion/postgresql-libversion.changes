@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:14:45 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Stop building for EOL postgresql12.
+
+-------------------------------------------------------------------
+Sat Sep 28 00:16:43 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg17
+
+-------------------------------------------------------------------
 Tue Apr 30 17:14:44 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.0.1:

@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1171022</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1c58c5b56438729bad1cc40c020ccde8</srcmd5>
+    <version>2.0.1</version>
+    <time>1739557397</time>
+    <user>anag+factory</user>
+    <comment>- Stop building for EOL postgresql12.
+
+- enable pg17</comment>
+    <requestid>1245884</requestid>
+  </revision>
 </revisionlist>
