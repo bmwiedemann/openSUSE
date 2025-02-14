@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:22:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 3.8
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8
+  * Code improvements and bug fixes
+- For a more in depth list of changes see
+  https://github.com/SELinuxProject/selinux/releases/download/3.8/shortlog-3.8.txt
+- keyring: Update Petr Lautrbach <lautrbach@redhat.com>
+  * removed 0xBC3905F235179CF1 (expired: 2024-10-25)
+  * added 0xFB4C685B5DC1C13E (expires: 2026-11-04)
+
+-------------------------------------------------------------------
 Mon Jul  1 07:45:50 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.7
