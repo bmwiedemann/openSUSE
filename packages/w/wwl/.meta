@@ -1,0 +1,7 @@
+<package name="wwl" project="openSUSE:Factory">
+  <title>Calculates distance (qrb) used in Amateur Radio</title>
+  <description>Given two Maidenhead locators, calculates distance (qrb) and azimuth
+Or if called as locator, gives the lat/long of a Maidenhead locator.</description>
+  <devel project="hamradio" package="wwl"/>
+  <url>http://www.db.net/downloads/</url>
+</package>

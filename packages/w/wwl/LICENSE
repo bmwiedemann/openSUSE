@@ -1,0 +1,18 @@
+ This version by va3db db@db.net db@FreeBSD.org Oct 1 2007
+ rewritten completely. There were equator crossing bugs in the original
+ (dead) version of wwl on sunsite, so I rewrote it from scratch.
+
+ wwl     -- Originally by IK0ZSN Mirko Caserta <ik0zsn@amsat.org>
+ locator -- originally written by Harald M.
+ Stauss harald.stauss@web.de DO1JHS @ DB0GR.#BLN.DEU.EU
+ There is no code from the original (dead?) version of wwl or
+ the original (dead?) version of locator in this version.
+
+ The bearing/distance code is from Amateur Radio Software by John
+ Morris, GM4ANB.
+
+ <db@FreeBSD.ORG> wrote this file.  As long as you retain this notice you
+ can do whatever you want with this code, except you may not
+ license it under any form of the GPL.
+ A postcard or QSL card showing me you appreciate
+ this code would be nice. Diane Bruce va3db
