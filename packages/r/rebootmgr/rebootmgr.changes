@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Feb 13 15:49:38 UTC 2025 - kukuk@suse.com
+
+- Update to version 3.2+git20250213.bff65b1:
+  * Release version 3.2
+  * Handle case that main-window is not set correct
+  * rebootmgrd: fix instantly strategy
+
+-------------------------------------------------------------------
+Tue Feb 11 14:36:09 UTC 2025 - kukuk@suse.com
+
+- Update to version 3.0+git20250211.a56a554:
+  * rebootmgr.service: fix Type=notify
+- Readd compat symlink of rebootmgrctl for tukit
+
+-------------------------------------------------------------------
 Wed Jan 29 09:56:49 UTC 2025 - kukuk@suse.com
 
 - Update to version 3.0+git20250129.eed876f:

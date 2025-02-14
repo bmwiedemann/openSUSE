@@ -17,7 +17,7 @@
 
 
 Name:           rebootmgr
-Version:        3.0+git20250129.eed876f
+Version:        3.2+git20250213.bff65b1
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -45,6 +45,8 @@ If you updated a system with e.g. transactional updates or a kernel update was a
 
 %install
 %meson_install
+mkdir -p %{buildroot}%{_sbindir}
+ln -sf ../bin/rebootmgrctl  %{buildroot}%{_sbindir}/rebootmgrctl
 
 %check
 %meson_test
@@ -72,6 +74,7 @@ fi
 %{_datadir}/rebootmgr/rebootmgr.conf
 %{_unitdir}/rebootmgr.service
 %{_bindir}/rebootmgrctl
+%{_sbindir}/rebootmgrctl
 %{_libexecdir}/rebootmgrd
 %{_datadir}/bash-completion/completions/rebootmgrctl
 %{_mandir}/man1/rebootmgrctl.1%{?ext_man}

@@ -329,4 +329,19 @@
   * Update manual pages</comment>
     <requestid>1241153</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4b3e8ad5a28e74820591d9181313197b</srcmd5>
+    <version>3.2+git20250213.bff65b1</version>
+    <time>1739557201</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.2+git20250213.bff65b1:
+  * Release version 3.2
+  * Handle case that main-window is not set correct
+  * rebootmgrd: fix instantly strategy
+
+- Update to version 3.0+git20250211.a56a554:
+  * rebootmgr.service: fix Type=notify
+- Readd compat symlink of rebootmgrctl for tukit</comment>
+    <requestid>1245720</requestid>
+  </revision>
 </revisionlist>
