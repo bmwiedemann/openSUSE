@@ -1,7 +1,7 @@
 #
 # spec file for package restorecond
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libselinux_ver   3.7
+%define libselinux_ver   3.8
 Name:           restorecond
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Daemon to restore SELinux contexts
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        restorecond.keyring
 Patch0:         harden_restorecond.service.patch
-Patch1:         1231512-Set-GLib-IO-channels-to-binary-mode.patch
-Patch2:         1231512-Set-GLib-IO-channels-to-nonblocking.patch
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libselinux-devel >= %{libselinux_ver}
 Requires:       libselinux1 >= %{libselinux_ver}
@@ -41,8 +39,6 @@ Daemon that watches for file creation and then sets the default SELinux file con
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p2
-%patch -P2 -p2
 
 %build
 export CFLAGS="%optflags"

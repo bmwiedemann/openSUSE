@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:22:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 3.8
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8
+  * No functional change
+- For a more in depth list of changes see
+  https://github.com/SELinuxProject/selinux/releases/download/3.8/shortlog-3.8.txt
+- Drop 1231512-Set-GLib-IO-channels-to-binary-mode.patch: included upstream
+- Drop 1231512-Set-GLib-IO-channels-to-nonblocking.patch: included upstream
+- keyring: Update Petr Lautrbach <lautrbach@redhat.com>
+  * removed 0xBC3905F235179CF1 (expired: 2024-10-25)
+  * added 0xFB4C685B5DC1C13E (expires: 2026-11-04)
+
+-------------------------------------------------------------------
 Thu Oct 24 09:58:41 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Fix issue where inotify events are not being handled properly
