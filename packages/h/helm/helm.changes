@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Feb 14 11:52:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- reduce test flakyness by limiting parallelism to what upstream
+  uses
+
+-------------------------------------------------------------------
+Thu Feb 13 06:16:05 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.17.1:
+  * add test for nullifying nested global value
+  * Add test case for removing an entire object
+  * Tests for bugfix: Override subcharts with null values #12879
+  * merge null child chart objects
+  * build(deps): bump the k8s-io group with 7 updates
+  * fix: check group for resource info match
+
+-------------------------------------------------------------------
 Thu Jan 16 05:57:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to 3.17.0 (bsc#1235318, CVE-2024-45338):

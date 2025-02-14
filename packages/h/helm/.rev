@@ -805,4 +805,21 @@ See changelog in:
   - obsoletes CVE-2024-25620.patch in odler distributions</comment>
     <requestid>1243331</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>4549ab90a30d56fb13ed69b3bd16e865</srcmd5>
+    <version>3.17.1</version>
+    <time>1739557386</time>
+    <user>anag+factory</user>
+    <comment>- reduce test flakyness by limiting parallelism to what upstream
+  uses
+
+- Update to version 3.17.1:
+  * add test for nullifying nested global value
+  * Add test case for removing an entire object
+  * Tests for bugfix: Override subcharts with null values #12879
+  * merge null child chart objects
+  * build(deps): bump the k8s-io group with 7 updates
+  * fix: check group for resource info match</comment>
+    <requestid>1245873</requestid>
+  </revision>
 </revisionlist>
