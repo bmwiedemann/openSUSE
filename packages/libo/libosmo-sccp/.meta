@@ -1,5 +1,0 @@
-<package name="libosmo-sccp" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="network:telephony" package="libosmo-sccp"/>
-</package>
