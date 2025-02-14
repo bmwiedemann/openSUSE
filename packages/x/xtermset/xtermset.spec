@@ -1,7 +1,7 @@
 #
 # spec file for package xtermset
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Patch0:         %{name}-%{version}.dif
 Patch1:         %{name}-%{version}-strcat.patch
 Patch2:         %{name}-%{version}-dash.patch
 Patch3:         xtermset-automake-1.13.patch
+Patch4:         xtermset-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -38,11 +39,7 @@ from the command line. Most options have the same names as those that
 you would give an xterm at startup.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 1
-%patch -P 2
-%patch -P 3 -p1
+%autosetup -p0
 
 %build
 autoreconf -fiv

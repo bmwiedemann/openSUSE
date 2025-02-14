@@ -157,4 +157,12 @@ SPDX format (forwarded request 94655 from babelworx)</comment>
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1148494</requestid>
   </revision>
+  <revision rev="23" vrev="285">
+    <srcmd5>a7a4d9b44acb9aad9801f4a3b439ed0a</srcmd5>
+    <version>0.5.2</version>
+    <time>1739557168</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245630</requestid>
+  </revision>
 </revisionlist>

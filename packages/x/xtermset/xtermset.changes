@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 13 11:35:18 UTC 2025 - pgajdos@suse.com
+
+- build with gcc15
+  + xtermset-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 09:46:08 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

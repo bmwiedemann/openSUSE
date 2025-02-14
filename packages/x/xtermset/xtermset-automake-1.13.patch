@@ -1,7 +1,5 @@
-Index: xtermset-0.5.2/configure.in
-===================================================================
---- xtermset-0.5.2.orig/configure.in
-+++ xtermset-0.5.2/configure.in
+--- configure.in
++++ configure.in
 @@ -9,7 +9,7 @@
  # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  

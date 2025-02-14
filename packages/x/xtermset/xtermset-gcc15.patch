@@ -1,0 +1,13 @@
+--- src/xtermset.h	2025-02-13 12:16:09.334486415 +0100
++++ src/xtermset.h	2025-02-13 12:17:12.563464563 +0100
+@@ -136,8 +136,8 @@ void term_loadall();
+ void version();
+ void usage();
+ void gplinfo();
+-int nextopt();
+-void set_geom();
++int nextopt(char *arg, int *code_return);
++void set_geom(char *geometry);
+ int is_good_term(); /* 1 if good terminal */
+ FILE *open_rc_file(char *fn,char *mode);
+ #endif /* __XTERMSET_H__ */
