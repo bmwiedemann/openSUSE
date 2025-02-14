@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:06:20 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Stop building for EOL postgresql12.
+
+-------------------------------------------------------------------
 Fri Dec 20 16:22:29 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.14.1+git0.48e67e7:

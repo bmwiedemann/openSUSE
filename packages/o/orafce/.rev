@@ -198,4 +198,12 @@
     <comment></comment>
     <requestid>1232872</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>dde69889a09c5a4629da6110430e9717</srcmd5>
+    <version>4.14.1+git0.48e67e7</version>
+    <time>1739557395</time>
+    <user>anag+factory</user>
+    <comment>- Stop building for EOL postgresql12.</comment>
+    <requestid>1245881</requestid>
+  </revision>
 </revisionlist>
