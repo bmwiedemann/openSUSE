@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 13 21:59:55 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.64.5:
+  * fix: add missing new-from-merge-base flag (#5412)
+  * build(deps): bump github.com/gostaticanalysis/forcetypeassert from 0.1.0 to 0.2.0 (#5409)
+  * build(deps): bump github.com/tdakkota/asciicheck from 0.3.0 to 0.4.0 (#5411)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.0 to 2.22.1 (#5410)
+  * docs: update GitHub Action assets (#5408)
+
+-------------------------------------------------------------------
 Wed Feb 12 21:52:20 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.64.4:
