@@ -1,0 +1,31 @@
+--- medcut.h	2020-09-21 02:47:56.000000000 +0200
++++ medcut.h	2025-02-13 15:43:04.506902072 +0100
+@@ -4,6 +4,6 @@ struct colr_data {
+ };
+ 
+ extern void MedianInit();
+-extern void MedianCount();
+-extern void MedianSplit();
+-extern void ConvertColor();
++extern void MedianCount(unsigned char *data, int w, int h, struct colr_data *colrs);
++extern void MedianSplit(int end_cnt);
++extern void ConvertColor(int *rp, int *gp, int *bp);
+--- xfish.c	2020-09-21 02:47:56.000000000 +0200
++++ xfish.c	2025-02-13 15:45:06.248674767 +0100
+@@ -175,7 +175,6 @@ char **argv;
+     const char *display = getenv("DISPLAY");
+     extern int optind;
+     extern char *optarg;
+-    extern double atof();
+ 
+     pname = argv[0];
+     if (display != NULL)
+@@ -1300,7 +1299,7 @@ int
+ #else
+ void
+ #endif
+-toggle_secure()
++toggle_secure(int)
+ {
+     pmode = !pmode;
+     if (pmode)

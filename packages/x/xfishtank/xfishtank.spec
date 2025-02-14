@@ -1,7 +1,7 @@
 #
 # spec file for package xfishtank
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
 URL:            https://jim.rees.org/computers/xfishtank.html
 Source:         %{name}-%{version}.tar.xz
+Patch0:         xfishtank-gcc15.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(imlib2)
