@@ -599,4 +599,12 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
 </comment>
     <requestid>1223300</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>2c51cdb48e3c1e7188a181db20e2d2ee</srcmd5>
+    <version>3.8</version>
+    <time>1739557205</time>
+    <user>anag+factory</user>
+    <comment>update selinux userspace to 3.8</comment>
+    <requestid>1245832</requestid>
+  </revision>
 </revisionlist>

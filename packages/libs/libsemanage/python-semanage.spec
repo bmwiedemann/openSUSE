@@ -1,7 +1,7 @@
 #
 # spec file for package python-semanage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define soversion 2
 %define libname libsemanage%{soversion}
 
-%define libsepol_ver     3.7
-%define libselinux_ver   3.7
+%define libsepol_ver     3.8
+%define libselinux_ver   3.8
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semanage
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Python bindings for SELinux's policy management library
 License:        LGPL-2.1-only
@@ -35,9 +35,6 @@ Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/libsemanage-%{version}.tar.gz.asc
 Source2:        libsemanage.keyring
 Source3:        baselibs.conf
-%if %{pkg_vcmp swig > 4.2.1}
-Patch0:         1231587-build-libsemanage-with-swig-4.3.0.patch
-%endif
 # PATCH-FIX-UPSTREAM bsc#1133102 LTO: Update map file to include new symbols and remove wildcards
 # For now we need to disable this. This breaks e.g. shadow and also other packages in security:SELinux
 # Patch0:         libsemanage-update-map-file.patch

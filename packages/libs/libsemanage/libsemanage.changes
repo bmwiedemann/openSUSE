@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:22:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 3.8
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8
+  * libsemanage: Preserve file context and ownership in policy store
+  * libsemanage: Optionally allow duplicate declarations
+  * Improved man pages
+  * libsemanage: Mute error messages from selinux_restorecon introduced in 3.8-rc1
+  * Code improvements and bug fixes
+- For a more in depth list of changes see
+  https://github.com/SELinuxProject/selinux/releases/download/3.8/shortlog-3.8.txt
+- keyring: Update Petr Lautrbach <lautrbach@redhat.com>
+  * removed 0xBC3905F235179CF1 (expired: 2024-10-25)
+  * added 0xFB4C685B5DC1C13E (expires: 2026-11-04)
+
+-------------------------------------------------------------------
 Mon Oct 21 11:19:44 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
 
 - Not conflict but obsolete libsemanage1 (bsc#1229757)
