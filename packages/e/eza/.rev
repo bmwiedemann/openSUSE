@@ -993,4 +993,13 @@
   * Make flake.lock icon the nix logo</comment>
     <requestid>1244063</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c8e34607b58bc22361464e34dc46c39b</srcmd5>
+    <version>0.20.21</version>
+    <time>1739557325</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.21:
+  * Start publishing libgit arm builds</comment>
+    <requestid>1245841</requestid>
+  </revision>
 </revisionlist>
