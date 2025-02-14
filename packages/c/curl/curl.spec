@@ -1,7 +1,7 @@
 #
 # spec file for package curl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.11.1
+Version:        8.12.1
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
