@@ -2,30 +2,12 @@ Index: chromium-133.0.6943.98/third_party/webrtc/modules/video_capture/linux/pip
 ===================================================================
 --- chromium-133.0.6943.98.orig/third_party/webrtc/modules/video_capture/linux/pipewire_session.cc
 +++ chromium-133.0.6943.98/third_party/webrtc/modules/video_capture/linux/pipewire_session.cc
-@@ -57,7 +57,7 @@ VideoType PipeWireRawFormatToVideoType(u
- 
- void PipeWireNode::PipeWireNodeDeleter::operator()(
-     PipeWireNode* node) const noexcept {
--  pw_proxy_destroy(node->proxy_);
-+  pw_proxy_destroy(reinterpret_cast<pw_proxy*>(node->registry_));
-   spa_hook_remove(&node->node_listener_);
- }
- 
-@@ -78,7 +78,7 @@ PipeWireNode::PipeWireNode(PipeWireSessi
-       unique_id_(spa_dict_lookup(props, PW_KEY_NODE_NAME)) {
-   RTC_LOG(LS_VERBOSE) << "Found Camera: " << display_name_;
- 
--  proxy_ = static_cast<pw_proxy*>(pw_registry_bind(
-+  registry_ = static_cast<pw_registry*>(pw_registry_bind(
-       session_->pw_registry_, id, PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, 0));
- 
-   static const pw_node_events node_events{
 @@ -87,7 +87,7 @@ PipeWireNode::PipeWireNode(PipeWireSessi
        .param = OnNodeParam,
    };
  
 -  pw_node_add_listener(proxy_, &node_listener_, &node_events, this);
-+  pw_node_add_listener(registry_, &node_listener_, &node_events, this);
++  pw_node_add_listener(reinterpret_cast<pw_node*>(proxy_), &node_listener_, &node_events, this);
  }
  
  // static
@@ -34,20 +16,7 @@ Index: chromium-133.0.6943.98/third_party/webrtc/modules/video_capture/linux/pip
        if (id == SPA_PARAM_EnumFormat &&
            info->params[i].flags & SPA_PARAM_INFO_READ) {
 -        pw_node_enum_params(that->proxy_, 0, id, 0, UINT32_MAX, nullptr);
-+        pw_node_enum_params(that->registry_, 0, id, 0, UINT32_MAX, nullptr);
++        pw_node_enum_params(reinterpret_cast<pw_node *>(that->proxy_), 0, id, 0, UINT32_MAX, nullptr);
          break;
        }
      }
-Index: chromium-133.0.6943.98/third_party/webrtc/modules/video_capture/linux/pipewire_session.h
-===================================================================
---- chromium-133.0.6943.98.orig/third_party/webrtc/modules/video_capture/linux/pipewire_session.h
-+++ chromium-133.0.6943.98/third_party/webrtc/modules/video_capture/linux/pipewire_session.h
-@@ -68,7 +68,7 @@ class PipeWireNode {
-                           const spa_pod* param);
-   static bool ParseFormat(const spa_pod* param, VideoCaptureCapability* cap);
- 
--  pw_proxy* proxy_;
-+  pw_registry* registry_;
-   spa_hook node_listener_;
-   PipeWireSession* session_;
-   uint32_t id_;

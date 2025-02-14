@@ -5386,4 +5386,13 @@ boo#1224178</comment>
   * fix-build-with-pipewire-1.3.82.patch (forwarded request 1245648 from alarrosa)</comment>
     <requestid>1245743</requestid>
   </revision>
+  <revision rev="449" vrev="2">
+    <srcmd5>2abffd44d507004bf1b49c6d88759e7a</srcmd5>
+    <version>133.0.6943.98</version>
+    <time>1739525635</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix patch to actually fix build with pipewire 1.3.82:
+  * fix-build-with-pipewire-1.3.82.patch (forwarded request 1245846 from alarrosa)</comment>
+    <requestid>1245847</requestid>
+  </revision>
 </revisionlist>

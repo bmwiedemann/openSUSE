@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:12:39 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix patch to actually fix build with pipewire 1.3.82:
+  * fix-build-with-pipewire-1.3.82.patch 
+
+-------------------------------------------------------------------
 Thu Feb 13 08:22:29 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix build with pipewire 1.3.82:
