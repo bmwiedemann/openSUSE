@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Feb 13 12:04:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.0
+  * Forward task_status to hypercorn.
+  * Support Python 3.13, and 3.12 drop Python 3.8 and 3.7.
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Sep 20 04:21:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on python-exceptiongroup. 

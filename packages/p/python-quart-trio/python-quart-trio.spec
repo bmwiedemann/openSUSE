@@ -1,7 +1,7 @@
 #
 # spec file for package python-quart-trio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python310 1
+%{?sle15_python_module_pythons}
 Name:           python-quart-trio
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        A Quart extension to provide trio support
 License:        MIT
@@ -26,8 +26,8 @@ URL:            https://github.com/pgjones/quart-trio/
 Source:         https://github.com/pgjones/quart-trio/archive/refs/tags/%{version}.tar.gz#/quart_trio-%{version}.tar.gz
 BuildRequires:  %{python_module Quart >= 0.19}
 BuildRequires:  %{python_module exceptiongroup}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
