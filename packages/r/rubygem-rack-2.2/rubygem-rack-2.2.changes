@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 15:06:18 UTC 2025 - Lukas Krause <lukas.krause@suse.com>
+
+- update to version 2.2.11
+  
+  [CVE-2025-25184] Fix possible log Injection in `Rack::CommonLogger`  
+
+-------------------------------------------------------------------
 Mon Nov  4 17:18:15 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## [2.2.10] - 2024-10-14
