@@ -1,7 +1,7 @@
 #
 # spec file for package python-Rtree
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,8 @@ BuildRequires:  fdupes
 # only for the shlib requirement, no headers needed
 BuildRequires:  spatialindex-devel
 BuildRequires:  python-rpm-macros
-Requires:       %(rpm -q --queryformat "%%{NAME}" -f $(readlink -f %{_libdir}/libspatialindex.so))
+# Since this is noarch, _libdir doesn't work for 64 bit arches
+Requires:       %(rpm -q --queryformat "%%{NAME}" -f $(readlink -f /usr/lib*/libspatialindex.so))
 Provides:       python-rtree = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
@@ -59,10 +60,10 @@ spatial indexing features for the spatially curious Python user.
 %autosetup -p1 -n rtree-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,6 +73,6 @@ spatial indexing features for the spatially curious Python user.
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/rtree
-%{python_sitelib}/Rtree-%{version}*-info
+%{python_sitelib}/Rtree-%{version}.dist-info
 
 %changelog

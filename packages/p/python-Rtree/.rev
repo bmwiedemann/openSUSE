@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1201610</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>26d02835913479f444e9dc3b079e67fa</srcmd5>
+    <version>1.3.0</version>
+    <time>1739557256</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Stop using libdir macro, which now doesn't return /usr/lib64.</comment>
+    <requestid>1245774</requestid>
+  </revision>
 </revisionlist>
