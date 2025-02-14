@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 08:52:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.34.1
+  * Removed the usage of a walrus operator for Python 3.6 compatibility.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sat Feb  1 22:17:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.34.0:

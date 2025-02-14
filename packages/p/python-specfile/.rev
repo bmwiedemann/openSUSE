@@ -335,4 +335,12 @@
           changelog[:] = [&quot;%autochangelog&quot;]</comment>
     <requestid>1242154</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>09c92ad080a7e2f03143f01e809fe258</srcmd5>
+    <version>0.34.1</version>
+    <time>1739557381</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1245856</requestid>
+  </revision>
 </revisionlist>
