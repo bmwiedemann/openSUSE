@@ -30,12 +30,12 @@
 %endif
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.7
-%define libsemanage_ver  3.7
-%define libselinux_ver   3.7
+%define libsepol_ver     3.8
+%define libsemanage_ver  3.8
+%define libselinux_ver   3.8
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -138,7 +138,7 @@ Summary:        SELinux policy core python utilities
 Group:          Productivity/Security
 Requires:       %{python_for_executables}-%{name} = %{version}-%{release}
 BuildArch:      noarch
-Obsoletes:      policycoreutils-python
+Obsoletes:      policycoreutils-python < %{version}-%{release}
 
 %description python-utils
 The policycoreutils-python-utils package contains the management tools
@@ -341,6 +341,7 @@ done
 %{_sbindir}/run_init
 %{_sbindir}/open_init_pty
 %{_bindir}/secon
+%{_sbindir}/unsetfiles
 # Compatibility symlinks from /usr/sbin to /sbin on Leap
 %if 0%{?suse_version} <= 1500
 /sbin/fixfiles
@@ -354,6 +355,7 @@ done
 /sbin/sestatus
 /sbin/setfiles
 /sbin/setsebool
+/sbin/unsetfiles
 %endif
 # PAM
 %if 0%{?suse_version} > 1500
@@ -380,6 +382,7 @@ done
 %{_mandir}/man5/selinux_config.5%{?ext_man}
 %{_mandir}/man5/sestatus.conf.5%{?ext_man}
 %{_mandir}/man1/secon.1%{?ext_man}
+%{_mandir}/man1/unsetfiles.1%{?ext_man}
 %{_datadir}/bash-completion/completions/setsebool
 
 %files %{python_files policycoreutils}

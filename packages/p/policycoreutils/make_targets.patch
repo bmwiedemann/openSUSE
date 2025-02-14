@@ -3,8 +3,8 @@ Index: policycoreutils-2.8/Makefile
 --- policycoreutils-2.8.orig/Makefile	2018-05-24 20:21:09.000000000 +0200
 +++ policycoreutils-2.8/Makefile	2018-11-21 15:59:44.968384128 +0100
 @@ -1,4 +1,4 @@
--SUBDIRS = setfiles load_policy newrole run_init secon sestatus semodule setsebool scripts po man hll
-+SUBDIRS = setfiles load_policy newrole run_init secon sestatus semodule setsebool scripts po man hll sepolicy audit2allow semanage sepolgen chcat semodule_expand semodule_link semodule_package
+-SUBDIRS = setfiles load_policy newrole run_init secon sestatus semodule setsebool scripts po man hll unsetfiles
++SUBDIRS = setfiles load_policy newrole run_init secon sestatus semodule setsebool scripts po man hll unsetfiles sepolicy audit2allow semanage sepolgen chcat semodule_expand semodule_link semodule_package
  
  all install relabel clean indent:
  	@for subdir in $(SUBDIRS); do \

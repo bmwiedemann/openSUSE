@@ -1,8 +1,8 @@
-Index: policycoreutils-3.7/selinux-python-3.7/sepolicy/sepolicy/__init__.py
+Index: policycoreutils-3.8/selinux-python-3.8/sepolicy/sepolicy/__init__.py
 ===================================================================
---- policycoreutils-3.7.orig/selinux-python-3.7/sepolicy/sepolicy/__init__.py
-+++ policycoreutils-3.7/selinux-python-3.7/sepolicy/sepolicy/__init__.py
-@@ -1245,7 +1245,8 @@ def get_os_version():
+--- policycoreutils-3.8.orig/selinux-python-3.8/sepolicy/sepolicy/__init__.py
++++ policycoreutils-3.8/selinux-python-3.8/sepolicy/sepolicy/__init__.py
+@@ -1246,7 +1246,8 @@ def get_os_version():
          import distro
          system_release = distro.name(pretty=True)
      except (ModuleNotFoundError, OSError, IOError, UnicodeError, subprocess.CalledProcessError):

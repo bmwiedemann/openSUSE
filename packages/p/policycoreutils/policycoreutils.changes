@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  4 07:22:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 3.8
+  https://github.com/SELinuxProject/selinux/releases/tag/3.8
+  * policycoreutils: introduce unsetfiles
+  * Code improvements and bug fixes
+- For a more in depth list of changes see
+  https://github.com/SELinuxProject/selinux/releases/download/3.8/shortlog-3.8.txt
+- Update make_targets.patch
+- keyring: Update Petr Lautrbach <lautrbach@redhat.com>
+  * removed 0xBC3905F235179CF1 (expired: 2024-10-25)
+  * added 0xFB4C685B5DC1C13E (expires: 2026-11-04)
+
+-------------------------------------------------------------------
 Tue Jan 21 11:14:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop manually generated typelib(Gtk) Requires: this was the
