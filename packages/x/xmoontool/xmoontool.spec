@@ -1,7 +1,7 @@
 #
 # spec file for package xmoontool
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,14 @@ Release:        0
 Summary:        The Moon in focus
 License:        SUSE-Public-Domain
 Group:          Productivity/Scientific/Astronomy
-Url:            http://www.fourmilab.ch/earthview/vplanet.html
+URL:            http://www.fourmilab.ch/earthview/vplanet.html
 Source:         xmoontool-22sep94.tar.gz
 Source1:        xmoontool.desktop
 Patch0:         xmoontool-22sep94.patch
 Patch1:         xmoontool-22sep94-y2kfix.patch
 Patch2:         xmoontool-22.9.24-filepermissions.patch
 Patch3:         xmoontool-22sep94-xorg7.patch
+Patch4:         xmoontool-gcc15.patch
 BuildRequires:  openmotif-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)

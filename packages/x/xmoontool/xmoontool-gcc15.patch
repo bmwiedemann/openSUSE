@@ -1,0 +1,16 @@
+--- xmoontool.c	1993-09-22 04:27:24.000000000 +0200
++++ xmoontool.c	2025-02-13 14:21:42.799891023 +0100
+@@ -265,9 +267,9 @@ static char olabel[Nlabels][60];      /*
+ static char luabel[2][60];	      /* Old lunation values */
+ 
+ /*  Forward functions  */
+-static double jtime(), phase();
+-static void phasehunt(), fmt_phase_time();
+-static void ringgg(), jyear(), jhms();
++static double jtime(struct tm *), phase(double, double *, double *, double *, double *, double *, double *);
++static void phasehunt(double, double []), fmt_phase_time(double, char *);
++static void ringgg( XtPointer, XtIntervalId*), jyear(double, int *, int*, int*), jhms(double, int *, int *, int *);
+ 
+ /*  EXPOSE  --	Graphics area repaint procedure.  */
+ static void
+
