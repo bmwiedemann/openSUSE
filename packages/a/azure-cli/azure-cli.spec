@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.68.0
+Version:        2.69.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -55,7 +55,7 @@ Requires:       %{pythons}-PyNaCl >= 1.5.0
 Requires:       %{pythons}-PyYAML >= 5.1
 Requires:       %{pythons}-antlr4-python3-runtime >= 4.13.1
 Requires:       %{pythons}-azure-appconfiguration >= 1.7.0
-Requires:       %{pythons}-azure-batch >= 14.2.0
+Requires:       %{pythons}-azure-batch >= 15.0.0~b1
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
 Requires:       %{pythons}-azure-datalake-store >= 0.0.53
@@ -104,20 +104,20 @@ Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
 Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.0.0~b3
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
-Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.1.0~b1
+Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.1.0~b2
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.1.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
-Requires:       %{pythons}-azure-mgmt-redis >= 14.4.0
+Requires:       %{pythons}-azure-mgmt-redis >= 14.5.0
 Requires:       %{pythons}-azure-mgmt-reservations >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-resource >= 23.1.1
 Requires:       %{pythons}-azure-mgmt-search >= 9.0
 Requires:       %{pythons}-azure-mgmt-security >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-servicebus >= 8.2.0
 Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
-Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
+Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.1.0~b1
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
 Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b20
@@ -140,7 +140,7 @@ Requires:       %{pythons}-javaproperties >= 0.5.1
 Requires:       %{pythons}-jsondiff >= 2.0.0
 Requires:       %{pythons}-packaging >= 20.9
 Requires:       %{pythons}-paramiko >= 2.0.8
-Requires:       %{pythons}-pycomposefile >= 0.0.29
+Requires:       %{pythons}-pycomposefile >= 0.0.32
 Requires:       %{pythons}-pygments >= 2.4
 Requires:       %{pythons}-scp >= 0.13.2
 Requires:       %{pythons}-semver >= 2.13.0
