@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 13 10:52:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.5.6:
+  * fix potential dangling pointer
+
+-------------------------------------------------------------------
 Wed Jan  8 08:39:42 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.5.5:
