@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Wed Feb 12 10:56:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.7 (boo#1212912)
+  * New internal packet routing feature
+  * New variable speed option for gen_packets
+  * Improved IL2P
+  * Advertisement using DNS Service Discovery via avahi
+  * Transmit calibration tone (-x) command line option now accepts
+    a radio channel number and/or a single letter mode
+  * BEACON configuration now recognizes the SOURCE= option
+  * FX.25 transmit property can now be set individually by channel
+- drop patches:
+  * 331.patch
+  * direwolf-allow-build-against-newer-gpsd.patch
+
+-------------------------------------------------------------------
+Sun Jul  2 08:31:38 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * direwolf-allow-build-against-newer-gpsd.patch
+
+-------------------------------------------------------------------
+Sat Aug 28 12:45:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6
+  New Features:
+  * "-X" option enables FX.25 transmission. FX.25 reception is
+    always enabled so you don't need to do anything special. "What
+    is FX.25?" you might ask. It is forward error correction (FEC)
+    added in a way that is completely compatible with an ordinary
+    AX.25 frame. See new document AX25_plus_FEC_equals_FX25.pdf
+    for details.
+  * Receive AIS location data from ships. Enable by using "-B AIS"
+    command line option or "MODEM AIS" in the configuration file.
+    AIS NMEA sentences are encapsulated in APRS user-defined data
+    with a "{DA" prefix. This uses 9600 bps so you need to use
+    wide band audio, not what comes out of the speaker. There is
+    also a "-A" option to generate APRS Object Reports.
+  * Receive Emergency Alert System (EAS) Specific Area Message
+    Encoding (SAME). Enable by using "-B EAS" command line option
+    or "MODEM EAS" in the configuration file. EAS SAME messages are
+    encapsulated in APRS user-defined data with a "{DE" prefix.
+    This uses low speed AFSK so speaker output is fine.
+  * "-t" option now accepts more values to accommodate inconsistent
+    handling of text color control codes by different terminal
+    emulators. The default, 1, should work with most modern terminal
+    types. If the colors are not right, try "-t 9" to see the result
+    of the different choices and pick the best one. If none of them
+    look right, file a bug report and specify: operating system
+    version (e.g. Raspbian Buster), terminal emulator type and
+    version (e.g. LXTerminal 0.3.2). Include a screen capture.
+  * "-g" option to force G3RUH mode for lower speeds where a
+    different modem type may be the default.
+  * 2400 bps compatibility with MFJ-2400.
+    See 2400-4800-PSK-for-APRS-Packet-Radio.pdf for details
+  * "atest -h" will display the frame in hexadecimal for closer
+    inspection.
+  * Add support for Multi-GNSS NMEA sentences.
+  Bugs Fixed:
+  * Proper counting of frames in transmit queue for AGW protocol
+    'Y' command.
+
+-------------------------------------------------------------------
+Wed Oct 31 21:43:04 UTC 2018 - frede@b1-systems.de
+- update to 1.5
+  New Features:
+  * PTT using GPIO pin of CM108/CM119 (e.g. DMK URI, RB-USB RIM), Linux only.
+  * More efficient error recovery for AX.25 connected mode. Better generation and processing of REJ and SREJ to reduce unnecessary duplicate "I" frames.
+  * New configuration option, "V20", for listing stations known to not understand AX.25 v2.2. This will speed up connection by going right to SABM and not trying SABME first and failing.
+  * New "NOXID" configuration file option to avoid sending XID command to listed station(s). If other end is a partial v2.2 implementation, which recognizes SABME, but not XID, we would waste a lot of time resending XID many times before giving up. This is less drastic than the "V20" option which doesn't even attempt to use v2.2 with listed station(s).
+  * New application "kissutil" for troubleshooting a KISS TNC or interfacing to an application via files.
+  * KISS "Set Hardware" command to report transmit queue length.
+  * TCP KISS can now handle multiple concurrent applications.
+  * Linux can use serial port for KISS in addition to a pseudo terminal.
+  * decode_aprs utility can now accept KISS frames and AX.25 frames as series of two digit hexadecimal numbers.
+  * Full Duplex operation. (Put "FULLDUP ON" in channel section of configuration file.)
+  * Time slots for beaconing.
+  * Allow single log file with fixed name rather than starting a new one each day.
+
+  Bugs Fixed:
+  * Possible crash when CDIGIPEAT did not include the optional alias.
+  * PACLEN configuration item no longer restricts length of received frames.
+  * Strange failures when trying to use multiple KISS client applications over TCP. Only Linux was affected.
+  * Under certain conditions, outgoing connected mode data would get stuck in a queue and not be transmitted. This could happen if client application sends a burst of data larger than the "window" size (MAXFRAME or EMAXFRAME option).
+  * Little typographical / spelling errors in messages.
+
+-------------------------------------------------------------------
+Sun Feb 11 17:49:08 UTC 2018 - frede@b1-systems.de
+
+- update to 1.4
+  New Features:
+  * AX.25 v2.2 connected mode. See chapter 10 of User Guide for details.
+  * New client side packet filter to select "messages" only to stations that have been heard nearby recently. This is now the default if no IS to RF filter is specified.
+  *  New beacon type, IBEACON, for sending IGate statistics.
+  * Expanded debug options so you can understand what is going on with packet filtering.
+  * Added new document Successful-APRS-IGate-Operation.pdf with IGate background, configuration, and troubleshooting tips.
+  * 2400 & 4800 bps PSK modems. See 2400-4800-PSK-for-APRS-Packet-Radio.pdf in the doc directory for discussion.
+  * The top speed of 9600 bps has been increased to 38400. You will need a sound card capable of 96k or 192k samples per second for the higher rates. Radios must also have adequate bandwidth. See Going-beyond-9600-baud.pdf in the doc directory for more details.
+  * Better decoder performance for 9600 and higher especially for low audio sample rate to baud ratios.
+  * Generate waypoint sentences for use by AvMap G5 / G6 or other mapping devices or applications. Formats include
+  * $GPWPL	- NMEA generic with only location and name.
+  * $PGRMW	- Garmin, adds altitude, symbol, and comment to previously named waypoint.
+  * $PMGNWPL	- Magellan, more complete for stationary objects.
+  * $PKWDWPL	- Kenwood with APRS style symbol but missing comment.
+  * DTMF tones can be sent by putting "DTMF" in the destination address, similar to the way that Morse Code is sent.
+  * Take advantage of new 'gpio' group and new /sys/class/gpio ownership in Raspbian Jessie.
+  * Handle more complicated gpio naming for CubieBoard, etc.
+  * More flexible dw-start.sh start up script for both GUI and CLI environments.
+  Bugs Fixed:
+  * The transmitter (PTT control) was being turned off too soon when sending Morse Code.
+  * The -qd (quiet decode) command line option now suppresses errors about improperly formed Telemetry packets.
+  * Longer tocall.txt files can now be handled.
+  * Sometimes kissattach would have an issue with the Dire Wolf pseudo terminal. This showed up most often on Raspbian but sometimes occurred with other versions of Linux.
+    kissattach: Error setting line discipline: TIOCSETD: Device or resource busy
+    Are you sure you have enabled MKISS support in the kernel
+    or, if you made it a module, that the module is loaded?
+  * Sometimes writes to a pseudo terminal would block causing the received
+    frame processing thread to hang. The first thing you will notice is that
+    received frames are not being printed. After a while this message will appear:
+  * Received frame queue is out of control. Length=... Reader thread is probably
+    frozen. This can be caused by using a pseudo terminal (direwolf -p) where
+    another application is not reading the frames from the other side.
+  * -p command line option caused segmentation fault with glibc >= 2.24.
+  * The Windows version 1.3 would crash when starting to transmit on Windows XP. There have also been some other reports of erratic behavior on Windows. The crashing problem was fixed in in the 1.3.1 patch release. Linux version was not affected.
+  * IGate did not retain nul characters in the information part of a packet. This should never happen with a valid APRS packet but there are a couple cases where it has. If we encounter these malformed packets, pass them along as-is, rather than truncating.
+  * Don't digipeat packets when the source is my call.
+
+- 
+-------------------------------------------------------------------
+Wed Sep 10 15:16:28 UTC 2014 - dl8fcl@darc.de
+
+- import into build service
+

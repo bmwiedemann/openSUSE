@@ -1,0 +1,7 @@
+<package name="direwolf" project="openSUSE:Factory">
+  <title>direwolf</title>
+  <description>Dire Wolf is a software &quot;soundcard&quot; modem/TNC and APRS * encoder/decoder.
+It can be used stand-alone to receive APRS messages, as a digipeater, APRStt gateway, or Internet Gateway (IGate).
+It can also be used as a virtual TNC for other applications such as APRSIS32, UI-View32, Xastir, APRS-TW, YAAC, UISS, Linux AX25, SARTrack, and many others.</description>
+  <devel project="hamradio" package="direwolf"/>
+</package>

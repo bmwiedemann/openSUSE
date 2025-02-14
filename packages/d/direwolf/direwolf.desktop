@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Network;HamRadio;
+Encoding=UTF-8
+Name=Dire Wolf
+GenericName=APRS Soundcard TNC
+Type=Application
+Exec=direwolf
+Icon=direwolf_icon
+Terminal=true
