@@ -117,4 +117,18 @@
     <comment></comment>
     <requestid>1241205</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>55546ca324a1ea76aa636f00b2b04d0f</srcmd5>
+    <version>17.3</version>
+    <time>1739557194</time>
+    <user>anag+factory</user>
+    <comment>- Fix build, add postgresql-tzdata2025a.patch
+- Upgrade to 17.3:
+  * bsc#1237093, CVE-2025-1094: Harden PQescapeString and allied
+    functions against invalidly-encoded input strings.
+  * obsoletes postgresql-tzdata2025a.patch
+  * https://www.postgresql.org/docs/release/17.3/
+  * https://www.postgresql.org/about/news/-3015/</comment>
+    <requestid>1245716</requestid>
+  </revision>
 </revisionlist>

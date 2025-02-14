@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 17.2
+%define pgversion 17.3
 %define pgmajor 17
 %define buildlibs 1
 %define tarversion %{pgversion}
@@ -191,7 +191,6 @@ Patch9:         postgresql-var-run-socket.patch
 Patch10:        postgresql-llvm-optional.patch
 Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
 %endif
-Patch12:        postgresql-tzdata2025a.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -522,7 +521,6 @@ touch -r configure tmp
 %patch -P 4
 %patch -P 8
 %patch -P 9
-%patch -P 12
 %if %{with llvm}
 %patch -P 10
 %patch -P 11
