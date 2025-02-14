@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Feb 14 10:57:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.10:
+  * mkova.sh: bail if vmdk-convert is not in PATH
+  * fix `abspath()` in `OVFFile`
+  * bump spec version to 0.3.10-0
+  * ova-compose: add option to set tar format (default: `gnu`)
+- update to 0.3.9:
+  * add disk_id/file_id options for disk images
+  * ova-compose: support sha1 checksum type
+  * ova-compose: fix slowness of hashsum generation
+  * ova-compose: add raw_image option for disks
+- update to 0.3.8:
+  * add spec file
+  * add 'None' to name spaces
+  * fix password setting in properties (was always false)
+  * add support for multiple product sections
+  * add 'units' option for disk images
+- update to 0.3.7:
+  * Honor compiler/linker flags from the environment
+  * add NVME and USB3 controllers
+  * set default checksum type to sha256
+
+-------------------------------------------------------------------
 Tue Nov 21 19:41:56 UTC 2023 - andreas.stieger@gmx.de
 
 - Update to version 0.3.6.0:

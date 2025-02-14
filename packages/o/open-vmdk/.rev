@@ -15,4 +15,31 @@
     <comment></comment>
     <requestid>1133892</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4191a0f1347bff2ed237b646a577a5c</srcmd5>
+    <version>0.3.10</version>
+    <time>1739557384</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.10:
+  * mkova.sh: bail if vmdk-convert is not in PATH
+  * fix `abspath()` in `OVFFile`
+  * bump spec version to 0.3.10-0
+  * ova-compose: add option to set tar format (default: `gnu`)
+- update to 0.3.9:
+  * add disk_id/file_id options for disk images
+  * ova-compose: support sha1 checksum type
+  * ova-compose: fix slowness of hashsum generation
+  * ova-compose: add raw_image option for disks
+- update to 0.3.8:
+  * add spec file
+  * add 'None' to name spaces
+  * fix password setting in properties (was always false)
+  * add support for multiple product sections
+  * add 'units' option for disk images
+- update to 0.3.7:
+  * Honor compiler/linker flags from the environment
+  * add NVME and USB3 controllers
+  * set default checksum type to sha256</comment>
+    <requestid>1245859</requestid>
+  </revision>
 </revisionlist>

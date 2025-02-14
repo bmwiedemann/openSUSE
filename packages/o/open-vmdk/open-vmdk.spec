@@ -1,7 +1,7 @@
 #
 # spec file for package open-vmdk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           open-vmdk
-Version:        0.3.6.0
+Version:        0.3.10
 Release:        0
 Summary:        Tools to create OVA files from raw disk images
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/vmware/open-vmdk
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/vmware/open-vmdk/archive/refs/tags/v%{version}.tar.gz
 Patch0:         shebang.patch
 BuildRequires:  zlib-devel
 Requires:       coreutils
