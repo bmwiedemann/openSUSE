@@ -2239,9 +2239,6 @@ unsorted:
   - clang-devel 
   - clang-doc 
   - clang-extract 
-  - clang14 
-  - clang14-devel 
-  - clang14-doc 
   - clang15 
   - clang15-devel 
   - clang15-doc 
@@ -3038,6 +3035,7 @@ unsorted:
   - cvs-doc 
   - cvsps 
   - cwstudio 
+  - cwstudio-gui 
   - cxref 
   - cxxopts-devel 
   - cxxtools-devel 
@@ -3387,6 +3385,8 @@ unsorted:
   - direnv-fish-completion 
   - direnv-zsh-completion 
   - direvent 
+  - direwolf 
+  - direwolf-doc 
   - dirvish 
   - discord-rpc-devel 
   - discount 
@@ -10130,7 +10130,6 @@ unsorted:
   - kernel-devel-longterm 
   - kernel-docs 
   - kernel-docs-html 
-  - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
   - kernel-firmware-nvidia-gspx-G06 
   - kernel-firmware-nvidia-gspx-G06-cuda 
@@ -11382,7 +11381,6 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_4 
-  - libLLVM14 
   - libLLVM15 
   - libLLVM15-32bit 
   - libLLVM16 
@@ -11392,7 +11390,6 @@ unsorted:
   - libLLVM19-32bit 
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib19 
-  - libLTO14 
   - libLTO15 
   - libLTO16 
   - libLTO17 
@@ -12648,7 +12645,6 @@ unsorted:
   - libckteec0 
   - libclBLAS2 
   - libclFFT2 
-  - libclang-cpp14 
   - libclang-cpp15 
   - libclang-cpp15-32bit 
   - libclang-cpp16 
@@ -14498,7 +14494,6 @@ unsorted:
   - liblirc_driver0-32bit 
   - liblittleb0 
   - libllama 
-  - liblldb14 
   - liblldb15 
   - liblldb16 
   - liblldb17 
@@ -15127,7 +15122,6 @@ unsorted:
   - libomniORB4-3 
   - libomnithread4 
   - libomp-devel 
-  - libomp14-devel 
   - libomp15-devel 
   - libomp16-devel 
   - libomp17-devel 
@@ -15282,8 +15276,6 @@ unsorted:
   - libosmo-mgcp-devel 
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
-  - libosmo-mtp-1_9_0 
-  - libosmo-mtp-devel 
   - libosmo-octoi3 
   - libosmo-ranap-devel 
   - libosmo-ranap7 
@@ -15293,15 +15285,10 @@ unsorted:
   - libosmo-rua0 
   - libosmo-sabp-devel 
   - libosmo-sabp1 
-  - libosmo-sccp-1_9_0 
-  - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
-  - libosmo-sigtran10 
   - libosmo-sigtran11 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_9_0 
-  - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis15 
   - libosmocodec-devel 
@@ -16341,6 +16328,7 @@ unsorted:
   - libsigsegv2 
   - libsingular_resources-4_3_2 
   - libsingular_resources-devel 
+  - libsioclient1 
   - libsirocco0 
   - libsispmctl0 
   - libsixel-bash-completion 
@@ -17671,7 +17659,6 @@ unsorted:
   - llamacpp-devel 
   - llcbench 
   - lld 
-  - lld14 
   - lld15 
   - lld16 
   - lld17 
@@ -17683,8 +17670,6 @@ unsorted:
   - lldap-set-password 
   - lldb 
   - lldb-devel 
-  - lldb14 
-  - lldb14-devel 
   - lldb15 
   - lldb15-devel 
   - lldb16 
@@ -17706,19 +17691,6 @@ unsorted:
   - llvm-polly 
   - llvm-polly-devel 
   - llvm-vim-plugins 
-  - llvm14 
-  - llvm14-devel 
-  - llvm14-doc 
-  - llvm14-gold 
-  - llvm14-libc++-devel 
-  - llvm14-libc++1 
-  - llvm14-libc++abi-devel 
-  - llvm14-libc++abi1 
-  - llvm14-libclang13 
-  - llvm14-opt-viewer 
-  - llvm14-polly 
-  - llvm14-polly-devel 
-  - llvm14-vim-plugins 
   - llvm15 
   - llvm15-devel 
   - llvm15-doc 
@@ -21143,6 +21115,7 @@ unsorted:
   - par2cmdline 
   - par_text 
   - parallel-printer-support 
+  - paralleloverhead 
   - paranamer 
   - paranamer-ant 
   - paranamer-generator 
@@ -23352,18 +23325,11 @@ unsorted:
   - postgresql12-contrib 
   - postgresql12-devel 
   - postgresql12-docs 
-  - postgresql12-libversion 
   - postgresql12-llvmjit 
   - postgresql12-llvmjit-devel 
-  - postgresql12-orafce 
-  - postgresql12-pg_cron 
-  - postgresql12-pgagent 
-  - postgresql12-pgaudit 
   - postgresql12-pgsql-ogr-fdw 
   - postgresql12-plperl 
   - postgresql12-plpython 
-  - postgresql12-plr 
-  - postgresql12-plr-doc 
   - postgresql12-pltcl 
   - postgresql12-postgis 
   - postgresql12-postgis-utils 
@@ -23468,11 +23434,17 @@ unsorted:
   - postgresql17-devel 
   - postgresql17-devel-mini 
   - postgresql17-docs 
+  - postgresql17-libversion 
   - postgresql17-llvmjit-devel 
   - postgresql17-orafce 
+  - postgresql17-pg_cron 
+  - postgresql17-pgagent 
+  - postgresql17-pgaudit 
   - postgresql17-pgvector 
   - postgresql17-plperl 
   - postgresql17-plpython 
+  - postgresql17-plr 
+  - postgresql17-plr-doc 
   - postgresql17-pltcl 
   - postgresql17-postgis 
   - postgresql17-postgis-utils 
@@ -24012,7 +23984,6 @@ unsorted:
   - python3-cephfs 
   - python3-cinderclient 
   - python3-clang 
-  - python3-clang14 
   - python3-clang15 
   - python3-clang16 
   - python3-clang17 
@@ -24066,6 +24037,7 @@ unsorted:
   - python3-gr-iqbal 
   - python3-gr-osmosdr 
   - python3-grummage 
+  - python3-grype2html 
   - python3-gv 
   - python3-hawkey 
   - python3-heatclient 
@@ -24118,7 +24090,6 @@ unsorted:
   - python3-lilv 
   - python3-linkchecker 
   - python3-lldb 
-  - python3-lldb14 
   - python3-lldb15 
   - python3-lldb16 
   - python3-lldb17 
@@ -36375,6 +36346,7 @@ unsorted:
   - rpmrebuild 
   - rqlite 
   - rr 
+  - rr-zsh-completion 
   - rrdtool 
   - rrdtool-cached 
   - rrdtool-devel 
@@ -37438,6 +37410,7 @@ unsorted:
   - soci-postgresql-devel 
   - soci-sqlite3-devel 
   - sockdump 
+  - socket.io-client-cpp-devel 
   - socket_wrapper 
   - sofia-sip 
   - sofia-sip-devel 
@@ -48851,6 +48824,7 @@ unsorted:
   - wf-recorder 
   - wf-shell 
   - wf-shell-devel 
+  - wfview 
   - wg-info 
   - wget2 
   - wget2-devel 
@@ -48969,6 +48943,7 @@ unsorted:
   - wrk 
   - wsdl4j 
   - wsdl4j-javadoc 
+  - wsjtx 
   - wsl-appx 
   - wslay 
   - wslay-devel 
@@ -48980,6 +48955,7 @@ unsorted:
   - wumpus 
   - wv 
   - wv-devel 
+  - wwl 
   - wxEDID 
   - wxEphe 
   - wxGTK3-3_2-devel 

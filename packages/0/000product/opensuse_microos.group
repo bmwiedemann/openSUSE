@@ -72,11 +72,11 @@
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="busybox-diffutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
-    <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
+    <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="busybox-hostname" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
-    <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
-    <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
+    <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
+    <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="ca-certificates-mozilla" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="canberra-gtk-play" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
