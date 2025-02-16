@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Changes since 6.10.0:
+  * Update dependency version to 6.11.0
+  * Enforce QtNext tests to pass again
+  * Move global cache out of function again
+  * kwriteconfig: Add a flag to notify
+  * Make global parse cache local to parseGlobalFiles()
+  * Add xml/yaml linting
+  * Make kcfg testfiles valid wrt kcfg.xsd
+  * Use unique pointer for lock file
+  * Simplify KConfigIniBackend
+  * Enable QStandardPaths testMode for more tests
+  * Add a way to register QML types as uncreatable
+  * Don't ignore the result of QFile::open
+  * CI: Add linux-qt6-next build
+  * Enable QStandardPaths test mode for TestStateConfig
+  * [kconfig_compiler] Fix code generation for state config without name arg
+  * Fix moving values between nested groups
+  * Read defaults from Windows registry
+  * Update version to 6.11.0
+
+-------------------------------------------------------------------
 Tue Jan  7 18:17:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
