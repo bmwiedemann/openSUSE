@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Feb 16 10:33:51 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.4:
+  * Fix uninitialised variable, update README
+  * Use statically allocated regexes for date/time pattern matching
+  * Add tests for date/time formats
+  * Allow permissive validation of date/time formats
+  * Add test case for circular references in schemas
+  * Add simple example just for checking validity of schemas
+  * Detect certain JSON reference cycles while parsing schemas
+  * Run apt update in build step
+  * spelling: value
+  * spelling: unfortunately
+  * spelling: transparent
+  * spelling: the
+  * spelling: the name of
+  * spelling: than
+  * spelling: satisfies
+  * spelling: satisfied
+  * spelling: present
+  * spelling: preexisting
+  * spelling: nonexistent
+  * spelling: macos
+  * spelling: javascript
+  * spelling: invocations
+  * spelling: internal
+  * spelling: id
+  * spelling: higher
+  * spelling: hierarchy
+  * spelling: for
+  * spelling: contained
+  * spelling: constraints
+  * spelling: constraint
+  * spelling: command
+  * spelling: case-sensitive
+  * spelling: backtracking
+  * spelling: anymore
+  * link: web-based demo is available
+  * link: letmaik/valijson-wasm
+  * Fix up include grouping
+  * Prevent potential division by zero
+  * Fuzzing improvements
+  * Fix stack overflow for unresolved references
+  * Fix buffer overflow in u8_strlen
+
+-------------------------------------------------------------------
 Fri Sep 13 18:27:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.0.3:
