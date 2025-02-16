@@ -25,7 +25,7 @@
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-knotifications
-Version:        6.10.0
+Version:        6.11.0
 Release:        0
 Summary:        KDE Desktop notifications
 License:        LGPL-2.1-or-later
