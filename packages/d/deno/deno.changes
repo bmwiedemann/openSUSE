@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Feb 15 13:11:40 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.1.10:
+  * fix: sync changes from cherry-pick PRs
+  * fix: do special file permission check for `check_read_path`
+  * fix: update Cargo.lock and fix changes from cherry-pick PRs
+  * fix(streams): handle Resource stream error
+  * docs: adding examples and a see link to Websockets jdocs
+  * fix: allow creating TSC host without a snapshot
+  * test: clean up node_compat test runner
+  * perf(lsp): cancellation checks in blocking code
+  * fix: panic with js lint plugins and invalid js syntax
+  * perf(compile): use bytes already in memory after downloading executable
+  * fix(compile): never include the specified output executable in itself
+  * test: remove one of 'node_unit_tests::tls_test' tests
+  * fix(otel): custom span start + end times are fractional ms
+  * fix(ext/node): fix twitter-api-v2 compatibility
+  * fix(ext/node): fix missing privateKey.x in curve25519 JWK
+  * chore: fix lockfile on main
+  * chore: move bench test to spec test
+  * fix(ext/napi): napi_is_buffer tests for ArrayBufferView
+  * fix(ext/node): handle non-ws upgrade headers
+  * refactor(ext/fetch): do not share error instance
+  * fix(ext/node): expose brotli stream APIs
+  * perf: node resolution cache
+  * refactor: extract out utf16 map from lsp to cli::util module
+  * fix(lsp): ignore a few more diagnostics for ambient modules
+  * fix(ext/node): set process fields on own instance
+  * fix(publish): correct coloring in --help
+  * fix(node): resolve module as maybe CJS when it's missing a file extension
+  * fix(node): show directory import and missing extension suggestions
+  * Revert "fix(lsp): silence debug error for 'move to a new file' action"
+  * docs: Temporal plaintime docs link
+  * chore: update std in test util
+  * fix(cli): Fix panic in `load_native_certs`
+  * fix(ext/node): support proxy http request
+  * fix(ext/node): set process.env as own property
+
+-------------------------------------------------------------------
 Sun Feb  2 07:10:43 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.1.9:
