@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 15 14:13:18 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.2.0:
+  * Added format_set_font_family() and format_set_font_charset()
+    format functions to support Middle Eastern and Asian fonts.
+
+-------------------------------------------------------------------
 Fri Oct 25 00:26:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.1.9:
