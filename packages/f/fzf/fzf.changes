@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Feb 15 14:08:53 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.60.0:
+  * Added --accept-nth for choosing output fields
+  * --accept-nth and --with-nth now support a template that
+    includes multiple field index expressions in curly braces
+  * Added exclude and exclude-multi actions for dynamically
+    excluding items
+  * Preview window now prints wrap indicator when wrapping is
+    enabled
+  * Bug fixes and improvements
+- Updates from 0.59.0:
+  * Prioritizing file name matches
+  * Added --header-lines-border to display header from
+    --header-lines with a separate border
+  * click-header event now sets $FZF_CLICK_HEADER_WORD and
+    $FZF_CLICK_HEADER_NTH. You can use them to implement a
+    clickable header for changing the search scope using the new
+    transform-nth action.
+  * Added --no-input option to completely disable and hide the
+    input section
+  * Extended {q} placeholder to support ranges. e.g. {q:1},
+    {q:2..}, etc.
+  * Added search(...) and transform-search(...) action to trigger
+    an fzf search with an arbitrary query string. This can be used
+    to extend the search syntax of fzf. In the following example,
+    fzf will use the first word of the query to trigger ripgrep
+    search, and use the rest of the query to perform fzf search
+    within the result.
+  * You can now bind actions to multiple keys and events at once by
+    writing a comma-separated list of keys and events before the
+    colon
+  * --min-height option now takes a number followed by +, which
+    tells fzf to show at least that many items in the list section.
+    The default value is now changed to 10+.
+  * --header-lines will be displayed at the top in reverse-list
+    layout
+  * Added bell action to ring the terminal bell
+  * Added toggle-bind action
+  * Bug fixes and improvements
+  * Fixed fish script to support fish 3.1.2 or later
+
+-------------------------------------------------------------------
 Mon Jan 20 20:08:59 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 0.58.0:
