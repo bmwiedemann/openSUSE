@@ -1,3 +1,16 @@
+-------------------------------------------------------------------
+Fri Feb 14 19:55:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.1.0:
+  * InfoBox: add metered data switch
+  * Update translation template
+  * WifiPage: create settings dialog
+  * WifiMenuItem: manage own button box
+  * InfoBox: add auto connect switch
+  * WifiPage: update listbox with list model
+  * Revert "WifiPage: update listbox with list model
+  * InfoBox: remove extra margins and align
+
 ------------------------------------------------------------------
 Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
