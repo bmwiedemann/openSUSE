@@ -1,7 +1,7 @@
 #
 # spec file for package CoreFreq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CoreFreq
-Version:        1.98.8
+Version:        2.0.1
 Release:        0
 Summary:        CPU monitoring software for 64-bit processors
 License:        GPL-2.0-or-later

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Feb 16 10:27:03 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.0.1
+  * [Build]
+    - Implement amd_pci_dev_to_node_id from Kernel 6.14
+    - [CI] Pin build environment to ubuntu-22.04 (thanks @jlacvdr)
+    - Allow changing WARNING variable from command line (thanks @s-stepien)
+  * [AMD]
+    - [Strix Point] Attempt to decode UMC and IOMMU controllers
+    - [Raphael] Adding Ryzen 5 7400F
+    - [Granite Ridge] Adding Ryzen 5 9600
+ 
+-------------------------------------------------------------------
 Sun Dec 22 10:32:14 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.98.8
