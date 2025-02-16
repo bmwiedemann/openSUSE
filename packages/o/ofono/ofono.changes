@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 14 17:13:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15
+  * Fix issue with SMS and uninitialized buffers.
+  * Fix issue with USSD and uninitialized buffers.
+  * Add support for the Test Anything Protocol.
+
+-------------------------------------------------------------------
 Sat Dec 14 21:30:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.14
