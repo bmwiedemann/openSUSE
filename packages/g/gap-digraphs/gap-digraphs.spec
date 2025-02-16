@@ -1,7 +1,7 @@
 #
 # spec file for package gap-digraphs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-digraphs
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        GAP: Digraphs and multigraphs
 License:        GPL-3.0-or-later
@@ -35,7 +35,7 @@ Requires:       gap-core >= 4.10
 Requires:       gap-datastructures >= 0.2.5
 Requires:       gap-io >= 4.5.1
 Requires:       gap-orb >= 4.8.2
-Suggests:       gap-autodic >= 2022.08.11
+Suggests:       gap-autodoc >= 2020.08.11
 Suggests:       gap-gapdoc >= 1.6.3
 Suggests:       gap-grape >= 4.8.1
 Suggests:       gap-nautytracesinterface >= 0.2

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 14 18:41:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10.0
+  * Added copy in `DigraphAllChordlessCycles`
+  * Implementation of facial walks and dual graphs
+  * Added `IsOrderFilter` function
+  * Edge weights #4: shortest path(s)
+
+-------------------------------------------------------------------
 Sun Sep  8 07:46:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.0

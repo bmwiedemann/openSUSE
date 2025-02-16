@@ -39,4 +39,12 @@
     <comment>- Update to release 1.9.0</comment>
     <requestid>1199427</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1d4f2fd293a77b20c6c0a8926765c168</srcmd5>
+    <version>1.10.0</version>
+    <time>1739742028</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.10.0</comment>
+    <requestid>1246000</requestid>
+  </revision>
 </revisionlist>
