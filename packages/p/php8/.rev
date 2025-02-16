@@ -1098,4 +1098,41 @@
     <comment>- obsolete also apache2-mod_php7 [bsc#1236850]</comment>
     <requestid>1244104</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>8622703936948bee88445760d826bede</srcmd5>
+    <version>8.3.17</version>
+    <time>1739741831</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.3.17
+    Core:
+        Fixed bug GH-16892 (ini_parse_quantity() fails to parse inputs starting with 0x0b).
+        Fixed bug GH-16886 (ini_parse_quantity() fails to emit warning for 0x+0).
+        Fixed bug GH-17214 (Relax final+private warning for trait methods with inherited final).
+        Fixed NULL arithmetic during system program execution on Windows.
+        Fixed potential OOB when checking for trailing spaces on Windows.
+        Fixed bug GH-17408 (Assertion failure Zend/zend_exceptions.c).
+        Fix may_have_extra_named_args flag for ZEND_AST_UNPACK.
+        Fix NULL arithmetic in System V shared memory emulation for Windows.
+    DOM:
+        Fixed bug GH-17500 (Segfault with requesting nodeName on nameless doctype).
+    Enchant:
+        Fix crashes in enchant when passing null bytes.
+    FTP:
+        Fixed bug GH-16800 (ftp functions can abort with EINTR).
+    GD:
+        Fixed bug GH-17349 (Tiled truecolor filling looses single color transparency).
+        Fixed bug GH-17373 (imagefttext() ignores clipping rect for palette images).
+        Ported fix for libgd 223 (gdImageRotateGeneric() does not properly interpolate).
+    Intl:
+        Fixed bug GH-11874 (intl causing segfault in docker images).
+        Fixed bug GH-17469 (UConverter::transcode always emit E_WARNING on invalid encoding).
+    Opcache:
+        Fixed bug GH-17307 (Internal closure causes JIT failure).
+        Fixed bug GH-17564 (Potential UB when reading from / writing to struct padding).
+    PDO:
+        Fixed a memory leak when the GC is used to free a PDOStatment.
+        Fixed a crash in the PDO Firebird Statement destructor.
+        Fixed UAFs when changing default fetch class ctor args.</comment>
+    <requestid>1245821</requestid>
+  </revision>
 </revisionlist>

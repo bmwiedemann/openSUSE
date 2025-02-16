@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Feb 14 07:11:17 UTC 2025 - pgajdos@suse.com
+
+- version update to 8.3.17
+    Core:
+        Fixed bug GH-16892 (ini_parse_quantity() fails to parse inputs starting with 0x0b).
+        Fixed bug GH-16886 (ini_parse_quantity() fails to emit warning for 0x+0).
+        Fixed bug GH-17214 (Relax final+private warning for trait methods with inherited final).
+        Fixed NULL arithmetic during system program execution on Windows.
+        Fixed potential OOB when checking for trailing spaces on Windows.
+        Fixed bug GH-17408 (Assertion failure Zend/zend_exceptions.c).
+        Fix may_have_extra_named_args flag for ZEND_AST_UNPACK.
+        Fix NULL arithmetic in System V shared memory emulation for Windows.
+    DOM:
+        Fixed bug GH-17500 (Segfault with requesting nodeName on nameless doctype).
+    Enchant:
+        Fix crashes in enchant when passing null bytes.
+    FTP:
+        Fixed bug GH-16800 (ftp functions can abort with EINTR).
+    GD:
+        Fixed bug GH-17349 (Tiled truecolor filling looses single color transparency).
+        Fixed bug GH-17373 (imagefttext() ignores clipping rect for palette images).
+        Ported fix for libgd 223 (gdImageRotateGeneric() does not properly interpolate).
+    Intl:
+        Fixed bug GH-11874 (intl causing segfault in docker images).
+        Fixed bug GH-17469 (UConverter::transcode always emit E_WARNING on invalid encoding).
+    Opcache:
+        Fixed bug GH-17307 (Internal closure causes JIT failure).
+        Fixed bug GH-17564 (Potential UB when reading from / writing to struct padding).
+    PDO:
+        Fixed a memory leak when the GC is used to free a PDOStatment.
+        Fixed a crash in the PDO Firebird Statement destructor.
+        Fixed UAFs when changing default fetch class ctor args.
+    Phar:
+        Fixed bug GH-17518 (offset overflow phar extractTo()).
+    PHPDBG:
+        Fix crashes in function registration + test.
+    Session:
+        Fix type confusion with session SID constant.
+        Fixed bug GH-17541 (ext/session NULL pointer dereferencement during ID reset).
+    SimpleXML:
+        Fixed bug GH-17409 (Assertion failure Zend/zend_hash.c:1730).
+    SNMP:
+        Fixed bug GH-17330 (SNMP::setSecurity segfault on closed session).
+    SPL:
+        Fixed bug GH-17463 (crash on SplTempFileObject::ftruncate with negative value).
+    Zip:
+        Fixed bug GH-17139 (Fix zip_entry_name() crash on invalid entry).
+
+-------------------------------------------------------------------
 Fri Feb  7 09:29:53 UTC 2025 - pgajdos@suse.com
 
 - obsolete also apache2-mod_php7 [bsc#1236850]
