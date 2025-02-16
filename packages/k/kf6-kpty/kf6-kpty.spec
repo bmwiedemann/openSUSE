@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kpty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kpty
-Version:        6.10.0
+Version:        6.11.0
 Release:        0
 Summary:        Primitives to interface with pseudo terminal devices
 License:        LGPL-2.1-or-later
