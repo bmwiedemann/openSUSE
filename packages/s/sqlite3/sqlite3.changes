@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Feb  6 17:58:46 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to release 3.49.0:
+  * Enhancements to the query planner:
+    - Improve the query-time index optimization so that it works on
+      WITHOUT ROWID tables.
+    - Better query plans for large star-query joins. This fixes
+      three different performance regressions that were reported
+      on the SQLite Forum.
+    - When two or more queries have the same estimated cost, use
+      the one with the fewer bytes per row.
+  * Enhance the iif() SQL function so that it can accept any number
+    of arguments greater than or equal to two.
+  * Enhance the session extension so that it works on databases
+    that make use of generated columns.
+  * Omit the SQLITE_USE_STDIO_FOR_CONSOLE compile-time option which
+    was not implemented correctly and never worked right. In its place
+    add the SQLITE_USE_W32_FOR_CONSOLE_IO compile-time option. This
+    option applies to command-line tools like the CLI only, not to the
+    SQLite core. It causes Win32 APIs to be used for console I/O
+    instead of stdio. This option affects Windows builds only.
+  * Three new options to sqlite3_db_config(). All default "on".
+    SQLITE_DBCONFIG_ENABLE_ATTACH_CREATE
+    SQLITE_DBCONFIG_ENABLE_ATTACH_WRITE
+    SQLITE_DBCONFIG_ENABLE_COMMENTS 
+
+-------------------------------------------------------------------
 Thu Jan 16 10:39:29 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Re-enable SONAME which got disabled by default in 3.48.0.

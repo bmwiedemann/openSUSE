@@ -1803,4 +1803,12 @@ CVE-2020-13871 boo#1172646</comment>
   * Add the &quot;.dbtotxt&quot; command to the CLI.</comment>
     <requestid>1238215</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>26f64f9a2471b76a97312608bdc41eb8</srcmd5>
+    <version>3.49.0</version>
+    <time>1739741820</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1245758</requestid>
+  </revision>
 </revisionlist>
