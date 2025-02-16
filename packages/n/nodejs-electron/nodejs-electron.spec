@@ -132,10 +132,8 @@ ExcludeArch: %arm
 
 
 %if 0%{?fedora}
-%bcond_without system_vma
 %bcond_without system_ada
 %else
-%bcond_with system_vma
 %bcond_with system_ada
 %endif
 
@@ -145,6 +143,12 @@ ExcludeArch: %arm
 %bcond_without system_simdutf
 %else
 %bcond_with system_simdutf
+%endif
+
+%if 0%{?fedora} && 0%{?fedora} < 42
+%bcond_without system_vma
+%else
+%bcond_with system_vma
 %endif
 
 #requires `imageSequenceTrackPresent` and `enableParsingGainMapMetadata` both of which are only in post-1.0.0 nightlies
@@ -201,7 +205,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        33.4.0
+Version:        33.4.1
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
