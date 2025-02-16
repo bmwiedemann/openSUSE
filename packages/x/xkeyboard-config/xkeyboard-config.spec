@@ -17,7 +17,7 @@
 
 
 Name:           xkeyboard-config
-Version:        2.42
+Version:        2.44
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -79,7 +79,7 @@ rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 
 %files
 %license COPYING
-%doc AUTHORS README docs/HOWTO.* docs/README.*
+%doc AUTHORS docs/HOWTO.* docs/README.*
 %dir %{_localstatedir}/lib/xkb
 %dir %{_localstatedir}/lib/xkb/compiled
 %dir %{_datadir}/X11
@@ -88,5 +88,6 @@ rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 %{_mandir}/man7/*
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog

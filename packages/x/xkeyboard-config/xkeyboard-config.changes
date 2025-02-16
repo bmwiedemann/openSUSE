@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 14 22:02:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.44 (boo#1237205)
+  * Fixes and updates to multiple layouts, making them match
+    current and updated specificatiopns
+  * Changes to multiple layouts that change behavior 
+  * Add Diktor layout ru(diktor), and RuIntl layouts set
+    ru(ruintl_ru),   ru(ruintl_en).
+  * Expanded options for caps locking behavior for multiple
+    layouts
+  * Add <I570> keycode (KEY_REFRESH_RATE_TOGGLE)
+
+-------------------------------------------------------------------
 Mon Dec  9 13:39:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - python-3.11.patch/buildrequire python311-base

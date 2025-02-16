@@ -1009,4 +1009,12 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   * fixes build on Leap 15.6 and sle15-sp7</comment>
     <requestid>1229400</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>37ec2a1eaf57438eacfc16059ce77582</srcmd5>
+    <version>2.44</version>
+    <time>1739741817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1246075</requestid>
+  </revision>
 </revisionlist>
