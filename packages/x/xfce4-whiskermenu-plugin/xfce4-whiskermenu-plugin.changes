@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 17:11:59 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.9.1
+  * Fix menu position in Wayland with multiple monitors. (Issue #153)
+  * Translation updates
+
+-------------------------------------------------------------------
 Thu Jan 30 14:46:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 2.9.0
