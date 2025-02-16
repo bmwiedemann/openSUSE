@@ -26,7 +26,7 @@
 %bcond_with python
 %bcond_without released
 Name:           kf6-kitemmodels
-Version:        6.10.0
+Version:        6.11.0
 Release:        0
 Summary:        Set of item models extending the Qt model-view framework
 License:        LGPL-2.1-or-later
