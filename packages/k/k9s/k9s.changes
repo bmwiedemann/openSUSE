@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:24:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix builds on s390x
+- properly set the build date
+
+-------------------------------------------------------------------
+Sun Feb 16 08:54:37 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.0 (no releases between 0.32.7 and this
+  one):
+  We are pretty stocked about this drop (hopefully...) as we've
+  fully enabled custom columns support in K9s!
+  Historically, one could customize the view for a given resource
+  by adding a definition in views.yaml.
+  From there one could change sort order and re-arrange the
+  standard column layout.
+  Several folks voiced the need to add a column for a given
+  label/annotation or any other fields available on a resource.  To
+  date, this wasn't possible
+  So... without further ado, let see what we can now do with Custom
+  Views ding dang deal!
+  It all starts with a few new directives available in views.yaml
+  More information on Custom Views and columns are in the release
+  notes:
+  https://github.com/derailed/k9s/releases/tag/v0.40.0
+  * Resolved Issues
+    - #3064 Question: brew formula k9s vs derailed/k9s/k9s
+    - #3061 k9s not opening active namespace or namespace specified
+      via -n
+    - #3044 CRDs are loaded incorrectly into metadata registry,
+      cause sporadic "Jump Owner" issues
+    - #2995 Latest image on quay.io contains "failed" kubectl
+      binary
+
+-------------------------------------------------------------------
 Tue Nov 19 08:16:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.32.7:

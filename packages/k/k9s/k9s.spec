@@ -1,7 +1,7 @@
 #
 # spec file for package k9s
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           k9s
-Version:        0.32.7
+Version:        0.40.0
 Release:        0
 Summary:        Curses based terminal UI for Kubernetes clusters
 License:        Apache-2.0
@@ -39,7 +39,18 @@ Kubernetes resources.
 %setup -qa1
 
 %build
-make GO_FLAGS="-mod=vendor -buildmode=pie" GIT_REV="" VERSION="%{version}" build
+# hash will be shortened by COMMIT_HASH:0:8 later
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
+%ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+export CGO_ENABLED=1
+%else
+export CGO_ENABLED=0
+%endif
+make GO_FLAGS="-mod=vendor -buildmode=pie" GIT_REV="${COMMIT_HASH:0:8}" VERSION="%{version}" DATE="${BUILD_DATE}" build
 
 %install
 # Install the binary.
