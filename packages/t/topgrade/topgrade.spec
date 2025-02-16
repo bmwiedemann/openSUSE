@@ -1,7 +1,7 @@
 #
 # spec file for package topgrade
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           topgrade
-Version:        16.0.1
+Version:        16.0.2
 Release:        0
 Summary:        Upgrade all the things
 License:        GPL-3.0-only

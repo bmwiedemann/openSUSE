@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 01 11:37:35 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.0.2:
+  * chore: release v16.0.2 (#995)
+  * fix(poetry): skip if not installed with official script (#989)
+  * feat: add bootc support to Fedora atomic distros
+  * refactor: disable julia startup file for julia package update (#983)
+  * feat: allow version specification for deno (#970)
+  * i18n(app.yml): new language fr (#969)
+  * uv step: checking self subcommand exits; fixes #942 (#971)
+  * refactor: flip order of mise upgrade and mise plugins update (#968)
+  * feat(microsoft_store): Add Microsoft Store step for Windows (#963)
+  * refactor: add missing i18n for OpenBSD steps (#965)
+  * docs: document that we need to translate user-facing texts (#966)
+  * Improve OpenBSD -CURRENT detection and Dry-run feedback (#954)
+  * Add support for Lix (Nix fork) (#952)
+  * i18n (app.yml): Add Spanish localization (es) (#955)
+  * Refactor config.rs and vagrant.rs files (#949)
+  * docs: update release procedure that SECURITY.md should be updated in major release (#946)
+  * Update SECURITY.md (#945)
+  *  [FIXES #922] properly check for -CURRENT in OpenBSD steps and pass the correct flags to the respective commands (#923)
+  * ci: add bin pkg to aur (#944)
+
+-------------------------------------------------------------------
 Fri Oct 25 02:23:33 UTC 2024 - gerald_chen@foxmail.com
 
 - Update to version 16.0.1:
