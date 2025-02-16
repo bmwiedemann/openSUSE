@@ -1,7 +1,7 @@
 #
 # spec file for package lf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lf
-Version:        33
+Version:        34
 Release:        0
 Summary:        Terminal file manager (with sixel support)
 License:        MIT

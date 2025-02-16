@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Feb 15 14:17:05 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 34:
+  Breaking:
+  * The autoquit option is now enabled by default.
+  New:
+  * A new option locale is added to sort files based on the
+    collation rules of the provided locale. This feature is
+    currently experimental.
+  * A new on-init hook command is added to allow triggering custom
+    actions when lf has finished initializing and connecting to the
+    server.
+  Fix:
+  * The background color now renders properly when displaying
+    filenames.
+  * A bug where the on-quit hook command causes an infinite loop
+    has been fixed.
+  * File sizes now display correctly after being copied when watch
+    is enabled.
+  * Files are now automatically unselected when removed by an
+    external process, when watch is enabled.
+
+-------------------------------------------------------------------
 Sun Nov  3 08:25:10 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove changesgenerate from service as upstream has been shipping
