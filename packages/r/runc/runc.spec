@@ -18,13 +18,13 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 6c52b3fc541fb26fe8c374d5f58112a0a5dbda66
-%define git_short   6c52b3fc541f
+%define git_version 59923ef18c98053ddb1acf23ecba10344056c28e
+%define git_short   59923ef18c98
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.2.4
+Version:        1.2.5
 %define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers
