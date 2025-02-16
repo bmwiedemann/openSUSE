@@ -25,7 +25,7 @@
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-ksvg
-Version:        6.10.0
+Version:        6.11.0
 Release:        0
 Summary:        Components for handling SVGs
 License:        GPL-2.0-or-later
