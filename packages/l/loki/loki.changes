@@ -1,4 +1,276 @@
 -------------------------------------------------------------------
+Fri Feb 14 13:01:42 UTC 2025 - mrueckert@suse.de
+
+- Update to version 3.4.2:
+  * fix(ci): do not disable CGO in Makefile (backport
+    release-3.4.x) (#16272)
+  * fix(blooms): Initialize bloom gateway client only once
+    (backport release-3.4.x) (#16268)
+  * docs: Updates Loki release notes for 3.3.3 (backport
+    release-3.4.x) (#16249)
+  * chore(release-3.4.x): release 3.4.1 (#16226)
+- Update to version 3.4.1:
+  * docs: adding Promtail deprecation banners (backport
+    release-3.4.x) (#16228)
+  * fix: build info in docker images (#16225)
+  * ci: Move IMAGE_TAG Dockerfile ARG into build phase (backport
+    k239) (#16212)
+  * chore(k239): release 3.4.0 (#16102)
+
+-------------------------------------------------------------------
+Wed Feb 12 13:18:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh proper-data-directories.patch
+
+-------------------------------------------------------------------
+Wed Feb 12 11:48:22 UTC 2025 - mrueckert@suse.de
+
+- Update to version 3.4.0:
+  * BREAKING CHANGES
+    - Remove wget from Promtail docker image (#15101)
+  * Features
+    - Add a metric ingestion time SM sanitization (#15222)
+      (e9d0c3e)
+    - add kafka development environment (#15603) (226e9f1)
+    - add lines skipped metric to pattern ingesters (#14997)
+      (dea5d78)
+    - Add objstore support for Swift using thanos.io/objstore
+      (#11672) (44523e0)
+    - add opt-in support for ProxyFroomEnvironment in logcli
+      (#11742) (#14950) (c56b95d)
+    - Add otlp attribute deployment.environment.name to list of
+      default labels (#14747) (2d407bd)
+    - add per-tenant time sharding for long out-of-order ingestion
+      (#14711) (0d6d68d)
+    - add phase to log lines in kafka_consumer.go (#15176)
+      (0a12cab)
+    - Add Rule Name and Type to Query Tags (#15055) (b272573)
+    - Add TLS config to the analytics client (#15227) (2c5eabd)
+    - added support for overrides exporter (#15630) (db72164)
+    - api: Support Parquet as a query response format. (#15408)
+      (d0c11a6)
+    - Block scheduler scaffolding (#15198) (a10140d)
+    - block-scheduler: adds service and basic planner support for
+      scheduler (#15200) (ad322c0)
+    - block-scheduler: introduce job lease and requeue expired jobs
+      (#15560) (558080c)
+    - block-scheduler: job tracking & offset commits (#15338)
+      (f2bff77)
+    - block-scheduler: status page shows completed jobs (#15580)
+      (10194f7)
+    - blockbuilder component (#14621) (cbdd36a)
+    - blockbuilder: consolidate on record counting planner (#15247)
+      (532bdbc)
+    - blockbuilder: grpc transport (#15218) (339ba1a)
+    - blockbuilder: priority queue for job dispatching (#15245)
+      (0981273)
+    - blooms: Add task timining and sizing metrics (#15032)
+      (79cccfd)
+    - blooms: Apply task timeout in bloom builder (#14988)
+      (f92dde0)
+    - blooms: disk-backed queue for the bloom-planner (#14874)
+      (b646861)
+    - blooms: Prefetch bloom blocks as soon as they are built
+      (#15050) (b406015)
+    - build the Docker Driver for arm64 (#9247) (e950251)
+    - Detect fields based on per-tenant configuration and put them
+      into structured metadata at ingest time (#15188) (7033091)
+    - expose topologySpreadConstraints for admin-api pods (#14995)
+      (1b93086)
+    - expose topologySpreadConstraints for distributed deployment
+      (#14853) (d075107)
+    - helm: Compute ConfigMap/Secret checksum only over .data
+      content (#15177) (990f71c)
+    - helm: Do not explicitly template managed-by, as it should be
+      set at install time by the installation manager. (#14763)
+      (10b7478)
+    - Introduce shardable probabilistic topk for instant queries.
+      (#14243) (7b53f20)
+    - lambda-promtail: add relabeling support for log entries
+      (#15600) (c41a8b4)
+    - lambda-promtail: Add terraform variable for s3 bucket
+      notification filter prefix (#15381) (3dd8d7d)
+    - line_format bypass template execution if possible (#15411)
+      (2150fbc)
+    - logcli: Include common labels (#15611) (639ac74)
+    - loki/docker compose: enable feature toggle (#14858) (8f243ee)
+    - operator: Add support for managed GCP WorkloadIdentity
+      (#14752) (7635a5c)
+    - present DF bytes values in queryable format (#15272)
+      (f5d62bd)
+    - remove target lag and keep just maximum lag (#15120)
+      (12386a2)
+    - sanitize structured metadata during ingestion in the
+      distributor (#15141) (be4f17e)
+    - scheduler: implement and register block builder rpc service
+      (#15248) (c519ab6)
+    - Skip writeback for chunks fetched by queriers older than a
+      duration (#15605) (3b8d993)
+    - Support config timeout for AlibabaCloud OSS requests (#14856)
+      (ac2e21f)
+    - thanos: add new metric to track status codes (#14937)
+      (a629212)
+    - thanos: add support for aliyun oss and baidu bos (#14891)
+      (fb6789d)
+    - thanos: make use of the new function IterWithAttributes
+      (#14793) (cfc3819)
+    - TSDB: allow tsdb index creation in memory only (#14732)
+      (831c0d5)
+    - update blockbuilder to use scheduler for fetching jobs
+      (#15224) (0d67831)
+    - Use context propagation to call the same ingester in
+      GetChunksID as Query (#15186) (70d9587)
+  * Bug Fixes
+    - Add flags for path & configure kafka for non-memberlist kv
+      store (#14850) (f2da621)
+    - aggregated_metrics: Fix the IsError method causing retries
+      (#15296) (7a7b3b1)
+    - allow comparison against zero bytes (#15217) (17f1972)
+    - azureblob: Return error if Azure returns no service principal
+      token (#13195) (e98a86b)
+    - block-builder: return from Process call early if max offset
+      is reached (#15073) (13ea254)
+    - block-scheduler: init record planner correctly (#15390)
+      (117869f)
+    - block-scheduler: one job per partition (local branch copy)
+      (#15579) (b2f46de)
+    - blockbuilder: copy entries returned by record decoder
+      (#15549) (52d745f)
+    - blockbuilder: min job size (#15617) (c43aa56)
+    - blockbuilder: use index path prefix in objectclient for tsdb
+      creation (#15614) (55f2dd8)
+    - blooms: Copy chunks from ForSeries (#14863) (bfc2890)
+    - blooms: Do not restart builders when planner disconnects
+      (#14783) (7669385)
+    - blooms: Enable metas cache on backend when running in ssd
+      mode (#15275) (4cce207)
+    - blooms: Fix check for skipping most recent data when
+      filtering blooms (#15300) (78d3c44)
+    - blooms: Fix strategy logger and add task test (#14857)
+      (ab2721d)
+    - blooms: Fix tenants slice on loadTenantTables (#14900)
+      (a8f7851)
+    - blooms: Match series to newest block only (#15481) (5846ea2)
+    - blooms: Skip multi-tenant TSDBs during bloom planning
+      (#14770) (76d35cc)
+    - bytes unit detection in detected fields (#15525) (8e260fe)
+    - ci: Fix test compile error (#15404) (db2b6db)
+    - ci: Remove submodule once and for all (#15495) (80e8e60)
+    - ci: Revert "fixed Publish Rendered Helm Chart Diff workflow"
+      (#15506) (6c49cc0)
+    - ci: transform TestChunkSize into a benchmark (#15361)
+      (fed43db)
+    - ci: Update Python version for Helm CI (#15420) (bdbb009)
+    - correct S3 bucket owner label key to prevent retrieval errors
+      (#14913) (85aaf63)
+    - correct typo in architecture name (amr64 -> arm64) (#15707)
+      (068f81d)
+    - Correctly propagate index stats to metrics.go log line
+      (#14941) (ff111dc)
+    - data race / nil channel read in pattern aggregation push
+      (#15410) (5d8220c)
+    - data race in bloombuild tests (#15360) (aa7b849)
+    - data race in chunk client hedging tests (#15466) (fad06ee)
+    - data race in distributor tests (#15423) (b8168a8)
+    - data race in ingester test (#15465) (04f621e)
+    - Disable Helm test pod when test.enabled=false (#15346)
+      (1fb4e2b)
+    - do not retain copy of chunk while indexing a new chunk in
+      tsdb while processing delete requests (#15541) (ff19955)
+    - enable metric aggregation in loki-local-config.yaml (#15302)
+      (c96b750)
+    - Ensure partition-reader starts up correctly (#14845)
+      (b2f3d2e)
+    - Ensure successive WAL replays don't overwrite each other
+      (#14848) (ec95ed1)
+    - Fix goroutine leak in queryrange downstreamer (#15665)
+      (5f476a3)
+    - Fix loki ruler generator url left parameter url encoding
+      (#15601) (e347eb7)
+    - helm/loki: Add namespace to Loki templates for ruler and
+      index-gateway (#14838) (733d99f)
+    - helm/loki: Allow prefixing of rollout-group value and
+      ingester name (#15063) (f4accc1)
+    - helm: add appProtocol: tcp to headless backend grpc ports
+      (#14507) (400f5af)
+    - helm: Add conditional to include ruler config only when
+      enabled (#15385) (3badbb3)
+    - helm: add default wal dir to ruler config (#14920) (1a6751f)
+    - helm: Fix statefulset templates to not show diffs in ArgoCD
+      (#15192) (3c71c83)
+    - helm: Split ingester HPA when zoneAwareReplication is enabled
+      (#14565) (80e46f7)
+    - helm: yaml templates incorrectly annotated (#15207) (acd4d11)
+    - Improve docs for min and max table offsets (#14890) (fd9d332)
+    - incorrect error check in autoCommitLoop (#15149) (4b5925a)
+    - kafka: Read from beginning if no committed offset (#14865)
+      (1b6da11)
+    - Keep the service_name label after discovery in
+      push.ParseLokiRequest before calculating retention and
+      passing to the usage tracker (#14960) (71d4d6a)
+    - lambda-promtail: Remove s3 bucket ownership verification
+      (#15383) (bf73014)
+    - legacy label endpoint route (#14933) (8ce321e)
+    - logcli: Check for errors before checking for exists when
+      fetching data (#14780) (9e7d2f2)
+    - memberlist: Respect interface names config for advertise
+      address (#13940) (751324c)
+    - metric_aggregation: Fix duplicate metrics registration
+      (#15142) (215f994)
+    - Mitigate ingester race between Query & GetChunkIDs (#15178)
+      (bd46e4c)
+    - operator: Add log attribute for level to structured metadata
+      (#14776) (036c131)
+    - operator: Fix maximum OpenShift version (#14764) (cc496c6)
+    - operator: Fix operator release pipeline warnings (#14817)
+      (e707a3d)
+    - operator: Fix RBAC permission for poddisruptionbudgets
+      (#15107) (f00d07a)
+    - operator: Publish images on docker hub upon release (#14786)
+      (126ebed)
+    - operator: update kube-rbac-proxy to upstream registry
+      (#14809) (568d22f)
+    - otlp: Write protobuf status on error (#15097) (63a2442)
+    - partition-ingester: Add stream creation error logging
+      (#15640) (f63c16f)
+    - promtail: Fix API level node filtering of Kubernetes SD to
+      only fetch pod metadata for pods of the current node (#14267)
+      (d2b6fd8)
+    - querier: show correct setting in error message (#14842)
+      (f5ae015)
+    - remove enabled field in loki-local-config.yaml (#15059)
+      (7410f10)
+    - remove unsafe pkg usage from util.mempool (#15428) (e6d82b9)
+    - Return error 422 (Unprocessable Content) when push request
+      does not contain any streams (#13706) (17bf32b)
+    - Shut down delete client on local rule-evaluator (#15345)
+      (42469cc)
+    - structured metadata not always passed down for processing
+      deletes (#15526) (a3808b6)
+    - typo: Change "did received" to "did receive" in NOTES.txt
+      (#15584) (9191eaf)
+    - use KafkaEndOffset instead of -1 (#15099) (2113526)
+    - Use separate variable to track the consume offset (#15095)
+      (161a192)
+  * Performance Improvements
+    - approx_topk: Reduce memory usage of HyperLogLog in
+      approx_topk. (#15559) (bef2043)
+    - bloom: Compute chunkrefs for series right before sending task
+      to builder (#14808) (66e6b1c)
+    - blooms: Replace JSON lib for encoding/decoding metas (#14767)
+      (57f16a0)
+    - Improve approx_topk performance by reducing allocations.
+      (#15450) (04994ca)
+  * Reverts
+    - "perf(bloom): Compute chunkrefs for series right before
+      sending task to builder" (#14839) (4bfa380)
+  * Miscellaneous Chores
+    - Remove wget from Promtail docker image (#15101) (2eea546)
+  * Dependency updates
+    Please see the release notes
+    https://github.com/grafana/loki/releases/tag/v3.4.0
+
+-------------------------------------------------------------------
 Wed Dec 18 18:29:38 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.3.2: (pulls in fix for CVE-2024-45337)

@@ -7,7 +7,7 @@
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     -->
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v3.3.2</param>
+    <param name="revision">v3.4.2</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="submodules">disable</param>
     <param name="changesgenerate">enable</param>
