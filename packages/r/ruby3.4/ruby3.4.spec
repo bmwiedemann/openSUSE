@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package ruby3.4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,9 +36,9 @@
 
 %global patch_level p0
 Name:           ruby3.4%{psuffix}
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
-%global pkg_version 3.4.1
+%global pkg_version 3.4.2
 # make the exported API version explicit
 # TODO: remove the +0 before the final release
 %global api_version 3.4.0
@@ -112,8 +112,8 @@ Provides:       %{name}-with-jemalloc = %{version}-%{release}
 Provides:       %{name}-without-jemalloc = %{version}-%{release}
 %endif
 %if %{with bootstrap_from_git}
-BuildRequires:  ruby3.3
 BuildRequires:  autoconf
+BuildRequires:  ruby3.3
 %endif
 BuildRequires:  glibc-locale-base
 BuildRequires:  libffi-devel

@@ -7,4 +7,14 @@
     <comment>final version</comment>
     <requestid>1233481</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5131750522e995b45ba205026862dcf</srcmd5>
+    <version>3.4.2</version>
+    <time>1739741812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.2
+  https://www.ruby-lang.org/en/news/2025/02/14/ruby-3-4-2-released/
+  https://github.com/ruby/ruby/releases/tag/v3_4_2</comment>
+    <requestid>1246036</requestid>
+  </revision>
 </revisionlist>
