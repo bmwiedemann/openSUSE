@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Changes since 6.10.0:
+  * Update dependency version to 6.11.0
+  * jxl: refactor image saving, native CMYK support
+  * Harmonized RAW mime types
+  * imageconverter: possibility to set image quality
+  * Print more details when writetest fails
+  * Fix RAW mime type
+  * jxl: refactor image loading
+  * Add xml/yaml linting
+  * Fix jp2 and hdr plugin json definition
+  * Read test: added perceptive fuzziness
+  * Modified PCX mime type according to IANA db
+  * PSD: Alpha detection improvements
+  * PSD: improved option support
+  * More metadata read tests
+  * Fix use of deprecated methods
+  * Metadata and image resolution write test
+  * PSD: added support to EXIF metadata
+  * JXR: set max XMP size to 4MiB
+  * CI: Add linux-qt6-next build
+  * DDS: Fix warning in qfloat16 and test failure on PowerPC
+  * JXL: Resolution and metadata support via EXIF
+  * ani: Read chunk elements one at a time instead all at once (kde#498368)
+  * xcf: Return early if seek fails (kde#498381)
+  * heif: fix -Wstringop-overread warning
+  * jxl: refactor metadata boxes reading
+  * RAW: Allow preview loading
+  * Add JPEG 2000 support
+  * JXL: Fix missing checks for BOXES when parsing animation
+  * Try writers with different image sizes
+  * Update version to 6.11.0
+
+-------------------------------------------------------------------
 Thu Jan  9 17:12:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
