@@ -1,0 +1,24 @@
+From 017396310bb6515786eb9d9cf9fb0256de08d65b Mon Sep 17 00:00:00 2001
+From: "Stephan T. Lavavej" <stl@nuwen.net>
+Date: Tue, 28 Nov 2023 16:33:11 -0800
+Subject: [PATCH] Remove unused Python imports.
+
+diff --git a/libcxx/utils/libcxx/test/format.py b/libcxx/utils/libcxx/test/format.py
+index 52c6f9cd8f2ef22..5eb17d417489c62 100644
+--- a/libcxx-17.0.6.src/utils/libcxx/test/format.py
++++ b/libcxx-17.0.6.src/utils/libcxx/test/format.py
+@@ -6,14 +6,10 @@
+ #
+ # ===----------------------------------------------------------------------===##
+ 
+-import contextlib
+-import io
+ import lit
+ import lit.formats
+ import os
+-import pipes
+ import re
+-import shutil
+ 
+ 
+ def _getTempPaths(test):

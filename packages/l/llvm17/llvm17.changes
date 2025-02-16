@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 13 06:04:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patches, to actually fix the build with Python 3.13:
+  * lldb-support-python-3.13.patch
+  * libcxx-remove-unused-imports.patch
+
+-------------------------------------------------------------------
+Fri Nov 22 17:12:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add libcxx-use-shlex-quote.patch to fix build with python 3.13
+
+-------------------------------------------------------------------
 Sat Nov 16 22:38:02 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Apply clang-shlib-symbol-versioning.patch to add symbol versions
@@ -337,7 +349,7 @@ Wed Sep 21 21:21:19 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 -------------------------------------------------------------------
 Mon Sep 12 07:29:54 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
-- Use correct LLVM_HOST_TRIPLE for riscv64 
+- Use correct LLVM_HOST_TRIPLE for riscv64
 
 -------------------------------------------------------------------
 Tue Sep  6 20:23:14 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
@@ -424,7 +436,7 @@ Mon Jul  4 21:29:11 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 - Update to version 14.0.6.
   * This release contains bug-fixes for the LLVM 14.0.0 release.
     This release is API and ABI compatible with 14.0.0.
-- Rebase llvm-do-not-install-static-libraries.patch. 
+- Rebase llvm-do-not-install-static-libraries.patch.
 
 -------------------------------------------------------------------
 Thu Jun 16 16:44:07 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
@@ -970,9 +982,9 @@ Sat Jan 11 20:14:12 UTC 2020 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Fri Jan  8 15:30:21 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
-- Add upstream patch to export compiler-rt FuzzedDataProvider header, 
+- Add upstream patch to export compiler-rt FuzzedDataProvider header,
   required by Envoy 1.12.2:
-  * compiler-rt-move-fdp.patch 
+  * compiler-rt-move-fdp.patch
 
 -------------------------------------------------------------------
 Mon Jan  6 19:31:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
@@ -1587,7 +1599,7 @@ Fri Oct 13 09:09:15 UTC 2017 - msrb@suse.com
 -------------------------------------------------------------------
 Tue Oct 10 12:14:31 UTC 2017 - msrb@suse.com
 
-- Drop llvm5-devel-static. llvm5-devel contains shared library with 
+- Drop llvm5-devel-static. llvm5-devel contains shared library with
   the same content.
 
 -------------------------------------------------------------------
@@ -1672,7 +1684,7 @@ Fri Jun  2 12:42:08 UTC 2017 - idonmez@suse.com
 -------------------------------------------------------------------
 Tue May  9 08:29:31 UTC 2017 - idonmez@suse.com
 
-- Package libLLVMFuzzer 
+- Package libLLVMFuzzer
 
 -------------------------------------------------------------------
 Wed Apr 19 15:08:25 UTC 2017 - dmueller@suse.com
@@ -1689,18 +1701,18 @@ Wed Apr  5 12:09:39 UTC 2017 - afaerber@suse.de
 -------------------------------------------------------------------
 Tue Apr  4 09:14:41 UTC 2017 - idonmez@suse.com
 
-- Use gcc6 on SLE12 
+- Use gcc6 on SLE12
 
 -------------------------------------------------------------------
 Thu Mar 30 11:33:27 UTC 2017 - idonmez@suse.com
 
-- Package license & credits 
+- Package license & credits
 
 -------------------------------------------------------------------
 Mon Mar 27 07:58:36 UTC 2017 - idonmez@suse.com
 
 - Update to version 4.0.0
-  * See 
+  * See
     + http://releases.llvm.org/4.0.0/docs/ReleaseNotes.html and
     + http://releases.llvm.org/4.0.0/tools/clang/docs/ReleaseNotes.html
     + http://releases.llvm.org/4.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
@@ -1716,12 +1728,12 @@ Mon Mar 27 07:58:36 UTC 2017 - idonmez@suse.com
 -------------------------------------------------------------------
 Fri Feb 24 13:26:11 UTC 2017 - idonmez@suse.com
 
-- Enable BPF for all arches bsc#1026191 
+- Enable BPF for all arches bsc#1026191
 
 -------------------------------------------------------------------
 Wed Jan 25 12:06:36 UTC 2017 - idonmez@suse.com
 
-- libc++ must depend on libc++abi 
+- libc++ must depend on libc++abi
 
 -------------------------------------------------------------------
 Wed Jan 25 10:13:44 UTC 2017 - idonmez@suse.com
@@ -1904,17 +1916,17 @@ Wed May 18 13:22:17 UTC 2016 - ronisbr@gmail.com
 -------------------------------------------------------------------
 Wed May 18 11:14:38 UTC 2016 - idonmez@suse.com
 
-- Disable libcxx/lldb/openmp for SLE fate#319582 
+- Disable libcxx/lldb/openmp for SLE fate#319582
 
 -------------------------------------------------------------------
 Mon Apr 25 07:25:22 UTC 2016 - idonmez@suse.com
 
-- Update rpmlintrc to whitelist libLTO.so 
+- Update rpmlintrc to whitelist libLTO.so
 
 -------------------------------------------------------------------
 Mon Apr 11 08:45:56 UTC 2016 - idonmez@suse.com
 
-- Re-enable glibc-2.23 patch for Tumbleweed 
+- Re-enable glibc-2.23 patch for Tumbleweed
 
 -------------------------------------------------------------------
 Sun Apr 10 19:18:41 UTC 2016 - dmueller@suse.com
@@ -1955,22 +1967,22 @@ Tue Mar  8 18:52:11 UTC 2016 - idonmez@suse.com
 -------------------------------------------------------------------
 Wed Mar  2 09:08:12 UTC 2016 - idonmez@suse.com
 
-- Add glibc-2.23-libcxx.patch to fix test failures with glibc 2.23 
+- Add glibc-2.23-libcxx.patch to fix test failures with glibc 2.23
 
 -------------------------------------------------------------------
 Sat Oct  3 17:00:28 UTC 2015 - mimi.vx@gmail.com
 
--  Remove FFI support because its fragile 
+-  Remove FFI support because its fragile
 
 -------------------------------------------------------------------
 Sun Sep 27 12:03:57 UTC 2015 - idonmez@suse.com
 
-- Enable OpenMP for x86, x86_64, ppc64 and ppc64le 
+- Enable OpenMP for x86, x86_64, ppc64 and ppc64le
 
 -------------------------------------------------------------------
 Mon Sep 14 13:10:49 UTC 2015 - idonmez@suse.com
 
-- Enable all targets on x86, x86_64 
+- Enable all targets on x86, x86_64
 
 -------------------------------------------------------------------
 Wed Sep  2 08:14:39 UTC 2015 - idonmez@suse.com
@@ -1984,7 +1996,7 @@ Wed Sep  2 08:14:39 UTC 2015 - idonmez@suse.com
 -------------------------------------------------------------------
 Tue May 26 11:54:49 CEST 2015 - ro@suse.de
 
-- fix build on s390x (one typo in ifarch and one change in filelist) 
+- fix build on s390x (one typo in ifarch and one change in filelist)
 
 -------------------------------------------------------------------
 Mon May 25 13:59:37 UTC 2015 - idonmez@suse.com
@@ -1995,7 +2007,7 @@ Mon May 25 13:59:37 UTC 2015 - idonmez@suse.com
 -------------------------------------------------------------------
 Fri Apr 24 12:19:33 UTC 2015 - idonmez@suse.com
 
-- Add llvm-fix-parsearmarch.patch to fix parsing armv{6,7}hl archs. 
+- Add llvm-fix-parsearmarch.patch to fix parsing armv{6,7}hl archs.
 
 -------------------------------------------------------------------
 Mon Mar  2 10:12:32 UTC 2015 - idonmez@suse.com
@@ -2037,7 +2049,7 @@ Tue Oct 21 08:39:22 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Sep 29 09:40:52 UTC 2014 - idonmez@suse.com
 
-- Rename llvm-remove-werror-date-time.patch to 
+- Rename llvm-remove-werror-date-time.patch to
   llvm-remove-clang-only-flags.patch and remove more clang only
   flags.
 
@@ -2049,7 +2061,7 @@ Fri Sep 26 08:54:08 UTC 2014 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu Sep 25 10:16:50 UTC 2014 - idonmez@suse.com
 
-- Require llvm-clang not just clang 
+- Require llvm-clang not just clang
 
 -------------------------------------------------------------------
 Wed Sep 17 11:01:31 UTC 2014 - idonmez@suse.com
@@ -2080,9 +2092,9 @@ Thu Sep  4 12:26:10 UTC 2014 - idonmez@suse.com
   * Major update, see http://llvm.org/releases/3.5.0/docs/ReleaseNotes.html
 - Use upstream pristine tarballs
 - Add libc++/libc++abi support clang (only on x86_64)
-- Add libcxxabi-exceptions.patch to fix libcxxabi exception handling 
+- Add libcxxabi-exceptions.patch to fix libcxxabi exception handling
 - Add libcxx-libdir.patch to fix libdir on 64bit arches
-- Remove asan-disable-hugemalloctest.patch and 
+- Remove asan-disable-hugemalloctest.patch and
   cmake-patchversion.patch, fixed upstream.
 
 -------------------------------------------------------------------
@@ -2117,7 +2129,7 @@ Sat Jun 21 13:40:52 UTC 2014 - arnaud@versini.eu
 -------------------------------------------------------------------
 Tue May 13 10:44:33 UTC 2014 - peter.trommler@ohm-hochschule.de
 
-- build compiler-rt on ppc64 (don't delete it) 
+- build compiler-rt on ppc64 (don't delete it)
 
 -------------------------------------------------------------------
 Thu Apr  3 11:58:28 UTC 2014 - idonmez@suse.com
@@ -2128,12 +2140,12 @@ Thu Apr  3 11:58:28 UTC 2014 - idonmez@suse.com
 -------------------------------------------------------------------
 Sat Feb 22 18:18:57 CET 2014 - ro@suse.de
 
-- complete ifarchs for s390 
+- complete ifarchs for s390
 
 -------------------------------------------------------------------
 Fri Jan 24 13:15:48 UTC 2014 - idonmez@suse.com
 
-- Remove non-existing doc subpackage 
+- Remove non-existing doc subpackage
 
 -------------------------------------------------------------------
 Fri Jan 24 09:23:08 UTC 2014 - idonmez@suse.com
@@ -2213,7 +2225,7 @@ Wed Dec  4 13:33:55 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Wed Dec  4 10:07:59 UTC 2013 - idonmez@suse.com
 
-- Update to r196371 from release_34 branch 
+- Update to r196371 from release_34 branch
 
 -------------------------------------------------------------------
 Wed Dec  4 03:27:29 UTC 2013 - termim@gmail.com
@@ -2252,7 +2264,7 @@ Thu Oct 17 10:23:32 UTC 2013 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Oct  9 11:16:08 UTC 2013 - dmueller@suse.com
 
-- use %arm, not arm in arch conditions 
+- use %arm, not arm in arch conditions
 - add arm-remove-xfails.diff: remove XFAILs in testsuite
   that pass and thereby make check fail
 
@@ -2276,7 +2288,7 @@ Wed Aug 28 11:07:16 UTC 2013 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Aug 28 11:02:06 UTC 2013 - idonmez@suse.com
 
-- Add s390x support 
+- Add s390x support
 
 -------------------------------------------------------------------
 Wed Aug 28 10:57:32 UTC 2013 - idonmez@suse.com
@@ -2297,24 +2309,24 @@ Thu Aug 22 10:59:28 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Wed Aug 21 11:04:35 UTC 2013 - idonmez@suse.com
 
-- Only enable PowerPC on ppc64 
+- Only enable PowerPC on ppc64
 
 -------------------------------------------------------------------
 Mon Aug 12 16:43:26 UTC 2013 - idonmez@suse.com
 
-- Disable shared libs on PowerPC 
+- Disable shared libs on PowerPC
 - Disable ARCMT, it only makes sense for iOS/OSX
 
 -------------------------------------------------------------------
 Tue Aug  6 05:51:46 UTC 2013 - idonmez@suse.com
 
-- Fix build 
+- Fix build
 
 -------------------------------------------------------------------
 Wed Jul 17 12:54:40 UTC 2013 - idonmez@suse.com
 
 - Disable building unit-tests, should fix undefined reference
-  problem on ARM & PowerPC 
+  problem on ARM & PowerPC
 
 -------------------------------------------------------------------
 Tue Jul 16 08:35:00 UTC 2013 - coolo@suse.com
@@ -2379,7 +2391,7 @@ Tue May 14 11:23:07 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu May  9 09:05:41 UTC 2013 - idonmez@suse.com
 
-- Add unreachable-code.patch to fix unreachable code warnings on SLE 
+- Add unreachable-code.patch to fix unreachable code warnings on SLE
 
 -------------------------------------------------------------------
 Wed May  8 08:56:28 UTC 2013 - idonmez@suse.com
@@ -2407,7 +2419,7 @@ Wed Jan 16 18:38:01 UTC 2013 - llunak@suse.com
 -------------------------------------------------------------------
 Fri Jan 11 11:56:09 UTC 2013 - idonmez@suse.com
 
-- Add pre-generated doc files, remove sphinx dependency 
+- Add pre-generated doc files, remove sphinx dependency
 
 -------------------------------------------------------------------
 Tue Jan  8 15:16:56 UTC 2013 - llunak@suse.com
@@ -2484,7 +2496,7 @@ Fri Nov 30 07:27:46 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Tue Nov 20 08:59:09 UTC 2012 - idonmez@suse.com
 
-- Stop excluding ppc64 architecture 
+- Stop excluding ppc64 architecture
 
 -------------------------------------------------------------------
 Tue Nov 20 08:25:54 UTC 2012 - idonmez@suse.com
@@ -2573,12 +2585,12 @@ Mon Jun 18 20:26:51 UTC 2012 - llunak@suse.com
 -------------------------------------------------------------------
 Tue May 15 09:01:26 UTC 2012 - idonmez@suse.com
 
-- Update to final 3.1 release 
+- Update to final 3.1 release
 
 -------------------------------------------------------------------
 Thu May 10 11:40:06 UTC 2012 - idonmez@suse.com
 
-- Depend on python-base so we don't pull whole Mesa 
+- Depend on python-base so we don't pull whole Mesa
 
 -------------------------------------------------------------------
 Tue May  8 08:21:42 UTC 2012 - llunak@suse.com
@@ -2620,74 +2632,74 @@ Thu Apr 26 10:55:02 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Wed Apr 25 09:40:32 UTC 2012 - idonmez@suse.com
 
-- More fixes to llvm-config 
+- More fixes to llvm-config
 
 -------------------------------------------------------------------
 Tue Apr 24 10:12:32 UTC 2012 - idonmez@suse.com
 
-- Fix llvm-config --libs output 
+- Fix llvm-config --libs output
 
 -------------------------------------------------------------------
 Sun Apr 22 19:24:24 UTC 2012 - idonmez@suse.com
 
 - Update to svn revision 155320 from 3.1 branch
-  * AVX fixes 
+  * AVX fixes
 
 -------------------------------------------------------------------
 Tue Apr 17 07:48:50 UTC 2012 - idonmez@suse.com
 
-- Update to svn revision 154914 from 3.1 branch 
+- Update to svn revision 154914 from 3.1 branch
 
   Major new features:
 
       * AddressSanitizer, a fast memory error detector.
-      * MachineInstr Bundles, Support to model instruction 
+      * MachineInstr Bundles, Support to model instruction
         bundling / packing.
-      * ARM Integrated Assembler, A full featured assembler 
+      * ARM Integrated Assembler, A full featured assembler
         and direct-to-object support for ARM.
       * Basic Block Placement Probability driven basic block placement.
-  
+
   LLVM IR and Core Improvements
-     
+
       * IR support for half float
       * IR support for vectors of pointers, including vector GEPs.
       * Module flags have been introduced.
-      * Loads can now have range metadata attached to them to 
-        describe the possible values being loaded. 
-      * Inline cost heuristics have been completely overhauled 
-        and now closely model constant propagation through call sites, 
-        disregard trivially dead code costs, and 
+      * Loads can now have range metadata attached to them to
+        describe the possible values being loaded.
+      * Inline cost heuristics have been completely overhauled
+        and now closely model constant propagation through call sites,
+        disregard trivially dead code costs, and
         can model C++ STL iterator patterns.
-   
+
   Optimizer Improvements
 
-      * The loop unroll pass now is able to unroll loops with 
-        run-time trip counts. This feature is turned off by default, 
+      * The loop unroll pass now is able to unroll loops with
+        run-time trip counts. This feature is turned off by default,
         and is enabled with the -unroll-runtime flag.
-      * A new basic-block autovectorization pass is available. 
-        Pass -vectorize to run this pass along with some associated 
-        post-vectorization cleanup passes. 
+      * A new basic-block autovectorization pass is available.
+        Pass -vectorize to run this pass along with some associated
+        post-vectorization cleanup passes.
 
    X86-32 and X86-64 Target Improvements
 
       * Bug fixes and improved support for AVX1
       * Support for AVX2 (still incomplete at this point)
-   
+
    ARM Target Improvements
 
-      * The constant island pass now supports basic block and 
+      * The constant island pass now supports basic block and
         constant pool entry alignments greater than 4 bytes.
 
    Clang Changes
 
       * New: -Wdangling-else, -Wstrncat-size
       * Improved: -Wformat, -Wempty-body, -Wliteral-conversion
-      * Clang 3.1 adds support for anonymous structs and anonymous unions, 
-        added in the latest ISO C standard. Use -std=c11 or -std=gnu11 
-        to enable support for the new language standard. 
-        The new C11 features are backwards-compatible and are available 
+      * Clang 3.1 adds support for anonymous structs and anonymous unions,
+        added in the latest ISO C standard. Use -std=c11 or -std=gnu11
+        to enable support for the new language standard.
+        The new C11 features are backwards-compatible and are available
         as an extension in all language modes.
-      * All warning and language selection flags which previously accepted 
+      * All warning and language selection flags which previously accepted
         c1x have been updated to accept c11. The old c1x forms have been removed.
       * Generalized constant expressions
       * Lambda expressions
@@ -2696,22 +2708,22 @@ Tue Apr 17 07:48:50 UTC 2012 - idonmez@suse.com
       * User-defined literals
       * Forward-declared enumerations
       * Atomics (both libc++'s and libstdc++4.7's <atomic> are supported)
-      
+
 
 -------------------------------------------------------------------
 Tue Mar 20 12:40:27 UTC 2012 - idonmez@suse.com
 
-- Target i586-linux for 32bit builds 
+- Target i586-linux for 32bit builds
 
 -------------------------------------------------------------------
 Tue Dec 27 21:33:48 UTC 2011 - idonmez@suse.com
 
-- Add upstream fix for llvm PR11642 
+- Add upstream fix for llvm PR11642
 
 -------------------------------------------------------------------
 Sun Dec 25 15:29:46 UTC 2011 - idonmez@suse.com
 
-- Don't run gcc for ada files, just fail instead. 
+- Don't run gcc for ada files, just fail instead.
 
 -------------------------------------------------------------------
 Thu Dec 22 15:33:24 UTC 2011 - idonmez@suse.com
@@ -2722,12 +2734,12 @@ Thu Dec 22 15:33:24 UTC 2011 - idonmez@suse.com
 -------------------------------------------------------------------
 Mon Dec  5 13:19:22 UTC 2011 - idoenmez@suse.de
 
-- Switch to 3-stage bootstrap 
+- Switch to 3-stage bootstrap
 
 -------------------------------------------------------------------
 Fri Dec  2 12:22:07 UTC 2011 - idoenmez@suse.de
 
-- Build first stage compiler with -O0 to workaround gcc 4.5 bug 
+- Build first stage compiler with -O0 to workaround gcc 4.5 bug
 
 -------------------------------------------------------------------
 Thu Dec  1 18:04:15 UTC 2011 - idoenmez@suse.de
@@ -2749,7 +2761,7 @@ Wed Nov 16 14:28:17 UTC 2011 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu Nov 10 14:54:50 UTC 2011 - idonmez@suse.com
 
-- Disable ARM support, VM goes out of memory while compiling it 
+- Disable ARM support, VM goes out of memory while compiling it
 
 -------------------------------------------------------------------
 Thu Nov 10 10:33:01 UTC 2011 - idonmez@suse.com
@@ -2766,12 +2778,12 @@ Mon Nov  7 15:05:52 UTC 2011 - idonmez@suse.com
 -------------------------------------------------------------------
 Mon Nov  7 09:17:40 UTC 2011 - idonmez@suse.com
 
-- Fix LLVMgold.so path for x86-64 
+- Fix LLVMgold.so path for x86-64
 
 -------------------------------------------------------------------
 Sun Nov  6 22:03:12 UTC 2011 - idonmez@suse.com
 
-- Enable ld gold support 
+- Enable ld gold support
 
 -------------------------------------------------------------------
 Tue Nov  1 11:31:57 UTC 2011 - idonmez@suse.com
@@ -2782,12 +2794,12 @@ Tue Nov  1 11:31:57 UTC 2011 - idonmez@suse.com
 -------------------------------------------------------------------
 Fri Oct 28 20:54:16 UTC 2011 - idonmez@suse.com
 
-- Add llvm-pr9614-part{1,2}.patch to fix LLVM PR9614 
+- Add llvm-pr9614-part{1,2}.patch to fix LLVM PR9614
 
 -------------------------------------------------------------------
 Fri Oct 28 08:23:03 UTC 2011 - idonmez@suse.com
 
-- Fixup dependencies so that llvm-clang doesn't depend 
+- Fixup dependencies so that llvm-clang doesn't depend
   on llvm-clang-devel
 
 -------------------------------------------------------------------
@@ -2805,12 +2817,12 @@ Fri Oct 21 06:57:07 UTC 2011 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu Oct 20 17:56:08 UTC 2011 - idonmez@suse.com
 
-- Enable ARM code generation 
+- Enable ARM code generation
 
 -------------------------------------------------------------------
 Wed Oct 19 15:47:10 UTC 2011 - idonmez@suse.com
 
-- Fix libdir on x86_64 
+- Fix libdir on x86_64
 
 -------------------------------------------------------------------
 Tue Oct 18 10:42:09 UTC 2011 - idonmez@suse.com
@@ -2820,12 +2832,12 @@ Tue Oct 18 10:42:09 UTC 2011 - idonmez@suse.com
   * -Wc++98-compat warnings for the lexer
   * Add flags for the remaining shift related warnings
     (-Wshift-count-negative, -Wshift-count-overflow).
-  * Only warn in -Wliteral-conversion if the conversion 
+  * Only warn in -Wliteral-conversion if the conversion
     loses information
-  * Added clang_getCompletionAnnotation and 
-    clang_getCompletionNumAnnotations to retrieve annotations 
+  * Added clang_getCompletionAnnotation and
+    clang_getCompletionNumAnnotations to retrieve annotations
     from completion string.
-  * Add support for -std=gnu90 and -std=c++03, for compatibility 
+  * Add support for -std=gnu90 and -std=c++03, for compatibility
     with modern gcc.
 - Switch to tar.bz2 and remove xz dependency
 
@@ -2867,7 +2879,7 @@ Fri Aug 12 09:22:18 UTC 2011 - idonmez@novell.com
 -------------------------------------------------------------------
 Wed Aug  3 11:18:31 UTC 2011 - idonmez@novell.com
 
-- Update to r136773 
+- Update to r136773
   * Many AVX fixes
   * Support for C++0x unicode string and character literals
 
@@ -2881,19 +2893,19 @@ Tue Jul 19 14:03:21 UTC 2011 - vljn@ovi.com
 Mon Jul 11 08:33:59 UTC 2011 - idonmez@novell.com
 
 - Update to r134888
-  * Type system rewrite 
+  * Type system rewrite
 
 -------------------------------------------------------------------
 Sat Jul  9 09:27:17 UTC 2011 - idonmez@novell.com
 
 - Update to r134813
-  * Mainly gcc compatibility fixes 
+  * Mainly gcc compatibility fixes
 
 -------------------------------------------------------------------
 Fri Jul  8 11:31:27 UTC 2011 - idonmez@novell.com
 
 - Update to r134698
-  * Up to 80x speed improvements with -Wuninitialized 
+  * Up to 80x speed improvements with -Wuninitialized
 
 -------------------------------------------------------------------
 Thu Jul  7 11:37:40 UTC 2011 - idonmez@novell.com
@@ -2902,7 +2914,7 @@ Thu Jul  7 11:37:40 UTC 2011 - idonmez@novell.com
 - Disable assertions because they are not thread safe
 - Update to r134611
   * Many C++ fixes and speedups
-  * Updates for AVX instruction support 
+  * Updates for AVX instruction support
   * gcc 4.6.1 support
 
 -------------------------------------------------------------------
@@ -2913,19 +2925,19 @@ Sat Jul  2 19:31:38 UTC 2011 - idonmez@novell.com
 -------------------------------------------------------------------
 Sun Jun  5 14:39:53 UTC 2011 - idonmez@novell.com
 
-- Update to r132667 
+- Update to r132667
 
 -------------------------------------------------------------------
 Sun May 29 16:34:46 UTC 2011 - idonmez@novell.com
 
 - Update to use cmake buildsystem
-- Remove unmaintained ocaml support 
+- Remove unmaintained ocaml support
 
 -------------------------------------------------------------------
 Thu May 26 11:01:57 UTC 2011 - idonmez@novell.com
 
 - Drop ocaml support because its unmaintained
-- Update to latest svn revision 132050 
+- Update to latest svn revision 132050
   + Start of the upcoming 3.0 version
   + Support for gcc 4.6 c++ headers
   + Better support for C++0x
@@ -2933,7 +2945,7 @@ Thu May 26 11:01:57 UTC 2011 - idonmez@novell.com
 -------------------------------------------------------------------
 Fri Apr 29 12:07:59 UTC 2011 - idoenmez@novell.com
 
-- Fix ocaml dependency 
+- Fix ocaml dependency
 
 -------------------------------------------------------------------
 Thu Apr  7 08:22:48 UTC 2011 - idoenmez@novell.com
@@ -2958,7 +2970,7 @@ Mon Mar  7 20:09:51 CET 2011 - jslaby@suse.de
 Wed Dec 22 11:41:15 UTC 2010 - dmacvicar@suse.de
 
 - Do not require specific ffi version but gather the
-  appropiate one from the distro 
+  appropiate one from the distro
 
 -------------------------------------------------------------------
 Fri Dec 10 04:57:21 UTC 2010 - reddwarf@opensuse.org
@@ -2968,7 +2980,7 @@ Fri Dec 10 04:57:21 UTC 2010 - reddwarf@opensuse.org
 -------------------------------------------------------------------
 Mon Nov 29 10:31:49 UTC 2010 - ismail@namtrac.org
 
-- Fix C include paths 
+- Fix C include paths
 
 -------------------------------------------------------------------
 Fri Nov 26 12:48:54 UTC 2010 - ismail@namtrac.org
@@ -2976,7 +2988,7 @@ Fri Nov 26 12:48:54 UTC 2010 - ismail@namtrac.org
 - Fix header path for openSUSE 11.4
 - Enabled PIC for x86 for loadable module support
 - Enable package tests for llvm and clang
-- Disable package timestamps to silence an rpmlint warning 
+- Disable package timestamps to silence an rpmlint warning
 
 -------------------------------------------------------------------
 Wed Jun  2 00:00:00 UTC 2010 - anschneider@exsuse.de

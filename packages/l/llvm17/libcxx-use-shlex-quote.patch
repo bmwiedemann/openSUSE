@@ -1,0 +1,49 @@
+From d3ce1078186389ce39505f06c2a0100dce9187a5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 27 May 2024 19:26:56 +0200
+Subject: [PATCH] [libcxx] [test] Use `shlex.quote()` to fix Python 3.13
+ compatibility (#93376)
+
+Replace the use of `pipes.quote()` with `shlex.quote()` to fix
+compatibility with Python 3.13. The former was always an undocumented
+alias to the latter, and the `pipes` module was removed completely in
+Python 3.13.
+
+Fixes #93375
+---
+ libcxx/test/libcxx/lit.local.cfg | 5 +++--
+ libcxx/utils/libcxx/test/dsl.py  | 4 ++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+--- a/libcxx-17.0.6.src/test/libcxx/lit.local.cfg	2023-11-28 09:52:28.000000000 +0100
++++ b/libcxx-17.0.6.src/test/libcxx/lit.local.cfg	2024-11-22 18:18:57.997180624 +0100
+@@ -1,4 +1,5 @@
+ # The tests in this directory need to run Python
+-import pipes, sys
++import shlex
++import sys
+ 
+-config.substitutions.append(("%{python}", pipes.quote(sys.executable)))
++config.substitutions.append(("%{python}", shlex.quote(sys.executable)))
+--- a/libcxx-17.0.6.src/utils/libcxx/test/dsl.py	2023-11-28 09:52:28.000000000 +0100
++++ b/libcxx-17.0.6.src/utils/libcxx/test/dsl.py	2024-11-22 18:19:20.450801619 +0100
+@@ -8,9 +8,9 @@
+ 
+ import os
+ import pickle
+-import pipes
+ import platform
+ import re
++import shlex
+ import shutil
+ import subprocess
+ import tempfile
+@@ -281,7 +281,7 @@
+       }
+     #endif
+   """
+-    return programSucceeds(config, program, args=[pipes.quote(l) for l in locales])
++    return programSucceeds(config, program, args=[shlex.quote(l) for l in locales])
+ 
+ 
+ @_memoizeExpensiveOperation(lambda c, flags="": (c.substitutions, c.environment, flags))

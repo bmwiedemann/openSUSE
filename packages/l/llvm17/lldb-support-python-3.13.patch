@@ -1,0 +1,87 @@
+Index: lldb-17.0.6.src/source/Plugins/ScriptInterpreter/Python/PythonDataObjects.cpp
+===================================================================
+--- a/lldb-17.0.6.src/source/Plugins/ScriptInterpreter/Python/PythonDataObjects.cpp
++++ b/lldb-17.0.6.src/source/Plugins/ScriptInterpreter/Python/PythonDataObjects.cpp
+@@ -71,10 +71,12 @@ Expected<std::string> python::As<std::st
+ }
+ 
+ static bool python_is_finalizing() {
+-#if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION < 7
+-  return _Py_Finalizing != nullptr;
+-#else
++#if PY_VERSION_HEX >= 0x030d0000
++  return Py_IsFinalizing();
++#elif PY_VERSION_HEX >= 0x03070000
+   return _Py_IsFinalizing();
++#else
++  return _Py_Finalizing != nullptr;
+ #endif
+ }
+ 
+@@ -794,7 +796,7 @@ bool PythonCallable::Check(PyObject *py_
+   return PyCallable_Check(py_obj);
+ }
+ 
+-#if PY_MAJOR_VERSION >= 3 && PY_MINOR_VERSION >= 3
++#if PY_VERSION_HEX >= 0x03030000
+ static const char get_arg_info_script[] = R"(
+ from inspect import signature, Parameter, ismethod
+ from collections import namedtuple
+@@ -823,7 +825,7 @@ Expected<PythonCallable::ArgInfo> Python
+   if (!IsValid())
+     return nullDeref();
+ 
+-#if PY_MAJOR_VERSION >= 3 && PY_MINOR_VERSION >= 3
++#if PY_VERSION_HEX >= 0x03030000
+ 
+   // no need to synchronize access to this global, we already have the GIL
+   static PythonScript get_arg_info(get_arg_info_script);
+Index: lldb-17.0.6.src/source/Plugins/ScriptInterpreter/Python/ScriptInterpreterPython.cpp
+===================================================================
+--- a/lldb-17.0.6.src/source/Plugins/ScriptInterpreter/Python/ScriptInterpreterPython.cpp
++++ b/lldb-17.0.6.src/source/Plugins/ScriptInterpreter/Python/ScriptInterpreterPython.cpp
+@@ -71,8 +71,7 @@ extern "C" PyObject *PyInit__lldb(void);
+ #define LLDB_USE_PYTHON_SET_INTERRUPT 0
+ #else
+ // PyErr_SetInterrupt was introduced in 3.2.
+-#define LLDB_USE_PYTHON_SET_INTERRUPT                                          \
+-  (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 2) || (PY_MAJOR_VERSION > 3)
++#define LLDB_USE_PYTHON_SET_INTERRUPT PY_VERSION_HEX >= 0x03020000
+ #endif
+ 
+ static ScriptInterpreterPythonImpl *GetPythonInterpreter(Debugger &debugger) {
+@@ -171,24 +170,33 @@ private:
+ // would always return `true` and `PyGILState_Ensure/Release` flow would be
+ // executed instead of unlocking GIL with `PyEval_SaveThread`. When
+ // an another thread calls `PyGILState_Ensure` it would get stuck in deadlock.
+-#if (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7) || (PY_MAJOR_VERSION > 3)
++#if PY_VERSION_HEX >= 0x03070000
+     // The only case we should go further and acquire the GIL: it is unlocked.
+     if (PyGILState_Check())
+       return;
+ #endif
+ 
++// `PyEval_ThreadsInitialized` was deprecated in Python 3.9 and removed in
++// Python 3.13. It has been returning `true` always since Python 3.7.
++#if PY_VERSION_HEX < 0x03090000
+     if (PyEval_ThreadsInitialized()) {
++#endif
+       Log *log = GetLog(LLDBLog::Script);
+ 
+       m_was_already_initialized = true;
+       m_gil_state = PyGILState_Ensure();
+       LLDB_LOGV(log, "Ensured PyGILState. Previous state = {0}locked\n",
+                 m_gil_state == PyGILState_UNLOCKED ? "un" : "");
++
++// `PyEval_InitThreads` was deprecated in Python 3.9 and removed in
++// Python 3.13.
++#if PY_VERSION_HEX < 0x03090000
+       return;
+     }
+ 
+     // InitThreads acquires the GIL if it hasn't been called before.
+     PyEval_InitThreads();
++#endif
+   }
+ 
+   PyGILState_STATE m_gil_state = PyGILState_UNLOCKED;

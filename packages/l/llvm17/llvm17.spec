@@ -1,7 +1,7 @@
 #
 # spec file for package llvm17
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -420,6 +420,12 @@ Patch25:        check-no-llvm-exegesis.patch
 Patch26:        lld-default-sha1.patch
 # PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
 Patch27:        clang-shlib-symbol-versioning.patch
+# PATCH-FIX-UPSTREAM: use shlib.quote to fix Python 3.13 compatibility
+Patch28:        libcxx-use-shlex-quote.patch
+# PATCH-FIX-UPSTREAM: Adapt lldb to support Python 3.13
+Patch29:        lldb-support-python-3.13.patch
+# PATCH-FIX-UPSTREAM: Remove unused imports fix Python 3.13 compatibility
+Patch30:        libcxx-remove-unused-imports.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -889,6 +895,7 @@ popd
 %if %{with lldb}
 pushd lldb-%{_version}.src
 %patch -P 11 -p1
+%patch -P 29 -p2
 popd
 %endif
 
@@ -898,6 +905,8 @@ sed -i '/set(LLVM_COMMON_CMAKE_UTILS/ s/CMAKE_CURRENT_SOURCE_DIR/CMAKE_SOURCE_DI
 sed -i '\"runtimes/cmake/Modules" s/CMAKE_CURRENT_SOURCE_DIR/CMAKE_SOURCE_DIR/g' libcxx{,abi}-%{_version}.src/CMakeLists.txt
 pushd libcxx-%{_version}.src
 %patch -P 15 -p2
+%patch -P 28 -p2
+%patch -P 30 -p2
 rm test/libcxx/thread/thread.threads/thread.thread.this/sleep_for.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname.pass.cpp
 rm test/std/localization/locale.categories/category.time/locale.time.get.byname/get_monthname_wide.pass.cpp
