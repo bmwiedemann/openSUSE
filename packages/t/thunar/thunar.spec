@@ -1,7 +1,7 @@
 #
 # spec file for package thunar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        4.20.1
+Version:        4.20.2
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -69,7 +69,7 @@ Recommends:     gvfs
 Recommends:     thunar-volman
 Recommends:     tumbler
 Provides:       thunar-doc = %{version}
-Obsoletes:      thunar-doc <= 1.2.3
+Obsoletes:      thunar-doc < %{version}
 
 %description
 Thunar is a file manager for the Xfce desktop environment. Its
