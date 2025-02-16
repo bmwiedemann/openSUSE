@@ -1097,4 +1097,17 @@ in the libvirt 10.3.0 dev cycle, so no 10.3.0 release of the perl bindings.
   - jsc#PED-8909, jsc#PED-9854, jsc#PED-9855</comment>
     <requestid>1220118</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>f78df9e2d95a0ff0409426ef25c279aa</srcmd5>
+    <version>11.0.0</version>
+    <time>1739742033</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 11.0.0.
+
+- Update to 11.0.0
+  - Add all new APIs and constants in libvirt 11.0.0
+  - jsc#PED-5899, jsc#PED-8909, jsc#PED-9543, jsc#PED-9854,
+    jsc#PED-9855</comment>
+    <requestid>1246013</requestid>
+  </revision>
 </revisionlist>
