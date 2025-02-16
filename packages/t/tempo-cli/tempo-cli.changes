@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Feb 16 10:00:10 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.1:
+  * [release-v2.7] Set gRPC compression default to snappy in all
+    cases (#4701)
+  * [release-v2.7] [DOC] Updated TraceQL doc with an example for
+    arrays (#4672)
+  * [release-v2.7] Add basic cluster sizing for Tempo doc (#4670)
+  * [release-v2.7] [DOC] Update quick start guide to include
+    missing step (#4658)
+  * [release-v2.7] [DOC] Update gRPC compressiong admonition
+    (#4645)
+  * [release-v2.7] [DOC] Share trace structure from docs (#4637)
+  * Update serverless_aws.md (#4631)
+  * [release-v2.7] Update cardinality.md (#4636)
+  * [release-v2.7] [DOC] Update gRPC compression documentation
+    (#4634)
+  * [release-v2.7] [DOC] Add flush_to_storage to metrics-gen config
+    doc (#4630)
+  * [release-v2.7] [DOC] Restructure operations and manage docs
+    (#4628)
+  * [release-v2.7] [DOC] Fix technical debt and improve reading
+    scores (#4594)
+  * [release-v2.7] [DOC] Add blog link; update instrumentation
+    scope doc (#4577)
+  * [release-v2.7] Add doc for max_span_attr_byte and restructure
+    troubleshoot doc (#4561)
+  * [release-v2.7] [DOC] Update upgrade considerations for 2.7
+    (#4560)
+  * [release-v2.7] [DOC] Fix typo in Upgrade doc (#4557)
+  * [release-v2.7] ]DOC] Tempo 2.7 release notes (#4549)
+  * [release-v2.7] [DOC] Update examples to TraceQL doc (#4547)
+  * [release-v2.7] [DOC] Add zone-aware ingesters doc (#4548)
+
+-------------------------------------------------------------------
 Tue Jan 14 05:46:24 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.7.0:
