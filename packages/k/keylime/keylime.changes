@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:59:04 UTC 2025 - aplanas@suse.com
+
+- Update to version v7.12.1 (CVE-2025-1057, bsc#1237153):
+  * Bump version to 7.12.1
+  * models: Add Base64Bytes type to read and write from the database
+  * Simplify response check from registrar
+  * [Automatic] Update Keylime base image 2025-02-01
+
+-------------------------------------------------------------------
 Mon Jan 27 08:32:00 UTC 2025 - aplanas@suse.com
 
 - Update to version v7.12.0:
