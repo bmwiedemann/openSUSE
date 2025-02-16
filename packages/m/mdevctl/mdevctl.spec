@@ -1,7 +1,7 @@
 #
 # spec file for package mdevctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mdevctl
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Mediated device management and persistence utility
 License:        LGPL-2.1-or-later

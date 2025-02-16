@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:50:06 UTC 2025 - pgajdos@suse.com
+
+- Update to version 1.4.0:
+  * tests: Print error in assert_result()
+  * Improve failure message for live update
+  * Check sysfs data UUID in set_sysfs_data()
+  * Rename is_sysfs_data_matching() to sysfs_data_matches()
+  * Rename load_with_mdev() to load_for_mdev()
+  * tests: removing unnecessary chaining
+  * Remove MDevSysfsData::active
+  * rustify define_command_helper
+  * add ability to trigger CI manually
+  * mdev: MDevSysfsData.load() without path.exists() check
+
+-------------------------------------------------------------------
 Tue Oct  8 14:13:37 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
 
 - Spec: Update to use latest rust packaging tooling. Switch to obs_scm
