@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 14 20:09:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.0.0:
+  * Tests: add unsafe paste test
+  * Fix focussing terminal after select
+  * Disconnect and reconnect signals on dragging a tab out of a window
+
+-------------------------------------------------------------------
 Thu Jan  9 19:03:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.3.1:
