@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Feb 15 03:56:00 UTC 2025 - litma leung <pi_cla@disroot.org>
+
+- Update to 1.8.1:
+ * Fixed a metadata caching bug where accessors for opaque types
+   could sometimes be used in other modules. (Louis Pilfold)
+ * Changelog: https://gleam.run/news/gleam-gets-rename-variable/
+
+-------------------------------------------------------------------
 Sun Jan  5 18:11:58 UTC 2025 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 1.7.0:

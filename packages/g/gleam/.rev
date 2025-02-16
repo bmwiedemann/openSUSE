@@ -132,4 +132,15 @@
  * Changelog: https://gleam.run/news/improved-performance-and-publishing/</comment>
     <requestid>1237192</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>73815798ab71167d8ae07be376723f5a</srcmd5>
+    <version>1.8.1</version>
+    <time>1739742056</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+ * Fixed a metadata caching bug where accessors for opaque types
+   could sometimes be used in other modules. (Louis Pilfold)
+ * Changelog: https://gleam.run/news/gleam-gets-rename-variable/</comment>
+    <requestid>1246040</requestid>
+  </revision>
 </revisionlist>
