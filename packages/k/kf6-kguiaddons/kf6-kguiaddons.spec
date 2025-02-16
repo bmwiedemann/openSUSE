@@ -25,7 +25,7 @@
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kguiaddons
-Version:        6.10.0
+Version:        6.11.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -100,7 +100,6 @@ of colors, fonts, text, images, keyboard input. Development files.
 %files
 %{_kf6_applicationsdir}/google-maps-geo-handler.desktop
 %{_kf6_applicationsdir}/openstreetmap-geo-handler.desktop
-%{_kf6_applicationsdir}/qwant-maps-geo-handler.desktop
 %{_kf6_applicationsdir}/wheelmap-geo-handler.desktop
 %{_kf6_bindir}/kde-geo-uri-handler
 %{_kf6_debugdir}/kguiaddons.categories
