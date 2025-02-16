@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 13 11:11:22 UTC 2025 - trenn@suse.de
+
+- Upower is a mature tool with mostly fixes being added, let's
+  move over to a "take the very latest git HEAD code base by default
+  approach". Also show the amount of additional patches on top of latest
+  public version and the latest git patch hash the sources are based
+  on in the version format (see below)
+- Update to version 1.90.7.13+git.4f1ef04:
+  * linux: integration-test: a test case for Dualshock4 with a headphone jack
+  * linux: up-device-supply: Update the model name after changing the device type
+  * linux: device_supply: Prioritize Gaming Input
+  * dbus: UPower.xml: Update GetCriticalAction Values
+  * linux: integration-test: test case for the removable battery
+  * src: up-device-battery: Reset values when the battery is not present
+  * src: up-daemon: skip the battery if present = 0
+  * Update LINGUAS
+  * pre-commit-config: Remove deprecated default_stages "commit"
+  * contrib: setup: Install and setup pre-commit
+- Remove upstreamed patch
+D faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch
+
+-------------------------------------------------------------------
 Fri Jan  3 21:44:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch -- dbus: show

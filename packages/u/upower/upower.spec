@@ -22,7 +22,7 @@
 %define libplist2 0
 %endif
 Name:           upower
-Version:        1.90.6
+Version:        1.90.7.13+git.4f1ef04
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -32,8 +32,6 @@ URL:            https://upower.freedesktop.org/
 Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE: Skip installation of test-only dependencies
 Patch1:         skip-tests-install.patch
-# PATCH-FIX-UPSTREAM faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch -- dbus: show charge-threshold-* status as yes/no
-Patch2:         https://gitlab.freedesktop.org/upower/upower/-/commit/faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
@@ -139,7 +137,7 @@ system) are restricted using PolicyKit.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %dir %{_sysconfdir}/UPower
 %config(noreplace) %{_sysconfdir}/UPower/UPower.conf
 %{_bindir}/upower
@@ -158,6 +156,7 @@ system) are restricted using PolicyKit.
 %{_mandir}/man8/upowerd.8%{?ext_man}
 %dir %{_localstatedir}/lib/upower
 %{_datadir}/polkit-1/actions/org.freedesktop.upower.policy
+%{_datadir}/zsh/site-functions/_upower
 
 %files -n libupower-glib3
 %{_libdir}/libupower-glib.so.*
