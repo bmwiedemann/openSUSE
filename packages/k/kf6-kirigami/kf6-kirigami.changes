@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Too many changes since 6.10.0, only listing bugfixes:
+  * Revert "make sure the node is always at an integer position" (kde#484888)
+  * SelectableLabel: disable shortcuts when invisible or no text selected (kde#498867)
+  * Icon: fix absolute icon paths (kde#498288)
+  * Dialog: include leading and trailing components in footer implicitWidth (kde#497795)
+
+-------------------------------------------------------------------
 Thu Jan  9 17:12:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
