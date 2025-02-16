@@ -17,7 +17,7 @@
 
 
 Name:           ptyxis
-Version:        47.8
+Version:        47.10
 Release:        0
 Summary:        A terminal for GNOME with first-class support for containers
 License:        GPL-3.0-or-later

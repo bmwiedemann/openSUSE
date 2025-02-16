@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 14 08:27:28 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.10:
+  + Fix appinfo for automated CI
+  + Fix "Move to New Window" action when right clicking on tabs
+    where the window may get created without an application
+    instance.
+  + Fullscreen button layout and style to match platform
+    expectations.
+  + Fix exit code when activating a previous Ptyxis instance.
+  + Add support for Debian's x-terminal-emulator.
+
+-------------------------------------------------------------------
 Tue Jan 28 21:56:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.8:
