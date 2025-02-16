@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Too many changes since 6.10.0, only listing bugfixes:
+  * A way to insert KUrlNavigator pieces in a deterministic place in the focus chain (kde#409540)
+  * Fix symlink path resolution in File Properties (kde#476808)
+  * kmountpoint: Handle device IDs for bind mounts (kde#494129)
+  * kfileplacesview: when adding new places item, let it figure out the icon (kde#498580)
+  * Default to creating new places items globally (kde#498579)
+  * dropjob: Check if file is already in trash during dropjob (kde#497390)
+  * trash: prevent an assert when trash cache is missing (kde#497268)
+
+-------------------------------------------------------------------
 Thu Jan  9 18:11:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0

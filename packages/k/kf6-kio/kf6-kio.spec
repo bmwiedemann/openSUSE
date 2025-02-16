@@ -25,7 +25,7 @@
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kio
-Version:        6.10.0
+Version:        6.11.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -173,6 +173,8 @@ Development files.
 %{_kf6_plugindir}/kf6/kiod/kioexecd.so
 %{_kf6_plugindir}/kf6/kiod/kpasswdserver.so
 %{_kf6_plugindir}/kf6/kiod/kssld.so
+%dir %{_kf6_plugindir}/kf6/kio_dnd
+%{_kf6_plugindir}/kf6/kio_dnd/dropintonewfolder.so
 %{_kf6_plugindir}/kf6/urifilters/
 %{_kf6_sharedir}/dbus-1/services/org.kde.kiod6.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.kioexecd6.service
