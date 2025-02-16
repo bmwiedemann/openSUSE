@@ -799,4 +799,41 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>1238189</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>6b60eaf864ec4b9affae6b95b8dade27</srcmd5>
+    <version>3.10.2</version>
+    <time>1739742553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix release version 3.10.2
+  https://github.com/OSGeo/gdal/blob/v3.10.2/NEWS.md
+  ### Port
+  * Fix read heap-buffer-overflow on nested /vsitar/ calls (ossfuzz
+    #388868487)
+  * fix cppcheck nullPointerOutOfMemory
+  ### Core
+  * GDALGCPsToGeoTransform(): return FALSE when invalid
+    geotransform is generated (#11618)
+  ### Utilities
+  * gdal_rasterize: Also accept doubles for -ts (#11829)
+  ### Raster drivers
+  #### PLMOSAIC driver:
+  * Use a unique user-agent string to isolate usage of driver  
+  #### SNAP_TIFF driver:
+  * third_party/libertiff: avoid issue with invalid offline tags
+    with value offset at zero (ossfuzz #388571282)
+  #### STACIT driver:
+  * add STAC 1.1 support (#11753)
+  * Identify(): accept if at least 2 of 'proj:transform',
+    'proj:bbox' or 'proj:shape' are present
+  #### WMS driver:
+  * Update ESRI WMS links in documentation
+- OGR 3.10.2
+  ### Core  
+  * Fix GeodesicLength() that was quite severely broken as working
+    only on closed linestrings (3.10.0 regression)
+  ### Vector utilities
+  * ogr2ogr: fix -clipsrc/-clipdst when a input geometry is within
+    the envelope of a non-rectangle clip geometry, but doesn't</comment>
+    <requestid>1246249</requestid>
+  </revision>
 </revisionlist>
