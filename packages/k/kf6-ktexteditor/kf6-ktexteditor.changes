@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Changes since 6.10.0:
+  * Update dependency version to 6.11.0
+  * try to improve test stability
+  * don't sort already sorted newBlock->m_cursors
+  * use one newBlock->m_lines.insert instead of many newBlock->m_lines.push_back
+  * Adjusted theme config page margins
+  * Allow disabling 'cycle through bookmarks' behaviour (kde#499268)
+  * avoid text hint if already triggered when popup menu is requested (kde#499092)
+  * Fix KateCompletionTree width (kde#498244)
+  * Add xml/yaml linting
+  * autotests/src/swapfiletest.cpp - include <QTest>
+  * ensure we do not kill symlinks (kde#498589)
+  * stop hover timer when cursor changes
+  * CI: Add linux-qt6-next build
+  * Store Search/Replace history in state config
+  * Update version to 6.11.0
+
+-------------------------------------------------------------------
 Thu Jan  9 17:12:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
