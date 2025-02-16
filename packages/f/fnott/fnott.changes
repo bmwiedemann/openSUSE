@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 15 13:16:11 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.7.1:
+  * anchor can now be set to center.
+  * Nanosvg updated to ea6a6aca009422bba0dbad4c80df6e6ba0c82183
+  * fix: Messages sent directly after starting fnott (for example, when
+    fnott is auto-activated by D-Bus) not processed until more D-Bus messages
+    are received later.
+
+-------------------------------------------------------------------
 Sun Jan 19 03:51:28 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Add unpackaged file fnott.service.

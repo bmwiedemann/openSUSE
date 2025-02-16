@@ -135,4 +135,18 @@
 </comment>
     <requestid>1238749</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6ecf0485f530a6510b978ab000e01362</srcmd5>
+    <version>1.7.1</version>
+    <time>1739742072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1:
+  * anchor can now be set to center.
+  * Nanosvg updated to ea6a6aca009422bba0dbad4c80df6e6ba0c82183
+  * fix: Messages sent directly after starting fnott (for example, when
+    fnott is auto-activated by D-Bus) not processed until more D-Bus messages
+    are received later.
+</comment>
+    <requestid>1246085</requestid>
+  </revision>
 </revisionlist>
