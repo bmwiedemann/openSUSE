@@ -7505,4 +7505,18 @@ handle manual pages that consist only of a .so directive such as
   experimental package to the main one.</comment>
     <requestid>1243303</requestid>
   </revision>
+  <revision rev="441" vrev="1">
+    <srcmd5>d7435aa496ae51150d33f96f1464bf6d</srcmd5>
+    <version>257.3</version>
+    <time>1739741836</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit e03ffd74c4a30c1c75e05874ce18d31e503437b7 (merge of v257.3)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/7fa3b5018bfffa176c77a2a5794dce792eebadcb...e03ffd74c4a30c1c75e05874ce18d31e503437b7
+
+- Import commit 47794646786ae4ddb6d3deb2030e2761447999ec
+  4779464678 import-pubring.gpg: add openSUSE build key (bsc#1236751)
+  2c8382881f systemd-pull: support .asc and .sha256.* signature (bsc#1236887)</comment>
+    <requestid>1245900</requestid>
+  </revision>
 </revisionlist>

@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    257.2
+%define systemd_version    257.3
 %define systemd_release    0
-%define archive_version    %{nil}
+%define archive_version    +suse.3.ge03ffd74c4
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests

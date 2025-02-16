@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Feb 14 09:00:29 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit e03ffd74c4a30c1c75e05874ce18d31e503437b7 (merge of v257.3)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/7fa3b5018bfffa176c77a2a5794dce792eebadcb...e03ffd74c4a30c1c75e05874ce18d31e503437b7
+
+-------------------------------------------------------------------
+Fri Feb  7 14:14:01 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 47794646786ae4ddb6d3deb2030e2761447999ec
+
+  4779464678 import-pubring.gpg: add openSUSE build key (bsc#1236751)
+  2c8382881f systemd-pull: support .asc and .sha256.* signature (bsc#1236887)
+
+-------------------------------------------------------------------
 Tue Feb  4 17:12:46 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - triggers.systemd: convert posix.fork() and posix.exec() to rpm.execute() (bsc#1236741)
