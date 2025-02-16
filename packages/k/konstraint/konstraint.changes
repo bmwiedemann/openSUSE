@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Feb 16 08:52:01 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.0:
+  * Use GHA directly to push container (#576)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.32.1 to
+    0.32.2 (#584)
+  * Fix acceptance test (#582)
+  * .github: Bump regal to 0.31.0 (#580)
+  * Support custom constraint (templates) (#553)
+
+-------------------------------------------------------------------
 Mon Feb 10 07:41:09 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.39.0:
