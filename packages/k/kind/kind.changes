@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Feb 16 08:51:43 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.0:
+  * version v0.27.0
+  * update node image with latest base image
+  * bump local-path-storage to latest
+  * bump kindnetd to latest
+  * bump base image to latest
+  * bump go to 1.23.6
+  * update default node image to 1.32.2
+  * enhance push-node script
+  * bump base image with statically linked plugins
+  * Statically link CNI plugins
+  * replace dated intial design docs with a clear warning to not
+    depend on implementation details
+  * version test cleanup: don't mutate globals, use pre-computed
+    expected values
+  * Bump actions/setup-go from 5.2.0 to 5.3.0 in the actions group
+  * test: upgrade nerdctl to v2
+  * TEST: v1.32.1 node image
+  * wait for containerd to be ready
+  * retry image pulls once, fail if that doesn't work
+  * doc: fix typo
+  * update to latest base image with containerd 2.0.2
+  * update containerd to v2.0.2
+  * Bump actions/upload-artifact from 4.5.0 to 4.6.0 in the actions
+    group
+  * Add description to delete cluster subcommands
+  * update shellescape to latest with new vanity import
+  * Bump actions/upload-artifact from 4.4.3 to 4.5.0 in the actions
+    group
+  * update install docs for v0.26.0
+  * version v0.27.0-alpha
+  * fix push node having qemu setup reliably
+  * fix `kind get clusters` via nerdctl
+  * fix: remove NoArgs positional arguments validation
+
+-------------------------------------------------------------------
 Tue Dec 17 05:43:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.26.0:
