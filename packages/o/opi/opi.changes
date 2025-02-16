@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Feb 16 16:13:58 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 5.7.0
+  * Add leap-only plugin to install zellij from github release
+  * Don't use subprocess.run user kwarg on 15.6
+  * Fix tests: Use helloworld-opi-tests instead of zfs
+  * Perform search despite locked rpmdb
+  * Simplify backend code
+
+-------------------------------------------------------------------
 Sat Feb  1 10:48:08 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Use no macros in url in .spec for packtrack

@@ -691,4 +691,17 @@
     <comment>- Use no macros in url in .spec for packtrack</comment>
     <requestid>1242090</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>5634fd2248af650599d2f6e7a0b5e002</srcmd5>
+    <version>5.7.0</version>
+    <time>1739742571</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.7.0
+  * Add leap-only plugin to install zellij from github release
+  * Don't use subprocess.run user kwarg on 15.6
+  * Fix tests: Use helloworld-opi-tests instead of zfs
+  * Perform search despite locked rpmdb
+  * Simplify backend code</comment>
+    <requestid>1246255</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define pythons %{use_python}
 
 Name:           opi
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 
+BuildRequires:  distribution-release
 BuildRequires:  help2man
 BuildRequires:  python3
 BuildRequires:  python3-curses
@@ -69,6 +70,7 @@ Search and install almost all packages available for openSUSE and SLE:
 %setup -q
 
 %build
+./bin/opi --version
 help2man -s8 -N ./bin/opi > opi.8
 %pyproject_wheel
 
