@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Changes since 6.10.0:
+  * Update dependency version to 6.11.0
+  * Add missing since markers
+  * kosrelease: expose to qml
+  * kosrelease: typo--
+  * Add xml/yaml linting
+  * Add plural annotations for abbreviated duration strings
+  * Add MPL 2.0 to list of licenses
+  * Add distance formatting with locale- and value-appropriate units
+  * Add abbreviated duration formatting
+  * Don't ignore the result of QFile::open
+  * Mark KFormat QML methods as translation bindings
+  * Removed unnecessary vtable in KFormatPrivate
+  * Fix QML module version
+  * Use declarative type registration for QML bindings
+  * Enable Python bindings on FreeBSD
+  * CI: Add linux-qt6-next build
+  * Lower Python requirement to 3.9
+  * Update version to 6.11.0
+
+-------------------------------------------------------------------
 Tue Jan  7 18:17:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
