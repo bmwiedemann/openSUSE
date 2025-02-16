@@ -167,4 +167,41 @@
 </comment>
     <requestid>1217258</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7556a609d4a5d36a58ec52dc890ad5c1</srcmd5>
+    <version>2.2.3</version>
+    <time>1739741829</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.3:
+  * This time we have two code fixes for potentially unsafe
+    access, although we have not had any bug-reports about these.
+  * It also contains several optimizations. Especially of note,
+    inflate has been optimized on various instruction sets and
+    also the generic C code has seen improvements, and we have
+    improvements for arches where unaligned accesses are not
+    possible (lacking instructions to handle unaligned access)
+    and also improvements on big endian.
+  * x86-64 AVX2: Inflate ~17.8% faster, Deflate unchanged. -4.6KB
+    library size.
+  * Aarch64: Inflate ~2.3% faster, Deflate unchanged. - 5.5KB
+    library size.
+  * We also took some time to do a comprehensive cleanup of the
+    now misleading UNALIGNED_OK option and of all the &quot;unaligned&quot;
+    functions. We have noticed that some distros have been
+    disabling these, fearing they are using potentially unsafe
+    unaligned pointers, but we already fixed that in 2.1.0-beta1.
+    Since then, these &quot;unaligned&quot; settings/functions have been
+    referring to using unaligned accesses in safe ways, like
+    utilizing unaligned intrinsics or memcpy to fix alignment for
+    example and selecting what safe method is optimal to the
+    arch. So disabling that instead disabled several safe
+    optimizations.
+  * Because this was obviously misleading certain distros into
+    disabling these optimizations, we have cleaned it up, removed
+    a lot of unnecessary preprocessor checks, and made detection
+    of optimal methods happen during compile instead of
+    configure. As a bonus, this cleaned up a lot of code and also
+    let us not compile in many extra variants of</comment>
+    <requestid>1245806</requestid>
+  </revision>
 </revisionlist>
