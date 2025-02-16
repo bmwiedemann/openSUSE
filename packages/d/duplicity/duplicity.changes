@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 15 12:17:45 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.4:
+  + New
+    - Support for Microsoft Azure "Cold" blob storage tier.
+  + Changes
+    - Allow to build with py3.13.x. 
+  + Fix
+    - Allow for python versions 3.12+ e.g. 3.12.8.
+    - INFO and DEBUG messages when verbosity is warning.
+- Switch source URI to bz2.
+
+-------------------------------------------------------------------
 Thu Jan 30 22:51:29 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.3.2:
