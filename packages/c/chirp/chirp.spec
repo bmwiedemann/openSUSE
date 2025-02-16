@@ -19,7 +19,7 @@
 
 %define pythons python3
 Name:           chirp
-Version:        20250207
+Version:        20250214
 Release:        0
 Summary:        Tool for programming amateur radio sets
 License:        GPL-3.0-only
@@ -35,12 +35,16 @@ BuildRequires:  %{python_module wxPython}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
-Requires:       python3-lark
 Requires:       python3-pyserial
 Requires:       python3-requests
 Requires:       python3-suds
 Requires:       python3-wxPython
 Requires:       python3-yattag
+%if 0%{?suse_version} > 1600
+Requires:       python3-lark
+%else
+Requires:       python3-lark-parser
+%endif
 BuildArch:      noarch
 
 %description

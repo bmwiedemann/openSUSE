@@ -103,4 +103,12 @@
     <comment></comment>
     <requestid>1244219</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2edc771a84465b57ac66dde90c4646fe</srcmd5>
+    <version>20250214</version>
+    <time>1739742024</time>
+    <user>dimstar_suse</user>
+    <comment>chirp 20250214 (forwarded request 1245998 from AndreasStieger)</comment>
+    <requestid>1245999</requestid>
+  </revision>
 </revisionlist>

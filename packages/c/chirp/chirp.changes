@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 14 18:30:14 UTC 2025 - andreas.stieger@gmx.de
+
+- Update to version 20250214:
+  * Make UI avoid re-deleting memories for cut/paste
+  * tk481: Fix re-deleting memory corrupting data structures
+  * tk481: Properly strip non-space padding
+  * rh5rv2: Convert to py3
+  * icf.py: Replace numeric literals where names have already been defined
+  * chore: remove last use of future
+  * Updated Italian Translation
+  * Add Baofeng P15UV alias
+  * Prevent reporting to closed bugs
+  * Add undo/redo support for memory editor
+  * Avoid showing temporary and hidden stock files
+  * Updated Italian Translation
+
+-------------------------------------------------------------------
+Thu Feb 13 09:41:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix Leap installation: python3-lark vs. python3-lark-parser
+
+-------------------------------------------------------------------
 Fri Feb  7 17:09:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250207:
