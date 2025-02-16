@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.52.0
+Version:        1.53.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -123,6 +123,9 @@ find %{buildroot}%{_mandir}/man1/ -type f -exec chmod 644 {} "+"
 install -D -m0644 %{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -D -m0644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -D -m0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} version | grep %{version}
 
 %files
 %license LICENSE

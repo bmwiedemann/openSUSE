@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:12:14 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.53.0:
+  * feat(release): add experimental notes text-or-file parameter
+  * feat(diffs): Add --raw option to mr diffs
+  * fix: fix incorrect API host being shown in status
+  * fix(docs): document GLAB_CHECK_UPDATE environment variable
+  * chore(tests): added ssh-key list tests
+  * refactor(pagination): add parameters on struct creation
+  * feat(repo): list user projects
+  * fix(pkg/tableprinter): handle nil pointer cell values
+  * test(archive): fix flaky archive test
+  * chore(deps): update module golang.org/x/text to v0.22.0
+  * refactor(main): move SilentError check out of printError
+  * chore: Fixing a test that keeps failing
+  * fix(issueable list): remove support multiple not- filter flags
+  * chore(uploads): ignore deprecated UploadFile function
+  * refactor(issues): rename ListIssues to ListProjectIssues
+  * chore(client-go): account for breaking changes
+  * chore(deps): update module client-go to v0.122.0
+  * fix: make SilentError exit with code 1 as documented
+  * feat(update): check for updates periodically
+  * chore(deps): update module golang.org/x/oauth2 to v0.26.0
+  * fix(snippet): show friendly error for project snippet without
+    repo
+  * feat(variables): add option to list/update/set description of
+    vars
+  * chore(deps): update dep @commitlint/config-conventional to
+    ^19.7.1
+  * chore(deps): update dependency @commitlint/lint to ^19.7.1
+  * refactor(git): remove excessive argument processing for
+    RunClone
+  * docs(project-search): Fixed project search example usage
+  * chore(deps): update dependency @commitlint/lint to ^19.7.1
+  * feat(label): add command to delete labels
+  * test(label): add missing tests to label-creation
+  * docs: Shift environment variables from unordered list to table
+  * fix(snippet create): complete usage info
+  * chore: Tidy up docs for 'schedule update'
+  * feat(update_check): Rename variable to GLAB_CHECK_UPDATE
+  * build(flags): strip symbols from binary
+  * refactor(var): rename functions to match what they do
+  * fix(artifact): create subdirs instead of failing
+  * fix(mr merge): friendly error when merges require CI to pass
+  * refactor(perms): cleanup Windows permissions FIXME
+  * fix(ci status): detect branch repo from remote
+  * feat(schedule): Add option to edit an existing scheduled
+    pipeline
+  * chore: show colored diff when docs update is needed
+  * fix: listing of group variables without git repository
+  * feat(update check): Add env variable to skip update check
+  * fix(repo clone): correctly separate gitflags arguments
+  * feat(mr list): Add sorting functionality for MRs
+  * feat(cancel): implement glab ci cancel command
+  * docs(repo): explain archive-flag better
+  * feat(repo clone): document group syntax in usage
+  * feat: add debug output for tracing `glab ci status`
+  * chore(deps): update module k8s.io/client-go to v0.32.1
+  * chore(deps): update module k8s.io/client-go to v0.32.1
+- rebase glab-disable_update_check.patch
+
+-------------------------------------------------------------------
 Mon Jan 20 13:51:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.52.0:

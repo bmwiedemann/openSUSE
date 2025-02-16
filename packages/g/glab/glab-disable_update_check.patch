@@ -1,22 +1,45 @@
-Description: Disable glab update check
- Change default for the Debian package to not do update checks by default.
-Author: Nicolas Schier <nicolas@fjasle.eu>
-Forwarded: not-needed
-Last-Update: 2023-07-06
+From 0301c9d65743cb85d6d7026c1b0c55ae36ead7b5 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <git@johannes-kastl.de>
+Date: Sun, 16 Feb 2025 10:30:09 +0100
+Subject: [PATCH] disable update check
 
---- glab-1.31.0.orig/internal/config/config.yaml.lock
-+++ glab-1.31.0/internal/config/config.yaml.lock
+Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
+---
+ commands/config/config.go        | 2 +-
+ internal/config/config.yaml.lock | 2 +-
+ internal/config/config_stub.go   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/commands/config/config.go b/commands/config/config.go
+index 3bfcf635..def6e132 100644
+--- a/commands/config/config.go
++++ b/commands/config/config.go
+@@ -26,7 +26,7 @@ Current respected settings:
+ - visual: Takes precedence over 'editor'. If unset, uses the default editor. Override with environment variable $VISUAL.
+ - glamour_style: Your desired Markdown renderer style. Options are dark, light, notty. Custom styles are available using [glamour](https://github.com/charmbracelet/glamour#styles).
+ - glab_pager: Your desired pager command to use, such as 'less -R'.
+-- check_update: If true, notifies of new versions of glab. Defaults to true. Override with environment variable $GLAB_CHECK_UPDATE.
++- check_update: If true, notifies of new versions of glab. Defaults to false on openSUSE.
+ - display_hyperlinks: If true, and using a TTY, outputs hyperlinks for issues and merge request lists. Defaults to false.
+ `, "`"),
+ 		Aliases: []string{"conf"},
+diff --git a/internal/config/config.yaml.lock b/internal/config/config.yaml.lock
+index b783ffd2..dda86da1 100644
+--- a/internal/config/config.yaml.lock
++++ b/internal/config/config.yaml.lock
 @@ -7,7 +7,7 @@ browser:
  # Set your desired Markdown renderer style. Available options are [dark, light, notty]. To set a custom style, refer to https://github.com/charmbracelet/glamour#styles
  glamour_style: dark
  # Allow glab to automatically check for updates and notify you when there are new updates.
 -check_update: true
 +check_update: false
+ # Last update check timestamp, used for checking when the last update check was performed.
+ last_update_check_timestamp:
  # Whether or not to display hyperlink escape characters when listing items like issues or merge requests. Set to TRUE to display hyperlinks in TTYs only. Force hyperlinks by setting FORCE_HYPERLINKS=1 as an environment variable.
- display_hyperlinks: false
- # Default GitLab hostname to use.
---- glab-1.31.0.orig/internal/config/config_stub.go
-+++ glab-1.31.0/internal/config/config_stub.go
+diff --git a/internal/config/config_stub.go b/internal/config/config_stub.go
+index 9a11633f..4332a6c2 100644
+--- a/internal/config/config_stub.go
++++ b/internal/config/config_stub.go
 @@ -57,7 +57,7 @@ func rootConfig() *yaml.Node {
  					},
  					{
@@ -25,19 +48,7 @@ Last-Update: 2023-07-06
 +						Value: "false",
  					},
  					{
- 						HeadComment: "# Whether or not to display hyperlink escape characters when listing items like issues or merge requests. Set to TRUE to display hyperlinks in TTYs only. Force hyperlinks by setting FORCE_HYPERLINKS=1 as an environment variable.",
+ 						HeadComment: "# Last update check timestamp, used for checking when the last update check was performed.",
+-- 
+2.47.2
 
-
-Description: Reflect changed update check default in help text
-Author: Georg Pfuetzenreuter
---- a/commands/config/config.go	2024-11-28 10:28:19.000000000 +0100
-+++ b/commands/config/config.go	2024-12-09 03:14:48.647482334 +0100
-@@ -26,7 +26,7 @@
- - visual: Takes precedence over 'editor'. If unset, uses the default editor. Override with environment variable $VISUAL.
- - glamour_style: Your desired Markdown renderer style. Options are dark, light, notty. Custom styles are available using [glamour](https://github.com/charmbracelet/glamour#styles).
- - glab_pager: Your desired pager command to use, such as 'less -R'.
--- check_update: If true, notifies of new versions of glab. Defaults to true.
-+- check_update: If true, notifies of new versions of glab. Defaults to false on openSUSE.
- - display_hyperlinks: If true, and using a TTY, outputs hyperlinks for issues and merge request lists. Defaults to false.
- `, "`"),
- 		Aliases: []string{"conf"},
