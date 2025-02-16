@@ -60,4 +60,12 @@
     <comment>Update to version 2.39.2</comment>
     <requestid>1245367</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>49f90f324f0b5f4ef3a4482c480fdef9</srcmd5>
+    <version>2.39.3</version>
+    <time>1739742106</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.39.3</comment>
+    <requestid>1246139</requestid>
+  </revision>
 </revisionlist>

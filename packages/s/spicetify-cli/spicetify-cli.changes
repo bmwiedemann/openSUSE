@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 15 20:02:38 UTC 2025 - jan.kuzilek@suse.com
+
+- Update to version 2.39.3:
+  * fix(lyrics-plus): properly check for `none` value in trans lang (#3312)
+  * feat(lyrics-plus): optimize convert performance & improve code quality (#3311)
+  * feat(lyrics-plus): translation display individual copy implementation (#3308)
+  * chore(deps): bump golang.org/x/net from 0.34.0 to 0.35.0 (#3309)
+  * fix(lyrics-plus): fix lyrics transition effect issue (#3305)
+
+-------------------------------------------------------------------
 Wed Feb 12 11:11:17 UTC 2025 - jan.kuzilek@suse.com
 
 - Update to version 2.39.2:
