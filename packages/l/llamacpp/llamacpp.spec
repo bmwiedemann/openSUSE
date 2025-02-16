@@ -17,7 +17,7 @@
 
 
 Name:           llamacpp
-Version:        4589
+Version:        4719
 Release:        0
 Summary:        llama-cli tool to run inference using the llama.cpp library
 License:        MIT
@@ -141,10 +141,6 @@ that depend on ggml.
 
 # used for shader compilation only
 rm %{buildroot}%{_bindir}/vulkan-shaders-gen
-
-# fix .pc file paths
-mkdir -p %{buildroot}/%{_libdir}/pkgconfig
-mv %{buildroot}%{_prefix}/lib/pkgconfig/* %{buildroot}/%{_libdir}/pkgconfig/
 
 # remove .py extension
 mv %{buildroot}%{_bindir}/convert_hf_to_gguf.py %{buildroot}%{_bindir}/convert_hf_to_gguf
