@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:14:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.31:
+  * General
+    - Fix performance test failure in local provider
+      @Yashsharma1911 (#13545)
+    - Evaluation Optimizations @aabidsofi19 (#13616)
+    - chore @vishalvivekm (#13617)
+ * Meshery CLI
+    - Fixed the duplicate import sub-command @Arpit529Srivastava
+      (#13538)
+- update to 0.8.30:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Wed Feb 12 06:30:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.29:
