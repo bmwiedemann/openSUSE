@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Andrew Psaltis <ampsaltis at gmail dot com>
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
@@ -59,14 +59,14 @@ Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20240909
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %version-%release
 Obsoletes:      ocaml-docs
 Provides:       ocaml(compiler) = %ocaml_base_version
 Provides:       ocaml(ocaml_base_version) = %ocaml_base_version
-Requires:       %(type -P gcc | xargs readlink -f | xargs rpm -qf --qf '%%{NAME}\n')
+Requires:       gcc
 Provides:       ocaml(ocaml.opt) = %ocaml_base_version
 Obsoletes:      ocaml-seq < %version-%release
 Obsoletes:      ocaml-seq-debuginfo < %version-%release
@@ -153,8 +153,6 @@ applications that use Ocaml.
 echo %version > VERSION
 export CC='gcc'
 export AS='as'
-test -x "$(type -P gcc | xargs readlink -f)" && export CC="$_"
-test -x "$(type -P as  | xargs readlink -f)" && export AS="$_"
 export ASPP="$CC -c"
 configure_target=
 extra_cflags=()

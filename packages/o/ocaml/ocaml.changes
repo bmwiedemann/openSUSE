@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb  7 07:07:07 UTC 2025 - ohering@suse.de
+
+- Require unversioned gcc package (bsc#1232663)
+
+-------------------------------------------------------------------
 Thu Mar 14 14:14:14 UTC 2024 - ohering@suse.de
 
 - update to version 4.14.2
