@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 15 14:20:48 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.25.2:
+  * ThumbBrowserEntryBase::draw: check that the surface has been
+    created before drawing
+  * linux workflow: ensure a recent version of ninja is available
+  * linux64 workflow: include glib 2.83 in the linux binary
+    distribution
+  * added dcp profile for Panasonic S5mkII
+
+-------------------------------------------------------------------
 Sat Feb  1 02:46:26 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.25.1:
