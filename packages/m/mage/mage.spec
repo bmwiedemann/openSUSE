@@ -23,6 +23,7 @@ Summary:        A make-like build tool using Go
 License:        Apache-2.0
 URL:            https://github.com/magefile/mage
 Source:         https://github.com/magefile/mage/archive/refs/tags/v%{version}.tar.gz
+Patch0:         https://github.com/magefile/mage/pull/474.patch#/reproducible.patch
 BuildRequires:  go
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.12
@@ -32,7 +33,7 @@ BuildRequires:  golang(API) >= 1.12
 Mage is a make-like build tool using Go. You write plain-old go functions, and Mage automatically uses them as Makefile-like runnable targets.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 if test -z "$GOPATH"; then

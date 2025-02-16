@@ -1,0 +1,42 @@
+From fbeaad11b0452a336cc23545aee709e811fdb9cc Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 25 Jun 2023 09:33:48 +0200
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ magefile.go | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/magefile.go b/magefile.go
+index c08ffa37..ab91e4fe 100644
+--- a/magefile.go
++++ b/magefile.go
+@@ -14,6 +14,7 @@ import (
+ 	"path/filepath"
+ 	"regexp"
+ 	"runtime"
++	"strconv"
+ 	"strings"
+ 	"time"
+ 
+@@ -100,6 +101,14 @@ func Clean() error {
+ 
+ func flags() string {
+ 	timestamp := time.Now().Format(time.RFC3339)
++	source_date_epoch := os.Getenv("SOURCE_DATE_EPOCH")
++	if source_date_epoch != "" {
++		sde, err := strconv.ParseInt(source_date_epoch, 10, 64)
++		if err != nil {
++			panic(fmt.Sprintf("Invalid SOURCE_DATE_EPOCH: %s", err))
++		}
++		timestamp = time.Unix(sde, 0).UTC().Format(time.RFC3339)
++	}
+ 	hash := hash()
+ 	tag := tag()
+ 	if tag == "" {
