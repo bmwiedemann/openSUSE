@@ -1,0 +1,27 @@
+Description: replace removed pipes module with shlex
+Origin: upstream, https://chromium.googlesource.com/chromium/src/+/4c6fc1984970af4b
+Last-Update: 2025-01-08
+
+--- a/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
++++ b/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
+@@ -12,8 +12,8 @@ import fnmatch
+ import json
+ import logging
+ import os
+-import pipes
+ import re
++import shlex
+ import shutil
+ import stat
+ import subprocess
+@@ -197,8 +197,9 @@ class CalledProcessError(Exception):
+   def __str__(self):
+     # A user should be able to simply copy and paste the command that failed
+     # into their shell.
++    printed_cmd = shlex.join(self.args)
+     copyable_command = '( cd {}; {} )'.format(os.path.abspath(self.cwd),
+-        ' '.join(map(pipes.quote, self.args)))
++                                              printed_cmd)
+     return 'Command failed: {}\n{}'.format(copyable_command, self.output)
+ 
+ 

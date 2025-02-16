@@ -64,6 +64,10 @@ Patch6:         Add-missing-dependencies.patch
 # PATCH-FIX-UPSTREAM -- ICU 75 compatibility
 Patch7:         qt5-webengine-icu-75.patch
 Patch8:         0001-Use-default-constructor-in-place-of-self-delegation-.patch
+# PATCH-FIX-UPSTREAM -- python >= 3.12 compat
+Patch9:         python3.12-imp.patch
+Patch10:        python3.12-six.patch
+Patch11:        python3.13-pipes.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -304,6 +308,9 @@ Examples for the libqt5-qtpdf module.
 %patch -P6 -p1
 %patch -P7 -p1
 %patch -P8 -p1
+%patch -P9 -p1
+%patch -P10 -p1
+%patch -P11 -p1
 
 # FFmpeg 5
 %if %{with system_ffmpeg}

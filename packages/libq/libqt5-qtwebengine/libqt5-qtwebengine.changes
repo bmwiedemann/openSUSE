@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 14 16:17:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * python3.12-imp.patch
+  * python3.12-six.patch
+  * python3.13-pipes.patch
+
+-------------------------------------------------------------------
 Tue Dec 03 13:23:13 UTC 2024 - christophe@krop.fr
 
 - Update to version 5.15.18:
