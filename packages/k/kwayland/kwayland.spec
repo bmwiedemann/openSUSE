@@ -33,6 +33,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch0:         kwayland-5.116.0-no-server.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  libQt5Gui-private-headers-devel >= %{qt5_version}
@@ -46,7 +48,6 @@ BuildRequires:  cmake(Qt5WaylandClient) >= %{qt5_version}
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(wayland-server) >= 1.15.0
 %requires_eq    libQt5Gui5
 Provides:       libKF5WaylandClient5 = %{version}
 Obsoletes:      libKF5WaylandClient5 <= %{version}
@@ -68,7 +69,8 @@ KWayland provides a Qt-style Client and Server library wrapper for the Wayland l
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DEXCLUDE_DEPRECATED_BEFORE_AND_AT:STRING=5.74.0
+
 %cmake_build
 
 %install
@@ -81,16 +83,12 @@ KWayland provides a Qt-style Client and Server library wrapper for the Wayland l
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5WaylandClient.so.*
-%{_kf5_libdir}/libKF5WaylandServer.so.*
 
 %files devel
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5Wayland/
 %{_kf5_libdir}/libKF5WaylandClient.so
-%{_kf5_libdir}/libKF5WaylandServer.so
 %{_kf5_libdir}/pkgconfig/KF5WaylandClient.pc
 %{_kf5_mkspecsdir}/qt_KWaylandClient.pri
-%{_kf5_mkspecsdir}/qt_KWaylandServer.pri
-%{_libexecdir}/org-kde-kf5-kwayland-testserver
 
 %changelog

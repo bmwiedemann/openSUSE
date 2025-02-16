@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 14 15:56:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch from Gentoo (fixes build with glibc 2.41)
+  * kwayland-5.116.0-no-server.patch
+
+-------------------------------------------------------------------
 Mon May  6 11:33:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0
