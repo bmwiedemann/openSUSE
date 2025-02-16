@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Feb 16 08:51:23 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.0:
+  * feat: Implement SARIF output (#1042)
+  * test(plugin): add comprehensive plugin package tests (#1056)
+  * feat(parser): handle UTF-8 BOM in JSON input (#1065)
+  * engine: Refactor to allow for Rego version to be specified
+    (#1059)
+  * feat(engine): add query metadata to evaluation results (#1061)
+  * build(deps): bump golang from 1.23.5-alpine to 1.23.6-alpine
+    (#1062)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.70.0
+    to 1.1.0 (#1050)
+  * test(policy): improve engine test coverage (#1055)
+  * feature: Documentation command (#1009)
+  * test(registry): add test for credentials store init failure
+  * chore: add nilness check to govet linter
+  * fix: correct linters-settings in .golangci.yaml to enable
+    misspell
+  * feat: enable relative jsonnet imports by setting a path-aware
+    importer
+  * chore: optimize yaml document separator handling
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.6 to
+    1.7.8
+  * build(deps): bump alpine from 3.21.0 to 3.21.2
+  * build(deps): bump github.com/moby/buildkit from 0.18.1 to
+    0.19.0
+  * build(deps): bump cuelang.org/go from 0.11.0 to 0.12.0
+  * fix: max stack size already set by jsonnet.MakeVM()
+  * fix: prevent policy file overwrite on downloads (#1039)
+  * build(deps): bump golang from 1.23.4-alpine to 1.23.5-alpine
+  * fix: remove redundant error check in push command
+  * fix: add output and tests for GitHub and Azure DevOps
+  * fix: improve handling for YAML version directives
+  * fix: set jsonnet VM stack limits and add test coverage
+  * build(deps): bump github.com/CycloneDX/cyclonedx-go from 0.9.1
+    to 0.9.2 (#1028)
+  * build(deps): bump github.com/magiconair/properties from 1.8.7
+    to 1.8.9 (#1027)
+  * build(deps): bump alpine from 3.20.3 to 3.21.0 (#1026)
+  * build(deps): bump golang from 1.23.3-alpine to 1.23.4-alpine
+    (#1025)
+  * build(deps): bump github.com/moby/buildkit from 0.18.0 to
+    0.18.1 (#1024)
+  * build(deps): bump github.com/moby/buildkit from 0.17.2 to
+    0.18.0 (#1023)
+  * build(deps): bump github.com/moby/buildkit from 0.17.1 to
+    0.17.2 (#1021)
+  * build(deps): bump cuelang.org/go from 0.10.1 to 0.11.0 (#1020)
+  * build(deps): bump golang from 1.23.2-alpine to 1.23.3-alpine
+    (#1019)
+  * build(deps): bump github.com/moby/buildkit from 0.16.0 to
+    0.17.1 (#1018)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.69.0
+    to 0.70.0 (#1016)
+  * fix: make sure lookup_ip_addr throwing builtin-err in test
+    (#1017)
+  * build(deps): bump cuelang.org/go from 0.10.0 to 0.10.1 (#1013)
+
+-------------------------------------------------------------------
 Thu Oct 17 19:03:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.56.0:

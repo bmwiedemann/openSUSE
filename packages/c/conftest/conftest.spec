@@ -1,7 +1,7 @@
 #
 # spec file for package conftest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,22 @@
 
 
 Name:           conftest
-Version:        0.56.0
+Version:        0.57.0
 Release:        0
 Summary:        Tool to write tests against structured configuration data
 License:        Apache-2.0
 URL:            https://github.com/open-policy-agent/conftest
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  go >= 1.23
+BuildRequires:  zsh
 
 %description
-Conftest helps you write tests against structured configuration data. Using Conftest you can write tests for your Kubernetes configuration, Tekton pipeline definitions, Terraform code, Serverless configs or any other config files.
+Conftest helps you write tests against structured configuration data. Using
+Conftest you can write tests for your Kubernetes configuration, Tekton pipeline
+definitions, Terraform code, Serverless configs or any other config files.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -70,8 +74,8 @@ go build  -buildmode=pie -mod vendor -o bin/%{name}
 install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
@@ -81,16 +85,12 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{_bindir}/%{name}
 
 %files bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog
