@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Feb 14 19:59:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.2.0:
+  * Prevent software_grid change vertical position, when content changes
+  * SystemUpdate: Get last refresh time directly from Settings Daemon
+  * HardwareView: Fix fallback when hostname1 returns null values
+  * Add Update Progress Indicator
+  * Show update size in OperatingSystemView
+- remove patch revert-progress-bar.patch, as upstream fixed the issue
+
+-------------------------------------------------------------------
 Fri Dec 13 05:42:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.1.0:

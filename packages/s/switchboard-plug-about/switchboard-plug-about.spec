@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-about
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define         appid io.elementary.settings.system
 Name:           switchboard-plug-about
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Switchboard plug to show system information
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/switchboard-plug-about
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         revert-progress-bar.patch
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
