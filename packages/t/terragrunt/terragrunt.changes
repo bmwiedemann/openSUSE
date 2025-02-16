@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Feb 16 09:40:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.6:
+  * Stack: stack values (#3877)
+
+-------------------------------------------------------------------
+Sun Feb 16 09:18:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.5:
+  * feat: added self-hosted gitlab to catalog command (#3867)
+
+-------------------------------------------------------------------
+Sun Feb 16 09:07:42 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.4:
+  * Dependencies update (#3890)
+
+-------------------------------------------------------------------
+Sun Feb 16 08:55:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.3:
+  * Unit path check improvements (#3884)
+  * feat: Adding Incremental Static Regeneration to Starlight
+    rewrite (#3886)
+  * fix: Fixing some stacks docs (#3887)
+
+-------------------------------------------------------------------
 Fri Feb 14 06:42:58 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.73.2:
