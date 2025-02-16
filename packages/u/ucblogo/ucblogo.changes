@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Feb 13 12:18:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.2.5:
+  * Add conversion for string (gh#jrincayc/ucblogo-code#174).
+  * Don't handle control and alt commands in terminal
+    (gh#jrincayc/ucblogo-code#175).
+  * Define SIG_TAKES_ARG in unix (gh#jrincayc/ucblogo-code#177).
+  * Issue 176 alt (gh#jrincayc/ucblogo-code#178).
+  * Artifacts to version 4 (gh#jrincayc/ucblogo-code#185).
+  * misc fixes and updates (gh#jrincayc/ucblogo-code#189).
+  * Remove unspecified () for function pointers
+    (gh#jrincayc/ucblogo-code#197).
+- Drop upstreamed patches:
+  * ucblogo-wxString-to-c_str.patch
+  * ucblogo-gcc14.patch
+
+-------------------------------------------------------------------
 Tue Aug 20 15:34:47 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add ucblogo-gcc14.patch: Fix compilation against GCC 14;

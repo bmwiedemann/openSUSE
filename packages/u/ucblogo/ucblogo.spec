@@ -1,7 +1,7 @@
 #
 # spec file for package ucblogo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,12 @@
 
 
 Name:           ucblogo
-Version:        6.2.4
+Version:        6.2.5
 Release:        0
 Summary:        Berkeley Logo interpreter
 License:        GPL-3.0-or-later
 URL:            https://people.eecs.berkeley.edu/~bh/logo.html
 Source:         https://github.com/jrincayc/ucblogo-code/releases/download/version_%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ucblogo-wxString-to-c_str.patch gh#jrincayc/ucblogo#160 badshah400@gmail.com -- Explicitly convert a wxString to c_string to match calling function's definition
-Patch0:         ucblogo-wxString-to-c_str.patch
-# PATCH-FIX-UPSTREAM ucblogo-gcc14.patch gh#jrincayc/ucblogo-code#176 badshah400@gmail.com -- Fix compilation against GCC 14; upstream commits combined into single patch
-Patch1:         ucblogo-gcc14.patch
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
