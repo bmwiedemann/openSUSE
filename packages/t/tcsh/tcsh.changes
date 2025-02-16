@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 14 11:33:30 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Do not interfere Meta with Carriage Return (boo#1170527)
+
+-------------------------------------------------------------------
 Wed Feb  5 07:25:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.15 - 2025-02-04

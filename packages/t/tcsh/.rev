@@ -1143,4 +1143,12 @@
 - Port patch tcsh-6.21.00.dif means remove temporary fix now upstream</comment>
     <requestid>1243276</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>b2974b0a7e4d12db1ce67781f3fe9fce</srcmd5>
+    <version>6.24.15</version>
+    <time>1739741833</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not interfere Meta with Carriage Return (boo#1170527)</comment>
+    <requestid>1245870</requestid>
+  </revision>
 </revisionlist>
