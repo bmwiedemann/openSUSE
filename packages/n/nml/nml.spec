@@ -1,7 +1,7 @@
 #
 # spec file for package nml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           nml
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        NewGRF Meta Language
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            http://dev.openttdcoop.org/projects/nml
-Source:         https://github.com/OpenTTD/nml/releases/download/%{version}/%{name}-%{version}.tar.gz
-Patch0:         reproducible.patch
+Source:         https://github.com/OpenTTD/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -34,7 +33,6 @@ BuildRequires:  python3-ply
 Requires:       python3-Pillow >= 3.4
 Requires:       python3-ply
 Provides:       nmlc = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A tool to compile nml files to grf or nfo files, making newgrf coding easier.
@@ -43,8 +41,10 @@ A tool to compile nml files to grf or nfo files, making newgrf coding easier.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-make
 make extensions
+
+%check
+PYTHONDONTWRITEBYTECODE=1 make -C regression
 
 %install
 python3 setup.py install --skip-build --root=%{buildroot} --prefix=%{_prefix}
@@ -54,7 +54,7 @@ install -D -m0644 docs/nmlc.1 %{buildroot}%{_mandir}/man1/nmlc.1
 #setuptools should not be a requirement on running, so we install the nmlc wrapper from source
 install -m0755 nmlc %{buildroot}%{_bindir}/nmlc
 # Fix script interpreter
-sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/' %{buildroot}%{_bindir}/nmlc
+sed -i 's@^#!\s*/usr/bin/env python3@#!/usr/bin/python3@' %{buildroot}%{_bindir}/nmlc
 
 # The actual python code is not being installed?!?
 mkdir -p %{buildroot}%{python3_sitelib}/nml

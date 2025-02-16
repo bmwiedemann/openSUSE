@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Feb 16 12:45:00 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 0.7.6
+  * Change: Reduce D0xx usage where possible by @glx22 in #326
+  * Update: Python versions for regression by @glx22 in #331
+  * Fix nearby_tile_same_grf, nearby_tile_other_grf and nearby_tile_original_gfx, they all compared to wrong constants by @ahyangyi in #330
+  * Codechange: Reduce register usage for BinOp by @glx22 in #308
+  * Change: Remove road stops variable random_bits by @JGRennison in #329
+  * Add: Support for station variable 6B by @glx22 in #320
+  * Change: Unreachable range for default only switch should target CB_FAILED by @JGRennison in #328
+  * Add: Constants and varact2 variable associated with road waypoints by @JGRennison in #327
+  * Change: reduce register consumption for spritelayouts by @glx22 in #306
+  * Add: 'const' keyword to allow users to define new constants by @glx22 in #302
+  * Add: Support for station property 1E by @glx22 in #333
+  * Fix 749aa73: station property 0A should be an extended byte by @glx22 in #334
+  * Fix #337: Station 'availability' is a purchase callback by @glx22 in #338
+  * Change: Support for 8 bit station tile types. by @PeterN in #339
+  * Add: Support for station properties 0E and 0F by @glx22 in #335
+  * Add: Basic range check for replace() by @glx22 in #324
+  * Fix #340: Always use raw strings for token regex by @glx22 in #341
+  * Change: Use extended Action1s by @glx22 in #309
+  * Change: cargo class bits 13 and 14 now define potable and non-potable… by @andythenorth in #343
+  * Update: Python version for testing by @glx22 in #347
+  * Add: --list-unused-strings to list the unused strings by @glx22 in #348
+  * Add: Support for Action5 type 19 road waypoints by @zephyris in #351
+  * Fix: [Actions] Install missing deps for PyPy by @glx22 in #353
+  * Fix: Properly check number of varaction2 ranges by @glx22 in #352
+  * Fix: incorrect start values for roadstop var 43/44 by @WenSimEHRP in #349
+  * Fix #354: Improve length check for string literal properties by @glx22 in #355
+  * Fix: Include information about relevant block in ScriptError message by @Pixel-Tony in #321
+  * Change: add vehicle 'refit' callback (cb 0x163) and cargo class filter prop (0x28 for trains etc) by @andythenorth in #344
+  * Codefix: There's a new version of 'black' by @glx22 in #361
+  * Fix: 'pip install nml' fails to build from source by @glx22 in #362
+  * Change: [Actions] Use cibuildwheel for releases by @glx22 in #363
+  * Update: changelog for 0.7.6 by @glx22 in #346
+- Run regression test during %check phase
+- Remove reproducible.patch
+
+-------------------------------------------------------------------
 Sat Mar  2 14:38:06 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - update to 0.7.5
