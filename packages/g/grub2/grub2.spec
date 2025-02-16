@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -416,6 +416,7 @@ Patch234:       0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
 Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
 Patch237:       grub2-s390x-secure-execution-support.patch
+Patch238:       0001-powerpc-increase-MIN-RMA-size-for-CAS-negotiation.patch
 
 %if 0%{?suse_version} <= 1600
 Requires:       gettext-runtime

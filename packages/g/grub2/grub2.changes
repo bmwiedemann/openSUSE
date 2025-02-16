@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 13 15:28:50 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix out of memory issue on PowerPC by increasing RMA size (bsc#1236744)
+  * 0001-powerpc-increase-MIN-RMA-size-for-CAS-negotiation.patch
+
+-------------------------------------------------------------------
 Sun Dec  8 10:22:43 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Update PowerPC SBAT patches to upstream (bsc#1233730)
