@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Feb 15 15:14:24 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add workaround-cargo-bug.patch -- There is currently a bug with cargo
+  in which `cargo metadata` returns 
+  See gh#rust-secure-code/cargo-auditable#124
+- Update to version 0.41.0:
+  * add gix blame -L start,end
+  * add gix env to print paths relevant to the Git installation.
+  * Document the remaining subcommands
+  * Add support for statistics and additional performance
+    information.
+  * add gix blame to the CLI. That way it's possible to see the
+    blame result of any file in the repository.
+- Updates from version 0.40.0:
+  * add first 'debug' version of gix log. It's primarily meant to
+    better understand gix blame.
+  * add --tree-favor to gix merge tree|commit. With it one can
+    decide which side to favor in case of irreconcilable
+    tree-conflicts.
+
+-------------------------------------------------------------------
 Sat Nov 30 08:29:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.39.0:

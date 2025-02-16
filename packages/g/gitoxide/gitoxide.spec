@@ -1,7 +1,7 @@
 #
 # spec file for package gitoxide
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gitoxide
-Version:        0.39.0
+Version:        0.41.0
 Release:        0
 Summary:        An idiomatic & safe pure-Rust implementation of Git
 License:        Apache-2.0 OR MIT
@@ -25,6 +25,8 @@ Group:          Development/Tools/Version Control
 URL:            https://github.com/Byron/gitoxide
 Source0:        https://github.com/Byron/gitoxide/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE workaround-cargo-bug.patch smolsheep@opensuse.org
+Patch0:         workaround-cargo-bug.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  openssl-devel
@@ -36,7 +38,7 @@ gitoxide is an implementation of git written in Rust for providing a pleasant
 and unsurprising developer experience.
 
 %prep
-%autosetup -a 1
+%autosetup -a 1 -p 1
 
 %build
 %{cargo_build}
