@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Changes since 6.10.0:
+  * Update dependency version to 6.11.0
+  * Add xml/yaml linting
+  * CI: Add linux-qt6-next build
+  * Update version to 6.11.0
+
+-------------------------------------------------------------------
 Thu Jan  9 17:12:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
