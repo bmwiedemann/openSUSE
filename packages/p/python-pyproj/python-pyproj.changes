@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Feb 16 11:21:59 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.7.1
+  * WHL: Wheels contain PROJ 9.5.1 by @snowman2 in #1477
+  * WHL: MacOS minimum deployment target moved to 13 by @snowman2
+    in #1475
+  * WHL: Add wheels for musllinux by @necabo in #1461
+  * MNT: Remove use of utcnow() and change to naive datetimes
+    instead. by @greglucas in #1450
+  * MNT: Cython 3.1+ fixes by @greglucas in #1452
+  * TST: remove checking is python >= 3.4 by @kloczek in #1446
+  * TST: Add assert statements at the end of tests by @tqa236
+    in #1453
+  * LNT: Setup ruff by @tqa236 in #1455
+  * LNT: Disallow type error without code by @tqa236 in #1456
+
+-------------------------------------------------------------------
 Sat Nov 23 09:18:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.7.0
