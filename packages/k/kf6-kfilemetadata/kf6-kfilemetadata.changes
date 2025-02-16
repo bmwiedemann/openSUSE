@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Feb  8 12:16:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Changes since 6.10.0:
+  * Update dependency version to 6.11.0
+  * [autotests] Make usermetadatawritertest idempotent, cleanup test output
+  * [autotests] Various cleanups for external writer/extractor plugin tests
+  * Add xml/yaml linting
+  * Install dump utility as a debugging aid for users
+  * [autotests] Enforce QT_NO_CAST_FROM_ASCII usage
+  * [dump] Enforce QT_NO_CAST_FROM_ASCII usage
+  * CI: Add linux-qt6-next build
+  * Update version to 6.11.0
+
+-------------------------------------------------------------------
 Tue Jan  7 18:17:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
