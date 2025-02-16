@@ -115,4 +115,12 @@
     <comment>- Update to snapshot 3.0.0+g21 (0d2e6ac6)</comment>
     <requestid>1095164</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>25ba16ccb9886185d2609a0edb14e248</srcmd5>
+    <version>3.0.0+g57</version>
+    <time>1739741802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 3.0.0+g57 (4712339d)</comment>
+    <requestid>1245997</requestid>
+  </revision>
 </revisionlist>

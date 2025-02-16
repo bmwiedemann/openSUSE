@@ -18,18 +18,17 @@
 
 Name:           spandsp
 %define lname	libspandsp3
-Version:        3.0.0+g21
+Version:        3.0.0+g57
 Release:        0
 Summary:        A DSP library for Telephony and SoftFAX
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/freeswitch/spandsp
-
-Source:         %name-%version.tar.xz
+%define rev 4712339d6132c54d8624b7d76dddbb36c67df712
+Source:         https://github.com/freeswitch/spandsp/archive/%rev.tar.gz
 Source2:        baselibs.conf
 Patch1:         no-sse.diff
 Patch2:         spandsp-raise-traintime-tolerance.diff
-Patch3:         spandsp-handle-international-dialstring-prefix.diff
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  libjpeg-devel
@@ -90,7 +89,7 @@ BuildArch:      noarch
 This package contains documentation for the libspandsp API.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n spandsp-%rev
 # The cpuid calls in the source code only apply to a test program.
 # The library itself is (was) statically enabling -msse during configure, which
 # is now removed.

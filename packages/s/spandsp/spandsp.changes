@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Feb 13 13:05:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 3.0.0+g57 (4712339d)
+  * Initial support for the SPRT protocol in V.150.1
+  * Fixed the T.38 gateway not handling FTT messages from the far
+    end properly.
+  * Introduction of SSLFax
+  * Improved Goertzel filters by adding harmonized approach to
+    setting thresholds and measuring power levels.
+  * Fixed a long standing bug where a FAX that has to return to
+    the DCS/TCF sequence, due to something like a change of page
+    size mid-FAX, messed up the TCF sequence, and stepped down to
+    a lower speed.
+  * Added a floating point AGC module and a Godard TED module.
+  * V.29 and V.17 now use the Godard TED module, and their
+    internal Godard TED code has been removed.
+- Delete spandsp-handle-international-dialstring-prefix.diff (obsolete)
+
+-------------------------------------------------------------------
 Sun Jun 25 05:42:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 3.0.0+g21 (0d2e6ac6)
