@@ -477,4 +477,16 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1241290</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8c9371b229f026c8c23e6cb0e70a544a</srcmd5>
+    <version>4.5.0</version>
+    <time>1739742076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored dependencies.
+  * This also updates Cargo.lock so openssl is set to version
+    &quot;0.10.70&quot;. Avoids CVE-2025-24898 alerts. This CVE does not
+    really affect us.
+</comment>
+    <requestid>1246084</requestid>
+  </revision>
 </revisionlist>

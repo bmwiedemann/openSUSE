@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 09:39:43 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update vendored dependencies.
+  * This also updates Cargo.lock so openssl is set to version
+    "0.10.70". Avoids CVE-2025-24898 alerts. This CVE does not
+    really affect us.
+
+-------------------------------------------------------------------
 Thu Jan 30 07:06:07 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 4.5.0:
