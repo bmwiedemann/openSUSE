@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Feb 14 20:38:01 UTC 2025 - mrueckert@suse.de
+
+- Update to version 1.69.1:
+  * Version v1.69.1
+  * build: disable docker builds on PRs & add missing dockerfile changes
+  * Added parallel docker builds and caching for go build in the container
+  * docs: add FileLu as sponsors and tidy sponsor logos
+  * vfs: fix the cache failing to upload symlinks when --links was specified
+  * doc: add note on concurrency of rclone purge
+  * s3: add latest Linode Object Storage endpoints
+  * fix golangci-lint errors
+  * bisync: fix listings missing concurrent modifications - fixes #8359
+  * lib/oauthutil: fix redirect URL mismatch errors - fixes #8351
+  * b2: fix "fatal error: concurrent map writes" - fixes #8355
+  * serve nfs: update docs to note Windows is not supported - fixes #8352
+  * s3: add DigitalOcean regions SFO2, LON1, TOR1, BLR1
+  * onedrive: mark German (de) region as deprecated
+  * s3: Added new storage class to magalu provider
+  * vfs: close the change notify channel on Shutdown
+  * docs: add OneDrive Impersonate instructions - fixes #5610
+  * docs: explain the stringArray flag parameter descriptor
+  * iclouddrive: add notes on ADP and Missing PCS cookies - fixes #8310
+  * docs: fix typos found by codespell in docs and code comments
+  * fs: fix confusing "didn't find section in config file" error
+  * vfs: fix race detected by race detector
+  * docs: fix reference to serves3 setting disable_multipart_uploads which was renamed
+  * docs: fix link to Rclone Serve S3
+  * serve s3: fix list objects encoding-type
+  * doc: make man page well formed for whatis - fixes #7430
+  * Start v1.69.1-DEV development
+
+-------------------------------------------------------------------
 Sun Jan 12 16:50:23 UTC 2025 - mrueckert@suse.de
 
 - Update to version 1.69.0:
