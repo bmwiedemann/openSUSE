@@ -1266,6 +1266,7 @@ unsorted:
   - aws-sdk-java-test-utils 
   - aws-sdk-java-waf 
   - aws-sdk-java-workspaces 
+  - ax25-apps 
   - ax25-tools 
   - axel 
   - axis 
@@ -4919,6 +4920,7 @@ unsorted:
   - gap-singular 
   - gap-sl2reps 
   - gap-sla 
+  - gap-smallantimagmas 
   - gap-smallgrp 
   - gap-smallsemi 
   - gap-sonata 
@@ -16731,6 +16733,7 @@ unsorted:
   - libtpl-extensions3 
   - libtpm_unseal1 
   - libtpms-devel 
+  - libtqsllib2_5 
   - libtracecmd-devel 
   - libtracecmd1 
   - libtraceevent-devel 
@@ -23321,21 +23324,6 @@ unsorted:
   - postgresql-pltcl 
   - postgresql-server-devel 
   - postgresql-test 
-  - postgresql12 
-  - postgresql12-contrib 
-  - postgresql12-devel 
-  - postgresql12-docs 
-  - postgresql12-llvmjit 
-  - postgresql12-llvmjit-devel 
-  - postgresql12-pgsql-ogr-fdw 
-  - postgresql12-plperl 
-  - postgresql12-plpython 
-  - postgresql12-pltcl 
-  - postgresql12-postgis 
-  - postgresql12-postgis-utils 
-  - postgresql12-server 
-  - postgresql12-server-devel 
-  - postgresql12-test 
   - postgresql13 
   - postgresql13-contrib 
   - postgresql13-devel 
@@ -23440,6 +23428,7 @@ unsorted:
   - postgresql17-pg_cron 
   - postgresql17-pgagent 
   - postgresql17-pgaudit 
+  - postgresql17-pgsql-ogr-fdw 
   - postgresql17-pgvector 
   - postgresql17-plperl 
   - postgresql17-plpython 
@@ -35482,6 +35471,7 @@ unsorted:
   - qqwing 
   - qqwing-devel 
   - qrencode-devel 
+  - qrq 
   - qrtool 
   - qrupdate 
   - qrupdate-devel 
@@ -36202,6 +36192,7 @@ unsorted:
   - revelation 
   - revelation-lang 
   - reveng 
+  - rewise 
   - rfb 
   - rfbplaymacro 
   - rfbproxy 
@@ -47550,6 +47541,8 @@ unsorted:
   - tpm2-tss-engine-bash-completion 
   - tpm2-tss-engine-devel 
   - tpm2.0-abrmd-devel 
+  - tqsl 
+  - tqsl-devel 
   - trace-cmd 
   - trace-cmd-python3 
   - trader 
@@ -49075,6 +49068,7 @@ unsorted:
   - xdotool-devel 
   - xdp-tools 
   - xdriinfo 
+  - xdx 
   - xed 
   - xed-devel 
   - xed-lang 
@@ -49088,7 +49082,6 @@ unsorted:
   - xen-devel 
   - xen-doc-html 
   - xen-tools-xendomains-wait-disk 
-  - xengine 
   - xerces-c 
   - xerces-c-doc 
   - xerces-j2 
@@ -49183,6 +49176,7 @@ unsorted:
   - xless 
   - xload 
   - xlockmore 
+  - xlog 
   - xlogin 
   - xlogo 
   - xls2csv 
@@ -49675,6 +49669,7 @@ unsorted:
   - zvbi-devel 
   - zvbi-devel-32bit 
   - zvbi-lang 
+  - zvm 
   - zxcvbn-devel 
   - zxing-cpp-devel 
   - zynaddsubfx 
