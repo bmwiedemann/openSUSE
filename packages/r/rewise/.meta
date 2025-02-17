@@ -1,0 +1,8 @@
+<package name="rewise" project="openSUSE:Factory">
+  <title>Extract files from Wise installers without executing them</title>
+  <description>The aim of this project is to extract assets from old game installers
+made with Wise installer without executing the PE/NE file (.exe), so
+they can be used with free software implementations of the game engine.</description>
+  <devel project="Archiving" package="rewise"/>
+  <url>https://codeberg.org/CYBERDEV/REWise</url>
+</package>

@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Feb 15 21:07:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.1
+  * Fix extended tests file sources.
+  * Add CMake support.
+- Drop patch:
+  * 0001-Add-CMake-support.patch (included upstream)
+
+-------------------------------------------------------------------
+Fri Feb 14 17:23:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.3.0
+- Add patch:
+  * 0001-Add-CMake-support.patch
