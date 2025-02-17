@@ -1,7 +1,7 @@
 #
 # spec file for package gap-monoidalcategories
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-monoidalcategories
-Version:        2024.02.04
-%define sillyver 2024.02-04
+Version:        2025.01.02
+%define sillyver 2025.01-02
 Release:        0
 Summary:        GAP: Monoidal and monoidal (co-)closed categories
 License:        GPL-2.0-or-later
