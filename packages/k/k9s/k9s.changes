@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 17 10:08:51 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable cgo on riscv64
+
+-------------------------------------------------------------------
+Mon Feb 17 07:59:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.3:
+  * Resolved Issues
+    - #3116 Cannot list custom CRD's since v0.40.1 (with feelings!)
+
+-------------------------------------------------------------------
+Mon Feb 17 07:57:16 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.2:
+  * Resolved Issues
+    - #3116 Cannot list custom CRD's since v0.40.1
+
+-------------------------------------------------------------------
+Mon Feb 17 07:44:07 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.1:
+  * Resolved Issues
+    - #3113 0.40.0 can't retain temporary view sort
+    - #3111 k9s can't describe or print YAML for HPAs in all
+      namespaces view
+    - #2966 Go to the Contexts page and filter, contexts that are
+      matched will be filtered ou
+    - #2962 Small colour/filtering related bug
+    - #2961 Drain node with the -disable-eviction
+    - #2958 Restart count in container view associated with the
+      wrong container
+    - #2945 Could we add ServiceAccount Column in v1/POD view
+
+-------------------------------------------------------------------
 Sun Feb 16 09:24:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix builds on s390x

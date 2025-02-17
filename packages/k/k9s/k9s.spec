@@ -17,7 +17,7 @@
 
 
 Name:           k9s
-Version:        0.40.0
+Version:        0.40.3
 Release:        0
 Summary:        Curses based terminal UI for Kubernetes clusters
 License:        Apache-2.0
@@ -45,7 +45,7 @@ COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
-%ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+%ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl riscv64
 export CGO_ENABLED=1
 %else
 export CGO_ENABLED=0
