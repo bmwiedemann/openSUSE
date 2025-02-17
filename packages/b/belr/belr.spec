@@ -1,7 +1,7 @@
 #
 # spec file for package belr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        5.3.95
+Version:        5.3.105
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
