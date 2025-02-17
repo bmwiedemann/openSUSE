@@ -64,13 +64,16 @@ DEFAULT_TARGET = %{_arch}
 VERSION = %{version}
 SH
 
-make
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_build DESTDIR=%{buildroot} install
 
+# Test suite only available for those architectures
+%ifarch aarch64 riscv64 x86_64
 %check
-make check
+%make_build check
+%endif
 
 %files
 %{_bindir}/%{name}
