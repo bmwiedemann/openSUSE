@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Feb 13 14:13:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.70.0:
+  * [Card] Chapters list: Added Scanlators filter
+  * [Servers] Desu (RU): Update
+  * [Servers] Lector manga: Re-enabled
+  * [Servers] Read Comic Online (EN): Update
+  * [L10n] Updated Dutch, French, Swedish and Tamil translations
+- update to 1.69.0:
+  * [Servers] EZmanga (EN): Update
+  * [Servers] Manga Demon (EN): Update
+  * [Servers] MangaHub (EN): Update
+  * [Servers] MangaWorld (IT): Update
+  * [Servers] Neko Scans (ES): Update
+  * [Servers] Sinensistoon (pt_BR): Renamed SCtoon (fusion with Cerise Scan)
+  * [Servers] Cerise Scan (pt_BR): Disabled
+  * [Servers] MangaLife (EN): Disabled
+  * [Servers] MangaSee (EN): Disabled
+  * [L10n] Added Czech translation
+
+-------------------------------------------------------------------
 Mon Jan 27 10:49:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.68.0:

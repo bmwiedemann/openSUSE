@@ -18,7 +18,7 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.68.0
+Version:        1.70.0
 Release:        0
 Summary:        A manga reader for GNOME
 License:        GPL-3.0-or-later
