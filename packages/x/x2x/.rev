@@ -154,4 +154,12 @@ keymap.c and x2x.c seem to make it necessary to license under GPL-2.0+ irrespect
 </comment>
     <requestid>623913</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>21b0822199b50ff52ea68e22ed24ba9c</srcmd5>
+    <version>1.30rc1+git.20180517</version>
+    <time>1739822240</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246440</requestid>
+  </revision>
 </revisionlist>

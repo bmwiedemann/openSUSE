@@ -1,7 +1,7 @@
 #
 # spec file for package x2x
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,12 @@ Name:           x2x
 Version:        1.30rc1+git.20180517
 Release:        0
 Summary:        X Window System Display Remote Control
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Url:            https://github.com/dottedmag/x2x
+URL:            https://github.com/dottedmag/x2x
 Source:         %{name}-%{version}.tar.xz
+# https://github.com/dottedmag/x2x/issues/45
+Patch0:         x2x-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -37,7 +39,7 @@ x2x allows the keyboard and mouse on one ("from") X Window System
 display to be used to control another ("to") X Window System display.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -i

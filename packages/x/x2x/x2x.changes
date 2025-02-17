@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 14 13:00:39 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc 15
+- added patches
+  fix https://github.com/dottedmag/x2x/issues/45
+  + x2x-gcc15.patch
+
+-------------------------------------------------------------------
 Sun Jul  8 12:42:16 UTC 2018 - adam@mizerski.pl
 
 - update url
