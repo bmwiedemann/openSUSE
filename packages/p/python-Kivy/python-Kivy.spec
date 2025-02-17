@@ -141,7 +141,7 @@ export KIVY_SPLIT_EXAMPLES=1
 # create docs
 pushd doc
 sed -e '/^PYTHON/ s|python|%{__mypython}|' \
-    -e '/^SPHINXOPTS	/s/$/ %{?_smp_mflags}/' \
+    -e "/^SPHINXOPTS	/s/\$/ %{?_smp_mflags}/" \
     -i Makefile
 export PYTHONPATH=`ls -d ../build/lib*`
 make %{?_smp_mflags} PYTHON=%{__mypython} html && rm -r build/html/.buildinfo
