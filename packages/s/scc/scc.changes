@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Feb 17 01:57:10 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.5.0:
+  * add in HCL support (#593)
+  * start to add in more stats (#591)
+  * Upgrade to Go 1.24 (#588)
+  * Add fedora install instructions in README (#592)
+  * Tweak wise file
+  * Update zig complexity checks (#587)
+  * (docs) fix GitLab CI link to metrics reports (#586)
+  * redo constants after fixing prs
+  * convert badge tracker to map
+  * Elixir HEEx template support, Elixir complexity (#577)
+  * Add C++ module file extensions (#578)
+  * Update the Swift code complexity check (#576)
+  * Fix docker image name (#579)
+  * attempt to fix build
+  * convert to simplecache (#573)
+  * Make "--exclude-dir" support multi-level dirs (#572)
+  * Add Treetop Support - https://cjheath.github.io/treetop/ (#571)
+  * Use a faster method to convert ints to strings (#570)
+  * add wise jobfile definition (#569)
+  * expose language information for 3rd parties
+  * Update Vala's language information (#567)
+  * Recognize .glsl extension as GLSL (#566)
+  * Bump golang.org/x/crypto from 0.26.0 to 0.31.0 (#565)
+  * Add metal language supporty (#562)
+  * Add a newline to output files (#561)
+  * Add support for emit https://esolangs.org/wiki/EmiT (#559)
+  * Use json-iterator/go for all JSON operations (#556)
+  * Fix TestSimpleCache_Multiple (#558)
+  * Add in support for up (#557)
+  * typo fix (#554)
+  * languages: add SPL (#553)
+  * Fix for issue 552
+  * Update the install section of the README.md (#551)
+  * Simplify and clean up the code (#548)
+  * corrected the parameter(--no-ignore) interpretation (#547)
+  * Mark processor/constants.go as an automatically generated file (#545)
+  * Added badge SVG customization URL query params and associated tests (#544)
+  * Support `licen(c|s)e-apache` (#543)
+  * refactor: using standard libraries to do file operations (#542)
+  * Add devcontainer config (#541)
+  * Catch any `os.Stat` error (#540)
+  * feat: support json5 (#539)
+  * Make winget install more specific (#537)
+  * Refactor formatters (#536)
+  * Tweak pascal for accuracy
+  * Remove travis file
+  * Godot Scene (#534)
+  * Tell GitHub that `.sccignore` is an ignore list (#533)
+  * Update README.md
+  * Update Dockerfile
+  * Moonbit (#530)
+  * Smalltalk (#529)
+  * jq (#528)
+  * Redscript (#527)
+  * ABNF (#526)
+  * LiveScript (#525)
+  * DAML Language (#524)
+  * Tera support (#523)
+  * TTCN-3 support (#522)
+  * Bean language support (#521)
+  * Gleam support (#520)
+  * Add stan language (#519)
+  * Gwion Support (#518)
+  * Update output and mention .sccignore support
+  * Add in scc ignore file support
+  * Upgrade go code walker
+  * More options to control goroutines
+  * Add in astro file support https://github.com/boyter/scc/issues/511
+  * Update performance metrics
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+
+-------------------------------------------------------------------
 Tue Oct  1 15:36:55 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

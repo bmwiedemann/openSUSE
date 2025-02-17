@@ -9,4 +9,14 @@
 Fixed conflict of binary scc with sc-controller. Binary is now named sccount.</comment>
     <requestid>1204978</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>744ffa17370baa184a60293ce6a7daea</srcmd5>
+    <version>3.5.0</version>
+    <time>1739822100</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.5.0:
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.24 matching go.mod (forwarded request 1246296 from jfkw)</comment>
+    <requestid>1246300</requestid>
+  </revision>
 </revisionlist>
