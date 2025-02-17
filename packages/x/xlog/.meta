@@ -1,0 +1,6 @@
+<package name="xlog" project="openSUSE:Factory">
+  <title>Logging program for Amateur radio</title>
+  <description>Xlog is logging program for Amateur Radio Operators.
+</description>
+  <devel project="hamradio" package="xlog"/>
+</package>

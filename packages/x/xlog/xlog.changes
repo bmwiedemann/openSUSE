@@ -1,0 +1,237 @@
+-------------------------------------------------------------------
+Fri Feb 14 20:48:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix spec file for openSUSE Tumbleweed inclusion, including doc
+  and license packaging, bundled cty.dat, downloadable tarball URL
+- package license is GPL-3.0-or-later
+
+-------------------------------------------------------------------
+
+Thu Sep 16 20:10:30 UTC 2024 - Mariusz Woźniak <sp6ina@pzk.pl>
+
+* Changes for xlog version 2.0.25 - 2024-Sep-16
+  * Rename icon files and copy to proper directories (thanks Daniel OK2VLK)
+  * Updated cty.dat 20240914 (cty-3432)
+
+-------------------------------------------------------------------
+Thu Jun 16 22:13:33 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fixed date of previous revision
+
+-------------------------------------------------------------------
+Fri Jan 28 21:42:46 UTC 2022 - Mariusz Woźniak <sp6ina@c44.pl>
+
+* Changes for xlog version 2.0.24 - 2021-Oct-03
+  * Fixed text truncation of very long symlinks like /dev/serial/by-id
+  * Updated cty.dat 20210930 (cty-3124)
+
+-------------------------------------------------------------------
+Fri Jul 30 15:42:46 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.23
+  * Fixed compiler error in adif3.c
+  * Updated cty.dat 2021 (cty-3118)
+- Compatible with hamlib 4.2
+
+-------------------------------------------------------------------
+Sun May 02 20:03:18 UTC 2021 - Mariusz Wozniak <sp6ina@pzk.pl>
+
+Update to version 2.0.23beta
+
+-------------------------------------------------------------------
+Sun Feb 18 20:03:18 UTC 2021 - Mariusz Wozniak <sp6ina@pzk.pl>
+ Changes for xlog version 2.0.21 - 2021-feb-18
+  * Modified get_smeter and get_powerlevel to use default values
+    (S9 and UNKNOWN) if hamlib cannot get values from the radio
+    (e.g. quisk).
+  * Be sure to use at least hamlib4.1 to avoid a crash that occurs
+    when using the "Select a Radio" GUI more than once.
+  * Modified configure.ac to check if compiler can support -W parameters
+  * Updated cty.dat 20210218 (cty-3104)
+  
+-------------------------------------------------------------------
+Sun Jan 30 20:03:18 UTC 2021 - Mariusz Wozniak <sp6ina@pzk.pl>
+- Changes for xlog version 2.0.20
+  * Updated cty.dat 20210127 (cty-3102)
+  * Added FST4 support and 5m/8m bands for ADIF 3.1.1
+  * Added /dev/ttyUSB0 and /dev/ttyUSB1 to the hamlib device menu
+  * Logeditor can hide TX(RST) and RX (RST) (useful for VHF contests)
+  * ADIF exports Distance and Azimuth correctly if enabled in Logeditor
+  * Imports ADIF from wsjt-x on UDP port 2333
+  * Fixed use-after-free error discovered by Chris K2CR and valgrind
+  * Fixed hash-table != null assert in dxcc.c
+  * Fixed GLib-GObject-WARNING in log.c
+  * Compiles cleanly with hamlib4 on ubuntu 18.04 and 20.04
+  
+-------------------------------------------------------------------
+Sun Sep 29 20:03:18 UTC 2019 - Mariusz Wozniak <sp6ina@pzk.pl>
+
+  * added FT4 support and updated to ADIF 3.1.0
+  * Updated cty.dat 20190608
+  
+-------------------------------------------------------------------
+Wed Feb 20 20:03:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile cleanup
+  * Use pkgconfig-style BuildRequires
+  * Run spec-cleaner
+  * Remove _service file
+  * Use URLs for sources
+
+- Update to version 2.0.17
+  * Suppress GCC warning "stringop-truncation" in editest.c
+    which occurs with GCC >= 8.1.
+  * Updated cty.dat 20190114
+  * added JS8 support and updated to ADIF 3.0.9
+
+-------------------------------------------------------------------
+Sat Nov 10 16:49:12 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.15 - 2017-nov-08
+  * Clean up warnings reported by user from a macOS build
+  * Updated cty.dat to 20171030
+  * 60m is now consistently referred to as "5" (not 5.2 or 5.3)
+  * Upgraded to ADIF version 3.0.6
+  * Cleaned up Glib Critical and Glib Warnings (that I could create)
+  * Added all modes and submodes
+  * ADIF3 output is now supported, ADIF2 output has been removed
+  * ADIF Import has been updated
+  * added adif_ok to xlog.cfg to indicate ADIF3 update of bands, modes, and scoringbands has occurred
+  * Users will see new defaults restored if they have customized via:
+      Settings->Dialogs->Scoring
+      Settings->Preferences->General comma separated list of modes
+      Settings->Preferences->General comma separated list of bands
+  * Fixed bands in scoring window
+  * Added feature: sort log by callsign
+
+-------------------------------------------------------------------
+Tue Dec 13 15:50:25 UTC 2016 - dl8fcl@darc.de
+
+- update to Version 2.0.14
+  * Fixed compiler error with new gcc, in adif.c, with unused variable
+    * GCC Bug #28901, https://gcc.gnu.org/bugzilla/show_bug.cgi?id=28901
+  * Fixed math library linker issue exposed by recent gcc change
+
+-------------------------------------------------------------------
+Wed Aug  3 19:48:38 UTC 2016 - dl8fcl@t-online.de
+
+- update to Version 2.0.14beta4
+  * Hamlib preference setting shows all /dev/ttyUSB* that are present
+  * Fixed crash with Select a Radio dialog in Hamlib preferences
+  * Hamlib preference setting now understands /dev/serial/by-id
+  * Updated the author's email address
+  * Fixed a GUI bug in Settings->Dialogs and Windows->Scoring
+    (thanks, Andrew N2CN for the patch)
+
+-------------------------------------------------------------------
+Sat Mar 26 14:10:34 UTC 2016 - dl8fcl@t-online.de
+
+- each rebuild will install the latest cty.dat
+  http://www.country-files.com/cty/cty.dat 
+
+-------------------------------------------------------------------
+Fri Apr 24 22:46:06 UTC 2015 - dl8fcl@darc.de
+
+- update to Version 2.0.13
+  * Fixed date in cabrillo3 output to be: yyyy-mm-dd
+  * Fixed date in EDI output to be: yymmdd
+  * Fixed QSORecords in EDI output
+  * Updated cty.dat to 20150420 (cty-2505)
+  * Fixed Bug #44547: Added JT9 modes
+  * Fixed Bug #44259: broken dupe checking
+
+-------------------------------------------------------------------
+Wed Apr  2 09:05:30 UTC 2014 - dl8fcl@darc.de
+
+- update to Version 2.0.12
+  * Updated cty.dat to 20140331 (cty-2404)
+
+-------------------------------------------------------------------
+Thu Nov 21 10:03:49 UTC 2013 - dl8fcl@darc.de
+
+- update to Version 2.0.11 
+  * Updated cty.dat to 20131009
+  * Fixed "Write and Click All"
+  * Increased log name limit to 30 characters
+  * Fixed truncated "QSO <number>" label in main window
+  * Fixed dxcc 3 character callsigns
+
+-------------------------------------------------------------------
+Tue Jul 23 08:50:07 UTC 2013 - dl8fcl@darc.de
+
+- update to Version 2.0.10
+  * Fix compilation warning in labels.c regarding strptime
+  * Convert all compilation warnings into errors
+  * Get rid of the "unused-but-set-variable" warnings 
+
+-------------------------------------------------------------------
+Sun Jul 21 20:56:34 UTC 2013 - dl8fcl@darc.de
+
+- update to Version 2.0.9
+  * Fix month to number conversion for non-English languages in
+    Cabrillo export (thank you Alex EW1LN for reporting the problem
+    and testing the fix)
+  * Modify date in TSV file to be ISO 8601 format to aid in spreadsheet import
+  * Updated cty.dat to 20130625
+
+-------------------------------------------------------------------
+Fri May 24 22:42:04 UTC 2013 - dl8fcl@darc.de
+
+- update to Version 2.0.8
+  * somee fixes for Debian
+  * Fix cabrillo import - incorporate patch from Thomas (DL1JBE) Beierlein
+  * Updated cty.dat to 20130510 
+
+-------------------------------------------------------------------
+Tue Apr  2 09:24:17 UTC 2013 - dl8fcl@darc.de
+
+- update to Version 2.0.7 
+  * Fixed remarks box for Unity et al
+  * Updated cty.dat to 20130312 (CTY-2303)
+
+-------------------------------------------------------------------
+Sun Mar  3 23:28:52 UTC 2013 - dl8fcl@darc.de
+
+- update to Version 2.0.6
+  * First version with new maintainer: Andy Stewart, KB1OIQ
+  * Updated to Cabrillo v3 format - export and import (bug #37740)
+  * Added preference setting for "Are You Sure" dialog on exit (bug #37761)
+  * Updated cty.dat to 20130222 (CTY-2302) (bug #37748)
+  * Updated to Amateur Data Interchange Format (ADIF) 2.2.7 format (bug #37741)
+  ** Added a large number(!) of modes
+  ** Added the 560m band
+  * Fixed cosmetic issues with the scoring window (bug #37743)
+  * Fixed Ubuntu bug #608718: Keyer window displayed, hitting return in RX(RST)
+    with no call logged bogus QSO.
+  * Fixed Task #10916 - user preference to save Cabrillo freq or band
+  * New manual from Chris Story (K6RWJ)
+  * Entering "callsigns" like "3D2/R" will show proper DXCC entity in scoring
+    window locator box for all except WAE countries.
+
+------------------------------------------------------------------- 
+* Tue Feb 24 2011 - dl8fcl@darc.de
+- update to Version 2.0.5
+* Sat Oct 30 2010 - dl8fcl@darc.de
+- update to Version 2.0.4
+* Sat Jul 18 2009 - dl8fcl@darc.de
+- update to Version 2.0.3
+* Wed Jun 17 2009 - dl8fcl@darc.de
+- update to Version 2.0.2
+* Fri Feb 27 2009 - dl8fcl@darc.de
+- update to Version 2.0.1
+* Sun Feb 22 2009 - dl8fcl@darc.de
+- update to Version 2.0
+* Sat Jan 10 2009 - dl8fcl@darc.de
+- update to Version 1.9
+* Tue Oct 02 2008 - dl8fcl@darc.de
+- updated for openSUSE_Factory
+* Mon Sep 01 2008 - dl8fcl@darc.de
+- update to Version 1.8.1
+* Wed Jul 23 2008 - dl8fcl@darc.de
+- fixed xlog.desktop
+* Sun Jun 1 2008 - dg7gt@online.de
+- update to Version 1.7 for openSUSE 11
+* Mon May 28 2007 - dg7gt@online.de
+- changed the spec file for openSUSE 10.3 (Factory)
+* Mon Dec 18 2006 - dg7gt@online.de
+- initial spec file for openSUSE 10.2
