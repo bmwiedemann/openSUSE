@@ -1,0 +1,12 @@
+Index: tqsl-2.7.4/src/CMakeLists.txt
+===================================================================
+--- tqsl-2.7.4.orig/src/CMakeLists.txt
++++ tqsl-2.7.4/src/CMakeLists.txt
+@@ -51,6 +51,7 @@ endif()
+ endif()
+ 
+ add_library(${TQSLLIBNAME} ${TQSLLIBTYPE} ${TQSLLIB_SRC} ${TQSLLIB_HDR} ${TQSLLIB_RCFILE})
++set_target_properties(${TQSLLIBNAME} PROPERTIES SOVERSION ${TQSLLIB_VERSION})
+ target_link_libraries(${TQSLLIBNAME} ${OPENSSL_LIBRARIES} ${EXPAT_LIBRARIES} ${ZLIB_LIBRARIES} ${SQLite3_LIBRARIES} ${CARBON_LIBRARY})
+ if(WIN32)
+   target_link_libraries(${TQSLLIBNAME} ws2_32 Crypt32)

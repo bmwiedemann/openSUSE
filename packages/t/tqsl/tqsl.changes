@@ -1,0 +1,652 @@
+-------------------------------------------------------------------
+Fri Feb 14 19:33:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Prepare package for openSUSE Tumbleweed inclusion
+- properly package shared library, add tqsl-tqsllib.patch
+
+-------------------------------------------------------------------
+Fri Dec  6 17:42:20 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.7.5
+  * TQSL now allows renewal of certificates which have not expired.
+  * When updating QTH details from an ADIF log, certain fields such
+    as US_STATE were not upper-cased as expected by Logbook of the
+    World. TQSL now properly uppercases those fields.
+
+-------------------------------------------------------------------
+Fri Nov  8 21:53:47 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.7.4
+  * Further correction of handling of US portable callsigns and FCC
+    Universal Licensing Service (ULS) data.
+  * Correct handling of language mapping. Changes to the underlying
+    wxWidgets platform caused some translations to fail.
+  * When editing or creating Station Locations, saving of invalid
+    gridsquares is now rejected. TQSL would allow a user to
+    repeatedly click “next” to bypass the check.
+  * TQSL now has a database of valid gridsquares indexed by DXCC
+    entity and primary subdivision (state, province, etc.) allowing
+    detection of invalid gridsquares in station locations.
+  * When upload of a Callsign Certificate request fails, TQSL now
+    allows the user to save that for a later upload.
+  * Handle network outages more graciously. Don’t repeatedly try to
+    connect to Logbook when it’s down, as this could cause startup
+    to take many minutes for some circumstances. TQSL now detects
+    the errors and stops trying.
+  * Allow renewal of Callsign Certificates that expired within the
+    last 90 days.
+  * Warn users with US base callsigns and portable modifiers that
+    reciprocity agreements such as CEPT require US callsign holders
+    to be US citizens.
+  * Suppress “wxGTK-WARNING” messages on Linux systems.
+  * Allow an empty location name on the command line to indicate to
+    TQSL that the log submitted for signing has valid station
+    location data (ADIF MY_xxx fields) and that no station location
+    should be used
+
+-------------------------------------------------------------------
+Sat Apr 13 06:51:50 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.7.3
+  * Detect cases where the user’s computer clock is set
+    incorrectly. Rather than generating a meaningless “cannot
+    load authority certificate” error, TQSL now tells the user
+    if their clock is set far into the past or into the future.
+  * Attempts to load expired and replaced callsign certificates
+    now display a better explanation of the issue and provide a
+    URL for downloading a current set of the user’s callsign
+    certificates.
+  * Change "some QSOs suppressed" wording for log uploads to
+    "some QSOs not processed".
+  * Pre-load a set of authority certificates into the TQSL
+    certificate store to allow certificates that were bundled with
+    the wrong authorities to be accepted.
+  * Fixed the check that was being incorrectly applied to portable
+    calls for US operations
+  * The Callsign Certificate display used to state “Awaiting ARRL
+    action” for pending callsign certificates, including ones that
+    Logbook had rejected. TQSL no longer uses this label.
+  * Correct handling of an empty upload tracking database. If the
+    file exists but has no content, TQSL deletes it and recreates
+    the database.
+
+-------------------------------------------------------------------
+Sun Dec 31 16:25:07 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+- update to version 2.7.2
+  * Handle locked upload tracking databases properly. When more
+    than one copy of TQSL is running, detect that and provide an
+    error messaging asking to complete other uploads.
+  * For some errors being triggered when processing an ADIF file
+    before any QSO data was read, TQSL would print a random line
+    number. TQSL now always initializes the line number properly.
+  * If the uploads database is corrupt, TQSL would emit spurious
+    error messages on exit due to the automatic backup operation
+    being performed. This is no longer displayed.
+  * When the uploads database was locked, TQSL would lock up and
+    not proceed when attempting to sign a log. TQSL now handles this
+    and emits a reasonable error message.
+  * Detect and repair the uploads database for cases where an empty
+    file had been created. TQSL now deletes that file and creates
+    a new uploads database rather than aborting signing the log.
+  * When installing a new version of the TQSL configuration file,
+    TQSL could reference memory areas that had been released,
+    leading to crashes. TQSL now releases this memory properly.
+  * Detect cases where the user’s computer clock is set incorrectly.
+    Rather than generating a meaningless “cannot load authority
+    certificate” error, TQSL now tells the user if their clock is
+    set far into the past or into the future.
+  * TQSL would generate error messages when identical QSOs appear
+    in an ADIF log. It now handles duplicate QSOs properly.
+
+-------------------------------------------------------------------
+Wed Dec  6 19:59:57 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fixed desktop categories
+
+-------------------------------------------------------------------
+Thu Oct 19 19:37:53 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.7.1
+  * When upload a Callsign Certificate to Logbook, TQSL now decodes
+    error messages properly
+  * Portable callsign handling has been corrected so they work as
+    Logbook expects.
+  * When handling requests for US-based 1x1 callsigns, TQSL would
+    always check in the FCC ULS database to see if the callsign is
+    valid.
+  * TQSL no longer uses BerkeleyDB as Oracle it frequently
+    corrupted the database.
+  * TQSL now does not use the OPERATOR field when it is too long
+    to be a callsign.
+  * Update the encryption algorithm used for saving callsign
+    certificates (P12 files) from RC2 to AES-256.
+  * Correct issues with the TQSL ADIF editor where some modes (PKT,
+    PAC, FM) were not processed properly.
+  * Add a preference that allows ignoring callsigns in ADIF files
+    being signed.
+
+-------------------------------------------------------------------
+Thu Sep 15 21:15:51 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.6.5
+  * Correct handling of portable callsigns correctly when they’re
+    in the USA. The previous correction wasn’t complete.
+  * Don’t allow illogical combinations of CQ and ITU zones. When a
+    user changes DXCC entity, state, province, etc. only allow
+    correct combinations.
+  * Stop using the wxWidgets pulldown menu system because Microsoft
+    broke handling of pulldown menus for Windows 11 22H2 release.
+  * Allow malformed Cabrillo files with CR (Carriage Return) line
+    endings, to accommodate very old Mac loggers.
+  * When the database used to track uploaded QSOs is found to be
+    corrupted, be more aggressive about deleting It and recreating.
+
+-------------------------------------------------------------------
+Mon Jun 20 17:29:52 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.6.4
+  * Correct the cause of a crash when TQSL detects an expiring
+    callsign certificate and the user chooses to renew that
+    certificate.
+  * When signing a log, TQSL checks if there are any valid callsign
+    certificates for that call before allowing signing to proceed.
+    This check caused station locations with “None” as their callsign
+    to be rejected when signing a log. This is now corrected to
+    permit the station location to be used.
+  * When checking callsign validity, allow both “K1MU/KH6” and
+    “KH6/K1MU” forms of the portable
+
+-------------------------------------------------------------------
+Mon May 30 17:37:19 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.6.3
+  * Corrections for a defect found since TQSL 2.6 was released
+  * Some less critical updates.
+
+-------------------------------------------------------------------
+Thu May 19 18:50:04 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.6.2
+  * Several minor usability updates were implemented.
+
+-------------------------------------------------------------------
+Wed May 11 19:27:21 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.6.1
+  * This release includes an update to correct a defect that could
+    cause TQSL to “hang” and never complete signing a log when
+    previously submitted QSOs were submitted for signing.
+
+-------------------------------------------------------------------
+Tue Apr 26 21:51:31 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.6
+  * There were no serious defects reported for TQSL 2.5.9. This
+    release contains several minor updates which have accumulated
+    since 2.5.9.
+- improved install section of makefile, some workarounds removed 
+  from specfile
+
+-------------------------------------------------------------------
+Sat Nov  6 23:20:35 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.9
+  *Defects Corrected:
+    * When signing an ADIF log containing QTH information (such
+      as MY_STATE, MY_COUNTY), TQSL can be configured to either
+      report differences between the log and the selected station
+      location, update the station location, or ignore the
+      differences. TQSL now follows the preference settings.
+    + When defining a “mode map” for ADIF modes which are not
+      supported by TQSL, any modes which contained a slash would
+      not be stored properly or act as expected. TQSL now supports
+      these modes.
+  * The localizations for “Chinese (Traditional)” and
+    “Chinese (Simplified)” were reversed. TQSL now uses
+    the proper translations.
+  * TQSL now accepts both “C” and “S” as valid string types.
+
+-------------------------------------------------------------------
+Sat Jul 31 22:25:02 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.8
+  * The format of IOTA entries is now validated. This is a strict
+    format validation, as in the IOTA must be a continent followed
+    by a hyphen and a number, such as “AF-001”.
+  * The display of the last usable date of a Callsign Certificate
+    now shows the date of the last QSO that can be signed, as that’s
+    much more useful information than the expiration date in many
+    cases, as the Callsign Certificate cannot be used past that date.
+  * TQSL now accepts “AO-07” as a valid name for satellite “AO-7”.
+  * The Russian Oblast “YN” was incorrectly coded in the LoTW 
+    configuration file as abbreviation “JN”. TQSL now accepts the
+    proper value and translates “JN” into “YN” properly.
+
+-------------------------------------------------------------------
+Wed Dec  2 23:44:25 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.7
+  * corrected a problem that can cause TQSL to crash when attempting
+    to upload a log.
+
+-------------------------------------------------------------------
+Sun Nov 15 14:52:43 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.6
+  * includes an update to the most recent TQSL configuration file.
+  * fixad an incompatible change in command-line log handling,
+  * fixed a bug that could cause the ADIF editor to lose files being
+    edited,
+  * fixed potential crash in TQSL.
+
+-------------------------------------------------------------------
+Thu Sep 24 22:36:47 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.5
+  * includes an update to the most recent TQSL configuration file.
+  * corrected a defects related to handling callsigns where a
+    lower-case call did not match the same call but in upper case only
+  * an issue related to installing .P12 files, where restoring one
+    would silently fail in some circumstances (expired CA certificate)
+    was fixed
+
+-------------------------------------------------------------------
+Fri Jun 12 23:22:56 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.4
+  * LoTW and TQSL now both properly enforce a 20 character limit
+    for callsigns.
+  * TQSL now properly selects the right callsign certificate when
+    multiple callsign certificates with the same callsign for
+    more than one DXCC entity exists.
+
+-------------------------------------------------------------------
+Sun Apr 19 14:26:13 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.3
+  * fixed issue with long callsigns; LoTW and TQSL now both properly
+    enforce a 20 character limit. 
+  * fixed issue related to operators with multiple callsign
+    certificates with the same callsign for more than one DXCC
+    entity.
+-------------------------------------------------------------------
+Mon Apr 13 13:45:36 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.2
+- Defects Corrected:
+  * fixed verifying a US callsigns if the data from the FCC had
+    become corrupted
+  * TQSL now reports when it is unable to open the files needed to
+    connect to Logbook
+  * when https (Secure) connections to Logbook fail, tqsl now falls
+    back to trying insecure (http) requests
+  * ensure that expired or otherwise invalid certificates in the
+    chain verifying a user Callsign Certificate are properly
+    reported.
+- Major feature Additions:
+  * When a log is signed by TQSL, the station details (Callsign,
+    DXCC entity, Gridsquare and other QTH details provided by the
+    selected Station Location (and Callsign Certificate) are
+    compared to the details provided by the log. 
+  * a station performing roaming operations can choose to have TQSL
+    assume that the log is correct
+- Minor Updates:
+  * add diagnostic log lines suggested by David, W1HKJ,
+  * fix centering of date fields in the date range prompt dialog box,
+  * when a user is changing the language, the current language is
+    now selected in the language selection dialog.
+  * TQSL now handles Unicode/UTF-8 format “Cabrillo” files by
+    ignoring the extra bytes before the "START-OF-LOG" signal.
+  * if a BAND is provided for a QSO along with a FREQ, where that
+    frequency (or receive frequency) is outside the related ham band,
+    ignore the FREQ setting.
+  * ensure that messages from TQSL are properly translatable – some
+    long messages were not entirely translated.
+
+-------------------------------------------------------------------
+Sat Nov 16 19:01:50 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.5.1
+- Defects Corrected:
+  * TQSL no longer displays a spurious error message about expired
+    root certificates when installing a .tq6 file
+  * When editing an existing station location, TQSL no longer
+    forces default values for information fields.
+  * Correct ADIF output from the embedded ADIF editor so the
+    proper mode/submode formation is generated.
+  * Correct a defect that could cause TQSL to crash when backing up
+    to a .TBK file.
+- Major feature Additions:
+  * Use an ARRL-supplied web service with ULS data to pre-fill
+    station location information.
+  * TQSL no longer asks for passwords for callsign certificates when
+    they are created. There is a preference setting to re-enable this
+    if desired.
+  * When submitting requests for US 1x1 callsigns, which must always
+    be a signed request, ensure that the flow properly marks the
+    callsign as 1x1, and that the requester has a valid callsign
+    certificate that can be used to sign that request.
+- Minor Updates:
+  * When listing DXCC entities, the list now has the deleted entities
+    moved to the end. The word “DELETED” in the entity name is now localizable.
+  * Replace the term “duplicate” when referring to QSOs which have
+    already been uploaded to LoTW – calling them “previously uploaded” is
+    less confusing as it says what’s wrong with those QSOs.
+  * Verify that the user has the ability to write files to the TQSL
+    working directory when TQSL starts up.
+  * Update the icon for a “Waiting for Callsign Certificate” from a
+    slashed circle to a clock.
+  * Restrict the number of callsign certificate requests that a
+    user can submit to 3 times in 24 hours.
+  * When creating a callsign certificate request, TQSL now asks what
+    kind of callsign this is for first so the rest of the questions
+    are relevant to that callsign.
+  * When an ADIF file has a BAND as well as a FREQ (frequency) or
+    RX_FREQ (receive frequency) where the band is valid but the frequency
+    is outside the band, the frequency is now ignored.
+  * The error message displayed when a callsign certificate’s
+    private key is missing is now more descriptive.
+  * Translations updated.
+
+-------------------------------------------------------------------
+Sun Apr 28 11:26:55 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.4.7
+
+-------------------------------------------------------------------
+Mon Apr 22 11:36:54 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.4.6
+  Correct defect for Windows command line users where error messages
+  about problems with submitted QSOs (out of date range, bad callsigns,
+  etc) would be garbled so they were unreadable.
+- update to version 2.4.5
+  Fixed formatting of output from command-line operations on Windows
+  systems.
+- update to version 2.4.4
+  Fixed issues with Hindi and Polish not displaying properly on
+  Windows systems. Fix an error that was keeping the State and County
+  from being defaulted when creating a new Station Location.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:53:51 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.4.3
+  Fixed a defect in the station location wizard that would cause
+  state and county information (also province, etc.) to be lost
+  when editing a station location.
+
+- update to version 2.4.2
+  Ensure that the exit status message emitted by TQSL appears in 
+  English so logging programs can use that to detect exit status.
+  In the past, this could have been output in the local language,
+  making it more difficult for the calling program to detect whether
+  or not there were any errors.
+
+  Improve setting of ITU and CQ zones when defining a Station 
+  Location. There were many cases where these were left empty, which
+  means that Station Locations were more likely to not have zones
+  defined.
+
+  Fix issue with Windows updates of TQSL failing when the user's
+  directory has a space embedded. Note that this is a forwards-looking
+  fix: this defect is in the existing TQSL 2.4.1, so updates for users
+  with spaces in their usernames will continue to fail until after 
+  2.4.2 or 2.4.3 is installed.
+
+  Remove spurious error message when run on a system where the local
+  language is not supported.
+
+- Features Added:
+  When displaying a callsign certificate where the private key is 
+  missing from the local system, specifically state that the private key
+  is not found. Added a specific message for keys that cannot be opened
+  to provide the root cause.
+
+  Improve the error message for missing private keys to be more
+  descriptive.
+
+  Add the ability to map Cabrillo modes to user-specified ADIF modes
+  using the cab_modes.dat file in the TQSL user directory. File has
+  Cabrillo modes (two characters), then an ADIF mode, comma delimited.
+
+  Default file is provided by TQSL and users can provide their own.
+
+  Allow adding translations without making code changes.
+
+-------------------------------------------------------------------
+Sat Nov 17 14:26:22 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- removed patches libdir.diff and clang_analyzer.diff
+- update to version 2.4.1
+  Display "No Private Key" versus an error message when displaying a callsign
+  certificate with no installed private key.
+
+  Fix defect that meant that some callsign certificates (those with missing
+  private keys) could not be restored from a .TBK file containing a good copy.
+
+  Fix defect that was causing callsign certificate renewals to have "null null
+  null" as the Name in some conditions.
+
+  Fix defect that was required deleting an existing callsign certificate before
+  importing a replacement .P12 file
+
+- update to version 2.4
+  Add Hindi translation.
+
+  Pre-load callsign certificate requests from the ARRL address data when it
+  is available for a given callsign.
+
+  Provide default gridsquare, state, and county for station locations when
+  available from the ARRL address data. Validate that gridsquares are 
+  consistent with the station's address.
+
+  Retain all certificate private keys. Mark as deleted and allow them to be
+  recovered. This allows the .TQ6 file downloaded from LoTW to always be used
+  to recover a user's callsign certificate.
+
+  Allow LMDB to be used with TQSL to work around Berkely DB licensing issues.
+
+-------------------------------------------------------------------
+Thu May 18 22:05:08 UTC 2017 - dl8fcl@darc.de
+
+- update to version 2.3.1
+  Add the ADIF satellite name to the pulldown menu in the ADIF editor to allow
+  satellites to be more easily looked up.
+
+  Add 'Saving QSOs' to the messages to be translated.
+
+  Add Finnish translation from Juhani, OH8MXL.
+
+  When renewing a callsign certificate and backing up to earlier pages in the wizard,
+  don't display a spurious certificate type selection page.
+
+  When editing an ADIF file that has an invalid mode setting,
+  notify the user that it is being ignored.
+
+  Fix password prompt on systems with debug assertions enabled in wxWidgets.
+
+  Correct the invocation of the Windows Installer when an update is available.
+
+  Correct the counts reported when duplicate QSOs are found along with QSOs
+  with other errors.
+
+  Allow 'LIGHT' in a Cabrillo file to represent 300G and higher.
+
+  When there are multiple signature specifications in the configuration file,
+  choose the one with the highest version number.
+
+  Allow TQSL to build against OpenSSL 1.1.0.
+
+  Fix formatting of the messages that appear when QSOs change values
+  in the station location for duplicate QSOs.
+
+  Correct improperly formatted frequencies from ADIF files
+  (values like '7.010.20') to remove the extra periods.
+
+  Revert the change that stripped spaces in the TQSL configuration file as
+  that caused newlines to be removed in places like the station_data file.
+
+  Fix "OpenSSL error - bad end line" by ensuring that there's always
+  a newline starting a new certificate.
+
+  Add the ability to pull DXCC Entity valid date ranges to the TQSL
+  configuration file.
+
+-------------------------------------------------------------------
+Tue Mar 21 00:12:37 UTC 2017 - dl8fcl@darc.de
+
+- use %cmake macros
+
+-------------------------------------------------------------------
+Sat Oct  8 19:35:20 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.3
+  * more translations
+  * A defect that could cause TQSL to fail to import a callsign
+  certificate with "OpenSSL error - bad end line" has been corrected.
+  * Creating callsign certificate requests for renewal or for new
+  requests now verify that the "QSO start date" and "QSO end date"
+  match the start and end date for operations from that DXCC entity.
+  * When creating a new callsign certificate request, TQSL no longer
+  asks if it should be "signed" or not. Instead, TQSL asks what the
+  callsign certificate is meant for (personal call, dxpedition,
+  club  call, etc.) and chooses the proper approach depending on
+  the type of callsign.
+
+-------------------------------------------------------------------
+Mon May 23 08:35:03 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.2.2
+  several bugfixes
+  Italian, Japanese, Chinese translations 
+
+-------------------------------------------------------------------
+Tue Mar 15 12:34:01 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.2.1
+  1. Restoring an incorrect .TQ6 file when there is a pending callsign
+  certificate request could cause the pending request to be deleted. TQSL now
+  rejects the invalid TQ6 file and takes no other action.
+
+  2. Updating the LoTW configuration file could fail if the user's home
+  directory contained non-ASCII characters (Windows only).
+
+  3. Ensure that the password prompt window appears on top of other windows
+  when a password is requested while signing a log.
+
+  4. Correct defect that would cause Cabrillo "Light" mode QSOs (300 GHz) to
+  be rejected.
+
+  5. Correct handling of unrecognized ADIF MODE/SUBMODE entries to allow
+  user-defined modes to be used.
+
+  6. Fix a defect on OSX that would cause an incorrect error message to be
+  displayed when an incorrect password for a callsign certificate.
+
+  New features:
+  1. Allow an alternate layout for the user interface that moves the status
+  log to a separate tab. This is useful for users with long lists of station
+  locations or callsign certificates.
+
+  2. Update the duplicates tracking to allow reporting of station location
+  changes when the same QSO is signed from more than one station location.
+
+  3. Update the ADIF editor to automatically select the appropriate band when
+  a frequency is entered.
+
+  4. Add "Replaced' and "Expired" tags  to the callsign certificate
+  properties display.
+
+-------------------------------------------------------------------
+Thu Dec 31 15:31:25 UTC 2015 - dl8fcl@t-online.de
+
+- update to version 2.2
+  Allow the National Parks on the Air contest identifiers to be
+  seamlessly added to Station Locations.
+  No longer displays 'Invalid argument" when an incorrect password
+  is entered when renewing a password-protected callsign certificate.
+
+-------------------------------------------------------------------
+Sun Nov  8 11:55:35 UTC 2015 - dl8fcl@darc.de
+
+- update to version 2.1.3
+
+  Revert change in the behavior for command line applications.
+  TQSL 2.1 changed the behavior for ADIF files to open those with the
+  TQSL ADIF editor versus signing them unless "-x" or "-q" were on
+  the command line. This was an incompatible change that is not
+  consistent with the documentation and was removed.
+
+  Fix defect that could cause newly imported callsign certificates
+  to be deleted after the import completed.
+
+-------------------------------------------------------------------
+Sun Sep 27 21:45:11 UTC 2015 - dl8fcl@darc.de
+
+- update to version 2.1.2
+  Portuguese (Portugal) translations from Nuno, CT2IRY
+  
+  Correct command line parsing defect that causes TQSL to quit without
+  signing a log unless a station location is provided on the command line.
+
+  Correct the TQSL editor to not use the language settings for decimal
+  points as ADIF requires "." as the decimal separator.
+
+-------------------------------------------------------------------
+Sun Sep 13 21:15:53 UTC 2015 - dl8fcl@darc.de
+
+- update to version 2.1.1
+  A lot of feature enhancements and bug fixes.
+  see /usr/share/doc/packages/tqsl/ChangeLog.txt
+
+-------------------------------------------------------------------
+Wed Jul 30 22:26:50 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.0.3
+  bugfix, when creating station locations with only one certificate
+
+-------------------------------------------------------------------
+Sat Jul 12 23:17:29 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.0.2
+  a lot of bugfixes and improvements 
+
+-------------------------------------------------------------------
+Sun Dec 15 22:15:14 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.0.1
+  a lot of bugfixes
+  TQSL now checks the status of callsign certificates using an
+  online service at LoTW
+
+-------------------------------------------------------------------
+Wed Nov  6 10:08:57 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.0
+  combines tqslcert and tqsl into a single program,
+  added additional documentation for certificate operations
+  includes a new, task oriented GUI. 
+
+-------------------------------------------------------------------
+Sun Aug 11 21:43:05 UTC 2013 - dl8fcl@darc.de
+
+- update to version 1.14.3
+  fix for the command line tool when detecting a new version 
+
+-------------------------------------------------------------------
+Sun Jun 30 22:35:54 UTC 2013 - dl8fcl@darc.de
+
+- import into buildservice
+
+  Substitude for package TrustedQSL
+
+  update to version 1.14.2
+  tqsllib is now included in this package
+  Log files can be signed and uploaded over the internet to LoTW in one operation.
+  Errors in Station Locations are reported (for example, incorrect CQ and ITU zones).
+  QSOs that need not be re-submitted (“duplicates”) are brought to the user’s attention.
+  Error reporting has been improved.
+  Users are notified when a new version becomes available.
+  Documentation has been improved. 
+

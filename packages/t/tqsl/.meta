@@ -1,0 +1,6 @@
+<package name="tqsl" project="openSUSE:Factory">
+  <title>tqsl</title>
+  <description>The TrustedQSL applications are used for generating digitally signed
+QSO records (records of Amateur Radio contacts).</description>
+  <devel project="hamradio" package="tqsl"/>
+</package>
