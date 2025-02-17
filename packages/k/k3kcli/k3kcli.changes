@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:29:40 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.0:
+  CLI-related changes
+  * Small cli refactor (`cluster name` as arg, default kubeconfig
+    path) (#230)
+
+-------------------------------------------------------------------
 Wed Aug  7 11:04:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package k3kcli: a Kubernetes in Kubernetes tool, k3k provides

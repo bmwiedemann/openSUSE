@@ -7,4 +7,12 @@
     <comment>new package k3kcli: a Kubernetes in Kubernetes tool, k3k provides a way to run multiple embedded isolated k3s clusters on your kubernetes cluster</comment>
     <requestid>1200975</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1da5b68a737ea080f1e21417f193cfae</srcmd5>
+    <version>0.3.0</version>
+    <time>1739822247</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246438</requestid>
+  </revision>
 </revisionlist>
