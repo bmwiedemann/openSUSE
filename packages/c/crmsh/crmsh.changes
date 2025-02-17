@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 17 02:01:56 UTC 2025 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20250217.8bb3232e:
+  * Dev: unittest: Remove or replace stonith:null and stonith:ssh
+  * Dev: testcases: Adjust original test cases to match pacemaker-3
+  * Dev: ui_cib: crm_shadow reset requires '--force' option
+  * Fix: ci: test container image build failure in tumbleweed
+
+-------------------------------------------------------------------
+Wed Feb 12 08:28:36 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250212.e63ac0bf:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: doc: Drop the syntax mention of '@<id>:name' in crm.8.adoc
+  * Dev: Improve options of 'crm status' command (jsc#PED-8231)
+  * Dev: constants: Drop deprecated 'restart-type' resource option (jsc#PED-8231)
+  * Dev: Drop unsupported 'moon' in date_spec (jsc#PED-8231)
+  * Dev: Remove deprecated cibadmin --local option (jsc#PED-8231)
+  * Dev: crash_test.utils: Drop deprecated 'poweroff' value of 'stonith-action' option (jsc#PED-8231)
+  * Dev: constants: Drop deprecated "crmd-integration-timeout" and "crmd-finalization-timeout" (jsc#PED-8231)
+  * Dev: utils: Make change since 'crmd-transition-delay' already renamed to 'transition-delay' (jsc#PED-8231)
+  * Dev: bootstrap: Drop 'record-pending' operation option (jsc#PED-8231)
+
+-------------------------------------------------------------------
 Mon Feb 10 11:03:40 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250210.db3e9f28:
