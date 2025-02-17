@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-server-fixtures
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-server-fixtures
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Extensible server fixtures for pytest
 License:        MIT
@@ -25,10 +25,8 @@ URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-server-fixtures/pytest-server-fixtures-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#github.com/man-group/pytest-plugins#221
 Patch0:         remove-six-and-future.patch
-# PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#249
-Patch1:         fix-httpd-fixture-path.patch
 # PATCH-FIX-UPSTREAM gh#man-group/pytest-plugins#250
-Patch2:         support-64-bit-pids-xvfb.patch
+Patch1:         support-64-bit-pids-xvfb.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
@@ -108,7 +106,7 @@ sed -i '/mod_mpm_prefork.so/d' pytest_server_fixtures/httpd.py
 
 %check
 export PATH=$HOME/bin:$PATH:%{_sbindir}
-export SERVER_FIXTURES_HTTPD_MODULES=%{_libdir}/apache2/
+export SERVER_FIXTURES_HTTPD_MODULES=$(ls -1d /usr/lib*/apache2)
 export SERVER_FIXTURES_HTTPD=httpd
 export SERVER_FIXTURES_REDIS=%{_sbindir}/redis-server
 # gh#man-group/pytest-plugins#177

@@ -112,4 +112,17 @@
   * Support 64 bit PIDs when running Xvfb</comment>
     <requestid>1216912</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bcf175c46d07bd3e5fb2263941d32f30</srcmd5>
+    <version>1.8.1</version>
+    <time>1739822095</time>
+    <user>anag+factory</user>
+    <comment>- Don't use %_libdir to discover where apache2 is living. 
+
+- Update 1.8.1:
+  * Correct httpd command line
+  * Minor bugfix now that workspace.workspace is a Path object.
+- Drop patch fix-httpd-fixture-path.patch, now included.</comment>
+    <requestid>1246294</requestid>
+  </revision>
 </revisionlist>

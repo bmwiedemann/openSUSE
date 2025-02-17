@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Feb 17 03:14:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't use %_libdir to discover where apache2 is living. 
+
+-------------------------------------------------------------------
+Tue Feb  4 04:07:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 1.8.1:
+  * Correct httpd command line
+  * Minor bugfix now that workspace.workspace is a Path object.
+- Drop patch fix-httpd-fixture-path.patch, now included.
+
+-------------------------------------------------------------------
 Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.0:
