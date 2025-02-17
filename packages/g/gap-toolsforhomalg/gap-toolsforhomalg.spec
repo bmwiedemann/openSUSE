@@ -1,7 +1,7 @@
 #
 # spec file for package gap-toolsforhomalg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-toolsforhomalg
-Version:        2023.11.01
-%define sillyver 2023.11-01
+Version:        2024.09.01
+%define sillyver 2024.09-01
 Release:        0
 Summary:        GAP: Special methods and knowledge propagation tools
 License:        GPL-2.0-only
