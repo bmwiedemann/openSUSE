@@ -176,4 +176,14 @@
 </comment>
     <requestid>1223432</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6e5f69a48b304faefd7cf127148a0942</srcmd5>
+    <version>5.3.105</version>
+    <time>1739822159</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.105 (no changelog).
+- Update to 5.3.96 (no changelog).
+</comment>
+    <requestid>1246358</requestid>
+  </revision>
 </revisionlist>
