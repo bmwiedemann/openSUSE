@@ -1,7 +1,7 @@
 #
 # spec file for package lego
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           lego
-Version:        4.21.0
+Version:        4.22.0
 Release:        0
 Summary:        Let's Encrypt/ACME client and library written in Go
 License:        MIT
@@ -32,8 +30,7 @@ BuildRequires:  go >= 1.23
 Let's Encrypt/ACME client and library written in Go.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \

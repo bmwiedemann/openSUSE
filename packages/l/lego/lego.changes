@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb 17 14:36:06 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.22.0:
+  * Prepare release v4.22.0
+  * acme-dns: fix file path (#2439)
+  * acme-dns: allow the HTTP storage server to create the CNAME
+    (#2437)
+  * chore: update linter (#2434)
+  * feat(cli): add an option to set the private key (#2431)
+  * Add DNS provider for Spaceship (#2406)
+  * fix: rewrite status management (#2428)
+  * chore: update links of liara provider API doc (#2424)
+  * feat: option to set CSR emails (#2423)
+  * feat: add delay option for HTTP challenge (#2422)
+  * feat(cli): add LEGO_DEBUG_ACME_HTTP_CLIENT to debug the calls
+    to the ACME server (#2420)
+  * feat: add support for Profiles Extension (#2415)
+  * fix(cli): remove extra debug logs (#2412)
+  * Add DNS provider for myaddr.{tools,dev,io} (#2411)
+  * chore: update issue template
+  * chore: use constants for env vars related to flags (#2399)
+  * cli: add environment variable for specifying email (#2398)
+  * docs: improve units and default values (#2397)
+  * netcup: remove TTL option (#2396)
+  * acme-dns: HTTP storage (#2393)
+  * feat: add hook-timeout to run and renew commands (#2389)
+  * chore: update linter (#2387)
+  * Detach v4.21.0
+
+-------------------------------------------------------------------
 Sat Dec 21 14:31:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.21.0:
