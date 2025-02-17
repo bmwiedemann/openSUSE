@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Feb 14 06:23:08 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.10.3:
+  * v0.10.3
+  * lib: fix filter_proc when short cmdline
+  * update dump_xdna_device
+  * lib, xdna: get_xdna_metadata
+  * lib: fix Cargo.toml
+
+-------------------------------------------------------------------
+Fri Feb 14 06:23:05 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.10.2:
+  - reduce allocations and improve dump commands
+  - support for dynamic loading of libdrm and libdrm_amdgpu (amdgpu_top remains a dynamic link)
+  - specify rev of libdrm_amdgpu_sys (#109)
+  - add fdinfo description in README.md (#115)
+  - Add remark to build on Fedora (#117, by @jdeluyck)
+  - update release.yml
+    - use ubuntu-22.04 image
+    - add ubuntu-22.04-arm image
+    - add aarch64/arm64 binaries to the release
+  - update DevicePath::check_if_device_is_active for env where CONFIG_PM is disabled (#119)
+  * XDNA
+    - fix the detection of XDNA NPU (#120, tested by @GreyXor)
+    - impl ioctl for amdxdna-driver (tested by @GreyXor)
+  * TUI
+    - add "--hide-fdinfo" option for TUI mode (#108)
+    - update help for toggle (#111)
+    - collapsible view in one row (#112)
+    - collapse panel without delay (#113)
+  * GUI
+    - Add Georgian tranlsation (#116, by @NorwayFun)
+
+-------------------------------------------------------------------
 Mon Jan  6 09:44:35 UTC 2025 - Marek Sapota <marek@sapota.org>
 
 - Add missing runtime requirements.
