@@ -1,4 +1,187 @@
 -------------------------------------------------------------------
+Mon Feb 03 16:15:51 UTC 2025 - matwey.kornilov@gmail.com
+
+- Changes for 27.2.1:
+  * ssh: With this change, type specs for ssh:connection_info/1,2
+    functions are fixed so they include {error, term()} return
+    value.
+  * ssh: With this change, ssh client accepts a banner sent during
+    processing keyboard interactive user authentication.
+  * ssh: With this change, large sftp transfers does not hang.
+    Redundant window adjustment are not requested.
+  * tftp: Fix specs in tftp:read_file function.
+  * common_test: Common test will now not crash when running tests
+    with otp26 and earlier, while having previous test resuts from
+    otp27.
+  * erts: Fixed configure tests for GCC 14
+  * erts: Fix bug where log printouts would go missing when
+    application_controller is stopping while log messages are being
+    sent.
+  * dialyzer: Fixed a crash caused by the use of opaque types.
+  * kernel: Fix the default group_leader to reply {error,request}
+    on invalid I/O requests instead of crashing.
+- Changes for 27.2:
+  * os_mon: Fixed the m:memsup memory alarm to use available_memory
+    when available, instead of always using free_memory.
+  * ssh: Documentation is polished after OTP-27 migration to
+    markdown.
+  * compiler: Fixed a crash in the common sub-expression
+    elimination pass.
+  * compiler: Fixed a bug where bogus code was generated for
+    consecutive calls to erlang:setelement/2, potentially crashing
+    the runtime system.
+  * compiler: When the line_coverage option was used, exceptions
+    could show the wrong line for where the exception was raised.
+  * compiler: The line_coverage option would be ignored if given in
+    a compile() attribute within a module.
+  * compiler: A segment matching a float in a binary generator will
+    now skip any invalid float (such as a NaN) and continue
+    matching the rest of the binary. Before this correction, the
+    comprehension would stop as soon as an invalid float was
+    encountered.
+  * observer: In the Memory tab of crashdump_viewer, the blocks
+    sizes in Allocator Summary would all be N/A.
+  * observer: The Kernel application now recognizes the epmd_module
+    and erl_epmd_listen_port parameters, similar to
+    -kernel:connect_all.
+  * stdlib: Made it possible to expand help text displayed by
+    pressing ^[h by pressing ^[h again.
+  * stdlib: Defining a fun in the shell using the syntax fun
+    Name/Arity would fail. This has been corrected so that the
+    following now works:
+  * stdlib: Fixed a bug where completion of 'fun(' would cause the
+    shell to crash.
+  * stdlib: Fixed a bug causing the shell to crash while trying to
+    complete an expression starting with a '/' or a variable
+    followed by '(' or '/'. E.g. Foo/ and Foo(.
+  * stdlib: zip:extract/2 with keep_old_files now respects the cwd
+    option.
+  * stdlib: Fixed an error in uri_string:percent_decode spec
+  * stdlib: Updated shell docs to display the type spec, that is,
+    [h(erlang, min, 2)](%60%5Cc:h/2%60) now prints the type spec
+    and documentation in the shell.
+  * stdlib: The t:file:io_device/0 type has been updated to clearly
+    show the difference between a raw and cooked IoDevice.
+  * stdlib: Added json:format_key_value_list/3 and
+    json:format_key_value_list_checked/3.
+  * stdlib: Improved documentation of
+    [timers](%60e:erts:time_correction.md#timers%60).
+  * stdlib: Added logging support to t:io:user/0,
+    t:io:standard_io/0 and t:io:standard_error/0. See io:setopts/2
+    for more details.
+  * common_test: Fixed a bug where the sum of testcases' execution
+    time in HTML logs was sometimes miscalculated, and the table
+    was not fully printed.
+  * snmp: Erlang/OTP type specifications has been updated to
+    eliminate overlapping domains.
+  * ssl: Enhanced return value spec for active messages from the
+    TLS connection socket.
+  * eldap: Corrected dialyzer spec for usage of TLS options. The
+    incorrect usage for the options in eldap could cause dialyzer
+    warnings in user code referring to eldap specs.
+  * erts: gen_sctp:peeloff/2 has been fixed to inherit socket
+    options to the peeled off socket more like gen_tcp:accept/1,
+    for example the options tos or tclass.
+  * erts: Fixed a bug where Erlang would corrupt the terminal
+    settings if stdin was a TTY but stdout was not.
+  * erts: Fixed a bug in the non-JIT VM when loading a NIF over a
+    function that is already traced by more than one session. This
+    caused a VM crash. This bug has existed since OTP-27.0, where
+    multiple trace sessions were introduced.
+  * erts: Fixed a bug where the loading of modules with extremely
+    large binary construction instructions crashed the emulator on
+    AArch64.
+  * erts: [inet:getifaddrs/0,1](%60inet:getifaddrs/1%60) is
+    improved when using inet_backend = socket.
+  * erts: win32reg:value/2 will no longer crash the emulator when
+    the value is an unterminated REG_SZ of size 0.
+  * erts: Makefile dependency generation on Windows in WSL 2 has
+    been corrected.
+  * erts: Fix lock order violation if a NIF monitor down callback
+    calls enif_whereis_pid. Would cause debug emulator to crash but
+    could potentially lead to deadlocks in optimized emulator.
+  * erts: Fixed compilation faults when compiling using --enable-
+    vm-probes.
+  * erts: Fixed erl_nif.h on Windows to compile when gcc or clang
+    is used.
+  * erts: Fixed a minor issue in the JIT debug information that
+    confused tools like GDB and perf.
+  * erts: Improved documentation of
+    [timers](time_correction.md#timers).
+  * erts: The label for a process can now be retrieved also using
+    process_info(Pid, label) in addition to proc_lib:get_label/1.
+  * mnesia: Mnesia table converted from ext_copies to disc_copies
+    will now be properly saved to disk.
+  * mnesia: Mnesia could crash if table was deleted during
+    checkpoint initialization.
+  * dialyzer: Fixed type inference for
+    erlang:system_info(logical_processors).
+  * dialyzer: Dialyzer would crash when attempting to analyze a
+    module compiled with the line_coverage option.
+  * dialyzer: Erlang/OTP type specifications has been updated to
+    eliminate overlapping domains.
+  * tools: Fixed some deprecated errors on emacs-29.
+  * tools: The cover tool could sometimes wrongly report lines as
+    uncovered.
+  * tools: Fixed tprof:format(IoDevice, ...) to not demand unicode
+    encoding supported by IoDevice.
+  * debugger: Defining a fun in the shell using the syntax fun
+    Name/Arity would fail. This has been corrected so that the
+    following now works:
+  * debugger: Erlang/OTP type specifications has been updated to
+    eliminate overlapping domains.
+  * crypto: crypto:strong_rand_bytes/2 fixed to work on Ubuntu pro
+    with installed FIPS support.
+  * crypto: Fixed crypto:hash_final/1 for digest types shake128 and
+    shake256 when using OpenSSL 3.4 or newer.
+  * kernel: gen_sctp:peeloff/2 has been fixed to inherit socket
+    options to the peeled off socket more like gen_tcp:accept/1,
+    for example the options tos or tclass.
+  * kernel: Made it possible to expand help text displayed by
+    pressing ^[h by pressing ^[h again.
+  * kernel: [inet:getifaddrs/0,1](%60inet:getifaddrs/1%60) is
+    improved when using inet_backend = socket.
+  * kernel: Fixed t:logger:report/0 to mandate at least one element
+    in the report. This fixes an issue with overlapping spec
+    domains in all m:logger functions that use t:logger:report/0.
+  * kernel: Fixed deadlock on code_server. Multiple calls loading
+    the same module with an on_load function loading call would
+    create a deadlock.
+  * kernel: The Kernel application now recognizes the epmd_module
+    and erl_epmd_listen_port parameters, similar to
+    -kernel:connect_all.
+  * kernel: The inetrc kernel argument will now tolerate atoms
+    again to improve compatibility with old configurations that
+    relied on atoms working by accident.
+  * kernel: The t:file:io_device/0 type has been updated to clearly
+    show the difference between a raw and cooked IoDevice.
+  * kernel: Erlang/OTP type specifications has been updated to
+    eliminate overlapping domains.
+  * kernel: Added the kernel parameter
+    [os_cmd_shell](kernel_app.md#os_cmd_shell) that controls which
+    shell should be used by os:cmd/1.
+  * kernel: Added logging support to t:io:user/0,
+    t:io:standard_io/0 and t:io:standard_error/0. See io:setopts/2
+    for more details.
+  * megaco: Erlang/OTP type specifications has been updated to
+    eliminate overlapping domains.
+  * inets: The HTTP client now correctly takes into account the
+    full_result option when returning an asynchronous request.
+  * inets: A synchronous httpc:request now timeouts after the
+    Timeout specified in HttpOption {timeout, Timeout}.
+  * inets: Fixed a bug where calling httpc:set_options/2 when one
+    of keys: ipfamily or unix_socket, was not present, would cause
+    the other value to get overriden by the default value. The
+    validation of these options was also improved.
+  * inets: The variable Env in the mod_esi callback will now have
+    an additional property {connect_addr, Addr} indicating on which
+    address the server received a connection.
+  * public_key: public_key:cacerts_load/1 can now be configured via
+    the application environment.
+  * public_key: On MacOS, CA certificates are now also loaded from
+    the system keychain.
+
+-------------------------------------------------------------------
 Tue Dec 10 12:33:11 UTC 2024 - matwey.kornilov@gmail.com
 
 - Changes for 27.1.3:

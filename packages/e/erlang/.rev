@@ -1104,4 +1104,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>1229775</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>0efc4e506c0f8946a7ad679edf6e2f3a</srcmd5>
+    <version>27.2.1</version>
+    <time>1739822086</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246291</requestid>
+  </revision>
 </revisionlist>
