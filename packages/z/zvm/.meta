@@ -1,0 +1,5 @@
+<package name="zvm" project="openSUSE:Factory">
+  <title></title>
+  <description>Easily install/upgrade between different versions of Zig</description>
+  <devel project="devel:tools" package="zvm"/>
+</package>

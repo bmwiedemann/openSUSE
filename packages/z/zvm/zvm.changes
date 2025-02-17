@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Feb 14 18:36:44 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.3:
+  * Updating year to 2025 in main.go and LICENSE file,just a small pedant… by
+    @bq-wrongway in #114
+  * Use --zls In any location by @Jaxon-teBoekhorst in #112
+- Rebase patch disable-auto-upgrade.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 19:34:43 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.4 includes changes from 0.8.3:
+  * add loongarch64 by @candicandi in #109
+  * add powerpc64le
+- Add patch
+  * disable-auto-upgrade.patch
+
+-------------------------------------------------------------------
+Fri Dec 27 17:55:50 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Initial package of version: 0.8.2
+  * For the full changelog see: https://github.com/tristanisham/zvm/releases
