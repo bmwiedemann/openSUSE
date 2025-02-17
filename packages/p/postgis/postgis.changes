@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Feb 14 12:36:56 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Drop support for postgresql12 which is EOL.
+
+-------------------------------------------------------------------
 Thu Sep 26 19:34:24 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - upgrade to version 3.5.0
