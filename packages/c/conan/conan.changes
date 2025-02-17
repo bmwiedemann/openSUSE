@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Feb 15 12:01:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.12.2:
+  * Fix default name and let cycloneDX define a custom name
+    (gh#conan-io/conan#17760).
+  * Add cycloneDX add_tests and add_build parameters
+    (gh#conan-io/conan#17760).
+  * Fix cycloneDX tool parameters (gh#conan-io/conan#17760).
+
+-------------------------------------------------------------------
 Sat Feb  8 11:00:04 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.12.1:
