@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 13 12:01:25 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc 15
+- added patches
+  + 909-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Jan 23 19:33:55 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fix build on tumbleweed

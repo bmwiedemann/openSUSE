@@ -49,6 +49,7 @@ Patch18:        907-fix_spin_button_pagesize.patch
 Patch19:        908-no-file-selected.patch
 Patch20:        0010-fix_missing_sane-config.patch
 Patch21:        0005-m4.patch
+Patch22:        909-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
