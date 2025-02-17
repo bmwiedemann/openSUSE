@@ -1,0 +1,12 @@
+--- xcolors.c.orig	2025-02-14 11:31:23.614430920 +0000
++++ xcolors.c	2025-02-14 11:28:01.022687819 +0000
+@@ -282,7 +282,7 @@ colordemo(parent, startcolor, nearcolor,
+     char colorname[50], save_colorname[50];
+     char temp_buffer[255];
+     FILE *rgb;
+-    Bool do_color();
++    Bool do_color(Widget, char *);
+     double ddist = maxdist;
+     
+     rgb = fopen(opts.rgb_file, "r");
+

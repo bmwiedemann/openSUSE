@@ -1,7 +1,7 @@
 #
 # spec file for package xcolors
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source:         xcolors-04oct91.tar.bz2
 Patch0:         xcolors-04oct91.patch
 Patch1:         xcolors-04oct91-xorg7_rgbtxt.patch
 Patch2:         xcolors-gcc14.patch
+# fix build with gcc 15
+Patch3:         xcolors-gcc15.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)

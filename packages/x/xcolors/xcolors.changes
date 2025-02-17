@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 11:33:09 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix fix build with gcc 15
+  + xcolors-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 16:06:52 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
 
 - add xcolors-gcc14.patch to fix gcc14 compile time error
