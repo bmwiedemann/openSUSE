@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Feb  9 03:12:11 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.6.2.
+  ## 0.6.2
+
+    * Allow types to act as constructor functions, as in typst (#61).
+      Add new unexported module, Typst.Constructors, defining the
+      constructors for each of the typst types.
+      Fix name of string type: it is `str`, not `string` (which is only
+      the `repr`).
+
+    * Support `dict`, `datetime`, `symbol` constructors.
+
+    * Improve path handling when loading files (#60).
+      We now look in the "local path" (the path of the containing file)
+      except when the path begins with `/` (in which case it is resolved
+      relative to the package path).
+
+    * Fix issue with expression parsing involving labels (#59).
+
+    * Remove spurious trace in `getPath`.
+
+-------------------------------------------------------------------
 Sat Dec  7 21:53:05 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update typst to version 0.6.1.
