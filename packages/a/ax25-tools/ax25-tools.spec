@@ -21,16 +21,13 @@ Name:           ax25-tools
 Version:        0.0.10rc5
 Release:        0
 Summary:        AX.25 tools
-License:        GPL-2.0-only
-URL:            http://www.linux-ax25.org
-Source:         http://www.linux-ax25.org/pub/ax25-tools/ax25-tools-%{src_ver}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+License:        GPL-2.0-or-later
+URL:            https://linux-ax25.in-berlin.de/
+Source:         https://linux-ax25.in-berlin.de/pub/ax25-tools/%{name}-%{src_ver}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libax25-devel
-BuildRequires:  libtool
-BuildRequires:  ncurses-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 
 %description
 These are the support utilities required to make use of the internal
@@ -39,14 +36,12 @@ mostly configuration utilities, applications can be found in the
 package ax25apps.
 
 %prep
-%setup -q -n %{name}-%{src_ver}
+%autosetup -p1 -n %{name}-%{src_ver}
 
 %build
-export CFLAGS="%optflags -fcommon"
-autoreconf -fiv
 %configure \
   --localstatedir=%{_localstatedir}/lib
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install installconf
@@ -54,8 +49,10 @@ rm -rf %{buildroot}%{_datadir}/doc/ax25-tools
 rm -rf %{buildroot}%{_localstatedir}/lib/ax25/mheard/mheard.dat
 %fdupes %{buildroot}%{_mandir}
 
+%check
+%make_build check
+
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS ChangeLog README yamdrv/README.yamdrv
 %doc dmascc/README.dmascc user_call/README.user_call tcpip/ttylinkd.INSTALL
@@ -72,10 +69,10 @@ rm -rf %{buildroot}%{_localstatedir}/lib/ax25/mheard/mheard.dat
 %config(noreplace) %{_sysconfdir}/ax25/ttylinkd.conf
 %{_bindir}/*
 %{_sbindir}/*
-%{_mandir}/man1/*
-%{_mandir}/man4/*
-%{_mandir}/man5/*
-%{_mandir}/man8/*
-%{_mandir}/man9/*
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man4/*.4%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
+%{_mandir}/man8/*.8%{?ext_man}
+%{_mandir}/man9/*.9%{?ext_man}
 
 %changelog

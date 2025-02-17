@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Feb 16 16:35:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- refresh upstream, drop autotools, ncurses
+- license is GPL-2.0-or-later
+
+-------------------------------------------------------------------
 Thu Jun  3 16:45:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.0.10-rc5
