@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 13 03:34:00 UTC 2024 - ming li <mli@suse.com>
+
+- Update to release 1.0.5:
+  * Remove use of deprecated set_unexpected
+  * CI: fix 32bit builds
+
+-------------------------------------------------------------------
 Thu Feb  8 15:10:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.4
