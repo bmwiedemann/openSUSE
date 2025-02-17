@@ -25,4 +25,14 @@ Looking forward to any feedback!</comment>
     <comment></comment>
     <requestid>1243435</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>85eba476b8b220f184a51b4fd4072c6e</srcmd5>
+    <version>1.0.9</version>
+    <time>1739822177</time>
+    <user>anag+factory</user>
+    <comment>- add fix-aarch64.patch: Add patches for building for aarch64
+  * https://github.com/sched-ext/scx/issues/1320
+</comment>
+    <requestid>1246384</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,118 @@
+From ced285a14129da72b44c4170e5fa2bb9be510c76 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fredrik=20L=C3=B6nnegren?= <fredrik@frelon.se>
+Date: Thu, 13 Feb 2025 08:06:25 -0800
+Subject: [PATCH] backport upstream fixes for aarch64
+
+Backport and squash the following commits:
+
+  * 4997c240986cba2b4b5bcb1ebe0ebed56f105ac3
+  * 3bc716a46a93193f993cd9ab5465856be814392e
+  * 7f992e30893199479d4878922e81c48a94c8fbb3
+  * 406031b6a95ce95ec61d77ade4d9ee43d284b01f
+  * a59e0ae4a1430271b0b67f9cd58e0aafaf6e820e
+---
+ lib/sdt_alloc.bpf.c                      |  7 ++++---
+ scheds/rust/scx_rusty/src/bpf/main.bpf.c | 25 ++++++++++++++++++------
+ 2 files changed, 23 insertions(+), 9 deletions(-)
+
+diff --git a/lib/sdt_alloc.bpf.c b/lib/sdt_alloc.bpf.c
+index 418e63da..4f6c4010 100644
+--- a/lib/sdt_alloc.bpf.c
++++ b/lib/sdt_alloc.bpf.c
+@@ -13,10 +13,11 @@ char _license[] SEC("license") = "GPL";
+ struct {
+ 	__uint(type, BPF_MAP_TYPE_ARENA);
+ 	__uint(map_flags, BPF_F_MMAPABLE);
+-	__uint(max_entries, 1 << 20); /* number of pages */
+ #ifdef __TARGET_ARCH_arm64
++	__uint(max_entries, 1 << 16); /* number of pages */
+         __ulong(map_extra, (1ull << 32)); /* start of mmap() region */
+ #else
++	__uint(max_entries, 1 << 20); /* number of pages */
+         __ulong(map_extra, (1ull << 44)); /* start of mmap() region */
+ #endif
+ } arena __weak SEC(".maps");
+@@ -307,8 +308,8 @@ sdt_alloc_init(struct sdt_allocator *alloc, __u64 data_size)
+ 	size_t min_chunk_size;
+ 	int ret;
+ 
+-	_Static_assert(sizeof(struct sdt_chunk)  == PAGE_SIZE,
+-		"chunk size must be equal to a page");
++	_Static_assert(sizeof(struct sdt_chunk) <= PAGE_SIZE,
++		"chunk size must fit into a page");
+ 
+ 	ret = sdt_pool_set_size(&sdt_chunk_pool, sizeof(struct sdt_chunk), 1);
+ 	if (ret != 0)
+diff --git a/scheds/rust/scx_rusty/src/bpf/main.bpf.c b/scheds/rust/scx_rusty/src/bpf/main.bpf.c
+index 598cfcef..74a57f8c 100644
+--- a/scheds/rust/scx_rusty/src/bpf/main.bpf.c
++++ b/scheds/rust/scx_rusty/src/bpf/main.bpf.c
+@@ -1279,6 +1279,7 @@ static u64 node_dom_mask(u32 node_id)
+ 	return mask;
+ }
+ 
++#ifndef __TARGET_ARCH_arm64
+ /*
+  * Sets the preferred domain mask according to the mempolicy. See man(2)
+  * set_mempolicy for more details on mempolicy.
+@@ -1287,32 +1288,36 @@ static void task_set_preferred_mempolicy_dom_mask(struct task_struct *p,
+ 						  struct task_ctx *taskc)
+ {
+ 	struct bpf_cpumask *p_cpumask;
++	struct mempolicy *mempolicy;
+ 	u32 node_id;
+ 	u32 val = 0;
+ 	void *mask;
+ 
+ 	taskc->preferred_dom_mask = 0;
+ 
++	mempolicy = BPF_CORE_READ(p, mempolicy);
++	if (!mempolicy)
++		return;
++
+ 	p_cpumask = lookup_task_bpfmask(p);
+ 
+-	if (!mempolicy_affinity || !bpf_core_field_exists(p->mempolicy) ||
+-	    !p->mempolicy || !p_cpumask)
++	if (!mempolicy_affinity || !p_cpumask)
+ 		return;
+ 
+-	if (!(p->mempolicy->mode & (MPOL_BIND|MPOL_PREFERRED|MPOL_PREFERRED_MANY)))
++	if (!(mempolicy->mode & (MPOL_BIND|MPOL_PREFERRED|MPOL_PREFERRED_MANY)))
+ 		return;
+ 
+ 	// MPOL_BIND and MPOL_PREFERRED_MANY use the home_node field on the
+ 	// mempolicy struct, so use that for now. In the future the memory
+ 	// usage of the node can be checked to follow the same algorithm for
+ 	// where memory allocations will occur.
+-	if ((int)p->mempolicy->home_node >= 0) {
++	if ((int)mempolicy->home_node >= 0) {
+ 		taskc->preferred_dom_mask =
+-			node_dom_mask((u32)p->mempolicy->home_node);
++			node_dom_mask((u32)mempolicy->home_node);
+ 		return;
+ 	}
+ 
+-	mask = BPF_CORE_READ(p, mempolicy, nodes.bits);
++	mask = BPF_CORE_READ(mempolicy, nodes.bits);
+ 	if (bpf_core_read(&val, sizeof(val), mask))
+ 		return;
+ 
+@@ -1325,6 +1330,14 @@ static void task_set_preferred_mempolicy_dom_mask(struct task_struct *p,
+ 
+ 	return;
+ }
++#else
++
++static void task_set_preferred_mempolicy_dom_mask(struct task_struct *p,
++                                                 struct task_ctx *taskc)
++{}
++
++#endif
++
+ 
+ void BPF_STRUCT_OPS(rusty_dispatch, s32 cpu, struct task_struct *prev)
+ {
+-- 
+2.48.1
+

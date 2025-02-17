@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:54:08 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- add fix-aarch64.patch: Add patches for building for aarch64
+  * https://github.com/sched-ext/scx/issues/1320
+
+-------------------------------------------------------------------
 Wed Feb 05 08:41:57 UTC 2025 - fredrik.lonnegren@suse.com
 
 - Update to version 1.0.9:
