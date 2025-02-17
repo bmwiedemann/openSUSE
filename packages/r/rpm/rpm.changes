@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 12 13:36:45 CET 2025 - mls@suse.de
+
+- make the rpm package not depend on libarchive
+  * move the rpmuncompress tool to rpm-build
+  * rewrite rpm2archive to not use libarchive for cpio/tar writing
+  * new patch: rpm2archive.diff
+- revert buildroot macro setting that did more harm than good
+- add set_to_buildtime and set_to_source_date_epoch mtime policy
+  support
+  * new patch: mtime_policy_set.diff
+- drop unused 0001-Add-option-to-set-mtime-of-files-in-rpms.patch
+  patch
+- do not output debug messages in rpmspec -q if a buildsystem is
+  used
+  * new patch: buildsys.diff
+
+-------------------------------------------------------------------
 Mon Feb  3 13:13:27 CET 2025 - mls@suse.de
 
 - allow to have the primary binding signature in the unhashed area

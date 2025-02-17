@@ -2562,4 +2562,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- allow to have the primary binding signature in the unhashed area</comment>
     <requestid>1242814</requestid>
   </revision>
+  <revision rev="319" vrev="3">
+    <srcmd5>4a8ec253aded3dcc31c779689d7a2968</srcmd5>
+    <version>4.20.0</version>
+    <time>1739822009</time>
+    <user>anag+factory</user>
+    <comment>- make the rpm package not depend on libarchive</comment>
+    <requestid>1245646</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,12 @@
+--- build/parseSpec.c.orig	2025-02-13 13:20:21.075462279 +0000
++++ build/parseSpec.c	2025-02-13 13:15:42.447942795 +0000
+@@ -1429,7 +1429,8 @@ static rpmRC parseSpecParts(rpmSpec spec
+     /* rpmGlob returns files sorted */
+     if (rpmGlob(pattern, &argc, &argv) == 0) {
+ 	for (int i = 0; i < argc; i++) {
+-	    rpmlog(RPMLOG_NOTICE, "Reading %s\n", argv[i]);
++	    if (stage != PARSE_BUILDSYS)
++		rpmlog(RPMLOG_NOTICE, "Reading %s\n", argv[i]);
+ 	    pushOFI(spec, argv[i]);
+ 	    snprintf(spec->fileStack->readBuf, spec->fileStack->readBufLen,
+ 		     "# Spec part read from %s\n\n", argv[i]);

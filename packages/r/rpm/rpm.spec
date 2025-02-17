@@ -116,7 +116,6 @@ Patch135:       selinux_transactional_update.patch
 Patch136:       rpmsort_reverse.diff
 Patch138:       canongnu.diff
 Patch139:       cmake_python_version.diff
-Patch140:       0001-Add-option-to-set-mtime-of-files-in-rpms.patch
 Patch141:       0002-log-build-time-if-it-is-set-from-SOURCE_DATE_EPOCH.patch
 Patch142:       0003-Error-out-on-a-missing-changelog-date.patch
 Patch150:       unshare.diff
@@ -124,6 +123,9 @@ Patch151:       buildroot-symlink.diff
 Patch152:       debugpackage.diff
 Patch153:       nextfiles.diff
 Patch154:       undefbuildroot.diff
+Patch155:       rpm2archive.diff
+Patch156:       mtime_policy_set.diff
+Patch157:       buildsys.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -241,11 +243,8 @@ rm -rf sqlite
 %patch -P 122 -P 123
 %patch -P 131          -P 133 -P 134 -P 135 -P 136        -P 138
 %patch -P 139
-%if 0
-%patch -P 140
-%endif
 %patch -P 141 -P 142
-%patch -P 150 -P 151 -P 152 -P 153 -P 154
+%patch -P 150 -P 151 -P 152 -P 153 -P 154 -P 155 -P 156 -P 157
 
 %ifarch aarch64 ppc64le riscv64 loongarch64
 %patch -P 6464
@@ -450,7 +449,6 @@ fi
 	/usr/lib/rpm/rpmpopt-*
 	/usr/lib/rpm/rpmrc
 	/usr/lib/rpm/rpmsort
-	/usr/lib/rpm/rpmuncompress
 	/usr/lib/rpm/rpmdump
 	/usr/lib/rpm/suse
 	/usr/lib/rpm/tgpg
@@ -483,6 +481,7 @@ fi
 /usr/lib/rpm/rpm_macros_provides.sh
 /usr/lib/rpm/elfdeps
 /usr/lib/rpm/rpmdeps
+/usr/lib/rpm/rpmuncompress
 /usr/bin/rpmspec
 /usr/lib/rpm/brp-*
 /usr/lib/rpm/check-*

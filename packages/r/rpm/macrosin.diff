@@ -1,16 +1,6 @@
---- macros.in.orig	2024-12-16 12:48:44.110837972 +0000
-+++ macros.in	2024-12-16 12:52:32.014378635 +0000
-@@ -118,6 +118,9 @@
- #	The directory where sources/patches will be unpacked and built.
- %_builddir		%{_topdir}/BUILD
- 
-+#	The build root where built files will be installed into
-+%buildroot		%{_builddir}/%{NAME}-%{VERSION}-build/BUILDROOT
-+
- #	The interpreter used for build scriptlets.
- %_buildshell		/bin/sh
- 
-@@ -163,6 +166,7 @@
+--- macros.in.orig	2025-02-12 13:23:21.868124201 +0000
++++ macros.in	2025-02-12 13:23:58.436059109 +0000
+@@ -163,6 +163,7 @@
      %{?_unique_debug_names:--unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
      %{?_unique_debug_srcs:--unique-debug-src-base "%{name}-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
      %{?_find_debuginfo_dwz_opts} \\\
@@ -18,7 +8,7 @@
      %{?_find_debuginfo_opts} \\\
      %{?_debugsource_packages:-S debugsourcefiles.list} \\\
      "%{builddir}/%{?buildsubdir}"\
-@@ -216,7 +220,8 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -216,7 +217,8 @@ Supplements:   (%{name} = %{version}-%{r
  %files langpack-%{1}\
  %{nil}
  
@@ -28,7 +18,7 @@
  %_defaultlicensedir	%{_datadir}/licenses
  
  # Following macros for filtering auto deps must not be used in spec files.
-@@ -275,7 +280,8 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -275,7 +277,8 @@ Supplements:   (%{name} = %{version}-%{r
  %_tmppath		%{_var}/tmp
  
  #	Path to top of build area.
@@ -38,7 +28,7 @@
  
  #==============================================================================
  # ---- Optional rpmrc macros.
-@@ -366,7 +372,7 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -366,7 +369,7 @@ Supplements:   (%{name} = %{version}-%{r
  #		"w.ufdio"	uncompressed
  #
  #%_source_payload	w9.gzdio
@@ -47,7 +37,7 @@
  
  #	Algorithm to use for generating file checksum digests on build.
  #	If not specified or 0, MD5 is used.
-@@ -476,6 +482,19 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -476,6 +479,19 @@ Supplements:   (%{name} = %{version}-%{r
  #
  #%_include_minidebuginfo	1
  
@@ -67,7 +57,7 @@
  #
  # Include a .gdb_index section in the .debug files.
  # Requires _enable_debug_packages and gdb-add-index installed.
-@@ -508,39 +527,39 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -508,39 +524,39 @@ Supplements:   (%{name} = %{version}-%{r
  #   Same as for "separate" but if the __debug_package global is set then
  #   the -debuginfo package will have a compatibility link for the main
  #   ELF /usr/lib/debug/.build-id/xx/yyy -> /usr/lib/.build-id/xx/yyy
@@ -114,7 +104,7 @@
  
  #
  # Use internal dependency generator rather than external helpers?
-@@ -559,6 +578,7 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -559,6 +575,7 @@ Supplements:   (%{name} = %{version}-%{r
  %__find_requires	%{_rpmconfigdir}/find-requires
  #%__find_conflicts	???
  #%__find_obsoletes	???
@@ -122,7 +112,7 @@
  
  # 
  # Path to file attribute classifications for automatic dependency 
-@@ -980,7 +1000,7 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -980,7 +997,7 @@ Supplements:   (%{name} = %{version}-%{r
  %_build_vendor		%{_host_vendor}
  %_build_os		%{_host_os}
  %_host			@host@
@@ -131,7 +121,7 @@
  %_host_cpu		@host_cpu@
  %_host_vendor		@host_vendor@
  %_host_os		@host_os@
-@@ -1105,11 +1125,13 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -1105,11 +1122,13 @@ Supplements:   (%{name} = %{version}-%{r
  
  #------------------------------------------------------------------------------
  # arch macro for all supported 32-bit ARM processors
