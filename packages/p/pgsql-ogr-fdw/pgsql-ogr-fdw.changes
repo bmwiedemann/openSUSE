@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:10:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.5:
+  + PostgreSQL 17 support added.
+
+-------------------------------------------------------------------
+Fri Feb 14 12:35:38 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Drop build for postgresql12 which is EOL.
+
+-------------------------------------------------------------------
 Mon Sep 16 08:38:56 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable pg11
