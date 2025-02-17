@@ -1,7 +1,7 @@
 #
 # spec file for package phraze
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           phraze
-Version:        0.3.17
+Version:        0.3.18
 Release:        0
 Summary:        Generate random passphrases
 License:        MPL-2.0

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 04 07:32:29 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 0.3.18:
+  * update version of cargo dist used to create new releases
+  * updates CHANGELOG in preparation for new release
+  * updates two of the built-in word lists, removing the awkward word 'hank'
+  * Uses ? for conciseness in file reader, at suggestion of new version of Clippy
+  * upgrades rand crate dependency to v0.90, which required some  statement changes and some new method names
+  * clarification in licensing section
+  * adds line in readme about word list licensing
+
+-------------------------------------------------------------------
 Thu Nov 28 10:04:08 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 0.3.17:
