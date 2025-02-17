@@ -19,7 +19,7 @@
 %define module_name click-extra
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        4.13.2
+Version:        4.14.1
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  %{python_module pygments >= 2.14}
 BuildRequires:  %{python_module pygments-ansi-color >= 0.3.0}
 # https://github.com/kdeldycke/click-extra/blob/v4.8.3/pyproject.toml#L117
 BuildRequires:  %{python_module pytest >= 8}
-BuildRequires:  %{python_module pytest-cases >= 3.8.3}
 BuildRequires:  %{python_module pytest-httpserver >= 1.0.6}
 BuildRequires:  %{python_module pytest-randomly >= 3.16.0}
 # /SECTION
