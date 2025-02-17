@@ -1,7 +1,7 @@
 #
 # spec file for package gap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap
-Version:        4.13.0
+Version:        4.14.0
 Release:        0
 Summary:        System for Computational Discrete Algebra
 License:        GPL-2.0-or-later
@@ -92,141 +92,144 @@ Summary:        Metapackage to cause installation of the GAP Distribution
 Group:          Metapackages
 BuildArch:      noarch
 Requires:       gap >= %version
-Requires:       gap-4ti2interface >= 2023.02.04
+Requires:       gap-4ti2interface >= 2024.11.01
 Requires:       gap-ace >= 5.6.2
 Requires:       gap-aclib >= 1.3.2
 Requires:       gap-agt >= 0.3.1
 Requires:       gap-alnuth >= 3.2.1
-Requires:       gap-anupq >= 3.3.0
-Requires:       gap-atlasrep >= 2.1.8
+Requires:       gap-anupq >= 3.3.1
+Requires:       gap-atlasrep >= 2.1.9
 Requires:       gap-autodoc >= 2023.06.19
-Requires:       gap-automata >= 1.15
+Requires:       gap-automata >= 1.16
 Requires:       gap-automgrp >= 1.3.2
 Requires:       gap-autpgrp >= 1.11
 Requires:       gap-browse >= 1.8.21
-Requires:       gap-cap >= 2024.03.02
-Requires:       gap-caratinterface >= 2.3.6
-Requires:       gap-cddinterface >= 2022.11.01
+Requires:       gap-cap >= 2024.11.02
+Requires:       gap-caratinterface >= 2.3.7
+Requires:       gap-cddinterface >= 2024.09.02
 Requires:       gap-circle >= 1.6.6
 Requires:       gap-classicpres >= 1.22
 Requires:       gap-cohomolo >= 1.6.11
-Requires:       gap-congruence >= 1.2.5
-Requires:       gap-corelg >= 1.56
+Requires:       gap-congruence >= 1.2.7
+Requires:       gap-corefreesub >= 0.6
+Requires:       gap-corelg >= 1.57
 Requires:       gap-crime >= 1.6
 Requires:       gap-crisp >= 1.4.6
-Requires:       gap-crypting >= 0.10.4
+Requires:       gap-crypting >= 0.10.5
 Requires:       gap-cryst >= 4.1.27
 Requires:       gap-crystcat >= 1.1.10
 Requires:       gap-ctbllib >= 1.3.9
-Requires:       gap-cubefree >= 1.19
-Requires:       gap-curlinterface >= 2.3.1
-Requires:       gap-cvec >= 2.8.1
-Requires:       gap-datastructures >= 0.3.0
-Requires:       gap-deepthought >= 1.0.6
-Requires:       gap-design >= 1.8
+Requires:       gap-cubefree >= 1.20
+Requires:       gap-curlinterface >= 2.4.0
+Requires:       gap-cvec >= 2.8.2
+Requires:       gap-datastructures >= 0.3.1
+Requires:       gap-deepthought >= 1.0.7
+Requires:       gap-design >= 1.8.2
 Requires:       gap-difsets >= 2.3.1
-Requires:       gap-digraphs >= 1.7.1
+Requires:       gap-digraphs >= 1.9.0
 Requires:       gap-edim >= 1.3.8
-Requires:       gap-example >= 4.3.4
+Requires:       gap-example >= 4.4.0
 Requires:       gap-examplesforhomalg >= 2023.10.01
 Requires:       gap-factint >= 1.6.3
-Requires:       gap-ferret >= 1.0.10
+Requires:       gap-ferret >= 1.0.14
 Requires:       gap-fga >= 1.5.0
 Requires:       gap-fining >= 1.5.6
-Requires:       gap-float >= 1.0.4
+Requires:       gap-float >= 1.0.5
 Requires:       gap-format >= 1.4.4
-Requires:       gap-forms >= 1.2.9
+Requires:       gap-forms >= 1.2.12
 Requires:       gap-fplsa >= 1.2.6
 Requires:       gap-fr >= 2.4.13
 #dependson jupyterkernel#Requires:       gap-francy >= 2.0.3
 Requires:       gap-fwtree >= 1.3
 Requires:       gap-gapdoc >= 1.6.7
-Requires:       gap-gauss >= 2023.02.04
-Requires:       gap-gaussforhomalg >= 2023.11.01
-Requires:       gap-gbnp >= 1.0.5
-Requires:       gap-generalizedmorphismsforcap >= 2024.01.01
-Requires:       gap-genss >= 1.6.8
+Requires:       gap-gauss >= 2024.11.01
+Requires:       gap-gaussforhomalg >= 2024.08.01
+Requires:       gap-gbnp >= 1.1.0
+Requires:       gap-generalizedmorphismsforcap >= 2024.09.03
+Requires:       gap-genss >= 1.6.9
 Requires:       gap-gradedmodules >= 2024.01.01
-Requires:       gap-gradedringforhomalg >= 2023.08.01
-Requires:       gap-grape >= 4.9.0
-Requires:       gap-groupoids >= 1.74
+Requires:       gap-gradedringforhomalg >= 2024.07.01
+Requires:       gap-grape >= 4.9.2
+Requires:       gap-groupoids >= 1.76
 Requires:       gap-grpconst >= 2.6.5
 Requires:       gap-guarana >= 0.96.3
-Requires:       gap-guava >= 3.18
-Requires:       gap-hap >= 1.62
+Requires:       gap-guava >= 3.19
+Requires:       gap-hap >= 1.66
 Requires:       gap-hapcryst >= 0.1.15
-Requires:       gap-hecke >= 1.5.3
+Requires:       gap-hecke >= 1.5.4
 Requires:       gap-help >= 4.0
 Requires:       gap-homalg >= 2024.01.01
 Requires:       gap-homalgtocas >= 2023.11.01
-Requires:       gap-idrel >= 2.46
-Requires:       gap-images >= 1.3.2
-Requires:       gap-intpic >= 0.3.0
-Requires:       gap-io >= 4.8.2
+Requires:       gap-idrel >= 2.48
+Requires:       gap-images >= 1.3.3
+Requires:       gap-intpic >= 0.4.0
+Requires:       gap-io >= 4.9.1
 Requires:       gap-io_forhomalg >= 2023.02.04
 Requires:       gap-irredsol >= 1.4.4
 Requires:       gap-itc >= 1.5.1
-Requires:       gap-json >= 2.2.0
-#notready#Requires: gap-jupyterkernel >= 1.5.0
+Requires:       gap-json >= 2.2.2
+#notready#Requires: gap-jupyterkernel >= 1.5.1
 #notready#Requires: gap-jupyterviz >= 1.5.6
 Requires:       gap-kan >= 1.37
 Requires:       gap-kbmag >= 1.5.11
-Requires:       gap-laguna >= 3.9.6
+Requires:       gap-laguna >= 3.9.7
 Requires:       gap-liealgdb >= 2.2.1
-Requires:       gap-liepring >= 2.8
+Requires:       gap-liepring >= 2.9.1
 Requires:       gap-liering >= 2.4.2
-Requires:       gap-linearalgebraforcap >= 2024.02.02
+Requires:       gap-linearalgebraforcap >= 2024.10.01
+Requires:       gap-lins >= 0.9
 Requires:       gap-localizeringforhomalg >= 2023.10.01
-Requires:       gap-loops >= 3.4.3
-Requires:       gap-lpres >= 1.0.3
-Requires:       gap-majoranaalgebras >= 1.5.1
+Requires:       gap-loops >= 3.4.4
+Requires:       gap-lpres >= 1.1.1
+Requires:       gap-majoranaalgebras >= 1.5.2
 Requires:       gap-mapclass >= 1.4.6
-Requires:       gap-matgrp >= 0.70
-Requires:       gap-matricesforhomalg >= 2024.02.01
-Requires:       gap-modisom >= 2.5.4
+Requires:       gap-matgrp >= 0.71
+Requires:       gap-matricesforhomalg >= 2024.11.02
+Requires:       gap-modisom >= 3.0.0
 # gap-modulepresentationsforcap requires a non-existent gap-complexesandfilteredobjectsforgap
-#Requires:      gap-modulepresentationsforcap >= 2024.01.04
+#Requires:      gap-modulepresentationsforcap >= 2024.09.02
 Requires:       gap-modules >= 2024.01.01
-Requires:       gap-monoidalcategories >= 2024.02.04
+Requires:       gap-monoidalcategories >= 2024.09.05
 Requires:       gap-nconvex >= 2022.09.01
 Requires:       gap-nilmat >= 1.4.2
 Requires:       gap-nock >= 1.5
-Requires:       gap-normalizinterface >= 1.3.6
+Requires:       gap-normalizinterface >= 1.3.7
 Requires:       gap-nq >= 2.5.11
-Requires:       gap-numericalsgps >= 1.3.1
+Requires:       gap-numericalsgps >= 1.4.0
 Requires:       gap-openmath >= 11.5.3
-Requires:       gap-orb >= 4.9.0
-#we have rpm#Requires:       gap-packagemanager >= 1.4.3
+Requires:       gap-orb >= 4.9.1
+#we have rpm#Requires:       gap-packagemanager >= 1.6
 #Needs separate gap-core built with openmpi and update-alternatives
 #Requires:      gap-pargap >= 1.4.3
-Requires:       gap-patternclass >= 2.4.3
+Requires:       gap-patternclass >= 2.4.5
 Requires:       gap-permut >= 2.0.5
 Requires:       gap-polenta >= 1.3.10
 Requires:       gap-polycyclic >= 2.16
 Requires:       gap-polymaking >= 0.8.7
 Requires:       gap-primgrp >= 3.4.4
-Requires:       gap-profiling >= 2.5.4
+Requires:       gap-profiling >= 2.6.0
 Requires:       gap-qpa >= 1.35
 Requires:       gap-quagroup >= 1.8.4
 Requires:       gap-radiroot >= 2.9
 Requires:       gap-rcwa >= 4.7.1
 Requires:       gap-rds >= 1.8
-Requires:       gap-recog >= 1.4.2
+Requires:       gap-recog >= 1.4.3
 Requires:       gap-repndecomp >= 1.3.0
 Requires:       gap-repsn >= 3.1.2
 Requires:       gap-resclasses >= 4.7.3
-Requires:       gap-ringsforhomalg >= 2023.11.02
+Requires:       gap-ringsforhomalg >= 2024.11.02
 Requires:       gap-sco >= 2023.08.01
-Requires:       gap-scscp >= 2.4.2
-Requires:       gap-semigroups >= 5.3.7
-Requires:       gap-sglppow >= 2.3
-Requires:       gap-sgpviz >= 0.999.5
+Requires:       gap-scscp >= 2.4.3
+Requires:       gap-semigroups >= 5.4.0
+Requires:       gap-sglppow >= 2.4
+Requires:       gap-sgpviz >= 0.999.6
 Requires:       gap-simpcomp >= 2.1.14
-Requires:       gap-singular >= 2023.02.09
+Requires:       gap-singular >= 2024.06.03
 Requires:       gap-sl2reps >= 1.1
-Requires:       gap-sla >= 1.5.3
-Requires:       gap-smallgrp >= 1.5.3
-Requires:       gap-smallsemi >= 0.6.13
+Requires:       gap-smallantimagmas >= 0.2.12
+Requires:       gap-sla >= 1.6.2
+Requires:       gap-smallgrp >= 1.5.4
+Requires:       gap-smallsemi >= 0.7.1
 Requires:       gap-sonata >= 2.9.6
 Requires:       gap-sophus >= 1.27
 Requires:       gap-spinsym >= 1.5.2
@@ -234,22 +237,23 @@ Requires:       gap-standardff >= 1.0
 Requires:       gap-symbcompcc >= 1.3.2
 Requires:       gap-thelma >= 1.3
 Requires:       gap-tomlib >= 1.2.11
-Requires:       gap-toolsforhomalg >= 2023.11.01
-Requires:       gap-toric >= 1.9.5
+Requires:       gap-toolsforhomalg >= 2024.09.01
+Requires:       gap-toric >= 1.9.6
 Requires:       gap-toricvarieties >= 2022.07.13
 Requires:       gap-transgrp >= 3.6.5
 Requires:       gap-ugaly >= 4.1.3
-Requires:       gap-unipot >= 1.5
+Requires:       gap-unipot >= 1.6
 Requires:       gap-unitlib >= 4.2.0
 Requires:       gap-utils >= 0.85
 Requires:       gap-uuid >= 0.7
 Requires:       gap-walrus >= 0.9991
 Requires:       gap-wedderga >= 4.10.5
+Requires:       gap-wpe >= 0.8
 Requires:       gap-xgap >= 4.32
 Requires:       gap-xmod >= 2.92
 Requires:       gap-xmodalg >= 1.23
-Requires:       gap-yangbaxter >= 0.10.3
-Requires:       gap-zeromqinterface >= 0.14
+Requires:       gap-yangbaxter >= 0.10.6
+Requires:       gap-zeromqinterface >= 0.16
 
 %description full
 GAP is a system for computational discrete algebra, with particular
