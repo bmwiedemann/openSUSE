@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 14 11:44:38 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix fix build with gcc 15
+  + xcb-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 08:51:44 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - xcb-prototype.patch: fix main() prototype for gcc14
