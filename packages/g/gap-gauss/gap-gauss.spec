@@ -17,8 +17,8 @@
 
 
 Name:           gap-gauss
-Version:        2023.02.04
-%define sillyver 2023.02-04
+Version:        2024.11.01
+%define sillyver 2024.11-01
 Release:        0
 Summary:        GAP: Extended Gauss Functionality for GAP
 License:        GPL-2.0-or-later
