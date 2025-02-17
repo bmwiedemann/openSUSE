@@ -436,4 +436,15 @@ you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</com
     <comment>- Make it build with latest pari version</comment>
     <requestid>1226223</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>d404deaef7e634edf2fa90b2e36f6f94</srcmd5>
+    <version>2.49.93</version>
+    <time>1739822204</time>
+    <user>anag+factory</user>
+    <comment>- Shorten path of screen configuration to shorten socket path as
+  otherwise bind(2) used by screen(1) fails with invalid argument
+  due shorten path of 108 chracters of sun_path used in glibc
+  (note that kernel use UNIX_PATH_MAX)</comment>
+    <requestid>1246407</requestid>
+  </revision>
 </revisionlist>

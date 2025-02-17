@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 17 11:44:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Shorten path of screen configuration to shorten socket path as
+  otherwise bind(2) used by screen(1) fails with invalid argument
+  due shorten path of 108 chracters of sun_path used in glibc
+  (note that kernel use UNIX_PATH_MAX)
+
+-------------------------------------------------------------------
 Mon Nov 25 09:24:25 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Make it build with latest pari version 

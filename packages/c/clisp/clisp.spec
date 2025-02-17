@@ -1,7 +1,7 @@
 #
 # spec file for package clisp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -245,9 +245,15 @@ echo | $CC %{optflags} -v -E - 2>&1 | grep /cc1
 #
 %global _configure	screen -D -m setarch $(uname -m) -R ./configure
 %global _make		screen -D -m setarch $(uname -m) -R make
-SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
+#
+# Shorten socket path as otherwise bind(2) used by screen(1)
+# fails with invalid argument due shorten patch of 108 chracters
+# of sun_path used in glibc (note that kernel use UNIX_PATH_MAX)
+#
+TMPDIR=$(mktemp -d /tmp/clisp.XXXXXX) || exit 1
+SCREENDIR=$TMPDIR
 SCREENRC=${SCREENDIR}/clisp
-export SCREENRC SCREENDIR
+export SCREENRC SCREENDIR TMPDIR
 exec 0< /dev/null
 SCREENLOG=${SCREENDIR}/log
 cat > $SCREENRC<<-EOF
@@ -280,6 +286,8 @@ sed -ri 's/(\(def-c-var diffptr)/;; \1/p' modules/pari/pari.lisp
 #
 > $SCREENLOG
 tail -q -s 0.5 -f $SCREENLOG & pid=$!
+env -i HOME=$HOME TERM=$TERM PATH=$PATH TMPDIR=$TMPDIR \
+       LANG=C.UTF-8 LC_ALL=C.UTF-8 SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
 %_configure build ${DEBUG}	\
     ${port+"$port"}		\
     --prefix=%{_prefix}		\
@@ -312,9 +320,15 @@ tail -q -s 0.5 -f $SCREENLOG & pid=$!
     CFLAGS="%{optflags}"	\
     LDFLAGS="%{ldflags}"
 
+env -i HOME=$HOME TERM=$TERM PATH=$PATH TMPDIR=$TMPDIR \
+       LANG=C.UTF-8 LC_ALL=C.UTF-8 SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
 %_make -C build lispbibl.h
 grep TYPECODES build/lispbibl.h || :
+env -i HOME=$HOME TERM=$TERM PATH=$PATH TMPDIR=$TMPDIR \
+       LANG=C.UTF-8 LC_ALL=C.UTF-8 SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
 %_make -C build
+env -i HOME=$HOME TERM=$TERM PATH=$PATH TMPDIR=$TMPDIR \
+       LANG=C.UTF-8 LC_ALL=C.UTF-8 SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
 %_make -C build check
 
 #
