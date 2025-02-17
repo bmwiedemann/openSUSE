@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb  9 18:55:42 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-pandoc to version 0.2.3.
+  ## 0.2.3
+
+  - Track wikilinks with a class instead of the title (Evan
+    Silberman). The use of title="wikilink" in HTML output traces
+    back to Pandoc's hijacking of the title attribute for this purpose
+    back when Pandoc links didn't have Attrs. A coordinated change in
+    Pandoc moves this more appropriately into a class.
+
+-------------------------------------------------------------------
 Sun Dec  8 00:18:50 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update commonmark-pandoc to version 0.2.2.3.
