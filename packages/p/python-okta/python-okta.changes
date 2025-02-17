@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:17:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.10
+  * Fix client creds auth
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Jan  6 14:58:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.9.9
