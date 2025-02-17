@@ -7,7 +7,7 @@ Index: lime-5.3.7/CMakeLists.txt
  endif()
  
 -project(Lime VERSION 5.3.0 LANGUAGES ${LANGUAGES_LIST})
-+project(Lime VERSION 5.3.95 LANGUAGES ${LANGUAGES_LIST})
++project(Lime VERSION 5.3.105 LANGUAGES ${LANGUAGES_LIST})
  
  set(LIME_SO_VERSION "0")
  set(LIME_VERSION ${PROJECT_VERSION})
