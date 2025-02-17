@@ -1,0 +1,8 @@
+<package name="qrq" project="openSUSE:Factory">
+  <title>CW trainer</title>
+  <description>qrq is a Morse telegraphy trainer. It is not intended for learning telegraphy,
+but to improve the ability to copy callsigns at high speeds, as needed for
+example for Contesting.</description>
+  <devel project="hamradio" package="qrq"/>
+  <url>https://fkurz.net/ham/qrq.html</url>
+</package>
