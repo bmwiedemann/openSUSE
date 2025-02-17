@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 17 07:02:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 12.0.0:
+  * Added columns to the table to display the tags “Date”, “Genre” and 
+    “Song writer”.
+  * Added the ability to specify a proxy server to get disk information from
+    internet.
+  * Added a dialog for viewing the log. Now if you have a problem you can 
+    send me logs just by copying them from this dialog.
+  * Significantly revised display and editing of tags. The tags are now more
+    clearly divided into album related and track related.
+  * Increased speed of disk validation for errors in output files.
+  * The limits for the Disk Number and Number of Disks fields have been
+    increased to 999.
+  * Bug fix. The program crashed after the end of conversion if an old 
+    version of Qt was used. In particular, crashes of AppImage version are fixed
+  * Bug fix. Sometimes the program selected wrong directory for output files.
+  * Compatibility with macOS and FreeBSD has been improved.
+  * Many minor fixes and improvements.
+  * Translations updated.
+
+-------------------------------------------------------------------
 Mon May  6 08:22:37 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 11.4.0:
