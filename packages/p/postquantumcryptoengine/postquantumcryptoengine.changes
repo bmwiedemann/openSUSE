@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb 17 07:49:51 UTC 2025 - info@paolostivanin.com
+
+- Update to version 5.3.101 (no changelog).
+  * switch to upstream tags instead of latest master
+- Drop upstreamed fix-build-libosq010.patch
+
+-------------------------------------------------------------------
 Wed Mar 27 08:07:29 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-build-libosq010.patch: this fixes build with liboqs>=0.10

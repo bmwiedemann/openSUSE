@@ -1,7 +1,7 @@
 #
 # spec file for package postquantumcryptoengine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,13 @@
 %define sover   1
 
 Name:           postquantumcryptoengine
-Version:        5.4.0~git.20240108
+Version:        5.3.101
 Release:        0
 Summary:        Post-quantum cryptopgraphy extension for bctoolbox
 License:        GPL-3.0-or-later
 URL:            https://gitlab.linphone.org/BC/public/postquantumcryptoengine
-Source:         %{name}-%{version}.tar.xz
-%if 0%{?suse_version} >= 1600
-Patch0:         fix-build-libosq010.patch
-%endif
-BuildRequires:  bctoolbox-devel >= 5.3.7
+Source:         https://gitlab.linphone.org/BC/public/postquantumcryptoengine/-/archive/%{version}/%{name}-%{version}.tar.bz2
+BuildRequires:  bctoolbox-devel >= %{version}
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel

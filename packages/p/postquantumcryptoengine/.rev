@@ -24,4 +24,15 @@
 </comment>
     <requestid>1162839</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>290897b1ac498813a4e1d74b59f1f2ca</srcmd5>
+    <version>5.3.101</version>
+    <time>1739822173</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.3.101 (no changelog).
+  * switch to upstream tags instead of latest master
+- Drop upstreamed fix-build-libosq010.patch
+</comment>
+    <requestid>1246366</requestid>
+  </revision>
 </revisionlist>
