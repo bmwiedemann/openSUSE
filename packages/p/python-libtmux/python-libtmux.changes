@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Feb 17 12:48:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+-update to 0.44.1:
+  * types: Only use typing-extensions if necessary by @ppentchev in
+    #563
+
+-------------------------------------------------------------------
+Mon Feb 17 06:28:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.44.0:
+  * Support for context managers by @tony in #566.
+    Added context manager support for all main tmux objects:
+    - Server: Automatically kills the server when exiting the
+      context
+    - Session: Automatically kills the session when exiting the
+      context
+    - Window: Automatically kills the window when exiting the
+      context
+    - Pane: Automatically kills the pane when exiting the context
+    This makes it easier to write clean, safe code that properly
+    cleans up tmux resources.
+
+-------------------------------------------------------------------
+Sun Feb 16 09:41:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.43.0:
+  * New feature
+    - TestServer: Server, but partial'd to run on a test socket by
+      @tony in #565
+  * Documentation
+    - Fix "Topics" links in docs
+    - docs(traversal) Add more doctests by @tony in #567
+- update to 0.42.1:
+  * Packaging: typing-extensions usage
+    - Move a typing-extensions import into a t.TYPE_CHECKING
+      section by @ppentchev in #562
+    - py(deps[testing,lint]) Add typing-extensions for older python
+      versions by @tony in #564
+
+-------------------------------------------------------------------
 Sat Feb  8 09:21:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.42.0:

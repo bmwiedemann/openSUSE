@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libtmux
-Version:        0.42.0
+Version:        0.44.1
 Release:        0
 Summary:        Python API / wrapper for tmux
 License:        MIT
@@ -42,7 +42,9 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-libtmux is a typed python scripting library for tmux. You can use it to command and control tmux servers, sessions, windows, and panes. It is the tool powering tmuxp, a tmux workspace manager.
+libtmux is a typed python scripting library for tmux. You can use it to command
+and control tmux servers, sessions, windows, and panes. It is the tool powering
+tmuxp, a tmux workspace manager.
 
 %prep
 %setup -q -n libtmux-%{version}
