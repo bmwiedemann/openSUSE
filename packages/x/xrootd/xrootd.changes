@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 13 12:00:20 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.7.3:
+  * [Seckrb5] Avoid null pointer dereference
+    (gh#xrootd/xrootd#2385).
+  * [XrdPfc] Fix file descriptor leak when reading file size from
+    cinfo file (gh#xrootd/xrootd#2392).
+  * [Protocol] do_WriteSpan() - Add written bytes in file
+    statistics (gh#xrootd/xrootd#2368).
+  * [XrdHttp] Correct response code for PUT (from 200 to 201)
+    (gh#xrootd/xrootd#2382).
+  * [XrdHttp] Set oss.asize if object size is known
+    (gh#xrootd/xrootd#2378).
+  * [XrdOfs] Correct forward declaration of XrdSfsFSctl
+    (gh#xrootd/xrootd#2405).
+  * [Misc] Fix compilation with GCC 15 (gh#xrootd/xrootd#2411).
+  * [Tests] Fix check for running process to prevent setup
+    failures.
+  * [XrdCl] Improve checking of logging format strings
+    (gh#xrootd/xrootd#2380).
+  * [XrdSciTokens] Add tests for token-based authorization
+    (gh#xrootd/xrootd#2381).
+- Drop upstreamed hardening patches:
+  * harden_cmsd@.service.patch
+  * harden_frm_purged@.service.patch
+  * harden_frm_xfrd@.service.patch
+  * harden_xrootd@.service.patch
+
+-------------------------------------------------------------------
 Mon Jul  8 17:13:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.7.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.7.0
+Version:        5.7.3
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -60,14 +60,6 @@ Source1:        xrootd-user.conf
 Source100:      xrootd-rpmlintrc
 # PATCH-FIX-UPSTREAM xrootd-find-gtest.patch badshah400@gmail.com -- Add find_package snippet to CMakeLists.txt to avoid linking issues when building tests
 Patch0:         xrootd-find-gtest.patch
-# PATCH-FEATURE-OPENSUSE Hardening patches
-Patch100:       harden_cmsd@.service.patch
-# PATCH-FEATURE-OPENSUSE Hardening patches
-Patch101:       harden_frm_purged@.service.patch
-# PATCH-FEATURE-OPENSUSE Hardening patches
-Patch102:       harden_frm_xfrd@.service.patch
-# PATCH-FEATURE-OPENSUSE Hardening patches
-Patch103:       harden_xrootd@.service.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake >= 3.0
 BuildRequires:  fdupes
