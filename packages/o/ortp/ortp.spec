@@ -1,7 +1,7 @@
 #
 # spec file for package ortp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define sover   15
 
 Name:           ortp
-Version:        5.3.95
+Version:        5.3.105
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        AGPL-3.0-or-later

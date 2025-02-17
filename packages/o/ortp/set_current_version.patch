@@ -7,7 +7,7 @@ Index: ortp-5.3.7/CMakeLists.txt
  cmake_minimum_required(VERSION 3.22)
  
 -project(Ortp VERSION 5.3.0)
-+project(Ortp VERSION 5.3.95)
++project(Ortp VERSION 5.3.105)
  
  
  set(ORTP_MAJOR_VERSION ${PROJECT_VERSION_MAJOR})
