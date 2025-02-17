@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 17 06:17:18 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.1:
+  * rebuild: make SBOM more reproducible
+  * hide 'melange rebuild'
+  * fix unit test
+  * regen docs
+  * fix lint finding
+  * new command: rebuild
+  * config: Add option to allow udpates to common prerelease tags
+
+-------------------------------------------------------------------
 Thu Feb 13 06:17:12 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.0:
