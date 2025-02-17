@@ -360,4 +360,14 @@
     <comment></comment>
     <requestid>1223423</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>becd6ff511da77fb6dbddd1f1ce89b1a</srcmd5>
+    <version>5.3.105</version>
+    <time>1739822169</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.105 (no changelog).
+- Update to 5.3.96 (no changelog).
+</comment>
+    <requestid>1246360</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package belle-sip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define soname  libbelle-sip
 %define sover   1
 Name:           belle-sip
-Version:        5.3.95
+Version:        5.3.105
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-3.0-or-later
