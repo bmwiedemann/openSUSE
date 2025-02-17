@@ -466,4 +466,13 @@
     <comment></comment>
     <requestid>1223420</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6c97cb9499555317c3de08f36c7c84f3</srcmd5>
+    <version>5.3.105</version>
+    <time>1739822144</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.105 (no changelog).
+</comment>
+    <requestid>1246354</requestid>
+  </revision>
 </revisionlist>
