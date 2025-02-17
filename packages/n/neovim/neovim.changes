@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 14 19:33:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- use make targets from upstream for tests
+
+-------------------------------------------------------------------
+Sun Feb  2 17:54:05 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Enable unit tests on x86_64 and aarch64
+ * add appropriate lua-dev-deps.tar.gz to Sources
+ * add hostname to build requires
+
+-------------------------------------------------------------------
 Wed Jan 29 12:34:08 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - Update to 0.10.4

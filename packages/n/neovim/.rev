@@ -1481,4 +1481,16 @@ FIXES (LSP):
    tested nvim has installed tree sitter plugin enabled. (forwarded request 1241216 from mvyskocil)</comment>
     <requestid>1241252</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>48a5330fc9ad0edff1d4242f515c0bb0</srcmd5>
+    <version>0.10.4</version>
+    <time>1739822039</time>
+    <user>anag+factory</user>
+    <comment>- use make targets from upstream for tests
+- Enable unit tests on x86_64 and aarch64
+ * add appropriate lua-dev-deps.tar.gz to Sources
+ * add hostname to build requires
+</comment>
+    <requestid>1246157</requestid>
+  </revision>
 </revisionlist>

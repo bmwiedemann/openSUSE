@@ -31,8 +31,9 @@ Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{v
 Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
+Source10:       https://github.com/neovim/deps/raw/5a1f71cceb24990a0b15fd9a472a5f549f019248/opt/lua-dev-deps.tar.gz
 # PATCH-FIX-OPENSUSE: ensure installed tree-sitter-vimdoc is enabled in order to test to succeed
-Patch1:         0001-neovim-0.10.4-install-treesitter-vimdoc.patch
+Patch0:         0001-neovim-0.10.4-install-treesitter-vimdoc.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -42,6 +43,7 @@ BuildRequires:  gettext
 BuildRequires:  git-core
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  hostname
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  lua51-bit32
@@ -63,7 +65,6 @@ BuildRequires:  pkgconfig(termkey)
 BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
 BuildRequires:  pkgconfig(unibilium) >= 2.0.0
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
-# for oldtest
 BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
@@ -107,6 +108,10 @@ BUILD_DATE=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{b} %{d} %{Y}')
 sed -i "s/__TIME__/\"$BUILD_TIME\"/" $(grep -rl '__TIME__')
 sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
 
+# setup unit test dependency
+mkdir -p build/build/downloads/lua_dev_deps/
+cp %{SOURCE10} build/build/downloads/lua_dev_deps/
+
 %build
 # set vars to make build reproducible in spite of config/CMakeLists.txt
 HOSTNAME=OBS
@@ -123,13 +128,16 @@ USERNAME=OBS
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
-
 %make_build
 
 %check
-# oldtest
+# old tests
 VIMDOC_PATH=$(readlink -f %{_libdir}/tree_sitter/vimdoc.so) \
-make -C test/old/testdir NVIM_PRG=$(realpath build)/bin/nvim
+%make_build USE_BUNDLED=OFF oldtest
+# functional tests
+%ifarch aarch64 x86_64
+%make_build USE_BUNDLED=OFF unittest
+%endif
 
 %install
 %cmake_install
