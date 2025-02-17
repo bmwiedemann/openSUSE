@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Feb 16 15:26:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.0:
+  * Added
+    - Added App.clipboard #5352
+    - Added standard cut/copy/paste (ctrl+x, ctrl+c, ctrl+v)
+      bindings to Input / TextArea #5352 & #5374
+    - Added system boolean to Binding, which hides the binding from
+      the help panel #5352
+    - Added support for double/triple/etc clicks via chain
+      attribute on Click events #5369
+    - Added times parameter to Pilot.click method, for simulating
+      rapid clicks #5369
+    - Text can now be select using mouse or keyboard in the Input
+      widget #5340
+  * Changed
+    - Breaking change: Change default quit key to ctrl+q #5352
+    - The command palette will now select the top item
+      automatically #5361
+    - ctrl+shift+k now deletes the current line in TextArea, and
+      ctrl+x will cut
+    - the selection if there is one, otherwise it will cut the
+      current line #5374
+    - Implemented a better matching algorithm for the command
+      palette #5365
+  * Fixed
+    - Fixed issue with alignment in auto containers #5360
+
+-------------------------------------------------------------------
+Sun Feb 16 15:02:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.89.1:
+  * Fixed
+    - Fixed alignment of docked widgets #5347
+
+-------------------------------------------------------------------
+Sun Feb 16 14:45:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.89.0:
+  * Added
+    - Added "tab" border style #5335
+    - Added support for XML syntax highlighting #5320
+    - Added TextArea.update_highlight_query #5320
+  * Fixed
+    - Fixed Select not scrolling highlight in to view when clicked
+      #5255
+    - Upgraded tree-sitter to 0.23+ (syntax extras) #5320
+    - Some syntax highlighting changes due to tree-sitter updates
+      #5320
+    - Breaking change: Document.query_syntax_tree signature changed
+      #5320
+    - Breaking change: TextArea.register_language signature changed
+      #5320
+    - Breaking change: SyntaxAwareDocument.language_name property
+      removed #5320
+    - Breaking change: Kotlin syntax highlighting removed from
+      TextArea #5320
+    - Fixed selection list wrapping #5331
+    - Fixed CSS encoding issue on Windows #5324
+
+-------------------------------------------------------------------
 Mon Jan 20 07:24:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - ignore some more tests that are failing now, possibly due to

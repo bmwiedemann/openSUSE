@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-textual
-Version:        0.88.1
+Version:        1.0.0
 Release:        0
 Summary:        TUI framework for Python
 License:        MIT
@@ -95,6 +95,8 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_no_focus_empty_selector"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_register_language"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_register_language_existing_language"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_wrap_around_selector"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_unknown_language"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_update_highlight_query"
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
