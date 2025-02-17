@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 10 08:59:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Added functions LMonNP, LTermNP, LTermsNP; FactorOutGcdNP
+
+-------------------------------------------------------------------
 Sat Jul 16 20:09:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.5

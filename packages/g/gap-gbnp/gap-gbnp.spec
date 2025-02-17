@@ -1,7 +1,7 @@
 #
 # spec file for package gap-gbnp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           gap-gbnp
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        GAP: computing Gröbner bases of noncommutative polynomials
 License:        LGPL-2.1+
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/gbnp/
-
 Source:         https://github.com/gap-packages/gbnp/releases/download/v%version/gbnp-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.4
+Requires:       gap-core >= 4.8
 Requires:       gap-gapdoc >= 1.5
 
 %description
