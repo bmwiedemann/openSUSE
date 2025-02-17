@@ -1,7 +1,7 @@
 #
 # spec file for package supergfxctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 
 Name:           supergfxctl
-Version:        5.2.4
+Version:        5.2.7
 Release:        0
 Summary:        Super graphics mode controller
 License:        MPL-2.0
@@ -32,9 +32,7 @@ Group:          System/Daemons
 
 ## Patch for user-groups
 Patch1:         user-group.patch
-
-## Upstream GPU detection patch
-Patch2:         GPUDetection.patch
+##
 
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig

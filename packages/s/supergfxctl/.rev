@@ -16,4 +16,22 @@ This tool can provide dGPU disabling and it will not be available for system and
     <comment></comment>
     <requestid>1225914</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9cbdc0c5240df49ff510427b767e255b</srcmd5>
+    <version>5.2.7</version>
+    <time>1739822062</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.2.7:
+  * Various fixes. Use display port method to find gpu
+  * Bump zbus and version
+  * Update deps
+  * Remove unnecessary debug info
+  * For loop no longer ends when it encounters an error while reading the hwmon directory.
+  * Update CHANGELOG.md
+  * Fix dGPU detection for FA401WV
+  * Bump version and deps
+- Superseded GPUDetection.patch
+</comment>
+    <requestid>1246276</requestid>
+  </revision>
 </revisionlist>
