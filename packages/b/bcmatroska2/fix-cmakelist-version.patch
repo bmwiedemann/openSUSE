@@ -7,7 +7,7 @@ Index: bcmatroska2-5.3.26/CMakeLists.txt
  
  project(BCMatroska2
 -	VERSION 0.23
-+	VERSION 5.3.36
++	VERSION 5.3.101
  	LANGUAGES C
  )
  
