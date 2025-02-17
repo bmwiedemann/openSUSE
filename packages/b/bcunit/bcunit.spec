@@ -1,7 +1,7 @@
 #
 # spec file for package bcunit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbcunit
 %define sover   1
 Name:           bcunit
-Version:        5.3.95
+Version:        5.3.101
 Release:        0
 Summary:        Provide C programmers basic testing functionality
 License:        LGPL-2.0-or-later

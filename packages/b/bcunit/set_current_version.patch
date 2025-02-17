@@ -7,7 +7,7 @@ Index: bcunit-5.3.7/CMakeLists.txt
  cmake_minimum_required(VERSION 3.22)
  
 -project(BCUnit VERSION "3.0.2" LANGUAGES C)
-+project(BCUnit VERSION "5.3.26" LANGUAGES C)
++project(BCUnit VERSION "5.3.101" LANGUAGES C)
  
  set(VERSION "${PROJECT_VERSION}")
  set(RELEASE "${PROJECT_VERSION_PATCH}")
