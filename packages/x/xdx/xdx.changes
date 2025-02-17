@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sat Feb 15 15:35:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.91:
+  * new upstream maintainer
+  * ported to GTK3
+- fix build, and spec file preparation for openSUSE TW inclusion
+
+-------------------------------------------------------------------
+Sun May 10 21:55:46 UTC 2015 - dl8fcl@darc.de
+
+- update to version 2.5.0~rc3
+  * Complete function key command entry support.
+  * Add close dialog when Ctl-Q is used to exit.
+  * Update manual page to current conventions.
+  * Update GPL boiler plate for current FSF mailing address.
+  * Spanish translation update from Baltasar, EA8BVP.
+  * German translation update from Tom, DL1JBE.
+  * Polish translation update from Bogusław, SQ5TB.
+  * Update to CTY-2505 – 20 April 2015.
+
+-------------------------------------------------------------------
+Tue Jan  6 20:45:29 UTC 2015 - dl8fcl@darc.de
+
+- update to version 2.5.0~rc2
+
+-------------------------------------------------------------------
+Fri Dec 26 22:08:52 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.5.0~rc
+  * Complete function key command entry support.
+  * Add close dialog when Ctl-Q is used to exit.
+  * Update manual page to current conventions.
+
+-------------------------------------------------------------------
+Wed Feb 19 00:33:27 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.4.3 
+  * Apply Debian patch from bug #577377.
+  * Bring build system up to date for later versions of Autotools.
+  * Do not track any build system generated files in Git VCS.
+  * Modify source as needed for clean build with Gtk+ 2.24.
+  * New upstream maintainer, Nate Bargmann, N0NB <n0nb@n0nb.us>
+  * Development hosted at https://github.com/N0NB/xdx
+  * Portuguese translation update from David, CT1DRB
+  * Add support to load updated country file using command line option,
+    environment variable, or placing cty.dat in the preferences directory.
+  * Fix URI handling for GTK+ 2.24 and later.
+  * Disable function keys for this release.
+  all post-build-checks enabled again
+  
+-------------------------------------------------------------------
+Sat Sep 22 14:08:31 UTC 2012 - dl8fcl@darc.de
+
+- 64bit-portability.diff removed
+- post-build-checks disabled for >= 12.1 
+
+-------------------------------------------------------------------
+Mon Aug 29 12:00:36 UTC 2011 - dl8fcl@darc.de
+
+- 64bit-portability-issues fixed
+-------------------------------------------------------------------
+* Tue Jul 13 2010 - dl8fcl@darc.de
+- fixed deprecated GtkWidget
+* Sun Jan 11 2009 - dl8fcl@darc.de
+- update to 2.4.2
+* Mon Dec 15 2008 - dl8fcl@darc.de
+- updated to 2.4.1
+ 
+

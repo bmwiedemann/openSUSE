@@ -1,0 +1,9 @@
+<package name="xdx" project="openSUSE:Factory">
+  <title>Dx-cluster client for amateur radio</title>
+  <description>Xdx is a dedicated network client for amateur radio operators who want
+to exchange DX (long distance) radio information. After connection
+to a DX-cluster, xdx will show DX-spots in a list and other messages
+('To all' and WWV/WCY messages) in a text widget.</description>
+  <devel project="hamradio" package="xdx"/>
+  <url>https://github.com/N0NB/xdx/</url>
+</package>
