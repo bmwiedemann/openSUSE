@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 16 21:39:46 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 2.0.2:
+  * Bump hot-fix version.
+  * Fix `regress` run without locale
+  * Bump for version.
+  * Fix off-by-one table header row glyph in -tterm
+
+-------------------------------------------------------------------
 Sun Jan 26 21:22:44 UTC 2025 - scott.bradnick@suse.com
 
 - Updating soname from liblowdown1 -> liblowdown2

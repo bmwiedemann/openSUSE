@@ -20,7 +20,7 @@
 #%%global version_string VERSION_1_1_0
 
 Name:           lowdown
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Simple markdown translator
 License:        ISC
