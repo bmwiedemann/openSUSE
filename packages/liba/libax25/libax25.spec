@@ -15,20 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         sover 0
 %define src_ver 0.0.12-rc5
 Name:           libax25
 Version:        0.0.12~rc5
 Release:        0
 Summary:        AX.25 data link layer protocol library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.linux-ax25.org/wiki/LinuxAX25
-Source:         http://www.linux-ax25.org/pub/libax25/libax25-%{src_ver}.tar.gz
-BuildRequires:  libtool
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  zlib-devel
+URL:            https://linux-ax25.in-berlin.de/pub/libax25/
+Source:         https://linux-ax25.in-berlin.de/pub/libax25/%{name}-%{src_ver}.tar.xz
+Source2:        %{name}-rpmlintrc
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Libraries for AX.25. AX.25 (Amateur X.25) is a data link layer
@@ -78,10 +78,9 @@ Header files for libax25. Used to build packages that are
 linked against kernel ax25.
 
 %prep
-%setup -q -n %{name}-%{src_ver}
+%autosetup -p1 -n %{name}-%{src_ver}
 
 %build
-autoreconf -fiv
 %configure \
   --disable-static
 %make_build
@@ -90,10 +89,11 @@ autoreconf -fiv
 %make_install installconf
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libax25-%{sover} -p /sbin/ldconfig
-%post   -n libax25io%{sover} -p /sbin/ldconfig
-%postun -n libax25-%{sover} -p /sbin/ldconfig
-%postun -n libax25io%{sover} -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n libax25-%{sover}
+%ldconfig_scriptlets -n libax25io%{sover}
 
 %files common
 %license COPYING
@@ -101,22 +101,25 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %config %{_sysconfdir}/ax25/axports
 %config %{_sysconfdir}/ax25/nrports
 %config %{_sysconfdir}/ax25/rsports
-%{_mandir}/man5/axports.5%{ext_man}
-%{_mandir}/man5/nrports.5%{ext_man}
-%{_mandir}/man5/rsports.5%{ext_man}
+%{_mandir}/man5/axports.5%{?ext_man}
+%{_mandir}/man5/nrports.5%{?ext_man}
+%{_mandir}/man5/rsports.5%{?ext_man}
 
 %files -n libax25-%{sover}
+%license COPYING
 %{_libdir}/libax25.so.%{sover}*
 
 %files -n libax25io%{sover}
+%license COPYING
 %{_libdir}/libax25io.so.%{sover}*
 
 %files devel
+%license COPYING
 %doc AUTHORS ChangeLog README
 %{_libdir}/libax25io.so
 %{_libdir}/libax25.so
 %{_includedir}/netax25
-%{_mandir}/man3/ax25.3%{ext_man}
-%{_mandir}/man3/rose.3%{ext_man}
+%{_mandir}/man3/ax25.3%{?ext_man}
+%{_mandir}/man3/rose.3%{?ext_man}
 
 %changelog
