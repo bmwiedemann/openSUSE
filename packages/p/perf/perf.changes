@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Feb 10 10:49:01 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- drop perf_tools_Build_x86_32-bit_syscall_table_from_arch_x86_entry_syscalls_syscall_32.tbl.patch
+  6.12 is in factory for a long time.
+- support 6.14: /usr/share/perf-core no longer installed after 
+  libaudit support dropped in 3cc550f5bbcf
+
+-------------------------------------------------------------------
 Thu Nov 14 09:20:44 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - drop perf-fix-non-listed-archs.patch

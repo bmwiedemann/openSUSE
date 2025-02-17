@@ -1,7 +1,7 @@
 #
 # spec file for package perf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,6 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
-# remove this one when 6.12 hits factory:
-Patch6111:      perf_tools_Build_x86_32-bit_syscall_table_from_arch_x86_entry_syscalls_syscall_32.tbl.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -195,7 +193,9 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %{_bindir}/perf
 %{_bindir}/trace
 %{_prefix}/lib/%{name}-core
+%if %{version_pure} < 614
 %{_datadir}/%{name}-core
+%endif
 %{_mandir}/man1/perf*
 
 %files gtk

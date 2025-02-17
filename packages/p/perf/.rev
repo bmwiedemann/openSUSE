@@ -699,4 +699,12 @@
   it was merged to 6.11.7</comment>
     <requestid>1224125</requestid>
   </revision>
+  <revision rev="81" vrev="90">
+    <srcmd5>07e5bcef6c28e65decec2b64ca1a1b6c</srcmd5>
+    <version>MACRO</version>
+    <time>1739822200</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1246397</requestid>
+  </revision>
 </revisionlist>
