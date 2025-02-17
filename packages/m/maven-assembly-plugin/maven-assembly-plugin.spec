@@ -1,7 +1,7 @@
 #
 # spec file for package maven-assembly-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Maven Assembly Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-assembly-plugin/
-Source0:        https://downloads.apache.org/maven/plugins/%{name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Patch0:         aggregated-timestamp.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8

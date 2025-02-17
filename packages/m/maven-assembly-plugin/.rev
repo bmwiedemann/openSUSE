@@ -71,4 +71,12 @@
     <comment></comment>
     <requestid>1164217</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>cf7064196c7ec915d4c152834ea72ccc</srcmd5>
+    <version>3.6.0</version>
+    <time>1739822219</time>
+    <user>anag+factory</user>
+    <comment>Fix broken source link</comment>
+    <requestid>1246415</requestid>
+  </revision>
 </revisionlist>
