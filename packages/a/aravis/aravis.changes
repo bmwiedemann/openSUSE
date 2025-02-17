@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 16 14:45:14 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 0.8.34:
+  * gigevision: allow to select discovery interface
+  * genicam: fix unaligned memory access
+  * gigevision: fix uninitialized memory access
+  * build: add missing include
+
+-------------------------------------------------------------------
 Sat Sep  7 19:36:07 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to 0.8.33:

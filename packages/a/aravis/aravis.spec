@@ -1,7 +1,7 @@
 #
 # spec file for package aravis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define devname lib%{name}-%{sorel}-devel
 %define typelibname typelib-1_0-Aravis-%{api}
 Name:           aravis
-Version:        0.8.33
+Version:        0.8.34
 Release:        0
 Summary:        Glib/gobject based library implementing a Genicam interface
 License:        LGPL-2.1-or-later
