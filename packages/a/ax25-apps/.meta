@@ -1,0 +1,14 @@
+<package name="ax25-apps" project="openSUSE:Factory">
+  <title>AX.25 ham radio applications</title>
+  <description>This package provides specific user applications for hamradio that use AX.25
+Net/ROM or ROSE network protocols:
+
+ * axcall: a general purpose AX.25, NET/ROM and ROSE connection program.
+ * axlisten: a network monitor of all AX.25 traffic heard by the system.
+ * ax25ipd: an RFC1226 compliant daemon which provides encapsulation of
+   AX.25 traffic over IP.
+ * ax25mond: retransmits data received from sockets into an AX.25 monitor
+   socket.</description>
+  <devel project="hamradio" package="ax25-apps"/>
+  <url>https://linux-ax25.in-berlin.de/</url>
+</package>

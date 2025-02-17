@@ -1,0 +1,11 @@
+diff -ru ax25-apps-0.0.8-rc5.orig/ax25ipd/routing.c ax25-apps-0.0.8-rc5/ax25ipd/routing.c
+--- ax25-apps-0.0.8-rc5.orig/ax25ipd/routing.c	2025-02-16 18:42:01.190755707 +0100
++++ ax25-apps-0.0.8-rc5/ax25ipd/routing.c	2025-02-16 18:42:28.860678812 +0100
+@@ -12,6 +12,7 @@
+ #include <arpa/inet.h>
+ #include <netinet/in.h>
+ #include <sys/types.h>
++#include <stdlib.h>
+ 
+ #include "ax25ipd.h"
+ 

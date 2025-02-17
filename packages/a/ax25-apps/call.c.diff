@@ -1,0 +1,12 @@
+diff -urN ax25-apps-0.0.8rc4_63_orig/call/call.c ax25-apps-0.0.8rc4_63/call/call.c
+--- ax25-apps-0.0.8rc4_63_orig/call/call.c	2017-03-18 15:00:26.197593946 +0000
++++ ax25-apps-0.0.8rc4_63/call/call.c	2017-03-18 15:33:52.675655200 +0000
+@@ -2887,7 +2887,7 @@
+ 			 * This is used to format the scrollback buffer,
+ 			 * which is stored in raw
+ 			 */
+-			COLS = 80;
++			COLS == 80;
+ 			mode = RAWMODE;
+ 			break;
+ 		case 's':
