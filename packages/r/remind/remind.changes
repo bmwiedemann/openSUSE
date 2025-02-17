@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Feb 10 09:09:16 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.3 Patch 2 - 2025-02-09
+
+- CHANGE: remind: Revert a change to the way "-y" tags are generated that
+  was introduced in 05.03.01.  The change broke a library that depended
+  on it being generated in the old way.
+
+-------------------------------------------------------------------
+Sun Feb  9 10:25:22 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+-  VERSION 5.3 Patch 1 - 2025-02-07
+
+- IMPROVEMENT: TkRemind: When we pop up a timed reminder, make any "Url:"
+  info string into a clickable link.
+
+- IMPROVEMENT: rem2pdf: Improve the layout of the small monthly calendars.
+
+- BUG FIX: rem2pdf: Add checks for all Perl dependencies.
+
+-------------------------------------------------------------------
+Tue Feb  4 16:22:34 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.3 Patch 0 - 2025-02-04
+
+- NEW FEATURE: remind: Add the "INFO" clause to the REM command.  This
+  is intended for storing additional metadata about an event, such as
+  the location and a longer description.  The intention is to make
+  Remind <-> iCal conversions preserve as much information as possible.
+
+- NEW FEATURE: rem2html, rem2pdf, tkremind: Add support for the "Url:"
+  info string that turns reminders into hyper-links.  For example,
+  consider this reminder:
+
+      REM 15 INFO "Url: https://foo.example" MSG Foo
+
+  The text "Foo" will be made into a link to "https://foo.example"
+  by rem2html and rem2pdf.  If you middle-click it in tkremind, it
+  will open the URL.
+
+- NEW FEATURE: remind: Add the triginfo() built-in function so a reminder
+  body can refer to INFO data.  Add the %<...> substitution filter as a
+  shorthand for [triginfo("...")]
+
+- NEW FEATURE: TkRemind: Add "Location" and "Description" fields when
+  creating a reminder; these are converted to INFO clauses.  Also support
+  a popup window with the extra information when hovering over a reminder
+  in the calendar display.
+
+- IMPROVEMENT: Update the reminder files included with Remind to add
+  INFO strings with Wikipedia URLs for various holidays and
+  astronomical events.
+
+- IMPROVEMENT: remind: Add the "\xAB" escape sequence for parsing quoted
+  strings, where "AB" is a pair of hex digits.
+
+- NEW FUNCTION: remind: Add the escape() built-in function that converts
+  problematic characters within a string to the \-escaped versions.
+  It's essentially the inverse of how Remind parses a quoted string.
+
+-------------------------------------------------------------------
 Thu Jan 23 10:16:29 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.2 Patch 3 - 2025-01-22
