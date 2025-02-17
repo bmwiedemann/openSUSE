@@ -49,4 +49,38 @@
   * fix(msbuild): more root patterns (forwarded request 1235077 from rrahl0)</comment>
     <requestid>1235078</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6403432bbacdff4c1e4357245dba0e79</srcmd5>
+    <version>1.6.0</version>
+    <time>1739822285</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * revert: &quot;refactor!: make available_servers function private&quot;
+  * fix(angularls): set Angular core version for backwards compatibility
+  * fix(angularls): handle nil while checking angular core version
+- update to 1.5.0:
+  * fix(gh_actions_ls): Fix incorrect rootdir resolution
+  * fix: remove validation from configs.lua
+  * fix(astro,volar): correct 'typescript/lib' path for TypeScript LSP
+  * feat: oxc-language-server
+- update to 1.4.0:
+  * fix(powershell_es): add root pattern
+  * fix(clojure_lsp): adds single_file_support for clojure
+  * Feat: add lua 3rd party language servers
+  * feat: gh-actions-language-server
+  * feat(gh_actions_ls): use root_dir to decide whether to attach
+  * feat: add typst to the list of languages harper supports
+  * feat: Alloy language server
+  * Improve alloy_ls docs
+  * feat(asm_lsp): add NASM config support and single_file support
+  * refactor: comment util.path.is_descendant to prepare deperecation in future
+  * refactor!: make available_servers function private
+  * docs: Use a maintained fork for kubernetes-json-schema in the example
+  * build: add -q flag to luacheck
+  * build: remove docgen.sh
+  * refactor: silence luals warnings
+  * docs: fix typo
+  * fix: fix incorrect root finding (forwarded request 1246447 from rrahl0)</comment>
+    <requestid>1246451</requestid>
+  </revision>
 </revisionlist>
