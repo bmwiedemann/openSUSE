@@ -222,4 +222,16 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
   * Fix #239: Remove logging of decryption result.</comment>
     <requestid>1204932</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2911a4882eedc311be89eb8cac6c45ee</srcmd5>
+    <version>0.5.4</version>
+    <time>1739822090</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+- Update to 0.5.4
+  * Fix #242: Handle exceptions in the on_data callable.</comment>
+    <requestid>1246297</requestid>
+  </revision>
 </revisionlist>

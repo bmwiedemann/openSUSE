@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 17 03:29:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
+Thu Feb 13 10:37:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.4
+  * Fix #242: Handle exceptions in the on_data callable.
+
+-------------------------------------------------------------------
 Tue Oct  1 12:42:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.3:

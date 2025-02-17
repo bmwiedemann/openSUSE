@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gnupg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-gnupg
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        A wrapper for the GNU Privacy Guard (GPG or GnuPG)
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://pythonhosted.org/python-gnupg/index.html
 Source:         https://files.pythonhosted.org/packages/source/p/python-gnupg/python-gnupg-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,13 +42,12 @@ encryption and signature functionality from Python programs.
 
 %prep
 %setup -q -n python-gnupg-%{version}
-echo "import setuptools; setuptools.setup()" > setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +57,8 @@ export NO_EXTERNAL_TESTS=true
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/gnupg.py
+%pycache_only %{python_sitelib}/__pycache__/gnupg.*.pyc
+%{python_sitelib}/python_gnupg-%{version}.dist-info
 
 %changelog
