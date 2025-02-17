@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 17 06:17:50 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.13:
+  * Bump version to 0.2.13
+  * Update Debian packaging (#42)
+  * Fix missing cases for Command to str
+  * README - Update Windows sections
+  * Windows Builds - Add resource file getting exe file to show
+    icon
+
+-------------------------------------------------------------------
 Sun Feb 16 08:53:04 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.12:

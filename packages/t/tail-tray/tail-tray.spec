@@ -17,7 +17,7 @@
 
 
 Name:           tail-tray
-Version:        0.2.12
+Version:        0.2.13
 Release:        0
 Summary:        Tailscale tray menu and UI for the KDE Plasma Desktop
 License:        GPL-3.0-only

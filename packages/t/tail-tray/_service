@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/SneWs/tail-tray</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/v0.2.12</param>
-    <param name="match-tag">v0.2.12</param>
+    <param name="revision">refs/tags/v0.2.13</param>
+    <param name="match-tag">v0.2.13</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
