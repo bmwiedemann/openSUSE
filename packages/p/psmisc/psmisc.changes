@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 12:04:10 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Looks like Factory and TW includes glibc-gconv-modules-extra at build time 
+
+-------------------------------------------------------------------
 Thu Dec  5 12:30:55 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - add loongarch64 as peekfd supported arch

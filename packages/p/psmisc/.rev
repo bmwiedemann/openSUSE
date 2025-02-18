@@ -900,4 +900,12 @@
     <comment>- add loongarch64 as peekfd supported arch (forwarded request 1228512 from adrianSuSE)</comment>
     <requestid>1228556</requestid>
   </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>c898471b89cedf0d504de0a80f6376cd</srcmd5>
+    <version>23.7</version>
+    <time>1739902153</time>
+    <user>anag+factory</user>
+    <comment>- Looks like Factory and TW includes glibc-gconv-modules-extra at build time</comment>
+    <requestid>1246657</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package psmisc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ BuildRequires:  dejagnu
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
-BuildRequires:  glibc-gconv-modules-extra
 BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
