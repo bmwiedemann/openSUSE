@@ -1,7 +1,7 @@
 #
 # spec file for package 0ad-data
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           0ad-data
-Version:        0.0.26
+Version:        0.27.0
 Release:        0
 Summary:        The Data Files for 0 AD
 # When openSUSE supports full spdx 2.2, replace GPL-3.0+ with (GPL-3.0+ with Font-exception-2.0)
@@ -25,7 +25,7 @@ License:        CC-BY-SA-3.0 AND LPPL-1.3c+ AND GPL-3.0-or-later
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://play0ad.com/
 # SF tarball is currently broken. Upstreamed notified and confirmed. Lets use their site for now.
-Source:         https://releases.wildfiregames.com/0ad-%{version}-alpha-unix-data.tar.xz
+Source:         https://releases.wildfiregames.com/0ad-%{version}-unix-data.tar.xz
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  gnu-free-fonts
@@ -46,7 +46,7 @@ hobbyist game developers, since 2001. The code and data are available under the 
 license, and the art, sound and documentation are available under CC-BY-SA.
 
 %prep
-%setup -q -n 0ad-%{version}-alpha
+%setup -q -n 0ad-%{version}
 
 %build
 
