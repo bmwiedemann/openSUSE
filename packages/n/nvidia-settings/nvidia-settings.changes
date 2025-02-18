@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 12 13:01:46 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move XDG autostart to distconfdir
+- No longer mark XDG autostart as a config file
+- Let RPM/OBS handle gzip manpage compression
+
+-------------------------------------------------------------------
 Tue Jan 28 03:39:35 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to release 570.86.16

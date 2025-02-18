@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if %{undefined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%endif
 
 Name:           nvidia-settings
 Version:        570.86.16
@@ -98,7 +101,9 @@ export LDFLAGS="%{?__global_ldflags}"
     NV_USE_BUNDLED_LIBJANSSON=0 \
     NV_VERBOSE=1 \
     PREFIX=%{_prefix} \
-    XNVCTRL_LDFLAGS="-L%{_libdir}"
+    XNVCTRL_LDFLAGS="-L%{_libdir}" \
+    MANPAGE_GZIP=0
+    
 
 %install
 # Install libXNVCtrl headers
@@ -110,7 +115,8 @@ cp -af src/libXNVCtrl/*.h %{buildroot}%{_includedir}/NVCtrl/
     DEBUG=1 \
     NV_USE_BUNDLED_LIBJANSSON=0 \
     NV_VERBOSE=1 \
-    PREFIX=%{_prefix}
+    PREFIX=%{_prefix} \
+    MANPAGE_GZIP=0
 
 # Install desktop file
 mkdir -p %{buildroot}%{_datadir}/{applications,pixmaps}
@@ -118,11 +124,11 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications/ doc/%{name}.des
 cp doc/%{name}.png %{buildroot}%{_datadir}/pixmaps/
 
 # Install autostart file to load settings at login
-install -p -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}-load.desktop
+install -p -D -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/xdg/autostart/%{name}-load.desktop
 
 %check
-desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
-desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}-load.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-validate %{buildroot}%{_distconfdir}/xdg/autostart/%{name}-load.desktop
 
 %if 0%{?suse_version} >= 1550 ||  0%{?sle_version} >= 150400
 %ldconfig_scriptlets
@@ -140,8 +146,8 @@ desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}-load.desk
 %{_datadir}/pixmaps/%{name}.png
 %{_libdir}/libnvidia-gtk3.so.%{version}
 %{_libdir}/libnvidia-wayland-client.so.%{version}
-%{_mandir}/man1/%{name}.*
-%config %{_sysconfdir}/xdg/autostart/%{name}-load.desktop
+%{_mandir}/man1/%{name}.*%{?ext_man}
+%{_distconfdir}/xdg/autostart/%{name}-load.desktop
 
 %files -n nvidia-libXNVCtrl
 %license COPYING
