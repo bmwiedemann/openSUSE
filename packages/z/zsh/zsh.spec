@@ -1,7 +1,7 @@
 #
 # spec file for package zsh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -132,7 +132,8 @@ perl -p -i -e 's|%{_prefix}/local/bin|%{_bindir}|' \
     Util/reporter Functions/VCS_Info/test-repo-git-rebase-*
 
 %build
-
+TEXI2HTML=texi2html
+export TEXI2HTML
 %configure \
 %if 0%{?suse_version}
     --with-term-lib="ncursesw" \

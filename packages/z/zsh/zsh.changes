@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:37:01 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build with texinfo 7.1 (boo#1237196) 
+
+-------------------------------------------------------------------
 Mon Jul 15 14:02:19 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Backport zsh-ab4d62eb975a4c4c51dd35822665050e2ddc6918.patch
