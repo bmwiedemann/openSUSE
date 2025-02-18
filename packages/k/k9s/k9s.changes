@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 18 07:23:06 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.4:
+  * Resolved Issues
+    - #3122 Viewing events is no longer sorted by LAST SEEN
+    - #3120 Custom View Column Mismatch in K9s: Shuffled Values in
+      Pods View
+    - #3119 Custom Views Fail to Load with % in Column Names
+    - #3118 selecting an alias, the wrong resources are being shown
+
+-------------------------------------------------------------------
 Mon Feb 17 10:08:51 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable cgo on riscv64
