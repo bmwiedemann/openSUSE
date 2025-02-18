@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Feb 17 21:56:49 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.15.1:
+  * Changed
+    * Error out when socket fails to create with --daemon
+    * Default URL hints now stop before backslashes
+  * Fixed
+    * Modifiers being out of sync for fast/synthetic input on X11
+    * Child process creation failing while inside a deleted directory
+    * Shifted key reported without a shift when using kitty keyboard protocol
+
+-------------------------------------------------------------------
 Tue Jan 14 14:42:09 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.15.0:

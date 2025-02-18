@@ -17,7 +17,7 @@
 
 
 Name:           alacritty
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
