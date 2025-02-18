@@ -998,4 +998,15 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1243440</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>2765a547696f6ff93ee7be1f7157eed9</srcmd5>
+    <version>3.10.0</version>
+    <time>1739902103</time>
+    <user>anag+factory</user>
+    <comment>- Fix testfiles
+  * Move extra files tagged for tests to testdata package
+  * Add matplotlib-pr29631-install-test-ipynb.patch
+    gh#matplotlib/matplotlib#29631</comment>
+    <requestid>1246277</requestid>
+  </revision>
 </revisionlist>

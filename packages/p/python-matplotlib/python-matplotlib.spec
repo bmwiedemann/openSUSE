@@ -42,8 +42,10 @@ Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matp
 Source98:       https://github.com/qhull/qhull/archive/v8.0.2/qhull-8.0.2.tar.gz#/qhull-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
 Source100:      python-matplotlib.rpmlintrc
+# PATCH-FIX-UPSTREAM matplotlib-pr29631-install-test-ipynb.patch gh#matplotlib/matplotlib#29631
+Patch0:         matplotlib-pr29631-install-test-ipynb.patch
 # PATCH-FEATURE-OPENSUSE matplotlib-meson-options-opensuse.patch code@bnavigator.de -- Custom build options for meson-python
-Patch0:         matplotlib-meson-options-opensuse.patch
+Patch1:         matplotlib-meson-options-opensuse.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
@@ -426,11 +428,14 @@ $python -m pytest --pyargs matplotlib.tests \
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxagg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_wxcairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/qt_compat.*.py*
+%exclude %{python_sitearch}/matplotlib/tests/*.pfb
+%exclude %{python_sitearch}/matplotlib/tests/*.ttf
+%exclude %{python_sitearch}/matplotlib/tests/*.ipynb
 %exclude %{python_sitearch}/matplotlib/tests/baseline_images
+%exclude %{python_sitearch}/matplotlib/tests/tinypages
 %exclude %{python_sitearch}/mpl_toolkits/axes_grid1/tests/baseline_images
 %exclude %{python_sitearch}/mpl_toolkits/axisartist/tests/baseline_images
 %exclude %{python_sitearch}/mpl_toolkits/mplot3d/tests/baseline_images
-%exclude %{python_sitearch}/matplotlib/tests/tinypages
 
 # Dummy package to pull in latex dependencies.
 %files %{python_files latex}
@@ -485,11 +490,15 @@ $python -m pytest --pyargs matplotlib.tests \
 
 %files %{python_files testdata}
 %license LICENSE/
+%doc lib/matplotlib/tests/README
+%{python_sitearch}/matplotlib/tests/*.pfb
+%{python_sitearch}/matplotlib/tests/*.ttf
+%{python_sitearch}/matplotlib/tests/*.ipynb
 %{python_sitearch}/matplotlib/tests/baseline_images
+%{python_sitearch}/matplotlib/tests/tinypages
 %{python_sitearch}/mpl_toolkits/axes_grid1/tests/baseline_images
 %{python_sitearch}/mpl_toolkits/axisartist/tests/baseline_images
 %{python_sitearch}/mpl_toolkits/mplot3d/tests/baseline_images
-%{python_sitearch}/matplotlib/tests/tinypages
 %exclude %{python_sitearch}/matplotlib/tests/tinypages/.gitignore
 %exclude %{python_sitearch}/matplotlib/tests/tinypages/_static/.gitignore
 

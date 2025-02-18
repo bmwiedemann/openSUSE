@@ -1,0 +1,12 @@
+Index: matplotlib-3.10.0/lib/matplotlib/tests/meson.build
+===================================================================
+--- matplotlib-3.10.0.orig/lib/matplotlib/tests/meson.build
++++ matplotlib-3.10.0/lib/matplotlib/tests/meson.build
+@@ -103,6 +103,7 @@ install_data(
+   'cmr10.pfb',
+   'mpltest.ttf',
+   'test_nbagg_01.ipynb',
++  'test_inline_01.ipynb',
+   install_tag: 'tests',
+   install_dir: py3.get_install_dir(subdir: 'matplotlib/tests/'))
+ 

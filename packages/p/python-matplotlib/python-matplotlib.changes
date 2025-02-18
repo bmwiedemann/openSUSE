@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 16 20:07:11 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Fix testfiles
+  * Move extra files tagged for tests to testdata package
+  * Add matplotlib-pr29631-install-test-ipynb.patch
+    gh#matplotlib/matplotlib#29631
+
+-------------------------------------------------------------------
 Mon Feb  3 11:21:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.10.0
