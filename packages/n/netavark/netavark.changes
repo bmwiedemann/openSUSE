@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Feb 14 02:30:40 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Remove netavark-1.14.0.obscpio checked-in mistakenly.
+- Use recommended way to require latest rust—require cargo.
+
+-------------------------------------------------------------------
+Tue Feb 11 06:40:12 UTC 2025 - madhankumar.chellamuthu@suse.com
+
+- Update to version 1.14.0:
+  * Release v1.14.0
+  * release notes for v1.14.0
+  * update release notes from v1.13.1
+  * run cargo update
+  * Finalize firewalld port forwarding support
+  * chore(deps): update rust crate once_cell to 1.20.3
+  * fix(deps): update rust crate rand to 0.9.0
+  * Add handling for firewalld's StrictForwardPorts setting
+  * fix lint issues wirh rust 1.84
+  * chore(deps): update dependency containers/automation_images to v20250131
+  * chore(deps): update rust crate tempfile to 3.16.0
+  * rename macvlan_dhcp.rs to dhcp.rs
+  * bridge: only allow dhcp with unmanaged mode
+  * bridge: support DHCP ipam driver
+  * fix(deps): update rust crate ipnet to 2.11.0
+  * fix(deps): update rust crate serde_json to 1.0.136
+  * fix(deps): update rust crate log to 0.4.24
+  * bridge: add vlan support
+  * fix(deps): update rust crate tokio to 1.43.0
+  * fix(deps): update rust crate serde_json to 1.0.135
+  * New VM Images
+  * fix(deps): update rust crate clap to ~4.5.23
+  * chore(deps): update rust crate tempfile to 3.15.0
+  * fix(deps): update rust crate nispor to 1.2.22
+  * fix(deps): update rust crate serde_json to 1.0.134
+  * fix(deps): update rust crate env_logger to 0.11.6
+  * Add container hostname to DHCP requests and use container id as client id
+  * fix(deps): update rust crate mozim to 0.2.5
+  * generate protobuf in OUT_DIR
+  * fix(deps): update rust crate tower to 0.5.2
+  * Cargo.lock: bump some versions
+  * run cargo update
+  * cargo: set rust-version
+  * fix new rust 1.83 lint errors
+  * OWNERS: remove edsantiago
+  * setup: on av errors cleanup again
+  * nftables: add daddr match to port forward jump rule
+  * network: bridge: don't change forwarding sysctl for internal bridges
+  * network: bridge: add support for unmanaged mode
+  * test-dhcp: remove deprecated ifconfig/brctl commands
+  * fix new rust 1.82 lint errors
+  * update ci images
+  * fix(deps): update rust crate serde_json to 1.0.133
+  * network: bridge: add support for host_interface_name option
+  * network: add support for network-specific options
+  * fix(deps): update rust crate ipnet to 2.10.1
+  * chore(deps): update rust crate tempfile to 3.14.0
+  * fix(deps): update rust crate tokio to 1.41.1
+  * fix(deps): update rust crate anyhow to 1.0.93
+  * fix(deps): update rust crate url to 2.5.3
+  * [skip-ci] RPM: cleanup changelog conditionals
+  * fix(deps): update rust crate anyhow to 1.0.92
+  * Bump to 1.14.0-dev
+
+-------------------------------------------------------------------
 Tue Dec 10 06:53:58 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 1.13.1:

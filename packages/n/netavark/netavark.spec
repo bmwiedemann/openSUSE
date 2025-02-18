@@ -1,7 +1,7 @@
 #
 # spec file for package netavark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major_minor %((v=%{version}; echo ${v%.*}))
 
 Name:           netavark
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
@@ -28,10 +28,10 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        netavark-iptables.conf
 Source3:        netavark-nftables.conf
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  go-md2man
 BuildRequires:  protobuf-devel
-BuildRequires:  rust+cargo >= 1.66
 BuildRequires:  systemd-rpm-macros
 # aardvark-dns and %%{name} are usually released in sync
 Requires:       aardvark-dns >= %{major_minor}
@@ -65,6 +65,7 @@ cp target/release/%{name} bin/
 
 cd docs
 go-md2man -in %{name}.1.md -out %{name}.1
+go-md2man -in %{name}-firewalld.7.md -out %{name}-firewalld.7
 
 %install
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}
@@ -76,6 +77,7 @@ install -D -m 0644 ${RPM_SOURCE_DIR}/netavark-%{default_firewall_backend}.conf %
 %dir %{_libexecdir}/podman
 %{_libexecdir}/podman/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man7/%{name}-firewalld.7%{?ext_man}
 %{_unitdir}/%{name}-dhcp-proxy.service
 %{_unitdir}/%{name}-dhcp-proxy.socket
 %{_unitdir}/%{name}-firewalld-reload.service
