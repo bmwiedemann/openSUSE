@@ -102,7 +102,7 @@ applications.
 sed -i 's@/usr/bin/env bash@/bin/bash@' script/envml
 
 %build
-./configure \
+%configure \
     --initdir="%{_datadir}/%name/init" \
     --libexecdir="%{_prefix}/%_lib/%{name}/" \
     --prefix="%_prefix" \
@@ -118,7 +118,7 @@ sed -i 's@/usr/bin/env bash@/bin/bash@' script/envml
     --libdir=%{_libdir}/%{name} \
     --enable-compat-version \
     --with-python=/usr/bin/python3
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d %{buildroot}/usr/share/modules
