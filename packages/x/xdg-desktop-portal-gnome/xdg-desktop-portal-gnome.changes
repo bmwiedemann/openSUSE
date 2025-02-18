@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 17 11:31:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Fix build against xdg-desktop-portal >= 1.19.1
+  + Fix initialization of X11 display.
+- Drop patches fixed upstream:
+  + notification-Add-missing-GUnixFDList-argument.patch
+  + notification-null-icon-pointer.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 10:08:32 UTC 2025 - Tim K <taaem@mailbox.org>
 
 - Add notification-Add-missing-GUnixFDList-argument.patch
