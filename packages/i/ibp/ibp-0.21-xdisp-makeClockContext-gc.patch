@@ -1,0 +1,11 @@
+diff -ru ibp-0.21.orig/xdisp.c ibp-0.21/xdisp.c
+--- ibp-0.21.orig/xdisp.c	2025-02-17 22:02:00.962224441 +0100
++++ ibp-0.21/xdisp.c	2025-02-17 22:02:41.862221798 +0100
+@@ -554,6 +554,7 @@
+ int				ht;
+ Window				win;
+ Pixmap				pix;
++int				gc;
+ {
+ 	register struct sunclock * s;
+ 

@@ -1,0 +1,9 @@
+<package name="ibp" project="openSUSE:Factory">
+  <title>Monitoring the International Beacon Project</title>
+  <description>This program continuously shows which beacon of the International Beacon
+Project (on the HF bands from 14 through 28 MHz) is currently transmitting. On
+X11 systems, it can also show a sunclock-like map with the short and long paths
+to the active beacons.</description>
+  <devel project="hamradio" package="ibp"/>
+  <url>https://www.pa3fwm.nl/software/ibp/</url>
+</package>

@@ -1,0 +1,10 @@
+Only in ibp-0.21: .ibp.c.swp
+diff -ru ibp-0.21.orig/Imakefile ibp-0.21/Imakefile
+--- ibp-0.21.orig/Imakefile	2025-02-17 22:05:38.652218394 +0100
++++ ibp-0.21/Imakefile	2025-02-17 22:10:17.842158825 +0100
+@@ -1,4 +1,4 @@
+-SYS_LIBRARIES = -lX11 -lm -lcurses
++SYS_LIBRARIES = -lX11 -lm -lncurses
+ SRCS = ibp.c xdisp.c large.bits.h
+ OBJS = ibp.o xdisp.o
+ ComplexProgramTargetNoMan(ibp)

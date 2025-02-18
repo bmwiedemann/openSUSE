@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Mon Feb 17 21:14:37 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build (patch directive)
+- drop ibp-0.21.dif
+- add ibp-0.21-ncurses.patch
+- add ibp-0.21-xdisp-makeClockContext-gc.patch
+
+-------------------------------------------------------------------
+Thu Jun 29 17:59:01 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fix build for Tumbleweed and Factory
+- Specfile updated to current standard
+
+* Thu Jun 07 2012 - dl8fcl@darc.de
+- fix for openSUSE_12.2, License tag updated
+* Tue Feb 22 2011 - dl8fcl@darc.de
+- fix for 11.4
+* Mon Jun 1 2008 - dg7gt@online.de
+- expansion error fixes for openSUSE 11
+* Thu Feb 22 2007 - dl9pf@gmx.de
+- import into buildservice
+* Sat Dec 16 2006 - dg7gt@online.de
+- updated to version 0.21
+* Sun Jan 11 2004 - adrian@suse.de
+- fix build as user
+* Tue Sep 17 2002 - ro@suse.de
+- removed bogus self-provides
+* Mon Jun 25 2001 - jreuter@suse.de
+- GCC 3.0 defines printf() as a macro. Great.
+  Splitted one large printf() into multiple smaller to let it compile
+  again with gcc 3.0
+* Mon Jun 25 2001 - jreuter@suse.de
+- fixed Imakefile
+* Fri Jan 05 2001 - ka@suse.de
+- initial release 0.20
+
