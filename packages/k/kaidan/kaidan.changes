@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Feb 16 22:36:37 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 0.11.0:
+  * Features:
+    + Highlight public XMPP provider titles while card is expanded
+    + Round corners of cards and buttons
+    + Add fading in/out hover effect to map previews
+    + Collapse contact profiles by default if they have more than 3 entries
+    + Show colored check mark for delivered messages instead of none to avoid
+      message bubble resizing
+  * Bugfixes:
+    + Fix opening public MUC-based group chats via another XMPP client
+    + Fix playing voice messages and changing playing position
+    + Fix updating message reactions that could not be sent instead of adding
+      them a second time
+    + Fix updating group chat users in user interface
+    + Fix displaying message reaction details
+    + Update filtering contacts by labels even if label list is not open
+      anymore
+    + Fix scrolling media overview
+    + Fix updating draft messages
+  * Notes:
+    + Kaidan requires Qt 6.6 now
+- Add drop_quick_compiler_option.patch
+
+-------------------------------------------------------------------
 Sun Dec 15 09:05:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.10.1

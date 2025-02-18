@@ -1,0 +1,66 @@
+From c02e132951d0807418fdc86824c0e65923cb0346 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Sun, 16 Feb 2025 23:28:46 +0100
+Subject: [PATCH] CMakeLists: Remove the QUICK_COMPILER option
+
+The Qt6QuickCompiler package and the qtquick_compiler_add_resources are
+no longer available on Qt 6. There is a new QML script compiler, but it
+requires adding the QML with qt_add_qml_module:
+https://doc.qt.io/qt-6/qtqml-qml-script-compiler.html
+---
+ CMakeLists.txt     | 10 ----------
+ src/CMakeLists.txt |  9 ++-------
+ 2 files changed, 2 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e20082ed..5eba63627 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,7 +52,6 @@ option(BUILD_TESTS "Build unit tests" FALSE)
+ option(APPIMAGE "Build Kaidan as AppImage (will only work in the appimage script)" FALSE)
+ option(UBUNTU_TOUCH "Building an Ubuntu Touch click (internal use only!)" FALSE)
+ option(CLICK_ARCH "Architecture that will be used in the click's manifest")
+-option(QUICK_COMPILER "Use QtQuick compiler to improve performance" FALSE)
+ option(USE_KNOTIFICATIONS "Use KNotifications for displaying notifications" TRUE)
+ option(BUNDLE_ICONS "Bundle breeze icons" FALSE)
+ 
+@@ -90,15 +89,6 @@ kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
+ # QML modules
+ ecm_find_qmlmodule(org.kde.kquickimageeditor 1.0)
+ 
+-# Optional QtQuickCompiler
+-if(QUICK_COMPILER)
+-    find_package(Qt6QuickCompiler)
+-    set_package_properties(Qt6QuickCompiler PROPERTIES
+-        DESCRIPTION "Compile QML at build time"
+-        TYPE OPTIONAL
+-    )
+-endif()
+-
+ if(USE_KNOTIFICATIONS)
+     find_package(KF6Notifications ${KF_MIN_VERSION} REQUIRED)
+     set(__KF6Notifications_LIBRARIES KF6::Notifications)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 353301bcf..513ac280f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -242,13 +242,8 @@ ecm_add_app_icon(KAIDAN_ICNS ICONS ${ICONS_SRCS})
+ message(STATUS ${KAIDAN_ICNS})
+ target_sources(${PROJECT_NAME} PRIVATE ${KAIDAN_ICNS})
+ 
+-# QML files
+-if(QUICK_COMPILER)
+-    qtquick_compiler_add_resources(COMPILED_QML_QRC qml/qml.qrc)
+-    target_sources(${PROJECT_NAME} PRIVATE ${COMPILED_QML_QRC})
+-else()
+-    target_sources(${PROJECT_NAME} PRIVATE qml/qml.qrc)
+-endif()
++qt_add_resources(QML_QRC qml/qml.qrc)
++target_sources(${PROJECT_NAME} PRIVATE ${QML_QRC})
+ 
+ ecm_create_qm_loader(${PROJECT_NAME} kaidan_qt)
+ 
+-- 
+GitLab
+
