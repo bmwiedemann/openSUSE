@@ -104,6 +104,7 @@ Patch5:         multiple-pkcs11-library-init.patch
 # Fix build with older openssl
 Patch6:         openssl-OSSL_LIB_CTX.patch
 Patch7:         openj9-openssl.patch
+Patch8:         openj9-nasm-noexecstack.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 #
@@ -352,6 +353,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8
 %patch -P 13 -p1
 
 %if %{with_system_pcsc}

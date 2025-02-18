@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 15:58:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * openj9-nasm-noexecstack.patch
+    + fix wrong execstack flag in libj9jit (bsc#1235844)
+
+-------------------------------------------------------------------
 Fri Feb  7 08:37:23 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.26 with OpenJ9 0.49.0 virtual machine
