@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:36:48 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.10:
+  * Bump images, dependencies and versions to go 1.22.12 and distroless iptables
+  * Kubelet server handler cleanup
+  * kubeadm: use the v1beta4 EtcdAPICall timeout for etcd calls
+  * Added check for multipath device mapper
+  * Fix Go vet errors for master golang
+  * Update pkg/controlplane/apiserver/config_test.go
+  * prioritize user EtcdOptions.StorageConfig.StorageObjectCountTracker
+  * Fix: StorageObjectCountTracker is nil, apf estimator got ObjectCountNotFoundErr
+  * bump cadvisor to v0.49.2 in release 1.30
+  * .*: fix lint errors
+  * hack: disable SA1006 check
+  * hack/tools: bump go-tools for go1.23.0
+  * Bump govulncheck to 1.1.2
+
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.12`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.30.10/build/dependencies.yaml#L117-L119
+
+- version 1.30.10 contain fix for CVE-2025-0426, bsc#1237189
+  * Refer: https://github.com/kubernetes/kubernetes/issues/130016#issue-2836467448
+
+-------------------------------------------------------------------
 Thu Jan 16 10:13:43 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.9:
