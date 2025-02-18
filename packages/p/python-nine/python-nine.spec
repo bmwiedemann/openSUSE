@@ -1,7 +1,7 @@
 #
 # spec file for package python-nine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-nine
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python 2 / 3 compatibility, like six, but favouring Python 3
 License:        SUSE-Public-Domain
 Group:          Development/Languages/Python
 URL:            https://github.com/nandoflorestan/nine
 Source:         https://files.pythonhosted.org/packages/source/n/nine/nine-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -40,11 +44,11 @@ idioms work in python2.
 %setup -q -n nine-%{version}
 
 %build
-
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
@@ -52,6 +56,7 @@ idioms work in python2.
 %files %{python_files}
 %license LICENSE.rst
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/nine
+%{python_sitelib}/nine-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:47:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.0
+  * Add to setup.py some Python versions
+  * Format Python code with black
+  * Unimportant. Format code with black.
+  * Python 3.14 removes URLopener & FancyURLopener
+  * Replace setup.py with pyproject.toml
+- Limit Python files matched in %files section
+- Remove duplicate Python files
+  * Add fdupes to BuildRequires
+  * Run fdupes command in %install section
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Mon Mar 30 11:26:40 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.1.0
