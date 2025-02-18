@@ -49,6 +49,8 @@ BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(vapigen)
 
+ExcludeArch:    %{ix86} %{arm}
+
 %description
 retro-gtk wraps the libretro API for use in Gtk applications such as
 GNOME Games.

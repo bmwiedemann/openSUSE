@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 08:22:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Exclude 32bit buildtargets via ExcludeArch %{ix86} %{arm}. They
+  have been broken for ages with no fix in sight.
+
+-------------------------------------------------------------------
 Mon Jan 10 03:31:33 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add upstream 0001-Retro-GTK-1.0.2-fix-meson-build-failure.patch
