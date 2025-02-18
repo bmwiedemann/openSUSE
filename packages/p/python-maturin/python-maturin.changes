@@ -1,20 +1,37 @@
 -------------------------------------------------------------------
+Sat Feb  8 21:18:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Exclude packages not in the dependency tree when finding
+    bindings in #2426
+  * Use uv automatically when running maturin develop inside uv-
+    created virtualenv in #2433
+  * Consider abi3 minor version when resolving Python
+    interpreters in #2437
+  * Handle archived dylibs on AIX in #2442
+  * Fix unnecessary rebuilds due to pyo3 config file modified
+    time change in #2446
+  * Fix the name of the .data directory in the generated wheel in
+    #2449
+  * Update minimal manylinux version for loongarch64 in #2451
+
+-------------------------------------------------------------------
 Fri Jan  3 17:39:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.8.1
-  * Downgrade invalid version info in `pyproject.toml` error to 
+  * Downgrade invalid version info in `pyproject.toml` error to
     warning in #2417
-  * Make `maturin develop` fail if version info is invalid in 
+  * Make `maturin develop` fail if version info is invalid in
     pyproject.toml in #2418
   * Don't add wheel data to sdist in #2367
   * Add sparcv9 architecture support in #2380
   * Properly handle dynamic version in pyproject.toml in #2391
   * Fix xwin cross compile on non-Windows system in #2391
   * Fix interpreter selection for abi3 bindings in #2392
-  * Use the official recommended naming pattern for cffi module 
+  * Use the official recommended naming pattern for cffi module
     file in #2406
   * Add Linux armv5te architecture support in #2409
-  * Only build Python 3.13t wheels by default for `pyo3` 0.23+ in 
+  * Only build Python 3.13t wheels by default for `pyo3` 0.23+ in
     #2413
 
 -------------------------------------------------------------------
