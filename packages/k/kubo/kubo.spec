@@ -1,7 +1,7 @@
 #
 # spec file for package kubo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define repo github.com/ipfs/kubo
 Name:           kubo
-Version:        0.32.1
+Version:        0.33.2
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT
 Group:          Productivity/Networking/Other
 URL:            https://%{repo}
-#Source0:        https://%{repo}/archive/v%{version}.tar.gz
-# bundle with all deps from ./fetch.sh and ./findfiles.sh :
-Source0:        kubo-%version.tar
+Source0:        kubo-%{version}.tar
 Source1:        vendor.tar.zst
 
 BuildRequires:  git
@@ -38,12 +36,16 @@ Requires:       fuse
 Requires:       nss-myhostname
 %systemd_requires
 
-Provides:       go-ipfs = %version
+Provides:       go-ipfs = %{version}
 Provides:       ipfs
 Obsoletes:      go-ipfs <= 0.21.0
 
 %description
-IPFS is a global, versioned, peer-to-peer filesystem. It combines good ideas from Git, BitTorrent, Kademlia, SFS, and the Web. It is like a single bittorrent swarm, exchanging git objects. IPFS provides an interface as simple as the HTTP web, but with permanence built in. You can also mount the world at /ipfs.
+IPFS is a global, versioned, peer-to-peer filesystem.
+It combines good ideas from Git, BitTorrent, Kademlia, SFS, and the Web.
+It is like a single bittorrent swarm, exchanging git objects.
+IPFS provides an interface as simple as the HTTP web, but with permanence built in.
+You can also mount the world at /ipfs.
 
 %prep
 %autosetup -p1 -a1

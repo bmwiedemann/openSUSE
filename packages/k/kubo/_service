@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/ipfs/kubo</param>
     <param name="scm">git</param>
-    <param name="revision">v0.32.1</param>
+    <param name="revision">v0.33.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

@@ -144,4 +144,41 @@ now with fixed build</comment>
   add reference about fix quic-go memory exhaustion attack (boo#1235162, CVE-2023-49295)</comment>
     <requestid>1236120</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c646314e8bb0e3ddf68169df425b0a9d</srcmd5>
+    <version>0.33.2</version>
+    <time>1739902216</time>
+    <user>anag+factory</user>
+    <comment>Update to 0.33.1 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.33.1
+  * Bitswap improvements from Boxo
+  * Improved IPNS interop
+- Update to 0.33.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.33.0
+  * Shared TCP listeners: Kubo now supports sharing the same TCP
+    port (4001 by default) by both raw TCP and WebSockets libp2p
+    transports.
+  * AutoTLS takes care of Secure WebSockets setup: It is no longer
+    necessary to manually add /tcp/../ws listeners to
+    Addresses.Swarm when AutoTLS.Enabled is set to true. Kubo will
+    detect if /ws listener is missing and add one on the same port
+    as pre-existing TCP (e.g. /tcp/4001), removing the need for any
+    extra configuration.
+  * Bitswap improvements from Boxo
+  * Using default libp2p_rcmgr metrics: Bespoke rcmgr metrics were
+    removed, Kubo now exposes only the default libp2p_rcmgr metrics
+    from go-libp2p.
+  * Flatfs does not sync on each write: New repositories
+    initialized with flatfs in Datastore.Spec will have sync set to
+    false.
+  * ipfs add --to-files no longer works with --wrap
+  * ipfs --api supports HTTPS RPC endpoints
+  * New options for faster writes: WriteThrough, BlockKeyCacheSize,
+    BatchMaxNodes, BatchMaxSize
+  * MFS stability with large number of writes
+  * New DoH resolvers for non-ICANN DNSLinks: .eth and .crypto
+  * Reliability improvements to the WebRTC Direct listener
+  * Fix: Escape Redirect URL for Directory</comment>
+    <requestid>1246572</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Feb 17 13:38:36 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 0.33.1 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.33.1
+  * Bitswap improvements from Boxo
+  * Improved IPNS interop
+
+- Update to 0.33.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.33.0
+  * Shared TCP listeners: Kubo now supports sharing the same TCP
+    port (4001 by default) by both raw TCP and WebSockets libp2p
+    transports.
+  * AutoTLS takes care of Secure WebSockets setup: It is no longer
+    necessary to manually add /tcp/../ws listeners to
+    Addresses.Swarm when AutoTLS.Enabled is set to true. Kubo will
+    detect if /ws listener is missing and add one on the same port
+    as pre-existing TCP (e.g. /tcp/4001), removing the need for any
+    extra configuration.
+  * Bitswap improvements from Boxo
+  * Using default libp2p_rcmgr metrics: Bespoke rcmgr metrics were
+    removed, Kubo now exposes only the default libp2p_rcmgr metrics
+    from go-libp2p.
+  * Flatfs does not sync on each write: New repositories
+    initialized with flatfs in Datastore.Spec will have sync set to
+    false.
+  * ipfs add --to-files no longer works with --wrap
+  * ipfs --api supports HTTPS RPC endpoints
+  * New options for faster writes: WriteThrough, BlockKeyCacheSize,
+    BatchMaxNodes, BatchMaxSize
+  * MFS stability with large number of writes
+  * New DoH resolvers for non-ICANN DNSLinks: .eth and .crypto
+  * Reliability improvements to the WebRTC Direct listener
+  * Fix: Escape Redirect URL for Directory
+
+-------------------------------------------------------------------
 Thu Jan  9 07:47:35 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 0.32.1 - for details see
@@ -32,7 +67,7 @@ Fri Oct 25 18:17:20 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * Version Suffix Configuration
   * /unix/ socket support in Addresses.API
   * Cleaned Up ipfs daemon Startup Log
-  * Commands Preserve Specified Hostname 
+  * Commands Preserve Specified Hostname
 
 -------------------------------------------------------------------
 Tue Jun 11 07:30:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
@@ -213,7 +248,7 @@ Fri Dec 10 18:33:25 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
   * Circuit Relay v2
   * New configuration flags:
     + Addresses.AppendAnnounce
-    + Pubsub.Enabled 
+    + Pubsub.Enabled
   * changed ipfs dag get
   * changed ipfs dag put
   * UnixFS refactor
@@ -284,7 +319,7 @@ Fri May  8 04:23:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
   * Systemd Support
     * socket activation and startup/shutdown notifications
   * IPFS API Over Unix Domain Sockets
-  * After install run ipfs daemon --migrate 
+  * After install run ipfs daemon --migrate
 
 -------------------------------------------------------------------
 Fri Jan 31 09:57:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
