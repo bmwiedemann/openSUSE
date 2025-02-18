@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Feb 17 19:46:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure that /etc/ca-bundle.pem exists
+
+-------------------------------------------------------------------
+Mon Feb 17 19:19:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure we are using the system cert store and not an intree copy
+  adds use_system_certs.patch
+
+-------------------------------------------------------------------
+Mon Feb 17 18:23:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- need grpc 1.70.0
+
+-------------------------------------------------------------------
+Mon Feb 17 18:16:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- New upstream release 1.70.1, no changelog found
+- refresh patches:
+  gcc14.patch
+  use_system_libs.patch
+
+-------------------------------------------------------------------
 Fri Jul 26 13:18:48 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Added gcc14.patch dont hard enforce those errors until upstream

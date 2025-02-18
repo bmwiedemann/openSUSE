@@ -1,0 +1,13 @@
+Index: grpc-1.70.1/src/ruby/lib/grpc.rb
+===================================================================
+--- grpc-1.70.1.orig/src/ruby/lib/grpc.rb
++++ grpc-1.70.1/src/ruby/lib/grpc.rb
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-ssl_roots_path = File.expand_path('../../../../etc/roots.pem', __FILE__)
++ssl_roots_path = '/etc/ssl/ca-bundle.pem'
+ 
+ require_relative 'grpc/errors'
+ require_relative 'grpc/structs'

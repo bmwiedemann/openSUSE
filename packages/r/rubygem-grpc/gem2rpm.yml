@@ -16,14 +16,18 @@
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
 :preamble: |-
+  #define rb_build_versions     %{my_apps_rb_build_versions}
+  #define rb_build_ruby_abis    %{my_apps_rb_build_abi}
   BuildRequires:  gcc-c++
   BuildRequires:  pkgconfig
-  BuildRequires:  grpc-devel >= 1.60.0
+  BuildRequires:  grpc-devel >= 1.70.0
 #   Requires: foobar
 # ## used by gem2rpm
 :patches:
   0001-Return-Qnil-from-grpc_rb_fork_unsafe_begin-end_api.patch: -p1
   use_system_libs.patch: -p1
+  gcc14.patch: -p1
+  use_system_certs.patch: -p1
 #   bar.patch:
 # :post_patch:
 #   if you need to fiddle with the source dir before rebuilding the gem
@@ -49,6 +53,7 @@
   find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ca.pem' -o -name 'server1.key' -o -name 'server1.pem' \) | xargs chmod -x
   rm -rf %{buildroot}%{_libdir}/ruby/gems/*/gems/grpc-%{version}/src/ruby/ext/grpc/{libs,objs}/
   rm -rf %{buildroot}%{_libdir}/ruby/gems/*/gems/grpc-%{version}/src/ruby/spec/
+  rm -rf %{buildroot}%{_libdir}/ruby/gems/*/gems/grpc-%{version}/etc
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)
@@ -81,3 +86,7 @@
 #     :post: |-
 #       /bin/echo foo
 #
+:main:
+  :preamble: |-
+    Requires:  ca-certificates-mozilla
+:disable_docs: true

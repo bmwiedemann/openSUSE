@@ -1,8 +1,8 @@
-Index: grpc/src/ruby/ext/grpc/extconf.rb
+Index: grpc-1.70.1/src/ruby/ext/grpc/extconf.rb
 ===================================================================
---- grpc.orig/src/ruby/ext/grpc/extconf.rb
-+++ grpc/src/ruby/ext/grpc/extconf.rb
-@@ -208,6 +208,7 @@ $CFLAGS << ' -std=c11 '
+--- grpc-1.70.1.orig/src/ruby/ext/grpc/extconf.rb
++++ grpc-1.70.1/src/ruby/ext/grpc/extconf.rb
+@@ -209,6 +209,7 @@ $CFLAGS << ' -std=c11 '
  $CFLAGS << ' -Wall '
  $CFLAGS << ' -Wextra '
  $CFLAGS << ' -pedantic '
