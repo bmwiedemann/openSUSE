@@ -1,7 +1,7 @@
 #
 # spec file for package geoclue2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,6 +117,10 @@ install -d %{buildroot}%{_localstatedir}/lib/srvGeoClue
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-srvGeoClue.conf
 
+# move xdg/autostart files from /etc to /usr/etc
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart
+
 # conf.d dir needed for drop-in configs (such as used by GNOME)
 install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
 
@@ -147,7 +151,7 @@ install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
 %{_datadir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
 %{_unitdir}/geoclue.service
 # Upstream is explicitly asking us to package these, so lets give it a go.
-%{_sysconfdir}/xdg/autostart/geoclue-demo-agent.desktop
+%{_distconfdir}/xdg/autostart/geoclue-demo-agent.desktop
 %{_datadir}/applications/geoclue-demo-agent.desktop
 
 %files -n system-user-srvGeoClue

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 10:08:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move xdg/autostart filesto /usr/etc (boo#1237248).
+
+-------------------------------------------------------------------
 Sat Dec 21 16:11:01 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Use BeaconDB as a drop-in replacement for defunct MLS WiFi
