@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 13:40:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.3
+  * [pull #616] make tables without body gfm compatible
+- Add sed command to remove shebang from lib/markdown2.py
+
+-------------------------------------------------------------------
 Wed Jan  8 16:23:14 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - update to 2.5.2:

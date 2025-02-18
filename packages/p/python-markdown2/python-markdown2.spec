@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-markdown2
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        A Python implementation of Markdown
 License:        MIT
@@ -46,6 +46,7 @@ header-ids.
 
 %prep
 %autosetup -p1 -n markdown2-%{version}
+sed -i '/#\!\/usr\/bin\/env\ python/d' lib/markdown2.py
 
 %build
 %pyproject_wheel
