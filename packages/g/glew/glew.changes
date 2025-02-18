@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:21:49 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing Require for libSM-devel (boo#1237276)
+
+-------------------------------------------------------------------
 Tue Jan  7 10:29:38 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Allow to build GLEW with EGL support for Wayland

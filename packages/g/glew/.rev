@@ -374,4 +374,12 @@ http://sourceforge.net/tracker/?func=detail&amp;aid=3466541&amp;group_id=67586&a
 - Added glew-2.2.0-fix-cmake.patch</comment>
     <requestid>1245351</requestid>
   </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>984f0f18c2597b8fea6caa861881debc</srcmd5>
+    <version>2.2.0</version>
+    <time>1739902148</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246604</requestid>
+  </revision>
 </revisionlist>

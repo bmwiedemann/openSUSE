@@ -71,6 +71,7 @@ Requires:       libGLEW%{so_ver} = %{version}
 %if %{with egl}
 Requires:       pkgconfig(egl)
 %endif
+Requires:       pkgconfig(sm)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xproto)
 # Don't require GLU, because there is GLEW_NO_GLU option
