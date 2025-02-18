@@ -22,7 +22,7 @@
 %endif
 
 Name:           pesign-obs-integration
-Version:        10.2+git20250211.88dd0a3
+Version:        10.2+git20250217.98df3ef
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
 License:        GPL-2.0-or-later
@@ -38,7 +38,9 @@ Requires:       nss-tools
 %endif
 Requires:       openssl
 # suse-module-tools <= 15.0.10 contains modsign-verify
+%if 0%{?suse_version}
 Requires:       suse-module-tools >= 15.0.10
+%endif
 %ifarch %{ix86} x86_64 ia64 aarch64 %{arm} riscv64
 Requires:       pesign
 %endif

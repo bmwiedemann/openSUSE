@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Feb 17 19:54:03 UTC 2025 - dmueller@suse.com
+
+- Update to version 10.2+git20250217.98df3ef:
+  * Fix quoting of filename extensions
+  * spec: suse-module-tools is for SUSE only
+  * repackage spec: mozilla-nss-tools is for SUSE distros, on Fedora/etc it's nss-tools
+
+-------------------------------------------------------------------
+Fri Feb 14 09:52:40 UTC 2025 - dmueller@suse.com
+
+- Update to version 10.2+git20250214.54864ba:
+  * Update brp-99-pesign
+  * pesign-gen-repackage-spec: Quote filenames.
+  * quote password as it has shellchars
+  * use a stronger password that passes strength cehck in FIPS mode bsc#1228433
+
+-------------------------------------------------------------------
 Tue Feb 11 21:11:03 UTC 2025 - dmueller@suse.com
 
 - Update to version 10.2+git20250211.88dd0a3:

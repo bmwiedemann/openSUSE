@@ -515,4 +515,21 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
   * Set Getopt no ignore case</comment>
     <requestid>1245171</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>70616889f364580ca4a3e3a4c7ed71dd</srcmd5>
+    <version>10.2+git20250217.98df3ef</version>
+    <time>1739902131</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 10.2+git20250217.98df3ef:
+  * Fix quoting of filename extensions
+  * spec: suse-module-tools is for SUSE only
+  * repackage spec: mozilla-nss-tools is for SUSE distros, on Fedora/etc it's nss-tools
+
+- Update to version 10.2+git20250214.54864ba:
+  * Update brp-99-pesign
+  * pesign-gen-repackage-spec: Quote filenames.
+  * quote password as it has shellchars
+  * use a stronger password that passes strength cehck in FIPS mode bsc#1228433</comment>
+    <requestid>1246510</requestid>
+  </revision>
 </revisionlist>
