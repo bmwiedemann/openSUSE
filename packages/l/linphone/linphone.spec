@@ -1,7 +1,7 @@
 #
 # spec file for package linphone
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %bcond_without slp
 %endif
 Name:           linphone
-Version:        5.3.95
+Version:        5.3.105
 Release:        0
 Summary:        Web Phone
 License:        AGPL-3.0-or-later

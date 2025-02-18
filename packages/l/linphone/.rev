@@ -277,4 +277,648 @@
     <comment></comment>
     <requestid>1223430</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0be239cd8b6e988d155ad3e9fc37d509</srcmd5>
+    <version>5.3.105</version>
+    <time>1739902175</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.1015 (no changelog).
+- Update to 5.3.95 (no changelog).
+- keep openldap patches separated from the source tarball
+- Remove the unneeded xsd build dependency
+- fix openldap build
+  * update openldap-bc.tar.bz2 to include openldap upstream 
+    fix for ITS#10011
+  * add autoreconf command to regenerate a working configure
+- Update to 5.3.37 (no changelog).
+- Update to 5.3.26 (no changelog).
+- Update to 5.3.7:
+  ADDED:
+    * Added notion of roles for conferences, so that there can be speakers and listeners.
+    * Reactions with IM conversations
+    * New video codec policy, so that hardware-accelerated codecs are prioritized in offer/answer.
+    * AV-1 codec
+    * New LinphoneAlert object used to report various QoS alerts during calls.
+    * SRTP AES GCM mode
+  CHANGED:
+    * TLS Client certificate request authentication callback removed (due to mbedtls update).
+      Application using TLS client certificate must provide it before any TLS connexion needing it.
+    * Refactoring of LinphoneAddress object implementation, leading to greater internal simplicity and performance.
+- Clean up spec file 
+- Add missing deps on TW.
+- Move Obsoletes/Provides to srpm:linphoneqt
+  (brpm:linphone-desktop) which is what it should have been.
+  https://forums.opensuse.org/t/tumbleweed-zypper-dup-wants-to-replace-linphone-with-linphone-cli/170249
+- Add Obsoletes/Provides to establish an upgrade path for zypper.
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/DNQSYPMB66XPGRKG6LPXCIH6VPSISG25/
+- Fix BuildRequires lime
+- Fix error linking on Fedora
+- Disable SLP by default for Factory and ALP (bsc#1214884) 
+- Update to 5.2.98 (no changelog)
+- Drop the manual, since it's very outdated and has been replaced with 
+  an online Wiki.
+- Update to 5.2.75 (no changelog). This fixes boo#1212956.
+- Add set_current_version.patch.
+- Update to version 5.2.50:
+  * Fix bug related to conference created with ICE DTLS SRTP encrypted call
+  * Rework tone manager:
+    - Remove reason field from LinphoneToneDescription
+    - Store tones by ID
+    - choose tone based on the reason when a call ends
+  * Do not override lime capability when enabling lime
+  * Do not allow to add dependency of an account to itself
+  * Allow to enable or disable tone indications from the core settings
+  * Fixed Content-Disposition (and others) headers issue in multiparts
+  * Update chat room flags in DB when calling insertChatRoom
+  * Fix an issue where on-hold music is played erroneously through a call that has been resumed
+  * Send invitations to the list of participants to invite and not to all invitees
+-Disable QRCode image generation for tumbleweed
+  * liblinphone is not currently compatible with zxing-cpp 2.0.0
+- Update to version 5.2.10:
+  * Video conferencing feature with &quot;mosaic&quot; and &quot;active speaker + thumbnails&quot; layouts
+  * Added conferencing scheduling API
+  * Support for post-quantum robust encryption for ZRTP calls
+  * Rtp bundle can be enabled per LinphoneAccount
+  * New APIs on Friend object to be able to set more info
+  * QRCode image generation
+  * Licence becomes AGPLv3
+- Update to version 5.1.58
+  https://gitlab.linphone.org/BC/public/liblinphone/-/tags/5.1.58
+- Remove RPATH (instead of ingnore) to be able to build on Fedora (no lang)
+- Update to version 5.1.48.
+  * Improved how device ringtone is obtained
+  * Fixed DNS servers list not updated when network changes
+  * Set ConferenceId also if conference event package is not enabled
+  * Make DTLS-SRTP to start immediately after the default candidate pair is verified by ICE.
+  * increase tests timeout
+  * Fixed audio echo canceller calibration not being done using speaker on Android
+  * Fixed audio focus not taken when doing echo canceller calibration if it is disabled for calls
+  * Fix accepting an sdp with mid but no correponding extmap attribute when it shouldn't
+- Use rpmlintrc to ignore RPATH because the environment variable does not work anymore on TW.
+- Remove fix that doesn’t seem to be necessary anymore.
+- Update to version 5.1.42:
+  * Fixed incoming call ringtone being played even if device is in do not disturb mode
+  * Fixed call log duration not available in End state
+  * Fixed call duration not returning 0 if call didn't connect
+  * Fixed BufferedReader not closed
+  * Fixed adding a phone number with an invalid label to a Friend
+- Update to version 5.1.24:
+  * LinphoneRecorder API added to record voice messages
+  * A recommended video definitions list that filter the supported video definitions list.
+  * LDAP connectivity into LinphoneMagicSearch API (to lookup contacts by number or name).
+  * Java wrapper no longer catches app exceptions that happen in listeners.
+  * linphone_core_enable_mic() is changed to be persistent accross calls and conference.
+  * To protect against &quot;SIP digest leak&quot;, MD5 and digestion without qop=auth can be disabled 
+    by configuration
+- build static libldap boo#1198407
+- revert license tag change
+- do not add bundled libraries as rpm required libs boo#1198407
+- do not add bundled libraries as rpm provided libs boo#1198407
+- Update to version 5.0.70:
+  * add tests for register with unresponsive server
+  * Add telephone event payload from the core if result is empty aka : the first.
+  * Repair tests failing due to missing root certificate after changing certificate on linphone.or
+- Update to version 5.0.67:
+  * Fix linphone_core_enable_mic() not working for a local conference
+  * Fix stream direction in remote params
+  * fix start srtp dtls immediately
+  * Fix non-working tunnel for incoming calls made without ICE
+  * Keep ringing audio focus for incoming early media call as soundcard will use RING modei
+  * Avoid notify ringing of in IncomingEarlyMedia state in order to not send 180 after 183
+  * Write down call decline reasons into test
+  * Added config setting to disable audio focus requests
+  * Fix issue when soundcard may not be used after early media when handling multiple calls
+  * Do not connect audio to conference during early media
+  * fix crash get address when participants list is empty
+  * enable mic by default
+- fix license tag
+- Update to version 5.0.53:
+  * Update log file only if enabled to avoid unwanted file creation
+  * Use belle_sdp_attribute_parse() so that headers are parsed with the correct type
+- Update to 5.0.49:
+  * Fix crash when configuring tones while core is not yet started
+- Update to 5.0.47:
+  * Fix broken reading of video capture device from config file
+  * Fix crash on PUBLISH when SIP-Etag is missing
+  * Correctly route sound to speaker after early media and when cancelling call
+  * Attempt to make local network permission detection more reliable
+- Update to 5.0.36:
+  * Use UTF8 instead of locale in chat message modifiers`
+  * Fix bad chat room when creating a call
+  * Crash on ec-calibration : Use tone sent callback only on MS_DTMF_GEN_EVENT
+  * Added missing conference APIs
+  * Play ring tone only if tone indications are enabled
+  * Fix tonemanager on infinite rings and wrong ring type
+  * fix crash of kickOffConnectivity
+  * Add option to deactivate potentially weak digest authentication schemes
+  * Fix issue when receiving an INVITE with ICE and rtcp-mux
+  * Fix call repair in case of multi account
+  * Fix regression with ICE not setting candidates correctly for completed check-lists
+  * Improve reliability of account creation by increasing account creation timeout to 30s
+  * Change contact address if call in IncomingReceived state is added to conference
+  * fix crash when session refresh after BYE received
+  * Repair streaming from file feature of AudioStream/VideoStream
+  * Fixed error logs showing CoreManager's core being const
+  * Logging facility optimization
+  * Fix bug with ChatRoomParams::isGroup() erroneously returning true for some basic chatrooms
+  * Count unread chat messages in all Chat Rooms with a weak address testing
+  * avoid to downgrade chat message participant state and add unitest
+  * Stop audio stream when setting new device
+    This fix allow changing device on Desktop while ringback
+  * Audio : Allow setting NULL device (case of no cards available)
+  * Fixed call to content.isFileEncrypted() on a FileTransferContent
+  * Fixed mic gain
+- Update to 5.0.0:
+  * Support of Capability Negociation framework - RFC5939
+    limited to media encryption choice (None, SRTP, DTLS-SRTP, ZRTP)
+  * New API to manage SIP accounts: LinphoneAccount and LinphoneAccountParams
+    replacing LinphoneProxyConfig which is now deprecated.
+    LinphoneProxyConfig remains fully usable for backward compatibility with previous version.
+  * New implementation of LinphoneAccountCreator relying on http REST API.
+  * Added LDAP contact provider API integrated with LinphoneMagicSearch
+  * Added asynchronous API to the LinphoneMagicSearch API (for contact searching).
+  * Fixed erroneous ICE ufrag and passwd parameters sent in reINVITE while ICE
+    was refused previously.
+  * Fixed swift and C# wrappers corner-case usage issues.
+- Build and use Belledonne's version of libldap
+- delete build-liblinphone4-with-mediastreamer5.patch
+- add linphone-build-jsoncpp.patch
+- add BuildRequires:  jsoncpp-devel
+- removed unnecessary baselibs.conf
+- Update to 4.5.25:
+  * Fix an issue with ICE ufrag and passwd sent erroneously during reINVITE
+  * Fixed crash in message tests suite
+  * Prevent crash when receiving non-ephemeral message with linphone cpim namespace
+  * Fixed mic gain
+- add build-liblinphone4-with-mediastreamer5.patch
+- fix several RPMLINT warning
+- Update to 4.5.21:
+  * Improved metered active network while in background check,
+    update network reachability when background/foreground
+    state changes
+  * Fix setting output audio device that was based on ringer device
+    on specific call state
+  * Handle situation where a participant with an invalid address is
+    added to a chat room
+  * Fix conference server memory leak
+- Update to 4.5.15:
+  * Don't play the local ringtone when callkit is used
+  * fix memory leak
+  * Fix : on incoming call, do not start the ring tone if the 
+    call's state has been modified by listeners
+- Update to 4.5.10:
+  * Fix Callkit audio bug producing only with some old ios devices
+  * Stop file player to play a file when stopping tone is requested
+- Update to 4.5.7:
+  * Fix bug causing undesired transition from Paused to 
+    StreamsRunning state in case of incoming UPDATE request
+  * Proper CoreManager destruction
+  * Abort push notification init on Android if gcm_defaultSenderId
+    resource isn't found
+  * Fix lime enabled device receiving an INVITE without SDP crash
+  * Improved how we detect if firebase is available or not
+  * Fixed ringing during early media for Android if native ringing
+    enabled
+- Update to 4.5.3:
+  * CoreService class for Android can make the device vibrate while
+    incoming call is ringing.
+  * Audio conference API improved: distribution of participant list
+    over RFC4575 SUBSCRIBE/NOTIFY.
+  * enterForeground() and enterBackground() automatically called
+    (iOS and Android).
+  * auto acquire and release of audio focus for Android.
+  * Core.iterate() is being called automatically internally for
+    Android, it is no longer needed to create a timer in the
+    application to call it.
+  * New audio routes API to choose which device use to capture &amp;
+    play audio (Android &amp; iOS). The application can manage
+  * audio route changes (bluetooth, speaker, earpiece) throug
+    liblinphone's API.
+  * Added API to play user's ringtone instead of default ringtone
+    for Android.
+  * Added callback to notify a message is about to be sent.
+  * iOS: added linphone_core_configure_audio_session() to be called
+    when used with Callkit
+  * client-based video conference in active speaker switching mode
+    (beta feature).
+  * Warning: some function parameters have been renamed for
+    consistency, which modified the Swift API (where parameter
+    names are part of the ABI). As a result, adjustements in
+    applications are expected when migrating a swift app based on
+    liblinphone from 4.4 to 4.5.
+  * Improved Android network manager.
+  * To make it consistent with other liblinphone's object,
+    linphone_core_create_subscribe(),
+    linphone_core_create_subscribe2(),
+    linphone_core_create_publish() now give ownership of the
+    returned LinphoneEvent, which means that it is no longer need
+    to call linphone_event_ref() after calling these functions. As
+    a consequence, an application not using linphone_event_ref()
+    should now use linphone_event_unref() when the LinphoneEvent is
+    no longer used, otherwise it will create a memory leak.
+  * Real time text related function
+    linphone_chat_message_get_char() now will always return the
+    new line character, which wasn't the case before if the
+    get_char() was done after the composing callback was triggered
+    for this character.
+  * linphone_core_interpret_url() will unescape characters first if
+    possible if only a username is given as input parameter.
+  * linphone_chat_message_cancel_file_transfer() no longer deletes
+    the file for outgoing messages.
+  * magic search result created from filter now applies the
+    international prefix of the default proxy config if possible.
+  * To improve performance file transfer progress callback will be
+    at most notified 100 times.
+  * Deprecate linphone_core_audio_route_changed() that was
+    introduced in 4.4, to fix audio issues
+  * when switching audio to some low sample rate Bluetooth devices
+    It is now handled internally.
+  * Internal refactoring of management of locally played tones, in
+    order to fix race conditions.
+  * Magic search bar not looking in all friends lists.
+  * Error IMDN in LIME chat rooms not properly sent.
+  * Chat message lost during attachment auto download if Core
+    stopped during the process.
+  * Windows tests.
+  * Name of MediaCodec encoder and decoder filters in H264Helper
+    Java class.
+  * Both FileContent and FileTransferContent being present in
+    linphone_chat_message_get_contents() list until upload is
+    finished.
+- Move grammar to liblinphone-data
+  * boo#1181746  
+- Force linking to libsoci_sqlite3
+  * boo#1140595 (comment 15)
+  * linphone-link-soci-sqlite3.patch
+- Update to version 4.4.0:
+  * See https://gitlab.linphone.org/BC/public/liblinphone/blob/4.4.0/CHANGELOG.md
+- Update to version 4.3.1:
+  * No changelog available.
+- Update the licence: it is now GPLv3+.
+- Rebase linphone-build-readline.patch,
+  linphone-fix-pkgconfig.patch.
+- Drop linphone-fix-gtkui-build.patch.
+- Remove outdated elements from the spec file.
+- Add reproducible.patch to sort file list to make build reproducible
+  (boo#1041090)
+- Change the build dependency from udev to libudev-devel.
+- Change the RPM group to the more appropriate and precise
+  Productivity/Telephony/SIP/Clients.
+- Add linphone-build-readline.patch: Add the ability to compile
+  with readline to the build system.
+- Build with the readline support.
+- Revert back to Python2: building with Python3 has regressions
+  (boo#1077857).
+- Switch to building with Python3.
+- Use linphone_gtkui conditionally everywhere
+- Use build conditional for C++ bindings also in liblinphone-devel
+- Add build condtionally for C++ bindings to fix build in Leap
+- Remove build conditionally for ffmpeg
+- Remove build conditionally for ldap
+- Remove unused BuildRequires for disabled rootca download
+- Provide liblinphone for the liblinphone-lang package.
+- Fix the licence: there are GPL-3.0 licensed files.
+- Update to version 3.12.0:
+  * C++ and C# bindings.
+  * Account Creator plugin API.
+  * Xamarin support.
+- Switch from building with autotools to cmake.
+- Add linphone-fix-pkgconfig.patch: Install linphone.pc.
+- Add linphone-fix-gtkui-build.patch: Fix building of GtkUI.
+- Disable the deprecated GTK+ UI for openSUSE Leap 15.x and newer,
+  but keep for older as the Qt inteface requires Qt 5.9+.
+- Split libraries, data files and the CLI.
+- Enable building C++ bindings.
+- Add baselibs.conf.
+- Update to version 3.11.1 (changes since 3.10.2):
+  * Security vulnerability fix concering TLS. The common name of
+    certificats delivered by SIP proxies were not compared with
+    their host name.
+  * Fix a bug in the P2P presence system. Unchecking
+    &quot;Allow this contact to see my presence&quot; check box in contact
+    editing view had no any effect. Then it was not possible to
+    hide presence informations to a contact once it had been
+    allowed to see it.
+  * Performance improvments of the presence list feature.
+  * IM Encription Engine: Abstraction for messaging encription
+    protocols.
+  * A bug fix in Autotools scripts.
+- Ensure %icon_theme_cache_* macros are called in post/postun
+  scripts.
+- Update to version 3.10.2 (changes since 3.9.1):
+  * Add lime_experimental_feature: set to 1 in .linphonerc [GtkUi]
+    to show the Lime menu in the graphical user interface.
+    Caution: Experimental.
+  * Video conference support through a conference server (SDK only).
+  * Disable dummy STUN packets sending when ICE is activated.
+  * Signal AVPF support as AVP: Enable rtcp feedback on RTP/AVP by
+    default.
+  * Add linphone daemon.
+  * gtk: Show links to files received in chat by file transfer.
+  * gtk: Debug window now stores &quot;scroll to end&quot; preference.
+  * gtk: Add button to take screenshot of video call.
+  * gtk: Fix busy presence not displayed in red.
+  * Fix Bad SDP when no audio codec has been enabled.
+  * Fix DTMF RFC2833 event always goes up in the same
+    LinphoneCoreListener.
+  * Fix linphone python version compilation - fixing vcards.
+- Use ffmpeg buildconditional also in devel pkg
+- Build with ffmpeg unconditionally
+- Remove unused gl,glew,vpx,xv
+- require a recent enough libbellesip0 package to run (bnc#957599)
+- Update to 3.9.1
+  * Fix crash when recording video calls with the VP8 codec
+  * Fix H.264 codec support in Mac OS X package
+  * Fix translation of account assistant
+  * Bug fixes
+- Make build more verbose
+- Update to 3.9.0:
+  * Video recording of calls in MKV format.
+  * Clickable URLs in chat view.
+  * Add buttons to change the record and playback volumes during a
+    call.
+  * Add button to start chatting without having to create a contact
+    first.
+  * Some icon changes.
+  * Call logs now stored in database.
+  * Bug fixes.
+- Use pkgconfig for ffmpeg to fix build in PMBS
+- Update to 3.8.5 (changes since 3.8.0):
+  + Application level improvements:
+    * Auto-answer ability.
+    * Add support of the StatusNotifierItem standard (modern
+      GNU/Linux status icons).
+    * Auto-answering can be set through the preferences panel.
+    * Fix crash at the end of the audio assistant.
+    * Fix crash when configuring a remote provisioning.
+    * Fix regretion in the codec view. Codec which are not usable
+      because bandwitch limits are to low were not grayed anymore.
+    * Bug fixes.
+    * Add translation for 'Arabic' and 'Turkish' items in the
+      language selection list
+  + Liblinphone level improvements:
+    * Fix audio bug with OPUS codec.
+    * Fix ICE corner case not properly handled and resulting bad
+      final ice status.
+    * Update shared library ABI version to 7 (it should had been
+      done in 3.8.0).
+    * Bug fixes.
+    * Add a built-in XMLRPC client. Linphone does not depend on
+      libsoup anymore.
+- Build with video support outside PMBS for openSUSE Leap 42.1
+  and newer (where ffmpeg is available).
+- Enable ldap support.
+- Regenerate configure with autotools to solve build problems in
+  some cases.
+- Remove redefinition of GenericName in desktopfile.
+- Update to 3.8.0:
+  + Application level improvements:
+    * The video window has now controls in order to switch
+      fullscreen mode and terminate call.
+    * The out of call video preview feature (to test camera) is
+      moved into the settings and is no longer linked to the in-call
+      video preview feature.
+    * Add an assistant to help users to set audio/video parameters.
+    * Some ergonomics improvments (checkbox to set random port for
+      UDP and TCP, ...).
+    * Lots of updated translations. Arabic translation has been
+      added.
+    * Experimental feature: play an MKV file by drag-and-dropping
+      it on the video call window.
+  + Liblinphone level improvements:
+    * Support for RTP/AVPF (RFC4585) for video streams, allowing fast
+      transmission error recovery with VP8 codec only.
+    * API enhancements, most objects can be ref-counted.
+    * Add some getter funtctions to the call information API.
+    * Add a function in the API to accept early-media calls.
+    * Add a function to set the SIP transport timeout.
+    * Add a function to change adaptive rate algorithm at runtime.
+    * Add support of file transfer.
+    * Call video recording feature, in mkv format (H264 streams only
+      for the moment).
+    * Call playing feature: play an MKV file and send the audio/video
+      stream through a call.
+    * Local player API. Play WAV and MKV file and display video on a
+      specified window display.
+    * A wrapper for Python has been made.
+    * Support of multicast IP addresses.
+    * Support of incoming UPDATEs within dialog (RFC3311).
+    * Support of SRTP by using packages from distributions.
+- Spec cleanup.
+- Update to 3.7.0:
+  Application level improvements:
+    * It is now possible to configure multiple proxy accounts with different 
+      transports (UDP, TCP, TLS)
+    * can work with IPv6 and IPv4 simultaneously
+    * User can choose video rendering method on Linux
+    * Video HD formats support added, leveraging on multiple cores for encoding 
+      if available
+    * Keyboard can be used for DTMF input
+    * Faster and higly responsive UI thanks to fully asynchronous operation of 
+      the liblinphone.
+    * Addon of opus codec
+    * Possibility to specify a remote provisionning http URI for configuration
+    * LDAP search integration for Linux and MacOSX
+    * is-composing notification in chat area 
+  Liblinphone level improvements thanks to new &quot;belle-sip&quot; SIP stack:
+    * multiple SIP transports simultaneously now allowed
+    * IP dual stack: can use IPv6 and IPv4 simultaneously
+    * fully asynchronous behavior: no more lengthly DNS or connections 
+    * +sip.instance parameter (RFC5626)
+    * alias parameter (RFC5923)
+    * better management of network disconnections
+    * SIP/TLS handled through lightweighted polarssl library (instead of 
+      openssl)
+    * SIP transaction state machines improved (RFC6026)
+    * Privacy API (RFC3323, RFC3325)
+    * Full support of rich presence in (RFC4480)
+    * Better handling of sips scheme in URIs.
+    * Messaging: support of is-composing (RFC3994)
+    * Call transfer fixes in error cases
+    * Add API for managing SIP SUBSCRIBES/NOTIFY/PUBLISH (linphonecore/event.h)
+    * bugfixes
+- Version pkgconfig(libzrtpcpp) BuildRequires to resolve build for
+  13.2 and newer.
+- Update to 3.6.1:
+  * UI:
+    * new friend list and chat messaging UI
+    * enhanced call history
+    * call and conference audio recording
+    * persistent chat history
+    * DSCP settings for SIP and RTP
+    * display of call statistics (when clicking on the quality indicator bar)
+  * Core:
+    * ICE for efficient RTP exchange
+    * fix bug in zRTP support (upgrade required)
+    * call recording
+    * uPnP
+    * call statistics
+    * adaptive bitrate control improvements
+    * faster call quality indicator feedback
+    * DSCP settings for SIP and RTP
+    * detailed call statistics feedback API
+- Drop linphone-ffmpeg.patch and linphone-v4l.patch: they were for
+  shipped mediastreamer but we're using external one.
+- Spec cleanup.
+- fix build with automake-1.13.1
+- add libsrtp and libzrtpcpp as build dependency
+- use external libortp and mediastreamer2
+ 
+- added video support (disabled by default), to enable need to rebuild &quot;with video&quot;
+- modify patch linphone-v4l (ffmpeg API changed)
+- added linphone-ffmpeg.patch (ffmpeg API changed)
+- Use BuildRequires: pkgconfig(gnutls) instead of gnutls-devel for
+  Factory in keeping with gnutls package naming changes.
+- update to version 3.5.2
+  * updated oRTP to 0.20.0
+  * updated mediastreamer2 to 2.8.2
+  * added ZRTP media encryption
+  * added SILK audio codec
+- modify patch linphone-v4l.
+- drop applet sub-package. since no useful data.
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- add libtool as buildrequire to avoid implicit dependency
+- update to version 3.4.3, see NEWS file for detailed changelog,
+  obsoletes patches
+- build / packaging improvements:
+  - remove build date from binaries, use the tarball's timestamp
+  - verbose build for rpmlint checking
+  - add AUTHORS, NEWS, COPYING files
+  - fix rpm group of devel package
+  - add alsa-devel and libgsm-devel buildrequires
+  - explicitly enable alsa, ssl, rsvp, ipv6
+- fixing 11.4 build
+- Add linphone-v4l-2.6.38.patch: use new v4l interface 
+- Added support for translation-update-upstream.
+- Patch up to current git state of branch 3.3.x. Unfortunately,
+  the git history is not helpful to create a changelog.
+  But this fixes bnc#664808.
+- Run spec file through spec-cleaner.
+- Remove build dependencies on libgnomeprintui-devel and
+  libwnck-devel, they are not needed.
+- own parent directory for gnome-panel
+- update to linphone-3.3.2
+  * enhancements made to presence support (SIP/SIMPLE)
+  * be nat friendly using OPTIONS request and using received,rport from
+  	responses.
+  * use stun guessed ports even if symmetric is detected (works with freeboxes)
+  * improve bitrate usage of speex codec
+  * allow speex to run with vbr (variable bit rate) mode
+  * add speex/32000 (ultra wide band speex codec)
+  * answer empty SIP INFO requests
+  * reverse order of call logs
+  * optimize video display
+  * manual or automatic network connectivity management (so that REGISTERs
+  	are only sent when network is up or refreshed when it comes back)
+  * new in-call layout
+  * new idle view with two buttons
+  * ability to dial the number from dialpad
+  * improve local IP address detection when having multiple networks (ex: VPNs)
+  * use proxy's received and rport params from via in Contact header when possible
+  * add an option to ask linphone to place a call, whenever an instance is already running or not:
+  	should be useful for starting calls from a web browser recognizing the 'sip:' uri scheme.
+  * don't show ffmpeg codecs when encoder are disabled in ffmpeg library.
+  * update theora default settings to match performance of 1.0 release.
+  * linphone can now send large video pictures: up to SVGA, configurable via the user interface
+  * automatic rescaling of the video windows to the video size of incoming stream
+  * enable lookups of SRV records
+  * new 'linphonecsh' program to send commands to a linphonec running as daemon using unix sockets or tcp.
+  - tons of bugfixes, please see NEWS file for details
+- update to version 3.0.0
+  * new graphical interface based on Glade/Gtk
+  * systray icon
+  * STUN working for RTP
+  * accurate bandwidth management (to let video occupy all remaning bandwidth)
+  * new H264 plugin based on x264 (msx264)
+  * automatic call hangup upon media transmission faillure
+- update patch to fix build
+- Translations update 
+- Translations update. 
+- Translations update.
+- get rid of autoreconf call to make it build again
+- Hide online help button, we dont have an XML file to pass to
+  gnome_help_display so its of no use.
+- update to version 2.1.1
+  * Clean up commands 'nat', 'stun' and 'firewall' to be
+    more intuitive
+  * Upgrade to newest gettext
+- fix some rpmlint warnings
+- get rid of libtool archives
+- portate to new libosip version
+- fix typo in linphone-1.3.0.patch 
+- update to version 2.0.1 which
+  o use new (eX)osip version
+  o Clean ANSI/C vs. ANSI/C++ differences
+  o fix a lot of small bugs
+- Removed bogus dependency on mDNSResponder.
+- update to versin 1.7.1:
+  * arts sound input/output
+  * improved sound latency with alsa
+  * alsa support works with dmix/dsnoop
+  * fix a lot of bugs
+- disable Werror 
+- use libosip2-devel in buildrequires 
+- add missing directories
+- Do not build unusable static libraries (#238552#c17).
+- fix build problems
+- Prefix changed to /usr.
+- Spec file cleanup.
+- update to version 1.3.0 which includes
+  o a lots of improvements in linphonec (see strk 's Changelogs below)
+  o telephone event problem with sipomatic.
+  o updated cz translation.
+  o fix bugs around addressbook.
+  o video support with H263-1998/RFC2429 nearly clean.
+  o added timeout for incoming calls
+- Update .desktop file for UI team
+- add GenericName to .desktop file
+- converted neededforbuild to BuildRequires
+- Update to version 1.2.0 
+- care about return values. Added
+  * linphone-returnchecks.patch
+- update to version 1.1.0 drop 
+  * linphone-manual.patch
+  * linphone-cs_cz.patch
+  * linphone-cs_cz-fixes.patch
+  * linphone-configure.patch
+- update cz translation
+- fix more prototypes
+- fix unitialized vars
+- fix prototypes
+- fix build with current pkgconfig 
+- fix bonobo server file to include an icon
+- fix desktop file to have both Name and GenericName
+- fix return values
+- Update to final 1.0.0 version, which is more stable (#74253).
+- Moved applet bonobo server description to linphone-applet.
+- split the gnome applet into an own package (#74199)
+- fix desktop file
+- added czech translations by Klara Cihlarova 
+- add the manual so the manual button works
+- mark as NoSource (ffmpeg is there but unused). 
+- update to 1.0.0pre6
+- fixed more compiler warnings 
+- fix another compile warning
+- update to 1.0.0pre4
+- split patch in pieces
+- Fixed applet broken by bad libdir usage.
+- Fixed libexecdir for bi-arch (#47050).
+- update to 1.0.0pre1
+- update to 0.12.2
+- fix some compiler warnings
+- use -fno-strict-aliasing
+- update to 0.12.1 
+- make it build
+- don't build as root 
+- update to 0.12.0 
+- install it all to /opt/gnome
+- GNOME prefix change to /opt/gnome.
+- Added gnome-panel to neededforbuild.
+- fix desktop file path
+- libtoolize in osipua subdirectory for proper soname
+- created package (version 0.11.0)
+- use system speex library 
+</comment>
+    <requestid>1246367</requestid>
+  </revision>
 </revisionlist>
