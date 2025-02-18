@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 15 16:02:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.2
+  * https://blogs.kde.org/2025/02/15/amarok-3.2.2-released/
+  * Try to preserve collection browser order when adding tracks to playlist (kde#180404)
+  * Fix DAAP collection connections, browsing and playing (kde#498654)
+  * Fix first line of lyrics.ovh lyrics missing (kde#493882)
+
+-------------------------------------------------------------------
 Mon Jan 13 15:18:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.2.1

@@ -20,7 +20,7 @@
 %define qt5_version 5.15.0
 %bcond_without released
 Name:           amarok
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
