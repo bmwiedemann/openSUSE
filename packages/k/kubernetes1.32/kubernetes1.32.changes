@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:13:41 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.2:
+  * Bump images, dependencies and versions to go 1.23.6 and distroless iptables
+  * Disable ServiceAccountNodeAudienceRestriction feature gate by default in v1.32
+  * Kubelet server handler cleanup
+  * Fix the remaining flaky integration tests in Job controller
+  * WIP: fix the flaky Job integration tests
+  * kubeadm: use the v1beta4 EtcdAPICall timeout for etcd calls
+  * hack: backport apidiff.sh
+  * Fix: touch /dev/null permission denied on macos
+  * Added check for multipath device mapper
+  * Fix Portworx plugin's CSI translation to copy secret name & namespace
+  * We still can't rely on first condition being fs-expansion pending condition
+  * Bump CSI sidecars to fix CI issues and such
+  * kubeadm: remove misplaced error during image pull
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.23.6`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.2/build/dependencies.yaml#L117-L119
+
+- version 1.32.2 contain fix for CVE-2025-0426, bsc#1237189
+  * Refer changelog for more information:
+    https://github.com/kubernetes/kubernetes/blob/v1.32.2/CHANGELOG/CHANGELOG-1.32.md#important-security-information
+
+-------------------------------------------------------------------
 Thu Jan 16 10:02:19 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.1:
