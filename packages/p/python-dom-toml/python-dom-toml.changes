@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb 17 11:57:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.1
+  * [repo-helper] Configuration Update (#35)
+  * Bump Python 3.13 alpha (#36)
+  * Updated files with 'repo_helper'. (#37)
+  * [repo-helper] Configuration Update (#38)
+  * Updated files with 'repo_helper'. (#39)
+  * Pin Conda version in GHA. (#40)
+  * [repo-helper] Configuration Update (#41)
+  * Bump Python 3.13 prerelease for GHA. (#43)
+  * Bump Python 3.13 prerelease (#44)
+  * Install numpy for tests on Python 3.13
+  * Updated files with 'repo_helper'. (#45)
+  * Account for internal tomli change to parse_inline_table
+  * Prefer tomllib on Python 3.11+
+  * Updated files with 'repo_helper'. (#49)
+- Add sed command to remove shebang from Python files
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Fri Jul 26 07:14:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 2.0.0
