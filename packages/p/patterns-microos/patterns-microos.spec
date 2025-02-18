@@ -112,6 +112,7 @@ Requires:       kdump
 Requires:       less
 Requires:       microos-tools
 Requires:       openssh
+Requires:       read-only-root-fs
 Requires:       snapper
 Requires:       vim-small
 Requires:       wtmpdb

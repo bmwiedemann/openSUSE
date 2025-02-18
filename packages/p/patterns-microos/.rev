@@ -896,4 +896,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1245087</requestid>
   </revision>
+  <revision rev="96" vrev="96">
+    <srcmd5>ed78e10934ab7eb2b6885d3b7fd385de</srcmd5>
+    <version>5.0</version>
+    <time>1739902154</time>
+    <user>anag+factory</user>
+    <comment>- Add read-only-root-fs to base pattern</comment>
+    <requestid>1246674</requestid>
+  </revision>
 </revisionlist>

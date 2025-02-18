@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 12:55:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add read-only-root-fs to base pattern
+
+-------------------------------------------------------------------
 Tue Feb 11 10:26:26 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add grub2-bls to the DVD
