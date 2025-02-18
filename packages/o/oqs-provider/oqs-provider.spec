@@ -17,7 +17,7 @@
 
 
 Name:           oqs-provider
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Quantum-safe crypto provider for OpenSSL
 License:        MIT
