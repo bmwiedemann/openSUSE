@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyalsaaudio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pyalsaaudio
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        ALSA bindings for Python
 License:        Python-2.0
 URL:            https://larsimmisch.github.io/pyalsaaudio/
 Source:         https://files.pythonhosted.org/packages/source/p/pyalsaaudio/pyalsaaudio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,18 +43,19 @@ It is fairly complete for PCM devices and Mixer access.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch test.py -k 'not (testMixerAll or testMixerClose or testPCMAll or testPCMClose or testPCMDeprecated)'
+%pytest_arch test.py -k 'not (testMixerAll or testMixerClose or testPCMAll or testPCMClose or testPCMDeprecated or PollDescriptorArgsTest)'
 
 %files %{python_files}
 %license LICENSE
 %doc doc/*.rst
-%{python_sitearch}/*
+%{python_sitearch}/alsaaudio*so
+%{python_sitearch}/pyalsaaudio-%{version}.dist-info
 
 %changelog

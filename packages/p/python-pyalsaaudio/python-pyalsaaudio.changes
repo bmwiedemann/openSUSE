@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:43:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.0
+  * Fixed `Mixer.getvolume()` returning outdated value
+  * Fixed PCM crashing with some sample formats due to buffer size
+    miscalculation
+  * Fixed `PCM.read()` ignoring overruns (regression in 0.10.0)
+  * Reverted to `PCM.write()` not throwing an exception on playback buffer
+    underrun; instead, return -EPIPE like `PCM.read()` does on overrun
+  * Added `PCM.avail()` and `PCM.polldescriptors_revents()` functions
+  * Added `nominal_bits` and `physical_bits` entries to `PCM.info()`'s
+    return value
+  * Added Python type hint file, and adjusted documentation accordingly
+  * Improvements to the examples, in particular isine.py
+- Ignore PollDescriptorArgsTest when running testsuite
+- Limit Python files matched in %files section
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+
+-------------------------------------------------------------------
 Thu May  4 21:30:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.0:
