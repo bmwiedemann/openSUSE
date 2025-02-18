@@ -673,4 +673,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1245052</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>da94819e24fb9f68ba33994395020306</srcmd5>
+    <version>570.86.16</version>
+    <time>1739909009</time>
+    <user>dimstar_suse</user>
+    <comment>- In the module install path revert the order of the 'updates'
+  subdirectory and the package name &amp; version. This satisfies
+  the kmp dependency checker (boo#1237308).
+--------------------------------------------------------------------
+- Add a directory identifying the KMP and its version to the module
+  install path - i.e.:
+  &lt;kernel_version&gt;/nvidia-open-driver-G06-signed-&lt;version&gt;/updates
+  instead of:
+  &lt;kernel_version&gt;/updates
+  This avoids conflicts when a new version is built against the
+  same kernel release.</comment>
+    <requestid>1246759</requestid>
+  </revision>
 </revisionlist>
