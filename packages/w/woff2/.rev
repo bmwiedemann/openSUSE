@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>1056678</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7ebd7a53e8c0002529f09da948ea7e38</srcmd5>
+    <version>1.0.2</version>
+    <time>1739902145</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix build with gcc15:
+  + woff2-gcc15.patch</comment>
+    <requestid>1246597</requestid>
+  </revision>
 </revisionlist>

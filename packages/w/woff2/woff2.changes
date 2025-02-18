@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Feb 17 12:06:09 UTC 2025 - pgajdos@suse.com
+
+- Add patch to fix build with gcc15:
+  + woff2-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Jan  6 11:21:56 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add install-executables.patch to install woff2 tools

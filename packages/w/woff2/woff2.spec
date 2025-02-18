@@ -1,7 +1,7 @@
 #
 # spec file for package woff2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source99:       baselibs.conf
 Patch0:         woff2-fix-overflow-when-decoding-glyf.patch
 # PATCH-FIX-OPENSUSE install-executables.patch -- Install woff tools
 Patch1:         install-executables.patch
+# PATCH-FIX-UPSTREAM woff2-gcc15.patch -- Fix build with gcc15 https://github.com/google/woff2/pull/176
+Patch2:         woff2-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
