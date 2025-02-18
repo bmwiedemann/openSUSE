@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 23 20:49:41 UTC 2025 - perry.werneck@gmail.com
+
+- Update to version 5.5.0+git20250123:
+  * Publishing updated version 5.5.0
+  * Applying meson build fixes from #59 conversation.
+  * Fixing windows dll properties.
+  * Adding delayed library for windows apps.
+  * Build windows app with meson.
+  * Refactoring deb packages.
+  * Fixing libssl dependency.
+  * Fixing pkg-config file.
+  * Refactoring codeql workflow.
+  * Fixing os includes.
+  * Fixing package build.
+  * Removing old workflows.
+  * Updating po
+  * Reorganizing OS based sources.
+  * Changing to meson build system.
+  * Updating package control files, splitting intl methods to private include.
+
+-------------------------------------------------------------------
 Sat Aug 17 16:00:46 UTC 2024 - perry.werneck@gmail.com
 
 - Update to version 5.4+git20240817:
