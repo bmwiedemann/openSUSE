@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Feb 17 02:00:25 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- update to 2.16.0:
+  * Fix misleading-indentation warning
+  * Deal with glob string properly
+  * Allow comma as a delimiter in postscriptname and ignore it on matching
+  * Refactor exclusive language logic into separate file
+  * Use proper postscriptname for named instance if any
+  * Remove redundant leaf assignment in fcfreetype.c
+  * Ensure lock/unlock symmetry
+  * Ensure config is locked during retry in FcConfigReference
+  * Unlock on allocation failure in FcCacheInsert
+  * Fix FcSerialize undefined behavior with null pointer usage
+  * Fix undefined behavior issue on qsort call
+  * Add cop.orth for Coptic language
+  * Add got.orth for Gothic language
+  * Fix a memory leak in fc-list/fc-query/fc-scan
+  * mark _FcPatternIter as may_alias
+  * Accept integer for pixelsize
+  * Improve hinting detection for fonthashint object
+  * Add FcConfigSetFontSetFilter
+  * Fix some code found by SAST
+  * Set FcTypeVoid if no valid types to convert
+  * Fix a memory leak in _get_real_paths_from_prefix
+  * Fix double slashes in path
+  * More information when no writable cache directories
+  * Fix test case for reproducible builds
+  * Fix invalid escape character \s
+  * Sort out bitmap related config files
+  * Clean up .uuid files with fc-cache -f too
+- add fontconfig-autoconf269.patch to start leap build
+
+-------------------------------------------------------------------
 Tue Jul 16 11:28:56 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Run autoreconf unconditionally to allow newer versions

@@ -1,0 +1,22 @@
+Index: fontconfig-2.16.0/configure.ac
+===================================================================
+--- fontconfig-2.16.0.orig/configure.ac
++++ fontconfig-2.16.0/configure.ac
+@@ -23,7 +23,7 @@ dnl  PERFORMANCE OF THIS SOFTWARE.
+ dnl
+ dnl Process this file with autoconf to create configure.
+ 
+-AC_PREREQ([2.71])
++AC_PREREQ([2.69])
+ 
+ dnl ==========================================================================
+ dnl                               Versioning
+@@ -163,7 +163,7 @@ dnl ====================================
+ AC_HEADER_DIRENT
+ # Autoupdate added the next two lines to ensure that your configure
+ # script's behavior did not change.  They are probably safe to remove.
+-AC_CHECK_INCLUDES_DEFAULT
++m4_version_prereq([2.70], [AC_CHECK_INCLUDES_DEFAULT], [AC_HEADER_STDC])
+ AC_PROG_EGREP
+ 
+ AC_CHECK_HEADERS([dirent.h fcntl.h stdlib.h string.h unistd.h sys/statvfs.h sys/vfs.h sys/statfs.h sys/param.h sys/mount.h])

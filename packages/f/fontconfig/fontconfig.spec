@@ -1,7 +1,7 @@
 #
 # spec file for package fontconfig
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           fontconfig
 %define lname   libfontconfig1
-Version:        2.15.0
+Version:        2.16.0
 Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
@@ -28,6 +28,7 @@ Source0:        https://www.freedesktop.org/software/fontconfig/release/fontconf
 Source4:        baselibs.conf
 Source5:        local.conf
 Patch1:         skip-network-test.patch
+Patch2:         fontconfig-autoconf269.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  gperf
 BuildRequires:  libtool
@@ -159,7 +160,7 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %files lang -f %{name}.lang -f %{name}-conf.lang
 
 %files doc
-%doc AUTHORS ChangeLog README.md
+%doc AUTHORS NEWS README.md
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/fontconfig-user.html
 %{_docdir}/%{name}/fontconfig-user.pdf
@@ -173,7 +174,7 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %{_datadir}/gettext/its/fontconfig.*
 
 %files devel-doc
-%{_docdir}/%{name}/%{name}-devel/
+%{_docdir}/%{name}/fontconfig-devel.html
 %{_docdir}/%{name}/fontconfig-devel.pdf
 %{_docdir}/%{name}/fontconfig-devel.txt
 %{_mandir}/man3/*
