@@ -1,7 +1,7 @@
 #
 # spec file for package vorta
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           vorta
-Version:        0.10.1
+Version:        0.10.3
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        Apache-2.0 AND GPL-3.0-only AND OFL-1.1
