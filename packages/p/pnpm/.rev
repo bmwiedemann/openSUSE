@@ -418,4 +418,27 @@
 </comment>
     <requestid>1245177</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>298393a9db830bb65917b0f69d81da5c</srcmd5>
+    <version>10.4.1</version>
+    <time>1739902172</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.4.1:
+  * Throws an error when the value provided by the --allow-build 
+    option overlaps with the pnpm.ignoredBuildDependencies list #9105.
+  * Print pnpm's version after the execution time at the end of the console output.
+  * Print warning about ignored builds of dependencies on repeat install #9106.
+  * Setting init-package-manager should work.
+- includes 10.4.0:
+  * pnpm approve-builds --global works now for allowing
+    dependencies of globally installed packages to run
+    postinstall scripts.
+  * The pnpm add command now supports a new flag, --allow-build,
+    which allows building the specified dependencies.
+  * pnpm approve-builds should work after two consecutive pnpm install runs #9083.
+  * Fix instruction for updating pnpm with corepack #9101.
+  * The pnpm version specified by packageManager cannot start with v.
+</comment>
+    <requestid>1246518</requestid>
+  </revision>
 </revisionlist>
