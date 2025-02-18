@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb 18 06:01:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.44.2:
+  * Bug fixes
+    - fix(typings) Move typing-extensions into TypeGuard by @tony
+      in #572
+  * Documentation
+    - Doc / typos fixes by @tony in #569
+  * Development
+    - Tests: Improved parametrization by @tony in #570
+
+-------------------------------------------------------------------
 Mon Feb 17 12:48:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 -update to 0.44.1:
