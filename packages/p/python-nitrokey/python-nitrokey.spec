@@ -1,7 +1,7 @@
 #
 # spec file for package python-nitrokey
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-nitrokey
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Nitrokey Python SDK
 License:        Apache-2.0

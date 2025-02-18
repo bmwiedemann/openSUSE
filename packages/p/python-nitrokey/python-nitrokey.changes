@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 18 10:18:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.4
+  * The list methods of `NK3` and `NKPK` now only open the
+    respective device, based on the USB vendor and product ID.
+  * Use trusted publishing for PyPI.
+  * Add support for `poetry-core` v2.
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sun Nov 10 12:17:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.2.3)
