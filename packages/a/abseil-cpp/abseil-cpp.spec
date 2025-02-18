@@ -1,7 +1,7 @@
 #
 # spec file for package abseil-cpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -63,7 +63,6 @@ This package provides the subset needed by protobuf-lite.
 %package -n libabsl_%{lname_suffix}
 Summary:        C++11 libraries which augment the C++ stdlib - others
 Obsoletes:      abseil-cpp < %{version}-%{release}
-Obsoletes:      libabsl2401_0_0 < %{version}-%{release}
 Provides:       abseil-cpp = %{version}-%{release}
 
 %description -n libabsl_%{lname_suffix}
