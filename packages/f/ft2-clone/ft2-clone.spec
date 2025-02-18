@@ -1,7 +1,7 @@
 #
 # spec file for package ft2-clone
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ft2-clone
-Version:        1.93
+Version:        1.94
 Release:        0
 Summary:        Fasttracker II clone
 License:        BSD-3-Clause AND CC-BY-NC-SA-4.0
