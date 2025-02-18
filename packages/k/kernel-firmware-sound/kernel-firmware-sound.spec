@@ -20,18 +20,18 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 5bc5868b7ee5a243abdd73cfcd3bbf7166f4f42f
+%define git_version 487f2f2421ae4e05530de28b9acd0ab7db3ff6d9
 
 Name:           kernel-firmware-sound
-Version:        20250210
+Version:        20250217
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
-License:        SUSE-Firmware AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
 # URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        kernel-firmware-tools-20250218.tar.xz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -51,27 +51,50 @@ Conflicts:      filesystem < 84
 %endif
 Provides:       avs-topology-firmware = %{version}
 Obsoletes:      avs-topology-firmware <= 2024.02
-Supplements:    modalias(usb:v086Ap0100d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v086Ap0102d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v086Ap0110d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(hdaudio:v11020011r*a01*)
-Supplements:    modalias(acpi*:CLSA0100%3A*)
-Supplements:    modalias(acpi*:CLSA0101%3A*)
-Supplements:    modalias(acpi*:CSC3551%3A*)
-Supplements:    modalias(acpi*:CSC3551%3A*)
-Supplements:    modalias(spi:cs35l41-hda)
-Supplements:    modalias(acpi*:CSC3554%3A*)
-Supplements:    modalias(acpi*:CSC3556%3A*)
-Supplements:    modalias(acpi*:CSC3557%3A*)
-Supplements:    modalias(acpi*:CSC3554%3A*)
-Supplements:    modalias(acpi*:CSC3556%3A*)
-Supplements:    modalias(acpi*:CSC3557%3A*)
-Supplements:    modalias(acpi*:INT8866%3A*)
-Supplements:    modalias(acpi*:TIAS2781%3A*)
 Supplements:    modalias(acpi*:80860F28%3A*)
 Supplements:    modalias(acpi*:808622A8%3A*)
+Supplements:    modalias(acpi*:CLSA0100%3A*)
+Supplements:    modalias(acpi*:CLSA0101%3A*)
+Supplements:    modalias(acpi*:CSC0000%3A*)
+Supplements:    modalias(acpi*:CSC0004%3A*)
+Supplements:    modalias(acpi*:CSC0010%3A*)
+Supplements:    modalias(acpi*:CSC3551%3A*)
+Supplements:    modalias(acpi*:CSC3554%3A*)
+Supplements:    modalias(acpi*:CSC3556%3A*)
+Supplements:    modalias(acpi*:CSC3557%3A*)
+Supplements:    modalias(acpi*:INT33C8%3A*)
+Supplements:    modalias(acpi*:INT3438%3A*)
+Supplements:    modalias(acpi*:INT8866%3A*)
 Supplements:    modalias(acpi*:LPE0F28%3A*)
-Supplements:    modalias(sst)
+Supplements:    modalias(acpi*:PNPB006%3A*)
+Supplements:    modalias(acpi*:TIAS2781%3A*)
+Supplements:    modalias(hdaudio:v11020011r*a01*)
+Supplements:    modalias(of:N*T*Cmediatek,mt8186-dsp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8186-dspC*)
+Supplements:    modalias(of:N*T*Cmediatek,mt8188-dsp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8188-dspC*)
+Supplements:    modalias(of:N*T*Cmediatek,mt8195-dsp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8195-dspC*)
+Supplements:    modalias(of:N*T*Cqcom,qcm6490-idp-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,qcm6490-idp-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,qcs6490-rb3gen2-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,qcs6490-rb3gen2-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8450-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,sm8450-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8650-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,sm8650-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8750-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,sm8750-sndcardC*)
+Supplements:    modalias(pci:v00001073d00000004sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001073d0000000Asv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001073d0000000Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001073d0000000Dsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001073d00000010sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001073d00000012sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010B5d0000906Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v0000125Dd00001988sv*sd*bc04sc01i*)
 Supplements:    modalias(pci:v0000125Dd00001989sv*sd*bc04sc01i*)
@@ -115,54 +138,18 @@ Supplements:    modalias(pci:v00008086d0000A348sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A3F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000F0C8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000F1C8sv*sd*bc*sc*i*)
-Supplements:    modalias(acpi*:INT33C8%3A*)
-Supplements:    modalias(acpi*:INT3438%3A*)
-Supplements:    modalias(of:N*T*Cqcom,qcm6490-idp-sndcard)
-Supplements:    modalias(of:N*T*Cqcom,qcm6490-idp-sndcardC*)
-Supplements:    modalias(of:N*T*Cqcom,qcs6490-rb3gen2-sndcard)
-Supplements:    modalias(of:N*T*Cqcom,qcs6490-rb3gen2-sndcardC*)
-Supplements:    modalias(of:N*T*Cqcom,sc8280xp-sndcard)
-Supplements:    modalias(of:N*T*Cqcom,sc8280xp-sndcardC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8450-sndcard)
-Supplements:    modalias(of:N*T*Cqcom,sm8450-sndcardC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8550-sndcard)
-Supplements:    modalias(of:N*T*Cqcom,sm8550-sndcardC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8650-sndcard)
-Supplements:    modalias(of:N*T*Cqcom,sm8650-sndcardC*)
-Supplements:    modalias(of:N*T*Cqcom,sm8750-sndcard)
-Supplements:    modalias(of:N*T*Cqcom,sm8750-sndcardC*)
-Supplements:    modalias(pci:v00008086d000002C8sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d000006C8sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00003198sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00005A98sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00009D70sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00009D71sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d00009DC8sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00008086d0000A348sv*sd*bc*sc*i*)
-Supplements:    modalias(of:N*T*Cmediatek,mt8186-dsp)
-Supplements:    modalias(of:N*T*Cmediatek,mt8186-dspC*)
-Supplements:    modalias(of:N*T*Cmediatek,mt8188-dsp)
-Supplements:    modalias(of:N*T*Cmediatek,mt8188-dspC*)
-Supplements:    modalias(of:N*T*Cmediatek,mt8195-dsp)
-Supplements:    modalias(of:N*T*Cmediatek,mt8195-dspC*)
-Supplements:    modalias(acpi*:CSC0000%3A*)
-Supplements:    modalias(acpi*:CSC0004%3A*)
-Supplements:    modalias(acpi*:CSC0010%3A*)
-Supplements:    modalias(acpi*:PNPB006%3A*)
 Supplements:    modalias(pnp:dCSC0000*)
 Supplements:    modalias(pnp:dCSC0004*)
 Supplements:    modalias(pnp:dCSC0010*)
 Supplements:    modalias(pnp:dPnPb006*)
-Supplements:    modalias(pci:v00001073d00000004sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d0000000Asv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d0000000Csv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d0000000Dsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d00000010sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d00000012sv*sd*bc*sc*i*)
+Supplements:    modalias(spi:cs35l41-hda)
+Supplements:    modalias(sst)
+Supplements:    modalias(usb:v086Ap0100d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v086Ap0102d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v086Ap0110d*dc*dsc*dp*ic*isc*ip*in*)
 
 %description
 This package contains kernel firmware files for various sound drivers.
-
 
 %prep
 %autosetup -a1 -p1
