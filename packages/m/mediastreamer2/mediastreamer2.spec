@@ -1,7 +1,7 @@
 #
 # spec file for package mediastreamer2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   11
 
 Name:           mediastreamer2
-Version:        5.3.95
+Version:        5.3.105
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        AGPL-3.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  doxygen
 BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
+BuildRequires:  libSM-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libjpeg-turbo >= 2.0.0
 BuildRequires:  libpcap-devel
