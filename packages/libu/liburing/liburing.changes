@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 11 08:39:50 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- disable even more tests
+
+-------------------------------------------------------------------
 Fri Jan 31 15:47:09 UTC 2025 - Christian Goll <cgoll@suse.com>
 
 - disable sqwait.t and nop.t for 15.6
