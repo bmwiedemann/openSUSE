@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 11:48:17 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Add subpackage mpy-tools which contains mpy-cross and mpy-tool
+
+-------------------------------------------------------------------
 Fri Feb  7 10:33:24 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Fix build for 15.6

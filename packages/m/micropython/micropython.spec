@@ -47,12 +47,21 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 
+%package -n mpy-tools
+Summary:        Tools for creating and handling precompiled .mpy files for MicroPython
+Provides:       mpy-cross
+Provides:       mpy-tool
+
 %description
 A lean and efficient Python implementation for microcontrollers and constrained systems
 
 %description -n mpremote
 This CLI tool provides an integrated set of utilities to remotely interact with
 and automate a MicroPython device over a serial connection.
+
+%description -n mpy-tools
+MicroPython tools like the mpy-cross compiler for compiling.py files to .mpy files.
+Also mpy-tool for inspecting .mpy files.
 
 %prep
 %autosetup -p1
@@ -62,6 +71,7 @@ sed -i -e "s:/usr/lib/micropython:%{_prefix}/lib/micropython:g" "ports/unix/main
 %define make_flags V=1 MICROPY_PY_BTREE=0 MICROPY_PY_USSL=0
 
 %build
+# micropython
 export CFLAGS="%optflags -Wno-dangling-pointer"
 %make_build -C mpy-cross
 %make_build -C ports/unix STRIP=true
@@ -75,15 +85,22 @@ sed -i -e 's_#!/usr/bin/env python3__' mpremote/{__main__,transport,transport_se
 popd
 
 %install
+# micropython
 install -d %{buildroot}%{_bindir}
 install -t %{buildroot}%{_bindir} ports/unix/build-standard/micropython
+
+# mpremote
 pushd tools/mpremote
 %pyproject_install
 popd
-%python3_fix_shebang
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # remove pycache to get rid of rpmlint "W: python-bytecode-inconsistent-mtime" warnings
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/mpremote/__pycache__
+
+# mpy-tools
+install -m755 -D -v mpy-cross/build/mpy-cross %{buildroot}%{_bindir}/mpy-cross
+install -m755 -D -v tools/mpy-tool.py %{buildroot}%{_bindir}/mpy-tool
+%python3_fix_shebang
 
 %check
 %ifnarch x86_64
@@ -106,5 +123,11 @@ make -C ports/unix PYTHON=%{_bindir}/python%python_version V=1 test
 %{_prefix}/lib/python%{python_version}/site-packages/mpremote
 %{_prefix}/lib/python%{python_version}/site-packages/mpremote-%{version}.dist-info
 %{_bindir}/mpremote
+
+%files -n mpy-tools
+%doc mpy-cross/README.md
+%license LICENSE
+%{_bindir}/mpy-cross
+%{_bindir}/mpy-tool
 
 %changelog

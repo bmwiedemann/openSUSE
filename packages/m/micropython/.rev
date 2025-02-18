@@ -171,4 +171,13 @@
     <comment>Build mpremote</comment>
     <requestid>1244833</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d0905f08da5b8488431f79b0c9470bfc</srcmd5>
+    <version>1.24.1</version>
+    <time>1739902370</time>
+    <user>anag+factory</user>
+    <comment>- Add subpackage mpy-tools which contains mpy-cross and mpy-tool
+</comment>
+    <requestid>1246653</requestid>
+  </revision>
 </revisionlist>
