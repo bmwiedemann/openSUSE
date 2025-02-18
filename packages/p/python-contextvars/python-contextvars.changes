@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Feb 18 10:20:41 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Build package for multiple Python flavors on the SLE15 family
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
