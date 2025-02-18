@@ -1,0 +1,7 @@
+<package name="gkrellm-nvidia" project="openSUSE:Factory">
+  <title>A plugin for GKrellM and Nvidia GPUs</title>
+  <description>A simple GKrellM plugin for reading nvidia GPUs data. Clock, Temperature and
+Fan Speed for multiple GPU are supported.</description>
+  <devel project="X11:Utilities" package="gkrellm-nvidia"/>
+  <url>https://github.com/carcass82/gkrellm-nvidia</url>
+</package>
