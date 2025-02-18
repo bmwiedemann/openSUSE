@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,6 +135,7 @@ Recommends:     rsync
 Recommends:     sbl
 # Required for systemd-boot/grub2-bls
 Recommends:     sdbootutil
+Recommends:     grub2-x86_64-efi-bls
 Recommends:     smartmontools
 # DELL laptop support
 Recommends:     smbios-utils-python
@@ -403,11 +404,11 @@ Recommends:     libopensync-plugin-google-calendar
 Recommends:     libopensync-plugin-moto
 Recommends:     libopensync-plugin-python-module
 Recommends:     libpthread.so.0
+Recommends:     libstdc++.so.6
 Recommends:     libpthread.so.0(GLIBC_2.0)
 Recommends:     libpthread.so.0(GLIBC_2.1)
 Recommends:     libpthread.so.0(GLIBC_2.2)
 Recommends:     libpthread.so.0(GLIBC_2.3.2)
-Recommends:     libstdc++.so.6
 Recommends:     libstdc++.so.6(CXXABI_1.3)
 Recommends:     libstdc++.so.6(GLIBCXX_3.4)
 Recommends:     libstdc++.so.6(GLIBCXX_3.4.9)
