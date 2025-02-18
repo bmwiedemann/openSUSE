@@ -59,8 +59,9 @@ check_boot()
 		printf "\tcheck_boot: OK. Current kernel has boot-parameters '$BPARAM1 $BPARAM2'\n"
 		return 0
 	else
-		printf "\tcheck_boot: ERR. Boot-parameter missing for booting the kernel.\n"
-		printf "\t            Please add 'security=selinux selinux=1' to the kernel boot-parameter list.\n"
+		printf "\tcheck_boot: INFO. Boot-parameter missing for booting the kernel.\n"
+		printf "\t            Newer (open)SUSE distributions (SLE 16 and up) use SELinux by default. For older versions\n"
+		printf "\t            please add 'security=selinux selinux=1' to the kernel boot-parameter list to enable SELinux.\n"
 		return 1
 	fi
 }

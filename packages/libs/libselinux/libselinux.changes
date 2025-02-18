@@ -19,6 +19,12 @@ Tue Feb  4 07:22:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
   * added 0xFB4C685B5DC1C13E (expires: 2026-11-04)
 
 -------------------------------------------------------------------
+Fri Jan 24 12:48:20 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update selinux-ready to clarify that kernel options aren't necessary
+  on newer (open)SUSE versions
+
+-------------------------------------------------------------------
 Thu Nov  7 08:24:33 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Drop check_runlevel from selinux-ready script and remove restorecond

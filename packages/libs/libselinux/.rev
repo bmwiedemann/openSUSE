@@ -703,4 +703,12 @@
     <comment>update selinux userspace to 3.8 + drop one pending change that has no clear resolution as of yet</comment>
     <requestid>1245838</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>35b772b2ae106526d7d99829f65c33d7</srcmd5>
+    <version>3.8</version>
+    <time>1739902155</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1246422</requestid>
+  </revision>
 </revisionlist>
