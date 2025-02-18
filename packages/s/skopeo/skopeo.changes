@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Feb 13 08:54:02 UTC 2025 - dcermak@suse.com
+
+- Update to version 1.18.0:
+  * Bump Skopeo to v1.18.0
+  * Switch to the CNCF Code of Conduct
+  * fix(deps): update module golang.org/x/term to v0.29.0
+  * fix(deps): update module github.com/containers/common to v0.62.0
+  * chore(deps): update dependency containers/automation_images to v20250131
+  * fix(deps): update module github.com/spf13/pflag to v1.0.6
+  * fix(deps): update module github.com/containers/image/v5 to v5.34.0
+  * RPM: include check section to silence rpmlint
+  * RPM: cleanup gobuild macro for CentOS Stream
+  * fix(deps): update module github.com/containers/storage to v1.57.1
+  * fix(deps): update module github.com/containers/storage to v1.57.0
+  * feat: Add `--retry-delay` Option
+  * fix(deps): update module github.com/containers/common to v0.61.1
+  * fix(deps): update module github.com/containers/image/v5 to v5.33.1
+  * fix(deps): update module github.com/containers/storage to v1.56.1
+  * systemtest: update quay.io registry image
+  * chore(deps): update dependency containers/automation_images to v20250107 (#2488)
+  * fix(deps): update module golang.org/x/term to v0.28.0
+  * chore(deps): update dependency golangci/golangci-lint to v1.63.4
+  * chore(deps): update dependency golangci/golangci-lint to v1.63.3
+  * chore(deps): update dependency golangci/golangci-lint to v1.63.2
+  * fix(deps): update golang.org/x/exp digest to b2144cd
+  * chore(deps): update module golang.org/x/net to v0.33.0 [security]
+  * fix(deps): update module github.com/containers/ocicrypt to v1.2.1
+  * fix(deps): update module golang.org/x/term to v0.27.0
+  * Fix handling of errorShouldDisplayUsage
+  * fix(deps): update golang.org/x/exp digest to 2d47ceb
+  * Packit: remove rhel (epel) jobs
+  * Packit: switch fedora copr targets to fedora-all
+  * fix(deps): update module github.com/stretchr/testify to v1.10.0
+  * chore(deps): update dependency golangci/golangci-lint to v1.62.2
+  * Update an expected error message
+  * fix(deps): update module github.com/masterminds/semver/v3 to v3.3.1
+  * chore(deps): update dependency golangci/golangci-lint to v1.62.0
+  * fix(deps): update module github.com/moby/sys/capability to v0.4.0
+  * Bump to c/Skopeo v1.18.0-dev
+
+-------------------------------------------------------------------
 Fri Dec 06 11:41:50 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.17.0:

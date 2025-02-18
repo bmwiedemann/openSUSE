@@ -20,7 +20,7 @@
 %define project        github.com/containers/skopeo
 
 Name:           skopeo
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
