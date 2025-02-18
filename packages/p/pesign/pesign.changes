@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Feb 18 10:17:39 UTC 2025 - Luca Boccassi <bluca@debian.org>
+
+- Add Requires: mozilla-nss-tools, pesign needs it at runtime to
+  sign/attach signatures
+
+-------------------------------------------------------------------
 Wed Mar 20 08:44:54 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add pesign-bsc1221694-fix-reversed-calloc-arguments.patch to

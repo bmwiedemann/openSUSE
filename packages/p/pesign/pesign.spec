@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig(systemd)
 %sysusers_requires
 ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm riscv64
 Recommends:     %{name}-systemd
+Requires:       mozilla-nss-tools
 
 %description
 Signing tool for PE-COFF binaries. It is vaguely compliant
