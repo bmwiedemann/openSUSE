@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 18 09:25:58 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.6:
+  * Bump images, dependencies and versions to go 1.22.12 and distroless iptables
+  * Kubelet server handler cleanup
+  * Fix the remaining flaky integration tests in Job controller
+  * WIP: fix the flaky Job integration tests
+  * kubeadm: use the v1beta4 EtcdAPICall timeout for etcd calls
+  * hack: backport apidiff.sh
+  * Added check for multipath device mapper
+  * Fix: touch /dev/null permission denied on macos
+  * Fix Portworx plugin's CSI translation to copy secret name & namespace
+  * kubeadm: remove misplaced error during image pull
+  * Fix Go vet errors for master golang
+  * hack/tools: bump go-tools for go1.23.0
+  * Fix nil pointer dereference in selectable fields check When checking specVersion.SelectableFields, if specVersion is nil, a nil pointer dereference could occur. This change updates the conditional to use || instead of &&, ensuring that the check for specVersion being nil happens first, avoiding potential runtime panics.
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires: go >= 1.22.12`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.6/build/dependencies.yaml#L117-L119
+
+- version 1.31.6 contain fix for CVE-2025-0426, bsc#1237189
+  * Refer: https://github.com/kubernetes/kubernetes/issues/130016#issue-2836467448
+
+-------------------------------------------------------------------
 Thu Jan 16 09:58:06 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.5:
