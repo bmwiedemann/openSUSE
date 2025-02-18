@@ -1,7 +1,7 @@
 #
 # spec file for package python-M2Crypto
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-M2Crypto
-Version:        0.43.0
+Version:        0.44.0
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
-License:        MIT
+License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://sr.ht/~mcepl/m2crypto/
 Source0:        https://files.pythonhosted.org/packages/source/M/M2crypto/m2crypto-%{version}.tar.gz
+Source99:       python-M2Crypto.rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Feb 18 07:24:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix spelling of BSD-2-Clause license.
+- Add rpmlintrc … overflow of ignorable rpmlint warnings caused
+  me not to see the previous problem.
+
+-------------------------------------------------------------------
+Mon Feb 17 17:42:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.44.0:
+    - fix(rsa): introduce internal cache for rsa.check_key()
+      (bsc#1236664, srht#mcepl/m2crypto#369)
+    - fix[authcookie]: modernize the module
+    - fix(_lib): add missing #include for windows
+    - ci: relax fedora crypto policy to legacy.
+    - enhance setup.py for macos compatibility
+    - prefer packaging.version over distutils.version
+    - fix segfault with openssl 3.4.0
+    - fix[ec]: raise ioerror instead when load_key_bio() cannot read
+      the file.
+    - doc: update installation instructions for windows.
+    - fix setting x509.verify_* variables
+    - fix building against openssl in non-standard location
+    - test_x509: use only x509_version_1 (0) as version for csr. 
+
+-------------------------------------------------------------------
+Wed Feb 12 11:01:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- The real license is BSD 2-Clause, not MIT.
+
+-------------------------------------------------------------------
 Wed Oct 30 18:42:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.43.0:
