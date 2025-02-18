@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Feb 17 07:58:11 UTC 2025 - pgajdos@suse.com
+
+- version update to 6.11
+  New and rewritten pages
+  -----------------------
+  man7/
+          pathname.7
+- modified sources
+  % man-pages.keyring
+- deleted sources
+  - man-pages-6.10.tar.sign (not needed)
+- added sources
+  + man-pages-6.11.tar.sign
+
+-------------------------------------------------------------------
 Thu Jan 23 07:09:04 UTC 2025 - pgajdos@suse.com
 
 - version update to 6.10
