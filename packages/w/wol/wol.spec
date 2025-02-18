@@ -1,7 +1,7 @@
 #
 # spec file for package wol
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        %{name}.rules
 Patch0:         wol-0.7.1-Fix-config.h-test-consumption.patch
 Patch1:         wol-0.7.1-Fix-malloc-detection.patch
 Patch2:         wol-0.7.1-linux-headers.patch
+# fix build with gcc15
+Patch3:         wol-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 Requires(post): %{install_info_prereq}

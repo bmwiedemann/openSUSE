@@ -1,0 +1,14 @@
+--- wol-0.7.1/lib/realloc.c	2002-03-20 01:45:12.000000000 +0100
++++ wol-0.7.1/lib/realloc.c	2025-02-17 11:35:13.552537462 +0100
+@@ -23,9 +23,7 @@
+ #undef realloc
+ 
+ #include <sys/types.h>
+-
+-char *malloc ();
+-char *realloc ();
++#include <stdlib.h>
+ 
+ /* Change the size of an allocated block of memory P to N bytes,
+    with error checking.  If N is zero, change it to 1.  If P is NULL,
+

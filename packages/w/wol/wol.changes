@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 17 10:45:53 UTC 2025 - pgajdos@suse.com
+
+- Added wol-gcc15.patch to fix build with gcc15.
+
+-------------------------------------------------------------------
 Mon Jul  8 07:08:42 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
 
 - Added patches for support gcc14:

@@ -149,4 +149,12 @@
   * wol-0.7.1-linux-headers.patch</comment>
     <requestid>1186107</requestid>
   </revision>
+  <revision rev="22" vrev="164">
+    <srcmd5>68dc97922ddc97c3c9bfaaa5f902e376</srcmd5>
+    <version>0.7.1</version>
+    <time>1739902117</time>
+    <user>anag+factory</user>
+    <comment>- Added wol-gcc15.patch to fix build with gcc15.</comment>
+    <requestid>1246405</requestid>
+  </revision>
 </revisionlist>
