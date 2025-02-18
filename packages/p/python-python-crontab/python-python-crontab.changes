@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 18 10:07:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.0
+  * Look up the location of the crontab command instead of assuming
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Thu Jun  6 20:21:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:
