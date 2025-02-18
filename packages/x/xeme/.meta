@@ -1,0 +1,5 @@
+<package name="xeme" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:pidgin" package="xeme"/>
+</package>

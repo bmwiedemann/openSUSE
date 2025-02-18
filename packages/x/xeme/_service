@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">hg</param>
+    <param name="url">https://keep.imfreedom.org/xeme/xeme</param>
+    <param name="revision">default</param>
+    <param name="versionformat">0+{latesttagdistance}</param>
+    <!-- <param name="versionformat">{latesttag}+{latesttagdistance}</param> -->
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual" />
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
