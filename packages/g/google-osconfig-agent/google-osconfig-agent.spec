@@ -33,6 +33,8 @@ URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
+# PATCH-FIX-UPSTREAM - gh/golang/glog#74 - Fix vulnerability when creating log files (CVE-2024-45339)
+Patch0:         CVE-2024-45339.patch
 BuildRequires:  golang(API) >= 1.22.4
 BuildRequires:  golang-packaging
 Requires:       google-guest-configs
@@ -49,6 +51,7 @@ Google Cloud OSConfig Agent
 %prep
 %setup -q -n %{repo}-%{version}
 %setup -q -D -T -a 1 -n %{repo}-%{version}
+%patch -P0 -p0
 
 %build
 %goprep %{import_path}
