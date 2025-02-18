@@ -20,7 +20,7 @@ Name:           libzpc
 Version:        1.3.0
 Release:        0
 Summary:        IBM Z Protected-key Crypto library
-License:        Apache-2.0
+License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
 Source:         https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
