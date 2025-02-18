@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsbeautifier
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-jsbeautifier
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        JavaScript unobfuscator and beautifier
 License:        MIT
@@ -26,7 +26,9 @@ URL:            https://jsbeautifier.org
 Source0:        https://files.pythonhosted.org/packages/source/j/jsbeautifier/jsbeautifier-%{version}.tar.gz
 # https://github.com/beautify-web/js-beautify/issues/1674
 Source1:        https://raw.githubusercontent.com/beautify-web/js-beautify/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-EditorConfig >= 0.12.2
@@ -50,10 +52,10 @@ Beautify, unpack or deobfuscate JavaScript. Handles popular online obfuscators.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/js-beautify
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
@@ -71,6 +73,6 @@ cp %{SOURCE1} .
 %license LICENSE
 %python_alternative %{_bindir}/js-beautify
 %{python_sitelib}/jsbeautifier
-%{python_sitelib}/jsbeautifier-%{version}-py*.egg-info
+%{python_sitelib}/jsbeautifier-%{version}.dist-info
 
 %changelog

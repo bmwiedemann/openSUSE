@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Feb 11 09:50:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15.2
+  * Patch SNYK-JS-CROSSSPAWN-8303230 issue brought it through old glob package
+  * Release wheels on pypi
+  * ModuleNotFoundError: No module named 'setuptools.command.test' as of latest
+    setuptools package release
+  * [Python]Compatible with setuptools>=72
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+  * Update name for dist directory in %files section
+
+-------------------------------------------------------------------
 Mon Mar 18 20:32:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.1:
